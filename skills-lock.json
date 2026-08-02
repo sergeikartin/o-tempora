@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "skills": {
+    "wikidata-natural-query": {
+      "source": "git@github.com:santhoshtr/wiki-skills.git",
+      "sourceUrl": "git@github.com:santhoshtr/wiki-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/wikidata-natural-query/SKILL.md",
+      "computedHash": "eb4ea26b695d7ff0c611b0021fef0e0ee7c3e8379d63fc2e0408a7569f5eae9d"
+    },
+    "wikipedia-rest-api": {
+      "source": "git@github.com:santhoshtr/wiki-skills.git",
+      "sourceUrl": "git@github.com:santhoshtr/wiki-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/wikipedia-rest-api/SKILL.md",
+      "computedHash": "62f7b2ccc4e6dd57a044e8e30686f48ef262e60191ba257618559c2edc1c52ee"
+    }
+  }
+}
