@@ -6,7 +6,7 @@
 - Fix root causes — do not layer workarounds.
 - Do not mix unrelated concerns in one component or module.
 - Respect the system boundaries defined in `architecture.md`.
-- The frontend (`packages/web`) and the data pipeline (`packages/data-pipeline`) are separate npm-workspace packages under `packages/`. Neither imports code from the other — they communicate only through the generated JSON files.
+- The frontend (`packages/web`) and the data pipeline (`packages/data-pipeline`) are separate npm-workspace packages under `packages/`. Neither imports code from the other. Runtime data crosses through generated JSON files, and shared type contracts come from `packages/shared-types`.
 - A dependency used by more than one workspace package (e.g. `typescript`, `@types/node`) is declared once in the root `package.json` and never redeclared per-package. A dependency used by only one package (e.g. `tsx` in `packages/data-pipeline`) is declared in that package's own `package.json`, not hoisted.
 - FSD layer and public-API boundaries (see React section below) are enforced by [Steiger](https://github.com/feature-sliced/steiger) with the `@feature-sliced/steiger-plugin` ruleset, run in CI on every PR. A violation fails the build — it is not a style suggestion. Steiger's rules support omitting the `entities` and `pages` layers (this project uses a 4-layer `shared → features → widgets → app` chain), so no rule-disabling is needed for the reduced structure.
 
