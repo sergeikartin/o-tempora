@@ -15,6 +15,8 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+const REQUEST_TIMEOUT_MS = 30_000;
+
 export async function runSparqlQuery(query: string, attempt = 1): Promise<SparqlResults> {
   const response = await fetch(ENDPOINT, {
     method: "POST",
@@ -24,6 +26,7 @@ export async function runSparqlQuery(query: string, attempt = 1): Promise<Sparql
       "User-Agent": USER_AGENT,
     },
     body: new URLSearchParams({ query }),
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
 
   if (response.status === 429 && attempt <= MAX_RETRIES) {
