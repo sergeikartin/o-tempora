@@ -12,6 +12,8 @@ Update this file after every meaningful implementation change.
 
 ## Completed
 
+- Monorepo restructure: moved `/data-pipeline` into `packages/data-pipeline` so all three projects (`packages/data-pipeline`, `packages/shared-types`, and the not-yet-scaffolded frontend) live under `packages/*` as npm-workspace packages. Root `package.json`'s `workspaces` field is now just `["packages/*"]`. Removed `data-pipeline`'s own `package-lock.json` (a leftover from before workspaces existed in Unit 1) — there is now a single lockfile at the repo root. Hoisted the devDependencies shared by more than one package (`typescript`, `@types/node`) into the root `package.json`; `tsx` stays in `packages/data-pipeline` since it's specific to how that package runs its scripts. Verified `npm run typecheck` and `npm test` still pass for `packages/data-pipeline` after the move. Updated `architecture.md` and `code-standards.md` throughout to reference `packages/data-pipeline` and `packages/web` (the frontend's new planned location, replacing `/src` — see Next Up) instead of the old top-level `/data-pipeline` and `/src` paths.
+
 - Unit 1: Data pipeline scaffold + Fetch stage.
   - `/data-pipeline` scaffolded: `package.json`, `tsconfig.json` (strict), `.gitignore`, `fetch/`, `transform/` (placeholder), `output/` (placeholder), `data/raw/`.
   - `fetch/sparql-result-shape.ts` + `fetch/validate-sparql-result.ts`: structural validation of the SPARQL JSON shape (head.vars / results.bindings), tested against both valid and malformed input.
@@ -38,7 +40,7 @@ Update this file after every meaningful implementation change.
 
 ## Next Up
 
-- Unit 3: Project scaffold (frontend) — Vite + React + TypeScript init, mini-FSD folder skeleton, Steiger config. See `context/specs/00-build-plan.md`. When `shared/types/` is created, it should import from `packages/shared-types` rather than redefining `Person`/`HistoricalEvent`; the app's data loading should import `people.json`/`events.json` directly from `packages/shared-types/src/data/` rather than expecting a `src/shared/data/` copy.
+- Unit 3: Project scaffold (frontend) — Vite + React + TypeScript init, mini-FSD folder skeleton, Steiger config, scaffolded at `packages/web` (not `/src` — see the monorepo restructure entry above). See `context/specs/00-build-plan.md` (written before the restructure; treat its `/src` references as `packages/web/src`). When `shared/types/` is created, it should import from `packages/shared-types` rather than redefining `Person`/`HistoricalEvent`; the app's data loading should import `people.json`/`events.json` directly from `packages/shared-types/src/data/` rather than expecting a `src/shared/data/` copy.
 
 ## Open Questions
 
@@ -60,8 +62,8 @@ Update this file after every meaningful implementation change.
 
 ## Session Notes
 
-- To re-run Fetch: `cd data-pipeline && npm install && npm run fetch`. Re-running overwrites the three raw files (expected/intended — see Invariant 8 and the Data Pipeline section of `architecture.md`).
-- To rebuild the dataset after a Fetch re-run: `cd data-pipeline && npm run build-data` (writes `people.json`/`events.json` into `../packages/shared-types/src/data/`).
-- Typecheck: `cd data-pipeline && npm run typecheck` (clean, strict mode, no `any`). Tests: `npm test` (Node's built-in `node:test` runner).
-- Root-level `npm install` (from the repo root, not `data-pipeline/`) is what links the `packages/shared-types` workspace package — needed once, or after `packages/shared-types/package.json` changes.
-- If occupation/region lookup tables ever need extending (e.g. after a Fetch re-run surfaces new Q-IDs), run `npx tsx transform/list-unmapped-occupations.ts` / `list-unmapped-countries.ts` from `data-pipeline/` and fill in the reported gaps.
+- To re-run Fetch: `cd packages/data-pipeline && npm run fetch`. Re-running overwrites the three raw files (expected/intended — see Invariant 8 and the Data Pipeline section of `architecture.md`).
+- To rebuild the dataset after a Fetch re-run: `cd packages/data-pipeline && npm run build-data` (writes `people.json`/`events.json` into `../shared-types/src/data/`).
+- Typecheck: `cd packages/data-pipeline && npm run typecheck` (clean, strict mode, no `any`). Tests: `npm test` (Node's built-in `node:test` runner).
+- `npm install` must be run from the repo root (there's a single lockfile there now, not one per package) — needed once, or after any workspace package's `package.json` changes.
+- If occupation/region lookup tables ever need extending (e.g. after a Fetch re-run surfaces new Q-IDs), run `npx tsx transform/list-unmapped-occupations.ts` / `list-unmapped-countries.ts` from `packages/data-pipeline/` and fill in the reported gaps.
