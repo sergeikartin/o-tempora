@@ -1,0 +1,5754 @@
+[
+  {
+    "id": "Q302",
+    "name": "Jesus Christ",
+    "birthYear": -5,
+    "deathYear": 30,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy",
+      "religion",
+      "invention",
+      "science"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 345,
+    "description": "central figure of Christianity (c. 6 or 4 BC – AD 30 or 33)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jesus"
+  },
+  {
+    "id": "Q868",
+    "name": "Aristotle",
+    "birthYear": -383,
+    "deathYear": -321,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 317,
+    "description": "4th-century BCE Classical Greek philosopher and polymath",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aristotle"
+  },
+  {
+    "id": "Q4604",
+    "name": "Confucius",
+    "birthYear": -550,
+    "deathYear": -478,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 312,
+    "description": "5th-century BCE Chinese philosopher and politician",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Confucius"
+  },
+  {
+    "id": "Q762",
+    "name": "Leonardo da Vinci",
+    "birthYear": 1452,
+    "deathYear": 1519,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "invention",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 305,
+    "description": "Italian Renaissance polymath (1452−1519)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci"
+  },
+  {
+    "id": "Q859",
+    "name": "Plato",
+    "birthYear": -428,
+    "deathYear": -348,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 302,
+    "description": "4th-century BCE Greek philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plato"
+  },
+  {
+    "id": "Q9458",
+    "name": "Muhammad",
+    "birthYear": 571,
+    "deathYear": 632,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 286,
+    "description": "Arabian political leader and the founder of Islam (c. 570–632)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Muhammad"
+  },
+  {
+    "id": "Q1048",
+    "name": "Julius Caesar",
+    "birthYear": -99,
+    "deathYear": -43,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "war",
+      "politics",
+      "philosophy",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 281,
+    "description": "Roman general and dictator",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Julius_Caesar"
+  },
+  {
+    "id": "Q913",
+    "name": "Socrates",
+    "birthYear": -469,
+    "deathYear": -398,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 276,
+    "description": "5th-century BCE Greek philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Socrates"
+  },
+  {
+    "id": "Q9441",
+    "name": "The Buddha",
+    "birthYear": -500,
+    "deathYear": -500,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "religion",
+      "philosophy",
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 273,
+    "description": "Indian philosopher and the founder of Buddhism (623 or 563 BCE – 543 or 483 BCE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Buddha"
+  },
+  {
+    "id": "Q1067",
+    "name": "Dante Alighieri",
+    "birthYear": 1265,
+    "deathYear": 1321,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "politics",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 272,
+    "description": "Florentine poet, writer, and philosopher (c. 1265–1321)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dante_Alighieri"
+  },
+  {
+    "id": "Q8409",
+    "name": "Alexander the Great",
+    "birthYear": -355,
+    "deathYear": -322,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 262,
+    "description": "king of Macedonia and conqueror of Achaemenid Persia (356–323 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+  },
+  {
+    "id": "Q5592",
+    "name": "Michelangelo",
+    "birthYear": 1475,
+    "deathYear": 1564,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "invention"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 258,
+    "description": "Italian artist and architect (1475-1564)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Michelangelo"
+  },
+  {
+    "id": "Q8739",
+    "name": "Archimedes",
+    "birthYear": -286,
+    "deathYear": -211,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "invention",
+      "war",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 245,
+    "description": "Greek mathematician and physicist (c. 287 – c. 212 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Archimedes"
+  },
+  {
+    "id": "Q1398",
+    "name": "Virgil",
+    "birthYear": -69,
+    "deathYear": -18,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 244,
+    "description": "Roman poet (1st century BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Virgil"
+  },
+  {
+    "id": "Q1405",
+    "name": "Augustus",
+    "birthYear": -62,
+    "deathYear": 14,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 244,
+    "description": "first emperor of the Roman Empire and founder of the Julio-Claudian dynasty",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Augustus"
+  },
+  {
+    "id": "Q7322",
+    "name": "Christopher Columbus",
+    "birthYear": 1451,
+    "deathYear": 1506,
+    "category": "exploration",
+    "occupationTags": [
+      "exploration",
+      "invention"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 242,
+    "description": "Italian navigator, explorer, and colonist (1451–1506)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Christopher_Columbus"
+  },
+  {
+    "id": "Q8018",
+    "name": "Augustine of Hippo",
+    "birthYear": 354,
+    "deathYear": 430,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 226,
+    "description": "Christian theologian, philosopher, and saint (354–430)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Augustine_of_Hippo"
+  },
+  {
+    "id": "Q1399",
+    "name": "Niccolò Machiavelli",
+    "birthYear": 1469,
+    "deathYear": 1527,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy",
+      "science",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 226,
+    "description": "Italian diplomat and political and military theorist (1469–1527)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Niccol%C3%B2_Machiavelli"
+  },
+  {
+    "id": "Q619",
+    "name": "Nicolaus Copernicus",
+    "birthYear": 1473,
+    "deathYear": 1543,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "politics",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 214,
+    "description": "Polish mathematician and astronomer (1473-1543)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus"
+  },
+  {
+    "id": "Q7235",
+    "name": "Sophocles",
+    "birthYear": -495,
+    "deathYear": -405,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 212,
+    "description": "ancient Greek playwright",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sophocles"
+  },
+  {
+    "id": "Q9333",
+    "name": "Laozi",
+    "birthYear": -579,
+    "deathYear": -500,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "religion"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 212,
+    "description": "6th-century BC semi-legendary Chinese philosopher, founder of Taoism",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Laozi"
+  },
+  {
+    "id": "Q10261",
+    "name": "Pythagoras",
+    "birthYear": -582,
+    "deathYear": -490,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 207,
+    "description": "Greek philosopher and mathematician (c. 570 – c. 495 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pythagoras"
+  },
+  {
+    "id": "Q720",
+    "name": "Genghis Khan",
+    "birthYear": 1162,
+    "deathYear": 1227,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 206,
+    "description": "founder and first khan of the Mongol Empire (1162–1227)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Genghis_Khan"
+  },
+  {
+    "id": "Q1541",
+    "name": "Cicero",
+    "birthYear": -106,
+    "deathYear": -42,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "war",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 202,
+    "description": "Roman statesman, lawyer, orator, and philosopher (106–43 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cicero"
+  },
+  {
+    "id": "Q7198",
+    "name": "Ovid",
+    "birthYear": -42,
+    "deathYear": 17,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 201,
+    "description": "Roman poet (43 BC – 17/18 AD)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ovid"
+  },
+  {
+    "id": "Q8747",
+    "name": "Euclid",
+    "birthYear": -333,
+    "deathYear": -284,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 201,
+    "description": "ancient Greek mathematician (fl. 300 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Euclid"
+  },
+  {
+    "id": "Q26825",
+    "name": "Herodotus",
+    "birthYear": -483,
+    "deathYear": -424,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 197,
+    "description": "Greek historian and geographer (c.484–c.425 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Herodotus"
+  },
+  {
+    "id": "Q7071",
+    "name": "Li Bai",
+    "birthYear": 701,
+    "deathYear": 762,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 197,
+    "description": "Classical Chinese poet of the Tang dynasty (701–762)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Li_Bai"
+  },
+  {
+    "id": "Q7192",
+    "name": "Qin Shi Huang",
+    "birthYear": -258,
+    "deathYear": -209,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 196,
+    "description": "first emperor of Qin Dynasty",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Qin_Shi_Huang"
+  },
+  {
+    "id": "Q1496",
+    "name": "Ferdinand Magellan",
+    "birthYear": 1480,
+    "deathYear": 1521,
+    "category": "exploration",
+    "occupationTags": [
+      "exploration"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 195,
+    "description": "Portuguese explorer in the service of Spain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ferdinand_Magellan"
+  },
+  {
+    "id": "Q9200",
+    "name": "Paul the Apostle",
+    "birthYear": 5,
+    "deathYear": 66,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "invention",
+      "exploration"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 194,
+    "description": "Early Christian apostle and missionary (c. AD 5 – c. 64/65)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Paul_the_Apostle"
+  },
+  {
+    "id": "Q8011",
+    "name": "Avicenna",
+    "birthYear": 980,
+    "deathYear": 1037,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "philosophy",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 193,
+    "description": "Persian polymath, physician and philosopher (c. 980–1037)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Avicenna"
+  },
+  {
+    "id": "Q7226",
+    "name": "Joan of Arc",
+    "birthYear": 1412,
+    "deathYear": 1431,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 192,
+    "description": "French folk heroine (1412–1431), military leader who crowned Charles VII and Roman Catholic saint, canonized 500 years after her death",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Joan_of_Arc"
+  },
+  {
+    "id": "Q5580",
+    "name": "Albrecht Dürer",
+    "birthYear": 1471,
+    "deathYear": 1528,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "invention",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 187,
+    "description": "German painter, printmaker, mathematician, and theorist (1471-1528)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Albrecht_D%C3%BCrer"
+  },
+  {
+    "id": "Q3044",
+    "name": "Charlemagne",
+    "birthYear": 748,
+    "deathYear": 814,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 186,
+    "description": "king of Franks, regarded as the first Holy Roman Emperor (747–814) (742-814)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Charlemagne"
+  },
+  {
+    "id": "Q7328",
+    "name": "Vasco da Gama",
+    "birthYear": 1460,
+    "deathYear": 1525,
+    "category": "exploration",
+    "occupationTags": [
+      "exploration",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 181,
+    "description": "Portuguese explorer (c. 1460s – 1524)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vasco_da_Gama"
+  },
+  {
+    "id": "Q8958",
+    "name": "Johannes Gutenberg",
+    "birthYear": 1400,
+    "deathYear": 1468,
+    "category": "invention",
+    "occupationTags": [
+      "invention",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 180,
+    "description": "German inventor and craftsman (1400-1468)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Johannes_Gutenberg"
+  },
+  {
+    "id": "Q8589",
+    "name": "Ashoka",
+    "birthYear": -303,
+    "deathYear": -231,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "religion"
+    ],
+    "regionTags": [
+      "south-asia"
+    ],
+    "fameScore": 177,
+    "description": "Mauryan emperor from 268 to 232 BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ashoka"
+  },
+  {
+    "id": "Q5683",
+    "name": "Geoffrey Chaucer",
+    "birthYear": 1343,
+    "deathYear": 1400,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 177,
+    "description": "14th century English poet and author (1343–1400)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Geoffrey_Chaucer"
+  },
+  {
+    "id": "Q1430",
+    "name": "Marcus Aurelius",
+    "birthYear": 121,
+    "deathYear": 180,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 176,
+    "description": "16th Roman Emperor from 161 to 180 and Stoic philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Marcus_Aurelius"
+  },
+  {
+    "id": "Q5264",
+    "name": "Hippocrates",
+    "birthYear": -459,
+    "deathYear": -369,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 173,
+    "description": "Greek physician (c. 460 – c. 370 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hippocrates"
+  },
+  {
+    "id": "Q635",
+    "name": "Cleopatra",
+    "birthYear": -68,
+    "deathYear": -29,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 170,
+    "description": "queen of the Ptolemaic Kingdom of Egypt from 51 to 30 BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cleopatra"
+  },
+  {
+    "id": "Q43423",
+    "name": "Aesop",
+    "birthYear": -619,
+    "deathYear": -563,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 166,
+    "description": "ancient Greek storyteller (619 BC–563 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aesop"
+  },
+  {
+    "id": "Q6197",
+    "name": "Horace",
+    "birthYear": -64,
+    "deathYear": -7,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 166,
+    "description": "Roman lyric poet (65 BC – 8 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Horace"
+  },
+  {
+    "id": "Q35900",
+    "name": "Omar Khayyám",
+    "birthYear": 1048,
+    "deathYear": 1131,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy",
+      "science",
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 165,
+    "description": "Persian mathematician and poet (1048–1131)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Omar_Khayyam"
+  },
+  {
+    "id": "Q9294",
+    "name": "Ibn Khaldun",
+    "birthYear": 1332,
+    "deathYear": 1406,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art",
+      "science",
+      "philosophy",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 165,
+    "description": "Arab historiographer and historian",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ibn_Khaldun"
+  },
+  {
+    "id": "Q9038",
+    "name": "Muḥammad ibn Musa al-Khwarizmi",
+    "birthYear": 780,
+    "deathYear": 850,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "philosophy",
+      "art"
+    ],
+    "regionTags": [],
+    "fameScore": 164,
+    "description": "9th-century Persian mathematician and astronomer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Al-Khwarizmi"
+  },
+  {
+    "id": "Q37151",
+    "name": "Sun Tzu",
+    "birthYear": -543,
+    "deathYear": -495,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "war",
+      "philosophy"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 163,
+    "description": "6th century BCE Chinese general and military strategist",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sun_Tzu"
+  },
+  {
+    "id": "Q36303",
+    "name": "Thales",
+    "birthYear": -624,
+    "deathYear": -545,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 162,
+    "description": "ancient Greek philosopher and mathematician",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thales_of_Miletus"
+  },
+  {
+    "id": "Q5670",
+    "name": "Abu Nuwas",
+    "birthYear": 756,
+    "deathYear": 814,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 162,
+    "description": "8th-century classical Arabic poet",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Abu_Nuwas"
+  },
+  {
+    "id": "Q1401",
+    "name": "Petrarch",
+    "birthYear": 1304,
+    "deathYear": 1374,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "exploration",
+      "science",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 162,
+    "description": "Italian scholar and poet (1304-1374)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Petrarch"
+  },
+  {
+    "id": "Q8462",
+    "name": "Timur",
+    "birthYear": 1336,
+    "deathYear": 1405,
+    "category": "war",
+    "occupationTags": [
+      "war"
+    ],
+    "regionTags": [],
+    "fameScore": 159,
+    "description": "the founder of the Timurid Empire (1370–1405)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Timur"
+  },
+  {
+    "id": "Q2054",
+    "name": "Seneca",
+    "birthYear": -4,
+    "deathYear": 65,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 158,
+    "description": "Roman Stoic philosopher, statesman and dramatist (c. 4 BCE–65 CE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Seneca_the_Younger"
+  },
+  {
+    "id": "Q81731",
+    "name": "Murasaki Shikibu",
+    "birthYear": 970,
+    "deathYear": 1100,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 158,
+    "description": "Japanese novelist and poet (c.973–c.1014)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Murasaki_Shikibu"
+  },
+  {
+    "id": "Q48305",
+    "name": "Euripides",
+    "birthYear": -480,
+    "deathYear": -406,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 157,
+    "description": "Classical Athenian playwright",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Euripides"
+  },
+  {
+    "id": "Q8413",
+    "name": "Constantine the Great",
+    "birthYear": 272,
+    "deathYear": 337,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 157,
+    "description": "Roman emperor from 306 to 337 and first to convert to Christianity (272–337)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Constantine_the_Great"
+  },
+  {
+    "id": "Q43499",
+    "name": "Erasmus",
+    "birthYear": 1466,
+    "deathYear": 1536,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 155,
+    "description": "Dutch Renaissance humanist, Catholic priest, and theologian (1466-1536)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Erasmus"
+  },
+  {
+    "id": "Q40939",
+    "name": "Aeschylus",
+    "birthYear": -524,
+    "deathYear": -455,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 154,
+    "description": "ancient Athenian playwright",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aeschylus"
+  },
+  {
+    "id": "Q8581",
+    "name": "Saladin",
+    "birthYear": 1138,
+    "deathYear": 1193,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [],
+    "fameScore": 154,
+    "description": "Sultan of Egypt and founder of the Ayyubid dynasty (1137–1193)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Saladin"
+  },
+  {
+    "id": "Q7333",
+    "name": "Zheng He",
+    "birthYear": 1371,
+    "deathYear": 1433,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "exploration"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 154,
+    "description": "Chinese mariner, explorer, and diplomat",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Zheng_He"
+  },
+  {
+    "id": "Q41980",
+    "name": "Democritus",
+    "birthYear": -460,
+    "deathYear": -360,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 152,
+    "description": "Greek philosopher (c. 460–c. 370 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Democritus"
+  },
+  {
+    "id": "Q8467",
+    "name": "Umar ibn Al-Khattāb",
+    "birthYear": 586,
+    "deathYear": 644,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "religion"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 151,
+    "description": "2nd Rashidun Caliph from 634 to 644",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Umar"
+  },
+  {
+    "id": "Q39619",
+    "name": "Alī ibn Abī Ṭālib",
+    "birthYear": 599,
+    "deathYear": 661,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 151,
+    "description": "4th Rashidun Caliph (r. 656–661) and first Shia Imam",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ali"
+  },
+  {
+    "id": "Q1402",
+    "name": "Giovanni Boccaccio",
+    "birthYear": 1313,
+    "deathYear": 1375,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 151,
+    "description": "Italian author and poet (1313–1375)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Giovanni_Boccaccio"
+  },
+  {
+    "id": "Q8423",
+    "name": "Cyrus the Great",
+    "birthYear": -599,
+    "deathYear": -529,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 150,
+    "description": "founder of the Achaemenid Empire (559–529 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cyrus_the_Great"
+  },
+  {
+    "id": "Q43353",
+    "name": "Aristophanes",
+    "birthYear": -444,
+    "deathYear": -384,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 148,
+    "description": "Classical Athenian comic playwright (c. 446 – c. 386 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aristophanes"
+  },
+  {
+    "id": "Q17892",
+    "name": "Sappho",
+    "birthYear": -650,
+    "deathYear": -569,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 146,
+    "description": "ancient Greek poet from Lesbos (c. 630-c. 570 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sappho"
+  },
+  {
+    "id": "Q41155",
+    "name": "Heraclitus",
+    "birthYear": -534,
+    "deathYear": -470,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 146,
+    "description": "Greek philosopher (late 6th/early 5th-century BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Heraclitus"
+  },
+  {
+    "id": "Q9372",
+    "name": "Sima Qian",
+    "birthYear": -144,
+    "deathYear": -85,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 143,
+    "description": "2nd-century BCE Chinese historian and writer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sima_Qian"
+  },
+  {
+    "id": "Q9546",
+    "name": "Al-Ghazali",
+    "birthYear": 1056,
+    "deathYear": 1111,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 143,
+    "description": "Persian Sunni Muslim scholar and mystic (c.1058–1111)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Al-Ghazali"
+  },
+  {
+    "id": "Q9045",
+    "name": "Chanakya Kautilya",
+    "birthYear": -374,
+    "deathYear": -282,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "politics",
+      "science"
+    ],
+    "regionTags": [],
+    "fameScore": 140,
+    "description": "Ancient Indian teacher and strategist who authored the foundational manual on political economy.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chanakya"
+  },
+  {
+    "id": "Q676555",
+    "name": "Francis of Assisi",
+    "birthYear": 1182,
+    "deathYear": 1226,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 139,
+    "description": "Italian Catholic saint, friar, deacon and preacher and founder of the Franciscan Order (1181/2–1226)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Francis_of_Assisi"
+  },
+  {
+    "id": "Q33772",
+    "name": "Du Fu",
+    "birthYear": 712,
+    "deathYear": 770,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 138,
+    "description": "Tang dynasty Chinese poet (712–770)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Du_Fu"
+  },
+  {
+    "id": "Q1413",
+    "name": "Nero",
+    "birthYear": 37,
+    "deathYear": 68,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "art",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 135,
+    "description": "fifth and last Roman Emperor of Julio-Claudian dynasty (54–68)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nero"
+  },
+  {
+    "id": "Q131018",
+    "name": "François Rabelais",
+    "birthYear": 1494,
+    "deathYear": 1553,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 134,
+    "description": "16th-century French writer and humanist (1494–1553)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fran%C3%A7ois_Rabelais"
+  },
+  {
+    "id": "Q41683",
+    "name": "Thucydides",
+    "birthYear": -460,
+    "deathYear": -394,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 133,
+    "description": "5th-century BC Athenian historian and general",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thucydides"
+  },
+  {
+    "id": "Q39837",
+    "name": "Averroes",
+    "birthYear": 1126,
+    "deathYear": 1198,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "politics",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 131,
+    "description": "Arab Andalusian Muslim writer and philosopher (1126–1198)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Averroes"
+  },
+  {
+    "id": "Q1409",
+    "name": "Caligula",
+    "birthYear": 12,
+    "deathYear": 41,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 129,
+    "description": "third Roman emperor (37–41)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Caligula"
+  },
+  {
+    "id": "Q2039",
+    "name": "Titus Livius",
+    "birthYear": -58,
+    "deathYear": 17,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 129,
+    "description": "Roman historian (59 BC – AD 17)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Livy"
+  },
+  {
+    "id": "Q43459",
+    "name": "Ferdowsi",
+    "birthYear": 940,
+    "deathYear": 1020,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 129,
+    "description": "Persian poet, author of Shahnameh (940–1020)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ferdowsi"
+  },
+  {
+    "id": "Q334923",
+    "name": "Abu Bakr",
+    "birthYear": 573,
+    "deathYear": 634,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "invention"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 128,
+    "description": "1st Rashidun Caliph and father-in-law of Muhammad",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Abu_Bakr"
+  },
+  {
+    "id": "Q129772",
+    "name": "Xenophon",
+    "birthYear": -430,
+    "deathYear": -353,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "war",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 127,
+    "description": "Greek philosopher, historian, soldier (c. 430–355/354 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xenophon"
+  },
+  {
+    "id": "Q9397",
+    "name": "Zhu Xi",
+    "birthYear": 1130,
+    "deathYear": 1200,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 127,
+    "description": "Chinese historian, neo-Confucian philosopher, poet, and politician during the Song dynasty (1130–1200)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Zhu_Xi"
+  },
+  {
+    "id": "Q44233",
+    "name": "Hesiod",
+    "birthYear": -775,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 126,
+    "description": "ancient Greek poet of the archaic period",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hesiod"
+  },
+  {
+    "id": "Q82778",
+    "name": "Pliny the Elder",
+    "birthYear": 20,
+    "deathYear": 79,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "philosophy",
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 126,
+    "description": "Roman military commander and writer (AD23/24–79)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pliny_the_Elder"
+  },
+  {
+    "id": "Q36359",
+    "name": "Hammurabi",
+    "birthYear": -1809,
+    "deathYear": -1749,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 125,
+    "description": "sixth king of Babylon (r. 1792–1750 BCE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hammurabi"
+  },
+  {
+    "id": "Q202943",
+    "name": "Brahmagupta",
+    "birthYear": 598,
+    "deathYear": 670,
+    "category": "science",
+    "occupationTags": [
+      "science"
+    ],
+    "regionTags": [],
+    "fameScore": 125,
+    "description": "Indian mathematician and astronomer (c. 598 – c. 668 CE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Brahmagupta"
+  },
+  {
+    "id": "Q8763",
+    "name": "Fibonacci",
+    "birthYear": 1170,
+    "deathYear": 1240,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "invention"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 125,
+    "description": "Italian mathematician (c.1170–c.1240/50)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fibonacci"
+  },
+  {
+    "id": "Q165257",
+    "name": "Lope de Vega",
+    "birthYear": 1562,
+    "deathYear": 1635,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 125,
+    "description": "Spanish playwright and poet (1562-1635)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lope_de_Vega"
+  },
+  {
+    "id": "Q59180",
+    "name": "Diogenes of Sinope",
+    "birthYear": -399,
+    "deathYear": -322,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 122,
+    "description": "4th-century BC Greek Cynic philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Diogenes"
+  },
+  {
+    "id": "Q34503",
+    "name": "Mehmed II",
+    "birthYear": 1432,
+    "deathYear": 1481,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [],
+    "fameScore": 122,
+    "description": "seventh Sultan of the Ottoman Empire (1444–1446, 1451–1481)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mehmed_II"
+  },
+  {
+    "id": "Q171195",
+    "name": "Nagarjuna",
+    "birthYear": 150,
+    "deathYear": 250,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 120,
+    "description": "3rd-century Indian Buddhist philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nagarjuna"
+  },
+  {
+    "id": "Q41866",
+    "name": "Justinian I",
+    "birthYear": 482,
+    "deathYear": 565,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 120,
+    "description": "Eastern Roman Emperor who ruled from 527 to 565 (482-565)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Justinian_I"
+  },
+  {
+    "id": "Q80398",
+    "name": "Pericles",
+    "birthYear": -493,
+    "deathYear": -428,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 119,
+    "description": "Athenian statesman, orator and general (c. 495 – 429 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pericles"
+  },
+  {
+    "id": "Q163079",
+    "name": "Catullus",
+    "birthYear": -83,
+    "deathYear": -53,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 119,
+    "description": "lyric Latin poet of the Roman Republic",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Catullus"
+  },
+  {
+    "id": "Q1407",
+    "name": "Tiberius",
+    "birthYear": -41,
+    "deathYear": 37,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 118,
+    "description": "second Roman Emperor from 14 to 37 AD",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tiberius"
+  },
+  {
+    "id": "Q36724",
+    "name": "Attila",
+    "birthYear": 500,
+    "deathYear": 453,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 118,
+    "description": "5th-century ruler of the Hunnic Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Attila"
+  },
+  {
+    "id": "Q170302",
+    "name": "Saadi",
+    "birthYear": 1210,
+    "deathYear": 1292,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [],
+    "fameScore": 118,
+    "description": "Persian poet",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Saadi_Shirazi"
+  },
+  {
+    "id": "Q133337",
+    "name": "Solon",
+    "birthYear": -629,
+    "deathYear": -559,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 117,
+    "description": "Athenian legislator",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Solon"
+  },
+  {
+    "id": "Q183144",
+    "name": "Epictetus",
+    "birthYear": 50,
+    "deathYear": 138,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 117,
+    "description": "Greek Stoic philosopher (c. 50–c. 138)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Epictetus"
+  },
+  {
+    "id": "Q179277",
+    "name": "Giovanni Pierluigi da Palestrina",
+    "birthYear": 1525,
+    "deathYear": 1594,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 116,
+    "description": "Italian Renaissance composer (c. 1525–1594)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Giovanni_Pierluigi_da_Palestrina"
+  },
+  {
+    "id": "Q1425",
+    "name": "Trajan",
+    "birthYear": 53,
+    "deathYear": 117,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 115,
+    "description": "13th Roman Emperor (98–117)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Trajan"
+  },
+  {
+    "id": "Q12154",
+    "name": "Tutankhamun",
+    "birthYear": -1342,
+    "deathYear": -1323,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 114,
+    "description": "14th century BCE (18th dynasty) Egyptian pharaoh",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tutankhamun"
+  },
+  {
+    "id": "Q11903",
+    "name": "Hypatia",
+    "birthYear": 360,
+    "deathYear": 415,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "invention",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 114,
+    "description": "Greek Neoplatonist philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hypatia"
+  },
+  {
+    "id": "Q5669",
+    "name": "Sandro Botticelli",
+    "birthYear": 1445,
+    "deathYear": 1510,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 114,
+    "description": "Italian painter (1445–1510)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sandro_Botticelli"
+  },
+  {
+    "id": "Q47674",
+    "name": "Américo Vespucio",
+    "birthYear": 1454,
+    "deathYear": 1512,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "exploration",
+      "invention"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 114,
+    "description": "Florentine explorer, financier, navigator and cartographer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Amerigo_Vespucci"
+  },
+  {
+    "id": "Q37594",
+    "name": "William the Conqueror",
+    "birthYear": 1028,
+    "deathYear": 1087,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 113,
+    "description": "King of England from 1066 to 1087, Duke of Normandy from 1035 to 1087 (1028–1087)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/William_the_Conqueror"
+  },
+  {
+    "id": "Q83041",
+    "name": "Anaxagoras",
+    "birthYear": -499,
+    "deathYear": -427,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 112,
+    "description": "5th-century BC Greek philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anaxagoras"
+  },
+  {
+    "id": "Q125551",
+    "name": "Parmenides",
+    "birthYear": -514,
+    "deathYear": -469,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 112,
+    "description": "late 6th/early 5th century BC Greek pre-Socratic philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Parmenides"
+  },
+  {
+    "id": "Q1419",
+    "name": "Vespasian",
+    "birthYear": 9,
+    "deathYear": 79,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 112,
+    "description": "ninth Roman Emperor and founder of the Flavian dynasty (69–79)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vespasian"
+  },
+  {
+    "id": "Q1427",
+    "name": "Hadrian",
+    "birthYear": 76,
+    "deathYear": 138,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "art",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 112,
+    "description": "14th Roman Emperor (117–138)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hadrian"
+  },
+  {
+    "id": "Q42827",
+    "name": "Gregory I",
+    "birthYear": 540,
+    "deathYear": 604,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 112,
+    "description": "64th Bishop of Rome, Head of the Roman Catholic Church from 590 to 604",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_I"
+  },
+  {
+    "id": "Q42305",
+    "name": "Richard I of England",
+    "birthYear": 1157,
+    "deathYear": 1199,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 112,
+    "description": "King of England from 1189 to 1199 (1157–1199)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Richard_I_of_England"
+  },
+  {
+    "id": "Q44387",
+    "name": "Darius I",
+    "birthYear": -549,
+    "deathYear": -485,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 111,
+    "description": "The fourth and greatest Achaemenid emperor (522–486 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Darius_the_Great"
+  },
+  {
+    "id": "Q42458",
+    "name": "Anaximander",
+    "birthYear": -609,
+    "deathYear": -545,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 111,
+    "description": "pre-Socratic Greek philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anaximander"
+  },
+  {
+    "id": "Q117253",
+    "name": "Demosthenes",
+    "birthYear": -383,
+    "deathYear": -321,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 111,
+    "description": "classical Athenian statesman and orator (384–322 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Demosthenes"
+  },
+  {
+    "id": "Q70991",
+    "name": "Hildegard of Bingen",
+    "birthYear": 1098,
+    "deathYear": 1179,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 110,
+    "description": "German Benedictine abbess, polymath, mystic and Doctor of Church (1098–1179)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hildegard_of_Bingen"
+  },
+  {
+    "id": "Q127398",
+    "name": "Moshe ben Maimon",
+    "birthYear": 1135,
+    "deathYear": 1204,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "religion",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 110,
+    "description": "Medieval Jewish philosopher from Spain (1135–1204)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Maimonides"
+  },
+  {
+    "id": "Q11826",
+    "name": "Al-Biruni",
+    "birthYear": 973,
+    "deathYear": 1048,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 110,
+    "description": "11th-century Persian scholar and polymath (973–1048)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Al-Biruni"
+  },
+  {
+    "id": "Q1411",
+    "name": "Claudius",
+    "birthYear": -9,
+    "deathYear": 54,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 109,
+    "description": "fourth Roman emperor (41–54)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Claudius"
+  },
+  {
+    "id": "Q174880",
+    "name": "Teresa of Ávila",
+    "birthYear": 1515,
+    "deathYear": 1582,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 109,
+    "description": "Roman Catholic saint (1515-1582)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Teresa_of_%C3%81vila"
+  },
+  {
+    "id": "Q44248",
+    "name": "Jerome",
+    "birthYear": 345,
+    "deathYear": 420,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 108,
+    "description": "4th and 5th-century Catholic and Eastern Orthodox saint and Doctor of the Church",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jerome"
+  },
+  {
+    "id": "Q131412",
+    "name": "Mary, Queen of Scots",
+    "birthYear": 1542,
+    "deathYear": 1587,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 108,
+    "description": "Queen of Scotland from 1542 to 1567 (1542–1587)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mary,_Queen_of_Scots"
+  },
+  {
+    "id": "Q83375",
+    "name": "Empedocles",
+    "birthYear": -493,
+    "deathYear": -433,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 107,
+    "description": "5th century BC Greek philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Empedocles"
+  },
+  {
+    "id": "Q169243",
+    "name": "Protagoras",
+    "birthYear": -489,
+    "deathYear": -419,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 107,
+    "description": "Pre-Socratic Greek philosopher (c.490–c.420 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Protagoras"
+  },
+  {
+    "id": "Q180081",
+    "name": "Cato the Elder",
+    "birthYear": -233,
+    "deathYear": -148,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "science",
+      "philosophy",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 107,
+    "description": "Roman politician, soldier and writer (234–149 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cato_the_Elder"
+  },
+  {
+    "id": "Q40930",
+    "name": "Nefertiti",
+    "birthYear": -1369,
+    "deathYear": -1329,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 107,
+    "description": "Egyptian queen and Great Royal Wife (chief consort) of Akhenaten, an Egyptian Pharaoh",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nefertiti"
+  },
+  {
+    "id": "Q188903",
+    "name": "Mencius",
+    "birthYear": -371,
+    "deathYear": -288,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 107,
+    "description": "Chinese Confucian philosopher (372–289 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mencius"
+  },
+  {
+    "id": "Q4730963",
+    "name": "Aisha",
+    "birthYear": 614,
+    "deathYear": 678,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 107,
+    "description": "Muhammad's third wife (c. 613/614 – 678)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aisha"
+  },
+  {
+    "id": "Q37731",
+    "name": "Uthman ibn Affan",
+    "birthYear": 574,
+    "deathYear": 656,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 107,
+    "description": "Caliph of the Rashidun Caliphate from 644 to 656",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Uthman"
+  },
+  {
+    "id": "Q83428",
+    "name": "Paracelsus",
+    "birthYear": 1493,
+    "deathYear": 1541,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 107,
+    "description": "Swiss physician, philosopher, theologian, and alchemist (c. 1493–1541)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Paracelsus"
+  },
+  {
+    "id": "Q797848",
+    "name": "Babur",
+    "birthYear": 1483,
+    "deathYear": 1531,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [],
+    "fameScore": 107,
+    "description": "founder of the Mughal Empire (1526–1530)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Babur"
+  },
+  {
+    "id": "Q37562",
+    "name": "Donatello",
+    "birthYear": 1386,
+    "deathYear": 1466,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 107,
+    "description": "Early Renaissance Italian sculptor (1386–1466)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Donatello"
+  },
+  {
+    "id": "Q81794",
+    "name": "Akhenaten",
+    "birthYear": -1400,
+    "deathYear": -1335,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 106,
+    "description": "Egyptian pharaoh in 18th Dynasty",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Akhenaten"
+  },
+  {
+    "id": "Q47160",
+    "name": "Plautus",
+    "birthYear": -249,
+    "deathYear": -183,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 106,
+    "description": "Roman comic playwright (c. 254 – 184 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plautus"
+  },
+  {
+    "id": "Q11104",
+    "name": "Ibn al-Haytham",
+    "birthYear": 965,
+    "deathYear": 1039,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "invention",
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 106,
+    "description": "Persian physicist, mathematician and astronomer (c. 965 – c. 1040)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ibn_al-Haytham"
+  },
+  {
+    "id": "Q83322",
+    "name": "Guru Nanak",
+    "birthYear": 1469,
+    "deathYear": 1539,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 106,
+    "description": "First Sikh Guru and founder of Sikhism",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Guru_Nanak"
+  },
+  {
+    "id": "Q118992",
+    "name": "Menander",
+    "birthYear": -340,
+    "deathYear": -290,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 105,
+    "description": "Athenian playwright of New Comedy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Menander"
+  },
+  {
+    "id": "Q177847",
+    "name": "Lucian of Samosata",
+    "birthYear": 120,
+    "deathYear": 180,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 105,
+    "description": "2nd-century Syrian satirist and rhetorician",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lucian"
+  },
+  {
+    "id": "Q43706",
+    "name": "John Chrysostom",
+    "birthYear": 349,
+    "deathYear": 407,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 105,
+    "description": "Church Father, Archbishop of Constantinople and Christian saint (c. 347–407)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/John_Chrysostom"
+  },
+  {
+    "id": "Q43977",
+    "name": "Jan Hus",
+    "birthYear": 1370,
+    "deathYear": 1415,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "religion",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 105,
+    "description": "Czech theologian, philosopher and preacher (1369-1415)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jan_Hus"
+  },
+  {
+    "id": "Q45859",
+    "name": "Isabella I of Castile",
+    "birthYear": 1451,
+    "deathYear": 1504,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 104,
+    "description": "queen of the Crown of Castile, from 1474 to 1504; first queen of a dynastically-united Spain, from 1479 to 1504 (1451–1504)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Isabella_I_of_Castile"
+  },
+  {
+    "id": "Q1523",
+    "name": "Ramesses II",
+    "birthYear": -1302,
+    "deathYear": -1212,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 103,
+    "description": "Egyptian third pharaoh of the Nineteenth Dynasty",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ramesses_II"
+  },
+  {
+    "id": "Q112128",
+    "name": "Husayn ibn Ali",
+    "birthYear": 626,
+    "deathYear": 680,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "war"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 103,
+    "description": "grandson of Muhammad and the 3rd Shia Imam (626–680)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Husayn_ibn_Ali"
+  },
+  {
+    "id": "Q4295",
+    "name": "Peter Abelard",
+    "birthYear": 1079,
+    "deathYear": 1142,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "religion",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 103,
+    "description": "French scholastic philosopher, theologian and preeminent logician (c.1079-1142)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Peter_Abelard"
+  },
+  {
+    "id": "Q42838",
+    "name": "Leif Erikson",
+    "birthYear": 972,
+    "deathYear": 1020,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "exploration"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 103,
+    "description": "norse explorer (c. 970 – c. 1020)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Leif_Erikson"
+  },
+  {
+    "id": "Q83100",
+    "name": "Osman I",
+    "birthYear": 1258,
+    "deathYear": 1326,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 103,
+    "description": "founder of the Ottoman Empire (died 1323/4)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Osman_I"
+  },
+  {
+    "id": "Q108316",
+    "name": "Alexander VI",
+    "birthYear": 1431,
+    "deathYear": 1503,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 103,
+    "description": "pope of the Catholic Church 1492–1503 from the Borgia family (1430/32-1503)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Alexander_VI"
+  },
+  {
+    "id": "Q134929",
+    "name": "Pindar",
+    "birthYear": -516,
+    "deathYear": -436,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 102,
+    "description": "5th-century BC Greek lyric poet",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pindar"
+  },
+  {
+    "id": "Q1421",
+    "name": "Titus",
+    "birthYear": 39,
+    "deathYear": 81,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 102,
+    "description": "tenth Roman Emperor (79–81)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Titus"
+  },
+  {
+    "id": "Q134189",
+    "name": "Plotinus",
+    "birthYear": 205,
+    "deathYear": 270,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 102,
+    "description": "Hellenistic Platonist philosopher and founder of Neoplatonism (c. 204/5–270)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plotinus"
+  },
+  {
+    "id": "Q170512",
+    "name": "Apuleius",
+    "birthYear": 125,
+    "deathYear": 170,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 102,
+    "description": "2nd-century Numidian Latin-language writer, rhetorician and philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Apuleius"
+  },
+  {
+    "id": "Q83476",
+    "name": "Alfred the Great",
+    "birthYear": 849,
+    "deathYear": 899,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 102,
+    "description": "king of Wessex (r. 872–901)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alfred_the_Great"
+  },
+  {
+    "id": "Q180123",
+    "name": "Fatima",
+    "birthYear": 604,
+    "deathYear": 632,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 101,
+    "description": "daughter of Muhammad (c. 605–632)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fatima"
+  },
+  {
+    "id": "Q79789",
+    "name": "Frederick Barbarossa",
+    "birthYear": 1122,
+    "deathYear": 1190,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 101,
+    "description": "Holy Roman Emperor from 1155 to 1190",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Frederick_Barbarossa"
+  },
+  {
+    "id": "Q131671",
+    "name": "Xenophanes",
+    "birthYear": -569,
+    "deathYear": -477,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 100,
+    "description": "Greek Pre-Socratic philosopher (c.570–c.478 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xenophanes"
+  },
+  {
+    "id": "Q125414",
+    "name": "Pompey",
+    "birthYear": -105,
+    "deathYear": -47,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 100,
+    "description": "Roman general and statesman (106–48 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pompey"
+  },
+  {
+    "id": "Q174929",
+    "name": "Tertullian",
+    "birthYear": 160,
+    "deathYear": 240,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 100,
+    "description": "Roman Christian theologian and writer (c. 155 – c. 220)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tertullian"
+  },
+  {
+    "id": "Q123034",
+    "name": "Huldrych Zwingli",
+    "birthYear": 1484,
+    "deathYear": 1531,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 100,
+    "description": "Protestant Reformation leader in Switzerland, Swiss Reformed Church founder (1484-1531)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Huldrych_Zwingli"
+  },
+  {
+    "id": "Q83672",
+    "name": "Shah Jahan",
+    "birthYear": 1592,
+    "deathYear": 1666,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 100,
+    "description": "the fifth Mughal Emperor from 1628 to 1658",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Shah_Jahan"
+  },
+  {
+    "id": "Q140412",
+    "name": "John Donne",
+    "birthYear": 1572,
+    "deathYear": 1631,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 100,
+    "description": "English poet and cleric (1572-1631)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/John_Donne"
+  },
+  {
+    "id": "Q168707",
+    "name": "Pliny the Younger",
+    "birthYear": 61,
+    "deathYear": 113,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "war",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 99,
+    "description": "Roman lawyer, author and magistrate (61 – c.113)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pliny_the_Younger"
+  },
+  {
+    "id": "Q11359",
+    "name": "Aryabhata",
+    "birthYear": 476,
+    "deathYear": 550,
+    "category": "science",
+    "occupationTags": [
+      "science"
+    ],
+    "regionTags": [],
+    "fameScore": 99,
+    "description": "Pioneer astronomer who formulated zero, quadratic rules, and earth's rotation.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aryabhata"
+  },
+  {
+    "id": "Q160362",
+    "name": "Theophrastus",
+    "birthYear": -370,
+    "deathYear": -286,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 98,
+    "description": "Greek philosopher (c.371-c.287 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Theophrastus"
+  },
+  {
+    "id": "Q47739",
+    "name": "Zhuang Zhou",
+    "birthYear": -368,
+    "deathYear": -287,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 98,
+    "description": "Chinese Taoist philosopher (c. 369–286 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Zhuang_Zhou"
+  },
+  {
+    "id": "Q1423",
+    "name": "Domitian",
+    "birthYear": 51,
+    "deathYear": 96,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 98,
+    "description": "11th Roman Emperor (81–96)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Domitian"
+  },
+  {
+    "id": "Q160460",
+    "name": "Farabi",
+    "birthYear": 870,
+    "deathYear": 951,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "philosophy",
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 98,
+    "description": "10th century Persian philosopher and jurist",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Al-Farabi"
+  },
+  {
+    "id": "Q129234",
+    "name": "Hatshepsut",
+    "birthYear": -1506,
+    "deathYear": -1457,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 97,
+    "description": "5th Pharaoh of the Eighteenth Dynasty of Egypt (c. 1479 BC - 1458 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hatshepsut"
+  },
+  {
+    "id": "Q132157",
+    "name": "Zeno of Elea",
+    "birthYear": -489,
+    "deathYear": -424,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 97,
+    "description": "Greek philosopher (c. 495 – c. 430 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Zeno_of_Elea"
+  },
+  {
+    "id": "Q172048",
+    "name": "Terence",
+    "birthYear": -184,
+    "deathYear": -158,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 97,
+    "description": "Roman comic playwright (2nd cent. BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Terence"
+  },
+  {
+    "id": "Q167852",
+    "name": "Jabir ibn Hayyan",
+    "birthYear": 721,
+    "deathYear": 815,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 97,
+    "description": "8th-century Islamic alchemist and author",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jabir_ibn_Hayyan"
+  },
+  {
+    "id": "Q43689",
+    "name": "Ambrose",
+    "birthYear": 339,
+    "deathYear": 397,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 97,
+    "description": "Roman theologian and Bishop of Milan (c. 340–397)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ambrose"
+  },
+  {
+    "id": "Q30578",
+    "name": "Urban II",
+    "birthYear": 1035,
+    "deathYear": 1099,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "art"
+    ],
+    "regionTags": [],
+    "fameScore": 97,
+    "description": "11th century pope and initiator of the Crusades",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Urban_II"
+  },
+  {
+    "id": "Q169234",
+    "name": "Abu Bakr al-Razi",
+    "birthYear": 866,
+    "deathYear": 925,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "invention",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 97,
+    "description": "Persian polymath, physician, chemist and philosopher (854-925)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Abu_Bakr_al-Razi"
+  },
+  {
+    "id": "Q12591",
+    "name": "Nebuchadnezzar II",
+    "birthYear": -641,
+    "deathYear": -561,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 96,
+    "description": "King of Babylon",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nebuchadnezzar_II"
+  },
+  {
+    "id": "Q132984",
+    "name": "Shota Rustaveli",
+    "birthYear": 1172,
+    "deathYear": 1216,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 96,
+    "description": "Georgian poet",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Shota_Rustaveli"
+  },
+  {
+    "id": "Q180967",
+    "name": "Ādi Shankara",
+    "birthYear": 788,
+    "deathYear": 820,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 96,
+    "description": "An Indian philosopher and theologian who consolidated the doctrine of Advaita Vedanta and revitalized Sanskrit scholasticism.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Adi_Shankara"
+  },
+  {
+    "id": "Q80516",
+    "name": "Julius II",
+    "birthYear": 1443,
+    "deathYear": 1513,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 96,
+    "description": "pope of the Catholic Church from 1503 to 1513 (1443–1513)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Julius_II"
+  },
+  {
+    "id": "Q849",
+    "name": "François Villon",
+    "birthYear": 1431,
+    "deathYear": 1463,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 96,
+    "description": "French poet and criminal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fran%C3%A7ois_Villon"
+  },
+  {
+    "id": "Q43954",
+    "name": "Leo I",
+    "birthYear": 390,
+    "deathYear": 461,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 95,
+    "description": "Pope from 440 to 461 (390–461)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Leo_I"
+  },
+  {
+    "id": "Q48438",
+    "name": "Saint George",
+    "birthYear": 275,
+    "deathYear": 303,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 95,
+    "description": "Christian saint and martyr (died 303)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_George"
+  },
+  {
+    "id": "Q79972",
+    "name": "James VI and I",
+    "birthYear": 1566,
+    "deathYear": 1625,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 95,
+    "description": "King of Scotland from 1566 to 1625, King of England and Ireland from 1603 to 1625",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/James_VI_and_I"
+  },
+  {
+    "id": "Q129165",
+    "name": "Xerxes I",
+    "birthYear": -518,
+    "deathYear": -464,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 94,
+    "description": "fifth Achaemenid emperor (486–465 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xerxes_I"
+  },
+  {
+    "id": "Q134461",
+    "name": "Josephus",
+    "birthYear": 37,
+    "deathYear": 100,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 94,
+    "description": "Roman–Jewish historian and military leader (c. 37–c. 100)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Josephus"
+  },
+  {
+    "id": "Q33941",
+    "name": "Julian",
+    "birthYear": 331,
+    "deathYear": 363,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 94,
+    "description": "last Pagan Roman emperor, reigned 361 to 363",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Julian_(emperor)"
+  },
+  {
+    "id": "Q128076",
+    "name": "Innocent III",
+    "birthYear": 1160,
+    "deathYear": 1216,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 94,
+    "description": "Head of the Catholic Church from 1198 to 1216",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Innocent_III"
+  },
+  {
+    "id": "Q46696",
+    "name": "Theodosius I",
+    "birthYear": 347,
+    "deathYear": 395,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 94,
+    "description": "Roman emperor from 379 to 395",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Theodosius_I"
+  },
+  {
+    "id": "Q346",
+    "name": "Louis IX of France",
+    "birthYear": 1214,
+    "deathYear": 1270,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 94,
+    "description": "King of France from 1226 to 1270 (1214–1270)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_IX_of_France"
+  },
+  {
+    "id": "Q83229",
+    "name": "Edward VI of England",
+    "birthYear": 1537,
+    "deathYear": 1553,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 94,
+    "description": "king of England and Ireland from 1547 to 1553",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Edward_VI"
+  },
+  {
+    "id": "Q130650",
+    "name": "Philip II of Macedon",
+    "birthYear": -385,
+    "deathYear": -335,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "King of Macedon from 359 to 336 BC",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Philip_II_of_Macedon"
+  },
+  {
+    "id": "Q102851",
+    "name": "Boethius",
+    "birthYear": 480,
+    "deathYear": 524,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "Roman senator and philosopher of the early 6th century (480–524)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Boethius"
+  },
+  {
+    "id": "Q47163",
+    "name": "Vitruvius",
+    "birthYear": -79,
+    "deathYear": -14,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "invention",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "Roman architect and engineer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vitruvius"
+  },
+  {
+    "id": "Q42034",
+    "name": "Khadija bint Khuwaylid",
+    "birthYear": 557,
+    "deathYear": 619,
+    "category": "invention",
+    "occupationTags": [
+      "invention",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 93,
+    "description": "First wife of Prophet Muḥammad ﷺ, First believer in Islam and Prophet Muhammad’s most beloved wife",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Khadija_bint_Khuwaylid"
+  },
+  {
+    "id": "Q129308",
+    "name": "John, King of England",
+    "birthYear": 1166,
+    "deathYear": 1216,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "King of England from 1199 to 1216",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/John,_King_of_England"
+  },
+  {
+    "id": "Q171677",
+    "name": "Roger Bacon",
+    "birthYear": 1220,
+    "deathYear": 1292,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "invention",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "English polymath, philosopher and friar (c.1219/20–c.1292)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Roger_Bacon"
+  },
+  {
+    "id": "Q44258",
+    "name": "Basil of Caesarea",
+    "birthYear": 329,
+    "deathYear": 379,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "4th-century Christian bishop, theologian, and saint (329–379)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Basil_of_Caesarea"
+  },
+  {
+    "id": "Q133001",
+    "name": "Paul III",
+    "birthYear": 1468,
+    "deathYear": 1549,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "pope of the Catholic Church from 1534 to 1549 (1468–1549)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Paul_III"
+  },
+  {
+    "id": "Q154959",
+    "name": "Hugo Grotius",
+    "birthYear": 1583,
+    "deathYear": 1645,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "Dutch jurist and scholar (1583-1645)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hugo_Grotius"
+  },
+  {
+    "id": "Q168962",
+    "name": "Torquato Tasso",
+    "birthYear": 1544,
+    "deathYear": 1595,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "description": "Italian poet (1544–1595)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Torquato_Tasso"
+  },
+  {
+    "id": "Q80450",
+    "name": "Anacletus",
+    "birthYear": 25,
+    "deathYear": 90,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 92,
+    "description": "3rd pope and bishop of Rome from c. 79 to c. 92 AD",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Anacletus"
+  },
+  {
+    "id": "Q1414",
+    "name": "Galba",
+    "birthYear": -2,
+    "deathYear": 69,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 92,
+    "description": "sixth Roman Emperor (68–69)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Galba"
+  },
+  {
+    "id": "Q1429",
+    "name": "Antoninus Pius",
+    "birthYear": 86,
+    "deathYear": 161,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 92,
+    "description": "15th Roman Emperor (138–161)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Antoninus_Pius"
+  },
+  {
+    "id": "Q1442",
+    "name": "Septimius Severus",
+    "birthYear": 146,
+    "deathYear": 211,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 92,
+    "description": "Roman emperor from 193 to 211",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Septimius_Severus"
+  },
+  {
+    "id": "Q43939",
+    "name": "Anselm of Canterbury",
+    "birthYear": 1033,
+    "deathYear": 1109,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 92,
+    "description": "11th‑century Benedictine monk, Archbishop of Canterbury, philosopher and theologian",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anselm_of_Canterbury"
+  },
+  {
+    "id": "Q130221",
+    "name": "Frederick II, Holy Roman Emperor",
+    "birthYear": 1195,
+    "deathYear": 1250,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 92,
+    "description": "King of Sicily, Holy Roman Emperor (1194–1250, 1220–1250)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Frederick_II,_Holy_Roman_Emperor"
+  },
+  {
+    "id": "Q44265",
+    "name": "Benedict of Nursia",
+    "birthYear": 480,
+    "deathYear": 547,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 92,
+    "description": "founder of Christian monasticism, founder of the Benedictine order (480–547)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Benedict_of_Nursia"
+  },
+  {
+    "id": "Q130531",
+    "name": "Hieronymus Bosch",
+    "birthYear": 1450,
+    "deathYear": 1516,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 92,
+    "description": "Dutch painter (c. 1450–1516)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hieronymus_Bosch"
+  },
+  {
+    "id": "Q129857",
+    "name": "Francis I of France",
+    "birthYear": 1494,
+    "deathYear": 1547,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 92,
+    "description": "King of France from 1515 to 1547 (1494-1547)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Francis_I_of_France"
+  },
+  {
+    "id": "Q93128",
+    "name": "William Harvey",
+    "birthYear": 1578,
+    "deathYear": 1657,
+    "category": "science",
+    "occupationTags": [
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 92,
+    "description": "English physician (1578-1657)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/William_Harvey"
+  },
+  {
+    "id": "Q80612",
+    "name": "Anaximenes of Miletus",
+    "birthYear": -584,
+    "deathYear": -527,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 91,
+    "description": "Greek Ionian Pre-Socratic philosopher (c.586–c.526 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anaximenes_of_Miletus"
+  },
+  {
+    "id": "Q83406",
+    "name": "Spartacus",
+    "birthYear": -102,
+    "deathYear": -70,
+    "category": "war",
+    "occupationTags": [
+      "war"
+    ],
+    "regionTags": [],
+    "fameScore": 91,
+    "description": "Thracian gladiator who led a slave uprising against the Roman Republic",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spartacus"
+  },
+  {
+    "id": "Q171303",
+    "name": "Zeno of Citium",
+    "birthYear": -333,
+    "deathYear": -262,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 91,
+    "description": "Greek philosopher, founder of Stoicism",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Zeno_of_Citium"
+  },
+  {
+    "id": "Q82339",
+    "name": "Clovis I",
+    "birthYear": 466,
+    "deathYear": 511,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 91,
+    "description": "first king of the Franks (c. 466-511)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Clovis_I"
+  },
+  {
+    "id": "Q133063",
+    "name": "Gregory VII",
+    "birthYear": 1020,
+    "deathYear": 1085,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 91,
+    "description": "Pope of the Catholic Church from 1073 to 1085",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_VII"
+  },
+  {
+    "id": "Q234908",
+    "name": "Nizami Ganjavi",
+    "birthYear": 1141,
+    "deathYear": 1202,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 91,
+    "description": "Persian poet",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nizami_Ganjavi"
+  },
+  {
+    "id": "Q131945",
+    "name": "Pius V",
+    "birthYear": 1504,
+    "deathYear": 1572,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 91,
+    "description": "16th‑century Italian pope and Catholic saint, leading Counter‑Reformation reformer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_V"
+  },
+  {
+    "id": "Q131169",
+    "name": "Polybius",
+    "birthYear": -199,
+    "deathYear": -119,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "war",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 90,
+    "description": "ancient Greek historian",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Polybius"
+  },
+  {
+    "id": "Q181154",
+    "name": "Mu'awiya I",
+    "birthYear": 603,
+    "deathYear": 680,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 90,
+    "description": "founder and first caliph of the Umayyad Caliphate (r. 661–680)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mu%27awiya_I"
+  },
+  {
+    "id": "Q43915",
+    "name": "Otto I the Great",
+    "birthYear": 912,
+    "deathYear": 973,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 90,
+    "description": "Holy Roman Emperor from 962 to 973",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Otto_the_Great"
+  },
+  {
+    "id": "Q173441",
+    "name": "Abu Abdullah Muhammad al-Idrisi al-Qurtubi al-Hasani as-Sabti",
+    "birthYear": 1110,
+    "deathYear": 1165,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "science",
+      "exploration"
+    ],
+    "regionTags": [],
+    "fameScore": 90,
+    "description": "andalusian geographer (1100–1165)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Muhammad_al-Idrisi"
+  },
+  {
+    "id": "Q188411",
+    "name": "Bernard of Clairvaux",
+    "birthYear": 1091,
+    "deathYear": 1153,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 90,
+    "description": "Burgundian saint, abbot and theologian (1090–1153)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bernard_of_Clairvaux"
+  },
+  {
+    "id": "Q190896",
+    "name": "Abū Ḥanīfa",
+    "birthYear": 699,
+    "deathYear": 767,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "invention",
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 90,
+    "description": "8th-century Sunni theologian and jurist",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Abu_Hanifa"
+  },
+  {
+    "id": "Q101437",
+    "name": "Pius II",
+    "birthYear": 1405,
+    "deathYear": 1464,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy",
+      "religion",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 90,
+    "description": "pope of the Catholic Church from 1458 to 1464 (1405–1464)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_II"
+  },
+  {
+    "id": "Q494660",
+    "name": "Selim I",
+    "birthYear": 1470,
+    "deathYear": 1520,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [],
+    "fameScore": 90,
+    "description": "9th Sultan of the Ottoman Empire from 1512 to 1520",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Selim_I"
+  },
+  {
+    "id": "Q12860",
+    "name": "Ferdinand II of Aragon",
+    "birthYear": 1452,
+    "deathYear": 1516,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 90,
+    "description": "King of Aragon, Sicily, Naples, and Valencia (1452-1516)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ferdinand_II_of_Aragon"
+  },
+  {
+    "id": "Q43715",
+    "name": "Vlad the Impaler",
+    "birthYear": 1431,
+    "deathYear": 1476,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 90,
+    "description": "15th-century ruler of Wallachia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vlad_the_Impaler"
+  },
+  {
+    "id": "Q47149",
+    "name": "Sylvester I",
+    "birthYear": 300,
+    "deathYear": 336,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 89,
+    "description": "33rd pope and saint (reigned 314-335)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Sylvester_I"
+  },
+  {
+    "id": "Q128027",
+    "name": "Giorgio Vasari",
+    "birthYear": 1511,
+    "deathYear": 1574,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 89,
+    "description": "Italian painter, architect, writer and historian (1511-1574)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Giorgio_Vasari"
+  },
+  {
+    "id": "Q163900",
+    "name": "Francis Xavier",
+    "birthYear": 1506,
+    "deathYear": 1552,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "exploration"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 89,
+    "description": "Spanish Catholic saint and missionary (1506–1552)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Francis_Xavier"
+  },
+  {
+    "id": "Q131579",
+    "name": "Urban VIII",
+    "birthYear": 1568,
+    "deathYear": 1644,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 89,
+    "description": "235 pope of the Catholic Church from 1623 to 1644 (1568–1644)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Urban_VIII"
+  },
+  {
+    "id": "Q179785",
+    "name": "Gorgias",
+    "birthYear": -484,
+    "deathYear": -374,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 88,
+    "description": "Greek presocratic philosopher and sophist (483–375 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gorgias"
+  },
+  {
+    "id": "Q171241",
+    "name": "Diodorus Siculus",
+    "birthYear": -89,
+    "deathYear": -19,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy",
+      "science",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 88,
+    "description": "1st-century BC Greek historian",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Diodorus_Siculus"
+  },
+  {
+    "id": "Q2098",
+    "name": "Martial",
+    "birthYear": 40,
+    "deathYear": 104,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 88,
+    "description": "1st-century Latin poet from Hispania",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Martial"
+  },
+  {
+    "id": "Q1446",
+    "name": "Caracalla",
+    "birthYear": 188,
+    "deathYear": 217,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 88,
+    "description": "Roman emperor from 198 to 217",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Caracalla"
+  },
+  {
+    "id": "Q41852",
+    "name": "Heraclius",
+    "birthYear": 575,
+    "deathYear": 641,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 88,
+    "description": "Byzantine emperor from 610 to 641",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Heraclius"
+  },
+  {
+    "id": "Q82457",
+    "name": "William Wallace",
+    "birthYear": 1270,
+    "deathYear": 1305,
+    "category": "war",
+    "occupationTags": [
+      "war"
+    ],
+    "regionTags": [],
+    "fameScore": 88,
+    "description": "Scottish knight and leading figure in the First War of Scottish Independence",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/William_Wallace"
+  },
+  {
+    "id": "Q178638",
+    "name": "Nasreddin",
+    "birthYear": 1208,
+    "deathYear": 1284,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 88,
+    "description": "philosopher, Sufi and wise man from Turkey, remembered for his funny stories and anecdotes",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nasreddin"
+  },
+  {
+    "id": "Q133028",
+    "name": "Richard III of England",
+    "birthYear": 1452,
+    "deathYear": 1485,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 88,
+    "description": "king of England from 1483 to 1485",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Richard_III_of_England"
+  },
+  {
+    "id": "Q182046",
+    "name": "Leon Battista Alberti",
+    "birthYear": 1404,
+    "deathYear": 1472,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "art",
+      "politics",
+      "philosophy",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 88,
+    "description": "Italian architect and writer (1404-1472)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Leon_Battista_Alberti"
+  },
+  {
+    "id": "Q131552",
+    "name": "Catherine de' Medici",
+    "birthYear": 1519,
+    "deathYear": 1589,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 88,
+    "description": "queen-consort and regent of France (1519–1589)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Catherine_de%27_Medici"
+  },
+  {
+    "id": "Q132711",
+    "name": "Paul V",
+    "birthYear": 1552,
+    "deathYear": 1621,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 88,
+    "description": "233rd pope of the Roman Catholic Church from 1605 to 1621",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Paul_V"
+  },
+  {
+    "id": "Q179149",
+    "name": "Antisthenes",
+    "birthYear": -444,
+    "deathYear": -364,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 87,
+    "description": "Greek philosopher, founder of Cynicism (c.446–c.366 BCE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Antisthenes"
+  },
+  {
+    "id": "Q1416",
+    "name": "Otho",
+    "birthYear": 32,
+    "deathYear": 69,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 87,
+    "description": "seventh Roman Emperor (69)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Otho"
+  },
+  {
+    "id": "Q80028",
+    "name": "Alexander I",
+    "birthYear": 100,
+    "deathYear": 116,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 87,
+    "description": "6th Pope of the Catholic Church from c. 107 to c. 115",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Alexander_I"
+  },
+  {
+    "id": "Q47746",
+    "name": "Evaristus",
+    "birthYear": 100,
+    "deathYear": 105,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 87,
+    "description": "5th Pope of the Catholic Church from c. 99 to c. 107",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Evaristus"
+  },
+  {
+    "id": "Q154938",
+    "name": "Bede",
+    "birthYear": 672,
+    "deathYear": 735,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy",
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 87,
+    "description": "Anglo-Saxon monk, writer and saint (672/3–735)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bede"
+  },
+  {
+    "id": "Q160116",
+    "name": "Alexander III",
+    "birthYear": 1100,
+    "deathYear": 1181,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 87,
+    "description": "pope of the Catholic Church from 1159 to 1181",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Alexander_III"
+  },
+  {
+    "id": "Q255809",
+    "name": "Hürrem Sultan",
+    "birthYear": 1505,
+    "deathYear": 1558,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 87,
+    "description": "Wife of Suleiman the Magnificent",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/H%C3%BCrrem_Sultan"
+  },
+  {
+    "id": "Q81634",
+    "name": "Sixtus I",
+    "birthYear": 42,
+    "deathYear": 126,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "7th Pope of the Catholic Church",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Sixtus_I"
+  },
+  {
+    "id": "Q3301",
+    "name": "Charles Martel",
+    "birthYear": 688,
+    "deathYear": 741,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "Frankish military and political leader (c. 688–741)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles_Martel"
+  },
+  {
+    "id": "Q103321",
+    "name": "Gregory II",
+    "birthYear": 669,
+    "deathYear": 731,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "89th Pope of the Catholic Church (from 715 to 731)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_II"
+  },
+  {
+    "id": "Q124831",
+    "name": "Gregory IX",
+    "birthYear": 1170,
+    "deathYear": 1241,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 86,
+    "description": "pope of the Catholic Church from 1227 to 1241",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_IX"
+  },
+  {
+    "id": "Q132086",
+    "name": "Leo III",
+    "birthYear": 750,
+    "deathYear": 816,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "Pope of the Catholic Church from 795 to 816 (born 750–816)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Leo_III"
+  },
+  {
+    "id": "Q102272",
+    "name": "Jan van Eyck",
+    "birthYear": 1390,
+    "deathYear": 1441,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "Flemish painter (c.1390–1441)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jan_van_Eyck"
+  },
+  {
+    "id": "Q134646",
+    "name": "Boniface VIII",
+    "birthYear": 1235,
+    "deathYear": 1303,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "pope of the Catholic Church from 1294 to 1303",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Boniface_VIII"
+  },
+  {
+    "id": "Q43974",
+    "name": "Louis the Pious",
+    "birthYear": 778,
+    "deathYear": 840,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "King of the Franks",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_the_Pious"
+  },
+  {
+    "id": "Q44024",
+    "name": "Athanasius of Alexandria",
+    "birthYear": 296,
+    "deathYear": 373,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "Pope of Alexandria from 328 to 373 (296–373)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Athanasius_of_Alexandria"
+  },
+  {
+    "id": "Q131581",
+    "name": "Henry V of England",
+    "birthYear": 1386,
+    "deathYear": 1422,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "King of England from 1413 to 1422",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_V_of_England"
+  },
+  {
+    "id": "Q177854",
+    "name": "Lorenzo de' Medici",
+    "birthYear": 1449,
+    "deathYear": 1492,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "Italian politician, literary man and humanist",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lorenzo_de%27_Medici"
+  },
+  {
+    "id": "Q312458",
+    "name": "Jami",
+    "birthYear": 1414,
+    "deathYear": 1492,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 86,
+    "description": "Persian poet (1414–1492)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jami"
+  },
+  {
+    "id": "Q161983",
+    "name": "Pius IV",
+    "birthYear": 1499,
+    "deathYear": 1565,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "pope of the Catholic Church from 1559 to 1565",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_IV"
+  },
+  {
+    "id": "Q178379",
+    "name": "Fuzuli",
+    "birthYear": 1480,
+    "deathYear": 1556,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 86,
+    "description": "16th-century Azerbaijani poet",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fuzuli_(poet)"
+  },
+  {
+    "id": "Q57087",
+    "name": "Adrian VI",
+    "birthYear": 1459,
+    "deathYear": 1523,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 86,
+    "description": "pope of the Catholic Church from 1522 to 1523 (1459–1523)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Adrian_VI"
+  },
+  {
+    "id": "Q1434",
+    "name": "Commodus",
+    "birthYear": 161,
+    "deathYear": 192,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "17th Roman Emperor (180–192)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Commodus"
+  },
+  {
+    "id": "Q105105",
+    "name": "Theodoric the Great",
+    "birthYear": 454,
+    "deathYear": 526,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "king of the Germanic Ostrogoths and ruler of Italy (493–526)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Theodoric_the_Great"
+  },
+  {
+    "id": "Q47180",
+    "name": "Petronius",
+    "birthYear": 27,
+    "deathYear": 66,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "war",
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "1st century AD Roman courtier and author of the Satyricon (27–66)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Petronius"
+  },
+  {
+    "id": "Q71231",
+    "name": "Charles the Bald",
+    "birthYear": 823,
+    "deathYear": 877,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "King of West Francia from 843 to 877 and Carolingian Emperor from 875 to 877",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles_the_Bald"
+  },
+  {
+    "id": "Q102140",
+    "name": "Henry II of England",
+    "birthYear": 1133,
+    "deathYear": 1189,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "King of England from 1154 to 1189",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_II_of_England"
+  },
+  {
+    "id": "Q130969",
+    "name": "Philip IV of France",
+    "birthYear": 1268,
+    "deathYear": 1314,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "King of France from 1285 to 1314 (1268–1314)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Philip_IV_of_France"
+  },
+  {
+    "id": "Q133168",
+    "name": "Orhan",
+    "birthYear": 1281,
+    "deathYear": 1362,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 85,
+    "description": "second Ottoman Sultan (r. ca. 1324–1362)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Orhan"
+  },
+  {
+    "id": "Q160369",
+    "name": "Callixtus III",
+    "birthYear": 1379,
+    "deathYear": 1458,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 85,
+    "description": "pope of the Catholic Church from 1455 to 1458 from the Borgia family",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Callixtus_III"
+  },
+  {
+    "id": "Q179759",
+    "name": "Al-Kindi",
+    "birthYear": 801,
+    "deathYear": 870,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "philosophy",
+      "art"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 85,
+    "description": "Muslim Arab philosopher, mathematician and physician (c.801–873)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Al-Kindi"
+  },
+  {
+    "id": "Q164823",
+    "name": "Girolamo Savonarola",
+    "birthYear": 1452,
+    "deathYear": 1498,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "Italian Dominican friar and preacher (1452-1498)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Girolamo_Savonarola"
+  },
+  {
+    "id": "Q8058",
+    "name": "Louis XI of France",
+    "birthYear": 1423,
+    "deathYear": 1483,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "king of France from 1461 to 1483 (1423–1483)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_XI"
+  },
+  {
+    "id": "Q132716",
+    "name": "Leo XI",
+    "birthYear": 1535,
+    "deathYear": 1605,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "pope of the Catholic Church in April 1605 (1535-1605)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Leo_XI"
+  },
+  {
+    "id": "Q159592",
+    "name": "John Napier",
+    "birthYear": 1550,
+    "deathYear": 1617,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "invention",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 85,
+    "description": "Scottish mathematician, physicist, and astronomer (1550–1617)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/John_Napier"
+  },
+  {
+    "id": "Q159905",
+    "name": "Hipparchus",
+    "birthYear": -189,
+    "deathYear": -119,
+    "category": "science",
+    "occupationTags": [
+      "science"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 84,
+    "description": "2nd century Greek astronomer, geographer and mathematician",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hipparchus"
+  },
+  {
+    "id": "Q188541",
+    "name": "Chandragupta Maurya",
+    "birthYear": -339,
+    "deathYear": -296,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "south-asia"
+    ],
+    "fameScore": 84,
+    "description": "founder of the Maurya Empire (350–295 BCE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chandragupta_Maurya"
+  },
+  {
+    "id": "Q188646",
+    "name": "Lucan",
+    "birthYear": 39,
+    "deathYear": 65,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "philosophy",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "Roman poet (39–65)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lucan"
+  },
+  {
+    "id": "Q1417",
+    "name": "Vitellius",
+    "birthYear": 15,
+    "deathYear": 69,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "eighth Roman Emperor (69)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vitellius"
+  },
+  {
+    "id": "Q130601",
+    "name": "Romulus Augustus",
+    "birthYear": 462,
+    "deathYear": 510,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "last emperor of the Western Roman Empire (475–476)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Romulus_Augustulus"
+  },
+  {
+    "id": "Q130997",
+    "name": "Damasus I",
+    "birthYear": 305,
+    "deathYear": 384,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "pope",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Damasus_I"
+  },
+  {
+    "id": "Q166876",
+    "name": "Isidore of Seville",
+    "birthYear": 560,
+    "deathYear": 636,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "Hispano-Roman scholar, theologian and bishop (c. 560–636)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Isidore_of_Seville"
+  },
+  {
+    "id": "Q103268",
+    "name": "Gregory III",
+    "birthYear": 700,
+    "deathYear": 741,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "90th Pope of the Catholic Church",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_III"
+  },
+  {
+    "id": "Q128358",
+    "name": "Bayezid I",
+    "birthYear": 1354,
+    "deathYear": 1403,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [],
+    "fameScore": 84,
+    "description": "fourth Sultan of the Ottoman Empire (1389–1402)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bayezid_I"
+  },
+  {
+    "id": "Q129247",
+    "name": "Edward III of England",
+    "birthYear": 1312,
+    "deathYear": 1377,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "King of England from 1327 to 1377",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Edward_III"
+  },
+  {
+    "id": "Q167561",
+    "name": "Eugene IV",
+    "birthYear": 1383,
+    "deathYear": 1447,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "pope of the Catholic Church from 1431 to 1447",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Eugene_IV"
+  },
+  {
+    "id": "Q162819",
+    "name": "Catherine of Aragon",
+    "birthYear": 1485,
+    "deathYear": 1536,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "first wife of Henry VIII of England (1485–1536)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Catherine_of_Aragon"
+  },
+  {
+    "id": "Q170267",
+    "name": "Andreas Vesalius",
+    "birthYear": 1515,
+    "deathYear": 1564,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "science",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "Flemish anatomist, physician and author (1514–1564)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Andreas_Vesalius"
+  },
+  {
+    "id": "Q132692",
+    "name": "Gregory XV",
+    "birthYear": 1554,
+    "deathYear": 1623,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "pope of the Catholic Church from 1621 to 1623 (1554–1623)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_XV"
+  },
+  {
+    "id": "Q150679",
+    "name": "Anthony van Dyck",
+    "birthYear": 1599,
+    "deathYear": 1641,
+    "category": "art",
+    "occupationTags": [
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 84,
+    "description": "Flemish Baroque artist (1599–1641)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anthony_van_Dyck"
+  },
+  {
+    "id": "Q161904",
+    "name": "Khufu",
+    "birthYear": -2700,
+    "deathYear": -2565,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 83,
+    "description": "Fourth Dynasty ancient Egyptian pharaoh",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Khufu"
+  },
+  {
+    "id": "Q1424",
+    "name": "Nerva",
+    "birthYear": 30,
+    "deathYear": 98,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "12th Roman Emperor (96–98)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nerva"
+  },
+  {
+    "id": "Q7170",
+    "name": "Sallust",
+    "birthYear": -85,
+    "deathYear": -34,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "Roman historian and politician (86 BC - c. 35 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sallust"
+  },
+  {
+    "id": "Q83198",
+    "name": "Pius I",
+    "birthYear": 95,
+    "deathYear": 150,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 83,
+    "description": "pope",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_I"
+  },
+  {
+    "id": "Q127385",
+    "name": "Sixtus II",
+    "birthYear": 215,
+    "deathYear": 258,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "Bishop of Rome from 257 to 258",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Sixtus_II"
+  },
+  {
+    "id": "Q170472",
+    "name": "Origen",
+    "birthYear": 184,
+    "deathYear": 254,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "Christian scholar, ascetic, and theologian (c. 185 – c. 253)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Origen"
+  },
+  {
+    "id": "Q170502",
+    "name": "Honorius I",
+    "birthYear": 585,
+    "deathYear": 638,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "pope",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Honorius_I"
+  },
+  {
+    "id": "Q81212",
+    "name": "Pepin the Short",
+    "birthYear": 714,
+    "deathYear": 768,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "King of the Franks from 751 to 768",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pepin_the_Short"
+  },
+  {
+    "id": "Q103292",
+    "name": "Adrian I",
+    "birthYear": 700,
+    "deathYear": 795,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "Pope from 772 to 795",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Adrian_I"
+  },
+  {
+    "id": "Q83159",
+    "name": "Clement VII",
+    "birthYear": 1478,
+    "deathYear": 1534,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 83,
+    "description": "pope of the Catholic Church from 1523 to 1534 (1478–1534)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Clement_VII"
+  },
+  {
+    "id": "Q134588",
+    "name": "Nicholas V",
+    "birthYear": 1397,
+    "deathYear": 1455,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "pope of the Catholic Church from 1447 to 1455",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Nicholas_V"
+  },
+  {
+    "id": "Q154751",
+    "name": "Nicholas of Cusa",
+    "birthYear": 1401,
+    "deathYear": 1464,
+    "category": "philosophy",
+    "occupationTags": [
+      "philosophy",
+      "science",
+      "art",
+      "politics",
+      "religion",
+      "invention"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "German philosopher (1401 – 1464)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicholas_of_Cusa"
+  },
+  {
+    "id": "Q160614",
+    "name": "Skanderbeg",
+    "birthYear": 1405,
+    "deathYear": 1468,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe",
+      "middle-east"
+    ],
+    "fameScore": 83,
+    "description": "Albanian noble and military commander (1405–1468)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Skanderbeg"
+  },
+  {
+    "id": "Q163514",
+    "name": "Sixtus IV",
+    "birthYear": 1414,
+    "deathYear": 1484,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "pope of the Catholic Church from 1471 to 1484 (1414-1484)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Sixtus_IV"
+  },
+  {
+    "id": "Q675493",
+    "name": "Henry VII of England",
+    "birthYear": 1457,
+    "deathYear": 1509,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "King of England from 1485 to 1509",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_VII_of_England"
+  },
+  {
+    "id": "Q133350",
+    "name": "Sixtus V",
+    "birthYear": 1521,
+    "deathYear": 1590,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 83,
+    "description": "pope of the Catholic Church from 1585 to 1590",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Sixtus_V"
+  },
+  {
+    "id": "Q214559",
+    "name": "Ismail I",
+    "birthYear": 1487,
+    "deathYear": 1524,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art",
+      "war"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 83,
+    "description": "founder and first shah of Safavid Iran",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ismail_I"
+  },
+  {
+    "id": "Q213484",
+    "name": "Anacreon",
+    "birthYear": -569,
+    "deathYear": -484,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 82,
+    "description": "ancient Greek lyric poet, notable for his drinking songs and hymns",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anacreon"
+  },
+  {
+    "id": "Q172353",
+    "name": "Pyrrhus",
+    "birthYear": -317,
+    "deathYear": -271,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "king of Epirus from 307 to 302 and 297 to 272 BC",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pyrrhus_of_Epirus"
+  },
+  {
+    "id": "Q131162",
+    "name": "Dionysius",
+    "birthYear": 200,
+    "deathYear": 268,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "Pope and bishop of Rome from 259 to 268",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Dionysius"
+  },
+  {
+    "id": "Q133704",
+    "name": "Martin of Tours",
+    "birthYear": 316,
+    "deathYear": 397,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "Christian saint",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_of_Tours"
+  },
+  {
+    "id": "Q155669",
+    "name": "Charles IV",
+    "birthYear": 1316,
+    "deathYear": 1378,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "art"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "Holy Roman Emperor",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles_IV,_Holy_Roman_Emperor"
+  },
+  {
+    "id": "Q167052",
+    "name": "Gregory IV",
+    "birthYear": 795,
+    "deathYear": 844,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 82,
+    "description": "Pope and bishop of Rome from 827 to 844",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_IV"
+  },
+  {
+    "id": "Q167477",
+    "name": "Anthony of Padua",
+    "birthYear": 1195,
+    "deathYear": 1231,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "Franciscan saint, Doctor of the Church (1195–1231)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anthony_of_Padua"
+  },
+  {
+    "id": "Q170504",
+    "name": "John VIII",
+    "birthYear": 820,
+    "deathYear": 882,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "Head of the Catholic Church from 872 to 882",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_John_VIII"
+  },
+  {
+    "id": "Q172933",
+    "name": "John XII",
+    "birthYear": 937,
+    "deathYear": 964,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 82,
+    "description": "Head of the Catholic Church from 955 to 964",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_John_XII"
+  },
+  {
+    "id": "Q173893",
+    "name": "John Wycliffe",
+    "birthYear": 1320,
+    "deathYear": 1385,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "English theologian and dissident in the Roman Catholic Church",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/John_Wycliffe"
+  },
+  {
+    "id": "Q229190",
+    "name": "Catherine of Siena",
+    "birthYear": 1347,
+    "deathYear": 1380,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "politics",
+      "philosophy",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 82,
+    "description": "Italian Dominican saint (1347-1380)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Catherine_of_Siena"
+  },
+  {
+    "id": "Q241026",
+    "name": "Muḥammad ibn Ismaeel al-Bukhārī",
+    "birthYear": 810,
+    "deathYear": 870,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion",
+      "philosophy"
+    ],
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 82,
+    "description": "Persian Islamic scholar (810-870)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Muhammad_al-Bukhari"
+  },
+  {
+    "id": "Q309333",
+    "name": "Mansa Musa",
+    "birthYear": 1280,
+    "deathYear": 1337,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "africa"
+    ],
+    "fameScore": 82,
+    "description": "14th-century emperor (mansa) of the Mali Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mansa_Musa"
+  },
+  {
+    "id": "Q101430",
+    "name": "Paul IV",
+    "birthYear": 1476,
+    "deathYear": 1559,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "pope of catholic church 1555-1559",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Paul_IV"
+  },
+  {
+    "id": "Q161351",
+    "name": "Innocent VIII",
+    "birthYear": 1432,
+    "deathYear": 1492,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 82,
+    "description": "pope of the Catholic Church from 1484 to 1492",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Innocent_VIII"
+  },
+  {
+    "id": "Q174432",
+    "name": "Pedro Álvares Cabral",
+    "birthYear": 1467,
+    "deathYear": 1520,
+    "category": "exploration",
+    "occupationTags": [
+      "exploration"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "description": "Portuguese military commander and explorer (c.1467/8 – c.1521)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pedro_%C3%81lvares_Cabral"
+  },
+  {
+    "id": "Q312551",
+    "name": "Kabir",
+    "birthYear": 1398,
+    "deathYear": 1518,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "invention",
+      "philosophy"
+    ],
+    "regionTags": [],
+    "fameScore": 82,
+    "description": "15th-century Indian mystic poet and saint",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kabir"
+  },
+  {
+    "id": "Q179552",
+    "name": "Themistocles",
+    "birthYear": -523,
+    "deathYear": -458,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "middle-east",
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "Athenian politician and general (c. 524–459 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Themistocles"
+  },
+  {
+    "id": "Q102371",
+    "name": "Alaric I",
+    "birthYear": 400,
+    "deathYear": 410,
+    "category": "war",
+    "occupationTags": [
+      "war",
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 81,
+    "description": "King of the Visigoths",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alaric_I"
+  },
+  {
+    "id": "Q160931",
+    "name": "Hormisdas",
+    "birthYear": 450,
+    "deathYear": 523,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 81,
+    "description": "Bishop of Rome from 514 to 523",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Hormisdas"
+  },
+  {
+    "id": "Q163787",
+    "name": "Benedict II",
+    "birthYear": 635,
+    "deathYear": 685,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "pope",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Benedict_II"
+  },
+  {
+    "id": "Q101384",
+    "name": "Henry I of England",
+    "birthYear": 1068,
+    "deathYear": 1135,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "King of England from 1100 to 1135 (1068–1135)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_I_of_England"
+  },
+  {
+    "id": "Q103404",
+    "name": "Paul I",
+    "birthYear": 700,
+    "deathYear": 767,
+    "category": "art",
+    "occupationTags": [
+      "art",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "pope (700-767)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Paul_I"
+  },
+  {
+    "id": "Q7519",
+    "name": "Ögedei Khan",
+    "birthYear": 1186,
+    "deathYear": 1241,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 81,
+    "description": "Khan of the Mongol Empire (c.1186-1241) (r. 1229-1241)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/%C3%96gedei_Khan"
+  },
+  {
+    "id": "Q14974",
+    "name": "Vladimir the Great",
+    "birthYear": 956,
+    "deathYear": 1015,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "Grand Prince of Kiev",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vladimir_the_Great"
+  },
+  {
+    "id": "Q170559",
+    "name": "Benedict V",
+    "birthYear": 900,
+    "deathYear": 965,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 81,
+    "description": "pope",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Benedict_V"
+  },
+  {
+    "id": "Q174044",
+    "name": "Alexander Nevsky",
+    "birthYear": 1220,
+    "deathYear": 1263,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "political and military figure of Kievan Rus' (1246–1263)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexander_Nevsky"
+  },
+  {
+    "id": "Q102605",
+    "name": "Paul II",
+    "birthYear": 1417,
+    "deathYear": 1471,
+    "category": "religion",
+    "occupationTags": [
+      "religion",
+      "science"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "pope of the Catholic Church from 1464 to 1471",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Paul_II"
+  },
+  {
+    "id": "Q131394",
+    "name": "Murad II",
+    "birthYear": 1404,
+    "deathYear": 1451,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [],
+    "fameScore": 81,
+    "description": "sixth Sultan of the Ottoman Empire (1421–1444, 1446–1451)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Murad_II"
+  },
+  {
+    "id": "Q150726",
+    "name": "Maximilian I",
+    "birthYear": 1459,
+    "deathYear": 1519,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "Holy Roman Emperor (1459-1519)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Maximilian_I,_Holy_Roman_Emperor"
+  },
+  {
+    "id": "Q134337",
+    "name": "Urban VII",
+    "birthYear": 1521,
+    "deathYear": 1590,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [],
+    "fameScore": 81,
+    "description": "pope of the Catholic Church in September 1590",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Urban_VII"
+  },
+  {
+    "id": "Q169911",
+    "name": "Julius III",
+    "birthYear": 1487,
+    "deathYear": 1555,
+    "category": "religion",
+    "occupationTags": [
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "pope of the Catholic Church from 1550 to 1555",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Julius_III"
+  },
+  {
+    "id": "Q184530",
+    "name": "Gerolamo Cardano",
+    "birthYear": 1501,
+    "deathYear": 1576,
+    "category": "science",
+    "occupationTags": [
+      "science",
+      "invention",
+      "philosophy"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "Italian Renaissance mathematician, physician, astrologer (1501-1576)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gerolamo_Cardano"
+  },
+  {
+    "id": "Q58514",
+    "name": "Louis XII of France",
+    "birthYear": 1462,
+    "deathYear": 1515,
+    "category": "politics",
+    "occupationTags": [
+      "politics"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "King of France from 1498 to 1515",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_XII"
+  },
+  {
+    "id": "Q78454",
+    "name": "William the Silent",
+    "birthYear": 1533,
+    "deathYear": 1584,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "war"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "Dutch statesman and revolt leader (1533-1584)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/William_the_Silent"
+  },
+  {
+    "id": "Q101266",
+    "name": "Innocent X",
+    "birthYear": 1574,
+    "deathYear": 1655,
+    "category": "politics",
+    "occupationTags": [
+      "politics",
+      "religion"
+    ],
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "description": "pope from 1644 to 1655",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Innocent_X"
+  }
+]
