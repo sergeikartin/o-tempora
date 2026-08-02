@@ -10,7 +10,8 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "types": ["node"]
   },
   "include": ["fetch/**/*.ts", "transform/**/*.ts", "output/**/*.ts"]
 }
