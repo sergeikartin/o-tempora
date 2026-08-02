@@ -1,5 +1,6 @@
-import type { Person, HistoricalEvent } from "@same-sky/shared-types";
+import type { Person, HistoricalEvent, ReignPeriod } from "@same-sky/shared-types";
 import type { TaggedPerson, TaggedEvent } from "../transform/index.js";
+import { WAR_TYPE_QID } from "../fetch/queries/historical-events.js";
 
 export interface DropReport {
   dropped: number;
@@ -13,7 +14,10 @@ function record(reasons: Record<string, number>, reason: string): void {
 // Output is the last chance to catch a schema violation before the frontend
 // ever sees this data — validated here even though most of these should be
 // structurally impossible given Fetch's own required fields.
-export function buildPeople(rows: TaggedPerson[]): { people: Person[]; report: DropReport } {
+export function buildPeople(
+  rows: TaggedPerson[],
+  reignsByPersonId: Map<string, ReignPeriod[]> = new Map(),
+): { people: Person[]; report: DropReport } {
   const people: Person[] = [];
   const reasons: Record<string, number> = {};
 
@@ -50,6 +54,7 @@ export function buildPeople(rows: TaggedPerson[]): { people: Person[]; report: D
       fameScore: row.sitelinks,
       description: row.description,
       wikipediaUrl: row.article,
+      reignPeriods: reignsByPersonId.get(row.id),
     });
   }
 
@@ -86,6 +91,13 @@ export function buildEvents(rows: TaggedEvent[]): { events: HistoricalEvent[]; r
       id: row.id,
       name: row.label,
       date: row.year,
+      // Only wars (wd:Q198) get range-bar treatment — see WAR_TYPE_QID.
+      // row.secondaryYear is populated from the same ?endDate (P582)
+      // binding for every event type, but deliberately only read here for
+      // wars, so a battle/treaty that happens to carry a P582 claim still
+      // renders as a single point.
+      endDate: row.tags.includes(WAR_TYPE_QID) ? row.secondaryYear : undefined,
+      partOfWarName: row.partOfLabel,
       category: row.category,
       regionTags: row.regionTags,
       fameScore: row.sitelinks,

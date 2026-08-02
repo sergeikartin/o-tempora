@@ -15,6 +15,7 @@ export interface GroupedRow {
   secondaryYear?: number;
   tags: string[];
   countries: string[];
+  partOfLabel?: string;
 }
 
 export interface GroupRowsConfig {
@@ -27,6 +28,7 @@ export interface GroupRowsConfig {
   secondaryDateVar?: string;
   tagVar?: string;
   countryVar: string;
+  partOfLabelVar?: string;
 }
 
 // Only accepts real https://www.wikidata.org/entity/Q... URIs. Wikidata's RDF
@@ -90,6 +92,11 @@ export function groupRows(bindings: SparqlBinding[], config: GroupRowsConfig): G
     const countryValue = row[config.countryVar]?.value;
     const countryId = countryValue ? extractQid(countryValue) : undefined;
     if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
+
+    if (config.partOfLabelVar && entry.partOfLabel === undefined) {
+      const partOfLabelValue = row[config.partOfLabelVar]?.value;
+      if (partOfLabelValue) entry.partOfLabel = partOfLabelValue;
+    }
   }
 
   return [...grouped.values()];

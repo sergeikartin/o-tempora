@@ -44,6 +44,12 @@ export interface Person {
   fameScore: number;
   description: string;
   wikipediaUrl: string;
+  // Best-effort: only populated when Wikidata has at least one qualified
+  // P39 ("position held") statement with a start-time qualifier for this
+  // person (see data-pipeline/fetch/queries/reigns.ts). Most people have
+  // none. Sorted ascending by startYear; a person can have more than one
+  // (e.g. a deposed-and-restored monarch, or multiple offices).
+  reignPeriods?: ReignPeriod[];
 }
 
 // Covers both historical events (wars, treaties, ...) and inventions —
@@ -52,9 +58,37 @@ export interface HistoricalEvent {
   id: string;
   name: string;
   date: number;
+  // Only ever populated for entities Wikidata classes as a war (wd:Q198,
+  // the WAR_TYPE_QID in data-pipeline/transform/event-type-categories.ts)
+  // that also carry a known end-time claim — battles, treaties, sieges,
+  // etc. stay single-date points even when Wikidata happens to record a
+  // duration for them, per the product decision that only wars render as
+  // range bars. Absence does not mean "not a war," just "no known end
+  // date" or "not a war" — consumers should not infer either from it
+  // alone; use `category`/context instead.
+  endDate?: number;
+  // Human-readable name of the parent conflict this event is Wikidata
+  // "part of" (P361) linked to, e.g. a battle -> its war. Best-effort:
+  // present only when Wikidata has that link and an English label for the
+  // target; the parent conflict itself may or may not also appear as its
+  // own entry in this dataset.
+  partOfWarName?: string;
   category: Category;
   regionTags: Region[];
   fameScore: number;
   description: string;
   wikipediaUrl: string;
+}
+
+// A single period a person held a qualified position (Wikidata P39 with
+// P580/P582 start/end qualifiers) — monarchs, elected heads of
+// state/government, and any other dated position, not just literal
+// "king"/"queen" titles. `endYear` absent means Wikidata has no end-time
+// claim (e.g. still holding the position, or the claim is simply
+// incomplete) — same "rendering-only stand-in needed" situation as
+// `Person.deathYear`, left for the frontend to decide how to fall back,
+// not resolved here.
+export interface ReignPeriod {
+  startYear: number;
+  endYear?: number;
 }

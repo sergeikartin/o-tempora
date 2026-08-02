@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { transformPeople, transformEvents } from "../transform/index.js";
+import { transformPeople, transformEvents, loadReignsMap } from "../transform/index.js";
 import { buildPeople, buildEvents, type DropReport } from "./write-datasets.js";
 
 // Single destination — both /data-pipeline and (from Unit 3/4) /src read
@@ -9,6 +9,7 @@ import { buildPeople, buildEvents, type DropReport } from "./write-datasets.js";
 // pipeline writing its own copy and duplicating it into /src/shared/data/.
 const DATA_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
+  "..",
   "..",
   "..",
   "packages",
@@ -30,7 +31,7 @@ async function writeDataset(fileName: string, data: unknown): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  const { people, report: peopleReport } = buildPeople(transformPeople());
+  const { people, report: peopleReport } = buildPeople(transformPeople(), loadReignsMap());
   logReport("people.json", people.length, peopleReport);
   await writeDataset("people.json", people);
 
