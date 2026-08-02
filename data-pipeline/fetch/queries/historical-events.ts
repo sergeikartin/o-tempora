@@ -16,7 +16,7 @@ const EVENT_TYPES = [
 
 export function buildHistoricalEventsQuery(limit: number, offset: number): string {
   return `
-SELECT ?event ?eventLabel ?date ?sitelinks ?type ?country ?article WHERE {
+SELECT ?event ?eventLabel ?date ?sitelinks ?type ?country ?article ?description WHERE {
   VALUES ?type { ${EVENT_TYPES.join(" ")} }
   ?event wdt:P31 ?type ;
          wikibase:sitelinks ?sitelinks .
@@ -28,6 +28,7 @@ SELECT ?event ?eventLabel ?date ?sitelinks ?type ?country ?article WHERE {
   OPTIONAL { ?event rdfs:label ?eventLabel . FILTER(LANG(?eventLabel) = "en") }
   OPTIONAL { ?event wdt:P17 ?country. }
   OPTIONAL { ?article schema:about ?event; schema:isPartOf <https://en.wikipedia.org/>. }
+  OPTIONAL { ?event schema:description ?description . FILTER(LANG(?description) = "en") }
 }
 LIMIT ${limit} OFFSET ${offset}
 `.trim();

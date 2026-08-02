@@ -1,0 +1,9 @@
+{
+  "name": "same-sky",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "data-pipeline",
+    "packages/*"
+  ]
+}

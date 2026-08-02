@@ -8,7 +8,12 @@
   },
   "scripts": {
     "fetch": "NODE_USE_ENV_PROXY=1 tsx fetch/index.ts",
-    "typecheck": "tsc --noEmit"
+    "build-data": "tsx output/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test transform/**/*.test.ts"
+  },
+  "dependencies": {
+    "@same-sky/shared-types": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
