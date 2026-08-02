@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "data-pipeline",
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^7.0.2"
+  }
 }
