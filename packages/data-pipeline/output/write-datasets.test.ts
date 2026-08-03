@@ -52,6 +52,28 @@ test("buildPeople defaults to no reign data when no map is passed", () => {
   assert.equal(people[0]?.reignPeriods, undefined);
 });
 
+test("buildPeople drops a person whose birth-to-death span exceeds a plausible human lifespan", () => {
+  // Real case: Wikidata's own P569 claim for William McMaster Murdoch is
+  // year 2 (upstream data error), while deathYear is the correct 1912 —
+  // a 1910-year span that would render as an obviously-broken bar.
+  const rows = [taggedPerson({ id: "Q347334", year: 2, secondaryYear: 1912 })];
+  const { people, report } = buildPeople(rows);
+  assert.equal(people.length, 0);
+  assert.equal(report.reasons["implausible lifespan"], 1);
+});
+
+test("buildPeople drops a person whose death year precedes their birth year", () => {
+  const rows = [taggedPerson({ id: "Q99", year: 1900, secondaryYear: 1850 })];
+  const { people } = buildPeople(rows);
+  assert.equal(people.length, 0);
+});
+
+test("buildPeople keeps a person with a plausible lifespan, including one near the real-world max", () => {
+  const rows = [taggedPerson({ id: "Q100", year: 1875, secondaryYear: 1997 })]; // 122 years
+  const { people } = buildPeople(rows);
+  assert.equal(people.length, 1);
+});
+
 test("buildEvents only sets endDate for the war type (Q198), even if secondaryYear is present", () => {
   const war = taggedEvent({ id: "Q3", tags: ["Q198"], year: 1861, secondaryYear: 1865 });
   const battle = taggedEvent({ id: "Q4", tags: ["Q178561"], year: 1863, secondaryYear: 1863 });

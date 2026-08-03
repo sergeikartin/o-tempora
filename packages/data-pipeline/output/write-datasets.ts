@@ -11,6 +11,13 @@ function record(reasons: Record<string, number>, reason: string): void {
   reasons[reason] = (reasons[reason] ?? 0) + 1;
 }
 
+// Above the longest verified human lifespan (Jeanne Calment, 122 years) —
+// leaves slack for real date-precision edge cases, while still catching
+// clearly-wrong upstream Wikidata claims (e.g. William McMaster Murdoch's
+// P569 birth-date statement giving year 2 instead of 1873) rather than
+// rendering an obviously-broken, centuries-wide bar.
+const MAX_PLAUSIBLE_LIFESPAN_YEARS = 130;
+
 // Output is the last chance to catch a schema violation before the frontend
 // ever sees this data — validated here even though most of these should be
 // structurally impossible given Fetch's own required fields.
@@ -36,6 +43,13 @@ export function buildPeople(
     }
     if (row.year === undefined) {
       record(reasons, "missing birth date");
+      continue;
+    }
+    if (
+      row.secondaryYear !== undefined &&
+      (row.secondaryYear < row.year || row.secondaryYear - row.year > MAX_PLAUSIBLE_LIFESPAN_YEARS)
+    ) {
+      record(reasons, "implausible lifespan");
       continue;
     }
     if (!row.category) {
