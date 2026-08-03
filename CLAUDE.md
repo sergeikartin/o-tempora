@@ -8,32 +8,25 @@
 - Project Name: World History Timeline (npm package: `same-sky`)
 - Tech Stack: React 19 + TypeScript + Vite + vis-timeline (frontend); Node.js + TypeScript (data pipeline); npm workspaces monorepo
 - Description: Read-only, continuously zoomable visualization of world history — People, Wars & Conflicts, and Events & Inventions lanes, hardcoded from Wikidata. No accounts, no editing, no live data fetching
-- Entry Point: `packages/web/src/main.tsx` (app composition in `packages/web/src/app/`)
 
 ## Build, Test & Verify
 
-Monorepo (npm workspaces): `packages/web` (frontend), `packages/data-pipeline` (offline data pipeline), `packages/shared-types` (shared types + generated data).
+Monorepo (npm workspaces): `packages/web` (frontend), `packages/data-pipeline` (offline data pipeline), `packages/shared-types` (shared types + generated data, no build step of its own).
 
-- Install: `npm install`
-- Dev server: `npm run dev --workspace packages/web`
-- Build: `npm run build --workspace packages/web`
-- Test: `npm run test --workspace packages/web` (Vitest) · `npm run test --workspace packages/data-pipeline` (`node:test`)
-- Lint: `npm run lint --workspace packages/web` (ESLint) · `npm run lint:boundaries --workspace packages/web` (Steiger, FSD boundaries)
-- Type check: `npm run typecheck --workspace packages/web` · `npm run typecheck --workspace packages/data-pipeline`
-- Pipeline: `npm run fetch --workspace packages/data-pipeline` (Wikidata → raw JSON) · `npm run build-data --workspace packages/data-pipeline` (→ `shared-types` data)
+- Install (from repo root): `npm install`
+- Package-specific commands: `packages/web/CLAUDE.md` (dev/build/lint/test) · `packages/data-pipeline/CLAUDE.md` (fetch/build-data/test)
 
 ## Code Style & Conventions
 
 - TypeScript strict mode throughout; avoid `any`
-- Mini-FSD layering in `packages/web`: `shared → features → widgets → app` (no `entities`/`pages`); each slice exposes one public `index.ts`, enforced by Steiger in CI
-- `Temporal.PlainDate` is the canonical date type everywhere except the single legacy-`Date` adapter in `widgets/timeline-canvas`
-- CSS Modules only; no hardcoded hex values — colors/spacing come from tokens in `CLAUDE-patterns.md`
+- `Temporal.PlainDate` is the canonical date type in both `packages/web` and `packages/data-pipeline`, everywhere except the single legacy-`Date` adapter in `packages/web`'s `widgets/timeline-canvas`
+- Package-specific conventions (FSD layering, styling, pipeline stages): `packages/web/CLAUDE.md` · `packages/data-pipeline/CLAUDE.md`
 - Full rules: `CLAUDE-patterns.md`
 
 ## Architecture
 
-- `packages/web` — frontend: React + Vite + vis-timeline, mini-FSD, reads static JSON bundled at build time
-- `packages/data-pipeline` — offline pipeline (fetch → score → tag → output) that curates `packages/shared-types` datasets from Wikidata SPARQL; never runs at app runtime
+- `packages/web` — frontend: React + Vite + vis-timeline, mini-FSD, reads static JSON bundled at build time. Details: `packages/web/CLAUDE.md`
+- `packages/data-pipeline` — offline pipeline (fetch → score → tag → output) that curates `packages/shared-types` datasets from Wikidata SPARQL; never runs at app runtime. Details: `packages/data-pipeline/CLAUDE.md`
 - `packages/shared-types` — shared `Person`/`HistoricalEvent`/`Category`/`Region` types and generated `people.json`/`events.json`, imported by both packages so neither imports the other directly
 - No backend, no database; the app never writes anywhere at runtime — full invariants in `CLAUDE-decisions.md`
 - Full details: `CLAUDE-decisions.md`
@@ -140,6 +133,7 @@ The memory bank is your team's shared truth. Auto memory is your personal safety
 | Skills & workflows | `.claude/skills/` | On demand | Git-tracked |
 | Personal overrides | `CLAUDE.local.md` | Always (gitignored) | Local only |
 | Memory bank files | CLAUDE-*.md | On demand | Git-tracked |
+| Package-specific rules | `packages/*/CLAUDE*.md` | When working in that package | Git-tracked |
 
 Use `/memory` to see which files are loaded. Root CLAUDE.md survives `/compact`; subdirectory CLAUDE.md files reload when Claude next reads files there.
 

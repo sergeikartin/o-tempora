@@ -22,42 +22,22 @@ World History Timeline: a read-only, continuously zoomable visualization of worl
 
 Two independently-shippable parts: **`packages/web`** (frontend — React + TypeScript + Vite + vis-timeline, mini-FSD) and **`packages/data-pipeline`** (offline Node/TypeScript pipeline that curates the frontend's dataset from Wikidata). The pipeline runs offline to produce static JSON; the frontend only ever reads that JSON. Both are npm-workspace packages, alongside **`packages/shared-types`** (shared `Person`/`HistoricalEvent`/`Category`/`Region` types plus the generated `people.json`/`events.json`), which lets `web` and `data-pipeline` share types and data without importing each other directly.
 
+Package-specific stack, boundaries, and pipeline stages: `packages/web/CLAUDE-decisions.md` · `packages/data-pipeline/CLAUDE-decisions.md`
+
 ### Stack
 
 | Layer | Technology |
 |---|---|
-| UI framework | React + TypeScript, mini-FSD |
-| Build tool | Vite |
-| Timeline rendering | vis-timeline (standalone build) |
 | Date handling | `Temporal` (via `temporal-polyfill`), native BCE support |
-| Styling | CSS Modules |
 | Data format | Static JSON, bundled at build time |
-| Pipeline query layer | Wikidata Query Service (SPARQL) |
-| Pipeline scripting | Node.js + TypeScript |
-| Pipeline intermediate storage | Local JSON files, checked into the repo |
 | Hosting | Static hosting (no server process) |
-| Testing | Vitest + RTL (frontend), `node:test` (pipeline) |
 | Monorepo tooling | npm workspaces (`packages/*`) |
-| Lint / boundary tooling | ESLint + typescript-eslint + Steiger, enforcing mini-FSD boundaries |
 
 No backend service, no database — the shipped product is a static bundle plus static data files.
 
 ### System Boundaries
 
 - `packages/web` and `packages/data-pipeline` never import each other directly; both import from `packages/shared-types` (types at compile time, generated JSON at build time).
-- Frontend layering (mini-FSD): `shared → features → widgets → app` (no `entities`/`pages`). `shared/` holds business-agnostic logic and type re-exports; `features/` holds independent user-facing behaviors (fame-tier, occupation filter, region filter, entity selection); `widgets/` composes shared+features (`timeline-canvas`, `filter-bar`, `detail-panel`); `app/` is the entry point.
-- Pipeline stages: `fetch/` (raw SPARQL results only) → `transform/` (score + tag) → `output/` (writes final JSON into `packages/shared-types/src/data/`).
-
-### Data Pipeline
-
-Runs on-demand, not continuously — no scheduler, no live connection once data is generated.
-
-1. **Fetch** — SPARQL pulls candidate people/events, plus a reign/term-of-office query parameterized on the people already found. Written as-is to `packages/data-pipeline/data/raw/`, checked into git for reproducibility.
-2. **Score** — fame score is sitelink count directly; no other signal blended in for v1.
-3. **Tag** — raw Wikidata occupation/location claims mapped onto the app's fixed occupation/region categories via an explicit lookup table (lossy by necessity).
-4. **Output** — final `people.json`/`events.json` written into `packages/shared-types/src/data/` (single copy).
-
-No manual override/correction mechanism exists in v1 — a bad ranking or tag is fixed by changing Score/Tag logic and re-running, not patched by hand.
 
 ### Storage Model
 
@@ -86,9 +66,6 @@ Rules the codebase must never violate:
 
 Durable, still-relevant decisions from implementation. Day-to-day history lives in `CLAUDE-activeContext.md` and git history, not here.
 
-- Historical events (wars/battles/treaties) and inventions/discoveries are fetched as two separate raw snapshots (structurally different SPARQL queries), merged into one `events.json` only at Transform — keeps Fetch from reshaping data (Invariant 8).
-- Fetch queries never `ORDER BY` sitelinks (times out at this corpus size) — they use a sitelink threshold filter instead; ranking happens in Score.
 - `packages/shared-types` exists specifically so types and generated datasets can be shared between `packages/web` and `packages/data-pipeline` without either importing the other.
-- `HistoricalEvent.category === "invention"` is the (implicit, not type-enforced) signal for which lane an event belongs to — no separate lane field exists.
-- `WAR_TYPE_QID` is defined once in Fetch and imported by Transform/Output, so "what counts as a war" has one source of truth.
-- A Fetch-stage query can depend on another Fetch-stage query's raw output (the reigns fetch reads the people fetch's output for its candidate ID list) — still consistent with Invariant 8, since it's reading IDs, not reshaping data.
+
+Package-specific decisions: `packages/web/CLAUDE-decisions.md` · `packages/data-pipeline/CLAUDE-decisions.md`
