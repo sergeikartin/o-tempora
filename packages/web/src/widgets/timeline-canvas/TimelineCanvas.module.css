@@ -6,12 +6,21 @@
   height: 100vh;
 }
 
-/* 2:1 height ratio between the People and Events & Inventions lanes. Each
-   lane is its own vis-timeline instance sized to fill this flex item exactly
-   (min-height: 0 lets it shrink below content height so the instance's own
-   internal vertical scroll, not flexbox, handles overflow). */
+/* 2:1:1 height ratio across People, Wars & Conflicts, and Events &
+   Inventions. Each lane is its own vis-timeline instance sized to fill this
+   flex item exactly (min-height: 0 lets it shrink below content height so
+   the instance's own internal vertical scroll, not flexbox, handles
+   overflow). The 2:1:1 split keeps People's existing dominant share
+   unchanged and divides the remainder evenly between the two other lanes —
+   an arbitrary starting ratio absent specific product guidance, easy to
+   retune here later. */
 .peopleLane {
   flex: 2 1 0;
+  min-height: 0;
+}
+
+.warsLane {
+  flex: 1 1 0;
   min-height: 0;
 }
 
@@ -33,4 +42,25 @@
   width: 28px;
   height: 28px;
   cursor: pointer;
+}
+
+/* Reign-period overlay inside a person's lifespan bar (see options.ts's
+   stackSubgroups: false and map-to-items.ts's subgroup assignment). A
+   deliberately neutral, non-token marker — not one of ui-context.md's
+   category colors — since real color tokens are Unit 5's job; this just
+   needs to be visually distinct enough to be a real "visible result" for
+   this unit, not styled with the final design.
+
+   No height/top override: vis-timeline sizes/positions range items via
+   inline pixel styles with no percentage-height context on any ancestor,
+   so a CSS `height: 50%` here resolved against nothing and rendered a
+   ~14,000,000px-tall element (confirmed empirically, not assumed — see
+   the spec's flagged uncertainty about this). The dashed border alone is
+   enough to visually distinguish the overlay from the solid lifespan bar
+   underneath; shrinking it to look like a true "inset" segment would need
+   a fixed pixel inset matched to the real row height, which varies by
+   content and zoom — left for Unit 5 to do properly with real tokens. */
+.peopleLane :global(.vis-item.reign-period) {
+  border: 2px dashed rgba(46, 43, 34, 0.55);
+  background: transparent;
 }
