@@ -16,9 +16,9 @@ test("formats a negative (BCE) year with a leading minus sign and zero-padded ma
   assert.match(query, /"-0400-01-01T00:00:00Z"\^\^xsd:dateTime/);
 });
 
-test("still requires sitelinks > 20", () => {
+test("still requires sitelinks >= 30", () => {
   const query = buildPeopleQuery(500, 0, 1900, 1950);
-  assert.match(query, /FILTER\(\?sitelinks > 20\)/);
+  assert.match(query, /FILTER\(\?sitelinks >= 30\)/);
 });
 
 test("includes LIMIT and OFFSET from the given page params", () => {

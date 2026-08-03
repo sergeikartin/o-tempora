@@ -1,17 +1,14 @@
+import { MIN_SITELINKS } from "./min-sitelinks.js";
+
 // Candidate humans: birth date + sitelink count required (sitelinks is the
 // fame signal Score will rank on), everything else optional since Wikidata
 // coverage is inconsistent even for well-known people.
 //
-// Threshold lowered from 80 to 20 to grow the candidate pool toward the
-// 3000-person fame-tier ceiling (transform/score.ts's
-// PEOPLE_FAME_TIER_CEILING): >80 selects almost exclusively multi-occupation
-// historical elites, which are heavy on raw-row cost (many OPTIONAL
-// ?occupation rows per person) relative to how many *unique* people they
-// yield per page. Spot-checked live before changing: at >20, a single
-// LIMIT-500 page already contained 384 unique people (a ~0.77 rows-per-page
-// yield versus roughly 0.1 at the old threshold), so the same page budget
-// reaches a far larger candidate pool. 20 matches the threshold already used
-// for both event queries, rather than inventing a fourth distinct number.
+// Threshold matches MIN_SITELINKS (Score's specialist floor, transform/
+// score.ts's FAME_TIER_MIN_SITELINKS.specialist): Score unconditionally
+// discards anything below that floor, so fetching lower-sitelink candidates
+// is pure waste of SPARQL page budget and row count. Not independently
+// tunable — if the specialist floor changes, this must change with it.
 //
 // Bucketed by birth year ([minYear, maxYearExclusive)) rather than one
 // unbounded scan across all of history. Root cause this works around: with
@@ -45,7 +42,7 @@ SELECT ?person ?personLabel ?birthDate ?deathDate ?sitelinks ?occupation ?countr
   ?person wdt:P31 wd:Q5 ;
           wdt:P569 ?birthDate ;
           wikibase:sitelinks ?sitelinks .
-  FILTER(?sitelinks > 20)
+  FILTER(?sitelinks >= ${MIN_SITELINKS})
   FILTER(?birthDate >= "${minDateTime}"^^xsd:dateTime && ?birthDate < "${maxDateTime}"^^xsd:dateTime)
   OPTIONAL { ?person rdfs:label ?personLabel . FILTER(LANG(?personLabel) = "en") }
   OPTIONAL { ?person wdt:P570 ?deathDate. }

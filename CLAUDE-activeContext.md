@@ -12,6 +12,7 @@ Update this file after every meaningful implementation change. Keep entries high
 
 ## Completed
 
+- Data-pipeline: Fame Tier Redesign (`context/specs/06-fame-tier-redesign.md`) — replaced the top-N fame-tier ceilings (`PEOPLE_FAME_TIER_CEILING`/`EVENTS_FAME_TIER_CEILING`) with `FAME_TIER_MIN_SITELINKS` (`generalPublic`/`educated`/`specialist` sitelink floors, specialist = 30) in `transform/score.ts`; `scoreAndRank` is now filter-then-sort with no count slice. Fetch's three query builders now share a `MIN_SITELINKS` constant (`fetch/queries/min-sitelinks.ts`) matching the specialist floor, replacing the old `> 20` literal. All code/tests done, typecheck and full test suite pass. **Not yet done: the live Fetch re-run.** An attempted re-fetch hit heavy Wikidata Query Service instability (repeated 502s and timeouts across most eras) and was aborted, leaving `data/raw/people.raw.json`, `people-reigns.raw.json`, and `events-historical.raw.json` as uncommitted, partial/patchy overwrites in the working tree (`events-inventions.raw.json` was never written — the crash happened before that stage). These need either a clean re-fetch retry or a `git checkout` back to the committed snapshots before `build-data` is run — do not run `build-data` against the current partial raw files. See Session Notes.
 - Monorepo restructure: pipeline, shared-types, and frontend all live under `packages/*` as npm workspaces.
 - Unit 1: Data pipeline scaffold + Fetch stage — paginated SPARQL client with retry/backoff, three query builders, run live against Wikidata.
 - Unit 2: Score, Tag, Output stages. Added `packages/shared-types` for shared `Person`/`HistoricalEvent`/`Category`/`Region` types. Known limitation: primary-category assignment depends on SPARQL row order rather than Wikidata's real statement order — accepted, not fixed.
@@ -29,7 +30,8 @@ Update this file after every meaningful implementation change. Keep entries high
 
 ## Next Up
 
-- Redesign the fame-tier concept into 3 named tiers (general public / educated / specialist) instead of numeric top-N — not yet spec'd. The fame-tier selector feature doesn't exist in the frontend yet at all.
+- Finish the Fame Tier Redesign unit: re-run `npm run fetch --workspace packages/data-pipeline` cleanly (retry or after `git checkout` of the partial `data/raw/*.json` files), then `npm run build-data --workspace packages/data-pipeline`, then spot-check `people.json`/`events.json` have nothing below 30 sitelinks per the spec's Verification Checklist.
+- Unit 9 (separate, still-unspecced): frontend fame-tier selector (`features/filter-by-fame-tier`) reading the new `FAME_TIER_MIN_SITELINKS` thresholds — deferred out of scope for the data-pipeline unit above.
 - Unit 5: apply visual design tokens to the three-lane timeline — see `context/specs/00-build-plan.md` and `CLAUDE-patterns.md`. Not yet spec'd.
 
 ## Open Questions
@@ -42,6 +44,7 @@ Update this file after every meaningful implementation change. Keep entries high
 
 ## Session Notes
 
+- Fame Tier Redesign unit (2026-08-03): a live Fetch re-run hit widespread Wikidata Query Service 502s/timeouts (most eras in the `people` bucket loop failed outright), then crashed uncaught while fetching inventions candidates (`fetch-events.ts`'s `fetchEvents` has no page/bucket-level try/catch guard for the first-page case, unlike the people/reigns fetchers — pre-existing, out of scope for this unit). Left `data/raw/people.raw.json`, `people-reigns.raw.json`, `events-historical.raw.json` as uncommitted partial overwrites; `events-inventions.raw.json` untouched. Check `git status packages/data-pipeline/data/raw` before doing anything else with Fetch.
 - Re-run Fetch: `cd packages/data-pipeline && npm run fetch` (overwrites all raw files; people → reigns → events in that order, since reigns depends on people).
 - Rebuild dataset after a Fetch re-run: `npm run build-data` (writes into `../shared-types/src/data/` — verify via `git status packages/shared-types` that only the two expected files changed).
 - `npm install` must run from the repo root (single lockfile there).
