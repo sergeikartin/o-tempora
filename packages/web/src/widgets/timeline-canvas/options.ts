@@ -10,7 +10,27 @@ import {
 
 const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
 
-export const PEOPLE_GROUPS: DataGroup[] = [{ id: 'people', content: 'People' }];
+// A reignPeriod item shares its `subgroup` with its person's own lifespan
+// item (see map-to-items.ts) so it overlaps that person's row instead of
+// stacking into a separate one. Verified against vis-timeline@8.5.2's
+// actual stacking source (standalone/umd/vis-timeline-graph2d.js): items
+// sharing a subgroup only skip the library's default full-collision
+// stacking and go through its per-subgroup "each item same top" placement
+// when a *Group's* `subgroupStack` config sets its internal `doInnerStack`
+// flag true — the confusingly-similarly-named `TimelineOptions.stackSubgroups`
+// (top-level) only gates whether that per-group config is honored, it does
+// nothing on its own. Within that placement, a subgroup only gets
+// separated back out (via `substack`) if ITS OWN `subgroupStack` entry is
+// `true` — the default (absent) is `false`, i.e. overlap. So a single
+// dummy key here (never a real person id) flips doInnerStack on globally
+// for this group without opting any real person's subgroup back into
+// separated stacking.
+const ENABLE_PEOPLE_SUBGROUP_OVERLAP: Record<string, boolean> = { '__enable-subgroup-overlap__': true };
+
+export const PEOPLE_GROUPS: DataGroup[] = [
+  { id: 'people', content: 'People', subgroupStack: ENABLE_PEOPLE_SUBGROUP_OVERLAP },
+];
+export const WARS_GROUPS: DataGroup[] = [{ id: 'wars', content: 'Wars & Conflicts' }];
 export const EVENTS_GROUPS: DataGroup[] = [{ id: 'events', content: 'Events & Inventions' }];
 
 // Shared zoom/pan bounds and interaction behavior for both lane instances.
@@ -45,6 +65,17 @@ export function buildPeopleTimelineOptions(): TimelineOptions {
     ...buildSharedOptions(),
     // The single shared time axis renders on the events lane instead (see
     // buildEventsTimelineOptions) — showing it twice would be redundant.
+    orientation: { axis: 'none' },
+    // stackSubgroups is left at its default (true) deliberately — see
+    // PEOPLE_GROUPS's comment. It has to stay true for the People group's
+    // subgroupStack config to be consulted at all.
+  };
+}
+
+export function buildWarsTimelineOptions(): TimelineOptions {
+  return {
+    ...buildSharedOptions(),
+    // Same axis reasoning as the People lane above.
     orientation: { axis: 'none' },
   };
 }
