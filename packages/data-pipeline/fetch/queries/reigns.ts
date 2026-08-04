@@ -1,11 +1,7 @@
 // Reign / term-of-office periods for already-known candidate people. Unlike
 // the other queries, this one isn't a blind corpus scan — it's parameterized
-// on a batch of specific person Q-IDs (see fetch/fetch-reigns.ts). Not
-// currently wired into fetch/index.ts's orchestration — its input Q-ID
-// source (currently people.raw.json, the old Wikidata people snapshot)
-// needs to switch to Pantheon's retained wd_id column first, tracked
-// separately (People: reign-period secondary enrichment,
-// .scratch/alt-data-sources/issues/19-people-reign-periods-enrichment.md).
+// on a batch of specific person Q-IDs, sourced from Pantheon's retained
+// wd_id column (see fetch/fetch-reigns.ts).
 //
 // Broad by design, per the product decision: any qualified P39 ("position
 // held") statement with a P580 (start time) qualifier counts, regardless of

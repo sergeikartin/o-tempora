@@ -32,7 +32,7 @@ Pipeline stages, one direction only: `fetch/` (raw results only) → `transform/
 
 Runs on-demand only — no scheduler, no live connection once data is generated.
 
-1. **Fetch** — People: Pantheon CSV plus a batched SPARQL description-enrichment pass keyed on Wikidata QID. Wars/Discoveries: SPARQL pulls candidate events; a reign/term-of-office enrichment query exists but is unwired. All raw output checked into `data/raw/`.
+1. **Fetch** — People: Pantheon CSV plus two batched SPARQL enrichment passes keyed on Wikidata QID (descriptions, reign/term-of-office periods). Wars/Discoveries: SPARQL pulls candidate events. All raw output checked into `data/raw/`.
 2. **Score** — Wars/Discoveries: sitelink count. People: Pantheon's HPI. Two independent tier systems, never blended.
 3. **Tag** — Wars/Discoveries: Wikidata Q-ID-keyed lookup table onto fixed event-type/region categories. People: Pantheon's own occupation/country string values onto `OccupationDomain`/`UnRegion`, a fully enumerated closed set.
 4. **Output** — final JSON written to pipeline-owned `data/output/` (gitignored); `npm run publish-data` copies it into `packages/shared-types`, keeping "compute" and "publish" as separate steps.

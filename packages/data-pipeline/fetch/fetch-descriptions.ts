@@ -9,12 +9,12 @@ import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
 
 // Runs after fetch-pantheon.ts, reading the just-downloaded CSV back out
-// (same "raw file is the handoff" pattern fetch-reigns.ts already uses)
-// rather than threading the parsed rows through in memory. Only fetches
-// for rows clearing MIN_HPI — Pantheon's own corpus (126,582 rows) is far
-// larger than the old Wikidata candidate pool ever was, so unlike
-// fetch-reigns.ts (which queries the whole pre-fame-tier candidate pool),
-// this deliberately queries the post-floor set only.
+// (same "raw file is the handoff" pattern fetch-reigns.ts also uses) rather
+// than threading the parsed rows through in memory. Only fetches for rows
+// clearing MIN_HPI — Pantheon's own corpus (126,582 rows) is far larger
+// than the old Wikidata candidate pool ever was, so querying the whole
+// thing would be wasted work (fetch-reigns.ts applies the same floor for
+// the same reason).
 export async function fetchDescriptions(): Promise<void> {
   const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
   const rows = parsePantheonCsv(await readFile(csvPath, "utf8"));

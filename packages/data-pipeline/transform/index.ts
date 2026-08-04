@@ -107,13 +107,10 @@ export function transformDiscoveries(): TaggedEvent[] {
   return scoreAndRank(inventions);
 }
 
-// Reads a frozen snapshot from the last time fetch-reigns.ts actually ran
-// (pre-Pantheon) — fetch/index.ts no longer calls it, since its input
-// (people.raw.json) no longer exists; see People: reign-period secondary
-// enrichment. Keyed by every person Q-ID that snapshot covers, not just the
-// ones that survive the fame-tier cut in transformPeople() — Output looks
-// this up by id per final person, so extra/stale entries are simply never
-// read.
+// Keyed by every person Q-ID that fetch-reigns.ts's snapshot covers, not
+// just the ones that survive the fame-tier cut in transformPeople() —
+// Output looks this up by id per final person, so extra/stale entries are
+// simply never read.
 export function loadReignsMap(): Map<string, ReignPeriod[]> {
   const raw = loadRaw("people-reigns.raw.json");
   return groupReigns(raw.results.bindings);

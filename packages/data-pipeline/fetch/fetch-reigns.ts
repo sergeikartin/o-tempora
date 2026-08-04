@@ -1,38 +1,22 @@
 import { writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { validateSparqlResultShape } from "./validate-sparql-result.js";
 import { buildReignsQuery } from "./queries/reigns.js";
+import { MIN_HPI } from "./queries/min-hpi.js";
+import { parsePantheonCsv } from "./pantheon-row-shape.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
-import type { SparqlResults } from "./sparql-result-shape.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
 
-const ENTITY_URI_PATTERN = /\/entity\/(Q\d+)$/;
-
-function extractPersonIds(raw: SparqlResults): string[] {
-  const ids = new Set<string>();
-  for (const row of raw.results.bindings) {
-    const uri = row.person?.value;
-    const match = uri ? ENTITY_URI_PATTERN.exec(uri) : null;
-    if (match?.[1]) ids.add(match[1]);
-  }
-  return [...ids];
-}
-
-// Runs after fetchPeople() — reads the candidate person IDs straight back
-// out of the raw file it just wrote (rather than threading the in-memory
-// result through), the same "raw file is the handoff" pattern Transform
-// already uses to read Fetch's output. Deliberately queries the full
-// candidate pool, not just the eventual top-N cut (that cut doesn't exist
-// yet at Fetch time), so this stays ordered before Score/Tag like the rest
-// of Fetch.
+// Runs after fetchPantheon() — reads the candidate person Q-IDs back out of
+// the just-downloaded CSV (the "raw file is the handoff" pattern
+// fetch-descriptions.ts already uses), rather than a primary Wikidata people
+// scan. Filtered to MIN_HPI same as fetch-descriptions.ts: anything below
+// that floor never survives Score, so querying it here is wasted.
 export async function fetchReigns(): Promise<void> {
-  const peopleRawPath = path.join(RAW_DIR, "people.raw.json");
-  const peopleRaw = validateSparqlResultShape(
-    JSON.parse(await readFile(peopleRawPath, "utf8")),
-  );
-  const personIds = extractPersonIds(peopleRaw);
+  const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
+  const rows = parsePantheonCsv(await readFile(csvPath, "utf8"));
+  const personIds = [...new Set(rows.filter((row) => row.hpi >= MIN_HPI).map((row) => row.wdId))];
 
   console.log(`Fetching reign/term-of-office periods for ${personIds.length} candidate people...`);
 
@@ -41,4 +25,11 @@ export async function fetchReigns(): Promise<void> {
   const outputPath = path.join(RAW_DIR, "people-reigns.raw.json");
   await writeFile(outputPath, JSON.stringify(output, null, 2));
   console.log(`Wrote ${output.results.bindings.length} rows to ${outputPath}`);
+}
+
+if (fileURLToPath(import.meta.url) === process.argv[1]) {
+  fetchReigns().catch((error: unknown) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
 }
