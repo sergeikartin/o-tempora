@@ -1,0 +1,49 @@
+# Map: Alternative data sources for the history-timeline pipeline
+
+## Destination
+
+A spec for the data-pipeline's Fetch stage: for each lane (People, Wars & Conflicts, Events & Inventions), decide whether to keep Wikidata live SPARQL, redesign the live SPARQL query, or switch to an external dataset — plus the downstream Score/Tag/Output changes each choice implies. Triggered by Wikidata Query Service reliability problems (502s/timeouts documented in `CLAUDE-activeContext.md`) and three external candidates the user found.
+
+## Notes
+
+- Domain: `packages/data-pipeline` (see `packages/data-pipeline/CLAUDE.md`, `CLAUDE-decisions.md`). Do not touch `packages/web` from this map — a frontend fame-tier-selector unit is already separately tracked (Unit 9, `CLAUDE-activeContext.md`).
+- Skills to consult when resolving tickets: `/research` for the research tickets below; `/grilling` and `/domain-modeling` for follow-on decisions the research surfaces.
+- Standing invariant this map may need to amend: `packages/data-pipeline/CLAUDE.md` currently states occupation/region tagging is a pipeline-wide QID-keyed lookup table. The People-source decision below makes that lane-specific, not pipeline-wide — `CLAUDE-decisions.md`/`CLAUDE-patterns.md` need updating once implementation starts (per root `CLAUDE.md`'s "update docs in the same unit of work" rule), not as part of this map.
+- Per-lane candidates, as of charting:
+  | Lane | Candidate | Coverage |
+  |---|---|---|
+  | People | [Pantheon 2.0](https://pantheon.world/data/datasets) | Full replacement |
+  | Wars & Conflicts | [CDB90](https://github.com/jrnold/CDB90) | 1600-1973 only, hybrid with Wikidata |
+  | Events & Inventions | [Vetustas Archiva](https://docs.vetustas.net/datasets/inventions) | Rejected — stays Wikidata-only |
+
+## Decisions so far
+
+- [People source: Pantheon](issues/01-people-source-pantheon.md) — Pantheon fully replaces Wikidata for People; QID loss accepted; occupation/region come from Pantheon's own fields, making the QID-keyed lookup-table approach lane-specific rather than pipeline-wide.
+- [Wars source: CDB90 hybrid](issues/02-wars-source-cdb90-hybrid.md) — CDB90 (1600-1973, public domain/ODC-BY) is the lead Wars candidate over the Kaggle wars dataset; hybrid with Wikidata for the rest of the range is in scope.
+- [Fame tier: HPI thresholds](issues/03-fame-tier-hpi-thresholds.md) — Fame tiers rebind from Wikidata sitelinks to Pantheon's HPI, floors 90/85/75 (exact tier mapping to be confirmed against Pantheon's real HPI field).
+- [Wikidata reliability approach](issues/04-wikidata-reliability-approach.md) — No bulk dump; redesign the live SPARQL query/pagination/retry strategy instead, for whatever stays on Wikidata.
+- [CDB90 war-range research](issues/06-research-cdb90-war-ranges.md) — No native war-level dates in CDB90; must derive from per-battle `battle_durations.csv` min/max, which undershoots true war span and degenerates to a point for 17/65 single-battle wars. License (ODC-BY) is redistribution-safe with attribution. DBpedia crosswalk exists but is per-battle only (62.7% filled), no war-level identifier at all.
+- [Wikidata query reliability research](issues/08-research-wikidata-query-fix.md) — Two independent problems: a missing try/catch in `fetchEvents()` (the crash), and retry logic that only covers HTTP 429, never 502/503/504 (the actual failure class hit) — WMF's own guidance says retry those with backoff. 6 concrete redesign options given, priority-ordered.
+- [Pantheon schema research](issues/05-research-pantheon-schema.md) — Full 2025 dataset downloaded and parsed (126,582 rows). HPI floors 90/85/75 confirmed usable (108/423/3,840 people). Occupation is a flat 101-category field (no hierarchy); region is present-day-location, not historical nationality. **Correction**: Pantheon retains Wikidata QID (`wd_id`) for every row — the "QID loss" premise in the People-source decision was wrong; reign-period enrichment stays feasible. License is CC BY-SA 4.0 (ShareAlike) — a real, unresolved constraint, not a generic CC license.
+- [Vetustas schema research](issues/07-research-vetustas-schema.md) — Real dataset found behind the JS-shell docs page (`github.com/0xShady/vetustas-archiva`, live API at `api.vetustas.net/v1`). 296 records, 100%-filled `wikidata_id` crosswalk, but roughly the same scale as the 289 invention events Wikidata already produces — not broad enough to fully replace Wikidata for this lane. Same CC BY-SA 4.0 license as Pantheon.
+- [CDB90 war-range derivation](issues/09-cdb90-war-range-derivation.md) — Use `battles.csv`'s `war4` column directly (regex-parsed `War Name of START-END`), not battle-date derivation. Corrects the earlier research: `war4` gives clean, accurate, fully-populated war-level date ranges (verified against known history), making the grouping-key and single-battle-war-fallback questions moot. One data typo to handle (`"World War II of 1939-194"`).
+- [Occupation taxonomy mapping](issues/12-occupation-taxonomy-mapping.md) — `Category` is genuinely shared with `HistoricalEvent`, so it splits into two types: `Category` (unchanged, event-type only) and a new `OccupationDomain` (Pantheon's 8 domains: sports/institutions/arts/humanities/science-technology/business-law/public-figure/exploration) replacing `Person.category`/`occupationTags`. Full 101-value mapping table recorded on the ticket. A `packages/shared-types` change — bigger than this map's original Fetch-stage-only destination, but a direct consequence of the People-source decision.
+- [Pantheon license ShareAlike](issues/10-pantheon-license-sharealike.md) — Accepted. This sets the project's first data-licensing stance (previously unstated). Compliance: a `LICENSE-DATA` notice plus an in-app attribution credit, covering Pantheon now and Vetustas too if it's later adopted for Events & Inventions.
+- [Reign periods fate](issues/11-reign-periods-fate.md) — Kept, as a secondary Wikidata enrichment pass keyed on Pantheon's `wd_id`. The existing `reigns.ts` batched Q-ID mechanism needs no structural change, just a different Q-ID source.
+- [Region taxonomy mapping](issues/13-region-taxonomy-mapping.md) — Same shared-type situation as `Category`: `Region` splits in two. `Region` (6 values) stays for `HistoricalEvent`; a new `UnRegion` type (22 UN M49 sub-regions) replaces `Person.regionTags`. `birth_civ` rejected (live per-person API dependency too costly); instead a one-time call to Pantheon's live `/country` endpoint (verified working, 238 rows) builds a hardcoded country→`UnRegion` table. Present-day-location accepted as a deliberate simplification for People.
+- [Events & Inventions source decision](issues/14-events-source-decision.md) — Stays Wikidata-only. Vetustas rejected: comparable scale to what Wikidata already produces (296 vs 289), only 92% in-range, inconsistent metadata — not a clear improvement, and adopting it would mean real hybrid-integration cost for marginal benefit. Relies entirely on the query-reliability fix.
+- [Split Wars/Events output](issues/15-split-wars-events-output.md) — Output stage writes two files, `wars.json` and `discoveries.json`, instead of one merged `events.json`. Lane renamed "Events & Inventions" → "Discoveries & Inventions" to match. Both files keep the same `HistoricalEvent` type. Simplifies Transform (no more wars/inventions merge step) and removes any risk of CDB90 entries touching Discoveries & Inventions data. `packages/web` and the root `CLAUDE-decisions.md` product naming will need updating — flagged, not resolved here.
+- [CDB90 fame-score source](issues/16-cdb90-fame-score-source.md) — Flat `fameScore = 100` (the `generalPublic` floor, not `specialist`) for every CDB90 entry, so the curated list is visible at every fame tier rather than gated to the most inclusive one. No DBpedia→Wikidata sitelink lookup — avoids reintroducing a live Wikidata dependency for only partial coverage. Unblocks implementation ticket 21 (Wars: CDB90 hybrid integration).
+
+## Not yet specified
+
+- Downstream `Person`/`HistoricalEvent` type changes in `packages/shared-types` beyond the now-decided `OccupationDomain` split — new optional fields (Pantheon's `hpi`, CDB90/Vetustas identifiers if kept) and adapter shapes haven't been designed yet.
+- Whether the Fetch stage architecture needs to become multi-source-aware (pluggable per-lane fetchers) instead of the current single-SPARQL-client model — now that all three schemas are known to genuinely differ, this is close to specifiable but not yet ticketed.
+- Concrete query-redesign implementation plan for the Wikidata-reliability decision — the research (ticket 08) gives priority-ordered options; turning that into an implementation plan is follow-on work, not yet ticketed as a decision.
+- Any pipeline-stage test-suite changes needed to cover new source adapters.
+- Attribution/credits mechanism for datasets that require it (CDB90 is ODC-BY; Pantheon is CC BY-SA 4.0) — the app has no existing attribution UI to extend. The ShareAlike *acceptability* question is resolved (see Pantheon license ShareAlike); the actual UI/notice placement and wording is still fog.
+
+## Out of scope
+
+- Kaggle "World History of Wars and Demographics" dataset — superseded by CDB90 as the Wars candidate (cleaner license, richer war/battle cross-referencing); not compared further.
+- Scraping britannica.com/topic/war for wars data — unstructured prose (not a dataset export), blocked automated access (403), and higher legal/ToS risk than the reliability problem this map is trying to solve.

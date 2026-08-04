@@ -1,12 +1,19 @@
 // Fame score is the sitelink count, unmodified — no normalization, no
-// log-scaling, no blending with other signals. This is a one-line sort by
-// sitelinks descending plus a slice to the fame-tier ceiling — applied
-// independently per lane (people; and historical events + inventions
-// combined into one ranked pool), with different ceilings per lane since
-// the two candidate pools are very different sizes.
-export const PEOPLE_FAME_TIER_CEILING = 3000;
-export const EVENTS_FAME_TIER_CEILING = 1000;
+// log-scaling, no blending with other signals. Three named tiers, expressed
+// as sitelink floors shared across both lanes (people; and historical events
+// + inventions combined): each tier is a `fameScore >=` cutoff on the same
+// field, so general-public is a subset of educated is a subset of specialist
+// automatically — no re-ranking needed when the tier changes.
+export const FAME_TIER_MIN_SITELINKS = {
+  generalPublic: 100,
+  educated: 50,
+  specialist: 30,
+} as const;
 
-export function scoreAndRank<T extends { sitelinks: number }>(rows: T[], ceiling: number): T[] {
-  return [...rows].sort((a, b) => b.sitelinks - a.sitelinks).slice(0, ceiling);
+export type FameTier = keyof typeof FAME_TIER_MIN_SITELINKS;
+
+export function scoreAndRank<T extends { sitelinks: number }>(rows: T[]): T[] {
+  return rows
+    .filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS.specialist)
+    .sort((a, b) => b.sitelinks - a.sitelinks);
 }
