@@ -9,6 +9,7 @@
   "scripts": {
     "fetch": "NODE_USE_ENV_PROXY=1 tsx fetch/index.ts",
     "build-data": "tsx output/index.ts",
+    "publish-data": "tsx output/publish.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test transform/**/*.test.ts output/**/*.test.ts fetch/**/*.test.ts"
   },
