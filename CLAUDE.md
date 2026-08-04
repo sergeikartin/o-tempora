@@ -22,3 +22,13 @@ Read on demand — only load what the current task needs.
 | `context/specs/*.md` | Picking up a specific, already-planned unit of work |
 
 **Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale. See `docs/workflow.md` for the full delivery process.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live as markdown files under `.scratch/<feature-slug>/`. See `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Multi-context — root `CONTEXT-MAP.md` points to a `CONTEXT.md` per package under `packages/*/`. See `docs/agents/domain.md`.

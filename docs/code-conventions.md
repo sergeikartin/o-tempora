@@ -1,9 +1,9 @@
 # Code Conventions
 
-<!-- Shared code conventions across both packages. Read before implementing shared/cross-package code. Package-specific conventions: packages/web/docs/conventions.md · packages/data-pipeline/docs/conventions.md -->
+<!-- Shared code conventions across both packages. Read before implementing shared/cross-package code. Package-specific conventions: packages/web/docs/code-conventions.md · packages/data-pipeline/docs/code-conventions.md -->
 
 ## General
-For TypeScript conventions, see docs/TYPESCRIPT.md
+For TypeScript conventions, see docs/typescript.md
 
 ## Date handling
 - use  JavaScript Temporal API for all dates in app
