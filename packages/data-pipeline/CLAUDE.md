@@ -7,7 +7,8 @@ Offline Node.js + TypeScript pipeline that curates `packages/shared-types` datas
 Run from repo root:
 
 - Fetch (Wikidata → raw JSON): `npm run fetch --workspace packages/data-pipeline`
-- Build data (→ `shared-types` data): `npm run build-data --workspace packages/data-pipeline`
+- Build data (raw JSON → pipeline-owned `data/output/`): `npm run build-data --workspace packages/data-pipeline`
+- Publish data (`data/output/` → `packages/shared-types` data): `npm run publish-data --workspace packages/data-pipeline`
 - Test: `npm run test --workspace packages/data-pipeline` (`node:test`)
 - Type check: `npm run typecheck --workspace packages/data-pipeline`
 
