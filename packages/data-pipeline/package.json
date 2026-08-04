@@ -11,7 +11,7 @@
     "build-data": "tsx output/index.ts",
     "publish-data": "tsx output/publish.ts",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test transform/**/*.test.ts output/**/*.test.ts fetch/**/*.test.ts"
+    "test": "tsx --test 'transform/**/*.test.ts' 'output/**/*.test.ts' 'fetch/**/*.test.ts'"
   },
   "dependencies": {
     "@same-sky/shared-types": "^0.1.0",

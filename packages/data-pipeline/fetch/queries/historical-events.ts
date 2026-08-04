@@ -1,4 +1,5 @@
 import { MIN_SITELINKS } from "./min-sitelinks.js";
+import { formatYearAsSparqlDateTime } from "./format-sparql-date.js";
 
 // The one ?type class that gets range-bar (start+end) treatment instead of a
 // single point, per the product decision that only wars — not battles,
@@ -25,7 +26,14 @@ const EVENT_TYPES = [
   "wd:Q13418847", // historical event
 ];
 
-export function buildHistoricalEventsQuery(limit: number, offset: number): string {
+export function buildHistoricalEventsQuery(
+  limit: number,
+  offset: number,
+  minYear: number,
+  maxYearExclusive: number,
+): string {
+  const minDateTime = formatYearAsSparqlDateTime(minYear);
+  const maxDateTime = formatYearAsSparqlDateTime(maxYearExclusive);
   return `
 SELECT ?event ?eventLabel ?date ?endDate ?sitelinks ?type ?country ?article ?description ?partOfLabel WHERE {
   VALUES ?type { ${EVENT_TYPES.join(" ")} }
@@ -36,6 +44,7 @@ SELECT ?event ?eventLabel ?date ?endDate ?sitelinks ?type ?country ?article ?des
   OPTIONAL { ?event wdt:P580 ?startTime. }
   BIND(COALESCE(?pointInTime, ?startTime) AS ?date)
   FILTER(BOUND(?date))
+  FILTER(?date >= "${minDateTime}"^^xsd:dateTime && ?date < "${maxDateTime}"^^xsd:dateTime)
   OPTIONAL { ?event wdt:P582 ?endDate. }
   OPTIONAL { ?event rdfs:label ?eventLabel . FILTER(LANG(?eventLabel) = "en") }
   OPTIONAL { ?event wdt:P17 ?country. }
