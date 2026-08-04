@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { transformPeople, transformWars, transformDiscoveries, loadReignsMap } from "../transform/index.js";
-import { buildPeople, buildEvents, type DropReport } from "./write-datasets.js";
+import { buildPeople, buildWars, buildDiscoveries, type DropReport } from "./write-datasets.js";
 
 // The pipeline owns its own output — generating a dataset is a separate,
 // inspectable step from publishing it for consumers to read. `publish.ts`
@@ -26,11 +26,11 @@ async function main(): Promise<void> {
   logReport("people.json", people.length, peopleReport);
   await writeDataset("people.json", people);
 
-  const { events: wars, report: warsReport } = buildEvents(transformWars());
+  const { wars, report: warsReport } = buildWars(transformWars());
   logReport("wars.json", wars.length, warsReport);
   await writeDataset("wars.json", wars);
 
-  const { events: discoveries, report: discoveriesReport } = buildEvents(transformDiscoveries());
+  const { discoveries, report: discoveriesReport } = buildDiscoveries(transformDiscoveries());
   logReport("discoveries.json", discoveries.length, discoveriesReport);
   await writeDataset("discoveries.json", discoveries);
 

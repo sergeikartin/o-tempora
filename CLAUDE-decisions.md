@@ -20,7 +20,7 @@ World History Timeline: a read-only, continuously zoomable visualization of worl
 
 ## Architecture
 
-Two independently-shippable parts: **`packages/web`** (frontend — React + TypeScript + Vite + vis-timeline, mini-FSD) and **`packages/data-pipeline`** (offline Node/TypeScript pipeline that curates the frontend's dataset from Wikidata). The pipeline runs offline to produce static JSON; the frontend only ever reads that JSON. Both are npm-workspace packages, alongside **`packages/shared-types`** (shared `Person`/`HistoricalEvent`/`Category`/`Region` types plus the generated `people.json`/`wars.json`/`discoveries.json`), which lets `web` and `data-pipeline` share types and data without importing each other directly.
+Two independently-shippable parts: **`packages/web`** (frontend — React + TypeScript + Vite + vis-timeline, mini-FSD) and **`packages/data-pipeline`** (offline Node/TypeScript pipeline that curates the frontend's dataset from Wikidata). The pipeline runs offline to produce static JSON; the frontend only ever reads that JSON. Both are npm-workspace packages, alongside **`packages/shared-types`** (shared `Person`/`War`/`Discovery`/`Category`/`Region` types, all three extending a common `TimelineEntry` shape, plus the generated `people.json`/`wars.json`/`discoveries.json`), which lets `web` and `data-pipeline` share types and data without importing each other directly.
 
 Package-specific stack, boundaries, and pipeline stages: `packages/web/CLAUDE-decisions.md` · `packages/data-pipeline/CLAUDE-decisions.md`
 
