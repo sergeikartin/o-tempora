@@ -21,7 +21,7 @@ interface TimelineCanvasProps {
 
 // Wars & Conflicts and Events & Inventions render as empty lanes for now —
 // packages/shared-types has no published War/Discovery data yet (tracked in
-// root CLAUDE-activeContext.md's Open Questions), so these two Timeline
+// root docs/active-context.md's Open Questions), so these two Timeline
 // instances are constructed but never fed items.
 export function TimelineCanvas({ people }: TimelineCanvasProps) {
   const peopleContainerRef = useRef<HTMLDivElement>(null);

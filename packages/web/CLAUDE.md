@@ -18,7 +18,12 @@ Run from repo root:
 ## Code Style & Conventions
 
 - Mini-FSD layering: `shared → features → widgets → app` (no `entities`/`pages`); a layer may only import from layers below it; each slice exposes one public `index.ts`; enforced by Steiger in CI
-- CSS Modules only; no hardcoded hex values — colors/spacing come from tokens in `CLAUDE-patterns.md`
+- CSS Modules only; no hardcoded hex values — colors/spacing come from tokens in `docs/design-tokens.md`
 - `Temporal.PlainDate` is canonical everywhere except `toLegacyDate()` in `shared/lib/dates.ts`, called only from `widgets/timeline-canvas/` (see root `CLAUDE.md` — this rule is shared with `packages/data-pipeline`)
-- Full rules and design tokens: `CLAUDE-patterns.md` (shared conventions: `../../CLAUDE-patterns.md`)
-- Package architecture decisions: `CLAUDE-decisions.md` (product scope and invariants: `../../CLAUDE-decisions.md`)
+
+## Docs
+
+- `docs/conventions.md` — FSD/React/styling/vis-timeline rules, file organization
+- `docs/design-tokens.md` — color palette, typography, radius scale
+- `docs/architecture.md` — stack, boundaries, ADR log
+- Shared conventions/architecture (apply here too): `../../docs/code-conventions.md` · `../../docs/architecture.md`
