@@ -55,11 +55,13 @@ const INVENTIONS_CONFIG: GroupRowsConfig = {
   countryVar: "country",
 };
 
-// group -> tag -> score, per lane. Tagging happens before the fame-tier
-// slice so events-lane tagging (which differs by source: historical events
-// look up a ?type claim, inventions get "invention" unconditionally) is
-// applied while each source's grouped rows are still distinguishable,
-// before the two sources are merged into one ranked pool for scoring.
+// group -> tag -> score, per lane. Wars & Conflicts and Discoveries &
+// Inventions are two entirely independent lanes end to end — each fed by
+// its own raw snapshot, tagged with its own rules (historical events look
+// up a ?type claim; inventions get "invention" unconditionally), and scored
+// on its own. They're never merged: tagHistoricalEvent never produces
+// "invention" and tagInvention always does, so the two lanes' categories
+// can't overlap by construction — see tag-events.test.ts.
 export function transformPeople(): TaggedPerson[] {
   const raw = loadRaw("people.raw.json");
   const grouped = groupRows(raw.results.bindings, PEOPLE_CONFIG);
@@ -67,23 +69,22 @@ export function transformPeople(): TaggedPerson[] {
   return scoreAndRank(tagged);
 }
 
-export function transformEvents(): TaggedEvent[] {
+export function transformWars(): TaggedEvent[] {
   const historicalRaw = loadRaw("events-historical.raw.json");
-  const inventionsRaw = loadRaw("events-inventions.raw.json");
-
   const historical = groupRows(historicalRaw.results.bindings, HISTORICAL_CONFIG).map((row) => ({
     ...row,
     ...tagHistoricalEvent(row),
   }));
+  return scoreAndRank(historical);
+}
+
+export function transformDiscoveries(): TaggedEvent[] {
+  const inventionsRaw = loadRaw("events-inventions.raw.json");
   const inventions = groupRows(inventionsRaw.results.bindings, INVENTIONS_CONFIG).map((row) => ({
     ...row,
     ...tagInvention(row),
   }));
-
-  // Confirmed no ID overlap between the two raw sources (see
-  // context/specs/02-data-pipeline-score.md), so this is a plain union with
-  // no dedup-conflict handling needed.
-  return scoreAndRank([...historical, ...inventions]);
+  return scoreAndRank(inventions);
 }
 
 // Keyed by every candidate person Q-ID fetch-reigns.ts queried, not just the
