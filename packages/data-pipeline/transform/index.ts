@@ -3,13 +3,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { ReignPeriod } from "@same-sky/shared-types";
 import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
+import { parsePantheonCsv, type PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
 import { groupRows, type GroupedRow, type GroupRowsConfig } from "./group-rows.js";
 import { groupReigns } from "./group-reigns.js";
-import { tagPerson, type PersonTags } from "./tag-people.js";
+import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
 import { tagHistoricalEvent, tagInvention, type EventTags } from "./tag-events.js";
-import { scoreAndRank } from "./score.js";
+import { scoreAndRank, scoreAndRankByHpi } from "./score.js";
 
-export type TaggedPerson = GroupedRow & PersonTags;
+export type TaggedPerson = PantheonPersonRow &
+  PantheonPersonTags & { description?: string; wikipediaUrl: string };
 export type TaggedEvent = GroupedRow & EventTags;
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
@@ -20,17 +22,22 @@ function loadRaw(fileName: string) {
   );
 }
 
-const PEOPLE_CONFIG: GroupRowsConfig = {
-  entityVar: "person",
-  labelVar: "personLabel",
-  sitelinksVar: "sitelinks",
-  articleVar: "article",
-  descriptionVar: "description",
-  dateVar: "birthDate",
-  secondaryDateVar: "deathDate",
-  tagVar: "occupation",
-  countryVar: "country",
-};
+const ENTITY_URI_PATTERN = /\/entity\/(Q\d+)$/;
+
+// Keyed by Wikidata QID, extracted from the description-query's ?person
+// URI binding — same extraction pattern group-reigns.ts already uses.
+function loadDescriptionsMap(): Map<string, string> {
+  const raw = loadRaw("people-descriptions.raw.json");
+  const map = new Map<string, string>();
+  for (const row of raw.results.bindings) {
+    const personUri = row.person?.value;
+    const description = row.description?.value;
+    if (!personUri || !description) continue;
+    const match = ENTITY_URI_PATTERN.exec(personUri);
+    if (match?.[1]) map.set(match[1], description);
+  }
+  return map;
+}
 
 const HISTORICAL_CONFIG: GroupRowsConfig = {
   entityVar: "event",
@@ -62,11 +69,24 @@ const INVENTIONS_CONFIG: GroupRowsConfig = {
 // on its own. They're never merged: tagHistoricalEvent never produces
 // "invention" and tagInvention always does, so the two lanes' categories
 // can't overlap by construction — see tag-events.test.ts.
+// Sourced from Pantheon 2.0, not Wikidata — no grouping needed (the CSV is
+// already one row per person, unlike SPARQL's denormalized bindings).
+// Descriptions come from a separate batched SPARQL fetch keyed on the
+// Wikidata QID Pantheon retains per row (fetch-descriptions.ts), since
+// Pantheon's own CSV has no description-equivalent field.
 export function transformPeople(): TaggedPerson[] {
-  const raw = loadRaw("people.raw.json");
-  const grouped = groupRows(raw.results.bindings, PEOPLE_CONFIG);
-  const tagged = grouped.map((row) => ({ ...row, ...tagPerson(row) }));
-  return scoreAndRank(tagged);
+  const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
+  const rows = parsePantheonCsv(fs.readFileSync(csvPath, "utf8"));
+  const descriptions = loadDescriptionsMap();
+
+  const tagged = rows.map((row) => ({
+    ...row,
+    ...tagPantheonPerson(row),
+    description: descriptions.get(row.wdId),
+    wikipediaUrl: `https://en.wikipedia.org/wiki/${row.slug}`,
+  }));
+
+  return scoreAndRankByHpi(tagged);
 }
 
 export function transformWars(): TaggedEvent[] {
@@ -87,10 +107,13 @@ export function transformDiscoveries(): TaggedEvent[] {
   return scoreAndRank(inventions);
 }
 
-// Keyed by every candidate person Q-ID fetch-reigns.ts queried, not just the
+// Reads a frozen snapshot from the last time fetch-reigns.ts actually ran
+// (pre-Pantheon) — fetch/index.ts no longer calls it, since its input
+// (people.raw.json) no longer exists; see People: reign-period secondary
+// enrichment. Keyed by every person Q-ID that snapshot covers, not just the
 // ones that survive the fame-tier cut in transformPeople() — Output looks
-// this up by id per final person, so extra entries for people who don't
-// make the cut are simply never read.
+// this up by id per final person, so extra/stale entries are simply never
+// read.
 export function loadReignsMap(): Map<string, ReignPeriod[]> {
   const raw = loadRaw("people-reigns.raw.json");
   return groupReigns(raw.results.bindings);

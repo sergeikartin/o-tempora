@@ -14,7 +14,8 @@
     "test": "tsx --test transform/**/*.test.ts output/**/*.test.ts fetch/**/*.test.ts"
   },
   "dependencies": {
-    "@same-sky/shared-types": "^0.1.0"
+    "@same-sky/shared-types": "^0.1.0",
+    "seek-bzip": "^2.0.0"
   },
   "devDependencies": {
     "tsx": "^4.19.0"

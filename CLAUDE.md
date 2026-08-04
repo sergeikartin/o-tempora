@@ -7,7 +7,7 @@
 
 - Project Name: World History Timeline (npm package: `same-sky`)
 - Tech Stack: React 19 + TypeScript + Vite + vis-timeline (frontend); Node.js + TypeScript (data pipeline); npm workspaces monorepo
-- Description: Read-only, continuously zoomable visualization of world history — People, Wars & Conflicts, and Events & Inventions lanes, hardcoded from Wikidata. No accounts, no editing, no live data fetching
+- Description: Read-only, continuously zoomable visualization of world history — People, Wars & Conflicts, and Events & Inventions lanes, hardcoded ahead of time (People from Pantheon 2.0, Wars & Conflicts/Events & Inventions from Wikidata). No accounts, no editing, no live data fetching
 
 ## Build, Test & Verify
 

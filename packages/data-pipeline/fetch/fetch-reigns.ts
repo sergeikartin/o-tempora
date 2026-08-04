@@ -1,24 +1,14 @@
 import { writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { runSparqlQuery } from "./wikidata-client.js";
 import { validateSparqlResultShape } from "./validate-sparql-result.js";
 import { buildReignsQuery } from "./queries/reigns.js";
+import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 import type { SparqlResults } from "./sparql-result-shape.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
 
-// Kept well under any practical VALUES-clause size limit; batching also
-// bounds how much a single request can cost the query service, consistent
-// with the courtesy delay pattern in wikidata-client.ts's fetchAllPages.
-const BATCH_SIZE = 50;
-const BATCH_DELAY_MS = 500;
-
 const ENTITY_URI_PATTERN = /\/entity\/(Q\d+)$/;
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 function extractPersonIds(raw: SparqlResults): string[] {
   const ids = new Set<string>();
@@ -46,27 +36,9 @@ export async function fetchReigns(): Promise<void> {
 
   console.log(`Fetching reign/term-of-office periods for ${personIds.length} candidate people...`);
 
-  let vars: string[] = [];
-  const bindings: SparqlResults["results"]["bindings"] = [];
+  const output = await batchedSparqlFetch(personIds, buildReignsQuery);
 
-  for (let i = 0; i < personIds.length; i += BATCH_SIZE) {
-    const batch = personIds.slice(i, i + BATCH_SIZE);
-    const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
-    try {
-      const result = await runSparqlQuery(buildReignsQuery(batch));
-      vars = result.head.vars;
-      bindings.push(...result.results.bindings);
-      console.log(`    batch ${batchNumber}: +${result.results.bindings.length} rows (total ${bindings.length})`);
-    } catch (error) {
-      // Best-effort, per the product decision — a failed batch just means
-      // those ~50 people get no reign data, not a fatal pipeline error.
-      console.warn(`    batch ${batchNumber}: failed (${(error as Error).message}); skipping.`);
-    }
-    if (i + BATCH_SIZE < personIds.length) await sleep(BATCH_DELAY_MS);
-  }
-
-  const output: SparqlResults = { head: { vars }, results: { bindings } };
   const outputPath = path.join(RAW_DIR, "people-reigns.raw.json");
   await writeFile(outputPath, JSON.stringify(output, null, 2));
-  console.log(`Wrote ${bindings.length} rows to ${outputPath}`);
+  console.log(`Wrote ${output.results.bindings.length} rows to ${outputPath}`);
 }

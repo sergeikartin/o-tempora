@@ -27,6 +27,55 @@ export const REGIONS = [
 
 export type Region = (typeof REGIONS)[number];
 
+// Pantheon's own occupation-domain grouping (its "Working in" filter),
+// covering all 101 raw `occupation` values with no gaps — see
+// data-pipeline/transform/occupation-domain-categories.ts for the mapping.
+// Person-only: Category/Region stay Wikidata-derived and War/Discovery-only
+// (see the People-source decision this type follows from).
+export const OCCUPATION_DOMAINS = [
+  "sports",
+  "institutions",
+  "arts",
+  "humanities",
+  "science-technology",
+  "business-law",
+  "public-figure",
+  "exploration",
+] as const;
+
+export type OccupationDomain = (typeof OCCUPATION_DOMAINS)[number];
+
+// The UN M49 geoscheme's 22 sub-regions — Person-only, keyed off Pantheon's
+// present-day birth/death country rather than historical polity (unlike
+// HistoricalEvent's Region, which is historical-polity-aware). See
+// data-pipeline/transform/un-region-categories.ts for the country mapping.
+export const UN_REGIONS = [
+  "northern-europe",
+  "southern-europe",
+  "eastern-europe",
+  "western-europe",
+  "eastern-asia",
+  "south-eastern-asia",
+  "southern-asia",
+  "central-asia",
+  "western-asia",
+  "northern-africa",
+  "western-africa",
+  "middle-africa",
+  "eastern-africa",
+  "southern-africa",
+  "northern-america",
+  "central-america",
+  "caribbean",
+  "south-america",
+  "australia-and-new-zealand",
+  "melanesia",
+  "micronesia",
+  "polynesia",
+] as const;
+
+export type UnRegion = (typeof UN_REGIONS)[number];
+
 // Year fields are plain integers, not Temporal.PlainDate instances or ISO
 // date strings: source data is frequently only certain to the year, and the
 // app's own zoom bound (10-year minimum window) never needs finer precision.
@@ -47,15 +96,23 @@ export interface TimelineEntry {
   wikipediaUrl: string;
 }
 
+// Sourced from Pantheon 2.0, not Wikidata — fameScore is Pantheon's own HPI
+// (0-100), not a sitelink count (see transform/score.ts's
+// FAME_TIER_MIN_HPI, independent of War/Discovery's sitelink-based tiers).
 export interface Person extends TimelineEntry {
-  category: Category;
-  occupationTags: Category[];
-  regionTags: Region[];
+  // Pantheon's `occupation` field is single-valued per person, unlike
+  // Wikidata's potentially-multiple occupation claims — one domain, not an
+  // array of tags.
+  occupationDomain: OccupationDomain;
+  // Birth region and death region can genuinely differ, so this stays an
+  // array even though occupationDomain doesn't need to be.
+  regionTags: UnRegion[];
   // Best-effort: only populated when Wikidata has at least one qualified
   // P39 ("position held") statement with a start-time qualifier for this
-  // person (see data-pipeline/fetch/queries/reigns.ts). Most people have
-  // none. Sorted ascending by startYear; a person can have more than one
-  // (e.g. a deposed-and-restored monarch, or multiple offices).
+  // person (see data-pipeline/fetch/queries/reigns.ts, keyed on the
+  // Wikidata QID Pantheon retains per person). Most people have none.
+  // Sorted ascending by startYear; a person can have more than one (e.g. a
+  // deposed-and-restored monarch, or multiple offices).
   reignPeriods?: ReignPeriod[];
 }
 

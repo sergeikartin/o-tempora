@@ -48,14 +48,19 @@ function validateEventRow(row: TaggedEvent, reasons: Record<string, number>): Va
 
 // Above the longest verified human lifespan (Jeanne Calment, 122 years) —
 // leaves slack for real date-precision edge cases, while still catching
-// clearly-wrong upstream Wikidata claims (e.g. William McMaster Murdoch's
-// P569 birth-date statement giving year 2 instead of 1873) rather than
-// rendering an obviously-broken, centuries-wide bar.
+// clearly-wrong upstream data (mirrors the same guard the old Wikidata
+// pipeline needed) rather than rendering an obviously-broken, centuries-
+// wide bar.
 const MAX_PLAUSIBLE_LIFESPAN_YEARS = 130;
 
 // Output is the last chance to catch a schema violation before the frontend
-// ever sees this data — validated here even though most of these should be
-// structurally impossible given Fetch's own required fields.
+// ever sees this data. wikipediaUrl needs no presence check here — it's
+// derived deterministically from Pantheon's slug column, which
+// parsePantheonCsv already guarantees is non-empty. reignsByPersonId is
+// keyed on Wikidata QID (row.wdId), not Pantheon's own id — currently
+// always empty (see People: reign-period secondary enrichment,
+// .scratch/alt-data-sources/issues/19-people-reign-periods-enrichment.md,
+// which will populate it), but wired to the correct key now.
 export function buildPeople(
   rows: TaggedPerson[],
   reignsByPersonId: Map<string, ReignPeriod[]> = new Map(),
@@ -64,46 +69,37 @@ export function buildPeople(
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    if (!row.label) {
-      record(reasons, "missing name");
-      continue;
-    }
-    if (!row.article) {
-      record(reasons, "missing Wikipedia article");
-      continue;
-    }
     if (!row.description) {
       record(reasons, "missing description");
       continue;
     }
-    if (row.year === undefined) {
-      record(reasons, "missing birth date");
+    if (row.birthyear === undefined) {
+      record(reasons, "missing birth year");
       continue;
     }
     if (
-      row.secondaryYear !== undefined &&
-      (row.secondaryYear < row.year || row.secondaryYear - row.year > MAX_PLAUSIBLE_LIFESPAN_YEARS)
+      row.deathyear !== undefined &&
+      (row.deathyear < row.birthyear || row.deathyear - row.birthyear > MAX_PLAUSIBLE_LIFESPAN_YEARS)
     ) {
       record(reasons, "implausible lifespan");
       continue;
     }
-    if (!row.category) {
-      record(reasons, "no mappable occupation category");
+    if (!row.occupationDomain) {
+      record(reasons, "no mappable occupation domain");
       continue;
     }
 
     people.push({
       id: row.id,
-      name: row.label,
-      startYear: row.year,
-      endYear: row.secondaryYear,
-      category: row.category,
-      occupationTags: row.occupationTags,
+      name: row.name,
+      startYear: row.birthyear,
+      endYear: row.deathyear,
+      occupationDomain: row.occupationDomain,
       regionTags: row.regionTags,
-      fameScore: row.sitelinks,
+      fameScore: row.hpi,
       description: row.description,
-      wikipediaUrl: row.article,
-      reignPeriods: reignsByPersonId.get(row.id),
+      wikipediaUrl: row.wikipediaUrl,
+      reignPeriods: reignsByPersonId.get(row.wdId),
     });
   }
 

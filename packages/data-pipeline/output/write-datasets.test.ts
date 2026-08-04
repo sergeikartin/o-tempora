@@ -5,17 +5,19 @@ import { buildPeople, buildWars, buildDiscoveries } from "./write-datasets.js";
 
 function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
   return {
-    id: "Q1",
-    label: "Ada Lovelace",
-    sitelinks: 150,
-    article: "https://en.wikipedia.org/wiki/Ada_Lovelace",
+    id: "14627",
+    wdId: "Q935",
+    name: "Ada Lovelace",
+    slug: "Ada_Lovelace",
+    occupation: "MATHEMATICIAN",
+    hpi: 85,
+    bplaceCountry: "United Kingdom",
+    dplaceCountry: "United Kingdom",
+    birthyear: 1815,
     description: "English mathematician",
-    year: 1815,
-    tags: [],
-    countries: [],
-    category: "science",
-    occupationTags: ["science"],
-    regionTags: ["europe"],
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Ada_Lovelace",
+    occupationDomain: "science-technology",
+    regionTags: ["northern-europe"],
     ...overrides,
   };
 }
@@ -36,15 +38,15 @@ function taggedEvent(overrides: Partial<TaggedEvent> = {}): TaggedEvent {
   };
 }
 
-test("buildPeople attaches reignPeriods only for people present in the map", () => {
-  const rows = [taggedPerson({ id: "Q1" }), taggedPerson({ id: "Q2", label: "Charles II" })];
-  const reigns = new Map([["Q2", [{ startYear: 1660, endYear: 1685 }]]]);
+test("buildPeople attaches reignPeriods only for people present in the map, keyed by wdId", () => {
+  const rows = [taggedPerson({ wdId: "Q935" }), taggedPerson({ wdId: "Q9682", name: "Charles II" })];
+  const reigns = new Map([["Q9682", [{ startYear: 1660, endYear: 1685 }]]]);
 
   const { people } = buildPeople(rows, reigns);
 
-  const [q1, q2] = people;
-  assert.equal(q1?.reignPeriods, undefined);
-  assert.deepEqual(q2?.reignPeriods, [{ startYear: 1660, endYear: 1685 }]);
+  const [q935, q9682] = people;
+  assert.equal(q935?.reignPeriods, undefined);
+  assert.deepEqual(q9682?.reignPeriods, [{ startYear: 1660, endYear: 1685 }]);
 });
 
 test("buildPeople defaults to no reign data when no map is passed", () => {
@@ -53,25 +55,41 @@ test("buildPeople defaults to no reign data when no map is passed", () => {
 });
 
 test("buildPeople drops a person whose birth-to-death span exceeds a plausible human lifespan", () => {
-  // Real case: Wikidata's own P569 claim for William McMaster Murdoch is
-  // year 2 (upstream data error), while deathYear is the correct 1912 —
-  // a 1910-year span that would render as an obviously-broken bar.
-  const rows = [taggedPerson({ id: "Q347334", year: 2, secondaryYear: 1912 })];
+  const rows = [taggedPerson({ id: "347334", birthyear: 2, deathyear: 1912 })];
   const { people, report } = buildPeople(rows);
   assert.equal(people.length, 0);
   assert.equal(report.reasons["implausible lifespan"], 1);
 });
 
 test("buildPeople drops a person whose death year precedes their birth year", () => {
-  const rows = [taggedPerson({ id: "Q99", year: 1900, secondaryYear: 1850 })];
+  const rows = [taggedPerson({ id: "99", birthyear: 1900, deathyear: 1850 })];
   const { people } = buildPeople(rows);
   assert.equal(people.length, 0);
 });
 
 test("buildPeople keeps a person with a plausible lifespan, including one near the real-world max", () => {
-  const rows = [taggedPerson({ id: "Q100", year: 1875, secondaryYear: 1997 })]; // 122 years
+  const rows = [taggedPerson({ id: "100", birthyear: 1875, deathyear: 1997 })]; // 122 years
   const { people } = buildPeople(rows);
   assert.equal(people.length, 1);
+});
+
+test("buildPeople drops a person with no mappable occupation domain", () => {
+  const rows = [taggedPerson({ occupationDomain: undefined })];
+  const { people, report } = buildPeople(rows);
+  assert.equal(people.length, 0);
+  assert.equal(report.reasons["no mappable occupation domain"], 1);
+});
+
+test("buildPeople drops a person with no description", () => {
+  const rows = [taggedPerson({ description: undefined })];
+  const { people, report } = buildPeople(rows);
+  assert.equal(people.length, 0);
+  assert.equal(report.reasons["missing description"], 1);
+});
+
+test("buildPeople maps fameScore directly from hpi", () => {
+  const { people } = buildPeople([taggedPerson({ hpi: 92.5 })]);
+  assert.equal(people[0]?.fameScore, 92.5);
 });
 
 test("buildWars only sets endYear for the war type (Q198), even if secondaryYear is present", () => {
