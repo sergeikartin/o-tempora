@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { transformPeople, transformEvents, loadReignsMap } from "../transform/index.js";
+import { transformPeople, transformWars, transformDiscoveries, loadReignsMap } from "../transform/index.js";
 import { buildPeople, buildEvents, type DropReport } from "./write-datasets.js";
 
 // The pipeline owns its own output — generating a dataset is a separate,
@@ -26,11 +26,15 @@ async function main(): Promise<void> {
   logReport("people.json", people.length, peopleReport);
   await writeDataset("people.json", people);
 
-  const { events, report: eventsReport } = buildEvents(transformEvents());
-  logReport("events.json", events.length, eventsReport);
-  await writeDataset("events.json", events);
+  const { events: wars, report: warsReport } = buildEvents(transformWars());
+  logReport("wars.json", wars.length, warsReport);
+  await writeDataset("wars.json", wars);
 
-  console.log(`Wrote people.json and events.json to ${DATA_DIR}`);
+  const { events: discoveries, report: discoveriesReport } = buildEvents(transformDiscoveries());
+  logReport("discoveries.json", discoveries.length, discoveriesReport);
+  await writeDataset("discoveries.json", discoveries);
+
+  console.log(`Wrote people.json, wars.json, and discoveries.json to ${DATA_DIR}`);
   console.log("Run `npm run publish-data --workspace packages/data-pipeline` to publish to packages/shared-types.");
 }
 

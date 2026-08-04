@@ -52,8 +52,9 @@ export interface Person {
   reignPeriods?: ReignPeriod[];
 }
 
-// Covers both historical events (wars, treaties, ...) and inventions —
-// both sources merge into one events.json with this same shape.
+// Covers both Wars & Conflicts (wars, battles, treaties, ...) and
+// Discoveries & Inventions — the two lanes are independent (wars.json,
+// discoveries.json) but share this same shape.
 export interface HistoricalEvent {
   id: string;
   name: string;
