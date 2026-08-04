@@ -1,22 +1,13 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { transformPeople, transformEvents, loadReignsMap } from "../transform/index.js";
-import { buildPeople, buildEvents, type DropReport } from "./write-datasets.js";
+import { transformPeople, transformWars, transformDiscoveries, loadReignsMap } from "../transform/index.js";
+import { buildPeople, buildWars, buildDiscoveries, type DropReport } from "./write-datasets.js";
 
-// Single destination — both /data-pipeline and (from Unit 3/4) /src read
-// generated data from the same shared-types package, rather than the
-// pipeline writing its own copy and duplicating it into /src/shared/data/.
-const DATA_DIR = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "..",
-  "..",
-  "packages",
-  "shared-types",
-  "src",
-  "data",
-);
+// The pipeline owns its own output — generating a dataset is a separate,
+// inspectable step from publishing it for consumers to read. `publish.ts`
+// copies this directory's contents into packages/shared-types/src/data/.
+const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "output");
 
 function logReport(label: string, kept: number, report: DropReport): void {
   console.log(`${label}: kept ${kept}, dropped ${report.dropped}`);
@@ -35,11 +26,16 @@ async function main(): Promise<void> {
   logReport("people.json", people.length, peopleReport);
   await writeDataset("people.json", people);
 
-  const { events, report: eventsReport } = buildEvents(transformEvents());
-  logReport("events.json", events.length, eventsReport);
-  await writeDataset("events.json", events);
+  const { wars, report: warsReport } = buildWars(transformWars());
+  logReport("wars.json", wars.length, warsReport);
+  await writeDataset("wars.json", wars);
 
-  console.log(`Wrote people.json and events.json to ${DATA_DIR}`);
+  const { discoveries, report: discoveriesReport } = buildDiscoveries(transformDiscoveries());
+  logReport("discoveries.json", discoveries.length, discoveriesReport);
+  await writeDataset("discoveries.json", discoveries);
+
+  console.log(`Wrote people.json, wars.json, and discoveries.json to ${DATA_DIR}`);
+  console.log("Run `npm run publish-data --workspace packages/data-pipeline` to publish to packages/shared-types.");
 }
 
 main().catch((error: unknown) => {

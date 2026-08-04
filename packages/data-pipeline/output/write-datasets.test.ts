@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { TaggedPerson, TaggedEvent } from "../transform/index.js";
-import { buildPeople, buildEvents } from "./write-datasets.js";
+import { buildPeople, buildWars, buildDiscoveries } from "./write-datasets.js";
 
 function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
   return {
@@ -74,24 +74,55 @@ test("buildPeople keeps a person with a plausible lifespan, including one near t
   assert.equal(people.length, 1);
 });
 
-test("buildEvents only sets endDate for the war type (Q198), even if secondaryYear is present", () => {
+test("buildWars only sets endYear for the war type (Q198), even if secondaryYear is present", () => {
   const war = taggedEvent({ id: "Q3", tags: ["Q198"], year: 1861, secondaryYear: 1865 });
   const battle = taggedEvent({ id: "Q4", tags: ["Q178561"], year: 1863, secondaryYear: 1863 });
 
-  const { events } = buildEvents([war, battle]);
+  const { wars } = buildWars([war, battle]);
 
-  const [warEvent, battleEvent] = events;
-  assert.equal(warEvent?.endDate, 1865);
-  assert.equal(battleEvent?.endDate, undefined);
+  const [warEntry, battleEntry] = wars;
+  assert.equal(warEntry?.endYear, 1865);
+  assert.equal(battleEntry?.endYear, undefined);
 });
 
-test("buildEvents passes through partOfLabel as partOfWarName when present", () => {
+test("buildWars passes through partOfLabel as partOfWarName when present", () => {
   const battle = taggedEvent({ partOfLabel: "American Civil War" });
-  const { events } = buildEvents([battle]);
-  assert.equal(events[0]?.partOfWarName, "American Civil War");
+  const { wars } = buildWars([battle]);
+  assert.equal(wars[0]?.partOfWarName, "American Civil War");
 });
 
-test("buildEvents leaves partOfWarName undefined when there is no partOfLabel", () => {
-  const { events } = buildEvents([taggedEvent()]);
-  assert.equal(events[0]?.partOfWarName, undefined);
+test("buildWars leaves partOfWarName undefined when there is no partOfLabel", () => {
+  const { wars } = buildWars([taggedEvent()]);
+  assert.equal(wars[0]?.partOfWarName, undefined);
+});
+
+test("buildDiscoveries passes through category, regionTags, and startYear", () => {
+  const discovery = taggedEvent({
+    id: "Q5",
+    label: "Penicillin",
+    article: "https://en.wikipedia.org/wiki/Penicillin",
+    description: "1928 discovery of the antibiotic",
+    year: 1928,
+    category: "invention",
+    regionTags: ["europe"],
+  });
+
+  const { discoveries } = buildDiscoveries([discovery]);
+
+  assert.deepEqual(discoveries[0], {
+    id: "Q5",
+    name: "Penicillin",
+    startYear: 1928,
+    category: "invention",
+    regionTags: ["europe"],
+    fameScore: 80,
+    description: "1928 discovery of the antibiotic",
+    wikipediaUrl: "https://en.wikipedia.org/wiki/Penicillin",
+  });
+});
+
+test("buildDiscoveries drops a row with no mappable category", () => {
+  const { discoveries, report } = buildDiscoveries([taggedEvent({ category: undefined })]);
+  assert.equal(discoveries.length, 0);
+  assert.equal(report.reasons["no mappable event category"], 1);
 });

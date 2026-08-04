@@ -1,3 +1,5 @@
+import { MIN_SITELINKS } from "./min-sitelinks.js";
+
 // The one ?type class that gets range-bar (start+end) treatment instead of a
 // single point, per the product decision that only wars — not battles,
 // treaties, sieges, etc. — render as a bar. Exported so transform/
@@ -29,7 +31,7 @@ SELECT ?event ?eventLabel ?date ?endDate ?sitelinks ?type ?country ?article ?des
   VALUES ?type { ${EVENT_TYPES.join(" ")} }
   ?event wdt:P31 ?type ;
          wikibase:sitelinks ?sitelinks .
-  FILTER(?sitelinks > 20)
+  FILTER(?sitelinks >= ${MIN_SITELINKS})
   OPTIONAL { ?event wdt:P585 ?pointInTime. }
   OPTIONAL { ?event wdt:P580 ?startTime. }
   BIND(COALESCE(?pointInTime, ?startTime) AS ?date)

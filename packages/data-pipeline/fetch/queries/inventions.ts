@@ -1,3 +1,5 @@
+import { MIN_SITELINKS } from "./min-sitelinks.js";
+
 // Candidate inventions/discoveries: items carrying wdt:P575 ("time of
 // discovery or invention") directly, rather than trying to classify by
 // instance-of — Wikidata has no single umbrella class for "invention" that
@@ -7,7 +9,7 @@ export function buildInventionsQuery(limit: number, offset: number): string {
 SELECT ?event ?eventLabel ?date ?sitelinks ?country ?article ?description WHERE {
   ?event wdt:P575 ?date ;
          wikibase:sitelinks ?sitelinks .
-  FILTER(?sitelinks > 20)
+  FILTER(?sitelinks >= ${MIN_SITELINKS})
   OPTIONAL { ?event rdfs:label ?eventLabel . FILTER(LANG(?eventLabel) = "en") }
   OPTIONAL { ?event wdt:P17 ?country. }
   OPTIONAL { ?article schema:about ?event; schema:isPartOf <https://en.wikipedia.org/>. }
