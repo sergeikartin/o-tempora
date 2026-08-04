@@ -1,10 +1,12 @@
 # 21 — Wars: CDB90 hybrid integration
 
-**What to build:** `wars.json` combines CDB90-sourced wars and battles for 1600–1973 (with accurate war-level date ranges parsed directly from CDB90's data) with Wikidata-sourced wars for the rest of history, with no duplicate wars between the two sources.
+**Superseded by [24 — Wars source: reopened, Wikidata-only](24-wars-source-reopen-wikidata-only.md).** Never implemented — no code exists that needs unwinding. Replaced by [25 — Wars & Conflicts: Wikidata reliability fixes and live re-fetch](25-wars-wikidata-reliability.md).
+
+**What to build (superseded):** `wars.json` combines CDB90-sourced wars and battles for 1600–1973 (with accurate war-level date ranges parsed directly from CDB90's data) with Wikidata-sourced wars for the rest of history, with no duplicate wars between the two sources.
 
 **Blocked by:** 18 — Output: split into wars.json/discoveries.json. (Previously also blocked by wayfinder decision ticket [CDB90 fame-score source](16-cdb90-fame-score-source.md) — now resolved: flat `fameScore = 100` for every CDB90 entry.)
 
-**Status:** ready-for-agent
+**Status:** superseded
 
 - [ ] A download script fetches CDB90's `battles.csv` (public, unauthenticated) and writes it as a raw snapshot checked into git.
 - [ ] A typed raw-row shape for the CDB90 CSV (covering only the columns consumed: `isqno`, `name`, `war4`, `dbpedia`) is validated at the Fetch boundary.

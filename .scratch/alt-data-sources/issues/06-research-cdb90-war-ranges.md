@@ -1,5 +1,5 @@
 Type: research
-Status: resolved
+Status: superseded by [24 — Wars source: reopened, Wikidata-only](24-wars-source-reopen-wikidata-only.md)
 
 ## Question
 

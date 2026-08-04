@@ -1,4 +1,4 @@
-Status: ready-for-agent
+Status: ready-for-agent (Wars & Conflicts sections below superseded — see [issues/24](issues/24-wars-source-reopen-wikidata-only.md); CDB90 dropped entirely, Wars reverted to Wikidata-only)
 
 # Spec: Alternative data sources for the history-timeline pipeline
 
