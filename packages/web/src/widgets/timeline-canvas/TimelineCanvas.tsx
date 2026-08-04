@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Timeline } from 'vis-timeline/standalone';
 import 'vis-timeline/styles/vis-timeline-graph2d.css';
-import type { Person } from '../../shared/types';
+import type { Discovery, Person, War } from '../../shared/types';
 import {
   PEOPLE_GROUPS,
   WARS_GROUPS,
@@ -10,20 +10,18 @@ import {
   buildWarsTimelineOptions,
   buildEventsTimelineOptions,
 } from './options';
-import { mapPeopleToItems } from './map-to-items';
+import { mapInventionsToItems, mapPeopleToItems, mapWarsAndConflictsToItems } from './map-to-items';
 import styles from './TimelineCanvas.module.css';
 
 const ZOOM_STEP = 0.2;
 
 interface TimelineCanvasProps {
   people: Person[];
+  wars: War[];
+  discoveries: Discovery[];
 }
 
-// Wars & Conflicts and Events & Inventions render as empty lanes for now —
-// packages/shared-types has no published War/Discovery data yet (tracked in
-// root docs/active-context.md's Open Questions), so these two Timeline
-// instances are constructed but never fed items.
-export function TimelineCanvas({ people }: TimelineCanvasProps) {
+export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProps) {
   const peopleContainerRef = useRef<HTMLDivElement>(null);
   const warsContainerRef = useRef<HTMLDivElement>(null);
   const eventsContainerRef = useRef<HTMLDivElement>(null);
@@ -83,6 +81,14 @@ export function TimelineCanvas({ people }: TimelineCanvasProps) {
   useEffect(() => {
     peopleTimelineRef.current?.setItems(mapPeopleToItems(people));
   }, [people]);
+
+  useEffect(() => {
+    warsTimelineRef.current?.setItems(mapWarsAndConflictsToItems(wars));
+  }, [wars]);
+
+  useEffect(() => {
+    eventsTimelineRef.current?.setItems(mapInventionsToItems(discoveries));
+  }, [discoveries]);
 
   function handleZoomIn() {
     eventsTimelineRef.current?.zoomIn(ZOOM_STEP);
