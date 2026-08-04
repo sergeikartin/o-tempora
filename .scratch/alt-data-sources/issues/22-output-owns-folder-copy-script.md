@@ -1,0 +1,14 @@
+# 22 — Output: write to the pipeline's own output folder, publish via a copy script
+
+**What to build:** The Output stage writes generated datasets into a location owned by `packages/data-pipeline` itself, instead of writing directly into `packages/shared-types`. A separate script copies that folder's contents into `packages/shared-types`'s data directory as an explicit post-build/publish step, decoupling "the pipeline computes its output" from "the output gets published for consumers to read."
+
+**Blocked by:** None — can start immediately.
+
+**Status:** done
+
+- [x] The Output stage's file-writing logic targets a new location owned by `packages/data-pipeline`, not `packages/shared-types` directly. (`data/output/`, gitignored)
+- [x] A new, separate script copies every file from that pipeline-owned output location into `packages/shared-types`'s data directory. (`output/publish.ts`, run via `npm run publish-data`)
+- [x] Byte-identical confirmed properly: the currently-committed `packages/shared-types` data turned out to already be stale relative to the committed `data/raw/*.json` (the Fame Tier Redesign commit updated raw snapshots but never re-ran/committed `build-data`'s output — pre-existing, unrelated to this ticket), so comparing against it directly wasn't meaningful. Instead, ran the old (pre-this-ticket) `index.ts` logic against a temp directory and the new logic against `data/output/`, from the same raw inputs — `diff -rq` and `md5sum` showed the two are byte-identical. Regenerated output was reverted from `packages/shared-types` (not committed) to avoid bundling that unrelated, unreviewed data regeneration into this ticket's diff.
+- [x] Existing output-stage tests: `write-datasets.test.ts` needed no changes (only exercises the pure `buildPeople`/`buildEvents` functions, never referenced the write path). Added new coverage for `publish.ts` (`publish.test.ts`, fixture temp directories, no network I/O) — extracted a testable `publishFiles(sourceDir, destDir)` function, mirroring the existing `write-datasets.ts` (pure/tested) + `index.ts` (thin I/O entry point) split. All 26 tests pass, typecheck clean.
+
+**Bug caught during code review and fixed**: the first version of `publish.ts` had a bare top-level `main().catch(...)`, matching `output/index.ts`'s existing pattern — but since `publish.ts` also needed to be *imported* (for `publishFiles` to be testable), that top-level call fired as a side effect of the test file's import, silently republishing stale data into `packages/shared-types` every time `npm test` ran. Fixed by guarding the call behind an entry-point check (`fileURLToPath(import.meta.url) === process.argv[1]`) so importing the module never triggers publishing — only running it directly does. Re-verified: tests no longer touch `packages/shared-types`, and `npm run publish-data` still works when run directly.
