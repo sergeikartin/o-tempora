@@ -13,7 +13,7 @@
 ### TypeScript
 
 - Strict mode throughout; avoid `any`.
-- Use `interface` for shared object contracts (`Person`, `HistoricalEvent`), defined once in `packages/shared-types`.
+- Use `interface` for shared object contracts (`Person`, `War`, `Discovery`, all extending `TimelineEntry`), defined once in `packages/shared-types`.
 - `Temporal.PlainDate` for all dates in app and pipeline code — never construct a legacy `Date` except at the one documented adapter (see `packages/web/CLAUDE-patterns.md`).
 
 ### Data and Storage

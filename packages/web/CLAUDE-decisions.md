@@ -19,4 +19,4 @@
 
 ### Architecture Decisions Log
 
-- `HistoricalEvent.category === "invention"` is the (implicit, not type-enforced) signal for which lane an event belongs to — no separate lane field exists.
+- **Superseded, not yet updated in code**: this decision described `HistoricalEvent.category === "invention"` as the (implicit, not type-enforced) signal for which lane an event belongs to. The data-pipeline now splits Wars & Conflicts (`wars.json`, typed `War[]`) and Discoveries & Inventions (`discoveries.json`, typed `Discovery[]`) upstream, so this client-side category check becomes unnecessary once `packages/web` is updated to consume the two files directly — tracked in root `CLAUDE-activeContext.md`'s Open Questions. `packages/web` does not currently typecheck against `packages/shared-types` as of this change (`HistoricalEvent` no longer exists).
