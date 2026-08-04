@@ -14,12 +14,16 @@ Run from repo root:
 
 ## Code Style & Conventions
 
-- Pipeline stages, one direction only: `fetch/` (raw results only, checked into `data/raw/` — Pantheon CSV/descriptions for People, SPARQL results for Wars/Discoveries) → `transform/` (score + tag) → `output/` (writes final JSON into `packages/shared-types/src/data/`)
+- Pipeline stages, one direction only: `fetch/` (raw results only, checked into `data/raw/` — Pantheon CSV/descriptions for People, SPARQL results for Wars/Discoveries) → `transform/` (score + tag) → `output/` (writes final JSON into the pipeline's own `data/output/`, gitignored; a separate `publish-data` script copies it into `packages/shared-types/src/data/`)
 - Fetch never merges, scores, or tags — raw results only
 - Fame score: sitelink count for Wars/Discoveries, Pantheon's HPI for People (Score stage) — two independent tier systems, not blended
 - Occupation/region tagging is an explicit lookup table (Transform), not inferred ad hoc — lane-specific: Wikidata-QID-keyed for Wars/Discoveries, Pantheon-occupation/country-value-keyed for People
 - No manual override mechanism — corrections mean fixing Score/Tag logic and re-running, not hand-editing output
 - Never hand-edit `packages/shared-types/src/data/*.json` — always pipeline-generated
 - `Temporal.PlainDate` is canonical everywhere (see root `CLAUDE.md` — this rule is shared with `packages/web`)
-- Full rules: `CLAUDE-patterns.md` (shared conventions: `../../CLAUDE-patterns.md`)
-- Package architecture decisions: `CLAUDE-decisions.md` (product scope and invariants: `../../CLAUDE-decisions.md`)
+
+## Docs
+
+- `docs/conventions.md` — pipeline stage rules, input validation, file organization
+- `docs/architecture.md` — stack, boundaries, stage walkthrough, ADR log
+- Shared conventions/architecture (apply here too): `../../docs/code-conventions.md` · `../../docs/architecture.md`
