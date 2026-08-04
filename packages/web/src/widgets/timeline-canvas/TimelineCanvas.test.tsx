@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, vi, beforeEach, afterEach } from 'vitest';
-import type { Person } from '../../shared/types';
+import type { Discovery, Person, War } from '../../shared/types';
 
 interface MockInstance {
   setItems: ReturnType<typeof vi.fn>;
@@ -65,6 +65,33 @@ const fixturePeople: Person[] = [
   },
 ];
 
+const fixtureWars: War[] = [
+  {
+    id: 'Q8663',
+    name: 'Korean War',
+    startYear: 1950,
+    endYear: 1953,
+    category: 'war',
+    regionTags: ['east-asia'],
+    fameScore: 143,
+    description: 'war between North and South Korea, 1950–1953',
+    wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
+  },
+];
+
+const fixtureDiscoveries: Discovery[] = [
+  {
+    id: 'Q2736',
+    name: 'association football',
+    startYear: 1863,
+    category: 'invention',
+    regionTags: [],
+    fameScore: 296,
+    description: 'sport that is practiced between two teams of eleven players',
+    wikipediaUrl: 'https://en.wikipedia.org/wiki/Association_football',
+  },
+];
+
 beforeEach(() => {
   mockTimeline.mockClear();
   createdInstances = [];
@@ -73,7 +100,7 @@ beforeEach(() => {
 afterEach(cleanup);
 
 test('constructs one Timeline per lane, with the matching groups, zoom options, and mapped items', () => {
-  render(<TimelineCanvas people={fixturePeople} />);
+  render(<TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />);
 
   expect(mockTimeline).toHaveBeenCalledTimes(3);
   const [, peopleItems, peopleGroups, peopleOptions] = mockTimeline.mock.calls[0] as [
@@ -111,13 +138,14 @@ test('constructs one Timeline per lane, with the matching groups, zoom options, 
   const [peopleInstance, warsInstance, eventsInstance] = createdInstances;
   expect(peopleInstance?.setItems).toHaveBeenCalledTimes(1);
   expect((peopleInstance?.setItems.mock.calls[0]?.[0] as unknown[]).length).toBe(fixturePeople.length);
-  // Wars & Events lanes have no published data source yet — never fed items.
-  expect(warsInstance?.setItems).not.toHaveBeenCalled();
-  expect(eventsInstance?.setItems).not.toHaveBeenCalled();
+  expect(warsInstance?.setItems).toHaveBeenCalledTimes(1);
+  expect((warsInstance?.setItems.mock.calls[0]?.[0] as unknown[]).length).toBe(fixtureWars.length);
+  expect(eventsInstance?.setItems).toHaveBeenCalledTimes(1);
+  expect((eventsInstance?.setItems.mock.calls[0]?.[0] as unknown[]).length).toBe(fixtureDiscoveries.length);
 });
 
 test('the zoom-in/zoom-out buttons call zoomIn/zoomOut on the events lane instance', () => {
-  const { getByLabelText } = render(<TimelineCanvas people={fixturePeople} />);
+  const { getByLabelText } = render(<TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />);
   const [, , eventsInstance] = createdInstances;
 
   fireEvent.click(getByLabelText('Zoom in'));
@@ -128,7 +156,7 @@ test('the zoom-in/zoom-out buttons call zoomIn/zoomOut on the events lane instan
 });
 
 test('dragging/zooming one lane syncs the other two lanes to the same window, without bouncing back', () => {
-  render(<TimelineCanvas people={fixturePeople} />);
+  render(<TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />);
   const [peopleInstance, warsInstance, eventsInstance] = createdInstances;
 
   const window = { start: new Date(2000, 0, 1), end: new Date(2010, 0, 1) };

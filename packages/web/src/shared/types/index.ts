@@ -1,1 +1,1 @@
-export type { Person } from '@same-sky/shared-types';
+export type { Person, War, Discovery } from '@same-sky/shared-types';

@@ -1,5 +1,5 @@
 import type { DataItem } from 'vis-timeline/standalone';
-import type { Person } from '../../shared/types';
+import type { Discovery, Person, War } from '../../shared/types';
 import { toLegacyDate, yearToPlainDate } from '../../shared/lib/dates';
 
 // A zero- or negative-width range (e.g. a missing endYear) can't render as a
@@ -52,4 +52,38 @@ export function mapPeopleToItems(people: Person[]): DataItem[] {
 
     return [personItem, ...reignItems];
   });
+}
+
+// wars.json is already Wars & Conflicts-lane-only (data-pipeline's
+// EVENT_TYPES filter), so every entry maps 1:1 — no category filtering here.
+export function mapWarsAndConflictsToItems(wars: War[]): DataItem[] {
+  return wars.map((war) => {
+    const { endYear } = war;
+    return {
+      id: war.id,
+      content: war.name,
+      group: 'wars',
+      type: endYear !== undefined ? 'range' : 'point',
+      className: `category-${war.category}`,
+      title: war.partOfWarName ? `${war.name} — part of ${war.partOfWarName}` : undefined,
+      start: toLegacyDate(yearToPlainDate(war.startYear)),
+      end:
+        endYear !== undefined
+          ? toLegacyDate(yearToPlainDate(ensureMinimumRangeWidthYears(war.startYear, endYear)))
+          : undefined,
+    };
+  });
+}
+
+// discoveries.json never carries an endYear (data-pipeline's Discovery rows
+// are always single-year) — always a point, unlike wars.
+export function mapInventionsToItems(discoveries: Discovery[]): DataItem[] {
+  return discoveries.map((discovery) => ({
+    id: discovery.id,
+    content: discovery.name,
+    group: 'events',
+    type: 'point',
+    className: `category-${discovery.category}`,
+    start: toLegacyDate(yearToPlainDate(discovery.startYear)),
+  }));
 }
