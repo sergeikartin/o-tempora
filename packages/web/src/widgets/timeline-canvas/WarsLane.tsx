@@ -4,14 +4,14 @@ import type { War } from '../../shared/types';
 import { assignRows, mapWars } from './map-to-items';
 import {
   CATEGORY_COLORS,
-  LANE_TOP_PADDING,
-  MARKER_LABEL_GAP,
-  MARKER_ROW_PITCH,
+  MARKER_CENTER_Y,
   MIN_ROW_GAP_PX,
   POINT_RADIUS,
   RANGE_LINE_HEIGHT,
-  STEM_HEIGHT,
   estimateLabelWidthPx,
+  labelYForRow,
+  markerLaneHeight,
+  stemBottomForRow,
 } from './options';
 import styles from './WarsLane.module.css';
 
@@ -20,7 +20,7 @@ interface RangeLayout {
   name: string;
   x1: number;
   x2: number;
-  y: number;
+  row: number;
   fill: string;
   tooltip: string;
 }
@@ -29,7 +29,7 @@ interface PointLayout {
   id: string;
   name: string;
   x: number;
-  y: number;
+  row: number;
   fill: string;
   tooltip: string;
 }
@@ -56,10 +56,13 @@ function pixelInterval(item: { startYear: number; endYear: number; name: string;
 }
 
 // Wars & Conflicts renders two shapes sharing one row-stacking pass: ranges
-// as a thin horizontal line (below-marker label, centered under the line),
-// points as a dot with a vertical stem down to its below-marker label
-// (centered under the dot) — same below-marker treatment Events & Inventions
-// uses, since both are the "dot" shape here.
+// as a thin horizontal line, points as a dot — both always centered on
+// MARKER_CENTER_Y, the same fixed y right under the shared YearAxis, so a
+// marker's x-position always reads directly against the axis above it. An
+// item that would otherwise collide with a neighbor doesn't move its marker;
+// `assignRows`' row becomes a stem-length tier instead, pushing just that
+// item's label (and the stem connecting it back up to the marker) further
+// down. Same below-marker treatment Events & Inventions uses for its dots.
 export function WarsLane({ wars, xScale }: WarsLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -72,25 +75,22 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
     return assignRows(intervals, MIN_ROW_GAP_PX);
   }, [items, xScale]);
   const rowCount = rowOfWar.size > 0 ? Math.max(...rowOfWar.values()) + 1 : 0;
-  const totalHeight = rowCount * MARKER_ROW_PITCH + LANE_TOP_PADDING;
+  const totalHeight = markerLaneHeight(rowCount);
   const totalWidth = xScale.range()[1] ?? 0;
 
   const rangeLayout: RangeLayout[] = useMemo(
     () =>
       items
         .filter((item) => !item.isPoint)
-        .map((item) => {
-          const row = rowOfWar.get(item.id) ?? 0;
-          return {
-            id: item.id,
-            name: item.name,
-            x1: xScale(item.startYear),
-            x2: xScale(item.endYear),
-            y: LANE_TOP_PADDING + row * MARKER_ROW_PITCH,
-            fill: CATEGORY_COLORS[item.category],
-            tooltip: item.tooltip,
-          };
-        }),
+        .map((item) => ({
+          id: item.id,
+          name: item.name,
+          x1: xScale(item.startYear),
+          x2: xScale(item.endYear),
+          row: rowOfWar.get(item.id) ?? 0,
+          fill: CATEGORY_COLORS[item.category],
+          tooltip: item.tooltip,
+        })),
     [items, rowOfWar, xScale],
   );
 
@@ -98,17 +98,14 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
     () =>
       items
         .filter((item) => item.isPoint)
-        .map((item) => {
-          const row = rowOfWar.get(item.id) ?? 0;
-          return {
-            id: item.id,
-            name: item.name,
-            x: xScale(item.startYear),
-            y: LANE_TOP_PADDING + row * MARKER_ROW_PITCH,
-            fill: CATEGORY_COLORS[item.category],
-            tooltip: item.tooltip,
-          };
-        }),
+        .map((item) => ({
+          id: item.id,
+          name: item.name,
+          x: xScale(item.startYear),
+          row: rowOfWar.get(item.id) ?? 0,
+          fill: CATEGORY_COLORS[item.category],
+          tooltip: item.tooltip,
+        })),
     [items, rowOfWar, xScale],
   );
 
@@ -122,6 +119,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .data(rangeLayout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-range');
+        g.append('line').attr('class', `d3-stem ${styles.stem}`).attr('stroke-width', 1.5);
         const line = g.append('rect').attr('class', `d3-line ${styles.line}`).attr('height', RANGE_LINE_HEIGHT);
         line.append('title');
         g.append('text')
@@ -131,12 +129,20 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
         return g;
       });
 
-    rangeGroups.attr('data-row-y', (d) => d.y);
+    rangeGroups.attr('data-row', (d) => d.row);
+
+    rangeGroups
+      .select<SVGLineElement>('.d3-stem')
+      .attr('x1', (d) => (d.x1 + d.x2) / 2)
+      .attr('x2', (d) => (d.x1 + d.x2) / 2)
+      .attr('y1', MARKER_CENTER_Y + RANGE_LINE_HEIGHT / 2)
+      .attr('y2', (d) => stemBottomForRow(d.row))
+      .attr('stroke', (d) => d.fill);
 
     rangeGroups
       .select<SVGRectElement>('.d3-line')
       .attr('x', (d) => d.x1)
-      .attr('y', (d) => d.y)
+      .attr('y', MARKER_CENTER_Y - RANGE_LINE_HEIGHT / 2)
       .attr('width', (d) => Math.max(d.x2 - d.x1, 2))
       .attr('fill', (d) => d.fill);
 
@@ -145,7 +151,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
     rangeGroups
       .select<SVGTextElement>('.d3-range-name')
       .attr('x', (d) => (d.x1 + d.x2) / 2)
-      .attr('y', (d) => d.y + RANGE_LINE_HEIGHT + MARKER_LABEL_GAP)
+      .attr('y', (d) => labelYForRow(d.row))
       .attr('fill', (d) => d.fill)
       .text((d) => d.name);
 
@@ -165,20 +171,20 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
         return g;
       });
 
-    pointGroups.attr('data-row-y', (d) => d.y);
+    pointGroups.attr('data-row', (d) => d.row);
 
     pointGroups
       .select<SVGLineElement>('.d3-stem')
       .attr('x1', (d) => d.x)
       .attr('x2', (d) => d.x)
-      .attr('y1', (d) => d.y + POINT_RADIUS * 2)
-      .attr('y2', (d) => d.y + POINT_RADIUS * 2 + STEM_HEIGHT)
+      .attr('y1', MARKER_CENTER_Y + POINT_RADIUS)
+      .attr('y2', (d) => stemBottomForRow(d.row))
       .attr('stroke', (d) => d.fill);
 
     pointGroups
       .select<SVGCircleElement>('.d3-dot')
       .attr('cx', (d) => d.x)
-      .attr('cy', (d) => d.y + POINT_RADIUS)
+      .attr('cy', MARKER_CENTER_Y)
       .attr('fill', (d) => d.fill);
 
     pointGroups.select('.d3-dot title').text((d) => d.tooltip);
@@ -186,7 +192,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
       .attr('x', (d) => d.x)
-      .attr('y', (d) => d.y + POINT_RADIUS * 2 + STEM_HEIGHT)
+      .attr('y', (d) => labelYForRow(d.row))
       .attr('fill', (d) => d.fill)
       .text((d) => d.name);
   }, [rangeLayout, pointLayout]);

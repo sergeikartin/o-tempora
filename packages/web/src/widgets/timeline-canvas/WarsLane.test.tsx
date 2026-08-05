@@ -51,14 +51,14 @@ test('places two non-overlapping entries in the same row, two overlapping in dif
   const { scale } = buildXScale(2);
   const { container: sameRow } = render(<WarsLane wars={[koreanWar, battleOfMegiddo]} xScale={scale} />);
   const positions = Array.from(sameRow.querySelectorAll('.d3-range, .d3-point-group')).map((el) =>
-    el.getAttribute('data-row-y'),
+    el.getAttribute('data-row'),
   );
   expect(new Set(positions).size).toBe(1);
 
   const overlappingBattle: War = { ...battleOfMegiddo, id: 'Q2', startYear: 1951 };
   const { container: differentRows } = render(<WarsLane wars={[koreanWar, overlappingBattle]} xScale={scale} />);
   const overlappingPositions = Array.from(differentRows.querySelectorAll('.d3-range, .d3-point-group')).map((el) =>
-    el.getAttribute('data-row-y'),
+    el.getAttribute('data-row'),
   );
   expect(new Set(overlappingPositions).size).toBe(2);
 });

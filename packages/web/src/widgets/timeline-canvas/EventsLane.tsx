@@ -4,12 +4,13 @@ import type { Discovery } from '../../shared/types';
 import { assignRows, mapDiscoveries } from './map-to-items';
 import {
   CATEGORY_COLORS,
-  LANE_TOP_PADDING,
-  MARKER_ROW_PITCH,
+  MARKER_CENTER_Y,
   MIN_ROW_GAP_PX,
   POINT_RADIUS,
-  STEM_HEIGHT,
   estimateLabelWidthPx,
+  labelYForRow,
+  markerLaneHeight,
+  stemBottomForRow,
 } from './options';
 import styles from './EventsLane.module.css';
 
@@ -17,7 +18,7 @@ interface PointLayout {
   id: string;
   name: string;
   x: number;
-  y: number;
+  row: number;
   fill: string;
   tooltip: string;
 }
@@ -27,12 +28,14 @@ interface EventsLaneProps {
   xScale: d3.ScaleLinear<number, number>;
 }
 
-// discoveries.json is always single-year, so every entry is a point — but
-// with 24+ items and long names, points can cluster close enough in pixels
-// (even years apart, at low zoom) for labels to overlap, so points still
-// need row-stacking. There's no year-range to stack on (unlike People/Wars),
-// so this stacks on each point's estimated below-marker label pixel-extent
-// (see map-to-items.ts's assignRows) instead.
+// discoveries.json is always single-year, so every entry is a point, always
+// centered on MARKER_CENTER_Y (same fixed y WarsLane's dots use) — so a
+// dot's x-position always reads directly against the shared YearAxis above
+// it. With 24+ items and long names, points can cluster close enough in
+// pixels (even years apart, at low zoom) for labels to overlap; instead of
+// moving the dot, a colliding item's stem gets a longer tier (see
+// map-to-items.ts's assignRows, reused here in pixel- rather than
+// year-space) so just its label drops further down.
 export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -50,7 +53,7 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
     return assignRows(labelExtents, MIN_ROW_GAP_PX);
   }, [items, xScale]);
   const rowCount = rowOfItem.size > 0 ? Math.max(...rowOfItem.values()) + 1 : 0;
-  const totalHeight = rowCount * MARKER_ROW_PITCH + LANE_TOP_PADDING;
+  const totalHeight = markerLaneHeight(rowCount);
   const totalWidth = xScale.range()[1] ?? 0;
 
   const layout: PointLayout[] = useMemo(
@@ -59,7 +62,7 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
         id: item.id,
         name: item.name,
         x: xScale(item.startYear),
-        y: LANE_TOP_PADDING + (rowOfItem.get(item.id) ?? 0) * MARKER_ROW_PITCH,
+        row: rowOfItem.get(item.id) ?? 0,
         fill: CATEGORY_COLORS[item.category],
         tooltip: item.tooltip,
       })),
@@ -90,14 +93,14 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
       .select<SVGLineElement>('.d3-stem')
       .attr('x1', (d) => d.x)
       .attr('x2', (d) => d.x)
-      .attr('y1', (d) => d.y + POINT_RADIUS * 2)
-      .attr('y2', (d) => d.y + POINT_RADIUS * 2 + STEM_HEIGHT)
+      .attr('y1', MARKER_CENTER_Y + POINT_RADIUS)
+      .attr('y2', (d) => stemBottomForRow(d.row))
       .attr('stroke', (d) => d.fill);
 
     pointGroups
       .select<SVGCircleElement>('.d3-dot')
       .attr('cx', (d) => d.x)
-      .attr('cy', (d) => d.y + POINT_RADIUS)
+      .attr('cy', MARKER_CENTER_Y)
       .attr('fill', (d) => d.fill);
 
     pointGroups.select('.d3-dot title').text((d) => d.tooltip);
@@ -105,7 +108,7 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
       .attr('x', (d) => d.x)
-      .attr('y', (d) => d.y + POINT_RADIUS * 2 + STEM_HEIGHT)
+      .attr('y', (d) => labelYForRow(d.row))
       .attr('fill', (d) => d.fill)
       .text((d) => d.name);
   }, [layout]);
