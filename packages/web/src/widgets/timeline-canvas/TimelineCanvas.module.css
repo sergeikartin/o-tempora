@@ -59,6 +59,12 @@
   background-repeat: repeat-x;
   background-position: var(--decade-gridline-offset-px) top;
   background-size: var(--decade-gridline-px) 100%;
+  /* Without this, the background stays fixed relative to the scrollContainer's
+     own box as its content scrolls past — the default "scroll" attachment
+     only ties a background to page scroll, not to the element's own overflow
+     scroll. "local" scrolls the gridlines with the content they're meant to
+     line up under. */
+  background-attachment: local;
   /* Mirrors a faint color-border tone, barely distinct from the page
      background; inlined pending ticket 05. */
   background-image: linear-gradient(to right, #e5dbc0 0, #e5dbc0 1px, transparent 1px);
