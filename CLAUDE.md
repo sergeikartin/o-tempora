@@ -19,7 +19,6 @@ Read on demand — only load what the current task needs.
 | [docs/config-variables.md](docs/config-variables.md) | Touching config |
 | `packages/web/CLAUDE.md` + `packages/web/docs/` | Working in `packages/web` |
 | `packages/data-pipeline/CLAUDE.md` + `packages/data-pipeline/docs/` | Working in `packages/data-pipeline` |
-| `context/specs/*.md` | Picking up a specific, already-planned unit of work |
 
 **Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale. See `docs/workflow.md` for the full delivery process.
 
