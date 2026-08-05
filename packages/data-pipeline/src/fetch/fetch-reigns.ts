@@ -6,7 +6,7 @@ import { MIN_HPI } from "./queries/min-hpi.js";
 import { parsePantheonCsv } from "./pantheon-row-shape.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
+const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
 // Runs after fetchPantheon() — reads the candidate person Q-IDs back out of
 // the just-downloaded CSV (the "raw file is the handoff" pattern

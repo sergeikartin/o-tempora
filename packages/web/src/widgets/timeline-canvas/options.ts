@@ -6,6 +6,8 @@ import {
   DEFAULT_VIEWPORT_START,
   DEFAULT_VIEWPORT_END,
   PAN_MIN_DATE,
+  FAME_TIER_YEAR_BOUNDS,
+  type FameTierName,
 } from '../../shared/config/viewport';
 import type { Category, OccupationDomain } from '../../shared/types';
 
@@ -14,7 +16,12 @@ export const BAR_HEIGHT = 16;
 export const ROW_GAP = 8;
 export const ROW_PITCH = BAR_HEIGHT + ROW_GAP;
 export const LANE_TOP_PADDING = 12;
-export const AXIS_HEIGHT = 28;
+// Century major-header row, new above the original minor-tick row — total
+// axis height grows to fit both; MINOR_AXIS_HEIGHT keeps the original row's
+// own height unchanged (tick line + label).
+export const MAJOR_HEADER_HEIGHT = 16;
+export const MINOR_AXIS_HEIGHT = 28;
+export const AXIS_HEIGHT = MAJOR_HEADER_HEIGHT + MINOR_AXIS_HEIGHT;
 export const REIGN_STRIPE_HEIGHT = 3;
 export const POINT_RADIUS = 5;
 // Minimum gap (in scroll years) kept between two bars placed in the same
@@ -155,4 +162,22 @@ export function zoomIn(pixelsPerYear: number, viewportWidthPx: number): number {
 
 export function zoomOut(pixelsPerYear: number, viewportWidthPx: number): number {
   return clampPixelsPerYear(pixelsPerYear / (1 + ZOOM_STEP), viewportWidthPx);
+}
+
+/**
+ * The active Fame Tier for a given visible-years count — a pure derivation
+ * off FAME_TIER_YEAR_BOUNDS' contiguous bands, no separate stateful mode.
+ * Boundary years belong to the denser (more zoomed-in) tier, so crossing a
+ * threshold while zooming in immediately reveals that tier's wider dataset.
+ */
+export function fameTierForVisibleYears(visibleYears: number): FameTierName {
+  if (visibleYears > FAME_TIER_YEAR_BOUNDS.NOTABLE.maxYears) return 'CORE';
+  if (visibleYears > FAME_TIER_YEAR_BOUNDS.EXHAUSTIVE.maxYears) return 'NOTABLE';
+  return 'EXHAUSTIVE';
+}
+
+/** fameTierForVisibleYears, from the same pixelsPerYear/viewportWidthPx pair zoomIn/zoomOut clamp against. */
+export function fameTierForViewport(pixelsPerYear: number, viewportWidthPx: number): FameTierName {
+  const width = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
+  return fameTierForVisibleYears(width / pixelsPerYear);
 }

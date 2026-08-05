@@ -6,7 +6,7 @@ import { MIN_HPI } from "./queries/min-hpi.js";
 import { parsePantheonCsv } from "./pantheon-row-shape.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
+const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
 // Runs after fetch-pantheon.ts, reading the just-downloaded CSV back out
 // (same "raw file is the handoff" pattern fetch-reigns.ts also uses) rather

@@ -1,7 +1,19 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Discovery, Person, War } from '../../shared/types';
-import { DEFAULT_VIEWPORT_START } from '../../shared/config/viewport';
-import { buildXScale, defaultPixelsPerYear, zoomIn as computeZoomIn, zoomOut as computeZoomOut } from './options';
+import {
+  DEFAULT_VIEWPORT_START,
+  FAME_TIER_MIN_HPI,
+  FAME_TIER_MIN_SITELINKS_WARS,
+  FAME_TIER_MIN_SITELINKS_DISCOVERIES,
+} from '../../shared/config/viewport';
+import {
+  buildXScale,
+  defaultPixelsPerYear,
+  fameTierForViewport,
+  zoomIn as computeZoomIn,
+  zoomOut as computeZoomOut,
+} from './options';
+import { filterByFameScore } from './map-to-items';
 import { PeopleLane } from './PeopleLane';
 import { WarsLane } from './WarsLane';
 import { EventsLane } from './EventsLane';
@@ -25,6 +37,25 @@ export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProp
 
   const { scale, totalWidth } = useMemo(() => buildXScale(pixelsPerYear), [pixelsPerYear]);
 
+  // Tracked in state (set alongside pixelsPerYear on mount-measurement and
+  // on each zoom click, both of which already read the container's real
+  // clientWidth) rather than read from scrollRef during render, which React
+  // disallows.
+  const [viewportWidthPx, setViewportWidthPx] = useState(0);
+  const activeFameTier = fameTierForViewport(pixelsPerYear, viewportWidthPx);
+  const filteredPeople = useMemo(
+    () => filterByFameScore(people, FAME_TIER_MIN_HPI[activeFameTier]),
+    [people, activeFameTier],
+  );
+  const filteredWars = useMemo(
+    () => filterByFameScore(wars, FAME_TIER_MIN_SITELINKS_WARS[activeFameTier]),
+    [wars, activeFameTier],
+  );
+  const filteredDiscoveries = useMemo(
+    () => filterByFameScore(discoveries, FAME_TIER_MIN_SITELINKS_DISCOVERIES[activeFameTier]),
+    [discoveries, activeFameTier],
+  );
+
   // Real browsers can measure the container before first paint; jsdom (and
   // any not-yet-laid-out first paint) can't, so the initial pixelsPerYear
   // state above already assumed a fallback width. Recompute from the real
@@ -36,6 +67,7 @@ export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProp
     if (!container) return;
     measuredPixelsPerYearRef.current = defaultPixelsPerYear(container.clientWidth);
     setPixelsPerYear(measuredPixelsPerYearRef.current);
+    setViewportWidthPx(container.clientWidth);
   }, []);
 
   useLayoutEffect(() => {
@@ -65,12 +97,16 @@ export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProp
       return;
     }
     pendingCenterYearRef.current = scale.invert(container.scrollLeft + container.clientWidth / 2);
+    setViewportWidthPx(container.clientWidth);
     setPixelsPerYear((current) => step(current, container.clientWidth));
   }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.zoomControls}>
+        <span className={styles.fameTierIndicator} aria-label={`Active Fame Tier: ${activeFameTier}`}>
+          {activeFameTier}
+        </span>
         <button type="button" onClick={() => zoom(computeZoomOut)} aria-label="Zoom out">
           −
         </button>
@@ -80,16 +116,16 @@ export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProp
       </div>
       <div ref={scrollRef} className={styles.scrollContainer}>
         <div className={styles.peopleLane} style={{ width: totalWidth }}>
-          <PeopleLane people={people} xScale={scale} />
+          <PeopleLane people={filteredPeople} xScale={scale} />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
           <YearAxis xScale={scale} />
         </div>
         <div className={styles.warsLane} style={{ width: totalWidth }}>
-          <WarsLane wars={wars} xScale={scale} />
+          <WarsLane wars={filteredWars} xScale={scale} />
         </div>
         <div className={styles.eventsLane} style={{ width: totalWidth }}>
-          <EventsLane discoveries={discoveries} xScale={scale} />
+          <EventsLane discoveries={filteredDiscoveries} xScale={scale} />
         </div>
       </div>
     </div>

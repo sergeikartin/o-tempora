@@ -9,8 +9,10 @@
 // that floor is wasted. Within a table, each tier is a `fameScore >=`
 // cutoff on the same field, so general-public is a subset of educated is a
 // subset of specialist automatically — no re-ranking needed when the tier
-// changes. (People uses FAME_TIER_MIN_HPI instead, since it's no longer
-// Wikidata-sourced.)
+// changes, which is what lets the frontend gate density purely by
+// client-side fameScore filtering once zoom picks the active tier
+// (packages/web/docs/adr/0002-fame-tier-drives-zoom.md). (People uses
+// FAME_TIER_MIN_HPI instead, since it's no longer Wikidata-sourced.)
 export const FAME_TIER_MIN_SITELINKS_WARS = {
   generalPublic: 100,
   educated: 50,
@@ -29,18 +31,19 @@ function filterAndRankBySitelinks<T extends { sitelinks: number }>(rows: T[], fl
   return rows.filter((row) => row.sitelinks >= floor).sort((a, b) => b.sitelinks - a.sitelinks);
 }
 
-// Floor is generalPublic (the lowest tier by volume, not lowest by number)
-// rather than specialist: with no frontend tier selector built yet (Unit 9,
-// unspecced — see docs/active-context.md), the pipeline output IS what
-// renders, so it needs to already be down to a browsable count.
+// Floor is specialist (the loosest tier, largest volume) rather than
+// generalPublic: zoom itself now drives the active Fame Tier client-side
+// (packages/web/docs/adr/0002-fame-tier-drives-zoom.md), so the pipeline
+// output needs to already be a superset covering all three tiers, not just
+// the tightest one.
 export function scoreAndRank<T extends { sitelinks: number }>(rows: T[]): T[] {
-  return filterAndRankBySitelinks(rows, FAME_TIER_MIN_SITELINKS_WARS.generalPublic);
+  return filterAndRankBySitelinks(rows, FAME_TIER_MIN_SITELINKS_WARS.specialist);
 }
 
-// Same generalPublic-floor reasoning as scoreAndRank, using Discoveries'
-// own (higher) tier table.
+// Same specialist-floor reasoning as scoreAndRank, using Discoveries' own
+// (higher) tier table.
 export function scoreAndRankDiscoveries<T extends { sitelinks: number }>(rows: T[]): T[] {
-  return filterAndRankBySitelinks(rows, FAME_TIER_MIN_SITELINKS_DISCOVERIES.generalPublic);
+  return filterAndRankBySitelinks(rows, FAME_TIER_MIN_SITELINKS_DISCOVERIES.specialist);
 }
 
 // People-lane fame tiers, bound to Pantheon's HPI (0-100 scale) instead of
@@ -55,9 +58,9 @@ export const FAME_TIER_MIN_HPI = {
   specialist: 75,
 } as const;
 
-// Same generalPublic floor as scoreAndRank, for the same reason.
+// Same specialist floor as scoreAndRank, for the same reason.
 export function scoreAndRankByHpi<T extends { hpi: number }>(rows: T[]): T[] {
   return rows
-    .filter((row) => row.hpi >= FAME_TIER_MIN_HPI.generalPublic)
+    .filter((row) => row.hpi >= FAME_TIER_MIN_HPI.specialist)
     .sort((a, b) => b.hpi - a.hpi);
 }

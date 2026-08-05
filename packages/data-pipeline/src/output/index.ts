@@ -7,7 +7,7 @@ import { buildPeople, buildWars, buildDiscoveries, type DropReport } from "./wri
 // The pipeline owns its own output — generating a dataset is a separate,
 // inspectable step from publishing it for consumers to read. `publish.ts`
 // copies this directory's contents into packages/shared-types/src/data/.
-const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "output");
+const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "output");
 
 function logReport(label: string, kept: number, report: DropReport): void {
   console.log(`${label}: kept ${kept}, dropped ${report.dropped}`);

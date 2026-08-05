@@ -6,9 +6,10 @@ import { fileURLToPath } from "node:url";
 // single location both /data-pipeline and /web read from — kept as an
 // explicit, separate step from generation so a dataset can be inspected
 // (or regenerated and diffed) before it's published for consumers.
-const SOURCE_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "output");
+const SOURCE_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "output");
 const DEST_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
+  "..",
   "..",
   "..",
   "shared-types",

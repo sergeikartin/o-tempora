@@ -1,5 +1,6 @@
 import type { Category, Discovery, OccupationDomain, Person, War } from '../../shared/types';
 import { today } from '../../shared/lib/dates';
+import { formatYear } from '../../shared/lib/format-year';
 import { MIN_ROW_GAP_YEARS } from './options';
 
 // A zero- or negative-width range (e.g. a missing endYear) can't render as a
@@ -7,6 +8,15 @@ import { MIN_ROW_GAP_YEARS } from './options';
 // claim the underlying date data actually spans a year.
 function ensureMinimumRangeWidthYears(startYear: number, endYear: number): number {
   return endYear <= startYear ? startYear + 1 : endYear;
+}
+
+// Shared by all three lanes to gate entity density by the active Fame Tier
+// (packages/web/docs/adr/0002-fame-tier-drives-zoom.md) — the data-pipeline
+// already ships every entry down to the specialist floor, so this is the
+// only filtering step; no re-ranking needed since each tier's threshold is
+// just a `fameScore >=` cutoff on the same already-sorted-by-tier data.
+export function filterByFameScore<T extends { fameScore: number }>(items: T[], minFameScore: number): T[] {
+  return items.filter((item) => item.fameScore >= minFameScore);
 }
 
 export interface ReignPeriodItem {
@@ -38,14 +48,14 @@ export function mapPeople(people: Person[]): PersonItem[] {
       startYear: person.startYear,
       endYear: ensureMinimumRangeWidthYears(person.startYear, personEnd),
       occupationDomain: person.occupationDomain,
-      tooltip: `${person.name}: ${person.startYear}–${person.endYear ?? 'present'}`,
+      tooltip: `${person.name}: ${formatYear(person.startYear)}–${person.endYear !== undefined ? formatYear(person.endYear) : 'present'}`,
       reignPeriods: (person.reignPeriods ?? []).map((reignPeriod, index) => {
         const reignEnd = reignPeriod.endYear ?? personEnd;
         return {
           id: `${person.id}-reign-${index}`,
           startYear: reignPeriod.startYear,
           endYear: ensureMinimumRangeWidthYears(reignPeriod.startYear, reignEnd),
-          tooltip: `${reignPeriod.title ?? 'Reign'}: ${reignPeriod.startYear}–${reignPeriod.endYear ?? '(end unknown)'}`,
+          tooltip: `${reignPeriod.title ?? 'Reign'}: ${formatYear(reignPeriod.startYear)}–${reignPeriod.endYear !== undefined ? formatYear(reignPeriod.endYear) : '(end unknown)'}`,
         };
       }),
     };

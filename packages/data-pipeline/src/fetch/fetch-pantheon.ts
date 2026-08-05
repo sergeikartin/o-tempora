@@ -11,7 +11,7 @@ import Bunzip from "seek-bzip";
 // release doesn't silently reshape this pipeline's input.
 const DATASET_URL = "https://storage.googleapis.com/pantheon-public-data/person_2025_update.csv.bz2";
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
+const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 const OUTPUT_PATH = path.join(RAW_DIR, "people-pantheon.raw.csv");
 
 export async function fetchPantheon(): Promise<void> {

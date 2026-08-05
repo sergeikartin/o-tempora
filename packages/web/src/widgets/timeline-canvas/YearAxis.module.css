@@ -19,3 +19,16 @@
   /* Mirrors color-text-secondary; inlined pending ticket 05. */
   fill: #83795f;
 }
+
+.majorRow .divider {
+  /* Mirrors color-border-subtle; inlined pending ticket 05. */
+  stroke: #ded3b8;
+}
+
+.majorRow .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  /* Mirrors color-text-primary; inlined pending ticket 05. */
+  fill: #2e2b22;
+}
