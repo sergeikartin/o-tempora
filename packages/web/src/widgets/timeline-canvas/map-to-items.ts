@@ -1,6 +1,5 @@
-import type { DataItem } from 'vis-timeline/standalone';
-import type { Discovery, Person, War } from '../../shared/types';
-import { toLegacyDate, yearToPlainDate } from '../../shared/lib/dates';
+import type { Category, Discovery, OccupationDomain, Person, War } from '../../shared/types';
+import { MIN_ROW_GAP_YEARS } from './options';
 
 // A zero- or negative-width range (e.g. a missing endYear) can't render as a
 // visible bar — widen it to a minimum one-year span. Rendering-only: not a
@@ -9,81 +8,120 @@ function ensureMinimumRangeWidthYears(startYear: number, endYear: number): numbe
   return endYear <= startYear ? startYear + 1 : endYear;
 }
 
-export function mapPeopleToItems(people: Person[]): DataItem[] {
-  return people.flatMap((person) => {
-    const reignPeriods = person.reignPeriods ?? [];
-    const subgroup = reignPeriods.length > 0 ? person.id : undefined;
+export interface ReignPeriodItem {
+  id: string;
+  startYear: number;
+  endYear: number;
+  tooltip: string;
+}
 
-    const personItem: DataItem = {
+export interface PersonItem {
+  id: string;
+  name: string;
+  startYear: number;
+  endYear: number;
+  occupationDomain: OccupationDomain;
+  tooltip: string;
+  reignPeriods: ReignPeriodItem[];
+}
+
+export function mapPeople(people: Person[]): PersonItem[] {
+  return people.map((person) => {
+    const personEnd = person.endYear ?? person.startYear;
+
+    return {
       id: person.id,
-      content: person.name,
-      group: 'people',
-      subgroup,
-      type: 'range',
-      className: `category-${person.occupationDomain}`,
-      start: toLegacyDate(yearToPlainDate(person.startYear)),
-      end: toLegacyDate(
-        yearToPlainDate(ensureMinimumRangeWidthYears(person.startYear, person.endYear ?? person.startYear)),
-      ),
+      name: person.name,
+      startYear: person.startYear,
+      endYear: ensureMinimumRangeWidthYears(person.startYear, personEnd),
+      occupationDomain: person.occupationDomain,
+      tooltip: `${person.name}: ${person.startYear}–${person.endYear ?? 'present'}`,
+      reignPeriods: (person.reignPeriods ?? []).map((reignPeriod, index) => {
+        const reignEnd = reignPeriod.endYear ?? personEnd;
+        return {
+          id: `${person.id}-reign-${index}`,
+          startYear: reignPeriod.startYear,
+          endYear: ensureMinimumRangeWidthYears(reignPeriod.startYear, reignEnd),
+          tooltip: `${reignPeriod.title ?? 'Reign'}: ${reignPeriod.startYear}–${reignPeriod.endYear ?? '(end unknown)'}`,
+        };
+      }),
     };
-
-    // Overlaid inside the person's own lifespan bar via a shared `subgroup`
-    // (see options.ts's `stackSubgroups: false` on the People lane) — must
-    // stay ordered directly after personItem so it paints on top, not
-    // stacked into its own row.
-    const reignItems: DataItem[] = reignPeriods.map((reignPeriod, index) => ({
-      id: `${person.id}-reign-${index}`,
-      content: '',
-      group: 'people',
-      subgroup: person.id,
-      type: 'range',
-      className: 'reign-period',
-      title: `${reignPeriod.title ?? 'Reign'}: ${reignPeriod.startYear}–${reignPeriod.endYear ?? '(end unknown)'}`,
-      start: toLegacyDate(yearToPlainDate(reignPeriod.startYear)),
-      end: toLegacyDate(
-        yearToPlainDate(
-          ensureMinimumRangeWidthYears(
-            reignPeriod.startYear,
-            reignPeriod.endYear ?? person.endYear ?? reignPeriod.startYear,
-          ),
-        ),
-      ),
-    }));
-
-    return [personItem, ...reignItems];
   });
+}
+
+export interface WarItem {
+  id: string;
+  name: string;
+  startYear: number;
+  endYear: number;
+  isPoint: boolean;
+  category: Category;
+  tooltip: string;
 }
 
 // wars.json is already Wars & Conflicts-lane-only (data-pipeline's
 // EVENT_TYPES filter), so every entry maps 1:1 — no category filtering here.
-export function mapWarsAndConflictsToItems(wars: War[]): DataItem[] {
+export function mapWars(wars: War[]): WarItem[] {
   return wars.map((war) => {
-    const { endYear } = war;
+    const isPoint = war.endYear === undefined;
     return {
       id: war.id,
-      content: war.name,
-      group: 'wars',
-      type: endYear !== undefined ? 'range' : 'point',
-      className: `category-${war.category}`,
-      title: war.partOfWarName ? `${war.name} — part of ${war.partOfWarName}` : undefined,
-      start: toLegacyDate(yearToPlainDate(war.startYear)),
-      end:
-        endYear !== undefined
-          ? toLegacyDate(yearToPlainDate(ensureMinimumRangeWidthYears(war.startYear, endYear)))
-          : undefined,
+      name: war.name,
+      startYear: war.startYear,
+      endYear: isPoint ? war.startYear : ensureMinimumRangeWidthYears(war.startYear, war.endYear as number),
+      isPoint,
+      category: war.category,
+      tooltip: war.partOfWarName ? `${war.name} — part of ${war.partOfWarName}` : war.name,
     };
   });
 }
 
+export interface DiscoveryItem {
+  id: string;
+  name: string;
+  startYear: number;
+  category: Category;
+  tooltip: string;
+}
+
 // discoveries.json never carries an endYear (data-pipeline's Discovery rows
 // are always single-year) — always a point, unlike wars.
-export function mapInventionsToItems(discoveries: Discovery[]): DataItem[] {
+export function mapDiscoveries(discoveries: Discovery[]): DiscoveryItem[] {
   return discoveries.map((discovery) => ({
     id: discovery.id,
-    content: discovery.name,
-    group: 'events',
-    type: 'point',
-    className: `category-${discovery.category}`,
-    start: toLegacyDate(yearToPlainDate(discovery.startYear)),
+    name: discovery.name,
+    startYear: discovery.startYear,
+    category: discovery.category,
+    tooltip: discovery.name,
   }));
+}
+
+interface RowInterval {
+  id: string;
+  startYear: number;
+  endYear: number;
+}
+
+// Greedy interval-graph row assignment: sort by start, drop each item into
+// the first row whose last-placed end year clears it with MIN_ROW_GAP_YEARS
+// to spare, else open a new row. Guarantees no two items in the same row
+// ever overlap or crowd each other — shared by the People and Wars & Conflicts
+// lanes (Events & Inventions is points-only and doesn't need it).
+export function assignRows(items: RowInterval[]): Map<string, number> {
+  const rowEndYears: number[] = [];
+  const rowOfId = new Map<string, number>();
+
+  const sorted = [...items].sort((a, b) => a.startYear - b.startYear);
+  for (const item of sorted) {
+    let row = rowEndYears.findIndex((lastEnd) => lastEnd + MIN_ROW_GAP_YEARS <= item.startYear);
+    if (row === -1) {
+      row = rowEndYears.length;
+      rowEndYears.push(item.endYear);
+    } else {
+      rowEndYears[row] = item.endYear;
+    }
+    rowOfId.set(item.id, row);
+  }
+
+  return rowOfId;
 }

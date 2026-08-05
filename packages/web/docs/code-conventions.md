@@ -10,25 +10,28 @@
 
 - Layers: `shared → features → widgets → app` (`entities`/`pages` deliberately omitted — single-domain, single-page app). A layer may only import from layers below it.
 - Each slice exposes one public `index.ts`; other code never reaches into a slice's internals.
-- Functional components only. vis-timeline is client-only — never assume it can server-render.
+- Functional components only. D3's DOM manipulation is client-only — never assume it can server-render.
 - Filter/selection state lives in the feature slice it belongs to; no global state folder.
 
 ### Styling
 
 - CSS Modules only, no global stylesheets beyond one base/reset file.
-- No hardcoded hex values — all color/typography/radius come from tokens (`docs/design-tokens.md`), as CSS custom properties.
+- No hardcoded hex values — all color/typography/radius come from tokens (`docs/design-tokens.md`), as CSS custom properties. Exception: `widgets/timeline-canvas/`'s D3 rendering core and its lane CSS Modules (`PeopleLane.module.css`, `WarsLane.module.css`, `EventsLane.module.css`, `TimelineCanvas.module.css`) provisionally inline hex pending ticket 05 (see Timeline Rendering below) — everywhere else, hardcoded hex is a real violation.
 - Occupation category colors are the single source of truth for People-lane fills, Events-lane marker borders, and the matching filter chip.
 - Person vs. event is carried by lane + shape (bar vs. point), never by color — color means occupation category only.
 
-### Timeline Rendering (vis-timeline)
+### Timeline Rendering (D3)
 
-- All vis-timeline config lives in `widgets/timeline-canvas/`.
-- `Temporal.PlainDate` is canonical everywhere; the **only** place allowed to construct a legacy `Date` is `toLegacyDate()` in `shared/lib/dates.ts`, called only from `widgets/timeline-canvas/`. BCE years are negative years, end-to-end.
-- People, Wars & Conflicts, and Events & Inventions are **three separate, synced `Timeline` instances** (not one instance with three groups) — a single instance can't give each lane an independent scroll region. Kept in sync via a `rangechange` listener plus a shared reentrancy guard.
-- Wars & Conflicts and Events & Inventions render directly off `wars.json` (`War[]`) and `discoveries.json` (`Discovery[]`), each pre-split and lane-scoped by the data-pipeline — `map-to-items.ts` no longer filters by category to route between the two lanes, it just maps each array 1:1. `mapWarsAndConflictsToItems` renders a range bar when `endYear` is set, a point otherwise (`discoveries.json` rows never carry `endYear`, so that lane is always points). The People lane's `mapPeopleToItems` uses `person.occupationDomain` (not `person.category`) for its `category-*` className — still unstyled either way, pending Unit 5.
-- A person's `reignPeriods` render as overlay ranges inside their own lifespan bar, sharing a vis-timeline `subgroup` — real overlap (not stacking) requires the group-level `subgroupStack` config, not `TimelineOptions.stackSubgroups` (a non-obvious trap: the latter only gates whether the former is honored).
-- `DataItem.title` renders as vis-timeline's own hover popup, not a static `title` attribute — it isn't in the DOM until actual hover.
-- Wheel-zoom is disabled in favor of dedicated +/- buttons; the freed wheel gesture scrolls a lane vertically or pans horizontally instead.
+- All D3 rendering config lives in `widgets/timeline-canvas/` (`options.ts` for layout constants/colors/the shared `xScale`/zoom math, `map-to-items.ts` for pure `Person`/`War`/`Discovery` → render-item mapping plus the shared row-assignment function, one component per lane: `PeopleLane.tsx`, `WarsLane.tsx`, `EventsLane.tsx`).
+- Years are plain numbers end-to-end (BCE negative) — no `Temporal.PlainDate`/legacy-`Date` conversion anywhere in the rendering path; `shared/lib/dates.ts` keeps only `today()` (for the live upper time bound), which still returns `Temporal.PlainDate` since callers just read its `.year`.
+- People, Wars & Conflicts, and Events & Inventions are three lane sections stacked vertically inside **one shared-horizontal-scroll container** (`TimelineCanvas.tsx`'s `scrollContainer`) — that container's native scroll position *is* the time-axis sync across all three lanes, no `rangechange`-style listener or reentrancy guard. Each lane section keeps its own independent `overflow-y: auto` region for row overflow (People needs it — 11 rows over 49 people); a lane's wrapper div is given an explicit inline `width` (the shared `xScale`'s `totalWidth`) wider than the scroll container, which is what drives the shared horizontal scrollbar.
+- Zoom is a numeric `pixelsPerYear` state in `TimelineCanvas.tsx`, shared by all three lanes since they share one `xScale`; the +/- buttons call `zoomIn`/`zoomOut` from `options.ts`, clamped to the bounds implied by `ZOOM_MIN_YEARS`/`ZOOM_MAX_YEARS` (`shared/config/viewport.ts`) at the container's current width.
+- Wars & Conflicts and Events & Inventions render directly off `wars.json` (`War[]`) and `discoveries.json` (`Discovery[]`), each pre-split and lane-scoped by the data-pipeline — `map-to-items.ts` no longer filters by category to route between the two lanes, it just maps each array 1:1. `mapWars` renders a range bar when `endYear` is set, a point otherwise (`discoveries.json` rows never carry `endYear`, so `mapDiscoveries` is always points). The People lane's `mapPeople` keys its fill off `person.occupationDomain` (not `person.category`); Wars/Events key off `category` — both provisionally inlined hex (`DOMAIN_COLORS`/`CATEGORY_COLORS` in `options.ts`) pending Unit 5's real CSS custom properties — the lane CSS Modules' own label/background fills (e.g. `PeopleLane.module.css`'s `.name`, `TimelineCanvas.module.css`'s `.scrollContainer` background) are inlined hex for the same reason, tracked under the same ticket 05.
+- A person's `reignPeriods` render as a solid stripe along the bottom edge of their own lifespan bar — plain layout math (same `xScale`, same row's `y`), no vis-timeline-style subgroup/stacking trick needed.
+- `assignRows` (in `map-to-items.ts`) is the shared greedy interval-graph row-stacking function: sort by `startYear`, place in the first row that clears with a 5-year buffer, else open a new row. Used by People and Wars & Conflicts; Events & Inventions is points-only and renders everything on a single row.
+- Each lane's D3 join uses literal (non-CSS-Module) marker classes like `d3-bar`/`d3-dot`/`d3-name` for `selectAll`/`data`/`join` matching — CSS-Module classes ride alongside purely for styling and must never be used as join selectors.
+- Tooltips render as a native SVG `<title>` child element (real DOM, hover-triggered by the browser), not a component-level `title` attribute.
+- Wheel-zoom is not wired; the dedicated +/- buttons are the only zoom control. Native browser scroll (drag-to-scroll aside) handles both panning (horizontal, on the shared container) and per-lane row overflow (vertical, on each lane).
 
 ### Data and Storage
 
@@ -36,4 +39,4 @@
 
 ### File Organization
 
-`src/`, by mini-FSD layer: `shared/lib` (date conversion plus the one legacy-`Date` adapter), `shared/config` (zoom/viewport constants), `shared/types` (re-exports from `packages/shared-types`), `shared/ui` (generic primitives); `features/filter-by-fame-tier`, `features/filter-by-occupation`, `features/filter-by-region`, `features/select-timeline-entity`, `features/filter-timeline-entities` (combines the three filters via AND); `widgets/timeline-canvas`, `widgets/filter-bar`, `widgets/detail-panel`; `app/` (entry point, composes the three widgets).
+`src/`, by mini-FSD layer: `shared/lib` (`today()`, the one live `Temporal.PlainDate` read the rendering path needs), `shared/config` (zoom/viewport constants), `shared/types` (re-exports from `packages/shared-types`), `shared/ui` (generic primitives); `features/filter-by-fame-tier`, `features/filter-by-occupation`, `features/filter-by-region`, `features/select-timeline-entity`, `features/filter-timeline-entities` (combines the three filters via AND); `widgets/timeline-canvas`, `widgets/filter-bar`, `widgets/detail-panel`; `app/` (entry point, composes the three widgets).
