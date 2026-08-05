@@ -1,0 +1,28 @@
+.svg {
+  display: block;
+}
+
+.bar,
+.dot {
+  cursor: default;
+}
+
+.name {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  /* Mirrors color-text-on-category; inlined until Unit 5 lands real CSS
+     custom properties (ticket 05). */
+  fill: #fbf8f0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pointName {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  /* Mirrors color-text-primary — a point label sits on the lane background,
+     not on a solid category fill like a range bar's label does. */
+  fill: #2e2b22;
+  pointer-events: none;
+  user-select: none;
+}

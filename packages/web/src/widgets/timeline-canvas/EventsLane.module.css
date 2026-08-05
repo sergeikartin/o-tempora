@@ -1,0 +1,17 @@
+.svg {
+  display: block;
+}
+
+.dot {
+  cursor: default;
+}
+
+.pointName {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  /* Mirrors color-text-primary — sits on the lane background, not a solid
+     category fill. Inlined until Unit 5 lands real tokens (ticket 05). */
+  fill: #2e2b22;
+  pointer-events: none;
+  user-select: none;
+}

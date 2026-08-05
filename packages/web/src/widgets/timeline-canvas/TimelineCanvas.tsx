@@ -1,19 +1,11 @@
-import { useEffect, useRef } from 'react';
-import { Timeline } from 'vis-timeline/standalone';
-import 'vis-timeline/styles/vis-timeline-graph2d.css';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Discovery, Person, War } from '../../shared/types';
-import {
-  PEOPLE_GROUPS,
-  WARS_GROUPS,
-  EVENTS_GROUPS,
-  buildPeopleTimelineOptions,
-  buildWarsTimelineOptions,
-  buildEventsTimelineOptions,
-} from './options';
-import { mapInventionsToItems, mapPeopleToItems, mapWarsAndConflictsToItems } from './map-to-items';
+import { DEFAULT_VIEWPORT_START } from '../../shared/config/viewport';
+import { buildXScale, defaultPixelsPerYear, zoomIn as computeZoomIn, zoomOut as computeZoomOut } from './options';
+import { PeopleLane } from './PeopleLane';
+import { WarsLane } from './WarsLane';
+import { EventsLane } from './EventsLane';
 import styles from './TimelineCanvas.module.css';
-
-const ZOOM_STEP = 0.2;
 
 interface TimelineCanvasProps {
   people: Person[];
@@ -22,95 +14,70 @@ interface TimelineCanvasProps {
 }
 
 export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProps) {
-  const peopleContainerRef = useRef<HTMLDivElement>(null);
-  const warsContainerRef = useRef<HTMLDivElement>(null);
-  const eventsContainerRef = useRef<HTMLDivElement>(null);
-  const peopleTimelineRef = useRef<Timeline | null>(null);
-  const warsTimelineRef = useRef<Timeline | null>(null);
-  const eventsTimelineRef = useRef<Timeline | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [pixelsPerYear, setPixelsPerYear] = useState(() => defaultPixelsPerYear(0));
+  // Set by a zoom click to the year at the viewport's center just before the
+  // change, so the effect below can re-center the scroll position on it once
+  // the new xScale is in state — zooming in/out around what the user was
+  // looking at rather than snapping back to the timeline's left edge.
+  const pendingCenterYearRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    if (!peopleContainerRef.current || !warsContainerRef.current || !eventsContainerRef.current) return;
+  const { scale, totalWidth } = useMemo(() => buildXScale(pixelsPerYear), [pixelsPerYear]);
 
-    const peopleTimeline = new Timeline(peopleContainerRef.current, [], PEOPLE_GROUPS, buildPeopleTimelineOptions());
-    const warsTimeline = new Timeline(warsContainerRef.current, [], WARS_GROUPS, buildWarsTimelineOptions());
-    const eventsTimeline = new Timeline(
-      eventsContainerRef.current,
-      [],
-      EVENTS_GROUPS,
-      buildEventsTimelineOptions(),
-    );
-    peopleTimelineRef.current = peopleTimeline;
-    warsTimelineRef.current = warsTimeline;
-    eventsTimelineRef.current = eventsTimeline;
-
-    // The three lanes are separate Timeline instances (see options.ts for
-    // why) kept on the same visible time window — dragging or zooming any
-    // one lane must move the other two together. One shared guard across
-    // all three: calling setWindow on a target re-fires that target's own
-    // 'rangechange', which would otherwise bounce back to the source (or
-    // cross-bounce between the other two lanes) forever.
-    let isSyncing = false;
-    function syncWindow(targets: Timeline[]) {
-      return ({ start, end }: { start: Date; end: Date }) => {
-        if (isSyncing) return;
-        isSyncing = true;
-        try {
-          for (const target of targets) {
-            target.setWindow(start, end, { animation: false });
-          }
-        } finally {
-          isSyncing = false;
-        }
-      };
-    }
-    peopleTimeline.on('rangechange', syncWindow([warsTimeline, eventsTimeline]));
-    warsTimeline.on('rangechange', syncWindow([peopleTimeline, eventsTimeline]));
-    eventsTimeline.on('rangechange', syncWindow([peopleTimeline, warsTimeline]));
-
-    return () => {
-      peopleTimeline.destroy();
-      warsTimeline.destroy();
-      eventsTimeline.destroy();
-      peopleTimelineRef.current = null;
-      warsTimelineRef.current = null;
-      eventsTimelineRef.current = null;
-    };
+  // Real browsers can measure the container before first paint; jsdom (and
+  // any not-yet-laid-out first paint) can't, so the initial pixelsPerYear
+  // state above already assumed a fallback width. Recompute from the real
+  // width once available, and pan to the same default viewport vis-timeline
+  // used to open on — computed against this effect's own local scale, not
+  // the (still stale, pre-re-render) `scale` above.
+  useLayoutEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const nextPixelsPerYear = defaultPixelsPerYear(container.clientWidth);
+    setPixelsPerYear(nextPixelsPerYear);
+    const { scale: initialScale } = buildXScale(nextPixelsPerYear);
+    container.scrollLeft = initialScale(DEFAULT_VIEWPORT_START.year);
   }, []);
 
-  useEffect(() => {
-    peopleTimelineRef.current?.setItems(mapPeopleToItems(people));
-  }, [people]);
+  useLayoutEffect(() => {
+    const container = scrollRef.current;
+    const centerYear = pendingCenterYearRef.current;
+    if (!container || centerYear === null) return;
+    container.scrollLeft = scale(centerYear) - container.clientWidth / 2;
+    pendingCenterYearRef.current = null;
+  }, [pixelsPerYear, scale]);
 
-  useEffect(() => {
-    warsTimelineRef.current?.setItems(mapWarsAndConflictsToItems(wars));
-  }, [wars]);
-
-  useEffect(() => {
-    eventsTimelineRef.current?.setItems(mapInventionsToItems(discoveries));
-  }, [discoveries]);
-
-  function handleZoomIn() {
-    eventsTimelineRef.current?.zoomIn(ZOOM_STEP);
-  }
-
-  function handleZoomOut() {
-    eventsTimelineRef.current?.zoomOut(ZOOM_STEP);
+  function zoom(step: (currentPixelsPerYear: number, viewportWidthPx: number) => number) {
+    const container = scrollRef.current;
+    if (!container) {
+      setPixelsPerYear((current) => step(current, 0));
+      return;
+    }
+    pendingCenterYearRef.current = scale.invert(container.scrollLeft + container.clientWidth / 2);
+    setPixelsPerYear((current) => step(current, container.clientWidth));
   }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.zoomControls}>
-        <button type="button" onClick={handleZoomOut} aria-label="Zoom out">
+        <button type="button" onClick={() => zoom(computeZoomOut)} aria-label="Zoom out">
           −
         </button>
-        <button type="button" onClick={handleZoomIn} aria-label="Zoom in">
+        <button type="button" onClick={() => zoom(computeZoomIn)} aria-label="Zoom in">
           +
         </button>
       </div>
-      <div ref={peopleContainerRef} className={styles.peopleLane} />
-      <div ref={warsContainerRef} className={styles.warsLane} />
-      <div ref={eventsContainerRef} className={styles.eventsLane} />
+      <div ref={scrollRef} className={styles.scrollContainer}>
+        <div className={styles.peopleLane} style={{ width: totalWidth }}>
+          <PeopleLane people={people} xScale={scale} />
+        </div>
+        <div className={styles.warsLane} style={{ width: totalWidth }}>
+          <WarsLane wars={wars} xScale={scale} />
+        </div>
+        <div className={styles.eventsLane} style={{ width: totalWidth }}>
+          <EventsLane discoveries={discoveries} xScale={scale} />
+        </div>
+      </div>
     </div>
   );
 }

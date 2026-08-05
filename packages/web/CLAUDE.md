@@ -1,6 +1,6 @@
 # packages/web
 
-Frontend: React 19 + TypeScript + Vite + vis-timeline. Reads static JSON (from `packages/shared-types`) bundled at build time — no runtime data fetching.
+Frontend: React 19 + TypeScript + Vite + D3. Reads static JSON (from `packages/shared-types`) bundled at build time — no runtime data fetching.
 
 - Entry Point: `src/main.tsx` (app composition in `src/app/`)
 
@@ -22,7 +22,7 @@ Run from repo root:
 |---|---|
 | UI framework | React + TypeScript, mini-FSD |
 | Build tool | Vite |
-| Timeline rendering | vis-timeline (standalone build) |
+| Timeline rendering | D3 |
 | Styling | CSS Modules |
 | Testing | Vitest + RTL |
 | Lint / boundary tooling | ESLint + typescript-eslint + Steiger, enforcing mini-FSD boundaries |
@@ -31,6 +31,6 @@ Run from repo root:
 
 - `docs/code-conventions.md` — FSD/React/styling/vis-timeline rules, file organization
 - `docs/design-tokens.md` — color palette, typography, radius scale
-- `docs/adr/` — architecture decision records, e.g. `0001-d3-over-vis-timeline.md` (decided; migration to D3 not yet executed — Stack table above still reflects the current vis-timeline implementation)
+- `docs/adr/` — architecture decision records, e.g. `0001-d3-over-vis-timeline.md` (decided and executed — see `.scratch/d3-timeline-migration/`)
 - Shared conventions (apply here too): `../../docs/code-conventions.md`
 
