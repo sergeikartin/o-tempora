@@ -29,13 +29,13 @@ const battleOfMegiddo: War = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
 };
 
-test('renders a range bar for a war with an endYear', () => {
+test('renders a range line for a war with an endYear', () => {
   const { scale } = buildXScale(2);
   const { container } = render(<WarsLane wars={[koreanWar]} xScale={scale} />);
 
-  expect(container.querySelectorAll('.d3-bar')).toHaveLength(1);
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(0);
-  expect(container.querySelector('.d3-bar-name')?.textContent).toBe('Korean War');
+  expect(container.querySelector('.d3-range-name')?.textContent).toBe('Korean War');
 });
 
 test('renders a point marker for an entry without an endYear', () => {
@@ -43,7 +43,7 @@ test('renders a point marker for an entry without an endYear', () => {
   const { container } = render(<WarsLane wars={[battleOfMegiddo]} xScale={scale} />);
 
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1);
-  expect(container.querySelectorAll('.d3-bar')).toHaveLength(0);
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
   expect(container.querySelector('.d3-point-name')?.textContent).toBe('Battle of Megiddo');
 });
 
@@ -67,5 +67,5 @@ test('renders an empty svg for an empty wars list', () => {
   const { scale } = buildXScale(2);
   const { container } = render(<WarsLane wars={[]} xScale={scale} />);
 
-  expect(container.querySelectorAll('.d3-bar, .d3-dot')).toHaveLength(0);
+  expect(container.querySelectorAll('.d3-line, .d3-dot')).toHaveLength(0);
 });

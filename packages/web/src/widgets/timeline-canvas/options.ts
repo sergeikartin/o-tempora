@@ -21,6 +21,30 @@ export const POINT_RADIUS = 5;
 // row — pure visual breathing room, not a claim about the underlying dates.
 export const MIN_ROW_GAP_YEARS = 5;
 
+// Below-marker label layout, shared by Wars & Conflicts (both its range
+// lines and point dots) and Events & Inventions (dots only) — the two lanes
+// that carry their label below the marker rather than inside/beside it.
+// PeopleLane's solid bars are unaffected and keep ROW_PITCH above.
+export const RANGE_LINE_HEIGHT = 2;
+export const MARKER_LABEL_GAP = 4;
+export const STEM_HEIGHT = 6;
+// Rough per-character estimate for the 11px label font — good enough to
+// size row-stacking without a real DOM text-measurement pass.
+export const AVG_CHAR_WIDTH_PX = 6;
+// Row-stacking gap for below-marker layouts — real screen pixels, not years,
+// so much smaller than MIN_ROW_GAP_YEARS.
+export const MIN_ROW_GAP_PX = 8;
+// Approx rendered height of an 11px below-marker label.
+const LABEL_TEXT_HEIGHT_PX = 13;
+// The point dot + stem + label is the tallest content that shares a row in
+// either lane (a range line + label is shorter) — this is the row pitch for
+// both lanes' below-marker layouts.
+export const MARKER_ROW_PITCH = POINT_RADIUS * 2 + STEM_HEIGHT + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
+
+export function estimateLabelWidthPx(name: string): number {
+  return name.length * AVG_CHAR_WIDTH_PX;
+}
+
 // Mirrors design-tokens.md's Occupation Domain Palette. Inlined because
 // Unit 5 hasn't wired those tokens as CSS custom properties yet (ticket 05,
 // blocked on Unit 5's still-open decisions) — swap for `var(--color-domain-*)`

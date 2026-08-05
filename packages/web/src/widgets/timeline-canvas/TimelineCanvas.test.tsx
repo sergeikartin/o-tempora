@@ -51,7 +51,8 @@ test('renders all three lanes, each populated from its own dataset', () => {
     <TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />,
   );
 
-  expect(container.querySelectorAll('.d3-bar')).toHaveLength(2); // Aristotle + Korean War
+  expect(container.querySelectorAll('.d3-bar')).toHaveLength(1); // Aristotle (People still renders as a bar)
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War (Wars & Conflicts renders as a line)
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1); // association football
   expect(container.querySelector('.d3-name')?.textContent).toBe('Aristotle');
 });
