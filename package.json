@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/node": "^22.10.0",
     "typescript": "^7.0.2"
   },
