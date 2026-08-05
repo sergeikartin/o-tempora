@@ -1,5 +1,6 @@
 import { test, expect } from 'vitest';
 import { assignRows, mapDiscoveries, mapPeople, mapWars } from './map-to-items';
+import { today } from '../../shared/lib/dates';
 import type { Discovery, Person, War } from '../../shared/types';
 
 const person: Person = {
@@ -31,9 +32,9 @@ test('mapPeople maps a person with both years to an item with matching start/end
   expect(item?.occupationDomain).toBe('humanities');
 });
 
-test('mapPeople falls back to startYear + 1 when endYear is missing', () => {
+test('mapPeople falls back to today when endYear is missing — still alive, not a collapsed bar', () => {
   const [item] = mapPeople([personWithoutDeathYear]);
-  expect(item?.endYear).toBe(-749);
+  expect(item?.endYear).toBe(today().year);
 });
 
 test('mapPeople gives a person with no reignPeriods an empty reignPeriods list', () => {
@@ -69,7 +70,7 @@ test('mapPeople falls back to the person\'s endYear when a reignPeriod has no en
   expect(item?.reignPeriods[0]?.endYear).toBe(-44);
 });
 
-test('mapPeople widens a reignPeriod to one year when both endYear and the person\'s endYear are missing', () => {
+test('mapPeople falls back to today for a reignPeriod when both its endYear and the person\'s endYear are missing', () => {
   const rulerWithNoBounds: Person = {
     ...ruler,
     endYear: undefined,
@@ -77,7 +78,7 @@ test('mapPeople widens a reignPeriod to one year when both endYear and the perso
   };
   const [item] = mapPeople([rulerWithNoBounds]);
   expect(item?.reignPeriods[0]?.startYear).toBe(-49);
-  expect(item?.reignPeriods[0]?.endYear).toBe(-48);
+  expect(item?.reignPeriods[0]?.endYear).toBe(today().year);
 });
 
 const warWithEndYear: War = {
