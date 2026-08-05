@@ -6,10 +6,10 @@ World History Timeline: a read-only, continuously zoomable visualization of worl
 
 **Goals:** help users see whose lives overlapped in time; make the shape of history visually intuitive; no login/setup friction; ship a well-scoped v1 (connections, comparison mode, and a map view are deferred, not abandoned).
 
-**Core flow:** opens on the 1800s (100-year window) at the default fame tier → pan/zoom map-style, bounded to a 10-250 year window (no "see all history" view) → adjust the fame tier (Pantheon's HPI for People, Wikidata sitelinks for Wars & Conflicts/Events & Inventions) and occupation/region filters (combined with AND) → click an entry for a tooltip (name, dates, description, Wikipedia link).
+**Core flow:** opens on the 1800s (100-year window) at the default Fame Tier → pan/zoom map-style, bounded to a 10-500 year window (no "see all history" view) → zooming crosses Fame Tier thresholds (CORE/NOTABLE/EXHAUSTIVE) that automatically gate entity density by fame (Pantheon's HPI for People, Wikidata sitelinks for Wars & Conflicts/Events & Inventions — see `packages/web/docs/adr/0002-fame-tier-drives-zoom.md`) plus occupation/region filters (combined with AND) → click an entry for a tooltip (name, dates, description, Wikipedia link).
 
-**In scope:** pan/zoom timeline, three lanes, fame-tier selector, occupation filter, region filter (tag-based, not a map), click-to-view tooltip, read-only.
+**In scope:** pan/zoom timeline, three lanes, zoom-coupled Fame Tier (auto, read-only indicator — no manual fame selector), occupation filter, region filter (tag-based, not a map), click-to-view tooltip, read-only.
 
-**Out of scope (v1):** connections between people, a literal map view, any write functionality, live data fetching, search outside the current fame tier, rich per-entry content (video/notes/articles).
+**Out of scope (v1):** connections between people, a literal map view, any write functionality, live data fetching, search outside the current Fame Tier, rich per-entry content (video/notes/articles).
 
-**Success criteria:** smooth pan/zoom with the full default dataset; correct stacking in dense periods; filters/fame-tier update without lag; accurate detail tooltips; correct BCE/CE rendering; dataset populated for the top 200 people plus a comparable set of events before launch.
+**Success criteria:** smooth pan/zoom with the full default dataset; correct stacking in dense periods; filters/Fame Tier update without lag; accurate detail tooltips; correct BCE/CE rendering; dataset populated for the top 200 people plus a comparable set of events before launch.

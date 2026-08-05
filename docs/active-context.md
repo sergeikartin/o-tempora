@@ -32,7 +32,7 @@ Update this file after every meaningful implementation change. Keep entries high
 
 ## Next Up
 
-- Unit 9 (unspecced): frontend fame-tier selector (`features/filter-by-fame-tier`).
+- `.scratch/frame-tier-zoom/spec.md`: zoom-coupled Fame Tier (auto entity-density gating, replacing the manual fame-tier selector below) + century major-header row on the Year Axis. Not yet broken into tickets. Supersedes Unit 9 — `features/filter-by-fame-tier` as a manual, user-facing selector is dropped; see `packages/web/docs/adr/0002-fame-tier-drives-zoom.md`.
 - Unit 5 / D3 migration ticket 05 (`.scratch/d3-timeline-migration/issues/05-real-design-tokens.md`, blocked on Unit 5's still-open decisions below): replace the D3 rendering core's provisional inlined colors (`DOMAIN_COLORS`/`CATEGORY_COLORS`/`REIGN_STRIPE_COLOR` in `packages/web/src/widgets/timeline-canvas/options.ts`) with real CSS custom properties once `packages/web/docs/design-tokens.md`'s palette is wired as tokens; also resolve the reign-period marker's real token (tentatively `color-accent-selected`, not yet decoupled into its own `color-marker-reign-period` token) and the lifespan-bar name-label font-size/padding at the finalized 16px bar height.
 
 ## Open Questions
