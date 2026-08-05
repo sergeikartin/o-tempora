@@ -2,7 +2,7 @@
 
 <!-- UI/visual design tokens. Read before touching styling. -->
 
-**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **occupation category**, not person-vs-event — person vs. event is carried by lane and shape instead. Filter chips and timeline entries share the same category color end-to-end.
+**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **occupation category** (Wars & Conflicts, Events & Inventions) or **occupation domain** (People) — never person-vs-event, which is carried by lane and shape instead. Filter chips and timeline entries share the same color end-to-end within each lane. `Category` and `OccupationDomain` are separate enums from separate sources (Wikidata vs. Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified.
 
 ## Color Palette
 
@@ -35,6 +35,23 @@ Used as a solid fill (People-lane bars) or a colored border on white/cream (Even
 | Religion | `color-category-religion` | `#A891C4` |
 
 No occupation tag / uncategorized → `color-border-subtle` as a neutral fallback, not a ninth pastel.
+
+## Occupation Domain Palette
+
+People-lane only. Keyed by Pantheon's `OccupationDomain` (not `Category` above — different enum, different source). Used as a solid fill on People-lane lifespan bars. Designed independently of the Category palette above (not hue-derived from it) — pastelized from a reference swatch set, matched to the same lightness/saturation range as Category's colors so both lanes read as one system.
+
+| Domain | Token | Hex |
+|---|---|---|
+| Institutions | `color-domain-institutions` | `#C08A7C` |
+| Arts | `color-domain-arts` | `#C0A37C` |
+| Business & Law | `color-domain-business-law` | `#B3C07C` |
+| Public Figure | `color-domain-public-figure` | `#8AC7A4` |
+| Science & Technology | `color-domain-science-technology` | `#61B89E` |
+| Exploration | `color-domain-exploration` | `#7C84C0` |
+| Humanities | `color-domain-humanities` | `#B35680` |
+| Sports | `color-domain-sports` | `#C38393` |
+
+`public-figure`/`science-technology` and `humanities`/`sports` sit close in hue (both green-teal and magenta-red families respectively) — deliberately separated by lightness/saturation instead of hue, matched to the source reference. Revisit if they read as too similar once rendered.
 
 ## Typography
 
