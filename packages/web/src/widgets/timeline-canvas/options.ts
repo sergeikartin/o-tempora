@@ -25,8 +25,15 @@ export const MIN_ROW_GAP_YEARS = 5;
 // lines and point dots) and Events & Inventions (dots only) — the two lanes
 // that carry their label below the marker rather than inside/beside it.
 // PeopleLane's solid bars are unaffected and keep ROW_PITCH above.
+//
+// Every marker (range line or point dot) sits at the same fixed y right at
+// the top of its lane — i.e. right under the shared YearAxis for Wars &
+// Conflicts, the lane directly below it — so a marker's x-position always
+// reads directly against the axis above it. Overlapping labels are staggered
+// by STEM length (one MARKER_ROW_PITCH tier per row) instead of moving the
+// marker itself, so the "row" assignRows hands back is a stem-length tier,
+// not a vertical band with its own marker.
 export const RANGE_LINE_HEIGHT = 2;
-export const MARKER_LABEL_GAP = 4;
 export const STEM_HEIGHT = 6;
 // Rough per-character estimate for the 11px label font — good enough to
 // size row-stacking without a real DOM text-measurement pass.
@@ -36,13 +43,35 @@ export const AVG_CHAR_WIDTH_PX = 6;
 export const MIN_ROW_GAP_PX = 8;
 // Approx rendered height of an 11px below-marker label.
 const LABEL_TEXT_HEIGHT_PX = 13;
-// The point dot + stem + label is the tallest content that shares a row in
-// either lane (a range line + label is shorter) — this is the row pitch for
-// both lanes' below-marker layouts.
-export const MARKER_ROW_PITCH = POINT_RADIUS * 2 + STEM_HEIGHT + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
+// Small breathing room between a stem's tip and its label's text.
+export const STEM_LABEL_GAP = 3;
+// Vertical budget per stem-length tier — enough for one label's height plus
+// breathing room, so consecutive tiers' labels never collide.
+export const MARKER_ROW_PITCH = LABEL_TEXT_HEIGHT_PX + ROW_GAP;
+// Fixed y every marker (line or dot) is centered on, using the point dot's
+// radius as the reference since it's the taller of the two marker shapes.
+export const MARKER_CENTER_Y = LANE_TOP_PADDING + POINT_RADIUS;
+// y every stem starts from — the bottom edge of the (taller) dot marker.
+const STEM_TOP_Y = MARKER_CENTER_Y + POINT_RADIUS;
 
 export function estimateLabelWidthPx(name: string): number {
   return name.length * AVG_CHAR_WIDTH_PX;
+}
+
+/** y of a row's stem tip — row 0 is the shortest stem. */
+export function stemBottomForRow(row: number): number {
+  return STEM_TOP_Y + STEM_HEIGHT + row * MARKER_ROW_PITCH;
+}
+
+/** y of a row's label, a small gap below its stem's tip. */
+export function labelYForRow(row: number): number {
+  return stemBottomForRow(row) + STEM_LABEL_GAP;
+}
+
+/** Total SVG height needed for a below-marker lane with this many stacked rows. */
+export function markerLaneHeight(rowCount: number): number {
+  if (rowCount === 0) return LANE_TOP_PADDING * 2;
+  return labelYForRow(rowCount - 1) + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
 }
 
 // Mirrors design-tokens.md's Occupation Domain Palette. Inlined because
