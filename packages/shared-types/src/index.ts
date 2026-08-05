@@ -29,7 +29,7 @@ export type Region = (typeof REGIONS)[number];
 
 // Pantheon's own occupation-domain grouping (its "Working in" filter),
 // covering all 101 raw `occupation` values with no gaps — see
-// data-pipeline/transform/occupation-domain-categories.ts for the mapping.
+// data-pipeline/src/transform/occupation-domain-categories.ts for the mapping.
 // Person-only: Category/Region stay Wikidata-derived and War/Discovery-only
 // (see the People-source decision this type follows from).
 export const OCCUPATION_DOMAINS = [
@@ -48,7 +48,7 @@ export type OccupationDomain = (typeof OCCUPATION_DOMAINS)[number];
 // The UN M49 geoscheme's 22 sub-regions — Person-only, keyed off Pantheon's
 // present-day birth/death country rather than historical polity (unlike
 // HistoricalEvent's Region, which is historical-polity-aware). See
-// data-pipeline/transform/un-region-categories.ts for the country mapping.
+// data-pipeline/src/transform/un-region-categories.ts for the country mapping.
 export const UN_REGIONS = [
   "northern-europe",
   "southern-europe",
@@ -97,7 +97,7 @@ export interface TimelineEntry {
 }
 
 // Sourced from Pantheon 2.0, not Wikidata — fameScore is Pantheon's own HPI
-// (0-100), not a sitelink count (see transform/score.ts's
+// (0-100), not a sitelink count (see ../data-pipeline/src/transform/score.ts's
 // FAME_TIER_MIN_HPI, independent of War/Discovery's sitelink-based tiers).
 export interface Person extends TimelineEntry {
   // Pantheon's `occupation` field is single-valued per person, unlike
@@ -109,7 +109,7 @@ export interface Person extends TimelineEntry {
   regionTags: UnRegion[];
   // Best-effort: only populated when Wikidata has at least one qualified
   // P39 ("position held") statement with a start-time qualifier for this
-  // person (see data-pipeline/fetch/queries/reigns.ts, keyed on the
+  // person (see data-pipeline/src/fetch/queries/reigns.ts, keyed on the
   // Wikidata QID Pantheon retains per person). Most people have none.
   // Sorted ascending by startYear; a person can have more than one (e.g. a
   // deposed-and-restored monarch, or multiple offices).
@@ -122,7 +122,7 @@ export interface War extends TimelineEntry {
   category: Category;
   regionTags: Region[];
   // Only ever populated for entities Wikidata classes as a war (wd:Q198,
-  // the WAR_TYPE_QID in data-pipeline/transform/event-type-categories.ts)
+  // the WAR_TYPE_QID in data-pipeline/src/transform/event-type-categories.ts)
   // that also carry a known end-time claim — battles, treaties, sieges,
   // etc. stay single-date points even when Wikidata happens to record a
   // duration for them, per the product decision that only wars render as
@@ -141,7 +141,7 @@ export interface War extends TimelineEntry {
 // Category stays a real field, not hardcoded to "invention" — this lane
 // covers both discoveries (e.g. "exploration") and inventions, even though
 // the current Fetch-stage tagging only ever produces "invention" today
-// (see tagInvention in data-pipeline/transform/tag-events.ts).
+// (see tagInvention in data-pipeline/src/transform/tag-events.ts).
 export interface Discovery extends TimelineEntry {
   category: Category;
   regionTags: Region[];
