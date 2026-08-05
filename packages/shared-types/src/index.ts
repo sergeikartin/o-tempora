@@ -158,4 +158,9 @@ export interface Discovery extends TimelineEntry {
 export interface ReignPeriod {
   startYear: number;
   endYear?: number;
+  // The position's own Wikidata label (e.g. "Pope", "King of England"),
+  // not a generic "reign" placeholder — absent only when Wikidata has no
+  // English label for the position itself (rare; same best-effort stance
+  // as War.partOfWarName).
+  title?: string;
 }

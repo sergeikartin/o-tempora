@@ -38,7 +38,7 @@ export function mapPeopleToItems(people: Person[]): DataItem[] {
       subgroup: person.id,
       type: 'range',
       className: 'reign-period',
-      title: `Reign: ${reignPeriod.startYear}–${reignPeriod.endYear ?? '(end unknown)'}`,
+      title: `${reignPeriod.title ?? 'Reign'}: ${reignPeriod.startYear}–${reignPeriod.endYear ?? '(end unknown)'}`,
       start: toLegacyDate(yearToPlainDate(reignPeriod.startYear)),
       end: toLegacyDate(
         yearToPlainDate(

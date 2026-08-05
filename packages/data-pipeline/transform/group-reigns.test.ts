@@ -9,6 +9,7 @@ test("groups multiple reign periods per person, sorted ascending by start year",
       person: { type: "uri", value: "http://www.wikidata.org/entity/Q9682" },
       reignStart: { type: "literal", value: "1660-05-29T00:00:00Z" },
       reignEnd: { type: "literal", value: "1685-02-06T00:00:00Z" },
+      positionLabel: { type: "literal", value: "King of England" },
     },
     {
       person: { type: "uri", value: "http://www.wikidata.org/entity/Q9682" },
@@ -19,8 +20,8 @@ test("groups multiple reign periods per person, sorted ascending by start year",
   const result = groupReigns(bindings);
 
   assert.deepEqual(result.get("Q9682"), [
-    { startYear: 1649, endYear: undefined },
-    { startYear: 1660, endYear: 1685 },
+    { startYear: 1649, endYear: undefined, title: undefined },
+    { startYear: 1660, endYear: 1685, title: "King of England" },
   ]);
 });
 
@@ -43,7 +44,7 @@ test("drops rows with no start year and dedupes exact (start, end) duplicates", 
   const result = groupReigns(bindings);
 
   assert.equal(result.has("Q1"), false);
-  assert.deepEqual(result.get("Q2"), [{ startYear: -44, endYear: undefined }]);
+  assert.deepEqual(result.get("Q2"), [{ startYear: -44, endYear: undefined, title: undefined }]);
 });
 
 test("returns an empty map for no bindings", () => {

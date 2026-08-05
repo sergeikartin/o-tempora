@@ -39,10 +39,11 @@ export function groupReigns(bindings: SparqlBinding[]): Map<string, ReignPeriod[
 
     const endIso = row.reignEnd?.value;
     const endYear = endIso ? parseIsoYear(endIso) : undefined;
+    const title = row.positionLabel?.value;
 
     const periods = grouped.get(personId) ?? [];
     if (!periods.some((p) => p.startYear === startYear && p.endYear === endYear)) {
-      periods.push({ startYear, endYear });
+      periods.push({ startYear, endYear, title });
     }
     grouped.set(personId, periods);
   }
