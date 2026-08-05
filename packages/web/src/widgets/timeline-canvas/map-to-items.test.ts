@@ -49,7 +49,7 @@ const ruler: Person = {
   startYear: -100,
   endYear: -44,
   reignPeriods: [
-    { startYear: -49, endYear: -44 },
+    { startYear: -49, endYear: -44, title: 'Dictator' },
     { startYear: -60, endYear: -59 },
   ],
 };
@@ -66,6 +66,12 @@ test('mapPeopleToItems emits the person item followed by one range item per reig
   expect(firstReign?.type).toBe('range');
   expect((firstReign?.start as Date).getFullYear()).toBe(-49);
   expect((firstReign?.end as Date).getFullYear()).toBe(-44);
+});
+
+test('mapPeopleToItems uses the reignPeriod title in the tooltip when present, falling back to "Reign"', () => {
+  const [, firstReign, secondReign] = mapPeopleToItems([ruler]);
+  expect(firstReign?.title).toBe('Dictator: -49–-44');
+  expect(secondReign?.title).toBe('Reign: -60–-59');
 });
 
 test('mapPeopleToItems falls back to the person\'s endYear when a reignPeriod has no endYear', () => {

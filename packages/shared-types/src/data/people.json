@@ -14,7 +14,8 @@
     "reignPeriods": [
       {
         "startYear": 622,
-        "endYear": 632
+        "endYear": 632,
+        "title": "head of state"
       }
     ]
   },
@@ -42,33 +43,7 @@
     ],
     "fameScore": 99.439201,
     "description": "English mathematician and physicist (1642–1727)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Isaac_Newton",
-    "reignPeriods": [
-      {
-        "startYear": 1669,
-        "endYear": 1702
-      },
-      {
-        "startYear": 1689,
-        "endYear": 1690
-      },
-      {
-        "startYear": 1696,
-        "endYear": 1700
-      },
-      {
-        "startYear": 1700,
-        "endYear": 1727
-      },
-      {
-        "startYear": 1701,
-        "endYear": 1702
-      },
-      {
-        "startYear": 1703,
-        "endYear": 1727
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Isaac_Newton"
   },
   {
     "id": "4848272",
@@ -83,26 +58,13 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Donald_Trump",
     "reignPeriods": [
       {
-        "startYear": 1971,
-        "endYear": 2017
-      },
-      {
-        "startYear": 1971
-      },
-      {
-        "startYear": 2016,
-        "endYear": 2017
-      },
-      {
         "startYear": 2017,
-        "endYear": 2021
+        "endYear": 2021,
+        "title": "President of the United States"
       },
       {
-        "startYear": 2024,
-        "endYear": 2025
-      },
-      {
-        "startYear": 2025
+        "startYear": 2025,
+        "title": "President of the United States"
       }
     ]
   },
@@ -117,13 +79,7 @@
     ],
     "fameScore": 98.434181,
     "description": "founder and first khan of the Mongol Empire (1162–1227)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Genghis_Khan",
-    "reignPeriods": [
-      {
-        "startYear": 1206,
-        "endYear": 1227
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Genghis_Khan"
   },
   {
     "id": "60827",
@@ -140,7 +96,8 @@
     "reignPeriods": [
       {
         "startYear": -50,
-        "endYear": -29
+        "endYear": -29,
+        "title": "pharaoh"
       }
     ]
   },
@@ -172,32 +129,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Francis",
     "reignPeriods": [
       {
-        "startYear": 1973,
-        "endYear": 1979
-      },
-      {
-        "startYear": 1992,
-        "endYear": 1997
-      },
-      {
-        "startYear": 1997,
-        "endYear": 1998
-      },
-      {
-        "startYear": 1998,
-        "endYear": 2013
-      },
-      {
-        "startYear": 2001,
-        "endYear": 2013
-      },
-      {
-        "startYear": 2005,
-        "endYear": 2011
-      },
-      {
         "startYear": 2013,
-        "endYear": 2025
+        "endYear": 2025,
+        "title": "Pope"
       }
     ]
   },
@@ -269,7 +203,8 @@
     "reignPeriods": [
       {
         "startYear": 1558,
-        "endYear": 1603
+        "endYear": 1603,
+        "title": "monarch of England"
       }
     ]
   },
@@ -284,13 +219,7 @@
     ],
     "fameScore": 95.935845,
     "description": "4th-century BCE Greek philosopher",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plato",
-    "reignPeriods": [
-      {
-        "startYear": -386,
-        "endYear": -346
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plato"
   },
   {
     "id": "783",
@@ -308,11 +237,13 @@
     "reignPeriods": [
       {
         "startYear": -335,
-        "endYear": -322
+        "endYear": -322,
+        "title": "king of Macedonia"
       },
       {
         "startYear": -329,
-        "endYear": -322
+        "endYear": -322,
+        "title": "pharaoh"
       }
     ]
   },
@@ -331,11 +262,8 @@
     "reignPeriods": [
       {
         "startYear": 33,
-        "endYear": 67
-      },
-      {
-        "startYear": 37,
-        "endYear": 54
+        "endYear": 67,
+        "title": "Pope"
       }
     ]
   },
@@ -380,27 +308,28 @@
     "reignPeriods": [
       {
         "startYear": 1799,
-        "endYear": 1804
-      },
-      {
-        "startYear": 1800,
-        "endYear": 1800
+        "endYear": 1804,
+        "title": "First Consul"
       },
       {
         "startYear": 1804,
-        "endYear": 1814
+        "endYear": 1814,
+        "title": "Emperor of the French"
       },
       {
         "startYear": 1805,
-        "endYear": 1814
+        "endYear": 1814,
+        "title": "monarch of Italy"
       },
       {
         "startYear": 1806,
-        "endYear": 1812
+        "endYear": 1812,
+        "title": "French co-prince of Andorra"
       },
       {
         "startYear": 1815,
-        "endYear": 1815
+        "endYear": 1815,
+        "title": "Emperor of the French"
       }
     ]
   },
@@ -432,11 +361,13 @@
     "reignPeriods": [
       {
         "startYear": 1933,
-        "endYear": 1945
+        "endYear": 1945,
+        "title": "Reich Chancellor"
       },
       {
         "startYear": 1934,
-        "endYear": 1945
+        "endYear": 1945,
+        "title": "president of Germany"
       }
     ]
   },
@@ -455,11 +386,8 @@
     "reignPeriods": [
       {
         "startYear": 1492,
-        "endYear": 1506
-      },
-      {
-        "startYear": 1492,
-        "endYear": 1500
+        "endYear": 1506,
+        "title": "Viceroy of the Indies"
       }
     ]
   },
@@ -488,12 +416,7 @@
     ],
     "fameScore": 94.826997,
     "description": "German-born theoretical physicist (1879–1955)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Albert_Einstein",
-    "reignPeriods": [
-      {
-        "startYear": 1911
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Albert_Einstein"
   },
   {
     "id": "14187",
@@ -509,39 +432,14 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_VIII_of_England",
     "reignPeriods": [
       {
-        "startYear": 1493,
-        "endYear": 1509
-      },
-      {
-        "startYear": 1494
-      },
-      {
-        "startYear": 1494,
-        "endYear": 1504
-      },
-      {
-        "startYear": 1494,
-        "endYear": 1509
-      },
-      {
-        "startYear": 1502,
-        "endYear": 1509
-      },
-      {
-        "startYear": 1503,
-        "endYear": 1509
-      },
-      {
         "startYear": 1509,
-        "endYear": 1547
-      },
-      {
-        "startYear": 1509,
-        "endYear": 1542
+        "endYear": 1547,
+        "title": "monarch of England"
       },
       {
         "startYear": 1542,
-        "endYear": 1547
+        "endYear": 1547,
+        "title": "King of Ireland"
       }
     ]
   },
@@ -570,12 +468,7 @@
     ],
     "fameScore": 94.236051,
     "description": "central figure of Christianity (c. 6 or 4 BC – AD 30 or 33)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jesus",
-    "reignPeriods": [
-      {
-        "startYear": 30
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jesus"
   },
   {
     "id": "15992",
@@ -591,20 +484,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jimmy_Carter",
     "reignPeriods": [
       {
-        "startYear": 1963,
-        "endYear": 1967
-      },
-      {
-        "startYear": 1971,
-        "endYear": 1975
-      },
-      {
-        "startYear": 1976,
-        "endYear": 1977
-      },
-      {
         "startYear": 1977,
-        "endYear": 1981
+        "endYear": 1981,
+        "title": "President of the United States"
       }
     ]
   },
@@ -623,35 +505,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Benedict_XVI",
     "reignPeriods": [
       {
-        "startYear": 1977,
-        "endYear": 1982
-      },
-      {
-        "startYear": 1977,
-        "endYear": 1993
-      },
-      {
-        "startYear": 1977
-      },
-      {
-        "startYear": 1981,
-        "endYear": 2005
-      },
-      {
-        "startYear": 1993,
-        "endYear": 2005
-      },
-      {
-        "startYear": 2002,
-        "endYear": 2005
-      },
-      {
         "startYear": 2005,
-        "endYear": 2013
-      },
-      {
-        "startYear": 2013,
-        "endYear": 2023
+        "endYear": 2013,
+        "title": "Pope"
       }
     ]
   },
@@ -679,65 +535,7 @@
     ],
     "fameScore": 93.777536,
     "description": "Roman general and dictator",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Julius_Caesar",
-    "reignPeriods": [
-      {
-        "startYear": -83,
-        "endYear": -80
-      },
-      {
-        "startYear": -72,
-        "endYear": -62
-      },
-      {
-        "startYear": -68,
-        "endYear": -68
-      },
-      {
-        "startYear": -64,
-        "endYear": -64
-      },
-      {
-        "startYear": -62,
-        "endYear": -43
-      },
-      {
-        "startYear": -61,
-        "endYear": -61
-      },
-      {
-        "startYear": -60,
-        "endYear": -59
-      },
-      {
-        "startYear": -58,
-        "endYear": -58
-      },
-      {
-        "startYear": -57,
-        "endYear": -48
-      },
-      {
-        "startYear": -48,
-        "endYear": -43
-      },
-      {
-        "startYear": -47,
-        "endYear": -47
-      },
-      {
-        "startYear": -45,
-        "endYear": -45
-      },
-      {
-        "startYear": -44,
-        "endYear": -44
-      },
-      {
-        "startYear": -43,
-        "endYear": -43
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Julius_Caesar"
   },
   {
     "id": "5823",
@@ -845,28 +643,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thomas_Jefferson",
     "reignPeriods": [
       {
-        "startYear": 1779,
-        "endYear": 1781
-      },
-      {
-        "startYear": 1785,
-        "endYear": 1789
-      },
-      {
-        "startYear": 1790,
-        "endYear": 1793
-      },
-      {
-        "startYear": 1797,
-        "endYear": 1801
-      },
-      {
         "startYear": 1801,
-        "endYear": 1801
-      },
-      {
-        "startYear": 1801,
-        "endYear": 1809
+        "endYear": 1809,
+        "title": "President of the United States"
       }
     ]
   },
@@ -881,13 +660,7 @@
     ],
     "fameScore": 93.089165,
     "description": "Argentine Marxist revolutionary (1928–1967)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Che_Guevara",
-    "reignPeriods": [
-      {
-        "startYear": 1961,
-        "endYear": 1965
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Che_Guevara"
   },
   {
     "id": "18553",
@@ -904,7 +677,8 @@
     "reignPeriods": [
       {
         "startYear": 1643,
-        "endYear": 1715
+        "endYear": 1715,
+        "title": "King of France and Navarre"
       }
     ]
   },
@@ -946,17 +720,7 @@
     ],
     "fameScore": 92.781625,
     "description": "German composer (1685–1750)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Johann_Sebastian_Bach",
-    "reignPeriods": [
-      {
-        "startYear": 1717,
-        "endYear": 1723
-      },
-      {
-        "startYear": 1723,
-        "endYear": 1750
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Johann_Sebastian_Bach"
   },
   {
     "id": "7567080",
@@ -969,12 +733,7 @@
     ],
     "fameScore": 92.768507,
     "description": "German priest and theologian (1483–1546)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_Luther",
-    "reignPeriods": [
-      {
-        "startYear": 1508
-      }
-    ]
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_Luther"
   },
   {
     "id": "19914843",
@@ -1018,28 +777,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_John_Paul_II",
     "reignPeriods": [
       {
-        "startYear": 1958,
-        "endYear": 1958
-      },
-      {
-        "startYear": 1958,
-        "endYear": 1964
-      },
-      {
-        "startYear": 1964,
-        "endYear": 1978
-      },
-      {
-        "startYear": 1967,
-        "endYear": 2005
-      },
-      {
-        "startYear": 1969,
-        "endYear": 1978
-      },
-      {
         "startYear": 1978,
-        "endYear": 2005
+        "endYear": 2005,
+        "title": "Pope"
       }
     ]
   },
