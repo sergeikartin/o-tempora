@@ -1,4 +1,5 @@
 import type { Category, Discovery, OccupationDomain, Person, War } from '../../shared/types';
+import { today } from '../../shared/lib/dates';
 import { MIN_ROW_GAP_YEARS } from './options';
 
 // A zero- or negative-width range (e.g. a missing endYear) can't render as a
@@ -27,7 +28,9 @@ export interface PersonItem {
 
 export function mapPeople(people: Person[]): PersonItem[] {
   return people.map((person) => {
-    const personEnd = person.endYear ?? person.startYear;
+    // Missing endYear means still alive — draw through to today, not a
+    // collapsed zero-width bar at their birth year.
+    const personEnd = person.endYear ?? today().year;
 
     return {
       id: person.id,

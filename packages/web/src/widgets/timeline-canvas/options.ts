@@ -14,6 +14,7 @@ export const BAR_HEIGHT = 16;
 export const ROW_GAP = 8;
 export const ROW_PITCH = BAR_HEIGHT + ROW_GAP;
 export const LANE_TOP_PADDING = 12;
+export const AXIS_HEIGHT = 28;
 export const REIGN_STRIPE_HEIGHT = 3;
 export const POINT_RADIUS = 5;
 // Minimum gap (in scroll years) kept between two bars placed in the same

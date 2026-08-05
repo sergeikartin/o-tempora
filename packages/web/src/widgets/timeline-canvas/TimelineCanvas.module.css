@@ -34,18 +34,25 @@
   background: #f3eedd;
 }
 
-/* 2:1:1 height ratio across People, Wars & Conflicts, and Events &
-   Inventions — unchanged from the vis-timeline layout. Each lane keeps its
-   own independent vertical scroll region for row overflow (min-height: 0
-   lets it shrink below content height so overflow-y, not flexbox, handles
-   it); People is the one that needs it today (11 rows over 49 people).
-   Width is set inline per-render to the shared xScale's totalWidth, wider
-   than .scrollContainer — that mismatch is what drives the shared
-   horizontal scrollbar above, not anything set here. */
+/* 4:1:1 height ratio across People, Wars & Conflicts, and Events &
+   Inventions — People takes two-thirds of the scroll container, Wars and
+   Events split the remaining third evenly. Each lane keeps its own
+   independent vertical scroll region for row overflow (min-height: 0 lets it
+   shrink below content height so overflow-y, not flexbox, handles it);
+   People is the one that needs it today (11 rows over 49 people). Width is
+   set inline per-render to the shared xScale's totalWidth, wider than
+   .scrollContainer — that mismatch is what drives the shared horizontal
+   scrollbar above, not anything set here. */
 .peopleLane {
-  flex: 2 1 0;
+  flex: 4 1 0;
   min-height: 0;
   overflow-y: auto;
+}
+
+/* Fixed-height row between People and Wars & Conflicts — d3.axisBottom's
+   ticks/labels, not part of the 4:1:1 lane ratio above/below. */
+.yearAxis {
+  flex: 0 0 auto;
 }
 
 .warsLane {

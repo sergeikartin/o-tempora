@@ -56,13 +56,13 @@ test('renders all three lanes, each populated from its own dataset', () => {
   expect(container.querySelector('.d3-name')?.textContent).toBe('Aristotle');
 });
 
-test('the three lane sections share the same rendered width — one shared time axis', () => {
+test('the three lane sections and the year axis share the same rendered width', () => {
   const { container } = render(
     <TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />,
   );
 
   const svgs = container.querySelectorAll('svg');
-  expect(svgs).toHaveLength(3);
+  expect(svgs).toHaveLength(4); // People, Wars & Conflicts, Events & Inventions, YearAxis
   const widths = Array.from(svgs).map((svg) => svg.getAttribute('width'));
   expect(new Set(widths).size).toBe(1);
 });

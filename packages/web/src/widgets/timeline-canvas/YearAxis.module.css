@@ -1,0 +1,21 @@
+.svg {
+  display: block;
+}
+
+.axis :global(.domain) {
+  /* Mirrors color-border-strong; inlined until Unit 5 lands real CSS custom
+     properties (ticket 05). */
+  stroke: #c9b98f;
+}
+
+.axis :global(.tick) line {
+  /* Mirrors color-border-subtle; inlined pending ticket 05. */
+  stroke: #ded3b8;
+}
+
+.axis :global(.tick) text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  /* Mirrors color-text-secondary; inlined pending ticket 05. */
+  fill: #83795f;
+}
