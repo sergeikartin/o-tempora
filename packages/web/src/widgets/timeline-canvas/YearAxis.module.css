@@ -1,34 +1,54 @@
-.svg {
+.axis {
   display: block;
 }
 
-.axis :global(.domain) {
-  /* Mirrors color-border-strong; inlined until Unit 5 lands real CSS custom
-     properties (ticket 05). */
-  stroke: #c9b98f;
+/* Tick marks are three layered repeating background-gradients, not DOM
+   nodes — century (tallest/boldest, drawn on top so it isn't hidden behind
+   the shorter layers at coincident positions), then decade, then year
+   (thinnest, bottom layer). Each layer's spacing/phase comes from CSS
+   custom properties set inline per-render (zoom-dependent), computed once
+   in YearAxis.tsx rather than per tick. */
+.ruler {
+  position: relative;
+  /* A shade darker than the page background so the ruler reads as a
+     distinct bar, per the reference this design is based on; mirrors
+     color-bg-surface, inlined pending ticket 05. */
+  background-color: #ece2c8;
+  background-repeat: repeat-x, repeat-x, repeat-x;
+  background-position:
+    var(--century-tick-offset-px) top,
+    var(--decade-tick-offset-px) top,
+    0 top;
+  background-size:
+    var(--century-tick-px) 100%,
+    var(--decade-tick-px) 55%,
+    var(--year-tick-px) 30%;
+  background-image:
+    /* Mirrors a darker color-border tone; inlined pending ticket 05. */
+    linear-gradient(to right, #8a7b57 0, #8a7b57 2px, transparent 2px),
+    /* Mirrors color-border-strong; inlined pending ticket 05. */
+    linear-gradient(to right, #c9b98f 0, #c9b98f 1.5px, transparent 1.5px),
+    /* Mirrors color-border-subtle; inlined pending ticket 05. */
+    linear-gradient(to right, #ded3b8 0, #ded3b8 1px, transparent 1px);
 }
 
-.axis :global(.tick) line {
-  /* Mirrors color-border-subtle; inlined pending ticket 05. */
-  stroke: #ded3b8;
+.labelRow {
+  position: relative;
 }
 
-.axis :global(.tick) text {
+.label {
+  position: absolute;
+  top: 2px;
+  transform: translateX(-50%);
+  white-space: nowrap;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
   /* Mirrors color-text-secondary; inlined pending ticket 05. */
-  fill: #83795f;
+  color: #83795f;
 }
 
-.majorRow .divider {
-  /* Mirrors color-border-subtle; inlined pending ticket 05. */
-  stroke: #ded3b8;
-}
-
-.majorRow .label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+.centuryLabel {
   font-weight: 600;
   /* Mirrors color-text-primary; inlined pending ticket 05. */
-  fill: #2e2b22;
+  color: #2e2b22;
 }

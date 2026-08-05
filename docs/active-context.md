@@ -29,7 +29,7 @@ Update this file after every meaningful implementation change. Keep entries high
 
 ## In Progress
 
-- None.
+- Initial-load performance: profiling (`performance_start_trace` against the dev server) found LCP at ~5.9s, ~99% of it "render delay" rather than network — traced to the Year Axis sizing its tick count off the *entire* ~4,776-year scrollable domain regardless of scroll position (~2s alone), plus the three lanes rendering every fame-tier-filtered item unwindowed (~1-2s) and the `assignRows` row-stacking algorithm (~0.6s, minor by comparison). The Year Axis went through two rewrites: first a single-row baseline with a fixed-step D3 join windowed to the visible scroll range (~4.1s real-measured LCP), then replaced again with a plain HTML/CSS ruler — tick marks are pure layered CSS gradients (no per-tick DOM node, no windowing needed at all) with only the decade-number labels as a small windowed positioned-`<span>` list; `TimelineCanvas.tsx`'s scroll container also gained faint full-height decade gridlines via the same CSS technique (see `packages/web/docs/code-conventions.md`'s Timeline Rendering section). Real-measured LCP holds at ~4.1-4.4s after the CSS rewrite (no regression, axis cost was already near-eliminated) — the remaining gap to the ~2.5s target is now entirely the People/Wars/Events lanes rendering their full fame-tier-filtered set unwindowed. A combined experiment (windowed axis + CORE-tier-only initial load) hit ~2.0s, under target, but progressive fame-tier loading (defer NOTABLE/EXHAUSTIVE to on-demand as the user zooms) is not yet implemented. Next: scope and implement progressive tier-loading as the second half of this effort.
 
 ## Next Up
 

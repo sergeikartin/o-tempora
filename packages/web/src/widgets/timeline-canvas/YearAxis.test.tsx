@@ -2,7 +2,7 @@ import { cleanup, render } from '@testing-library/react';
 import * as d3 from 'd3';
 import { test, expect, afterEach } from 'vitest';
 import { YearAxis } from './YearAxis';
-import { AXIS_HEIGHT } from './options';
+import { AXIS_HEIGHT, MIN_DECADE_LABEL_SPACING_PX, RULER_HEIGHT } from './options';
 
 afterEach(cleanup);
 
@@ -10,83 +10,98 @@ function scaleFor(domainStart: number, domainEnd: number, width = 2000) {
   return d3.scaleLinear().domain([domainStart, domainEnd]).range([0, width]);
 }
 
-test('renders a major century-header row above the minor-tick row', () => {
-  const { container } = render(<YearAxis xScale={scaleFor(1750, 1950)} />);
-
-  expect(container.querySelector('g.d3-century-row')).toBeTruthy();
-  expect(container.querySelector('g.d3-axis')).toBeTruthy();
-});
-
-test('the century header shows one label per century overlapping the domain, CE-styled as "N00s"', () => {
-  const { container } = render(<YearAxis xScale={scaleFor(1750, 1950)} />);
-
-  const labels = Array.from(container.querySelectorAll('.d3-century-label')).map((el) => el.textContent);
-  expect(labels).toEqual(['1700s', '1800s', '1900s']);
-});
-
-test('the century header uses ordinal BCE phrasing and spans the BCE/CE boundary correctly', () => {
-  const { container } = render(<YearAxis xScale={scaleFor(-150, 50)} />);
-
-  const labels = Array.from(container.querySelectorAll('.d3-century-label')).map((el) => el.textContent);
-  expect(labels).toEqual(['2nd century BCE', '1st century BCE', '1st century CE']);
-});
-
-test('minor ticks render BCE/CE-formatted labels, not plain signed integers', () => {
-  const { container } = render(<YearAxis xScale={scaleFor(-150, 50)} />);
-
-  const tickText = Array.from(container.querySelectorAll('g.d3-axis .tick text')).map((el) => el.textContent);
-  expect(tickText.length).toBeGreaterThan(0);
-  expect(tickText.every((text) => /\d (BCE|CE)$/.test(text ?? ''))).toBe(true);
-});
-
-test('the minor-tick row is positioned below the major header row', () => {
-  const { container } = render(<YearAxis xScale={scaleFor(1750, 1950)} />);
-
-  const minorGroup = container.querySelector('g.d3-axis');
-  expect(minorGroup?.getAttribute('transform')).toContain('translate(0,');
-  expect(minorGroup?.getAttribute('transform')).not.toBe('translate(0, 0)');
-});
-
-test('the svg height accommodates both rows', () => {
-  const { container } = render(<YearAxis xScale={scaleFor(1750, 1950)} />);
-
-  expect(container.querySelector('svg')?.getAttribute('height')).toBe(String(AXIS_HEIGHT));
-});
-
-function tickGapsPx(container: HTMLElement): number[] {
-  const xs = Array.from(container.querySelectorAll('g.d3-axis .tick')).map((tick) => {
-    const match = /translate\(([\d.]+)/.exec(tick.getAttribute('transform') ?? '');
-    return Number(match?.[1]);
-  });
-  return xs.slice(1).map((x, i) => x - (xs[i] ?? 0));
+function formatYearLike(year: number): string {
+  return year <= 0 ? `${1 - year} BCE` : `${year} CE`;
 }
 
-// Ticket 04's "verified at a couple of representative pixelsPerYear values"
-// step, captured as a real (deterministic — d3's tick algorithm has no
-// randomness) regression test rather than only a code comment. Domain span
-// (4776 years) is a fixed stand-in for PAN_MIN_DATE-to-today, so this test
-// doesn't drift with the calendar. Representative points are the CORE/
-// NOTABLE/EXHAUSTIVE band edges at a 1000px viewport.
-test('minor-tick spacing at representative zoom levels oscillates around, not strictly within, the 60-80px target', () => {
-  const totalYears = 4776;
-  const width = 1000;
-  const cases: [name: string, pixelsPerYear: number, expectedGapPx: number][] = [
-    ['CORE, zoomed all the way out (500 visible years)', width / 500, 100],
-    ['CORE/NOTABLE boundary (150 visible years)', width / 150, 66.66666666666666],
-    ['NOTABLE/EXHAUSTIVE boundary (50 visible years)', width / 50, 100],
-    ['EXHAUSTIVE, zoomed all the way in (10 visible years)', width / 10, 50],
-  ];
+test('the ruler bar renders as a single element (tick marks are CSS, not per-tick DOM nodes)', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(1000, 3000, 20000)} visibleStartYear={1750} visibleEndYear={1950} />,
+  );
 
-  for (const [, pixelsPerYear, expectedGapPx] of cases) {
-    const totalWidth = totalYears * pixelsPerYear;
-    const scale = d3.scaleLinear().domain([0, totalYears]).range([0, totalWidth]);
-    const { container, unmount } = render(<YearAxis xScale={scale} />);
+  expect(container.querySelectorAll('.year-axis-ruler')).toHaveLength(1);
+});
 
-    const gaps = tickGapsPx(container);
-    expect(gaps.length).toBeGreaterThan(0);
-    expect(gaps.every((gap) => Math.abs(gap - (gaps[0] ?? 0)) < 0.01)).toBe(true); // linear scale: uniform gap
-    expect(gaps[0]).toBeCloseTo(expectedGapPx);
+test('the ruler bar exposes tick spacing as CSS custom properties, derived from pixels-per-year', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(0, 1000, 10000)} visibleStartYear={100} visibleEndYear={300} />,
+  );
 
-    unmount();
-  }
+  const ruler = container.querySelector('.year-axis-ruler') as HTMLElement;
+  // 10px/year here (10000px over a 1000-year domain).
+  expect(ruler.style.getPropertyValue('--year-tick-px')).toBe('10px');
+  expect(ruler.style.getPropertyValue('--decade-tick-px')).toBe('100px');
+  expect(ruler.style.getPropertyValue('--century-tick-px')).toBe('1000px');
+});
+
+test('renders one label per decade within the visible range, none outside it', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(1000, 3000, 20000)} visibleStartYear={1750} visibleEndYear={1950} />,
+  );
+
+  const labels = Array.from(container.querySelectorAll('.year-axis-label')).map((el) => el.textContent);
+  expect(labels).toHaveLength(21); // 1750, 1760, ..., 1950
+  expect(labels[0]).toBe(formatYearLike(1750));
+  expect(labels.at(-1)).toBe(formatYearLike(1950));
+});
+
+test('century labels (year % 100 === 0) get a distinguishing class; other decades do not', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(1000, 3000, 20000)} visibleStartYear={1750} visibleEndYear={1950} />,
+  );
+
+  const labelFor = (year: number) =>
+    Array.from(container.querySelectorAll('.year-axis-label')).find((el) => el.textContent === formatYearLike(year));
+
+  expect(labelFor(1800)?.classList.contains('year-axis-label-century')).toBe(true);
+  expect(labelFor(1810)?.classList.contains('year-axis-label-century')).toBe(false);
+});
+
+test('labels render BCE/CE-formatted years, not plain signed integers', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(-1000, 1000, 20000)} visibleStartYear={-150} visibleEndYear={50} />,
+  );
+
+  const labels = Array.from(container.querySelectorAll('.year-axis-label')).map((el) => el.textContent);
+  expect(labels.length).toBeGreaterThan(0);
+  expect(labels.every((text) => /\d (BCE|CE)$/.test(text ?? ''))).toBe(true);
+});
+
+test('decade labels are omitted (century labels still render) once zoomed out past the readable spacing threshold', () => {
+  // pixelsPerYear chosen so a decade spans less than MIN_DECADE_LABEL_SPACING_PX.
+  const pixelsPerYear = (MIN_DECADE_LABEL_SPACING_PX - 1) / 10;
+  const { container } = render(
+    <YearAxis
+      xScale={scaleFor(1000, 3000, 2000 * pixelsPerYear)}
+      visibleStartYear={1750}
+      visibleEndYear={1950}
+    />,
+  );
+
+  const labels = Array.from(container.querySelectorAll('.year-axis-label')).map((el) => el.textContent);
+  expect(labels).toContain(formatYearLike(1800)); // century — always shown
+  expect(labels).not.toContain(formatYearLike(1810)); // decade — suppressed
+});
+
+test('labels stay visible at spacing above the threshold', () => {
+  const pixelsPerYear = (MIN_DECADE_LABEL_SPACING_PX + 10) / 10;
+  const { container } = render(
+    <YearAxis
+      xScale={scaleFor(1000, 3000, 2000 * pixelsPerYear)}
+      visibleStartYear={1750}
+      visibleEndYear={1950}
+    />,
+  );
+
+  const labels = Array.from(container.querySelectorAll('.year-axis-label')).map((el) => el.textContent);
+  expect(labels).toContain(formatYearLike(1810));
+});
+
+test('the axis height fits the ruler bar plus the label row', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(1000, 3000, 20000)} visibleStartYear={1750} visibleEndYear={1950} />,
+  );
+
+  expect((container.firstElementChild as HTMLElement).style.height).toBe(`${AXIS_HEIGHT}px`);
+  expect((container.querySelector('.year-axis-ruler') as HTMLElement).style.height).toBe(`${RULER_HEIGHT}px`);
 });

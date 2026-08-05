@@ -1,95 +1,87 @@
-import { useEffect, useRef } from 'react';
+import { useMemo, type CSSProperties } from 'react';
 import * as d3 from 'd3';
-import { centuryBoundariesInRange, formatYear, type CenturyBoundary } from '../../shared/lib/format-year';
-import { AXIS_HEIGHT, MAJOR_HEADER_HEIGHT } from './options';
+import { formatYear } from '../../shared/lib/format-year';
+import {
+  AXIS_HEIGHT,
+  CENTURY_STEP_YEARS,
+  CENTURY_TICK_PHASE_OFFSET_YEARS,
+  DECADE_STEP_YEARS,
+  DECADE_TICK_PHASE_OFFSET_YEARS,
+  MIN_DECADE_LABEL_SPACING_PX,
+  RULER_HEIGHT,
+  RULER_LABEL_ROW_HEIGHT,
+} from './options';
 import styles from './YearAxis.module.css';
 
 interface YearAxisProps {
   xScale: d3.ScaleLinear<number, number>;
+  /** Buffered visible year range (see TimelineCanvas's VIEWPORT_BUFFER_RATIO) — labels outside it aren't rendered. */
+  visibleStartYear: number;
+  visibleEndYear: number;
 }
 
-// Target pixel spacing between minor ticks — d3's own axis generator has no
-// concept of the viewport within this scrollable width, so the tick count
-// hint has to be derived from totalWidth (spanning the whole dataset), not
-// the visible clientWidth, or most of the scrollable range would render with
-// no ticks in it at all. d3's tick algorithm then snaps to a "nice"
-// 1/2/5x10^n step, so the actually-rendered gap oscillates around this
-// target (verified at a few representative pixelsPerYear values across the
-// CORE/NOTABLE/EXHAUSTIVE zoom range) rather than landing on it exactly at
-// every zoom level.
-const TARGET_TICK_SPACING_PX = 70;
-
-interface CenturySegment extends CenturyBoundary {
-  key: string;
+interface DecadeLabel {
+  year: number;
   x: number;
+  isCentury: boolean;
 }
 
-// The one lane-row that renders off d3's own axisBottom generator (the
-// minor-tick row) plus a second, custom-joined major header row above it —
-// there's no per-entity data here, just tick marks/year labels and computed
-// century boundaries, both derived from the shared xScale. Years are plain
-// numbers (BCE negative, ISO/astronomical numbering) end-to-end, displayed
-// via the shared formatYear/centuryBoundariesInRange utility rather than a
-// duplicated BCE/CE check.
-export function YearAxis({ xScale }: YearAxisProps) {
-  const minorRef = useRef<SVGGElement>(null);
-  const majorRef = useRef<SVGGElement>(null);
+function decadeLabelsInRange(startYear: number, endYear: number, xScale: d3.ScaleLinear<number, number>): DecadeLabel[] {
+  const first = Math.ceil(startYear / DECADE_STEP_YEARS) * DECADE_STEP_YEARS;
+  const labels: DecadeLabel[] = [];
+  for (let year = first; year <= endYear; year += DECADE_STEP_YEARS) {
+    labels.push({ year, x: xScale(year), isCentury: year % CENTURY_STEP_YEARS === 0 });
+  }
+  return labels;
+}
+
+// The ruler's tick marks are pure CSS — three layered repeating background-
+// gradients on .ruler (year/decade/century, see YearAxis.module.css), sized
+// and phase-aligned via the CSS custom properties set below — rather than
+// one DOM node per tick. Their rendering cost is ~flat no matter how wide
+// the scrollable timeline gets, so unlike every other lane they need no
+// viewport-windowing at all; this replaces an earlier design (first d3's
+// adaptive axisBottom, then a fixed-step D3 join) that generated a real DOM
+// node per tick and made the axis the single biggest contributor to
+// initial-load time. Only the decade number labels are real DOM elements —
+// a plain positioned list, no D3 join, since there's no per-item enter/exit
+// choreography here to justify one — and so are windowed to visibleStartYear/
+// visibleEndYear, same as everything else.
+export function YearAxis({ xScale, visibleStartYear, visibleEndYear }: YearAxisProps) {
   const totalWidth = xScale.range()[1] ?? 0;
+  const pixelsPerYear = xScale(1) - xScale(0);
+  const showDecadeLabels = pixelsPerYear * DECADE_STEP_YEARS >= MIN_DECADE_LABEL_SPACING_PX;
 
-  useEffect(() => {
-    if (!minorRef.current) return;
-    const tickCount = Math.max(1, Math.round(totalWidth / TARGET_TICK_SPACING_PX));
-    d3.select(minorRef.current).call(
-      d3
-        .axisBottom(xScale)
-        .ticks(tickCount)
-        .tickSizeOuter(0)
-        .tickFormat((year) => formatYear(Number(year))),
-    );
-  }, [xScale, totalWidth]);
+  const labels = useMemo(
+    () => decadeLabelsInRange(visibleStartYear, visibleEndYear, xScale),
+    [xScale, visibleStartYear, visibleEndYear],
+  );
 
-  useEffect(() => {
-    if (!majorRef.current) return;
-
-    const [domainStart = 0, domainEnd = 0] = xScale.domain();
-    const segments: CenturySegment[] = centuryBoundariesInRange(domainStart, domainEnd).map((boundary) => ({
-      ...boundary,
-      key: `${boundary.startYear}`,
-      x: (xScale(boundary.startYear) + xScale(boundary.endYear + 1)) / 2,
-    }));
-
-    const groups = d3
-      .select(majorRef.current)
-      .selectAll<SVGGElement, CenturySegment>('g.d3-century')
-      .data(segments, (d) => d.key)
-      .join((enter) => {
-        const g = enter.append('g').attr('class', 'd3-century');
-        g.append('line').attr('class', `d3-century-divider ${styles.divider}`);
-        g.append('text')
-          .attr('class', `d3-century-label ${styles.label}`)
-          .attr('text-anchor', 'middle')
-          .attr('dominant-baseline', 'hanging');
-        return g;
-      });
-
-    groups
-      .select<SVGLineElement>('.d3-century-divider')
-      .attr('x1', (d) => xScale(d.startYear))
-      .attr('x2', (d) => xScale(d.startYear))
-      .attr('y1', 0)
-      .attr('y2', MAJOR_HEADER_HEIGHT);
-
-    groups
-      .select<SVGTextElement>('.d3-century-label')
-      .attr('x', (d) => d.x)
-      .attr('y', 1)
-      .text((d) => d.label);
-  }, [xScale, totalWidth]);
+  const rulerStyle = {
+    height: RULER_HEIGHT,
+    '--year-tick-px': `${pixelsPerYear}px`,
+    '--decade-tick-px': `${pixelsPerYear * DECADE_STEP_YEARS}px`,
+    '--century-tick-px': `${pixelsPerYear * CENTURY_STEP_YEARS}px`,
+    '--decade-tick-offset-px': `${pixelsPerYear * DECADE_TICK_PHASE_OFFSET_YEARS}px`,
+    '--century-tick-offset-px': `${pixelsPerYear * CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
+  } as CSSProperties;
 
   return (
-    <svg width={totalWidth} height={AXIS_HEIGHT} className={styles.svg}>
-      <g ref={majorRef} className={`d3-century-row ${styles.majorRow}`} />
-      <g ref={minorRef} className={`d3-axis ${styles.axis}`} transform={`translate(0, ${MAJOR_HEADER_HEIGHT})`} />
-    </svg>
+    <div className={styles.axis} style={{ width: totalWidth, height: AXIS_HEIGHT }}>
+      <div className={`year-axis-ruler ${styles.ruler}`} style={rulerStyle} />
+      <div className={styles.labelRow} style={{ height: RULER_LABEL_ROW_HEIGHT }}>
+        {labels.map((label) =>
+          label.isCentury || showDecadeLabels ? (
+            <span
+              key={label.year}
+              className={`year-axis-label ${styles.label} ${label.isCentury ? `year-axis-label-century ${styles.centuryLabel}` : ''}`}
+              style={{ left: label.x }}
+            >
+              {formatYear(label.year)}
+            </span>
+          ) : null,
+        )}
+      </div>
+    </div>
   );
 }
