@@ -106,22 +106,26 @@ interface RowInterval {
 }
 
 // Greedy interval-graph row assignment: sort by start, drop each item into
-// the first row whose last-placed end year clears it with MIN_ROW_GAP_YEARS
-// to spare, else open a new row. Guarantees no two items in the same row
-// ever overlap or crowd each other — shared by the People and Wars & Conflicts
-// lanes (Events & Inventions is points-only and doesn't need it).
-export function assignRows(items: RowInterval[]): Map<string, number> {
-  const rowEndYears: number[] = [];
+// the first row whose last-placed end clears it with `gap` to spare, else
+// open a new row. Guarantees no two items in the same row ever overlap or
+// crowd each other. Field names read as years (its original use, shared by
+// the People and Wars & Conflicts lanes with the default MIN_ROW_GAP_YEARS
+// gap) but the algorithm is purely numeric — Events & Inventions reuses it
+// in pixel space (start/end as x-pixel positions spanning each point's
+// estimated label width) to keep point labels from overlapping, passing its
+// own much-smaller pixel gap.
+export function assignRows(items: RowInterval[], gap: number = MIN_ROW_GAP_YEARS): Map<string, number> {
+  const rowEnds: number[] = [];
   const rowOfId = new Map<string, number>();
 
   const sorted = [...items].sort((a, b) => a.startYear - b.startYear);
   for (const item of sorted) {
-    let row = rowEndYears.findIndex((lastEnd) => lastEnd + MIN_ROW_GAP_YEARS <= item.startYear);
+    let row = rowEnds.findIndex((lastEnd) => lastEnd + gap <= item.startYear);
     if (row === -1) {
-      row = rowEndYears.length;
-      rowEndYears.push(item.endYear);
+      row = rowEnds.length;
+      rowEnds.push(item.endYear);
     } else {
-      rowEndYears[row] = item.endYear;
+      rowEnds[row] = item.endYear;
     }
     rowOfId.set(item.id, row);
   }
