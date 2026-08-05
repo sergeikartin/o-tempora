@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest';
-import { assignRows, mapDiscoveries, mapPeople, mapWars } from './map-to-items';
+import { assignRows, filterByFameScore, mapDiscoveries, mapPeople, mapWars } from './map-to-items';
 import { today } from '../../shared/lib/dates';
 import type { Discovery, Person, War } from '../../shared/types';
 
@@ -37,6 +37,16 @@ test('mapPeople falls back to today when endYear is missing — still alive, not
   expect(item?.endYear).toBe(today().year);
 });
 
+test('mapPeople formats the tooltip with BCE/CE-styled years', () => {
+  const [item] = mapPeople([person]);
+  expect(item?.tooltip).toBe('Aristotle: 384 BCE–322 BCE');
+});
+
+test('mapPeople tooltip says "present" (not a formatted year) for an open-ended lifespan', () => {
+  const [item] = mapPeople([personWithoutDeathYear]);
+  expect(item?.tooltip).toBe('Hesiod: 751 BCE–present');
+});
+
 test('mapPeople gives a person with no reignPeriods an empty reignPeriods list', () => {
   const [item] = mapPeople([person]);
   expect(item?.reignPeriods).toEqual([]);
@@ -60,14 +70,20 @@ test('mapPeople maps each reignPeriod to a stripe with matching bounds and a too
   const [first, second] = item?.reignPeriods ?? [];
   expect(first?.startYear).toBe(-49);
   expect(first?.endYear).toBe(-44);
-  expect(first?.tooltip).toBe('Dictator: -49–-44');
-  expect(second?.tooltip).toBe('Reign: -60–-59');
+  expect(first?.tooltip).toBe('Dictator: 50 BCE–45 BCE');
+  expect(second?.tooltip).toBe('Reign: 61 BCE–60 BCE');
 });
 
 test('mapPeople falls back to the person\'s endYear when a reignPeriod has no endYear', () => {
   const rulerWithOpenReign: Person = { ...ruler, reignPeriods: [{ startYear: -49, endYear: undefined }] };
   const [item] = mapPeople([rulerWithOpenReign]);
   expect(item?.reignPeriods[0]?.endYear).toBe(-44);
+});
+
+test('mapPeople reign tooltip says "(end unknown)" (not a formatted year) when the source reignPeriod has no endYear', () => {
+  const rulerWithOpenReign: Person = { ...ruler, reignPeriods: [{ startYear: -49, endYear: undefined, title: 'Dictator' }] };
+  const [item] = mapPeople([rulerWithOpenReign]);
+  expect(item?.reignPeriods[0]?.tooltip).toBe('Dictator: 50 BCE–(end unknown)');
 });
 
 test('mapPeople falls back to today for a reignPeriod when both its endYear and the person\'s endYear are missing', () => {
@@ -170,6 +186,17 @@ test('mapDiscoveries maps a discovery to a point item at its startYear', () => {
   expect(item?.name).toBe('Brazil');
   expect(item?.startYear).toBe(1500);
   expect(item?.category).toBe('invention');
+});
+
+// filterByFameScore — shared client-side Fame Tier gate for all three lanes.
+test('filterByFameScore keeps only items whose fameScore clears the threshold', () => {
+  const items = [{ id: 'a', fameScore: 90 }, { id: 'b', fameScore: 89 }, { id: 'c', fameScore: 100 }];
+  expect(filterByFameScore(items, 90).map((item) => item.id)).toEqual(['a', 'c']);
+});
+
+test('filterByFameScore keeps a value exactly at the threshold', () => {
+  const items = [{ id: 'a', fameScore: 50 }];
+  expect(filterByFameScore(items, 50)).toHaveLength(1);
 });
 
 // assignRows — greedy interval-graph row stacking shared by People & Wars.

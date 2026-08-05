@@ -5,19 +5,19 @@ import type { Discovery, Person, War } from '../../shared/types';
 
 afterEach(cleanup);
 
-const fixturePeople: Person[] = [
-  {
-    id: 'Q868',
-    name: 'Aristotle',
-    startYear: -383,
-    endYear: -321,
-    occupationDomain: 'humanities',
-    regionTags: [],
-    fameScore: 317,
-    description: '4th-century BCE Classical Greek philosopher and polymath',
-    wikipediaUrl: 'https://en.wikipedia.org/wiki/Aristotle',
-  },
-];
+const aristotle: Person = {
+  id: 'Q868',
+  name: 'Aristotle',
+  startYear: -383,
+  endYear: -321,
+  occupationDomain: 'humanities',
+  regionTags: [],
+  fameScore: 317,
+  description: '4th-century BCE Classical Greek philosopher and polymath',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Aristotle',
+};
+
+const fixturePeople: Person[] = [aristotle];
 
 const fixtureWars: War[] = [
   {
@@ -83,4 +83,40 @@ test('the zoom-in button widens rendered bars; zoom-out narrows them back', () =
   fireEvent.click(getByLabelText('Zoom out'));
   const zoomedOutWidth = Number(container.querySelector('.d3-bar')?.getAttribute('width'));
   expect(zoomedOutWidth).toBeLessThan(zoomedInWidth);
+});
+
+test('renders a read-only Fame Tier indicator that updates live as the user zooms', () => {
+  const { container, getByLabelText } = render(
+    <TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />,
+  );
+
+  const indicator = () => container.querySelector('[aria-label^="Active Fame Tier"]');
+  // Default 100-year (1800-1900) viewport falls in the NOTABLE band (50-150 visible years).
+  expect(indicator()?.textContent).toBe('NOTABLE');
+  expect(indicator()?.tagName).toBe('SPAN'); // not a button — no interaction affordance
+
+  for (let i = 0; i < 5; i++) {
+    fireEvent.click(getByLabelText('Zoom in'));
+  }
+
+  expect(indicator()?.textContent).toBe('EXHAUSTIVE');
+});
+
+test('a person below the active tier\'s fameScore threshold is excluded, and appears once zoomed in enough to reach a looser tier', () => {
+  const lowFamePerson: Person = {
+    ...aristotle,
+    id: 'Q-low-fame',
+    name: 'Low Fame Person',
+    fameScore: 76, // clears EXHAUSTIVE's 75 floor but not NOTABLE's 85 or CORE's 90
+  };
+
+  const { container, getByLabelText } = render(<TimelineCanvas people={[lowFamePerson]} wars={[]} discoveries={[]} />);
+
+  expect(container.querySelectorAll('.d3-bar')).toHaveLength(0);
+
+  for (let i = 0; i < 5; i++) {
+    fireEvent.click(getByLabelText('Zoom in'));
+  }
+
+  expect(container.querySelectorAll('.d3-bar')).toHaveLength(1);
 });

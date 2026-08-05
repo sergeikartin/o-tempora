@@ -49,7 +49,7 @@ const ERA_BUCKETS: ReadonlyArray<readonly [number, number]> = [
   [2000, new Date().getUTCFullYear() + 1],
 ];
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
+const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
 // Fetches one era-bucketed query, tolerating individual bucket failures — a
 // bucket's first page failing (live service instability, well documented for

@@ -14,7 +14,7 @@ export type TaggedPerson = PantheonPersonRow &
   PantheonPersonTags & { description?: string; wikipediaUrl: string };
 export type TaggedEvent = GroupedRow & EventTags;
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
+const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
 function loadRaw(fileName: string) {
   return validateSparqlResultShape(

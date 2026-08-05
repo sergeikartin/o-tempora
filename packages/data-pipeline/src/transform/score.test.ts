@@ -9,12 +9,12 @@ import {
   FAME_TIER_MIN_HPI,
 } from "./score.js";
 
-test("drops rows below the generalPublic floor", () => {
-  const rows = [{ sitelinks: 99 }, { sitelinks: 100 }, { sitelinks: 5 }];
+test("drops rows below the specialist floor", () => {
+  const rows = [{ sitelinks: 29 }, { sitelinks: 30 }, { sitelinks: 5 }];
   const result = scoreAndRank(rows);
   assert.deepEqual(
     result.map((row) => row.sitelinks),
-    [100],
+    [30],
   );
 });
 
@@ -27,7 +27,7 @@ test("sorts remaining rows descending by sitelinks", () => {
   );
 });
 
-test("tier nesting holds: generalPublic output is a strict subset of what educated/specialist would allow", () => {
+test("tier nesting holds: specialist output is a strict superset of what generalPublic/educated would allow", () => {
   const rows = [
     { sitelinks: 30 },
     { sitelinks: 49 },
@@ -36,9 +36,9 @@ test("tier nesting holds: generalPublic output is a strict subset of what educat
     { sitelinks: 100 },
     { sitelinks: 200 },
   ];
-  const generalPublic = scoreAndRank(rows);
+  const specialist = scoreAndRank(rows);
+  const generalPublic = rows.filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS_WARS.generalPublic);
   const educated = rows.filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS_WARS.educated);
-  const specialist = rows.filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS_WARS.specialist);
 
   assert.equal(generalPublic.length, 2);
   assert.equal(educated.length, 4);
@@ -47,12 +47,12 @@ test("tier nesting holds: generalPublic output is a strict subset of what educat
   assert.ok(educated.every((row) => specialist.includes(row)));
 });
 
-test("scoreAndRankDiscoveries drops rows below Discoveries' (higher) generalPublic floor", () => {
-  const rows = [{ sitelinks: 199 }, { sitelinks: 200 }, { sitelinks: 100 }];
+test("scoreAndRankDiscoveries drops rows below Discoveries' (higher) specialist floor", () => {
+  const rows = [{ sitelinks: 49 }, { sitelinks: 50 }, { sitelinks: 10 }];
   const result = scoreAndRankDiscoveries(rows);
   assert.deepEqual(
     result.map((row) => row.sitelinks),
-    [200],
+    [50],
   );
 });
 
@@ -65,9 +65,9 @@ test("scoreAndRankDiscoveries tier nesting holds against Discoveries' own table"
     { sitelinks: 200 },
     { sitelinks: 400 },
   ];
-  const generalPublic = scoreAndRankDiscoveries(rows);
+  const specialist = scoreAndRankDiscoveries(rows);
+  const generalPublic = rows.filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS_DISCOVERIES.generalPublic);
   const educated = rows.filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS_DISCOVERIES.educated);
-  const specialist = rows.filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS_DISCOVERIES.specialist);
 
   assert.equal(generalPublic.length, 2);
   assert.equal(educated.length, 4);
@@ -76,12 +76,12 @@ test("scoreAndRankDiscoveries tier nesting holds against Discoveries' own table"
   assert.ok(educated.every((row) => specialist.includes(row)));
 });
 
-test("scoreAndRankByHpi drops rows below the generalPublic floor", () => {
-  const rows = [{ hpi: 89 }, { hpi: 90 }, { hpi: 10 }];
+test("scoreAndRankByHpi drops rows below the specialist floor", () => {
+  const rows = [{ hpi: 74 }, { hpi: 75 }, { hpi: 10 }];
   const result = scoreAndRankByHpi(rows);
   assert.deepEqual(
     result.map((row) => row.hpi),
-    [90],
+    [75],
   );
 });
 
@@ -94,11 +94,11 @@ test("scoreAndRankByHpi sorts remaining rows descending by hpi", () => {
   );
 });
 
-test("scoreAndRankByHpi tier nesting holds: generalPublic output is a strict subset of what educated/specialist would allow", () => {
+test("scoreAndRankByHpi tier nesting holds: specialist output is a strict superset of what generalPublic/educated would allow", () => {
   const rows = [{ hpi: 75 }, { hpi: 84 }, { hpi: 85 }, { hpi: 89 }, { hpi: 90 }, { hpi: 100 }];
-  const generalPublic = scoreAndRankByHpi(rows);
+  const specialist = scoreAndRankByHpi(rows);
+  const generalPublic = rows.filter((row) => row.hpi >= FAME_TIER_MIN_HPI.generalPublic);
   const educated = rows.filter((row) => row.hpi >= FAME_TIER_MIN_HPI.educated);
-  const specialist = rows.filter((row) => row.hpi >= FAME_TIER_MIN_HPI.specialist);
 
   assert.equal(generalPublic.length, 2);
   assert.equal(educated.length, 4);
