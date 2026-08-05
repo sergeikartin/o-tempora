@@ -8,7 +8,7 @@ import { groupRows, type GroupedRow, type GroupRowsConfig } from "./group-rows.j
 import { groupReigns } from "./group-reigns.js";
 import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
 import { tagHistoricalEvent, tagInvention, type EventTags } from "./tag-events.js";
-import { scoreAndRank, scoreAndRankByHpi } from "./score.js";
+import { scoreAndRank, scoreAndRankByHpi, scoreAndRankDiscoveries } from "./score.js";
 
 export type TaggedPerson = PantheonPersonRow &
   PantheonPersonTags & { description?: string; wikipediaUrl: string };
@@ -104,7 +104,7 @@ export function transformDiscoveries(): TaggedEvent[] {
     ...row,
     ...tagInvention(row),
   }));
-  return scoreAndRank(inventions);
+  return scoreAndRankDiscoveries(inventions);
 }
 
 // Keyed by every person Q-ID that fetch-reigns.ts's snapshot covers, not
