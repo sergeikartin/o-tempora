@@ -26,7 +26,11 @@ Update this file after every meaningful implementation change. Keep entries high
 
 ## In Progress
 
-- None.
+- Unit 5 grilling session (People-lane lifespan rendering), paused mid-session to question the underlying vis-timeline rendering approach before finalizing a spec. Resolved so far:
+  - New Occupation Domain Palette (`packages/web/docs/design-tokens.md`), independent of the existing Category palette — `Category` (Wikidata, Wars & Conflicts/Events & Inventions) and `OccupationDomain` (Pantheon, People) are separate enums by design; see `CONTEXT.md`.
+  - Reign-period overlay: moving off the neutral dashed border to a solid fixed-color marker — a thin stripe along the *bottom* edge of the lifespan bar (not full-height inset), `radius-sm`, tentatively its own token (`color-marker-reign-period`, same hex as `color-accent-selected` but decoupled — not yet explicitly confirmed).
+  - Lifespan bar height cut to 16px with the person's name kept inside (not moved out) — implies smaller name-label type; exact font-size/padding not yet decided.
+  - Flagged risk: vis-timeline reserves stacking row-height based on its own default item height, not CSS overrides — shrinking to 16px via CSS may leave gaps between stacked People rows unless addressed.
 
 ## Next Up
 
