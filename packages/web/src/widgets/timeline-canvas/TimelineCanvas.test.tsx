@@ -63,9 +63,12 @@ test('the three lane sections and the year axis share the same rendered width', 
   );
 
   const svgs = container.querySelectorAll('svg');
-  expect(svgs).toHaveLength(4); // People, Wars & Conflicts, Events & Inventions, YearAxis
-  const widths = Array.from(svgs).map((svg) => svg.getAttribute('width'));
-  expect(new Set(widths).size).toBe(1);
+  expect(svgs).toHaveLength(3); // People, Wars & Conflicts, Events & Inventions — YearAxis is plain HTML/CSS, no svg
+  const svgWidthsPx = Array.from(svgs).map((svg) => Number(svg.getAttribute('width')));
+  const axisWidthPx = parseFloat(
+    ((container.querySelector('.year-axis-ruler')?.parentElement as HTMLElement)?.style.width ?? '').replace('px', ''),
+  );
+  expect(new Set([...svgWidthsPx, axisWidthPx]).size).toBe(1);
 });
 
 test('the zoom-in button widens rendered bars; zoom-out narrows them back', () => {

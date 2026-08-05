@@ -43,6 +43,11 @@
 /* One shared horizontal scrollbar for all three lanes — the container's own
    native scroll position *is* the time-axis sync (ADR 0001's Consequences):
    no rangechange listener, no reentrancy guard. */
+/* Faint vertical gridline at every decade, spanning the full scroll height
+   behind all four lanes — pure CSS (one repeating background-gradient, no
+   per-line DOM node), same technique as YearAxis's own tick marks. Spacing/
+   phase come from --decade-gridline-px/--decade-gridline-offset-px, set
+   inline per-render in TimelineCanvas.tsx (zoom-dependent). */
 .scrollContainer {
   flex: 1 1 auto;
   min-height: 0;
@@ -50,7 +55,13 @@
   flex-direction: column;
   overflow-x: auto;
   /* Mirrors color-bg-base; real token wiring is ticket 05. */
-  background: #f3eedd;
+  background-color: #f3eedd;
+  background-repeat: repeat-x;
+  background-position: var(--decade-gridline-offset-px) top;
+  background-size: var(--decade-gridline-px) 100%;
+  /* Mirrors a faint color-border tone, barely distinct from the page
+     background; inlined pending ticket 05. */
+  background-image: linear-gradient(to right, #e5dbc0 0, #e5dbc0 1px, transparent 1px);
 }
 
 /* 4:1:1 height ratio across People, Wars & Conflicts, and Events &

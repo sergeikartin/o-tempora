@@ -16,12 +16,35 @@ export const BAR_HEIGHT = 16;
 export const ROW_GAP = 8;
 export const ROW_PITCH = BAR_HEIGHT + ROW_GAP;
 export const LANE_TOP_PADDING = 12;
-// Century major-header row, new above the original minor-tick row — total
-// axis height grows to fit both; MINOR_AXIS_HEIGHT keeps the original row's
-// own height unchanged (tick line + label).
-export const MAJOR_HEADER_HEIGHT = 16;
-export const MINOR_AXIS_HEIGHT = 28;
-export const AXIS_HEIGHT = MAJOR_HEADER_HEIGHT + MINOR_AXIS_HEIGHT;
+// Year Axis: a ruler bar whose tick marks are pure CSS (three layered
+// repeating background-gradients — year/decade/century — no per-tick DOM
+// node, so its cost is ~flat regardless of the scrollable width) plus a
+// label row below showing decade numbers as plain positioned elements,
+// windowed to the visible viewport (+ buffer — see TimelineCanvas's
+// VIEWPORT_BUFFER_RATIO). Replaces an earlier design that generated one DOM
+// node per tick (first via d3's adaptive axisBottom, later a fixed-step D3
+// join) — sizing tick count off the entire scrollable width regardless of
+// scroll position was the single biggest contributor to initial-load time;
+// the CSS-gradient approach sidesteps that per-tick cost entirely rather
+// than just windowing it.
+export const YEAR_STEP_YEARS = 1;
+export const DECADE_STEP_YEARS = 10;
+export const CENTURY_STEP_YEARS = 100;
+export const RULER_HEIGHT = 20;
+export const RULER_LABEL_ROW_HEIGHT = 18;
+export const AXIS_HEIGHT = RULER_HEIGHT + RULER_LABEL_ROW_HEIGHT;
+// Tick height as a % of RULER_HEIGHT, top-anchored (a tick "hangs down"
+// from the top of the ruler bar, taller = more prominent) — passed as CSS
+// custom properties rather than baked into the CSS Module since the
+// underlying px spacing is zoom-dependent (see TimelineCanvas's
+// `--year-tick-px`/`--decade-tick-px`/`--century-tick-px` custom properties).
+export const YEAR_TICK_HEIGHT_PCT = 30;
+export const DECADE_TICK_HEIGHT_PCT = 55;
+export const CENTURY_TICK_HEIGHT_PCT = 100;
+// Decade labels are skipped once zoomed out far enough that a decade's
+// pixel width would make the year text collide with its neighbor's —
+// century labels are still shown, spaced 10x further apart.
+export const MIN_DECADE_LABEL_SPACING_PX = 40;
 export const REIGN_STRIPE_HEIGHT = 3;
 export const POINT_RADIUS = 5;
 // Minimum gap (in scroll years) kept between two bars placed in the same
@@ -117,6 +140,20 @@ export const REIGN_STRIPE_COLOR = '#B8842E';
 
 const MIN_YEAR = PAN_MIN_DATE.year;
 
+// The Year Axis's CSS tick gradients (and the scroll container's full-height
+// decade gridlines) tile starting at x=0, i.e. at MIN_YEAR — which lines up
+// with a real decade/century boundary only if MIN_YEAR itself is a multiple
+// of that step. It happens to be for decades (MIN_YEAR is -2750, a multiple
+// of 10) but not for centuries (-2750 isn't a multiple of 100), so each
+// tier needs its own phase offset computed from MIN_YEAR rather than
+// assuming 0 — this is that computation, done once at module load rather
+// than per-render.
+function phaseOffsetYears(stepYears: number): number {
+  return Math.ceil(MIN_YEAR / stepYears) * stepYears - MIN_YEAR;
+}
+export const DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS);
+export const CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS);
+
 /** Shared time domain: the D3 x-axis for every lane, keyed by pixels-per-year zoom level. */
 export function buildXScale(pixelsPerYear: number): { scale: d3.ScaleLinear<number, number>; totalWidth: number } {
   const maxYear = today().year;
@@ -131,8 +168,13 @@ export const DEFAULT_VISIBLE_YEARS = DEFAULT_VIEWPORT_END.year - DEFAULT_VIEWPOR
 const ZOOM_STEP = 0.2;
 // Real browsers report the scroll container's actual clientWidth; this only
 // matters before that ref has measured anything (e.g. jsdom in tests, or a
-// not-yet-laid-out first paint).
-const FALLBACK_VIEWPORT_WIDTH_PX = 1000;
+// not-yet-laid-out first paint) — exported since TimelineCanvas's Year Axis
+// viewport-windowing needs the same fallback before its own first measurement.
+export const FALLBACK_VIEWPORT_WIDTH_PX = 1000;
+// Extra years rendered on each side of the visible viewport for the Year
+// Axis's decade/century ticks, as a fraction of viewport width — avoids
+// ticks visibly popping in right at the scroll edge.
+export const VIEWPORT_BUFFER_RATIO = 0.5;
 
 /**
  * Pixels-per-year bounds implied by ZOOM_MIN_YEARS/ZOOM_MAX_YEARS (the same
