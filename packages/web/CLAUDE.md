@@ -31,5 +31,6 @@ Run from repo root:
 
 - `docs/code-conventions.md` — FSD/React/styling/vis-timeline rules, file organization
 - `docs/design-tokens.md` — color palette, typography, radius scale
+- `docs/adr/` — architecture decision records, e.g. `0001-d3-over-vis-timeline.md` (decided; migration to D3 not yet executed — Stack table above still reflects the current vis-timeline implementation)
 - Shared conventions (apply here too): `../../docs/code-conventions.md`
 
