@@ -18,3 +18,7 @@ A Person's birth-death range bar on the People lane's timeline — the visual ob
 **Reign Period**:
 A sub-segment of a Person's lifespan bar marking a qualified position held (Wikidata P39 with dated qualifiers) — monarchs, elected heads of state/government, etc. Rendered as an overlay inside the parent lifespan bar (shared `subgroup`), not a separate timeline row. A person can have more than one (e.g. deposed and restored).
 _Avoid_: Reign, position (on its own, when the timeline-rendering sense is meant)
+
+**Fame Tier**:
+One of three nested named density thresholds on an entry's `fameScore` — `generalPublic` (narrowest/most-famous-only) ⊂ `educated` ⊂ `specialist` (broadest), one threshold table per lane in `packages/data-pipeline/src/transform/score.ts`. Also the zoom-coupled concept driving the viewport: zooming out/in crosses Fame Tier thresholds automatically (CORE/NOTABLE/EXHAUSTIVE are the UI's display labels for `generalPublic`/`educated`/`specialist` respectively, at 500↔150y/150↔50y/50↔10y — `packages/web/docs/adr/0002-fame-tier-drives-zoom.md`), not user-selected.
+_Avoid_: Fame filter, frame tier, zoom tier
