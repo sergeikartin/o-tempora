@@ -26,7 +26,7 @@ Run from repo root:
 
 ## System Boundaries
 
-Pipeline stages, one direction only: `fetch/` (raw results only) → `transform/` (score + tag) → `output/` (writes into pipeline-owned `data/output/`, then `publish-data` copies it into `packages/shared-types/src/data/`).
+Pipeline stages, one direction only: `src/fetch/` (raw results only) → `src/transform/` (score + tag) → `src/output/` (writes into pipeline-owned `data/output/`, then `publish-data` copies it into `packages/shared-types/src/data/`).
 
 ## Data Pipeline
 
