@@ -37,13 +37,13 @@ test('renders one point marker per discovery, with its name as the label', () =>
   expect(names).toEqual(expect.arrayContaining(['association football', 'Brazil']));
 });
 
-test('does not stack rows even for two discoveries in the same year', () => {
+test('stacks two discoveries in the same year onto different rows so their labels don\'t overlap', () => {
   const { scale } = buildXScale(2);
   const sameYear: Discovery = { ...brazil, id: 'Q999', startYear: football.startYear };
   const { container } = render(<EventsLane discoveries={[football, sameYear]} xScale={scale} />);
 
   const ys = Array.from(container.querySelectorAll('.d3-dot')).map((el) => el.getAttribute('cy'));
-  expect(new Set(ys).size).toBe(1);
+  expect(new Set(ys).size).toBe(2);
 });
 
 test('renders an empty svg for an empty discoveries list', () => {
