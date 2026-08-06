@@ -6,53 +6,26 @@ export const DEFAULT_VIEWPORT_END = Temporal.PlainDate.from({ year: 1900, month:
 
 export const PAN_MIN_DATE = Temporal.PlainDate.from({ year: -2750, month: 1, day: 1 });
 
-// Zoom gates entity density automatically via three contiguous Fame Tiers,
-// replacing the never-built manual fame-tier selector (Unit 9) outright —
-// see packages/web/docs/adr/0002-fame-tier-drives-zoom.md. CORE/NOTABLE/
-// EXHAUSTIVE are the UI's display names for the data-pipeline's
-// generalPublic/educated/specialist tiers (packages/data-pipeline/src/
-// transform/score.ts); the bands below are contiguous and span exactly
-// [ZOOM_MIN_YEARS, ZOOM_MAX_YEARS].
-export const FAME_TIER_NAMES = ['CORE', 'NOTABLE', 'EXHAUSTIVE'] as const;
-export type FameTierName = (typeof FAME_TIER_NAMES)[number];
+// Sidebar Fame-floor filters: a raw `fameScore` numeric floor per lane, set
+// directly by the user (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md
+// — supersedes the zoom-coupled Fame Tier system, ADR 0002). Bounds mirror
+// each lane's real fameScore range (People: Pantheon HPI 75-100; Wars &
+// Discoveries: Wikidata sitelinks); defaults match the old CORE tier's
+// values so first paint is unchanged. Zoom no longer affects entity density
+// — see shared/config/occupation-domain-colors.ts's sibling comment for why
+// this config lives here rather than under widgets/timeline-canvas: the
+// sidebar filter feature needs it too.
+export const FAME_SCORE_LANES = ['people', 'wars', 'discoveries'] as const;
+export type FameScoreLane = (typeof FAME_SCORE_LANES)[number];
 
-export interface FameTierYearBound {
-  minYears: number;
-  maxYears: number;
+export interface FameScoreBounds {
+  min: number;
+  max: number;
+  default: number;
 }
 
-// Visible-years bounds each tier owns, keyed off the same pixelsPerYear
-// mechanism that already clamps ZOOM_MIN_YEARS/ZOOM_MAX_YEARS — only the
-// max of NOTABLE/EXHAUSTIVE are read directly (see options.ts's
-// fameTierForVisibleYears); CORE/EXHAUSTIVE's outer bounds are implied by
-// ZOOM_MAX_YEARS/ZOOM_MIN_YEARS and included here for documentation.
-export const FAME_TIER_YEAR_BOUNDS: Record<FameTierName, FameTierYearBound> = {
-  CORE: { minYears: 150, maxYears: ZOOM_MAX_YEARS },
-  NOTABLE: { minYears: 50, maxYears: 150 },
-  EXHAUSTIVE: { minYears: ZOOM_MIN_YEARS, maxYears: 50 },
-};
-
-// Duplicated (not imported) from packages/data-pipeline/src/transform/
-// score.ts's FAME_TIER_MIN_HPI/FAME_TIER_MIN_SITELINKS_WARS/
-// FAME_TIER_MIN_SITELINKS_DISCOVERIES — packages/web only depends on
-// packages/shared-types, not packages/data-pipeline, so the values are
-// mirrored here under the UI's CORE/NOTABLE/EXHAUSTIVE names rather than
-// the pipeline's generalPublic/educated/specialist. Keep in sync with that
-// file if the tier tables ever change.
-export const FAME_TIER_MIN_HPI: Record<FameTierName, number> = {
-  CORE: 90,
-  NOTABLE: 85,
-  EXHAUSTIVE: 75,
-};
-
-export const FAME_TIER_MIN_SITELINKS_WARS: Record<FameTierName, number> = {
-  CORE: 100,
-  NOTABLE: 50,
-  EXHAUSTIVE: 30,
-};
-
-export const FAME_TIER_MIN_SITELINKS_DISCOVERIES: Record<FameTierName, number> = {
-  CORE: 200,
-  NOTABLE: 100,
-  EXHAUSTIVE: 50,
+export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
+  people: { min: 75, max: 100, default: 90 },
+  wars: { min: 30, max: 193, default: 100 },
+  discoveries: { min: 50, max: 386, default: 200 },
 };

@@ -3,16 +3,13 @@ import {
   buildXScale,
   clampPixelsPerYear,
   defaultPixelsPerYear,
-  fameTierForVisibleYears,
-  fameTierForViewport,
   pixelsPerYearBounds,
   zoomIn,
   zoomOut,
-  DOMAIN_COLORS,
   CATEGORY_COLORS,
 } from './options';
 import { today } from '../../shared/lib/dates';
-import { PAN_MIN_DATE } from '../../shared/config/viewport';
+import { PAN_MIN_DATE, DOMAIN_COLORS } from '../../shared/config';
 import { OCCUPATION_DOMAINS, CATEGORIES } from '../../shared/types';
 
 test('buildXScale domains from PAN_MIN_DATE to a live today() read', () => {
@@ -77,39 +74,4 @@ test('CATEGORY_COLORS has one entry per Category, no duplicate hex values', () =
   expect(values).toHaveLength(CATEGORIES.length);
   expect(values.every(Boolean)).toBe(true);
   expect(new Set(values).size).toBe(values.length);
-});
-
-test('fameTierForVisibleYears is CORE zoomed all the way out (500 visible years)', () => {
-  expect(fameTierForVisibleYears(500)).toBe('CORE');
-});
-
-test('fameTierForVisibleYears is EXHAUSTIVE zoomed all the way in (10 visible years)', () => {
-  expect(fameTierForVisibleYears(10)).toBe('EXHAUSTIVE');
-});
-
-test('fameTierForVisibleYears is CORE just above the NOTABLE boundary', () => {
-  expect(fameTierForVisibleYears(151)).toBe('CORE');
-});
-
-test('fameTierForVisibleYears crosses into NOTABLE exactly at the 150-year boundary', () => {
-  expect(fameTierForVisibleYears(150)).toBe('NOTABLE');
-});
-
-test('fameTierForVisibleYears is NOTABLE just above the EXHAUSTIVE boundary', () => {
-  expect(fameTierForVisibleYears(51)).toBe('NOTABLE');
-});
-
-test('fameTierForVisibleYears crosses into EXHAUSTIVE exactly at the 50-year boundary', () => {
-  expect(fameTierForVisibleYears(50)).toBe('EXHAUSTIVE');
-});
-
-test('fameTierForViewport derives visible years from pixelsPerYear and viewport width', () => {
-  // 1000px / 5px-per-year = 200 visible years -> CORE band.
-  expect(fameTierForViewport(5, 1000)).toBe('CORE');
-  // 1000px / 20px-per-year = 50 visible years -> EXHAUSTIVE band.
-  expect(fameTierForViewport(20, 1000)).toBe('EXHAUSTIVE');
-});
-
-test('fameTierForViewport falls back to a fixed width when the viewport hasn\'t measured yet (width 0)', () => {
-  expect(() => fameTierForViewport(1, 0)).not.toThrow();
 });
