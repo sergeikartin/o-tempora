@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { Person } from '../../shared/types';
+import { DOMAIN_COLORS } from '../../shared/config';
 import { assignRows, mapPeople } from './map-to-items';
-import { BAR_HEIGHT, DOMAIN_COLORS, LANE_TOP_PADDING, REIGN_STRIPE_COLOR, REIGN_STRIPE_HEIGHT, ROW_PITCH } from './options';
+import { BAR_HEIGHT, LANE_TOP_PADDING, REIGN_STRIPE_COLOR, REIGN_STRIPE_HEIGHT, ROW_PITCH } from './options';
 import styles from './PeopleLane.module.css';
 
 interface PersonLayout {

@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0003-manual-fame-filter-replaces-zoom-tier.md
 ---
 
 # Fame Tier gates entity density automatically by zoom, not a manual selector

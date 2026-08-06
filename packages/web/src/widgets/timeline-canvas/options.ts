@@ -6,10 +6,8 @@ import {
   DEFAULT_VIEWPORT_START,
   DEFAULT_VIEWPORT_END,
   PAN_MIN_DATE,
-  FAME_TIER_YEAR_BOUNDS,
-  type FameTierName,
-} from '../../shared/config/viewport';
-import type { Category, OccupationDomain } from '../../shared/types';
+} from '../../shared/config';
+import type { Category } from '../../shared/types';
 
 // Row/bar layout shared by every lane's D3 rendering.
 export const BAR_HEIGHT = 16;
@@ -104,21 +102,6 @@ export function markerLaneHeight(rowCount: number): number {
   return labelYForRow(rowCount - 1) + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
 }
 
-// Mirrors design-tokens.md's Occupation Domain Palette. Inlined because
-// Unit 5 hasn't wired those tokens as CSS custom properties yet (ticket 05,
-// blocked on Unit 5's still-open decisions) — swap for `var(--color-domain-*)`
-// once it lands.
-export const DOMAIN_COLORS: Record<OccupationDomain, string> = {
-  institutions: '#C08A7C',
-  arts: '#C0A37C',
-  'business-law': '#B3C07C',
-  'public-figure': '#8AC7A4',
-  'science-technology': '#61B89E',
-  exploration: '#7C84C0',
-  humanities: '#B35680',
-  sports: '#C38393',
-};
-
 // Mirrors design-tokens.md's Occupation Category Palette — Wars & Conflicts
 // and Events & Inventions both key their flat fill off `category`, unlike
 // People's `occupationDomain` above. Same provisional-inlining reasoning.
@@ -204,22 +187,4 @@ export function zoomIn(pixelsPerYear: number, viewportWidthPx: number): number {
 
 export function zoomOut(pixelsPerYear: number, viewportWidthPx: number): number {
   return clampPixelsPerYear(pixelsPerYear / (1 + ZOOM_STEP), viewportWidthPx);
-}
-
-/**
- * The active Fame Tier for a given visible-years count — a pure derivation
- * off FAME_TIER_YEAR_BOUNDS' contiguous bands, no separate stateful mode.
- * Boundary years belong to the denser (more zoomed-in) tier, so crossing a
- * threshold while zooming in immediately reveals that tier's wider dataset.
- */
-export function fameTierForVisibleYears(visibleYears: number): FameTierName {
-  if (visibleYears > FAME_TIER_YEAR_BOUNDS.NOTABLE.maxYears) return 'CORE';
-  if (visibleYears > FAME_TIER_YEAR_BOUNDS.EXHAUSTIVE.maxYears) return 'NOTABLE';
-  return 'EXHAUSTIVE';
-}
-
-/** fameTierForVisibleYears, from the same pixelsPerYear/viewportWidthPx pair zoomIn/zoomOut clamp against. */
-export function fameTierForViewport(pixelsPerYear: number, viewportWidthPx: number): FameTierName {
-  const width = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
-  return fameTierForVisibleYears(width / pixelsPerYear);
 }

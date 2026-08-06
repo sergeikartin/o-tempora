@@ -46,9 +46,16 @@ const fixtureDiscoveries: Discovery[] = [
   },
 ];
 
+const defaultFameScoreValues = { people: 90, wars: 100, discoveries: 200 };
+
 test('renders all three lanes, each populated from its own dataset', () => {
   const { container } = render(
-    <TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />,
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+    />,
   );
 
   expect(container.querySelectorAll('.d3-bar')).toHaveLength(1); // Aristotle (People still renders as a bar)
@@ -59,7 +66,12 @@ test('renders all three lanes, each populated from its own dataset', () => {
 
 test('the three lane sections and the year axis share the same rendered width', () => {
   const { container } = render(
-    <TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />,
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+    />,
   );
 
   const svgs = container.querySelectorAll('svg');
@@ -73,7 +85,12 @@ test('the three lane sections and the year axis share the same rendered width', 
 
 test('the zoom-in button widens rendered bars; zoom-out narrows them back', () => {
   const { container, getByLabelText } = render(
-    <TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />,
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+    />,
   );
 
   const initialWidth = Number(container.querySelector('.d3-bar')?.getAttribute('width'));
@@ -88,32 +105,22 @@ test('the zoom-in button widens rendered bars; zoom-out narrows them back', () =
   expect(zoomedOutWidth).toBeLessThan(zoomedInWidth);
 });
 
-test('renders a read-only Fame Tier indicator that updates live as the user zooms', () => {
-  const { container, getByLabelText } = render(
-    <TimelineCanvas people={fixturePeople} wars={fixtureWars} discoveries={fixtureDiscoveries} />,
-  );
-
-  const indicator = () => container.querySelector('[aria-label^="Active Fame Tier"]');
-  // Default 100-year (1800-1900) viewport falls in the NOTABLE band (50-150 visible years).
-  expect(indicator()?.textContent).toBe('NOTABLE');
-  expect(indicator()?.tagName).toBe('SPAN'); // not a button — no interaction affordance
-
-  for (let i = 0; i < 5; i++) {
-    fireEvent.click(getByLabelText('Zoom in'));
-  }
-
-  expect(indicator()?.textContent).toBe('EXHAUSTIVE');
-});
-
-test('a person below the active tier\'s fameScore threshold is excluded, and appears once zoomed in enough to reach a looser tier', () => {
+test('zooming does not change which entities are rendered — density is gated by fameScoreValues, not pixelsPerYear', () => {
   const lowFamePerson: Person = {
     ...aristotle,
     id: 'Q-low-fame',
     name: 'Low Fame Person',
-    fameScore: 76, // clears EXHAUSTIVE's 75 floor but not NOTABLE's 85 or CORE's 90
+    fameScore: 76, // below the 90 people floor in defaultFameScoreValues
   };
 
-  const { container, getByLabelText } = render(<TimelineCanvas people={[lowFamePerson]} wars={[]} discoveries={[]} />);
+  const { container, getByLabelText } = render(
+    <TimelineCanvas
+      people={[lowFamePerson]}
+      wars={[]}
+      discoveries={[]}
+      fameScoreValues={defaultFameScoreValues}
+    />,
+  );
 
   expect(container.querySelectorAll('.d3-bar')).toHaveLength(0);
 
@@ -121,5 +128,34 @@ test('a person below the active tier\'s fameScore threshold is excluded, and app
     fireEvent.click(getByLabelText('Zoom in'));
   }
 
+  expect(container.querySelectorAll('.d3-bar')).toHaveLength(0);
+});
+
+test('a person below fameScoreValues.people is excluded; raising it reveals them', () => {
+  const lowFamePerson: Person = {
+    ...aristotle,
+    id: 'Q-low-fame',
+    name: 'Low Fame Person',
+    fameScore: 76,
+  };
+
+  const { container, rerender } = render(
+    <TimelineCanvas
+      people={[lowFamePerson]}
+      wars={[]}
+      discoveries={[]}
+      fameScoreValues={defaultFameScoreValues}
+    />,
+  );
+  expect(container.querySelectorAll('.d3-bar')).toHaveLength(0);
+
+  rerender(
+    <TimelineCanvas
+      people={[lowFamePerson]}
+      wars={[]}
+      discoveries={[]}
+      fameScoreValues={{ ...defaultFameScoreValues, people: 75 }}
+    />,
+  );
   expect(container.querySelectorAll('.d3-bar')).toHaveLength(1);
 });

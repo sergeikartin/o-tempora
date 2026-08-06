@@ -1,17 +1,12 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import type { Discovery, Person, War } from '../../shared/types';
-import {
-  DEFAULT_VIEWPORT_START,
-  FAME_TIER_MIN_HPI,
-  FAME_TIER_MIN_SITELINKS_WARS,
-  FAME_TIER_MIN_SITELINKS_DISCOVERIES,
-} from '../../shared/config/viewport';
+import { DEFAULT_VIEWPORT_START } from '../../shared/config';
+import type { FameScoreValues } from '../../features/filter-by-fame-score';
 import {
   buildXScale,
   DECADE_STEP_YEARS,
   DECADE_TICK_PHASE_OFFSET_YEARS,
   defaultPixelsPerYear,
-  fameTierForViewport,
   FALLBACK_VIEWPORT_WIDTH_PX,
   VIEWPORT_BUFFER_RATIO,
   zoomIn as computeZoomIn,
@@ -28,9 +23,12 @@ interface TimelineCanvasProps {
   people: Person[];
   wars: War[];
   discoveries: Discovery[];
+  // Sidebar-set fame-score floors (ADR 0003) — zoom no longer drives entity
+  // density, so this is a plain prop, not derived from pixelsPerYear.
+  fameScoreValues: FameScoreValues;
 }
 
-export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProps) {
+export function TimelineCanvas({ people, wars, discoveries, fameScoreValues }: TimelineCanvasProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [pixelsPerYear, setPixelsPerYear] = useState(() => defaultPixelsPerYear(0));
   // Set by a zoom click to the year at the viewport's center just before the
@@ -46,7 +44,6 @@ export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProp
   // clientWidth) rather than read from scrollRef during render, which React
   // disallows.
   const [viewportWidthPx, setViewportWidthPx] = useState(0);
-  const activeFameTier = fameTierForViewport(pixelsPerYear, viewportWidthPx);
 
   // Drives the Year Axis's viewport-windowed tick rendering (see YearAxis.tsx)
   // — tracked separately from viewportWidthPx above since this one needs to
@@ -82,16 +79,16 @@ export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProp
     '--decade-gridline-offset-px': `${pixelsPerYear * DECADE_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
   const filteredPeople = useMemo(
-    () => filterByFameScore(people, FAME_TIER_MIN_HPI[activeFameTier]),
-    [people, activeFameTier],
+    () => filterByFameScore(people, fameScoreValues.people),
+    [people, fameScoreValues.people],
   );
   const filteredWars = useMemo(
-    () => filterByFameScore(wars, FAME_TIER_MIN_SITELINKS_WARS[activeFameTier]),
-    [wars, activeFameTier],
+    () => filterByFameScore(wars, fameScoreValues.wars),
+    [wars, fameScoreValues.wars],
   );
   const filteredDiscoveries = useMemo(
-    () => filterByFameScore(discoveries, FAME_TIER_MIN_SITELINKS_DISCOVERIES[activeFameTier]),
-    [discoveries, activeFameTier],
+    () => filterByFameScore(discoveries, fameScoreValues.discoveries),
+    [discoveries, fameScoreValues.discoveries],
   );
 
   // Real browsers can measure the container before first paint; jsdom (and
@@ -144,9 +141,6 @@ export function TimelineCanvas({ people, wars, discoveries }: TimelineCanvasProp
   return (
     <div className={styles.wrapper}>
       <div className={styles.zoomControls}>
-        <span className={styles.fameTierIndicator} aria-label={`Active Fame Tier: ${activeFameTier}`}>
-          {activeFameTier}
-        </span>
         <button type="button" onClick={() => zoom(computeZoomOut)} aria-label="Zoom out">
           −
         </button>

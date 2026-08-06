@@ -2,7 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
   height: 100vh;
 }
 
@@ -19,25 +20,6 @@
   width: 28px;
   height: 28px;
   cursor: pointer;
-}
-
-/* Read-only — no click/interaction affordance, purely informational (the
-   active Fame Tier is a pure derivation off zoom, not a user control).
-   Solid background (matching the zoom buttons' own opaque chrome) since
-   this sits absolutely-positioned over scrolling, variably-colored lane
-   content — text alone wouldn't stay legible against it. */
-.fameTierIndicator {
-  display: flex;
-  align-items: center;
-  height: 28px;
-  padding: 0 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  /* Mirrors color-bg-surface/color-text-secondary; real token wiring is ticket 05. */
-  background: #fbf8f0;
-  color: #83795f;
 }
 
 /* One shared horizontal scrollbar for all three lanes — the container's own
