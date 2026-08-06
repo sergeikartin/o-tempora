@@ -1,19 +1,19 @@
 // Every year in the rendering path is a plain signed integer using
 // Temporal's ISO/astronomical numbering (year 0 is 1 BCE, year 1 is 1 CE —
 // see packages/shared-types's TimelineEntry comment). This is the one place
-// that turns that internal representation into the "N BCE"/"N CE" strings
-// users actually see, so BCE/CE-ness and the off-by-one BCE-year conversion
-// aren't reimplemented at each call site (YearAxis's ticks and century
-// header, map-to-items.ts's tooltips).
+// that turns that internal representation into the "N BCE" / plain "N"
+// strings users actually see, so BCE-ness and the off-by-one BCE-year
+// conversion aren't reimplemented at each call site (YearAxis's ticks and
+// century header, map-to-items.ts's tooltips).
 
 /** True when a plain end-to-end year (ISO/astronomical numbering) falls BCE. */
 export function isBceYear(year: number): boolean {
   return year <= 0;
 }
 
-/** Signed plain year -> "N BCE" / "N CE" display string. */
+/** Signed plain year -> "N BCE" for BCE years, plain "N" for CE years. */
 export function formatYear(year: number): string {
-  return isBceYear(year) ? `${1 - year} BCE` : `${year} CE`;
+  return isBceYear(year) ? `${1 - year} BCE` : `${year}`;
 }
 
 function ordinal(n: number): string {

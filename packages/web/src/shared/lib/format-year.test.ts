@@ -21,8 +21,8 @@ test('formatYear renders year 0 as "1 BCE"', () => {
   expect(formatYear(0)).toBe('1 BCE');
 });
 
-test('formatYear renders year 1 as "1 CE"', () => {
-  expect(formatYear(1)).toBe('1 CE');
+test('formatYear renders year 1 as plain "1"', () => {
+  expect(formatYear(1)).toBe('1');
 });
 
 test('formatYear renders a negative year as N BCE, offset by one from the astronomical year', () => {
@@ -30,8 +30,8 @@ test('formatYear renders a negative year as N BCE, offset by one from the astron
   expect(formatYear(-489)).toBe('490 BCE');
 });
 
-test('formatYear renders a positive year as N CE', () => {
-  expect(formatYear(1950)).toBe('1950 CE');
+test('formatYear renders a positive year as plain N', () => {
+  expect(formatYear(1950)).toBe('1950');
 });
 
 test('centuryBoundariesInRange labels a CE range with decade-style "N00s" names', () => {

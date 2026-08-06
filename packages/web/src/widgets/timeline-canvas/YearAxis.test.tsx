@@ -11,7 +11,7 @@ function scaleFor(domainStart: number, domainEnd: number, width = 2000) {
 }
 
 function formatYearLike(year: number): string {
-  return year <= 0 ? `${1 - year} BCE` : `${year} CE`;
+  return year <= 0 ? `${1 - year} BCE` : `${year}`;
 }
 
 test('the ruler bar renders as a single element (tick marks are CSS, not per-tick DOM nodes)', () => {
@@ -57,14 +57,15 @@ test('century labels (year % 100 === 0) get a distinguishing class; other decade
   expect(labelFor(1810)?.classList.contains('year-axis-label-century')).toBe(false);
 });
 
-test('labels render BCE/CE-formatted years, not plain signed integers', () => {
+test('labels render BCE-suffixed years for BCE, plain years for CE, not signed integers', () => {
   const { container } = render(
     <YearAxis xScale={scaleFor(-1000, 1000, 20000)} visibleStartYear={-150} visibleEndYear={50} />,
   );
 
   const labels = Array.from(container.querySelectorAll('.year-axis-label')).map((el) => el.textContent);
   expect(labels.length).toBeGreaterThan(0);
-  expect(labels.every((text) => /\d (BCE|CE)$/.test(text ?? ''))).toBe(true);
+  expect(labels.every((text) => /^\d+( BCE)?$/.test(text ?? ''))).toBe(true);
+  expect(labels.some((text) => text?.endsWith('BCE'))).toBe(true);
 });
 
 test('decade labels are omitted (century labels still render) once zoomed out past the readable spacing threshold', () => {
