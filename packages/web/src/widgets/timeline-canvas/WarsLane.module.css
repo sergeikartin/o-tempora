@@ -3,8 +3,7 @@
 }
 
 .line,
-.dot,
-.stem {
+.dot {
   cursor: default;
 }
 

@@ -2,8 +2,7 @@
   display: block;
 }
 
-.dot,
-.stem {
+.dot {
   cursor: default;
 }
 

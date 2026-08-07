@@ -2,7 +2,7 @@
 
 <!-- UI/visual design tokens. Read before touching styling. -->
 
-**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **occupation category** (Wars & Conflicts, Events & Inventions) or **occupation domain** (People) — never person-vs-event, which is carried by lane and shape instead. Filter chips and timeline entries share the same color end-to-end within each lane. `Category` and `OccupationDomain` are separate enums from separate sources (Wikidata vs. Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified.
+**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **occupation category** (Wars & Conflicts, Events & Inventions) or **occupation domain** (People) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Wars & Conflicts'/Events & Inventions' below their marker). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `Category` and `OccupationDomain` are separate enums from separate sources (Wikidata vs. Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified.
 
 ## Color Palette
 
@@ -15,13 +15,12 @@
 | `color-border-strong` | `#C9B98F` | Hover/active borders |
 | `color-text-primary` | `#2E2B22` | Primary text |
 | `color-text-secondary` | `#83795F` | Secondary/muted text |
-| `color-text-on-category` | `#FBF8F0` | Text on a solid category-colored bar |
 | `color-accent-selected` | `#B8842E` | Selected entity, viewport indicator, focus ring |
 | `color-focus-ring` | `#8C5A1E` | Keyboard focus outline |
 
 ## Occupation Category Palette
 
-Used as a solid fill (People-lane bars) or a colored border on white/cream (Events-lane markers).
+Used as the stroke color for Wars & Conflicts' range lines and point-dot markers.
 
 | Category | Token | Hex |
 |---|---|---|
@@ -38,7 +37,7 @@ No occupation tag / uncategorized → `color-border-subtle` as a neutral fallbac
 
 ## Occupation Domain Palette
 
-People-lane only. Keyed by Pantheon's `OccupationDomain` (not `Category` above — different enum, different source). Used as a solid fill on People-lane lifespan bars. Designed independently of the Category palette above (not hue-derived from it) — pastelized from a reference swatch set, matched to the same lightness/saturation range as Category's colors so both lanes read as one system.
+People-lane only. Keyed by Pantheon's `OccupationDomain` (not `Category` above — different enum, different source). Used as the stroke color on People-lane lifespan lines. Designed independently of the Category palette above (not hue-derived from it) — pastelized from a reference swatch set, matched to the same lightness/saturation range as Category's colors so both lanes read as one system.
 
 | Domain | Token | Hex |
 |---|---|---|
@@ -67,6 +66,6 @@ People-lane only. Keyed by Pantheon's `OccupationDomain` (not `Category` above �
 |---|---|---|
 | `radius-full` | `9999px` | Filter chips |
 | `radius-sm` | `6px` | Event point-markers |
-| `radius-md` | `8px` | People-lane range bars |
+| `radius-md` | `8px` | Not currently consumed by `widgets/timeline-canvas` — Period lines (People, Wars & Conflicts) use `stroke-linecap: round` for their rounded caps instead of a corner radius |
 | `radius-lg` | `12px` | Panels |
 | `radius-xl` | `16px` | Reserved for future modal/overlay |

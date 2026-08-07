@@ -56,8 +56,15 @@ test('renders all three lanes, each populated from its own dataset', () => {
     />,
   );
 
-  expect(container.querySelectorAll('.d3-bar')).toHaveLength(1); // Aristotle (People still renders as a bar)
-  expect(container.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War (Wars & Conflicts renders as a line)
+  // Both People's lifespans and Wars & Conflicts' ranges are Periods and
+  // share the literal `.d3-line` marker class — two total (Aristotle + the
+  // Korean War) — so this counts each lane's own <svg> (rendered in People,
+  // Wars & Conflicts, Events & Inventions order) rather than the whole page.
+  const svgs = Array.from(container.querySelectorAll('svg'));
+  expect(svgs).toHaveLength(3);
+  const [peopleSvg, warsSvg] = svgs as [SVGSVGElement, SVGSVGElement, SVGSVGElement];
+  expect(peopleSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Aristotle
+  expect(warsSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1); // association football
   expect(container.querySelector('.d3-name')?.textContent).toBe('Aristotle');
 });
@@ -81,7 +88,13 @@ test('the three lane sections and the year axis share the same rendered width', 
   expect(new Set([...svgWidthsPx, axisWidthPx]).size).toBe(1);
 });
 
-test('the zoom-in button widens rendered bars; zoom-out narrows them back', () => {
+function personLineWidth(container: HTMLElement): number {
+  const [peopleSvg] = Array.from(container.querySelectorAll('svg')) as [SVGSVGElement];
+  const line = peopleSvg.querySelector('.d3-line');
+  return Number(line?.getAttribute('x2')) - Number(line?.getAttribute('x1'));
+}
+
+test('the zoom-in button widens rendered lines; zoom-out narrows them back', () => {
   const { container, getByLabelText } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -91,15 +104,15 @@ test('the zoom-in button widens rendered bars; zoom-out narrows them back', () =
     />,
   );
 
-  const initialWidth = Number(container.querySelector('.d3-bar')?.getAttribute('width'));
+  const initialWidth = personLineWidth(container);
 
   fireEvent.click(getByLabelText('Zoom in'));
-  const zoomedInWidth = Number(container.querySelector('.d3-bar')?.getAttribute('width'));
+  const zoomedInWidth = personLineWidth(container);
   expect(zoomedInWidth).toBeGreaterThan(initialWidth);
 
   fireEvent.click(getByLabelText('Zoom out'));
   fireEvent.click(getByLabelText('Zoom out'));
-  const zoomedOutWidth = Number(container.querySelector('.d3-bar')?.getAttribute('width'));
+  const zoomedOutWidth = personLineWidth(container);
   expect(zoomedOutWidth).toBeLessThan(zoomedInWidth);
 });
 
@@ -120,13 +133,13 @@ test('zooming does not change which entities are rendered — density is gated b
     />,
   );
 
-  expect(container.querySelectorAll('.d3-bar')).toHaveLength(0);
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
 
   for (let i = 0; i < 5; i++) {
     fireEvent.click(getByLabelText('Zoom in'));
   }
 
-  expect(container.querySelectorAll('.d3-bar')).toHaveLength(0);
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
 });
 
 test('a person below fameScoreValues.people is excluded; raising it reveals them', () => {
@@ -145,7 +158,7 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       fameScoreValues={defaultFameScoreValues}
     />,
   );
-  expect(container.querySelectorAll('.d3-bar')).toHaveLength(0);
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
 
   rerender(
     <TimelineCanvas
@@ -155,5 +168,5 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       fameScoreValues={{ ...defaultFameScoreValues, people: 75 }}
     />,
   );
-  expect(container.querySelectorAll('.d3-bar')).toHaveLength(1);
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
 });

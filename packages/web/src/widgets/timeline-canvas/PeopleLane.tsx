@@ -2,19 +2,31 @@ import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { Person } from '../../shared/types';
 import { DOMAIN_COLORS } from '../../shared/config';
-import { assignRows, mapPeople } from './map-to-items';
-import { BAR_HEIGHT, LANE_TOP_PADDING, REIGN_STRIPE_COLOR, REIGN_STRIPE_HEIGHT, ROW_PITCH } from './options';
+import { assignRows, mapPeople, type PersonItem } from './map-to-items';
+import {
+  MIN_ROW_GAP_PX,
+  PERIOD_LINE_HEIGHT,
+  REIGN_LINE_COLOR,
+  REIGN_LINE_HEIGHT,
+  estimateLabelWidthPx,
+  personLabelYForRow,
+  personLaneHeight,
+  personLineCenterYForRow,
+  reignLineCenterYForRow,
+} from './options';
 import styles from './PeopleLane.module.css';
 
 interface PersonLayout {
   id: string;
   name: string;
-  x: number;
-  width: number;
-  y: number;
+  x1: number;
+  x2: number;
+  labelY: number;
+  lineY: number;
+  reignY: number;
   fill: string;
   tooltip: string;
-  stripes: { id: string; x: number; width: number; tooltip: string }[];
+  reignLines: { id: string; x1: number; x2: number; tooltip: string }[];
 }
 
 interface PeopleLaneProps {
@@ -22,42 +34,72 @@ interface PeopleLaneProps {
   xScale: d3.ScaleLinear<number, number>;
 }
 
+// Row-stacking works in screen pixels, not years (mirrors WarsLane's
+// pixelInterval) — a person's name label is left-aligned above the start of
+// their lifespan line, so it can extend well past the line's own pixel span
+// for a short-lived person with a long name, especially at low zoom.
+function pixelInterval(item: PersonItem, xScale: d3.ScaleLinear<number, number>) {
+  const x1 = xScale(item.startYear);
+  const x2 = xScale(item.endYear);
+  const labelWidth = estimateLabelWidthPx(item.name);
+  return { start: x1, end: Math.max(x2, x1 + labelWidth) };
+}
+
+// A person's lifespan (a Period) renders as a rounded-cap line, not a solid
+// bar — their name label sits left-aligned just above it, the same
+// above-line treatment every Period gets. A reignPeriod (also a Period)
+// renders as its own thinner accent line directly below the lifespan line,
+// at the same row. Overlapping people are stacked into separate rows same
+// as before; a colliding label (wider than its own line) claims the row
+// via pixelInterval above rather than moving to its own band.
 export function PeopleLane({ people, xScale }: PeopleLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   const items = useMemo(() => mapPeople(people), [people]);
-  const rowOfPerson = useMemo(() => assignRows(items), [items]);
+  const rowOfPerson = useMemo(() => {
+    const intervals = items.map((item) => {
+      const { start, end } = pixelInterval(item, xScale);
+      return { id: item.id, startYear: start, endYear: end };
+    });
+    return assignRows(intervals, MIN_ROW_GAP_PX);
+  }, [items, xScale]);
   const rowCount = rowOfPerson.size > 0 ? Math.max(...rowOfPerson.values()) + 1 : 0;
-  const totalHeight = rowCount * ROW_PITCH + LANE_TOP_PADDING;
+  const totalHeight = personLaneHeight(rowCount);
   const totalWidth = xScale.range()[1] ?? 0;
 
   const layout: PersonLayout[] = useMemo(
     () =>
       items.map((item) => {
         const row = rowOfPerson.get(item.id) ?? 0;
+        const x1 = xScale(item.startYear);
         return {
           id: item.id,
           name: item.name,
-          x: xScale(item.startYear),
-          width: Math.max(xScale(item.endYear) - xScale(item.startYear), 2),
-          y: LANE_TOP_PADDING + row * ROW_PITCH,
+          x1,
+          x2: Math.max(xScale(item.endYear), x1 + 2),
+          labelY: personLabelYForRow(row),
+          lineY: personLineCenterYForRow(row),
+          reignY: reignLineCenterYForRow(row),
           fill: DOMAIN_COLORS[item.occupationDomain],
           tooltip: item.tooltip,
-          stripes: item.reignPeriods.map((reignPeriod) => ({
-            id: reignPeriod.id,
-            x: xScale(reignPeriod.startYear),
-            width: Math.max(xScale(reignPeriod.endYear) - xScale(reignPeriod.startYear), 2),
-            tooltip: reignPeriod.tooltip,
-          })),
+          reignLines: item.reignPeriods.map((reignPeriod) => {
+            const reignX1 = xScale(reignPeriod.startYear);
+            return {
+              id: reignPeriod.id,
+              x1: reignX1,
+              x2: Math.max(xScale(reignPeriod.endYear), reignX1 + 2),
+              tooltip: reignPeriod.tooltip,
+            };
+          }),
         };
       }),
     [items, rowOfPerson, xScale],
   );
 
   // D3 owns the DOM inside <g class="people"> — one <g class="d3-person">
-  // per person, containing its clip-path, lifespan bar, name label, and any
-  // reign-period stripes. Literal (non-CSS-Module) marker classes drive the
-  // join's enter/update/exit matching; CSS-Module classes ride alongside
+  // per person, containing its lifespan line, name label, and any
+  // reign-period accent lines. Literal (non-CSS-Module) marker classes drive
+  // the join's enter/update/exit matching; CSS-Module classes ride alongside
   // purely for styling and are never used as join selectors.
   useEffect(() => {
     if (!svgRef.current) return;
@@ -69,57 +111,51 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
       .data(layout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-person');
-        g.append('clipPath')
-          .attr('id', (d) => `clip-${d.id}`)
-          .append('rect')
-          .attr('class', 'd3-clip-rect')
-          .attr('height', BAR_HEIGHT)
-          .attr('rx', 4);
-        const bar = g.append('rect').attr('class', `d3-bar ${styles.bar}`).attr('height', BAR_HEIGHT).attr('rx', 4);
-        bar.append('title');
-        g.append('text').attr('class', `d3-name ${styles.name}`).attr('dominant-baseline', 'middle');
-        g.append('g').attr('class', 'd3-stripes');
+        const line = g
+          .append('line')
+          .attr('class', `d3-line ${styles.line}`)
+          .attr('stroke-width', PERIOD_LINE_HEIGHT)
+          .attr('stroke-linecap', 'round');
+        line.append('title');
+        g.append('text').attr('class', `d3-name ${styles.name}`).attr('dominant-baseline', 'hanging');
+        g.append('g').attr('class', 'd3-reign-lines');
         return g;
       });
 
     personGroups
-      .select<SVGRectElement>('.d3-clip-rect')
-      .attr('x', (d) => d.x)
-      .attr('y', (d) => d.y)
-      .attr('width', (d) => d.width);
+      .select<SVGLineElement>('.d3-line')
+      .attr('x1', (d) => d.x1)
+      .attr('x2', (d) => d.x2)
+      .attr('y1', (d) => d.lineY)
+      .attr('y2', (d) => d.lineY)
+      .attr('stroke', (d) => d.fill);
 
-    personGroups
-      .select<SVGRectElement>('.d3-bar')
-      .attr('x', (d) => d.x)
-      .attr('y', (d) => d.y)
-      .attr('width', (d) => d.width)
-      .attr('fill', (d) => d.fill);
-
-    personGroups.select('.d3-bar title').text((d) => d.tooltip);
+    personGroups.select('.d3-line title').text((d) => d.tooltip);
 
     personGroups
       .select<SVGTextElement>('.d3-name')
-      .attr('x', (d) => d.x + 4)
-      .attr('y', (d) => d.y + BAR_HEIGHT / 2)
-      .attr('clip-path', (d) => `url(#clip-${d.id})`)
+      .attr('x', (d) => d.x1)
+      .attr('y', (d) => d.labelY)
       .text((d) => d.name);
 
-    personGroups.select<SVGGElement>('.d3-stripes').each(function renderStripes(personDatum) {
+    personGroups.select<SVGGElement>('.d3-reign-lines').each(function renderReignLines(personDatum) {
       d3.select(this)
-        .selectAll<SVGRectElement, PersonLayout['stripes'][number]>('rect.d3-stripe')
-        .data(personDatum.stripes, (d) => d.id)
+        .selectAll<SVGLineElement, PersonLayout['reignLines'][number]>('line.d3-reign-line')
+        .data(personDatum.reignLines, (d) => d.id)
         .join((enter) => {
-          const rect = enter
-            .append('rect')
-            .attr('class', `d3-stripe ${styles.reignStripe}`)
-            .attr('height', REIGN_STRIPE_HEIGHT)
-            .attr('fill', REIGN_STRIPE_COLOR);
-          rect.append('title');
-          return rect;
+          const line = enter
+            .append('line')
+            .attr('class', `d3-reign-line ${styles.reignLine}`)
+            .attr('stroke-width', REIGN_LINE_HEIGHT)
+            .attr('stroke-linecap', 'round')
+            .attr('stroke', REIGN_LINE_COLOR);
+          line.append('title');
+          return line;
         })
-        .attr('x', (d) => d.x)
-        .attr('y', personDatum.y + BAR_HEIGHT - REIGN_STRIPE_HEIGHT)
-        .attr('width', (d) => d.width)
+        .attr('x1', (d) => d.x1)
+        .attr('x2', (d) => d.x2)
+        .attr('y1', personDatum.reignY)
+        .attr('y2', personDatum.reignY)
         .select('title')
         .text((d) => d.tooltip);
     });

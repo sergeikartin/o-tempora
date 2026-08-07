@@ -9,10 +9,8 @@ import {
 } from '../../shared/config';
 import type { Category, DiscoveryCategory } from '../../shared/types';
 
-// Row/bar layout shared by every lane's D3 rendering.
-export const BAR_HEIGHT = 16;
+// Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
-export const ROW_PITCH = BAR_HEIGHT + ROW_GAP;
 export const LANE_TOP_PADDING = 12;
 // Year Axis: a ruler bar whose tick marks are pure CSS (three layered
 // repeating background-gradients — year/decade/century — no per-tick DOM
@@ -43,63 +41,93 @@ export const CENTURY_TICK_HEIGHT_PCT = 100;
 // pixel width would make the year text collide with its neighbor's —
 // century labels are still shown, spaced 10x further apart.
 export const MIN_DECADE_LABEL_SPACING_PX = 40;
-export const REIGN_STRIPE_HEIGHT = 3;
+export const REIGN_LINE_HEIGHT = 3;
 export const POINT_RADIUS = 5;
 // Minimum gap (in scroll years) kept between two bars placed in the same
 // row — pure visual breathing room, not a claim about the underlying dates.
 export const MIN_ROW_GAP_YEARS = 5;
 
-// Below-marker label layout, shared by Wars & Conflicts (both its range
-// lines and point dots) and Events & Inventions (dots only) — the two lanes
-// that carry their label below the marker rather than inside/beside it.
-// PeopleLane's solid bars are unaffected and keep ROW_PITCH above.
-//
-// Every marker (range line or point dot) sits at the same fixed y right at
-// the top of its lane — i.e. right under the shared YearAxis for Wars &
-// Conflicts, the lane directly below it — so a marker's x-position always
-// reads directly against the axis above it. Overlapping labels are staggered
-// by STEM length (one MARKER_ROW_PITCH tier per row) instead of moving the
-// marker itself, so the "row" assignRows hands back is a stem-length tier,
-// not a vertical band with its own marker.
-export const RANGE_LINE_HEIGHT = 2;
-export const STEM_HEIGHT = 6;
+// A Period (a real duration — Person lifespans, War ranges, reign periods)
+// always renders as a rounded-cap line; a PointInTime (WarEvents,
+// Discoveries) always renders as a dot. Both are drawn with SVG stroke, not
+// fill, so `stroke-linecap: round` gives the pill-shaped caps.
+export const PERIOD_LINE_HEIGHT = 6;
 // Rough per-character estimate for the 11px label font — good enough to
 // size row-stacking without a real DOM text-measurement pass.
 export const AVG_CHAR_WIDTH_PX = 6;
-// Row-stacking gap for below-marker layouts — real screen pixels, not years,
+// Row-stacking gap for pixel-space layouts — real screen pixels, not years,
 // so much smaller than MIN_ROW_GAP_YEARS.
 export const MIN_ROW_GAP_PX = 8;
-// Approx rendered height of an 11px below-marker label.
+// Approx rendered height of an 11px label.
 const LABEL_TEXT_HEIGHT_PX = 13;
-// Small breathing room between a stem's tip and its label's text.
-export const STEM_LABEL_GAP = 3;
-// Vertical budget per stem-length tier — enough for one label's height plus
-// breathing room, so consecutive tiers' labels never collide.
-export const MARKER_ROW_PITCH = LABEL_TEXT_HEIGHT_PX + ROW_GAP;
-// Fixed y every marker (line or dot) is centered on, using the point dot's
-// radius as the reference since it's the taller of the two marker shapes.
-export const MARKER_CENTER_Y = LANE_TOP_PADDING + POINT_RADIUS;
-// y every stem starts from — the bottom edge of the (taller) dot marker.
-const STEM_TOP_Y = MARKER_CENTER_Y + POINT_RADIUS;
 
 export function estimateLabelWidthPx(name: string): number {
   return name.length * AVG_CHAR_WIDTH_PX;
 }
 
-/** y of a row's stem tip — row 0 is the shortest stem. */
-export function stemBottomForRow(row: number): number {
-  return STEM_TOP_Y + STEM_HEIGHT + row * MARKER_ROW_PITCH;
-}
+// Below-marker label layout, shared by Wars & Conflicts (both its range
+// lines and point dots) and Events & Inventions (dots only) — the two lanes
+// that carry their label below the marker. Every marker sits at the same
+// fixed y right at the top of its lane — i.e. right under the shared
+// YearAxis for Wars & Conflicts, the lane directly below it — so a marker's
+// x-position always reads directly against the axis above it. An item that
+// would otherwise collide with a neighbor doesn't move its marker; instead
+// `assignRows` hands back a label tier (one MARKER_ROW_PITCH step per row),
+// pushing just that item's label further down.
+// Small breathing room between a marker's bottom edge and its label.
+const MARKER_LABEL_GAP = 8;
+// Vertical budget per label tier — enough for one label's height plus
+// breathing room, so consecutive tiers' labels never collide.
+export const MARKER_ROW_PITCH = LABEL_TEXT_HEIGHT_PX + ROW_GAP;
+// Fixed y every marker (line or dot) is centered on, using the point dot's
+// radius as the reference since it's the taller of the two marker shapes.
+export const MARKER_CENTER_Y = LANE_TOP_PADDING + POINT_RADIUS;
+// y of the bottom edge of the (taller) dot marker, where label tiers start from.
+const MARKER_BOTTOM_Y = MARKER_CENTER_Y + POINT_RADIUS;
 
-/** y of a row's label, a small gap below its stem's tip. */
+/** y of a row's label — row 0 sits closest to the marker. */
 export function labelYForRow(row: number): number {
-  return stemBottomForRow(row) + STEM_LABEL_GAP;
+  return MARKER_BOTTOM_Y + MARKER_LABEL_GAP + row * MARKER_ROW_PITCH;
 }
 
 /** Total SVG height needed for a below-marker lane with this many stacked rows. */
 export function markerLaneHeight(rowCount: number): number {
   if (rowCount === 0) return LANE_TOP_PADDING * 2;
   return labelYForRow(rowCount - 1) + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
+}
+
+// Above-line label layout, used by People — the one lane whose Period bars
+// don't all share a fixed marker y (they stack into vertical bands like a
+// Gantt chart), so unlike the below-marker lanes above, the label tier and
+// the vertical band are the same "row" concept: a person's label sits just
+// above their own lifespan line, both moving together per row.
+const PERSON_LABEL_GAP = 4;
+// Gap between a lifespan line's bottom edge and its reign-period accent line.
+const REIGN_LINE_GAP = 3;
+// Vertical budget per row: label height + gap + lifespan line + gap + the
+// (possibly absent) reign-period accent line + breathing room to the next row.
+export const PERSON_ROW_PITCH =
+  LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT + REIGN_LINE_GAP + REIGN_LINE_HEIGHT + ROW_GAP;
+
+/** y of a row's label — hangs just above that row's lifespan line. */
+export function personLabelYForRow(row: number): number {
+  return LANE_TOP_PADDING + row * PERSON_ROW_PITCH;
+}
+
+/** y (vertical center) of a row's lifespan line. */
+export function personLineCenterYForRow(row: number): number {
+  return personLabelYForRow(row) + LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT / 2;
+}
+
+/** y (vertical center) of a row's reign-period accent line, just below the lifespan line. */
+export function reignLineCenterYForRow(row: number): number {
+  return personLineCenterYForRow(row) + PERIOD_LINE_HEIGHT / 2 + REIGN_LINE_GAP + REIGN_LINE_HEIGHT / 2;
+}
+
+/** Total SVG height needed for the People lane with this many stacked rows. */
+export function personLaneHeight(rowCount: number): number {
+  if (rowCount === 0) return LANE_TOP_PADDING * 2;
+  return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
 }
 
 // Mirrors design-tokens.md's Occupation Category Palette — Wars & Conflicts
@@ -137,7 +165,7 @@ export const DISCOVERY_CATEGORY_COLORS: Record<DiscoveryCategory, string> = {
 // Tentative pick per docs/active-context.md's Next Up (mirrors
 // color-accent-selected, not yet decoupled into its own token) — real token
 // wiring is ticket 05.
-export const REIGN_STRIPE_COLOR = '#B8842E';
+export const REIGN_LINE_COLOR = '#B8842E';
 
 const MIN_YEAR = PAN_MIN_DATE.year;
 

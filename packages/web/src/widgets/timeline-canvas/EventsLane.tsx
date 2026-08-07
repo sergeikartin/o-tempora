@@ -10,7 +10,6 @@ import {
   estimateLabelWidthPx,
   labelYForRow,
   markerLaneHeight,
-  stemBottomForRow,
 } from './options';
 import styles from './EventsLane.module.css';
 
@@ -33,7 +32,7 @@ interface EventsLaneProps {
 // dot's x-position always reads directly against the shared YearAxis above
 // it. With 24+ items and long names, points can cluster close enough in
 // pixels (even years apart, at low zoom) for labels to overlap; instead of
-// moving the dot, a colliding item's stem gets a longer tier (see
+// moving the dot, a colliding item gets a lower label tier (see
 // map-to-items.ts's assignRows, reused here in pixel- rather than
 // year-space) so just its label drops further down.
 export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
@@ -79,7 +78,6 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
       .data(layout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-point-group');
-        g.append('line').attr('class', `d3-stem ${styles.stem}`).attr('stroke-width', 1.5);
         const dot = g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
         dot.append('title');
         g.append('text')
@@ -88,14 +86,6 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
           .attr('dominant-baseline', 'hanging');
         return g;
       });
-
-    pointGroups
-      .select<SVGLineElement>('.d3-stem')
-      .attr('x1', (d) => d.x)
-      .attr('x2', (d) => d.x)
-      .attr('y1', MARKER_CENTER_Y + POINT_RADIUS)
-      .attr('y2', (d) => stemBottomForRow(d.row))
-      .attr('stroke', (d) => d.fill);
 
     pointGroups
       .select<SVGCircleElement>('.d3-dot')
