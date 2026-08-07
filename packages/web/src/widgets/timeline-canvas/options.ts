@@ -41,7 +41,6 @@ export const CENTURY_TICK_HEIGHT_PCT = 100;
 // pixel width would make the year text collide with its neighbor's —
 // century labels are still shown, spaced 10x further apart.
 export const MIN_DECADE_LABEL_SPACING_PX = 40;
-export const REIGN_LINE_HEIGHT = 3;
 export const POINT_RADIUS = 5;
 // Minimum gap (in scroll years) kept between two bars placed in the same
 // row — pure visual breathing room, not a claim about the underlying dates.
@@ -65,29 +64,50 @@ export function estimateLabelWidthPx(name: string): number {
   return name.length * AVG_CHAR_WIDTH_PX;
 }
 
-// Below-marker label layout, shared by Wars & Conflicts (both its range
-// lines and point dots) and Events & Inventions (dots only) — the two lanes
-// that carry their label below the marker. Every marker sits at the same
-// fixed y right at the top of its lane — i.e. right under the shared
-// YearAxis for Wars & Conflicts, the lane directly below it — so a marker's
-// x-position always reads directly against the axis above it. An item that
-// would otherwise collide with a neighbor doesn't move its marker; instead
-// `assignRows` hands back a label tier (one MARKER_ROW_PITCH step per row),
-// pushing just that item's label further down.
+// Greedy word-wrap using the same rough per-character estimate as
+// estimateLabelWidthPx — good enough to bound a label's rendered width
+// without a real DOM text-measurement pass.
+export function wrapLabelLines(name: string, maxWidthPx: number): string[] {
+  const words = name.split(' ');
+  const lines: string[] = [];
+  let currentLine = '';
+  for (const word of words) {
+    const candidate = currentLine ? `${currentLine} ${word}` : word;
+    if (currentLine !== '' && estimateLabelWidthPx(candidate) > maxWidthPx) {
+      lines.push(currentLine);
+      currentLine = word;
+    } else {
+      currentLine = candidate;
+    }
+  }
+  if (currentLine !== '') lines.push(currentLine);
+  return lines;
+}
+
+// Below-marker label layout, used by Wars & Conflicts (both its range lines
+// and point dots) — a row's marker and label move down together, the label
+// sitting just below its own marker, same as People's above-line treatment
+// but flipped. An item that would otherwise collide with a neighbor doesn't
+// move sideways; instead `assignRows` hands back a row (one MARKER_ROW_PITCH
+// step down), pushing that item's marker+label pair as a unit. Events &
+// Inventions also sits below its marker but, since its labels now wrap
+// across multiple lines, uses its own tighter gap and per-row-computed pitch
+// instead of this fixed single-line one — see EVENTS_MARKER_LABEL_GAP below
+// and EventsLane.tsx's row-height computation.
 // Small breathing room between a marker's bottom edge and its label.
 const MARKER_LABEL_GAP = 8;
-// Vertical budget per label tier — enough for one label's height plus
-// breathing room, so consecutive tiers' labels never collide.
-export const MARKER_ROW_PITCH = LABEL_TEXT_HEIGHT_PX + ROW_GAP;
-// Fixed y every marker (line or dot) is centered on, using the point dot's
-// radius as the reference since it's the taller of the two marker shapes.
-export const MARKER_CENTER_Y = LANE_TOP_PADDING + POINT_RADIUS;
-// y of the bottom edge of the (taller) dot marker, where label tiers start from.
-const MARKER_BOTTOM_Y = MARKER_CENTER_Y + POINT_RADIUS;
+// Vertical budget per row: marker height + gap + one label's height + gap to
+// the next row, so consecutive rows never collide.
+export const MARKER_ROW_PITCH = POINT_RADIUS * 2 + MARKER_LABEL_GAP + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
 
-/** y of a row's label — row 0 sits closest to the marker. */
+/** y (vertical center) of a row's marker (line or dot), using the dot's radius as the reference since it's the taller of the two marker shapes. */
+export function markerCenterYForRow(row: number): number {
+  return LANE_TOP_PADDING + POINT_RADIUS + row * MARKER_ROW_PITCH;
+}
+
+/** y of a row's label — sits just below that row's own marker. */
 export function labelYForRow(row: number): number {
-  return MARKER_BOTTOM_Y + MARKER_LABEL_GAP + row * MARKER_ROW_PITCH;
+  return markerCenterYForRow(row) + POINT_RADIUS + MARKER_LABEL_GAP;
 }
 
 /** Total SVG height needed for a below-marker lane with this many stacked rows. */
@@ -96,18 +116,24 @@ export function markerLaneHeight(rowCount: number): number {
   return labelYForRow(rowCount - 1) + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
 }
 
+// Events & Inventions' own below-marker layout: labels wrap across multiple
+// lines (via wrapLabelLines above) rather than staying on one line, so a
+// row's height varies with how many lines its tallest label needs —
+// computed per-render in EventsLane.tsx, not as a fixed pitch like
+// MARKER_ROW_PITCH above.
+export const EVENTS_MARKER_LABEL_GAP = 4;
+export const EVENTS_LABEL_LINE_HEIGHT_PX = LABEL_TEXT_HEIGHT_PX;
+export const EVENTS_LABEL_MAX_WIDTH_PX = 72;
+
 // Above-line label layout, used by People — the one lane whose Period bars
 // don't all share a fixed marker y (they stack into vertical bands like a
 // Gantt chart), so unlike the below-marker lanes above, the label tier and
 // the vertical band are the same "row" concept: a person's label sits just
 // above their own lifespan line, both moving together per row.
-const PERSON_LABEL_GAP = 4;
-// Gap between a lifespan line's bottom edge and its reign-period accent line.
-const REIGN_LINE_GAP = 3;
-// Vertical budget per row: label height + gap + lifespan line + gap + the
-// (possibly absent) reign-period accent line + breathing room to the next row.
-export const PERSON_ROW_PITCH =
-  LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT + REIGN_LINE_GAP + REIGN_LINE_HEIGHT + ROW_GAP;
+const PERSON_LABEL_GAP = 2;
+// Vertical budget per row: label height + gap + lifespan line + breathing
+// room to the next row.
+export const PERSON_ROW_PITCH = LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT + ROW_GAP;
 
 /** y of a row's label — hangs just above that row's lifespan line. */
 export function personLabelYForRow(row: number): number {
@@ -117,11 +143,6 @@ export function personLabelYForRow(row: number): number {
 /** y (vertical center) of a row's lifespan line. */
 export function personLineCenterYForRow(row: number): number {
   return personLabelYForRow(row) + LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT / 2;
-}
-
-/** y (vertical center) of a row's reign-period accent line, just below the lifespan line. */
-export function reignLineCenterYForRow(row: number): number {
-  return personLineCenterYForRow(row) + PERIOD_LINE_HEIGHT / 2 + REIGN_LINE_GAP + REIGN_LINE_HEIGHT / 2;
 }
 
 /** Total SVG height needed for the People lane with this many stacked rows. */
@@ -161,11 +182,6 @@ export const DISCOVERY_CATEGORY_COLORS: Record<DiscoveryCategory, string> = {
   'everyday-technology': '#C893C8',
   exploration: '#C072AB',
 };
-
-// Tentative pick per docs/active-context.md's Next Up (mirrors
-// color-accent-selected, not yet decoupled into its own token) — real token
-// wiring is ticket 05.
-export const REIGN_LINE_COLOR = '#B8842E';
 
 const MIN_YEAR = PAN_MIN_DATE.year;
 

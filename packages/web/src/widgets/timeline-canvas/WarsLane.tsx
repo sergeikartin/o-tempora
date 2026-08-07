@@ -4,12 +4,12 @@ import type { WarsAndConflictsEntry } from '../../shared/types';
 import { assignRows, mapWars } from './map-to-items';
 import {
   CATEGORY_COLORS,
-  MARKER_CENTER_Y,
   MIN_ROW_GAP_PX,
   PERIOD_LINE_HEIGHT,
   POINT_RADIUS,
   estimateLabelWidthPx,
   labelYForRow,
+  markerCenterYForRow,
   markerLaneHeight,
 } from './options';
 import styles from './WarsLane.module.css';
@@ -55,13 +55,11 @@ function pixelInterval(item: { startYear: number; endYear: number; name: string;
 }
 
 // Wars & Conflicts renders two shapes sharing one row-stacking pass: ranges
-// as a rounded-cap line, points as a dot — both always centered on
-// MARKER_CENTER_Y, the same fixed y right under the shared YearAxis, so a
-// marker's x-position always reads directly against the axis above it. An
-// item that would otherwise collide with a neighbor doesn't move its marker;
-// `assignRows`' row becomes a label tier instead, pushing just that item's
-// label further down while its marker stays put. Same below-marker treatment
-// Events & Inventions uses for its dots.
+// as a rounded-cap line, points as a dot. An item that would otherwise
+// collide with a neighbor doesn't move sideways; `assignRows`' row instead
+// pushes its marker+label pair down together (markerCenterYForRow/
+// labelYForRow), the label sitting just below its own row's marker. Same
+// below-marker treatment Events & Inventions uses for its dots.
 export function WarsLane({ wars, xScale }: WarsLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -137,8 +135,8 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .select<SVGLineElement>('.d3-line')
       .attr('x1', (d) => d.x1)
       .attr('x2', (d) => d.x2)
-      .attr('y1', MARKER_CENTER_Y)
-      .attr('y2', MARKER_CENTER_Y)
+      .attr('y1', (d) => markerCenterYForRow(d.row))
+      .attr('y2', (d) => markerCenterYForRow(d.row))
       .attr('stroke', (d) => d.fill);
 
     rangeGroups.select('.d3-line title').text((d) => d.tooltip);
@@ -170,7 +168,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
     pointGroups
       .select<SVGCircleElement>('.d3-dot')
       .attr('cx', (d) => d.x)
-      .attr('cy', MARKER_CENTER_Y)
+      .attr('cy', (d) => markerCenterYForRow(d.row))
       .attr('fill', (d) => d.fill);
 
     pointGroups.select('.d3-dot title').text((d) => d.tooltip);

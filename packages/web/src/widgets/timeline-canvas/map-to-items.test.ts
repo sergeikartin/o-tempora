@@ -56,58 +56,6 @@ test('mapPeople includes the month in the tooltip when lifespan.start/end have o
   expect(item?.tooltip).toBe('William Shakespeare: April 1564–April 1616');
 });
 
-test('mapPeople gives a person with no reignPeriods an empty reignPeriods list', () => {
-  const [item] = mapPeople([person]);
-  expect(item?.reignPeriods).toEqual([]);
-});
-
-const ruler: Person = {
-  ...person,
-  id: 'Q1048',
-  name: 'Julius Caesar',
-  lifespan: { start: { year: -100 }, end: { year: -44 } },
-  reignPeriods: [
-    { start: { year: -49 }, end: { year: -44 }, title: 'Dictator' },
-    { start: { year: -60 }, end: { year: -59 } },
-  ],
-};
-
-test('mapPeople maps each reignPeriod to a stripe with matching bounds and a tooltip', () => {
-  const [item] = mapPeople([ruler]);
-  expect(item?.reignPeriods).toHaveLength(2);
-  const [first, second] = item?.reignPeriods ?? [];
-  expect(first?.startYear).toBe(-49);
-  expect(first?.endYear).toBe(-44);
-  expect(first?.tooltip).toBe('Dictator: 50 BCE–45 BCE');
-  expect(second?.tooltip).toBe('Reign: 61 BCE–60 BCE');
-});
-
-test('mapPeople falls back to the person\'s lifespan.end when a reignPeriod has no end', () => {
-  const rulerWithOpenReign: Person = { ...ruler, reignPeriods: [{ start: { year: -49 }, end: undefined }] };
-  const [item] = mapPeople([rulerWithOpenReign]);
-  expect(item?.reignPeriods[0]?.endYear).toBe(-44);
-});
-
-test('mapPeople reign tooltip says "(end unknown)" (not a formatted year) when the source reignPeriod has no end', () => {
-  const rulerWithOpenReign: Person = {
-    ...ruler,
-    reignPeriods: [{ start: { year: -49 }, end: undefined, title: 'Dictator' }],
-  };
-  const [item] = mapPeople([rulerWithOpenReign]);
-  expect(item?.reignPeriods[0]?.tooltip).toBe('Dictator: 50 BCE–(end unknown)');
-});
-
-test('mapPeople falls back to today for a reignPeriod when both its end and the person\'s lifespan.end are missing', () => {
-  const rulerWithNoBounds: Person = {
-    ...ruler,
-    lifespan: { start: { year: -100 }, end: undefined },
-    reignPeriods: [{ start: { year: -49 }, end: undefined }],
-  };
-  const [item] = mapPeople([rulerWithNoBounds]);
-  expect(item?.reignPeriods[0]?.startYear).toBe(-49);
-  expect(item?.reignPeriods[0]?.endYear).toBe(today().year);
-});
-
 const warWithEndYear: War = {
   id: 'Q8214',
   name: 'Korean War',
