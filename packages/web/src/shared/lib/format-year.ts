@@ -1,3 +1,5 @@
+import type { YearMonth } from '../types';
+
 // Every year in the rendering path is a plain signed integer using
 // Temporal's ISO/astronomical numbering (year 0 is 1 BCE, year 1 is 1 CE —
 // see packages/shared-types's TimelineEntry comment). This is the one place
@@ -14,6 +16,34 @@ export function isBceYear(year: number): boolean {
 /** Signed plain year -> "N BCE" for BCE years, plain "N" for CE years. */
 export function formatYear(year: number): string {
   return isBceYear(year) ? `${1 - year} BCE` : `${year}`;
+}
+
+const MONTH_NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+// month absent means the source data is only certain to the year (see
+// shared-types's YearMonth) — falls back to formatYear alone rather than
+// guessing a month. Hardcoded month names rather than
+// Temporal.PlainYearMonth#toLocaleString: the polyfill's locale-formatting
+// path requires an explicit calendar-qualified locale to avoid throwing
+// ("Mismatching Calendars") and buys nothing over a plain lookup here,
+// where the source of truth is already a 1-12 integer, not a Temporal
+// value needing calendar-aware arithmetic.
+export function formatYearMonth(yearMonth: YearMonth): string {
+  if (yearMonth.month === undefined) return formatYear(yearMonth.year);
+  return `${MONTH_NAMES[yearMonth.month - 1]} ${formatYear(yearMonth.year)}`;
 }
 
 function ordinal(n: number): string {

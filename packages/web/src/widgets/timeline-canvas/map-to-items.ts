@@ -1,9 +1,18 @@
-import type { Category, Discovery, DiscoveryCategory, OccupationDomain, Person, War } from '../../shared/types';
+import type {
+  Category,
+  Discovery,
+  DiscoveryCategory,
+  OccupationDomain,
+  Period,
+  Person,
+  WarsAndConflictsEntry,
+  YearMonth,
+} from '../../shared/types';
 import { today } from '../../shared/lib/dates';
-import { formatYear } from '../../shared/lib/format-year';
+import { formatYearMonth } from '../../shared/lib/format-year';
 import { MIN_ROW_GAP_YEARS } from './options';
 
-// A zero- or negative-width range (e.g. a missing endYear) can't render as a
+// A zero- or negative-width range (e.g. a missing end) can't render as a
 // visible bar — widen it to a minimum one-year span. Rendering-only: not a
 // claim the underlying date data actually spans a year.
 function ensureMinimumRangeWidthYears(startYear: number, endYear: number): number {
@@ -17,6 +26,16 @@ function ensureMinimumRangeWidthYears(startYear: number, endYear: number): numbe
 // just a `fameScore >=` cutoff on the same already-sorted-by-tier data.
 export function filterByFameScore<T extends { fameScore: number }>(items: T[], minFameScore: number): T[] {
   return items.filter((item) => item.fameScore >= minFameScore);
+}
+
+// "present"/"(end unknown)" read differently depending on whose end is
+// missing — a person's own open lifespan reads as "present" (they're still
+// alive), while a reign/term with no recorded end reads as "(end unknown)"
+// (Wikidata simply never recorded one). Both fall back to `openEndYear`
+// (today, or the person's own lifespan end) for the *pixel* bar width —
+// this only affects tooltip text.
+function formatRangeTooltip(start: YearMonth, end: YearMonth | undefined, openEndLabel: string): string {
+  return `${formatYearMonth(start)}–${end !== undefined ? formatYearMonth(end) : openEndLabel}`;
 }
 
 export interface ReignPeriodItem {
@@ -38,24 +57,24 @@ export interface PersonItem {
 
 export function mapPeople(people: Person[]): PersonItem[] {
   return people.map((person) => {
-    // Missing endYear means still alive — draw through to today, not a
-    // collapsed zero-width bar at their birth year.
-    const personEnd = person.endYear ?? today().year;
+    // Missing lifespan.end means still alive — draw through to today, not
+    // a collapsed zero-width bar at their birth year.
+    const personEndYear = person.lifespan.end?.year ?? today().year;
 
     return {
       id: person.id,
       name: person.name,
-      startYear: person.startYear,
-      endYear: ensureMinimumRangeWidthYears(person.startYear, personEnd),
+      startYear: person.lifespan.start.year,
+      endYear: ensureMinimumRangeWidthYears(person.lifespan.start.year, personEndYear),
       occupationDomain: person.occupationDomain,
-      tooltip: `${person.name}: ${formatYear(person.startYear)}–${person.endYear !== undefined ? formatYear(person.endYear) : 'present'}`,
+      tooltip: `${person.name}: ${formatRangeTooltip(person.lifespan.start, person.lifespan.end, 'present')}`,
       reignPeriods: (person.reignPeriods ?? []).map((reignPeriod, index) => {
-        const reignEnd = reignPeriod.endYear ?? personEnd;
+        const reignEndYear = reignPeriod.end?.year ?? personEndYear;
         return {
           id: `${person.id}-reign-${index}`,
-          startYear: reignPeriod.startYear,
-          endYear: ensureMinimumRangeWidthYears(reignPeriod.startYear, reignEnd),
-          tooltip: `${reignPeriod.title ?? 'Reign'}: ${formatYear(reignPeriod.startYear)}–${reignPeriod.endYear !== undefined ? formatYear(reignPeriod.endYear) : '(end unknown)'}`,
+          startYear: reignPeriod.start.year,
+          endYear: ensureMinimumRangeWidthYears(reignPeriod.start.year, reignEndYear),
+          tooltip: `${reignPeriod.title ?? 'Reign'}: ${formatRangeTooltip(reignPeriod.start, reignPeriod.end, '(end unknown)')}`,
         };
       }),
     };
@@ -72,19 +91,28 @@ export interface WarItem {
   tooltip: string;
 }
 
-// wars.json is already Wars & Conflicts-lane-only (data-pipeline's
-// EVENT_TYPES filter), so every entry maps 1:1 — no category filtering here.
-export function mapWars(wars: War[]): WarItem[] {
-  return wars.map((war) => {
-    const isPoint = war.endYear === undefined;
+// wars.json mixes War (a Period, `period` field) and WarEvent (a
+// PointInTime, `at` field) — structurally disjoint, so this narrows with
+// `"period" in entry` rather than a `kind` discriminant (see
+// WarsAndConflictsEntry in shared-types). Every entry maps 1:1 into one
+// unified WarItem shape either way; wars.json is already Wars &
+// Conflicts-lane-only (data-pipeline's EVENT_TYPES filter), so no category
+// filtering happens here.
+export function mapWars(wars: WarsAndConflictsEntry[]): WarItem[] {
+  return wars.map((entry) => {
+    const isWar = 'period' in entry;
+    const period: Period = isWar ? entry.period : { start: entry.at, end: undefined };
+    const isPoint = !isWar;
     return {
-      id: war.id,
-      name: war.name,
-      startYear: war.startYear,
-      endYear: isPoint ? war.startYear : ensureMinimumRangeWidthYears(war.startYear, war.endYear as number),
+      id: entry.id,
+      name: entry.name,
+      startYear: period.start.year,
+      endYear: isPoint
+        ? period.start.year
+        : ensureMinimumRangeWidthYears(period.start.year, period.end?.year ?? period.start.year),
       isPoint,
-      category: war.category,
-      tooltip: war.partOfWarName ? `${war.name} — part of ${war.partOfWarName}` : war.name,
+      category: entry.category,
+      tooltip: entry.partOfWarName ? `${entry.name} — part of ${entry.partOfWarName}` : entry.name,
     };
   });
 }
@@ -97,13 +125,13 @@ export interface DiscoveryItem {
   tooltip: string;
 }
 
-// discoveries.json never carries an endYear (data-pipeline's Discovery rows
-// are always single-year) — always a point, unlike wars.
+// discoveries.json is always a PointInTime (data-pipeline's Discovery rows
+// are always single-moment) — always a point, unlike wars.
 export function mapDiscoveries(discoveries: Discovery[]): DiscoveryItem[] {
   return discoveries.map((discovery) => ({
     id: discovery.id,
     name: discovery.name,
-    startYear: discovery.startYear,
+    startYear: discovery.at.year,
     category: discovery.category,
     tooltip: discovery.name,
   }));

@@ -96,21 +96,45 @@ export const UN_REGIONS = [
 
 export type UnRegion = (typeof UN_REGIONS)[number];
 
-// Year fields are plain integers, not Temporal.PlainDate instances or ISO
-// date strings: source data is frequently only certain to the year, and the
-// app's own zoom bound (10-year minimum window) never needs finer precision.
-// BCE years are negative, matching Temporal.PlainDate's ISO calendar
-// convention end-to-end (Invariant 4 in architecture.md) — the frontend
-// adapter constructs Temporal.PlainDate(year, 1, 1) from this integer.
-//
-// Shared by Person, War, and Discovery — every lane renders on the same
-// timeline off this same start/end shape, whether it's a person's
-// lifespan, a war's duration, or a single-year discovery (endYear absent).
+// A calendar year plus optional month, astronomical/ISO numbering (year 0 is
+// 1 BCE, year 1 is 1 CE — Invariant 4 in architecture.md), matching
+// Temporal.PlainDate's own sign convention. `month` (1-12) is present only
+// when the source data's actual claim precision resolves to month-or-finer
+// (e.g. Wikidata's wikibase:timePrecision >= 10) — never defaulted to
+// January to paper over an unknown month, which would misrepresent
+// precision Wikidata itself doesn't claim to have. The frontend adapter
+// constructs a real Temporal.PlainYearMonth from this shape once month is
+// known; year-only values stay plain numbers (see shared/lib/dates.ts).
+export interface YearMonth {
+  year: number;
+  month?: number;
+}
+
+// A real duration with a known start and (usually) a known end — a
+// person's lifespan, a war's span, a reign/term of office. `end` absent
+// means genuinely ongoing/open-ended (a still-living person, a position
+// with no recorded end date), not "unknown" in the sense of missing data —
+// the frontend adapter renders these through to the present.
+export interface Period {
+  start: YearMonth;
+  end?: YearMonth;
+}
+
+// A single moment — a battle, a treaty signing, an invention's first
+// appearance. Distinct from Period (not "a Period with no end"): a point in
+// time was never a duration to begin with.
+export interface PointInTime {
+  at: YearMonth;
+}
+
+// Shared by Person, War, WarEvent, and Discovery — every lane's entries
+// carry these fields regardless of whether they render as a period or a
+// point (see Period/PointInTime above for the date shapes themselves,
+// which now live on each entity directly since not every entity has the
+// same one).
 export interface TimelineEntry {
   id: string;
   name: string;
-  startYear: number;
-  endYear?: number;
   fameScore: number;
   description: string;
   wikipediaUrl: string;
@@ -127,29 +151,46 @@ export interface Person extends TimelineEntry {
   // Birth region and death region can genuinely differ, so this stays an
   // array even though occupationDomain doesn't need to be.
   regionTags: UnRegion[];
+  // Always a Period, never a point — a life is never a single moment.
+  // `end` absent means still alive.
+  lifespan: Period;
   // Best-effort: only populated when Wikidata has at least one qualified
   // P39 ("position held") statement with a start-time qualifier for this
   // person (see data-pipeline/src/fetch/queries/reigns.ts, keyed on the
   // Wikidata QID Pantheon retains per person). Most people have none.
-  // Sorted ascending by startYear; a person can have more than one (e.g. a
+  // Sorted ascending by start year; a person can have more than one (e.g. a
   // deposed-and-restored monarch, or multiple offices).
   reignPeriods?: ReignPeriod[];
 }
 
+// Only entities Wikidata classes as a war (wd:Q198, the WAR_TYPE_QID in
+// data-pipeline/src/transform/event-type-categories.ts) become a War — the
+// one Wars & Conflicts-lane entity that's always a real Period, per the
+// product decision that only wars render as range bars. Everything else
+// the lane covers (battles, treaties, sieges, revolutions, rebellions,
+// military operations, generic "historical event"s) is a WarEvent instead,
+// even when Wikidata happens to record a duration for one of them.
 export interface War extends TimelineEntry {
-  // "war" vs "politics" — a treaty or revolution is Wars & Conflicts-lane
-  // but not literally a war; see EVENT_TYPE_CATEGORIES in data-pipeline.
+  // Always "war" in practice (see above) — kept as the shared Category
+  // type rather than a `"war"` literal so War and WarEvent can share
+  // CATEGORY_COLORS and other Category-keyed lookups on the frontend.
   category: Category;
   regionTags: Region[];
-  // Only ever populated for entities Wikidata classes as a war (wd:Q198,
-  // the WAR_TYPE_QID in data-pipeline/src/transform/event-type-categories.ts)
-  // that also carry a known end-time claim — battles, treaties, sieges,
-  // etc. stay single-date points even when Wikidata happens to record a
-  // duration for them, per the product decision that only wars render as
-  // range bars. Absence does not mean "not a war," just "no known end
-  // date" or "not a war" — consumers should not infer either from it
-  // alone; use `category`/context instead.
-  endYear?: number;
+  period: Period;
+  // Human-readable name of a larger parent conflict this war is Wikidata
+  // "part of" (P361) linked to (e.g. a theater or front of a world war).
+  // Best-effort: present only when Wikidata has that link and an English
+  // label for the target.
+  partOfWarName?: string;
+}
+
+// A single-moment Wars & Conflicts entry — battle, treaty, siege,
+// revolution, rebellion, military operation, or generic historical event.
+// See War above for why these are a separate type from War rather than an
+// optional end date on it.
+export interface WarEvent extends TimelineEntry, PointInTime {
+  category: Category;
+  regionTags: Region[];
   // Human-readable name of the parent conflict this event is Wikidata
   // "part of" (P361) linked to, e.g. a battle -> its war. Best-effort:
   // present only when Wikidata has that link and an English label for the
@@ -158,11 +199,19 @@ export interface War extends TimelineEntry {
   partOfWarName?: string;
 }
 
+// The Wars & Conflicts lane's dataset (wars.json) is one array mixing both
+// shapes — War and WarEvent are structurally disjoint (`period` vs `at`),
+// so consumers narrow with `"period" in entry` rather than needing a
+// separate `kind` discriminant field.
+export type WarsAndConflictsEntry = War | WarEvent;
+
 // Sourced from the hand-curated events list, not a Wikidata-?type-claim
 // scan — category is curator-assigned directly (see tagCuratedDiscovery in
 // data-pipeline/src/transform/tag-events.ts), hence its own DiscoveryCategory
-// taxonomy rather than War's Category.
-export interface Discovery extends TimelineEntry {
+// taxonomy rather than War's Category. Always a point in time, like a
+// battle — an invention doesn't span a duration the way a life or a war
+// does.
+export interface Discovery extends TimelineEntry, PointInTime {
   category: DiscoveryCategory;
   regionTags: Region[];
 }
@@ -170,14 +219,14 @@ export interface Discovery extends TimelineEntry {
 // A single period a person held a qualified position (Wikidata P39 with
 // P580/P582 start/end qualifiers) — monarchs, elected heads of
 // state/government, and any other dated position, not just literal
-// "king"/"queen" titles. `endYear` absent means Wikidata has no end-time
-// claim (e.g. still holding the position, or the claim is simply
-// incomplete) — same "rendering-only stand-in needed" situation as
-// `Person.endYear`, left for the frontend to decide how to fall back,
-// not resolved here.
-export interface ReignPeriod {
-  startYear: number;
-  endYear?: number;
+// "king"/"queen" titles. Always a Period (extended directly, so `.start`/
+// `.end` read the same as any other Period rather than nesting under a
+// `.period` field) — `end` absent means Wikidata has no end-time claim
+// (e.g. still holding the position, or the claim is simply incomplete),
+// same "rendering-only fallback needed" situation as `Person.lifespan`'s
+// open `end`, left for the frontend to decide how to fall back, not
+// resolved here.
+export interface ReignPeriod extends Period {
   // The position's own Wikidata label (e.g. "Pope", "King of England"),
   // not a generic "reign" placeholder — absent only when Wikidata has no
   // English label for the position itself (rare; same best-effort stance

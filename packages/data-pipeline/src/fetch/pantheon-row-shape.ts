@@ -29,7 +29,17 @@ export interface PantheonPersonRow {
   bplaceCountry: string;
   dplaceCountry: string;
   birthyear?: number;
+  // Derived from the `birthdate`/`deathdate` columns (format "YYYY-MM-DD",
+  // BCE flagged by a trailing " BC" rather than a leading minus sign —
+  // Pantheon's own convention, distinct from Wikidata's signed-ISO one).
+  // Only kept when that column's own year agrees with birthyear/deathyear
+  // — the two columns occasionally disagree (e.g. a Julian/Gregorian
+  // calendar-boundary date), and birthyear/deathyear is what the rest of
+  // the pipeline already treats as ground truth, so a disagreeing month is
+  // dropped rather than risk attaching it to the wrong year.
+  birthmonth?: number;
   deathyear?: number;
+  deathmonth?: number;
 }
 
 const EXPECTED_HEADER = [
@@ -73,6 +83,19 @@ function parseOptionalInt(value: string): number | undefined {
   return value === "" ? undefined : Number.parseInt(value, 10);
 }
 
+const PANTHEON_DATE_PATTERN = /^(\d{4})-(\d{2})-\d{2}( BC)?$/;
+
+// `referenceYear` is birthyear/deathyear — the month is only trusted when
+// the date column's own year matches it (see PantheonPersonRow's comment).
+function parseOptionalDateMonth(value: string, referenceYear: number | undefined): number | undefined {
+  if (value === "" || referenceYear === undefined) return undefined;
+  const match = PANTHEON_DATE_PATTERN.exec(value);
+  if (!match || match[1] === undefined || match[2] === undefined) return undefined;
+  const year = match[3] ? -Number(match[1]) : Number(match[1]);
+  if (year !== referenceYear) return undefined;
+  return Number(match[2]);
+}
+
 /**
  * Structural check on the Pantheon CSV shape only — confirms the header
  * matches what this pipeline was built against and that every row has a
@@ -110,6 +133,9 @@ export function parsePantheonCsv(csvText: string): PantheonPersonRow[] {
       );
     }
 
+    const birthyear = parseOptionalInt(fields[columnIndex.birthyear ?? -1] ?? "");
+    const deathyear = parseOptionalInt(fields[columnIndex.deathyear ?? -1] ?? "");
+
     return {
       id,
       wdId,
@@ -119,8 +145,10 @@ export function parsePantheonCsv(csvText: string): PantheonPersonRow[] {
       hpi: Number.parseFloat(hpiRaw),
       bplaceCountry: fields[columnIndex.bplace_country ?? -1] ?? "",
       dplaceCountry: fields[columnIndex.dplace_country ?? -1] ?? "",
-      birthyear: parseOptionalInt(fields[columnIndex.birthyear ?? -1] ?? ""),
-      deathyear: parseOptionalInt(fields[columnIndex.deathyear ?? -1] ?? ""),
+      birthyear,
+      birthmonth: parseOptionalDateMonth(fields[columnIndex.birthdate ?? -1] ?? "", birthyear),
+      deathyear,
+      deathmonth: parseOptionalDateMonth(fields[columnIndex.deathdate ?? -1] ?? "", deathyear),
     };
   });
 }

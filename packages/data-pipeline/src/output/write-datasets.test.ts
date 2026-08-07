@@ -54,13 +54,23 @@ function taggedDiscovery(overrides: Partial<TaggedDiscovery> = {}): TaggedDiscov
 
 test("buildPeople attaches reignPeriods only for people present in the map, keyed by wdId", () => {
   const rows = [taggedPerson({ wdId: "Q935" }), taggedPerson({ wdId: "Q9682", name: "Charles II" })];
-  const reigns = new Map([["Q9682", [{ startYear: 1660, endYear: 1685 }]]]);
+  const reigns = new Map([["Q9682", [{ start: { year: 1660 }, end: { year: 1685 } }]]]);
 
   const { people } = buildPeople(rows, reigns);
 
   const [q935, q9682] = people;
   assert.equal(q935?.reignPeriods, undefined);
-  assert.deepEqual(q9682?.reignPeriods, [{ startYear: 1660, endYear: 1685 }]);
+  assert.deepEqual(q9682?.reignPeriods, [{ start: { year: 1660 }, end: { year: 1685 } }]);
+});
+
+test("buildPeople builds lifespan.start/end from birthyear/deathyear, with month when present", () => {
+  const { people } = buildPeople([taggedPerson({ birthyear: 1815, birthmonth: 12, deathyear: 1852, deathmonth: 11 })]);
+  assert.deepEqual(people[0]?.lifespan, { start: { year: 1815, month: 12 }, end: { year: 1852, month: 11 } });
+});
+
+test("buildPeople leaves lifespan.end undefined (still alive) when deathyear is absent", () => {
+  const { people } = buildPeople([taggedPerson({ deathyear: undefined })]);
+  assert.equal(people[0]?.lifespan.end, undefined);
 });
 
 test("buildPeople defaults to no reign data when no map is passed", () => {
@@ -106,35 +116,50 @@ test("buildPeople maps fameScore directly from hpi", () => {
   assert.equal(people[0]?.fameScore, 92.5);
 });
 
-test("buildWars only sets endYear for the war type (Q198), even if secondaryYear is present", () => {
+test("buildWars builds a War (with period.end) only for the war type (Q198), even if secondaryYear is present", () => {
   const war = taggedEvent({ id: "Q3", tags: ["Q198"], year: 1861, secondaryYear: 1865 });
   const battle = taggedEvent({ id: "Q4", tags: ["Q178561"], year: 1863, secondaryYear: 1863 });
 
-  const { wars } = buildWars([war, battle]);
+  const { entries } = buildWars([war, battle]);
 
-  const [warEntry, battleEntry] = wars;
-  assert.equal(warEntry?.endYear, 1865);
-  assert.equal(battleEntry?.endYear, undefined);
+  const [warEntry, battleEntry] = entries;
+  assert.ok(warEntry && "period" in warEntry);
+  assert.deepEqual(warEntry.period, { start: { year: 1861 }, end: { year: 1865 } });
+  assert.ok(battleEntry && "at" in battleEntry);
+  assert.deepEqual(battleEntry.at, { year: 1863 });
+});
+
+test("buildWars carries month through to period.start/end and at when the row has one", () => {
+  const war = taggedEvent({ id: "Q3", tags: ["Q198"], year: 1950, month: 6, secondaryYear: 1953, secondaryMonth: 7 });
+  const battle = taggedEvent({ id: "Q4", tags: ["Q178561"], year: 1863, month: 7 });
+
+  const { entries } = buildWars([war, battle]);
+
+  const [warEntry, battleEntry] = entries;
+  assert.ok(warEntry && "period" in warEntry);
+  assert.deepEqual(warEntry.period, { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } });
+  assert.ok(battleEntry && "at" in battleEntry);
+  assert.deepEqual(battleEntry.at, { year: 1863, month: 7 });
 });
 
 test("buildWars passes through partOfLabel as partOfWarName when present", () => {
   const battle = taggedEvent({ partOfLabel: "American Civil War" });
-  const { wars } = buildWars([battle]);
-  assert.equal(wars[0]?.partOfWarName, "American Civil War");
+  const { entries } = buildWars([battle]);
+  assert.equal(entries[0]?.partOfWarName, "American Civil War");
 });
 
 test("buildWars leaves partOfWarName undefined when there is no partOfLabel", () => {
-  const { wars } = buildWars([taggedEvent()]);
-  assert.equal(wars[0]?.partOfWarName, undefined);
+  const { entries } = buildWars([taggedEvent()]);
+  assert.equal(entries[0]?.partOfWarName, undefined);
 });
 
-test("buildDiscoveries passes through category, regionTags, and startYear", () => {
+test("buildDiscoveries passes through category, regionTags, and at.year", () => {
   const { discoveries } = buildDiscoveries([taggedDiscovery()]);
 
   assert.deepEqual(discoveries[0], {
     id: "Q5",
     name: "Penicillin",
-    startYear: 1928,
+    at: { year: 1928 },
     category: "medicine-health",
     regionTags: ["europe"],
     fameScore: 80,

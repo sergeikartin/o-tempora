@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
-import type { War } from '../../shared/types';
+import type { WarsAndConflictsEntry } from '../../shared/types';
 import { assignRows, mapWars } from './map-to-items';
 import {
   CATEGORY_COLORS,
@@ -35,7 +35,7 @@ interface PointLayout {
 }
 
 interface WarsLaneProps {
-  wars: War[];
+  wars: WarsAndConflictsEntry[];
   xScale: d3.ScaleLinear<number, number>;
 }
 

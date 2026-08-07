@@ -1,15 +1,14 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, afterEach } from 'vitest';
 import { TimelineCanvas } from './TimelineCanvas';
-import type { Discovery, Person, War } from '../../shared/types';
+import type { Discovery, Person, WarsAndConflictsEntry } from '../../shared/types';
 
 afterEach(cleanup);
 
 const aristotle: Person = {
   id: 'Q868',
   name: 'Aristotle',
-  startYear: -383,
-  endYear: -321,
+  lifespan: { start: { year: -383 }, end: { year: -321 } },
   occupationDomain: 'humanities',
   regionTags: [],
   fameScore: 317,
@@ -19,12 +18,11 @@ const aristotle: Person = {
 
 const fixturePeople: Person[] = [aristotle];
 
-const fixtureWars: War[] = [
+const fixtureWars: WarsAndConflictsEntry[] = [
   {
     id: 'Q8663',
     name: 'Korean War',
-    startYear: 1950,
-    endYear: 1953,
+    period: { start: { year: 1950 }, end: { year: 1953 } },
     category: 'war',
     regionTags: ['east-asia'],
     fameScore: 143,
@@ -37,7 +35,7 @@ const fixtureDiscoveries: Discovery[] = [
   {
     id: 'Q2736',
     name: 'association football',
-    startYear: 1863,
+    at: { year: 1863 },
     category: 'everyday-technology',
     regionTags: [],
     fameScore: 296,

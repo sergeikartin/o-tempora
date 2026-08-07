@@ -2,15 +2,14 @@ import { cleanup, render } from '@testing-library/react';
 import { test, expect, afterEach } from 'vitest';
 import { WarsLane } from './WarsLane';
 import { buildXScale } from './options';
-import type { War } from '../../shared/types';
+import type { War, WarEvent } from '../../shared/types';
 
 afterEach(cleanup);
 
 const koreanWar: War = {
   id: 'Q8214',
   name: 'Korean War',
-  startYear: 1950,
-  endYear: 1953,
+  period: { start: { year: 1950 }, end: { year: 1953 } },
   category: 'war',
   regionTags: ['east-asia'],
   fameScore: 350,
@@ -18,10 +17,10 @@ const koreanWar: War = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
 };
 
-const battleOfMegiddo: War = {
+const battleOfMegiddo: WarEvent = {
   id: 'Q217799',
   name: 'Battle of Megiddo',
-  startYear: -1457,
+  at: { year: -1457 },
   category: 'war',
   regionTags: ['middle-east'],
   fameScore: 120,
@@ -29,7 +28,7 @@ const battleOfMegiddo: War = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
 };
 
-test('renders a range line for a war with an endYear', () => {
+test('renders a range line for a War (a Period)', () => {
   const { scale } = buildXScale(2);
   const { container } = render(<WarsLane wars={[koreanWar]} xScale={scale} />);
 
@@ -38,7 +37,7 @@ test('renders a range line for a war with an endYear', () => {
   expect(container.querySelector('.d3-range-name')?.textContent).toBe('Korean War');
 });
 
-test('renders a point marker for an entry without an endYear', () => {
+test('renders a point marker for a WarEvent (a PointInTime)', () => {
   const { scale } = buildXScale(2);
   const { container } = render(<WarsLane wars={[battleOfMegiddo]} xScale={scale} />);
 
@@ -55,7 +54,7 @@ test('places two non-overlapping entries in the same row, two overlapping in dif
   );
   expect(new Set(positions).size).toBe(1);
 
-  const overlappingBattle: War = { ...battleOfMegiddo, id: 'Q2', startYear: 1951 };
+  const overlappingBattle: WarEvent = { ...battleOfMegiddo, id: 'Q2', at: { year: 1951 } };
   const { container: differentRows } = render(<WarsLane wars={[koreanWar, overlappingBattle]} xScale={scale} />);
   const overlappingPositions = Array.from(differentRows.querySelectorAll('.d3-range, .d3-point-group')).map((el) =>
     el.getAttribute('data-row'),

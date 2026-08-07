@@ -1,13 +1,12 @@
 import { test, expect } from 'vitest';
 import { assignRows, filterByFameScore, mapDiscoveries, mapPeople, mapWars } from './map-to-items';
 import { today } from '../../shared/lib/dates';
-import type { Discovery, Person, War } from '../../shared/types';
+import type { Discovery, Person, War, WarEvent } from '../../shared/types';
 
 const person: Person = {
   id: 'Q868',
   name: 'Aristotle',
-  startYear: -383,
-  endYear: -321,
+  lifespan: { start: { year: -383 }, end: { year: -321 } },
   occupationDomain: 'humanities',
   regionTags: [],
   fameScore: 317,
@@ -19,8 +18,7 @@ const personWithoutDeathYear: Person = {
   ...person,
   id: 'Q40939',
   name: 'Hesiod',
-  startYear: -750,
-  endYear: undefined,
+  lifespan: { start: { year: -750 }, end: undefined },
 };
 
 test('mapPeople maps a person with both years to an item with matching start/end', () => {
@@ -32,7 +30,7 @@ test('mapPeople maps a person with both years to an item with matching start/end
   expect(item?.occupationDomain).toBe('humanities');
 });
 
-test('mapPeople falls back to today when endYear is missing — still alive, not a collapsed bar', () => {
+test('mapPeople falls back to today when lifespan.end is missing — still alive, not a collapsed bar', () => {
   const [item] = mapPeople([personWithoutDeathYear]);
   expect(item?.endYear).toBe(today().year);
 });
@@ -47,6 +45,17 @@ test('mapPeople tooltip says "present" (not a formatted year) for an open-ended 
   expect(item?.tooltip).toBe('Hesiod: 751 BCE–present');
 });
 
+test('mapPeople includes the month in the tooltip when lifespan.start/end have one', () => {
+  const personWithMonths: Person = {
+    ...person,
+    id: 'Q1339',
+    name: 'William Shakespeare',
+    lifespan: { start: { year: 1564, month: 4 }, end: { year: 1616, month: 4 } },
+  };
+  const [item] = mapPeople([personWithMonths]);
+  expect(item?.tooltip).toBe('William Shakespeare: April 1564–April 1616');
+});
+
 test('mapPeople gives a person with no reignPeriods an empty reignPeriods list', () => {
   const [item] = mapPeople([person]);
   expect(item?.reignPeriods).toEqual([]);
@@ -56,11 +65,10 @@ const ruler: Person = {
   ...person,
   id: 'Q1048',
   name: 'Julius Caesar',
-  startYear: -100,
-  endYear: -44,
+  lifespan: { start: { year: -100 }, end: { year: -44 } },
   reignPeriods: [
-    { startYear: -49, endYear: -44, title: 'Dictator' },
-    { startYear: -60, endYear: -59 },
+    { start: { year: -49 }, end: { year: -44 }, title: 'Dictator' },
+    { start: { year: -60 }, end: { year: -59 } },
   ],
 };
 
@@ -74,23 +82,26 @@ test('mapPeople maps each reignPeriod to a stripe with matching bounds and a too
   expect(second?.tooltip).toBe('Reign: 61 BCE–60 BCE');
 });
 
-test('mapPeople falls back to the person\'s endYear when a reignPeriod has no endYear', () => {
-  const rulerWithOpenReign: Person = { ...ruler, reignPeriods: [{ startYear: -49, endYear: undefined }] };
+test('mapPeople falls back to the person\'s lifespan.end when a reignPeriod has no end', () => {
+  const rulerWithOpenReign: Person = { ...ruler, reignPeriods: [{ start: { year: -49 }, end: undefined }] };
   const [item] = mapPeople([rulerWithOpenReign]);
   expect(item?.reignPeriods[0]?.endYear).toBe(-44);
 });
 
-test('mapPeople reign tooltip says "(end unknown)" (not a formatted year) when the source reignPeriod has no endYear', () => {
-  const rulerWithOpenReign: Person = { ...ruler, reignPeriods: [{ startYear: -49, endYear: undefined, title: 'Dictator' }] };
+test('mapPeople reign tooltip says "(end unknown)" (not a formatted year) when the source reignPeriod has no end', () => {
+  const rulerWithOpenReign: Person = {
+    ...ruler,
+    reignPeriods: [{ start: { year: -49 }, end: undefined, title: 'Dictator' }],
+  };
   const [item] = mapPeople([rulerWithOpenReign]);
   expect(item?.reignPeriods[0]?.tooltip).toBe('Dictator: 50 BCE–(end unknown)');
 });
 
-test('mapPeople falls back to today for a reignPeriod when both its endYear and the person\'s endYear are missing', () => {
+test('mapPeople falls back to today for a reignPeriod when both its end and the person\'s lifespan.end are missing', () => {
   const rulerWithNoBounds: Person = {
     ...ruler,
-    endYear: undefined,
-    reignPeriods: [{ startYear: -49, endYear: undefined }],
+    lifespan: { start: { year: -100 }, end: undefined },
+    reignPeriods: [{ start: { year: -49 }, end: undefined }],
   };
   const [item] = mapPeople([rulerWithNoBounds]);
   expect(item?.reignPeriods[0]?.startYear).toBe(-49);
@@ -100,8 +111,7 @@ test('mapPeople falls back to today for a reignPeriod when both its endYear and 
 const warWithEndYear: War = {
   id: 'Q8214',
   name: 'Korean War',
-  startYear: 1950,
-  endYear: 1953,
+  period: { start: { year: 1950 }, end: { year: 1953 } },
   category: 'war',
   regionTags: ['east-asia'],
   fameScore: 350,
@@ -113,14 +123,13 @@ const warZeroWidth: War = {
   ...warWithEndYear,
   id: 'Q166376',
   name: 'Six-Day War',
-  startYear: 1967,
-  endYear: 1967,
+  period: { start: { year: 1967 }, end: { year: 1967 } },
 };
 
-const battleWithParent: War = {
+const battleWithParent: WarEvent = {
   id: 'Q46341',
   name: 'Battle of Gettysburg',
-  startYear: 1863,
+  at: { year: 1863 },
   partOfWarName: 'American Civil War',
   category: 'war',
   regionTags: ['americas'],
@@ -129,15 +138,15 @@ const battleWithParent: War = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Gettysburg',
 };
 
-const battleWithoutParent: War = {
+const battleWithoutParent: WarEvent = {
   ...battleWithParent,
   id: 'Q217799',
   name: 'Battle of Megiddo',
-  startYear: -1457,
+  at: { year: -1457 },
   partOfWarName: undefined,
 };
 
-test('mapWars maps a war with an endYear to a range item (isPoint: false)', () => {
+test('mapWars maps a War to a range item (isPoint: false)', () => {
   const [item] = mapWars([warWithEndYear]);
   expect(item?.isPoint).toBe(false);
   expect(item?.startYear).toBe(1950);
@@ -145,14 +154,14 @@ test('mapWars maps a war with an endYear to a range item (isPoint: false)', () =
   expect(item?.category).toBe('war');
 });
 
-test('mapWars widens a zero-width war range (startYear === endYear) by one year', () => {
+test('mapWars widens a zero-width war range (start === end) by one year', () => {
   const [item] = mapWars([warZeroWidth]);
   expect(item?.isPoint).toBe(false);
   expect(item?.startYear).toBe(1967);
   expect(item?.endYear).toBe(1968);
 });
 
-test('mapWars maps an entry without an endYear to a point item', () => {
+test('mapWars maps a WarEvent to a point item', () => {
   const [item] = mapWars([battleWithoutParent]);
   expect(item?.isPoint).toBe(true);
   expect(item?.startYear).toBe(-1457);
@@ -172,7 +181,7 @@ test('mapWars falls back to the war name alone when partOfWarName is absent', ()
 const discovery: Discovery = {
   id: 'Q11042',
   name: 'Printing press',
-  startYear: 1440,
+  at: { year: 1440 },
   category: 'communication',
   regionTags: ['europe'],
   fameScore: 386,
@@ -180,7 +189,7 @@ const discovery: Discovery = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
 };
 
-test('mapDiscoveries maps a discovery to a point item at its startYear', () => {
+test('mapDiscoveries maps a discovery to a point item at its at.year', () => {
   const [item] = mapDiscoveries([discovery]);
   expect(item?.id).toBe(discovery.id);
   expect(item?.name).toBe('Printing press');
