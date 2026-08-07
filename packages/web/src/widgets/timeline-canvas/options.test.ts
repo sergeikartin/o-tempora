@@ -7,10 +7,11 @@ import {
   zoomIn,
   zoomOut,
   CATEGORY_COLORS,
+  DISCOVERY_CATEGORY_COLORS,
 } from './options';
 import { today } from '../../shared/lib/dates';
 import { PAN_MIN_DATE, DOMAIN_COLORS } from '../../shared/config';
-import { OCCUPATION_DOMAINS, CATEGORIES } from '../../shared/types';
+import { OCCUPATION_DOMAINS, CATEGORIES, DISCOVERY_CATEGORIES } from '../../shared/types';
 
 test('buildXScale domains from PAN_MIN_DATE to a live today() read', () => {
   const { scale } = buildXScale(5);
@@ -72,6 +73,13 @@ test('DOMAIN_COLORS has one entry per OccupationDomain, no duplicate hex values'
 test('CATEGORY_COLORS has one entry per Category, no duplicate hex values', () => {
   const values = CATEGORIES.map((category) => CATEGORY_COLORS[category]);
   expect(values).toHaveLength(CATEGORIES.length);
+  expect(values.every(Boolean)).toBe(true);
+  expect(new Set(values).size).toBe(values.length);
+});
+
+test('DISCOVERY_CATEGORY_COLORS has one entry per DiscoveryCategory, no duplicate hex values', () => {
+  const values = DISCOVERY_CATEGORIES.map((category) => DISCOVERY_CATEGORY_COLORS[category]);
+  expect(values).toHaveLength(DISCOVERY_CATEGORIES.length);
   expect(values.every(Boolean)).toBe(true);
   expect(new Set(values).size).toBe(values.length);
 });

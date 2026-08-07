@@ -7,7 +7,7 @@ import {
   DEFAULT_VIEWPORT_END,
   PAN_MIN_DATE,
 } from '../../shared/config';
-import type { Category } from '../../shared/types';
+import type { Category, DiscoveryCategory } from '../../shared/types';
 
 // Row/bar layout shared by every lane's D3 rendering.
 export const BAR_HEIGHT = 16;
@@ -103,17 +103,35 @@ export function markerLaneHeight(rowCount: number): number {
 }
 
 // Mirrors design-tokens.md's Occupation Category Palette — Wars & Conflicts
-// and Events & Inventions both key their flat fill off `category`, unlike
-// People's `occupationDomain` above. Same provisional-inlining reasoning.
+// keys its flat fill off `category`, unlike People's `occupationDomain`
+// above. Same provisional-inlining reasoning.
 export const CATEGORY_COLORS: Record<Category, string> = {
   science: '#7FA6C4',
   politics: '#D8A34D',
   art: '#C98A9A',
   philosophy: '#8CAE8A',
   war: '#B06156',
-  invention: '#6FA8A0',
   exploration: '#D08A54',
   religion: '#A891C4',
+};
+
+// Events & Inventions' own palette, keyed on DiscoveryCategory (disjoint
+// from Wars' Category above). Locked with the user via
+// .scratch/events-inventions-curated-source/issues/01-discovery-category-color-palette.md:
+// hue-optimized against all 15 existing People/Domain + Wars/Category
+// colors (min ~11° hue separation from everything on screen), matched to
+// the same pastel S/L family as the rest of the app.
+export const DISCOVERY_CATEGORY_COLORS: Record<DiscoveryCategory, string> = {
+  'energy-industry': '#C9BF5E',
+  'food-agriculture': '#B1C987',
+  infrastructure: '#83B95B',
+  'medicine-health': '#72B67E',
+  'science-theory': '#70BCC2',
+  communication: '#8099C6',
+  transportation: '#8D82C4',
+  'society-administration': '#9D6DB0',
+  'everyday-technology': '#C893C8',
+  exploration: '#C072AB',
 };
 
 // Tentative pick per docs/active-context.md's Next Up (mirrors

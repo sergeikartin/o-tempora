@@ -1,7 +1,8 @@
 import { fetchPantheon } from "./fetch-pantheon.js";
 import { fetchDescriptions } from "./fetch-descriptions.js";
 import { fetchReigns } from "./fetch-reigns.js";
-import { fetchEvents } from "./fetch-events.js";
+import { fetchHistoricalEvents } from "./fetch-historical-events.js";
+import { fetchEventsEnrichment } from "./fetch-events-enrichment.js";
 
 async function main(): Promise<void> {
   await fetchPantheon();
@@ -10,7 +11,10 @@ async function main(): Promise<void> {
   // after fetchPantheon().
   await fetchDescriptions();
   await fetchReigns();
-  await fetchEvents();
+  await fetchHistoricalEvents();
+  // Reads the checked-in curated events list, independent of the above —
+  // ordered last just to keep the log output grouped by lane.
+  await fetchEventsEnrichment();
 }
 
 main().catch((error: unknown) => {

@@ -1,4 +1,4 @@
-import type { Category, Region } from "@same-sky/shared-types";
+import type { Category, DiscoveryCategory, Region } from "@same-sky/shared-types";
 import type { GroupedRow } from "./group-rows.js";
 import { EVENT_TYPE_CATEGORIES } from "./event-type-categories.js";
 import { REGION_CATEGORIES } from "./region-categories.js";
@@ -8,9 +8,14 @@ export interface EventTags {
   regionTags: Region[];
 }
 
-function regionTagsFor(row: GroupedRow): Region[] {
+export interface DiscoveryTags {
+  category: DiscoveryCategory;
+  regionTags: Region[];
+}
+
+function regionTagsFor(countries: string[]): Region[] {
   const regionTags: Region[] = [];
-  for (const countryId of row.countries) {
+  for (const countryId of countries) {
     const mapped = REGION_CATEGORIES[countryId];
     if (mapped && !regionTags.includes(mapped)) regionTags.push(mapped);
   }
@@ -28,11 +33,12 @@ export function tagHistoricalEvent(row: GroupedRow): EventTags {
       break;
     }
   }
-  return { category, regionTags: regionTagsFor(row) };
+  return { category, regionTags: regionTagsFor(row.countries) };
 }
 
-// Inventions have no ?type field to key off (see fetch/queries/inventions.ts)
-// — every row gets "invention" unconditionally, no lookup table needed.
-export function tagInvention(row: GroupedRow): EventTags {
-  return { category: "invention", regionTags: regionTagsFor(row) };
+// Curated events (data/raw/events-curated.raw.json) are already hand-
+// classified into DiscoveryCategory — no lookup table needed, unlike
+// tagHistoricalEvent's ?type-claim mapping; category just passes through.
+export function tagCuratedDiscovery(category: DiscoveryCategory, countries: string[]): DiscoveryTags {
+  return { category, regionTags: regionTagsFor(countries) };
 }

@@ -1,5 +1,5 @@
-import type { Category, Person, War, Discovery, ReignPeriod } from "@same-sky/shared-types";
-import type { TaggedPerson, TaggedEvent } from "../transform/index.js";
+import type { Category, DiscoveryCategory, Person, War, Discovery, ReignPeriod } from "@same-sky/shared-types";
+import type { TaggedPerson, TaggedEvent, TaggedDiscovery } from "../transform/index.js";
 import { WAR_TYPE_QID } from "../fetch/queries/historical-events.js";
 
 export interface DropReport {
@@ -11,18 +11,23 @@ function record(reasons: Record<string, number>, reason: string): void {
   reasons[reason] = (reasons[reason] ?? 0) + 1;
 }
 
-interface ValidatedEventRow {
+interface ValidatedEventRow<C> {
   name: string;
   article: string;
   description: string;
   year: number;
-  category: Category;
+  category: C;
 }
 
 // Shared by buildWars/buildDiscoveries — both lanes require the same five
 // fields before an entry is worth keeping; only what they build from a
-// validated row (endYear/partOfWarName vs. not) differs.
-function validateEventRow(row: TaggedEvent, reasons: Record<string, number>): ValidatedEventRow | undefined {
+// validated row (endYear/partOfWarName vs. not) differs, and each lane has
+// its own category type (Category for Wars, DiscoveryCategory for
+// Discoveries — see packages/shared-types), hence the type param.
+function validateEventRow<C>(
+  row: { label?: string; article?: string; description?: string; year?: number; category?: C },
+  reasons: Record<string, number>,
+): ValidatedEventRow<C> | undefined {
   if (!row.label) {
     record(reasons, "missing name");
     return undefined;
@@ -111,7 +116,7 @@ export function buildWars(rows: TaggedEvent[]): { wars: War[]; report: DropRepor
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    const validated = validateEventRow(row, reasons);
+    const validated = validateEventRow<Category>(row, reasons);
     if (!validated) continue;
 
     wars.push({
@@ -136,13 +141,21 @@ export function buildWars(rows: TaggedEvent[]): { wars: War[]; report: DropRepor
   return { wars, report: { dropped: rows.length - wars.length, reasons } };
 }
 
-export function buildDiscoveries(rows: TaggedEvent[]): { discoveries: Discovery[]; report: DropReport } {
+// sitelinks<=0 means fetch-events-enrichment.ts's SPARQL pass couldn't
+// resolve this curated QID (see transformDiscoveries's `?? 0` coercion) —
+// dropped here rather than treated as a genuinely-zero-sitelink item, per
+// the map's enrichment-failure-handling decision.
+export function buildDiscoveries(rows: TaggedDiscovery[]): { discoveries: Discovery[]; report: DropReport } {
   const discoveries: Discovery[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    const validated = validateEventRow(row, reasons);
+    const validated = validateEventRow<DiscoveryCategory>(row, reasons);
     if (!validated) continue;
+    if (row.sitelinks <= 0) {
+      record(reasons, "missing sitelinks (enrichment failed)");
+      continue;
+    }
 
     discoveries.push({
       id: row.id,

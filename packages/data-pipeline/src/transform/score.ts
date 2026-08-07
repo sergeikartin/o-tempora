@@ -1,28 +1,16 @@
 // Fame score is the sitelink count, unmodified — no normalization, no
 // log-scaling, no blending with other signals. Named tiers are expressed as
-// sitelink floors, one table per lane: Discoveries & Inventions fame scores
-// run far higher than Wars & Conflicts (max ~386 vs. ~193 in the published
-// data), so a shared floor left Discoveries much denser than Wars at the
-// same nominal tier name — see MIN_SITELINKS in
-// fetch/queries/min-sitelinks.ts, which must stay <= the lowest `specialist`
-// floor across both tables (currently Wars', at 30) since fetching below
-// that floor is wasted. Within a table, each tier is a `fameScore >=`
-// cutoff on the same field, so general-public is a subset of educated is a
-// subset of specialist automatically — no re-ranking needed when the tier
-// changes, which is what lets the frontend gate density purely by
-// client-side fameScore filtering once zoom picks the active tier
-// (packages/web/docs/adr/0002-fame-tier-drives-zoom.md). (People uses
-// FAME_TIER_MIN_HPI instead, since it's no longer Wikidata-sourced.)
+// sitelink floors — see MIN_SITELINKS in fetch/queries/min-sitelinks.ts,
+// which must stay <= this table's `specialist` floor (30) since fetching
+// below that floor is wasted. Each tier is a `fameScore >=` cutoff on the
+// same field, so general-public is a subset of educated is a subset of
+// specialist automatically. (People uses FAME_TIER_MIN_HPI instead, since
+// it's no longer Wikidata-sourced; Discoveries has no tier table at all —
+// see rankDiscoveriesBySitelinks below.)
 export const FAME_TIER_MIN_SITELINKS_WARS = {
   generalPublic: 100,
   educated: 50,
   specialist: 30,
-} as const;
-
-export const FAME_TIER_MIN_SITELINKS_DISCOVERIES = {
-  generalPublic: 200,
-  educated: 100,
-  specialist: 50,
 } as const;
 
 export type FameTier = keyof typeof FAME_TIER_MIN_SITELINKS_WARS;
@@ -40,10 +28,15 @@ export function scoreAndRank<T extends { sitelinks: number }>(rows: T[]): T[] {
   return filterAndRankBySitelinks(rows, FAME_TIER_MIN_SITELINKS_WARS.specialist);
 }
 
-// Same specialist-floor reasoning as scoreAndRank, using Discoveries' own
-// (higher) tier table.
-export function scoreAndRankDiscoveries<T extends { sitelinks: number }>(rows: T[]): T[] {
-  return filterAndRankBySitelinks(rows, FAME_TIER_MIN_SITELINKS_DISCOVERIES.specialist);
+// Discoveries has no specialist-floor filter, unlike scoreAndRank — its
+// source is the ~121-item hand-curated list (data/raw/events-curated.raw.json),
+// not a huge raw Wikidata corpus that needs floor-filtering down to a
+// manageable size, so every row that clears Output's enrichment-failure
+// drop (write-datasets.ts's buildDiscoveries) is kept; the sidebar's
+// user-facing fame-score floor (FAME_SCORE_BOUNDS.discoveries) is this
+// lane's only density control (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md).
+export function rankDiscoveriesBySitelinks<T extends { sitelinks: number }>(rows: T[]): T[] {
+  return [...rows].sort((a, b) => b.sitelinks - a.sitelinks);
 }
 
 // People-lane fame tiers, bound to Pantheon's HPI (0-100 scale) instead of

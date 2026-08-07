@@ -2,10 +2,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   scoreAndRank,
-  scoreAndRankDiscoveries,
+  rankDiscoveriesBySitelinks,
   scoreAndRankByHpi,
   FAME_TIER_MIN_SITELINKS_WARS,
-  FAME_TIER_MIN_SITELINKS_DISCOVERIES,
   FAME_TIER_MIN_HPI,
 } from "./score.js";
 
@@ -47,33 +46,18 @@ test("tier nesting holds: specialist output is a strict superset of what general
   assert.ok(educated.every((row) => specialist.includes(row)));
 });
 
-test("scoreAndRankDiscoveries drops rows below Discoveries' (higher) specialist floor", () => {
-  const rows = [{ sitelinks: 49 }, { sitelinks: 50 }, { sitelinks: 10 }];
-  const result = scoreAndRankDiscoveries(rows);
+test("rankDiscoveriesBySitelinks sorts descending by sitelinks, with no floor", () => {
+  const rows = [{ sitelinks: 100 }, { sitelinks: 500 }, { sitelinks: 0 }, { sitelinks: 5 }];
+  const result = rankDiscoveriesBySitelinks(rows);
   assert.deepEqual(
     result.map((row) => row.sitelinks),
-    [50],
+    [500, 100, 5, 0],
   );
 });
 
-test("scoreAndRankDiscoveries tier nesting holds against Discoveries' own table", () => {
-  const rows = [
-    { sitelinks: 50 },
-    { sitelinks: 99 },
-    { sitelinks: 100 },
-    { sitelinks: 199 },
-    { sitelinks: 200 },
-    { sitelinks: 400 },
-  ];
-  const specialist = scoreAndRankDiscoveries(rows);
-  const generalPublic = rows.filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS_DISCOVERIES.generalPublic);
-  const educated = rows.filter((row) => row.sitelinks >= FAME_TIER_MIN_SITELINKS_DISCOVERIES.educated);
-
-  assert.equal(generalPublic.length, 2);
-  assert.equal(educated.length, 4);
-  assert.equal(specialist.length, 6);
-  assert.ok(generalPublic.every((row) => educated.includes(row)));
-  assert.ok(educated.every((row) => specialist.includes(row)));
+test("rankDiscoveriesBySitelinks keeps every row, unlike scoreAndRank's floor filter", () => {
+  const rows = [{ sitelinks: 0 }, { sitelinks: 1 }];
+  assert.equal(rankDiscoveriesBySitelinks(rows).length, 2);
 });
 
 test("scoreAndRankByHpi drops rows below the specialist floor", () => {
