@@ -26,10 +26,21 @@ interface DecadeLabel {
   isCentury: boolean;
 }
 
+// startYear/endYear come in pre-buffered past the viewport edge (see
+// TimelineCanvas's VIEWPORT_BUFFER_RATIO) and d3 scales extrapolate freely
+// past their domain, so near either end of the timeline the buffered range
+// can reach years the scale was never built for — e.g. past today on the
+// right. Clamping to the scale's own domain keeps every label's x inside
+// [0, totalWidth]; nothing here clips horizontal overflow, so an
+// unclamped label would silently grow the scroll container's scrollWidth,
+// letting a user scroll past the timeline's real bounds into blank space.
 function decadeLabelsInRange(startYear: number, endYear: number, xScale: d3.ScaleLinear<number, number>): DecadeLabel[] {
-  const first = Math.ceil(startYear / DECADE_STEP_YEARS) * DECADE_STEP_YEARS;
+  const [domainStart, domainEnd] = xScale.domain();
+  const clampedStart = Math.max(startYear, domainStart ?? startYear);
+  const clampedEnd = Math.min(endYear, domainEnd ?? endYear);
+  const first = Math.ceil(clampedStart / DECADE_STEP_YEARS) * DECADE_STEP_YEARS;
   const labels: DecadeLabel[] = [];
-  for (let year = first; year <= endYear; year += DECADE_STEP_YEARS) {
+  for (let year = first; year <= clampedEnd; year += DECADE_STEP_YEARS) {
     labels.push({ year, x: xScale(year), isCentury: year % CENTURY_STEP_YEARS === 0 });
   }
   return labels;

@@ -109,6 +109,15 @@ export function buildPeople(
       record(reasons, "missing birth year");
       continue;
     }
+    if (row.deathyear === undefined && !row.alive) {
+      // A missing deathyear means "ongoing" per Period's contract (see
+      // shared-types) — true only for a confirmed-alive person. Pantheon
+      // also omits deathyear for people whose death date is simply
+      // unrecorded (e.g. Jack the Ripper, never identified), which isn't
+      // "ongoing" and shouldn't render through to today.
+      record(reasons, "no deathyear and not confirmed alive");
+      continue;
+    }
     if (
       row.deathyear !== undefined &&
       (row.deathyear < row.birthyear || row.deathyear - row.birthyear > MAX_PLAUSIBLE_LIFESPAN_YEARS)

@@ -40,6 +40,13 @@ export interface PantheonPersonRow {
   birthmonth?: number;
   deathyear?: number;
   deathmonth?: number;
+  // Pantheon's own alive/dead flag — the only source signal distinguishing
+  // a genuinely still-living person (no deathyear because there isn't one
+  // yet) from one whose death date is simply unrecorded (no deathyear
+  // because Pantheon never captured it, e.g. an unidentified historical
+  // figure). Output relies on this rather than deathyear presence alone
+  // when deciding whether "no end date" means "ongoing."
+  alive: boolean;
 }
 
 const EXPECTED_HEADER = [
@@ -149,6 +156,7 @@ export function parsePantheonCsv(csvText: string): PantheonPersonRow[] {
       birthmonth: parseOptionalDateMonth(fields[columnIndex.birthdate ?? -1] ?? "", birthyear),
       deathyear,
       deathmonth: parseOptionalDateMonth(fields[columnIndex.deathdate ?? -1] ?? "", deathyear),
+      alive: (fields[columnIndex.alive ?? -1] ?? "").toUpperCase() === "TRUE",
     };
   });
 }

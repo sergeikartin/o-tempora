@@ -98,6 +98,24 @@ test('labels stay visible at spacing above the threshold', () => {
   expect(labels).toContain(formatYearLike(1810));
 });
 
+test('labels never render past the scale\'s own domain, even when visibleEndYear is buffered past it', () => {
+  // TimelineCanvas buffers visibleEndYear past the viewport edge for smooth
+  // tick pop-in (VIEWPORT_BUFFER_RATIO) — d3 scales extrapolate past their
+  // domain by default, so near the timeline's real right edge that buffered
+  // year can legitimately exceed the domain's max (e.g. today's year). A
+  // label positioned past the domain max sits past the scrollable content's
+  // real width, and since nothing clips horizontal overflow here, it
+  // silently grows the ancestor scroll container's scrollWidth — letting a
+  // user scroll past "today" into blank space.
+  const { container } = render(
+    <YearAxis xScale={scaleFor(1000, 2026, 20000)} visibleStartYear={1950} visibleEndYear={2040} />,
+  );
+
+  const labels = Array.from(container.querySelectorAll('.year-axis-label')).map((el) => el.textContent);
+  expect(labels).not.toContain(formatYearLike(2030));
+  expect(labels).not.toContain(formatYearLike(2040));
+});
+
 test('the axis height fits the ruler bar plus the label row', () => {
   const { container } = render(
     <YearAxis xScale={scaleFor(1000, 3000, 20000)} visibleStartYear={1750} visibleEndYear={1950} />,
