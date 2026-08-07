@@ -30,17 +30,28 @@
 // Needs the full p:/ps:/pq: statement model, not the wdt: truthy shortcut —
 // P580/P582 here are qualifiers on the P39 statement itself (e.g. "held
 // this specific position from X to Y"), not top-level claims on the person.
+// reignStart/reignEnd themselves are read via pqv: (the qualifier's value
+// node) rather than pq:'s truthy shortcut, so wikibase:timePrecision is
+// available alongside each date — a "01" month/day is otherwise
+// indistinguishable from Wikidata's own placeholder for "unknown" at year
+// precision (same pattern historical-events.ts uses for P585/P580/P582).
 export function buildReignsQuery(personIds: string[]): string {
   const values = personIds.map((id) => `wd:${id}`).join(" ");
   return `
-SELECT ?person ?reignStart ?reignEnd ?positionLabel WHERE {
+SELECT ?person ?reignStart ?reignStartPrecision ?reignEnd ?reignEndPrecision ?positionLabel WHERE {
   VALUES ?person { ${values} }
   VALUES ?leadershipType { wd:Q48352 wd:Q2285706 }
   ?person p:P39 ?statement .
   ?statement ps:P39 ?position .
   ?position wdt:P279* ?leadershipType .
-  ?statement pq:P580 ?reignStart .
-  OPTIONAL { ?statement pq:P582 ?reignEnd . }
+  ?statement pqv:P580 ?reignStartValue .
+  ?reignStartValue wikibase:timeValue ?reignStart ;
+                    wikibase:timePrecision ?reignStartPrecision .
+  OPTIONAL {
+    ?statement pqv:P582 ?reignEndValue .
+    ?reignEndValue wikibase:timeValue ?reignEnd ;
+                    wikibase:timePrecision ?reignEndPrecision .
+  }
   OPTIONAL { ?position rdfs:label ?positionLabel . FILTER(LANG(?positionLabel) = "en") }
   FILTER(!BOUND(?positionLabel) || !CONTAINS(LCASE(?positionLabel), "emeritus"))
 }

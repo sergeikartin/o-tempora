@@ -94,9 +94,29 @@ test("parses a normal row into the consumed fields", () => {
       bplaceCountry: "United Kingdom",
       dplaceCountry: "United Kingdom",
       birthyear: 1643,
+      birthmonth: 1,
       deathyear: 1726,
+      deathmonth: undefined,
     },
   ]);
+});
+
+test("leaves deathmonth undefined when deathdate's own year (1727) disagrees with deathyear (1726) — Pantheon's two columns occasionally disagree", () => {
+  const rows = parsePantheonCsv(`${HEADER}\n${row()}`);
+  assert.equal(rows[0]?.deathmonth, undefined);
+});
+
+test("parses a BC birthdate (' BC' suffix, not a leading minus sign) into a negative-year-consistent month", () => {
+  const rows = parsePantheonCsv(
+    `${HEADER}\n${row({ id: "3395", wd_id: '"Q9441"', name: '"Gautama Buddha"', birthdate: '"0566-04-08 BC"', birthyear: "-566", deathdate: "", deathyear: "-452" })}`,
+  );
+  assert.equal(rows[0]?.birthmonth, 4);
+});
+
+test("leaves birthmonth/deathmonth undefined when the date column is empty", () => {
+  const rows = parsePantheonCsv(`${HEADER}\n${row({ birthdate: "", deathdate: "" })}`);
+  assert.equal(rows[0]?.birthmonth, undefined);
+  assert.equal(rows[0]?.deathmonth, undefined);
 });
 
 test("parses a negative birthyear/deathyear (BCE) as a negative integer", () => {

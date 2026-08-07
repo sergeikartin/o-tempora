@@ -35,17 +35,38 @@ export function buildHistoricalEventsQuery(
   const minDateTime = formatYearAsSparqlDateTime(minYear);
   const maxDateTime = formatYearAsSparqlDateTime(maxYearExclusive);
   return `
-SELECT ?event ?eventLabel ?date ?endDate ?sitelinks ?type ?country ?article ?description ?partOfLabel WHERE {
+SELECT ?event ?eventLabel ?date ?datePrecision ?endDate ?endDatePrecision ?sitelinks ?type ?country ?article ?description ?partOfLabel WHERE {
   VALUES ?type { ${EVENT_TYPES.join(" ")} }
   ?event wdt:P31 ?type ;
          wikibase:sitelinks ?sitelinks .
   FILTER(?sitelinks >= ${MIN_SITELINKS})
-  OPTIONAL { ?event wdt:P585 ?pointInTime. }
-  OPTIONAL { ?event wdt:P580 ?startTime. }
+  # Full statement/value-node model (not the wdt: truthy shortcut) so
+  # wikibase:timePrecision is available alongside the date itself — a "01"
+  # month/day in the value is otherwise indistinguishable from Wikidata's
+  # own placeholder for "unknown" at year precision. Same p:/psv: pattern
+  # reigns.ts already uses for its P580/P582 qualifiers.
+  OPTIONAL {
+    ?event p:P585 ?pointInTimeStatement .
+    ?pointInTimeStatement psv:P585 ?pointInTimeValue .
+    ?pointInTimeValue wikibase:timeValue ?pointInTime ;
+                       wikibase:timePrecision ?pointInTimePrecision .
+  }
+  OPTIONAL {
+    ?event p:P580 ?startTimeStatement .
+    ?startTimeStatement psv:P580 ?startTimeValue .
+    ?startTimeValue wikibase:timeValue ?startTime ;
+                     wikibase:timePrecision ?startTimePrecision .
+  }
   BIND(COALESCE(?pointInTime, ?startTime) AS ?date)
+  BIND(COALESCE(?pointInTimePrecision, ?startTimePrecision) AS ?datePrecision)
   FILTER(BOUND(?date))
   FILTER(?date >= "${minDateTime}"^^xsd:dateTime && ?date < "${maxDateTime}"^^xsd:dateTime)
-  OPTIONAL { ?event wdt:P582 ?endDate. }
+  OPTIONAL {
+    ?event p:P582 ?endDateStatement .
+    ?endDateStatement psv:P582 ?endDateValue .
+    ?endDateValue wikibase:timeValue ?endDate ;
+                   wikibase:timePrecision ?endDatePrecision .
+  }
   OPTIONAL { ?event rdfs:label ?eventLabel . FILTER(LANG(?eventLabel) = "en") }
   OPTIONAL { ?event wdt:P17 ?country. }
   OPTIONAL { ?article schema:about ?event; schema:isPartOf <https://en.wikipedia.org/>. }

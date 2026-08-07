@@ -1,4 +1,14 @@
-import type { Category, DiscoveryCategory, Person, War, Discovery, ReignPeriod } from "@same-sky/shared-types";
+import type {
+  Category,
+  DiscoveryCategory,
+  Person,
+  War,
+  WarEvent,
+  WarsAndConflictsEntry,
+  Discovery,
+  ReignPeriod,
+  YearMonth,
+} from "@same-sky/shared-types";
 import type { TaggedPerson, TaggedEvent, TaggedDiscovery } from "../transform/index.js";
 import { WAR_TYPE_QID } from "../fetch/queries/historical-events.js";
 
@@ -11,21 +21,31 @@ function record(reasons: Record<string, number>, reason: string): void {
   reasons[reason] = (reasons[reason] ?? 0) + 1;
 }
 
+// month absent means year-only precision — see shared-types's YearMonth.
+function yearMonth(year: number, month: number | undefined): YearMonth {
+  return month === undefined ? { year } : { year, month };
+}
+
+function optionalYearMonth(year: number | undefined, month: number | undefined): YearMonth | undefined {
+  return year === undefined ? undefined : yearMonth(year, month);
+}
+
 interface ValidatedEventRow<C> {
   name: string;
   article: string;
   description: string;
   year: number;
+  month?: number;
   category: C;
 }
 
 // Shared by buildWars/buildDiscoveries — both lanes require the same five
 // fields before an entry is worth keeping; only what they build from a
-// validated row (endYear/partOfWarName vs. not) differs, and each lane has
-// its own category type (Category for Wars, DiscoveryCategory for
-// Discoveries — see packages/shared-types), hence the type param.
+// validated row (Period/PointInTime split, partOfWarName) differs, and
+// each lane has its own category type (Category for Wars, DiscoveryCategory
+// for Discoveries — see packages/shared-types), hence the type param.
 function validateEventRow<C>(
-  row: { label?: string; article?: string; description?: string; year?: number; category?: C },
+  row: { label?: string; article?: string; description?: string; year?: number; month?: number; category?: C },
   reasons: Record<string, number>,
 ): ValidatedEventRow<C> | undefined {
   if (!row.label) {
@@ -48,7 +68,14 @@ function validateEventRow<C>(
     record(reasons, "no mappable event category");
     return undefined;
   }
-  return { name: row.label, article: row.article, description: row.description, year: row.year, category: row.category };
+  return {
+    name: row.label,
+    article: row.article,
+    description: row.description,
+    year: row.year,
+    month: row.month,
+    category: row.category,
+  };
 }
 
 // Above the longest verified human lifespan (Jeanne Calment, 122 years) —
@@ -97,8 +124,10 @@ export function buildPeople(
     people.push({
       id: row.id,
       name: row.name,
-      startYear: row.birthyear,
-      endYear: row.deathyear,
+      lifespan: {
+        start: yearMonth(row.birthyear, row.birthmonth),
+        end: optionalYearMonth(row.deathyear, row.deathmonth),
+      },
       occupationDomain: row.occupationDomain,
       regionTags: row.regionTags,
       fameScore: row.hpi,
@@ -111,34 +140,49 @@ export function buildPeople(
   return { people, report: { dropped: rows.length - people.length, reasons } };
 }
 
-export function buildWars(rows: TaggedEvent[]): { wars: War[]; report: DropReport } {
-  const wars: War[] = [];
+// Only wars (wd:Q198) become a War (a real Period) — see WAR_TYPE_QID and
+// the War/WarEvent split in shared-types. Everything else in the lane
+// (battles, treaties, sieges, revolutions, rebellions, military
+// operations, generic historical events) becomes a WarEvent (a
+// PointInTime), even when the row happens to carry a secondaryYear/Month
+// (from the same ?endDate/P582 binding every event type shares) — only
+// wars read it, per the product decision that only wars render as range
+// bars.
+export function buildWars(rows: TaggedEvent[]): { entries: WarsAndConflictsEntry[]; report: DropReport } {
+  const entries: WarsAndConflictsEntry[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
     const validated = validateEventRow<Category>(row, reasons);
     if (!validated) continue;
 
-    wars.push({
+    const shared = {
       id: row.id,
       name: validated.name,
-      startYear: validated.year,
-      // Only wars (wd:Q198) get range-bar treatment — see WAR_TYPE_QID.
-      // row.secondaryYear is populated from the same ?endDate (P582)
-      // binding for every event type, but deliberately only read here for
-      // wars, so a battle/treaty that happens to carry a P582 claim still
-      // renders as a single point.
-      endYear: row.tags.includes(WAR_TYPE_QID) ? row.secondaryYear : undefined,
       partOfWarName: row.partOfLabel,
       category: validated.category,
       regionTags: row.regionTags,
       fameScore: row.sitelinks,
       description: validated.description,
       wikipediaUrl: validated.article,
-    });
+    };
+
+    if (row.tags.includes(WAR_TYPE_QID)) {
+      const war: War = {
+        ...shared,
+        period: {
+          start: yearMonth(validated.year, validated.month),
+          end: optionalYearMonth(row.secondaryYear, row.secondaryMonth),
+        },
+      };
+      entries.push(war);
+    } else {
+      const warEvent: WarEvent = { ...shared, at: yearMonth(validated.year, validated.month) };
+      entries.push(warEvent);
+    }
   }
 
-  return { wars, report: { dropped: rows.length - wars.length, reasons } };
+  return { entries, report: { dropped: rows.length - entries.length, reasons } };
 }
 
 // sitelinks<=0 means fetch-events-enrichment.ts's SPARQL pass couldn't
@@ -160,7 +204,9 @@ export function buildDiscoveries(rows: TaggedDiscovery[]): { discoveries: Discov
     discoveries.push({
       id: row.id,
       name: validated.name,
-      startYear: validated.year,
+      // Curated events have no month source (data/raw/events-curated.raw.json
+      // is year-only) — always year precision, unlike Wars & Conflicts.
+      at: yearMonth(validated.year, validated.month),
       category: validated.category,
       regionTags: row.regionTags,
       fameScore: row.sitelinks,

@@ -9,8 +9,7 @@ afterEach(cleanup);
 const aristotle: Person = {
   id: 'Q868',
   name: 'Aristotle',
-  startYear: -383,
-  endYear: -321,
+  lifespan: { start: { year: -383 }, end: { year: -321 } },
   occupationDomain: 'humanities',
   regionTags: [],
   fameScore: 317,
@@ -21,14 +20,13 @@ const aristotle: Person = {
 const caesar: Person = {
   id: 'Q1048',
   name: 'Julius Caesar',
-  startYear: -100,
-  endYear: -44,
+  lifespan: { start: { year: -100 }, end: { year: -44 } },
   occupationDomain: 'institutions',
   regionTags: [],
   fameScore: 400,
   description: 'Roman general and statesman',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Julius_Caesar',
-  reignPeriods: [{ startYear: -49, endYear: -44, title: 'Dictator' }],
+  reignPeriods: [{ start: { year: -49 }, end: { year: -44 }, title: 'Dictator' }],
 };
 
 test('renders one lifespan bar per person, with the name inside it', () => {
@@ -50,7 +48,11 @@ test('renders one reign-period stripe per reignPeriod, none for a person without
 
 test('two overlapping lifespans render at different y positions (separate rows)', () => {
   const { scale } = buildXScale(2);
-  const overlappingCaesar: Person = { ...caesar, startYear: -383, endYear: -321, reignPeriods: undefined };
+  const overlappingCaesar: Person = {
+    ...caesar,
+    lifespan: { start: { year: -383 }, end: { year: -321 } },
+    reignPeriods: undefined,
+  };
   const { container } = render(<PeopleLane people={[aristotle, overlappingCaesar]} xScale={scale} />);
 
   const bars = Array.from(container.querySelectorAll('.d3-bar'));

@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
-import type { Discovery, Person, War } from '../../shared/types';
+import type { Discovery, Person, WarsAndConflictsEntry } from '../../shared/types';
 import { DEFAULT_VIEWPORT_START } from '../../shared/config';
 import type { FameScoreValues } from '../../features/filter-by-fame-score';
 import {
@@ -21,7 +21,7 @@ import styles from './TimelineCanvas.module.css';
 
 interface TimelineCanvasProps {
   people: Person[];
-  wars: War[];
+  wars: WarsAndConflictsEntry[];
   discoveries: Discovery[];
   // Sidebar-set fame-score floors (ADR 0003) — zoom no longer drives entity
   // density, so this is a plain prop, not derived from pixelsPerYear.

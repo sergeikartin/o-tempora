@@ -26,7 +26,7 @@ async function main(): Promise<void> {
   logReport("people.json", people.length, peopleReport);
   await writeDataset("people.json", people);
 
-  const { wars, report: warsReport } = buildWars(transformWars());
+  const { entries: wars, report: warsReport } = buildWars(transformWars());
   logReport("wars.json", wars.length, warsReport);
   await writeDataset("wars.json", wars);
 

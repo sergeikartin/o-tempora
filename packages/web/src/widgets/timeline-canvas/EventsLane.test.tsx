@@ -9,7 +9,7 @@ afterEach(cleanup);
 const football: Discovery = {
   id: 'Q2736',
   name: 'association football',
-  startYear: 1863,
+  at: { year: 1863 },
   category: 'everyday-technology',
   regionTags: [],
   fameScore: 296,
@@ -20,7 +20,7 @@ const football: Discovery = {
 const brazil: Discovery = {
   id: 'Q155',
   name: 'Brazil',
-  startYear: 1500,
+  at: { year: 1500 },
   category: 'exploration',
   regionTags: ['americas'],
   fameScore: 386,
@@ -39,7 +39,7 @@ test('renders one point marker per discovery, with its name as the label', () =>
 
 test('stacks two discoveries in the same year onto different stem-length tiers so their labels don\'t overlap', () => {
   const { scale } = buildXScale(2);
-  const sameYear: Discovery = { ...brazil, id: 'Q999', startYear: football.startYear };
+  const sameYear: Discovery = { ...brazil, id: 'Q999', at: { year: football.at.year } };
   const { container } = render(<EventsLane discoveries={[football, sameYear]} xScale={scale} />);
 
   // Dots always sit at the same fixed y, right under the shared YearAxis —

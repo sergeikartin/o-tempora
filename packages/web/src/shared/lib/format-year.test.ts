@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest';
-import { centuryBoundariesInRange, formatYear, isBceYear } from './format-year';
+import { centuryBoundariesInRange, formatYear, formatYearMonth, isBceYear } from './format-year';
 
 test('isBceYear treats year 0 (1 BCE, astronomical numbering) as BCE', () => {
   expect(isBceYear(0)).toBe(true);
@@ -59,4 +59,22 @@ test('centuryBoundariesInRange gives each boundary a contiguous, non-overlapping
 test('centuryBoundariesInRange uses ordinal suffixes correctly past the teens (11th-13th stay "th")', () => {
   const boundaries = centuryBoundariesInRange(-1290, -1210);
   expect(boundaries.map((b) => b.label)).toEqual(['13th century BCE']);
+});
+
+test('formatYearMonth falls back to formatYear alone when month is absent', () => {
+  expect(formatYearMonth({ year: 1950 })).toBe('1950');
+  expect(formatYearMonth({ year: -489 })).toBe('490 BCE');
+});
+
+test('formatYearMonth prefixes the month name for a CE year', () => {
+  expect(formatYearMonth({ year: 1815, month: 6 })).toBe('June 1815');
+});
+
+test('formatYearMonth prefixes the month name for a BCE year, using the same BCE-styled year as formatYear', () => {
+  expect(formatYearMonth({ year: -489, month: 9 })).toBe('September 490 BCE');
+});
+
+test('formatYearMonth handles both January (month 1) and December (month 12) correctly', () => {
+  expect(formatYearMonth({ year: 2000, month: 1 })).toBe('January 2000');
+  expect(formatYearMonth({ year: 2000, month: 12 })).toBe('December 2000');
 });
