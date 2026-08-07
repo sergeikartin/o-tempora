@@ -36,6 +36,7 @@
   display: flex;
   flex-direction: column;
   overflow-x: auto;
+  cursor: grab;
   /* Mirrors color-bg-base; real token wiring is ticket 05. */
   background-color: #f3eedd;
   background-repeat: repeat-x;
@@ -50,6 +51,14 @@
   /* Mirrors a faint color-border tone, barely distinct from the page
      background; inlined pending ticket 05. */
   background-image: linear-gradient(to right, #e5dbc0 0, #e5dbc0 1px, transparent 1px);
+}
+
+/* Active mouse-drag pan (TimelineCanvas.tsx's pointer handlers) — grabbing
+   cursor plus disabled text selection, since a fast drag would otherwise
+   select lane labels as it passes over them. */
+.dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 /* 4:1:1 height ratio across People, Wars & Conflicts, and Events &

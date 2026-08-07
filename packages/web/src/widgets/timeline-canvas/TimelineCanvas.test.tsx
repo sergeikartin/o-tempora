@@ -88,6 +88,44 @@ test('the three lane sections and the year axis share the same rendered width', 
   expect(new Set([...svgWidthsPx, axisWidthPx]).size).toBe(1);
 });
 
+test('mouse-dragging the scroll container pans it; releasing stops the pan', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBe(140); // dragged left by 40px -> content pans right
+
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 300, pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
+});
+
+test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll already handles them', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', clientX: 500, pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', clientX: 460, pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBe(100);
+});
+
 function personLineWidth(container: HTMLElement): number {
   const [peopleSvg] = Array.from(container.querySelectorAll('svg')) as [SVGSVGElement];
   const line = peopleSvg.querySelector('.d3-line');
