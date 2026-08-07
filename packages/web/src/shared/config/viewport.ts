@@ -24,8 +24,15 @@ export interface FameScoreBounds {
   default: number;
 }
 
+// discoveries' bounds recalibrated (.scratch/events-inventions-curated-source
+// ticket 05) against the curated-source rebuild's real post-enrichment
+// sitelink range (8-296, n=121) — the old 50-386/200 bounds were the prior
+// 806-item Wikidata-corpus range, no longer real. `default: 25` keeps 119/121
+// (98%) of curated events visible on first paint, deliberately not an
+// aggressive floor — the whole point of hand-curation was that every
+// surviving item is worth surfacing (see the map's Notes).
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
   people: { min: 75, max: 100, default: 90 },
   wars: { min: 30, max: 193, default: 100 },
-  discoveries: { min: 50, max: 386, default: 200 },
+  discoveries: { min: 8, max: 296, default: 25 },
 };

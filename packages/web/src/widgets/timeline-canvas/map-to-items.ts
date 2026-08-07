@@ -1,4 +1,4 @@
-import type { Category, Discovery, OccupationDomain, Person, War } from '../../shared/types';
+import type { Category, Discovery, DiscoveryCategory, OccupationDomain, Person, War } from '../../shared/types';
 import { today } from '../../shared/lib/dates';
 import { formatYear } from '../../shared/lib/format-year';
 import { MIN_ROW_GAP_YEARS } from './options';
@@ -93,7 +93,7 @@ export interface DiscoveryItem {
   id: string;
   name: string;
   startYear: number;
-  category: Category;
+  category: DiscoveryCategory;
   tooltip: string;
 }
 

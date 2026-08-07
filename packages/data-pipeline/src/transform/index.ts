@@ -1,18 +1,30 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { ReignPeriod } from "@same-sky/shared-types";
+import type { DiscoveryCategory, Region, ReignPeriod } from "@same-sky/shared-types";
 import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
 import { parsePantheonCsv, type PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
+import { validateEnrichedEventsFile } from "../fetch/fetch-events-enrichment.js";
 import { groupRows, type GroupedRow, type GroupRowsConfig } from "./group-rows.js";
 import { groupReigns } from "./group-reigns.js";
 import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
-import { tagHistoricalEvent, tagInvention, type EventTags } from "./tag-events.js";
-import { scoreAndRank, scoreAndRankByHpi, scoreAndRankDiscoveries } from "./score.js";
+import { tagHistoricalEvent, tagCuratedDiscovery, type EventTags } from "./tag-events.js";
+import { scoreAndRank, scoreAndRankByHpi, rankDiscoveriesBySitelinks } from "./score.js";
 
 export type TaggedPerson = PantheonPersonRow &
   PantheonPersonTags & { description?: string; wikipediaUrl: string };
 export type TaggedEvent = GroupedRow & EventTags;
+
+export interface TaggedDiscovery {
+  id: string;
+  label: string;
+  article?: string;
+  description: string;
+  year: number;
+  sitelinks: number;
+  category: DiscoveryCategory;
+  regionTags: Region[];
+}
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
@@ -52,23 +64,9 @@ const HISTORICAL_CONFIG: GroupRowsConfig = {
   partOfLabelVar: "partOfLabel",
 };
 
-const INVENTIONS_CONFIG: GroupRowsConfig = {
-  entityVar: "event",
-  labelVar: "eventLabel",
-  sitelinksVar: "sitelinks",
-  articleVar: "article",
-  descriptionVar: "description",
-  dateVar: "date",
-  countryVar: "country",
-};
-
-// group -> tag -> score, per lane. Wars & Conflicts and Discoveries &
-// Inventions are two entirely independent lanes end to end — each fed by
-// its own raw snapshot, tagged with its own rules (historical events look
-// up a ?type claim; inventions get "invention" unconditionally), and scored
-// on its own. They're never merged: tagHistoricalEvent never produces
-// "invention" and tagInvention always does, so the two lanes' categories
-// can't overlap by construction — see tag-events.test.ts.
+// group -> tag -> score, per lane. People, Wars & Conflicts, and
+// Discoveries & Inventions are three entirely independent lanes end to
+// end — each fed by its own raw snapshot and scored on its own.
 // Sourced from Pantheon 2.0, not Wikidata — no grouping needed (the CSV is
 // already one row per person, unlike SPARQL's denormalized bindings).
 // Descriptions come from a separate batched SPARQL fetch keyed on the
@@ -98,13 +96,31 @@ export function transformWars(): TaggedEvent[] {
   return scoreAndRank(historical);
 }
 
-export function transformDiscoveries(): TaggedEvent[] {
-  const inventionsRaw = loadRaw("events-inventions.raw.json");
-  const inventions = groupRows(inventionsRaw.results.bindings, INVENTIONS_CONFIG).map((row) => ({
-    ...row,
-    ...tagInvention(row),
-  }));
-  return scoreAndRankDiscoveries(inventions);
+// Sourced from the hand-curated + enriched events list
+// (fetch-events-enrichment.ts's output), not a raw SPARQL binding dump —
+// already one row per event, so no groupRows step needed here either
+// (same reasoning as transformPeople). A missing enriched `sitelinks`
+// means the enrichment pass couldn't resolve that QID; coerced to 0 here
+// so it sorts last and Output's buildDiscoveries can drop it explicitly.
+export function transformDiscoveries(): TaggedDiscovery[] {
+  const enrichedPath = path.join(RAW_DIR, "events-curated-enriched.raw.json");
+  const { events } = validateEnrichedEventsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
+
+  const tagged = events.map((event) => {
+    const { category, regionTags } = tagCuratedDiscovery(event.category, event.countries);
+    return {
+      id: event.id,
+      label: event.name,
+      article: event.wikipediaUrl,
+      description: event.description,
+      year: event.year,
+      sitelinks: event.sitelinks ?? 0,
+      category,
+      regionTags,
+    };
+  });
+
+  return rankDiscoveriesBySitelinks(tagged);
 }
 
 // Keyed by every person Q-ID that fetch-reigns.ts's snapshot covers, not

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import type { TaggedPerson, TaggedEvent } from "../transform/index.js";
+import type { TaggedPerson, TaggedEvent, TaggedDiscovery } from "../transform/index.js";
 import { buildPeople, buildWars, buildDiscoveries } from "./write-datasets.js";
 
 function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
@@ -34,6 +34,20 @@ function taggedEvent(overrides: Partial<TaggedEvent> = {}): TaggedEvent {
     countries: [],
     category: "war",
     regionTags: [],
+    ...overrides,
+  };
+}
+
+function taggedDiscovery(overrides: Partial<TaggedDiscovery> = {}): TaggedDiscovery {
+  return {
+    id: "Q5",
+    label: "Penicillin",
+    article: "https://en.wikipedia.org/wiki/Penicillin",
+    description: "1928 discovery of the antibiotic",
+    year: 1928,
+    sitelinks: 80,
+    category: "medicine-health",
+    regionTags: ["europe"],
     ...overrides,
   };
 }
@@ -115,23 +129,13 @@ test("buildWars leaves partOfWarName undefined when there is no partOfLabel", ()
 });
 
 test("buildDiscoveries passes through category, regionTags, and startYear", () => {
-  const discovery = taggedEvent({
-    id: "Q5",
-    label: "Penicillin",
-    article: "https://en.wikipedia.org/wiki/Penicillin",
-    description: "1928 discovery of the antibiotic",
-    year: 1928,
-    category: "invention",
-    regionTags: ["europe"],
-  });
-
-  const { discoveries } = buildDiscoveries([discovery]);
+  const { discoveries } = buildDiscoveries([taggedDiscovery()]);
 
   assert.deepEqual(discoveries[0], {
     id: "Q5",
     name: "Penicillin",
     startYear: 1928,
-    category: "invention",
+    category: "medicine-health",
     regionTags: ["europe"],
     fameScore: 80,
     description: "1928 discovery of the antibiotic",
@@ -139,8 +143,14 @@ test("buildDiscoveries passes through category, regionTags, and startYear", () =
   });
 });
 
-test("buildDiscoveries drops a row with no mappable category", () => {
-  const { discoveries, report } = buildDiscoveries([taggedEvent({ category: undefined })]);
+test("buildDiscoveries drops a row missing wikipediaUrl (enrichment couldn't resolve an article)", () => {
+  const { discoveries, report } = buildDiscoveries([taggedDiscovery({ article: undefined })]);
   assert.equal(discoveries.length, 0);
-  assert.equal(report.reasons["no mappable event category"], 1);
+  assert.equal(report.reasons["missing Wikipedia article"], 1);
+});
+
+test("buildDiscoveries drops a row whose sitelinks is 0 (enrichment couldn't resolve the QID)", () => {
+  const { discoveries, report } = buildDiscoveries([taggedDiscovery({ sitelinks: 0 })]);
+  assert.equal(discoveries.length, 0);
+  assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
 });

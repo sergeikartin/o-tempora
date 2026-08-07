@@ -9,12 +9,32 @@ export const CATEGORIES = [
   "art",
   "philosophy",
   "war",
-  "invention",
   "exploration",
   "religion",
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
+
+// Events & Inventions lane's own taxonomy, taken verbatim from the
+// hand-curated source's `meta.categories`
+// (data-pipeline/data/raw/events-curated.raw.json) — disjoint from Category
+// above (Wars & Conflicts' Wikidata-?type-claim-derived taxonomy), not a
+// shared value even where a name happens to coincide (e.g. "exploration"
+// appears in both, independently).
+export const DISCOVERY_CATEGORIES = [
+  "science-theory",
+  "medicine-health",
+  "communication",
+  "transportation",
+  "infrastructure",
+  "everyday-technology",
+  "food-agriculture",
+  "exploration",
+  "energy-industry",
+  "society-administration",
+] as const;
+
+export type DiscoveryCategory = (typeof DISCOVERY_CATEGORIES)[number];
 
 export const REGIONS = [
   "europe",
@@ -138,12 +158,12 @@ export interface War extends TimelineEntry {
   partOfWarName?: string;
 }
 
-// Category stays a real field, not hardcoded to "invention" — this lane
-// covers both discoveries (e.g. "exploration") and inventions, even though
-// the current Fetch-stage tagging only ever produces "invention" today
-// (see tagInvention in data-pipeline/src/transform/tag-events.ts).
+// Sourced from the hand-curated events list, not a Wikidata-?type-claim
+// scan — category is curator-assigned directly (see tagCuratedDiscovery in
+// data-pipeline/src/transform/tag-events.ts), hence its own DiscoveryCategory
+// taxonomy rather than War's Category.
 export interface Discovery extends TimelineEntry {
-  category: Category;
+  category: DiscoveryCategory;
   regionTags: Region[];
 }
 

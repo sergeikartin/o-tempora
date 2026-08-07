@@ -1,0 +1,1264 @@
+{
+  "events": [
+    {
+      "id": "Q988780",
+      "name": "Electromagnetic induction",
+      "year": 1831,
+      "category": "science-theory",
+      "description": "production of voltage by a varying magnetic field",
+      "sitelinks": 81,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+      "countries": []
+    },
+    {
+      "id": "Q20124",
+      "name": "On the Origin of Species",
+      "year": 1859,
+      "category": "science-theory",
+      "description": "treatise on natural selection, written by Charles Darwin",
+      "sitelinks": 84,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+      "countries": []
+    },
+    {
+      "id": "Q214634",
+      "name": "Cloud chamber",
+      "year": 1911,
+      "category": "science-theory",
+      "description": "scientific device",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cloud_chamber",
+      "countries": []
+    },
+    {
+      "id": "Q11452",
+      "name": "General relativity",
+      "year": 1916,
+      "category": "science-theory",
+      "description": "standard and classical physics theory of gravity and space",
+      "sitelinks": 129,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/General_relativity",
+      "countries": []
+    },
+    {
+      "id": "Q132560",
+      "name": "Electron microscope",
+      "year": 1931,
+      "category": "science-theory",
+      "description": "magnifying system showing microscopic objects via directed electron beams",
+      "sitelinks": 82,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electron_microscope",
+      "countries": []
+    },
+    {
+      "id": "Q192446",
+      "name": "Human Genome Project",
+      "year": 1990,
+      "category": "science-theory",
+      "description": "research program for sequencing the human genome",
+      "sitelinks": 53,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Human_Genome_Project",
+      "countries": [
+        "Q30"
+      ]
+    },
+    {
+      "id": "Q171433",
+      "name": "Dolly the sheep",
+      "year": 1996,
+      "category": "science-theory",
+      "description": "cloned female sheep — first mammal cloned from an adult somatic cell",
+      "sitelinks": 68,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
+      "countries": []
+    },
+    {
+      "id": "Q190035",
+      "name": "Gravitational wave",
+      "year": 2015,
+      "category": "science-theory",
+      "description": "propagating spacetime ripple",
+      "sitelinks": 76,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Gravitational_wave",
+      "countries": []
+    },
+    {
+      "id": "Q166543",
+      "name": "General anaesthesia",
+      "year": -3499,
+      "category": "medicine-health",
+      "description": "medically induced coma with loss of protective reflexes",
+      "sitelinks": 42,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/General_anaesthesia",
+      "countries": []
+    },
+    {
+      "id": "Q162297",
+      "name": "Hygiene",
+      "year": -2999,
+      "category": "medicine-health",
+      "description": "set of practices performed for the preservation of health",
+      "sitelinks": 106,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hygiene",
+      "countries": []
+    },
+    {
+      "id": "Q310301",
+      "name": "Ebers Papyrus",
+      "year": -1599,
+      "category": "medicine-health",
+      "description": "ancient Egyptian medical papyrus",
+      "sitelinks": 34,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ebers_Papyrus",
+      "countries": []
+    },
+    {
+      "id": "Q842363",
+      "name": "Edwin Smith Papyrus",
+      "year": -1580,
+      "category": "medicine-health",
+      "description": "oldest Egyptian medical text",
+      "sitelinks": 35,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Edwin_Smith_Papyrus",
+      "countries": [
+        "Q11768"
+      ]
+    },
+    {
+      "id": "Q228036",
+      "name": "Cesarean section",
+      "year": -319,
+      "category": "medicine-health",
+      "description": "surgical procedure delivering a baby through the abdomen",
+      "sitelinks": 84,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Caesarean_section",
+      "countries": []
+    },
+    {
+      "id": "Q42005",
+      "name": "Black Death",
+      "year": 1346,
+      "category": "medicine-health",
+      "description": "1346–1353 pandemic in Eurasia and North Africa",
+      "sitelinks": 127,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Death",
+      "countries": [
+        "Q227",
+        "Q230",
+        "Q399",
+        "Q170770"
+      ]
+    },
+    {
+      "id": "Q162684",
+      "name": "Charité",
+      "year": 1710,
+      "category": "medicine-health",
+      "description": "university hospital in Berlin, Germany",
+      "sitelinks": 40,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Charit%C3%A9",
+      "countries": [
+        "Q183"
+      ]
+    },
+    {
+      "id": "Q1037810",
+      "name": "Smallpox vaccine",
+      "year": 1798,
+      "category": "medicine-health",
+      "description": "first successful vaccine to be developed",
+      "sitelinks": 30,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Smallpox_vaccine",
+      "countries": []
+    },
+    {
+      "id": "Q204711",
+      "name": "US Food and Drug Administration",
+      "year": 1906,
+      "category": "medicine-health",
+      "description": "agency of the US Department of Health and Human Services",
+      "sitelinks": 56,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Food_and_Drug_Administration",
+      "countries": [
+        "Q30"
+      ]
+    },
+    {
+      "id": "Q178275",
+      "name": "1918–1920 flu pandemic (Spanish flu)",
+      "year": 1918,
+      "category": "medicine-health",
+      "description": "global influenza pandemic caused by the H1N1 influenza A virus",
+      "sitelinks": 102,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_flu",
+      "countries": []
+    },
+    {
+      "id": "Q12190",
+      "name": "Penicillin",
+      "year": 1928,
+      "category": "medicine-health",
+      "description": "group of antibiotics derived from Penicillium fungi",
+      "sitelinks": 117,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Penicillin",
+      "countries": []
+    },
+    {
+      "id": "Q817281",
+      "name": "Combined oral contraceptive pill",
+      "year": 1961,
+      "category": "medicine-health",
+      "description": "birth control combining an estrogen and a progestogen",
+      "sitelinks": 50,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Combined_oral_contraceptive_pill",
+      "countries": []
+    },
+    {
+      "id": "Q132659",
+      "name": "Egyptian hieroglyphs",
+      "year": -3199,
+      "category": "communication",
+      "description": "formal writing system used by the ancient Egyptians",
+      "sitelinks": 93,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+      "countries": []
+    },
+    {
+      "id": "Q401",
+      "name": "Cuneiform",
+      "year": -2999,
+      "category": "communication",
+      "description": "ancient writing system for Akkadian, Hittite and others",
+      "sitelinks": 102,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuneiform",
+      "countries": []
+    },
+    {
+      "id": "Q211248",
+      "name": "Mayan hieroglyphs",
+      "year": -300,
+      "category": "communication",
+      "description": "writing system of the Maya civilization",
+      "sitelinks": 50,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Maya_script",
+      "countries": []
+    },
+    {
+      "id": "Q11472",
+      "name": "Paper",
+      "year": -140,
+      "category": "communication",
+      "description": "thin flexible material for writing, printing, packaging",
+      "sitelinks": 198,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Paper",
+      "countries": []
+    },
+    {
+      "id": "Q144334",
+      "name": "Printing press",
+      "year": 1439,
+      "category": "communication",
+      "description": "device for evenly printing ink onto a print medium",
+      "sitelinks": 80,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
+      "countries": []
+    },
+    {
+      "id": "Q158075",
+      "name": "Gutenberg Bible",
+      "year": 1450,
+      "category": "communication",
+      "description": "early book printed with movable type",
+      "sitelinks": 55,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Gutenberg_Bible",
+      "countries": []
+    },
+    {
+      "id": "Q6501061",
+      "name": "Electrical telegraph",
+      "year": 1816,
+      "category": "communication",
+      "description": "early system for transmitting text over wires",
+      "sitelinks": 30,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electrical_telegraph",
+      "countries": []
+    },
+    {
+      "id": "Q107701",
+      "name": "Penny Black (postage stamp)",
+      "year": 1840,
+      "category": "communication",
+      "description": "world's first adhesive postage stamp",
+      "sitelinks": 49,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Penny_Black",
+      "countries": [
+        "Q8680"
+      ]
+    },
+    {
+      "id": "Q11035",
+      "name": "Telephone",
+      "year": 1876,
+      "category": "communication",
+      "description": "telecommunications device for two or more users to converse",
+      "sitelinks": 215,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Telephone",
+      "countries": []
+    },
+    {
+      "id": "Q13443401",
+      "name": "Invention of telephone",
+      "year": 1876,
+      "category": "communication",
+      "description": "overview about the invention of the telephone",
+      "sitelinks": 8,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Invention_of_the_telephone",
+      "countries": []
+    },
+    {
+      "id": "Q116434",
+      "name": "Phonograph",
+      "year": 1877,
+      "category": "communication",
+      "description": "device for the analogue recording and playback of sound",
+      "sitelinks": 77,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Phonograph",
+      "countries": []
+    },
+    {
+      "id": "Q46872",
+      "name": "Cinematograph",
+      "year": 1892,
+      "category": "communication",
+      "description": "motion picture camera that also serves as projector and printer",
+      "sitelinks": 35,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cinematograph",
+      "countries": []
+    },
+    {
+      "id": "Q8665",
+      "name": "Workers Leaving the Lumière Factory",
+      "year": 1895,
+      "category": "communication",
+      "description": "1895 French short black-and-white silent documentary film",
+      "sitelinks": 37,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Workers_Leaving_the_Lumi%C3%A8re_Factory",
+      "countries": [
+        "Q142"
+      ]
+    },
+    {
+      "id": "Q191472",
+      "name": "BBC Television Service launch",
+      "year": 1936,
+      "category": "communication",
+      "description": "flagship television channel of the BBC, launched as the BBC Television Service",
+      "sitelinks": 62,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/BBC_One",
+      "countries": [
+        "Q145"
+      ]
+    },
+    {
+      "id": "Q75",
+      "name": "Internet",
+      "year": 1969,
+      "category": "communication",
+      "description": "global system of connected computer networks",
+      "sitelinks": 296,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Internet",
+      "countries": []
+    },
+    {
+      "id": "Q177524",
+      "name": "ARPANET",
+      "year": 1969,
+      "category": "communication",
+      "description": "early packet switching network (1969–1990)",
+      "sitelinks": 66,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/ARPANET",
+      "countries": []
+    },
+    {
+      "id": "Q9158",
+      "name": "Email",
+      "year": 1971,
+      "category": "communication",
+      "description": "exchanging digital messages over a network",
+      "sitelinks": 172,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Email",
+      "countries": []
+    },
+    {
+      "id": "Q466",
+      "name": "World Wide Web",
+      "year": 1989,
+      "category": "communication",
+      "description": "global system of interlinked hypertext documents",
+      "sitelinks": 158,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/World_Wide_Web",
+      "countries": []
+    },
+    {
+      "id": "Q46904",
+      "name": "GSM",
+      "year": 1992,
+      "category": "communication",
+      "description": "standard describing protocols for 2G digital cellular networks",
+      "sitelinks": 82,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/GSM",
+      "countries": []
+    },
+    {
+      "id": "Q220635",
+      "name": "Carrack",
+      "year": 1500,
+      "category": "transportation",
+      "description": "type of sailing ship in the 15th century",
+      "sitelinks": 45,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Carrack",
+      "countries": []
+    },
+    {
+      "id": "Q178193",
+      "name": "Steamboat",
+      "year": 1783,
+      "category": "transportation",
+      "description": "steam-powered vessel, smaller than a steamship",
+      "sitelinks": 61,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steamboat",
+      "countries": []
+    },
+    {
+      "id": "Q171043",
+      "name": "Steam locomotive",
+      "year": 1814,
+      "category": "transportation",
+      "description": "railway locomotive powered by a steam engine",
+      "sitelinks": 84,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_locomotive",
+      "countries": []
+    },
+    {
+      "id": "Q375044",
+      "name": "Stockton and Darlington Railway",
+      "year": 1825,
+      "category": "transportation",
+      "description": "English railway company, 1825 to 1863",
+      "sitelinks": 24,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Stockton_and_Darlington_Railway",
+      "countries": [
+        "Q145"
+      ]
+    },
+    {
+      "id": "Q193692",
+      "name": "Electric car",
+      "year": 1835,
+      "category": "transportation",
+      "description": "automobile propelled by an electric motor",
+      "sitelinks": 85,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_car",
+      "countries": []
+    },
+    {
+      "id": "Q625151",
+      "name": "Electric locomotive",
+      "year": 1837,
+      "category": "transportation",
+      "description": "locomotive powered by electricity",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_locomotive",
+      "countries": []
+    },
+    {
+      "id": "Q133585",
+      "name": "Airship",
+      "year": 1852,
+      "category": "transportation",
+      "description": "powered lighter-than-air aircraft",
+      "sitelinks": 89,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Airship",
+      "countries": []
+    },
+    {
+      "id": "Q1753108",
+      "name": "First Transcontinental Railroad",
+      "year": 1869,
+      "category": "transportation",
+      "description": "first US railroad to reach the Pacific coast",
+      "sitelinks": 29,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/First_transcontinental_railroad",
+      "countries": [
+        "Q30"
+      ]
+    },
+    {
+      "id": "Q1420",
+      "name": "Car",
+      "year": 1884,
+      "category": "transportation",
+      "description": "motorized road vehicle for one to eight people",
+      "sitelinks": 246,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Car",
+      "countries": []
+    },
+    {
+      "id": "Q11442",
+      "name": "Bicycle",
+      "year": 1885,
+      "category": "transportation",
+      "description": "pedal-driven two-wheel vehicle",
+      "sitelinks": 205,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bicycle",
+      "countries": []
+    },
+    {
+      "id": "Q326248",
+      "name": "Benz Patent-Motorwagen",
+      "year": 1886,
+      "category": "transportation",
+      "description": "vehicle widely regarded as the first automobile",
+      "sitelinks": 43,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+      "countries": [
+        "Q183"
+      ]
+    },
+    {
+      "id": "Q20075",
+      "name": "London Underground",
+      "year": 1890,
+      "category": "transportation",
+      "description": "public rapid transit system in London, UK",
+      "sitelinks": 88,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/London_Underground",
+      "countries": [
+        "Q145"
+      ]
+    },
+    {
+      "id": "Q174174",
+      "name": "Diesel engine",
+      "year": 1893,
+      "category": "transportation",
+      "description": "internal combustion engine with compression ignition",
+      "sitelinks": 77,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Diesel_engine",
+      "countries": []
+    },
+    {
+      "id": "Q197",
+      "name": "Airplane",
+      "year": 1903,
+      "category": "transportation",
+      "description": "powered fixed-wing aircraft",
+      "sitelinks": 195,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Airplane",
+      "countries": []
+    },
+    {
+      "id": "Q688605",
+      "name": "Flyer I",
+      "year": 1903,
+      "category": "transportation",
+      "description": "aircraft designed and built by the Wright Brothers",
+      "sitelinks": 44,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wright_Flyer",
+      "countries": [
+        "Q30"
+      ]
+    },
+    {
+      "id": "Q949801",
+      "name": "Rotorcraft",
+      "year": 1907,
+      "category": "transportation",
+      "description": "heavier-than-air aircraft generating lift over rotating wings",
+      "sitelinks": 30,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rotorcraft",
+      "countries": []
+    },
+    {
+      "id": "Q182323",
+      "name": "Ford Model T",
+      "year": 1908,
+      "category": "transportation",
+      "description": "American car (1908–1927)",
+      "sitelinks": 64,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ford_Model_T",
+      "countries": []
+    },
+    {
+      "id": "Q208708",
+      "name": "Autogyro",
+      "year": 1923,
+      "category": "transportation",
+      "description": "rotorcraft with rotor unpowered in flight",
+      "sitelinks": 61,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Autogyro",
+      "countries": []
+    },
+    {
+      "id": "Q12757",
+      "name": "Internal combustion engine",
+      "year": 1924,
+      "category": "transportation",
+      "description": "engine burning fuel with an oxidizer in a combustion chamber",
+      "sitelinks": 121,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
+      "countries": []
+    },
+    {
+      "id": "Q185757",
+      "name": "Hovercraft",
+      "year": 1955,
+      "category": "transportation",
+      "description": "vehicle moving within ground effect over any surface",
+      "sitelinks": 69,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hovercraft",
+      "countries": []
+    },
+    {
+      "id": "Q211382",
+      "name": "High-speed rail",
+      "year": 1964,
+      "category": "transportation",
+      "description": "rail network running significantly faster than traditional rail",
+      "sitelinks": 66,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/High-speed_rail",
+      "countries": []
+    },
+    {
+      "id": "Q164338",
+      "name": "Shinkansen",
+      "year": 1964,
+      "category": "transportation",
+      "description": "Japanese high-speed rail system",
+      "sitelinks": 73,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Shinkansen",
+      "countries": [
+        "Q17"
+      ]
+    },
+    {
+      "id": "Q99200",
+      "name": "The Iron Bridge",
+      "year": 1779,
+      "category": "infrastructure",
+      "description": "bridge crossing the River Severn in Shropshire, England",
+      "sitelinks": 32,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Iron_Bridge",
+      "countries": [
+        "Q145"
+      ]
+    },
+    {
+      "id": "Q899",
+      "name": "Suez Canal",
+      "year": 1869,
+      "category": "infrastructure",
+      "description": "artificial sea-level waterway in Egypt",
+      "sitelinks": 174,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Suez_Canal",
+      "countries": [
+        "Q79"
+      ]
+    },
+    {
+      "id": "Q7350",
+      "name": "Panama Canal",
+      "year": 1914,
+      "category": "infrastructure",
+      "description": "large canal in Panama",
+      "sitelinks": 160,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Panama_Canal",
+      "countries": [
+        "Q804"
+      ]
+    },
+    {
+      "id": "Q10257",
+      "name": "Channel Tunnel",
+      "year": 1993,
+      "category": "infrastructure",
+      "description": "rail tunnel beneath the English Channel",
+      "sitelinks": 88,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+      "countries": [
+        "Q142",
+        "Q145"
+      ]
+    },
+    {
+      "id": "Q160464",
+      "name": "Button",
+      "year": 1200,
+      "category": "everyday-technology",
+      "description": "small fastener used in clothing",
+      "sitelinks": 100,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Button",
+      "countries": []
+    },
+    {
+      "id": "Q79757",
+      "name": "Barometer",
+      "year": 1643,
+      "category": "everyday-technology",
+      "description": "instrument used to measure atmospheric pressure",
+      "sitelinks": 93,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Barometer",
+      "countries": []
+    },
+    {
+      "id": "Q841282",
+      "name": "Arc lamp",
+      "year": 1802,
+      "category": "everyday-technology",
+      "description": "light created by electrical breakdown of gas",
+      "sitelinks": 36,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Arc_lamp",
+      "countries": []
+    },
+    {
+      "id": "Q616159",
+      "name": "View from the Window at Le Gras",
+      "year": 1827,
+      "category": "everyday-technology",
+      "description": "earliest known surviving photograph, by Nicéphore Niépce",
+      "sitelinks": 34,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/View_from_the_Window_at_Le_Gras",
+      "countries": [
+        "Q142"
+      ]
+    },
+    {
+      "id": "Q179744",
+      "name": "Daguerreotype process",
+      "year": 1839,
+      "category": "everyday-technology",
+      "description": "photographic process invented by L. Daguerre",
+      "sitelinks": 65,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Daguerreotype",
+      "countries": []
+    },
+    {
+      "id": "Q37828",
+      "name": "Refrigerator",
+      "year": 1856,
+      "category": "everyday-technology",
+      "description": "appliance for preserving food at a low temperature",
+      "sitelinks": 140,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Refrigerator",
+      "countries": []
+    },
+    {
+      "id": "Q337724",
+      "name": "Lead–acid battery",
+      "year": 1859,
+      "category": "everyday-technology",
+      "description": "rechargeable battery type often used in cars",
+      "sitelinks": 45,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Lead%E2%80%93acid_battery",
+      "countries": []
+    },
+    {
+      "id": "Q47616",
+      "name": "Incandescent light bulb",
+      "year": 1879,
+      "category": "everyday-technology",
+      "description": "electric light bulb with a resistively heated filament",
+      "sitelinks": 105,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Incandescent_light_bulb",
+      "countries": []
+    },
+    {
+      "id": "Q160137",
+      "name": "Ballpoint pen",
+      "year": 1888,
+      "category": "everyday-technology",
+      "description": "writing implement",
+      "sitelinks": 84,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ballpoint_pen",
+      "countries": []
+    },
+    {
+      "id": "Q960800",
+      "name": "Chlorofluorocarbon",
+      "year": 1890,
+      "category": "everyday-technology",
+      "description": "hydrocarbon derivative containing only carbon, chlorine and fluorine",
+      "sitelinks": 56,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Chlorofluorocarbon",
+      "countries": []
+    },
+    {
+      "id": "Q15003",
+      "name": "Escalator",
+      "year": 1891,
+      "category": "everyday-technology",
+      "description": "moving staircase",
+      "sitelinks": 80,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Escalator",
+      "countries": []
+    },
+    {
+      "id": "Q11656",
+      "name": "Diode",
+      "year": 1901,
+      "category": "everyday-technology",
+      "description": "two-terminal component allowing current in one direction",
+      "sitelinks": 128,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Diode",
+      "countries": []
+    },
+    {
+      "id": "Q146578",
+      "name": "Bakelite",
+      "year": 1907,
+      "category": "everyday-technology",
+      "description": "early plastic",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bakelite",
+      "countries": []
+    },
+    {
+      "id": "Q193841",
+      "name": "Cellophane",
+      "year": 1911,
+      "category": "everyday-technology",
+      "description": "chemical compound",
+      "sitelinks": 49,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cellophane",
+      "countries": []
+    },
+    {
+      "id": "Q877055",
+      "name": "Crystal oscillator",
+      "year": 1917,
+      "category": "everyday-technology",
+      "description": "electronic oscillator circuit",
+      "sitelinks": 32,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Crystal_oscillator",
+      "countries": []
+    },
+    {
+      "id": "Q194154",
+      "name": "Cavity magnetron",
+      "year": 1940,
+      "category": "everyday-technology",
+      "description": "device for generating microwaves",
+      "sitelinks": 48,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cavity_magnetron",
+      "countries": []
+    },
+    {
+      "id": "Q68",
+      "name": "Computer",
+      "year": 1945,
+      "category": "everyday-technology",
+      "description": "general-purpose device for arithmetic or logical operations",
+      "sitelinks": 296,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Computer",
+      "countries": []
+    },
+    {
+      "id": "Q227467",
+      "name": "Atomic clock",
+      "year": 1955,
+      "category": "everyday-technology",
+      "description": "extremely accurate reference clock for timekeeping",
+      "sitelinks": 69,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_clock",
+      "countries": []
+    },
+    {
+      "id": "Q16338",
+      "name": "Personal computer",
+      "year": 1957,
+      "category": "everyday-technology",
+      "description": "computer intended for use by an individual person",
+      "sitelinks": 110,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Personal_computer",
+      "countries": []
+    },
+    {
+      "id": "Q5860",
+      "name": "Carbon fibers",
+      "year": 1958,
+      "category": "everyday-technology",
+      "description": "material fibers 5–10 μm in diameter, composed of carbon",
+      "sitelinks": 50,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Carbon_fibers",
+      "countries": []
+    },
+    {
+      "id": "Q31087",
+      "name": "Calculator",
+      "year": 1960,
+      "category": "everyday-technology",
+      "description": "electronic device used for calculations",
+      "sitelinks": 124,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Calculator",
+      "countries": []
+    },
+    {
+      "id": "Q38867",
+      "name": "Laser",
+      "year": 1960,
+      "category": "everyday-technology",
+      "description": "device emitting light via optical amplification",
+      "sitelinks": 119,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Laser",
+      "countries": []
+    },
+    {
+      "id": "Q189511",
+      "name": "Electronic cigarette",
+      "year": 1963,
+      "category": "everyday-technology",
+      "description": "device usually used as an alternative to tobacco",
+      "sitelinks": 70,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electronic_cigarette",
+      "countries": []
+    },
+    {
+      "id": "Q5293",
+      "name": "Floppy disk",
+      "year": 1964,
+      "category": "everyday-technology",
+      "description": "removable disk storage medium",
+      "sitelinks": 81,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Floppy_disk",
+      "countries": []
+    },
+    {
+      "id": "Q782543",
+      "name": "Graphical user interface",
+      "year": 1973,
+      "category": "everyday-technology",
+      "description": "user interface via graphical icons and visual indicators",
+      "sitelinks": 79,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Graphical_user_interface",
+      "countries": []
+    },
+    {
+      "id": "Q5301",
+      "name": "TeX",
+      "year": 1978,
+      "category": "everyday-technology",
+      "description": "typesetting system",
+      "sitelinks": 54,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/TeX",
+      "countries": []
+    },
+    {
+      "id": "Q34467",
+      "name": "Compact disc",
+      "year": 1979,
+      "category": "everyday-technology",
+      "description": "digital optical disc data storage format",
+      "sitelinks": 112,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Compact_disc",
+      "countries": []
+    },
+    {
+      "id": "Q1136790",
+      "name": "Cotton gin",
+      "year": 1793,
+      "category": "food-agriculture",
+      "description": "machine that separates cotton fibers from seeds",
+      "sitelinks": 36,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cotton_gin",
+      "countries": []
+    },
+    {
+      "id": "Q843389",
+      "name": "Canning",
+      "year": 1810,
+      "category": "food-agriculture",
+      "description": "method of preserving food",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Canning",
+      "countries": []
+    },
+    {
+      "id": "Q58148",
+      "name": "Pasteurization",
+      "year": 1864,
+      "category": "food-agriculture",
+      "description": "mild heat treatment eliminating pathogens, extending shelf life",
+      "sitelinks": 89,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Pasteurization",
+      "countries": []
+    },
+    {
+      "id": "Q213669",
+      "name": "Haber-Bosch process",
+      "year": 1909,
+      "category": "food-agriculture",
+      "description": "artificial nitrogen fixation, the main industrial ammonia process",
+      "sitelinks": 60,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Haber_process",
+      "countries": [
+        "Q43287"
+      ]
+    },
+    {
+      "id": "Q186050",
+      "name": "Green Revolution",
+      "year": 1940,
+      "category": "food-agriculture",
+      "description": "period of high agricultural technology transfer, 1950s–60s",
+      "sitelinks": 66,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Green_Revolution",
+      "countries": []
+    },
+    {
+      "id": "Q221474",
+      "name": "First arrival of Christopher Columbus to America",
+      "year": 1492,
+      "category": "exploration",
+      "description": "arrival of Christopher Columbus and crew to America",
+      "sitelinks": 48,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Discovery_of_the_Americas",
+      "countries": []
+    },
+    {
+      "id": "Q1225170",
+      "name": "Magellan-Elcano expedition",
+      "year": 1519,
+      "category": "exploration",
+      "description": "16th-century Spanish maritime expedition",
+      "sitelinks": 31,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Magellan_expedition",
+      "countries": [
+        "Q217196"
+      ]
+    },
+    {
+      "id": "Q179430",
+      "name": "Sextant",
+      "year": 1757,
+      "category": "exploration",
+      "description": "angle measurement navigational instrument",
+      "sitelinks": 70,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sextant",
+      "countries": []
+    },
+    {
+      "id": "Q1932",
+      "name": "Space race",
+      "year": 1957,
+      "category": "exploration",
+      "description": "competition to explore space between USA and USSR",
+      "sitelinks": 74,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Space_Race",
+      "countries": []
+    },
+    {
+      "id": "Q43653",
+      "name": "Apollo 11",
+      "year": 1969,
+      "category": "exploration",
+      "description": "first Moon landing, fifth crewed Apollo flight",
+      "sitelinks": 110,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+      "countries": [
+        "Q30"
+      ]
+    },
+    {
+      "id": "Q338613",
+      "name": "Aeolipile",
+      "year": 1,
+      "category": "energy-industry",
+      "description": "simple, bladeless radial steam turbine",
+      "sitelinks": 38,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Aeolipile",
+      "countries": []
+    },
+    {
+      "id": "Q101017",
+      "name": "Distillation",
+      "year": 300,
+      "category": "energy-industry",
+      "description": "separating mixtures by differences in volatility",
+      "sitelinks": 90,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Distillation",
+      "countries": []
+    },
+    {
+      "id": "Q2224989",
+      "name": "Newcomen atmospheric engine",
+      "year": 1712,
+      "category": "energy-industry",
+      "description": "early steam engine type",
+      "sitelinks": 26,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine",
+      "countries": []
+    },
+    {
+      "id": "Q209440",
+      "name": "Galvanic cell",
+      "year": 1786,
+      "category": "energy-industry",
+      "description": "device converting chemical to electrical energy",
+      "sitelinks": 61,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Galvanic_cell",
+      "countries": []
+    },
+    {
+      "id": "Q64403",
+      "name": "Electrolysis",
+      "year": 1787,
+      "category": "energy-industry",
+      "description": "using direct electric current to drive a chemical reaction",
+      "sitelinks": 88,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electrolysis",
+      "countries": []
+    },
+    {
+      "id": "Q663273",
+      "name": "Voltaic pile",
+      "year": 1800,
+      "category": "energy-industry",
+      "description": "first electrical battery to continuously provide current",
+      "sitelinks": 45,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Voltaic_pile",
+      "countries": []
+    },
+    {
+      "id": "Q178032",
+      "name": "Electromagnet",
+      "year": 1825,
+      "category": "energy-industry",
+      "description": "magnet whose field is produced by electric current",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnet",
+      "countries": []
+    },
+    {
+      "id": "Q72313",
+      "name": "Electric motor",
+      "year": 1834,
+      "category": "energy-industry",
+      "description": "electromechanical device",
+      "sitelinks": 100,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_motor",
+      "countries": []
+    },
+    {
+      "id": "Q180253",
+      "name": "Fuel cell",
+      "year": 1842,
+      "category": "energy-industry",
+      "description": "electrochemical cell converting fuel to electricity",
+      "sitelinks": 68,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fuel_cell",
+      "countries": []
+    },
+    {
+      "id": "Q217817",
+      "name": "Francis turbine",
+      "year": 1849,
+      "category": "energy-industry",
+      "description": "type of water turbine",
+      "sitelinks": 41,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Francis_turbine",
+      "countries": []
+    },
+    {
+      "id": "Q505668",
+      "name": "Chemical vapor deposition",
+      "year": 1852,
+      "category": "energy-industry",
+      "description": "process for thin films for semiconductors or coatings",
+      "sitelinks": 32,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Chemical_vapor_deposition",
+      "countries": []
+    },
+    {
+      "id": "Q334055",
+      "name": "Bessemer process",
+      "year": 1855,
+      "category": "energy-industry",
+      "description": "steel production method",
+      "sitelinks": 42,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bessemer_process",
+      "countries": []
+    },
+    {
+      "id": "Q80728",
+      "name": "Dynamite",
+      "year": 1867,
+      "category": "energy-industry",
+      "description": "explosive preparation of stabilized nitroglycerin",
+      "sitelinks": 102,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Dynamite",
+      "countries": []
+    },
+    {
+      "id": "Q131502",
+      "name": "Electrical generator",
+      "year": 1873,
+      "category": "energy-industry",
+      "description": "device converting mechanical to electrical energy",
+      "sitelinks": 83,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_generator",
+      "countries": []
+    },
+    {
+      "id": "Q189859",
+      "name": "Steam turbine",
+      "year": 1884,
+      "category": "energy-industry",
+      "description": "turbine using steam from a boiler to rotate blades",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_turbine",
+      "countries": []
+    },
+    {
+      "id": "Q654400",
+      "name": "Fischer-Tropsch process",
+      "year": 1925,
+      "category": "energy-industry",
+      "description": "reactions converting carbon monoxide and hydrogen into liquid hydrocarbons",
+      "sitelinks": 36,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fischer%E2%80%93Tropsch_process",
+      "countries": []
+    },
+    {
+      "id": "Q284681",
+      "name": "Chicago Pile-1",
+      "year": 1942,
+      "category": "energy-industry",
+      "description": "world's first nuclear reactor to achieve criticality",
+      "sitelinks": 28,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Chicago_Pile-1",
+      "countries": [
+        "Q30"
+      ]
+    },
+    {
+      "id": "Q47433",
+      "name": "Banknote",
+      "year": 618,
+      "category": "society-administration",
+      "description": "physical currency made of paper or polymer",
+      "sitelinks": 101,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Banknote",
+      "countries": []
+    },
+    {
+      "id": "Q12138",
+      "name": "Gregorian calendar",
+      "year": 1582,
+      "category": "society-administration",
+      "description": "internationally accepted civil calendar",
+      "sitelinks": 210,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+      "countries": []
+    }
+  ]
+}

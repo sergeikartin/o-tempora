@@ -10,7 +10,7 @@ const football: Discovery = {
   id: 'Q2736',
   name: 'association football',
   startYear: 1863,
-  category: 'invention',
+  category: 'everyday-technology',
   regionTags: [],
   fameScore: 296,
   description: 'sport that is practiced between two teams of eleven players',

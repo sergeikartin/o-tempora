@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { GroupedRow } from "./group-rows.js";
-import { tagHistoricalEvent, tagInvention } from "./tag-events.js";
+import { tagHistoricalEvent, tagCuratedDiscovery } from "./tag-events.js";
 import { EVENT_TYPE_CATEGORIES } from "./event-type-categories.js";
 import { WAR_TYPE_QID } from "../fetch/queries/historical-events.js";
 
@@ -30,17 +30,12 @@ test("tagHistoricalEvent leaves category undefined for an unmapped type QID", ()
   assert.equal(category, undefined);
 });
 
-// This is the invariant the Wars/Discoveries output split (wars.json vs
-// discoveries.json) relies on: the two lanes never share a category, so
-// splitting by source before scoring can never lose or duplicate a row
-// relative to today's single-file behavior.
-test("tagHistoricalEvent never produces the invention category, for any known type QID", () => {
-  for (const [typeId, category] of Object.entries(EVENT_TYPE_CATEGORIES)) {
-    assert.notEqual(category, "invention", `type ${typeId} unexpectedly mapped to "invention"`);
-  }
+test("tagCuratedDiscovery passes the given category straight through, unlike tagHistoricalEvent's lookup", () => {
+  assert.equal(tagCuratedDiscovery("science-theory", []).category, "science-theory");
+  assert.equal(tagCuratedDiscovery("exploration", []).category, "exploration");
 });
 
-test("tagInvention always returns the invention category, regardless of the row's own tags", () => {
-  assert.equal(tagInvention(groupedRow()).category, "invention");
-  assert.equal(tagInvention(groupedRow({ tags: [WAR_TYPE_QID] })).category, "invention");
+test("tagCuratedDiscovery maps countries to regionTags the same way tagHistoricalEvent does", () => {
+  const { regionTags } = tagCuratedDiscovery("transportation", ["Q142"]);
+  assert.deepEqual(regionTags, ["europe"]);
 });

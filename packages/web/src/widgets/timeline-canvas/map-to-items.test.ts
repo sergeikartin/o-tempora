@@ -170,22 +170,22 @@ test('mapWars falls back to the war name alone when partOfWarName is absent', ()
 });
 
 const discovery: Discovery = {
-  id: 'Q155',
-  name: 'Brazil',
-  startYear: 1500,
-  category: 'invention',
-  regionTags: ['americas'],
+  id: 'Q11042',
+  name: 'Printing press',
+  startYear: 1440,
+  category: 'communication',
+  regionTags: ['europe'],
   fameScore: 386,
-  description: 'country in South America',
-  wikipediaUrl: 'https://en.wikipedia.org/wiki/Brazil',
+  description: 'device for applying pressure to transfer ink onto paper',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
 };
 
 test('mapDiscoveries maps a discovery to a point item at its startYear', () => {
   const [item] = mapDiscoveries([discovery]);
   expect(item?.id).toBe(discovery.id);
-  expect(item?.name).toBe('Brazil');
-  expect(item?.startYear).toBe(1500);
-  expect(item?.category).toBe('invention');
+  expect(item?.name).toBe('Printing press');
+  expect(item?.startYear).toBe(1440);
+  expect(item?.category).toBe('communication');
 });
 
 // filterByFameScore — shared client-side Fame Tier gate for all three lanes.

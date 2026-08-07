@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import type { Discovery } from '../../shared/types';
 import { assignRows, mapDiscoveries } from './map-to-items';
 import {
-  CATEGORY_COLORS,
+  DISCOVERY_CATEGORY_COLORS,
   MARKER_CENTER_Y,
   MIN_ROW_GAP_PX,
   POINT_RADIUS,
@@ -63,7 +63,7 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
         name: item.name,
         x: xScale(item.startYear),
         row: rowOfItem.get(item.id) ?? 0,
-        fill: CATEGORY_COLORS[item.category],
+        fill: DISCOVERY_CATEGORY_COLORS[item.category],
         tooltip: item.tooltip,
       })),
     [items, rowOfItem, xScale],
