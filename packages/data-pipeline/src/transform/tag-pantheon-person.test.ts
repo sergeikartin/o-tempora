@@ -15,6 +15,7 @@ function pantheonRow(overrides: Partial<PantheonPersonRow> = {}): PantheonPerson
     dplaceCountry: "United Kingdom",
     birthyear: 1643,
     deathyear: 1726,
+    alive: false,
     ...overrides,
   };
 }

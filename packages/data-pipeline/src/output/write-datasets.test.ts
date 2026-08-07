@@ -14,6 +14,7 @@ function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
     bplaceCountry: "United Kingdom",
     dplaceCountry: "United Kingdom",
     birthyear: 1815,
+    alive: true,
     description: "English mathematician",
     wikipediaUrl: "https://en.wikipedia.org/wiki/Ada_Lovelace",
     occupationDomain: "science-technology",
@@ -68,9 +69,21 @@ test("buildPeople builds lifespan.start/end from birthyear/deathyear, with month
   assert.deepEqual(people[0]?.lifespan, { start: { year: 1815, month: 12 }, end: { year: 1852, month: 11 } });
 });
 
-test("buildPeople leaves lifespan.end undefined (still alive) when deathyear is absent", () => {
-  const { people } = buildPeople([taggedPerson({ deathyear: undefined })]);
+test("buildPeople leaves lifespan.end undefined (still alive) when deathyear is absent but Pantheon confirms alive", () => {
+  const { people } = buildPeople([taggedPerson({ deathyear: undefined, alive: true })]);
   assert.equal(people[0]?.lifespan.end, undefined);
+});
+
+// A missing deathyear doesn't always mean "alive" — Pantheon also omits it
+// for people whose death date is simply unrecorded (e.g. Jack the Ripper,
+// never identified). Only alive:true licenses the "draw through to today"
+// contract (see shared-types's Period doc comment); otherwise this is an
+// unrepresentable lifespan (not alive, no known end), not "ongoing" — drop it.
+test("buildPeople drops a person with no deathyear whom Pantheon doesn't mark alive (unknown death date, not ongoing)", () => {
+  const rows = [taggedPerson({ deathyear: undefined, alive: false })];
+  const { people, report } = buildPeople(rows);
+  assert.equal(people.length, 0);
+  assert.equal(report.reasons["no deathyear and not confirmed alive"], 1);
 });
 
 test("buildPeople defaults to no reign data when no map is passed", () => {

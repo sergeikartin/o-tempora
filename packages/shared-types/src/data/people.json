@@ -4073,22 +4073,6 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Wilhelm_Röntgen"
   },
   {
-    "id": "6860726",
-    "name": "Jack the Ripper",
-    "lifespan": {
-      "start": {
-        "year": 1850
-      }
-    },
-    "occupationDomain": "public-figure",
-    "regionTags": [
-      "northern-europe"
-    ],
-    "fameScore": 87.136732,
-    "description": "unidentified 19th century serial killer",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jack_the_Ripper"
-  },
-  {
     "id": "21486576",
     "name": "Giuseppe Garibaldi",
     "lifespan": {
@@ -11442,23 +11426,6 @@
     "fameScore": 84.105577,
     "description": "Classical Chinese poet of the Tang dynasty (701–762)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Li_Bai"
-  },
-  {
-    "id": "36778",
-    "name": "Matthias the Apostle",
-    "lifespan": {
-      "start": {
-        "year": 1,
-        "month": 1
-      }
-    },
-    "occupationDomain": "institutions",
-    "regionTags": [
-      "western-asia"
-    ],
-    "fameScore": 84.105509,
-    "description": "religious figure of the Christian faith",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Matthias_the_Apostle"
   },
   {
     "id": "9615",
@@ -26998,20 +26965,6 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/John_of_Gaunt"
   },
   {
-    "id": "38203876",
-    "name": "Rebecca",
-    "lifespan": {
-      "start": {
-        "year": 259
-      }
-    },
-    "occupationDomain": "institutions",
-    "regionTags": [],
-    "fameScore": 81.029015,
-    "description": "Biblical character",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rebecca"
-  },
-  {
     "id": "217512",
     "name": "Sukarno",
     "lifespan": {
@@ -34137,20 +34090,6 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pedro_Álvares_Cabral"
   },
   {
-    "id": "3587416",
-    "name": "Lazarus of Bethany",
-    "lifespan": {
-      "start": {
-        "year": -100
-      }
-    },
-    "occupationDomain": "institutions",
-    "regionTags": [],
-    "fameScore": 79.998958,
-    "description": "subject of a prominent miracle of Jesus in the Gospel of John",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lazarus_of_Bethany"
-  },
-  {
     "id": "2345746",
     "name": "John Bosco",
     "lifespan": {
@@ -40889,20 +40828,6 @@
         "title": "emperor"
       }
     ]
-  },
-  {
-    "id": "1946795",
-    "name": "Scorpion II",
-    "lifespan": {
-      "start": {
-        "year": -3500
-      }
-    },
-    "occupationDomain": "institutions",
-    "regionTags": [],
-    "fameScore": 79.228145,
-    "description": "second of two kings of that name during the Protodynastic Period of Upper Egypt",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Scorpion_II"
   },
   {
     "id": "45190",
@@ -56033,23 +55958,6 @@
     "fameScore": 77.752165,
     "description": "Soviet ballet dancer and choreographer (1938–1993)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rudolf_Nureyev"
-  },
-  {
-    "id": "6080879",
-    "name": "Yaśodharā",
-    "lifespan": {
-      "start": {
-        "year": -600,
-        "month": 1
-      }
-    },
-    "occupationDomain": "institutions",
-    "regionTags": [
-      "southern-asia"
-    ],
-    "fameScore": 77.751882,
-    "description": "Wife of Prince Siddhartha (Gautama Buddha)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Yaśodharā"
   },
   {
     "id": "102298",
@@ -80420,23 +80328,6 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Walt_Whitman"
   },
   {
-    "id": "13966",
-    "name": "Hosea",
-    "lifespan": {
-      "start": {
-        "year": -784,
-        "month": 1
-      }
-    },
-    "occupationDomain": "institutions",
-    "regionTags": [
-      "western-asia"
-    ],
-    "fameScore": 75.868653,
-    "description": "biblical figure associated with the Book of Hosea",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hosea"
-  },
-  {
     "id": "140700",
     "name": "Shapur I",
     "lifespan": {
@@ -90591,20 +90482,6 @@
         "title": "royal consort"
       }
     ]
-  },
-  {
-    "id": "2197385",
-    "name": "Tiu",
-    "lifespan": {
-      "start": {
-        "year": -3500
-      }
-    },
-    "occupationDomain": "institutions",
-    "regionTags": [],
-    "fameScore": 75.290622,
-    "description": "ancient Egyptian pharaoh",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tiu_(pharaoh)"
   },
   {
     "id": "77610",

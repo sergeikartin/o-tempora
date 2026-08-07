@@ -97,8 +97,15 @@ test("parses a normal row into the consumed fields", () => {
       birthmonth: 1,
       deathyear: 1726,
       deathmonth: undefined,
+      alive: false,
     },
   ]);
+});
+
+test("parses the alive column as a boolean, true only for an exact 'TRUE' value", () => {
+  const rows = parsePantheonCsv(`${HEADER}\n${row({ alive: "TRUE" })}\n${row({ id: "2", alive: "FALSE" })}`);
+  assert.equal(rows[0]?.alive, true);
+  assert.equal(rows[1]?.alive, false);
 });
 
 test("leaves deathmonth undefined when deathdate's own year (1727) disagrees with deathyear (1726) — Pantheon's two columns occasionally disagree", () => {
