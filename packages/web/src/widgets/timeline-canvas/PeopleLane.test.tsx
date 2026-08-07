@@ -26,7 +26,6 @@ const caesar: Person = {
   fameScore: 400,
   description: 'Roman general and statesman',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Julius_Caesar',
-  reignPeriods: [{ start: { year: -49 }, end: { year: -44 }, title: 'Dictator' }],
 };
 
 test('renders one lifespan line per person, with the name labeled above it', () => {
@@ -48,11 +47,13 @@ test("a person's name label sits above their lifespan line", () => {
   expect(Number(label?.getAttribute('y'))).toBeLessThan(Number(line?.getAttribute('y1')));
 });
 
-test('renders one reign-period accent line per reignPeriod, none for a person without any', () => {
+test("a person's name label is colored to match their lifespan line", () => {
   const { scale } = buildXScale(2);
-  const { container } = render(<PeopleLane people={[aristotle, caesar]} xScale={scale} />);
+  const { container } = render(<PeopleLane people={[aristotle]} xScale={scale} />);
 
-  expect(container.querySelectorAll('.d3-reign-line')).toHaveLength(1);
+  const line = container.querySelector('.d3-line');
+  const label = container.querySelector('.d3-name');
+  expect(label?.getAttribute('fill')).toBe(line?.getAttribute('stroke'));
 });
 
 test('renders no stems', () => {
@@ -67,7 +68,6 @@ test('two overlapping lifespans render at different y positions (separate rows)'
   const overlappingCaesar: Person = {
     ...caesar,
     lifespan: { start: { year: -383 }, end: { year: -321 } },
-    reignPeriods: undefined,
   };
   const { container } = render(<PeopleLane people={[aristotle, overlappingCaesar]} xScale={scale} />);
 

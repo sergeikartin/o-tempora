@@ -2,17 +2,14 @@
   display: block;
 }
 
-.line,
-.reignLine {
+.line {
   cursor: default;
 }
 
 .name {
   font-family: Inter, sans-serif;
   font-size: 11px;
-  /* Mirrors color-text-primary; inlined until Unit 5 lands real CSS custom
-     properties (ticket 05). */
-  fill: #2e2b22;
+  /* fill is set per-item (occupation-domain color) via the D3 join, not here. */
   pointer-events: none;
   user-select: none;
 }

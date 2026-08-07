@@ -37,15 +37,15 @@ test('renders one point marker per discovery, with its name as the label', () =>
   expect(names).toEqual(expect.arrayContaining(['association football', 'Brazil']));
 });
 
-test('stacks two discoveries in the same year onto different stem-length tiers so their labels don\'t overlap', () => {
+test('stacks two discoveries in the same year onto different rows, moving each row\'s dot and label down together', () => {
   const { scale } = buildXScale(2);
   const sameYear: Discovery = { ...brazil, id: 'Q999', at: { year: football.at.year } };
   const { container } = render(<EventsLane discoveries={[football, sameYear]} xScale={scale} />);
 
-  // Dots always sit at the same fixed y, right under the shared YearAxis —
-  // it's the label (bottom of the stem) that moves to a different tier.
+  // Each row's dot moves down with its own label — a lower row's dot no
+  // longer sits at the same fixed y as row 0's.
   const dotYs = Array.from(container.querySelectorAll('.d3-dot')).map((el) => el.getAttribute('cy'));
-  expect(new Set(dotYs).size).toBe(1);
+  expect(new Set(dotYs).size).toBe(2);
 
   const labelYs = Array.from(container.querySelectorAll('.d3-point-name')).map((el) => el.getAttribute('y'));
   expect(new Set(labelYs).size).toBe(2);

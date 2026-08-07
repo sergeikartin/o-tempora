@@ -6,13 +6,10 @@ import { assignRows, mapPeople, type PersonItem } from './map-to-items';
 import {
   MIN_ROW_GAP_PX,
   PERIOD_LINE_HEIGHT,
-  REIGN_LINE_COLOR,
-  REIGN_LINE_HEIGHT,
   estimateLabelWidthPx,
   personLabelYForRow,
   personLaneHeight,
   personLineCenterYForRow,
-  reignLineCenterYForRow,
 } from './options';
 import styles from './PeopleLane.module.css';
 
@@ -23,10 +20,8 @@ interface PersonLayout {
   x2: number;
   labelY: number;
   lineY: number;
-  reignY: number;
   fill: string;
   tooltip: string;
-  reignLines: { id: string; x1: number; x2: number; tooltip: string }[];
 }
 
 interface PeopleLaneProps {
@@ -47,11 +42,10 @@ function pixelInterval(item: PersonItem, xScale: d3.ScaleLinear<number, number>)
 
 // A person's lifespan (a Period) renders as a rounded-cap line, not a solid
 // bar — their name label sits left-aligned just above it, the same
-// above-line treatment every Period gets. A reignPeriod (also a Period)
-// renders as its own thinner accent line directly below the lifespan line,
-// at the same row. Overlapping people are stacked into separate rows same
-// as before; a colliding label (wider than its own line) claims the row
-// via pixelInterval above rather than moving to its own band.
+// above-line treatment every Period gets, colored to match the lifespan
+// line's own occupation-domain fill. Overlapping people are stacked into
+// separate rows same as before; a colliding label (wider than its own line)
+// claims the row via pixelInterval above rather than moving to its own band.
 export function PeopleLane({ people, xScale }: PeopleLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -79,28 +73,18 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
           x2: Math.max(xScale(item.endYear), x1 + 2),
           labelY: personLabelYForRow(row),
           lineY: personLineCenterYForRow(row),
-          reignY: reignLineCenterYForRow(row),
           fill: DOMAIN_COLORS[item.occupationDomain],
           tooltip: item.tooltip,
-          reignLines: item.reignPeriods.map((reignPeriod) => {
-            const reignX1 = xScale(reignPeriod.startYear);
-            return {
-              id: reignPeriod.id,
-              x1: reignX1,
-              x2: Math.max(xScale(reignPeriod.endYear), reignX1 + 2),
-              tooltip: reignPeriod.tooltip,
-            };
-          }),
         };
       }),
     [items, rowOfPerson, xScale],
   );
 
   // D3 owns the DOM inside <g class="people"> — one <g class="d3-person">
-  // per person, containing its lifespan line, name label, and any
-  // reign-period accent lines. Literal (non-CSS-Module) marker classes drive
-  // the join's enter/update/exit matching; CSS-Module classes ride alongside
-  // purely for styling and are never used as join selectors.
+  // per person, containing its lifespan line and name label. Literal
+  // (non-CSS-Module) marker classes drive the join's enter/update/exit
+  // matching; CSS-Module classes ride alongside purely for styling and are
+  // never used as join selectors.
   useEffect(() => {
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
@@ -118,7 +102,6 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
           .attr('stroke-linecap', 'round');
         line.append('title');
         g.append('text').attr('class', `d3-name ${styles.name}`).attr('dominant-baseline', 'hanging');
-        g.append('g').attr('class', 'd3-reign-lines');
         return g;
       });
 
@@ -136,29 +119,8 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
       .select<SVGTextElement>('.d3-name')
       .attr('x', (d) => d.x1)
       .attr('y', (d) => d.labelY)
+      .attr('fill', (d) => d.fill)
       .text((d) => d.name);
-
-    personGroups.select<SVGGElement>('.d3-reign-lines').each(function renderReignLines(personDatum) {
-      d3.select(this)
-        .selectAll<SVGLineElement, PersonLayout['reignLines'][number]>('line.d3-reign-line')
-        .data(personDatum.reignLines, (d) => d.id)
-        .join((enter) => {
-          const line = enter
-            .append('line')
-            .attr('class', `d3-reign-line ${styles.reignLine}`)
-            .attr('stroke-width', REIGN_LINE_HEIGHT)
-            .attr('stroke-linecap', 'round')
-            .attr('stroke', REIGN_LINE_COLOR);
-          line.append('title');
-          return line;
-        })
-        .attr('x1', (d) => d.x1)
-        .attr('x2', (d) => d.x2)
-        .attr('y1', personDatum.reignY)
-        .attr('y2', personDatum.reignY)
-        .select('title')
-        .text((d) => d.tooltip);
-    });
   }, [layout]);
 
   return (

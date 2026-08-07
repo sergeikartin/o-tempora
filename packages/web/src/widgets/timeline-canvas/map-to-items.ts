@@ -6,7 +6,6 @@ import type {
   Period,
   Person,
   WarsAndConflictsEntry,
-  YearMonth,
 } from '../../shared/types';
 import { today } from '../../shared/lib/dates';
 import { formatYearMonth } from '../../shared/lib/format-year';
@@ -28,23 +27,6 @@ export function filterByFameScore<T extends { fameScore: number }>(items: T[], m
   return items.filter((item) => item.fameScore >= minFameScore);
 }
 
-// "present"/"(end unknown)" read differently depending on whose end is
-// missing — a person's own open lifespan reads as "present" (they're still
-// alive), while a reign/term with no recorded end reads as "(end unknown)"
-// (Wikidata simply never recorded one). Both fall back to `openEndYear`
-// (today, or the person's own lifespan end) for the *pixel* bar width —
-// this only affects tooltip text.
-function formatRangeTooltip(start: YearMonth, end: YearMonth | undefined, openEndLabel: string): string {
-  return `${formatYearMonth(start)}–${end !== undefined ? formatYearMonth(end) : openEndLabel}`;
-}
-
-export interface ReignPeriodItem {
-  id: string;
-  startYear: number;
-  endYear: number;
-  tooltip: string;
-}
-
 export interface PersonItem {
   id: string;
   name: string;
@@ -52,7 +34,6 @@ export interface PersonItem {
   endYear: number;
   occupationDomain: OccupationDomain;
   tooltip: string;
-  reignPeriods: ReignPeriodItem[];
 }
 
 export function mapPeople(people: Person[]): PersonItem[] {
@@ -60,6 +41,7 @@ export function mapPeople(people: Person[]): PersonItem[] {
     // Missing lifespan.end means still alive — draw through to today, not
     // a collapsed zero-width bar at their birth year.
     const personEndYear = person.lifespan.end?.year ?? today().year;
+    const endLabel = person.lifespan.end !== undefined ? formatYearMonth(person.lifespan.end) : 'present';
 
     return {
       id: person.id,
@@ -67,16 +49,7 @@ export function mapPeople(people: Person[]): PersonItem[] {
       startYear: person.lifespan.start.year,
       endYear: ensureMinimumRangeWidthYears(person.lifespan.start.year, personEndYear),
       occupationDomain: person.occupationDomain,
-      tooltip: `${person.name}: ${formatRangeTooltip(person.lifespan.start, person.lifespan.end, 'present')}`,
-      reignPeriods: (person.reignPeriods ?? []).map((reignPeriod, index) => {
-        const reignEndYear = reignPeriod.end?.year ?? personEndYear;
-        return {
-          id: `${person.id}-reign-${index}`,
-          startYear: reignPeriod.start.year,
-          endYear: ensureMinimumRangeWidthYears(reignPeriod.start.year, reignEndYear),
-          tooltip: `${reignPeriod.title ?? 'Reign'}: ${formatRangeTooltip(reignPeriod.start, reignPeriod.end, '(end unknown)')}`,
-        };
-      }),
+      tooltip: `${person.name}: ${formatYearMonth(person.lifespan.start)}–${endLabel}`,
     };
   });
 }
