@@ -1,4 +1,12 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from 'react';
 import type { Discovery, Person, WarsAndConflictsEntry } from '../../shared/types';
 import { DEFAULT_VIEWPORT_START } from '../../shared/config';
 import type { FameScoreValues } from '../../features/filter-by-fame-score';
@@ -30,6 +38,13 @@ interface TimelineCanvasProps {
 
 export function TimelineCanvas({ people, wars, discoveries, fameScoreValues }: TimelineCanvasProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Drag-to-pan state: mouse-only (touch already gets native scroll-by-swipe
+  // on the overflow-x container for free, and layering pointer-drag on top
+  // of that would double-handle touch input). Start position lives in a ref
+  // since it's read/written every pointermove but never needs to trigger a
+  // render; isDragging is state purely to toggle the grab/grabbing cursor.
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartRef = useRef<{ pointerX: number; scrollLeft: number } | null>(null);
   const [pixelsPerYear, setPixelsPerYear] = useState(() => defaultPixelsPerYear(0));
   // Set by a zoom click to the year at the viewport's center just before the
   // change, so the effect below can re-center the scroll position on it once
@@ -127,6 +142,43 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues }: T
     }
   }, [pixelsPerYear, scale]);
 
+  function handlePointerDown(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== 'mouse' || event.button !== 0) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    dragStartRef.current = { pointerX: event.clientX, scrollLeft: container.scrollLeft };
+    // Best-effort: keeps the drag alive if the pointer leaves the container's
+    // bounds mid-move. jsdom doesn't implement it at all (hence the optional
+    // chaining), and even real browsers can throw NotFoundError for a
+    // pointerId they no longer consider active — either way the drag itself
+    // (driven by dragStartRef, not capture) must still work, so failures here
+    // are swallowed rather than left to abort the rest of this handler.
+    try {
+      container.setPointerCapture?.(event.pointerId);
+    } catch {
+      // no-op — see comment above
+    }
+    setIsDragging(true);
+  }
+
+  function handlePointerMove(event: ReactPointerEvent<HTMLDivElement>) {
+    const drag = dragStartRef.current;
+    const container = scrollRef.current;
+    if (!drag || !container) return;
+    container.scrollLeft = drag.scrollLeft - (event.clientX - drag.pointerX);
+  }
+
+  function endDrag(event: ReactPointerEvent<HTMLDivElement>) {
+    if (!dragStartRef.current) return;
+    dragStartRef.current = null;
+    try {
+      scrollRef.current?.releasePointerCapture?.(event.pointerId);
+    } catch {
+      // no-op — see handlePointerDown's comment
+    }
+    setIsDragging(false);
+  }
+
   function zoom(step: (currentPixelsPerYear: number, viewportWidthPx: number) => number) {
     const container = scrollRef.current;
     if (!container) {
@@ -148,7 +200,15 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues }: T
           +
         </button>
       </div>
-      <div ref={scrollRef} className={styles.scrollContainer} style={decadeGridlineStyle}>
+      <div
+        ref={scrollRef}
+        className={isDragging ? `${styles.scrollContainer} ${styles.dragging}` : styles.scrollContainer}
+        style={decadeGridlineStyle}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+      >
         <div className={styles.peopleLane} style={{ width: totalWidth }}>
           <PeopleLane people={filteredPeople} xScale={scale} />
         </div>
