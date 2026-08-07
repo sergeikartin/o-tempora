@@ -2,20 +2,17 @@
   display: block;
 }
 
-.bar {
+.line,
+.reignLine {
   cursor: default;
 }
 
 .name {
   font-family: Inter, sans-serif;
   font-size: 11px;
-  /* Mirrors color-text-on-category; inlined until Unit 5 lands real CSS
-     custom properties (ticket 05). */
-  fill: #fbf8f0;
+  /* Mirrors color-text-primary; inlined until Unit 5 lands real CSS custom
+     properties (ticket 05). */
+  fill: #2e2b22;
   pointer-events: none;
   user-select: none;
-}
-
-.reignStripe {
-  cursor: default;
 }
