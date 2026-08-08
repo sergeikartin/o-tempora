@@ -8,8 +8,8 @@ export type {
   Period,
   PointInTime,
   YearMonth,
-  Category,
+  ConflictCategory,
   DiscoveryCategory,
   OccupationDomain,
 } from '@same-sky/shared-types';
-export { CATEGORIES, DISCOVERY_CATEGORIES, OCCUPATION_DOMAINS } from '@same-sky/shared-types';
+export { CONFLICT_CATEGORIES, DISCOVERY_CATEGORIES, OCCUPATION_DOMAINS } from '@same-sky/shared-types';

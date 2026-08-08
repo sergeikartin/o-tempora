@@ -7,7 +7,7 @@ import {
   DEFAULT_VIEWPORT_END,
   PAN_MIN_DATE,
 } from '../../shared/config';
-import type { Category, DiscoveryCategory } from '../../shared/types';
+import type { ConflictCategory, DiscoveryCategory } from '../../shared/types';
 
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
@@ -151,25 +151,40 @@ export function personLaneHeight(rowCount: number): number {
   return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
 }
 
-// Mirrors design-tokens.md's Occupation Category Palette — Wars & Conflicts
+// Mirrors design-tokens.md's Conflict Category Palette — Wars & Conflicts
 // keys its flat fill off `category`, unlike People's `occupationDomain`
 // above. Same provisional-inlining reasoning.
-export const CATEGORY_COLORS: Record<Category, string> = {
-  science: '#7FA6C4',
-  politics: '#D8A34D',
-  art: '#C98A9A',
-  philosophy: '#8CAE8A',
-  war: '#B06156',
-  exploration: '#D08A54',
-  religion: '#A891C4',
+//
+// Hue-optimized against all 18 existing People/Domain + Discovery colors
+// below (min ~8.5° hue separation from everything on screen, tighter than
+// Discovery's ~11° precedent since there are now 27 colors total sharing
+// one hue circle — the two closest pairs, military-operation and
+// war-of-independence, lean on S/L rather than hue alone for separation,
+// same approach design-tokens.md's Domain palette already uses for
+// public-figure/science-technology), matched to the same pastel S/L family.
+// War-family categories (war/battle/siege/military-operation) grouped into
+// warm red-orange-yellow hues; the rest (revolution through peace-treaty)
+// into cooler green-blue-violet hues — see the taxonomy rename/expand
+// ticket's Answer for the generation method.
+export const CONFLICT_CATEGORY_COLORS: Record<ConflictCategory, string> = {
+  war: '#BF696B',
+  battle: '#C4906E',
+  siege: '#C1A967',
+  'military-operation': '#BDC251',
+  revolution: '#7DBE74',
+  rebellion: '#6BBDB3',
+  'coup-d-etat': '#7BA8C1',
+  'war-of-independence': '#8E8DC4',
+  'peace-treaty': '#A084C2',
 };
 
 // Events & Inventions' own palette, keyed on DiscoveryCategory (disjoint
-// from Wars' Category above). Locked with the user via
+// from Wars' ConflictCategory above). Locked with the user via
 // .scratch/events-inventions-curated-source/issues/01-discovery-category-color-palette.md:
 // hue-optimized against all 15 existing People/Domain + Wars/Category
-// colors (min ~11° hue separation from everything on screen), matched to
-// the same pastel S/L family as the rest of the app.
+// colors (min ~11° hue separation from everything on screen) as they stood
+// at the time — matched to the same pastel S/L family as the rest of the
+// app.
 export const DISCOVERY_CATEGORY_COLORS: Record<DiscoveryCategory, string> = {
   'energy-industry': '#C9BF5E',
   'food-agriculture': '#B1C987',

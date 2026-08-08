@@ -18,7 +18,10 @@ export interface GroupedRow {
   secondaryMonth?: number;
   tags: string[];
   countries: string[];
-  partOfLabel?: string;
+  // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim — first
+  // value seen wins (same convention label/article/description already use
+  // here), since P18 isn't single-valued (dynamic-tooltips spec §4.1/§4.3).
+  image?: string;
 }
 
 export interface GroupRowsConfig {
@@ -39,7 +42,7 @@ export interface GroupRowsConfig {
   secondaryDatePrecisionVar?: string;
   tagVar?: string;
   countryVar: string;
-  partOfLabelVar?: string;
+  imageVar?: string;
 }
 
 // Only accepts real https://www.wikidata.org/entity/Q... URIs. Wikidata's RDF
@@ -71,6 +74,7 @@ export function groupRows(bindings: SparqlBinding[], config: GroupRowsConfig): G
     if (entry.label === undefined) entry.label = row[config.labelVar]?.value;
     if (entry.article === undefined) entry.article = row[config.articleVar]?.value;
     if (entry.description === undefined) entry.description = row[config.descriptionVar]?.value;
+    if (config.imageVar && entry.image === undefined) entry.image = row[config.imageVar]?.value;
 
     if (entry.year === undefined) {
       const dateValue = row[config.dateVar]?.value;
@@ -103,11 +107,6 @@ export function groupRows(bindings: SparqlBinding[], config: GroupRowsConfig): G
     const countryValue = row[config.countryVar]?.value;
     const countryId = countryValue ? extractQid(countryValue) : undefined;
     if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
-
-    if (config.partOfLabelVar && entry.partOfLabel === undefined) {
-      const partOfLabelValue = row[config.partOfLabelVar]?.value;
-      if (partOfLabelValue) entry.partOfLabel = partOfLabelValue;
-    }
   }
 
   return [...grouped.values()];

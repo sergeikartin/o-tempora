@@ -16,9 +16,9 @@ async function main(): Promise<void> {
   // Reads the checked-in curated events list, independent of the above —
   // ordered last just to keep the log output grouped by lane.
   await fetchEventsEnrichment();
-  // Depends on both fetchDescriptions' and fetchEventsEnrichment's raw
-  // output already being on disk (each now carries a P18 image URI) — must
-  // run after both.
+  // Depends on fetchDescriptions', fetchEventsEnrichment's, and
+  // fetchHistoricalEvents' raw output already being on disk (each now
+  // carries a P18 image URI) — must run after all three.
   await fetchImageAttribution();
 }
 

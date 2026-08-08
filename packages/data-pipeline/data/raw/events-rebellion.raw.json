@@ -1,0 +1,407 @@
+{
+  "head": {
+    "vars": [
+      "event",
+      "eventLabel",
+      "date",
+      "datePrecision",
+      "endDate",
+      "endDatePrecision",
+      "sitelinks",
+      "type",
+      "country",
+      "article",
+      "description",
+      "image"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q124734"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q129864"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "81"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1857-01-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1858-06-20T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Indian Mutiny of 1857"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q668"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "1857–58 uprising against British Company rule"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Indian%20Rebellion%20of%201857.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q124734"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q150229"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "78"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1899-08-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "10"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1901-09-01T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "10"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Boxer Rebellion"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q148"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Boxer_Rebellion"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "anti-imperialist uprising which took place in China 1899-1901"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Boxer-tianjing-left.jpeg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q124734"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q150229"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "78"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1899-08-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "10"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1901-09-01T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "10"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Boxer Rebellion"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q43287"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Boxer_Rebellion"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "anti-imperialist uprising which took place in China 1899-1901"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Boxer-tianjing-left.jpeg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q124734"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q150229"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "78"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1899-08-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "10"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1901-09-01T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "10"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Boxer Rebellion"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q188712"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Boxer_Rebellion"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "anti-imperialist uprising which took place in China 1899-1901"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Boxer-tianjing-left.jpeg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q124734"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q164348"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "81"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1956-01-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1956-11-10T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Hungarian Revolution of 1956"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q28"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Hungarian_Revolution_of_1956"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "1956 revolution in Hungary"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Hungarian%20Revolution%20of%201956.png"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q124734"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33761"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "112"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2010-12-17T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Arab Spring"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Arab_Spring"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "protests and revolutions in the Arab world in the 2010s"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2012-12-01T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "10"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Arab%20Spring%20and%20Regional%20Conflict%20Map.svg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q124734"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q104705419"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "75"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2021-01-06T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "January 6 United States Capitol attack"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/January_6_United_States_Capitol_attack"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "2021 attempt to prevent the U.S. presidential electoral vote count"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/2021%20storming%20of%20the%20United%20States%20Capitol%2009.jpg"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q30"
+        }
+      }
+    ]
+  }
+}

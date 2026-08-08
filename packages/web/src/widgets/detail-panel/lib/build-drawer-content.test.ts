@@ -42,19 +42,16 @@ const koreanWar: War = {
 
 const ongoingWar: War = { ...koreanWar, id: 'Q2', name: 'Ongoing War', period: { start: { year: 2022 }, end: undefined } };
 
-const battleWithParent: WarEvent = {
+const battle: WarEvent = {
   id: 'Q46341',
   name: 'Battle of Gettysburg',
   at: { year: 1863, month: 7 },
-  partOfWarName: 'American Civil War',
   category: 'war',
   regionTags: ['americas'],
   fameScore: 250,
   description: 'major battle of the American Civil War',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Gettysburg',
 };
-
-const battleWithoutParent: WarEvent = { ...battleWithParent, partOfWarName: undefined };
 
 const printingPress: Discovery = {
   id: 'Q11042',
@@ -122,30 +119,26 @@ test('War: dateLine says "present" for an ongoing war (no period.end)', () => {
   expect(content.dateLine).toBe('2022 – present');
 });
 
-test('War: never carries an image, even if the entity happened to have one', () => {
+test('War: image/imageAttribution pass through when present', () => {
   const warWithImage: War = { ...koreanWar, image: 'https://example.com/x.jpg', imageAttribution: 'x' };
   const content = buildDrawerContent({ entityType: 'war', entity: warWithImage });
+  expect(content.image).toBe('https://example.com/x.jpg');
+  expect(content.imageAttribution).toBe('x');
+});
+
+test('War: image/imageAttribution are undefined when absent', () => {
+  const content = buildDrawerContent({ entityType: 'war', entity: koreanWar });
   expect(content.image).toBeUndefined();
   expect(content.imageAttribution).toBeUndefined();
 });
 
 test('WarEvent: dateLine is a single point (at), not a range', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: battleWithoutParent });
+  const content = buildDrawerContent({ entityType: 'war', entity: battle });
   expect(content.dateLine).toBe('July 1863');
 });
 
-test('WarEvent/War: partOfWarLine is "Part of: X" when partOfWarName is present', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: battleWithParent });
-  expect(content.partOfWarLine).toBe('Part of: American Civil War');
-});
-
-test('WarEvent: partOfWarLine is undefined when partOfWarName is absent', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: battleWithoutParent });
-  expect(content.partOfWarLine).toBeUndefined();
-});
-
 test('WarEvent: never carries reignLines (not a Person)', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: battleWithoutParent });
+  const content = buildDrawerContent({ entityType: 'war', entity: battle });
   expect(content.reignLines).toBeUndefined();
 });
 
@@ -154,9 +147,8 @@ test('Discovery: dateLine is at.year only (year precision)', () => {
   expect(content.dateLine).toBe('1440');
 });
 
-test('Discovery: image passes through, no reignLines/partOfWarLine', () => {
+test('Discovery: image passes through, no reignLines', () => {
   const content = buildDrawerContent({ entityType: 'discovery', entity: printingPress });
   expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg');
   expect(content.reignLines).toBeUndefined();
-  expect(content.partOfWarLine).toBeUndefined();
 });

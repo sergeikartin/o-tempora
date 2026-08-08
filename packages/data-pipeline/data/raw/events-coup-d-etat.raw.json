@@ -1,0 +1,79 @@
+{
+  "head": {
+    "vars": [
+      "event",
+      "eventLabel",
+      "date",
+      "datePrecision",
+      "endDate",
+      "endDatePrecision",
+      "sitelinks",
+      "type",
+      "country",
+      "article",
+      "description",
+      "image"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q45382"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15224558"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "76"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2010-01-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "8"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2014-02-23T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Euromaidan"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q212"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Euromaidan"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "2013–2014 pro-european protests in Ukraine"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Euromaidan%20Kyiv%201-12-13%20by%20Gnatoush%20005.jpg"
+        }
+      }
+    ]
+  }
+}

@@ -24,8 +24,6 @@ export interface DrawerContent {
   imageAttribution?: string;
   // Person only.
   reignLines?: string[];
-  // War/WarEvent only.
-  partOfWarLine?: string;
 }
 
 function rangeDateLine(start: { year: number; month?: number }, end: { year: number; month?: number } | undefined): string {
@@ -47,9 +45,6 @@ function personContent(person: Person): DrawerContent {
   };
 }
 
-// War & Conflicts never gets an image, full stop (spec §3.3) — regardless
-// of whether a future `image`/`imageAttribution` value ever shows up on a
-// War/WarEvent row, this builder simply never reads it.
 function warEntryContent(entry: WarsAndConflictsEntry): DrawerContent {
   const isWar = 'period' in entry;
   const dateLine = isWar ? rangeDateLine(entry.period.start, entry.period.end) : formatYearMonth(entry.at);
@@ -59,7 +54,8 @@ function warEntryContent(entry: WarsAndConflictsEntry): DrawerContent {
     dateLine,
     description: entry.description,
     wikipediaUrl: entry.wikipediaUrl,
-    partOfWarLine: entry.partOfWarName ? `Part of: ${entry.partOfWarName}` : undefined,
+    image: entry.image,
+    imageAttribution: entry.imageAttribution,
   };
 }
 

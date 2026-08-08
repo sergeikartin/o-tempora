@@ -161,6 +161,68 @@ test("leaves month unset when no datePrecisionVar is configured at all", () => {
   assert.equal(result[0]?.month, undefined);
 });
 
+test("reads image via imageVar when configured, first value wins across duplicate rows for the same entity", () => {
+  const bindings = [
+    {
+      event: { type: "uri", value: "http://www.wikidata.org/entity/Q6" },
+      eventLabel: { type: "literal", value: "A battle", "xml:lang": "en" },
+      date: { type: "literal", value: "1863-07-01T00:00:00Z" },
+      sitelinks: { type: "literal", value: "80" },
+      article: { type: "uri", value: "https://en.wikipedia.org/wiki/A_battle" },
+      description: { type: "literal", value: "battle", "xml:lang": "en" },
+      image: { type: "uri", value: "https://commons.wikimedia.org/wiki/Special:FilePath/First.jpg" },
+    },
+    {
+      event: { type: "uri", value: "http://www.wikidata.org/entity/Q6" },
+      eventLabel: { type: "literal", value: "A battle", "xml:lang": "en" },
+      date: { type: "literal", value: "1863-07-01T00:00:00Z" },
+      sitelinks: { type: "literal", value: "80" },
+      article: { type: "uri", value: "https://en.wikipedia.org/wiki/A_battle" },
+      description: { type: "literal", value: "battle", "xml:lang": "en" },
+      image: { type: "uri", value: "https://commons.wikimedia.org/wiki/Special:FilePath/Second.jpg" },
+    },
+  ];
+
+  const result = groupRows(bindings, {
+    entityVar: "event",
+    labelVar: "eventLabel",
+    sitelinksVar: "sitelinks",
+    articleVar: "article",
+    descriptionVar: "description",
+    dateVar: "date",
+    countryVar: "country",
+    imageVar: "image",
+  });
+
+  assert.equal(result[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/First.jpg");
+});
+
+test("leaves image undefined when no imageVar is configured, even if the binding carries an image key", () => {
+  const bindings = [
+    {
+      event: { type: "uri", value: "http://www.wikidata.org/entity/Q7" },
+      eventLabel: { type: "literal", value: "Another battle", "xml:lang": "en" },
+      date: { type: "literal", value: "1863-07-01T00:00:00Z" },
+      sitelinks: { type: "literal", value: "80" },
+      article: { type: "uri", value: "https://en.wikipedia.org/wiki/Another_battle" },
+      description: { type: "literal", value: "battle", "xml:lang": "en" },
+      image: { type: "uri", value: "https://commons.wikimedia.org/wiki/Special:FilePath/Ignored.jpg" },
+    },
+  ];
+
+  const result = groupRows(bindings, {
+    entityVar: "event",
+    labelVar: "eventLabel",
+    sitelinksVar: "sitelinks",
+    articleVar: "article",
+    descriptionVar: "description",
+    dateVar: "date",
+    countryVar: "country",
+  });
+
+  assert.equal(result[0]?.image, undefined);
+});
+
 test("reads secondaryMonth from secondaryDatePrecisionVar independently of the primary date's precision", () => {
   const bindings = [
     {

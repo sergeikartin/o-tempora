@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import type { WarsAndConflictsEntry } from '../../shared/types';
 import { assignRows, mapWars } from './map-to-items';
 import {
-  CATEGORY_COLORS,
+  CONFLICT_CATEGORY_COLORS,
   MIN_ROW_GAP_PX,
   PERIOD_LINE_HEIGHT,
   POINT_RADIUS,
@@ -83,7 +83,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
           x1: xScale(item.startYear),
           x2: xScale(item.endYear),
           row: rowOfWar.get(item.id) ?? 0,
-          fill: CATEGORY_COLORS[item.category],
+          fill: CONFLICT_CATEGORY_COLORS[item.category],
         })),
     [items, rowOfWar, xScale],
   );
@@ -97,7 +97,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
           name: item.name,
           x: xScale(item.startYear),
           row: rowOfWar.get(item.id) ?? 0,
-          fill: CATEGORY_COLORS[item.category],
+          fill: CONFLICT_CATEGORY_COLORS[item.category],
         })),
     [items, rowOfWar, xScale],
   );

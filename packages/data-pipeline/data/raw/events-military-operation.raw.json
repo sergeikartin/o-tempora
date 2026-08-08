@@ -1,0 +1,989 @@
+{
+  "head": {
+    "vars": [
+      "event",
+      "eventLabel",
+      "date",
+      "datePrecision",
+      "endDate",
+      "endDatePrecision",
+      "sitelinks",
+      "type",
+      "country",
+      "article",
+      "description",
+      "image"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q42937"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "106"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "-1257-01-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "-1179-01-01T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Trojan War"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Trojan_War"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "legendary war in Greek mythology"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Giovanni%20Domenico%20Tiepolo%20-%20The%20Procession%20of%20the%20Trojan%20Horse%20in%20Troy%20-%20WGA22382.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q150812"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "79"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1939-09-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1939-10-06T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "1939 Invasion of Poland"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Invasion_of_Poland"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "German, Soviet, and Slovak attack on and takeover of Poland that marked the start of World War II"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Defenders%20of%20Warsaw%20%281939%29.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q150812"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "79"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1939-09-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1939-10-06T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "1939 Invasion of Poland"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Invasion_of_Poland"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "German, Soviet, and Slovak attack on and takeover of Poland that marked the start of World War II"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/German%20soldiers%20remove%20the%20Polish%20border%20crossing%20in%20Sopot%20during%20the%20first%20stages%20of%20the%20Invasion%20of%20Poland%20%2848661789227%29.png"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q545449"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "110"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2003-03-20T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2011-12-15T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Iraq War"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Iraq_War"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "2003–2011 war after an American-led invasion"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Iraq%20War%20montage.png"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q620735"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "83"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2008-08-08T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2008-08-12T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Russo-Georgian War"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Georgian_War"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "2008 Russian invasion of Georgia"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Mirazh2007.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q620735"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "83"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2008-08-08T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2008-08-12T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Russo-Georgian War"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Georgian_War"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "2008 Russian invasion of Georgia"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/File-Georgia%202008%20war%2002.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q620735"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "83"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2008-08-08T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2008-08-12T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Russo-Georgian War"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Georgian_War"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "2008 Russian invasion of Georgia"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Georgia%202008%20war%2001.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q620735"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "83"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2008-08-08T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2008-08-12T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Russo-Georgian War"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Georgian_War"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "2008 Russian invasion of Georgia"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Tskhinval%20Yana%20Amelina%2010.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15920546"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "74"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2014-01-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2014-03-26T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Russian annexation of Crimea"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "annexation of Crimea into Russia in 2014"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Flags%20over%20Supreme%20Council%20of%20Crimea%20%283%20March%202014%29.png"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q159"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15920546"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "74"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2014-01-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2014-03-26T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Russian annexation of Crimea"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "annexation of Crimea into Russia in 2014"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Flags%20over%20Supreme%20Council%20of%20Crimea%20%283%20March%202014%29.png"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q212"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15920546"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "74"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2014-01-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2014-03-26T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Russian annexation of Crimea"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "annexation of Crimea into Russia in 2014"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Flags%20over%20Supreme%20Council%20of%20Crimea%20%283%20March%202014%29.png"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15925436"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110999040"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "175"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2022-02-24T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale Russo-Ukrainian war"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q159"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110999040"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "175"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2022-02-24T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale Russo-Ukrainian war"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q184"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110999040"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "175"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2022-02-24T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale Russo-Ukrainian war"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q212"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110999040"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "175"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2022-02-24T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale Russo-Ukrainian war"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16150196"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110999040"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "175"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2022-02-24T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale Russo-Ukrainian war"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16746854"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110999040"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "175"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2022-02-24T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale Russo-Ukrainian war"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q114318324"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110999040"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "175"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2022-02-24T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale Russo-Ukrainian war"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q114318415"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q645883"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q138503695"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "102"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2026-01-01T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "2026 Iran War"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/2026_Iran_war"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Ongoing armed conflict in West Asia"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q794"
+        }
+      }
+    ]
+  }
+}

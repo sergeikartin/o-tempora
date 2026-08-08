@@ -2,7 +2,7 @@ import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { fetchAllPages } from "./wikidata-client.js";
-import { buildHistoricalEventsQuery } from "./queries/historical-events.js";
+import { buildHistoricalEventsQuery, CONFLICT_CATEGORY_QUERIES } from "./queries/historical-events.js";
 import type { SparqlResults } from "./sparql-result-shape.js";
 
 const PAGE_SIZE = 500;
@@ -83,13 +83,20 @@ async function fetchBucketed(
 
 // Wars & Conflicts' only remaining raw candidate scan — Discoveries moved
 // off this bucketed-SPARQL-corpus approach entirely to the hand-curated
-// list (fetch-events-enrichment.ts); this file used to fetch both.
+// list (fetch-events-enrichment.ts); this file used to fetch both. One
+// era-bucketed fetch per ConflictCategory value (CONFLICT_CATEGORY_QUERIES),
+// each writing its own raw file, rather than one combined scan — see the
+// "Split fetch into per-category queries" ticket.
 export async function fetchHistoricalEvents(): Promise<void> {
   await mkdir(RAW_DIR, { recursive: true });
 
-  console.log("Fetching candidate historical events (wars, battles, treaties, ...) from the Wikidata Query Service, bucketed by era...");
-  const historicalEvents = await fetchBucketed("historical events", buildHistoricalEventsQuery);
-  const historicalEventsPath = path.join(RAW_DIR, "events-historical.raw.json");
-  await writeFile(historicalEventsPath, JSON.stringify(historicalEvents, null, 2));
-  console.log(`Wrote ${historicalEvents.results.bindings.length} rows to ${historicalEventsPath}`);
+  for (const { category, typeQid, rawFileName } of CONFLICT_CATEGORY_QUERIES) {
+    console.log(`Fetching candidate ${category} events from the Wikidata Query Service, bucketed by era...`);
+    const events = await fetchBucketed(category, (limit, offset, minYear, maxYearExclusive) =>
+      buildHistoricalEventsQuery(typeQid, limit, offset, minYear, maxYearExclusive),
+    );
+    const outputPath = path.join(RAW_DIR, rawFileName);
+    await writeFile(outputPath, JSON.stringify(events, null, 2));
+    console.log(`Wrote ${events.results.bindings.length} rows to ${outputPath}`);
+  }
 }

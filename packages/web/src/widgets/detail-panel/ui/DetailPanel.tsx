@@ -82,7 +82,6 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
             </ul>
           </>
         )}
-        {content.partOfWarLine && <p className={styles.partOfWar}>{content.partOfWarLine}</p>}
         <a
           href={content.wikipediaUrl}
           target="_blank"
