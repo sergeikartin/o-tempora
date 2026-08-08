@@ -54,6 +54,14 @@ test("FAME_TIER_SITELINKS_WARS has one entry per ConflictCategory value", () => 
   assert.deepEqual(Object.keys(FAME_TIER_SITELINKS_WARS).sort(), [...CONFLICT_CATEGORIES].sort());
 });
 
+test("FAME_TIER_SITELINKS_WARS gives each category its own object, not a shared reference — mutating one category's floor must not affect another's", () => {
+  assert.notEqual(FAME_TIER_SITELINKS_WARS.war, FAME_TIER_SITELINKS_WARS.battle);
+  const original = FAME_TIER_SITELINKS_WARS["peace-treaty"].specialist;
+  FAME_TIER_SITELINKS_WARS["peace-treaty"].specialist = 999;
+  assert.notEqual(FAME_TIER_SITELINKS_WARS.war.specialist, 999);
+  FAME_TIER_SITELINKS_WARS["peace-treaty"].specialist = original;
+});
+
 test("tier nesting holds: specialist output is a strict superset of what generalPublic/educated would allow", () => {
   const rows = [row(70), row(89), row(90), row(99), row(100), row(200)];
   const specialist = scoreAndRank(rows);

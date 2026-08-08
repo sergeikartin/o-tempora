@@ -30,9 +30,12 @@ export interface FameScoreBounds {
 // same way (.scratch/wars-conflicts-taxonomy) after the per-category
 // taxonomy restructure raised the specialist sitelink floor from 30 to a
 // flat 70 across all 9 categories — the old min:30 no longer corresponds to
-// any fameScore the dataset can produce (real range 70-193, n=89).
+// any fameScore the dataset can produce (real range 70-193, n=84, after
+// dedupe). wars' default lowered from 100 to 75 (just above the new min) so
+// the sidebar opens showing most of the freshly-floored corpus rather than
+// only its upper fame tier.
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
   people: { min: 75, max: 100, default: 85 },
-  wars: { min: 70, max: 193, default: 100 },
+  wars: { min: 70, max: 193, default: 75 },
   discoveries: { min: 8, max: 296, default: 70 },
 };

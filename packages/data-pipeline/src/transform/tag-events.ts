@@ -22,8 +22,15 @@ function regionTagsFor(countries: string[]): Region[] {
   return regionTags;
 }
 
-// Historical events carry a ?type claim mapped via the closed 8-class
-// EVENT_TYPE_CATEGORIES table (first claim, in claim order, that maps).
+// Historical events carry a ?type claim mapped via the closed 9-class
+// EVENT_TYPE_CATEGORIES table — a direct 1:1 Q-ID -> ConflictCategory map,
+// not a collapsing lookup. Each row's `tags` is a singleton by construction
+// (fetch/queries/historical-events.ts's per-category BIND), so this loop
+// only ever runs one iteration in practice; a row spanning more than one
+// category (a Wikidata item with multiple instance-of claims matching more
+// than one of the 9 category queries) is resolved upstream instead, by
+// transform/index.ts's dedupeFirstById, before it ever reaches this
+// function.
 export function tagHistoricalEvent(row: GroupedRow): EventTags {
   let category: ConflictCategory | undefined;
   for (const typeId of row.tags) {

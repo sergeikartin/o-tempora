@@ -25,13 +25,13 @@ export interface FameTierSitelinks {
   specialist: number;
 }
 
-const FLAT_FAME_TIER: FameTierSitelinks = { generalPublic: 100, educated: 90, specialist: 70 };
-
+// A fresh object per category (not a shared reference) — a per-category
+// re-tuning is expected to write `FAME_TIER_SITELINKS_WARS['some-category'].specialist = ...`
+// directly, which would silently retune every category at once if they all
+// pointed at the same object.
 export const FAME_TIER_SITELINKS_WARS: Record<ConflictCategory, FameTierSitelinks> = Object.fromEntries(
-  CONFLICT_CATEGORIES.map((category) => [category, FLAT_FAME_TIER]),
+  CONFLICT_CATEGORIES.map((category) => [category, { generalPublic: 100, educated: 90, specialist: 70 }]),
 ) as Record<ConflictCategory, FameTierSitelinks>;
-
-export type FameTier = keyof FameTierSitelinks;
 
 // Floor is each row's own category's specialist tier (the loosest tier,
 // largest volume) rather than generalPublic: zoom itself now drives the

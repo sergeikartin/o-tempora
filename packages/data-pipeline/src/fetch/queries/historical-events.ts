@@ -37,7 +37,13 @@ export interface ConflictCategoryQuery {
 
 // Iterated by fetch-historical-events.ts to fetch and write one raw file per
 // category; iterated again by transform/index.ts's transformWars to read
-// them all back in. Order is cosmetic (log-output grouping) only.
+// them all back in — order there only affects log-output grouping. It also
+// doubles as transform/index.ts's dedupeFirstById's tiebreak order for
+// entities whose Wikidata item clears more than one category's query
+// (multiple instance-of claims) — reordering this array changes which
+// category such an entity ends up tagged as. See dedupeFirstById's own
+// comment for what that ordering actually encodes (editorial salience for
+// a general-audience timeline, not strict Wikidata-taxonomy specificity).
 export const CONFLICT_CATEGORY_QUERIES: ConflictCategoryQuery[] = [
   { category: "war", typeQid: WAR_TYPE_QID, rawFileName: "events-war.raw.json" },
   { category: "battle", typeQid: BATTLE_TYPE_QID, rawFileName: "events-battle.raw.json" },

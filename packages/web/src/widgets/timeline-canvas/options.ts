@@ -181,7 +181,7 @@ export const CONFLICT_CATEGORY_COLORS: Record<ConflictCategory, string> = {
 // Events & Inventions' own palette, keyed on DiscoveryCategory (disjoint
 // from Wars' ConflictCategory above). Locked with the user via
 // .scratch/events-inventions-curated-source/issues/01-discovery-category-color-palette.md:
-// hue-optimized against all 15 existing People/Domain + Wars/Category
+// hue-optimized against all 15 existing People/Domain + Wars/ConflictCategory
 // colors (min ~11° hue separation from everything on screen) as they stood
 // at the time — matched to the same pastel S/L family as the rest of the
 // app.

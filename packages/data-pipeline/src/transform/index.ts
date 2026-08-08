@@ -140,13 +140,18 @@ export function transformPeople(): TaggedPerson[] {
 // live (5 of 89 specialist-floor items) while spot-checking the first real
 // fetch after "Split fetch into per-category queries" landed. Dedupe by id,
 // first-occurrence-wins, so exactly one category sticks per entity —
-// CONFLICT_CATEGORY_QUERIES' own order (war, battle, siege,
-// military-operation, revolution, rebellion, coup-d'état,
-// war-of-independence, peace-treaty) is the tiebreak, matching the old
-// combined-query EVENT_TYPE_CATEGORIES table's "first claim, in claim
-// order, that maps" precedent: the more specific/prominent war-family
-// category wins over a broader one (war over military-operation, battle
-// over siege) for entities that satisfy both.
+// CONFLICT_CATEGORY_QUERIES' own array order is the tiebreak (war, battle,
+// siege, military-operation, revolution, rebellion, coup-d'état,
+// war-of-independence, peace-treaty). This is an editorial salience
+// ordering for a general-audience history timeline, not strict Wikidata-
+// taxonomy specificity — it happened to pick "war" over "military
+// operation" and "revolution" over "rebellion" for the 5 real collisions
+// found, both defensible; "battle" beating "siege" for the Fall of
+// Constantinople is a closer call (many sources lead with "siege"). Treat
+// this ordering as a tunable editorial lever, not a derived fact — if a
+// specific miscategorization turns out to matter, fix it by reordering
+// CONFLICT_CATEGORY_QUERIES (which log-output grouping doesn't care about),
+// not by rewriting this function.
 export function dedupeFirstById<T extends { id: string }>(rows: T[]): T[] {
   const seen = new Set<string>();
   return rows.filter((row) => {
