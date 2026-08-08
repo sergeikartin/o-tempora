@@ -13,8 +13,6 @@ Read on demand — only load what the current task needs.
 |---|---|
 | [docs/product-scope.md](docs/product-scope.md) | Making a scope or UX call |
 | [docs/code-conventions.md](docs/code-conventions.md) | Writing shared/cross-package code |
-| [docs/workflow.md](docs/workflow.md) | Before starting any unit of work |
-| [docs/active-context.md](docs/active-context.md) | Session start — current phase, open questions |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | Debugging a recurring issue |
 | [docs/config-variables.md](docs/config-variables.md) | Touching config |
 | `packages/web/CLAUDE.md` + `packages/web/docs/` | Working in `packages/web` |

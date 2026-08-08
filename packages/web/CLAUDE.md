@@ -29,8 +29,8 @@ Run from repo root:
 
 ## Docs
 
-- `docs/code-conventions.md` — FSD/React/styling/vis-timeline rules, file organization
+- `docs/code-conventions.md` — FSD/React/styling rules, file organization
 - `docs/design-tokens.md` — color palette, typography, radius scale
-- `docs/adr/` — architecture decision records, e.g. `0001-d3-over-vis-timeline.md` (decided and executed — see `.scratch/d3-timeline-migration/`)
+- `docs/adr/` — architecture decision records
 - Shared conventions (apply here too): `../../docs/code-conventions.md`
 
