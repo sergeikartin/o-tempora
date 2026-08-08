@@ -47,17 +47,24 @@ export async function fetchImageAttribution(): Promise<void> {
   // legitimately produce more than one binding row (P18 isn't
   // single-valued), so duplicate (id, imageUri) pairs are expected here;
   // batchedCommonsImageAttributionFetch already tolerates that (dedupes by
-  // Commons file title internally).
-  const warsEntries: Array<{ id: string; imageUri: string }> = [];
-  for (const { rawFileName } of CONFLICT_CATEGORY_QUERIES) {
-    const raw = validateSparqlResultShape(JSON.parse(await readFile(path.join(RAW_DIR, rawFileName), "utf8")));
-    for (const row of raw.results.bindings) {
+  // Commons file title internally). Reads run concurrently — plain local
+  // disk I/O with no shared external rate limit, unlike the Commons/WDQS
+  // network calls elsewhere in this file, so there's no reason to serialize
+  // them.
+  const warsRawFiles = await Promise.all(
+    CONFLICT_CATEGORY_QUERIES.map(({ rawFileName }) =>
+      readFile(path.join(RAW_DIR, rawFileName), "utf8").then((text) => validateSparqlResultShape(JSON.parse(text))),
+    ),
+  );
+  const warsEntries = warsRawFiles
+    .flatMap((raw) => raw.results.bindings)
+    .map((row) => {
       const eventUri = row.event?.value;
       const imageUri = row.image?.value;
       const id = eventUri ? extractQid(eventUri) : undefined;
-      if (id && imageUri) warsEntries.push({ id, imageUri });
-    }
-  }
+      return id && imageUri ? { id, imageUri } : undefined;
+    })
+    .filter((entry): entry is { id: string; imageUri: string } => entry !== undefined);
 
   console.log(`Fetching Commons attribution for ${peopleEntries.length} people images...`);
   console.log(`Fetching Commons attribution for ${discoveryEntries.length} discovery images...`);

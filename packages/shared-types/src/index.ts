@@ -190,10 +190,10 @@ export interface Person extends TimelineEntry {
 // operations, coups d'état, peace treaties) is a WarEvent instead, even
 // when Wikidata happens to record a duration for one of them.
 export interface War extends TimelineEntry {
-  // Always "war" in practice (see above) — kept as the shared
-  // ConflictCategory type rather than a `"war"` literal so War and WarEvent
-  // can share CONFLICT_CATEGORY_COLORS and other ConflictCategory-keyed
-  // lookups on the frontend.
+  // "war" or "war-of-independence" in practice (see above) — kept as the
+  // shared ConflictCategory type rather than a narrower literal union so
+  // War and WarEvent can share CONFLICT_CATEGORY_COLORS and other
+  // ConflictCategory-keyed lookups on the frontend.
   category: ConflictCategory;
   regionTags: Region[];
   period: Period;
