@@ -23,7 +23,6 @@ interface PointLayout {
   markerY: number;
   labelY: number;
   fill: string;
-  tooltip: string;
 }
 
 interface EventsLaneProps {
@@ -99,7 +98,6 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
           markerY: rowLayoutByRow.markerYs[row] ?? LANE_TOP_PADDING + POINT_RADIUS,
           labelY: rowLayoutByRow.labelStarts[row] ?? LANE_TOP_PADDING + POINT_RADIUS * 2 + EVENTS_MARKER_LABEL_GAP,
           fill: DISCOVERY_CATEGORY_COLORS[item.category],
-          tooltip: item.tooltip,
         };
       }),
     [items, linesById, rowOfItem, rowLayoutByRow, xScale],
@@ -115,8 +113,7 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
       .data(layout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-point-group');
-        const dot = g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
-        dot.append('title');
+        g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
         g.append('text')
           .attr('class', `d3-point-name ${styles.pointName}`)
           .attr('text-anchor', 'middle')
@@ -128,9 +125,9 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
       .select<SVGCircleElement>('.d3-dot')
       .attr('cx', (d) => d.x)
       .attr('cy', (d) => d.markerY)
-      .attr('fill', (d) => d.fill);
-
-    pointGroups.select('.d3-dot title').text((d) => d.tooltip);
+      .attr('fill', (d) => d.fill)
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'discovery');
 
     pointGroups
       .select<SVGTextElement>('.d3-point-name')

@@ -68,3 +68,23 @@ test('renders an empty svg for an empty wars list', () => {
 
   expect(container.querySelectorAll('.d3-line, .d3-dot')).toHaveLength(0);
 });
+
+test('a War range line and a WarEvent dot both carry data-entity-id/data-entity-type="war"', () => {
+  const { scale } = buildXScale(2);
+  const { container } = render(<WarsLane wars={[koreanWar, battleOfMegiddo]} xScale={scale} />);
+
+  const line = container.querySelector('.d3-line');
+  expect(line?.getAttribute('data-entity-id')).toBe('Q8214');
+  expect(line?.getAttribute('data-entity-type')).toBe('war');
+
+  const dot = container.querySelector('.d3-dot');
+  expect(dot?.getAttribute('data-entity-id')).toBe('Q217799');
+  expect(dot?.getAttribute('data-entity-type')).toBe('war');
+});
+
+test('no longer renders a native <title> tooltip element — replaced by the click-to-open drawer', () => {
+  const { scale } = buildXScale(2);
+  const { container } = render(<WarsLane wars={[koreanWar, battleOfMegiddo]} xScale={scale} />);
+
+  expect(container.querySelector('title')).toBeNull();
+});

@@ -21,7 +21,6 @@ interface PersonLayout {
   labelY: number;
   lineY: number;
   fill: string;
-  tooltip: string;
 }
 
 interface PeopleLaneProps {
@@ -74,7 +73,6 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
           labelY: personLabelYForRow(row),
           lineY: personLineCenterYForRow(row),
           fill: DOMAIN_COLORS[item.occupationDomain],
-          tooltip: item.tooltip,
         };
       }),
     [items, rowOfPerson, xScale],
@@ -95,12 +93,10 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
       .data(layout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-person');
-        const line = g
-          .append('line')
+        g.append('line')
           .attr('class', `d3-line ${styles.line}`)
           .attr('stroke-width', PERIOD_LINE_HEIGHT)
           .attr('stroke-linecap', 'round');
-        line.append('title');
         g.append('text').attr('class', `d3-name ${styles.name}`).attr('dominant-baseline', 'hanging');
         return g;
       });
@@ -111,9 +107,11 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
       .attr('x2', (d) => d.x2)
       .attr('y1', (d) => d.lineY)
       .attr('y2', (d) => d.lineY)
-      .attr('stroke', (d) => d.fill);
-
-    personGroups.select('.d3-line title').text((d) => d.tooltip);
+      .attr('stroke', (d) => d.fill)
+      // Lets TimelineCanvas's delegated click listener resolve the source
+      // entity (dynamic-tooltips spec §2's click-wiring architecture).
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'person');
 
     personGroups
       .select<SVGTextElement>('.d3-name')

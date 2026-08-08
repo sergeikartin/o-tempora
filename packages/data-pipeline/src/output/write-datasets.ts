@@ -143,6 +143,8 @@ export function buildPeople(
       description: row.description,
       wikipediaUrl: row.wikipediaUrl,
       reignPeriods: reignsByPersonId.get(row.wdId),
+      ...(row.image ? { image: row.image } : {}),
+      ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
     });
   }
 
@@ -221,6 +223,8 @@ export function buildDiscoveries(rows: TaggedDiscovery[]): { discoveries: Discov
       fameScore: row.sitelinks,
       description: validated.description,
       wikipediaUrl: validated.article,
+      ...(row.image ? { image: row.image } : {}),
+      ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
     });
   }
 

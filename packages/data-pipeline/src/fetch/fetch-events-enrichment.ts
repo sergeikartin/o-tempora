@@ -31,6 +31,9 @@ export interface EnrichedEvent {
   sitelinks?: number;
   wikipediaUrl?: string;
   countries: string[];
+  // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim — absent
+  // means no P18 claim (dynamic-tooltips spec §4.1/§4.3).
+  image?: string;
 }
 
 // Validated at the boundary before Fetch reads it (docs/code-conventions.md's
@@ -78,7 +81,8 @@ function isEnrichedEvent(value: unknown): value is EnrichedEvent {
     (candidate.sitelinks === undefined || typeof candidate.sitelinks === "number") &&
     (candidate.wikipediaUrl === undefined || typeof candidate.wikipediaUrl === "string") &&
     Array.isArray(candidate.countries) &&
-    candidate.countries.every((country) => typeof country === "string")
+    candidate.countries.every((country) => typeof country === "string") &&
+    (candidate.image === undefined || typeof candidate.image === "string")
   );
 }
 
@@ -100,19 +104,21 @@ interface EnrichmentFields {
   sitelinks?: number;
   wikipediaUrl?: string;
   countries: string[];
+  image?: string;
 }
 
 // Reads the checked-in curated list (data/raw/events-curated.raw.json) and
-// backfills sitelinks/wikipediaUrl/country via a batched per-QID SPARQL
-// pass (same VALUES-clause pattern as fetch-reigns.ts/fetch-descriptions.ts)
-// — dateProperty/source are curation-time provenance and are dropped here,
-// not carried into the merged output.
+// backfills sitelinks/wikipediaUrl/country/image via a batched per-QID
+// SPARQL pass (same VALUES-clause pattern as
+// fetch-reigns.ts/fetch-descriptions.ts) — dateProperty/source are
+// curation-time provenance and are dropped here, not carried into the
+// merged output.
 export async function fetchEventsEnrichment(): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "events-curated.raw.json");
   const curated = validateCuratedEventsFile(JSON.parse(await readFile(curatedPath, "utf8")));
   const ids = curated.events.map((event) => event.id);
 
-  console.log(`Fetching sitelinks/article/country enrichment for ${ids.length} curated events...`);
+  console.log(`Fetching sitelinks/article/country/image enrichment for ${ids.length} curated events...`);
   const result = await batchedSparqlFetch(ids, buildEventsEnrichmentQuery);
 
   const enrichmentById = new Map<string, EnrichmentFields>();
@@ -130,6 +136,7 @@ export async function fetchEventsEnrichment(): Promise<void> {
 
     if (entry.sitelinks === undefined && row.sitelinks?.value) entry.sitelinks = Number(row.sitelinks.value);
     if (entry.wikipediaUrl === undefined && row.article?.value) entry.wikipediaUrl = row.article.value;
+    if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
     const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
     if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
   }
@@ -145,6 +152,7 @@ export async function fetchEventsEnrichment(): Promise<void> {
       sitelinks: enrichment?.sitelinks,
       wikipediaUrl: enrichment?.wikipediaUrl,
       countries: enrichment?.countries ?? [],
+      image: enrichment?.image,
     };
   });
 

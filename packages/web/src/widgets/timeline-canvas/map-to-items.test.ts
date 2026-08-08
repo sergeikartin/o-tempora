@@ -35,27 +35,6 @@ test('mapPeople falls back to today when lifespan.end is missing — still alive
   expect(item?.endYear).toBe(today().year);
 });
 
-test('mapPeople formats the tooltip with BCE/CE-styled years', () => {
-  const [item] = mapPeople([person]);
-  expect(item?.tooltip).toBe('Aristotle: 384 BCE–322 BCE');
-});
-
-test('mapPeople tooltip says "present" (not a formatted year) for an open-ended lifespan', () => {
-  const [item] = mapPeople([personWithoutDeathYear]);
-  expect(item?.tooltip).toBe('Hesiod: 751 BCE–present');
-});
-
-test('mapPeople includes the month in the tooltip when lifespan.start/end have one', () => {
-  const personWithMonths: Person = {
-    ...person,
-    id: 'Q1339',
-    name: 'William Shakespeare',
-    lifespan: { start: { year: 1564, month: 4 }, end: { year: 1616, month: 4 } },
-  };
-  const [item] = mapPeople([personWithMonths]);
-  expect(item?.tooltip).toBe('William Shakespeare: April 1564–April 1616');
-});
-
 const warWithEndYear: War = {
   id: 'Q8214',
   name: 'Korean War',
@@ -74,24 +53,16 @@ const warZeroWidth: War = {
   period: { start: { year: 1967 }, end: { year: 1967 } },
 };
 
-const battleWithParent: WarEvent = {
-  id: 'Q46341',
-  name: 'Battle of Gettysburg',
-  at: { year: 1863 },
-  partOfWarName: 'American Civil War',
-  category: 'war',
-  regionTags: ['americas'],
-  fameScore: 250,
-  description: 'major battle of the American Civil War',
-  wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Gettysburg',
-};
-
 const battleWithoutParent: WarEvent = {
-  ...battleWithParent,
   id: 'Q217799',
   name: 'Battle of Megiddo',
   at: { year: -1457 },
   partOfWarName: undefined,
+  category: 'war',
+  regionTags: ['americas'],
+  fameScore: 250,
+  description: 'ancient battle',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
 };
 
 test('mapWars maps a War to a range item (isPoint: false)', () => {
@@ -114,16 +85,6 @@ test('mapWars maps a WarEvent to a point item', () => {
   expect(item?.isPoint).toBe(true);
   expect(item?.startYear).toBe(-1457);
   expect(item?.endYear).toBe(-1457);
-});
-
-test('mapWars surfaces partOfWarName in the tooltip', () => {
-  const [item] = mapWars([battleWithParent]);
-  expect(item?.tooltip).toBe('Battle of Gettysburg — part of American Civil War');
-});
-
-test('mapWars falls back to the war name alone when partOfWarName is absent', () => {
-  const [item] = mapWars([battleWithoutParent]);
-  expect(item?.tooltip).toBe('Battle of Megiddo');
 });
 
 const discovery: Discovery = {

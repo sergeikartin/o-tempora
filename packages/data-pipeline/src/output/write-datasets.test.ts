@@ -129,6 +129,20 @@ test("buildPeople maps fameScore directly from hpi", () => {
   assert.equal(people[0]?.fameScore, 92.5);
 });
 
+test("buildPeople passes through image/imageAttribution when present", () => {
+  const { people } = buildPeople([
+    taggedPerson({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/X.jpg", imageAttribution: "X, via Wikimedia Commons" }),
+  ]);
+  assert.equal(people[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/X.jpg");
+  assert.equal(people[0]?.imageAttribution, "X, via Wikimedia Commons");
+});
+
+test("buildPeople omits image/imageAttribution entirely (not undefined-valued keys) when absent", () => {
+  const { people } = buildPeople([taggedPerson({ image: undefined, imageAttribution: undefined })]);
+  assert.equal("image" in (people[0] as object), false);
+  assert.equal("imageAttribution" in (people[0] as object), false);
+});
+
 test("buildWars builds a War (with period.end) only for the war type (Q198), even if secondaryYear is present", () => {
   const war = taggedEvent({ id: "Q3", tags: ["Q198"], year: 1861, secondaryYear: 1865 });
   const battle = taggedEvent({ id: "Q4", tags: ["Q178561"], year: 1863, secondaryYear: 1863 });
@@ -191,4 +205,18 @@ test("buildDiscoveries drops a row whose sitelinks is 0 (enrichment couldn't res
   const { discoveries, report } = buildDiscoveries([taggedDiscovery({ sitelinks: 0 })]);
   assert.equal(discoveries.length, 0);
   assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
+});
+
+test("buildDiscoveries passes through image/imageAttribution when present", () => {
+  const { discoveries } = buildDiscoveries([
+    taggedDiscovery({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/Y.jpg", imageAttribution: "Y, via Wikimedia Commons" }),
+  ]);
+  assert.equal(discoveries[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/Y.jpg");
+  assert.equal(discoveries[0]?.imageAttribution, "Y, via Wikimedia Commons");
+});
+
+test("buildDiscoveries omits image/imageAttribution entirely (not undefined-valued keys) when absent — keeps the existing exact-shape test above honest", () => {
+  const { discoveries } = buildDiscoveries([taggedDiscovery()]);
+  assert.equal("image" in (discoveries[0] as object), false);
+  assert.equal("imageAttribution" in (discoveries[0] as object), false);
 });

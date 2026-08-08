@@ -8,6 +8,12 @@ test("builds a VALUES clause from wd:-prefixed person QIDs", () => {
   assert.match(query, /OPTIONAL \{ \?person schema:description \?description \. FILTER\(LANG\(\?description\) = "en"\) \}/);
 });
 
+test("also selects and backfills the P18 image claim on the same ?person", () => {
+  const query = buildDescriptionsQuery(["Q935"]);
+  assert.match(query, /SELECT \?person \?description \?image WHERE/);
+  assert.match(query, /OPTIONAL \{ \?person wdt:P18 \?image \. \}/);
+});
+
 test("handles a single-id batch", () => {
   const query = buildDescriptionsQuery(["Q1"]);
   assert.match(query, /VALUES \?person \{ wd:Q1 \}/);

@@ -10,6 +10,7 @@ import {
 import type { Discovery, Person, WarsAndConflictsEntry } from '../../shared/types';
 import { DEFAULT_VIEWPORT_START } from '../../shared/config';
 import type { FameScoreValues } from '../../features/filter-by-fame-score';
+import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
   buildXScale,
   DECADE_STEP_YEARS,
@@ -34,9 +35,15 @@ interface TimelineCanvasProps {
   // Sidebar-set fame-score floors (ADR 0003) — zoom no longer drives entity
   // density, so this is a plain prop, not derived from pixelsPerYear.
   fameScoreValues: FameScoreValues;
+  // Reports a click on any lane's mark, resolved via one delegated listener
+  // below rather than three separate per-lane click handlers (dynamic-
+  // tooltips spec §2's click-wiring architecture) — the caller (App.tsx)
+  // owns looking the id up in the full in-memory dataset and opening the
+  // detail drawer.
+  onEntityClick: (ref: SelectedEntityRef) => void;
 }
 
-export function TimelineCanvas({ people, wars, discoveries, fameScoreValues }: TimelineCanvasProps) {
+export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onEntityClick }: TimelineCanvasProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   // Drag-to-pan state: mouse-only (touch already gets native scroll-by-swipe
   // on the overflow-x container for free, and layering pointer-drag on top
@@ -178,6 +185,48 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues }: T
     }
     setIsDragging(false);
   }
+
+  // One delegated click listener for every mark in all three lanes, keyed
+  // off the data-entity-id/data-entity-type attributes each Lane sets on
+  // its .d3-line/.d3-dot elements (dynamic-tooltips spec §2) — avoids
+  // wiring the same click handler three times over, and composes cleanly
+  // with the drag-to-pan pointer handlers already on this same container.
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    function handleClick(event: MouseEvent) {
+      // Resolving the mark via a fresh hit-test at the click's real screen
+      // position, not event.target: this container's own drag-to-pan
+      // handler calls setPointerCapture on pointerdown, which retargets
+      // the resulting click event's target to the container itself (a
+      // browser-level side effect of pointer capture on the compatibility
+      // mouse event) — event.target.closest() would then never find a
+      // mark for a real mouse click, only for a synthetic one. jsdom
+      // doesn't implement elementFromPoint at all (the method itself is
+      // absent, hence the optional call), so this falls back to
+      // event.target there, which is exactly what a synthetic
+      // fireEvent.click(mark) in tests already sets correctly.
+      const hit = document.elementFromPoint?.(event.clientX, event.clientY) ?? event.target;
+      if (!(hit instanceof Element)) return;
+      const mark = hit.closest<SVGElement>('[data-entity-id]');
+      if (!mark) return;
+      const id = mark.getAttribute('data-entity-id');
+      const entityTypeAttr = mark.getAttribute('data-entity-type');
+      // Validated against the real EntityType union, not just cast — a
+      // future Lane bug or a stray data-entity-id-bearing element added
+      // elsewhere in the scroll container should fail closed (no click
+      // reported) rather than silently being treated as a discovery, which
+      // is what App.tsx's id lookup falls through to for any unrecognized
+      // entityType.
+      const entityType = ENTITY_TYPES.find((candidate) => candidate === entityTypeAttr);
+      if (!id || !entityType) return;
+      onEntityClick({ id, entityType });
+    }
+
+    container.addEventListener('click', handleClick);
+    return () => container.removeEventListener('click', handleClick);
+  }, [onEntityClick]);
 
   function zoom(step: (currentPixelsPerYear: number, viewportWidthPx: number) => number) {
     const container = scrollRef.current;

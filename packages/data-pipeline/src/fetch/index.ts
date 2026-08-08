@@ -3,6 +3,7 @@ import { fetchDescriptions } from "./fetch-descriptions.js";
 import { fetchReigns } from "./fetch-reigns.js";
 import { fetchHistoricalEvents } from "./fetch-historical-events.js";
 import { fetchEventsEnrichment } from "./fetch-events-enrichment.js";
+import { fetchImageAttribution } from "./fetch-image-attribution.js";
 
 async function main(): Promise<void> {
   await fetchPantheon();
@@ -15,6 +16,10 @@ async function main(): Promise<void> {
   // Reads the checked-in curated events list, independent of the above —
   // ordered last just to keep the log output grouped by lane.
   await fetchEventsEnrichment();
+  // Depends on both fetchDescriptions' and fetchEventsEnrichment's raw
+  // output already being on disk (each now carries a P18 image URI) — must
+  // run after both.
+  await fetchImageAttribution();
 }
 
 main().catch((error: unknown) => {
