@@ -6,12 +6,12 @@ import {
   pixelsPerYearBounds,
   zoomIn,
   zoomOut,
-  CATEGORY_COLORS,
+  CONFLICT_CATEGORY_COLORS,
   DISCOVERY_CATEGORY_COLORS,
 } from './options';
 import { today } from '../../shared/lib/dates';
 import { PAN_MIN_DATE, DOMAIN_COLORS } from '../../shared/config';
-import { OCCUPATION_DOMAINS, CATEGORIES, DISCOVERY_CATEGORIES } from '../../shared/types';
+import { OCCUPATION_DOMAINS, CONFLICT_CATEGORIES, DISCOVERY_CATEGORIES } from '../../shared/types';
 
 test('buildXScale domains from PAN_MIN_DATE to a live today() read', () => {
   const { scale } = buildXScale(5);
@@ -70,9 +70,9 @@ test('DOMAIN_COLORS has one entry per OccupationDomain, no duplicate hex values'
   expect(new Set(values).size).toBe(values.length);
 });
 
-test('CATEGORY_COLORS has one entry per Category, no duplicate hex values', () => {
-  const values = CATEGORIES.map((category) => CATEGORY_COLORS[category]);
-  expect(values).toHaveLength(CATEGORIES.length);
+test('CONFLICT_CATEGORY_COLORS has one entry per ConflictCategory, no duplicate hex values', () => {
+  const values = CONFLICT_CATEGORIES.map((category) => CONFLICT_CATEGORY_COLORS[category]);
+  expect(values).toHaveLength(CONFLICT_CATEGORIES.length);
   expect(values.every(Boolean)).toBe(true);
   expect(new Set(values).size).toBe(values.length);
 });

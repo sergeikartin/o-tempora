@@ -26,9 +26,13 @@ export interface FameScoreBounds {
 // discoveries' bounds recalibrated (.scratch/events-inventions-curated-source
 // ticket 05) against the curated-source rebuild's real post-enrichment
 // sitelink range (8-296, n=121) — the old 50-386/200 bounds were the prior
-// 806-item Wikidata-corpus range, no longer real.
+// 806-item Wikidata-corpus range, no longer real. wars' min recalibrated the
+// same way (.scratch/wars-conflicts-taxonomy) after the per-category
+// taxonomy restructure raised the specialist sitelink floor from 30 to a
+// flat 70 across all 9 categories — the old min:30 no longer corresponds to
+// any fameScore the dataset can produce (real range 70-193, n=89).
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
   people: { min: 75, max: 100, default: 85 },
-  wars: { min: 30, max: 193, default: 100 },
+  wars: { min: 70, max: 193, default: 100 },
   discoveries: { min: 8, max: 296, default: 70 },
 };

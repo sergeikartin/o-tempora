@@ -49,13 +49,13 @@ All four entity shapes (`Person`, `War`, `WarEvent`, `Discovery` — see `packag
 
 - Date line: `${formatYearMonth(period.start)} – ${period.end ? formatYearMonth(period.end) : 'present'}` (an ongoing war, e.g. the currently-open Russo-Ukrainian war entry, renders "present" the same way an ongoing lifespan does).
 - Part-of-war line: when `partOfWarName` is present, its own row: `Part of: ${partOfWarName}` — carried forward from today's plain-text tooltip (`map-to-items.ts`'s current `mapWars`: `` `${entry.name} — part of ${entry.partOfWarName}` ``), just laid out as a separate row instead of concatenated into one string.
-- **No image** — Wars & Conflicts is explicitly out of scope for images (`map.md`'s Out of scope; user decision made mid-effort). The image banner and credit-line rows never render for a `War`, full stop, regardless of what a future `image` field might contain.
+- Image: from `image`, same as Person/Discovery. The "Wars & Conflicts is out of scope for images" call this section originally made was reversed by `.scratch/wars-conflicts-taxonomy/map.md` (2026-08-08) — see that map's "Wire P18/Commons image enrichment into the Wars & Conflicts pipeline" and "Render images for Wars & Conflicts in the entity detail drawer" tickets for the landed implementation. War/WarEvent P18 coverage: 97.8% at the specialist floor (`.scratch/wars-conflicts-taxonomy/research/wars-image-coverage.md`).
 
 ### 3.4 WarEvent (always a `PointInTime`, i.e. has `at`)
 
 - Date line: `formatYearMonth(at)` — a single point, not a range.
 - Part-of-war line: same as War, `partOfWarName` when present.
-- No image, same reason as War.
+- Image: from `image`, same as War (see §3.3's update).
 
 ### 3.5 Discovery (always a `PointInTime`)
 
@@ -81,7 +81,7 @@ export interface TimelineEntry {
 }
 ```
 
-- `image`: the raw Wikidata P18 `Special:FilePath` URI, stored **exactly as SPARQL returns it** — no pipeline-side transformation, no width baked in. Same convention `wikipediaUrl` already uses on this interface. Absent means no P18 claim (or, for `War`/`WarEvent`, simply never populated — see §3.3).
+- `image`: the raw Wikidata P18 `Special:FilePath` URI, stored **exactly as SPARQL returns it** — no pipeline-side transformation, no width baked in. Same convention `wikipediaUrl` already uses on this interface. Absent means no P18 claim — true for all four entity types (see §3.3's update: War/WarEvent's original "simply never populated" carve-out was reversed by `.scratch/wars-conflicts-taxonomy/map.md`).
 - `imageAttribution`: a plain display-ready credit string (e.g. `"Jacques-Louis David, via Wikimedia Commons"`), populated **only** when the image's Commons license requires attribution. Absent both when there's no image and when the image's license doesn't require a credit (the common case for older/historical subjects, which this dataset skews toward).
 - The frontend appends `?width=<n>` to `image` at render time (a plain string append, not a URL rebuild) — confirmed live in `research/image-sourcing.md` §2.2 (a `width` query param on the SPARQL-returned `Special:FilePath` URI redirects through to a resized thumbnail; the prototype used `200`, sized for its smaller card variants — for the wider drawer banner, `400` is a better fit for the 340px-wide panel at typical device pixel ratios; not load-bearing, adjust freely at implementation time).
 
@@ -100,7 +100,7 @@ Mirrors the existing description/reigns/events-enrichment pattern (`packages/dat
 - **People** (`fetch-descriptions.ts` / `queries/descriptions.ts`): add `OPTIONAL { ?person wdt:P18 ?image . }` to `buildDescriptionsQuery`'s existing per-QID `VALUES` query (same query that already backfills `description`) — no new SPARQL pass needed for the URI itself.
 - **Discoveries** (`fetch-events-enrichment.ts` / `queries/events-enrichment.ts`): same idea, add `OPTIONAL { ?event wdt:P18 ?image . }` to `buildEventsEnrichmentQuery`.
 - **Both lanes**: after the SPARQL pass resolves `image` URIs, a new batched Commons `imageinfo` pass (§4.2) resolves `imageAttribution` for every entity that got an `image`. This can run as its own small fetch step (e.g. `fetch-image-attribution.ts`) reading the just-written raw output back off disk, same "raw file is the handoff between fetch steps" pattern `fetch-descriptions.ts`/`fetch-reigns.ts` already use.
-- **Wars & Conflicts**: no changes — out of scope, no `image`/`imageAttribution` ever populated for `War`/`WarEvent`.
+- **Wars & Conflicts**: originally no changes (out of scope). Reversed by `.scratch/wars-conflicts-taxonomy/map.md` — landed the same way as People/Discoveries, `OPTIONAL { ?event wdt:P18 ?image . }` added to the per-category historical-events queries and a third `wars` key added to the batched Commons `imageinfo` pass.
 - Transform/Output stages: no new logic needed beyond passing `image`/`imageAttribution` through — they're optional fields on `TimelineEntry`, same shape-passthrough treatment `description`/`wikipediaUrl` already get.
 
 ## 5. Frontend changes, summary
@@ -114,7 +114,7 @@ Mirrors the existing description/reigns/events-enrichment pattern (`packages/dat
 ## 6. Explicitly not this map's job
 
 - Writing any of the above code — this spec is the deliverable; implementation is a separate, not-yet-started follow-on effort (name/scope it fresh when picked up).
-- Wars & Conflicts images (§3.3) — ruled out of scope mid-effort, stays out unless a future effort redraws the destination.
+- ~~Wars & Conflicts images (§3.3) — ruled out of scope mid-effort, stays out unless a future effort redraws the destination.~~ Redrawn and landed by `.scratch/wars-conflicts-taxonomy/map.md` (2026-08-08).
 - Coordinating with the in-progress initial-load/progressive-loading performance effort (`docs/active-context.md`) — confirmed independent during charting; different code path (per-click cost, not initial page load).
 - Sizing the CC-vs-PD tradeoff quantitatively across the full corpus, or picking the exact `?width=` pixel value — both explicitly left as implementation-time judgment calls, not specified numerically here.
 

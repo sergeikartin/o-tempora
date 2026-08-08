@@ -209,6 +209,7 @@ export const REGION_CATEGORIES: Record<string, Region> = {
   Q1415128: "south-asia", // Republic of Afghanistan
   Q902: "south-asia", // Bangladesh
   Q129286: "south-asia", // British Raj
+  Q112660052: "south-asia", // British India
   Q668: "south-asia", // India
   Q252: "south-asia", // Indonesia
   Q2320255: "south-asia", // Islamic Emirate of Waziristan
@@ -313,6 +314,7 @@ export const REGION_CATEGORIES: Record<string, Region> = {
   Q739: "americas", // Colombia
   Q81931: "americas", // Confederate States of America
   Q800: "americas", // Costa Rica
+  Q804: "americas", // Panama
   Q241: "americas", // Cuba
   Q786: "americas", // Dominican Republic
   Q736: "americas", // Ecuador

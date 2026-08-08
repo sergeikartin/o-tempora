@@ -53,11 +53,10 @@ const warZeroWidth: War = {
   period: { start: { year: 1967 }, end: { year: 1967 } },
 };
 
-const battleWithoutParent: WarEvent = {
+const battle: WarEvent = {
   id: 'Q217799',
   name: 'Battle of Megiddo',
   at: { year: -1457 },
-  partOfWarName: undefined,
   category: 'war',
   regionTags: ['americas'],
   fameScore: 250,
@@ -81,7 +80,7 @@ test('mapWars widens a zero-width war range (start === end) by one year', () => 
 });
 
 test('mapWars maps a WarEvent to a point item', () => {
-  const [item] = mapWars([battleWithoutParent]);
+  const [item] = mapWars([battle]);
   expect(item?.isPoint).toBe(true);
   expect(item?.startYear).toBe(-1457);
   expect(item?.endYear).toBe(-1457);

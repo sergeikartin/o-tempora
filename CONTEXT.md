@@ -4,13 +4,17 @@ A read-only, continuously zoomable visualization of world history — People, Wa
 
 ## Language
 
-**Category**:
-The Wikidata-derived classification for Wars & Conflicts and Events & Inventions entries — `science, politics, art, philosophy, war, invention, exploration, religion`. Drives the Occupation Category Palette in `packages/web/docs/design-tokens.md`.
-_Avoid_: Occupation domain, tag, type (for this specific field)
+**Conflict Category**:
+The Wikidata-?type-claim-derived classification for Wars & Conflicts entries (`War`/`WarEvent.category`) — `war, battle, siege, military-operation, revolution, rebellion, coup-d-etat, war-of-independence, peace-treaty`. Wars & Conflicts-only; Events & Inventions has its own separate `Discovery Category` (below). Drives the Conflict Category Palette in `packages/web/docs/design-tokens.md`.
+_Avoid_: Category (bare — ambiguous with Discovery Category), occupation domain, tag, type (for this specific field)
+
+**Discovery Category**:
+Events & Inventions' own curator-assigned taxonomy — `science-theory, medicine-health, communication, transportation, infrastructure, everyday-technology, food-agriculture, exploration, energy-industry, society-administration`. A separate enum from Conflict Category — disjoint source (hand-curated, not a Wikidata `?type` claim) and disjoint values, even where a name happens to coincide (`exploration` appears in both, independently).
+_Avoid_: Category (bare), conflict category (for this specific field)
 
 **Occupation Domain**:
-Pantheon 2.0's own occupation grouping for People entries — `sports, institutions, arts, humanities, science-technology, business-law, public-figure, exploration`. A separate enum from `Category`, sourced from Pantheon rather than Wikidata; not interchangeable with it even though one value (`exploration`) happens to share a name. Drives the Occupation Domain Palette in `packages/web/docs/design-tokens.md`.
-_Avoid_: Category, occupation category (for this specific field)
+Pantheon 2.0's own occupation grouping for People entries — `sports, institutions, arts, humanities, science-technology, business-law, public-figure, exploration`. A separate enum from both Conflict Category and Discovery Category, sourced from Pantheon rather than Wikidata; not interchangeable with Discovery Category even though one value (`exploration`) happens to share a name with it. Drives the Occupation Domain Palette in `packages/web/docs/design-tokens.md`.
+_Avoid_: Category, occupation category, conflict category, discovery category (for this specific field)
 
 **Lifespan** (rendering context):
 A Person's birth-death range bar on the People lane's timeline — the visual object built from `Person.startYear`/`endYear` in `map-to-items.ts`'s `mapPeopleToItems`. Distinct from `TimelineEntry`'s general start/end range shape, which every lane (People, Wars & Conflicts, Events & Inventions) shares.

@@ -1,32 +1,72 @@
+import type { ConflictCategory } from "@same-sky/shared-types";
 import { MIN_SITELINKS } from "./min-sitelinks.js";
 import { formatYearAsSparqlDateTime } from "./format-sparql-date.js";
 
-// The one ?type class that gets range-bar (start+end) treatment instead of a
-// single point, per the product decision that only wars — not battles,
-// treaties, sieges, etc. — render as a bar. Exported so transform/
-// event-type-categories.ts and output/write-datasets.ts can key off the same
-// Q-ID instead of duplicating the literal — Fetch stays the source of truth
-// for what a "war" Q-ID is, since it's the stage that already owns the
-// EVENT_TYPES class list below.
+// One Q-ID per surviving ConflictCategory value (armistice, Q107706,
+// dropped — see .scratch/wars-conflicts-taxonomy/issues/01-per-category-sitelink-floors.md's
+// Answer), each queried independently rather than one shared VALUES-clause
+// list of classes — lets fetch-historical-events.ts pull every category into
+// its own raw file (map's "one raw file per type" decision) and, downstream,
+// transform/event-type-categories.ts key a direct 1:1 Q-ID -> ConflictCategory
+// map instead of the old 2-bucket collapse. Confirmed live against the query
+// service this session — see the map's Notes.
 export const WAR_TYPE_QID = "Q198";
+export const BATTLE_TYPE_QID = "Q178561";
+export const SIEGE_TYPE_QID = "Q188055";
+export const MILITARY_OPERATION_TYPE_QID = "Q645883";
+export const REVOLUTION_TYPE_QID = "Q10931";
+export const REBELLION_TYPE_QID = "Q124734";
+export const COUP_D_ETAT_TYPE_QID = "Q45382";
+export const WAR_OF_INDEPENDENCE_TYPE_QID = "Q1006311";
+export const PEACE_TREATY_TYPE_QID = "Q625298";
 
-// Candidate wars, battles, treaties, sieges, revolutions, rebellions, military
-// operations, and generically-classed "historical event" items. Restricted to
-// an explicit VALUES list of instance-of classes rather than a wdt:P279*
-// transitive walk under a broad parent class — the transitive form reliably
-// times out against the live query service at this corpus size.
-const EVENT_TYPES = [
-  `wd:${WAR_TYPE_QID}`, // war
-  "wd:Q178561", // battle
-  "wd:Q131569", // treaty
-  "wd:Q188055", // siege
-  "wd:Q10931", // revolution
-  "wd:Q124734", // rebellion
-  "wd:Q645883", // military operation
-  "wd:Q13418847", // historical event
+// war and war-of-independence are both definitionally multi-year conflicts
+// with real start/end dates — the only two ConflictCategory values that
+// render as a range bar (a real Period) rather than a point; everything
+// else in the lane is a WarEvent regardless of whether Wikidata happens to
+// record a duration for it. See output/write-datasets.ts's buildWars.
+export const BAR_RENDERED_TYPE_QIDS: ReadonlySet<string> = new Set([WAR_TYPE_QID, WAR_OF_INDEPENDENCE_TYPE_QID]);
+
+export interface ConflictCategoryQuery {
+  category: ConflictCategory;
+  typeQid: string;
+  // One raw file per category (map's "one raw file per type" decision) —
+  // fetch-historical-events.ts writes each category's bindings here.
+  rawFileName: string;
+}
+
+// Iterated by fetch-historical-events.ts to fetch and write one raw file per
+// category; iterated again by transform/index.ts's transformWars to read
+// them all back in. Order is cosmetic (log-output grouping) only.
+export const CONFLICT_CATEGORY_QUERIES: ConflictCategoryQuery[] = [
+  { category: "war", typeQid: WAR_TYPE_QID, rawFileName: "events-war.raw.json" },
+  { category: "battle", typeQid: BATTLE_TYPE_QID, rawFileName: "events-battle.raw.json" },
+  { category: "siege", typeQid: SIEGE_TYPE_QID, rawFileName: "events-siege.raw.json" },
+  {
+    category: "military-operation",
+    typeQid: MILITARY_OPERATION_TYPE_QID,
+    rawFileName: "events-military-operation.raw.json",
+  },
+  { category: "revolution", typeQid: REVOLUTION_TYPE_QID, rawFileName: "events-revolution.raw.json" },
+  { category: "rebellion", typeQid: REBELLION_TYPE_QID, rawFileName: "events-rebellion.raw.json" },
+  { category: "coup-d-etat", typeQid: COUP_D_ETAT_TYPE_QID, rawFileName: "events-coup-d-etat.raw.json" },
+  {
+    category: "war-of-independence",
+    typeQid: WAR_OF_INDEPENDENCE_TYPE_QID,
+    rawFileName: "events-war-of-independence.raw.json",
+  },
+  { category: "peace-treaty", typeQid: PEACE_TREATY_TYPE_QID, rawFileName: "events-peace-treaty.raw.json" },
 ];
 
+// One category's candidates for a given [minYear, maxYearExclusive) era
+// bucket — see fetch-historical-events.ts's fetchBucketed. `typeQid` pins
+// the query to a single Wikidata instance-of class rather than a shared
+// VALUES list; ?type is still bound (via BIND, not VALUES) so the row shape
+// group-rows.ts/tag-events.ts already expect (a `tags` array keyed off
+// ?type) is unchanged even though every row in a given category's raw file
+// now carries the same single tag.
 export function buildHistoricalEventsQuery(
+  typeQid: string,
   limit: number,
   offset: number,
   minYear: number,
@@ -35,10 +75,10 @@ export function buildHistoricalEventsQuery(
   const minDateTime = formatYearAsSparqlDateTime(minYear);
   const maxDateTime = formatYearAsSparqlDateTime(maxYearExclusive);
   return `
-SELECT ?event ?eventLabel ?date ?datePrecision ?endDate ?endDatePrecision ?sitelinks ?type ?country ?article ?description ?partOfLabel WHERE {
-  VALUES ?type { ${EVENT_TYPES.join(" ")} }
-  ?event wdt:P31 ?type ;
+SELECT ?event ?eventLabel ?date ?datePrecision ?endDate ?endDatePrecision ?sitelinks ?type ?country ?article ?description ?image WHERE {
+  ?event wdt:P31 wd:${typeQid} ;
          wikibase:sitelinks ?sitelinks .
+  BIND(wd:${typeQid} AS ?type)
   FILTER(?sitelinks >= ${MIN_SITELINKS})
   # Full statement/value-node model (not the wdt: truthy shortcut) so
   # wikibase:timePrecision is available alongside the date itself — a "01"
@@ -71,13 +111,12 @@ SELECT ?event ?eventLabel ?date ?datePrecision ?endDate ?endDatePrecision ?sitel
   OPTIONAL { ?event wdt:P17 ?country. }
   OPTIONAL { ?article schema:about ?event; schema:isPartOf <https://en.wikipedia.org/>. }
   OPTIONAL { ?event schema:description ?description . FILTER(LANG(?description) = "en") }
-  # "Part of" (P361) the parent conflict, e.g. a battle -> its war. Best
-  # effort: an event with no P361 claim, or whose target has no English
-  # label, simply gets no ?partOfLabel — never filtered out over this.
-  OPTIONAL {
-    ?event wdt:P361 ?partOf .
-    OPTIONAL { ?partOf rdfs:label ?partOfLabel . FILTER(LANG(?partOfLabel) = "en") }
-  }
+  # P18 image claim, same "extend the existing OPTIONAL set" treatment
+  # descriptions.ts/events-enrichment.ts already use for People/Discoveries
+  # (dynamic-tooltips spec §4.1/§4.3) — no new request count, per "Research
+  # P18/Commons image coverage for the new Wars & Conflicts categories"'
+  # wiring recommendation.
+  OPTIONAL { ?event wdt:P18 ?image . }
 }
 LIMIT ${limit} OFFSET ${offset}
 `.trim();

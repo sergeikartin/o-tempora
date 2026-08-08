@@ -94,12 +94,6 @@
   padding-left: 8px;
 }
 
-.partOfWar {
-  font-size: 13px;
-  color: var(--color-text-secondary);
-  margin-bottom: 12px;
-}
-
 .wikipediaButton {
   align-self: flex-start;
   margin-top: 8px;

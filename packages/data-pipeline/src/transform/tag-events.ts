@@ -1,10 +1,10 @@
-import type { Category, DiscoveryCategory, Region } from "@same-sky/shared-types";
+import type { ConflictCategory, DiscoveryCategory, Region } from "@same-sky/shared-types";
 import type { GroupedRow } from "./group-rows.js";
 import { EVENT_TYPE_CATEGORIES } from "./event-type-categories.js";
 import { REGION_CATEGORIES } from "./region-categories.js";
 
 export interface EventTags {
-  category?: Category;
+  category?: ConflictCategory;
   regionTags: Region[];
 }
 
@@ -25,7 +25,7 @@ function regionTagsFor(countries: string[]): Region[] {
 // Historical events carry a ?type claim mapped via the closed 8-class
 // EVENT_TYPE_CATEGORIES table (first claim, in claim order, that maps).
 export function tagHistoricalEvent(row: GroupedRow): EventTags {
-  let category: Category | undefined;
+  let category: ConflictCategory | undefined;
   for (const typeId of row.tags) {
     const mapped = EVENT_TYPE_CATEGORIES[typeId];
     if (mapped) {

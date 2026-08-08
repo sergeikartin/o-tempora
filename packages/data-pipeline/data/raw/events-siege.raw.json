@@ -1,0 +1,250 @@
+{
+  "head": {
+    "vars": [
+      "event",
+      "eventLabel",
+      "date",
+      "datePrecision",
+      "endDate",
+      "endDatePrecision",
+      "sitelinks",
+      "type",
+      "country",
+      "article",
+      "description",
+      "image"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q188055"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q160077"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "80"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1453-04-15T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1453-05-29T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Fall of Constantinople"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q43"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "1453 capture of the Byzantine capital by the Ottoman Empire"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Le%20si%C3%A8ge%20de%20Constantinople%20%281453%29%20by%20Jean%20Le%20Tavernier%20after%201455.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q188055"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q160077"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "80"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1453-04-15T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1453-05-29T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Fall of Constantinople"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12544"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "1453 capture of the Byzantine capital by the Ottoman Empire"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Le%20si%C3%A8ge%20de%20Constantinople%20%281453%29%20by%20Jean%20Le%20Tavernier%20after%201455.jpg"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q188055"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q151860"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "73"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1941-09-08T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1944-01-27T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Siege of Leningrad"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15180"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Siege_of_Leningrad"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "8 September 1941 – 27 January 1944 blockade of Leningrad by the Axis"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Leningrad%20Siege%20May%201942%20-%20January%201943.png"
+        }
+      },
+      {
+        "type": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q188055"
+        },
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q151860"
+        },
+        "sitelinks": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "73"
+        },
+        "date": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1941-09-08T00:00:00Z"
+        },
+        "datePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "endDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1944-01-27T00:00:00Z"
+        },
+        "endDatePrecision": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Siege of Leningrad"
+        },
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15180"
+        },
+        "article": {
+          "type": "uri",
+          "value": "https://en.wikipedia.org/wiki/Siege_of_Leningrad"
+        },
+        "description": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "8 September 1941 – 27 January 1944 blockade of Leningrad by the Axis"
+        },
+        "image": {
+          "type": "uri",
+          "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20Leningrad%20%28winter%201941%29.svg"
+        }
+      }
+    ]
+  }
+}

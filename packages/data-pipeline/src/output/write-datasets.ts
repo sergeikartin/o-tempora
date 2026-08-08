@@ -1,5 +1,5 @@
 import type {
-  Category,
+  ConflictCategory,
   DiscoveryCategory,
   Person,
   War,
@@ -10,7 +10,7 @@ import type {
   YearMonth,
 } from "@same-sky/shared-types";
 import type { TaggedPerson, TaggedEvent, TaggedDiscovery } from "../transform/index.js";
-import { WAR_TYPE_QID } from "../fetch/queries/historical-events.js";
+import { BAR_RENDERED_TYPE_QIDS } from "../fetch/queries/historical-events.js";
 
 export interface DropReport {
   dropped: number;
@@ -41,9 +41,10 @@ interface ValidatedEventRow<C> {
 
 // Shared by buildWars/buildDiscoveries — both lanes require the same five
 // fields before an entry is worth keeping; only what they build from a
-// validated row (Period/PointInTime split, partOfWarName) differs, and
-// each lane has its own category type (Category for Wars, DiscoveryCategory
-// for Discoveries — see packages/shared-types), hence the type param.
+// validated row (the Period/PointInTime split) differs, and
+// each lane has its own category type (ConflictCategory for Wars,
+// DiscoveryCategory for Discoveries — see packages/shared-types), hence the
+// type param.
 function validateEventRow<C>(
   row: { label?: string; article?: string; description?: string; year?: number; month?: number; category?: C },
   reasons: Record<string, number>,
@@ -151,34 +152,35 @@ export function buildPeople(
   return { people, report: { dropped: rows.length - people.length, reasons } };
 }
 
-// Only wars (wd:Q198) become a War (a real Period) — see WAR_TYPE_QID and
-// the War/WarEvent split in shared-types. Everything else in the lane
-// (battles, treaties, sieges, revolutions, rebellions, military
-// operations, generic historical events) becomes a WarEvent (a
-// PointInTime), even when the row happens to carry a secondaryYear/Month
-// (from the same ?endDate/P582 binding every event type shares) — only
-// wars read it, per the product decision that only wars render as range
-// bars.
+// Only wars and wars-of-independence (BAR_RENDERED_TYPE_QIDS) become a War
+// (a real Period) — see the War/WarEvent split in shared-types. Everything
+// else in the lane (battles, sieges, revolutions, rebellions, military
+// operations, coups, peace treaties) becomes a WarEvent (a PointInTime),
+// even when the row happens to carry a secondaryYear/Month (from the same
+// ?endDate/P582 binding every event type shares) — only bar-rendered types
+// read it, per the product decision that only wars and wars-of-independence
+// render as range bars.
 export function buildWars(rows: TaggedEvent[]): { entries: WarsAndConflictsEntry[]; report: DropReport } {
   const entries: WarsAndConflictsEntry[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    const validated = validateEventRow<Category>(row, reasons);
+    const validated = validateEventRow<ConflictCategory>(row, reasons);
     if (!validated) continue;
 
     const shared = {
       id: row.id,
       name: validated.name,
-      partOfWarName: row.partOfLabel,
       category: validated.category,
       regionTags: row.regionTags,
       fameScore: row.sitelinks,
       description: validated.description,
       wikipediaUrl: validated.article,
+      ...(row.image ? { image: row.image } : {}),
+      ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
     };
 
-    if (row.tags.includes(WAR_TYPE_QID)) {
+    if (row.tags.some((tag) => BAR_RENDERED_TYPE_QIDS.has(tag))) {
       const war: War = {
         ...shared,
         period: {

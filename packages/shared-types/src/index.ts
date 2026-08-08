@@ -3,22 +3,25 @@
 // from Unit 3/4 onward) via this workspace package rather than each project
 // redefining them, per code-standards.md's "share those types" rule.
 
-export const CATEGORIES = [
-  "science",
-  "politics",
-  "art",
-  "philosophy",
+export const CONFLICT_CATEGORIES = [
   "war",
-  "exploration",
-  "religion",
+  "battle",
+  "siege",
+  "military-operation",
+  "revolution",
+  "rebellion",
+  "coup-d-etat",
+  "war-of-independence",
+  "peace-treaty",
 ] as const;
 
-export type Category = (typeof CATEGORIES)[number];
+export type ConflictCategory = (typeof CONFLICT_CATEGORIES)[number];
 
 // Events & Inventions lane's own taxonomy, taken verbatim from the
 // hand-curated source's `meta.categories`
-// (data-pipeline/data/raw/events-curated.raw.json) — disjoint from Category
-// above (Wars & Conflicts' Wikidata-?type-claim-derived taxonomy), not a
+// (data-pipeline/data/raw/events-curated.raw.json) — disjoint from
+// ConflictCategory above (Wars & Conflicts' Wikidata-?type-claim-derived
+// taxonomy), not a
 // shared value even where a name happens to coincide (e.g. "exploration"
 // appears in both, independently).
 export const DISCOVERY_CATEGORIES = [
@@ -50,7 +53,7 @@ export type Region = (typeof REGIONS)[number];
 // Pantheon's own occupation-domain grouping (its "Working in" filter),
 // covering all 101 raw `occupation` values with no gaps — see
 // data-pipeline/src/transform/occupation-domain-categories.ts for the mapping.
-// Person-only: Category/Region stay Wikidata-derived and War/Discovery-only
+// Person-only: ConflictCategory/Region stay Wikidata-derived and War/Discovery-only
 // (see the People-source decision this type follows from).
 export const OCCUPATION_DOMAINS = [
   "sports",
@@ -140,12 +143,12 @@ export interface TimelineEntry {
   wikipediaUrl: string;
   // The raw Wikidata P18 Commons `Special:FilePath` URI, stored exactly as
   // SPARQL returns it — no width baked in, same "store verbatim" convention
-  // wikipediaUrl already uses. Absent means no P18 claim (People/
-  // Discoveries), or, for War/WarEvent, simply never populated — Wars &
-  // Conflicts images are out of scope (see the dynamic-tooltips map), so
-  // consumers must not render this field for those two types regardless of
-  // whether it's ever set. The frontend appends `?width=<n>` at render
-  // time, a plain string append onto this value.
+  // wikipediaUrl already uses. Absent means no P18 claim — true for all
+  // four entity types now (People, Discoveries, and, since the Wars &
+  // Conflicts taxonomy restructure, War/WarEvent too — see
+  // .scratch/wars-conflicts-taxonomy/map.md, which reverses the earlier
+  // "Wars & Conflicts images are out of scope" call). The frontend appends
+  // `?width=<n>` at render time, a plain string append onto this value.
   image?: string;
   // A plain display-ready credit string (e.g. "Jacques-Louis David, via
   // Wikimedia Commons"), populated only when the image's Commons license
@@ -178,25 +181,22 @@ export interface Person extends TimelineEntry {
   reignPeriods?: ReignPeriod[];
 }
 
-// Only entities Wikidata classes as a war (wd:Q198, the WAR_TYPE_QID in
-// data-pipeline/src/transform/event-type-categories.ts) become a War — the
-// one Wars & Conflicts-lane entity that's always a real Period, per the
-// product decision that only wars render as range bars. Everything else
-// the lane covers (battles, treaties, sieges, revolutions, rebellions,
-// military operations, generic "historical event"s) is a WarEvent instead,
-// even when Wikidata happens to record a duration for one of them.
+// Only entities Wikidata classes as a war (wd:Q198) or a war of
+// independence (wd:Q1006311) — BAR_RENDERED_TYPE_QIDS in
+// data-pipeline/src/fetch/queries/historical-events.ts — become a War, the
+// two Wars & Conflicts-lane types that are always a real Period, per the
+// product decision that only these render as range bars. Everything else
+// the lane covers (battles, sieges, revolutions, rebellions, military
+// operations, coups d'état, peace treaties) is a WarEvent instead, even
+// when Wikidata happens to record a duration for one of them.
 export interface War extends TimelineEntry {
-  // Always "war" in practice (see above) — kept as the shared Category
-  // type rather than a `"war"` literal so War and WarEvent can share
-  // CATEGORY_COLORS and other Category-keyed lookups on the frontend.
-  category: Category;
+  // Always "war" in practice (see above) — kept as the shared
+  // ConflictCategory type rather than a `"war"` literal so War and WarEvent
+  // can share CONFLICT_CATEGORY_COLORS and other ConflictCategory-keyed
+  // lookups on the frontend.
+  category: ConflictCategory;
   regionTags: Region[];
   period: Period;
-  // Human-readable name of a larger parent conflict this war is Wikidata
-  // "part of" (P361) linked to (e.g. a theater or front of a world war).
-  // Best-effort: present only when Wikidata has that link and an English
-  // label for the target.
-  partOfWarName?: string;
 }
 
 // A single-moment Wars & Conflicts entry — battle, treaty, siege,
@@ -204,14 +204,8 @@ export interface War extends TimelineEntry {
 // See War above for why these are a separate type from War rather than an
 // optional end date on it.
 export interface WarEvent extends TimelineEntry, PointInTime {
-  category: Category;
+  category: ConflictCategory;
   regionTags: Region[];
-  // Human-readable name of the parent conflict this event is Wikidata
-  // "part of" (P361) linked to, e.g. a battle -> its war. Best-effort:
-  // present only when Wikidata has that link and an English label for the
-  // target; the parent conflict itself may or may not also appear as its
-  // own entry in this dataset.
-  partOfWarName?: string;
 }
 
 // The Wars & Conflicts lane's dataset (wars.json) is one array mixing both
@@ -244,7 +238,6 @@ export interface Discovery extends TimelineEntry, PointInTime {
 export interface ReignPeriod extends Period {
   // The position's own Wikidata label (e.g. "Pope", "King of England"),
   // not a generic "reign" placeholder — absent only when Wikidata has no
-  // English label for the position itself (rare; same best-effort stance
-  // as War.partOfWarName).
+  // English label for the position itself (rare best-effort case).
   title?: string;
 }

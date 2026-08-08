@@ -1,19 +1,30 @@
-import type { Category } from "@same-sky/shared-types";
-import { WAR_TYPE_QID } from "../fetch/queries/historical-events.js";
+import type { ConflictCategory } from "@same-sky/shared-types";
+import {
+  WAR_TYPE_QID,
+  BATTLE_TYPE_QID,
+  SIEGE_TYPE_QID,
+  MILITARY_OPERATION_TYPE_QID,
+  REVOLUTION_TYPE_QID,
+  REBELLION_TYPE_QID,
+  COUP_D_ETAT_TYPE_QID,
+  WAR_OF_INDEPENDENCE_TYPE_QID,
+  PEACE_TREATY_TYPE_QID,
+} from "../fetch/queries/historical-events.js";
 
-// Closed, already-fully-enumerated set: exactly these 8 ?type class Q-IDs
-// appear in events-historical.raw.json, matching EVENT_TYPES in
-// fetch/queries/historical-events.ts.
-export const EVENT_TYPE_CATEGORIES: Record<string, Category> = {
-  [WAR_TYPE_QID]: "war", // war
-  Q178561: "war", // battle
-  Q188055: "war", // siege
-  Q645883: "war", // military operation
-  Q131569: "politics", // treaty
-  Q10931: "politics", // revolution
-  Q124734: "politics", // rebellion
-  // "historical event" is a generic catch-all (only 25 rows) with no
-  // inherent category signal — mapped to politics as a judgment call, per
-  // the spec, not a real Wikidata signal.
-  Q13418847: "politics", // historical event
+// Direct 1:1 map from each of the 9 surviving Q-IDs to its own
+// ConflictCategory value — no more collapsing multiple Wikidata classes onto
+// a shared "war"/"politics" bucket like the pre-taxonomy-restructure table
+// did. Each raw file fetch-historical-events.ts now writes (one per
+// category) only ever carries the one Q-ID it was fetched for, so every row
+// resolves through exactly one of these entries.
+export const EVENT_TYPE_CATEGORIES: Record<string, ConflictCategory> = {
+  [WAR_TYPE_QID]: "war",
+  [BATTLE_TYPE_QID]: "battle",
+  [SIEGE_TYPE_QID]: "siege",
+  [MILITARY_OPERATION_TYPE_QID]: "military-operation",
+  [REVOLUTION_TYPE_QID]: "revolution",
+  [REBELLION_TYPE_QID]: "rebellion",
+  [COUP_D_ETAT_TYPE_QID]: "coup-d-etat",
+  [WAR_OF_INDEPENDENCE_TYPE_QID]: "war-of-independence",
+  [PEACE_TREATY_TYPE_QID]: "peace-treaty",
 };

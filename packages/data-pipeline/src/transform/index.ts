@@ -5,6 +5,7 @@ import type { DiscoveryCategory, Region, ReignPeriod } from "@same-sky/shared-ty
 import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
 import { parsePantheonCsv, type PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
 import { validateEnrichedEventsFile } from "../fetch/fetch-events-enrichment.js";
+import { CONFLICT_CATEGORY_QUERIES } from "../fetch/queries/historical-events.js";
 import { groupRows, type GroupedRow, type GroupRowsConfig } from "./group-rows.js";
 import { groupReigns } from "./group-reigns.js";
 import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
@@ -13,7 +14,7 @@ import { scoreAndRank, scoreAndRankByHpi, rankDiscoveriesBySitelinks } from "./s
 
 export type TaggedPerson = PantheonPersonRow &
   PantheonPersonTags & { description?: string; wikipediaUrl: string; image?: string; imageAttribution?: string };
-export type TaggedEvent = GroupedRow & EventTags;
+export type TaggedEvent = GroupedRow & EventTags & { imageAttribution?: string };
 
 export interface TaggedDiscovery {
   id: string;
@@ -73,18 +74,20 @@ function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
 interface ImageAttributionFile {
   people: Record<string, string>;
   discoveries: Record<string, string>;
+  wars: Record<string, string>;
 }
 
 // fetch-image-attribution.ts's output — a separate Commons `imageinfo` pass
-// keyed by the same ids as loadPeopleEnrichmentMap (Wikidata QID) and
-// transformDiscoveries (the curated event's own QID), see that file's
-// header comment for why this is a distinct raw file rather than folded
-// into the two enrichment passes above.
+// keyed by the same ids as loadPeopleEnrichmentMap (Wikidata QID),
+// transformDiscoveries (the curated event's own QID), and transformWars
+// (the Wikidata QID group-rows.ts groups on) — see that file's header
+// comment for why this is a distinct raw file rather than folded into the
+// enrichment passes above.
 function loadImageAttributionFile(): ImageAttributionFile {
   const raw = JSON.parse(
     fs.readFileSync(path.join(RAW_DIR, "image-attribution.raw.json"), "utf8"),
   ) as ImageAttributionFile;
-  return { people: raw.people ?? {}, discoveries: raw.discoveries ?? {} };
+  return { people: raw.people ?? {}, discoveries: raw.discoveries ?? {}, wars: raw.wars ?? {} };
 }
 
 const HISTORICAL_CONFIG: GroupRowsConfig = {
@@ -99,7 +102,7 @@ const HISTORICAL_CONFIG: GroupRowsConfig = {
   secondaryDatePrecisionVar: "endDatePrecision",
   tagVar: "type",
   countryVar: "country",
-  partOfLabelVar: "partOfLabel",
+  imageVar: "image",
 };
 
 // group -> tag -> score, per lane. People, Wars & Conflicts, and
@@ -128,11 +131,47 @@ export function transformPeople(): TaggedPerson[] {
   return scoreAndRankByHpi(tagged);
 }
 
+// A Wikidata item can carry more than one instance-of (P31) claim (e.g. the
+// 2022 Russo-Ukrainian escalation is classed as both war and military
+// operation; the Fall of Constantinople as both battle and siege) — since
+// each ConflictCategory now has its own independent query, such an item
+// clears more than one category's query and would otherwise appear twice
+// in the concatenated pool under two different categories/shapes. Confirmed
+// live (5 of 89 specialist-floor items) while spot-checking the first real
+// fetch after "Split fetch into per-category queries" landed. Dedupe by id,
+// first-occurrence-wins, so exactly one category sticks per entity —
+// CONFLICT_CATEGORY_QUERIES' own order (war, battle, siege,
+// military-operation, revolution, rebellion, coup-d'état,
+// war-of-independence, peace-treaty) is the tiebreak, matching the old
+// combined-query EVENT_TYPE_CATEGORIES table's "first claim, in claim
+// order, that maps" precedent: the more specific/prominent war-family
+// category wins over a broader one (war over military-operation, battle
+// over siege) for entities that satisfy both.
+export function dedupeFirstById<T extends { id: string }>(rows: T[]): T[] {
+  const seen = new Set<string>();
+  return rows.filter((row) => {
+    if (seen.has(row.id)) return false;
+    seen.add(row.id);
+    return true;
+  });
+}
+
+// Reads the 9 per-category raw files fetch-historical-events.ts wrote (one
+// per surviving ConflictCategory value, per "Split fetch into per-category
+// queries"), grouping each independently before concatenating (safe since
+// HISTORICAL_CONFIG is identical across all 9) and deduping the
+// concatenated pool by id (dedupeFirstById above).
 export function transformWars(): TaggedEvent[] {
-  const historicalRaw = loadRaw("events-historical.raw.json");
-  const historical = groupRows(historicalRaw.results.bindings, HISTORICAL_CONFIG).map((row) => ({
+  const imageAttribution = loadImageAttributionFile().wars;
+  const historical = dedupeFirstById(
+    CONFLICT_CATEGORY_QUERIES.flatMap(({ rawFileName }) => {
+      const raw = loadRaw(rawFileName);
+      return groupRows(raw.results.bindings, HISTORICAL_CONFIG);
+    }),
+  ).map((row) => ({
     ...row,
     ...tagHistoricalEvent(row),
+    imageAttribution: imageAttribution[row.id],
   }));
   return scoreAndRank(historical);
 }

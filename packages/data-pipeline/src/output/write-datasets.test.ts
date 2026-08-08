@@ -143,7 +143,7 @@ test("buildPeople omits image/imageAttribution entirely (not undefined-valued ke
   assert.equal("imageAttribution" in (people[0] as object), false);
 });
 
-test("buildWars builds a War (with period.end) only for the war type (Q198), even if secondaryYear is present", () => {
+test("buildWars builds a War (with period.end) for the war type (Q198), even if secondaryYear is present", () => {
   const war = taggedEvent({ id: "Q3", tags: ["Q198"], year: 1861, secondaryYear: 1865 });
   const battle = taggedEvent({ id: "Q4", tags: ["Q178561"], year: 1863, secondaryYear: 1863 });
 
@@ -154,6 +154,36 @@ test("buildWars builds a War (with period.end) only for the war type (Q198), eve
   assert.deepEqual(warEntry.period, { start: { year: 1861 }, end: { year: 1865 } });
   assert.ok(battleEntry && "at" in battleEntry);
   assert.deepEqual(battleEntry.at, { year: 1863 });
+});
+
+test("buildWars also builds a War for the war-of-independence type (Q1006311), alongside war", () => {
+  const warOfIndependence = taggedEvent({
+    id: "Q5",
+    tags: ["Q1006311"],
+    year: 1775,
+    secondaryYear: 1783,
+    category: "war-of-independence",
+  });
+
+  const { entries } = buildWars([warOfIndependence]);
+
+  const [entry] = entries;
+  assert.ok(entry && "period" in entry);
+  assert.deepEqual(entry.period, { start: { year: 1775 }, end: { year: 1783 } });
+});
+
+test("buildWars passes through image/imageAttribution when present", () => {
+  const { entries } = buildWars([
+    taggedEvent({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg", imageAttribution: "W, via Wikimedia Commons" }),
+  ]);
+  assert.equal(entries[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg");
+  assert.equal(entries[0]?.imageAttribution, "W, via Wikimedia Commons");
+});
+
+test("buildWars omits image/imageAttribution entirely (not undefined-valued keys) when absent", () => {
+  const { entries } = buildWars([taggedEvent({ image: undefined, imageAttribution: undefined })]);
+  assert.equal("image" in (entries[0] as object), false);
+  assert.equal("imageAttribution" in (entries[0] as object), false);
 });
 
 test("buildWars carries month through to period.start/end and at when the row has one", () => {
@@ -167,17 +197,6 @@ test("buildWars carries month through to period.start/end and at when the row ha
   assert.deepEqual(warEntry.period, { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } });
   assert.ok(battleEntry && "at" in battleEntry);
   assert.deepEqual(battleEntry.at, { year: 1863, month: 7 });
-});
-
-test("buildWars passes through partOfLabel as partOfWarName when present", () => {
-  const battle = taggedEvent({ partOfLabel: "American Civil War" });
-  const { entries } = buildWars([battle]);
-  assert.equal(entries[0]?.partOfWarName, "American Civil War");
-});
-
-test("buildWars leaves partOfWarName undefined when there is no partOfLabel", () => {
-  const { entries } = buildWars([taggedEvent()]);
-  assert.equal(entries[0]?.partOfWarName, undefined);
 });
 
 test("buildDiscoveries passes through category, regionTags, and at.year", () => {

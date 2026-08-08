@@ -1,5 +1,5 @@
 import type {
-  Category,
+  ConflictCategory,
   Discovery,
   DiscoveryCategory,
   OccupationDomain,
@@ -56,7 +56,7 @@ export interface WarItem {
   startYear: number;
   endYear: number;
   isPoint: boolean;
-  category: Category;
+  category: ConflictCategory;
 }
 
 // wars.json mixes War (a Period, `period` field) and WarEvent (a

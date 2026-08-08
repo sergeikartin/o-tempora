@@ -2,7 +2,7 @@
 
 <!-- UI/visual design tokens. Read before touching styling. -->
 
-**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **occupation category** (Wars & Conflicts, Events & Inventions) or **occupation domain** (People) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Wars & Conflicts'/Events & Inventions' below their marker). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `Category` and `OccupationDomain` are separate enums from separate sources (Wikidata vs. Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified.
+**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **conflict category** (Wars & Conflicts), **discovery category** (Events & Inventions), or **occupation domain** (People) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Wars & Conflicts'/Events & Inventions' below their marker). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `ConflictCategory`, `DiscoveryCategory`, and `OccupationDomain` are separate enums from separate sources (Wikidata SPARQL, hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified.
 
 ## Color Palette
 
@@ -18,26 +18,27 @@
 | `color-accent-selected` | `#B8842E` | Selected entity, viewport indicator, focus ring |
 | `color-focus-ring` | `#8C5A1E` | Keyboard focus outline |
 
-## Occupation Category Palette
+## Conflict Category Palette
 
-Used as the stroke color for Wars & Conflicts' range lines and point-dot markers.
+Used as the stroke color for Wars & Conflicts' range lines and point-dot markers. Keyed by `ConflictCategory` (`packages/shared-types`) — a Wikidata-?type-claim-derived taxonomy, disjoint from `DiscoveryCategory` even where a name might coincide. Hue-optimized against the Occupation Domain Palette and Events & Inventions' own `DiscoveryCategory` palette (27 colors total sharing one hue circle) per `.scratch/wars-conflicts-taxonomy/issues/02-rename-expand-conflict-category.md`'s Answer — war-family categories (war/battle/siege/military-operation) grouped into warm hues, the rest into cooler ones.
 
 | Category | Token | Hex |
 |---|---|---|
-| Science | `color-category-science` | `#7FA6C4` |
-| Politics | `color-category-politics` | `#D8A34D` |
-| Art | `color-category-art` | `#C98A9A` |
-| Philosophy | `color-category-philosophy` | `#8CAE8A` |
-| War | `color-category-war` | `#B06156` |
-| Invention | `color-category-invention` | `#6FA8A0` |
-| Exploration | `color-category-exploration` | `#D08A54` |
-| Religion | `color-category-religion` | `#A891C4` |
+| War | `color-conflict-war` | `#BF696B` |
+| Battle | `color-conflict-battle` | `#C4906E` |
+| Siege | `color-conflict-siege` | `#C1A967` |
+| Military operation | `color-conflict-military-operation` | `#BDC251` |
+| Revolution | `color-conflict-revolution` | `#7DBE74` |
+| Rebellion | `color-conflict-rebellion` | `#6BBDB3` |
+| Coup d'état | `color-conflict-coup-d-etat` | `#7BA8C1` |
+| War of independence | `color-conflict-war-of-independence` | `#8E8DC4` |
+| Peace treaty | `color-conflict-peace-treaty` | `#A084C2` |
 
-No occupation tag / uncategorized → `color-border-subtle` as a neutral fallback, not a ninth pastel.
+No category tag / uncategorized → `color-border-subtle` as a neutral fallback, not a tenth pastel.
 
 ## Occupation Domain Palette
 
-People-lane only. Keyed by Pantheon's `OccupationDomain` (not `Category` above — different enum, different source). Used as the stroke color on People-lane lifespan lines. Designed independently of the Category palette above (not hue-derived from it) — pastelized from a reference swatch set, matched to the same lightness/saturation range as Category's colors so both lanes read as one system.
+People-lane only. Keyed by Pantheon's `OccupationDomain` (not `ConflictCategory` above — different enum, different source). Used as the stroke color on People-lane lifespan lines. Designed independently of the Conflict Category palette above (not hue-derived from it) — pastelized from a reference swatch set, matched to the same lightness/saturation range so both lanes read as one system.
 
 | Domain | Token | Hex |
 |---|---|---|

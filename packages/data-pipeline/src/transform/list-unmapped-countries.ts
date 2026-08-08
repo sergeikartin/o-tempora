@@ -3,6 +3,7 @@ import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
 import { groupRows, type GroupRowsConfig } from "./group-rows.js";
 import { REGION_CATEGORIES } from "./region-categories.js";
 import { validateEnrichedEventsFile } from "../fetch/fetch-events-enrichment.js";
+import { CONFLICT_CATEGORY_QUERIES } from "../fetch/queries/historical-events.js";
 
 // Dumps any country Q-ID a Wars/Discoveries event carries (across both raw
 // sources, unioned) that isn't yet in REGION_CATEGORIES. Run after each
@@ -29,7 +30,12 @@ const historicalConfig: GroupRowsConfig = {
   countryVar: "country",
 };
 
-const historical = groupRows(load("data/raw/events-historical.raw.json").results.bindings, historicalConfig);
+// One raw file per surviving ConflictCategory value (CONFLICT_CATEGORY_QUERIES,
+// see "Split fetch into per-category queries"), unioned the same way
+// transform/index.ts's transformWars now reads them.
+const historical = CONFLICT_CATEGORY_QUERIES.flatMap(({ rawFileName }) =>
+  groupRows(load(`data/raw/${rawFileName}`).results.bindings, historicalConfig),
+);
 
 // Discoveries is the hand-curated + enriched list now, not a raw SPARQL
 // binding dump — already one row per event with a plain `countries: string[]`
