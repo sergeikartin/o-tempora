@@ -138,6 +138,21 @@ export interface TimelineEntry {
   fameScore: number;
   description: string;
   wikipediaUrl: string;
+  // The raw Wikidata P18 Commons `Special:FilePath` URI, stored exactly as
+  // SPARQL returns it — no width baked in, same "store verbatim" convention
+  // wikipediaUrl already uses. Absent means no P18 claim (People/
+  // Discoveries), or, for War/WarEvent, simply never populated — Wars &
+  // Conflicts images are out of scope (see the dynamic-tooltips map), so
+  // consumers must not render this field for those two types regardless of
+  // whether it's ever set. The frontend appends `?width=<n>` at render
+  // time, a plain string append onto this value.
+  image?: string;
+  // A plain display-ready credit string (e.g. "Jacques-Louis David, via
+  // Wikimedia Commons"), populated only when the image's Commons license
+  // requires attribution — absent both when there's no image and when the
+  // image's license doesn't require a credit (the common, public-domain
+  // case for this dataset's historical subjects).
+  imageAttribution?: string;
 }
 
 // Sourced from Pantheon 2.0, not Wikidata — fameScore is Pantheon's own HPI

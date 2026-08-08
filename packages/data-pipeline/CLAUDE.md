@@ -18,6 +18,7 @@ Run from repo root:
 | Layer | Technology |
 |---|---|
 | Pipeline query layer | Wikidata Query Service (SPARQL) — Wars' candidate source, Discoveries' per-QID enrichment, People's secondary reign/description enrichment |
+| Image attribution | Wikimedia Commons `imageinfo` REST API (`commons-client.ts`) — per-file license/credit lookup for People/Discoveries' P18 images, a distinct MediaWiki API from Wikidata SPARQL |
 | People-lane data source | Pantheon 2.0 (downloaded CSV snapshot) |
 | bzip2 decompression | `seek-bzip` (pure-JS) — Pantheon's dataset ships `.bz2`, no Node/system support |
 | Pipeline scripting | Node.js + TypeScript |
@@ -32,7 +33,7 @@ Pipeline stages, one direction only: `src/fetch/` (raw results only) → `src/tr
 
 Runs on-demand only — no scheduler, no live connection once data is generated.
 
-1. **Fetch** — People: Pantheon CSV plus two batched SPARQL enrichment passes keyed on Wikidata QID (descriptions, reign/term-of-office periods). Wars: SPARQL pulls candidate events. Discoveries: the checked-in hand-curated list, backfilled with a batched per-QID SPARQL enrichment pass (sitelinks, Wikipedia URL, country) — not a corpus scan. All raw output checked into `data/raw/`.
+1. **Fetch** — People: Pantheon CSV plus two batched SPARQL enrichment passes keyed on Wikidata QID (descriptions + P18 image, reign/term-of-office periods). Wars: SPARQL pulls candidate events — no images, out of scope. Discoveries: the checked-in hand-curated list, backfilled with a batched per-QID SPARQL enrichment pass (sitelinks, Wikipedia URL, country, P18 image) — not a corpus scan. A further batched Commons `imageinfo` pass (`fetch-image-attribution.ts`) resolves `imageAttribution` for every People/Discoveries entity that got an image, keyed by the same ids. All raw output checked into `data/raw/`.
 2. **Score** — Wars: sitelink-count floor + rank. Discoveries: rank by sitelink count, no floor (already hand-vetted). People: Pantheon's HPI. Three independent tier systems, never blended.
 3. **Tag** — Wars: Wikidata Q-ID-keyed lookup table onto fixed event-type/region categories. Discoveries: curator-assigned `DiscoveryCategory` passes straight through; region tags still keyed off Wikidata country Q-IDs from enrichment. People: Pantheon's own occupation/country string values onto `OccupationDomain`/`UnRegion`, a fully enumerated closed set.
 4. **Output** — final JSON written to pipeline-owned `data/output/` (gitignored); `npm run publish-data` copies it into `packages/shared-types`, keeping "compute" and "publish" as separate steps.

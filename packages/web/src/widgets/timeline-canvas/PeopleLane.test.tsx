@@ -91,3 +91,19 @@ test('renders an empty svg for an empty people list', () => {
 
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
 });
+
+test("a lifespan line carries data-entity-id/data-entity-type so TimelineCanvas's delegated click listener can resolve it", () => {
+  const { scale } = buildXScale(2);
+  const { container } = render(<PeopleLane people={[aristotle]} xScale={scale} />);
+
+  const line = container.querySelector('.d3-line');
+  expect(line?.getAttribute('data-entity-id')).toBe('Q868');
+  expect(line?.getAttribute('data-entity-type')).toBe('person');
+});
+
+test('no longer renders a native <title> tooltip element — replaced by the click-to-open drawer', () => {
+  const { scale } = buildXScale(2);
+  const { container } = render(<PeopleLane people={[aristotle]} xScale={scale} />);
+
+  expect(container.querySelector('title')).toBeNull();
+});

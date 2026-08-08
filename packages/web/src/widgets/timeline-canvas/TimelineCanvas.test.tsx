@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
-import { test, expect, afterEach } from 'vitest';
+import { test, expect, afterEach, vi } from 'vitest';
 import { TimelineCanvas } from './TimelineCanvas';
 import type { Discovery, Person, WarsAndConflictsEntry } from '../../shared/types';
 
@@ -45,6 +45,7 @@ const fixtureDiscoveries: Discovery[] = [
 ];
 
 const defaultFameScoreValues = { people: 90, wars: 100, discoveries: 200 };
+const noopEntityClick = () => {};
 
 test('renders all three lanes, each populated from its own dataset', () => {
   const { container } = render(
@@ -53,6 +54,7 @@ test('renders all three lanes, each populated from its own dataset', () => {
       wars={fixtureWars}
       discoveries={fixtureDiscoveries}
       fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
     />,
   );
 
@@ -76,6 +78,7 @@ test('the three lane sections and the year axis share the same rendered width', 
       wars={fixtureWars}
       discoveries={fixtureDiscoveries}
       fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
     />,
   );
 
@@ -95,6 +98,7 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
       wars={fixtureWars}
       discoveries={fixtureDiscoveries}
       fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -116,6 +120,7 @@ test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll alrea
       wars={fixtureWars}
       discoveries={fixtureDiscoveries}
       fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -139,6 +144,7 @@ test('the zoom-in button widens rendered lines; zoom-out narrows them back', () 
       wars={fixtureWars}
       discoveries={fixtureDiscoveries}
       fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
     />,
   );
 
@@ -168,6 +174,7 @@ test('zooming does not change which entities are rendered — density is gated b
       wars={[]}
       discoveries={[]}
       fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
     />,
   );
 
@@ -194,6 +201,7 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       wars={[]}
       discoveries={[]}
       fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
@@ -204,7 +212,63 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       wars={[]}
       discoveries={[]}
       fameScoreValues={{ ...defaultFameScoreValues, people: 75 }}
+      onEntityClick={noopEntityClick}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
+});
+
+test('clicking a mark reports its entity id/type via onEntityClick, resolved through the delegated listener', () => {
+  const onEntityClick = vi.fn();
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={onEntityClick}
+    />,
+  );
+
+  const line = container.querySelector('.d3-line') as SVGLineElement;
+  fireEvent.click(line);
+
+  expect(onEntityClick).toHaveBeenCalledWith({ id: 'Q868', entityType: 'person' });
+});
+
+test('clicking empty canvas space (no data-entity-id ancestor) does not call onEntityClick', () => {
+  const onEntityClick = vi.fn();
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={onEntityClick}
+    />,
+  );
+
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  fireEvent.click(scrollContainer);
+
+  expect(onEntityClick).not.toHaveBeenCalled();
+});
+
+test('a mark with an unrecognized data-entity-type is ignored rather than reported (fails closed, not silently as a discovery)', () => {
+  const onEntityClick = vi.fn();
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={onEntityClick}
+    />,
+  );
+
+  const line = container.querySelector('.d3-line') as SVGLineElement;
+  line.setAttribute('data-entity-type', 'not-a-real-type');
+  fireEvent.click(line);
+
+  expect(onEntityClick).not.toHaveBeenCalled();
 });

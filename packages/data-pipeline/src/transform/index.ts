@@ -12,7 +12,7 @@ import { tagHistoricalEvent, tagCuratedDiscovery, type EventTags } from "./tag-e
 import { scoreAndRank, scoreAndRankByHpi, rankDiscoveriesBySitelinks } from "./score.js";
 
 export type TaggedPerson = PantheonPersonRow &
-  PantheonPersonTags & { description?: string; wikipediaUrl: string };
+  PantheonPersonTags & { description?: string; wikipediaUrl: string; image?: string; imageAttribution?: string };
 export type TaggedEvent = GroupedRow & EventTags;
 
 export interface TaggedDiscovery {
@@ -24,6 +24,8 @@ export interface TaggedDiscovery {
   sitelinks: number;
   category: DiscoveryCategory;
   regionTags: Region[];
+  image?: string;
+  imageAttribution?: string;
 }
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
@@ -36,19 +38,53 @@ function loadRaw(fileName: string) {
 
 const ENTITY_URI_PATTERN = /\/entity\/(Q\d+)$/;
 
+interface PersonEnrichment {
+  description?: string;
+  image?: string;
+}
+
 // Keyed by Wikidata QID, extracted from the description-query's ?person
-// URI binding — same extraction pattern group-reigns.ts already uses.
-function loadDescriptionsMap(): Map<string, string> {
+// URI binding — same extraction pattern group-reigns.ts already uses. Also
+// carries the P18 image URI the same query now backfills (this ticket's
+// query change). description is single-valued (a FILTER(LANG=en) claim),
+// but P18 is not — a person with more than one English-Wikidata image
+// claim produces multiple binding rows for the same ?person, so this keeps
+// only the first image seen per person (first-wins, same convention
+// fetchEventsEnrichment's own binding merge uses) rather than letting
+// whichever row the endpoint returns last silently overwrite it.
+function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
   const raw = loadRaw("people-descriptions.raw.json");
-  const map = new Map<string, string>();
+  const map = new Map<string, PersonEnrichment>();
   for (const row of raw.results.bindings) {
     const personUri = row.person?.value;
-    const description = row.description?.value;
-    if (!personUri || !description) continue;
+    if (!personUri) continue;
     const match = ENTITY_URI_PATTERN.exec(personUri);
-    if (match?.[1]) map.set(match[1], description);
+    if (!match?.[1]) continue;
+    const id = match[1];
+    const existing = map.get(id);
+    map.set(id, {
+      description: existing?.description ?? row.description?.value,
+      image: existing?.image ?? row.image?.value,
+    });
   }
   return map;
+}
+
+interface ImageAttributionFile {
+  people: Record<string, string>;
+  discoveries: Record<string, string>;
+}
+
+// fetch-image-attribution.ts's output — a separate Commons `imageinfo` pass
+// keyed by the same ids as loadPeopleEnrichmentMap (Wikidata QID) and
+// transformDiscoveries (the curated event's own QID), see that file's
+// header comment for why this is a distinct raw file rather than folded
+// into the two enrichment passes above.
+function loadImageAttributionFile(): ImageAttributionFile {
+  const raw = JSON.parse(
+    fs.readFileSync(path.join(RAW_DIR, "image-attribution.raw.json"), "utf8"),
+  ) as ImageAttributionFile;
+  return { people: raw.people ?? {}, discoveries: raw.discoveries ?? {} };
 }
 
 const HISTORICAL_CONFIG: GroupRowsConfig = {
@@ -77,13 +113,16 @@ const HISTORICAL_CONFIG: GroupRowsConfig = {
 export function transformPeople(): TaggedPerson[] {
   const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
   const rows = parsePantheonCsv(fs.readFileSync(csvPath, "utf8"));
-  const descriptions = loadDescriptionsMap();
+  const enrichment = loadPeopleEnrichmentMap();
+  const imageAttribution = loadImageAttributionFile().people;
 
   const tagged = rows.map((row) => ({
     ...row,
     ...tagPantheonPerson(row),
-    description: descriptions.get(row.wdId),
+    description: enrichment.get(row.wdId)?.description,
     wikipediaUrl: `https://en.wikipedia.org/wiki/${row.slug}`,
+    image: enrichment.get(row.wdId)?.image,
+    imageAttribution: imageAttribution[row.wdId],
   }));
 
   return scoreAndRankByHpi(tagged);
@@ -107,6 +146,7 @@ export function transformWars(): TaggedEvent[] {
 export function transformDiscoveries(): TaggedDiscovery[] {
   const enrichedPath = path.join(RAW_DIR, "events-curated-enriched.raw.json");
   const { events } = validateEnrichedEventsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
+  const imageAttribution = loadImageAttributionFile().discoveries;
 
   const tagged = events.map((event) => {
     const { category, regionTags } = tagCuratedDiscovery(event.category, event.countries);
@@ -119,6 +159,8 @@ export function transformDiscoveries(): TaggedDiscovery[] {
       sitelinks: event.sitelinks ?? 0,
       category,
       regionTags,
+      image: event.image,
+      imageAttribution: imageAttribution[event.id],
     };
   });
 

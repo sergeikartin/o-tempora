@@ -57,3 +57,19 @@ test('renders an empty svg for an empty discoveries list', () => {
 
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(0);
 });
+
+test('a discovery dot carries data-entity-id/data-entity-type="discovery"', () => {
+  const { scale } = buildXScale(2);
+  const { container } = render(<EventsLane discoveries={[football]} xScale={scale} />);
+
+  const dot = container.querySelector('.d3-dot');
+  expect(dot?.getAttribute('data-entity-id')).toBe('Q2736');
+  expect(dot?.getAttribute('data-entity-type')).toBe('discovery');
+});
+
+test('no longer renders a native <title> tooltip element — replaced by the click-to-open drawer', () => {
+  const { scale } = buildXScale(2);
+  const { container } = render(<EventsLane discoveries={[football]} xScale={scale} />);
+
+  expect(container.querySelector('title')).toBeNull();
+});

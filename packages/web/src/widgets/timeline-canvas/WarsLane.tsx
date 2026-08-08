@@ -21,7 +21,6 @@ interface RangeLayout {
   x2: number;
   row: number;
   fill: string;
-  tooltip: string;
 }
 
 interface PointLayout {
@@ -30,7 +29,6 @@ interface PointLayout {
   x: number;
   row: number;
   fill: string;
-  tooltip: string;
 }
 
 interface WarsLaneProps {
@@ -86,7 +84,6 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
           x2: xScale(item.endYear),
           row: rowOfWar.get(item.id) ?? 0,
           fill: CATEGORY_COLORS[item.category],
-          tooltip: item.tooltip,
         })),
     [items, rowOfWar, xScale],
   );
@@ -101,7 +98,6 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
           x: xScale(item.startYear),
           row: rowOfWar.get(item.id) ?? 0,
           fill: CATEGORY_COLORS[item.category],
-          tooltip: item.tooltip,
         })),
     [items, rowOfWar, xScale],
   );
@@ -116,12 +112,10 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .data(rangeLayout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-range');
-        const line = g
-          .append('line')
+        g.append('line')
           .attr('class', `d3-line ${styles.line}`)
           .attr('stroke-width', PERIOD_LINE_HEIGHT)
           .attr('stroke-linecap', 'round');
-        line.append('title');
         g.append('text')
           .attr('class', `d3-range-name ${styles.label}`)
           .attr('text-anchor', 'middle')
@@ -137,9 +131,9 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .attr('x2', (d) => d.x2)
       .attr('y1', (d) => markerCenterYForRow(d.row))
       .attr('y2', (d) => markerCenterYForRow(d.row))
-      .attr('stroke', (d) => d.fill);
-
-    rangeGroups.select('.d3-line title').text((d) => d.tooltip);
+      .attr('stroke', (d) => d.fill)
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'war');
 
     rangeGroups
       .select<SVGTextElement>('.d3-range-name')
@@ -154,8 +148,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .data(pointLayout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-point-group');
-        const dot = g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
-        dot.append('title');
+        g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
         g.append('text')
           .attr('class', `d3-point-name ${styles.label}`)
           .attr('text-anchor', 'middle')
@@ -169,9 +162,9 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .select<SVGCircleElement>('.d3-dot')
       .attr('cx', (d) => d.x)
       .attr('cy', (d) => markerCenterYForRow(d.row))
-      .attr('fill', (d) => d.fill);
-
-    pointGroups.select('.d3-dot title').text((d) => d.tooltip);
+      .attr('fill', (d) => d.fill)
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'war');
 
     pointGroups
       .select<SVGTextElement>('.d3-point-name')

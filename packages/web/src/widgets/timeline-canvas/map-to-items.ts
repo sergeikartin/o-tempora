@@ -8,7 +8,6 @@ import type {
   WarsAndConflictsEntry,
 } from '../../shared/types';
 import { today } from '../../shared/lib/dates';
-import { formatYearMonth } from '../../shared/lib/format-year';
 import { MIN_ROW_GAP_YEARS } from './options';
 
 // A zero- or negative-width range (e.g. a missing end) can't render as a
@@ -33,7 +32,6 @@ export interface PersonItem {
   startYear: number;
   endYear: number;
   occupationDomain: OccupationDomain;
-  tooltip: string;
 }
 
 export function mapPeople(people: Person[]): PersonItem[] {
@@ -41,7 +39,6 @@ export function mapPeople(people: Person[]): PersonItem[] {
     // Missing lifespan.end means still alive — draw through to today, not
     // a collapsed zero-width bar at their birth year.
     const personEndYear = person.lifespan.end?.year ?? today().year;
-    const endLabel = person.lifespan.end !== undefined ? formatYearMonth(person.lifespan.end) : 'present';
 
     return {
       id: person.id,
@@ -49,7 +46,6 @@ export function mapPeople(people: Person[]): PersonItem[] {
       startYear: person.lifespan.start.year,
       endYear: ensureMinimumRangeWidthYears(person.lifespan.start.year, personEndYear),
       occupationDomain: person.occupationDomain,
-      tooltip: `${person.name}: ${formatYearMonth(person.lifespan.start)}–${endLabel}`,
     };
   });
 }
@@ -61,7 +57,6 @@ export interface WarItem {
   endYear: number;
   isPoint: boolean;
   category: Category;
-  tooltip: string;
 }
 
 // wars.json mixes War (a Period, `period` field) and WarEvent (a
@@ -85,7 +80,6 @@ export function mapWars(wars: WarsAndConflictsEntry[]): WarItem[] {
         : ensureMinimumRangeWidthYears(period.start.year, period.end?.year ?? period.start.year),
       isPoint,
       category: entry.category,
-      tooltip: entry.partOfWarName ? `${entry.name} — part of ${entry.partOfWarName}` : entry.name,
     };
   });
 }
@@ -95,7 +89,6 @@ export interface DiscoveryItem {
   name: string;
   startYear: number;
   category: DiscoveryCategory;
-  tooltip: string;
 }
 
 // discoveries.json is always a PointInTime (data-pipeline's Discovery rows
@@ -106,7 +99,6 @@ export function mapDiscoveries(discoveries: Discovery[]): DiscoveryItem[] {
     name: discovery.name,
     startYear: discovery.at.year,
     category: discovery.category,
-    tooltip: discovery.name,
   }));
 }
 
