@@ -22,13 +22,20 @@
   cursor: pointer;
 }
 
-/* One shared horizontal scrollbar for all three lanes — the container's own
-   native scroll position *is* the time-axis sync (ADR 0001's Consequences):
-   no rangechange listener, no reentrancy guard. overflow-x: scroll (not
-   auto) keeps that scrollbar's track always reserved/visible instead of
-   popping in and out as zoom changes whether content overflows — each lane
-   below also pins overflow-x: hidden so none of them grows a second,
-   independent horizontal scrollbar of its own (see their comments). */
+/* The container's own scroll position *is* the time-axis sync (ADR 0001's
+   Consequences): no rangechange listener, no reentrancy guard. overflow-x:
+   scroll (not auto) keeps scrolling always enabled regardless of whether
+   zoom currently makes content overflow — each lane below also pins
+   overflow-x: hidden so none of them grows a second, independent horizontal
+   scrollbar of its own (see their comments). The native scrollbar itself is
+   hidden (scrollbar-width/::-webkit-scrollbar below): it isn't a real DOM
+   node, so a mousedown on its thumb can't be told apart from a mousedown on
+   the timeline content by any reliable, cross-browser means (whether a
+   browser reserves layout space for it at all varies — e.g. Firefox's
+   overlay scrollbars don't), which made the drag-to-pan handlers below
+   swallow scrollbar drags instead of leaving them to the browser. .
+   scrollbarTrack/.scrollbarThumb further down render a custom scrollbar as
+   ordinary sibling elements instead, sidestepping that ambiguity entirely. */
 /* Faint vertical gridline at every decade, spanning the full scroll height
    behind all four lanes — pure CSS (one repeating background-gradient, no
    per-line DOM node), same technique as YearAxis's own tick marks. Spacing/
@@ -40,6 +47,7 @@
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
   cursor: grab;
   /* Mirrors color-bg-base; real token wiring is ticket 05. */
   background-color: #f3eedd;
@@ -55,6 +63,10 @@
   /* Mirrors a faint color-border tone, barely distinct from the page
      background; inlined pending ticket 05. */
   background-image: linear-gradient(to right, #e5dbc0 0, #e5dbc0 1px, transparent 1px);
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge counterpart to scrollbar-width above */
 }
 
 /* Active mouse-drag pan (TimelineCanvas.tsx's pointer handlers) — grabbing
@@ -126,4 +138,35 @@
   overflow-x: hidden;
   position: sticky;
   left: 0;
+}
+
+/* Custom replacement for .scrollContainer's now-hidden native horizontal
+   scrollbar (see its comment) — a plain flex sibling below it, always the
+   full timeline width so its own click/drag math never needs to guess at
+   .scrollContainer's geometry. */
+.scrollbarTrack {
+  position: relative;
+  flex: 0 0 auto;
+  height: 14px;
+  background-color: #ded3b8; /* color-border-subtle */
+  cursor: pointer;
+}
+
+.scrollbarThumb {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  min-width: 24px; /* mirrors MIN_SCROLLBAR_THUMB_PX in TimelineCanvas.tsx */
+  border-radius: 6px; /* radius-sm */
+  background-color: #c9b98f; /* color-border-strong */
+  cursor: grab;
+}
+
+.scrollbarThumb:hover {
+  background-color: #b8842e; /* color-accent-selected */
+}
+
+.scrollbarThumb.dragging {
+  cursor: grabbing;
+  background-color: #b8842e; /* color-accent-selected */
 }
