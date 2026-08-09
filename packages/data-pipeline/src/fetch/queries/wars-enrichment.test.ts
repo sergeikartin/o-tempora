@@ -65,6 +65,18 @@ test("selects sitelinks/per-language article title vars/country/image/descriptio
   assert.match(query, pattern);
 });
 
+test("restricts each of the point-in-time/start-time/end-time statements to wikibase:BestRank, so a Preferred-rank claim always wins over a Normal-rank one", () => {
+  const query = buildWarsEnrichmentQuery(["Q198"]);
+  assert.match(query, /\?pointInTimeStatement a wikibase:BestRank \./);
+  assert.match(query, /\?startTimeStatement a wikibase:BestRank \./);
+  assert.match(query, /\?endDateStatement a wikibase:BestRank \./);
+});
+
+test("orders by event/date/endDate so the earliest date wins as a tiebreak among multiple equally-best-ranked claims", () => {
+  const query = buildWarsEnrichmentQuery(["Q198"]);
+  assert.match(query, /ORDER BY \?event \?date \?endDate\s*$/);
+});
+
 test("does not filter by year range or page with LIMIT/OFFSET (a batch of already-curated ids, not a corpus scan)", () => {
   const query = buildWarsEnrichmentQuery(["Q198"]);
   assert.doesNotMatch(query, /FILTER\(\?date/);

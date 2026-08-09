@@ -671,8 +671,8 @@
       "description": "1941–1945 World War II theater",
       "year": 1941,
       "month": 6,
-      "endYear": 1955,
-      "endMonth": 1
+      "endYear": 1945,
+      "endMonth": 5
     },
     {
       "id": "Q11264",
@@ -1855,7 +1855,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Guerra%20Arauco.jpg",
       "description": "war between Spaniards and Mapuche people in Chile",
       "year": 1546,
-      "endYear": 1656
+      "endYear": 1609
     },
     {
       "id": "Q246863",
