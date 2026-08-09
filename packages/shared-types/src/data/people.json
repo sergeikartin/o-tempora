@@ -1711,7 +1711,7 @@
           "year": 2022,
           "month": 9
         },
-        "title": "monarch of Canada"
+        "title": "Lord of Mann"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/King%20Charles%20III%20%28July%202023%29.jpg"
@@ -2960,28 +2960,6 @@
       {
         "start": {
           "year": 1999,
-          "month": 8
-        },
-        "end": {
-          "year": 1999,
-          "month": 8
-        },
-        "title": "Prime Minister of Russia"
-      },
-      {
-        "start": {
-          "year": 1999,
-          "month": 8
-        },
-        "end": {
-          "year": 2000,
-          "month": 5
-        },
-        "title": "Prime Minister of Russia"
-      },
-      {
-        "start": {
-          "year": 1999,
           "month": 12
         },
         "end": {
@@ -2989,6 +2967,28 @@
           "month": 5
         },
         "title": "Acting President of Russia"
+      },
+      {
+        "start": {
+          "year": 1999,
+          "month": 8
+        },
+        "end": {
+          "year": 1999,
+          "month": 8
+        },
+        "title": "Prime Minister of Russia"
+      },
+      {
+        "start": {
+          "year": 1999,
+          "month": 8
+        },
+        "end": {
+          "year": 2000,
+          "month": 5
+        },
+        "title": "Prime Minister of Russia"
       },
       {
         "start": {
@@ -3095,7 +3095,7 @@
           "year": 1649,
           "month": 1
         },
-        "title": "monarch of Scotland"
+        "title": "monarch of England"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Anthony%20van%20Dyck%20%281599-1641%29%20-%20Charles%20I%20%281600-1649%29%20-%20RCIN%20404398%20-%20Royal%20Collection.jpg"
@@ -3420,10 +3420,9 @@
           "month": 2
         },
         "end": {
-          "year": 2022,
-          "month": 9
+          "year": 1972
         },
-        "title": "Lord of Mann"
+        "title": "monarch of the Dominion of Ceylon"
       },
       {
         "start": {
@@ -3451,9 +3450,10 @@
           "month": 2
         },
         "end": {
-          "year": 1972
+          "year": 2022,
+          "month": 9
         },
-        "title": "monarch of the Dominion of Ceylon"
+        "title": "Monarch of the United Kingdom"
       },
       {
         "start": {
@@ -3493,17 +3493,6 @@
       },
       {
         "start": {
-          "year": 1962,
-          "month": 8
-        },
-        "end": {
-          "year": 2022,
-          "month": 9
-        },
-        "title": "monarch of Jamaica"
-      },
-      {
-        "start": {
           "year": 1962
         },
         "end": {
@@ -3522,6 +3511,17 @@
       },
       {
         "start": {
+          "year": 1962,
+          "month": 8
+        },
+        "end": {
+          "year": 2022,
+          "month": 9
+        },
+        "title": "monarch of Jamaica"
+      },
+      {
+        "start": {
           "year": 1963
         },
         "end": {
@@ -3534,18 +3534,18 @@
           "year": 1964
         },
         "end": {
-          "year": 1966
+          "year": 1974
         },
-        "title": "monarch of Malawi"
+        "title": "monarch of the State of Malta"
       },
       {
         "start": {
           "year": 1964
         },
         "end": {
-          "year": 1974
+          "year": 1966
         },
-        "title": "monarch of the State of Malta"
+        "title": "monarch of Malawi"
       },
       {
         "start": {
@@ -3655,17 +3655,6 @@
       {
         "start": {
           "year": 1979,
-          "month": 10
-        },
-        "end": {
-          "year": 2022,
-          "month": 9
-        },
-        "title": "monarch of Saint Vincent and the Grenadines"
-      },
-      {
-        "start": {
-          "year": 1979,
           "month": 2
         },
         "end": {
@@ -3676,14 +3665,14 @@
       },
       {
         "start": {
-          "year": 1981,
-          "month": 9
+          "year": 1979,
+          "month": 10
         },
         "end": {
           "year": 2022,
           "month": 9
         },
-        "title": "monarch of Belize"
+        "title": "monarch of Saint Vincent and the Grenadines"
       },
       {
         "start": {
@@ -3695,6 +3684,17 @@
           "month": 9
         },
         "title": "monarch of Antigua and Barbuda"
+      },
+      {
+        "start": {
+          "year": 1981,
+          "month": 9
+        },
+        "end": {
+          "year": 2022,
+          "month": 9
+        },
+        "title": "monarch of Belize"
       },
       {
         "start": {
@@ -4473,7 +4473,7 @@
           "year": 1801,
           "month": 1
         },
-        "title": "Monarch of Great Britain"
+        "title": "King of Ireland"
       },
       {
         "start": {
@@ -5237,17 +5237,6 @@
       {
         "start": {
           "year": 1660,
-          "month": 5
-        },
-        "end": {
-          "year": 1685,
-          "month": 2
-        },
-        "title": "monarch of Scotland"
-      },
-      {
-        "start": {
-          "year": 1660,
           "month": 6
         },
         "end": {
@@ -5255,6 +5244,17 @@
           "month": 2
         },
         "title": "monarch of England"
+      },
+      {
+        "start": {
+          "year": 1660,
+          "month": 5
+        },
+        "end": {
+          "year": 1685,
+          "month": 2
+        },
+        "title": "King of Ireland"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sir%20Peter%20Lely%20%281618-80%29%20-%20Charles%20II%20%281630-1685%29%20-%20RCIN%20405672%20-%20Royal%20Collection.jpg"
@@ -6889,17 +6889,6 @@
     "reignPeriods": [
       {
         "start": {
-          "year": 1516,
-          "month": 2
-        },
-        "end": {
-          "year": 1556,
-          "month": 1
-        },
-        "title": "monarch of the Crown of Aragon"
-      },
-      {
-        "start": {
           "year": 1516
         },
         "end": {
@@ -6907,6 +6896,17 @@
           "month": 2
         },
         "title": "Monarch of Castile and Leon"
+      },
+      {
+        "start": {
+          "year": 1516,
+          "month": 2
+        },
+        "end": {
+          "year": 1556,
+          "month": 1
+        },
+        "title": "King of Sardinia"
       },
       {
         "start": {
@@ -7269,7 +7269,7 @@
     "description": "Egyptian queen and Great Royal Wife (chief consort) of Akhenaten, an Egyptian Pharaoh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nefertiti",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nefertiti%20Berl%C3%ADn%2005.JPG",
-    "imageAttribution": "Miguel Hermoso Cuesta, via Wikimedia Commons"
+    "imageAttribution": "Philip Pikart, via Wikimedia Commons"
   },
   {
     "id": "30273",
@@ -12063,6 +12063,15 @@
     "reignPeriods": [
       {
         "start": {
+          "year": 1610
+        },
+        "end": {
+          "year": 1617
+        },
+        "title": "King of France"
+      },
+      {
+        "start": {
           "year": 1610,
           "month": 5
         },
@@ -12071,15 +12080,6 @@
           "month": 5
         },
         "title": "French co-prince of Andorra"
-      },
-      {
-        "start": {
-          "year": 1610
-        },
-        "end": {
-          "year": 1617
-        },
-        "title": "King of France"
       },
       {
         "start": {
@@ -21656,7 +21656,7 @@
           "year": 1830,
           "month": 8
         },
-        "title": "French co-prince of Andorra"
+        "title": "King of France and Navarre"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sir%20Thomas%20Lawrence%20%281769-1830%29%20-%20Charles%20X%20%281757-1836%29%2C%20King%20of%20France%20-%20RCIN%20405138%20-%20Royal%20Collection.jpg"
@@ -25553,7 +25553,7 @@
     "reignPeriods": [
       {
         "start": {
-          "year": -1031
+          "year": -1049
         },
         "end": {
           "year": -1009
@@ -26982,7 +26982,7 @@
           "year": 1848,
           "month": 2
         },
-        "title": "King of the French"
+        "title": "French co-prince of Andorra"
       },
       {
         "start": {
@@ -31550,17 +31550,6 @@
       {
         "start": {
           "year": 1940,
-          "month": 7
-        },
-        "end": {
-          "year": 1944,
-          "month": 8
-        },
-        "title": "Head of State of Vichy France"
-      },
-      {
-        "start": {
-          "year": 1940,
           "month": 6
         },
         "end": {
@@ -31568,6 +31557,17 @@
           "month": 4
         },
         "title": "President of the Council"
+      },
+      {
+        "start": {
+          "year": 1940,
+          "month": 7
+        },
+        "end": {
+          "year": 1944,
+          "month": 8
+        },
+        "title": "Head of State of Vichy France"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/P%C3%A9tain%20-%20portrait%20photographique.jpg"
@@ -33574,7 +33574,7 @@
         "title": "sultan"
       }
     ],
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sultan%20Mahmud%20of%20Ghazni%2C%20Folio%20from%20a%20Majma%20al-Tavarikh%20%28World%20Histories%2C%201425%29%20MET%20AD-37.193a.jpg"
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Likely%20idealized%20depiction%20of%20Sultan%20Mahmud%20of%20Ghazni%20in%20the%20pose%20of%20a%20Sasanian%20hero-king.%20Early%2011th%20century%2C%20Hermitage%20Museum%2C%20St%20Petersburg.jpg"
   },
   {
     "id": "19821",
@@ -34112,17 +34112,6 @@
       {
         "start": {
           "year": 1925,
-          "month": 2
-        },
-        "end": {
-          "year": 1928,
-          "month": 9
-        },
-        "title": "President of Albania"
-      },
-      {
-        "start": {
-          "year": 1925,
           "month": 1
         },
         "end": {
@@ -34130,6 +34119,17 @@
           "month": 9
         },
         "title": "Prime Minister of Albania"
+      },
+      {
+        "start": {
+          "year": 1925,
+          "month": 2
+        },
+        "end": {
+          "year": 1928,
+          "month": 9
+        },
+        "title": "President of Albania"
       },
       {
         "start": {
@@ -34799,7 +34799,7 @@
           "year": 1526,
           "month": 9
         },
-        "title": "Apostolic King of Hungary"
+        "title": "King of Croatia"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hans%20Krell%20-%20Portrait%20of%20King%20Louis%20II%20of%20Hungary%20%28c.1526%29.jpg"
@@ -35254,6 +35254,15 @@
       },
       {
         "start": {
+          "year": 1576
+        },
+        "end": {
+          "year": 1611
+        },
+        "title": "King of Bohemia"
+      },
+      {
+        "start": {
           "year": 1576,
           "month": 10
         },
@@ -35262,15 +35271,6 @@
           "month": 6
         },
         "title": "Apostolic King of Hungary"
-      },
-      {
-        "start": {
-          "year": 1576
-        },
-        "end": {
-          "year": 1611
-        },
-        "title": "King of Bohemia"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Joseph%20Heintz%20d.%20%C3%84.%20002.jpg"
@@ -35515,15 +35515,6 @@
       },
       {
         "start": {
-          "year": 1790
-        },
-        "end": {
-          "year": 1792
-        },
-        "title": "King of Bohemia"
-      },
-      {
-        "start": {
           "year": 1790,
           "month": 11
         },
@@ -35532,6 +35523,15 @@
           "month": 3
         },
         "title": "Apostolic King of Hungary"
+      },
+      {
+        "start": {
+          "year": 1790
+        },
+        "end": {
+          "year": 1792
+        },
+        "title": "King of Bohemia"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Portr%C3%A4t%20Leopold%20II%20in%20Kr%C3%B6nungsornat.png"
@@ -38090,10 +38090,10 @@
           "month": 9
         },
         "end": {
-          "year": 1905,
-          "month": 6
+          "year": 1907,
+          "month": 12
         },
-        "title": "Monarch of Norway"
+        "title": "Monarch of Sweden"
       },
       {
         "start": {
@@ -38101,10 +38101,10 @@
           "month": 9
         },
         "end": {
-          "year": 1907,
-          "month": 12
+          "year": 1905,
+          "month": 6
         },
-        "title": "Monarch of Sweden"
+        "title": "Monarch of Norway"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Portr%C3%A4tt%20av%20Oscar%20II%20i%20amiralsuniform.%201900-1907.%20Foto%20Lars%20Larsson.jpg"
@@ -39969,17 +39969,6 @@
       {
         "start": {
           "year": 1364,
-          "month": 4
-        },
-        "end": {
-          "year": 1380,
-          "month": 9
-        },
-        "title": "King of France"
-      },
-      {
-        "start": {
-          "year": 1364,
           "month": 1
         },
         "end": {
@@ -39998,6 +39987,17 @@
           "month": 4
         },
         "title": "regent of France"
+      },
+      {
+        "start": {
+          "year": 1364,
+          "month": 4
+        },
+        "end": {
+          "year": 1380,
+          "month": 9
+        },
+        "title": "King of France"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Saint-Denis%20%2893%29%2C%20basilique%2C%20gisant%20de%20Charles%20V%20sculpt%C3%A9%20lorsqu%27il%20avait%2027%20ans%202.jpg",
@@ -40151,7 +40151,7 @@
           "year": 1931,
           "month": 4
         },
-        "title": "Head of State of Spain"
+        "title": "Monarch of Spain"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rey%20Alfonso%20XIII%20de%20Espa%C3%B1a%2C%20by%20Kaulak.jpg"
@@ -41248,7 +41248,7 @@
           "year": 1700,
           "month": 11
         },
-        "title": "Monarch of Castile and Leon"
+        "title": "monarch of the Crown of Aragon"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rey%20Carlos%20II.jpg"
@@ -43489,7 +43489,7 @@
           "year": 899,
           "month": 10
         },
-        "title": "monarch of England"
+        "title": "King of Wessex"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alfred%20the%20Great%20silver%20coin.jpg",
@@ -46374,8 +46374,7 @@
     ],
     "fameScore": 79.199433,
     "description": "1st-century BC Greek historian",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Diodorus_Siculus",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Diodoro%20Siculo.png"
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Diodorus_Siculus"
   },
   {
     "id": "44328",
@@ -51497,7 +51496,7 @@
         "end": {
           "year": -521
         },
-        "title": "King of Kings"
+        "title": "Great King"
       },
       {
         "start": {
@@ -51575,7 +51574,7 @@
           "year": 1493,
           "month": 8
         },
-        "title": "monarch of Italy"
+        "title": "Holy Roman Emperor"
       },
       {
         "start": {
@@ -52843,15 +52842,6 @@
       },
       {
         "start": {
-          "year": 1396
-        },
-        "end": {
-          "year": 1439
-        },
-        "title": "monarch of Denmark"
-      },
-      {
-        "start": {
           "year": 1396,
           "month": 7
         },
@@ -52860,6 +52850,15 @@
           "month": 8
         },
         "title": "Monarch of Sweden"
+      },
+      {
+        "start": {
+          "year": 1396
+        },
+        "end": {
+          "year": 1439
+        },
+        "title": "monarch of Denmark"
       },
       {
         "start": {
@@ -56971,7 +56970,7 @@
           "year": 1727,
           "month": 6
         },
-        "title": "Monarch of Great Britain"
+        "title": "King of Ireland"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/King%20George%20I%20by%20Sir%20Godfrey%20Kneller%2C%20Bt%20%283%29.jpg"
@@ -58537,17 +58536,6 @@
       {
         "start": {
           "year": 1637,
-          "month": 11
-        },
-        "end": {
-          "year": 1657,
-          "month": 4
-        },
-        "title": "Holy Roman Emperor"
-      },
-      {
-        "start": {
-          "year": 1637,
           "month": 2
         },
         "end": {
@@ -58555,6 +58543,17 @@
           "month": 4
         },
         "title": "Apostolic King of Hungary"
+      },
+      {
+        "start": {
+          "year": 1637,
+          "month": 11
+        },
+        "end": {
+          "year": 1657,
+          "month": 4
+        },
+        "title": "Holy Roman Emperor"
       },
       {
         "start": {
@@ -61273,7 +61272,7 @@
           "year": 1760,
           "month": 10
         },
-        "title": "King of Ireland"
+        "title": "Prince-Elector"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Portrait%20of%20King%20George%20II%20of%20Great%20Britain.jpg"
@@ -61804,18 +61803,18 @@
           "year": -930
         },
         "end": {
-          "year": -912
+          "year": -927
         },
-        "title": "King of Judah"
+        "title": "King of Israel"
       },
       {
         "start": {
           "year": -930
         },
         "end": {
-          "year": -927
+          "year": -912
         },
-        "title": "King of Israel"
+        "title": "King of Judah"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rehoboam.%20Fragment%20of%20Wall%20Painting%20from%20Basel%20Town%20Hall%20Council%20Chamber%2C%20by%20Hans%20Holbein%20the%20Younger..jpg"
@@ -63616,7 +63615,7 @@
           "year": -194,
           "month": 5
         },
-        "title": "Chinese sovereign"
+        "title": "Emperor of China"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Liu-bang.jpg"
@@ -68631,7 +68630,7 @@
       "eastern-europe"
     ],
     "fameScore": 77.208908,
-    "description": "fourth Emperor of Russia (1730–1740)",
+    "description": "fourth Emperor of Russia from 1730 to 1740 (1693-1740)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anna_of_Russia",
     "reignPeriods": [
       {
@@ -69337,7 +69336,7 @@
           "year": 1322,
           "month": 1
         },
-        "title": "sovereign of Navarre"
+        "title": "King of France"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sacre%20Philippe5%20France%2001%20%28cropped%29.jpg"
@@ -72171,16 +72170,16 @@
     "reignPeriods": [
       {
         "start": {
-          "year": 2014
-        },
-        "title": "Grand Master of the Order of Alcántara"
-      },
-      {
-        "start": {
           "year": 2014,
           "month": 6
         },
-        "title": "Monarch of Spain"
+        "title": "Head of State of Spain"
+      },
+      {
+        "start": {
+          "year": 2014
+        },
+        "title": "Grand Master of the Order of Alcántara"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Daiga%20Mieri%C5%86a%20tiekas%20ar%20Sp%C4%81nijas%20karali%20-%2053814974005%20%28cropped%29.jpg",
@@ -73402,7 +73401,7 @@
           "year": 1648,
           "month": 3
         },
-        "title": "monarch of Denmark"
+        "title": "Monarch of Norway"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christian%204%20som%20gammel.jpg"
@@ -78844,6 +78843,15 @@
     "reignPeriods": [
       {
         "start": {
+          "year": 1384
+        },
+        "end": {
+          "year": 1399
+        },
+        "title": "Queen Consort of Poland"
+      },
+      {
+        "start": {
           "year": 1384,
           "month": 10
         },
@@ -78852,15 +78860,6 @@
           "month": 7
         },
         "title": "King of Poland"
-      },
-      {
-        "start": {
-          "year": 1384
-        },
-        "end": {
-          "year": 1399
-        },
-        "title": "Queen Consort of Poland"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jadwiga%20by%20Bacciarelli.jpg"
@@ -79883,7 +79882,7 @@
     "fameScore": 76.342934,
     "description": "Persian poet (1414–1492)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jami",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jami%20poet.jpg"
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jami%2C%20holding%20an%20astrolabe%20%28portrait%29.%20By%20Behz%C3%A2d%2C%20from%20the%20Romance%20of%20Alexander%20by%20Nez%C3%A2m%C3%AE.%20Manuscript%20of%20the%20Khamseh%20of%20the%20emir%20%27Al%C3%AE%20F%C3%A2rs%C3%AE%20Barlas%2C%20Herat%201494-1495%3B%20British%20Library%2C%20Or.%206810%2C%20f%20225%20v.jpg"
   },
   {
     "id": "917655",
@@ -85162,7 +85161,7 @@
           "year": 2025,
           "month": 5
         },
-        "title": "Roman Catholic Bishop of Urgell"
+        "title": "Episcopal Co-Prince"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Joan-Enric%20Vives%2C%202022.jpg",
@@ -88552,7 +88551,7 @@
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Engraved%20portrait%20of%20Mikhail%20Fedorovich.jpg",
-    "imageAttribution": "Адам Олеарий, via Wikimedia Commons"
+    "imageAttribution": "Художники Ф. Зубов, В. Кандаков и другие, via Wikimedia Commons"
   },
   {
     "id": "23833",
@@ -91943,7 +91942,7 @@
           "year": 1890,
           "month": 11
         },
-        "title": "King of the Netherlands"
+        "title": "Grand Duke of Luxembourg"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Portret%20koning%20Willem%20III%20door%20Maria%20Hille%20HGA001008802%20%28uitsnede%29.jpg"
@@ -92368,6 +92367,13 @@
       {
         "start": {
           "year": 2003,
+          "month": 10
+        },
+        "title": "President of Azerbaijan"
+      },
+      {
+        "start": {
+          "year": 2003,
           "month": 8
         },
         "end": {
@@ -92375,13 +92381,6 @@
           "month": 10
         },
         "title": "Prime Minister of Azerbaijan"
-      },
-      {
-        "start": {
-          "year": 2003,
-          "month": 10
-        },
-        "title": "President of Azerbaijan"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ilham%20Aliyev%2C%20December%202025%20%28cropped%29.jpg",
@@ -95535,7 +95534,7 @@
           "year": 1964,
           "month": 11
         },
-        "title": "Prime Minister of Saudi Arabia"
+        "title": "King of Saudi Arabia"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Saud%20IV%20of%20Saudi%20Arabia%20portrait.jpg"
@@ -98739,7 +98738,7 @@
           "year": 1572,
           "month": 6
         },
-        "title": "French co-prince of Andorra"
+        "title": "Monarch of Lower Navarre"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jeanne-albret-navarre.jpg"
@@ -98941,7 +98940,7 @@
           "year": 1885,
           "month": 11
         },
-        "title": "Monarch of Spain"
+        "title": "Head of State of Spain"
       }
     ],
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alfons%20XII%20%28cropped%29.JPG"

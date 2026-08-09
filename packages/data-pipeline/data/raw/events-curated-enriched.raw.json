@@ -8,6 +8,15 @@
       "description": "production of voltage by a varying magnetic field",
       "sitelinks": 81,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94",
+        "es": "https://es.wikipedia.org/wiki/Inducci%C3%B3n_electromagn%C3%A9tica",
+        "fr": "https://fr.wikipedia.org/wiki/Induction_%C3%A9lectromagn%C3%A9tique",
+        "de": "https://de.wikipedia.org/wiki/Elektromagnetische_Induktion",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%AD%D8%B1%D9%8A%D8%B6_%D9%83%D9%87%D8%B1%D8%B7%D9%8A%D8%B3%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D0%B0%D1%8F_%D0%B8%D0%BD%D0%B4%D1%83%D0%BA%D1%86%D0%B8%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Catalonia%20Terrassa%20mNATEC%20Dinamo.JPG"
     },
@@ -19,6 +28,15 @@
       "description": "treatise on natural selection, written by Charles Darwin",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%89%A9%E7%A7%8D%E8%B5%B7%E6%BA%90",
+        "es": "https://es.wikipedia.org/wiki/El_origen_de_las_especies",
+        "fr": "https://fr.wikipedia.org/wiki/L%27Origine_des_esp%C3%A8ces",
+        "de": "https://de.wikipedia.org/wiki/%C3%9Cber_die_Entstehung_der_Arten",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%B5%D9%84_%D8%A7%D9%84%D8%A3%D9%86%D9%88%D8%A7%D8%B9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B8%D1%81%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2%D0%B8%D0%B4%D0%BE%D0%B2"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Origin%20of%20Species%20title%20page.jpg"
     },
@@ -30,6 +48,15 @@
       "description": "scientific device",
       "sitelinks": 51,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cloud_chamber",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cloud_chamber",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%91%E5%AE%A4",
+        "es": "https://es.wikipedia.org/wiki/C%C3%A1mara_de_niebla",
+        "fr": "https://fr.wikipedia.org/wiki/Chambre_%C3%A0_brouillard",
+        "de": "https://de.wikipedia.org/wiki/Nebelkammer",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%BA%D8%B1%D9%81%D8%A9_%D8%B3%D8%AD%D8%A7%D8%A8%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BC%D0%B5%D1%80%D0%B0_%D0%92%D0%B8%D0%BB%D1%8C%D1%81%D0%BE%D0%BD%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CTRwilsonCloudChamberCavendishLab2013-08-29-17-09-40.jpg"
     },
@@ -41,6 +68,15 @@
       "description": "standard and classical physics theory of gravity and space",
       "sitelinks": 129,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/General_relativity",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/General_relativity",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%BB%A3%E7%BE%A9%E7%9B%B8%E5%B0%8D%E8%AB%96",
+        "es": "https://es.wikipedia.org/wiki/Relatividad_general",
+        "fr": "https://fr.wikipedia.org/wiki/Relativit%C3%A9_g%C3%A9n%C3%A9rale",
+        "de": "https://de.wikipedia.org/wiki/Allgemeine_Relativit%C3%A4tstheorie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%86%D8%B3%D8%A8%D9%8A%D8%A9_%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%89%D0%B0%D1%8F_%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D1%8F_%D0%BE%D1%82%D0%BD%D0%BE%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EinsteinLeiden4.jpg"
     },
@@ -52,6 +88,15 @@
       "description": "magnifying system showing microscopic objects via directed electron beams",
       "sitelinks": 82,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electron_microscope",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electron_microscope",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E6%98%BE%E5%BE%AE%E9%95%9C",
+        "es": "https://es.wikipedia.org/wiki/Microscopio_electr%C3%B3nico",
+        "fr": "https://fr.wikipedia.org/wiki/Microscope_%C3%A9lectronique",
+        "de": "https://de.wikipedia.org/wiki/Elektronenmikroskop",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AC%D9%87%D8%B1_%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%BA%D0%BE%D0%BF"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Elektronenmikroskop.jpg"
     },
@@ -63,6 +108,15 @@
       "description": "research program for sequencing the human genome",
       "sitelinks": 53,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Human_Genome_Project",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Human_Genome_Project",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E8%AE%A1%E5%88%92",
+        "es": "https://es.wikipedia.org/wiki/Proyecto_Genoma_Humano",
+        "fr": "https://fr.wikipedia.org/wiki/Projet_G%C3%A9nome_humain",
+        "de": "https://de.wikipedia.org/wiki/Humangenomprojekt",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B4%D8%B1%D9%88%D8%B9_%D8%A7%D9%84%D8%AC%D9%8A%D9%86%D9%88%D9%85_%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82_%C2%AB%D0%93%D0%B5%D0%BD%D0%BE%D0%BC_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA%D0%B0%C2%BB"
+      },
       "countries": [
         "Q30"
       ]
@@ -75,6 +129,15 @@
       "description": "cloned female sheep — first mammal cloned from an adult somatic cell",
       "sitelinks": 68,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%9A%E5%88%A9",
+        "es": "https://es.wikipedia.org/wiki/Oveja_Dolly",
+        "fr": "https://fr.wikipedia.org/wiki/Dolly_(brebis)",
+        "de": "https://de.wikipedia.org/wiki/Dolly_(Schaf)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D9%88%D9%84%D9%84%D9%8A_(%D9%86%D8%B9%D8%AC%D8%A9)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%BB%D0%BB%D0%B8_(%D0%BE%D0%B2%D1%86%D0%B0)"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dolly%20face%20closeup.jpg"
     },
@@ -86,6 +149,15 @@
       "description": "propagating spacetime ripple",
       "sitelinks": 76,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Gravitational_wave",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Gravitational_wave",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%BC%95%E5%8A%9B%E6%B3%A2",
+        "es": "https://es.wikipedia.org/wiki/Onda_gravitatoria",
+        "fr": "https://fr.wikipedia.org/wiki/Onde_gravitationnelle",
+        "de": "https://de.wikipedia.org/wiki/Gravitationswelle",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%88%D8%AC%D8%A9_%D8%AA%D8%AB%D8%A7%D9%82%D9%84%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5_%D0%B2%D0%BE%D0%BB%D0%BD%D1%8B"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maya-NR-Simulation-with-Waveform-frame788-overlay.png"
     },
@@ -97,6 +169,15 @@
       "description": "medically induced coma with loss of protective reflexes",
       "sitelinks": 42,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/General_anaesthesia",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/General_anaesthesia",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%85%A8%E8%BA%AB%E9%BA%BB%E9%86%89",
+        "es": "https://es.wikipedia.org/wiki/Anestesia_general",
+        "fr": "https://fr.wikipedia.org/wiki/Anesth%C3%A9sie_g%C3%A9n%C3%A9rale",
+        "de": "https://de.wikipedia.org/wiki/Narkose",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%AE%D8%AF%D9%8A%D8%B1_%D8%B9%D8%A7%D9%85",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%80%D0%BA%D0%BE%D0%B7"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Remus%20after%20anesthesia.jpg"
     },
@@ -108,6 +189,15 @@
       "description": "set of practices performed for the preservation of health",
       "sitelinks": 106,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hygiene",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Hygiene",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%AB%E7%94%9F%E5%AD%A6",
+        "es": "https://es.wikipedia.org/wiki/Higiene",
+        "fr": "https://fr.wikipedia.org/wiki/Hygi%C3%A8ne",
+        "de": "https://de.wikipedia.org/wiki/Hygiene",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D8%B8%D8%A7%D9%81%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%B3%D0%B8%D0%B5%D0%BD%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hand%20Hygiene.jpg"
     },
@@ -119,6 +209,15 @@
       "description": "ancient Egyptian medical papyrus",
       "sitelinks": 34,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ebers_Papyrus",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ebers_Papyrus",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9F%83%E4%BC%AF%E6%96%AF%E7%BA%B8%E8%8D%89%E5%8D%B7",
+        "es": "https://es.wikipedia.org/wiki/Papiro_Ebers",
+        "fr": "https://fr.wikipedia.org/wiki/Papyrus_Ebers",
+        "de": "https://de.wikipedia.org/wiki/Papyrus_Ebers",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B1%D8%AF%D9%8A%D8%A9_%D8%A5%D9%8A%D8%A8%D8%B1%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BF%D0%B8%D1%80%D1%83%D1%81_%D0%AD%D0%B1%D0%B5%D1%80%D1%81%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ebers7766.jpg"
     },
@@ -130,6 +229,15 @@
       "description": "oldest Egyptian medical text",
       "sitelinks": 35,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Edwin_Smith_Papyrus",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Edwin_Smith_Papyrus",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%89%BE%E5%BE%B7%E6%BA%AB%C2%B7%E5%8F%B2%E5%AF%86%E6%96%AF%E7%B4%99%E8%8D%89%E6%96%87%E7%A8%BF",
+        "es": "https://es.wikipedia.org/wiki/Papiro_Edwin_Smith",
+        "fr": "https://fr.wikipedia.org/wiki/Papyrus_Edwin_Smith",
+        "de": "https://de.wikipedia.org/wiki/Papyrus_Edwin_Smith",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B1%D8%AF%D9%8A%D8%A9_%D8%A5%D8%AF%D9%88%D9%8A%D9%86_%D8%B3%D9%85%D9%8A%D8%AB",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BF%D0%B8%D1%80%D1%83%D1%81_%D0%AD%D0%B4%D0%B2%D0%B8%D0%BD%D0%B0_%D0%A1%D0%BC%D0%B8%D1%82%D0%B0"
+      },
       "countries": [
         "Q11768"
       ],
@@ -143,6 +251,15 @@
       "description": "surgical procedure delivering a baby through the abdomen",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Caesarean_section",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Caesarean_section",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%89%96%E5%AE%AB%E4%BA%A7",
+        "es": "https://es.wikipedia.org/wiki/Ces%C3%A1rea",
+        "fr": "https://fr.wikipedia.org/wiki/C%C3%A9sarienne",
+        "de": "https://de.wikipedia.org/wiki/Kaiserschnitt",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%88%D9%84%D8%A7%D8%AF%D8%A9_%D9%82%D9%8A%D8%B5%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B5%D1%81%D0%B0%D1%80%D0%B5%D0%B2%D0%BE_%D1%81%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caesarian.jpg"
     },
@@ -154,6 +271,15 @@
       "description": "1346–1353 pandemic in Eurasia and North Africa",
       "sitelinks": 127,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Death",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Black_Death",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%BB%91%E6%AD%BB%E7%97%85",
+        "es": "https://es.wikipedia.org/wiki/Peste_negra",
+        "fr": "https://fr.wikipedia.org/wiki/Peste_noire",
+        "de": "https://de.wikipedia.org/wiki/Schwarzer_Tod",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%85%D9%88%D8%AA_%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D1%91%D1%80%D0%BD%D0%B0%D1%8F_%D1%81%D0%BC%D0%B5%D1%80%D1%82%D1%8C"
+      },
       "countries": [
         "Q227",
         "Q230",
@@ -170,6 +296,15 @@
       "description": "university hospital in Berlin, Germany",
       "sitelinks": 40,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Charit%C3%A9",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Charit%C3%A9",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%8F%E9%87%8C%E7%89%B9",
+        "es": "https://es.wikipedia.org/wiki/Charit%C3%A9",
+        "fr": "https://fr.wikipedia.org/wiki/H%C3%B4pital_universitaire_de_la_Charit%C3%A9_de_Berlin",
+        "de": "https://de.wikipedia.org/wiki/Charit%C3%A9",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B4%D8%A7%D8%B1%D9%8A%D8%AA%D9%8A%D9%87",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D1%80%D0%B8%D1%82%D0%B5"
+      },
       "countries": [
         "Q183"
       ],
@@ -183,6 +318,15 @@
       "description": "first successful vaccine to be developed",
       "sitelinks": 30,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Smallpox_vaccine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Smallpox_vaccine",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%A9%E8%8A%B1%E7%96%AB%E8%8B%97",
+        "es": "https://es.wikipedia.org/wiki/Vacuna_contra_la_viruela",
+        "fr": "https://fr.wikipedia.org/wiki/Vaccin_contre_la_variole",
+        "de": "https://de.wikipedia.org/wiki/Pockenimpfstoff",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D9%82%D8%A7%D8%AD_%D8%A7%D9%84%D8%AC%D8%AF%D8%B1%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D0%BA%D1%86%D0%B8%D0%BD%D0%B0_%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2_%D0%BE%D1%81%D0%BF%D1%8B"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Poster%20for%20vaccination%20against%20smallpox.jpg"
     },
@@ -194,6 +338,15 @@
       "description": "agency of the US Department of Health and Human Services",
       "sitelinks": 56,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Food_and_Drug_Administration",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Food_and_Drug_Administration",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E9%A3%9F%E5%93%81%E8%8D%AF%E5%93%81%E7%9B%91%E7%9D%A3%E7%AE%A1%E7%90%86%E5%B1%80",
+        "es": "https://es.wikipedia.org/wiki/Administraci%C3%B3n_de_Alimentos_y_Medicamentos",
+        "fr": "https://fr.wikipedia.org/wiki/Food_and_Drug_Administration",
+        "de": "https://de.wikipedia.org/wiki/Food_and_Drug_Administration",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9_%D8%A7%D9%84%D8%BA%D8%B0%D8%A7%D8%A1_%D9%88%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A1_(%D8%A7%D9%84%D9%88%D9%84%D8%A7%D9%8A%D8%A7%D8%AA_%D8%A7%D9%84%D9%85%D8%AA%D8%AD%D8%AF%D8%A9)",
+        "ru": "https://ru.wikipedia.org/wiki/Food_and_Drug_Administration"
+      },
       "countries": [
         "Q30"
       ],
@@ -207,6 +360,15 @@
       "description": "global influenza pandemic caused by the H1N1 influenza A virus",
       "sitelinks": 102,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_flu",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Spanish_flu",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%A5%BF%E7%8F%AD%E7%89%99%E6%B5%81%E6%84%9F",
+        "es": "https://es.wikipedia.org/wiki/Pandemia_de_gripe_de_1918",
+        "fr": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
+        "de": "https://de.wikipedia.org/wiki/Spanische_Grippe",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D9%86%D9%81%D9%84%D9%88%D9%86%D8%B2%D8%A7_%D8%A7%D9%84%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D0%BF%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%B3%D1%80%D0%B8%D0%BF%D0%BF"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emergency%20hospital%20during%20Influenza%20epidemic%2C%20Camp%20Funston%2C%20Kansas%20-%20NCP%201603.jpg"
     },
@@ -218,6 +380,15 @@
       "description": "group of antibiotics derived from Penicillium fungi",
       "sitelinks": 117,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Penicillin",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Penicillin",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9D%92%E9%9C%89%E7%B4%A0",
+        "es": "https://es.wikipedia.org/wiki/Penicilina",
+        "fr": "https://fr.wikipedia.org/wiki/P%C3%A9nicilline",
+        "de": "https://de.wikipedia.org/wiki/Penicilline",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%86%D8%B3%D9%84%D9%8A%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D0%BD%D0%B8%D1%86%D0%B8%D0%BB%D0%BB%D0%B8%D0%BD%D1%8B"
+      },
       "countries": []
     },
     {
@@ -228,6 +399,15 @@
       "description": "birth control combining an estrogen and a progestogen",
       "sitelinks": 50,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Combined_oral_contraceptive_pill",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Combined_oral_contraceptive_pill",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%8D%E5%90%88%E5%8F%A3%E6%9C%8D%E9%81%BF%E5%AD%95%E8%8D%AF",
+        "es": "https://es.wikipedia.org/wiki/P%C3%ADldora_anticonceptiva_oral_combinada",
+        "fr": "https://fr.wikipedia.org/wiki/Pilule_combin%C3%A9e",
+        "de": "https://de.wikipedia.org/wiki/Antibabypille",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%A8%D9%88%D8%A8_%D9%85%D9%86%D8%B9_%D8%A7%D9%84%D8%AD%D9%85%D9%84_%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%A8%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%B1%D0%B8%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5_%D0%BE%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5_%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%B0%D1%86%D0%B5%D0%BF%D1%82%D0%B8%D0%B2%D1%8B"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pillpacketopen.jpg"
     },
@@ -239,8 +419,17 @@
       "description": "formal writing system used by the ancient Egyptians",
       "sitelinks": 93,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9C%A3%E4%B9%A6%E4%BD%93",
+        "es": "https://es.wikipedia.org/wiki/Jerogl%C3%ADficos_egipcios",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89criture_hi%C3%A9roglyphique_%C3%A9gyptienne",
+        "de": "https://de.wikipedia.org/wiki/%C3%84gyptische_Hieroglyphen",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%87%D9%8A%D8%B1%D9%88%D8%BA%D9%84%D9%8A%D9%81%D9%8A%D8%A9_%D9%85%D8%B5%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%95%D0%B3%D0%B8%D0%BF%D0%B5%D1%82%D1%81%D0%BA%D0%BE%D0%B5_%D0%B8%D0%B5%D1%80%D0%BE%D0%B3%D0%BB%D0%B8%D1%84%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%BE"
+      },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Extract%20from%20the%20Tale%20of%20the%20Two%20Brothers.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Minnakht%2001.JPG"
     },
     {
       "id": "Q401",
@@ -250,6 +439,15 @@
       "description": "ancient writing system for Akkadian, Hittite and others",
       "sitelinks": 102,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuneiform",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cuneiform",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A5%94%E5%BD%A2%E6%96%87%E5%AD%97",
+        "es": "https://es.wikipedia.org/wiki/Escritura_cuneiforme",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89criture_cun%C3%A9iforme",
+        "de": "https://de.wikipedia.org/wiki/Keilschrift",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%83%D8%AA%D8%A7%D8%A8%D8%A9_%D9%85%D8%B3%D9%85%D8%A7%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BB%D0%B8%D0%BD%D0%BE%D0%BF%D0%B8%D1%81%D1%8C"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sales%20contract%20Shuruppak%20Louvre%20AO3766.jpg"
     },
@@ -261,6 +459,15 @@
       "description": "writing system of the Maya civilization",
       "sitelinks": 50,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Maya_script",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Maya_script",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%91%AA%E9%9B%85%E6%96%87%E5%AD%97",
+        "es": "https://es.wikipedia.org/wiki/Escritura_maya",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89criture_maya",
+        "de": "https://de.wikipedia.org/wiki/Maya-Schrift",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%83%D8%AA%D8%A7%D8%A8%D8%A9_%D8%A7%D9%84%D9%85%D8%A7%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D1%81%D1%8C%D0%BC%D0%BE_%D0%BC%D0%B0%D0%B9%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Escritura%20maya.jpg"
     },
@@ -272,6 +479,15 @@
       "description": "thin flexible material for writing, printing, packaging",
       "sitelinks": 198,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Paper",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Paper",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BA%B8",
+        "es": "https://es.wikipedia.org/wiki/Papel",
+        "fr": "https://fr.wikipedia.org/wiki/Papier",
+        "de": "https://de.wikipedia.org/wiki/Papier",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%88%D8%B1%D9%82",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%BC%D0%B0%D0%B3%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Scattered%20white%20paper%20%28Unsplash%29.jpg"
     },
@@ -283,6 +499,15 @@
       "description": "device for evenly printing ink onto a print medium",
       "sitelinks": 80,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Printing_press",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%88%B7%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Imprenta",
+        "fr": "https://fr.wikipedia.org/wiki/Presse_typographique",
+        "de": "https://de.wikipedia.org/wiki/Druckpresse",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%A7%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%87%D0%BD%D0%BE%D0%B9_%D1%82%D0%B8%D0%BF%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%BA"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg"
     },
@@ -294,6 +519,15 @@
       "description": "early book printed with movable type",
       "sitelinks": 55,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Gutenberg_Bible",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Gutenberg_Bible",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8F%A4%E8%85%BE%E5%A0%A1%E5%9C%A3%E7%BB%8F",
+        "es": "https://es.wikipedia.org/wiki/Biblia_de_Gutenberg",
+        "fr": "https://fr.wikipedia.org/wiki/Bible_de_Gutenberg",
+        "de": "https://de.wikipedia.org/wiki/Gutenberg-Bibel",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%83%D8%AA%D8%A7%D8%A8_%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3_(%D8%B7%D8%A8%D8%B9%D8%A9_%D8%BA%D9%88%D8%AA%D9%86%D8%A8%D8%B1%D8%BA)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D1%8F_%D0%93%D1%83%D1%82%D0%B5%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gutenberg%20Bible%2C%20Lenox%20Copy%2C%20New%20York%20Public%20Library%2C%202009.%20Pic%2001.jpg"
     },
@@ -305,6 +539,13 @@
       "description": "early system for transmitting text over wires",
       "sitelinks": 30,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electrical_telegraph",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electrical_telegraph",
+        "fr": "https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9graphie_%C3%A9lectrique",
+        "de": "https://de.wikipedia.org/wiki/Elektrischer_Telegraf",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%A8%D8%B1%D8%A7%D9%82_%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A6%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D1%80%D0%B0%D1%84"
+      },
       "countries": []
     },
     {
@@ -315,6 +556,15 @@
       "description": "world's first adhesive postage stamp",
       "sitelinks": 49,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Penny_Black",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Penny_Black",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%BB%91%E4%BE%BF%E5%A3%AB",
+        "es": "https://es.wikipedia.org/wiki/Penny_Black",
+        "fr": "https://fr.wikipedia.org/wiki/Penny_Black",
+        "de": "https://de.wikipedia.org/wiki/One_Penny_Black",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%8A%D9%86%D9%8A_%D8%A8%D9%84%D8%A7%D9%83",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D1%91%D1%80%D0%BD%D1%8B%D0%B9_%D0%BF%D0%B5%D0%BD%D0%BD%D0%B8"
+      },
       "countries": [
         "Q8680"
       ],
@@ -328,6 +578,15 @@
       "description": "telecommunications device for two or more users to converse",
       "sitelinks": 215,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Telephone",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Telephone",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E8%AF%9D",
+        "es": "https://es.wikipedia.org/wiki/Tel%C3%A9fono",
+        "fr": "https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9phone",
+        "de": "https://de.wikipedia.org/wiki/Telefon",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%87%D8%A7%D8%AA%D9%81",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Telefon%20BW%202012-02-18%2013-44-32.JPG"
     },
@@ -339,6 +598,12 @@
       "description": "overview about the invention of the telephone",
       "sitelinks": 8,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Invention_of_the_telephone",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Invention_of_the_telephone",
+        "fr": "https://fr.wikipedia.org/wiki/Invention_du_t%C3%A9l%C3%A9phone",
+        "de": "https://de.wikipedia.org/wiki/Erfindung_des_Telefons",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D8%B9_%D8%A7%D9%84%D9%87%D8%A7%D8%AA%D9%81"
+      },
       "countries": []
     },
     {
@@ -349,6 +614,15 @@
       "description": "device for the analogue recording and playback of sound",
       "sitelinks": 77,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Phonograph",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Phonograph",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%95%99%E8%81%B2%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Fon%C3%B3grafo",
+        "fr": "https://fr.wikipedia.org/wiki/Phonographe",
+        "de": "https://de.wikipedia.org/wiki/Phonograph",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%A7%D9%83",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A4%D0%BE%D0%BD%D0%BE%D0%B3%D1%80%D0%B0%D1%84"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Edison%20and%20phonograph%20edit2.jpg"
     },
@@ -360,6 +634,14 @@
       "description": "motion picture camera that also serves as projector and printer",
       "sitelinks": 35,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cinematograph",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cinematograph",
+        "es": "https://es.wikipedia.org/wiki/Cinemat%C3%B3grafo",
+        "fr": "https://fr.wikipedia.org/wiki/Cam%C3%A9ra_Cin%C3%A9matographe",
+        "de": "https://de.wikipedia.org/wiki/Kinematograph",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%AA%D9%88%D8%BA%D8%B1%D8%A7%D9%81",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B8%D0%BD%D0%B5%D0%BC%D0%B0%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84_(%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82)"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cinematographe%20Lumiere.jpg"
     },
@@ -371,6 +653,15 @@
       "description": "1895 French short black-and-white silent documentary film",
       "sitelinks": 37,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Workers_Leaving_the_Lumi%C3%A8re_Factory",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Workers_Leaving_the_Lumi%C3%A8re_Factory",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B7%A5%E5%8E%82%E5%A4%A7%E9%97%A8",
+        "es": "https://es.wikipedia.org/wiki/La_Sortie_de_l%27usine_Lumi%C3%A8re_%C3%A0_Lyon",
+        "fr": "https://fr.wikipedia.org/wiki/La_Sortie_de_l%27usine_Lumi%C3%A8re_%C3%A0_Lyon",
+        "de": "https://de.wikipedia.org/wiki/Arbeiter_verlassen_die_Lumi%C3%A8re-Werke",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D8%A7%D9%84_%D9%8A%D8%BA%D8%A7%D8%AF%D8%B1%D9%88%D9%86_%D9%85%D8%B5%D9%86%D8%B9_%D9%84%D9%88%D9%85%D9%8A%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D1%85%D0%BE%D0%B4_%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D1%85_%D1%81_%D1%84%D0%B0%D0%B1%D1%80%D0%B8%D0%BA%D0%B8"
+      },
       "countries": [
         "Q142"
       ],
@@ -384,6 +675,15 @@
       "description": "flagship television channel of the BBC, launched as the BBC Television Service",
       "sitelinks": 62,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/BBC_One",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/BBC_One",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8B%B1%E5%9C%8B%E5%BB%A3%E6%92%AD%E5%85%AC%E5%8F%B8%E7%AC%AC%E4%B8%80%E5%8F%B0",
+        "es": "https://es.wikipedia.org/wiki/BBC_One",
+        "fr": "https://fr.wikipedia.org/wiki/BBC_One",
+        "de": "https://de.wikipedia.org/wiki/BBC_One",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%8A_%D8%A8%D9%8A_%D8%B3%D9%8A_%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/BBC_One"
+      },
       "countries": [
         "Q145"
       ]
@@ -396,6 +696,15 @@
       "description": "global system of connected computer networks",
       "sitelinks": 296,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Internet",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Internet",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91",
+        "es": "https://es.wikipedia.org/wiki/Internet",
+        "fr": "https://fr.wikipedia.org/wiki/Internet",
+        "de": "https://de.wikipedia.org/wiki/Internet",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Internet%20users%20per%20100%20and%20GDP%20per%20capita.jpg"
     },
@@ -407,6 +716,15 @@
       "description": "early packet switching network (1969–1990)",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/ARPANET",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/ARPANET",
+        "zh": "https://zh.wikipedia.org/wiki/ARPANET",
+        "es": "https://es.wikipedia.org/wiki/ARPANET",
+        "fr": "https://fr.wikipedia.org/wiki/ARPANET",
+        "de": "https://de.wikipedia.org/wiki/ARPANET",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%B1%D8%A8%D8%A7%D9%86%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/ARPANET"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arpanet%20logical%20map%2C%20march%201977.png"
     },
@@ -418,6 +736,15 @@
       "description": "exchanging digital messages over a network",
       "sitelinks": 172,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Email",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Email",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6",
+        "es": "https://es.wikipedia.org/wiki/Correo_electr%C3%B3nico",
+        "fr": "https://fr.wikipedia.org/wiki/Courrier_%C3%A9lectronique",
+        "de": "https://de.wikipedia.org/wiki/E-Mail",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B1%D9%8A%D8%AF_%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F_%D0%BF%D0%BE%D1%87%D1%82%D0%B0"
+      },
       "countries": []
     },
     {
@@ -428,6 +755,15 @@
       "description": "global system of interlinked hypertext documents",
       "sitelinks": 158,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/World_Wide_Web",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/World_Wide_Web",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91",
+        "es": "https://es.wikipedia.org/wiki/World_Wide_Web",
+        "fr": "https://fr.wikipedia.org/wiki/World_Wide_Web",
+        "de": "https://de.wikipedia.org/wiki/World_Wide_Web",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9_%D8%A7%D9%84%D8%B9%D9%86%D9%83%D8%A8%D9%88%D8%AA%D9%8A%D8%A9_%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%81%D0%B5%D0%BC%D0%B8%D1%80%D0%BD%D0%B0%D1%8F_%D0%BF%D0%B0%D1%83%D1%82%D0%B8%D0%BD%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alcal%C3%A1%20de%20Henares%20%28RPS%2008-04-2017%29%20Calle%20WWW%2C%20indicador.png"
     },
@@ -439,6 +775,15 @@
       "description": "standard describing protocols for 2G digital cellular networks",
       "sitelinks": 82,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/GSM",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/GSM",
+        "zh": "https://zh.wikipedia.org/wiki/GSM",
+        "es": "https://es.wikipedia.org/wiki/Sistema_global_para_las_comunicaciones_m%C3%B3viles",
+        "fr": "https://fr.wikipedia.org/wiki/Global_System_for_Mobile_Communications",
+        "de": "https://de.wikipedia.org/wiki/Global_System_for_Mobile_Communications",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85_%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A_%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84%D8%A7%D8%AA_%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%AA%D9%81_%D8%A7%D9%84%D9%85%D8%AD%D9%85%D9%88%D9%84%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/GSM"
+      },
       "countries": []
     },
     {
@@ -449,6 +794,15 @@
       "description": "type of sailing ship in the 15th century",
       "sitelinks": 45,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Carrack",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Carrack",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%85%8B%E6%8B%89%E5%85%8B%E5%B8%86%E8%88%B9",
+        "es": "https://es.wikipedia.org/wiki/Carraca_(embarcaci%C3%B3n)",
+        "fr": "https://fr.wikipedia.org/wiki/Caraque",
+        "de": "https://de.wikipedia.org/wiki/Karacke",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%B1%D9%82%D9%88%D8%B1_(%D8%B3%D9%81%D9%8A%D9%86%D8%A9)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%80%D0%B0%D0%BA%D0%BA%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SantaMaria.jpg"
     },
@@ -460,6 +814,14 @@
       "description": "steam-powered vessel, smaller than a steamship",
       "sitelinks": 61,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Steamboat",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Steamboat",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E6%B1%BD%E8%88%B9",
+        "es": "https://es.wikipedia.org/wiki/Barco_de_vapor",
+        "fr": "https://fr.wikipedia.org/wiki/Bateau_%C3%A0_vapeur",
+        "de": "https://de.wikipedia.org/wiki/Dampfschiff",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D8%B1%D8%A8_%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/100%20Jahre%20Dampfschiff%20%27Stadt%20Rapperswil%27%20-%20Tag%20der%20offenen%20Dampfschiff-T%C3%BCre%20am%20B%C3%BCrkliplatz%20-%20Alpenquai%202014-04-26%2017-47-28%20%28P7700%29.JPG"
     },
@@ -471,6 +833,15 @@
       "description": "railway locomotive powered by a steam engine",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_locomotive",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Steam_locomotive",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E6%B1%BD%E6%A9%9F%E8%BB%8A",
+        "es": "https://es.wikipedia.org/wiki/Locomotora_de_vapor",
+        "fr": "https://fr.wikipedia.org/wiki/Locomotive_%C3%A0_vapeur",
+        "de": "https://de.wikipedia.org/wiki/Dampflokomotive",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D8%B7%D8%B1%D8%A9_%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%BE%D0%B7"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/3511%20-%20Hartswater%20240481.jpg"
     },
@@ -482,6 +853,15 @@
       "description": "English railway company, 1825 to 1863",
       "sitelinks": 24,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Stockton_and_Darlington_Railway",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Stockton_and_Darlington_Railway",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%96%AF%E6%89%98%E5%85%8B%E9%A0%93%E5%92%8C%E9%81%94%E9%9D%88%E9%A0%93%E9%90%B5%E8%B7%AF",
+        "es": "https://es.wikipedia.org/wiki/Ferrocarril_de_Stockton_y_Darlington",
+        "fr": "https://fr.wikipedia.org/wiki/Chemin_de_fer_de_Stockton_et_Darlington",
+        "de": "https://de.wikipedia.org/wiki/Stockton_and_Darlington_Railway",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%83%D8%A9_%D8%AD%D8%AF%D9%8A%D8%AF_%D8%B3%D8%AA%D9%88%D9%83%D8%AA%D9%88%D9%86_%D9%88%D8%AF%D8%A7%D8%B1%D9%84%D9%8A%D9%86%D8%AC%D8%AA%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%96%D0%B5%D0%BB%D0%B5%D0%B7%D0%BD%D0%B0%D1%8F_%D0%B4%D0%BE%D1%80%D0%BE%D0%B3%D0%B0_%D0%A1%D1%82%D0%BE%D0%BA%D1%82%D0%BE%D0%BD_%E2%80%94_%D0%94%D0%B0%D1%80%D0%BB%D0%B8%D0%BD%D0%B3%D1%82%D0%BE%D0%BD"
+      },
       "countries": [
         "Q145"
       ],
@@ -495,6 +875,15 @@
       "description": "automobile propelled by an electric motor",
       "sitelinks": 85,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_car",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electric_car",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%8A%A8%E6%B1%BD%E8%BD%A6",
+        "es": "https://es.wikipedia.org/wiki/Autom%C3%B3vil_el%C3%A9ctrico",
+        "fr": "https://fr.wikipedia.org/wiki/Voiture_%C3%A9lectrique",
+        "de": "https://de.wikipedia.org/wiki/Elektroauto",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D8%A7%D8%B1%D8%A9_%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A6%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Electric%20Car%20recharging.jpg"
     },
@@ -506,6 +895,14 @@
       "description": "locomotive powered by electricity",
       "sitelinks": 47,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_locomotive",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electric_locomotive",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%8A%9B%E6%A9%9F%E8%BB%8A",
+        "es": "https://es.wikipedia.org/wiki/Locomotora_el%C3%A9ctrica",
+        "fr": "https://fr.wikipedia.org/wiki/Locomotive_%C3%A9lectrique",
+        "de": "https://de.wikipedia.org/wiki/Elektrolokomotive",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%B2%D0%BE%D0%B7"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%B2%D0%BE%D0%B7%20%D0%92%D0%9B22%D0%BC-2026%20%28VL22m-2026%20electric%20locomotive%29.jpg"
     },
@@ -517,6 +914,15 @@
       "description": "powered lighter-than-air aircraft",
       "sitelinks": 89,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Airship",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Airship",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%A3%9E%E8%89%87_(%E8%BD%BB%E8%88%AA%E7%A9%BA%E5%99%A8)",
+        "es": "https://es.wikipedia.org/wiki/Dirigible",
+        "fr": "https://fr.wikipedia.org/wiki/Ballon_dirigeable",
+        "de": "https://de.wikipedia.org/wiki/Luftschiff",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%81%D9%8A%D9%86%D8%A9_%D9%87%D9%88%D8%A7%D8%A6%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D1%80%D0%B8%D0%B6%D0%B0%D0%B1%D0%BB%D1%8C"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zeppellin%20NT%20amk.JPG"
     },
@@ -528,6 +934,15 @@
       "description": "first US railroad to reach the Pacific coast",
       "sitelinks": 29,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_transcontinental_railroad",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/First_transcontinental_railroad",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%AC%AC%E4%B8%80%E6%A2%9D%E6%A9%AB%E8%B2%AB%E5%A4%A7%E9%99%B8%E9%90%B5%E8%B7%AF",
+        "es": "https://es.wikipedia.org/wiki/Primer_ferrocarril_transcontinental_de_Estados_Unidos",
+        "fr": "https://fr.wikipedia.org/wiki/Premier_chemin_de_fer_transcontinental",
+        "de": "https://de.wikipedia.org/wiki/First_Transcontinental_Railroad",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D9%88%D9%84_%D8%B3%D9%83%D8%A9_%D8%AD%D8%AF%D9%8A%D8%AF%D9%8A%D8%A9_%D9%85%D9%85%D8%AA%D8%AF%D8%A9_%D8%B9%D8%A8%D8%B1_%D8%A7%D9%84%D9%82%D8%A7%D8%B1%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D0%B0%D1%8F_%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%BD%D1%82%D0%B8%D0%BD%D0%B5%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%B6%D0%B5%D0%BB%D0%B5%D0%B7%D0%BD%D0%B0%D1%8F_%D0%B4%D0%BE%D1%80%D0%BE%D0%B3%D0%B0_%D0%A1%D0%A8%D0%90"
+      },
       "countries": [
         "Q30"
       ],
@@ -541,6 +956,15 @@
       "description": "motorized road vehicle for one to eight people",
       "sitelinks": 246,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Car",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Car",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B1%BD%E8%BD%A6",
+        "es": "https://es.wikipedia.org/wiki/Autom%C3%B3vil",
+        "fr": "https://fr.wikipedia.org/wiki/Automobile",
+        "de": "https://de.wikipedia.org/wiki/Automobil",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D8%A7%D8%B1%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20183-J0711-0001-003%2C%20Warnem%C3%BCnde%2C%20Stau.jpg"
     },
@@ -552,6 +976,15 @@
       "description": "pedal-driven two-wheel vehicle",
       "sitelinks": 205,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bicycle",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Bicycle",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%99%E8%BC%AA%E8%BB%8A",
+        "es": "https://es.wikipedia.org/wiki/Bicicleta",
+        "fr": "https://fr.wikipedia.org/wiki/V%C3%A9lo",
+        "de": "https://de.wikipedia.org/wiki/Fahrrad",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D8%B1%D8%A7%D8%AC%D8%A9_%D9%87%D9%88%D8%A7%D8%A6%D9%8A%D8%A9_%D8%AB%D9%86%D8%A7%D8%A6%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/00%208327%20Historisches%20Fahrrad.jpg"
     },
@@ -563,6 +996,15 @@
       "description": "vehicle widely regarded as the first automobile",
       "sitelinks": 43,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%B3%93%E5%A3%AB%E5%B0%88%E5%88%A9%E6%A9%9F%E5%8B%95%E8%BB%8A",
+        "es": "https://es.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+        "fr": "https://fr.wikipedia.org/wiki/Benz_Patent_Motorwagen",
+        "de": "https://de.wikipedia.org/wiki/Benz_Patent-Motorwagen_Nummer_1",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%86%D8%B2_%D8%A8%D8%A7%D8%AA%D9%8A%D9%86%D8%AA_%D9%85%D9%88%D8%AA%D9%88%D8%B1%D9%81%D8%A7%D8%BA%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/Benz_Patent-Motorwagen"
+      },
       "countries": [
         "Q183"
       ],
@@ -576,6 +1018,15 @@
       "description": "public rapid transit system in London, UK",
       "sitelinks": 88,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/London_Underground",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/London_Underground",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BC%A6%E6%95%A6%E5%9C%B0%E9%93%81",
+        "es": "https://es.wikipedia.org/wiki/Metro_de_Londres",
+        "fr": "https://fr.wikipedia.org/wiki/M%C3%A9tro_de_Londres",
+        "de": "https://de.wikipedia.org/wiki/London_Underground",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AA%D8%B1%D9%88_%D9%84%D9%86%D8%AF%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D0%BE%D0%BD%D0%B4%D0%BE%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B5%D0%BD"
+      },
       "countries": [
         "Q145"
       ],
@@ -589,6 +1040,15 @@
       "description": "internal combustion engine with compression ignition",
       "sitelinks": 77,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Diesel_engine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Diesel_engine",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9F%B4%E6%B2%B9%E5%BC%95%E6%93%8E",
+        "es": "https://es.wikipedia.org/wiki/Motor_di%C3%A9sel",
+        "fr": "https://fr.wikipedia.org/wiki/Moteur_Diesel",
+        "de": "https://de.wikipedia.org/wiki/Dieselmotor",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%83_%D8%AF%D9%8A%D8%B2%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D0%B7%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B4%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MAN%20TGX%20V8%20engine.JPG"
     },
@@ -600,6 +1060,15 @@
       "description": "powered fixed-wing aircraft",
       "sitelinks": 195,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Airplane",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Airplane",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%A3%9B%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Avi%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Avion",
+        "de": "https://de.wikipedia.org/wiki/Flugzeug",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B7%D8%A7%D8%A6%D8%B1%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BC%D0%BE%D0%BB%D1%91%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Airliners%2028.07.2009%2010-01-28.JPG"
     },
@@ -611,6 +1080,15 @@
       "description": "aircraft designed and built by the Wright Brothers",
       "sitelinks": 44,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Wright_Flyer",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Wright_Flyer",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8E%B1%E7%89%B9%E9%A3%9E%E8%A1%8C%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/Wright_Flyer",
+        "fr": "https://fr.wikipedia.org/wiki/Wright_Flyer",
+        "de": "https://de.wikipedia.org/wiki/Wright_Flyer",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B1%D8%A7%D9%8A%D8%AA_%D9%81%D9%84%D8%A7%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/Wright_Flyer"
+      },
       "countries": [
         "Q30"
       ],
@@ -624,6 +1102,14 @@
       "description": "heavier-than-air aircraft generating lift over rotating wings",
       "sitelinks": 30,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Rotorcraft",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Rotorcraft",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%97%8B%E7%BF%BC%E8%88%AA%E7%A9%BA%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/Aeronave_de_alas_giratorias",
+        "fr": "https://fr.wikipedia.org/wiki/A%C3%A9rogire",
+        "de": "https://de.wikipedia.org/wiki/Drehfl%C3%BCgler",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BD%D1%82%D0%BE%D0%BA%D1%80%D1%8B%D0%BB%D1%8B%D0%B9_%D0%BB%D0%B5%D1%82%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg"
     },
@@ -635,6 +1121,15 @@
       "description": "American car (1908–1927)",
       "sitelinks": 64,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ford_Model_T",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ford_Model_T",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A6%8F%E7%89%B9T%E5%9E%8B%E8%BD%A6",
+        "es": "https://es.wikipedia.org/wiki/Ford_T",
+        "fr": "https://fr.wikipedia.org/wiki/Ford_T",
+        "de": "https://de.wikipedia.org/wiki/Ford_Modell_T",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D9%88%D8%B1%D8%AF_%D9%85%D9%88%D8%AF%D9%8A%D9%84_%D8%AA%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/Ford_Model_T"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ford%20T%20Jon%20Sullivan.jpg"
     },
@@ -646,6 +1141,15 @@
       "description": "rotorcraft with rotor unpowered in flight",
       "sitelinks": 61,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Autogyro",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Autogyro",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%87%AA%E8%BD%89%E6%97%8B%E7%BF%BC%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Autogiro",
+        "fr": "https://fr.wikipedia.org/wiki/Autogire",
+        "de": "https://de.wikipedia.org/wiki/Tragschrauber",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D9%88%D8%AA%D9%88%D8%AC%D9%8A%D8%B1%D9%88",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%B6%D0%B8%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20102-09500%2C%20Windm%C3%BChlen-Aeroplan%20Cleaned%27n%27Cropped.jpg"
     },
@@ -657,6 +1161,15 @@
       "description": "engine burning fuel with an oxidizer in a combustion chamber",
       "sitelinks": 121,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%86%85%E7%87%83%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Motor_de_combusti%C3%B3n_interna",
+        "fr": "https://fr.wikipedia.org/wiki/Moteur_%C3%A0_combustion_interne",
+        "de": "https://de.wikipedia.org/wiki/Verbrennungsmotor",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%83_%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%82_%D8%AF%D8%A7%D8%AE%D9%84%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B5%D0%B3%D0%BE_%D1%81%D0%B3%D0%BE%D1%80%D0%B0%D0%BD%D0%B8%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Diesel%20Engine%20%284%20cycle%20running%29.gif"
     },
@@ -668,6 +1181,15 @@
       "description": "vehicle moving within ground effect over any surface",
       "sitelinks": 69,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hovercraft",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Hovercraft",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B0%A3%E5%A2%8A%E8%88%B9",
+        "es": "https://es.wikipedia.org/wiki/Aerodeslizador",
+        "fr": "https://fr.wikipedia.org/wiki/A%C3%A9roglisseur",
+        "de": "https://de.wikipedia.org/wiki/Luftkissenfahrzeug",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D9%88%D8%A7%D9%85%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D0%B4%D0%BD%D0%BE_%D0%BD%D0%B0_%D0%B2%D0%BE%D0%B7%D0%B4%D1%83%D1%88%D0%BD%D0%BE%D0%B9_%D0%BF%D0%BE%D0%B4%D1%83%D1%88%D0%BA%D0%B5"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LCAC%2019970620.jpg"
     },
@@ -679,6 +1201,15 @@
       "description": "rail network running significantly faster than traditional rail",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/High-speed_rail",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/High-speed_rail",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%AB%98%E9%80%9F%E9%90%B5%E8%B7%AF",
+        "es": "https://es.wikipedia.org/wiki/Alta_velocidad_ferroviaria",
+        "fr": "https://fr.wikipedia.org/wiki/Grande_vitesse_ferroviaire",
+        "de": "https://de.wikipedia.org/wiki/Hochgeschwindigkeitsverkehr",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%83%D8%A9_%D8%AD%D8%AF%D9%8A%D8%AF%D9%8A%D8%A9_%D9%81%D8%A7%D8%A6%D9%82%D8%A9_%D8%A7%D9%84%D8%B3%D8%B1%D8%B9%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D1%81%D0%BA%D0%BE%D1%80%D0%BE%D1%81%D1%82%D0%BD%D0%BE%D0%B9_%D0%BD%D0%B0%D0%B7%D0%B5%D0%BC%D0%BD%D1%8B%D0%B9_%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Steigung%20NIM.jpg"
     },
@@ -690,6 +1221,15 @@
       "description": "Japanese high-speed rail system",
       "sitelinks": 73,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Shinkansen",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Shinkansen",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%96%B0%E5%B9%B9%E7%B7%9A",
+        "es": "https://es.wikipedia.org/wiki/Shinkansen",
+        "fr": "https://fr.wikipedia.org/wiki/Shinkansen",
+        "de": "https://de.wikipedia.org/wiki/Shinkansen",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B4%D9%8A%D9%86%D9%83%D8%A7%D9%86%D8%B3%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BD%D0%BA%D0%B0%D0%BD%D1%81%D1%8D%D0%BD"
+      },
       "countries": [
         "Q17"
       ],
@@ -703,6 +1243,15 @@
       "description": "bridge crossing the River Severn in Shropshire, England",
       "sitelinks": 32,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Iron_Bridge",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/The_Iron_Bridge",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%93%81%E6%A1%A5_(%E4%BB%80%E7%BD%97%E6%99%AE%E9%83%A1)",
+        "es": "https://es.wikipedia.org/wiki/Iron_Bridge",
+        "fr": "https://fr.wikipedia.org/wiki/Iron_Bridge",
+        "de": "https://de.wikipedia.org/wiki/The_Iron_Bridge",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AC%D8%B3%D8%B1_%D8%A3%D9%8A%D8%B1%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D1%83%D0%B3%D1%83%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BC%D0%BE%D1%81%D1%82_%D1%87%D0%B5%D1%80%D0%B5%D0%B7_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD"
+      },
       "countries": [
         "Q145"
       ],
@@ -716,6 +1265,15 @@
       "description": "artificial sea-level waterway in Egypt",
       "sitelinks": 174,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Suez_Canal",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Suez_Canal",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8B%8F%E4%BC%8A%E5%A3%AB%E8%BF%90%E6%B2%B3",
+        "es": "https://es.wikipedia.org/wiki/Canal_de_Suez",
+        "fr": "https://fr.wikipedia.org/wiki/Canal_de_Suez",
+        "de": "https://de.wikipedia.org/wiki/Suezkanal",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D9%86%D8%A7%D8%A9_%D8%A7%D9%84%D8%B3%D9%88%D9%8A%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D1%8D%D1%86%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB"
+      },
       "countries": [
         "Q79"
       ],
@@ -729,6 +1287,15 @@
       "description": "large canal in Panama",
       "sitelinks": 160,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Panama_Canal",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Panama_Canal",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B7%B4%E6%8B%BF%E9%A9%AC%E8%BF%90%E6%B2%B3",
+        "es": "https://es.wikipedia.org/wiki/Canal_de_Panam%C3%A1",
+        "fr": "https://fr.wikipedia.org/wiki/Canal_de_Panama",
+        "de": "https://de.wikipedia.org/wiki/Panamakanal",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D9%86%D8%A7%D8%A9_%D8%A8%D9%86%D9%85%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B0%D0%BC%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB"
+      },
       "countries": [
         "Q804"
       ],
@@ -742,6 +1309,15 @@
       "description": "rail tunnel beneath the English Channel",
       "sitelinks": 88,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8B%B1%E6%B3%95%E6%B5%B7%E5%BA%95%E9%9A%A7%E9%81%93",
+        "es": "https://es.wikipedia.org/wiki/Eurot%C3%BAnel",
+        "fr": "https://fr.wikipedia.org/wiki/Tunnel_sous_la_Manche",
+        "de": "https://de.wikipedia.org/wiki/Eurotunnel",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D9%81%D9%82_%D8%A7%D9%84%D9%85%D8%A7%D9%86%D8%B4",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%95%D0%B2%D1%80%D0%BE%D1%82%D0%BE%D0%BD%D0%BD%D0%B5%D0%BB%D1%8C"
+      },
       "countries": [
         "Q142",
         "Q145"
@@ -756,6 +1332,15 @@
       "description": "small fastener used in clothing",
       "sitelinks": 100,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Button",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Button",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%88%95%E6%89%A3",
+        "es": "https://es.wikipedia.org/wiki/Bot%C3%B3n_(indumentaria)",
+        "fr": "https://fr.wikipedia.org/wiki/Bouton_(couture)",
+        "de": "https://de.wikipedia.org/wiki/Knopf",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%83%D0%B3%D0%BE%D0%B2%D0%B8%D1%86%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Plastic%20%26%20fabric%20buttons%20showing%20holes%20%26%20shank.jpg"
     },
@@ -767,6 +1352,15 @@
       "description": "instrument used to measure atmospheric pressure",
       "sitelinks": 93,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Barometer",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Barometer",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B0%94%E5%8E%8B%E8%A1%A8",
+        "es": "https://es.wikipedia.org/wiki/Bar%C3%B3metro",
+        "fr": "https://fr.wikipedia.org/wiki/Barom%C3%A8tre",
+        "de": "https://de.wikipedia.org/wiki/Barometer",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%82%D9%8A%D8%A7%D8%B3_%D8%B6%D8%BA%D8%B7_%D8%AC%D9%88%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dosen-barometer.jpg"
     },
@@ -778,6 +1372,15 @@
       "description": "light created by electrical breakdown of gas",
       "sitelinks": 36,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Arc_lamp",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Arc_lamp",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%BC%A7%E5%85%89%E7%87%88",
+        "es": "https://es.wikipedia.org/wiki/L%C3%A1mpara_de_arco",
+        "fr": "https://fr.wikipedia.org/wiki/Lampe_%C3%A0_arc",
+        "de": "https://de.wikipedia.org/wiki/Kohlebogenlampe",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B5%D8%A8%D8%A7%D8%AD_%D9%82%D9%88%D8%B3%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D1%83%D0%B3%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BB%D0%B0%D0%BC%D0%BF%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Xenon%20short%20arc%201.jpg"
     },
@@ -789,6 +1392,15 @@
       "description": "earliest known surviving photograph, by Nicéphore Niépce",
       "sitelinks": 34,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/View_from_the_Window_at_Le_Gras",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/View_from_the_Window_at_Le_Gras",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9C%A8%E5%8B%92%E6%A0%BC%E6%8B%89%E7%9A%84%E7%AA%97%E5%A4%96%E6%99%AF%E8%89%B2",
+        "es": "https://es.wikipedia.org/wiki/Vista_desde_la_ventana_en_Le_Gras",
+        "fr": "https://fr.wikipedia.org/wiki/Point_de_vue_du_Gras",
+        "de": "https://de.wikipedia.org/wiki/Blick_aus_dem_Arbeitszimmer_von_Le_Gras",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%86%D8%B8%D8%B1_%D9%85%D9%86_%D8%A7%D9%84%D9%86%D8%A7%D9%81%D8%B0%D8%A9_%D9%81%D9%8A_%D9%84%D9%88_%D8%BA%D8%B1%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%B4_%D0%B8%D0%B7_%D0%BE%D0%BA%D0%BD%D0%B0_%D0%B2_%D0%9B%D0%B5_%D0%93%D1%80%D0%B0"
+      },
       "countries": [
         "Q142"
       ],
@@ -802,6 +1414,15 @@
       "description": "photographic process invented by L. Daguerre",
       "sitelinks": 65,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Daguerreotype",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Daguerreotype",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%93%B6%E7%89%88%E6%91%84%E5%BD%B1%E6%B3%95",
+        "es": "https://es.wikipedia.org/wiki/Daguerrotipo",
+        "fr": "https://fr.wikipedia.org/wiki/Daguerr%C3%A9otype",
+        "de": "https://de.wikipedia.org/wiki/Daguerreotypie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D8%A7%D8%AC%D9%8A%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B0%D0%B3%D0%B5%D1%80%D0%BE%D1%82%D0%B8%D0%BF%D0%B8%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/C%C3%A1mara%20para%20obtener%20vistas%20al%20daguerrotipo%2C%20original%20del%20a%C3%B1o%201839%2C%20conservada%20en%20Barcelona%2C%20Espa%C3%B1a%2C%20Spain.jpg"
     },
@@ -813,6 +1434,15 @@
       "description": "appliance for preserving food at a low temperature",
       "sitelinks": 140,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Refrigerator",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Refrigerator",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%86%B0%E7%AE%B1",
+        "es": "https://es.wikipedia.org/wiki/Refrigerador",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9frig%C3%A9rateur",
+        "de": "https://de.wikipedia.org/wiki/K%C3%BChlschrank",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%84%D8%A7%D8%AC%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A5%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LG%20refrigerator%20interior.jpg"
     },
@@ -824,6 +1454,15 @@
       "description": "rechargeable battery type often used in cars",
       "sitelinks": 45,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Lead%E2%80%93acid_battery",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Lead%E2%80%93acid_battery",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%93%85%E9%85%B8%E8%93%84%E7%94%B5%E6%B1%A0",
+        "es": "https://es.wikipedia.org/wiki/Bater%C3%ADa_de_plomo_y_%C3%A1cido",
+        "fr": "https://fr.wikipedia.org/wiki/Batterie_au_plomb",
+        "de": "https://de.wikipedia.org/wiki/Bleiakkumulator",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B7%D8%A7%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%B1%D8%B5%D8%A7%D8%B5",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B2%D0%B8%D0%BD%D1%86%D0%BE%D0%B2%D0%BE-%D0%BA%D0%B8%D1%81%D0%BB%D0%BE%D1%82%D0%BD%D1%8B%D0%B9_%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/UTX12-BS%28MF%29.png"
     },
@@ -835,6 +1474,15 @@
       "description": "electric light bulb with a resistively heated filament",
       "sitelinks": 105,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Incandescent_light_bulb",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Incandescent_light_bulb",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%99%BD%E7%86%BE%E7%87%88",
+        "es": "https://es.wikipedia.org/wiki/L%C3%A1mpara_incandescente",
+        "fr": "https://fr.wikipedia.org/wiki/Lampe_%C3%A0_incandescence",
+        "de": "https://de.wikipedia.org/wiki/Gl%C3%BChlampe",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B5%D8%A8%D8%A7%D8%AD_%D9%85%D8%AA%D9%88%D9%87%D8%AC",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%BC%D0%BF%D0%B0_%D0%BD%D0%B0%D0%BA%D0%B0%D0%BB%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gluehlampe%2001%20KMJ.jpg"
     },
@@ -846,6 +1494,15 @@
       "description": "writing implement",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ballpoint_pen",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ballpoint_pen",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8E%9F%E5%AD%90%E7%AD%86",
+        "es": "https://es.wikipedia.org/wiki/Bol%C3%ADgrafo",
+        "fr": "https://fr.wikipedia.org/wiki/Stylo_%C3%A0_bille",
+        "de": "https://de.wikipedia.org/wiki/Kugelschreiber",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D9%84%D9%85_%D8%AD%D8%A8%D8%B1_%D8%AC%D8%A7%D9%81",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D1%80%D0%B8%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F_%D1%80%D1%83%D1%87%D0%BA%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/03-BICcristal2008-03-26.jpg"
     },
@@ -857,6 +1514,15 @@
       "description": "hydrocarbon derivative containing only carbon, chlorine and fluorine",
       "sitelinks": 56,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Chlorofluorocarbon",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Chlorofluorocarbon",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B0%AF%E6%B0%9F%E7%83%83",
+        "es": "https://es.wikipedia.org/wiki/Clorofluorocarburo",
+        "fr": "https://fr.wikipedia.org/wiki/Chlorofluorocarbure",
+        "de": "https://de.wikipedia.org/wiki/Fluorchlorkohlenwasserstoffe",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%83%D9%84%D9%88%D8%B1%D9%88%D9%81%D9%84%D9%88%D8%B1%D9%88%D9%83%D8%B1%D8%A8%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A5%D0%BB%D0%BE%D1%80%D1%84%D1%82%D0%BE%D1%80%D1%83%D0%B3%D0%BB%D0%B5%D1%80%D0%BE%D0%B4%D1%8B"
+      },
       "countries": []
     },
     {
@@ -867,6 +1533,15 @@
       "description": "moving staircase",
       "sitelinks": 80,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Escalator",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Escalator",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%8B%95%E6%89%B6%E6%A2%AF",
+        "es": "https://es.wikipedia.org/wiki/Escalera_mec%C3%A1nica",
+        "fr": "https://fr.wikipedia.org/wiki/Escalier_m%C3%A9canique",
+        "de": "https://de.wikipedia.org/wiki/Rolltreppe",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D9%85_%D9%85%D8%AA%D8%AD%D8%B1%D9%83",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D1%81%D0%BA%D0%B0%D0%BB%D0%B0%D1%82%D0%BE%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Copenhagen%20Metro%20escalators.jpg"
     },
@@ -878,6 +1553,15 @@
       "description": "two-terminal component allowing current in one direction",
       "sitelinks": 128,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Diode",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Diode",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%8C%E6%A5%B5%E9%AB%94",
+        "es": "https://es.wikipedia.org/wiki/Diodo",
+        "fr": "https://fr.wikipedia.org/wiki/Diode",
+        "de": "https://de.wikipedia.org/wiki/Diode",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%86%D8%A7%D8%A6%D9%8A_%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B1%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D0%BE%D0%B4"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Diode-closeup.jpg"
     },
@@ -889,6 +1573,15 @@
       "description": "early plastic",
       "sitelinks": 51,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bakelite",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Bakelite",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%BB%E6%9C%A8",
+        "es": "https://es.wikipedia.org/wiki/Baquelita",
+        "fr": "https://fr.wikipedia.org/wiki/Bak%C3%A9lite",
+        "de": "https://de.wikipedia.org/wiki/Bakelit",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%A7%D9%83%D9%8A%D9%84%D9%8A%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%BA%D0%B5%D0%BB%D0%B8%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakelite%20bangles.jpg"
     },
@@ -900,6 +1593,15 @@
       "description": "chemical compound",
       "sitelinks": 49,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cellophane",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cellophane",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%8E%BB%E7%92%83%E7%BA%B8",
+        "es": "https://es.wikipedia.org/wiki/Celof%C3%A1n",
+        "fr": "https://fr.wikipedia.org/wiki/Cellophane",
+        "de": "https://de.wikipedia.org/wiki/Cellulosehydrat",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D9%84%D9%88%D9%81%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A6%D0%B5%D0%BB%D0%BB%D0%BE%D1%84%D0%B0%D0%BD"
+      },
       "countries": []
     },
     {
@@ -910,6 +1612,15 @@
       "description": "electronic oscillator circuit",
       "sitelinks": 32,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Crystal_oscillator",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Crystal_oscillator",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%9F%B3%E8%8B%B1%E6%99%B6%E4%BD%93%E8%B0%90%E6%8C%AF%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/Oscilador_de_cristal",
+        "fr": "https://fr.wikipedia.org/wiki/Quartz_(%C3%A9lectronique)",
+        "de": "https://de.wikipedia.org/wiki/Quarzoszillator",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B0%D8%A8%D8%B0%D8%A8_%D8%A8%D9%84%D9%88%D8%B1%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B2%D0%B0%D1%80%D1%86%D0%B5%D0%B2%D1%8B%D0%B9_%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BOMAR%20VCXO%20Crystal%20Oscillator.jpg"
     },
@@ -921,6 +1632,15 @@
       "description": "device for generating microwaves",
       "sitelinks": 48,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cavity_magnetron",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cavity_magnetron",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%9A%E8%85%94%E7%A3%81%E6%8E%A7%E7%AE%A1",
+        "es": "https://es.wikipedia.org/wiki/Magnetr%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Magn%C3%A9tron",
+        "de": "https://de.wikipedia.org/wiki/Magnetron",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D9%86%D8%A8%D9%88%D8%A8_%D9%85%D8%BA%D9%86%D8%A7%D8%B7%D9%8A%D8%B3%D9%8A_%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B3%D0%BD%D0%B5%D1%82%D1%80%D0%BE%D0%BD"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caso%20SMG20%20-%20Witol%202M219J-0173.jpg"
     },
@@ -932,6 +1652,15 @@
       "description": "general-purpose device for arithmetic or logical operations",
       "sitelinks": 296,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Computer",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Computer",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Computadora",
+        "fr": "https://fr.wikipedia.org/wiki/Ordinateur",
+        "de": "https://de.wikipedia.org/wiki/Computer",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%A7%D8%B3%D9%88%D8%A8",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apple%20II%20Plus%2C%20Museum%20of%20the%20Moving%20Image.jpg"
     },
@@ -943,6 +1672,15 @@
       "description": "extremely accurate reference clock for timekeeping",
       "sitelinks": 69,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_clock",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Atomic_clock",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8E%9F%E5%AD%90%E9%90%98",
+        "es": "https://es.wikipedia.org/wiki/Reloj_at%C3%B3mico",
+        "fr": "https://fr.wikipedia.org/wiki/Horloge_atomique",
+        "de": "https://de.wikipedia.org/wiki/Atomuhr",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D8%A7%D8%B9%D8%A9_%D8%B0%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%82%D0%BE%D0%BC%D0%BD%D1%8B%D0%B5_%D1%87%D0%B0%D1%81%D1%8B"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/17jila003%203d%20strontium%20atomic%20clock.jpg"
     },
@@ -954,6 +1692,15 @@
       "description": "computer intended for use by an individual person",
       "sitelinks": 110,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Personal_computer",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Personal_computer",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%B8%AA%E4%BA%BA%E7%94%B5%E8%84%91",
+        "es": "https://es.wikipedia.org/wiki/Computadora_personal",
+        "fr": "https://fr.wikipedia.org/wiki/Ordinateur_personnel",
+        "de": "https://de.wikipedia.org/wiki/Personal_Computer",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%A7%D8%B3%D9%88%D8%A8_%D8%B4%D8%AE%D8%B5%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/IBM%20PC%205150.jpg"
     },
@@ -965,6 +1712,15 @@
       "description": "material fibers 5–10 μm in diameter, composed of carbon",
       "sitelinks": 50,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Carbon_fibers",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Carbon_fibers",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A2%B3%E7%BA%96%E7%B6%AD",
+        "es": "https://es.wikipedia.org/wiki/Fibra_de_carbono",
+        "fr": "https://fr.wikipedia.org/wiki/Fibre_de_carbone",
+        "de": "https://de.wikipedia.org/wiki/Kohlenstofffaser",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D9%84%D9%8A%D8%A7%D9%81_%D8%A7%D9%84%D9%83%D8%B1%D8%A8%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A3%D0%B3%D0%BB%D0%B5%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5_%D0%B2%D0%BE%D0%BB%D0%BE%D0%BA%D0%BD%D0%BE"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kohlenstoff%20fasern%208mm%20laenge%202000dpi.jpg"
     },
@@ -976,6 +1732,15 @@
       "description": "electronic device used for calculations",
       "sitelinks": 124,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Calculator",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Calculator",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/Calculadora",
+        "fr": "https://fr.wikipedia.org/wiki/Calculatrice",
+        "de": "https://de.wikipedia.org/wiki/Taschenrechner",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Calculadora%20cient%C3%ADfica%20Famaprem%20CPC-400.jpg"
     },
@@ -987,6 +1752,15 @@
       "description": "device emitting light via optical amplification",
       "sitelinks": 119,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Laser",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Laser",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%BF%80%E5%85%89%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/L%C3%A1ser",
+        "fr": "https://fr.wikipedia.org/wiki/Laser",
+        "de": "https://de.wikipedia.org/wiki/Laser",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D9%8A%D8%B2%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B7%D0%B5%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lasers.JPG"
     },
@@ -998,6 +1772,15 @@
       "description": "device usually used as an alternative to tobacco",
       "sitelinks": 70,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electronic_cigarette",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electronic_cigarette",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%AD%90%E7%85%99",
+        "es": "https://es.wikipedia.org/wiki/Cigarrillo_electr%C3%B3nico",
+        "fr": "https://fr.wikipedia.org/wiki/Cigarette_%C3%A9lectronique",
+        "de": "https://de.wikipedia.org/wiki/Elektrische_Zigarette",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D8%AC%D8%A7%D8%B1%D8%A9_%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D0%B3%D0%B0%D1%80%D0%B5%D1%82%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2020%20E-papieros%20mod.jpg"
     },
@@ -1009,6 +1792,15 @@
       "description": "removable disk storage medium",
       "sitelinks": 81,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Floppy_disk",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Floppy_disk",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%BD%AF%E7%9B%98",
+        "es": "https://es.wikipedia.org/wiki/Disquete",
+        "fr": "https://fr.wikipedia.org/wiki/Disquette",
+        "de": "https://de.wikipedia.org/wiki/Diskette",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%B1%D8%B5_%D9%85%D8%B1%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D1%81%D0%BA%D0%B5%D1%82%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Floppy%20disk%202009%20G1.jpg"
     },
@@ -1020,6 +1812,15 @@
       "description": "user interface via graphical icons and visual indicators",
       "sitelinks": 79,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Graphical_user_interface",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Graphical_user_interface",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9B%BE%E5%BD%A2%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2",
+        "es": "https://es.wikipedia.org/wiki/Interfaz_gr%C3%A1fica_de_usuario",
+        "fr": "https://fr.wikipedia.org/wiki/Interface_graphique",
+        "de": "https://de.wikipedia.org/wiki/Grafische_Benutzeroberfl%C3%A4che",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%88%D8%A7%D8%AC%D9%87%D8%A9_%D9%85%D8%B3%D8%AA%D8%AE%D8%AF%D9%85_%D8%B1%D8%B3%D9%88%D9%85%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D1%84%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Galaxy%20Z.jpg"
     },
@@ -1031,6 +1832,15 @@
       "description": "typesetting system",
       "sitelinks": 54,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/TeX",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/TeX",
+        "zh": "https://zh.wikipedia.org/wiki/TeX",
+        "es": "https://es.wikipedia.org/wiki/TeX",
+        "fr": "https://fr.wikipedia.org/wiki/TeX",
+        "de": "https://de.wikipedia.org/wiki/TeX",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%AE_(%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A9)",
+        "ru": "https://ru.wikipedia.org/wiki/TeX"
+      },
       "countries": []
     },
     {
@@ -1041,6 +1851,15 @@
       "description": "digital optical disc data storage format",
       "sitelinks": 112,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Compact_disc",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Compact_disc",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%B7%E5%B0%84%E5%94%B1%E7%89%87",
+        "es": "https://es.wikipedia.org/wiki/Disco_compacto",
+        "fr": "https://fr.wikipedia.org/wiki/Disque_compact",
+        "de": "https://de.wikipedia.org/wiki/Compact_Disc",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%B1%D8%B5_%D9%85%D8%B6%D8%BA%D9%88%D8%B7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D0%B0%D0%BA%D1%82-%D0%B4%D0%B8%D1%81%D0%BA"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OD%20Compact%20disc.svg"
     },
@@ -1052,6 +1871,15 @@
       "description": "machine that separates cotton fibers from seeds",
       "sitelinks": 36,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cotton_gin",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cotton_gin",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%BB%8B%E6%A3%89%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Desmotadora",
+        "fr": "https://fr.wikipedia.org/wiki/Cotton_gin",
+        "de": "https://de.wikipedia.org/wiki/Egreniermaschine",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D9%84%D8%AC_%D8%A7%D9%84%D9%82%D8%B7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%82%D1%82%D0%BE%D0%BD-%D0%B4%D0%B6%D0%B8%D0%BD"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cotton%20gin%20EWM%202007.jpg"
     },
@@ -1063,6 +1891,14 @@
       "description": "method of preserving food",
       "sitelinks": 47,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Canning",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Canning",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BD%90%E8%A3%9D%E9%A3%9F%E5%93%81",
+        "es": "https://es.wikipedia.org/wiki/Envasado",
+        "fr": "https://fr.wikipedia.org/wiki/Conserve",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%B9%D9%84%D9%8A%D8%A8",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%81%D0%B5%D1%80%D0%B2%D1%8B"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%93%D0%BE%D0%B2%D1%8F%D0%B4%D0%B8%D0%BD%D0%B0%20%D1%82%D1%83%D1%88%D1%91%D0%BD%D0%B0%D1%8F%20%D0%BA%D1%83%D1%81%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BD%D0%B0%D1%82%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F.%20%D0%A4%D0%BE%D1%82%D0%BE%20%D0%90.%20%D0%A9%D0%B5%D0%BA%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0.jpg"
     },
@@ -1074,6 +1910,15 @@
       "description": "mild heat treatment eliminating pathogens, extending shelf life",
       "sitelinks": 89,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Pasteurization",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Pasteurization",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B7%B4%E6%96%AF%E5%BE%B7%E6%B6%88%E6%AF%92%E6%B3%95",
+        "es": "https://es.wikipedia.org/wiki/Pasteurizaci%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Pasteurisation",
+        "de": "https://de.wikipedia.org/wiki/Pasteurisierung",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B3%D8%AA%D8%B1%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/60s%20Pama%20pasteurizer.jpg"
     },
@@ -1085,6 +1930,15 @@
       "description": "artificial nitrogen fixation, the main industrial ammonia process",
       "sitelinks": 60,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Haber_process",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Haber_process",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%93%88%E6%9F%8F%E6%B3%95",
+        "es": "https://es.wikipedia.org/wiki/Proceso_de_Haber",
+        "fr": "https://fr.wikipedia.org/wiki/Proc%C3%A9d%C3%A9_Haber",
+        "de": "https://de.wikipedia.org/wiki/Haber-Bosch-Verfahren",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D9%87%D8%A7%D8%A8%D8%B1-%D8%A8%D9%88%D8%B4",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%93%D0%B0%D0%B1%D0%B5%D1%80%D0%B0"
+      },
       "countries": [
         "Q43287"
       ]
@@ -1097,6 +1951,15 @@
       "description": "period of high agricultural technology transfer, 1950s–60s",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Green_Revolution",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Green_Revolution",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BB%BF%E8%89%B2%E9%9D%A9%E5%91%BD",
+        "es": "https://es.wikipedia.org/wiki/Revoluci%C3%B3n_verde",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9volution_verte",
+        "de": "https://de.wikipedia.org/wiki/Gr%C3%BCne_Revolution",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AB%D9%88%D8%B1%D8%A9_%D8%A7%D9%84%D8%AE%D8%B6%D8%B1%D8%A7%D8%A1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B5%D0%BB%D1%91%D0%BD%D0%B0%D1%8F_%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Irrigation1.jpg"
     },
@@ -1108,6 +1971,15 @@
       "description": "arrival of Christopher Columbus and crew to America",
       "sitelinks": 48,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Discovery_of_the_Americas",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Discovery_of_the_Americas",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8F%91%E7%8E%B0%E7%BE%8E%E6%B4%B2",
+        "es": "https://es.wikipedia.org/wiki/Descubrimiento_de_Am%C3%A9rica",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9couverte_et_exploration_de_l%27Am%C3%A9rique",
+        "de": "https://de.wikipedia.org/wiki/Entdeckung_Amerikas",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%83%D8%AA%D8%B4%D8%A7%D9%81_%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5_%D0%90%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B8"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Flickr%20-%20USCapitol%20-%20Landing%20of%20Columbus%20%281%29.jpg"
     },
@@ -1119,6 +1991,15 @@
       "description": "16th-century Spanish maritime expedition",
       "sitelinks": 31,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Magellan_expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Magellan_expedition",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%BA%A5%E5%93%B2%E5%80%AB%E6%8E%A2%E9%9A%AA%E9%9A%8A",
+        "es": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_de_Magallanes_y_Elcano",
+        "fr": "https://fr.wikipedia.org/wiki/Circumnavigation_Magellan-Elcano",
+        "de": "https://de.wikipedia.org/wiki/Magellan-Expedition",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%A8%D8%AD%D8%A7%D8%B1_%D9%85%D8%A7%D8%AC%D9%84%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D0%BE%D0%B5_%D0%BA%D1%80%D1%83%D0%B3%D0%BE%D1%81%D0%B2%D0%B5%D1%82%D0%BD%D0%BE%D0%B5_%D0%BF%D0%BB%D0%B0%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5"
+      },
       "countries": [
         "Q217196"
       ],
@@ -1132,6 +2013,15 @@
       "description": "angle measurement navigational instrument",
       "sitelinks": 70,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Sextant",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sextant",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%85%AD%E5%88%86%E4%BB%AA",
+        "es": "https://es.wikipedia.org/wiki/Sextante",
+        "fr": "https://fr.wikipedia.org/wiki/Sextant",
+        "de": "https://de.wikipedia.org/wiki/Sextant",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D8%AF%D8%B3_(%D8%A2%D9%84%D8%A9)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%BA%D1%81%D1%82%D0%B0%D0%BD%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sextant%20von%20Alexander%20von%20Humboldt.jpg"
     },
@@ -1143,6 +2033,15 @@
       "description": "competition to explore space between USA and USSR",
       "sitelinks": 74,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Space_Race",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Space_Race",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%AA%E7%A9%BA%E7%AB%B6%E8%B3%BD",
+        "es": "https://es.wikipedia.org/wiki/Carrera_espacial",
+        "fr": "https://fr.wikipedia.org/wiki/Course_%C3%A0_l%27espace",
+        "de": "https://de.wikipedia.org/wiki/Wettlauf_ins_All",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D8%A8%D8%A7%D9%82_%D8%A7%D9%84%D9%81%D8%B6%D8%A7%D8%A1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D0%B3%D0%BE%D0%BD%D0%BA%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo-Soyuz-Test-Program-artist-rendering.jpg"
     },
@@ -1154,6 +2053,15 @@
       "description": "first Moon landing, fifth crewed Apollo flight",
       "sitelinks": 110,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Apollo_11",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E6%B3%A2%E7%BD%9711%E5%8F%B7",
+        "es": "https://es.wikipedia.org/wiki/Apolo_11",
+        "fr": "https://fr.wikipedia.org/wiki/Apollo_11",
+        "de": "https://de.wikipedia.org/wiki/Apollo_11",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%A8%D9%88%D9%84%D9%88_11",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BF%D0%BE%D0%BB%D0%BB%D0%BE%D0%BD-11"
+      },
       "countries": [
         "Q30"
       ],
@@ -1167,6 +2075,15 @@
       "description": "simple, bladeless radial steam turbine",
       "sitelinks": 38,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Aeolipile",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Aeolipile",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B1%BD%E8%BD%89%E7%90%83",
+        "es": "https://es.wikipedia.org/wiki/Eol%C3%ADpila",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89olipyle",
+        "de": "https://de.wikipedia.org/wiki/Heronsball",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D9%8A%D9%88%D9%84%D9%8A%D8%A8%D9%8A%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B5%D1%80%D0%BE%D0%BD%D0%BE%D0%B2_%D1%88%D0%B0%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aeolipile.jpg"
     },
@@ -1178,6 +2095,15 @@
       "description": "separating mixtures by differences in volatility",
       "sitelinks": 90,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Distillation",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Distillation",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E9%A6%8F",
+        "es": "https://es.wikipedia.org/wiki/Destilaci%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Distillation",
+        "de": "https://de.wikipedia.org/wiki/Destillation",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%82%D8%B7%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D1%81%D1%82%D0%B8%D0%BB%D0%BB%D1%8F%D1%86%D0%B8%D1%8F"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dorf%20Lore%20-%20Schnaps-Destillation.jpg"
     },
@@ -1189,6 +2115,14 @@
       "description": "early steam engine type",
       "sitelinks": 26,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%B4%90%E5%8F%AF%E9%96%80%E8%92%B8%E6%B1%BD%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/M%C3%A1quina_de_Newcomen",
+        "fr": "https://fr.wikipedia.org/wiki/Pompe_%C3%A0_feu",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%83_%D9%86%D9%8A%D9%88%D9%83%D9%88%D9%85%D9%86_%D8%A7%D9%84%D8%AC%D9%88%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0_%D0%9D%D1%8C%D1%8E%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen%20atmospheric%20engine%20animation.gif"
     },
@@ -1200,6 +2134,15 @@
       "description": "device converting chemical to electrical energy",
       "sitelinks": 61,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Galvanic_cell",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Galvanic_cell",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BC%BD%E4%BC%90%E5%B0%BC%E9%9B%BB%E6%B1%A0",
+        "es": "https://es.wikipedia.org/wiki/Celda_galv%C3%A1nica",
+        "fr": "https://fr.wikipedia.org/wiki/Cellule_galvanique",
+        "de": "https://de.wikipedia.org/wiki/Galvanische_Zelle",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AE%D9%84%D9%8A%D8%A9_%D8%BA%D9%84%D9%81%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B0%D0%BB%D1%8C%D0%B2%D0%B0%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Galvanische%20Zelle%202009-02-08.svg"
     },
@@ -1211,6 +2154,15 @@
       "description": "using direct electric current to drive a chemical reaction",
       "sitelinks": 88,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electrolysis",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electrolysis",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E8%A7%A3",
+        "es": "https://es.wikipedia.org/wiki/Electr%C3%B3lisis",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89lectrolyse",
+        "de": "https://de.wikipedia.org/wiki/Elektrolyse",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%AD%D9%84%D9%8A%D9%84_%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A6%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BB%D0%B8%D0%B7"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Elektrolyse%20Allgemein.svg"
     },
@@ -1222,6 +2174,14 @@
       "description": "first electrical battery to continuously provide current",
       "sitelinks": 45,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Voltaic_pile",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Voltaic_pile",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BC%8F%E6%89%93%E7%94%B5%E5%A0%86",
+        "fr": "https://fr.wikipedia.org/wiki/Pile_volta%C3%AFque",
+        "de": "https://de.wikipedia.org/wiki/Voltasche_S%C3%A4ule",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%88%D8%AF_%D9%81%D9%88%D9%84%D8%AA%D9%88%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%BB%D1%8C%D1%82%D0%BE%D0%B2_%D1%81%D1%82%D0%BE%D0%BB%D0%B1"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Volta%20battery-MHS%20373-IMG%203840-gradient.jpg"
     },
@@ -1233,6 +2193,15 @@
       "description": "magnet whose field is produced by electric current",
       "sitelinks": 67,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnet",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electromagnet",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%BB%E7%A3%81%E9%90%B5",
+        "es": "https://es.wikipedia.org/wiki/Electroim%C3%A1n",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89lectroaimant",
+        "de": "https://de.wikipedia.org/wiki/Elektromagnet",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%BA%D9%86%D8%A7%D8%B7%D9%8A%D8%B3_%D9%83%D9%87%D8%B1%D8%A8%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/9%20v%20electromagnet.png"
     },
@@ -1244,6 +2213,15 @@
       "description": "electromechanical device",
       "sitelinks": 100,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_motor",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electric_motor",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%8A%A8%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Motor_el%C3%A9ctrico",
+        "fr": "https://fr.wikipedia.org/wiki/Moteur_%C3%A9lectrique",
+        "de": "https://de.wikipedia.org/wiki/Elektromotor",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%83_%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A6%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B4%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stator%20and%20rotor%20by%20Zureks.JPG"
     },
@@ -1255,6 +2233,15 @@
       "description": "electrochemical cell converting fuel to electricity",
       "sitelinks": 68,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Fuel_cell",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Fuel_cell",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%87%83%E6%96%99%E7%94%B5%E6%B1%A0",
+        "es": "https://es.wikipedia.org/wiki/Pila_de_combustible",
+        "fr": "https://fr.wikipedia.org/wiki/Pile_%C3%A0_combustible",
+        "de": "https://de.wikipedia.org/wiki/Brennstoffzelle",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AE%D9%84%D9%8A%D8%A9_%D9%88%D9%82%D9%88%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D0%BF%D0%BB%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fuel%20cell%20NASA%20p48600ac.jpg"
     },
@@ -1266,6 +2253,15 @@
       "description": "type of water turbine",
       "sitelinks": 41,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Francis_turbine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Francis_turbine",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B3%95%E8%98%AD%E8%A5%BF%E6%96%AF%E5%BC%8F%E6%B0%B4%E8%BC%AA%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Turbina_Francis",
+        "fr": "https://fr.wikipedia.org/wiki/Turbine_Francis",
+        "de": "https://de.wikipedia.org/wiki/Francis-Turbine",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%86%D9%81%D8%A9_%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B4%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D0%BE%D1%81%D0%B5%D0%B2%D0%B0%D1%8F_%D1%82%D1%83%D1%80%D0%B1%D0%B8%D0%BD%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Francis%20Turbine%20High%20flow.jpg"
     },
@@ -1277,6 +2273,15 @@
       "description": "process for thin films for semiconductors or coatings",
       "sitelinks": 32,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Chemical_vapor_deposition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Chemical_vapor_deposition",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8C%96%E5%AD%A6%E6%B0%94%E7%9B%B8%E6%B2%89%E7%A7%AF",
+        "es": "https://es.wikipedia.org/wiki/Deposici%C3%B3n_qu%C3%ADmica_de_vapor",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9p%C3%B4t_chimique_en_phase_vapeur",
+        "de": "https://de.wikipedia.org/wiki/Chemische_Gasphasenabscheidung",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%B1%D8%B3%D9%8A%D8%A8_%D9%83%D9%8A%D9%85%D9%8A%D8%A7%D8%A6%D9%8A_%D9%84%D9%84%D8%A8%D8%AE%D8%A7%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A5%D0%B8%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D0%BE%D1%81%D0%B0%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B8%D0%B7_%D0%B3%D0%B0%D0%B7%D0%BE%D0%B2%D0%BE%D0%B9_%D1%84%D0%B0%D0%B7%D1%8B"
+      },
       "countries": []
     },
     {
@@ -1287,6 +2292,15 @@
       "description": "steel production method",
       "sitelinks": 42,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bessemer_process",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Bessemer_process",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%B4%9D%E5%A1%9E%E9%BA%A6%E8%BD%AC%E7%82%89%E7%82%BC%E9%92%A2%E6%B3%95",
+        "es": "https://es.wikipedia.org/wiki/Convertidor_Bessemer",
+        "fr": "https://fr.wikipedia.org/wiki/Proc%C3%A9d%C3%A9_Bessemer",
+        "de": "https://de.wikipedia.org/wiki/Bessemer-Verfahren",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%A8%D8%B3%D9%85%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%81%D0%B5%D0%BC%D0%B5%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bessemer%20converter.jpg"
     },
@@ -1298,6 +2312,15 @@
       "description": "explosive preparation of stabilized nitroglycerin",
       "sitelinks": 102,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Dynamite",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Dynamite",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%9F%BD%E8%97%BB%E5%9C%9F%E7%82%B8%E8%97%A5",
+        "es": "https://es.wikipedia.org/wiki/Dinamita",
+        "fr": "https://fr.wikipedia.org/wiki/Dynamite",
+        "de": "https://de.wikipedia.org/wiki/Dynamit",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D9%8A%D9%86%D8%A7%D9%85%D9%8A%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%82"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caisse%20dynamite%20nobel%20paulilles%20expo.JPG"
     },
@@ -1309,6 +2332,15 @@
       "description": "device converting mechanical to electrical energy",
       "sitelinks": 83,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_generator",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Electric_generator",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8F%91%E7%94%B5%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Generador_el%C3%A9ctrico",
+        "fr": "https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_%C3%A9lectrique",
+        "de": "https://de.wikipedia.org/wiki/Elektrischer_Generator",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%88%D9%84%D8%AF_%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A6%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siemens%20Brothers%20-%20DC%20Generator%20-%20Electricity%20Gallery%20-%20BITM%20-%20Kolkata%202015-05-09%206509.JPG"
     },
@@ -1320,6 +2352,15 @@
       "description": "turbine using steam from a boiler to rotate blades",
       "sitelinks": 67,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_turbine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Steam_turbine",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E6%B1%BD%E6%B8%A6%E8%BC%AA%E7%99%BC%E5%8B%95%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Turbina_de_vapor",
+        "fr": "https://fr.wikipedia.org/wiki/Turbine_%C3%A0_vapeur",
+        "de": "https://de.wikipedia.org/wiki/Dampfturbine",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%86%D9%81%D8%A9_%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D1%82%D1%83%D1%80%D0%B1%D0%B8%D0%BD%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dampfturbine%20Laeufer01.jpg"
     },
@@ -1331,6 +2372,15 @@
       "description": "reactions converting carbon monoxide and hydrogen into liquid hydrocarbons",
       "sitelinks": 36,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Fischer%E2%80%93Tropsch_process",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Fischer%E2%80%93Tropsch_process",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%B4%B9%E6%89%98%E5%90%88%E6%88%90",
+        "es": "https://es.wikipedia.org/wiki/Proceso_Fischer-Tropsch",
+        "fr": "https://fr.wikipedia.org/wiki/Proc%C3%A9d%C3%A9_Fischer-Tropsch",
+        "de": "https://de.wikipedia.org/wiki/Fischer-Tropsch-Synthese",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D9%81%D9%8A%D8%B4%D8%B1-%D8%AA%D8%B1%D9%88%D8%A8%D8%B4",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%A4%D0%B8%D1%88%D0%B5%D1%80%D0%B0_%E2%80%94_%D0%A2%D1%80%D0%BE%D0%BF%D1%88%D0%B0"
+      },
       "countries": []
     },
     {
@@ -1341,6 +2391,15 @@
       "description": "world's first nuclear reactor to achieve criticality",
       "sitelinks": 28,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Chicago_Pile-1",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Chicago_Pile-1",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8A%9D%E5%8A%A0%E5%93%A51%E5%8F%B7%E5%A0%86",
+        "es": "https://es.wikipedia.org/wiki/Chicago_Pile-1",
+        "fr": "https://fr.wikipedia.org/wiki/Chicago_Pile-1",
+        "de": "https://de.wikipedia.org/wiki/Chicago_Pile",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B4%D9%8A%D9%83%D8%A7%D8%BA%D9%88_%D8%A8%D8%A7%D9%8A%D9%84_-1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D0%BA%D0%B0%D0%B3%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D0%BE%D0%BB%D0%B5%D0%BD%D0%BD%D0%B8%D1%86%D0%B0-1"
+      },
       "countries": [
         "Q30"
       ],
@@ -1354,6 +2413,15 @@
       "description": "physical currency made of paper or polymer",
       "sitelinks": 101,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Banknote",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Banknote",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%B4%99%E5%B9%A3",
+        "es": "https://es.wikipedia.org/wiki/Papel_moneda",
+        "fr": "https://fr.wikipedia.org/wiki/Billet_de_banque",
+        "de": "https://de.wikipedia.org/wiki/Banknote",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D8%A9_%D9%88%D8%B1%D9%82%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%BD%D0%BA%D0%BD%D0%BE%D1%82%D0%B0"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BOH%26MOR-10-Protectorate%20of%20Bohemia%20and%20Moravia-50%20Korun%20%281944%29.jpg"
     },
@@ -1365,6 +2433,15 @@
       "description": "internationally accepted civil calendar",
       "sitelinks": 210,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%85%AC%E5%8E%86",
+        "es": "https://es.wikipedia.org/wiki/Calendario_gregoriano",
+        "fr": "https://fr.wikipedia.org/wiki/Calendrier_gr%C3%A9gorien",
+        "de": "https://de.wikipedia.org/wiki/Gregorianischer_Kalender",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%82%D9%88%D9%8A%D9%85_%D9%85%D9%8A%D9%84%D8%A7%D8%AF%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D1%8C"
+      },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ewiger%20Kalender%20gregorianisch.png"
     }

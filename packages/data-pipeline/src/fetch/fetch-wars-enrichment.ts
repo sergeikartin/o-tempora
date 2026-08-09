@@ -5,6 +5,7 @@ import { CONFLICT_CATEGORIES, type ConflictCategory } from "@same-sky/shared-typ
 import { buildWarsEnrichmentQuery } from "./queries/wars-enrichment.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 import { parseIsoYear, parseMonthIfKnown } from "../transform/wikidata-date.js";
+import { PAGEVIEWS_LANGUAGES, articleVar, isArticleUrlsRecord, type PageviewsLanguage } from "./pageviews-languages.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
@@ -31,6 +32,12 @@ export interface EnrichedWar {
   // write-datasets.ts's buildWars).
   sitelinks?: number;
   wikipediaUrl?: string;
+  // Per pageviews-basket-language Wikipedia article URL (raw, verbatim —
+  // same "store the URI, let the reader extract a title" convention `image`
+  // uses), keyed by language code. Absent per-language keys mean this QID
+  // has no sitelink in that language — fetch-pageviews.ts treats that as 0
+  // pageviews for the language, no redirect-resolution (ADR 0010).
+  articleUrls: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
   // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim.
   image?: string;
@@ -87,6 +94,7 @@ function isEnrichedWar(value: unknown): value is EnrichedWar {
     (candidate.parentId === undefined || typeof candidate.parentId === "string") &&
     (candidate.sitelinks === undefined || typeof candidate.sitelinks === "number") &&
     (candidate.wikipediaUrl === undefined || typeof candidate.wikipediaUrl === "string") &&
+    isArticleUrlsRecord(candidate.articleUrls) &&
     Array.isArray(candidate.countries) &&
     candidate.countries.every((country) => typeof country === "string") &&
     (candidate.image === undefined || typeof candidate.image === "string") &&
@@ -115,6 +123,7 @@ function extractQid(uri: string): string | undefined {
 interface EnrichmentFields {
   sitelinks?: number;
   wikipediaUrl?: string;
+  articleUrls: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
   image?: string;
   description?: string;
@@ -147,12 +156,20 @@ export async function fetchWarsEnrichment(): Promise<void> {
 
     let entry = enrichmentById.get(id);
     if (!entry) {
-      entry = { countries: [] };
+      entry = { countries: [], articleUrls: {} };
       enrichmentById.set(id, entry);
     }
 
     if (entry.sitelinks === undefined && row.sitelinks?.value) entry.sitelinks = Number(row.sitelinks.value);
-    if (entry.wikipediaUrl === undefined && row.article?.value) entry.wikipediaUrl = row.article.value;
+    for (const lang of PAGEVIEWS_LANGUAGES) {
+      const url = row[articleVar(lang)]?.value;
+      if (url && entry.articleUrls[lang] === undefined) entry.articleUrls[lang] = url;
+    }
+    // wikipediaUrl is the English-basket article, same field the old
+    // single-language ?article binding populated — kept as its own field
+    // (rather than always reading articleUrls.en downstream) since every
+    // other consumer of EnrichedWar already expects wikipediaUrl.
+    if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
     if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
     if (entry.description === undefined && row.description?.value) entry.description = row.description.value;
     const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
@@ -177,6 +194,7 @@ export async function fetchWarsEnrichment(): Promise<void> {
       parentId: war.parentId,
       sitelinks: enrichment?.sitelinks,
       wikipediaUrl: enrichment?.wikipediaUrl,
+      articleUrls: enrichment?.articleUrls ?? {},
       countries: enrichment?.countries ?? [],
       image: enrichment?.image,
       description: enrichment?.description,

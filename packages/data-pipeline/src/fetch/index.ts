@@ -4,6 +4,7 @@ import { fetchReigns } from "./fetch-reigns.js";
 import { fetchEventsEnrichment } from "./fetch-events-enrichment.js";
 import { fetchWarsEnrichment } from "./fetch-wars-enrichment.js";
 import { fetchImageAttribution } from "./fetch-image-attribution.js";
+import { fetchPageviews } from "./fetch-pageviews.js";
 
 async function main(): Promise<void> {
   await fetchPantheon();
@@ -20,6 +21,12 @@ async function main(): Promise<void> {
   // fetchWarsEnrichment's raw output already being on disk (each now
   // carries a P18 image URI) — must run after all three.
   await fetchImageAttribution();
+  // Depends on fetchEventsEnrichment's/fetchWarsEnrichment's raw output
+  // being on disk (each now carries per-language sitelink article URLs) —
+  // must run after both. Independent of fetchImageAttribution, but ordered
+  // after it just to keep the log output grouped by "depends on
+  // enrichment" stages.
+  await fetchPageviews();
 }
 
 main().catch((error: unknown) => {
