@@ -140,6 +140,10 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .attr('x', (d) => (d.x1 + d.x2) / 2)
       .attr('y', (d) => labelYForRow(d.row))
       .attr('fill', (d) => d.fill)
+      // Same delegated-click wiring as the line above, so the label is an
+      // equally valid click target for opening the detail drawer.
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'war')
       .text((d) => d.name);
 
     const pointGroups = svg
@@ -171,6 +175,10 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .attr('x', (d) => d.x)
       .attr('y', (d) => labelYForRow(d.row))
       .attr('fill', (d) => d.fill)
+      // Same delegated-click wiring as the dot above, so the label is an
+      // equally valid click target for opening the detail drawer.
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'war')
       .text((d) => d.name);
   }, [rangeLayout, pointLayout]);
 

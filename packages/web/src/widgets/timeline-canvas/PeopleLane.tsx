@@ -118,6 +118,10 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
       .attr('x', (d) => d.x1)
       .attr('y', (d) => d.labelY)
       .attr('fill', (d) => d.fill)
+      // Same delegated-click wiring as the line above, so the label is an
+      // equally valid click target for opening the detail drawer.
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'person')
       .text((d) => d.name);
   }, [layout]);
 

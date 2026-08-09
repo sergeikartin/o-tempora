@@ -2,14 +2,17 @@
   display: block;
 }
 
-.line {
+.line,
+.name {
   cursor: default;
 }
 
 .name {
   font-family: Inter, sans-serif;
   font-size: 11px;
-  /* fill is set per-item (occupation-domain color) via the D3 join, not here. */
-  pointer-events: none;
+  /* fill is set per-item (occupation-domain color) via the D3 join, not here.
+     Clickable (same data-entity-id/-type as the line, see PeopleLane.tsx) so
+     pointer-events stays default rather than none; user-select stays off so
+     a click doesn't also select the text. */
   user-select: none;
 }

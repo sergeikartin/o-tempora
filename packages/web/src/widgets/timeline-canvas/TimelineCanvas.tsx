@@ -45,6 +45,17 @@ interface TimelineCanvasProps {
 
 export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onEntityClick }: TimelineCanvasProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  // People and Wars+Events are `position: sticky; left: 0` (see their CSS) so
+  // each one's own vertical scrollbar stays docked to the viewport's right
+  // edge no matter where scrollRef is panned to horizontally — a sticky
+  // element never moves, so it doesn't scroll its own totalWidth-wide
+  // content along with it. These refs let the scroll handler below drive
+  // that inner pan itself, by mirroring scrollRef's scrollLeft onto each one
+  // (scrollLeft still works on an overflow-x: hidden element; it just isn't
+  // user-drivable, which is exactly what's wanted since scrollRef alone
+  // should own the horizontal gesture).
+  const peopleLaneRef = useRef<HTMLDivElement>(null);
+  const warsEventsLaneRef = useRef<HTMLDivElement>(null);
   // Drag-to-pan state: mouse-only (touch already gets native scroll-by-swipe
   // on the overflow-x container for free, and layering pointer-drag on top
   // of that would double-handle touch input). Start position lives in a ref
@@ -80,6 +91,8 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
       frame = requestAnimationFrame(() => {
         frame = 0;
         setScrollLeft(container.scrollLeft);
+        if (peopleLaneRef.current) peopleLaneRef.current.scrollLeft = container.scrollLeft;
+        if (warsEventsLaneRef.current) warsEventsLaneRef.current.scrollLeft = container.scrollLeft;
       });
     };
     container.addEventListener('scroll', onScroll, { passive: true });
@@ -258,16 +271,14 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
-        <div className={styles.peopleLane} style={{ width: totalWidth }}>
+        <div ref={peopleLaneRef} className={styles.peopleLane}>
           <PeopleLane people={filteredPeople} xScale={scale} />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
           <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
         </div>
-        <div className={styles.warsLane} style={{ width: totalWidth }}>
+        <div ref={warsEventsLaneRef} className={styles.warsEventsLane}>
           <WarsLane wars={filteredWars} xScale={scale} />
-        </div>
-        <div className={styles.eventsLane} style={{ width: totalWidth }}>
           <EventsLane discoveries={filteredDiscoveries} xScale={scale} />
         </div>
       </div>
