@@ -113,6 +113,54 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
   expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
 });
 
+test('releasing a drag suppresses the click event that follows it', () => {
+  const onEntityClick = vi.fn();
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={onEntityClick}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const line = container.querySelector('.d3-line') as SVGLineElement;
+
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
+  // Browsers still fire a native click at the release point after a real
+  // drag, regardless of how far the pointer moved in between — simulated
+  // here landing directly on a mark, which is exactly the case a user
+  // reported: panning past a person's line unintentionally opened it.
+  fireEvent.click(line);
+
+  expect(onEntityClick).not.toHaveBeenCalled();
+});
+
+test('a click preceded only by sub-threshold pointer jitter still registers', () => {
+  const onEntityClick = vi.fn();
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={onEntityClick}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const line = container.querySelector('.d3-line') as SVGLineElement;
+
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 502, pointerId: 1 });
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
+  fireEvent.click(line);
+
+  expect(onEntityClick).toHaveBeenCalledWith({ id: 'Q868', entityType: 'person' });
+});
+
 test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll already handles them', () => {
   const { container } = render(
     <TimelineCanvas

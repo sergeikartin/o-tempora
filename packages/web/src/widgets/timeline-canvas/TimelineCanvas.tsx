@@ -28,6 +28,11 @@ import { EventsLane } from './EventsLane';
 import { YearAxis } from './YearAxis';
 import styles from './TimelineCanvas.module.css';
 
+// Below this much total pointer movement, a mouse-drag is treated as a click
+// (e.g. a hand that isn't perfectly still on mousedown) rather than a pan —
+// see suppressNextClickRef below.
+const DRAG_CLICK_SUPPRESSION_PX = 4;
+
 interface TimelineCanvasProps {
   people: Person[];
   wars: WarsAndConflictsEntry[];
@@ -62,7 +67,13 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
   // since it's read/written every pointermove but never needs to trigger a
   // render; isDragging is state purely to toggle the grab/grabbing cursor.
   const [isDragging, setIsDragging] = useState(false);
-  const dragStartRef = useRef<{ pointerX: number; scrollLeft: number } | null>(null);
+  const dragStartRef = useRef<{ pointerX: number; scrollLeft: number; moved: boolean } | null>(null);
+  // Set by endDrag when a drag moved past DRAG_CLICK_SUPPRESSION_PX, read
+  // and cleared by the delegated click listener below — a mouseup after a
+  // real drag still fires a native click at the release point, which would
+  // otherwise open whatever mark/label happens to be under the pointer when
+  // the user was only trying to pan, not select something.
+  const suppressNextClickRef = useRef(false);
   const [pixelsPerYear, setPixelsPerYear] = useState(() => defaultPixelsPerYear(0));
   // Set by a zoom click to the year at the viewport's center just before the
   // change, so the effect below can re-center the scroll position on it once
@@ -166,7 +177,7 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
     const container = scrollRef.current;
     if (!container) return;
-    dragStartRef.current = { pointerX: event.clientX, scrollLeft: container.scrollLeft };
+    dragStartRef.current = { pointerX: event.clientX, scrollLeft: container.scrollLeft, moved: false };
     // Best-effort: keeps the drag alive if the pointer leaves the container's
     // bounds mid-move. jsdom doesn't implement it at all (hence the optional
     // chaining), and even real browsers can throw NotFoundError for a
@@ -185,12 +196,22 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
     const drag = dragStartRef.current;
     const container = scrollRef.current;
     if (!drag || !container) return;
-    container.scrollLeft = drag.scrollLeft - (event.clientX - drag.pointerX);
+    const totalOffset = event.clientX - drag.pointerX;
+    if (Math.abs(totalOffset) > DRAG_CLICK_SUPPRESSION_PX) drag.moved = true;
+    container.scrollLeft = drag.scrollLeft - totalOffset;
   }
 
   function endDrag(event: ReactPointerEvent<HTMLDivElement>) {
-    if (!dragStartRef.current) return;
+    const drag = dragStartRef.current;
+    if (!drag) return;
     dragStartRef.current = null;
+    // The mouseup a real drag ends with still fires a native click at the
+    // release point (browsers don't suppress it just because the pointer
+    // moved) — that click would otherwise open whatever mark/label happens
+    // to be under the cursor, even though the user was only panning. The
+    // delegated click listener below checks and clears this flag before
+    // acting on anything.
+    if (drag.moved) suppressNextClickRef.current = true;
     try {
       scrollRef.current?.releasePointerCapture?.(event.pointerId);
     } catch {
@@ -209,6 +230,10 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
     if (!container) return;
 
     function handleClick(event: MouseEvent) {
+      if (suppressNextClickRef.current) {
+        suppressNextClickRef.current = false;
+        return;
+      }
       // Resolving the mark via a fresh hit-test at the click's real screen
       // position, not event.target: this container's own drag-to-pan
       // handler calls setPointerCapture on pointerdown, which retargets
