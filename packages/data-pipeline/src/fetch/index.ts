@@ -1,8 +1,8 @@
 import { fetchPantheon } from "./fetch-pantheon.js";
 import { fetchDescriptions } from "./fetch-descriptions.js";
 import { fetchReigns } from "./fetch-reigns.js";
-import { fetchHistoricalEvents } from "./fetch-historical-events.js";
 import { fetchEventsEnrichment } from "./fetch-events-enrichment.js";
+import { fetchWarsEnrichment } from "./fetch-wars-enrichment.js";
 import { fetchImageAttribution } from "./fetch-image-attribution.js";
 
 async function main(): Promise<void> {
@@ -12,12 +12,12 @@ async function main(): Promise<void> {
   // after fetchPantheon().
   await fetchDescriptions();
   await fetchReigns();
-  await fetchHistoricalEvents();
-  // Reads the checked-in curated events list, independent of the above —
-  // ordered last just to keep the log output grouped by lane.
+  // Both read a checked-in curated list, independent of the above and of
+  // each other — ordered last just to keep the log output grouped by lane.
   await fetchEventsEnrichment();
+  await fetchWarsEnrichment();
   // Depends on fetchDescriptions', fetchEventsEnrichment's, and
-  // fetchHistoricalEvents' raw output already being on disk (each now
+  // fetchWarsEnrichment's raw output already being on disk (each now
   // carries a P18 image URI) — must run after all three.
   await fetchImageAttribution();
 }

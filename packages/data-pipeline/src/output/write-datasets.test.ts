@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import type { TaggedPerson, TaggedEvent, TaggedDiscovery } from "../transform/index.js";
+import type { TaggedPerson, TaggedWar, TaggedDiscovery } from "../transform/index.js";
 import { buildPeople, buildWars, buildDiscoveries } from "./write-datasets.js";
 
 function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
@@ -23,16 +23,15 @@ function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
   };
 }
 
-function taggedEvent(overrides: Partial<TaggedEvent> = {}): TaggedEvent {
+function taggedWar(overrides: Partial<TaggedWar> = {}): TaggedWar {
   return {
     id: "Q2",
-    label: "Battle of Marathon",
+    label: "Peloponnesian War",
     sitelinks: 80,
-    article: "https://en.wikipedia.org/wiki/Battle_of_Marathon",
-    description: "490 BCE battle",
-    year: -490,
-    tags: ["Q178561"],
-    countries: [],
+    article: "https://en.wikipedia.org/wiki/Peloponnesian_War",
+    description: "war fought between Athens and Sparta",
+    year: -431,
+    endYear: -404,
     category: "war",
     regionTags: [],
     ...overrides,
@@ -143,60 +142,118 @@ test("buildPeople omits image/imageAttribution entirely (not undefined-valued ke
   assert.equal("imageAttribution" in (people[0] as object), false);
 });
 
-test("buildWars builds a War (with period.end) for the war type (Q198), even if secondaryYear is present", () => {
-  const war = taggedEvent({ id: "Q3", tags: ["Q198"], year: 1861, secondaryYear: 1865 });
-  const battle = taggedEvent({ id: "Q4", tags: ["Q178561"], year: 1863, secondaryYear: 1863 });
-
-  const { entries } = buildWars([war, battle]);
-
-  const [warEntry, battleEntry] = entries;
-  assert.ok(warEntry && "period" in warEntry);
-  assert.deepEqual(warEntry.period, { start: { year: 1861 }, end: { year: 1865 } });
-  assert.ok(battleEntry && "at" in battleEntry);
-  assert.deepEqual(battleEntry.at, { year: 1863 });
-});
-
-test("buildWars also builds a War for the war-of-independence type (Q1006311), alongside war", () => {
-  const warOfIndependence = taggedEvent({
-    id: "Q5",
-    tags: ["Q1006311"],
-    year: 1775,
-    secondaryYear: 1783,
-    category: "war-of-independence",
-  });
-
-  const { entries } = buildWars([warOfIndependence]);
-
+test("buildWars builds a War (with period.end) when the row resolved both a start and end date, regardless of category", () => {
+  const war = taggedWar({ id: "Q3", category: "revolution", year: 1789, endYear: 1799 });
+  const { entries } = buildWars([war]);
   const [entry] = entries;
   assert.ok(entry && "period" in entry);
-  assert.deepEqual(entry.period, { start: { year: 1775 }, end: { year: 1783 } });
+  assert.deepEqual(entry.period, { start: { year: 1789 }, end: { year: 1799 } });
+});
+
+test("buildWars builds a WarEvent (with at) when the row resolved only one date, regardless of category", () => {
+  const event = taggedWar({ id: "Q4", category: "coup-d-etat", year: 2013, endYear: undefined });
+  const { entries } = buildWars([event]);
+  const [entry] = entries;
+  assert.ok(entry && "at" in entry);
+  assert.deepEqual(entry.at, { year: 2013 });
+});
+
+test("buildWars drops a row that resolved no date at all", () => {
+  const { entries, report } = buildWars([taggedWar({ year: undefined, endYear: undefined })]);
+  assert.equal(entries.length, 0);
+  assert.equal(report.reasons["missing date"], 1);
+});
+
+test("buildWars drops a row whose sitelinks is 0 (enrichment couldn't resolve the QID)", () => {
+  const { entries, report } = buildWars([taggedWar({ sitelinks: 0 })]);
+  assert.equal(entries.length, 0);
+  assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
 });
 
 test("buildWars passes through image/imageAttribution when present", () => {
   const { entries } = buildWars([
-    taggedEvent({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg", imageAttribution: "W, via Wikimedia Commons" }),
+    taggedWar({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg", imageAttribution: "W, via Wikimedia Commons" }),
   ]);
   assert.equal(entries[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg");
   assert.equal(entries[0]?.imageAttribution, "W, via Wikimedia Commons");
 });
 
 test("buildWars omits image/imageAttribution entirely (not undefined-valued keys) when absent", () => {
-  const { entries } = buildWars([taggedEvent({ image: undefined, imageAttribution: undefined })]);
+  const { entries } = buildWars([taggedWar({ image: undefined, imageAttribution: undefined })]);
   assert.equal("image" in (entries[0] as object), false);
   assert.equal("imageAttribution" in (entries[0] as object), false);
 });
 
 test("buildWars carries month through to period.start/end and at when the row has one", () => {
-  const war = taggedEvent({ id: "Q3", tags: ["Q198"], year: 1950, month: 6, secondaryYear: 1953, secondaryMonth: 7 });
-  const battle = taggedEvent({ id: "Q4", tags: ["Q178561"], year: 1863, month: 7 });
+  const war = taggedWar({ id: "Q3", year: 1950, month: 6, endYear: 1953, endMonth: 7 });
+  const event = taggedWar({ id: "Q4", year: 1863, month: 7, endYear: undefined });
 
-  const { entries } = buildWars([war, battle]);
+  const { entries } = buildWars([war, event]);
 
-  const [warEntry, battleEntry] = entries;
+  const [warEntry, eventEntry] = entries;
   assert.ok(warEntry && "period" in warEntry);
   assert.deepEqual(warEntry.period, { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } });
-  assert.ok(battleEntry && "at" in battleEntry);
-  assert.deepEqual(battleEntry.at, { year: 1863, month: 7 });
+  assert.ok(eventEntry && "at" in eventEntry);
+  assert.deepEqual(eventEntry.at, { year: 1863, month: 7 });
+});
+
+test("buildWars omits parentId entirely when absent (a Container or standalone row)", () => {
+  const { entries } = buildWars([taggedWar({ parentId: undefined })]);
+  assert.equal("parentId" in (entries[0] as object), false);
+});
+
+test("buildWars keeps a valid 2-level chain: a WarEvent parented to a Container", () => {
+  const container = taggedWar({ id: "Q1", year: 1095, endYear: 1291 }); // Crusades
+  const child = taggedWar({ id: "Q2", year: 1189, endYear: undefined, parentId: "Q1" }); // a single-date sub-event
+
+  const { entries, report } = buildWars([container, child]);
+
+  assert.equal(entries.length, 2);
+  assert.equal(Object.keys(report.reasons).length, 0);
+  const childEntry = entries.find((entry) => entry.id === "Q2");
+  assert.equal(childEntry?.parentId, "Q1");
+});
+
+test("buildWars keeps a valid 3-level chain: Container -> level-2 War -> level-3 WarEvent", () => {
+  const container = taggedWar({ id: "Q1", year: 1939, endYear: 1945 }); // World War II
+  const level2 = taggedWar({ id: "Q2", year: 1941, endYear: 1945, parentId: "Q1" }); // Eastern Front
+  const level3 = taggedWar({ id: "Q3", year: 1941, endYear: undefined, parentId: "Q2" }); // a battle within it
+
+  const { entries, report } = buildWars([container, level2, level3]);
+
+  assert.equal(entries.length, 3);
+  assert.equal(Object.keys(report.reasons).length, 0);
+});
+
+test("buildWars drops a row parented to a nonexistent id", () => {
+  const child = taggedWar({ id: "Q2", parentId: "Q999" });
+  const { entries, report } = buildWars([child]);
+  assert.equal(entries.length, 0);
+  assert.equal(report.reasons["parentId not found"], 1);
+});
+
+test("buildWars drops a row parented to a WarEvent (event-parented-to-event)", () => {
+  const parentEvent = taggedWar({ id: "Q1", year: 2013, endYear: undefined }); // WarEvent, no children allowed
+  const child = taggedWar({ id: "Q2", year: 2013, endYear: undefined, parentId: "Q1" });
+
+  const { entries, report } = buildWars([parentEvent, child]);
+
+  assert.equal(entries.length, 1);
+  assert.equal(entries[0]?.id, "Q1");
+  assert.equal(report.reasons["parentId is not a War"], 1);
+});
+
+test("buildWars drops a chain exceeding 3 levels deep", () => {
+  const container = taggedWar({ id: "Q1", year: 1, endYear: 2 });
+  const level2 = taggedWar({ id: "Q2", year: 1, endYear: 2, parentId: "Q1" });
+  const level3 = taggedWar({ id: "Q3", year: 1, endYear: 2, parentId: "Q2" }); // a War, so it can itself be a parent
+  const level4 = taggedWar({ id: "Q4", year: 1, endYear: undefined, parentId: "Q3" });
+
+  const { entries, report } = buildWars([container, level2, level3, level4]);
+
+  assert.equal(entries.length, 3);
+  assert.ok(!entries.some((entry) => entry.id === "Q4"));
+  assert.equal(report.reasons["nesting depth exceeded"], 1);
 });
 
 test("buildDiscoveries passes through category, regionTags, and at.year", () => {

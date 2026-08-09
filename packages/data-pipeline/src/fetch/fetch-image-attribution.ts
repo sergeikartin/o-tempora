@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateSparqlResultShape } from "./validate-sparql-result.js";
 import { validateEnrichedEventsFile } from "./fetch-events-enrichment.js";
-import { CONFLICT_CATEGORY_QUERIES } from "./queries/historical-events.js";
+import { validateEnrichedWarsFile } from "./fetch-wars-enrichment.js";
 import { batchedCommonsImageAttributionFetch } from "./batched-commons-image-attribution-fetch.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
@@ -15,7 +15,7 @@ function extractQid(uri: string): string | undefined {
 }
 
 // Reads the raw files fetch-descriptions.ts/fetch-events-enrichment.ts/
-// fetch-historical-events.ts already wrote (each now carrying a raw P18
+// fetch-wars-enrichment.ts already wrote (each now carrying a raw P18
 // `image` URI) and, for every entity that resolved an image, runs a second
 // batched Commons `imageinfo` pass to resolve `imageAttribution`
 // (dynamic-tooltips spec §4.2) — a distinct MediaWiki REST API from
@@ -42,29 +42,12 @@ export async function fetchImageAttribution(): Promise<void> {
     .filter((event): event is typeof event & { image: string } => Boolean(event.image))
     .map((event) => ({ id: event.id, imageUri: event.image }));
 
-  // Wars & Conflicts' 9 per-category raw files (CONFLICT_CATEGORY_QUERIES),
-  // same raw-binding extraction shape as peopleEntries above — an event can
-  // legitimately produce more than one binding row (P18 isn't
-  // single-valued), so duplicate (id, imageUri) pairs are expected here;
-  // batchedCommonsImageAttributionFetch already tolerates that (dedupes by
-  // Commons file title internally). Reads run concurrently — plain local
-  // disk I/O with no shared external rate limit, unlike the Commons/WDQS
-  // network calls elsewhere in this file, so there's no reason to serialize
-  // them.
-  const warsRawFiles = await Promise.all(
-    CONFLICT_CATEGORY_QUERIES.map(({ rawFileName }) =>
-      readFile(path.join(RAW_DIR, rawFileName), "utf8").then((text) => validateSparqlResultShape(JSON.parse(text))),
-    ),
+  const enrichedWars = validateEnrichedWarsFile(
+    JSON.parse(await readFile(path.join(RAW_DIR, "wars-curated-enriched.raw.json"), "utf8")),
   );
-  const warsEntries = warsRawFiles
-    .flatMap((raw) => raw.results.bindings)
-    .map((row) => {
-      const eventUri = row.event?.value;
-      const imageUri = row.image?.value;
-      const id = eventUri ? extractQid(eventUri) : undefined;
-      return id && imageUri ? { id, imageUri } : undefined;
-    })
-    .filter((entry): entry is { id: string; imageUri: string } => entry !== undefined);
+  const warsEntries = enrichedWars.wars
+    .filter((war): war is typeof war & { image: string } => Boolean(war.image))
+    .map((war) => ({ id: war.id, imageUri: war.image }));
 
   console.log(`Fetching Commons attribution for ${peopleEntries.length} people images...`);
   console.log(`Fetching Commons attribution for ${discoveryEntries.length} discovery images...`);

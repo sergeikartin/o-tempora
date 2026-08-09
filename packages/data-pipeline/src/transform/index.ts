@@ -1,20 +1,18 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { DiscoveryCategory, Region, ReignPeriod } from "@same-sky/shared-types";
+import type { ConflictCategory, DiscoveryCategory, Region, ReignPeriod } from "@same-sky/shared-types";
 import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
 import { parsePantheonCsv, type PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
 import { validateEnrichedEventsFile } from "../fetch/fetch-events-enrichment.js";
-import { CONFLICT_CATEGORY_QUERIES } from "../fetch/queries/historical-events.js";
-import { groupRows, type GroupedRow, type GroupRowsConfig } from "./group-rows.js";
+import { validateEnrichedWarsFile } from "../fetch/fetch-wars-enrichment.js";
 import { groupReigns } from "./group-reigns.js";
 import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
-import { tagHistoricalEvent, tagCuratedDiscovery, type EventTags } from "./tag-events.js";
-import { scoreAndRank, scoreAndRankByHpi, rankDiscoveriesBySitelinks } from "./score.js";
+import { tagCuratedDiscovery, tagCuratedWar } from "./tag-events.js";
+import { rankBySitelinks, scoreAndRankByHpi } from "./score.js";
 
 export type TaggedPerson = PantheonPersonRow &
   PantheonPersonTags & { description?: string; wikipediaUrl: string; image?: string; imageAttribution?: string };
-export type TaggedEvent = GroupedRow & EventTags & { imageAttribution?: string };
 
 export interface TaggedDiscovery {
   id: string;
@@ -27,6 +25,23 @@ export interface TaggedDiscovery {
   regionTags: Region[];
   image?: string;
   imageAttribution?: string;
+}
+
+export interface TaggedWar {
+  id: string;
+  label: string;
+  article?: string;
+  description?: string;
+  year?: number;
+  month?: number;
+  endYear?: number;
+  endMonth?: number;
+  sitelinks: number;
+  category: ConflictCategory;
+  regionTags: Region[];
+  image?: string;
+  imageAttribution?: string;
+  parentId?: string;
 }
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
@@ -79,31 +94,15 @@ interface ImageAttributionFile {
 
 // fetch-image-attribution.ts's output — a separate Commons `imageinfo` pass
 // keyed by the same ids as loadPeopleEnrichmentMap (Wikidata QID),
-// transformDiscoveries (the curated event's own QID), and transformWars
-// (the Wikidata QID group-rows.ts groups on) — see that file's header
-// comment for why this is a distinct raw file rather than folded into the
-// enrichment passes above.
+// transformDiscoveries, and transformWars (both the curated row's own QID)
+// — see that file's header comment for why this is a distinct raw file
+// rather than folded into the enrichment passes above.
 function loadImageAttributionFile(): ImageAttributionFile {
   const raw = JSON.parse(
     fs.readFileSync(path.join(RAW_DIR, "image-attribution.raw.json"), "utf8"),
   ) as ImageAttributionFile;
   return { people: raw.people ?? {}, discoveries: raw.discoveries ?? {}, wars: raw.wars ?? {} };
 }
-
-const HISTORICAL_CONFIG: GroupRowsConfig = {
-  entityVar: "event",
-  labelVar: "eventLabel",
-  sitelinksVar: "sitelinks",
-  articleVar: "article",
-  descriptionVar: "description",
-  dateVar: "date",
-  datePrecisionVar: "datePrecision",
-  secondaryDateVar: "endDate",
-  secondaryDatePrecisionVar: "endDatePrecision",
-  tagVar: "type",
-  countryVar: "country",
-  imageVar: "image",
-};
 
 // group -> tag -> score, per lane. People, Wars & Conflicts, and
 // Discoveries & Inventions are three entirely independent lanes end to
@@ -131,54 +130,44 @@ export function transformPeople(): TaggedPerson[] {
   return scoreAndRankByHpi(tagged);
 }
 
-// A Wikidata item can carry more than one instance-of (P31) claim (e.g. the
-// 2022 Russo-Ukrainian escalation is classed as both war and military
-// operation; the Fall of Constantinople as both battle and siege) — since
-// each ConflictCategory now has its own independent query, such an item
-// clears more than one category's query and would otherwise appear twice
-// in the concatenated pool under two different categories/shapes. Confirmed
-// live (5 of 89 specialist-floor items) while spot-checking the first real
-// fetch after "Split fetch into per-category queries" landed. Dedupe by id,
-// first-occurrence-wins, so exactly one category sticks per entity —
-// CONFLICT_CATEGORY_QUERIES' own array order is the tiebreak (war, battle,
-// siege, military-operation, revolution, rebellion, coup-d'état,
-// war-of-independence, peace-treaty). This is an editorial salience
-// ordering for a general-audience history timeline, not strict Wikidata-
-// taxonomy specificity — it happened to pick "war" over "military
-// operation" and "revolution" over "rebellion" for the 5 real collisions
-// found, both defensible; "battle" beating "siege" for the Fall of
-// Constantinople is a closer call (many sources lead with "siege"). Treat
-// this ordering as a tunable editorial lever, not a derived fact — if a
-// specific miscategorization turns out to matter, fix it by reordering
-// CONFLICT_CATEGORY_QUERIES (which log-output grouping doesn't care about),
-// not by rewriting this function.
-export function dedupeFirstById<T extends { id: string }>(rows: T[]): T[] {
-  const seen = new Set<string>();
-  return rows.filter((row) => {
-    if (seen.has(row.id)) return false;
-    seen.add(row.id);
-    return true;
-  });
-}
-
-// Reads the 9 per-category raw files fetch-historical-events.ts wrote (one
-// per surviving ConflictCategory value, per "Split fetch into per-category
-// queries"), grouping each independently before concatenating (safe since
-// HISTORICAL_CONFIG is identical across all 9) and deduping the
-// concatenated pool by id (dedupeFirstById above).
-export function transformWars(): TaggedEvent[] {
+// Sourced from the hand-curated + enriched wars list
+// (fetch-wars-enrichment.ts's output), not a raw SPARQL binding dump —
+// already one row per conflict, so no groupRows step needed here (same
+// reasoning as transformPeople/transformDiscoveries). A missing enriched
+// `sitelinks` means the enrichment pass couldn't resolve that QID; coerced
+// to 0 here so it sorts last and Output's buildWars can drop it explicitly
+// (same convention transformDiscoveries uses). Unlike Discoveries,
+// description/year/endYear are also enrichment-sourced here, not
+// curator-authored — left `undefined` rather than coerced when the
+// enrichment pass didn't resolve them, since buildWars needs to
+// distinguish "no date at all" (drop) from "one date" (WarEvent) from "two
+// dates" (War).
+export function transformWars(): TaggedWar[] {
+  const enrichedPath = path.join(RAW_DIR, "wars-curated-enriched.raw.json");
+  const { wars } = validateEnrichedWarsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
   const imageAttribution = loadImageAttributionFile().wars;
-  const historical = dedupeFirstById(
-    CONFLICT_CATEGORY_QUERIES.flatMap(({ rawFileName }) => {
-      const raw = loadRaw(rawFileName);
-      return groupRows(raw.results.bindings, HISTORICAL_CONFIG);
-    }),
-  ).map((row) => ({
-    ...row,
-    ...tagHistoricalEvent(row),
-    imageAttribution: imageAttribution[row.id],
-  }));
-  return scoreAndRank(historical);
+
+  const tagged = wars.map((war) => {
+    const { category, regionTags } = tagCuratedWar(war.category, war.countries);
+    return {
+      id: war.id,
+      label: war.name,
+      article: war.wikipediaUrl,
+      description: war.description,
+      year: war.year,
+      month: war.month,
+      endYear: war.endYear,
+      endMonth: war.endMonth,
+      sitelinks: war.sitelinks ?? 0,
+      category,
+      regionTags,
+      image: war.image,
+      imageAttribution: imageAttribution[war.id],
+      parentId: war.parentId,
+    };
+  });
+
+  return rankBySitelinks(tagged);
 }
 
 // Sourced from the hand-curated + enriched events list
@@ -208,7 +197,7 @@ export function transformDiscoveries(): TaggedDiscovery[] {
     };
   });
 
-  return rankDiscoveriesBySitelinks(tagged);
+  return rankBySitelinks(tagged);
 }
 
 // Keyed by every person Q-ID that fetch-reigns.ts's snapshot covers, not

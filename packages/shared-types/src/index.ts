@@ -3,16 +3,18 @@
 // from Unit 3/4 onward) via this workspace package rather than each project
 // redefining them, per code-standards.md's "share those types" rule.
 
+// Shrunk from nine values to six ([[Container/parentId nesting]] effort,
+// see .scratch/wars-curated-source/spec.md) — battle, siege, and
+// peace-treaty removed entirely, not deprecated/left unused. They're
+// inherently sub-events of a war rather than standalone conflicts; every
+// value that remains can stand alone as a top-level curated conflict.
 export const CONFLICT_CATEGORIES = [
   "war",
-  "battle",
-  "siege",
   "military-operation",
   "revolution",
   "rebellion",
   "coup-d-etat",
   "war-of-independence",
-  "peace-treaty",
 ] as const;
 
 export type ConflictCategory = (typeof CONFLICT_CATEGORIES)[number];
@@ -181,31 +183,37 @@ export interface Person extends TimelineEntry {
   reignPeriods?: ReignPeriod[];
 }
 
-// Only entities Wikidata classes as a war (wd:Q198) or a war of
-// independence (wd:Q1006311) — BAR_RENDERED_TYPE_QIDS in
-// data-pipeline/src/fetch/queries/historical-events.ts — become a War, the
-// two Wars & Conflicts-lane types that are always a real Period, per the
-// product decision that only these render as range bars. Everything else
-// the lane covers (battles, sieges, revolutions, rebellions, military
-// operations, coups d'état, peace treaties) is a WarEvent instead, even
-// when Wikidata happens to record a duration for one of them.
+// Shape is decoupled from category (data-pipeline's Wikidata enrichment
+// pass decides it, not a fixed type-QID allowlist): a curated conflict
+// becomes a War when its enrichment resolves both a start and an end date,
+// a WarEvent (below) when it resolves only one. Any of the six
+// ConflictCategory values can produce either shape depending on what
+// Wikidata actually knows about that QID — see
+// data-pipeline/src/output/write-datasets.ts's buildWars.
 export interface War extends TimelineEntry {
-  // "war" or "war-of-independence" in practice (see above) — kept as the
-  // shared ConflictCategory type rather than a narrower literal union so
-  // War and WarEvent can share CONFLICT_CATEGORY_COLORS and other
+  // Kept as the shared ConflictCategory type rather than a narrower literal
+  // union so War and WarEvent can share CONFLICT_CATEGORY_COLORS and other
   // ConflictCategory-keyed lookups on the frontend.
   category: ConflictCategory;
   regionTags: Region[];
   period: Period;
+  // Another curated row's id, always resolving to a War (never a WarEvent)
+  // — a "Container" is simply a War with no parentId. Absent means this War
+  // is either a Container itself or stands alone. Nesting is capped at 3
+  // levels (Container → this row → a further WarEvent/War), enforced at
+  // Output (write-datasets.ts's buildWars), not by this type.
+  parentId?: string;
 }
 
-// A single-moment Wars & Conflicts entry — battle, treaty, siege,
-// revolution, rebellion, military operation, or generic historical event.
-// See War above for why these are a separate type from War rather than an
-// optional end date on it.
+// A single-moment Wars & Conflicts entry. See War above for why these are
+// a separate type from War (shape follows what Wikidata's enrichment
+// resolves) rather than an optional end date on it.
 export interface WarEvent extends TimelineEntry, PointInTime {
   category: ConflictCategory;
   regionTags: Region[];
+  // Same contract as War.parentId above — always resolves to a War, never
+  // another WarEvent (a WarEvent is always the deepest level, level 3).
+  parentId?: string;
 }
 
 // The Wars & Conflicts lane's dataset (wars.json) is one array mixing both

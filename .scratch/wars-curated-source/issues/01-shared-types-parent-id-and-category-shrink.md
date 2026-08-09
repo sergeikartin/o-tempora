@@ -1,7 +1,7 @@
 # 01 — shared-types: `parentId` and `ConflictCategory` shrink
 
 Type: task
-Status: open
+Status: resolved
 
 ## Question
 
@@ -20,3 +20,5 @@ Downstream, `tsc` will force every `ConflictCategory`-keyed color map/switch to 
 Doc updates (`design-tokens.md`, `CONTEXT.md`, `product-scope.md`) for the removed categories are ticket 07's job, not this one — keep this ticket to types + compiler-forced code sites.
 
 ## Answer
+
+`packages/shared-types/src/index.ts`: `CONFLICT_CATEGORIES` shrunk to the six values; `War`/`WarEvent` both gained optional `parentId?: string`, doc comments rewritten to describe the enrichment-driven shape rule (retiring the `BAR_RENDERED_TYPE_QIDS` reference) and the Container/nesting contract. `packages/web/src/widgets/timeline-canvas/options.ts`'s `CONFLICT_CATEGORY_COLORS` lost the three dropped categories' entries (24 colors total now, not 27); `tsc -b` confirmed no other compile-time site needed updating. `options.test.ts` needed no changes — it already iterates `CONFLICT_CATEGORIES` generically. `packages/web` typecheck and the `options.test.ts`/`WarsLane.test.ts` suites (18 tests) pass clean.
