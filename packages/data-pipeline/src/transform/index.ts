@@ -9,7 +9,7 @@ import { validateEnrichedWarsFile } from "../fetch/fetch-wars-enrichment.js";
 import { groupReigns } from "./group-reigns.js";
 import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
 import { tagCuratedDiscovery, tagCuratedWar } from "./tag-events.js";
-import { rankBySitelinks, scoreAndRankByHpi } from "./score.js";
+import { rankByFameScore, scoreAndRankByHpi } from "./score.js";
 
 export type TaggedPerson = PantheonPersonRow &
   PantheonPersonTags & { description?: string; wikipediaUrl: string; image?: string; imageAttribution?: string };
@@ -21,6 +21,7 @@ export interface TaggedDiscovery {
   description: string;
   year: number;
   sitelinks: number;
+  fameScore: number;
   category: DiscoveryCategory;
   regionTags: Region[];
   image?: string;
@@ -37,6 +38,7 @@ export interface TaggedWar {
   endYear?: number;
   endMonth?: number;
   sitelinks: number;
+  fameScore: number;
   category: ConflictCategory;
   regionTags: Region[];
   image?: string;
@@ -104,6 +106,25 @@ function loadImageAttributionFile(): ImageAttributionFile {
   return { people: raw.people ?? {}, discoveries: raw.discoveries ?? {}, wars: raw.wars ?? {} };
 }
 
+interface PageviewsFile {
+  wars: Record<string, number>;
+  discoveries: Record<string, number>;
+}
+
+// fetch-pageviews.ts's output — trailing-4-year, 7-language-basket pageview
+// totals keyed by the same curated id as transformWars/transformDiscoveries,
+// same "separate raw file, same loading convention" reasoning as
+// loadImageAttributionFile above. A missing id (fetch-pageviews.ts skipped
+// it, or the whole stage failed) coerces to 0 pageviews at the call site,
+// not here — score.ts's blend formula degrades gracefully to a
+// sitelinks-only score for that row (ADR 0010).
+function loadPageviewsFile(): PageviewsFile {
+  const raw = JSON.parse(
+    fs.readFileSync(path.join(RAW_DIR, "pageviews.raw.json"), "utf8"),
+  ) as PageviewsFile;
+  return { wars: raw.wars ?? {}, discoveries: raw.discoveries ?? {} };
+}
+
 // group -> tag -> score, per lane. People, Wars & Conflicts, and
 // Discoveries & Inventions are three entirely independent lanes end to
 // end — each fed by its own raw snapshot and scored on its own.
@@ -146,6 +167,7 @@ export function transformWars(): TaggedWar[] {
   const enrichedPath = path.join(RAW_DIR, "wars-curated-enriched.raw.json");
   const { wars } = validateEnrichedWarsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
   const imageAttribution = loadImageAttributionFile().wars;
+  const pageviews = loadPageviewsFile().wars;
 
   const tagged = wars.map((war) => {
     const { category, regionTags } = tagCuratedWar(war.category, war.countries);
@@ -159,6 +181,7 @@ export function transformWars(): TaggedWar[] {
       endYear: war.endYear,
       endMonth: war.endMonth,
       sitelinks: war.sitelinks ?? 0,
+      pageviews: pageviews[war.id] ?? 0,
       category,
       regionTags,
       image: war.image,
@@ -167,7 +190,7 @@ export function transformWars(): TaggedWar[] {
     };
   });
 
-  return rankBySitelinks(tagged);
+  return rankByFameScore(tagged);
 }
 
 // Sourced from the hand-curated + enriched events list
@@ -180,6 +203,7 @@ export function transformDiscoveries(): TaggedDiscovery[] {
   const enrichedPath = path.join(RAW_DIR, "events-curated-enriched.raw.json");
   const { events } = validateEnrichedEventsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
   const imageAttribution = loadImageAttributionFile().discoveries;
+  const pageviews = loadPageviewsFile().discoveries;
 
   const tagged = events.map((event) => {
     const { category, regionTags } = tagCuratedDiscovery(event.category, event.countries);
@@ -190,6 +214,7 @@ export function transformDiscoveries(): TaggedDiscovery[] {
       description: event.description,
       year: event.year,
       sitelinks: event.sitelinks ?? 0,
+      pageviews: pageviews[event.id] ?? 0,
       category,
       regionTags,
       image: event.image,
@@ -197,7 +222,7 @@ export function transformDiscoveries(): TaggedDiscovery[] {
     };
   });
 
-  return rankBySitelinks(tagged);
+  return rankByFameScore(tagged);
 }
 
 // Keyed by every person Q-ID that fetch-reigns.ts's snapshot covers, not

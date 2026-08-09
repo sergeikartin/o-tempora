@@ -28,6 +28,7 @@ function taggedWar(overrides: Partial<TaggedWar> = {}): TaggedWar {
     id: "Q2",
     label: "Peloponnesian War",
     sitelinks: 80,
+    fameScore: 52,
     article: "https://en.wikipedia.org/wiki/Peloponnesian_War",
     description: "war fought between Athens and Sparta",
     year: -431,
@@ -46,6 +47,7 @@ function taggedDiscovery(overrides: Partial<TaggedDiscovery> = {}): TaggedDiscov
     description: "1928 discovery of the antibiotic",
     year: 1928,
     sitelinks: 80,
+    fameScore: 52,
     category: "medicine-health",
     regionTags: ["europe"],
     ...overrides,
@@ -170,6 +172,17 @@ test("buildWars drops a row whose sitelinks is 0 (enrichment couldn't resolve th
   assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
 });
 
+test("buildWars reads fameScore from the row's already-blended value, not re-derived from sitelinks", () => {
+  const { entries } = buildWars([taggedWar({ sitelinks: 200, fameScore: 37 })]);
+  assert.equal(entries[0]?.fameScore, 37);
+});
+
+test("buildWars drops a row whose sitelinks is 0 even when a nonzero blended fameScore survived (pageviews-only degrade case)", () => {
+  const { entries, report } = buildWars([taggedWar({ sitelinks: 0, fameScore: 12 })]);
+  assert.equal(entries.length, 0);
+  assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
+});
+
 test("buildWars passes through image/imageAttribution when present", () => {
   const { entries } = buildWars([
     taggedWar({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg", imageAttribution: "W, via Wikimedia Commons" }),
@@ -265,10 +278,21 @@ test("buildDiscoveries passes through category, regionTags, and at.year", () => 
     at: { year: 1928 },
     category: "medicine-health",
     regionTags: ["europe"],
-    fameScore: 80,
+    fameScore: 52,
     description: "1928 discovery of the antibiotic",
     wikipediaUrl: "https://en.wikipedia.org/wiki/Penicillin",
   });
+});
+
+test("buildDiscoveries reads fameScore from the row's already-blended value, not re-derived from sitelinks", () => {
+  const { discoveries } = buildDiscoveries([taggedDiscovery({ sitelinks: 200, fameScore: 37 })]);
+  assert.equal(discoveries[0]?.fameScore, 37);
+});
+
+test("buildDiscoveries drops a row whose sitelinks is 0 even when a nonzero blended fameScore survived (pageviews-only degrade case)", () => {
+  const { discoveries, report } = buildDiscoveries([taggedDiscovery({ sitelinks: 0, fameScore: 12 })]);
+  assert.equal(discoveries.length, 0);
+  assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
 });
 
 test("buildDiscoveries drops a row missing wikipediaUrl (enrichment couldn't resolve an article)", () => {
