@@ -25,6 +25,14 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   // attempt (spec §3.1: a runtime 404 hides the image, it doesn't blank the
   // slot for every entity after).
   const [failedEntityId, setFailedEntityId] = useState<string | null>(null);
+  // Portrait photos would otherwise get their top/bottom cropped by
+  // object-fit: cover in the fixed-height banner — switch those to
+  // contain (letterboxed on the sides) once we know the image's shape.
+  const [isPortraitImage, setIsPortraitImage] = useState(false);
+
+  useEffect(() => {
+    setIsPortraitImage(false);
+  }, [selected?.entity.id]);
 
   useEffect(() => {
     if (!selected) return;
@@ -59,7 +67,11 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
           src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}
           alt={content.name}
           loading="lazy"
-          className={styles.image}
+          className={isPortraitImage ? `${styles.image} ${styles.imageContain}` : styles.image}
+          onLoad={(event) => {
+            const img = event.currentTarget;
+            if (img.naturalHeight > img.naturalWidth) setIsPortraitImage(true);
+          }}
           onError={() => setFailedEntityId(selected.entity.id)}
         />
       )}

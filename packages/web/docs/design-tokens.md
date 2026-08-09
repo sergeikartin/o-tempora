@@ -9,8 +9,8 @@
 | Token | Hex | Usage |
 |---|---|---|
 | `color-bg-base` | `#F3EEDD` | Page background |
-| `color-bg-surface` | `#FBF8F0` | Filter bar, sidebar, event point-markers |
-| `color-bg-surface-raised` | `#FFFFFF` | Detail/tooltip panel |
+| `color-bg-surface` | `#FBF8F0` | Filter bar, sidebar, event point-markers, detail/tooltip panel |
+| `color-bg-surface-raised` | `#FFFFFF` | Filter chips, filter pills |
 | `color-border-subtle` | `#DED3B8` | Default borders, dividers |
 | `color-border-strong` | `#C9B98F` | Hover/active borders |
 | `color-text-primary` | `#2E2B22` | Primary text |
