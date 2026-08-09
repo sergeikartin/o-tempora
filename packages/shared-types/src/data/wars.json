@@ -54,7 +54,7 @@
     "period": {
       "start": {
         "year": 1789,
-        "month": 5
+        "month": 7
       },
       "end": {
         "year": 1799,
@@ -90,7 +90,7 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CivilWarUSAColl.png",
     "period": {
       "start": {
-        "year": 1865,
+        "year": 1861,
         "month": 4
       },
       "end": {
@@ -251,7 +251,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1967-02%201967%E5%B9%B4%E7%9A%84%E7%BA%A2%E5%8D%AB%E5%85%B5.jpg",
     "period": {
       "start": {
-        "year": 1966
+        "year": 1966,
+        "month": 5
       },
       "end": {
         "year": 1976,
@@ -272,7 +273,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Damage%20in%20Gaza%20Strip%20during%20the%20October%202023%20-%2029.jpg",
     "imageAttribution": "WAFA (Q2915969) in contract with a local company (APAimages)‏‏, via Wikimedia Commons",
     "at": {
-      "year": 2020
+      "year": 2023,
+      "month": 10
     }
   },
   {
@@ -410,7 +412,8 @@
     "description": "Ongoing armed conflict in West Asia",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/2026_Iran_war",
     "at": {
-      "year": 2026
+      "year": 2026,
+      "month": 2
     }
   },
   {
@@ -448,7 +451,8 @@
     "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
     "period": {
       "start": {
-        "year": 1970
+        "year": 1978,
+        "month": 1
       },
       "end": {
         "year": 1979,
@@ -609,7 +613,8 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Falklands_War",
     "period": {
       "start": {
-        "year": 1982
+        "year": 1982,
+        "month": 4
       },
       "end": {
         "year": 1982,
@@ -650,8 +655,7 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20Independence%20%281819%29%2C%20by%20John%20Trumbull.jpg",
     "period": {
       "start": {
-        "year": 1763,
-        "month": 3
+        "year": 1765
       },
       "end": {
         "year": 1783
@@ -715,8 +719,8 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuban_Revolution",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fidel%20Castro%20-%20MATS%20Terminal%20Washington%201959.jpg",
     "at": {
-      "year": 1959,
-      "month": 1
+      "year": 1953,
+      "month": 7
     }
   },
   {
@@ -750,7 +754,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maine%20explosion.jpg",
     "period": {
       "start": {
-        "year": 1898
+        "year": 1898,
+        "month": 4
       },
       "end": {
         "year": 1898,
@@ -837,7 +842,8 @@
     "imageAttribution": "Sodacan, via Wikimedia Commons",
     "period": {
       "start": {
-        "year": 1500
+        "year": 1455,
+        "month": 5
       },
       "end": {
         "year": 1487,
@@ -858,7 +864,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Indian%20Rebellion%20of%201857.jpg",
     "period": {
       "start": {
-        "year": 1857
+        "year": 1857,
+        "month": 5
       },
       "end": {
         "year": 1858,
@@ -880,7 +887,8 @@
     "imageAttribution": "Atoljaka, via Wikimedia Commons",
     "period": {
       "start": {
-        "year": 1956
+        "year": 1956,
+        "month": 10
       },
       "end": {
         "year": 1956,
@@ -899,8 +907,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Narva%20%28Gustaf%20Cederstr%C3%B6m%29%20-%20Nationalmuseum%20-%2018638.tif",
     "period": {
       "start": {
-        "year": 1721,
-        "month": 9
+        "year": 1700,
+        "month": 2
       },
       "end": {
         "year": 1721,
@@ -1108,7 +1116,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20Molino%20del%20Rey.jpg",
     "period": {
       "start": {
-        "year": 1840
+        "year": 1846,
+        "month": 4
       },
       "end": {
         "year": 1848,
@@ -1175,7 +1184,8 @@
     "imageAttribution": "Nessa Gnatoush, via Wikimedia Commons",
     "period": {
       "start": {
-        "year": 2010
+        "year": 2013,
+        "month": 11
       },
       "end": {
         "year": 2014,
@@ -1256,7 +1266,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Flags%20over%20Supreme%20Council%20of%20Crimea%20%283%20March%202014%29.png",
     "period": {
       "start": {
-        "year": 2014
+        "year": 2014,
+        "month": 2
       },
       "end": {
         "year": 2014,
@@ -1318,7 +1329,8 @@
     "imageAttribution": "Минобороны России, via Wikimedia Commons",
     "period": {
       "start": {
-        "year": 2020
+        "year": 2020,
+        "month": 9
       },
       "end": {
         "year": 2020,
@@ -1375,8 +1387,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Polish-soviet%20war%201920%20Polish%20defences%20near%20Milosna%2C%20August.jpg",
     "period": {
       "start": {
-        "year": 1920,
-        "month": 10
+        "year": 1919,
+        "month": 2
       },
       "end": {
         "year": 1921,
@@ -1526,7 +1538,7 @@
     "period": {
       "start": {
         "year": 1866,
-        "month": 7
+        "month": 6
       },
       "end": {
         "year": 1866,
@@ -1685,7 +1697,7 @@
     "period": {
       "start": {
         "year": 1558,
-        "month": 2
+        "month": 1
       },
       "end": {
         "year": 1583,
@@ -1725,7 +1737,7 @@
     "period": {
       "start": {
         "year": 1864,
-        "month": 10
+        "month": 12
       },
       "end": {
         "year": 1870,
@@ -2164,7 +2176,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Friedrich%20der%20Grosse%20und%20der%20Feldscher.jpg",
     "period": {
       "start": {
-        "year": 1778
+        "year": 1778,
+        "month": 7
       },
       "end": {
         "year": 1779,
@@ -2286,7 +2299,8 @@
     "parentId": "Q150701",
     "period": {
       "start": {
-        "year": 1702
+        "year": 1702,
+        "month": 3
       },
       "end": {
         "year": 1713,
@@ -2647,8 +2661,7 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christian%20III%20of%20Denmark.jpg",
     "period": {
       "start": {
-        "year": 1536,
-        "month": 8
+        "year": 1534
       },
       "end": {
         "year": 1536
@@ -2685,8 +2698,8 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bitka%20za%20moravac.jpg",
     "period": {
       "start": {
-        "year": 1878,
-        "month": 3
+        "year": 1876,
+        "month": 6
       },
       "end": {
         "year": 1878,
@@ -2758,8 +2771,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yamasee_War",
     "period": {
       "start": {
-        "year": 1715,
-        "month": 4
+        "year": 1715
       },
       "end": {
         "year": 1717
