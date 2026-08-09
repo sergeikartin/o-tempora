@@ -86,7 +86,8 @@ test('clicking outside the panel calls onClose', () => {
   const onClose = vi.fn();
   render(<DetailPanel selected={{ entityType: 'person', entity: napoleon }} onClose={onClose} />);
 
-  fireEvent.pointerDown(document.body);
+  fireEvent.pointerDown(document.body, { clientX: 0, clientY: 0 });
+  fireEvent.pointerUp(document.body, { clientX: 0, clientY: 0 });
   expect(onClose).toHaveBeenCalledTimes(1);
 });
 
@@ -94,6 +95,16 @@ test('clicking inside the panel does not call onClose', () => {
   const onClose = vi.fn();
   render(<DetailPanel selected={{ entityType: 'person', entity: napoleon }} onClose={onClose} />);
 
-  fireEvent.pointerDown(screen.getByText('Napoleon'));
+  fireEvent.pointerDown(screen.getByText('Napoleon'), { clientX: 0, clientY: 0 });
+  fireEvent.pointerUp(screen.getByText('Napoleon'), { clientX: 0, clientY: 0 });
+  expect(onClose).not.toHaveBeenCalled();
+});
+
+test('dragging outside the panel (e.g. panning the timeline) does not call onClose', () => {
+  const onClose = vi.fn();
+  render(<DetailPanel selected={{ entityType: 'person', entity: napoleon }} onClose={onClose} />);
+
+  fireEvent.pointerDown(document.body, { clientX: 0, clientY: 0 });
+  fireEvent.pointerUp(document.body, { clientX: 50, clientY: 0 });
   expect(onClose).not.toHaveBeenCalled();
 });
