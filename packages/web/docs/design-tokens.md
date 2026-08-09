@@ -20,19 +20,16 @@
 
 ## Conflict Category Palette
 
-Used as the stroke color for Wars & Conflicts' range lines and point-dot markers. Keyed by `ConflictCategory` (`packages/shared-types`) — a Wikidata-?type-claim-derived taxonomy, disjoint from `DiscoveryCategory` even where a name might coincide. Hue-optimized against the Occupation Domain Palette and Events & Inventions' own `DiscoveryCategory` palette (27 colors total sharing one hue circle) per `.scratch/wars-conflicts-taxonomy/issues/02-rename-expand-conflict-category.md`'s Answer — war-family categories (war/battle/siege/military-operation) grouped into warm hues, the rest into cooler ones.
+Used as the stroke color for Wars & Conflicts' range lines and point-dot markers. Keyed by `ConflictCategory` (`packages/shared-types`) — a curator-assigned taxonomy (see `CONTEXT.md`), disjoint from `DiscoveryCategory` even where a name might coincide. Hue-optimized against the Occupation Domain Palette and Events & Inventions' own `DiscoveryCategory` palette (24 colors total sharing one hue circle) per `.scratch/wars-conflicts-taxonomy/issues/02-rename-expand-conflict-category.md`'s Answer — war-family categories (war/military-operation) grouped into warm hues, the rest into cooler ones. `battle`/`siege`/`peace-treaty` were dropped from the six-value taxonomy (`.scratch/wars-curated-source/spec.md`) as inherently sub-events of a war rather than standalone conflicts; their palette entries dropped with them, not left unused.
 
 | Category | Token | Hex |
 |---|---|---|
 | War | `color-conflict-war` | `#BF696B` |
-| Battle | `color-conflict-battle` | `#C4906E` |
-| Siege | `color-conflict-siege` | `#C1A967` |
 | Military operation | `color-conflict-military-operation` | `#BDC251` |
 | Revolution | `color-conflict-revolution` | `#7DBE74` |
 | Rebellion | `color-conflict-rebellion` | `#6BBDB3` |
 | Coup d'état | `color-conflict-coup-d-etat` | `#7BA8C1` |
 | War of independence | `color-conflict-war-of-independence` | `#8E8DC4` |
-| Peace treaty | `color-conflict-peace-treaty` | `#A084C2` |
 
 No category tag / uncategorized → `color-border-subtle` as a neutral fallback, not a tenth pastel.
 

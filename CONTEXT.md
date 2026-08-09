@@ -5,8 +5,12 @@ A read-only, continuously zoomable visualization of world history — People, Wa
 ## Language
 
 **Conflict Category**:
-The Wikidata-?type-claim-derived classification for Wars & Conflicts entries (`War`/`WarEvent.category`) — `war, battle, siege, military-operation, revolution, rebellion, coup-d-etat, war-of-independence, peace-treaty`. Wars & Conflicts-only; Events & Inventions has its own separate `Discovery Category` (below). Drives the Conflict Category Palette in `packages/web/docs/design-tokens.md`.
+The curator-assigned classification for Wars & Conflicts entries (`War`/`WarEvent.category`) — `war, war-of-independence, revolution, rebellion, coup-d-etat, military-operation`. Assigned by the curator at `data/raw/wars-curated.raw.json` authoring time, not derived from a Wikidata `?type` claim (see **Container** below for how the lane is sourced). Wars & Conflicts-only; Events & Inventions has its own separate `Discovery Category` (below). Drives the Conflict Category Palette in `packages/web/docs/design-tokens.md`. Does not determine `War` vs. `WarEvent` shape — see **Container**.
 _Avoid_: Category (bare — ambiguous with Discovery Category), occupation domain, tag, type (for this specific field)
+
+**Container**:
+A top-level, parent-less curated `War` that other Wars & Conflicts rows nest under via the optional `parentId` field (on both `War` and `WarEvent`, always resolving to another row's `id`, which is always a `War`) — e.g. the Napoleonic Wars containing the Peninsular War as a real, independently-curated entity rather than a free-text label. Nesting is capped at 3 levels (Container → level 2 → level 3) and validated at Output (`buildWars` in `write-datasets.ts`); a violation drops the offending row rather than publishing it. `War` vs. `WarEvent` shape is itself decoupled from `Conflict Category` and from curator input — decided at Output by whether the row's Wikidata enrichment resolved both a start and an end date (`War`) or only one (`WarEvent`); a row resolving no date at all is dropped. See `.scratch/wars-curated-source/spec.md` and `packages/data-pipeline/docs/adr/0009-wars-sourced-from-curated-list-plus-container-nesting.md`.
+_Avoid_: parent war, umbrella war/conflict (for this specific mechanism — use Container)
 
 **Discovery Category**:
 Events & Inventions' own curator-assigned taxonomy — `science-theory, medicine-health, communication, transportation, infrastructure, everyday-technology, food-agriculture, exploration, energy-industry, society-administration`. A separate enum from Conflict Category — disjoint source (hand-curated, not a Wikidata `?type` claim) and disjoint values, even where a name happens to coincide (`exploration` appears in both, independently).
