@@ -17,15 +17,16 @@
   },
   "dependencies": {
     "@same-sky/shared-types": "^0.1.0",
+    "d3": "^7.9.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "temporal-polyfill": "^1.0.2",
-    "vis-timeline": "^8.5.2"
+    "temporal-polyfill": "^1.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@feature-sliced/steiger-plugin": "^0.7.0",
     "@testing-library/react": "^16.3.2",
+    "@types/d3": "^7.4.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",

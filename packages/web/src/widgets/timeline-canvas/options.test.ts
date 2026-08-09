@@ -1,89 +1,85 @@
 import { test, expect } from 'vitest';
 import {
-  buildPeopleTimelineOptions,
-  buildWarsTimelineOptions,
-  buildEventsTimelineOptions,
-  PEOPLE_GROUPS,
-  WARS_GROUPS,
+  buildXScale,
+  clampPixelsPerYear,
+  defaultPixelsPerYear,
+  pixelsPerYearBounds,
+  zoomIn,
+  zoomOut,
+  CONFLICT_CATEGORY_COLORS,
+  DISCOVERY_CATEGORY_COLORS,
 } from './options';
 import { today } from '../../shared/lib/dates';
+import { PAN_MIN_DATE, DOMAIN_COLORS } from '../../shared/config';
+import { OCCUPATION_DOMAINS, CONFLICT_CATEGORIES, DISCOVERY_CATEGORIES } from '../../shared/types';
 
-const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
-
-test.each([
-  ['people', buildPeopleTimelineOptions],
-  ['wars', buildWarsTimelineOptions],
-  ['events', buildEventsTimelineOptions],
-])('%s lane: min is bounded to 2750 BCE', (_name, build) => {
-  const options = build();
-  expect((options.min as Date).getFullYear()).toBe(-2750);
+test('buildXScale domains from PAN_MIN_DATE to a live today() read', () => {
+  const { scale } = buildXScale(5);
+  const [minYear, maxYear] = scale.domain();
+  expect(minYear).toBe(PAN_MIN_DATE.year);
+  expect(maxYear).toBe(today().year);
 });
 
-test.each([
-  ['people', buildPeopleTimelineOptions],
-  ['wars', buildWarsTimelineOptions],
-  ['events', buildEventsTimelineOptions],
-])('%s lane: max matches a live today() read', (_name, build) => {
-  const options = build();
-  expect((options.max as Date).getFullYear()).toBe(today().year);
+test('buildXScale sizes totalWidth as totalYears * pixelsPerYear', () => {
+  const pixelsPerYear = 5;
+  const { scale, totalWidth } = buildXScale(pixelsPerYear);
+  const totalYears = today().year - PAN_MIN_DATE.year;
+  expect(totalWidth).toBe(totalYears * pixelsPerYear);
+  expect(scale.range()).toEqual([0, totalWidth]);
 });
 
-test.each([
-  ['people', buildPeopleTimelineOptions],
-  ['wars', buildWarsTimelineOptions],
-  ['events', buildEventsTimelineOptions],
-])('%s lane: zoomMin/zoomMax match the 10/250-year bounds', (_name, build) => {
-  const options = build();
-  expect(options.zoomMin).toBe(10 * MS_PER_YEAR);
-  expect(options.zoomMax).toBe(250 * MS_PER_YEAR);
+test('pixelsPerYearBounds: min shows the 500-year zoomMax bound, max shows the 10-year zoomMin bound', () => {
+  const { min, max } = pixelsPerYearBounds(1000);
+  expect(min).toBe(1000 / 500);
+  expect(max).toBe(1000 / 10);
 });
 
-test.each([
-  ['people', buildPeopleTimelineOptions],
-  ['wars', buildWarsTimelineOptions],
-  ['events', buildEventsTimelineOptions],
-])('%s lane: wheel-zoom is disabled and scroll axes are both enabled', (_name, build) => {
-  const options = build();
-  expect(options.zoomable).toBe(false);
-  expect(options.verticalScroll).toBe(true);
-  expect(options.horizontalScroll).toBe(true);
+test('clampPixelsPerYear clamps a too-small value up to the bound implied by 500 max visible years', () => {
+  expect(clampPixelsPerYear(0.1, 1000)).toBe(1000 / 500);
 });
 
-test('people lane hides its own time axis (the events lane shows the single shared axis)', () => {
-  const options = buildPeopleTimelineOptions();
-  expect(options.orientation).toEqual({ axis: 'none' });
+test('clampPixelsPerYear clamps a too-large value down to the bound implied by 10 min visible years', () => {
+  expect(clampPixelsPerYear(1000, 1000)).toBe(1000 / 10);
 });
 
-test('wars lane hides its own time axis (the events lane shows the single shared axis)', () => {
-  const options = buildWarsTimelineOptions();
-  expect(options.orientation).toEqual({ axis: 'none' });
+test('clampPixelsPerYear leaves an in-bounds value untouched', () => {
+  const inBounds = 1000 / 100;
+  expect(clampPixelsPerYear(inBounds, 1000)).toBe(inBounds);
 });
 
-test('events lane does not override the default axis orientation', () => {
-  const options = buildEventsTimelineOptions();
-  expect(options.orientation).toBeUndefined();
+test('defaultPixelsPerYear targets the default 100-year (1800-1900) viewport width', () => {
+  expect(defaultPixelsPerYear(1000)).toBe(1000 / 100);
 });
 
-test('people lane leaves the default stackSubgroups option untouched (true) — required for the People group\'s subgroupStack config below to take effect at all', () => {
-  const options = buildPeopleTimelineOptions();
-  expect(options.stackSubgroups).toBeUndefined();
+test('zoomIn increases pixelsPerYear by the zoom step, clamped to the zoomed-in bound', () => {
+  const start = 10;
+  expect(zoomIn(start, 1000)).toBeCloseTo(start * 1.2);
+  expect(zoomIn(1000, 1000)).toBe(1000 / 10);
 });
 
-test('the People group enables inner subgroup positioning without forcing any real subgroup to stack, so reignPeriod items overlap their person\'s lifespan bar instead of stacking into a separate row', () => {
-  const [peopleGroup] = PEOPLE_GROUPS;
-  expect(peopleGroup?.subgroupStack).toBeTruthy();
-  // No real person id should be a key here with a `true` value — that
-  // would turn overlap back into internal stacking for that specific
-  // person. The object exists only to flip vis-timeline's internal
-  // doInnerStack flag on (see options.ts's comment for why).
-  const stackConfig = peopleGroup?.subgroupStack;
-  if (typeof stackConfig === 'object') {
-    expect(Object.values(stackConfig).some(Boolean)).toBe(true);
-    expect(Object.keys(stackConfig)).not.toContain('Q1048'); // sanity: not a real person id
-  }
+test('zoomOut decreases pixelsPerYear by the zoom step, clamped to the zoomed-out bound', () => {
+  const start = 10;
+  expect(zoomOut(start, 1000)).toBeCloseTo(start / 1.2);
+  expect(zoomOut(0.1, 1000)).toBe(1000 / 500);
 });
 
-test('the Wars group has no subgroupStack config (this lane never uses subgroups)', () => {
-  const [warsGroup] = WARS_GROUPS;
-  expect(warsGroup?.subgroupStack).toBeUndefined();
+test('DOMAIN_COLORS has one entry per OccupationDomain, no duplicate hex values', () => {
+  const values = OCCUPATION_DOMAINS.map((domain) => DOMAIN_COLORS[domain]);
+  expect(values).toHaveLength(OCCUPATION_DOMAINS.length);
+  expect(values.every(Boolean)).toBe(true);
+  expect(new Set(values).size).toBe(values.length);
+});
+
+test('CONFLICT_CATEGORY_COLORS has one entry per ConflictCategory, no duplicate hex values', () => {
+  const values = CONFLICT_CATEGORIES.map((category) => CONFLICT_CATEGORY_COLORS[category]);
+  expect(values).toHaveLength(CONFLICT_CATEGORIES.length);
+  expect(values.every(Boolean)).toBe(true);
+  expect(new Set(values).size).toBe(values.length);
+});
+
+test('DISCOVERY_CATEGORY_COLORS has one entry per DiscoveryCategory, no duplicate hex values', () => {
+  const values = DISCOVERY_CATEGORIES.map((category) => DISCOVERY_CATEGORY_COLORS[category]);
+  expect(values).toHaveLength(DISCOVERY_CATEGORIES.length);
+  expect(values.every(Boolean)).toBe(true);
+  expect(new Set(values).size).toBe(values.length);
 });
