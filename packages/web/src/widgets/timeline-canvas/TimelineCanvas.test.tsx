@@ -113,6 +113,39 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
   expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
 });
 
+test('a mousedown on the reserved native scrollbar strip does not start a pan, so the browser can drag its own thumb', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+  Object.defineProperty(scrollContainer, 'clientHeight', { value: 600, configurable: true });
+  Object.defineProperty(scrollContainer, 'offsetHeight', { value: 615, configurable: true });
+
+  // offsetY isn't a settable PointerEventInit field (it's computed from
+  // layout), so it's overridden directly on the event instance rather than
+  // passed through fireEvent's init dict. 610 falls inside the 15px
+  // scrollbar strip below clientHeight.
+  const pointerDown = new PointerEvent('pointerdown', {
+    bubbles: true,
+    cancelable: true,
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
+  Object.defineProperty(pointerDown, 'offsetY', { value: 610 });
+  fireEvent(scrollContainer, pointerDown);
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBe(100); // untouched — no pan started
+});
+
 test('releasing a drag suppresses the click event that follows it', () => {
   const onEntityClick = vi.fn();
   const { container } = render(

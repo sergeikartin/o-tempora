@@ -177,6 +177,15 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
     const container = scrollRef.current;
     if (!container) return;
+    // The native horizontal scrollbar isn't a child DOM node, so a press on
+    // its track/thumb still targets this same container — without this
+    // guard, drag-to-pan would hijack every scrollbar drag instead of
+    // leaving it to the browser. offsetHeight > clientHeight only when a
+    // reserved (non-overlay) scrollbar is actually occupying space, and it
+    // sits below clientHeight in the container's own padding box; both are
+    // 0 in jsdom (no layout), so this guard is inert in tests.
+    const hasReservedScrollbar = container.offsetHeight > container.clientHeight;
+    if (hasReservedScrollbar && event.nativeEvent.offsetY >= container.clientHeight) return;
     dragStartRef.current = { pointerX: event.clientX, scrollLeft: container.scrollLeft, moved: false };
     // Best-effort: keeps the drag alive if the pointer leaves the container's
     // bounds mid-move. jsdom doesn't implement it at all (hence the optional
