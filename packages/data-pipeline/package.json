@@ -7,14 +7,15 @@
     "node": ">=22.21.0"
   },
   "scripts": {
-    "fetch": "NODE_USE_ENV_PROXY=1 tsx fetch/index.ts",
-    "build-data": "tsx output/index.ts",
-    "publish-data": "tsx output/publish.ts",
+    "fetch": "NODE_USE_ENV_PROXY=1 tsx src/fetch/index.ts",
+    "build-data": "tsx src/output/index.ts",
+    "publish-data": "tsx src/output/publish.ts",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test transform/**/*.test.ts output/**/*.test.ts fetch/**/*.test.ts"
+    "test": "tsx --test 'src/transform/**/*.test.ts' 'src/output/**/*.test.ts' 'src/fetch/**/*.test.ts'"
   },
   "dependencies": {
-    "@same-sky/shared-types": "^0.1.0"
+    "@same-sky/shared-types": "^0.1.0",
+    "seek-bzip": "^2.0.0"
   },
   "devDependencies": {
     "tsx": "^4.19.0"

@@ -1,0 +1,15 @@
+.svg {
+  display: block;
+}
+
+.line {
+  cursor: default;
+}
+
+.name {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  /* fill is set per-item (occupation-domain color) via the D3 join, not here. */
+  pointer-events: none;
+  user-select: none;
+}

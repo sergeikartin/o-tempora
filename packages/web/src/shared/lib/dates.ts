@@ -1,18 +1,14 @@
-// toLegacyDate() is the sole legacy-Date construction point in this app
-// (Invariant 4, code-standards.md's Timeline Rendering rules) and must only
-// be called from within widgets/timeline-canvas/.
-
-export function yearToPlainDate(year: number): Temporal.PlainDate {
-  return Temporal.PlainDate.from({ year, month: 1, day: 1 });
-}
+import type { YearMonth } from '../types';
 
 export function today(): Temporal.PlainDate {
   return Temporal.Now.plainDateISO();
 }
 
-export function toLegacyDate(date: Temporal.PlainDate): Date {
-  const legacy = new Date(0);
-  legacy.setFullYear(date.year, date.month - 1, date.day);
-  legacy.setHours(0, 0, 0, 0);
-  return legacy;
+// Projects a YearMonth onto a single continuous number so it can be used as
+// a position on the timeline's year-keyed x-scale — plain `year` when month
+// is unknown (same as month 1, i.e. no offset), else `year` plus the
+// fraction of the year elapsed by the start of that month.
+export function yearMonthToFractionalYear(yearMonth: YearMonth): number {
+  if (yearMonth.month === undefined) return yearMonth.year;
+  return yearMonth.year + (yearMonth.month - 1) / 12;
 }

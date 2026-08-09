@@ -1,14 +1,13 @@
 import { test, expect } from 'vitest';
-import { mapPeopleToItems, mapInventionsToItems, mapWarsAndConflictsToItems } from './map-to-items';
-import type { HistoricalEvent, Person } from '../../shared/types';
+import { assignRows, filterByFameScore, mapDiscoveries, mapPeople, mapWars } from './map-to-items';
+import { today } from '../../shared/lib/dates';
+import type { Discovery, Person, War, WarEvent } from '../../shared/types';
 
 const person: Person = {
   id: 'Q868',
   name: 'Aristotle',
-  birthYear: -383,
-  deathYear: -321,
-  category: 'philosophy',
-  occupationTags: ['philosophy'],
+  lifespan: { start: { year: -383 }, end: { year: -321 } },
+  occupationDomain: 'humanities',
   regionTags: [],
   fameScore: 317,
   description: '4th-century BCE Classical Greek philosopher and polymath',
@@ -19,116 +18,40 @@ const personWithoutDeathYear: Person = {
   ...person,
   id: 'Q40939',
   name: 'Hesiod',
-  birthYear: -750,
-  deathYear: undefined,
+  lifespan: { start: { year: -750 }, end: undefined },
 };
 
-const event: HistoricalEvent = {
-  id: 'Q155',
-  name: 'Brazil',
-  date: 1500,
-  category: 'invention',
-  regionTags: ['americas'],
-  fameScore: 386,
-  description: 'country in South America',
-  wikipediaUrl: 'https://en.wikipedia.org/wiki/Brazil',
-};
-
-test('mapPeopleToItems maps a person with both years to a range item', () => {
-  const [item] = mapPeopleToItems([person]);
-  expect(item?.type).toBe('range');
-  expect(item?.group).toBe('people');
-  expect((item?.start as Date).getFullYear()).toBe(-383);
-  expect((item?.end as Date).getFullYear()).toBe(-321);
+test('mapPeople maps a person with both years to an item with matching start/end', () => {
+  const [item] = mapPeople([person]);
+  expect(item?.id).toBe(person.id);
+  expect(item?.name).toBe('Aristotle');
+  expect(item?.startYear).toBe(-383);
+  expect(item?.endYear).toBe(-321);
+  expect(item?.occupationDomain).toBe('humanities');
 });
 
-test('mapPeopleToItems falls back to birthYear + 1 when deathYear is missing', () => {
-  expect(() => mapPeopleToItems([personWithoutDeathYear])).not.toThrow();
-  const [item] = mapPeopleToItems([personWithoutDeathYear]);
-  expect((item?.end as Date).getFullYear()).toBe(-749);
+test('mapPeople falls back to today when lifespan.end is missing — still alive, not a collapsed bar', () => {
+  const [item] = mapPeople([personWithoutDeathYear]);
+  expect(item?.endYear).toBe(today().year);
 });
 
-test('mapPeopleToItems does not add a subgroup or extra items for a person with no reignPeriods', () => {
-  const items = mapPeopleToItems([person]);
-  expect(items).toHaveLength(1);
-  expect(items[0]?.subgroup).toBeUndefined();
-});
-
-const ruler: Person = {
+const personWithMonths: Person = {
   ...person,
-  id: 'Q1048',
-  name: 'Julius Caesar',
-  birthYear: -100,
-  deathYear: -44,
-  reignPeriods: [
-    { startYear: -49, endYear: -44 },
-    { startYear: -60, endYear: -59 },
-  ],
+  id: 'Q1000',
+  name: 'Someone',
+  lifespan: { start: { year: 1900, month: 7 }, end: { year: 1980, month: 1 } },
 };
 
-test('mapPeopleToItems emits the person item followed by one range item per reignPeriod, sharing a subgroup', () => {
-  const items = mapPeopleToItems([ruler]);
-  expect(items).toHaveLength(3);
-
-  const [personItem, firstReign, secondReign] = items;
-  expect(personItem?.subgroup).toBe(ruler.id);
-  expect(firstReign?.subgroup).toBe(ruler.id);
-  expect(secondReign?.subgroup).toBe(ruler.id);
-  expect(firstReign?.group).toBe('people');
-  expect(firstReign?.type).toBe('range');
-  expect((firstReign?.start as Date).getFullYear()).toBe(-49);
-  expect((firstReign?.end as Date).getFullYear()).toBe(-44);
+test('mapPeople offsets startYear/endYear within their year when lifespan dates carry a month', () => {
+  const [item] = mapPeople([personWithMonths]);
+  expect(item?.startYear).toBeCloseTo(1900 + 6 / 12);
+  expect(item?.endYear).toBe(1980);
 });
 
-test('mapPeopleToItems falls back to the person\'s deathYear when a reignPeriod has no endYear', () => {
-  const rulerWithOpenReign: Person = {
-    ...ruler,
-    reignPeriods: [{ startYear: -49, endYear: undefined }],
-  };
-  const [, reignItem] = mapPeopleToItems([rulerWithOpenReign]);
-  expect((reignItem?.end as Date).getFullYear()).toBe(-44);
-});
-
-test('mapPeopleToItems widens a reignPeriod to one year when both endYear and deathYear are missing', () => {
-  const rulerWithNoBounds: Person = {
-    ...ruler,
-    deathYear: undefined,
-    reignPeriods: [{ startYear: -49, endYear: undefined }],
-  };
-  const [, reignItem] = mapPeopleToItems([rulerWithNoBounds]);
-  expect((reignItem?.start as Date).getFullYear()).toBe(-49);
-  expect((reignItem?.end as Date).getFullYear()).toBe(-48);
-});
-
-const warEvent: HistoricalEvent = {
-  id: 'Q8676',
-  name: 'American Civil War',
-  date: 1861,
-  category: 'war',
-  regionTags: ['americas'],
-  fameScore: 400,
-  description: 'civil war in the United States',
-  wikipediaUrl: 'https://en.wikipedia.org/wiki/American_Civil_War',
-};
-
-test('mapInventionsToItems maps an invention event to a point item with no end', () => {
-  const [item] = mapInventionsToItems([event]);
-  expect(item?.type).toBe('point');
-  expect(item?.group).toBe('events');
-  expect(item?.end).toBeUndefined();
-});
-
-test('mapInventionsToItems excludes non-invention events', () => {
-  const items = mapInventionsToItems([event, warEvent]);
-  expect(items).toHaveLength(1);
-  expect(items[0]?.id).toBe(event.id);
-});
-
-const warWithEndDate: HistoricalEvent = {
+const warWithEndYear: War = {
   id: 'Q8214',
   name: 'Korean War',
-  date: 1950,
-  endDate: 1953,
+  period: { start: { year: 1950 }, end: { year: 1953 } },
   category: 'war',
   regionTags: ['east-asia'],
   fameScore: 350,
@@ -136,92 +59,154 @@ const warWithEndDate: HistoricalEvent = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
 };
 
-const warZeroWidth: HistoricalEvent = {
+const warZeroWidth: War = {
+  ...warWithEndYear,
   id: 'Q166376',
   name: 'Six-Day War',
-  date: 1967,
-  endDate: 1967,
-  category: 'war',
-  regionTags: ['middle-east'],
-  fameScore: 300,
-  description: 'war between Israel and neighboring states',
-  wikipediaUrl: 'https://en.wikipedia.org/wiki/Six-Day_War',
+  period: { start: { year: 1967 }, end: { year: 1967 } },
 };
 
-const battleWithParent: HistoricalEvent = {
-  id: 'Q46341',
-  name: 'Battle of Gettysburg',
-  date: 1863,
-  partOfWarName: 'American Civil War',
+const battle: WarEvent = {
+  id: 'Q217799',
+  name: 'Battle of Megiddo',
+  at: { year: -1457 },
   category: 'war',
   regionTags: ['americas'],
   fameScore: 250,
-  description: 'major battle of the American Civil War',
-  wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Gettysburg',
-};
-
-const battleWithoutParent: HistoricalEvent = {
-  id: 'Q217799',
-  name: 'Battle of Megiddo',
-  date: -1457,
-  category: 'war',
-  regionTags: ['middle-east'],
-  fameScore: 120,
   description: 'ancient battle',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
 };
 
-const politicsEvent: HistoricalEvent = {
-  id: 'Q131154',
-  name: 'Congress of Vienna',
-  date: 1814,
-  category: 'politics',
-  regionTags: ['europe'],
-  fameScore: 200,
-  description: 'diplomatic conference reorganizing Europe',
-  wikipediaUrl: 'https://en.wikipedia.org/wiki/Congress_of_Vienna',
+test('mapWars maps a War to a range item (isPoint: false)', () => {
+  const [item] = mapWars([warWithEndYear]);
+  expect(item?.isPoint).toBe(false);
+  expect(item?.startYear).toBe(1950);
+  expect(item?.endYear).toBe(1953);
+  expect(item?.category).toBe('war');
+});
+
+test('mapWars widens a zero-width war range (start === end) by one year', () => {
+  const [item] = mapWars([warZeroWidth]);
+  expect(item?.isPoint).toBe(false);
+  expect(item?.startYear).toBe(1967);
+  expect(item?.endYear).toBe(1968);
+});
+
+test('mapWars maps a WarEvent to a point item', () => {
+  const [item] = mapWars([battle]);
+  expect(item?.isPoint).toBe(true);
+  expect(item?.startYear).toBe(-1457);
+  expect(item?.endYear).toBe(-1457);
+});
+
+const warWithMonths: War = {
+  ...warWithEndYear,
+  id: 'Q9000',
+  name: 'War with known months',
+  period: { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } },
 };
 
-test('mapWarsAndConflictsToItems excludes invention events', () => {
-  const items = mapWarsAndConflictsToItems([event, warWithEndDate]);
-  expect(items).toHaveLength(1);
-  expect(items[0]?.id).toBe(warWithEndDate.id);
+test('mapWars offsets startYear/endYear within their year when period dates carry a month', () => {
+  const [item] = mapWars([warWithMonths]);
+  expect(item?.startYear).toBeCloseTo(1950 + 5 / 12);
+  expect(item?.endYear).toBeCloseTo(1953 + 6 / 12);
 });
 
-test('mapWarsAndConflictsToItems maps a war with an endDate to a range item', () => {
-  const [item] = mapWarsAndConflictsToItems([warWithEndDate]);
-  expect(item?.type).toBe('range');
-  expect(item?.group).toBe('wars');
-  expect((item?.start as Date).getFullYear()).toBe(1950);
-  expect((item?.end as Date).getFullYear()).toBe(1953);
+const battleWithMonth: WarEvent = {
+  ...battle,
+  id: 'Q9001',
+  name: 'Battle with known month',
+  at: { year: 1457, month: 4 },
+};
+
+test('mapWars offsets a WarEvent point within its year when at carries a month', () => {
+  const [item] = mapWars([battleWithMonth]);
+  expect(item?.startYear).toBeCloseTo(1457 + 3 / 12);
+  expect(item?.endYear).toBe(item?.startYear);
 });
 
-test('mapWarsAndConflictsToItems widens a zero-width war range (date === endDate) by one year', () => {
-  const [item] = mapWarsAndConflictsToItems([warZeroWidth]);
-  expect(item?.type).toBe('range');
-  expect((item?.start as Date).getFullYear()).toBe(1967);
-  expect((item?.end as Date).getFullYear()).toBe(1968);
+const discovery: Discovery = {
+  id: 'Q11042',
+  name: 'Printing press',
+  at: { year: 1440 },
+  category: 'communication',
+  regionTags: ['europe'],
+  fameScore: 386,
+  description: 'device for applying pressure to transfer ink onto paper',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
+};
+
+test('mapDiscoveries maps a discovery to a point item at its at.year', () => {
+  const [item] = mapDiscoveries([discovery]);
+  expect(item?.id).toBe(discovery.id);
+  expect(item?.name).toBe('Printing press');
+  expect(item?.startYear).toBe(1440);
+  expect(item?.category).toBe('communication');
 });
 
-test('mapWarsAndConflictsToItems maps a non-war entry to a point item with no end', () => {
-  const [item] = mapWarsAndConflictsToItems([battleWithoutParent]);
-  expect(item?.type).toBe('point');
-  expect(item?.group).toBe('wars');
-  expect(item?.end).toBeUndefined();
+const discoveryWithMonth: Discovery = {
+  ...discovery,
+  id: 'Q9002',
+  name: 'Discovery with known month',
+  at: { year: 1440, month: 10 },
+};
+
+test('mapDiscoveries offsets startYear within its year when at carries a month', () => {
+  const [item] = mapDiscoveries([discoveryWithMonth]);
+  expect(item?.startYear).toBeCloseTo(1440 + 9 / 12);
 });
 
-test('mapWarsAndConflictsToItems surfaces partOfWarName as the item title', () => {
-  const [item] = mapWarsAndConflictsToItems([battleWithParent]);
-  expect(item?.title).toBe('Battle of Gettysburg — part of American Civil War');
+// filterByFameScore — shared client-side Fame Tier gate for all three lanes.
+test('filterByFameScore keeps only items whose fameScore clears the threshold', () => {
+  const items = [{ id: 'a', fameScore: 90 }, { id: 'b', fameScore: 89 }, { id: 'c', fameScore: 100 }];
+  expect(filterByFameScore(items, 90).map((item) => item.id)).toEqual(['a', 'c']);
 });
 
-test('mapWarsAndConflictsToItems leaves title unset when partOfWarName is absent', () => {
-  const [item] = mapWarsAndConflictsToItems([battleWithoutParent]);
-  expect(item?.title).toBeUndefined();
+test('filterByFameScore keeps a value exactly at the threshold', () => {
+  const items = [{ id: 'a', fameScore: 50 }];
+  expect(filterByFameScore(items, 50)).toHaveLength(1);
 });
 
-test('mapWarsAndConflictsToItems includes politics-category entries, not just wars', () => {
-  const items = mapWarsAndConflictsToItems([politicsEvent]);
-  expect(items).toHaveLength(1);
-  expect(items[0]?.type).toBe('point');
+// assignRows — greedy interval-graph row stacking shared by People & Wars.
+test('assignRows places two non-overlapping intervals in the same row', () => {
+  const rows = assignRows([
+    { id: 'a', startYear: 1900, endYear: 1910 },
+    { id: 'b', startYear: 1950, endYear: 1960 },
+  ]);
+  expect(rows.get('a')).toBe(rows.get('b'));
+});
+
+test('assignRows opens a new row for two overlapping intervals', () => {
+  const rows = assignRows([
+    { id: 'a', startYear: 1900, endYear: 1920 },
+    { id: 'b', startYear: 1910, endYear: 1930 },
+  ]);
+  expect(rows.get('a')).not.toBe(rows.get('b'));
+});
+
+test('assignRows keeps a minimum gap between two intervals sharing a row, even without literal overlap', () => {
+  const rows = assignRows([
+    { id: 'a', startYear: 1900, endYear: 1910 },
+    { id: 'b', startYear: 1911, endYear: 1920 },
+  ]);
+  expect(rows.get('a')).not.toBe(rows.get('b'));
+});
+
+test('assignRows is independent of input order (sorts by startYear internally)', () => {
+  const rows = assignRows([
+    { id: 'b', startYear: 1950, endYear: 1960 },
+    { id: 'a', startYear: 1900, endYear: 1910 },
+  ]);
+  expect(rows.get('a')).toBe(0);
+  expect(rows.get('b')).toBe(0);
+});
+
+test('assignRows reuses a row once it clears, rather than always opening a new one', () => {
+  const rows = assignRows([
+    { id: 'a', startYear: 1900, endYear: 1910 },
+    { id: 'b', startYear: 1905, endYear: 1915 },
+    { id: 'c', startYear: 1920, endYear: 1930 },
+  ]);
+  expect(rows.get('a')).not.toBe(rows.get('b'));
+  expect(rows.get('c')).toBe(rows.get('a'));
 });

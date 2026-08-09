@@ -1,174 +1,274 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
-import { test, expect, vi, beforeEach, afterEach } from 'vitest';
-import type { HistoricalEvent, Person } from '../../shared/types';
-
-interface MockInstance {
-  setItems: ReturnType<typeof vi.fn>;
-  setWindow: ReturnType<typeof vi.fn>;
-  zoomIn: ReturnType<typeof vi.fn>;
-  zoomOut: ReturnType<typeof vi.fn>;
-  destroy: ReturnType<typeof vi.fn>;
-  on: ReturnType<typeof vi.fn>;
-  listeners: Record<string, (properties: { start: Date; end: Date }) => void>;
-}
-
-function createMockInstance(): MockInstance {
-  const listeners: MockInstance['listeners'] = {};
-  const instance: MockInstance = {
-    setItems: vi.fn(),
-    // Real vis-timeline re-fires this instance's own 'rangechange' listener
-    // synchronously when its window is set programmatically — reproduce that
-    // here so the reentrancy guard in TimelineCanvas.tsx is actually exercised.
-    setWindow: vi.fn((start: Date, end: Date) => {
-      instance.listeners.rangechange?.({ start, end });
-    }),
-    zoomIn: vi.fn(),
-    zoomOut: vi.fn(),
-    destroy: vi.fn(),
-    on: vi.fn((event: string, callback: (properties: { start: Date; end: Date }) => void) => {
-      listeners[event] = callback;
-    }),
-    listeners,
-  };
-  return instance;
-}
-
-let createdInstances: MockInstance[] = [];
-const mockTimeline = vi.fn().mockImplementation(function MockTimeline() {
-  const instance = createMockInstance();
-  createdInstances.push(instance);
-  return instance;
-});
-
-vi.mock('vis-timeline/standalone', () => ({
-  Timeline: mockTimeline,
-}));
-
-vi.mock('vis-timeline/styles/vis-timeline-graph2d.css', () => ({}));
-
-const { TimelineCanvas } = await import('./TimelineCanvas');
-const { PEOPLE_GROUPS, WARS_GROUPS, EVENTS_GROUPS } = await import('./options');
-
-const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
-
-const fixturePeople: Person[] = [
-  {
-    id: 'Q868',
-    name: 'Aristotle',
-    birthYear: -383,
-    deathYear: -321,
-    category: 'philosophy',
-    occupationTags: ['philosophy'],
-    regionTags: [],
-    fameScore: 317,
-    description: '4th-century BCE Classical Greek philosopher and polymath',
-    wikipediaUrl: 'https://en.wikipedia.org/wiki/Aristotle',
-  },
-];
-
-const fixtureEvents: HistoricalEvent[] = [
-  {
-    id: 'Q155',
-    name: 'Brazil',
-    date: 1500,
-    category: 'invention',
-    regionTags: ['americas'],
-    fameScore: 386,
-    description: 'country in South America',
-    wikipediaUrl: 'https://en.wikipedia.org/wiki/Brazil',
-  },
-  {
-    id: 'Q8676',
-    name: 'American Civil War',
-    date: 1861,
-    endDate: 1865,
-    category: 'war',
-    regionTags: ['americas'],
-    fameScore: 400,
-    description: 'civil war in the United States',
-    wikipediaUrl: 'https://en.wikipedia.org/wiki/American_Civil_War',
-  },
-];
-
-beforeEach(() => {
-  mockTimeline.mockClear();
-  createdInstances = [];
-});
+import { test, expect, afterEach, vi } from 'vitest';
+import { TimelineCanvas } from './TimelineCanvas';
+import type { Discovery, Person, WarsAndConflictsEntry } from '../../shared/types';
 
 afterEach(cleanup);
 
-test('constructs one Timeline per lane, with the matching groups, zoom options, and mapped items', () => {
-  render(<TimelineCanvas people={fixturePeople} events={fixtureEvents} />);
+const aristotle: Person = {
+  id: 'Q868',
+  name: 'Aristotle',
+  lifespan: { start: { year: -383 }, end: { year: -321 } },
+  occupationDomain: 'humanities',
+  regionTags: [],
+  fameScore: 317,
+  description: '4th-century BCE Classical Greek philosopher and polymath',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Aristotle',
+};
 
-  expect(mockTimeline).toHaveBeenCalledTimes(3);
-  const [, peopleItems, peopleGroups, peopleOptions] = mockTimeline.mock.calls[0] as [
-    HTMLElement,
-    unknown[],
-    unknown,
-    { zoomMin: number; zoomMax: number; zoomable: boolean },
-  ];
-  const [, warsItems, warsGroups, warsOptions] = mockTimeline.mock.calls[1] as [
-    HTMLElement,
-    unknown[],
-    unknown,
-    { zoomMin: number; zoomMax: number; zoomable: boolean },
-  ];
-  const [, eventsItems, eventsGroups, eventsOptions] = mockTimeline.mock.calls[2] as [
-    HTMLElement,
-    unknown[],
-    unknown,
-    { zoomMin: number; zoomMax: number; zoomable: boolean },
-  ];
+const fixturePeople: Person[] = [aristotle];
 
-  expect(peopleItems).toHaveLength(0);
-  expect(warsItems).toHaveLength(0);
-  expect(eventsItems).toHaveLength(0);
-  expect(peopleGroups).toBe(PEOPLE_GROUPS);
-  expect(warsGroups).toBe(WARS_GROUPS);
-  expect(eventsGroups).toBe(EVENTS_GROUPS);
+const fixtureWars: WarsAndConflictsEntry[] = [
+  {
+    id: 'Q8663',
+    name: 'Korean War',
+    period: { start: { year: 1950 }, end: { year: 1953 } },
+    category: 'war',
+    regionTags: ['east-asia'],
+    fameScore: 143,
+    description: 'war between North and South Korea, 1950–1953',
+    wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
+  },
+];
 
-  for (const options of [peopleOptions, warsOptions, eventsOptions]) {
-    expect(options.zoomMin).toBe(10 * MS_PER_YEAR);
-    expect(options.zoomMax).toBe(250 * MS_PER_YEAR);
-    expect(options.zoomable).toBe(false);
-  }
+const fixtureDiscoveries: Discovery[] = [
+  {
+    id: 'Q2736',
+    name: 'association football',
+    at: { year: 1863 },
+    category: 'everyday-technology',
+    regionTags: [],
+    fameScore: 296,
+    description: 'sport that is practiced between two teams of eleven players',
+    wikipediaUrl: 'https://en.wikipedia.org/wiki/Association_football',
+  },
+];
 
-  const [peopleInstance, warsInstance, eventsInstance] = createdInstances;
-  expect(peopleInstance?.setItems).toHaveBeenCalledTimes(1);
-  expect((peopleInstance?.setItems.mock.calls[0]?.[0] as unknown[]).length).toBe(fixturePeople.length);
-  // Wars lane gets only the non-invention entry (1 of 2 fixtureEvents).
-  expect(warsInstance?.setItems).toHaveBeenCalledTimes(1);
-  expect((warsInstance?.setItems.mock.calls[0]?.[0] as unknown[]).length).toBe(1);
-  // Events lane gets only the invention entry (1 of 2 fixtureEvents).
-  expect(eventsInstance?.setItems).toHaveBeenCalledTimes(1);
-  expect((eventsInstance?.setItems.mock.calls[0]?.[0] as unknown[]).length).toBe(1);
+const defaultFameScoreValues = { people: 90, wars: 100, discoveries: 200 };
+const noopEntityClick = () => {};
+
+test('renders all three lanes, each populated from its own dataset', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  // Both People's lifespans and Wars & Conflicts' ranges are Periods and
+  // share the literal `.d3-line` marker class — two total (Aristotle + the
+  // Korean War) — so this counts each lane's own <svg> (rendered in People,
+  // Wars & Conflicts, Events & Inventions order) rather than the whole page.
+  const svgs = Array.from(container.querySelectorAll('svg'));
+  expect(svgs).toHaveLength(3);
+  const [peopleSvg, warsSvg] = svgs as [SVGSVGElement, SVGSVGElement, SVGSVGElement];
+  expect(peopleSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Aristotle
+  expect(warsSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
+  expect(container.querySelectorAll('.d3-dot')).toHaveLength(1); // association football
+  expect(container.querySelector('.d3-name')?.textContent).toBe('Aristotle');
 });
 
-test('the zoom-in/zoom-out buttons call zoomIn/zoomOut on the events lane instance', () => {
-  const { getByLabelText } = render(<TimelineCanvas people={fixturePeople} events={fixtureEvents} />);
-  const [, , eventsInstance] = createdInstances;
+test('the three lane sections and the year axis share the same rendered width', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  const svgs = container.querySelectorAll('svg');
+  expect(svgs).toHaveLength(3); // People, Wars & Conflicts, Events & Inventions — YearAxis is plain HTML/CSS, no svg
+  const svgWidthsPx = Array.from(svgs).map((svg) => Number(svg.getAttribute('width')));
+  const axisWidthPx = parseFloat(
+    ((container.querySelector('.year-axis-ruler')?.parentElement as HTMLElement)?.style.width ?? '').replace('px', ''),
+  );
+  expect(new Set([...svgWidthsPx, axisWidthPx]).size).toBe(1);
+});
+
+test('mouse-dragging the scroll container pans it; releasing stops the pan', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBe(140); // dragged left by 40px -> content pans right
+
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 300, pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
+});
+
+test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll already handles them', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', clientX: 500, pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', clientX: 460, pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBe(100);
+});
+
+function personLineWidth(container: HTMLElement): number {
+  const [peopleSvg] = Array.from(container.querySelectorAll('svg')) as [SVGSVGElement];
+  const line = peopleSvg.querySelector('.d3-line');
+  return Number(line?.getAttribute('x2')) - Number(line?.getAttribute('x1'));
+}
+
+test('the zoom-in button widens rendered lines; zoom-out narrows them back', () => {
+  const { container, getByLabelText } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  const initialWidth = personLineWidth(container);
 
   fireEvent.click(getByLabelText('Zoom in'));
-  expect(eventsInstance?.zoomIn).toHaveBeenCalledTimes(1);
+  const zoomedInWidth = personLineWidth(container);
+  expect(zoomedInWidth).toBeGreaterThan(initialWidth);
 
   fireEvent.click(getByLabelText('Zoom out'));
-  expect(eventsInstance?.zoomOut).toHaveBeenCalledTimes(1);
+  fireEvent.click(getByLabelText('Zoom out'));
+  const zoomedOutWidth = personLineWidth(container);
+  expect(zoomedOutWidth).toBeLessThan(zoomedInWidth);
 });
 
-test('dragging/zooming one lane syncs the other two lanes to the same window, without bouncing back', () => {
-  render(<TimelineCanvas people={fixturePeople} events={fixtureEvents} />);
-  const [peopleInstance, warsInstance, eventsInstance] = createdInstances;
+test('zooming does not change which entities are rendered — density is gated by fameScoreValues, not pixelsPerYear', () => {
+  const lowFamePerson: Person = {
+    ...aristotle,
+    id: 'Q-low-fame',
+    name: 'Low Fame Person',
+    fameScore: 76, // below the 90 people floor in defaultFameScoreValues
+  };
 
-  const window = { start: new Date(2000, 0, 1), end: new Date(2010, 0, 1) };
-  // Simulates a user drag/zoom on the people lane, which real vis-timeline
-  // reports via its own 'rangechange' event.
-  peopleInstance?.listeners.rangechange?.(window);
+  const { container, getByLabelText } = render(
+    <TimelineCanvas
+      people={[lowFamePerson]}
+      wars={[]}
+      discoveries={[]}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
 
-  expect(warsInstance?.setWindow).toHaveBeenCalledWith(window.start, window.end, { animation: false });
-  expect(eventsInstance?.setWindow).toHaveBeenCalledWith(window.start, window.end, { animation: false });
-  // The mock's setWindow re-fires each target's own 'rangechange' (matching
-  // real vis-timeline), which the shared reentrancy guard must swallow
-  // rather than reflecting back to the people lane or cross-bouncing
-  // between wars and events.
-  expect(peopleInstance?.setWindow).not.toHaveBeenCalled();
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
+
+  for (let i = 0; i < 5; i++) {
+    fireEvent.click(getByLabelText('Zoom in'));
+  }
+
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
+});
+
+test('a person below fameScoreValues.people is excluded; raising it reveals them', () => {
+  const lowFamePerson: Person = {
+    ...aristotle,
+    id: 'Q-low-fame',
+    name: 'Low Fame Person',
+    fameScore: 76,
+  };
+
+  const { container, rerender } = render(
+    <TimelineCanvas
+      people={[lowFamePerson]}
+      wars={[]}
+      discoveries={[]}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
+
+  rerender(
+    <TimelineCanvas
+      people={[lowFamePerson]}
+      wars={[]}
+      discoveries={[]}
+      fameScoreValues={{ ...defaultFameScoreValues, people: 75 }}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
+});
+
+test('clicking a mark reports its entity id/type via onEntityClick, resolved through the delegated listener', () => {
+  const onEntityClick = vi.fn();
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={onEntityClick}
+    />,
+  );
+
+  const line = container.querySelector('.d3-line') as SVGLineElement;
+  fireEvent.click(line);
+
+  expect(onEntityClick).toHaveBeenCalledWith({ id: 'Q868', entityType: 'person' });
+});
+
+test('clicking empty canvas space (no data-entity-id ancestor) does not call onEntityClick', () => {
+  const onEntityClick = vi.fn();
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={onEntityClick}
+    />,
+  );
+
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  fireEvent.click(scrollContainer);
+
+  expect(onEntityClick).not.toHaveBeenCalled();
+});
+
+test('a mark with an unrecognized data-entity-type is ignored rather than reported (fails closed, not silently as a discovery)', () => {
+  const onEntityClick = vi.fn();
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={onEntityClick}
+    />,
+  );
+
+  const line = container.querySelector('.d3-line') as SVGLineElement;
+  line.setAttribute('data-entity-type', 'not-a-real-type');
+  fireEvent.click(line);
+
+  expect(onEntityClick).not.toHaveBeenCalled();
 });

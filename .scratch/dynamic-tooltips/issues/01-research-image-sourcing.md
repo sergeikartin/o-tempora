@@ -1,0 +1,24 @@
+Type: research
+Status: resolved
+
+## Question
+
+What image data is realistically available for tooltip use across all three lanes, and how should it be referenced?
+
+- **People**: Pantheon-linked people retain a Wikidata `wd_id` internally in `packages/data-pipeline` (already used for reign-period enrichment — find the exact field/file it flows through). Does a P18 (image) claim exist for a meaningful fraction of the ~3,672 published people? Spot-check a representative sample to estimate coverage.
+- **Events & Inventions**: the published `id` is already the Wikidata QID (`discoveries.json`, 121 entries). Same P18 coverage question.
+- **Wars & Conflicts is out of scope for now** (see map's Out of scope section) — don't spend investigation effort on `wars.json`.
+- What's the correct way to turn a P18 filename into a small, hotlink-safe URL? Confirm the Wikimedia Commons `Special:FilePath` thumbnail pattern (e.g. a `width` query param) and any attribution/licensing obligations for hotlinking Commons images from a public app.
+- Recommend a concrete shape: does this become a new optional `image?: string` field on `TimelineEntry` (`packages/shared-types`), populated by a new Fetch-stage SPARQL pass mirroring the existing description/reigns enrichment pattern (`packages/data-pipeline/src/fetch`)?
+
+Report P18 coverage estimates per lane, the confirmed URL/thumbnail pattern, licensing notes, and a recommended field shape.
+
+## Answer
+
+Full findings, with live-query evidence and reproducible commands: `../research/image-sourcing.md`. Wars & Conflicts excluded per the map's scope decision, not investigated.
+
+- **P18 coverage** (live SPARQL against `https://query.wikidata.org/sparql`, run over the **entire published corpus** of each lane, not just a sample): **People 3,636/3,672 = 99.02%**; **Discoveries & Inventions 108/121 = 89.26%**. Missing People are almost all ancient/legendary figures with no surviving portrait tradition; missing Discoveries are almost all intangible processes/standards (email, GSM, penicillin, TeX...) rather than physical objects. Coverage is high enough in both lanes to make image tooltips broadly viable.
+- **Mechanism confirmed**: `wd_id` flows to People via `fetch-reigns.ts`/`fetch-descriptions.ts` reading `data/raw/people-pantheon.raw.csv` back off disk, filtering `hpi >= MIN_HPI`, and passing the deduped `wd_id` list into `batchedSparqlFetch` with a `VALUES`-clause query (`queries/reigns.ts`/`queries/descriptions.ts`) — a batched per-QID SPARQL pass, not a corpus scan. Discoveries' `id` is already the QID (no indirection needed), same pattern used by `fetch-events-enrichment.ts`.
+- **URL/thumbnail pattern**: P18 returns a full `Special:FilePath` URI (e.g. `http://commons.wikimedia.org/wiki/Special:FilePath/<percent-encoded filename>`), confirmed directly from live query results. Appending `?width=<n>` to that exact URI (confirmed by `curl`, redirect chain `Special:FilePath` → `Special:Redirect/file/...` → `upload.wikimedia.org/.../thumb/...`) returns a resized JPEG — 19 KB at `width=200` vs 3.9 MB full-res for the same file. Requested width snaps up to the nearest served bucket (not exact-pixel) — treat as "roughly no wider than requested." Confirmed against Commons' own docs (`Commons:Reusing content outside Wikimedia/technical`, "Hotlinking" section, fetched directly).
+- **Licensing/attribution**: hotlinking is explicitly *allowed* by Commons policy but *not recommended* (stability risk: files can be renamed/deleted upstream without notice — already covered by the map's "omit the image slot on load failure" decision). Licensing is per-file, not uniform: live `imageinfo`/`extmetadata` checks on sampled files showed a real mix — historical/older subjects are typically Public Domain (`AttributionRequired: false`), but modern subjects (e.g. living public figures) are often CC BY/CC BY-SA 4.0 (`AttributionRequired: true`). This app cannot treat all Commons images as attribution-free; either fetch and store `extmetadata` for a credit line, or restrict scope to PD-only images — a scope call for the spec, not resolved here.
+- **Recommended shape**: add `image?: string` to `TimelineEntry` (`packages/shared-types/src/index.ts`), storing the raw `Special:FilePath` URI verbatim (same convention as `wikipediaUrl`), absent when no P18 claim exists. Frontend appends `?width=` at render time — no pipeline-side URL transformation needed. Pipeline wiring: cheapest path is extending the *existing* batched enrichment queries (`buildDescriptionsQuery` for People, `buildEventsEnrichmentQuery` for Discoveries) with one more `OPTIONAL { ?x wdt:P18 ?image }` clause each — no new fetch pass, no additional request volume. A standalone `queries/images.ts`/`fetch-images.ts` pass (mirroring `fetch-reigns.ts`) is a viable alternative if the team wants P18 fetching decoupled for independent retry/scheduling, at the cost of doubling request volume for People.
