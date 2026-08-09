@@ -28,7 +28,17 @@ function articleOptionalBlocks(): string {
 // time) over P585 (point in time): wars already carry an explicit
 // start/end range, and some items (e.g. Q127751 Wars of the Roses) also
 // carry an unrelated/looser P585 that would otherwise clobber the real
-// start date. P585 is only a fallback for rows with no P580.
+// start date. P585 is only a fallback for rows with no P580. Every P585/
+// P580/P582 statement pattern is restricted to `a wikibase:BestRank` so a
+// Preferred-rank claim always wins over a Normal-rank one on the same item
+// (e.g. Q32929 War of the Austrian Succession carries a precise
+// Preferred-rank end date alongside a coarser, unpreferred Normal-rank
+// one). Some items (e.g. Q189266 Eastern Front) still carry two
+// conflicting BestRank claims with no Preferred rank to break the tie —
+// ORDER BY ?date ?endDate makes the earliest value come first per ?event,
+// and fetchWarsEnrichment takes the first value it sees, so ties resolve
+// deterministically to the earliest claim instead of whichever row the
+// endpoint happens to return first.
 export function buildWarsEnrichmentQuery(ids: string[]): string {
   const values = ids.map((id) => `wd:${id}`).join(" ");
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `?${articleVar(lang)}`).join(" ");
@@ -42,12 +52,14 @@ ${articleOptionalBlocks()}
   OPTIONAL { ?event schema:description ?description . FILTER(LANG(?description) = "en") }
   OPTIONAL {
     ?event p:P585 ?pointInTimeStatement .
+    ?pointInTimeStatement a wikibase:BestRank .
     ?pointInTimeStatement psv:P585 ?pointInTimeValue .
     ?pointInTimeValue wikibase:timeValue ?pointInTime ;
                        wikibase:timePrecision ?pointInTimePrecision .
   }
   OPTIONAL {
     ?event p:P580 ?startTimeStatement .
+    ?startTimeStatement a wikibase:BestRank .
     ?startTimeStatement psv:P580 ?startTimeValue .
     ?startTimeValue wikibase:timeValue ?startTime ;
                      wikibase:timePrecision ?startTimePrecision .
@@ -56,10 +68,12 @@ ${articleOptionalBlocks()}
   BIND(COALESCE(?startTimePrecision, ?pointInTimePrecision) AS ?datePrecision)
   OPTIONAL {
     ?event p:P582 ?endDateStatement .
+    ?endDateStatement a wikibase:BestRank .
     ?endDateStatement psv:P582 ?endDateValue .
     ?endDateValue wikibase:timeValue ?endDate ;
                    wikibase:timePrecision ?endDatePrecision .
   }
 }
+ORDER BY ?event ?date ?endDate
 `.trim();
 }
