@@ -3,14 +3,16 @@
 // batch of specific curated Q-IDs, same VALUES-clause shape as
 // events-enrichment.ts. Backfills sitelinks (-> fameScore), an English
 // Wikipedia article URL, country (-> regionTags), the P18 image claim, an
-// English description, and start/end dates with precision — the date/
-// description OPTIONAL blocks are lifted directly from
-// historical-events.ts's buildHistoricalEventsQuery (same p:/psv:
-// statement-value-node pattern so wikibase:timePrecision is available
-// alongside each date). Unlike events-enrichment.ts, name/category/
+// English description, and start/end dates with precision — the p:/psv:
+// statement-value-node pattern makes wikibase:timePrecision available
+// alongside each date. Unlike events-enrichment.ts, name/category/
 // parentId are curator-authored and never refetched here, but description
 // and dates are — the curated file carries no year/endYear/description of
-// its own (see wars-curated.raw.json's meta.description).
+// its own (see wars-curated.raw.json's meta.description). ?date prefers
+// P580 (start time) over P585 (point in time): wars already carry an
+// explicit start/end range, and some items (e.g. Q127751 Wars of the
+// Roses) also carry an unrelated/looser P585 that would otherwise clobber
+// the real start date. P585 is only a fallback for rows with no P580.
 export function buildWarsEnrichmentQuery(ids: string[]): string {
   const values = ids.map((id) => `wd:${id}`).join(" ");
   return `
@@ -33,8 +35,8 @@ SELECT ?event ?sitelinks ?article ?country ?image ?description ?date ?datePrecis
     ?startTimeValue wikibase:timeValue ?startTime ;
                      wikibase:timePrecision ?startTimePrecision .
   }
-  BIND(COALESCE(?pointInTime, ?startTime) AS ?date)
-  BIND(COALESCE(?pointInTimePrecision, ?startTimePrecision) AS ?datePrecision)
+  BIND(COALESCE(?startTime, ?pointInTime) AS ?date)
+  BIND(COALESCE(?startTimePrecision, ?pointInTimePrecision) AS ?datePrecision)
   OPTIONAL {
     ?event p:P582 ?endDateStatement .
     ?endDateStatement psv:P582 ?endDateValue .

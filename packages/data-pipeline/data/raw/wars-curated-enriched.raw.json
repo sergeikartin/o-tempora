@@ -12,7 +12,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LouisXVIExecutionBig.jpg",
       "description": "revolution in France from 1789 to 1799",
       "year": 1789,
-      "month": 5,
+      "month": 7,
       "endYear": 1799,
       "endMonth": 11
     },
@@ -92,6 +92,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1967-02%201967%E5%B9%B4%E7%9A%84%E7%BA%A2%E5%8D%AB%E5%85%B5.jpg",
       "description": "1966–1976 Maoist sociopolitical movement in China",
       "year": 1966,
+      "month": 5,
       "endYear": 1976,
       "endMonth": 10
     },
@@ -111,7 +112,8 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Damage%20in%20Gaza%20Strip%20during%20the%20October%202023%20-%2029.jpg",
       "description": "armed conflict around the Gaza Strip that started on 7 October 2023",
-      "year": 2020
+      "year": 2023,
+      "month": 10
     },
     {
       "id": "Q42976",
@@ -225,7 +227,8 @@
         "Q794"
       ],
       "description": "Ongoing armed conflict in West Asia",
-      "year": 2026
+      "year": 2026,
+      "month": 2
     },
     {
       "id": "Q83085",
@@ -252,7 +255,8 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mass%20demonstration%20in%20Iran%2C%20date%20unknown.jpg",
       "description": "1978–1979 revolution that overthrew the Iranian monarchy",
-      "year": 1970,
+      "year": 1978,
+      "month": 1,
       "endYear": 1979,
       "endMonth": 2
     },
@@ -383,8 +387,7 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20Independence%20%281819%29%2C%20by%20John%20Trumbull.jpg",
       "description": "revolution establishing the United States of America",
-      "year": 1763,
-      "month": 3,
+      "year": 1765,
       "endYear": 1783
     },
     {
@@ -430,8 +433,8 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fidel%20Castro%20-%20MATS%20Terminal%20Washington%201959.jpg",
       "description": "revolution in Cuba starting in 1953 culminating in 1959",
-      "year": 1959,
-      "month": 1
+      "year": 1953,
+      "month": 7
     },
     {
       "id": "Q26013",
@@ -457,6 +460,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maine%20explosion.jpg",
       "description": "1898 conflict between Spain and the United States",
       "year": 1898,
+      "month": 4,
       "endYear": 1898,
       "endMonth": 8
     },
@@ -473,6 +477,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arrest%20of%20generals.jpg",
       "description": "first of two revolutions in Russia in 1917",
       "year": 1917,
+      "month": 3,
       "endYear": 1917,
       "endMonth": 3
     },
@@ -531,7 +536,8 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/York%20victory%20over%20Lancaster.svg",
       "description": "dynastic civil war in England from 1455 to 1487",
-      "year": 1500,
+      "year": 1455,
+      "month": 5,
       "endYear": 1487,
       "endMonth": 6
     },
@@ -547,6 +553,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Indian%20Rebellion%20of%201857.jpg",
       "description": "1857–58 uprising against British Company rule",
       "year": 1857,
+      "month": 5,
       "endYear": 1858,
       "endMonth": 6
     },
@@ -562,6 +569,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hungarian%20Revolution%20of%201956.png",
       "description": "1956 revolution in Hungary",
       "year": 1956,
+      "month": 10,
       "endYear": 1956,
       "endMonth": 11
     },
@@ -574,8 +582,8 @@
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Narva%20%28Gustaf%20Cederstr%C3%B6m%29%20-%20Nationalmuseum%20-%2018638.tif",
       "description": "conflict between anti-Swedish coalition Led by Russia and Swedish empires in 1700–1721",
-      "year": 1721,
-      "month": 9,
+      "year": 1700,
+      "month": 2,
       "endYear": 1721,
       "endMonth": 9
     },
@@ -680,7 +688,8 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20Molino%20del%20Rey.jpg",
       "description": "military conflict between the United States of America and Mexico from 1846 to 1848",
-      "year": 1840,
+      "year": 1846,
+      "month": 4,
       "endYear": 1848,
       "endMonth": 2
     },
@@ -728,7 +737,8 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Euromaidan%20Kyiv%201-12-13%20by%20Gnatoush%20005.jpg",
       "description": "2013–2014 pro-european protests in Ukraine",
-      "year": 2010,
+      "year": 2013,
+      "month": 11,
       "endYear": 2014,
       "endMonth": 2
     },
@@ -774,6 +784,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tyre%20air%20strike.jpg",
       "description": "armed conflict primarily between Israel and Hezbollah",
       "year": 2006,
+      "month": 7,
       "endYear": 2006,
       "endMonth": 8
     },
@@ -791,6 +802,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Flags%20over%20Supreme%20Council%20of%20Crimea%20%283%20March%202014%29.png",
       "description": "annexation of Crimea into Russia in 2014",
       "year": 2014,
+      "month": 2,
       "endYear": 2014,
       "endMonth": 3
     },
@@ -835,6 +847,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Russian%20peacekeepers%20and%20Azerbaijani%20military%20personnel%20near%20Vank%20village.png",
       "description": "armed conflict in South Caucasus",
       "year": 2020,
+      "month": 9,
       "endYear": 2020,
       "endMonth": 11
     },
@@ -873,8 +886,8 @@
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Polish-soviet%20war%201920%20Polish%20defences%20near%20Milosna%2C%20August.jpg",
       "description": "conflict between Poland and Soviet Russia following the First World War (February 1919 - March 1921)",
-      "year": 1920,
-      "month": 10,
+      "year": 1919,
+      "month": 2,
       "endYear": 1921,
       "endMonth": 3
     },
@@ -1128,8 +1141,7 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christian%20III%20of%20Denmark.jpg",
       "description": "war of succession (1534–36) that brought about the Reformation in Denmark",
-      "year": 1536,
-      "month": 8,
+      "year": 1534,
       "endYear": 1536
     },
     {
@@ -1156,7 +1168,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20Narva%201558.jpg",
       "description": "war in the Baltic region (1558-1583)",
       "year": 1558,
-      "month": 2,
+      "month": 1,
       "endYear": 1583,
       "endMonth": 5
     },
@@ -1364,6 +1376,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nouvelle-France%20map-ca.svg",
       "description": "North American theater of the War of the Spanish Succession",
       "year": 1702,
+      "month": 3,
       "endYear": 1713,
       "endMonth": 7
     },
@@ -1376,7 +1389,6 @@
       "countries": [],
       "description": "1715–1717 conflict between British colonists and Native Americans in South Carolina",
       "year": 1715,
-      "month": 4,
       "endYear": 1717
     },
     {
@@ -1514,6 +1526,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Friedrich%20der%20Grosse%20und%20der%20Feldscher.jpg",
       "description": "dispute between the Austrian Habsburg monarchy and an alliance of Saxony and Prussia",
       "year": 1778,
+      "month": 7,
       "endYear": 1779,
       "endMonth": 5
     },
@@ -1721,7 +1734,7 @@
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CivilWarUSAColl.png",
       "description": "1861–1865 civil war in the United States between the North and the South over the enslavement of African-Americans",
-      "year": 1865,
+      "year": 1861,
       "month": 4,
       "endYear": 1865,
       "endMonth": 4
@@ -1736,7 +1749,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tuyuti1.jpg",
       "description": "large-scale conflict in South America (1864–1870)",
       "year": 1864,
-      "month": 10,
+      "month": 12,
       "endYear": 1870,
       "endMonth": 3
     },
@@ -1750,7 +1763,7 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Schlacht-bei-koeniggraetz-von-georg-bleibtreu.jpg",
       "description": "1866 military conflict between the Kingdom of Prussia and the Austrian Empire",
       "year": 1866,
-      "month": 7,
+      "month": 6,
       "endYear": 1866,
       "endMonth": 7
     },
@@ -1797,8 +1810,8 @@
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bitka%20za%20moravac.jpg",
       "description": "war between Principality of Serbia and Ottoman Empire from 1876 to 1878",
-      "year": 1878,
-      "month": 3,
+      "year": 1876,
+      "month": 6,
       "endYear": 1878,
       "endMonth": 3
     },
@@ -2162,6 +2175,7 @@
       ],
       "description": "undeclared war between Argentina and the United Kingdom in 1982",
       "year": 1982,
+      "month": 4,
       "endYear": 1982,
       "endMonth": 6
     },

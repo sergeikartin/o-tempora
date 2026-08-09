@@ -35,8 +35,8 @@ test("binds ?date's precision via the point-in-time/start-time statement value n
     query,
     /\?startTimeValue wikibase:timeValue \?startTime ;\s*wikibase:timePrecision \?startTimePrecision/,
   );
-  assert.match(query, /BIND\(COALESCE\(\?pointInTime, \?startTime\) AS \?date\)/);
-  assert.match(query, /BIND\(COALESCE\(\?pointInTimePrecision, \?startTimePrecision\) AS \?datePrecision\)/);
+  assert.match(query, /BIND\(COALESCE\(\?startTime, \?pointInTime\) AS \?date\)/);
+  assert.match(query, /BIND\(COALESCE\(\?startTimePrecision, \?pointInTimePrecision\) AS \?datePrecision\)/);
 });
 
 test("binds ?endDate's precision the same way via P582's statement value node", () => {
