@@ -33,6 +33,11 @@ import styles from './TimelineCanvas.module.css';
 // see suppressNextClickRef below.
 const DRAG_CLICK_SUPPRESSION_PX = 4;
 
+// Enforced via CSS min-width on .scrollbarThumb (see its module.css comment)
+// — kept here too since the drag math below needs the same floor to convert
+// a thumb pointer-move into a scrollLeft delta.
+const MIN_SCROLLBAR_THUMB_PX = 24;
+
 interface TimelineCanvasProps {
   people: Person[];
   wars: WarsAndConflictsEntry[];
@@ -74,6 +79,20 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
   // otherwise open whatever mark/label happens to be under the pointer when
   // the user was only trying to pan, not select something.
   const suppressNextClickRef = useRef(false);
+  // Custom scrollbar: the native one isn't a real DOM node, so a mousedown
+  // on its thumb/track still targets scrollRef and gets swallowed by the
+  // drag-to-pan handlers above, with no reliable way to tell "this press
+  // landed on the native scrollbar" apart from "this press landed on the
+  // timeline content" — that distinction depends on whether the browser
+  // happens to reserve layout space for its scrollbar at all, which isn't
+  // consistent even across browsers on the same OS (e.g. Firefox's overlay
+  // scrollbars reserve none). Rendering our own track/thumb as ordinary
+  // sibling elements sidesteps the ambiguity entirely: a press on
+  // scrollbarThumbRef never reaches scrollRef's pointer handlers, and vice
+  // versa, so no detection heuristic is needed on either side.
+  const trackRef = useRef<HTMLDivElement>(null);
+  const thumbDragRef = useRef<{ pointerX: number; startScrollLeft: number; trackWidthPx: number } | null>(null);
+  const [isThumbDragging, setIsThumbDragging] = useState(false);
   const [pixelsPerYear, setPixelsPerYear] = useState(() => defaultPixelsPerYear(0));
   // Set by a zoom click to the year at the viewport's center just before the
   // change, so the effect below can re-center the scroll position on it once
@@ -116,6 +135,20 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
   const viewportBufferPx = effectiveViewportWidthPx * VIEWPORT_BUFFER_RATIO;
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
   const visibleEndYear = scale.invert(scrollLeft + effectiveViewportWidthPx + viewportBufferPx);
+
+  // Custom scrollbar thumb geometry, expressed as ratios (0–1) rather than
+  // pixels so it tracks the track element's real rendered width for free —
+  // the track spans the same width as scrollRef itself (both are full-width
+  // flex children of .wrapper), but reading that width directly during
+  // render isn't available before layout, same reasoning as
+  // effectiveViewportWidthPx above. MIN_SCROLLBAR_THUMB_PX is instead
+  // enforced via CSS min-width on the thumb; ratio-based left/width already
+  // keep left + width <= 1 in the common case, only under/overshooting by
+  // that CSS floor's own clamp on a very short track relative to totalWidth.
+  const thumbWidthRatio = totalWidth > 0 ? Math.min(effectiveViewportWidthPx / totalWidth, 1) : 1;
+  const maxScrollLeftForThumb = Math.max(totalWidth - effectiveViewportWidthPx, 0);
+  const thumbLeftRatio =
+    maxScrollLeftForThumb > 0 ? (scrollLeft / maxScrollLeftForThumb) * (1 - thumbWidthRatio) : 0;
 
   // Faint full-height decade gridlines (see .scrollContainer's background in
   // TimelineCanvas.module.css) — pure CSS like the Year Axis's own ticks, so
@@ -177,15 +210,6 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
     const container = scrollRef.current;
     if (!container) return;
-    // The native horizontal scrollbar isn't a child DOM node, so a press on
-    // its track/thumb still targets this same container — without this
-    // guard, drag-to-pan would hijack every scrollbar drag instead of
-    // leaving it to the browser. offsetHeight > clientHeight only when a
-    // reserved (non-overlay) scrollbar is actually occupying space, and it
-    // sits below clientHeight in the container's own padding box; both are
-    // 0 in jsdom (no layout), so this guard is inert in tests.
-    const hasReservedScrollbar = container.offsetHeight > container.clientHeight;
-    if (hasReservedScrollbar && event.nativeEvent.offsetY >= container.clientHeight) return;
     dragStartRef.current = { pointerX: event.clientX, scrollLeft: container.scrollLeft, moved: false };
     // Best-effort: keeps the drag alive if the pointer leaves the container's
     // bounds mid-move. jsdom doesn't implement it at all (hence the optional
@@ -227,6 +251,72 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
       // no-op — see handlePointerDown's comment
     }
     setIsDragging(false);
+  }
+
+  function handleThumbPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== 'mouse' || event.button !== 0) return;
+    // Stops the pointerdown from ever reaching the track's own
+    // onPointerDown below (React events bubble like native ones) — a press
+    // that starts on the thumb should drag it, not also jump-to-position
+    // via the track's click-to-jump handler.
+    event.stopPropagation();
+    const container = scrollRef.current;
+    const track = trackRef.current;
+    if (!container || !track) return;
+    thumbDragRef.current = { pointerX: event.clientX, startScrollLeft: container.scrollLeft, trackWidthPx: track.clientWidth };
+    try {
+      event.currentTarget.setPointerCapture?.(event.pointerId);
+    } catch {
+      // no-op — see handlePointerDown's comment on the same pattern
+    }
+    setIsThumbDragging(true);
+  }
+
+  function handleThumbPointerMove(event: ReactPointerEvent<HTMLDivElement>) {
+    const drag = thumbDragRef.current;
+    const container = scrollRef.current;
+    if (!drag || !container) return;
+    const maxScrollLeft = Math.max(totalWidth - drag.trackWidthPx, 0);
+    if (maxScrollLeft <= 0) return;
+    // Same MIN_SCROLLBAR_THUMB_PX floor as the thumb's own CSS min-width —
+    // needed here so a dragged pixel maps to the same scrollLeft distance
+    // the rendered (possibly floor-clamped) thumb width implies, otherwise
+    // the thumb would visibly lag or overrun the pointer on a short track.
+    const thumbWidthPx = Math.max(MIN_SCROLLBAR_THUMB_PX, (drag.trackWidthPx / totalWidth) * drag.trackWidthPx);
+    const maxThumbOffsetPx = Math.max(drag.trackWidthPx - thumbWidthPx, 1);
+    const deltaPx = event.clientX - drag.pointerX;
+    const scrollLeftPerThumbPx = maxScrollLeft / maxThumbOffsetPx;
+    container.scrollLeft = Math.min(Math.max(drag.startScrollLeft + deltaPx * scrollLeftPerThumbPx, 0), maxScrollLeft);
+  }
+
+  function endThumbDrag(event: ReactPointerEvent<HTMLDivElement>) {
+    if (!thumbDragRef.current) return;
+    thumbDragRef.current = null;
+    try {
+      event.currentTarget.releasePointerCapture?.(event.pointerId);
+    } catch {
+      // no-op — see handlePointerDown's comment on the same pattern
+    }
+    setIsThumbDragging(false);
+  }
+
+  // Clicking the track outside the thumb jumps the viewport to center on
+  // that point, the same "page toward click" convenience a native
+  // scrollbar's track region gives for free. A press that starts on the
+  // thumb itself never reaches here — handleThumbPointerDown's
+  // stopPropagation above stops it from bubbling up to this handler.
+  function handleTrackPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== 'mouse' || event.button !== 0) return;
+    const container = scrollRef.current;
+    const track = trackRef.current;
+    if (!container || !track) return;
+    const rect = track.getBoundingClientRect();
+    const clickRatio = rect.width > 0 ? (event.clientX - rect.left) / rect.width : 0;
+    const maxScrollLeft = Math.max(totalWidth - track.clientWidth, 0);
+    container.scrollLeft = Math.min(
+      Math.max(clickRatio * totalWidth - track.clientWidth / 2, 0),
+      maxScrollLeft,
+    );
   }
 
   // One delegated click listener for every mark in all three lanes, keyed
@@ -315,6 +405,16 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
           <WarsLane wars={filteredWars} xScale={scale} />
           <EventsLane discoveries={filteredDiscoveries} xScale={scale} />
         </div>
+      </div>
+      <div ref={trackRef} className={styles.scrollbarTrack} onPointerDown={handleTrackPointerDown}>
+        <div
+          className={isThumbDragging ? `${styles.scrollbarThumb} ${styles.dragging}` : styles.scrollbarThumb}
+          style={{ width: `${thumbWidthRatio * 100}%`, left: `${thumbLeftRatio * 100}%` }}
+          onPointerDown={handleThumbPointerDown}
+          onPointerMove={handleThumbPointerMove}
+          onPointerUp={endThumbDrag}
+          onPointerCancel={endThumbDrag}
+        />
       </div>
     </div>
   );

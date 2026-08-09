@@ -113,7 +113,47 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
   expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
 });
 
-test('a mousedown on the reserved native scrollbar strip does not start a pan, so the browser can drag its own thumb', () => {
+test('dragging the custom scrollbar thumb scrolls the container, proportional to the (mocked) track width vs. the timeline width', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const track = container.querySelector('[class*="scrollbarTrack"]') as HTMLElement;
+  const thumb = container.querySelector('[class*="scrollbarThumb"]') as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 0, writable: true });
+  // jsdom never lays anything out, so clientWidth is 0 by default — pinned
+  // here the same way the "shared rendered width" test above reads
+  // .yearAxis's inline style rather than trusting jsdom layout.
+  Object.defineProperty(track, 'clientWidth', { value: 100, configurable: true });
+  const totalWidth = Number(
+    ((container.querySelector('[class*="yearAxis"]') as HTMLElement | null)?.style.width ?? '').replace('px', ''),
+  );
+
+  fireEvent.pointerDown(thumb, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  fireEvent.pointerMove(thumb, { pointerType: 'mouse', clientX: 510, pointerId: 1 });
+
+  // Mirrors handleThumbPointerMove's own formula (a hand-derived expected
+  // value, same style as the plain content-drag test above): a small thumb
+  // move covers a large scrollLeft distance once totalWidth (a
+  // multi-millennium timeline) vastly exceeds the 100px mocked track — the
+  // whole reason a scrollbar exists here.
+  const thumbWidthPx = Math.max(24, (100 / totalWidth) * 100);
+  const maxScrollLeft = totalWidth - 100;
+  const expectedScrollLeft = (10 * maxScrollLeft) / (100 - thumbWidthPx);
+  expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft);
+
+  fireEvent.pointerUp(thumb, { pointerType: 'mouse', pointerId: 1 });
+  fireEvent.pointerMove(thumb, { pointerType: 'mouse', clientX: 300, pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft); // no longer dragging
+});
+
+test('a mousedown on the scroll container content still pans it — the custom scrollbar is a separate element, not a geometry guard on the same one', () => {
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -125,25 +165,37 @@ test('a mousedown on the reserved native scrollbar strip does not start a pan, s
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
   Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
-  Object.defineProperty(scrollContainer, 'clientHeight', { value: 600, configurable: true });
-  Object.defineProperty(scrollContainer, 'offsetHeight', { value: 615, configurable: true });
 
-  // offsetY isn't a settable PointerEventInit field (it's computed from
-  // layout), so it's overridden directly on the event instance rather than
-  // passed through fireEvent's init dict. 610 falls inside the 15px
-  // scrollbar strip below clientHeight.
-  const pointerDown = new PointerEvent('pointerdown', {
-    bubbles: true,
-    cancelable: true,
-    pointerType: 'mouse',
-    button: 0,
-    clientX: 500,
-    pointerId: 1,
-  });
-  Object.defineProperty(pointerDown, 'offsetY', { value: 610 });
-  fireEvent(scrollContainer, pointerDown);
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
   fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
-  expect(scrollContainer.scrollLeft).toBe(100); // untouched — no pan started
+  expect(scrollContainer.scrollLeft).toBe(140);
+});
+
+test('clicking the scrollbar track outside the thumb jumps the viewport toward the click position', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      wars={fixtureWars}
+      discoveries={fixtureDiscoveries}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const track = container.querySelector('[class*="scrollbarTrack"]') as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 0, writable: true });
+  Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
+  track.getBoundingClientRect = () =>
+    ({ left: 0, top: 0, width: 200, height: 14, right: 200, bottom: 14, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
+  const totalWidth = Number(
+    ((container.querySelector('[class*="yearAxis"]') as HTMLElement | null)?.style.width ?? '').replace('px', ''),
+  );
+
+  fireEvent.pointerDown(track, { pointerType: 'mouse', button: 0, clientX: 100, pointerId: 2 });
+
+  const maxScrollLeft = totalWidth - 200;
+  const expectedScrollLeft = Math.min(Math.max((100 / 200) * totalWidth - 100, 0), maxScrollLeft);
+  expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft);
 });
 
 test('releasing a drag suppresses the click event that follows it', () => {
