@@ -1,6 +1,6 @@
 {
   "meta": {
-    "description": "Hand-curated Wars & Conflicts ground truth. Identity, category, and parentId nesting are curator-authored here; description, dates, fameScore, image, wikipediaUrl, and regionTags are backfilled by a batched per-QID Wikidata enrichment pass (fetchWarsEnrichment) — not part of this file.",
+    "description": "Hand-curated Wars & Conflicts ground truth. Identity, category, and parentId nesting are curator-authored here; description, dates, fameScore, image, wikipediaUrl, and regionTags are backfilled by a batched per-QID Wikidata enrichment pass (fetchWarsEnrichment) — not part of this file. 78 QIDs corrected and 2 unresolvable entries (Baltic War of Liberation, Pig War/Serbia) dropped after cross-checking every entry against its Wikidata label — see .scratch/wars-curated-source/issues/06-live-pipeline-run-and-publish.md.",
     "categories": [
       "war",
       "war-of-independence",
@@ -15,7 +15,7 @@
       "category": "one of meta.categories",
       "parentId": "optional — another curated row's id; that row must be a War (resolves both a start and end date from enrichment), and the chain up to its root is capped at 3 levels"
     },
-    "count": 156
+    "count": 154
   },
   "wars": [
     {
@@ -85,7 +85,7 @@
       "id": "Q49077",
       "name": "Six-Day War",
       "category": "war",
-      "parentId": "Q49106"
+      "parentId": "Q3491398"
     },
     {
       "id": "Q42937",
@@ -142,7 +142,7 @@
       "id": "Q49100",
       "name": "Yom Kippur War",
       "category": "war",
-      "parentId": "Q49106"
+      "parentId": "Q3491398"
     },
     {
       "id": "Q159950",
@@ -227,7 +227,7 @@
       "id": "Q179250",
       "name": "French invasion of Russia",
       "category": "war",
-      "parentId": "Q8310"
+      "parentId": "Q78994"
     },
     {
       "id": "Q150812",
@@ -289,7 +289,7 @@
       "id": "Q49104",
       "name": "2006 Lebanon War",
       "category": "war",
-      "parentId": "Q49106"
+      "parentId": "Q3491398"
     },
     {
       "id": "Q15920546",
@@ -337,7 +337,7 @@
       "category": "war"
     },
     {
-      "id": "Q1333796",
+      "id": "Q5555632",
       "name": "First Messenian War",
       "category": "war"
     },
@@ -347,42 +347,42 @@
       "category": "war"
     },
     {
-      "id": "Q1362877",
+      "id": "Q2075775",
       "name": "Second Messenian War",
       "category": "war"
     },
     {
-      "id": "Q131390",
+      "id": "Q76026",
       "name": "Greco-Persian Wars",
       "category": "war"
     },
     {
-      "id": "Q831003",
+      "id": "Q28365",
       "name": "Lamian War",
       "category": "war"
     },
     {
-      "id": "Q131422",
+      "id": "Q6286",
       "name": "First Punic War",
       "category": "war"
     },
     {
-      "id": "Q6295",
+      "id": "Q6334",
       "name": "Third Punic War",
       "category": "war"
     },
     {
-      "id": "Q148678",
+      "id": "Q202161",
       "name": "Gallic Wars",
       "category": "war"
     },
     {
-      "id": "Q1347432",
+      "id": "Q2378252",
       "name": "Jinshin-no-ran",
       "category": "rebellion"
     },
     {
-      "id": "Q83226",
+      "id": "Q200485",
       "name": "Norman Conquest",
       "category": "military-operation"
     },
@@ -392,42 +392,42 @@
       "category": "war"
     },
     {
-      "id": "Q219460",
+      "id": "Q737542",
       "name": "Gempei War",
       "category": "war"
     },
     {
-      "id": "Q1197341",
+      "id": "Q657967",
       "name": "Barons’ War",
       "category": "war"
     },
     {
-      "id": "Q1519098",
+      "id": "Q2288424",
       "name": "War of the Eight Saints",
       "category": "war"
     },
     {
-      "id": "Q160241",
+      "id": "Q315921",
       "name": "Thirteen Years’ War",
       "category": "war"
     },
     {
-      "id": "Q860459",
+      "id": "Q385676",
       "name": "Ōnin War",
       "category": "war"
     },
     {
-      "id": "Q695326",
+      "id": "Q707364",
       "name": "Count’s War",
       "category": "war"
     },
     {
-      "id": "Q736873",
+      "id": "Q431806",
       "name": "Araucanian Wars",
       "category": "war"
     },
     {
-      "id": "Q210631",
+      "id": "Q246863",
       "name": "Livonian War",
       "category": "war"
     },
@@ -437,12 +437,12 @@
       "category": "war-of-independence"
     },
     {
-      "id": "Q1540866",
+      "id": "Q3778623",
       "name": "War of the Three Henrys",
       "category": "war"
     },
     {
-      "id": "Q1138848",
+      "id": "Q631795",
       "name": "Kalmar War",
       "category": "war"
     },
@@ -452,40 +452,40 @@
       "category": "war"
     },
     {
-      "id": "Q1530931",
+      "id": "Q1342672",
       "name": "Powhatan War",
       "category": "war"
     },
     {
-      "id": "Q1353147",
+      "id": "Q807843",
       "name": "Bishops’ Wars",
       "category": "war"
     },
     {
-      "id": "Q156108",
+      "id": "Q654006",
       "name": "First Northern War",
       "category": "war"
     },
     {
-      "id": "Q683108",
+      "id": "Q25857",
       "name": "War of Devolution",
       "category": "war"
     },
     {
-      "id": "Q1061993",
+      "id": "Q862257",
       "name": "King Philip’s War",
       "category": "war"
     },
     {
-      "id": "Q152435",
+      "id": "Q152218",
       "name": "War of the Grand Alliance",
       "category": "war"
     },
     {
-      "id": "Q1137408",
+      "id": "Q1070342",
       "name": "King William’s War",
       "category": "war",
-      "parentId": "Q152435"
+      "parentId": "Q152218"
     },
     {
       "id": "Q150701",
@@ -493,33 +493,33 @@
       "category": "war"
     },
     {
-      "id": "Q3056024",
+      "id": "Q3052957",
       "name": "War of the Emboabas",
       "category": "war"
     },
     {
-      "id": "Q2940251",
+      "id": "Q976827",
       "name": "Carnatic Wars",
       "category": "war"
     },
     {
-      "id": "Q1071271",
+      "id": "Q869045",
       "name": "Queen Anne’s War",
       "category": "war",
       "parentId": "Q150701"
     },
     {
-      "id": "Q653634",
+      "id": "Q1520241",
       "name": "Yamasee War",
       "category": "war"
     },
     {
-      "id": "Q158602",
+      "id": "Q212658",
       "name": "War of the Polish Succession",
       "category": "war"
     },
     {
-      "id": "Q1122601",
+      "id": "Q54434",
       "name": "War of Jenkins’ Ear",
       "category": "war",
       "parentId": "Q32929"
@@ -530,45 +530,45 @@
       "category": "war"
     },
     {
-      "id": "Q1528612",
+      "id": "Q517578",
       "name": "King George’s War",
       "category": "war",
       "parentId": "Q32929"
     },
     {
-      "id": "Q152441",
+      "id": "Q154697",
       "name": "French and Indian War",
       "category": "war",
       "parentId": "Q33143"
     },
     {
-      "id": "Q693998",
+      "id": "Q699849",
       "name": "Silesian Wars",
       "category": "war",
       "parentId": "Q33143"
     },
     {
-      "id": "Q1869818",
+      "id": "Q2632175",
       "name": "Lord Dunmore’s War",
       "category": "war"
     },
     {
-      "id": "Q1120286",
+      "id": "Q5453768",
       "name": "Rohilla War",
       "category": "war"
     },
     {
-      "id": "Q926880",
+      "id": "Q1362209",
       "name": "First Maratha War",
       "category": "war"
     },
     {
-      "id": "Q692484",
+      "id": "Q157548",
       "name": "War of the Bavarian Succession",
       "category": "war"
     },
     {
-      "id": "Q1511210",
+      "id": "Q582594",
       "name": "Cape Frontier Wars",
       "category": "war"
     },
@@ -578,63 +578,63 @@
       "category": "war"
     },
     {
-      "id": "Q925828",
+      "id": "Q1190696",
       "name": "War of the Oranges",
       "category": "war"
     },
     {
-      "id": "Q468285",
+      "id": "Q468293",
       "name": "Tripolitan War",
       "category": "war"
     },
     {
-      "id": "Q2666270",
+      "id": "Q233642",
       "name": "Second Maratha War",
       "category": "war"
     },
     {
-      "id": "Q2666272",
+      "id": "Q617210",
       "name": "Third Maratha War",
       "category": "war"
     },
     {
-      "id": "Q8310",
+      "id": "Q78994",
       "name": "Napoleonic Wars",
       "category": "war"
     },
     {
-      "id": "Q880628",
+      "id": "Q880629",
       "name": "Black War",
       "category": "war"
     },
     {
-      "id": "Q152433",
+      "id": "Q152499",
       "name": "Peninsular War",
       "category": "war",
-      "parentId": "Q8310"
+      "parentId": "Q78994"
     },
     {
-      "id": "Q1355486",
+      "id": "Q1186260",
       "name": "Creek War",
       "category": "war"
     },
     {
-      "id": "Q3056034",
+      "id": "Q2725993",
       "name": "Padri War",
       "category": "war"
     },
     {
-      "id": "Q6964049",
+      "id": "Q22936451",
       "name": "Naning War",
       "category": "war"
     },
     {
-      "id": "Q1142999",
+      "id": "Q856168",
       "name": "Pastry War",
       "category": "war"
     },
     {
-      "id": "Q883833",
+      "id": "Q331377",
       "name": "Bleeding Kansas",
       "category": "rebellion"
     },
@@ -644,57 +644,57 @@
       "category": "war"
     },
     {
-      "id": "Q192261",
+      "id": "Q58947",
       "name": "War of the Triple Alliance",
       "category": "war"
     },
     {
-      "id": "Q153894",
+      "id": "Q153650",
       "name": "Seven Weeks’ War",
       "category": "war"
     },
     {
-      "id": "Q6377488",
+      "id": "Q4209365",
       "name": "Selangor Civil War",
       "category": "war"
     },
     {
-      "id": "Q340321",
+      "id": "Q277450",
       "name": "Acehnese War",
       "category": "war"
     },
     {
-      "id": "Q1411516",
+      "id": "Q3119025",
       "name": "Red River Indian War",
       "category": "war"
     },
     {
-      "id": "Q16053351",
+      "id": "Q4416705",
       "name": "Serbo-Turkish War",
       "category": "war"
     },
     {
-      "id": "Q212139",
+      "id": "Q228911",
       "name": "Anglo-Zulu War",
       "category": "war"
     },
     {
-      "id": "Q214186",
+      "id": "Q152004",
       "name": "War of the Pacific",
       "category": "war"
     },
     {
-      "id": "Q3432014",
+      "id": "Q1348785",
       "name": "Gun War",
       "category": "rebellion"
     },
     {
-      "id": "Q746401",
+      "id": "Q706183",
       "name": "Sino-French War",
       "category": "war"
     },
     {
-      "id": "Q156094",
+      "id": "Q740791",
       "name": "Serbo-Bulgarian War",
       "category": "war"
     },
@@ -704,23 +704,18 @@
       "category": "war-of-independence"
     },
     {
-      "id": "Q125050",
+      "id": "Q215112",
       "name": "South African War",
       "category": "war"
     },
     {
-      "id": "Q924296",
+      "id": "Q43378",
       "name": "The War of a Thousand Days",
       "category": "war"
     },
     {
-      "id": "Q6913161",
+      "id": "Q11883242",
       "name": "Moro Wars",
-      "category": "war"
-    },
-    {
-      "id": "Q3400827",
-      "name": "Pig War",
       "category": "war"
     },
     {
@@ -739,28 +734,23 @@
       "category": "war"
     },
     {
-      "id": "Q698489",
-      "name": "Baltic War of Liberation",
-      "category": "war-of-independence"
-    },
-    {
-      "id": "Q130880",
+      "id": "Q79911",
       "name": "Russian Civil War",
       "category": "war",
       "parentId": "Q8729"
     },
     {
-      "id": "Q768565",
+      "id": "Q766437",
       "name": "Rif War",
       "category": "war"
     },
     {
-      "id": "Q208820",
+      "id": "Q223126",
       "name": "Chaco War",
       "category": "war"
     },
     {
-      "id": "Q153926",
+      "id": "Q94916",
       "name": "Italo-Ethiopian War",
       "category": "war"
     },
@@ -781,12 +771,12 @@
       "category": "war"
     },
     {
-      "id": "Q188986",
+      "id": "Q188972",
       "name": "Greek Civil War",
       "category": "war"
     },
     {
-      "id": "Q49106",
+      "id": "Q3491398",
       "name": "Arab-Israeli wars",
       "category": "war"
     },
@@ -796,28 +786,28 @@
       "category": "war"
     },
     {
-      "id": "Q322602",
+      "id": "Q322607",
       "name": "War of Attrition",
       "category": "war",
-      "parentId": "Q49106"
+      "parentId": "Q3491398"
     },
     {
-      "id": "Q170842",
+      "id": "Q75984",
       "name": "Dirty War",
       "category": "military-operation"
     },
     {
-      "id": "Q9162",
+      "id": "Q48249",
       "name": "Falkland Islands War",
       "category": "war"
     },
     {
-      "id": "Q179122",
+      "id": "Q181533",
       "name": "Bosnian conflict",
       "category": "war"
     },
     {
-      "id": "Q38202",
+      "id": "Q178810",
       "name": "Syrian Civil War",
       "category": "war"
     }
