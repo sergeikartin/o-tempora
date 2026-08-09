@@ -7,7 +7,7 @@ import type {
   Person,
   WarsAndConflictsEntry,
 } from '../../shared/types';
-import { today } from '../../shared/lib/dates';
+import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
 import { MIN_ROW_GAP_YEARS } from './options';
 
 // A zero- or negative-width range (e.g. a missing end) can't render as a
@@ -36,15 +36,16 @@ export interface PersonItem {
 
 export function mapPeople(people: Person[]): PersonItem[] {
   return people.map((person) => {
+    const personStartYear = yearMonthToFractionalYear(person.lifespan.start);
     // Missing lifespan.end means still alive — draw through to today, not
     // a collapsed zero-width bar at their birth year.
-    const personEndYear = person.lifespan.end?.year ?? today().year;
+    const personEndYear = person.lifespan.end ? yearMonthToFractionalYear(person.lifespan.end) : today().year;
 
     return {
       id: person.id,
       name: person.name,
-      startYear: person.lifespan.start.year,
-      endYear: ensureMinimumRangeWidthYears(person.lifespan.start.year, personEndYear),
+      startYear: personStartYear,
+      endYear: ensureMinimumRangeWidthYears(personStartYear, personEndYear),
       occupationDomain: person.occupationDomain,
     };
   });
@@ -71,13 +72,14 @@ export function mapWars(wars: WarsAndConflictsEntry[]): WarItem[] {
     const isWar = 'period' in entry;
     const period: Period = isWar ? entry.period : { start: entry.at, end: undefined };
     const isPoint = !isWar;
+    const startYear = yearMonthToFractionalYear(period.start);
     return {
       id: entry.id,
       name: entry.name,
-      startYear: period.start.year,
+      startYear,
       endYear: isPoint
-        ? period.start.year
-        : ensureMinimumRangeWidthYears(period.start.year, period.end?.year ?? period.start.year),
+        ? startYear
+        : ensureMinimumRangeWidthYears(startYear, period.end ? yearMonthToFractionalYear(period.end) : startYear),
       isPoint,
       category: entry.category,
     };
@@ -97,7 +99,7 @@ export function mapDiscoveries(discoveries: Discovery[]): DiscoveryItem[] {
   return discoveries.map((discovery) => ({
     id: discovery.id,
     name: discovery.name,
-    startYear: discovery.at.year,
+    startYear: yearMonthToFractionalYear(discovery.at),
     category: discovery.category,
   }));
 }

@@ -35,6 +35,19 @@ test('mapPeople falls back to today when lifespan.end is missing — still alive
   expect(item?.endYear).toBe(today().year);
 });
 
+const personWithMonths: Person = {
+  ...person,
+  id: 'Q1000',
+  name: 'Someone',
+  lifespan: { start: { year: 1900, month: 7 }, end: { year: 1980, month: 1 } },
+};
+
+test('mapPeople offsets startYear/endYear within their year when lifespan dates carry a month', () => {
+  const [item] = mapPeople([personWithMonths]);
+  expect(item?.startYear).toBeCloseTo(1900 + 6 / 12);
+  expect(item?.endYear).toBe(1980);
+});
+
 const warWithEndYear: War = {
   id: 'Q8214',
   name: 'Korean War',
@@ -86,6 +99,32 @@ test('mapWars maps a WarEvent to a point item', () => {
   expect(item?.endYear).toBe(-1457);
 });
 
+const warWithMonths: War = {
+  ...warWithEndYear,
+  id: 'Q9000',
+  name: 'War with known months',
+  period: { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } },
+};
+
+test('mapWars offsets startYear/endYear within their year when period dates carry a month', () => {
+  const [item] = mapWars([warWithMonths]);
+  expect(item?.startYear).toBeCloseTo(1950 + 5 / 12);
+  expect(item?.endYear).toBeCloseTo(1953 + 6 / 12);
+});
+
+const battleWithMonth: WarEvent = {
+  ...battle,
+  id: 'Q9001',
+  name: 'Battle with known month',
+  at: { year: 1457, month: 4 },
+};
+
+test('mapWars offsets a WarEvent point within its year when at carries a month', () => {
+  const [item] = mapWars([battleWithMonth]);
+  expect(item?.startYear).toBeCloseTo(1457 + 3 / 12);
+  expect(item?.endYear).toBe(item?.startYear);
+});
+
 const discovery: Discovery = {
   id: 'Q11042',
   name: 'Printing press',
@@ -103,6 +142,18 @@ test('mapDiscoveries maps a discovery to a point item at its at.year', () => {
   expect(item?.name).toBe('Printing press');
   expect(item?.startYear).toBe(1440);
   expect(item?.category).toBe('communication');
+});
+
+const discoveryWithMonth: Discovery = {
+  ...discovery,
+  id: 'Q9002',
+  name: 'Discovery with known month',
+  at: { year: 1440, month: 10 },
+};
+
+test('mapDiscoveries offsets startYear within its year when at carries a month', () => {
+  const [item] = mapDiscoveries([discoveryWithMonth]);
+  expect(item?.startYear).toBeCloseTo(1440 + 9 / 12);
 });
 
 // filterByFameScore — shared client-side Fame Tier gate for all three lanes.
