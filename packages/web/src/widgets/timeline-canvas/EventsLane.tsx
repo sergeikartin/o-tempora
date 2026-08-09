@@ -134,6 +134,10 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
       .attr('x', (d) => d.x)
       .attr('y', (d) => d.labelY)
       .attr('fill', (d) => d.fill)
+      // Same delegated-click wiring as the dot above, so the label is an
+      // equally valid click target for opening the detail drawer.
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'discovery')
       .each(function renderLines(d) {
         // A trailing space on every non-final tspan reproduces the original
         // single-space-separated name in the rendered text's textContent —
