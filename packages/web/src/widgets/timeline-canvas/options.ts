@@ -157,25 +157,25 @@ export function personLaneHeight(rowCount: number): number {
 //
 // Hue-optimized against all 18 existing People/Domain + Discovery colors
 // below (min ~8.5° hue separation from everything on screen, tighter than
-// Discovery's ~11° precedent since there are now 27 colors total sharing
-// one hue circle — the two closest pairs, military-operation and
+// Discovery's ~11° precedent since there are 24 colors total sharing one
+// hue circle — the two closest pairs, military-operation and
 // war-of-independence, lean on S/L rather than hue alone for separation,
 // same approach design-tokens.md's Domain palette already uses for
 // public-figure/science-technology), matched to the same pastel S/L family.
-// War-family categories (war/battle/siege/military-operation) grouped into
-// warm red-orange-yellow hues; the rest (revolution through peace-treaty)
+// War-family categories (war/military-operation) grouped into warm
+// red-orange-yellow hues; the rest (revolution through war-of-independence)
 // into cooler green-blue-violet hues — see the taxonomy rename/expand
-// ticket's Answer for the generation method.
+// ticket's Answer for the generation method. battle/siege/peace-treaty
+// dropped from ConflictCategory (see shared-types) — their hex values
+// aren't reused here to avoid implying a relationship to the categories
+// that replaced their slot in the hue circle.
 export const CONFLICT_CATEGORY_COLORS: Record<ConflictCategory, string> = {
   war: '#BF696B',
-  battle: '#C4906E',
-  siege: '#C1A967',
   'military-operation': '#BDC251',
   revolution: '#7DBE74',
   rebellion: '#6BBDB3',
   'coup-d-etat': '#7BA8C1',
   'war-of-independence': '#8E8DC4',
-  'peace-treaty': '#A084C2',
 };
 
 // Events & Inventions' own palette, keyed on DiscoveryCategory (disjoint

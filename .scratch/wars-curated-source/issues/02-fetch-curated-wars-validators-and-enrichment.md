@@ -1,7 +1,7 @@
 # 02 — Fetch: curated wars boundary validation + Wikidata enrichment pass
 
 Type: task
-Status: open
+Status: resolved
 Blocked by: 01
 
 ## Question
@@ -27,3 +27,5 @@ Write the merged result to `data/raw/wars-curated-enriched.raw.json`. Wire `fetc
 **Tests**: `queries/wars-enrichment.test.ts` covering the query-builder's date-precision `OPTIONAL` logic (mirroring `queries/historical-events.test.ts`'s existing coverage) and the `VALUES`-clause batching. Not unit tested: the live SPARQL call itself, consistent with every other `fetch/fetch-*.ts` entrypoint in this pipeline.
 
 ## Answer
+
+Built `src/fetch/queries/wars-enrichment.ts` (`buildWarsEnrichmentQuery`) — the events-enrichment `VALUES`-clause pattern extended with `historical-events.ts`'s date/description `OPTIONAL` blocks verbatim (point-in-time/start-time via `p:`/`psv:` statement-value nodes, same for end-time). Built `src/fetch/fetch-wars-enrichment.ts`: `CuratedWar`/`isCuratedWar`/`validateCuratedWarsFile` for the curated boundary, `EnrichedWar`/`isEnrichedWar`/`validateEnrichedWarsFile` for the enriched boundary, and `fetchWarsEnrichment()` which parses each row's date+precision into plain `year`/`month`/`endYear`/`endMonth` fields at fetch time (via `wikidata-date.ts`'s `parseIsoYear`/`parseMonthIfKnown`) rather than leaving raw SPARQL date strings for Transform to parse — keeps the enriched file's shape consistent with `events-curated-enriched.raw.json`'s already-typed-fields convention. Wired into `fetch/index.ts`. Also updated `fetch-image-attribution.ts` to source Wars images from the new `wars-curated-enriched.raw.json` instead of the old 9 per-category raw files, so ticket 04 had one fewer consumer to migrate off the old files. 7 query-builder tests added (`wars-enrichment.test.ts`), all passing; live SPARQL call itself left untested per this pipeline's existing convention for `fetch-*.ts` entrypoints.

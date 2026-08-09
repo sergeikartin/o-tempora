@@ -9,8 +9,7 @@ import type {
   ReignPeriod,
   YearMonth,
 } from "@same-sky/shared-types";
-import type { TaggedPerson, TaggedEvent, TaggedDiscovery } from "../transform/index.js";
-import { BAR_RENDERED_TYPE_QIDS } from "../fetch/queries/historical-events.js";
+import type { TaggedPerson, TaggedWar, TaggedDiscovery } from "../transform/index.js";
 
 export interface DropReport {
   dropped: number;
@@ -152,21 +151,50 @@ export function buildPeople(
   return { people, report: { dropped: rows.length - people.length, reasons } };
 }
 
-// Only wars and wars-of-independence (BAR_RENDERED_TYPE_QIDS) become a War
-// (a real Period) — see the War/WarEvent split in shared-types. Everything
-// else in the lane (battles, sieges, revolutions, rebellions, military
-// operations, coups, peace treaties) becomes a WarEvent (a PointInTime),
-// even when the row happens to carry a secondaryYear/Month (from the same
-// ?endDate/P582 binding every event type shares) — only bar-rendered types
-// read it, per the product decision that only wars and wars-of-independence
-// render as range bars.
-export function buildWars(rows: TaggedEvent[]): { entries: WarsAndConflictsEntry[]; report: DropReport } {
-  const entries: WarsAndConflictsEntry[] = [];
+// A curated row's `parentId` chain, validated depth-first from `id` up to
+// its root: every ancestor must exist among the rows that already survived
+// validation (built), every ancestor beyond `id` itself must be a War (a
+// WarEvent can never have children — see shared-types's parentId doc
+// comment), and the chain (Container → level 2 → level 3) is capped at 3
+// entries deep. Naturally loop-safe with no separate cycle guard needed — a
+// cyclic chain still increments depth every iteration, so it's caught by
+// the depth check within 4 iterations regardless of whether it would
+// otherwise terminate.
+function validateParentChain(
+  id: string,
+  built: ReadonlyMap<string, WarsAndConflictsEntry>,
+): { ok: true } | { ok: false; reason: string } {
+  let currentId: string | undefined = id;
+  let depth = 0;
+
+  while (currentId !== undefined) {
+    const current = built.get(currentId);
+    if (!current) return { ok: false, reason: "parentId not found" };
+    depth += 1;
+    if (depth > 3) return { ok: false, reason: "nesting depth exceeded" };
+    if (currentId !== id && !("period" in current)) return { ok: false, reason: "parentId is not a War" };
+    currentId = current.parentId;
+  }
+
+  return { ok: true };
+}
+
+// Shape follows what the curated row's Wikidata enrichment actually
+// resolved, not `category` — a row with both a start and an end date
+// becomes a War (a real Period); a row with only one becomes a WarEvent (a
+// PointInTime); a row with neither is dropped as an enrichment failure. See
+// shared-types's War/WarEvent doc comments.
+export function buildWars(rows: TaggedWar[]): { entries: WarsAndConflictsEntry[]; report: DropReport } {
   const reasons: Record<string, number> = {};
+  const built = new Map<string, WarsAndConflictsEntry>();
 
   for (const row of rows) {
     const validated = validateEventRow<ConflictCategory>(row, reasons);
     if (!validated) continue;
+    if (row.sitelinks <= 0) {
+      record(reasons, "missing sitelinks (enrichment failed)");
+      continue;
+    }
 
     const shared = {
       id: row.id,
@@ -178,20 +206,31 @@ export function buildWars(rows: TaggedEvent[]): { entries: WarsAndConflictsEntry
       wikipediaUrl: validated.article,
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
+      ...(row.parentId ? { parentId: row.parentId } : {}),
     };
 
-    if (row.tags.some((tag) => BAR_RENDERED_TYPE_QIDS.has(tag))) {
+    if (row.endYear !== undefined) {
       const war: War = {
         ...shared,
         period: {
           start: yearMonth(validated.year, validated.month),
-          end: optionalYearMonth(row.secondaryYear, row.secondaryMonth),
+          end: yearMonth(row.endYear, row.endMonth),
         },
       };
-      entries.push(war);
+      built.set(row.id, war);
     } else {
       const warEvent: WarEvent = { ...shared, at: yearMonth(validated.year, validated.month) };
-      entries.push(warEvent);
+      built.set(row.id, warEvent);
+    }
+  }
+
+  const entries: WarsAndConflictsEntry[] = [];
+  for (const [id, entry] of built) {
+    const result = validateParentChain(id, built);
+    if (result.ok) {
+      entries.push(entry);
+    } else {
+      record(reasons, result.reason);
     }
   }
 
