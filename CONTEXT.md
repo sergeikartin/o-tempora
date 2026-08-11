@@ -39,6 +39,18 @@ _Avoid_: Importance score, significance score, popularity score
 One of the three top-level content tracks — People, Conflicts, Milestones — each with its own fetch/score/tag/output path (`packages/data-pipeline/docs/adr/0001-wars-discoveries-people-separate-lanes.md`). Consolidated from the earlier "Wars & Conflicts"/"Events & Inventions" display names and their mismatched internal names (`wars`/`discoveries` CLI values, `events-curated.raw.json`, `fetchEventsEnrichment`) onto one canonical name per lane, used everywhere — UI copy, `fetch`'s `--lane=<value>` CLI selector (`people`/`conflicts`/`milestones`), types, and file names (`packages/data-pipeline/docs/adr/0013-rename-lanes-to-conflicts-and-milestones.md`). The timeline's display layer renders Conflicts and Milestones together in one mixed, fame-ranked visual row (`ConflictsMilestonesLane`) — a rendering-only grouping, not a fourth Lane or a merge of the two: each keeps its own fetch/score/tag/output path above unchanged.
 _Avoid_: track, Wars & Conflicts, Events & Inventions, wars, discoveries, events (as a lane name)
 
+**Mountain Profile**:
+The log-scaled, mirrored-ridge area-sparkline that replaces the timeline's scrollbar — People's Row Depth curve above a center baseline, Conflicts+Milestones' inverted below it, drawn across the full pannable range (`PAN_MIN_DATE` to present) so users can see ahead of panning where a region will demand many more rows. Computed client-side from already-loaded lane data (no pipeline artifact) and recomputed live as the fame-score filters change; also the pan/zoom control itself — click jumps, dragging the overlaid viewport rectangle pans, hovering surfaces exact per-series Row Depth via tooltip (`packages/web/docs/adr/0004-density-minimap-replaces-scrollbar.md`).
+_Avoid_: minimap (bare — ambiguous with a literal miniature-thumbnail rendering, considered and rejected), density chart, sparkline (bare)
+
+**Row Depth**:
+The number of vertical rows a lane's items need at a given point in time to render without overlap — what `assignRows` (`map-to-items.ts`) computes per item as its row index; a location's Row Depth is `max(row index) + 1` among items covering it. Drives both a lane's live rendered height and, computed at the Reference Scale, the Mountain Profile's per-series height.
+_Avoid_: lane height (the rendered pixel consequence, not this count), row count, stack depth
+
+**Reference Scale**:
+The fixed `pixelsPerYear` (`defaultPixelsPerYear()`, derived from `DEFAULT_VISIBLE_YEARS`) the Mountain Profile packs items against to compute Row Depth across the whole pannable range — deliberately decoupled from the user's live zoom, so the profile reflects the app's default 120-year opening view rather than a worst-case (most-zoomed-out) or arbitrary scale.
+_Avoid_: default zoom (the opening viewport itself; this is the packing scale reused from it), base scale
+
 **Fame Tier**:
 Named threshold levels on Fame Score — `generalPublic` (narrowest/most-famous-only) ⊂ `educated` ⊂ `specialist` (broadest). Now exists only in the pipeline, as `FAME_TIER_MIN_HPI` gating which People rows ship at all (specialist floor, hpi≥75); Conflicts & Milestones have no floor-filtering, every curated row ships. Not zoom-coupled and not surfaced as discrete tiers in the UI — that automatic mechanism (`packages/web/docs/adr/0002-fame-tier-drives-zoom.md`) was replaced by a continuous per-lane manual filter slider (`packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md`).
 _Avoid_: Fame filter, frame tier, zoom tier

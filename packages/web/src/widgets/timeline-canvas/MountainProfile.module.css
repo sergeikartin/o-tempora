@@ -1,0 +1,108 @@
+/* Replaces .scrollbarTrack/.scrollbarThumb (ADR 0004) — a plain flex sibling
+   below .scrollContainer, always the full timeline width so its own
+   click/drag math never needs to guess at .scrollContainer's geometry.
+   Height sits in the 48-64px band the ADR calls for, versus the old
+   scrollbar's ~14px. */
+.track {
+  position: relative;
+  flex: 0 0 auto;
+  height: 56px;
+  overflow: hidden;
+  /* Mirrors color-bg-surface; real token wiring is ticket 05 (see
+     TimelineCanvas.module.css's sibling comment). */
+  background-color: #fbf8f0;
+  border-top: 1px solid #ded3b8; /* color-border-subtle */
+  cursor: pointer;
+}
+
+.ridge {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.baseline {
+  stroke: #ded3b8; /* color-border-subtle */
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* People's Row Depth, mirrored above the baseline. */
+.peopleArea {
+  fill: #b8842e; /* color-accent-selected */
+  fill-opacity: 0.55;
+  stroke: #b8842e;
+  stroke-opacity: 0.85;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* The merged Conflicts+Milestones lane's Row Depth, mirrored below the
+   baseline — reuses the Conflict Color (design-tokens.md) since Conflicts
+   already read as that lane's dominant visual identity next to Milestones'
+   own multi-color palette. */
+.eventsArea {
+  fill: #bf696b; /* color-conflict */
+  fill-opacity: 0.55;
+  stroke: #bf696b;
+  stroke-opacity: 0.85;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Draggable viewport indicator, overlaid on the ridge — same geometry math
+   as the old .scrollbarThumb (ratio-based left/width), just full-height
+   instead of an inset bar, and translucent so the density shape underneath
+   it stays legible. */
+.viewportRect {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 24px; /* mirrors MIN_VIEWPORT_RECT_PX in MountainProfile.tsx */
+  background-color: rgba(184, 132, 46, 0.18); /* color-accent-selected, low alpha */
+  border-left: 1px solid #b8842e; /* color-accent-selected */
+  border-right: 1px solid #b8842e;
+  cursor: grab;
+}
+
+.viewportRect:hover {
+  background-color: rgba(184, 132, 46, 0.28);
+}
+
+.viewportRect.dragging {
+  cursor: grabbing;
+  background-color: rgba(184, 132, 46, 0.28);
+}
+
+/* Hover tooltip — recovers the exact date/Row-Depth numbers the log scale
+   deliberately compresses away visually. Follows the cursor's x position
+   (inline `left` style in MountainProfile.tsx); centered on it and clamped
+   to the track's own bounds via translateX rather than edge-anchoring, kept
+   simple since the track scrolls the tooltip out of view with everything
+   else if it would overflow (no dedicated edge-flip logic). */
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  transform: translateX(-50%);
+  margin-bottom: 4px;
+  padding: 4px 8px;
+  border-radius: 6px; /* radius-sm */
+  background-color: #fbf8f0; /* color-bg-surface */
+  border: 1px solid #ded3b8; /* color-border-subtle */
+  box-shadow: 0 2px 6px rgba(46, 43, 34, 0.15);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #2e2b22; /* color-text-primary */
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tooltipDate {
+  font-weight: 600;
+}
+
+.tooltipRow {
+  color: #83795f; /* color-text-secondary */
+}

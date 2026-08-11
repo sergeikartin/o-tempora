@@ -61,8 +61,11 @@ test('renders both lanes, each populated from its own dataset', () => {
   // Both People's lifespans and Conflicts' ranges are Periods and
   // share the literal `.d3-line` marker class — two total (Aristotle + the
   // Korean War) — so this counts each lane's own <svg> (People, then the
-  // merged Conflicts+Milestones lane) rather than the whole page.
-  const svgs = Array.from(container.querySelectorAll('svg'));
+  // merged Conflicts+Milestones lane) rather than the whole page. Excludes
+  // MountainProfile's own ridge <svg>, a third one that isn't a lane.
+  const svgs = Array.from(container.querySelectorAll('svg')).filter(
+    (svg) => svg.getAttribute('data-testid') !== 'mountain-profile-ridge',
+  );
   expect(svgs).toHaveLength(2);
   const [peopleSvg, conflictsMilestonesSvg] = svgs as [SVGSVGElement, SVGSVGElement];
   expect(peopleSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Aristotle
@@ -82,9 +85,15 @@ test('the two lane sections and every year axis share the same rendered width', 
     />,
   );
 
-  const svgs = container.querySelectorAll('svg');
-  expect(svgs).toHaveLength(2); // People, and the merged Conflicts+Milestones lane — YearAxis is plain HTML/CSS, no svg
-  const svgWidthsPx = Array.from(svgs).map((svg) => Number(svg.getAttribute('width')));
+  // People, and the merged Conflicts+Milestones lane — YearAxis is plain
+  // HTML/CSS, no svg; excludes MountainProfile's own ridge <svg>, which
+  // isn't a lane and (being CSS-sized, not width-attribute-sized) has no
+  // `width` attribute to compare.
+  const svgs = Array.from(container.querySelectorAll('svg')).filter(
+    (svg) => svg.getAttribute('data-testid') !== 'mountain-profile-ridge',
+  );
+  expect(svgs).toHaveLength(2);
+  const svgWidthsPx = svgs.map((svg) => Number(svg.getAttribute('width')));
   const axisWidthsPx = Array.from(container.querySelectorAll('.year-axis-ruler')).map((ruler) =>
     parseFloat(((ruler.parentElement as HTMLElement)?.style.width ?? '').replace('px', '')),
   );
@@ -127,8 +136,8 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
   expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
 });
 
-test('dragging the custom scrollbar thumb scrolls the container, proportional to the (mocked) track width vs. the timeline width', () => {
-  const { container } = render(
+test('dragging the Mountain Profile viewport rect scrolls the container, proportional to the (mocked) track width vs. the timeline width', () => {
+  const { container, getByTestId } = render(
     <TimelineCanvas
       people={fixturePeople}
       conflicts={fixtureConflicts}
@@ -138,9 +147,14 @@ test('dragging the custom scrollbar thumb scrolls the container, proportional to
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
-  const track = container.querySelector('[class*="scrollbarTrack"]') as HTMLElement;
-  const thumb = container.querySelector('[class*="scrollbarThumb"]') as HTMLElement;
-  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 0, writable: true });
+  const track = getByTestId('mountain-profile-track');
+  const rect = getByTestId('mountain-profile-viewport-rect');
+  // MountainProfile reads scrollLeft from React state (a prop), not a live
+  // DOM ref — unlike the plain content-drag test above, so this drag's
+  // start position is whatever TimelineCanvas already panned to on mount
+  // (DEFAULT_VIEWPORT_START), not a value this test can reset via a raw
+  // scrollLeft property override.
+  const startScrollLeft = scrollContainer.scrollLeft;
   // jsdom never lays anything out, so clientWidth is 0 by default — pinned
   // here the same way the "shared rendered width" test above reads
   // .yearAxis's inline style rather than trusting jsdom layout.
@@ -149,21 +163,26 @@ test('dragging the custom scrollbar thumb scrolls the container, proportional to
     ((container.querySelector('[class*="yearAxis"]') as HTMLElement | null)?.style.width ?? '').replace('px', ''),
   );
 
-  fireEvent.pointerDown(thumb, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
-  fireEvent.pointerMove(thumb, { pointerType: 'mouse', clientX: 510, pointerId: 1 });
+  fireEvent.pointerDown(rect, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  // Dragged left (toward the timeline's start), away from the mounted
+  // viewport's position near the domain's high end — keeps the expected
+  // value comfortably inside [0, maxScrollLeft] with no clamping to reason
+  // about.
+  fireEvent.pointerMove(rect, { pointerType: 'mouse', clientX: 490, pointerId: 1 });
 
-  // Mirrors handleThumbPointerMove's own formula (a hand-derived expected
-  // value, same style as the plain content-drag test above): a small thumb
-  // move covers a large scrollLeft distance once totalWidth (a
+  // Mirrors MountainProfile's handleRectPointerMove formula (a hand-derived
+  // expected value, same style as the plain content-drag test above): a
+  // small rect move covers a large scrollLeft distance once totalWidth (a
   // multi-millennium timeline) vastly exceeds the 100px mocked track — the
-  // whole reason a scrollbar exists here.
-  const thumbWidthPx = Math.max(24, (100 / totalWidth) * 100);
+  // whole reason this control exists.
+  const rectWidthPx = Math.max(24, (100 / totalWidth) * 100);
   const maxScrollLeft = totalWidth - 100;
-  const expectedScrollLeft = (10 * maxScrollLeft) / (100 - thumbWidthPx);
+  const scrollLeftPerRectPx = maxScrollLeft / (100 - rectWidthPx);
+  const expectedScrollLeft = Math.min(Math.max(startScrollLeft - 10 * scrollLeftPerRectPx, 0), maxScrollLeft);
   expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft);
 
-  fireEvent.pointerUp(thumb, { pointerType: 'mouse', pointerId: 1 });
-  fireEvent.pointerMove(thumb, { pointerType: 'mouse', clientX: 300, pointerId: 1 });
+  fireEvent.pointerUp(rect, { pointerType: 'mouse', pointerId: 1 });
+  fireEvent.pointerMove(rect, { pointerType: 'mouse', clientX: 300, pointerId: 1 });
   expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft); // no longer dragging
 });
 
@@ -185,8 +204,8 @@ test('a mousedown on the scroll container content still pans it — the custom s
   expect(scrollContainer.scrollLeft).toBe(140);
 });
 
-test('clicking the scrollbar track outside the thumb jumps the viewport toward the click position', () => {
-  const { container } = render(
+test('clicking the Mountain Profile track outside the viewport rect jumps the viewport toward the click position', () => {
+  const { container, getByTestId } = render(
     <TimelineCanvas
       people={fixturePeople}
       conflicts={fixtureConflicts}
@@ -196,7 +215,7 @@ test('clicking the scrollbar track outside the thumb jumps the viewport toward t
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
-  const track = container.querySelector('[class*="scrollbarTrack"]') as HTMLElement;
+  const track = getByTestId('mountain-profile-track');
   Object.defineProperty(scrollContainer, 'scrollLeft', { value: 0, writable: true });
   Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
   track.getBoundingClientRect = () =>

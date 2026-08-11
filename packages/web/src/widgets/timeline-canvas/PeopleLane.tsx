@@ -2,11 +2,10 @@ import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { Person } from '../../shared/types';
 import { DOMAIN_COLORS } from '../../shared/config';
-import { assignRows, mapPeople, type PersonItem } from './map-to-items';
+import { assignRows, mapPeople, personPixelInterval } from './map-to-items';
 import {
   MIN_ROW_GAP_PX,
   PERIOD_LINE_HEIGHT,
-  estimateLabelWidthPx,
   personLabelYForRow,
   personLaneHeight,
   personLineCenterYForRow,
@@ -28,18 +27,6 @@ interface PeopleLaneProps {
   xScale: d3.ScaleLinear<number, number>;
 }
 
-// Row-stacking works in screen pixels, not years (mirrors
-// ConflictsMilestonesLane's pixelInterval helpers) — a person's name label
-// is left-aligned above the start of
-// their lifespan line, so it can extend well past the line's own pixel span
-// for a short-lived person with a long name, especially at low zoom.
-function pixelInterval(item: PersonItem, xScale: d3.ScaleLinear<number, number>) {
-  const x1 = xScale(item.startYear);
-  const x2 = xScale(item.endYear);
-  const labelWidth = estimateLabelWidthPx(item.name);
-  return { start: x1, end: Math.max(x2, x1 + labelWidth) };
-}
-
 // A person's lifespan (a Period) renders as a rounded-cap line, not a solid
 // bar — their name label sits left-aligned just above it, the same
 // above-line treatment every Period gets, colored to match the lifespan
@@ -52,7 +39,7 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
   const items = useMemo(() => mapPeople(people), [people]);
   const rowOfPerson = useMemo(() => {
     const intervals = items.map((item) => {
-      const { start, end } = pixelInterval(item, xScale);
+      const { start, end } = personPixelInterval(item, xScale);
       return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
     });
     return assignRows(intervals, MIN_ROW_GAP_PX);
