@@ -35,20 +35,18 @@ No category tag / uncategorized → `color-border-subtle` as a neutral fallback,
 
 ## Occupation Domain Palette
 
-People-lane only. Keyed by Pantheon's `OccupationDomain` (not `ConflictCategory` above — different enum, different source). Used as the stroke color on People-lane lifespan lines. Designed independently of the Conflict Category palette above (not hue-derived from it) — pastelized from a reference swatch set, matched to the same lightness/saturation range so both lanes read as one system.
+People-lane only. Keyed by Pantheon's `OccupationDomain` (not `ConflictCategory` above — different enum, different source). Used as the stroke color on People-lane lifespan lines. Values are lifted verbatim from pantheon.world's own CSS custom properties (`--colorInstitutions` etc.) rather than derived, so the legend matches Pantheon's source exactly.
 
 | Domain | Token | Hex |
 |---|---|---|
-| Institutions | `color-domain-institutions` | `#C08A7C` |
-| Arts | `color-domain-arts` | `#C0A37C` |
-| Business & Law | `color-domain-business-law` | `#B3C07C` |
-| Public Figure | `color-domain-public-figure` | `#8AC7A4` |
-| Science & Technology | `color-domain-science-technology` | `#61B89E` |
-| Exploration | `color-domain-exploration` | `#7C84C0` |
-| Humanities | `color-domain-humanities` | `#B35680` |
-| Sports | `color-domain-sports` | `#C38393` |
-
-`public-figure`/`science-technology` and `humanities`/`sports` sit close in hue (both green-teal and magenta-red families respectively) — deliberately separated by lightness/saturation instead of hue, matched to the source reference. Revisit if they read as too similar once rendered.
+| Institutions | `color-domain-institutions` | `#B12D11` |
+| Arts | `color-domain-arts` | `#D28629` |
+| Business & Law | `color-domain-business-law` | `#4F680A` |
+| Public Figure | `color-domain-public-figure` | `#67AF8C` |
+| Science & Technology | `color-domain-science-technology` | `#0E5E5B` |
+| Exploration | `color-domain-exploration` | `#4C5ED7` |
+| Humanities | `color-domain-humanities` | `#732945` |
+| Sports | `color-domain-sports` | `#BB3B57` |
 
 ## Typography
 

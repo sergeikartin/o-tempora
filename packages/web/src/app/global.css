@@ -1,7 +1,10 @@
 /* Color/radius tokens from docs/design-tokens.md, wired as CSS custom
-   properties for use outside widgets/timeline-canvas's D3 rendering core
-   (which still provisionally inlines hex pending ticket 05 — see
-   docs/code-conventions.md's Styling section). */
+   properties. The Occupation Domain palette is wired here too (used by both
+   the Sidebar legend and the D3 People-lane's fill/stroke attrs — SVG
+   presentation attributes resolve var() same as any CSS property). The
+   Conflict Category and Discovery Category palettes still provisionally
+   inline hex in widgets/timeline-canvas/options.ts pending ticket 05 — see
+   docs/code-conventions.md's Styling section. */
 :root {
   --color-bg-base: #f3eedd;
   --color-bg-surface: #fbf8f0;
@@ -12,6 +15,15 @@
   --color-text-secondary: #83795f;
   --color-accent-selected: #b8842e;
   --color-focus-ring: #8c5a1e;
+
+  --color-domain-institutions: #b12d11;
+  --color-domain-arts: #d28629;
+  --color-domain-business-law: #4f680a;
+  --color-domain-public-figure: #67af8c;
+  --color-domain-science-technology: #0e5e5b;
+  --color-domain-exploration: #4c5ed7;
+  --color-domain-humanities: #732945;
+  --color-domain-sports: #bb3b57;
 
   --radius-full: 9999px;
   --radius-sm: 6px;
