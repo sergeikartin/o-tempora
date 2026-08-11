@@ -148,7 +148,10 @@ export const CONFLICT_COLOR = '#BF696B';
 // hue-optimized against all 15 existing People/Domain + Conflicts/ConflictCategory
 // colors (min ~11° hue separation from everything on screen) as they stood
 // at the time — matched to the same pastel S/L family as the rest of the
-// app.
+// app. The 10 entries below `exploration` were added later (Milestones
+// merge/taxonomy-expansion) at the same S/L, hue-fit into the gaps left by
+// the original 10 plus the People/Conflict palette (still ~10-13° minimum
+// separation from every other color on screen).
 export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = {
   'energy-industry': '#C9BF5E',
   'food-agriculture': '#B1C987',
@@ -160,6 +163,16 @@ export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = {
   'society-administration': '#9D6DB0',
   'everyday-technology': '#C893C8',
   exploration: '#C072AB',
+  'culture-arts': '#C08E72',
+  'religion-mythology': '#B9C072',
+  'environment-geology': '#84C072',
+  'commerce-finance': '#74C072',
+  'social-movements': '#72C0AA',
+  'sports-entertainment': '#72ABC0',
+  'philosophy-education': '#729DC0',
+  'law-jurisprudence': '#8D72C0',
+  'archaeology-anthropology': '#9C72C0',
+  'architecture-design': '#C0729E',
 };
 
 const MIN_YEAR = PAN_MIN_DATE.year;

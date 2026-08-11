@@ -4,21 +4,21 @@ import { fileURLToPath } from "node:url";
 import { MILESTONE_CATEGORIES, type MilestoneCategory } from "@same-sky/shared-types";
 import { buildMilestonesEnrichmentQuery } from "./queries/milestones-enrichment.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
+import { parseIsoYear, parseMonthIfKnown } from "../transform/wikidata-date.js";
 import { PAGEVIEWS_LANGUAGES, articleVar, isArticleUrlsRecord, type PageviewsLanguage } from "./pageviews-languages.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
-// tagline/description-split: the curated file still carries its old
-// hand-typed `tagline` text (left on disk, unused — see
-// milestones-curated.raw.json), but Fetch no longer reads it as authoritative;
-// EnrichedMilestone's tagline below is live-fetched instead, matching how
-// Conflicts already sources it. Not part of this interface any more,
-// deliberately — referencing it here would tempt a future reader into
-// wiring it back in.
+// Milestones taxonomy-expansion merge: the curated file dropped its old
+// hand-typed year/dateProperty/source/tagline fields — id/name/category are
+// curator-authored, everything else (including the date, via
+// DATE_PROPERTIES' priority-ordered COALESCE in
+// queries/milestones-enrichment.ts) is live-fetched, matching how Conflicts
+// already sources its dates (see conflicts-curated.raw.json's
+// meta.description).
 interface CuratedMilestone {
   id: string;
   name: string;
-  year: number;
   category: MilestoneCategory;
 }
 
@@ -29,8 +29,16 @@ interface CuratedMilestonesFile {
 export interface EnrichedMilestone {
   id: string;
   name: string;
-  year: number;
   category: MilestoneCategory;
+  // Absent means DATE_PROPERTIES' COALESCE (queries/milestones-enrichment.ts)
+  // found no claim on any of the 10 candidate properties for this QID —
+  // Output drops the row (write-datasets.ts's validateEventRow), same
+  // "no fallback, drop instead" behavior as a missing tagline below.
+  year?: number;
+  // Wikidata's own claim precision decides whether month is present (see
+  // wikidata-date.ts's MONTH_OR_FINER_PRECISION) — never defaulted to
+  // January to paper over an unknown month, same as Conflicts.
+  month?: number;
   // Absent means the enrichment pass couldn't resolve an English tagline
   // for this QID — Output drops the row (write-datasets.ts's
   // validateMilestoneRow), no fallback to the curated file's old text, the
@@ -64,7 +72,6 @@ function isCuratedMilestone(value: unknown): value is CuratedMilestone {
   return (
     typeof candidate.id === "string" &&
     typeof candidate.name === "string" &&
-    typeof candidate.year === "number" &&
     typeof candidate.category === "string" &&
     (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category)
   );
@@ -90,7 +97,8 @@ function isEnrichedMilestone(value: unknown): value is EnrichedMilestone {
   return (
     typeof candidate.id === "string" &&
     typeof candidate.name === "string" &&
-    typeof candidate.year === "number" &&
+    (candidate.year === undefined || typeof candidate.year === "number") &&
+    (candidate.month === undefined || typeof candidate.month === "number") &&
     (candidate.tagline === undefined || typeof candidate.tagline === "string") &&
     typeof candidate.category === "string" &&
     (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category) &&
@@ -124,21 +132,23 @@ interface EnrichmentFields {
   countries: string[];
   image?: string;
   tagline?: string;
+  year?: number;
+  month?: number;
 }
 
 // Reads the checked-in curated list (data/raw/milestones-curated.raw.json) and
-// backfills sitelinks/wikipediaUrl/country/image/tagline via a batched
+// backfills sitelinks/wikipediaUrl/country/image/tagline/date via a batched
 // per-QID SPARQL pass (same VALUES-clause pattern as
-// fetch-reigns.ts/fetch-taglines.ts) — dateProperty/source are
-// curation-time provenance and are dropped here, not carried into the
-// merged output. tagline is live-fetched here, not read from the curated
-// file, matching how Conflicts already sources it (tagline/description split).
+// fetch-reigns.ts/fetch-taglines.ts) — tagline and date are live-fetched
+// here, not read from the curated file, matching how Conflicts already
+// sources them (tagline/description split, and no curated year/dateProperty/
+// source field to begin with as of the taxonomy-expansion merge).
 export async function fetchMilestonesEnrichment(): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "milestones-curated.raw.json");
   const curated = validateCuratedMilestonesFile(JSON.parse(await readFile(curatedPath, "utf8")));
   const ids = curated.milestones.map((milestone) => milestone.id);
 
-  console.log(`Fetching sitelinks/article/country/image/tagline enrichment for ${ids.length} curated milestones...`);
+  console.log(`Fetching sitelinks/article/country/image/tagline/date enrichment for ${ids.length} curated milestones...`);
   const result = await batchedSparqlFetch(ids, buildMilestonesEnrichmentQuery);
 
   const enrichmentById = new Map<string, EnrichmentFields>();
@@ -168,6 +178,11 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
     if (entry.tagline === undefined && row.tagline?.value) entry.tagline = row.tagline.value;
     const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
     if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
+
+    if (entry.year === undefined && row.date?.value) {
+      entry.year = parseIsoYear(row.date.value);
+      entry.month = parseMonthIfKnown(row.date.value, row.datePrecision?.value);
+    }
   }
 
   const milestones: EnrichedMilestone[] = curated.milestones.map((milestone) => {
@@ -175,8 +190,9 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
     return {
       id: milestone.id,
       name: milestone.name,
-      year: milestone.year,
       category: milestone.category,
+      year: enrichment?.year,
+      month: enrichment?.month,
       tagline: enrichment?.tagline,
       sitelinks: enrichment?.sitelinks,
       wikipediaUrl: enrichment?.wikipediaUrl,

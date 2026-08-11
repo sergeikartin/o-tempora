@@ -3,6 +3,8 @@ import assert from "node:assert/strict";
 import { buildMilestonesEnrichmentQuery } from "./milestones-enrichment.js";
 import { PAGEVIEWS_LANGUAGES } from "../pageviews-languages.js";
 
+const DATE_PROPERTIES = ["P575", "P571", "P577", "P580", "P585", "P569", "P606", "P619", "P729", "P1619"];
+
 test("VALUES clause includes one wd: entry per given QID", () => {
   const query = buildMilestonesEnrichmentQuery(["Q988780", "Q20124"]);
   assert.match(query, /VALUES \?event \{ wd:Q988780 wd:Q20124 \}/);
@@ -24,11 +26,37 @@ test("requires wikibase:sitelinks, and leaves a per-language article title, coun
   assert.match(query, /OPTIONAL \{ \?event schema:description \?tagline \. FILTER\(LANG\(\?tagline\) = "en"\) \}/);
 });
 
-test("selects sitelinks/per-language article title vars/country/image/tagline", () => {
+test("binds each of the 10 curator dateProperty candidates' precision via the statement value nodes, not the wdt: truthy shortcut", () => {
+  const query = buildMilestonesEnrichmentQuery(["Q1"]);
+  for (const property of DATE_PROPERTIES) {
+    const v = property.toLowerCase();
+    assert.match(query, new RegExp(`\\?event p:${property} \\?${v}Statement`));
+    assert.match(query, new RegExp(`\\?${v}Statement a wikibase:BestRank \\.`));
+    assert.match(query, new RegExp(`\\?${v}Statement psv:${property} \\?${v}Value`));
+    assert.match(query, new RegExp(`\\?${v}Value wikibase:timeValue \\?${v}Time ;\\s*wikibase:timePrecision \\?${v}Precision`));
+  }
+});
+
+test("COALESCEs ?date/?datePrecision across all 10 date properties in curator-priority order", () => {
+  const query = buildMilestonesEnrichmentQuery(["Q1"]);
+  const timeVars = DATE_PROPERTIES.map((p) => `\\?${p.toLowerCase()}Time`).join(", ");
+  const precisionVars = DATE_PROPERTIES.map((p) => `\\?${p.toLowerCase()}Precision`).join(", ");
+  assert.match(query, new RegExp(`BIND\\(COALESCE\\(${timeVars}\\) AS \\?date\\)`));
+  assert.match(query, new RegExp(`BIND\\(COALESCE\\(${precisionVars}\\) AS \\?datePrecision\\)`));
+});
+
+test("selects sitelinks/per-language article title vars/country/image/tagline/date/datePrecision", () => {
   const query = buildMilestonesEnrichmentQuery(["Q1"]);
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `\\?article${lang[0]!.toUpperCase()}${lang.slice(1)}`).join(
     " ",
   );
-  const pattern = new RegExp(`SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?tagline WHERE`);
+  const pattern = new RegExp(`SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?tagline \\?date \\?datePrecision WHERE`);
   assert.match(query, pattern);
+});
+
+test("does not filter by year range or page with LIMIT/OFFSET (a batch of already-curated ids, not a corpus scan)", () => {
+  const query = buildMilestonesEnrichmentQuery(["Q1"]);
+  assert.doesNotMatch(query, /FILTER\(\?date/);
+  assert.doesNotMatch(query, /LIMIT/);
+  assert.doesNotMatch(query, /OFFSET/);
 });

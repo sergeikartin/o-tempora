@@ -32,7 +32,8 @@ export interface TaggedMilestone {
   // instead" behavior Conflicts/People already have.
   tagline?: string;
   description?: string;
-  year: number;
+  year?: number;
+  month?: number;
   sitelinks: number;
   fameScore: number;
   category: MilestoneCategory;
@@ -209,6 +210,7 @@ export function transformMilestones(): TaggedMilestone[] {
       tagline: milestone.tagline,
       description: wikipediaExtracts[milestone.id],
       year: milestone.year,
+      month: milestone.month,
       sitelinks: milestone.sitelinks ?? 0,
       pageviews: pageviews[milestone.id] ?? 0,
       category,
