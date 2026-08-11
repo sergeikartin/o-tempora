@@ -17,7 +17,11 @@ export type DetailPanelEntity =
 // depends on entityType (see buildDrawerContent below), not on the caller.
 export interface DrawerContent {
   name: string;
-  dateLine: string;
+  // Discovery only — People and Wars & Conflicts drop this: their tagline
+  // text (Wikidata schema:description) already embeds the same dates in
+  // prose form, so a separate structured date line was showing every date
+  // twice. Discoveries' taglines don't embed dates, so they keep it.
+  dateLine?: string;
   tagline: string;
   // Wikipedia lead-paragraph prose — absent whenever no English Wikipedia
   // article resolved for this entity. Independent of tagline, never a
@@ -38,7 +42,6 @@ function rangeDateLine(start: { year: number; month?: number }, end: { year: num
 function personContent(person: Person): DrawerContent {
   return {
     name: person.name,
-    dateLine: rangeDateLine(person.lifespan.start, person.lifespan.end),
     tagline: person.tagline,
     description: person.description,
     wikipediaUrl: person.wikipediaUrl,
@@ -52,12 +55,8 @@ function personContent(person: Person): DrawerContent {
 }
 
 function warEntryContent(entry: WarsAndConflictsEntry): DrawerContent {
-  const isWar = 'period' in entry;
-  const dateLine = isWar ? rangeDateLine(entry.period.start, entry.period.end) : formatYearMonth(entry.at);
-
   return {
     name: entry.name,
-    dateLine,
     tagline: entry.tagline,
     description: entry.description,
     wikipediaUrl: entry.wikipediaUrl,

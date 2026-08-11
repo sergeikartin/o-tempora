@@ -23,7 +23,7 @@ test('renders nothing when selected is null', () => {
   expect(container.innerHTML).toBe('');
 });
 
-test('renders name, date line, tagline, image, credit line, and a Wikipedia link', () => {
+test('renders name, tagline, image, credit line, and a Wikipedia link', () => {
   render(<DetailPanel selected={{ entityType: 'person', entity: napoleon }} onClose={() => {}} />);
 
   expect(screen.getByText('Napoleon')).toBeTruthy();
@@ -34,6 +34,11 @@ test('renders name, date line, tagline, image, credit line, and a Wikipedia link
   const link = screen.getByRole('link', { name: /Wikipedia/ }) as HTMLAnchorElement;
   expect(link.href).toBe('https://en.wikipedia.org/wiki/Napoleon');
   expect(link.target).toBe('_blank');
+});
+
+test('does not render a date line for a person (tagline already carries dates)', () => {
+  const { container } = render(<DetailPanel selected={{ entityType: 'person', entity: napoleon }} onClose={() => {}} />);
+  expect(container.querySelector('[class*="dateLine"]')).toBeNull();
 });
 
 test('renders description as a body paragraph, below the tagline subtitle, when present', () => {

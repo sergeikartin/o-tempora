@@ -40,8 +40,6 @@ const koreanWar: War = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
 };
 
-const ongoingWar: War = { ...koreanWar, id: 'Q2', name: 'Ongoing War', period: { start: { year: 2022 }, end: undefined } };
-
 const battle: WarEvent = {
   id: 'Q46341',
   name: 'Battle of Gettysburg',
@@ -65,10 +63,10 @@ const printingPress: Discovery = {
   image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg',
 };
 
-test('person: dateLine spans birth-death month/year, image/imageAttribution pass through', () => {
+test('person: name/tagline/image/imageAttribution pass through, no dateLine (tagline already carries dates)', () => {
   const content = buildDrawerContent({ entityType: 'person', entity: napoleon });
   expect(content.name).toBe('Napoleon');
-  expect(content.dateLine).toBe('August 1769 – May 1821');
+  expect(content.dateLine).toBeUndefined();
   expect(content.tagline).toBe('French military commander and emperor');
   expect(content.wikipediaUrl).toBe('https://en.wikipedia.org/wiki/Napoleon');
   expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Napoleon.jpg');
@@ -87,11 +85,6 @@ test('person: description passes through when present', () => {
 test('person: description is undefined when absent (no Wikipedia article resolved)', () => {
   const content = buildDrawerContent({ entityType: 'person', entity: napoleon });
   expect(content.description).toBeUndefined();
-});
-
-test('person: dateLine says "present" for a living person (no lifespan.end)', () => {
-  const content = buildDrawerContent({ entityType: 'person', entity: livingPerson });
-  expect(content.dateLine).toBe('1950 – present');
 });
 
 test('person: reignLines built one-per-period, "title: start – end", ordered as given', () => {
@@ -123,14 +116,9 @@ test('person: reignPeriod with no end says "present"', () => {
   expect(content.reignLines).toEqual(['King: 1804 – present']);
 });
 
-test('War: dateLine spans period.start – period.end', () => {
+test('War: no dateLine (tagline already carries dates)', () => {
   const content = buildDrawerContent({ entityType: 'war', entity: koreanWar });
-  expect(content.dateLine).toBe('June 1950 – July 1953');
-});
-
-test('War: dateLine says "present" for an ongoing war (no period.end)', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: ongoingWar });
-  expect(content.dateLine).toBe('2022 – present');
+  expect(content.dateLine).toBeUndefined();
 });
 
 test('War: image/imageAttribution pass through when present', () => {
@@ -157,9 +145,9 @@ test('War: description is undefined when absent (no Wikipedia article resolved)'
   expect(content.description).toBeUndefined();
 });
 
-test('WarEvent: dateLine is a single point (at), not a range', () => {
+test('WarEvent: no dateLine (tagline already carries dates)', () => {
   const content = buildDrawerContent({ entityType: 'war', entity: battle });
-  expect(content.dateLine).toBe('July 1863');
+  expect(content.dateLine).toBeUndefined();
 });
 
 test('WarEvent: never carries reignLines (not a Person)', () => {
