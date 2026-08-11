@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
-import type { Discovery } from '../../shared/types';
-import { assignRows, mapDiscoveries } from './map-to-items';
+import type { Milestone } from '../../shared/types';
+import { assignRows, mapMilestones } from './map-to-items';
 import {
-  DISCOVERY_CATEGORY_COLORS,
-  EVENTS_LABEL_LINE_HEIGHT_PX,
-  EVENTS_LABEL_MAX_WIDTH_PX,
-  EVENTS_MARKER_LABEL_GAP,
+  MILESTONE_CATEGORY_COLORS,
+  MILESTONES_LABEL_LINE_HEIGHT_PX,
+  MILESTONES_LABEL_MAX_WIDTH_PX,
+  MILESTONES_MARKER_LABEL_GAP,
   LANE_TOP_PADDING,
   MIN_ROW_GAP_PX,
   POINT_RADIUS,
@@ -14,7 +14,7 @@ import {
   estimateLabelWidthPx,
   wrapLabelLines,
 } from './options';
-import styles from './EventsLane.module.css';
+import styles from './MilestonesLane.module.css';
 
 interface PointLayout {
   id: string;
@@ -25,28 +25,29 @@ interface PointLayout {
   fill: string;
 }
 
-interface EventsLaneProps {
-  discoveries: Discovery[];
+interface MilestonesLaneProps {
+  milestones: Milestone[];
   xScale: d3.ScaleLinear<number, number>;
 }
 
-// discoveries.json is always single-year, so every entry is a point. A
+// milestones.json is always single-year, so every entry is a point. A
 // label wraps across multiple lines (wrapLabelLines, bounded to
-// EVENTS_LABEL_MAX_WIDTH_PX) rather than staying on one line, so two things
-// change from the single-line lanes: row-collision extents use each label's
-// (now much narrower, bounded) wrapped width instead of its full-name
-// width, and each row's vertical pitch — for both its marker and its label,
-// which move down together — is computed from the tallest label actually
-// assigned to it, rather than a fixed MARKER_ROW_PITCH, so a multi-line
-// label can never bleed into the row below it. See rowLayoutByRow below.
-export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
+// MILESTONES_LABEL_MAX_WIDTH_PX) rather than staying on one line, so two
+// things change from the single-line lanes: row-collision extents use each
+// label's (now much narrower, bounded) wrapped width instead of its
+// full-name width, and each row's vertical pitch — for both its marker and
+// its label, which move down together — is computed from the tallest label
+// actually assigned to it, rather than a fixed MARKER_ROW_PITCH, so a
+// multi-line label can never bleed into the row below it. See
+// rowLayoutByRow below.
+export function MilestonesLane({ milestones, xScale }: MilestonesLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
-  const items = useMemo(() => mapDiscoveries(discoveries), [discoveries]);
+  const items = useMemo(() => mapMilestones(milestones), [milestones]);
   const linesById = useMemo(() => {
     const map = new Map<string, string[]>();
     for (const item of items) {
-      map.set(item.id, wrapLabelLines(item.name, EVENTS_LABEL_MAX_WIDTH_PX));
+      map.set(item.id, wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX));
     }
     return map;
   }, [items]);
@@ -77,9 +78,9 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
     let y = LANE_TOP_PADDING + POINT_RADIUS; // marker center for row 0
     for (let row = 0; row < maxLinesByRow.length; row += 1) {
       markerYs[row] = y;
-      const labelY = y + POINT_RADIUS + EVENTS_MARKER_LABEL_GAP;
+      const labelY = y + POINT_RADIUS + MILESTONES_MARKER_LABEL_GAP;
       labelStarts[row] = labelY;
-      y = labelY + (maxLinesByRow[row] ?? 1) * EVENTS_LABEL_LINE_HEIGHT_PX + ROW_GAP + POINT_RADIUS;
+      y = labelY + (maxLinesByRow[row] ?? 1) * MILESTONES_LABEL_LINE_HEIGHT_PX + ROW_GAP + POINT_RADIUS;
     }
     return { markerYs, labelStarts, totalHeight: y - POINT_RADIUS };
   }, [items, linesById, rowOfItem]);
@@ -96,8 +97,8 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
           lines: linesById.get(item.id) ?? [item.name],
           x: xScale(item.startYear),
           markerY: rowLayoutByRow.markerYs[row] ?? LANE_TOP_PADDING + POINT_RADIUS,
-          labelY: rowLayoutByRow.labelStarts[row] ?? LANE_TOP_PADDING + POINT_RADIUS * 2 + EVENTS_MARKER_LABEL_GAP,
-          fill: DISCOVERY_CATEGORY_COLORS[item.category],
+          labelY: rowLayoutByRow.labelStarts[row] ?? LANE_TOP_PADDING + POINT_RADIUS * 2 + MILESTONES_MARKER_LABEL_GAP,
+          fill: MILESTONE_CATEGORY_COLORS[item.category],
         };
       }),
     [items, linesById, rowOfItem, rowLayoutByRow, xScale],
@@ -127,7 +128,7 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
       .attr('cy', (d) => d.markerY)
       .attr('fill', (d) => d.fill)
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'discovery');
+      .attr('data-entity-type', 'milestone');
 
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
@@ -137,7 +138,7 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
       // Same delegated-click wiring as the dot above, so the label is an
       // equally valid click target for opening the detail drawer.
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'discovery')
+      .attr('data-entity-type', 'milestone')
       .each(function renderLines(d) {
         // A trailing space on every non-final tspan reproduces the original
         // single-space-separated name in the rendered text's textContent —
@@ -148,7 +149,7 @@ export function EventsLane({ discoveries, xScale }: EventsLaneProps) {
           .data(d.lines)
           .join('tspan')
           .attr('x', d.x)
-          .attr('dy', (_line, i) => (i === 0 ? 0 : EVENTS_LABEL_LINE_HEIGHT_PX))
+          .attr('dy', (_line, i) => (i === 0 ? 0 : MILESTONES_LABEL_LINE_HEIGHT_PX))
           .text((line, i) => (i < d.lines.length - 1 ? `${line} ` : line));
       });
   }, [layout]);

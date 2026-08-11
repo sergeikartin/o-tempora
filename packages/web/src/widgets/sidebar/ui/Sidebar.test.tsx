@@ -5,7 +5,7 @@ import { OCCUPATION_DOMAINS } from '../../../shared/types';
 
 afterEach(cleanup);
 
-const fameScoreValues = { people: 90, wars: 100, discoveries: 200 };
+const fameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
 
 test('renders one Legend pill per OccupationDomain', () => {
   const { container } = render(

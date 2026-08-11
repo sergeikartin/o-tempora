@@ -2,8 +2,8 @@ import fsPromises from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateSparqlResultShape } from "./validate-sparql-result.js";
-import { validateEnrichedEventsFile } from "./fetch-events-enrichment.js";
-import { validateEnrichedWarsFile } from "./fetch-wars-enrichment.js";
+import { validateEnrichedMilestonesFile } from "./fetch-milestones-enrichment.js";
+import { validateEnrichedConflictsFile } from "./fetch-conflicts-enrichment.js";
 import { batchedCommonsImageAttributionFetch } from "./batched-commons-image-attribution-fetch.js";
 import { LANES, type Lane } from "./lane.js";
 
@@ -34,32 +34,32 @@ async function loadPeopleImageEntries(): Promise<ImageEntry[]> {
     .filter((entry): entry is ImageEntry => entry !== undefined);
 }
 
-async function loadWarsImageEntries(): Promise<ImageEntry[]> {
-  const enrichedWars = validateEnrichedWarsFile(
-    JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "wars-curated-enriched.raw.json"), "utf8")),
+async function loadConflictsImageEntries(): Promise<ImageEntry[]> {
+  const enrichedConflicts = validateEnrichedConflictsFile(
+    JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "conflicts-curated-enriched.raw.json"), "utf8")),
   );
-  return enrichedWars.wars
-    .filter((war): war is typeof war & { image: string } => Boolean(war.image))
-    .map((war) => ({ id: war.id, imageUri: war.image }));
+  return enrichedConflicts.conflicts
+    .filter((conflict): conflict is typeof conflict & { image: string } => Boolean(conflict.image))
+    .map((conflict) => ({ id: conflict.id, imageUri: conflict.image }));
 }
 
-async function loadDiscoveriesImageEntries(): Promise<ImageEntry[]> {
-  const enrichedEvents = validateEnrichedEventsFile(
-    JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "events-curated-enriched.raw.json"), "utf8")),
+async function loadMilestonesImageEntries(): Promise<ImageEntry[]> {
+  const enrichedMilestones = validateEnrichedMilestonesFile(
+    JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "milestones-curated-enriched.raw.json"), "utf8")),
   );
-  return enrichedEvents.events
-    .filter((event): event is typeof event & { image: string } => Boolean(event.image))
-    .map((event) => ({ id: event.id, imageUri: event.image }));
+  return enrichedMilestones.milestones
+    .filter((milestone): milestone is typeof milestone & { image: string } => Boolean(milestone.image))
+    .map((milestone) => ({ id: milestone.id, imageUri: milestone.image }));
 }
 
 const LOAD_IMAGE_ENTRIES: Record<Lane, () => Promise<ImageEntry[]>> = {
   people: loadPeopleImageEntries,
-  wars: loadWarsImageEntries,
-  discoveries: loadDiscoveriesImageEntries,
+  conflicts: loadConflictsImageEntries,
+  milestones: loadMilestonesImageEntries,
 };
 
-// Reads the raw files fetch-taglines.ts/fetch-events-enrichment.ts/
-// fetch-wars-enrichment.ts already wrote (each now carrying a raw P18
+// Reads the raw files fetch-taglines.ts/fetch-milestones-enrichment.ts/
+// fetch-conflicts-enrichment.ts already wrote (each now carrying a raw P18
 // `image` URI) and, for every entity that resolved an image, runs a second
 // batched Commons `imageinfo` pass to resolve `imageAttribution`
 // (dynamic-tooltips spec §4.2) — a distinct MediaWiki REST API from

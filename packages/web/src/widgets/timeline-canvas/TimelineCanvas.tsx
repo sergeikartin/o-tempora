@@ -7,7 +7,7 @@ import {
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
 } from 'react';
-import type { Discovery, Person, WarsAndConflictsEntry } from '../../shared/types';
+import type { Milestone, Person, ConflictEntry } from '../../shared/types';
 import { DEFAULT_VIEWPORT_START } from '../../shared/config';
 import type { FameScoreValues } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
@@ -23,8 +23,8 @@ import {
 } from './options';
 import { filterByFameScore } from './map-to-items';
 import { PeopleLane } from './PeopleLane';
-import { WarsLane } from './WarsLane';
-import { EventsLane } from './EventsLane';
+import { ConflictsLane } from './ConflictsLane';
+import { MilestonesLane } from './MilestonesLane';
 import { YearAxis } from './YearAxis';
 import styles from './TimelineCanvas.module.css';
 
@@ -40,8 +40,8 @@ const MIN_SCROLLBAR_THUMB_PX = 24;
 
 interface TimelineCanvasProps {
   people: Person[];
-  wars: WarsAndConflictsEntry[];
-  discoveries: Discovery[];
+  conflicts: ConflictEntry[];
+  milestones: Milestone[];
   // Sidebar-set fame-score floors (ADR 0003) — zoom no longer drives entity
   // density, so this is a plain prop, not derived from pixelsPerYear.
   fameScoreValues: FameScoreValues;
@@ -53,9 +53,9 @@ interface TimelineCanvasProps {
   onEntityClick: (ref: SelectedEntityRef) => void;
 }
 
-export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onEntityClick }: TimelineCanvasProps) {
+export function TimelineCanvas({ people, conflicts, milestones, fameScoreValues, onEntityClick }: TimelineCanvasProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  // People and Wars+Events are `position: sticky; left: 0` (see their CSS) so
+  // People and Conflicts+Milestones are `position: sticky; left: 0` (see their CSS) so
   // each one's own vertical scrollbar stays docked to the viewport's right
   // edge no matter where scrollRef is panned to horizontally — a sticky
   // element never moves, so it doesn't scroll its own totalWidth-wide
@@ -65,7 +65,7 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
   // user-drivable, which is exactly what's wanted since scrollRef alone
   // should own the horizontal gesture).
   const peopleLaneRef = useRef<HTMLDivElement>(null);
-  const warsEventsLaneRef = useRef<HTMLDivElement>(null);
+  const conflictsMilestonesLaneRef = useRef<HTMLDivElement>(null);
   // Drag-to-pan state: mouse-only (touch already gets native scroll-by-swipe
   // on the overflow-x container for free, and layering pointer-drag on top
   // of that would double-handle touch input). Start position lives in a ref
@@ -122,7 +122,7 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
         frame = 0;
         setScrollLeft(container.scrollLeft);
         if (peopleLaneRef.current) peopleLaneRef.current.scrollLeft = container.scrollLeft;
-        if (warsEventsLaneRef.current) warsEventsLaneRef.current.scrollLeft = container.scrollLeft;
+        if (conflictsMilestonesLaneRef.current) conflictsMilestonesLaneRef.current.scrollLeft = container.scrollLeft;
       });
     };
     container.addEventListener('scroll', onScroll, { passive: true });
@@ -161,13 +161,13 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
     () => filterByFameScore(people, fameScoreValues.people),
     [people, fameScoreValues.people],
   );
-  const filteredWars = useMemo(
-    () => filterByFameScore(wars, fameScoreValues.wars),
-    [wars, fameScoreValues.wars],
+  const filteredConflicts = useMemo(
+    () => filterByFameScore(conflicts, fameScoreValues.conflicts),
+    [conflicts, fameScoreValues.conflicts],
   );
-  const filteredDiscoveries = useMemo(
-    () => filterByFameScore(discoveries, fameScoreValues.discoveries),
-    [discoveries, fameScoreValues.discoveries],
+  const filteredMilestones = useMemo(
+    () => filterByFameScore(milestones, fameScoreValues.milestones),
+    [milestones, fameScoreValues.milestones],
   );
 
   // Real browsers can measure the container before first paint; jsdom (and
@@ -353,7 +353,7 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
       // Validated against the real EntityType union, not just cast — a
       // future Lane bug or a stray data-entity-id-bearing element added
       // elsewhere in the scroll container should fail closed (no click
-      // reported) rather than silently being treated as a discovery, which
+      // reported) rather than silently being treated as a milestone, which
       // is what App.tsx's id lookup falls through to for any unrecognized
       // entityType.
       const entityType = ENTITY_TYPES.find((candidate) => candidate === entityTypeAttr);
@@ -401,9 +401,9 @@ export function TimelineCanvas({ people, wars, discoveries, fameScoreValues, onE
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
           <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
         </div>
-        <div ref={warsEventsLaneRef} className={styles.warsEventsLane}>
-          <WarsLane wars={filteredWars} xScale={scale} />
-          <EventsLane discoveries={filteredDiscoveries} xScale={scale} />
+        <div ref={conflictsMilestonesLaneRef} className={styles.conflictsMilestonesLane}>
+          <ConflictsLane conflicts={filteredConflicts} xScale={scale} />
+          <MilestonesLane milestones={filteredMilestones} xScale={scale} />
         </div>
       </div>
       <div ref={trackRef} className={styles.scrollbarTrack} onPointerDown={handleTrackPointerDown}>

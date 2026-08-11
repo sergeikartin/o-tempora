@@ -2,7 +2,7 @@
 
 <!-- UI/visual design tokens. Read before touching styling. -->
 
-**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **conflict category** (Wars & Conflicts), **discovery category** (Events & Inventions), or **occupation domain** (People) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Wars & Conflicts'/Events & Inventions' below their marker). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `ConflictCategory`, `DiscoveryCategory`, and `OccupationDomain` are separate enums from separate sources (Wikidata SPARQL, hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified.
+**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **conflict category** (Conflicts), **milestone category** (Milestones), or **occupation domain** (People) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Conflicts'/Milestones' below their marker). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `ConflictCategory`, `MilestoneCategory`, and `OccupationDomain` are separate enums from separate sources (Wikidata SPARQL, hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified.
 
 ## Color Palette
 
@@ -20,7 +20,7 @@
 
 ## Conflict Category Palette
 
-Used as the stroke color for Wars & Conflicts' range lines and point-dot markers. Keyed by `ConflictCategory` (`packages/shared-types`) — a curator-assigned taxonomy (see `CONTEXT.md`), disjoint from `DiscoveryCategory` even where a name might coincide. Hue-optimized against the Occupation Domain Palette and Events & Inventions' own `DiscoveryCategory` palette (24 colors total sharing one hue circle) per `.scratch/wars-conflicts-taxonomy/issues/02-rename-expand-conflict-category.md`'s Answer — war-family categories (war/military-operation) grouped into warm hues, the rest into cooler ones. `battle`/`siege`/`peace-treaty` were dropped from the six-value taxonomy (`.scratch/wars-curated-source/spec.md`) as inherently sub-events of a war rather than standalone conflicts; their palette entries dropped with them, not left unused.
+Used as the stroke color for Conflicts' range lines and point-dot markers. Keyed by `ConflictCategory` (`packages/shared-types`) — a curator-assigned taxonomy (see `CONTEXT.md`), disjoint from `MilestoneCategory` even where a name might coincide. Hue-optimized against the Occupation Domain Palette and Milestones' own `MilestoneCategory` palette (24 colors total sharing one hue circle) per `.scratch/wars-conflicts-taxonomy/issues/02-rename-expand-conflict-category.md`'s Answer — war-family categories (war/military-operation) grouped into warm hues, the rest into cooler ones. `battle`/`siege`/`peace-treaty` were dropped from the six-value taxonomy (`.scratch/wars-curated-source/spec.md`) as inherently sub-events of a war rather than standalone conflicts; their palette entries dropped with them, not left unused.
 
 | Category | Token | Hex |
 |---|---|---|
@@ -62,6 +62,6 @@ People-lane only. Keyed by Pantheon's `OccupationDomain` (not `ConflictCategory`
 |---|---|---|
 | `radius-full` | `9999px` | Filter chips |
 | `radius-sm` | `6px` | Event point-markers |
-| `radius-md` | `8px` | Not currently consumed by `widgets/timeline-canvas` — Period lines (People, Wars & Conflicts) use `stroke-linecap: round` for their rounded caps instead of a corner radius |
+| `radius-md` | `8px` | Not currently consumed by `widgets/timeline-canvas` — Period lines (People, Conflicts) use `stroke-linecap: round` for their rounded caps instead of a corner radius |
 | `radius-lg` | `12px` | Panels |
 | `radius-xl` | `16px` | Reserved for future modal/overlay |

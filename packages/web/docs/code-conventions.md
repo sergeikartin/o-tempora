@@ -29,7 +29,7 @@
 - Zoom is one shared scale/state across all three lanes (they must stay in lockstep), clamped to a fixed min/max year-span.
 - **Sidebar fame-score filters gate entity density manually — zoom controls only the time-scale**, not which entities render (`packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md`). Filtering is client-side against the data-pipeline's already-broad output — no re-ranking.
 - **The Year Axis is deliberately plain HTML/CSS, not SVG/D3** like the rest of the widget — a per-tick-DOM-node approach was previously most of initial-load LCP, so don't reintroduce one. Decade labels are windowed to the visible scroll range and omitted below a minimum on-screen spacing to avoid collision at low zoom.
-- Wars & Conflicts and Events & Inventions render directly off pre-split, lane-scoped data from the data-pipeline — no client-side category filtering to route entries between lanes.
+- Conflicts and Milestones render directly off pre-split, lane-scoped data from the data-pipeline — no client-side category filtering to route entries between lanes.
 - A person's reign periods render as an accent line under their lifespan line, same row — plain layout math, no subgroup/stacking abstraction needed.
 - Colliding items in every lane are row-stacked independently using one shared greedy interval-stacking algorithm, sized in pixel-space rather than year-space, since on-screen label width isn't proportional to underlying date range.
 - Each lane's D3 join keys off literal marker classes, never CSS-Module classes — CSS Modules are styling-only and must never be used as D3 join selectors. A marker class can be shared across lanes, so code querying it (including tests) must scope to the owning lane's `<svg>`, not assume one per page.

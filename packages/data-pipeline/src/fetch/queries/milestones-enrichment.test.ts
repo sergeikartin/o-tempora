@@ -1,15 +1,15 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildEventsEnrichmentQuery } from "./events-enrichment.js";
+import { buildMilestonesEnrichmentQuery } from "./milestones-enrichment.js";
 import { PAGEVIEWS_LANGUAGES } from "../pageviews-languages.js";
 
 test("VALUES clause includes one wd: entry per given QID", () => {
-  const query = buildEventsEnrichmentQuery(["Q988780", "Q20124"]);
+  const query = buildMilestonesEnrichmentQuery(["Q988780", "Q20124"]);
   assert.match(query, /VALUES \?event \{ wd:Q988780 wd:Q20124 \}/);
 });
 
 test("requires wikibase:sitelinks, and leaves a per-language article title, country, image, and tagline optional", () => {
-  const query = buildEventsEnrichmentQuery(["Q1"]);
+  const query = buildMilestonesEnrichmentQuery(["Q1"]);
   assert.match(query, /\?event wikibase:sitelinks \?sitelinks \./);
   assert.equal(PAGEVIEWS_LANGUAGES.length, 7);
   for (const lang of PAGEVIEWS_LANGUAGES) {
@@ -25,7 +25,7 @@ test("requires wikibase:sitelinks, and leaves a per-language article title, coun
 });
 
 test("selects sitelinks/per-language article title vars/country/image/tagline", () => {
-  const query = buildEventsEnrichmentQuery(["Q1"]);
+  const query = buildMilestonesEnrichmentQuery(["Q1"]);
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `\\?article${lang[0]!.toUpperCase()}${lang.slice(1)}`).join(
     " ",
   );

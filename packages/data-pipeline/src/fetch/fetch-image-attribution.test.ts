@@ -52,10 +52,10 @@ function stubCommonsFetch(t: TestContext, artistByTitle: Record<string, string>)
   });
 }
 
-test("fetchImageAttribution(\"wars\") writes only wars-image-attribution.raw.json, leaving people/discoveries untouched", async (t) => {
+test("fetchImageAttribution(\"conflicts\") writes only conflicts-image-attribution.raw.json, leaving people/milestones untouched", async (t) => {
   stubReads(t, {
-    "wars-curated-enriched.raw.json": {
-      wars: [
+    "conflicts-curated-enriched.raw.json": {
+      conflicts: [
         {
           id: "Q2",
           name: "Peloponnesian War",
@@ -70,10 +70,10 @@ test("fetchImageAttribution(\"wars\") writes only wars-image-attribution.raw.jso
   const written = stubWrites(t);
   stubCommonsFetch(t, { "File:War.jpg": "Jane Doe" });
 
-  await fetchImageAttribution("wars");
+  await fetchImageAttribution("conflicts");
 
-  assert.deepEqual([...written.keys()], ["wars-image-attribution.raw.json"]);
-  assert.deepEqual(written.get("wars-image-attribution.raw.json"), { Q2: "Jane Doe, via Wikimedia Commons" });
+  assert.deepEqual([...written.keys()], ["conflicts-image-attribution.raw.json"]);
+  assert.deepEqual(written.get("conflicts-image-attribution.raw.json"), { Q2: "Jane Doe, via Wikimedia Commons" });
 });
 
 test("fetchImageAttribution() with no lane writes all three lanes' files", async (t) => {
@@ -89,8 +89,8 @@ test("fetchImageAttribution() with no lane writes all three lanes' files", async
         ],
       },
     },
-    "wars-curated-enriched.raw.json": { wars: [] },
-    "events-curated-enriched.raw.json": { events: [] },
+    "conflicts-curated-enriched.raw.json": { conflicts: [] },
+    "milestones-curated-enriched.raw.json": { milestones: [] },
   });
   const written = stubWrites(t);
   stubCommonsFetch(t, {});
@@ -99,6 +99,6 @@ test("fetchImageAttribution() with no lane writes all three lanes' files", async
 
   assert.deepEqual(
     new Set(written.keys()),
-    new Set(["people-image-attribution.raw.json", "wars-image-attribution.raw.json", "discoveries-image-attribution.raw.json"]),
+    new Set(["people-image-attribution.raw.json", "conflicts-image-attribution.raw.json", "milestones-image-attribution.raw.json"]),
   );
 });

@@ -77,9 +77,9 @@
   user-select: none;
 }
 
-/* 4:2 height ratio across People and the combined Wars & Conflicts / Events
-   & Inventions region — People takes two-thirds of the scroll container,
-   Wars+Events share the remaining third as one scroll region (below).
+/* 4:2 height ratio across People and the combined Conflicts / Milestones
+   region — People takes two-thirds of the scroll container,
+   Conflicts+Milestones share the remaining third as one scroll region (below).
    min-height: 0 lets People shrink below content height so its own
    overflow-y, not flexbox, handles row overflow (11 rows over 49 people,
    today).
@@ -113,11 +113,11 @@
   left: 0;
 }
 
-/* Fixed-height row between People and Wars & Conflicts — d3.axisBottom's
+/* Fixed-height row between People and Conflicts — d3.axisBottom's
    ticks/labels, not part of the 4:2 lane ratio above/below. Kept at the
    inline totalWidth style (via TimelineCanvas.tsx), wider than
    .scrollContainer — that mismatch is what drives the shared horizontal
-   scrollbar above, and (now that .peopleLane/.warsEventsLane no longer
+   scrollbar above, and (now that .peopleLane/.conflictsMilestonesLane no longer
    carry that width themselves) the only thing that does. Not sticky: it has
    no vertical scrollbar of its own to keep on screen, and it's meant to pan
    normally so its ticks track the visible year range. */
@@ -125,13 +125,13 @@
   flex: 0 0 auto;
 }
 
-/* Wars & Conflicts and Events & Inventions share one vertical scroll region
+/* Conflicts and Milestones share one vertical scroll region
    (rather than each owning its own) so a viewer scans both at once instead
    of hunting for whichever lane happens to have the item they want scrolled
    out of view. Ratio 2 (vs. People's 4) preserves the old 4:1:1 split's
-   combined Wars+Events share. position: sticky/overflow-x: hidden for the
+   combined Conflicts+Milestones share. position: sticky/overflow-x: hidden for the
    same reason as .peopleLane above. */
-.warsEventsLane {
+.conflictsMilestonesLane {
   flex: 2 1 0;
   min-height: 0;
   overflow-y: auto;

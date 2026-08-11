@@ -1,14 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { ConflictCategory, DiscoveryCategory, Region, ReignPeriod } from "@same-sky/shared-types";
+import type { ConflictCategory, MilestoneCategory, Region, ReignPeriod } from "@same-sky/shared-types";
 import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
 import { parsePantheonCsv, type PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
-import { validateEnrichedEventsFile } from "../fetch/fetch-events-enrichment.js";
-import { validateEnrichedWarsFile } from "../fetch/fetch-wars-enrichment.js";
+import { validateEnrichedMilestonesFile } from "../fetch/fetch-milestones-enrichment.js";
+import { validateEnrichedConflictsFile } from "../fetch/fetch-conflicts-enrichment.js";
 import { groupReigns } from "./group-reigns.js";
 import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
-import { tagCuratedDiscovery, tagCuratedWar } from "./tag-events.js";
+import { tagCuratedMilestone, tagCuratedConflict } from "./tag-milestones.js";
 import { rankByFameScore, scoreAndRankByHpi } from "./score.js";
 
 export type TaggedPerson = PantheonPersonRow &
@@ -23,26 +23,26 @@ export type TaggedPerson = PantheonPersonRow &
     imageAttribution?: string;
   };
 
-export interface TaggedDiscovery {
+export interface TaggedMilestone {
   id: string;
   label: string;
   article?: string;
   // Absent means the live enrichment pass couldn't resolve an English
   // tagline for this curated QID — Output drops the row (no fallback to
   // the curated file's old hand-typed text), the same "no fallback, drop
-  // instead" behavior Wars/People already have.
+  // instead" behavior Conflicts/People already have.
   tagline?: string;
   description?: string;
   year: number;
   sitelinks: number;
   fameScore: number;
-  category: DiscoveryCategory;
+  category: MilestoneCategory;
   regionTags: Region[];
   image?: string;
   imageAttribution?: string;
 }
 
-export interface TaggedWar {
+export interface TaggedConflict {
   id: string;
   label: string;
   article?: string;
@@ -83,7 +83,7 @@ interface PersonEnrichment {
 // but P18 is not — a person with more than one English-Wikidata image
 // claim produces multiple binding rows for the same ?person, so this keeps
 // only the first image seen per person (first-wins, same convention
-// fetchEventsEnrichment's own binding merge uses) rather than letting
+// fetchMilestonesEnrichment's own binding merge uses) rather than letting
 // whichever row the endpoint returns last silently overwrite it.
 function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
   const raw = loadRaw("people-taglines.raw.json");
@@ -106,7 +106,7 @@ function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
 // fetch-image-attribution.ts/fetch-pageviews.ts/fetch-wikipedia-extracts.ts
 // each write one raw file per lane (docs/adr/0012-lane-scoped-fetch.md) —
 // keyed by the same ids as loadPeopleEnrichmentMap (Wikidata QID) for
-// People, and by the curated row's own id for Wars/Discoveries. A missing
+// People, and by the curated row's own id for Conflicts/Milestones. A missing
 // id means that stage didn't resolve one for this entity (or the pipeline
 // hasn't been re-fetched since it was added): image attribution and
 // Wikipedia extract degrade to an absent field, never a dropped row (only
@@ -117,8 +117,8 @@ function loadRawRecord<T>(fileName: string): Record<string, T> {
   return (JSON.parse(fs.readFileSync(path.join(RAW_DIR, fileName), "utf8")) as Record<string, T> | undefined) ?? {};
 }
 
-// group -> tag -> score, per lane. People, Wars & Conflicts, and
-// Discoveries & Inventions are three entirely independent lanes end to
+// group -> tag -> score, per lane. People, Conflicts, and
+// Milestones are three entirely independent lanes end to
 // end — each fed by its own raw snapshot and scored on its own.
 // Sourced from Pantheon 2.0, not Wikidata — no grouping needed (the CSV is
 // already one row per person, unlike SPARQL's denormalized bindings).
@@ -145,78 +145,78 @@ export function transformPeople(): TaggedPerson[] {
   return scoreAndRankByHpi(tagged);
 }
 
-// Sourced from the hand-curated + enriched wars list
-// (fetch-wars-enrichment.ts's output), not a raw SPARQL binding dump —
+// Sourced from the hand-curated + enriched conflicts list
+// (fetch-conflicts-enrichment.ts's output), not a raw SPARQL binding dump —
 // already one row per conflict, so no groupRows step needed here (same
-// reasoning as transformPeople/transformDiscoveries). A missing enriched
+// reasoning as transformPeople/transformMilestones). A missing enriched
 // `sitelinks` means the enrichment pass couldn't resolve that QID; coerced
-// to 0 here so it sorts last and Output's buildWars can drop it explicitly
-// (same convention transformDiscoveries uses). Unlike Discoveries,
+// to 0 here so it sorts last and Output's buildConflicts can drop it explicitly
+// (same convention transformMilestones uses). Unlike Milestones,
 // tagline/year/endYear are also enrichment-sourced here, not
 // curator-authored — left `undefined` rather than coerced when the
-// enrichment pass didn't resolve them, since buildWars needs to
-// distinguish "no date at all" (drop) from "one date" (WarEvent) from "two
-// dates" (War).
-export function transformWars(): TaggedWar[] {
-  const enrichedPath = path.join(RAW_DIR, "wars-curated-enriched.raw.json");
-  const { wars } = validateEnrichedWarsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
-  const imageAttribution = loadRawRecord<string>("wars-image-attribution.raw.json");
-  const pageviews = loadRawRecord<number>("wars-pageviews.raw.json");
-  const wikipediaExtracts = loadRawRecord<string>("wars-wikipedia-extracts.raw.json");
+// enrichment pass didn't resolve them, since buildConflicts needs to
+// distinguish "no date at all" (drop) from "one date" (ConflictEvent) from "two
+// dates" (Conflict).
+export function transformConflicts(): TaggedConflict[] {
+  const enrichedPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
+  const { conflicts } = validateEnrichedConflictsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
+  const imageAttribution = loadRawRecord<string>("conflicts-image-attribution.raw.json");
+  const pageviews = loadRawRecord<number>("conflicts-pageviews.raw.json");
+  const wikipediaExtracts = loadRawRecord<string>("conflicts-wikipedia-extracts.raw.json");
 
-  const tagged = wars.map((war) => {
-    const { category, regionTags } = tagCuratedWar(war.category, war.countries);
+  const tagged = conflicts.map((conflict) => {
+    const { category, regionTags } = tagCuratedConflict(conflict.category, conflict.countries);
     return {
-      id: war.id,
-      label: war.name,
-      article: war.wikipediaUrl,
-      tagline: war.tagline,
-      description: wikipediaExtracts[war.id],
-      year: war.year,
-      month: war.month,
-      endYear: war.endYear,
-      endMonth: war.endMonth,
-      sitelinks: war.sitelinks ?? 0,
-      pageviews: pageviews[war.id] ?? 0,
+      id: conflict.id,
+      label: conflict.name,
+      article: conflict.wikipediaUrl,
+      tagline: conflict.tagline,
+      description: wikipediaExtracts[conflict.id],
+      year: conflict.year,
+      month: conflict.month,
+      endYear: conflict.endYear,
+      endMonth: conflict.endMonth,
+      sitelinks: conflict.sitelinks ?? 0,
+      pageviews: pageviews[conflict.id] ?? 0,
       category,
       regionTags,
-      image: war.image,
-      imageAttribution: imageAttribution[war.id],
-      parentId: war.parentId,
+      image: conflict.image,
+      imageAttribution: imageAttribution[conflict.id],
+      parentId: conflict.parentId,
     };
   });
 
   return rankByFameScore(tagged);
 }
 
-// Sourced from the hand-curated + enriched events list
-// (fetch-events-enrichment.ts's output), not a raw SPARQL binding dump —
-// already one row per event, so no groupRows step needed here either
+// Sourced from the hand-curated + enriched milestones list
+// (fetch-milestones-enrichment.ts's output), not a raw SPARQL binding dump —
+// already one row per milestone, so no groupRows step needed here either
 // (same reasoning as transformPeople). A missing enriched `sitelinks`
 // means the enrichment pass couldn't resolve that QID; coerced to 0 here
-// so it sorts last and Output's buildDiscoveries can drop it explicitly.
-export function transformDiscoveries(): TaggedDiscovery[] {
-  const enrichedPath = path.join(RAW_DIR, "events-curated-enriched.raw.json");
-  const { events } = validateEnrichedEventsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
-  const imageAttribution = loadRawRecord<string>("discoveries-image-attribution.raw.json");
-  const pageviews = loadRawRecord<number>("discoveries-pageviews.raw.json");
-  const wikipediaExtracts = loadRawRecord<string>("discoveries-wikipedia-extracts.raw.json");
+// so it sorts last and Output's buildMilestones can drop it explicitly.
+export function transformMilestones(): TaggedMilestone[] {
+  const enrichedPath = path.join(RAW_DIR, "milestones-curated-enriched.raw.json");
+  const { milestones } = validateEnrichedMilestonesFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
+  const imageAttribution = loadRawRecord<string>("milestones-image-attribution.raw.json");
+  const pageviews = loadRawRecord<number>("milestones-pageviews.raw.json");
+  const wikipediaExtracts = loadRawRecord<string>("milestones-wikipedia-extracts.raw.json");
 
-  const tagged = events.map((event) => {
-    const { category, regionTags } = tagCuratedDiscovery(event.category, event.countries);
+  const tagged = milestones.map((milestone) => {
+    const { category, regionTags } = tagCuratedMilestone(milestone.category, milestone.countries);
     return {
-      id: event.id,
-      label: event.name,
-      article: event.wikipediaUrl,
-      tagline: event.tagline,
-      description: wikipediaExtracts[event.id],
-      year: event.year,
-      sitelinks: event.sitelinks ?? 0,
-      pageviews: pageviews[event.id] ?? 0,
+      id: milestone.id,
+      label: milestone.name,
+      article: milestone.wikipediaUrl,
+      tagline: milestone.tagline,
+      description: wikipediaExtracts[milestone.id],
+      year: milestone.year,
+      sitelinks: milestone.sitelinks ?? 0,
+      pageviews: pageviews[milestone.id] ?? 0,
       category,
       regionTags,
-      image: event.image,
-      imageAttribution: imageAttribution[event.id],
+      image: milestone.image,
+      imageAttribution: imageAttribution[milestone.id],
     };
   });
 

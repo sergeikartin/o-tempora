@@ -5,14 +5,14 @@ export type { FameScoreLane };
 
 export interface FameScoreValues {
   people: number;
-  wars: number;
-  discoveries: number;
+  conflicts: number;
+  milestones: number;
 }
 
 const DEFAULT_VALUES: FameScoreValues = {
   people: FAME_SCORE_BOUNDS.people.default,
-  wars: FAME_SCORE_BOUNDS.wars.default,
-  discoveries: FAME_SCORE_BOUNDS.discoveries.default,
+  conflicts: FAME_SCORE_BOUNDS.conflicts.default,
+  milestones: FAME_SCORE_BOUNDS.milestones.default,
 };
 
 // Session-only fame-score floor state (no persistence — resets to the

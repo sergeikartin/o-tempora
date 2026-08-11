@@ -1,21 +1,21 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildWarsEnrichmentQuery } from "./wars-enrichment.js";
+import { buildConflictsEnrichmentQuery } from "./conflicts-enrichment.js";
 import { PAGEVIEWS_LANGUAGES } from "../pageviews-languages.js";
 
 test("batches ids into a single VALUES clause of wd: prefixed QIDs", () => {
-  const query = buildWarsEnrichmentQuery(["Q198", "Q362"]);
+  const query = buildConflictsEnrichmentQuery(["Q198", "Q362"]);
   assert.match(query, /VALUES \?event \{ wd:Q198 wd:Q362 \}/);
 });
 
 test("requires sitelinks (no floor — curated ids are already hand-vetted)", () => {
-  const query = buildWarsEnrichmentQuery(["Q198"]);
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
   assert.match(query, /\?event wikibase:sitelinks \?sitelinks \./);
   assert.doesNotMatch(query, /FILTER\(\?sitelinks/);
 });
 
 test("fetches a Wikipedia article title per pageviews-basket language, country, image, and English tagline, all optional", () => {
-  const query = buildWarsEnrichmentQuery(["Q198"]);
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
   assert.equal(PAGEVIEWS_LANGUAGES.length, 7);
   for (const lang of PAGEVIEWS_LANGUAGES) {
     const varName = `article${lang[0]!.toUpperCase()}${lang.slice(1)}`;
@@ -30,7 +30,7 @@ test("fetches a Wikipedia article title per pageviews-basket language, country, 
 });
 
 test("binds ?date's precision via the point-in-time/start-time statement value nodes, not the wdt: truthy shortcut", () => {
-  const query = buildWarsEnrichmentQuery(["Q198"]);
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
   assert.match(query, /\?event p:P585 \?pointInTimeStatement/);
   assert.match(query, /\?pointInTimeStatement psv:P585 \?pointInTimeValue/);
   assert.match(
@@ -48,14 +48,14 @@ test("binds ?date's precision via the point-in-time/start-time statement value n
 });
 
 test("binds ?endDate's precision the same way via P582's statement value node", () => {
-  const query = buildWarsEnrichmentQuery(["Q198"]);
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
   assert.match(query, /\?event p:P582 \?endDateStatement/);
   assert.match(query, /\?endDateStatement psv:P582 \?endDateValue/);
   assert.match(query, /\?endDateValue wikibase:timeValue \?endDate ;\s*wikibase:timePrecision \?endDatePrecision/);
 });
 
 test("selects sitelinks/per-language article title vars/country/image/tagline/date/datePrecision/endDate/endDatePrecision", () => {
-  const query = buildWarsEnrichmentQuery(["Q198"]);
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `\\?article${lang[0]!.toUpperCase()}${lang.slice(1)}`).join(
     " ",
   );
@@ -66,19 +66,19 @@ test("selects sitelinks/per-language article title vars/country/image/tagline/da
 });
 
 test("restricts each of the point-in-time/start-time/end-time statements to wikibase:BestRank, so a Preferred-rank claim always wins over a Normal-rank one", () => {
-  const query = buildWarsEnrichmentQuery(["Q198"]);
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
   assert.match(query, /\?pointInTimeStatement a wikibase:BestRank \./);
   assert.match(query, /\?startTimeStatement a wikibase:BestRank \./);
   assert.match(query, /\?endDateStatement a wikibase:BestRank \./);
 });
 
 test("orders by event/date/endDate so the earliest date wins as a tiebreak among multiple equally-best-ranked claims", () => {
-  const query = buildWarsEnrichmentQuery(["Q198"]);
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
   assert.match(query, /ORDER BY \?event \?date \?endDate\s*$/);
 });
 
 test("does not filter by year range or page with LIMIT/OFFSET (a batch of already-curated ids, not a corpus scan)", () => {
-  const query = buildWarsEnrichmentQuery(["Q198"]);
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
   assert.doesNotMatch(query, /FILTER\(\?date/);
   assert.doesNotMatch(query, /LIMIT/);
   assert.doesNotMatch(query, /OFFSET/);

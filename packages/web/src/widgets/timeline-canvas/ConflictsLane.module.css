@@ -2,16 +2,17 @@
   display: block;
 }
 
+.line,
 .dot,
-.pointName {
+.label {
   cursor: default;
 }
 
-.pointName {
+.label {
   font-family: Inter, sans-serif;
   font-size: 11px;
   /* fill is set per-item (category color) via the D3 join, not here. Clickable
-     (same data-entity-id/-type as the dot, see EventsLane.tsx) so
+     (same data-entity-id/-type as the line/dot, see ConflictsLane.tsx) so
      pointer-events stays default rather than none; user-select stays off so
      a click doesn't also select the text. */
   user-select: none;

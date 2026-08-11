@@ -1,15 +1,15 @@
 import type {
   ConflictCategory,
-  DiscoveryCategory,
+  MilestoneCategory,
   Person,
-  War,
-  WarEvent,
-  WarsAndConflictsEntry,
-  Discovery,
+  Conflict,
+  ConflictEvent,
+  ConflictEntry,
+  Milestone,
   ReignPeriod,
   YearMonth,
 } from "@same-sky/shared-types";
-import type { TaggedPerson, TaggedWar, TaggedDiscovery } from "../transform/index.js";
+import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
 
 export interface DropReport {
   dropped: number;
@@ -38,11 +38,11 @@ interface ValidatedEventRow<C> {
   category: C;
 }
 
-// Shared by buildWars/buildDiscoveries — both lanes require the same five
+// Shared by buildConflicts/buildMilestones — both lanes require the same five
 // fields before an entry is worth keeping; only what they build from a
 // validated row (the Period/PointInTime split) differs, and
-// each lane has its own category type (ConflictCategory for Wars,
-// DiscoveryCategory for Discoveries — see packages/shared-types), hence the
+// each lane has its own category type (ConflictCategory for Conflicts,
+// MilestoneCategory for Milestones — see packages/shared-types), hence the
 // type param.
 function validateEventRow<C>(
   row: { label?: string; article?: string; tagline?: string; year?: number; month?: number; category?: C },
@@ -154,8 +154,8 @@ export function buildPeople(
 
 // A curated row's `parentId` chain, validated depth-first from `id` up to
 // its root: every ancestor must exist among the rows that already survived
-// validation (built), every ancestor beyond `id` itself must be a War (a
-// WarEvent can never have children — see shared-types's parentId doc
+// validation (built), every ancestor beyond `id` itself must be a Conflict (a
+// ConflictEvent can never have children — see shared-types's parentId doc
 // comment), and the chain (Container → level 2 → level 3) is capped at 3
 // entries deep. Naturally loop-safe with no separate cycle guard needed — a
 // cyclic chain still increments depth every iteration, so it's caught by
@@ -163,7 +163,7 @@ export function buildPeople(
 // otherwise terminate.
 function validateParentChain(
   id: string,
-  built: ReadonlyMap<string, WarsAndConflictsEntry>,
+  built: ReadonlyMap<string, ConflictEntry>,
 ): { ok: true } | { ok: false; reason: string } {
   let currentId: string | undefined = id;
   let depth = 0;
@@ -173,7 +173,7 @@ function validateParentChain(
     if (!current) return { ok: false, reason: "parentId not found" };
     depth += 1;
     if (depth > 3) return { ok: false, reason: "nesting depth exceeded" };
-    if (currentId !== id && !("period" in current)) return { ok: false, reason: "parentId is not a War" };
+    if (currentId !== id && !("period" in current)) return { ok: false, reason: "parentId is not a Conflict" };
     currentId = current.parentId;
   }
 
@@ -182,12 +182,13 @@ function validateParentChain(
 
 // Shape follows what the curated row's Wikidata enrichment actually
 // resolved, not `category` — a row with both a start and an end date
-// becomes a War (a real Period); a row with only one becomes a WarEvent (a
-// PointInTime); a row with neither is dropped as an enrichment failure. See
-// shared-types's War/WarEvent doc comments.
-export function buildWars(rows: TaggedWar[]): { entries: WarsAndConflictsEntry[]; report: DropReport } {
+// becomes a Conflict (a real Period); a row with only one becomes a
+// ConflictEvent (a PointInTime); a row with neither is dropped as an
+// enrichment failure. See shared-types's Conflict/ConflictEvent doc
+// comments.
+export function buildConflicts(rows: TaggedConflict[]): { entries: ConflictEntry[]; report: DropReport } {
   const reasons: Record<string, number> = {};
-  const built = new Map<string, WarsAndConflictsEntry>();
+  const built = new Map<string, ConflictEntry>();
 
   for (const row of rows) {
     const validated = validateEventRow<ConflictCategory>(row, reasons);
@@ -212,21 +213,21 @@ export function buildWars(rows: TaggedWar[]): { entries: WarsAndConflictsEntry[]
     };
 
     if (row.endYear !== undefined) {
-      const war: War = {
+      const conflict: Conflict = {
         ...shared,
         period: {
           start: yearMonth(validated.year, validated.month),
           end: yearMonth(row.endYear, row.endMonth),
         },
       };
-      built.set(row.id, war);
+      built.set(row.id, conflict);
     } else {
-      const warEvent: WarEvent = { ...shared, at: yearMonth(validated.year, validated.month) };
-      built.set(row.id, warEvent);
+      const conflictEvent: ConflictEvent = { ...shared, at: yearMonth(validated.year, validated.month) };
+      built.set(row.id, conflictEvent);
     }
   }
 
-  const entries: WarsAndConflictsEntry[] = [];
+  const entries: ConflictEntry[] = [];
   for (const [id, entry] of built) {
     const result = validateParentChain(id, built);
     if (result.ok) {
@@ -239,27 +240,27 @@ export function buildWars(rows: TaggedWar[]): { entries: WarsAndConflictsEntry[]
   return { entries, report: { dropped: rows.length - entries.length, reasons } };
 }
 
-// sitelinks<=0 means fetch-events-enrichment.ts's SPARQL pass couldn't
-// resolve this curated QID (see transformDiscoveries's `?? 0` coercion) —
+// sitelinks<=0 means fetch-milestones-enrichment.ts's SPARQL pass couldn't
+// resolve this curated QID (see transformMilestones's `?? 0` coercion) —
 // dropped here rather than treated as a genuinely-zero-sitelink item, per
 // the map's enrichment-failure-handling decision.
-export function buildDiscoveries(rows: TaggedDiscovery[]): { discoveries: Discovery[]; report: DropReport } {
-  const discoveries: Discovery[] = [];
+export function buildMilestones(rows: TaggedMilestone[]): { milestones: Milestone[]; report: DropReport } {
+  const milestones: Milestone[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    const validated = validateEventRow<DiscoveryCategory>(row, reasons);
+    const validated = validateEventRow<MilestoneCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
       record(reasons, "missing sitelinks (enrichment failed)");
       continue;
     }
 
-    discoveries.push({
+    milestones.push({
       id: row.id,
       name: validated.name,
-      // Curated events have no month source (data/raw/events-curated.raw.json
-      // is year-only) — always year precision, unlike Wars & Conflicts.
+      // Curated milestones have no month source (data/raw/milestones-curated.raw.json
+      // is year-only) — always year precision, unlike Conflicts.
       at: yearMonth(validated.year, validated.month),
       category: validated.category,
       regionTags: row.regionTags,
@@ -272,5 +273,5 @@ export function buildDiscoveries(rows: TaggedDiscovery[]): { discoveries: Discov
     });
   }
 
-  return { discoveries, report: { dropped: rows.length - discoveries.length, reasons } };
+  return { milestones, report: { dropped: rows.length - milestones.length, reasons } };
 }

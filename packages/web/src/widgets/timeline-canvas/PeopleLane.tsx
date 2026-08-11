@@ -28,7 +28,7 @@ interface PeopleLaneProps {
   xScale: d3.ScaleLinear<number, number>;
 }
 
-// Row-stacking works in screen pixels, not years (mirrors WarsLane's
+// Row-stacking works in screen pixels, not years (mirrors ConflictsLane's
 // pixelInterval) — a person's name label is left-aligned above the start of
 // their lifespan line, so it can extend well past the line's own pixel span
 // for a short-lived person with a long name, especially at low zoom.

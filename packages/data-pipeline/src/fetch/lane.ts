@@ -1,10 +1,10 @@
 // The three top-level content tracks Fetch/Score/Tag/Output all keep
 // separate end to end (docs/adr/0001-wars-discoveries-people-separate-lanes.md).
-// "discoveries" is this pipeline's canonical public name for Events &
-// Inventions in this CLI surface — pre-existing internal fetch-stage code
-// still says "events" (fetch-events-enrichment.ts, events-curated.raw.json);
-// that rename is a separate, later effort (docs/adr/0012-lane-scoped-fetch.md).
-export const LANES = ["people", "wars", "discoveries"] as const;
+// "conflicts"/"milestones" are the current canonical lane names (People,
+// Conflicts, Milestones — docs/adr/0013-rename-lanes-to-conflicts-and-milestones.md),
+// superseding the earlier "wars"/"discoveries" CLI values that
+// docs/adr/0012-lane-scoped-fetch.md introduced.
+export const LANES = ["people", "conflicts", "milestones"] as const;
 export type Lane = (typeof LANES)[number];
 
 const LANE_FLAG_PATTERN = /^--lane=(.+)$/;

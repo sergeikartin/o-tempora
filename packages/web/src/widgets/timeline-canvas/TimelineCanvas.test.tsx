@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, afterEach, vi } from 'vitest';
 import { TimelineCanvas } from './TimelineCanvas';
-import type { Discovery, Person, WarsAndConflictsEntry } from '../../shared/types';
+import type { Milestone, Person, ConflictEntry } from '../../shared/types';
 
 afterEach(cleanup);
 
@@ -18,7 +18,7 @@ const aristotle: Person = {
 
 const fixturePeople: Person[] = [aristotle];
 
-const fixtureWars: WarsAndConflictsEntry[] = [
+const fixtureConflicts: ConflictEntry[] = [
   {
     id: 'Q8663',
     name: 'Korean War',
@@ -31,7 +31,7 @@ const fixtureWars: WarsAndConflictsEntry[] = [
   },
 ];
 
-const fixtureDiscoveries: Discovery[] = [
+const fixtureMilestones: Milestone[] = [
   {
     id: 'Q2736',
     name: 'association football',
@@ -44,29 +44,29 @@ const fixtureDiscoveries: Discovery[] = [
   },
 ];
 
-const defaultFameScoreValues = { people: 90, wars: 100, discoveries: 200 };
+const defaultFameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
 const noopEntityClick = () => {};
 
 test('renders all three lanes, each populated from its own dataset', () => {
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
   );
 
-  // Both People's lifespans and Wars & Conflicts' ranges are Periods and
+  // Both People's lifespans and Conflicts' ranges are Periods and
   // share the literal `.d3-line` marker class — two total (Aristotle + the
   // Korean War) — so this counts each lane's own <svg> (rendered in People,
-  // Wars & Conflicts, Events & Inventions order) rather than the whole page.
+  // Conflicts, Milestones order) rather than the whole page.
   const svgs = Array.from(container.querySelectorAll('svg'));
   expect(svgs).toHaveLength(3);
-  const [peopleSvg, warsSvg] = svgs as [SVGSVGElement, SVGSVGElement, SVGSVGElement];
+  const [peopleSvg, conflictsSvg] = svgs as [SVGSVGElement, SVGSVGElement, SVGSVGElement];
   expect(peopleSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Aristotle
-  expect(warsSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
+  expect(conflictsSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1); // association football
   expect(container.querySelector('.d3-name')?.textContent).toBe('Aristotle');
 });
@@ -75,15 +75,15 @@ test('the three lane sections and the year axis share the same rendered width', 
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
   );
 
   const svgs = container.querySelectorAll('svg');
-  expect(svgs).toHaveLength(3); // People, Wars & Conflicts, Events & Inventions — YearAxis is plain HTML/CSS, no svg
+  expect(svgs).toHaveLength(3); // People, Conflicts, Milestones — YearAxis is plain HTML/CSS, no svg
   const svgWidthsPx = Array.from(svgs).map((svg) => Number(svg.getAttribute('width')));
   const axisWidthPx = parseFloat(
     ((container.querySelector('.year-axis-ruler')?.parentElement as HTMLElement)?.style.width ?? '').replace('px', ''),
@@ -95,8 +95,8 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
@@ -117,8 +117,8 @@ test('dragging the custom scrollbar thumb scrolls the container, proportional to
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
@@ -157,8 +157,8 @@ test('a mousedown on the scroll container content still pans it — the custom s
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
@@ -175,8 +175,8 @@ test('clicking the scrollbar track outside the thumb jumps the viewport toward t
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
@@ -203,8 +203,8 @@ test('releasing a drag suppresses the click event that follows it', () => {
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={onEntityClick}
     />,
@@ -229,8 +229,8 @@ test('a click preceded only by sub-threshold pointer jitter still registers', ()
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={onEntityClick}
     />,
@@ -250,8 +250,8 @@ test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll alrea
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
@@ -274,8 +274,8 @@ test('the zoom-in button widens rendered lines; zoom-out narrows them back', () 
   const { container, getByLabelText } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
@@ -304,8 +304,8 @@ test('zooming does not change which entities are rendered — density is gated b
   const { container, getByLabelText } = render(
     <TimelineCanvas
       people={[lowFamePerson]}
-      wars={[]}
-      discoveries={[]}
+      conflicts={[]}
+      milestones={[]}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
@@ -331,8 +331,8 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
   const { container, rerender } = render(
     <TimelineCanvas
       people={[lowFamePerson]}
-      wars={[]}
-      discoveries={[]}
+      conflicts={[]}
+      milestones={[]}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={noopEntityClick}
     />,
@@ -342,8 +342,8 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
   rerender(
     <TimelineCanvas
       people={[lowFamePerson]}
-      wars={[]}
-      discoveries={[]}
+      conflicts={[]}
+      milestones={[]}
       fameScoreValues={{ ...defaultFameScoreValues, people: 75 }}
       onEntityClick={noopEntityClick}
     />,
@@ -356,8 +356,8 @@ test('clicking a mark reports its entity id/type via onEntityClick, resolved thr
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={onEntityClick}
     />,
@@ -374,8 +374,8 @@ test('clicking empty canvas space (no data-entity-id ancestor) does not call onE
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={onEntityClick}
     />,
@@ -387,13 +387,13 @@ test('clicking empty canvas space (no data-entity-id ancestor) does not call onE
   expect(onEntityClick).not.toHaveBeenCalled();
 });
 
-test('a mark with an unrecognized data-entity-type is ignored rather than reported (fails closed, not silently as a discovery)', () => {
+test('a mark with an unrecognized data-entity-type is ignored rather than reported (fails closed, not silently as a milestone)', () => {
   const onEntityClick = vi.fn();
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
-      wars={fixtureWars}
-      discoveries={fixtureDiscoveries}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       onEntityClick={onEntityClick}
     />,

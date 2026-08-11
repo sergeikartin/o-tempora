@@ -23,7 +23,7 @@ Required citation:
 Per CC BY-SA 4.0 Section 3(b), this derived/transformed subset of Pantheon's
 fields is itself licensed under CC BY-SA 4.0.
 
-## Wars & Conflicts (`wars.json`) and Discoveries & Inventions (`discoveries.json`)
+## Conflicts (`conflicts.json`) and Milestones (`milestones.json`)
 
 Sourced from [Wikidata](https://www.wikidata.org/), dedicated to the public
 domain under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).

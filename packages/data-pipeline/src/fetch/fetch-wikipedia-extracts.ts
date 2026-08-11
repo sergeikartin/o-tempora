@@ -3,8 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { MIN_HPI } from "./queries/min-hpi.js";
 import { parsePantheonCsv } from "./pantheon-row-shape.js";
-import { validateEnrichedWarsFile } from "./fetch-wars-enrichment.js";
-import { validateEnrichedEventsFile } from "./fetch-events-enrichment.js";
+import { validateEnrichedConflictsFile } from "./fetch-conflicts-enrichment.js";
+import { validateEnrichedMilestonesFile } from "./fetch-milestones-enrichment.js";
 import { extractWikipediaArticleTitle } from "./batched-pageviews-fetch.js";
 import { batchedWikipediaExtractFetch, type WikipediaExtractEntry } from "./batched-wikipedia-extract-fetch.js";
 import { LANES, type Lane } from "./lane.js";
@@ -12,8 +12,8 @@ import { LANES, type Lane } from "./lane.js";
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
 // People's article title comes straight from Pantheon's own `slug` column
-// (no enrichment/SPARQL round-trip needed to resolve it — unlike Wars/
-// Discoveries, whose titles are recovered from their enrichment pass's
+// (no enrichment/SPARQL round-trip needed to resolve it — unlike Conflicts/
+// Milestones, whose titles are recovered from their enrichment pass's
 // wikipediaUrl via extractWikipediaArticleTitle). Filtered to MIN_HPI, same
 // floor fetch-taglines.ts/fetch-reigns.ts apply for the same reason:
 // anything below it never survives Score. Keyed by wdId, matching this
@@ -32,47 +32,47 @@ async function loadPeopleEntries(): Promise<WikipediaExtractEntry[]> {
   return entries;
 }
 
-async function loadWarsEntries(): Promise<WikipediaExtractEntry[]> {
-  const enrichedPath = path.join(RAW_DIR, "wars-curated-enriched.raw.json");
-  const { wars } = validateEnrichedWarsFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
+async function loadConflictsEntries(): Promise<WikipediaExtractEntry[]> {
+  const enrichedPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
+  const { conflicts } = validateEnrichedConflictsFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
   const entries: WikipediaExtractEntry[] = [];
-  for (const war of wars) {
-    if (!war.wikipediaUrl) continue;
-    const title = extractWikipediaArticleTitle(war.wikipediaUrl);
-    if (title) entries.push({ id: war.id, title });
+  for (const conflict of conflicts) {
+    if (!conflict.wikipediaUrl) continue;
+    const title = extractWikipediaArticleTitle(conflict.wikipediaUrl);
+    if (title) entries.push({ id: conflict.id, title });
   }
   return entries;
 }
 
-async function loadDiscoveriesEntries(): Promise<WikipediaExtractEntry[]> {
-  const enrichedPath = path.join(RAW_DIR, "events-curated-enriched.raw.json");
-  const { events } = validateEnrichedEventsFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
+async function loadMilestonesEntries(): Promise<WikipediaExtractEntry[]> {
+  const enrichedPath = path.join(RAW_DIR, "milestones-curated-enriched.raw.json");
+  const { milestones } = validateEnrichedMilestonesFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
   const entries: WikipediaExtractEntry[] = [];
-  for (const event of events) {
-    if (!event.wikipediaUrl) continue;
-    const title = extractWikipediaArticleTitle(event.wikipediaUrl);
-    if (title) entries.push({ id: event.id, title });
+  for (const milestone of milestones) {
+    if (!milestone.wikipediaUrl) continue;
+    const title = extractWikipediaArticleTitle(milestone.wikipediaUrl);
+    if (title) entries.push({ id: milestone.id, title });
   }
   return entries;
 }
 
 const LOAD_EXTRACT_ENTRIES: Record<Lane, () => Promise<WikipediaExtractEntry[]>> = {
   people: loadPeopleEntries,
-  wars: loadWarsEntries,
-  discoveries: loadDiscoveriesEntries,
+  conflicts: loadConflictsEntries,
+  milestones: loadMilestonesEntries,
 };
 
 function toRecord(map: Map<string, string>): Record<string, string> {
   return Object.fromEntries(map);
 }
 
-// Fetches a Wikipedia lead-paragraph extract for every People/Wars/
-// Discoveries entity with a resolvable English Wikipedia article — the raw
+// Fetches a Wikipedia lead-paragraph extract for every People/Conflicts/
+// Milestones entity with a resolvable English Wikipedia article — the raw
 // foundation for the `description` field (tagline-description-split
 // spec), consumed by transform/index.ts's loadWikipediaExtractsFile calls
-// (transformPeople/transformWars/transformDiscoveries). Runs after
-// fetchPantheon() (People's slug source), fetchWarsEnrichment(), and
-// fetchEventsEnrichment() (Wars'/Discoveries' wikipediaUrl source) are
+// (transformPeople/transformConflicts/transformMilestones). Runs after
+// fetchPantheon() (People's slug source), fetchConflictsEnrichment(), and
+// fetchMilestonesEnrichment() (Conflicts'/Milestones' wikipediaUrl source) are
 // already on disk.
 //
 // A lane arg scopes the source-file read and output to one lane; the

@@ -9,8 +9,8 @@ interface SidebarProps {
 }
 
 // Always-visible alongside TimelineCanvas — a Legend (visual-only pills for
-// People's 8 OccupationDomain colors; Wars' CONFLICT_CATEGORY_COLORS and
-// Discoveries' DISCOVERY_CATEGORY_COLORS are out of scope here) and Filters
+// People's 8 OccupationDomain colors; Conflicts' CONFLICT_CATEGORY_COLORS and
+// Milestones' MILESTONE_CATEGORY_COLORS are out of scope here) and Filters
 // (the fame-score floor controls that replaced the old zoom-coupled Fame
 // Tier system, ADR 0003).
 export function Sidebar({ fameScoreValues, onFameScoreChange }: SidebarProps) {

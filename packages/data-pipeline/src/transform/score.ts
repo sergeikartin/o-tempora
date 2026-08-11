@@ -1,11 +1,11 @@
-// Fame score for Wars & Discoveries is a log-normalized blend of Wikidata
+// Fame score for Conflicts & Milestones is a log-normalized blend of Wikidata
 // sitelinks (breadth of documentation) and Wikimedia pageviews (sustained
 // real-reader interest), per ADR 0010 (packages/data-pipeline/docs/adr/
 // 0010-blend-sitelinks-and-pageviews-for-wars-discoveries-fame-score.md) —
 // no floor-filtering, same "curated list needs no floor" reasoning the
 // prior sitelinks-only ranking carried (see .scratch/wars-curated-source/
 // spec.md): every row that clears Output's enrichment-failure drop
-// (write-datasets.ts's buildWars/buildDiscoveries) is kept. Density control
+// (write-datasets.ts's buildConflicts/buildMilestones) is kept. Density control
 // for both lanes is the sidebar's user-facing fame-score floor instead
 // (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md).
 //
@@ -42,7 +42,7 @@ export function rankByFameScore<T extends { sitelinks: number; pageviews: number
 
 // People-lane fame tiers, bound to Pantheon's HPI (0-100 scale) instead of
 // Wikidata sitelinks — independent of rankBySitelinks above, which stays in
-// effect for Wars/Discoveries. Confirmed against the real 2025 dataset:
+// effect for Conflicts/Milestones. Confirmed against the real 2025 dataset:
 // hpi>=90 -> 108 people, hpi>=85 -> 423, hpi>=75 -> 3,840 (out of 126,582)
 // (.scratch/alt-data-sources/issues/03-fame-tier-hpi-thresholds.md).
 export const FAME_TIER_MIN_HPI = {
@@ -51,9 +51,9 @@ export const FAME_TIER_MIN_HPI = {
   specialist: 75,
 } as const;
 
-// Same specialist-floor shape as the old per-category Wars tier table this
-// module used to carry — People just has one flat floor, not a per-category
-// table.
+// Same specialist-floor shape as the old per-category Conflicts tier table
+// this module used to carry — People just has one flat floor, not a
+// per-category table.
 export function scoreAndRankByHpi<T extends { hpi: number }>(rows: T[]): T[] {
   return rows
     .filter((row) => row.hpi >= FAME_TIER_MIN_HPI.specialist)
