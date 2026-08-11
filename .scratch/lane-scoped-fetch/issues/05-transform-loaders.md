@@ -4,9 +4,9 @@
 
 **Blocked by:** 01 — Split `fetchImageAttribution`; 02 — Split `fetchPageviews`; 03 — Split `fetchWikipediaExtracts`
 
-**Status:** ready
+**Status:** resolved
 
-- [ ] `transformPeople`, `transformWars`, `transformDiscoveries` each read only their own lane's raw files for image attribution, pageviews (Wars/Discoveries only), and Wikipedia extracts.
-- [ ] The combined-file loader functions and their `.people`/`.wars`/`.discoveries` indexing are removed, not left dead.
-- [ ] `transform/index.test.ts` fixtures/mocks updated to match the new per-lane file reads.
-- [ ] `npm run build-data --workspace packages/data-pipeline` produces byte-identical output to a pre-change run against the same underlying data (sanity check that the split is a pure refactor, not a behavior change).
+- [x] `transformPeople`, `transformWars`, `transformDiscoveries` each read only their own lane's raw files for image attribution, pageviews (Wars/Discoveries only), and Wikipedia extracts.
+- [x] The combined-file loader functions and their `.people`/`.wars`/`.discoveries` indexing are removed, not left dead.
+- [x] `transform/index.test.ts` fixtures/mocks updated to match the new per-lane file reads.
+- [x] `npm run build-data --workspace packages/data-pipeline` produces byte-identical output to a pre-change run against the same underlying data (sanity check that the split is a pure refactor, not a behavior change).
