@@ -1,0 +1,20 @@
+.svg {
+  display: block;
+}
+
+.line,
+.dot,
+.label {
+  cursor: default;
+}
+
+.label {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  /* fill is set per-item (flat conflict color or milestone category color)
+     via the D3 join, not here. Clickable (same data-entity-id/-type as the
+     line/dot, see ConflictsMilestonesLane.tsx) so pointer-events stays
+     default rather than none; user-select stays off so a click doesn't also
+     select the text. */
+  user-select: none;
+}

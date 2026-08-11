@@ -28,6 +28,7 @@ test('mapPeople maps a person with both years to an item with matching start/end
   expect(item?.startYear).toBe(-383);
   expect(item?.endYear).toBe(-321);
   expect(item?.occupationDomain).toBe('humanities');
+  expect(item?.fameScore).toBe(317);
 });
 
 test('mapPeople falls back to today when lifespan.end is missing — still alive, not a collapsed bar', () => {
@@ -83,6 +84,7 @@ test('mapConflicts maps a Conflict to a range item (isPoint: false)', () => {
   expect(item?.startYear).toBe(1950);
   expect(item?.endYear).toBe(1953);
   expect(item?.category).toBe('war');
+  expect(item?.fameScore).toBe(350);
 });
 
 test('mapConflicts widens a zero-width conflict range (start === end) by one year', () => {
@@ -142,6 +144,7 @@ test('mapMilestones maps a milestone to a point item at its at.year', () => {
   expect(item?.name).toBe('Printing press');
   expect(item?.startYear).toBe(1440);
   expect(item?.category).toBe('communication');
+  expect(item?.fameScore).toBe(386);
 });
 
 const milestoneWithMonth: Milestone = {
@@ -167,46 +170,115 @@ test('filterByFameScore keeps a value exactly at the threshold', () => {
   expect(filterByFameScore(items, 50)).toHaveLength(1);
 });
 
-// assignRows — greedy interval-graph row stacking shared by People & Conflicts.
+// assignRows — fame-priority interval-graph row stacking shared by every
+// lane. Processes items by fameScore rounded to an integer tier (descending),
+// chronologically within a tier, id as the final tie-break — so row 0
+// accumulates the highest-fame tier, and packing stays row-minimal within
+// a tier instead of fragmenting on every hairline fame difference.
 test('assignRows places two non-overlapping intervals in the same row', () => {
   const rows = assignRows([
-    { id: 'a', startYear: 1900, endYear: 1910 },
-    { id: 'b', startYear: 1950, endYear: 1960 },
+    { id: 'a', startYear: 1900, endYear: 1910, fameScore: 100 },
+    { id: 'b', startYear: 1950, endYear: 1960, fameScore: 50 },
   ]);
   expect(rows.get('a')).toBe(rows.get('b'));
 });
 
 test('assignRows opens a new row for two overlapping intervals', () => {
   const rows = assignRows([
-    { id: 'a', startYear: 1900, endYear: 1920 },
-    { id: 'b', startYear: 1910, endYear: 1930 },
+    { id: 'a', startYear: 1900, endYear: 1920, fameScore: 100 },
+    { id: 'b', startYear: 1910, endYear: 1930, fameScore: 50 },
   ]);
   expect(rows.get('a')).not.toBe(rows.get('b'));
 });
 
 test('assignRows keeps a minimum gap between two intervals sharing a row, even without literal overlap', () => {
   const rows = assignRows([
-    { id: 'a', startYear: 1900, endYear: 1910 },
-    { id: 'b', startYear: 1911, endYear: 1920 },
+    { id: 'a', startYear: 1900, endYear: 1910, fameScore: 100 },
+    { id: 'b', startYear: 1911, endYear: 1920, fameScore: 50 },
   ]);
   expect(rows.get('a')).not.toBe(rows.get('b'));
 });
 
-test('assignRows is independent of input order (sorts by startYear internally)', () => {
-  const rows = assignRows([
-    { id: 'b', startYear: 1950, endYear: 1960 },
-    { id: 'a', startYear: 1900, endYear: 1910 },
-  ]);
-  expect(rows.get('a')).toBe(0);
-  expect(rows.get('b')).toBe(0);
+test('assignRows gives the higher-fame item row 0 when two overlapping items compete for it, regardless of input order', () => {
+  const overlapping = [
+    { id: 'famous', startYear: 1900, endYear: 1920, fameScore: 90 },
+    { id: 'obscure', startYear: 1910, endYear: 1930, fameScore: 10 },
+  ];
+  const forward = assignRows(overlapping);
+  expect(forward.get('famous')).toBe(0);
+  expect(forward.get('obscure')).toBe(1);
+
+  const reversed = assignRows([...overlapping].reverse());
+  expect(reversed.get('famous')).toBe(0);
+  expect(reversed.get('obscure')).toBe(1);
+});
+
+test('assignRows processes chronologically within the same fame tier, regardless of input order', () => {
+  // Same rounded tier (50), but 'earlier' starts first — a time-ordered
+  // pass places it in row 0 and 'later' (which overlaps it) in row 1.
+  const sameTier = [
+    { id: 'later', startYear: 1910, endYear: 1930, fameScore: 50.4 },
+    { id: 'earlier', startYear: 1900, endYear: 1920, fameScore: 49.6 },
+  ];
+  const forward = assignRows(sameTier);
+  const reversed = assignRows([...sameTier].reverse());
+  expect(forward.get('earlier')).toBe(0);
+  expect(forward.get('later')).toBe(1);
+  expect(reversed.get('earlier')).toBe(0);
+  expect(reversed.get('later')).toBe(1);
+});
+
+test('assignRows breaks a same-tier, same-start-year tie by id, deterministically regardless of input order', () => {
+  const tied = [
+    { id: 'a', startYear: 1900, endYear: 1920, fameScore: 50 },
+    { id: 'b', startYear: 1900, endYear: 1930, fameScore: 50 },
+  ];
+  const forward = assignRows(tied);
+  const reversed = assignRows([...tied].reverse());
+  expect(forward.get('a')).toBe(0);
+  expect(forward.get('b')).toBe(1);
+  expect(reversed.get('a')).toBe(0);
+  expect(reversed.get('b')).toBe(1);
+});
+
+test('assignRows sorts by the rounded tier, not the raw score — a tiny raw gap across a rounding boundary still separates tiers', () => {
+  // 89.6 rounds up to tier 90; 89.4 rounds down to tier 89 — a 0.2 raw
+  // difference, but two different tiers, so the tier-90 item must win row 0
+  // even though a same-tier item that started earlier would have.
+  const overlapping = [
+    { id: 'tier-89', startYear: 1900, endYear: 1920, fameScore: 89.4 },
+    { id: 'tier-90', startYear: 1905, endYear: 1925, fameScore: 89.6 },
+  ];
+  const forward = assignRows(overlapping);
+  expect(forward.get('tier-90')).toBe(0);
+  expect(forward.get('tier-89')).toBe(1);
+
+  const reversed = assignRows([...overlapping].reverse());
+  expect(reversed.get('tier-90')).toBe(0);
+  expect(reversed.get('tier-89')).toBe(1);
 });
 
 test('assignRows reuses a row once it clears, rather than always opening a new one', () => {
   const rows = assignRows([
-    { id: 'a', startYear: 1900, endYear: 1910 },
-    { id: 'b', startYear: 1905, endYear: 1915 },
-    { id: 'c', startYear: 1920, endYear: 1930 },
+    { id: 'a', startYear: 1900, endYear: 1910, fameScore: 100 },
+    { id: 'b', startYear: 1905, endYear: 1915, fameScore: 90 },
+    { id: 'c', startYear: 1920, endYear: 1930, fameScore: 80 },
   ]);
   expect(rows.get('a')).not.toBe(rows.get('b'));
   expect(rows.get('c')).toBe(rows.get('a'));
+});
+
+test("assignRows lets a lower-fame item slot in before an already-placed higher-fame item's start, not just after its end", () => {
+  // 'famous' is processed first (highest fame) and claims row 0 for
+  // [1950, 1960]. 'obscure' is processed later but starts well *before*
+  // it, at [1900, 1910] — the old chronological-processing algorithm only
+  // ever compared against a row's rightmost extent, so it couldn't detect
+  // this as a non-overlap; the fame-priority version must check the whole
+  // row.
+  const rows = assignRows([
+    { id: 'famous', startYear: 1950, endYear: 1960, fameScore: 100 },
+    { id: 'obscure', startYear: 1900, endYear: 1910, fameScore: 10 },
+  ]);
+  expect(rows.get('famous')).toBe(0);
+  expect(rows.get('obscure')).toBe(0);
 });

@@ -113,20 +113,28 @@
   left: 0;
 }
 
-/* Fixed-height row between People and Conflicts — d3.axisBottom's
-   ticks/labels, not part of the 4:2 lane ratio above/below. Kept at the
-   inline totalWidth style (via TimelineCanvas.tsx), wider than
-   .scrollContainer — that mismatch is what drives the shared horizontal
-   scrollbar above, and (now that .peopleLane/.conflictsMilestonesLane no longer
-   carry that width themselves) the only thing that does. Not sticky: it has
-   no vertical scrollbar of its own to keep on screen, and it's meant to pan
-   normally so its ticks track the visible year range. */
+/* Three of these: top of the page, between People and Conflicts+Milestones
+   (the "middle" one — the only one importance/row-order is measured
+   against, see ConflictsMilestonesLane.tsx and options.ts's
+   personLabelYForRow), and bottom of the page. Not part of the 4:2 lane
+   ratio above/below. Kept at the inline totalWidth style (via
+   TimelineCanvas.tsx), wider than .scrollContainer — that mismatch is what
+   drives the shared horizontal scrollbar above, and (now that
+   .peopleLane/.conflictsMilestonesLane no longer carry that width
+   themselves) the only thing that does. No position: sticky needed for any
+   of the three to stay visible during a lane's own vertical scroll — each
+   one is a plain flex sibling outside .peopleLane/.conflictsMilestonesLane's
+   own overflow-y box, so a lane scrolling internally never carries an axis
+   out of view with it. Still not sticky against .scrollContainer's own
+   horizontal pan, by design: it's meant to pan normally so its ticks track
+   the visible year range. */
 .yearAxis {
   flex: 0 0 auto;
 }
 
-/* Conflicts and Milestones share one vertical scroll region
-   (rather than each owning its own) so a viewer scans both at once instead
+/* Conflicts and Milestones share one vertical scroll region *and* one
+   row-packing pass (ConflictsMilestonesLane.tsx) — a single mixed lane, not
+   two lanes stacked in the same box, so a viewer scans both at once instead
    of hunting for whichever lane happens to have the item they want scrolled
    out of view. Ratio 2 (vs. People's 4) preserves the old 4:1:1 split's
    combined Conflicts+Milestones share. position: sticky/overflow-x: hidden for the

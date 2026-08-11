@@ -32,6 +32,7 @@ export interface PersonItem {
   startYear: number;
   endYear: number;
   occupationDomain: OccupationDomain;
+  fameScore: number;
 }
 
 export function mapPeople(people: Person[]): PersonItem[] {
@@ -47,6 +48,7 @@ export function mapPeople(people: Person[]): PersonItem[] {
       startYear: personStartYear,
       endYear: ensureMinimumRangeWidthYears(personStartYear, personEndYear),
       occupationDomain: person.occupationDomain,
+      fameScore: person.fameScore,
     };
   });
 }
@@ -58,6 +60,7 @@ export interface ConflictItem {
   endYear: number;
   isPoint: boolean;
   category: ConflictCategory;
+  fameScore: number;
 }
 
 // conflicts.json mixes Conflict (a Period, `period` field) and
@@ -82,6 +85,7 @@ export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
         : ensureMinimumRangeWidthYears(startYear, period.end ? yearMonthToFractionalYear(period.end) : startYear),
       isPoint,
       category: entry.category,
+      fameScore: entry.fameScore,
     };
   });
 }
@@ -91,6 +95,7 @@ export interface MilestoneItem {
   name: string;
   startYear: number;
   category: MilestoneCategory;
+  fameScore: number;
 }
 
 // milestones.json is always a PointInTime (data-pipeline's Milestone rows
@@ -101,6 +106,7 @@ export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
     name: milestone.name,
     startYear: yearMonthToFractionalYear(milestone.at),
     category: milestone.category,
+    fameScore: milestone.fameScore,
   }));
 }
 
@@ -108,31 +114,56 @@ interface RowInterval {
   id: string;
   startYear: number;
   endYear: number;
+  fameScore: number;
 }
 
-// Greedy interval-graph row assignment: sort by start, drop each item into
-// the first row whose last-placed end clears it with `gap` to spare, else
-// open a new row. Guarantees no two items in the same row ever overlap or
-// crowd each other. Field names read as years (its original use, shared by
-// the People and Conflicts lanes with the default MIN_ROW_GAP_YEARS
-// gap) but the algorithm is purely numeric — Milestones reuses it
-// in pixel space (start/end as x-pixel positions spanning each point's
-// estimated label width) to keep point labels from overlapping, passing its
-// own much-smaller pixel gap.
+// Fame-priority interval-graph row assignment: processes items by fame
+// *tier* — fameScore rounded to the nearest integer, descending — rather
+// than chronologically, greedily dropping each into the lowest-numbered row
+// that's free of it (with `gap` breathing room) anywhere in its span — not
+// just past the row's rightmost-so-far extent, since a lower-tier item
+// processed later can need to slot in *before* an already-placed
+// higher-tier item's start. The most famous tier claims row 0 first and
+// keeps it as long as nothing later conflicts with it, so row 0 accumulates
+// the highest-fame tier and each successive row skews progressively less
+// famous — an approximate rank, not a guaranteed one, in exchange for never
+// leaving a row empty just to preserve exact order. Each lane then decides
+// which edge of its box row 0 sits against (see personLabelYForRow's
+// row-count-based inversion vs. the below-marker lanes' row-0-at-top
+// default) to land it next to the shared Year Axis.
+//
+// Rounding to an integer tier rather than sorting on the raw continuous
+// score matters: items are processed chronologically *within* a tier
+// (secondary sort key), which is the row-minimal order for greedy interval
+// coloring — sorting by the raw score instead effectively randomizes
+// processing order relative to time and fragments rows (a long-lived,
+// slightly-more-famous person forces a new row for everyone whose span
+// crosses theirs, even when a time-ordered pass would've interleaved them
+// tightly). Real fameScore values cluster densely enough (People's default
+// view spans just ~16 distinct integers) that this loses very little
+// ranking precision for a real reduction in wasted rows.
+//
+// Field names read as years (its original use) but the algorithm is purely
+// numeric — pixel-space callers pass x-pixel positions and a much smaller
+// pixel gap instead.
 export function assignRows(items: RowInterval[], gap: number = MIN_ROW_GAP_YEARS): Map<string, number> {
-  const rowEnds: number[] = [];
+  const rowIntervals: RowInterval[][] = [];
   const rowOfId = new Map<string, number>();
 
-  const sorted = [...items].sort((a, b) => a.startYear - b.startYear);
+  const sorted = [...items].sort(
+    (a, b) => Math.round(b.fameScore) - Math.round(a.fameScore) || a.startYear - b.startYear || a.id.localeCompare(b.id),
+  );
   for (const item of sorted) {
-    let row = rowEnds.findIndex((lastEnd) => lastEnd + gap <= item.startYear);
+    const row = rowIntervals.findIndex((placed) =>
+      placed.every((existing) => item.startYear >= existing.endYear + gap || item.endYear + gap <= existing.startYear),
+    );
     if (row === -1) {
-      row = rowEnds.length;
-      rowEnds.push(item.endYear);
+      rowOfId.set(item.id, rowIntervals.length);
+      rowIntervals.push([item]);
     } else {
-      rowEnds[row] = item.endYear;
+      rowOfId.set(item.id, row);
+      rowIntervals[row]?.push(item);
     }
-    rowOfId.set(item.id, row);
   }
 
   return rowOfId;

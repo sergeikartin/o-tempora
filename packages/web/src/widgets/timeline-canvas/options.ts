@@ -7,7 +7,7 @@ import {
   DEFAULT_VIEWPORT_END,
   PAN_MIN_DATE,
 } from '../../shared/config';
-import type { ConflictCategory, MilestoneCategory } from '../../shared/types';
+import type { MilestoneCategory } from '../../shared/types';
 
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
@@ -85,50 +85,23 @@ export function wrapLabelLines(name: string, maxWidthPx: number): string[] {
   return lines;
 }
 
-// Below-marker label layout, used by Conflicts (both its range lines
-// and point dots) — a row's marker and label move down together, the label
-// sitting just below its own marker, same as People's above-line treatment
-// but flipped. An item that would otherwise collide with a neighbor doesn't
-// move sideways; instead `assignRows` hands back a row (one MARKER_ROW_PITCH
-// step down), pushing that item's marker+label pair as a unit. Milestones
-// also sits below its marker but, since its labels now wrap
-// across multiple lines, uses its own tighter gap and per-row-computed pitch
-// instead of this fixed single-line one — see MILESTONES_MARKER_LABEL_GAP below
-// and MilestonesLane.tsx's row-height computation.
-// Small breathing room between a marker's bottom edge and its label.
-const MARKER_LABEL_GAP = 8;
-// Vertical budget per row: marker height + gap + one label's height + gap to
-// the next row, so consecutive rows never collide.
-export const MARKER_ROW_PITCH = POINT_RADIUS * 2 + MARKER_LABEL_GAP + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
-
-/** y (vertical center) of a row's marker (line or dot), using the dot's radius as the reference since it's the taller of the two marker shapes. */
-export function markerCenterYForRow(row: number): number {
-  return LANE_TOP_PADDING + POINT_RADIUS + row * MARKER_ROW_PITCH;
-}
-
-/** y of a row's label — sits just below that row's own marker. */
-export function labelYForRow(row: number): number {
-  return markerCenterYForRow(row) + POINT_RADIUS + MARKER_LABEL_GAP;
-}
-
-/** Total SVG height needed for a below-marker lane with this many stacked rows. */
-export function markerLaneHeight(rowCount: number): number {
-  if (rowCount === 0) return LANE_TOP_PADDING * 2;
-  return labelYForRow(rowCount - 1) + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
-}
-
-// Milestones' own below-marker layout: labels wrap across multiple
-// lines (via wrapLabelLines above) rather than staying on one line, so a
-// row's height varies with how many lines its tallest label needs —
-// computed per-render in MilestonesLane.tsx, not as a fixed pitch like
-// MARKER_ROW_PITCH above.
+// Below-marker label layout, shared by the merged Conflicts+Milestones lane
+// for every item it stacks — range lines, Conflict point dots, and
+// Milestone point dots alike — since a single shared row-packing pass means
+// any of them can land in any row (see ConflictsMilestonesLane.tsx). A
+// row's marker and label move down together, the label sitting just below
+// its own marker, same as People's above-line treatment but flipped. Row
+// height is computed per-render from the tallest label actually assigned to
+// that row (a Milestone's label can wrap across multiple lines via
+// wrapLabelLines above; Conflicts' labels are always one line), not a fixed
+// pitch — see ConflictsMilestonesLane.tsx's row-height computation.
 export const MILESTONES_MARKER_LABEL_GAP = 4;
 export const MILESTONES_LABEL_LINE_HEIGHT_PX = LABEL_TEXT_HEIGHT_PX;
 export const MILESTONES_LABEL_MAX_WIDTH_PX = 72;
 
 // Above-line label layout, used by People — the one lane whose Period bars
 // don't all share a fixed marker y (they stack into vertical bands like a
-// Gantt chart), so unlike the below-marker lanes above, the label tier and
+// Gantt chart), so unlike the below-marker lane above, the label tier and
 // the vertical band are the same "row" concept: a person's label sits just
 // above their own lifespan line, both moving together per row.
 const PERSON_LABEL_GAP = 2;
@@ -136,14 +109,20 @@ const PERSON_LABEL_GAP = 2;
 // room to the next row.
 export const PERSON_ROW_PITCH = LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT + ROW_GAP;
 
+// assignRows hands back row 0 as the most-famous-heavy row (see its own
+// comment), and the People lane wants that row closest to the bottom of its
+// box — the edge next to the shared Year Axis below it — so row indices are
+// inverted against rowCount here: row 0 lands at the highest y (bottom),
+// row (rowCount - 1) at LANE_TOP_PADDING (top, furthest from the axis).
+
 /** y of a row's label — hangs just above that row's lifespan line. */
-export function personLabelYForRow(row: number): number {
-  return LANE_TOP_PADDING + row * PERSON_ROW_PITCH;
+export function personLabelYForRow(row: number, rowCount: number): number {
+  return LANE_TOP_PADDING + (rowCount - 1 - row) * PERSON_ROW_PITCH;
 }
 
 /** y (vertical center) of a row's lifespan line. */
-export function personLineCenterYForRow(row: number): number {
-  return personLabelYForRow(row) + LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT / 2;
+export function personLineCenterYForRow(row: number, rowCount: number): number {
+  return personLabelYForRow(row, rowCount) + LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT / 2;
 }
 
 /** Total SVG height needed for the People lane with this many stacked rows. */
@@ -152,35 +131,19 @@ export function personLaneHeight(rowCount: number): number {
   return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
 }
 
-// Mirrors design-tokens.md's Conflict Category Palette — Conflicts
-// keys its flat fill off `category`, unlike People's `occupationDomain`
-// above. Same provisional-inlining reasoning.
-//
-// Hue-optimized against all 18 existing People/Domain + Milestone colors
-// below (min ~8.5° hue separation from everything on screen, tighter than
-// Milestone's ~11° precedent since there are 24 colors total sharing one
-// hue circle — the two closest pairs, military-operation and
-// war-of-independence, lean on S/L rather than hue alone for separation,
-// same approach design-tokens.md's Domain palette already uses for
-// public-figure/science-technology), matched to the same pastel S/L family.
-// War-family categories (war/military-operation) grouped into warm
-// red-orange-yellow hues; the rest (revolution through war-of-independence)
-// into cooler green-blue-violet hues — see the taxonomy rename/expand
-// ticket's Answer for the generation method. battle/siege/peace-treaty
-// dropped from ConflictCategory (see shared-types) — their hex values
-// aren't reused here to avoid implying a relationship to the categories
-// that replaced their slot in the hue circle.
-export const CONFLICT_CATEGORY_COLORS: Record<ConflictCategory, string> = {
-  war: '#BF696B',
-  'military-operation': '#BDC251',
-  revolution: '#7DBE74',
-  rebellion: '#6BBDB3',
-  'coup-d-etat': '#7BA8C1',
-  'war-of-independence': '#8E8DC4',
-};
+// Conflicts no longer key their fill off ConflictCategory — the merged
+// Conflicts+Milestones lane needs every Conflict to read as one visual
+// group at a glance (Milestones keep their own multi-color category
+// palette below), so the old per-category Conflict Category Palette is
+// retired in favor of this single flat color. Reuses the old `war` hex, the
+// warmest/most-recognizable entry in that retired palette. Kept far enough
+// from every MILESTONE_CATEGORY_COLORS hue below (all greens/blues/violets)
+// that color alone still tells a Conflict apart from a Milestone.
+export const CONFLICT_COLOR = '#BF696B';
 
 // Milestones' own palette, keyed on MilestoneCategory (disjoint
-// from Conflicts' ConflictCategory above). Locked with the user via
+// from Conflicts' ConflictCategory, which no longer drives a color — see
+// CONFLICT_COLOR above). Locked with the user via
 // .scratch/events-inventions-curated-source/issues/01-discovery-category-color-palette.md:
 // hue-optimized against all 15 existing People/Domain + Conflicts/ConflictCategory
 // colors (min ~11° hue separation from everything on screen) as they stood
