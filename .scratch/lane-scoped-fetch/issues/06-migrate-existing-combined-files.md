@@ -4,9 +4,9 @@
 
 **Blocked by:** 01 — Split `fetchImageAttribution`; 02 — Split `fetchPageviews`; 03 — Split `fetchWikipediaExtracts`
 
-**Status:** ready
+**Status:** resolved
 
-- [ ] Script reads the three existing combined files from `data/raw/` and writes the 8 new per-lane files (3 image-attribution + 2 pageviews + 3 wikipedia-extracts) with identical data, no reshaping beyond splitting by lane key.
-- [ ] Old combined files (`image-attribution.raw.json`, `pageviews.raw.json`, `wikipedia-extracts.raw.json`) deleted once the new files are verified present and correct.
-- [ ] Verified manually (diff old combined data against new per-lane files) rather than unit tested, consistent with this repo's convention for one-off scripts.
-- [ ] `npm run build-data --workspace packages/data-pipeline` (after issue 05 lands) produces the same output using the migrated per-lane files as it did using the old combined files.
+- [x] Script reads the three existing combined files from `data/raw/` and writes the 8 new per-lane files (3 image-attribution + 2 pageviews + 3 wikipedia-extracts) with identical data, no reshaping beyond splitting by lane key.
+- [x] Old combined files (`image-attribution.raw.json`, `pageviews.raw.json`, `wikipedia-extracts.raw.json`) deleted once the new files are verified present and correct.
+- [x] Verified manually (diff old combined data against new per-lane files) rather than unit tested, consistent with this repo's convention for one-off scripts.
+- [x] `npm run build-data --workspace packages/data-pipeline` (after issue 05 lands) produces the same output using the migrated per-lane files as it did using the old combined files.

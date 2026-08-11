@@ -103,63 +103,18 @@ function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
   return map;
 }
 
-interface ImageAttributionFile {
-  people: Record<string, string>;
-  discoveries: Record<string, string>;
-  wars: Record<string, string>;
-}
-
-// fetch-image-attribution.ts's output — a separate Commons `imageinfo` pass
-// keyed by the same ids as loadPeopleEnrichmentMap (Wikidata QID),
-// transformDiscoveries, and transformWars (both the curated row's own QID)
-// — see that file's header comment for why this is a distinct raw file
-// rather than folded into the enrichment passes above.
-function loadImageAttributionFile(): ImageAttributionFile {
-  const raw = JSON.parse(
-    fs.readFileSync(path.join(RAW_DIR, "image-attribution.raw.json"), "utf8"),
-  ) as ImageAttributionFile;
-  return { people: raw.people ?? {}, discoveries: raw.discoveries ?? {}, wars: raw.wars ?? {} };
-}
-
-interface WikipediaExtractsFile {
-  people: Record<string, string>;
-  wars: Record<string, string>;
-  discoveries: Record<string, string>;
-}
-
-// fetch-wikipedia-extracts.ts's output — a separate REST pass (not
-// Wikidata SPARQL) keyed by wdId for People (matching
-// loadPeopleEnrichmentMap's key) and by the curated row's own id for Wars/
-// Discoveries (matching transformWars/transformDiscoveries), same
-// "separate raw file, same loading convention" reasoning as
-// loadImageAttributionFile/loadPageviewsFile above. A missing id means no
-// English Wikipedia article resolved (or the pipeline hasn't been
-// re-fetched since this entity was added) — degrades to an absent
-// `description`, never a dropped row (only a missing `tagline` drops).
-function loadWikipediaExtractsFile(): WikipediaExtractsFile {
-  const raw = JSON.parse(
-    fs.readFileSync(path.join(RAW_DIR, "wikipedia-extracts.raw.json"), "utf8"),
-  ) as WikipediaExtractsFile;
-  return { people: raw.people ?? {}, wars: raw.wars ?? {}, discoveries: raw.discoveries ?? {} };
-}
-
-interface PageviewsFile {
-  wars: Record<string, number>;
-  discoveries: Record<string, number>;
-}
-
-// fetch-pageviews.ts's output — trailing-4-year, 7-language-basket pageview
-// totals keyed by the same curated id as transformWars/transformDiscoveries,
-// same "separate raw file, same loading convention" reasoning as
-// loadImageAttributionFile above. A missing id (fetch-pageviews.ts skipped
-// it, or the whole stage failed) coerces to 0 pageviews at the call site,
-// not here — score.ts's blend formula degrades gracefully to a
-// sitelinks-only score for that row (ADR 0010).
-function loadPageviewsFile(): PageviewsFile {
-  const raw = JSON.parse(
-    fs.readFileSync(path.join(RAW_DIR, "pageviews.raw.json"), "utf8"),
-  ) as PageviewsFile;
-  return { wars: raw.wars ?? {}, discoveries: raw.discoveries ?? {} };
+// fetch-image-attribution.ts/fetch-pageviews.ts/fetch-wikipedia-extracts.ts
+// each write one raw file per lane (docs/adr/0012-lane-scoped-fetch.md) —
+// keyed by the same ids as loadPeopleEnrichmentMap (Wikidata QID) for
+// People, and by the curated row's own id for Wars/Discoveries. A missing
+// id means that stage didn't resolve one for this entity (or the pipeline
+// hasn't been re-fetched since it was added): image attribution and
+// Wikipedia extract degrade to an absent field, never a dropped row (only
+// a missing `tagline` drops); pageviews coerces to 0 at the call site, not
+// here — score.ts's blend formula degrades gracefully to a sitelinks-only
+// score for that row (ADR 0010).
+function loadRawRecord<T>(fileName: string): Record<string, T> {
+  return (JSON.parse(fs.readFileSync(path.join(RAW_DIR, fileName), "utf8")) as Record<string, T> | undefined) ?? {};
 }
 
 // group -> tag -> score, per lane. People, Wars & Conflicts, and
@@ -174,8 +129,8 @@ export function transformPeople(): TaggedPerson[] {
   const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
   const rows = parsePantheonCsv(fs.readFileSync(csvPath, "utf8"));
   const enrichment = loadPeopleEnrichmentMap();
-  const imageAttribution = loadImageAttributionFile().people;
-  const wikipediaExtracts = loadWikipediaExtractsFile().people;
+  const imageAttribution = loadRawRecord<string>("people-image-attribution.raw.json");
+  const wikipediaExtracts = loadRawRecord<string>("people-wikipedia-extracts.raw.json");
 
   const tagged = rows.map((row) => ({
     ...row,
@@ -205,9 +160,9 @@ export function transformPeople(): TaggedPerson[] {
 export function transformWars(): TaggedWar[] {
   const enrichedPath = path.join(RAW_DIR, "wars-curated-enriched.raw.json");
   const { wars } = validateEnrichedWarsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
-  const imageAttribution = loadImageAttributionFile().wars;
-  const pageviews = loadPageviewsFile().wars;
-  const wikipediaExtracts = loadWikipediaExtractsFile().wars;
+  const imageAttribution = loadRawRecord<string>("wars-image-attribution.raw.json");
+  const pageviews = loadRawRecord<number>("wars-pageviews.raw.json");
+  const wikipediaExtracts = loadRawRecord<string>("wars-wikipedia-extracts.raw.json");
 
   const tagged = wars.map((war) => {
     const { category, regionTags } = tagCuratedWar(war.category, war.countries);
@@ -243,9 +198,9 @@ export function transformWars(): TaggedWar[] {
 export function transformDiscoveries(): TaggedDiscovery[] {
   const enrichedPath = path.join(RAW_DIR, "events-curated-enriched.raw.json");
   const { events } = validateEnrichedEventsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
-  const imageAttribution = loadImageAttributionFile().discoveries;
-  const pageviews = loadPageviewsFile().discoveries;
-  const wikipediaExtracts = loadWikipediaExtractsFile().discoveries;
+  const imageAttribution = loadRawRecord<string>("discoveries-image-attribution.raw.json");
+  const pageviews = loadRawRecord<number>("discoveries-pageviews.raw.json");
+  const wikipediaExtracts = loadRawRecord<string>("discoveries-wikipedia-extracts.raw.json");
 
   const tagged = events.map((event) => {
     const { category, regionTags } = tagCuratedDiscovery(event.category, event.countries);

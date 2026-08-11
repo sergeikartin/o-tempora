@@ -22,11 +22,6 @@ function stubRawFiles(t: TestContext, filesByBasename: Record<string, unknown>):
   });
 }
 
-// No description/tagline enrichment for this ticket's fixtures unless a
-// test overrides it — every transformWars/transformDiscoveries test needs
-// this file to exist now that transform/index.ts reads it unconditionally.
-const EMPTY_WIKIPEDIA_EXTRACTS = { people: {}, wars: {}, discoveries: {} };
-
 // Same 34-column header pantheon-row-shape.test.ts's own fixture uses —
 // transformPeople is the only function here that reads the Pantheon CSV
 // directly, via parsePantheonCsv, so it needs a header-complete row rather
@@ -131,9 +126,9 @@ test("transformWars computes fameScore via the blend function from the row's sit
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: { Q2: 4_000_000 }, discoveries: {} },
-    "wikipedia-extracts.raw.json": EMPTY_WIKIPEDIA_EXTRACTS,
+    "wars-image-attribution.raw.json": {},
+    "wars-pageviews.raw.json": { Q2: 4_000_000 },
+    "wars-wikipedia-extracts.raw.json": {},
   });
 
   const [war] = transformWars();
@@ -158,9 +153,9 @@ test("transformWars degrades to a sitelinks-only score when the id is absent fro
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: {}, discoveries: {} },
-    "wikipedia-extracts.raw.json": EMPTY_WIKIPEDIA_EXTRACTS,
+    "wars-image-attribution.raw.json": {},
+    "wars-pageviews.raw.json": {},
+    "wars-wikipedia-extracts.raw.json": {},
   });
 
   const [war] = transformWars();
@@ -185,13 +180,9 @@ test("transformWars passes through the Wikipedia extract keyed by the war's own 
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: {}, discoveries: {} },
-    "wikipedia-extracts.raw.json": {
-      people: {},
-      wars: { Q2: "A war fought between Athens and Sparta for dominance of Greece." },
-      discoveries: {},
-    },
+    "wars-image-attribution.raw.json": {},
+    "wars-pageviews.raw.json": {},
+    "wars-wikipedia-extracts.raw.json": { Q2: "A war fought between Athens and Sparta for dominance of Greece." },
   });
 
   const [war] = transformWars();
@@ -216,9 +207,9 @@ test("transformWars leaves description undefined when no Wikipedia extract resol
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: {}, discoveries: {} },
-    "wikipedia-extracts.raw.json": EMPTY_WIKIPEDIA_EXTRACTS,
+    "wars-image-attribution.raw.json": {},
+    "wars-pageviews.raw.json": {},
+    "wars-wikipedia-extracts.raw.json": {},
   });
 
   const [war] = transformWars();
@@ -243,9 +234,9 @@ test("transformDiscoveries computes fameScore via the blend function from the ro
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: {}, discoveries: { Q5: 9_000_000 } },
-    "wikipedia-extracts.raw.json": EMPTY_WIKIPEDIA_EXTRACTS,
+    "discoveries-image-attribution.raw.json": {},
+    "discoveries-pageviews.raw.json": { Q5: 9_000_000 },
+    "discoveries-wikipedia-extracts.raw.json": {},
   });
 
   const [discovery] = transformDiscoveries();
@@ -270,9 +261,9 @@ test("transformDiscoveries passes through the enrichment file's live-fetched tag
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: {}, discoveries: {} },
-    "wikipedia-extracts.raw.json": EMPTY_WIKIPEDIA_EXTRACTS,
+    "discoveries-image-attribution.raw.json": {},
+    "discoveries-pageviews.raw.json": {},
+    "discoveries-wikipedia-extracts.raw.json": {},
   });
 
   const [discovery] = transformDiscoveries();
@@ -296,9 +287,9 @@ test("transformDiscoveries leaves tagline undefined when the enrichment pass cou
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: {}, discoveries: {} },
-    "wikipedia-extracts.raw.json": EMPTY_WIKIPEDIA_EXTRACTS,
+    "discoveries-image-attribution.raw.json": {},
+    "discoveries-pageviews.raw.json": {},
+    "discoveries-wikipedia-extracts.raw.json": {},
   });
 
   const [discovery] = transformDiscoveries();
@@ -323,12 +314,10 @@ test("transformDiscoveries passes through the Wikipedia extract keyed by the eve
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: {}, discoveries: {} },
-    "wikipedia-extracts.raw.json": {
-      people: {},
-      wars: {},
-      discoveries: { Q5: "Penicillin is a group of antibiotics derived from Penicillium moulds." },
+    "discoveries-image-attribution.raw.json": {},
+    "discoveries-pageviews.raw.json": {},
+    "discoveries-wikipedia-extracts.raw.json": {
+      Q5: "Penicillin is a group of antibiotics derived from Penicillium moulds.",
     },
   });
 
@@ -354,9 +343,9 @@ test("transformDiscoveries leaves description undefined when no Wikipedia extrac
         },
       ],
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "pageviews.raw.json": { wars: {}, discoveries: {} },
-    "wikipedia-extracts.raw.json": EMPTY_WIKIPEDIA_EXTRACTS,
+    "discoveries-image-attribution.raw.json": {},
+    "discoveries-pageviews.raw.json": {},
+    "discoveries-wikipedia-extracts.raw.json": {},
   });
 
   const [discovery] = transformDiscoveries();
@@ -378,11 +367,9 @@ test("transformPeople passes through tagline and description, keyed by the perso
         ],
       },
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "wikipedia-extracts.raw.json": {
-      people: { Q935: "Sir Isaac Newton was an English mathematician, physicist, and astronomer." },
-      wars: {},
-      discoveries: {},
+    "people-image-attribution.raw.json": {},
+    "people-wikipedia-extracts.raw.json": {
+      Q935: "Sir Isaac Newton was an English mathematician, physicist, and astronomer.",
     },
   });
 
@@ -406,8 +393,8 @@ test("transformPeople leaves description undefined when no Wikipedia extract res
         ],
       },
     },
-    "image-attribution.raw.json": { people: {}, discoveries: {}, wars: {} },
-    "wikipedia-extracts.raw.json": EMPTY_WIKIPEDIA_EXTRACTS,
+    "people-image-attribution.raw.json": {},
+    "people-wikipedia-extracts.raw.json": {},
   });
 
   const [person] = transformPeople();

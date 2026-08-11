@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import fsPromises from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { MIN_HPI } from "./queries/min-hpi.js";
@@ -7,14 +7,9 @@ import { validateEnrichedWarsFile } from "./fetch-wars-enrichment.js";
 import { validateEnrichedEventsFile } from "./fetch-events-enrichment.js";
 import { extractWikipediaArticleTitle } from "./batched-pageviews-fetch.js";
 import { batchedWikipediaExtractFetch, type WikipediaExtractEntry } from "./batched-wikipedia-extract-fetch.js";
+import { LANES, type Lane } from "./lane.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
-
-export interface WikipediaExtractsFile {
-  people: Record<string, string>;
-  wars: Record<string, string>;
-  discoveries: Record<string, string>;
-}
 
 // People's article title comes straight from Pantheon's own `slug` column
 // (no enrichment/SPARQL round-trip needed to resolve it — unlike Wars/
@@ -26,7 +21,7 @@ export interface WikipediaExtractsFile {
 // transform/index.ts) rather than Pantheon's own id.
 async function loadPeopleEntries(): Promise<WikipediaExtractEntry[]> {
   const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
-  const rows = parsePantheonCsv(await readFile(csvPath, "utf8"));
+  const rows = parsePantheonCsv(await fsPromises.readFile(csvPath, "utf8"));
   const seen = new Set<string>();
   const entries: WikipediaExtractEntry[] = [];
   for (const row of rows) {
@@ -39,7 +34,7 @@ async function loadPeopleEntries(): Promise<WikipediaExtractEntry[]> {
 
 async function loadWarsEntries(): Promise<WikipediaExtractEntry[]> {
   const enrichedPath = path.join(RAW_DIR, "wars-curated-enriched.raw.json");
-  const { wars } = validateEnrichedWarsFile(JSON.parse(await readFile(enrichedPath, "utf8")));
+  const { wars } = validateEnrichedWarsFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
   const entries: WikipediaExtractEntry[] = [];
   for (const war of wars) {
     if (!war.wikipediaUrl) continue;
@@ -51,7 +46,7 @@ async function loadWarsEntries(): Promise<WikipediaExtractEntry[]> {
 
 async function loadDiscoveriesEntries(): Promise<WikipediaExtractEntry[]> {
   const enrichedPath = path.join(RAW_DIR, "events-curated-enriched.raw.json");
-  const { events } = validateEnrichedEventsFile(JSON.parse(await readFile(enrichedPath, "utf8")));
+  const { events } = validateEnrichedEventsFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
   const entries: WikipediaExtractEntry[] = [];
   for (const event of events) {
     if (!event.wikipediaUrl) continue;
@@ -61,61 +56,65 @@ async function loadDiscoveriesEntries(): Promise<WikipediaExtractEntry[]> {
   return entries;
 }
 
+const LOAD_EXTRACT_ENTRIES: Record<Lane, () => Promise<WikipediaExtractEntry[]>> = {
+  people: loadPeopleEntries,
+  wars: loadWarsEntries,
+  discoveries: loadDiscoveriesEntries,
+};
+
 function toRecord(map: Map<string, string>): Record<string, string> {
   return Object.fromEntries(map);
 }
 
 // Fetches a Wikipedia lead-paragraph extract for every People/Wars/
 // Discoveries entity with a resolvable English Wikipedia article — the raw
-// foundation for the new `description` field (tagline-description-split
-// spec). Runs after fetchPantheon() (People's slug source),
-// fetchWarsEnrichment(), and fetchEventsEnrichment() (Wars'/Discoveries'
-// wikipediaUrl source) are already on disk. Deliberately paced one request
-// at a time across all three lanes combined (batchedWikipediaExtractFetch),
-// not run as three separate concurrent passes, so the ~2/second courtesy
-// rate is a real global ceiling rather than three lanes each independently
-// hitting it. Not yet consumed by Transform/Output or the web app — this
-// stage only produces and persists the raw data.
-export async function fetchWikipediaExtracts(): Promise<void> {
-  const [peopleEntries, warsEntries, discoveriesEntries] = await Promise.all([
-    loadPeopleEntries(),
-    loadWarsEntries(),
-    loadDiscoveriesEntries(),
-  ]);
-
-  console.log(
-    `Fetching Wikipedia extracts for ${peopleEntries.length} people + ${warsEntries.length} wars + ${discoveriesEntries.length} discoveries (paced ~2/sec, this takes a while)...`,
+// foundation for the `description` field (tagline-description-split
+// spec), consumed by transform/index.ts's loadWikipediaExtractsFile calls
+// (transformPeople/transformWars/transformDiscoveries). Runs after
+// fetchPantheon() (People's slug source), fetchWarsEnrichment(), and
+// fetchEventsEnrichment() (Wars'/Discoveries' wikipediaUrl source) are
+// already on disk.
+//
+// A lane arg scopes the source-file read and output to one lane; the
+// ~2/second courtesy pace (batchedWikipediaExtractFetch) is preserved
+// within that lane-scoped run. Omitted, all three lanes' entries are
+// paced together in one sequential run rather than three concurrent ones —
+// this is a real global ceiling only when lane-scoped fetches also aren't
+// run concurrently in separate processes (see the "don't run concurrent
+// lane fetches" convention, packages/data-pipeline/CLAUDE.md and
+// docs/adr/0012-lane-scoped-fetch.md).
+export async function fetchWikipediaExtracts(lane?: Lane): Promise<void> {
+  const lanes = lane ? [lane] : LANES;
+  const entriesByLane = new Map(
+    await Promise.all(lanes.map(async (l) => [l, await LOAD_EXTRACT_ENTRIES[l]()] as const)),
   );
 
-  const allEntries = [
-    ...peopleEntries.map((entry) => ({ ...entry, id: `people:${entry.id}` })),
-    ...warsEntries.map((entry) => ({ ...entry, id: `wars:${entry.id}` })),
-    ...discoveriesEntries.map((entry) => ({ ...entry, id: `discoveries:${entry.id}` })),
-  ];
+  console.log(
+    `Fetching Wikipedia extracts for ${lanes
+      .map((l) => `${entriesByLane.get(l)!.length} ${l}`)
+      .join(" + ")} (paced ~2/sec, this takes a while)...`,
+  );
+
+  const allEntries = lanes.flatMap((l) =>
+    entriesByLane.get(l)!.map((entry) => ({ ...entry, id: `${l}:${entry.id}` })),
+  );
 
   const extractByPrefixedId = await batchedWikipediaExtractFetch(allEntries);
 
-  const people = new Map<string, string>();
-  const wars = new Map<string, string>();
-  const discoveries = new Map<string, string>();
+  const extractsByLane = new Map<Lane, Map<string, string>>(lanes.map((l) => [l, new Map()]));
   for (const [prefixedId, extract] of extractByPrefixedId) {
-    const [lane, ...rest] = prefixedId.split(":");
+    const [laneName, ...rest] = prefixedId.split(":");
     const id = rest.join(":");
-    if (lane === "people") people.set(id, extract);
-    else if (lane === "wars") wars.set(id, extract);
-    else if (lane === "discoveries") discoveries.set(id, extract);
+    extractsByLane.get(laneName as Lane)?.set(id, extract);
   }
 
-  const output: WikipediaExtractsFile = {
-    people: toRecord(people),
-    wars: toRecord(wars),
-    discoveries: toRecord(discoveries),
-  };
-
-  const outputPath = path.join(RAW_DIR, "wikipedia-extracts.raw.json");
-  await writeFile(outputPath, JSON.stringify(output, null, 2));
-  console.log(
-    `Wrote ${people.size} people + ${wars.size} wars + ${discoveries.size} discovery extracts to ${outputPath}`,
+  await Promise.all(
+    lanes.map(async (l) => {
+      const extracts = extractsByLane.get(l)!;
+      const outputPath = path.join(RAW_DIR, `${l}-wikipedia-extracts.raw.json`);
+      await fsPromises.writeFile(outputPath, JSON.stringify(toRecord(extracts), null, 2));
+      console.log(`Wrote ${extracts.size} ${l} extracts to ${outputPath}`);
+    }),
   );
 }
 
