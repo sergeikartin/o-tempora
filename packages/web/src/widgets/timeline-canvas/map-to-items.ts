@@ -1,3 +1,4 @@
+import type * as d3 from 'd3';
 import type {
   ConflictCategory,
   Milestone,
@@ -8,7 +9,13 @@ import type {
   ConflictEntry,
 } from '../../shared/types';
 import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
-import { MIN_ROW_GAP_YEARS } from './options';
+import { MIN_ROW_GAP_YEARS, POINT_RADIUS, estimateLabelWidthPx } from './options';
+
+/** Pixel-space [start, end] interval a value maps to under a linear scale. */
+export interface PixelInterval {
+  start: number;
+  end: number;
+}
 
 // A zero- or negative-width range (e.g. a missing end) can't render as a
 // visible bar — widen it to a minimum one-year span. Rendering-only: not a
@@ -53,6 +60,19 @@ export function mapPeople(people: Person[]): PersonItem[] {
   });
 }
 
+// Row-stacking works in screen pixels, not years — a person's name label is
+// left-aligned above the start of their lifespan line, so it can extend
+// well past the line's own pixel span for a short-lived person with a long
+// name, especially at low zoom. Shared by PeopleLane (its live viewport
+// scale) and the Mountain Profile minimap (a fixed Reference Scale, ADR
+// 0004) so both pack rows with the same rule.
+export function personPixelInterval(item: PersonItem, xScale: d3.ScaleLinear<number, number>): PixelInterval {
+  const x1 = xScale(item.startYear);
+  const x2 = xScale(item.endYear);
+  const labelWidth = estimateLabelWidthPx(item.name);
+  return { start: x1, end: Math.max(x2, x1 + labelWidth) };
+}
+
 export interface ConflictItem {
   id: string;
   name: string;
@@ -90,6 +110,22 @@ export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
   });
 }
 
+// Shared by ConflictsMilestonesLane (its live viewport scale) and the
+// Mountain Profile minimap (a fixed Reference Scale, ADR 0004) so both pack
+// rows with the same rule.
+export function conflictPixelInterval(item: ConflictItem, xScale: d3.ScaleLinear<number, number>): PixelInterval {
+  if (item.isPoint) {
+    const x = xScale(item.startYear);
+    const labelHalf = estimateLabelWidthPx(item.name) / 2;
+    return { start: Math.min(x - POINT_RADIUS, x - labelHalf), end: Math.max(x + POINT_RADIUS, x + labelHalf) };
+  }
+  const x1 = xScale(item.startYear);
+  const x2 = xScale(item.endYear);
+  const center = (x1 + x2) / 2;
+  const labelHalf = estimateLabelWidthPx(item.name) / 2;
+  return { start: Math.min(x1, center - labelHalf), end: Math.max(x2, center + labelHalf) };
+}
+
 export interface MilestoneItem {
   id: string;
   name: string;
@@ -108,6 +144,19 @@ export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
     category: milestone.category,
     fameScore: milestone.fameScore,
   }));
+}
+
+// Shared by ConflictsMilestonesLane (its live viewport scale) and the
+// Mountain Profile minimap (a fixed Reference Scale, ADR 0004) so both pack
+// rows with the same rule.
+export function milestonePixelInterval(
+  item: MilestoneItem,
+  lines: string[],
+  xScale: d3.ScaleLinear<number, number>,
+): PixelInterval {
+  const x = xScale(item.startYear);
+  const labelHalf = Math.max(...lines.map((line) => estimateLabelWidthPx(line))) / 2;
+  return { start: Math.min(x - POINT_RADIUS, x - labelHalf), end: Math.max(x + POINT_RADIUS, x + labelHalf) };
 }
 
 interface RowInterval {

@@ -33,9 +33,10 @@
    the timeline content by any reliable, cross-browser means (whether a
    browser reserves layout space for it at all varies — e.g. Firefox's
    overlay scrollbars don't), which made the drag-to-pan handlers below
-   swallow scrollbar drags instead of leaving them to the browser. .
-   scrollbarTrack/.scrollbarThumb further down render a custom scrollbar as
-   ordinary sibling elements instead, sidestepping that ambiguity entirely. */
+   swallow scrollbar drags instead of leaving them to the browser.
+   MountainProfile.tsx now renders the pan/jump control as an ordinary
+   sibling element instead (ADR 0004), sidestepping that ambiguity
+   entirely. */
 /* Faint vertical gridline at every decade, spanning the full scroll height
    behind all four lanes — pure CSS (one repeating background-gradient, no
    per-line DOM node), same technique as YearAxis's own tick marks. Spacing/
@@ -148,33 +149,7 @@
   left: 0;
 }
 
-/* Custom replacement for .scrollContainer's now-hidden native horizontal
-   scrollbar (see its comment) — a plain flex sibling below it, always the
-   full timeline width so its own click/drag math never needs to guess at
-   .scrollContainer's geometry. */
-.scrollbarTrack {
-  position: relative;
-  flex: 0 0 auto;
-  height: 14px;
-  background-color: #ded3b8; /* color-border-subtle */
-  cursor: pointer;
-}
-
-.scrollbarThumb {
-  position: absolute;
-  top: 2px;
-  bottom: 2px;
-  min-width: 24px; /* mirrors MIN_SCROLLBAR_THUMB_PX in TimelineCanvas.tsx */
-  border-radius: 6px; /* radius-sm */
-  background-color: #c9b98f; /* color-border-strong */
-  cursor: grab;
-}
-
-.scrollbarThumb:hover {
-  background-color: #b8842e; /* color-accent-selected */
-}
-
-.scrollbarThumb.dragging {
-  cursor: grabbing;
-  background-color: #b8842e; /* color-accent-selected */
-}
+/* The old custom scrollbar (.scrollbarTrack/.scrollbarThumb) that used to
+   render here is gone — replaced by MountainProfile.tsx's own density
+   minimap (ADR 0004), which owns its own styling in
+   MountainProfile.module.css. */

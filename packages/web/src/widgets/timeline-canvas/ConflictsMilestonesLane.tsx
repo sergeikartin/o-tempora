@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { ConflictEntry, Milestone } from '../../shared/types';
-import { assignRows, mapConflicts, mapMilestones, type ConflictItem, type MilestoneItem } from './map-to-items';
+import {
+  assignRows,
+  conflictPixelInterval,
+  mapConflicts,
+  mapMilestones,
+  milestonePixelInterval,
+} from './map-to-items';
 import {
   CONFLICT_COLOR,
   LANE_TOP_PADDING,
@@ -13,7 +19,6 @@ import {
   PERIOD_LINE_HEIGHT,
   POINT_RADIUS,
   ROW_GAP,
-  estimateLabelWidthPx,
   wrapLabelLines,
 } from './options';
 import styles from './ConflictsMilestonesLane.module.css';
@@ -43,25 +48,6 @@ interface ConflictsMilestonesLaneProps {
   conflicts: ConflictEntry[];
   milestones: Milestone[];
   xScale: d3.ScaleLinear<number, number>;
-}
-
-function conflictPixelInterval(item: ConflictItem, xScale: d3.ScaleLinear<number, number>) {
-  if (item.isPoint) {
-    const x = xScale(item.startYear);
-    const labelHalf = estimateLabelWidthPx(item.name) / 2;
-    return { start: Math.min(x - POINT_RADIUS, x - labelHalf), end: Math.max(x + POINT_RADIUS, x + labelHalf) };
-  }
-  const x1 = xScale(item.startYear);
-  const x2 = xScale(item.endYear);
-  const center = (x1 + x2) / 2;
-  const labelHalf = estimateLabelWidthPx(item.name) / 2;
-  return { start: Math.min(x1, center - labelHalf), end: Math.max(x2, center + labelHalf) };
-}
-
-function milestonePixelInterval(item: MilestoneItem, lines: string[], xScale: d3.ScaleLinear<number, number>) {
-  const x = xScale(item.startYear);
-  const labelHalf = Math.max(...lines.map((line) => estimateLabelWidthPx(line))) / 2;
-  return { start: Math.min(x - POINT_RADIUS, x - labelHalf), end: Math.max(x + POINT_RADIUS, x + labelHalf) };
 }
 
 // Conflicts and Milestones share one below-marker row-stacking pass — the
