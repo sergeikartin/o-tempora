@@ -10,8 +10,8 @@ const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 
 // Runs after fetchPantheon() — reads the candidate person Q-IDs back out of
 // the just-downloaded CSV (the "raw file is the handoff" pattern
-// fetch-descriptions.ts already uses), rather than a primary Wikidata people
-// scan. Filtered to MIN_HPI same as fetch-descriptions.ts: anything below
+// fetch-taglines.ts already uses), rather than a primary Wikidata people
+// scan. Filtered to MIN_HPI same as fetch-taglines.ts: anything below
 // that floor never survives Score, so querying it here is wasted.
 export async function fetchReigns(): Promise<void> {
   const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");

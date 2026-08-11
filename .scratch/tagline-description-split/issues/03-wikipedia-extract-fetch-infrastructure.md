@@ -4,11 +4,21 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Running the pipeline's fetch step produces a Wikipedia lead-paragraph extract for every entity (across all three lanes) that has a resolvable English Wikipedia article.
-- [ ] Requests are paced to roughly Wikimedia's REST courtesy rate (~2/second), sent with a proper identifying User-Agent, and retried with backoff on rate-limit (429, respecting `Retry-After`) and server-error (5xx) responses.
-- [ ] Disambiguation-page results and empty extracts are treated as "no extract available for this entity," not as errors.
-- [ ] A single entity's fetch failure (network error, missing page, malformed response, etc.) is logged and skipped without aborting the rest of the fetch run.
-- [ ] Extracted text has stray non-printable/formatting Unicode characters stripped before being written out.
-- [ ] This stage's output is not yet consumed by transform, output, or the web app — verified and tested standalone, at its own dedicated network-client test seam plus a fetch-pacing/cleaning test seam.
+- [x] Running the pipeline's fetch step produces a Wikipedia lead-paragraph extract for every entity (across all three lanes) that has a resolvable English Wikipedia article.
+- [x] Requests are paced to roughly Wikimedia's REST courtesy rate (~2/second), sent with a proper identifying User-Agent, and retried with backoff on rate-limit (429, respecting `Retry-After`) and server-error (5xx) responses.
+- [x] Disambiguation-page results and empty extracts are treated as "no extract available for this entity," not as errors.
+- [x] A single entity's fetch failure (network error, missing page, malformed response, etc.) is logged and skipped without aborting the rest of the fetch run.
+- [x] Extracted text has stray non-printable/formatting Unicode characters stripped before being written out.
+- [x] This stage's output is not yet consumed by transform, output, or the web app — verified and tested standalone, at its own dedicated network-client test seam plus a fetch-pacing/cleaning test seam.
+
+## Answer
+
+Built as three new modules, mirroring this pipeline's existing client/pacing-layer/orchestration split (commons-client.ts / batched-commons-image-attribution-fetch.ts / fetch-image-attribution.ts):
+
+- **`wikipedia-client.ts`** — single-title REST client for `https://en.wikipedia.org/api/rest_v1/page/summary/{title}`. Same courtesy `User-Agent`, 429 (`Retry-After`-respecting) and 502/503/504 retry-with-backoff as commons-client.ts/pageviews-client.ts. A 404 resolves `undefined` (real, expected — not an error). Verified against the live API: `type`/`extract` field shapes, disambiguation-page `type`, and 404-on-unknown-title all match what the client assumes.
+- **`batched-wikipedia-extract-fetch.ts`** — the pacing/cleaning layer. Deliberately sequential, one title at a time with a 500ms delay (~2/sec) — *not* the 50-wide concurrent-burst pattern commons/pageviews batch fetchers use, since that would exceed this API's comfortable rate (explicit ticket requirement). Dedupes by title before fetching (a title fetched once can resolve more than one caller id). `cleanExtract()` treats a disambiguation `type`, a missing/empty extract, or an unresolved summary as "no extract" — none are errors; a genuine per-entry fetch failure (thrown error) is caught, logged, and skipped without aborting the run. Strips stray Unicode control/format characters (`\p{Cc}`/`\p{Cf}`, e.g. the left-to-right mark Wikipedia's extracts sometimes embed) that a plain `.trim()` wouldn't catch.
+- **`fetch-wikipedia-extracts.ts`** — orchestration. Builds the candidate id+title list per lane: People from Pantheon's own `slug` column (filtered to `MIN_HPI`, keyed by `wdId` to match this lane's other enrichment maps), Wars/Discoveries from their enrichment pass's `wikipediaUrl` via the existing `extractWikipediaArticleTitle` helper (`batched-pageviews-fetch.ts`). All three lanes are pooled into one combined pass (id-prefixed per lane, unprefixed for the actual title dedup/fetch) so the ~2/sec pace is a real global ceiling, not three lanes each independently hitting it. Writes one combined raw file, `data/raw/wikipedia-extracts.raw.json` (`{ people, wars, discoveries }`, each a plain id→extract record) — not yet read by Transform/Output/web (ticket 04's job). Wired into `fetch/index.ts` as the last stage (slowest by far: ~3,840 people + 154 wars + 121 discoveries ≈ 4,115 sequential requests, confirmed live against the real Pantheon/enriched-wars/enriched-discoveries raw files on disk).
+
+Testing: `wikipedia-client.test.ts` (7 tests — title encoding, successful parse, 404→undefined, 502/503/504 retry, 429 retry, non-retryable 4xx, malformed-shape rejection) and `batched-wikipedia-extract-fetch.test.ts` (9 tests — clean-extract cases, per-id resolution, title dedup, per-entry failure isolation, disambiguation handling), both passing. Verified live against the real Wikipedia REST API (both the raw client and the full batched/dedup/disambiguation/404 path) and confirmed `fetch-wikipedia-extracts.ts`'s three loader functions produce sane counts/titles against the real checked-in raw files (3,840 people, 154 wars, 121 discoveries, all with resolvable titles). Full `data-pipeline` suite: 147/147 passing; typecheck clean.

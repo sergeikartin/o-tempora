@@ -18,12 +18,12 @@ function articleOptionalBlocks(): string {
 // batch of specific curated Q-IDs, same VALUES-clause shape as
 // events-enrichment.ts. Backfills sitelinks (-> fameScore), a Wikipedia
 // article URL per language in the pageviews basket, country (-> regionTags),
-// the P18 image claim, an English description, and start/end dates with
+// the P18 image claim, an English tagline, and start/end dates with
 // precision — the p:/psv: statement-value-node pattern makes
 // wikibase:timePrecision available alongside each date. Unlike
 // events-enrichment.ts, name/category/parentId are curator-authored and
-// never refetched here, but description and dates are — the curated file
-// carries no year/endYear/description of its own (see
+// never refetched here, but tagline and dates are — the curated file
+// carries no year/endYear/tagline of its own (see
 // wars-curated.raw.json's meta.description). ?date prefers P580 (start
 // time) over P585 (point in time): wars already carry an explicit
 // start/end range, and some items (e.g. Q127751 Wars of the Roses) also
@@ -43,13 +43,13 @@ export function buildWarsEnrichmentQuery(ids: string[]): string {
   const values = ids.map((id) => `wd:${id}`).join(" ");
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `?${articleVar(lang)}`).join(" ");
   return `
-SELECT ?event ?sitelinks ${articleVars} ?country ?image ?description ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
+SELECT ?event ?sitelinks ${articleVars} ?country ?image ?tagline ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
   VALUES ?event { ${values} }
   ?event wikibase:sitelinks ?sitelinks .
 ${articleOptionalBlocks()}
   OPTIONAL { ?event wdt:P17 ?country. }
   OPTIONAL { ?event wdt:P18 ?image. }
-  OPTIONAL { ?event schema:description ?description . FILTER(LANG(?description) = "en") }
+  OPTIONAL { ?event schema:description ?tagline . FILTER(LANG(?tagline) = "en") }
   OPTIONAL {
     ?event p:P585 ?pointInTimeStatement .
     ?pointInTimeStatement a wikibase:BestRank .

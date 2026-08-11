@@ -13,7 +13,7 @@ const aristotle: Person = {
   occupationDomain: 'humanities',
   regionTags: [],
   fameScore: 317,
-  description: '4th-century BCE Classical Greek philosopher and polymath',
+  tagline: '4th-century BCE Classical Greek philosopher and polymath',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Aristotle',
 };
 
@@ -24,7 +24,7 @@ const caesar: Person = {
   occupationDomain: 'institutions',
   regionTags: [],
   fameScore: 400,
-  description: 'Roman general and statesman',
+  tagline: 'Roman general and statesman',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Julius_Caesar',
 };
 

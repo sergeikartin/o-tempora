@@ -8,12 +8,17 @@ import { PAGEVIEWS_LANGUAGES, articleVar, isArticleUrlsRecord, type PageviewsLan
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
+// tagline/description-split: the curated file still carries its old
+// hand-typed `tagline` text (left on disk, unused — see
+// events-curated.raw.json), but Fetch no longer reads it as authoritative;
+// EnrichedEvent's tagline below is live-fetched instead, matching how Wars
+// already sources it. Not part of this interface any more, deliberately —
+// referencing it here would tempt a future reader into wiring it back in.
 interface CuratedEvent {
   id: string;
   name: string;
   year: number;
   category: DiscoveryCategory;
-  description: string;
 }
 
 interface CuratedEventsFile {
@@ -25,7 +30,11 @@ export interface EnrichedEvent {
   name: string;
   year: number;
   category: DiscoveryCategory;
-  description: string;
+  // Absent means the enrichment pass couldn't resolve an English tagline
+  // for this QID — Output drops the row (write-datasets.ts's
+  // validateEventRow), no fallback to the curated file's old text, the
+  // same "no fallback, drop instead" behavior Wars/People already have.
+  tagline?: string;
   // Absent means the enrichment pass couldn't resolve this QID (e.g. a
   // stale/redirected id) — Output drops the row rather than guessing (see
   // write-datasets.ts's buildDiscoveries).
@@ -55,7 +64,6 @@ function isCuratedEvent(value: unknown): value is CuratedEvent {
     typeof candidate.id === "string" &&
     typeof candidate.name === "string" &&
     typeof candidate.year === "number" &&
-    typeof candidate.description === "string" &&
     typeof candidate.category === "string" &&
     (DISCOVERY_CATEGORIES as readonly string[]).includes(candidate.category)
   );
@@ -82,7 +90,7 @@ function isEnrichedEvent(value: unknown): value is EnrichedEvent {
     typeof candidate.id === "string" &&
     typeof candidate.name === "string" &&
     typeof candidate.year === "number" &&
-    typeof candidate.description === "string" &&
+    (candidate.tagline === undefined || typeof candidate.tagline === "string") &&
     typeof candidate.category === "string" &&
     (DISCOVERY_CATEGORIES as readonly string[]).includes(candidate.category) &&
     (candidate.sitelinks === undefined || typeof candidate.sitelinks === "number") &&
@@ -114,20 +122,22 @@ interface EnrichmentFields {
   articleUrls: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
   image?: string;
+  tagline?: string;
 }
 
 // Reads the checked-in curated list (data/raw/events-curated.raw.json) and
-// backfills sitelinks/wikipediaUrl/country/image via a batched per-QID
-// SPARQL pass (same VALUES-clause pattern as
-// fetch-reigns.ts/fetch-descriptions.ts) — dateProperty/source are
+// backfills sitelinks/wikipediaUrl/country/image/tagline via a batched
+// per-QID SPARQL pass (same VALUES-clause pattern as
+// fetch-reigns.ts/fetch-taglines.ts) — dateProperty/source are
 // curation-time provenance and are dropped here, not carried into the
-// merged output.
+// merged output. tagline is live-fetched here, not read from the curated
+// file, matching how Wars already sources it (tagline/description split).
 export async function fetchEventsEnrichment(): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "events-curated.raw.json");
   const curated = validateCuratedEventsFile(JSON.parse(await readFile(curatedPath, "utf8")));
   const ids = curated.events.map((event) => event.id);
 
-  console.log(`Fetching sitelinks/article/country/image enrichment for ${ids.length} curated events...`);
+  console.log(`Fetching sitelinks/article/country/image/tagline enrichment for ${ids.length} curated events...`);
   const result = await batchedSparqlFetch(ids, buildEventsEnrichmentQuery);
 
   const enrichmentById = new Map<string, EnrichmentFields>();
@@ -154,6 +164,7 @@ export async function fetchEventsEnrichment(): Promise<void> {
     // other consumer of EnrichedEvent already expects wikipediaUrl.
     if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
     if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
+    if (entry.tagline === undefined && row.tagline?.value) entry.tagline = row.tagline.value;
     const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
     if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
   }
@@ -165,7 +176,7 @@ export async function fetchEventsEnrichment(): Promise<void> {
       name: event.name,
       year: event.year,
       category: event.category,
-      description: event.description,
+      tagline: enrichment?.tagline,
       sitelinks: enrichment?.sitelinks,
       wikipediaUrl: enrichment?.wikipediaUrl,
       articleUrls: enrichment?.articleUrls ?? {},

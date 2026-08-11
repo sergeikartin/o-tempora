@@ -128,7 +128,8 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
         )}
         <h2 className={styles.name}>{content.name}</h2>
         <p className={styles.dateLine}>{content.dateLine}</p>
-        <p className={styles.description}>{content.description}</p>
+        <p className={styles.tagline}>{content.tagline}</p>
+        {content.description && <p className={styles.description}>{content.description}</p>}
         {content.reignLines && (
           <>
             <h3 className={styles.sectionHeading}>Reign periods</h3>

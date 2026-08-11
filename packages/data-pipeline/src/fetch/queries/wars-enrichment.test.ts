@@ -14,7 +14,7 @@ test("requires sitelinks (no floor — curated ids are already hand-vetted)", ()
   assert.doesNotMatch(query, /FILTER\(\?sitelinks/);
 });
 
-test("fetches a Wikipedia article title per pageviews-basket language, country, image, and English description, all optional", () => {
+test("fetches a Wikipedia article title per pageviews-basket language, country, image, and English tagline, all optional", () => {
   const query = buildWarsEnrichmentQuery(["Q198"]);
   assert.equal(PAGEVIEWS_LANGUAGES.length, 7);
   for (const lang of PAGEVIEWS_LANGUAGES) {
@@ -26,7 +26,7 @@ test("fetches a Wikipedia article title per pageviews-basket language, country, 
   }
   assert.match(query, /OPTIONAL \{ \?event wdt:P17 \?country\. \}/);
   assert.match(query, /OPTIONAL \{ \?event wdt:P18 \?image\. \}/);
-  assert.match(query, /OPTIONAL \{ \?event schema:description \?description \. FILTER\(LANG\(\?description\) = "en"\) \}/);
+  assert.match(query, /OPTIONAL \{ \?event schema:description \?tagline \. FILTER\(LANG\(\?tagline\) = "en"\) \}/);
 });
 
 test("binds ?date's precision via the point-in-time/start-time statement value nodes, not the wdt: truthy shortcut", () => {
@@ -54,13 +54,13 @@ test("binds ?endDate's precision the same way via P582's statement value node", 
   assert.match(query, /\?endDateValue wikibase:timeValue \?endDate ;\s*wikibase:timePrecision \?endDatePrecision/);
 });
 
-test("selects sitelinks/per-language article title vars/country/image/description/date/datePrecision/endDate/endDatePrecision", () => {
+test("selects sitelinks/per-language article title vars/country/image/tagline/date/datePrecision/endDate/endDatePrecision", () => {
   const query = buildWarsEnrichmentQuery(["Q198"]);
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `\\?article${lang[0]!.toUpperCase()}${lang.slice(1)}`).join(
     " ",
   );
   const pattern = new RegExp(
-    `SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?description \\?date \\?datePrecision \\?endDate \\?endDatePrecision WHERE`,
+    `SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?tagline \\?date \\?datePrecision \\?endDate \\?endDatePrecision WHERE`,
   );
   assert.match(query, pattern);
 });

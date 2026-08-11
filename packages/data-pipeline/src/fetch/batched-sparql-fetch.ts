@@ -14,7 +14,7 @@ function sleep(ms: number): Promise<void> {
 // Runs a VALUES-clause query in batches over a list of Wikidata QIDs,
 // tolerating individual batch failures (best-effort — a failed batch just
 // means those ~50 entities get no data for this pass, not a fatal pipeline
-// error). Shared by fetch-reigns.ts and fetch-descriptions.ts, which both
+// error). Shared by fetch-reigns.ts and fetch-taglines.ts, which both
 // batch a different predicate over the same kind of candidate-QID list.
 export async function batchedSparqlFetch(
   ids: string[],

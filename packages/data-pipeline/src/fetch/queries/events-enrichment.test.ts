@@ -8,7 +8,7 @@ test("VALUES clause includes one wd: entry per given QID", () => {
   assert.match(query, /VALUES \?event \{ wd:Q988780 wd:Q20124 \}/);
 });
 
-test("requires wikibase:sitelinks, and leaves a per-language article title, country, and image optional", () => {
+test("requires wikibase:sitelinks, and leaves a per-language article title, country, image, and tagline optional", () => {
   const query = buildEventsEnrichmentQuery(["Q1"]);
   assert.match(query, /\?event wikibase:sitelinks \?sitelinks \./);
   assert.equal(PAGEVIEWS_LANGUAGES.length, 7);
@@ -21,4 +21,14 @@ test("requires wikibase:sitelinks, and leaves a per-language article title, coun
   }
   assert.match(query, /OPTIONAL \{ \?event wdt:P17 \?country\. \}/);
   assert.match(query, /OPTIONAL \{ \?event wdt:P18 \?image\. \}/);
+  assert.match(query, /OPTIONAL \{ \?event schema:description \?tagline \. FILTER\(LANG\(\?tagline\) = "en"\) \}/);
+});
+
+test("selects sitelinks/per-language article title vars/country/image/tagline", () => {
+  const query = buildEventsEnrichmentQuery(["Q1"]);
+  const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `\\?article${lang[0]!.toUpperCase()}${lang.slice(1)}`).join(
+    " ",
+  );
+  const pattern = new RegExp(`SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?tagline WHERE`);
+  assert.match(query, pattern);
 });

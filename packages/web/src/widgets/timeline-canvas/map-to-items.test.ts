@@ -10,7 +10,7 @@ const person: Person = {
   occupationDomain: 'humanities',
   regionTags: [],
   fameScore: 317,
-  description: '4th-century BCE Classical Greek philosopher and polymath',
+  tagline: '4th-century BCE Classical Greek philosopher and polymath',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Aristotle',
 };
 
@@ -55,7 +55,7 @@ const warWithEndYear: War = {
   category: 'war',
   regionTags: ['east-asia'],
   fameScore: 350,
-  description: 'war on the Korean peninsula',
+  tagline: 'war on the Korean peninsula',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
 };
 
@@ -73,7 +73,7 @@ const battle: WarEvent = {
   category: 'war',
   regionTags: ['americas'],
   fameScore: 250,
-  description: 'ancient battle',
+  tagline: 'ancient battle',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
 };
 
@@ -132,7 +132,7 @@ const discovery: Discovery = {
   category: 'communication',
   regionTags: ['europe'],
   fameScore: 386,
-  description: 'device for applying pressure to transfer ink onto paper',
+  tagline: 'device for applying pressure to transfer ink onto paper',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
 };
 

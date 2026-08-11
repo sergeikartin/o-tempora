@@ -141,7 +141,14 @@ export interface TimelineEntry {
   id: string;
   name: string;
   fameScore: number;
-  description: string;
+  tagline: string;
+  // Wikipedia's REST summary API's lead-paragraph `extract` for this
+  // entity's English article — real prose, distinct from `tagline`'s short
+  // Wikidata subtitle. Absent (not a fallback to `tagline`) whenever no
+  // English Wikipedia article resolves; never causes the entity to be
+  // dropped at publish (only a missing `tagline` does — see
+  // write-datasets.ts). No length cap anywhere in the pipeline or the UI.
+  description?: string;
   wikipediaUrl: string;
   // The raw Wikidata P18 Commons `Special:FilePath` URI, stored exactly as
   // SPARQL returns it — no width baked in, same "store verbatim" convention
