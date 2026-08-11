@@ -14,7 +14,7 @@ function extractQid(uri: string): string | undefined {
   return ENTITY_URI_PATTERN.exec(uri)?.[1];
 }
 
-// Reads the raw files fetch-descriptions.ts/fetch-events-enrichment.ts/
+// Reads the raw files fetch-taglines.ts/fetch-events-enrichment.ts/
 // fetch-wars-enrichment.ts already wrote (each now carrying a raw P18
 // `image` URI) and, for every entity that resolved an image, runs a second
 // batched Commons `imageinfo` pass to resolve `imageAttribution`
@@ -23,10 +23,10 @@ function extractQid(uri: string): string | undefined {
 // batched-sparql-fetch.ts. Ordered after all three in fetch/index.ts, since
 // it depends on their output being on disk.
 export async function fetchImageAttribution(): Promise<void> {
-  const descriptionsRaw = validateSparqlResultShape(
-    JSON.parse(await readFile(path.join(RAW_DIR, "people-descriptions.raw.json"), "utf8")),
+  const taglinesRaw = validateSparqlResultShape(
+    JSON.parse(await readFile(path.join(RAW_DIR, "people-taglines.raw.json"), "utf8")),
   );
-  const peopleEntries = descriptionsRaw.results.bindings
+  const peopleEntries = taglinesRaw.results.bindings
     .map((row) => {
       const personUri = row.person?.value;
       const imageUri = row.image?.value;

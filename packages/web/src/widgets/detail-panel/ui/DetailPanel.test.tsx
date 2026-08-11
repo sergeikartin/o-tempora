@@ -12,7 +12,7 @@ const napoleon: Person = {
   occupationDomain: 'institutions',
   regionTags: [],
   fameScore: 100,
-  description: 'French military commander and emperor',
+  tagline: 'French military commander and emperor',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Napoleon',
   image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Napoleon.jpg',
   imageAttribution: 'Jacques-Louis David, via Wikimedia Commons',
@@ -23,7 +23,7 @@ test('renders nothing when selected is null', () => {
   expect(container.innerHTML).toBe('');
 });
 
-test('renders name, date line, description, image, credit line, and a Wikipedia link', () => {
+test('renders name, date line, tagline, image, credit line, and a Wikipedia link', () => {
   render(<DetailPanel selected={{ entityType: 'person', entity: napoleon }} onClose={() => {}} />);
 
   expect(screen.getByText('Napoleon')).toBeTruthy();
@@ -34,6 +34,25 @@ test('renders name, date line, description, image, credit line, and a Wikipedia 
   const link = screen.getByRole('link', { name: /Wikipedia/ }) as HTMLAnchorElement;
   expect(link.href).toBe('https://en.wikipedia.org/wiki/Napoleon');
   expect(link.target).toBe('_blank');
+});
+
+test('renders description as a body paragraph, below the tagline subtitle, when present', () => {
+  const withDescription = {
+    ...napoleon,
+    description: 'Napoleon Bonaparte was a French military commander and political leader.',
+  };
+  render(<DetailPanel selected={{ entityType: 'person', entity: withDescription }} onClose={() => {}} />);
+
+  expect(screen.getByText('French military commander and emperor')).toBeTruthy();
+  expect(screen.getByText('Napoleon Bonaparte was a French military commander and political leader.')).toBeTruthy();
+});
+
+test('shows the tagline subtitle alone, with no empty/placeholder body paragraph, when description is absent', () => {
+  const { container } = render(<DetailPanel selected={{ entityType: 'person', entity: napoleon }} onClose={() => {}} />);
+
+  expect(screen.getByText('French military commander and emperor')).toBeTruthy();
+  const emptyParagraphs = Array.from(container.querySelectorAll('p')).filter((p) => p.textContent === '');
+  expect(emptyParagraphs.length).toBe(0);
 });
 
 test('omits the image slot entirely when the entity has no image', () => {

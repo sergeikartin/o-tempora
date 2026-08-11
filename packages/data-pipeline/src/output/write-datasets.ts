@@ -32,7 +32,7 @@ function optionalYearMonth(year: number | undefined, month: number | undefined):
 interface ValidatedEventRow<C> {
   name: string;
   article: string;
-  description: string;
+  tagline: string;
   year: number;
   month?: number;
   category: C;
@@ -45,7 +45,7 @@ interface ValidatedEventRow<C> {
 // DiscoveryCategory for Discoveries — see packages/shared-types), hence the
 // type param.
 function validateEventRow<C>(
-  row: { label?: string; article?: string; description?: string; year?: number; month?: number; category?: C },
+  row: { label?: string; article?: string; tagline?: string; year?: number; month?: number; category?: C },
   reasons: Record<string, number>,
 ): ValidatedEventRow<C> | undefined {
   if (!row.label) {
@@ -56,8 +56,8 @@ function validateEventRow<C>(
     record(reasons, "missing Wikipedia article");
     return undefined;
   }
-  if (!row.description) {
-    record(reasons, "missing description");
+  if (!row.tagline) {
+    record(reasons, "missing tagline");
     return undefined;
   }
   if (row.year === undefined) {
@@ -71,7 +71,7 @@ function validateEventRow<C>(
   return {
     name: row.label,
     article: row.article,
-    description: row.description,
+    tagline: row.tagline,
     year: row.year,
     month: row.month,
     category: row.category,
@@ -101,8 +101,8 @@ export function buildPeople(
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    if (!row.description) {
-      record(reasons, "missing description");
+    if (!row.tagline) {
+      record(reasons, "missing tagline");
       continue;
     }
     if (row.birthyear === undefined) {
@@ -140,11 +140,12 @@ export function buildPeople(
       occupationDomain: row.occupationDomain,
       regionTags: row.regionTags,
       fameScore: row.hpi,
-      description: row.description,
+      tagline: row.tagline,
       wikipediaUrl: row.wikipediaUrl,
       reignPeriods: reignsByPersonId.get(row.wdId),
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
+      ...(row.description ? { description: row.description } : {}),
     });
   }
 
@@ -202,10 +203,11 @@ export function buildWars(rows: TaggedWar[]): { entries: WarsAndConflictsEntry[]
       category: validated.category,
       regionTags: row.regionTags,
       fameScore: row.fameScore,
-      description: validated.description,
+      tagline: validated.tagline,
       wikipediaUrl: validated.article,
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
+      ...(row.description ? { description: row.description } : {}),
       ...(row.parentId ? { parentId: row.parentId } : {}),
     };
 
@@ -262,10 +264,11 @@ export function buildDiscoveries(rows: TaggedDiscovery[]): { discoveries: Discov
       category: validated.category,
       regionTags: row.regionTags,
       fameScore: row.fameScore,
-      description: validated.description,
+      tagline: validated.tagline,
       wikipediaUrl: validated.article,
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
+      ...(row.description ? { description: row.description } : {}),
     });
   }
 

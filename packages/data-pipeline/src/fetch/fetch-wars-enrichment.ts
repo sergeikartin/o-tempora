@@ -41,7 +41,7 @@ export interface EnrichedWar {
   countries: string[];
   // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim.
   image?: string;
-  description?: string;
+  tagline?: string;
   // Wikidata's own claim precision decides whether month is present (see
   // wikidata-date.ts's MONTH_OR_FINER_PRECISION) — never defaulted to
   // January to paper over an unknown month.
@@ -98,7 +98,7 @@ function isEnrichedWar(value: unknown): value is EnrichedWar {
     Array.isArray(candidate.countries) &&
     candidate.countries.every((country) => typeof country === "string") &&
     (candidate.image === undefined || typeof candidate.image === "string") &&
-    (candidate.description === undefined || typeof candidate.description === "string") &&
+    (candidate.tagline === undefined || typeof candidate.tagline === "string") &&
     (candidate.year === undefined || typeof candidate.year === "number") &&
     (candidate.month === undefined || typeof candidate.month === "number") &&
     (candidate.endYear === undefined || typeof candidate.endYear === "number") &&
@@ -126,7 +126,7 @@ interface EnrichmentFields {
   articleUrls: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
   image?: string;
-  description?: string;
+  tagline?: string;
   year?: number;
   month?: number;
   endYear?: number;
@@ -134,9 +134,9 @@ interface EnrichmentFields {
 }
 
 // Reads the checked-in curated list (data/raw/wars-curated.raw.json) and
-// backfills sitelinks/wikipediaUrl/country/image/description/dates via a
+// backfills sitelinks/wikipediaUrl/country/image/tagline/dates via a
 // batched per-QID SPARQL pass (same VALUES-clause pattern as
-// fetch-events-enrichment.ts). Unlike Discoveries, description and dates
+// fetch-events-enrichment.ts). Unlike Discoveries, tagline and dates
 // are never curator-authored here — the curated file carries only
 // id/name/category/parentId (see wars-curated.raw.json's meta.description).
 export async function fetchWarsEnrichment(): Promise<void> {
@@ -144,7 +144,7 @@ export async function fetchWarsEnrichment(): Promise<void> {
   const curated = validateCuratedWarsFile(JSON.parse(await readFile(curatedPath, "utf8")));
   const ids = curated.wars.map((war) => war.id);
 
-  console.log(`Fetching sitelinks/article/country/image/description/date enrichment for ${ids.length} curated wars...`);
+  console.log(`Fetching sitelinks/article/country/image/tagline/date enrichment for ${ids.length} curated wars...`);
   const result = await batchedSparqlFetch(ids, buildWarsEnrichmentQuery);
 
   const enrichmentById = new Map<string, EnrichmentFields>();
@@ -171,7 +171,7 @@ export async function fetchWarsEnrichment(): Promise<void> {
     // other consumer of EnrichedWar already expects wikipediaUrl.
     if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
     if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
-    if (entry.description === undefined && row.description?.value) entry.description = row.description.value;
+    if (entry.tagline === undefined && row.tagline?.value) entry.tagline = row.tagline.value;
     const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
     if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
 
@@ -197,7 +197,7 @@ export async function fetchWarsEnrichment(): Promise<void> {
       articleUrls: enrichment?.articleUrls ?? {},
       countries: enrichment?.countries ?? [],
       image: enrichment?.image,
-      description: enrichment?.description,
+      tagline: enrichment?.tagline,
       year: enrichment?.year,
       month: enrichment?.month,
       endYear: enrichment?.endYear,

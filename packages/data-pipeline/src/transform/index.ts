@@ -12,13 +12,27 @@ import { tagCuratedDiscovery, tagCuratedWar } from "./tag-events.js";
 import { rankByFameScore, scoreAndRankByHpi } from "./score.js";
 
 export type TaggedPerson = PantheonPersonRow &
-  PantheonPersonTags & { description?: string; wikipediaUrl: string; image?: string; imageAttribution?: string };
+  PantheonPersonTags & {
+    tagline?: string;
+    // Wikipedia lead-paragraph extract (fetch-wikipedia-extracts.ts's
+    // output) — independent of tagline, never a fallback for it. Absent
+    // never drops the row (only a missing tagline does).
+    description?: string;
+    wikipediaUrl: string;
+    image?: string;
+    imageAttribution?: string;
+  };
 
 export interface TaggedDiscovery {
   id: string;
   label: string;
   article?: string;
-  description: string;
+  // Absent means the live enrichment pass couldn't resolve an English
+  // tagline for this curated QID — Output drops the row (no fallback to
+  // the curated file's old hand-typed text), the same "no fallback, drop
+  // instead" behavior Wars/People already have.
+  tagline?: string;
+  description?: string;
   year: number;
   sitelinks: number;
   fameScore: number;
@@ -32,6 +46,7 @@ export interface TaggedWar {
   id: string;
   label: string;
   article?: string;
+  tagline?: string;
   description?: string;
   year?: number;
   month?: number;
@@ -57,21 +72,21 @@ function loadRaw(fileName: string) {
 const ENTITY_URI_PATTERN = /\/entity\/(Q\d+)$/;
 
 interface PersonEnrichment {
-  description?: string;
+  tagline?: string;
   image?: string;
 }
 
-// Keyed by Wikidata QID, extracted from the description-query's ?person
+// Keyed by Wikidata QID, extracted from the tagline-query's ?person
 // URI binding — same extraction pattern group-reigns.ts already uses. Also
 // carries the P18 image URI the same query now backfills (this ticket's
-// query change). description is single-valued (a FILTER(LANG=en) claim),
+// query change). tagline is single-valued (a FILTER(LANG=en) claim),
 // but P18 is not — a person with more than one English-Wikidata image
 // claim produces multiple binding rows for the same ?person, so this keeps
 // only the first image seen per person (first-wins, same convention
 // fetchEventsEnrichment's own binding merge uses) rather than letting
 // whichever row the endpoint returns last silently overwrite it.
 function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
-  const raw = loadRaw("people-descriptions.raw.json");
+  const raw = loadRaw("people-taglines.raw.json");
   const map = new Map<string, PersonEnrichment>();
   for (const row of raw.results.bindings) {
     const personUri = row.person?.value;
@@ -81,7 +96,7 @@ function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
     const id = match[1];
     const existing = map.get(id);
     map.set(id, {
-      description: existing?.description ?? row.description?.value,
+      tagline: existing?.tagline ?? row.tagline?.value,
       image: existing?.image ?? row.image?.value,
     });
   }
@@ -104,6 +119,28 @@ function loadImageAttributionFile(): ImageAttributionFile {
     fs.readFileSync(path.join(RAW_DIR, "image-attribution.raw.json"), "utf8"),
   ) as ImageAttributionFile;
   return { people: raw.people ?? {}, discoveries: raw.discoveries ?? {}, wars: raw.wars ?? {} };
+}
+
+interface WikipediaExtractsFile {
+  people: Record<string, string>;
+  wars: Record<string, string>;
+  discoveries: Record<string, string>;
+}
+
+// fetch-wikipedia-extracts.ts's output — a separate REST pass (not
+// Wikidata SPARQL) keyed by wdId for People (matching
+// loadPeopleEnrichmentMap's key) and by the curated row's own id for Wars/
+// Discoveries (matching transformWars/transformDiscoveries), same
+// "separate raw file, same loading convention" reasoning as
+// loadImageAttributionFile/loadPageviewsFile above. A missing id means no
+// English Wikipedia article resolved (or the pipeline hasn't been
+// re-fetched since this entity was added) — degrades to an absent
+// `description`, never a dropped row (only a missing `tagline` drops).
+function loadWikipediaExtractsFile(): WikipediaExtractsFile {
+  const raw = JSON.parse(
+    fs.readFileSync(path.join(RAW_DIR, "wikipedia-extracts.raw.json"), "utf8"),
+  ) as WikipediaExtractsFile;
+  return { people: raw.people ?? {}, wars: raw.wars ?? {}, discoveries: raw.discoveries ?? {} };
 }
 
 interface PageviewsFile {
@@ -130,19 +167,21 @@ function loadPageviewsFile(): PageviewsFile {
 // end — each fed by its own raw snapshot and scored on its own.
 // Sourced from Pantheon 2.0, not Wikidata — no grouping needed (the CSV is
 // already one row per person, unlike SPARQL's denormalized bindings).
-// Descriptions come from a separate batched SPARQL fetch keyed on the
-// Wikidata QID Pantheon retains per row (fetch-descriptions.ts), since
-// Pantheon's own CSV has no description-equivalent field.
+// Taglines come from a separate batched SPARQL fetch keyed on the
+// Wikidata QID Pantheon retains per row (fetch-taglines.ts), since
+// Pantheon's own CSV has no tagline-equivalent field.
 export function transformPeople(): TaggedPerson[] {
   const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
   const rows = parsePantheonCsv(fs.readFileSync(csvPath, "utf8"));
   const enrichment = loadPeopleEnrichmentMap();
   const imageAttribution = loadImageAttributionFile().people;
+  const wikipediaExtracts = loadWikipediaExtractsFile().people;
 
   const tagged = rows.map((row) => ({
     ...row,
     ...tagPantheonPerson(row),
-    description: enrichment.get(row.wdId)?.description,
+    tagline: enrichment.get(row.wdId)?.tagline,
+    description: wikipediaExtracts[row.wdId],
     wikipediaUrl: `https://en.wikipedia.org/wiki/${row.slug}`,
     image: enrichment.get(row.wdId)?.image,
     imageAttribution: imageAttribution[row.wdId],
@@ -158,7 +197,7 @@ export function transformPeople(): TaggedPerson[] {
 // `sitelinks` means the enrichment pass couldn't resolve that QID; coerced
 // to 0 here so it sorts last and Output's buildWars can drop it explicitly
 // (same convention transformDiscoveries uses). Unlike Discoveries,
-// description/year/endYear are also enrichment-sourced here, not
+// tagline/year/endYear are also enrichment-sourced here, not
 // curator-authored — left `undefined` rather than coerced when the
 // enrichment pass didn't resolve them, since buildWars needs to
 // distinguish "no date at all" (drop) from "one date" (WarEvent) from "two
@@ -168,6 +207,7 @@ export function transformWars(): TaggedWar[] {
   const { wars } = validateEnrichedWarsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
   const imageAttribution = loadImageAttributionFile().wars;
   const pageviews = loadPageviewsFile().wars;
+  const wikipediaExtracts = loadWikipediaExtractsFile().wars;
 
   const tagged = wars.map((war) => {
     const { category, regionTags } = tagCuratedWar(war.category, war.countries);
@@ -175,7 +215,8 @@ export function transformWars(): TaggedWar[] {
       id: war.id,
       label: war.name,
       article: war.wikipediaUrl,
-      description: war.description,
+      tagline: war.tagline,
+      description: wikipediaExtracts[war.id],
       year: war.year,
       month: war.month,
       endYear: war.endYear,
@@ -204,6 +245,7 @@ export function transformDiscoveries(): TaggedDiscovery[] {
   const { events } = validateEnrichedEventsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
   const imageAttribution = loadImageAttributionFile().discoveries;
   const pageviews = loadPageviewsFile().discoveries;
+  const wikipediaExtracts = loadWikipediaExtractsFile().discoveries;
 
   const tagged = events.map((event) => {
     const { category, regionTags } = tagCuratedDiscovery(event.category, event.countries);
@@ -211,7 +253,8 @@ export function transformDiscoveries(): TaggedDiscovery[] {
       id: event.id,
       label: event.name,
       article: event.wikipediaUrl,
-      description: event.description,
+      tagline: event.tagline,
+      description: wikipediaExtracts[event.id],
       year: event.year,
       sitelinks: event.sitelinks ?? 0,
       pageviews: pageviews[event.id] ?? 0,

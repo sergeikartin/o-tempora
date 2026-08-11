@@ -18,7 +18,12 @@ export type DetailPanelEntity =
 export interface DrawerContent {
   name: string;
   dateLine: string;
-  description: string;
+  tagline: string;
+  // Wikipedia lead-paragraph prose — absent whenever no English Wikipedia
+  // article resolved for this entity. Independent of tagline, never a
+  // fallback for it; the panel renders the tagline subtitle alone when
+  // this is absent, no empty/placeholder body section.
+  description?: string;
   wikipediaUrl: string;
   image?: string;
   imageAttribution?: string;
@@ -34,6 +39,7 @@ function personContent(person: Person): DrawerContent {
   return {
     name: person.name,
     dateLine: rangeDateLine(person.lifespan.start, person.lifespan.end),
+    tagline: person.tagline,
     description: person.description,
     wikipediaUrl: person.wikipediaUrl,
     image: person.image,
@@ -52,6 +58,7 @@ function warEntryContent(entry: WarsAndConflictsEntry): DrawerContent {
   return {
     name: entry.name,
     dateLine,
+    tagline: entry.tagline,
     description: entry.description,
     wikipediaUrl: entry.wikipediaUrl,
     image: entry.image,
@@ -63,6 +70,7 @@ function discoveryContent(discovery: Discovery): DrawerContent {
   return {
     name: discovery.name,
     dateLine: formatYearMonth(discovery.at),
+    tagline: discovery.tagline,
     description: discovery.description,
     wikipediaUrl: discovery.wikipediaUrl,
     image: discovery.image,

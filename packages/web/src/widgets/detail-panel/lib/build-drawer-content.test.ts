@@ -9,7 +9,7 @@ const napoleon: Person = {
   occupationDomain: 'institutions',
   regionTags: ['western-europe'],
   fameScore: 100,
-  description: 'French military commander and emperor',
+  tagline: 'French military commander and emperor',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Napoleon',
   image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Napoleon.jpg',
   imageAttribution: 'Jacques-Louis David, via Wikimedia Commons',
@@ -36,7 +36,7 @@ const koreanWar: War = {
   category: 'war',
   regionTags: ['east-asia'],
   fameScore: 350,
-  description: 'war on the Korean peninsula',
+  tagline: 'war on the Korean peninsula',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
 };
 
@@ -49,7 +49,7 @@ const battle: WarEvent = {
   category: 'war',
   regionTags: ['americas'],
   fameScore: 250,
-  description: 'major battle of the American Civil War',
+  tagline: 'major battle of the American Civil War',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Gettysburg',
 };
 
@@ -60,7 +60,7 @@ const printingPress: Discovery = {
   category: 'communication',
   regionTags: ['europe'],
   fameScore: 386,
-  description: 'device for applying pressure to transfer ink onto paper',
+  tagline: 'device for applying pressure to transfer ink onto paper',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
   image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg',
 };
@@ -69,10 +69,24 @@ test('person: dateLine spans birth-death month/year, image/imageAttribution pass
   const content = buildDrawerContent({ entityType: 'person', entity: napoleon });
   expect(content.name).toBe('Napoleon');
   expect(content.dateLine).toBe('August 1769 – May 1821');
-  expect(content.description).toBe('French military commander and emperor');
+  expect(content.tagline).toBe('French military commander and emperor');
   expect(content.wikipediaUrl).toBe('https://en.wikipedia.org/wiki/Napoleon');
   expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Napoleon.jpg');
   expect(content.imageAttribution).toBe('Jacques-Louis David, via Wikimedia Commons');
+});
+
+test('person: description passes through when present', () => {
+  const withDescription: Person = {
+    ...napoleon,
+    description: 'Napoleon Bonaparte was a French military commander and political leader.',
+  };
+  const content = buildDrawerContent({ entityType: 'person', entity: withDescription });
+  expect(content.description).toBe('Napoleon Bonaparte was a French military commander and political leader.');
+});
+
+test('person: description is undefined when absent (no Wikipedia article resolved)', () => {
+  const content = buildDrawerContent({ entityType: 'person', entity: napoleon });
+  expect(content.description).toBeUndefined();
 });
 
 test('person: dateLine says "present" for a living person (no lifespan.end)', () => {
@@ -132,6 +146,17 @@ test('War: image/imageAttribution are undefined when absent', () => {
   expect(content.imageAttribution).toBeUndefined();
 });
 
+test('War: description passes through when present', () => {
+  const warWithDescription: War = { ...koreanWar, description: 'A war fought on the Korean peninsula.' };
+  const content = buildDrawerContent({ entityType: 'war', entity: warWithDescription });
+  expect(content.description).toBe('A war fought on the Korean peninsula.');
+});
+
+test('War: description is undefined when absent (no Wikipedia article resolved)', () => {
+  const content = buildDrawerContent({ entityType: 'war', entity: koreanWar });
+  expect(content.description).toBeUndefined();
+});
+
 test('WarEvent: dateLine is a single point (at), not a range', () => {
   const content = buildDrawerContent({ entityType: 'war', entity: battle });
   expect(content.dateLine).toBe('July 1863');
@@ -151,4 +176,18 @@ test('Discovery: image passes through, no reignLines', () => {
   const content = buildDrawerContent({ entityType: 'discovery', entity: printingPress });
   expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg');
   expect(content.reignLines).toBeUndefined();
+});
+
+test('Discovery: description passes through when present', () => {
+  const withDescription: Discovery = {
+    ...printingPress,
+    description: 'A device for transferring text or images onto paper via ink.',
+  };
+  const content = buildDrawerContent({ entityType: 'discovery', entity: withDescription });
+  expect(content.description).toBe('A device for transferring text or images onto paper via ink.');
+});
+
+test('Discovery: description is undefined when absent (no Wikipedia article resolved)', () => {
+  const content = buildDrawerContent({ entityType: 'discovery', entity: printingPress });
+  expect(content.description).toBeUndefined();
 });

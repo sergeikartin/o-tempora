@@ -70,6 +70,13 @@
   margin-bottom: 10px;
 }
 
+.tagline {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
 .description {
   font-size: 14px;
   line-height: 1.5;

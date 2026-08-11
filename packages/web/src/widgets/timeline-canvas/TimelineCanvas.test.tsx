@@ -12,7 +12,7 @@ const aristotle: Person = {
   occupationDomain: 'humanities',
   regionTags: [],
   fameScore: 317,
-  description: '4th-century BCE Classical Greek philosopher and polymath',
+  tagline: '4th-century BCE Classical Greek philosopher and polymath',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Aristotle',
 };
 
@@ -26,7 +26,7 @@ const fixtureWars: WarsAndConflictsEntry[] = [
     category: 'war',
     regionTags: ['east-asia'],
     fameScore: 143,
-    description: 'war between North and South Korea, 1950–1953',
+    tagline: 'war between North and South Korea, 1950–1953',
     wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
   },
 ];
@@ -39,7 +39,7 @@ const fixtureDiscoveries: Discovery[] = [
     category: 'everyday-technology',
     regionTags: [],
     fameScore: 296,
-    description: 'sport that is practiced between two teams of eleven players',
+    tagline: 'sport that is practiced between two teams of eleven players',
     wikipediaUrl: 'https://en.wikipedia.org/wiki/Association_football',
   },
 ];

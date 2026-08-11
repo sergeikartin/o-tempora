@@ -15,7 +15,7 @@ function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
     dplaceCountry: "United Kingdom",
     birthyear: 1815,
     alive: true,
-    description: "English mathematician",
+    tagline: "English mathematician",
     wikipediaUrl: "https://en.wikipedia.org/wiki/Ada_Lovelace",
     occupationDomain: "science-technology",
     regionTags: ["northern-europe"],
@@ -30,7 +30,7 @@ function taggedWar(overrides: Partial<TaggedWar> = {}): TaggedWar {
     sitelinks: 80,
     fameScore: 52,
     article: "https://en.wikipedia.org/wiki/Peloponnesian_War",
-    description: "war fought between Athens and Sparta",
+    tagline: "war fought between Athens and Sparta",
     year: -431,
     endYear: -404,
     category: "war",
@@ -44,7 +44,7 @@ function taggedDiscovery(overrides: Partial<TaggedDiscovery> = {}): TaggedDiscov
     id: "Q5",
     label: "Penicillin",
     article: "https://en.wikipedia.org/wiki/Penicillin",
-    description: "1928 discovery of the antibiotic",
+    tagline: "1928 discovery of the antibiotic",
     year: 1928,
     sitelinks: 80,
     fameScore: 52,
@@ -118,11 +118,11 @@ test("buildPeople drops a person with no mappable occupation domain", () => {
   assert.equal(report.reasons["no mappable occupation domain"], 1);
 });
 
-test("buildPeople drops a person with no description", () => {
-  const rows = [taggedPerson({ description: undefined })];
+test("buildPeople drops a person with no tagline", () => {
+  const rows = [taggedPerson({ tagline: undefined })];
   const { people, report } = buildPeople(rows);
   assert.equal(people.length, 0);
-  assert.equal(report.reasons["missing description"], 1);
+  assert.equal(report.reasons["missing tagline"], 1);
 });
 
 test("buildPeople maps fameScore directly from hpi", () => {
@@ -279,9 +279,15 @@ test("buildDiscoveries passes through category, regionTags, and at.year", () => 
     category: "medicine-health",
     regionTags: ["europe"],
     fameScore: 52,
-    description: "1928 discovery of the antibiotic",
+    tagline: "1928 discovery of the antibiotic",
     wikipediaUrl: "https://en.wikipedia.org/wiki/Penicillin",
   });
+});
+
+test("buildDiscoveries drops a row whose live enrichment couldn't resolve a tagline (no fallback to curated text)", () => {
+  const { discoveries, report } = buildDiscoveries([taggedDiscovery({ tagline: undefined })]);
+  assert.equal(discoveries.length, 0);
+  assert.equal(report.reasons["missing tagline"], 1);
 });
 
 test("buildDiscoveries reads fameScore from the row's already-blended value, not re-derived from sitelinks", () => {

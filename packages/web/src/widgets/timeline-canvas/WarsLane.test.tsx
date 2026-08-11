@@ -13,7 +13,7 @@ const koreanWar: War = {
   category: 'war',
   regionTags: ['east-asia'],
   fameScore: 350,
-  description: 'war on the Korean peninsula',
+  tagline: 'war on the Korean peninsula',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
 };
 
@@ -24,7 +24,7 @@ const battleOfMegiddo: WarEvent = {
   category: 'war',
   regionTags: ['middle-east'],
   fameScore: 120,
-  description: 'ancient battle',
+  tagline: 'ancient battle',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
 };
 

@@ -13,7 +13,7 @@ const football: Discovery = {
   category: 'everyday-technology',
   regionTags: [],
   fameScore: 296,
-  description: 'sport that is practiced between two teams of eleven players',
+  tagline: 'sport that is practiced between two teams of eleven players',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Association_football',
 };
 
@@ -24,7 +24,7 @@ const brazil: Discovery = {
   category: 'exploration',
   regionTags: ['americas'],
   fameScore: 386,
-  description: 'country in South America',
+  tagline: 'country in South America',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Brazil',
 };
 
