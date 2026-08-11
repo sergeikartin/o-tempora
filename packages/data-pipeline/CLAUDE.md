@@ -45,4 +45,3 @@ No manual override/correction mechanism — a bad ranking or tag is fixed by cha
 
 - `docs/code-conventions.md` — pipeline-specific code patterns, file organization
 - `docs/adr/` — architecture decision records
-- Shared conventions (apply here too): `../../docs/code-conventions.md`

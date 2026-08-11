@@ -1,6 +1,6 @@
 # packages/data-pipeline — Conventions
 
-<!-- Pipeline code patterns. Read before implementing pipeline changes. Shared conventions: ../../../docs/code-conventions.md -->
+<!-- Pipeline code patterns. Read before implementing pipeline changes. Shared conventions: ../../../.claude/rules/code-conventions.md -->
 
 ## TypeScript
 
