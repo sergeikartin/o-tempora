@@ -83,29 +83,6 @@
   margin-bottom: 12px;
 }
 
-.sectionHeading {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin-bottom: 6px;
-}
-
-.reignList {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 13px;
-  margin-bottom: 12px;
-}
-
-.reignItem {
-  border-left: 3px solid var(--color-accent-selected);
-  padding-left: 8px;
-}
-
 .wikipediaButton {
   align-self: flex-start;
   margin-top: 8px;

@@ -181,13 +181,6 @@ export interface Person extends TimelineEntry {
   // Always a Period, never a point — a life is never a single moment.
   // `end` absent means still alive.
   lifespan: Period;
-  // Best-effort: only populated when Wikidata has at least one qualified
-  // P39 ("position held") statement with a start-time qualifier for this
-  // person (see data-pipeline/src/fetch/queries/reigns.ts, keyed on the
-  // Wikidata QID Pantheon retains per person). Most people have none.
-  // Sorted ascending by start year; a person can have more than one (e.g. a
-  // deposed-and-restored monarch, or multiple offices).
-  reignPeriods?: ReignPeriod[];
 }
 
 // Shape is decoupled from category (data-pipeline's Wikidata enrichment
@@ -240,21 +233,4 @@ export type ConflictEntry = Conflict | ConflictEvent;
 export interface Milestone extends TimelineEntry, PointInTime {
   category: MilestoneCategory;
   regionTags: Region[];
-}
-
-// A single period a person held a qualified position (Wikidata P39 with
-// P580/P582 start/end qualifiers) — monarchs, elected heads of
-// state/government, and any other dated position, not just literal
-// "king"/"queen" titles. Always a Period (extended directly, so `.start`/
-// `.end` read the same as any other Period rather than nesting under a
-// `.period` field) — `end` absent means Wikidata has no end-time claim
-// (e.g. still holding the position, or the claim is simply incomplete),
-// same "rendering-only fallback needed" situation as `Person.lifespan`'s
-// open `end`, left for the frontend to decide how to fall back, not
-// resolved here.
-export interface ReignPeriod extends Period {
-  // The position's own Wikidata label (e.g. "Pope", "King of England"),
-  // not a generic "reign" placeholder — absent only when Wikidata has no
-  // English label for the position itself (rare best-effort case).
-  title?: string;
 }

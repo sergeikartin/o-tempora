@@ -10,7 +10,7 @@ function articleOptionalBlocks(): string {
 // Enrichment for the hand-curated Milestones list
 // (data/raw/milestones-curated.raw.json) — not a corpus scan, parameterized on
 // a batch of specific curated Q-IDs, same VALUES-clause shape as
-// reigns.ts/taglines.ts. Backfills sitelinks (-> fameScore), a
+// taglines.ts. Backfills sitelinks (-> fameScore), a
 // Wikipedia article URL per language in the pageviews basket (same 7-
 // language set conflicts-enrichment.ts fixes for ADR 0010's pageviews blend),
 // country (-> regionTags), the P18 image claim (dynamic-tooltips spec

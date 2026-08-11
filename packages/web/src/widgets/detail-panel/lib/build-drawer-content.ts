@@ -31,12 +31,6 @@ export interface DrawerContent {
   wikipediaUrl: string;
   image?: string;
   imageAttribution?: string;
-  // Person only.
-  reignLines?: string[];
-}
-
-function rangeDateLine(start: { year: number; month?: number }, end: { year: number; month?: number } | undefined): string {
-  return `${formatYearMonth(start)} – ${end ? formatYearMonth(end) : 'present'}`;
 }
 
 function personContent(person: Person): DrawerContent {
@@ -47,10 +41,6 @@ function personContent(person: Person): DrawerContent {
     wikipediaUrl: person.wikipediaUrl,
     image: person.image,
     imageAttribution: person.imageAttribution,
-    reignLines: person.reignPeriods?.map((reign) => {
-      const title = reign.title ?? 'Reign';
-      return `${title}: ${rangeDateLine(reign.start, reign.end)}`;
-    }),
   };
 }
 

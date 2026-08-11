@@ -31,10 +31,6 @@ _Avoid_: Category, occupation category, conflict category, milestone category (f
 **Lifespan** (rendering context):
 A Person's birth-death range bar on the People lane's timeline — the visual object built from `Person.startYear`/`endYear` in `map-to-items.ts`'s `mapPeopleToItems`. Distinct from `TimelineEntry`'s general start/end range shape, which every lane (People, Conflicts, Milestones) shares.
 
-**Reign Period**:
-A sub-segment of a Person's lifespan bar marking a qualified position held (Wikidata P39 with dated qualifiers) — monarchs, elected heads of state/government, etc. Rendered as an overlay inside the parent lifespan bar (shared `subgroup`), not a separate timeline row. A person can have more than one (e.g. deposed and restored).
-_Avoid_: Reign, position (on its own, when the timeline-rendering sense is meant)
-
 **Fame Score**:
 `TimelineEntry.fameScore` — the numeric field driving each lane's manual UI filter floor (`FAME_SCORE_BOUNDS`/`FameScoreFilters`). Computed independently per lane, never blended across lanes: People uses raw Pantheon HPI (0–100); Conflicts & Milestones use a log-normalized blend of Wikidata sitelinks and Wikimedia pageviews, one shared 0–100 scale across both lanes (`packages/data-pipeline/docs/adr/0010-blend-sitelinks-and-pageviews-for-wars-discoveries-fame-score.md`). Never drives zoom, marker size, or z-order — see Fame Tier below.
 _Avoid_: Importance score, significance score, popularity score

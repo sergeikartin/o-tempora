@@ -46,8 +46,8 @@ export const POINT_RADIUS = 5;
 // row — pure visual breathing room, not a claim about the underlying dates.
 export const MIN_ROW_GAP_YEARS = 5;
 
-// A Period (a real duration — Person lifespans, Conflict ranges, reign
-// periods) always renders as a rounded-cap line; a PointInTime
+// A Period (a real duration — Person lifespans, Conflict ranges) always
+// renders as a rounded-cap line; a PointInTime
 // (ConflictEvents, Milestones) always renders as a dot. Both are drawn
 // with SVG stroke, not fill, so `stroke-linecap: round` gives the
 // pill-shaped caps.
