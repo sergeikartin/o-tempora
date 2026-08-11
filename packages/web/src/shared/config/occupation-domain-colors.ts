@@ -1,20 +1,24 @@
 import type { OccupationDomain } from '../types';
 
-// Mirrors design-tokens.md's Occupation Domain Palette. Inlined because Unit
-// 5 hasn't wired those tokens as CSS custom properties yet (ticket 05,
-// blocked on Unit 5's still-open decisions) — swap for `var(--color-domain-*)`
-// once it lands. Lives in shared/config, not widgets/timeline-canvas/options.ts,
-// since both the People lane (bar fill) and the sidebar Legend (pill swatch)
-// need it — a shared value, not D3-rendering-specific.
+// Mirrors design-tokens.md's Occupation Domain Palette, sourced directly
+// from pantheon.world's own CSS custom properties (--colorInstitutions etc.)
+// so our legend matches theirs exactly. References the CSS custom properties
+// wired in app/global.css's :root rather than repeating hex here — SVG
+// presentation attributes (People lane's fill/stroke) resolve var() same as
+// any other CSS property, so this works for D3-rendered and plain-DOM
+// consumers alike. Lives in shared/config, not
+// widgets/timeline-canvas/options.ts, since both the People lane (bar fill)
+// and the sidebar Legend (pill swatch) need it — a shared value, not
+// D3-rendering-specific.
 export const DOMAIN_COLORS: Record<OccupationDomain, string> = {
-  institutions: '#C08A7C',
-  arts: '#C0A37C',
-  'business-law': '#B3C07C',
-  'public-figure': '#8AC7A4',
-  'science-technology': '#61B89E',
-  exploration: '#7C84C0',
-  humanities: '#B35680',
-  sports: '#C38393',
+  institutions: 'var(--color-domain-institutions)',
+  arts: 'var(--color-domain-arts)',
+  'business-law': 'var(--color-domain-business-law)',
+  'public-figure': 'var(--color-domain-public-figure)',
+  'science-technology': 'var(--color-domain-science-technology)',
+  exploration: 'var(--color-domain-exploration)',
+  humanities: 'var(--color-domain-humanities)',
+  sports: 'var(--color-domain-sports)',
 };
 
 // Display labels for the Legend's pills — design-tokens.md's Occupation
