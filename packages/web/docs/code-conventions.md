@@ -1,6 +1,6 @@
 # packages/web — Conventions
 
-<!-- Frontend code patterns. Read before implementing features. Shared conventions: ../../../docs/code-conventions.md -->
+<!-- Frontend code patterns. Read before implementing features. -->
 
 ## Code Standards
 

@@ -1,6 +1,11 @@
-# TypeScript Project
-
-This project uses TypeScript with strict configuration.
+---
+paths:
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
+---
+# TypeScript/JavaScript Coding Style
 
 ## TypeScript Configuration
 - Strict mode enabled

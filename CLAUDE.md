@@ -12,15 +12,10 @@ Read on demand — only load what the current task needs.
 | Doc | Read when |
 |---|---|
 | [docs/product-scope.md](docs/product-scope.md) | Making a scope or UX call |
-| [docs/code-conventions.md](docs/code-conventions.md) | Writing shared/cross-package code |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | Debugging a recurring issue |
 | [docs/config-variables.md](docs/config-variables.md) | Touching config |
-| `packages/web/CLAUDE.md` + `packages/web/docs/` | Working in `packages/web` |
-| `packages/data-pipeline/CLAUDE.md` + `packages/data-pipeline/docs/` | Working in `packages/data-pipeline` |
 
-**Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale. See `docs/workflow.md` for the full delivery process.
-
-## Agent skills
+**Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale. 
 
 ### Issue tracker
 

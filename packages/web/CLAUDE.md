@@ -32,5 +32,4 @@ Run from repo root:
 - `docs/code-conventions.md` — FSD/React/styling rules, file organization
 - `docs/design-tokens.md` — color palette, typography, radius scale
 - `docs/adr/` — architecture decision records
-- Shared conventions (apply here too): `../../docs/code-conventions.md`
 
