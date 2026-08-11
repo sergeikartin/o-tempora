@@ -54,17 +54,6 @@ function taggedMilestone(overrides: Partial<TaggedMilestone> = {}): TaggedMilest
   };
 }
 
-test("buildPeople attaches reignPeriods only for people present in the map, keyed by wdId", () => {
-  const rows = [taggedPerson({ wdId: "Q935" }), taggedPerson({ wdId: "Q9682", name: "Charles II" })];
-  const reigns = new Map([["Q9682", [{ start: { year: 1660 }, end: { year: 1685 } }]]]);
-
-  const { people } = buildPeople(rows, reigns);
-
-  const [q935, q9682] = people;
-  assert.equal(q935?.reignPeriods, undefined);
-  assert.deepEqual(q9682?.reignPeriods, [{ start: { year: 1660 }, end: { year: 1685 } }]);
-});
-
 test("buildPeople builds lifespan.start/end from birthyear/deathyear, with month when present", () => {
   const { people } = buildPeople([taggedPerson({ birthyear: 1815, birthmonth: 12, deathyear: 1852, deathmonth: 11 })]);
   assert.deepEqual(people[0]?.lifespan, { start: { year: 1815, month: 12 }, end: { year: 1852, month: 11 } });
@@ -85,11 +74,6 @@ test("buildPeople drops a person with no deathyear whom Pantheon doesn't mark al
   const { people, report } = buildPeople(rows);
   assert.equal(people.length, 0);
   assert.equal(report.reasons["no deathyear and not confirmed alive"], 1);
-});
-
-test("buildPeople defaults to no reign data when no map is passed", () => {
-  const { people } = buildPeople([taggedPerson()]);
-  assert.equal(people[0]?.reignPeriods, undefined);
 });
 
 test("buildPeople drops a person whose birth-to-death span exceeds a plausible human lifespan", () => {

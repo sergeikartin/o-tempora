@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { transformPeople, transformConflicts, transformMilestones, loadReignsMap } from "../transform/index.js";
+import { transformPeople, transformConflicts, transformMilestones } from "../transform/index.js";
 import { buildPeople, buildConflicts, buildMilestones, type DropReport } from "./write-datasets.js";
 
 // The pipeline owns its own output — generating a dataset is a separate,
@@ -22,7 +22,7 @@ async function writeDataset(fileName: string, data: unknown): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  const { people, report: peopleReport } = buildPeople(transformPeople(), loadReignsMap());
+  const { people, report: peopleReport } = buildPeople(transformPeople());
   logReport("people.json", people.length, peopleReport);
   await writeDataset("people.json", people);
 

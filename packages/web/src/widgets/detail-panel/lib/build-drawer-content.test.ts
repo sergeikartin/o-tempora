@@ -13,20 +13,6 @@ const napoleon: Person = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Napoleon',
   image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Napoleon.jpg',
   imageAttribution: 'Jacques-Louis David, via Wikimedia Commons',
-  reignPeriods: [
-    { title: 'Emperor of the French', start: { year: 1804, month: 5 }, end: { year: 1814, month: 4 } },
-    { title: 'Emperor of the French', start: { year: 1815, month: 3 }, end: { year: 1815, month: 6 } },
-  ],
-};
-
-const livingPerson: Person = {
-  ...napoleon,
-  id: 'Q1',
-  name: 'Someone Alive',
-  lifespan: { start: { year: 1950 }, end: undefined },
-  reignPeriods: undefined,
-  image: undefined,
-  imageAttribution: undefined,
 };
 
 const koreanWar: Conflict = {
@@ -87,35 +73,6 @@ test('person: description is undefined when absent (no Wikipedia article resolve
   expect(content.description).toBeUndefined();
 });
 
-test('person: reignLines built one-per-period, "title: start – end", ordered as given', () => {
-  const content = buildDrawerContent({ entityType: 'person', entity: napoleon });
-  expect(content.reignLines).toEqual([
-    'Emperor of the French: May 1804 – April 1814',
-    'Emperor of the French: March 1815 – June 1815',
-  ]);
-});
-
-test('person: reignLines is undefined when reignPeriods is absent', () => {
-  const content = buildDrawerContent({ entityType: 'person', entity: livingPerson });
-  expect(content.reignLines).toBeUndefined();
-});
-
-test('person: reignPeriod with no title falls back to "Reign"', () => {
-  const content = buildDrawerContent({
-    entityType: 'person',
-    entity: { ...napoleon, reignPeriods: [{ start: { year: 1804 }, end: { year: 1814 } }] },
-  });
-  expect(content.reignLines).toEqual(['Reign: 1804 – 1814']);
-});
-
-test('person: reignPeriod with no end says "present"', () => {
-  const content = buildDrawerContent({
-    entityType: 'person',
-    entity: { ...napoleon, reignPeriods: [{ title: 'King', start: { year: 1804 }, end: undefined }] },
-  });
-  expect(content.reignLines).toEqual(['King: 1804 – present']);
-});
-
 test('Conflict: no dateLine (tagline already carries dates)', () => {
   const content = buildDrawerContent({ entityType: 'conflict', entity: koreanWar });
   expect(content.dateLine).toBeUndefined();
@@ -150,20 +107,14 @@ test('ConflictEvent: no dateLine (tagline already carries dates)', () => {
   expect(content.dateLine).toBeUndefined();
 });
 
-test('ConflictEvent: never carries reignLines (not a Person)', () => {
-  const content = buildDrawerContent({ entityType: 'conflict', entity: battle });
-  expect(content.reignLines).toBeUndefined();
-});
-
 test('Milestone: dateLine is at.year only (year precision)', () => {
   const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
   expect(content.dateLine).toBe('1440');
 });
 
-test('Milestone: image passes through, no reignLines', () => {
+test('Milestone: image passes through', () => {
   const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
   expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg');
-  expect(content.reignLines).toBeUndefined();
 });
 
 test('Milestone: description passes through when present', () => {

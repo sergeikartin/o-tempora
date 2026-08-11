@@ -1,12 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { ConflictCategory, MilestoneCategory, Region, ReignPeriod } from "@same-sky/shared-types";
+import type { ConflictCategory, MilestoneCategory, Region } from "@same-sky/shared-types";
 import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
 import { parsePantheonCsv, type PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
 import { validateEnrichedMilestonesFile } from "../fetch/fetch-milestones-enrichment.js";
 import { validateEnrichedConflictsFile } from "../fetch/fetch-conflicts-enrichment.js";
-import { groupReigns } from "./group-reigns.js";
 import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
 import { tagCuratedMilestone, tagCuratedConflict } from "./tag-milestones.js";
 import { rankByFameScore, scoreAndRankByHpi } from "./score.js";
@@ -77,8 +76,7 @@ interface PersonEnrichment {
 }
 
 // Keyed by Wikidata QID, extracted from the tagline-query's ?person
-// URI binding — same extraction pattern group-reigns.ts already uses. Also
-// carries the P18 image URI the same query now backfills (this ticket's
+// URI binding. Also carries the P18 image URI the same query now backfills (this ticket's
 // query change). tagline is single-valued (a FILTER(LANG=en) claim),
 // but P18 is not — a person with more than one English-Wikidata image
 // claim produces multiple binding rows for the same ?person, so this keeps
@@ -221,13 +219,4 @@ export function transformMilestones(): TaggedMilestone[] {
   });
 
   return rankByFameScore(tagged);
-}
-
-// Keyed by every person Q-ID that fetch-reigns.ts's snapshot covers, not
-// just the ones that survive the fame-tier cut in transformPeople() —
-// Output looks this up by id per final person, so extra/stale entries are
-// simply never read.
-export function loadReignsMap(): Map<string, ReignPeriod[]> {
-  const raw = loadRaw("people-reigns.raw.json");
-  return groupReigns(raw.results.bindings);
 }

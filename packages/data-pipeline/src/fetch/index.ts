@@ -1,6 +1,5 @@
 import { fetchPantheon } from "./fetch-pantheon.js";
 import { fetchTaglines } from "./fetch-taglines.js";
-import { fetchReigns } from "./fetch-reigns.js";
 import { fetchMilestonesEnrichment } from "./fetch-milestones-enrichment.js";
 import { fetchConflictsEnrichment } from "./fetch-conflicts-enrichment.js";
 import { fetchImageAttribution } from "./fetch-image-attribution.js";
@@ -8,14 +7,13 @@ import { fetchPageviews } from "./fetch-pageviews.js";
 import { fetchWikipediaExtracts } from "./fetch-wikipedia-extracts.js";
 import { parseLaneFlag, type Lane } from "./lane.js";
 
-// Depends on people-pantheon.raw.csv already being on disk (fetchTaglines/
-// fetchReigns each read the HPI-filtered candidate wd_id list back out of
-// it) — must run after fetchPantheon(). People has no pageviews stage
-// (Score's People path uses Pantheon HPI directly, untouched by ADR 0010).
+// Depends on people-pantheon.raw.csv already being on disk (fetchTaglines
+// reads the HPI-filtered candidate wd_id list back out of it) — must run
+// after fetchPantheon(). People has no pageviews stage (Score's People path
+// uses Pantheon HPI directly, untouched by ADR 0010).
 async function fetchPeopleLane(): Promise<void> {
   await fetchPantheon();
   await fetchTaglines();
-  await fetchReigns();
   await fetchImageAttribution("people");
   await fetchWikipediaExtracts("people");
 }
@@ -51,11 +49,10 @@ const LANE_RUNNERS: Record<Lane, () => Promise<void>> = {
 // each stage once, unscoped, keeps that concurrency intact.
 async function fetchAllLanes(): Promise<void> {
   await fetchPantheon();
-  // Both depend on people-pantheon.raw.csv already being on disk (each
-  // reads the HPI-filtered candidate wd_id list back out of it) — must run
-  // after fetchPantheon().
+  // Depends on people-pantheon.raw.csv already being on disk (reads the
+  // HPI-filtered candidate wd_id list back out of it) — must run after
+  // fetchPantheon().
   await fetchTaglines();
-  await fetchReigns();
   // Both read a checked-in curated list, independent of the above and of
   // each other — ordered last just to keep the log output grouped by lane.
   await fetchMilestonesEnrichment();

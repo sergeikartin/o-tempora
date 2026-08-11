@@ -4,7 +4,6 @@ export type {
   ConflictEvent,
   ConflictEntry,
   Milestone,
-  ReignPeriod,
   Period,
   PointInTime,
   YearMonth,

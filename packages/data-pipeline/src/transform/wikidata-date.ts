@@ -1,10 +1,7 @@
-// Shared by group-rows.ts and group-reigns.ts — both parse the same
-// Wikidata ISO-8601 dateTime literal shape (e.g. "-0493-01-01T00:00:00Z"
-// for 493 BCE, "1995-11-12T00:00:00Z" for CE), already matching
-// Temporal.PlainDate's own signed-year convention (Invariant 4). The two
-// callers still keep their own grouping logic separate (genuinely
-// different shapes — see group-reigns.ts's comment), but the low-level
-// ISO-string parsing itself is identical, so it lives here once.
+// Used by group-rows.ts to parse Wikidata's ISO-8601 dateTime literal shape
+// (e.g. "-0493-01-01T00:00:00Z" for 493 BCE, "1995-11-12T00:00:00Z" for CE),
+// already matching Temporal.PlainDate's own signed-year convention
+// (Invariant 4).
 
 export function parseIsoYear(iso: string): number | undefined {
   const match = /^(-?\d+)-\d{2}-\d{2}/.exec(iso);

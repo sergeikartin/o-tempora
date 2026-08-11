@@ -130,18 +130,6 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
         {content.dateLine && <p className={styles.dateLine}>{content.dateLine}</p>}
         <p className={styles.tagline}>{content.tagline}</p>
         {content.description && <p className={styles.description}>{content.description}</p>}
-        {content.reignLines && (
-          <>
-            <h3 className={styles.sectionHeading}>Reign periods</h3>
-            <ul className={styles.reignList}>
-              {content.reignLines.map((line) => (
-                <li key={line} className={styles.reignItem}>
-                  {line}
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
         <a
           href={content.wikipediaUrl}
           target="_blank"

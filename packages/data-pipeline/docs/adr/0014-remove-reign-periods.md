@@ -1,0 +1,7 @@
+# Remove reign periods entirely
+
+`Person.reignPeriods` (Wikidata P39 head-of-state/government positions, fetched via a secondary batched SPARQL pass — `fetch-reigns.ts`/`queries/reigns.ts`/`group-reigns.ts`) is removed, not deprecated: the type, the fetch/transform/output wiring, and the detail-panel's "Reign periods" UI section are all deleted.
+
+Two reasons together made the feature not worth keeping. First, coverage was low — only about 1,259 of 3,770 published people (roughly a third) ever had a qualified P39 statement with a start-time qualifier resolving to a Head of State/Government position, so most detail-panel views never showed the section at all. Second, and more importantly, the data was never load-bearing: `Person.lifespan` alone drives the People-lane timeline bar (`map-to-items.ts`/`PeopleLane.tsx`); reign periods only ever surfaced as a bulleted list inside the click-to-open detail drawer (`build-drawer-content.ts`/`DetailPanel.tsx`). An entire extra Wikidata SPARQL fetch stage, a bespoke grouping/dedup transform, and dedicated output wiring were being maintained for a display-only list most people never triggered.
+
+ADRs 0003, 0005, and 0006 each described part of the reigns-fetch architecture (its Fetch-stage dependency on People's raw output, its role as a reason Pantheon's QID join key was worth keeping, and the pattern later reused for descriptions); each is annotated as superseded by this one rather than rewritten, since they remain an accurate record of decisions made while the feature existed.

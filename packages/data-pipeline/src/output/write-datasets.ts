@@ -6,7 +6,6 @@ import type {
   ConflictEvent,
   ConflictEntry,
   Milestone,
-  ReignPeriod,
   YearMonth,
 } from "@same-sky/shared-types";
 import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
@@ -88,15 +87,8 @@ const MAX_PLAUSIBLE_LIFESPAN_YEARS = 130;
 // Output is the last chance to catch a schema violation before the frontend
 // ever sees this data. wikipediaUrl needs no presence check here — it's
 // derived deterministically from Pantheon's slug column, which
-// parsePantheonCsv already guarantees is non-empty. reignsByPersonId is
-// keyed on Wikidata QID (row.wdId), not Pantheon's own id — currently
-// always empty (see People: reign-period secondary enrichment,
-// .scratch/alt-data-sources/issues/19-people-reign-periods-enrichment.md,
-// which will populate it), but wired to the correct key now.
-export function buildPeople(
-  rows: TaggedPerson[],
-  reignsByPersonId: Map<string, ReignPeriod[]> = new Map(),
-): { people: Person[]; report: DropReport } {
+// parsePantheonCsv already guarantees is non-empty.
+export function buildPeople(rows: TaggedPerson[]): { people: Person[]; report: DropReport } {
   const people: Person[] = [];
   const reasons: Record<string, number> = {};
 
@@ -142,7 +134,6 @@ export function buildPeople(
       fameScore: row.hpi,
       tagline: row.tagline,
       wikipediaUrl: row.wikipediaUrl,
-      reignPeriods: reignsByPersonId.get(row.wdId),
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
       ...(row.description ? { description: row.description } : {}),
