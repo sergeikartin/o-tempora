@@ -1,6 +1,7 @@
 # CLAUDE.md
 
 <!-- Keep this file short. It's the index — detail lives in docs/. -->
+Provide concise, focused responses. Skip non-essential context, and keep examples minimal.
 
 ## Project Overview
 Read-only, continuously zoomable visualization of world history — People, Wars & Conflicts, and Events & Inventions lanes, hardcoded ahead of time. No accounts, no editing, no live data fetching.
@@ -15,7 +16,9 @@ Read on demand — only load what the current task needs.
 | [docs/troubleshooting.md](docs/troubleshooting.md) | Debugging a recurring issue |
 | [docs/config-variables.md](docs/config-variables.md) | Touching config |
 
-**Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale. 
+**Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale.
+
+Keep docs/*.md focused — split a doc when it stops fitting one screen rather than letting it grow unbounded.
 
 ### Issue tracker
 
