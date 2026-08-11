@@ -85,6 +85,18 @@ test('two non-overlapping lifespans render at the same y position (same row)', (
   expect(new Set(ys).size).toBe(1);
 });
 
+test('the more famous of two overlapping people renders closer to the bottom of the lane (nearer the shared Year Axis below)', () => {
+  const { scale } = buildXScale(2);
+  const famousOverlap: Person = { ...caesar, id: 'Q-famous', fameScore: 999 };
+  const obscureOverlap: Person = { ...aristotle, id: 'Q-obscure', lifespan: caesar.lifespan, fameScore: 1 };
+  const { container } = render(<PeopleLane people={[obscureOverlap, famousOverlap]} xScale={scale} />);
+
+  const lines = Array.from(container.querySelectorAll('.d3-line'));
+  const famousLine = lines.find((line) => line.getAttribute('data-entity-id') === 'Q-famous');
+  const obscureLine = lines.find((line) => line.getAttribute('data-entity-id') === 'Q-obscure');
+  expect(Number(famousLine?.getAttribute('y1'))).toBeGreaterThan(Number(obscureLine?.getAttribute('y1')));
+});
+
 test('renders an empty svg for an empty people list', () => {
   const { scale } = buildXScale(2);
   const { container } = render(<PeopleLane people={[]} xScale={scale} />);

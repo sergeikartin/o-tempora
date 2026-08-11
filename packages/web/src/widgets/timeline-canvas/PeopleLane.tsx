@@ -28,8 +28,9 @@ interface PeopleLaneProps {
   xScale: d3.ScaleLinear<number, number>;
 }
 
-// Row-stacking works in screen pixels, not years (mirrors ConflictsLane's
-// pixelInterval) — a person's name label is left-aligned above the start of
+// Row-stacking works in screen pixels, not years (mirrors
+// ConflictsMilestonesLane's pixelInterval helpers) — a person's name label
+// is left-aligned above the start of
 // their lifespan line, so it can extend well past the line's own pixel span
 // for a short-lived person with a long name, especially at low zoom.
 function pixelInterval(item: PersonItem, xScale: d3.ScaleLinear<number, number>) {
@@ -52,7 +53,7 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
   const rowOfPerson = useMemo(() => {
     const intervals = items.map((item) => {
       const { start, end } = pixelInterval(item, xScale);
-      return { id: item.id, startYear: start, endYear: end };
+      return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
     });
     return assignRows(intervals, MIN_ROW_GAP_PX);
   }, [items, xScale]);
@@ -70,12 +71,12 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
           name: item.name,
           x1,
           x2: Math.max(xScale(item.endYear), x1 + 2),
-          labelY: personLabelYForRow(row),
-          lineY: personLineCenterYForRow(row),
+          labelY: personLabelYForRow(row, rowCount),
+          lineY: personLineCenterYForRow(row, rowCount),
           fill: DOMAIN_COLORS[item.occupationDomain],
         };
       }),
-    [items, rowOfPerson, xScale],
+    [items, rowOfPerson, rowCount, xScale],
   );
 
   // D3 owns the DOM inside <g class="people"> — one <g class="d3-person">

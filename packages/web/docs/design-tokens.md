@@ -2,7 +2,7 @@
 
 <!-- UI/visual design tokens. Read before touching styling. -->
 
-**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **conflict category** (Conflicts), **milestone category** (Milestones), or **occupation domain** (People) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Conflicts'/Milestones' below their marker). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `ConflictCategory`, `MilestoneCategory`, and `OccupationDomain` are separate enums from separate sources (Wikidata SPARQL, hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified.
+**Design concept:** warm, paper-like page with pastel colors distinguishing entries (set by reference image `greece-view.png`). Color encodes **milestone category** (Milestones) or **occupation domain** (People); Conflicts render in one flat color instead (see Conflict Color below) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Conflicts'/Milestones' below their marker) plus, within the merged Conflicts+Milestones lane, color itself (flat Conflict Color vs. Milestones' multi-color palette). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `MilestoneCategory` and `OccupationDomain` are separate enums from separate sources (hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified. `ConflictCategory` still exists as curator-assigned data (see `CONTEXT.md`) but no longer drives a color.
 
 ## Color Palette
 
@@ -18,24 +18,17 @@
 | `color-accent-selected` | `#B8842E` | Selected entity, viewport indicator, focus ring |
 | `color-focus-ring` | `#8C5A1E` | Keyboard focus outline |
 
-## Conflict Category Palette
+## Conflict Color
 
-Used as the stroke color for Conflicts' range lines and point-dot markers. Keyed by `ConflictCategory` (`packages/shared-types`) — a curator-assigned taxonomy (see `CONTEXT.md`), disjoint from `MilestoneCategory` even where a name might coincide. Hue-optimized against the Occupation Domain Palette and Milestones' own `MilestoneCategory` palette (24 colors total sharing one hue circle) per `.scratch/wars-conflicts-taxonomy/issues/02-rename-expand-conflict-category.md`'s Answer — war-family categories (war/military-operation) grouped into warm hues, the rest into cooler ones. `battle`/`siege`/`peace-treaty` were dropped from the six-value taxonomy (`.scratch/wars-curated-source/spec.md`) as inherently sub-events of a war rather than standalone conflicts; their palette entries dropped with them, not left unused.
+Used as the stroke/fill color for every Conflict's range line and point-dot marker, regardless of `ConflictCategory`. Retired the old per-category Conflict Category Palette (six hues keyed by `ConflictCategory`) once Conflicts and Milestones merged into one mixed, fame-ranked lane (`packages/web/src/widgets/timeline-canvas/ConflictsMilestonesLane.tsx`) — a Conflict needs to read as one visual group at a glance next to Milestones' own multi-color palette below, not blend into it category-by-category. Reuses the old palette's War hex, its warmest/most-recognizable entry.
 
-| Category | Token | Hex |
-|---|---|---|
-| War | `color-conflict-war` | `#BF696B` |
-| Military operation | `color-conflict-military-operation` | `#BDC251` |
-| Revolution | `color-conflict-revolution` | `#7DBE74` |
-| Rebellion | `color-conflict-rebellion` | `#6BBDB3` |
-| Coup d'état | `color-conflict-coup-d-etat` | `#7BA8C1` |
-| War of independence | `color-conflict-war-of-independence` | `#8E8DC4` |
-
-No category tag / uncategorized → `color-border-subtle` as a neutral fallback, not a tenth pastel.
+| Token | Hex |
+|---|---|
+| `color-conflict` | `#BF696B` |
 
 ## Occupation Domain Palette
 
-People-lane only. Keyed by Pantheon's `OccupationDomain` (not `ConflictCategory` above — different enum, different source). Used as the stroke color on People-lane lifespan lines. Values are lifted verbatim from pantheon.world's own CSS custom properties (`--colorInstitutions` etc.) rather than derived, so the legend matches Pantheon's source exactly.
+People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and source than the flat Conflict Color above, or Milestones' own category palette). Used as the stroke color on People-lane lifespan lines. Values are lifted verbatim from pantheon.world's own CSS custom properties (`--colorInstitutions` etc.) rather than derived, so the legend matches Pantheon's source exactly.
 
 | Domain | Token | Hex |
 |---|---|---|

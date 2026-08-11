@@ -47,7 +47,7 @@ const fixtureMilestones: Milestone[] = [
 const defaultFameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
 const noopEntityClick = () => {};
 
-test('renders all three lanes, each populated from its own dataset', () => {
+test('renders both lanes, each populated from its own dataset', () => {
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -60,18 +60,18 @@ test('renders all three lanes, each populated from its own dataset', () => {
 
   // Both People's lifespans and Conflicts' ranges are Periods and
   // share the literal `.d3-line` marker class — two total (Aristotle + the
-  // Korean War) — so this counts each lane's own <svg> (rendered in People,
-  // Conflicts, Milestones order) rather than the whole page.
+  // Korean War) — so this counts each lane's own <svg> (People, then the
+  // merged Conflicts+Milestones lane) rather than the whole page.
   const svgs = Array.from(container.querySelectorAll('svg'));
-  expect(svgs).toHaveLength(3);
-  const [peopleSvg, conflictsSvg] = svgs as [SVGSVGElement, SVGSVGElement, SVGSVGElement];
+  expect(svgs).toHaveLength(2);
+  const [peopleSvg, conflictsMilestonesSvg] = svgs as [SVGSVGElement, SVGSVGElement];
   expect(peopleSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Aristotle
-  expect(conflictsSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
+  expect(conflictsMilestonesSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1); // association football
   expect(container.querySelector('.d3-name')?.textContent).toBe('Aristotle');
 });
 
-test('the three lane sections and the year axis share the same rendered width', () => {
+test('the two lane sections and every year axis share the same rendered width', () => {
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -83,12 +83,26 @@ test('the three lane sections and the year axis share the same rendered width', 
   );
 
   const svgs = container.querySelectorAll('svg');
-  expect(svgs).toHaveLength(3); // People, Conflicts, Milestones — YearAxis is plain HTML/CSS, no svg
+  expect(svgs).toHaveLength(2); // People, and the merged Conflicts+Milestones lane — YearAxis is plain HTML/CSS, no svg
   const svgWidthsPx = Array.from(svgs).map((svg) => Number(svg.getAttribute('width')));
-  const axisWidthPx = parseFloat(
-    ((container.querySelector('.year-axis-ruler')?.parentElement as HTMLElement)?.style.width ?? '').replace('px', ''),
+  const axisWidthsPx = Array.from(container.querySelectorAll('.year-axis-ruler')).map((ruler) =>
+    parseFloat(((ruler.parentElement as HTMLElement)?.style.width ?? '').replace('px', '')),
   );
-  expect(new Set([...svgWidthsPx, axisWidthPx]).size).toBe(1);
+  expect(new Set([...svgWidthsPx, ...axisWidthsPx]).size).toBe(1);
+});
+
+test('renders three year axes — top, between People and Conflicts+Milestones, and bottom', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  expect(container.querySelectorAll('.year-axis-ruler')).toHaveLength(3);
 });
 
 test('mouse-dragging the scroll container pans it; releasing stops the pan', () => {
@@ -349,6 +363,62 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
+});
+
+test('the People lane defaults its vertical scroll to the bottom (axis-adjacent edge) whenever the visible person set changes', () => {
+  const { container, rerender } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  const peopleLane = container.querySelector('[class*="peopleLane"]') as HTMLElement;
+  Object.defineProperty(peopleLane, 'scrollHeight', { value: 500, configurable: true });
+  Object.defineProperty(peopleLane, 'scrollTop', { value: 0, writable: true });
+
+  // Changing the People fame-score floor gives filteredPeople a new
+  // reference even though Aristotle still clears it — that's the trigger
+  // the scroll-anchor effect keys off.
+  rerender(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={{ ...defaultFameScoreValues, people: 80 }}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  expect(peopleLane.scrollTop).toBe(500);
+});
+
+test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axis-adjacent edge) whenever its visible item set changes", () => {
+  const { container, rerender } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  const conflictsMilestonesLane = container.querySelector('[class*="conflictsMilestonesLane"]') as HTMLElement;
+  Object.defineProperty(conflictsMilestonesLane, 'scrollTop', { value: 300, writable: true });
+
+  rerender(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={{ ...defaultFameScoreValues, conflicts: 90 }}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  expect(conflictsMilestonesLane.scrollTop).toBe(0);
 });
 
 test('clicking a mark reports its entity id/type via onEntityClick, resolved through the delegated listener', () => {

@@ -23,8 +23,7 @@ import {
 } from './options';
 import { filterByFameScore } from './map-to-items';
 import { PeopleLane } from './PeopleLane';
-import { ConflictsLane } from './ConflictsLane';
-import { MilestonesLane } from './MilestonesLane';
+import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
 import { YearAxis } from './YearAxis';
 import styles from './TimelineCanvas.module.css';
 
@@ -169,6 +168,28 @@ export function TimelineCanvas({ people, conflicts, milestones, fameScoreValues,
     () => filterByFameScore(milestones, fameScoreValues.milestones),
     [milestones, fameScoreValues.milestones],
   );
+
+  // Fame-priority row packing (assignRows) puts the most important rows
+  // next to the shared Year Axis — bottom of .peopleLane, top of
+  // .conflictsMilestonesLane (grill-with-docs session, 2026-08-11). Each
+  // lane's own overflow-y: auto already lets it scroll independently; these
+  // two effects default that scroll position to the axis-adjacent edge
+  // whenever the visible item set changes (mount, or a fame-score filter
+  // moving the floor), so the most important rows are on screen without the
+  // user having to scroll for them first. .conflictsMilestonesLane's
+  // axis-adjacent edge is its natural top (scrollTop 0), so it only needs a
+  // reset, not a measurement; .peopleLane's is its bottom, which needs
+  // scrollHeight (only known post-layout, hence useLayoutEffect for both).
+  useLayoutEffect(() => {
+    const el = peopleLaneRef.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
+  }, [filteredPeople]);
+  useLayoutEffect(() => {
+    const el = conflictsMilestonesLaneRef.current;
+    if (!el) return;
+    el.scrollTop = 0;
+  }, [filteredConflicts, filteredMilestones]);
 
   // Real browsers can measure the container before first paint; jsdom (and
   // any not-yet-laid-out first paint) can't, so the initial pixelsPerYear
@@ -395,6 +416,9 @@ export function TimelineCanvas({ people, conflicts, milestones, fameScoreValues,
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
+        <div className={styles.yearAxis} style={{ width: totalWidth }}>
+          <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
+        </div>
         <div ref={peopleLaneRef} className={styles.peopleLane}>
           <PeopleLane people={filteredPeople} xScale={scale} />
         </div>
@@ -402,8 +426,10 @@ export function TimelineCanvas({ people, conflicts, milestones, fameScoreValues,
           <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
         </div>
         <div ref={conflictsMilestonesLaneRef} className={styles.conflictsMilestonesLane}>
-          <ConflictsLane conflicts={filteredConflicts} xScale={scale} />
-          <MilestonesLane milestones={filteredMilestones} xScale={scale} />
+          <ConflictsMilestonesLane conflicts={filteredConflicts} milestones={filteredMilestones} xScale={scale} />
+        </div>
+        <div className={styles.yearAxis} style={{ width: totalWidth }}>
+          <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
         </div>
       </div>
       <div ref={trackRef} className={styles.scrollbarTrack} onPointerDown={handleTrackPointerDown}>

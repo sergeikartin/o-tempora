@@ -9,10 +9,10 @@ interface SidebarProps {
 }
 
 // Always-visible alongside TimelineCanvas — a Legend (visual-only pills for
-// People's 8 OccupationDomain colors; Conflicts' CONFLICT_CATEGORY_COLORS and
-// Milestones' MILESTONE_CATEGORY_COLORS are out of scope here) and Filters
-// (the fame-score floor controls that replaced the old zoom-coupled Fame
-// Tier system, ADR 0003).
+// People's 8 OccupationDomain colors; Conflicts render in one flat color,
+// not a legend-worthy palette, and Milestones' MILESTONE_CATEGORY_COLORS
+// are out of scope here) and Filters (the fame-score floor controls that
+// replaced the old zoom-coupled Fame Tier system, ADR 0003).
 export function Sidebar({ fameScoreValues, onFameScoreChange }: SidebarProps) {
   return (
     <aside className={styles.sidebar} aria-label="Legend and filters">
