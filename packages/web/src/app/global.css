@@ -30,3 +30,11 @@ body,
 #root {
   height: 100%;
 }
+
+/* docs/design-tokens.md's Typography table: Inter for all UI chrome and
+   entry labels. Set once here so sidebar/detail-panel (which don't declare
+   their own font-family) match widgets/timeline-canvas's lanes instead of
+   falling back to the browser's default serif. */
+body {
+  font-family: Inter, sans-serif;
+}
