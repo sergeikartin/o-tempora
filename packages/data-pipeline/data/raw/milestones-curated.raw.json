@@ -1,6 +1,6 @@
 {
   "meta": {
-    "description": "Hand-curated, significance-based candidate list for the Milestones lane redesign. Not a SPARQL dump like the sibling events-*.raw.json files \u2014 inventions.ts's P575-only fetch produced no usable classification signal, so this lane's selection and categorization is curated by hand and verified against live Wikidata per item, then filtered: noise/duplicate/off-scope entries and events before 5000 BCE removed, category assigned to the new 10-value taxonomy (replacing the shared Category enum).",
+    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates.",
     "categories": [
       "science-theory",
       "medicine-health",
@@ -11,1108 +11,965 @@
       "food-agriculture",
       "exploration",
       "energy-industry",
-      "society-administration"
+      "society-administration",
+      "culture-arts",
+      "religion-mythology",
+      "environment-geology",
+      "commerce-finance",
+      "social-movements",
+      "sports-entertainment",
+      "philosophy-education",
+      "law-jurisprudence",
+      "archaeology-anthropology",
+      "architecture-design"
     ],
     "fields": {
       "id": "bare Wikidata QID, no URI/prefix",
       "name": "milestone label",
-      "year": "integer, negative = BCE",
-      "category": "one of meta.categories",
-      "description": "Wikidata item description",
-      "dateProperty": "Wikidata property that supplied the date (P575 time of discovery/invention, P571 inception, P577 publication date, P580 start time, P585 point in time, P569 date of birth, P606 first flight, P619 spacecraft launch date, P729 service entry, P1619 date of official opening)",
-      "source": "seed = hand-picked and verified; scraped = surfaced via filtered Wikipedia timeline scraping, then verified"
+      "category": "one of meta.categories"
     },
-    "count": 121
+    "count": 188
   },
   "milestones": [
     {
       "id": "Q988780",
       "name": "Electromagnetic induction",
-      "year": 1831,
-      "category": "science-theory",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "production of voltage by a varying magnetic field"
+      "category": "science-theory"
     },
     {
       "id": "Q20124",
       "name": "On the Origin of Species",
-      "year": 1859,
-      "category": "science-theory",
-      "dateProperty": "P577",
-      "source": "seed",
-      "tagline": "treatise on natural selection, written by Charles Darwin"
+      "category": "science-theory"
     },
     {
       "id": "Q214634",
       "name": "Cloud chamber",
-      "year": 1911,
-      "category": "science-theory",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "scientific device"
+      "category": "science-theory"
     },
     {
       "id": "Q11452",
       "name": "General relativity",
-      "year": 1916,
-      "category": "science-theory",
-      "dateProperty": "P571",
-      "source": "seed",
-      "tagline": "standard and classical physics theory of gravity and space"
+      "category": "science-theory"
     },
     {
       "id": "Q132560",
       "name": "Electron microscope",
-      "year": 1931,
-      "category": "science-theory",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "magnifying system showing microscopic objects via directed electron beams"
+      "category": "science-theory"
     },
     {
       "id": "Q192446",
       "name": "Human Genome Project",
-      "year": 1990,
-      "category": "science-theory",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "research program for sequencing the human genome"
+      "category": "science-theory"
     },
     {
       "id": "Q171433",
       "name": "Dolly the sheep",
-      "year": 1996,
-      "category": "science-theory",
-      "dateProperty": "P569",
-      "source": "seed",
-      "tagline": "cloned female sheep \u2014 first mammal cloned from an adult somatic cell"
+      "category": "science-theory"
     },
     {
       "id": "Q190035",
       "name": "Gravitational wave",
-      "year": 2015,
-      "category": "science-theory",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "propagating spacetime ripple"
+      "category": "science-theory"
+    },
+    {
+      "id": "Q10693",
+      "name": "Periodic table",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q205921",
+      "name": "Philosophiæ Naturalis Principia Mathematica",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q11455",
+      "name": "Special relativity",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q3518429",
+      "name": "Aryabhatiya",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q1290001",
+      "name": "Brahmasphutasiddhanta",
+      "category": "science-theory"
     },
     {
       "id": "Q166543",
       "name": "General anaesthesia",
-      "year": -3499,
-      "category": "medicine-health",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "medically induced coma with loss of protective reflexes"
+      "category": "medicine-health"
     },
     {
       "id": "Q162297",
       "name": "Hygiene",
-      "year": -2999,
-      "category": "medicine-health",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "set of practices performed for the preservation of health"
+      "category": "medicine-health"
     },
     {
       "id": "Q310301",
       "name": "Ebers Papyrus",
-      "year": -1599,
-      "category": "medicine-health",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "ancient Egyptian medical papyrus"
+      "category": "medicine-health"
     },
     {
       "id": "Q842363",
       "name": "Edwin Smith Papyrus",
-      "year": -1580,
-      "category": "medicine-health",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "oldest Egyptian medical text"
+      "category": "medicine-health"
     },
     {
       "id": "Q228036",
       "name": "Cesarean section",
-      "year": -319,
-      "category": "medicine-health",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "surgical procedure delivering a baby through the abdomen"
+      "category": "medicine-health"
     },
     {
       "id": "Q42005",
       "name": "Black Death",
-      "year": 1346,
-      "category": "medicine-health",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "1346\u20131353 pandemic in Eurasia and North Africa"
+      "category": "medicine-health"
     },
     {
       "id": "Q162684",
-      "name": "Charit\u00e9",
-      "year": 1710,
-      "category": "medicine-health",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "university hospital in Berlin, Germany"
+      "name": "Charité",
+      "category": "medicine-health"
     },
     {
       "id": "Q1037810",
       "name": "Smallpox vaccine",
-      "year": 1798,
-      "category": "medicine-health",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "first successful vaccine to be developed"
+      "category": "medicine-health"
     },
     {
       "id": "Q204711",
       "name": "US Food and Drug Administration",
-      "year": 1906,
-      "category": "medicine-health",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "agency of the US Department of Health and Human Services"
+      "category": "medicine-health"
     },
     {
       "id": "Q178275",
-      "name": "1918\u20131920 flu pandemic (Spanish flu)",
-      "year": 1918,
-      "category": "medicine-health",
-      "dateProperty": "P580",
-      "source": "seed",
-      "tagline": "global influenza pandemic caused by the H1N1 influenza A virus"
+      "name": "1918–1920 flu pandemic (Spanish flu)",
+      "category": "medicine-health"
     },
     {
       "id": "Q12190",
       "name": "Penicillin",
-      "year": 1928,
-      "category": "medicine-health",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "group of antibiotics derived from Penicillium fungi"
+      "category": "medicine-health"
     },
     {
       "id": "Q817281",
       "name": "Combined oral contraceptive pill",
-      "year": 1961,
-      "category": "medicine-health",
-      "dateProperty": "P585",
-      "source": "seed",
-      "tagline": "birth control combining an estrogen and a progestogen"
+      "category": "medicine-health"
     },
     {
       "id": "Q132659",
       "name": "Egyptian hieroglyphs",
-      "year": -3199,
-      "category": "communication",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "formal writing system used by the ancient Egyptians"
+      "category": "communication"
     },
     {
       "id": "Q401",
       "name": "Cuneiform",
-      "year": -2999,
-      "category": "communication",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "ancient writing system for Akkadian, Hittite and others"
+      "category": "communication"
     },
     {
       "id": "Q211248",
       "name": "Mayan hieroglyphs",
-      "year": -300,
-      "category": "communication",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "writing system of the Maya civilization"
+      "category": "communication"
     },
     {
       "id": "Q11472",
       "name": "Paper",
-      "year": -140,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "thin flexible material for writing, printing, packaging"
+      "category": "communication"
     },
     {
       "id": "Q144334",
       "name": "Printing press",
-      "year": 1439,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "device for evenly printing ink onto a print medium"
+      "category": "communication"
     },
     {
       "id": "Q158075",
       "name": "Gutenberg Bible",
-      "year": 1450,
-      "category": "communication",
-      "dateProperty": "P577",
-      "source": "seed",
-      "tagline": "early book printed with movable type"
+      "category": "communication"
     },
     {
       "id": "Q6501061",
       "name": "Electrical telegraph",
-      "year": 1816,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "early system for transmitting text over wires"
+      "category": "communication"
     },
     {
       "id": "Q107701",
       "name": "Penny Black (postage stamp)",
-      "year": 1840,
-      "category": "communication",
-      "dateProperty": "P571",
-      "source": "seed",
-      "tagline": "world's first adhesive postage stamp"
+      "category": "communication"
     },
     {
       "id": "Q11035",
       "name": "Telephone",
-      "year": 1876,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "telecommunications device for two or more users to converse"
+      "category": "communication"
     },
     {
       "id": "Q13443401",
       "name": "Invention of telephone",
-      "year": 1876,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "overview about the invention of the telephone"
+      "category": "communication"
     },
     {
       "id": "Q116434",
       "name": "Phonograph",
-      "year": 1877,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "device for the analogue recording and playback of sound"
+      "category": "communication"
     },
     {
       "id": "Q46872",
       "name": "Cinematograph",
-      "year": 1892,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "motion picture camera that also serves as projector and printer"
+      "category": "communication"
     },
     {
       "id": "Q8665",
-      "name": "Workers Leaving the Lumi\u00e8re Factory",
-      "year": 1895,
-      "category": "communication",
-      "dateProperty": "P577",
-      "source": "seed",
-      "tagline": "1895 French short black-and-white silent documentary film"
+      "name": "Workers Leaving the Lumière Factory",
+      "category": "communication"
     },
     {
       "id": "Q191472",
       "name": "BBC Television Service launch",
-      "year": 1936,
-      "category": "communication",
-      "dateProperty": "P571",
-      "source": "seed",
-      "tagline": "flagship television channel of the BBC, launched as the BBC Television Service"
+      "category": "communication"
     },
     {
       "id": "Q75",
       "name": "Internet",
-      "year": 1969,
-      "category": "communication",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "global system of connected computer networks"
+      "category": "communication"
     },
     {
       "id": "Q177524",
       "name": "ARPANET",
-      "year": 1969,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "early packet switching network (1969\u20131990)"
+      "category": "communication"
     },
     {
       "id": "Q9158",
       "name": "Email",
-      "year": 1971,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "exchanging digital messages over a network"
+      "category": "communication"
     },
     {
       "id": "Q466",
       "name": "World Wide Web",
-      "year": 1989,
-      "category": "communication",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "global system of interlinked hypertext documents"
+      "category": "communication"
     },
     {
       "id": "Q46904",
       "name": "GSM",
-      "year": 1992,
-      "category": "communication",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "standard describing protocols for 2G digital cellular networks"
+      "category": "communication"
+    },
+    {
+      "id": "Q1261053",
+      "name": "Woodblock printing",
+      "category": "communication"
     },
     {
       "id": "Q220635",
       "name": "Carrack",
-      "year": 1500,
-      "category": "transportation",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "type of sailing ship in the 15th century"
+      "category": "transportation"
     },
     {
       "id": "Q178193",
       "name": "Steamboat",
-      "year": 1783,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "steam-powered vessel, smaller than a steamship"
+      "category": "transportation"
     },
     {
       "id": "Q171043",
       "name": "Steam locomotive",
-      "year": 1814,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "railway locomotive powered by a steam engine"
+      "category": "transportation"
     },
     {
       "id": "Q375044",
       "name": "Stockton and Darlington Railway",
-      "year": 1825,
-      "category": "transportation",
-      "dateProperty": "P571",
-      "source": "seed",
-      "tagline": "English railway company, 1825 to 1863"
+      "category": "transportation"
     },
     {
       "id": "Q193692",
       "name": "Electric car",
-      "year": 1835,
-      "category": "transportation",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "automobile propelled by an electric motor"
+      "category": "transportation"
     },
     {
       "id": "Q625151",
       "name": "Electric locomotive",
-      "year": 1837,
-      "category": "transportation",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "locomotive powered by electricity"
+      "category": "transportation"
     },
     {
       "id": "Q133585",
       "name": "Airship",
-      "year": 1852,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "powered lighter-than-air aircraft"
+      "category": "transportation"
     },
     {
       "id": "Q1753108",
       "name": "First Transcontinental Railroad",
-      "year": 1869,
-      "category": "transportation",
-      "dateProperty": "P1619",
-      "source": "seed",
-      "tagline": "first US railroad to reach the Pacific coast"
+      "category": "transportation"
     },
     {
       "id": "Q1420",
       "name": "Car",
-      "year": 1884,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "motorized road vehicle for one to eight people"
+      "category": "transportation"
     },
     {
       "id": "Q11442",
       "name": "Bicycle",
-      "year": 1885,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "pedal-driven two-wheel vehicle"
+      "category": "transportation"
     },
     {
       "id": "Q326248",
       "name": "Benz Patent-Motorwagen",
-      "year": 1886,
-      "category": "transportation",
-      "dateProperty": "P571",
-      "source": "seed",
-      "tagline": "vehicle widely regarded as the first automobile"
+      "category": "transportation"
     },
     {
       "id": "Q20075",
       "name": "London Underground",
-      "year": 1890,
-      "category": "transportation",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "public rapid transit system in London, UK"
+      "category": "transportation"
     },
     {
       "id": "Q174174",
       "name": "Diesel engine",
-      "year": 1893,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "internal combustion engine with compression ignition"
+      "category": "transportation"
     },
     {
       "id": "Q197",
       "name": "Airplane",
-      "year": 1903,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "powered fixed-wing aircraft"
+      "category": "transportation"
     },
     {
       "id": "Q688605",
       "name": "Flyer I",
-      "year": 1903,
-      "category": "transportation",
-      "dateProperty": "P606",
-      "source": "seed",
-      "tagline": "aircraft designed and built by the Wright Brothers"
+      "category": "transportation"
     },
     {
       "id": "Q949801",
       "name": "Rotorcraft",
-      "year": 1907,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "heavier-than-air aircraft generating lift over rotating wings"
+      "category": "transportation"
     },
     {
       "id": "Q182323",
       "name": "Ford Model T",
-      "year": 1908,
-      "category": "transportation",
-      "dateProperty": "P571",
-      "source": "seed",
-      "tagline": "American car (1908\u20131927)"
+      "category": "transportation"
     },
     {
       "id": "Q208708",
       "name": "Autogyro",
-      "year": 1923,
-      "category": "transportation",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "rotorcraft with rotor unpowered in flight"
+      "category": "transportation"
     },
     {
       "id": "Q12757",
       "name": "Internal combustion engine",
-      "year": 1924,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "engine burning fuel with an oxidizer in a combustion chamber"
+      "category": "transportation"
     },
     {
       "id": "Q185757",
       "name": "Hovercraft",
-      "year": 1955,
-      "category": "transportation",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "vehicle moving within ground effect over any surface"
+      "category": "transportation"
     },
     {
       "id": "Q211382",
       "name": "High-speed rail",
-      "year": 1964,
-      "category": "transportation",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "rail network running significantly faster than traditional rail"
+      "category": "transportation"
     },
     {
       "id": "Q164338",
       "name": "Shinkansen",
-      "year": 1964,
-      "category": "transportation",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "Japanese high-speed rail system"
+      "category": "transportation"
     },
     {
       "id": "Q99200",
       "name": "The Iron Bridge",
-      "year": 1779,
-      "category": "infrastructure",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "bridge crossing the River Severn in Shropshire, England"
+      "category": "infrastructure"
     },
     {
       "id": "Q899",
       "name": "Suez Canal",
-      "year": 1869,
-      "category": "infrastructure",
-      "dateProperty": "P1619",
-      "source": "seed",
-      "tagline": "artificial sea-level waterway in Egypt"
+      "category": "infrastructure"
     },
     {
       "id": "Q7350",
       "name": "Panama Canal",
-      "year": 1914,
-      "category": "infrastructure",
-      "dateProperty": "P1619",
-      "source": "seed",
-      "tagline": "large canal in Panama"
+      "category": "infrastructure"
     },
     {
       "id": "Q10257",
       "name": "Channel Tunnel",
-      "year": 1993,
-      "category": "infrastructure",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "rail tunnel beneath the English Channel"
+      "category": "infrastructure"
+    },
+    {
+      "id": "Q278579",
+      "name": "Aqua Appia",
+      "category": "infrastructure"
+    },
+    {
+      "id": "Q94247",
+      "name": "Interstate Highway System",
+      "category": "infrastructure"
+    },
+    {
+      "id": "Q125006",
+      "name": "Brooklyn Bridge",
+      "category": "infrastructure"
+    },
+    {
+      "id": "Q172822",
+      "name": "Hoover Dam",
+      "category": "infrastructure"
+    },
+    {
+      "id": "Q12501",
+      "name": "Great Wall of China",
+      "category": "infrastructure"
     },
     {
       "id": "Q160464",
       "name": "Button",
-      "year": 1200,
-      "category": "everyday-technology",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "small fastener used in clothing"
+      "category": "everyday-technology"
     },
     {
       "id": "Q79757",
       "name": "Barometer",
-      "year": 1643,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "instrument used to measure atmospheric pressure"
+      "category": "everyday-technology"
     },
     {
       "id": "Q841282",
       "name": "Arc lamp",
-      "year": 1802,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "light created by electrical breakdown of gas"
+      "category": "everyday-technology"
     },
     {
       "id": "Q616159",
       "name": "View from the Window at Le Gras",
-      "year": 1827,
-      "category": "everyday-technology",
-      "dateProperty": "P571",
-      "source": "seed",
-      "tagline": "earliest known surviving photograph, by Nic\u00e9phore Ni\u00e9pce"
+      "category": "everyday-technology"
     },
     {
       "id": "Q179744",
       "name": "Daguerreotype process",
-      "year": 1839,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "photographic process invented by L. Daguerre"
+      "category": "everyday-technology"
     },
     {
       "id": "Q37828",
       "name": "Refrigerator",
-      "year": 1856,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "appliance for preserving food at a low temperature"
+      "category": "everyday-technology"
     },
     {
       "id": "Q337724",
-      "name": "Lead\u2013acid battery",
-      "year": 1859,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "rechargeable battery type often used in cars"
+      "name": "Lead–acid battery",
+      "category": "everyday-technology"
     },
     {
       "id": "Q47616",
       "name": "Incandescent light bulb",
-      "year": 1879,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "electric light bulb with a resistively heated filament"
+      "category": "everyday-technology"
     },
     {
       "id": "Q160137",
       "name": "Ballpoint pen",
-      "year": 1888,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "writing implement"
+      "category": "everyday-technology"
     },
     {
       "id": "Q960800",
       "name": "Chlorofluorocarbon",
-      "year": 1890,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "hydrocarbon derivative containing only carbon, chlorine and fluorine"
+      "category": "everyday-technology"
     },
     {
       "id": "Q15003",
       "name": "Escalator",
-      "year": 1891,
-      "category": "everyday-technology",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "moving staircase"
+      "category": "everyday-technology"
     },
     {
       "id": "Q11656",
       "name": "Diode",
-      "year": 1901,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "two-terminal component allowing current in one direction"
+      "category": "everyday-technology"
     },
     {
       "id": "Q146578",
       "name": "Bakelite",
-      "year": 1907,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "early plastic"
+      "category": "everyday-technology"
     },
     {
       "id": "Q193841",
       "name": "Cellophane",
-      "year": 1911,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "chemical compound"
+      "category": "everyday-technology"
     },
     {
       "id": "Q877055",
       "name": "Crystal oscillator",
-      "year": 1917,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "electronic oscillator circuit"
+      "category": "everyday-technology"
     },
     {
       "id": "Q194154",
       "name": "Cavity magnetron",
-      "year": 1940,
-      "category": "everyday-technology",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "device for generating microwaves"
+      "category": "everyday-technology"
     },
     {
       "id": "Q68",
       "name": "Computer",
-      "year": 1945,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "general-purpose device for arithmetic or logical operations"
+      "category": "everyday-technology"
     },
     {
       "id": "Q227467",
       "name": "Atomic clock",
-      "year": 1955,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "extremely accurate reference clock for timekeeping"
+      "category": "everyday-technology"
     },
     {
       "id": "Q16338",
       "name": "Personal computer",
-      "year": 1957,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "computer intended for use by an individual person"
+      "category": "everyday-technology"
     },
     {
       "id": "Q5860",
       "name": "Carbon fibers",
-      "year": 1958,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "material fibers 5\u201310 \u03bcm in diameter, composed of carbon"
+      "category": "everyday-technology"
     },
     {
       "id": "Q31087",
       "name": "Calculator",
-      "year": 1960,
-      "category": "everyday-technology",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "electronic device used for calculations"
+      "category": "everyday-technology"
     },
     {
       "id": "Q38867",
       "name": "Laser",
-      "year": 1960,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "device emitting light via optical amplification"
+      "category": "everyday-technology"
     },
     {
       "id": "Q189511",
       "name": "Electronic cigarette",
-      "year": 1963,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "device usually used as an alternative to tobacco"
+      "category": "everyday-technology"
     },
     {
       "id": "Q5293",
       "name": "Floppy disk",
-      "year": 1964,
-      "category": "everyday-technology",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "removable disk storage medium"
+      "category": "everyday-technology"
     },
     {
       "id": "Q782543",
       "name": "Graphical user interface",
-      "year": 1973,
-      "category": "everyday-technology",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "user interface via graphical icons and visual indicators"
+      "category": "everyday-technology"
     },
     {
       "id": "Q5301",
       "name": "TeX",
-      "year": 1978,
-      "category": "everyday-technology",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "typesetting system"
+      "category": "everyday-technology"
     },
     {
       "id": "Q34467",
       "name": "Compact disc",
-      "year": 1979,
-      "category": "everyday-technology",
-      "dateProperty": "P571",
-      "source": "scraped",
-      "tagline": "digital optical disc data storage format"
+      "category": "everyday-technology"
+    },
+    {
+      "id": "Q5339",
+      "name": "Transistor",
+      "category": "everyday-technology"
+    },
+    {
+      "id": "Q80831",
+      "name": "Integrated circuit",
+      "category": "everyday-technology"
+    },
+    {
+      "id": "Q5297",
+      "name": "Microprocessor",
+      "category": "everyday-technology"
     },
     {
       "id": "Q1136790",
       "name": "Cotton gin",
-      "year": 1793,
-      "category": "food-agriculture",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "machine that separates cotton fibers from seeds"
+      "category": "food-agriculture"
     },
     {
       "id": "Q843389",
       "name": "Canning",
-      "year": 1810,
-      "category": "food-agriculture",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "method of preserving food"
+      "category": "food-agriculture"
     },
     {
       "id": "Q58148",
       "name": "Pasteurization",
-      "year": 1864,
-      "category": "food-agriculture",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "mild heat treatment eliminating pathogens, extending shelf life"
+      "category": "food-agriculture"
     },
     {
       "id": "Q213669",
       "name": "Haber-Bosch process",
-      "year": 1909,
-      "category": "food-agriculture",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "artificial nitrogen fixation, the main industrial ammonia process"
+      "category": "food-agriculture"
     },
     {
       "id": "Q186050",
       "name": "Green Revolution",
-      "year": 1940,
-      "category": "food-agriculture",
-      "dateProperty": "P580",
-      "source": "seed",
-      "tagline": "period of high agricultural technology transfer, 1950s\u201360s"
+      "category": "food-agriculture"
     },
     {
       "id": "Q221474",
       "name": "First arrival of Christopher Columbus to America",
-      "year": 1492,
-      "category": "exploration",
-      "dateProperty": "P585",
-      "source": "seed",
-      "tagline": "arrival of Christopher Columbus and crew to America"
+      "category": "exploration"
     },
     {
       "id": "Q1225170",
       "name": "Magellan-Elcano expedition",
-      "year": 1519,
-      "category": "exploration",
-      "dateProperty": "P580",
-      "source": "seed",
-      "tagline": "16th-century Spanish maritime expedition"
+      "category": "exploration"
     },
     {
       "id": "Q179430",
       "name": "Sextant",
-      "year": 1757,
-      "category": "exploration",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "angle measurement navigational instrument"
+      "category": "exploration"
     },
     {
       "id": "Q1932",
       "name": "Space race",
-      "year": 1957,
-      "category": "exploration",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "competition to explore space between USA and USSR"
+      "category": "exploration"
     },
     {
       "id": "Q43653",
       "name": "Apollo 11",
-      "year": 1969,
-      "category": "exploration",
-      "dateProperty": "P619",
-      "source": "seed",
-      "tagline": "first Moon landing, fifth crewed Apollo flight"
+      "category": "exploration"
+    },
+    {
+      "id": "Q80811",
+      "name": "Sputnik 1",
+      "category": "exploration"
+    },
+    {
+      "id": "Q182524",
+      "name": "Vostok 1",
+      "category": "exploration"
+    },
+    {
+      "id": "Q8414",
+      "name": "Amundsen's South Pole expedition",
+      "category": "exploration"
+    },
+    {
+      "id": "Q699127",
+      "name": "Voyages of Zheng He",
+      "category": "exploration"
     },
     {
       "id": "Q338613",
       "name": "Aeolipile",
-      "year": 1,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "simple, bladeless radial steam turbine"
+      "category": "energy-industry"
     },
     {
       "id": "Q101017",
       "name": "Distillation",
-      "year": 300,
-      "category": "energy-industry",
-      "dateProperty": "P580",
-      "source": "scraped",
-      "tagline": "separating mixtures by differences in volatility"
+      "category": "energy-industry"
     },
     {
       "id": "Q2224989",
       "name": "Newcomen atmospheric engine",
-      "year": 1712,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "early steam engine type"
+      "category": "energy-industry"
     },
     {
       "id": "Q209440",
       "name": "Galvanic cell",
-      "year": 1786,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "device converting chemical to electrical energy"
+      "category": "energy-industry"
     },
     {
       "id": "Q64403",
       "name": "Electrolysis",
-      "year": 1787,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "using direct electric current to drive a chemical reaction"
+      "category": "energy-industry"
     },
     {
       "id": "Q663273",
       "name": "Voltaic pile",
-      "year": 1800,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "seed",
-      "tagline": "first electrical battery to continuously provide current"
+      "category": "energy-industry"
     },
     {
       "id": "Q178032",
       "name": "Electromagnet",
-      "year": 1825,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "magnet whose field is produced by electric current"
+      "category": "energy-industry"
     },
     {
       "id": "Q72313",
       "name": "Electric motor",
-      "year": 1834,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "electromechanical device"
+      "category": "energy-industry"
     },
     {
       "id": "Q180253",
       "name": "Fuel cell",
-      "year": 1842,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "electrochemical cell converting fuel to electricity"
+      "category": "energy-industry"
     },
     {
       "id": "Q217817",
       "name": "Francis turbine",
-      "year": 1849,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "type of water turbine"
+      "category": "energy-industry"
     },
     {
       "id": "Q505668",
       "name": "Chemical vapor deposition",
-      "year": 1852,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "process for thin films for semiconductors or coatings"
+      "category": "energy-industry"
     },
     {
       "id": "Q334055",
       "name": "Bessemer process",
-      "year": 1855,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "steel production method"
+      "category": "energy-industry"
     },
     {
       "id": "Q80728",
       "name": "Dynamite",
-      "year": 1867,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "explosive preparation of stabilized nitroglycerin"
+      "category": "energy-industry"
     },
     {
       "id": "Q131502",
       "name": "Electrical generator",
-      "year": 1873,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "device converting mechanical to electrical energy"
+      "category": "energy-industry"
     },
     {
       "id": "Q189859",
       "name": "Steam turbine",
-      "year": 1884,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "turbine using steam from a boiler to rotate blades"
+      "category": "energy-industry"
     },
     {
       "id": "Q654400",
       "name": "Fischer-Tropsch process",
-      "year": 1925,
-      "category": "energy-industry",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "reactions converting carbon monoxide and hydrogen into liquid hydrocarbons"
+      "category": "energy-industry"
     },
     {
       "id": "Q284681",
       "name": "Chicago Pile-1",
-      "year": 1942,
-      "category": "energy-industry",
-      "dateProperty": "P729",
-      "source": "seed",
-      "tagline": "world's first nuclear reactor to achieve criticality"
+      "category": "energy-industry"
+    },
+    {
+      "id": "Q1739453",
+      "name": "Obninsk Nuclear Power Plant",
+      "category": "energy-industry"
+    },
+    {
+      "id": "Q12861",
+      "name": "Gunpowder",
+      "category": "energy-industry"
     },
     {
       "id": "Q47433",
       "name": "Banknote",
-      "year": 618,
-      "category": "society-administration",
-      "dateProperty": "P575",
-      "source": "scraped",
-      "tagline": "physical currency made of paper or polymer"
+      "category": "society-administration"
     },
     {
       "id": "Q12138",
       "name": "Gregorian calendar",
-      "year": 1582,
-      "category": "society-administration",
-      "dateProperty": "P571",
-      "source": "seed",
-      "tagline": "internationally accepted civil calendar"
+      "category": "society-administration"
+    },
+    {
+      "id": "Q12519",
+      "name": "Magna Carta",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q93304",
+      "name": "Code of Hammurabi",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q192803",
+      "name": "Double-entry bookkeeping",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q7813",
+      "name": "Universal Declaration of Human Rights",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q705693",
+      "name": "Code of Ur-Nammu",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q4692",
+      "name": "Renaissance",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q12539",
+      "name": "Age of Enlightenment",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q8272",
+      "name": "Epic of Gilgamesh",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q12418",
+      "name": "Mona Lisa",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q833645",
+      "name": "First Folio",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q207875",
+      "name": "Mozart's Requiem",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q25169",
+      "name": "The Hitchhiker's Guide to the Galaxy",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q133331",
+      "name": "First Council of Nicaea",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q12562",
+      "name": "Protestant Reformation",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q432",
+      "name": "Islam",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q51648",
+      "name": "Schism of 1054",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q180764",
+      "name": "Edict of Milan",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q2411998",
+      "name": "Eruption of Mount Vesuvius in 79",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q209625",
+      "name": "Year Without a Summer",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q190530",
+      "name": "Little Ice Age",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q191055",
+      "name": "1755 Lisbon earthquake",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q8094772",
+      "name": "1883 eruption of Krakatoa",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q125953",
+      "name": "Tunguska event",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q55816",
+      "name": "Chicxulub crater",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q478720",
+      "name": "Amsterdam Stock Exchange",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q83164",
+      "name": "East India Company",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q8698",
+      "name": "Great Depression",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q1194052",
+      "name": "Bretton Woods Conference",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q17550",
+      "name": "California Gold Rush",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q631489",
+      "name": "Klondike Gold Rush",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q2096366",
+      "name": "Victorian gold rush",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q48537",
+      "name": "Civil rights movement",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q188468",
+      "name": "Ancient Olympic Games",
+      "category": "sports-entertainment"
+    },
+    {
+      "id": "Q8080",
+      "name": "1896 Summer Olympics",
+      "category": "sports-entertainment"
+    },
+    {
+      "id": "Q48432",
+      "name": "1930 FIFA World Cup",
+      "category": "sports-entertainment"
+    },
+    {
+      "id": "Q164815",
+      "name": "Woodstock",
+      "category": "sports-entertainment"
+    },
+    {
+      "id": "Q193093",
+      "name": "Platonic Academy",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q131262",
+      "name": "University of Bologna",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q447",
+      "name": "Encyclopédie",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q151060",
+      "name": "Napoleonic Code",
+      "category": "law-jurisprudence"
+    },
+    {
+      "id": "Q48584",
+      "name": "Rosetta Stone",
+      "category": "archaeology-anthropology"
+    },
+    {
+      "id": "Q47672",
+      "name": "Terracotta Army",
+      "category": "archaeology-anthropology"
+    },
+    {
+      "id": "Q245388",
+      "name": "Lucy (Australopithecus)",
+      "category": "archaeology-anthropology"
+    },
+    {
+      "id": "Q37200",
+      "name": "Great Pyramid of Giza",
+      "category": "architecture-design"
+    },
+    {
+      "id": "Q12506",
+      "name": "Hagia Sophia",
+      "category": "architecture-design"
+    },
+    {
+      "id": "Q243",
+      "name": "Eiffel Tower",
+      "category": "architecture-design"
+    },
+    {
+      "id": "Q10285",
+      "name": "Colosseum",
+      "category": "architecture-design"
     }
   ]
 }

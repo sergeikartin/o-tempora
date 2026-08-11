@@ -37,6 +37,16 @@ export const MILESTONE_CATEGORIES = [
   "exploration",
   "energy-industry",
   "society-administration",
+  "culture-arts",
+  "religion-mythology",
+  "environment-geology",
+  "commerce-finance",
+  "social-movements",
+  "sports-entertainment",
+  "philosophy-education",
+  "law-jurisprudence",
+  "archaeology-anthropology",
+  "architecture-design",
 ] as const;
 
 export type MilestoneCategory = (typeof MILESTONE_CATEGORIES)[number];

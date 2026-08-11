@@ -250,8 +250,8 @@ export function buildMilestones(rows: TaggedMilestone[]): { milestones: Mileston
     milestones.push({
       id: row.id,
       name: validated.name,
-      // Curated milestones have no month source (data/raw/milestones-curated.raw.json
-      // is year-only) — always year precision, unlike Conflicts.
+      // Wikidata's own claim precision decides whether month is present
+      // (fetch-milestones-enrichment.ts), same as Conflicts.
       at: yearMonth(validated.year, validated.month),
       category: validated.category,
       regionTags: row.regionTags,
