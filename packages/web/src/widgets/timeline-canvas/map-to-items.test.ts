@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest';
-import { assignRows, filterByFameScore, mapDiscoveries, mapPeople, mapWars } from './map-to-items';
+import { assignRows, filterByFameScore, mapMilestones, mapPeople, mapConflicts } from './map-to-items';
 import { today } from '../../shared/lib/dates';
-import type { Discovery, Person, War, WarEvent } from '../../shared/types';
+import type { Milestone, Person, Conflict, ConflictEvent } from '../../shared/types';
 
 const person: Person = {
   id: 'Q868',
@@ -48,7 +48,7 @@ test('mapPeople offsets startYear/endYear within their year when lifespan dates 
   expect(item?.endYear).toBe(1980);
 });
 
-const warWithEndYear: War = {
+const conflictWithEndYear: Conflict = {
   id: 'Q8214',
   name: 'Korean War',
   period: { start: { year: 1950 }, end: { year: 1953 } },
@@ -59,14 +59,14 @@ const warWithEndYear: War = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
 };
 
-const warZeroWidth: War = {
-  ...warWithEndYear,
+const conflictZeroWidth: Conflict = {
+  ...conflictWithEndYear,
   id: 'Q166376',
   name: 'Six-Day War',
   period: { start: { year: 1967 }, end: { year: 1967 } },
 };
 
-const battle: WarEvent = {
+const battle: ConflictEvent = {
   id: 'Q217799',
   name: 'Battle of Megiddo',
   at: { year: -1457 },
@@ -77,55 +77,55 @@ const battle: WarEvent = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
 };
 
-test('mapWars maps a War to a range item (isPoint: false)', () => {
-  const [item] = mapWars([warWithEndYear]);
+test('mapConflicts maps a Conflict to a range item (isPoint: false)', () => {
+  const [item] = mapConflicts([conflictWithEndYear]);
   expect(item?.isPoint).toBe(false);
   expect(item?.startYear).toBe(1950);
   expect(item?.endYear).toBe(1953);
   expect(item?.category).toBe('war');
 });
 
-test('mapWars widens a zero-width war range (start === end) by one year', () => {
-  const [item] = mapWars([warZeroWidth]);
+test('mapConflicts widens a zero-width conflict range (start === end) by one year', () => {
+  const [item] = mapConflicts([conflictZeroWidth]);
   expect(item?.isPoint).toBe(false);
   expect(item?.startYear).toBe(1967);
   expect(item?.endYear).toBe(1968);
 });
 
-test('mapWars maps a WarEvent to a point item', () => {
-  const [item] = mapWars([battle]);
+test('mapConflicts maps a ConflictEvent to a point item', () => {
+  const [item] = mapConflicts([battle]);
   expect(item?.isPoint).toBe(true);
   expect(item?.startYear).toBe(-1457);
   expect(item?.endYear).toBe(-1457);
 });
 
-const warWithMonths: War = {
-  ...warWithEndYear,
+const conflictWithMonths: Conflict = {
+  ...conflictWithEndYear,
   id: 'Q9000',
-  name: 'War with known months',
+  name: 'Conflict with known months',
   period: { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } },
 };
 
-test('mapWars offsets startYear/endYear within their year when period dates carry a month', () => {
-  const [item] = mapWars([warWithMonths]);
+test('mapConflicts offsets startYear/endYear within their year when period dates carry a month', () => {
+  const [item] = mapConflicts([conflictWithMonths]);
   expect(item?.startYear).toBeCloseTo(1950 + 5 / 12);
   expect(item?.endYear).toBeCloseTo(1953 + 6 / 12);
 });
 
-const battleWithMonth: WarEvent = {
+const battleWithMonth: ConflictEvent = {
   ...battle,
   id: 'Q9001',
   name: 'Battle with known month',
   at: { year: 1457, month: 4 },
 };
 
-test('mapWars offsets a WarEvent point within its year when at carries a month', () => {
-  const [item] = mapWars([battleWithMonth]);
+test('mapConflicts offsets a ConflictEvent point within its year when at carries a month', () => {
+  const [item] = mapConflicts([battleWithMonth]);
   expect(item?.startYear).toBeCloseTo(1457 + 3 / 12);
   expect(item?.endYear).toBe(item?.startYear);
 });
 
-const discovery: Discovery = {
+const milestone: Milestone = {
   id: 'Q11042',
   name: 'Printing press',
   at: { year: 1440 },
@@ -136,23 +136,23 @@ const discovery: Discovery = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
 };
 
-test('mapDiscoveries maps a discovery to a point item at its at.year', () => {
-  const [item] = mapDiscoveries([discovery]);
-  expect(item?.id).toBe(discovery.id);
+test('mapMilestones maps a milestone to a point item at its at.year', () => {
+  const [item] = mapMilestones([milestone]);
+  expect(item?.id).toBe(milestone.id);
   expect(item?.name).toBe('Printing press');
   expect(item?.startYear).toBe(1440);
   expect(item?.category).toBe('communication');
 });
 
-const discoveryWithMonth: Discovery = {
-  ...discovery,
+const milestoneWithMonth: Milestone = {
+  ...milestone,
   id: 'Q9002',
-  name: 'Discovery with known month',
+  name: 'Milestone with known month',
   at: { year: 1440, month: 10 },
 };
 
-test('mapDiscoveries offsets startYear within its year when at carries a month', () => {
-  const [item] = mapDiscoveries([discoveryWithMonth]);
+test('mapMilestones offsets startYear within its year when at carries a month', () => {
+  const [item] = mapMilestones([milestoneWithMonth]);
   expect(item?.startYear).toBeCloseTo(1440 + 9 / 12);
 });
 
@@ -167,7 +167,7 @@ test('filterByFameScore keeps a value exactly at the threshold', () => {
   expect(filterByFameScore(items, 50)).toHaveLength(1);
 });
 
-// assignRows — greedy interval-graph row stacking shared by People & Wars.
+// assignRows — greedy interval-graph row stacking shared by People & Conflicts.
 test('assignRows places two non-overlapping intervals in the same row', () => {
   const rows = assignRows([
     { id: 'a', startYear: 1900, endYear: 1910 },

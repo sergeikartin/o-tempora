@@ -1,12 +1,12 @@
-import type { ConflictCategory, DiscoveryCategory, Region } from "@same-sky/shared-types";
+import type { ConflictCategory, MilestoneCategory, Region } from "@same-sky/shared-types";
 import { REGION_CATEGORIES } from "./region-categories.js";
 
-export interface DiscoveryTags {
-  category: DiscoveryCategory;
+export interface MilestoneTags {
+  category: MilestoneCategory;
   regionTags: Region[];
 }
 
-export interface WarTags {
+export interface ConflictTags {
   category: ConflictCategory;
   regionTags: Region[];
 }
@@ -20,17 +20,17 @@ function regionTagsFor(countries: string[]): Region[] {
   return regionTags;
 }
 
-// Curated events (data/raw/events-curated.raw.json) are already hand-
-// classified into DiscoveryCategory — no lookup table needed; category just
+// Curated milestones (data/raw/milestones-curated.raw.json) are already hand-
+// classified into MilestoneCategory — no lookup table needed; category just
 // passes through.
-export function tagCuratedDiscovery(category: DiscoveryCategory, countries: string[]): DiscoveryTags {
+export function tagCuratedMilestone(category: MilestoneCategory, countries: string[]): MilestoneTags {
   return { category, regionTags: regionTagsFor(countries) };
 }
 
-// Curated wars (data/raw/wars-curated.raw.json) are already hand-classified
+// Curated conflicts (data/raw/conflicts-curated.raw.json) are already hand-classified
 // into ConflictCategory by the curator — same "no lookup table, category
-// just passes through" reasoning as tagCuratedDiscovery above. Only
+// just passes through" reasoning as tagCuratedMilestone above. Only
 // regionTags is derived, from the countries Wikidata enrichment resolved.
-export function tagCuratedWar(category: ConflictCategory, countries: string[]): WarTags {
+export function tagCuratedConflict(category: ConflictCategory, countries: string[]): ConflictTags {
   return { category, regionTags: regionTagsFor(countries) };
 }

@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import peopleDataRaw from '@same-sky/shared-types/src/data/people.json';
-import warsDataRaw from '@same-sky/shared-types/src/data/wars.json';
-import discoveriesDataRaw from '@same-sky/shared-types/src/data/discoveries.json';
-import type { Discovery, Person, WarsAndConflictsEntry } from '../shared/types';
+import conflictsDataRaw from '@same-sky/shared-types/src/data/conflicts.json';
+import milestonesDataRaw from '@same-sky/shared-types/src/data/milestones.json';
+import type { Milestone, Person, ConflictEntry } from '../shared/types';
 import { useFameScoreFilters } from '../features/filter-by-fame-score';
 import { useSelectedEntity } from '../features/select-timeline-entity';
 import { TimelineCanvas } from '../widgets/timeline-canvas';
@@ -11,8 +11,8 @@ import { DetailPanel, type DetailPanelEntity } from '../widgets/detail-panel';
 import styles from './App.module.css';
 
 const peopleData = peopleDataRaw as Person[];
-const warsData = warsDataRaw as WarsAndConflictsEntry[];
-const discoveriesData = discoveriesDataRaw as Discovery[];
+const conflictsData = conflictsDataRaw as ConflictEntry[];
+const milestonesData = milestonesDataRaw as Milestone[];
 
 export function App() {
   const { values: fameScoreValues, setValue: setFameScoreValue } = useFameScoreFilters();
@@ -28,12 +28,12 @@ export function App() {
       const person = peopleData.find((candidate) => candidate.id === selectedRef.id);
       return person ? { entityType: 'person', entity: person } : null;
     }
-    if (selectedRef.entityType === 'war') {
-      const entry = warsData.find((candidate) => candidate.id === selectedRef.id);
-      return entry ? { entityType: 'war', entity: entry } : null;
+    if (selectedRef.entityType === 'conflict') {
+      const entry = conflictsData.find((candidate) => candidate.id === selectedRef.id);
+      return entry ? { entityType: 'conflict', entity: entry } : null;
     }
-    const discovery = discoveriesData.find((candidate) => candidate.id === selectedRef.id);
-    return discovery ? { entityType: 'discovery', entity: discovery } : null;
+    const milestone = milestonesData.find((candidate) => candidate.id === selectedRef.id);
+    return milestone ? { entityType: 'milestone', entity: milestone } : null;
   }, [selectedRef]);
 
   return (
@@ -43,8 +43,8 @@ export function App() {
         <Sidebar fameScoreValues={fameScoreValues} onFameScoreChange={setFameScoreValue} />
         <TimelineCanvas
           people={peopleData}
-          wars={warsData}
-          discoveries={discoveriesData}
+          conflicts={conflictsData}
+          milestones={milestonesData}
           fameScoreValues={fameScoreValues}
           onEntityClick={selectEntity}
         />

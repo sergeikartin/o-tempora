@@ -6,8 +6,8 @@ import styles from './FameScoreFilters.module.css';
 // Display labels only — bounds/defaults are shared/config's FAME_SCORE_BOUNDS.
 const LANE_LABELS: Record<FameScoreLane, string> = {
   people: 'People',
-  wars: 'Wars & Conflicts',
-  discoveries: 'Events & Inventions',
+  conflicts: 'Conflicts',
+  milestones: 'Milestones',
 };
 
 interface FameScoreFiltersProps {

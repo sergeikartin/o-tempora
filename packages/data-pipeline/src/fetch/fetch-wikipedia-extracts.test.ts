@@ -46,10 +46,10 @@ function stubWikipediaFetch(t: TestContext, extractByTitle: Record<string, strin
 const PANTHEON_HEADER =
   '"id","wd_id","wp_id","slug","name","occupation","prob_ratio","gender","twitter","alive","l","hpi_raw","bplace_name","bplace_lat","bplace_lon","bplace_geonameid","bplace_country","birthdate","birthyear","dplace_name","dplace_lat","dplace_lon","dplace_geonameid","dplace_country","deathdate","deathyear","bplace_geacron_name","dplace_geacron_name","is_group","l_","age","non_en_page_views","coefficient_of_variation","hpi"';
 
-test("fetchWikipediaExtracts(\"discoveries\") writes only discoveries-wikipedia-extracts.raw.json, leaving people/wars untouched", async (t) => {
+test("fetchWikipediaExtracts(\"milestones\") writes only milestones-wikipedia-extracts.raw.json, leaving people/conflicts untouched", async (t) => {
   stubReads(t, {
-    "events-curated-enriched.raw.json": {
-      events: [
+    "milestones-curated-enriched.raw.json": {
+      milestones: [
         {
           id: "Q5",
           name: "Penicillin",
@@ -65,17 +65,17 @@ test("fetchWikipediaExtracts(\"discoveries\") writes only discoveries-wikipedia-
   const written = stubWrites(t);
   stubWikipediaFetch(t, { Penicillin: "An antibiotic." });
 
-  await fetchWikipediaExtracts("discoveries");
+  await fetchWikipediaExtracts("milestones");
 
-  assert.deepEqual([...written.keys()], ["discoveries-wikipedia-extracts.raw.json"]);
-  assert.deepEqual(written.get("discoveries-wikipedia-extracts.raw.json"), { Q5: "An antibiotic." });
+  assert.deepEqual([...written.keys()], ["milestones-wikipedia-extracts.raw.json"]);
+  assert.deepEqual(written.get("milestones-wikipedia-extracts.raw.json"), { Q5: "An antibiotic." });
 });
 
 test("fetchWikipediaExtracts() with no lane writes all three lanes' files, pacing every entity in one shared run", async (t) => {
   stubReads(t, {
     "people-pantheon.raw.csv": [PANTHEON_HEADER].join("\n"),
-    "wars-curated-enriched.raw.json": { wars: [] },
-    "events-curated-enriched.raw.json": { events: [] },
+    "conflicts-curated-enriched.raw.json": { conflicts: [] },
+    "milestones-curated-enriched.raw.json": { milestones: [] },
   });
   const written = stubWrites(t);
   stubWikipediaFetch(t, {});
@@ -84,6 +84,6 @@ test("fetchWikipediaExtracts() with no lane writes all three lanes' files, pacin
 
   assert.deepEqual(
     new Set(written.keys()),
-    new Set(["people-wikipedia-extracts.raw.json", "wars-wikipedia-extracts.raw.json", "discoveries-wikipedia-extracts.raw.json"]),
+    new Set(["people-wikipedia-extracts.raw.json", "conflicts-wikipedia-extracts.raw.json", "milestones-wikipedia-extracts.raw.json"]),
   );
 });

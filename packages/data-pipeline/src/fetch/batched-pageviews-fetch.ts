@@ -12,8 +12,8 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// A resolved sitelink article URL (from wars-enrichment.ts's/
-// events-enrichment.ts's widened per-language OPTIONAL bindings) is a full
+// A resolved sitelink article URL (from conflicts-enrichment.ts's/
+// milestones-enrichment.ts's widened per-language OPTIONAL bindings) is a full
 // `https://{lang}.wikipedia.org/wiki/<Title>` URI — the pageviews endpoint
 // instead wants a bare, underscore-joined title, so this recovers it from
 // the URI's last path segment (same approach commons-client.ts's

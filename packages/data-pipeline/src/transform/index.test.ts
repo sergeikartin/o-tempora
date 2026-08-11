@@ -2,10 +2,10 @@ import { test, type TestContext } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { transformPeople, transformWars, transformDiscoveries } from "./index.js";
+import { transformPeople, transformConflicts, transformMilestones } from "./index.js";
 import { computeFameScore } from "./score.js";
 
-// transformWars/transformDiscoveries read fixed raw files off disk
+// transformConflicts/transformMilestones read fixed raw files off disk
 // (RAW_DIR, derived from this module's own location) with no injectable
 // data source — mocking fs.readFileSync per-filename is the seam available
 // without widening transform/index.ts's interface just for testability.
@@ -109,10 +109,10 @@ function pantheonCsv(...rows: string[]): string {
   return [PANTHEON_HEADER, ...rows].join("\n");
 }
 
-test("transformWars computes fameScore via the blend function from the row's sitelinks and the pageviews raw file", (t) => {
+test("transformConflicts computes fameScore via the blend function from the row's sitelinks and the pageviews raw file", (t) => {
   stubRawFiles(t, {
-    "wars-curated-enriched.raw.json": {
-      wars: [
+    "conflicts-curated-enriched.raw.json": {
+      conflicts: [
         {
           id: "Q2",
           name: "Peloponnesian War",
@@ -126,20 +126,20 @@ test("transformWars computes fameScore via the blend function from the row's sit
         },
       ],
     },
-    "wars-image-attribution.raw.json": {},
-    "wars-pageviews.raw.json": { Q2: 4_000_000 },
-    "wars-wikipedia-extracts.raw.json": {},
+    "conflicts-image-attribution.raw.json": {},
+    "conflicts-pageviews.raw.json": { Q2: 4_000_000 },
+    "conflicts-wikipedia-extracts.raw.json": {},
   });
 
-  const [war] = transformWars();
+  const [conflict] = transformConflicts();
 
-  assert.equal(war?.fameScore, computeFameScore({ sitelinks: 80, pageviews: 4_000_000 }));
+  assert.equal(conflict?.fameScore, computeFameScore({ sitelinks: 80, pageviews: 4_000_000 }));
 });
 
-test("transformWars degrades to a sitelinks-only score when the id is absent from the pageviews raw file", (t) => {
+test("transformConflicts degrades to a sitelinks-only score when the id is absent from the pageviews raw file", (t) => {
   stubRawFiles(t, {
-    "wars-curated-enriched.raw.json": {
-      wars: [
+    "conflicts-curated-enriched.raw.json": {
+      conflicts: [
         {
           id: "Q2",
           name: "Peloponnesian War",
@@ -153,20 +153,20 @@ test("transformWars degrades to a sitelinks-only score when the id is absent fro
         },
       ],
     },
-    "wars-image-attribution.raw.json": {},
-    "wars-pageviews.raw.json": {},
-    "wars-wikipedia-extracts.raw.json": {},
+    "conflicts-image-attribution.raw.json": {},
+    "conflicts-pageviews.raw.json": {},
+    "conflicts-wikipedia-extracts.raw.json": {},
   });
 
-  const [war] = transformWars();
+  const [conflict] = transformConflicts();
 
-  assert.equal(war?.fameScore, computeFameScore({ sitelinks: 80, pageviews: 0 }));
+  assert.equal(conflict?.fameScore, computeFameScore({ sitelinks: 80, pageviews: 0 }));
 });
 
-test("transformWars passes through the Wikipedia extract keyed by the war's own id, when present", (t) => {
+test("transformConflicts passes through the Wikipedia extract keyed by the conflict's own id, when present", (t) => {
   stubRawFiles(t, {
-    "wars-curated-enriched.raw.json": {
-      wars: [
+    "conflicts-curated-enriched.raw.json": {
+      conflicts: [
         {
           id: "Q2",
           name: "Peloponnesian War",
@@ -180,20 +180,20 @@ test("transformWars passes through the Wikipedia extract keyed by the war's own 
         },
       ],
     },
-    "wars-image-attribution.raw.json": {},
-    "wars-pageviews.raw.json": {},
-    "wars-wikipedia-extracts.raw.json": { Q2: "A war fought between Athens and Sparta for dominance of Greece." },
+    "conflicts-image-attribution.raw.json": {},
+    "conflicts-pageviews.raw.json": {},
+    "conflicts-wikipedia-extracts.raw.json": { Q2: "A war fought between Athens and Sparta for dominance of Greece." },
   });
 
-  const [war] = transformWars();
+  const [conflict] = transformConflicts();
 
-  assert.equal(war?.description, "A war fought between Athens and Sparta for dominance of Greece.");
+  assert.equal(conflict?.description, "A war fought between Athens and Sparta for dominance of Greece.");
 });
 
-test("transformWars leaves description undefined when no Wikipedia extract resolved for this id", (t) => {
+test("transformConflicts leaves description undefined when no Wikipedia extract resolved for this id", (t) => {
   stubRawFiles(t, {
-    "wars-curated-enriched.raw.json": {
-      wars: [
+    "conflicts-curated-enriched.raw.json": {
+      conflicts: [
         {
           id: "Q2",
           name: "Peloponnesian War",
@@ -207,20 +207,20 @@ test("transformWars leaves description undefined when no Wikipedia extract resol
         },
       ],
     },
-    "wars-image-attribution.raw.json": {},
-    "wars-pageviews.raw.json": {},
-    "wars-wikipedia-extracts.raw.json": {},
+    "conflicts-image-attribution.raw.json": {},
+    "conflicts-pageviews.raw.json": {},
+    "conflicts-wikipedia-extracts.raw.json": {},
   });
 
-  const [war] = transformWars();
+  const [conflict] = transformConflicts();
 
-  assert.equal(war?.description, undefined);
+  assert.equal(conflict?.description, undefined);
 });
 
-test("transformDiscoveries computes fameScore via the blend function from the row's sitelinks and the pageviews raw file", (t) => {
+test("transformMilestones computes fameScore via the blend function from the row's sitelinks and the pageviews raw file", (t) => {
   stubRawFiles(t, {
-    "events-curated-enriched.raw.json": {
-      events: [
+    "milestones-curated-enriched.raw.json": {
+      milestones: [
         {
           id: "Q5",
           name: "Penicillin",
@@ -234,20 +234,20 @@ test("transformDiscoveries computes fameScore via the blend function from the ro
         },
       ],
     },
-    "discoveries-image-attribution.raw.json": {},
-    "discoveries-pageviews.raw.json": { Q5: 9_000_000 },
-    "discoveries-wikipedia-extracts.raw.json": {},
+    "milestones-image-attribution.raw.json": {},
+    "milestones-pageviews.raw.json": { Q5: 9_000_000 },
+    "milestones-wikipedia-extracts.raw.json": {},
   });
 
-  const [discovery] = transformDiscoveries();
+  const [milestone] = transformMilestones();
 
-  assert.equal(discovery?.fameScore, computeFameScore({ sitelinks: 80, pageviews: 9_000_000 }));
+  assert.equal(milestone?.fameScore, computeFameScore({ sitelinks: 80, pageviews: 9_000_000 }));
 });
 
-test("transformDiscoveries passes through the enrichment file's live-fetched tagline (not any curated fallback)", (t) => {
+test("transformMilestones passes through the enrichment file's live-fetched tagline (not any curated fallback)", (t) => {
   stubRawFiles(t, {
-    "events-curated-enriched.raw.json": {
-      events: [
+    "milestones-curated-enriched.raw.json": {
+      milestones: [
         {
           id: "Q5",
           name: "Penicillin",
@@ -261,20 +261,20 @@ test("transformDiscoveries passes through the enrichment file's live-fetched tag
         },
       ],
     },
-    "discoveries-image-attribution.raw.json": {},
-    "discoveries-pageviews.raw.json": {},
-    "discoveries-wikipedia-extracts.raw.json": {},
+    "milestones-image-attribution.raw.json": {},
+    "milestones-pageviews.raw.json": {},
+    "milestones-wikipedia-extracts.raw.json": {},
   });
 
-  const [discovery] = transformDiscoveries();
+  const [milestone] = transformMilestones();
 
-  assert.equal(discovery?.tagline, "1928 discovery of an antibiotic produced by Penicillium mould");
+  assert.equal(milestone?.tagline, "1928 discovery of an antibiotic produced by Penicillium mould");
 });
 
-test("transformDiscoveries leaves tagline undefined when the enrichment pass couldn't resolve one (Output drops it, not Transform)", (t) => {
+test("transformMilestones leaves tagline undefined when the enrichment pass couldn't resolve one (Output drops it, not Transform)", (t) => {
   stubRawFiles(t, {
-    "events-curated-enriched.raw.json": {
-      events: [
+    "milestones-curated-enriched.raw.json": {
+      milestones: [
         {
           id: "Q6",
           name: "Some Obscure Invention",
@@ -287,20 +287,20 @@ test("transformDiscoveries leaves tagline undefined when the enrichment pass cou
         },
       ],
     },
-    "discoveries-image-attribution.raw.json": {},
-    "discoveries-pageviews.raw.json": {},
-    "discoveries-wikipedia-extracts.raw.json": {},
+    "milestones-image-attribution.raw.json": {},
+    "milestones-pageviews.raw.json": {},
+    "milestones-wikipedia-extracts.raw.json": {},
   });
 
-  const [discovery] = transformDiscoveries();
+  const [milestone] = transformMilestones();
 
-  assert.equal(discovery?.tagline, undefined);
+  assert.equal(milestone?.tagline, undefined);
 });
 
-test("transformDiscoveries passes through the Wikipedia extract keyed by the event's own id, when present", (t) => {
+test("transformMilestones passes through the Wikipedia extract keyed by the milestone's own id, when present", (t) => {
   stubRawFiles(t, {
-    "events-curated-enriched.raw.json": {
-      events: [
+    "milestones-curated-enriched.raw.json": {
+      milestones: [
         {
           id: "Q5",
           name: "Penicillin",
@@ -314,22 +314,22 @@ test("transformDiscoveries passes through the Wikipedia extract keyed by the eve
         },
       ],
     },
-    "discoveries-image-attribution.raw.json": {},
-    "discoveries-pageviews.raw.json": {},
-    "discoveries-wikipedia-extracts.raw.json": {
+    "milestones-image-attribution.raw.json": {},
+    "milestones-pageviews.raw.json": {},
+    "milestones-wikipedia-extracts.raw.json": {
       Q5: "Penicillin is a group of antibiotics derived from Penicillium moulds.",
     },
   });
 
-  const [discovery] = transformDiscoveries();
+  const [milestone] = transformMilestones();
 
-  assert.equal(discovery?.description, "Penicillin is a group of antibiotics derived from Penicillium moulds.");
+  assert.equal(milestone?.description, "Penicillin is a group of antibiotics derived from Penicillium moulds.");
 });
 
-test("transformDiscoveries leaves description undefined when no Wikipedia extract resolved for this id", (t) => {
+test("transformMilestones leaves description undefined when no Wikipedia extract resolved for this id", (t) => {
   stubRawFiles(t, {
-    "events-curated-enriched.raw.json": {
-      events: [
+    "milestones-curated-enriched.raw.json": {
+      milestones: [
         {
           id: "Q5",
           name: "Penicillin",
@@ -343,14 +343,14 @@ test("transformDiscoveries leaves description undefined when no Wikipedia extrac
         },
       ],
     },
-    "discoveries-image-attribution.raw.json": {},
-    "discoveries-pageviews.raw.json": {},
-    "discoveries-wikipedia-extracts.raw.json": {},
+    "milestones-image-attribution.raw.json": {},
+    "milestones-pageviews.raw.json": {},
+    "milestones-wikipedia-extracts.raw.json": {},
   });
 
-  const [discovery] = transformDiscoveries();
+  const [milestone] = transformMilestones();
 
-  assert.equal(discovery?.description, undefined);
+  assert.equal(milestone?.description, undefined);
 });
 
 test("transformPeople passes through tagline and description, keyed by the person's Wikidata QID (wd_id)", (t) => {

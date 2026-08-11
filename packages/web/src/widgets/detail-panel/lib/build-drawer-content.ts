@@ -1,4 +1,4 @@
-import type { Discovery, Person, WarsAndConflictsEntry } from '../../../shared/types';
+import type { Milestone, Person, ConflictEntry } from '../../../shared/types';
 import { formatYearMonth } from '../../../shared/lib/format-year';
 
 // Discriminates which of the three lane shapes a click resolved to — the
@@ -8,8 +8,8 @@ import { formatYearMonth } from '../../../shared/lib/format-year';
 // precomputed).
 export type DetailPanelEntity =
   | { entityType: 'person'; entity: Person }
-  | { entityType: 'war'; entity: WarsAndConflictsEntry }
-  | { entityType: 'discovery'; entity: Discovery };
+  | { entityType: 'conflict'; entity: ConflictEntry }
+  | { entityType: 'milestone'; entity: Milestone };
 
 // Every field the drawer chrome (ui/DetailPanel.tsx) needs to render,
 // regardless of entity type — spec §3's "all four entity shapes render into
@@ -17,10 +17,10 @@ export type DetailPanelEntity =
 // depends on entityType (see buildDrawerContent below), not on the caller.
 export interface DrawerContent {
   name: string;
-  // Discovery only — People and Wars & Conflicts drop this: their tagline
+  // Milestone only — People and Conflicts drop this: their tagline
   // text (Wikidata schema:description) already embeds the same dates in
   // prose form, so a separate structured date line was showing every date
-  // twice. Discoveries' taglines don't embed dates, so they keep it.
+  // twice. Milestones' taglines don't embed dates, so they keep it.
   dateLine?: string;
   tagline: string;
   // Wikipedia lead-paragraph prose — absent whenever no English Wikipedia
@@ -54,7 +54,7 @@ function personContent(person: Person): DrawerContent {
   };
 }
 
-function warEntryContent(entry: WarsAndConflictsEntry): DrawerContent {
+function conflictEntryContent(entry: ConflictEntry): DrawerContent {
   return {
     name: entry.name,
     tagline: entry.tagline,
@@ -65,15 +65,15 @@ function warEntryContent(entry: WarsAndConflictsEntry): DrawerContent {
   };
 }
 
-function discoveryContent(discovery: Discovery): DrawerContent {
+function milestoneContent(milestone: Milestone): DrawerContent {
   return {
-    name: discovery.name,
-    dateLine: formatYearMonth(discovery.at),
-    tagline: discovery.tagline,
-    description: discovery.description,
-    wikipediaUrl: discovery.wikipediaUrl,
-    image: discovery.image,
-    imageAttribution: discovery.imageAttribution,
+    name: milestone.name,
+    dateLine: formatYearMonth(milestone.at),
+    tagline: milestone.tagline,
+    description: milestone.description,
+    wikipediaUrl: milestone.wikipediaUrl,
+    image: milestone.image,
+    imageAttribution: milestone.imageAttribution,
   };
 }
 
@@ -81,9 +81,9 @@ export function buildDrawerContent(selected: DetailPanelEntity): DrawerContent {
   switch (selected.entityType) {
     case 'person':
       return personContent(selected.entity);
-    case 'war':
-      return warEntryContent(selected.entity);
-    case 'discovery':
-      return discoveryContent(selected.entity);
+    case 'conflict':
+      return conflictEntryContent(selected.entity);
+    case 'milestone':
+      return milestoneContent(selected.entity);
   }
 }

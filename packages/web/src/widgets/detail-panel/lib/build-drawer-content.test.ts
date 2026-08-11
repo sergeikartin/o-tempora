@@ -1,6 +1,6 @@
 import { test, expect } from 'vitest';
 import { buildDrawerContent } from './build-drawer-content';
-import type { Discovery, Person, War, WarEvent } from '../../../shared/types';
+import type { Milestone, Person, Conflict, ConflictEvent } from '../../../shared/types';
 
 const napoleon: Person = {
   id: '69880',
@@ -29,7 +29,7 @@ const livingPerson: Person = {
   imageAttribution: undefined,
 };
 
-const koreanWar: War = {
+const koreanWar: Conflict = {
   id: 'Q8214',
   name: 'Korean War',
   period: { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } },
@@ -40,7 +40,7 @@ const koreanWar: War = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
 };
 
-const battle: WarEvent = {
+const battle: ConflictEvent = {
   id: 'Q46341',
   name: 'Battle of Gettysburg',
   at: { year: 1863, month: 7 },
@@ -51,7 +51,7 @@ const battle: WarEvent = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Gettysburg',
 };
 
-const printingPress: Discovery = {
+const printingPress: Milestone = {
   id: 'Q11042',
   name: 'Printing press',
   at: { year: 1440 },
@@ -116,66 +116,66 @@ test('person: reignPeriod with no end says "present"', () => {
   expect(content.reignLines).toEqual(['King: 1804 – present']);
 });
 
-test('War: no dateLine (tagline already carries dates)', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: koreanWar });
+test('Conflict: no dateLine (tagline already carries dates)', () => {
+  const content = buildDrawerContent({ entityType: 'conflict', entity: koreanWar });
   expect(content.dateLine).toBeUndefined();
 });
 
-test('War: image/imageAttribution pass through when present', () => {
-  const warWithImage: War = { ...koreanWar, image: 'https://example.com/x.jpg', imageAttribution: 'x' };
-  const content = buildDrawerContent({ entityType: 'war', entity: warWithImage });
+test('Conflict: image/imageAttribution pass through when present', () => {
+  const conflictWithImage: Conflict = { ...koreanWar, image: 'https://example.com/x.jpg', imageAttribution: 'x' };
+  const content = buildDrawerContent({ entityType: 'conflict', entity: conflictWithImage });
   expect(content.image).toBe('https://example.com/x.jpg');
   expect(content.imageAttribution).toBe('x');
 });
 
-test('War: image/imageAttribution are undefined when absent', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: koreanWar });
+test('Conflict: image/imageAttribution are undefined when absent', () => {
+  const content = buildDrawerContent({ entityType: 'conflict', entity: koreanWar });
   expect(content.image).toBeUndefined();
   expect(content.imageAttribution).toBeUndefined();
 });
 
-test('War: description passes through when present', () => {
-  const warWithDescription: War = { ...koreanWar, description: 'A war fought on the Korean peninsula.' };
-  const content = buildDrawerContent({ entityType: 'war', entity: warWithDescription });
+test('Conflict: description passes through when present', () => {
+  const conflictWithDescription: Conflict = { ...koreanWar, description: 'A war fought on the Korean peninsula.' };
+  const content = buildDrawerContent({ entityType: 'conflict', entity: conflictWithDescription });
   expect(content.description).toBe('A war fought on the Korean peninsula.');
 });
 
-test('War: description is undefined when absent (no Wikipedia article resolved)', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: koreanWar });
+test('Conflict: description is undefined when absent (no Wikipedia article resolved)', () => {
+  const content = buildDrawerContent({ entityType: 'conflict', entity: koreanWar });
   expect(content.description).toBeUndefined();
 });
 
-test('WarEvent: no dateLine (tagline already carries dates)', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: battle });
+test('ConflictEvent: no dateLine (tagline already carries dates)', () => {
+  const content = buildDrawerContent({ entityType: 'conflict', entity: battle });
   expect(content.dateLine).toBeUndefined();
 });
 
-test('WarEvent: never carries reignLines (not a Person)', () => {
-  const content = buildDrawerContent({ entityType: 'war', entity: battle });
+test('ConflictEvent: never carries reignLines (not a Person)', () => {
+  const content = buildDrawerContent({ entityType: 'conflict', entity: battle });
   expect(content.reignLines).toBeUndefined();
 });
 
-test('Discovery: dateLine is at.year only (year precision)', () => {
-  const content = buildDrawerContent({ entityType: 'discovery', entity: printingPress });
+test('Milestone: dateLine is at.year only (year precision)', () => {
+  const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
   expect(content.dateLine).toBe('1440');
 });
 
-test('Discovery: image passes through, no reignLines', () => {
-  const content = buildDrawerContent({ entityType: 'discovery', entity: printingPress });
+test('Milestone: image passes through, no reignLines', () => {
+  const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
   expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg');
   expect(content.reignLines).toBeUndefined();
 });
 
-test('Discovery: description passes through when present', () => {
-  const withDescription: Discovery = {
+test('Milestone: description passes through when present', () => {
+  const withDescription: Milestone = {
     ...printingPress,
     description: 'A device for transferring text or images onto paper via ink.',
   };
-  const content = buildDrawerContent({ entityType: 'discovery', entity: withDescription });
+  const content = buildDrawerContent({ entityType: 'milestone', entity: withDescription });
   expect(content.description).toBe('A device for transferring text or images onto paper via ink.');
 });
 
-test('Discovery: description is undefined when absent (no Wikipedia article resolved)', () => {
-  const content = buildDrawerContent({ entityType: 'discovery', entity: printingPress });
+test('Milestone: description is undefined when absent (no Wikipedia article resolved)', () => {
+  const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
   expect(content.description).toBeUndefined();
 });

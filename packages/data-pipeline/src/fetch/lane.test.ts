@@ -7,9 +7,9 @@ test("parseLaneFlag returns undefined when --lane is absent (today's unchanged '
 });
 
 test("parseLaneFlag returns the requested lane", () => {
-  assert.equal(parseLaneFlag(["--lane=discoveries"]), "discoveries");
+  assert.equal(parseLaneFlag(["--lane=milestones"]), "milestones");
 });
 
 test("parseLaneFlag throws with the valid values listed, for an unrecognized --lane value", () => {
-  assert.throws(() => parseLaneFlag(["--lane=events"]), /Invalid --lane value "events".*people, wars, discoveries/);
+  assert.throws(() => parseLaneFlag(["--lane=events"]), /Invalid --lane value "events".*people, conflicts, milestones/);
 });

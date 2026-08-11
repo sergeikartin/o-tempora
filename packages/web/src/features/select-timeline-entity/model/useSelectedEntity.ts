@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export const ENTITY_TYPES = ['person', 'war', 'discovery'] as const;
+export const ENTITY_TYPES = ['person', 'conflict', 'milestone'] as const;
 export type EntityType = (typeof ENTITY_TYPES)[number];
 
 // Identifies a clicked mark without its full data — TimelineCanvas's

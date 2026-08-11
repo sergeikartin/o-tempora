@@ -4,7 +4,7 @@
 Provide concise, focused responses. Skip non-essential context, and keep examples minimal.
 
 ## Project Overview
-Read-only, continuously zoomable visualization of world history — People, Wars & Conflicts, and Events & Inventions lanes, hardcoded ahead of time. No accounts, no editing, no live data fetching.
+Read-only, continuously zoomable visualization of world history — People, Conflicts, and Milestones lanes, hardcoded ahead of time. No accounts, no editing, no live data fetching.
 
 ## Documentation Map
 

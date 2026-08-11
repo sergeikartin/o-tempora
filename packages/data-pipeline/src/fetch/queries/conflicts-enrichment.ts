@@ -4,7 +4,7 @@ import { PAGEVIEWS_LANGUAGES, articleVar } from "../pageviews-languages.js";
 // resolved here (an OPTIONAL binding per language, same shape as the
 // pre-existing English-only ?article binding) rather than via a second
 // SPARQL pass, so title resolution reuses this enrichment query's own
-// VALUES-clause batching. Shared with events-enrichment.ts's identical
+// VALUES-clause batching. Shared with milestones-enrichment.ts's identical
 // binding set.
 function articleOptionalBlocks(): string {
   return PAGEVIEWS_LANGUAGES.map(
@@ -13,19 +13,19 @@ function articleOptionalBlocks(): string {
   ).join("\n");
 }
 
-// Enrichment for the hand-curated Wars & Conflicts list
-// (data/raw/wars-curated.raw.json) — not a corpus scan, parameterized on a
+// Enrichment for the hand-curated Conflicts list
+// (data/raw/conflicts-curated.raw.json) — not a corpus scan, parameterized on a
 // batch of specific curated Q-IDs, same VALUES-clause shape as
-// events-enrichment.ts. Backfills sitelinks (-> fameScore), a Wikipedia
+// milestones-enrichment.ts. Backfills sitelinks (-> fameScore), a Wikipedia
 // article URL per language in the pageviews basket, country (-> regionTags),
 // the P18 image claim, an English tagline, and start/end dates with
 // precision — the p:/psv: statement-value-node pattern makes
 // wikibase:timePrecision available alongside each date. Unlike
-// events-enrichment.ts, name/category/parentId are curator-authored and
+// milestones-enrichment.ts, name/category/parentId are curator-authored and
 // never refetched here, but tagline and dates are — the curated file
 // carries no year/endYear/tagline of its own (see
-// wars-curated.raw.json's meta.description). ?date prefers P580 (start
-// time) over P585 (point in time): wars already carry an explicit
+// conflicts-curated.raw.json's meta.description). ?date prefers P580 (start
+// time) over P585 (point in time): conflicts already carry an explicit
 // start/end range, and some items (e.g. Q127751 Wars of the Roses) also
 // carry an unrelated/looser P585 that would otherwise clobber the real
 // start date. P585 is only a fallback for rows with no P580. Every P585/
@@ -36,10 +36,10 @@ function articleOptionalBlocks(): string {
 // one). Some items (e.g. Q189266 Eastern Front) still carry two
 // conflicting BestRank claims with no Preferred rank to break the tie —
 // ORDER BY ?date ?endDate makes the earliest value come first per ?event,
-// and fetchWarsEnrichment takes the first value it sees, so ties resolve
+// and fetchConflictsEnrichment takes the first value it sees, so ties resolve
 // deterministically to the earliest claim instead of whichever row the
 // endpoint happens to return first.
-export function buildWarsEnrichmentQuery(ids: string[]): string {
+export function buildConflictsEnrichmentQuery(ids: string[]): string {
   const values = ids.map((id) => `wd:${id}`).join(" ");
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `?${articleVar(lang)}`).join(" ");
   return `

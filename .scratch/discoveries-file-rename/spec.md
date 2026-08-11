@@ -1,6 +1,8 @@
-Labels: backlog
+Labels: superseded
 
 # Rename Events & Inventions' curated file names from "events" to "discoveries"
+
+**Superseded by `.scratch/conflicts-milestones-rename/spec.md`** — the lane was renamed straight from "events" to "milestones" (skipping this ticket's intermediate "discoveries" target), so the rename below was never executed and no longer applies. See `packages/data-pipeline/docs/adr/0013-rename-lanes-to-conflicts-and-milestones.md`.
 
 ## Problem Statement
 

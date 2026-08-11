@@ -1,6 +1,6 @@
 {
   "meta": {
-    "description": "Hand-curated Wars & Conflicts ground truth. Identity, category, and parentId nesting are curator-authored here; description, dates, fameScore, image, wikipediaUrl, and regionTags are backfilled by a batched per-QID Wikidata enrichment pass (fetchWarsEnrichment) — not part of this file. 78 QIDs corrected and 2 unresolvable entries (Baltic War of Liberation, Pig War/Serbia) dropped after cross-checking every entry against its Wikidata label — see .scratch/wars-curated-source/issues/06-live-pipeline-run-and-publish.md.",
+    "description": "Hand-curated Conflicts ground truth. Identity, category, and parentId nesting are curator-authored here; description, dates, fameScore, image, wikipediaUrl, and regionTags are backfilled by a batched per-QID Wikidata enrichment pass (fetchConflictsEnrichment) — not part of this file. 78 QIDs corrected and 2 unresolvable entries (Baltic War of Liberation, Pig War/Serbia) dropped after cross-checking every entry against its Wikidata label — see .scratch/wars-curated-source/issues/06-live-pipeline-run-and-publish.md.",
     "categories": [
       "war",
       "war-of-independence",
@@ -13,11 +13,11 @@
       "id": "bare Wikidata QID, no URI/prefix",
       "name": "conflict label",
       "category": "one of meta.categories",
-      "parentId": "optional — another curated row's id; that row must be a War (resolves both a start and end date from enrichment), and the chain up to its root is capped at 3 levels"
+      "parentId": "optional — another curated row's id; that row must be a Conflict (resolves both a start and end date from enrichment), and the chain up to its root is capped at 3 levels"
     },
     "count": 154
   },
-  "wars": [
+  "conflicts": [
     {
       "id": "Q6534",
       "name": "French Revolution",

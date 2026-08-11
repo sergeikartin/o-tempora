@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import type { TaggedPerson, TaggedWar, TaggedDiscovery } from "../transform/index.js";
-import { buildPeople, buildWars, buildDiscoveries } from "./write-datasets.js";
+import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
+import { buildPeople, buildConflicts, buildMilestones } from "./write-datasets.js";
 
 function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
   return {
@@ -23,7 +23,7 @@ function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
   };
 }
 
-function taggedWar(overrides: Partial<TaggedWar> = {}): TaggedWar {
+function taggedConflict(overrides: Partial<TaggedConflict> = {}): TaggedConflict {
   return {
     id: "Q2",
     label: "Peloponnesian War",
@@ -39,7 +39,7 @@ function taggedWar(overrides: Partial<TaggedWar> = {}): TaggedWar {
   };
 }
 
-function taggedDiscovery(overrides: Partial<TaggedDiscovery> = {}): TaggedDiscovery {
+function taggedMilestone(overrides: Partial<TaggedMilestone> = {}): TaggedMilestone {
   return {
     id: "Q5",
     label: "Penicillin",
@@ -144,82 +144,82 @@ test("buildPeople omits image/imageAttribution entirely (not undefined-valued ke
   assert.equal("imageAttribution" in (people[0] as object), false);
 });
 
-test("buildWars builds a War (with period.end) when the row resolved both a start and end date, regardless of category", () => {
-  const war = taggedWar({ id: "Q3", category: "revolution", year: 1789, endYear: 1799 });
-  const { entries } = buildWars([war]);
+test("buildConflicts builds a Conflict (with period.end) when the row resolved both a start and end date, regardless of category", () => {
+  const conflict = taggedConflict({ id: "Q3", category: "revolution", year: 1789, endYear: 1799 });
+  const { entries } = buildConflicts([conflict]);
   const [entry] = entries;
   assert.ok(entry && "period" in entry);
   assert.deepEqual(entry.period, { start: { year: 1789 }, end: { year: 1799 } });
 });
 
-test("buildWars builds a WarEvent (with at) when the row resolved only one date, regardless of category", () => {
-  const event = taggedWar({ id: "Q4", category: "coup-d-etat", year: 2013, endYear: undefined });
-  const { entries } = buildWars([event]);
+test("buildConflicts builds a ConflictEvent (with at) when the row resolved only one date, regardless of category", () => {
+  const event = taggedConflict({ id: "Q4", category: "coup-d-etat", year: 2013, endYear: undefined });
+  const { entries } = buildConflicts([event]);
   const [entry] = entries;
   assert.ok(entry && "at" in entry);
   assert.deepEqual(entry.at, { year: 2013 });
 });
 
-test("buildWars drops a row that resolved no date at all", () => {
-  const { entries, report } = buildWars([taggedWar({ year: undefined, endYear: undefined })]);
+test("buildConflicts drops a row that resolved no date at all", () => {
+  const { entries, report } = buildConflicts([taggedConflict({ year: undefined, endYear: undefined })]);
   assert.equal(entries.length, 0);
   assert.equal(report.reasons["missing date"], 1);
 });
 
-test("buildWars drops a row whose sitelinks is 0 (enrichment couldn't resolve the QID)", () => {
-  const { entries, report } = buildWars([taggedWar({ sitelinks: 0 })]);
+test("buildConflicts drops a row whose sitelinks is 0 (enrichment couldn't resolve the QID)", () => {
+  const { entries, report } = buildConflicts([taggedConflict({ sitelinks: 0 })]);
   assert.equal(entries.length, 0);
   assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
 });
 
-test("buildWars reads fameScore from the row's already-blended value, not re-derived from sitelinks", () => {
-  const { entries } = buildWars([taggedWar({ sitelinks: 200, fameScore: 37 })]);
+test("buildConflicts reads fameScore from the row's already-blended value, not re-derived from sitelinks", () => {
+  const { entries } = buildConflicts([taggedConflict({ sitelinks: 200, fameScore: 37 })]);
   assert.equal(entries[0]?.fameScore, 37);
 });
 
-test("buildWars drops a row whose sitelinks is 0 even when a nonzero blended fameScore survived (pageviews-only degrade case)", () => {
-  const { entries, report } = buildWars([taggedWar({ sitelinks: 0, fameScore: 12 })]);
+test("buildConflicts drops a row whose sitelinks is 0 even when a nonzero blended fameScore survived (pageviews-only degrade case)", () => {
+  const { entries, report } = buildConflicts([taggedConflict({ sitelinks: 0, fameScore: 12 })]);
   assert.equal(entries.length, 0);
   assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
 });
 
-test("buildWars passes through image/imageAttribution when present", () => {
-  const { entries } = buildWars([
-    taggedWar({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg", imageAttribution: "W, via Wikimedia Commons" }),
+test("buildConflicts passes through image/imageAttribution when present", () => {
+  const { entries } = buildConflicts([
+    taggedConflict({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg", imageAttribution: "W, via Wikimedia Commons" }),
   ]);
   assert.equal(entries[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg");
   assert.equal(entries[0]?.imageAttribution, "W, via Wikimedia Commons");
 });
 
-test("buildWars omits image/imageAttribution entirely (not undefined-valued keys) when absent", () => {
-  const { entries } = buildWars([taggedWar({ image: undefined, imageAttribution: undefined })]);
+test("buildConflicts omits image/imageAttribution entirely (not undefined-valued keys) when absent", () => {
+  const { entries } = buildConflicts([taggedConflict({ image: undefined, imageAttribution: undefined })]);
   assert.equal("image" in (entries[0] as object), false);
   assert.equal("imageAttribution" in (entries[0] as object), false);
 });
 
-test("buildWars carries month through to period.start/end and at when the row has one", () => {
-  const war = taggedWar({ id: "Q3", year: 1950, month: 6, endYear: 1953, endMonth: 7 });
-  const event = taggedWar({ id: "Q4", year: 1863, month: 7, endYear: undefined });
+test("buildConflicts carries month through to period.start/end and at when the row has one", () => {
+  const conflict = taggedConflict({ id: "Q3", year: 1950, month: 6, endYear: 1953, endMonth: 7 });
+  const event = taggedConflict({ id: "Q4", year: 1863, month: 7, endYear: undefined });
 
-  const { entries } = buildWars([war, event]);
+  const { entries } = buildConflicts([conflict, event]);
 
-  const [warEntry, eventEntry] = entries;
-  assert.ok(warEntry && "period" in warEntry);
-  assert.deepEqual(warEntry.period, { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } });
+  const [conflictEntry, eventEntry] = entries;
+  assert.ok(conflictEntry && "period" in conflictEntry);
+  assert.deepEqual(conflictEntry.period, { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } });
   assert.ok(eventEntry && "at" in eventEntry);
   assert.deepEqual(eventEntry.at, { year: 1863, month: 7 });
 });
 
-test("buildWars omits parentId entirely when absent (a Container or standalone row)", () => {
-  const { entries } = buildWars([taggedWar({ parentId: undefined })]);
+test("buildConflicts omits parentId entirely when absent (a Container or standalone row)", () => {
+  const { entries } = buildConflicts([taggedConflict({ parentId: undefined })]);
   assert.equal("parentId" in (entries[0] as object), false);
 });
 
-test("buildWars keeps a valid 2-level chain: a WarEvent parented to a Container", () => {
-  const container = taggedWar({ id: "Q1", year: 1095, endYear: 1291 }); // Crusades
-  const child = taggedWar({ id: "Q2", year: 1189, endYear: undefined, parentId: "Q1" }); // a single-date sub-event
+test("buildConflicts keeps a valid 2-level chain: a ConflictEvent parented to a Container", () => {
+  const container = taggedConflict({ id: "Q1", year: 1095, endYear: 1291 }); // Crusades
+  const child = taggedConflict({ id: "Q2", year: 1189, endYear: undefined, parentId: "Q1" }); // a single-date sub-event
 
-  const { entries, report } = buildWars([container, child]);
+  const { entries, report } = buildConflicts([container, child]);
 
   assert.equal(entries.length, 2);
   assert.equal(Object.keys(report.reasons).length, 0);
@@ -227,52 +227,52 @@ test("buildWars keeps a valid 2-level chain: a WarEvent parented to a Container"
   assert.equal(childEntry?.parentId, "Q1");
 });
 
-test("buildWars keeps a valid 3-level chain: Container -> level-2 War -> level-3 WarEvent", () => {
-  const container = taggedWar({ id: "Q1", year: 1939, endYear: 1945 }); // World War II
-  const level2 = taggedWar({ id: "Q2", year: 1941, endYear: 1945, parentId: "Q1" }); // Eastern Front
-  const level3 = taggedWar({ id: "Q3", year: 1941, endYear: undefined, parentId: "Q2" }); // a battle within it
+test("buildConflicts keeps a valid 3-level chain: Container -> level-2 Conflict -> level-3 ConflictEvent", () => {
+  const container = taggedConflict({ id: "Q1", year: 1939, endYear: 1945 }); // World War II
+  const level2 = taggedConflict({ id: "Q2", year: 1941, endYear: 1945, parentId: "Q1" }); // Eastern Front
+  const level3 = taggedConflict({ id: "Q3", year: 1941, endYear: undefined, parentId: "Q2" }); // a battle within it
 
-  const { entries, report } = buildWars([container, level2, level3]);
+  const { entries, report } = buildConflicts([container, level2, level3]);
 
   assert.equal(entries.length, 3);
   assert.equal(Object.keys(report.reasons).length, 0);
 });
 
-test("buildWars drops a row parented to a nonexistent id", () => {
-  const child = taggedWar({ id: "Q2", parentId: "Q999" });
-  const { entries, report } = buildWars([child]);
+test("buildConflicts drops a row parented to a nonexistent id", () => {
+  const child = taggedConflict({ id: "Q2", parentId: "Q999" });
+  const { entries, report } = buildConflicts([child]);
   assert.equal(entries.length, 0);
   assert.equal(report.reasons["parentId not found"], 1);
 });
 
-test("buildWars drops a row parented to a WarEvent (event-parented-to-event)", () => {
-  const parentEvent = taggedWar({ id: "Q1", year: 2013, endYear: undefined }); // WarEvent, no children allowed
-  const child = taggedWar({ id: "Q2", year: 2013, endYear: undefined, parentId: "Q1" });
+test("buildConflicts drops a row parented to a ConflictEvent (event-parented-to-event)", () => {
+  const parentEvent = taggedConflict({ id: "Q1", year: 2013, endYear: undefined }); // ConflictEvent, no children allowed
+  const child = taggedConflict({ id: "Q2", year: 2013, endYear: undefined, parentId: "Q1" });
 
-  const { entries, report } = buildWars([parentEvent, child]);
+  const { entries, report } = buildConflicts([parentEvent, child]);
 
   assert.equal(entries.length, 1);
   assert.equal(entries[0]?.id, "Q1");
-  assert.equal(report.reasons["parentId is not a War"], 1);
+  assert.equal(report.reasons["parentId is not a Conflict"], 1);
 });
 
-test("buildWars drops a chain exceeding 3 levels deep", () => {
-  const container = taggedWar({ id: "Q1", year: 1, endYear: 2 });
-  const level2 = taggedWar({ id: "Q2", year: 1, endYear: 2, parentId: "Q1" });
-  const level3 = taggedWar({ id: "Q3", year: 1, endYear: 2, parentId: "Q2" }); // a War, so it can itself be a parent
-  const level4 = taggedWar({ id: "Q4", year: 1, endYear: undefined, parentId: "Q3" });
+test("buildConflicts drops a chain exceeding 3 levels deep", () => {
+  const container = taggedConflict({ id: "Q1", year: 1, endYear: 2 });
+  const level2 = taggedConflict({ id: "Q2", year: 1, endYear: 2, parentId: "Q1" });
+  const level3 = taggedConflict({ id: "Q3", year: 1, endYear: 2, parentId: "Q2" }); // a Conflict, so it can itself be a parent
+  const level4 = taggedConflict({ id: "Q4", year: 1, endYear: undefined, parentId: "Q3" });
 
-  const { entries, report } = buildWars([container, level2, level3, level4]);
+  const { entries, report } = buildConflicts([container, level2, level3, level4]);
 
   assert.equal(entries.length, 3);
   assert.ok(!entries.some((entry) => entry.id === "Q4"));
   assert.equal(report.reasons["nesting depth exceeded"], 1);
 });
 
-test("buildDiscoveries passes through category, regionTags, and at.year", () => {
-  const { discoveries } = buildDiscoveries([taggedDiscovery()]);
+test("buildMilestones passes through category, regionTags, and at.year", () => {
+  const { milestones } = buildMilestones([taggedMilestone()]);
 
-  assert.deepEqual(discoveries[0], {
+  assert.deepEqual(milestones[0], {
     id: "Q5",
     name: "Penicillin",
     at: { year: 1928 },
@@ -284,45 +284,45 @@ test("buildDiscoveries passes through category, regionTags, and at.year", () => 
   });
 });
 
-test("buildDiscoveries drops a row whose live enrichment couldn't resolve a tagline (no fallback to curated text)", () => {
-  const { discoveries, report } = buildDiscoveries([taggedDiscovery({ tagline: undefined })]);
-  assert.equal(discoveries.length, 0);
+test("buildMilestones drops a row whose live enrichment couldn't resolve a tagline (no fallback to curated text)", () => {
+  const { milestones, report } = buildMilestones([taggedMilestone({ tagline: undefined })]);
+  assert.equal(milestones.length, 0);
   assert.equal(report.reasons["missing tagline"], 1);
 });
 
-test("buildDiscoveries reads fameScore from the row's already-blended value, not re-derived from sitelinks", () => {
-  const { discoveries } = buildDiscoveries([taggedDiscovery({ sitelinks: 200, fameScore: 37 })]);
-  assert.equal(discoveries[0]?.fameScore, 37);
+test("buildMilestones reads fameScore from the row's already-blended value, not re-derived from sitelinks", () => {
+  const { milestones } = buildMilestones([taggedMilestone({ sitelinks: 200, fameScore: 37 })]);
+  assert.equal(milestones[0]?.fameScore, 37);
 });
 
-test("buildDiscoveries drops a row whose sitelinks is 0 even when a nonzero blended fameScore survived (pageviews-only degrade case)", () => {
-  const { discoveries, report } = buildDiscoveries([taggedDiscovery({ sitelinks: 0, fameScore: 12 })]);
-  assert.equal(discoveries.length, 0);
+test("buildMilestones drops a row whose sitelinks is 0 even when a nonzero blended fameScore survived (pageviews-only degrade case)", () => {
+  const { milestones, report } = buildMilestones([taggedMilestone({ sitelinks: 0, fameScore: 12 })]);
+  assert.equal(milestones.length, 0);
   assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
 });
 
-test("buildDiscoveries drops a row missing wikipediaUrl (enrichment couldn't resolve an article)", () => {
-  const { discoveries, report } = buildDiscoveries([taggedDiscovery({ article: undefined })]);
-  assert.equal(discoveries.length, 0);
+test("buildMilestones drops a row missing wikipediaUrl (enrichment couldn't resolve an article)", () => {
+  const { milestones, report } = buildMilestones([taggedMilestone({ article: undefined })]);
+  assert.equal(milestones.length, 0);
   assert.equal(report.reasons["missing Wikipedia article"], 1);
 });
 
-test("buildDiscoveries drops a row whose sitelinks is 0 (enrichment couldn't resolve the QID)", () => {
-  const { discoveries, report } = buildDiscoveries([taggedDiscovery({ sitelinks: 0 })]);
-  assert.equal(discoveries.length, 0);
+test("buildMilestones drops a row whose sitelinks is 0 (enrichment couldn't resolve the QID)", () => {
+  const { milestones, report } = buildMilestones([taggedMilestone({ sitelinks: 0 })]);
+  assert.equal(milestones.length, 0);
   assert.equal(report.reasons["missing sitelinks (enrichment failed)"], 1);
 });
 
-test("buildDiscoveries passes through image/imageAttribution when present", () => {
-  const { discoveries } = buildDiscoveries([
-    taggedDiscovery({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/Y.jpg", imageAttribution: "Y, via Wikimedia Commons" }),
+test("buildMilestones passes through image/imageAttribution when present", () => {
+  const { milestones } = buildMilestones([
+    taggedMilestone({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/Y.jpg", imageAttribution: "Y, via Wikimedia Commons" }),
   ]);
-  assert.equal(discoveries[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/Y.jpg");
-  assert.equal(discoveries[0]?.imageAttribution, "Y, via Wikimedia Commons");
+  assert.equal(milestones[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/Y.jpg");
+  assert.equal(milestones[0]?.imageAttribution, "Y, via Wikimedia Commons");
 });
 
-test("buildDiscoveries omits image/imageAttribution entirely (not undefined-valued keys) when absent — keeps the existing exact-shape test above honest", () => {
-  const { discoveries } = buildDiscoveries([taggedDiscovery()]);
-  assert.equal("image" in (discoveries[0] as object), false);
-  assert.equal("imageAttribution" in (discoveries[0] as object), false);
+test("buildMilestones omits image/imageAttribution entirely (not undefined-valued keys) when absent — keeps the existing exact-shape test above honest", () => {
+  const { milestones } = buildMilestones([taggedMilestone()]);
+  assert.equal("image" in (milestones[0] as object), false);
+  assert.equal("imageAttribution" in (milestones[0] as object), false);
 });

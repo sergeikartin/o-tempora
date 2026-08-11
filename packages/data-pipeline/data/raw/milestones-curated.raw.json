@@ -1,6 +1,6 @@
 {
   "meta": {
-    "description": "Hand-curated, significance-based candidate list for the Events & Inventions lane redesign. Not a SPARQL dump like the sibling events-*.raw.json files \u2014 inventions.ts's P575-only fetch produced no usable classification signal, so this lane's selection and categorization is curated by hand and verified against live Wikidata per item, then filtered: noise/duplicate/off-scope entries and events before 5000 BCE removed, category assigned to the new 10-value taxonomy (replacing the shared Category enum).",
+    "description": "Hand-curated, significance-based candidate list for the Milestones lane redesign. Not a SPARQL dump like the sibling events-*.raw.json files \u2014 inventions.ts's P575-only fetch produced no usable classification signal, so this lane's selection and categorization is curated by hand and verified against live Wikidata per item, then filtered: noise/duplicate/off-scope entries and events before 5000 BCE removed, category assigned to the new 10-value taxonomy (replacing the shared Category enum).",
     "categories": [
       "science-theory",
       "medicine-health",
@@ -15,7 +15,7 @@
     ],
     "fields": {
       "id": "bare Wikidata QID, no URI/prefix",
-      "name": "event label",
+      "name": "milestone label",
       "year": "integer, negative = BCE",
       "category": "one of meta.categories",
       "description": "Wikidata item description",
@@ -24,7 +24,7 @@
     },
     "count": 121
   },
-  "events": [
+  "milestones": [
     {
       "id": "Q988780",
       "name": "Electromagnetic induction",

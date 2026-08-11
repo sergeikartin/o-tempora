@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
-import type { WarsAndConflictsEntry } from '../../shared/types';
-import { assignRows, mapWars } from './map-to-items';
+import type { ConflictEntry } from '../../shared/types';
+import { assignRows, mapConflicts } from './map-to-items';
 import {
   CONFLICT_CATEGORY_COLORS,
   MIN_ROW_GAP_PX,
@@ -12,7 +12,7 @@ import {
   markerCenterYForRow,
   markerLaneHeight,
 } from './options';
-import styles from './WarsLane.module.css';
+import styles from './ConflictsLane.module.css';
 
 interface RangeLayout {
   id: string;
@@ -31,8 +31,8 @@ interface PointLayout {
   fill: string;
 }
 
-interface WarsLaneProps {
-  wars: WarsAndConflictsEntry[];
+interface ConflictsLaneProps {
+  conflicts: ConflictEntry[];
   xScale: d3.ScaleLinear<number, number>;
 }
 
@@ -52,24 +52,24 @@ function pixelInterval(item: { startYear: number; endYear: number; name: string;
   return { start: Math.min(x1, center - labelHalf), end: Math.max(x2, center + labelHalf) };
 }
 
-// Wars & Conflicts renders two shapes sharing one row-stacking pass: ranges
+// Conflicts renders two shapes sharing one row-stacking pass: ranges
 // as a rounded-cap line, points as a dot. An item that would otherwise
 // collide with a neighbor doesn't move sideways; `assignRows`' row instead
 // pushes its marker+label pair down together (markerCenterYForRow/
 // labelYForRow), the label sitting just below its own row's marker. Same
-// below-marker treatment Events & Inventions uses for its dots.
-export function WarsLane({ wars, xScale }: WarsLaneProps) {
+// below-marker treatment Milestones uses for its dots.
+export function ConflictsLane({ conflicts, xScale }: ConflictsLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
-  const items = useMemo(() => mapWars(wars), [wars]);
-  const rowOfWar = useMemo(() => {
+  const items = useMemo(() => mapConflicts(conflicts), [conflicts]);
+  const rowOfConflict = useMemo(() => {
     const intervals = items.map((item) => {
       const { start, end } = pixelInterval(item, xScale);
       return { id: item.id, startYear: start, endYear: end };
     });
     return assignRows(intervals, MIN_ROW_GAP_PX);
   }, [items, xScale]);
-  const rowCount = rowOfWar.size > 0 ? Math.max(...rowOfWar.values()) + 1 : 0;
+  const rowCount = rowOfConflict.size > 0 ? Math.max(...rowOfConflict.values()) + 1 : 0;
   const totalHeight = markerLaneHeight(rowCount);
   const totalWidth = xScale.range()[1] ?? 0;
 
@@ -82,10 +82,10 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
           name: item.name,
           x1: xScale(item.startYear),
           x2: xScale(item.endYear),
-          row: rowOfWar.get(item.id) ?? 0,
+          row: rowOfConflict.get(item.id) ?? 0,
           fill: CONFLICT_CATEGORY_COLORS[item.category],
         })),
-    [items, rowOfWar, xScale],
+    [items, rowOfConflict, xScale],
   );
 
   const pointLayout: PointLayout[] = useMemo(
@@ -96,10 +96,10 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
           id: item.id,
           name: item.name,
           x: xScale(item.startYear),
-          row: rowOfWar.get(item.id) ?? 0,
+          row: rowOfConflict.get(item.id) ?? 0,
           fill: CONFLICT_CATEGORY_COLORS[item.category],
         })),
-    [items, rowOfWar, xScale],
+    [items, rowOfConflict, xScale],
   );
 
   useEffect(() => {
@@ -133,7 +133,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .attr('y2', (d) => markerCenterYForRow(d.row))
       .attr('stroke', (d) => d.fill)
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'war');
+      .attr('data-entity-type', 'conflict');
 
     rangeGroups
       .select<SVGTextElement>('.d3-range-name')
@@ -143,7 +143,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       // Same delegated-click wiring as the line above, so the label is an
       // equally valid click target for opening the detail drawer.
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'war')
+      .attr('data-entity-type', 'conflict')
       .text((d) => d.name);
 
     const pointGroups = svg
@@ -168,7 +168,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       .attr('cy', (d) => markerCenterYForRow(d.row))
       .attr('fill', (d) => d.fill)
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'war');
+      .attr('data-entity-type', 'conflict');
 
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
@@ -178,7 +178,7 @@ export function WarsLane({ wars, xScale }: WarsLaneProps) {
       // Same delegated-click wiring as the dot above, so the label is an
       // equally valid click target for opening the detail drawer.
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'war')
+      .attr('data-entity-type', 'conflict')
       .text((d) => d.name);
   }, [rangeLayout, pointLayout]);
 

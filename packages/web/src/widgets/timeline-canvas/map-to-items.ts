@@ -1,11 +1,11 @@
 import type {
   ConflictCategory,
-  Discovery,
-  DiscoveryCategory,
+  Milestone,
+  MilestoneCategory,
   OccupationDomain,
   Period,
   Person,
-  WarsAndConflictsEntry,
+  ConflictEntry,
 } from '../../shared/types';
 import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
 import { MIN_ROW_GAP_YEARS } from './options';
@@ -51,7 +51,7 @@ export function mapPeople(people: Person[]): PersonItem[] {
   });
 }
 
-export interface WarItem {
+export interface ConflictItem {
   id: string;
   name: string;
   startYear: number;
@@ -60,18 +60,18 @@ export interface WarItem {
   category: ConflictCategory;
 }
 
-// wars.json mixes War (a Period, `period` field) and WarEvent (a
-// PointInTime, `at` field) — structurally disjoint, so this narrows with
-// `"period" in entry` rather than a `kind` discriminant (see
-// WarsAndConflictsEntry in shared-types). Every entry maps 1:1 into one
-// unified WarItem shape either way; wars.json is already Wars &
+// conflicts.json mixes Conflict (a Period, `period` field) and
+// ConflictEvent (a PointInTime, `at` field) — structurally disjoint, so
+// this narrows with `"period" in entry` rather than a `kind` discriminant
+// (see ConflictEntry in shared-types). Every entry maps 1:1 into one
+// unified ConflictItem shape either way; conflicts.json is already
 // Conflicts-lane-only (data-pipeline's EVENT_TYPES filter), so no category
 // filtering happens here.
-export function mapWars(wars: WarsAndConflictsEntry[]): WarItem[] {
-  return wars.map((entry) => {
-    const isWar = 'period' in entry;
-    const period: Period = isWar ? entry.period : { start: entry.at, end: undefined };
-    const isPoint = !isWar;
+export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
+  return conflicts.map((entry) => {
+    const isConflict = 'period' in entry;
+    const period: Period = isConflict ? entry.period : { start: entry.at, end: undefined };
+    const isPoint = !isConflict;
     const startYear = yearMonthToFractionalYear(period.start);
     return {
       id: entry.id,
@@ -86,21 +86,21 @@ export function mapWars(wars: WarsAndConflictsEntry[]): WarItem[] {
   });
 }
 
-export interface DiscoveryItem {
+export interface MilestoneItem {
   id: string;
   name: string;
   startYear: number;
-  category: DiscoveryCategory;
+  category: MilestoneCategory;
 }
 
-// discoveries.json is always a PointInTime (data-pipeline's Discovery rows
-// are always single-moment) — always a point, unlike wars.
-export function mapDiscoveries(discoveries: Discovery[]): DiscoveryItem[] {
-  return discoveries.map((discovery) => ({
-    id: discovery.id,
-    name: discovery.name,
-    startYear: yearMonthToFractionalYear(discovery.at),
-    category: discovery.category,
+// milestones.json is always a PointInTime (data-pipeline's Milestone rows
+// are always single-moment) — always a point, unlike conflicts.
+export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
+  return milestones.map((milestone) => ({
+    id: milestone.id,
+    name: milestone.name,
+    startYear: yearMonthToFractionalYear(milestone.at),
+    category: milestone.category,
   }));
 }
 
@@ -114,8 +114,8 @@ interface RowInterval {
 // the first row whose last-placed end clears it with `gap` to spare, else
 // open a new row. Guarantees no two items in the same row ever overlap or
 // crowd each other. Field names read as years (its original use, shared by
-// the People and Wars & Conflicts lanes with the default MIN_ROW_GAP_YEARS
-// gap) but the algorithm is purely numeric — Events & Inventions reuses it
+// the People and Conflicts lanes with the default MIN_ROW_GAP_YEARS
+// gap) but the algorithm is purely numeric — Milestones reuses it
 // in pixel space (start/end as x-pixel positions spanning each point's
 // estimated label width) to keep point labels from overlapping, passing its
 // own much-smaller pixel gap.

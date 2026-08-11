@@ -1,8 +1,8 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { transformPeople, transformWars, transformDiscoveries, loadReignsMap } from "../transform/index.js";
-import { buildPeople, buildWars, buildDiscoveries, type DropReport } from "./write-datasets.js";
+import { transformPeople, transformConflicts, transformMilestones, loadReignsMap } from "../transform/index.js";
+import { buildPeople, buildConflicts, buildMilestones, type DropReport } from "./write-datasets.js";
 
 // The pipeline owns its own output — generating a dataset is a separate,
 // inspectable step from publishing it for consumers to read. `publish.ts`
@@ -26,15 +26,15 @@ async function main(): Promise<void> {
   logReport("people.json", people.length, peopleReport);
   await writeDataset("people.json", people);
 
-  const { entries: wars, report: warsReport } = buildWars(transformWars());
-  logReport("wars.json", wars.length, warsReport);
-  await writeDataset("wars.json", wars);
+  const { entries: conflicts, report: conflictsReport } = buildConflicts(transformConflicts());
+  logReport("conflicts.json", conflicts.length, conflictsReport);
+  await writeDataset("conflicts.json", conflicts);
 
-  const { discoveries, report: discoveriesReport } = buildDiscoveries(transformDiscoveries());
-  logReport("discoveries.json", discoveries.length, discoveriesReport);
-  await writeDataset("discoveries.json", discoveries);
+  const { milestones, report: milestonesReport } = buildMilestones(transformMilestones());
+  logReport("milestones.json", milestones.length, milestonesReport);
+  await writeDataset("milestones.json", milestones);
 
-  console.log(`Wrote people.json, wars.json, and discoveries.json to ${DATA_DIR}`);
+  console.log(`Wrote people.json, conflicts.json, and milestones.json to ${DATA_DIR}`);
   console.log("Run `npm run publish-data --workspace packages/data-pipeline` to publish to packages/shared-types.");
 }
 

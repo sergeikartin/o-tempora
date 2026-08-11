@@ -1,4 +1,4 @@
-// Canonical Person/War/Discovery data contracts, shared between
+// Canonical Person/Conflict/Milestone data contracts, shared between
 // /data-pipeline (which produces them) and /src (which will consume them
 // from Unit 3/4 onward) via this workspace package rather than each project
 // redefining them, per code-standards.md's "share those types" rule.
@@ -19,14 +19,14 @@ export const CONFLICT_CATEGORIES = [
 
 export type ConflictCategory = (typeof CONFLICT_CATEGORIES)[number];
 
-// Events & Inventions lane's own taxonomy, taken verbatim from the
+// Milestones lane's own taxonomy, taken verbatim from the
 // hand-curated source's `meta.categories`
-// (data-pipeline/data/raw/events-curated.raw.json) — disjoint from
-// ConflictCategory above (Wars & Conflicts' Wikidata-?type-claim-derived
+// (data-pipeline/data/raw/milestones-curated.raw.json) — disjoint from
+// ConflictCategory above (Conflicts' Wikidata-?type-claim-derived
 // taxonomy), not a
 // shared value even where a name happens to coincide (e.g. "exploration"
 // appears in both, independently).
-export const DISCOVERY_CATEGORIES = [
+export const MILESTONE_CATEGORIES = [
   "science-theory",
   "medicine-health",
   "communication",
@@ -39,7 +39,7 @@ export const DISCOVERY_CATEGORIES = [
   "society-administration",
 ] as const;
 
-export type DiscoveryCategory = (typeof DISCOVERY_CATEGORIES)[number];
+export type MilestoneCategory = (typeof MILESTONE_CATEGORIES)[number];
 
 export const REGIONS = [
   "europe",
@@ -55,7 +55,7 @@ export type Region = (typeof REGIONS)[number];
 // Pantheon's own occupation-domain grouping (its "Working in" filter),
 // covering all 101 raw `occupation` values with no gaps — see
 // data-pipeline/src/transform/occupation-domain-categories.ts for the mapping.
-// Person-only: ConflictCategory/Region stay Wikidata-derived and War/Discovery-only
+// Person-only: ConflictCategory/Region stay Wikidata-derived and Conflict/Milestone-only
 // (see the People-source decision this type follows from).
 export const OCCUPATION_DOMAINS = [
   "sports",
@@ -132,7 +132,7 @@ export interface PointInTime {
   at: YearMonth;
 }
 
-// Shared by Person, War, WarEvent, and Discovery — every lane's entries
+// Shared by Person, Conflict, ConflictEvent, and Milestone — every lane's entries
 // carry these fields regardless of whether they render as a period or a
 // point (see Period/PointInTime above for the date shapes themselves,
 // which now live on each entity directly since not every entity has the
@@ -153,8 +153,8 @@ export interface TimelineEntry {
   // The raw Wikidata P18 Commons `Special:FilePath` URI, stored exactly as
   // SPARQL returns it — no width baked in, same "store verbatim" convention
   // wikipediaUrl already uses. Absent means no P18 claim — true for all
-  // four entity types now (People, Discoveries, and, since the Wars &
-  // Conflicts taxonomy restructure, War/WarEvent too — see
+  // four entity types now (People, Milestones, and, since the Wars &
+  // Conflicts taxonomy restructure, Conflict/ConflictEvent too — see
   // .scratch/wars-conflicts-taxonomy/map.md, which reverses the earlier
   // "Wars & Conflicts images are out of scope" call). The frontend appends
   // `?width=<n>` at render time, a plain string append onto this value.
@@ -169,7 +169,7 @@ export interface TimelineEntry {
 
 // Sourced from Pantheon 2.0, not Wikidata — fameScore is Pantheon's own HPI
 // (0-100), not a sitelink count (see ../data-pipeline/src/transform/score.ts's
-// FAME_TIER_MIN_HPI, independent of War/Discovery's sitelink-based tiers).
+// FAME_TIER_MIN_HPI, independent of Conflict/Milestone's sitelink-based tiers).
 export interface Person extends TimelineEntry {
   // Pantheon's `occupation` field is single-valued per person, unlike
   // Wikidata's potentially-multiple occupation claims — one domain, not an
@@ -192,51 +192,53 @@ export interface Person extends TimelineEntry {
 
 // Shape is decoupled from category (data-pipeline's Wikidata enrichment
 // pass decides it, not a fixed type-QID allowlist): a curated conflict
-// becomes a War when its enrichment resolves both a start and an end date,
-// a WarEvent (below) when it resolves only one. Any of the six
+// becomes a Conflict when its enrichment resolves both a start and an end
+// date, a ConflictEvent (below) when it resolves only one. Any of the six
 // ConflictCategory values can produce either shape depending on what
 // Wikidata actually knows about that QID — see
-// data-pipeline/src/output/write-datasets.ts's buildWars.
-export interface War extends TimelineEntry {
+// data-pipeline/src/output/write-datasets.ts's buildConflicts.
+export interface Conflict extends TimelineEntry {
   // Kept as the shared ConflictCategory type rather than a narrower literal
-  // union so War and WarEvent can share CONFLICT_CATEGORY_COLORS and other
-  // ConflictCategory-keyed lookups on the frontend.
+  // union so Conflict and ConflictEvent can share CONFLICT_CATEGORY_COLORS
+  // and other ConflictCategory-keyed lookups on the frontend.
   category: ConflictCategory;
   regionTags: Region[];
   period: Period;
-  // Another curated row's id, always resolving to a War (never a WarEvent)
-  // — a "Container" is simply a War with no parentId. Absent means this War
-  // is either a Container itself or stands alone. Nesting is capped at 3
-  // levels (Container → this row → a further WarEvent/War), enforced at
-  // Output (write-datasets.ts's buildWars), not by this type.
+  // Another curated row's id, always resolving to a Conflict (never a
+  // ConflictEvent) — a "Container" is simply a Conflict with no parentId.
+  // Absent means this Conflict is either a Container itself or stands
+  // alone. Nesting is capped at 3 levels (Container → this row → a further
+  // ConflictEvent/Conflict), enforced at Output (write-datasets.ts's
+  // buildConflicts), not by this type.
   parentId?: string;
 }
 
-// A single-moment Wars & Conflicts entry. See War above for why these are
-// a separate type from War (shape follows what Wikidata's enrichment
+// A single-moment Conflicts entry. See Conflict above for why these are
+// a separate type from Conflict (shape follows what Wikidata's enrichment
 // resolves) rather than an optional end date on it.
-export interface WarEvent extends TimelineEntry, PointInTime {
+export interface ConflictEvent extends TimelineEntry, PointInTime {
   category: ConflictCategory;
   regionTags: Region[];
-  // Same contract as War.parentId above — always resolves to a War, never
-  // another WarEvent (a WarEvent is always the deepest level, level 3).
+  // Same contract as Conflict.parentId above — always resolves to a
+  // Conflict, never another ConflictEvent (a ConflictEvent is always the
+  // deepest level, level 3).
   parentId?: string;
 }
 
-// The Wars & Conflicts lane's dataset (wars.json) is one array mixing both
-// shapes — War and WarEvent are structurally disjoint (`period` vs `at`),
-// so consumers narrow with `"period" in entry` rather than needing a
-// separate `kind` discriminant field.
-export type WarsAndConflictsEntry = War | WarEvent;
+// The Conflicts lane's dataset (conflicts.json) is one array mixing both
+// shapes — Conflict and ConflictEvent are structurally disjoint (`period`
+// vs `at`), so consumers narrow with `"period" in entry` rather than
+// needing a separate `kind` discriminant field.
+export type ConflictEntry = Conflict | ConflictEvent;
 
-// Sourced from the hand-curated events list, not a Wikidata-?type-claim
-// scan — category is curator-assigned directly (see tagCuratedDiscovery in
-// data-pipeline/src/transform/tag-events.ts), hence its own DiscoveryCategory
-// taxonomy rather than War's Category. Always a point in time, like a
-// battle — an invention doesn't span a duration the way a life or a war
-// does.
-export interface Discovery extends TimelineEntry, PointInTime {
-  category: DiscoveryCategory;
+// Sourced from the hand-curated milestones list, not a Wikidata-?type-claim
+// scan — category is curator-assigned directly (see tagCuratedMilestone in
+// data-pipeline/src/transform/tag-milestones.ts), hence its own
+// MilestoneCategory taxonomy rather than Conflict's Category. Always a
+// point in time, like a battle — an invention doesn't span a duration the
+// way a life or a war does.
+export interface Milestone extends TimelineEntry, PointInTime {
+  category: MilestoneCategory;
   regionTags: Region[];
 }
 

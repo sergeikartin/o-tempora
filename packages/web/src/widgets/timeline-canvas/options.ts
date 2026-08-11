@@ -7,7 +7,7 @@ import {
   DEFAULT_VIEWPORT_END,
   PAN_MIN_DATE,
 } from '../../shared/config';
-import type { ConflictCategory, DiscoveryCategory } from '../../shared/types';
+import type { ConflictCategory, MilestoneCategory } from '../../shared/types';
 
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
@@ -46,10 +46,11 @@ export const POINT_RADIUS = 5;
 // row — pure visual breathing room, not a claim about the underlying dates.
 export const MIN_ROW_GAP_YEARS = 5;
 
-// A Period (a real duration — Person lifespans, War ranges, reign periods)
-// always renders as a rounded-cap line; a PointInTime (WarEvents,
-// Discoveries) always renders as a dot. Both are drawn with SVG stroke, not
-// fill, so `stroke-linecap: round` gives the pill-shaped caps.
+// A Period (a real duration — Person lifespans, Conflict ranges, reign
+// periods) always renders as a rounded-cap line; a PointInTime
+// (ConflictEvents, Milestones) always renders as a dot. Both are drawn
+// with SVG stroke, not fill, so `stroke-linecap: round` gives the
+// pill-shaped caps.
 export const PERIOD_LINE_HEIGHT = 6;
 // Rough per-character estimate for the 11px label font — good enough to
 // size row-stacking without a real DOM text-measurement pass.
@@ -84,16 +85,16 @@ export function wrapLabelLines(name: string, maxWidthPx: number): string[] {
   return lines;
 }
 
-// Below-marker label layout, used by Wars & Conflicts (both its range lines
+// Below-marker label layout, used by Conflicts (both its range lines
 // and point dots) — a row's marker and label move down together, the label
 // sitting just below its own marker, same as People's above-line treatment
 // but flipped. An item that would otherwise collide with a neighbor doesn't
 // move sideways; instead `assignRows` hands back a row (one MARKER_ROW_PITCH
-// step down), pushing that item's marker+label pair as a unit. Events &
-// Inventions also sits below its marker but, since its labels now wrap
+// step down), pushing that item's marker+label pair as a unit. Milestones
+// also sits below its marker but, since its labels now wrap
 // across multiple lines, uses its own tighter gap and per-row-computed pitch
-// instead of this fixed single-line one — see EVENTS_MARKER_LABEL_GAP below
-// and EventsLane.tsx's row-height computation.
+// instead of this fixed single-line one — see MILESTONES_MARKER_LABEL_GAP below
+// and MilestonesLane.tsx's row-height computation.
 // Small breathing room between a marker's bottom edge and its label.
 const MARKER_LABEL_GAP = 8;
 // Vertical budget per row: marker height + gap + one label's height + gap to
@@ -116,14 +117,14 @@ export function markerLaneHeight(rowCount: number): number {
   return labelYForRow(rowCount - 1) + LABEL_TEXT_HEIGHT_PX + ROW_GAP;
 }
 
-// Events & Inventions' own below-marker layout: labels wrap across multiple
+// Milestones' own below-marker layout: labels wrap across multiple
 // lines (via wrapLabelLines above) rather than staying on one line, so a
 // row's height varies with how many lines its tallest label needs —
-// computed per-render in EventsLane.tsx, not as a fixed pitch like
+// computed per-render in MilestonesLane.tsx, not as a fixed pitch like
 // MARKER_ROW_PITCH above.
-export const EVENTS_MARKER_LABEL_GAP = 4;
-export const EVENTS_LABEL_LINE_HEIGHT_PX = LABEL_TEXT_HEIGHT_PX;
-export const EVENTS_LABEL_MAX_WIDTH_PX = 72;
+export const MILESTONES_MARKER_LABEL_GAP = 4;
+export const MILESTONES_LABEL_LINE_HEIGHT_PX = LABEL_TEXT_HEIGHT_PX;
+export const MILESTONES_LABEL_MAX_WIDTH_PX = 72;
 
 // Above-line label layout, used by People — the one lane whose Period bars
 // don't all share a fixed marker y (they stack into vertical bands like a
@@ -151,13 +152,13 @@ export function personLaneHeight(rowCount: number): number {
   return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
 }
 
-// Mirrors design-tokens.md's Conflict Category Palette — Wars & Conflicts
+// Mirrors design-tokens.md's Conflict Category Palette — Conflicts
 // keys its flat fill off `category`, unlike People's `occupationDomain`
 // above. Same provisional-inlining reasoning.
 //
-// Hue-optimized against all 18 existing People/Domain + Discovery colors
+// Hue-optimized against all 18 existing People/Domain + Milestone colors
 // below (min ~8.5° hue separation from everything on screen, tighter than
-// Discovery's ~11° precedent since there are 24 colors total sharing one
+// Milestone's ~11° precedent since there are 24 colors total sharing one
 // hue circle — the two closest pairs, military-operation and
 // war-of-independence, lean on S/L rather than hue alone for separation,
 // same approach design-tokens.md's Domain palette already uses for
@@ -178,14 +179,14 @@ export const CONFLICT_CATEGORY_COLORS: Record<ConflictCategory, string> = {
   'war-of-independence': '#8E8DC4',
 };
 
-// Events & Inventions' own palette, keyed on DiscoveryCategory (disjoint
-// from Wars' ConflictCategory above). Locked with the user via
+// Milestones' own palette, keyed on MilestoneCategory (disjoint
+// from Conflicts' ConflictCategory above). Locked with the user via
 // .scratch/events-inventions-curated-source/issues/01-discovery-category-color-palette.md:
-// hue-optimized against all 15 existing People/Domain + Wars/ConflictCategory
+// hue-optimized against all 15 existing People/Domain + Conflicts/ConflictCategory
 // colors (min ~11° hue separation from everything on screen) as they stood
 // at the time — matched to the same pastel S/L family as the rest of the
 // app.
-export const DISCOVERY_CATEGORY_COLORS: Record<DiscoveryCategory, string> = {
+export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = {
   'energy-industry': '#C9BF5E',
   'food-agriculture': '#B1C987',
   infrastructure: '#83B95B',

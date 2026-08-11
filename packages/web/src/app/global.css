@@ -2,7 +2,7 @@
    properties. The Occupation Domain palette is wired here too (used by both
    the Sidebar legend and the D3 People-lane's fill/stroke attrs — SVG
    presentation attributes resolve var() same as any CSS property). The
-   Conflict Category and Discovery Category palettes still provisionally
+   Conflict Category and Milestone Category palettes still provisionally
    inline hex in widgets/timeline-canvas/options.ts pending ticket 05 — see
    docs/code-conventions.md's Styling section. */
 :root {

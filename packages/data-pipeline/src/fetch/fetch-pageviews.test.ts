@@ -31,10 +31,10 @@ function stubPageviewsFetch(t: TestContext, views: number): void {
   });
 }
 
-test("fetchPageviews(\"discoveries\") writes only discoveries-pageviews.raw.json, leaving wars' untouched", async (t) => {
+test("fetchPageviews(\"milestones\") writes only milestones-pageviews.raw.json, leaving conflicts' untouched", async (t) => {
   stubReads(t, {
-    "events-curated-enriched.raw.json": {
-      events: [
+    "milestones-curated-enriched.raw.json": {
+      milestones: [
         {
           id: "Q5",
           name: "Penicillin",
@@ -49,21 +49,21 @@ test("fetchPageviews(\"discoveries\") writes only discoveries-pageviews.raw.json
   const written = stubWrites(t);
   stubPageviewsFetch(t, 42);
 
-  await fetchPageviews("discoveries");
+  await fetchPageviews("milestones");
 
-  assert.deepEqual([...written.keys()], ["discoveries-pageviews.raw.json"]);
-  assert.deepEqual(written.get("discoveries-pageviews.raw.json"), { Q5: 42 });
+  assert.deepEqual([...written.keys()], ["milestones-pageviews.raw.json"]);
+  assert.deepEqual(written.get("milestones-pageviews.raw.json"), { Q5: 42 });
 });
 
-test("fetchPageviews() with no lane writes both wars and discoveries files", async (t) => {
+test("fetchPageviews() with no lane writes both conflicts and milestones files", async (t) => {
   stubReads(t, {
-    "wars-curated-enriched.raw.json": { wars: [] },
-    "events-curated-enriched.raw.json": { events: [] },
+    "conflicts-curated-enriched.raw.json": { conflicts: [] },
+    "milestones-curated-enriched.raw.json": { milestones: [] },
   });
   const written = stubWrites(t);
   stubPageviewsFetch(t, 0);
 
   await fetchPageviews();
 
-  assert.deepEqual(new Set(written.keys()), new Set(["wars-pageviews.raw.json", "discoveries-pageviews.raw.json"]));
+  assert.deepEqual(new Set(written.keys()), new Set(["conflicts-pageviews.raw.json", "milestones-pageviews.raw.json"]));
 });
