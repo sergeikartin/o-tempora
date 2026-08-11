@@ -47,8 +47,8 @@ test('clampPixelsPerYear leaves an in-bounds value untouched', () => {
   expect(clampPixelsPerYear(inBounds, 1000)).toBe(inBounds);
 });
 
-test('defaultPixelsPerYear targets the default 100-year (1800-1900) viewport width', () => {
-  expect(defaultPixelsPerYear(1000)).toBe(1000 / 100);
+test('defaultPixelsPerYear targets the default 120-year (1740-1860) viewport width', () => {
+  expect(defaultPixelsPerYear(1000)).toBe(1000 / 120);
 });
 
 test('zoomIn increases pixelsPerYear by the zoom step, clamped to the zoomed-in bound', () => {
