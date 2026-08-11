@@ -1,8 +1,8 @@
 export const ZOOM_MIN_YEARS = 10;
 export const ZOOM_MAX_YEARS = 500;
 
-export const DEFAULT_VIEWPORT_START = Temporal.PlainDate.from({ year: 1800, month: 1, day: 1 });
-export const DEFAULT_VIEWPORT_END = Temporal.PlainDate.from({ year: 1900, month: 1, day: 1 });
+export const DEFAULT_VIEWPORT_START = Temporal.PlainDate.from({ year: 1740, month: 1, day: 1 });
+export const DEFAULT_VIEWPORT_END = Temporal.PlainDate.from({ year: 1860, month: 1, day: 1 });
 
 export const PAN_MIN_DATE = Temporal.PlainDate.from({ year: -2750, month: 1, day: 1 });
 
@@ -32,7 +32,7 @@ export interface FameScoreBounds {
 // pending a manual re-tune once real blended scores are visible in the
 // running app.
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
-  people: { min: 75, max: 100, default: 85 },
+  people: { min: 75, max: 100, default: 90 },
   conflicts: { min: 1, max: 100, default: 75 },
   milestones: { min: 1, max: 100, default: 75 },
 };
