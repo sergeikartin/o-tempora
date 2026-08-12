@@ -1629,25 +1629,6 @@
     }
   },
   {
-    "id": "Q190530",
-    "name": "Little Ice Age",
-    "category": "environment-geology",
-    "regionTags": [],
-    "fameScore": 75,
-    "tagline": "period of cooling that occurred after the Medieval Warm Period, usually defined as between the 14th (or the 16th) to the 19th centuries",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Little_Ice_Age",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Venice%20frozen%20lagoon%201708.jpg",
-    "description": "The Little Ice Age (LIA) was a period of regional cooling, particularly pronounced in the North Atlantic region. It was not a true ice age of global extent. The term was introduced into scientific literature by François E. Matthes in 1939. The period has been conventionally defined as extending from the 16th to the 19th centuries, but some experts prefer an alternative time-span from about 1300 to about 1850.",
-    "period": {
-      "start": {
-        "year": 1303
-      },
-      "end": {
-        "year": 1850
-      }
-    }
-  },
-  {
     "id": "Q55816",
     "name": "Chicxulub crater",
     "category": "environment-geology",
@@ -2252,26 +2233,6 @@
     "at": {
       "year": 1974,
       "month": 11
-    }
-  },
-  {
-    "id": "Q211248",
-    "name": "Mayan hieroglyphs",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 70,
-    "tagline": "writing system of the Maya civilization",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Maya_script",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Escritura%20maya.jpg",
-    "imageAttribution": "Juan Carlos Fonseca Mata, via Wikimedia Commons",
-    "description": "Maya script, also known as Maya glyphs, is historically the native writing system of the Maya civilization of Mesoamerica and is the only Mesoamerican writing system that has been substantially deciphered. The earliest inscriptions found which are identifiably Maya date to the 3rd century BCE in late Preclassic sites like Chakjobon (Mexico) and San Bartolo (Guatemala). Maya writing was in continuous use throughout Mesoamerica until the Spanish conquest of the Maya in the 16th and 17th centuries. Though modern Mayan languages are almost entirely written using the Latin alphabet rather than Maya script, there have been recent developments encouraging a revival of the Maya glyph system.",
-    "period": {
-      "start": {
-        "year": -300
-      },
-      "end": {
-        "year": 1600
-      }
     }
   },
   {

@@ -731,27 +731,6 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg"
     },
     {
-      "id": "Q211248",
-      "name": "Mayan hieroglyphs",
-      "category": "communication",
-      "year": -300,
-      "endYear": 1600,
-      "tagline": "writing system of the Maya civilization",
-      "sitelinks": 50,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Maya_script",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Maya_script",
-        "zh": "https://zh.wikipedia.org/wiki/%E7%91%AA%E9%9B%85%E6%96%87%E5%AD%97",
-        "es": "https://es.wikipedia.org/wiki/Escritura_maya",
-        "fr": "https://fr.wikipedia.org/wiki/%C3%89criture_maya",
-        "de": "https://de.wikipedia.org/wiki/Maya-Schrift",
-        "ar": "https://ar.wikipedia.org/wiki/%D9%83%D8%AA%D8%A7%D8%A8%D8%A9_%D8%A7%D9%84%D9%85%D8%A7%D9%8A%D8%A7",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D1%81%D1%8C%D0%BC%D0%BE_%D0%BC%D0%B0%D0%B9%D1%8F"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Escritura%20maya.jpg"
-    },
-    {
       "id": "Q11472",
       "name": "Paper",
       "category": "communication",
@@ -3625,27 +3604,6 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1816%20summer.png"
-    },
-    {
-      "id": "Q190530",
-      "name": "Little Ice Age",
-      "category": "environment-geology",
-      "year": 1303,
-      "endYear": 1850,
-      "tagline": "period of cooling that occurred after the Medieval Warm Period, usually defined as between the 14th (or the 16th) to the 19th centuries",
-      "sitelinks": 67,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Little_Ice_Age",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Little_Ice_Age",
-        "zh": "https://zh.wikipedia.org/wiki/%E5%B0%8F%E5%86%B0%E6%9C%9F",
-        "es": "https://es.wikipedia.org/wiki/Peque%C3%B1a_Edad_de_Hielo",
-        "fr": "https://fr.wikipedia.org/wiki/Petit_%C3%A2ge_glaciaire",
-        "de": "https://de.wikipedia.org/wiki/Kleine_Eiszeit",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B9%D8%B5%D8%B1_%D8%A7%D9%84%D8%AC%D9%84%D9%8A%D8%AF%D9%8A_%D8%A7%D9%84%D8%B5%D8%BA%D9%8A%D8%B1",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BB%D1%8B%D0%B9_%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9_%D0%BF%D0%B5%D1%80%D0%B8%D0%BE%D0%B4"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Venice%20frozen%20lagoon%201708.jpg"
     },
     {
       "id": "Q191055",
