@@ -8,7 +8,7 @@
 }
 
 .name {
-  font-family: Inter, sans-serif;
+  font-family: Archivo, sans-serif;
   font-size: 11px;
   /* fill is set per-item (occupation-domain color) via the D3 join, not here.
      Clickable (same data-entity-id/-type as the line, see PeopleLane.tsx) so

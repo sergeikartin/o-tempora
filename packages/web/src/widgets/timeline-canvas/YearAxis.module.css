@@ -21,7 +21,7 @@
   /* A shade darker than the page background so the ruler reads as a
      distinct bar, per the reference this design is based on; mirrors
      color-bg-surface, inlined pending ticket 05. */
-  background-color: #ece2c8;
+  background-color: #ebddbd;
   background-repeat: repeat-x, repeat-x, repeat-x;
   background-position:
     var(--century-tick-offset-px) top,
@@ -33,11 +33,11 @@
     var(--year-tick-px) 30%;
   background-image:
     /* Mirrors a darker color-border tone; inlined pending ticket 05. */
-    linear-gradient(to right, #8a7b57 0, #8a7b57 2px, transparent 2px),
+    linear-gradient(to right, #837757 0, #837757 2px, transparent 2px),
     /* Mirrors color-border-strong; inlined pending ticket 05. */
-    linear-gradient(to right, #c9b98f 0, #c9b98f 1.5px, transparent 1.5px),
+    linear-gradient(to right, #c7b383 0, #c7b383 1.5px, transparent 1.5px),
     /* Mirrors color-border-subtle; inlined pending ticket 05. */
-    linear-gradient(to right, #ded3b8 0, #ded3b8 1px, transparent 1px);
+    linear-gradient(to right, #e0d3ac 0, #e0d3ac 1px, transparent 1px);
 }
 
 .labelRow {
@@ -49,14 +49,15 @@
   top: 2px;
   transform: translateX(-50%);
   white-space: nowrap;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: Archivo, sans-serif;
+  font-variant-numeric: tabular-nums;
   font-size: 10px;
   /* Mirrors color-text-secondary; inlined pending ticket 05. */
-  color: #83795f;
+  color: #6b6046;
 }
 
 .centuryLabel {
   font-weight: 600;
   /* Mirrors color-text-primary; inlined pending ticket 05. */
-  color: #2e2b22;
+  color: #241a10;
 }

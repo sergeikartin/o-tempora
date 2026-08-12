@@ -9,7 +9,7 @@
 }
 
 .label {
-  font-family: Inter, sans-serif;
+  font-family: Archivo, sans-serif;
   font-size: 11px;
   /* fill is set per-item (flat conflict color or milestone category color)
      via the D3 join, not here. Clickable (same data-entity-id/-type as the
