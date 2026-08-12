@@ -55,7 +55,7 @@ export interface DataDepthLevel {
 
 export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
   { id: 'curated', label: 'Curated', values: { people: 90, conflicts: 75, milestones: 75 } },
-  { id: 'expanded', label: 'Expanded', values: { people: 82, conflicts: 70, milestones: 70 } },
+  { id: 'expanded', label: 'Expanded', values: { people: 85, conflicts: 70, milestones: 70 } },
   { id: 'full', label: 'Full', values: { people: 80, conflicts: 1, milestones: 1 } },
 ];
 
