@@ -39,6 +39,17 @@ const football: Milestone = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Association_football',
 };
 
+const blackDeath: Milestone = {
+  id: 'Q42005',
+  name: 'Black Death',
+  period: { start: { year: 1346 }, end: { year: 1353 } },
+  category: 'medicine-health',
+  regionTags: ['europe'],
+  fameScore: 84,
+  tagline: '1346-1353 pandemic in Eurasia and North Africa',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Black_Death',
+};
+
 const brazil: Milestone = {
   id: 'Q155',
   name: 'Brazil',
@@ -76,6 +87,25 @@ test('renders a point marker for a Milestone', () => {
 
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1);
   expect(container.querySelector('.d3-point-name')?.textContent).toBe('association football');
+});
+
+test('renders a range line, not a point marker, for a period-shaped Milestone', () => {
+  const { scale } = buildXScale(2);
+  const { container } = render(<ConflictsMilestonesLane conflicts={[]} milestones={[blackDeath]} xScale={scale} />);
+
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
+  expect(container.querySelectorAll('.d3-dot')).toHaveLength(0);
+  expect(container.querySelector('.d3-range-name')?.textContent).toBe('Black Death');
+});
+
+test("a period-shaped Milestone's range line keeps its own category color and data-entity-type, unlike a Conflict range", () => {
+  const { scale } = buildXScale(2);
+  const { container } = render(<ConflictsMilestonesLane conflicts={[]} milestones={[blackDeath]} xScale={scale} />);
+
+  const line = container.querySelector('.d3-line');
+  expect(line?.getAttribute('stroke')).toBe(MILESTONE_CATEGORY_COLORS[blackDeath.category]);
+  expect(line?.getAttribute('data-entity-id')).toBe('Q42005');
+  expect(line?.getAttribute('data-entity-type')).toBe('milestone');
 });
 
 test('renders an empty svg when both conflicts and milestones are empty', () => {

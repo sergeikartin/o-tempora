@@ -39,6 +39,12 @@ export interface EnrichedMilestone {
   // wikidata-date.ts's MONTH_OR_FINER_PRECISION) — never defaulted to
   // January to paper over an unknown month, same as Conflicts.
   month?: number;
+  // Absent endYear means this row resolved no P582 claim (a point-in-time
+  // event, or a start with no recorded end) — Output builds a point-shaped
+  // Milestone rather than a period-shaped one for it, same shape rule
+  // buildConflicts already applies to Conflict/ConflictEvent.
+  endYear?: number;
+  endMonth?: number;
   // Absent means the enrichment pass couldn't resolve an English tagline
   // for this QID — Output drops the row (write-datasets.ts's
   // validateMilestoneRow), no fallback to the curated file's old text, the
@@ -99,6 +105,8 @@ function isEnrichedMilestone(value: unknown): value is EnrichedMilestone {
     typeof candidate.name === "string" &&
     (candidate.year === undefined || typeof candidate.year === "number") &&
     (candidate.month === undefined || typeof candidate.month === "number") &&
+    (candidate.endYear === undefined || typeof candidate.endYear === "number") &&
+    (candidate.endMonth === undefined || typeof candidate.endMonth === "number") &&
     (candidate.tagline === undefined || typeof candidate.tagline === "string") &&
     typeof candidate.category === "string" &&
     (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category) &&
@@ -134,6 +142,8 @@ interface EnrichmentFields {
   tagline?: string;
   year?: number;
   month?: number;
+  endYear?: number;
+  endMonth?: number;
 }
 
 // Reads the checked-in curated list (data/raw/milestones-curated.raw.json) and
@@ -183,6 +193,10 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
       entry.year = parseIsoYear(row.date.value);
       entry.month = parseMonthIfKnown(row.date.value, row.datePrecision?.value);
     }
+    if (entry.endYear === undefined && row.endDate?.value) {
+      entry.endYear = parseIsoYear(row.endDate.value);
+      entry.endMonth = parseMonthIfKnown(row.endDate.value, row.endDatePrecision?.value);
+    }
   }
 
   const milestones: EnrichedMilestone[] = curated.milestones.map((milestone) => {
@@ -193,6 +207,8 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
       category: milestone.category,
       year: enrichment?.year,
       month: enrichment?.month,
+      endYear: enrichment?.endYear,
+      endMonth: enrichment?.endMonth,
       tagline: enrichment?.tagline,
       sitelinks: enrichment?.sitelinks,
       wikipediaUrl: enrichment?.wikipediaUrl,

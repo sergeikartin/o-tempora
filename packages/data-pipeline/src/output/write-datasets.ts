@@ -235,6 +235,12 @@ export function buildConflicts(rows: TaggedConflict[]): { entries: ConflictEntry
 // resolve this curated QID (see transformMilestones's `?? 0` coercion) —
 // dropped here rather than treated as a genuinely-zero-sitelink item, per
 // the map's enrichment-failure-handling decision.
+//
+// Shape follows what enrichment resolved, not `category` — same rule
+// buildConflicts already applies: a row with a resolved endYear (P582, via
+// milestones-enrichment.ts) becomes a period-shaped Milestone (e.g. the
+// Black Death, 1346-1353), a row without one stays point-shaped. See
+// shared-types's Milestone doc comment.
 export function buildMilestones(rows: TaggedMilestone[]): { milestones: Milestone[]; report: DropReport } {
   const milestones: Milestone[] = [];
   const reasons: Record<string, number> = {};
@@ -247,12 +253,9 @@ export function buildMilestones(rows: TaggedMilestone[]): { milestones: Mileston
       continue;
     }
 
-    milestones.push({
+    const shared = {
       id: row.id,
       name: validated.name,
-      // Wikidata's own claim precision decides whether month is present
-      // (fetch-milestones-enrichment.ts), same as Conflicts.
-      at: yearMonth(validated.year, validated.month),
       category: validated.category,
       regionTags: row.regionTags,
       fameScore: row.fameScore,
@@ -261,7 +264,21 @@ export function buildMilestones(rows: TaggedMilestone[]): { milestones: Mileston
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
       ...(row.description ? { description: row.description } : {}),
-    });
+    };
+
+    if (row.endYear !== undefined) {
+      milestones.push({
+        ...shared,
+        period: {
+          start: yearMonth(validated.year, validated.month),
+          end: yearMonth(row.endYear, row.endMonth),
+        },
+      });
+    } else {
+      // Wikidata's own claim precision decides whether month is present
+      // (fetch-milestones-enrichment.ts), same as Conflicts.
+      milestones.push({ ...shared, at: yearMonth(validated.year, validated.month) });
+    }
   }
 
   return { milestones, report: { dropped: rows.length - milestones.length, reasons } };

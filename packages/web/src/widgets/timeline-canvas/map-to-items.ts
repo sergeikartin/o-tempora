@@ -110,6 +110,22 @@ export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
   });
 }
 
+// Shared by conflictPixelInterval and milestonePixelInterval's own range
+// branch below — a range's (Conflict's or a period-shaped Milestone's)
+// pixel extent is the same single-line-label-centered calculation either
+// way, per the "identical bar treatment" call (grill-with-docs session,
+// 2026-08-12).
+function rangePixelInterval(
+  item: { name: string; startYear: number; endYear: number },
+  xScale: d3.ScaleLinear<number, number>,
+): PixelInterval {
+  const x1 = xScale(item.startYear);
+  const x2 = xScale(item.endYear);
+  const center = (x1 + x2) / 2;
+  const labelHalf = estimateLabelWidthPx(item.name) / 2;
+  return { start: Math.min(x1, center - labelHalf), end: Math.max(x2, center + labelHalf) };
+}
+
 // Shared by ConflictsMilestonesLane (its live viewport scale) and the
 // Mountain Profile minimap (a fixed Reference Scale, ADR 0004) so both pack
 // rows with the same rule.
@@ -119,41 +135,54 @@ export function conflictPixelInterval(item: ConflictItem, xScale: d3.ScaleLinear
     const labelHalf = estimateLabelWidthPx(item.name) / 2;
     return { start: Math.min(x - POINT_RADIUS, x - labelHalf), end: Math.max(x + POINT_RADIUS, x + labelHalf) };
   }
-  const x1 = xScale(item.startYear);
-  const x2 = xScale(item.endYear);
-  const center = (x1 + x2) / 2;
-  const labelHalf = estimateLabelWidthPx(item.name) / 2;
-  return { start: Math.min(x1, center - labelHalf), end: Math.max(x2, center + labelHalf) };
+  return rangePixelInterval(item, xScale);
 }
 
 export interface MilestoneItem {
   id: string;
   name: string;
   startYear: number;
+  endYear: number;
+  isPoint: boolean;
   category: MilestoneCategory;
   fameScore: number;
 }
 
-// milestones.json is always a PointInTime (data-pipeline's Milestone rows
-// are always single-moment) — always a point, unlike conflicts.
+// milestones.json mixes point- and period-shaped Milestone rows — same
+// "period" in entry narrowing mapConflicts uses (Milestone is now a
+// Conflict/ConflictEvent-style union, see shared-types).
 export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
-  return milestones.map((milestone) => ({
-    id: milestone.id,
-    name: milestone.name,
-    startYear: yearMonthToFractionalYear(milestone.at),
-    category: milestone.category,
-    fameScore: milestone.fameScore,
-  }));
+  return milestones.map((milestone) => {
+    const isPeriodShaped = 'period' in milestone;
+    const period: Period = isPeriodShaped ? milestone.period : { start: milestone.at, end: undefined };
+    const isPoint = !isPeriodShaped;
+    const startYear = yearMonthToFractionalYear(period.start);
+    return {
+      id: milestone.id,
+      name: milestone.name,
+      startYear,
+      endYear: isPoint
+        ? startYear
+        : ensureMinimumRangeWidthYears(startYear, period.end ? yearMonthToFractionalYear(period.end) : startYear),
+      isPoint,
+      category: milestone.category,
+      fameScore: milestone.fameScore,
+    };
+  });
 }
 
 // Shared by ConflictsMilestonesLane (its live viewport scale) and the
 // Mountain Profile minimap (a fixed Reference Scale, ADR 0004) so both pack
-// rows with the same rule.
+// rows with the same rule. `lines` (the wrapped label) only matters for the
+// point branch — a period-shaped Milestone renders as a range, sharing
+// conflictPixelInterval's single-line-label range calculation via
+// rangePixelInterval rather than the wrapped multi-line label points use.
 export function milestonePixelInterval(
   item: MilestoneItem,
   lines: string[],
   xScale: d3.ScaleLinear<number, number>,
 ): PixelInterval {
+  if (!item.isPoint) return rangePixelInterval(item, xScale);
   const x = xScale(item.startYear);
   const labelHalf = Math.max(...lines.map((line) => estimateLabelWidthPx(line))) / 2;
   return { start: Math.min(x - POINT_RADIUS, x - labelHalf), end: Math.max(x + POINT_RADIUS, x + labelHalf) };

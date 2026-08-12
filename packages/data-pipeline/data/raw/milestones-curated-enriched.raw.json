@@ -18,7 +18,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D0%B0%D1%8F_%D0%B8%D0%BD%D0%B4%D1%83%D0%BA%D1%86%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Experiencia%20de%20Faraday.gif"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Catalonia%20Terrassa%20mNATEC%20Dinamo.JPG"
     },
     {
       "id": "Q20124",
@@ -337,7 +337,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%B3%D0%B8%D0%B5%D0%BD%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OCD%20handwash.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hand%20Hygiene.jpg"
     },
     {
       "id": "Q310301",
@@ -406,6 +406,7 @@
       "name": "Black Death",
       "category": "medicine-health",
       "year": 1346,
+      "endYear": 1352,
       "tagline": "1346–1353 pandemic in Eurasia and North Africa",
       "sitelinks": 127,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Death",
@@ -419,10 +420,10 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D1%91%D1%80%D0%BD%D0%B0%D1%8F_%D1%81%D0%BC%D0%B5%D1%80%D1%82%D1%8C"
       },
       "countries": [
-        "Q170770",
-        "Q399",
+        "Q227",
         "Q230",
-        "Q227"
+        "Q399",
+        "Q170770"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Doutielt3.jpg"
     },
@@ -466,7 +467,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D0%BA%D1%86%D0%B8%D0%BD%D0%B0_%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2_%D0%BE%D1%81%D0%BF%D1%8B"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Smallpox%20vaccine%20injection.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Poster%20for%20vaccination%20against%20smallpox.jpg"
     },
     {
       "id": "Q204711",
@@ -497,6 +498,8 @@
       "category": "medicine-health",
       "year": 1918,
       "month": 1,
+      "endYear": 1920,
+      "endMonth": 12,
       "tagline": "1918–1920 global influenza pandemic caused by the H1N1 influenza A virus",
       "sitelinks": 102,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_flu",
@@ -591,139 +594,139 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F_COVID-19"
       },
       "countries": [
-        "Q717",
-        "Q711",
-        "Q668",
-        "Q664",
-        "Q574",
-        "Q424",
-        "Q423",
-        "Q419",
-        "Q414",
-        "Q408",
-        "Q403",
-        "Q399",
-        "Q398",
-        "Q347",
-        "Q334",
-        "Q298",
-        "Q262",
-        "Q258",
-        "Q252",
-        "Q241",
-        "Q238",
-        "Q237",
-        "Q235",
-        "Q233",
-        "Q232",
-        "Q230",
-        "Q229",
-        "Q228",
-        "Q227",
-        "Q225",
-        "Q224",
-        "Q222",
-        "Q221",
-        "Q219",
-        "Q218",
-        "Q217",
-        "Q215",
-        "Q214",
-        "Q213",
-        "Q212",
-        "Q211",
-        "Q191",
-        "Q189",
-        "Q184",
-        "Q183",
-        "Q159",
-        "Q155",
-        "Q148",
-        "Q145",
-        "Q142",
-        "Q114",
-        "Q96",
-        "Q79",
-        "Q77",
-        "Q55",
-        "Q45",
-        "Q43",
-        "Q41",
-        "Q40",
-        "Q39",
-        "Q38",
-        "Q37",
-        "Q36",
-        "Q35",
-        "Q34",
-        "Q33",
-        "Q32",
-        "Q31",
-        "Q30",
-        "Q29",
-        "Q28",
-        "Q27",
-        "Q20",
-        "Q17",
-        "Q16",
-        "Q219060",
-        "Q25279",
-        "Q21203",
-        "Q14773",
-        "Q1246",
-        "Q1050",
-        "Q1049",
-        "Q1041",
-        "Q1037",
-        "Q1033",
-        "Q1028",
-        "Q1025",
-        "Q1009",
-        "Q1006",
-        "Q948",
-        "Q945",
-        "Q928",
-        "Q921",
-        "Q917",
-        "Q902",
-        "Q889",
-        "Q884",
-        "Q881",
-        "Q878",
-        "Q869",
-        "Q865",
-        "Q854",
-        "Q851",
-        "Q846",
-        "Q843",
-        "Q842",
-        "Q837",
         "Q833",
-        "Q826",
-        "Q822",
-        "Q817",
-        "Q811",
-        "Q810",
-        "Q804",
-        "Q801",
-        "Q800",
-        "Q796",
-        "Q794",
-        "Q792",
-        "Q786",
-        "Q783",
-        "Q781",
-        "Q774",
-        "Q766",
-        "Q760",
-        "Q757",
-        "Q754",
-        "Q750",
-        "Q739",
-        "Q736",
-        "Q734",
+        "Q837",
+        "Q842",
+        "Q843",
+        "Q846",
+        "Q851",
+        "Q854",
+        "Q865",
+        "Q869",
+        "Q878",
+        "Q881",
+        "Q884",
+        "Q889",
+        "Q902",
+        "Q917",
+        "Q921",
+        "Q928",
+        "Q945",
+        "Q948",
+        "Q1006",
+        "Q1009",
+        "Q1025",
+        "Q1028",
+        "Q1033",
+        "Q1037",
+        "Q1041",
+        "Q1049",
+        "Q1050",
+        "Q1246",
+        "Q14773",
+        "Q21203",
+        "Q25279",
+        "Q219060",
+        "Q16",
+        "Q17",
+        "Q20",
+        "Q27",
+        "Q28",
+        "Q29",
+        "Q30",
+        "Q31",
+        "Q32",
+        "Q33",
+        "Q34",
+        "Q35",
+        "Q36",
+        "Q37",
+        "Q38",
+        "Q39",
+        "Q40",
+        "Q41",
+        "Q43",
+        "Q45",
+        "Q55",
+        "Q77",
+        "Q79",
+        "Q96",
+        "Q114",
+        "Q142",
+        "Q145",
+        "Q148",
+        "Q155",
+        "Q159",
+        "Q183",
+        "Q184",
+        "Q189",
+        "Q191",
+        "Q211",
+        "Q212",
+        "Q213",
+        "Q214",
+        "Q215",
+        "Q217",
+        "Q218",
+        "Q219",
+        "Q221",
+        "Q222",
+        "Q224",
+        "Q225",
+        "Q227",
+        "Q228",
+        "Q229",
+        "Q230",
+        "Q232",
+        "Q233",
+        "Q235",
+        "Q237",
+        "Q238",
+        "Q241",
+        "Q252",
+        "Q258",
+        "Q262",
+        "Q298",
+        "Q334",
+        "Q347",
+        "Q398",
+        "Q399",
+        "Q403",
+        "Q408",
+        "Q414",
+        "Q419",
+        "Q423",
+        "Q424",
+        "Q574",
+        "Q664",
+        "Q668",
+        "Q711",
+        "Q717",
+        "Q730",
         "Q733",
-        "Q730"
+        "Q734",
+        "Q736",
+        "Q739",
+        "Q750",
+        "Q754",
+        "Q757",
+        "Q760",
+        "Q766",
+        "Q774",
+        "Q781",
+        "Q783",
+        "Q786",
+        "Q792",
+        "Q794",
+        "Q796",
+        "Q800",
+        "Q801",
+        "Q804",
+        "Q810",
+        "Q811",
+        "Q817",
+        "Q822",
+        "Q826"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg"
     },
@@ -732,6 +735,7 @@
       "name": "Egyptian hieroglyphs",
       "category": "communication",
       "year": -3199,
+      "endYear": 400,
       "tagline": "formal writing system used by the ancient Egyptians",
       "sitelinks": 93,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
@@ -752,6 +756,7 @@
       "name": "Cuneiform",
       "category": "communication",
       "year": -2999,
+      "endYear": -50,
       "tagline": "ancient writing system used for many languages, including Akkadian and Hittite",
       "sitelinks": 102,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuneiform",
@@ -765,13 +770,14 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BB%D0%B8%D0%BD%D0%BE%D0%BF%D0%B8%D1%81%D1%8C"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sumero-Akkadian%20cuneiform%20syllabary.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sales%20contract%20Shuruppak%20Louvre%20AO3766.jpg"
     },
     {
       "id": "Q211248",
       "name": "Mayan hieroglyphs",
       "category": "communication",
       "year": -300,
+      "endYear": 1600,
       "tagline": "writing system of the Maya civilization",
       "sitelinks": 50,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Maya_script",
@@ -805,7 +811,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%BC%D0%B0%D0%B3%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paperball%202.jpeg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Scattered%20white%20paper%20%28Unsplash%29.jpg"
     },
     {
       "id": "Q144334",
@@ -941,7 +947,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A4%D0%BE%D0%BD%D0%BE%D0%B3%D1%80%D0%B0%D1%84"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Phonograph%20disc.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Edison%20and%20phonograph%20edit2.jpg"
     },
     {
       "id": "Q46872",
@@ -1152,6 +1158,7 @@
       "name": "Carrack",
       "category": "transportation",
       "year": 1500,
+      "endYear": 1600,
       "tagline": "type of sailing ship in the 15th century",
       "sitelinks": 45,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Carrack",
@@ -1265,7 +1272,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%B2%D0%BE%D0%B7"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%A7%D0%A17-282%2C%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%2C%20%D0%9E%D1%80%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%9E%D1%80%D1%91%D0%BB%20%28Trainpix%20147617%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%B2%D0%BE%D0%B7%20%D0%92%D0%9B22%D0%BC-2026%20%28VL22m-2026%20electric%20locomotive%29.jpg"
     },
     {
       "id": "Q133585",
@@ -1474,7 +1481,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BD%D1%82%D0%BE%D0%BA%D1%80%D1%8B%D0%BB%D1%8B%D0%B9_%D0%BB%D0%B5%D1%82%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Belvedere%20helicopter%20at%20Filton%2C%20Bristol%2C%20England.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg"
     },
     {
       "id": "Q182323",
@@ -1516,7 +1523,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%B6%D0%B8%D1%80"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20102-09500%2C%20Windm%C3%BChlen-Aeroplan%20Cleaned%27n%27Cropped.jpg"
     },
     {
       "id": "Q12757",
@@ -1536,7 +1543,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B5%D0%B3%D0%BE_%D1%81%D0%B3%D0%BE%D1%80%D0%B0%D0%BD%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wankel%20Cycle%20anim.gif"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Diesel%20Engine%20%284%20cycle%20running%29.gif"
     },
     {
       "id": "Q185757",
@@ -1667,7 +1674,7 @@
       "countries": [
         "Q804"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Panama%20Canal%2C%20Agua%20Clara%20locks%2C%20Control%20tower%20%28Torre%20de%20control%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Panama%20Canal%20Gatun%20Locks.jpg"
     },
     {
       "id": "Q10257",
@@ -1688,8 +1695,8 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%95%D0%B2%D1%80%D0%BE%D1%82%D0%BE%D0%BD%D0%BD%D0%B5%D0%BB%D1%8C"
       },
       "countries": [
-        "Q145",
-        "Q142"
+        "Q142",
+        "Q145"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/TGV%20TMST%203011-2%20-%20Sortie%20Tunnel%20sous%20la%20Manche%20%C3%A0%20Coquelles.jpg"
     },
@@ -1841,7 +1848,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D1%80"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Barometr%2C%20Skwer%20Bowiena%2C%20Sopot%20-%20panoramio.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dosen-barometer.jpg"
     },
     {
       "id": "Q841282",
@@ -1903,7 +1910,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B0%D0%B3%D0%B5%D1%80%D0%BE%D1%82%D0%B8%D0%BF%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Daguerreotype%20process.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/C%C3%A1mara%20para%20obtener%20vistas%20al%20daguerrotipo%2C%20original%20del%20a%C3%B1o%201839%2C%20conservada%20en%20Barcelona%2C%20Espa%C3%B1a%2C%20Spain.jpg"
     },
     {
       "id": "Q37828",
@@ -1963,7 +1970,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%BC%D0%BF%D0%B0_%D0%BD%D0%B0%D0%BA%D0%B0%D0%BB%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christ%20Church%20NYC%20117.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gluehlampe%2001%20KMJ.jpg"
     },
     {
       "id": "Q160137",
@@ -2101,7 +2108,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B2%D0%B0%D1%80%D1%86%D0%B5%D0%B2%D1%8B%D0%B9_%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Quartz%20Watch%20Mechanism%20Closeup.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BOMAR%20VCXO%20Crystal%20Oscillator.jpg"
     },
     {
       "id": "Q194154",
@@ -2162,7 +2169,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%82%D0%BE%D0%BC%D0%BD%D1%8B%D0%B5_%D1%87%D0%B0%D1%81%D1%8B"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ytterbium%20Optical%20Lattice%20Clock%20purple%20and%20green%20light.png"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/17jila003%203d%20strontium%20atomic%20clock.jpg"
     },
     {
       "id": "Q16338",
@@ -2303,7 +2310,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D1%84%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20Galaxy%20Z.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Galaxy%20Z.jpg"
     },
     {
       "id": "Q5301",
@@ -2523,7 +2530,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Milk%20Vat.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/60s%20Pama%20pasteurizer.jpg"
     },
     {
       "id": "Q213669",
@@ -2551,6 +2558,7 @@
       "name": "Green Revolution",
       "category": "food-agriculture",
       "year": 1940,
+      "endYear": 1960,
       "tagline": "period of high agricultural technology transfer in the 1950s and 1960s",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Green_Revolution",
@@ -2571,6 +2579,7 @@
       "name": "Neolithic Revolution",
       "category": "food-agriculture",
       "year": -9000,
+      "endYear": -3000,
       "tagline": "transition from hunter gatherer to settled peoples",
       "sitelinks": 80,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Neolithic_Revolution",
@@ -2613,6 +2622,8 @@
       "category": "exploration",
       "year": 1519,
       "month": 8,
+      "endYear": 1522,
+      "endMonth": 9,
       "tagline": "16th-century Spanish maritime expedition",
       "sitelinks": 31,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Magellan_expedition",
@@ -2656,6 +2667,8 @@
       "category": "exploration",
       "year": 1957,
       "month": 10,
+      "endYear": 1975,
+      "endMonth": 7,
       "tagline": "competition to explore space between USA and USSR",
       "sitelinks": 74,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Space_Race",
@@ -2744,6 +2757,8 @@
       "category": "exploration",
       "year": 1910,
       "month": 6,
+      "endYear": 1912,
+      "endMonth": 1,
       "tagline": "first expedition to reach the geographic South Pole",
       "sitelinks": 39,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Amundsen%27s_South_Pole_expedition",
@@ -2764,6 +2779,7 @@
       "name": "Voyages of Zheng He",
       "category": "exploration",
       "year": 1405,
+      "endYear": 1433,
       "tagline": "seven Ming-era maritime voyages of the treasure fleet between 1405 and 1433",
       "sitelinks": 26,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ming_treasure_voyages",
@@ -2776,8 +2792,8 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D1%8F_%D0%A7%D0%B6%D1%8D%D0%BD_%D0%A5%D1%8D"
       },
       "countries": [
-        "Q29520",
-        "Q9903"
+        "Q9903",
+        "Q29520"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zheng%20He%27s%20Treasure%20Ship%203.jpg"
     },
@@ -2838,7 +2854,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0_%D0%9D%D1%8C%D1%8E%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen6325.png"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen%20atmospheric%20engine%20animation.gif"
     },
     {
       "id": "Q209440",
@@ -3036,7 +3052,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%82"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nobel%20patent.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caisse%20dynamite%20nobel%20paulilles%20expo.JPG"
     },
     {
       "id": "Q131502",
@@ -3404,6 +3420,7 @@
       "name": "Renaissance",
       "category": "culture-arts",
       "year": 1400,
+      "endYear": 1650,
       "tagline": "cultural movement that spanned the period roughly from the 14th to the 17th century",
       "sitelinks": 188,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Renaissance",
@@ -3417,13 +3434,14 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B7%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sandro%20Botticelli%20046.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Da%20Vinci%20Vitruve%20Luc%20Viatour.jpg"
     },
     {
       "id": "Q12539",
       "name": "Age of Enlightenment",
       "category": "culture-arts",
       "year": 1700,
+      "endYear": 1820,
       "tagline": "period of European history and cultural movement of the 17th and 18th centuries",
       "sitelinks": 160,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
@@ -3545,6 +3563,8 @@
       "category": "religion-mythology",
       "year": 325,
       "month": 5,
+      "endYear": 325,
+      "endMonth": 7,
       "tagline": "council of Christian bishops in Nicaea, 325",
       "sitelinks": 85,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Council_of_Nicaea",
@@ -3568,6 +3588,7 @@
       "category": "religion-mythology",
       "year": 1517,
       "month": 11,
+      "endYear": 1648,
       "tagline": "16th-century movement in Western Christianity",
       "sitelinks": 154,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Reformation",
@@ -3694,6 +3715,7 @@
       "name": "Little Ice Age",
       "category": "environment-geology",
       "year": 1303,
+      "endYear": 1850,
       "tagline": "period of cooling that occurred after the Medieval Warm Period, usually defined as between the 14th (or the 16th) to the 19th centuries",
       "sitelinks": 67,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Little_Ice_Age",
@@ -3738,6 +3760,8 @@
       "category": "environment-geology",
       "year": 1883,
       "month": 5,
+      "endYear": 1883,
+      "endMonth": 10,
       "tagline": "catastrophic volcanic eruption",
       "sitelinks": 32,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
@@ -3849,6 +3873,7 @@
       "category": "commerce-finance",
       "year": 1929,
       "month": 10,
+      "endYear": 1941,
       "tagline": "worldwide economic depression (1929–1939)",
       "sitelinks": 133,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
@@ -3862,15 +3887,15 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0%D1%8F_%D0%B4%D0%B5%D0%BF%D1%80%D0%B5%D1%81%D1%81%D0%B8%D1%8F"
       },
       "countries": [
-        "Q1206012",
-        "Q8680",
-        "Q889",
-        "Q298",
-        "Q258",
-        "Q142",
-        "Q55",
+        "Q28",
         "Q30",
-        "Q28"
+        "Q55",
+        "Q142",
+        "Q258",
+        "Q298",
+        "Q889",
+        "Q8680",
+        "Q1206012"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lange-MigrantMother02.jpg"
     },
@@ -3880,6 +3905,8 @@
       "category": "commerce-finance",
       "year": 1944,
       "month": 7,
+      "endYear": 1944,
+      "endMonth": 7,
       "tagline": "international conference in Bretton Woods, New Hampshire, USA in July 1944",
       "sitelinks": 30,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bretton_Woods_Conference",
@@ -3902,6 +3929,7 @@
       "category": "commerce-finance",
       "year": 1848,
       "month": 1,
+      "endYear": 1854,
       "tagline": "gold rush from C.E.1848 until 1855 in California",
       "sitelinks": 52,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/California_gold_rush",
@@ -3924,6 +3952,7 @@
       "name": "Klondike Gold Rush",
       "category": "commerce-finance",
       "year": 1896,
+      "endYear": 1899,
       "tagline": "C.E.1890s migration",
       "sitelinks": 44,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Klondike_Gold_Rush",
@@ -3961,13 +3990,14 @@
       "countries": [
         "Q408"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Prospectors%27%20hut%20Upper%20Dargo%2C%20Gippsland%2C%20ca%201870%20%28SLV%20b19603%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Walhalla%201910%20Goldmine%204000ft.jpg"
     },
     {
       "id": "Q48537",
       "name": "Civil rights movement",
       "category": "social-movements",
       "year": 1954,
+      "endYear": 1968,
       "tagline": "1954–1968 U.S. nonviolent social movement",
       "sitelinks": 59,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Civil_rights_movement",
@@ -4025,7 +4055,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0%D1%86%D0%B8%D1%8F_%D0%BE%D0%B1_%D0%BE%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B8_%D1%80%D0%B0%D0%B1%D0%BE%D0%B2"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation%2C%2001-01-1863%20%28Page%205%20of%205%29%20%283695345254%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation.jpg"
     },
     {
       "id": "Q188468",
@@ -4053,6 +4083,8 @@
       "category": "sports-entertainment",
       "year": 1896,
       "month": 4,
+      "endYear": 1896,
+      "endMonth": 4,
       "tagline": "Games of the I Olympiad, celebrated in Athens (Greece) in 1896",
       "sitelinks": 98,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1896_Summer_Olympics",
@@ -4076,6 +4108,8 @@
       "category": "sports-entertainment",
       "year": 1930,
       "month": 7,
+      "endYear": 1930,
+      "endMonth": 7,
       "tagline": "1st FIFA World Cup, held in Uruguay",
       "sitelinks": 94,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup",
@@ -4098,6 +4132,8 @@
       "name": "Woodstock",
       "category": "sports-entertainment",
       "year": 1969,
+      "endYear": 1969,
+      "endMonth": 8,
       "tagline": "1969 music festival in New York, United States",
       "sitelinks": 63,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Woodstock",

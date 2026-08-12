@@ -310,3 +310,16 @@ test("buildMilestones omits image/imageAttribution entirely (not undefined-value
   assert.equal("image" in (milestones[0] as object), false);
   assert.equal("imageAttribution" in (milestones[0] as object), false);
 });
+
+test("buildMilestones builds a period-shaped entry when the row has an endYear, and a point-shaped one when it doesn't", () => {
+  const period = taggedMilestone({ id: "Q42005", year: 1346, month: 1, endYear: 1353, endMonth: 12 }); // Black Death
+  const point = taggedMilestone({ id: "Q5", year: 1928, endYear: undefined }); // Penicillin
+
+  const { milestones } = buildMilestones([period, point]);
+
+  const [periodEntry, pointEntry] = milestones;
+  assert.ok(periodEntry && "period" in periodEntry);
+  assert.deepEqual(periodEntry.period, { start: { year: 1346, month: 1 }, end: { year: 1353, month: 12 } });
+  assert.ok(pointEntry && "at" in pointEntry);
+  assert.deepEqual(pointEntry.at, { year: 1928 });
+});

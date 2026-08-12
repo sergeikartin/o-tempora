@@ -64,13 +64,22 @@ function dateOptionalBlocks(): string {
 // claim wins the tie" convention conflicts-enrichment.ts uses — needed here
 // because fetch-milestones-enrichment.ts's fetch loop keeps only the first
 // row's ?date per id.
+//
+// ?endDate is the exact same P582 OPTIONAL block conflicts-enrichment.ts's
+// ?endDate uses, deliberately *not* threaded into DATE_PROPERTIES' COALESCE
+// chain — bound independently of whichever property won ?date, same as
+// Conflicts (a P582 claim pairs with whatever ?date resolved, without
+// checking it came from P580 specifically). A row with a resolved ?endDate
+// becomes a period (e.g. Q42005 Black Death, 1346-1353); every other row
+// stays a point — fetch-milestones-enrichment.ts/write-datasets.ts apply
+// the same Conflict/ConflictEvent split rule to this pair.
 export function buildMilestonesEnrichmentQuery(ids: string[]): string {
   const values = ids.map((id) => `wd:${id}`).join(" ");
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `?${articleVar(lang)}`).join(" ");
   const timeVars = DATE_PROPERTIES.map((property) => `?${dateVar(property)}Time`).join(", ");
   const precisionVars = DATE_PROPERTIES.map((property) => `?${dateVar(property)}Precision`).join(", ");
   return `
-SELECT ?event ?sitelinks ${articleVars} ?country ?image ?tagline ?date ?datePrecision WHERE {
+SELECT ?event ?sitelinks ${articleVars} ?country ?image ?tagline ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
   VALUES ?event { ${values} }
   ?event wikibase:sitelinks ?sitelinks .
 ${articleOptionalBlocks()}
@@ -80,7 +89,14 @@ ${articleOptionalBlocks()}
 ${dateOptionalBlocks()}
   BIND(COALESCE(${timeVars}) AS ?date)
   BIND(COALESCE(${precisionVars}) AS ?datePrecision)
+  OPTIONAL {
+    ?event p:P582 ?endDateStatement .
+    ?endDateStatement a wikibase:BestRank .
+    ?endDateStatement psv:P582 ?endDateValue .
+    ?endDateValue wikibase:timeValue ?endDate ;
+                   wikibase:timePrecision ?endDatePrecision .
+  }
 }
-ORDER BY ?event ?date
+ORDER BY ?event ?date ?endDate
 `.trim();
 }
