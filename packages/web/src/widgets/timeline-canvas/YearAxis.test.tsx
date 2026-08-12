@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import { test, expect, afterEach } from 'vitest';
 import { YearAxis } from './YearAxis';
 import { AXIS_HEIGHT, MIN_DECADE_LABEL_SPACING_PX, RULER_HEIGHT } from './options';
+import { PAN_MIN_DATE } from '../../shared/config';
 
 afterEach(cleanup);
 
@@ -185,10 +186,16 @@ test('a BCE decade label sits exactly on the BCE ruler region\'s own tick grid (
   // pixel-width away from its nearest CSS gridline tick, which was still
   // phased on the old multiples-of-10 grid (a tick at -10, not -9). Both
   // the label's x and the BCE ruler's own box share the same origin (the
-  // domain's start year, at pixel 0), so this compares them directly
-  // without depending on the real app's MIN_YEAR.
+  // domain's start year, at pixel 0), so this compares them directly. The
+  // BCE ruler's CSS tile phase is computed from the real app's MIN_YEAR
+  // (options.ts), so this synthetic domain's start must share MIN_YEAR's
+  // residue mod 10/100 for the two to line up — shifting by 1000 (itself
+  // a multiple of both) keeps that residue while staying a self-contained
+  // synthetic domain, so this doesn't need updating whenever PAN_MIN_DATE
+  // does.
+  const domainStart = PAN_MIN_DATE.year - 1000;
   const { container } = render(
-    <YearAxis xScale={scaleFor(-1000, 1000, 20000)} visibleStartYear={-150} visibleEndYear={50} />,
+    <YearAxis xScale={scaleFor(domainStart, domainStart + 2000, 20000)} visibleStartYear={-150} visibleEndYear={50} />,
   );
 
   const label = Array.from(container.querySelectorAll('.year-axis-label')).find(

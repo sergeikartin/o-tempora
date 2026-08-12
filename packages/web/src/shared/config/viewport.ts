@@ -4,7 +4,7 @@ export const ZOOM_MAX_YEARS = 500;
 export const DEFAULT_VIEWPORT_START = Temporal.PlainDate.from({ year: 1740, month: 1, day: 1 });
 export const DEFAULT_VIEWPORT_END = Temporal.PlainDate.from({ year: 1860, month: 1, day: 1 });
 
-export const PAN_MIN_DATE = Temporal.PlainDate.from({ year: -2750, month: 1, day: 1 });
+export const PAN_MIN_DATE = Temporal.PlainDate.from({ year: -801, month: 1, day: 1 });
 
 // Sidebar Fame-floor filters: a raw `fameScore` numeric floor per lane, set
 // directly by the user (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md
