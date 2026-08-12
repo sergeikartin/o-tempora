@@ -8,7 +8,7 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
-import { DEFAULT_VIEWPORT_START, UN_REGION_TO_REGION } from '../../shared/config';
+import { DEFAULT_VIEWPORT_START, UN_REGION_TO_REGION, type ConflictsMilestonesFilterValue } from '../../shared/config';
 import type { FameScoreValues, FilteredCounts } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
@@ -22,7 +22,13 @@ import {
   zoomIn as computeZoomIn,
   zoomOut as computeZoomOut,
 } from './options';
-import { filterByFameScore, filterByOccupationDomain, filterByRegion } from './map-to-items';
+import {
+  filterByFameScore,
+  filterByMilestoneCategoryGroup,
+  filterByOccupationDomain,
+  filterByRegion,
+  filterConflictsByFilterValues,
+} from './map-to-items';
 import { PeopleLane } from './PeopleLane';
 import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
 import { YearAxis } from './YearAxis';
@@ -47,6 +53,11 @@ interface TimelineCanvasProps {
   // Shared Region filter, one control across all three lanes (grill-with-
   // docs session 2026-08-12) — empty means unfiltered.
   selectedRegions: Region[];
+  // Conflicts & Milestones filter — one shared multi-select spanning the
+  // 'conflicts' sentinel and the 3 MilestoneCategoryGroup values (revised
+  // 2026-08-12 to mirror Region/Occupation Domain's shape instead of a
+  // separate group-filter + boolean-toggle pair) — empty means unfiltered.
+  selectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[];
   // Reports a click on any lane's mark, resolved via one delegated listener
   // below rather than three separate per-lane click handlers (dynamic-
   // tooltips spec §2's click-wiring architecture) — the caller (App.tsx)
@@ -69,6 +80,7 @@ export function TimelineCanvas({
   fameScoreValues,
   selectedDomains,
   selectedRegions,
+  selectedConflictsMilestonesValues,
   onEntityClick,
   onFilteredCountsChange,
 }: TimelineCanvasProps) {
@@ -170,13 +182,20 @@ export function TimelineCanvas({
     [people, fameScoreValues.people, selectedDomains, selectedRegions],
   );
   const filteredConflicts = useMemo(
-    () => filterByRegion(filterByFameScore(conflicts, fameScoreValues.conflicts), selectedRegions, (entry) => entry.regionTags),
-    [conflicts, fameScoreValues.conflicts, selectedRegions],
+    () =>
+      filterConflictsByFilterValues(
+        filterByRegion(filterByFameScore(conflicts, fameScoreValues.conflicts), selectedRegions, (entry) => entry.regionTags),
+        selectedConflictsMilestonesValues,
+      ),
+    [conflicts, fameScoreValues.conflicts, selectedRegions, selectedConflictsMilestonesValues],
   );
   const filteredMilestones = useMemo(
     () =>
-      filterByRegion(filterByFameScore(milestones, fameScoreValues.milestones), selectedRegions, (milestone) => milestone.regionTags),
-    [milestones, fameScoreValues.milestones, selectedRegions],
+      filterByMilestoneCategoryGroup(
+        filterByRegion(filterByFameScore(milestones, fameScoreValues.milestones), selectedRegions, (milestone) => milestone.regionTags),
+        selectedConflictsMilestonesValues,
+      ),
+    [milestones, fameScoreValues.milestones, selectedRegions, selectedConflictsMilestonesValues],
   );
 
   const filteredCounts = useMemo<FilteredCounts>(

@@ -9,7 +9,9 @@ import type {
   ConflictEntry,
   Region,
 } from '../../shared/types';
+import { MILESTONE_CATEGORY_TO_GROUP } from '../../shared/types';
 import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
+import type { ConflictsMilestonesFilterValue } from '../../shared/config';
 import { MIN_ROW_GAP_YEARS, POINT_RADIUS, estimateLabelWidthPx } from './options';
 
 /** Pixel-space [start, end] interval a value maps to under a linear scale. */
@@ -63,6 +65,37 @@ export function filterByOccupationDomain<T extends { occupationDomain: Occupatio
 export function filterByRegion<T>(items: T[], selectedRegions: Region[], regionsOf: (item: T) => Region[]): T[] {
   if (selectedRegions.length === 0) return items;
   return items.filter((item) => regionsOf(item).some((region) => selectedRegions.includes(region)));
+}
+
+// The sidebar's "Conflicts & Milestones" section is one shared multi-select
+// filter (revised 2026-08-12 to match Region/Occupation Domain's "one flat
+// list, empty means unfiltered" convention — an earlier version split this
+// into a separate Milestone Category Group filter and a differently-styled
+// Conflicts toggle). `selectedValues` folds a UI-only 'conflicts' sentinel
+// together with the 3 real MilestoneCategoryGroup values (see
+// shared/config/conflicts-milestones-filter.ts) — these two functions each
+// read the one shared array, keyed off whichever part of it applies to
+// their own lane.
+
+// Milestones-only: same 3-group level the Milestones lane's color already
+// varies at (see MILESTONE_CATEGORY_TO_GROUP), not the 20-leaf-category
+// level. A selected 'conflicts' sentinel is simply never equal to any
+// MilestoneCategoryGroup, so it has no effect here.
+export function filterByMilestoneCategoryGroup<T extends { category: MilestoneCategory }>(
+  items: T[],
+  selectedValues: ConflictsMilestonesFilterValue[],
+): T[] {
+  if (selectedValues.length === 0) return items;
+  return items.filter((item) => selectedValues.includes(MILESTONE_CATEGORY_TO_GROUP[item.category]));
+}
+
+// Conflicts-only: Conflicts carry no color-driving grouping of their own
+// (docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md), so
+// this is an all-or-nothing gate keyed on whether the 'conflicts' sentinel
+// is present in the shared selection, not a per-item predicate.
+export function filterConflictsByFilterValues<T>(items: T[], selectedValues: ConflictsMilestonesFilterValue[]): T[] {
+  if (selectedValues.length === 0) return items;
+  return selectedValues.includes('conflicts') ? items : [];
 }
 
 export interface PersonItem {

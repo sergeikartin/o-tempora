@@ -51,6 +51,41 @@ export const MILESTONE_CATEGORIES = [
 
 export type MilestoneCategory = (typeof MILESTONE_CATEGORIES)[number];
 
+// The 3-value grouping above MilestoneCategory's 20 leaf values, driving
+// the Milestones lane's color palette (packages/web's options.ts) and the
+// sidebar's Milestone Category Group filter — the single canonical source
+// both read from, replacing a grouping that previously existed only as
+// unexported local color constants. See docs/design-tokens.md's Milestone
+// Category Palette table for the same assignments below.
+export const MILESTONE_CATEGORY_GROUPS = ["knowledge-culture", "technology-industry", "society-governance"] as const;
+
+export type MilestoneCategoryGroup = (typeof MILESTONE_CATEGORY_GROUPS)[number];
+
+export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCategoryGroup> = {
+  "science-theory": "knowledge-culture",
+  "philosophy-education": "knowledge-culture",
+  "culture-arts": "knowledge-culture",
+  "religion-mythology": "knowledge-culture",
+  "archaeology-anthropology": "knowledge-culture",
+
+  "medicine-health": "technology-industry",
+  communication: "technology-industry",
+  transportation: "technology-industry",
+  infrastructure: "technology-industry",
+  "everyday-technology": "technology-industry",
+  "energy-industry": "technology-industry",
+  exploration: "technology-industry",
+  "architecture-design": "technology-industry",
+  "environment-geology": "technology-industry",
+
+  "food-agriculture": "society-governance",
+  "society-administration": "society-governance",
+  "commerce-finance": "society-governance",
+  "social-movements": "society-governance",
+  "sports-entertainment": "society-governance",
+  "law-jurisprudence": "society-governance",
+};
+
 export const REGIONS = [
   "europe",
   "east-asia",

@@ -6,8 +6,9 @@ import {
   DEFAULT_VIEWPORT_START,
   DEFAULT_VIEWPORT_END,
   PAN_MIN_DATE,
+  MILESTONE_CATEGORY_GROUP_COLORS,
 } from '../../shared/config';
-import type { MilestoneCategory } from '../../shared/types';
+import { MILESTONE_CATEGORY_TO_GROUP, type MilestoneCategory } from '../../shared/types';
 
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
@@ -131,20 +132,6 @@ export function personLaneHeight(rowCount: number): number {
   return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
 }
 
-// Conflicts no longer key their fill off ConflictCategory — the merged
-// Conflicts+Milestones lane needs every Conflict to read as one visual
-// group at a glance (Milestones keep their own multi-color category
-// palette below), so the old per-category Conflict Category Palette is
-// retired in favor of this single flat color. "Ledger & Ink" rhymes this
-// with the People-domain Institutions hue (--color-domain-institutions),
-// stepped darker — Conflict deepens state power the same way each
-// MILESTONE_CATEGORY_COLORS group below deepens its own People-domain
-// counterpart. Validated (OKLCH lightness/chroma bounds, CVD separation
-// under simulated protanopia/deuteranopia, a normal-vision floor, contrast
-// vs. the parchment surface) against the 3 milestone-group hexes below as
-// one 4-color set, all pairs, not just neighbors — see docs/design-tokens.md.
-export const CONFLICT_COLOR = '#8C2D2B';
-
 // Milestones' own palette. MilestoneCategory keeps its full 20-value
 // taxonomy for filtering/labels (disjoint from Conflicts' ConflictCategory,
 // which no longer drives a color — see CONFLICT_COLOR above), but color
@@ -156,35 +143,22 @@ export const CONFLICT_COLOR = '#8C2D2B';
 // & Culture deepens Humanities, Technology & Industry deepens Science &
 // Technology, Society & Governance deepens Public Figure. See
 // docs/design-tokens.md for the validation report and the full category ->
-// group mapping.
-const MILESTONE_KNOWLEDGE_CULTURE = '#4B4597';
-const MILESTONE_TECHNOLOGY_INDUSTRY = '#008456';
-const MILESTONE_SOCIETY_GOVERNANCE = '#BC8118';
-
-export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = {
-  'science-theory': MILESTONE_KNOWLEDGE_CULTURE,
-  'philosophy-education': MILESTONE_KNOWLEDGE_CULTURE,
-  'culture-arts': MILESTONE_KNOWLEDGE_CULTURE,
-  'religion-mythology': MILESTONE_KNOWLEDGE_CULTURE,
-  'archaeology-anthropology': MILESTONE_KNOWLEDGE_CULTURE,
-
-  'medicine-health': MILESTONE_TECHNOLOGY_INDUSTRY,
-  communication: MILESTONE_TECHNOLOGY_INDUSTRY,
-  transportation: MILESTONE_TECHNOLOGY_INDUSTRY,
-  infrastructure: MILESTONE_TECHNOLOGY_INDUSTRY,
-  'everyday-technology': MILESTONE_TECHNOLOGY_INDUSTRY,
-  'energy-industry': MILESTONE_TECHNOLOGY_INDUSTRY,
-  exploration: MILESTONE_TECHNOLOGY_INDUSTRY,
-  'architecture-design': MILESTONE_TECHNOLOGY_INDUSTRY,
-  'environment-geology': MILESTONE_TECHNOLOGY_INDUSTRY,
-
-  'food-agriculture': MILESTONE_SOCIETY_GOVERNANCE,
-  'society-administration': MILESTONE_SOCIETY_GOVERNANCE,
-  'commerce-finance': MILESTONE_SOCIETY_GOVERNANCE,
-  'social-movements': MILESTONE_SOCIETY_GOVERNANCE,
-  'sports-entertainment': MILESTONE_SOCIETY_GOVERNANCE,
-  'law-jurisprudence': MILESTONE_SOCIETY_GOVERNANCE,
-};
+// group mapping. MILESTONE_CATEGORY_GROUP_COLORS itself lives in
+// shared/config (imported above), not here, since the sidebar's Milestone
+// Category Group filter pills need it too and features/ can't import from
+// widgets/ under mini-FSD's layer rule — see that file's own comment.
+//
+// Derived from MILESTONE_CATEGORY_TO_GROUP (packages/shared-types) rather
+// than listing per-category hexes directly, so the timeline's color and the
+// sidebar's Milestone Category Group filter can never silently drift apart
+// — public shape and values are unchanged (still one hex per
+// MilestoneCategory, still exactly 3 distinct hexes).
+export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = Object.fromEntries(
+  Object.entries(MILESTONE_CATEGORY_TO_GROUP).map(([category, group]) => [
+    category,
+    MILESTONE_CATEGORY_GROUP_COLORS[group],
+  ]),
+) as Record<MilestoneCategory, string>;
 
 const MIN_YEAR = PAN_MIN_DATE.year;
 

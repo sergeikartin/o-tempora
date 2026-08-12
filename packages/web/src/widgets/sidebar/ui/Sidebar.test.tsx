@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, vi, afterEach } from 'vitest';
 import { Sidebar } from './Sidebar';
 import { OCCUPATION_DOMAINS, REGIONS } from '../../../shared/types';
+import { CONFLICTS_MILESTONES_FILTER_VALUES } from '../../../shared/config';
 
 afterEach(cleanup);
 
@@ -18,6 +19,8 @@ function renderSidebar(overrides: Partial<SidebarProps> = {}) {
       onToggleDomain={vi.fn()}
       selectedRegions={[]}
       onToggleRegion={vi.fn()}
+      selectedConflictsMilestonesValues={[]}
+      onToggleConflictsMilestonesValue={vi.fn()}
       {...overrides}
     />,
   );
@@ -67,4 +70,31 @@ test('clicking a Region pill calls onToggleRegion with that region', () => {
   fireEvent.click(getByLabelText('Filter by Middle East'));
 
   expect(onToggleRegion).toHaveBeenCalledWith('middle-east');
+});
+
+test('renders the Conflicts & Milestones section with one pill per filter value (Conflicts + 3 Milestone Category Groups), none pressed by default', () => {
+  const { getByRole, getByLabelText } = renderSidebar();
+
+  const section = getByRole('heading', { name: 'Conflicts & Milestones' }).closest('section');
+  expect(section?.querySelectorAll('li')).toHaveLength(CONFLICTS_MILESTONES_FILTER_VALUES.length);
+  expect(section?.textContent).toContain('Technology & Industry');
+  expect(getByLabelText('Filter by Conflicts').getAttribute('aria-pressed')).toBe('false');
+});
+
+test('clicking a Milestone Category Group pill calls onToggleConflictsMilestonesValue with that group', () => {
+  const onToggleConflictsMilestonesValue = vi.fn();
+  const { getByLabelText } = renderSidebar({ onToggleConflictsMilestonesValue });
+
+  fireEvent.click(getByLabelText('Filter by Society & Governance'));
+
+  expect(onToggleConflictsMilestonesValue).toHaveBeenCalledWith('society-governance');
+});
+
+test('clicking the Conflicts pill calls onToggleConflictsMilestonesValue with \'conflicts\'', () => {
+  const onToggleConflictsMilestonesValue = vi.fn();
+  const { getByLabelText } = renderSidebar({ onToggleConflictsMilestonesValue });
+
+  fireEvent.click(getByLabelText('Filter by Conflicts'));
+
+  expect(onToggleConflictsMilestonesValue).toHaveBeenCalledWith('conflicts');
 });

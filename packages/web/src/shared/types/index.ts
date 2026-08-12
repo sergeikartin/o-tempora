@@ -9,8 +9,17 @@ export type {
   YearMonth,
   ConflictCategory,
   MilestoneCategory,
+  MilestoneCategoryGroup,
   OccupationDomain,
   Region,
   UnRegion,
 } from '@same-sky/shared-types';
-export { CONFLICT_CATEGORIES, MILESTONE_CATEGORIES, OCCUPATION_DOMAINS, REGIONS, UN_REGIONS } from '@same-sky/shared-types';
+export {
+  CONFLICT_CATEGORIES,
+  MILESTONE_CATEGORIES,
+  MILESTONE_CATEGORY_GROUPS,
+  MILESTONE_CATEGORY_TO_GROUP,
+  OCCUPATION_DOMAINS,
+  REGIONS,
+  UN_REGIONS,
+} from '@same-sky/shared-types';
