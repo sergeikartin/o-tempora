@@ -32,10 +32,11 @@ Reaching this destination includes authoring a new ADR (`packages/web/docs/adr/0
 ## Decisions so far
 
 - Both tickets 01 and 02 resolved by direct `/implement` rather than through `/prototype` then `/grilling` — the user redirected past both when asked how to proceed with ticket 01's missing prototype. See each ticket's `## Answer` for what was decided inline instead, and `packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md` for the recorded outcome (ADR 0002 marked superseded).
+- Legend pills becoming clickable occupation filters, plus a new shared Region filter and a "Data Depth" fame-floor preset switch — grilled and specced 2026-08-12, see `spec.md` (multi-select toggle, OR within a filter, AND across filter categories, no persistence).
+- Spec broken into implementation tickets 03-06 (2026-08-12): 03 Occupation Domain filter, 04 Region filter, 05 Data Depth switch — independent, no blocking edges between them — and 06 integration/regression pass blocked by all three.
 
 ## Not yet specified
 
-- Legend pills becoming clickable occupation filters — explicitly named as a future direction by the user ("later can be made clickable"), but not sharp enough to ticket: what filtering semantics (single-select? multi-select toggle? AND/OR with the Fame floor?) aren't decided.
 - Sidebar responsive/mobile behavior — unexamined; unclear whether the app targets narrow viewports at all today.
 
 ## Out of scope
