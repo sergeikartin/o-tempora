@@ -97,12 +97,12 @@
     "name": "COVID-19 pandemic",
     "category": "medicine-health",
     "regionTags": [
-      "south-asia",
-      "middle-east",
-      "east-asia",
-      "africa",
+      "europe",
       "americas",
-      "europe"
+      "south-asia",
+      "africa",
+      "east-asia",
+      "middle-east"
     ],
     "fameScore": 91,
     "tagline": "pandemic caused by SARS-CoV-2 (2019–2023)",
@@ -176,25 +176,6 @@
     "at": {
       "year": 1948,
       "month": 12
-    }
-  },
-  {
-    "id": "Q4692",
-    "name": "Renaissance",
-    "category": "culture-arts",
-    "regionTags": [],
-    "fameScore": 89,
-    "tagline": "cultural movement that spanned the period roughly from the 14th to the 17th century",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Renaissance",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Da%20Vinci%20Vitruve%20Luc%20Viatour.jpg",
-    "description": "The Renaissance was a European period of history and cultural movement taking place at the end of the Late Middle Ages and the beginning of the early modern era. It is variously defined as covering the 15th and 16th centuries or, more broadly, as lasting from the 14th century to the 17th. It was characterized by the European rediscovery and revival of the literary, philosophical, and artistic achievements of classical antiquity. Associated with great change in art, architecture, politics, literature, exploration and technology, the Renaissance was first centered in the Republic of Florence, then spread to the rest of Italy and later throughout Europe.",
-    "period": {
-      "start": {
-        "year": 1400
-      },
-      "end": {
-        "year": 1650
-      }
     }
   },
   {
@@ -355,24 +336,6 @@
     }
   },
   {
-    "id": "Q12539",
-    "name": "Age of Enlightenment",
-    "category": "culture-arts",
-    "regionTags": [],
-    "fameScore": 86,
-    "tagline": "period of European history and cultural movement of the 17th and 18th centuries",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
-    "description": "The Age of Enlightenment, also known as the Age of Reason or simply the Enlightenment, was a period of intellectual and cultural flourishing in Europe and Western civilization, emerging in the late 17th century in Western Europe. It reached its peak in the 18th century as its ideas spread more widely across Europe and into the European colonies in the Americas and Oceania. Characterized by an emphasis on reason, empirical evidence, and the scientific method, the Enlightenment promoted ideals of individual liberty, religious tolerance, progress, and natural rights. Its thinkers advocated for constitutional government, the separation of church and state, and the application of rational principles to social and political reform.",
-    "period": {
-      "start": {
-        "year": 1700
-      },
-      "end": {
-        "year": 1820
-      }
-    }
-  },
-  {
     "id": "Q12506",
     "name": "Hagia Sophia",
     "category": "architecture-design",
@@ -405,26 +368,6 @@
     "description": "The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the Roman Forum. It is the largest ancient amphitheatre ever built, and is the largest standing amphitheatre in the world. Construction began under the Emperor Vespasian in 72 and was completed in AD 80 under his successor and heir, Titus. Further modifications were made during the reign of Domitian. The three emperors who were patrons of the work are known as the Flavian dynasty, and the amphitheatre was named the Flavian Amphitheatre by later classicists and archaeologists for its association with their family name (Flavius).",
     "at": {
       "year": 82
-    }
-  },
-  {
-    "id": "Q12562",
-    "name": "Protestant Reformation",
-    "category": "religion-mythology",
-    "regionTags": [],
-    "fameScore": 85,
-    "tagline": "16th-century movement in Western Christianity",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Reformation",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/95Thesen%20facsimile%20colour.png",
-    "description": "The Reformation, also known as the Protestant Reformation or the European Reformation, was a major theological movement in Western Christianity in 16th-century Europe that posed a religious and political challenge to the papacy and the authority of the Catholic Church hierarchy. Towards the end of the Renaissance, the Reformation marked the beginning of Protestantism. It is considered one of the events that signified the end of the Middle Ages and the beginning of the early modern period in Europe.",
-    "period": {
-      "start": {
-        "year": 1517,
-        "month": 11
-      },
-      "end": {
-        "year": 1648
-      }
     }
   },
   {
@@ -788,25 +731,6 @@
     }
   },
   {
-    "id": "Q401",
-    "name": "Cuneiform",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 80,
-    "tagline": "ancient writing system used for many languages, including Akkadian and Hittite",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuneiform",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sales%20contract%20Shuruppak%20Louvre%20AO3766.jpg",
-    "description": "Cuneiform is a logo-syllabic writing system that was used to write several languages of the ancient Near East. The script was in active use from the early Bronze Age until the 1st century BC. Cuneiform scripts are marked by and named for the characteristic wedge-shaped impressions which form their signs. Cuneiform is the earliest known writing system and was originally developed to write the Sumerian language of southern Mesopotamia.",
-    "period": {
-      "start": {
-        "year": -2999
-      },
-      "end": {
-        "year": -50
-      }
-    }
-  },
-  {
     "id": "Q47616",
     "name": "Incandescent light bulb",
     "category": "everyday-technology",
@@ -868,26 +792,6 @@
     "description": "Hygiene is a set of practices performed to preserve health.According to the World Health Organization (WHO), \"Hygiene refers to conditions and practices that help to maintain health and prevent the spread of diseases.\" Personal hygiene refers to maintaining the body's cleanliness. Hygiene activities can be grouped into the following: home and everyday hygiene, personal hygiene, medical hygiene, sleep hygiene, and food hygiene. Home and every day hygiene includes hand washing, respiratory hygiene, food hygiene at home, hygiene in the kitchen, hygiene in the bathroom, laundry hygiene, and medical hygiene at home.",
     "at": {
       "year": -2999
-    }
-  },
-  {
-    "id": "Q132659",
-    "name": "Egyptian hieroglyphs",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 79,
-    "tagline": "formal writing system used by the ancient Egyptians",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Minnakht%2001.JPG",
-    "imageAttribution": "Anonymous, via Wikimedia Commons",
-    "description": "Ancient Egyptian hieroglyphs or hieroglyphics were the formal writing system used in Ancient Egypt for writing the Egyptian language. Hieroglyphs combined ideographic, logographic, syllabic, and alphabetic elements, with more than 1,000 distinct characters. Cursive hieroglyphs were used for religious literature on papyrus and wood. The later hieratic and demotic Egyptian scripts were derived from hieroglyphic writing, as was the Proto-Sinaitic script that later evolved into the Phoenician alphabet. Egyptian hieroglyphs are the ultimate ancestor of the Phoenician alphabet, the first widely adopted phonetic writing system. Moreover, owing in large part to the Greek and Aramaic scripts that descended from Phoenician, the majority of the world's living writing systems are descendants of Egyptian hieroglyphs—most prominently the Latin and Cyrillic scripts through Greek, and the Arabic and Brahmic scripts through Aramaic. Hieroglyphs are thought to be one of four writing systems developed without outside influence, the others being cuneiform, Chinese characters, and Mayan script.",
-    "period": {
-      "start": {
-        "year": -3199
-      },
-      "end": {
-        "year": 400
-      }
     }
   },
   {
@@ -1542,6 +1446,21 @@
     "at": {
       "year": 1992,
       "month": 2
+    }
+  },
+  {
+    "id": "Q157506",
+    "name": "Ninety-five Theses",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "disputation by Martin Luther on indulgences",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ninety-five_Theses",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Luther%2095%20Thesen.png",
+    "description": "The  Ninety-five Theses or  Disputation on the Power and Efficacy of Indulgences is a list of propositions for an academic disputation written in 1517 by Martin Luther, then a professor of moral theology at the University of Wittenberg, Germany. The Theses are retrospectively considered to have launched the Protestant Reformation and the birth of Protestantism, despite various quasi- or proto-Protestant groups having existed previously.",
+    "at": {
+      "year": 1517,
+      "month": 11
     }
   },
   {
