@@ -107,6 +107,29 @@
     }
   },
   {
+    "id": "Q8740",
+    "name": "Vietnam War",
+    "category": "war",
+    "regionTags": [
+      "south-asia"
+    ],
+    "fameScore": 89,
+    "tagline": "armed conflict in Vietnam, Laos, and Cambodia between North Vietnam and South Vietnam, from 1955 to 1975",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vietnam_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VietnamMural.jpg",
+    "description": "The Vietnam War was an armed conflict in Vietnam, Laos, and Cambodia fought between North Vietnam and South Vietnam and their allies. North Vietnam was supported by the Soviet Union and China, while South Vietnam was supported by the United States and other anti-communist nations. The conflict was the second of the Indochina wars and a proxy war of the Cold War. The Vietnam War was one of the postcolonial wars of national liberation, a theater in the Cold War, and a civil war, with civil warfare a defining feature from the outset. Direct US military involvement escalated from 1965 until US forces were withdrawn in 1973. The fighting spilled into the Laotian and Cambodian civil wars, which ended with all three countries becoming communist in 1975.",
+    "period": {
+      "start": {
+        "year": 1955,
+        "month": 11
+      },
+      "end": {
+        "year": 1975,
+        "month": 4
+      }
+    }
+  },
+  {
     "id": "Q110999040",
     "name": "full-scale Russo-Ukrainian war",
     "category": "war",
@@ -122,29 +145,6 @@
     "at": {
       "year": 2022,
       "month": 2
-    }
-  },
-  {
-    "id": "Q8740",
-    "name": "Vietnam War",
-    "category": "war",
-    "regionTags": [
-      "south-asia"
-    ],
-    "fameScore": 88,
-    "tagline": "armed conflict in Vietnam, Laos, and Cambodia between North Vietnam and South Vietnam, from 1955 to 1975",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vietnam_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VietnamMural.jpg",
-    "description": "The Vietnam War was an armed conflict in Vietnam, Laos, and Cambodia fought between North Vietnam and South Vietnam and their allies. North Vietnam was supported by the Soviet Union and China, while South Vietnam was supported by the United States and other anti-communist nations. The conflict was the second of the Indochina wars and a proxy war of the Cold War. The Vietnam War was one of the postcolonial wars of national liberation, a theater in the Cold War, and a civil war, with civil warfare a defining feature from the outset. Direct US military involvement escalated from 1965 until US forces were withdrawn in 1973. The fighting spilled into the Laotian and Cambodian civil wars, which ended with all three countries becoming communist in 1975.",
-    "period": {
-      "start": {
-        "year": 1955,
-        "month": 11
-      },
-      "end": {
-        "year": 1975,
-        "month": 4
-      }
     }
   },
   {
@@ -313,6 +313,23 @@
         "year": 2024,
         "month": 12
       }
+    }
+  },
+  {
+    "id": "Q488",
+    "name": "Atomic bombings of Hiroshima and Nagasaki",
+    "category": "military-operation",
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 84,
+    "tagline": "1945 use of nuclear weapons against Japan in World War II",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Atomic%20bombing%20of%20Japan.jpg",
+    "description": "On 6 and 9 August 1945, the United States detonated two atomic bombs over the Japanese cities of Hiroshima and Nagasaki, respectively, during the final days of World War II. The aerial bombings killed 150,000 to 246,000 people, most of whom were civilians, and remain the first and only uses of nuclear weapons in an armed conflict.",
+    "at": {
+      "year": 1945,
+      "month": 8
     }
   },
   {
@@ -617,6 +634,23 @@
     }
   },
   {
+    "id": "Q52418",
+    "name": "Attack on Pearl Harbor",
+    "category": "military-operation",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 81,
+    "tagline": "1941 Japanese surprise attack on the U.S",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/USS%20SHAW%20exploding%20Pearl%20Harbor%20Nara%2080-G-16871%202.jpg",
+    "description": "The Attack on Pearl Harbor was a surprise military attack by the Empire of Japan on the US Pacific Fleet at its naval base at Pearl Harbor in Oahu, Hawaii, on December 7, 1941. At the time, the US was a neutral country in World War II. The air raid on Pearl Harbor, which was launched from aircraft carriers, prompted the US to declare war on Japan the next day. The Japanese military leadership referred to the attack as the Hawaii Operation and Operation AI, and as Operation Z during its planning.",
+    "at": {
+      "year": 1941,
+      "month": 12
+    }
+  },
+  {
     "id": "Q80330",
     "name": "English Civil War",
     "category": "war",
@@ -877,22 +911,25 @@
     }
   },
   {
-    "id": "Q79791",
-    "name": "Reconquista",
+    "id": "Q179975",
+    "name": "Chinese Civil War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "east-asia"
+    ],
     "fameScore": 79,
-    "tagline": "period in the history of the Iberian Peninsula",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Reconquista",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cantigas%20battle.jpg",
-    "description": "The Reconquista or the fall of al-Andalus was a series of military campaigns by northern Iberian Christian polities against Muslim-ruled al-Andalus, which had previously been part of the Visigothic Kingdom before the Muslim Conquest of 711. The Reconquista concluded in 1492 with the capture of Granada by the Catholic Monarchs of Spain, thereby ending the presence of any Muslim rule on the Iberian Peninsula.",
+    "tagline": "The civil war between the government of the Republic of China and the Chinese Communist Party",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chinese_Civil_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Shangtang.jpg",
+    "description": "The Chinese Civil War was fought between the government of the Republic of China (ROC), led by the Kuomintang (KMT), and the Chinese Communist Party (CCP). Armed conflict continued intermittently from 1 August 1927 until Communist victory that led to the Kuomintang's retreat to Taiwan on 7 December 1949.",
     "period": {
       "start": {
-        "year": 733
+        "year": 1927,
+        "month": 8
       },
       "end": {
-        "year": 1492,
-        "month": 1
+        "year": 1950,
+        "month": 5
       }
     }
   },
@@ -1231,6 +1268,26 @@
     }
   },
   {
+    "id": "Q76026",
+    "name": "Greco-Persian Wars",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "series of conflicts between the Achaemenid Empire of Persia and poleis of the Hellenic world in the fifth century BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Greco-Persian_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20Greco-Persian%20Wars-fr.svg",
+    "imageAttribution": "User:Bibi Saint-Pol, via Wikimedia Commons",
+    "description": "The Greco-Persian Wars, also called the Persian Wars, were a series of armed conflicts involving various Greek city-states and the Achaemenid Empire from 499 BC to 449 BC. The precipitating collision between the fractious political world of ancient Greece and the enormous empire of ancient Persia had begun when the Persian king Cyrus the Great conquered the Greek-inhabited region of Ionia in 547 BC. As they struggled to exert authority over the independent-minded Ionian cities, the Persians appointed Greek tyrants to rule each of them, though this would prove to be the source of much trouble for the Greeks and the Persians alike.",
+    "period": {
+      "start": {
+        "year": -498
+      },
+      "end": {
+        "year": -448
+      }
+    }
+  },
+  {
     "id": "Q150701",
     "name": "War of the Spanish Succession",
     "category": "war",
@@ -1453,23 +1510,6 @@
     }
   },
   {
-    "id": "Q52418",
-    "name": "Attack on Pearl Harbor",
-    "category": "military-operation",
-    "regionTags": [
-      "americas"
-    ],
-    "fameScore": 76,
-    "tagline": "1941 Japanese surprise attack on the U.S",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/USS%20SHAW%20exploding%20Pearl%20Harbor%20Nara%2080-G-16871%202.jpg",
-    "description": "The Attack on Pearl Harbor was a surprise military attack by the Empire of Japan on the US Pacific Fleet at its naval base at Pearl Harbor in Oahu, Hawaii, on December 7, 1941. At the time, the US was a neutral country in World War II. The air raid on Pearl Harbor, which was launched from aircraft carriers, prompted the US to declare war on Japan the next day. The Japanese military leadership referred to the attack as the Hawaii Operation and Operation AI, and as Operation Z during its planning.",
-    "at": {
-      "year": 1941,
-      "month": 12
-    }
-  },
-  {
     "id": "Q177918",
     "name": "First Balkan War",
     "category": "war",
@@ -1510,22 +1550,68 @@
     }
   },
   {
-    "id": "Q76026",
-    "name": "Greco-Persian Wars",
+    "id": "Q186284",
+    "name": "Polish–Soviet War",
     "category": "war",
     "regionTags": [],
     "fameScore": 75,
-    "tagline": "series of conflicts between the Achaemenid Empire of Persia and poleis of the Hellenic world in the fifth century BCE",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Greco-Persian_Wars",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20Greco-Persian%20Wars-fr.svg",
-    "imageAttribution": "User:Bibi Saint-Pol, via Wikimedia Commons",
-    "description": "The Greco-Persian Wars, also called the Persian Wars, were a series of armed conflicts involving various Greek city-states and the Achaemenid Empire from 499 BC to 449 BC. The precipitating collision between the fractious political world of ancient Greece and the enormous empire of ancient Persia had begun when the Persian king Cyrus the Great conquered the Greek-inhabited region of Ionia in 547 BC. As they struggled to exert authority over the independent-minded Ionian cities, the Persians appointed Greek tyrants to rule each of them, though this would prove to be the source of much trouble for the Greeks and the Persians alike.",
+    "tagline": "conflict between Poland and Soviet Russia following the First World War (February 1919 - March 1921)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Polish%E2%80%93Soviet_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Polish-soviet%20war%201920%20Polish%20defences%20near%20Milosna%2C%20August.jpg",
+    "description": "The Polish–Soviet War was fought primarily between the Second Polish Republic and the Russian Soviet Federative Socialist Republic, following World War I and the Russian Revolution.",
     "period": {
       "start": {
-        "year": -498
+        "year": 1919,
+        "month": 2
       },
       "end": {
-        "year": -448
+        "year": 1921,
+        "month": 3
+      }
+    }
+  },
+  {
+    "id": "Q184928",
+    "name": "Russian Revolution of 1905",
+    "category": "revolution",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 75,
+    "tagline": "wave of mass political and social unrest that spread through vast areas of the Russian Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Revolution_of_1905",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Russian%20Revolution%2C%201905%20Q81553.jpg",
+    "description": "The Russian Revolution of 1905, also known as the First Russian Revolution, was a revolution in the Russian Empire which began on 22 January 1905 and led to the establishment of a constitutional monarchy under the Russian Constitution of 1906, the country's first formal constitution. The revolution was characterized by mass political and social unrest including worker strikes, peasant revolts, and military mutinies directed against Tsar Nicholas II and the autocracy, who were forced to establish the State Duma legislative assembly and grant certain rights, though both were later undermined.",
+    "period": {
+      "start": {
+        "year": 1905,
+        "month": 1
+      },
+      "end": {
+        "year": 1907,
+        "month": 6
+      }
+    }
+  },
+  {
+    "id": "Q200485",
+    "name": "Norman Conquest",
+    "category": "military-operation",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 75,
+    "tagline": "1066 invasion and conquest of England by Normans",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Norman_Conquest",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bayeux%20Tapestry%20WillelmDux.jpg",
+    "description": "The Norman Conquest of England was an 11th-century invasion by an army made up of thousands of Norman, French, Flemish, and Breton troops, all led by the Duke of Normandy, later styled William the Conqueror.",
+    "period": {
+      "start": {
+        "year": 1066,
+        "month": 10
+      },
+      "end": {
+        "year": 1075
       }
     }
   },
@@ -1643,6 +1729,29 @@
     }
   },
   {
+    "id": "Q689128",
+    "name": "Haitian Revolution",
+    "category": "revolution",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 74,
+    "tagline": "1791 slave revolt in the French colony of Saint-Domingue",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Haitian_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20for%20Palm%20Tree%20Hill.jpg",
+    "description": "The Haitian Revolution, also known as the Haitian War of Independence, was a successful insurrection by enslaved Africans against French colonial rule in Saint-Domingue, now the sovereign state of Haiti. The revolution was one of the only known slave rebellions in human history that led to the founding of a state which was both free from slavery and ruled by former captives.",
+    "period": {
+      "start": {
+        "year": 1791,
+        "month": 8
+      },
+      "end": {
+        "year": 1804,
+        "month": 1
+      }
+    }
+  },
+  {
     "id": "Q32929",
     "name": "War of the Austrian Succession",
     "category": "war",
@@ -1701,6 +1810,66 @@
       },
       "end": {
         "year": 750
+      }
+    }
+  },
+  {
+    "id": "Q184183",
+    "name": "Second Balkan War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "continuation of the First Balkan War in which Bulgaria fought Serbia, Greece, Romania and the Ottoman Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Balkan_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2nd-balkan-war-bulgarian-plan.JPG",
+    "description": "The Second Balkan War was a conflict fought between the Tsardom of Bulgaria and its former Balkan League allies, Serbia, Montenegro and Greece, who were later joined by Romania and the Ottoman Empire.",
+    "period": {
+      "start": {
+        "year": 1913,
+        "month": 6
+      },
+      "end": {
+        "year": 1913,
+        "month": 8
+      }
+    }
+  },
+  {
+    "id": "Q6286",
+    "name": "First Punic War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "First War between Rome and Carthage",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Punic_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20Punic%20War%20264%20BC.jpg",
+    "imageAttribution": "First_Punic_War_264_BC.png: Jon Platek\nderivative work: Macarenses (talk), via Wikimedia Commons",
+    "description": "The First Punic War was the first of three wars fought between Rome and Carthage, the two main powers of the western Mediterranean in the early 3rd century BC. For 23 years, in the longest continuous conflict and greatest naval war of antiquity, the two powers struggled for supremacy. The war was fought primarily on the Mediterranean island of Sicily and its surrounding waters, and also in North Africa. After immense losses on both sides, the Carthaginians were defeated and Rome gained territory from Carthage.",
+    "period": {
+      "start": {
+        "year": -263
+      },
+      "end": {
+        "year": -240
+      }
+    }
+  },
+  {
+    "id": "Q202161",
+    "name": "Gallic Wars",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "war (58–50 BCE) between the Roman Republic and Gaul",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gallic_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lionel%20Royer%20-%20Vercingetorix%20Throwing%20down%20His%20Weapons%20at%20the%20feet%20of%20Julius%20Caesar.jpg",
+    "description": "The Gallic Wars were waged between 58 and 50 BC by the Roman general Gaius Julius Caesar against the peoples of Gaul. Gallic, Germanic, and Brittonic tribes fought to defend their homelands against an aggressive Roman campaign. The wars culminated in the decisive Battle of Alesia in 52 BC, in which a complete Roman victory resulted in the expansion of the Roman Republic over the whole of Gaul. Though the collective Gallic armies were as strong as the Roman forces, internal divisions among the Gallic tribes eased victory for Caesar. Gallic chieftain Vercingetorix's attempt to unite the Gauls under a single banner came too late. Caesar portrayed the invasion as being a preemptive and defensive action, but historians agree that he fought the wars primarily to boost his political career and to pay off his debts. Still, Gaul was of significant military importance to the Romans. Native tribes in the region, both Gallic and Germanic, had repeatedly attacked Roman territory. Conquering Gaul allowed Rome to secure the natural border of the Rhine river.",
+    "period": {
+      "start": {
+        "year": -57
+      },
+      "end": {
+        "year": -50
       }
     }
   },
@@ -1791,22 +1960,39 @@
     }
   },
   {
-    "id": "Q6286",
-    "name": "First Punic War",
+    "id": "Q203233",
+    "name": "Battle of Plassey",
+    "category": "military-operation",
+    "regionTags": [
+      "south-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "1757 battle which established the British Raj in India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Plassey",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lord%20Clive%20meeting%20with%20Mir%20Jafar%20after%20the%20Battle%20of%20Plassey.jpg",
+    "description": "The Battle of Plassey was a decisive victory of the British East India Company, under the leadership of Robert Clive, over the Nawab of Bengal and his French allies on 23 June 1757. The victory was made possible by the betrayal of Mir Jafar, Nawab Siraj-ud-Daulah's commander in chief, as well as much of the Bengal Subah's armies being earlier committed against an Afghan invasion led by Ahmad Shah Durrani against the Mughal Empire. The battle helped the British East India Company take complete control of Bengal in 1773. Over the next hundred years, they continued to expand their control over vast territories in the rest of the Indian subcontinent and Burma.",
+    "at": {
+      "year": 1757,
+      "month": 6
+    }
+  },
+  {
+    "id": "Q6334",
+    "name": "Third Punic War",
     "category": "war",
     "regionTags": [],
     "fameScore": 72,
-    "tagline": "First War between Rome and Carthage",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Punic_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20Punic%20War%20264%20BC.jpg",
-    "imageAttribution": "First_Punic_War_264_BC.png: Jon Platek\nderivative work: Macarenses (talk), via Wikimedia Commons",
-    "description": "The First Punic War was the first of three wars fought between Rome and Carthage, the two main powers of the western Mediterranean in the early 3rd century BC. For 23 years, in the longest continuous conflict and greatest naval war of antiquity, the two powers struggled for supremacy. The war was fought primarily on the Mediterranean island of Sicily and its surrounding waters, and also in North Africa. After immense losses on both sides, the Carthaginians were defeated and Rome gained territory from Carthage.",
+    "tagline": "war between the Roman Republic and Carthage between 149 and 146 BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_Punic_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Western%20Mediterranean%20territory%2C%20150%20BC.svg",
+    "imageAttribution": "Goran_tek-en, via Wikimedia Commons",
+    "description": "The Third Punic War was the third and last of the Punic Wars fought between Carthage and Rome. The war was fought entirely within Carthaginian territory, in what is now northern Tunisia. When the Second Punic War ended in 201 BC one of the terms of the peace treaty prohibited Carthage from waging war without Rome's permission. Rome's ally, King Masinissa of Numidia, exploited this to repeatedly raid and seize Carthaginian territory with impunity. In 149 BC Carthage sent an army, under Hasdrubal, against Masinissa, the treaty notwithstanding. The campaign ended in disaster as the Battle of Oroscopa ended with a Carthaginian defeat and the surrender of the Carthaginian army. Anti-Carthaginian factions in Rome used the illicit military action as a pretext to prepare a punitive expedition.",
     "period": {
       "start": {
-        "year": -263
+        "year": -148
       },
       "end": {
-        "year": -240
+        "year": -145
       }
     }
   },
@@ -1878,6 +2064,47 @@
     }
   },
   {
+    "id": "Q188972",
+    "name": "Greek Civil War",
+    "category": "war",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 72,
+    "tagline": "1946–1949 civil war in Greece",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Greek_Civil_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Grupa%20borci%20na%20DA%20na%20Grcija.jpg",
+    "description": "The Greek Civil War took place from 1946 to 1949. The conflict, which erupted shortly after the end of World War II, consisted of a Communist-led uprising against the established government of the Kingdom of Greece. The rebels declared a people's republic, the Provisional Democratic Government of Greece, which was governed by the Communist Party of Greece (KKE) and its military branch, the Democratic Army of Greece (DSE). The rebels were supported by Albania and Yugoslavia. With the support of the United Kingdom and the United States, the Greek royal government forces ultimately prevailed.",
+    "period": {
+      "start": {
+        "year": 1946,
+        "month": 3
+      },
+      "end": {
+        "year": 1949,
+        "month": 10
+      }
+    }
+  },
+  {
+    "id": "Q856670",
+    "name": "1973 Chilean coup d'état",
+    "category": "coup-d-etat",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 72,
+    "tagline": "military overthrow of the Popular Unity coalition government in 1973 in Chile",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1973_Chilean_coup_d%27%C3%A9tat",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Golpe%20de%20Estado%201973.jpg",
+    "imageAttribution": "Biblioteca del Congreso Nacional de Chile, via Wikimedia Commons",
+    "description": "The 1973 Chilean coup d'état was a military overthrow of the socialist president of Chile Salvador Allende and his Popular Unity coalition government. Allende, who has been described as the first Marxist to be democratically elected president in a Latin American liberal democracy, faced significant social unrest and political tension with the opposition-controlled National Congress of Chile. On 11 September 1973, a group of military officers, led by General Augusto Pinochet, seized power in a coup, ending civilian rule.",
+    "at": {
+      "year": 1973,
+      "month": 9
+    }
+  },
+  {
     "id": "Q134900605",
     "name": "Twelve-Day War",
     "category": "war",
@@ -1946,44 +2173,21 @@
     }
   },
   {
-    "id": "Q188972",
-    "name": "Greek Civil War",
-    "category": "war",
-    "regionTags": [
-      "europe"
-    ],
+    "id": "Q75984",
+    "name": "Dirty War",
+    "category": "military-operation",
+    "regionTags": [],
     "fameScore": 71,
-    "tagline": "1946–1949 civil war in Greece",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Greek_Civil_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Grupa%20borci%20na%20DA%20na%20Grcija.jpg",
-    "description": "The Greek Civil War took place from 1946 to 1949. The conflict, which erupted shortly after the end of World War II, consisted of a Communist-led uprising against the established government of the Kingdom of Greece. The rebels declared a people's republic, the Provisional Democratic Government of Greece, which was governed by the Communist Party of Greece (KKE) and its military branch, the Democratic Army of Greece (DSE). The rebels were supported by Albania and Yugoslavia. With the support of the United Kingdom and the United States, the Greek royal government forces ultimately prevailed.",
+    "tagline": "period of state terrorism in Argentina from 1974 to 1983",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dirty_War",
+    "description": "The Dirty War was the name used by the military junta or civic-military dictatorship of Argentina for the period of state-sponsored violence in Argentina from 1974 to 1983. During this campaign, military and security forces and death squads in the form of the Argentine Anticommunist Alliance hunted down any political dissidents and anyone believed to be associated with socialism, communism, left-wing Peronism, or the Montoneros movement.",
     "period": {
       "start": {
-        "year": 1946,
-        "month": 3
+        "year": 1955
       },
       "end": {
-        "year": 1949,
-        "month": 10
+        "year": 1989
       }
-    }
-  },
-  {
-    "id": "Q856670",
-    "name": "1973 Chilean coup d'état",
-    "category": "coup-d-etat",
-    "regionTags": [
-      "americas"
-    ],
-    "fameScore": 71,
-    "tagline": "military overthrow of the Popular Unity coalition government in 1973 in Chile",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/1973_Chilean_coup_d%27%C3%A9tat",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Golpe%20de%20Estado%201973.jpg",
-    "imageAttribution": "Biblioteca del Congreso Nacional de Chile, via Wikimedia Commons",
-    "description": "The 1973 Chilean coup d'état was a military overthrow of the socialist president of Chile Salvador Allende and his Popular Unity coalition government. Allende, who has been described as the first Marxist to be democratically elected president in a Latin American liberal democracy, faced significant social unrest and political tension with the opposition-controlled National Congress of Chile. On 11 September 1973, a group of military officers, led by General Augusto Pinochet, seized power in a coup, ending civilian rule.",
-    "at": {
-      "year": 1973,
-      "month": 9
     }
   },
   {
@@ -2012,7 +2216,7 @@
     "name": "Spanish American wars of independence",
     "category": "war-of-independence",
     "regionTags": [],
-    "fameScore": 69,
+    "fameScore": 70,
     "tagline": "1808–1833 armed conflicts in the Americas between Spain and independence movements",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_American_wars_of_independence",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Independencia.gif",
@@ -2029,23 +2233,21 @@
     }
   },
   {
-    "id": "Q186284",
-    "name": "Polish–Soviet War",
-    "category": "war",
+    "id": "Q2092093",
+    "name": "Mongol invasions and conquests",
+    "category": "military-operation",
     "regionTags": [],
     "fameScore": 68,
-    "tagline": "conflict between Poland and Soviet Russia following the First World War (February 1919 - March 1921)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Polish%E2%80%93Soviet_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Polish-soviet%20war%201920%20Polish%20defences%20near%20Milosna%2C%20August.jpg",
-    "description": "The Polish–Soviet War was fought primarily between the Second Polish Republic and the Russian Soviet Federative Socialist Republic, following World War I and the Russian Revolution.",
+    "tagline": "series of Mongol invasions and conquests (1206–1405)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_conquests",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bataille%20de%20v%C3%A2liy%C3%A2n%20%281221%29.jpeg",
+    "description": "The Mongol conquests took place during the 13th and 14th centuries, creating the largest contiguous empire in history, the Mongol Empire (1206–1368), which by 1260 covered a significant portion of Eurasia. At its height, it stretched from the Pacific to Central Europe. As the Mongol Empire began to fragment from 1260, starting with its first major military defeat in the Battle of Ain Jalut against the Egyptians, conflict between the Mongols and Eastern European polities continued for centuries. Mongols continued to rule China into the 14th century under the Yuan dynasty, while Mongol rule in Persia persisted into the 15th century under the Timurid Empire. In the Indian subcontinent, the later Mughal Empire survived into the 19th century.",
     "period": {
       "start": {
-        "year": 1919,
-        "month": 2
+        "year": 1206
       },
       "end": {
-        "year": 1921,
-        "month": 3
+        "year": 1337
       }
     }
   },
@@ -2112,6 +2314,27 @@
     }
   },
   {
+    "id": "Q1551794",
+    "name": "Japanese invasion of Manchuria",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 68,
+    "tagline": "1931 part of the Second Sino-Japanese War",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Japanese_invasion_of_Manchuria",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20troops%20entering%20Tsitsihar.jpg",
+    "description": "The Empire of Japan's Kwantung Army invaded the Manchuria region of China on 18 September 1931, immediately following the Mukden incident, a false flag event staged by Japanese military personnel as a pretext to invade. At the war's end in February 1932, the Japanese established the puppet state of Manchukuo. The occupation lasted until mid-August 1945, towards the end of the Second World War, in the face of an onslaught by the Soviet Union and Mongolia during the Manchurian Strategic Offensive Operation.",
+    "period": {
+      "start": {
+        "year": 1931,
+        "month": 9
+      },
+      "end": {
+        "year": 1932,
+        "month": 2
+      }
+    }
+  },
+  {
     "id": "Q54434",
     "name": "War of Jenkins’ Ear",
     "category": "war",
@@ -2130,46 +2353,6 @@
       "end": {
         "year": 1748,
         "month": 10
-      }
-    }
-  },
-  {
-    "id": "Q1551794",
-    "name": "Japanese invasion of Manchuria",
-    "category": "military-operation",
-    "regionTags": [],
-    "fameScore": 67,
-    "tagline": "1931 part of the Second Sino-Japanese War",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Japanese_invasion_of_Manchuria",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20troops%20entering%20Tsitsihar.jpg",
-    "description": "The Empire of Japan's Kwantung Army invaded the Manchuria region of China on 18 September 1931, immediately following the Mukden incident, a false flag event staged by Japanese military personnel as a pretext to invade. At the war's end in February 1932, the Japanese established the puppet state of Manchukuo. The occupation lasted until mid-August 1945, towards the end of the Second World War, in the face of an onslaught by the Soviet Union and Mongolia during the Manchurian Strategic Offensive Operation.",
-    "period": {
-      "start": {
-        "year": 1931,
-        "month": 9
-      },
-      "end": {
-        "year": 1932,
-        "month": 2
-      }
-    }
-  },
-  {
-    "id": "Q2092093",
-    "name": "Mongol invasions and conquests",
-    "category": "military-operation",
-    "regionTags": [],
-    "fameScore": 66,
-    "tagline": "series of Mongol invasions and conquests (1206–1405)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_conquests",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bataille%20de%20v%C3%A2liy%C3%A2n%20%281221%29.jpeg",
-    "description": "The Mongol conquests took place during the 13th and 14th centuries, creating the largest contiguous empire in history, the Mongol Empire (1206–1368), which by 1260 covered a significant portion of Eurasia. At its height, it stretched from the Pacific to Central Europe. As the Mongol Empire began to fragment from 1260, starting with its first major military defeat in the Battle of Ain Jalut against the Egyptians, conflict between the Mongols and Eastern European polities continued for centuries. Mongols continued to rule China into the 14th century under the Yuan dynasty, while Mongol rule in Persia persisted into the 15th century under the Timurid Empire. In the Indian subcontinent, the later Mughal Empire survived into the 19th century.",
-    "period": {
-      "start": {
-        "year": 1206
-      },
-      "end": {
-        "year": 1337
       }
     }
   },
@@ -2234,6 +2417,28 @@
       "end": {
         "year": 1885,
         "month": 4
+      }
+    }
+  },
+  {
+    "id": "Q1552718",
+    "name": "Granada War",
+    "category": "war",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 66,
+    "tagline": "1482–1492 war",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Granada_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20Rendici%C3%B3n%20de%20Granada%20-%20Pradilla.jpg",
+    "description": "The Granada War was a series of military campaigns between 1482 and 1492 during the reign of the Catholic Monarchs, Isabella I of Castile and Ferdinand II of Aragon, against the Nasrid dynasty's Emirate of Granada. It ended with the defeat of Granada and its annexation by Castile, ending the last remnant of Islamic rule on the Iberian peninsula.",
+    "period": {
+      "start": {
+        "year": 1492
+      },
+      "end": {
+        "year": 1492,
+        "month": 1
       }
     }
   },
@@ -2530,6 +2735,28 @@
     }
   },
   {
+    "id": "Q112524",
+    "name": "Red Turban Rebellion",
+    "category": "rebellion",
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 63,
+    "tagline": "Revolt against the Yuan dynasty in China (1351–1368)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Red_Turban_Rebellions",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Red%20Turban.png",
+    "imageAttribution": "SY, via Wikimedia Commons",
+    "description": "The Red Turban Rebellions were uprisings against the Yuan dynasty between 1351 and 1368, eventually leading to its collapse. Remnants of the Yuan imperial court retreated northwards and is thereafter known as the Northern Yuan in historiography.",
+    "period": {
+      "start": {
+        "year": 1351
+      },
+      "end": {
+        "year": 1368
+      }
+    }
+  },
+  {
     "id": "Q28365",
     "name": "Lamian War",
     "category": "war",
@@ -2801,6 +3028,47 @@
     }
   },
   {
+    "id": "Q5555632",
+    "name": "First Messenian War",
+    "category": "war",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 57,
+    "tagline": "war between Messenia and Sparta",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Messenian_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ithome2.jpg",
+    "description": "The First Messenian War was a war between Messenia and Sparta. It began in 743 BC and ended in 724 BC, according to the dates given by Pausanias.",
+    "period": {
+      "start": {
+        "year": -742
+      },
+      "end": {
+        "year": -723
+      }
+    }
+  },
+  {
+    "id": "Q738787",
+    "name": "Lelantine War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "military conflict between the two ancient Greek city states Chalcis and Eretria in Euboea",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lelantine_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lelantischer%20Krieg.png",
+    "imageAttribution": "Lencer, via Wikimedia Commons",
+    "description": "The Lelantine War was a military conflict between the two ancient Greek city states Chalcis and Eretria in Euboea which took place in the early Archaic period, between c. 710 and 650 BC. The reason for war was, according to tradition, the struggle for the fertile Lelantine Plain on the island of Euboea. Due to the economic importance of the two participating poleis, the conflict spread considerably, with multiple further city states joining either side, resulting in much of Greece being at war. The historian Thucydides describes the Lelantine War as exceptional, the only war in Greece between the mythical Trojan War and the Persian Wars of the early 5th century BC in which allied cities rather than single ones were involved.",
+    "period": {
+      "start": {
+        "year": -709
+      },
+      "end": {
+        "year": -649
+      }
+    }
+  },
+  {
     "id": "Q1186260",
     "name": "Creek War",
     "category": "war",
@@ -2817,6 +3085,46 @@
       "end": {
         "year": 1814,
         "month": 8
+      }
+    }
+  },
+  {
+    "id": "Q2378252",
+    "name": "Jinshin-no-ran",
+    "category": "rebellion",
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 56,
+    "tagline": "672 succession war in Japan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jinshin_War",
+    "description": "The Jinshin War  was a war of succession that took place in the Yamato Kingship near the end of Asuka period. It broke out in 672 following the death of Emperor Tenji. The name refers to the jinshin or ninth year of the sexagenary cycle, corresponding to the Gregorian year 672. It was one of the largest conflicts in classical Japanese history.",
+    "period": {
+      "start": {
+        "year": 672,
+        "month": 7
+      },
+      "end": {
+        "year": 672,
+        "month": 8
+      }
+    }
+  },
+  {
+    "id": "Q2075775",
+    "name": "Second Messenian War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 55,
+    "tagline": "war between the Ancient Greek states of Messenia and Sparta",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Messenian_War",
+    "description": "The Second Messenian War was a war which occurred c. 660–650 BC between the ancient Greek states of Messenia and Sparta, with localized resistance possibly lasting until the end of the century. It started around 40 years after the end of the First Messenian War with a slave rebellion. Other scholars, however, assign earlier dates, claiming, for example, that 668 BC is the date of the war's start, pointing at Sparta's defeat at the First Battle of Hysiae as a possible catalyst for the uprising. Current events concerning this war are stated, too.",
+    "period": {
+      "start": {
+        "year": -684
+      },
+      "end": {
+        "year": -667
       }
     }
   },
@@ -3069,23 +3377,6 @@
     }
   },
   {
-    "id": "Q488",
-    "name": "Atomic bombings of Hiroshima and Nagasaki",
-    "category": "military-operation",
-    "regionTags": [
-      "east-asia"
-    ],
-    "fameScore": 47,
-    "tagline": "1945 use of nuclear weapons against Japan in World War II",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Atomic%20bombing%20of%20Japan.jpg",
-    "description": "On 6 and 9 August 1945, the United States detonated two atomic bombs over the Japanese cities of Hiroshima and Nagasaki, respectively, during the final days of World War II. The aerial bombings killed 150,000 to 246,000 people, most of whom were civilians, and remain the first and only uses of nuclear weapons in an armed conflict.",
-    "at": {
-      "year": 1945,
-      "month": 8
-    }
-  },
-  {
     "id": "Q4209365",
     "name": "Selangor Civil War",
     "category": "war",
@@ -3096,255 +3387,6 @@
     "description": "The Klang War or Selangor Civil War was a series of conflicts that lasted from 1866 to 1874 in the Malay state of Selangor in the Malay Peninsula.",
     "at": {
       "year": 1867
-    }
-  },
-  {
-    "id": "Q179975",
-    "name": "Chinese Civil War",
-    "category": "war",
-    "regionTags": [
-      "east-asia"
-    ],
-    "fameScore": 46,
-    "tagline": "The civil war between the government of the Republic of China and the Chinese Communist Party",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chinese_Civil_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Shangtang.jpg",
-    "description": "The Chinese Civil War was fought between the government of the Republic of China (ROC), led by the Kuomintang (KMT), and the Chinese Communist Party (CCP). Armed conflict continued intermittently from 1 August 1927 until Communist victory that led to the Kuomintang's retreat to Taiwan on 7 December 1949.",
-    "period": {
-      "start": {
-        "year": 1927,
-        "month": 8
-      },
-      "end": {
-        "year": 1950,
-        "month": 5
-      }
-    }
-  },
-  {
-    "id": "Q184928",
-    "name": "Russian Revolution of 1905",
-    "category": "revolution",
-    "regionTags": [
-      "europe"
-    ],
-    "fameScore": 44,
-    "tagline": "wave of mass political and social unrest that spread through vast areas of the Russian Empire",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Revolution_of_1905",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Russian%20Revolution%2C%201905%20Q81553.jpg",
-    "description": "The Russian Revolution of 1905, also known as the First Russian Revolution, was a revolution in the Russian Empire which began on 22 January 1905 and led to the establishment of a constitutional monarchy under the Russian Constitution of 1906, the country's first formal constitution. The revolution was characterized by mass political and social unrest including worker strikes, peasant revolts, and military mutinies directed against Tsar Nicholas II and the autocracy, who were forced to establish the State Duma legislative assembly and grant certain rights, though both were later undermined.",
-    "period": {
-      "start": {
-        "year": 1905,
-        "month": 1
-      },
-      "end": {
-        "year": 1907,
-        "month": 6
-      }
-    }
-  },
-  {
-    "id": "Q184183",
-    "name": "Second Balkan War",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 44,
-    "tagline": "continuation of the First Balkan War in which Bulgaria fought Serbia, Greece, Romania and the Ottoman Empire",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Balkan_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2nd-balkan-war-bulgarian-plan.JPG",
-    "description": "The Second Balkan War was a conflict fought between the Tsardom of Bulgaria and its former Balkan League allies, Serbia, Montenegro and Greece, who were later joined by Romania and the Ottoman Empire.",
-    "period": {
-      "start": {
-        "year": 1913,
-        "month": 6
-      },
-      "end": {
-        "year": 1913,
-        "month": 8
-      }
-    }
-  },
-  {
-    "id": "Q200485",
-    "name": "Norman Conquest",
-    "category": "military-operation",
-    "regionTags": [
-      "europe"
-    ],
-    "fameScore": 43,
-    "tagline": "1066 invasion and conquest of England by Normans",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Norman_Conquest",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bayeux%20Tapestry%20WillelmDux.jpg",
-    "description": "The Norman Conquest of England was an 11th-century invasion by an army made up of thousands of Norman, French, Flemish, and Breton troops, all led by the Duke of Normandy, later styled William the Conqueror.",
-    "period": {
-      "start": {
-        "year": 1066,
-        "month": 10
-      },
-      "end": {
-        "year": 1075
-      }
-    }
-  },
-  {
-    "id": "Q689128",
-    "name": "Haitian Revolution",
-    "category": "revolution",
-    "regionTags": [
-      "americas"
-    ],
-    "fameScore": 42,
-    "tagline": "1791 slave revolt in the French colony of Saint-Domingue",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Haitian_Revolution",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20for%20Palm%20Tree%20Hill.jpg",
-    "description": "The Haitian Revolution, also known as the Haitian War of Independence, was a successful insurrection by enslaved Africans against French colonial rule in Saint-Domingue, now the sovereign state of Haiti. The revolution was one of the only known slave rebellions in human history that led to the founding of a state which was both free from slavery and ruled by former captives.",
-    "period": {
-      "start": {
-        "year": 1791,
-        "month": 8
-      },
-      "end": {
-        "year": 1804,
-        "month": 1
-      }
-    }
-  },
-  {
-    "id": "Q6334",
-    "name": "Third Punic War",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 42,
-    "tagline": "war between the Roman Republic and Carthage between 149 and 146 BCE",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_Punic_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Western%20Mediterranean%20territory%2C%20150%20BC.svg",
-    "imageAttribution": "Goran_tek-en, via Wikimedia Commons",
-    "description": "The Third Punic War was the third and last of the Punic Wars fought between Carthage and Rome. The war was fought entirely within Carthaginian territory, in what is now northern Tunisia. When the Second Punic War ended in 201 BC one of the terms of the peace treaty prohibited Carthage from waging war without Rome's permission. Rome's ally, King Masinissa of Numidia, exploited this to repeatedly raid and seize Carthaginian territory with impunity. In 149 BC Carthage sent an army, under Hasdrubal, against Masinissa, the treaty notwithstanding. The campaign ended in disaster as the Battle of Oroscopa ended with a Carthaginian defeat and the surrender of the Carthaginian army. Anti-Carthaginian factions in Rome used the illicit military action as a pretext to prepare a punitive expedition.",
-    "period": {
-      "start": {
-        "year": -148
-      },
-      "end": {
-        "year": -145
-      }
-    }
-  },
-  {
-    "id": "Q202161",
-    "name": "Gallic Wars",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 42,
-    "tagline": "war (58–50 BCE) between the Roman Republic and Gaul",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gallic_Wars",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lionel%20Royer%20-%20Vercingetorix%20Throwing%20down%20His%20Weapons%20at%20the%20feet%20of%20Julius%20Caesar.jpg",
-    "description": "The Gallic Wars were waged between 58 and 50 BC by the Roman general Gaius Julius Caesar against the peoples of Gaul. Gallic, Germanic, and Brittonic tribes fought to defend their homelands against an aggressive Roman campaign. The wars culminated in the decisive Battle of Alesia in 52 BC, in which a complete Roman victory resulted in the expansion of the Roman Republic over the whole of Gaul. Though the collective Gallic armies were as strong as the Roman forces, internal divisions among the Gallic tribes eased victory for Caesar. Gallic chieftain Vercingetorix's attempt to unite the Gauls under a single banner came too late. Caesar portrayed the invasion as being a preemptive and defensive action, but historians agree that he fought the wars primarily to boost his political career and to pay off his debts. Still, Gaul was of significant military importance to the Romans. Native tribes in the region, both Gallic and Germanic, had repeatedly attacked Roman territory. Conquering Gaul allowed Rome to secure the natural border of the Rhine river.",
-    "period": {
-      "start": {
-        "year": -57
-      },
-      "end": {
-        "year": -50
-      }
-    }
-  },
-  {
-    "id": "Q203233",
-    "name": "Battle of Plassey",
-    "category": "military-operation",
-    "regionTags": [
-      "south-asia"
-    ],
-    "fameScore": 42,
-    "tagline": "1757 battle which established the British Raj in India",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Plassey",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lord%20Clive%20meeting%20with%20Mir%20Jafar%20after%20the%20Battle%20of%20Plassey.jpg",
-    "description": "The Battle of Plassey was a decisive victory of the British East India Company, under the leadership of Robert Clive, over the Nawab of Bengal and his French allies on 23 June 1757. The victory was made possible by the betrayal of Mir Jafar, Nawab Siraj-ud-Daulah's commander in chief, as well as much of the Bengal Subah's armies being earlier committed against an Afghan invasion led by Ahmad Shah Durrani against the Mughal Empire. The battle helped the British East India Company take complete control of Bengal in 1773. Over the next hundred years, they continued to expand their control over vast territories in the rest of the Indian subcontinent and Burma.",
-    "at": {
-      "year": 1757,
-      "month": 6
-    }
-  },
-  {
-    "id": "Q75984",
-    "name": "Dirty War",
-    "category": "military-operation",
-    "regionTags": [],
-    "fameScore": 40,
-    "tagline": "period of state terrorism in Argentina from 1974 to 1983",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dirty_War",
-    "description": "The Dirty War was the name used by the military junta or civic-military dictatorship of Argentina for the period of state-sponsored violence in Argentina from 1974 to 1983. During this campaign, military and security forces and death squads in the form of the Argentine Anticommunist Alliance hunted down any political dissidents and anyone believed to be associated with socialism, communism, left-wing Peronism, or the Montoneros movement.",
-    "period": {
-      "start": {
-        "year": 1955
-      },
-      "end": {
-        "year": 1989
-      }
-    }
-  },
-  {
-    "id": "Q112524",
-    "name": "Red Turban Rebellion",
-    "category": "rebellion",
-    "regionTags": [
-      "east-asia"
-    ],
-    "fameScore": 36,
-    "tagline": "Revolt against the Yuan dynasty in China (1351–1368)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Red_Turban_Rebellions",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Red%20Turban.png",
-    "imageAttribution": "SY, via Wikimedia Commons",
-    "description": "The Red Turban Rebellions were uprisings against the Yuan dynasty between 1351 and 1368, eventually leading to its collapse. Remnants of the Yuan imperial court retreated northwards and is thereafter known as the Northern Yuan in historiography.",
-    "period": {
-      "start": {
-        "year": 1351
-      },
-      "end": {
-        "year": 1368
-      }
-    }
-  },
-  {
-    "id": "Q5555632",
-    "name": "First Messenian War",
-    "category": "war",
-    "regionTags": [
-      "europe"
-    ],
-    "fameScore": 33,
-    "tagline": "war between Messenia and Sparta",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Messenian_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ithome2.jpg",
-    "description": "The First Messenian War was a war between Messenia and Sparta. It began in 743 BC and ended in 724 BC, according to the dates given by Pausanias.",
-    "period": {
-      "start": {
-        "year": -742
-      },
-      "end": {
-        "year": -723
-      }
-    }
-  },
-  {
-    "id": "Q738787",
-    "name": "Lelantine War",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 33,
-    "tagline": "military conflict between the two ancient Greek city states Chalcis and Eretria in Euboea",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lelantine_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lelantischer%20Krieg.png",
-    "imageAttribution": "Lencer, via Wikimedia Commons",
-    "description": "The Lelantine War was a military conflict between the two ancient Greek city states Chalcis and Eretria in Euboea which took place in the early Archaic period, between c. 710 and 650 BC. The reason for war was, according to tradition, the struggle for the fertile Lelantine Plain on the island of Euboea. Due to the economic importance of the two participating poleis, the conflict spread considerably, with multiple further city states joining either side, resulting in much of Greece being at war. The historian Thucydides describes the Lelantine War as exceptional, the only war in Greece between the mythical Trojan War and the Persian Wars of the early 5th century BC in which allied cities rather than single ones were involved.",
-    "period": {
-      "start": {
-        "year": -709
-      },
-      "end": {
-        "year": -649
-      }
     }
   },
   {
@@ -3366,46 +3408,6 @@
       "end": {
         "year": 1832,
         "month": 6
-      }
-    }
-  },
-  {
-    "id": "Q2378252",
-    "name": "Jinshin-no-ran",
-    "category": "rebellion",
-    "regionTags": [
-      "east-asia"
-    ],
-    "fameScore": 32,
-    "tagline": "672 succession war in Japan",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jinshin_War",
-    "description": "The Jinshin War  was a war of succession that took place in the Yamato Kingship near the end of Asuka period. It broke out in 672 following the death of Emperor Tenji. The name refers to the jinshin or ninth year of the sexagenary cycle, corresponding to the Gregorian year 672. It was one of the largest conflicts in classical Japanese history.",
-    "period": {
-      "start": {
-        "year": 672,
-        "month": 7
-      },
-      "end": {
-        "year": 672,
-        "month": 8
-      }
-    }
-  },
-  {
-    "id": "Q2075775",
-    "name": "Second Messenian War",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 31,
-    "tagline": "war between the Ancient Greek states of Messenia and Sparta",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Messenian_War",
-    "description": "The Second Messenian War was a war which occurred c. 660–650 BC between the ancient Greek states of Messenia and Sparta, with localized resistance possibly lasting until the end of the century. It started around 40 years after the end of the First Messenian War with a slave rebellion. Other scholars, however, assign earlier dates, claiming, for example, that 668 BC is the date of the war's start, pointing at Sparta's defeat at the First Battle of Hysiae as a possible catalyst for the uprising. Current events concerning this war are stated, too.",
-    "period": {
-      "start": {
-        "year": -684
-      },
-      "end": {
-        "year": -667
       }
     }
   }
