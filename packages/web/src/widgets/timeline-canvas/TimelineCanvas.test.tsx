@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, afterEach, vi } from 'vitest';
 import { TimelineCanvas } from './TimelineCanvas';
-import type { Milestone, Person, ConflictEntry } from '../../shared/types';
+import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
 
 afterEach(cleanup);
 
@@ -45,6 +45,8 @@ const fixtureMilestones: Milestone[] = [
 ];
 
 const defaultFameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
+const defaultSelectedDomains: OccupationDomain[] = [];
+const defaultSelectedRegions: Region[] = [];
 const noopEntityClick = () => {};
 
 test('renders both lanes, each populated from its own dataset', () => {
@@ -54,6 +56,8 @@ test('renders both lanes, each populated from its own dataset', () => {
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -81,6 +85,8 @@ test('the two lane sections and every year axis share the same rendered width', 
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -112,6 +118,8 @@ test('the full-height decade gridline is split into a BCE and a CE region with d
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -136,6 +144,8 @@ test('renders three year axes — top, between People and Conflicts+Milestones, 
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -150,6 +160,8 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -172,6 +184,8 @@ test('dragging the Mountain Profile viewport rect scrolls the container, proport
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -222,6 +236,8 @@ test('a mousedown on the scroll container content still pans it — the custom s
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -240,6 +256,8 @@ test('clicking the Mountain Profile track outside the viewport rect jumps the vi
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -268,6 +286,8 @@ test('releasing a drag suppresses the click event that follows it', () => {
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={onEntityClick}
     />,
   );
@@ -294,6 +314,8 @@ test('a click preceded only by sub-threshold pointer jitter still registers', ()
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={onEntityClick}
     />,
   );
@@ -315,6 +337,8 @@ test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll alrea
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -339,6 +363,8 @@ test('the zoom-in button widens rendered lines; zoom-out narrows them back', () 
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -369,6 +395,8 @@ test('zooming does not change which entities are rendered — density is gated b
       conflicts={[]}
       milestones={[]}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -396,6 +424,8 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       conflicts={[]}
       milestones={[]}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -407,10 +437,85 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       conflicts={[]}
       milestones={[]}
       fameScoreValues={{ ...defaultFameScoreValues, people: 75 }}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
+});
+
+test('a person outside an active Occupation Domain filter is excluded; clearing the filter reveals them', () => {
+  const { container, rerender } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={[]}
+      milestones={[]}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={['science-technology']}
+      selectedRegions={defaultSelectedRegions}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
+
+  rerender(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={[]}
+      milestones={[]}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
+});
+
+test('an item outside an active Region filter is excluded; clearing the filter reveals it', () => {
+  const { container, rerender } = render(
+    <TimelineCanvas
+      people={[]}
+      conflicts={fixtureConflicts}
+      milestones={[]}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={['africa']}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0); // Korean War is tagged east-asia, not africa
+
+  rerender(
+    <TimelineCanvas
+      people={[]}
+      conflicts={fixtureConflicts}
+      milestones={[]}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={['east-asia']}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
+});
+
+test('an item with no region tags is excluded once a Region filter is active', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={[]}
+      conflicts={[]}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={['europe']}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  // fixtureMilestones' football entry has an empty regionTags array — it
+  // can't match any non-empty region selection.
+  expect(container.querySelectorAll('.d3-dot')).toHaveLength(0);
 });
 
 test('the People lane defaults its vertical scroll to the bottom (axis-adjacent edge) whenever the visible person set changes', () => {
@@ -420,6 +525,8 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -436,6 +543,8 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={{ ...defaultFameScoreValues, people: 80 }}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -450,6 +559,8 @@ test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -462,6 +573,8 @@ test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={{ ...defaultFameScoreValues, conflicts: 90 }}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -477,6 +590,8 @@ test('clicking a mark reports its entity id/type via onEntityClick, resolved thr
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={onEntityClick}
     />,
   );
@@ -495,6 +610,8 @@ test('clicking empty canvas space (no data-entity-id ancestor) does not call onE
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={onEntityClick}
     />,
   );
@@ -513,6 +630,8 @@ test('a mark with an unrecognized data-entity-type is ignored rather than report
       conflicts={fixtureConflicts}
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
       onEntityClick={onEntityClick}
     />,
   );

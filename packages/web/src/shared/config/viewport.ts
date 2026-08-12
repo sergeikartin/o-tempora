@@ -36,3 +36,34 @@ export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
   conflicts: { min: 1, max: 100, default: 75 },
   milestones: { min: 1, max: 100, default: 75 },
 };
+
+// Data Depth: a three-position UI preset that writes canonical values into
+// the three fame-score floor inputs above in one click (grill-with-docs
+// session 2026-08-12 — see CONTEXT.md's Data Depth entry). `curated`
+// deliberately equals FAME_SCORE_BOUNDS's existing per-lane defaults, so
+// the app's launch behavior is unchanged by this feature; each level after
+// it digs deeper (lower floor, more entries) rather than narrower. Purely a
+// UI convenience — distinct from the retired pipeline-side Fame Tier
+// gating (ADR 0003).
+export type DataDepthLevelId = 'curated' | 'expanded' | 'full';
+
+export interface DataDepthLevel {
+  id: DataDepthLevelId;
+  label: string;
+  values: Record<FameScoreLane, number>;
+}
+
+export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
+  { id: 'curated', label: 'Curated', values: { people: 90, conflicts: 75, milestones: 75 } },
+  { id: 'expanded', label: 'Expanded', values: { people: 82, conflicts: 50, milestones: 50 } },
+  { id: 'full', label: 'Full', values: { people: 75, conflicts: 1, milestones: 1 } },
+];
+
+// Derives which level (if any) the given fame-score floor values match —
+// used only to drive the switch's highlighted state, never stored as its
+// own piece of state. Returns null ("custom") once a numeric input has
+// been hand-edited away from every preset row.
+export function matchDataDepthLevel(values: Record<FameScoreLane, number>): DataDepthLevelId | null {
+  const match = DATA_DEPTH_LEVELS.find((level) => FAME_SCORE_LANES.every((lane) => level.values[lane] === values[lane]));
+  return match ? match.id : null;
+}

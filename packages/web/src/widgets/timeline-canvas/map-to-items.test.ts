@@ -1,7 +1,15 @@
 import { test, expect } from 'vitest';
-import { assignRows, filterByFameScore, mapMilestones, mapPeople, mapConflicts } from './map-to-items';
+import {
+  assignRows,
+  filterByFameScore,
+  filterByOccupationDomain,
+  filterByRegion,
+  mapMilestones,
+  mapPeople,
+  mapConflicts,
+} from './map-to-items';
 import { today } from '../../shared/lib/dates';
-import type { Milestone, Person, Conflict, ConflictEvent } from '../../shared/types';
+import type { Milestone, Person, Conflict, ConflictEvent, Region } from '../../shared/types';
 
 const person: Person = {
   id: 'Q868',
@@ -194,6 +202,69 @@ test('filterByFameScore keeps only items whose fameScore clears the threshold', 
 test('filterByFameScore keeps a value exactly at the threshold', () => {
   const items = [{ id: 'a', fameScore: 50 }];
   expect(filterByFameScore(items, 50)).toHaveLength(1);
+});
+
+// filterByOccupationDomain — People-only Legend-pill filter.
+test('filterByOccupationDomain returns items unchanged when no domains are selected', () => {
+  const items = [{ id: 'a', occupationDomain: 'arts' as const }, { id: 'b', occupationDomain: 'sports' as const }];
+  expect(filterByOccupationDomain(items, [])).toEqual(items);
+});
+
+test('filterByOccupationDomain keeps only items whose domain is selected', () => {
+  const items = [
+    { id: 'a', occupationDomain: 'arts' as const },
+    { id: 'b', occupationDomain: 'sports' as const },
+    { id: 'c', occupationDomain: 'humanities' as const },
+  ];
+  expect(filterByOccupationDomain(items, ['arts']).map((item) => item.id)).toEqual(['a']);
+});
+
+test('filterByOccupationDomain unions multiple selected domains (OR)', () => {
+  const items = [
+    { id: 'a', occupationDomain: 'arts' as const },
+    { id: 'b', occupationDomain: 'sports' as const },
+    { id: 'c', occupationDomain: 'humanities' as const },
+  ];
+  expect(filterByOccupationDomain(items, ['arts', 'sports']).map((item) => item.id)).toEqual(['a', 'b']);
+});
+
+// filterByRegion — one shared filter across all three lanes. Takes a
+// regionsOf accessor rather than requiring `regionTags: Region[]` directly,
+// since People's native tags are the finer UnRegion — these tests fix the
+// accessor to a plain `regionTags` field to exercise the filtering logic
+// itself, independent of that translation.
+interface RegionFixture {
+  id: string;
+  regionTags: Region[];
+}
+const regionsOf = (item: RegionFixture) => item.regionTags;
+
+test('filterByRegion returns items unchanged when no regions are selected', () => {
+  const items: RegionFixture[] = [{ id: 'a', regionTags: ['europe'] }, { id: 'b', regionTags: [] }];
+  expect(filterByRegion(items, [], regionsOf)).toEqual(items);
+});
+
+test('filterByRegion keeps only items tagged with a selected region', () => {
+  const items: RegionFixture[] = [
+    { id: 'a', regionTags: ['europe'] },
+    { id: 'b', regionTags: ['africa'] },
+    { id: 'c', regionTags: [] },
+  ];
+  expect(filterByRegion(items, ['europe'], regionsOf).map((item) => item.id)).toEqual(['a']);
+});
+
+test('filterByRegion unions multiple selected regions (OR) and matches any tag in a multi-tag item', () => {
+  const items: RegionFixture[] = [
+    { id: 'a', regionTags: ['europe', 'africa'] },
+    { id: 'b', regionTags: ['americas'] },
+    { id: 'c', regionTags: ['south-asia'] },
+  ];
+  expect(filterByRegion(items, ['africa', 'americas'], regionsOf).map((item) => item.id)).toEqual(['a', 'b']);
+});
+
+test('filterByRegion excludes an item with no region tags once a filter is active', () => {
+  const items: RegionFixture[] = [{ id: 'a', regionTags: [] }];
+  expect(filterByRegion(items, ['europe'], regionsOf)).toHaveLength(0);
 });
 
 // assignRows — fame-priority interval-graph row stacking shared by every
