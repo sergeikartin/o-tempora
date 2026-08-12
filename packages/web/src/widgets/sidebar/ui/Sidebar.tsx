@@ -4,6 +4,7 @@ import {
   FameScoreFilters,
   type FameScoreLane,
   type FameScoreValues,
+  type FilteredCounts,
 } from '../../../features/filter-by-fame-score';
 import { OccupationDomainFilters } from '../../../features/filter-by-occupation-domain';
 import { RegionFilters } from '../../../features/filter-by-region';
@@ -12,6 +13,9 @@ import styles from './Sidebar.module.css';
 interface SidebarProps {
   fameScoreValues: FameScoreValues;
   onFameScoreChange: (lane: FameScoreLane, value: number) => void;
+  // Post-filter entry count per lane, from TimelineCanvas via app/ — see
+  // FameScoreFilters' own comment on why this is optional.
+  filteredCounts?: FilteredCounts;
   selectedDomains: OccupationDomain[];
   onToggleDomain: (domain: OccupationDomain) => void;
   selectedRegions: Region[];
@@ -28,6 +32,7 @@ interface SidebarProps {
 export function Sidebar({
   fameScoreValues,
   onFameScoreChange,
+  filteredCounts,
   selectedDomains,
   onToggleDomain,
   selectedRegions,
@@ -46,7 +51,7 @@ export function Sidebar({
       <section className={styles.section}>
         <h2 className={styles.heading}>Filters</h2>
         <DataDepthSwitch values={fameScoreValues} onChange={onFameScoreChange} />
-        <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} />
+        <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
       </section>
     </aside>
   );

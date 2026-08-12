@@ -9,6 +9,17 @@ export interface FameScoreValues {
   milestones: number;
 }
 
+// Post-filter entry counts per lane (all active filters applied, not just
+// the fame-score floor) — computed by widgets/timeline-canvas, the single
+// owner of the filtering pipeline, and threaded back up through app/ to
+// FameScoreFilters for display (mini-FSD's "cross-widget state lifted to
+// app/" convention).
+export interface FilteredCounts {
+  people: number;
+  conflicts: number;
+  milestones: number;
+}
+
 const DEFAULT_VALUES: FameScoreValues = {
   people: FAME_SCORE_BOUNDS.people.default,
   conflicts: FAME_SCORE_BOUNDS.conflicts.default,

@@ -17,6 +17,12 @@
   flex: 1 1 auto;
 }
 
+.filterCount {
+  flex: 0 0 auto;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
 .filterInput {
   width: 64px;
   flex: 0 0 auto;

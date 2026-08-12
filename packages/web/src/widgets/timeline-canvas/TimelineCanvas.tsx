@@ -9,7 +9,7 @@ import {
 } from 'react';
 import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
 import { DEFAULT_VIEWPORT_START, UN_REGION_TO_REGION } from '../../shared/config';
-import type { FameScoreValues } from '../../features/filter-by-fame-score';
+import type { FameScoreValues, FilteredCounts } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
   BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
@@ -53,6 +53,13 @@ interface TimelineCanvasProps {
   // owns looking the id up in the full in-memory dataset and opening the
   // detail drawer.
   onEntityClick: (ref: SelectedEntityRef) => void;
+  // Reports post-filter entry counts per lane whenever they change, so
+  // App.tsx can thread them to the Sidebar's fame-score inputs — this
+  // widget stays the single owner of the filtering pipeline (per
+  // docs/code-conventions.md) rather than App re-deriving the same counts
+  // with a second copy of filterByFameScore/filterByOccupationDomain/
+  // filterByRegion.
+  onFilteredCountsChange?: (counts: FilteredCounts) => void;
 }
 
 export function TimelineCanvas({
@@ -63,6 +70,7 @@ export function TimelineCanvas({
   selectedDomains,
   selectedRegions,
   onEntityClick,
+  onFilteredCountsChange,
 }: TimelineCanvasProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   // People and Conflicts+Milestones are `position: sticky; left: 0` (see their CSS) so
@@ -170,6 +178,17 @@ export function TimelineCanvas({
       filterByRegion(filterByFameScore(milestones, fameScoreValues.milestones), selectedRegions, (milestone) => milestone.regionTags),
     [milestones, fameScoreValues.milestones, selectedRegions],
   );
+
+  const filteredCounts = useMemo<FilteredCounts>(
+    () => ({ people: filteredPeople.length, conflicts: filteredConflicts.length, milestones: filteredMilestones.length }),
+    [filteredPeople, filteredConflicts, filteredMilestones],
+  );
+  // useLayoutEffect (not useEffect) so a filter change's new counts land in
+  // the Sidebar's DOM before the browser paints, avoiding a one-frame flash
+  // of the stale count.
+  useLayoutEffect(() => {
+    onFilteredCountsChange?.(filteredCounts);
+  }, [filteredCounts, onFilteredCountsChange]);
 
   // Fame-priority row packing (assignRows) puts the most important rows
   // next to the shared Year Axis — bottom of .peopleLane, top of
