@@ -1091,27 +1091,6 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Screen%20of%20Facebook%20%282%29.PNG"
     },
     {
-      "id": "Q220635",
-      "name": "Carrack",
-      "category": "transportation",
-      "year": 1500,
-      "endYear": 1600,
-      "tagline": "type of sailing ship in the 15th century",
-      "sitelinks": 45,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Carrack",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Carrack",
-        "zh": "https://zh.wikipedia.org/wiki/%E5%85%8B%E6%8B%89%E5%85%8B%E5%B8%86%E8%88%B9",
-        "es": "https://es.wikipedia.org/wiki/Carraca_(embarcaci%C3%B3n)",
-        "fr": "https://fr.wikipedia.org/wiki/Caraque",
-        "de": "https://de.wikipedia.org/wiki/Karacke",
-        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%B1%D9%82%D9%88%D8%B1_(%D8%B3%D9%81%D9%8A%D9%86%D8%A9)",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%80%D0%B0%D0%BA%D0%BA%D0%B0"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SantaMaria.jpg"
-    },
-    {
       "id": "Q178193",
       "name": "Steamboat",
       "category": "transportation",

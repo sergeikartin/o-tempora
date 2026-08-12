@@ -2309,25 +2309,6 @@
     }
   },
   {
-    "id": "Q220635",
-    "name": "Carrack",
-    "category": "transportation",
-    "regionTags": [],
-    "fameScore": 69,
-    "tagline": "type of sailing ship in the 15th century",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Carrack",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SantaMaria.jpg",
-    "description": "A carrack is a three- or four-masted ocean-going sailing ship that was developed in the 14th to 15th centuries in Europe, most notably in Portugal and Spain. Evolving from the single-masted cog, the carrack was first used for European trade from the Mediterranean to the Baltic. Shortly thereafter, these ships found use in the increasingly lucrative trade routes between Europe and Africa and eventually in the emerging trans-Atlantic trade with the Americas. In their most advanced forms, they were used by the Portuguese and Spaniards for trade between Europe, Africa and Asia starting in the late 15th century, before being gradually superseded in the late 16th and early 17th centuries by the galleon.",
-    "period": {
-      "start": {
-        "year": 1500
-      },
-      "end": {
-        "year": 1600
-      }
-    }
-  },
-  {
     "id": "Q625151",
     "name": "Electric locomotive",
     "category": "transportation",
