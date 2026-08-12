@@ -113,7 +113,7 @@ test("leaves deathmonth undefined when deathdate's own year (1727) disagrees wit
   assert.equal(rows[0]?.deathmonth, undefined);
 });
 
-test("parses a BC birthdate (' BC' suffix, not a leading minus sign) into a negative-year-consistent month", () => {
+test("parses a BC birthdate (' BC' suffix, not a leading minus sign) into an astronomical-numbering-consistent month", () => {
   const rows = parsePantheonCsv(
     `${HEADER}\n${row({ id: "3395", wd_id: '"Q9441"', name: '"Gautama Buddha"', birthdate: '"0566-04-08 BC"', birthyear: "-566", deathdate: "", deathyear: "-452" })}`,
   );
@@ -126,12 +126,14 @@ test("leaves birthmonth/deathmonth undefined when the date column is empty", () 
   assert.equal(rows[0]?.deathmonth, undefined);
 });
 
-test("parses a negative birthyear/deathyear (BCE) as a negative integer", () => {
+test("converts a BCE birthyear/deathyear from Pantheon's naive sign flip to astronomical numbering", () => {
+  // Pantheon's raw "-566"/"-452" (naive sign flip for 566/452 BC) become
+  // astronomical -565/-451 (year 0 = 1 BCE) — see toAstronomicalYear.
   const rows = parsePantheonCsv(
     `${HEADER}\n${row({ id: "3395", wd_id: '"Q9441"', name: '"Gautama Buddha"', birthyear: "-566", deathyear: "-452" })}`,
   );
-  assert.equal(rows[0]?.birthyear, -566);
-  assert.equal(rows[0]?.deathyear, -452);
+  assert.equal(rows[0]?.birthyear, -565);
+  assert.equal(rows[0]?.deathyear, -451);
 });
 
 test("leaves birthyear/deathyear undefined when the CSV field is empty", () => {

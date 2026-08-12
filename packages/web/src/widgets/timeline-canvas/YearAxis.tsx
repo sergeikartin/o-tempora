@@ -1,8 +1,10 @@
 import { useMemo, type CSSProperties } from 'react';
 import * as d3 from 'd3';
-import { formatYear } from '../../shared/lib/format-year';
+import { formatYear, isRoundTickYear, roundTickYearsInRange } from '../../shared/lib/format-year';
 import {
   AXIS_HEIGHT,
+  BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
+  BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
   CENTURY_STEP_YEARS,
   CENTURY_TICK_PHASE_OFFSET_YEARS,
   DECADE_STEP_YEARS,
@@ -38,12 +40,11 @@ function decadeLabelsInRange(startYear: number, endYear: number, xScale: d3.Scal
   const [domainStart, domainEnd] = xScale.domain();
   const clampedStart = Math.max(startYear, domainStart ?? startYear);
   const clampedEnd = Math.min(endYear, domainEnd ?? endYear);
-  const first = Math.ceil(clampedStart / DECADE_STEP_YEARS) * DECADE_STEP_YEARS;
-  const labels: DecadeLabel[] = [];
-  for (let year = first; year <= clampedEnd; year += DECADE_STEP_YEARS) {
-    labels.push({ year, x: xScale(year), isCentury: year % CENTURY_STEP_YEARS === 0 });
-  }
-  return labels;
+  return roundTickYearsInRange(clampedStart, clampedEnd, DECADE_STEP_YEARS).map((year) => ({
+    year,
+    x: xScale(year),
+    isCentury: isRoundTickYear(year, CENTURY_STEP_YEARS),
+  }));
 }
 
 // The ruler's tick marks are pure CSS — three layered repeating background-
@@ -68,18 +69,38 @@ export function YearAxis({ xScale, visibleStartYear, visibleEndYear }: YearAxisP
     [xScale, visibleStartYear, visibleEndYear],
   );
 
-  const rulerStyle = {
-    height: RULER_HEIGHT,
+  const sharedTickSizeVars = {
     '--year-tick-px': `${pixelsPerYear}px`,
     '--decade-tick-px': `${pixelsPerYear * DECADE_STEP_YEARS}px`,
     '--century-tick-px': `${pixelsPerYear * CENTURY_STEP_YEARS}px`,
+  };
+
+  // Round-historical BCE ticks (format-year.ts) sit on a different phase
+  // than CE ticks and the era-boundary tick at year 0 — see options.ts's
+  // phaseOffsetYears — so the ruler is two adjacent, independently-phased
+  // regions split at year 0, not one continuous background.
+  const boundaryX = Math.min(Math.max(xScale(0), 0), totalWidth);
+  const bceRulerStyle = {
+    height: RULER_HEIGHT,
+    width: boundaryX,
+    ...sharedTickSizeVars,
+    '--decade-tick-offset-px': `${pixelsPerYear * BCE_DECADE_TICK_PHASE_OFFSET_YEARS}px`,
+    '--century-tick-offset-px': `${pixelsPerYear * BCE_CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
+  } as CSSProperties;
+  const ceRulerStyle = {
+    height: RULER_HEIGHT,
+    width: totalWidth - boundaryX,
+    ...sharedTickSizeVars,
     '--decade-tick-offset-px': `${pixelsPerYear * DECADE_TICK_PHASE_OFFSET_YEARS}px`,
     '--century-tick-offset-px': `${pixelsPerYear * CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
 
   return (
     <div className={styles.axis} style={{ width: totalWidth, height: AXIS_HEIGHT }}>
-      <div className={`year-axis-ruler ${styles.ruler}`} style={rulerStyle} />
+      <div className={styles.rulerRow} style={{ width: totalWidth }}>
+        <div className={`year-axis-ruler-bce ${styles.ruler}`} style={bceRulerStyle} />
+        <div className={`year-axis-ruler ${styles.ruler}`} style={ceRulerStyle} />
+      </div>
       <div className={styles.labelRow} style={{ height: RULER_LABEL_ROW_HEIGHT }}>
         {labels.map((label) =>
           label.isCentury || showDecadeLabels ? (

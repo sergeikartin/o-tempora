@@ -2,6 +2,13 @@
   display: block;
 }
 
+/* Holds the BCE/CE ruler halves (YearAxis.tsx) side by side — split at year
+   0 since each half needs its own tick-mark phase (see options.ts's
+   phaseOffsetYears). */
+.rulerRow {
+  display: flex;
+}
+
 /* Tick marks are three layered repeating background-gradients, not DOM
    nodes — century (tallest/boldest, drawn on top so it isn't hidden behind
    the shorter layers at coincident positions), then decade, then year
@@ -10,6 +17,7 @@
    in YearAxis.tsx rather than per tick. */
 .ruler {
   position: relative;
+  flex-shrink: 0;
   /* A shade darker than the page background so the ruler reads as a
      distinct bar, per the reference this design is based on; mirrors
      color-bg-surface, inlined pending ticket 05. */

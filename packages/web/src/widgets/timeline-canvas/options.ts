@@ -178,18 +178,22 @@ export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = {
 const MIN_YEAR = PAN_MIN_DATE.year;
 
 // The Year Axis's CSS tick gradients (and the scroll container's full-height
-// decade gridlines) tile starting at x=0, i.e. at MIN_YEAR — which lines up
-// with a real decade/century boundary only if MIN_YEAR itself is a multiple
-// of that step. It happens to be for decades (MIN_YEAR is -2750, a multiple
-// of 10) but not for centuries (-2750 isn't a multiple of 100), so each
-// tier needs its own phase offset computed from MIN_YEAR rather than
-// assuming 0 — this is that computation, done once at module load rather
-// than per-render.
-function phaseOffsetYears(stepYears: number): number {
-  return Math.ceil(MIN_YEAR / stepYears) * stepYears - MIN_YEAR;
+// decade gridlines) tile starting at x=0, i.e. at MIN_YEAR. Round-historical
+// BCE tick positions (format-year.ts's isRoundTickYear/roundTickYearsInRange
+// — year ≡ 1 mod stepYears, e.g. -9/-19 for "10 BCE"/"20 BCE") sit on a
+// different phase than CE ticks and the era-boundary tick at year 0
+// (ordinary ≡ 0 mod stepYears, unchanged) — see
+// docs/adr/0001-astronomical-year-numbering.md. A single repeating CSS
+// background can only tile one phase, so YearAxis renders the ruler as two
+// adjacent regions split at year 0, each using its own offset computed here.
+function phaseOffsetYears(stepYears: number, anchorRemainder: number): number {
+  const raw = (anchorRemainder - MIN_YEAR) % stepYears;
+  return ((raw % stepYears) + stepYears) % stepYears;
 }
-export const DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS);
-export const CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS);
+export const DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 0);
+export const CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 0);
+export const BCE_DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 1);
+export const BCE_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 1);
 
 /** Shared time domain: the D3 x-axis for every lane, keyed by pixels-per-year zoom level. */
 export function buildXScale(pixelsPerYear: number): { scale: d3.ScaleLinear<number, number>; totalWidth: number } {

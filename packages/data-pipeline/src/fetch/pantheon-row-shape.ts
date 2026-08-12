@@ -28,15 +28,21 @@ export interface PantheonPersonRow {
   // explicit about this).
   bplaceCountry: string;
   dplaceCountry: string;
+  // Astronomical numbering (year 0 = 1 BCE — see
+  // docs/adr/0001-astronomical-year-numbering.md), converted at parse time
+  // from Pantheon's own `birthyear`/`deathyear` column convention, which
+  // encodes BCE via a naive sign flip instead (551 BC -> -551, not the
+  // astronomical -550) — see toAstronomicalYear.
   birthyear?: number;
   // Derived from the `birthdate`/`deathdate` columns (format "YYYY-MM-DD",
   // BCE flagged by a trailing " BC" rather than a leading minus sign —
-  // Pantheon's own convention, distinct from Wikidata's signed-ISO one).
-  // Only kept when that column's own year agrees with birthyear/deathyear
-  // — the two columns occasionally disagree (e.g. a Julian/Gregorian
-  // calendar-boundary date), and birthyear/deathyear is what the rest of
-  // the pipeline already treats as ground truth, so a disagreeing month is
-  // dropped rather than risk attaching it to the wrong year.
+  // Pantheon's own convention). Only kept when that column's own year
+  // agrees with birthyear/deathyear (both compared in astronomical
+  // numbering) — the two columns occasionally disagree (e.g. a
+  // Julian/Gregorian calendar-boundary date), and birthyear/deathyear is
+  // what the rest of the pipeline already treats as ground truth, so a
+  // disagreeing month is dropped rather than risk attaching it to the
+  // wrong year.
   birthmonth?: number;
   deathyear?: number;
   deathmonth?: number;
@@ -90,15 +96,28 @@ function parseOptionalInt(value: string): number | undefined {
   return value === "" ? undefined : Number.parseInt(value, 10);
 }
 
+// Pantheon's birthyear/deathyear columns already arrive as negative for
+// BCE, but via a naive sign flip (551 BC -> -551) rather than astronomical
+// numbering (551 BC -> -550, since year 0 = 1 BCE) — see
+// docs/adr/0001-astronomical-year-numbering.md. CE values (>= 0) are
+// unaffected; only the BCE shift applies.
+function toAstronomicalYear(pantheonYear: number | undefined): number | undefined {
+  return pantheonYear === undefined || pantheonYear >= 0 ? pantheonYear : pantheonYear + 1;
+}
+
 const PANTHEON_DATE_PATTERN = /^(\d{4})-(\d{2})-\d{2}( BC)?$/;
 
-// `referenceYear` is birthyear/deathyear — the month is only trusted when
-// the date column's own year matches it (see PantheonPersonRow's comment).
+// `referenceYear` is the already-astronomical birthyear/deathyear — the
+// month is only trusted when the date column's own year agrees with it
+// (see PantheonPersonRow's comment), so this parses the date string's BC
+// suffix into astronomical numbering too, the same conversion
+// toAstronomicalYear applies to the CSV's separate birthyear/deathyear
+// column.
 function parseOptionalDateMonth(value: string, referenceYear: number | undefined): number | undefined {
   if (value === "" || referenceYear === undefined) return undefined;
   const match = PANTHEON_DATE_PATTERN.exec(value);
   if (!match || match[1] === undefined || match[2] === undefined) return undefined;
-  const year = match[3] ? -Number(match[1]) : Number(match[1]);
+  const year = match[3] ? 1 - Number(match[1]) : Number(match[1]);
   if (year !== referenceYear) return undefined;
   return Number(match[2]);
 }
@@ -140,8 +159,8 @@ export function parsePantheonCsv(csvText: string): PantheonPersonRow[] {
       );
     }
 
-    const birthyear = parseOptionalInt(fields[columnIndex.birthyear ?? -1] ?? "");
-    const deathyear = parseOptionalInt(fields[columnIndex.deathyear ?? -1] ?? "");
+    const birthyear = toAstronomicalYear(parseOptionalInt(fields[columnIndex.birthyear ?? -1] ?? ""));
+    const deathyear = toAstronomicalYear(parseOptionalInt(fields[columnIndex.deathyear ?? -1] ?? ""));
 
     return {
       id,

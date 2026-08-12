@@ -100,6 +100,35 @@ test('the two lane sections and every year axis share the same rendered width', 
   expect(new Set([...svgWidthsPx, ...axisWidthsPx]).size).toBe(1);
 });
 
+test('the full-height decade gridline is split into a BCE and a CE region with different tick phases', () => {
+  // Regression: the gridline used to be one continuous CSS background
+  // (a single phase for the whole timeline), which drifted out of
+  // alignment with the axis's round-historical BCE tick labels — the same
+  // bug as YearAxis's own ruler, fixed the same way (see options.ts's
+  // BCE_DECADE_TICK_PHASE_OFFSET_YEARS).
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  const gridlines = Array.from(container.querySelectorAll('[class*="gridline"]:not([class*="gridlineLayer"])'));
+  expect(gridlines).toHaveLength(2);
+  const [bceGridline, ceGridline] = gridlines as [HTMLElement, HTMLElement];
+  expect(bceGridline.style.getPropertyValue('--decade-gridline-offset-px')).not.toBe(
+    ceGridline.style.getPropertyValue('--decade-gridline-offset-px'),
+  );
+  // Widths sum to the full scrollable width (real PAN_MIN_DATE-to-today
+  // domain, always spanning both eras).
+  const gridlineLayer = container.querySelector('[class*="gridlineLayer"]') as HTMLElement;
+  const totalWidth = parseFloat(gridlineLayer.style.width);
+  expect(parseFloat(bceGridline.style.width) + parseFloat(ceGridline.style.width)).toBeCloseTo(totalWidth);
+});
+
 test('renders three year axes — top, between People and Conflicts+Milestones, and bottom', () => {
   const { container } = render(
     <TimelineCanvas

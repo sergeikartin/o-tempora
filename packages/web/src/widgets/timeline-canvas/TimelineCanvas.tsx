@@ -12,6 +12,7 @@ import { DEFAULT_VIEWPORT_START } from '../../shared/config';
 import type { FameScoreValues } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
+  BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
   buildXScale,
   DECADE_STEP_YEARS,
   DECADE_TICK_PHASE_OFFSET_YEARS,
@@ -117,11 +118,21 @@ export function TimelineCanvas({ people, conflicts, milestones, fameScoreValues,
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
   const visibleEndYear = scale.invert(scrollLeft + effectiveViewportWidthPx + viewportBufferPx);
 
-  // Faint full-height decade gridlines (see .scrollContainer's background in
-  // TimelineCanvas.module.css) — pure CSS like the Year Axis's own ticks, so
-  // this scales to any width for free rather than needing per-line DOM nodes.
-  const decadeGridlineStyle = {
-    '--decade-gridline-px': `${pixelsPerYear * DECADE_STEP_YEARS}px`,
+  // Faint full-height decade gridlines (.gridlineLayer in
+  // TimelineCanvas.module.css) — same BCE/CE phase split as YearAxis's own
+  // ruler (see its comment): round-historical BCE tick positions sit on a
+  // different phase than CE ones, so this renders as two adjacent regions
+  // split at year 0 rather than one continuous background.
+  const gridlineBoundaryX = Math.min(Math.max(scale(0), 0), totalWidth);
+  const gridlineSizePx = `${pixelsPerYear * DECADE_STEP_YEARS}px`;
+  const bceGridlineStyle = {
+    width: gridlineBoundaryX,
+    '--decade-gridline-px': gridlineSizePx,
+    '--decade-gridline-offset-px': `${pixelsPerYear * BCE_DECADE_TICK_PHASE_OFFSET_YEARS}px`,
+  } as CSSProperties;
+  const ceGridlineStyle = {
+    width: totalWidth - gridlineBoundaryX,
+    '--decade-gridline-px': gridlineSizePx,
     '--decade-gridline-offset-px': `${pixelsPerYear * DECADE_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
   const filteredPeople = useMemo(
@@ -323,12 +334,15 @@ export function TimelineCanvas({ people, conflicts, milestones, fameScoreValues,
       <div
         ref={scrollRef}
         className={isDragging ? `${styles.scrollContainer} ${styles.dragging}` : styles.scrollContainer}
-        style={decadeGridlineStyle}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
+        <div className={styles.gridlineLayer} style={{ width: totalWidth }}>
+          <div className={styles.gridline} style={bceGridlineStyle} />
+          <div className={styles.gridline} style={ceGridlineStyle} />
+        </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
           <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
         </div>

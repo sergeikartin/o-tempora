@@ -26,11 +26,11 @@
     "name": "Gautama Buddha",
     "lifespan": {
       "start": {
-        "year": -566,
+        "year": -565,
         "month": 4
       },
       "end": {
-        "year": -452
+        "year": -451
       }
     },
     "occupationDomain": "humanities",
@@ -113,11 +113,11 @@
     "name": "Cleopatra",
     "lifespan": {
       "start": {
-        "year": -69,
+        "year": -68,
         "month": 1
       },
       "end": {
-        "year": -30,
+        "year": -29,
         "month": 8
       }
     },
@@ -231,10 +231,10 @@
     "name": "Aristotle",
     "lifespan": {
       "start": {
-        "year": -384
+        "year": -383
       },
       "end": {
-        "year": -321
+        "year": -320
       }
     },
     "occupationDomain": "humanities",
@@ -298,11 +298,11 @@
     "name": "Plato",
     "lifespan": {
       "start": {
-        "year": -427,
+        "year": -426,
         "month": 5
       },
       "end": {
-        "year": -347
+        "year": -346
       }
     },
     "occupationDomain": "humanities",
@@ -321,11 +321,11 @@
     "name": "Alexander the Great",
     "lifespan": {
       "start": {
-        "year": -356,
+        "year": -355,
         "month": 7
       },
       "end": {
-        "year": -323,
+        "year": -322,
         "month": 6
       }
     },
@@ -345,7 +345,7 @@
     "name": "Saint Peter",
     "lifespan": {
       "start": {
-        "year": -1,
+        "year": 0,
         "month": 1
       },
       "end": {
@@ -367,10 +367,10 @@
     "name": "Homer",
     "lifespan": {
       "start": {
-        "year": -800
+        "year": -799
       },
       "end": {
-        "year": -750
+        "year": -749
       }
     },
     "occupationDomain": "humanities",
@@ -504,10 +504,10 @@
     "name": "Socrates",
     "lifespan": {
       "start": {
-        "year": -470
+        "year": -469
       },
       "end": {
-        "year": -399,
+        "year": -398,
         "month": 2
       }
     },
@@ -597,7 +597,7 @@
     "name": "Jesus",
     "lifespan": {
       "start": {
-        "year": -4
+        "year": -3
       },
       "end": {
         "year": 33
@@ -689,11 +689,11 @@
     "name": "Julius Caesar",
     "lifespan": {
       "start": {
-        "year": -100,
+        "year": -99,
         "month": 7
       },
       "end": {
-        "year": -44,
+        "year": -43,
         "month": 3
       }
     },
@@ -712,10 +712,10 @@
     "name": "Confucius",
     "lifespan": {
       "start": {
-        "year": -551
+        "year": -550
       },
       "end": {
-        "year": -479,
+        "year": -478,
         "month": 3
       }
     },
@@ -757,10 +757,10 @@
     "name": "Archimedes",
     "lifespan": {
       "start": {
-        "year": -287
+        "year": -286
       },
       "end": {
-        "year": -212,
+        "year": -211,
         "month": 1
       }
     },
@@ -779,10 +779,10 @@
     "name": "Pythagoras",
     "lifespan": {
       "start": {
-        "year": -570
+        "year": -569
       },
       "end": {
-        "year": -495
+        "year": -494
       }
     },
     "occupationDomain": "humanities",
@@ -825,10 +825,10 @@
     "name": "Moses",
     "lifespan": {
       "start": {
-        "year": -1393
+        "year": -1392
       },
       "end": {
-        "year": -1273
+        "year": -1272
       }
     },
     "occupationDomain": "institutions",
@@ -1318,7 +1318,7 @@
     "name": "Augustus",
     "lifespan": {
       "start": {
-        "year": -63
+        "year": -62
       },
       "end": {
         "year": 14,
@@ -1388,11 +1388,11 @@
     "name": "Laozi",
     "lifespan": {
       "start": {
-        "year": -604,
+        "year": -603,
         "month": 1
       },
       "end": {
-        "year": -600,
+        "year": -599,
         "month": 1
       }
     },
@@ -1847,11 +1847,11 @@
     "name": "Qin Shi Huang",
     "lifespan": {
       "start": {
-        "year": -258,
+        "year": -257,
         "month": 1
       },
       "end": {
-        "year": -210,
+        "year": -209,
         "month": 9
       }
     },
@@ -2285,10 +2285,10 @@
     "name": "Hippocrates",
     "lifespan": {
       "start": {
-        "year": -460
+        "year": -459
       },
       "end": {
-        "year": -370
+        "year": -369
       }
     },
     "occupationDomain": "science-technology",
@@ -2375,11 +2375,11 @@
     "name": "Herodotus",
     "lifespan": {
       "start": {
-        "year": -484,
+        "year": -483,
         "month": 1
       },
       "end": {
-        "year": -425,
+        "year": -424,
         "month": 1
       }
     },
@@ -2419,10 +2419,10 @@
     "name": "Euclid",
     "lifespan": {
       "start": {
-        "year": -350
+        "year": -349
       },
       "end": {
-        "year": -240
+        "year": -239
       }
     },
     "occupationDomain": "science-technology",
@@ -2920,11 +2920,11 @@
     "name": "Solomon",
     "lifespan": {
       "start": {
-        "year": -1011,
+        "year": -1010,
         "month": 1
       },
       "end": {
-        "year": -931,
+        "year": -930,
         "month": 1
       }
     },
@@ -2990,11 +2990,11 @@
     "name": "Sophocles",
     "lifespan": {
       "start": {
-        "year": -497,
+        "year": -496,
         "month": 1
       },
       "end": {
-        "year": -406,
+        "year": -405,
         "month": 1
       }
     },
@@ -3330,7 +3330,7 @@
     "name": "Andrew the Apostle",
     "lifespan": {
       "start": {
-        "year": -6
+        "year": -5
       },
       "end": {
         "year": 70
@@ -3375,7 +3375,7 @@
     "name": "John the Baptist",
     "lifespan": {
       "start": {
-        "year": -20
+        "year": -19
       },
       "end": {
         "year": 31
@@ -3396,11 +3396,11 @@
     "name": "Thales of Miletus",
     "lifespan": {
       "start": {
-        "year": -623,
+        "year": -622,
         "month": 1
       },
       "end": {
-        "year": -546,
+        "year": -545,
         "month": 1
       }
     },
@@ -3419,10 +3419,10 @@
     "name": "Heraclitus",
     "lifespan": {
       "start": {
-        "year": -535
+        "year": -534
       },
       "end": {
-        "year": -470
+        "year": -469
       }
     },
     "occupationDomain": "humanities",
@@ -3466,10 +3466,10 @@
     "name": "David",
     "lifespan": {
       "start": {
-        "year": -1010
+        "year": -1009
       },
       "end": {
-        "year": -970,
+        "year": -969,
         "month": 1
       }
     },
@@ -3605,10 +3605,10 @@
     "name": "Tutankhamun",
     "lifespan": {
       "start": {
-        "year": -1341
+        "year": -1340
       },
       "end": {
-        "year": -1323
+        "year": -1322
       }
     },
     "occupationDomain": "institutions",
@@ -3942,10 +3942,10 @@
     "name": "Aaron",
     "lifespan": {
       "start": {
-        "year": -1396
+        "year": -1395
       },
       "end": {
-        "year": -1274
+        "year": -1273
       }
     },
     "occupationDomain": "institutions",
@@ -3964,11 +3964,11 @@
     "name": "Diogenes",
     "lifespan": {
       "start": {
-        "year": -404,
+        "year": -403,
         "month": 1
       },
       "end": {
-        "year": -322,
+        "year": -321,
         "month": 1
       }
     },
@@ -4241,11 +4241,11 @@
     "name": "Cicero",
     "lifespan": {
       "start": {
-        "year": -106,
+        "year": -105,
         "month": 1
       },
       "end": {
-        "year": -43,
+        "year": -42,
         "month": 12
       }
     },
@@ -4380,11 +4380,11 @@
     "name": "Virgil",
     "lifespan": {
       "start": {
-        "year": -70,
+        "year": -69,
         "month": 10
       },
       "end": {
-        "year": -19,
+        "year": -18,
         "month": 9
       }
     },
@@ -4471,11 +4471,11 @@
     "name": "Xerxes I",
     "lifespan": {
       "start": {
-        "year": -519,
+        "year": -518,
         "month": 1
       },
       "end": {
-        "year": -475
+        "year": -474
       }
     },
     "occupationDomain": "institutions",
@@ -4795,11 +4795,11 @@
     "name": "Pompey",
     "lifespan": {
       "start": {
-        "year": -106,
+        "year": -105,
         "month": 9
       },
       "end": {
-        "year": -48,
+        "year": -47,
         "month": 9
       }
     },
@@ -4820,11 +4820,11 @@
     "name": "Darius the Great",
     "lifespan": {
       "start": {
-        "year": -550,
+        "year": -549,
         "month": 1
       },
       "end": {
-        "year": -486,
+        "year": -485,
         "month": 1
       }
     },
@@ -5405,11 +5405,11 @@
     "name": "Nefertiti",
     "lifespan": {
       "start": {
-        "year": -1400,
+        "year": -1399,
         "month": 1
       },
       "end": {
-        "year": -1330
+        "year": -1329
       }
     },
     "occupationDomain": "public-figure",
@@ -5891,10 +5891,10 @@
     "name": "Cyrus the Great",
     "lifespan": {
       "start": {
-        "year": -600
+        "year": -599
       },
       "end": {
-        "year": -530
+        "year": -529
       }
     },
     "occupationDomain": "institutions",
@@ -5958,7 +5958,7 @@
     "name": "Ovid",
     "lifespan": {
       "start": {
-        "year": -43,
+        "year": -42,
         "month": 3
       },
       "end": {
@@ -5982,11 +5982,11 @@
     "name": "Democritus",
     "lifespan": {
       "start": {
-        "year": -460,
+        "year": -459,
         "month": 1
       },
       "end": {
-        "year": -360,
+        "year": -359,
         "month": 1
       }
     },
@@ -6052,10 +6052,10 @@
     "name": "Hammurabi",
     "lifespan": {
       "start": {
-        "year": -1810
+        "year": -1809
       },
       "end": {
-        "year": -1750
+        "year": -1749
       }
     },
     "occupationDomain": "institutions",
@@ -6140,7 +6140,7 @@
     "name": "Seneca the Younger",
     "lifespan": {
       "start": {
-        "year": -4
+        "year": -3
       },
       "end": {
         "year": 65
@@ -6210,10 +6210,10 @@
     "name": "Hesiod",
     "lifespan": {
       "start": {
-        "year": -800
+        "year": -799
       },
       "end": {
-        "year": -700
+        "year": -699
       }
     },
     "occupationDomain": "humanities",
@@ -6346,11 +6346,11 @@
     "name": "Epicurus",
     "lifespan": {
       "start": {
-        "year": -341,
+        "year": -340,
         "month": 2
       },
       "end": {
-        "year": -269,
+        "year": -268,
         "month": 1
       }
     },
@@ -6439,10 +6439,10 @@
     "name": "Ramesses II",
     "lifespan": {
       "start": {
-        "year": -1303
+        "year": -1302
       },
       "end": {
-        "year": -1213
+        "year": -1212
       }
     },
     "occupationDomain": "institutions",
@@ -6485,11 +6485,11 @@
     "name": "Hannibal",
     "lifespan": {
       "start": {
-        "year": -247,
+        "year": -246,
         "month": 1
       },
       "end": {
-        "year": -183,
+        "year": -182,
         "month": 1
       }
     },
@@ -6578,10 +6578,10 @@
     "name": "Solon",
     "lifespan": {
       "start": {
-        "year": -638
+        "year": -637
       },
       "end": {
-        "year": -558
+        "year": -557
       }
     },
     "occupationDomain": "institutions",
@@ -6601,11 +6601,11 @@
     "name": "Khufu",
     "lifespan": {
       "start": {
-        "year": -2700,
+        "year": -2699,
         "month": 1
       },
       "end": {
-        "year": -2570
+        "year": -2569
       }
     },
     "occupationDomain": "arts",
@@ -6832,10 +6832,10 @@
     "name": "Pericles",
     "lifespan": {
       "start": {
-        "year": -494
+        "year": -493
       },
       "end": {
-        "year": -429,
+        "year": -428,
         "month": 1
       }
     },
@@ -6899,10 +6899,10 @@
     "name": "Aesop",
     "lifespan": {
       "start": {
-        "year": -620
+        "year": -619
       },
       "end": {
-        "year": -564
+        "year": -563
       }
     },
     "occupationDomain": "humanities",
@@ -7572,10 +7572,10 @@
     "name": "Akhenaten",
     "lifespan": {
       "start": {
-        "year": -1400
+        "year": -1399
       },
       "end": {
-        "year": -1336
+        "year": -1335
       }
     },
     "occupationDomain": "institutions",
@@ -7804,10 +7804,10 @@
     "name": "Eratosthenes",
     "lifespan": {
       "start": {
-        "year": -276
+        "year": -275
       },
       "end": {
-        "year": -194,
+        "year": -193,
         "month": 1
       }
     },
@@ -8122,11 +8122,11 @@
     "name": "Elijah",
     "lifespan": {
       "start": {
-        "year": -1000,
+        "year": -999,
         "month": 1
       },
       "end": {
-        "year": -900,
+        "year": -899,
         "month": 1
       }
     },
@@ -8512,11 +8512,11 @@
     "name": "Jeremiah",
     "lifespan": {
       "start": {
-        "year": -650,
+        "year": -649,
         "month": 1
       },
       "end": {
-        "year": -586,
+        "year": -585,
         "month": 1
       }
     },
@@ -8602,10 +8602,10 @@
     "name": "Zoroaster",
     "lifespan": {
       "start": {
-        "year": -2000
+        "year": -1999
       },
       "end": {
-        "year": -2000
+        "year": -1999
       }
     },
     "occupationDomain": "institutions",
@@ -8693,11 +8693,11 @@
     "name": "Nebuchadnezzar II",
     "lifespan": {
       "start": {
-        "year": -630,
+        "year": -629,
         "month": 1
       },
       "end": {
-        "year": -562,
+        "year": -561,
         "month": 10
       }
     },
@@ -8832,11 +8832,11 @@
     "name": "Brutus the Younger",
     "lifespan": {
       "start": {
-        "year": -85,
+        "year": -84,
         "month": 1
       },
       "end": {
-        "year": -42,
+        "year": -41,
         "month": 10
       }
     },
@@ -9137,10 +9137,10 @@
     "name": "Ötzi",
     "lifespan": {
       "start": {
-        "year": -3345
+        "year": -3344
       },
       "end": {
-        "year": -3255
+        "year": -3254
       }
     },
     "occupationDomain": "public-figure",
@@ -9439,11 +9439,11 @@
     "name": "Ashoka",
     "lifespan": {
       "start": {
-        "year": -304,
+        "year": -303,
         "month": 1
       },
       "end": {
-        "year": -232,
+        "year": -231,
         "month": 1
       }
     },
@@ -9896,7 +9896,7 @@
     "name": "Tiberius",
     "lifespan": {
       "start": {
-        "year": -42,
+        "year": -41,
         "month": 11
       },
       "end": {
@@ -9961,11 +9961,11 @@
     "name": "Horace",
     "lifespan": {
       "start": {
-        "year": -65,
+        "year": -64,
         "month": 12
       },
       "end": {
-        "year": -8,
+        "year": -7,
         "month": 11
       }
     },
@@ -9984,10 +9984,10 @@
     "name": "Jonah",
     "lifespan": {
       "start": {
-        "year": -850
+        "year": -849
       },
       "end": {
-        "year": -810
+        "year": -809
       }
     },
     "occupationDomain": "institutions",
@@ -10071,10 +10071,10 @@
     "name": "Queen of Sheba",
     "lifespan": {
       "start": {
-        "year": -1000
+        "year": -999
       },
       "end": {
-        "year": -1000
+        "year": -999
       }
     },
     "occupationDomain": "institutions",
@@ -10250,11 +10250,11 @@
     "name": "Sulla",
     "lifespan": {
       "start": {
-        "year": -138,
+        "year": -137,
         "month": 1
       },
       "end": {
-        "year": -78
+        "year": -77
       }
     },
     "occupationDomain": "institutions",
@@ -10296,7 +10296,7 @@
     "name": "Claudius",
     "lifespan": {
       "start": {
-        "year": -10,
+        "year": -9,
         "month": 8
       },
       "end": {
@@ -10529,7 +10529,7 @@
     "name": "Pontius Pilate",
     "lifespan": {
       "start": {
-        "year": -12,
+        "year": -11,
         "month": 12
       },
       "end": {
@@ -10665,11 +10665,11 @@
     "name": "Parmenides",
     "lifespan": {
       "start": {
-        "year": -501,
+        "year": -500,
         "month": 12
       },
       "end": {
-        "year": -470
+        "year": -469
       }
     },
     "occupationDomain": "humanities",
@@ -10688,10 +10688,10 @@
     "name": "Aristophanes",
     "lifespan": {
       "start": {
-        "year": -448
+        "year": -447
       },
       "end": {
-        "year": -386
+        "year": -385
       }
     },
     "occupationDomain": "humanities",
@@ -10917,7 +10917,7 @@
     "name": "Strabo",
     "lifespan": {
       "start": {
-        "year": -64,
+        "year": -63,
         "month": 1
       },
       "end": {
@@ -11355,11 +11355,11 @@
     "name": "Herod the Great",
     "lifespan": {
       "start": {
-        "year": -73,
+        "year": -72,
         "month": 1
       },
       "end": {
-        "year": -3,
+        "year": -2,
         "month": 1
       }
     },
@@ -11682,10 +11682,10 @@
     "name": "Euripides",
     "lifespan": {
       "start": {
-        "year": -480
+        "year": -479
       },
       "end": {
-        "year": -406
+        "year": -405
       }
     },
     "occupationDomain": "humanities",
@@ -11814,7 +11814,7 @@
     "name": "James, brother of Jesus",
     "lifespan": {
       "start": {
-        "year": -20
+        "year": -19
       },
       "end": {
         "year": 69
@@ -11879,10 +11879,10 @@
     "name": "Hatshepsut",
     "lifespan": {
       "start": {
-        "year": -1507
+        "year": -1506
       },
       "end": {
-        "year": -1458,
+        "year": -1457,
         "month": 1
       }
     },
@@ -12066,10 +12066,10 @@
     "name": "Samson",
     "lifespan": {
       "start": {
-        "year": -1118
+        "year": -1117
       },
       "end": {
-        "year": -1078
+        "year": -1077
       }
     },
     "occupationDomain": "institutions",
@@ -12087,10 +12087,10 @@
     "name": "Mark Antony",
     "lifespan": {
       "start": {
-        "year": -83
+        "year": -82
       },
       "end": {
-        "year": -30,
+        "year": -29,
         "month": 8
       }
     },
@@ -12131,10 +12131,10 @@
     "name": "Lucretius",
     "lifespan": {
       "start": {
-        "year": -94
+        "year": -93
       },
       "end": {
-        "year": -55,
+        "year": -54,
         "month": 1
       }
     },
@@ -12653,11 +12653,11 @@
     "name": "Amenhotep III",
     "lifespan": {
       "start": {
-        "year": -1403,
+        "year": -1402,
         "month": 1
       },
       "end": {
-        "year": -1350,
+        "year": -1349,
         "month": 1
       }
     },
@@ -12747,10 +12747,10 @@
     "name": "Khafra",
     "lifespan": {
       "start": {
-        "year": -2550
+        "year": -2549
       },
       "end": {
-        "year": -2479
+        "year": -2478
       }
     },
     "occupationDomain": "institutions",
@@ -12910,11 +12910,11 @@
     "name": "Thucydides",
     "lifespan": {
       "start": {
-        "year": -460,
+        "year": -459,
         "month": 1
       },
       "end": {
-        "year": -397,
+        "year": -396,
         "month": 12
       }
     },
@@ -13050,7 +13050,7 @@
     "name": "Mary Magdalene",
     "lifespan": {
       "start": {
-        "year": -10
+        "year": -9
       },
       "end": {
         "year": 100
@@ -13071,10 +13071,10 @@
     "name": "Aeschylus",
     "lifespan": {
       "start": {
-        "year": -525
+        "year": -524
       },
       "end": {
-        "year": -456
+        "year": -455
       }
     },
     "occupationDomain": "humanities",
@@ -13396,10 +13396,10 @@
     "name": "Empedocles",
     "lifespan": {
       "start": {
-        "year": -490
+        "year": -489
       },
       "end": {
-        "year": -430
+        "year": -429
       }
     },
     "occupationDomain": "humanities",
@@ -13556,11 +13556,11 @@
     "name": "Sima Qian",
     "lifespan": {
       "start": {
-        "year": -145,
+        "year": -144,
         "month": 1
       },
       "end": {
-        "year": -86,
+        "year": -85,
         "month": 1
       }
     },
@@ -13672,11 +13672,11 @@
     "name": "Anaximander",
     "lifespan": {
       "start": {
-        "year": -610,
+        "year": -609,
         "month": 1
       },
       "end": {
-        "year": -546
+        "year": -545
       }
     },
     "occupationDomain": "humanities",
@@ -14169,10 +14169,10 @@
     "name": "Isaiah",
     "lifespan": {
       "start": {
-        "year": -800
+        "year": -799
       },
       "end": {
-        "year": -700
+        "year": -699
       }
     },
     "occupationDomain": "institutions",
@@ -14190,11 +14190,11 @@
     "name": "Protagoras",
     "lifespan": {
       "start": {
-        "year": -486,
+        "year": -485,
         "month": 1
       },
       "end": {
-        "year": -420
+        "year": -419
       }
     },
     "occupationDomain": "humanities",
@@ -14984,11 +14984,11 @@
     "name": "Philip II of Macedon",
     "lifespan": {
       "start": {
-        "year": -382,
+        "year": -381,
         "month": 1
       },
       "end": {
-        "year": -336,
+        "year": -335,
         "month": 1
       }
     },
@@ -15490,10 +15490,10 @@
     "name": "Sappho",
     "lifespan": {
       "start": {
-        "year": -630
+        "year": -629
       },
       "end": {
-        "year": -570
+        "year": -569
       }
     },
     "occupationDomain": "humanities",
@@ -15767,11 +15767,11 @@
     "name": "Artaxerxes I of Persia",
     "lifespan": {
       "start": {
-        "year": -500,
+        "year": -499,
         "month": 1
       },
       "end": {
-        "year": -424,
+        "year": -423,
         "month": 1
       }
     },
@@ -15903,10 +15903,10 @@
     "name": "Anaxagoras",
     "lifespan": {
       "start": {
-        "year": -500
+        "year": -499
       },
       "end": {
-        "year": -428
+        "year": -427
       }
     },
     "occupationDomain": "humanities",
@@ -16013,11 +16013,11 @@
     "name": "Phidias",
     "lifespan": {
       "start": {
-        "year": -490,
+        "year": -489,
         "month": 1
       },
       "end": {
-        "year": -430,
+        "year": -429,
         "month": 1
       }
     },
@@ -16197,10 +16197,10 @@
     "name": "Lucius Tarquinius Superbus",
     "lifespan": {
       "start": {
-        "year": -600
+        "year": -599
       },
       "end": {
-        "year": -495
+        "year": -494
       }
     },
     "occupationDomain": "institutions",
@@ -17187,10 +17187,10 @@
     "name": "Mithridates VI of Pontus",
     "lifespan": {
       "start": {
-        "year": -132
+        "year": -131
       },
       "end": {
-        "year": -63,
+        "year": -62,
         "month": 1
       }
     },
@@ -17782,10 +17782,10 @@
     "name": "Vitruvius",
     "lifespan": {
       "start": {
-        "year": -75
+        "year": -74
       },
       "end": {
-        "year": -15
+        "year": -14
       }
     },
     "occupationDomain": "arts",
@@ -18381,11 +18381,11 @@
     "name": "Draco",
     "lifespan": {
       "start": {
-        "year": -650,
+        "year": -649,
         "month": 1
       },
       "end": {
-        "year": -600
+        "year": -599
       }
     },
     "occupationDomain": "institutions",
@@ -18953,11 +18953,11 @@
     "name": "Aspasia",
     "lifespan": {
       "start": {
-        "year": -470,
+        "year": -469,
         "month": 1
       },
       "end": {
-        "year": -400,
+        "year": -399,
         "month": 1
       }
     },
@@ -19371,10 +19371,10 @@
     "name": "Spartacus",
     "lifespan": {
       "start": {
-        "year": -109
+        "year": -108
       },
       "end": {
-        "year": -71,
+        "year": -70,
         "month": 4
       }
     },
@@ -19394,10 +19394,10 @@
     "name": "Samuel",
     "lifespan": {
       "start": {
-        "year": -1100
+        "year": -1099
       },
       "end": {
-        "year": -1010
+        "year": -1009
       }
     },
     "occupationDomain": "institutions",
@@ -19528,10 +19528,10 @@
     "name": "Moses in Islam",
     "lifespan": {
       "start": {
-        "year": -1392
+        "year": -1391
       },
       "end": {
-        "year": -1272
+        "year": -1271
       }
     },
     "occupationDomain": "institutions",
@@ -19621,11 +19621,11 @@
     "name": "Xenophon",
     "lifespan": {
       "start": {
-        "year": -430,
+        "year": -429,
         "month": 1
       },
       "end": {
-        "year": -354,
+        "year": -353,
         "month": 1
       }
     },
@@ -20136,7 +20136,7 @@
     "name": "Livy",
     "lifespan": {
       "start": {
-        "year": -59
+        "year": -58
       },
       "end": {
         "year": 17
@@ -20157,11 +20157,11 @@
     "name": "Saul",
     "lifespan": {
       "start": {
-        "year": -1079,
+        "year": -1078,
         "month": 1
       },
       "end": {
-        "year": -1010
+        "year": -1009
       }
     },
     "occupationDomain": "institutions",
@@ -21244,11 +21244,11 @@
     "name": "Mahavira",
     "lifespan": {
       "start": {
-        "year": -599,
+        "year": -598,
         "month": 1
       },
       "end": {
-        "year": -527
+        "year": -526
       }
     },
     "occupationDomain": "institutions",
@@ -21501,10 +21501,10 @@
     "name": "Darius III",
     "lifespan": {
       "start": {
-        "year": -380
+        "year": -379
       },
       "end": {
-        "year": -330,
+        "year": -329,
         "month": 1
       }
     },
@@ -21595,11 +21595,11 @@
     "name": "Demosthenes",
     "lifespan": {
       "start": {
-        "year": -384,
+        "year": -383,
         "month": 1
       },
       "end": {
-        "year": -322
+        "year": -321
       }
     },
     "occupationDomain": "institutions",
@@ -21824,10 +21824,10 @@
     "name": "Zeno of Elea",
     "lifespan": {
       "start": {
-        "year": -490
+        "year": -489
       },
       "end": {
-        "year": -425
+        "year": -424
       }
     },
     "occupationDomain": "humanities",
@@ -21845,10 +21845,10 @@
     "name": "Zhuang Zhou",
     "lifespan": {
       "start": {
-        "year": -369
+        "year": -368
       },
       "end": {
-        "year": -286
+        "year": -285
       }
     },
     "occupationDomain": "humanities",
@@ -22070,11 +22070,11 @@
     "name": "Pāṇini",
     "lifespan": {
       "start": {
-        "year": -500,
+        "year": -499,
         "month": 1
       },
       "end": {
-        "year": -460
+        "year": -459
       }
     },
     "occupationDomain": "humanities",
@@ -22163,11 +22163,11 @@
     "name": "Tomyris",
     "lifespan": {
       "start": {
-        "year": -600,
+        "year": -599,
         "month": 1
       },
       "end": {
-        "year": -600,
+        "year": -599,
         "month": 1
       }
     },
@@ -22255,10 +22255,10 @@
     "name": "Ezekiel",
     "lifespan": {
       "start": {
-        "year": -621
+        "year": -620
       },
       "end": {
-        "year": -569
+        "year": -568
       }
     },
     "occupationDomain": "institutions",
@@ -23917,10 +23917,10 @@
     "name": "Esther",
     "lifespan": {
       "start": {
-        "year": -600
+        "year": -599
       },
       "end": {
-        "year": -500
+        "year": -499
       }
     },
     "occupationDomain": "institutions",
@@ -24445,11 +24445,11 @@
     "name": "Imhotep",
     "lifespan": {
       "start": {
-        "year": -2800,
+        "year": -2799,
         "month": 1
       },
       "end": {
-        "year": -2700,
+        "year": -2699,
         "month": 1
       }
     },
@@ -25258,11 +25258,11 @@
     "name": "Numa Pompilius",
     "lifespan": {
       "start": {
-        "year": -753,
+        "year": -752,
         "month": 4
       },
       "end": {
-        "year": -673,
+        "year": -672,
         "month": 1
       }
     },
@@ -25414,10 +25414,10 @@
     "name": "Zeno of Citium",
     "lifespan": {
       "start": {
-        "year": -334
+        "year": -333
       },
       "end": {
-        "year": -263,
+        "year": -262,
         "month": 1
       }
     },
@@ -25754,11 +25754,11 @@
     "name": "Xenophanes",
     "lifespan": {
       "start": {
-        "year": -570,
+        "year": -569,
         "month": 1
       },
       "end": {
-        "year": -475,
+        "year": -474,
         "month": 1
       }
     },
@@ -25778,11 +25778,11 @@
     "name": "Gorgias",
     "lifespan": {
       "start": {
-        "year": -483,
+        "year": -482,
         "month": 1
       },
       "end": {
-        "year": -375
+        "year": -374
       }
     },
     "occupationDomain": "humanities",
@@ -25939,11 +25939,11 @@
     "name": "Themistocles",
     "lifespan": {
       "start": {
-        "year": -524,
+        "year": -523,
         "month": 1
       },
       "end": {
-        "year": -459,
+        "year": -458,
         "month": 1
       }
     },
@@ -25986,11 +25986,11 @@
     "name": "Ptolemy I Soter",
     "lifespan": {
       "start": {
-        "year": -367,
+        "year": -366,
         "month": 1
       },
       "end": {
-        "year": -283,
+        "year": -282,
         "month": 1
       }
     },
@@ -26124,11 +26124,11 @@
     "name": "Cleisthenes",
     "lifespan": {
       "start": {
-        "year": -565,
+        "year": -564,
         "month": 1
       },
       "end": {
-        "year": -492
+        "year": -491
       }
     },
     "occupationDomain": "institutions",
@@ -26996,10 +26996,10 @@
     "name": "Lycurgus of Sparta",
     "lifespan": {
       "start": {
-        "year": -800
+        "year": -799
       },
       "end": {
-        "year": -730
+        "year": -729
       }
     },
     "occupationDomain": "institutions",
@@ -27086,10 +27086,10 @@
     "name": "Leonidas I",
     "lifespan": {
       "start": {
-        "year": -540
+        "year": -539
       },
       "end": {
-        "year": -480,
+        "year": -479,
         "month": 1
       }
     },
@@ -27203,11 +27203,11 @@
     "name": "Patanjali",
     "lifespan": {
       "start": {
-        "year": -200,
+        "year": -199,
         "month": 1
       },
       "end": {
-        "year": -150,
+        "year": -149,
         "month": 1
       }
     },
@@ -27344,11 +27344,11 @@
     "name": "Leucippus",
     "lifespan": {
       "start": {
-        "year": -500,
+        "year": -499,
         "month": 1
       },
       "end": {
-        "year": -500
+        "year": -499
       }
     },
     "occupationDomain": "humanities",
@@ -28556,7 +28556,7 @@
     "name": "Herod Agrippa",
     "lifespan": {
       "start": {
-        "year": -11
+        "year": -10
       },
       "end": {
         "year": 44,
@@ -29308,11 +29308,11 @@
     "name": "Artaxerxes II of Persia",
     "lifespan": {
       "start": {
-        "year": -436,
+        "year": -435,
         "month": 1
       },
       "end": {
-        "year": -358,
+        "year": -357,
         "month": 1
       }
     },
@@ -29631,11 +29631,11 @@
     "name": "Marcus Aemilius Lepidus",
     "lifespan": {
       "start": {
-        "year": -89,
+        "year": -88,
         "month": 1
       },
       "end": {
-        "year": -13,
+        "year": -12,
         "month": 1
       }
     },
@@ -29940,11 +29940,11 @@
     "name": "Peisistratos",
     "lifespan": {
       "start": {
-        "year": -600,
+        "year": -599,
         "month": 1
       },
       "end": {
-        "year": -527
+        "year": -526
       }
     },
     "occupationDomain": "institutions",
@@ -30099,11 +30099,11 @@
     "name": "Ashurbanipal",
     "lifespan": {
       "start": {
-        "year": -685,
+        "year": -684,
         "month": 1
       },
       "end": {
-        "year": -627,
+        "year": -626,
         "month": 1
       }
     },
@@ -30123,10 +30123,10 @@
     "name": "Theophrastus",
     "lifespan": {
       "start": {
-        "year": -371
+        "year": -370
       },
       "end": {
-        "year": -287
+        "year": -286
       }
     },
     "occupationDomain": "humanities",
@@ -30646,11 +30646,11 @@
     "name": "Marcus Licinius Crassus",
     "lifespan": {
       "start": {
-        "year": -115,
+        "year": -114,
         "month": 1
       },
       "end": {
-        "year": -53,
+        "year": -52,
         "month": 6
       }
     },
@@ -30694,10 +30694,10 @@
     "name": "Miltiades",
     "lifespan": {
       "start": {
-        "year": -540
+        "year": -539
       },
       "end": {
-        "year": -488,
+        "year": -487,
         "month": 1
       }
     },
@@ -31014,10 +31014,10 @@
     "name": "Thutmose III",
     "lifespan": {
       "start": {
-        "year": -1481
+        "year": -1480
       },
       "end": {
-        "year": -1425,
+        "year": -1424,
         "month": 3
       }
     },
@@ -31313,11 +31313,11 @@
     "name": "Croesus",
     "lifespan": {
       "start": {
-        "year": -596,
+        "year": -595,
         "month": 1
       },
       "end": {
-        "year": -546,
+        "year": -545,
         "month": 1
       }
     },
@@ -31383,10 +31383,10 @@
     "name": "Lucretia",
     "lifespan": {
       "start": {
-        "year": -600
+        "year": -599
       },
       "end": {
-        "year": -509
+        "year": -508
       }
     },
     "occupationDomain": "institutions",
@@ -31607,7 +31607,7 @@
     "name": "Galba",
     "lifespan": {
       "start": {
-        "year": -3,
+        "year": -2,
         "month": 12
       },
       "end": {
@@ -32225,10 +32225,10 @@
     "name": "Aristarchus of Samos",
     "lifespan": {
       "start": {
-        "year": -311
+        "year": -310
       },
       "end": {
-        "year": -230,
+        "year": -229,
         "month": 1
       }
     },
@@ -32675,10 +32675,10 @@
     "name": "Sarah",
     "lifespan": {
       "start": {
-        "year": -1803
+        "year": -1802
       },
       "end": {
-        "year": -1676
+        "year": -1675
       }
     },
     "occupationDomain": "institutions",
@@ -32789,10 +32789,10 @@
     "name": "Cato the Elder",
     "lifespan": {
       "start": {
-        "year": -243
+        "year": -242
       },
       "end": {
-        "year": -149,
+        "year": -148,
         "month": 1
       }
     },
@@ -33015,10 +33015,10 @@
     "name": "Vercingetorix",
     "lifespan": {
       "start": {
-        "year": -80
+        "year": -79
       },
       "end": {
-        "year": -46
+        "year": -45
       }
     },
     "occupationDomain": "institutions",
@@ -33434,11 +33434,11 @@
     "name": "Hipparchus",
     "lifespan": {
       "start": {
-        "year": -190,
+        "year": -189,
         "month": 1
       },
       "end": {
-        "year": -120
+        "year": -119
       }
     },
     "occupationDomain": "science-technology",
@@ -33680,7 +33680,7 @@
     "name": "Arminius",
     "lifespan": {
       "start": {
-        "year": -17,
+        "year": -16,
         "month": 1
       },
       "end": {
@@ -34236,11 +34236,11 @@
     "name": "Porus",
     "lifespan": {
       "start": {
-        "year": -400,
+        "year": -399,
         "month": 1
       },
       "end": {
-        "year": -316,
+        "year": -315,
         "month": 1
       }
     },
@@ -34282,11 +34282,11 @@
     "name": "Plautus",
     "lifespan": {
       "start": {
-        "year": -254,
+        "year": -253,
         "month": 1
       },
       "end": {
-        "year": -184,
+        "year": -183,
         "month": 1
       }
     },
@@ -34641,10 +34641,10 @@
     "name": "Nefertari",
     "lifespan": {
       "start": {
-        "year": -1290
+        "year": -1289
       },
       "end": {
-        "year": -1255,
+        "year": -1254,
         "month": 1
       }
     },
@@ -35757,10 +35757,10 @@
     "name": "Joshua",
     "lifespan": {
       "start": {
-        "year": -1355
+        "year": -1354
       },
       "end": {
-        "year": -1245
+        "year": -1244
       }
     },
     "occupationDomain": "institutions",
@@ -35826,10 +35826,10 @@
     "name": "Mencius",
     "lifespan": {
       "start": {
-        "year": -372
+        "year": -371
       },
       "end": {
-        "year": -289
+        "year": -288
       }
     },
     "occupationDomain": "humanities",
@@ -36162,11 +36162,11 @@
     "name": "Alcibiades",
     "lifespan": {
       "start": {
-        "year": -450,
+        "year": -449,
         "month": 1
       },
       "end": {
-        "year": -404,
+        "year": -403,
         "month": 1
       }
     },
@@ -36530,10 +36530,10 @@
     "name": "Seti I",
     "lifespan": {
       "start": {
-        "year": -1323
+        "year": -1322
       },
       "end": {
-        "year": -1279
+        "year": -1278
       }
     },
     "occupationDomain": "institutions",
@@ -36846,11 +36846,11 @@
     "name": "Elisha",
     "lifespan": {
       "start": {
-        "year": -900,
+        "year": -899,
         "month": 1
       },
       "end": {
-        "year": -790,
+        "year": -789,
         "month": 1
       }
     },
@@ -37128,11 +37128,11 @@
     "name": "Pyrrhus of Epirus",
     "lifespan": {
       "start": {
-        "year": -318,
+        "year": -317,
         "month": 1
       },
       "end": {
-        "year": -272,
+        "year": -271,
         "month": 1
       }
     },
@@ -37361,11 +37361,11 @@
     "name": "Diodorus Siculus",
     "lifespan": {
       "start": {
-        "year": -90,
+        "year": -89,
         "month": 1
       },
       "end": {
-        "year": -30,
+        "year": -29,
         "month": 1
       }
     },
@@ -37407,11 +37407,11 @@
     "name": "Marcus Vipsanius Agrippa",
     "lifespan": {
       "start": {
-        "year": -63,
+        "year": -62,
         "month": 1
       },
       "end": {
-        "year": -12,
+        "year": -11,
         "month": 1
       }
     },
@@ -37525,11 +37525,11 @@
     "name": "Caesarion",
     "lifespan": {
       "start": {
-        "year": -47,
+        "year": -46,
         "month": 6
       },
       "end": {
-        "year": -30
+        "year": -29
       }
     },
     "occupationDomain": "institutions",
@@ -37779,10 +37779,10 @@
     "name": "Ptolemy XIV of Egypt",
     "lifespan": {
       "start": {
-        "year": -60
+        "year": -59
       },
       "end": {
-        "year": -44,
+        "year": -43,
         "month": 1
       }
     },
@@ -37908,11 +37908,11 @@
     "name": "Aristippus",
     "lifespan": {
       "start": {
-        "year": -434,
+        "year": -433,
         "month": 1
       },
       "end": {
-        "year": -355,
+        "year": -354,
         "month": 1
       }
     },
@@ -38895,10 +38895,10 @@
     "name": "Pindar",
     "lifespan": {
       "start": {
-        "year": -517
+        "year": -516
       },
       "end": {
-        "year": -437
+        "year": -436
       }
     },
     "occupationDomain": "humanities",
@@ -39417,11 +39417,11 @@
     "name": "Djoser",
     "lifespan": {
       "start": {
-        "year": -2800,
+        "year": -2799,
         "month": 1
       },
       "end": {
-        "year": -2700,
+        "year": -2699,
         "month": 1
       }
     },
@@ -39997,11 +39997,11 @@
     "name": "Gaius Marius",
     "lifespan": {
       "start": {
-        "year": -157,
+        "year": -156,
         "month": 1
       },
       "end": {
-        "year": -86,
+        "year": -85,
         "month": 1
       }
     },
@@ -40135,11 +40135,11 @@
     "name": "Joachim",
     "lifespan": {
       "start": {
-        "year": -100,
+        "year": -99,
         "month": 1
       },
       "end": {
-        "year": -10
+        "year": -9
       }
     },
     "occupationDomain": "institutions",
@@ -40762,7 +40762,7 @@
     "name": "Livia",
     "lifespan": {
       "start": {
-        "year": -58,
+        "year": -57,
         "month": 1
       },
       "end": {
@@ -41016,10 +41016,10 @@
     "name": "Servius Tullius",
     "lifespan": {
       "start": {
-        "year": -600
+        "year": -599
       },
       "end": {
-        "year": -535
+        "year": -534
       }
     },
     "occupationDomain": "institutions",
@@ -41060,11 +41060,11 @@
     "name": "Ānanda",
     "lifespan": {
       "start": {
-        "year": -600,
+        "year": -599,
         "month": 1
       },
       "end": {
-        "year": -500,
+        "year": -499,
         "month": 1
       }
     },
@@ -41152,7 +41152,7 @@
     "name": "Herod Antipas",
     "lifespan": {
       "start": {
-        "year": -20,
+        "year": -19,
         "month": 1
       },
       "end": {
@@ -41589,10 +41589,10 @@
     "name": "Cambyses II",
     "lifespan": {
       "start": {
-        "year": -550
+        "year": -549
       },
       "end": {
-        "year": -522,
+        "year": -521,
         "month": 1
       }
     },
@@ -41838,10 +41838,10 @@
     "name": "Catullus",
     "lifespan": {
       "start": {
-        "year": -84
+        "year": -83
       },
       "end": {
-        "year": -54
+        "year": -53
       }
     },
     "occupationDomain": "humanities",
@@ -41972,10 +41972,10 @@
     "name": "Sargon of Akkad",
     "lifespan": {
       "start": {
-        "year": -2300
+        "year": -2299
       },
       "end": {
-        "year": -2215
+        "year": -2214
       }
     },
     "occupationDomain": "institutions",
@@ -43001,11 +43001,11 @@
     "name": "Roxana",
     "lifespan": {
       "start": {
-        "year": -347,
+        "year": -346,
         "month": 1
       },
       "end": {
-        "year": -310
+        "year": -309
       }
     },
     "occupationDomain": "public-figure",
@@ -43929,11 +43929,11 @@
     "name": "Scipio Africanus",
     "lifespan": {
       "start": {
-        "year": -235,
+        "year": -234,
         "month": 6
       },
       "end": {
-        "year": -183,
+        "year": -182,
         "month": 1
       }
     },
@@ -44024,11 +44024,11 @@
     "name": "Apollodorus of Athens",
     "lifespan": {
       "start": {
-        "year": -180,
+        "year": -179,
         "month": 1
       },
       "end": {
-        "year": -110
+        "year": -109
       }
     },
     "occupationDomain": "humanities",
@@ -44547,11 +44547,11 @@
     "name": "Apollonius of Perga",
     "lifespan": {
       "start": {
-        "year": -262,
+        "year": -261,
         "month": 1
       },
       "end": {
-        "year": -190,
+        "year": -189,
         "month": 1
       }
     },
@@ -44684,11 +44684,11 @@
     "name": "Menander",
     "lifespan": {
       "start": {
-        "year": -342,
+        "year": -341,
         "month": 1
       },
       "end": {
-        "year": -291,
+        "year": -290,
         "month": 1
       }
     },
@@ -44839,10 +44839,10 @@
     "name": "Dido",
     "lifespan": {
       "start": {
-        "year": -879
+        "year": -878
       },
       "end": {
-        "year": -759
+        "year": -758
       }
     },
     "occupationDomain": "institutions",
@@ -45092,10 +45092,10 @@
     "name": "Antisthenes",
     "lifespan": {
       "start": {
-        "year": -445
+        "year": -444
       },
       "end": {
-        "year": -365,
+        "year": -364,
         "month": 1
       }
     },
@@ -45412,10 +45412,10 @@
     "name": "Praxiteles",
     "lifespan": {
       "start": {
-        "year": -395
+        "year": -394
       },
       "end": {
-        "year": -330
+        "year": -329
       }
     },
     "occupationDomain": "arts",
@@ -46191,10 +46191,10 @@
     "name": "Gideon",
     "lifespan": {
       "start": {
-        "year": -1140
+        "year": -1139
       },
       "end": {
-        "year": -1080
+        "year": -1079
       }
     },
     "occupationDomain": "institutions",
@@ -46830,10 +46830,10 @@
     "name": "Stateira II",
     "lifespan": {
       "start": {
-        "year": -346
+        "year": -345
       },
       "end": {
-        "year": -323,
+        "year": -322,
         "month": 1
       }
     },
@@ -47222,10 +47222,10 @@
     "name": "Merneptah",
     "lifespan": {
       "start": {
-        "year": -1300
+        "year": -1299
       },
       "end": {
-        "year": -1203,
+        "year": -1202,
         "month": 5
       }
     },
@@ -47356,10 +47356,10 @@
     "name": "Terence",
     "lifespan": {
       "start": {
-        "year": -185
+        "year": -184
       },
       "end": {
-        "year": -159
+        "year": -158
       }
     },
     "occupationDomain": "humanities",
@@ -49255,10 +49255,10 @@
     "name": "Seleucus I Nicator",
     "lifespan": {
       "start": {
-        "year": -358
+        "year": -357
       },
       "end": {
-        "year": -281
+        "year": -280
       }
     },
     "occupationDomain": "institutions",
@@ -49595,10 +49595,10 @@
     "name": "Polybius",
     "lifespan": {
       "start": {
-        "year": -208
+        "year": -207
       },
       "end": {
-        "year": -126
+        "year": -125
       }
     },
     "occupationDomain": "humanities",
@@ -49703,11 +49703,11 @@
     "name": "Emperor Wu of Han",
     "lifespan": {
       "start": {
-        "year": -156,
+        "year": -155,
         "month": 6
       },
       "end": {
-        "year": -87
+        "year": -86
       }
     },
     "occupationDomain": "institutions",
@@ -50247,11 +50247,11 @@
     "name": "Rehoboam",
     "lifespan": {
       "start": {
-        "year": -972,
+        "year": -971,
         "month": 1
       },
       "end": {
-        "year": -914,
+        "year": -913,
         "month": 1
       }
     },
@@ -50365,7 +50365,7 @@
     "name": "Germanicus",
     "lifespan": {
       "start": {
-        "year": -15,
+        "year": -14,
         "month": 5
       },
       "end": {
@@ -50389,10 +50389,10 @@
     "name": "Ramesses III",
     "lifespan": {
       "start": {
-        "year": -1217
+        "year": -1216
       },
       "end": {
-        "year": -1155
+        "year": -1154
       }
     },
     "occupationDomain": "institutions",
@@ -50411,10 +50411,10 @@
     "name": "Lucius Tarquinius Priscus",
     "lifespan": {
       "start": {
-        "year": -700
+        "year": -699
       },
       "end": {
-        "year": -579
+        "year": -578
       }
     },
     "occupationDomain": "institutions",
@@ -50805,10 +50805,10 @@
     "name": "Horemheb",
     "lifespan": {
       "start": {
-        "year": -1319
+        "year": -1318
       },
       "end": {
-        "year": -1292
+        "year": -1291
       }
     },
     "occupationDomain": "institutions",
@@ -50898,10 +50898,10 @@
     "name": "Jethro",
     "lifespan": {
       "start": {
-        "year": -1400
+        "year": -1399
       },
       "end": {
-        "year": -1400
+        "year": -1399
       }
     },
     "occupationDomain": "institutions",
@@ -50940,11 +50940,11 @@
     "name": "Xanthippe",
     "lifespan": {
       "start": {
-        "year": -500,
+        "year": -499,
         "month": 1
       },
       "end": {
-        "year": -400
+        "year": -399
       }
     },
     "occupationDomain": "institutions",
@@ -51195,10 +51195,10 @@
     "name": "Menes",
     "lifespan": {
       "start": {
-        "year": -3200
+        "year": -3199
       },
       "end": {
-        "year": -3100
+        "year": -3099
       }
     },
     "occupationDomain": "institutions",
@@ -51258,10 +51258,10 @@
     "name": "Ezra",
     "lifespan": {
       "start": {
-        "year": -500
+        "year": -499
       },
       "end": {
-        "year": -401
+        "year": -400
       }
     },
     "occupationDomain": "institutions",
@@ -51391,10 +51391,10 @@
     "name": "Deborah",
     "lifespan": {
       "start": {
-        "year": -1199
+        "year": -1198
       },
       "end": {
-        "year": -1123
+        "year": -1122
       }
     },
     "occupationDomain": "institutions",
@@ -51410,11 +51410,11 @@
     "name": "Eudoxus of Cnidus",
     "lifespan": {
       "start": {
-        "year": -408,
+        "year": -407,
         "month": 1
       },
       "end": {
-        "year": -355,
+        "year": -354,
         "month": 1
       }
     },
@@ -51773,11 +51773,11 @@
     "name": "Emperor Gaozu of Han",
     "lifespan": {
       "start": {
-        "year": -256,
+        "year": -255,
         "month": 1
       },
       "end": {
-        "year": -195,
+        "year": -194,
         "month": 6
       }
     },
@@ -51842,11 +51842,11 @@
     "name": "Emperor Jimmu",
     "lifespan": {
       "start": {
-        "year": -711,
+        "year": -710,
         "month": 2
       },
       "end": {
-        "year": -585,
+        "year": -584,
         "month": 4
       }
     },
@@ -52002,10 +52002,10 @@
     "name": "Ramesses I",
     "lifespan": {
       "start": {
-        "year": -1300
+        "year": -1299
       },
       "end": {
-        "year": -1290
+        "year": -1289
       }
     },
     "occupationDomain": "institutions",
@@ -52368,10 +52368,10 @@
     "name": "Anacreon",
     "lifespan": {
       "start": {
-        "year": -570
+        "year": -569
       },
       "end": {
-        "year": -485,
+        "year": -484,
         "month": 1
       }
     },
@@ -53368,11 +53368,11 @@
     "name": "Lucius Quinctius Cincinnatus",
     "lifespan": {
       "start": {
-        "year": -519,
+        "year": -518,
         "month": 1
       },
       "end": {
-        "year": -430,
+        "year": -429,
         "month": 1
       }
     },
@@ -53434,11 +53434,11 @@
     "name": "Ptolemy II Philadelphus",
     "lifespan": {
       "start": {
-        "year": -308,
+        "year": -307,
         "month": 1
       },
       "end": {
-        "year": -246,
+        "year": -245,
         "month": 1
       }
     },
@@ -53689,11 +53689,11 @@
     "name": "Xerxes II of Persia",
     "lifespan": {
       "start": {
-        "year": -500,
+        "year": -499,
         "month": 1
       },
       "end": {
-        "year": -424,
+        "year": -423,
         "month": 1
       }
     },
@@ -53713,10 +53713,10 @@
     "name": "Amos",
     "lifespan": {
       "start": {
-        "year": -800
+        "year": -799
       },
       "end": {
-        "year": -745,
+        "year": -744,
         "month": 1
       }
     },
@@ -54820,11 +54820,11 @@
     "name": "Nebuchadnezzar I",
     "lifespan": {
       "start": {
-        "year": -1200,
+        "year": -1199,
         "month": 1
       },
       "end": {
-        "year": -1104,
+        "year": -1103,
         "month": 1
       }
     },
@@ -54983,11 +54983,11 @@
     "name": "Ptolemy XIII Theos Philopator",
     "lifespan": {
       "start": {
-        "year": -62,
+        "year": -61,
         "month": 1
       },
       "end": {
-        "year": -47,
+        "year": -46,
         "month": 1
       }
     },
@@ -55112,11 +55112,11 @@
     "name": "Tigranes the Great",
     "lifespan": {
       "start": {
-        "year": -140,
+        "year": -139,
         "month": 1
       },
       "end": {
-        "year": -55,
+        "year": -54,
         "month": 1
       }
     },
@@ -55227,11 +55227,11 @@
     "name": "Ptolemy III Euergetes",
     "lifespan": {
       "start": {
-        "year": -284,
+        "year": -283,
         "month": 1
       },
       "end": {
-        "year": -222,
+        "year": -221,
         "month": 1
       }
     },
@@ -55319,7 +55319,7 @@
     "name": "Saint Veronica",
     "lifespan": {
       "start": {
-        "year": -25,
+        "year": -24,
         "month": 1
       },
       "end": {
@@ -57281,11 +57281,11 @@
     "name": "Maya",
     "lifespan": {
       "start": {
-        "year": -600,
+        "year": -599,
         "month": 1
       },
       "end": {
-        "year": -600,
+        "year": -599,
         "month": 1
       }
     },
@@ -57416,10 +57416,10 @@
     "name": "Chanakya",
     "lifespan": {
       "start": {
-        "year": -375
+        "year": -374
       },
       "end": {
-        "year": -283
+        "year": -282
       }
     },
     "occupationDomain": "humanities",
@@ -58367,10 +58367,10 @@
     "name": "Pyrrho",
     "lifespan": {
       "start": {
-        "year": -365
+        "year": -364
       },
       "end": {
-        "year": -275
+        "year": -274
       }
     },
     "occupationDomain": "humanities",
@@ -58501,10 +58501,10 @@
     "name": "Anaximenes of Miletus",
     "lifespan": {
       "start": {
-        "year": -585
+        "year": -584
       },
       "end": {
-        "year": -525
+        "year": -524
       }
     },
     "occupationDomain": "humanities",
@@ -58729,11 +58729,11 @@
     "name": "Alexander IV of Macedon",
     "lifespan": {
       "start": {
-        "year": -323,
+        "year": -322,
         "month": 1
       },
       "end": {
-        "year": -309,
+        "year": -308,
         "month": 1
       }
     },
@@ -58776,11 +58776,11 @@
     "name": "Ptolemy IX Lathyros",
     "lifespan": {
       "start": {
-        "year": -142,
+        "year": -141,
         "month": 2
       },
       "end": {
-        "year": -80,
+        "year": -79,
         "month": 1
       }
     },
@@ -59252,11 +59252,11 @@
     "name": "Hecataeus of Miletus",
     "lifespan": {
       "start": {
-        "year": -550,
+        "year": -549,
         "month": 1
       },
       "end": {
-        "year": -476,
+        "year": -475,
         "month": 1
       }
     },
@@ -59630,11 +59630,11 @@
     "name": "Olympias",
     "lifespan": {
       "start": {
-        "year": -375,
+        "year": -374,
         "month": 1
       },
       "end": {
-        "year": -316,
+        "year": -315,
         "month": 1
       }
     },
@@ -60084,11 +60084,11 @@
     "name": "Dionysius of Halicarnassus",
     "lifespan": {
       "start": {
-        "year": -60,
+        "year": -59,
         "month": 1
       },
       "end": {
-        "year": -7,
+        "year": -6,
         "month": 1
       }
     },
@@ -60574,7 +60574,7 @@
     "name": "Malachi",
     "lifespan": {
       "start": {
-        "year": -450
+        "year": -449
       }
     },
     "occupationDomain": "institutions",
@@ -60951,11 +60951,11 @@
     "name": "Smenkhkare",
     "lifespan": {
       "start": {
-        "year": -1400,
+        "year": -1399,
         "month": 1
       },
       "end": {
-        "year": -1334
+        "year": -1333
       }
     },
     "occupationDomain": "institutions",
@@ -61062,10 +61062,10 @@
     "name": "Nathan",
     "lifespan": {
       "start": {
-        "year": -1000
+        "year": -999
       },
       "end": {
-        "year": -1000
+        "year": -999
       }
     },
     "occupationDomain": "institutions",
@@ -61708,10 +61708,10 @@
     "name": "Sennacherib",
     "lifespan": {
       "start": {
-        "year": -740
+        "year": -739
       },
       "end": {
-        "year": -681,
+        "year": -680,
         "month": 1
       }
     },
@@ -61753,7 +61753,7 @@
     "name": "Philo",
     "lifespan": {
       "start": {
-        "year": -15
+        "year": -14
       },
       "end": {
         "year": 45,
@@ -62028,10 +62028,10 @@
     "name": "Hasdrubal Barca",
     "lifespan": {
       "start": {
-        "year": -300
+        "year": -299
       },
       "end": {
-        "year": -221
+        "year": -220
       }
     },
     "occupationDomain": "institutions",
@@ -62180,10 +62180,10 @@
     "name": "Ahmose I",
     "lifespan": {
       "start": {
-        "year": -1560
+        "year": -1559
       },
       "end": {
-        "year": -1525,
+        "year": -1524,
         "month": 1
       }
     },
@@ -62202,10 +62202,10 @@
     "name": "Alcaeus of Mytilene",
     "lifespan": {
       "start": {
-        "year": -620
+        "year": -619
       },
       "end": {
-        "year": -560
+        "year": -559
       }
     },
     "occupationDomain": "humanities",
@@ -62292,10 +62292,10 @@
     "name": "Epaminondas",
     "lifespan": {
       "start": {
-        "year": -418
+        "year": -417
       },
       "end": {
-        "year": -362,
+        "year": -361,
         "month": 1
       }
     },
@@ -62360,10 +62360,10 @@
     "name": "Atia",
     "lifespan": {
       "start": {
-        "year": -85
+        "year": -84
       },
       "end": {
-        "year": -43
+        "year": -42
       }
     },
     "occupationDomain": "institutions",
@@ -62870,11 +62870,11 @@
     "name": "Cleopatra II of Egypt",
     "lifespan": {
       "start": {
-        "year": -185,
+        "year": -184,
         "month": 1
       },
       "end": {
-        "year": -116,
+        "year": -115,
         "month": 1
       }
     },
@@ -63054,11 +63054,11 @@
     "name": "Demetrius I of Macedon",
     "lifespan": {
       "start": {
-        "year": -336,
+        "year": -335,
         "month": 1
       },
       "end": {
-        "year": -283,
+        "year": -282,
         "month": 1
       }
     },
@@ -63076,11 +63076,11 @@
     "name": "Mozi",
     "lifespan": {
       "start": {
-        "year": -470,
+        "year": -469,
         "month": 1
       },
       "end": {
-        "year": -391,
+        "year": -390,
         "month": 1
       }
     },
@@ -63283,11 +63283,11 @@
     "name": "Sneferu",
     "lifespan": {
       "start": {
-        "year": -2700,
+        "year": -2699,
         "month": 1
       },
       "end": {
-        "year": -2609,
+        "year": -2608,
         "month": 1
       }
     },
@@ -63564,10 +63564,10 @@
     "name": "Kanada",
     "lifespan": {
       "start": {
-        "year": -200
+        "year": -199
       },
       "end": {
-        "year": -160
+        "year": -159
       }
     },
     "occupationDomain": "humanities",
@@ -63925,11 +63925,11 @@
     "name": "Thutmose I",
     "lifespan": {
       "start": {
-        "year": -1600,
+        "year": -1599,
         "month": 1
       },
       "end": {
-        "year": -1493
+        "year": -1492
       }
     },
     "occupationDomain": "institutions",
@@ -63968,10 +63968,10 @@
     "name": "Catiline",
     "lifespan": {
       "start": {
-        "year": -109
+        "year": -108
       },
       "end": {
-        "year": -62,
+        "year": -61,
         "month": 1
       }
     },
@@ -64211,11 +64211,11 @@
     "name": "Sallust",
     "lifespan": {
       "start": {
-        "year": -86,
+        "year": -85,
         "month": 10
       },
       "end": {
-        "year": -34
+        "year": -33
       }
     },
     "occupationDomain": "humanities",
@@ -65215,11 +65215,11 @@
     "name": "Ptolemy IV Philopator",
     "lifespan": {
       "start": {
-        "year": -244,
+        "year": -243,
         "month": 1
       },
       "end": {
-        "year": -205,
+        "year": -204,
         "month": 1
       }
     },
@@ -65295,11 +65295,11 @@
     "name": "Gaius Octavius",
     "lifespan": {
       "start": {
-        "year": -100,
+        "year": -99,
         "month": 1
       },
       "end": {
-        "year": -58
+        "year": -57
       }
     },
     "occupationDomain": "institutions",
@@ -65484,11 +65484,11 @@
     "name": "Darius II",
     "lifespan": {
       "start": {
-        "year": -475,
+        "year": -474,
         "month": 1
       },
       "end": {
-        "year": -404
+        "year": -403
       }
     },
     "occupationDomain": "institutions",
@@ -65949,11 +65949,11 @@
     "name": "Jugurtha",
     "lifespan": {
       "start": {
-        "year": -160,
+        "year": -159,
         "month": 1
       },
       "end": {
-        "year": -104,
+        "year": -103,
         "month": 1
       }
     },
@@ -66204,11 +66204,11 @@
     "name": "Chrysippus",
     "lifespan": {
       "start": {
-        "year": -281,
+        "year": -280,
         "month": 1
       },
       "end": {
-        "year": -208,
+        "year": -207,
         "month": 1
       }
     },
@@ -66547,11 +66547,11 @@
     "name": "Nero Claudius Drusus",
     "lifespan": {
       "start": {
-        "year": -38,
+        "year": -37,
         "month": 1
       },
       "end": {
-        "year": -9,
+        "year": -8,
         "month": 9
       }
     },
@@ -66978,10 +66978,10 @@
     "name": "Chandragupta Maurya",
     "lifespan": {
       "start": {
-        "year": -340
+        "year": -339
       },
       "end": {
-        "year": -297
+        "year": -296
       }
     },
     "occupationDomain": "institutions",
@@ -67113,11 +67113,11 @@
     "name": "Jeroboam",
     "lifespan": {
       "start": {
-        "year": -1000,
+        "year": -999,
         "month": 1
       },
       "end": {
-        "year": -910,
+        "year": -909,
         "month": 1
       }
     },
@@ -67247,10 +67247,10 @@
     "name": "Valmiki",
     "lifespan": {
       "start": {
-        "year": -80
+        "year": -79
       },
       "end": {
-        "year": -2
+        "year": -1
       }
     },
     "occupationDomain": "humanities",
@@ -67534,11 +67534,11 @@
     "name": "Cleopatra III of Egypt",
     "lifespan": {
       "start": {
-        "year": -161,
+        "year": -160,
         "month": 1
       },
       "end": {
-        "year": -101
+        "year": -100
       }
     },
     "occupationDomain": "institutions",
@@ -67904,10 +67904,10 @@
     "name": "Antiochus III the Great",
     "lifespan": {
       "start": {
-        "year": -241
+        "year": -240
       },
       "end": {
-        "year": -187,
+        "year": -186,
         "month": 1
       }
     },
@@ -67973,11 +67973,11 @@
     "name": "Isocrates",
     "lifespan": {
       "start": {
-        "year": -436,
+        "year": -435,
         "month": 1
       },
       "end": {
-        "year": -338,
+        "year": -337,
         "month": 8
       }
     },
@@ -68020,10 +68020,10 @@
     "name": "Marcus Terentius Varro",
     "lifespan": {
       "start": {
-        "year": -116
+        "year": -115
       },
       "end": {
-        "year": -27
+        "year": -26
       }
     },
     "occupationDomain": "humanities",
@@ -68242,10 +68242,10 @@
     "name": "Sargon II",
     "lifespan": {
       "start": {
-        "year": -750
+        "year": -749
       },
       "end": {
-        "year": -705,
+        "year": -704,
         "month": 1
       }
     },
@@ -68426,11 +68426,11 @@
     "name": "Twosret",
     "lifespan": {
       "start": {
-        "year": -1201,
+        "year": -1200,
         "month": 1
       },
       "end": {
-        "year": -1189
+        "year": -1188
       }
     },
     "occupationDomain": "institutions",
@@ -68655,10 +68655,10 @@
     "name": "Thutmose II",
     "lifespan": {
       "start": {
-        "year": -1510
+        "year": -1509
       },
       "end": {
-        "year": -1479
+        "year": -1478
       }
     },
     "occupationDomain": "institutions",
@@ -68674,10 +68674,10 @@
     "name": "Ahab",
     "lifespan": {
       "start": {
-        "year": -900
+        "year": -899
       },
       "end": {
-        "year": -852,
+        "year": -851,
         "month": 1
       }
     },
@@ -69615,11 +69615,11 @@
     "name": "Ptolemy XII Auletes",
     "lifespan": {
       "start": {
-        "year": -117,
+        "year": -116,
         "month": 1
       },
       "end": {
-        "year": -51,
+        "year": -50,
         "month": 1
       }
     },
@@ -69997,7 +69997,7 @@
     "name": "Lucius Caesar",
     "lifespan": {
       "start": {
-        "year": -17,
+        "year": -16,
         "month": 1
       },
       "end": {
@@ -70246,10 +70246,10 @@
     "name": "Qa'a",
     "lifespan": {
       "start": {
-        "year": -2950
+        "year": -2949
       },
       "end": {
-        "year": -2910
+        "year": -2909
       }
     },
     "occupationDomain": "science-technology",
@@ -70608,10 +70608,10 @@
     "name": "Archytas",
     "lifespan": {
       "start": {
-        "year": -428
+        "year": -427
       },
       "end": {
-        "year": -347
+        "year": -346
       }
     },
     "occupationDomain": "science-technology",
@@ -70855,11 +70855,11 @@
     "name": "Bimbisara",
     "lifespan": {
       "start": {
-        "year": -558,
+        "year": -557,
         "month": 1
       },
       "end": {
-        "year": -491,
+        "year": -490,
         "month": 1
       }
     },
@@ -71087,11 +71087,11 @@
     "name": "Manetho",
     "lifespan": {
       "start": {
-        "year": -201,
+        "year": -200,
         "month": 1
       },
       "end": {
-        "year": -160
+        "year": -159
       }
     },
     "occupationDomain": "humanities",
@@ -71622,10 +71622,10 @@
     "name": "Nehemiah",
     "lifespan": {
       "start": {
-        "year": -490
+        "year": -489
       },
       "end": {
-        "year": -403
+        "year": -402
       }
     },
     "occupationDomain": "institutions",
@@ -71666,10 +71666,10 @@
     "name": "Han Fei",
     "lifespan": {
       "start": {
-        "year": -280
+        "year": -279
       },
       "end": {
-        "year": -232,
+        "year": -231,
         "month": 1
       }
     },
@@ -71713,11 +71713,11 @@
     "name": "Ptolemy V Epiphanes",
     "lifespan": {
       "start": {
-        "year": -210,
+        "year": -209,
         "month": 10
       },
       "end": {
-        "year": -180
+        "year": -179
       }
     },
     "occupationDomain": "institutions",
@@ -71799,10 +71799,10 @@
     "name": "Lysippos",
     "lifespan": {
       "start": {
-        "year": -390
+        "year": -389
       },
       "end": {
-        "year": -300
+        "year": -299
       }
     },
     "occupationDomain": "arts",
@@ -72303,11 +72303,11 @@
     "name": "Jotham of Judah",
     "lifespan": {
       "start": {
-        "year": -800,
+        "year": -799,
         "month": 1
       },
       "end": {
-        "year": -800,
+        "year": -799,
         "month": 1
       }
     },
@@ -74036,7 +74036,7 @@
     "name": "Cleopatra Selene II",
     "lifespan": {
       "start": {
-        "year": -40,
+        "year": -39,
         "month": 12
       },
       "end": {
@@ -74239,11 +74239,11 @@
     "name": "Hezekiah",
     "lifespan": {
       "start": {
-        "year": -800,
+        "year": -799,
         "month": 1
       },
       "end": {
-        "year": -697,
+        "year": -696,
         "month": 1
       }
     },
@@ -74491,11 +74491,11 @@
     "name": "Brennus",
     "lifespan": {
       "start": {
-        "year": -500,
+        "year": -499,
         "month": 1
       },
       "end": {
-        "year": -390,
+        "year": -389,
         "month": 1
       }
     },
@@ -75552,10 +75552,10 @@
     "name": "Apelles",
     "lifespan": {
       "start": {
-        "year": -370
+        "year": -369
       },
       "end": {
-        "year": -306
+        "year": -305
       }
     },
     "occupationDomain": "arts",
@@ -75597,10 +75597,10 @@
     "name": "Tiberius Gracchus",
     "lifespan": {
       "start": {
-        "year": -163
+        "year": -162
       },
       "end": {
-        "year": -133,
+        "year": -132,
         "month": 1
       }
     },
@@ -75666,11 +75666,11 @@
     "name": "Seqenenre Tao",
     "lifespan": {
       "start": {
-        "year": -1600,
+        "year": -1599,
         "month": 1
       },
       "end": {
-        "year": -1600,
+        "year": -1599,
         "month": 1
       }
     },
@@ -76421,11 +76421,11 @@
     "name": "Cato the Younger",
     "lifespan": {
       "start": {
-        "year": -95,
+        "year": -94,
         "month": 1
       },
       "end": {
-        "year": -46,
+        "year": -45,
         "month": 4
       }
     },
@@ -76793,11 +76793,11 @@
     "name": "Belshazzar",
     "lifespan": {
       "start": {
-        "year": -600,
+        "year": -599,
         "month": 1
       },
       "end": {
-        "year": -600,
+        "year": -599,
         "month": 1
       }
     },
@@ -77300,11 +77300,11 @@
     "name": "Attalus I",
     "lifespan": {
       "start": {
-        "year": -269,
+        "year": -268,
         "month": 1
       },
       "end": {
-        "year": -197,
+        "year": -196,
         "month": 1
       }
     },
@@ -77482,11 +77482,11 @@
     "name": "Shoshenq I",
     "lifespan": {
       "start": {
-        "year": -1000,
+        "year": -999,
         "month": 1
       },
       "end": {
-        "year": -924,
+        "year": -923,
         "month": 1
       }
     },
@@ -77910,11 +77910,11 @@
     "name": "Philolaus",
     "lifespan": {
       "start": {
-        "year": -470,
+        "year": -469,
         "month": 1
       },
       "end": {
-        "year": -390,
+        "year": -389,
         "month": 1
       }
     },
@@ -78525,11 +78525,11 @@
     "name": "Antigonus I Monophthalmus",
     "lifespan": {
       "start": {
-        "year": -382,
+        "year": -381,
         "month": 1
       },
       "end": {
-        "year": -301,
+        "year": -300,
         "month": 1
       }
     },
@@ -79254,11 +79254,11 @@
     "name": "Melissus of Samos",
     "lifespan": {
       "start": {
-        "year": -470,
+        "year": -469,
         "month": 1
       },
       "end": {
-        "year": -430,
+        "year": -429,
         "month": 1
       }
     },
@@ -79618,11 +79618,11 @@
     "name": "Omri",
     "lifespan": {
       "start": {
-        "year": -1000,
+        "year": -999,
         "month": 1
       },
       "end": {
-        "year": -900
+        "year": -899
       }
     },
     "occupationDomain": "institutions",
@@ -80220,11 +80220,11 @@
     "name": "Tullus Hostilius",
     "lifespan": {
       "start": {
-        "year": -710,
+        "year": -709,
         "month": 1
       },
       "end": {
-        "year": -641,
+        "year": -640,
         "month": 1
       }
     },
@@ -80462,11 +80462,11 @@
     "name": "Habakkuk",
     "lifespan": {
       "start": {
-        "year": -626,
+        "year": -625,
         "month": 1
       },
       "end": {
-        "year": -600
+        "year": -599
       }
     },
     "occupationDomain": "institutions",
@@ -80824,10 +80824,10 @@
     "name": "Judas Maccabeus",
     "lifespan": {
       "start": {
-        "year": -200
+        "year": -199
       },
       "end": {
-        "year": -160
+        "year": -159
       }
     },
     "occupationDomain": "institutions",
@@ -80962,11 +80962,11 @@
     "name": "Antiochus IV Epiphanes",
     "lifespan": {
       "start": {
-        "year": -215,
+        "year": -214,
         "month": 1
       },
       "end": {
-        "year": -164,
+        "year": -163,
         "month": 1
       }
     },
@@ -81032,11 +81032,11 @@
     "name": "Gaius Cassius Longinus",
     "lifespan": {
       "start": {
-        "year": -87,
+        "year": -86,
         "month": 1
       },
       "end": {
-        "year": -42,
+        "year": -41,
         "month": 1
       }
     },
@@ -81104,11 +81104,11 @@
     "name": "Xun Kuang",
     "lifespan": {
       "start": {
-        "year": -313,
+        "year": -312,
         "month": 1
       },
       "end": {
-        "year": -238,
+        "year": -237,
         "month": 1
       }
     },
@@ -81922,10 +81922,10 @@
     "name": "Abigail",
     "lifespan": {
       "start": {
-        "year": -1040
+        "year": -1039
       },
       "end": {
-        "year": -1000
+        "year": -999
       }
     },
     "occupationDomain": "public-figure",
@@ -82123,11 +82123,11 @@
     "name": "Modu Chanyu",
     "lifespan": {
       "start": {
-        "year": -234,
+        "year": -233,
         "month": 1
       },
       "end": {
-        "year": -174,
+        "year": -173,
         "month": 1
       }
     },
@@ -82460,11 +82460,11 @@
     "name": "Ptolemy VI Philometor",
     "lifespan": {
       "start": {
-        "year": -184,
+        "year": -183,
         "month": 1
       },
       "end": {
-        "year": -145,
+        "year": -144,
         "month": 1
       }
     },
@@ -82716,10 +82716,10 @@
     "name": "Quintus Fabius Maximus Verrucosus",
     "lifespan": {
       "start": {
-        "year": -300
+        "year": -299
       },
       "end": {
-        "year": -203
+        "year": -202
       }
     },
     "occupationDomain": "institutions",
@@ -82780,11 +82780,11 @@
     "name": "Julia",
     "lifespan": {
       "start": {
-        "year": -76,
+        "year": -75,
         "month": 1
       },
       "end": {
-        "year": -54,
+        "year": -53,
         "month": 1
       }
     },
@@ -82803,11 +82803,11 @@
     "name": "Callimachus",
     "lifespan": {
       "start": {
-        "year": -310,
+        "year": -309,
         "month": 1
       },
       "end": {
-        "year": -240,
+        "year": -239,
         "month": 1
       }
     },
@@ -82826,10 +82826,10 @@
     "name": "Cassander",
     "lifespan": {
       "start": {
-        "year": -350
+        "year": -349
       },
       "end": {
-        "year": -297,
+        "year": -296,
         "month": 1
       }
     },
@@ -83347,11 +83347,11 @@
     "name": "Asa of Judah",
     "lifespan": {
       "start": {
-        "year": -1000,
+        "year": -999,
         "month": 1
       },
       "end": {
-        "year": -873,
+        "year": -872,
         "month": 1
       }
     },
@@ -83414,11 +83414,11 @@
     "name": "Nebra",
     "lifespan": {
       "start": {
-        "year": -2900,
+        "year": -2899,
         "month": 1
       },
       "end": {
-        "year": -2890,
+        "year": -2889,
         "month": 1
       }
     },
@@ -83596,10 +83596,10 @@
     "name": "Apollonius of Rhodes",
     "lifespan": {
       "start": {
-        "year": -295
+        "year": -294
       },
       "end": {
-        "year": -215
+        "year": -214
       }
     },
     "occupationDomain": "humanities",
@@ -83727,11 +83727,11 @@
     "name": "Posidonius",
     "lifespan": {
       "start": {
-        "year": -135,
+        "year": -134,
         "month": 1
       },
       "end": {
-        "year": -51,
+        "year": -50,
         "month": 1
       }
     },
@@ -83776,11 +83776,11 @@
     "name": "Ancus Marcius",
     "lifespan": {
       "start": {
-        "year": -675,
+        "year": -674,
         "month": 1
       },
       "end": {
-        "year": -616,
+        "year": -615,
         "month": 1
       }
     },
@@ -84340,11 +84340,11 @@
     "name": "Mardonius",
     "lifespan": {
       "start": {
-        "year": -600,
+        "year": -599,
         "month": 1
       },
       "end": {
-        "year": -479,
+        "year": -478,
         "month": 1
       }
     },
@@ -85205,11 +85205,11 @@
     "name": "Hippias",
     "lifespan": {
       "start": {
-        "year": -443,
+        "year": -442,
         "month": 1
       },
       "end": {
-        "year": -399,
+        "year": -398,
         "month": 1
       }
     },
@@ -85663,11 +85663,11 @@
     "name": "Arion",
     "lifespan": {
       "start": {
-        "year": -700,
+        "year": -699,
         "month": 1
       },
       "end": {
-        "year": -660
+        "year": -659
       }
     },
     "occupationDomain": "humanities",
@@ -85686,11 +85686,11 @@
     "name": "Archilochus",
     "lifespan": {
       "start": {
-        "year": -680,
+        "year": -679,
         "month": 1
       },
       "end": {
-        "year": -645,
+        "year": -644,
         "month": 1
       }
     },
@@ -86063,7 +86063,7 @@
     "name": "Wang Mang",
     "lifespan": {
       "start": {
-        "year": -45,
+        "year": -44,
         "month": 1
       },
       "end": {
