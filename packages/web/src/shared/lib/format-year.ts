@@ -103,3 +103,37 @@ export function centuryBoundariesInRange(startYear: number, endYear: number): Ce
   }
   return boundaries;
 }
+
+// A tick grid built from round *astronomical* numbers (..., -200, -100, 0,
+// 100, ...) mislabels every BCE tick by one year once formatYear converts it
+// (year -100 reads "101 BCE", not "100 BCE") — astronomical numbering has a
+// year 0 that true historical BCE/CE counting doesn't. The common historical-
+// timeline fix isn't to relabel every BCE tick — it's to keep every *other*
+// tick on its normal round-number spacing and absorb the missing year 0 into
+// a single dedicated tick right at the era boundary, year 0 itself ("1 BCE"),
+// which makes exactly the one BCE segment touching it (e.g. "10 BCE" to
+// "1 BCE") one tick narrower than every other segment.
+
+/** True when `year` sits on a round `stepYears` tick in historical (no-year-0) terms. */
+export function isRoundTickYear(year: number, stepYears: number): boolean {
+  if (year === 0) return true; // "1 BCE" — the era-boundary tick, always shown
+  return year > 0 ? year % stepYears === 0 : (1 - year) % stepYears === 0;
+}
+
+/** Every round `stepYears` tick year in [startYear, endYear], ascending. */
+export function roundTickYearsInRange(startYear: number, endYear: number, stepYears: number): number[] {
+  const years: number[] = [];
+  if (startYear <= 0 && endYear >= 0) years.push(0);
+  if (startYear < 0) {
+    const maxSteps = Math.ceil((1 - startYear) / stepYears);
+    for (let k = 1; k <= maxSteps; k++) {
+      const year = 1 - k * stepYears;
+      if (year >= startYear && year <= endYear) years.push(year);
+    }
+  }
+  if (endYear > 0) {
+    const firstCeYear = Math.max(stepYears, Math.ceil(Math.max(startYear, 1) / stepYears) * stepYears);
+    for (let year = firstCeYear; year <= endYear; year += stepYears) years.push(year);
+  }
+  return years.sort((a, b) => a - b);
+}

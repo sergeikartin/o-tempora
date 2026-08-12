@@ -98,6 +98,51 @@ test('labels stay visible at spacing above the threshold', () => {
   expect(labels).toContain(formatYearLike(1810));
 });
 
+test('BCE decade/century labels are round historical numbers, not round astronomical ones', () => {
+  // Astronomical multiples of 100/10 (-100, -200, -10, -20) would mislabel
+  // as "101 BCE"/"201 BCE"/"11 BCE"/"21 BCE" — the true round-historical
+  // ticks sit at -99/-199 (100/200 BCE) and -9/-19 (10/20 BCE) instead.
+  const { container } = render(
+    <YearAxis xScale={scaleFor(-1000, 1000, 20000)} visibleStartYear={-250} visibleEndYear={50} />,
+  );
+
+  const labels = Array.from(container.querySelectorAll('.year-axis-label')).map((el) => el.textContent);
+  expect(labels).toContain('100 BCE');
+  expect(labels).toContain('200 BCE');
+  expect(labels).toContain('10 BCE');
+  expect(labels).toContain('20 BCE');
+  expect(labels).not.toContain('101 BCE');
+  expect(labels).not.toContain('201 BCE');
+  expect(labels).not.toContain('11 BCE');
+  expect(labels).not.toContain('21 BCE');
+});
+
+test('the "1 BCE" era-boundary label renders (at astronomical year 0) and is treated as a century-tier label', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(-1000, 1000, 20000)} visibleStartYear={-50} visibleEndYear={50} />,
+  );
+
+  const labelFor = (text: string) =>
+    Array.from(container.querySelectorAll('.year-axis-label')).find((el) => el.textContent === text);
+
+  expect(labelFor('1 BCE')).toBeDefined();
+  expect(labelFor('1 BCE')?.classList.contains('year-axis-label-century')).toBe(true);
+  // No separate "1" (1 CE) tick — "1 BCE" is the sole, shared boundary tick.
+  expect(labelFor('1')).toBeUndefined();
+});
+
+test('a BCE century label (e.g. "100 BCE") gets the century-tier distinguishing class', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(-1000, 1000, 20000)} visibleStartYear={-150} visibleEndYear={50} />,
+  );
+
+  const labelFor = (text: string) =>
+    Array.from(container.querySelectorAll('.year-axis-label')).find((el) => el.textContent === text);
+
+  expect(labelFor('100 BCE')?.classList.contains('year-axis-label-century')).toBe(true);
+  expect(labelFor('20 BCE')?.classList.contains('year-axis-label-century')).toBe(false);
+});
+
 test('labels never render past the scale\'s own domain, even when visibleEndYear is buffered past it', () => {
   // TimelineCanvas buffers visibleEndYear past the viewport edge for smooth
   // tick pop-in (VIEWPORT_BUFFER_RATIO) — d3 scales extrapolate past their
@@ -114,6 +159,48 @@ test('labels never render past the scale\'s own domain, even when visibleEndYear
   const labels = Array.from(container.querySelectorAll('.year-axis-label')).map((el) => el.textContent);
   expect(labels).not.toContain(formatYearLike(2030));
   expect(labels).not.toContain(formatYearLike(2040));
+});
+
+test('a domain spanning the BCE/CE boundary renders two independently-phased ruler regions', () => {
+  const { container } = render(
+    <YearAxis xScale={scaleFor(-1000, 1000, 20000)} visibleStartYear={-150} visibleEndYear={50} />,
+  );
+
+  const bceRuler = container.querySelector('.year-axis-ruler-bce') as HTMLElement;
+  const ceRuler = container.querySelector('.year-axis-ruler') as HTMLElement;
+  expect(bceRuler).toBeTruthy();
+  expect(ceRuler).toBeTruthy();
+  // Widths sum to the full scrollable width, split exactly at year 0.
+  expect(parseFloat(bceRuler.style.width) + parseFloat(ceRuler.style.width)).toBeCloseTo(20000);
+  // The two halves use different tick phases (BCE ticks land on round
+  // historical numbers like "10 BCE", not round astronomical ones).
+  expect(bceRuler.style.getPropertyValue('--decade-tick-offset-px')).not.toBe(
+    ceRuler.style.getPropertyValue('--decade-tick-offset-px'),
+  );
+});
+
+test('a BCE decade label sits exactly on the BCE ruler region\'s own tick grid (the bug from the reference screenshot)', () => {
+  // Regression: before splitting the ruler into two phases, a BCE label
+  // (e.g. "10 BCE", at astronomical year -9) rendered one year's
+  // pixel-width away from its nearest CSS gridline tick, which was still
+  // phased on the old multiples-of-10 grid (a tick at -10, not -9). Both
+  // the label's x and the BCE ruler's own box share the same origin (the
+  // domain's start year, at pixel 0), so this compares them directly
+  // without depending on the real app's MIN_YEAR.
+  const { container } = render(
+    <YearAxis xScale={scaleFor(-1000, 1000, 20000)} visibleStartYear={-150} visibleEndYear={50} />,
+  );
+
+  const label = Array.from(container.querySelectorAll('.year-axis-label')).find(
+    (el) => el.textContent === '10 BCE',
+  ) as HTMLElement;
+  const bceRuler = container.querySelector('.year-axis-ruler-bce') as HTMLElement;
+  const decadeOffsetPx = parseFloat(bceRuler.style.getPropertyValue('--decade-tick-offset-px'));
+  const decadeSpacingPx = parseFloat(bceRuler.style.getPropertyValue('--decade-tick-px'));
+
+  const labelX = parseFloat(label.style.left);
+  const distanceFromNearestTick = ((labelX - decadeOffsetPx) % decadeSpacingPx + decadeSpacingPx) % decadeSpacingPx;
+  expect(distanceFromNearestTick).toBeCloseTo(0, 5);
 });
 
 test('the axis height fits the ruler bar plus the label row', () => {

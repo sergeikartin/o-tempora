@@ -8,6 +8,12 @@ import {
   zoomOut,
   CONFLICT_COLOR,
   MILESTONE_CATEGORY_COLORS,
+  BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
+  BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
+  CENTURY_STEP_YEARS,
+  CENTURY_TICK_PHASE_OFFSET_YEARS,
+  DECADE_STEP_YEARS,
+  DECADE_TICK_PHASE_OFFSET_YEARS,
 } from './options';
 import { today } from '../../shared/lib/dates';
 import { PAN_MIN_DATE, DOMAIN_COLORS } from '../../shared/config';
@@ -26,6 +32,23 @@ test('buildXScale sizes totalWidth as totalYears * pixelsPerYear', () => {
   const totalYears = today().year - PAN_MIN_DATE.year;
   expect(totalWidth).toBe(totalYears * pixelsPerYear);
   expect(scale.range()).toEqual([0, totalWidth]);
+});
+
+function trueMod(n: number, m: number): number {
+  return ((n % m) + m) % m;
+}
+
+test('DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align MIN_YEAR + offset to a plain multiple of the step (year 0/CE phase)', () => {
+  expect(trueMod(PAN_MIN_DATE.year + DECADE_TICK_PHASE_OFFSET_YEARS, DECADE_STEP_YEARS)).toBe(0);
+  expect(trueMod(PAN_MIN_DATE.year + CENTURY_TICK_PHASE_OFFSET_YEARS, CENTURY_STEP_YEARS)).toBe(0);
+});
+
+test('BCE_DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align MIN_YEAR + offset to the round-historical BCE phase (year ≡ 1 mod step)', () => {
+  // This is the phase format-year.ts's isRoundTickYear/roundTickYearsInRange
+  // put BCE ticks on (e.g. -9, -19 for "10 BCE"/"20 BCE") — distinct from
+  // the plain 0-phase CE grid above.
+  expect(trueMod(PAN_MIN_DATE.year + BCE_DECADE_TICK_PHASE_OFFSET_YEARS, DECADE_STEP_YEARS)).toBe(1);
+  expect(trueMod(PAN_MIN_DATE.year + BCE_CENTURY_TICK_PHASE_OFFSET_YEARS, CENTURY_STEP_YEARS)).toBe(1);
 });
 
 test('pixelsPerYearBounds: min shows the 500-year zoomMax bound, max shows the 10-year zoomMin bound', () => {
