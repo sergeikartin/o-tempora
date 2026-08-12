@@ -22,3 +22,18 @@ test('editing a lane\'s input calls onChange with that lane and the new numeric 
 
   expect(onChange).toHaveBeenCalledWith('people', 95);
 });
+
+test('renders the filtered entry count next to each lane when counts are given', () => {
+  const counts = { people: 42, conflicts: 7, milestones: 13 };
+  const { getByText } = render(<FameScoreFilters values={values} onChange={vi.fn()} counts={counts} />);
+
+  expect(getByText('42')).toBeTruthy();
+  expect(getByText('7')).toBeTruthy();
+  expect(getByText('13')).toBeTruthy();
+});
+
+test('renders no counts when counts is omitted', () => {
+  const { container } = render(<FameScoreFilters values={values} onChange={vi.fn()} />);
+
+  expect(container.querySelectorAll('[class*="filterCount"]')).toHaveLength(0);
+});

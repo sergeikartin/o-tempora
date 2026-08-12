@@ -56,7 +56,7 @@ export interface DataDepthLevel {
 export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
   { id: 'curated', label: 'Curated', values: { people: 90, conflicts: 75, milestones: 75 } },
   { id: 'expanded', label: 'Expanded', values: { people: 82, conflicts: 50, milestones: 50 } },
-  { id: 'full', label: 'Full', values: { people: 75, conflicts: 1, milestones: 1 } },
+  { id: 'full', label: 'Full', values: { people: 80, conflicts: 1, milestones: 1 } },
 ];
 
 // Derives which level (if any) the given fame-score floor values match —

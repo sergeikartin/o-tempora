@@ -32,7 +32,7 @@ test('clicking a level calls onChange once per lane with that level\'s values', 
 
   fireEvent.click(getByRole('button', { name: 'Full' }));
 
-  expect(onChange).toHaveBeenCalledWith('people', 75);
+  expect(onChange).toHaveBeenCalledWith('people', 80);
   expect(onChange).toHaveBeenCalledWith('conflicts', 1);
   expect(onChange).toHaveBeenCalledWith('milestones', 1);
   expect(onChange).toHaveBeenCalledTimes(3);

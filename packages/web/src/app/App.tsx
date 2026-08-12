@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import peopleDataRaw from '@same-sky/shared-types/src/data/people.json';
 import conflictsDataRaw from '@same-sky/shared-types/src/data/conflicts.json';
 import milestonesDataRaw from '@same-sky/shared-types/src/data/milestones.json';
 import type { Milestone, Person, ConflictEntry } from '../shared/types';
-import { useFameScoreFilters } from '../features/filter-by-fame-score';
+import { useFameScoreFilters, type FilteredCounts } from '../features/filter-by-fame-score';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
 import { useRegionFilter } from '../features/filter-by-region';
 import { useSelectedEntity } from '../features/select-timeline-entity';
@@ -21,6 +21,7 @@ export function App() {
   const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
   const { selectedRegions, toggleRegion } = useRegionFilter();
   const { selected: selectedRef, select: selectEntity, clear: closeDetailPanel } = useSelectedEntity();
+  const [filteredCounts, setFilteredCounts] = useState<FilteredCounts>();
 
   // Looks the clicked id up in the already-in-memory datasets (dynamic-
   // tooltips spec §2's "on-demand rendering" — nothing about drawer content
@@ -47,6 +48,7 @@ export function App() {
         <Sidebar
           fameScoreValues={fameScoreValues}
           onFameScoreChange={setFameScoreValue}
+          filteredCounts={filteredCounts}
           selectedDomains={selectedDomains}
           onToggleDomain={toggleDomain}
           selectedRegions={selectedRegions}
@@ -60,6 +62,7 @@ export function App() {
           selectedDomains={selectedDomains}
           selectedRegions={selectedRegions}
           onEntityClick={selectEntity}
+          onFilteredCountsChange={setFilteredCounts}
         />
         <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
       </div>
