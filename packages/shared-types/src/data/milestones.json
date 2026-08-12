@@ -93,6 +93,23 @@
     }
   },
   {
+    "id": "Q7184",
+    "name": "NATO",
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 93,
+    "tagline": "intergovernmental military alliance between 32 member states",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/NATO",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9D%D0%90%D0%A2%D0%9E%20%D0%A1%D0%B0%D0%BC%D0%B8%D1%82%202021%20NATO%20Summit%202021%20-14.06.2021-%20%2851245988182%29.jpg",
+    "description": "The North Atlantic Treaty Organization (NATO) is an intergovernmental military alliance between 32 member states. Founded in the aftermath of World War II, NATO was established with the signing of the North Atlantic Treaty in 1949. The organization serves as a system of collective security and deterrence, whereby its independent members agree to defend each-other from attack by any outside party. This is enshrined in Article 5 of the treaty, which states that an armed attack against the territory of one member shall be considered an attack against them all.",
+    "at": {
+      "year": 1949,
+      "month": 4
+    }
+  },
+  {
     "id": "Q81068910",
     "name": "COVID-19 pandemic",
     "category": "medicine-health",
@@ -128,6 +145,21 @@
     "description": "A car, or an automobile, is a motor vehicle with wheels. Most definitions of cars state that they run primarily on roads, seat 1-8 people, have four wheels, and mainly transport people rather than cargo. There are over 1.6 billion cars in use worldwide as of 2025.",
     "at": {
       "year": 1884
+    }
+  },
+  {
+    "id": "Q115564437",
+    "name": "ChatGPT",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 90,
+    "tagline": "artificial intelligence chatbot developed by OpenAI",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/ChatGPT",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT%205.2%20Thinking%20Wikipedia%20historia%20PDF%20screenshot.png",
+    "description": "ChatGPT is a generative artificial intelligence chatbot developed by OpenAI. Originally released on November 30, 2022, the product uses large language models—specifically generative pre-trained transformers (GPTs)—to generate text, speech, and images in response to user prompts. ChatGPT accelerated the AI boom, an ongoing period marked by rapid investment and public attention toward the field of artificial intelligence (AI). OpenAI operates the service on a freemium model. Users can interact with ChatGPT through text, audio, and image prompts.",
+    "at": {
+      "year": 2022,
+      "month": 11
     }
   },
   {
@@ -196,6 +228,23 @@
     }
   },
   {
+    "id": "Q9141",
+    "name": "Taj Mahal",
+    "category": "architecture-design",
+    "regionTags": [
+      "south-asia"
+    ],
+    "fameScore": 89,
+    "tagline": "marble mausoleum in Agra, India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Taj_Mahal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Taj%20Mahal%2C%20Agra%2C%20India%20edit3.jpg",
+    "imageAttribution": "Taj_Mahal,_Agra,_India_edit2.jpg: Yann; edited by King of Hearts\nderivative work: Jbarta (talk), via Wikimedia Commons",
+    "description": "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar Pradesh, India. It was commissioned in 1631 by the fifth Mughal emperor, Shah Jahan, to house the tomb of his late wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. The tomb is the centrepiece of a 17-hectare (42-acre) complex, which includes a mosque and a guest house, and is set in formal gardens bounded on three sides by a crenellated wall.",
+    "at": {
+      "year": 1631
+    }
+  },
+  {
     "id": "Q11035",
     "name": "Telephone",
     "category": "communication",
@@ -237,6 +286,20 @@
     "at": {
       "year": 1989,
       "month": 3
+    }
+  },
+  {
+    "id": "Q17517",
+    "name": "Mobile phone",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 87,
+    "tagline": "portable device to make telephone calls using a radio link",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mobile_phone",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mobile%20phone%20PHS%20Japan%201997-2003.jpg",
+    "description": "A mobile phone or cell phone is a portable wireless telephone that allows users to make and receive calls over a radio frequency link while moving within a designated telephone service area, unlike fixed-location phones. This radio frequency link connects to the switching systems of a mobile phone operator, providing access to the public switched telephone network (PSTN). Modern mobile telephony relies on a cellular network architecture, which is why mobile phones are often referred to as 'cell phones' in North America.",
+    "at": {
+      "year": 1973
     }
   },
   {
@@ -368,6 +431,51 @@
     "description": "The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the Roman Forum. It is the largest ancient amphitheatre ever built, and is the largest standing amphitheatre in the world. Construction began under the Emperor Vespasian in 72 and was completed in AD 80 under his successor and heir, Titus. Further modifications were made during the reign of Domitian. The three emperors who were patrons of the work are known as the Flavian dynasty, and the amphitheatre was named the Flavian Amphitheatre by later classicists and archaeologists for its association with their family name (Flavius).",
     "at": {
       "year": 82
+    }
+  },
+  {
+    "id": "Q12495",
+    "name": "Burj Khalifa",
+    "category": "architecture-design",
+    "regionTags": [],
+    "fameScore": 86,
+    "tagline": "skyscraper in Dubai, United Arab Emirates",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dubai%20skyline%202015%20%28crop%29.jpg",
+    "imageAttribution": "Tim.Reckmann, via Wikimedia Commons",
+    "description": "The Burj Khalifa is a megatall skyscraper in Dubai, United Arab Emirates. Designed by the SOM architectural firm, it is the world's tallest structure, with a total height of 829.8 m and a roof height of 828 m (2,717 ft). It has been the tallest building in the world since its topping out in 2009, surpassing Taipei 101, which had held the record since 2004.",
+    "at": {
+      "year": 2004
+    }
+  },
+  {
+    "id": "Q872",
+    "name": "Radio",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 85,
+    "tagline": "technology of signaling and communicating using radio waves",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Radio",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Biblis%20RFE%20RL%2001.jpg",
+    "imageAttribution": "Kuebi, via Wikimedia Commons",
+    "description": "Radio is the technology of communicating using radio waves. Radio waves are electromagnetic waves of frequency between 3 hertz (Hz) and 300 gigahertz (GHz). They are generated by an electronic device called a transmitter connected to an antenna which radiates the waves. They can be received by other antennas connected to a radio receiver; this is the fundamental principle of radio communication. In addition to communication, radio is used for radar, radio navigation, remote control, remote sensing, and other applications.",
+    "at": {
+      "year": 1894
+    }
+  },
+  {
+    "id": "Q25271",
+    "name": "International Space Station",
+    "category": "exploration",
+    "regionTags": [],
+    "fameScore": 85,
+    "tagline": "modular space station in low Earth orbit",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/International_Space_Station",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20station%20pictured%20from%20the%20SpaceX%20Crew%20Dragon%205%20%28cropped%29.jpg",
+    "description": "The International Space Station (ISS) is a space station in low Earth orbit (LEO). It is the product of the International Space Station program and is operated by five partner space agencies: NASA, Roscosmos (Russia), ESA (Europe), JAXA (Japan), and CSA (Canada). It is the first space station built, maintained and crewed through international cooperation and the largest human spacecraft ever constructed. It is an orbital research station, where scientific experiments in microgravity are conducted and the space environment is studied. Since 2 November 2000, it has hosted the longest continuous human presence in space. Alongside China's Tiangong, it is one of two operational space stations.",
+    "at": {
+      "year": 1998,
+      "month": 11
     }
   },
   {
@@ -543,6 +651,21 @@
     }
   },
   {
+    "id": "Q40591",
+    "name": "The Communist Manifesto",
+    "category": "philosophy-education",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "1848 publication written by Karl Marx and Friedrich Engels",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Communist-manifesto.png",
+    "description": "The Communist Manifesto, originally the Manifesto of the Communist Party, is a political pamphlet written by Karl Marx and Friedrich Engels. It was commissioned by the Communist League and published in London in 1848. The text represents the first and most systematic attempt by the two founders of scientific socialism to codify for wide consumption the historical materialist idea; namely, that \"the history of all hitherto existing society is the history of class struggles\", in which social classes are defined by the relationship of people to the means of production. Published amid the Revolutions of 1848 in Europe, the manifesto has become one of the world's most influential political documents. \"A spectre is haunting Europe — the spectre of communism.\" and \"Workers of the world, unite!\" stand as two iconic lines that frame the text, marking its opening and its close, respectively, with the latter being reworked and popularized into a famous slogan of working-class solidarity.",
+    "at": {
+      "year": 1848,
+      "month": 2
+    }
+  },
+  {
     "id": "Q11455",
     "name": "Special relativity",
     "category": "science-theory",
@@ -663,6 +786,37 @@
     }
   },
   {
+    "id": "Q38130",
+    "name": "League of Nations",
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 82,
+    "tagline": "20th-century international organisation, predecessor to the United Nations",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/League_of_Nations",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LN%20member%20states%20animation.gif",
+    "imageAttribution": "Maps &amp; Lucy, via Wikimedia Commons",
+    "description": "The League of Nations was the first worldwide intergovernmental organisation whose principal mission was to maintain world peace. It was founded on 10 January 1920 by the Paris Peace Conference that ended the First World War. The main organisation ceased operations on 18 April 1946 when many of its components were relocated into the new United Nations (UN) which was created in the aftermath of the Second World War. The League of Nations was the precursor organisation to the United Nations.",
+    "at": {
+      "year": 1919
+    }
+  },
+  {
+    "id": "Q41644",
+    "name": "Warsaw Pact",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "European Eastern Military Alliance (1954 – 1991)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Warsaw_Pact",
+    "description": "The Warsaw Pact (WP), formally the Treaty of Friendship, Cooperation and Mutual Assistance (TFCMA), was a collective defence treaty signed in Warsaw, Poland, between the Soviet Union and seven other Eastern Bloc socialist republics in Central and Eastern Europe in May 1955, during the Cold War. The term \"Warsaw Pact\" commonly refers to both the treaty itself and its resultant military alliance, the Warsaw Pact Organisation. The Warsaw Pact was the military complement to the Council for Mutual Economic Assistance (Comecon), the economic organization for the Eastern Bloc states.",
+    "at": {
+      "year": 1955,
+      "month": 5
+    }
+  },
+  {
     "id": "Q178275",
     "name": "1918–1920 flu pandemic (Spanish flu)",
     "category": "medicine-health",
@@ -713,6 +867,46 @@
     }
   },
   {
+    "id": "Q8707",
+    "name": "Meiji restoration",
+    "category": "society-administration",
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 81,
+    "tagline": "reform restoring the imperial rule in Japan in the last third of the 19th century",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Meiji_Restoration",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MeijiJoukyou.jpg",
+    "description": "The Meiji Restoration , referred to at the time as the Honorable Restoration , was a political event that restored imperial rule to Japan in 1868 under Emperor Meiji and led to the westernisation of Japan. Although there were ruling emperors before the Meiji Restoration, the events restored practical power to, and consolidated the political system under, the Emperor of Japan. The Restoration led to enormous changes in Japan's political and social structure and spanned both the late Edo period and the beginning of the Meiji era, during which time Japan rapidly industrialised and adopted Western ideas, production methods and technology.",
+    "period": {
+      "start": {
+        "year": 1868
+      },
+      "end": {
+        "year": 1889,
+        "month": 2
+      }
+    }
+  },
+  {
+    "id": "Q5167679",
+    "name": "Dissolution of the Soviet Union",
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 81,
+    "tagline": "process leading to the late-1991 breakup of the USSR",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RIAN%20archive%20140800%20Signing%20of%20Protocol%20on%20Establishing%20Commonwealth%20of%20Independent%20States.jpg",
+    "imageAttribution": "Yuriy Kuydin / Юрий Куйдин, via Wikimedia Commons",
+    "description": "The Soviet Union was formally dissolved and ceased to exist as a sovereign state and subject of international law on December 26, 1991. It also brought an end to the Soviet Union's federal government and to Soviet leader Mikhail Gorbachev's efforts to reform the Soviet political and economic system in an attempt to stop a period of political and economic stagnation.",
+    "at": {
+      "year": 1991,
+      "month": 12
+    }
+  },
+  {
     "id": "Q48584",
     "name": "Rosetta Stone",
     "category": "archaeology-anthropology",
@@ -731,6 +925,24 @@
     }
   },
   {
+    "id": "Q40605",
+    "name": "Large Hadron Collider",
+    "category": "science-theory",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 80,
+    "tagline": "particle collider",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Large_Hadron_Collider",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CERN%20LHC%20Tunnel1.jpg",
+    "imageAttribution": "Julian Herzog (Website), via Wikimedia Commons",
+    "description": "The Large Hadron Collider (LHC) is the world's largest and highest-energy particle accelerator. It was built by the European Organization for Nuclear Research (CERN) between 1998 and 2008, in collaboration with over 10,000 scientists, and hundreds of universities and laboratories across more than 100 countries. It lies in a tunnel 27 kilometres (17 mi) in circumference and as deep as 175 metres (574 ft) beneath the France–Switzerland border near Geneva.",
+    "at": {
+      "year": 2008,
+      "month": 10
+    }
+  },
+  {
     "id": "Q47616",
     "name": "Incandescent light bulb",
     "category": "everyday-technology",
@@ -743,6 +955,21 @@
     "description": "An incandescent light bulb, also known as an incandescent lamp or incandescent light globe, is an electric light that produces illumination by Joule heating a filament until it glows. The filament is enclosed in a glass bulb that is either evacuated or filled with inert gas to protect the filament from oxidation. Electric current is supplied to the filament by terminals or wires embedded in the glass. A bulb socket provides mechanical support and electrical connections.",
     "at": {
       "year": 1879
+    }
+  },
+  {
+    "id": "Q48469",
+    "name": "Voyager 1",
+    "category": "exploration",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "space probe launched by NASA to study the outer Solar System, furthest spacecraft from Earth",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_1",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Voyager%20spacecraft.jpg",
+    "description": "Voyager 1 is a space probe launched by NASA on September 5, 1977, as part of the Voyager program, to study the outer Solar System and the interstellar space beyond the Sun's heliosphere. It was launched 16 days after its twin, Voyager 2. It communicates through the NASA Deep Space Network (DSN) to receive routine commands and to transmit data to Earth. Real-time distance and velocity data are provided by NASA and JPL. At a distance of 172.59 AU as of August 2026, it is the most distant human-made object from Earth. Voyager 1 is projected to reach a distance of one light day from Earth in November 2026.",
+    "at": {
+      "year": 1977,
+      "month": 9
     }
   },
   {
@@ -855,6 +1082,30 @@
     "description": "Dynamite is an explosive made of nitroglycerin, sorbents, and stabilizers. It was invented by the Swedish chemist and engineer Alfred Nobel in Geesthacht, Northern Germany, and was patented in 1867. It rapidly gained wide-scale use as a more robust alternative to the traditional black powder explosives. It allows the use of nitroglycerine's favorable explosive properties while greatly reducing its risk of accidental detonation.",
     "at": {
       "year": 1867
+    }
+  },
+  {
+    "id": "Q46362",
+    "name": "Congress of Vienna",
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 79,
+    "tagline": "conference of ambassadors of European states (September/November 1814 to June 1815)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wiener%20Kongress%20Abschlussdokument%202.JPG",
+    "imageAttribution": "Thomas Ledl, via Wikimedia Commons",
+    "description": "The Congress of Vienna of 1814–1815 was a series of international diplomatic meetings to discuss and agree upon a possible new layout of the European political and constitutional order after the downfall of the French emperor Napoleon Bonaparte. Participants were representatives of all European powers and other stakeholders. The Congress was chaired by Austrian statesman Klemens von Metternich and was held in Vienna from September 1814 to June 1815.",
+    "period": {
+      "start": {
+        "year": 1814,
+        "month": 9
+      },
+      "end": {
+        "year": 1815,
+        "month": 6
+      }
     }
   },
   {
@@ -1038,6 +1289,24 @@
     }
   },
   {
+    "id": "Q129053",
+    "name": "Partition of India",
+    "category": "society-administration",
+    "regionTags": [
+      "south-asia"
+    ],
+    "fameScore": 78,
+    "tagline": "1947 Partition of British India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Partition_of_India",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Partition%20of%20India%201947%20en.svg",
+    "imageAttribution": "Own work, via Wikimedia Commons",
+    "description": "The partition of India in 1947 was the division of British India into two independent dominion states, the Union of India and Dominion of Pakistan. The Union of India is today the Republic of India, and the Dominion of Pakistan is the Islamic Republic of Pakistan and the People's Republic of Bangladesh. The partition involved the division of two provinces, Bengal and the Punjab, based on district-wide non-Muslim or Muslim majorities. It also involved the division of the British Indian Army, the Royal Indian Navy, the Indian Civil Service, the railways, and the central treasury, between the two new dominions. The partition was set forth in the Indian Independence Act 1947 and resulted in the end of the British Raj, or Crown rule in India. The two self-governing countries of India and Pakistan legally came into existence at midnight on 14–15 August 1947.",
+    "at": {
+      "year": 1947,
+      "month": 8
+    }
+  },
+  {
     "id": "Q133331",
     "name": "First Council of Nicaea",
     "category": "religion-mythology",
@@ -1087,6 +1356,23 @@
     "at": {
       "year": 1908,
       "month": 6
+    }
+  },
+  {
+    "id": "Q159766",
+    "name": "Dutch East India Company",
+    "category": "commerce-finance",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 78,
+    "tagline": "1602–1799 Dutch trading company",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dutch_East_India_Company",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vereenigde%20Oostindische%20Compagnie%20spiegelretourschip%20Amsterdam%20replica.jpg",
+    "imageAttribution": "McKarri, via Wikimedia Commons",
+    "description": "The United East India Company, commonly known as the Dutch East India Company, was a chartered trading company and one of the first joint-stock companies in the world. Established on 20 March 1602 by the States General of the Netherlands amalgamating existing companies, it was granted a 21-year monopoly to carry out trade activities in Asia. Shares in the company could be purchased by any citizen of the Dutch Republic and bought and sold in open-air secondary markets, one of which became the Amsterdam Stock Exchange. The company possessed quasi-governmental powers, including the ability to wage war, imprison and execute convicts, negotiate treaties, strike its own coins, and establish colonies. Because it traded across multiple colonies and countries from both the East and the West, the VOC is sometimes considered to have been the world's first multinational corporation.",
+    "at": {
+      "year": 1602
     }
   },
   {
@@ -1431,6 +1717,25 @@
     }
   },
   {
+    "id": "Q188371",
+    "name": "Great Irish Famine",
+    "category": "food-agriculture",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "1845–1852 famine in Ireland",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Famine_(Ireland)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Irish%20potato%20famine%20Bridget%20O%27Donnel.jpg",
+    "description": "The Great Famine, also known as the Great Hunger, the Famine and the Irish Potato Famine, was a period of mass starvation and disease in Ireland from 1845 to 1852. It constituted a major historical social crisis and had a significant impact on Irish society and history. The most severely affected areas were in western and southern Ireland—where the Irish language was dominant—hence, in Irish, the period was contemporaneously known as an Drochshaol, which translates to \"the bad life\" and loosely translates to \"the hard times\". Debate exists regarding nomenclature for the event, including whether to use the terms \"Famine\", \"Potato Famine\" or \"Great Hunger\".",
+    "period": {
+      "start": {
+        "year": 1845
+      },
+      "end": {
+        "year": 1852
+      }
+    }
+  },
+  {
     "id": "Q11146",
     "name": "Maastricht Treaty",
     "category": "society-administration",
@@ -1446,6 +1751,50 @@
     "at": {
       "year": 1992,
       "month": 2
+    }
+  },
+  {
+    "id": "Q154705",
+    "name": "Unification of Germany",
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 76,
+    "tagline": "creation of a politically and administratively integrated nation state of German-speaking populations on 18 January 1871, in the form of the German Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/A%20v%20Werner%20-%20Kaiserproklamation%20am%2018%20Januar%201871%20%283.%20Fassung%201885%29.jpg",
+    "description": "The Unification of Germany was a process of building the first nation-state for Germans with federal features based on the concept of Lesser Germany. It commenced on 18 August 1866 with the adoption of the North German Confederation Treaty establishing the North German Confederation, initially a military alliance de facto dominated by the Kingdom of Prussia, which was subsequently deepened through adoption of the North German Constitution.",
+    "period": {
+      "start": {
+        "year": 1866,
+        "month": 8
+      },
+      "end": {
+        "year": 1871,
+        "month": 5
+      }
+    }
+  },
+  {
+    "id": "Q186356",
+    "name": "New Deal",
+    "category": "society-administration",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 76,
+    "tagline": "economic programs of U.S. president Franklin D. Roosevelt",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/New_Deal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/New%20Deal%20collage.jpg",
+    "description": "The New Deal was a 1933–1938 series of economic, social, and political reforms in response to the Great Depression in the United States under President Franklin D. Roosevelt. He introduced the phrase when accepting the Democratic Party presidential nomination in the 1932 United States presidential election, winning in a landslide over incumbent Herbert Hoover, whose administration was widely viewed as ineffective. Roosevelt attributed the Depression to inherent market instability and inadequate aggregate demand, and argued that stabilizing and rationalizing the economy required massive government intervention.",
+    "period": {
+      "start": {
+        "year": 1933
+      },
+      "end": {
+        "year": 1939
+      }
     }
   },
   {
@@ -1629,6 +1978,29 @@
     }
   },
   {
+    "id": "Q13582",
+    "name": "Berlin Conference",
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 75,
+    "tagline": "international conference that regulated the distribution of European colonization and trade in Africa",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Berlin_Conference",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kongokonferenz.jpg",
+    "description": "The Berlin Conference of 1884–1885 was a meeting of colonial powers that concluded with the signing of the General Act of Berlin, an agreement regulating European colonisation and trade in Africa during the New Imperialism period. The conference of fourteen countries was organised by Otto von Bismarck, the first chancellor of Germany, at the request of Leopold II of Belgium at a building on Berlin's central Wilhelmstrasse. It met on 15 November 1884 and, after an adjournment, concluded on 26 February 1885 with the signing of the General Act. During the conference, attendees also discussed other related issues and agreed on a common framework for the recognition of European ''effective occupation'' of African coastal territory elsewhere on the continent. After the conference, European claims on African territory increased with international legal recognition, having a newly established legal framework for establishing colonies.",
+    "period": {
+      "start": {
+        "year": 1884,
+        "month": 11
+      },
+      "end": {
+        "year": 1885,
+        "month": 2
+      }
+    }
+  },
+  {
     "id": "Q55816",
     "name": "Chicxulub crater",
     "category": "environment-geology",
@@ -1643,6 +2015,23 @@
     "description": "The Chicxulub crater is an impact crater buried underneath the Yucatán Peninsula in Mexico. The crater is named after the onshore inland community of Chicxulub Pueblo. It was formed slightly over 66 million years ago when an asteroid, about ten kilometers in diameter, struck Earth. The crater is estimated to be two hundred kilometers (120 mi) in diameter and is buried to a depth of about one kilometer (0.6 mi) beneath younger sedimentary rocks. It is one of the largest impact structures on Earth, alongside the much older Sudbury and Vredefort impact structures, and the only one whose peak ring is intact and directly accessible for scientific research.",
     "at": {
       "year": 1981
+    }
+  },
+  {
+    "id": "Q35045",
+    "name": "Potosí",
+    "category": "commerce-finance",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 75,
+    "tagline": "city in Bolivia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Potos%C3%AD",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vista%20de%20la%20Villa%20Imperial%20de%20Potos%C3%AD.jpg",
+    "imageAttribution": "Parallelepiped09, via Wikimedia Commons",
+    "description": "Potosí, known as Villa Imperial de Potosí in the colonial period, is the capital city and a municipality of the Department of Potosí in Bolivia. It is one of the highest cities in the world at a nominal 4,067 m (13,343 ft). Diego Huallpa, an indigenous prospector, is traditionally credited with the discovery of the Cerro Rico in 1545, which led to the founding and rapid growth of Potosí due to its extraordinary silver wealth.",
+    "at": {
+      "year": 1545
     }
   },
   {
@@ -1786,6 +2175,21 @@
     }
   },
   {
+    "id": "Q233562",
+    "name": "The Wealth of Nations",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "1776 work on economics by Adam Smith",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wealth%20of%20Nations.jpg",
+    "description": "An Inquiry into the Nature and Causes of the Wealth of Nations, usually referred to by its shortened title The Wealth of Nations, is a book by Scottish economist and moral philosopher Adam Smith. Published on 9 March 1776 as Smith's central intellectual project, the treatise sought to examine and explain the underlying political and economic principles by which commercial and industrial societies generate wealth. It has become a fundamental work in classical economics, and been described as \"the first formulation of a comprehensive system of political economy\". Smith radically transformed economic thought, laying the foundations for policies that would produce unprecedented increases in productivity and wealth.",
+    "at": {
+      "year": 1776,
+      "month": 3
+    }
+  },
+  {
     "id": "Q48537",
     "name": "Civil rights movement",
     "category": "social-movements",
@@ -1898,6 +2302,23 @@
     "description": "A steam turbine or steam turbine engine is a machine or heat engine that extracts thermal energy from pressurized steam and uses it to do mechanical work utilising a rotating output shaft. Its modern manifestation was invented by Sir Charles Parsons in 1884 and revolutionized marine propulsion and navigation. Fabrication of a modern steam turbine involves advanced metalwork to form high-grade steel alloys into precision parts using technologies that first became available in the 20th century; continued advances in durability and efficiency of steam turbines remains central to the energy economics of the 21st century. The largest steam turbine ever built is the 1,770 MW Arabelle steam turbine built by Arabelle Solutions, two units of which will be installed at Hinkley Point C Nuclear Power Station, England.",
     "at": {
       "year": 1884
+    }
+  },
+  {
+    "id": "Q223732",
+    "name": "Declaration of the Establishment of the State of Israel",
+    "category": "society-administration",
+    "regionTags": [
+      "middle-east"
+    ],
+    "fameScore": 73,
+    "tagline": "1948 declaration of Israel's independence",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Israel%20Declaration%20of%20Independence.jpg",
+    "description": "The Israeli Declaration of Independence, formally the Declaration of the Establishment of the State of Israel, was proclaimed at the Tel Aviv Museum on 14 May 1948, at the end of the civil war phase and beginning of the Arab–Israeli War of the 1948 Palestine war, by the Va'ad Leumi led by David Ben-Gurion, the executive head of the World Zionist Organization and chairman of the Jewish Agency for Palestine.",
+    "at": {
+      "year": 1948,
+      "month": 5
     }
   },
   {
@@ -2054,6 +2475,21 @@
     }
   },
   {
+    "id": "Q171375",
+    "name": "Truman Doctrine",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "United States Cold War policy to contain communism in Europe and elsewhere",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Truman_Doctrine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Special%20Message%20to%20Congress%20on%20Greece%20and%20Turkey%20The%20Truman%20Doctrine.jpg",
+    "description": "The Truman Doctrine is a U.S. foreign policy that pledges American support for U.S.-aligned nations against alleged authoritarian threats. The doctrine originated with the primary goal of countering the growth of the Soviet bloc during the Cold War. It was announced to Congress by President Harry S. Truman on March 12, 1947, and further developed on July 4, 1948, when he pledged to oppose the communist rebellions in Greece and Soviet demands on Turkey. More generally, the Truman Doctrine implied U.S. support for other nations threatened by the Soviet Union. It led to the formation of NATO in 1949. Historians often use Truman's speech to Congress on March 12, 1947, to date the start of the Cold War.",
+    "at": {
+      "year": 1947,
+      "month": 3
+    }
+  },
+  {
     "id": "Q207875",
     "name": "Mozart's Requiem",
     "category": "culture-arts",
@@ -2139,6 +2575,20 @@
     "description": "The combined oral contraceptive pill (COCP), often referred to as the birth control pill or colloquially as \"the pill\", is a type of birth control that is designed to be taken orally by women. It is the oral form of combined hormonal contraception. The pill contains two important hormones: a progestin and estrogen. When taken correctly, it alters the menstrual cycle to eliminate ovulation and prevent pregnancy.",
     "at": {
       "year": 1961
+    }
+  },
+  {
+    "id": "Q1519099",
+    "name": "Polio vaccine",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "vaccine to prevent poliomyelitis",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Polio_vaccine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Poliodrops.jpg",
+    "description": "Polio vaccine is a vaccine used to prevent poliomyelitis (polio). Two types are used: an inactivated poliovirus given by injection (IPV) and a weakened poliovirus given by mouth (OPV). The World Health Organization (WHO) recommends all children be fully vaccinated against polio. The two vaccines have eliminated polio from most of the world, and reduced the number of cases reported each year from an estimated 350,000 in 1988 to 33 in 2018.",
+    "at": {
+      "year": 1952
     }
   },
   {
@@ -2276,6 +2726,46 @@
     "description": "Cellophane is a thin, transparent sheet made of regenerated cellulose. Its low permeability to air, oils, greases, bacteria, and liquid water makes it useful for food packaging. Cellophane is highly permeable to water vapour, but may be coated with nitrocellulose lacquer to prevent this.",
     "at": {
       "year": 1908
+    }
+  },
+  {
+    "id": "Q69163529",
+    "name": "Fall of the Berlin Wall",
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 70,
+    "tagline": "historical event in November 1989 where the Berlin Wall was opened and demolished",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BerlinWall-BrandenburgGate.jpg",
+    "imageAttribution": "Sue Ream, photographer (San Francisco, California), via Wikimedia Commons",
+    "description": "The Berlin Wall fell on 9 November 1989 during the Peaceful Revolution, marking the beginning of the destruction of the figurative Iron Curtain, as East Berlin transit restrictions were overwhelmed and discarded. Sections of the wall were breached, and planned deconstruction began the following June. It was one of the series of events that started the fall of communism in Central and Eastern Europe. The fall of the inner German border took place shortly afterward. An end to the Cold War was declared at the Malta Summit in early December, and German reunification took place in October the following year.",
+    "at": {
+      "year": 1989,
+      "month": 11
+    }
+  },
+  {
+    "id": "Q208191",
+    "name": "Asian–African Conference",
+    "category": "society-administration",
+    "regionTags": [
+      "south-asia"
+    ],
+    "fameScore": 70,
+    "tagline": "1955 meeting of Asian and African states in Bandung, West Java, Indonesia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandung_Conference",
+    "description": "The first large-scale Asian–African or Afro–Asian Conference, also known as the Bandung Conference, was a meeting of Asian and African states, most of which were newly independent, which took place on 18–24 April 1955 in Bandung, West Java, Indonesia. The twenty-nine countries that participated represented a total population of 1.5 billion people, 54% of the world's population. The conference was organized by Indonesia, Burma (Myanmar), India, Ceylon, and Pakistan and was coordinated by Ruslan Abdulgani, secretary general of the Ministry of Foreign Affairs of the Republic of Indonesia.",
+    "period": {
+      "start": {
+        "year": 1955,
+        "month": 4
+      },
+      "end": {
+        "year": 1955,
+        "month": 4
+      }
     }
   },
   {
@@ -2651,6 +3141,20 @@
     }
   },
   {
+    "id": "Q683846",
+    "name": "Manila galleon",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "Royal Spanish trading ships, 1565–1815",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Manila_galleon",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/16th%20century%20Portuguese%20Spanish%20trade%20routes.png",
+    "description": "The Manila galleon was a Spanish trade route linking the Philippines in the Spanish East Indies to Mexico, across the Pacific Ocean, in use from 1565 to 1815. The term also describes the sailing ships which plied the route, each making one or two round-trip voyages per year between Manila and Acapulco.",
+    "at": {
+      "year": 1565
+    }
+  },
+  {
     "id": "Q6501061",
     "name": "Electrical telegraph",
     "category": "communication",
@@ -2942,6 +3446,20 @@
     }
   },
   {
+    "id": "Q300646",
+    "name": "A Vindication of the Rights of Woman",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 63,
+    "tagline": "work by Mary Wollstonecraft",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/A_Vindication_of_the_Rights_of_Woman",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vindication1b.jpg",
+    "description": "A Vindication of the Rights of Woman: with Strictures on Political and Moral Subjects is a 1792 essay by British philosopher and women's rights advocate Mary Wollstonecraft. It is considered a feminist or, more precisely, proto-feminist piece, and one of the pioneering works in the tradition now known as feminist philosophy.",
+    "at": {
+      "year": 1792
+    }
+  },
+  {
     "id": "Q1261053",
     "name": "Woodblock printing",
     "category": "communication",
@@ -3019,6 +3537,20 @@
     }
   },
   {
+    "id": "Q3984081",
+    "name": "Copernican heliocentrism",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "concept that the Earth rotates around the Sun",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Complete%20wildfowler%20%281912%29%20%2814775413253%29.jpg",
+    "description": "Copernican heliocentrism is the astronomical model developed by the Renaissance astronomer Nicolaus Copernicus and published in 1543. This model positioned the Sun near the center of the Universe, motionless, with Earth and the other planets orbiting around it in circular paths, modified by epicycles, and at uniform speeds. The Copernican model challenged the geocentric model of Ptolemy that had prevailed for centuries, which had placed Earth at the center of the Universe.",
+    "at": {
+      "year": 1543
+    }
+  },
+  {
     "id": "Q278579",
     "name": "Aqua Appia",
     "category": "infrastructure",
@@ -3045,6 +3577,30 @@
     "description": "The Brāhma-sphuṭa-siddhānta is a main work of Brahmagupta, written c. 628. This text of mathematical astronomy contains significant mathematical content, including the first good understanding of the role of zero, rules for manipulating both negative and positive numbers, a method for computing square roots, methods of solving linear and quadratic equations, rules for summing series, Brahmagupta's identity, and Brahmagupta theorem.",
     "at": {
       "year": 628
+    }
+  },
+  {
+    "id": "Q4567715",
+    "name": "1953 British Mount Everest Expedition",
+    "category": "exploration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 57,
+    "tagline": "first successful ascent of Mount Everest",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Everest%20kalapatthar.jpg",
+    "imageAttribution": "Pavel Novak, via Wikimedia Commons",
+    "description": "The 1953 British Mount Everest expedition was the ninth mountaineering expedition to attempt the first ascent of Mount Everest, and the first confirmed to have succeeded when Tenzing Norgay and Edmund Hillary reached the summit on 29 May 1953 at 11:30 a.m. Led by Colonel John Hunt, it was organised and financed by the Joint Himalayan Committee. News of the expedition's success reached London in time to be released on the morning of Queen Elizabeth II's coronation, on 2 June that year.",
+    "period": {
+      "start": {
+        "year": 1953,
+        "month": 2
+      },
+      "end": {
+        "year": 1953,
+        "month": 6
+      }
     }
   },
   {
@@ -3101,6 +3657,68 @@
     "at": {
       "year": 1997,
       "month": 5
+    }
+  },
+  {
+    "id": "Q99717",
+    "name": "1989 Tiananmen Square protests and massacre",
+    "category": "social-movements",
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 46,
+    "tagline": "Chinese pro-democracy movement and subsequent massacre",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E8%92%B2%E5%BF%97%E5%BC%B719890510.jpg",
+    "imageAttribution": "蔡淑芳@sfchoi8964, via Wikimedia Commons",
+    "description": "Protests led by students and workers, known in China as the June Fourth Incident, were held in Tiananmen Square in Beijing, China, from 15 April to 4 June 1989. After weeks of unsuccessful attempts between the demonstrators and the Chinese government to find a peaceful resolution, the Chinese government initiated martial law in late May and deployed troops to occupy the square on the night of 3 June in what is referred to as the Tiananmen Square massacre. The events are sometimes called the '89 Democracy Movement, the Tiananmen Square Incident, or the Tiananmen uprising. The Chinese government terms the events the political turmoil between the spring and summer of 1989.",
+    "period": {
+      "start": {
+        "year": 1989,
+        "month": 4
+      },
+      "end": {
+        "year": 1989,
+        "month": 6
+      }
+    }
+  },
+  {
+    "id": "Q1192212",
+    "name": "Emancipation reform of 1861",
+    "category": "social-movements",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 37,
+    "tagline": "reform passed by Tsar Alexander II of Russia which effectively abolished serfdom throughout the Russian Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_reform_of_1861",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Reading%20of%20the%20Manifest%20%28Liberation%20of%20peasants%29%20-%20Kustodiev%2C%201907.jpg",
+    "description": "The emancipation reform of 1861 in Russia, also known as the Edict of Emancipation of Russia, was the first and most important of the liberal reforms enacted during the reign of Emperor Alexander II of Russia. The reform effectively abolished serfdom throughout the Russian Empire.",
+    "at": {
+      "year": 1861
+    }
+  },
+  {
+    "id": "Q2736155",
+    "name": "Seneca Falls Convention",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 36,
+    "tagline": "1848 women's rights convention in New York",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Seneca_Falls_Convention",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Woman%27s%20Rights%20Convention.jpg",
+    "imageAttribution": "https://pbs.twimg.com/media/CKXzBSKWwAEzQT8.jpg, via Wikimedia Commons",
+    "description": "The Seneca Falls Convention was the first women's rights convention. Its organizers advertised it as \"a convention to discuss the social, civil, and religious condition and rights of woman\". Held in the Wesleyan Chapel of the town of Seneca Falls, New York, it spanned two days over July 19–20, 1848. Attracting widespread attention, it was soon followed by other women's rights conventions, including the Rochester Women's Rights Convention in Rochester, New York, two weeks later. In 1850 the first in a series of annual National Women's Rights Conventions met in Worcester, Massachusetts.",
+    "period": {
+      "start": {
+        "year": 1848,
+        "month": 7
+      },
+      "end": {
+        "year": 1848,
+        "month": 7
+      }
     }
   }
 ]

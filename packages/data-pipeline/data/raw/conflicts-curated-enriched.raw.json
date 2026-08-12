@@ -19,11 +19,11 @@
         "Q142"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LouisXVIExecutionBig.jpg",
+      "tagline": "revolution in France from 1789 to 1799",
       "year": 1789,
       "month": 7,
       "endYear": 1799,
-      "endMonth": 11,
-      "tagline": "revolution in France from 1789 to 1799"
+      "endMonth": 11
     },
     {
       "id": "Q110999040",
@@ -50,9 +50,9 @@
         "Q114318415"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg",
+      "tagline": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War",
       "year": 2022,
-      "month": 2,
-      "tagline": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War"
+      "month": 2
     },
     {
       "id": "Q8663",
@@ -74,11 +74,11 @@
         "Q884"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Korean%20War%20Montage%202.png",
+      "tagline": "war between North and South Korea, 1950–1953",
       "year": 1950,
       "month": 6,
       "endYear": 1953,
-      "endMonth": 7,
-      "tagline": "war between North and South Korea, 1950\u20131953"
+      "endMonth": 7
     },
     {
       "id": "Q8729",
@@ -99,8 +99,8 @@
         "Q34266"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Revoluci%C3%B3n-marzo-rusia--russianbolshevik00rossuoft.png",
-      "year": 1917,
-      "tagline": "1917-1922 political change in Russia"
+      "tagline": "1917-1922 political change in Russia",
+      "year": 1917
     },
     {
       "id": "Q12551",
@@ -119,11 +119,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20crecy%20froissart.jpg",
+      "tagline": "series of conflicts and wars between England and France between 1337 and 1453",
       "year": 1337,
       "month": 6,
       "endYear": 1453,
-      "endMonth": 10,
-      "tagline": "series of conflicts and wars between England and France between 1337 and 1453"
+      "endMonth": 10
     },
     {
       "id": "Q8690",
@@ -144,11 +144,11 @@
         "Q148"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1967-02%201967%E5%B9%B4%E7%9A%84%E7%BA%A2%E5%8D%AB%E5%85%B5.jpg",
+      "tagline": "1966–1976 Maoist sociopolitical movement in China",
       "year": 1966,
       "month": 5,
       "endYear": 1976,
-      "endMonth": 10,
-      "tagline": "1966\u20131976 Maoist sociopolitical movement in China"
+      "endMonth": 10
     },
     {
       "id": "Q122962941",
@@ -174,9 +174,9 @@
         "Q219060"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Damage%20in%20Gaza%20Strip%20during%20the%20October%202023%20-%2029.jpg",
+      "tagline": "armed conflict around the Gaza Strip that started on 7 October 2023",
       "year": 2023,
-      "month": 10,
-      "tagline": "armed conflict around the Gaza Strip that started on 7 October 2023"
+      "month": 10
     },
     {
       "id": "Q42976",
@@ -198,11 +198,11 @@
         "Q139319"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/After%20the%20capture%20of%20the%20Winter%20Palace%2026%20October%201917.jpg",
+      "tagline": "second of two 1917 revolutions in Russia",
       "year": 1917,
       "month": 11,
       "endYear": 1917,
-      "endMonth": 11,
-      "tagline": "second of two 1917 revolutions in Russia"
+      "endMonth": 11
     },
     {
       "id": "Q37643",
@@ -221,11 +221,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WarGulf%20photobox.jpg",
+      "tagline": "1990–1991 conflict between Iraq and a 42-country coalition",
       "year": 1990,
       "month": 8,
       "endYear": 1991,
-      "endMonth": 2,
-      "tagline": "1990\u20131991 conflict between Iraq and a 42-country coalition"
+      "endMonth": 2
     },
     {
       "id": "Q40949",
@@ -245,11 +245,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rev%20collage.png",
+      "tagline": "1775–1783 war between Great Britain and the Thirteen Colonies, which won independence as the United States of America",
       "year": 1775,
       "month": 4,
       "endYear": 1783,
-      "endMonth": 9,
-      "tagline": "1775\u20131783 war between Great Britain and the Thirteen Colonies, which won independence as the United States of America"
+      "endMonth": 9
     },
     {
       "id": "Q33761",
@@ -268,11 +268,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arab%20Spring%20and%20Regional%20Conflict%20Map.svg",
+      "tagline": "protests and revolutions in the Arab world in the 2010s",
       "year": 2010,
       "month": 12,
       "endYear": 2012,
-      "endMonth": 12,
-      "tagline": "protests and revolutions in the Arab world in the 2010s"
+      "endMonth": 12
     },
     {
       "id": "Q545449",
@@ -292,11 +292,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Iraq%20War%20montage.png",
+      "tagline": "2003–2011 war after an American-led invasion",
       "year": 2003,
       "month": 3,
       "endYear": 2011,
-      "endMonth": 12,
-      "tagline": "2003\u20132011 war after an American-led invasion"
+      "endMonth": 12
     },
     {
       "id": "Q49077",
@@ -316,11 +316,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D7%A6%D7%A0%D7%97%D7%A0%D7%99%D7%9D%20%D7%91%D7%9B%D7%95%D7%AA%D7%9C%20%D7%94%D7%9E%D7%A2%D7%A8%D7%91%D7%99.jpg",
+      "tagline": "1967 war between Israel and Egypt, Jordan, and Syria",
       "year": 1967,
       "month": 6,
       "endYear": 1967,
-      "endMonth": 6,
-      "tagline": "1967 war between Israel and Egypt, Jordan, and Syria"
+      "endMonth": 6
     },
     {
       "id": "Q42937",
@@ -339,15 +339,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giovanni%20Domenico%20Tiepolo%20-%20The%20Procession%20of%20the%20Trojan%20Horse%20in%20Troy%20-%20WGA22382.jpg",
+      "tagline": "legendary war in Greek mythology",
       "year": -1257,
-      "endYear": -1179,
-      "tagline": "legendary war in Greek mythology"
+      "endYear": -1179
     },
     {
       "id": "Q138503695",
       "name": "2026 Iran War",
       "category": "military-operation",
-      "sitelinks": 102,
+      "sitelinks": 101,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/2026_Iran_war",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/2026_Iran_war",
@@ -361,9 +361,9 @@
       "countries": [
         "Q794"
       ],
+      "tagline": "Ongoing armed conflict in West Asia",
       "year": 2026,
-      "month": 2,
-      "tagline": "Ongoing armed conflict in West Asia"
+      "month": 2
     },
     {
       "id": "Q83085",
@@ -382,11 +382,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Afghan-Soviet%20war.png",
+      "tagline": "1979–1989 war between the Soviet Union and Afghan insurgents",
       "year": 1979,
       "month": 12,
       "endYear": 1989,
-      "endMonth": 2,
-      "tagline": "1979\u20131989 war between the Soviet Union and Afghan insurgents"
+      "endMonth": 2
     },
     {
       "id": "Q126065",
@@ -407,11 +407,11 @@
         "Q794"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mass%20demonstration%20in%20Iran%2C%20date%20unknown.jpg",
+      "tagline": "1978–1979 revolution that overthrew the Iranian monarchy",
       "year": 1978,
       "month": 1,
       "endYear": 1979,
-      "endMonth": 2,
-      "tagline": "1978\u20131979 revolution that overthrew the Iranian monarchy"
+      "endMonth": 2
     },
     {
       "id": "Q254106",
@@ -430,11 +430,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Crimean%20War%2C%201854-1856%20Q69851.jpg",
+      "tagline": "military conflict fought between October 1853 – March 1856",
       "year": 1853,
       "month": 10,
       "endYear": 1856,
-      "endMonth": 2,
-      "tagline": "military conflict fought between October 1853 \u2013 March 1856"
+      "endMonth": 2
     },
     {
       "id": "Q80330",
@@ -453,10 +453,10 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Burton%2C%20William%20Shakespeare-%20The%20Wounded%20Cavalier.jpg",
+      "tagline": "series of armed conflicts and political machinations between Parliamentarians and Royalists",
       "year": 1642,
       "endYear": 1651,
-      "endMonth": 9,
-      "tagline": "series of armed conflicts and political machinations between Parliamentarians and Royalists"
+      "endMonth": 9
     },
     {
       "id": "Q33143",
@@ -475,11 +475,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SevenYearsWar.png",
+      "tagline": "global war among European powers (1756–1763)",
       "year": 1756,
       "month": 5,
       "endYear": 1763,
-      "endMonth": 2,
-      "tagline": "global war among European powers (1756\u20131763)"
+      "endMonth": 2
     },
     {
       "id": "Q46083",
@@ -498,15 +498,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle-Mars-Le-Tour-large.jpg",
+      "tagline": "1870–1871 military conflict of the Second French Empire versus Prussia and its allies",
       "year": 1870,
       "month": 7,
       "endYear": 1871,
-      "endMonth": 1,
-      "tagline": "1870\u20131871 military conflict of the Second French Empire versus Prussia and its allies"
+      "endMonth": 1
     },
     {
       "id": "Q82664",
-      "name": "Iran\u2013Iraq War",
+      "name": "Iran–Iraq War",
       "category": "war",
       "sitelinks": 96,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War",
@@ -521,11 +521,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Iran-Iraq%20War%20Montage.png",
+      "tagline": "1980-1988 war between Iran and Iraq",
       "year": 1980,
       "month": 9,
       "endYear": 1988,
-      "endMonth": 8,
-      "tagline": "1980-1988 war between Iran and Iraq"
+      "endMonth": 8
     },
     {
       "id": "Q134949",
@@ -548,11 +548,11 @@
         "Q15180"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/A%20Finnish%20Maxim%20M-32%20machine%20gun%20nest%20during%20the%20Winter%20War.jpg",
+      "tagline": "1939–1940 war between the Soviet Union and Finland",
       "year": 1939,
       "month": 11,
       "endYear": 1940,
-      "endMonth": 3,
-      "tagline": "1939\u20131940 war between the Soviet Union and Finland"
+      "endMonth": 3
     },
     {
       "id": "Q49100",
@@ -572,11 +572,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Yom%20Kippur%20War.%20XXXVI.jpg",
+      "tagline": "October 1973 war between Egypt and Syria at one side and Israel on the other side",
       "year": 1973,
       "month": 10,
       "endYear": 1973,
-      "endMonth": 10,
-      "tagline": "October 1973 war between Egypt and Syria at one side and Israel on the other side"
+      "endMonth": 10
     },
     {
       "id": "Q159950",
@@ -595,11 +595,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RUSSOJAPANESEWARIMAGE.jpg",
+      "tagline": "conflict between the Russian and Japanese empires from 1904 to 1905",
       "year": 1904,
       "month": 2,
       "endYear": 1905,
-      "endMonth": 9,
-      "tagline": "conflict between the Russian and Japanese empires from 1904 to 1905"
+      "endMonth": 9
     },
     {
       "id": "Q192769",
@@ -620,9 +620,9 @@
         "Q30"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20Independence%20%281819%29%2C%20by%20John%20Trumbull.jpg",
+      "tagline": "revolution establishing the United States of America",
       "year": 1765,
-      "endYear": 1783,
-      "tagline": "revolution establishing the United States of America"
+      "endYear": 1783
     },
     {
       "id": "Q170314",
@@ -642,11 +642,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20Occupation%20of%20China%201940.svg",
+      "tagline": "Japanese invasion of China (1937–1945)",
       "year": 1937,
       "month": 7,
       "endYear": 1945,
-      "endMonth": 9,
-      "tagline": "Japanese invasion of China (1937\u20131945)"
+      "endMonth": 9
     },
     {
       "id": "Q189266",
@@ -668,11 +668,11 @@
         "Q15180"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/19440712%20soviet%20and%20ak%20soldiers%20vilnius.jpg",
+      "tagline": "1941–1945 World War II theater",
       "year": 1941,
       "month": 6,
       "endYear": 1945,
-      "endMonth": 5,
-      "tagline": "1941\u20131945 World War II theater"
+      "endMonth": 5
     },
     {
       "id": "Q11264",
@@ -693,9 +693,9 @@
         "Q241"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fidel%20Castro%20-%20MATS%20Terminal%20Washington%201959.jpg",
+      "tagline": "revolution in Cuba starting in 1953 culminating in 1959",
       "year": 1953,
-      "month": 7,
-      "tagline": "revolution in Cuba starting in 1953 culminating in 1959"
+      "month": 7
     },
     {
       "id": "Q26013",
@@ -714,15 +714,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/USS%20Constitution%20vs%20Guerriere.jpg",
+      "tagline": "conflict between the United States and the British Empire from 1812 to 1815",
       "year": 1812,
       "month": 6,
       "endYear": 1815,
-      "endMonth": 2,
-      "tagline": "conflict between the United States and the British Empire from 1812 to 1815"
+      "endMonth": 2
     },
     {
       "id": "Q12583",
-      "name": "Spanish\u2013American War",
+      "name": "Spanish–American War",
       "category": "war",
       "sitelinks": 88,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish%E2%80%93American_War",
@@ -737,11 +737,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maine%20explosion.jpg",
+      "tagline": "1898 conflict between Spain and the United States",
       "year": 1898,
       "month": 4,
       "endYear": 1898,
-      "endMonth": 8,
-      "tagline": "1898 conflict between Spain and the United States"
+      "endMonth": 8
     },
     {
       "id": "Q101534",
@@ -763,15 +763,15 @@
         "Q34266"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arrest%20of%20generals.jpg",
+      "tagline": "first of two revolutions in Russia in 1917",
       "year": 1917,
       "month": 3,
       "endYear": 1917,
-      "endMonth": 3,
-      "tagline": "first of two revolutions in Russia in 1917"
+      "endMonth": 3
     },
     {
       "id": "Q182865",
-      "name": "War in Afghanistan (2001\u20132021)",
+      "name": "War in Afghanistan (2001–2021)",
       "category": "war",
       "parentId": "Q185729",
       "sitelinks": 83,
@@ -789,11 +789,11 @@
         "Q889"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Collage%20of%20the%20War%20in%20Afghanistan%20%282001-2021%29.png",
+      "tagline": "armed conflict between NATO countries and Afghanistan from 2001 to 2021",
       "year": 2001,
       "month": 10,
       "endYear": 2021,
-      "endMonth": 8,
-      "tagline": "armed conflict between NATO countries and Afghanistan from 2001 to 2021"
+      "endMonth": 8
     },
     {
       "id": "Q620735",
@@ -812,11 +812,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mirazh2007.jpg",
+      "tagline": "2008 Russian invasion of Georgia",
       "year": 2008,
       "month": 8,
       "endYear": 2008,
-      "endMonth": 8,
-      "tagline": "2008 Russian invasion of Georgia"
+      "endMonth": 8
     },
     {
       "id": "Q33745",
@@ -835,10 +835,10 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20Peloponnesian%20War%20431%20BC-en.svg",
+      "tagline": "war fought between Athens and Sparta (431–404 BCE)",
       "year": -430,
       "endYear": -403,
-      "endMonth": 4,
-      "tagline": "war fought between Athens and Sparta (431\u2013404 BCE)"
+      "endMonth": 4
     },
     {
       "id": "Q127751",
@@ -859,11 +859,11 @@
         "Q179876"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/York%20victory%20over%20Lancaster.svg",
+      "tagline": "dynastic civil war in England from 1455 to 1487",
       "year": 1455,
       "month": 5,
       "endYear": 1487,
-      "endMonth": 6,
-      "tagline": "dynastic civil war in England from 1455 to 1487"
+      "endMonth": 6
     },
     {
       "id": "Q129864",
@@ -884,11 +884,11 @@
         "Q668"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Indian%20Rebellion%20of%201857.jpg",
+      "tagline": "1857–58 uprising against British Company rule",
       "year": 1857,
       "month": 5,
       "endYear": 1858,
-      "endMonth": 6,
-      "tagline": "1857\u201358 uprising against British Company rule"
+      "endMonth": 6
     },
     {
       "id": "Q164348",
@@ -909,11 +909,11 @@
         "Q28"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hungarian%20Revolution%20of%201956.png",
+      "tagline": "1956 revolution in Hungary",
       "year": 1956,
       "month": 10,
       "endYear": 1956,
-      "endMonth": 11,
-      "tagline": "1956 revolution in Hungary"
+      "endMonth": 11
     },
     {
       "id": "Q151616",
@@ -932,11 +932,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Narva%20%28Gustaf%20Cederstr%C3%B6m%29%20-%20Nationalmuseum%20-%2018638.tif",
+      "tagline": "conflict between anti-Swedish coalition Led by Russia and Swedish empires in 1700–1721",
       "year": 1700,
       "month": 2,
       "endYear": 1721,
-      "endMonth": 9,
-      "tagline": "conflict between anti-Swedish coalition Led by Russia and Swedish empires in 1700\u20131721"
+      "endMonth": 9
     },
     {
       "id": "Q179250",
@@ -956,11 +956,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/French%20invasion%20of%20Russia%20collage.jpg",
+      "tagline": "1812 conflict during the Napoleonic Wars",
       "year": 1812,
       "month": 6,
       "endYear": 1812,
-      "endMonth": 12,
-      "tagline": "1812 conflict during the Napoleonic Wars"
+      "endMonth": 12
     },
     {
       "id": "Q150812",
@@ -980,11 +980,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Defenders%20of%20Warsaw%20%281939%29.jpg",
+      "tagline": "German, Soviet, and Slovak attack on and takeover of Poland that marked the start of World War II",
       "year": 1939,
       "month": 9,
       "endYear": 1939,
-      "endMonth": 10,
-      "tagline": "German, Soviet, and Slovak attack on and takeover of Poland that marked the start of World War II"
+      "endMonth": 10
     },
     {
       "id": "Q177918",
@@ -1003,11 +1003,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20Balkan%20War%20Photobox.png",
+      "tagline": "war involving the Balkan League and the Ottoman Empire",
       "year": 1912,
       "month": 10,
       "endYear": 1913,
-      "endMonth": 5,
-      "tagline": "war involving the Balkan League and the Ottoman Empire"
+      "endMonth": 5
     },
     {
       "id": "Q29269",
@@ -1026,11 +1026,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Collage%20the%20First%20Chechen%20War.jpg",
+      "tagline": "war fought from 1994 to 1996 in Chechnya",
       "year": 1994,
       "month": 12,
       "endYear": 1996,
-      "endMonth": 8,
-      "tagline": "war fought from 1994 to 1996 in Chechnya"
+      "endMonth": 8
     },
     {
       "id": "Q150229",
@@ -1053,11 +1053,11 @@
         "Q188712"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Boxer-tianjing-left.jpeg",
+      "tagline": "anti-imperialist uprising which took place in China 1899-1901",
       "year": 1899,
       "month": 8,
       "endYear": 1901,
-      "endMonth": 9,
-      "tagline": "anti-imperialist uprising which took place in China 1899-1901"
+      "endMonth": 9
     },
     {
       "id": "Q178687",
@@ -1076,11 +1076,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sino%20Japanese%20war%201894.jpg",
+      "tagline": "1894–1895 war between the Qing dynasty and the Empire of Japan over influence in Joseon, fought chiefly in Joseon",
       "year": 1894,
       "month": 8,
       "endYear": 1895,
-      "endMonth": 4,
-      "tagline": "1894\u20131895 war between the Qing dynasty and the Empire of Japan over influence in Joseon, fought chiefly in Joseon"
+      "endMonth": 4
     },
     {
       "id": "Q6683",
@@ -1101,11 +1101,11 @@
         "Q30"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20Molino%20del%20Rey.jpg",
+      "tagline": "military conflict between the United States of America and Mexico from 1846 to 1848",
       "year": 1846,
       "month": 4,
       "endYear": 1848,
-      "endMonth": 2,
-      "tagline": "military conflict between the United States of America and Mexico from 1846 to 1848"
+      "endMonth": 2
     },
     {
       "id": "Q191282",
@@ -1126,11 +1126,11 @@
         "Q112660052"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Destroying%20Chinese%20war%20junks%2C%20by%20E.%20Duncan%20%281843%29.jpg",
+      "tagline": "war between Great Britain and China in the 19th century",
       "year": 1839,
       "month": 3,
       "endYear": 1842,
-      "endMonth": 8,
-      "tagline": "war between Great Britain and China in the 19th century"
+      "endMonth": 8
     },
     {
       "id": "Q134900605",
@@ -1152,11 +1152,11 @@
         "Q801"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pictures%20of%20the%20Israeli%20attack%20on%20Tehran%201%20Mehr%20%282%29.jpg",
+      "tagline": "2025 armed conflict in the Middle East",
       "year": 2025,
       "month": 6,
       "endYear": 2025,
-      "endMonth": 6,
-      "tagline": "2025 armed conflict in the Middle East"
+      "endMonth": 6
     },
     {
       "id": "Q15224558",
@@ -1177,11 +1177,11 @@
         "Q212"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Euromaidan%20Kyiv%201-12-13%20by%20Gnatoush%20005.jpg",
+      "tagline": "2013–2014 pro-european protests in Ukraine",
       "year": 2013,
       "month": 11,
       "endYear": 2014,
-      "endMonth": 2,
-      "tagline": "2013\u20132014 pro-european protests in Ukraine"
+      "endMonth": 2
     },
     {
       "id": "Q6271",
@@ -1202,9 +1202,9 @@
         "Q29"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mediterranean%20at%20218%20BC-en.svg",
+      "tagline": "second war between the Roman Republic and Carthage, fought between 218 and 201 BCE",
       "year": -217,
-      "endYear": -200,
-      "tagline": "second war between the Roman Republic and Carthage, fought between 218 and 201 BCE"
+      "endYear": -200
     },
     {
       "id": "Q104705419",
@@ -1225,9 +1225,9 @@
         "Q30"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2021%20storming%20of%20the%20United%20States%20Capitol%2009.jpg",
+      "tagline": "2021 attempt to prevent the U.S. presidential electoral vote count",
       "year": 2021,
-      "month": 1,
-      "tagline": "2021 attempt to prevent the U.S. presidential electoral vote count"
+      "month": 1
     },
     {
       "id": "Q49104",
@@ -1250,11 +1250,11 @@
         "Q822"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tyre%20air%20strike.jpg",
+      "tagline": "armed conflict primarily between Israel and Hezbollah",
       "year": 2006,
       "month": 7,
       "endYear": 2006,
-      "endMonth": 8,
-      "tagline": "armed conflict primarily between Israel and Hezbollah"
+      "endMonth": 8
     },
     {
       "id": "Q15920546",
@@ -1277,11 +1277,11 @@
         "Q15925436"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Flags%20over%20Supreme%20Council%20of%20Crimea%20%283%20March%202014%29.png",
+      "tagline": "annexation of Crimea into Russia in 2014",
       "year": 2014,
       "month": 2,
       "endYear": 2014,
-      "endMonth": 3,
-      "tagline": "annexation of Crimea into Russia in 2014"
+      "endMonth": 3
     },
     {
       "id": "Q190029",
@@ -1300,11 +1300,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kosovo%20War%20header.jpg",
+      "tagline": "armed conflict in Kosovo (1998–1999)",
       "year": 1998,
       "month": 2,
       "endYear": 1999,
-      "endMonth": 6,
-      "tagline": "armed conflict in Kosovo (1998\u20131999)"
+      "endMonth": 6
     },
     {
       "id": "Q185729",
@@ -1322,11 +1322,11 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2_%D1%82%D0%B5%D1%80%D1%80%D0%BE%D1%80%D0%B8%D0%B7%D0%BC%D0%B0"
       },
       "countries": [],
+      "tagline": "military campaign started after September 11 attacks",
       "year": 2001,
       "month": 9,
       "endYear": 2021,
-      "endMonth": 8,
-      "tagline": "military campaign started after September 11 attacks"
+      "endMonth": 8
     },
     {
       "id": "Q99659280",
@@ -1349,11 +1349,11 @@
         "Q244165"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Russian%20peacekeepers%20and%20Azerbaijani%20military%20personnel%20near%20Vank%20village.png",
+      "tagline": "armed conflict in South Caucasus",
       "year": 2020,
       "month": 9,
       "endYear": 2020,
-      "endMonth": 11,
-      "tagline": "armed conflict in South Caucasus"
+      "endMonth": 11
     },
     {
       "id": "Q182062",
@@ -1372,9 +1372,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dupre-Salona-1821.jpg",
+      "tagline": "Greek rebellion against the Ottoman Empire (1821–1829)",
       "year": 1821,
-      "endYear": 1829,
-      "tagline": "Greek rebellion against the Ottoman Empire (1821\u20131829)"
+      "endYear": 1829
     },
     {
       "id": "Q200790",
@@ -1393,15 +1393,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Algerian%20war%20collage%20wikipedia.jpg",
+      "tagline": "war between France and the Algerian independence movement from 1954 to 1962",
       "year": 1954,
       "month": 11,
       "endYear": 1962,
-      "endMonth": 9,
-      "tagline": "war between France and the Algerian independence movement from 1954 to 1962"
+      "endMonth": 9
     },
     {
       "id": "Q186284",
-      "name": "Polish\u2013Soviet War",
+      "name": "Polish–Soviet War",
       "category": "war",
       "sitelinks": 71,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Polish%E2%80%93Soviet_War",
@@ -1416,11 +1416,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Polish-soviet%20war%201920%20Polish%20defences%20near%20Milosna%2C%20August.jpg",
+      "tagline": "conflict between Poland and Soviet Russia following the First World War (February 1919 - March 1921)",
       "year": 1919,
       "month": 2,
       "endYear": 1921,
-      "endMonth": 3,
-      "tagline": "conflict between Poland and Soviet Russia following the First World War (February 1919 - March 1921)"
+      "endMonth": 3
     },
     {
       "id": "Q184928",
@@ -1441,11 +1441,36 @@
         "Q34266"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Russian%20Revolution%2C%201905%20Q81553.jpg",
+      "tagline": "wave of mass political and social unrest that spread through vast areas of the Russian Empire",
       "year": 1905,
       "month": 1,
       "endYear": 1907,
-      "endMonth": 6,
-      "tagline": "wave of mass political and social unrest that spread through vast areas of the Russian Empire"
+      "endMonth": 6
+    },
+    {
+      "id": "Q689128",
+      "name": "Haitian Revolution",
+      "category": "revolution",
+      "sitelinks": 61,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Haitian_Revolution",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Haitian_Revolution",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B5%B7%E5%9C%B0%E9%9D%A9%E5%91%BD",
+        "es": "https://es.wikipedia.org/wiki/Revoluci%C3%B3n_haitiana",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9volution_ha%C3%AFtienne",
+        "de": "https://de.wikipedia.org/wiki/Haitianische_Revolution",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AB%D9%88%D8%B1%D8%A9_%D8%A7%D9%84%D9%87%D8%A7%D9%8A%D8%AA%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B0%D0%B8%D1%82%D1%8F%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q861551"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20for%20Palm%20Tree%20Hill.jpg",
+      "tagline": "1791 slave revolt in the French colony of Saint-Domingue",
+      "year": 1791,
+      "month": 8,
+      "endYear": 1804,
+      "endMonth": 1
     },
     {
       "id": "Q184183",
@@ -1464,11 +1489,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2nd-balkan-war-bulgarian-plan.JPG",
+      "tagline": "continuation of the First Balkan War in which Bulgaria fought Serbia, Greece, Romania and the Ottoman Empire",
       "year": 1913,
       "month": 6,
       "endYear": 1913,
-      "endMonth": 8,
-      "tagline": "continuation of the First Balkan War in which Bulgaria fought Serbia, Greece, Romania and the Ottoman Empire"
+      "endMonth": 8
     },
     {
       "id": "Q5555632",
@@ -1487,9 +1512,9 @@
         "Q1247159"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ithome2.jpg",
+      "tagline": "war between Messenia and Sparta",
       "year": -742,
-      "endYear": -723,
-      "tagline": "war between Messenia and Sparta"
+      "endYear": -723
     },
     {
       "id": "Q738787",
@@ -1508,9 +1533,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lelantischer%20Krieg.png",
+      "tagline": "military conflict between the two ancient Greek city states Chalcis and Eretria in Euboea",
       "year": -709,
-      "endYear": -649,
-      "tagline": "military conflict between the two ancient Greek city states Chalcis and Eretria in Euboea"
+      "endYear": -649
     },
     {
       "id": "Q2075775",
@@ -1524,9 +1549,9 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%B0%D1%8F_%D0%9C%D0%B5%D1%81%D1%81%D0%B5%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
       "countries": [],
+      "tagline": "war between the Ancient Greek states of Messenia and Sparta",
       "year": -684,
-      "endYear": -667,
-      "tagline": "war between the Ancient Greek states of Messenia and Sparta"
+      "endYear": -667
     },
     {
       "id": "Q76026",
@@ -1545,9 +1570,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20Greco-Persian%20Wars-fr.svg",
+      "tagline": "series of conflicts between the Achaemenid Empire of Persia and poleis of the Hellenic world in the fifth century BCE",
       "year": -498,
-      "endYear": -448,
-      "tagline": "series of conflicts between the Achaemenid Empire of Persia and poleis of the Hellenic world in the fifth century BCE"
+      "endYear": -448
     },
     {
       "id": "Q28365",
@@ -1568,9 +1593,9 @@
         "Q41"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MacedonEmpire.jpg",
+      "tagline": "fought by a coalition of Greek cities against Macedon and its ally Boeotia",
       "year": -322,
-      "endYear": -321,
-      "tagline": "fought by a coalition of Greek cities against Macedon and its ally Boeotia"
+      "endYear": -321
     },
     {
       "id": "Q6286",
@@ -1589,9 +1614,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20Punic%20War%20264%20BC.jpg",
+      "tagline": "First War between Rome and Carthage",
       "year": -263,
-      "endYear": -240,
-      "tagline": "First War between Rome and Carthage"
+      "endYear": -240
     },
     {
       "id": "Q6334",
@@ -1610,9 +1635,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Western%20Mediterranean%20territory%2C%20150%20BC.svg",
+      "tagline": "war between the Roman Republic and Carthage between 149 and 146 BCE",
       "year": -148,
-      "endYear": -145,
-      "tagline": "war between the Roman Republic and Carthage between 149 and 146 BCE"
+      "endYear": -145
     },
     {
       "id": "Q202161",
@@ -1631,9 +1656,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lionel%20Royer%20-%20Vercingetorix%20Throwing%20down%20His%20Weapons%20at%20the%20feet%20of%20Julius%20Caesar.jpg",
+      "tagline": "war (58–50 BCE) between the Roman Republic and Gaul",
       "year": -57,
-      "endYear": -50,
-      "tagline": "war (58\u201350 BCE) between the Roman Republic and Gaul"
+      "endYear": -50
     },
     {
       "id": "Q2378252",
@@ -1651,11 +1676,11 @@
       "countries": [
         "Q17"
       ],
+      "tagline": "672 succession war in Japan",
       "year": 672,
       "month": 7,
       "endYear": 672,
-      "endMonth": 8,
-      "tagline": "672 succession war in Japan"
+      "endMonth": 8
     },
     {
       "id": "Q200485",
@@ -1676,10 +1701,31 @@
         "Q179876"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bayeux%20Tapestry%20WillelmDux.jpg",
+      "tagline": "1066 invasion and conquest of England by Normans",
       "year": 1066,
       "month": 10,
-      "endYear": 1075,
-      "tagline": "1066 invasion and conquest of England by Normans"
+      "endYear": 1075
+    },
+    {
+      "id": "Q2092093",
+      "name": "Mongol invasions and conquests",
+      "category": "military-operation",
+      "sitelinks": 44,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_conquests",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mongol_conquests",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%99%E5%8F%A4%E5%BE%81%E6%88%B0",
+        "es": "https://es.wikipedia.org/wiki/Invasiones_mongolas",
+        "fr": "https://fr.wikipedia.org/wiki/Conqu%C3%AAtes_mongoles",
+        "de": "https://de.wikipedia.org/wiki/Mongolensturm",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%BA%D8%B2%D9%88%D8%A7%D8%AA_%D9%88%D9%81%D8%AA%D9%88%D8%AD%D8%A7%D8%AA_%D8%A7%D9%84%D9%85%D8%BA%D9%88%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bataille%20de%20v%C3%A2liy%C3%A2n%20%281221%29.jpeg",
+      "tagline": "series of Mongol invasions and conquests (1206–1405)",
+      "year": 1206,
+      "endYear": 1337
     },
     {
       "id": "Q12546",
@@ -1698,9 +1744,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Combat%20deuxi%C3%A8me%20croisade.jpg",
+      "tagline": "mass military expeditions and wars initiated by the Catholic Church in the High Middle Ages",
       "year": 1095,
-      "endYear": 1291,
-      "tagline": "mass military expeditions and wars initiated by the Catholic Church in the High Middle Ages"
+      "endYear": 1291
     },
     {
       "id": "Q737542",
@@ -1721,13 +1767,13 @@
         "Q17"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Genpei%20kassen.jpg",
+      "tagline": "conflict during late-Heian period of Japan",
       "year": 1180,
-      "endYear": 1185,
-      "tagline": "conflict during late-Heian period of Japan"
+      "endYear": 1185
     },
     {
       "id": "Q657967",
-      "name": "Barons\u2019 War",
+      "name": "Barons’ War",
       "category": "war",
       "sitelinks": 24,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Barons%27_War",
@@ -1744,9 +1790,9 @@
         "Q179876"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Civil%20War%20in%20England.jpg",
+      "tagline": "1260s civil war in England",
       "year": 1264,
-      "endYear": 1267,
-      "tagline": "1260s civil war in England"
+      "endYear": 1267
     },
     {
       "id": "Q2288424",
@@ -1763,14 +1809,14 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giorgio%20Vasar%20retour%20id%C3%A9alis%C3%A9%20de%20Gr%C3%A9goire%20XI%20%C3%A0%20Rome.jpg",
+      "tagline": "war (1375–1378) between Pope Gregory XI and a coalition of Italian city-states led by Florence",
       "year": 1375,
       "endYear": 1378,
-      "endMonth": 7,
-      "tagline": "war (1375\u20131378) between Pope Gregory XI and a coalition of Italian city-states led by Florence"
+      "endMonth": 7
     },
     {
       "id": "Q315921",
-      "name": "Thirteen Years\u2019 War",
+      "name": "Thirteen Years’ War",
       "category": "war",
       "sitelinks": 35,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Thirteen_Years%27_War_(1454%E2%80%931466)",
@@ -1785,13 +1831,13 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Polish%20Knights%201447-1492.PNG",
+      "tagline": "1454-1466 war between the Kingdom of Poland and the Teutonic Order",
       "year": 1454,
-      "endYear": 1466,
-      "tagline": "1454-1466 war between the Kingdom of Poland and the Teutonic Order"
+      "endYear": 1466
     },
     {
       "id": "Q385676",
-      "name": "\u014cnin War",
+      "name": "Ōnin War",
       "category": "war",
       "sitelinks": 34,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/%C5%8Cnin_War",
@@ -1808,13 +1854,13 @@
         "Q17"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Onin-War-1467-1477-The-Battle-of-Onin-by-Utagawa-Yoshitora.png",
+      "tagline": "15th-century civil war in Japan",
       "year": 1467,
-      "endYear": 1477,
-      "tagline": "15th-century civil war in Japan"
+      "endYear": 1477
     },
     {
       "id": "Q707364",
-      "name": "Count\u2019s War",
+      "name": "Count’s War",
       "category": "war",
       "sitelinks": 19,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Count%27s_Feud",
@@ -1830,9 +1876,9 @@
         "Q35"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christian%20III%20of%20Denmark.jpg",
+      "tagline": "war of succession (1534–36) that brought about the Reformation in Denmark",
       "year": 1534,
-      "endYear": 1536,
-      "tagline": "war of succession (1534\u201336) that brought about the Reformation in Denmark"
+      "endYear": 1536
     },
     {
       "id": "Q431806",
@@ -1853,9 +1899,9 @@
         "Q298"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Guerra%20Arauco.jpg",
+      "tagline": "war between Spaniards and Mapuche people in Chile",
       "year": 1546,
-      "endYear": 1609,
-      "tagline": "war between Spaniards and Mapuche people in Chile"
+      "endYear": 1609
     },
     {
       "id": "Q246863",
@@ -1874,15 +1920,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20Narva%201558.jpg",
+      "tagline": "war in the Baltic region (1558-1583)",
       "year": 1558,
       "month": 1,
       "endYear": 1583,
-      "endMonth": 5,
-      "tagline": "war in the Baltic region (1558-1583)"
+      "endMonth": 5
     },
     {
       "id": "Q164432",
-      "name": "Eighty Years\u2019 War",
+      "name": "Eighty Years’ War",
       "category": "war-of-independence",
       "sitelinks": 75,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
@@ -1899,11 +1945,11 @@
         "Q330533"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vel%C3%A1zquez%20-%20de%20Breda%20o%20Las%20Lanzas%20%28Museo%20del%20Prado%2C%201634-35%29.jpg",
+      "tagline": "16th- and 17th-century Dutch revolt against the Habsburgs",
       "year": 1568,
       "month": 6,
       "endYear": 1648,
-      "endMonth": 1,
-      "tagline": "16th- and 17th-century Dutch revolt against the Habsburgs"
+      "endMonth": 1
     },
     {
       "id": "Q3778623",
@@ -1919,9 +1965,9 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%8C%D0%BC%D0%B0%D1%8F_%D0%B3%D1%83%D0%B3%D0%B5%D0%BD%D0%BE%D1%82%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
       "countries": [],
+      "tagline": "war between King Henry III of France, King Henry of Navarre, and Henry of Lorraine, Duke of Guise",
       "year": 1587,
-      "endYear": 1589,
-      "tagline": "war between King Henry III of France, King Henry of Navarre, and Henry of Lorraine, Duke of Guise"
+      "endYear": 1589
     },
     {
       "id": "Q631795",
@@ -1939,15 +1985,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wojna%20Kalmarska%201611%20ubt.jpeg",
+      "tagline": "conflict",
       "year": 1611,
-      "endYear": 1613,
-      "tagline": "conflict"
+      "endYear": 1613
     },
     {
       "id": "Q2487",
-      "name": "Thirty Years\u2019 War",
+      "name": "Thirty Years’ War",
       "category": "war",
-      "sitelinks": 133,
+      "sitelinks": 132,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
@@ -1962,9 +2008,9 @@
         "Q12548"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Magdeburg%201631.jpg",
+      "tagline": "war principally fought in Central Europe from 1618 to 1648",
       "year": 1618,
-      "endYear": 1648,
-      "tagline": "war principally fought in Central Europe from 1618 to 1648"
+      "endYear": 1648
     },
     {
       "id": "Q1342672",
@@ -1980,15 +2026,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Matth%C3%A4us%20Merian%20d%C3%86%2C%20S%C3%A5ledes%20blev%20ogs%C3%A5%20denne%20fred%20brudt%20p%C3%A5%20grund%20af%20bedrag%2C%20KKSgb10894-5%2C%20Statens%20Museum%20for%20Kunst.jpg",
+      "tagline": "series of three wars fought between English settlers of the Virginia Colony and the Powhatan alliance of Virgina Indians",
       "year": 1609,
       "month": 5,
       "endYear": 1646,
-      "endMonth": 10,
-      "tagline": "series of three wars fought between English settlers of the Virginia Colony and the Powhatan alliance of Virgina Indians"
+      "endMonth": 10
     },
     {
       "id": "Q807843",
-      "name": "Bishops\u2019 Wars",
+      "name": "Bishops’ Wars",
       "category": "war",
       "sitelinks": 25,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bishops%27_Wars",
@@ -2003,11 +2049,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Riot%20against%20Anglican%20prayer%20book%201637.jpg",
+      "tagline": "17th-century religious conflicts in Britain",
       "year": 1639,
       "month": 3,
       "endYear": 1640,
-      "endMonth": 9,
-      "tagline": "17th-century religious conflicts in Britain"
+      "endMonth": 9
     },
     {
       "id": "Q654006",
@@ -2026,9 +2072,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lemke%20Skirmish%20with%20Polish%20Tatars.png",
+      "tagline": "1655–1661 conflict in the Baltic Sea region",
       "year": 1655,
-      "endYear": 1660,
-      "tagline": "1655\u20131661 conflict in the Baltic Sea region"
+      "endYear": 1660
     },
     {
       "id": "Q25857",
@@ -2049,15 +2095,15 @@
         "Q29"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Belagerung%20von%20Courtrai%201667.jpg",
+      "tagline": "war between France and Spain for the Spanish Netherlands (1667–1668)",
       "year": 1667,
       "month": 5,
       "endYear": 1668,
-      "endMonth": 5,
-      "tagline": "war between France and Spain for the Spanish Netherlands (1667\u20131668)"
+      "endMonth": 5
     },
     {
       "id": "Q862257",
-      "name": "King Philip\u2019s War",
+      "name": "King Philip’s War",
       "category": "war",
       "sitelinks": 30,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/King_Philip%27s_War",
@@ -2072,11 +2118,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Philip%20King%20of%20Mount%20Hope%20by%20Paul%20Revere.jpeg",
+      "tagline": "conflict between Native American inhabitants of present-day New England and English colonists",
       "year": 1675,
       "month": 6,
       "endYear": 1678,
-      "endMonth": 4,
-      "tagline": "conflict between Native American inhabitants of present-day New England and English colonists"
+      "endMonth": 4
     },
     {
       "id": "Q152218",
@@ -2095,15 +2141,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20Namur%20%281692%29.JPG",
+      "tagline": "war principally fought in Central Europe from 1688 to 1697",
       "year": 1688,
       "month": 9,
       "endYear": 1697,
-      "endMonth": 9,
-      "tagline": "war principally fought in Central Europe from 1688 to 1697"
+      "endMonth": 9
     },
     {
       "id": "Q1070342",
-      "name": "King William\u2019s War",
+      "name": "King William’s War",
       "category": "war",
       "parentId": "Q152218",
       "sitelinks": 24,
@@ -2119,11 +2165,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Frontenac%20receiving%20the%20envoy%20of%20Sir%20William%20Phipps%20demanding%20the%20surrender%20of%20Quebec%2C%201690.jpg",
+      "tagline": "North American theater of the Nine Years' War",
       "year": 1688,
       "month": 4,
       "endYear": 1697,
-      "endMonth": 9,
-      "tagline": "North American theater of the Nine Years' War"
+      "endMonth": 9
     },
     {
       "id": "Q150701",
@@ -2142,11 +2188,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakhuizen%2C%20Battle%20of%20Vigo%20Bay.jpg",
+      "tagline": "major European conflict (1700–1714) after the death of Charles II",
       "year": 1701,
       "month": 3,
       "endYear": 1714,
-      "endMonth": 9,
-      "tagline": "major European conflict (1700\u20131714) after the death of Charles II"
+      "endMonth": 9
     },
     {
       "id": "Q3052957",
@@ -2163,14 +2209,14 @@
         "Q155"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Guerra%20dos%20Emboabas.jpg",
-      "year": 1707,
-      "tagline": "conflict in colonial-era Brazil"
+      "tagline": "conflict in colonial-era Brazil",
+      "year": 1707
     },
     {
       "id": "Q976827",
       "name": "Carnatic Wars",
       "category": "war",
-      "sitelinks": 32,
+      "sitelinks": 33,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Carnatic_wars",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Carnatic_wars",
@@ -2185,13 +2231,13 @@
         "Q112660052"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lord%20Clive%20meeting%20with%20Mir%20Jafar%20after%20the%20Battle%20of%20Plassey.jpg",
+      "tagline": "18th-century wars between the French and the British",
       "year": 1746,
-      "endYear": 1763,
-      "tagline": "18th-century wars between the French and the British"
+      "endYear": 1763
     },
     {
       "id": "Q869045",
-      "name": "Queen Anne\u2019s War",
+      "name": "Queen Anne’s War",
       "category": "war",
       "parentId": "Q150701",
       "sitelinks": 28,
@@ -2207,11 +2253,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nouvelle-France%20map-ca.svg",
+      "tagline": "North American theater of the War of the Spanish Succession",
       "year": 1702,
       "month": 3,
       "endYear": 1713,
-      "endMonth": 7,
-      "tagline": "North American theater of the War of the Spanish Succession"
+      "endMonth": 7
     },
     {
       "id": "Q1520241",
@@ -2227,9 +2273,9 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%AF%D0%BC%D0%B0%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
       "countries": [],
+      "tagline": "1715–1717 conflict between British colonists and Native Americans in South Carolina",
       "year": 1715,
-      "endYear": 1717,
-      "tagline": "1715\u20131717 conflict between British colonists and Native Americans in South Carolina"
+      "endYear": 1717
     },
     {
       "id": "Q212658",
@@ -2248,15 +2294,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20Danzig%201734.PNG",
+      "tagline": "war in Europe 1734–1738",
       "year": 1733,
       "month": 10,
       "endYear": 1735,
-      "endMonth": 10,
-      "tagline": "war in Europe 1734\u20131738"
+      "endMonth": 10
     },
     {
       "id": "Q54434",
-      "name": "War of Jenkins\u2019 Ear",
+      "name": "War of Jenkins’ Ear",
       "category": "war",
       "parentId": "Q32929",
       "sitelinks": 38,
@@ -2272,11 +2318,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/A%20new%20and%20correct%20map%20of%20the%20trading%20part%20of%20the%20West%20Indies.png",
+      "tagline": "1739–1748 conflict between Britain and Spain",
       "year": 1739,
       "month": 10,
       "endYear": 1748,
-      "endMonth": 10,
-      "tagline": "1739\u20131748 conflict between Britain and Spain"
+      "endMonth": 10
     },
     {
       "id": "Q32929",
@@ -2295,15 +2341,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WaroftheAustrianSuccession.png",
+      "tagline": "1740–1748 war",
       "year": 1740,
       "month": 12,
       "endYear": 1748,
-      "endMonth": 10,
-      "tagline": "1740\u20131748 war"
+      "endMonth": 10
     },
     {
       "id": "Q517578",
-      "name": "King George\u2019s War",
+      "name": "King George’s War",
       "category": "war",
       "parentId": "Q32929",
       "sitelinks": 24,
@@ -2320,9 +2366,9 @@
         "Q16"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Louisbourg03.jpg",
+      "tagline": "North American theater of the War of the Austrian Succession",
       "year": 1744,
-      "endYear": 1748,
-      "tagline": "North American theater of the War of the Austrian Succession"
+      "endYear": 1748
     },
     {
       "id": "Q154697",
@@ -2342,11 +2388,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/French%20and%20indian%20war%20map.svg",
+      "tagline": "North American theatre of the worldwide Seven Years' War",
       "year": 1754,
       "month": 5,
       "endYear": 1763,
-      "endMonth": 10,
-      "tagline": "North American theatre of the worldwide Seven Years' War"
+      "endMonth": 10
     },
     {
       "id": "Q699849",
@@ -2366,13 +2412,13 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Schlacht%20bei%20Mollwitz.jpg",
+      "tagline": "three conflicts between the Kingdom of Prussia and the Austrian Habsburg Monarchy for control of Silesia",
       "year": 1740,
-      "endYear": 1763,
-      "tagline": "three conflicts between the Kingdom of Prussia and the Austrian Habsburg Monarchy for control of Silesia"
+      "endYear": 1763
     },
     {
       "id": "Q2632175",
-      "name": "Lord Dunmore\u2019s War",
+      "name": "Lord Dunmore’s War",
       "category": "war",
       "sitelinks": 12,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Lord_Dunmore%27s_War",
@@ -2385,11 +2431,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sir%20Joshua%20Reynolds%20-%20John%20Murray%2C%204th%20Earl%20of%20Dunmore%20-%20Google%20Art%20Project.jpg",
+      "tagline": "1774 war between Virginian colonist and Native Americans",
       "year": 1774,
       "month": 5,
       "endYear": 1774,
-      "endMonth": 10,
-      "tagline": "1774 war between Virginian colonist and Native Americans"
+      "endMonth": 10
     },
     {
       "id": "Q5453768",
@@ -2401,9 +2447,9 @@
         "en": "https://en.wikipedia.org/wiki/First_Rohilla_War"
       },
       "countries": [],
+      "tagline": "Military campaign in 1773–1774",
       "year": 1773,
-      "endYear": 1774,
-      "tagline": "Military campaign in 1773\u20131774"
+      "endYear": 1774
     },
     {
       "id": "Q1362209",
@@ -2423,9 +2469,9 @@
         "Q668"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maratha%20British%20Treaty.JPG",
+      "tagline": "war between the British East India Company and the Maratha Empire, 1775-1782",
       "year": 1775,
-      "endYear": 1782,
-      "tagline": "war between the British East India Company and the Maratha Empire, 1775-1782"
+      "endYear": 1782
     },
     {
       "id": "Q157548",
@@ -2444,11 +2490,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Friedrich%20der%20Grosse%20und%20der%20Feldscher.jpg",
+      "tagline": "dispute between the Austrian Habsburg monarchy and an alliance of Saxony and Prussia",
       "year": 1778,
       "month": 7,
       "endYear": 1779,
-      "endMonth": 5,
-      "tagline": "dispute between the Austrian Habsburg monarchy and an alliance of Saxony and Prussia"
+      "endMonth": 5
     },
     {
       "id": "Q582594",
@@ -2467,9 +2513,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Xhosa1851.jpg",
+      "tagline": "series of conflicts",
       "year": 1779,
-      "endYear": 1879,
-      "tagline": "series of conflicts"
+      "endYear": 1879
     },
     {
       "id": "Q207318",
@@ -2488,11 +2534,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Luny%20Thomas%20Battle%20Of%20The%20Nile%20August%201st%201798%20At%2010pm.jpg",
+      "tagline": "1792–1802 series of conflicts between the French Republic and several European monarchies",
       "year": 1792,
       "month": 4,
       "endYear": 1802,
-      "endMonth": 3,
-      "tagline": "1792\u20131802 series of conflicts between the French Republic and several European monarchies"
+      "endMonth": 3
     },
     {
       "id": "Q1190696",
@@ -2511,11 +2557,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Francisco%20de%20Goya%20-%20Godoy%20como%20general%20-%20Google%20Art%20Project.jpg",
+      "tagline": "conflict",
       "year": 1801,
       "month": 5,
       "endYear": 1801,
-      "endMonth": 6,
-      "tagline": "conflict"
+      "endMonth": 6
     },
     {
       "id": "Q468293",
@@ -2534,11 +2580,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Burning%20of%20the%20uss%20philadelphia.jpg",
+      "tagline": "war against Barbary pirates",
       "year": 1801,
       "month": 5,
       "endYear": 1805,
-      "endMonth": 6,
-      "tagline": "war against Barbary pirates"
+      "endMonth": 6
     },
     {
       "id": "Q233642",
@@ -2557,9 +2603,9 @@
         "Q112660052"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Major%20General%20Arthur%20Wellesley%2C%20Battle%20of%20Argaum.jpg",
+      "tagline": "conflict between the British East India Company and the Maratha Empire",
       "year": 1803,
-      "endYear": 1805,
-      "tagline": "conflict between the British East India Company and the Maratha Empire"
+      "endYear": 1805
     },
     {
       "id": "Q617210",
@@ -2579,11 +2625,11 @@
         "Q112660052"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Indian%20Camp%20Scene.jpg",
+      "tagline": "conflict between the British East India Company and the Maratha Empire (1817–1819)",
       "year": 1817,
       "month": 11,
       "endYear": 1818,
-      "endMonth": 2,
-      "tagline": "conflict between the British East India Company and the Maratha Empire (1817\u20131819)"
+      "endMonth": 2
     },
     {
       "id": "Q78994",
@@ -2602,9 +2648,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bonaparte%20David%20Charlottenburg.jpg",
+      "tagline": "1803–1815 wars involving the French Empire",
       "year": 1803,
-      "endYear": 1815,
-      "tagline": "1803\u20131815 wars involving the French Empire"
+      "endYear": 1815
     },
     {
       "id": "Q880629",
@@ -2625,9 +2671,9 @@
         "Q408"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Benjamin%20Duterrau%20-%20Timmy%2C%20a%20Tasmanian%20Aboriginal%2C%20throwing%20a%20spear%20-%20Google%20Art%20Project.jpg",
+      "tagline": "period of violent conflict between British colonists and Aboriginal Australians in Tasmania",
       "year": 1820,
-      "endYear": 1832,
-      "tagline": "period of violent conflict between British colonists and Aboriginal Australians in Tasmania"
+      "endYear": 1832
     },
     {
       "id": "Q152499",
@@ -2649,11 +2695,11 @@
         "Q3399982"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/El%20Tres%20de%20Mayo%2C%20by%20Francisco%20de%20Goya%2C%20from%20Prado%20in%20Google%20Earth.jpg",
+      "tagline": "1807–1814 conflict during the Napoleonic Wars",
       "year": 1808,
       "month": 5,
       "endYear": 1814,
-      "endMonth": 4,
-      "tagline": "1807\u20131814 conflict during the Napoleonic Wars"
+      "endMonth": 4
     },
     {
       "id": "Q1186260",
@@ -2670,10 +2716,10 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jackson%20and%20Weatherford.jpg",
+      "tagline": "1813 regional war between opposing Creek factions, European empires, and the United States",
       "year": 1813,
       "endYear": 1814,
-      "endMonth": 8,
-      "tagline": "1813 regional war between opposing Creek factions, European empires, and the United States"
+      "endMonth": 8
     },
     {
       "id": "Q2725993",
@@ -2688,9 +2734,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aftocht-van-de-bezetting-va.jpg",
+      "tagline": "1803–1837 armed conflict in Sumatra, Indonesia",
       "year": 1803,
-      "endYear": 1837,
-      "tagline": "1803\u20131837 armed conflict in Sumatra, Indonesia"
+      "endYear": 1837
     },
     {
       "id": "Q22936451",
@@ -2704,11 +2750,11 @@
       "countries": [
         "Q833"
       ],
+      "tagline": "19th century conflict",
       "year": 1831,
       "month": 8,
       "endYear": 1832,
-      "endMonth": 6,
-      "tagline": "19th century conflict"
+      "endMonth": 6
     },
     {
       "id": "Q856168",
@@ -2727,11 +2773,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%C3%89pisode%20de%20l%27exp%C3%A9dition%20du%20Mexique%20en%201838.jpg",
+      "tagline": "war between France and Mexico",
       "year": 1838,
       "month": 11,
       "endYear": 1839,
-      "endMonth": 3,
-      "tagline": "war between France and Mexico"
+      "endMonth": 3
     },
     {
       "id": "Q331377",
@@ -2752,9 +2798,9 @@
         "Q30"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/US%20Slave%20Free%201789-1861.gif",
+      "tagline": "violent political confrontations in the United States centered around slavery",
       "year": 1854,
-      "endYear": 1861,
-      "tagline": "violent political confrontations in the United States centered around slavery"
+      "endYear": 1861
     },
     {
       "id": "Q8676",
@@ -2773,11 +2819,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CivilWarUSAColl.png",
+      "tagline": "1861–1865 civil war in the United States between the North and the South over the enslavement of African-Americans",
       "year": 1861,
       "month": 4,
       "endYear": 1865,
-      "endMonth": 4,
-      "tagline": "1861\u20131865 civil war in the United States between the North and the South over the enslavement of African-Americans"
+      "endMonth": 4
     },
     {
       "id": "Q58947",
@@ -2796,15 +2842,15 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tuyuti1.jpg",
+      "tagline": "large-scale conflict in South America (1864–1870)",
       "year": 1864,
       "month": 12,
       "endYear": 1870,
-      "endMonth": 3,
-      "tagline": "large-scale conflict in South America (1864\u20131870)"
+      "endMonth": 3
     },
     {
       "id": "Q153650",
-      "name": "Seven Weeks\u2019 War",
+      "name": "Seven Weeks’ War",
       "category": "war",
       "sitelinks": 67,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Austro-Prussian_War",
@@ -2819,11 +2865,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Schlacht-bei-koeniggraetz-von-georg-bleibtreu.jpg",
+      "tagline": "1866 military conflict between the Kingdom of Prussia and the Austrian Empire",
       "year": 1866,
       "month": 6,
       "endYear": 1866,
-      "endMonth": 7,
-      "tagline": "1866 military conflict between the Kingdom of Prussia and the Austrian Empire"
+      "endMonth": 7
     },
     {
       "id": "Q4209365",
@@ -2836,8 +2882,8 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D9%83%D9%84%D8%A7%D8%BA"
       },
       "countries": [],
-      "year": 1867,
-      "tagline": "1867\u20131874 conflicts in the Malay state of Selangor"
+      "tagline": "1867–1874 conflicts in the Malay state of Selangor",
+      "year": 1867
     },
     {
       "id": "Q277450",
@@ -2855,9 +2901,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Voor-de-Kraton2.jpg",
+      "tagline": "1873–1904 war resulting in Dutch annexation of Aceh",
       "year": 1873,
-      "endYear": 1904,
-      "tagline": "1873\u20131904 war resulting in Dutch annexation of Aceh"
+      "endYear": 1904
     },
     {
       "id": "Q3119025",
@@ -2874,9 +2920,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ledger-sm2.jpg",
+      "tagline": "military campaign launched by the United States Army in 1874",
       "year": 1874,
-      "endYear": 1875,
-      "tagline": "military campaign launched by the United States Army in 1874"
+      "endYear": 1875
     },
     {
       "id": "Q4416705",
@@ -2892,11 +2938,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bitka%20za%20moravac.jpg",
+      "tagline": "war between Principality of Serbia and Ottoman Empire from 1876 to 1878",
       "year": 1876,
       "month": 6,
       "endYear": 1878,
-      "endMonth": 3,
-      "tagline": "war between Principality of Serbia and Ottoman Empire from 1876 to 1878"
+      "endMonth": 3
     },
     {
       "id": "Q228911",
@@ -2915,11 +2961,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/D%C3%A9fense%20de%20Rorke%27s%20Drift.jpg",
+      "tagline": "war between the British Empire and the Zulu Kingdom fought in the Zulu lands in South Africa in 1879",
       "year": 1879,
       "month": 1,
       "endYear": 1879,
-      "endMonth": 7,
-      "tagline": "war between the British Empire and the Zulu Kingdom fought in the Zulu lands in South Africa in 1879"
+      "endMonth": 7
     },
     {
       "id": "Q152004",
@@ -2942,11 +2988,11 @@
         "Q750"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sinking%20of%20the%20Esmeralda%20during%20the%20battle%20of%20Iquique.jpg",
+      "tagline": "war between Chile and a Bolivian–Peruvian alliance",
       "year": 1879,
       "month": 4,
       "endYear": 1884,
-      "endMonth": 4,
-      "tagline": "war between Chile and a Bolivian\u2013Peruvian alliance"
+      "endMonth": 4
     },
     {
       "id": "Q1348785",
@@ -2964,9 +3010,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RepublikiBurskieXIXwiek.svg",
+      "tagline": "1880-1881 war",
       "year": 1880,
-      "endYear": 1881,
-      "tagline": "1880-1881 war"
+      "endYear": 1881
     },
     {
       "id": "Q706183",
@@ -2985,11 +3031,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SinoFrenchWar1884-1885-fr.png",
+      "tagline": "limited conflict (1881–1885) between France and China",
       "year": 1884,
       "month": 8,
       "endYear": 1885,
-      "endMonth": 4,
-      "tagline": "limited conflict (1881\u20131885) between France and China"
+      "endMonth": 4
     },
     {
       "id": "Q740791",
@@ -3008,9 +3054,9 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/S-b%20war%20painting%20by%20Antoni%20Piotrowski.jpg",
+      "tagline": "1885 war between Serbia and Bulgaria",
       "year": 1885,
-      "month": 11,
-      "tagline": "1885 war between Serbia and Bulgaria"
+      "month": 11
     },
     {
       "id": "Q214456",
@@ -3029,11 +3075,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Manila646%201899.jpg",
+      "tagline": "armed conflict between the First Philippine Republic and the United States",
       "year": 1899,
       "month": 2,
       "endYear": 1902,
-      "endMonth": 7,
-      "tagline": "armed conflict between the First Philippine Republic and the United States"
+      "endMonth": 7
     },
     {
       "id": "Q215112",
@@ -3052,11 +3098,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Second%20Anglo%20-%20Boer%20War%2C%20South%20Africa%201899%20-%201902%20Q82943.jpg",
+      "tagline": "war between two Boer Republics (South African Republic and Orange Free State) and the United Kingdom",
       "year": 1899,
       "month": 10,
       "endYear": 1902,
-      "endMonth": 5,
-      "tagline": "war between two Boer Republics (South African Republic and Orange Free State) and the United Kingdom"
+      "endMonth": 5
     },
     {
       "id": "Q43378",
@@ -3077,11 +3123,11 @@
         "Q739"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lautaro%20Sinking%20I.jpg",
+      "tagline": "1899–1902 civil war in Colombia",
       "year": 1899,
       "month": 10,
       "endYear": 1902,
-      "endMonth": 11,
-      "tagline": "1899\u20131902 civil war in Colombia"
+      "endMonth": 11
     },
     {
       "id": "Q11883242",
@@ -3095,7 +3141,7 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/American%20soldiers%20during%20the%20Moro%20Campaigns.jpg",
-      "tagline": "1899\u20131913 conflict between the Moro peoples and the United States Army"
+      "tagline": "1899–1913 conflict between the Moro peoples and the United States Army"
     },
     {
       "id": "Q214426",
@@ -3116,11 +3162,11 @@
         "Q96"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Revoluci%C3%B3n%20mexicana%201915.svg",
+      "tagline": "nationwide armed struggle in Mexico (1910–1920)",
       "year": 1910,
       "month": 11,
       "endYear": 1920,
-      "endMonth": 5,
-      "tagline": "nationwide armed struggle in Mexico (1910\u20131920)"
+      "endMonth": 5
     },
     {
       "id": "Q203824",
@@ -3139,11 +3185,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bellum1911.png",
+      "tagline": "1911–12 war between the Ottoman Empire and the Kingdom of Italy",
       "year": 1911,
       "month": 9,
       "endYear": 1912,
-      "endMonth": 10,
-      "tagline": "1911\u201312 war between the Ottoman Empire and the Kingdom of Italy"
+      "endMonth": 10
     },
     {
       "id": "Q361",
@@ -3162,11 +3208,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WWImontage.jpg",
+      "tagline": "1914–1918 global conflict",
       "year": 1914,
       "month": 7,
       "endYear": 1918,
-      "endMonth": 11,
-      "tagline": "1914\u20131918 global conflict"
+      "endMonth": 11
     },
     {
       "id": "Q79911",
@@ -3190,11 +3236,11 @@
         "Q243610"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CWRArticleImage.jpg",
+      "tagline": "multi-sided civil war in the former Russian Empire, November 1917-October 1922",
       "year": 1917,
       "month": 11,
       "endYear": 1922,
-      "endMonth": 10,
-      "tagline": "multi-sided civil war in the former Russian Empire, November 1917-October 1922"
+      "endMonth": 10
     },
     {
       "id": "Q766437",
@@ -3216,11 +3262,11 @@
         "Q907234"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Desembarco%20de%20Alhucemas%2C%20por%20Jos%C3%A9%20Moreno%20Carbonero.jpg",
+      "tagline": "1921–1926 war between Spain and Berber tribes of Morocco",
       "year": 1911,
       "month": 6,
       "endYear": 1927,
-      "endMonth": 7,
-      "tagline": "1921\u20131926 war between Spain and Berber tribes of Morocco"
+      "endMonth": 7
     },
     {
       "id": "Q223126",
@@ -3241,11 +3287,11 @@
         "Q750"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Disputed%20Bolivia%20Paraguay.jpg",
+      "tagline": "war between Bolivia and Paraguay",
       "year": 1932,
       "month": 9,
       "endYear": 1935,
-      "endMonth": 6,
-      "tagline": "war between Bolivia and Paraguay"
+      "endMonth": 6
     },
     {
       "id": "Q94916",
@@ -3264,11 +3310,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DC-1936-52-d.jpg",
+      "tagline": "1935-1936 war between Italy and Ethiopia",
       "year": 1935,
       "month": 10,
       "endYear": 1937,
-      "endMonth": 2,
-      "tagline": "1935-1936 war between Italy and Ethiopia"
+      "endMonth": 2
     },
     {
       "id": "Q10859",
@@ -3289,11 +3335,11 @@
         "Q29"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Soldrepteruel1937.jpg",
+      "tagline": "war between the Republicans and the Nationalists in Spain from 1936 to 1939",
       "year": 1936,
       "month": 7,
       "endYear": 1939,
-      "endMonth": 4,
-      "tagline": "war between the Republicans and the Nationalists in Spain from 1936 to 1939"
+      "endMonth": 4
     },
     {
       "id": "Q190882",
@@ -3316,17 +3362,17 @@
         "Q183"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/8inchHowitzerCamouflagedLaquielle20October1939.jpg",
+      "tagline": "eight-month period at the start of World War II, during which there was only one limited military land operation on the Western Front",
       "year": 1939,
       "month": 10,
       "endYear": 1958,
-      "endMonth": 4,
-      "tagline": "eight-month period at the start of World War II, during which there was only one limited military land operation on the Western Front"
+      "endMonth": 4
     },
     {
       "id": "Q362",
       "name": "World War II",
       "category": "war",
-      "sitelinks": 292,
+      "sitelinks": 291,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/World_War_II",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/World_War_II",
@@ -3339,11 +3385,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Infobox%20collage%20for%20WWII.PNG",
+      "tagline": "1939–1945 global conflict",
       "year": 1939,
       "month": 9,
       "endYear": 1945,
-      "endMonth": 9,
-      "tagline": "1939\u20131945 global conflict"
+      "endMonth": 9
     },
     {
       "id": "Q188972",
@@ -3364,11 +3410,11 @@
         "Q41"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Grupa%20borci%20na%20DA%20na%20Grcija.jpg",
+      "tagline": "1946–1949 civil war in Greece",
       "year": 1946,
       "month": 3,
       "endYear": 1949,
-      "endMonth": 10,
-      "tagline": "1946\u20131949 civil war in Greece"
+      "endMonth": 10
     },
     {
       "id": "Q3491398",
@@ -3403,11 +3449,11 @@
         "Q881"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VietnamMural.jpg",
+      "tagline": "armed conflict in Vietnam, Laos, and Cambodia between North Vietnam and South Vietnam, from 1955 to 1975",
       "year": 1955,
       "month": 11,
       "endYear": 1975,
-      "endMonth": 4,
-      "tagline": "armed conflict in Vietnam, Laos, and Cambodia between North Vietnam and South Vietnam, from 1955 to 1975"
+      "endMonth": 4
     },
     {
       "id": "Q322607",
@@ -3427,11 +3473,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dan%20Hadani%20collection%20%28990044477850205171%29.jpg",
+      "tagline": "1967–1970 war between Israel and Egypt, Syria and Jordan",
       "year": 1967,
       "month": 7,
       "endYear": 1970,
-      "endMonth": 8,
-      "tagline": "1967\u20131970 war between Israel and Egypt, Syria and Jordan"
+      "endMonth": 8
     },
     {
       "id": "Q75984",
@@ -3448,9 +3494,9 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D1%8F%D0%B7%D0%BD%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0_(%D0%90%D1%80%D0%B3%D0%B5%D0%BD%D1%82%D0%B8%D0%BD%D0%B0)"
       },
       "countries": [],
+      "tagline": "period of state terrorism in Argentina from 1974 to 1983",
       "year": 1955,
-      "endYear": 1989,
-      "tagline": "period of state terrorism in Argentina from 1974 to 1983"
+      "endYear": 1989
     },
     {
       "id": "Q48249",
@@ -3470,11 +3516,11 @@
       "countries": [
         "Q145"
       ],
+      "tagline": "undeclared war between Argentina and the United Kingdom in 1982",
       "year": 1982,
       "month": 4,
       "endYear": 1982,
-      "endMonth": 6,
-      "tagline": "undeclared war between Argentina and the United Kingdom in 1982"
+      "endMonth": 6
     },
     {
       "id": "Q181533",
@@ -3493,11 +3539,11 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bosnian%20war%20header.no.png",
+      "tagline": "1992–1995 armed conflict in Bosnia and Herzegovina",
       "year": 1992,
       "month": 4,
       "endYear": 1995,
-      "endMonth": 12,
-      "tagline": "1992\u20131995 armed conflict in Bosnia and Herzegovina"
+      "endMonth": 12
     },
     {
       "id": "Q178810",
@@ -3518,11 +3564,362 @@
         "Q858"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Syrian%20Civil%20War%20map.svg",
+      "tagline": "2011–2024 armed conflict in Syria",
       "year": 2011,
       "month": 3,
       "endYear": 2024,
-      "endMonth": 12,
-      "tagline": "2011\u20132024 armed conflict in Syria"
+      "endMonth": 12
+    },
+    {
+      "id": "Q160077",
+      "name": "Fall of Constantinople",
+      "category": "military-operation",
+      "sitelinks": 80,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%90%9B%E5%A3%AB%E5%9D%A6%E4%B8%81%E5%A0%A1%E9%99%B7%E8%90%BD",
+        "es": "https://es.wikipedia.org/wiki/Ca%C3%ADda_de_Constantinopla",
+        "fr": "https://fr.wikipedia.org/wiki/Chute_de_Constantinople",
+        "de": "https://de.wikipedia.org/wiki/Eroberung_von_Konstantinopel_(1453)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D8%AA%D8%AD_%D8%A7%D9%84%D9%82%D8%B3%D8%B7%D9%86%D8%B7%D9%8A%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%BE%D0%BF%D0%BE%D0%BB%D1%8F_(1453)"
+      },
+      "countries": [
+        "Q43",
+        "Q12544"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Le%20si%C3%A8ge%20de%20Constantinople%20%281453%29%20by%20Jean%20Le%20Tavernier%20after%201455.jpg",
+      "tagline": "1453 capture of the Byzantine capital by the Ottoman Empire",
+      "year": 1453,
+      "month": 4,
+      "endYear": 1453,
+      "endMonth": 5
+    },
+    {
+      "id": "Q79791",
+      "name": "Reconquista",
+      "category": "war",
+      "sitelinks": 91,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Reconquista",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Reconquista",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%94%B6%E5%BE%A9%E5%A4%B1%E5%9C%B0%E9%81%8B%E5%8B%95",
+        "es": "https://es.wikipedia.org/wiki/Reconquista",
+        "fr": "https://fr.wikipedia.org/wiki/Reconquista",
+        "de": "https://de.wikipedia.org/wiki/Reconquista",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%82%D9%88%D8%B7_%D8%A7%D9%84%D8%A3%D9%86%D8%AF%D9%84%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%BA%D0%BE%D0%BD%D0%BA%D0%B8%D1%81%D1%82%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cantigas%20battle.jpg",
+      "tagline": "period in the history of the Iberian Peninsula",
+      "year": 733,
+      "endYear": 1492,
+      "endMonth": 1
+    },
+    {
+      "id": "Q203233",
+      "name": "Battle of Plassey",
+      "category": "military-operation",
+      "sitelinks": 57,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Plassey",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Plassey",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%99%AE%E6%8B%89%E8%A5%BF%E4%B9%8B%E6%88%B0",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Plassey",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Plassey",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_Plassey",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%A8%D9%84%D8%A7%D8%B3%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%9F%D0%BB%D0%B5%D1%81%D1%81%D0%B8"
+      },
+      "countries": [
+        "Q668"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lord%20Clive%20meeting%20with%20Mir%20Jafar%20after%20the%20Battle%20of%20Plassey.jpg",
+      "tagline": "1757 battle which established the British Raj in India",
+      "year": 1757,
+      "month": 6
+    },
+    {
+      "id": "Q112524",
+      "name": "Red Turban Rebellion",
+      "category": "rebellion",
+      "sitelinks": 33,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Red_Turban_Rebellions",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Red_Turban_Rebellions",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%B4%85%E5%B7%BE%E8%BB%8D",
+        "es": "https://es.wikipedia.org/wiki/Revuelta_de_los_Turbantes_Rojos",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9volte_des_Turbans_rouges",
+        "de": "https://de.wikipedia.org/wiki/Rote_Turbane",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%88%D8%B1%D8%A7%D8%AA_%D8%A7%D9%84%D8%B9%D9%85%D8%A7%D8%A6%D9%85_%D8%A7%D9%84%D8%AD%D9%85%D8%B1%D8%A7%D8%A1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%C2%AB%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D1%85_%D0%BF%D0%BE%D0%B2%D1%8F%D0%B7%D0%BE%D0%BA%C2%BB"
+      },
+      "countries": [
+        "Q148",
+        "Q7313"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Red%20Turban.png",
+      "tagline": "Revolt against the Yuan dynasty in China (1351–1368)",
+      "year": 1351,
+      "endYear": 1368
+    },
+    {
+      "id": "Q1123201",
+      "name": "Spanish American wars of independence",
+      "category": "war-of-independence",
+      "sitelinks": 45,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_American_wars_of_independence",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Spanish_American_wars_of_independence",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%A5%BF%E7%8F%AD%E7%89%99%E7%BE%8E%E6%B4%B2%E7%8D%A8%E7%AB%8B%E6%88%B0%E7%88%AD",
+        "es": "https://es.wikipedia.org/wiki/Guerras_de_independencia_hispanoamericanas",
+        "fr": "https://fr.wikipedia.org/wiki/Guerres_d%27ind%C3%A9pendance_hispano-am%C3%A9ricaines",
+        "de": "https://de.wikipedia.org/wiki/S%C3%BCdamerikanische_Unabh%C3%A4ngigkeitskriege",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D9%88%D8%A8_%D8%A7%D8%B3%D8%AA%D9%82%D9%84%D8%A7%D9%84_%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D8%A7_%D8%A7%D9%84%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B7%D0%B0_%D0%BD%D0%B5%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C_%D0%B8%D1%81%D0%BF%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D1%85_%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%B9_%D0%B2_%D0%90%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B5"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Independencia.gif",
+      "tagline": "1808–1833 armed conflicts in the Americas between Spain and independence movements",
+      "year": 1808,
+      "month": 9,
+      "endYear": 1833,
+      "endMonth": 9
+    },
+    {
+      "id": "Q192408",
+      "name": "Taiping Rebellion",
+      "category": "rebellion",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%AA%E5%B9%B3%E5%A4%A9%E5%9C%8B%E4%B9%8B%E4%BA%82",
+        "es": "https://es.wikipedia.org/wiki/Rebeli%C3%B3n_Taiping",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9volte_des_Taiping",
+        "de": "https://de.wikipedia.org/wiki/Taiping-Aufstand",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%85%D8%B1%D8%AF_%D8%AA%D8%A7%D9%8A%D8%A8%D9%8A%D9%86%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%D1%82%D0%B0%D0%B9%D0%BF%D0%B8%D0%BD%D0%BE%D0%B2"
+      },
+      "countries": [
+        "Q148",
+        "Q8733"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Taiping%20Heavenly%20Kingdom%20map.svg",
+      "tagline": "Qing Dynasty era rebellion (1851–1864)",
+      "year": 1851,
+      "month": 1,
+      "endYear": 1864,
+      "endMonth": 8
+    },
+    {
+      "id": "Q302519",
+      "name": "Battle of Adwa",
+      "category": "military-operation",
+      "sitelinks": 45,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Adwa",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Adwa",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E6%9D%9C%E7%93%A6%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Adua",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_d%27Adoua",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Adua",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%B9%D8%AF%D9%88%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BF%D1%80%D0%B8_%D0%90%D0%B4%D1%83%D0%B0"
+      },
+      "countries": [
+        "Q115",
+        "Q207521"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/COLLECTIE%20TROPENMUSEUM%20De%20slag%20bij%20Adua%20TMnr%205956-2.jpg",
+      "tagline": "battle between the Ethiopian Empire and the Kingdom of Italy near the town of Adwa, the climactic battle of the First Italo-Ethiopian War, securing Ethiopian sovereignty",
+      "year": 1896,
+      "month": 3
+    },
+    {
+      "id": "Q1551794",
+      "name": "Japanese invasion of Manchuria",
+      "category": "military-operation",
+      "sitelinks": 37,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Japanese_invasion_of_Manchuria",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Japanese_invasion_of_Manchuria",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E5%85%A5%E4%BE%B5%E4%B8%AD%E5%9C%8B%E6%9D%B1%E5%8C%97",
+        "es": "https://es.wikipedia.org/wiki/Invasi%C3%B3n_japonesa_de_Manchuria",
+        "fr": "https://fr.wikipedia.org/wiki/Invasion_japonaise_de_la_Mandchourie",
+        "de": "https://de.wikipedia.org/wiki/Mandschurei-Krise",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86%D9%8A_%D9%84%D9%85%D9%86%D8%B4%D9%88%D8%B1%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AF%D0%BF%D0%BE%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D0%B5%D0%BD%D1%86%D0%B8%D1%8F_%D0%B2_%D0%9C%D0%B0%D0%BD%D1%8C%D1%87%D0%B6%D1%83%D1%80%D0%B8%D1%8E_(1931)"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20troops%20entering%20Tsitsihar.jpg",
+      "tagline": "1931 part of the Second Sino-Japanese War",
+      "year": 1931,
+      "month": 9,
+      "endYear": 1932,
+      "endMonth": 2
+    },
+    {
+      "id": "Q52418",
+      "name": "Attack on Pearl Harbor",
+      "category": "military-operation",
+      "sitelinks": 88,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%8F%8D%E7%8F%A0%E6%B8%AF%E4%BA%8B%E4%BB%B6",
+        "es": "https://es.wikipedia.org/wiki/Ataque_a_Pearl_Harbor",
+        "fr": "https://fr.wikipedia.org/wiki/Attaque_de_Pearl_Harbor",
+        "de": "https://de.wikipedia.org/wiki/Angriff_auf_Pearl_Harbor",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%87%D8%AC%D9%88%D9%85_%D8%B9%D9%84%D9%89_%D8%A8%D9%8A%D8%B1%D9%84_%D9%87%D8%A7%D8%B1%D8%A8%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D0%BF%D0%B0%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BD%D0%B0_%D0%9F%D0%B5%D1%80%D0%BB-%D0%A5%D0%B0%D1%80%D0%B1%D0%BE%D1%80"
+      },
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/USS%20SHAW%20exploding%20Pearl%20Harbor%20Nara%2080-G-16871%202.jpg",
+      "tagline": "1941 Japanese surprise attack on the U.S",
+      "year": 1941,
+      "month": 12
+    },
+    {
+      "id": "Q488",
+      "name": "Atomic bombings of Hiroshima and Nagasaki",
+      "category": "military-operation",
+      "sitelinks": 102,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%BB%A3%E5%B3%B6%E8%88%87%E9%95%B7%E5%B4%8E%E5%8E%9F%E5%AD%90%E5%BD%88%E7%88%86%E7%82%B8",
+        "es": "https://es.wikipedia.org/wiki/Bombardeos_at%C3%B3micos_de_Hiroshima_y_Nagasaki",
+        "fr": "https://fr.wikipedia.org/wiki/Bombardements_atomiques_d%27Hiroshima_et_de_Nagasaki",
+        "de": "https://de.wikipedia.org/wiki/Atombombenabw%C3%BCrfe_auf_Hiroshima_und_Nagasaki",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%82%D8%B5%D9%81_%D8%A7%D9%84%D8%B0%D8%B1%D9%8A_%D8%B9%D9%84%D9%89_%D9%87%D9%8A%D8%B1%D9%88%D8%B4%D9%8A%D9%85%D8%A7_%D9%88%D9%86%D8%A7%D8%BA%D8%A7%D8%B3%D8%A7%D9%83%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%82%D0%BE%D0%BC%D0%BD%D1%8B%D0%B5_%D0%B1%D0%BE%D0%BC%D0%B1%D0%B0%D1%80%D0%B4%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B8_%D0%A5%D0%B8%D1%80%D0%BE%D1%81%D0%B8%D0%BC%D1%8B_%D0%B8_%D0%9D%D0%B0%D0%B3%D0%B0%D1%81%D0%B0%D0%BA%D0%B8"
+      },
+      "countries": [
+        "Q188712"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Atomic%20bombing%20of%20Japan.jpg",
+      "tagline": "1945 use of nuclear weapons against Japan in World War II",
+      "year": 1945,
+      "month": 8
+    },
+    {
+      "id": "Q179975",
+      "name": "Chinese Civil War",
+      "category": "war",
+      "sitelinks": 85,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Chinese_Civil_War",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Chinese_Civil_War",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9B%BD%E5%85%B1%E5%86%85%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Guerra_civil_china",
+        "fr": "https://fr.wikipedia.org/wiki/Guerre_civile_chinoise",
+        "de": "https://de.wikipedia.org/wiki/Chinesischer_B%C3%BCrgerkrieg",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%A3%D9%87%D9%84%D9%8A%D8%A9_%D8%A7%D9%84%D8%B5%D9%8A%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B2_%D0%9A%D0%B8%D1%82%D0%B0%D0%B5"
+      },
+      "countries": [
+        "Q13426199"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Shangtang.jpg",
+      "tagline": "The civil war between the government of the Republic of China and the Chinese Communist Party",
+      "year": 1927,
+      "month": 8,
+      "endYear": 1950,
+      "endMonth": 5
+    },
+    {
+      "id": "Q856670",
+      "name": "1973 Chilean coup d'état",
+      "category": "coup-d-etat",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1973_Chilean_coup_d%27%C3%A9tat",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/1973_Chilean_coup_d%27%C3%A9tat",
+        "zh": "https://zh.wikipedia.org/wiki/1973%E5%B9%B4%E6%99%BA%E5%88%A9%E6%94%BF%E8%AE%8A",
+        "es": "https://es.wikipedia.org/wiki/Golpe_de_Estado_en_Chile_de_1973",
+        "fr": "https://fr.wikipedia.org/wiki/Coup_d%27%C3%89tat_de_1973_au_Chili",
+        "de": "https://de.wikipedia.org/wiki/Putsch_in_Chile_1973",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8_1973_%D9%81%D9%8A_%D8%AA%D8%B4%D9%8A%D9%84%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D1%80%D0%BE%D1%82_%D0%B2_%D0%A7%D0%B8%D0%BB%D0%B8_(1973)"
+      },
+      "countries": [
+        "Q298"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Golpe%20de%20Estado%201973.jpg",
+      "tagline": "military overthrow of the Popular Unity coalition government in 1973 in Chile",
+      "year": 1973,
+      "month": 9
+    },
+    {
+      "id": "Q8683",
+      "name": "Cold War",
+      "category": "war",
+      "sitelinks": 210,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cold_War",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cold_War",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%86%B7%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Guerra_Fr%C3%ADa",
+        "fr": "https://fr.wikipedia.org/wiki/Guerre_froide",
+        "de": "https://de.wikipedia.org/wiki/Kalter_Krieg",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%A8%D8%A7%D8%B1%D8%AF%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A5%D0%BE%D0%BB%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/US%20Army%20tanks%20face%20off%20against%20Soviet%20tanks%2C%20Berlin%201961.jpg",
+      "tagline": "1947–1991 tension between the Soviet Union and the United States and their respective allies",
+      "year": 1945,
+      "endYear": 1991,
+      "endMonth": 12
+    },
+    {
+      "id": "Q189508",
+      "name": "Glorious Revolution",
+      "category": "revolution",
+      "sitelinks": 65,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Glorious_Revolution",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Glorious_Revolution",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%85%89%E8%8D%A3%E9%9D%A9%E5%91%BD",
+        "es": "https://es.wikipedia.org/wiki/Revoluci%C3%B3n_Gloriosa",
+        "fr": "https://fr.wikipedia.org/wiki/Glorieuse_R%C3%A9volution",
+        "de": "https://de.wikipedia.org/wiki/Glorious_Revolution",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AB%D9%88%D8%B1%D8%A9_%D8%A7%D9%84%D9%85%D8%AC%D9%8A%D8%AF%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q179876"
+      ],
+      "tagline": "British revolution of 1688",
+      "year": 1688,
+      "month": 12,
+      "endYear": 1689
+    },
+    {
+      "id": "Q275918",
+      "name": "Muslim conquests",
+      "category": "war",
+      "sitelinks": 61,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Early_Muslim_conquests",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Early_Muslim_conquests",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A9%86%E6%96%AF%E6%9E%97%E7%9A%84%E5%BE%81%E6%9C%8D",
+        "es": "https://es.wikipedia.org/wiki/Expansi%C3%B3n_musulmana",
+        "fr": "https://fr.wikipedia.org/wiki/Expansion_de_l%27islam",
+        "de": "https://de.wikipedia.org/wiki/Islamische_Expansion",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D8%AA%D9%88%D8%AD%D8%A7%D8%AA_%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%80%D0%B0%D0%B1%D1%81%D0%BA%D0%B8%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20of%20expansion%20of%20Caliphate.svg",
+      "tagline": "historical process in 7th–8th centuries CE",
+      "year": 622,
+      "endYear": 750
     }
   ]
 }
