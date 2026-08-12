@@ -34,8 +34,8 @@ export function filterByFameScore<T extends { fameScore: number }>(items: T[], m
   return items.filter((item) => item.fameScore >= minFameScore);
 }
 
-// People-only Occupation Domain filter (sidebar Legend pills doubling as a
-// filter, grill-with-docs session 2026-08-12). Multi-select OR: an item
+// People-only Occupation Domain filter (sidebar's Occupation Domain pills
+// doubling as a filter, grill-with-docs session 2026-08-12). Multi-select OR: an item
 // matches if its domain is any of the selected ones. An empty selection
 // means unfiltered, not "match nothing" — mirrors filterByFameScore's floor
 // of 0 always passing everything.

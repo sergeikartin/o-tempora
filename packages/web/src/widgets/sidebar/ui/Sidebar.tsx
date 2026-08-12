@@ -22,13 +22,13 @@ interface SidebarProps {
   onToggleRegion: (region: Region) => void;
 }
 
-// Always-visible alongside TimelineCanvas — a Legend (People's 8
-// OccupationDomain pills, doubling as a click-to-toggle filter; Conflicts
-// render in one flat color, not a legend-worthy palette, and Milestones'
-// MILESTONE_CATEGORY_COLORS are out of scope here), a shared Region filter
-// (one control narrowing all three lanes together), and Filters (the
-// fame-score floor controls that replaced the old zoom-coupled Fame Tier
-// system, ADR 0003).
+// Always-visible alongside TimelineCanvas — Data Depth (the fame-score
+// floor controls that replaced the old zoom-coupled Fame Tier system, ADR
+// 0003), a shared Region filter (one control narrowing all three lanes
+// together), and People (its Occupation Domain pills doubling as a
+// click-to-toggle filter; Conflicts render in one flat color, not a
+// palette-worthy one, and Milestones' MILESTONE_CATEGORY_COLORS are out of
+// scope here).
 export function Sidebar({
   fameScoreValues,
   onFameScoreChange,
@@ -39,19 +39,19 @@ export function Sidebar({
   onToggleRegion,
 }: SidebarProps) {
   return (
-    <aside className={styles.sidebar} aria-label="Legend and filters">
+    <aside className={styles.sidebar} aria-label="Filters">
       <section className={styles.section}>
-        <h2 className={styles.heading}>Legend</h2>
-        <OccupationDomainFilters selectedDomains={selectedDomains} onToggleDomain={onToggleDomain} />
+        <h2 className={styles.heading}>Data Depth</h2>
+        <DataDepthSwitch values={fameScoreValues} onChange={onFameScoreChange} />
+        <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
       </section>
       <section className={styles.section}>
         <h2 className={styles.heading}>Region</h2>
         <RegionFilters selectedRegions={selectedRegions} onToggleRegion={onToggleRegion} />
       </section>
       <section className={styles.section}>
-        <h2 className={styles.heading}>Filters</h2>
-        <DataDepthSwitch values={fameScoreValues} onChange={onFameScoreChange} />
-        <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
+        <h2 className={styles.heading}>People</h2>
+        <OccupationDomainFilters selectedDomains={selectedDomains} onToggleDomain={onToggleDomain} />
       </section>
     </aside>
   );
