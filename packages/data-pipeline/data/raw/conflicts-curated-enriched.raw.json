@@ -3597,24 +3597,27 @@
       "endMonth": 5
     },
     {
-      "id": "Q79791",
-      "name": "Reconquista",
+      "id": "Q1552718",
+      "name": "Granada War",
       "category": "war",
-      "sitelinks": 91,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Reconquista",
+      "sitelinks": 34,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Granada_War",
       "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Reconquista",
-        "zh": "https://zh.wikipedia.org/wiki/%E6%94%B6%E5%BE%A9%E5%A4%B1%E5%9C%B0%E9%81%8B%E5%8B%95",
-        "es": "https://es.wikipedia.org/wiki/Reconquista",
-        "fr": "https://fr.wikipedia.org/wiki/Reconquista",
-        "de": "https://de.wikipedia.org/wiki/Reconquista",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%82%D9%88%D8%B7_%D8%A7%D9%84%D8%A3%D9%86%D8%AF%D9%84%D8%B3",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%BA%D0%BE%D0%BD%D0%BA%D0%B8%D1%81%D1%82%D0%B0"
+        "en": "https://en.wikipedia.org/wiki/Granada_War",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A0%BC%E6%8B%89%E7%BA%B3%E8%BE%BE%E6%88%98%E4%BA%89",
+        "es": "https://es.wikipedia.org/wiki/Guerra_de_Granada",
+        "fr": "https://fr.wikipedia.org/wiki/Guerre_de_Grenade",
+        "de": "https://de.wikipedia.org/wiki/Eroberung_des_K%C3%B6nigreiches_Granada",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%BA%D8%B1%D9%86%D8%A7%D8%B7%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D0%BD%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cantigas%20battle.jpg",
-      "tagline": "period in the history of the Iberian Peninsula",
-      "year": 733,
+      "countries": [
+        "Q217196",
+        "Q238445"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20Rendici%C3%B3n%20de%20Granada%20-%20Pradilla.jpg",
+      "tagline": "1482–1492 war",
+      "year": 1492,
       "endYear": 1492,
       "endMonth": 1
     },

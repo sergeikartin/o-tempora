@@ -28,7 +28,7 @@
       "name": "milestone label",
       "category": "one of meta.categories"
     },
-    "count": 232
+    "count": 233
   },
   "milestones": [
     {
@@ -439,11 +439,6 @@
     {
       "id": "Q172822",
       "name": "Hoover Dam",
-      "category": "infrastructure"
-    },
-    {
-      "id": "Q12501",
-      "name": "Great Wall of China",
       "category": "infrastructure"
     },
     {
@@ -902,6 +897,11 @@
       "category": "society-administration"
     },
     {
+      "id": "Q2345573",
+      "name": "Expulsion of the Moriscos",
+      "category": "society-administration"
+    },
+    {
       "id": "Q171375",
       "name": "Truman Doctrine",
       "category": "society-administration"
@@ -1144,6 +1144,11 @@
     {
       "id": "Q151060",
       "name": "Napoleonic Code",
+      "category": "law-jurisprudence"
+    },
+    {
+      "id": "Q1061030",
+      "name": "Alhambra Decree",
       "category": "law-jurisprudence"
     },
     {

@@ -634,12 +634,6 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F_COVID-19"
       },
       "countries": [
-        "Q159",
-        "Q183",
-        "Q184",
-        "Q189",
-        "Q191",
-        "Q211",
         "Q212",
         "Q213",
         "Q214",
@@ -766,7 +760,13 @@
         "Q142",
         "Q145",
         "Q148",
-        "Q155"
+        "Q155",
+        "Q159",
+        "Q183",
+        "Q184",
+        "Q189",
+        "Q191",
+        "Q211"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg"
     },
@@ -1803,28 +1803,6 @@
         "Q30"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hoover%20Dam%20and%20Black%20Canyon%20seen%20from%20the%20Mike%20O%27Callaghan%E2%80%93Pat%20Tillman%20Memorial%20Bridge%2C%20panorama%2C%20Arizona%E2%80%93Nevada.jpg"
-    },
-    {
-      "id": "Q12501",
-      "name": "Great Wall of China",
-      "category": "infrastructure",
-      "year": -700,
-      "tagline": "series of fortifications built along the historical border of China",
-      "sitelinks": 192,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Wall_of_China",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Great_Wall_of_China",
-        "zh": "https://zh.wikipedia.org/wiki/%E9%95%BF%E5%9F%8E",
-        "es": "https://es.wikipedia.org/wiki/Gran_Muralla_china",
-        "fr": "https://fr.wikipedia.org/wiki/Grande_Muraille",
-        "de": "https://de.wikipedia.org/wiki/Chinesische_Mauer",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%88%D8%B1_%D8%A7%D9%84%D8%B5%D9%8A%D9%86_%D8%A7%D9%84%D8%B9%D8%B8%D9%8A%D9%85",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0%D1%8F_%D0%9A%D0%B8%D1%82%D0%B0%D0%B9%D1%81%D0%BA%D0%B0%D1%8F_%D1%81%D1%82%D0%B5%D0%BD%D0%B0"
-      },
-      "countries": [
-        "Q148"
-      ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Great%20Wall%20of%20China%20at%20Jinshanling-edit.jpg"
     },
     {
       "id": "Q160464",
@@ -3730,6 +3708,29 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Partition%20of%20India%201947%20en.svg"
     },
     {
+      "id": "Q2345573",
+      "name": "Expulsion of the Moriscos",
+      "category": "society-administration",
+      "year": 1609,
+      "month": 4,
+      "endYear": 1614,
+      "tagline": "17th century expulsion of Moriscos from Spain",
+      "sitelinks": 24,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Expulsion_of_the_Moriscos",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Expulsion_of_the_Moriscos",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%A9%85%E9%80%90%E6%91%A9%E9%87%8C%E6%96%AF%E7%A7%91%E4%BA%BA",
+        "es": "https://es.wikipedia.org/wiki/Expulsi%C3%B3n_de_los_moriscos",
+        "fr": "https://fr.wikipedia.org/wiki/Expulsion_des_morisques_d%27Espagne",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B7%D8%B1%D8%AF_%D8%A7%D9%84%D9%85%D9%88%D8%B1%D9%8A%D8%B3%D9%83%D9%8A%D9%8A%D9%86_%D9%85%D9%86_%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D0%B3%D0%BD%D0%B0%D0%BD%D0%B8%D0%B5_%D0%BC%D0%BE%D1%80%D0%B8%D1%81%D0%BA%D0%BE%D0%B2"
+      },
+      "countries": [
+        "Q766543"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20Expulsi%C3%B3n%20en%20el%20Puerto%20de%20Denia.%20Vicente%20Mestre.jpg"
+    },
+    {
       "id": "Q171375",
       "name": "Truman Doctrine",
       "category": "society-administration",
@@ -4815,6 +4816,29 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Speyer%2C%20Historical%20Museum%20of%20the%20Palatinate%20-%20Code%20civil%20des%20Fran%C3%A7ais.jpg"
+    },
+    {
+      "id": "Q1061030",
+      "name": "Alhambra Decree",
+      "category": "law-jurisprudence",
+      "year": 1492,
+      "month": 4,
+      "tagline": "1492 decree expelling Jews from Spain",
+      "sitelinks": 43,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Alhambra_Decree",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Alhambra_Decree",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E7%BD%95%E5%B8%83%E6%8B%89%E6%B3%95%E4%BB%A4",
+        "es": "https://es.wikipedia.org/wiki/Edicto_de_Granada",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9cret_de_l%27Alhambra",
+        "de": "https://de.wikipedia.org/wiki/Alhambra-Edikt",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B1%D8%B3%D9%88%D9%85_%D8%A7%D9%84%D8%AD%D9%85%D8%B1%D8%A7%D8%A1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D1%8C%D0%B3%D0%B0%D0%BC%D0%B1%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D1%8D%D0%B4%D0%B8%D0%BA%D1%82"
+      },
+      "countries": [
+        "Q29"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alhambra%20Decree.jpg"
     },
     {
       "id": "Q48584",

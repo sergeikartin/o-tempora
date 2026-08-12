@@ -163,23 +163,6 @@
     }
   },
   {
-    "id": "Q12501",
-    "name": "Great Wall of China",
-    "category": "infrastructure",
-    "regionTags": [
-      "east-asia"
-    ],
-    "fameScore": 89,
-    "tagline": "series of fortifications built along the historical border of China",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Wall_of_China",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Great%20Wall%20of%20China%20at%20Jinshanling-edit.jpg",
-    "imageAttribution": "Severin.stalder, via Wikimedia Commons",
-    "description": "The Great Wall of China is a series of fortifications in China. They were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe. The first walls date to the 7th century BC; these were joined together in the Qin dynasty. Successive dynasties expanded the wall system; the best-known sections were built by the Ming dynasty (1368–1644).",
-    "at": {
-      "year": -700
-    }
-  },
-  {
     "id": "Q12138",
     "name": "Gregorian calendar",
     "category": "society-administration",
@@ -396,6 +379,30 @@
     "at": {
       "year": 1914,
       "month": 8
+    }
+  },
+  {
+    "id": "Q99717",
+    "name": "1989 Tiananmen Square protests and massacre",
+    "category": "social-movements",
+    "regionTags": [
+      "east-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "Chinese pro-democracy movement and subsequent massacre",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E8%92%B2%E5%BF%97%E5%BC%B719890510.jpg",
+    "imageAttribution": "蔡淑芳@sfchoi8964, via Wikimedia Commons",
+    "description": "Protests led by students and workers, known in China as the June Fourth Incident, were held in Tiananmen Square in Beijing, China, from 15 April to 4 June 1989. After weeks of unsuccessful attempts between the demonstrators and the Chinese government to find a peaceful resolution, the Chinese government initiated martial law in late May and deployed troops to occupy the square on the night of 3 June in what is referred to as the Tiananmen Square massacre. The events are sometimes called the '89 Democracy Movement, the Tiananmen Square Incident, or the Tiananmen uprising. The Chinese government terms the events the political turmoil between the spring and summer of 1989.",
+    "period": {
+      "start": {
+        "year": 1989,
+        "month": 4
+      },
+      "end": {
+        "year": 1989,
+        "month": 6
+      }
     }
   },
   {
@@ -2942,6 +2949,22 @@
     }
   },
   {
+    "id": "Q1192212",
+    "name": "Emancipation reform of 1861",
+    "category": "social-movements",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 68,
+    "tagline": "reform passed by Tsar Alexander II of Russia which effectively abolished serfdom throughout the Russian Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_reform_of_1861",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Reading%20of%20the%20Manifest%20%28Liberation%20of%20peasants%29%20-%20Kustodiev%2C%201907.jpg",
+    "description": "The emancipation reform of 1861 in Russia, also known as the Edict of Emancipation of Russia, was the first and most important of the liberal reforms enacted during the reign of Emperor Alexander II of Russia. The reform effectively abolished serfdom throughout the Russian Empire.",
+    "at": {
+      "year": 1861
+    }
+  },
+  {
     "id": "Q162684",
     "name": "Charité",
     "category": "medicine-health",
@@ -3082,6 +3105,37 @@
         "year": 1883,
         "month": 10
       }
+    }
+  },
+  {
+    "id": "Q300646",
+    "name": "A Vindication of the Rights of Woman",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "work by Mary Wollstonecraft",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/A_Vindication_of_the_Rights_of_Woman",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vindication1b.jpg",
+    "description": "A Vindication of the Rights of Woman: with Strictures on Political and Moral Subjects is a 1792 essay by British philosopher and women's rights advocate Mary Wollstonecraft. It is considered a feminist or, more precisely, proto-feminist piece, and one of the pioneering works in the tradition now known as feminist philosophy.",
+    "at": {
+      "year": 1792
+    }
+  },
+  {
+    "id": "Q1061030",
+    "name": "Alhambra Decree",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 67,
+    "tagline": "1492 decree expelling Jews from Spain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alhambra_Decree",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alhambra%20Decree.jpg",
+    "description": "The Alhambra Decree was an edict issued on 31 March 1492 by the joint Catholic Monarchs of Spain, Isabella I of Castile and Ferdinand II of Aragon, ordering the expulsion of unconverted Jews from the Crowns of Castile and Aragon and its territories and possessions by 31 July of that year. Its primary purpose was to minimize the influence of the remaining Jews on Spain's large converso New Christian population, converted from Judaism, to minimize the possibility that the latter and their descendants would be able to secretly practice their former faith.",
+    "at": {
+      "year": 1492,
+      "month": 4
     }
   },
   {
@@ -3359,6 +3413,28 @@
     }
   },
   {
+    "id": "Q2736155",
+    "name": "Seneca Falls Convention",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "1848 women's rights convention in New York",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Seneca_Falls_Convention",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Woman%27s%20Rights%20Convention.jpg",
+    "imageAttribution": "https://pbs.twimg.com/media/CKXzBSKWwAEzQT8.jpg, via Wikimedia Commons",
+    "description": "The Seneca Falls Convention was the first women's rights convention. Its organizers advertised it as \"a convention to discuss the social, civil, and religious condition and rights of woman\". Held in the Wesleyan Chapel of the town of Seneca Falls, New York, it spanned two days over July 19–20, 1848. Attracting widespread attention, it was soon followed by other women's rights conventions, including the Rochester Women's Rights Convention in Rochester, New York, two weeks later. In 1850 the first in a series of annual National Women's Rights Conventions met in Worcester, Massachusetts.",
+    "period": {
+      "start": {
+        "year": 1848,
+        "month": 7
+      },
+      "end": {
+        "year": 1848,
+        "month": 7
+      }
+    }
+  },
+  {
     "id": "Q842363",
     "name": "Edwin Smith Papyrus",
     "category": "medicine-health",
@@ -3446,20 +3522,6 @@
     }
   },
   {
-    "id": "Q300646",
-    "name": "A Vindication of the Rights of Woman",
-    "category": "social-movements",
-    "regionTags": [],
-    "fameScore": 63,
-    "tagline": "work by Mary Wollstonecraft",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/A_Vindication_of_the_Rights_of_Woman",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vindication1b.jpg",
-    "description": "A Vindication of the Rights of Woman: with Strictures on Political and Moral Subjects is a 1792 essay by British philosopher and women's rights advocate Mary Wollstonecraft. It is considered a feminist or, more precisely, proto-feminist piece, and one of the pioneering works in the tradition now known as feminist philosophy.",
-    "at": {
-      "year": 1792
-    }
-  },
-  {
     "id": "Q1261053",
     "name": "Woodblock printing",
     "category": "communication",
@@ -3519,6 +3581,28 @@
     "description": "The atmospheric engine was invented by Thomas Newcomen in 1712, and is sometimes referred to as the Newcomen fire engine or Newcomen engine. The engine was operated by condensing steam being drawn into the cylinder, thereby creating a partial vacuum which allowed atmospheric pressure to push the piston into the cylinder. It is significant as the first practical device to harness steam to produce mechanical work. Newcomen engines were used throughout Britain and Europe, principally to pump water out of mines. Hundreds were constructed during the 18th century. James Watt's later engine design was an improved version of the Newcomen engine that roughly doubled fuel efficiency. Many atmospheric engines were converted to the Watt design. As a result, Watt is today better known than Newcomen in relation to the origin of the steam engine.",
     "at": {
       "year": 1712
+    }
+  },
+  {
+    "id": "Q2345573",
+    "name": "Expulsion of the Moriscos",
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 61,
+    "tagline": "17th century expulsion of Moriscos from Spain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Expulsion_of_the_Moriscos",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20Expulsi%C3%B3n%20en%20el%20Puerto%20de%20Denia.%20Vicente%20Mestre.jpg",
+    "description": "The Expulsion of the Moriscos was decreed by King Philip III of Spain on April 9, 1609. The Moriscos were descendants of Spain's Muslim population who had been forced to convert to Christianity. Since the Spanish were fighting wars in the Americas, feeling threatened by the Ottomans raiding along the Spanish coast and by two Morisco revolts in the century since Islam was outlawed in Spain, it seems that the expulsions were a reaction to an internal problem of the stretched Spanish Empire. Between 1609 and 1614, the Crown systematically expelled Moriscos through a number of decrees affecting Spain's various kingdoms, with varying levels of success. Between 1492 and 1610, about three million Muslims left or were expelled from Spain.",
+    "period": {
+      "start": {
+        "year": 1609,
+        "month": 4
+      },
+      "end": {
+        "year": 1614
+      }
     }
   },
   {
@@ -3657,68 +3741,6 @@
     "at": {
       "year": 1997,
       "month": 5
-    }
-  },
-  {
-    "id": "Q99717",
-    "name": "1989 Tiananmen Square protests and massacre",
-    "category": "social-movements",
-    "regionTags": [
-      "east-asia"
-    ],
-    "fameScore": 46,
-    "tagline": "Chinese pro-democracy movement and subsequent massacre",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E8%92%B2%E5%BF%97%E5%BC%B719890510.jpg",
-    "imageAttribution": "蔡淑芳@sfchoi8964, via Wikimedia Commons",
-    "description": "Protests led by students and workers, known in China as the June Fourth Incident, were held in Tiananmen Square in Beijing, China, from 15 April to 4 June 1989. After weeks of unsuccessful attempts between the demonstrators and the Chinese government to find a peaceful resolution, the Chinese government initiated martial law in late May and deployed troops to occupy the square on the night of 3 June in what is referred to as the Tiananmen Square massacre. The events are sometimes called the '89 Democracy Movement, the Tiananmen Square Incident, or the Tiananmen uprising. The Chinese government terms the events the political turmoil between the spring and summer of 1989.",
-    "period": {
-      "start": {
-        "year": 1989,
-        "month": 4
-      },
-      "end": {
-        "year": 1989,
-        "month": 6
-      }
-    }
-  },
-  {
-    "id": "Q1192212",
-    "name": "Emancipation reform of 1861",
-    "category": "social-movements",
-    "regionTags": [
-      "europe"
-    ],
-    "fameScore": 37,
-    "tagline": "reform passed by Tsar Alexander II of Russia which effectively abolished serfdom throughout the Russian Empire",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_reform_of_1861",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Reading%20of%20the%20Manifest%20%28Liberation%20of%20peasants%29%20-%20Kustodiev%2C%201907.jpg",
-    "description": "The emancipation reform of 1861 in Russia, also known as the Edict of Emancipation of Russia, was the first and most important of the liberal reforms enacted during the reign of Emperor Alexander II of Russia. The reform effectively abolished serfdom throughout the Russian Empire.",
-    "at": {
-      "year": 1861
-    }
-  },
-  {
-    "id": "Q2736155",
-    "name": "Seneca Falls Convention",
-    "category": "social-movements",
-    "regionTags": [],
-    "fameScore": 36,
-    "tagline": "1848 women's rights convention in New York",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Seneca_Falls_Convention",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Woman%27s%20Rights%20Convention.jpg",
-    "imageAttribution": "https://pbs.twimg.com/media/CKXzBSKWwAEzQT8.jpg, via Wikimedia Commons",
-    "description": "The Seneca Falls Convention was the first women's rights convention. Its organizers advertised it as \"a convention to discuss the social, civil, and religious condition and rights of woman\". Held in the Wesleyan Chapel of the town of Seneca Falls, New York, it spanned two days over July 19–20, 1848. Attracting widespread attention, it was soon followed by other women's rights conventions, including the Rochester Women's Rights Convention in Rochester, New York, two weeks later. In 1850 the first in a series of annual National Women's Rights Conventions met in Worcester, Massachusetts.",
-    "period": {
-      "start": {
-        "year": 1848,
-        "month": 7
-      },
-      "end": {
-        "year": 1848,
-        "month": 7
-      }
     }
   }
 ]
