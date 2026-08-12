@@ -10,8 +10,8 @@
   overflow: hidden;
   /* Mirrors color-bg-surface; real token wiring is ticket 05 (see
      TimelineCanvas.module.css's sibling comment). */
-  background-color: #fbf8f0;
-  border-top: 1px solid #ded3b8; /* color-border-subtle */
+  background-color: #fbf6e9;
+  border-top: 1px solid #e0d3ac; /* color-border-subtle */
   cursor: pointer;
 }
 
@@ -22,16 +22,16 @@
 }
 
 .baseline {
-  stroke: #ded3b8; /* color-border-subtle */
+  stroke: #e0d3ac; /* color-border-subtle */
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
 
 /* People's Row Depth, mirrored above the baseline. */
 .peopleArea {
-  fill: #b8842e; /* color-accent-selected */
+  fill: #8a2a1a; /* color-accent-selected */
   fill-opacity: 0.55;
-  stroke: #b8842e;
+  stroke: #8a2a1a;
   stroke-opacity: 0.85;
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
@@ -42,9 +42,9 @@
    already read as that lane's dominant visual identity next to Milestones'
    own multi-color palette. */
 .eventsArea {
-  fill: #bf696b; /* color-conflict */
+  fill: #8c2d2b; /* color-conflict */
   fill-opacity: 0.55;
-  stroke: #bf696b;
+  stroke: #8c2d2b;
   stroke-opacity: 0.85;
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
@@ -59,19 +59,19 @@
   top: 0;
   bottom: 0;
   min-width: 24px; /* mirrors MIN_VIEWPORT_RECT_PX in MountainProfile.tsx */
-  background-color: rgba(184, 132, 46, 0.18); /* color-accent-selected, low alpha */
-  border-left: 1px solid #b8842e; /* color-accent-selected */
-  border-right: 1px solid #b8842e;
+  background-color: rgba(138, 42, 26, 0.18); /* color-accent-selected, low alpha */
+  border-left: 1px solid #8a2a1a; /* color-accent-selected */
+  border-right: 1px solid #8a2a1a;
   cursor: grab;
 }
 
 .viewportRect:hover {
-  background-color: rgba(184, 132, 46, 0.28);
+  background-color: rgba(138, 42, 26, 0.28);
 }
 
 .viewportRect.dragging {
   cursor: grabbing;
-  background-color: rgba(184, 132, 46, 0.28);
+  background-color: rgba(138, 42, 26, 0.28);
 }
 
 /* Hover tooltip — recovers the exact date/Row-Depth numbers the log scale
@@ -87,13 +87,14 @@
   margin-bottom: 4px;
   padding: 4px 8px;
   border-radius: 6px; /* radius-sm */
-  background-color: #fbf8f0; /* color-bg-surface */
-  border: 1px solid #ded3b8; /* color-border-subtle */
-  box-shadow: 0 2px 6px rgba(46, 43, 34, 0.15);
-  font-family: 'IBM Plex Mono', monospace;
+  background-color: #fbf6e9; /* color-bg-surface */
+  border: 1px solid #e0d3ac; /* color-border-subtle */
+  box-shadow: 0 2px 6px rgba(36, 26, 16, 0.15);
+  font-family: Archivo, sans-serif;
+  font-variant-numeric: tabular-nums;
   font-size: 11px;
   line-height: 1.4;
-  color: #2e2b22; /* color-text-primary */
+  color: #241a10; /* color-text-primary */
   white-space: nowrap;
   pointer-events: none;
   z-index: 2;
@@ -104,5 +105,5 @@
 }
 
 .tooltipRow {
-  color: #83795f; /* color-text-secondary */
+  color: #6b6046; /* color-text-secondary */
 }

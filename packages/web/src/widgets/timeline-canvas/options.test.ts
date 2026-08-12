@@ -99,9 +99,14 @@ test('CONFLICT_COLOR is a single flat color, distinct from every MILESTONE_CATEG
   expect(milestoneValues).not.toContain(CONFLICT_COLOR);
 });
 
-test('MILESTONE_CATEGORY_COLORS has one entry per MilestoneCategory, no duplicate hex values', () => {
+test('MILESTONE_CATEGORY_COLORS has one entry per MilestoneCategory, folded into exactly 3 group hexes', () => {
   const values = MILESTONE_CATEGORIES.map((category) => MILESTONE_CATEGORY_COLORS[category]);
   expect(values).toHaveLength(MILESTONE_CATEGORIES.length);
   expect(values.every(Boolean)).toBe(true);
-  expect(new Set(values).size).toBe(values.length);
+  // "Ledger & Ink" folds the 20-category taxonomy into 3 legible color
+  // groups (Knowledge & Culture / Technology & Industry / Society &
+  // Governance) — duplicate hex across categories is the intended design,
+  // not an accident, so this asserts the fold lands on exactly 3 distinct
+  // hexes rather than the old one-hue-per-category invariant.
+  expect(new Set(values).size).toBe(3);
 });

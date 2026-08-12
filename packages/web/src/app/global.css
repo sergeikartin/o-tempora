@@ -1,29 +1,29 @@
-/* Color/radius tokens from docs/design-tokens.md, wired as CSS custom
-   properties. The Occupation Domain palette is wired here too (used by both
-   the Sidebar legend and the D3 People-lane's fill/stroke attrs — SVG
-   presentation attributes resolve var() same as any CSS property). The
-   Conflict Category and Milestone Category palettes still provisionally
-   inline hex in widgets/timeline-canvas/options.ts pending ticket 05 — see
-   docs/code-conventions.md's Styling section. */
+/* Color/radius tokens from docs/design-tokens.md ("Ledger & Ink"), wired as
+   CSS custom properties. The Occupation Domain palette is wired here too
+   (used by both the Sidebar legend and the D3 People-lane's fill/stroke
+   attrs — SVG presentation attributes resolve var() same as any CSS
+   property). The Conflict Color and Milestone Category palette still
+   provisionally inline hex in widgets/timeline-canvas/options.ts pending
+   ticket 05 — see docs/code-conventions.md's Styling section. */
 :root {
-  --color-bg-base: #f3eedd;
-  --color-bg-surface: #fbf8f0;
+  --color-bg-base: #f2e9d2;
+  --color-bg-surface: #fbf6e9;
   --color-bg-surface-raised: #ffffff;
-  --color-border-subtle: #ded3b8;
-  --color-border-strong: #c9b98f;
-  --color-text-primary: #2e2b22;
-  --color-text-secondary: #83795f;
-  --color-accent-selected: #b8842e;
-  --color-focus-ring: #8c5a1e;
+  --color-border-subtle: #e0d3ac;
+  --color-border-strong: #c7b383;
+  --color-text-primary: #241a10;
+  --color-text-secondary: #6b6046;
+  --color-accent-selected: #8a2a1a;
+  --color-focus-ring: #6e2013;
 
-  --color-domain-institutions: #b12d11;
-  --color-domain-arts: #d28629;
-  --color-domain-business-law: #4f680a;
-  --color-domain-public-figure: #67af8c;
-  --color-domain-science-technology: #0e5e5b;
-  --color-domain-exploration: #4c5ed7;
-  --color-domain-humanities: #732945;
-  --color-domain-sports: #bb3b57;
+  --color-domain-institutions: #ba534e;
+  --color-domain-arts: #bd6545;
+  --color-domain-business-law: #347830;
+  --color-domain-public-figure: #bb883a;
+  --color-domain-science-technology: #3f936e;
+  --color-domain-exploration: #3e70b0;
+  --color-domain-humanities: #4e4993;
+  --color-domain-sports: #ba6f8a;
 
   --radius-full: 9999px;
   --radius-sm: 6px;
@@ -43,10 +43,12 @@ body,
   height: 100%;
 }
 
-/* docs/design-tokens.md's Typography table: Inter for all UI chrome and
-   entry labels. Set once here so sidebar/detail-panel (which don't declare
-   their own font-family) match widgets/timeline-canvas's lanes instead of
-   falling back to the browser's default serif. */
+/* docs/design-tokens.md's Typography table: Archivo for all UI chrome,
+   entry labels, and data (year ranges use font-variant-numeric:
+   tabular-nums where they're set, not a separate mono face). Set once here
+   so sidebar/detail-panel (which don't declare their own font-family) match
+   widgets/timeline-canvas's lanes instead of falling back to the browser's
+   default serif. */
 body {
-  font-family: Inter, sans-serif;
+  font-family: Archivo, sans-serif;
 }

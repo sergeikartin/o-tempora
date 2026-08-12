@@ -47,7 +47,7 @@
   scrollbar-width: none; /* Firefox */
   cursor: grab;
   /* Mirrors color-bg-base; real token wiring is ticket 05. */
-  background-color: #f3eedd;
+  background-color: #f2e9d2;
 }
 
 .scrollContainer::-webkit-scrollbar {
@@ -81,7 +81,7 @@
   background-size: var(--decade-gridline-px) 100%;
   /* Mirrors a faint color-border tone, barely distinct from the page
      background; inlined pending ticket 05. */
-  background-image: linear-gradient(to right, #e5dbc0 0, #e5dbc0 1px, transparent 1px);
+  background-image: linear-gradient(to right, #e9debf 0, #e9debf 1px, transparent 1px);
 }
 
 /* Active mouse-drag pan (TimelineCanvas.tsx's pointer handlers) — grabbing

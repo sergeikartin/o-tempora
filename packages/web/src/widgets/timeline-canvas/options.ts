@@ -135,44 +135,55 @@ export function personLaneHeight(rowCount: number): number {
 // Conflicts+Milestones lane needs every Conflict to read as one visual
 // group at a glance (Milestones keep their own multi-color category
 // palette below), so the old per-category Conflict Category Palette is
-// retired in favor of this single flat color. Reuses the old `war` hex, the
-// warmest/most-recognizable entry in that retired palette. Kept far enough
-// from every MILESTONE_CATEGORY_COLORS hue below (all greens/blues/violets)
-// that color alone still tells a Conflict apart from a Milestone.
-export const CONFLICT_COLOR = '#BF696B';
+// retired in favor of this single flat color. "Ledger & Ink" rhymes this
+// with the People-domain Institutions hue (--color-domain-institutions),
+// stepped darker — Conflict deepens state power the same way each
+// MILESTONE_CATEGORY_COLORS group below deepens its own People-domain
+// counterpart. Validated (OKLCH lightness/chroma bounds, CVD separation
+// under simulated protanopia/deuteranopia, a normal-vision floor, contrast
+// vs. the parchment surface) against the 3 milestone-group hexes below as
+// one 4-color set, all pairs, not just neighbors — see docs/design-tokens.md.
+export const CONFLICT_COLOR = '#8C2D2B';
 
-// Milestones' own palette, keyed on MilestoneCategory (disjoint
-// from Conflicts' ConflictCategory, which no longer drives a color — see
-// CONFLICT_COLOR above). Locked with the user via
-// .scratch/events-inventions-curated-source/issues/01-discovery-category-color-palette.md:
-// hue-optimized against all 15 existing People/Domain + Conflicts/ConflictCategory
-// colors (min ~11° hue separation from everything on screen) as they stood
-// at the time — matched to the same pastel S/L family as the rest of the
-// app. The 10 entries below `exploration` were added later (Milestones
-// merge/taxonomy-expansion) at the same S/L, hue-fit into the gaps left by
-// the original 10 plus the People/Conflict palette (still ~10-13° minimum
-// separation from every other color on screen).
+// Milestones' own palette. MilestoneCategory keeps its full 20-value
+// taxonomy for filtering/labels (disjoint from Conflicts' ConflictCategory,
+// which no longer drives a color — see CONFLICT_COLOR above), but color
+// folds every category into 3 legible groups plus the flat Conflict red —
+// 20 near-distinguishable hues at ~11° hue separation was below any
+// CVD-safe spacing and more colors than a legend can hold anyway. Each
+// group rhymes with (is a darker, richer step of) the People-domain hue its
+// content actually echoes, so the color language is learned once: Knowledge
+// & Culture deepens Humanities, Technology & Industry deepens Science &
+// Technology, Society & Governance deepens Public Figure. See
+// docs/design-tokens.md for the validation report and the full category ->
+// group mapping.
+const MILESTONE_KNOWLEDGE_CULTURE = '#4B4597';
+const MILESTONE_TECHNOLOGY_INDUSTRY = '#008456';
+const MILESTONE_SOCIETY_GOVERNANCE = '#BC8118';
+
 export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = {
-  'energy-industry': '#C9BF5E',
-  'food-agriculture': '#B1C987',
-  infrastructure: '#83B95B',
-  'medicine-health': '#72B67E',
-  'science-theory': '#70BCC2',
-  communication: '#8099C6',
-  transportation: '#8D82C4',
-  'society-administration': '#9D6DB0',
-  'everyday-technology': '#C893C8',
-  exploration: '#C072AB',
-  'culture-arts': '#C08E72',
-  'religion-mythology': '#B9C072',
-  'environment-geology': '#84C072',
-  'commerce-finance': '#74C072',
-  'social-movements': '#72C0AA',
-  'sports-entertainment': '#72ABC0',
-  'philosophy-education': '#729DC0',
-  'law-jurisprudence': '#8D72C0',
-  'archaeology-anthropology': '#9C72C0',
-  'architecture-design': '#C0729E',
+  'science-theory': MILESTONE_KNOWLEDGE_CULTURE,
+  'philosophy-education': MILESTONE_KNOWLEDGE_CULTURE,
+  'culture-arts': MILESTONE_KNOWLEDGE_CULTURE,
+  'religion-mythology': MILESTONE_KNOWLEDGE_CULTURE,
+  'archaeology-anthropology': MILESTONE_KNOWLEDGE_CULTURE,
+
+  'medicine-health': MILESTONE_TECHNOLOGY_INDUSTRY,
+  communication: MILESTONE_TECHNOLOGY_INDUSTRY,
+  transportation: MILESTONE_TECHNOLOGY_INDUSTRY,
+  infrastructure: MILESTONE_TECHNOLOGY_INDUSTRY,
+  'everyday-technology': MILESTONE_TECHNOLOGY_INDUSTRY,
+  'energy-industry': MILESTONE_TECHNOLOGY_INDUSTRY,
+  exploration: MILESTONE_TECHNOLOGY_INDUSTRY,
+  'architecture-design': MILESTONE_TECHNOLOGY_INDUSTRY,
+  'environment-geology': MILESTONE_TECHNOLOGY_INDUSTRY,
+
+  'food-agriculture': MILESTONE_SOCIETY_GOVERNANCE,
+  'society-administration': MILESTONE_SOCIETY_GOVERNANCE,
+  'commerce-finance': MILESTONE_SOCIETY_GOVERNANCE,
+  'social-movements': MILESTONE_SOCIETY_GOVERNANCE,
+  'sports-entertainment': MILESTONE_SOCIETY_GOVERNANCE,
+  'law-jurisprudence': MILESTONE_SOCIETY_GOVERNANCE,
 };
 
 const MIN_YEAR = PAN_MIN_DATE.year;
