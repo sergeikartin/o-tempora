@@ -1,26 +1,70 @@
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, vi, afterEach } from 'vitest';
 import { Sidebar } from './Sidebar';
-import { OCCUPATION_DOMAINS } from '../../../shared/types';
+import { OCCUPATION_DOMAINS, REGIONS } from '../../../shared/types';
 
 afterEach(cleanup);
 
 const fameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
 
-test('renders one Legend pill per OccupationDomain', () => {
-  const { container } = render(
-    <Sidebar fameScoreValues={fameScoreValues} onFameScoreChange={vi.fn()} />,
-  );
+type SidebarProps = Parameters<typeof Sidebar>[0];
 
-  const pills = container.querySelectorAll('li');
-  expect(pills).toHaveLength(OCCUPATION_DOMAINS.length);
-  expect(container.textContent).toContain('Science & Technology');
+function renderSidebar(overrides: Partial<SidebarProps> = {}) {
+  return render(
+    <Sidebar
+      fameScoreValues={fameScoreValues}
+      onFameScoreChange={vi.fn()}
+      selectedDomains={[]}
+      onToggleDomain={vi.fn()}
+      selectedRegions={[]}
+      onToggleRegion={vi.fn()}
+      {...overrides}
+    />,
+  );
+}
+
+test('renders one Legend pill per OccupationDomain', () => {
+  const { getByRole } = renderSidebar();
+
+  const legend = getByRole('heading', { name: 'Legend' }).closest('section');
+  expect(legend?.querySelectorAll('li')).toHaveLength(OCCUPATION_DOMAINS.length);
+  expect(legend?.textContent).toContain('Science & Technology');
 });
 
 test('renders the fame-score filter inputs, pre-filled with the given values', () => {
-  const { getByLabelText } = render(
-    <Sidebar fameScoreValues={fameScoreValues} onFameScoreChange={vi.fn()} />,
-  );
+  const { getByLabelText } = renderSidebar();
 
   expect((getByLabelText('Minimum fame score for People') as HTMLInputElement).value).toBe('90');
+});
+
+test('renders the Data Depth switch, showing Curated active for the default values', () => {
+  const { getByRole } = renderSidebar({ fameScoreValues: { people: 90, conflicts: 75, milestones: 75 } });
+
+  expect(getByRole('button', { name: 'Curated' }).getAttribute('aria-pressed')).toBe('true');
+});
+
+test('clicking a Legend pill calls onToggleDomain with that domain', () => {
+  const onToggleDomain = vi.fn();
+  const { getByLabelText } = renderSidebar({ onToggleDomain });
+
+  fireEvent.click(getByLabelText('Filter by Arts'));
+
+  expect(onToggleDomain).toHaveBeenCalledWith('arts');
+});
+
+test('renders one Region pill per Region', () => {
+  const { getByRole } = renderSidebar();
+
+  const region = getByRole('heading', { name: 'Region' }).closest('section');
+  expect(region?.querySelectorAll('li')).toHaveLength(REGIONS.length);
+  expect(region?.textContent).toContain('Middle East');
+});
+
+test('clicking a Region pill calls onToggleRegion with that region', () => {
+  const onToggleRegion = vi.fn();
+  const { getByLabelText } = renderSidebar({ onToggleRegion });
+
+  fireEvent.click(getByLabelText('Filter by Middle East'));
+
+  expect(onToggleRegion).toHaveBeenCalledWith('middle-east');
 });

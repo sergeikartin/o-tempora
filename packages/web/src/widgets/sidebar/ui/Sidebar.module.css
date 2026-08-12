@@ -25,31 +25,3 @@
   color: var(--color-text-secondary);
 }
 
-.legend {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* Pill-shaped chip, visual only for now (no click handler) — same shape a
-   future click-to-filter affordance would reuse, so that follow-on is a
-   cheap addition rather than a restyle. */
-.pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: var(--color-bg-surface-raised);
-  border: 1px solid var(--color-border-subtle);
-  font-size: 12px;
-  color: var(--color-text-primary);
-}
-
-.swatch {
-  flex: 0 0 auto;
-  width: 10px;
-  height: 10px;
-  border-radius: var(--radius-full);
-}

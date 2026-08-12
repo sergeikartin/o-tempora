@@ -7,8 +7,8 @@ import {
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
 } from 'react';
-import type { Milestone, Person, ConflictEntry } from '../../shared/types';
-import { DEFAULT_VIEWPORT_START } from '../../shared/config';
+import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
+import { DEFAULT_VIEWPORT_START, UN_REGION_TO_REGION } from '../../shared/config';
 import type { FameScoreValues } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
@@ -22,7 +22,7 @@ import {
   zoomIn as computeZoomIn,
   zoomOut as computeZoomOut,
 } from './options';
-import { filterByFameScore } from './map-to-items';
+import { filterByFameScore, filterByOccupationDomain, filterByRegion } from './map-to-items';
 import { PeopleLane } from './PeopleLane';
 import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
 import { YearAxis } from './YearAxis';
@@ -41,6 +41,12 @@ interface TimelineCanvasProps {
   // Sidebar-set fame-score floors (ADR 0003) — zoom no longer drives entity
   // density, so this is a plain prop, not derived from pixelsPerYear.
   fameScoreValues: FameScoreValues;
+  // People-only Occupation Domain filter (grill-with-docs session
+  // 2026-08-12) — empty means unfiltered.
+  selectedDomains: OccupationDomain[];
+  // Shared Region filter, one control across all three lanes (grill-with-
+  // docs session 2026-08-12) — empty means unfiltered.
+  selectedRegions: Region[];
   // Reports a click on any lane's mark, resolved via one delegated listener
   // below rather than three separate per-lane click handlers (dynamic-
   // tooltips spec §2's click-wiring architecture) — the caller (App.tsx)
@@ -49,7 +55,15 @@ interface TimelineCanvasProps {
   onEntityClick: (ref: SelectedEntityRef) => void;
 }
 
-export function TimelineCanvas({ people, conflicts, milestones, fameScoreValues, onEntityClick }: TimelineCanvasProps) {
+export function TimelineCanvas({
+  people,
+  conflicts,
+  milestones,
+  fameScoreValues,
+  selectedDomains,
+  selectedRegions,
+  onEntityClick,
+}: TimelineCanvasProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   // People and Conflicts+Milestones are `position: sticky; left: 0` (see their CSS) so
   // each one's own vertical scrollbar stays docked to the viewport's right
@@ -136,16 +150,25 @@ export function TimelineCanvas({ people, conflicts, milestones, fameScoreValues,
     '--decade-gridline-offset-px': `${pixelsPerYear * DECADE_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
   const filteredPeople = useMemo(
-    () => filterByFameScore(people, fameScoreValues.people),
-    [people, fameScoreValues.people],
+    () =>
+      filterByRegion(
+        filterByOccupationDomain(filterByFameScore(people, fameScoreValues.people), selectedDomains),
+        selectedRegions,
+        // Person's regionTags is the finer 22-value UnRegion, not Region —
+        // translate to the shared 6-value scale at filter time (see
+        // shared/config/region.ts's UN_REGION_TO_REGION).
+        (person) => person.regionTags.map((subRegion) => UN_REGION_TO_REGION[subRegion]),
+      ),
+    [people, fameScoreValues.people, selectedDomains, selectedRegions],
   );
   const filteredConflicts = useMemo(
-    () => filterByFameScore(conflicts, fameScoreValues.conflicts),
-    [conflicts, fameScoreValues.conflicts],
+    () => filterByRegion(filterByFameScore(conflicts, fameScoreValues.conflicts), selectedRegions, (entry) => entry.regionTags),
+    [conflicts, fameScoreValues.conflicts, selectedRegions],
   );
   const filteredMilestones = useMemo(
-    () => filterByFameScore(milestones, fameScoreValues.milestones),
-    [milestones, fameScoreValues.milestones],
+    () =>
+      filterByRegion(filterByFameScore(milestones, fameScoreValues.milestones), selectedRegions, (milestone) => milestone.regionTags),
+    [milestones, fameScoreValues.milestones, selectedRegions],
   );
 
   // Fame-priority row packing (assignRows) puts the most important rows

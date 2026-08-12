@@ -4,6 +4,8 @@ import conflictsDataRaw from '@same-sky/shared-types/src/data/conflicts.json';
 import milestonesDataRaw from '@same-sky/shared-types/src/data/milestones.json';
 import type { Milestone, Person, ConflictEntry } from '../shared/types';
 import { useFameScoreFilters } from '../features/filter-by-fame-score';
+import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
+import { useRegionFilter } from '../features/filter-by-region';
 import { useSelectedEntity } from '../features/select-timeline-entity';
 import { TimelineCanvas } from '../widgets/timeline-canvas';
 import { Sidebar } from '../widgets/sidebar';
@@ -16,6 +18,8 @@ const milestonesData = milestonesDataRaw as Milestone[];
 
 export function App() {
   const { values: fameScoreValues, setValue: setFameScoreValue } = useFameScoreFilters();
+  const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
+  const { selectedRegions, toggleRegion } = useRegionFilter();
   const { selected: selectedRef, select: selectEntity, clear: closeDetailPanel } = useSelectedEntity();
 
   // Looks the clicked id up in the already-in-memory datasets (dynamic-
@@ -40,12 +44,21 @@ export function App() {
     <>
       <h1 className={styles.srOnly}>World History Timeline</h1>
       <div className={styles.layout}>
-        <Sidebar fameScoreValues={fameScoreValues} onFameScoreChange={setFameScoreValue} />
+        <Sidebar
+          fameScoreValues={fameScoreValues}
+          onFameScoreChange={setFameScoreValue}
+          selectedDomains={selectedDomains}
+          onToggleDomain={toggleDomain}
+          selectedRegions={selectedRegions}
+          onToggleRegion={toggleRegion}
+        />
         <TimelineCanvas
           people={peopleData}
           conflicts={conflictsData}
           milestones={milestonesData}
           fameScoreValues={fameScoreValues}
+          selectedDomains={selectedDomains}
+          selectedRegions={selectedRegions}
           onEntityClick={selectEntity}
         />
         <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />

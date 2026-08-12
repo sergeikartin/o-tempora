@@ -7,6 +7,7 @@ import type {
   Period,
   Person,
   ConflictEntry,
+  Region,
 } from '../../shared/types';
 import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
 import { MIN_ROW_GAP_YEARS, POINT_RADIUS, estimateLabelWidthPx } from './options';
@@ -31,6 +32,37 @@ function ensureMinimumRangeWidthYears(startYear: number, endYear: number): numbe
 // just a `fameScore >=` cutoff on the same already-sorted-by-tier data.
 export function filterByFameScore<T extends { fameScore: number }>(items: T[], minFameScore: number): T[] {
   return items.filter((item) => item.fameScore >= minFameScore);
+}
+
+// People-only Occupation Domain filter (sidebar Legend pills doubling as a
+// filter, grill-with-docs session 2026-08-12). Multi-select OR: an item
+// matches if its domain is any of the selected ones. An empty selection
+// means unfiltered, not "match nothing" — mirrors filterByFameScore's floor
+// of 0 always passing everything.
+export function filterByOccupationDomain<T extends { occupationDomain: OccupationDomain }>(
+  items: T[],
+  selectedDomains: OccupationDomain[],
+): T[] {
+  if (selectedDomains.length === 0) return items;
+  return items.filter((item) => selectedDomains.includes(item.occupationDomain));
+}
+
+// Shared Region filter, one control across all three lanes (grill-with-docs
+// session 2026-08-12), applied to the raw per-lane datasets (Person/
+// ConflictEntry/Milestone) alongside filterByFameScore/
+// filterByOccupationDomain above — not the mapped *Item render shapes,
+// which nothing downstream needs region tags on. Takes a `regionsOf`
+// accessor rather than requiring `regionTags: Region[]` directly on T,
+// since Conflicts/Milestones' native regionTags is already Region[] but
+// People's is the finer UnRegion[] (see shared/config/region.ts's
+// UN_REGION_TO_REGION) — callers resolve that difference, this stays
+// region-shape-agnostic. Multi-select OR, empty selection means unfiltered.
+// An item with no matching region tags at all never matches a non-empty
+// selection, so it's excluded whenever any region filter is active — see
+// CONTEXT.md's Region entry.
+export function filterByRegion<T>(items: T[], selectedRegions: Region[], regionsOf: (item: T) => Region[]): T[] {
+  if (selectedRegions.length === 0) return items;
+  return items.filter((item) => regionsOf(item).some((region) => selectedRegions.includes(region)));
 }
 
 export interface PersonItem {
