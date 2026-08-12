@@ -114,8 +114,10 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
   }, [layout]);
 
   return (
-    <svg ref={svgRef} width={totalWidth} height={totalHeight} className={styles.svg}>
-      <g className="people" />
-    </svg>
+    <div className={styles.bottomAlign}>
+      <svg ref={svgRef} width={totalWidth} height={totalHeight} className={styles.svg}>
+        <g className="people" />
+      </svg>
+    </div>
   );
 }

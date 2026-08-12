@@ -2,6 +2,32 @@
   display: block;
 }
 
+/* Row 0 (fame-priority, see options.ts's personLabelYForRow) sits at the
+   *bottom* of the svg above — the axis-adjacent edge — but the svg shrinks
+   to fit its own row count (personLaneHeight), and .peopleLane
+   (TimelineCanvas.module.css) is a plain overflow-y: auto block box, so
+   ordinary top-aligned flow would float a shrunken svg to that box's top,
+   stranding it above the Year Axis whenever a filter narrows the row count.
+   This wrapper is the flex column doing the flex-end alignment instead of
+   .peopleLane itself: putting justify-content: flex-end directly on a
+   scrolling (overflow-y: auto) flex/grid container is a known cross-browser
+   trap — the scrollable-overflow region isn't extended to cover content
+   that overflows on the flex-start side, so scrollHeight collapses to equal
+   clientHeight and the lane becomes unscrollable the moment row count grows
+   past what fits (verified against real Chromium during this fix). Nesting
+   the alignment one level in avoids it: .peopleLane stays a plain block box
+   whose scrollHeight is just this wrapper's ordinary rendered height, and
+   min-height: 100% only pads the wrapper *up* to .peopleLane's own height
+   when the svg is shorter — it never suppresses genuine overflow, so
+   scrollTop = scrollHeight (TimelineCanvas.tsx) still works once row count
+   grows enough to overflow the lane. */
+.bottomAlign {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100%;
+}
+
 .line,
 .name {
   cursor: default;
