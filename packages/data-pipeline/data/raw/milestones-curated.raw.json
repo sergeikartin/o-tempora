@@ -28,7 +28,7 @@
       "name": "milestone label",
       "category": "one of meta.categories"
     },
-    "count": 204
+    "count": 232
   },
   "milestones": [
     {
@@ -112,6 +112,16 @@
       "category": "science-theory"
     },
     {
+      "id": "Q40605",
+      "name": "Large Hadron Collider",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q3984081",
+      "name": "Copernican heliocentrism",
+      "category": "science-theory"
+    },
+    {
       "id": "Q166543",
       "name": "General anaesthesia",
       "category": "medicine-health"
@@ -182,6 +192,11 @@
       "category": "medicine-health"
     },
     {
+      "id": "Q1519099",
+      "name": "Polio vaccine",
+      "category": "medicine-health"
+    },
+    {
       "id": "Q11472",
       "name": "Paper",
       "category": "communication"
@@ -222,6 +237,11 @@
       "category": "communication"
     },
     {
+      "id": "Q872",
+      "name": "Radio",
+      "category": "communication"
+    },
+    {
       "id": "Q46872",
       "name": "Cinematograph",
       "category": "communication"
@@ -259,6 +279,11 @@
     {
       "id": "Q46904",
       "name": "GSM",
+      "category": "communication"
+    },
+    {
+      "id": "Q17517",
+      "name": "Mobile phone",
       "category": "communication"
     },
     {
@@ -587,6 +612,11 @@
       "category": "everyday-technology"
     },
     {
+      "id": "Q115564437",
+      "name": "ChatGPT",
+      "category": "everyday-technology"
+    },
+    {
       "id": "Q1136790",
       "name": "Cotton gin",
       "category": "food-agriculture"
@@ -614,6 +644,11 @@
     {
       "id": "Q180548",
       "name": "Neolithic Revolution",
+      "category": "food-agriculture"
+    },
+    {
+      "id": "Q188371",
+      "name": "Great Irish Famine",
       "category": "food-agriculture"
     },
     {
@@ -657,8 +692,23 @@
       "category": "exploration"
     },
     {
+      "id": "Q4567715",
+      "name": "1953 British Mount Everest Expedition",
+      "category": "exploration"
+    },
+    {
       "id": "Q699127",
       "name": "Voyages of Zheng He",
+      "category": "exploration"
+    },
+    {
+      "id": "Q48469",
+      "name": "Voyager 1",
+      "category": "exploration"
+    },
+    {
+      "id": "Q25271",
+      "name": "International Space Station",
       "category": "exploration"
     },
     {
@@ -812,6 +862,76 @@
       "category": "society-administration"
     },
     {
+      "id": "Q69163529",
+      "name": "Fall of the Berlin Wall",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q46362",
+      "name": "Congress of Vienna",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q8707",
+      "name": "Meiji restoration",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q154705",
+      "name": "Unification of Germany",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q13582",
+      "name": "Berlin Conference",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q38130",
+      "name": "League of Nations",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q186356",
+      "name": "New Deal",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q129053",
+      "name": "Partition of India",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q171375",
+      "name": "Truman Doctrine",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q223732",
+      "name": "Declaration of the Establishment of the State of Israel",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q7184",
+      "name": "NATO",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q41644",
+      "name": "Warsaw Pact",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q208191",
+      "name": "Asian–African Conference",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q5167679",
+      "name": "Dissolution of the Soviet Union",
+      "category": "society-administration"
+    },
+    {
       "id": "Q8272",
       "name": "Epic of Gilgamesh",
       "category": "culture-arts"
@@ -927,6 +1047,26 @@
       "category": "commerce-finance"
     },
     {
+      "id": "Q683846",
+      "name": "Manila galleon",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q159766",
+      "name": "Dutch East India Company",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q233562",
+      "name": "The Wealth of Nations",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q35045",
+      "name": "Potosí",
+      "category": "commerce-finance"
+    },
+    {
       "id": "Q48537",
       "name": "Civil rights movement",
       "category": "social-movements"
@@ -939,6 +1079,26 @@
     {
       "id": "Q391358",
       "name": "Emancipation Proclamation",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q300646",
+      "name": "A Vindication of the Rights of Woman",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q2736155",
+      "name": "Seneca Falls Convention",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q1192212",
+      "name": "Emancipation reform of 1861",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q99717",
+      "name": "1989 Tiananmen Square protests and massacre",
       "category": "social-movements"
     },
     {
@@ -974,6 +1134,11 @@
     {
       "id": "Q447",
       "name": "Encyclopédie",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q40591",
+      "name": "The Communist Manifesto",
       "category": "philosophy-education"
     },
     {
@@ -1014,6 +1179,16 @@
     {
       "id": "Q10285",
       "name": "Colosseum",
+      "category": "architecture-design"
+    },
+    {
+      "id": "Q12495",
+      "name": "Burj Khalifa",
+      "category": "architecture-design"
+    },
+    {
+      "id": "Q9141",
+      "name": "Taj Mahal",
       "category": "architecture-design"
     }
   ]

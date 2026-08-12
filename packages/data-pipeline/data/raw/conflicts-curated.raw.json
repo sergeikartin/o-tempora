@@ -15,7 +15,7 @@
       "category": "one of meta.categories",
       "parentId": "optional — another curated row's id; that row must be a Conflict (resolves both a start and end date from enrichment), and the chain up to its root is capped at 3 levels"
     },
-    "count": 154
+    "count": 171
   },
   "conflicts": [
     {
@@ -332,6 +332,11 @@
       "category": "revolution"
     },
     {
+      "id": "Q689128",
+      "name": "Haitian Revolution",
+      "category": "revolution"
+    },
+    {
       "id": "Q184183",
       "name": "Second Balkan War",
       "category": "war"
@@ -384,6 +389,11 @@
     {
       "id": "Q200485",
       "name": "Norman Conquest",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q2092093",
+      "name": "Mongol invasions and conquests",
       "category": "military-operation"
     },
     {
@@ -809,6 +819,81 @@
     {
       "id": "Q178810",
       "name": "Syrian Civil War",
+      "category": "war"
+    },
+    {
+      "id": "Q160077",
+      "name": "Fall of Constantinople",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q79791",
+      "name": "Reconquista",
+      "category": "war"
+    },
+    {
+      "id": "Q203233",
+      "name": "Battle of Plassey",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q112524",
+      "name": "Red Turban Rebellion",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q1123201",
+      "name": "Spanish American wars of independence",
+      "category": "war-of-independence"
+    },
+    {
+      "id": "Q192408",
+      "name": "Taiping Rebellion",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q302519",
+      "name": "Battle of Adwa",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q1551794",
+      "name": "Japanese invasion of Manchuria",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q52418",
+      "name": "Attack on Pearl Harbor",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q488",
+      "name": "Atomic bombings of Hiroshima and Nagasaki",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q179975",
+      "name": "Chinese Civil War",
+      "category": "war"
+    },
+    {
+      "id": "Q856670",
+      "name": "1973 Chilean coup d'état",
+      "category": "coup-d-etat"
+    },
+    {
+      "id": "Q8683",
+      "name": "Cold War",
+      "category": "war"
+    },
+    {
+      "id": "Q189508",
+      "name": "Glorious Revolution",
+      "category": "revolution"
+    },
+    {
+      "id": "Q275918",
+      "name": "Muslim conquests",
       "category": "war"
     }
   ]
