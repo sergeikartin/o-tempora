@@ -45,12 +45,22 @@ test("COALESCEs ?date/?datePrecision across all 10 date properties in curator-pr
   assert.match(query, new RegExp(`BIND\\(COALESCE\\(${precisionVars}\\) AS \\?datePrecision\\)`));
 });
 
-test("selects sitelinks/per-language article title vars/country/image/tagline/date/datePrecision", () => {
+test("binds ?endDate's precision the same way via P582's statement value node, independent of DATE_PROPERTIES' COALESCE chain", () => {
+  const query = buildMilestonesEnrichmentQuery(["Q1"]);
+  assert.match(query, /\?event p:P582 \?endDateStatement/);
+  assert.match(query, /\?endDateStatement a wikibase:BestRank \./);
+  assert.match(query, /\?endDateStatement psv:P582 \?endDateValue/);
+  assert.match(query, /\?endDateValue wikibase:timeValue \?endDate ;\s*wikibase:timePrecision \?endDatePrecision/);
+});
+
+test("selects sitelinks/per-language article title vars/country/image/tagline/date/datePrecision/endDate/endDatePrecision", () => {
   const query = buildMilestonesEnrichmentQuery(["Q1"]);
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `\\?article${lang[0]!.toUpperCase()}${lang.slice(1)}`).join(
     " ",
   );
-  const pattern = new RegExp(`SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?tagline \\?date \\?datePrecision WHERE`);
+  const pattern = new RegExp(
+    `SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?tagline \\?date \\?datePrecision \\?endDate \\?endDatePrecision WHERE`,
+  );
   assert.match(query, pattern);
 });
 
@@ -61,7 +71,7 @@ test("does not filter by year range or page with LIMIT/OFFSET (a batch of alread
   assert.doesNotMatch(query, /OFFSET/);
 });
 
-test("orders by event/date so the earliest date wins as a tiebreak when an item carries two equally-best-ranked claims on the same winning property", () => {
+test("orders by event/date/endDate so the earliest date wins as a tiebreak when an item carries two equally-best-ranked claims on the same winning property", () => {
   const query = buildMilestonesEnrichmentQuery(["Q1"]);
-  assert.match(query, /ORDER BY \?event \?date\s*$/);
+  assert.match(query, /ORDER BY \?event \?date \?endDate\s*$/);
 });

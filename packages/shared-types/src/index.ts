@@ -112,8 +112,8 @@ export const UN_REGIONS = [
 export type UnRegion = (typeof UN_REGIONS)[number];
 
 // A calendar year plus optional month, astronomical/ISO numbering (year 0 is
-// 1 BCE, year 1 is 1 CE — Invariant 4 in architecture.md), matching
-// Temporal.PlainDate's own sign convention. `month` (1-12) is present only
+// 1 BCE, year 1 is 1 CE — see docs/adr/0001-astronomical-year-numbering.md),
+// matching Temporal.PlainDate's own sign convention. `month` (1-12) is present only
 // when the source data's actual claim precision resolves to month-or-finer
 // (e.g. Wikidata's wikibase:timePrecision >= 10) — never defaulted to
 // January to paper over an unknown month, which would misrepresent
@@ -237,10 +237,28 @@ export type ConflictEntry = Conflict | ConflictEvent;
 // Sourced from the hand-curated milestones list, not a Wikidata-?type-claim
 // scan — category is curator-assigned directly (see tagCuratedMilestone in
 // data-pipeline/src/transform/tag-milestones.ts), hence its own
-// MilestoneCategory taxonomy rather than Conflict's Category. Always a
-// point in time, like a battle — an invention doesn't span a duration the
-// way a life or a war does.
-export interface Milestone extends TimelineEntry, PointInTime {
+// MilestoneCategory taxonomy rather than Conflict's Category. Date shape
+// follows what Wikidata's enrichment resolves, the same rule
+// Conflict/ConflictEvent already use: a period when both start (P580) and
+// end (P582) resolve (e.g. the Black Death, 1346-1353), a point otherwise
+// (e.g. an invention's first appearance) — see
+// data-pipeline/src/output/write-datasets.ts's buildMilestones. Kept as one
+// exported type (unlike Conflict/ConflictEvent's two names) since a
+// period-shaped milestone isn't a different kind of thing, just a
+// better-known date; narrow with `"period" in entry`, not a `kind`
+// discriminant.
+interface MilestonePeriod extends TimelineEntry {
+  category: MilestoneCategory;
+  regionTags: Region[];
+  // Nested, like Conflict.period — not flattened the way MilestonePoint
+  // flattens PointInTime's `at`, since `"period" in entry` (not `"at" in
+  // entry`) is the narrowing check every consumer uses.
+  period: Period;
+}
+
+interface MilestonePoint extends TimelineEntry, PointInTime {
   category: MilestoneCategory;
   regionTags: Region[];
 }
+
+export type Milestone = MilestonePeriod | MilestonePoint;

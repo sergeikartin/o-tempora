@@ -112,6 +112,22 @@ test('Milestone: dateLine is at.year only (year precision)', () => {
   expect(content.dateLine).toBe('1440');
 });
 
+const blackDeath: Milestone = {
+  id: 'Q42005',
+  name: 'Black Death',
+  period: { start: { year: 1346 }, end: { year: 1353 } },
+  category: 'medicine-health',
+  regionTags: ['europe'],
+  fameScore: 84,
+  tagline: '1346-1353 pandemic in Eurasia and North Africa',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Black_Death',
+};
+
+test('Milestone: no dateLine for a period-shaped milestone (tagline already carries the range)', () => {
+  const content = buildDrawerContent({ entityType: 'milestone', entity: blackDeath });
+  expect(content.dateLine).toBeUndefined();
+});
+
 test('Milestone: image passes through', () => {
   const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
   expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg');

@@ -17,10 +17,12 @@ export type DetailPanelEntity =
 // depends on entityType (see buildDrawerContent below), not on the caller.
 export interface DrawerContent {
   name: string;
-  // Milestone only — People and Conflicts drop this: their tagline
-  // text (Wikidata schema:description) already embeds the same dates in
-  // prose form, so a separate structured date line was showing every date
-  // twice. Milestones' taglines don't embed dates, so they keep it.
+  // Point-shaped Milestone only — People, Conflicts, and period-shaped
+  // Milestones all drop this: their tagline text (Wikidata
+  // schema:description) already embeds the same dates in prose form (e.g.
+  // the Black Death's "1346-1353 pandemic..."), so a separate structured
+  // date line was showing every date twice. A point-shaped Milestone's
+  // tagline doesn't reliably embed a date, so it keeps this line.
   dateLine?: string;
   tagline: string;
   // Wikipedia lead-paragraph prose — absent whenever no English Wikipedia
@@ -58,7 +60,7 @@ function conflictEntryContent(entry: ConflictEntry): DrawerContent {
 function milestoneContent(milestone: Milestone): DrawerContent {
   return {
     name: milestone.name,
-    dateLine: formatYearMonth(milestone.at),
+    ...('period' in milestone ? {} : { dateLine: formatYearMonth(milestone.at) }),
     tagline: milestone.tagline,
     description: milestone.description,
     wikipediaUrl: milestone.wikipediaUrl,

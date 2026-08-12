@@ -31,6 +31,8 @@ interface RangeLayout {
   row: number;
   markerY: number;
   labelY: number;
+  fill: string;
+  kind: 'conflict' | 'milestone';
 }
 
 interface PointLayout {
@@ -62,10 +64,15 @@ interface ConflictsMilestonesLaneProps {
 // it — so, unlike PeopleLane, no row-index inversion is needed here.
 //
 // A range renders as a rounded-cap line, a point (Conflict or Milestone) as
-// a dot — the same Period-vs-PointInTime shape rule every lane uses.
-// Conflicts render in one flat color (CONFLICT_COLOR); Milestones keep
-// their own category palette — color, not shape, is what tells a Conflict
-// marker apart from a Milestone one now that they can share a row.
+// a dot — the same Period-vs-PointInTime shape rule every lane uses, and,
+// as of period-shaped Milestones (grill-with-docs session, 2026-08-12), the
+// rule that decides *within* Milestones too: a period-shaped Milestone (e.g.
+// the Black Death) lands in rangeLayout and renders with the exact same
+// rounded-cap-line treatment a Conflict period gets — no distinct visual
+// style for "this range is an era, not a war". Conflicts render in one flat
+// color (CONFLICT_COLOR); Milestones keep their own category palette either
+// way — color, not shape, is what tells a Conflict marker apart from a
+// Milestone one now that they can share a row.
 export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: ConflictsMilestonesLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -104,6 +111,12 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
     };
     for (const item of conflictItems) noteRow(rowOfId.get(item.id) ?? 0, 1);
     for (const item of milestoneItems) {
+      // Range-shaped Milestones render a single-line label like a Conflict
+      // range does — only point-shaped Milestones wrap onto multiple lines.
+      if (!item.isPoint) {
+        noteRow(rowOfId.get(item.id) ?? 0, 1);
+        continue;
+      }
       const lines = milestoneLinesById.get(item.id) ?? [item.name];
       noteRow(rowOfId.get(item.id) ?? 0, lines.length);
     }
@@ -124,24 +137,41 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
   const fallbackMarkerY = LANE_TOP_PADDING + POINT_RADIUS;
   const fallbackLabelY = fallbackMarkerY + POINT_RADIUS + MILESTONES_MARKER_LABEL_GAP;
 
-  const rangeLayout: RangeLayout[] = useMemo(
-    () =>
-      conflictItems
-        .filter((item) => !item.isPoint)
-        .map((item) => {
-          const row = rowOfId.get(item.id) ?? 0;
-          return {
-            id: item.id,
-            name: item.name,
-            x1: xScale(item.startYear),
-            x2: xScale(item.endYear),
-            row,
-            markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
-            labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
-          };
-        }),
-    [conflictItems, rowOfId, rowLayout, xScale, fallbackMarkerY, fallbackLabelY],
-  );
+  const rangeLayout: RangeLayout[] = useMemo(() => {
+    const conflictRanges: RangeLayout[] = conflictItems
+      .filter((item) => !item.isPoint)
+      .map((item) => {
+        const row = rowOfId.get(item.id) ?? 0;
+        return {
+          id: item.id,
+          name: item.name,
+          x1: xScale(item.startYear),
+          x2: xScale(item.endYear),
+          row,
+          markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
+          labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
+          fill: CONFLICT_COLOR,
+          kind: 'conflict' as const,
+        };
+      });
+    const milestoneRanges: RangeLayout[] = milestoneItems
+      .filter((item) => !item.isPoint)
+      .map((item) => {
+        const row = rowOfId.get(item.id) ?? 0;
+        return {
+          id: item.id,
+          name: item.name,
+          x1: xScale(item.startYear),
+          x2: xScale(item.endYear),
+          row,
+          markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
+          labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
+          fill: MILESTONE_CATEGORY_COLORS[item.category],
+          kind: 'milestone' as const,
+        };
+      });
+    return [...conflictRanges, ...milestoneRanges];
+  }, [conflictItems, milestoneItems, rowOfId, rowLayout, xScale, fallbackMarkerY, fallbackLabelY]);
 
   const pointLayout: PointLayout[] = useMemo(() => {
     const conflictPoints: PointLayout[] = conflictItems
@@ -156,22 +186,24 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
           markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
           labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
           fill: CONFLICT_COLOR,
-          kind: 'conflict',
+          kind: 'conflict' as const,
         };
       });
-    const milestonePoints: PointLayout[] = milestoneItems.map((item) => {
-      const row = rowOfId.get(item.id) ?? 0;
-      return {
-        id: item.id,
-        lines: milestoneLinesById.get(item.id) ?? [item.name],
-        x: xScale(item.startYear),
-        row,
-        markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
-        labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
-        fill: MILESTONE_CATEGORY_COLORS[item.category],
-        kind: 'milestone',
-      };
-    });
+    const milestonePoints: PointLayout[] = milestoneItems
+      .filter((item) => item.isPoint)
+      .map((item) => {
+        const row = rowOfId.get(item.id) ?? 0;
+        return {
+          id: item.id,
+          lines: milestoneLinesById.get(item.id) ?? [item.name],
+          x: xScale(item.startYear),
+          row,
+          markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
+          labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
+          fill: MILESTONE_CATEGORY_COLORS[item.category],
+          kind: 'milestone' as const,
+        };
+      });
     return [...conflictPoints, ...milestonePoints];
   }, [conflictItems, milestoneItems, milestoneLinesById, rowOfId, rowLayout, xScale, fallbackMarkerY, fallbackLabelY]);
 
@@ -187,14 +219,12 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
         const g = enter.append('g').attr('class', 'd3-range');
         g.append('line')
           .attr('class', `d3-line ${styles.line}`)
-          .attr('stroke', CONFLICT_COLOR)
           .attr('stroke-width', PERIOD_LINE_HEIGHT)
           .attr('stroke-linecap', 'round');
         g.append('text')
           .attr('class', `d3-range-name ${styles.label}`)
           .attr('text-anchor', 'middle')
-          .attr('dominant-baseline', 'hanging')
-          .attr('fill', CONFLICT_COLOR);
+          .attr('dominant-baseline', 'hanging');
         return g;
       });
 
@@ -206,17 +236,19 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       .attr('x2', (d) => d.x2)
       .attr('y1', (d) => d.markerY)
       .attr('y2', (d) => d.markerY)
+      .attr('stroke', (d) => d.fill)
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'conflict');
+      .attr('data-entity-type', (d) => d.kind);
 
     rangeGroups
       .select<SVGTextElement>('.d3-range-name')
       .attr('x', (d) => (d.x1 + d.x2) / 2)
       .attr('y', (d) => d.labelY)
+      .attr('fill', (d) => d.fill)
       // Same delegated-click wiring as the line above, so the label is an
       // equally valid click target for opening the detail drawer.
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'conflict')
+      .attr('data-entity-type', (d) => d.kind)
       .text((d) => d.name);
 
     const pointGroups = svg

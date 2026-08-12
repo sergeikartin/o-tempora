@@ -159,6 +159,32 @@ test('mapMilestones offsets startYear within its year when at carries a month', 
   expect(item?.startYear).toBeCloseTo(1440 + 9 / 12);
 });
 
+const blackDeath: Milestone = {
+  id: 'Q42005',
+  name: 'Black Death',
+  period: { start: { year: 1346 }, end: { year: 1353 } },
+  category: 'medicine-health',
+  regionTags: ['europe'],
+  fameScore: 84,
+  tagline: '1346-1353 pandemic in Eurasia and North Africa',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Black_Death',
+};
+
+test('mapMilestones maps a period-shaped milestone to a range item (isPoint: false)', () => {
+  const [item] = mapMilestones([blackDeath]);
+  expect(item?.isPoint).toBe(false);
+  expect(item?.startYear).toBe(1346);
+  expect(item?.endYear).toBe(1353);
+});
+
+test('mapMilestones widens a zero-width milestone range (start === end) by one year', () => {
+  const zeroWidth: Milestone = { ...blackDeath, id: 'Q9003', period: { start: { year: 1346 }, end: { year: 1346 } } };
+  const [item] = mapMilestones([zeroWidth]);
+  expect(item?.isPoint).toBe(false);
+  expect(item?.startYear).toBe(1346);
+  expect(item?.endYear).toBe(1347);
+});
+
 // filterByFameScore — shared client-side Fame Tier gate for all three lanes.
 test('filterByFameScore keeps only items whose fameScore clears the threshold', () => {
   const items = [{ id: 'a', fameScore: 90 }, { id: 'b', fameScore: 89 }, { id: 'c', fameScore: 100 }];

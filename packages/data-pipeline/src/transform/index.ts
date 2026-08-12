@@ -34,6 +34,8 @@ export interface TaggedMilestone {
   description?: string;
   year?: number;
   month?: number;
+  endYear?: number;
+  endMonth?: number;
   sitelinks: number;
   fameScore: number;
   category: MilestoneCategory;
@@ -150,12 +152,13 @@ export function transformPeople(): TaggedPerson[] {
 // reasoning as transformPeople/transformMilestones). A missing enriched
 // `sitelinks` means the enrichment pass couldn't resolve that QID; coerced
 // to 0 here so it sorts last and Output's buildConflicts can drop it explicitly
-// (same convention transformMilestones uses). Unlike Milestones,
-// tagline/year/endYear are also enrichment-sourced here, not
-// curator-authored — left `undefined` rather than coerced when the
-// enrichment pass didn't resolve them, since buildConflicts needs to
-// distinguish "no date at all" (drop) from "one date" (ConflictEvent) from "two
-// dates" (Conflict).
+// (same convention transformMilestones uses). tagline/year/endYear are
+// enrichment-sourced here, not curator-authored — left `undefined` rather
+// than coerced when the enrichment pass didn't resolve them, since
+// buildConflicts needs to distinguish "no date at all" (drop) from "one
+// date" (ConflictEvent) from "two dates" (Conflict). Milestones' own
+// year/endYear are enrichment-sourced the same way, for the same
+// point-vs-period distinction in buildMilestones.
 export function transformConflicts(): TaggedConflict[] {
   const enrichedPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
   const { conflicts } = validateEnrichedConflictsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
@@ -211,6 +214,8 @@ export function transformMilestones(): TaggedMilestone[] {
       description: wikipediaExtracts[milestone.id],
       year: milestone.year,
       month: milestone.month,
+      endYear: milestone.endYear,
+      endMonth: milestone.endMonth,
       sitelinks: milestone.sitelinks ?? 0,
       pageviews: pageviews[milestone.id] ?? 0,
       category,
