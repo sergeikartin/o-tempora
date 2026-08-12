@@ -182,11 +182,6 @@
       "category": "medicine-health"
     },
     {
-      "id": "Q211248",
-      "name": "Mayan hieroglyphs",
-      "category": "communication"
-    },
-    {
       "id": "Q11472",
       "name": "Paper",
       "category": "communication"
@@ -879,11 +874,6 @@
     {
       "id": "Q209625",
       "name": "Year Without a Summer",
-      "category": "environment-geology"
-    },
-    {
-      "id": "Q190530",
-      "name": "Little Ice Age",
       "category": "environment-geology"
     },
     {
