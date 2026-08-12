@@ -300,6 +300,46 @@
       "countries": []
     },
     {
+      "id": "Q40605",
+      "name": "Large Hadron Collider",
+      "category": "science-theory",
+      "year": 2008,
+      "month": 10,
+      "tagline": "particle collider",
+      "sitelinks": 99,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Large_Hadron_Collider",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Large_Hadron_Collider",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%9E%8B%E5%BC%B7%E5%AD%90%E5%B0%8D%E6%92%9E%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Gran_colisionador_de_hadrones",
+        "fr": "https://fr.wikipedia.org/wiki/Grand_collisionneur_de_hadrons",
+        "de": "https://de.wikipedia.org/wiki/Large_Hadron_Collider",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B5%D8%A7%D8%AF%D9%85_%D8%A7%D9%84%D9%87%D8%AF%D8%B1%D9%88%D9%86%D8%A7%D8%AA_%D8%A7%D9%84%D9%83%D8%A8%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9_%D0%B0%D0%B4%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BA%D0%BE%D0%BB%D0%BB%D0%B0%D0%B9%D0%B4%D0%B5%D1%80"
+      },
+      "countries": [
+        "Q39",
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CERN%20LHC%20Tunnel1.jpg"
+    },
+    {
+      "id": "Q3984081",
+      "name": "Copernican heliocentrism",
+      "category": "science-theory",
+      "year": 1543,
+      "tagline": "concept that the Earth rotates around the Sun",
+      "sitelinks": 18,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
+        "es": "https://es.wikipedia.org/wiki/Heliocentrismo_copernicano",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D8%B8%D8%B1%D9%8A%D8%A9_%D9%85%D8%B1%D9%83%D8%B2%D9%8A%D8%A9_%D8%A7%D9%84%D8%B4%D9%85%D8%B3"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Complete%20wildfowler%20%281912%29%20%2814775413253%29.jpg"
+    },
+    {
       "id": "Q166543",
       "name": "General anaesthesia",
       "category": "medicine-health",
@@ -594,6 +634,19 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F_COVID-19"
       },
       "countries": [
+        "Q159",
+        "Q183",
+        "Q184",
+        "Q189",
+        "Q191",
+        "Q211",
+        "Q212",
+        "Q213",
+        "Q214",
+        "Q215",
+        "Q217",
+        "Q218",
+        "Q219",
         "Q221",
         "Q222",
         "Q224",
@@ -713,22 +766,29 @@
         "Q142",
         "Q145",
         "Q148",
-        "Q155",
-        "Q159",
-        "Q183",
-        "Q184",
-        "Q189",
-        "Q191",
-        "Q211",
-        "Q212",
-        "Q213",
-        "Q214",
-        "Q215",
-        "Q217",
-        "Q218",
-        "Q219"
+        "Q155"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg"
+    },
+    {
+      "id": "Q1519099",
+      "name": "Polio vaccine",
+      "category": "medicine-health",
+      "year": 1952,
+      "tagline": "vaccine to prevent poliomyelitis",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Polio_vaccine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Polio_vaccine",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%84%8A%E9%AB%93%E7%81%B0%E8%B3%AA%E7%82%8E%E7%96%AB%E8%8B%97",
+        "es": "https://es.wikipedia.org/wiki/Vacuna_contra_la_poliomielitis",
+        "fr": "https://fr.wikipedia.org/wiki/Vaccin_contre_la_poliomy%C3%A9lite",
+        "de": "https://de.wikipedia.org/wiki/Polioimpfstoff",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D9%82%D8%A7%D8%AD_%D8%B4%D9%84%D9%84_%D8%A7%D9%84%D8%A3%D8%B7%D9%81%D8%A7%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D0%BA%D1%86%D0%B8%D0%BD%D0%B0_%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2_%D0%BF%D0%BE%D0%BB%D0%B8%D0%BE%D0%BC%D0%B8%D0%B5%D0%BB%D0%B8%D1%82%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Poliodrops.jpg"
     },
     {
       "id": "Q11472",
@@ -885,6 +945,26 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Edison%20and%20phonograph%20edit2.jpg"
+    },
+    {
+      "id": "Q872",
+      "name": "Radio",
+      "category": "communication",
+      "year": 1894,
+      "tagline": "technology of signaling and communicating using radio waves",
+      "sitelinks": 189,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Radio",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Radio",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%97%A0%E7%BA%BF%E7%94%B5",
+        "es": "https://es.wikipedia.org/wiki/Radiocomunicaci%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Radiocommunication",
+        "de": "https://de.wikipedia.org/wiki/Funktechnik",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%AA%D8%B5%D8%A7%D9%84_%D8%B1%D8%A7%D8%AF%D9%8A%D9%88%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B4%D0%B8%D0%BE"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Biblis%20RFE%20RL%2001.jpg"
     },
     {
       "id": "Q46872",
@@ -1049,6 +1129,26 @@
         "ru": "https://ru.wikipedia.org/wiki/GSM"
       },
       "countries": []
+    },
+    {
+      "id": "Q17517",
+      "name": "Mobile phone",
+      "category": "communication",
+      "year": 1973,
+      "tagline": "portable device to make telephone calls using a radio link",
+      "sitelinks": 180,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mobile_phone",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mobile_phone",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8A%A8%E7%94%B5%E8%AF%9D",
+        "es": "https://es.wikipedia.org/wiki/Tel%C3%A9fono_m%C3%B3vil",
+        "fr": "https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9phone_mobile",
+        "de": "https://de.wikipedia.org/wiki/Mobiltelefon",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%87%D8%A7%D8%AA%D9%81_%D9%85%D8%AD%D9%85%D9%88%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mobile%20phone%20PHS%20Japan%201997-2003.jpg"
     },
     {
       "id": "Q1261053",
@@ -2389,6 +2489,27 @@
       "countries": []
     },
     {
+      "id": "Q115564437",
+      "name": "ChatGPT",
+      "category": "everyday-technology",
+      "year": 2022,
+      "month": 11,
+      "tagline": "artificial intelligence chatbot developed by OpenAI",
+      "sitelinks": 136,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/ChatGPT",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/ChatGPT",
+        "zh": "https://zh.wikipedia.org/wiki/ChatGPT",
+        "es": "https://es.wikipedia.org/wiki/ChatGPT",
+        "fr": "https://fr.wikipedia.org/wiki/ChatGPT",
+        "de": "https://de.wikipedia.org/wiki/ChatGPT",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B4%D8%A7%D8%AA_%D8%AC%D9%8A_%D8%A8%D9%8A_%D8%AA%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/ChatGPT"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT%205.2%20Thinking%20Wikipedia%20historia%20PDF%20screenshot.png"
+    },
+    {
       "id": "Q1136790",
       "name": "Cotton gin",
       "category": "food-agriculture",
@@ -2510,6 +2631,27 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Knapp%20of%20Howar%202.jpg"
+    },
+    {
+      "id": "Q188371",
+      "name": "Great Irish Famine",
+      "category": "food-agriculture",
+      "year": 1845,
+      "endYear": 1852,
+      "tagline": "1845–1852 famine in Ireland",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Famine_(Ireland)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Great_Famine_(Ireland)",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%88%B1%E5%B0%94%E5%85%B0%E5%A4%A7%E9%A5%A5%E8%8D%92",
+        "es": "https://es.wikipedia.org/wiki/Gran_hambruna_irlandesa",
+        "fr": "https://fr.wikipedia.org/wiki/Grande_famine_irlandaise",
+        "de": "https://de.wikipedia.org/wiki/Gro%C3%9Fe_Hungersnot_in_Irland",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AC%D8%A7%D8%B9%D8%A9_%D8%A3%D9%8A%D8%B1%D9%84%D9%86%D8%AF%D8%A7_%D8%A7%D9%84%D9%83%D8%A8%D8%B1%D9%89",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%BE%D0%BB%D0%BE%D0%B4_%D0%B2_%D0%98%D1%80%D0%BB%D0%B0%D0%BD%D0%B4%D0%B8%D0%B8_(1845%E2%80%941849)"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Irish%20potato%20famine%20Bridget%20O%27Donnel.jpg"
     },
     {
       "id": "Q221474",
@@ -2691,6 +2833,29 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nla.pic-an23814300.jpeg"
     },
     {
+      "id": "Q4567715",
+      "name": "1953 British Mount Everest Expedition",
+      "category": "exploration",
+      "year": 1953,
+      "month": 2,
+      "endYear": 1953,
+      "endMonth": 6,
+      "tagline": "first successful ascent of Mount Everest",
+      "sitelinks": 16,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition",
+        "es": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_brit%C3%A1nica_al_Everest_de_1953",
+        "fr": "https://fr.wikipedia.org/wiki/Exp%C3%A9dition_britannique_%C3%A0_l%27Everest_de_1953",
+        "de": "https://de.wikipedia.org/wiki/Britische_Mount-Everest-Expedition_1953",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B8%D1%82%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%94%D0%B6%D0%BE%D0%BC%D0%BE%D0%BB%D1%83%D0%BD%D0%B3%D0%BC%D1%83_(1953)"
+      },
+      "countries": [
+        "Q145"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Everest%20kalapatthar.jpg"
+    },
+    {
       "id": "Q699127",
       "name": "Voyages of Zheng He",
       "category": "exploration",
@@ -2712,6 +2877,48 @@
         "Q29520"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zheng%20He%27s%20Treasure%20Ship%203.jpg"
+    },
+    {
+      "id": "Q48469",
+      "name": "Voyager 1",
+      "category": "exploration",
+      "year": 1977,
+      "month": 9,
+      "tagline": "space probe launched by NASA to study the outer Solar System, furthest spacecraft from Earth",
+      "sitelinks": 97,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_1",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Voyager_1",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E8%80%851%E5%8F%B7",
+        "es": "https://es.wikipedia.org/wiki/Voyager_1",
+        "fr": "https://fr.wikipedia.org/wiki/Voyager_1",
+        "de": "https://de.wikipedia.org/wiki/Voyager_1",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D9%88%D9%8A%D8%A7%D8%AC%D8%B1_1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%8F%D0%B4%D0%B6%D0%B5%D1%80-1"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Voyager%20spacecraft.jpg"
+    },
+    {
+      "id": "Q25271",
+      "name": "International Space Station",
+      "category": "exploration",
+      "year": 1998,
+      "month": 11,
+      "tagline": "modular space station in low Earth orbit",
+      "sitelinks": 136,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/International_Space_Station",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/International_Space_Station",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E7%A9%BA%E9%97%B4%E7%AB%99",
+        "es": "https://es.wikipedia.org/wiki/Estaci%C3%B3n_Espacial_Internacional",
+        "fr": "https://fr.wikipedia.org/wiki/Station_spatiale_internationale",
+        "de": "https://de.wikipedia.org/wiki/Internationale_Raumstation",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B7%D8%A9_%D8%A7%D9%84%D9%81%D8%B6%D8%A7%D8%A1_%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F_%D0%BA%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20station%20pictured%20from%20the%20SpaceX%20Crew%20Dragon%205%20%28cropped%29.jpg"
     },
     {
       "id": "Q338613",
@@ -3332,6 +3539,331 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/GER%20%E2%80%94%20BY%20%E2%80%94%20Regensburg%20-%20Donaumarkt%201%20%28Museum%20der%20Bayerischen%20Geschichte%3B%20Vertrag%20von%20Maastricht%29%20%28cropped%29.JPG"
     },
     {
+      "id": "Q69163529",
+      "name": "Fall of the Berlin Wall",
+      "category": "society-administration",
+      "year": 1989,
+      "month": 11,
+      "tagline": "historical event in November 1989 where the Berlin Wall was opened and demolished",
+      "sitelinks": 38,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9F%8F%E6%9E%97%E5%A2%99%E5%80%92%E5%A1%8C",
+        "es": "https://es.wikipedia.org/wiki/Ca%C3%ADda_del_Muro_de_Berl%C3%ADn",
+        "fr": "https://fr.wikipedia.org/wiki/Chute_du_mur_de_Berlin",
+        "de": "https://de.wikipedia.org/wiki/Mauerfall",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%82%D9%88%D8%B7_%D8%AC%D8%AF%D8%A7%D8%B1_%D8%A8%D8%B1%D9%84%D9%8A%D9%86"
+      },
+      "countries": [
+        "Q16957"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BerlinWall-BrandenburgGate.jpg"
+    },
+    {
+      "id": "Q46362",
+      "name": "Congress of Vienna",
+      "category": "society-administration",
+      "year": 1814,
+      "month": 9,
+      "endYear": 1815,
+      "endMonth": 6,
+      "tagline": "conference of ambassadors of European states (September/November 1814 to June 1815)",
+      "sitelinks": 98,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BB%B4%E4%B9%9F%E7%BA%B3%E4%BC%9A%E8%AE%AE",
+        "es": "https://es.wikipedia.org/wiki/Congreso_de_Viena",
+        "fr": "https://fr.wikipedia.org/wiki/Congr%C3%A8s_de_Vienne",
+        "de": "https://de.wikipedia.org/wiki/Wiener_Kongress",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%A4%D8%AA%D9%85%D8%B1_%D9%81%D9%8A%D9%8A%D9%86%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%BE%D0%BD%D0%B3%D1%80%D0%B5%D1%81%D1%81"
+      },
+      "countries": [
+        "Q40"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wiener%20Kongress%20Abschlussdokument%202.JPG"
+    },
+    {
+      "id": "Q8707",
+      "name": "Meiji restoration",
+      "category": "society-administration",
+      "year": 1868,
+      "endYear": 1889,
+      "endMonth": 2,
+      "tagline": "reform restoring the imperial rule in Japan in the last third of the 19th century",
+      "sitelinks": 114,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Meiji_Restoration",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Meiji_Restoration",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%98%8E%E6%B2%BB%E7%BB%B4%E6%96%B0",
+        "es": "https://es.wikipedia.org/wiki/Restauraci%C3%B3n_Meiji",
+        "fr": "https://fr.wikipedia.org/wiki/Restauration_de_Meiji",
+        "de": "https://de.wikipedia.org/wiki/Meiji-Restauration",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%B3%D8%AA%D8%B9%D8%B1%D8%A7%D8%B4_%D9%85%D9%8A%D9%8A%D8%AC%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D1%81%D1%82%D0%B0%D0%B2%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%9C%D1%8D%D0%B9%D0%B4%D0%B7%D0%B8"
+      },
+      "countries": [
+        "Q188712"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MeijiJoukyou.jpg"
+    },
+    {
+      "id": "Q154705",
+      "name": "Unification of Germany",
+      "category": "society-administration",
+      "year": 1866,
+      "month": 8,
+      "endYear": 1871,
+      "endMonth": 5,
+      "tagline": "creation of a politically and administratively integrated nation state of German-speaking populations on 18 January 1871, in the form of the German Empire",
+      "sitelinks": 76,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%BE%B7%E6%84%8F%E5%BF%97%E7%BB%9F%E4%B8%80",
+        "es": "https://es.wikipedia.org/wiki/Unificaci%C3%B3n_alemana",
+        "fr": "https://fr.wikipedia.org/wiki/Unification_allemande",
+        "de": "https://de.wikipedia.org/wiki/Deutsche_Einigung",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%88%D8%AD%D9%8A%D8%AF_%D8%A3%D9%84%D9%85%D8%A7%D9%86%D9%8A%D8%A7_(1871)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%8A%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%93%D0%B5%D1%80%D0%BC%D0%B0%D0%BD%D0%B8%D0%B8_(1871)"
+      },
+      "countries": [
+        "Q183"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/A%20v%20Werner%20-%20Kaiserproklamation%20am%2018%20Januar%201871%20%283.%20Fassung%201885%29.jpg"
+    },
+    {
+      "id": "Q13582",
+      "name": "Berlin Conference",
+      "category": "society-administration",
+      "year": 1884,
+      "month": 11,
+      "endYear": 1885,
+      "endMonth": 2,
+      "tagline": "international conference that regulated the distribution of European colonization and trade in Africa",
+      "sitelinks": 71,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Berlin_Conference",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Berlin_Conference",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9F%8F%E6%9E%97%E8%A5%BF%E9%9D%9E%E6%9C%83%E8%AD%B0",
+        "es": "https://es.wikipedia.org/wiki/Conferencia_de_Berl%C3%ADn",
+        "fr": "https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Berlin",
+        "de": "https://de.wikipedia.org/wiki/Kongokonferenz",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%A4%D8%AA%D9%85%D8%B1_%D8%A8%D8%B1%D9%84%D9%8A%D9%86_(1884)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%BB%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%BA%D0%BE%D0%BD%D1%84%D0%B5%D1%80%D0%B5%D0%BD%D1%86%D0%B8%D1%8F_(1884)"
+      },
+      "countries": [
+        "Q43287"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kongokonferenz.jpg"
+    },
+    {
+      "id": "Q38130",
+      "name": "League of Nations",
+      "category": "society-administration",
+      "year": 1919,
+      "tagline": "20th-century international organisation, predecessor to the United Nations",
+      "sitelinks": 119,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/League_of_Nations",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/League_of_Nations",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9C%8B%E9%9A%9B%E8%81%AF%E7%9B%9F",
+        "es": "https://es.wikipedia.org/wiki/Sociedad_de_las_Naciones",
+        "fr": "https://fr.wikipedia.org/wiki/Soci%C3%A9t%C3%A9_des_Nations",
+        "de": "https://de.wikipedia.org/wiki/V%C3%B6lkerbund",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D8%B5%D8%A8%D8%A9_%D8%A7%D9%84%D8%A3%D9%85%D9%85",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B8%D0%B3%D0%B0_%D0%9D%D0%B0%D1%86%D0%B8%D0%B9"
+      },
+      "countries": [
+        "Q39"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LN%20member%20states%20animation.gif"
+    },
+    {
+      "id": "Q186356",
+      "name": "New Deal",
+      "category": "society-administration",
+      "year": 1933,
+      "endYear": 1939,
+      "tagline": "economic programs of U.S. president Franklin D. Roosevelt",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/New_Deal",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/New_Deal",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BD%97%E6%96%AF%E7%A6%8F%E6%96%B0%E6%94%BF",
+        "es": "https://es.wikipedia.org/wiki/New_Deal",
+        "fr": "https://fr.wikipedia.org/wiki/New_Deal",
+        "de": "https://de.wikipedia.org/wiki/New_Deal",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B5%D9%81%D9%82%D8%A9_%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9_%D0%BA%D1%83%D1%80%D1%81_%D0%A0%D1%83%D0%B7%D0%B2%D0%B5%D0%BB%D1%8C%D1%82%D0%B0"
+      },
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/New%20Deal%20collage.jpg"
+    },
+    {
+      "id": "Q129053",
+      "name": "Partition of India",
+      "category": "society-administration",
+      "year": 1947,
+      "month": 8,
+      "tagline": "1947 Partition of British India",
+      "sitelinks": 81,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Partition_of_India",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Partition_of_India",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%B7%B4%E5%88%86%E6%B2%BB",
+        "es": "https://es.wikipedia.org/wiki/Partici%C3%B3n_de_la_India",
+        "fr": "https://fr.wikipedia.org/wiki/Partition_des_Indes",
+        "de": "https://de.wikipedia.org/wiki/Teilung_Indiens",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%82%D8%B3%D9%8A%D9%85_%D8%A7%D9%84%D9%87%D9%86%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB_%D0%91%D1%80%D0%B8%D1%82%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B9_%D0%98%D0%BD%D0%B4%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q668",
+        "Q843",
+        "Q129286"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Partition%20of%20India%201947%20en.svg"
+    },
+    {
+      "id": "Q171375",
+      "name": "Truman Doctrine",
+      "category": "society-administration",
+      "year": 1947,
+      "month": 3,
+      "tagline": "United States Cold War policy to contain communism in Europe and elsewhere",
+      "sitelinks": 59,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Truman_Doctrine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Truman_Doctrine",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9D%9C%E9%B2%81%E9%97%A8%E4%B8%BB%E4%B9%89",
+        "es": "https://es.wikipedia.org/wiki/Doctrina_Truman",
+        "fr": "https://fr.wikipedia.org/wiki/Doctrine_Truman",
+        "de": "https://de.wikipedia.org/wiki/Truman-Doktrin",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%A8%D8%AF%D8%A3_%D8%AA%D8%B1%D9%88%D9%85%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%BA%D1%82%D1%80%D0%B8%D0%BD%D0%B0_%D0%A2%D1%80%D1%83%D0%BC%D1%8D%D0%BD%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Special%20Message%20to%20Congress%20on%20Greece%20and%20Turkey%20The%20Truman%20Doctrine.jpg"
+    },
+    {
+      "id": "Q223732",
+      "name": "Declaration of the Establishment of the State of Israel",
+      "category": "society-administration",
+      "year": 1948,
+      "month": 5,
+      "tagline": "1948 declaration of Israel's independence",
+      "sitelinks": 63,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BB%A5%E8%89%B2%E5%88%97%E7%8B%AC%E7%AB%8B%E5%AE%A3%E8%A8%80",
+        "es": "https://es.wikipedia.org/wiki/Declaraci%C3%B3n_de_independencia_de_Israel",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9claration_d%27ind%C3%A9pendance_de_l%27%C3%89tat_d%27Isra%C3%ABl",
+        "de": "https://de.wikipedia.org/wiki/Israelische_Unabh%C3%A4ngigkeitserkl%C3%A4rung",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B9%D9%84%D8%A7%D9%86_%D9%82%D9%8A%D8%A7%D9%85_%D8%AF%D9%88%D9%84%D8%A9_%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%BD%D0%B5%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8_%D0%98%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F"
+      },
+      "countries": [
+        "Q23792"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Israel%20Declaration%20of%20Independence.jpg"
+    },
+    {
+      "id": "Q7184",
+      "name": "NATO",
+      "category": "society-administration",
+      "year": 1949,
+      "month": 4,
+      "tagline": "intergovernmental military alliance between 32 member states",
+      "sitelinks": 240,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/NATO",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/NATO",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8C%97%E5%A4%A7%E8%A5%BF%E6%B4%8B%E5%85%AC%E7%BA%A6%E7%BB%84%E7%BB%87",
+        "es": "https://es.wikipedia.org/wiki/OTAN",
+        "fr": "https://fr.wikipedia.org/wiki/Organisation_du_trait%C3%A9_de_l%27Atlantique_nord",
+        "de": "https://de.wikipedia.org/wiki/NATO",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D9%84%D9%81_%D8%B4%D9%85%D8%A7%D9%84_%D8%A7%D9%84%D8%A3%D8%B7%D9%84%D8%B3%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%90%D0%A2%D0%9E"
+      },
+      "countries": [
+        "Q31"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9D%D0%90%D0%A2%D0%9E%20%D0%A1%D0%B0%D0%BC%D0%B8%D1%82%202021%20NATO%20Summit%202021%20-14.06.2021-%20%2851245988182%29.jpg"
+    },
+    {
+      "id": "Q41644",
+      "name": "Warsaw Pact",
+      "category": "society-administration",
+      "year": 1955,
+      "month": 5,
+      "tagline": "European Eastern Military Alliance (1954 – 1991)",
+      "sitelinks": 116,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Warsaw_Pact",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Warsaw_Pact",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%8E%E6%B2%99%E6%9D%A1%E7%BA%A6%E7%BB%84%E7%BB%87",
+        "es": "https://es.wikipedia.org/wiki/Pacto_de_Varsovia",
+        "fr": "https://fr.wikipedia.org/wiki/Pacte_de_Varsovie",
+        "de": "https://de.wikipedia.org/wiki/Warschauer_Pakt",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D9%84%D9%81_%D9%88%D8%A7%D8%B1%D8%B3%D9%88",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F_%D0%92%D0%B0%D1%80%D1%88%D0%B0%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q208191",
+      "name": "Asian–African Conference",
+      "category": "society-administration",
+      "year": 1955,
+      "month": 4,
+      "endYear": 1955,
+      "endMonth": 4,
+      "tagline": "1955 meeting of Asian and African states in Bandung, West Java, Indonesia",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandung_Conference",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Bandung_Conference",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%90%AC%E9%9A%86%E6%9C%83%E8%AD%B0",
+        "es": "https://es.wikipedia.org/wiki/Conferencia_de_Bandung",
+        "fr": "https://fr.wikipedia.org/wiki/Conf%C3%A9rence_de_Bandung",
+        "de": "https://de.wikipedia.org/wiki/Bandung-Konferenz",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%A4%D8%AA%D9%85%D8%B1_%D8%A8%D8%A7%D9%86%D8%AF%D9%88%D9%86%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%BD%D0%B4%D1%83%D0%BD%D0%B3%D1%81%D0%BA%D0%B0%D1%8F_%D0%BA%D0%BE%D0%BD%D1%84%D0%B5%D1%80%D0%B5%D0%BD%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q252"
+      ]
+    },
+    {
+      "id": "Q5167679",
+      "name": "Dissolution of the Soviet Union",
+      "category": "society-administration",
+      "year": 1991,
+      "month": 12,
+      "tagline": "process leading to the late-1991 breakup of the USSR",
+      "sitelinks": 90,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8B%8F%E8%81%94%E8%A7%A3%E4%BD%93",
+        "es": "https://es.wikipedia.org/wiki/Disoluci%C3%B3n_de_la_Uni%C3%B3n_Sovi%C3%A9tica",
+        "fr": "https://fr.wikipedia.org/wiki/Dislocation_de_l%27URSS",
+        "de": "https://de.wikipedia.org/wiki/Zerfall_der_Sowjetunion",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%81%D9%83%D9%83_%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF_%D8%A7%D9%84%D8%B3%D9%88%D9%81%D9%8A%D8%AA%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D0%BF%D0%B0%D0%B4_%D0%A1%D0%A1%D0%A1%D0%A0"
+      },
+      "countries": [
+        "Q15180"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RIAN%20archive%20140800%20Signing%20of%20Protocol%20on%20Establishing%20Commonwealth%20of%20Independent%20States.jpg"
+    },
+    {
       "id": "Q8272",
       "name": "Epic of Gilgamesh",
       "category": "culture-arts",
@@ -3846,6 +4378,90 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Walhalla%201910%20Goldmine%204000ft.jpg"
     },
     {
+      "id": "Q683846",
+      "name": "Manila galleon",
+      "category": "commerce-finance",
+      "year": 1565,
+      "tagline": "Royal Spanish trading ships, 1565–1815",
+      "sitelinks": 35,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Manila_galleon",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Manila_galleon",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%A9%AC%E5%B0%BC%E6%8B%89%E5%A4%A7%E5%B8%86%E8%88%B9",
+        "es": "https://es.wikipedia.org/wiki/Gale%C3%B3n_de_Manila",
+        "fr": "https://fr.wikipedia.org/wiki/Galion_de_Manille",
+        "de": "https://de.wikipedia.org/wiki/Manila-Galeone",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BD%D0%B8%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B5_%D0%B3%D0%B0%D0%BB%D0%B5%D0%BE%D0%BD%D1%8B"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/16th%20century%20Portuguese%20Spanish%20trade%20routes.png"
+    },
+    {
+      "id": "Q159766",
+      "name": "Dutch East India Company",
+      "category": "commerce-finance",
+      "year": 1602,
+      "tagline": "1602–1799 Dutch trading company",
+      "sitelinks": 89,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Dutch_East_India_Company",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Dutch_East_India_Company",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8D%B7%E5%85%B0%E4%B8%9C%E5%8D%B0%E5%BA%A6%E5%85%AC%E5%8F%B8",
+        "es": "https://es.wikipedia.org/wiki/Compa%C3%B1%C3%ADa_Neerlandesa_de_las_Indias_Orientales",
+        "fr": "https://fr.wikipedia.org/wiki/Compagnie_n%C3%A9erlandaise_des_Indes_orientales",
+        "de": "https://de.wikipedia.org/wiki/Niederl%C3%A4ndische_Ostindien-Kompanie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B4%D8%B1%D9%83%D8%A9_%D8%A7%D9%84%D9%87%D9%86%D8%AF_%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9_%D8%A7%D9%84%D9%87%D9%88%D9%84%D9%86%D8%AF%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%BE%D0%BB%D0%BB%D0%B0%D0%BD%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%9E%D1%81%D1%82-%D0%98%D0%BD%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q170072"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vereenigde%20Oostindische%20Compagnie%20spiegelretourschip%20Amsterdam%20replica.jpg"
+    },
+    {
+      "id": "Q233562",
+      "name": "The Wealth of Nations",
+      "category": "commerce-finance",
+      "year": 1776,
+      "month": 3,
+      "tagline": "1776 work on economics by Adam Smith",
+      "sitelinks": 65,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9C%8B%E5%AF%8C%E8%AB%96",
+        "es": "https://es.wikipedia.org/wiki/La_riqueza_de_las_naciones",
+        "fr": "https://fr.wikipedia.org/wiki/Recherches_sur_la_nature_et_les_causes_de_la_richesse_des_nations",
+        "de": "https://de.wikipedia.org/wiki/Der_Wohlstand_der_Nationen",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D8%B1%D9%88%D8%A9_%D8%A7%D9%84%D8%A3%D9%85%D9%85",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%BE_%D0%BF%D1%80%D0%B8%D1%80%D0%BE%D0%B4%D0%B5_%D0%B8_%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D0%B0%D1%85_%D0%B1%D0%BE%D0%B3%D0%B0%D1%82%D1%81%D1%82%D0%B2%D0%B0_%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BE%D0%B2"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wealth%20of%20Nations.jpg"
+    },
+    {
+      "id": "Q35045",
+      "name": "Potosí",
+      "category": "commerce-finance",
+      "year": 1545,
+      "tagline": "city in Bolivia",
+      "sitelinks": 84,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Potos%C3%AD",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Potos%C3%AD",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B3%A2%E6%89%98%E8%A5%BF",
+        "es": "https://es.wikipedia.org/wiki/Potos%C3%AD",
+        "fr": "https://fr.wikipedia.org/wiki/Potos%C3%AD",
+        "de": "https://de.wikipedia.org/wiki/Potos%C3%AD",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%88%D8%AA%D9%88%D8%B3%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%82%D0%BE%D1%81%D0%B8"
+      },
+      "countries": [
+        "Q750"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vista%20de%20la%20Villa%20Imperial%20de%20Potos%C3%AD.jpg"
+    },
+    {
       "id": "Q48537",
       "name": "Civil rights movement",
       "category": "social-movements",
@@ -3909,6 +4525,96 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation.jpg"
+    },
+    {
+      "id": "Q300646",
+      "name": "A Vindication of the Rights of Woman",
+      "category": "social-movements",
+      "year": 1792,
+      "tagline": "work by Mary Wollstonecraft",
+      "sitelinks": 40,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/A_Vindication_of_the_Rights_of_Woman",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/A_Vindication_of_the_Rights_of_Woman",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A5%B3%E6%AC%8A%E8%BE%AF%E8%AD%B7",
+        "es": "https://es.wikipedia.org/wiki/Vindicaci%C3%B3n_de_los_derechos_de_la_mujer",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9fense_des_droits_de_la_femme",
+        "de": "https://de.wikipedia.org/wiki/Verteidigung_der_Rechte_der_Frau",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D9%81%D8%A7%D8%B9%D8%A7_%D8%B9%D9%86_%D8%AD%D9%82%D9%88%D9%82_%D8%A7%D9%84%D9%85%D8%B1%D8%A3%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92_%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D1%83_%D0%BF%D1%80%D0%B0%D0%B2_%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vindication1b.jpg"
+    },
+    {
+      "id": "Q2736155",
+      "name": "Seneca Falls Convention",
+      "category": "social-movements",
+      "year": 1848,
+      "month": 7,
+      "endYear": 1848,
+      "endMonth": 7,
+      "tagline": "1848 women's rights convention in New York",
+      "sitelinks": 34,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seneca_Falls_Convention",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Seneca_Falls_Convention",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A1%9E%E5%86%85%E5%8D%A1%E7%A6%8F%E5%B0%94%E6%96%AF%E4%BC%9A%E8%AE%AE",
+        "es": "https://es.wikipedia.org/wiki/Convenci%C3%B3n_de_Seneca_Falls",
+        "fr": "https://fr.wikipedia.org/wiki/Convention_de_Seneca_Falls",
+        "de": "https://de.wikipedia.org/wiki/Seneca_Falls_Convention",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%A4%D8%AA%D9%85%D8%B1_%D8%B3%D9%8A%D9%86%D9%8A%D9%83%D8%A7_%D9%81%D9%88%D9%84%D8%B2",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%84%D0%B5%D1%80%D0%B5%D0%BD%D1%86%D0%B8%D1%8F_%D0%B2_%D0%A1%D0%B5%D0%BD%D0%B5%D0%BA%D0%B0-%D0%A4%D0%BE%D0%BB%D1%81%D0%B5"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Woman%27s%20Rights%20Convention.jpg"
+    },
+    {
+      "id": "Q1192212",
+      "name": "Emancipation reform of 1861",
+      "category": "social-movements",
+      "year": 1861,
+      "tagline": "reform passed by Tsar Alexander II of Russia which effectively abolished serfdom throughout the Russian Empire",
+      "sitelinks": 35,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_reform_of_1861",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Emancipation_reform_of_1861",
+        "zh": "https://zh.wikipedia.org/wiki/1861%E5%B9%B4%E4%BF%84%E5%9C%8B%E8%BE%B2%E5%A5%B4%E5%88%B6%E5%BA%A6%E6%94%B9%E9%9D%A9",
+        "es": "https://es.wikipedia.org/wiki/Reforma_emancipadora_de_1861",
+        "fr": "https://fr.wikipedia.org/wiki/Abolition_du_servage_de_1861",
+        "de": "https://de.wikipedia.org/wiki/Aufhebung_der_Leibeigenschaft_in_Russland",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AA%D8%AD%D8%B1%D8%B1_1861",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%82%D0%BC%D0%B5%D0%BD%D0%B0_%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D0%BD%D0%BE%D0%B3%D0%BE_%D0%BF%D1%80%D0%B0%D0%B2%D0%B0_%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q34266"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Reading%20of%20the%20Manifest%20%28Liberation%20of%20peasants%29%20-%20Kustodiev%2C%201907.jpg"
+    },
+    {
+      "id": "Q99717",
+      "name": "1989 Tiananmen Square protests and massacre",
+      "category": "social-movements",
+      "year": 1989,
+      "month": 4,
+      "endYear": 1989,
+      "endMonth": 6,
+      "tagline": "Chinese pro-democracy movement and subsequent massacre",
+      "sitelinks": 90,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%85%AD%E5%9B%9B%E4%BA%8B%E4%BB%B6",
+        "es": "https://es.wikipedia.org/wiki/Protestas_y_masacre_de_la_plaza_de_Tiananm%C3%A9n_de_1989",
+        "fr": "https://fr.wikipedia.org/wiki/Manifestations_de_la_place_Tian%27anmen",
+        "de": "https://de.wikipedia.org/wiki/Tian%E2%80%99anmen-Massaker",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AC%D8%B2%D8%B1%D8%A9_%D8%B3%D8%A7%D8%AD%D8%A9_%D8%AA%D9%8A%D8%A7%D9%86%D8%A7%D9%86%D9%85%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D1%82%D0%B5%D1%81%D1%82%D1%8B_%D0%BD%D0%B0_%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D0%B8_%D0%A2%D1%8F%D0%BD%D1%8C%D0%B0%D0%BD%D1%8C%D0%BC%D1%8D%D0%BD%D1%8C_(1989)"
+      },
+      "countries": [
+        "Q148"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E8%92%B2%E5%BF%97%E5%BC%B719890510.jpg"
     },
     {
       "id": "Q188468",
@@ -4067,6 +4773,27 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Encyclopedie%20de%20D%27Alembert%20et%20Diderot%20-%20Premiere%20Page%20-%20ENC%201-NA5.jpg"
+    },
+    {
+      "id": "Q40591",
+      "name": "The Communist Manifesto",
+      "category": "philosophy-education",
+      "year": 1848,
+      "month": 2,
+      "tagline": "1848 publication written by Karl Marx and Friedrich Engels",
+      "sitelinks": 143,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%85%B1%E4%BA%A7%E5%85%9A%E5%AE%A3%E8%A8%80",
+        "es": "https://es.wikipedia.org/wiki/Manifiesto_del_Partido_Comunista",
+        "fr": "https://fr.wikipedia.org/wiki/Manifeste_du_parti_communiste",
+        "de": "https://de.wikipedia.org/wiki/Manifest_der_Kommunistischen_Partei",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%8A%D8%A7%D9%86_%D8%A7%D9%84%D8%AD%D8%B2%D8%A8_%D8%A7%D9%84%D8%B4%D9%8A%D9%88%D8%B9%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BD%D0%B8%D1%84%D0%B5%D1%81%D1%82_%D0%9A%D0%BE%D0%BC%D0%BC%D1%83%D0%BD%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B9_%D0%BF%D0%B0%D1%80%D1%82%D0%B8%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Communist-manifesto.png"
     },
     {
       "id": "Q151060",
@@ -4245,6 +4972,50 @@
         "Q38"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%202020.jpg"
+    },
+    {
+      "id": "Q12495",
+      "name": "Burj Khalifa",
+      "category": "architecture-design",
+      "year": 2004,
+      "tagline": "skyscraper in Dubai, United Arab Emirates",
+      "sitelinks": 139,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%93%88%E5%88%A9%E6%B3%95%E5%A1%94",
+        "es": "https://es.wikipedia.org/wiki/Burj_Khalifa",
+        "fr": "https://fr.wikipedia.org/wiki/Burj_Khalifa",
+        "de": "https://de.wikipedia.org/wiki/Burj_Khalifa",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B1%D8%AC_%D8%AE%D9%84%D9%8A%D9%81%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D1%80%D0%B4%D0%B6-%D0%A5%D0%B0%D0%BB%D0%B8%D1%84%D0%B0"
+      },
+      "countries": [
+        "Q878"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dubai%20skyline%202015%20%28crop%29.jpg"
+    },
+    {
+      "id": "Q9141",
+      "name": "Taj Mahal",
+      "category": "architecture-design",
+      "year": 1631,
+      "tagline": "marble mausoleum in Agra, India",
+      "sitelinks": 183,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Taj_Mahal",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Taj_Mahal",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B3%B0%E5%A7%AC%E9%99%B5",
+        "es": "https://es.wikipedia.org/wiki/Taj_Mahal",
+        "fr": "https://fr.wikipedia.org/wiki/Taj_Mahal",
+        "de": "https://de.wikipedia.org/wiki/Taj_Mahal",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%AC_%D9%85%D8%AD%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B0%D0%B4%D0%B6-%D0%9C%D0%B0%D1%85%D0%B0%D0%BB"
+      },
+      "countries": [
+        "Q668"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Taj%20Mahal%2C%20Agra%2C%20India%20edit3.jpg"
     }
   ]
 }
