@@ -1,5 +1,20 @@
 [
   {
+    "id": "Q355",
+    "name": "Facebook",
+    "at": {
+      "year": 2004,
+      "month": 2
+    },
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 97,
+    "tagline": "American online social media and social networking service",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Facebook",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Screen%20of%20Facebook%20%282%29.PNG",
+    "description": "Facebook is an American social networking service owned by the American technology conglomerate Meta Platforms. It was founded in 2004 by Mark Zuckerberg, along with his Harvard College roommates and fellow students Eduardo Saverin, Andrew McCollum, Dustin Moskovitz, and Chris Hughes. The name Facebook derives from the face book directories often given to American university students."
+  },
+  {
     "id": "Q75",
     "name": "Internet",
     "at": {
@@ -14,6 +29,23 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Internet%20users%20per%20100%20and%20GDP%20per%20capita.jpg",
     "imageAttribution": "HerrGeisterhuhnmann, via Wikimedia Commons",
     "description": "The Internet is the global system of interconnected computer networks that uses the Internet protocol suite (TCP/IP) to communicate between networks and devices. It is a network of networks that comprises private, public, academic, business, and government networks of local to global scope, linked by electronic, wireless, and optical networking technologies. The Internet carries a vast range of information services and resources, such as the interlinked hypertext documents and applications of the World Wide Web (WWW), electronic mail, discussion groups, internet telephony, streaming media and file sharing."
+  },
+  {
+    "id": "Q1065",
+    "name": "United Nations",
+    "at": {
+      "year": 1945,
+      "month": 10
+    },
+    "category": "society-administration",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 95,
+    "tagline": "global international and intergovernmental organization",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/United_Nations",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Secretary%20Kerry%20Addresses%20Delegates%20Before%20Signing%20the%20COP21%20Climate%20Change%20Agreement%20on%20Earth%20Day%20in%20New%20York%20%2826514585581%29.jpg",
+    "description": "The United Nations (UN) is an international intergovernmental organization established by the signing of the Charter of the United Nations on 26 June 1945 with the articulated mission of maintaining international peace and security, to develop friendly relations among states, to promote international cooperation, and to serve as a centre for harmonizing the actions of states in achieving those goals."
   },
   {
     "id": "Q432",
@@ -61,6 +93,29 @@
     "description": "A computer is a machine that can be programmed to automatically carry out sequences of arithmetic or logical operations (computation). Modern digital electronic computers can perform generic sets of operations known as programs, which enable computers to perform a wide range of tasks. The term computer system may refer to a nominally complete computer that includes the hardware, operating system, software, and peripheral equipment needed and used for full operation, or to a group of computers that are linked and function together, such as a computer network or computer cluster."
   },
   {
+    "id": "Q81068910",
+    "name": "COVID-19 pandemic",
+    "at": {
+      "year": 2019,
+      "month": 12
+    },
+    "category": "medicine-health",
+    "regionTags": [
+      "americas",
+      "east-asia",
+      "south-asia",
+      "europe",
+      "africa",
+      "middle-east"
+    ],
+    "fameScore": 91,
+    "tagline": "pandemic caused by SARS-CoV-2 (2019–2023)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/COVID-19_pandemic",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg",
+    "imageAttribution": "Gustavo Basso, via Wikimedia Commons",
+    "description": "The global COVID-19 pandemic, caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), began with an outbreak in Wuhan, China, in December 2019. It spread to other parts of Asia and then worldwide in early 2020. The World Health Organization (WHO) declared the outbreak a public health emergency of international concern (PHEIC) on 30 January 2020 and assessed it as having become a pandemic on 11 March. The WHO declared that the public health emergency caused by COVID-19 had ended in May 2023, while noting that COVID-19 continued to be a global health threat."
+  },
+  {
     "id": "Q1420",
     "name": "Car",
     "at": {
@@ -96,7 +151,7 @@
     "id": "Q12138",
     "name": "Gregorian calendar",
     "at": {
-      "year": 1648
+      "year": 1582
     },
     "category": "society-administration",
     "regionTags": [],
@@ -141,8 +196,8 @@
     "id": "Q243",
     "name": "Eiffel Tower",
     "at": {
-      "year": 1889,
-      "month": 3
+      "year": 1887,
+      "month": 1
     },
     "category": "architecture-design",
     "regionTags": [
@@ -472,6 +527,38 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%2011%20Crew.jpg",
     "description": "Apollo 11 was the American spaceflight that first landed humans on the Moon, and the fifth crewed mission of NASA's Apollo program. The mission was crewed by Commander Neil Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin \"Buzz\" Aldrin, all of whom were on their second and final spaceflight."
+  },
+  {
+    "id": "Q127912",
+    "name": "United States Declaration of Independence",
+    "at": {
+      "year": 1776,
+      "month": 7
+    },
+    "category": "society-administration",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 83,
+    "tagline": "1776 assertion of colonial America's independence from Great Britain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Declaration%20of%20Independence.jpg",
+    "description": "The Declaration of Independence, headed The unanimous Declaration of the thirteen united States of America on the document directed to be engrossed by Congress on July 19, 1776, is the founding document of the United States. On July 4, 1776, it was adopted unanimously by the Second Continental Congress, who were convened at the Pennsylvania State House, later renamed Independence Hall, in Philadelphia. These delegates became known as the nation's Founding Fathers. The Declaration explains why the Thirteen Colonies regarded themselves as independent sovereign states no longer subject to British colonial rule, and has become one of the most circulated, reprinted, and influential documents in history."
+  },
+  {
+    "id": "Q11698",
+    "name": "United States Constitution",
+    "at": {
+      "year": 1787,
+      "month": 9
+    },
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "supreme law of the United States of America since March 4th, 1789",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Constitution_of_the_United_States",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Constitution%20of%20the%20United%20States%20-%20DPLA%20-%209ca804144bd5965e992ae3528bc3c6a3%20%28page%201%29.jpg",
+    "description": "The Constitution of the United States is the supreme law of the United States of America. It superseded the Articles of Confederation, the nation's first constitution, on March 4, 1789. Originally including seven articles, the Constitution defined the foundational structure of the federal government."
   },
   {
     "id": "Q8272",
@@ -1361,6 +1448,38 @@
     "description": "A graphical user interface, or GUI, is a form of user interface that allows users to interact with electronic devices through graphical icons and visual indicators such as secondary notation. In many applications, GUIs are used instead of text-based UIs, which are based on typed command labels or text navigation. GUIs were introduced in reaction to the perceived steep learning curve of command-line interfaces (CLIs), which require commands to be typed on a computer keyboard."
   },
   {
+    "id": "Q180548",
+    "name": "Neolithic Revolution",
+    "at": {
+      "year": -9000
+    },
+    "category": "food-agriculture",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "transition from hunter gatherer to settled peoples",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Neolithic_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Knapp%20of%20Howar%202.jpg",
+    "description": "The Neolithic Revolution, also known as the  First Agricultural Revolution, was the wide-scale transition of many human cultures during the Neolithic period in Afro-Eurasia from a lifestyle of hunting and gathering to one of agriculture and settlement, making an increasingly large population possible. These settled communities permitted humans to observe and experiment with plants, learning how they grew and developed. This new knowledge led to the domestication of plants into crops."
+  },
+  {
+    "id": "Q11146",
+    "name": "Maastricht Treaty",
+    "at": {
+      "year": 1992,
+      "month": 2
+    },
+    "category": "society-administration",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 76,
+    "tagline": "Founding treaty of the European Union, signed in 1992 and effective from 1993",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Maastricht_Treaty",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/GER%20%E2%80%94%20BY%20%E2%80%94%20Regensburg%20-%20Donaumarkt%201%20%28Museum%20der%20Bayerischen%20Geschichte%3B%20Vertrag%20von%20Maastricht%29%20%28cropped%29.JPG",
+    "imageAttribution": "User:Mateus2019, via Wikimedia Commons",
+    "description": "The Treaty on European Union, commonly known as the Maastricht Treaty, is the foundation treaty of the European Union (EU). Concluded in 1992 between the then-twelve member states of the European Communities, it announced \"a new stage in the process of European integration\" chiefly in provisions for a shared European citizenship, for the eventual introduction of a single currency, and for common foreign and security policies, and a number of changes to the European institutions and their decision-making procedures, not least a strengthening of the powers of the European Parliament and more majority voting on the Council of Ministers. Although these were seen by many to presage a \"federal Europe\", key areas remained inter-governmental with national governments collectively taking key decisions. This constitutional debate continued through the negotiation of subsequent treaties, culminating in the 2007 Treaty of Lisbon."
+  },
+  {
     "id": "Q188468",
     "name": "Ancient Olympic Games",
     "at": {
@@ -1466,6 +1585,23 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Copenhagen%20Metro%20escalators.jpg",
     "imageAttribution": "Stig Nygaard from Copenhagen, Denmark, via Wikimedia Commons",
     "description": "An escalator is a moving staircase which carries people between floors of a building or structure. It consists of a motor-driven chain of individually linked steps on a track which cycle on a pair of tracks which keep the step tread horizontal."
+  },
+  {
+    "id": "Q169399",
+    "name": "ENIAC",
+    "at": {
+      "year": 1946,
+      "month": 2
+    },
+    "category": "everyday-technology",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 75,
+    "tagline": "First electronic general-purpose computer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/ENIAC",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Two%20women%20operating%20ENIAC%20%28full%20resolution%29.jpg",
+    "description": "ENIAC was the first programmable, electronic, general-purpose digital computer, completed in 1945. Other computers had some of these features, but ENIAC was the first to have them all. ENIAC was Turing-complete and able to solve \"a large class of numerical problems\" through reprogramming."
   },
   {
     "id": "Q1932",
@@ -1586,6 +1722,22 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ytterbium%20Optical%20Lattice%20Clock%20purple%20and%20green%20light.png",
     "imageAttribution": "NMIJ, National Metrology Institute of Japan, via Wikimedia Commons",
     "description": "An atomic clock is a clock that measures time by monitoring the resonant frequency of atoms. It is based on the fact that atoms have quantised energy levels, and transitions between such levels are driven by very specific frequencies of electromagnetic radiation. This phenomenon serves as the basis for the SI definition of the second:The second, symbol s, is the SI unit of time. It is defined by taking the fixed numerical value of the caesium frequency, , the unperturbed ground-state hyperfine transition frequency of the caesium-133 atom, to be 9192631770 when expressed in the unit Hz, which is equal to s−1."
+  },
+  {
+    "id": "Q621427",
+    "name": "iPhone (1st generation)",
+    "at": {
+      "year": 2007,
+      "month": 1
+    },
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "first smartphone of the iPhone line by Apple Inc.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/IPhone%201st%20Gen.svg",
+    "imageAttribution": "Rafael Fernandez, via Wikimedia Commons",
+    "description": "The iPhone is a smartphone developed and marketed by Apple as the first device in the iPhone lineup of smartphones. It features a Samsung S5L8900 SoC (90 nm), a 3.5 in multi-touch display, and a web browser (Safari). After years of rumors and speculation, it was officially announced on January 9, 2007, and was released in the United States on June 29, 2007."
   },
   {
     "id": "Q186050",
@@ -1811,7 +1963,7 @@
     "id": "Q447",
     "name": "Encyclopédie",
     "at": {
-      "year": 1772
+      "year": 1751
     },
     "category": "philosophy-education",
     "regionTags": [],
@@ -1951,6 +2103,21 @@
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1816%20summer.png",
     "imageAttribution": "Giorgiogp2, via Wikimedia Commons",
     "description": "The year 1816 is known as the Year Without a Summer because of severe climate abnormalities that caused average global temperatures to decrease by 0.4–0.7 °C (0.7–1 °F). Summer temperatures in Europe that year were the coldest of any on record between 1766 and 2000, resulting in crop failures and major food shortages across the Northern Hemisphere."
+  },
+  {
+    "id": "Q391358",
+    "name": "Emancipation Proclamation",
+    "at": {
+      "year": 1862,
+      "month": 9
+    },
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "executive order issued by president Abraham Lincoln on January 1, 1863 that freed southern slaves",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_Proclamation",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation%2C%2001-01-1863%20%28Page%205%20of%205%29%20%283695345254%29.jpg",
+    "description": "The Emancipation Proclamation, officially Proclamation 95, was a presidential proclamation and executive order issued by United States president Abraham Lincoln on January 1, 1863, during the American Civil War. The Proclamation changed the legal status of more than 3.5 million enslaved African Americans in the secessionist Confederate states from enslaved to free. As soon as slaves escaped the control of their enslavers, either by fleeing to Union lines or through the advance of federal troops, they were permanently free. In addition, the Proclamation allowed for former slaves to \"be received into the armed service of the United States\". The Emancipation Proclamation played a significant part in the end of slavery in the United States."
   },
   {
     "id": "Q151060",
@@ -2121,7 +2288,7 @@
     "id": "Q193841",
     "name": "Cellophane",
     "at": {
-      "year": 1911
+      "year": 1908
     },
     "category": "everyday-technology",
     "regionTags": [],
@@ -2269,6 +2436,20 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Klondike_Gold_Rush",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Miners%20register%20claims.jpg",
     "description": "The Klondike Gold Rush was a migration by an estimated 100,000 prospectors to the Klondike region of Yukon in northwestern Canada, between 1896 and 1898. Gold was discovered there by local miners on August 16, 1896; when news reached Seattle and San Francisco the following year, it triggered a stampede of prospectors. Some became wealthy, but the majority went in vain. It has been immortalized in films, literature, and photographs."
+  },
+  {
+    "id": "Q234027",
+    "name": "Louise Brown",
+    "at": {
+      "year": 1978,
+      "month": 7
+    },
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 68,
+    "tagline": "first in-vitro baby",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Louise_Brown",
+    "description": "Louise Joy Brown is an English woman noted as the first human born following conception by in vitro fertilisation (IVF). Her birth, following a procedure pioneered in Britain, has been lauded among \"the most remarkable medical breakthroughs of the 20th century\"."
   },
   {
     "id": "Q334055",
@@ -2743,6 +2924,23 @@
     "description": "The Ming treasure voyages were maritime expeditions undertaken by Ming China's treasure fleet between 1405 and 1433. The Yongle Emperor ordered the construction of the fleet in 1403. The grand project resulted in seven far-reaching ocean voyages to the coastal territories and islands of the South China Sea and Indian Ocean. Admiral Zheng He was commissioned to command the fleet for the expeditions. Six of the voyages occurred during the Yongle Emperor's reign and the seventh voyage occurred during the Xuande Emperor's reign. The first three voyages reached up to Calicut on India's Malabar Coast, while the fourth voyage went as far as Hormuz in the Persian Gulf. In the last three voyages, the fleet traveled up to the Arabian Peninsula and East Africa."
   },
   {
+    "id": "Q487420",
+    "name": "Slavery Abolition Act 1833",
+    "at": {
+      "year": 1833
+    },
+    "category": "social-movements",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 63,
+    "tagline": "an act of the Parliament of the United Kingdom, which abolished slavery in the British Empire by way of compensated emancipation.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Slavery_Abolition_Act_1833",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Great%20Britain%20%281714%E2%80%931801%29.svg",
+    "imageAttribution": "Sodacan, via Wikimedia Commons",
+    "description": "The Slavery Abolition Act 1833 was an act of the Parliament of the United Kingdom which abolished slavery in the British Empire by way of compensated emancipation. The act was legislated by Whig Prime Minister Charles Grey, 2nd Earl Grey's reforming administration, and it was enacted by ordering the British government to purchase the freedom of all slaves in the British Empire, and by outlawing the further practice of slavery in the British Empire. The Act explicitly delineated 19 separate pots of compensation covering the Caribbean, South Africa, and Mauritius. Although Britain, Canada, Australia, and New Zealand were technically included, these had relatively few slaves at this time for other reasons. India was excluded. Around 800,000 freed slaves were attested in the claims process."
+  },
+  {
     "id": "Q1261053",
     "name": "Woodblock printing",
     "at": {
@@ -2802,6 +3000,21 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen6325.png",
     "description": "The atmospheric engine was invented by Thomas Newcomen in 1712, and is sometimes referred to as the Newcomen fire engine or Newcomen engine. The engine was operated by condensing steam being drawn into the cylinder, thereby creating a partial vacuum which allowed atmospheric pressure to push the piston into the cylinder. It is significant as the first practical device to harness steam to produce mechanical work. Newcomen engines were used throughout Britain and Europe, principally to pump water out of mines. Hundreds were constructed during the 18th century. James Watt's later engine design was an improved version of the Newcomen engine that roughly doubled fuel efficiency. Many atmospheric engines were converted to the Watt design. As a result, Watt is today better known than Newcomen in relation to the origin of the steam engine."
+  },
+  {
+    "id": "Q2453355",
+    "name": "Dartmouth workshop",
+    "at": {
+      "year": 1956
+    },
+    "category": "science-theory",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 59,
+    "tagline": "1956 AI workshop",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dartmouth_workshop",
+    "description": "The Dartmouth Summer Research Project on Artificial Intelligence was a 1956 summer workshop widely considered to be the founding event of artificial intelligence as a field. The workshop has been referred to as \"the Constitutional Convention of AI\". The project's four organizers, Claude Shannon, John McCarthy, Nathaniel Rochester and Marvin Minsky, are considered some of the \"founding fathers\" of AI. However it was not the first conference devoted to what would now be described as the question of artificial intelligence: it postdated meetings such as the 1951 Paris cybernetics conference and the Macy meetings."
   },
   {
     "id": "Q278579",
@@ -2873,5 +3086,19 @@
     "tagline": "overview about the invention of the telephone",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Invention_of_the_telephone",
     "description": "The invention of the telephone was the culmination of work done by many different people, and led to an array of lawsuits relating to the conflicting patent claims made by several individuals and numerous companies. Notable people included in this process were Antonio Meucci, Philipp Reis, Elisha Gray and Alexander Graham Bell."
+  },
+  {
+    "id": "Q2631085",
+    "name": "Deep Blue versus Kasparov, 1997, Game 6",
+    "at": {
+      "year": 1997,
+      "month": 5
+    },
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 46,
+    "tagline": "chess game between human and computer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Kasparov,_1997,_Game_6",
+    "description": "Game 6 of the Deep Blue–Kasparov rematch, played in New York City on 11 May 1997 and starting at 3:00 p.m. EDT, was the final chess game in the 1997 rematch between Deep Blue and Garry Kasparov."
   }
 ]

@@ -60,3 +60,8 @@ test("does not filter by year range or page with LIMIT/OFFSET (a batch of alread
   assert.doesNotMatch(query, /LIMIT/);
   assert.doesNotMatch(query, /OFFSET/);
 });
+
+test("orders by event/date so the earliest date wins as a tiebreak when an item carries two equally-best-ranked claims on the same winning property", () => {
+  const query = buildMilestonesEnrichmentQuery(["Q1"]);
+  assert.match(query, /ORDER BY \?event \?date\s*$/);
+});

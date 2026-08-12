@@ -1,6 +1,6 @@
 {
   "meta": {
-    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates.",
+    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. A third batch of 16 entries (of 20 candidates — 4 dropped for no live date-property claim: Germ theory of disease, CRISPR-Cas method, Discovery of nuclear fission, X-ray) was added the same way, this time hand-searched against Wikidata directly rather than AI-recalled. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates.",
     "categories": [
       "science-theory",
       "medicine-health",
@@ -28,7 +28,7 @@
       "name": "milestone label",
       "category": "one of meta.categories"
     },
-    "count": 188
+    "count": 204
   },
   "milestones": [
     {
@@ -97,6 +97,21 @@
       "category": "science-theory"
     },
     {
+      "id": "Q1895685",
+      "name": "Molecular Structure of Nucleic Acids",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q2453355",
+      "name": "Dartmouth workshop",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q4339620",
+      "name": "Discovery of electrons",
+      "category": "science-theory"
+    },
+    {
       "id": "Q166543",
       "name": "General anaesthesia",
       "category": "medicine-health"
@@ -154,6 +169,16 @@
     {
       "id": "Q817281",
       "name": "Combined oral contraceptive pill",
+      "category": "medicine-health"
+    },
+    {
+      "id": "Q234027",
+      "name": "Louise Brown",
+      "category": "medicine-health"
+    },
+    {
+      "id": "Q81068910",
+      "name": "COVID-19 pandemic",
       "category": "medicine-health"
     },
     {
@@ -254,6 +279,11 @@
     {
       "id": "Q1261053",
       "name": "Woodblock printing",
+      "category": "communication"
+    },
+    {
+      "id": "Q355",
+      "name": "Facebook",
       "category": "communication"
     },
     {
@@ -562,6 +592,21 @@
       "category": "everyday-technology"
     },
     {
+      "id": "Q169399",
+      "name": "ENIAC",
+      "category": "everyday-technology"
+    },
+    {
+      "id": "Q621427",
+      "name": "iPhone (1st generation)",
+      "category": "everyday-technology"
+    },
+    {
+      "id": "Q2631085",
+      "name": "Deep Blue versus Kasparov, 1997, Game 6",
+      "category": "everyday-technology"
+    },
+    {
       "id": "Q1136790",
       "name": "Cotton gin",
       "category": "food-agriculture"
@@ -584,6 +629,11 @@
     {
       "id": "Q186050",
       "name": "Green Revolution",
+      "category": "food-agriculture"
+    },
+    {
+      "id": "Q180548",
+      "name": "Neolithic Revolution",
       "category": "food-agriculture"
     },
     {
@@ -762,6 +812,26 @@
       "category": "society-administration"
     },
     {
+      "id": "Q1065",
+      "name": "United Nations",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q127912",
+      "name": "United States Declaration of Independence",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q11698",
+      "name": "United States Constitution",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q11146",
+      "name": "Maastricht Treaty",
+      "category": "society-administration"
+    },
+    {
       "id": "Q4692",
       "name": "Renaissance",
       "category": "culture-arts"
@@ -894,6 +964,16 @@
     {
       "id": "Q48537",
       "name": "Civil rights movement",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q487420",
+      "name": "Slavery Abolition Act 1833",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q391358",
+      "name": "Emancipation Proclamation",
       "category": "social-movements"
     },
     {

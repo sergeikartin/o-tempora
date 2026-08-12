@@ -20,7 +20,10 @@ function articleOptionalBlocks(): string {
 // structures, then P577 (publication), P580 (start time)/P585 (point in
 // time) for events and multi-year spans, and the four narrow fallbacks
 // (P569 date of birth, P606 first flight, P619 spacecraft launch, P1619
-// official opening) last.
+// official opening) last. Some items carry two BestRank claims on the same
+// winning property with no Preferred rank to break the tie (e.g. Q1065
+// United Nations has both a year-precision and a day-precision P571) — the
+// query's own ORDER BY, not this array, is what makes that deterministic.
 const DATE_PROPERTIES = ["P575", "P571", "P577", "P580", "P585", "P569", "P606", "P619", "P729", "P1619"] as const;
 
 function dateVar(property: string): string {
@@ -57,7 +60,10 @@ function dateOptionalBlocks(): string {
 // of the Milestones taxonomy-expansion merge — a date via DATE_PROPERTIES'
 // priority-ordered COALESCE, same "curated file carries no date of its own"
 // sourcing Conflicts already uses. name/category are still curator-verified
-// and never refetched here.
+// and never refetched here. ORDER BY ?event ?date is the same "earliest
+// claim wins the tie" convention conflicts-enrichment.ts uses — needed here
+// because fetch-milestones-enrichment.ts's fetch loop keeps only the first
+// row's ?date per id.
 export function buildMilestonesEnrichmentQuery(ids: string[]): string {
   const values = ids.map((id) => `wd:${id}`).join(" ");
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `?${articleVar(lang)}`).join(" ");
@@ -75,5 +81,6 @@ ${dateOptionalBlocks()}
   BIND(COALESCE(${timeVars}) AS ?date)
   BIND(COALESCE(${precisionVars}) AS ?datePrecision)
 }
+ORDER BY ?event ?date
 `.trim();
 }
