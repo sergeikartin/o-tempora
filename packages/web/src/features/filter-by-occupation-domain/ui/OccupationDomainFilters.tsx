@@ -7,7 +7,7 @@ interface OccupationDomainFiltersProps {
   onToggleDomain: (domain: OccupationDomain) => void;
 }
 
-// The sidebar's Legend, doubling as the People-lane Occupation Domain
+// The sidebar's People section — Occupation Domain pills doubling as the
 // filter (grill-with-docs session 2026-08-12): clicking a pill toggles that
 // domain in/out of the active set. Multi-select OR; no domains active means
 // unfiltered — see CONTEXT.md's Occupation Domain entry.

@@ -23,12 +23,12 @@ function renderSidebar(overrides: Partial<SidebarProps> = {}) {
   );
 }
 
-test('renders one Legend pill per OccupationDomain', () => {
+test('renders one Occupation Domain pill per OccupationDomain', () => {
   const { getByRole } = renderSidebar();
 
-  const legend = getByRole('heading', { name: 'Legend' }).closest('section');
-  expect(legend?.querySelectorAll('li')).toHaveLength(OCCUPATION_DOMAINS.length);
-  expect(legend?.textContent).toContain('Science & Technology');
+  const people = getByRole('heading', { name: 'People' }).closest('section');
+  expect(people?.querySelectorAll('li')).toHaveLength(OCCUPATION_DOMAINS.length);
+  expect(people?.textContent).toContain('Science & Technology');
 });
 
 test('renders the fame-score filter inputs, pre-filled with the given values', () => {
@@ -43,7 +43,7 @@ test('renders the Data Depth switch, showing Curated active for the default valu
   expect(getByRole('button', { name: 'Curated' }).getAttribute('aria-pressed')).toBe('true');
 });
 
-test('clicking a Legend pill calls onToggleDomain with that domain', () => {
+test('clicking an Occupation Domain pill calls onToggleDomain with that domain', () => {
   const onToggleDomain = vi.fn();
   const { getByLabelText } = renderSidebar({ onToggleDomain });
 
