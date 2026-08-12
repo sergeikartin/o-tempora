@@ -6,7 +6,6 @@ import {
   pixelsPerYearBounds,
   zoomIn,
   zoomOut,
-  CONFLICT_COLOR,
   MILESTONE_CATEGORY_COLORS,
   BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
   BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
@@ -16,8 +15,8 @@ import {
   DECADE_TICK_PHASE_OFFSET_YEARS,
 } from './options';
 import { today } from '../../shared/lib/dates';
-import { PAN_MIN_DATE, DOMAIN_COLORS } from '../../shared/config';
-import { OCCUPATION_DOMAINS, MILESTONE_CATEGORIES } from '../../shared/types';
+import { PAN_MIN_DATE, DOMAIN_COLORS, MILESTONE_CATEGORY_GROUP_COLORS, CONFLICT_COLOR } from '../../shared/config';
+import { OCCUPATION_DOMAINS, MILESTONE_CATEGORIES, MILESTONE_CATEGORY_GROUPS, MILESTONE_CATEGORY_TO_GROUP } from '../../shared/types';
 
 test('buildXScale domains from PAN_MIN_DATE to a live today() read', () => {
   const { scale } = buildXScale(5);
@@ -109,4 +108,19 @@ test('MILESTONE_CATEGORY_COLORS has one entry per MilestoneCategory, folded into
   // not an accident, so this asserts the fold lands on exactly 3 distinct
   // hexes rather than the old one-hue-per-category invariant.
   expect(new Set(values).size).toBe(3);
+});
+
+test('MILESTONE_CATEGORY_COLORS is derived from MILESTONE_CATEGORY_TO_GROUP + MILESTONE_CATEGORY_GROUP_COLORS', () => {
+  for (const category of MILESTONE_CATEGORIES) {
+    const group = MILESTONE_CATEGORY_TO_GROUP[category];
+    expect(MILESTONE_CATEGORY_COLORS[category]).toBe(MILESTONE_CATEGORY_GROUP_COLORS[group]);
+  }
+});
+
+test('MILESTONE_CATEGORY_TO_GROUP covers every MilestoneCategory, resolving to exactly one of the 3 groups', () => {
+  for (const category of MILESTONE_CATEGORIES) {
+    expect(MILESTONE_CATEGORY_GROUPS).toContain(MILESTONE_CATEGORY_TO_GROUP[category]);
+  }
+  const coveredCategories = new Set(Object.keys(MILESTONE_CATEGORY_TO_GROUP));
+  expect(coveredCategories.size).toBe(MILESTONE_CATEGORIES.length);
 });

@@ -1,7 +1,8 @@
 import { cleanup, render } from '@testing-library/react';
 import { test, expect, afterEach } from 'vitest';
 import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
-import { buildXScale, CONFLICT_COLOR, MILESTONE_CATEGORY_COLORS } from './options';
+import { buildXScale, MILESTONE_CATEGORY_COLORS } from './options';
+import { CONFLICT_COLOR } from '../../shared/config';
 import type { Conflict, ConflictEvent, Milestone } from '../../shared/types';
 
 afterEach(cleanup);

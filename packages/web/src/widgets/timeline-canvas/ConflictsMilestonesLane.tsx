@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { ConflictEntry, Milestone } from '../../shared/types';
+import { CONFLICT_COLOR } from '../../shared/config';
 import {
   assignRows,
   conflictPixelInterval,
@@ -9,7 +10,6 @@ import {
   milestonePixelInterval,
 } from './map-to-items';
 import {
-  CONFLICT_COLOR,
   LANE_TOP_PADDING,
   MILESTONE_CATEGORY_COLORS,
   MILESTONES_LABEL_LINE_HEIGHT_PX,

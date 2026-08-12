@@ -2,14 +2,17 @@ import { test, expect } from 'vitest';
 import {
   assignRows,
   filterByFameScore,
+  filterByMilestoneCategoryGroup,
   filterByOccupationDomain,
   filterByRegion,
+  filterConflictsByFilterValues,
   mapMilestones,
   mapPeople,
   mapConflicts,
 } from './map-to-items';
 import { today } from '../../shared/lib/dates';
-import type { Milestone, Person, Conflict, ConflictEvent, Region } from '../../shared/types';
+import type { Milestone, MilestoneCategory, Person, Conflict, ConflictEvent, Region } from '../../shared/types';
+import type { ConflictsMilestonesFilterValue } from '../../shared/config';
 
 const person: Person = {
   id: 'Q868',
@@ -265,6 +268,54 @@ test('filterByRegion unions multiple selected regions (OR) and matches any tag i
 test('filterByRegion excludes an item with no region tags once a filter is active', () => {
   const items: RegionFixture[] = [{ id: 'a', regionTags: [] }];
   expect(filterByRegion(items, ['europe'], regionsOf)).toHaveLength(0);
+});
+
+// filterByMilestoneCategoryGroup / filterConflictsByFilterValues — the
+// sidebar's "Conflicts & Milestones" section is one shared multi-select
+// (ConflictsMilestonesFilterValue[]: 'conflicts' + the 3 MilestoneCategoryGroup
+// values), applied differently per lane.
+interface MilestoneGroupFixture {
+  id: string;
+  category: MilestoneCategory;
+}
+
+test('filterByMilestoneCategoryGroup returns items unchanged when no values are selected', () => {
+  const items: MilestoneGroupFixture[] = [{ id: 'a', category: 'science-theory' }];
+  expect(filterByMilestoneCategoryGroup(items, [])).toEqual(items);
+});
+
+test('filterByMilestoneCategoryGroup unions multiple selected groups (OR)', () => {
+  const items: MilestoneGroupFixture[] = [
+    { id: 'a', category: 'science-theory' }, // knowledge-culture
+    { id: 'b', category: 'medicine-health' }, // technology-industry
+    { id: 'c', category: 'commerce-finance' }, // society-governance
+  ];
+  expect(
+    filterByMilestoneCategoryGroup(items, ['knowledge-culture', 'society-governance']).map((item) => item.id),
+  ).toEqual(['a', 'c']);
+});
+
+test('filterByMilestoneCategoryGroup ignores a selected \'conflicts\' sentinel — never matches a MilestoneCategoryGroup', () => {
+  const items: MilestoneGroupFixture[] = [{ id: 'a', category: 'science-theory' }];
+  const selectedValues: ConflictsMilestonesFilterValue[] = ['conflicts'];
+  expect(filterByMilestoneCategoryGroup(items, selectedValues)).toEqual([]);
+});
+
+test('filterConflictsByFilterValues returns items unchanged when no values are selected', () => {
+  const items = [{ id: 'a' }, { id: 'b' }];
+  expect(filterConflictsByFilterValues(items, [])).toEqual(items);
+});
+
+test('filterConflictsByFilterValues keeps items when \'conflicts\' is selected', () => {
+  const items = [{ id: 'a' }, { id: 'b' }];
+  const selectedValues: ConflictsMilestonesFilterValue[] = ['conflicts'];
+  expect(filterConflictsByFilterValues(items, selectedValues)).toEqual(items);
+});
+
+test('filterConflictsByFilterValues excludes items when a non-empty selection omits \'conflicts\'', () => {
+  const items = [{ id: 'a' }, { id: 'b' }];
+  const selectedValues: ConflictsMilestonesFilterValue[] = ['knowledge-culture'];
+  expect(filterConflictsByFilterValues(items, selectedValues)).toEqual([]);
 });
 
 // assignRows — fame-priority interval-graph row stacking shared by every

@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, afterEach, vi } from 'vitest';
 import { TimelineCanvas } from './TimelineCanvas';
 import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
+import type { ConflictsMilestonesFilterValue } from '../../shared/config';
 
 afterEach(cleanup);
 
@@ -47,6 +48,7 @@ const fixtureMilestones: Milestone[] = [
 const defaultFameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
 const defaultSelectedDomains: OccupationDomain[] = [];
 const defaultSelectedRegions: Region[] = [];
+const defaultSelectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[] = [];
 const noopEntityClick = () => {};
 
 test('renders both lanes, each populated from its own dataset', () => {
@@ -58,6 +60,7 @@ test('renders both lanes, each populated from its own dataset', () => {
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -87,6 +90,7 @@ test('the two lane sections and every year axis share the same rendered width', 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -120,6 +124,7 @@ test('the full-height decade gridline is split into a BCE and a CE region with d
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -146,6 +151,7 @@ test('renders three year axes — top, between People and Conflicts+Milestones, 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -162,6 +168,7 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -186,6 +193,7 @@ test('dragging the Mountain Profile viewport rect scrolls the container, proport
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -238,6 +246,7 @@ test('a mousedown on the scroll container content still pans it — the custom s
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -258,6 +267,7 @@ test('clicking the Mountain Profile track outside the viewport rect jumps the vi
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -288,6 +298,7 @@ test('releasing a drag suppresses the click event that follows it', () => {
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
     />,
   );
@@ -316,6 +327,7 @@ test('a click preceded only by sub-threshold pointer jitter still registers', ()
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
     />,
   );
@@ -339,6 +351,7 @@ test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll alrea
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -365,6 +378,7 @@ test('the zoom-in button widens rendered lines; zoom-out narrows them back', () 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -397,6 +411,7 @@ test('zooming does not change which entities are rendered — density is gated b
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -426,6 +441,7 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -439,6 +455,7 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       fameScoreValues={{ ...defaultFameScoreValues, people: 75 }}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -454,6 +471,7 @@ test('a person outside an active Occupation Domain filter is excluded; clearing 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={['science-technology']}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -467,6 +485,7 @@ test('a person outside an active Occupation Domain filter is excluded; clearing 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -482,6 +501,7 @@ test('an item outside an active Region filter is excluded; clearing the filter r
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={['africa']}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -495,6 +515,7 @@ test('an item outside an active Region filter is excluded; clearing the filter r
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={['east-asia']}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -510,6 +531,7 @@ test('an item with no region tags is excluded once a Region filter is active', (
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={['europe']}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -527,6 +549,7 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -545,6 +568,7 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
       fameScoreValues={{ ...defaultFameScoreValues, people: 80 }}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -561,6 +585,7 @@ test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -575,6 +600,7 @@ test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
       fameScoreValues={{ ...defaultFameScoreValues, conflicts: 90 }}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
     />,
   );
@@ -592,6 +618,7 @@ test('clicking a mark reports its entity id/type via onEntityClick, resolved thr
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
     />,
   );
@@ -612,6 +639,7 @@ test('clicking empty canvas space (no data-entity-id ancestor) does not call onE
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
     />,
   );
@@ -632,6 +660,7 @@ test('a mark with an unrecognized data-entity-type is ignored rather than report
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
     />,
   );

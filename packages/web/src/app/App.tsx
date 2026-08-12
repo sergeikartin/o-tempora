@@ -6,6 +6,7 @@ import type { Milestone, Person, ConflictEntry } from '../shared/types';
 import { useFameScoreFilters, type FilteredCounts } from '../features/filter-by-fame-score';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
 import { useRegionFilter } from '../features/filter-by-region';
+import { useConflictsMilestonesFilter } from '../features/filter-conflicts-milestones';
 import { useSelectedEntity } from '../features/select-timeline-entity';
 import { TimelineCanvas } from '../widgets/timeline-canvas';
 import { Sidebar } from '../widgets/sidebar';
@@ -20,6 +21,8 @@ export function App() {
   const { values: fameScoreValues, setValue: setFameScoreValue } = useFameScoreFilters();
   const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
   const { selectedRegions, toggleRegion } = useRegionFilter();
+  const { selectedValues: selectedConflictsMilestonesValues, toggleValue: toggleConflictsMilestonesValue } =
+    useConflictsMilestonesFilter();
   const { selected: selectedRef, select: selectEntity, clear: closeDetailPanel } = useSelectedEntity();
   const [filteredCounts, setFilteredCounts] = useState<FilteredCounts>();
 
@@ -53,6 +56,8 @@ export function App() {
           onToggleDomain={toggleDomain}
           selectedRegions={selectedRegions}
           onToggleRegion={toggleRegion}
+          selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
+          onToggleConflictsMilestonesValue={toggleConflictsMilestonesValue}
         />
         <TimelineCanvas
           people={peopleData}
@@ -61,6 +66,7 @@ export function App() {
           fameScoreValues={fameScoreValues}
           selectedDomains={selectedDomains}
           selectedRegions={selectedRegions}
+          selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
           onEntityClick={selectEntity}
           onFilteredCountsChange={setFilteredCounts}
         />
