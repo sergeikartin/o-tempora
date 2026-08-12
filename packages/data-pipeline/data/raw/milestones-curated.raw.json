@@ -182,16 +182,6 @@
       "category": "medicine-health"
     },
     {
-      "id": "Q132659",
-      "name": "Egyptian hieroglyphs",
-      "category": "communication"
-    },
-    {
-      "id": "Q401",
-      "name": "Cuneiform",
-      "category": "communication"
-    },
-    {
       "id": "Q211248",
       "name": "Mayan hieroglyphs",
       "category": "communication"
@@ -832,16 +822,6 @@
       "category": "society-administration"
     },
     {
-      "id": "Q4692",
-      "name": "Renaissance",
-      "category": "culture-arts"
-    },
-    {
-      "id": "Q12539",
-      "name": "Age of Enlightenment",
-      "category": "culture-arts"
-    },
-    {
       "id": "Q8272",
       "name": "Epic of Gilgamesh",
       "category": "culture-arts"
@@ -872,8 +852,8 @@
       "category": "religion-mythology"
     },
     {
-      "id": "Q12562",
-      "name": "Protestant Reformation",
+      "id": "Q157506",
+      "name": "Ninety-five Theses",
       "category": "religion-mythology"
     },
     {
