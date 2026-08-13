@@ -1,13 +1,15 @@
 {
   "meta": {
-    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. A third batch of 16 entries (of 20 candidates — 4 dropped for no live date-property claim: Germ theory of disease, CRISPR-Cas method, Discovery of nuclear fission, X-ray) was added the same way, this time hand-searched against Wikidata directly rather than AI-recalled. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates. A 2026-08-13 recategorization pass: reassigned several items to a better-fitting existing category (e.g. railway/transit infrastructure moved from transportation to infrastructure, engines moved from transportation to energy-industry), dropped 10 lower-signal computing items from everyday-technology as noise, and split 5 pandemic/public-health items (Black Death, 1918 Spanish flu, COVID-19, US FDA, Hygiene) out of medicine-health into a new public-health category — the split was needed so the new 2-value MilestoneCategoryGroup grouping (science-innovation/social-culture, replacing the old 3-value one) could place them correctly (see shared-types).",
+    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. A third batch of 16 entries (of 20 candidates — 4 dropped for no live date-property claim: Germ theory of disease, CRISPR-Cas method, Discovery of nuclear fission, X-ray) was added the same way, this time hand-searched against Wikidata directly rather than AI-recalled. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates. A 2026-08-13 recategorization pass: reassigned several items to a better-fitting existing category (e.g. railway/transit infrastructure moved from transportation to infrastructure, engines moved from transportation to energy-industry), dropped 10 lower-signal computing items from everyday-technology as noise, and split 5 pandemic/public-health items (Black Death, 1918 Spanish flu, COVID-19, US FDA, Hygiene) out of medicine-health into a new public-health category — the split was needed so the new 2-value MilestoneCategoryGroup grouping (science-innovation/social-culture, replacing the old 3-value one) could place them correctly (see shared-types). A same-day follow-up pass: moved archaeology-anthropology wholesale to social-culture; folded Great Irish Famine into public-health; split media-culture (Penny Black postage stamp, BBC Television Service launch, Facebook, Workers Leaving the Lumière Factory) out of communication; and merged architecture-design with infrastructure's single-structure items (Aqua Appia, Brooklyn Bridge, Channel Tunnel, Hoover Dam, Panama Canal, Suez Canal, The Iron Bridge, plus Escalator) into a new landmarks category — architecture-design retired, infrastructure now holds only its 5 transit-network items (First Transcontinental Railroad, High-speed rail, Interstate Highway System, London Underground, Stockton and Darlington Railway).",
     "categories": [
       "science-theory",
       "medicine-health",
       "public-health",
       "communication",
+      "media-culture",
       "transportation",
       "infrastructure",
+      "landmarks",
       "everyday-technology",
       "food-agriculture",
       "exploration",
@@ -21,8 +23,7 @@
       "sports-entertainment",
       "philosophy-education",
       "law-jurisprudence",
-      "archaeology-anthropology",
-      "architecture-design"
+      "archaeology-anthropology"
     ],
     "fields": {
       "id": "bare Wikidata QID, no URI/prefix",
@@ -220,7 +221,7 @@
     {
       "id": "Q107701",
       "name": "Penny Black (postage stamp)",
-      "category": "communication"
+      "category": "media-culture"
     },
     {
       "id": "Q11035",
@@ -250,12 +251,12 @@
     {
       "id": "Q8665",
       "name": "Workers Leaving the Lumière Factory",
-      "category": "communication"
+      "category": "media-culture"
     },
     {
       "id": "Q191472",
       "name": "BBC Television Service launch",
-      "category": "communication"
+      "category": "media-culture"
     },
     {
       "id": "Q75",
@@ -295,7 +296,7 @@
     {
       "id": "Q355",
       "name": "Facebook",
-      "category": "communication"
+      "category": "media-culture"
     },
     {
       "id": "Q178193",
@@ -405,27 +406,27 @@
     {
       "id": "Q99200",
       "name": "The Iron Bridge",
-      "category": "infrastructure"
+      "category": "landmarks"
     },
     {
       "id": "Q899",
       "name": "Suez Canal",
-      "category": "infrastructure"
+      "category": "landmarks"
     },
     {
       "id": "Q7350",
       "name": "Panama Canal",
-      "category": "infrastructure"
+      "category": "landmarks"
     },
     {
       "id": "Q10257",
       "name": "Channel Tunnel",
-      "category": "infrastructure"
+      "category": "landmarks"
     },
     {
       "id": "Q278579",
       "name": "Aqua Appia",
-      "category": "infrastructure"
+      "category": "landmarks"
     },
     {
       "id": "Q94247",
@@ -435,12 +436,12 @@
     {
       "id": "Q125006",
       "name": "Brooklyn Bridge",
-      "category": "infrastructure"
+      "category": "landmarks"
     },
     {
       "id": "Q172822",
       "name": "Hoover Dam",
-      "category": "infrastructure"
+      "category": "landmarks"
     },
     {
       "id": "Q160464",
@@ -495,7 +496,7 @@
     {
       "id": "Q15003",
       "name": "Escalator",
-      "category": "architecture-design"
+      "category": "landmarks"
     },
     {
       "id": "Q146578",
@@ -595,7 +596,7 @@
     {
       "id": "Q188371",
       "name": "Great Irish Famine",
-      "category": "food-agriculture"
+      "category": "public-health"
     },
     {
       "id": "Q221474",
@@ -1120,32 +1121,32 @@
     {
       "id": "Q37200",
       "name": "Great Pyramid of Giza",
-      "category": "architecture-design"
+      "category": "landmarks"
     },
     {
       "id": "Q12506",
       "name": "Hagia Sophia",
-      "category": "architecture-design"
+      "category": "landmarks"
     },
     {
       "id": "Q243",
       "name": "Eiffel Tower",
-      "category": "architecture-design"
+      "category": "landmarks"
     },
     {
       "id": "Q10285",
       "name": "Colosseum",
-      "category": "architecture-design"
+      "category": "landmarks"
     },
     {
       "id": "Q12495",
       "name": "Burj Khalifa",
-      "category": "architecture-design"
+      "category": "landmarks"
     },
     {
       "id": "Q9141",
       "name": "Taj Mahal",
-      "category": "architecture-design"
+      "category": "landmarks"
     }
   ]
 }

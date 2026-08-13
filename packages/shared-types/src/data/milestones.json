@@ -2,7 +2,7 @@
   {
     "id": "Q355",
     "name": "Facebook",
-    "category": "communication",
+    "category": "media-culture",
     "regionTags": [],
     "fameScore": 97,
     "tagline": "American online social media and social networking service",
@@ -114,12 +114,12 @@
     "name": "COVID-19 pandemic",
     "category": "public-health",
     "regionTags": [
-      "south-asia",
-      "middle-east",
-      "east-asia",
-      "africa",
+      "europe",
       "americas",
-      "europe"
+      "south-asia",
+      "africa",
+      "east-asia",
+      "middle-east"
     ],
     "fameScore": 91,
     "tagline": "pandemic caused by SARS-CoV-2 (2019–2023)",
@@ -196,7 +196,7 @@
   {
     "id": "Q243",
     "name": "Eiffel Tower",
-    "category": "architecture-design",
+    "category": "landmarks",
     "regionTags": [
       "europe"
     ],
@@ -213,7 +213,7 @@
   {
     "id": "Q9141",
     "name": "Taj Mahal",
-    "category": "architecture-design",
+    "category": "landmarks",
     "regionTags": [
       "south-asia"
     ],
@@ -318,7 +318,7 @@
   {
     "id": "Q899",
     "name": "Suez Canal",
-    "category": "infrastructure",
+    "category": "landmarks",
     "regionTags": [
       "middle-east"
     ],
@@ -366,7 +366,7 @@
   {
     "id": "Q7350",
     "name": "Panama Canal",
-    "category": "infrastructure",
+    "category": "landmarks",
     "regionTags": [
       "americas"
     ],
@@ -408,7 +408,7 @@
   {
     "id": "Q12506",
     "name": "Hagia Sophia",
-    "category": "architecture-design",
+    "category": "landmarks",
     "regionTags": [
       "middle-east"
     ],
@@ -426,7 +426,7 @@
   {
     "id": "Q10285",
     "name": "Colosseum",
-    "category": "architecture-design",
+    "category": "landmarks",
     "regionTags": [
       "europe"
     ],
@@ -443,7 +443,7 @@
   {
     "id": "Q12495",
     "name": "Burj Khalifa",
-    "category": "architecture-design",
+    "category": "landmarks",
     "regionTags": [],
     "fameScore": 86,
     "tagline": "skyscraper in Dubai, United Arab Emirates",
@@ -534,7 +534,7 @@
   {
     "id": "Q37200",
     "name": "Great Pyramid of Giza",
-    "category": "architecture-design",
+    "category": "landmarks",
     "regionTags": [
       "middle-east"
     ],
@@ -987,7 +987,7 @@
   {
     "id": "Q10257",
     "name": "Channel Tunnel",
-    "category": "infrastructure",
+    "category": "landmarks",
     "regionTags": [
       "europe"
     ],
@@ -1147,7 +1147,7 @@
   {
     "id": "Q125006",
     "name": "Brooklyn Bridge",
-    "category": "infrastructure",
+    "category": "landmarks",
     "regionTags": [
       "americas"
     ],
@@ -1557,7 +1557,7 @@
   {
     "id": "Q172822",
     "name": "Hoover Dam",
-    "category": "infrastructure",
+    "category": "landmarks",
     "regionTags": [
       "americas"
     ],
@@ -1623,7 +1623,7 @@
   {
     "id": "Q188371",
     "name": "Great Irish Famine",
-    "category": "food-agriculture",
+    "category": "public-health",
     "regionTags": [],
     "fameScore": 76,
     "tagline": "1845–1852 famine in Ireland",
@@ -1817,7 +1817,7 @@
   {
     "id": "Q15003",
     "name": "Escalator",
-    "category": "architecture-design",
+    "category": "landmarks",
     "regionTags": [],
     "fameScore": 75,
     "tagline": "moving staircase",
@@ -2117,7 +2117,7 @@
   {
     "id": "Q191472",
     "name": "BBC Television Service launch",
-    "category": "communication",
+    "category": "media-culture",
     "regionTags": [
       "europe"
     ],
@@ -2851,7 +2851,7 @@
   {
     "id": "Q107701",
     "name": "Penny Black (postage stamp)",
-    "category": "communication",
+    "category": "media-culture",
     "regionTags": [
       "europe"
     ],
@@ -3189,7 +3189,7 @@
   {
     "id": "Q8665",
     "name": "Workers Leaving the Lumière Factory",
-    "category": "communication",
+    "category": "media-culture",
     "regionTags": [
       "europe"
     ],
@@ -3320,7 +3320,7 @@
   {
     "id": "Q99200",
     "name": "The Iron Bridge",
-    "category": "infrastructure",
+    "category": "landmarks",
     "regionTags": [
       "europe"
     ],
@@ -3489,7 +3489,7 @@
   {
     "id": "Q278579",
     "name": "Aqua Appia",
-    "category": "infrastructure",
+    "category": "landmarks",
     "regionTags": [
       "europe"
     ],
@@ -3573,7 +3573,7 @@
     "name": "Invention of telephone",
     "category": "communication",
     "regionTags": [],
-    "fameScore": 52,
+    "fameScore": 53,
     "tagline": "overview about the invention of the telephone",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Invention_of_the_telephone",
     "description": "The invention of the telephone was the culmination of work done by many different people, and led to an array of lawsuits relating to the conflicting patent claims made by several individuals and numerous companies. Notable people included in this process were Antonio Meucci, Philipp Reis, Elisha Gray and Alexander Graham Bell.",
