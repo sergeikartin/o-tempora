@@ -1,9 +1,10 @@
 {
   "meta": {
-    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. A third batch of 16 entries (of 20 candidates — 4 dropped for no live date-property claim: Germ theory of disease, CRISPR-Cas method, Discovery of nuclear fission, X-ray) was added the same way, this time hand-searched against Wikidata directly rather than AI-recalled. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates.",
+    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. A third batch of 16 entries (of 20 candidates — 4 dropped for no live date-property claim: Germ theory of disease, CRISPR-Cas method, Discovery of nuclear fission, X-ray) was added the same way, this time hand-searched against Wikidata directly rather than AI-recalled. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates. A 2026-08-13 recategorization pass: reassigned several items to a better-fitting existing category (e.g. railway/transit infrastructure moved from transportation to infrastructure, engines moved from transportation to energy-industry), dropped 10 lower-signal computing items from everyday-technology as noise, and split 5 pandemic/public-health items (Black Death, 1918 Spanish flu, COVID-19, US FDA, Hygiene) out of medicine-health into a new public-health category — the split was needed so the new 2-value MilestoneCategoryGroup grouping (science-innovation/social-culture, replacing the old 3-value one) could place them correctly (see shared-types).",
     "categories": [
       "science-theory",
       "medicine-health",
+      "public-health",
       "communication",
       "transportation",
       "infrastructure",
@@ -28,7 +29,7 @@
       "name": "milestone label",
       "category": "one of meta.categories"
     },
-    "count": 233
+    "count": 223
   },
   "milestones": [
     {
@@ -129,7 +130,7 @@
     {
       "id": "Q162297",
       "name": "Hygiene",
-      "category": "medicine-health"
+      "category": "public-health"
     },
     {
       "id": "Q310301",
@@ -149,7 +150,7 @@
     {
       "id": "Q42005",
       "name": "Black Death",
-      "category": "medicine-health"
+      "category": "public-health"
     },
     {
       "id": "Q162684",
@@ -164,12 +165,12 @@
     {
       "id": "Q204711",
       "name": "US Food and Drug Administration",
-      "category": "medicine-health"
+      "category": "public-health"
     },
     {
       "id": "Q178275",
       "name": "1918–1920 flu pandemic (Spanish flu)",
-      "category": "medicine-health"
+      "category": "public-health"
     },
     {
       "id": "Q12190",
@@ -189,7 +190,7 @@
     {
       "id": "Q81068910",
       "name": "COVID-19 pandemic",
-      "category": "medicine-health"
+      "category": "public-health"
     },
     {
       "id": "Q1519099",
@@ -309,7 +310,7 @@
     {
       "id": "Q375044",
       "name": "Stockton and Darlington Railway",
-      "category": "transportation"
+      "category": "infrastructure"
     },
     {
       "id": "Q193692",
@@ -329,7 +330,7 @@
     {
       "id": "Q1753108",
       "name": "First Transcontinental Railroad",
-      "category": "transportation"
+      "category": "infrastructure"
     },
     {
       "id": "Q1420",
@@ -349,12 +350,12 @@
     {
       "id": "Q20075",
       "name": "London Underground",
-      "category": "transportation"
+      "category": "infrastructure"
     },
     {
       "id": "Q174174",
       "name": "Diesel engine",
-      "category": "transportation"
+      "category": "energy-industry"
     },
     {
       "id": "Q197",
@@ -384,7 +385,7 @@
     {
       "id": "Q12757",
       "name": "Internal combustion engine",
-      "category": "transportation"
+      "category": "energy-industry"
     },
     {
       "id": "Q185757",
@@ -394,7 +395,7 @@
     {
       "id": "Q211382",
       "name": "High-speed rail",
-      "category": "transportation"
+      "category": "infrastructure"
     },
     {
       "id": "Q164338",
@@ -459,27 +460,27 @@
     {
       "id": "Q616159",
       "name": "View from the Window at Le Gras",
-      "category": "everyday-technology"
+      "category": "communication"
     },
     {
       "id": "Q179744",
       "name": "Daguerreotype process",
-      "category": "everyday-technology"
+      "category": "communication"
     },
     {
       "id": "Q37828",
       "name": "Refrigerator",
-      "category": "everyday-technology"
+      "category": "energy-industry"
     },
     {
       "id": "Q337724",
       "name": "Lead–acid battery",
-      "category": "everyday-technology"
+      "category": "energy-industry"
     },
     {
       "id": "Q47616",
       "name": "Incandescent light bulb",
-      "category": "everyday-technology"
+      "category": "energy-industry"
     },
     {
       "id": "Q160137",
@@ -494,12 +495,7 @@
     {
       "id": "Q15003",
       "name": "Escalator",
-      "category": "everyday-technology"
-    },
-    {
-      "id": "Q11656",
-      "name": "Diode",
-      "category": "everyday-technology"
+      "category": "architecture-design"
     },
     {
       "id": "Q146578",
@@ -509,11 +505,6 @@
     {
       "id": "Q193841",
       "name": "Cellophane",
-      "category": "everyday-technology"
-    },
-    {
-      "id": "Q877055",
-      "name": "Crystal oscillator",
       "category": "everyday-technology"
     },
     {
@@ -532,18 +523,8 @@
       "category": "everyday-technology"
     },
     {
-      "id": "Q16338",
-      "name": "Personal computer",
-      "category": "everyday-technology"
-    },
-    {
       "id": "Q5860",
       "name": "Carbon fibers",
-      "category": "everyday-technology"
-    },
-    {
-      "id": "Q31087",
-      "name": "Calculator",
       "category": "everyday-technology"
     },
     {
@@ -557,21 +538,6 @@
       "category": "everyday-technology"
     },
     {
-      "id": "Q5293",
-      "name": "Floppy disk",
-      "category": "everyday-technology"
-    },
-    {
-      "id": "Q782543",
-      "name": "Graphical user interface",
-      "category": "everyday-technology"
-    },
-    {
-      "id": "Q5301",
-      "name": "TeX",
-      "category": "everyday-technology"
-    },
-    {
       "id": "Q34467",
       "name": "Compact disc",
       "category": "everyday-technology"
@@ -582,21 +548,6 @@
       "category": "everyday-technology"
     },
     {
-      "id": "Q80831",
-      "name": "Integrated circuit",
-      "category": "everyday-technology"
-    },
-    {
-      "id": "Q5297",
-      "name": "Microprocessor",
-      "category": "everyday-technology"
-    },
-    {
-      "id": "Q169399",
-      "name": "ENIAC",
-      "category": "everyday-technology"
-    },
-    {
       "id": "Q621427",
       "name": "iPhone (1st generation)",
       "category": "everyday-technology"
@@ -604,7 +555,7 @@
     {
       "id": "Q2631085",
       "name": "Deep Blue versus Kasparov, 1997, Game 6",
-      "category": "everyday-technology"
+      "category": "sports-entertainment"
     },
     {
       "id": "Q115564437",

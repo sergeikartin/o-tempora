@@ -132,27 +132,27 @@ export function personLaneHeight(rowCount: number): number {
   return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
 }
 
-// Milestones' own palette. MilestoneCategory keeps its full 20-value
+// Milestones' own palette. MilestoneCategory keeps its full 21-value
 // taxonomy for filtering/labels (disjoint from Conflicts' ConflictCategory,
 // which no longer drives a color — see CONFLICT_COLOR above), but color
-// folds every category into 3 legible groups plus the flat Conflict red —
-// 20 near-distinguishable hues at ~11° hue separation was below any
+// folds every category into 2 legible groups plus the flat Conflict red —
+// a 21-hue-per-category palette sits at ~9° hue separation, below any
 // CVD-safe spacing and more colors than a legend can hold anyway. Each
 // group rhymes with (is a darker, richer step of) the People-domain hue its
-// content actually echoes, so the color language is learned once: Knowledge
-// & Culture deepens Humanities, Technology & Industry deepens Science &
-// Technology, Society & Governance deepens Public Figure. See
-// docs/design-tokens.md for the validation report and the full category ->
-// group mapping. MILESTONE_CATEGORY_GROUP_COLORS itself lives in
-// shared/config (imported above), not here, since the sidebar's Milestone
-// Category Group filter pills need it too and features/ can't import from
-// widgets/ under mini-FSD's layer rule — see that file's own comment.
+// content actually echoes, so the color language is learned once: Science &
+// Innovation deepens Science & Technology, Social & Human Culture deepens
+// Public Figure. See docs/design-tokens.md for the validation report and
+// the full category -> group mapping. MILESTONE_CATEGORY_GROUP_COLORS
+// itself lives in shared/config (imported above), not here, since the
+// sidebar's Milestone Category Group filter pills need it too and
+// features/ can't import from widgets/ under mini-FSD's layer rule — see
+// that file's own comment.
 //
 // Derived from MILESTONE_CATEGORY_TO_GROUP (packages/shared-types) rather
 // than listing per-category hexes directly, so the timeline's color and the
 // sidebar's Milestone Category Group filter can never silently drift apart
 // — public shape and values are unchanged (still one hex per
-// MilestoneCategory, still exactly 3 distinct hexes).
+// MilestoneCategory, still exactly 2 distinct hexes).
 export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = Object.fromEntries(
   Object.entries(MILESTONE_CATEGORY_TO_GROUP).map(([category, group]) => [
     category,

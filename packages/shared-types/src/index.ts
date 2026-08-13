@@ -29,6 +29,7 @@ export type ConflictCategory = (typeof CONFLICT_CATEGORIES)[number];
 export const MILESTONE_CATEGORIES = [
   "science-theory",
   "medicine-health",
+  "public-health",
   "communication",
   "transportation",
   "infrastructure",
@@ -51,39 +52,41 @@ export const MILESTONE_CATEGORIES = [
 
 export type MilestoneCategory = (typeof MILESTONE_CATEGORIES)[number];
 
-// The 3-value grouping above MilestoneCategory's 20 leaf values, driving
+// The 2-value grouping above MilestoneCategory's 21 leaf values, driving
 // the Milestones lane's color palette (packages/web's options.ts) and the
 // sidebar's Milestone Category Group filter — the single canonical source
-// both read from, replacing a grouping that previously existed only as
-// unexported local color constants. See docs/design-tokens.md's Milestone
-// Category Palette table for the same assignments below.
-export const MILESTONE_CATEGORY_GROUPS = ["knowledge-culture", "technology-industry", "society-governance"] as const;
+// both read from. Replaces an earlier 3-value grouping (knowledge-culture /
+// technology-industry / society-governance) that split awkwardly across a
+// hand-curated Science-vs-Social split explored ad hoc in conversation
+// before being formalized here (2026-08-13) — see docs/design-tokens.md's
+// Milestone Category Palette table for the same assignments below.
+export const MILESTONE_CATEGORY_GROUPS = ["science-innovation", "social-culture"] as const;
 
 export type MilestoneCategoryGroup = (typeof MILESTONE_CATEGORY_GROUPS)[number];
 
 export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCategoryGroup> = {
-  "science-theory": "knowledge-culture",
-  "philosophy-education": "knowledge-culture",
-  "culture-arts": "knowledge-culture",
-  "religion-mythology": "knowledge-culture",
-  "archaeology-anthropology": "knowledge-culture",
+  "science-theory": "science-innovation",
+  "medicine-health": "science-innovation",
+  communication: "science-innovation",
+  transportation: "science-innovation",
+  infrastructure: "science-innovation",
+  "everyday-technology": "science-innovation",
+  "food-agriculture": "science-innovation",
+  "energy-industry": "science-innovation",
+  "archaeology-anthropology": "science-innovation",
 
-  "medicine-health": "technology-industry",
-  communication: "technology-industry",
-  transportation: "technology-industry",
-  infrastructure: "technology-industry",
-  "everyday-technology": "technology-industry",
-  "energy-industry": "technology-industry",
-  exploration: "technology-industry",
-  "architecture-design": "technology-industry",
-  "environment-geology": "technology-industry",
-
-  "food-agriculture": "society-governance",
-  "society-administration": "society-governance",
-  "commerce-finance": "society-governance",
-  "social-movements": "society-governance",
-  "sports-entertainment": "society-governance",
-  "law-jurisprudence": "society-governance",
+  "public-health": "social-culture",
+  exploration: "social-culture",
+  "society-administration": "social-culture",
+  "culture-arts": "social-culture",
+  "religion-mythology": "social-culture",
+  "environment-geology": "social-culture",
+  "commerce-finance": "social-culture",
+  "social-movements": "social-culture",
+  "sports-entertainment": "social-culture",
+  "philosophy-education": "social-culture",
+  "law-jurisprudence": "social-culture",
+  "architecture-design": "social-culture",
 };
 
 export const REGIONS = [

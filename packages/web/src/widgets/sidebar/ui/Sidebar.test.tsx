@@ -72,12 +72,12 @@ test('clicking a Region pill calls onToggleRegion with that region', () => {
   expect(onToggleRegion).toHaveBeenCalledWith('middle-east');
 });
 
-test('renders the Conflicts & Milestones section with one pill per filter value (Conflicts + 3 Milestone Category Groups), none pressed by default', () => {
+test('renders the Conflicts & Milestones section with one pill per filter value (Conflicts + 2 Milestone Category Groups), none pressed by default', () => {
   const { getByRole, getByLabelText } = renderSidebar();
 
   const section = getByRole('heading', { name: 'Conflicts & Milestones' }).closest('section');
   expect(section?.querySelectorAll('li')).toHaveLength(CONFLICTS_MILESTONES_FILTER_VALUES.length);
-  expect(section?.textContent).toContain('Technology & Industry');
+  expect(section?.textContent).toContain('Science & Innovation');
   expect(getByLabelText('Filter by Conflicts').getAttribute('aria-pressed')).toBe('false');
 });
 
@@ -85,9 +85,9 @@ test('clicking a Milestone Category Group pill calls onToggleConflictsMilestones
   const onToggleConflictsMilestonesValue = vi.fn();
   const { getByLabelText } = renderSidebar({ onToggleConflictsMilestonesValue });
 
-  fireEvent.click(getByLabelText('Filter by Society & Governance'));
+  fireEvent.click(getByLabelText('Filter by Social & Human Culture'));
 
-  expect(onToggleConflictsMilestonesValue).toHaveBeenCalledWith('society-governance');
+  expect(onToggleConflictsMilestonesValue).toHaveBeenCalledWith('social-culture');
 });
 
 test('clicking the Conflicts pill calls onToggleConflictsMilestonesValue with \'conflicts\'', () => {

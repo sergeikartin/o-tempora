@@ -72,13 +72,13 @@ export function filterByRegion<T>(items: T[], selectedRegions: Region[], regions
 // list, empty means unfiltered" convention — an earlier version split this
 // into a separate Milestone Category Group filter and a differently-styled
 // Conflicts toggle). `selectedValues` folds a UI-only 'conflicts' sentinel
-// together with the 3 real MilestoneCategoryGroup values (see
+// together with the 2 real MilestoneCategoryGroup values (see
 // shared/config/conflicts-milestones-filter.ts) — these two functions each
 // read the one shared array, keyed off whichever part of it applies to
 // their own lane.
 
-// Milestones-only: same 3-group level the Milestones lane's color already
-// varies at (see MILESTONE_CATEGORY_TO_GROUP), not the 20-leaf-category
+// Milestones-only: same 2-group level the Milestones lane's color already
+// varies at (see MILESTONE_CATEGORY_TO_GROUP), not the 21-leaf-category
 // level. A selected 'conflicts' sentinel is simply never equal to any
 // MilestoneCategoryGroup, so it has no effect here.
 export function filterByMilestoneCategoryGroup<T extends { category: MilestoneCategory }>(
