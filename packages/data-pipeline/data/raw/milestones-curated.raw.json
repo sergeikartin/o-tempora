@@ -1,6 +1,6 @@
 {
   "meta": {
-    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. A third batch of 16 entries (of 20 candidates — 4 dropped for no live date-property claim: Germ theory of disease, CRISPR-Cas method, Discovery of nuclear fission, X-ray) was added the same way, this time hand-searched against Wikidata directly rather than AI-recalled. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates. A 2026-08-13 recategorization pass: reassigned several items to a better-fitting existing category (e.g. railway/transit infrastructure moved from transportation to infrastructure, engines moved from transportation to energy-industry), dropped 10 lower-signal computing items from everyday-technology as noise, and split 5 pandemic/public-health items (Black Death, 1918 Spanish flu, COVID-19, US FDA, Hygiene) out of medicine-health into a new public-health category — the split was needed so the new 2-value MilestoneCategoryGroup grouping (science-innovation/social-culture, replacing the old 3-value one) could place them correctly (see shared-types). A same-day follow-up pass: moved archaeology-anthropology wholesale to social-culture; folded Great Irish Famine into public-health; split media-culture (Penny Black postage stamp, BBC Television Service launch, Facebook, Workers Leaving the Lumière Factory) out of communication; and merged architecture-design with infrastructure's single-structure items (Aqua Appia, Brooklyn Bridge, Channel Tunnel, Hoover Dam, Panama Canal, Suez Canal, The Iron Bridge, plus Escalator) into a new landmarks category — architecture-design retired, infrastructure now holds only its 5 transit-network items (First Transcontinental Railroad, High-speed rail, Interstate Highway System, London Underground, Stockton and Darlington Railway).",
+    "description": "Hand-curated, significance-based candidate list for the Milestones lane. Not a SPARQL dump like the sibling events-*.raw.json files — this lane's selection and categorization is curated by hand and verified against live Wikidata per item. Originally 121 entries across the first 10 categories; merged with a second AI-sourced candidate list whose QIDs were almost entirely wrong (83 of 94 candidate ids resolved to an unrelated Wikidata item) — every new entry was re-resolved to its correct QID by name, and any candidate with no matching Wikidata item or no live Wikidata date-property claim was dropped rather than guessed. That second list also introduced 10 new categories, folded into meta.categories below since the per-category color-legend cost was negligible. A third batch of 16 entries (of 20 candidates — 4 dropped for no live date-property claim: Germ theory of disease, CRISPR-Cas method, Discovery of nuclear fission, X-ray) was added the same way, this time hand-searched against Wikidata directly rather than AI-recalled. year/month are no longer curator-authored here — fetchMilestonesEnrichment resolves them live per QID (see queries/milestones-enrichment.ts's DATE_PROPERTIES), same sourcing Conflicts already uses for its dates. A 2026-08-13 recategorization pass: reassigned several items to a better-fitting existing category (e.g. railway/transit infrastructure moved from transportation to infrastructure, engines moved from transportation to energy-industry), dropped 10 lower-signal computing items from everyday-technology as noise, and split 5 pandemic/public-health items (Black Death, 1918 Spanish flu, COVID-19, US FDA, Hygiene) out of medicine-health into a new public-health category — the split was needed so the new 2-value MilestoneCategoryGroup grouping (science-innovation/social-culture, replacing the old 3-value one) could place them correctly (see shared-types). A same-day follow-up pass: moved archaeology-anthropology wholesale to social-culture; folded Great Irish Famine into public-health; split media-culture (Penny Black postage stamp, BBC Television Service launch, Facebook, Workers Leaving the Lumière Factory) out of communication; and merged architecture-design with infrastructure's single-structure items (Aqua Appia, Brooklyn Bridge, Channel Tunnel, Hoover Dam, Panama Canal, Suez Canal, The Iron Bridge, plus Escalator) into a new landmarks category — architecture-design retired, infrastructure now holds only its 5 transit-network items (First Transcontinental Railroad, High-speed rail, Interstate Highway System, London Underground, Stockton and Darlington Railway). A further same-day pass: renamed exploration to expedition, keeping its 7 journey/expedition items and adding The Travels of Marco Polo; moved Sextant to everyday-technology and Sputnik 1/Vostok 1/Voyager 1/International Space Station to transportation; moved View from the Window at Le Gras to media-culture and added Photography to communication; added Liverpool and Manchester Railway to infrastructure; and reassigned infrastructure's group from science-innovation to social-culture in its entirety, dropping the transit-vs-landmark distinction from the prior pass.",
     "categories": [
       "science-theory",
       "medicine-health",
@@ -12,7 +12,7 @@
       "landmarks",
       "everyday-technology",
       "food-agriculture",
-      "exploration",
+      "expedition",
       "energy-industry",
       "society-administration",
       "culture-arts",
@@ -30,7 +30,7 @@
       "name": "milestone label",
       "category": "one of meta.categories"
     },
-    "count": 223
+    "count": 226
   },
   "milestones": [
     {
@@ -314,6 +314,11 @@
       "category": "infrastructure"
     },
     {
+      "id": "Q1398696",
+      "name": "Liverpool and Manchester Railway",
+      "category": "infrastructure"
+    },
+    {
       "id": "Q193692",
       "name": "Electric car",
       "category": "transportation"
@@ -461,6 +466,11 @@
     {
       "id": "Q616159",
       "name": "View from the Window at Le Gras",
+      "category": "media-culture"
+    },
+    {
+      "id": "Q11633",
+      "name": "Photography",
       "category": "communication"
     },
     {
@@ -601,62 +611,67 @@
     {
       "id": "Q221474",
       "name": "First arrival of Christopher Columbus to America",
-      "category": "exploration"
+      "category": "expedition"
     },
     {
       "id": "Q1225170",
       "name": "Magellan-Elcano expedition",
-      "category": "exploration"
+      "category": "expedition"
+    },
+    {
+      "id": "Q654562",
+      "name": "The Travels of Marco Polo",
+      "category": "expedition"
     },
     {
       "id": "Q179430",
       "name": "Sextant",
-      "category": "exploration"
+      "category": "everyday-technology"
     },
     {
       "id": "Q1932",
       "name": "Space race",
-      "category": "exploration"
+      "category": "expedition"
     },
     {
       "id": "Q43653",
       "name": "Apollo 11",
-      "category": "exploration"
+      "category": "expedition"
     },
     {
       "id": "Q80811",
       "name": "Sputnik 1",
-      "category": "exploration"
+      "category": "transportation"
     },
     {
       "id": "Q182524",
       "name": "Vostok 1",
-      "category": "exploration"
+      "category": "transportation"
     },
     {
       "id": "Q8414",
       "name": "Amundsen's South Pole expedition",
-      "category": "exploration"
+      "category": "expedition"
     },
     {
       "id": "Q4567715",
       "name": "1953 British Mount Everest Expedition",
-      "category": "exploration"
+      "category": "expedition"
     },
     {
       "id": "Q699127",
       "name": "Voyages of Zheng He",
-      "category": "exploration"
+      "category": "expedition"
     },
     {
       "id": "Q48469",
       "name": "Voyager 1",
-      "category": "exploration"
+      "category": "transportation"
     },
     {
       "id": "Q25271",
       "name": "International Space Station",
-      "category": "exploration"
+      "category": "transportation"
     },
     {
       "id": "Q338613",

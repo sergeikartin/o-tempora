@@ -55,7 +55,7 @@ const brazil: Milestone = {
   id: 'Q155',
   name: 'Brazil',
   at: { year: 1500 },
-  category: 'exploration',
+  category: 'expedition',
   regionTags: ['americas'],
   fameScore: 386,
   tagline: 'country in South America',

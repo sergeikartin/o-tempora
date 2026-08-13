@@ -4,7 +4,7 @@ import { tagCuratedMilestone, tagCuratedConflict } from "./tag-milestones.js";
 
 test("tagCuratedMilestone passes the given category straight through", () => {
   assert.equal(tagCuratedMilestone("science-theory", []).category, "science-theory");
-  assert.equal(tagCuratedMilestone("exploration", []).category, "exploration");
+  assert.equal(tagCuratedMilestone("expedition", []).category, "expedition");
 });
 
 test("tagCuratedMilestone maps countries to regionTags", () => {
