@@ -132,11 +132,11 @@ export function personLaneHeight(rowCount: number): number {
   return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
 }
 
-// Milestones' own palette. MilestoneCategory keeps its full 21-value
+// Milestones' own palette. MilestoneCategory keeps its full 22-value
 // taxonomy for filtering/labels (disjoint from Conflicts' ConflictCategory,
 // which no longer drives a color — see CONFLICT_COLOR above), but color
 // folds every category into 2 legible groups plus the flat Conflict red —
-// a 21-hue-per-category palette sits at ~9° hue separation, below any
+// a 22-hue-per-category palette sits at well under 10° hue separation, below any
 // CVD-safe spacing and more colors than a legend can hold anyway. Each
 // group rhymes with (is a darker, richer step of) the People-domain hue its
 // content actually echoes, so the color language is learned once: Science &

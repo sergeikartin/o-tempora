@@ -31,8 +31,10 @@ export const MILESTONE_CATEGORIES = [
   "medicine-health",
   "public-health",
   "communication",
+  "media-culture",
   "transportation",
   "infrastructure",
+  "landmarks",
   "everyday-technology",
   "food-agriculture",
   "exploration",
@@ -47,19 +49,17 @@ export const MILESTONE_CATEGORIES = [
   "philosophy-education",
   "law-jurisprudence",
   "archaeology-anthropology",
-  "architecture-design",
 ] as const;
 
 export type MilestoneCategory = (typeof MILESTONE_CATEGORIES)[number];
 
-// The 2-value grouping above MilestoneCategory's 21 leaf values, driving
+// The 2-value grouping above MilestoneCategory's 22 leaf values, driving
 // the Milestones lane's color palette (packages/web's options.ts) and the
 // sidebar's Milestone Category Group filter — the single canonical source
-// both read from. Replaces an earlier 3-value grouping (knowledge-culture /
-// technology-industry / society-governance) that split awkwardly across a
-// hand-curated Science-vs-Social split explored ad hoc in conversation
-// before being formalized here (2026-08-13) — see docs/design-tokens.md's
-// Milestone Category Palette table for the same assignments below.
+// both read from. See docs/design-tokens.md's Milestone Category Palette
+// table for the current category -> group assignments, and
+// docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md for
+// the rationale behind the current split.
 export const MILESTONE_CATEGORY_GROUPS = ["science-innovation", "social-culture"] as const;
 
 export type MilestoneCategoryGroup = (typeof MILESTONE_CATEGORY_GROUPS)[number];
@@ -73,9 +73,10 @@ export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCat
   "everyday-technology": "science-innovation",
   "food-agriculture": "science-innovation",
   "energy-industry": "science-innovation",
-  "archaeology-anthropology": "science-innovation",
 
   "public-health": "social-culture",
+  "media-culture": "social-culture",
+  landmarks: "social-culture",
   exploration: "social-culture",
   "society-administration": "social-culture",
   "culture-arts": "social-culture",
@@ -86,7 +87,7 @@ export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCat
   "sports-entertainment": "social-culture",
   "philosophy-education": "social-culture",
   "law-jurisprudence": "social-culture",
-  "architecture-design": "social-culture",
+  "archaeology-anthropology": "social-culture",
 };
 
 export const REGIONS = [
