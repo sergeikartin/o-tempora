@@ -8,8 +8,8 @@
 // power the same way each Milestone Category Group color deepens its own
 // People-domain counterpart. Validated (OKLCH lightness/chroma bounds, CVD
 // separation under simulated protanopia/deuteranopia, a normal-vision
-// floor, contrast vs. the parchment surface) against the 3 milestone-group
-// hexes as one 4-color set, all pairs, not just neighbors — see
+// floor, contrast vs. the parchment surface) against the 2 milestone-group
+// hexes as one 3-color set, all pairs, not just neighbors — see
 // docs/design-tokens.md. Lives in shared/config, not
 // widgets/timeline-canvas/options.ts, since both the Conflicts+Milestones
 // lane (marker fill) and the sidebar's Conflicts pill (swatch) need it —

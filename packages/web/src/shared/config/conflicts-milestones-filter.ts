@@ -8,7 +8,7 @@ import { MILESTONE_CATEGORY_GROUP_COLORS, MILESTONE_CATEGORY_GROUP_LABELS } from
 // values folds a UI-only 'conflicts' sentinel (Conflicts carry no
 // color-driving grouping of their own — see CONTEXT.md's Conflict Category
 // entry — so the entire lane is just one more option in the list) together
-// with the 3 real MilestoneCategoryGroup values. Revised 2026-08-12: an
+// with the 2 real MilestoneCategoryGroup values. Revised 2026-08-12: an
 // earlier version split this into a 3-pill Milestone Category Group filter
 // plus a separately-styled Conflicts visibility toggle; folded into one
 // list per feedback that the section should behave like every other
@@ -23,7 +23,7 @@ export const CONFLICTS_MILESTONES_FILTER_LABELS: Record<ConflictsMilestonesFilte
 };
 
 // Each pill's swatch matches what's already on the timeline: CONFLICT_COLOR
-// for the flat Conflicts fill, MILESTONE_CATEGORY_GROUP_COLORS for the 3
+// for the flat Conflicts fill, MILESTONE_CATEGORY_GROUP_COLORS for the 2
 // Milestone groups — same "honest, truthful legend" principle as every
 // other sidebar swatch.
 export const CONFLICTS_MILESTONES_FILTER_COLORS: Record<ConflictsMilestonesFilterValue, string> = {

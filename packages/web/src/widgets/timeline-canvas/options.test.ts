@@ -98,16 +98,16 @@ test('CONFLICT_COLOR is a single flat color, distinct from every MILESTONE_CATEG
   expect(milestoneValues).not.toContain(CONFLICT_COLOR);
 });
 
-test('MILESTONE_CATEGORY_COLORS has one entry per MilestoneCategory, folded into exactly 3 group hexes', () => {
+test('MILESTONE_CATEGORY_COLORS has one entry per MilestoneCategory, folded into exactly 2 group hexes', () => {
   const values = MILESTONE_CATEGORIES.map((category) => MILESTONE_CATEGORY_COLORS[category]);
   expect(values).toHaveLength(MILESTONE_CATEGORIES.length);
   expect(values.every(Boolean)).toBe(true);
-  // "Ledger & Ink" folds the 20-category taxonomy into 3 legible color
-  // groups (Knowledge & Culture / Technology & Industry / Society &
-  // Governance) — duplicate hex across categories is the intended design,
-  // not an accident, so this asserts the fold lands on exactly 3 distinct
-  // hexes rather than the old one-hue-per-category invariant.
-  expect(new Set(values).size).toBe(3);
+  // "Ledger & Ink" folds the 21-category taxonomy into 2 legible color
+  // groups (Science & Innovation / Social & Human Culture) — duplicate hex
+  // across categories is the intended design, not an accident, so this
+  // asserts the fold lands on exactly 2 distinct hexes rather than the old
+  // one-hue-per-category invariant.
+  expect(new Set(values).size).toBe(2);
 });
 
 test('MILESTONE_CATEGORY_COLORS is derived from MILESTONE_CATEGORY_TO_GROUP + MILESTONE_CATEGORY_GROUP_COLORS', () => {
@@ -117,7 +117,7 @@ test('MILESTONE_CATEGORY_COLORS is derived from MILESTONE_CATEGORY_TO_GROUP + MI
   }
 });
 
-test('MILESTONE_CATEGORY_TO_GROUP covers every MilestoneCategory, resolving to exactly one of the 3 groups', () => {
+test('MILESTONE_CATEGORY_TO_GROUP covers every MilestoneCategory, resolving to exactly one of the 2 groups', () => {
   for (const category of MILESTONE_CATEGORIES) {
     expect(MILESTONE_CATEGORY_GROUPS).toContain(MILESTONE_CATEGORY_TO_GROUP[category]);
   }

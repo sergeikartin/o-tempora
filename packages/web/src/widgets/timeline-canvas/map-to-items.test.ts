@@ -272,7 +272,7 @@ test('filterByRegion excludes an item with no region tags once a filter is activ
 
 // filterByMilestoneCategoryGroup / filterConflictsByFilterValues — the
 // sidebar's "Conflicts & Milestones" section is one shared multi-select
-// (ConflictsMilestonesFilterValue[]: 'conflicts' + the 3 MilestoneCategoryGroup
+// (ConflictsMilestonesFilterValue[]: 'conflicts' + the 2 MilestoneCategoryGroup
 // values), applied differently per lane.
 interface MilestoneGroupFixture {
   id: string;
@@ -284,15 +284,23 @@ test('filterByMilestoneCategoryGroup returns items unchanged when no values are 
   expect(filterByMilestoneCategoryGroup(items, [])).toEqual(items);
 });
 
+test('filterByMilestoneCategoryGroup excludes items from a non-selected group', () => {
+  const items: MilestoneGroupFixture[] = [
+    { id: 'a', category: 'science-theory' }, // science-innovation
+    { id: 'b', category: 'commerce-finance' }, // social-culture
+  ];
+  expect(filterByMilestoneCategoryGroup(items, ['science-innovation']).map((item) => item.id)).toEqual(['a']);
+});
+
 test('filterByMilestoneCategoryGroup unions multiple selected groups (OR)', () => {
   const items: MilestoneGroupFixture[] = [
-    { id: 'a', category: 'science-theory' }, // knowledge-culture
-    { id: 'b', category: 'medicine-health' }, // technology-industry
-    { id: 'c', category: 'commerce-finance' }, // society-governance
+    { id: 'a', category: 'science-theory' }, // science-innovation
+    { id: 'b', category: 'commerce-finance' }, // social-culture
+    { id: 'c', category: 'law-jurisprudence' }, // social-culture
   ];
   expect(
-    filterByMilestoneCategoryGroup(items, ['knowledge-culture', 'society-governance']).map((item) => item.id),
-  ).toEqual(['a', 'c']);
+    filterByMilestoneCategoryGroup(items, ['science-innovation', 'social-culture']).map((item) => item.id),
+  ).toEqual(['a', 'b', 'c']);
 });
 
 test('filterByMilestoneCategoryGroup ignores a selected \'conflicts\' sentinel — never matches a MilestoneCategoryGroup', () => {
@@ -314,7 +322,7 @@ test('filterConflictsByFilterValues keeps items when \'conflicts\' is selected',
 
 test('filterConflictsByFilterValues excludes items when a non-empty selection omits \'conflicts\'', () => {
   const items = [{ id: 'a' }, { id: 'b' }];
-  const selectedValues: ConflictsMilestonesFilterValue[] = ['knowledge-culture'];
+  const selectedValues: ConflictsMilestonesFilterValue[] = ['science-innovation'];
   expect(filterConflictsByFilterValues(items, selectedValues)).toEqual([]);
 });
 
