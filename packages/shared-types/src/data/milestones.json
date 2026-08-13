@@ -114,12 +114,12 @@
     "name": "COVID-19 pandemic",
     "category": "public-health",
     "regionTags": [
-      "europe",
       "americas",
-      "south-asia",
-      "africa",
       "east-asia",
-      "middle-east"
+      "europe",
+      "middle-east",
+      "south-asia",
+      "africa"
     ],
     "fameScore": 91,
     "tagline": "pandemic caused by SARS-CoV-2 (2019–2023)",
@@ -253,6 +253,21 @@
     "description": "Electronic mail is a method of transmitting and receiving digital messages using electronic devices over a computer network. It was conceived in the late–20th century as the digital version of, or counterpart to, mail. Email is a ubiquitous and very widely used communication medium; in current use, an email address is often treated as a basic and necessary part of many processes in business, commerce, government, education, entertainment, and other spheres of daily life in most countries.",
     "at": {
       "year": 1971
+    }
+  },
+  {
+    "id": "Q11633",
+    "name": "Photography",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 88,
+    "tagline": "art, science, and practice of creating durable images by recording light or other electromagnetic radiation",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Photography",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Winterswijk%20%28NL%29%2C%20Woold%2C%20Boven%20Slinge%20--%202014%20--%203170.jpg",
+    "imageAttribution": "Dietmar Rabich, via Wikimedia Commons",
+    "description": "Photography is the art, application, and practice of creating images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. It is employed in many fields of science, manufacturing, and business, as well as its more direct uses for art, film and video production, recreational purposes, hobby, and mass communication. A person who operates a camera to capture or take photographs is called a photographer, while the captured image, also known as a photograph, is the result produced by the camera.",
+    "at": {
+      "year": 1839
     }
   },
   {
@@ -473,7 +488,7 @@
   {
     "id": "Q25271",
     "name": "International Space Station",
-    "category": "exploration",
+    "category": "transportation",
     "regionTags": [],
     "fameScore": 85,
     "tagline": "modular space station in low Earth orbit",
@@ -582,7 +597,7 @@
   {
     "id": "Q43653",
     "name": "Apollo 11",
-    "category": "exploration",
+    "category": "expedition",
     "regionTags": [
       "americas"
     ],
@@ -923,7 +938,7 @@
   {
     "id": "Q48469",
     "name": "Voyager 1",
-    "category": "exploration",
+    "category": "transportation",
     "regionTags": [],
     "fameScore": 80,
     "tagline": "space probe launched by NASA to study the outer Solar System, furthest spacecraft from Earth",
@@ -1181,7 +1196,7 @@
   {
     "id": "Q80811",
     "name": "Sputnik 1",
-    "category": "exploration",
+    "category": "transportation",
     "regionTags": [],
     "fameScore": 78,
     "tagline": "first artificial Earth satellite",
@@ -1832,7 +1847,7 @@
   {
     "id": "Q1932",
     "name": "Space race",
-    "category": "exploration",
+    "category": "expedition",
     "regionTags": [],
     "fameScore": 75,
     "tagline": "competition to explore space between USA and USSR",
@@ -2019,7 +2034,7 @@
   {
     "id": "Q221474",
     "name": "First arrival of Christopher Columbus to America",
-    "category": "exploration",
+    "category": "expedition",
     "regionTags": [],
     "fameScore": 74,
     "tagline": "arrival of Christopher Columbus and crew to America",
@@ -2034,7 +2049,7 @@
   {
     "id": "Q179430",
     "name": "Sextant",
-    "category": "exploration",
+    "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 74,
     "tagline": "angle measurement navigational instrument",
@@ -2162,7 +2177,7 @@
   {
     "id": "Q182524",
     "name": "Vostok 1",
-    "category": "exploration",
+    "category": "transportation",
     "regionTags": [
       "europe"
     ],
@@ -2882,7 +2897,7 @@
   {
     "id": "Q1225170",
     "name": "Magellan-Elcano expedition",
-    "category": "exploration",
+    "category": "expedition",
     "regionTags": [
       "europe"
     ],
@@ -2903,9 +2918,23 @@
     }
   },
   {
+    "id": "Q654562",
+    "name": "The Travels of Marco Polo",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "13th-century travelogue written down by Rustichello da Pisa from stories told by Marco Polo",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Travels_of_Marco_Polo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dettaglio%20fr2810%20folio%201r.jpg",
+    "description": "The Travels of Marco Polo, also known as The Book of the Marvels of the World and by its Italian name Il Milione, is a 13th-century travelogue written down by Rustichello da Pisa from stories told by the Venetian explorer Marco Polo. It describes Polo's travels through Asia between 1271 and 1295, and his experiences at the court of Kublai Khan.",
+    "at": {
+      "year": 1298
+    }
+  },
+  {
     "id": "Q8414",
     "name": "Amundsen's South Pole expedition",
-    "category": "exploration",
+    "category": "expedition",
     "regionTags": [],
     "fameScore": 67,
     "tagline": "first expedition to reach the geographic South Pole",
@@ -3107,7 +3136,7 @@
   {
     "id": "Q616159",
     "name": "View from the Window at Le Gras",
-    "category": "communication",
+    "category": "media-culture",
     "regionTags": [
       "europe"
     ],
@@ -3337,7 +3366,7 @@
   {
     "id": "Q699127",
     "name": "Voyages of Zheng He",
-    "category": "exploration",
+    "category": "expedition",
     "regionTags": [
       "east-asia"
     ],
@@ -3458,6 +3487,22 @@
     }
   },
   {
+    "id": "Q1398696",
+    "name": "Liverpool and Manchester Railway",
+    "category": "infrastructure",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 60,
+    "tagline": "railway opened on 15 September 1830 between the Lancashire towns of Liverpool and Manchester",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Liverpool_and_Manchester_Railway",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Opening%20Liverpool%20and%20Manchester%20Railway.jpg",
+    "description": "The Liverpool and Manchester Railway (L&MR) was the first inter-city railway in the world. It opened on 15 September 1830 between the Lancashire towns of Liverpool and Manchester in England. It was also the first railway to rely exclusively on locomotives driven by steam power, with no horse-drawn traffic permitted at any time; the first to be entirely double track throughout its length; the first to have a true signalling system; the first to be fully timetabled; and the first to carry mail.",
+    "at": {
+      "year": 1823
+    }
+  },
+  {
     "id": "Q2453355",
     "name": "Dartmouth workshop",
     "category": "science-theory",
@@ -3518,7 +3563,7 @@
   {
     "id": "Q4567715",
     "name": "1953 British Mount Everest Expedition",
-    "category": "exploration",
+    "category": "expedition",
     "regionTags": [
       "europe"
     ],

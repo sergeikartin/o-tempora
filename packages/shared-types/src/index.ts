@@ -23,9 +23,7 @@ export type ConflictCategory = (typeof CONFLICT_CATEGORIES)[number];
 // hand-curated source's `meta.categories`
 // (data-pipeline/data/raw/milestones-curated.raw.json) — disjoint from
 // ConflictCategory above (Conflicts' Wikidata-?type-claim-derived
-// taxonomy), not a
-// shared value even where a name happens to coincide (e.g. "exploration"
-// appears in both, independently).
+// taxonomy), not a shared value even where names might coincide.
 export const MILESTONE_CATEGORIES = [
   "science-theory",
   "medicine-health",
@@ -37,7 +35,7 @@ export const MILESTONE_CATEGORIES = [
   "landmarks",
   "everyday-technology",
   "food-agriculture",
-  "exploration",
+  "expedition",
   "energy-industry",
   "society-administration",
   "culture-arts",
@@ -69,7 +67,6 @@ export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCat
   "medicine-health": "science-innovation",
   communication: "science-innovation",
   transportation: "science-innovation",
-  infrastructure: "science-innovation",
   "everyday-technology": "science-innovation",
   "food-agriculture": "science-innovation",
   "energy-industry": "science-innovation",
@@ -77,7 +74,8 @@ export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCat
   "public-health": "social-culture",
   "media-culture": "social-culture",
   landmarks: "social-culture",
-  exploration: "social-culture",
+  infrastructure: "social-culture",
+  expedition: "social-culture",
   "society-administration": "social-culture",
   "culture-arts": "social-culture",
   "religion-mythology": "social-culture",
