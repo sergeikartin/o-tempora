@@ -32,6 +32,7 @@
   font-size: 12px;
   color: var(--color-text-secondary);
   text-decoration: underline;
+  transition: color var(--motion-duration-fast) var(--motion-easing);
 }
 
 .languageSwitcher:hover {

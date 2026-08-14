@@ -4,6 +4,8 @@ import type { Person } from '../../shared/types';
 import { DOMAIN_COLORS } from '../../shared/config';
 import { assignRows, mapPeople, personPixelInterval } from './map-to-items';
 import {
+  estimateLabelWidthPx,
+  HIT_AREA_PADDING_PX,
   MIN_ROW_GAP_PX,
   PERIOD_LINE_HEIGHT,
   personLabelYForRow,
@@ -17,6 +19,7 @@ interface PersonLayout {
   name: string;
   x1: number;
   x2: number;
+  hitX2: number;
   labelY: number;
   lineY: number;
   fill: string;
@@ -53,11 +56,16 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
       items.map((item) => {
         const row = rowOfPerson.get(item.id) ?? 0;
         const x1 = xScale(item.startYear);
+        const x2 = Math.max(xScale(item.endYear), x1 + 2);
         return {
           id: item.id,
           name: item.name,
           x1,
-          x2: Math.max(xScale(item.endYear), x1 + 2),
+          x2,
+          // Label is left-aligned at x1, so it never extends left of the
+          // line — only right, past x2 for a short-lived person with a
+          // long name.
+          hitX2: Math.max(x2, x1 + estimateLabelWidthPx(item.name)),
           labelY: personLabelYForRow(row, rowCount),
           lineY: personLineCenterYForRow(row, rowCount),
           fill: DOMAIN_COLORS[item.occupationDomain],
@@ -81,6 +89,11 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
       .data(layout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-person');
+        // Invisible, oversized rect behind the line/label — the real hover
+        // and click target, since a 6px line and its label are too thin and
+        // too far apart (see HIT_AREA_PADDING_PX) to hit reliably on their
+        // own. Appended first so it paints behind the visible marks.
+        g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
         g.append('line')
           .attr('class', `d3-line ${styles.line}`)
           .attr('stroke-width', PERIOD_LINE_HEIGHT)
@@ -88,6 +101,15 @@ export function PeopleLane({ people, xScale }: PeopleLaneProps) {
         g.append('text').attr('class', `d3-name ${styles.name}`).attr('dominant-baseline', 'hanging');
         return g;
       });
+
+    personGroups
+      .select<SVGRectElement>('.d3-hit')
+      .attr('x', (d) => d.x1 - HIT_AREA_PADDING_PX)
+      .attr('y', (d) => d.labelY - HIT_AREA_PADDING_PX)
+      .attr('width', (d) => d.hitX2 - d.x1 + HIT_AREA_PADDING_PX * 2)
+      .attr('height', (d) => d.lineY + PERIOD_LINE_HEIGHT / 2 - d.labelY + HIT_AREA_PADDING_PX * 2)
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', 'person');
 
     personGroups
       .select<SVGLineElement>('.d3-line')

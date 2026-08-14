@@ -53,6 +53,12 @@ export const MIN_ROW_GAP_YEARS = 5;
 // with SVG stroke, not fill, so `stroke-linecap: round` gives the
 // pill-shaped caps.
 export const PERIOD_LINE_HEIGHT = 6;
+// Extra margin (in every direction) added around a mark's own visible
+// bounds for its invisible hit-area rect — the thin 6px line/5px dot alone
+// is a poor hover/click target, and a mark's label sits a few px above/below
+// it with a gap that would otherwise be dead space between two separately
+// clickable elements.
+export const HIT_AREA_PADDING_PX = 4;
 // Rough per-character estimate for the 11px label font — good enough to
 // size row-stacking without a real DOM text-measurement pass.
 export const AVG_CHAR_WIDTH_PX = 6;

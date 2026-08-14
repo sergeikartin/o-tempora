@@ -44,7 +44,17 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
     entityId: null,
     isPortrait: false,
   });
-  const selectedEntityId = selected?.entity.id ?? null;
+  // The panel stays mounted at all times (docs/adr/0006) so its close slide
+  // has a frame to animate — `selected` goes null the instant a close is
+  // requested, so content keeps rendering from the last non-null value
+  // while the slide-out plays, rather than blanking immediately.
+  const [lastSelected, setLastSelected] = useState<DetailPanelEntity | null>(null);
+  if (selected && selected !== lastSelected) {
+    setLastSelected(selected);
+  }
+  const displayedEntity = selected ?? lastSelected;
+
+  const selectedEntityId = displayedEntity?.entity.id ?? null;
   if (portraitImage.entityId !== selectedEntityId) {
     setPortraitImage({ entityId: selectedEntityId, isPortrait: false });
   }
@@ -98,48 +108,51 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
     };
   }, [selected, onClose]);
 
-  if (!selected) return null;
-
-  const content = buildDrawerContent(selected);
-  const showImage = Boolean(content.image) && selected.entity.id !== failedEntityId;
+  const isOpen = selected !== null;
+  const content = displayedEntity ? buildDrawerContent(displayedEntity) : null;
+  const showImage = Boolean(content?.image) && displayedEntity?.entity.id !== failedEntityId;
 
   return (
-    <aside ref={panelRef} className={styles.panel} aria-label={m.detailsAriaLabel({ name: content.name })}>
-      <button type="button" onClick={onClose} aria-label={m.closeAriaLabel()} className={styles.closeButton}>
-        ×
-      </button>
-      {showImage && (
-        <img
-          src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}
-          alt={content.name}
-          loading="lazy"
-          className={portraitImage.isPortrait ? `${styles.image} ${styles.imageContain}` : styles.image}
-          onLoad={(event) => {
-            const img = event.currentTarget;
-            if (img.naturalHeight > img.naturalWidth) {
-              setPortraitImage((prev) => ({ ...prev, isPortrait: true }));
-            }
-          }}
-          onError={() => setFailedEntityId(selected.entity.id)}
-        />
+    <aside
+      ref={panelRef}
+      className={isOpen ? `${styles.panel} ${styles.open}` : styles.panel}
+      aria-label={content ? m.detailsAriaLabel({ name: content.name }) : undefined}
+      inert={!isOpen}
+    >
+      {content && displayedEntity && (
+        <>
+          <button type="button" onClick={onClose} aria-label={m.closeAriaLabel()} className={styles.closeButton}>
+            ×
+          </button>
+          {showImage && (
+            <img
+              src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}
+              alt={content.name}
+              loading="lazy"
+              className={portraitImage.isPortrait ? `${styles.image} ${styles.imageContain}` : styles.image}
+              onLoad={(event) => {
+                const img = event.currentTarget;
+                if (img.naturalHeight > img.naturalWidth) {
+                  setPortraitImage((prev) => ({ ...prev, isPortrait: true }));
+                }
+              }}
+              onError={() => setFailedEntityId(displayedEntity.entity.id)}
+            />
+          )}
+          <div className={styles.body}>
+            {showImage && content.imageAttribution && (
+              <p className={styles.imageAttribution}>{content.imageAttribution}</p>
+            )}
+            <h2 className={styles.name}>{content.name}</h2>
+            {content.dateLine && <p className={styles.dateLine}>{content.dateLine}</p>}
+            <p className={styles.tagline}>{content.tagline}</p>
+            {content.description && <p className={styles.description}>{content.description}</p>}
+            <a href={content.wikipediaUrl} target="_blank" rel="noreferrer" className={styles.wikipediaButton}>
+              {m.readOnWikipedia()}
+            </a>
+          </div>
+        </>
       )}
-      <div className={styles.body}>
-        {showImage && content.imageAttribution && (
-          <p className={styles.imageAttribution}>{content.imageAttribution}</p>
-        )}
-        <h2 className={styles.name}>{content.name}</h2>
-        {content.dateLine && <p className={styles.dateLine}>{content.dateLine}</p>}
-        <p className={styles.tagline}>{content.tagline}</p>
-        {content.description && <p className={styles.description}>{content.description}</p>}
-        <a
-          href={content.wikipediaUrl}
-          target="_blank"
-          rel="noreferrer"
-          className={styles.wikipediaButton}
-        >
-          {m.readOnWikipedia()}
-        </a>
-      </div>
     </aside>
   );
 }

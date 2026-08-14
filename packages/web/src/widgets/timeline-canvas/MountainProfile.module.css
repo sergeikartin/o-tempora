@@ -63,6 +63,10 @@
   border-left: 1px solid #8a2a1a; /* color-accent-selected */
   border-right: 1px solid #8a2a1a;
   cursor: grab;
+  /* Only background-color — left/width are updated on every drag frame by
+     MountainProfile.tsx, so transitioning those would lag behind the
+     pointer instead of tracking it. */
+  transition: background-color var(--motion-duration-fast) var(--motion-easing);
 }
 
 .viewportRect:hover {

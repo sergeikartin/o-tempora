@@ -30,7 +30,23 @@
 
 .line,
 .name {
-  cursor: default;
+  cursor: pointer;
+}
+
+.hitArea {
+  fill: transparent;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.line {
+  transition: stroke-width var(--motion-duration-fast) var(--motion-easing);
+}
+
+/* Absolute px (not a multiplier of PERIOD_LINE_HEIGHT in options.ts) since
+   CSS can't read that JS constant — kept close to it (6px) by hand. */
+:global(.d3-person):hover .line {
+  stroke-width: 9px;
 }
 
 .name {
