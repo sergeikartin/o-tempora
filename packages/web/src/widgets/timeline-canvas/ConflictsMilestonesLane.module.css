@@ -33,9 +33,23 @@
   r: 7px;
 }
 
+:global(.d3-range):hover .label,
+:global(.d3-point-group):hover .label {
+  transform: scale(1.15);
+}
+
 .label {
   font-family: Archivo, sans-serif;
   font-size: 11px;
+  /* Scaling via transform rather than font-size: the latter recomputes the
+     hanging-baseline metric at each size, which visibly nudges the glyphs
+     down as they grow. transform-box/-origin pin the scale to the label's
+     own top-center point (where it's already anchored — text-anchor:
+     middle, dominant-baseline: hanging) so it grows in place instead of
+     drifting. */
+  transform-box: fill-box;
+  transform-origin: center top;
+  transition: transform var(--motion-duration-fast) var(--motion-easing);
   /* fill is set per-item (flat conflict color or milestone category color)
      via the D3 join, not here. Clickable (same data-entity-id/-type as the
      line/dot, see ConflictsMilestonesLane.tsx) so pointer-events stays
