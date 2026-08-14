@@ -44,6 +44,13 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
     entityId: null,
     isPortrait: false,
   });
+  // Fades the image in on load instead of popping in the instant the
+  // network response lands, so a slow-loading photo doesn't read as a
+  // blink between the blank banner and the finished image.
+  const [imageLoaded, setImageLoaded] = useState<{ entityId: string | null; loaded: boolean }>({
+    entityId: null,
+    loaded: false,
+  });
   // The panel stays mounted at all times (docs/adr/0006) so its close slide
   // has a frame to animate — `selected` goes null the instant a close is
   // requested, so content keeps rendering from the last non-null value
@@ -57,6 +64,9 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   const selectedEntityId = displayedEntity?.entity.id ?? null;
   if (portraitImage.entityId !== selectedEntityId) {
     setPortraitImage({ entityId: selectedEntityId, isPortrait: false });
+  }
+  if (imageLoaded.entityId !== selectedEntityId) {
+    setImageLoaded({ entityId: selectedEntityId, loaded: false });
   }
 
   useEffect(() => {
@@ -126,20 +136,22 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
           </button>
           {showImage && (
             <img
+              key={`image-${selectedEntityId}`}
               src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}
               alt={content.name}
               loading="lazy"
-              className={portraitImage.isPortrait ? `${styles.image} ${styles.imageContain}` : styles.image}
+              className={`${styles.image} ${portraitImage.isPortrait ? styles.imageContain : ''} ${imageLoaded.loaded ? styles.imageLoaded : ''}`}
               onLoad={(event) => {
                 const img = event.currentTarget;
                 if (img.naturalHeight > img.naturalWidth) {
                   setPortraitImage((prev) => ({ ...prev, isPortrait: true }));
                 }
+                setImageLoaded((prev) => ({ ...prev, loaded: true }));
               }}
               onError={() => setFailedEntityId(displayedEntity.entity.id)}
             />
           )}
-          <div className={styles.body}>
+          <div key={`body-${selectedEntityId}`} className={styles.body}>
             {showImage && content.imageAttribution && (
               <p className={styles.imageAttribution}>{content.imageAttribution}</p>
             )}

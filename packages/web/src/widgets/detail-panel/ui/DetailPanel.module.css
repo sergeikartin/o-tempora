@@ -45,6 +45,12 @@
   width: 100%;
   height: 260px;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--motion-duration-fast) var(--motion-easing);
+}
+
+.imageLoaded {
+  opacity: 1;
 }
 
 .imageContain {
@@ -57,6 +63,13 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  animation: content-fade-in var(--motion-duration-base) var(--motion-easing);
+}
+
+@keyframes content-fade-in {
+  from {
+    opacity: 0;
+  }
 }
 
 .imageAttribution {
