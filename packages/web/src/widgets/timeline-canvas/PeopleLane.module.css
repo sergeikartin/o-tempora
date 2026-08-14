@@ -49,9 +49,21 @@
   stroke-width: 9px;
 }
 
+:global(.d3-person):hover .name {
+  transform: scale(1.15);
+}
+
 .name {
   font-family: Archivo, sans-serif;
   font-size: 11px;
+  /* Scaling via transform rather than font-size: the latter recomputes the
+     hanging-baseline metric at each size, which visibly nudges the glyphs
+     down as they grow. transform-box/-origin pin the scale to the label's
+     own left edge, vertically centered, so it grows in place instead of
+     drifting. */
+  transform-box: fill-box;
+  transform-origin: left center;
+  transition: transform var(--motion-duration-fast) var(--motion-easing);
   /* fill is set per-item (occupation-domain color) via the D3 join, not here.
      Clickable (same data-entity-id/-type as the line, see PeopleLane.tsx) so
      pointer-events stays default rather than none; user-select stays off so
