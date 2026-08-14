@@ -57,6 +57,16 @@ Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values 
 | Display | Fraunces (serif, variable) — used sparingly (currently: DetailPanel's entity name) |
 | Body / UI / Data | Archivo — all UI chrome, entry labels, and data. No separate mono face: year ranges and dates set in Archivo with `font-variant-numeric: tabular-nums` instead, so a date never reads as a costume change from the surrounding text |
 
+## Motion
+
+Honors `prefers-reduced-motion: reduce` — all transitions using these tokens are gated by `@media (prefers-reduced-motion: no-preference)` (near-instant otherwise). See `docs/adr/0006-css-animation-scope-and-detail-panel-always-mounted.md` for what is/isn't animated.
+
+| Token | Value | Usage |
+|---|---|---|
+| `motion-duration-fast` | `120ms` | Hover feedback (lane marks, language switcher, viewport rect) |
+| `motion-duration-base` | `200ms` | DetailPanel open/close slide |
+| `motion-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` | All of the above |
+
 ## Border Radius Scale
 
 | Token | Value | Usage |

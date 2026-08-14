@@ -5,7 +5,32 @@
 .line,
 .dot,
 .label {
-  cursor: default;
+  cursor: pointer;
+}
+
+.hitArea {
+  fill: transparent;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.line {
+  transition: stroke-width var(--motion-duration-fast) var(--motion-easing);
+}
+
+.dot {
+  transition: r var(--motion-duration-fast) var(--motion-easing);
+}
+
+/* Absolute px (not multipliers of PERIOD_LINE_HEIGHT/POINT_RADIUS in
+   options.ts) since CSS can't read those JS constants — kept close to them
+   (6px/5px) by hand. */
+:global(.d3-range):hover .line {
+  stroke-width: 9px;
+}
+
+:global(.d3-point-group):hover .dot {
+  r: 7px;
 }
 
 .label {

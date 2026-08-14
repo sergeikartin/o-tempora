@@ -10,6 +10,7 @@ import {
   milestonePixelInterval,
 } from './map-to-items';
 import {
+  HIT_AREA_PADDING_PX,
   LANE_TOP_PADDING,
   MILESTONE_CATEGORY_COLORS,
   MILESTONES_LABEL_LINE_HEIGHT_PX,
@@ -28,6 +29,8 @@ interface RangeLayout {
   name: string;
   x1: number;
   x2: number;
+  hitX1: number;
+  hitX2: number;
   row: number;
   markerY: number;
   labelY: number;
@@ -39,6 +42,8 @@ interface PointLayout {
   id: string;
   lines: string[];
   x: number;
+  hitX1: number;
+  hitX2: number;
   row: number;
   markerY: number;
   labelY: number;
@@ -142,11 +147,14 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       .filter((item) => !item.isPoint)
       .map((item) => {
         const row = rowOfId.get(item.id) ?? 0;
+        const { start: hitX1, end: hitX2 } = conflictPixelInterval(item, xScale);
         return {
           id: item.id,
           name: item.name,
           x1: xScale(item.startYear),
           x2: xScale(item.endYear),
+          hitX1,
+          hitX2,
           row,
           markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
           labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
@@ -158,11 +166,16 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       .filter((item) => !item.isPoint)
       .map((item) => {
         const row = rowOfId.get(item.id) ?? 0;
+        // lines is only read on the point branch, which this (range) item
+        // never takes — see milestonePixelInterval.
+        const { start: hitX1, end: hitX2 } = milestonePixelInterval(item, [], xScale);
         return {
           id: item.id,
           name: item.name,
           x1: xScale(item.startYear),
           x2: xScale(item.endYear),
+          hitX1,
+          hitX2,
           row,
           markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
           labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
@@ -178,10 +191,13 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       .filter((item) => item.isPoint)
       .map((item) => {
         const row = rowOfId.get(item.id) ?? 0;
+        const { start: hitX1, end: hitX2 } = conflictPixelInterval(item, xScale);
         return {
           id: item.id,
           lines: [item.name],
           x: xScale(item.startYear),
+          hitX1,
+          hitX2,
           row,
           markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
           labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
@@ -193,10 +209,14 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       .filter((item) => item.isPoint)
       .map((item) => {
         const row = rowOfId.get(item.id) ?? 0;
+        const lines = milestoneLinesById.get(item.id) ?? [item.name];
+        const { start: hitX1, end: hitX2 } = milestonePixelInterval(item, lines, xScale);
         return {
           id: item.id,
-          lines: milestoneLinesById.get(item.id) ?? [item.name],
+          lines,
           x: xScale(item.startYear),
+          hitX1,
+          hitX2,
           row,
           markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
           labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
@@ -217,6 +237,10 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       .data(rangeLayout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-range');
+        // Invisible, oversized rect behind the line/label — see PeopleLane's
+        // identical .d3-hit for why (thin line + a separately-clickable
+        // label below it are both poor, gapped hit targets on their own).
+        g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
         g.append('line')
           .attr('class', `d3-line ${styles.line}`)
           .attr('stroke-width', PERIOD_LINE_HEIGHT)
@@ -229,6 +253,18 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       });
 
     rangeGroups.attr('data-row', (d) => d.row);
+
+    rangeGroups
+      .select<SVGRectElement>('.d3-hit')
+      .attr('x', (d) => d.hitX1 - HIT_AREA_PADDING_PX)
+      .attr('y', (d) => d.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX)
+      .attr('width', (d) => d.hitX2 - d.hitX1 + HIT_AREA_PADDING_PX * 2)
+      .attr(
+        'height',
+        (d) => d.labelY + MILESTONES_LABEL_LINE_HEIGHT_PX - (d.markerY - PERIOD_LINE_HEIGHT / 2) + HIT_AREA_PADDING_PX * 2,
+      )
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', (d) => d.kind);
 
     rangeGroups
       .select<SVGLineElement>('.d3-line')
@@ -257,6 +293,9 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       .data(pointLayout, (d) => d.id)
       .join((enter) => {
         const g = enter.append('g').attr('class', 'd3-point-group');
+        // Invisible, oversized rect behind the dot/label — see PeopleLane's
+        // identical .d3-hit for why.
+        g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
         g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
         g.append('text')
           .attr('class', `d3-point-name ${styles.label}`)
@@ -266,6 +305,19 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
       });
 
     pointGroups.attr('data-row', (d) => d.row);
+
+    pointGroups
+      .select<SVGRectElement>('.d3-hit')
+      .attr('x', (d) => d.hitX1 - HIT_AREA_PADDING_PX)
+      .attr('y', (d) => d.markerY - POINT_RADIUS - HIT_AREA_PADDING_PX)
+      .attr('width', (d) => d.hitX2 - d.hitX1 + HIT_AREA_PADDING_PX * 2)
+      .attr(
+        'height',
+        (d) =>
+          d.labelY + d.lines.length * MILESTONES_LABEL_LINE_HEIGHT_PX - (d.markerY - POINT_RADIUS) + HIT_AREA_PADDING_PX * 2,
+      )
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', (d) => d.kind);
 
     pointGroups
       .select<SVGCircleElement>('.d3-dot')

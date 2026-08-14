@@ -29,6 +29,20 @@
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
+
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 200ms;
+  --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Collapses every motion-duration-* token to near-instant, so components
+   that reference them via var() get prefers-reduced-motion support for
+   free instead of each one needing its own media query. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0.01ms;
+    --motion-duration-base: 0.01ms;
+  }
 }
 
 * {

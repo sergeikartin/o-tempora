@@ -18,9 +18,12 @@ const napoleon: Person = {
   imageAttribution: 'Jacques-Louis David, via Wikimedia Commons',
 };
 
-test('renders nothing when selected is null', () => {
+test('renders an inert, contentless panel when selected is null', () => {
   const { container } = render(<DetailPanel selected={null} onClose={() => {}} />);
-  expect(container.innerHTML).toBe('');
+  const panel = container.querySelector('aside');
+  expect(panel).toBeTruthy();
+  expect(panel?.hasAttribute('inert')).toBe(true);
+  expect(panel?.textContent).toBe('');
 });
 
 test('renders name, tagline, image, credit line, and a Wikipedia link', () => {

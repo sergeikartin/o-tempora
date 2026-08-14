@@ -11,6 +11,12 @@
   overflow-y: auto;
   z-index: 100;
   color: var(--color-text-primary);
+  transform: translateX(100%);
+  transition: transform var(--motion-duration-base) var(--motion-easing);
+}
+
+.panel.open {
+  transform: translateX(0);
 }
 
 .closeButton {
