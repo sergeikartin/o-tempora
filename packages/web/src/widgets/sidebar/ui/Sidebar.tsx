@@ -1,6 +1,6 @@
 import type { OccupationDomain, Region } from '../../../shared/types';
-import type { ConflictsMilestonesFilterValue } from '../../../shared/config';
-import { STRINGS, SWITCH_LANGUAGE_HREF } from '../../../shared/i18n';
+import { SWITCH_LANGUAGE_HREF, type ConflictsMilestonesFilterValue } from '../../../shared/config';
+import { m } from '../../../shared/paraglide/messages.js';
 import {
   DataDepthSwitch,
   FameScoreFilters,
@@ -49,29 +49,29 @@ export function Sidebar({
   onToggleConflictsMilestonesValue,
 }: SidebarProps) {
   return (
-    <aside className={styles.sidebar} aria-label={STRINGS.filtersAriaLabel}>
+    <aside className={styles.sidebar} aria-label={m.filtersAriaLabel()}>
       <section className={styles.section}>
-        <h2 className={styles.heading}>{STRINGS.dataDepthHeading}</h2>
+        <h2 className={styles.heading}>{m.dataDepthHeading()}</h2>
         <DataDepthSwitch values={fameScoreValues} onChange={onFameScoreChange} />
         <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
       </section>
       <section className={styles.section}>
-        <h2 className={styles.heading}>{STRINGS.regionHeading}</h2>
+        <h2 className={styles.heading}>{m.regionHeading()}</h2>
         <RegionFilters selectedRegions={selectedRegions} onToggleRegion={onToggleRegion} />
       </section>
       <section className={styles.section}>
-        <h2 className={styles.heading}>{STRINGS.peopleHeading}</h2>
+        <h2 className={styles.heading}>{m.peopleHeading()}</h2>
         <OccupationDomainFilters selectedDomains={selectedDomains} onToggleDomain={onToggleDomain} />
       </section>
       <section className={styles.section}>
-        <h2 className={styles.heading}>{STRINGS.conflictsMilestonesHeading}</h2>
+        <h2 className={styles.heading}>{m.conflictsMilestonesHeading()}</h2>
         <ConflictsMilestonesFilters
           selectedValues={selectedConflictsMilestonesValues}
           onToggleValue={onToggleConflictsMilestonesValue}
         />
       </section>
       <a className={styles.languageSwitcher} href={SWITCH_LANGUAGE_HREF}>
-        {STRINGS.switchLanguageLabel}
+        {m.switchLanguageLabel()}
       </a>
     </aside>
   );

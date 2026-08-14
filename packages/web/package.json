@@ -7,15 +7,22 @@
     "node": ">=22.21.0"
   },
   "scripts": {
+    "predev": "npm run paraglide:en",
     "dev": "vite",
     "build": "npm run build:en",
+    "prebuild:en": "npm run paraglide:en",
     "build:en": "tsc -b && vite build --mode en --outDir dist/en",
+    "prebuild:ru": "npm run paraglide:ru",
     "build:ru": "tsc -b && vite build --mode ru --outDir dist/ru",
     "preview": "vite preview",
+    "pretypecheck": "npm run paraglide:en",
     "typecheck": "tsc -b",
     "lint": "eslint .",
     "lint:boundaries": "steiger ./src",
-    "test": "vitest run"
+    "pretest": "npm run paraglide:en",
+    "test": "vitest run",
+    "paraglide:en": "paraglide-js compile --project ./project.en.inlang --outdir ./src/shared/paraglide --strategy baseLocale --emit-ts-declarations",
+    "paraglide:ru": "paraglide-js compile --project ./project.ru.inlang --outdir ./src/shared/paraglide --strategy baseLocale --emit-ts-declarations"
   },
   "dependencies": {
     "@fontsource/archivo": "^5.3.0",
@@ -29,6 +36,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@feature-sliced/steiger-plugin": "^0.7.0",
+    "@inlang/paraglide-js": "^2.23.2",
     "@testing-library/react": "^16.3.2",
     "@types/d3": "^7.4.3",
     "@types/react": "^19.2.18",

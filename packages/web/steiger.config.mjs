@@ -2,6 +2,12 @@ import { defineConfig } from 'steiger';
 import fsd from '@feature-sliced/steiger-plugin';
 
 export default defineConfig([
+  {
+    // src/shared/paraglide is Paraglide's compiled message-catalog output
+    // (docs/adr/0005) — generated per Language Build, not a hand-authored
+    // FSD segment.
+    ignores: ['src/shared/paraglide/**'],
+  },
   ...fsd.configs.recommended,
   {
     // widgets/timeline-canvas is a single-purpose slice per code-standards.md's

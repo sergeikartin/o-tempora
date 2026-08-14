@@ -3,7 +3,7 @@ import peopleDataRaw from '@same-sky/shared-types/src/data/people.json';
 import conflictsDataRaw from '@same-sky/shared-types/src/data/conflicts.json';
 import milestonesDataRaw from '@same-sky/shared-types/src/data/milestones.json';
 import type { Milestone, Person, ConflictEntry } from '../shared/types';
-import { STRINGS } from '../shared/i18n';
+import { m } from '../shared/paraglide/messages.js';
 import { useFameScoreFilters, type FilteredCounts } from '../features/filter-by-fame-score';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
 import { useRegionFilter } from '../features/filter-by-region';
@@ -47,7 +47,7 @@ export function App() {
 
   return (
     <>
-      <h1 className={styles.srOnly}>{STRINGS.siteTitle}</h1>
+      <h1 className={styles.srOnly}>{m.siteTitle()}</h1>
       <div className={styles.layout}>
         <Sidebar
           fameScoreValues={fameScoreValues}

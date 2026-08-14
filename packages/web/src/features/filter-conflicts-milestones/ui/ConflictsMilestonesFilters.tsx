@@ -4,7 +4,7 @@ import {
   CONFLICTS_MILESTONES_FILTER_LABELS,
   type ConflictsMilestonesFilterValue,
 } from '../../../shared/config';
-import { STRINGS } from '../../../shared/i18n';
+import { m } from '../../../shared/paraglide/messages.js';
 import styles from './ConflictsMilestonesFilters.module.css';
 
 interface ConflictsMilestonesFiltersProps {
@@ -33,7 +33,7 @@ export function ConflictsMilestonesFilters({ selectedValues, onToggleValue }: Co
               type="button"
               className={isActive ? `${styles.pill} ${styles.pillActive}` : styles.pill}
               aria-pressed={isActive}
-              aria-label={STRINGS.filterByLabel(label)}
+              aria-label={m.filterByLabel({ label })}
               onClick={() => onToggleValue(value)}
             >
               <span

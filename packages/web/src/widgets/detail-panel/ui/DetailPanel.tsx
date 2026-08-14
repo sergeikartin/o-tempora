@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { buildDrawerContent, type DetailPanelEntity } from '../lib/build-drawer-content';
-import { STRINGS } from '../../../shared/i18n';
+import { m } from '../../../shared/paraglide/messages.js';
 import styles from './DetailPanel.module.css';
 
 interface DetailPanelProps {
@@ -104,8 +104,8 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   const showImage = Boolean(content.image) && selected.entity.id !== failedEntityId;
 
   return (
-    <aside ref={panelRef} className={styles.panel} aria-label={STRINGS.detailsAriaLabel(content.name)}>
-      <button type="button" onClick={onClose} aria-label={STRINGS.closeAriaLabel} className={styles.closeButton}>
+    <aside ref={panelRef} className={styles.panel} aria-label={m.detailsAriaLabel({ name: content.name })}>
+      <button type="button" onClick={onClose} aria-label={m.closeAriaLabel()} className={styles.closeButton}>
         ×
       </button>
       {showImage && (
@@ -137,7 +137,7 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
           rel="noreferrer"
           className={styles.wikipediaButton}
         >
-          {STRINGS.readOnWikipedia}
+          {m.readOnWikipedia()}
         </a>
       </div>
     </aside>

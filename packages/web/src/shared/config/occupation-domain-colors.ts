@@ -1,5 +1,5 @@
 import type { OccupationDomain } from '../types';
-import { LANG } from '../i18n';
+import { m } from '../paraglide/messages.js';
 
 // Mirrors design-tokens.md's Occupation Domain Palette, sourced directly
 // from pantheon.world's own CSS custom properties (--colorInstitutions etc.)
@@ -23,29 +23,16 @@ export const DOMAIN_COLORS: Record<OccupationDomain, string> = {
 };
 
 // Display labels for the Occupation Domain pills — design-tokens.md's
-// Occupation Domain Palette table names. Bilingual, picked once at module
-// load by the build-time LANG flag (shared/i18n) — every consumer reads
-// the same DOMAIN_LABELS export regardless of language, unchanged.
-const DOMAIN_LABELS_EN: Record<OccupationDomain, string> = {
-  institutions: 'Institutions',
-  arts: 'Arts',
-  'business-law': 'Business & Law',
-  'public-figure': 'Public Figure',
-  'science-technology': 'Science & Technology',
-  exploration: 'Exploration',
-  humanities: 'Humanities',
-  sports: 'Sports',
+// Occupation Domain Palette table names. Picked once at module load from
+// the compiled locale's message catalog (docs/adr/0005) — every consumer
+// reads the same DOMAIN_LABELS export regardless of language, unchanged.
+export const DOMAIN_LABELS: Record<OccupationDomain, string> = {
+  institutions: m['taxonomy.domain.institutions'](),
+  arts: m['taxonomy.domain.arts'](),
+  'business-law': m['taxonomy.domain.business-law'](),
+  'public-figure': m['taxonomy.domain.public-figure'](),
+  'science-technology': m['taxonomy.domain.science-technology'](),
+  exploration: m['taxonomy.domain.exploration'](),
+  humanities: m['taxonomy.domain.humanities'](),
+  sports: m['taxonomy.domain.sports'](),
 };
-
-const DOMAIN_LABELS_RU: Record<OccupationDomain, string> = {
-  institutions: 'Институты',
-  arts: 'Искусство',
-  'business-law': 'Бизнес и право',
-  'public-figure': 'Публичная персона',
-  'science-technology': 'Наука и технологии',
-  exploration: 'Экспедиции',
-  humanities: 'Гуманитарные науки',
-  sports: 'Спорт',
-};
-
-export const DOMAIN_LABELS: Record<OccupationDomain, string> = LANG === 'ru' ? DOMAIN_LABELS_RU : DOMAIN_LABELS_EN;

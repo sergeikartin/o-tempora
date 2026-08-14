@@ -5,7 +5,9 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  // src/shared/paraglide is Paraglide's compiled message-catalog output
+  // (docs/adr/0005) — generated per Language Build, not hand-written.
+  { ignores: ['dist', 'src/shared/paraglide'] },
   {
     files: ['**/*.{ts,tsx}'],
     extends: [js.configs.recommended, ...tseslint.configs.strict, reactHooks.configs.flat.recommended],
