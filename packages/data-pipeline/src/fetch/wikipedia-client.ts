@@ -1,10 +1,15 @@
 // Wikipedia's REST summary API — a distinct API from Wikidata's SPARQL
 // endpoint (wikidata-client.ts), Commons' imageinfo API (commons-client.ts),
 // and the Pageviews Analytics API (pageviews-client.ts), used to resolve an
-// entity's Wikipedia lead-paragraph prose for the new `description` field
+// entity's Wikipedia lead-paragraph prose for the `description` field
 // (tagline-description-split spec). Single-title lookups only — unlike
 // Wikidata's SPARQL, there's no VALUES-clause batch equivalent for this
-// REST endpoint.
+// REST endpoint. Queried against both en.wikipedia.org and ru.wikipedia.org
+// (per-language `lang` argument below) — Russian description sourcing is
+// this same REST client pointed at the Russian article, not a translation
+// of the English extract.
+
+export type WikipediaLanguage = "en" | "ru";
 
 export interface WikipediaSummaryResponse {
   // "standard" for a normal article; "disambiguation" for a disambiguation
@@ -15,7 +20,9 @@ export interface WikipediaSummaryResponse {
   extract?: string;
 }
 
-const ENDPOINT = "https://en.wikipedia.org/api/rest_v1/page/summary";
+function endpoint(lang: WikipediaLanguage): string {
+  return `https://${lang}.wikipedia.org/api/rest_v1/page/summary`;
+}
 
 // Same courtesy identification Wikidata's/Commons'/Pageviews' clients send
 // (wikidata-client.ts, commons-client.ts, pageviews-client.ts) — Wikimedia
@@ -47,19 +54,21 @@ function isWikipediaSummaryResponse(value: unknown): value is WikipediaSummaryRe
 
 /**
  * Fetches the REST summary (including lead-paragraph `extract`) for one
- * English Wikipedia article title. A 404 means no article resolves for this
- * title — a real, expected shape (a redirect-less miss, a stale title),
- * not a transient failure, so it returns `undefined` rather than throwing
- * or retrying. Same 429/502-504 retry-with-backoff treatment
- * commons-client.ts's fetchCommonsImageInfo and pageviews-client.ts's
- * fetchArticlePageviews give their own APIs.
+ * Wikipedia article title, in the given language edition (English by
+ * default). A 404 means no article resolves for this title — a real,
+ * expected shape (a redirect-less miss, a stale title), not a transient
+ * failure, so it returns `undefined` rather than throwing or retrying.
+ * Same 429/502-504 retry-with-backoff treatment commons-client.ts's
+ * fetchCommonsImageInfo and pageviews-client.ts's fetchArticlePageviews
+ * give their own APIs.
  */
 export async function fetchWikipediaSummary(
   title: string,
+  lang: WikipediaLanguage = "en",
   attempt = 1,
 ): Promise<WikipediaSummaryResponse | undefined> {
   const encodedTitle = encodeURIComponent(title);
-  const url = `${ENDPOINT}/${encodedTitle}`;
+  const url = `${endpoint(lang)}/${encodedTitle}`;
 
   const response = await fetch(url, {
     headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
@@ -74,11 +83,11 @@ export async function fetchWikipediaSummary(
       const retryAfterSeconds =
         Number.isFinite(retryAfterHeader) && retryAfterHeader > 0 ? retryAfterHeader : 5 * attempt;
       await sleep(retryAfterSeconds * 1000);
-      return fetchWikipediaSummary(title, attempt + 1);
+      return fetchWikipediaSummary(title, lang, attempt + 1);
     }
     if (RETRYABLE_SERVER_ERROR_STATUSES.has(response.status)) {
       await sleep(BACKOFF_BASE_MS * 2 ** (attempt - 1));
-      return fetchWikipediaSummary(title, attempt + 1);
+      return fetchWikipediaSummary(title, lang, attempt + 1);
     }
   }
 

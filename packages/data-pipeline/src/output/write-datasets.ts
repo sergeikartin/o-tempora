@@ -15,6 +15,29 @@ export interface DropReport {
   reasons: Record<string, number>;
 }
 
+// The two languages a lane's dataset file can be built for. Row inclusion
+// (which entities survive at all — sitelinks, tagline presence, date
+// resolution, parentId chains) is decided once, off each row's English
+// fields, regardless of `lang` (see buildConflicts) — only which per-field
+// text (name/tagline/description) ends up in the built entry varies by
+// language, falling back to English whenever the Russian value didn't
+// resolve for that field. This keeps both language files sharing the exact
+// same entity set, per-field text aside.
+export type Lang = "en" | "ru";
+
+// Picks the Russian value when building the Russian output and it
+// resolved, English otherwise — the one per-field fallback rule every
+// language-varying field in this module follows.
+function resolveField(en: string, ru: string | undefined, lang: Lang): string {
+  return lang === "ru" ? (ru ?? en) : en;
+}
+
+// Same fallback rule as resolveField, for fields (like description) that
+// are optional in English too — never gates row inclusion either way.
+function resolveOptionalField(en: string | undefined, ru: string | undefined, lang: Lang): string | undefined {
+  return lang === "ru" ? (ru ?? en) : en;
+}
+
 function record(reasons: Record<string, number>, reason: string): void {
   reasons[reason] = (reasons[reason] ?? 0) + 1;
 }
@@ -88,11 +111,17 @@ const MAX_PLAUSIBLE_LIFESPAN_YEARS = 130;
 // ever sees this data. wikipediaUrl needs no presence check here — it's
 // derived deterministically from Pantheon's slug column, which
 // parsePantheonCsv already guarantees is non-empty.
-export function buildPeople(rows: TaggedPerson[]): { people: Person[]; report: DropReport } {
+export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: Person[]; report: DropReport } {
   const people: Person[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
+    // Inclusion is always gated on the English name/tagline, regardless of
+    // `lang` — see Lang's doc comment above.
+    if (!row.name) {
+      record(reasons, "missing name");
+      continue;
+    }
     if (!row.tagline) {
       record(reasons, "missing tagline");
       continue;
@@ -122,9 +151,10 @@ export function buildPeople(rows: TaggedPerson[]): { people: Person[]; report: D
       continue;
     }
 
+    const description = resolveOptionalField(row.description, row.descriptionRu, lang);
     people.push({
       id: row.id,
-      name: row.name,
+      name: resolveField(row.name, row.nameRu, lang),
       lifespan: {
         start: yearMonth(row.birthyear, row.birthmonth),
         end: optionalYearMonth(row.deathyear, row.deathmonth),
@@ -132,11 +162,11 @@ export function buildPeople(rows: TaggedPerson[]): { people: Person[]; report: D
       occupationDomain: row.occupationDomain,
       regionTags: row.regionTags,
       fameScore: row.hpi,
-      tagline: row.tagline,
+      tagline: resolveField(row.tagline, row.taglineRu, lang),
       wikipediaUrl: row.wikipediaUrl,
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
-      ...(row.description ? { description: row.description } : {}),
+      ...(description ? { description } : {}),
     });
   }
 
@@ -177,11 +207,17 @@ function validateParentChain(
 // ConflictEvent (a PointInTime); a row with neither is dropped as an
 // enrichment failure. See shared-types's Conflict/ConflictEvent doc
 // comments.
-export function buildConflicts(rows: TaggedConflict[]): { entries: ConflictEntry[]; report: DropReport } {
+export function buildConflicts(
+  rows: TaggedConflict[],
+  lang: Lang = "en",
+): { entries: ConflictEntry[]; report: DropReport } {
   const reasons: Record<string, number> = {};
   const built = new Map<string, ConflictEntry>();
 
   for (const row of rows) {
+    // Inclusion is always gated on English fields (validated.name/tagline
+    // come from row.label/row.tagline, never the Ru variants) — see Lang's
+    // doc comment above.
     const validated = validateEventRow<ConflictCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
@@ -189,17 +225,18 @@ export function buildConflicts(rows: TaggedConflict[]): { entries: ConflictEntry
       continue;
     }
 
+    const description = resolveOptionalField(row.description, row.descriptionRu, lang);
     const shared = {
       id: row.id,
-      name: validated.name,
+      name: resolveField(validated.name, row.labelRu, lang),
       category: validated.category,
       regionTags: row.regionTags,
       fameScore: row.fameScore,
-      tagline: validated.tagline,
+      tagline: resolveField(validated.tagline, row.taglineRu, lang),
       wikipediaUrl: validated.article,
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
-      ...(row.description ? { description: row.description } : {}),
+      ...(description ? { description } : {}),
       ...(row.parentId ? { parentId: row.parentId } : {}),
     };
 
@@ -241,11 +278,16 @@ export function buildConflicts(rows: TaggedConflict[]): { entries: ConflictEntry
 // milestones-enrichment.ts) becomes a period-shaped Milestone (e.g. the
 // Black Death, 1346-1353), a row without one stays point-shaped. See
 // shared-types's Milestone doc comment.
-export function buildMilestones(rows: TaggedMilestone[]): { milestones: Milestone[]; report: DropReport } {
+export function buildMilestones(
+  rows: TaggedMilestone[],
+  lang: Lang = "en",
+): { milestones: Milestone[]; report: DropReport } {
   const milestones: Milestone[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
+    // Inclusion is always gated on English fields, regardless of `lang` —
+    // see Lang's doc comment above.
     const validated = validateEventRow<MilestoneCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
@@ -253,17 +295,18 @@ export function buildMilestones(rows: TaggedMilestone[]): { milestones: Mileston
       continue;
     }
 
+    const description = resolveOptionalField(row.description, row.descriptionRu, lang);
     const shared = {
       id: row.id,
-      name: validated.name,
+      name: resolveField(validated.name, row.labelRu, lang),
       category: validated.category,
       regionTags: row.regionTags,
       fameScore: row.fameScore,
-      tagline: validated.tagline,
+      tagline: resolveField(validated.tagline, row.taglineRu, lang),
       wikipediaUrl: validated.article,
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
-      ...(row.description ? { description: row.description } : {}),
+      ...(description ? { description } : {}),
     };
 
     if (row.endYear !== undefined) {

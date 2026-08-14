@@ -249,7 +249,7 @@
   },
   {
     "id": "Q2487",
-    "name": "Thirty Years’ War",
+    "name": "Thirty Years' War",
     "category": "war",
     "regionTags": [
       "europe"
@@ -317,7 +317,7 @@
   },
   {
     "id": "Q488",
-    "name": "Atomic bombings of Hiroshima and Nagasaki",
+    "name": "atomic bombings of Hiroshima and Nagasaki",
     "category": "military-operation",
     "regionTags": [
       "east-asia"
@@ -613,7 +613,7 @@
   },
   {
     "id": "Q48249",
-    "name": "Falkland Islands War",
+    "name": "Falklands War",
     "category": "war",
     "regionTags": [
       "europe"
@@ -745,7 +745,8 @@
     "fameScore": 80,
     "tagline": "1941–1945 World War II theater",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/19440712%20soviet%20and%20ak%20soldiers%20vilnius.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20146-1981-149-34A%2C%20Russland%2C%20Herausziehen%20eines%20Autos.jpg",
+    "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
     "description": "The Eastern Front, also known as the Great Patriotic War, or the German–Soviet War, was a theatre of World War II fought between the European Axis powers and Allies, including the Soviet Union (USSR) and Poland. It encompassed Central Europe, Eastern Europe, Northeast Europe (Baltics), and Southeast Europe (Balkans), and lasted from 22 June 1941 to 9 May 1945. Of the estimated 70–85 million deaths attributed to the war, around 30 million occurred on the Eastern Front, including 9 million children. The Eastern Front was decisive in determining the outcome in the European theatre of operations in World War II and is the main cause of the defeat of Nazi Germany and the Axis nations. Historian Geoffrey Roberts noted that \"more than 80 percent of all combat during the Second World War took place on the Eastern Front\".",
     "parentId": "Q362",
     "period": {
@@ -872,8 +873,8 @@
     "fameScore": 79,
     "tagline": "2008 Russian invasion of Georgia",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Georgian_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mirazh2007.jpg",
-    "imageAttribution": "ru:Участник:Водник, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tskhinval%20Yana%20Amelina%2010.jpg",
+    "imageAttribution": "Yana Amelina (Амелина Я. А.), via Wikimedia Commons",
     "description": "The August 2008 Russo-Georgian War, also known as the Russian invasion of Georgia, was a war waged against Georgia by the Russian Federation and the Russian-backed separatist regions of South Ossetia and Abkhazia. The fighting took place in the strategically important South Caucasus region. It is regarded as the first European war of the 21st century.",
     "period": {
       "start": {
@@ -891,8 +892,8 @@
     "name": "Fall of Constantinople",
     "category": "military-operation",
     "regionTags": [
-      "middle-east",
-      "europe"
+      "europe",
+      "middle-east"
     ],
     "fameScore": 79,
     "tagline": "1453 capture of the Byzantine capital by the Ottoman Empire",
@@ -1011,7 +1012,8 @@
     "fameScore": 78,
     "tagline": "German, Soviet, and Slovak attack on and takeover of Poland that marked the start of World War II",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Defenders%20of%20Warsaw%20%281939%29.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/German%20soldiers%20remove%20the%20Polish%20border%20crossing%20in%20Sopot%20during%20the%20first%20stages%20of%20the%20Invasion%20of%20Poland%20%2848661789227%29.png",
+    "imageAttribution": "Cassowary Colorizations, via Wikimedia Commons",
     "description": "The invasion of Poland, also known as the September Campaign, Polish Campaign, and Polish Defensive War of 1939, was a joint attack on the Republic of Poland by Nazi Germany, the Slovak Republic, and the Soviet Union, which marked the beginning of World War II. The invasion began on 1 September 1939 when Germany marched into Poland, preceded by the Danzig crisis and by the Molotov–Ribbentrop Pact between Germany and the Soviet Union, which was signed one week before and approved by the Supreme Soviet of the Soviet Union one day before the invasion. On 17 September the Soviet Union invaded as well, acting on a secret protocol of the pact, which assigned parts of Poland to them. The campaign ended on 6 October with Germany and the Soviet Union dividing the whole of Poland under the terms of the German–Soviet Frontier Treaty.",
     "parentId": "Q362",
     "period": {
@@ -1160,7 +1162,7 @@
   },
   {
     "id": "Q181533",
-    "name": "Bosnian conflict",
+    "name": "War in Bosnia and Herzegovina",
     "category": "war",
     "regionTags": [],
     "fameScore": 78,
@@ -1467,7 +1469,7 @@
   },
   {
     "id": "Q164432",
-    "name": "Eighty Years’ War",
+    "name": "Eighty Years' War",
     "category": "war-of-independence",
     "regionTags": [
       "europe"
@@ -1490,7 +1492,7 @@
   },
   {
     "id": "Q215112",
-    "name": "South African War",
+    "name": "Second Boer War",
     "category": "war",
     "regionTags": [],
     "fameScore": 76,
@@ -1595,7 +1597,7 @@
   },
   {
     "id": "Q200485",
-    "name": "Norman Conquest",
+    "name": "Norman conquest of England",
     "category": "military-operation",
     "regionTags": [
       "europe"
@@ -1641,7 +1643,7 @@
   },
   {
     "id": "Q153650",
-    "name": "Seven Weeks’ War",
+    "name": "Austro-Prussian War",
     "category": "war",
     "regionTags": [],
     "fameScore": 75,
@@ -1775,7 +1777,7 @@
   },
   {
     "id": "Q58947",
-    "name": "War of the Triple Alliance",
+    "name": "Paraguayan War",
     "category": "war",
     "regionTags": [],
     "fameScore": 74,
@@ -1856,7 +1858,7 @@
   },
   {
     "id": "Q202161",
-    "name": "Gallic Wars",
+    "name": "Gallic War",
     "category": "war",
     "regionTags": [],
     "fameScore": 73,
@@ -1898,7 +1900,7 @@
   },
   {
     "id": "Q207318",
-    "name": "French revolutionary wars",
+    "name": "French Revolutionary Wars",
     "category": "war",
     "regionTags": [],
     "fameScore": 73,
@@ -1919,7 +1921,7 @@
   },
   {
     "id": "Q214456",
-    "name": "Philippine-American War",
+    "name": "Philippine–American War",
     "category": "war-of-independence",
     "regionTags": [],
     "fameScore": 73,
@@ -1940,7 +1942,7 @@
   },
   {
     "id": "Q94916",
-    "name": "Italo-Ethiopian War",
+    "name": "Second Italo-Ethiopian War",
     "category": "war",
     "regionTags": [],
     "fameScore": 73,
@@ -2041,7 +2043,7 @@
   },
   {
     "id": "Q190882",
-    "name": "Phony War",
+    "name": "Phoney War",
     "category": "military-operation",
     "regionTags": [
       "europe"
@@ -2073,7 +2075,7 @@
     "fameScore": 72,
     "tagline": "1946–1949 civil war in Greece",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Greek_Civil_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Grupa%20borci%20na%20DA%20na%20Grcija.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vladina%20edinica%2C%20Gradjanska%20vojna%20vo%20Grcija.jpg",
     "description": "The Greek Civil War took place from 1946 to 1949. The conflict, which erupted shortly after the end of World War II, consisted of a Communist-led uprising against the established government of the Kingdom of Greece. The rebels declared a people's republic, the Provisional Democratic Government of Greece, which was governed by the Communist Party of Greece (KKE) and its military branch, the Democratic Army of Greece (DSE). The rebels were supported by Albania and Yugoslavia. With the support of the United Kingdom and the United States, the Greek royal government forces ultimately prevailed.",
     "period": {
       "start": {
@@ -2130,7 +2132,7 @@
   },
   {
     "id": "Q152218",
-    "name": "War of the Grand Alliance",
+    "name": "Nine Years' War",
     "category": "war",
     "regionTags": [],
     "fameScore": 71,
@@ -2336,7 +2338,7 @@
   },
   {
     "id": "Q54434",
-    "name": "War of Jenkins’ Ear",
+    "name": "War of Jenkins' Ear",
     "category": "war",
     "regionTags": [],
     "fameScore": 67,
@@ -2358,7 +2360,7 @@
   },
   {
     "id": "Q737542",
-    "name": "Gempei War",
+    "name": "Genpei War",
     "category": "war",
     "regionTags": [
       "east-asia"
@@ -2379,7 +2381,7 @@
   },
   {
     "id": "Q468293",
-    "name": "Tripolitan War",
+    "name": "First Barbary War",
     "category": "war",
     "regionTags": [],
     "fameScore": 66,
@@ -2444,7 +2446,7 @@
   },
   {
     "id": "Q654006",
-    "name": "First Northern War",
+    "name": "Second Northern War",
     "category": "war",
     "regionTags": [],
     "fameScore": 65,
@@ -2486,7 +2488,7 @@
   },
   {
     "id": "Q862257",
-    "name": "King Philip’s War",
+    "name": "King Philip's War",
     "category": "war",
     "regionTags": [],
     "fameScore": 65,
@@ -2502,6 +2504,26 @@
       "end": {
         "year": 1678,
         "month": 4
+      }
+    }
+  },
+  {
+    "id": "Q699849",
+    "name": "Silesian Wars",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 65,
+    "tagline": "three conflicts between the Kingdom of Prussia and the Austrian Habsburg Monarchy for control of Silesia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Silesian_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Schlacht%20bei%20Mollwitz.jpg",
+    "description": "The Silesian Wars were three wars fought in the mid-18th century between Prussia, under King Frederick the Great, and Habsburg Austria, under Empress Maria Theresa, for control of the Central European region of Silesia, now in south-western Poland.",
+    "parentId": "Q33143",
+    "period": {
+      "start": {
+        "year": 1740
+      },
+      "end": {
+        "year": 1763
       }
     }
   },
@@ -2528,7 +2550,7 @@
   },
   {
     "id": "Q43378",
-    "name": "The War of a Thousand Days",
+    "name": "Thousand Days' War",
     "category": "war",
     "regionTags": [
       "americas"
@@ -2568,26 +2590,6 @@
       },
       "end": {
         "year": 1477
-      }
-    }
-  },
-  {
-    "id": "Q699849",
-    "name": "Silesian Wars",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 64,
-    "tagline": "three conflicts between the Kingdom of Prussia and the Austrian Habsburg Monarchy for control of Silesia",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Silesian_Wars",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Schlacht%20bei%20Mollwitz.jpg",
-    "description": "The Silesian Wars were three wars fought in the mid-18th century between Prussia, under King Frederick the Great, and Habsburg Austria, under Empress Maria Theresa, for control of the Central European region of Silesia, now in south-western Poland.",
-    "parentId": "Q33143",
-    "period": {
-      "start": {
-        "year": 1740
-      },
-      "end": {
-        "year": 1763
       }
     }
   },
@@ -2651,7 +2653,7 @@
   },
   {
     "id": "Q315921",
-    "name": "Thirteen Years’ War",
+    "name": "Thirteen Years' War",
     "category": "war",
     "regionTags": [],
     "fameScore": 63,
@@ -2691,14 +2693,14 @@
   },
   {
     "id": "Q869045",
-    "name": "Queen Anne’s War",
+    "name": "Queen Anne's War",
     "category": "war",
     "regionTags": [],
     "fameScore": 63,
     "tagline": "North American theater of the War of the Spanish Succession",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Queen_Anne%27s_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nouvelle-France%20map-ca.svg",
-    "imageAttribution": "Pinpin., via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/QueenAnnesWarBefore.svg",
+    "imageAttribution": "User:Magicpiano, via Wikimedia Commons",
     "description": "Queen Anne's War (1702–1713) was the second in a series of French and Indian Wars fought in North America involving the colonial empires of Great Britain, France, and Spain. In the United States, it is regarded as a standalone conflict. Elsewhere it is viewed as the American theater of the War of the Spanish Succession. It is also known as the Third Indian War. In France it was known as the Second Intercolonial War.",
     "parentId": "Q150701",
     "period": {
@@ -2714,7 +2716,7 @@
   },
   {
     "id": "Q1362209",
-    "name": "First Maratha War",
+    "name": "First Anglo-Maratha War",
     "category": "war",
     "regionTags": [
       "south-asia"
@@ -2780,7 +2782,7 @@
   },
   {
     "id": "Q431806",
-    "name": "Araucanian Wars",
+    "name": "Arauco War",
     "category": "war",
     "regionTags": [
       "americas"
@@ -2801,7 +2803,7 @@
   },
   {
     "id": "Q233642",
-    "name": "Second Maratha War",
+    "name": "Second Anglo-Maratha War",
     "category": "war",
     "regionTags": [
       "south-asia"
@@ -2822,7 +2824,7 @@
   },
   {
     "id": "Q617210",
-    "name": "Third Maratha War",
+    "name": "Third Anglo-Maratha War",
     "category": "war",
     "regionTags": [
       "south-asia"
@@ -2904,7 +2906,7 @@
   },
   {
     "id": "Q657967",
-    "name": "Barons’ War",
+    "name": "Second Barons' War",
     "category": "war",
     "regionTags": [
       "europe"
@@ -2925,7 +2927,7 @@
   },
   {
     "id": "Q807843",
-    "name": "Bishops’ Wars",
+    "name": "Bishops' Wars",
     "category": "war",
     "regionTags": [],
     "fameScore": 60,
@@ -2946,7 +2948,7 @@
   },
   {
     "id": "Q1070342",
-    "name": "King William’s War",
+    "name": "King William's War",
     "category": "war",
     "regionTags": [],
     "fameScore": 60,
@@ -2968,7 +2970,7 @@
   },
   {
     "id": "Q517578",
-    "name": "King George’s War",
+    "name": "King George's War",
     "category": "war",
     "regionTags": [
       "americas"
@@ -2991,7 +2993,7 @@
   },
   {
     "id": "Q277450",
-    "name": "Acehnese War",
+    "name": "Aceh War",
     "category": "war",
     "regionTags": [],
     "fameScore": 59,
@@ -3010,7 +3012,7 @@
   },
   {
     "id": "Q582594",
-    "name": "Cape Frontier Wars",
+    "name": "Xhosa Wars",
     "category": "war",
     "regionTags": [],
     "fameScore": 58,
@@ -3090,7 +3092,7 @@
   },
   {
     "id": "Q2378252",
-    "name": "Jinshin-no-ran",
+    "name": "Jinshin War",
     "category": "rebellion",
     "regionTags": [
       "east-asia"
@@ -3130,7 +3132,7 @@
   },
   {
     "id": "Q707364",
-    "name": "Count’s War",
+    "name": "Count's Feud",
     "category": "war",
     "regionTags": [
       "europe"
@@ -3151,7 +3153,7 @@
   },
   {
     "id": "Q4416705",
-    "name": "Serbo-Turkish War",
+    "name": "Serbian–Ottoman Wars",
     "category": "war",
     "regionTags": [],
     "fameScore": 55,
@@ -3228,7 +3230,7 @@
   },
   {
     "id": "Q1342672",
-    "name": "Powhatan War",
+    "name": "Anglo-Powhatan Wars",
     "category": "war",
     "regionTags": [],
     "fameScore": 52,
@@ -3249,7 +3251,7 @@
   },
   {
     "id": "Q2632175",
-    "name": "Lord Dunmore’s War",
+    "name": "Dunmore's War",
     "category": "war",
     "regionTags": [],
     "fameScore": 52,
@@ -3289,7 +3291,7 @@
   },
   {
     "id": "Q1348785",
-    "name": "Gun War",
+    "name": "Basuto Gun War",
     "category": "rebellion",
     "regionTags": [],
     "fameScore": 51,
@@ -3309,7 +3311,7 @@
   },
   {
     "id": "Q5453768",
-    "name": "Rohilla War",
+    "name": "First Rohilla War",
     "category": "war",
     "regionTags": [],
     "fameScore": 49,
@@ -3327,7 +3329,7 @@
   },
   {
     "id": "Q3119025",
-    "name": "Red River Indian War",
+    "name": "Red River War",
     "category": "war",
     "regionTags": [],
     "fameScore": 48,
@@ -3362,7 +3364,7 @@
   },
   {
     "id": "Q3052957",
-    "name": "War of the Emboabas",
+    "name": "Emboabas' War",
     "category": "war",
     "regionTags": [
       "americas"
@@ -3378,7 +3380,7 @@
   },
   {
     "id": "Q4209365",
-    "name": "Selangor Civil War",
+    "name": "Klang War",
     "category": "war",
     "regionTags": [],
     "fameScore": 46,

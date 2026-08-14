@@ -3,9 +3,11 @@
     {
       "id": "Q988780",
       "name": "Electromagnetic induction",
+      "nameRu": "электромагнитная индукция",
       "category": "science-theory",
       "year": 1831,
       "tagline": "production of voltage by a varying magnetic field",
+      "taglineRu": "явление возникновения электрического тока, электрического поля или электрической поляризации при изменении магнитного поля",
       "sitelinks": 81,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
       "articleUrls": {
@@ -18,15 +20,17 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D0%B0%D1%8F_%D0%B8%D0%BD%D0%B4%D1%83%D0%BA%D1%86%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Catalonia%20Terrassa%20mNATEC%20Dinamo.JPG"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Experiencia%20de%20Faraday.gif"
     },
     {
       "id": "Q20124",
       "name": "On the Origin of Species",
+      "nameRu": "Происхождение видов",
       "category": "science-theory",
       "year": 1859,
       "month": 11,
       "tagline": "treatise on natural selection, written by Charles Darwin",
+      "taglineRu": "книга Чарльза Дарвина",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
       "articleUrls": {
@@ -43,10 +47,12 @@
     },
     {
       "id": "Q214634",
-      "name": "Cloud chamber",
+      "name": "cloud chamber",
+      "nameRu": "камера Вильсона",
       "category": "science-theory",
       "year": 1911,
       "tagline": "scientific device",
+      "taglineRu": "детектор быстрых заряженных частиц, использующий переохлаждённый пар",
       "sitelinks": 51,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cloud_chamber",
       "articleUrls": {
@@ -63,10 +69,12 @@
     },
     {
       "id": "Q11452",
-      "name": "General relativity",
+      "name": "general relativity",
+      "nameRu": "общая теория относительности",
       "category": "science-theory",
       "year": 1916,
       "tagline": "standard and classical physics theory of gravity and space",
+      "taglineRu": "геометрическая теория тяготения",
       "sitelinks": 129,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/General_relativity",
       "articleUrls": {
@@ -83,10 +91,12 @@
     },
     {
       "id": "Q132560",
-      "name": "Electron microscope",
+      "name": "electron microscope",
+      "nameRu": "электронный микроскоп",
       "category": "science-theory",
       "year": 1931,
       "tagline": "a magnifying system capable of showing the interior or surface of a microscopic object by means of directed electron beams",
+      "taglineRu": "прибор позволяющий получать изображения объектов благодаря использованию пучка электронов",
       "sitelinks": 82,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electron_microscope",
       "articleUrls": {
@@ -104,9 +114,11 @@
     {
       "id": "Q192446",
       "name": "Human Genome Project",
+      "nameRu": "проект «Геном человека»",
       "category": "science-theory",
       "year": 1990,
       "tagline": "research program for sequencing the human genome",
+      "taglineRu": "исследовательская программа по поиску генома человека",
       "sitelinks": 53,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Human_Genome_Project",
       "articleUrls": {
@@ -124,11 +136,13 @@
     },
     {
       "id": "Q171433",
-      "name": "Dolly the sheep",
+      "name": "Dolly the Sheep",
+      "nameRu": "Долли",
       "category": "science-theory",
       "year": 1996,
       "month": 7,
       "tagline": "cloned female sheep; first cloned animal",
+      "taglineRu": "первое клонирование млекопитающее",
       "sitelinks": 68,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
       "articleUrls": {
@@ -145,11 +159,13 @@
     },
     {
       "id": "Q190035",
-      "name": "Gravitational wave",
+      "name": "gravitational wave",
+      "nameRu": "гравитационная волна",
       "category": "science-theory",
       "year": 2015,
       "month": 9,
       "tagline": "propagating spacetime ripple",
+      "taglineRu": "изменения гравитационного поля",
       "sitelinks": 76,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Gravitational_wave",
       "articleUrls": {
@@ -166,11 +182,13 @@
     },
     {
       "id": "Q10693",
-      "name": "Periodic table",
+      "name": "periodic table",
+      "nameRu": "периодическая система химических элементов",
       "category": "science-theory",
       "year": 1869,
       "month": 3,
       "tagline": "table systematically placing elements based on atomic number and recurrent properties",
+      "taglineRu": "порядок химических элементов по атомной массе",
       "sitelinks": 229,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Periodic_table",
       "articleUrls": {
@@ -188,9 +206,11 @@
     {
       "id": "Q205921",
       "name": "Philosophiæ Naturalis Principia Mathematica",
+      "nameRu": "Математические начала натуральной философии",
       "category": "science-theory",
       "year": 1680,
       "tagline": "1687 work by Isaac Newton describing his laws of motion and gravitation",
+      "taglineRu": "фундаментальный труд Ньютона, в котором он сформулировал закон всемирного тяготения и три закона движения",
       "sitelinks": 79,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica",
       "articleUrls": {
@@ -207,10 +227,12 @@
     },
     {
       "id": "Q11455",
-      "name": "Special relativity",
+      "name": "special relativity",
+      "nameRu": "специальная теория относительности",
       "category": "science-theory",
       "year": 1905,
       "tagline": "physical theory of measurement in an inertial frame of reference proposed in 1905 by Albert Einstein",
+      "taglineRu": "физическая теория, предложенная Альбертом Эйнштейном в 1905 году",
       "sitelinks": 128,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Special_relativity",
       "articleUrls": {
@@ -227,7 +249,7 @@
     },
     {
       "id": "Q3518429",
-      "name": "Aryabhatiya",
+      "name": "Āryabhaṭīya",
       "category": "science-theory",
       "year": 510,
       "tagline": "Sanskrit astronomical treatise by the 5th century Indian mathematician Aryabhata",
@@ -245,7 +267,7 @@
     },
     {
       "id": "Q1290001",
-      "name": "Brahmasphutasiddhanta",
+      "name": "Brāhmasphuṭasiddhānta",
       "category": "science-theory",
       "year": 628,
       "tagline": "Indian mathematics treatise",
@@ -262,7 +284,6 @@
     },
     {
       "id": "Q1895685",
-      "name": "Molecular Structure of Nucleic Acids",
       "category": "science-theory",
       "articleUrls": {},
       "countries": []
@@ -270,6 +291,7 @@
     {
       "id": "Q2453355",
       "name": "Dartmouth workshop",
+      "nameRu": "Дартмутский семинар",
       "category": "science-theory",
       "year": 1956,
       "tagline": "1956 AI workshop",
@@ -290,7 +312,8 @@
     },
     {
       "id": "Q4339620",
-      "name": "Discovery of electrons",
+      "name": "discovery of electrons",
+      "nameRu": "Открытие электрона",
       "category": "science-theory",
       "year": 1897,
       "sitelinks": 2,
@@ -302,10 +325,12 @@
     {
       "id": "Q40605",
       "name": "Large Hadron Collider",
+      "nameRu": "Большой адронный коллайдер",
       "category": "science-theory",
       "year": 2008,
       "month": 10,
       "tagline": "particle collider",
+      "taglineRu": "ускоритель заряженных частиц",
       "sitelinks": 99,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Large_Hadron_Collider",
       "articleUrls": {
@@ -318,8 +343,8 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9_%D0%B0%D0%B4%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BA%D0%BE%D0%BB%D0%BB%D0%B0%D0%B9%D0%B4%D0%B5%D1%80"
       },
       "countries": [
-        "Q39",
-        "Q142"
+        "Q142",
+        "Q39"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CERN%20LHC%20Tunnel1.jpg"
     },
@@ -341,10 +366,12 @@
     },
     {
       "id": "Q166543",
-      "name": "General anaesthesia",
+      "name": "general anaesthesia",
+      "nameRu": "наркоз",
       "category": "medicine-health",
       "year": -3499,
       "tagline": "medically induced coma with loss of protective reflexes, resulting from the administration of one or more general anaesthetic agents",
+      "taglineRu": "искусственное торможение ЦНС, ввергающее в сон",
       "sitelinks": 42,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/General_anaesthesia",
       "articleUrls": {
@@ -361,10 +388,12 @@
     },
     {
       "id": "Q162297",
-      "name": "Hygiene",
+      "name": "hygiene",
+      "nameRu": "гигиена",
       "category": "public-health",
       "year": -2999,
       "tagline": "set of practices performed for the preservation of health",
+      "taglineRu": "регулярный уход за телом ради здоровья",
       "sitelinks": 106,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hygiene",
       "articleUrls": {
@@ -377,11 +406,12 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%B3%D0%B8%D0%B5%D0%BD%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hand%20Hygiene.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OCD%20handwash.jpg"
     },
     {
       "id": "Q310301",
       "name": "Ebers Papyrus",
+      "nameRu": "Папирус Эберса",
       "category": "medicine-health",
       "year": -1599,
       "tagline": "ancient Egyptian medical papyrus",
@@ -402,6 +432,7 @@
     {
       "id": "Q842363",
       "name": "Edwin Smith Papyrus",
+      "nameRu": "Папирус Эдвина Смита",
       "category": "medicine-health",
       "year": -1580,
       "tagline": "oldest Egyptian medical text",
@@ -423,10 +454,12 @@
     },
     {
       "id": "Q228036",
-      "name": "Cesarean section",
+      "name": "cesarean section",
+      "nameRu": "кесарево сечение",
       "category": "medicine-health",
       "year": -319,
       "tagline": "surgical procedure in which a baby is delivered through a parent’s abdomen",
+      "taglineRu": "операция искусственного родоразрешения",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Caesarean_section",
       "articleUrls": {
@@ -444,10 +477,12 @@
     {
       "id": "Q42005",
       "name": "Black Death",
+      "nameRu": "Чёрная смерть",
       "category": "public-health",
       "year": 1346,
       "endYear": 1352,
       "tagline": "1346–1353 pandemic in Eurasia and North Africa",
+      "taglineRu": "пандемия чумы в 1346-1353 гг. в Европе",
       "sitelinks": 127,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Death",
       "articleUrls": {
@@ -460,19 +495,21 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D1%91%D1%80%D0%BD%D0%B0%D1%8F_%D1%81%D0%BC%D0%B5%D1%80%D1%82%D1%8C"
       },
       "countries": [
-        "Q227",
-        "Q230",
+        "Q170770",
         "Q399",
-        "Q170770"
+        "Q230",
+        "Q227"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Doutielt3.jpg"
     },
     {
       "id": "Q162684",
       "name": "Charité",
+      "nameRu": "Шарите",
       "category": "medicine-health",
       "year": 1710,
       "tagline": "university hospital in Berlin, Germany",
+      "taglineRu": "клиника в Берлине",
       "sitelinks": 40,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Charit%C3%A9",
       "articleUrls": {
@@ -491,7 +528,8 @@
     },
     {
       "id": "Q1037810",
-      "name": "Smallpox vaccine",
+      "name": "smallpox vaccine",
+      "nameRu": "вакцина против оспы",
       "category": "medicine-health",
       "year": 1798,
       "tagline": "first successful vaccine to be developed",
@@ -507,15 +545,17 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D0%BA%D1%86%D0%B8%D0%BD%D0%B0_%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2_%D0%BE%D1%81%D0%BF%D1%8B"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Poster%20for%20vaccination%20against%20smallpox.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Smallpox%20vaccine%20injection.jpg"
     },
     {
       "id": "Q204711",
-      "name": "US Food and Drug Administration",
+      "name": "United States Food and Drug Administration",
+      "nameRu": "Управление по санитарному надзору за качеством пищевых продуктов и медикаментов",
       "category": "public-health",
       "year": 1906,
       "month": 6,
       "tagline": "agency of the US Department of Health and Human Services",
+      "taglineRu": "агентство Министерства здравоохранения и социальных служб США",
       "sitelinks": 56,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Food_and_Drug_Administration",
       "articleUrls": {
@@ -534,13 +574,15 @@
     },
     {
       "id": "Q178275",
-      "name": "1918–1920 flu pandemic (Spanish flu)",
+      "name": "1918–1920 flu pandemic",
+      "nameRu": "испанский грипп",
       "category": "public-health",
       "year": 1918,
       "month": 1,
       "endYear": 1920,
       "endMonth": 12,
       "tagline": "1918–1920 global influenza pandemic caused by the H1N1 influenza A virus",
+      "taglineRu": "пандемия гриппа в 1918 году",
       "sitelinks": 102,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_flu",
       "articleUrls": {
@@ -557,7 +599,8 @@
     },
     {
       "id": "Q12190",
-      "name": "Penicillin",
+      "name": "penicillin",
+      "nameRu": "бензилпенициллин",
       "category": "medicine-health",
       "year": 1928,
       "month": 9,
@@ -577,7 +620,8 @@
     },
     {
       "id": "Q817281",
-      "name": "Combined oral contraceptive pill",
+      "name": "combined oral contraceptive pill",
+      "nameRu": "гормональная контрацепция",
       "category": "medicine-health",
       "year": 1961,
       "tagline": "birth control method that includes a combination of an estrogen (estradiol) and a progestogen (progestin)",
@@ -598,10 +642,12 @@
     {
       "id": "Q234027",
       "name": "Louise Brown",
+      "nameRu": "Луиза Джой Браун",
       "category": "medicine-health",
       "year": 1978,
       "month": 7,
       "tagline": "first in-vitro baby",
+      "taglineRu": "английская няня, ставшая первым человеком в мире, родившимся в результате искусственного (экстракорпорального) оплодотворения",
       "sitelinks": 42,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Louise_Brown",
       "articleUrls": {
@@ -618,10 +664,12 @@
     {
       "id": "Q81068910",
       "name": "COVID-19 pandemic",
+      "nameRu": "пандемия COVID-19",
       "category": "public-health",
       "year": 2019,
       "month": 12,
       "tagline": "pandemic caused by SARS-CoV-2 (2019–2023)",
+      "taglineRu": "пандемия коронавирусной инфекции 2019 года (COVID-19), продолжавшаяся с 2020 по 2023 год",
       "sitelinks": 213,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/COVID-19_pandemic",
       "articleUrls": {
@@ -634,148 +682,150 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F_COVID-19"
       },
       "countries": [
-        "Q217",
-        "Q218",
-        "Q219",
-        "Q221",
-        "Q222",
-        "Q224",
-        "Q225",
-        "Q227",
-        "Q228",
-        "Q229",
-        "Q230",
-        "Q232",
-        "Q233",
-        "Q235",
-        "Q237",
-        "Q238",
-        "Q241",
-        "Q252",
-        "Q258",
-        "Q262",
-        "Q298",
-        "Q334",
-        "Q347",
-        "Q398",
-        "Q399",
-        "Q403",
-        "Q408",
-        "Q414",
-        "Q419",
-        "Q423",
-        "Q424",
-        "Q574",
-        "Q664",
-        "Q668",
-        "Q711",
-        "Q717",
-        "Q730",
-        "Q733",
-        "Q734",
-        "Q736",
-        "Q739",
-        "Q750",
-        "Q754",
-        "Q757",
-        "Q760",
-        "Q766",
-        "Q774",
-        "Q781",
-        "Q783",
-        "Q786",
-        "Q792",
-        "Q794",
-        "Q796",
-        "Q800",
-        "Q801",
-        "Q804",
-        "Q810",
-        "Q811",
-        "Q817",
-        "Q822",
-        "Q826",
-        "Q833",
-        "Q837",
-        "Q842",
-        "Q843",
-        "Q846",
-        "Q851",
-        "Q854",
-        "Q865",
-        "Q869",
-        "Q878",
-        "Q881",
-        "Q884",
-        "Q889",
-        "Q902",
-        "Q917",
-        "Q921",
-        "Q928",
-        "Q945",
-        "Q948",
-        "Q1006",
-        "Q1009",
-        "Q1025",
-        "Q1028",
-        "Q1033",
-        "Q1037",
-        "Q1041",
-        "Q1049",
-        "Q1050",
-        "Q1246",
-        "Q14773",
-        "Q21203",
-        "Q25279",
-        "Q219060",
-        "Q16",
-        "Q17",
-        "Q20",
-        "Q27",
-        "Q28",
-        "Q29",
-        "Q30",
-        "Q31",
-        "Q32",
-        "Q33",
-        "Q34",
-        "Q35",
-        "Q36",
-        "Q37",
-        "Q38",
-        "Q39",
-        "Q40",
-        "Q41",
-        "Q43",
-        "Q45",
-        "Q55",
-        "Q77",
-        "Q79",
-        "Q96",
-        "Q114",
         "Q142",
-        "Q145",
-        "Q148",
-        "Q155",
-        "Q159",
-        "Q183",
-        "Q184",
-        "Q189",
-        "Q191",
-        "Q211",
-        "Q212",
-        "Q213",
+        "Q114",
+        "Q96",
+        "Q79",
+        "Q77",
+        "Q55",
+        "Q45",
+        "Q43",
+        "Q41",
+        "Q40",
+        "Q39",
+        "Q38",
+        "Q37",
+        "Q36",
+        "Q35",
+        "Q34",
+        "Q33",
+        "Q32",
+        "Q31",
+        "Q30",
+        "Q29",
+        "Q28",
+        "Q27",
+        "Q20",
+        "Q17",
+        "Q16",
+        "Q219060",
+        "Q25279",
+        "Q21203",
+        "Q14773",
+        "Q1246",
+        "Q1050",
+        "Q1049",
+        "Q1041",
+        "Q1037",
+        "Q1033",
+        "Q1028",
+        "Q1025",
+        "Q1009",
+        "Q1006",
+        "Q948",
+        "Q945",
+        "Q928",
+        "Q921",
+        "Q917",
+        "Q902",
+        "Q889",
+        "Q884",
+        "Q881",
+        "Q878",
+        "Q869",
+        "Q865",
+        "Q854",
+        "Q851",
+        "Q846",
+        "Q843",
+        "Q842",
+        "Q837",
+        "Q833",
+        "Q826",
+        "Q822",
+        "Q817",
+        "Q811",
+        "Q810",
+        "Q804",
+        "Q801",
+        "Q800",
+        "Q796",
+        "Q794",
+        "Q792",
+        "Q786",
+        "Q783",
+        "Q781",
+        "Q774",
+        "Q766",
+        "Q760",
+        "Q757",
+        "Q754",
+        "Q750",
+        "Q739",
+        "Q736",
+        "Q734",
+        "Q733",
+        "Q730",
+        "Q717",
+        "Q711",
+        "Q668",
+        "Q664",
+        "Q574",
+        "Q424",
+        "Q423",
+        "Q419",
+        "Q414",
+        "Q408",
+        "Q403",
+        "Q399",
+        "Q398",
+        "Q347",
+        "Q334",
+        "Q298",
+        "Q262",
+        "Q258",
+        "Q252",
+        "Q241",
+        "Q238",
+        "Q237",
+        "Q235",
+        "Q233",
+        "Q232",
+        "Q230",
+        "Q229",
+        "Q228",
+        "Q227",
+        "Q225",
+        "Q224",
+        "Q222",
+        "Q221",
+        "Q219",
+        "Q218",
+        "Q217",
+        "Q215",
         "Q214",
-        "Q215"
+        "Q213",
+        "Q212",
+        "Q211",
+        "Q191",
+        "Q189",
+        "Q184",
+        "Q183",
+        "Q159",
+        "Q155",
+        "Q148",
+        "Q145"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg"
     },
     {
       "id": "Q1519099",
-      "name": "Polio vaccine",
+      "name": "polio vaccine",
+      "nameRu": "вакцина против полиомиелита",
       "category": "medicine-health",
       "year": 1952,
       "tagline": "vaccine to prevent poliomyelitis",
+      "taglineRu": "вакцина",
       "sitelinks": 51,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Polio_vaccine",
       "articleUrls": {
@@ -792,10 +842,12 @@
     },
     {
       "id": "Q11472",
-      "name": "Paper",
+      "name": "paper",
+      "nameRu": "бумага",
       "category": "communication",
       "year": -140,
       "tagline": "thin, flexible material mainly used for writing upon, printing upon, drawing or for packaging",
+      "taglineRu": "волокнистый материал с минеральными добавками",
       "sitelinks": 198,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Paper",
       "articleUrls": {
@@ -808,14 +860,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%BC%D0%B0%D0%B3%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Scattered%20white%20paper%20%28Unsplash%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paperball%202.jpeg"
     },
     {
       "id": "Q144334",
-      "name": "Printing press",
+      "name": "printing press",
+      "nameRu": "ручной типографский станок",
       "category": "communication",
       "year": 1439,
       "tagline": "device for evenly printing ink onto a print medium",
+      "taglineRu": "устройство для создания типографских оттисков",
       "sitelinks": 80,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
       "articleUrls": {
@@ -833,9 +887,11 @@
     {
       "id": "Q158075",
       "name": "Gutenberg Bible",
+      "nameRu": "Библия Гутенберга",
       "category": "communication",
       "year": 1450,
       "tagline": "early book printed with movable type",
+      "taglineRu": "Библия, изданная Иоанном Гутенбергом",
       "sitelinks": 55,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Gutenberg_Bible",
       "articleUrls": {
@@ -852,7 +908,8 @@
     },
     {
       "id": "Q6501061",
-      "name": "Electrical telegraph",
+      "name": "electrical telegraph",
+      "nameRu": "электрический телеграф",
       "category": "communication",
       "year": 1816,
       "tagline": "early system for transmitting text over wires",
@@ -869,11 +926,13 @@
     },
     {
       "id": "Q107701",
-      "name": "Penny Black (postage stamp)",
+      "name": "Penny Black",
+      "nameRu": "Чёрный пенни",
       "category": "media-culture",
       "year": 1840,
       "month": 4,
       "tagline": "world's first adhesive postage stamp",
+      "taglineRu": "первая в истории почтовая марка",
       "sitelinks": 49,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Penny_Black",
       "articleUrls": {
@@ -892,10 +951,12 @@
     },
     {
       "id": "Q11035",
-      "name": "Telephone",
+      "name": "telephone",
+      "nameRu": "телефон",
       "category": "communication",
       "year": 1876,
       "tagline": "telecommunications device that permits two or more users to conduct a conversation",
+      "taglineRu": "устройство для приёма и передачи звука на расстоянии",
       "sitelinks": 215,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Telephone",
       "articleUrls": {
@@ -912,7 +973,8 @@
     },
     {
       "id": "Q13443401",
-      "name": "Invention of telephone",
+      "name": "invention of telephone",
+      "nameRu": "изобретение телефона",
       "category": "communication",
       "year": 1876,
       "tagline": "overview about the invention of the telephone",
@@ -928,10 +990,12 @@
     },
     {
       "id": "Q116434",
-      "name": "Phonograph",
+      "name": "phonograph",
+      "nameRu": "фонограф",
       "category": "communication",
       "year": 1877,
       "tagline": "device for the analogue recording and playback of sound",
+      "taglineRu": "Первый прибор для записи и воспроизведения звука",
       "sitelinks": 77,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Phonograph",
       "articleUrls": {
@@ -944,14 +1008,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A4%D0%BE%D0%BD%D0%BE%D0%B3%D1%80%D0%B0%D1%84"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Edison%20and%20phonograph%20edit2.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Phonograph%20disc.jpg"
     },
     {
       "id": "Q872",
-      "name": "Radio",
+      "name": "radio",
+      "nameRu": "радио",
       "category": "communication",
       "year": 1894,
       "tagline": "technology of signaling and communicating using radio waves",
+      "taglineRu": "способ передачи информации посредством радиоволн",
       "sitelinks": 189,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Radio",
       "articleUrls": {
@@ -964,14 +1030,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B4%D0%B8%D0%BE"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Biblis%20RFE%20RL%2001.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pasilan%20linkkitorni.jpg"
     },
     {
       "id": "Q46872",
-      "name": "Cinematograph",
+      "name": "cinematograph",
+      "nameRu": "кинематограф",
       "category": "communication",
       "year": 1892,
       "tagline": "motion picture film camera which also serves as a projector and printer",
+      "taglineRu": "аппарат для записи и показа движущегося изображения, изобретённый в 1895 году братьями Люмьер",
       "sitelinks": 35,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cinematograph",
       "articleUrls": {
@@ -988,10 +1056,12 @@
     {
       "id": "Q8665",
       "name": "Workers Leaving the Lumière Factory",
+      "nameRu": "Выход рабочих из фабрики",
       "category": "media-culture",
       "year": 1895,
       "month": 3,
       "tagline": "1895 French short black-and-white silent documentary film directed by Auguste and Louis Lumière",
+      "taglineRu": "документальный немой короткометражный фильм; один из первых фильмов, снятых братьями Люмьер",
       "sitelinks": 37,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Workers_Leaving_the_Lumi%C3%A8re_Factory",
       "articleUrls": {
@@ -1010,11 +1080,13 @@
     },
     {
       "id": "Q191472",
-      "name": "BBC Television Service launch",
+      "name": "BBC One",
+      "nameRu": "BBC One",
       "category": "media-culture",
       "year": 1936,
       "month": 11,
       "tagline": "flagship television channel of the BBC",
+      "taglineRu": "британский общественный информационно-развлекательный телеканал",
       "sitelinks": 62,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/BBC_One",
       "articleUrls": {
@@ -1033,10 +1105,12 @@
     {
       "id": "Q75",
       "name": "Internet",
+      "nameRu": "Интернет",
       "category": "communication",
       "year": 1969,
       "month": 10,
       "tagline": "global system of connected computer networks based on IP addressing and routing protocols",
+      "taglineRu": "всемирная система объединённых компьютерных сетей",
       "sitelinks": 296,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Internet",
       "articleUrls": {
@@ -1053,10 +1127,10 @@
     },
     {
       "id": "Q177524",
-      "name": "ARPANET",
       "category": "communication",
       "year": 1969,
       "tagline": "early packet switching network (1969–1990)",
+      "taglineRu": "компьютерная сеть, предшественник интернета",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/ARPANET",
       "articleUrls": {
@@ -1073,10 +1147,12 @@
     },
     {
       "id": "Q9158",
-      "name": "Email",
+      "name": "email",
+      "nameRu": "электронная почта",
       "category": "communication",
       "year": 1971,
       "tagline": "electronic changing digital messages between a network",
+      "taglineRu": "технология и служба по пересылке и получению электронных сообщений",
       "sitelinks": 172,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Email",
       "articleUrls": {
@@ -1093,10 +1169,12 @@
     {
       "id": "Q466",
       "name": "World Wide Web",
+      "nameRu": "всемирная паутина",
       "category": "communication",
       "year": 1989,
       "month": 3,
       "tagline": "global system of interlinked hypertext documents accessed via the Internet",
+      "taglineRu": "распределенная система, предоставляющая доступ к связанным между собой документам",
       "sitelinks": 158,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/World_Wide_Web",
       "articleUrls": {
@@ -1113,10 +1191,12 @@
     },
     {
       "id": "Q46904",
-      "name": "GSM",
+      "name": "Global System for Mobile Communications",
+      "nameRu": "GSM",
       "category": "communication",
       "year": 1990,
       "tagline": "standard to describe protocols for second generation digital cellular networks used by mobile phones",
+      "taglineRu": "стандарт обозначения протоколов мобильной связи второго поколения, используемых сотовыми телефонами",
       "sitelinks": 82,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/GSM",
       "articleUrls": {
@@ -1132,10 +1212,12 @@
     },
     {
       "id": "Q17517",
-      "name": "Mobile phone",
+      "name": "mobile phone",
+      "nameRu": "мобильный телефон",
       "category": "communication",
       "year": 1973,
       "tagline": "portable device to make telephone calls using a radio link",
+      "taglineRu": "переносной телефон, предназначенный для работы в сетях сотовой связи",
       "sitelinks": 180,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Mobile_phone",
       "articleUrls": {
@@ -1148,11 +1230,11 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mobile%20phone%20PHS%20Japan%201997-2003.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Android%20smartphones.jpg"
     },
     {
       "id": "Q1261053",
-      "name": "Woodblock printing",
+      "name": "woodblock printing",
       "category": "communication",
       "year": 800,
       "tagline": "early printing technique",
@@ -1176,6 +1258,7 @@
       "year": 2004,
       "month": 2,
       "tagline": "American online social media and social networking service",
+      "taglineRu": "американская социальная сеть",
       "sitelinks": 263,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Facebook",
       "articleUrls": {
@@ -1192,10 +1275,12 @@
     },
     {
       "id": "Q178193",
-      "name": "Steamboat",
+      "name": "steamboat",
+      "nameRu": "паровая лодка",
       "category": "transportation",
       "year": 1783,
       "tagline": "type of steam powered vessel; smaller than a steamship; boat in which the primary method of marine propulsion is steam power",
+      "taglineRu": "судно с паровым двигателем",
       "sitelinks": 61,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Steamboat",
       "articleUrls": {
@@ -1211,10 +1296,12 @@
     },
     {
       "id": "Q171043",
-      "name": "Steam locomotive",
+      "name": "steam locomotive",
+      "nameRu": "паровоз",
       "category": "transportation",
       "year": 1814,
       "tagline": "railway locomotive which generates its tractive power from a steam engine",
+      "taglineRu": "вид железнодорожного локомотива",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_locomotive",
       "articleUrls": {
@@ -1232,6 +1319,7 @@
     {
       "id": "Q375044",
       "name": "Stockton and Darlington Railway",
+      "nameRu": "Железная дорога Стоктон — Дарлингтон",
       "category": "infrastructure",
       "year": 1825,
       "tagline": "English railway company, 1825 to 1863",
@@ -1254,9 +1342,11 @@
     {
       "id": "Q1398696",
       "name": "Liverpool and Manchester Railway",
+      "nameRu": "Железная дорога Ливерпуль — Манчестер",
       "category": "infrastructure",
       "year": 1823,
       "tagline": "railway opened on 15 September 1830 between the Lancashire towns of Liverpool and Manchester",
+      "taglineRu": "транспортная ветвь в Англии",
       "sitelinks": 24,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Liverpool_and_Manchester_Railway",
       "articleUrls": {
@@ -1274,10 +1364,12 @@
     },
     {
       "id": "Q193692",
-      "name": "Electric car",
+      "name": "electric car",
+      "nameRu": "электромобиль",
       "category": "transportation",
       "year": 1835,
       "tagline": "automobile propelled by an electric motor using energy stored in rechargeable batteries",
+      "taglineRu": "автомобиль, приводимый в движение одним или несколькими электродвигателями с питанием от автономного источника электроэнергии",
       "sitelinks": 85,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_car",
       "articleUrls": {
@@ -1294,10 +1386,12 @@
     },
     {
       "id": "Q625151",
-      "name": "Electric locomotive",
+      "name": "electric locomotive",
+      "nameRu": "электровоз",
       "category": "transportation",
       "year": 1837,
       "tagline": "locomotive powered by electricity",
+      "taglineRu": "локомотив с внешним электропитанием",
       "sitelinks": 47,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_locomotive",
       "articleUrls": {
@@ -1309,14 +1403,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%B2%D0%BE%D0%B7"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%B2%D0%BE%D0%B7%20%D0%92%D0%9B22%D0%BC-2026%20%28VL22m-2026%20electric%20locomotive%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%A7%D0%A17-282%2C%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%2C%20%D0%9E%D1%80%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%9E%D1%80%D1%91%D0%BB%20%28Trainpix%20147617%29.jpg"
     },
     {
       "id": "Q133585",
-      "name": "Airship",
+      "name": "airship",
+      "nameRu": "дирижабль",
       "category": "transportation",
       "year": 1852,
       "tagline": "powered lighter-than-air aircraft",
+      "taglineRu": "управляемый летательный аппарат легче воздуха",
       "sitelinks": 89,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Airship",
       "articleUrls": {
@@ -1334,6 +1430,7 @@
     {
       "id": "Q1753108",
       "name": "First Transcontinental Railroad",
+      "nameRu": "Первая трансконтинентальная железная дорога США",
       "category": "infrastructure",
       "year": 1869,
       "tagline": "first railroad in the United States to reach the Pacific coast from the eastern states",
@@ -1355,10 +1452,12 @@
     },
     {
       "id": "Q1420",
-      "name": "Car",
+      "name": "car",
+      "nameRu": "автомобиль",
       "category": "transportation",
       "year": 1884,
       "tagline": "motorized road vehicle designed to carry one to eight people rather than primarily goods",
+      "taglineRu": "безрельсовая транспортная машина на колёсном ходу с приводом от собственного двигателя, предназначенная для перевозки людей и грузов",
       "sitelinks": 246,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Car",
       "articleUrls": {
@@ -1375,10 +1474,12 @@
     },
     {
       "id": "Q11442",
-      "name": "Bicycle",
+      "name": "bicycle",
+      "nameRu": "велосипед",
       "category": "transportation",
       "year": 1885,
       "tagline": "pedal-driven two-wheel vehicle",
+      "taglineRu": "двухколёсное транспортное средство, приводимое в движение посредством педалей",
       "sitelinks": 205,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bicycle",
       "articleUrls": {
@@ -1396,6 +1497,7 @@
     {
       "id": "Q326248",
       "name": "Benz Patent-Motorwagen",
+      "nameRu": "Автомобиль Бенца",
       "category": "transportation",
       "year": 1886,
       "month": 1,
@@ -1419,9 +1521,11 @@
     {
       "id": "Q20075",
       "name": "London Underground",
+      "nameRu": "Лондонский метрополитен",
       "category": "infrastructure",
       "year": 1890,
       "tagline": "public rapid transit system in London, UK",
+      "taglineRu": "система линий метрополитена в Лондоне",
       "sitelinks": 88,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/London_Underground",
       "articleUrls": {
@@ -1440,7 +1544,8 @@
     },
     {
       "id": "Q174174",
-      "name": "Diesel engine",
+      "name": "diesel engine",
+      "nameRu": "дизельный двигатель",
       "category": "energy-industry",
       "year": 1893,
       "tagline": "internal combustion engine with quality rotational frequency governing, internal mixture formation, lean air-fuel-ratio, diffusion flame and compression ignition",
@@ -1460,10 +1565,12 @@
     },
     {
       "id": "Q197",
-      "name": "Airplane",
+      "name": "airplane",
+      "nameRu": "самолёт",
       "category": "transportation",
       "year": 1903,
       "tagline": "powered fixed-wing aircraft",
+      "taglineRu": "воздушное судно с силовой установкой и неподвижной относительно фюзеляжа центральной частью крыла",
       "sitelinks": 195,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Airplane",
       "articleUrls": {
@@ -1481,6 +1588,7 @@
     {
       "id": "Q688605",
       "name": "Flyer I",
+      "nameRu": "Флайер 1",
       "category": "transportation",
       "year": 1903,
       "month": 12,
@@ -1503,10 +1611,12 @@
     },
     {
       "id": "Q949801",
-      "name": "Rotorcraft",
+      "name": "rotorcraft",
+      "nameRu": "винтокрылый летательный аппарат",
       "category": "transportation",
       "year": 1907,
       "tagline": "heavier-than-air aircraft which generates lift over rotating wings",
+      "taglineRu": "аэродинамическая техника с несущим винтом для полёта",
       "sitelinks": 30,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Rotorcraft",
       "articleUrls": {
@@ -1518,15 +1628,17 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BD%D1%82%D0%BE%D0%BA%D1%80%D1%8B%D0%BB%D1%8B%D0%B9_%D0%BB%D0%B5%D1%82%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Belvedere%20helicopter%20at%20Filton%2C%20Bristol%2C%20England.jpg"
     },
     {
       "id": "Q182323",
       "name": "Ford Model T",
+      "nameRu": "Ford Model T",
       "category": "transportation",
       "year": 1908,
       "month": 9,
       "tagline": "American car (1908-1927)",
+      "taglineRu": "легковой автомобиль компании Ford Motor Company, выпускавшийся в 1908–1927 годах",
       "sitelinks": 64,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ford_Model_T",
       "articleUrls": {
@@ -1543,11 +1655,13 @@
     },
     {
       "id": "Q208708",
-      "name": "Autogyro",
+      "name": "autogyro",
+      "nameRu": "автожир",
       "category": "transportation",
       "year": 1923,
       "month": 1,
       "tagline": "rotorcraft with rotor unpowered in flight",
+      "taglineRu": "винтокрылый летательный аппарат",
       "sitelinks": 61,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Autogyro",
       "articleUrls": {
@@ -1560,14 +1674,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%B6%D0%B8%D1%80"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20102-09500%2C%20Windm%C3%BChlen-Aeroplan%20Cleaned%27n%27Cropped.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg"
     },
     {
       "id": "Q12757",
-      "name": "Internal combustion engine",
+      "name": "internal combustion engine",
+      "nameRu": "двигатель внутреннего сгорания",
       "category": "energy-industry",
       "year": 1924,
       "tagline": "engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber",
+      "taglineRu": "тип двигателя, в котором энергия сгорания топлива преобразуется в механическую энергию",
       "sitelinks": 121,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
       "articleUrls": {
@@ -1580,11 +1696,12 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B5%D0%B3%D0%BE_%D1%81%D0%B3%D0%BE%D1%80%D0%B0%D0%BD%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Diesel%20Engine%20%284%20cycle%20running%29.gif"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wankel%20Cycle%20anim.gif"
     },
     {
       "id": "Q185757",
-      "name": "Hovercraft",
+      "name": "hovercraft",
+      "nameRu": "Судно на воздушной подушке",
       "category": "transportation",
       "year": 1955,
       "tagline": "vehicle capable of movement within ground effect at speed or stationary over all surfaces without contact",
@@ -1604,7 +1721,8 @@
     },
     {
       "id": "Q211382",
-      "name": "High-speed rail",
+      "name": "high-speed rail",
+      "nameRu": "скоростная железная дорога",
       "category": "infrastructure",
       "year": 1964,
       "tagline": "type of rail network utilizing trains that run significantly faster than those of traditional rail",
@@ -1625,10 +1743,12 @@
     {
       "id": "Q164338",
       "name": "Shinkansen",
+      "nameRu": "Синкансэн",
       "category": "transportation",
       "year": 1964,
       "month": 10,
       "tagline": "Japanese high-speed rail system",
+      "taglineRu": "высокоскоростная сеть железных дорог в Японии",
       "sitelinks": 74,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Shinkansen",
       "articleUrls": {
@@ -1648,9 +1768,11 @@
     {
       "id": "Q99200",
       "name": "The Iron Bridge",
+      "nameRu": "Чугунный мост через Северн",
       "category": "landmarks",
       "year": 1779,
       "tagline": "bridge that crosses the River Severn in Shropshire, England",
+      "taglineRu": "Мост расположен на реке Северн в Шропшире, Англия, первый крупный мост в мире, сделанный из чугуна.",
       "sitelinks": 32,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Iron_Bridge",
       "articleUrls": {
@@ -1670,10 +1792,12 @@
     {
       "id": "Q899",
       "name": "Suez Canal",
+      "nameRu": "Суэцкий канал",
       "category": "landmarks",
       "year": 1869,
       "month": 11,
       "tagline": "artificial sea-level waterway in Egypt",
+      "taglineRu": "судоходный бесшлюзовый канал в Египте",
       "sitelinks": 174,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Suez_Canal",
       "articleUrls": {
@@ -1693,10 +1817,12 @@
     {
       "id": "Q7350",
       "name": "Panama Canal",
+      "nameRu": "Панамский канал",
       "category": "landmarks",
       "year": 1914,
       "month": 8,
       "tagline": "large canal in Panama",
+      "taglineRu": "судоходный канал, соединяющий Тихий и Атлантический океаны",
       "sitelinks": 160,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Panama_Canal",
       "articleUrls": {
@@ -1711,15 +1837,17 @@
       "countries": [
         "Q804"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Panama%20Canal%20Gatun%20Locks.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Panama%20Canal%2C%20Agua%20Clara%20locks%2C%20Control%20tower%20%28Torre%20de%20control%29.jpg"
     },
     {
       "id": "Q10257",
       "name": "Channel Tunnel",
+      "nameRu": "Евротоннель",
       "category": "landmarks",
       "year": 1993,
       "month": 6,
       "tagline": "rail tunnel beneath the English Channel between France and Great Britain",
+      "taglineRu": "железнодорожный двухпутный тоннель под проливом Ла-Манш",
       "sitelinks": 88,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Channel_Tunnel",
       "articleUrls": {
@@ -1732,14 +1860,14 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%95%D0%B2%D1%80%D0%BE%D1%82%D0%BE%D0%BD%D0%BD%D0%B5%D0%BB%D1%8C"
       },
       "countries": [
-        "Q142",
-        "Q145"
+        "Q145",
+        "Q142"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/TGV%20TMST%203011-2%20-%20Sortie%20Tunnel%20sous%20la%20Manche%20%C3%A0%20Coquelles.jpg"
     },
     {
       "id": "Q278579",
-      "name": "Aqua Appia",
+      "nameRu": "Аква Аппия",
       "category": "landmarks",
       "year": -311,
       "tagline": "first ancient Roman aqueduct",
@@ -1761,10 +1889,12 @@
     {
       "id": "Q94247",
       "name": "Interstate Highway System",
+      "nameRu": "Система межштатных автомагистралей США",
       "category": "infrastructure",
       "year": 1956,
       "month": 6,
       "tagline": "network of freeways in the United States",
+      "taglineRu": "сеть скоростных автомагистралей в США",
       "sitelinks": 45,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Interstate_Highway_System",
       "articleUrls": {
@@ -1783,10 +1913,12 @@
     {
       "id": "Q125006",
       "name": "Brooklyn Bridge",
+      "nameRu": "Бруклинский мост",
       "category": "landmarks",
       "year": 1883,
       "month": 5,
       "tagline": "bridge in New York City, crossing the East River",
+      "taglineRu": "Мост в США",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Brooklyn_Bridge",
       "articleUrls": {
@@ -1805,10 +1937,11 @@
     },
     {
       "id": "Q172822",
-      "name": "Hoover Dam",
+      "nameRu": "Плотина Гувера",
       "category": "landmarks",
       "year": 1931,
       "tagline": "hydroelectric dam on the Colorado River, United States",
+      "taglineRu": "уникальное гидротехническое сооружение, плотина и гидроэлектростанция в нижнем течении реки Колорадо",
       "sitelinks": 73,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hoover_Dam",
       "articleUrls": {
@@ -1827,10 +1960,12 @@
     },
     {
       "id": "Q160464",
-      "name": "Button",
+      "name": "button",
+      "nameRu": "пуговица",
       "category": "everyday-technology",
       "year": 1200,
       "tagline": "small fastener used in clothing",
+      "taglineRu": "предмет одежды",
       "sitelinks": 100,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Button",
       "articleUrls": {
@@ -1847,10 +1982,12 @@
     },
     {
       "id": "Q79757",
-      "name": "Barometer",
+      "name": "barometer",
+      "nameRu": "барометр",
       "category": "everyday-technology",
       "year": 1643,
       "tagline": "scientific instrument used to measure atmospheric pressure",
+      "taglineRu": "прибор для измерения атмосферного давления",
       "sitelinks": 93,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Barometer",
       "articleUrls": {
@@ -1863,11 +2000,12 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D1%80"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dosen-barometer.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Barometr%2C%20Skwer%20Bowiena%2C%20Sopot%20-%20panoramio.jpg"
     },
     {
       "id": "Q841282",
-      "name": "Arc lamp",
+      "name": "arc lamp",
+      "nameRu": "дуговая лампа",
       "category": "everyday-technology",
       "year": 1802,
       "tagline": "light created by electrical breakdown of gas",
@@ -1888,9 +2026,11 @@
     {
       "id": "Q616159",
       "name": "View from the Window at Le Gras",
+      "nameRu": "Вид из окна в Ле Гра",
       "category": "media-culture",
       "year": 1827,
       "tagline": "the earliest known surviving photograph produced in the camera obscura by Joseph Nicéphore Niépce",
+      "taglineRu": "самая первая из сохранившихся до наших дней фотография",
       "sitelinks": 34,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/View_from_the_Window_at_Le_Gras",
       "articleUrls": {
@@ -1908,25 +2048,13 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Untitled%20%28point%20de%20vue%29%2C%20Ni%C3%A9pce%201827%20%E2%80%94%20HRC%202020%20%28cropped%29.jpg"
     },
     {
-      "id": "Q123318211",
-      "name": "Hand with Rings",
-      "category": "media-culture",
-      "year": 1895,
-      "month": 12,
-      "tagline": "first radiographic image of a human hand by Wilhelm Röntgen",
-      "sitelinks": 2,
-      "articleUrls": {
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D0%BA%D0%B0_%D1%81_%D0%BA%D0%BE%D0%BB%D1%8C%D1%86%D0%B0%D0%BC%D0%B8"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20medical%20X-ray%20by%20Wilhelm%20R%C3%B6ntgen%20of%20his%20wife%20Anna%20Bertha%20Ludwig%27s%20hand%20-%2018951222.jpg"
-    },
-    {
       "id": "Q11633",
-      "name": "Photography",
+      "name": "photography",
+      "nameRu": "фотография",
       "category": "communication",
       "year": 1839,
       "tagline": "art, science, and practice of creating durable images by recording light or other electromagnetic radiation",
+      "taglineRu": "процесс получения и сохранения изображения",
       "sitelinks": 210,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Photography",
       "articleUrls": {
@@ -1943,10 +2071,12 @@
     },
     {
       "id": "Q179744",
-      "name": "Daguerreotype process",
+      "name": "daguerreotype process",
+      "nameRu": "дагеротипия",
       "category": "communication",
       "year": 1839,
       "tagline": "photographic process invented by L. Daguerre",
+      "taglineRu": "ранний фотографический процесс, основанный на светочувствительности йодистого серебра",
       "sitelinks": 65,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Daguerreotype",
       "articleUrls": {
@@ -1959,14 +2089,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B0%D0%B3%D0%B5%D1%80%D0%BE%D1%82%D0%B8%D0%BF%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/C%C3%A1mara%20para%20obtener%20vistas%20al%20daguerrotipo%2C%20original%20del%20a%C3%B1o%201839%2C%20conservada%20en%20Barcelona%2C%20Espa%C3%B1a%2C%20Spain.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Daguerreotype%20process.jpg"
     },
     {
       "id": "Q37828",
-      "name": "Refrigerator",
+      "name": "refrigerator",
+      "nameRu": "холодильник",
       "category": "energy-industry",
       "year": 1856,
       "tagline": "household or industrial appliance for preserving food at a low temperature",
+      "taglineRu": "устройство, поддерживающее низкую температуру в теплоизолированной камере",
       "sitelinks": 140,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Refrigerator",
       "articleUrls": {
@@ -1983,7 +2115,8 @@
     },
     {
       "id": "Q337724",
-      "name": "Lead–acid battery",
+      "name": "lead–acid battery",
+      "nameRu": "Свинцово-кислотный аккумулятор",
       "category": "energy-industry",
       "year": 1859,
       "tagline": "rechargeable battery type often used in cars",
@@ -2003,10 +2136,12 @@
     },
     {
       "id": "Q47616",
-      "name": "Incandescent light bulb",
+      "name": "incandescent light bulb",
+      "nameRu": "лампа накаливания",
       "category": "energy-industry",
       "year": 1879,
       "tagline": "electric light bulb with a resistively heated wire filament",
+      "taglineRu": "искусственный источник света, в котором свет испускает тело накала",
       "sitelinks": 105,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Incandescent_light_bulb",
       "articleUrls": {
@@ -2019,14 +2154,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%BC%D0%BF%D0%B0_%D0%BD%D0%B0%D0%BA%D0%B0%D0%BB%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gluehlampe%2001%20KMJ.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christ%20Church%20NYC%20117.jpg"
     },
     {
       "id": "Q160137",
-      "name": "Ballpoint pen",
+      "name": "ballpoint pen",
+      "nameRu": "шариковая ручка",
       "category": "everyday-technology",
       "year": 1888,
       "tagline": "writing implement",
+      "taglineRu": "письменная принадлежность",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ballpoint_pen",
       "articleUrls": {
@@ -2043,10 +2180,12 @@
     },
     {
       "id": "Q960800",
-      "name": "Chlorofluorocarbon",
+      "name": "chlorofluorocarbon",
+      "nameRu": "хлорфторуглероды",
       "category": "everyday-technology",
       "year": 1890,
       "tagline": "hydrocarbon derivative that contains only carbon, chlorine and fluorine",
+      "taglineRu": "органические соединения, состоящие исключительно из атомов хлора (Cl), фтора (F) и углерода (С)",
       "sitelinks": 56,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Chlorofluorocarbon",
       "articleUrls": {
@@ -2062,10 +2201,12 @@
     },
     {
       "id": "Q15003",
-      "name": "Escalator",
+      "name": "escalator",
+      "nameRu": "эскалатор",
       "category": "landmarks",
       "year": 1891,
       "tagline": "moving staircase",
+      "taglineRu": "лестница с движущимися ступенями",
       "sitelinks": 80,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Escalator",
       "articleUrls": {
@@ -2083,9 +2224,11 @@
     {
       "id": "Q146578",
       "name": "Bakelite",
+      "nameRu": "Бакелит",
       "category": "everyday-technology",
       "year": 1907,
       "tagline": "early plastic",
+      "taglineRu": "продукт поликонденсации фенола с формальдегидом в присутствии щелочного катализатора",
       "sitelinks": 51,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bakelite",
       "articleUrls": {
@@ -2102,10 +2245,12 @@
     },
     {
       "id": "Q193841",
-      "name": "Cellophane",
+      "name": "cellophane",
+      "nameRu": "Целлофан",
       "category": "everyday-technology",
       "year": 1908,
       "tagline": "chemical compound",
+      "taglineRu": "плёночный материал",
       "sitelinks": 49,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cellophane",
       "articleUrls": {
@@ -2121,10 +2266,12 @@
     },
     {
       "id": "Q194154",
-      "name": "Cavity magnetron",
+      "name": "cavity magnetron",
+      "nameRu": "магнетрон",
       "category": "everyday-technology",
       "year": 1940,
       "tagline": "device for generating microwaves",
+      "taglineRu": "генератор СВЧ-излучения",
       "sitelinks": 48,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cavity_magnetron",
       "articleUrls": {
@@ -2141,10 +2288,12 @@
     },
     {
       "id": "Q68",
-      "name": "Computer",
+      "name": "computer",
+      "nameRu": "компьютер",
       "category": "everyday-technology",
       "year": 1945,
       "tagline": "general-purpose device for performing arithmetic or logical operations",
+      "taglineRu": "устройство для исполнения программ",
       "sitelinks": 296,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Computer",
       "articleUrls": {
@@ -2161,11 +2310,13 @@
     },
     {
       "id": "Q227467",
-      "name": "Atomic clock",
+      "name": "atomic clock",
+      "nameRu": "атомные часы",
       "category": "everyday-technology",
       "year": 1955,
       "month": 6,
       "tagline": "extremely accurate reference clock used as a standard for timekeeping",
+      "taglineRu": "прибор для измерения времени",
       "sitelinks": 69,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_clock",
       "articleUrls": {
@@ -2178,14 +2329,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%82%D0%BE%D0%BC%D0%BD%D1%8B%D0%B5_%D1%87%D0%B0%D1%81%D1%8B"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/17jila003%203d%20strontium%20atomic%20clock.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ytterbium%20Optical%20Lattice%20Clock%20purple%20and%20green%20light.png"
     },
     {
       "id": "Q5860",
-      "name": "Carbon fibers",
+      "name": "carbon fibers",
+      "nameRu": "углеродное волокно",
       "category": "everyday-technology",
       "year": 1958,
       "tagline": "material fibers about 5–10 μm in diameter composed of carbon",
+      "taglineRu": "материал",
       "sitelinks": 50,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Carbon_fibers",
       "articleUrls": {
@@ -2202,11 +2355,13 @@
     },
     {
       "id": "Q38867",
-      "name": "Laser",
+      "name": "laser",
+      "nameRu": "лазер",
       "category": "everyday-technology",
       "year": 1960,
       "month": 5,
       "tagline": "device which emits light via optical amplification",
+      "taglineRu": "устройство, преобразующее энергию накачки в энергию узкого когерентного потока излучения",
       "sitelinks": 119,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Laser",
       "articleUrls": {
@@ -2223,10 +2378,12 @@
     },
     {
       "id": "Q189511",
-      "name": "Electronic cigarette",
+      "name": "electronic cigarette",
+      "nameRu": "электронная сигарета",
       "category": "everyday-technology",
       "year": 1963,
       "tagline": "device usually used to quit or be an alternative to tobacco",
+      "taglineRu": "электронное устройство, создающее высокодисперсный аэрозоль, предназначенный для ингаляции",
       "sitelinks": 70,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electronic_cigarette",
       "articleUrls": {
@@ -2243,10 +2400,12 @@
     },
     {
       "id": "Q34467",
-      "name": "Compact disc",
+      "name": "compact disc",
+      "nameRu": "компакт-диск",
       "category": "everyday-technology",
       "year": 1979,
       "tagline": "digital optical disc data storage format",
+      "taglineRu": "оптический диск для хранения информации",
       "sitelinks": 112,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Compact_disc",
       "articleUrls": {
@@ -2263,11 +2422,13 @@
     },
     {
       "id": "Q5339",
-      "name": "Transistor",
+      "name": "transistor",
+      "nameRu": "транзистор",
       "category": "everyday-technology",
       "year": 1947,
       "month": 12,
       "tagline": "a semiconductor device",
+      "taglineRu": "полупроводниковый электронный компонент",
       "sitelinks": 136,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Transistor",
       "articleUrls": {
@@ -2284,11 +2445,12 @@
     },
     {
       "id": "Q621427",
-      "name": "iPhone (1st generation)",
+      "nameRu": "IPhone (первого поколения)",
       "category": "everyday-technology",
       "year": 2007,
       "month": 1,
       "tagline": "first smartphone of the iPhone line by Apple Inc.",
+      "taglineRu": "Смартфон от Apple",
       "sitelinks": 53,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
       "articleUrls": {
@@ -2306,10 +2468,12 @@
     {
       "id": "Q2631085",
       "name": "Deep Blue versus Kasparov, 1997, Game 6",
+      "nameRu": "Deep Blue — Каспаров (1997, партия 6)",
       "category": "sports-entertainment",
       "year": 1997,
       "month": 5,
       "tagline": "chess game between human and computer",
+      "taglineRu": "партия №6 матча между компьютером и человеком",
       "sitelinks": 8,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Kasparov,_1997,_Game_6",
       "articleUrls": {
@@ -2326,6 +2490,7 @@
       "year": 2022,
       "month": 11,
       "tagline": "artificial intelligence chatbot developed by OpenAI",
+      "taglineRu": "чат-бот с искусственным интеллектом американской компании OpenAI",
       "sitelinks": 136,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/ChatGPT",
       "articleUrls": {
@@ -2342,7 +2507,8 @@
     },
     {
       "id": "Q1136790",
-      "name": "Cotton gin",
+      "name": "cotton gin",
+      "nameRu": "коттон-джин",
       "category": "food-agriculture",
       "year": 1793,
       "tagline": "machine that separates cotton fibers from seeds",
@@ -2362,10 +2528,12 @@
     },
     {
       "id": "Q843389",
-      "name": "Canning",
+      "name": "canning",
+      "nameRu": "консервы",
       "category": "food-agriculture",
       "year": 1810,
       "tagline": "method of preserving food",
+      "taglineRu": "продукт питания длительного хранения",
       "sitelinks": 47,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Canning",
       "articleUrls": {
@@ -2381,11 +2549,13 @@
     },
     {
       "id": "Q58148",
-      "name": "Pasteurization",
+      "name": "pasteurization",
+      "nameRu": "Пастеризация",
       "category": "food-agriculture",
       "year": 1864,
       "month": 4,
       "tagline": "process in which certain foods are treated with mild heat in order to eliminate pathogens and extend shelf life",
+      "taglineRu": "процесс уничтожения микроорганизмов в жидких средах и пищевых продуктах путём однократного и непродолжительного нагрева",
       "sitelinks": 89,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Pasteurization",
       "articleUrls": {
@@ -2398,14 +2568,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/60s%20Pama%20pasteurizer.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Milk%20Vat.jpg"
     },
     {
       "id": "Q213669",
       "name": "Haber-Bosch process",
+      "nameRu": "Процесс Габера",
       "category": "food-agriculture",
       "year": 1909,
       "tagline": "artificial nitrogen fixation process which is the main industrial procedure for the production of ammonia nowadays",
+      "taglineRu": "промышленный процесс синтеза аммиака",
       "sitelinks": 60,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Haber_process",
       "articleUrls": {
@@ -2423,11 +2595,13 @@
     },
     {
       "id": "Q180548",
-      "name": "Neolithic Revolution",
+      "name": "neolithic revolution",
+      "nameRu": "неолитическая революция",
       "category": "food-agriculture",
       "year": -9000,
       "endYear": -3000,
       "tagline": "transition from hunter gatherer to settled peoples",
+      "taglineRu": "социально-экономический переход",
       "sitelinks": 80,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Neolithic_Revolution",
       "articleUrls": {
@@ -2445,10 +2619,12 @@
     {
       "id": "Q188371",
       "name": "Great Irish Famine",
+      "nameRu": "Голод в Ирландии",
       "category": "public-health",
       "year": 1845,
       "endYear": 1852,
       "tagline": "1845–1852 famine in Ireland",
+      "taglineRu": "Массовый голод в Ирландии (1845-1849)",
       "sitelinks": 67,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Famine_(Ireland)",
       "articleUrls": {
@@ -2465,7 +2641,8 @@
     },
     {
       "id": "Q221474",
-      "name": "First arrival of Christopher Columbus to America",
+      "name": "first arrival of Christopher Columbus to America",
+      "nameRu": "открытие Америки",
       "category": "expedition",
       "year": 1492,
       "month": 10,
@@ -2487,12 +2664,14 @@
     {
       "id": "Q1225170",
       "name": "Magellan-Elcano expedition",
+      "nameRu": "Первое кругосветное плавание",
       "category": "expedition",
       "year": 1519,
       "month": 8,
       "endYear": 1522,
       "endMonth": 9,
       "tagline": "16th-century Spanish maritime expedition",
+      "taglineRu": "кругосветная морская экспедиция, совершенная Фернандо Магелланом в XVI веке",
       "sitelinks": 31,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Magellan_expedition",
       "articleUrls": {
@@ -2512,6 +2691,7 @@
     {
       "id": "Q654562",
       "name": "The Travels of Marco Polo",
+      "nameRu": "Книга чудес света",
       "category": "expedition",
       "year": 1298,
       "tagline": "13th-century travelogue written down by Rustichello da Pisa from stories told by Marco Polo",
@@ -2531,10 +2711,12 @@
     },
     {
       "id": "Q179430",
-      "name": "Sextant",
+      "name": "sextant",
+      "nameRu": "секстант",
       "category": "everyday-technology",
       "year": 1757,
       "tagline": "angle measurement navigational instrument",
+      "taglineRu": "инструмент, используемый для определения высоты космических объектов над горизонтом",
       "sitelinks": 70,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Sextant",
       "articleUrls": {
@@ -2551,13 +2733,15 @@
     },
     {
       "id": "Q1932",
-      "name": "Space race",
+      "name": "space race",
+      "nameRu": "космическая гонка",
       "category": "expedition",
       "year": 1957,
       "month": 10,
       "endYear": 1975,
       "endMonth": 7,
       "tagline": "competition to explore space between USA and USSR",
+      "taglineRu": "соперничество между СССР и США за превосходство в космосе",
       "sitelinks": 74,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Space_Race",
       "articleUrls": {
@@ -2575,10 +2759,12 @@
     {
       "id": "Q43653",
       "name": "Apollo 11",
+      "nameRu": "Аполлон-11",
       "category": "expedition",
       "year": 1969,
       "month": 7,
       "tagline": "first Moon landing and fifth crewed flight of the United States Apollo program",
+      "taglineRu": "американский пилотируемый космический корабль серии «Аполлон»",
       "sitelinks": 110,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
       "articleUrls": {
@@ -2598,10 +2784,12 @@
     {
       "id": "Q80811",
       "name": "Sputnik 1",
+      "nameRu": "Спутник-1",
       "category": "transportation",
       "year": 1957,
       "month": 10,
       "tagline": "first artificial Earth satellite",
+      "taglineRu": "первый искусственный спутник Земли",
       "sitelinks": 92,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Sputnik_1",
       "articleUrls": {
@@ -2619,10 +2807,12 @@
     {
       "id": "Q182524",
       "name": "Vostok 1",
+      "nameRu": "Восток-1",
       "category": "transportation",
       "year": 1961,
       "month": 4,
       "tagline": "spaceflight of the Vostok programme",
+      "taglineRu": "советский космический корабль на котором Юрий Алексеевич Гагарин полетел в космическое пространство",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Vostok_1",
       "articleUrls": {
@@ -2642,12 +2832,14 @@
     {
       "id": "Q8414",
       "name": "Amundsen's South Pole expedition",
+      "nameRu": "Норвежская антарктическая экспедиция",
       "category": "expedition",
       "year": 1910,
       "month": 6,
       "endYear": 1912,
       "endMonth": 1,
       "tagline": "first expedition to reach the geographic South Pole",
+      "taglineRu": "экспедиция Амундсена на Южный полюс",
       "sitelinks": 39,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Amundsen%27s_South_Pole_expedition",
       "articleUrls": {
@@ -2665,12 +2857,14 @@
     {
       "id": "Q4567715",
       "name": "1953 British Mount Everest Expedition",
+      "nameRu": "Британская экспедиция на Джомолунгму",
       "category": "expedition",
       "year": 1953,
       "month": 2,
       "endYear": 1953,
       "endMonth": 6,
       "tagline": "first successful ascent of Mount Everest",
+      "taglineRu": "Первая в истории экспедиция, которой удалось достигнуть вершины Джомолунгмы",
       "sitelinks": 16,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition",
       "articleUrls": {
@@ -2687,11 +2881,13 @@
     },
     {
       "id": "Q699127",
-      "name": "Voyages of Zheng He",
+      "name": "Treasure Voyages",
+      "nameRu": "Путешествия Чжэн Хэ",
       "category": "expedition",
       "year": 1405,
       "endYear": 1433,
       "tagline": "seven Ming-era maritime voyages of the treasure fleet between 1405 and 1433",
+      "taglineRu": "плавания китайского флота в Юго-Восточную Азию и Индийский океан в 1405—1433 гг",
       "sitelinks": 26,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ming_treasure_voyages",
       "articleUrls": {
@@ -2703,18 +2899,20 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D1%8F_%D0%A7%D0%B6%D1%8D%D0%BD_%D0%A5%D1%8D"
       },
       "countries": [
-        "Q9903",
-        "Q29520"
+        "Q29520",
+        "Q9903"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zheng%20He%27s%20Treasure%20Ship%203.jpg"
     },
     {
       "id": "Q48469",
       "name": "Voyager 1",
+      "nameRu": "Вояджер-1",
       "category": "expedition",
       "year": 1977,
       "month": 9,
       "tagline": "space probe launched by NASA to study the outer Solar System, furthest spacecraft from Earth",
+      "taglineRu": "автоматический космический зонд, исследующий Солнечную систему",
       "sitelinks": 97,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_1",
       "articleUrls": {
@@ -2732,10 +2930,12 @@
     {
       "id": "Q25271",
       "name": "International Space Station",
+      "nameRu": "Международная космическая станция",
       "category": "landmarks",
       "year": 1998,
       "month": 11,
       "tagline": "modular space station in low Earth orbit",
+      "taglineRu": "космическая станция",
       "sitelinks": 136,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/International_Space_Station",
       "articleUrls": {
@@ -2749,19 +2949,6 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20station%20pictured%20from%20the%20SpaceX%20Crew%20Dragon%205%20%28cropped%29.jpg"
-    },
-    {
-      "id": "Q53115669",
-      "name": "First solo, nonstop transatlantic flight",
-      "category": "expedition",
-      "year": 1927,
-      "month": 5,
-      "endYear": 1927,
-      "endMonth": 5,
-      "tagline": "Charles Lindbergh's flight in the Spirit of St. Louis from New York to Paris in 1927",
-      "sitelinks": 0,
-      "articleUrls": {},
-      "countries": []
     },
     {
       "id": "Q951383",
@@ -2779,13 +2966,14 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%83%D8%AA%D8%B4%D8%A7%D9%81_%D8%A7%D9%84%D8%A8%D8%B1%D8%AA%D8%BA%D8%A7%D9%84_%D9%84%D9%84%D8%B7%D8%B1%D9%8A%D9%82_%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A_%D8%A7%D9%84%D9%85%D8%A4%D8%AF%D9%8A_%D8%A5%D9%84%D9%89_%D8%A7%D9%84%D9%87%D9%86%D8%AF"
       },
       "countries": [
-        "Q45",
-        "Q668"
+        "Q668",
+        "Q45"
       ]
     },
     {
       "id": "Q3178839",
       "name": "first voyage of James Cook",
+      "nameRu": "Первое кругосветное плавание Джеймса Кука",
       "category": "expedition",
       "year": 1768,
       "endYear": 1771,
@@ -2806,6 +2994,7 @@
     {
       "id": "Q505802",
       "name": "Lewis and Clark Expedition",
+      "nameRu": "Экспедиция Льюиса и Кларка",
       "category": "expedition",
       "year": 1804,
       "month": 5,
@@ -2831,12 +3020,14 @@
     {
       "id": "Q1564366",
       "name": "Second voyage of HMS Beagle",
+      "nameRu": "Кругосветное путешествие Чарльза Дарвина",
       "category": "expedition",
       "year": 1831,
       "month": 12,
       "endYear": 1836,
       "endMonth": 10,
       "tagline": "exploration associated with the theory of evolution (1831-1836)",
+      "taglineRu": "кругосветное путешествие",
       "sitelinks": 19,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_voyage_of_HMS_Beagle",
       "articleUrls": {
@@ -2853,10 +3044,12 @@
     {
       "id": "Q233260",
       "name": "Great Northern Expedition",
+      "nameRu": "Великая Северная экспедиция",
       "category": "expedition",
       "year": 1733,
       "endYear": 1743,
       "tagline": "research expedition in Siberia (1733–1743)",
+      "taglineRu": "ряд географических экспедиций, предпринятых русскими моряками вдоль арктического побережья Сибири, к берегам Северной Америки и Японии во второй четверти XVIII века",
       "sitelinks": 18,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Northern_Expedition",
       "articleUrls": {
@@ -2872,6 +3065,7 @@
     {
       "id": "Q1162294",
       "name": "Expedition Endurance",
+      "nameRu": "Имперская трансантарктическая экспедиция",
       "category": "expedition",
       "year": 1914,
       "month": 8,
@@ -2895,12 +3089,14 @@
     {
       "id": "Q973919",
       "name": "Terra Nova Expedition",
+      "nameRu": "Терра Нова",
       "category": "expedition",
       "year": 1910,
       "month": 6,
       "endYear": 1913,
       "endMonth": 6,
       "tagline": "Antarctic research expedition (1910–1913)",
+      "taglineRu": "британская антарктическая экспедиция 1910—1913 годов",
       "sitelinks": 37,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Terra_Nova_Expedition",
       "articleUrls": {
@@ -2918,6 +3114,7 @@
     {
       "id": "Q1964751",
       "name": "Nansen's Fram expedition (1893–1896)",
+      "nameRu": "Норвежская полярная экспедиция (1893—1896)",
       "category": "expedition",
       "year": 1893,
       "endYear": 1896,
@@ -2940,6 +3137,7 @@
     {
       "id": "Q644521",
       "name": "Challenger Expedition",
+      "nameRu": "Экспедиция «Челленджера»",
       "category": "expedition",
       "year": 1872,
       "month": 12,
@@ -2963,10 +3161,12 @@
     {
       "id": "Q184201",
       "name": "Apollo 8",
+      "nameRu": "Аполлон-8",
       "category": "expedition",
       "year": 1968,
       "month": 12,
       "tagline": "second crewed flight of the United States Apollo program",
+      "taglineRu": "второй космический корабль семейства «Апполон»",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_8",
       "articleUrls": {
@@ -2986,10 +3186,12 @@
     {
       "id": "Q48475",
       "name": "Voyager 2",
+      "nameRu": "Вояджер-2",
       "category": "expedition",
       "year": 1977,
       "month": 8,
       "tagline": "space probe launched by NASA to study the outer Solar System, second furthest spacecraft from Earth after Voyager 1",
+      "taglineRu": "автоматический космический зонд, исследующий Солнечную систему",
       "sitelinks": 91,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_2",
       "articleUrls": {
@@ -3006,10 +3208,12 @@
     },
     {
       "id": "Q338613",
-      "name": "Aeolipile",
+      "name": "aeolipile",
+      "nameRu": "Геронов шар",
       "category": "energy-industry",
       "year": 1,
       "tagline": "simple, bladeless radial steam turbine",
+      "taglineRu": "простая безлопастная радиальная паровая турбина",
       "sitelinks": 38,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Aeolipile",
       "articleUrls": {
@@ -3026,10 +3230,12 @@
     },
     {
       "id": "Q101017",
-      "name": "Distillation",
+      "name": "distillation",
+      "nameRu": "дистилляция",
       "category": "energy-industry",
       "year": 300,
       "tagline": "method of separating mixtures based on differences in volatility of components in a boiling liquid mixture",
+      "taglineRu": "метод разделения жидкостей, использующий испарение и последующую конденсацию",
       "sitelinks": 90,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Distillation",
       "articleUrls": {
@@ -3047,6 +3253,7 @@
     {
       "id": "Q2224989",
       "name": "Newcomen atmospheric engine",
+      "nameRu": "Паровая машина Ньюкомена",
       "category": "energy-industry",
       "year": 1712,
       "tagline": "early steam engine type",
@@ -3061,14 +3268,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0_%D0%9D%D1%8C%D1%8E%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen%20atmospheric%20engine%20animation.gif"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen6325.png"
     },
     {
       "id": "Q209440",
-      "name": "Galvanic cell",
+      "name": "galvanic cell",
+      "nameRu": "гальванический элемент",
       "category": "energy-industry",
       "year": 1786,
       "tagline": "device for spontaneous conversion of chemical into electrical energy",
+      "taglineRu": "химический источник электрического тока",
       "sitelinks": 61,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Galvanic_cell",
       "articleUrls": {
@@ -3085,10 +3294,12 @@
     },
     {
       "id": "Q64403",
-      "name": "Electrolysis",
+      "name": "electrolysis",
+      "nameRu": "электролиз",
       "category": "energy-industry",
       "year": 1787,
       "tagline": "technique that uses a direct electric current to drive an otherwise non-spontaneous chemical reaction",
+      "taglineRu": "выделение на электродах составных частей растворённых веществ или продуктов реакций, протекающих на электродах",
       "sitelinks": 88,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electrolysis",
       "articleUrls": {
@@ -3105,7 +3316,8 @@
     },
     {
       "id": "Q663273",
-      "name": "Voltaic pile",
+      "name": "voltaic pile",
+      "nameRu": "Вольтов столб",
       "category": "energy-industry",
       "year": 1800,
       "tagline": "first electrical battery that could continuously provide an electric current to a circuit",
@@ -3124,10 +3336,12 @@
     },
     {
       "id": "Q178032",
-      "name": "Electromagnet",
+      "name": "electromagnet",
+      "nameRu": "электромагнит",
       "category": "energy-industry",
       "year": 1825,
       "tagline": "type of magnet in which the magnetic field is produced by the flow of electric current",
+      "taglineRu": "устройство, создающее магнитное поле при прохождении электрического тока через него",
       "sitelinks": 67,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnet",
       "articleUrls": {
@@ -3144,10 +3358,12 @@
     },
     {
       "id": "Q72313",
-      "name": "Electric motor",
+      "name": "electric motor",
+      "nameRu": "электродвигатель",
       "category": "energy-industry",
       "year": 1834,
       "tagline": "electromechanical device",
+      "taglineRu": "машина для превращения электрической энергии в механическую работу",
       "sitelinks": 100,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_motor",
       "articleUrls": {
@@ -3164,10 +3380,12 @@
     },
     {
       "id": "Q180253",
-      "name": "Fuel cell",
+      "name": "fuel cell",
+      "nameRu": "топливный элемент",
       "category": "energy-industry",
       "year": 1842,
       "tagline": "electrochemical cell that converts chemical energy into electricity by oxidizing a fuel",
+      "taglineRu": "источник электричества без горения с топливом извне",
       "sitelinks": 69,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Fuel_cell",
       "articleUrls": {
@@ -3185,6 +3403,7 @@
     {
       "id": "Q217817",
       "name": "Francis turbine",
+      "nameRu": "Радиально-осевая турбина",
       "category": "energy-industry",
       "year": 1849,
       "tagline": "type of water turbine",
@@ -3205,6 +3424,7 @@
     {
       "id": "Q505668",
       "name": "Chemical vapor deposition",
+      "nameRu": "CVD-процесс",
       "category": "energy-industry",
       "year": 1852,
       "tagline": "process used to make thin films for semiconductors or surface coating",
@@ -3224,9 +3444,11 @@
     {
       "id": "Q334055",
       "name": "Bessemer process",
+      "nameRu": "Бессемеровский процесс",
       "category": "energy-industry",
       "year": 1855,
       "tagline": "steel production method",
+      "taglineRu": "процесс производства жидкой стали",
       "sitelinks": 42,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bessemer_process",
       "articleUrls": {
@@ -3243,10 +3465,12 @@
     },
     {
       "id": "Q188631",
-      "name": "Vulcanization",
+      "name": "vulcanization",
+      "nameRu": "вулканизация",
       "category": "energy-industry",
       "year": 1839,
       "tagline": "chemical process for converting natural rubber or related polymers into more durable materials",
+      "taglineRu": "технологический процесс взаимодействия каучуков с вулканизирующим агентом",
       "sitelinks": 60,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Vulcanization",
       "articleUrls": {
@@ -3263,10 +3487,12 @@
     },
     {
       "id": "Q80728",
-      "name": "Dynamite",
+      "name": "dynamite",
+      "nameRu": "динамит",
       "category": "energy-industry",
       "year": 1867,
       "tagline": "explosive preparation of stabilized nitroglycerin",
+      "taglineRu": "бризантная взрывчатая смесь",
       "sitelinks": 102,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Dynamite",
       "articleUrls": {
@@ -3279,14 +3505,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%82"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caisse%20dynamite%20nobel%20paulilles%20expo.JPG"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nobel%20patent.jpg"
     },
     {
       "id": "Q131502",
-      "name": "Electrical generator",
+      "name": "electrical generator",
+      "nameRu": "электрический генератор",
       "category": "energy-industry",
       "year": 1873,
       "tagline": "device that converts mechanical energy to electrical energy",
+      "taglineRu": "устройство для преобразования неэлектрических видов энергии в электрическую",
       "sitelinks": 83,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_generator",
       "articleUrls": {
@@ -3303,7 +3531,8 @@
     },
     {
       "id": "Q189859",
-      "name": "Steam turbine",
+      "name": "steam turbine",
+      "nameRu": "паровая турбина",
       "category": "energy-industry",
       "year": 1884,
       "tagline": "type of turbine device which uses steam from a boiler to rotate the turbine blades",
@@ -3324,9 +3553,11 @@
     {
       "id": "Q654400",
       "name": "Fischer-Tropsch process",
+      "nameRu": "Процесс Фишера — Тропша",
       "category": "energy-industry",
       "year": 1925,
       "tagline": "chemical reactions that convert carbon monoxide and hydrogen into liquid hydrocarbons",
+      "taglineRu": "получение углеводородов из монооксида углерода и водорода",
       "sitelinks": 36,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Fischer%E2%80%93Tropsch_process",
       "articleUrls": {
@@ -3343,10 +3574,12 @@
     {
       "id": "Q284681",
       "name": "Chicago Pile-1",
+      "nameRu": "Чикагская поленница-1",
       "category": "energy-industry",
       "year": 1942,
       "month": 12,
       "tagline": "world's first nuclear reactor to achieve criticality, part of the Manhattan Project, the Allied effort to create atomic bombs during World War II",
+      "taglineRu": "первый искусственный ядерный реактор",
       "sitelinks": 28,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Chicago_Pile-1",
       "articleUrls": {
@@ -3366,9 +3599,11 @@
     {
       "id": "Q1739453",
       "name": "Obninsk Nuclear Power Plant",
+      "nameRu": "Обнинская АЭС",
       "category": "energy-industry",
       "year": 1954,
       "tagline": "first in the world reactor electricity",
+      "taglineRu": "Первая в мире атомная электростанция",
       "sitelinks": 26,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Obninsk_Nuclear_Power_Plant",
       "articleUrls": {
@@ -3387,10 +3622,12 @@
     },
     {
       "id": "Q12861",
-      "name": "Gunpowder",
+      "name": "gunpowder",
+      "nameRu": "дымный порох",
       "category": "energy-industry",
       "year": 900,
       "tagline": "explosive most commonly used as propellant in firearms",
+      "taglineRu": "исторически первое и наиболее простое по химическому составу метательное взрывчатое вещество",
       "sitelinks": 126,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Gunpowder",
       "articleUrls": {
@@ -3407,10 +3644,12 @@
     },
     {
       "id": "Q47433",
-      "name": "Banknote",
+      "name": "banknote",
+      "nameRu": "банкнота",
       "category": "society-administration",
       "year": 618,
       "tagline": "form of physical currency made of paper or polymer",
+      "taglineRu": "денежный знак, изготовленный из бумаги, ткани или пластика",
       "sitelinks": 101,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Banknote",
       "articleUrls": {
@@ -3428,9 +3667,11 @@
     {
       "id": "Q12138",
       "name": "Gregorian calendar",
+      "nameRu": "григорианский календарь",
       "category": "society-administration",
       "year": 1582,
       "tagline": "internationally accepted civil calendar, first used in 1582",
+      "taglineRu": "календарь, введённый папой римским Григорием XIII с 15 октября 1582 года",
       "sitelinks": 210,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar",
       "articleUrls": {
@@ -3448,10 +3689,12 @@
     {
       "id": "Q12519",
       "name": "Magna Carta",
+      "nameRu": "Великая хартия вольностей",
       "category": "society-administration",
       "year": 1215,
       "month": 6,
       "tagline": "charter of rights agreed between King John of England and the nobility in 1215",
+      "taglineRu": "документ на основе требований английской знати к Иоанну Безземельному",
       "sitelinks": 112,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Magna_Carta",
       "articleUrls": {
@@ -3471,9 +3714,11 @@
     {
       "id": "Q93304",
       "name": "Code of Hammurabi",
+      "nameRu": "Законы Хаммурапи",
       "category": "society-administration",
       "year": -1751,
       "tagline": "Babylonian code of law or conduct",
+      "taglineRu": "законодательный свод старовавилонского периода, созданный при царе Хаммурапи в 1750-х годах до н. э.",
       "sitelinks": 99,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Code_of_Hammurabi",
       "articleUrls": {
@@ -3492,7 +3737,8 @@
     },
     {
       "id": "Q192803",
-      "name": "Double-entry bookkeeping",
+      "name": "double-entry bookkeeping",
+      "nameRu": "двойная запись",
       "category": "society-administration",
       "year": 1494,
       "tagline": "seamless, chronological and factual ordered recording of all business processes in a company based of documented evidence",
@@ -3512,10 +3758,12 @@
     {
       "id": "Q7813",
       "name": "Universal Declaration of Human Rights",
+      "nameRu": "Всеобщая декларация прав человека",
       "category": "society-administration",
       "year": 1948,
       "month": 12,
       "tagline": "declaration adopted in 1948 by the United Nations General Assembly",
+      "taglineRu": "Документ, содержащий глобальное определение прав всех людей",
       "sitelinks": 241,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Universal_Declaration_of_Human_Rights",
       "articleUrls": {
@@ -3533,6 +3781,7 @@
     {
       "id": "Q705693",
       "name": "Code of Ur-Nammu",
+      "nameRu": "Кодекс царя Ур–Намму",
       "category": "society-administration",
       "year": -2049,
       "tagline": "oldest surviving law code",
@@ -3555,10 +3804,12 @@
     {
       "id": "Q1065",
       "name": "United Nations",
+      "nameRu": "Организация Объединённых Наций",
       "category": "society-administration",
       "year": 1945,
       "month": 10,
       "tagline": "global international and intergovernmental organization",
+      "taglineRu": "всемирная межгосударственная организация",
       "sitelinks": 334,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/United_Nations",
       "articleUrls": {
@@ -3578,10 +3829,12 @@
     {
       "id": "Q127912",
       "name": "United States Declaration of Independence",
+      "nameRu": "Декларация независимости США",
       "category": "society-administration",
       "year": 1776,
       "month": 7,
       "tagline": "1776 assertion of colonial America's independence from Great Britain",
+      "taglineRu": "исторический документ, в котором британские колонии в Северной Америке объявили независимость от Великобритании",
       "sitelinks": 122,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence",
       "articleUrls": {
@@ -3601,10 +3854,12 @@
     {
       "id": "Q11698",
       "name": "United States Constitution",
+      "nameRu": "конституция США",
       "category": "society-administration",
       "year": 1787,
       "month": 9,
       "tagline": "supreme law of the United States of America since March 4th, 1789",
+      "taglineRu": "основной закон США",
       "sitelinks": 126,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Constitution_of_the_United_States",
       "articleUrls": {
@@ -3622,10 +3877,12 @@
     {
       "id": "Q11146",
       "name": "Maastricht Treaty",
+      "nameRu": "Маастрихтский договор",
       "category": "society-administration",
       "year": 1992,
       "month": 2,
       "tagline": "Founding treaty of the European Union, signed in 1992 and effective from 1993",
+      "taglineRu": "договор, подписанный 7 февраля 1992 года и положивший начало Европейского союза",
       "sitelinks": 83,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Maastricht_Treaty",
       "articleUrls": {
@@ -3644,7 +3901,8 @@
     },
     {
       "id": "Q69163529",
-      "name": "Fall of the Berlin Wall",
+      "name": "fall of the Berlin Wall",
+      "nameRu": "падение Берлинской стены",
       "category": "society-administration",
       "year": 1989,
       "month": 11,
@@ -3662,17 +3920,19 @@
       "countries": [
         "Q16957"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BerlinWall-BrandenburgGate.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/West%20and%20East%20Germans%20at%20the%20Brandenburg%20Gate%20in%201989.jpg"
     },
     {
       "id": "Q46362",
       "name": "Congress of Vienna",
+      "nameRu": "Венский конгресс",
       "category": "society-administration",
       "year": 1814,
       "month": 9,
       "endYear": 1815,
       "endMonth": 6,
       "tagline": "conference of ambassadors of European states (September/November 1814 to June 1815)",
+      "taglineRu": "конгресс, созванный после окончания Наполеоновских войн в Европе",
       "sitelinks": 98,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
       "articleUrls": {
@@ -3692,11 +3952,13 @@
     {
       "id": "Q8707",
       "name": "Meiji restoration",
+      "nameRu": "Реставрация Мэйдзи",
       "category": "society-administration",
       "year": 1868,
       "endYear": 1889,
       "endMonth": 2,
       "tagline": "reform restoring the imperial rule in Japan in the last third of the 19th century",
+      "taglineRu": "комплекс политических, экономических и социальных реформ",
       "sitelinks": 114,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Meiji_Restoration",
       "articleUrls": {
@@ -3715,13 +3977,15 @@
     },
     {
       "id": "Q154705",
-      "name": "Unification of Germany",
+      "name": "unification of Germany",
+      "nameRu": "объединение Германии",
       "category": "society-administration",
       "year": 1866,
       "month": 8,
       "endYear": 1871,
       "endMonth": 5,
       "tagline": "creation of a politically and administratively integrated nation state of German-speaking populations on 18 January 1871, in the form of the German Empire",
+      "taglineRu": "объединение германских государств во главе с Пруссией в Германскую империю (1871)",
       "sitelinks": 76,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Unification_of_Germany",
       "articleUrls": {
@@ -3741,6 +4005,7 @@
     {
       "id": "Q13582",
       "name": "Berlin Conference",
+      "nameRu": "Берлинская конференция",
       "category": "society-administration",
       "year": 1884,
       "month": 11,
@@ -3766,9 +4031,11 @@
     {
       "id": "Q38130",
       "name": "League of Nations",
+      "nameRu": "Лига Наций",
       "category": "society-administration",
       "year": 1919,
       "tagline": "20th-century international organisation, predecessor to the United Nations",
+      "taglineRu": "международная организация, предшественник Организации Объединённых Наций",
       "sitelinks": 119,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/League_of_Nations",
       "articleUrls": {
@@ -3788,10 +4055,12 @@
     {
       "id": "Q186356",
       "name": "New Deal",
+      "nameRu": "Новый курс Рузвельта",
       "category": "society-administration",
       "year": 1933,
       "endYear": 1939,
       "tagline": "economic programs of U.S. president Franklin D. Roosevelt",
+      "taglineRu": "экономическая программа Франклина Рузвельта",
       "sitelinks": 67,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/New_Deal",
       "articleUrls": {
@@ -3810,11 +4079,13 @@
     },
     {
       "id": "Q129053",
-      "name": "Partition of India",
+      "name": "partition of India",
+      "nameRu": "Раздел Британской Индии",
       "category": "society-administration",
       "year": 1947,
       "month": 8,
       "tagline": "1947 Partition of British India",
+      "taglineRu": "раздел Британской Индии на Пакистан и Индию",
       "sitelinks": 81,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Partition_of_India",
       "articleUrls": {
@@ -3827,15 +4098,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB_%D0%91%D1%80%D0%B8%D1%82%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B9_%D0%98%D0%BD%D0%B4%D0%B8%D0%B8"
       },
       "countries": [
-        "Q668",
+        "Q129286",
         "Q843",
-        "Q129286"
+        "Q668"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Partition%20of%20India%201947%20en.svg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Partition%20of%20India%201947%20es.svg"
     },
     {
       "id": "Q2345573",
       "name": "Expulsion of the Moriscos",
+      "nameRu": "Изгнание морисков",
       "category": "society-administration",
       "year": 1609,
       "month": 4,
@@ -3859,10 +4131,12 @@
     {
       "id": "Q171375",
       "name": "Truman Doctrine",
+      "nameRu": "Доктрина Трумэна",
       "category": "society-administration",
       "year": 1947,
       "month": 3,
       "tagline": "United States Cold War policy to contain communism in Europe and elsewhere",
+      "taglineRu": "внешнеполитическая программа, президента США Гарри Трумэна после Второй мировой войны",
       "sitelinks": 59,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Truman_Doctrine",
       "articleUrls": {
@@ -3880,10 +4154,12 @@
     {
       "id": "Q223732",
       "name": "Declaration of the Establishment of the State of Israel",
+      "nameRu": "Декларация независимости Израиля",
       "category": "society-administration",
       "year": 1948,
       "month": 5,
       "tagline": "1948 declaration of Israel's independence",
+      "taglineRu": "правовой документ, в котором провозглашается образование Государства Израиль",
       "sitelinks": 63,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence",
       "articleUrls": {
@@ -3903,10 +4179,12 @@
     {
       "id": "Q7184",
       "name": "NATO",
+      "nameRu": "Организация Североатлантического договора",
       "category": "society-administration",
       "year": 1949,
       "month": 4,
       "tagline": "intergovernmental military alliance between 32 member states",
+      "taglineRu": "международный военно-политический блок",
       "sitelinks": 240,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/NATO",
       "articleUrls": {
@@ -3926,10 +4204,12 @@
     {
       "id": "Q41644",
       "name": "Warsaw Pact",
+      "nameRu": "Организация Варшавского договора",
       "category": "society-administration",
       "year": 1955,
       "month": 5,
       "tagline": "European Eastern Military Alliance (1954 – 1991)",
+      "taglineRu": "военный союз восточноевропейских социалистических государств при ведущей роли Советского Союза",
       "sitelinks": 116,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Warsaw_Pact",
       "articleUrls": {
@@ -3946,12 +4226,14 @@
     {
       "id": "Q208191",
       "name": "Asian–African Conference",
+      "nameRu": "Бандунгская конференция",
       "category": "society-administration",
       "year": 1955,
       "month": 4,
       "endYear": 1955,
       "endMonth": 4,
       "tagline": "1955 meeting of Asian and African states in Bandung, West Java, Indonesia",
+      "taglineRu": "конференция 29 стран Азии и Африки, прошедшая в Бандунге (Индонезия) 18–24 апреля 1955 года",
       "sitelinks": 51,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandung_Conference",
       "articleUrls": {
@@ -3969,11 +4251,13 @@
     },
     {
       "id": "Q5167679",
-      "name": "Dissolution of the Soviet Union",
+      "name": "dissolution of the Soviet Union",
+      "nameRu": "распад СССР",
       "category": "society-administration",
       "year": 1991,
       "month": 12,
       "tagline": "process leading to the late-1991 breakup of the USSR",
+      "taglineRu": "процесс развала Союза Советских Социалистических Республик",
       "sitelinks": 90,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union",
       "articleUrls": {
@@ -3993,9 +4277,11 @@
     {
       "id": "Q8272",
       "name": "Epic of Gilgamesh",
+      "nameRu": "Эпос о Гильгамеше",
       "category": "culture-arts",
       "year": -2100,
       "tagline": "epic poem from Mesopotamia, is amongst the earliest surviving works of literature",
+      "taglineRu": "эпическая поэма Древней Месопотамии, одно из старейших сохранившихся литературных произведений в мире",
       "sitelinks": 135,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh",
       "articleUrls": {
@@ -4013,9 +4299,11 @@
     {
       "id": "Q12418",
       "name": "Mona Lisa",
+      "nameRu": "Мона Лиза",
       "category": "culture-arts",
       "year": 1503,
       "tagline": "oil painting by Leonardo da Vinci in the Louvre, Paris",
+      "taglineRu": "картина Леонардо да Винчи",
       "sitelinks": 146,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Mona_Lisa",
       "articleUrls": {
@@ -4035,9 +4323,11 @@
     {
       "id": "Q833645",
       "name": "First Folio",
+      "nameRu": "Первое фолио",
       "category": "culture-arts",
       "year": 1623,
       "tagline": "First edition copy of 1623 collection of William Shakespeare's plays held by State Library of New South Wales",
+      "taglineRu": "первое собрание пьес Уильяма Шекспира",
       "sitelinks": 35,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Folio",
       "articleUrls": {
@@ -4054,10 +4344,12 @@
     },
     {
       "id": "Q207875",
-      "name": "Mozart's Requiem",
+      "name": "Requiem",
+      "nameRu": "реквием",
       "category": "culture-arts",
       "year": 1791,
       "tagline": "mass composed by Wolfgang Amadeus Mozart in Vienna in 1791",
+      "taglineRu": "месса Вольфганга Амадея Моцарта",
       "sitelinks": 51,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Requiem_(Mozart)",
       "articleUrls": {
@@ -4075,9 +4367,11 @@
     {
       "id": "Q25169",
       "name": "The Hitchhiker's Guide to the Galaxy",
+      "nameRu": "Автостопом по галактике",
       "category": "culture-arts",
       "year": 1979,
       "tagline": "1979–1992 series of five books by Douglas Adams",
+      "taglineRu": "серия книг Дугласа Адамса (1979–1992)",
       "sitelinks": 49,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy",
       "articleUrls": {
@@ -4094,12 +4388,14 @@
     {
       "id": "Q133331",
       "name": "First Council of Nicaea",
+      "nameRu": "Первый Никейский собор",
       "category": "religion-mythology",
       "year": 325,
       "month": 5,
       "endYear": 325,
       "endMonth": 7,
       "tagline": "council of Christian bishops in Nicaea, 325",
+      "taglineRu": "Первый Вселенский собор в истории христианства",
       "sitelinks": 85,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Council_of_Nicaea",
       "articleUrls": {
@@ -4119,10 +4415,12 @@
     {
       "id": "Q157506",
       "name": "Ninety-five Theses",
+      "nameRu": "95 тезисов",
       "category": "religion-mythology",
       "year": 1517,
       "month": 11,
       "tagline": "disputation by Martin Luther on indulgences",
+      "taglineRu": "документ, написанный Мартином Лютером",
       "sitelinks": 76,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ninety-five_Theses",
       "articleUrls": {
@@ -4140,9 +4438,11 @@
     {
       "id": "Q432",
       "name": "Islam",
+      "nameRu": "ислам",
       "category": "religion-mythology",
       "year": 631,
       "tagline": "monotheistic Abrahamic religion founded by Muhammad",
+      "taglineRu": "монотеистическая авраамическая религия",
       "sitelinks": 335,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Islam",
       "articleUrls": {
@@ -4159,11 +4459,13 @@
     },
     {
       "id": "Q51648",
-      "name": "Schism of 1054",
+      "name": "East-West Schism",
+      "nameRu": "Разделение церквей",
       "category": "religion-mythology",
       "year": 1054,
       "month": 7,
       "tagline": "division of Christianity into two large parts in 1054",
+      "taglineRu": "церковный раскол на Римско-католическую и Православную церкви",
       "sitelinks": 90,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/East%E2%80%93West_Schism",
       "articleUrls": {
@@ -4180,6 +4482,7 @@
     {
       "id": "Q180764",
       "name": "Edict of Milan",
+      "nameRu": "Миланский эдикт",
       "category": "religion-mythology",
       "year": 313,
       "month": 6,
@@ -4202,7 +4505,8 @@
     },
     {
       "id": "Q2411998",
-      "name": "Eruption of Mount Vesuvius in 79",
+      "name": "eruption of Mount Vesuvius in 79",
+      "nameRu": "извержение Везувия в 79 году",
       "category": "environment-geology",
       "year": 79,
       "month": 10,
@@ -4226,6 +4530,7 @@
     {
       "id": "Q209625",
       "name": "Year Without a Summer",
+      "nameRu": "Год без лета",
       "category": "environment-geology",
       "year": 1816,
       "tagline": "1816, a volcanic winter event during the Little Ice Age",
@@ -4246,10 +4551,12 @@
     {
       "id": "Q191055",
       "name": "1755 Lisbon earthquake",
+      "nameRu": "Лиссабонское землетрясение",
       "category": "environment-geology",
       "year": 1755,
       "month": 11,
       "tagline": "earthquake in 1755",
+      "taglineRu": "землетрясение в 1755 году",
       "sitelinks": 59,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1755_Lisbon_earthquake",
       "articleUrls": {
@@ -4269,6 +4576,7 @@
     {
       "id": "Q8094772",
       "name": "1883 eruption of Krakatoa",
+      "nameRu": "Извержение вулкана Кракатау 1883 года",
       "category": "environment-geology",
       "year": 1883,
       "month": 5,
@@ -4293,10 +4601,12 @@
     {
       "id": "Q125953",
       "name": "Tunguska event",
+      "nameRu": "Тунгусский метеорит",
       "category": "environment-geology",
       "year": 1908,
       "month": 6,
       "tagline": "powerful explosion that occurred near the Podkamennaya Tunguska River",
+      "taglineRu": "Уникальное природное явление, произошедшее 17 (30) июня 1908 года в бассейне реки Подкаменная Тунгуска (Енисейская губерния, Российская империя)",
       "sitelinks": 81,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Tunguska_event",
       "articleUrls": {
@@ -4316,9 +4626,11 @@
     {
       "id": "Q55816",
       "name": "Chicxulub crater",
+      "nameRu": "Чиксулуб",
       "category": "environment-geology",
       "year": 1981,
       "tagline": "prehistoric impact crater buried underneath the Yucatán Peninsula in Mexico",
+      "taglineRu": "ударный кратер на Земле",
       "sitelinks": 57,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Chicxulub_crater",
       "articleUrls": {
@@ -4338,6 +4650,7 @@
     {
       "id": "Q478720",
       "name": "Amsterdam Stock Exchange",
+      "nameRu": "Euronext Amsterdam",
       "category": "commerce-finance",
       "year": 1700,
       "tagline": "stock exchange located in Amsterdam, Netherlands",
@@ -4359,10 +4672,12 @@
     {
       "id": "Q83164",
       "name": "East India Company",
+      "nameRu": "Британская Ост-Индская компания",
       "category": "commerce-finance",
       "year": 1600,
       "month": 12,
       "tagline": "British trading company (1600–1874)",
+      "taglineRu": "акционерное общество",
       "sitelinks": 94,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/East_India_Company",
       "articleUrls": {
@@ -4382,11 +4697,13 @@
     {
       "id": "Q8698",
       "name": "Great Depression",
+      "nameRu": "Великая депрессия",
       "category": "commerce-finance",
       "year": 1929,
       "month": 10,
       "endYear": 1941,
       "tagline": "worldwide economic depression (1929–1939)",
+      "taglineRu": "мировой экономический кризис с 1929 по 1939 год",
       "sitelinks": 133,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
       "articleUrls": {
@@ -4399,27 +4716,29 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0%D1%8F_%D0%B4%D0%B5%D0%BF%D1%80%D0%B5%D1%81%D1%81%D0%B8%D1%8F"
       },
       "countries": [
-        "Q28",
-        "Q30",
-        "Q55",
-        "Q142",
-        "Q258",
-        "Q298",
-        "Q889",
+        "Q1206012",
         "Q8680",
-        "Q1206012"
+        "Q889",
+        "Q298",
+        "Q258",
+        "Q142",
+        "Q55",
+        "Q30",
+        "Q28"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lange-MigrantMother02.jpg"
     },
     {
       "id": "Q1194052",
       "name": "Bretton Woods Conference",
+      "nameRu": "Бреттон-Вудская конференция",
       "category": "commerce-finance",
       "year": 1944,
       "month": 7,
       "endYear": 1944,
       "endMonth": 7,
       "tagline": "international conference in Bretton Woods, New Hampshire, USA in July 1944",
+      "taglineRu": "международная конференция, состоявшаяся в июле 1944 года в США",
       "sitelinks": 30,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bretton_Woods_Conference",
       "articleUrls": {
@@ -4438,11 +4757,13 @@
     {
       "id": "Q17550",
       "name": "California Gold Rush",
+      "nameRu": "Калифорнийская золотая лихорадка",
       "category": "commerce-finance",
       "year": 1848,
       "month": 1,
       "endYear": 1854,
       "tagline": "gold rush from C.E.1848 until 1855 in California",
+      "taglineRu": "золотая лихорадка с 1848 по 1855 год в Калифорнии",
       "sitelinks": 52,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/California_gold_rush",
       "articleUrls": {
@@ -4462,10 +4783,12 @@
     {
       "id": "Q631489",
       "name": "Klondike Gold Rush",
+      "nameRu": "Клондайкская золотая лихорадка",
       "category": "commerce-finance",
       "year": 1896,
       "endYear": 1899,
       "tagline": "C.E.1890s migration",
+      "taglineRu": "неорганизованная массовая добыча золота в регионе Клондайк в Канаде и на полуострове Аляска в конце XIX века",
       "sitelinks": 44,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Klondike_Gold_Rush",
       "articleUrls": {
@@ -4485,9 +4808,11 @@
     {
       "id": "Q2096366",
       "name": "Victorian gold rush",
+      "nameRu": "Золотая лихорадка в Виктории",
       "category": "commerce-finance",
       "year": 1851,
       "tagline": "period in the history of Victoria, Australia",
+      "taglineRu": "неорганизованная массовая добыча золота в Виктории",
       "sitelinks": 14,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Victorian_gold_rush",
       "articleUrls": {
@@ -4502,11 +4827,12 @@
       "countries": [
         "Q408"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Walhalla%201910%20Goldmine%204000ft.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Prospectors%27%20hut%20Upper%20Dargo%2C%20Gippsland%2C%20ca%201870%20%28SLV%20b19603%29.jpg"
     },
     {
       "id": "Q683846",
       "name": "Manila galleon",
+      "nameRu": "Манильские галеоны",
       "category": "commerce-finance",
       "year": 1565,
       "tagline": "Royal Spanish trading ships, 1565–1815",
@@ -4526,9 +4852,11 @@
     {
       "id": "Q159766",
       "name": "Dutch East India Company",
+      "nameRu": "Голландская Ост-Индская компания",
       "category": "commerce-finance",
       "year": 1602,
       "tagline": "1602–1799 Dutch trading company",
+      "taglineRu": "первая акционерная фирма в мире",
       "sitelinks": 89,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Dutch_East_India_Company",
       "articleUrls": {
@@ -4548,6 +4876,7 @@
     {
       "id": "Q233562",
       "name": "The Wealth of Nations",
+      "nameRu": "Исследование о природе и причинах богатства народов",
       "category": "commerce-finance",
       "year": 1776,
       "month": 3,
@@ -4569,9 +4898,11 @@
     {
       "id": "Q35045",
       "name": "Potosí",
+      "nameRu": "Потоси",
       "category": "commerce-finance",
       "year": 1545,
       "tagline": "city in Bolivia",
+      "taglineRu": "город в Боливии, административный центр одноимённого департамента",
       "sitelinks": 84,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Potos%C3%AD",
       "articleUrls": {
@@ -4590,11 +4921,13 @@
     },
     {
       "id": "Q48537",
-      "name": "Civil rights movement",
+      "name": "civil rights movement",
+      "nameRu": "движение за гражданские права чернокожих в США",
       "category": "social-movements",
       "year": 1954,
       "endYear": 1968,
       "tagline": "1954–1968 U.S. nonviolent social movement",
+      "taglineRu": "социальное движение в 1950—1960-х гг. в США",
       "sitelinks": 59,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Civil_rights_movement",
       "articleUrls": {
@@ -4614,6 +4947,7 @@
     {
       "id": "Q487420",
       "name": "Slavery Abolition Act 1833",
+      "nameRu": "Акт об отмене рабства (1833)",
       "category": "social-movements",
       "year": 1833,
       "tagline": "an act of the Parliament of the United Kingdom, which abolished slavery in the British Empire by way of compensated emancipation.",
@@ -4635,6 +4969,7 @@
     {
       "id": "Q391358",
       "name": "Emancipation Proclamation",
+      "nameRu": "Прокламация об освобождении рабов",
       "category": "social-movements",
       "year": 1862,
       "month": 9,
@@ -4651,14 +4986,16 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0%D1%86%D0%B8%D1%8F_%D0%BE%D0%B1_%D0%BE%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B8_%D1%80%D0%B0%D0%B1%D0%BE%D0%B2"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation%2C%2001-01-1863%20%28Page%205%20of%205%29%20%283695345254%29.jpg"
     },
     {
       "id": "Q300646",
       "name": "A Vindication of the Rights of Woman",
+      "nameRu": "В защиту прав женщин",
       "category": "social-movements",
       "year": 1792,
       "tagline": "work by Mary Wollstonecraft",
+      "taglineRu": "книга британской феминистки Мэри Уолстонкрафт",
       "sitelinks": 40,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/A_Vindication_of_the_Rights_of_Woman",
       "articleUrls": {
@@ -4676,12 +5013,14 @@
     {
       "id": "Q2736155",
       "name": "Seneca Falls Convention",
+      "nameRu": "Конференция в Сенека-Фоллз",
       "category": "social-movements",
       "year": 1848,
       "month": 7,
       "endYear": 1848,
       "endMonth": 7,
       "tagline": "1848 women's rights convention in New York",
+      "taglineRu": "первая американская конференция по правам женщин",
       "sitelinks": 34,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Seneca_Falls_Convention",
       "articleUrls": {
@@ -4699,9 +5038,11 @@
     {
       "id": "Q1192212",
       "name": "Emancipation reform of 1861",
+      "nameRu": "Крестьянская реформа в России",
       "category": "social-movements",
       "year": 1861,
       "tagline": "reform passed by Tsar Alexander II of Russia which effectively abolished serfdom throughout the Russian Empire",
+      "taglineRu": "Одна из \"великих реформ\" Александра II",
       "sitelinks": 35,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_reform_of_1861",
       "articleUrls": {
@@ -4721,12 +5062,14 @@
     {
       "id": "Q99717",
       "name": "1989 Tiananmen Square protests and massacre",
+      "nameRu": "Протесты на площади Тяньаньмэнь (1989)",
       "category": "social-movements",
       "year": 1989,
       "month": 4,
       "endYear": 1989,
       "endMonth": 6,
       "tagline": "Chinese pro-democracy movement and subsequent massacre",
+      "taglineRu": "акции протеста в Пекине",
       "sitelinks": 90,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
       "articleUrls": {
@@ -4745,10 +5088,12 @@
     },
     {
       "id": "Q188468",
-      "name": "Ancient Olympic Games",
+      "name": "ancient Olympic Games",
+      "nameRu": "Античные Олимпийские игры",
       "category": "sports-entertainment",
       "year": -775,
       "tagline": "athletic competitions in ancient Greece",
+      "taglineRu": "спортивные игры в древней Греции",
       "sitelinks": 69,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ancient_Olympic_Games",
       "articleUrls": {
@@ -4766,12 +5111,14 @@
     {
       "id": "Q8080",
       "name": "1896 Summer Olympics",
+      "nameRu": "Летние Олимпийские игры 1896",
       "category": "sports-entertainment",
       "year": 1896,
       "month": 4,
       "endYear": 1896,
       "endMonth": 4,
       "tagline": "Games of the I Olympiad, celebrated in Athens (Greece) in 1896",
+      "taglineRu": "Первые современные олимпийские игры, проводились в Афинах",
       "sitelinks": 98,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1896_Summer_Olympics",
       "articleUrls": {
@@ -4791,6 +5138,7 @@
     {
       "id": "Q48432",
       "name": "1930 FIFA World Cup",
+      "nameRu": "Чемпионат мира по футболу 1930",
       "category": "sports-entertainment",
       "year": 1930,
       "month": 7,
@@ -4815,12 +5163,14 @@
     },
     {
       "id": "Q164815",
-      "name": "Woodstock",
+      "name": "Woodstock Festival",
+      "nameRu": "Вудсток",
       "category": "sports-entertainment",
       "year": 1969,
       "endYear": 1969,
       "endMonth": 8,
       "tagline": "1969 music festival in New York, United States",
+      "taglineRu": "один из знаменитейших рок-фестивалей, прошедший с 15 по 18 августа 1969 года в штате Нью-Йорк",
       "sitelinks": 63,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Woodstock",
       "articleUrls": {
@@ -4840,6 +5190,7 @@
     {
       "id": "Q193093",
       "name": "Platonic Academy",
+      "nameRu": "Платоновская Академия",
       "category": "philosophy-education",
       "year": -386,
       "tagline": "ancient philosophical, research and educative center, founded by Plato in Athens",
@@ -4862,9 +5213,11 @@
     {
       "id": "Q131262",
       "name": "University of Bologna",
+      "nameRu": "Болонский университет",
       "category": "philosophy-education",
       "year": 1088,
       "tagline": "university in Bologna, Italy",
+      "taglineRu": "ВУЗ в Италии; старейший университет в мире",
       "sitelinks": 90,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/University_of_Bologna",
       "articleUrls": {
@@ -4884,9 +5237,11 @@
     {
       "id": "Q447",
       "name": "Encyclopédie",
+      "nameRu": "Энциклопедия, или Толковый словарь наук, искусств и ремёсел",
       "category": "philosophy-education",
       "year": 1751,
       "tagline": "general encyclopedia published in Paris, France between 1751 and 1772",
+      "taglineRu": "французская энциклопедия XVIII века",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Encyclop%C3%A9die",
       "articleUrls": {
@@ -4904,10 +5259,12 @@
     {
       "id": "Q40591",
       "name": "The Communist Manifesto",
+      "nameRu": "Манифест коммунистической партии",
       "category": "philosophy-education",
       "year": 1848,
       "month": 2,
       "tagline": "1848 publication written by Karl Marx and Friedrich Engels",
+      "taglineRu": "декларация целей коммунистических организаций, написанная Карлом Марксом и Фридрихом Энгельсом в 1848 году",
       "sitelinks": 143,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
       "articleUrls": {
@@ -4924,11 +5281,13 @@
     },
     {
       "id": "Q151060",
-      "name": "Napoleonic Code",
+      "name": "Civil Code of the French",
+      "nameRu": "Кодекс Наполеона",
       "category": "law-jurisprudence",
       "year": 1804,
       "month": 3,
       "tagline": "civil code of 1804",
+      "taglineRu": "законодательный акт Франции",
       "sitelinks": 56,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Napoleonic_Code",
       "articleUrls": {
@@ -4946,6 +5305,7 @@
     {
       "id": "Q1061030",
       "name": "Alhambra Decree",
+      "nameRu": "Альгамбрский эдикт",
       "category": "law-jurisprudence",
       "year": 1492,
       "month": 4,
@@ -4969,10 +5329,12 @@
     {
       "id": "Q48584",
       "name": "Rosetta Stone",
+      "nameRu": "Розеттский камень",
       "category": "archaeology-anthropology",
       "year": 1799,
       "month": 7,
       "tagline": "ancient Egyptian stele with inscriptions in three writing systems",
+      "taglineRu": "древнеегипетский артефакт",
       "sitelinks": 101,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Rosetta_Stone",
       "articleUrls": {
@@ -4992,10 +5354,12 @@
     {
       "id": "Q47672",
       "name": "Terracotta Army",
+      "nameRu": "Терракотовая армия",
       "category": "archaeology-anthropology",
       "year": 1974,
       "month": 3,
       "tagline": "collection of ancient Chinese military statues",
+      "taglineRu": "захоронение статуй у мавзолея Цинь Шихуанди",
       "sitelinks": 89,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Terracotta_Army",
       "articleUrls": {
@@ -5014,11 +5378,13 @@
     },
     {
       "id": "Q245388",
-      "name": "Lucy (Australopithecus)",
+      "name": "Lucy",
+      "nameRu": "Люси",
       "category": "archaeology-anthropology",
       "year": 1974,
       "month": 11,
       "tagline": "fossilized skeleton of a female Australopithecus afarensis",
+      "taglineRu": "скелет женской особи австралопитека афарского, найденный в долине реки Аваш в Эфиопии",
       "sitelinks": 53,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Lucy_(hominid)",
       "articleUrls": {
@@ -5036,9 +5402,11 @@
     {
       "id": "Q37200",
       "name": "Great Pyramid of Giza",
+      "nameRu": "Пирамида Хеопса",
       "category": "landmarks",
       "year": -2559,
       "tagline": "oldest and largest of the three pyramids in the Giza Necropolis; one of the seven ancient wonders of the world",
+      "taglineRu": "старейшая и самая крупная из трех пирамид в Некрополе Гизы",
       "sitelinks": 125,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
       "articleUrls": {
@@ -5058,10 +5426,12 @@
     {
       "id": "Q12506",
       "name": "Hagia Sophia",
+      "nameRu": "Собор Святой Софии",
       "category": "landmarks",
       "year": 532,
       "month": 2,
       "tagline": "mosque, museum, and former church in Istanbul, Turkey",
+      "taglineRu": "в прошлом музей, православный собор, ныне мечеть",
       "sitelinks": 151,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hagia_Sophia",
       "articleUrls": {
@@ -5081,10 +5451,12 @@
     {
       "id": "Q243",
       "name": "Eiffel Tower",
+      "nameRu": "Эйфелева башня",
       "category": "landmarks",
       "year": 1887,
       "month": 1,
       "tagline": "tower located on the Champ de Mars in Paris, France",
+      "taglineRu": "архитектурная достопримечательность Парижа",
       "sitelinks": 189,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Eiffel_Tower",
       "articleUrls": {
@@ -5104,9 +5476,11 @@
     {
       "id": "Q10285",
       "name": "Colosseum",
+      "nameRu": "Колизей",
       "category": "landmarks",
       "year": 82,
       "tagline": "ancient Roman amphitheatre, a landmark of Rome, Italy",
+      "taglineRu": "амфитеатр в Риме, Италия",
       "sitelinks": 145,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Colosseum",
       "articleUrls": {
@@ -5126,9 +5500,11 @@
     {
       "id": "Q12495",
       "name": "Burj Khalifa",
+      "nameRu": "Бурдж-Халифа",
       "category": "landmarks",
       "year": 2004,
       "tagline": "skyscraper in Dubai, United Arab Emirates",
+      "taglineRu": "небоскрёб в Дубае (ОАЭ)",
       "sitelinks": 139,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Burj_Khalifa",
       "articleUrls": {
@@ -5148,9 +5524,11 @@
     {
       "id": "Q9141",
       "name": "Taj Mahal",
+      "nameRu": "Тадж-Махал",
       "category": "landmarks",
       "year": 1631,
       "tagline": "marble mausoleum in Agra, India",
+      "taglineRu": "мавзолей-мечеть в Агре, Индия",
       "sitelinks": 183,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Taj_Mahal",
       "articleUrls": {

@@ -1,4 +1,5 @@
 import { MILESTONE_CATEGORY_GROUPS } from '../types';
+import { LANG } from '../i18n';
 import { CONFLICT_COLOR } from './conflict-color';
 import { MILESTONE_CATEGORY_GROUP_COLORS, MILESTONE_CATEGORY_GROUP_LABELS } from './milestone-category-group';
 
@@ -18,7 +19,7 @@ export const CONFLICTS_MILESTONES_FILTER_VALUES = ['conflicts', ...MILESTONE_CAT
 export type ConflictsMilestonesFilterValue = (typeof CONFLICTS_MILESTONES_FILTER_VALUES)[number];
 
 export const CONFLICTS_MILESTONES_FILTER_LABELS: Record<ConflictsMilestonesFilterValue, string> = {
-  conflicts: 'Conflicts',
+  conflicts: LANG === 'ru' ? 'Конфликты' : 'Conflicts',
   ...MILESTONE_CATEGORY_GROUP_LABELS,
 };
 

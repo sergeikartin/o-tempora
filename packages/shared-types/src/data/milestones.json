@@ -64,7 +64,7 @@
   },
   {
     "id": "Q10693",
-    "name": "Periodic table",
+    "name": "periodic table",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 94,
@@ -79,7 +79,7 @@
   },
   {
     "id": "Q68",
-    "name": "Computer",
+    "name": "computer",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 94,
@@ -116,10 +116,10 @@
     "regionTags": [
       "europe",
       "americas",
-      "south-asia",
-      "africa",
+      "middle-east",
       "east-asia",
-      "middle-east"
+      "africa",
+      "south-asia"
     ],
     "fameScore": 91,
     "tagline": "pandemic caused by SARS-CoV-2 (2019–2023)",
@@ -134,7 +134,7 @@
   },
   {
     "id": "Q1420",
-    "name": "Car",
+    "name": "car",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 91,
@@ -229,7 +229,7 @@
   },
   {
     "id": "Q11035",
-    "name": "Telephone",
+    "name": "telephone",
     "category": "communication",
     "regionTags": [],
     "fameScore": 88,
@@ -244,7 +244,7 @@
   },
   {
     "id": "Q9158",
-    "name": "Email",
+    "name": "email",
     "category": "communication",
     "regionTags": [],
     "fameScore": 88,
@@ -257,7 +257,7 @@
   },
   {
     "id": "Q11633",
-    "name": "Photography",
+    "name": "photography",
     "category": "communication",
     "regionTags": [],
     "fameScore": 88,
@@ -288,13 +288,14 @@
   },
   {
     "id": "Q17517",
-    "name": "Mobile phone",
+    "name": "mobile phone",
     "category": "communication",
     "regionTags": [],
     "fameScore": 87,
     "tagline": "portable device to make telephone calls using a radio link",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mobile_phone",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mobile%20phone%20PHS%20Japan%201997-2003.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Android%20smartphones.jpg",
+    "imageAttribution": "Samsung Galaxy Note 10 &amp; Google, via Wikimedia Commons",
     "description": "A mobile phone or cell phone is a portable wireless telephone that allows users to make and receive calls over a radio frequency link while moving within a designated telephone service area, unlike fixed-location phones. This radio frequency link connects to the switching systems of a mobile phone operator, providing access to the public switched telephone network (PSTN). Modern mobile telephony relies on a cellular network architecture, which is why mobile phones are often referred to as 'cell phones' in North America.",
     "at": {
       "year": 1973
@@ -302,7 +303,7 @@
   },
   {
     "id": "Q11442",
-    "name": "Bicycle",
+    "name": "bicycle",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 87,
@@ -317,7 +318,7 @@
   },
   {
     "id": "Q197",
-    "name": "Airplane",
+    "name": "airplane",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 87,
@@ -366,13 +367,13 @@
   },
   {
     "id": "Q11472",
-    "name": "Paper",
+    "name": "paper",
     "category": "communication",
     "regionTags": [],
     "fameScore": 86,
     "tagline": "thin, flexible material mainly used for writing upon, printing upon, drawing or for packaging",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paper",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Scattered%20white%20paper%20%28Unsplash%29.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paperball%202.jpeg",
     "description": "Paper is a thin sheet of matted cellulose fibers. Largely derived from lignocellulose, paper is created from a pulp dissolved into a slurry that is drained and dried into sheets. Different types of paper are defined by constituent fiber, paper pulp, sizing, coating, paper size, paper density and grammage.",
     "at": {
       "year": -140
@@ -388,8 +389,8 @@
     "fameScore": 86,
     "tagline": "large canal in Panama",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Panama_Canal",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Panama%20Canal%20Gatun%20Locks.jpg",
-    "imageAttribution": "User:Stan Shebs, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Panama%20Canal%2C%20Agua%20Clara%20locks%2C%20Control%20tower%20%28Torre%20de%20control%29.jpg",
+    "imageAttribution": "Dr. Thomas Liptak, via Wikimedia Commons",
     "description": "The Panama Canal is an artificial 82-kilometer (51-mile) waterway in Panama that connects the Caribbean Sea with the Pacific Ocean. It cuts across the narrowest point of the Isthmus of Panama, and is a conduit for maritime trade between the Atlantic Ocean and the Pacific Ocean. Locks at each end lift ships up to Gatun Lake, an artificial fresh water lake 26 meters (85 ft) above sea level, created by damming the Chagres River and Lake Alajuela to reduce the amount of excavation work required for the canal. Locks then lower the ships at the other end. The original locks are 33.5 meters (110 ft) wide and allow the passage of Panamax ships. A third, wider lane of locks was constructed between September 2007 and May 2016. The expanded waterway began commercial operation on 26 June 2016. The new locks allow for the transit of larger, Neopanamax ships. An average of 200,000,000 litres of fresh water is used in a single passing of a ship. The canal is threatened by low water levels during droughts.",
     "at": {
       "year": 1914,
@@ -472,14 +473,14 @@
   },
   {
     "id": "Q872",
-    "name": "Radio",
+    "name": "radio",
     "category": "communication",
     "regionTags": [],
     "fameScore": 85,
     "tagline": "technology of signaling and communicating using radio waves",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Radio",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Biblis%20RFE%20RL%2001.jpg",
-    "imageAttribution": "Kuebi, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pasilan%20linkkitorni.jpg",
+    "imageAttribution": "Markus Koljonen (Dilaudid), via Wikimedia Commons",
     "description": "Radio is the technology of communicating using radio waves. Radio waves are electromagnetic waves of frequency between 3 hertz (Hz) and 300 gigahertz (GHz). They are generated by an electronic device called a transmitter connected to an antenna which radiates the waves. They can be received by other antennas connected to a radio receiver; this is the fundamental principle of radio communication. In addition to communication, radio is used for radar, radio navigation, remote control, remote sensing, and other applications.",
     "at": {
       "year": 1894
@@ -506,9 +507,9 @@
     "category": "commerce-finance",
     "regionTags": [
       "europe",
+      "south-asia",
       "americas",
-      "africa",
-      "south-asia"
+      "africa"
     ],
     "fameScore": 85,
     "tagline": "worldwide economic depression (1929–1939)",
@@ -565,7 +566,7 @@
   },
   {
     "id": "Q11452",
-    "name": "General relativity",
+    "name": "general relativity",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 83,
@@ -580,7 +581,7 @@
   },
   {
     "id": "Q5339",
-    "name": "Transistor",
+    "name": "transistor",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 83,
@@ -674,7 +675,7 @@
   },
   {
     "id": "Q11455",
-    "name": "Special relativity",
+    "name": "special relativity",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 82,
@@ -688,7 +689,7 @@
   },
   {
     "id": "Q12190",
-    "name": "Penicillin",
+    "name": "penicillin",
     "category": "medicine-health",
     "regionTags": [],
     "fameScore": 82,
@@ -702,14 +703,14 @@
   },
   {
     "id": "Q12757",
-    "name": "Internal combustion engine",
+    "name": "internal combustion engine",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 82,
     "tagline": "engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Diesel%20Engine%20%284%20cycle%20running%29.gif",
-    "imageAttribution": "Tosaka, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wankel%20Cycle%20anim.gif",
+    "imageAttribution": "User:Y_tambe, via Wikimedia Commons",
     "description": "An internal combustion engine is a heat engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber that is an integral part of the working fluid flow circuit. In an internal combustion engine, the expansion of the high-temperature and high-pressure gases produced by combustion applies direct force to components of the engine. The force is typically applied to pistons, turbine blades, a rotor, or a nozzle. This force moves the component over a distance. This process transforms chemical energy into kinetic energy which is used to propel, move or power whatever the engine is attached to.",
     "at": {
       "year": 1924
@@ -717,7 +718,7 @@
   },
   {
     "id": "Q37828",
-    "name": "Refrigerator",
+    "name": "refrigerator",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 82,
@@ -731,7 +732,7 @@
   },
   {
     "id": "Q38867",
-    "name": "Laser",
+    "name": "laser",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 82,
@@ -747,7 +748,7 @@
   },
   {
     "id": "Q12861",
-    "name": "Gunpowder",
+    "name": "gunpowder",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 82,
@@ -810,7 +811,7 @@
   },
   {
     "id": "Q178275",
-    "name": "1918–1920 flu pandemic (Spanish flu)",
+    "name": "1918–1920 flu pandemic",
     "category": "public-health",
     "regionTags": [],
     "fameScore": 81,
@@ -831,7 +832,7 @@
   },
   {
     "id": "Q34467",
-    "name": "Compact disc",
+    "name": "compact disc",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 81,
@@ -868,7 +869,7 @@
   },
   {
     "id": "Q5167679",
-    "name": "Dissolution of the Soviet Union",
+    "name": "dissolution of the Soviet Union",
     "category": "society-administration",
     "regionTags": [
       "europe"
@@ -922,14 +923,14 @@
   },
   {
     "id": "Q47616",
-    "name": "Incandescent light bulb",
+    "name": "incandescent light bulb",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 80,
     "tagline": "electric light bulb with a resistively heated wire filament",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Incandescent_light_bulb",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gluehlampe%2001%20KMJ.jpg",
-    "imageAttribution": "KMJ, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christ%20Church%20NYC%20117.jpg",
+    "imageAttribution": "Steven Bornholtz, via Wikimedia Commons",
     "description": "An incandescent light bulb, also known as an incandescent lamp or incandescent light globe, is an electric light that produces illumination by Joule heating a filament until it glows. The filament is enclosed in a glass bulb that is either evacuated or filled with inert gas to protect the filament from oxidation. Electric current is supplied to the filament by terminals or wires embedded in the glass. A bulb socket provides mechanical support and electrical connections.",
     "at": {
       "year": 1879
@@ -986,14 +987,13 @@
   },
   {
     "id": "Q162297",
-    "name": "Hygiene",
+    "name": "hygiene",
     "category": "public-health",
     "regionTags": [],
     "fameScore": 79,
     "tagline": "set of practices performed for the preservation of health",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hygiene",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hand%20Hygiene.jpg",
-    "imageAttribution": "Ricki Vic, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OCD%20handwash.jpg",
     "description": "Hygiene is a set of practices performed to preserve health.According to the World Health Organization (WHO), \"Hygiene refers to conditions and practices that help to maintain health and prevent the spread of diseases.\" Personal hygiene refers to maintaining the body's cleanliness. Hygiene activities can be grouped into the following: home and everyday hygiene, personal hygiene, medical hygiene, sleep hygiene, and food hygiene. Home and every day hygiene includes hand washing, respiratory hygiene, food hygiene at home, hygiene in the kitchen, hygiene in the bathroom, laundry hygiene, and medical hygiene at home.",
     "at": {
       "year": -2999
@@ -1019,7 +1019,7 @@
   },
   {
     "id": "Q72313",
-    "name": "Electric motor",
+    "name": "electric motor",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 79,
@@ -1034,14 +1034,13 @@
   },
   {
     "id": "Q80728",
-    "name": "Dynamite",
+    "name": "dynamite",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 79,
     "tagline": "explosive preparation of stabilized nitroglycerin",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dynamite",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caisse%20dynamite%20nobel%20paulilles%20expo.JPG",
-    "imageAttribution": "Olecrab, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nobel%20patent.jpg",
     "description": "Dynamite is an explosive made of nitroglycerin, sorbents, and stabilizers. It was invented by the Swedish chemist and engineer Alfred Nobel in Geesthacht, Northern Germany, and was patented in 1867. It rapidly gained wide-scale use as a more robust alternative to the traditional black powder explosives. It allows the use of nitroglycerine's favorable explosive properties while greatly reducing its risk of accidental detonation.",
     "at": {
       "year": 1867
@@ -1114,7 +1113,7 @@
   },
   {
     "id": "Q228036",
-    "name": "Cesarean section",
+    "name": "cesarean section",
     "category": "medicine-health",
     "regionTags": [],
     "fameScore": 78,
@@ -1129,7 +1128,7 @@
   },
   {
     "id": "Q133585",
-    "name": "Airship",
+    "name": "airship",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 78,
@@ -1179,14 +1178,13 @@
   },
   {
     "id": "Q58148",
-    "name": "Pasteurization",
+    "name": "pasteurization",
     "category": "food-agriculture",
     "regionTags": [],
     "fameScore": 78,
     "tagline": "process in which certain foods are treated with mild heat in order to eliminate pathogens and extend shelf life",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pasteurization",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/60s%20Pama%20pasteurizer.jpg",
-    "imageAttribution": "Gebo Cermex, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Milk%20Vat.jpg",
     "description": "In food processing, pasteurization (-isation) is a process of food preservation in which packaged foods are treated with mild heat, usually to less than 100 °C (212 °F), to eliminate pathogens and extend shelf life. Pasteurization either destroys or deactivates microorganisms and enzymes that contribute to food spoilage or the risk of disease, including vegetative bacteria, but most bacterial spores survive the process.",
     "at": {
       "year": 1864,
@@ -1225,7 +1223,7 @@
   },
   {
     "id": "Q101017",
-    "name": "Distillation",
+    "name": "distillation",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 78,
@@ -1240,7 +1238,7 @@
   },
   {
     "id": "Q47433",
-    "name": "Banknote",
+    "name": "banknote",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 78,
@@ -1254,7 +1252,7 @@
   },
   {
     "id": "Q129053",
-    "name": "Partition of India",
+    "name": "partition of India",
     "category": "society-administration",
     "regionTags": [
       "south-asia"
@@ -1262,8 +1260,8 @@
     "fameScore": 78,
     "tagline": "1947 Partition of British India",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Partition_of_India",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Partition%20of%20India%201947%20en.svg",
-    "imageAttribution": "Own work, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Partition%20of%20India%201947%20es.svg",
+    "imageAttribution": "Superbenjamin (original)derivative work by Milenioscuro\n\ntranslator: Manlleus (ca), via Wikimedia Commons",
     "description": "The partition of India in 1947 was the division of British India into two independent dominion states, the Union of India and Dominion of Pakistan. The Union of India is today the Republic of India, and the Dominion of Pakistan is the Islamic Republic of Pakistan and the People's Republic of Bangladesh. The partition involved the division of two provinces, Bengal and the Punjab, based on district-wide non-Muslim or Muslim majorities. It also involved the division of the British Indian Army, the Royal Indian Navy, the Indian Civil Service, the railways, and the central treasury, between the two new dominions. The partition was set forth in the Indian Independence Act 1947 and resulted in the end of the British Raj, or Crown rule in India. The two self-governing countries of India and Pakistan legally came into existence at midnight on 14–15 August 1947.",
     "at": {
       "year": 1947,
@@ -1293,7 +1291,7 @@
   },
   {
     "id": "Q51648",
-    "name": "Schism of 1054",
+    "name": "East-West Schism",
     "category": "religion-mythology",
     "regionTags": [],
     "fameScore": 78,
@@ -1368,8 +1366,8 @@
     "fameScore": 77,
     "tagline": "production of voltage by a varying magnetic field",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Catalonia%20Terrassa%20mNATEC%20Dinamo.JPG",
-    "imageAttribution": "Friviere, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Experiencia%20de%20Faraday.gif",
+    "imageAttribution": "Juancarcole, via Wikimedia Commons",
     "description": "Electromagnetic induction or magnetic induction is the production of an electromotive force (emf) across an electrical conductor in a changing magnetic field.",
     "at": {
       "year": 1831
@@ -1392,7 +1390,7 @@
   },
   {
     "id": "Q144334",
-    "name": "Printing press",
+    "name": "printing press",
     "category": "communication",
     "regionTags": [],
     "fameScore": 77,
@@ -1406,7 +1404,7 @@
   },
   {
     "id": "Q46904",
-    "name": "GSM",
+    "name": "Global System for Mobile Communications",
     "category": "communication",
     "regionTags": [],
     "fameScore": 77,
@@ -1419,7 +1417,7 @@
   },
   {
     "id": "Q171043",
-    "name": "Steam locomotive",
+    "name": "steam locomotive",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 77,
@@ -1434,7 +1432,7 @@
   },
   {
     "id": "Q193692",
-    "name": "Electric car",
+    "name": "electric car",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 77,
@@ -1449,7 +1447,7 @@
   },
   {
     "id": "Q174174",
-    "name": "Diesel engine",
+    "name": "diesel engine",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 77,
@@ -1482,13 +1480,14 @@
   },
   {
     "id": "Q79757",
-    "name": "Barometer",
+    "name": "barometer",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 77,
     "tagline": "scientific instrument used to measure atmospheric pressure",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Barometer",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dosen-barometer.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Barometr%2C%20Skwer%20Bowiena%2C%20Sopot%20-%20panoramio.jpg",
+    "imageAttribution": "Krzysztof Rakowski, via Wikimedia Commons",
     "description": "A barometer is a scientific instrument that is used to measure air pressure. Pressure tendency, which is derived from barometric readings, can forecast short term changes in the weather. Many measurements of air pressure are used within surface weather analysis to help find surface troughs, pressure systems and frontal boundaries.",
     "at": {
       "year": 1643
@@ -1496,7 +1495,7 @@
   },
   {
     "id": "Q189511",
-    "name": "Electronic cigarette",
+    "name": "electronic cigarette",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 77,
@@ -1511,7 +1510,7 @@
   },
   {
     "id": "Q64403",
-    "name": "Electrolysis",
+    "name": "electrolysis",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 77,
@@ -1525,7 +1524,7 @@
   },
   {
     "id": "Q131502",
-    "name": "Electrical generator",
+    "name": "electrical generator",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 77,
@@ -1557,7 +1556,7 @@
   },
   {
     "id": "Q132560",
-    "name": "Electron microscope",
+    "name": "electron microscope",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 76,
@@ -1572,38 +1571,21 @@
   },
   {
     "id": "Q116434",
-    "name": "Phonograph",
+    "name": "phonograph",
     "category": "communication",
     "regionTags": [],
     "fameScore": 76,
     "tagline": "device for the analogue recording and playback of sound",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Phonograph",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Edison%20and%20phonograph%20edit2.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Phonograph%20disc.jpg",
     "description": "A phonograph, later called a gramophone, and since the 1940s a record player, or more recently a turntable, is a device for the mechanical and analogue reproduction of sound.",
     "at": {
       "year": 1877
     }
   },
   {
-    "id": "Q172822",
-    "name": "Hoover Dam",
-    "category": "landmarks",
-    "regionTags": [
-      "americas"
-    ],
-    "fameScore": 76,
-    "tagline": "hydroelectric dam on the Colorado River, United States",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hoover_Dam",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hoover%20Dam%20and%20Black%20Canyon%20seen%20from%20the%20Mike%20O%27Callaghan%E2%80%93Pat%20Tillman%20Memorial%20Bridge%2C%20panorama%2C%20Arizona%E2%80%93Nevada.jpg",
-    "imageAttribution": "Christian David, via Wikimedia Commons",
-    "description": "The Hoover Dam is a concrete arch-gravity dam in the Black Canyon of the Colorado River, on the boundary between the U.S. states of Nevada and Arizona. Constructed between 1931 and 1936, during the Great Depression, it was dedicated on September 30, 1935, by President Franklin D. Roosevelt. Its construction was the result of a massive effort involving thousands of workers, and cost over 100 lives. Bills passed by Congress during its construction referred to it as Hoover Dam, but the Roosevelt administration named it Boulder Dam. In 1947, Congress reinstated the name Hoover Dam.",
-    "at": {
-      "year": 1931
-    }
-  },
-  {
     "id": "Q160464",
-    "name": "Button",
+    "name": "button",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 76,
@@ -1618,7 +1600,7 @@
   },
   {
     "id": "Q160137",
-    "name": "Ballpoint pen",
+    "name": "ballpoint pen",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 76,
@@ -1633,7 +1615,7 @@
   },
   {
     "id": "Q180548",
-    "name": "Neolithic Revolution",
+    "name": "neolithic revolution",
     "category": "food-agriculture",
     "regionTags": [],
     "fameScore": 76,
@@ -1689,7 +1671,7 @@
   },
   {
     "id": "Q154705",
-    "name": "Unification of Germany",
+    "name": "unification of Germany",
     "category": "society-administration",
     "regionTags": [
       "europe"
@@ -1748,7 +1730,7 @@
   },
   {
     "id": "Q188468",
-    "name": "Ancient Olympic Games",
+    "name": "ancient Olympic Games",
     "category": "sports-entertainment",
     "regionTags": [],
     "fameScore": 76,
@@ -1762,7 +1744,7 @@
   },
   {
     "id": "Q164815",
-    "name": "Woodstock",
+    "name": "Woodstock Festival",
     "category": "sports-entertainment",
     "regionTags": [
       "americas"
@@ -1785,7 +1767,7 @@
   },
   {
     "id": "Q171433",
-    "name": "Dolly the sheep",
+    "name": "Dolly the Sheep",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 75,
@@ -1801,7 +1783,7 @@
   },
   {
     "id": "Q190035",
-    "name": "Gravitational wave",
+    "name": "gravitational wave",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 75,
@@ -1846,7 +1828,7 @@
   },
   {
     "id": "Q15003",
-    "name": "Escalator",
+    "name": "escalator",
     "category": "landmarks",
     "regionTags": [],
     "fameScore": 75,
@@ -1861,7 +1843,7 @@
   },
   {
     "id": "Q1932",
-    "name": "Space race",
+    "name": "space race",
     "category": "expedition",
     "regionTags": [],
     "fameScore": 75,
@@ -1882,7 +1864,7 @@
   },
   {
     "id": "Q180253",
-    "name": "Fuel cell",
+    "name": "fuel cell",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 75,
@@ -1952,22 +1934,8 @@
     }
   },
   {
-    "id": "Q177524",
-    "name": "ARPANET",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 74,
-    "tagline": "early packet switching network (1969–1990)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/ARPANET",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arpanet%20logical%20map%2C%20march%201977.png",
-    "description": "The Advanced Research Projects Agency Network (ARPANET) was the first wide-area packet-switched network with distributed control and one of the first computer networks to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was established by the Advanced Research Projects Agency of the United States Department of Defense.",
-    "at": {
-      "year": 1969
-    }
-  },
-  {
     "id": "Q211382",
-    "name": "High-speed rail",
+    "name": "high-speed rail",
     "category": "infrastructure",
     "regionTags": [],
     "fameScore": 74,
@@ -1982,14 +1950,14 @@
   },
   {
     "id": "Q179744",
-    "name": "Daguerreotype process",
+    "name": "daguerreotype process",
     "category": "communication",
     "regionTags": [],
     "fameScore": 74,
     "tagline": "photographic process invented by L. Daguerre",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Daguerreotype",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/C%C3%A1mara%20para%20obtener%20vistas%20al%20daguerrotipo%2C%20original%20del%20a%C3%B1o%201839%2C%20conservada%20en%20Barcelona%2C%20Espa%C3%B1a%2C%20Spain.jpg",
-    "imageAttribution": "CARLOS TEIXIDOR CADENAS, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Daguerreotype%20process.jpg",
+    "imageAttribution": ".mw-parser-output .messagebox{margin:4px 0;width:auto;border-collapse:collapse;border:2px solid var(--border-color-progressive,#6485d1);background-color:var(--background-color-neutral-subtle,#fbfcff);color:var(--color-base,#202122);box-sizing:border-box;border-inline-start-width:8px}.mw-parser-output .messagebox.mbox-small{font-size:88%;line-height:1.25em}.mw-parser-output .mbox-warning,.mw-parser-output .mbox-speedy{border:2px solid var(--border-color-error,#b22222);background:var(--background-color-error-subtle,#ffdbdb);border-inline-start-width:8px}.mw-parser-output .mbox-serious,.mw-parser-output .mbox-delete,.mw-parser-output .mbox-stop{border:2px solid var(--border-color-error,#b22222);border-inline-start-width:8px}.mw-parser-output .mbox-issue,.mw-parser-output .mbox-content{border:2px solid #f28500;background:var(--background-color-warning-subtle,#ffe);border-inline-start-width:8px}.mw-parser-output .mbox-query,.mw-parser-output .mbox-style{border:2px solid #f4c430;background:var(--background-color-warning-subtle,#ffe);border-inline-start-width:8px}.mw-parser-output .mbox-shit{border:2px solid #960;border-inline-start-width:8px}.mw-parser-output .mbox-license{border:2px solid #88a;border-inline-start-width:initial}.mw-parser-output .mbox-legal{border:2px solid var(--border-color-notice,#666);background:var(--background-color-base,#fff);border-inline-start-width:8px}.mw-parser-output .mbox-honor{border:2px solid #ca3;background:var(--background-color-warning-subtle,#fcf4db);border-inline-start-width:8px}.mw-parser-output .mbox-growth{border:2px solid #8d4;background:var(--background-color-success-subtle,#d5fdf4);border-inline-start-width:8px}.mw-parser-output .mbox-move{border:2px solid #93c;border-inline-start-width:8px}.mw-parser-output .mbox-protection,.mw-parser-output .mbox-message{border:2px solid var(--border-color-base,#aaa);border-inline-start-width:8px}.mw-parser-output .messagebox .mbox-text{border:none;padding:0.25em 0.9em;width:100%}.mw-parser-output .messagebox .mbox-image{border:none;padding-top:2px;padding-bottom:2px;padding-inline-start:0.9em;padding-inline-end:0;text-align:center}.mw-parser-output .messagebox .mbox-imageright{border:none;padding-top:2px;padding-bottom:2px;padding-inline-start:0;padding-inline-end:0.9em;text-align:center}.mw-parser-output .messagebox .mbox-empty-cell{border:none;padding:0;width:1px}.mw-parser-output .messagebox .mbox-invalid-type{text-align:center}@media(min-width:720px){.mw-parser-output .messagebox{margin:4px 10%}.mw-parser-output .messagebox.mbox-small{clear:right;float:right;margin:4px 0 4px 1em;width:238px}}body.skin--responsive .mw-parser-output table.messagebox img{max-width:none!important}This image has been created during \"DensityDesign Integrated Course Final Synthesis Studio\" at  Politecnico di Milano, organized by DensityDesign Research Lab in 2015. Credits goes to Susanna Celeste Castelli, via Wikimedia Commons",
     "description": "Daguerreotype was the first publicly available photographic process, widely used from the 1830s to 1850s. \"Daguerreotype\" also refers to an image created through this process.",
     "at": {
       "year": 1839
@@ -1997,13 +1965,14 @@
   },
   {
     "id": "Q227467",
-    "name": "Atomic clock",
+    "name": "atomic clock",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 74,
     "tagline": "extremely accurate reference clock used as a standard for timekeeping",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_clock",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/17jila003%203d%20strontium%20atomic%20clock.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ytterbium%20Optical%20Lattice%20Clock%20purple%20and%20green%20light.png",
+    "imageAttribution": "NMIJ, National Metrology Institute of Japan, via Wikimedia Commons",
     "description": "An atomic clock is a clock that measures time by monitoring the resonant frequency of atoms. It is based on the fact that atoms have quantised energy levels, and transitions between such levels are driven by very specific frequencies of electromagnetic radiation. This phenomenon serves as the basis for the SI definition of the second:The second, symbol s, is the SI unit of time. It is defined by taking the fixed numerical value of the caesium frequency, , the unperturbed ground-state hyperfine transition frequency of the caesium-133 atom, to be 9192631770 when expressed in the unit Hz, which is equal to s−1.",
     "at": {
       "year": 1955,
@@ -2011,24 +1980,8 @@
     }
   },
   {
-    "id": "Q621427",
-    "name": "iPhone (1st generation)",
-    "category": "everyday-technology",
-    "regionTags": [],
-    "fameScore": 74,
-    "tagline": "first smartphone of the iPhone line by Apple Inc.",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/IPhone%201st%20Gen.svg",
-    "imageAttribution": "Rafael Fernandez, via Wikimedia Commons",
-    "description": "The iPhone is a smartphone developed and marketed by Apple as the first device in the iPhone lineup of smartphones. It features a Samsung S5L8900 SoC (90 nm), a 3.5 in multi-touch display, and a web browser (Safari). After years of rumors and speculation, it was officially announced on January 9, 2007, and was released in the United States on June 29, 2007.",
-    "at": {
-      "year": 2007,
-      "month": 1
-    }
-  },
-  {
     "id": "Q221474",
-    "name": "First arrival of Christopher Columbus to America",
+    "name": "first arrival of Christopher Columbus to America",
     "category": "expedition",
     "regionTags": [],
     "fameScore": 74,
@@ -2043,7 +1996,7 @@
   },
   {
     "id": "Q179430",
-    "name": "Sextant",
+    "name": "sextant",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 74,
@@ -2058,7 +2011,7 @@
   },
   {
     "id": "Q178032",
-    "name": "Electromagnet",
+    "name": "electromagnet",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 74,
@@ -2088,7 +2041,7 @@
   },
   {
     "id": "Q48537",
-    "name": "Civil rights movement",
+    "name": "civil rights movement",
     "category": "social-movements",
     "regionTags": [
       "americas"
@@ -2109,7 +2062,7 @@
   },
   {
     "id": "Q204711",
-    "name": "US Food and Drug Administration",
+    "name": "United States Food and Drug Administration",
     "category": "public-health",
     "regionTags": [
       "americas"
@@ -2126,7 +2079,7 @@
   },
   {
     "id": "Q191472",
-    "name": "BBC Television Service launch",
+    "name": "BBC One",
     "category": "media-culture",
     "regionTags": [
       "europe"
@@ -2142,7 +2095,7 @@
   },
   {
     "id": "Q185757",
-    "name": "Hovercraft",
+    "name": "hovercraft",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 73,
@@ -2205,7 +2158,7 @@
   },
   {
     "id": "Q189859",
-    "name": "Steam turbine",
+    "name": "steam turbine",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 73,
@@ -2331,7 +2284,7 @@
   },
   {
     "id": "Q178193",
-    "name": "Steamboat",
+    "name": "steamboat",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 72,
@@ -2346,14 +2299,14 @@
   },
   {
     "id": "Q208708",
-    "name": "Autogyro",
+    "name": "autogyro",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 72,
     "tagline": "rotorcraft with rotor unpowered in flight",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Autogyro",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20102-09500%2C%20Windm%C3%BChlen-Aeroplan%20Cleaned%27n%27Cropped.jpg",
-    "imageAttribution": "Bundesarchiv_Bild_102-09500,_Windmühlen-Aeroplan.jpg: UnknownUnknown \nderivative work: MLWatts (talk), via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg",
+    "imageAttribution": "Fgarganese, via Wikimedia Commons",
     "description": "An autogyro, gyroplane or gyrocopter, is a class of rotorcraft that uses an unpowered rotor in free autorotation to develop lift. A gyroplane \"means a rotorcraft whose rotors are not engine-driven, except for initial starting, but are made to rotate by action of the air when the rotorcraft is moving; and whose means of propulsion, consisting usually of conventional propellers, is independent of the rotor system.\" While similar to a helicopter rotor in appearance, the autogyro's unpowered rotor disc must have air flowing upward across it to make it rotate. Forward thrust is provided independently, by an engine-driven propeller.",
     "at": {
       "year": 1923,
@@ -2362,7 +2315,7 @@
   },
   {
     "id": "Q960800",
-    "name": "Chlorofluorocarbon",
+    "name": "chlorofluorocarbon",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 72,
@@ -2398,7 +2351,7 @@
   },
   {
     "id": "Q209440",
-    "name": "Galvanic cell",
+    "name": "galvanic cell",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 72,
@@ -2413,7 +2366,7 @@
   },
   {
     "id": "Q188631",
-    "name": "Vulcanization",
+    "name": "vulcanization",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 72,
@@ -2442,7 +2395,7 @@
   },
   {
     "id": "Q207875",
-    "name": "Mozart's Requiem",
+    "name": "Requiem",
     "category": "culture-arts",
     "regionTags": [],
     "fameScore": 72,
@@ -2490,7 +2443,7 @@
     "fameScore": 72,
     "tagline": "executive order issued by president Abraham Lincoln on January 1, 1863 that freed southern slaves",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_Proclamation",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation%2C%2001-01-1863%20%28Page%205%20of%205%29%20%283695345254%29.jpg",
     "description": "The Emancipation Proclamation, officially Proclamation 95, was a presidential proclamation and executive order issued by United States president Abraham Lincoln on January 1, 1863, during the American Civil War. The Proclamation changed the legal status of more than 3.5 million enslaved African Americans in the secessionist Confederate states from enslaved to free. As soon as slaves escaped the control of their enslavers, either by fleeing to Union lines or through the advance of federal troops, they were permanently free. In addition, the Proclamation allowed for former slaves to \"be received into the armed service of the United States\". The Emancipation Proclamation played a significant part in the end of slavery in the United States.",
     "at": {
       "year": 1862,
@@ -2499,7 +2452,7 @@
   },
   {
     "id": "Q151060",
-    "name": "Napoleonic Code",
+    "name": "Civil Code of the French",
     "category": "law-jurisprudence",
     "regionTags": [],
     "fameScore": 72,
@@ -2515,7 +2468,7 @@
   },
   {
     "id": "Q817281",
-    "name": "Combined oral contraceptive pill",
+    "name": "combined oral contraceptive pill",
     "category": "medicine-health",
     "regionTags": [],
     "fameScore": 71,
@@ -2530,7 +2483,7 @@
   },
   {
     "id": "Q1519099",
-    "name": "Polio vaccine",
+    "name": "polio vaccine",
     "category": "medicine-health",
     "regionTags": [],
     "fameScore": 71,
@@ -2559,7 +2512,7 @@
   },
   {
     "id": "Q5860",
-    "name": "Carbon fibers",
+    "name": "carbon fibers",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 71,
@@ -2574,7 +2527,7 @@
   },
   {
     "id": "Q192803",
-    "name": "Double-entry bookkeeping",
+    "name": "double-entry bookkeeping",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 71,
@@ -2609,7 +2562,7 @@
   },
   {
     "id": "Q245388",
-    "name": "Lucy (Australopithecus)",
+    "name": "Lucy",
     "category": "archaeology-anthropology",
     "regionTags": [],
     "fameScore": 71,
@@ -2641,7 +2594,7 @@
   },
   {
     "id": "Q337724",
-    "name": "Lead–acid battery",
+    "name": "lead–acid battery",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 70,
@@ -2655,7 +2608,7 @@
   },
   {
     "id": "Q193841",
-    "name": "Cellophane",
+    "name": "cellophane",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 70,
@@ -2668,7 +2621,7 @@
   },
   {
     "id": "Q69163529",
-    "name": "Fall of the Berlin Wall",
+    "name": "fall of the Berlin Wall",
     "category": "society-administration",
     "regionTags": [
       "europe"
@@ -2676,8 +2629,8 @@
     "fameScore": 70,
     "tagline": "historical event in November 1989 where the Berlin Wall was opened and demolished",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BerlinWall-BrandenburgGate.jpg",
-    "imageAttribution": "Sue Ream, photographer (San Francisco, California), via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/West%20and%20East%20Germans%20at%20the%20Brandenburg%20Gate%20in%201989.jpg",
+    "imageAttribution": "Unknown photographer, Reproduction by Lear 21 at English Wikipedia., via Wikimedia Commons",
     "description": "The Berlin Wall fell on 9 November 1989 during the Peaceful Revolution, marking the beginning of the destruction of the figurative Iron Curtain, as East Berlin transit restrictions were overwhelmed and discarded. Sections of the wall were breached, and planned deconstruction began the following June. It was one of the series of events that started the fall of communism in Central and Eastern Europe. The fall of the inner German border took place shortly afterward. An end to the Cold War was declared at the Malta Summit in early December, and German reunification took place in October the following year.",
     "at": {
       "year": 1989,
@@ -2708,7 +2661,7 @@
   },
   {
     "id": "Q214634",
-    "name": "Cloud chamber",
+    "name": "cloud chamber",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 69,
@@ -2723,7 +2676,7 @@
   },
   {
     "id": "Q166543",
-    "name": "General anaesthesia",
+    "name": "general anaesthesia",
     "category": "medicine-health",
     "regionTags": [],
     "fameScore": 69,
@@ -2738,13 +2691,14 @@
   },
   {
     "id": "Q625151",
-    "name": "Electric locomotive",
+    "name": "electric locomotive",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 69,
     "tagline": "locomotive powered by electricity",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_locomotive",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%B2%D0%BE%D0%B7%20%D0%92%D0%9B22%D0%BC-2026%20%28VL22m-2026%20electric%20locomotive%29.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%A7%D0%A17-282%2C%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%2C%20%D0%9E%D1%80%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%9E%D1%80%D1%91%D0%BB%20%28Trainpix%20147617%29.jpg",
+    "imageAttribution": "Mihail_Z, via Wikimedia Commons",
     "description": "An electric locomotive is a type of locomotive powered by electricity from overhead lines, a third rail or on-board energy storage such as a battery or a supercapacitor. Locomotives with on-board fuelled prime movers, such as diesel engines or gas turbines, are classed as diesel–electric or gas turbine–electric and not as electric locomotives, because the electric generator/motor combination serves only as a power transmission system.",
     "at": {
       "year": 1837
@@ -2787,7 +2741,7 @@
   },
   {
     "id": "Q194154",
-    "name": "Cavity magnetron",
+    "name": "cavity magnetron",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 69,
@@ -2802,7 +2756,7 @@
   },
   {
     "id": "Q843389",
-    "name": "Canning",
+    "name": "canning",
     "category": "food-agriculture",
     "regionTags": [],
     "fameScore": 69,
@@ -2866,7 +2820,7 @@
   },
   {
     "id": "Q2411998",
-    "name": "Eruption of Mount Vesuvius in 79",
+    "name": "eruption of Mount Vesuvius in 79",
     "category": "environment-geology",
     "regionTags": [],
     "fameScore": 68,
@@ -2914,7 +2868,7 @@
   },
   {
     "id": "Q107701",
-    "name": "Penny Black (postage stamp)",
+    "name": "Penny Black",
     "category": "media-culture",
     "regionTags": [
       "europe"
@@ -2931,7 +2885,7 @@
   },
   {
     "id": "Q1136790",
-    "name": "Cotton gin",
+    "name": "cotton gin",
     "category": "food-agriculture",
     "regionTags": [],
     "fameScore": 67,
@@ -3003,7 +2957,7 @@
   },
   {
     "id": "Q663273",
-    "name": "Voltaic pile",
+    "name": "voltaic pile",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 67,
@@ -3085,13 +3039,13 @@
   },
   {
     "id": "Q1037810",
-    "name": "Smallpox vaccine",
+    "name": "smallpox vaccine",
     "category": "medicine-health",
     "regionTags": [],
     "fameScore": 66,
     "tagline": "first successful vaccine to be developed",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Smallpox_vaccine",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Poster%20for%20vaccination%20against%20smallpox.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Smallpox%20vaccine%20injection.jpg",
     "description": "The smallpox vaccine is used to prevent smallpox infection caused by the variola virus. It is the first vaccine to have been developed against a contagious disease. In 1796, British physician Edward Jenner demonstrated that an infection with the relatively mild cowpox virus conferred immunity against the deadly smallpox virus. Cowpox served as a natural vaccine until the modern smallpox vaccine emerged in the 20th century. From 1958 to 1977, the World Health Organization (WHO) conducted a global vaccination campaign that eradicated smallpox, making it the only human disease to be eradicated. Although routine smallpox vaccination is no longer performed on the general public, the vaccine is still being produced for research, and to guard against bioterrorism and biological warfare.",
     "at": {
       "year": 1798
@@ -3099,7 +3053,7 @@
   },
   {
     "id": "Q841282",
-    "name": "Arc lamp",
+    "name": "arc lamp",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 66,
@@ -3135,7 +3089,7 @@
   },
   {
     "id": "Q338613",
-    "name": "Aeolipile",
+    "name": "aeolipile",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 66,
@@ -3176,7 +3130,7 @@
   },
   {
     "id": "Q6501061",
-    "name": "Electrical telegraph",
+    "name": "electrical telegraph",
     "category": "communication",
     "regionTags": [],
     "fameScore": 65,
@@ -3294,7 +3248,7 @@
   },
   {
     "id": "Q46872",
-    "name": "Cinematograph",
+    "name": "cinematograph",
     "category": "communication",
     "regionTags": [],
     "fameScore": 64,
@@ -3424,14 +3378,13 @@
   },
   {
     "id": "Q949801",
-    "name": "Rotorcraft",
+    "name": "rotorcraft",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 63,
     "tagline": "heavier-than-air aircraft which generates lift over rotating wings",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rotorcraft",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg",
-    "imageAttribution": "Fgarganese, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Belvedere%20helicopter%20at%20Filton%2C%20Bristol%2C%20England.jpg",
     "description": "A rotary-wing aircraft, rotorwing aircraft or rotorcraft is a heavier-than-air aircraft with rotary wings that spin around a vertical mast to generate lift. The assembly of several rotor blades mounted on a single mast is referred to as a rotor.",
     "at": {
       "year": 1907
@@ -3456,7 +3409,7 @@
   },
   {
     "id": "Q699127",
-    "name": "Voyages of Zheng He",
+    "name": "Treasure Voyages",
     "category": "expedition",
     "regionTags": [
       "east-asia"
@@ -3495,7 +3448,7 @@
   },
   {
     "id": "Q1261053",
-    "name": "Woodblock printing",
+    "name": "woodblock printing",
     "category": "communication",
     "regionTags": [],
     "fameScore": 62,
@@ -3569,8 +3522,7 @@
     "fameScore": 61,
     "tagline": "early steam engine type",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen%20atmospheric%20engine%20animation.gif",
-    "imageAttribution": "Emoscopes, via Wikimedia Commons",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen6325.png",
     "description": "The atmospheric engine was invented by Thomas Newcomen in 1712, and is sometimes referred to as the Newcomen fire engine or Newcomen engine. The engine was operated by condensing steam being drawn into the cylinder, thereby creating a partial vacuum which allowed atmospheric pressure to push the piston into the cylinder. It is significant as the first practical device to harness steam to produce mechanical work. Newcomen engines were used throughout Britain and Europe, principally to pump water out of mines. Hundreds were constructed during the 18th century. James Watt's later engine design was an improved version of the Newcomen engine that roughly doubled fuel efficiency. Many atmospheric engines were converted to the Watt design. As a result, Watt is today better known than Newcomen in relation to the origin of the steam engine.",
     "at": {
       "year": 1712
@@ -3644,22 +3596,6 @@
     }
   },
   {
-    "id": "Q278579",
-    "name": "Aqua Appia",
-    "category": "landmarks",
-    "regionTags": [
-      "europe"
-    ],
-    "fameScore": 59,
-    "tagline": "first ancient Roman aqueduct",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aqua_Appia",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aqua%20appia%20planlatium.jpg",
-    "description": "The Aqua Appia was the first Roman aqueduct, and its construction was begun in 312 BC by the censor Appius Claudius Caecus, who also built the important Via Appia. By the end of the 1st century BC it had fallen out of use as an aqueduct, and was used as a sewer instead.",
-    "at": {
-      "year": -311
-    }
-  },
-  {
     "id": "Q1964751",
     "name": "Nansen's Fram expedition (1893–1896)",
     "category": "expedition",
@@ -3703,7 +3639,7 @@
   },
   {
     "id": "Q1290001",
-    "name": "Brahmasphutasiddhanta",
+    "name": "Brāhmasphuṭasiddhānta",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 57,
@@ -3777,7 +3713,7 @@
   },
   {
     "id": "Q3518429",
-    "name": "Aryabhatiya",
+    "name": "Āryabhaṭīya",
     "category": "science-theory",
     "regionTags": [],
     "fameScore": 55,
@@ -3795,8 +3731,8 @@
     "name": "The Portuguese discovery of the sea route to India",
     "category": "expedition",
     "regionTags": [
-      "europe",
-      "south-asia"
+      "south-asia",
+      "europe"
     ],
     "fameScore": 55,
     "tagline": "sea route to India was the first recorded trip made directly from Europe to India via the Cape of Good Hope, in the Atlantic Ocean",
@@ -3814,7 +3750,7 @@
     "fameScore": 54,
     "tagline": "period in the history of Victoria, Australia",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Victorian_gold_rush",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Walhalla%201910%20Goldmine%204000ft.jpg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Prospectors%27%20hut%20Upper%20Dargo%2C%20Gippsland%2C%20ca%201870%20%28SLV%20b19603%29.jpg",
     "description": "The Victorian gold rush was a period in the history of Victoria, Australia, approximately between 1851 and the late 1860s. It led to a period of extreme prosperity for the Australian colony and an influx of population growth and financial capital for Melbourne, which was dubbed \"Marvellous Melbourne\" as a result of the procurement of wealth.",
     "at": {
       "year": 1851
@@ -3822,7 +3758,7 @@
   },
   {
     "id": "Q13443401",
-    "name": "Invention of telephone",
+    "name": "invention of telephone",
     "category": "communication",
     "regionTags": [],
     "fameScore": 53,

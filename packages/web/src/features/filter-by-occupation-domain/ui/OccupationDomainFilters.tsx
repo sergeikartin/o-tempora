@@ -1,5 +1,6 @@
 import { OCCUPATION_DOMAINS, type OccupationDomain } from '../../../shared/types';
 import { DOMAIN_COLORS, DOMAIN_LABELS } from '../../../shared/config';
+import { STRINGS } from '../../../shared/i18n';
 import styles from './OccupationDomainFilters.module.css';
 
 interface OccupationDomainFiltersProps {
@@ -23,7 +24,7 @@ export function OccupationDomainFilters({ selectedDomains, onToggleDomain }: Occ
               type="button"
               className={isActive ? `${styles.pill} ${styles.pillActive}` : styles.pill}
               aria-pressed={isActive}
-              aria-label={`Filter by ${label}`}
+              aria-label={STRINGS.filterByLabel(label)}
               onClick={() => onToggleDomain(domain)}
             >
               <span className={styles.swatch} style={{ backgroundColor: DOMAIN_COLORS[domain] }} aria-hidden="true" />

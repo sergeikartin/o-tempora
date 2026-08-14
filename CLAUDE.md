@@ -15,6 +15,7 @@ Read on demand — only load what the current task needs.
 | [docs/product-scope.md](docs/product-scope.md) | Making a scope or UX call |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | Debugging a recurring issue |
 | [docs/config-variables.md](docs/config-variables.md) | Touching config |
+| [docs/deployment.md](docs/deployment.md) | Touching build/deploy config |
 
 **Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale.
 

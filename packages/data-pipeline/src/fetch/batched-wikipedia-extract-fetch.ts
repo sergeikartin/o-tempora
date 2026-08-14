@@ -1,4 +1,4 @@
-import { fetchWikipediaSummary, type WikipediaSummaryResponse } from "./wikipedia-client.js";
+import { fetchWikipediaSummary, type WikipediaLanguage, type WikipediaSummaryResponse } from "./wikipedia-client.js";
 
 // Wikimedia's REST summary API has no VALUES-clause batch equivalent
 // (unlike Wikidata SPARQL) and asks for a gentler pace than this pipeline's
@@ -33,10 +33,11 @@ export interface WikipediaExtractEntry {
 }
 
 /**
- * Resolves a Wikipedia lead-paragraph extract for each entry's title,
- * keyed by the caller's own entity id (not the title, which more than one
- * entity could in principle share — deduped here so a shared title is only
- * fetched once, same "dedupe before fetching" shape
+ * Resolves a Wikipedia lead-paragraph extract for each entry's title, from
+ * the given language edition (English by default), keyed by the caller's
+ * own entity id (not the title, which more than one entity could in
+ * principle share — deduped here so a shared title is only fetched once,
+ * same "dedupe before fetching" shape
  * batched-commons-image-attribution-fetch.ts uses for Commons titles). A
  * single entry's fetch failure (network error, malformed response, etc.) is
  * logged and skipped, never aborting the rest of the run — same best-effort
@@ -46,6 +47,7 @@ export interface WikipediaExtractEntry {
  */
 export async function batchedWikipediaExtractFetch(
   entries: WikipediaExtractEntry[],
+  lang: WikipediaLanguage = "en",
 ): Promise<Map<string, string>> {
   const titleToIds = new Map<string, string[]>();
   for (const entry of entries) {
@@ -60,7 +62,7 @@ export async function batchedWikipediaExtractFetch(
   for (let i = 0; i < titles.length; i++) {
     const title = titles[i]!;
     try {
-      const summary = await fetchWikipediaSummary(title);
+      const summary = await fetchWikipediaSummary(title, lang);
       const cleaned = cleanExtract(summary);
       if (cleaned) {
         for (const id of titleToIds.get(title) ?? []) extractById.set(id, cleaned);

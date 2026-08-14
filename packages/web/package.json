@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run build:en",
+    "build:en": "tsc -b && vite build --mode en --outDir dist/en",
+    "build:ru": "tsc -b && vite build --mode ru --outDir dist/ru",
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "lint": "eslint .",

@@ -2,6 +2,7 @@ import { useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } fro
 import * as d3 from 'd3';
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import { formatYear } from '../../shared/lib/format-year';
+import { STRINGS } from '../../shared/i18n';
 import { computeDensityProfile, logScaleHeightPx } from './mountain-profile';
 import { defaultPixelsPerYear, FALLBACK_VIEWPORT_WIDTH_PX } from './options';
 import styles from './MountainProfile.module.css';
@@ -192,7 +193,7 @@ export function MountainProfile({
       ref={trackRef}
       className={styles.track}
       data-testid="mountain-profile-track"
-      aria-label="Timeline density minimap"
+      aria-label={STRINGS.minimapAriaLabel}
       onPointerDown={handleTrackPointerDown}
       onPointerMove={handleTrackPointerMove}
       onPointerLeave={handleTrackPointerLeave}

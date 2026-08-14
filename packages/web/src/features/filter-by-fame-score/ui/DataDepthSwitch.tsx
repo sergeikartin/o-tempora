@@ -1,4 +1,5 @@
 import { DATA_DEPTH_LEVELS, FAME_SCORE_LANES, matchDataDepthLevel } from '../../../shared/config';
+import { STRINGS } from '../../../shared/i18n';
 import type { FameScoreLane, FameScoreValues } from '../model/useFameScoreFilters';
 import styles from './DataDepthSwitch.module.css';
 
@@ -20,7 +21,7 @@ export function DataDepthSwitch({ values, onChange }: DataDepthSwitchProps) {
   }
 
   return (
-    <div className={styles.switch} role="group" aria-label="Data Depth">
+    <div className={styles.switch} role="group" aria-label={STRINGS.dataDepthAriaLabel}>
       {DATA_DEPTH_LEVELS.map((level) => {
         const isActive = level.id === activeLevelId;
         return (

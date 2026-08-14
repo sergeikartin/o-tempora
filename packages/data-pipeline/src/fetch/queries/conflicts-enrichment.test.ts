@@ -29,6 +29,13 @@ test("fetches a Wikipedia article title per pageviews-basket language, country, 
   assert.match(query, /OPTIONAL \{ \?event schema:description \?tagline \. FILTER\(LANG\(\?tagline\) = "en"\) \}/);
 });
 
+test("fetches an English and Russian rdfs:label for name, and a Russian tagline binding alongside the English one, both optional", () => {
+  const query = buildConflictsEnrichmentQuery(["Q198"]);
+  assert.match(query, /OPTIONAL \{ \?event rdfs:label \?nameEn \. FILTER\(LANG\(\?nameEn\) = "en"\) \}/);
+  assert.match(query, /OPTIONAL \{ \?event rdfs:label \?nameRu \. FILTER\(LANG\(\?nameRu\) = "ru"\) \}/);
+  assert.match(query, /OPTIONAL \{ \?event schema:description \?taglineRu \. FILTER\(LANG\(\?taglineRu\) = "ru"\) \}/);
+});
+
 test("binds ?date's precision via the point-in-time/start-time statement value nodes, not the wdt: truthy shortcut", () => {
   const query = buildConflictsEnrichmentQuery(["Q198"]);
   assert.match(query, /\?event p:P585 \?pointInTimeStatement/);
@@ -54,13 +61,13 @@ test("binds ?endDate's precision the same way via P582's statement value node", 
   assert.match(query, /\?endDateValue wikibase:timeValue \?endDate ;\s*wikibase:timePrecision \?endDatePrecision/);
 });
 
-test("selects sitelinks/per-language article title vars/country/image/tagline/date/datePrecision/endDate/endDatePrecision", () => {
+test("selects sitelinks/per-language article title vars/country/image/name(en+ru)/tagline(en+ru)/date/datePrecision/endDate/endDatePrecision", () => {
   const query = buildConflictsEnrichmentQuery(["Q198"]);
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `\\?article${lang[0]!.toUpperCase()}${lang.slice(1)}`).join(
     " ",
   );
   const pattern = new RegExp(
-    `SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?tagline \\?date \\?datePrecision \\?endDate \\?endDatePrecision WHERE`,
+    `SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?nameEn \\?nameRu \\?tagline \\?taglineRu \\?date \\?datePrecision \\?endDate \\?endDatePrecision WHERE`,
   );
   assert.match(query, pattern);
 });

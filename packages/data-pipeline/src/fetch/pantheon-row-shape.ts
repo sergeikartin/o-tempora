@@ -14,6 +14,11 @@ import { parseCsvLine } from "./csv.js";
 export interface PantheonPersonRow {
   id: string;
   wdId: string;
+  // Kept for CSV structural validation (parsePantheonCsv requires it
+  // non-empty) but no longer read by Output — a person's display name is
+  // now sourced from Wikidata's rdfs:label via the same batched
+  // enrichment pass as tagline (see transform/index.ts's TaggedPerson),
+  // not this frozen Pantheon snapshot value.
   name: string;
   // Wikipedia article slug — the closest thing Pantheon has to a
   // Wikipedia link column; wikipediaUrl is built from this

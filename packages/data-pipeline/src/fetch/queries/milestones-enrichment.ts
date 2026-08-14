@@ -55,12 +55,15 @@ function dateOptionalBlocks(): string {
 // language set conflicts-enrichment.ts fixes for ADR 0010's pageviews blend),
 // country (-> regionTags), the P18 image claim (dynamic-tooltips spec
 // §4.3 — same "extend the existing OPTIONAL set" treatment as
-// taglines.ts, no new request count), an English tagline (tagline/
-// description split, live-fetched not curated, same as Conflicts), and — as
-// of the Milestones taxonomy-expansion merge — a date via DATE_PROPERTIES'
-// priority-ordered COALESCE, same "curated file carries no date of its own"
-// sourcing Conflicts already uses. name/category are still curator-verified
-// and never refetched here. ORDER BY ?event ?date is the same "earliest
+// taglines.ts, no new request count), an English + Russian name
+// (rdfs:label) and tagline (tagline/description split, live-fetched not
+// curated, same as Conflicts — name too, as of the per-language name/
+// tagline treatment: the curated file's own hand-typed `name` is left on
+// disk, unused, same symmetric Wikidata-sourced mechanism Conflicts uses),
+// and — as of the Milestones taxonomy-expansion merge — a date via
+// DATE_PROPERTIES' priority-ordered COALESCE, same "curated file carries no
+// date of its own" sourcing Conflicts already uses. category is still
+// curator-verified and never refetched here. ORDER BY ?event ?date is the same "earliest
 // claim wins the tie" convention conflicts-enrichment.ts uses — needed here
 // because fetch-milestones-enrichment.ts's fetch loop keeps only the first
 // row's ?date per id.
@@ -79,13 +82,16 @@ export function buildMilestonesEnrichmentQuery(ids: string[]): string {
   const timeVars = DATE_PROPERTIES.map((property) => `?${dateVar(property)}Time`).join(", ");
   const precisionVars = DATE_PROPERTIES.map((property) => `?${dateVar(property)}Precision`).join(", ");
   return `
-SELECT ?event ?sitelinks ${articleVars} ?country ?image ?tagline ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
+SELECT ?event ?sitelinks ${articleVars} ?country ?image ?nameEn ?nameRu ?tagline ?taglineRu ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
   VALUES ?event { ${values} }
   ?event wikibase:sitelinks ?sitelinks .
 ${articleOptionalBlocks()}
   OPTIONAL { ?event wdt:P17 ?country. }
   OPTIONAL { ?event wdt:P18 ?image. }
+  OPTIONAL { ?event rdfs:label ?nameEn . FILTER(LANG(?nameEn) = "en") }
+  OPTIONAL { ?event rdfs:label ?nameRu . FILTER(LANG(?nameRu) = "ru") }
   OPTIONAL { ?event schema:description ?tagline . FILTER(LANG(?tagline) = "en") }
+  OPTIONAL { ?event schema:description ?taglineRu . FILTER(LANG(?taglineRu) = "ru") }
 ${dateOptionalBlocks()}
   BIND(COALESCE(${timeVars}) AS ?date)
   BIND(COALESCE(${precisionVars}) AS ?datePrecision)

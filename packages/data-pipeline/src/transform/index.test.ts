@@ -129,6 +129,7 @@ test("transformConflicts computes fameScore via the blend function from the row'
     "conflicts-image-attribution.raw.json": {},
     "conflicts-pageviews.raw.json": { Q2: 4_000_000 },
     "conflicts-wikipedia-extracts.raw.json": {},
+    "conflicts-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [conflict] = transformConflicts();
@@ -156,6 +157,7 @@ test("transformConflicts degrades to a sitelinks-only score when the id is absen
     "conflicts-image-attribution.raw.json": {},
     "conflicts-pageviews.raw.json": {},
     "conflicts-wikipedia-extracts.raw.json": {},
+    "conflicts-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [conflict] = transformConflicts();
@@ -183,6 +185,7 @@ test("transformConflicts passes through the Wikipedia extract keyed by the confl
     "conflicts-image-attribution.raw.json": {},
     "conflicts-pageviews.raw.json": {},
     "conflicts-wikipedia-extracts.raw.json": { Q2: "A war fought between Athens and Sparta for dominance of Greece." },
+    "conflicts-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [conflict] = transformConflicts();
@@ -210,11 +213,132 @@ test("transformConflicts leaves description undefined when no Wikipedia extract 
     "conflicts-image-attribution.raw.json": {},
     "conflicts-pageviews.raw.json": {},
     "conflicts-wikipedia-extracts.raw.json": {},
+    "conflicts-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [conflict] = transformConflicts();
 
   assert.equal(conflict?.description, undefined);
+});
+
+test("transformConflicts passes through descriptionRu keyed by the conflict's own id, when the Russian Wikipedia extract pass resolved one", (t) => {
+  stubRawFiles(t, {
+    "conflicts-curated-enriched.raw.json": {
+      conflicts: [
+        {
+          id: "Q2",
+          name: "Peloponnesian War",
+          category: "war",
+          sitelinks: 80,
+          wikipediaUrl: "https://en.wikipedia.org/wiki/Peloponnesian_War",
+          articleUrls: {},
+          countries: [],
+          year: -431,
+          endYear: -404,
+        },
+      ],
+    },
+    "conflicts-image-attribution.raw.json": {},
+    "conflicts-pageviews.raw.json": {},
+    "conflicts-wikipedia-extracts.raw.json": {},
+    "conflicts-wikipedia-extracts.ru.raw.json": { Q2: "Война между Афинами и Спартой." },
+  });
+
+  const [conflict] = transformConflicts();
+
+  assert.equal(conflict?.descriptionRu, "Война между Афинами и Спартой.");
+});
+
+test("transformConflicts passes through nameRu/taglineRu when the enrichment file resolved them", (t) => {
+  stubRawFiles(t, {
+    "conflicts-curated-enriched.raw.json": {
+      conflicts: [
+        {
+          id: "Q6534",
+          name: "French Revolution",
+          nameRu: "Великая французская революция",
+          category: "revolution",
+          sitelinks: 193,
+          wikipediaUrl: "https://en.wikipedia.org/wiki/French_Revolution",
+          articleUrls: {},
+          countries: [],
+          tagline: "period of political and societal change in France",
+          taglineRu: "период политических и социальных потрясений во Франции",
+          year: 1789,
+          endYear: 1799,
+        },
+      ],
+    },
+    "conflicts-image-attribution.raw.json": {},
+    "conflicts-pageviews.raw.json": {},
+    "conflicts-wikipedia-extracts.raw.json": {},
+    "conflicts-wikipedia-extracts.ru.raw.json": {},
+  });
+
+  const [conflict] = transformConflicts();
+
+  assert.equal(conflict?.labelRu, "Великая французская революция");
+  assert.equal(conflict?.taglineRu, "период политических и социальных потрясений во Франции");
+});
+
+test("transformConflicts leaves labelRu/taglineRu undefined when the enrichment pass didn't resolve a Russian value", (t) => {
+  stubRawFiles(t, {
+    "conflicts-curated-enriched.raw.json": {
+      conflicts: [
+        {
+          id: "Q2",
+          name: "Peloponnesian War",
+          category: "war",
+          sitelinks: 80,
+          wikipediaUrl: "https://en.wikipedia.org/wiki/Peloponnesian_War",
+          articleUrls: {},
+          countries: [],
+          year: -431,
+          endYear: -404,
+        },
+      ],
+    },
+    "conflicts-image-attribution.raw.json": {},
+    "conflicts-pageviews.raw.json": {},
+    "conflicts-wikipedia-extracts.raw.json": {},
+    "conflicts-wikipedia-extracts.ru.raw.json": {},
+  });
+
+  const [conflict] = transformConflicts();
+
+  assert.equal(conflict?.labelRu, undefined);
+  assert.equal(conflict?.taglineRu, undefined);
+});
+
+test("transformMilestones passes through nameRu/taglineRu when the enrichment file resolved them", (t) => {
+  stubRawFiles(t, {
+    "milestones-curated-enriched.raw.json": {
+      milestones: [
+        {
+          id: "Q988780",
+          name: "Electromagnetic induction",
+          nameRu: "Электромагнитная индукция",
+          year: 1831,
+          category: "science-theory",
+          tagline: "production of voltage by a varying magnetic field",
+          taglineRu: "возникновение электрического тока в замкнутом контуре",
+          sitelinks: 81,
+          wikipediaUrl: "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+          articleUrls: {},
+          countries: [],
+        },
+      ],
+    },
+    "milestones-image-attribution.raw.json": {},
+    "milestones-pageviews.raw.json": {},
+    "milestones-wikipedia-extracts.raw.json": {},
+    "milestones-wikipedia-extracts.ru.raw.json": {},
+  });
+
+  const [milestone] = transformMilestones();
+
+  assert.equal(milestone?.labelRu, "Электромагнитная индукция");
+  assert.equal(milestone?.taglineRu, "возникновение электрического тока в замкнутом контуре");
 });
 
 test("transformMilestones computes fameScore via the blend function from the row's sitelinks and the pageviews raw file", (t) => {
@@ -237,6 +361,7 @@ test("transformMilestones computes fameScore via the blend function from the row
     "milestones-image-attribution.raw.json": {},
     "milestones-pageviews.raw.json": { Q5: 9_000_000 },
     "milestones-wikipedia-extracts.raw.json": {},
+    "milestones-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [milestone] = transformMilestones();
@@ -264,6 +389,7 @@ test("transformMilestones passes through the enrichment file's live-fetched tagl
     "milestones-image-attribution.raw.json": {},
     "milestones-pageviews.raw.json": {},
     "milestones-wikipedia-extracts.raw.json": {},
+    "milestones-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [milestone] = transformMilestones();
@@ -290,6 +416,7 @@ test("transformMilestones leaves tagline undefined when the enrichment pass coul
     "milestones-image-attribution.raw.json": {},
     "milestones-pageviews.raw.json": {},
     "milestones-wikipedia-extracts.raw.json": {},
+    "milestones-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [milestone] = transformMilestones();
@@ -319,6 +446,7 @@ test("transformMilestones passes through the Wikipedia extract keyed by the mile
     "milestones-wikipedia-extracts.raw.json": {
       Q5: "Penicillin is a group of antibiotics derived from Penicillium moulds.",
     },
+    "milestones-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [milestone] = transformMilestones();
@@ -346,6 +474,7 @@ test("transformMilestones leaves description undefined when no Wikipedia extract
     "milestones-image-attribution.raw.json": {},
     "milestones-pageviews.raw.json": {},
     "milestones-wikipedia-extracts.raw.json": {},
+    "milestones-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [milestone] = transformMilestones();
@@ -371,12 +500,57 @@ test("transformPeople passes through tagline and description, keyed by the perso
     "people-wikipedia-extracts.raw.json": {
       Q935: "Sir Isaac Newton was an English mathematician, physicist, and astronomer.",
     },
+    "people-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [person] = transformPeople();
 
   assert.equal(person?.tagline, "English physicist and mathematician");
   assert.equal(person?.description, "Sir Isaac Newton was an English mathematician, physicist, and astronomer.");
+});
+
+test("transformPeople sources name/nameRu from the Wikidata label enrichment, not Pantheon's own CSV name column", (t) => {
+  stubRawFiles(t, {
+    "people-pantheon.raw.csv": pantheonCsv(pantheonRow({ name: '"Isaac Newton (Pantheon snapshot)"' })),
+    "people-taglines.raw.json": {
+      head: { vars: ["person", "nameEn", "nameRu", "tagline", "taglineRu", "image"] },
+      results: {
+        bindings: [
+          {
+            person: { type: "uri", value: "http://www.wikidata.org/entity/Q935" },
+            nameEn: { type: "literal", "xml:lang": "en", value: "Isaac Newton" },
+            nameRu: { type: "literal", "xml:lang": "ru", value: "Исаак Ньютон" },
+            tagline: { type: "literal", "xml:lang": "en", value: "English physicist and mathematician" },
+          },
+        ],
+      },
+    },
+    "people-image-attribution.raw.json": {},
+    "people-wikipedia-extracts.raw.json": {},
+    "people-wikipedia-extracts.ru.raw.json": {},
+  });
+
+  const [person] = transformPeople();
+
+  assert.equal(person?.name, "Isaac Newton");
+  assert.equal(person?.nameRu, "Исаак Ньютон");
+});
+
+test("transformPeople leaves name undefined when the Wikidata label enrichment pass didn't resolve one for this QID", (t) => {
+  stubRawFiles(t, {
+    "people-pantheon.raw.csv": pantheonCsv(pantheonRow()),
+    "people-taglines.raw.json": {
+      head: { vars: ["person", "tagline"] },
+      results: { bindings: [] },
+    },
+    "people-image-attribution.raw.json": {},
+    "people-wikipedia-extracts.raw.json": {},
+    "people-wikipedia-extracts.ru.raw.json": {},
+  });
+
+  const [person] = transformPeople();
+
+  assert.equal(person?.name, undefined);
 });
 
 test("transformPeople leaves description undefined when no Wikipedia extract resolved for this person's QID", (t) => {
@@ -395,6 +569,7 @@ test("transformPeople leaves description undefined when no Wikipedia extract res
     },
     "people-image-attribution.raw.json": {},
     "people-wikipedia-extracts.raw.json": {},
+    "people-wikipedia-extracts.ru.raw.json": {},
   });
 
   const [person] = transformPeople();

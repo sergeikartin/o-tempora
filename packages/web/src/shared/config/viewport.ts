@@ -1,3 +1,5 @@
+import { LANG } from '../i18n';
+
 export const ZOOM_MIN_YEARS = 10;
 export const ZOOM_MAX_YEARS = 500;
 
@@ -53,10 +55,18 @@ export interface DataDepthLevel {
   values: Record<FameScoreLane, number>;
 }
 
+// Bilingual labels, picked once at module load by the build-time LANG flag
+// (shared/i18n) — same pattern as shared/config's other taxonomy labels
+// (e.g. occupation-domain-colors.ts's DOMAIN_LABELS).
+const DATA_DEPTH_LABELS: Record<DataDepthLevelId, string> =
+  LANG === 'ru'
+    ? { curated: 'Куратор', expanded: 'Расширенный', full: 'Полный' }
+    : { curated: 'Curated', expanded: 'Expanded', full: 'Full' };
+
 export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
-  { id: 'curated', label: 'Curated', values: { people: 90, conflicts: 82, milestones: 82 } },
-  { id: 'expanded', label: 'Expanded', values: { people: 85, conflicts: 70, milestones: 70 } },
-  { id: 'full', label: 'Full', values: { people: 80, conflicts: 1, milestones: 1 } },
+  { id: 'curated', label: DATA_DEPTH_LABELS.curated, values: { people: 90, conflicts: 82, milestones: 82 } },
+  { id: 'expanded', label: DATA_DEPTH_LABELS.expanded, values: { people: 85, conflicts: 70, milestones: 70 } },
+  { id: 'full', label: DATA_DEPTH_LABELS.full, values: { people: 80, conflicts: 1, milestones: 1 } },
 ];
 
 // Derives which level (if any) the given fame-score floor values match —
