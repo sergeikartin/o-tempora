@@ -6,7 +6,7 @@ afterEach(cleanup);
 
 test('shows Curated as active for the default values', () => {
   const { getByRole } = render(
-    <DataDepthSwitch values={{ people: 90, conflicts: 75, milestones: 75 }} onChange={vi.fn()} />,
+    <DataDepthSwitch values={{ people: 90, conflicts: 82, milestones: 82 }} onChange={vi.fn()} />,
   );
 
   expect(getByRole('button', { name: 'Curated' }).getAttribute('aria-pressed')).toBe('true');
@@ -27,7 +27,7 @@ test('shows no level active when values match no preset row (custom)', () => {
 test('clicking a level calls onChange once per lane with that level\'s values', () => {
   const onChange = vi.fn();
   const { getByRole } = render(
-    <DataDepthSwitch values={{ people: 90, conflicts: 75, milestones: 75 }} onChange={onChange} />,
+    <DataDepthSwitch values={{ people: 90, conflicts: 82, milestones: 82 }} onChange={onChange} />,
   );
 
   fireEvent.click(getByRole('button', { name: 'Full' }));

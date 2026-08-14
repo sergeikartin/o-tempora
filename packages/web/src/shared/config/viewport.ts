@@ -27,14 +27,14 @@ export interface FameScoreBounds {
 // (packages/data-pipeline/docs/adr/0010-blend-sitelinks-and-pageviews-for-
 // wars-discoveries-fame-score.md) blends sitelinks with Wikimedia pageviews
 // into one shared 0-100 log-normalized scale, so both lanes now share the
-// same bounds instead of lane-specific raw-count ranges. 1-100/default-75
+// same bounds instead of lane-specific raw-count ranges. 1-100/default-82
 // is a provisional starting point (the ADR's documented consequence),
 // pending a manual re-tune once real blended scores are visible in the
 // running app.
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
   people: { min: 75, max: 100, default: 90 },
-  conflicts: { min: 1, max: 100, default: 75 },
-  milestones: { min: 1, max: 100, default: 75 },
+  conflicts: { min: 1, max: 100, default: 82 },
+  milestones: { min: 1, max: 100, default: 82 },
 };
 
 // Data Depth: a three-position UI preset that writes canonical values into
@@ -54,7 +54,7 @@ export interface DataDepthLevel {
 }
 
 export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
-  { id: 'curated', label: 'Curated', values: { people: 90, conflicts: 75, milestones: 75 } },
+  { id: 'curated', label: 'Curated', values: { people: 90, conflicts: 82, milestones: 82 } },
   { id: 'expanded', label: 'Expanded', values: { people: 85, conflicts: 70, milestones: 70 } },
   { id: 'full', label: 'Full', values: { people: 80, conflicts: 1, milestones: 1 } },
 ];
