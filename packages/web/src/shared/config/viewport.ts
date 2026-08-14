@@ -1,4 +1,4 @@
-import { LANG } from '../i18n';
+import { m } from '../paraglide/messages.js';
 
 export const ZOOM_MIN_YEARS = 10;
 export const ZOOM_MAX_YEARS = 500;
@@ -55,13 +55,14 @@ export interface DataDepthLevel {
   values: Record<FameScoreLane, number>;
 }
 
-// Bilingual labels, picked once at module load by the build-time LANG flag
-// (shared/i18n) — same pattern as shared/config's other taxonomy labels
+// Picked once at module load from the compiled locale's message catalog
+// (docs/adr/0005) — same pattern as shared/config's other taxonomy labels
 // (e.g. occupation-domain-colors.ts's DOMAIN_LABELS).
-const DATA_DEPTH_LABELS: Record<DataDepthLevelId, string> =
-  LANG === 'ru'
-    ? { curated: 'Куратор', expanded: 'Расширенный', full: 'Полный' }
-    : { curated: 'Curated', expanded: 'Expanded', full: 'Full' };
+const DATA_DEPTH_LABELS: Record<DataDepthLevelId, string> = {
+  curated: m['taxonomy.data-depth.curated'](),
+  expanded: m['taxonomy.data-depth.expanded'](),
+  full: m['taxonomy.data-depth.full'](),
+};
 
 export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
   { id: 'curated', label: DATA_DEPTH_LABELS.curated, values: { people: 90, conflicts: 82, milestones: 82 } },

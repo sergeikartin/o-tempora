@@ -1,6 +1,6 @@
 import { REGIONS, type Region } from '../../../shared/types';
 import { REGION_LABELS } from '../../../shared/config';
-import { STRINGS } from '../../../shared/i18n';
+import { m } from '../../../shared/paraglide/messages.js';
 import styles from './RegionFilters.module.css';
 
 interface RegionFiltersProps {
@@ -24,7 +24,7 @@ export function RegionFilters({ selectedRegions, onToggleRegion }: RegionFilters
               type="button"
               className={isActive ? `${styles.pill} ${styles.pillActive}` : styles.pill}
               aria-pressed={isActive}
-              aria-label={STRINGS.filterByLabel(label)}
+              aria-label={m.filterByLabel({ label })}
               onClick={() => onToggleRegion(region)}
             >
               {label}

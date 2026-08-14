@@ -2,6 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
+import { paraglideVitePlugin } from '@inlang/paraglide-js';
 
 const SHARED_DATA_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../shared-types/src/data');
 
@@ -28,7 +29,19 @@ export default defineConfig(({ mode }) => {
   const base = mode === 'en' || mode === 'ru' ? `/${mode}/` : '/';
   return {
     base,
-    plugins: [react()],
+    plugins: [
+      react(),
+      // Each Language Build's locale is fixed at compile time via its own
+      // project.inlang.{en,ru} config directory (docs/adr/0005), the same
+      // mode branch as the data-file alias above — no runtime locale
+      // switching, so strategy is pinned to the compiled baseLocale only.
+      paraglideVitePlugin({
+        project: mode === 'ru' ? './project.ru.inlang' : './project.en.inlang',
+        outdir: './src/shared/paraglide',
+        strategy: ['baseLocale'],
+        emitTsDeclarations: true,
+      }),
+    ],
     resolve: {
       alias: [
         {

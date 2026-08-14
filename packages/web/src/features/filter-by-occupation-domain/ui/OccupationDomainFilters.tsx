@@ -1,6 +1,6 @@
 import { OCCUPATION_DOMAINS, type OccupationDomain } from '../../../shared/types';
 import { DOMAIN_COLORS, DOMAIN_LABELS } from '../../../shared/config';
-import { STRINGS } from '../../../shared/i18n';
+import { m } from '../../../shared/paraglide/messages.js';
 import styles from './OccupationDomainFilters.module.css';
 
 interface OccupationDomainFiltersProps {
@@ -24,7 +24,7 @@ export function OccupationDomainFilters({ selectedDomains, onToggleDomain }: Occ
               type="button"
               className={isActive ? `${styles.pill} ${styles.pillActive}` : styles.pill}
               aria-pressed={isActive}
-              aria-label={STRINGS.filterByLabel(label)}
+              aria-label={m.filterByLabel({ label })}
               onClick={() => onToggleDomain(domain)}
             >
               <span className={styles.swatch} style={{ backgroundColor: DOMAIN_COLORS[domain] }} aria-hidden="true" />

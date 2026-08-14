@@ -9,7 +9,7 @@ import {
 } from 'react';
 import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
 import { DEFAULT_VIEWPORT_START, UN_REGION_TO_REGION, type ConflictsMilestonesFilterValue } from '../../shared/config';
-import { STRINGS } from '../../shared/i18n';
+import { m } from '../../shared/paraglide/messages.js';
 import type { FameScoreValues, FilteredCounts } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
@@ -386,10 +386,10 @@ export function TimelineCanvas({
   return (
     <div className={styles.wrapper}>
       <div className={styles.zoomControls}>
-        <button type="button" onClick={() => zoom(computeZoomOut)} aria-label={STRINGS.zoomOutAriaLabel}>
+        <button type="button" onClick={() => zoom(computeZoomOut)} aria-label={m.zoomOutAriaLabel()}>
           −
         </button>
-        <button type="button" onClick={() => zoom(computeZoomIn)} aria-label={STRINGS.zoomInAriaLabel}>
+        <button type="button" onClick={() => zoom(computeZoomIn)} aria-label={m.zoomInAriaLabel()}>
           +
         </button>
       </div>
