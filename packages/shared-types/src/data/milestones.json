@@ -114,12 +114,12 @@
     "name": "COVID-19 pandemic",
     "category": "public-health",
     "regionTags": [
-      "americas",
-      "east-asia",
       "europe",
-      "middle-east",
+      "americas",
       "south-asia",
-      "africa"
+      "africa",
+      "east-asia",
+      "middle-east"
     ],
     "fameScore": 91,
     "tagline": "pandemic caused by SARS-CoV-2 (2019–2023)",
@@ -488,7 +488,7 @@
   {
     "id": "Q25271",
     "name": "International Space Station",
-    "category": "transportation",
+    "category": "landmarks",
     "regionTags": [],
     "fameScore": 85,
     "tagline": "modular space station in low Earth orbit",
@@ -938,7 +938,7 @@
   {
     "id": "Q48469",
     "name": "Voyager 1",
-    "category": "transportation",
+    "category": "expedition",
     "regionTags": [],
     "fameScore": 80,
     "tagline": "space probe launched by NASA to study the outer Solar System, furthest spacecraft from Earth",
@@ -1206,6 +1206,21 @@
     "at": {
       "year": 1957,
       "month": 10
+    }
+  },
+  {
+    "id": "Q48475",
+    "name": "Voyager 2",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "space probe launched by NASA to study the outer Solar System, second furthest spacecraft from Earth after Voyager 1",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_2",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Voyager%20spacecraft.jpg",
+    "description": "Voyager 2 is a space probe launched by NASA on August 20, 1977, as a part of the Voyager program. It was launched on a trajectory towards the gas giants and enabled further encounters with the ice giants. The only spacecraft to have visited either of the ice giant planets, it was the third of five spacecraft to achieve Solar escape velocity, which allowed it to leave the Solar System. Launched 16 days before its twin Voyager 1, the primary mission of the spacecraft was to study the outer planets and its extended mission is to study interstellar space beyond the Sun's heliosphere.",
+    "at": {
+      "year": 1977,
+      "month": 8
     }
   },
   {
@@ -2012,26 +2027,6 @@
     }
   },
   {
-    "id": "Q186050",
-    "name": "Green Revolution",
-    "category": "food-agriculture",
-    "regionTags": [],
-    "fameScore": 74,
-    "tagline": "period of high agricultural technology transfer in the 1950s and 1960s",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Green_Revolution",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Irrigation1.jpg",
-    "imageAttribution": "Paulkondratuk3194 (talk), via Wikimedia Commons",
-    "description": "The Green Revolution, or the Third Agricultural Revolution, was a period during which technology transfer initiatives resulted in a significant increase in crop yields. These changes in agriculture initially emerged in developed countries in the early 20th century and subsequently spread globally until the late 1980s. In the late 1960s, farmers began incorporating new technologies, including high-yielding varieties of cereals, particularly dwarf wheat and rice, and the widespread use of chemical fertilizers, pesticides, and controlled irrigation.",
-    "period": {
-      "start": {
-        "year": 1940
-      },
-      "end": {
-        "year": 1960
-      }
-    }
-  },
-  {
     "id": "Q221474",
     "name": "First arrival of Christopher Columbus to America",
     "category": "expedition",
@@ -2189,6 +2184,23 @@
     "at": {
       "year": 1961,
       "month": 4
+    }
+  },
+  {
+    "id": "Q184201",
+    "name": "Apollo 8",
+    "category": "expedition",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 73,
+    "tagline": "second crewed flight of the United States Apollo program",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_8",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%208%20Crewmembers%20-%20GPN-2000-001125.jpg",
+    "description": "Apollo 8 was the first crewed spacecraft to leave Earth's gravitational sphere of influence, and the first human spaceflight to reach the Moon. The crew orbited the Moon ten times without landing and then returned to Earth. The three astronauts—Frank Borman, Jim Lovell, and William Anders—were the first humans to see and photograph the far side of the Moon and an Earthrise.",
+    "at": {
+      "year": 1968,
+      "month": 12
     }
   },
   {
@@ -2362,6 +2374,29 @@
     }
   },
   {
+    "id": "Q505802",
+    "name": "Lewis and Clark Expedition",
+    "category": "expedition",
+    "regionTags": [
+      "americas"
+    ],
+    "fameScore": 72,
+    "tagline": "American overland expedition to the Pacific coast",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lewis%20and%20clark-expedition.jpg",
+    "description": "The Lewis and Clark Expedition, also known as the Corps of Discovery Expedition, was the United States expedition to cross the newly acquired western portion of the country after the Louisiana Purchase. The Corps of Discovery was a select group of U.S. Army and civilian volunteers under the command of Captain Meriwether Lewis and his close friend Second Lieutenant William Clark. Clark, along with 30 others, set out from Camp Dubois, Illinois, on May 14, 1804, met Lewis and ten other members of the group in St. Charles, Missouri, then went up the Missouri River. The expedition crossed the Continental Divide of the Americas near the Lemhi Pass, eventually coming to the Columbia River, and the Pacific Ocean in 1805. The return voyage began on March 23, 1806, at Fort Clatsop, Oregon, ending six months later on September 23.",
+    "period": {
+      "start": {
+        "year": 1804,
+        "month": 5
+      },
+      "end": {
+        "year": 1806,
+        "month": 9
+      }
+    }
+  },
+  {
     "id": "Q209440",
     "name": "Galvanic cell",
     "category": "energy-industry",
@@ -2374,6 +2409,20 @@
     "description": "A galvanic cell or voltaic cell, named after the scientists Luigi Galvani and Alessandro Volta, respectively, is an electrochemical cell in which an electric current is generated from spontaneous oxidation–reduction reactions. An example of a galvanic cell consists of two different metals, each immersed in separate beakers containing their respective metal ions in solution that are connected by a salt bridge or separated by a porous membrane.",
     "at": {
       "year": 1786
+    }
+  },
+  {
+    "id": "Q188631",
+    "name": "Vulcanization",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "chemical process for converting natural rubber or related polymers into more durable materials",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vulcanization",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VulcanizationMold1941.jpg",
+    "description": "Vulcanization is a range of processes for hardening rubbers. The term originally referred exclusively to the treatment of natural rubber with sulfur and heat, which remains the most common practice. It has also grown to include the hardening of other (synthetic) rubbers via various means. Examples include silicone rubber via room temperature vulcanising and chloroprene rubber (neoprene) using metal oxides.",
+    "at": {
+      "year": 1839
     }
   },
   {
@@ -3064,6 +3113,27 @@
     }
   },
   {
+    "id": "Q973919",
+    "name": "Terra Nova Expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "Antarctic research expedition (1910–1913)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Terra_Nova_Expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Scottgroup.jpg",
+    "description": "The Terra Nova Expedition, officially the British Antarctic Expedition, was an expedition to Antarctica which took place between 1910 and 1913. Led by Captain Robert Falcon Scott, the expedition had various scientific and geographical objectives. Scott wished to continue the scientific work that he had begun when leading the Discovery Expedition from 1901 to 1904, and wanted to be the first to reach the geographic South Pole.",
+    "period": {
+      "start": {
+        "year": 1910,
+        "month": 6
+      },
+      "end": {
+        "year": 1913,
+        "month": 6
+      }
+    }
+  },
+  {
     "id": "Q338613",
     "name": "Aeolipile",
     "category": "energy-industry",
@@ -3147,6 +3217,27 @@
     "description": "View from the Window at Le Gras is the oldest surviving photograph. It was created by French inventor Nicéphore Niépce between June 4 and July 18, 1827, in Saint-Loup-de-Varennes, France, and shows parts of the buildings and surrounding countryside of his estate, Le Gras, as seen from a high window. The image was created by heliography, a process which Niépce had invented around 1822, and which uses the hardening of bitumen in light to record an image after washing off the remaining unhardened material.",
     "at": {
       "year": 1827
+    }
+  },
+  {
+    "id": "Q1162294",
+    "name": "Expedition Endurance",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 65,
+    "tagline": "British Antarctic expedition from 1914 to 1917",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Imperial_Trans-Antarctic_Expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Endurance%20under%20full%20sail%20Frank%20Hurley%20State%20Library%20NSW%20a090012h.jpg",
+    "description": "The Imperial Trans-Antarctic Expedition of 1914–1917 is considered to be the last major expedition of the Heroic Age of Antarctic Exploration. Conceived by Sir Ernest Shackleton, the expedition was an attempt to make the first land crossing of the Antarctic continent. After Roald Amundsen's South Pole expedition in 1911, this crossing remained, in Shackleton's words, the \"one great main object of Antarctic journeyings\". Shackleton's expedition failed to accomplish this objective but became recognised instead as an epic feat of endurance.",
+    "period": {
+      "start": {
+        "year": 1914,
+        "month": 8
+      },
+      "end": {
+        "year": 1917,
+        "month": 1
+      }
     }
   },
   {
@@ -3417,6 +3508,27 @@
     }
   },
   {
+    "id": "Q644521",
+    "name": "Challenger Expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 62,
+    "tagline": "oceanic research expedition (1872–1876)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Challenger_expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Challenger%20expedition.jpg",
+    "description": "The Challenger expedition of 1872–1876 was a scientific programme that made many discoveries to lay the foundation of oceanography. The expedition was named after the naval vessel that undertook the trip, HMS Challenger.",
+    "period": {
+      "start": {
+        "year": 1872,
+        "month": 12
+      },
+      "end": {
+        "year": 1876,
+        "month": 5
+      }
+    }
+  },
+  {
     "id": "Q1739453",
     "name": "Obninsk Nuclear Power Plant",
     "category": "energy-industry",
@@ -3548,6 +3660,48 @@
     }
   },
   {
+    "id": "Q1964751",
+    "name": "Nansen's Fram expedition (1893–1896)",
+    "category": "expedition",
+    "regionTags": [
+      "europe"
+    ],
+    "fameScore": 59,
+    "tagline": "1893–1896 attempt by Fridtjof Nansen to reach the North Pole",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nansen%27s_Fram_expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fram%20March%201894.jpg",
+    "description": "Nansen's Fram expedition of 1893–1896 was an attempt by the Norwegian explorer Fridtjof Nansen to reach the geographical North Pole by harnessing the natural east–west current of the Arctic Ocean. In the face of much discouragement from other polar explorers, Nansen took his ship Fram to the New Siberian Islands in the eastern Arctic Ocean, froze her into the pack ice, and waited for the drift to carry her towards the pole. Impatient with the slow speed and erratic character of the drift, after 18 months Nansen and a chosen companion, Hjalmar Johansen, left the ship with a team of Samoyed dogs and sledges and made for the pole. They did not reach it, but they achieved a record Farthest North latitude of 86°13.6′N before a long retreat over ice and water to reach safety in Franz Josef Land. Meanwhile, Fram continued to drift westward, finally emerging in the North Atlantic Ocean.",
+    "period": {
+      "start": {
+        "year": 1893
+      },
+      "end": {
+        "year": 1896
+      }
+    }
+  },
+  {
+    "id": "Q1564366",
+    "name": "Second voyage of HMS Beagle",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 58,
+    "tagline": "exploration associated with the theory of evolution (1831-1836)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_voyage_of_HMS_Beagle",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/HMS%20Beagle%20by%20Conrad%20Martens.jpg",
+    "description": "The second survey expedition of HMS Beagle took place from 27 December 1831 to 2 October 1836. Robert FitzRoy, the newest commander of Beagle, had thought of the advantages of having someone onboard who could investigate geology, and sought a naturalist to accompany them as a supernumerary. At the age of 22, the graduate Charles Darwin hoped to see the tropics before becoming a parson, and accepted the opportunity. He was greatly influenced by reading Charles Lyell's Principles of Geology during the voyage. By the end of the expedition, Darwin had made his name as a geologist, and fossil collector, and the publication of his journal gave him wide renown as a writer.",
+    "period": {
+      "start": {
+        "year": 1831,
+        "month": 12
+      },
+      "end": {
+        "year": 1836,
+        "month": 10
+      }
+    }
+  },
+  {
     "id": "Q1290001",
     "name": "Brahmasphutasiddhanta",
     "category": "science-theory",
@@ -3585,6 +3739,43 @@
     }
   },
   {
+    "id": "Q3178839",
+    "name": "first voyage of James Cook",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "combined Royal Navy and Royal Society expedition to the south Pacific",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_voyage_of_James_Cook",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Landing%20of%20Lieutenant%20James%20Cook%20at%20Botany%20Bay%2C%2029%20April%201770%20%28painting%20by%20E%20Phillips%20Fox%29.jpg",
+    "description": "The first voyage of James Cook was a combined Royal Navy and Royal Society expedition to the south Pacific Ocean aboard HMS Endeavour, from 1768 to 1771. The aims were to observe the 1769 transit of Venus from Tahiti and to seek evidence of the postulated Terra Australis Incognita or \"undiscovered southern land\". It was the first of three voyages of which Cook was the commander.",
+    "period": {
+      "start": {
+        "year": 1768
+      },
+      "end": {
+        "year": 1771
+      }
+    }
+  },
+  {
+    "id": "Q233260",
+    "name": "Great Northern Expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "research expedition in Siberia (1733–1743)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Northern_Expedition",
+    "description": "The Great Northern Expedition or Second Kamchatka Expedition was a major Russian Arctic expedition between roughly 1733 and 1743, which mapped most of the Arctic coast of Siberia and much of the Arctic coast of North America, greatly reducing \"white areas\" on maps. It was conceived by Russian emperor Peter the Great, and took place under empresses Anna and Elizabeth. Peter hoped for the 18th-century Russian Navy to map a Northern Sea Route from Europe to the Pacific. The endeavour was sponsored by the Admiralty College in Saint Petersburg. The main organiser and leader of the expedition was Vitus Bering, who had been commissioned by Peter to lead the earlier First Kamchatka Expedition. With over 3,000 people directly or indirectly involved, it was one of the largest expeditions in history.",
+    "period": {
+      "start": {
+        "year": 1733
+      },
+      "end": {
+        "year": 1743
+      }
+    }
+  },
+  {
     "id": "Q3518429",
     "name": "Aryabhatiya",
     "category": "science-theory",
@@ -3597,6 +3788,22 @@
     "description": "Aryabhatiya or Aryabhatiyam, a Sanskrit astronomical treatise, is the magnum opus and only known surviving work of the 5th century Indian mathematician Aryabhata. Historian of astronomy Roger Billard estimates that the book was composed around 510 CE based on historical references it mentions.",
     "at": {
       "year": 510
+    }
+  },
+  {
+    "id": "Q951383",
+    "name": "The Portuguese discovery of the sea route to India",
+    "category": "expedition",
+    "regionTags": [
+      "europe",
+      "south-asia"
+    ],
+    "fameScore": 55,
+    "tagline": "sea route to India was the first recorded trip made directly from Europe to India via the Cape of Good Hope, in the Atlantic Ocean",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Portuguese_discovery_of_the_sea_route_to_India",
+    "description": "The Portuguese discovery of the sea route to India was the first recorded trip directly from Europe to the Indian subcontinent, via the Cape of Good Hope. Under the command of the Portuguese explorer Vasco da Gama, it was undertaken during the reign of King Manuel in 1497–1499. It is one of the most important events of the Age of Discovery and the Portuguese Empire, and it initiated the Portuguese maritime trade on the Malabar Coast and other parts of the Indian Ocean, the military presence and settlements of the Portuguese in Goa and Bombay.",
+    "at": {
+      "year": 1498
     }
   },
   {

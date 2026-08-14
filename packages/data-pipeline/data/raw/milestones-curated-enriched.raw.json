@@ -634,45 +634,6 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F_COVID-19"
       },
       "countries": [
-        "Q16",
-        "Q17",
-        "Q20",
-        "Q27",
-        "Q28",
-        "Q29",
-        "Q30",
-        "Q31",
-        "Q32",
-        "Q33",
-        "Q34",
-        "Q35",
-        "Q36",
-        "Q37",
-        "Q38",
-        "Q39",
-        "Q40",
-        "Q41",
-        "Q43",
-        "Q45",
-        "Q55",
-        "Q77",
-        "Q79",
-        "Q96",
-        "Q114",
-        "Q142",
-        "Q145",
-        "Q148",
-        "Q155",
-        "Q159",
-        "Q183",
-        "Q184",
-        "Q189",
-        "Q191",
-        "Q211",
-        "Q212",
-        "Q213",
-        "Q214",
-        "Q215",
         "Q217",
         "Q218",
         "Q219",
@@ -766,7 +727,46 @@
         "Q14773",
         "Q21203",
         "Q25279",
-        "Q219060"
+        "Q219060",
+        "Q16",
+        "Q17",
+        "Q20",
+        "Q27",
+        "Q28",
+        "Q29",
+        "Q30",
+        "Q31",
+        "Q32",
+        "Q33",
+        "Q34",
+        "Q35",
+        "Q36",
+        "Q37",
+        "Q38",
+        "Q39",
+        "Q40",
+        "Q41",
+        "Q43",
+        "Q45",
+        "Q55",
+        "Q77",
+        "Q79",
+        "Q96",
+        "Q114",
+        "Q142",
+        "Q145",
+        "Q148",
+        "Q155",
+        "Q159",
+        "Q183",
+        "Q184",
+        "Q189",
+        "Q191",
+        "Q211",
+        "Q212",
+        "Q213",
+        "Q214",
+        "Q215"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg"
     },
@@ -1908,6 +1908,20 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Untitled%20%28point%20de%20vue%29%2C%20Ni%C3%A9pce%201827%20%E2%80%94%20HRC%202020%20%28cropped%29.jpg"
     },
     {
+      "id": "Q123318211",
+      "name": "Hand with Rings",
+      "category": "media-culture",
+      "year": 1895,
+      "month": 12,
+      "tagline": "first radiographic image of a human hand by Wilhelm Röntgen",
+      "sitelinks": 2,
+      "articleUrls": {
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D0%BA%D0%B0_%D1%81_%D0%BA%D0%BE%D0%BB%D1%8C%D1%86%D0%B0%D0%BC%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20medical%20X-ray%20by%20Wilhelm%20R%C3%B6ntgen%20of%20his%20wife%20Anna%20Bertha%20Ludwig%27s%20hand%20-%2018951222.jpg"
+    },
+    {
       "id": "Q11633",
       "name": "Photography",
       "category": "communication",
@@ -2408,27 +2422,6 @@
       ]
     },
     {
-      "id": "Q186050",
-      "name": "Green Revolution",
-      "category": "food-agriculture",
-      "year": 1940,
-      "endYear": 1960,
-      "tagline": "period of high agricultural technology transfer in the 1950s and 1960s",
-      "sitelinks": 66,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Green_Revolution",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Green_Revolution",
-        "zh": "https://zh.wikipedia.org/wiki/%E7%BB%BF%E8%89%B2%E9%9D%A9%E5%91%BD",
-        "es": "https://es.wikipedia.org/wiki/Revoluci%C3%B3n_verde",
-        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9volution_verte",
-        "de": "https://de.wikipedia.org/wiki/Gr%C3%BCne_Revolution",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AB%D9%88%D8%B1%D8%A9_%D8%A7%D9%84%D8%AE%D8%B6%D8%B1%D8%A7%D8%A1",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B5%D0%BB%D1%91%D0%BD%D0%B0%D1%8F_%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Irrigation1.jpg"
-    },
-    {
       "id": "Q180548",
       "name": "Neolithic Revolution",
       "category": "food-agriculture",
@@ -2718,7 +2711,7 @@
     {
       "id": "Q48469",
       "name": "Voyager 1",
-      "category": "transportation",
+      "category": "expedition",
       "year": 1977,
       "month": 9,
       "tagline": "space probe launched by NASA to study the outer Solar System, furthest spacecraft from Earth",
@@ -2739,7 +2732,7 @@
     {
       "id": "Q25271",
       "name": "International Space Station",
-      "category": "transportation",
+      "category": "landmarks",
       "year": 1998,
       "month": 11,
       "tagline": "modular space station in low Earth orbit",
@@ -2756,6 +2749,260 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20station%20pictured%20from%20the%20SpaceX%20Crew%20Dragon%205%20%28cropped%29.jpg"
+    },
+    {
+      "id": "Q53115669",
+      "name": "First solo, nonstop transatlantic flight",
+      "category": "expedition",
+      "year": 1927,
+      "month": 5,
+      "endYear": 1927,
+      "endMonth": 5,
+      "tagline": "Charles Lindbergh's flight in the Spirit of St. Louis from New York to Paris in 1927",
+      "sitelinks": 0,
+      "articleUrls": {},
+      "countries": []
+    },
+    {
+      "id": "Q951383",
+      "name": "The Portuguese discovery of the sea route to India",
+      "category": "expedition",
+      "year": 1498,
+      "tagline": "sea route to India was the first recorded trip made directly from Europe to India via the Cape of Good Hope, in the Atlantic Ocean",
+      "sitelinks": 13,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Portuguese_discovery_of_the_sea_route_to_India",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Portuguese_discovery_of_the_sea_route_to_India",
+        "es": "https://es.wikipedia.org/wiki/Descubrimiento_de_la_ruta_mar%C3%ADtima_a_la_India",
+        "fr": "https://fr.wikipedia.org/wiki/Route_des_Indes",
+        "de": "https://de.wikipedia.org/wiki/Seeweg_nach_Indien",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%83%D8%AA%D8%B4%D8%A7%D9%81_%D8%A7%D9%84%D8%A8%D8%B1%D8%AA%D8%BA%D8%A7%D9%84_%D9%84%D9%84%D8%B7%D8%B1%D9%8A%D9%82_%D8%A7%D9%84%D8%A8%D8%AD%D8%B1%D9%8A_%D8%A7%D9%84%D9%85%D8%A4%D8%AF%D9%8A_%D8%A5%D9%84%D9%89_%D8%A7%D9%84%D9%87%D9%86%D8%AF"
+      },
+      "countries": [
+        "Q45",
+        "Q668"
+      ]
+    },
+    {
+      "id": "Q3178839",
+      "name": "first voyage of James Cook",
+      "category": "expedition",
+      "year": 1768,
+      "endYear": 1771,
+      "tagline": "combined Royal Navy and Royal Society expedition to the south Pacific",
+      "sitelinks": 17,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/First_voyage_of_James_Cook",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/First_voyage_of_James_Cook",
+        "es": "https://es.wikipedia.org/wiki/Primer_viaje_de_James_Cook",
+        "fr": "https://fr.wikipedia.org/wiki/Premier_voyage_de_James_Cook",
+        "de": "https://de.wikipedia.org/wiki/Erste_Reise_von_James_Cook",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B9%D8%AB%D8%A9_%D9%83%D9%88%D9%83_%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D0%BE%D0%B5_%D0%BA%D1%80%D1%83%D0%B3%D0%BE%D1%81%D0%B2%D0%B5%D1%82%D0%BD%D0%BE%D0%B5_%D0%BF%D0%BB%D0%B0%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%94%D0%B6%D0%B5%D0%B9%D0%BC%D1%81%D0%B0_%D0%9A%D1%83%D0%BA%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Landing%20of%20Lieutenant%20James%20Cook%20at%20Botany%20Bay%2C%2029%20April%201770%20%28painting%20by%20E%20Phillips%20Fox%29.jpg"
+    },
+    {
+      "id": "Q505802",
+      "name": "Lewis and Clark Expedition",
+      "category": "expedition",
+      "year": 1804,
+      "month": 5,
+      "endYear": 1806,
+      "endMonth": 9,
+      "tagline": "American overland expedition to the Pacific coast",
+      "sitelinks": 48,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%88%98%E6%98%93%E6%96%AF%E4%B8%8E%E5%85%8B%E6%8B%89%E5%85%8B%E8%BF%9C%E5%BE%81",
+        "es": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_de_Lewis_y_Clark",
+        "fr": "https://fr.wikipedia.org/wiki/Exp%C3%A9dition_Lewis_et_Clark",
+        "de": "https://de.wikipedia.org/wiki/Lewis-und-Clark-Expedition",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D9%85%D9%84%D8%A9_%D9%84%D9%88%D9%8A%D8%B3_%D9%88%D9%83%D9%84%D8%A7%D8%B1%D9%83",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F_%D0%9B%D1%8C%D1%8E%D0%B8%D1%81%D0%B0_%D0%B8_%D0%9A%D0%BB%D0%B0%D1%80%D0%BA%D0%B0"
+      },
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lewis%20and%20clark-expedition.jpg"
+    },
+    {
+      "id": "Q1564366",
+      "name": "Second voyage of HMS Beagle",
+      "category": "expedition",
+      "year": 1831,
+      "month": 12,
+      "endYear": 1836,
+      "endMonth": 10,
+      "tagline": "exploration associated with the theory of evolution (1831-1836)",
+      "sitelinks": 19,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_voyage_of_HMS_Beagle",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Second_voyage_of_HMS_Beagle",
+        "es": "https://es.wikipedia.org/wiki/Segundo_viaje_del_HMS_Beagle",
+        "fr": "https://fr.wikipedia.org/wiki/Second_voyage_du_HMS_Beagle",
+        "de": "https://de.wikipedia.org/wiki/Zweite_Reise_der_HMS_Beagle",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B1%D8%AD%D9%84%D8%A9_%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A%D8%A9_%D9%84%D8%B3%D9%81%D9%8A%D9%86%D8%A9_%D8%A7%D9%84%D8%A8%D9%8A%D8%BA%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D1%83%D0%B3%D0%BE%D1%81%D0%B2%D0%B5%D1%82%D0%BD%D0%BE%D0%B5_%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5_%D0%A7%D0%B0%D1%80%D0%BB%D0%B7%D0%B0_%D0%94%D0%B0%D1%80%D0%B2%D0%B8%D0%BD%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/HMS%20Beagle%20by%20Conrad%20Martens.jpg"
+    },
+    {
+      "id": "Q233260",
+      "name": "Great Northern Expedition",
+      "category": "expedition",
+      "year": 1733,
+      "endYear": 1743,
+      "tagline": "research expedition in Siberia (1733–1743)",
+      "sitelinks": 18,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Northern_Expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Great_Northern_Expedition",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%A7%E5%8C%97%E6%9E%81%E6%8E%A2%E9%99%A9",
+        "es": "https://es.wikipedia.org/wiki/Segunda_expedici%C3%B3n_a_Kamchatka",
+        "fr": "https://fr.wikipedia.org/wiki/Deuxi%C3%A8me_exp%C3%A9dition_du_Kamtchatka",
+        "de": "https://de.wikipedia.org/wiki/Zweite_Kamtschatkaexpedition",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0%D1%8F_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%B0%D1%8F_%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q1162294",
+      "name": "Expedition Endurance",
+      "category": "expedition",
+      "year": 1914,
+      "month": 8,
+      "endYear": 1917,
+      "endMonth": 1,
+      "tagline": "British Antarctic expedition from 1914 to 1917",
+      "sitelinks": 32,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Imperial_Trans-Antarctic_Expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Imperial_Trans-Antarctic_Expedition",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%A7%E8%8B%B1%E5%B8%9D%E5%9C%8B%E6%A9%AB%E8%B6%8A%E5%8D%97%E6%A5%B5%E9%81%A0%E5%BE%81",
+        "es": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_Imperial_Transant%C3%A1rtica",
+        "fr": "https://fr.wikipedia.org/wiki/Exp%C3%A9dition_Endurance",
+        "de": "https://de.wikipedia.org/wiki/Endurance-Expedition",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A8%D8%B9%D8%AB%D8%A9_%D8%A7%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%B9%D8%A7%D8%A8%D8%B1%D8%A9_%D9%84%D9%84%D9%82%D8%A7%D8%B1%D8%A9_%D8%A7%D9%84%D9%82%D8%B7%D8%A8%D9%8A%D8%A9_%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%B0%D0%BD%D1%82%D0%B0%D1%80%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Endurance%20under%20full%20sail%20Frank%20Hurley%20State%20Library%20NSW%20a090012h.jpg"
+    },
+    {
+      "id": "Q973919",
+      "name": "Terra Nova Expedition",
+      "category": "expedition",
+      "year": 1910,
+      "month": 6,
+      "endYear": 1913,
+      "endMonth": 6,
+      "tagline": "Antarctic research expedition (1910–1913)",
+      "sitelinks": 37,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Terra_Nova_Expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Terra_Nova_Expedition",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%96%B0%E5%9C%B0%E6%8E%A2%E9%9A%AA",
+        "es": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_Terra_Nova",
+        "fr": "https://fr.wikipedia.org/wiki/Exp%C3%A9dition_Terra_Nova",
+        "de": "https://de.wikipedia.org/wiki/Terra-Nova-Expedition",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B9%D8%AB%D8%A9_%D8%AA%D9%8A%D8%B1%D8%A7_%D9%86%D9%88%D9%81%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%80%D1%80%D0%B0_%D0%9D%D0%BE%D0%B2%D0%B0_(%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F)"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Scottgroup.jpg"
+    },
+    {
+      "id": "Q1964751",
+      "name": "Nansen's Fram expedition (1893–1896)",
+      "category": "expedition",
+      "year": 1893,
+      "endYear": 1896,
+      "tagline": "1893–1896 attempt by Fridtjof Nansen to reach the North Pole",
+      "sitelinks": 23,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nansen%27s_Fram_expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nansen%27s_Fram_expedition",
+        "es": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_Fram",
+        "fr": "https://fr.wikipedia.org/wiki/Exp%C3%A9dition_Fram",
+        "de": "https://de.wikipedia.org/wiki/Nansens_Fram-Expedition",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B1%D8%AD%D9%84%D8%A9_%D9%81%D8%B1%D8%A7%D9%85_%D9%86%D8%A7%D9%86%D8%B3%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B6%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D0%BE%D0%BB%D1%8F%D1%80%D0%BD%D0%B0%D1%8F_%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F_(1893%E2%80%941896)"
+      },
+      "countries": [
+        "Q20"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fram%20March%201894.jpg"
+    },
+    {
+      "id": "Q644521",
+      "name": "Challenger Expedition",
+      "category": "expedition",
+      "year": 1872,
+      "month": 12,
+      "endYear": 1876,
+      "endMonth": 5,
+      "tagline": "oceanic research expedition (1872–1876)",
+      "sitelinks": 29,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Challenger_expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Challenger_expedition",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%8C%91%E6%88%B0%E8%80%85%E8%99%9F%E9%81%A0%E5%BE%81",
+        "es": "https://es.wikipedia.org/wiki/Expedici%C3%B3n_Challenger",
+        "fr": "https://fr.wikipedia.org/wiki/Exp%C3%A9dition_du_Challenger",
+        "de": "https://de.wikipedia.org/wiki/Challenger-Expedition",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B9%D8%AB%D8%A9_%D8%AA%D8%B4%D8%A7%D9%84%D9%86%D8%AC%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F_%C2%AB%D0%A7%D0%B5%D0%BB%D0%BB%D0%B5%D0%BD%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%C2%BB"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Challenger%20expedition.jpg"
+    },
+    {
+      "id": "Q184201",
+      "name": "Apollo 8",
+      "category": "expedition",
+      "year": 1968,
+      "month": 12,
+      "tagline": "second crewed flight of the United States Apollo program",
+      "sitelinks": 66,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_8",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Apollo_8",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E6%B3%A2%E7%BD%978%E5%8F%B7",
+        "es": "https://es.wikipedia.org/wiki/Apolo_8",
+        "fr": "https://fr.wikipedia.org/wiki/Apollo_8",
+        "de": "https://de.wikipedia.org/wiki/Apollo_8",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%A8%D9%88%D9%84%D9%88_8",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BF%D0%BE%D0%BB%D0%BB%D0%BE%D0%BD-8"
+      },
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%208%20Crewmembers%20-%20GPN-2000-001125.jpg"
+    },
+    {
+      "id": "Q48475",
+      "name": "Voyager 2",
+      "category": "expedition",
+      "year": 1977,
+      "month": 8,
+      "tagline": "space probe launched by NASA to study the outer Solar System, second furthest spacecraft from Earth after Voyager 1",
+      "sitelinks": 91,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_2",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Voyager_2",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E8%80%852%E5%8F%B7",
+        "es": "https://es.wikipedia.org/wiki/Voyager_2",
+        "fr": "https://fr.wikipedia.org/wiki/Voyager_2",
+        "de": "https://de.wikipedia.org/wiki/Voyager_2",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D9%88%D9%8A%D8%A7%D8%AC%D8%B1_2",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%8F%D0%B4%D0%B6%D0%B5%D1%80-2"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Voyager%20spacecraft.jpg"
     },
     {
       "id": "Q338613",
@@ -2993,6 +3240,26 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bessemer%20converter.jpg"
+    },
+    {
+      "id": "Q188631",
+      "name": "Vulcanization",
+      "category": "energy-industry",
+      "year": 1839,
+      "tagline": "chemical process for converting natural rubber or related polymers into more durable materials",
+      "sitelinks": 60,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Vulcanization",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Vulcanization",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A1%AB%E5%8C%96",
+        "es": "https://es.wikipedia.org/wiki/Vulcanizaci%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Vulcanisation",
+        "de": "https://de.wikipedia.org/wiki/Vulkanisation",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D9%84%D9%83%D9%86%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%83%D0%BB%D0%BA%D0%B0%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VulcanizationMold1941.jpg"
     },
     {
       "id": "Q80728",
