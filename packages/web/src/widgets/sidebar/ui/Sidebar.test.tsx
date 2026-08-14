@@ -41,7 +41,7 @@ test('renders the fame-score filter inputs, pre-filled with the given values', (
 });
 
 test('renders the Data Depth switch, showing Curated active for the default values', () => {
-  const { getByRole } = renderSidebar({ fameScoreValues: { people: 90, conflicts: 75, milestones: 75 } });
+  const { getByRole } = renderSidebar({ fameScoreValues: { people: 90, conflicts: 82, milestones: 82 } });
 
   expect(getByRole('button', { name: 'Curated' }).getAttribute('aria-pressed')).toBe('true');
 });
