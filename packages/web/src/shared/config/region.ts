@@ -1,7 +1,10 @@
 import type { Region, UnRegion } from '../types';
+import { LANG } from '../i18n';
 
-// Display labels for the sidebar's Region filter pills.
-export const REGION_LABELS: Record<Region, string> = {
+// Display labels for the sidebar's Region filter pills. Bilingual, picked
+// once at module load by the build-time LANG flag (shared/i18n) — same
+// pattern as occupation-domain-colors.ts's DOMAIN_LABELS.
+const REGION_LABELS_EN: Record<Region, string> = {
   europe: 'Europe',
   'east-asia': 'East Asia',
   'south-asia': 'South Asia',
@@ -9,6 +12,17 @@ export const REGION_LABELS: Record<Region, string> = {
   africa: 'Africa',
   americas: 'Americas',
 };
+
+const REGION_LABELS_RU: Record<Region, string> = {
+  europe: 'Европа',
+  'east-asia': 'Восточная Азия',
+  'south-asia': 'Южная Азия',
+  'middle-east': 'Ближний Восток',
+  africa: 'Африка',
+  americas: 'Америка',
+};
+
+export const REGION_LABELS: Record<Region, string> = LANG === 'ru' ? REGION_LABELS_RU : REGION_LABELS_EN;
 
 // Complete map from People's 22-value UN sub-region tag down to the 6-value
 // Region Conflicts/Milestones already use natively — every UnRegion

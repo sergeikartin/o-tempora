@@ -35,6 +35,22 @@ test("URL-encodes the title into the summary endpoint's path segment", async (t)
   );
 });
 
+test("requests ru.wikipedia.org's summary endpoint when lang is ru", async (t) => {
+  const originalFetch = globalThis.fetch;
+  let requestedUrl = "";
+  globalThis.fetch = (async (url: string | URL) => {
+    requestedUrl = url.toString();
+    return jsonResponse({ type: "standard", extract: "Город во Франции." }, 200);
+  }) as typeof fetch;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  await fetchWikipediaSummary("Сент-Этьен", "ru");
+
+  assert.equal(requestedUrl, "https://ru.wikipedia.org/api/rest_v1/page/summary/%D0%A1%D0%B5%D0%BD%D1%82-%D0%AD%D1%82%D1%8C%D0%B5%D0%BD");
+});
+
 test("parses a successful standard-article response", async (t) => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = (async () =>

@@ -18,6 +18,11 @@ const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 // meta.description).
 interface CuratedMilestone {
   id: string;
+  // Curator-typed, but no longer read by the pipeline — name is now sourced
+  // from Wikidata's rdfs:label (both en and ru) via the enrichment pass
+  // below, the same symmetric mechanism tagline already used. Kept in the
+  // curated file and this shape rather than deleted, same precedent as
+  // Conflicts' own unused curated `name`.
   name: string;
   category: MilestoneCategory;
 }
@@ -28,7 +33,14 @@ interface CuratedMilestonesFile {
 
 export interface EnrichedMilestone {
   id: string;
-  name: string;
+  // Wikidata's rdfs:label(en) — absent only when the QID itself couldn't be
+  // resolved; Output drops the row when this is missing (see
+  // write-datasets.ts's buildMilestones).
+  name?: string;
+  // Wikidata's rdfs:label(ru) — absent whenever no Russian label resolves.
+  // Output falls back to `name` (English) per field, at output time, when
+  // building the Russian dataset file.
+  nameRu?: string;
   category: MilestoneCategory;
   // Absent means DATE_PROPERTIES' COALESCE (queries/milestones-enrichment.ts)
   // found no claim on any of the 10 candidate properties for this QID —
@@ -50,6 +62,9 @@ export interface EnrichedMilestone {
   // validateMilestoneRow), no fallback to the curated file's old text, the
   // same "no fallback, drop instead" behavior Conflicts/People already have.
   tagline?: string;
+  // Russian schema:description binding, same fallback-at-output-time
+  // contract as nameRu above.
+  taglineRu?: string;
   // Absent means the enrichment pass couldn't resolve this QID (e.g. a
   // stale/redirected id) — Output drops the row rather than guessing (see
   // write-datasets.ts's buildMilestones).
@@ -102,12 +117,14 @@ function isEnrichedMilestone(value: unknown): value is EnrichedMilestone {
   const candidate = value as Record<string, unknown>;
   return (
     typeof candidate.id === "string" &&
-    typeof candidate.name === "string" &&
+    (candidate.name === undefined || typeof candidate.name === "string") &&
+    (candidate.nameRu === undefined || typeof candidate.nameRu === "string") &&
     (candidate.year === undefined || typeof candidate.year === "number") &&
     (candidate.month === undefined || typeof candidate.month === "number") &&
     (candidate.endYear === undefined || typeof candidate.endYear === "number") &&
     (candidate.endMonth === undefined || typeof candidate.endMonth === "number") &&
     (candidate.tagline === undefined || typeof candidate.tagline === "string") &&
+    (candidate.taglineRu === undefined || typeof candidate.taglineRu === "string") &&
     typeof candidate.category === "string" &&
     (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category) &&
     (candidate.sitelinks === undefined || typeof candidate.sitelinks === "number") &&
@@ -134,12 +151,15 @@ function extractQid(uri: string): string | undefined {
 }
 
 interface EnrichmentFields {
+  name?: string;
+  nameRu?: string;
   sitelinks?: number;
   wikipediaUrl?: string;
   articleUrls: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
   image?: string;
   tagline?: string;
+  taglineRu?: string;
   year?: number;
   month?: number;
   endYear?: number;
@@ -147,18 +167,20 @@ interface EnrichmentFields {
 }
 
 // Reads the checked-in curated list (data/raw/milestones-curated.raw.json) and
-// backfills sitelinks/wikipediaUrl/country/image/tagline/date via a batched
-// per-QID SPARQL pass (same VALUES-clause pattern as
-// fetch-reigns.ts/fetch-taglines.ts) — tagline and date are live-fetched
-// here, not read from the curated file, matching how Conflicts already
-// sources them (tagline/description split, and no curated year/dateProperty/
-// source field to begin with as of the taxonomy-expansion merge).
+// backfills sitelinks/wikipediaUrl/country/image/name/tagline/date via a
+// batched per-QID SPARQL pass (same VALUES-clause pattern as
+// fetch-reigns.ts/fetch-taglines.ts) — tagline, name, and date are all
+// live-fetched here, not read from the curated file, matching how Conflicts
+// already sources them (tagline/description split, and no curated year/
+// dateProperty/source field to begin with as of the taxonomy-expansion
+// merge; name follows the same per-language rdfs:label treatment
+// Conflicts uses).
 export async function fetchMilestonesEnrichment(): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "milestones-curated.raw.json");
   const curated = validateCuratedMilestonesFile(JSON.parse(await readFile(curatedPath, "utf8")));
   const ids = curated.milestones.map((milestone) => milestone.id);
 
-  console.log(`Fetching sitelinks/article/country/image/tagline/date enrichment for ${ids.length} curated milestones...`);
+  console.log(`Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated milestones...`);
   const result = await batchedSparqlFetch(ids, buildMilestonesEnrichmentQuery);
 
   const enrichmentById = new Map<string, EnrichmentFields>();
@@ -185,7 +207,10 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
     // other consumer of EnrichedMilestone already expects wikipediaUrl.
     if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
     if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
+    if (entry.name === undefined && row.nameEn?.value) entry.name = row.nameEn.value;
+    if (entry.nameRu === undefined && row.nameRu?.value) entry.nameRu = row.nameRu.value;
     if (entry.tagline === undefined && row.tagline?.value) entry.tagline = row.tagline.value;
+    if (entry.taglineRu === undefined && row.taglineRu?.value) entry.taglineRu = row.taglineRu.value;
     const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
     if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
 
@@ -203,13 +228,15 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
     const enrichment = enrichmentById.get(milestone.id);
     return {
       id: milestone.id,
-      name: milestone.name,
+      name: enrichment?.name,
+      nameRu: enrichment?.nameRu,
       category: milestone.category,
       year: enrichment?.year,
       month: enrichment?.month,
       endYear: enrichment?.endYear,
       endMonth: enrichment?.endMonth,
       tagline: enrichment?.tagline,
+      taglineRu: enrichment?.taglineRu,
       sitelinks: enrichment?.sitelinks,
       wikipediaUrl: enrichment?.wikipediaUrl,
       articleUrls: enrichment?.articleUrls ?? {},

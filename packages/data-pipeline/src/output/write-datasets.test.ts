@@ -128,6 +128,26 @@ test("buildPeople omits image/imageAttribution entirely (not undefined-valued ke
   assert.equal("imageAttribution" in (people[0] as object), false);
 });
 
+test("buildPeople drops a person with no name (the Wikidata label enrichment pass couldn't resolve one)", () => {
+  const rows = [taggedPerson({ name: undefined })];
+  const { people, report } = buildPeople(rows);
+  assert.equal(people.length, 0);
+  assert.equal(report.reasons["missing name"], 1);
+});
+
+test("buildPeople uses the Russian name/tagline when lang is ru and a Russian value resolved, and falls back to English otherwise", () => {
+  const ru = buildPeople(
+    [taggedPerson({ name: "Ada Lovelace", nameRu: "Ада Лавлейс", tagline: "English mathematician", taglineRu: "английский математик" })],
+    "ru",
+  );
+  assert.equal(ru.people[0]?.name, "Ада Лавлейс");
+  assert.equal(ru.people[0]?.tagline, "английский математик");
+
+  const ruFallback = buildPeople([taggedPerson({ nameRu: undefined, taglineRu: undefined })], "ru");
+  assert.equal(ruFallback.people[0]?.name, "Ada Lovelace");
+  assert.equal(ruFallback.people[0]?.tagline, "English mathematician");
+});
+
 test("buildConflicts builds a Conflict (with period.end) when the row resolved both a start and end date, regardless of category", () => {
   const conflict = taggedConflict({ id: "Q3", category: "revolution", year: 1789, endYear: 1799 });
   const { entries } = buildConflicts([conflict]);
@@ -194,6 +214,59 @@ test("buildConflicts carries month through to period.start/end and at when the r
   assert.deepEqual(eventEntry.at, { year: 1863, month: 7 });
 });
 
+test("buildConflicts defaults to English name/tagline when no lang argument is passed", () => {
+  const { entries } = buildConflicts([
+    taggedConflict({ label: "French Revolution", labelRu: "Великая французская революция", tagline: "revolution in France", taglineRu: "революция во Франции" }),
+  ]);
+  assert.equal(entries[0]?.name, "French Revolution");
+  assert.equal(entries[0]?.tagline, "revolution in France");
+});
+
+test("buildConflicts uses the Russian name/tagline when lang is ru and a Russian value resolved", () => {
+  const { entries } = buildConflicts(
+    [taggedConflict({ label: "French Revolution", labelRu: "Великая французская революция", tagline: "revolution in France", taglineRu: "революция во Франции" })],
+    "ru",
+  );
+  assert.equal(entries[0]?.name, "Великая французская революция");
+  assert.equal(entries[0]?.tagline, "революция во Франции");
+});
+
+test("buildConflicts falls back to the English name/tagline when lang is ru but no Russian value resolved", () => {
+  const { entries } = buildConflicts(
+    [taggedConflict({ label: "Peloponnesian War", labelRu: undefined, tagline: "war fought between Athens and Sparta", taglineRu: undefined })],
+    "ru",
+  );
+  assert.equal(entries[0]?.name, "Peloponnesian War");
+  assert.equal(entries[0]?.tagline, "war fought between Athens and Sparta");
+});
+
+test("buildConflicts uses the Russian description when lang is ru and it resolved, and falls back to English otherwise", () => {
+  const ru = buildConflicts(
+    [taggedConflict({ description: "A war in Greece.", descriptionRu: "Война в Греции." })],
+    "ru",
+  );
+  assert.equal(ru.entries[0]?.description, "Война в Греции.");
+
+  const ruFallback = buildConflicts(
+    [taggedConflict({ description: "A war in Greece.", descriptionRu: undefined })],
+    "ru",
+  );
+  assert.equal(ruFallback.entries[0]?.description, "A war in Greece.");
+});
+
+test("buildConflicts includes/drops the same rows regardless of lang — inclusion is gated on English fields only", () => {
+  const rows = [
+    taggedConflict({ id: "Q1" }),
+    taggedConflict({ id: "Q2", label: "", labelRu: "Что-то" }), // missing English name, has Russian — still dropped
+  ];
+  const en = buildConflicts(rows, "en");
+  const ru = buildConflicts(rows, "ru");
+  assert.deepEqual(en.entries.map((e) => e.id), ["Q1"]);
+  assert.deepEqual(ru.entries.map((e) => e.id), ["Q1"]);
+  assert.equal(en.report.reasons["missing name"], 1);
+  assert.equal(ru.report.reasons["missing name"], 1);
+});
+
 test("buildConflicts omits parentId entirely when absent (a Container or standalone row)", () => {
   const { entries } = buildConflicts([taggedConflict({ parentId: undefined })]);
   assert.equal("parentId" in (entries[0] as object), false);
@@ -251,6 +324,19 @@ test("buildConflicts drops a chain exceeding 3 levels deep", () => {
   assert.equal(entries.length, 3);
   assert.ok(!entries.some((entry) => entry.id === "Q4"));
   assert.equal(report.reasons["nesting depth exceeded"], 1);
+});
+
+test("buildMilestones uses the Russian name/tagline when lang is ru and a Russian value resolved, and falls back to English otherwise", () => {
+  const ru = buildMilestones(
+    [taggedMilestone({ label: "Penicillin", labelRu: "Пенициллин", tagline: "1928 discovery", taglineRu: "открытие 1928 года" })],
+    "ru",
+  );
+  assert.equal(ru.milestones[0]?.name, "Пенициллин");
+  assert.equal(ru.milestones[0]?.tagline, "открытие 1928 года");
+
+  const ruFallback = buildMilestones([taggedMilestone({ label: "Penicillin", labelRu: undefined, taglineRu: undefined })], "ru");
+  assert.equal(ruFallback.milestones[0]?.name, "Penicillin");
+  assert.equal(ruFallback.milestones[0]?.tagline, "1928 discovery of the antibiotic");
 });
 
 test("buildMilestones passes through category, regionTags, and at.year", () => {

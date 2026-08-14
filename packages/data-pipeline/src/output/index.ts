@@ -22,19 +22,40 @@ async function writeDataset(fileName: string, data: unknown): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  const { people, report: peopleReport } = buildPeople(transformPeople());
+  const peopleRows = transformPeople();
+  const { people, report: peopleReport } = buildPeople(peopleRows, "en");
   logReport("people.json", people.length, peopleReport);
   await writeDataset("people.json", people);
 
-  const { entries: conflicts, report: conflictsReport } = buildConflicts(transformConflicts());
+  const { people: peopleRu, report: peopleRuReport } = buildPeople(peopleRows, "ru");
+  logReport("people.ru.json", peopleRu.length, peopleRuReport);
+  await writeDataset("people.ru.json", peopleRu);
+
+  // Both language builds resolve from the same rows — buildConflicts
+  // itself decides inclusion off English fields regardless of `lang`, so
+  // calling it twice on identical input is what keeps the two files'
+  // entity sets identical (see write-datasets.ts's Lang doc comment).
+  const conflictRows = transformConflicts();
+  const { entries: conflicts, report: conflictsReport } = buildConflicts(conflictRows, "en");
   logReport("conflicts.json", conflicts.length, conflictsReport);
   await writeDataset("conflicts.json", conflicts);
 
-  const { milestones, report: milestonesReport } = buildMilestones(transformMilestones());
+  const { entries: conflictsRu, report: conflictsRuReport } = buildConflicts(conflictRows, "ru");
+  logReport("conflicts.ru.json", conflictsRu.length, conflictsRuReport);
+  await writeDataset("conflicts.ru.json", conflictsRu);
+
+  const milestoneRows = transformMilestones();
+  const { milestones, report: milestonesReport } = buildMilestones(milestoneRows, "en");
   logReport("milestones.json", milestones.length, milestonesReport);
   await writeDataset("milestones.json", milestones);
 
-  console.log(`Wrote people.json, conflicts.json, and milestones.json to ${DATA_DIR}`);
+  const { milestones: milestonesRu, report: milestonesRuReport } = buildMilestones(milestoneRows, "ru");
+  logReport("milestones.ru.json", milestonesRu.length, milestonesRuReport);
+  await writeDataset("milestones.ru.json", milestonesRu);
+
+  console.log(
+    `Wrote people.json, people.ru.json, conflicts.json, conflicts.ru.json, milestones.json, and milestones.ru.json to ${DATA_DIR}`,
+  );
   console.log("Run `npm run publish-data --workspace packages/data-pipeline` to publish to packages/shared-types.");
 }
 

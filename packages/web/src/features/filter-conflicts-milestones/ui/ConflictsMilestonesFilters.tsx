@@ -4,6 +4,7 @@ import {
   CONFLICTS_MILESTONES_FILTER_LABELS,
   type ConflictsMilestonesFilterValue,
 } from '../../../shared/config';
+import { STRINGS } from '../../../shared/i18n';
 import styles from './ConflictsMilestonesFilters.module.css';
 
 interface ConflictsMilestonesFiltersProps {
@@ -32,7 +33,7 @@ export function ConflictsMilestonesFilters({ selectedValues, onToggleValue }: Co
               type="button"
               className={isActive ? `${styles.pill} ${styles.pillActive}` : styles.pill}
               aria-pressed={isActive}
-              aria-label={`Filter by ${label}`}
+              aria-label={STRINGS.filterByLabel(label)}
               onClick={() => onToggleValue(value)}
             >
               <span

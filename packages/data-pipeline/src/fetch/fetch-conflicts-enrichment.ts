@@ -11,6 +11,11 @@ const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 
 export interface CuratedConflict {
   id: string;
+  // Curator-typed, but no longer read by the pipeline — name is now sourced
+  // from Wikidata's rdfs:label (both en and ru) via the enrichment pass
+  // below, the same symmetric mechanism tagline already used. Kept in the
+  // curated file and this shape rather than deleted, same precedent as
+  // Discoveries' old curated `description`.
   name: string;
   category: ConflictCategory;
   // Another curated row's id — always resolves to a Conflict, capped at 3 levels
@@ -24,7 +29,15 @@ interface CuratedConflictsFile {
 
 export interface EnrichedConflict {
   id: string;
-  name: string;
+  // Wikidata's rdfs:label(en) — absent only when the QID itself couldn't be
+  // resolved (same "enrichment failed" case sitelinks/tagline already
+  // handle); Output drops the row when this is missing (see
+  // write-datasets.ts's buildConflicts).
+  name?: string;
+  // Wikidata's rdfs:label(ru) — absent whenever no Russian label resolves.
+  // Output falls back to `name` (English) per field, at output time, when
+  // building the Russian dataset file.
+  nameRu?: string;
   category: ConflictCategory;
   parentId?: string;
   // Absent means the enrichment pass couldn't resolve this QID (e.g. a
@@ -42,6 +55,9 @@ export interface EnrichedConflict {
   // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim.
   image?: string;
   tagline?: string;
+  // Russian schema:description binding, same fallback-at-output-time
+  // contract as nameRu above.
+  taglineRu?: string;
   // Wikidata's own claim precision decides whether month is present (see
   // wikidata-date.ts's MONTH_OR_FINER_PRECISION) — never defaulted to
   // January to paper over an unknown month.
@@ -88,7 +104,8 @@ function isEnrichedConflict(value: unknown): value is EnrichedConflict {
   const candidate = value as Record<string, unknown>;
   return (
     typeof candidate.id === "string" &&
-    typeof candidate.name === "string" &&
+    (candidate.name === undefined || typeof candidate.name === "string") &&
+    (candidate.nameRu === undefined || typeof candidate.nameRu === "string") &&
     typeof candidate.category === "string" &&
     (CONFLICT_CATEGORIES as readonly string[]).includes(candidate.category) &&
     (candidate.parentId === undefined || typeof candidate.parentId === "string") &&
@@ -99,6 +116,7 @@ function isEnrichedConflict(value: unknown): value is EnrichedConflict {
     candidate.countries.every((country) => typeof country === "string") &&
     (candidate.image === undefined || typeof candidate.image === "string") &&
     (candidate.tagline === undefined || typeof candidate.tagline === "string") &&
+    (candidate.taglineRu === undefined || typeof candidate.taglineRu === "string") &&
     (candidate.year === undefined || typeof candidate.year === "number") &&
     (candidate.month === undefined || typeof candidate.month === "number") &&
     (candidate.endYear === undefined || typeof candidate.endYear === "number") &&
@@ -121,12 +139,15 @@ function extractQid(uri: string): string | undefined {
 }
 
 interface EnrichmentFields {
+  name?: string;
+  nameRu?: string;
   sitelinks?: number;
   wikipediaUrl?: string;
   articleUrls: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
   image?: string;
   tagline?: string;
+  taglineRu?: string;
   year?: number;
   month?: number;
   endYear?: number;
@@ -134,17 +155,18 @@ interface EnrichmentFields {
 }
 
 // Reads the checked-in curated list (data/raw/conflicts-curated.raw.json) and
-// backfills sitelinks/wikipediaUrl/country/image/tagline/dates via a
+// backfills sitelinks/wikipediaUrl/country/image/name/tagline/dates via a
 // batched per-QID SPARQL pass (same VALUES-clause pattern as
 // fetch-milestones-enrichment.ts). Unlike Milestones, tagline and dates
-// are never curator-authored here — the curated file carries only
-// id/name/category/parentId (see conflicts-curated.raw.json's meta.description).
+// are never curator-authored here, and name no longer is either — the
+// curated file's own `name` is left unused, only id/category/parentId are
+// still read from it (see conflicts-curated.raw.json's meta.description).
 export async function fetchConflictsEnrichment(): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "conflicts-curated.raw.json");
   const curated = validateCuratedConflictsFile(JSON.parse(await readFile(curatedPath, "utf8")));
   const ids = curated.conflicts.map((conflict) => conflict.id);
 
-  console.log(`Fetching sitelinks/article/country/image/tagline/date enrichment for ${ids.length} curated conflicts...`);
+  console.log(`Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated conflicts...`);
   const result = await batchedSparqlFetch(ids, buildConflictsEnrichmentQuery);
 
   const enrichmentById = new Map<string, EnrichmentFields>();
@@ -171,7 +193,10 @@ export async function fetchConflictsEnrichment(): Promise<void> {
     // other consumer of EnrichedConflict already expects wikipediaUrl.
     if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
     if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
+    if (entry.name === undefined && row.nameEn?.value) entry.name = row.nameEn.value;
+    if (entry.nameRu === undefined && row.nameRu?.value) entry.nameRu = row.nameRu.value;
     if (entry.tagline === undefined && row.tagline?.value) entry.tagline = row.tagline.value;
+    if (entry.taglineRu === undefined && row.taglineRu?.value) entry.taglineRu = row.taglineRu.value;
     const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
     if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
 
@@ -189,7 +214,8 @@ export async function fetchConflictsEnrichment(): Promise<void> {
     const enrichment = enrichmentById.get(conflict.id);
     return {
       id: conflict.id,
-      name: conflict.name,
+      name: enrichment?.name,
+      nameRu: enrichment?.nameRu,
       category: conflict.category,
       parentId: conflict.parentId,
       sitelinks: enrichment?.sitelinks,
@@ -198,6 +224,7 @@ export async function fetchConflictsEnrichment(): Promise<void> {
       countries: enrichment?.countries ?? [],
       image: enrichment?.image,
       tagline: enrichment?.tagline,
+      taglineRu: enrichment?.taglineRu,
       year: enrichment?.year,
       month: enrichment?.month,
       endYear: enrichment?.endYear,
