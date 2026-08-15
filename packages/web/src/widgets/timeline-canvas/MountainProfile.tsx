@@ -41,13 +41,6 @@ interface MountainProfileProps {
   // free to (and does) glide the lanes toward, since there's no pointer to
   // lag behind.
   onScrollLeftJump: (scrollLeft: number) => void;
-  // Mirrors this track's own hover state up to TimelineCanvas, which draws a
-  // vertical guide line through the lanes at that year — lets the user
-  // roughly target a date from the full-history density profile even when
-  // it's outside the lanes' current zoom/pan viewport. Fired on every
-  // pointermove (including while dragging the viewport rect — see
-  // handleTrackPointerMove) and cleared (null) on pointerleave.
-  onHoverYearChange?: (year: number | null) => void;
 }
 
 interface HoverInfo {
@@ -74,7 +67,6 @@ export function MountainProfile({
   scrollLeft,
   onScrollLeftChange,
   onScrollLeftJump,
-  onHoverYearChange,
 }: MountainProfileProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const rectDragRef = useRef<{ pointerX: number; startScrollLeft: number; trackWidthPx: number } | null>(null);
@@ -192,19 +184,16 @@ export function MountainProfile({
     if (rect.width <= 0) return;
     const xRatio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
     const bucketIndex = bucketIndexForRatio(xRatio);
-    const year = profile.years[bucketIndex] ?? 0;
     setHover({
       xRatio,
-      year,
+      year: profile.years[bucketIndex] ?? 0,
       peopleDepth: profile.peopleDepth[bucketIndex] ?? 0,
       eventsDepth: profile.eventsDepth[bucketIndex] ?? 0,
     });
-    onHoverYearChange?.(year);
   }
 
   function handleTrackPointerLeave() {
     setHover(null);
-    onHoverYearChange?.(null);
   }
 
   return (

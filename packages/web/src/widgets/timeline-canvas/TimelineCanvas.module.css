@@ -197,26 +197,6 @@
   left: 0;
 }
 
-/* Vertical guide line through all four lanes/axes at the year
-   MountainProfile.tsx is currently hovered at (TimelineCanvas.tsx's
-   hoverYear/hoverGuideX) — lets a hover on the full-history density profile
-   below roughly target a date up here, even when that date is outside the
-   current zoom/pan viewport (it just scrolls into view along with
-   everything else, like a mark would, since positioning is left: <px>
-   within this same totalWidth-wide coordinate space). Last child in source
-   order (unlike .gridlineLayer, which is first so lane content paints over
-   it) so it draws on top of the lanes it's meant to mark up. */
-.hoverGuideLine {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 1px;
-  pointer-events: none;
-  z-index: 1;
-  background-color: #8a2a1a; /* color-accent-selected, mirrors MountainProfile.module.css's tooltip/rect accent */
-  opacity: 0.55;
-}
-
 /* The old custom scrollbar (.scrollbarTrack/.scrollbarThumb) that used to
    render here is gone — replaced by MountainProfile.tsx's own density
    minimap (ADR 0004), which owns its own styling in
