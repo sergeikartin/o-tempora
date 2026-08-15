@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import type { ConflictEntry, Milestone } from '../../shared/types';
 import { CONFLICT_COLOR } from '../../shared/config';
 import {
-  assignRows,
+  compactRows,
   conflictPixelInterval,
   mapConflicts,
   mapMilestones,
@@ -16,7 +16,6 @@ import {
   MILESTONES_LABEL_LINE_HEIGHT_PX,
   MILESTONES_LABEL_MAX_WIDTH_PX,
   MILESTONES_MARKER_LABEL_GAP,
-  MIN_ROW_GAP_PX,
   PERIOD_LINE_HEIGHT,
   POINT_RADIUS,
   ROW_GAP,
@@ -55,6 +54,12 @@ interface ConflictsMilestonesLaneProps {
   conflicts: ConflictEntry[];
   milestones: Milestone[];
   xScale: d3.ScaleLinear<number, number>;
+  // A conflict/milestone's permanent row identity, computed once against
+  // the full (unfiltered) datasets — see map-to-items.ts's
+  // computeStaticConflictsMilestonesRows. Keeps a row stable across every
+  // filter/zoom change instead of being re-derived from whatever's
+  // currently visible.
+  staticRowOf: Map<string, number>;
 }
 
 // Conflicts and Milestones share one below-marker row-stacking pass — the
@@ -78,7 +83,7 @@ interface ConflictsMilestonesLaneProps {
 // color (CONFLICT_COLOR); Milestones keep their own category palette either
 // way — color, not shape, is what tells a Conflict marker apart from a
 // Milestone one now that they can share a row.
-export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: ConflictsMilestonesLaneProps) {
+export function ConflictsMilestonesLane({ conflicts, milestones, xScale, staticRowOf }: ConflictsMilestonesLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   const conflictItems = useMemo(() => mapConflicts(conflicts), [conflicts]);
@@ -92,18 +97,13 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale }: Confl
     return map;
   }, [milestoneItems]);
 
-  const rowOfId = useMemo(() => {
-    const conflictExtents = conflictItems.map((item) => {
-      const { start, end } = conflictPixelInterval(item, xScale);
-      return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
-    });
-    const milestoneExtents = milestoneItems.map((item) => {
-      const lines = milestoneLinesById.get(item.id) ?? [item.name];
-      const { start, end } = milestonePixelInterval(item, lines, xScale);
-      return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
-    });
-    return assignRows([...conflictExtents, ...milestoneExtents], MIN_ROW_GAP_PX);
-  }, [conflictItems, milestoneItems, milestoneLinesById, xScale]);
+  // compactRows, not a fresh assignRows call — see map-to-items.ts's
+  // comment on why re-running assignRows against the currently-filtered set
+  // would let two unrelated items swap relative rows.
+  const rowOfId = useMemo(
+    () => compactRows([...conflictItems.map((item) => item.id), ...milestoneItems.map((item) => item.id)], staticRowOf),
+    [conflictItems, milestoneItems, staticRowOf],
+  );
 
   // Row height is dynamic — the tallest label actually assigned to a row
   // (a wrapped multi-line Milestone label, or a single-line Conflict label)

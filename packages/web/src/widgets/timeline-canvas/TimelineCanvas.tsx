@@ -24,6 +24,8 @@ import {
   zoomOut as computeZoomOut,
 } from './options';
 import {
+  computeStaticConflictsMilestonesRows,
+  computeStaticPersonRows,
   filterByFameScore,
   filterByMilestoneCategoryGroup,
   filterByOccupationDomain,
@@ -202,6 +204,18 @@ export function TimelineCanvas({
   const filteredCounts = useMemo<FilteredCounts>(
     () => ({ people: filteredPeople.length, conflicts: filteredConflicts.length, milestones: filteredMilestones.length }),
     [filteredPeople, filteredConflicts, filteredMilestones],
+  );
+
+  // Each item's permanent row identity, computed once against the full,
+  // unfiltered datasets (people/conflicts/milestones are stable references
+  // for the whole session, so these only ever run once) — see
+  // map-to-items.ts's computeStaticPersonRows/
+  // computeStaticConflictsMilestonesRows for why this can't be derived from
+  // filteredPeople/filteredConflicts/filteredMilestones instead.
+  const staticPersonRowOf = useMemo(() => computeStaticPersonRows(people), [people]);
+  const staticConflictsMilestonesRowOf = useMemo(
+    () => computeStaticConflictsMilestonesRows(conflicts, milestones),
+    [conflicts, milestones],
   );
   // useLayoutEffect (not useEffect) so a filter change's new counts land in
   // the Sidebar's DOM before the browser paints, avoiding a one-frame flash
@@ -409,13 +423,18 @@ export function TimelineCanvas({
           <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
         </div>
         <div ref={peopleLaneRef} className={styles.peopleLane}>
-          <PeopleLane people={filteredPeople} xScale={scale} />
+          <PeopleLane people={filteredPeople} xScale={scale} staticRowOf={staticPersonRowOf} />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
           <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
         </div>
         <div ref={conflictsMilestonesLaneRef} className={styles.conflictsMilestonesLane}>
-          <ConflictsMilestonesLane conflicts={filteredConflicts} milestones={filteredMilestones} xScale={scale} />
+          <ConflictsMilestonesLane
+            conflicts={filteredConflicts}
+            milestones={filteredMilestones}
+            xScale={scale}
+            staticRowOf={staticConflictsMilestonesRowOf}
+          />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
           <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />

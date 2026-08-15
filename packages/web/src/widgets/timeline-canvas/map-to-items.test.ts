@@ -1,6 +1,9 @@
 import { test, expect } from 'vitest';
 import {
   assignRows,
+  compactRows,
+  computeStaticConflictsMilestonesRows,
+  computeStaticPersonRows,
   filterByFameScore,
   filterByMilestoneCategoryGroup,
   filterByOccupationDomain,
@@ -437,4 +440,56 @@ test("assignRows lets a lower-fame item slot in before an already-placed higher-
   ]);
   expect(rows.get('famous')).toBe(0);
   expect(rows.get('obscure')).toBe(0);
+});
+
+// computeStaticPersonRows / computeStaticConflictsMilestonesRows / compactRows
+// — the static, filter/zoom-invariant row identity every lane derives its
+// own live per-render rows from (see options.ts's REFERENCE_PIXELS_PER_YEAR
+// and PeopleLane/ConflictsMilestonesLane's own use of these).
+
+test('computeStaticPersonRows gives two time-overlapping people different rows, the more famous one row 0', () => {
+  const famous: Person = { ...person, id: 'Q-famous', fameScore: 999 };
+  const obscure: Person = { ...person, id: 'Q-obscure', fameScore: 1 };
+  const rows = computeStaticPersonRows([famous, obscure]);
+  expect(rows.get('Q-famous')).toBe(0);
+  expect(rows.get('Q-obscure')).not.toBe(0);
+});
+
+test('computeStaticConflictsMilestonesRows packs a non-overlapping Conflict and Milestone into the same row', () => {
+  const rows = computeStaticConflictsMilestonesRows([conflictWithEndYear], [milestone]);
+  expect(rows.get(conflictWithEndYear.id)).toBe(rows.get(milestone.id));
+});
+
+test('compactRows re-indexes to consecutive integers starting at 0, in the same relative order as the static rows', () => {
+  const staticRowOf = new Map([
+    ['a', 2],
+    ['b', 5],
+    ['c', 9],
+  ]);
+  const compacted = compactRows(['a', 'b', 'c'], staticRowOf);
+  expect(compacted.get('a')).toBe(0);
+  expect(compacted.get('b')).toBe(1);
+  expect(compacted.get('c')).toBe(2);
+});
+
+test('compactRows closes a gap left by a filtered-out item without reordering the remaining two', () => {
+  const staticRowOf = new Map([
+    ['a', 2],
+    ['b', 5],
+    ['c', 9],
+  ]);
+  const compacted = compactRows(['a', 'c'], staticRowOf); // 'b' filtered out
+  expect(compacted.get('a')).toBe(0);
+  expect(compacted.get('c')).toBe(1);
+});
+
+test('compactRows keeps two items that share the same static row in the same compacted row', () => {
+  const staticRowOf = new Map([
+    ['a', 0],
+    ['b', 0],
+    ['c', 3],
+  ]);
+  const compacted = compactRows(['a', 'b', 'c'], staticRowOf);
+  expect(compacted.get('a')).toBe(compacted.get('b'));
+  expect(compacted.get('c')).not.toBe(compacted.get('a'));
 });
