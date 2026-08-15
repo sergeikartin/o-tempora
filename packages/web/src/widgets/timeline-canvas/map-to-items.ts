@@ -12,7 +12,16 @@ import type {
 import { MILESTONE_CATEGORY_TO_GROUP } from '../../shared/types';
 import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
 import type { ConflictsMilestonesFilterValue } from '../../shared/config';
-import { MIN_ROW_GAP_YEARS, POINT_RADIUS, estimateLabelWidthPx } from './options';
+import {
+  buildXScale,
+  MILESTONES_LABEL_MAX_WIDTH_PX,
+  MIN_ROW_GAP_PX,
+  MIN_ROW_GAP_YEARS,
+  POINT_RADIUS,
+  REFERENCE_PIXELS_PER_YEAR,
+  estimateLabelWidthPx,
+  wrapLabelLines,
+} from './options';
 
 /** Pixel-space [start, end] interval a value maps to under a linear scale. */
 export interface PixelInterval {
@@ -310,4 +319,58 @@ export function assignRows(items: RowInterval[], gap: number = MIN_ROW_GAP_YEARS
   }
 
   return rowOfId;
+}
+
+// Static per-item row identity: unlike a lane's own live per-render
+// assignRows call (which packs whatever's currently filtered, at the
+// live zoom), these run once against the *entire* dataset at a fixed
+// REFERENCE_PIXELS_PER_YEAR — so a given person/conflict/milestone's row
+// never changes because of a filter or a zoom level, only because the
+// underlying dataset itself changed (a pipeline rebuild, not anything a
+// user does in-session). Callers own memoizing this once per dataset
+// (TimelineCanvas keys it off the full, unfiltered people/conflicts/
+// milestones props, which are stable references for the whole session)
+// and pass the result down to each lane, which then narrows it to
+// whatever's currently visible via compactRows below.
+export function computeStaticPersonRows(people: Person[]): Map<string, number> {
+  const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
+  const items = mapPeople(people).map((item) => {
+    const { start, end } = personPixelInterval(item, scale);
+    return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+  });
+  return assignRows(items, MIN_ROW_GAP_PX);
+}
+
+// Conflicts and Milestones share one row-packing pass (see
+// ConflictsMilestonesLane's own comment on why), so their static row
+// identity has to be computed together too, from both full datasets at
+// once.
+export function computeStaticConflictsMilestonesRows(conflicts: ConflictEntry[], milestones: Milestone[]): Map<string, number> {
+  const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
+  const conflictItems = mapConflicts(conflicts).map((item) => {
+    const { start, end } = conflictPixelInterval(item, scale);
+    return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+  });
+  const milestoneItems = mapMilestones(milestones).map((item) => {
+    const lines = item.isPoint ? wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX) : [];
+    const { start, end } = milestonePixelInterval(item, lines, scale);
+    return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+  });
+  return assignRows([...conflictItems, ...milestoneItems], MIN_ROW_GAP_PX);
+}
+
+// Narrows a static row map (computed once against the full dataset, see
+// above) down to just the currently-visible `ids`, closing gaps left by
+// whatever got filtered out. This re-indexes to consecutive integers
+// starting at 0 in the *same relative order* as the static rows, so it
+// never reorders two simultaneously-visible items relative to each other
+// — it only ever shifts the whole set uniformly as gaps open/close. That's
+// the key difference from re-running assignRows itself on a changed input
+// set: assignRows' greedy first-fit choice is sensitive to exactly which
+// items are present, so adding or removing one item can genuinely swap two
+// unrelated items' relative row order — compactRows can't, by construction.
+export function compactRows(ids: string[], staticRowOf: Map<string, number>): Map<string, number> {
+  const distinctStaticRows = [...new Set(ids.map((id) => staticRowOf.get(id) ?? 0))].sort((a, b) => a - b);
+  const compactedRowOfStaticRow = new Map(distinctStaticRows.map((staticRow, index) => [staticRow, index]));
+  return new Map(ids.map((id) => [id, compactedRowOfStaticRow.get(staticRowOf.get(id) ?? 0) ?? 0]));
 }

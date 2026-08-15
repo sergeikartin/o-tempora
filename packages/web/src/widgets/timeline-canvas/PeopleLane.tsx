@@ -2,11 +2,10 @@ import { useEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { Person } from '../../shared/types';
 import { DOMAIN_COLORS } from '../../shared/config';
-import { assignRows, mapPeople, personPixelInterval } from './map-to-items';
+import { compactRows, mapPeople } from './map-to-items';
 import {
   estimateLabelWidthPx,
   HIT_AREA_PADDING_PX,
-  MIN_ROW_GAP_PX,
   PERIOD_LINE_HEIGHT,
   personLabelYForRow,
   personLaneHeight,
@@ -28,6 +27,11 @@ interface PersonLayout {
 interface PeopleLaneProps {
   people: Person[];
   xScale: d3.ScaleLinear<number, number>;
+  // A person's permanent row identity, computed once against the full
+  // (unfiltered) dataset — see map-to-items.ts's computeStaticPersonRows.
+  // Keeps a person's row stable across every filter/zoom change instead of
+  // being re-derived from whatever's currently visible.
+  staticRowOf: Map<string, number>;
 }
 
 // A person's lifespan (a Period) renders as a rounded-cap line, not a solid
@@ -36,17 +40,17 @@ interface PeopleLaneProps {
 // line's own occupation-domain fill. Overlapping people are stacked into
 // separate rows same as before; a colliding label (wider than its own line)
 // claims the row via pixelInterval above rather than moving to its own band.
-export function PeopleLane({ people, xScale }: PeopleLaneProps) {
+export function PeopleLane({ people, xScale, staticRowOf }: PeopleLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   const items = useMemo(() => mapPeople(people), [people]);
-  const rowOfPerson = useMemo(() => {
-    const intervals = items.map((item) => {
-      const { start, end } = personPixelInterval(item, xScale);
-      return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
-    });
-    return assignRows(intervals, MIN_ROW_GAP_PX);
-  }, [items, xScale]);
+  // compactRows, not a fresh assignRows call — see map-to-items.ts's
+  // comment on why re-running assignRows against the currently-filtered set
+  // would let two unrelated people swap relative rows.
+  const rowOfPerson = useMemo(
+    () => compactRows(items.map((item) => item.id), staticRowOf),
+    [items, staticRowOf],
+  );
   const rowCount = rowOfPerson.size > 0 ? Math.max(...rowOfPerson.values()) + 1 : 0;
   const totalHeight = personLaneHeight(rowCount);
   const totalWidth = xScale.range()[1] ?? 0;
