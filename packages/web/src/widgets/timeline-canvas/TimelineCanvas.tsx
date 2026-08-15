@@ -186,10 +186,6 @@ export function TimelineCanvas({
   // — tracked separately from viewportWidthPx above since this one needs to
   // follow live scroll position, not just mount/zoom-time measurements.
   const [scrollLeft, setScrollLeft] = useState(0);
-  // The year MountainProfile's track is currently hovered at (null when
-  // not), mirrored up so the guide line below can be drawn through the
-  // lanes rather than confined to MountainProfile's own component tree.
-  const [hoverYear, setHoverYear] = useState<number | null>(null);
   // The two sticky lanes' (position: sticky) internal horizontal pan is
   // driven by mirroring scrollRef's scrollLeft onto them (see the ref
   // comment above) — mirroring it only from the throttled native-scroll
@@ -245,12 +241,6 @@ export function TimelineCanvas({
   // different phase than CE ones, so this renders as two adjacent regions
   // split at year 0 rather than one continuous background.
   const gridlineBoundaryX = Math.min(Math.max(scale(0), 0), totalWidth);
-  // MountainProfile's hover reports a year straight off its own Reference
-  // Scale (same buildXScale domain as this live one — see its comment), so
-  // it's already valid input to this live scale regardless of current
-  // zoom/pan; clamped the same defensive way gridlineBoundaryX is, in case a
-  // bucket midpoint ever lands a hair outside the domain.
-  const hoverGuideX = hoverYear === null ? null : Math.min(Math.max(scale(hoverYear), 0), totalWidth);
   const gridlineSizePx = `${pixelsPerYear * DECADE_STEP_YEARS}px`;
   const bceGridlineStyle = {
     width: gridlineBoundaryX,
@@ -706,9 +696,6 @@ export function TimelineCanvas({
             visibleEndYear={visibleEndYear}
           />
         </div>
-        {hoverGuideX !== null && (
-          <div className={styles.hoverGuideLine} data-testid="hover-guide-line" style={{ left: hoverGuideX }} />
-        )}
       </div>
       <MountainProfile
         people={filteredPeople}
@@ -719,7 +706,6 @@ export function TimelineCanvas({
         scrollLeft={scrollLeft}
         onScrollLeftChange={handleScrollLeftChange}
         onScrollLeftJump={handleTrackJump}
-        onHoverYearChange={setHoverYear}
       />
     </div>
   );
