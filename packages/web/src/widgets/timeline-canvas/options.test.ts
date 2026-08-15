@@ -15,7 +15,14 @@ import {
   DECADE_TICK_PHASE_OFFSET_YEARS,
 } from './options';
 import { today } from '../../shared/lib/dates';
-import { PAN_MIN_DATE, DOMAIN_COLORS, MILESTONE_CATEGORY_GROUP_COLORS, CONFLICT_COLOR } from '../../shared/config';
+import {
+  PAN_MIN_DATE,
+  DOMAIN_COLORS,
+  MILESTONE_CATEGORY_GROUP_COLORS,
+  CONFLICT_COLOR,
+  ZOOM_MAX_YEARS,
+  ZOOM_MIN_YEARS,
+} from '../../shared/config';
 import { OCCUPATION_DOMAINS, MILESTONE_CATEGORIES, MILESTONE_CATEGORY_GROUPS, MILESTONE_CATEGORY_TO_GROUP } from '../../shared/types';
 
 test('buildXScale domains from PAN_MIN_DATE to a live today() read', () => {
@@ -50,18 +57,18 @@ test('BCE_DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align MIN_YEAR + offset to the 
   expect(trueMod(PAN_MIN_DATE.year + BCE_CENTURY_TICK_PHASE_OFFSET_YEARS, CENTURY_STEP_YEARS)).toBe(1);
 });
 
-test('pixelsPerYearBounds: min shows the 500-year zoomMax bound, max shows the 10-year zoomMin bound', () => {
+test('pixelsPerYearBounds: min shows the ZOOM_MAX_YEARS bound, max shows the ZOOM_MIN_YEARS bound', () => {
   const { min, max } = pixelsPerYearBounds(1000);
-  expect(min).toBe(1000 / 500);
-  expect(max).toBe(1000 / 10);
+  expect(min).toBe(1000 / ZOOM_MAX_YEARS);
+  expect(max).toBe(1000 / ZOOM_MIN_YEARS);
 });
 
-test('clampPixelsPerYear clamps a too-small value up to the bound implied by 500 max visible years', () => {
-  expect(clampPixelsPerYear(0.1, 1000)).toBe(1000 / 500);
+test('clampPixelsPerYear clamps a too-small value up to the bound implied by ZOOM_MAX_YEARS visible years', () => {
+  expect(clampPixelsPerYear(0.1, 1000)).toBe(1000 / ZOOM_MAX_YEARS);
 });
 
-test('clampPixelsPerYear clamps a too-large value down to the bound implied by 10 min visible years', () => {
-  expect(clampPixelsPerYear(1000, 1000)).toBe(1000 / 10);
+test('clampPixelsPerYear clamps a too-large value down to the bound implied by ZOOM_MIN_YEARS visible years', () => {
+  expect(clampPixelsPerYear(1000, 1000)).toBe(1000 / ZOOM_MIN_YEARS);
 });
 
 test('clampPixelsPerYear leaves an in-bounds value untouched', () => {
@@ -76,13 +83,13 @@ test('defaultPixelsPerYear targets the default 120-year (1740-1860) viewport wid
 test('zoomIn increases pixelsPerYear by the zoom step, clamped to the zoomed-in bound', () => {
   const start = 10;
   expect(zoomIn(start, 1000)).toBeCloseTo(start * 1.2);
-  expect(zoomIn(1000, 1000)).toBe(1000 / 10);
+  expect(zoomIn(1000, 1000)).toBe(1000 / ZOOM_MIN_YEARS);
 });
 
 test('zoomOut decreases pixelsPerYear by the zoom step, clamped to the zoomed-out bound', () => {
   const start = 10;
   expect(zoomOut(start, 1000)).toBeCloseTo(start / 1.2);
-  expect(zoomOut(0.1, 1000)).toBe(1000 / 500);
+  expect(zoomOut(0.1, 1000)).toBe(1000 / ZOOM_MAX_YEARS);
 });
 
 test('DOMAIN_COLORS has one entry per OccupationDomain, no duplicate hex values', () => {
