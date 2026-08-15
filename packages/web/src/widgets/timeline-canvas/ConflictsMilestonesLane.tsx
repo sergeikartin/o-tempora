@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useLayoutEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { ConflictEntry, Milestone } from '../../shared/types';
 import { CONFLICT_COLOR } from '../../shared/config';
+import { motionDurationMs } from '../../shared/lib/motion';
 import {
   compactRows,
   conflictPixelInterval,
@@ -227,110 +228,173 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale, staticR
     return [...conflictPoints, ...milestonePoints];
   }, [conflictItems, milestoneItems, milestoneLinesById, rowOfId, rowLayout, xScale, fallbackMarkerY, fallbackLabelY]);
 
-  useEffect(() => {
+  // useLayoutEffect, not useEffect — see PeopleLane's identical comment: a
+  // deferred passive effect shows one stale frame when xScale changes in
+  // the same commit.
+  useLayoutEffect(() => {
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
+    const durationMs = motionDurationMs('--motion-duration-base');
 
     const rangeGroups = svg
       .select<SVGGElement>('g.ranges')
       .selectAll<SVGGElement, RangeLayout>('g.d3-range')
       .data(rangeLayout, (d) => d.id)
-      .join((enter) => {
-        const g = enter.append('g').attr('class', 'd3-range');
-        // Invisible, oversized rect behind the line/label — see PeopleLane's
-        // identical .d3-hit for why (thin line + a separately-clickable
-        // label below it are both poor, gapped hit targets on their own).
-        g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
-        g.append('line')
-          .attr('class', `d3-line ${styles.line}`)
-          .attr('stroke-width', PERIOD_LINE_HEIGHT)
-          .attr('stroke-linecap', 'round');
-        g.append('text')
-          .attr('class', `d3-range-name ${styles.label}`)
-          .attr('text-anchor', 'middle')
-          .attr('dominant-baseline', 'hanging');
-        return g;
-      });
+      .join(
+        (enter) => {
+          const g = enter.append('g').attr('class', 'd3-range').style('opacity', 0);
+          // Invisible, oversized rect behind the line/label — see
+          // PeopleLane's identical .d3-hit for why (thin line + a
+          // separately-clickable label below it are both poor, gapped hit
+          // targets on their own).
+          const hit = g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
+          const line = g
+            .append('line')
+            .attr('class', `d3-line ${styles.line}`)
+            .attr('stroke-width', PERIOD_LINE_HEIGHT)
+            .attr('stroke-linecap', 'round');
+          const name = g
+            .append('text')
+            .attr('class', `d3-range-name ${styles.label}`)
+            .attr('text-anchor', 'middle')
+            .attr('dominant-baseline', 'hanging');
+          // A brand-new mark starts already at its target row — only a
+          // pre-existing mark's row *change* animates (below), via the
+          // shift transition on rangeGroups; an entering mark should just
+          // fade in, not also slide in from row 0.
+          hit
+            .attr('y', (d) => d.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX)
+            .attr(
+              'height',
+              (d) =>
+                d.labelY + MILESTONES_LABEL_LINE_HEIGHT_PX - (d.markerY - PERIOD_LINE_HEIGHT / 2) + HIT_AREA_PADDING_PX * 2,
+            );
+          line.attr('y1', (d) => d.markerY).attr('y2', (d) => d.markerY);
+          name.attr('y', (d) => d.labelY);
+          g.transition().duration(durationMs).style('opacity', 1);
+          return g;
+        },
+        (update) => update,
+        (exit) =>
+          exit.style('pointer-events', 'none').transition().duration(durationMs).style('opacity', 0).remove(),
+      );
 
     rangeGroups.attr('data-row', (d) => d.row);
 
+    // x/fill/data-* attrs apply instantly — only a row change (the y-driven
+    // attrs below) animates. An entering mark already has these set (above),
+    // so re-setting them here is a no-op for it and a live update for one
+    // that was already on screen.
     rangeGroups
       .select<SVGRectElement>('.d3-hit')
       .attr('x', (d) => d.hitX1 - HIT_AREA_PADDING_PX)
-      .attr('y', (d) => d.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX)
       .attr('width', (d) => d.hitX2 - d.hitX1 + HIT_AREA_PADDING_PX * 2)
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', (d) => d.kind)
+      .transition()
+      .duration(durationMs)
+      .attr('y', (d) => d.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX)
       .attr(
         'height',
         (d) => d.labelY + MILESTONES_LABEL_LINE_HEIGHT_PX - (d.markerY - PERIOD_LINE_HEIGHT / 2) + HIT_AREA_PADDING_PX * 2,
-      )
-      .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', (d) => d.kind);
+      );
 
     rangeGroups
       .select<SVGLineElement>('.d3-line')
       .attr('x1', (d) => d.x1)
       .attr('x2', (d) => d.x2)
-      .attr('y1', (d) => d.markerY)
-      .attr('y2', (d) => d.markerY)
       .attr('stroke', (d) => d.fill)
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', (d) => d.kind);
+      .attr('data-entity-type', (d) => d.kind)
+      .transition()
+      .duration(durationMs)
+      .attr('y1', (d) => d.markerY)
+      .attr('y2', (d) => d.markerY);
 
     rangeGroups
       .select<SVGTextElement>('.d3-range-name')
       .attr('x', (d) => (d.x1 + d.x2) / 2)
-      .attr('y', (d) => d.labelY)
       .attr('fill', (d) => d.fill)
       // Same delegated-click wiring as the line above, so the label is an
       // equally valid click target for opening the detail drawer.
       .attr('data-entity-id', (d) => d.id)
       .attr('data-entity-type', (d) => d.kind)
-      .text((d) => d.name);
+      .text((d) => d.name)
+      .transition()
+      .duration(durationMs)
+      .attr('y', (d) => d.labelY);
 
     const pointGroups = svg
       .select<SVGGElement>('g.points')
       .selectAll<SVGGElement, PointLayout>('g.d3-point-group')
       .data(pointLayout, (d) => d.id)
-      .join((enter) => {
-        const g = enter.append('g').attr('class', 'd3-point-group');
-        // Invisible, oversized rect behind the dot/label — see PeopleLane's
-        // identical .d3-hit for why.
-        g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
-        g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
-        g.append('text')
-          .attr('class', `d3-point-name ${styles.label}`)
-          .attr('text-anchor', 'middle')
-          .attr('dominant-baseline', 'hanging');
-        return g;
-      });
+      .join(
+        (enter) => {
+          const g = enter.append('g').attr('class', 'd3-point-group').style('opacity', 0);
+          // Invisible, oversized rect behind the dot/label — see
+          // PeopleLane's identical .d3-hit for why.
+          const hit = g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
+          const dot = g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
+          const name = g
+            .append('text')
+            .attr('class', `d3-point-name ${styles.label}`)
+            .attr('text-anchor', 'middle')
+            .attr('dominant-baseline', 'hanging');
+          // A brand-new mark starts already at its target row — only a
+          // pre-existing mark's row *change* animates (below), via the
+          // shift transition on pointGroups; an entering mark should just
+          // fade in, not also slide in from row 0.
+          hit
+            .attr('y', (d) => d.markerY - POINT_RADIUS - HIT_AREA_PADDING_PX)
+            .attr(
+              'height',
+              (d) =>
+                d.labelY + d.lines.length * MILESTONES_LABEL_LINE_HEIGHT_PX - (d.markerY - POINT_RADIUS) + HIT_AREA_PADDING_PX * 2,
+            );
+          dot.attr('cy', (d) => d.markerY);
+          name.attr('y', (d) => d.labelY);
+          g.transition().duration(durationMs).style('opacity', 1);
+          return g;
+        },
+        (update) => update,
+        (exit) =>
+          exit.style('pointer-events', 'none').transition().duration(durationMs).style('opacity', 0).remove(),
+      );
 
     pointGroups.attr('data-row', (d) => d.row);
 
+    // x/fill/data-* attrs apply instantly — only a row change (the y-driven
+    // attrs below) animates. An entering mark already has these set (above),
+    // so re-setting them here is a no-op for it and a live update for one
+    // that was already on screen.
     pointGroups
       .select<SVGRectElement>('.d3-hit')
       .attr('x', (d) => d.hitX1 - HIT_AREA_PADDING_PX)
-      .attr('y', (d) => d.markerY - POINT_RADIUS - HIT_AREA_PADDING_PX)
       .attr('width', (d) => d.hitX2 - d.hitX1 + HIT_AREA_PADDING_PX * 2)
+      .attr('data-entity-id', (d) => d.id)
+      .attr('data-entity-type', (d) => d.kind)
+      .transition()
+      .duration(durationMs)
+      .attr('y', (d) => d.markerY - POINT_RADIUS - HIT_AREA_PADDING_PX)
       .attr(
         'height',
         (d) =>
           d.labelY + d.lines.length * MILESTONES_LABEL_LINE_HEIGHT_PX - (d.markerY - POINT_RADIUS) + HIT_AREA_PADDING_PX * 2,
-      )
-      .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', (d) => d.kind);
+      );
 
     pointGroups
       .select<SVGCircleElement>('.d3-dot')
       .attr('cx', (d) => d.x)
-      .attr('cy', (d) => d.markerY)
       .attr('fill', (d) => d.fill)
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', (d) => d.kind);
+      .attr('data-entity-type', (d) => d.kind)
+      .transition()
+      .duration(durationMs)
+      .attr('cy', (d) => d.markerY);
 
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
       .attr('x', (d) => d.x)
-      .attr('y', (d) => d.labelY)
       .attr('fill', (d) => d.fill)
       // Same delegated-click wiring as the dot above, so the label is an
       // equally valid click target for opening the detail drawer.
@@ -348,7 +412,10 @@ export function ConflictsMilestonesLane({ conflicts, milestones, xScale, staticR
           .attr('x', d.x)
           .attr('dy', (_line, i) => (i === 0 ? 0 : MILESTONES_LABEL_LINE_HEIGHT_PX))
           .text((line, i) => (i < d.lines.length - 1 ? `${line} ` : line));
-      });
+      })
+      .transition()
+      .duration(durationMs)
+      .attr('y', (d) => d.labelY);
   }, [rangeLayout, pointLayout]);
 
   return (

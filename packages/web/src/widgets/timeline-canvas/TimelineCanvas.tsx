@@ -235,10 +235,31 @@ export function TimelineCanvas({
   // axis-adjacent edge is its natural top (scrollTop 0), so it only needs a
   // reset, not a measurement; .peopleLane's is its bottom, which needs
   // scrollHeight (only known post-layout, hence useLayoutEffect for both).
+  //
+  // PeopleLane's own svg height (bottom-anchored) now grows/shrinks via a
+  // D3 transition, not an instant React attribute (see PeopleLane.tsx), so
+  // scrollHeight right after this commit can still be the *pre*-transition
+  // value — pinning scrollTop to it here is correct at that instant but goes
+  // stale once the svg keeps growing, leaving a small unscrolled gap at the
+  // bottom once the transition settles. A ResizeObserver on the svg (not
+  // .peopleLane itself, which has a fixed flex height and never resizes)
+  // re-applies the same pin on every layout change through the rest of the
+  // transition, so scrollTop tracks scrollHeight the whole way, not just at
+  // the start. Not available in the jsdom test environment — the instant
+  // pin below still covers that case.
   useLayoutEffect(() => {
     const el = peopleLaneRef.current;
     if (!el) return;
-    el.scrollTop = el.scrollHeight;
+    const pinToBottom = () => {
+      el.scrollTop = el.scrollHeight;
+    };
+    pinToBottom();
+    if (typeof ResizeObserver === 'undefined') return;
+    const svg = el.querySelector('svg');
+    if (!svg) return;
+    const observer = new ResizeObserver(pinToBottom);
+    observer.observe(svg);
+    return () => observer.disconnect();
   }, [filteredPeople]);
   useLayoutEffect(() => {
     const el = conflictsMilestonesLaneRef.current;
