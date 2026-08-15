@@ -33,7 +33,14 @@ interface MountainProfileProps {
   totalWidth: number;
   viewportWidthPx: number;
   scrollLeft: number;
+  // Fired continuously while the viewport rect is being dragged — must stay
+  // 1:1 with the pointer (see handleRectPointerMove), so the caller applies
+  // it instantly, no animation.
   onScrollLeftChange: (scrollLeft: number) => void;
+  // Fired once for a track click-to-jump — a discrete target the caller is
+  // free to (and does) glide the lanes toward, since there's no pointer to
+  // lag behind.
+  onScrollLeftJump: (scrollLeft: number) => void;
 }
 
 interface HoverInfo {
@@ -59,6 +66,7 @@ export function MountainProfile({
   viewportWidthPx,
   scrollLeft,
   onScrollLeftChange,
+  onScrollLeftJump,
 }: MountainProfileProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const rectDragRef = useRef<{ pointerX: number; startScrollLeft: number; trackWidthPx: number } | null>(null);
@@ -164,7 +172,7 @@ export function MountainProfile({
     const rect = track.getBoundingClientRect();
     const clickRatio = rect.width > 0 ? (event.clientX - rect.left) / rect.width : 0;
     const maxScrollLeft = Math.max(totalWidth - track.clientWidth, 0);
-    onScrollLeftChange(Math.min(Math.max(clickRatio * totalWidth - track.clientWidth / 2, 0), maxScrollLeft));
+    onScrollLeftJump(Math.min(Math.max(clickRatio * totalWidth - track.clientWidth / 2, 0), maxScrollLeft));
   }
 
   // Recovers the precision the log scale deliberately compresses away —

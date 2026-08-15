@@ -135,6 +135,25 @@ export function TimelineCanvas({
     },
     [],
   );
+  // rAF handle for a MountainProfile track click-to-jump's eased scroll —
+  // separate from zoomAnimationFrameRef since the two never overlap (a jump
+  // doesn't change pixelsPerYear) but each needs its own cancel-on-interrupt.
+  const panAnimationFrameRef = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (panAnimationFrameRef.current !== null) cancelAnimationFrame(panAnimationFrameRef.current);
+    },
+    [],
+  );
+  // Cancels any in-flight jump animation so a real pointer drag (canvas
+  // drag-to-pan, or MountainProfile's own rect drag) always wins instead of
+  // fighting the animation's per-frame scrollLeft writes.
+  const cancelPanAnimation = useCallback(() => {
+    if (panAnimationFrameRef.current !== null) {
+      cancelAnimationFrame(panAnimationFrameRef.current);
+      panAnimationFrameRef.current = null;
+    }
+  }, []);
   // Drag-to-pan state: mouse-only (touch already gets native scroll-by-swipe
   // on the overflow-x container for free, and layering pointer-drag on top
   // of that would double-handle touch input). Start position lives in a ref
@@ -374,6 +393,7 @@ export function TimelineCanvas({
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
     const container = scrollRef.current;
     if (!container) return;
+    cancelPanAnimation();
     dragStartRef.current = { pointerX: event.clientX, scrollLeft: container.scrollLeft, moved: false };
     // Best-effort: keeps the drag alive if the pointer leaves the container's
     // bounds mid-move. jsdom doesn't implement it at all (hence the optional
@@ -424,7 +444,42 @@ export function TimelineCanvas({
   // above (with its rAF) is what then updates the scrollLeft state driving
   // MountainProfile's own re-render, same as a native user scroll.
   function handleScrollLeftChange(newScrollLeft: number) {
+    cancelPanAnimation();
     syncScrollLeft(newScrollLeft);
+  }
+
+  // MountainProfile's track click-to-jump: unlike every other pan source
+  // above, this is a single discrete target with no pointer to track, so it
+  // eases the lanes/axis toward it (mirrors the zoom-button animation's rAF
+  // + d3 interpolation, just for scrollLeft instead of pixelsPerYear)
+  // instead of snapping straight there.
+  function handleTrackJump(targetScrollLeft: number) {
+    const container = scrollRef.current;
+    if (!container) return;
+    cancelPanAnimation();
+    const startScrollLeft = container.scrollLeft;
+    const durationMs = motionDurationMs('--motion-duration-base');
+    if (durationMs <= 0) {
+      syncScrollLeft(targetScrollLeft);
+      return;
+    }
+    const interpolateScrollLeft = d3.interpolateNumber(startScrollLeft, targetScrollLeft);
+    let startTimeMs: number | null = null;
+
+    function tick(nowMs: number) {
+      if (startTimeMs === null) startTimeMs = nowMs;
+      const elapsedMs = nowMs - startTimeMs;
+      const t = Math.min(1, elapsedMs / durationMs);
+      syncScrollLeft(interpolateScrollLeft(d3.easeCubicInOut(t)));
+
+      if (t < 1) {
+        panAnimationFrameRef.current = requestAnimationFrame(tick);
+        return;
+      }
+      panAnimationFrameRef.current = null;
+    }
+
+    panAnimationFrameRef.current = requestAnimationFrame(tick);
   }
 
   // One delegated click listener for every mark in all three lanes, keyed
@@ -650,6 +705,7 @@ export function TimelineCanvas({
         viewportWidthPx={viewportWidthPx}
         scrollLeft={scrollLeft}
         onScrollLeftChange={handleScrollLeftChange}
+        onScrollLeftJump={handleTrackJump}
       />
     </div>
   );
