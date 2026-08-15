@@ -6,6 +6,19 @@
   transform-origin: 0 0;
 }
 
+/* The zoom-button animation's per-label counter-scale (PeopleLane.tsx)
+   targets this wrapper, not .name directly — .name has its own `transition:
+   transform` for the hover-grow effect below, and a JS-driven, every-frame
+   `transform` write on the same element/property would get caught by that
+   transition too, smoothing/lagging a frame behind instead of landing
+   exactly, and visibly wobbling the label's rendered width. Same anchor as
+   .name's own hover-scale (left edge, vertically centered) so the two
+   independent scales agree on where "in place" is. */
+:global(.d3-name-zoom) {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
 .svg {
   display: block;
   /* An exiting mark keeps its last-committed position (and fades there) for

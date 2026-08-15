@@ -109,7 +109,7 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(funct
     // position for a frame (this is the deferred-state-commit pattern the
     // zoom-animation spec's post-mortem calls for).
     svg.select('g.people').attr('transform', null);
-    svg.selectAll('.d3-name').attr('transform', null);
+    svg.selectAll('.d3-name-zoom').attr('transform', null);
 
     // Row 0 sits at the *bottom* of the svg (personLabelYForRow/
     // personLineCenterYForRow both compute from rowCount, not just row), and
@@ -146,7 +146,22 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(funct
             .attr('class', `d3-line ${styles.line}`)
             .attr('stroke-width', PERIOD_LINE_HEIGHT)
             .attr('stroke-linecap', 'round');
-          const name = g.append('text').attr('class', `d3-name ${styles.name}`).attr('dominant-baseline', 'hanging');
+          // Wrapped in its own <g> (a literal marker class, not styled
+          // itself) so the zoom-animation counter-scale below can target
+          // that wrapper instead of .d3-name directly — .name has its own
+          // `transition: transform` for the hover-grow effect, which would
+          // otherwise fight the counter-scale's own per-frame writes to the
+          // very same CSS property (both count as "the transform property
+          // changed", so the browser's transition engine tries to smooth
+          // between every animation-frame value, lagging a frame behind and
+          // producing a visible width wobble/flicker instead of an exact
+          // per-tick cancellation).
+          const name = g
+            .append('g')
+            .attr('class', 'd3-name-zoom')
+            .append('text')
+            .attr('class', `d3-name ${styles.name}`)
+            .attr('dominant-baseline', 'hanging');
           // A brand-new mark starts already at its target row — only a
           // pre-existing mark's row *change* animates (below), via the
           // shift transition on personGroups; an entering mark should just
@@ -221,7 +236,7 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(funct
         if (!svgRef.current) return;
         const svg = d3.select(svgRef.current);
         svg.select('g.people').attr('transform', zoomAnimationGroupTransformAttr(transform));
-        svg.selectAll('.d3-name').attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
+        svg.selectAll('.d3-name-zoom').attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
       },
     }),
     [],

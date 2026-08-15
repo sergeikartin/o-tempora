@@ -246,7 +246,7 @@ export const ConflictsMilestonesLane = forwardRef<ZoomAnimationHandle, Conflicts
       // lands the real geometry for a new xScale, so the commit is atomic
       // (see PeopleLane's identical comment for why).
       svg.select('g.zoomGroup').attr('transform', null);
-      svg.selectAll('.d3-range-name, .d3-point-name, .d3-dot').attr('transform', null);
+      svg.selectAll('.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot').attr('transform', null);
 
       const rangeGroups = svg
         .select<SVGGElement>('g.ranges')
@@ -265,7 +265,16 @@ export const ConflictsMilestonesLane = forwardRef<ZoomAnimationHandle, Conflicts
               .attr('class', `d3-line ${styles.line}`)
               .attr('stroke-width', PERIOD_LINE_HEIGHT)
               .attr('stroke-linecap', 'round');
+            // Wrapped in its own <g> (a literal marker class, not styled
+            // itself) so the zoom-animation counter-scale below can target
+            // that wrapper instead of .d3-range-name directly — see
+            // PeopleLane's identical .d3-name-zoom comment for why: .label
+            // has its own `transition: transform` for the hover-grow
+            // effect, which would otherwise fight the counter-scale's own
+            // per-frame writes to the same CSS property.
             const name = g
+              .append('g')
+              .attr('class', 'd3-range-name-zoom')
               .append('text')
               .attr('class', `d3-range-name ${styles.label}`)
               .attr('text-anchor', 'middle')
@@ -347,7 +356,11 @@ export const ConflictsMilestonesLane = forwardRef<ZoomAnimationHandle, Conflicts
             // PeopleLane's identical .d3-hit for why.
             const hit = g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
             const dot = g.append('circle').attr('class', `d3-dot ${styles.dot}`).attr('r', POINT_RADIUS);
+            // Wrapped in its own <g> — see the identical d3-range-name-zoom
+            // comment above.
             const name = g
+              .append('g')
+              .attr('class', 'd3-point-name-zoom')
               .append('text')
               .attr('class', `d3-point-name ${styles.label}`)
               .attr('text-anchor', 'middle')
@@ -442,7 +455,9 @@ export const ConflictsMilestonesLane = forwardRef<ZoomAnimationHandle, Conflicts
           if (!svgRef.current) return;
           const svg = d3.select(svgRef.current);
           svg.select('g.zoomGroup').attr('transform', zoomAnimationGroupTransformAttr(transform));
-          svg.selectAll('.d3-range-name, .d3-point-name, .d3-dot').attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
+          svg
+            .selectAll('.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot')
+            .attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
         },
       }),
       [],
