@@ -7,6 +7,20 @@
   transform-origin: 0 0;
 }
 
+/* The zoom-button animation's per-label counter-scale
+   (ConflictsMilestonesLane.tsx) targets these wrappers, not .label directly
+   — .label has its own `transition: transform` for the hover-grow effect
+   below, and a JS-driven, every-frame `transform` write on the same
+   element/property would get caught by that transition too, smoothing/
+   lagging a frame behind instead of landing exactly, and visibly wobbling
+   the label's rendered width. Same anchor as .label's own hover-scale (top-
+   center) so the two independent scales agree on where "in place" is. */
+:global(.d3-range-name-zoom),
+:global(.d3-point-name-zoom) {
+  transform-box: fill-box;
+  transform-origin: center top;
+}
+
 .svg {
   display: block;
   /* An exiting mark keeps its last-committed position (and fades there) for
@@ -37,10 +51,11 @@
 .dot {
   transition: r var(--motion-duration-fast) var(--motion-easing);
   /* The zoom-button animation's counter-scale (ConflictsMilestonesLane.tsx)
-     writes a bare `scale(1/sx, 1)` here — fill-box + the default center
-     transform-origin pivots it at the circle's own center, so it doesn't
-     need to (a fresh instance of the same pattern .label below already
-     uses for its own counter-scale). */
+     writes a bare `scale(1/sx, 1)` directly here (unlike .label below,
+     which needs a separate wrapper) — fill-box + the default center
+     transform-origin pivots it at the circle's own center, and .dot's own
+     hover effect changes `r`, not `transform`, so there's no competing
+     CSS transition on this property to fight the per-frame writes. */
   transform-box: fill-box;
 }
 
