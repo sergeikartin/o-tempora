@@ -1,10 +1,29 @@
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { act, cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, afterEach, vi } from 'vitest';
 import { TimelineCanvas } from './TimelineCanvas';
+import { zoomIn } from './options';
 import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
 import type { ConflictsMilestonesFilterValue } from '../../shared/config';
 
 afterEach(cleanup);
+
+// The zoom-button animation runs via a real requestAnimationFrame loop
+// (TimelineCanvas.tsx) — jsdom has no real rAF/paint fidelity to drive
+// deterministically frame-by-frame (see this feature's spec, .scratch/
+// zoom-filter-transitions/spec.md, on why this app doesn't commit
+// frame-timing tests), so tests instead wait out real wall-clock time past
+// the animation's own duration and assert on the settled end state, same as
+// every other transition test in this codebase. No global.css is loaded in
+// this test environment, so --motion-duration-base already reads as 0 here
+// (motionDurationMs's own documented fallback) — the same near-instant path
+// prefers-reduced-motion collapses to in production — but the real
+// per-frame rAF loop still needs at least one real animation frame to
+// observe it, hence the wait rather than a synchronous assertion.
+async function waitOutZoomAnimation() {
+  await act(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  });
+}
 
 const aristotle: Person = {
   id: 'Q868',
@@ -369,7 +388,27 @@ function personLineWidth(container: HTMLElement): number {
   return Number(line?.getAttribute('x2')) - Number(line?.getAttribute('x1'));
 }
 
-test('the zoom-in button widens rendered lines; zoom-out narrows them back', () => {
+function conflictLineWidth(container: HTMLElement): number {
+  const svgs = Array.from(container.querySelectorAll('svg')).filter(
+    (svg) => svg.getAttribute('data-testid') !== 'mountain-profile-ridge',
+  );
+  const [, conflictsMilestonesSvg] = svgs as [SVGSVGElement, SVGSVGElement];
+  const line = conflictsMilestonesSvg.querySelector('.d3-line');
+  return Number(line?.getAttribute('x2')) - Number(line?.getAttribute('x1'));
+}
+
+function yearAxisDecadeTickPx(container: HTMLElement): number {
+  const ruler = container.querySelector('.year-axis-ruler') as HTMLElement;
+  return parseFloat(ruler.style.getPropertyValue('--decade-tick-px'));
+}
+
+// A single zoom step's exact multiplier, derived the same way TimelineCanvas
+// itself computes it (rather than duplicating ZOOM_STEP as a hand-copied
+// literal) — 50 is an arbitrary value safely inside pixelsPerYearBounds(0)
+// (jsdom's clientWidth), so neither call clamps and the ratio is exact.
+const ZOOM_STEP_RATIO = zoomIn(50, 0) / 50;
+
+test('the zoom-in button animates rendered lines wider, landing exactly on the target pixelsPerYear once it resolves; zoom-out narrows them back', async () => {
   const { container, getByLabelText } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -386,13 +425,98 @@ test('the zoom-in button widens rendered lines; zoom-out narrows them back', () 
   const initialWidth = personLineWidth(container);
 
   fireEvent.click(getByLabelText('Zoom in'));
+  await waitOutZoomAnimation();
   const zoomedInWidth = personLineWidth(container);
-  expect(zoomedInWidth).toBeGreaterThan(initialWidth);
+  expect(zoomedInWidth).toBeCloseTo(initialWidth * ZOOM_STEP_RATIO);
 
   fireEvent.click(getByLabelText('Zoom out'));
   fireEvent.click(getByLabelText('Zoom out'));
+  await waitOutZoomAnimation();
   const zoomedOutWidth = personLineWidth(container);
   expect(zoomedOutWidth).toBeLessThan(zoomedInWidth);
+});
+
+test('a second zoom-in click fired while the first animation is still in flight retargets to two compounded steps, not the stale first target', async () => {
+  const { container, getByLabelText } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  const initialWidth = personLineWidth(container);
+
+  // Fired synchronously back-to-back, before the first click's animation
+  // has had a chance to resolve — the second click's retarget must chain
+  // off the first click's already-requested target (two full steps
+  // compounded), not restart from a stale target or the original start.
+  fireEvent.click(getByLabelText('Zoom in'));
+  fireEvent.click(getByLabelText('Zoom in'));
+  await waitOutZoomAnimation();
+
+  const finalWidth = personLineWidth(container);
+  expect(finalWidth).toBeCloseTo(initialWidth * ZOOM_STEP_RATIO * ZOOM_STEP_RATIO);
+});
+
+test('a zoom animation moves People, Conflicts+Milestones marks, and the Year Axis ticks together, all landing on the same target pixelsPerYear', async () => {
+  const { container, getByLabelText } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+
+  const initialPersonWidth = personLineWidth(container);
+  const initialConflictWidth = conflictLineWidth(container);
+  const initialTickPx = yearAxisDecadeTickPx(container);
+
+  fireEvent.click(getByLabelText('Zoom in'));
+  await waitOutZoomAnimation();
+
+  expect(personLineWidth(container)).toBeCloseTo(initialPersonWidth * ZOOM_STEP_RATIO);
+  expect(conflictLineWidth(container)).toBeCloseTo(initialConflictWidth * ZOOM_STEP_RATIO);
+  expect(yearAxisDecadeTickPx(container)).toBeCloseTo(initialTickPx * ZOOM_STEP_RATIO);
+});
+
+test("MountainProfile's viewport rect reflects the new range once a zoom animation settles, not a stale pre-zoom one, even after an interrupted (double-clicked) animation", async () => {
+  const { getByLabelText, getByTestId } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      onEntityClick={noopEntityClick}
+    />,
+  );
+  const rect = getByTestId('mountain-profile-viewport-rect');
+  const initialWidthPct = parseFloat(rect.style.width);
+
+  // Two rapid clicks — the second interrupts/retargets the first — so this
+  // also covers "immediately after an interrupted animation", not just a
+  // single settled zoom.
+  fireEvent.click(getByLabelText('Zoom in'));
+  fireEvent.click(getByLabelText('Zoom in'));
+  await waitOutZoomAnimation();
+
+  // Zooming in widens totalWidth against the same viewportWidthPx, so the
+  // rect representing "how much of the timeline is on screen" shrinks — a
+  // stale (pre-zoom) rect would still show the old, wider percentage.
+  expect(parseFloat(rect.style.width)).toBeLessThan(initialWidthPct);
 });
 
 test('zooming does not change which entities are rendered — density is gated by fameScoreValues, not pixelsPerYear', () => {

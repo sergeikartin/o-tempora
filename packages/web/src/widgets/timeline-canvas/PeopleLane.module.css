@@ -1,3 +1,11 @@
+/* The zoom-button animation (PeopleLane.tsx) writes `translate(tx)
+   scale(sx)` to this group from a JS rAF loop, not a CSS transition —
+   origin 0 0 makes that scale pivot from SVG user-space's own origin (year
+   MIN_YEAR), the same coordinate system the group's marks are laid out in. */
+:global(.people) {
+  transform-origin: 0 0;
+}
+
 .svg {
   display: block;
   /* An exiting mark keeps its last-committed position (and fades there) for

@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -7,9 +8,11 @@ import {
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
 } from 'react';
+import * as d3 from 'd3';
 import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
 import { DEFAULT_VIEWPORT_START, UN_REGION_TO_REGION, type ConflictsMilestonesFilterValue } from '../../shared/config';
 import { m } from '../../shared/paraglide/messages.js';
+import { motionDurationMs } from '../../shared/lib/motion';
 import type { FameScoreValues, FilteredCounts } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
@@ -19,9 +22,15 @@ import {
   DECADE_TICK_PHASE_OFFSET_YEARS,
   defaultPixelsPerYear,
   FALLBACK_VIEWPORT_WIDTH_PX,
+  MIN_YEAR,
   VIEWPORT_BUFFER_RATIO,
+  zoomAnimationDurationMs,
+  zoomAnimationGroupTransform,
+  zoomAnimationGroupTransformCss,
   zoomIn as computeZoomIn,
   zoomOut as computeZoomOut,
+  type ZoomAnimationHandle,
+  type ZoomAnimationTransform,
 } from './options';
 import {
   computeStaticConflictsMilestonesRows,
@@ -99,6 +108,33 @@ export function TimelineCanvas({
   // should own the horizontal gesture).
   const peopleLaneRef = useRef<HTMLDivElement>(null);
   const conflictsMilestonesLaneRef = useRef<HTMLDivElement>(null);
+  // Imperative per-tick targets for the zoom-button animation's single rAF
+  // driver (see the zoom() function below) — one wrapping group transform
+  // per lane/axis, not per-mark attribute recompute (options.ts's
+  // ZoomAnimationTransform comment). gridlineLayerRef is a plain DOM ref
+  // (no component-owned imperative handle needed) since the gridline layer
+  // is rendered directly here, not inside a Lane/Axis component.
+  const peopleLaneAnimRef = useRef<ZoomAnimationHandle>(null);
+  const conflictsMilestonesLaneAnimRef = useRef<ZoomAnimationHandle>(null);
+  const yearAxisTopAnimRef = useRef<ZoomAnimationHandle>(null);
+  const yearAxisMiddleAnimRef = useRef<ZoomAnimationHandle>(null);
+  const yearAxisBottomAnimRef = useRef<ZoomAnimationHandle>(null);
+  const gridlineLayerRef = useRef<HTMLDivElement>(null);
+  // In-flight zoom animation state: rAF handle to cancel on interrupt/
+  // unmount, the pixelsPerYear the interpolation is currently retargeting
+  // from (null when idle — a fresh click then starts from committed
+  // state), and the last *requested* target (so a rapid double-click chains
+  // full zoom steps the same way the old instant-zoom did, rather than
+  // stepping from wherever the animation happens to be mid-flight).
+  const zoomAnimationFrameRef = useRef<number | null>(null);
+  const zoomAnimationCurrentPixelsPerYearRef = useRef<number | null>(null);
+  const zoomAnimationTargetPixelsPerYearRef = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (zoomAnimationFrameRef.current !== null) cancelAnimationFrame(zoomAnimationFrameRef.current);
+    },
+    [],
+  );
   // Drag-to-pan state: mouse-only (touch already gets native scroll-by-swipe
   // on the overflow-x container for free, and layering pointer-drag on top
   // of that would double-handle touch input). Start position lives in a ref
@@ -131,6 +167,32 @@ export function TimelineCanvas({
   // — tracked separately from viewportWidthPx above since this one needs to
   // follow live scroll position, not just mount/zoom-time measurements.
   const [scrollLeft, setScrollLeft] = useState(0);
+  // The two sticky lanes' (position: sticky) internal horizontal pan is
+  // driven by mirroring scrollRef's scrollLeft onto them (see the ref
+  // comment above) — mirroring it only from the throttled native-scroll
+  // listener below (one requestAnimationFrame behind) is fine for a
+  // continuous drag (the lag is masked by the next frame's motion), but
+  // leaves a one-frame visible flash for any *discrete* programmatic jump
+  // (zoom re-centering, mount positioning, MountainProfile's click/drag-to-
+  // jump): the real geometry commits instantly, the lane's own pan doesn't
+  // catch up until the next frame. Every place that writes
+  // scrollRef.current.scrollLeft directly calls this instead, so the mirror
+  // always lands in the same synchronous step.
+  const mirrorLaneScrollLeft = useCallback((newScrollLeft: number) => {
+    if (peopleLaneRef.current) peopleLaneRef.current.scrollLeft = newScrollLeft;
+    if (conflictsMilestonesLaneRef.current) conflictsMilestonesLaneRef.current.scrollLeft = newScrollLeft;
+  }, []);
+  // Stable identity (only refs in its closure) so effects that call it can
+  // list it as a dependency without it forcing a re-run every render.
+  const syncScrollLeft = useCallback(
+    (newScrollLeft: number) => {
+      const container = scrollRef.current;
+      if (!container) return;
+      container.scrollLeft = newScrollLeft;
+      mirrorLaneScrollLeft(newScrollLeft);
+    },
+    [mirrorLaneScrollLeft],
+  );
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -140,8 +202,7 @@ export function TimelineCanvas({
       frame = requestAnimationFrame(() => {
         frame = 0;
         setScrollLeft(container.scrollLeft);
-        if (peopleLaneRef.current) peopleLaneRef.current.scrollLeft = container.scrollLeft;
-        if (conflictsMilestonesLaneRef.current) conflictsMilestonesLaneRef.current.scrollLeft = container.scrollLeft;
+        mirrorLaneScrollLeft(container.scrollLeft);
       });
     };
     container.addEventListener('scroll', onScroll, { passive: true });
@@ -149,7 +210,7 @@ export function TimelineCanvas({
       container.removeEventListener('scroll', onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [mirrorLaneScrollLeft]);
   const effectiveViewportWidthPx = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   const viewportBufferPx = effectiveViewportWidthPx * VIEWPORT_BUFFER_RATIO;
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
@@ -284,8 +345,14 @@ export function TimelineCanvas({
   useLayoutEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
+    // A zoom animation's rAF loop writes a transform straight to
+    // gridlineLayerRef every tick, without going through React — reset it
+    // here, in the same effect that lands the real scrollLeft for a
+    // committed pixelsPerYear, so the commit is atomic (see PeopleLane's
+    // identical comment on its own g.people reset for why).
+    if (gridlineLayerRef.current) gridlineLayerRef.current.style.transform = '';
     if (pendingCenterYearRef.current !== null) {
-      container.scrollLeft = scale(pendingCenterYearRef.current) - container.clientWidth / 2;
+      syncScrollLeft(scale(pendingCenterYearRef.current) - container.clientWidth / 2);
       pendingCenterYearRef.current = null;
       setScrollLeft(container.scrollLeft);
       return;
@@ -298,10 +365,10 @@ export function TimelineCanvas({
     // equal what that effect measured — i.e. for this render's scale to be
     // the real one, not the pre-layout fallback — before panning.
     if (pixelsPerYear === measuredPixelsPerYearRef.current) {
-      container.scrollLeft = scale(DEFAULT_VIEWPORT_START.year);
+      syncScrollLeft(scale(DEFAULT_VIEWPORT_START.year));
       setScrollLeft(container.scrollLeft);
     }
-  }, [pixelsPerYear, scale]);
+  }, [pixelsPerYear, scale, syncScrollLeft]);
 
   function handlePointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
@@ -328,7 +395,7 @@ export function TimelineCanvas({
     if (!drag || !container) return;
     const totalOffset = event.clientX - drag.pointerX;
     if (Math.abs(totalOffset) > DRAG_CLICK_SUPPRESSION_PX) drag.moved = true;
-    container.scrollLeft = drag.scrollLeft - totalOffset;
+    syncScrollLeft(drag.scrollLeft - totalOffset);
   }
 
   function endDrag(event: ReactPointerEvent<HTMLDivElement>) {
@@ -352,13 +419,12 @@ export function TimelineCanvas({
 
   // Passed to MountainProfile (replaces the old scrollbar's own direct
   // container.scrollLeft assignments, ADR 0004) — sets the real DOM
-  // scrollLeft directly; the scroll listener effect above (with its rAF)
-  // is what then updates the scrollLeft state driving MountainProfile's own
-  // re-render, same as a native user scroll.
+  // scrollLeft directly (and, via syncScrollLeft, the sticky lanes' own
+  // mirrored pan in the same synchronous step); the scroll listener effect
+  // above (with its rAF) is what then updates the scrollLeft state driving
+  // MountainProfile's own re-render, same as a native user scroll.
   function handleScrollLeftChange(newScrollLeft: number) {
-    const container = scrollRef.current;
-    if (!container) return;
-    container.scrollLeft = newScrollLeft;
+    syncScrollLeft(newScrollLeft);
   }
 
   // One delegated click listener for every mark in all three lanes, keyed
@@ -407,15 +473,114 @@ export function TimelineCanvas({
     return () => container.removeEventListener('click', handleClick);
   }, [onEntityClick]);
 
+  // Writes one tick's worth of ZoomAnimationTransform to every animated
+  // surface — the single rAF driver in zoom() below calls this every frame,
+  // rather than each lane/axis running its own loop (ticket 02's "one
+  // driver" requirement), so nothing can lag or desync from the others when
+  // interrupted.
+  function applyZoomAnimationTick(transform: ZoomAnimationTransform) {
+    peopleLaneAnimRef.current?.applyZoomTransform(transform);
+    conflictsMilestonesLaneAnimRef.current?.applyZoomTransform(transform);
+    yearAxisTopAnimRef.current?.applyZoomTransform(transform);
+    yearAxisMiddleAnimRef.current?.applyZoomTransform(transform);
+    yearAxisBottomAnimRef.current?.applyZoomTransform(transform);
+    if (gridlineLayerRef.current) {
+      gridlineLayerRef.current.style.transform = zoomAnimationGroupTransformCss(transform);
+    }
+  }
+
+  // Animates the +/- zoom buttons: every mark stays drawn at the DOM's real,
+  // currently-committed pixelsPerYear for the whole gesture (never
+  // recomputed per frame — the 250-530ms/frame cost that sank a prior
+  // attempt) while a single group transform per lane/axis, written directly
+  // via rAF, makes them visually track an eased interpolation toward the
+  // target. The real pixelsPerYear/scrollLeft state commits exactly once,
+  // at the end (see the existing useLayoutEffect below, keyed on
+  // pixelsPerYear, which already implements the deferred-until-DOM-actually-
+  // widens commit pattern this reuses unchanged).
   function zoom(step: (currentPixelsPerYear: number, viewportWidthPx: number) => number) {
     const container = scrollRef.current;
     if (!container) {
       setPixelsPerYear((current) => step(current, 0));
       return;
     }
-    pendingCenterYearRef.current = scale.invert(container.scrollLeft + container.clientWidth / 2);
-    setViewportWidthPx(container.clientWidth);
-    setPixelsPerYear((current) => step(current, container.clientWidth));
+    const clientWidthPx = container.clientWidth;
+    // Read once, before any animation frame runs — real scrollLeft is held
+    // fixed for the whole gesture (folded into the transform's tx instead),
+    // so this stays valid across however many clicks retarget it.
+    const scrollLeftStart = container.scrollLeft;
+    const centerYear = scale.invert(scrollLeftStart + clientWidthPx / 2);
+    // The DOM's real geometry is still drawn at the last *committed*
+    // pixelsPerYear — that never changes mid-gesture (see above), so it's
+    // the fixed reference every tick's transform is computed relative to.
+    const domReferencePixelsPerYear = pixelsPerYear;
+    // A fresh click starts interpolating from wherever the animation
+    // currently is (or committed state, if idle) — a retarget, not a reset
+    // to the original start or a stale target (ticket 01's interrupt
+    // requirement). The *target*, though, chains off the last *requested*
+    // target (or committed state, if idle), matching the old instant-zoom's
+    // behavior where a rapid double-click compounds two full zoom steps.
+    const interpolateFromPixelsPerYear = zoomAnimationCurrentPixelsPerYearRef.current ?? domReferencePixelsPerYear;
+    const targetPixelsPerYear = step(
+      zoomAnimationTargetPixelsPerYearRef.current ?? domReferencePixelsPerYear,
+      clientWidthPx,
+    );
+    zoomAnimationTargetPixelsPerYearRef.current = targetPixelsPerYear;
+
+    setViewportWidthPx(clientWidthPx);
+
+    if (zoomAnimationFrameRef.current !== null) {
+      cancelAnimationFrame(zoomAnimationFrameRef.current);
+      zoomAnimationFrameRef.current = null;
+    }
+
+    // Scaling the live --motion-duration-base token (not a bare literal)
+    // rather than reusing it directly, per the spec's "longer than
+    // --motion-duration-base" call — this also means the animation
+    // collapses to near-zero automatically under prefers-reduced-motion,
+    // same as every other motion in the app, with no separate handling
+    // needed: the tick loop below already resolves in a frame or two once
+    // durationMs is that small.
+    const durationMs = zoomAnimationDurationMs(motionDurationMs('--motion-duration-base'));
+    const interpolatePixelsPerYear = d3.interpolateNumber(interpolateFromPixelsPerYear, targetPixelsPerYear);
+    let startTimeMs: number | null = null;
+
+    function tick(nowMs: number) {
+      if (startTimeMs === null) startTimeMs = nowMs;
+      const elapsedMs = nowMs - startTimeMs;
+      const t = durationMs <= 0 ? 1 : Math.min(1, elapsedMs / durationMs);
+      const currentPixelsPerYear = interpolatePixelsPerYear(d3.easeCubicInOut(t));
+      zoomAnimationCurrentPixelsPerYearRef.current = currentPixelsPerYear;
+      applyZoomAnimationTick(
+        zoomAnimationGroupTransform({
+          startPixelsPerYear: domReferencePixelsPerYear,
+          currentPixelsPerYear,
+          minYear: MIN_YEAR,
+          centerYear,
+          scrollLeftStart,
+          clientWidthPx,
+        }),
+      );
+
+      if (t < 1) {
+        zoomAnimationFrameRef.current = requestAnimationFrame(tick);
+        return;
+      }
+
+      zoomAnimationFrameRef.current = null;
+      zoomAnimationCurrentPixelsPerYearRef.current = null;
+      zoomAnimationTargetPixelsPerYearRef.current = null;
+      // The commit: real state changes exactly once here, deferred via the
+      // existing pixelsPerYear-keyed useLayoutEffect below (which sets
+      // container.scrollLeft only once the new xScale has actually landed)
+      // — every lane/axis's own layout effect resets its transform back to
+      // identity in that same commit (see e.g. PeopleLane's), so this never
+      // needs to reset applyZoomAnimationTick's writes itself.
+      pendingCenterYearRef.current = centerYear;
+      setPixelsPerYear(targetPixelsPerYear);
+    }
+
+    zoomAnimationFrameRef.current = requestAnimationFrame(tick);
   }
 
   return (
@@ -436,21 +601,32 @@ export function TimelineCanvas({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
-        <div className={styles.gridlineLayer} style={{ width: totalWidth }}>
+        <div ref={gridlineLayerRef} className={styles.gridlineLayer} style={{ width: totalWidth }}>
           <div className={styles.gridline} style={bceGridlineStyle} />
           <div className={styles.gridline} style={ceGridlineStyle} />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
-          <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
+          <YearAxis
+            ref={yearAxisTopAnimRef}
+            xScale={scale}
+            visibleStartYear={visibleStartYear}
+            visibleEndYear={visibleEndYear}
+          />
         </div>
         <div ref={peopleLaneRef} className={styles.peopleLane}>
-          <PeopleLane people={filteredPeople} xScale={scale} staticRowOf={staticPersonRowOf} />
+          <PeopleLane ref={peopleLaneAnimRef} people={filteredPeople} xScale={scale} staticRowOf={staticPersonRowOf} />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
-          <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
+          <YearAxis
+            ref={yearAxisMiddleAnimRef}
+            xScale={scale}
+            visibleStartYear={visibleStartYear}
+            visibleEndYear={visibleEndYear}
+          />
         </div>
         <div ref={conflictsMilestonesLaneRef} className={styles.conflictsMilestonesLane}>
           <ConflictsMilestonesLane
+            ref={conflictsMilestonesLaneAnimRef}
             conflicts={filteredConflicts}
             milestones={filteredMilestones}
             xScale={scale}
@@ -458,7 +634,12 @@ export function TimelineCanvas({
           />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
-          <YearAxis xScale={scale} visibleStartYear={visibleStartYear} visibleEndYear={visibleEndYear} />
+          <YearAxis
+            ref={yearAxisBottomAnimRef}
+            xScale={scale}
+            visibleStartYear={visibleStartYear}
+            visibleEndYear={visibleEndYear}
+          />
         </div>
       </div>
       <MountainProfile

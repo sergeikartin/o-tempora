@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useLayoutEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { Person } from '../../shared/types';
 import { DOMAIN_COLORS } from '../../shared/config';
@@ -11,6 +11,9 @@ import {
   personLabelYForRow,
   personLaneHeight,
   personLineCenterYForRow,
+  zoomAnimationCounterScaleAttr,
+  zoomAnimationGroupTransformAttr,
+  type ZoomAnimationHandle,
 } from './options';
 import styles from './PeopleLane.module.css';
 
@@ -41,7 +44,10 @@ interface PeopleLaneProps {
 // line's own occupation-domain fill. Overlapping people are stacked into
 // separate rows same as before; a colliding label (wider than its own line)
 // claims the row via pixelInterval above rather than moving to its own band.
-export function PeopleLane({ people, xScale, staticRowOf }: PeopleLaneProps) {
+export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(function PeopleLane(
+  { people, xScale, staticRowOf },
+  ref,
+) {
   const svgRef = useRef<SVGSVGElement>(null);
   const hasMountedRef = useRef(false);
 
@@ -93,6 +99,17 @@ export function PeopleLane({ people, xScale, staticRowOf }: PeopleLaneProps) {
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
     const durationMs = motionDurationMs('--motion-duration-base');
+
+    // A zoom animation's rAF loop (see the imperative handle below) writes
+    // a transform straight to g.people and every .d3-name every tick,
+    // without going through React — reset it here, in the same effect that
+    // lands the real geometry for a new xScale, so the commit (real x/y
+    // attrs landing + transform resetting to identity) is atomic. Landing
+    // one half a frame before the other would flash the marks at the wrong
+    // position for a frame (this is the deferred-state-commit pattern the
+    // zoom-animation spec's post-mortem calls for).
+    svg.select('g.people').attr('transform', null);
+    svg.selectAll('.d3-name').attr('transform', null);
 
     // Row 0 sits at the *bottom* of the svg (personLabelYForRow/
     // personLineCenterYForRow both compute from rowCount, not just row), and
@@ -192,6 +209,24 @@ export function PeopleLane({ people, xScale, staticRowOf }: PeopleLaneProps) {
       .attr('y', (d) => d.labelY);
   }, [layout, totalHeight]);
 
+  // TimelineCanvas's single rAF driver calls this every animation-frame
+  // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
+  // comment for the mechanism. A plain D3 re-select (not a ref/cache of the
+  // `layout` array): the marks' data is already bound to their DOM nodes
+  // from the join above, so re-selecting picks it back up for free.
+  useImperativeHandle(
+    ref,
+    () => ({
+      applyZoomTransform(transform) {
+        if (!svgRef.current) return;
+        const svg = d3.select(svgRef.current);
+        svg.select('g.people').attr('transform', zoomAnimationGroupTransformAttr(transform));
+        svg.selectAll('.d3-name').attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
+      },
+    }),
+    [],
+  );
+
   return (
     <div className={styles.bottomAlign}>
       <svg ref={svgRef} width={totalWidth} className={styles.svg}>
@@ -199,4 +234,4 @@ export function PeopleLane({ people, xScale, staticRowOf }: PeopleLaneProps) {
       </svg>
     </div>
   );
-}
+});

@@ -6,6 +6,13 @@ import {
   pixelsPerYearBounds,
   zoomIn,
   zoomOut,
+  zoomAnimationCounterScaleAttr,
+  zoomAnimationCounterScaleCss,
+  zoomAnimationDurationMs,
+  zoomAnimationGroupTransform,
+  zoomAnimationGroupTransformAttr,
+  zoomAnimationGroupTransformCss,
+  ZOOM_ANIMATION_DURATION_MULTIPLIER,
   MILESTONE_CATEGORY_COLORS,
   BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
   BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
@@ -130,4 +137,110 @@ test('MILESTONE_CATEGORY_TO_GROUP covers every MilestoneCategory, resolving to e
   }
   const coveredCategories = new Set(Object.keys(MILESTONE_CATEGORY_TO_GROUP));
   expect(coveredCategories.size).toBe(MILESTONE_CATEGORIES.length);
+});
+
+test('zoomAnimationGroupTransform: sx is the ratio of current to start pixelsPerYear', () => {
+  const { sx } = zoomAnimationGroupTransform({
+    startPixelsPerYear: 10,
+    currentPixelsPerYear: 15,
+    minYear: 0,
+    centerYear: 100,
+    scrollLeftStart: 0,
+    clientWidthPx: 1000,
+  });
+  expect(sx).toBe(1.5);
+});
+
+test('zoomAnimationGroupTransform: sx falls back to 1 rather than dividing by a zero start pixelsPerYear', () => {
+  const { sx } = zoomAnimationGroupTransform({
+    startPixelsPerYear: 0,
+    currentPixelsPerYear: 15,
+    minYear: 0,
+    centerYear: 100,
+    scrollLeftStart: 0,
+    clientWidthPx: 1000,
+  });
+  expect(sx).toBe(1);
+});
+
+test('zoomAnimationGroupTransform: at currentPixelsPerYear === startPixelsPerYear (t=0), tx/sx is the identity transform relative to the held-fixed scrollLeft', () => {
+  // At the very start of an animation the DOM's real geometry (still drawn
+  // at startPixelsPerYear) and centerYear/scrollLeftStart were captured
+  // from the same, currently-on-screen state — so the transform this
+  // instant produces must be a no-op, or every zoom would flash on the
+  // first frame. scrollLeftStart is derived the same way zoom() itself
+  // derives centerYear from it (scale.invert(scrollLeft + clientWidth/2)),
+  // just inverted — an arbitrary, unrelated scrollLeftStart wouldn't
+  // satisfy the invariant this is checking.
+  const minYear = -800;
+  const centerYear = 1800;
+  const clientWidthPx = 1000;
+  const startPixelsPerYear = 8;
+  const scrollLeftStart = (centerYear - minYear) * startPixelsPerYear - clientWidthPx / 2;
+  const transform = zoomAnimationGroupTransform({
+    startPixelsPerYear,
+    currentPixelsPerYear: startPixelsPerYear,
+    minYear,
+    centerYear,
+    scrollLeftStart,
+    clientWidthPx,
+  });
+  expect(transform.sx).toBe(1);
+  expect(transform.tx).toBeCloseTo(0);
+});
+
+test('zoomAnimationGroupTransform: tx re-centers on centerYear at viewport center for the interpolated pixelsPerYear', () => {
+  // year(centerYear) at currentPixelsPerYear, transformed by tx/sx, must
+  // land exactly at clientWidthPx / 2 — the same "centered in the
+  // viewport" invariant the non-animated zoom() already guarantees today.
+  const minYear = -800;
+  const centerYear = 1800;
+  const clientWidthPx = 1000;
+  const startPixelsPerYear = 8;
+  const currentPixelsPerYear = 9.6;
+  const scrollLeftStart = (centerYear - minYear) * startPixelsPerYear - clientWidthPx / 2;
+  const { tx, sx } = zoomAnimationGroupTransform({
+    startPixelsPerYear,
+    currentPixelsPerYear,
+    minYear,
+    centerYear,
+    scrollLeftStart,
+    clientWidthPx,
+  });
+  const domX = (centerYear - minYear) * startPixelsPerYear; // where centerYear is actually drawn right now
+  const onScreenX = domX * sx + tx - scrollLeftStart; // domX under this transform, minus the (held-fixed) real scrollLeft
+  expect(onScreenX).toBeCloseTo(clientWidthPx / 2);
+});
+
+test('zoomAnimationGroupTransformAttr renders an SVG translate/scale (unitless, x-only) transform', () => {
+  expect(zoomAnimationGroupTransformAttr({ tx: 12, sx: 1.5 })).toBe('translate(12, 0) scale(1.5, 1)');
+});
+
+test('zoomAnimationGroupTransformCss renders a CSS translateX/scaleX (px, x-only) transform', () => {
+  expect(zoomAnimationGroupTransformCss({ tx: 12, sx: 1.5 })).toBe('translateX(12px) scaleX(1.5)');
+});
+
+test('zoomAnimationCounterScaleAttr negates the group sx exactly (x-only)', () => {
+  expect(zoomAnimationCounterScaleAttr(1.5)).toBe(`scale(${1 / 1.5}, 1)`);
+});
+
+test('zoomAnimationCounterScaleCss negates the group sx exactly (x-only)', () => {
+  expect(zoomAnimationCounterScaleCss(1.5)).toBe(`scaleX(${1 / 1.5})`);
+});
+
+test('zoomAnimationCounterScaleAttr/Css fall back to 1 rather than dividing by a zero sx', () => {
+  expect(zoomAnimationCounterScaleAttr(0)).toBe('scale(1, 1)');
+  expect(zoomAnimationCounterScaleCss(0)).toBe('scaleX(1)');
+});
+
+test('zoomAnimationDurationMs scales a base duration by ZOOM_ANIMATION_DURATION_MULTIPLIER, so it collapses to near-zero under prefers-reduced-motion automatically', () => {
+  expect(zoomAnimationDurationMs(200)).toBe(200 * ZOOM_ANIMATION_DURATION_MULTIPLIER);
+  expect(zoomAnimationDurationMs(0.01)).toBeCloseTo(0.01 * ZOOM_ANIMATION_DURATION_MULTIPLIER);
+});
+
+test('the zoom-button animation targets longer than --motion-duration-base (200ms), within the spec-called-for 300-400ms range', () => {
+  const durationMs = zoomAnimationDurationMs(200);
+  expect(durationMs).toBeGreaterThan(200);
+  expect(durationMs).toBeGreaterThanOrEqual(300);
+  expect(durationMs).toBeLessThanOrEqual(400);
 });

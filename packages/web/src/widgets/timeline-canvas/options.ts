@@ -166,7 +166,7 @@ export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = Obje
   ]),
 ) as Record<MilestoneCategory, string>;
 
-const MIN_YEAR = PAN_MIN_DATE.year;
+export const MIN_YEAR = PAN_MIN_DATE.year;
 
 // The Year Axis's CSS tick gradients (and the scroll container's full-height
 // decade gridlines) tile starting at x=0, i.e. at MIN_YEAR. Round-historical
@@ -245,4 +245,92 @@ export function zoomIn(pixelsPerYear: number, viewportWidthPx: number): number {
 
 export function zoomOut(pixelsPerYear: number, viewportWidthPx: number): number {
   return clampPixelsPerYear(pixelsPerYear / (1 + ZOOM_STEP), viewportWidthPx);
+}
+
+// Zoom-button animation: a single `translate(tx) scale(sx)` group transform
+// per lane/axis, driven by a per-frame JS interpolation of pixelsPerYear —
+// not per-mark attribute recompute (benchmarked at 250-530ms/frame at this
+// app's worst-case density, 15-30x over the 16ms frame budget) and not a CSS
+// `transition` (confirmed unreliable through React's commit model — see
+// .scratch/zoom-filter-transitions/spec.md's post-mortem). Every mark stays
+// drawn at the animation's start pixelsPerYear for the whole gesture (the
+// real pixelsPerYear/scrollLeft state commits exactly once, at the end —
+// TimelineCanvas.tsx) — this transform is what makes them visually track
+// the interpolated value each tick instead.
+
+export interface ZoomAnimationTransform {
+  /** Horizontal translation, in the same px units as the content it's applied to. */
+  tx: number;
+  /** Horizontal-only scale (never applied to y — zoom never changes row layout). */
+  sx: number;
+}
+
+/** Imperative per-tick hook a lane/axis component exposes to TimelineCanvas's single rAF driver. */
+export interface ZoomAnimationHandle {
+  applyZoomTransform: (transform: ZoomAnimationTransform) => void;
+}
+
+/**
+ * The wrapping group's tx/sx mid-zoom-animation: marks are still drawn at
+ * startPixelsPerYear (the DOM hasn't re-laid-out to the new scale yet), so
+ * this is what makes them appear at currentPixelsPerYear instead, centered
+ * on centerYear (the year at viewport center when the gesture began), with
+ * the real scrollLeft held fixed for the whole animation — its own eventual
+ * change is folded into tx here instead of ever being written mid-gesture
+ * (the scroll-clamp race this app's zoom-animation history warns about).
+ */
+export function zoomAnimationGroupTransform(params: {
+  startPixelsPerYear: number;
+  currentPixelsPerYear: number;
+  minYear: number;
+  centerYear: number;
+  scrollLeftStart: number;
+  clientWidthPx: number;
+}): ZoomAnimationTransform {
+  const { startPixelsPerYear, currentPixelsPerYear, minYear, centerYear, scrollLeftStart, clientWidthPx } = params;
+  const sx = startPixelsPerYear !== 0 ? currentPixelsPerYear / startPixelsPerYear : 1;
+  const scrollLeftTarget = (centerYear - minYear) * currentPixelsPerYear - clientWidthPx / 2;
+  return { tx: scrollLeftStart - scrollLeftTarget, sx };
+}
+
+/** SVG `transform` attribute value (unitless, SVG user-space) for a ZoomAnimationTransform. */
+export function zoomAnimationGroupTransformAttr({ tx, sx }: ZoomAnimationTransform): string {
+  return `translate(${tx}, 0) scale(${sx}, 1)`;
+}
+
+/** CSS `transform` value (px units, HTML elements) for a ZoomAnimationTransform. */
+export function zoomAnimationGroupTransformCss({ tx, sx }: ZoomAnimationTransform): string {
+  return `translateX(${tx}px) scaleX(${sx})`;
+}
+
+// A label/dot's own shape-preserving counter-scale — negates the wrapping
+// group's x-only scale so glyphs/circles don't stretch into ellipses (Key
+// Gotcha #5). Deliberately just a bare `scale(1/sx, 1)`, not a
+// translate/anchor composition: each label/dot's own transform-origin
+// (already set in its .module.css, reusing the same transform-box: fill-box
+// pattern the existing hover-scale relies on — PeopleLane's `.name`,
+// ConflictsMilestonesLane's `.label`/`.dot`) pivots it at its own natural
+// anchor point for free, so no per-item anchor coordinate needs threading
+// through here. Computed fresh from the same sx every tick, so — unlike a
+// CSS custom-property reciprocal transition — it's always exact, never an
+// approximation of `eased(1/target)`.
+export function zoomAnimationCounterScaleAttr(groupSx: number): string {
+  const inverse = groupSx !== 0 ? 1 / groupSx : 1;
+  return `scale(${inverse}, 1)`;
+}
+
+export function zoomAnimationCounterScaleCss(groupSx: number): string {
+  const inverse = groupSx !== 0 ? 1 / groupSx : 1;
+  return `scaleX(${inverse})`;
+}
+
+// Target duration for the zoom-button animation — longer than
+// --motion-duration-base (200ms) per the spec, tuned within the 300-400ms
+// range it calls for. Scaling the live token (rather than a bare literal)
+// means this collapses to near-zero automatically under
+// prefers-reduced-motion, exactly like every other motion in the app.
+export const ZOOM_ANIMATION_DURATION_MULTIPLIER = 1.75;
+
+export function zoomAnimationDurationMs(baseDurationMs: number): number {
+  return baseDurationMs * ZOOM_ANIMATION_DURATION_MULTIPLIER;
 }
