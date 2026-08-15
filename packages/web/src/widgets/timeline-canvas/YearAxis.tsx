@@ -1,4 +1,4 @@
-import { useMemo, type CSSProperties } from 'react';
+import { forwardRef, useImperativeHandle, useLayoutEffect, useMemo, useRef, type CSSProperties } from 'react';
 import * as d3 from 'd3';
 import { formatYear, isRoundTickYear, roundTickYearsInRange } from '../../shared/lib/format-year';
 import {
@@ -12,6 +12,9 @@ import {
   MIN_DECADE_LABEL_SPACING_PX,
   RULER_HEIGHT,
   RULER_LABEL_ROW_HEIGHT,
+  zoomAnimationCounterScaleCss,
+  zoomAnimationGroupTransformCss,
+  type ZoomAnimationHandle,
 } from './options';
 import styles from './YearAxis.module.css';
 
@@ -59,7 +62,11 @@ function decadeLabelsInRange(startYear: number, endYear: number, xScale: d3.Scal
 // a plain positioned list, no D3 join, since there's no per-item enter/exit
 // choreography here to justify one — and so are windowed to visibleStartYear/
 // visibleEndYear, same as everything else.
-export function YearAxis({ xScale, visibleStartYear, visibleEndYear }: YearAxisProps) {
+export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(function YearAxis(
+  { xScale, visibleStartYear, visibleEndYear },
+  ref,
+) {
+  const axisRef = useRef<HTMLDivElement>(null);
   const totalWidth = xScale.range()[1] ?? 0;
   const pixelsPerYear = xScale(1) - xScale(0);
   const showDecadeLabels = pixelsPerYear * DECADE_STEP_YEARS >= MIN_DECADE_LABEL_SPACING_PX;
@@ -95,8 +102,46 @@ export function YearAxis({ xScale, visibleStartYear, visibleEndYear }: YearAxisP
     '--century-tick-offset-px': `${pixelsPerYear * CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
 
+  // A zoom animation's rAF loop (see the imperative handle below) writes a
+  // transform straight to this root div and every .year-axis-label-scale
+  // span every tick, without going through React (these are plain HTML, no
+  // D3) — reset it here, in the same effect that lands new label positions
+  // for a changed xScale, so the commit is atomic (see PeopleLane's
+  // identical comment for why this can't be a frame later).
+  useLayoutEffect(() => {
+    const axis = axisRef.current;
+    if (!axis) return;
+    axis.style.transform = '';
+    axis.querySelectorAll<HTMLElement>('.year-axis-label-scale').forEach((el) => {
+      el.style.transform = '';
+    });
+  }, [xScale]);
+
+  // TimelineCanvas's single rAF driver calls this every animation-frame
+  // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
+  // comment for the mechanism. The whole axis (ruler backgrounds + label
+  // row) gets the group transform; each label additionally gets a counter-
+  // scale on an inner span so its own text doesn't stretch — the outer
+  // span (queried here) keeps the unanimated `left`/centering that
+  // positions it, untouched, so this never has to reason about composing
+  // with that existing transform.
+  useImperativeHandle(
+    ref,
+    () => ({
+      applyZoomTransform(transform) {
+        const axis = axisRef.current;
+        if (!axis) return;
+        axis.style.transform = zoomAnimationGroupTransformCss(transform);
+        axis.querySelectorAll<HTMLElement>('.year-axis-label-scale').forEach((el) => {
+          el.style.transform = zoomAnimationCounterScaleCss(transform.sx);
+        });
+      },
+    }),
+    [],
+  );
+
   return (
-    <div className={styles.axis} style={{ width: totalWidth, height: AXIS_HEIGHT }}>
+    <div ref={axisRef} className={styles.axis} style={{ width: totalWidth, height: AXIS_HEIGHT }}>
       <div className={styles.rulerRow} style={{ width: totalWidth }}>
         <div className={`year-axis-ruler-bce ${styles.ruler}`} style={bceRulerStyle} />
         <div className={`year-axis-ruler ${styles.ruler}`} style={ceRulerStyle} />
@@ -109,11 +154,11 @@ export function YearAxis({ xScale, visibleStartYear, visibleEndYear }: YearAxisP
               className={`year-axis-label ${styles.label} ${label.isCentury ? `year-axis-label-century ${styles.centuryLabel}` : ''}`}
               style={{ left: label.x }}
             >
-              {formatYear(label.year)}
+              <span className={`year-axis-label-scale ${styles.labelScale}`}>{formatYear(label.year)}</span>
             </span>
           ) : null,
         )}
       </div>
     </div>
   );
-}
+});

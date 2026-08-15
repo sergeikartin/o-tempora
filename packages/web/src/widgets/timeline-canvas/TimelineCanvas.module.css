@@ -71,6 +71,11 @@
   height: 100%;
   display: flex;
   pointer-events: none;
+  /* The zoom-button animation (TimelineCanvas.tsx) scales this layer's own
+     width from a JS rAF loop, not a CSS transition — origin 0 0 makes that
+     scale pivot from this element's own left edge (year MIN_YEAR), matching
+     the SVG lanes' identical `translate(tx) scale(sx)` group transform. */
+  transform-origin: 0 0;
 }
 
 .gridline {

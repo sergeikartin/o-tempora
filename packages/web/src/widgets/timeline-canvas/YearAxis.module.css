@@ -1,5 +1,11 @@
 .axis {
   display: block;
+  /* The zoom-button animation (YearAxis.tsx) scales this box's own width
+     from a JS rAF loop, not a CSS transition — origin 0 0 makes that scale
+     pivot from this element's own left edge (year MIN_YEAR), matching the
+     SVG lanes' identical `translate(tx) scale(sx)` group transform, which
+     always operates from SVG user-space's own origin. */
+  transform-origin: 0 0;
 }
 
 /* Holds the BCE/CE ruler halves (YearAxis.tsx) side by side — split at year
@@ -60,4 +66,14 @@
   font-weight: 600;
   /* Mirrors color-text-primary; inlined pending ticket 05. */
   color: #241a10;
+}
+
+/* The zoom-button animation's own counter-scale target (YearAxis.tsx) — a
+   separate inner element from .label itself so the animation's per-tick
+   `transform` write never has to compose with .label's own always-on
+   `translateX(-50%)` centering rule; default transform-origin (center)
+   is exactly the pivot wanted, since .label has already centered this
+   span over its tick. */
+.labelScale {
+  display: inline-block;
 }

@@ -1,3 +1,12 @@
+/* The zoom-button animation (ConflictsMilestonesLane.tsx) writes
+   `translate(tx) scale(sx)` to this group from a JS rAF loop, not a CSS
+   transition — origin 0 0 makes that scale pivot from SVG user-space's own
+   origin (year MIN_YEAR), the same coordinate system the group's marks are
+   laid out in. */
+:global(.zoomGroup) {
+  transform-origin: 0 0;
+}
+
 .svg {
   display: block;
   /* An exiting mark keeps its last-committed position (and fades there) for
@@ -27,6 +36,12 @@
 
 .dot {
   transition: r var(--motion-duration-fast) var(--motion-easing);
+  /* The zoom-button animation's counter-scale (ConflictsMilestonesLane.tsx)
+     writes a bare `scale(1/sx, 1)` here — fill-box + the default center
+     transform-origin pivots it at the circle's own center, so it doesn't
+     need to (a fresh instance of the same pattern .label below already
+     uses for its own counter-scale). */
+  transform-box: fill-box;
 }
 
 /* Absolute px (not multipliers of PERIOD_LINE_HEIGHT/POINT_RADIUS in
