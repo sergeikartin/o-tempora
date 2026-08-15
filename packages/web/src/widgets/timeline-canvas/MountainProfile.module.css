@@ -3,9 +3,19 @@
    click/drag math never needs to guess at .scrollContainer's geometry.
    Height sits in the 48-64px band the ADR calls for, versus the old
    scrollbar's ~14px. */
-.track {
+/* Un-clipped positioning root for .tooltip — .track itself needs
+   overflow: hidden to bound the ridge/viewport-rect, but that same rule
+   would clip the tooltip's bottom: 100% offset, which deliberately floats
+   it above the track. Sized to .track via flex: 0 0 auto (moved up from
+   .track since this is now the direct flex item in TimelineCanvas's
+   column). */
+.wrapper {
   position: relative;
   flex: 0 0 auto;
+}
+
+.track {
+  position: relative;
   height: 56px;
   overflow: hidden;
   /* Mirrors color-bg-surface; real token wiring is ticket 05 (see

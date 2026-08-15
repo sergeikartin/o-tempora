@@ -197,35 +197,37 @@ export function MountainProfile({
   }
 
   return (
-    <div
-      ref={trackRef}
-      className={styles.track}
-      data-testid="mountain-profile-track"
-      aria-label={m.minimapAriaLabel()}
-      onPointerDown={handleTrackPointerDown}
-      onPointerMove={handleTrackPointerMove}
-      onPointerLeave={handleTrackPointerLeave}
-    >
-      <svg
-        className={styles.ridge}
-        data-testid="mountain-profile-ridge"
-        viewBox={`0 0 ${bucketCount - 1} ${RIDGE_VIEWBOX_HEIGHT}`}
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <line className={styles.baseline} x1={0} x2={bucketCount - 1} y1={RIDGE_BASELINE} y2={RIDGE_BASELINE} />
-        <path className={styles.peopleArea} data-testid="mountain-profile-people-area" d={peoplePath} />
-        <path className={styles.eventsArea} data-testid="mountain-profile-events-area" d={eventsPath} />
-      </svg>
+    <div className={styles.wrapper}>
       <div
-        className={isRectDragging ? `${styles.viewportRect} ${styles.dragging}` : styles.viewportRect}
-        data-testid="mountain-profile-viewport-rect"
-        style={{ width: `${rectWidthRatio * 100}%`, left: `${rectLeftRatio * 100}%` }}
-        onPointerDown={handleRectPointerDown}
-        onPointerMove={handleRectPointerMove}
-        onPointerUp={endRectDrag}
-        onPointerCancel={endRectDrag}
-      />
+        ref={trackRef}
+        className={styles.track}
+        data-testid="mountain-profile-track"
+        aria-label={m.minimapAriaLabel()}
+        onPointerDown={handleTrackPointerDown}
+        onPointerMove={handleTrackPointerMove}
+        onPointerLeave={handleTrackPointerLeave}
+      >
+        <svg
+          className={styles.ridge}
+          data-testid="mountain-profile-ridge"
+          viewBox={`0 0 ${bucketCount - 1} ${RIDGE_VIEWBOX_HEIGHT}`}
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <line className={styles.baseline} x1={0} x2={bucketCount - 1} y1={RIDGE_BASELINE} y2={RIDGE_BASELINE} />
+          <path className={styles.peopleArea} data-testid="mountain-profile-people-area" d={peoplePath} />
+          <path className={styles.eventsArea} data-testid="mountain-profile-events-area" d={eventsPath} />
+        </svg>
+        <div
+          className={isRectDragging ? `${styles.viewportRect} ${styles.dragging}` : styles.viewportRect}
+          data-testid="mountain-profile-viewport-rect"
+          style={{ width: `${rectWidthRatio * 100}%`, left: `${rectLeftRatio * 100}%` }}
+          onPointerDown={handleRectPointerDown}
+          onPointerMove={handleRectPointerMove}
+          onPointerUp={endRectDrag}
+          onPointerCancel={endRectDrag}
+        />
+      </div>
       {hover && (
         <div
           className={styles.tooltip}
