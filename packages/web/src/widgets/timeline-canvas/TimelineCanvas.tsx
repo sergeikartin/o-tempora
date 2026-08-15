@@ -641,11 +641,11 @@ export function TimelineCanvas({
   return (
     <div className={styles.wrapper}>
       <div className={styles.zoomControls}>
-        <button type="button" onClick={() => zoom(computeZoomOut)} aria-label={m.zoomOutAriaLabel()}>
-          −
-        </button>
         <button type="button" onClick={() => zoom(computeZoomIn)} aria-label={m.zoomInAriaLabel()}>
           +
+        </button>
+        <button type="button" onClick={() => zoom(computeZoomOut)} aria-label={m.zoomOutAriaLabel()}>
+          −
         </button>
       </div>
       <div

@@ -7,19 +7,48 @@
   height: 100vh;
 }
 
+/* Joined vertical segmented group — same pattern as DataDepthSwitch's
+   horizontal segmented control (border/radius on the group, a divider
+   between buttons, no gap), just rotated 90°. */
 .zoomControls {
   position: absolute;
   top: 8px;
   right: 8px;
   z-index: 1;
   display: flex;
-  gap: 4px;
+  flex-direction: column;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .zoomControls button {
   width: 28px;
   height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-bottom: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 1;
   cursor: pointer;
+  transition: background-color var(--motion-duration-fast) var(--motion-easing);
+}
+
+.zoomControls button:last-child {
+  border-bottom: none;
+}
+
+.zoomControls button:hover {
+  background: var(--color-bg-surface);
+}
+
+.zoomControls button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
 }
 
 /* The container's own scroll position *is* the time-axis sync (ADR 0001's
