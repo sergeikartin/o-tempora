@@ -63,9 +63,15 @@
   border-left: 1px solid #8a2a1a; /* color-accent-selected */
   border-right: 1px solid #8a2a1a;
   cursor: grab;
-  /* Only background-color — left/width are updated on every drag frame by
-     MountainProfile.tsx, so transitioning those would lag behind the
-     pointer instead of tracking it. */
+  /* No left/width transition: a track click-to-jump already arrives here as
+     a stream of per-frame scrollLeft values eased by TimelineCanvas's own
+     rAF loop (the same values driving the lanes/axis), so this rect already
+     glides in lockstep with them just by re-rendering on every one. Adding
+     a CSS transition on top would smooth a target that's already moving,
+     making the rect visibly lag the lanes instead of matching them. Every
+     other pan source (drag-to-pan, native scroll, this rect's own drag)
+     updates scrollLeft 1:1 with no animation on the lanes either, so
+     instant tracking here is the consistent behavior, not a gap. */
   transition: background-color var(--motion-duration-fast) var(--motion-easing);
 }
 

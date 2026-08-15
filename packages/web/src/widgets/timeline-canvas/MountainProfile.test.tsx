@@ -25,6 +25,7 @@ const defaultProps = {
   viewportWidthPx: 800,
   scrollLeft: 1000,
   onScrollLeftChange: () => {},
+  onScrollLeftJump: () => {},
 };
 
 test('renders a non-empty ridge path for a series with active entities, and a flat one for an empty series', () => {
@@ -41,9 +42,9 @@ test('renders a non-empty ridge path for a series with active entities, and a fl
 });
 
 test('a press on the track jumps the viewport toward the click position', () => {
-  const onScrollLeftChange = vi.fn();
+  const onScrollLeftJump = vi.fn();
   const { getByTestId } = render(
-    <MountainProfile {...defaultProps} people={[]} onScrollLeftChange={onScrollLeftChange} />,
+    <MountainProfile {...defaultProps} people={[]} onScrollLeftJump={onScrollLeftJump} />,
   );
   const track = getByTestId('mountain-profile-track');
   Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
@@ -54,7 +55,7 @@ test('a press on the track jumps the viewport toward the click position', () => 
 
   // Click dead-center of the track jumps to center the full domain on that
   // point: clickRatio 0.5 * totalWidth(4000) - half the track width(100).
-  expect(onScrollLeftChange).toHaveBeenCalledWith(1900);
+  expect(onScrollLeftJump).toHaveBeenCalledWith(1900);
 });
 
 test('dragging the viewport rect reports a scrollLeft delta proportional to the drag distance', () => {
