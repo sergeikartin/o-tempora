@@ -1,5 +1,12 @@
 .svg {
   display: block;
+  /* An exiting mark keeps its last-committed position (and fades there) for
+     the length of the exit transition, but totalHeight
+     (ConflictsMilestonesLane.tsx) shrinks to the new, filtered row count in
+     the same commit the fade starts — SVG roots clip to their own height by
+     default, so without this an exit fade at a since-dropped row is
+     invisible instead of fading. */
+  overflow: visible;
 }
 
 .line,

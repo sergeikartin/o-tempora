@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useLayoutEffect, useMemo, useRef } from 'react';
 import * as d3 from 'd3';
 import type { Person } from '../../shared/types';
 import { DOMAIN_COLORS } from '../../shared/config';
+import { motionDurationMs } from '../../shared/lib/motion';
 import { compactRows, mapPeople } from './map-to-items';
 import {
   estimateLabelWidthPx,
@@ -42,6 +43,7 @@ interface PeopleLaneProps {
 // claims the row via pixelInterval above rather than moving to its own band.
 export function PeopleLane({ people, xScale, staticRowOf }: PeopleLaneProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const hasMountedRef = useRef(false);
 
   const items = useMemo(() => mapPeople(people), [people]);
   // compactRows, not a fresh assignRows call — see map-to-items.ts's
@@ -83,65 +85,116 @@ export function PeopleLane({ people, xScale, staticRowOf }: PeopleLaneProps) {
   // (non-CSS-Module) marker classes drive the join's enter/update/exit
   // matching; CSS-Module classes ride alongside purely for styling and are
   // never used as join selectors.
-  useEffect(() => {
+  //
+  // useLayoutEffect, not useEffect: this write must land before paint,
+  // otherwise a filter/zoom change that also touches xScale in the same
+  // commit shows one stale frame before the marks catch up.
+  useLayoutEffect(() => {
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
+    const durationMs = motionDurationMs('--motion-duration-base');
+
+    // Row 0 sits at the *bottom* of the svg (personLabelYForRow/
+    // personLineCenterYForRow both compute from rowCount, not just row), and
+    // .bottomAlign bottom-aligns the svg within its wrapper — so an instant
+    // height change moves every mark's on-screen position, even one whose
+    // own row didn't change, before the row-shift transition below corrects
+    // it back: a visible jump-then-slide. Transitioning height with the
+    // exact same duration (and default easing) as the row-shift below makes
+    // the two cancel out instead: a mark whose row didn't change doesn't
+    // visibly move at all, and one that did glides directly, with no jump.
+    // React no longer sets this attribute (removed from the <svg> JSX below)
+    // so D3 fully owns it, same as every mark attribute already is.
+    if (hasMountedRef.current) {
+      svg.transition().duration(durationMs).attr('height', totalHeight);
+    } else {
+      svg.attr('height', totalHeight);
+      hasMountedRef.current = true;
+    }
 
     const personGroups = svg
       .select<SVGGElement>('g.people')
       .selectAll<SVGGElement, PersonLayout>('g.d3-person')
       .data(layout, (d) => d.id)
-      .join((enter) => {
-        const g = enter.append('g').attr('class', 'd3-person');
-        // Invisible, oversized rect behind the line/label — the real hover
-        // and click target, since a 6px line and its label are too thin and
-        // too far apart (see HIT_AREA_PADDING_PX) to hit reliably on their
-        // own. Appended first so it paints behind the visible marks.
-        g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
-        g.append('line')
-          .attr('class', `d3-line ${styles.line}`)
-          .attr('stroke-width', PERIOD_LINE_HEIGHT)
-          .attr('stroke-linecap', 'round');
-        g.append('text').attr('class', `d3-name ${styles.name}`).attr('dominant-baseline', 'hanging');
-        return g;
-      });
+      .join(
+        (enter) => {
+          const g = enter.append('g').attr('class', 'd3-person').style('opacity', 0);
+          // Invisible, oversized rect behind the line/label — the real hover
+          // and click target, since a 6px line and its label are too thin
+          // and too far apart (see HIT_AREA_PADDING_PX) to hit reliably on
+          // their own. Appended first so it paints behind the visible marks.
+          const hit = g.append('rect').attr('class', `d3-hit ${styles.hitArea}`);
+          const line = g
+            .append('line')
+            .attr('class', `d3-line ${styles.line}`)
+            .attr('stroke-width', PERIOD_LINE_HEIGHT)
+            .attr('stroke-linecap', 'round');
+          const name = g.append('text').attr('class', `d3-name ${styles.name}`).attr('dominant-baseline', 'hanging');
+          // A brand-new mark starts already at its target row — only a
+          // pre-existing mark's row *change* animates (below), via the
+          // shift transition on personGroups; an entering mark should just
+          // fade in, not also slide in from row 0.
+          hit
+            .attr('y', (d) => d.labelY - HIT_AREA_PADDING_PX)
+            .attr('height', (d) => d.lineY + PERIOD_LINE_HEIGHT / 2 - d.labelY + HIT_AREA_PADDING_PX * 2);
+          line.attr('y1', (d) => d.lineY).attr('y2', (d) => d.lineY);
+          name.attr('y', (d) => d.labelY);
+          g.transition().duration(durationMs).style('opacity', 1);
+          return g;
+        },
+        (update) => update,
+        (exit) =>
+          // pointer-events: none first, so a mark that's mid-fade-out can't
+          // still be hovered/clicked.
+          exit.style('pointer-events', 'none').transition().duration(durationMs).style('opacity', 0).remove(),
+      );
 
+    // x/fill/data-* attrs apply instantly — only a row change (the y-driven
+    // attrs below) animates. An entering mark already has these set (above),
+    // so re-setting them here is a no-op for it and a live update for one
+    // that was already on screen.
     personGroups
       .select<SVGRectElement>('.d3-hit')
       .attr('x', (d) => d.x1 - HIT_AREA_PADDING_PX)
-      .attr('y', (d) => d.labelY - HIT_AREA_PADDING_PX)
       .attr('width', (d) => d.hitX2 - d.x1 + HIT_AREA_PADDING_PX * 2)
-      .attr('height', (d) => d.lineY + PERIOD_LINE_HEIGHT / 2 - d.labelY + HIT_AREA_PADDING_PX * 2)
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'person');
+      .attr('data-entity-type', 'person')
+      .transition()
+      .duration(durationMs)
+      .attr('y', (d) => d.labelY - HIT_AREA_PADDING_PX)
+      .attr('height', (d) => d.lineY + PERIOD_LINE_HEIGHT / 2 - d.labelY + HIT_AREA_PADDING_PX * 2);
 
     personGroups
       .select<SVGLineElement>('.d3-line')
       .attr('x1', (d) => d.x1)
       .attr('x2', (d) => d.x2)
-      .attr('y1', (d) => d.lineY)
-      .attr('y2', (d) => d.lineY)
       .attr('stroke', (d) => d.fill)
       // Lets TimelineCanvas's delegated click listener resolve the source
       // entity (dynamic-tooltips spec §2's click-wiring architecture).
       .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', 'person');
+      .attr('data-entity-type', 'person')
+      .transition()
+      .duration(durationMs)
+      .attr('y1', (d) => d.lineY)
+      .attr('y2', (d) => d.lineY);
 
     personGroups
       .select<SVGTextElement>('.d3-name')
       .attr('x', (d) => d.x1)
-      .attr('y', (d) => d.labelY)
       .attr('fill', (d) => d.fill)
       // Same delegated-click wiring as the line above, so the label is an
       // equally valid click target for opening the detail drawer.
       .attr('data-entity-id', (d) => d.id)
       .attr('data-entity-type', 'person')
-      .text((d) => d.name);
-  }, [layout]);
+      .text((d) => d.name)
+      .transition()
+      .duration(durationMs)
+      .attr('y', (d) => d.labelY);
+  }, [layout, totalHeight]);
 
   return (
     <div className={styles.bottomAlign}>
-      <svg ref={svgRef} width={totalWidth} height={totalHeight} className={styles.svg}>
+      <svg ref={svgRef} width={totalWidth} className={styles.svg}>
         <g className="people" />
       </svg>
     </div>
