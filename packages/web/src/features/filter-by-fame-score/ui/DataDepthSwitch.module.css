@@ -15,10 +15,15 @@
   font: inherit;
   font-size: 12px;
   cursor: pointer;
+  transition: background-color var(--motion-duration-fast) var(--motion-easing);
 }
 
 .option:last-child {
   border-right: none;
+}
+
+.option:hover {
+  background: var(--color-bg-surface);
 }
 
 .option:focus-visible {
@@ -30,4 +35,10 @@
   background: var(--color-accent-selected);
   color: var(--color-bg-surface-raised);
   font-weight: 600;
+}
+
+/* Same specificity as .option:hover — placed after it so the selected
+   look (accent background) survives hovering an already-active option. */
+.optionActive:hover {
+  background: var(--color-accent-selected);
 }
