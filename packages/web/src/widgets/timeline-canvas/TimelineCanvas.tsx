@@ -13,6 +13,7 @@ import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from 
 import { DEFAULT_VIEWPORT_START, UN_REGION_TO_REGION, type ConflictsMilestonesFilterValue } from '../../shared/config';
 import { m } from '../../shared/paraglide/messages.js';
 import { motionDurationMs } from '../../shared/lib/motion';
+import { useIsMobileViewport } from '../../shared/lib/viewport';
 import type { FameScoreValues, FilteredCounts } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
@@ -23,6 +24,9 @@ import {
   defaultPixelsPerYear,
   FALLBACK_VIEWPORT_WIDTH_PX,
   MIN_YEAR,
+  MOBILE_DEFAULT_VISIBLE_YEARS,
+  pinchCenterYear,
+  pinchPixelsPerYear,
   VIEWPORT_BUFFER_RATIO,
   zoomAnimationDurationMs,
   zoomAnimationGroupTransform,
@@ -83,6 +87,12 @@ interface TimelineCanvasProps {
   // with a second copy of filterByFameScore/filterByOccupationDomain/
   // filterByRegion.
   onFilteredCountsChange?: (counts: FilteredCounts) => void;
+  // Mobile-only drawer toggle state, owned by App.tsx and shared with
+  // Sidebar — the toggle button itself lives here (mirroring the existing
+  // zoom-controls overlay's position, top-left instead of top-right)
+  // despite the drawer it opens living in a different widget.
+  isFilterDrawerOpen: boolean;
+  onToggleFilterDrawer: () => void;
 }
 
 export function TimelineCanvas({
@@ -95,7 +105,10 @@ export function TimelineCanvas({
   selectedConflictsMilestonesValues,
   onEntityClick,
   onFilteredCountsChange,
+  isFilterDrawerOpen,
+  onToggleFilterDrawer,
 }: TimelineCanvasProps) {
+  const isMobileViewport = useIsMobileViewport();
   const scrollRef = useRef<HTMLDivElement>(null);
   // People and Conflicts+Milestones are `position: sticky; left: 0` (see their CSS) so
   // each one's own vertical scrollbar stays docked to the viewport's right
@@ -161,13 +174,41 @@ export function TimelineCanvas({
   // render; isDragging is state purely to toggle the grab/grabbing cursor.
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef<{ pointerX: number; scrollLeft: number; moved: boolean } | null>(null);
+  // Pinch-to-zoom pointer tracking: a separate axis from mouse drag-to-pan
+  // above, engaging only once two concurrent non-mouse pointers are down on
+  // the same .scrollContainer (mouse drag and touch pinch never both engage
+  // for the same gesture — see handlePointerDown's dispatch below). Keyed
+  // by pointerId so either finger can lift first. pinchStartRef holds the
+  // gesture's fixed reference frame (mirrors zoom()'s own
+  // domReferencePixelsPerYear/centerYear/scrollLeftStart pattern below) —
+  // null while no two-finger gesture is in progress.
+  const pinchPointersRef = useRef<Map<number, { x: number; y: number }>>(new Map());
+  const pinchStartRef = useRef<{
+    distancePx: number;
+    startPixelsPerYear: number;
+    centerYear: number;
+    scrollLeftStart: number;
+    clientWidthPx: number;
+  } | null>(null);
+  // Live pixelsPerYear the in-flight pinch gesture is currently rendering
+  // at (via the same applyZoomAnimationTick transform path button-zoom
+  // uses) — read at gesture end to commit real state exactly once, same
+  // "commit once, at the end" shape as the button-zoom's
+  // zoomAnimationCurrentPixelsPerYearRef.
+  const pinchCurrentPixelsPerYearRef = useRef<number | null>(null);
   // Set by endDrag when a drag moved past DRAG_CLICK_SUPPRESSION_PX, read
   // and cleared by the delegated click listener below — a mouseup after a
   // real drag still fires a native click at the release point, which would
   // otherwise open whatever mark/label happens to be under the pointer when
   // the user was only trying to pan, not select something.
   const suppressNextClickRef = useRef(false);
-  const [pixelsPerYear, setPixelsPerYear] = useState(() => defaultPixelsPerYear(0));
+  // The lazy useState initializer runs exactly once, at mount, so reading
+  // isMobileViewport here already captures its mount-time value without
+  // needing a separate ref — same "first paint" scope the mobile default
+  // zoom decision calls for (options.ts's MOBILE_DEFAULT_VISIBLE_YEARS).
+  const [pixelsPerYear, setPixelsPerYear] = useState(() =>
+    defaultPixelsPerYear(0, isMobileViewport ? MOBILE_DEFAULT_VISIBLE_YEARS : undefined),
+  );
   // Set by a zoom click to the year at the viewport's center just before the
   // change, so the effect below can re-center the scroll position on it once
   // the new xScale is in state — zooming in/out around what the user was
@@ -356,10 +397,13 @@ export function TimelineCanvas({
   useLayoutEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
-    measuredPixelsPerYearRef.current = defaultPixelsPerYear(container.clientWidth);
+    measuredPixelsPerYearRef.current = defaultPixelsPerYear(
+      container.clientWidth,
+      isMobileViewport ? MOBILE_DEFAULT_VISIBLE_YEARS : undefined,
+    );
     setPixelsPerYear(measuredPixelsPerYearRef.current);
     setViewportWidthPx(container.clientWidth);
-  }, []);
+  }, [isMobileViewport]);
 
   useLayoutEffect(() => {
     const container = scrollRef.current;
@@ -389,8 +433,85 @@ export function TimelineCanvas({
     }
   }, [pixelsPerYear, scale, syncScrollLeft]);
 
+  // Second pointer's pointerdown: the gesture's fixed reference frame,
+  // captured once — the same technique zoom() below uses to compute
+  // centerYear for button-zoom, just anchored to the pinch midpoint instead
+  // of the viewport center.
+  function handlePinchPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
+    const container = scrollRef.current;
+    if (!container) return;
+    pinchPointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (pinchPointersRef.current.size !== 2) return;
+    cancelPanAnimation();
+    const [pointA, pointB] = Array.from(pinchPointersRef.current.values());
+    if (!pointA || !pointB) return;
+    const distancePx = Math.hypot(pointA.x - pointB.x, pointA.y - pointB.y);
+    const midpointClientX = (pointA.x + pointB.x) / 2;
+    const rect = container.getBoundingClientRect();
+    const scrollLeftStart = container.scrollLeft;
+    const clientWidthPx = container.clientWidth;
+    pinchStartRef.current = {
+      distancePx,
+      startPixelsPerYear: pixelsPerYear,
+      centerYear: pinchCenterYear(scale, scrollLeftStart, midpointClientX - rect.left),
+      scrollLeftStart,
+      clientWidthPx,
+    };
+  }
+
+  // Recomputes the live two-point distance on every subsequent pointermove
+  // and feeds it straight into applyZoomAnimationTick — the same cheap
+  // group-transform path the button-zoom's rAF tick() uses, so marks scale
+  // visually without a full per-mark re-render for the whole gesture.
+  function handlePinchPointerMove(event: ReactPointerEvent<HTMLDivElement>) {
+    if (!pinchPointersRef.current.has(event.pointerId)) return;
+    pinchPointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    const start = pinchStartRef.current;
+    if (!start || pinchPointersRef.current.size !== 2) return;
+    const [pointA, pointB] = Array.from(pinchPointersRef.current.values());
+    if (!pointA || !pointB) return;
+    const currentDistancePx = Math.hypot(pointA.x - pointB.x, pointA.y - pointB.y);
+    const currentPixelsPerYear = pinchPixelsPerYear(
+      start.startPixelsPerYear,
+      start.distancePx,
+      currentDistancePx,
+      start.clientWidthPx,
+    );
+    pinchCurrentPixelsPerYearRef.current = currentPixelsPerYear;
+    applyZoomAnimationTick(
+      zoomAnimationGroupTransform({
+        startPixelsPerYear: start.startPixelsPerYear,
+        currentPixelsPerYear,
+        minYear: MIN_YEAR,
+        centerYear: start.centerYear,
+        scrollLeftStart: start.scrollLeftStart,
+        clientWidthPx: start.clientWidthPx,
+      }),
+    );
+  }
+
+  // The second-to-last pointer's pointerup/pointercancel ends the gesture —
+  // commits exactly once, the same single-commit-at-gesture-end pattern the
+  // button-zoom's tick() performs at t === 1. No discrete zoom-step list to
+  // snap to: the gesture's own live distance ratio is what commits, already
+  // clamped by pinchPixelsPerYear's reuse of clampPixelsPerYear.
+  function endPinch(event: ReactPointerEvent<HTMLDivElement>) {
+    pinchPointersRef.current.delete(event.pointerId);
+    const start = pinchStartRef.current;
+    if (!start || pinchPointersRef.current.size >= 2) return;
+    pinchStartRef.current = null;
+    const finalPixelsPerYear = pinchCurrentPixelsPerYearRef.current ?? start.startPixelsPerYear;
+    pinchCurrentPixelsPerYearRef.current = null;
+    pendingCenterYearRef.current = start.centerYear;
+    setPixelsPerYear(finalPixelsPerYear);
+  }
+
   function handlePointerDown(event: ReactPointerEvent<HTMLDivElement>) {
-    if (event.pointerType !== 'mouse' || event.button !== 0) return;
+    if (event.pointerType !== 'mouse') {
+      handlePinchPointerDown(event);
+      return;
+    }
+    if (event.button !== 0) return;
     const container = scrollRef.current;
     if (!container) return;
     cancelPanAnimation();
@@ -410,6 +531,10 @@ export function TimelineCanvas({
   }
 
   function handlePointerMove(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== 'mouse') {
+      handlePinchPointerMove(event);
+      return;
+    }
     const drag = dragStartRef.current;
     const container = scrollRef.current;
     if (!drag || !container) return;
@@ -419,6 +544,10 @@ export function TimelineCanvas({
   }
 
   function endDrag(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== 'mouse') {
+      endPinch(event);
+      return;
+    }
     const drag = dragStartRef.current;
     if (!drag) return;
     dragStartRef.current = null;
@@ -640,6 +769,17 @@ export function TimelineCanvas({
 
   return (
     <div className={styles.wrapper}>
+      {isMobileViewport && (
+        <button
+          type="button"
+          className={styles.drawerToggle}
+          onClick={onToggleFilterDrawer}
+          aria-label={m.filtersAriaLabel()}
+          aria-expanded={isFilterDrawerOpen}
+        >
+          ☰
+        </button>
+      )}
       <div className={styles.zoomControls}>
         <button type="button" onClick={() => zoom(computeZoomIn)} aria-label={m.zoomInAriaLabel()}>
           +
@@ -697,16 +837,18 @@ export function TimelineCanvas({
           />
         </div>
       </div>
-      <MountainProfile
-        people={filteredPeople}
-        conflicts={filteredConflicts}
-        milestones={filteredMilestones}
-        totalWidth={totalWidth}
-        viewportWidthPx={viewportWidthPx}
-        scrollLeft={scrollLeft}
-        onScrollLeftChange={handleScrollLeftChange}
-        onScrollLeftJump={handleTrackJump}
-      />
+      {!isMobileViewport && (
+        <MountainProfile
+          people={filteredPeople}
+          conflicts={filteredConflicts}
+          milestones={filteredMilestones}
+          totalWidth={totalWidth}
+          viewportWidthPx={viewportWidthPx}
+          scrollLeft={scrollLeft}
+          onScrollLeftChange={handleScrollLeftChange}
+          onScrollLeftJump={handleTrackJump}
+        />
+      )}
     </div>
   );
 }

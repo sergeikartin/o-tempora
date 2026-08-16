@@ -15,3 +15,15 @@
   height: 100vh;
 }
 
+/* Below the mobile breakpoint, the sidebar/detail-panel become overlays
+   (fixed position, see their own CSS) rather than layout columns, so the
+   canvas is the only thing actually in flow — letting the page grow taller
+   than the viewport and scroll normally (min-height, not a hard height)
+   rather than clipping content that doesn't fit one phone screen. */
+@media (max-width: 640px) {
+  .layout {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+

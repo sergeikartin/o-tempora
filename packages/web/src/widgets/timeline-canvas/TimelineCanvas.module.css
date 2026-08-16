@@ -7,6 +7,34 @@
   height: 100vh;
 }
 
+/* Mirrors .zoomControls' own position/sizing, top-left instead of top-right
+   — mobile-only (rendered conditionally in TimelineCanvas.tsx on
+   useIsMobileViewport(), not gated here by a media query, since it also
+   needs to not exist at all for non-mobile screen readers/tab order). */
+.drawerToggle {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.drawerToggle:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+
 /* Joined vertical segmented group — same pattern as DataDepthSwitch's
    horizontal segmented control (border/radius on the group, a divider
    between buttons, no gap), just rotated 90°. */
@@ -20,6 +48,18 @@
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
+}
+
+/* Touch input gets pinch-to-zoom instead (the pointer-tracking handlers on
+   .scrollContainer below) — a visually-interactive button that silently
+   does nothing on touch would read as broken, so it's hidden rather than
+   left present-but-inert. Capability-gated (pointer: coarse), not the
+   width-based mobile breakpoint: a wide touch tablet still gets pinch
+   instead of buttons even though it keeps the desktop layout otherwise. */
+@media (pointer: coarse) {
+  .zoomControls {
+    display: none;
+  }
 }
 
 .zoomControls button {
@@ -77,6 +117,15 @@
   cursor: grab;
   /* Mirrors color-bg-base; real token wiring is ticket 05. */
   background-color: #f2e9d2;
+  /* Keeps native single-finger horizontal swipe-to-scroll working exactly
+     as it does today, while stopping the browser from intercepting a
+     two-finger gesture as native page pinch-zoom, so the pinch pointer
+     handlers above actually receive both touches. Scoped to this element
+     only — everywhere else on the page (drawer, bottom sheet, their text)
+     keeps native pinch-zoom available as an accessibility fallback for
+     low-vision users relying on OS/browser zoom, since nothing there sets
+     touch-action. */
+  touch-action: pan-x;
 }
 
 .scrollContainer::-webkit-scrollbar {
