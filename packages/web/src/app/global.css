@@ -57,6 +57,17 @@ body,
   height: 100%;
 }
 
+/* Every intentional scroll region (the timeline's own scrollContainer,
+   lanes) manages its own overflow internally — nothing should ever grow the
+   document past the viewport. Clips rather than hides so it doesn't force
+   overflow-y to auto per the overflow-x/y coupling rule (see
+   ConflictsMilestonesLane.module.css's own comment on that pitfall);
+   without this, MountainProfile's hover tooltip pokes past the window edge
+   near either end of the track and triggers real page scrollbars. */
+html {
+  overflow-x: clip;
+}
+
 /* docs/design-tokens.md's Typography table: Archivo for all UI chrome,
    entry labels, and data (year ranges use font-variant-numeric:
    tabular-nums where they're set, not a separate mono face). Set once here
