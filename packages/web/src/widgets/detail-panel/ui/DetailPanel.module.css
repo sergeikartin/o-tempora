@@ -118,3 +118,28 @@
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
+
+/* Below the mobile breakpoint, the same panel/open contract (component,
+   props, open-class toggle — all unchanged) is re-anchored to the bottom
+   edge as a sheet instead of the right edge as a side drawer, sized to fit
+   the narrow width instead of a fixed 340px column. Declared after the base
+   .panel/.panel.open rules above so it wins the cascade. */
+@media (max-width: 640px) {
+  .panel {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 80vh;
+    border-left: none;
+    border-top: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(100%);
+  }
+
+  .panel.open {
+    transform: translateY(0);
+  }
+}

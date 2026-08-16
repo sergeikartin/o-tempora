@@ -3,6 +3,9 @@ import {
   buildXScale,
   clampPixelsPerYear,
   defaultPixelsPerYear,
+  MOBILE_DEFAULT_VISIBLE_YEARS,
+  pinchCenterYear,
+  pinchPixelsPerYear,
   pixelsPerYearBounds,
   zoomIn,
   zoomOut,
@@ -87,6 +90,10 @@ test('defaultPixelsPerYear targets the default 120-year (1740-1860) viewport wid
   expect(defaultPixelsPerYear(1000)).toBe(1000 / 120);
 });
 
+test('defaultPixelsPerYear targets a given visibleYears override instead, e.g. MOBILE_DEFAULT_VISIBLE_YEARS', () => {
+  expect(defaultPixelsPerYear(1000, MOBILE_DEFAULT_VISIBLE_YEARS)).toBe(1000 / MOBILE_DEFAULT_VISIBLE_YEARS);
+});
+
 test('zoomIn increases pixelsPerYear by the zoom step, clamped to the zoomed-in bound', () => {
   const start = 10;
   expect(zoomIn(start, 1000)).toBeCloseTo(start * 1.2);
@@ -97,6 +104,27 @@ test('zoomOut decreases pixelsPerYear by the zoom step, clamped to the zoomed-ou
   const start = 10;
   expect(zoomOut(start, 1000)).toBeCloseTo(start / 1.2);
   expect(zoomOut(0.1, 1000)).toBe(1000 / ZOOM_MAX_YEARS);
+});
+
+test('pinchPixelsPerYear scales startPixelsPerYear by the live distance ratio', () => {
+  expect(pinchPixelsPerYear(10, 100, 150, 1000)).toBeCloseTo(15); // fingers spread 1.5x -> zoom in 1.5x
+  expect(pinchPixelsPerYear(10, 100, 50, 1000)).toBeCloseTo(5); // fingers pinched to 0.5x -> zoom out 0.5x
+});
+
+test('pinchPixelsPerYear clamps the result to the same bounds as zoomIn/zoomOut', () => {
+  expect(pinchPixelsPerYear(1000, 100, 1000, 1000)).toBe(1000 / ZOOM_MIN_YEARS);
+  expect(pinchPixelsPerYear(0.1, 100, 1, 1000)).toBe(1000 / ZOOM_MAX_YEARS);
+});
+
+test('pinchPixelsPerYear falls back to a 1x ratio rather than dividing by a zero start distance', () => {
+  expect(pinchPixelsPerYear(10, 0, 150, 1000)).toBe(10);
+});
+
+test('pinchCenterYear resolves the year at a midpoint offset the same way zoom() resolves its viewport-center year', () => {
+  const { scale } = buildXScale(5);
+  const scrollLeft = 200;
+  const midpointOffsetPx = 50;
+  expect(pinchCenterYear(scale, scrollLeft, midpointOffsetPx)).toBeCloseTo(scale.invert(scrollLeft + midpointOffsetPx));
 });
 
 test('DOMAIN_COLORS has one entry per OccupationDomain, no duplicate hex values', () => {

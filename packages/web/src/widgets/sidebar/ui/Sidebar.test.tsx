@@ -21,6 +21,8 @@ function renderSidebar(overrides: Partial<SidebarProps> = {}) {
       onToggleRegion={vi.fn()}
       selectedConflictsMilestonesValues={[]}
       onToggleConflictsMilestonesValue={vi.fn()}
+      isOpen={false}
+      onClose={vi.fn()}
       {...overrides}
     />,
   );
@@ -97,4 +99,101 @@ test('clicking the Conflicts pill calls onToggleConflictsMilestonesValue with \'
   fireEvent.click(getByLabelText('Filter by Conflicts'));
 
   expect(onToggleConflictsMilestonesValue).toHaveBeenCalledWith('conflicts');
+});
+
+test('closed (isOpen: false) renders no backdrop and no open class on the sidebar', () => {
+  const { container, queryByLabelText } = renderSidebar({ isOpen: false });
+
+  expect(queryByLabelText('Close')).toBeNull();
+  expect(container.querySelector('[class*="open"]')).toBeNull();
+});
+
+test('open (isOpen: true) renders a backdrop and an open class on the sidebar', () => {
+  const { container, getByLabelText } = renderSidebar({ isOpen: true });
+
+  expect(getByLabelText('Close')).toBeTruthy();
+  expect(container.querySelector('aside[class*="open"]')).toBeTruthy();
+});
+
+test('clicking the backdrop calls onClose', () => {
+  const onClose = vi.fn();
+  const { getByLabelText } = renderSidebar({ isOpen: true, onClose });
+
+  fireEvent.click(getByLabelText('Close'));
+
+  expect(onClose).toHaveBeenCalledTimes(1);
+});
+
+test('below the mobile breakpoint, a closed drawer is inert (off-screen filter controls are not keyboard/screen-reader reachable); an open one is not', () => {
+  const originalMatchMedia = window.matchMedia;
+  window.matchMedia = ((query: string) => ({
+    matches: query.includes('max-width'),
+    media: query,
+    onchange: null,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    addListener: () => {},
+    removeListener: () => {},
+    dispatchEvent: () => false,
+  })) as unknown as typeof window.matchMedia;
+
+  try {
+    const { container, rerender } = renderSidebar({ isOpen: false });
+    expect(container.querySelector('aside')?.hasAttribute('inert')).toBe(true);
+
+    rerender(
+      <Sidebar
+        fameScoreValues={fameScoreValues}
+        onFameScoreChange={vi.fn()}
+        selectedDomains={[]}
+        onToggleDomain={vi.fn()}
+        selectedRegions={[]}
+        onToggleRegion={vi.fn()}
+        selectedConflictsMilestonesValues={[]}
+        onToggleConflictsMilestonesValue={vi.fn()}
+        isOpen={true}
+        onClose={vi.fn()}
+      />,
+    );
+    expect(container.querySelector('aside')?.hasAttribute('inert')).toBe(false);
+  } finally {
+    window.matchMedia = originalMatchMedia;
+  }
+});
+
+test('above the mobile breakpoint, the sidebar is never inert, even while isOpen is false (its default, desktop-only state)', () => {
+  const { container } = renderSidebar({ isOpen: false });
+  expect(container.querySelector('aside')?.hasAttribute('inert')).toBe(false);
+});
+
+test('below the mobile breakpoint, an explicit close button renders inside the drawer and calls onClose when clicked', () => {
+  const originalMatchMedia = window.matchMedia;
+  window.matchMedia = ((query: string) => ({
+    matches: query.includes('max-width'),
+    media: query,
+    onchange: null,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    addListener: () => {},
+    removeListener: () => {},
+    dispatchEvent: () => false,
+  })) as unknown as typeof window.matchMedia;
+
+  try {
+    const onClose = vi.fn();
+    const { getByLabelText, getByRole } = renderSidebar({ isOpen: true, onClose });
+
+    expect(getByRole('heading', { name: 'Filters' })).toBeTruthy();
+    fireEvent.click(getByLabelText('Close filters'));
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+  } finally {
+    window.matchMedia = originalMatchMedia;
+  }
+});
+
+test('above the mobile breakpoint, no drawer header (title + explicit close button) renders — desktop has no drawer to close', () => {
+  const { queryByLabelText, queryByRole } = renderSidebar({ isOpen: true });
+  expect(queryByLabelText('Close filters')).toBeNull();
+  expect(queryByRole('heading', { name: 'Filters' })).toBeNull();
 });

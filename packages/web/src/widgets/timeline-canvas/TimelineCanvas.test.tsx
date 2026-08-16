@@ -81,6 +81,8 @@ test('renders both lanes, each populated from its own dataset', () => {
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -111,6 +113,8 @@ test('the two lane sections and every year axis share the same rendered width', 
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -145,6 +149,8 @@ test('the full-height decade gridline is split into a BCE and a CE region with d
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -172,6 +178,8 @@ test('renders three year axes — top, between People and Conflicts+Milestones, 
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -189,6 +197,8 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -214,6 +224,8 @@ test('dragging the Mountain Profile viewport rect scrolls the container, proport
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -267,6 +279,8 @@ test('a mousedown on the scroll container content still pans it — the custom s
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -288,6 +302,8 @@ test('clicking the Mountain Profile track outside the viewport rect jumps the vi
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -319,6 +335,8 @@ test('releasing a drag suppresses the click event that follows it', () => {
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -348,6 +366,8 @@ test('a click preceded only by sub-threshold pointer jitter still registers', ()
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -372,6 +392,8 @@ test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll alrea
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
@@ -380,6 +402,123 @@ test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll alrea
   fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', clientX: 500, pointerId: 1 });
   fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', clientX: 460, pointerId: 1 });
   expect(scrollContainer.scrollLeft).toBe(100);
+});
+
+test('a single touch pointer does not start a pinch — zoom only engages once a second concurrent touch is down', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const initialWidth = personLineWidth(container);
+
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 400, clientY: 300 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 300, clientY: 300 });
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'touch', pointerId: 1 });
+
+  expect(personLineWidth(container)).toBe(initialWidth);
+});
+
+test('a mouse pointer never starts a pinch, even alongside a stray touch pointer id — only two concurrent non-mouse pointers engage it', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const initialWidth = personLineWidth(container);
+  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
+
+  expect(scrollContainer.scrollLeft).toBe(140); // drag-to-pan, unaffected by pinch tracking
+  expect(personLineWidth(container)).toBe(initialWidth); // never zoomed
+});
+
+test('a two-finger touch pinch scales pixelsPerYear by the live distance ratio, committing once the first finger lifts', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const initialWidth = personLineWidth(container);
+
+  // Two touches start 100px apart, spread to 200px apart (a 2x distance
+  // ratio) — mirrors pinching outward to zoom in.
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 400, clientY: 300 });
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 2, clientX: 500, clientY: 300 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 350, clientY: 300 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 2, clientX: 550, clientY: 300 });
+  // The first finger lifting is gesture end — commits immediately (no
+  // rAF-driven animation, unlike button-zoom), so no wait is needed.
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'touch', pointerId: 1 });
+
+  expect(personLineWidth(container)).toBeCloseTo(initialWidth * 2);
+
+  // The second finger's own pointerup afterward is a no-op — the gesture
+  // already committed and its state was cleared.
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'touch', pointerId: 2 });
+  expect(personLineWidth(container)).toBeCloseTo(initialWidth * 2);
+});
+
+test('a two-finger touch pinch pinching inward (fingers moving closer) zooms out', () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
+    />,
+  );
+  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const initialWidth = personLineWidth(container);
+
+  // Two touches start 200px apart, pinch together to 100px apart (a 0.5x
+  // distance ratio).
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 350, clientY: 300 });
+  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 2, clientX: 550, clientY: 300 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 400, clientY: 300 });
+  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 2, clientX: 500, clientY: 300 });
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'touch', pointerId: 2 });
+
+  expect(personLineWidth(container)).toBeCloseTo(initialWidth * 0.5);
 });
 
 function personLineWidth(container: HTMLElement): number {
@@ -419,6 +558,8 @@ test('the zoom-in button animates rendered lines wider, landing exactly on the t
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -447,6 +588,8 @@ test('a second zoom-in click fired while the first animation is still in flight 
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -475,6 +618,8 @@ test('a zoom animation moves People, Conflicts+Milestones marks, and the Year Ax
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -501,6 +646,8 @@ test("MountainProfile's viewport rect reflects the new range once a zoom animati
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const rect = getByTestId('mountain-profile-viewport-rect');
@@ -537,6 +684,8 @@ test('zooming does not change which entities are rendered — density is gated b
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -567,6 +716,8 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
@@ -581,6 +732,8 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
@@ -597,6 +750,8 @@ test('a person outside an active Occupation Domain filter is excluded; clearing 
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
@@ -611,6 +766,8 @@ test('a person outside an active Occupation Domain filter is excluded; clearing 
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
@@ -627,6 +784,8 @@ test('an item outside an active Region filter is excluded; clearing the filter r
       selectedRegions={['africa']}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0); // Korean War is tagged east-asia, not africa
@@ -641,6 +800,8 @@ test('an item outside an active Region filter is excluded; clearing the filter r
       selectedRegions={['east-asia']}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
@@ -657,6 +818,8 @@ test('an item with no region tags is excluded once a Region filter is active', (
       selectedRegions={['europe']}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   // fixtureMilestones' football entry has an empty regionTags array — it
@@ -675,6 +838,8 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const peopleLane = container.querySelector('[class*="peopleLane"]') as HTMLElement;
@@ -694,6 +859,8 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -711,6 +878,8 @@ test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
   const conflictsMilestonesLane = container.querySelector('[class*="conflictsMilestonesLane"]') as HTMLElement;
@@ -726,6 +895,8 @@ test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -744,6 +915,8 @@ test('clicking a mark reports its entity id/type via onEntityClick, resolved thr
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -765,6 +938,8 @@ test('clicking empty canvas space (no data-entity-id ancestor) does not call onE
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -786,6 +961,8 @@ test('a mark with an unrecognized data-entity-type is ignored rather than report
       selectedRegions={defaultSelectedRegions}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={onEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
     />,
   );
 

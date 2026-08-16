@@ -1,6 +1,7 @@
 import type { OccupationDomain, Region } from '../../../shared/types';
 import { SWITCH_LANGUAGE_HREF, type ConflictsMilestonesFilterValue } from '../../../shared/config';
 import { m } from '../../../shared/paraglide/messages.js';
+import { useIsMobileViewport } from '../../../shared/lib/viewport';
 import {
   DataDepthSwitch,
   FameScoreFilters,
@@ -25,6 +26,14 @@ interface SidebarProps {
   onToggleRegion: (region: Region) => void;
   selectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[];
   onToggleConflictsMilestonesValue: (value: ConflictsMilestonesFilterValue) => void;
+  // Drawer open/close state (mobile-only visual effect — see
+  // Sidebar.module.css's mobile breakpoint block; above that width this
+  // prop has no effect since .sidebar isn't positioned/transformed at all).
+  // The toggle button itself lives in TimelineCanvas, mirroring the
+  // existing zoom-controls overlay's position — App.tsx owns the state both
+  // widgets share.
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 // Always-visible alongside TimelineCanvas — Data Depth (the fame-score
@@ -47,32 +56,57 @@ export function Sidebar({
   onToggleRegion,
   selectedConflictsMilestonesValues,
   onToggleConflictsMilestonesValue,
+  isOpen,
+  onClose,
 }: SidebarProps) {
+  const isMobileViewport = useIsMobileViewport();
+  // Off-canvas (translateX, not display:none — Sidebar.module.css) is
+  // invisible but not otherwise non-interactive: without this, a closed
+  // mobile drawer's filter controls would still be keyboard-tabbable and
+  // screen-reader-visible despite being off-screen. Only applies on mobile
+  // — the desktop column (isOpen always false there, since the toggle
+  // button that would flip it never renders) must stay interactive.
+  const isInert = isMobileViewport && !isOpen;
   return (
-    <aside className={styles.sidebar} aria-label={m.filtersAriaLabel()}>
-      <section className={styles.section}>
-        <h2 className={styles.heading}>{m.dataDepthHeading()}</h2>
-        <DataDepthSwitch values={fameScoreValues} onChange={onFameScoreChange} />
-        <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
-      </section>
-      <section className={styles.section}>
-        <h2 className={styles.heading}>{m.regionHeading()}</h2>
-        <RegionFilters selectedRegions={selectedRegions} onToggleRegion={onToggleRegion} />
-      </section>
-      <section className={styles.section}>
-        <h2 className={styles.heading}>{m.peopleHeading()}</h2>
-        <OccupationDomainFilters selectedDomains={selectedDomains} onToggleDomain={onToggleDomain} />
-      </section>
-      <section className={styles.section}>
-        <h2 className={styles.heading}>{m.conflictsMilestonesHeading()}</h2>
-        <ConflictsMilestonesFilters
-          selectedValues={selectedConflictsMilestonesValues}
-          onToggleValue={onToggleConflictsMilestonesValue}
-        />
-      </section>
-      <a className={styles.languageSwitcher} href={SWITCH_LANGUAGE_HREF}>
-        {m.switchLanguageLabel()}
-      </a>
-    </aside>
+    <>
+      {isOpen && <button type="button" className={styles.backdrop} aria-label={m.closeAriaLabel()} onClick={onClose} />}
+      <aside
+        className={isOpen ? `${styles.sidebar} ${styles.open}` : styles.sidebar}
+        aria-label={m.filtersAriaLabel()}
+        inert={isInert}
+      >
+        {isMobileViewport && (
+          <div className={styles.header}>
+            <h2 className={styles.headerTitle}>{m.filtersHeading()}</h2>
+            <button type="button" className={styles.closeButton} aria-label={m.closeFiltersAriaLabel()} onClick={onClose}>
+              ×
+            </button>
+          </div>
+        )}
+        <section className={styles.section}>
+          <h2 className={styles.heading}>{m.dataDepthHeading()}</h2>
+          <DataDepthSwitch values={fameScoreValues} onChange={onFameScoreChange} />
+          <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
+        </section>
+        <section className={styles.section}>
+          <h2 className={styles.heading}>{m.regionHeading()}</h2>
+          <RegionFilters selectedRegions={selectedRegions} onToggleRegion={onToggleRegion} />
+        </section>
+        <section className={styles.section}>
+          <h2 className={styles.heading}>{m.peopleHeading()}</h2>
+          <OccupationDomainFilters selectedDomains={selectedDomains} onToggleDomain={onToggleDomain} />
+        </section>
+        <section className={styles.section}>
+          <h2 className={styles.heading}>{m.conflictsMilestonesHeading()}</h2>
+          <ConflictsMilestonesFilters
+            selectedValues={selectedConflictsMilestonesValues}
+            onToggleValue={onToggleConflictsMilestonesValue}
+          />
+        </section>
+        <a className={styles.languageSwitcher} href={SWITCH_LANGUAGE_HREF}>
+          {m.switchLanguageLabel()}
+        </a>
+      </aside>
+    </>
   );
 }

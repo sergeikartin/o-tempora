@@ -196,6 +196,10 @@ export function buildXScale(pixelsPerYear: number): { scale: d3.ScaleLinear<numb
 }
 
 export const DEFAULT_VISIBLE_YEARS = DEFAULT_VIEWPORT_END.year - DEFAULT_VIEWPORT_START.year;
+// A narrower first-paint window for phone-width viewports — without this,
+// a narrow screen would render the same DEFAULT_VISIBLE_YEARS span as
+// desktop, just smaller and denser, rather than genuinely more zoomed in.
+export const MOBILE_DEFAULT_VISIBLE_YEARS = 40;
 
 const ZOOM_STEP = 0.2;
 // Real browsers report the scroll container's actual clientWidth; this only
@@ -224,10 +228,10 @@ export function clampPixelsPerYear(pixelsPerYear: number, viewportWidthPx: numbe
   return Math.min(max, Math.max(min, pixelsPerYear));
 }
 
-/** Initial zoom level: shows DEFAULT_VISIBLE_YEARS (the old default start/end window) at once. */
-export function defaultPixelsPerYear(viewportWidthPx: number): number {
+/** Initial zoom level: shows `visibleYears` (DEFAULT_VISIBLE_YEARS unless overridden, e.g. by MOBILE_DEFAULT_VISIBLE_YEARS) at once. */
+export function defaultPixelsPerYear(viewportWidthPx: number, visibleYears: number = DEFAULT_VISIBLE_YEARS): number {
   const width = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
-  return clampPixelsPerYear(width / DEFAULT_VISIBLE_YEARS, width);
+  return clampPixelsPerYear(width / visibleYears, width);
 }
 
 // A fixed scale (not the live viewport's, not the live zoom's) used to
@@ -245,6 +249,40 @@ export function zoomIn(pixelsPerYear: number, viewportWidthPx: number): number {
 
 export function zoomOut(pixelsPerYear: number, viewportWidthPx: number): number {
   return clampPixelsPerYear(pixelsPerYear / (1 + ZOOM_STEP), viewportWidthPx);
+}
+
+// Pinch-to-zoom math, extracted as pure functions (mirroring zoomIn/zoomOut
+// above) so the gesture's core arithmetic is unit-testable without
+// simulating real multi-touch pointer events.
+
+/**
+ * Live pixelsPerYear implied by a pinch gesture's current two-point
+ * distance relative to where the gesture started — the gesture's own
+ * distance ratio applied to the pixelsPerYear committed at gesture start,
+ * clamped by the same bounds button-zoom uses. No discrete step/snap: a
+ * pinch's "minimal, no momentum" behavior is this ratio committing as-is.
+ */
+export function pinchPixelsPerYear(
+  startPixelsPerYear: number,
+  startDistancePx: number,
+  currentDistancePx: number,
+  viewportWidthPx: number,
+): number {
+  const distanceRatio = startDistancePx > 0 ? currentDistancePx / startDistancePx : 1;
+  return clampPixelsPerYear(startPixelsPerYear * distanceRatio, viewportWidthPx);
+}
+
+/**
+ * The year under a pinch gesture's midpoint — same scale.invert technique
+ * `zoom()`'s centerYear uses for the viewport's center (TimelineCanvas.tsx),
+ * just anchored to the pinch midpoint's offset within the viewport instead.
+ */
+export function pinchCenterYear(
+  scale: d3.ScaleLinear<number, number>,
+  scrollLeft: number,
+  midpointOffsetPx: number,
+): number {
+  return scale.invert(scrollLeft + midpointOffsetPx);
 }
 
 // Zoom-button animation: a single `translate(tx) scale(sx)` group transform
