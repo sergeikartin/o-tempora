@@ -4,13 +4,13 @@ Labels: wayfinder:map
 
 ## Destination
 
-Every pre-publish concern for this world-history timeline — the items on Sergei's punch list (mobile, region handling, years axis/eras, layout, hover indicator, data-depth tiers, monitoring, deployment) plus what a launch-readiness audit surfaces (SEO/meta, social preview, favicon, robots/sitemap, accessibility, license/README) — resolved into a recorded decision or a spec ready to hand off. Done when nothing is left un-thought-through before Sergei shares the link for a genuine public launch (posted somewhere strangers can find it, not just a private share).
+Every pre-publish concern for this world-history timeline — the items on Sergei's punch list (mobile, region handling, years axis/eras, layout, hover indicator, data-depth tiers, monitoring, deployment) plus what a launch-readiness audit surfaces (SEO/meta, social preview, favicon, robots/sitemap, accessibility, performance/LCP, license/README) — resolved into a recorded decision or a spec ready to hand off. Done when nothing is left un-thought-through before Sergei shares the link for a genuine public launch (posted somewhere strangers can find it, not just a private share).
 
 ## Notes
 
 - Domain: read-only, continuously zoomable world-history timeline. React 19 + TypeScript + Vite + D3, static JSON data, no backend, no accounts. Dual fully-independent EN/RU static builds (`docs/deployment.md`). See root `CLAUDE.md` and `docs/product-scope.md` before making scope/UX calls.
 - The GitHub repo itself is going public (open source) alongside the deployed site, not just the built output — so LICENSE/README are launch-blocking, not optional polish.
-- This effort's destination is an *exhaustive* punch list, so completeness beats the usual "decisions only" bias: straightforward execution items with no real open decision (SEO/meta basics, robots.txt/sitemap, a11y baseline pass) are still tracked as `task` tickets rather than left off the map.
+- This effort's destination is an *exhaustive* punch list, so completeness beats the usual "decisions only" bias: straightforward execution items with no real open decision (SEO/meta basics, robots.txt/sitemap, a11y baseline pass, performance/LCP check) are still tracked as `task` tickets rather than left off the map.
 - Default skills per session: `/grilling` and `/domain-modeling`. The years-axis ticket additionally wants `/prototype`.
 
 ## Decisions so far
