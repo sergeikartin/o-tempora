@@ -3,9 +3,9 @@ import * as d3 from 'd3';
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import { formatYear } from '../../shared/lib/format-year';
 import { m } from '../../shared/paraglide/messages.js';
-import { computeDensityProfile, logScaleHeightPx } from './mountain-profile';
-import { defaultPixelsPerYear, FALLBACK_VIEWPORT_WIDTH_PX } from './options';
-import styles from './MountainProfile.module.css';
+import { centuryTicksInRange, computeDensityProfile, logScaleHeightPx } from './minimap';
+import { buildXScale, defaultPixelsPerYear, FALLBACK_VIEWPORT_WIDTH_PX, MIN_YEAR } from './options';
+import styles from './Minimap.module.css';
 
 // Enforced via CSS min-width on .viewportRect, kept here too since the drag
 // math below needs the same floor to convert a rect pointer-move into a
@@ -19,7 +19,19 @@ const MIN_VIEWPORT_RECT_PX = 24;
 const RIDGE_VIEWBOX_HEIGHT = 100;
 const RIDGE_BASELINE = RIDGE_VIEWBOX_HEIGHT / 2;
 
-interface MountainProfileProps {
+// Rough per-character estimate for the century strip's 9px label font (see
+// options.ts's own AVG_CHAR_WIDTH_PX, tuned for the lanes' 11px labels) plus
+// a little breathing room before the next tick's own label — good enough to
+// bound label width for the centuryTicks thinning pass below without a real
+// DOM text-measurement.
+const CENTURY_LABEL_CHAR_WIDTH_PX = 5;
+const CENTURY_LABEL_GAP_PX = 6;
+
+function estimateCenturyLabelWidthPx(label: string): number {
+  return label.length * CENTURY_LABEL_CHAR_WIDTH_PX + CENTURY_LABEL_GAP_PX;
+}
+
+interface MinimapProps {
   // Already fame-filtered by the caller (TimelineCanvas) — the profile
   // recomputes on every fame-score change with no debounce, so it always
   // reflects the currently visible entity set (ADR 0004).
@@ -57,8 +69,10 @@ interface HoverInfo {
 // track jumps the viewport there, dragging the overlaid translucent
 // .viewportRect pans — and adds a hover tooltip with exact date/Row-Depth
 // numbers, recovering the precision the log scale deliberately compresses
-// away.
-export function MountainProfile({
+// away. A thin, non-interactive strip of century tick marks runs along the
+// top edge (`/grill-with-docs`), purely decorative — it never intercepts
+// the track/rect's own click-to-jump, drag, or hover handling.
+export function Minimap({
   people,
   conflicts,
   milestones,
@@ -67,11 +81,18 @@ export function MountainProfile({
   scrollLeft,
   onScrollLeftChange,
   onScrollLeftJump,
-}: MountainProfileProps) {
+}: MinimapProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const rectDragRef = useRef<{ pointerX: number; startScrollLeft: number; trackWidthPx: number } | null>(null);
   const [isRectDragging, setIsRectDragging] = useState(false);
   const [hover, setHover] = useState<HoverInfo | null>(null);
+
+  // Same ratio-based geometry the scrollbar thumb this replaces used
+  // (TimelineCanvas.tsx) — tracks the track element's real rendered width
+  // for free rather than reading it during render, which isn't available
+  // before layout. Computed up front since both the viewport-rect ratio
+  // math below and the century-tick label spacing further down need it.
+  const effectiveViewportWidthPx = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
 
   // Recomputed only when the viewport is resized, not on every zoom/pan —
   // this fixed Reference Scale (rather than the caller's live
@@ -86,6 +107,39 @@ export function MountainProfile({
   const bucketCount = profile.years.length;
   const maxPeopleDepth = Math.max(1, ...profile.peopleDepth);
   const maxEventsDepth = Math.max(1, ...profile.eventsDepth);
+
+  // Top-edge century-tick strip (`/grill-with-docs`) — ticks at every
+  // century boundary across the same full pannable domain the ridge itself
+  // spans (reuses the same referencePixelsPerYear-built scale, so a tick's
+  // x position always lines up with the density shape beneath it). Labels
+  // use the plain "1500"/"100 BCE" numeric style (formatYear, same as
+  // YearAxis's own labels and the hover tooltip below) rather than
+  // centuryBoundaryForYear's ordinal "1500s"/"15th century BCE" phrasing —
+  // shorter, and consistent with the rest of the app's date formatting.
+  // Labels thin out by walking left to right and only keeping one that
+  // clears the *previous shown label's own rendered width* (not a flat gap
+  // like YearAxis's MIN_DECADE_LABEL_SPACING_PX toggle) — even this shorter
+  // style varies enough in length ("1800" vs. "800 BCE") that a uniform
+  // threshold would still let a long label visually overlap the next tick's
+  // short one.
+  const centuryTicks = useMemo(() => {
+    const { scale: refScale, totalWidth: refTotalWidthPx } = buildXScale(referencePixelsPerYear);
+    if (refTotalWidthPx <= 0) return [];
+    const [, domainMaxYear] = refScale.domain();
+    let lastLabelRightEdgePx = -Infinity;
+    return centuryTicksInRange(MIN_YEAR, domainMaxYear ?? MIN_YEAR).map((boundary) => {
+      const label = formatYear(boundary.startYear);
+      const leftPercent = (refScale(boundary.startYear) / refTotalWidthPx) * 100;
+      const xPx = (leftPercent / 100) * effectiveViewportWidthPx;
+      // Labels are centered under their tick (CSS translateX(-50%)), so the
+      // collision check is against each label's own left/right half-width,
+      // not its raw x position.
+      const halfWidthPx = estimateCenturyLabelWidthPx(label) / 2;
+      const showLabel = xPx - halfWidthPx >= lastLabelRightEdgePx;
+      if (showLabel) lastLabelRightEdgePx = xPx + halfWidthPx;
+      return { startYear: boundary.startYear, label, leftPercent, showLabel };
+    });
+  }, [referencePixelsPerYear, effectiveViewportWidthPx]);
 
   const { peoplePath, eventsPath } = useMemo(() => {
     const peopleArea = d3
@@ -107,10 +161,8 @@ export function MountainProfile({
   }, [profile, maxPeopleDepth, maxEventsDepth]);
 
   // Same ratio-based geometry the scrollbar thumb this replaces used
-  // (TimelineCanvas.tsx) — tracks the track element's real rendered width
-  // for free rather than reading it during render, which isn't available
-  // before layout.
-  const effectiveViewportWidthPx = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
+  // (TimelineCanvas.tsx) — effectiveViewportWidthPx itself is computed above,
+  // shared with the century-tick label spacing.
   const rectWidthRatio = totalWidth > 0 ? Math.min(effectiveViewportWidthPx / totalWidth, 1) : 1;
   const maxScrollLeftForRect = Math.max(totalWidth - effectiveViewportWidthPx, 0);
   const rectLeftRatio = maxScrollLeftForRect > 0 ? (scrollLeft / maxScrollLeftForRect) * (1 - rectWidthRatio) : 0;
@@ -198,10 +250,17 @@ export function MountainProfile({
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.centuryStrip} data-testid="minimap-century-strip" aria-hidden="true">
+        {centuryTicks.map((tick) => (
+          <div key={tick.startYear} className={styles.centuryTick} style={{ left: `${tick.leftPercent}%` }}>
+            {tick.showLabel && <span className={styles.centuryLabel}>{tick.label}</span>}
+          </div>
+        ))}
+      </div>
       <div
         ref={trackRef}
         className={styles.track}
-        data-testid="mountain-profile-track"
+        data-testid="minimap-track"
         aria-label={m.minimapAriaLabel()}
         onPointerDown={handleTrackPointerDown}
         onPointerMove={handleTrackPointerMove}
@@ -209,29 +268,29 @@ export function MountainProfile({
       >
         <svg
           className={styles.ridge}
-          data-testid="mountain-profile-ridge"
+          data-testid="minimap-ridge"
           viewBox={`0 0 ${bucketCount - 1} ${RIDGE_VIEWBOX_HEIGHT}`}
           preserveAspectRatio="none"
           aria-hidden="true"
         >
           <line className={styles.baseline} x1={0} x2={bucketCount - 1} y1={RIDGE_BASELINE} y2={RIDGE_BASELINE} />
-          <path className={styles.peopleArea} data-testid="mountain-profile-people-area" d={peoplePath} />
-          <path className={styles.eventsArea} data-testid="mountain-profile-events-area" d={eventsPath} />
+          <path className={styles.peopleArea} data-testid="minimap-people-area" d={peoplePath} />
+          <path className={styles.eventsArea} data-testid="minimap-events-area" d={eventsPath} />
         </svg>
-        <div
-          className={isRectDragging ? `${styles.viewportRect} ${styles.dragging}` : styles.viewportRect}
-          data-testid="mountain-profile-viewport-rect"
-          style={{ width: `${rectWidthRatio * 100}%`, left: `${rectLeftRatio * 100}%` }}
-          onPointerDown={handleRectPointerDown}
-          onPointerMove={handleRectPointerMove}
-          onPointerUp={endRectDrag}
-          onPointerCancel={endRectDrag}
-        />
       </div>
+      <div
+        className={isRectDragging ? `${styles.viewportRect} ${styles.dragging}` : styles.viewportRect}
+        data-testid="minimap-viewport-rect"
+        style={{ width: `${rectWidthRatio * 100}%`, left: `${rectLeftRatio * 100}%` }}
+        onPointerDown={handleRectPointerDown}
+        onPointerMove={handleRectPointerMove}
+        onPointerUp={endRectDrag}
+        onPointerCancel={endRectDrag}
+      />
       {hover && (
         <div
           className={styles.tooltip}
-          data-testid="mountain-profile-tooltip"
+          data-testid="minimap-tooltip"
           style={{ left: `${hover.xRatio * 100}%` }}
           role="tooltip"
         >

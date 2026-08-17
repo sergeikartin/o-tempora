@@ -13,14 +13,16 @@
 | `color-bg-surface-raised` | `#FFFFFF` | Filter chips, filter pills |
 | `color-border-subtle` | `#E0D3AC` | Default borders, dividers |
 | `color-border-strong` | `#C7B383` | Hover/active borders |
+| `color-border-emphasis` | `#837757` | Year Axis's century tick mark (darkest of its three tick layers) |
 | `color-text-primary` | `#241A10` | Primary text (ink) |
 | `color-text-secondary` | `#6B6046` | Secondary/muted text (faded ink) |
 | `color-accent-selected` | `#8A2A1A` | Selected entity, viewport indicator, focus ring (oxblood) |
 | `color-focus-ring` | `#6E2013` | Keyboard focus outline |
+| `color-bg-axis` | `#EBDDBD` | Year Axis ruler background — a shade darker than the page so it reads as a distinct bar |
 
 ## Conflict Color
 
-Used as the stroke/fill color for every Conflict's range line and point-dot marker, regardless of `ConflictCategory`. Retired the old per-category Conflict Category Palette (six hues keyed by `ConflictCategory`) once Conflicts and Milestones merged into one mixed, fame-ranked lane (`packages/web/src/widgets/timeline-canvas/ConflictsMilestonesLane.tsx`) — a Conflict needs to read as one visual group at a glance next to Milestones' own multi-color palette below, not blend into it category-by-category. Rhymes with the People-domain Institutions hue (state power), stepped darker — see Milestone Category Palette below for the same treatment applied to each Milestone group.
+Used as the stroke/fill color for every Conflict's range line and point-dot marker, regardless of `ConflictCategory`. Retired the old per-category Conflict Category Palette (six hues keyed by `ConflictCategory`) once Conflicts and Milestones merged into one mixed, fame-ranked lane (`packages/web/src/widgets/timeline-canvas/ConflictsMilestonesLane.tsx`) — a Conflict needs to read as one visual group at a glance next to Milestones' own multi-color palette below, not blend into it category-by-category. Rhymes with the People-domain Institutions hue (state power), stepped darker — see Milestone Category Palette below for the same treatment applied to each Milestone group. Wired as a CSS custom property (`--color-conflict`, `global.css`) for CSS-side consumers like `Minimap.module.css`'s SVG fill; the lane rendering itself still reads the plain `CONFLICT_COLOR` JS constant below, since D3 sets that as an SVG presentation attribute directly rather than through CSS.
 
 | Token | Hex |
 |---|---|

@@ -16,6 +16,7 @@ Every pre-publish concern for this world-history timeline — the items on Serge
 ## Decisions so far
 
 - Mobile-friendly layout — **already shipped**, not just spec'd: commit `0b07b26` ("Add a mobile-responsive layout: drawer sidebar, bottom-sheet detail panel, pinch-to-zoom") landed the full `.scratch/mobile-responsive-layout/spec.md`. No ticket needed on this map.
+- Timeline canvas redesign (`/grill-with-docs`, resolving [03](issues/03-axis-duplication.md)): "Mountain Profile" renamed to "Minimap" project-wide (reverses ADR 0004's original naming — see `CONTEXT.md`); `YearAxis` reduced from three instances to one (middle only); lane gridlines replaced by 25-year zebra striping; Minimap gains a top-edge century-tick strip. Split into implementation tickets [03](issues/03-axis-duplication.md), [11](issues/11-rename-mountain-profile-to-minimap.md), [12](issues/12-lane-zebra-striping.md), [13](issues/13-minimap-century-marks.md). [02](issues/02-years-axis-eras.md) (labeled era bands) stays open and unrelated.
 
 ## Not yet specified
 

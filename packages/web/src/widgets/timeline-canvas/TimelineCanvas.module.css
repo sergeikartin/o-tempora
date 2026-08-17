@@ -103,7 +103,7 @@
    browser reserves layout space for it at all varies — e.g. Firefox's
    overlay scrollbars don't), which made the drag-to-pan handlers below
    swallow scrollbar drags instead of leaving them to the browser.
-   MountainProfile.tsx now renders the pan/jump control as an ordinary
+   Minimap.tsx now renders the pan/jump control as an ordinary
    sibling element instead (ADR 0004), sidestepping that ambiguity
    entirely. */
 .scrollContainer {
@@ -115,8 +115,7 @@
   overflow-x: scroll;
   scrollbar-width: none; /* Firefox */
   cursor: grab;
-  /* Mirrors color-bg-base; real token wiring is ticket 05. */
-  background-color: #f2e9d2;
+  background-color: var(--color-bg-base);
   /* Keeps native single-finger horizontal swipe-to-scroll working exactly
      as it does today, while stopping the browser from intercepting a
      two-finger gesture as native page pinch-zoom, so the pinch pointer
@@ -132,9 +131,12 @@
   display: none; /* Chrome/Safari/Edge counterpart to scrollbar-width above */
 }
 
-/* Faint vertical gridline at every decade, spanning the full scroll height
-   behind all four lanes. A real totalWidth-wide child (TimelineCanvas.tsx),
-   not a background-attachment: local trick on .scrollContainer itself —
+/* Subtle alternating-background-band ("zebra striping") at every 25-year
+   interval, spanning the full scroll height behind the lanes — replaces the
+   earlier faint vertical gridlines (`/grill-with-docs`: a repeating line
+   read as busier "dark columns" than the calm ambient texture wanted here).
+   A real totalWidth-wide child (TimelineCanvas.tsx), not a
+   background-attachment: local trick on .scrollContainer itself —
    round-historical BCE tick positions (format-year.ts) sit on a different
    phase than CE ticks, the same reason YearAxis's own ruler is split this
    way (see its .rulerRow), and a single repeating background can't tile two
@@ -142,7 +144,7 @@
    disturb the yearAxis/peopleLane/conflictsMilestonesLane siblings below it
    in source order — painted first, so it sits behind them (they have no
    background of their own, letting it show through). */
-.gridlineLayer {
+.zebraLayer {
   position: absolute;
   top: 0;
   left: 0;
@@ -156,15 +158,23 @@
   transform-origin: 0 0;
 }
 
-.gridline {
+.zebraBand {
   flex-shrink: 0;
   height: 100%;
   background-repeat: repeat-x;
-  background-position: var(--decade-gridline-offset-px) top;
-  background-size: var(--decade-gridline-px) 100%;
-  /* Mirrors a faint color-border tone, barely distinct from the page
-     background; inlined pending ticket 05. */
-  background-image: linear-gradient(to right, #e9debf 0, #e9debf 1px, transparent 1px);
+  background-position: var(--zebra-offset-px) top;
+  background-size: calc(var(--zebra-band-px) * 2) 100%;
+  /* One 25-year band tinted a faint wash of color-bg-surface over the base
+     page background, the next 25 years left transparent — no new hue, just
+     the existing surface token blended low enough to read as ambient
+     structure rather than a hard-edged stripe. */
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-bg-surface) 25%, transparent) 0,
+    color-mix(in srgb, var(--color-bg-surface) 25%, transparent) var(--zebra-band-px),
+    transparent var(--zebra-band-px),
+    transparent calc(var(--zebra-band-px) * 2)
+  );
 }
 
 /* Active mouse-drag pan (TimelineCanvas.tsx's pointer handlers) — grabbing
@@ -211,21 +221,22 @@
   left: 0;
 }
 
-/* Three of these: top of the page, between People and Conflicts+Milestones
-   (the "middle" one — the only one importance/row-order is measured
-   against, see ConflictsMilestonesLane.tsx and options.ts's
-   personLabelYForRow), and bottom of the page. Not part of the 4:2 lane
-   ratio above/below. Kept at the inline totalWidth style (via
-   TimelineCanvas.tsx), wider than .scrollContainer — that mismatch is what
-   drives the shared horizontal scrollbar above, and (now that
-   .peopleLane/.conflictsMilestonesLane no longer carry that width
-   themselves) the only thing that does. No position: sticky needed for any
-   of the three to stay visible during a lane's own vertical scroll — each
-   one is a plain flex sibling outside .peopleLane/.conflictsMilestonesLane's
-   own overflow-y box, so a lane scrolling internally never carries an axis
-   out of view with it. Still not sticky against .scrollContainer's own
-   horizontal pan, by design: it's meant to pan normally so its ticks track
-   the visible year range. */
+/* The sole Year Axis, between People and Conflicts+Milestones — the only one
+   importance/row-order is measured against (see ConflictsMilestonesLane.tsx
+   and options.ts's personLabelYForRow). Used to be three (also above People
+   and below Conflicts+Milestones), removed as redundant
+   (`.scratch/pre-launch-readiness/issues/03-axis-duplication.md`): no
+   position: sticky was ever needed to keep any of them visible during a
+   lane's own vertical scroll — each is a plain flex sibling outside
+   .peopleLane/.conflictsMilestonesLane's own overflow-y box, so a lane
+   scrolling internally never carried an axis out of view with it, three
+   copies or one. Not part of the 4:2 lane ratio above/below. Kept at the
+   inline totalWidth style (via TimelineCanvas.tsx), wider than
+   .scrollContainer — that mismatch is what drives the shared horizontal
+   scrollbar above, and (now that .peopleLane/.conflictsMilestonesLane no
+   longer carry that width themselves) the only thing that does. Not sticky
+   against .scrollContainer's own horizontal pan, by design: it's meant to
+   pan normally so its ticks track the visible year range. */
 .yearAxis {
   flex: 0 0 auto;
 }
@@ -247,6 +258,5 @@
 }
 
 /* The old custom scrollbar (.scrollbarTrack/.scrollbarThumb) that used to
-   render here is gone — replaced by MountainProfile.tsx's own density
-   minimap (ADR 0004), which owns its own styling in
-   MountainProfile.module.css. */
+   render here is gone — replaced by Minimap.tsx (ADR 0004), which owns its
+   own styling in Minimap.module.css. */

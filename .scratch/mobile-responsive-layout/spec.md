@@ -6,7 +6,7 @@ Labels: ready-for-agent
 
 `docs/product-scope.md` has never taken a position on mobile/touch — it's absent from both the in-scope and out-of-scope lists, and `.scratch/sidebar-filters-legend/map.md` explicitly flagged it as "unexamined; unclear whether the app targets narrow viewports at all today." The viewport meta tag is present (`packages/web/index.html:5`), but there is exactly one media query anywhere in `src` (`global.css:41`'s `prefers-reduced-motion`) — no width-based responsive behavior exists.
 
-The desktop layout is a fixed three-column flex row at `height: 100vh` (`App.tsx:51`, `App.module.css`'s `.layout`): a 220px-wide `Sidebar` (`Sidebar.module.css:3`), the flexible `TimelineCanvas`, and a 340px `DetailPanel` (`DetailPanel.module.css:6`) that slides in from the right via `transform: translateX`. On a ~360-390px phone, the sidebar alone would consume over half the width. Several interactions are also explicitly gated to `pointerType === 'mouse'` and do nothing on touch today: drag-to-pan (`TimelineCanvas.tsx:393`), and `MountainProfile`'s hover tooltip and click-to-jump (`MountainProfile.tsx:123,169`) — panning itself still works on touch via native scroll-by-swipe on `.scrollContainer`, which is why the drag handler was gated off in the first place (see its surrounding comment).
+The desktop layout is a fixed three-column flex row at `height: 100vh` (`App.tsx:51`, `App.module.css`'s `.layout`): a 220px-wide `Sidebar` (`Sidebar.module.css:3`), the flexible `TimelineCanvas`, and a 340px `DetailPanel` (`DetailPanel.module.css:6`) that slides in from the right via `transform: translateX`. On a ~360-390px phone, the sidebar alone would consume over half the width. Several interactions are also explicitly gated to `pointerType === 'mouse'` and do nothing on touch today: drag-to-pan (`TimelineCanvas.tsx:393`), and `Minimap`'s hover tooltip and click-to-jump (`Minimap.tsx:123,169`) — panning itself still works on touch via native scroll-by-swipe on `.scrollContainer`, which is why the drag handler was gated off in the first place (see its surrounding comment).
 
 ## Solution
 
@@ -16,7 +16,7 @@ Below a new `MOBILE_BREAKPOINT_PX` width threshold:
 
 1. **Sidebar becomes a collapsible drawer**, closed by default, opened via a floating toggle button (top-left of the canvas, mirroring the existing top-right zoom-controls overlay). Opens as a dimming overlay on top of the canvas, not a layout push. Auto-closes if the detail panel opens.
 2. **Detail panel becomes a bottom sheet** — same overlay component, same open/close mechanism, just anchored to the bottom edge (`translateY`) instead of the right edge (`translateX`), sized to fit the narrow width instead of a fixed 340px column.
-3. **The mountain profile is dropped entirely** (not rendered) — it's the one component whose primary features (hover tooltip, click-to-jump) are mouse-only today, and removing it also reclaims vertical space. No replacement for cross-timeline jump navigation; users navigate via pan + zoom, mitigated by (4).
+3. **The minimap is dropped entirely** (not rendered) — it's the one component whose primary features (hover tooltip, click-to-jump) are mouse-only today, and removing it also reclaims vertical space. No replacement for cross-timeline jump navigation; users navigate via pan + zoom, mitigated by (4).
 4. **The default zoom level starts more zoomed-in** on narrow viewports, so first paint isn't a cramped, zoomed-out view.
 5. **The page allows normal vertical scroll** on mobile instead of staying clipped to `100vh`.
 
@@ -35,11 +35,11 @@ Independent of width, keyed off input capability (`pointer: coarse`):
 7. As a phone user, I want to pinch with two fingers on the timeline to zoom in and out, so that I have a touch-native way to change the zoom level now that the buttons are gone on my device.
 8. As a phone user pinching to zoom, I want the point between my fingers to stay fixed under them as the timeline scales, so that zooming feels anchored to where I'm looking rather than jumping to some other point in time.
 9. As a mouse/desktop user, I want the existing `+`/`-` zoom buttons to keep working exactly as they do today, so that this change doesn't affect my experience at all.
-10. As a phone user, I want the mountain-profile track (with its hover tooltip and click-to-jump) to simply not appear, rather than appear but not respond to my taps, so that I never encounter a control that looks interactive but silently does nothing.
+10. As a phone user, I want the minimap track (with its hover tooltip and click-to-jump) to simply not appear, rather than appear but not respond to my taps, so that I never encounter a control that looks interactive but silently does nothing.
 11. As a phone user, I want the app to open already reasonably zoomed in, so that the initial view is legible rather than a wide, cramped slice of history rendered into a third of a desktop's width.
 12. As a phone user, I want to scroll the page vertically if the sidebar/canvas content doesn't all fit in one screen height, so that content isn't clipped or force-scrolled inside a fixed-height box that's too short for a phone viewport.
 13. As a user rotating my phone to landscape, I want the layout to keep working (same drawer/bottom-sheet/pinch behavior), so that landscape isn't a broken or unsupported state.
-14. As a tablet user (≥ the mobile breakpoint), I want the existing desktop layout — sidebar column, side-anchored detail panel, mountain profile, zoom buttons — so that this change only affects genuinely narrow viewports.
+14. As a tablet user (≥ the mobile breakpoint), I want the existing desktop layout — sidebar column, side-anchored detail panel, minimap, zoom buttons — so that this change only affects genuinely narrow viewports.
 15. As a maintainer, I want the mobile/touch breakpoint and pointer-capability checks expressed as small, reusable, testable units (a shared viewport hook; existing `pointerType`-gating conventions), so that mobile behavior can be verified without a real device.
 16. As a maintainer, I want pinch-to-zoom to reuse the existing zoom-animation transform mechanism rather than driving `pixelsPerYear` state per touchmove, so that pinching doesn't reintroduce the 250-530ms/frame per-mark re-render cost that a prior full-re-render zoom attempt already ran into (per `options.ts`'s comment above `ZoomAnimationTransform`).
 17. As a low-vision user relying on OS/browser pinch-to-zoom to magnify the page, I want that native zoom to keep working everywhere except the timeline canvas itself, so that intercepting the gesture for app-level zoom doesn't remove an existing accessibility affordance from the rest of the page.
@@ -60,8 +60,8 @@ Independent of width, keyed off input capability (`pointer: coarse`):
 **Detail panel → bottom sheet (`widgets/detail-panel`):**
 - `DetailPanel.module.css` gets a `@media (max-width: 640px)` block (declared after the base `.panel`/`.panel.open` rules so it wins the cascade) overriding: `top: auto; left: 0; right: 0; width: 100%; max-height: 80vh; border-left: none; border-top: 1px solid var(--color-border-subtle); border-radius: var(--radius-md) var(--radius-md) 0 0; transform: translateY(100%);` and `.panel.open { transform: translateY(0); }` — same component, same `open` class toggle, only the axis and dimensions change.
 
-**Mountain profile removal (`widgets/timeline-canvas`):**
-- `TimelineCanvas.tsx` conditionally renders `<MountainProfile ... />` only when `!useIsMobileViewport()`. Panning itself has no dependency on `MountainProfile` — it drives `onScrollLeftJump`/hover display only, while pan is native scroll + (mouse-only) drag on `.scrollContainer` — so omitting it doesn't regress any other interaction.
+**Minimap removal (`widgets/timeline-canvas`):**
+- `TimelineCanvas.tsx` conditionally renders `<Minimap ... />` only when `!useIsMobileViewport()`. Panning itself has no dependency on `Minimap` — it drives `onScrollLeftJump`/hover display only, while pan is native scroll + (mouse-only) drag on `.scrollContainer` — so omitting it doesn't regress any other interaction.
 
 **Zoom buttons vs. pinch-to-zoom (`widgets/timeline-canvas`):**
 - `TimelineCanvas.module.css`: `.zoomControls { @media (pointer: coarse) { display: none; } }`.
@@ -84,7 +84,7 @@ Independent of width, keyed off input capability (`pointer: coarse`):
 - **`TimelineCanvas.test.tsx`**: extend with two-pointer `fireEvent.pointerDown`/`pointerMove`/`pointerUp` sequences (`pointerType: 'touch'`) asserting `pixelsPerYear` commits once, at gesture end, to the expected clamped value — mirroring how the existing button-zoom tests likely already assert post-animation committed state. A parallel case confirms a single mouse pointer still only drives drag-to-pan, never pinch.
 - **`Sidebar.test.tsx` / new drawer tests**: render at/under the mobile breakpoint (mock `matchMedia` to force `useIsMobileViewport()` true), assert closed-by-default, toggle opens/closes via the button and via backdrop click, and that `.open`'s class/`transform` state matches.
 - **`DetailPanel.test.tsx`**: extend to assert the mobile media-query block doesn't change the existing open/close behavior contract (same `open` prop, same class toggle) — CSS-level positioning differences aren't asserted in RTL (jsdom doesn't apply media queries), so this stays a behavioral, not visual, test.
-- **`TimelineCanvas.test.tsx`**: assert `MountainProfile` doesn't render when `useIsMobileViewport()` is mocked true, and does when false.
+- **`TimelineCanvas.test.tsx`**: assert `Minimap` doesn't render when `useIsMobileViewport()` is mocked true, and does when false.
 - No new end-to-end, visual-regression, or Playwright device-emulation tests — not an existing pattern in this repo, and out of scope per the grilling session's verification decision (manual devtools spot-checks instead).
 
 ## Out of Scope
@@ -92,7 +92,7 @@ Independent of width, keyed off input capability (`pointer: coarse`):
 - Any gesture input beyond pinch-to-zoom (no two-finger pan-while-pinching, no swipe gestures, no long-press).
 - Removing/changing the `+`/`-` buttons for mouse/desktop users — they're untouched.
 - Playwright device-emulation test infrastructure (none exists today; verification for this pass is manual devtools spot-checks).
-- Any substitute for the mountain profile's cross-timeline jump navigation on mobile (accepted tradeoff, mitigated by the more-zoomed-in mobile default).
+- Any substitute for the minimap's cross-timeline jump navigation on mobile (accepted tradeoff, mitigated by the more-zoomed-in mobile default).
 - Tablet-specific layout tuning beyond "falls back to the desktop layout above the breakpoint."
 - Retuning `MOBILE_BREAKPOINT_PX`/`MOBILE_DEFAULT_VISIBLE_YEARS` beyond a reasonable starting value — left to visual QA during implementation.
 - A dedicated mobile header/toolbar — the drawer toggle is a floating overlay specifically to avoid introducing new page chrome.

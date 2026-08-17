@@ -12,7 +12,7 @@ The app had no width-based responsive behavior and no touch-specific handling be
 
 **Pinch reuses the button-zoom's transform-based animation architecture.** Pinch tracking (`TimelineCanvas.tsx`'s `handlePinchPointerDown`/`Move`/`endPinch`) drives the same `applyZoomAnimationTick`/`zoomAnimationGroupTransform` path the `+`/`-` buttons' rAF loop already uses — every mark stays drawn at the gesture's starting `pixelsPerYear` while a single `translate(tx) scale(sx)` group transform per lane/axis tracks the live pinch distance, and the real `pixelsPerYear` state commits exactly once, at gesture end (the second-to-last pointer's `pointerup`). It does not recompute `pixelsPerYear` (and re-render every mark) on each `pointermove`.
 
-**Layout breakpoint (width) and input capability (touch) are two independent axes**, not one conflated "is this mobile" check. `shared/lib/viewport.ts`'s `useIsMobileViewport()` (a `matchMedia(max-width: ...)` subscription) drives what renders — the sidebar drawer/bottom-sheet layout, whether the Mountain Profile mounts at all, the drawer toggle button. A separate `@media (pointer: coarse)` CSS check drives which zoom affordance shows — the `+`/`-` buttons vs. pinch — independent of viewport width.
+**Layout breakpoint (width) and input capability (touch) are two independent axes**, not one conflated "is this mobile" check. `shared/lib/viewport.ts`'s `useIsMobileViewport()` (a `matchMedia(max-width: ...)` subscription) drives what renders — the sidebar drawer/bottom-sheet layout, whether the Minimap mounts at all, the drawer toggle button. A separate `@media (pointer: coarse)` CSS check drives which zoom affordance shows — the `+`/`-` buttons vs. pinch — independent of viewport width.
 
 ## Why
 
@@ -29,5 +29,5 @@ The app had no width-based responsive behavior and no touch-specific handling be
 ## Consequences
 
 - Pinch math (distance → `pixelsPerYear`, midpoint → `centerYear`) is exposed as pure functions in `options.ts` (`pinchPixelsPerYear`, `pinchCenterYear`) alongside `zoomIn`/`zoomOut`, unit-testable without simulating real multi-touch pointer events.
-- A wide touch tablet keeps the desktop sidebar/detail-panel/Mountain-Profile layout but loses the `+`/`-` buttons in favor of pinch — an intentional asymmetry between the two axes, not a bug.
+- A wide touch tablet keeps the desktop sidebar/detail-panel/Minimap layout but loses the `+`/`-` buttons in favor of pinch — an intentional asymmetry between the two axes, not a bug.
 - `MOBILE_BREAKPOINT_PX` (640) is a width-only threshold; retuning it doesn't affect which zoom control renders on any given device, and vice versa for `pointer: coarse`.

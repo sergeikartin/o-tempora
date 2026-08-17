@@ -10,7 +10,7 @@ The timeline lanes (`PeopleLane`, `ConflictsMilestonesLane`) are SVG subtrees d3
 
 ## Decision
 
-This pass adds CSS-only motion for two surfaces: `DetailPanel` open/close, and hover feedback on lane marks (plus the two pre-existing instant hovers on `Sidebar`'s language switcher and `MountainProfile`'s viewport rect). Lane-item entry/exit fades (filter/Data Depth changes) and eased zoom transitions are explicitly out of scope for this pass — they'd need d3's own `.transition()`, since a CSS `transition` can't animate an `.exit().remove()` that already happened synchronously, and d3 re-sets SVG geometry attributes (`x1`/`cx`/etc.) directly rather than through `transform`/`opacity`, which are the properties CSS transitions handle reliably.
+This pass adds CSS-only motion for two surfaces: `DetailPanel` open/close, and hover feedback on lane marks (plus the two pre-existing instant hovers on `Sidebar`'s language switcher and `Minimap`'s viewport rect). Lane-item entry/exit fades (filter/Data Depth changes) and eased zoom transitions are explicitly out of scope for this pass — they'd need d3's own `.transition()`, since a CSS `transition` can't animate an `.exit().remove()` that already happened synchronously, and d3 re-sets SVG geometry attributes (`x1`/`cx`/etc.) directly rather than through `transform`/`opacity`, which are the properties CSS transitions handle reliably.
 
 `DetailPanel` changes from conditionally unmounting to always rendering, with an open/closed CSS class driving a `translateX` slide and `inert` applied while closed (removing it from tab order and the accessibility tree). This avoids timing DOM removal against a CSS transition with a `transitionend` listener or timer.
 

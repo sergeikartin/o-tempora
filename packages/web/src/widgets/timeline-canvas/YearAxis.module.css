@@ -25,9 +25,8 @@
   position: relative;
   flex-shrink: 0;
   /* A shade darker than the page background so the ruler reads as a
-     distinct bar, per the reference this design is based on; mirrors
-     color-bg-surface, inlined pending ticket 05. */
-  background-color: #ebddbd;
+     distinct bar, per the reference this design is based on. */
+  background-color: var(--color-bg-axis);
   background-repeat: repeat-x, repeat-x, repeat-x;
   background-position:
     var(--century-tick-offset-px) top,
@@ -38,12 +37,9 @@
     var(--decade-tick-px) 55%,
     var(--year-tick-px) 30%;
   background-image:
-    /* Mirrors a darker color-border tone; inlined pending ticket 05. */
-    linear-gradient(to right, #837757 0, #837757 2px, transparent 2px),
-    /* Mirrors color-border-strong; inlined pending ticket 05. */
-    linear-gradient(to right, #c7b383 0, #c7b383 1.5px, transparent 1.5px),
-    /* Mirrors color-border-subtle; inlined pending ticket 05. */
-    linear-gradient(to right, #e0d3ac 0, #e0d3ac 1px, transparent 1px);
+    linear-gradient(to right, var(--color-border-emphasis) 0, var(--color-border-emphasis) 2px, transparent 2px),
+    linear-gradient(to right, var(--color-border-strong) 0, var(--color-border-strong) 1.5px, transparent 1.5px),
+    linear-gradient(to right, var(--color-border-subtle) 0, var(--color-border-subtle) 1px, transparent 1px);
 }
 
 .labelRow {
@@ -58,14 +54,12 @@
   font-family: Archivo, sans-serif;
   font-variant-numeric: tabular-nums;
   font-size: 10px;
-  /* Mirrors color-text-secondary; inlined pending ticket 05. */
-  color: #6b6046;
+  color: var(--color-text-secondary);
 }
 
 .centuryLabel {
   font-weight: 600;
-  /* Mirrors color-text-primary; inlined pending ticket 05. */
-  color: #241a10;
+  color: var(--color-text-primary);
 }
 
 /* The zoom-button animation's own counter-scale target (YearAxis.tsx) — a

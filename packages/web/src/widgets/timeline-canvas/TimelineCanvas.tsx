@@ -17,16 +17,16 @@ import { useIsMobileViewport } from '../../shared/lib/viewport';
 import type { FameScoreValues, FilteredCounts } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
-  BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
+  BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS,
   buildXScale,
-  DECADE_STEP_YEARS,
-  DECADE_TICK_PHASE_OFFSET_YEARS,
   defaultPixelsPerYear,
   FALLBACK_VIEWPORT_WIDTH_PX,
   MIN_YEAR,
   MOBILE_DEFAULT_VISIBLE_YEARS,
   pinchCenterYear,
   pinchPixelsPerYear,
+  QUARTER_CENTURY_STEP_YEARS,
+  QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS,
   VIEWPORT_BUFFER_RATIO,
   zoomAnimationDurationMs,
   zoomAnimationGroupTransform,
@@ -48,7 +48,7 @@ import {
 import { PeopleLane } from './PeopleLane';
 import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
 import { YearAxis } from './YearAxis';
-import { MountainProfile } from './MountainProfile';
+import { Minimap } from './Minimap';
 import styles from './TimelineCanvas.module.css';
 
 // Below this much total pointer movement, a mouse-drag is treated as a click
@@ -124,15 +124,19 @@ export function TimelineCanvas({
   // Imperative per-tick targets for the zoom-button animation's single rAF
   // driver (see the zoom() function below) — one wrapping group transform
   // per lane/axis, not per-mark attribute recompute (options.ts's
-  // ZoomAnimationTransform comment). gridlineLayerRef is a plain DOM ref
-  // (no component-owned imperative handle needed) since the gridline layer
-  // is rendered directly here, not inside a Lane/Axis component.
+  // ZoomAnimationTransform comment). zebraLayerRef is a plain DOM ref
+  // (no component-owned imperative handle needed) since the zebra-striping
+  // layer is rendered directly here, not inside a Lane/Axis component.
   const peopleLaneAnimRef = useRef<ZoomAnimationHandle>(null);
   const conflictsMilestonesLaneAnimRef = useRef<ZoomAnimationHandle>(null);
-  const yearAxisTopAnimRef = useRef<ZoomAnimationHandle>(null);
+  // The sole surviving Year Axis, between People and Conflicts+Milestones —
+  // the top/bottom instances that used to flank the lanes were removed
+  // (`.scratch/pre-launch-readiness/issues/03-axis-duplication.md`): none of
+  // the three were ever needed to stay visible during a lane's own vertical
+  // scroll (each lane scrolls internally in its own capped box), so the
+  // redundant two carried no real benefit.
   const yearAxisMiddleAnimRef = useRef<ZoomAnimationHandle>(null);
-  const yearAxisBottomAnimRef = useRef<ZoomAnimationHandle>(null);
-  const gridlineLayerRef = useRef<HTMLDivElement>(null);
+  const zebraLayerRef = useRef<HTMLDivElement>(null);
   // In-flight zoom animation state: rAF handle to cancel on interrupt/
   // unmount, the pixelsPerYear the interpolation is currently retargeting
   // from (null when idle — a fresh click then starts from committed
@@ -148,7 +152,7 @@ export function TimelineCanvas({
     },
     [],
   );
-  // rAF handle for a MountainProfile track click-to-jump's eased scroll —
+  // rAF handle for a Minimap track click-to-jump's eased scroll —
   // separate from zoomAnimationFrameRef since the two never overlap (a jump
   // doesn't change pixelsPerYear) but each needs its own cancel-on-interrupt.
   const panAnimationFrameRef = useRef<number | null>(null);
@@ -159,7 +163,7 @@ export function TimelineCanvas({
     [],
   );
   // Cancels any in-flight jump animation so a real pointer drag (canvas
-  // drag-to-pan, or MountainProfile's own rect drag) always wins instead of
+  // drag-to-pan, or Minimap's own rect drag) always wins instead of
   // fighting the animation's per-frame scrollLeft writes.
   const cancelPanAnimation = useCallback(() => {
     if (panAnimationFrameRef.current !== null) {
@@ -233,7 +237,7 @@ export function TimelineCanvas({
   // listener below (one requestAnimationFrame behind) is fine for a
   // continuous drag (the lag is masked by the next frame's motion), but
   // leaves a one-frame visible flash for any *discrete* programmatic jump
-  // (zoom re-centering, mount positioning, MountainProfile's click/drag-to-
+  // (zoom re-centering, mount positioning, Minimap's click/drag-to-
   // jump): the real geometry commits instantly, the lane's own pan doesn't
   // catch up until the next frame. Every place that writes
   // scrollRef.current.scrollLeft directly calls this instead, so the mirror
@@ -276,22 +280,23 @@ export function TimelineCanvas({
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
   const visibleEndYear = scale.invert(scrollLeft + effectiveViewportWidthPx + viewportBufferPx);
 
-  // Faint full-height decade gridlines (.gridlineLayer in
-  // TimelineCanvas.module.css) — same BCE/CE phase split as YearAxis's own
-  // ruler (see its comment): round-historical BCE tick positions sit on a
+  // Subtle full-height 25-year zebra striping (.zebraLayer in
+  // TimelineCanvas.module.css), replacing the old decade-interval gridlines
+  // (`/grill-with-docs`) — same BCE/CE phase split as YearAxis's own ruler
+  // (see its comment): round-historical BCE tick positions sit on a
   // different phase than CE ones, so this renders as two adjacent regions
   // split at year 0 rather than one continuous background.
-  const gridlineBoundaryX = Math.min(Math.max(scale(0), 0), totalWidth);
-  const gridlineSizePx = `${pixelsPerYear * DECADE_STEP_YEARS}px`;
-  const bceGridlineStyle = {
-    width: gridlineBoundaryX,
-    '--decade-gridline-px': gridlineSizePx,
-    '--decade-gridline-offset-px': `${pixelsPerYear * BCE_DECADE_TICK_PHASE_OFFSET_YEARS}px`,
+  const zebraBoundaryX = Math.min(Math.max(scale(0), 0), totalWidth);
+  const zebraBandSizePx = `${pixelsPerYear * QUARTER_CENTURY_STEP_YEARS}px`;
+  const bceZebraStyle = {
+    width: zebraBoundaryX,
+    '--zebra-band-px': zebraBandSizePx,
+    '--zebra-offset-px': `${pixelsPerYear * BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
-  const ceGridlineStyle = {
-    width: totalWidth - gridlineBoundaryX,
-    '--decade-gridline-px': gridlineSizePx,
-    '--decade-gridline-offset-px': `${pixelsPerYear * DECADE_TICK_PHASE_OFFSET_YEARS}px`,
+  const ceZebraStyle = {
+    width: totalWidth - zebraBoundaryX,
+    '--zebra-band-px': zebraBandSizePx,
+    '--zebra-offset-px': `${pixelsPerYear * QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
   const filteredPeople = useMemo(
     () =>
@@ -409,11 +414,11 @@ export function TimelineCanvas({
     const container = scrollRef.current;
     if (!container) return;
     // A zoom animation's rAF loop writes a transform straight to
-    // gridlineLayerRef every tick, without going through React — reset it
+    // zebraLayerRef every tick, without going through React — reset it
     // here, in the same effect that lands the real scrollLeft for a
     // committed pixelsPerYear, so the commit is atomic (see PeopleLane's
     // identical comment on its own g.people reset for why).
-    if (gridlineLayerRef.current) gridlineLayerRef.current.style.transform = '';
+    if (zebraLayerRef.current) zebraLayerRef.current.style.transform = '';
     if (pendingCenterYearRef.current !== null) {
       syncScrollLeft(scale(pendingCenterYearRef.current) - container.clientWidth / 2);
       pendingCenterYearRef.current = null;
@@ -566,18 +571,18 @@ export function TimelineCanvas({
     setIsDragging(false);
   }
 
-  // Passed to MountainProfile (replaces the old scrollbar's own direct
+  // Passed to Minimap (replaces the old scrollbar's own direct
   // container.scrollLeft assignments, ADR 0004) — sets the real DOM
   // scrollLeft directly (and, via syncScrollLeft, the sticky lanes' own
   // mirrored pan in the same synchronous step); the scroll listener effect
   // above (with its rAF) is what then updates the scrollLeft state driving
-  // MountainProfile's own re-render, same as a native user scroll.
+  // Minimap's own re-render, same as a native user scroll.
   function handleScrollLeftChange(newScrollLeft: number) {
     cancelPanAnimation();
     syncScrollLeft(newScrollLeft);
   }
 
-  // MountainProfile's track click-to-jump: unlike every other pan source
+  // Minimap's track click-to-jump: unlike every other pan source
   // above, this is a single discrete target with no pointer to track, so it
   // eases the lanes/axis toward it (mirrors the zoom-button animation's rAF
   // + d3 interpolation, just for scrollLeft instead of pixelsPerYear)
@@ -665,11 +670,9 @@ export function TimelineCanvas({
   function applyZoomAnimationTick(transform: ZoomAnimationTransform) {
     peopleLaneAnimRef.current?.applyZoomTransform(transform);
     conflictsMilestonesLaneAnimRef.current?.applyZoomTransform(transform);
-    yearAxisTopAnimRef.current?.applyZoomTransform(transform);
     yearAxisMiddleAnimRef.current?.applyZoomTransform(transform);
-    yearAxisBottomAnimRef.current?.applyZoomTransform(transform);
-    if (gridlineLayerRef.current) {
-      gridlineLayerRef.current.style.transform = zoomAnimationGroupTransformCss(transform);
+    if (zebraLayerRef.current) {
+      zebraLayerRef.current.style.transform = zoomAnimationGroupTransformCss(transform);
     }
   }
 
@@ -796,17 +799,9 @@ export function TimelineCanvas({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
-        <div ref={gridlineLayerRef} className={styles.gridlineLayer} style={{ width: totalWidth }}>
-          <div className={styles.gridline} style={bceGridlineStyle} />
-          <div className={styles.gridline} style={ceGridlineStyle} />
-        </div>
-        <div className={styles.yearAxis} style={{ width: totalWidth }}>
-          <YearAxis
-            ref={yearAxisTopAnimRef}
-            xScale={scale}
-            visibleStartYear={visibleStartYear}
-            visibleEndYear={visibleEndYear}
-          />
+        <div ref={zebraLayerRef} className={styles.zebraLayer} style={{ width: totalWidth }}>
+          <div className={styles.zebraBand} style={bceZebraStyle} />
+          <div className={styles.zebraBand} style={ceZebraStyle} />
         </div>
         <div ref={peopleLaneRef} className={styles.peopleLane}>
           <PeopleLane ref={peopleLaneAnimRef} people={filteredPeople} xScale={scale} staticRowOf={staticPersonRowOf} />
@@ -828,17 +823,9 @@ export function TimelineCanvas({
             staticRowOf={staticConflictsMilestonesRowOf}
           />
         </div>
-        <div className={styles.yearAxis} style={{ width: totalWidth }}>
-          <YearAxis
-            ref={yearAxisBottomAnimRef}
-            xScale={scale}
-            visibleStartYear={visibleStartYear}
-            visibleEndYear={visibleEndYear}
-          />
-        </div>
       </div>
       {!isMobileViewport && (
-        <MountainProfile
+        <Minimap
           people={filteredPeople}
           conflicts={filteredConflicts}
           milestones={filteredMilestones}

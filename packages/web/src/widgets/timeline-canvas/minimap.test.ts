@@ -1,7 +1,8 @@
 import { test, expect } from 'vitest';
-import { computeDensityProfile, logScaleHeightPx } from './mountain-profile';
+import { centuryTicksInRange, computeDensityProfile, logScaleHeightPx } from './minimap';
 import { PAN_MIN_DATE } from '../../shared/config';
 import { today } from '../../shared/lib/dates';
+import { centuryBoundariesInRange } from '../../shared/lib/format-year';
 import type { Person } from '../../shared/types';
 
 const REFERENCE_PIXELS_PER_YEAR = 8;
@@ -86,6 +87,27 @@ test("computeDensityProfile's eventsDepth reflects the merged Conflicts+Mileston
 test('logScaleHeightPx returns 0 at depth 0 and maxHeightPx at the maximum depth', () => {
   expect(logScaleHeightPx(0, 30, 50)).toBe(0);
   expect(logScaleHeightPx(30, 30, 50)).toBeCloseTo(50);
+});
+
+test('centuryTicksInRange drops a boundary whose true start precedes minYear, but keeps the next one', () => {
+  const rawBoundaries = centuryBoundariesInRange(PAN_MIN_DATE.year, PAN_MIN_DATE.year + 200);
+  const ticks = centuryTicksInRange(PAN_MIN_DATE.year, PAN_MIN_DATE.year + 200);
+  // The real PAN_MIN_DATE doesn't land exactly on a century boundary, so
+  // centuryBoundariesInRange's first entry starts before it — exactly the
+  // case centuryTicksInRange exists to filter out, without dropping the
+  // boundary right after it too.
+  expect(rawBoundaries[0]?.startYear).toBeLessThan(PAN_MIN_DATE.year);
+  expect(ticks.every((boundary) => boundary.startYear >= PAN_MIN_DATE.year)).toBe(true);
+  expect(ticks[0]).toEqual(rawBoundaries[1]);
+});
+
+test('centuryTicksInRange returns boundaries in ascending order with no gaps', () => {
+  const ticks = centuryTicksInRange(1700, 2026);
+  const startYears = ticks.map((boundary) => boundary.startYear);
+  expect(startYears).toEqual([...startYears].sort((a, b) => a - b));
+  for (let i = 1; i < ticks.length; i += 1) {
+    expect(ticks[i]?.startYear).toBe((ticks[i - 1]?.endYear ?? 0) + 1);
+  }
 });
 
 test('logScaleHeightPx compresses the dynamic range so a low depth stays visually non-flat next to a high one', () => {
