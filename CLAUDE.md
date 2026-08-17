@@ -17,7 +17,7 @@ Read on demand — only load what the current task needs.
 | [docs/config-variables.md](docs/config-variables.md) | Touching config |
 | [docs/deployment.md](docs/deployment.md) | Touching build/deploy config |
 
-**Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale.
+**Doc upkeep:** if a task changes scope, architecture, or conventions, update the relevant `docs/*.md` in the same unit of work — don't leave docs stale. Avoid adding edit history, changelogs, diff descriptions, or ticket numbers, keep it high-level.
 
 Keep docs/*.md focused — split a doc when it stops fitting one screen rather than letting it grow unbounded.
 
@@ -25,6 +25,3 @@ Keep docs/*.md focused — split a doc when it stops fitting one screen rather t
 
 Issues and specs live as markdown files under `.scratch/<feature-slug>/`. See `docs/agents/issue-tracker.md`.
 
-### Domain docs
-
-Multi-context — root `CONTEXT-MAP.md` points to a `CONTEXT.md` per package under `packages/*/`. See `docs/agents/domain.md`.
