@@ -214,7 +214,7 @@ export const DEFAULT_VISIBLE_YEARS = DEFAULT_VIEWPORT_END.year - DEFAULT_VIEWPOR
 // A narrower first-paint window for phone-width viewports — without this,
 // a narrow screen would render the same DEFAULT_VISIBLE_YEARS span as
 // desktop, just smaller and denser, rather than genuinely more zoomed in.
-export const MOBILE_DEFAULT_VISIBLE_YEARS = 40;
+export const MOBILE_DEFAULT_VISIBLE_YEARS = 50;
 
 const ZOOM_STEP = 0.2;
 // Real browsers report the scroll container's actual clientWidth; this only

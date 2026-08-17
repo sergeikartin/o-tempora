@@ -543,9 +543,9 @@ function yearAxisDecadeTickPx(container: HTMLElement): number {
 
 // A single zoom step's exact multiplier, derived the same way TimelineCanvas
 // itself computes it (rather than duplicating ZOOM_STEP as a hand-copied
-// literal) — 50 is an arbitrary value safely inside pixelsPerYearBounds(0)
+// literal) — 10 is an arbitrary value safely inside pixelsPerYearBounds(0)
 // (jsdom's clientWidth), so neither call clamps and the ratio is exact.
-const ZOOM_STEP_RATIO = zoomIn(50, 0) / 50;
+const ZOOM_STEP_RATIO = zoomIn(10, 0) / 10;
 
 test('the zoom-in button animates rendered lines wider, landing exactly on the target pixelsPerYear once it resolves; zoom-out narrows them back', async () => {
   const { container, getByLabelText } = render(
