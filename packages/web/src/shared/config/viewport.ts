@@ -1,6 +1,6 @@
 import { m } from '../paraglide/messages.js';
 
-export const ZOOM_MIN_YEARS = 10;
+export const ZOOM_MIN_YEARS = 50;
 export const ZOOM_MAX_YEARS = 250;
 
 export const DEFAULT_VIEWPORT_START = Temporal.PlainDate.from({ year: 1740, month: 1, day: 1 });
