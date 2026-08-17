@@ -1,4 +1,5 @@
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
+import { centuryBoundariesInRange, type CenturyBoundary } from '../../shared/lib/format-year';
 import {
   assignRows,
   conflictPixelInterval,
@@ -10,10 +11,10 @@ import {
 } from './map-to-items';
 import { buildXScale, MILESTONES_LABEL_MAX_WIDTH_PX, MIN_ROW_GAP_PX, wrapLabelLines } from './options';
 
-// Resolution of the Mountain Profile's bucketed Row Depth series — enough
+// Resolution of the Minimap's bucketed Row Depth series — enough
 // buckets to trace real shape across a ~4,800-year domain without paying for
 // a per-year sample.
-export const MOUNTAIN_PROFILE_BUCKET_COUNT = 300;
+export const MINIMAP_BUCKET_COUNT = 300;
 
 export interface DensityProfile {
   /** Year at each bucket's midpoint, ascending, one per bucket. */
@@ -63,7 +64,7 @@ export function computeDensityProfile(
   conflicts: ConflictEntry[],
   milestones: Milestone[],
   referencePixelsPerYear: number,
-  bucketCount: number = MOUNTAIN_PROFILE_BUCKET_COUNT,
+  bucketCount: number = MINIMAP_BUCKET_COUNT,
 ): DensityProfile {
   const { scale: refScale, totalWidth: refTotalWidth } = buildXScale(referencePixelsPerYear);
 
@@ -95,6 +96,18 @@ export function computeDensityProfile(
     peopleDepth: bucketDepths(peopleIntervals, refTotalWidth, bucketCount),
     eventsDepth: bucketDepths(eventIntervals, refTotalWidth, bucketCount),
   };
+}
+
+/**
+ * Century boundaries whose start actually falls within [minYear, maxYear] —
+ * unlike centuryBoundariesInRange itself, which always includes the century
+ * minYear happens to sit inside, even when that century's true start
+ * precedes minYear (it would place a tick off the Minimap's left edge, at a
+ * negative x). Powers the Minimap's top-edge century-tick strip
+ * (`/grill-with-docs`).
+ */
+export function centuryTicksInRange(minYear: number, maxYear: number): CenturyBoundary[] {
+  return centuryBoundariesInRange(minYear, maxYear).filter((boundary) => boundary.startYear >= minYear);
 }
 
 // Depth is log1p-scaled (not linear) so low-density eras stay visually

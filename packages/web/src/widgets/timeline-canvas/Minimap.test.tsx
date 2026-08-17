@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, afterEach, vi } from 'vitest';
-import { MountainProfile } from './MountainProfile';
+import { Minimap } from './Minimap';
 import type { Person } from '../../shared/types';
 
 afterEach(cleanup);
@@ -30,10 +30,10 @@ const defaultProps = {
 
 test('renders a non-empty ridge path for a series with active entities, and a flat one for an empty series', () => {
   const { getByTestId } = render(
-    <MountainProfile {...defaultProps} people={[person('a', 1000, 1900), person('b', 1200, 2000)]} />,
+    <Minimap {...defaultProps} people={[person('a', 1000, 1900), person('b', 1200, 2000)]} />,
   );
-  const peopleArea = getByTestId('mountain-profile-people-area');
-  const eventsArea = getByTestId('mountain-profile-events-area');
+  const peopleArea = getByTestId('minimap-people-area');
+  const eventsArea = getByTestId('minimap-events-area');
   expect(peopleArea.getAttribute('d')).toBeTruthy();
   expect(eventsArea.getAttribute('d')).toBeTruthy();
   // Distinct paths: the people series has real density, the (empty)
@@ -44,9 +44,9 @@ test('renders a non-empty ridge path for a series with active entities, and a fl
 test('a press on the track jumps the viewport toward the click position', () => {
   const onScrollLeftJump = vi.fn();
   const { getByTestId } = render(
-    <MountainProfile {...defaultProps} people={[]} onScrollLeftJump={onScrollLeftJump} />,
+    <Minimap {...defaultProps} people={[]} onScrollLeftJump={onScrollLeftJump} />,
   );
-  const track = getByTestId('mountain-profile-track');
+  const track = getByTestId('minimap-track');
   Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
   track.getBoundingClientRect = () =>
     ({ left: 0, top: 0, width: 200, height: 56, right: 200, bottom: 56, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
@@ -61,10 +61,10 @@ test('a press on the track jumps the viewport toward the click position', () => 
 test('dragging the viewport rect reports a scrollLeft delta proportional to the drag distance', () => {
   const onScrollLeftChange = vi.fn();
   const { getByTestId } = render(
-    <MountainProfile {...defaultProps} people={[]} onScrollLeftChange={onScrollLeftChange} />,
+    <Minimap {...defaultProps} people={[]} onScrollLeftChange={onScrollLeftChange} />,
   );
-  const track = getByTestId('mountain-profile-track');
-  const rect = getByTestId('mountain-profile-viewport-rect');
+  const track = getByTestId('minimap-track');
+  const rect = getByTestId('minimap-viewport-rect');
   Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
 
   fireEvent.pointerDown(rect, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
@@ -81,10 +81,10 @@ test('dragging the viewport rect reports a scrollLeft delta proportional to the 
 test('a press on the viewport rect does not also trigger the track\'s own click-to-jump', () => {
   const onScrollLeftChange = vi.fn();
   const { getByTestId } = render(
-    <MountainProfile {...defaultProps} people={[]} onScrollLeftChange={onScrollLeftChange} />,
+    <Minimap {...defaultProps} people={[]} onScrollLeftChange={onScrollLeftChange} />,
   );
-  const track = getByTestId('mountain-profile-track');
-  const rect = getByTestId('mountain-profile-viewport-rect');
+  const track = getByTestId('minimap-track');
+  const rect = getByTestId('minimap-viewport-rect');
   Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
 
   fireEvent.pointerDown(rect, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
@@ -94,21 +94,33 @@ test('a press on the viewport rect does not also trigger the track\'s own click-
   expect(onScrollLeftChange).not.toHaveBeenCalled();
 });
 
+test('renders century tick marks spanning the pannable domain, with at least one label shown', () => {
+  const { getByTestId } = render(<Minimap {...defaultProps} people={[]} />);
+  const strip = getByTestId('minimap-century-strip');
+  const ticks = strip.querySelectorAll('[class*="centuryTick"]');
+  // Dozens of centuries across the real PAN_MIN_DATE-to-today domain — not
+  // asserting an exact count, since PAN_MIN_DATE and "today" both drift.
+  expect(ticks.length).toBeGreaterThan(15);
+  const labels = strip.querySelectorAll('[class*="centuryLabel"]');
+  expect(labels.length).toBeGreaterThan(0);
+  expect(labels.length).toBeLessThan(ticks.length);
+});
+
 test('hovering the track shows a tooltip with the date and Row Depth at that position; leaving hides it', () => {
   const { getByTestId, queryByTestId } = render(
-    <MountainProfile {...defaultProps} people={[person('a', 1000, 1900)]} />,
+    <Minimap {...defaultProps} people={[person('a', 1000, 1900)]} />,
   );
-  const track = getByTestId('mountain-profile-track');
+  const track = getByTestId('minimap-track');
   track.getBoundingClientRect = () =>
     ({ left: 0, top: 0, width: 200, height: 56, right: 200, bottom: 56, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
 
-  expect(queryByTestId('mountain-profile-tooltip')).toBeNull();
+  expect(queryByTestId('minimap-tooltip')).toBeNull();
 
   fireEvent.pointerMove(track, { pointerType: 'mouse', clientX: 100, pointerId: 1 });
 
-  const tooltip = getByTestId('mountain-profile-tooltip');
+  const tooltip = getByTestId('minimap-tooltip');
   expect(tooltip.textContent).toMatch(/rows/);
 
   fireEvent.pointerLeave(track, { pointerType: 'mouse', pointerId: 1 });
-  expect(queryByTestId('mountain-profile-tooltip')).toBeNull();
+  expect(queryByTestId('minimap-tooltip')).toBeNull();
 });

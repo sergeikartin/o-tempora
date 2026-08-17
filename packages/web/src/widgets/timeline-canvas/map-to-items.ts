@@ -138,7 +138,7 @@ export function mapPeople(people: Person[]): PersonItem[] {
 // left-aligned above the start of their lifespan line, so it can extend
 // well past the line's own pixel span for a short-lived person with a long
 // name, especially at low zoom. Shared by PeopleLane (its live viewport
-// scale) and the Mountain Profile minimap (a fixed Reference Scale, ADR
+// scale) and the Minimap minimap (a fixed Reference Scale, ADR
 // 0004) so both pack rows with the same rule.
 export function personPixelInterval(item: PersonItem, xScale: d3.ScaleLinear<number, number>): PixelInterval {
   const x1 = xScale(item.startYear);
@@ -201,7 +201,7 @@ function rangePixelInterval(
 }
 
 // Shared by ConflictsMilestonesLane (its live viewport scale) and the
-// Mountain Profile minimap (a fixed Reference Scale, ADR 0004) so both pack
+// Minimap minimap (a fixed Reference Scale, ADR 0004) so both pack
 // rows with the same rule.
 export function conflictPixelInterval(item: ConflictItem, xScale: d3.ScaleLinear<number, number>): PixelInterval {
   if (item.isPoint) {
@@ -246,7 +246,7 @@ export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
 }
 
 // Shared by ConflictsMilestonesLane (its live viewport scale) and the
-// Mountain Profile minimap (a fixed Reference Scale, ADR 0004) so both pack
+// Minimap minimap (a fixed Reference Scale, ADR 0004) so both pack
 // rows with the same rule. `lines` (the wrapped label) only matters for the
 // point branch — a period-shaped Milestone renders as a range, sharing
 // conflictPixelInterval's single-line-label range calculation via

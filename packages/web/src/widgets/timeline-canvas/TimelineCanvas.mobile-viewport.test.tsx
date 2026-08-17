@@ -88,7 +88,7 @@ test('above the mobile breakpoint, no drawer-toggle button renders', () => {
   expect(queryByLabelText('Filters')).toBeNull();
 });
 
-test('below the mobile breakpoint, MountainProfile does not render', () => {
+test('below the mobile breakpoint, Minimap does not render', () => {
   mobileMatches = true;
   mockMatchMedia();
   const { queryByTestId } = render(
@@ -106,10 +106,10 @@ test('below the mobile breakpoint, MountainProfile does not render', () => {
     />,
   );
 
-  expect(queryByTestId('mountain-profile-track')).toBeNull();
+  expect(queryByTestId('minimap-track')).toBeNull();
 });
 
-test('above the mobile breakpoint, MountainProfile renders', () => {
+test('above the mobile breakpoint, Minimap renders', () => {
   mobileMatches = false;
   mockMatchMedia();
   const { queryByTestId } = render(
@@ -127,7 +127,7 @@ test('above the mobile breakpoint, MountainProfile renders', () => {
     />,
   );
 
-  expect(queryByTestId('mountain-profile-track')).not.toBeNull();
+  expect(queryByTestId('minimap-track')).not.toBeNull();
 });
 
 test('the drawer-toggle button reflects isFilterDrawerOpen via aria-expanded', () => {

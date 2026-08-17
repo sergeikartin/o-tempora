@@ -29,7 +29,7 @@ This eliminates both jump sources structurally, not by patching around them:
 
 It's also cheap in the common case: `assignRows` sorts by fame tier first, so an item's row only ever depends on *more-famous* items, never less-famous ones — a lower-fame item is processed later and can never bump an already-placed higher-fame item. That means computing rows against the full dataset gives identical results to computing them against just the currently-filtered set, for any filter that only raises the fame floor. Verified against the real dataset: the default Curated People view (fameScore≥90, 103 people) resolves to the same 21 rows whether `assignRows` runs over just those 103 or the full 3,733-person dataset.
 
-This also extends a pattern already established by ADR 0004: the Mountain Profile density minimap already computes its own row-depth pass against a fixed Reference Scale rather than the live zoom, specifically to stay independent of it. This decision applies that same fixed-scale idea to the lanes' own row *positions*, not just the minimap's aggregate density counts.
+This also extends a pattern already established by ADR 0004: the Minimap density minimap already computes its own row-depth pass against a fixed Reference Scale rather than the live zoom, specifically to stay independent of it. This decision applies that same fixed-scale idea to the lanes' own row *positions*, not just the minimap's aggregate density counts.
 
 ## Considered Options
 

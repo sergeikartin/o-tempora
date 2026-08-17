@@ -2,19 +2,25 @@
    CSS custom properties. The Occupation Domain palette is wired here too
    (used by both the Sidebar legend and the D3 People-lane's fill/stroke
    attrs — SVG presentation attributes resolve var() same as any CSS
-   property). The Conflict Color and Milestone Category palette still
-   provisionally inline hex in widgets/timeline-canvas/options.ts pending
-   ticket 05 — see docs/code-conventions.md's Styling section. */
+   property). The Milestone Category palette still provisionally inlines
+   hex in widgets/timeline-canvas/options.ts pending ticket 05 — see
+   docs/code-conventions.md's Styling section; --color-conflict below is
+   this widget's one CSS-side exception, added for Minimap.module.css's SVG
+   fill (options.ts's own CONFLICT_COLOR JS constant, used for the lanes'
+   D3-set attrs, stays separate — a CSS custom property doesn't help there). */
 :root {
   --color-bg-base: #f2e9d2;
   --color-bg-surface: #fbf6e9;
   --color-bg-surface-raised: #ffffff;
   --color-border-subtle: #e0d3ac;
   --color-border-strong: #c7b383;
+  --color-border-emphasis: #837757;
   --color-text-primary: #241a10;
   --color-text-secondary: #6b6046;
   --color-accent-selected: #8a2a1a;
   --color-focus-ring: #6e2013;
+  --color-conflict: #8c2d2b;
+  --color-bg-axis: #ebddbd;
 
   --color-domain-institutions: #ba534e;
   --color-domain-arts: #bd6545;
@@ -62,7 +68,7 @@ body,
    document past the viewport. Clips rather than hides so it doesn't force
    overflow-y to auto per the overflow-x/y coupling rule (see
    ConflictsMilestonesLane.module.css's own comment on that pitfall);
-   without this, MountainProfile's hover tooltip pokes past the window edge
+   without this, Minimap's hover tooltip pokes past the window edge
    near either end of the track and triggers real page scrollbars. */
 html {
   overflow-x: clip;

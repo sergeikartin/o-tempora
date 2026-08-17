@@ -26,6 +26,7 @@ export const LANE_TOP_PADDING = 12;
 // than just windowing it.
 export const YEAR_STEP_YEARS = 1;
 export const DECADE_STEP_YEARS = 10;
+export const QUARTER_CENTURY_STEP_YEARS = 25;
 export const CENTURY_STEP_YEARS = 100;
 export const RULER_HEIGHT = 20;
 export const RULER_LABEL_ROW_HEIGHT = 18;
@@ -42,6 +43,15 @@ export const CENTURY_TICK_HEIGHT_PCT = 100;
 // pixel width would make the year text collide with its neighbor's —
 // century labels are still shown, spaced 10x further apart.
 export const MIN_DECADE_LABEL_SPACING_PX = 40;
+// The Minimap's top-edge century-tick strip (Minimap.tsx): ticks always
+// render across the full pannable range, but labels are thinned by walking
+// left to right and skipping any that would overlap the previous shown
+// label's own estimated rendered width — unlike YearAxis's decade labels
+// (uniform spacing at any given zoom, so a single show/hide toggle against a
+// flat px floor works), century labels vary a lot in text length ("1800s"
+// vs. "8th century BCE"), so a flat floor alone still let long labels
+// visually overlap the next tick's short one.
+export const MINIMAP_CENTURY_STRIP_HEIGHT_PX = 20;
 export const POINT_RADIUS = 5;
 // Minimum gap (in scroll years) kept between two bars placed in the same
 // row — pure visual breathing room, not a claim about the underlying dates.
@@ -185,6 +195,11 @@ export const DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS
 export const CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 0);
 export const BCE_DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 1);
 export const BCE_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 1);
+// Same round-year phase alignment, at the lane background's 25-year zebra-
+// band interval (TimelineCanvas.tsx's .zebraLayer) — replaces the old
+// decade-interval gridlines (`/grill-with-docs`).
+export const QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(QUARTER_CENTURY_STEP_YEARS, 0);
+export const BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(QUARTER_CENTURY_STEP_YEARS, 1);
 
 /** Shared time domain: the D3 x-axis for every lane, keyed by pixels-per-year zoom level. */
 export function buildXScale(pixelsPerYear: number): { scale: d3.ScaleLinear<number, number>; totalWidth: number } {

@@ -90,9 +90,9 @@ test('renders both lanes, each populated from its own dataset', () => {
   // share the literal `.d3-line` marker class — two total (Aristotle + the
   // Korean War) — so this counts each lane's own <svg> (People, then the
   // merged Conflicts+Milestones lane) rather than the whole page. Excludes
-  // MountainProfile's own ridge <svg>, a third one that isn't a lane.
+  // Minimap's own ridge <svg>, a third one that isn't a lane.
   const svgs = Array.from(container.querySelectorAll('svg')).filter(
-    (svg) => svg.getAttribute('data-testid') !== 'mountain-profile-ridge',
+    (svg) => svg.getAttribute('data-testid') !== 'minimap-ridge',
   );
   expect(svgs).toHaveLength(2);
   const [peopleSvg, conflictsMilestonesSvg] = svgs as [SVGSVGElement, SVGSVGElement];
@@ -119,11 +119,11 @@ test('the two lane sections and every year axis share the same rendered width', 
   );
 
   // People, and the merged Conflicts+Milestones lane — YearAxis is plain
-  // HTML/CSS, no svg; excludes MountainProfile's own ridge <svg>, which
+  // HTML/CSS, no svg; excludes Minimap's own ridge <svg>, which
   // isn't a lane and (being CSS-sized, not width-attribute-sized) has no
   // `width` attribute to compare.
   const svgs = Array.from(container.querySelectorAll('svg')).filter(
-    (svg) => svg.getAttribute('data-testid') !== 'mountain-profile-ridge',
+    (svg) => svg.getAttribute('data-testid') !== 'minimap-ridge',
   );
   expect(svgs).toHaveLength(2);
   const svgWidthsPx = svgs.map((svg) => Number(svg.getAttribute('width')));
@@ -133,12 +133,12 @@ test('the two lane sections and every year axis share the same rendered width', 
   expect(new Set([...svgWidthsPx, ...axisWidthsPx]).size).toBe(1);
 });
 
-test('the full-height decade gridline is split into a BCE and a CE region with different tick phases', () => {
-  // Regression: the gridline used to be one continuous CSS background
+test('the full-height 25-year zebra striping is split into a BCE and a CE region with different tick phases', () => {
+  // Regression: the zebra layer used to be one continuous CSS background
   // (a single phase for the whole timeline), which drifted out of
   // alignment with the axis's round-historical BCE tick labels — the same
   // bug as YearAxis's own ruler, fixed the same way (see options.ts's
-  // BCE_DECADE_TICK_PHASE_OFFSET_YEARS).
+  // BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS).
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -154,20 +154,20 @@ test('the full-height decade gridline is split into a BCE and a CE region with d
     />,
   );
 
-  const gridlines = Array.from(container.querySelectorAll('[class*="gridline"]:not([class*="gridlineLayer"])'));
-  expect(gridlines).toHaveLength(2);
-  const [bceGridline, ceGridline] = gridlines as [HTMLElement, HTMLElement];
-  expect(bceGridline.style.getPropertyValue('--decade-gridline-offset-px')).not.toBe(
-    ceGridline.style.getPropertyValue('--decade-gridline-offset-px'),
+  const zebraBands = Array.from(container.querySelectorAll('[class*="zebraBand"]'));
+  expect(zebraBands).toHaveLength(2);
+  const [bceBand, ceBand] = zebraBands as [HTMLElement, HTMLElement];
+  expect(bceBand.style.getPropertyValue('--zebra-offset-px')).not.toBe(
+    ceBand.style.getPropertyValue('--zebra-offset-px'),
   );
   // Widths sum to the full scrollable width (real PAN_MIN_DATE-to-today
   // domain, always spanning both eras).
-  const gridlineLayer = container.querySelector('[class*="gridlineLayer"]') as HTMLElement;
-  const totalWidth = parseFloat(gridlineLayer.style.width);
-  expect(parseFloat(bceGridline.style.width) + parseFloat(ceGridline.style.width)).toBeCloseTo(totalWidth);
+  const zebraLayer = container.querySelector('[class*="zebraLayer"]') as HTMLElement;
+  const totalWidth = parseFloat(zebraLayer.style.width);
+  expect(parseFloat(bceBand.style.width) + parseFloat(ceBand.style.width)).toBeCloseTo(totalWidth);
 });
 
-test('renders three year axes — top, between People and Conflicts+Milestones, and bottom', () => {
+test('renders a single year axis, between People and Conflicts+Milestones', () => {
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -183,7 +183,7 @@ test('renders three year axes — top, between People and Conflicts+Milestones, 
     />,
   );
 
-  expect(container.querySelectorAll('.year-axis-ruler')).toHaveLength(3);
+  expect(container.querySelectorAll('.year-axis-ruler')).toHaveLength(1);
 });
 
 test('mouse-dragging the scroll container pans it; releasing stops the pan', () => {
@@ -213,7 +213,7 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
   expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
 });
 
-test('dragging the Mountain Profile viewport rect scrolls the container, proportional to the (mocked) track width vs. the timeline width', () => {
+test('dragging the Minimap viewport rect scrolls the container, proportional to the (mocked) track width vs. the timeline width', () => {
   const { container, getByTestId } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -229,9 +229,9 @@ test('dragging the Mountain Profile viewport rect scrolls the container, proport
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
-  const track = getByTestId('mountain-profile-track');
-  const rect = getByTestId('mountain-profile-viewport-rect');
-  // MountainProfile reads scrollLeft from React state (a prop), not a live
+  const track = getByTestId('minimap-track');
+  const rect = getByTestId('minimap-viewport-rect');
+  // Minimap reads scrollLeft from React state (a prop), not a live
   // DOM ref — unlike the plain content-drag test above, so this drag's
   // start position is whatever TimelineCanvas already panned to on mount
   // (DEFAULT_VIEWPORT_START), not a value this test can reset via a raw
@@ -252,7 +252,7 @@ test('dragging the Mountain Profile viewport rect scrolls the container, proport
   // about.
   fireEvent.pointerMove(rect, { pointerType: 'mouse', clientX: 490, pointerId: 1 });
 
-  // Mirrors MountainProfile's handleRectPointerMove formula (a hand-derived
+  // Mirrors Minimap's handleRectPointerMove formula (a hand-derived
   // expected value, same style as the plain content-drag test above): a
   // small rect move covers a large scrollLeft distance once totalWidth (a
   // multi-millennium timeline) vastly exceeds the 100px mocked track — the
@@ -291,7 +291,7 @@ test('a mousedown on the scroll container content still pans it — the custom s
   expect(scrollContainer.scrollLeft).toBe(140);
 });
 
-test('clicking the Mountain Profile track outside the viewport rect jumps the viewport toward the click position', () => {
+test('clicking the Minimap track outside the viewport rect jumps the viewport toward the click position', () => {
   const { container, getByTestId } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -307,7 +307,7 @@ test('clicking the Mountain Profile track outside the viewport rect jumps the vi
     />,
   );
   const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
-  const track = getByTestId('mountain-profile-track');
+  const track = getByTestId('minimap-track');
   Object.defineProperty(scrollContainer, 'scrollLeft', { value: 0, writable: true });
   Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
   track.getBoundingClientRect = () =>
@@ -529,7 +529,7 @@ function personLineWidth(container: HTMLElement): number {
 
 function conflictLineWidth(container: HTMLElement): number {
   const svgs = Array.from(container.querySelectorAll('svg')).filter(
-    (svg) => svg.getAttribute('data-testid') !== 'mountain-profile-ridge',
+    (svg) => svg.getAttribute('data-testid') !== 'minimap-ridge',
   );
   const [, conflictsMilestonesSvg] = svgs as [SVGSVGElement, SVGSVGElement];
   const line = conflictsMilestonesSvg.querySelector('.d3-line');
@@ -635,7 +635,7 @@ test('a zoom animation moves People, Conflicts+Milestones marks, and the Year Ax
   expect(yearAxisDecadeTickPx(container)).toBeCloseTo(initialTickPx * ZOOM_STEP_RATIO);
 });
 
-test("MountainProfile's viewport rect reflects the new range once a zoom animation settles, not a stale pre-zoom one, even after an interrupted (double-clicked) animation", async () => {
+test("Minimap's viewport rect reflects the new range once a zoom animation settles, not a stale pre-zoom one, even after an interrupted (double-clicked) animation", async () => {
   const { getByLabelText, getByTestId } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -650,7 +650,7 @@ test("MountainProfile's viewport rect reflects the new range once a zoom animati
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const rect = getByTestId('mountain-profile-viewport-rect');
+  const rect = getByTestId('minimap-viewport-rect');
   const initialWidthPct = parseFloat(rect.style.width);
 
   // Two rapid clicks — the second interrupts/retargets the first — so this
