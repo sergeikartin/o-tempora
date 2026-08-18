@@ -13,8 +13,8 @@ import { MILESTONE_CATEGORY_TO_GROUP, type MilestoneCategory } from '../../share
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
 export const LANE_TOP_PADDING = 12;
-// Year Axis: a ruler bar whose tick marks are pure CSS (three layered
-// repeating background-gradients — year/decade/century — no per-tick DOM
+// Year Axis: a ruler bar whose tick marks are pure CSS (two layered
+// repeating background-gradients — decade/century — no per-tick DOM
 // node, so its cost is ~flat regardless of the scrollable width) plus a
 // label row below showing decade numbers as plain positioned elements,
 // windowed to the visible viewport (+ buffer — see TimelineCanvas's
@@ -24,7 +24,6 @@ export const LANE_TOP_PADDING = 12;
 // scroll position was the single biggest contributor to initial-load time;
 // the CSS-gradient approach sidesteps that per-tick cost entirely rather
 // than just windowing it.
-export const YEAR_STEP_YEARS = 1;
 export const DECADE_STEP_YEARS = 10;
 export const QUARTER_CENTURY_STEP_YEARS = 25;
 export const CENTURY_STEP_YEARS = 100;
@@ -35,8 +34,7 @@ export const AXIS_HEIGHT = RULER_HEIGHT + RULER_LABEL_ROW_HEIGHT;
 // from the top of the ruler bar, taller = more prominent) — passed as CSS
 // custom properties rather than baked into the CSS Module since the
 // underlying px spacing is zoom-dependent (see TimelineCanvas's
-// `--year-tick-px`/`--decade-tick-px`/`--century-tick-px` custom properties).
-export const YEAR_TICK_HEIGHT_PCT = 30;
+// `--decade-tick-px`/`--century-tick-px` custom properties).
 export const DECADE_TICK_HEIGHT_PCT = 55;
 export const CENTURY_TICK_HEIGHT_PCT = 100;
 // Decade labels are skipped once zoomed out far enough that a decade's

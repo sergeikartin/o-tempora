@@ -50,8 +50,8 @@ function decadeLabelsInRange(startYear: number, endYear: number, xScale: d3.Scal
   }));
 }
 
-// The ruler's tick marks are pure CSS — three layered repeating background-
-// gradients on .ruler (year/decade/century, see YearAxis.module.css), sized
+// The ruler's tick marks are pure CSS — two layered repeating background-
+// gradients on .ruler (decade/century, see YearAxis.module.css), sized
 // and phase-aligned via the CSS custom properties set below — rather than
 // one DOM node per tick. Their rendering cost is ~flat no matter how wide
 // the scrollable timeline gets, so unlike every other lane they need no
@@ -77,7 +77,6 @@ export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(function 
   );
 
   const sharedTickSizeVars = {
-    '--year-tick-px': `${pixelsPerYear}px`,
     '--decade-tick-px': `${pixelsPerYear * DECADE_STEP_YEARS}px`,
     '--century-tick-px': `${pixelsPerYear * CENTURY_STEP_YEARS}px`,
   };

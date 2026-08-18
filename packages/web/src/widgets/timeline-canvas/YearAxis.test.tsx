@@ -30,7 +30,6 @@ test('the ruler bar exposes tick spacing as CSS custom properties, derived from 
 
   const ruler = container.querySelector('.year-axis-ruler') as HTMLElement;
   // 10px/year here (10000px over a 1000-year domain).
-  expect(ruler.style.getPropertyValue('--year-tick-px')).toBe('10px');
   expect(ruler.style.getPropertyValue('--decade-tick-px')).toBe('100px');
   expect(ruler.style.getPropertyValue('--century-tick-px')).toBe('1000px');
 });
