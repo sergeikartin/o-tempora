@@ -20,13 +20,12 @@ const SHARED_DATA_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)
 // per build.
 export default defineConfig(({ mode }) => {
   const suffix = mode === 'ru' ? '.ru' : '';
-  // The two builds are deployed as independent static outputs
-  // subpath-addressed under the same domain (docs/deployment.md) — asset
-  // URLs baked into each build's own index.html/JS must be rooted at that
-  // build's own subpath, not the domain root. Only set for an explicit
-  // `--mode en`/`--mode ru` build (build:en/build:ru); the dev server and
-  // vitest never pass a custom mode, so they keep serving from '/'.
-  const base = mode === 'en' || mode === 'ru' ? `/${mode}/` : '/';
+  // The two builds are deployed as independent static outputs under the
+  // same domain — English at the root, every other locale at its own
+  // `/<locale>/` subpath (docs/deployment.md, docs/adr/0003) — so only the
+  // Russian build's asset URLs need rooting at a subpath; English's stay
+  // rooted at '/', same as dev/vitest which never pass a custom mode.
+  const base = mode === 'ru' ? '/ru/' : '/';
   return {
     base,
     plugins: [

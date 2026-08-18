@@ -11,7 +11,7 @@
     "dev": "vite",
     "build": "npm run build:en",
     "prebuild:en": "npm run paraglide:en",
-    "build:en": "tsc -b && vite build --mode en --outDir dist/en",
+    "build:en": "tsc -b && vite build --mode en --outDir dist",
     "prebuild:ru": "npm run paraglide:ru",
     "build:ru": "tsc -b && vite build --mode ru --outDir dist/ru",
     "preview": "vite preview",
