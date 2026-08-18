@@ -42,10 +42,10 @@ test('renders the fame-score filter inputs, pre-filled with the given values', (
   expect((getByLabelText('Minimum fame score for People') as HTMLInputElement).value).toBe('90');
 });
 
-test('renders the Data Depth switch, showing Curated active for the default values', () => {
-  const { getByRole } = renderSidebar({ fameScoreValues: { people: 90, conflicts: 82, milestones: 82 } });
+test('renders the Data Depth switch, showing Mainstream active for the default values', () => {
+  const { getByRole } = renderSidebar({ fameScoreValues: { people: 88, conflicts: 82, milestones: 82 } });
 
-  expect(getByRole('button', { name: 'Curated' }).getAttribute('aria-pressed')).toBe('true');
+  expect(getByRole('button', { name: 'Mainstream' }).getAttribute('aria-pressed')).toBe('true');
 });
 
 test('clicking an Occupation Domain pill calls onToggleDomain with that domain', () => {

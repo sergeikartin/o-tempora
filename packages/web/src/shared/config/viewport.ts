@@ -34,20 +34,20 @@ export interface FameScoreBounds {
 // pending a manual re-tune once real blended scores are visible in the
 // running app.
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
-  people: { min: 75, max: 100, default: 90 },
+  people: { min: 75, max: 100, default: 88 },
   conflicts: { min: 1, max: 100, default: 82 },
   milestones: { min: 1, max: 100, default: 82 },
 };
 
-// Data Depth: a three-position UI preset that writes canonical values into
+// Data Depth: a two-position UI preset that writes canonical values into
 // the three fame-score floor inputs above in one click (grill-with-docs
-// session 2026-08-12 — see CONTEXT.md's Data Depth entry). `curated`
+// session 2026-08-18 — see CONTEXT.md's Data Depth entry). `mainstream`
 // deliberately equals FAME_SCORE_BOUNDS's existing per-lane defaults, so
-// the app's launch behavior is unchanged by this feature; each level after
-// it digs deeper (lower floor, more entries) rather than narrower. Purely a
-// UI convenience — distinct from the retired pipeline-side Fame Tier
-// gating (ADR 0003).
-export type DataDepthLevelId = 'curated' | 'expanded' | 'full';
+// the app's launch behavior is unchanged by this feature; `deep-cut` digs
+// deeper (lower floor, more entries) rather than narrower. Purely a UI
+// convenience — distinct from the retired pipeline-side Fame Tier gating
+// (ADR 0003).
+export type DataDepthLevelId = 'mainstream' | 'deep-cut';
 
 export interface DataDepthLevel {
   id: DataDepthLevelId;
@@ -59,15 +59,13 @@ export interface DataDepthLevel {
 // (docs/adr/0005) — same pattern as shared/config's other taxonomy labels
 // (e.g. occupation-domain-colors.ts's DOMAIN_LABELS).
 const DATA_DEPTH_LABELS: Record<DataDepthLevelId, string> = {
-  curated: m['taxonomy.data-depth.curated'](),
-  expanded: m['taxonomy.data-depth.expanded'](),
-  full: m['taxonomy.data-depth.full'](),
+  mainstream: m['taxonomy.data-depth.mainstream'](),
+  'deep-cut': m['taxonomy.data-depth.deep-cut'](),
 };
 
 export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
-  { id: 'curated', label: DATA_DEPTH_LABELS.curated, values: { people: 90, conflicts: 82, milestones: 82 } },
-  { id: 'expanded', label: DATA_DEPTH_LABELS.expanded, values: { people: 85, conflicts: 70, milestones: 70 } },
-  { id: 'full', label: DATA_DEPTH_LABELS.full, values: { people: 80, conflicts: 1, milestones: 1 } },
+  { id: 'mainstream', label: DATA_DEPTH_LABELS.mainstream, values: { people: 88, conflicts: 82, milestones: 82 } },
+  { id: 'deep-cut', label: DATA_DEPTH_LABELS['deep-cut'], values: { people: 80, conflicts: 64, milestones: 55 } },
 ];
 
 // Derives which level (if any) the given fame-score floor values match —

@@ -34,7 +34,6 @@
   "taxonomy.milestone-category-group.science-innovation": "Наука и инновации",
   "taxonomy.milestone-category-group.social-culture": "Общество и культура",
   "taxonomy.conflicts-milestones-filter.conflicts": "Конфликты",
-  "taxonomy.data-depth.curated": "Куратор",
-  "taxonomy.data-depth.expanded": "Расширенный",
-  "taxonomy.data-depth.full": "Полный"
+  "taxonomy.data-depth.mainstream": "Мейнстрим",
+  "taxonomy.data-depth.deep-cut": "Для знатоков"
 }

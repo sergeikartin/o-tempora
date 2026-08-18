@@ -34,7 +34,6 @@
   "taxonomy.milestone-category-group.science-innovation": "Science & Innovation",
   "taxonomy.milestone-category-group.social-culture": "Social & Human Culture",
   "taxonomy.conflicts-milestones-filter.conflicts": "Conflicts",
-  "taxonomy.data-depth.curated": "Curated",
-  "taxonomy.data-depth.expanded": "Expanded",
-  "taxonomy.data-depth.full": "Full"
+  "taxonomy.data-depth.mainstream": "Mainstream",
+  "taxonomy.data-depth.deep-cut": "Deep Cut"
 }
