@@ -8,8 +8,8 @@ interface DataDepthSwitchProps {
   onChange: (lane: FameScoreLane, value: number) => void;
 }
 
-// Three-position preset that writes canonical values into the three
-// numeric fame-score inputs below it (grill-with-docs session 2026-08-12).
+// Two-position preset that writes canonical values into the three
+// numeric fame-score inputs below it (grill-with-docs session 2026-08-18).
 // No separate "active level" state — the highlighted option is derived
 // straight from `values` each render, so a hand-edited numeric input
 // automatically drops the switch to no option shown as active ("custom").
