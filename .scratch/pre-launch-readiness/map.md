@@ -20,6 +20,7 @@ Every pre-publish concern for this world-history timeline — the items on Serge
 
 ## Not yet specified
 
+- [Search bar](issues/15-search-bar.md): whether search is in scope for v1 at all (product-scope.md rules out search *outside* the current Fame Tier, implying in-tier search may be intended but it's never been spec'd), what it searches over, and how it interacts with the existing filter pills — needs a scope decision before it's implementation-ready.
 - Whether error monitoring should extend beyond error capture (performance monitoring, session replay) and how its setup ties into whichever host [Hosting & deployment choice](issues/06-hosting-deployment-choice.md) eventually picks (env/release tagging) — too fuzzy until that ticket resolves.
 - Legal/attribution interplay between the code license (once chosen) and the existing data license (`packages/shared-types/LICENSE-DATA.md` — Pantheon CC BY-SA 4.0, Wikidata CC0) — unexamined; may need a revisit once [License choice & README](issues/08-license-and-readme.md) resolves.
 - Canonical-URL, `sitemap.xml`, and `hreflang` specifics for [SEO, social preview & meta basics](issues/09-seo-meta-social-basics.md) need the real domain, which is why that ticket is blocked on [Hosting & deployment choice](issues/06-hosting-deployment-choice.md).
