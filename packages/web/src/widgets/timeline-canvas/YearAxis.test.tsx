@@ -210,6 +210,33 @@ test('a BCE decade label sits exactly on the BCE ruler region\'s own tick grid (
   expect(distanceFromNearestTick).toBeCloseTo(0, 5);
 });
 
+test('a CE decade label sits exactly on the CE ruler region\'s own tick grid', () => {
+  // Regression: the CE ruler's own local origin (x=0) is astronomical year
+  // 0, not MIN_YEAR — its tick-grid phase must be computed relative to that,
+  // not to MIN_YEAR (options.ts's phaseOffsetYears), or every CE tick lands
+  // one year off from its round-number label (e.g. a "1900" label centered
+  // over the tick actually drawn at year 1901). The domain must span year 0
+  // (unlike most of this file's fixtures) so the CE ruler's own box doesn't
+  // start exactly at a round-number year by coincidence of the synthetic
+  // domain — the label's x (xScale-absolute) needs translating into the CE
+  // ruler's own local space via the BCE ruler's rendered width, same as the
+  // real component does by DOM layout.
+  const xScale = scaleFor(-1000, 3000, 40000);
+  const { container } = render(<YearAxis xScale={xScale} visibleStartYear={1750} visibleEndYear={1950} />);
+
+  const label = Array.from(container.querySelectorAll('.year-axis-label')).find((el) => el.textContent === '1900') as HTMLElement;
+  const bceRuler = container.querySelector('.year-axis-ruler-bce') as HTMLElement;
+  const ceRuler = container.querySelector('.year-axis-ruler') as HTMLElement;
+  const ceRulerLeft = parseFloat(bceRuler.style.width);
+  const centuryOffsetPx = parseFloat(ceRuler.style.getPropertyValue('--century-tick-offset-px'));
+  const centurySpacingPx = parseFloat(ceRuler.style.getPropertyValue('--century-tick-px'));
+
+  const labelXInCeRuler = parseFloat(label.style.left) - ceRulerLeft;
+  const distanceFromNearestTick =
+    (((labelXInCeRuler - centuryOffsetPx) % centurySpacingPx) + centurySpacingPx) % centurySpacingPx;
+  expect(distanceFromNearestTick).toBeCloseTo(0, 5);
+});
+
 test('the axis height fits the ruler bar plus the label row', () => {
   const { container } = render(
     <YearAxis xScale={scaleFor(1000, 3000, 20000)} visibleStartYear={1750} visibleEndYear={1950} />,

@@ -37,7 +37,9 @@
   top: 0;
   height: 5px;
   width: 1px;
-  background-color: var(--color-border-strong);
+  /* Matches the Year Axis's own century tick and the lane zebra seam — one
+     color for "century boundary" everywhere it appears. */
+  background-color: var(--color-border-emphasis);
 }
 
 .centuryLabel {

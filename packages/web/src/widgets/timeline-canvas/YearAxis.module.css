@@ -24,9 +24,13 @@
 .ruler {
   position: relative;
   flex-shrink: 0;
-  /* A shade darker than the page background so the ruler reads as a
-     distinct bar, per the reference this design is based on. */
-  background-color: var(--color-bg-axis);
+  /* Translucent, not opaque: TimelineCanvas's zebra/century-seam layer
+     paints behind this bar (flex items in .scrollContainer paint in DOM
+     order, and this ruler has no earlier sibling of its own covering it),
+     so a solid fill would hard-cut that rhythm exactly at the ruler's
+     top/bottom edges — reading as two striped fields bridged by a divider
+     instead of one continuous timeline with the ruler floating over it. */
+  background-color: color-mix(in srgb, var(--color-bg-axis) 82%, transparent);
   background-repeat: repeat-x, repeat-x, repeat-x;
   background-position:
     var(--century-tick-offset-px) top,
@@ -57,9 +61,12 @@
   color: var(--color-text-secondary);
 }
 
+/* Only repositions .label vertically to fit the taller chrome (see
+   .centuryLabelScale below) inside the existing label row
+   (RULER_LABEL_ROW_HEIGHT) — the visible tab chrome itself lives on the
+   inner .labelScale span, not here (see that rule's comment for why). */
 .centuryLabel {
-  font-weight: 600;
-  color: var(--color-text-primary);
+  top: 0;
 }
 
 /* The zoom-button animation's own counter-scale target (YearAxis.tsx) — a
@@ -70,4 +77,28 @@
    span over its tick. */
 .labelScale {
   display: inline-block;
+}
+
+/* The century tab's lifted, bordered chrome (`/grill-with-docs`'s "Survey
+   Lines" design) — deliberately on .labelScale (the counter-scaled inner
+   span), not the outer .label/.centuryLabel: the zoom-button animation
+   applies its group `scaleX` to the whole .axis ancestor, so any border/
+   padding/background living on an un-counter-scaled element would visibly
+   stretch non-uniformly for the ~300-400ms of the gesture before snapping
+   back on commit — exactly the distortion the counter-scale exists to
+   prevent for text glyphs elsewhere (options.ts's zoomAnimationCounterScale*
+   comment). Putting the chrome here instead means it rides along with that
+   same correction for free. Sized to fit inside the existing label row
+   (RULER_LABEL_ROW_HEIGHT) — this budget was deliberately freed up for the
+   Minimap's own century strip and isn't meant to grow back, so this stays a
+   restyle, not a taller row. Static, like every other label — it scrolls
+   off-screen with its tick rather than pinning to the viewport edge;
+   jumping to a period stays the Minimap's job. */
+.centuryLabelScale {
+  font-weight: 700;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-surface-raised);
+  border: 1px solid var(--color-border-emphasis);
+  border-radius: var(--radius-sm);
+  padding: 1px 7px;
 }

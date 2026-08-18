@@ -179,27 +179,27 @@ export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = Obje
 export const MIN_YEAR = PAN_MIN_DATE.year;
 
 // The Year Axis's CSS tick gradients (and the scroll container's full-height
-// decade gridlines) tile starting at x=0, i.e. at MIN_YEAR. Round-historical
-// BCE tick positions (format-year.ts's isRoundTickYear/roundTickYearsInRange
-// — year ≡ 1 mod stepYears, e.g. -9/-19 for "10 BCE"/"20 BCE") sit on a
-// different phase than CE ticks and the era-boundary tick at year 0
-// (ordinary ≡ 0 mod stepYears, unchanged) — see
-// docs/adr/0001-astronomical-year-numbering.md. A single repeating CSS
-// background can only tile one phase, so YearAxis renders the ruler as two
-// adjacent regions split at year 0, each using its own offset computed here.
-function phaseOffsetYears(stepYears: number, anchorRemainder: number): number {
-  const raw = (anchorRemainder - MIN_YEAR) % stepYears;
+// decade gridlines) render as two adjacent regions split at year 0 — a BCE
+// ruler tiling from its own x=0 (= MIN_YEAR) and a CE ruler tiling from its
+// own x=0 (= year 0), each needing an offset computed relative to *its own*
+// local origin, not the other's. Round-historical BCE tick positions
+// (format-year.ts's isRoundTickYear/roundTickYearsInRange — year ≡ 1 mod
+// stepYears, e.g. -9/-19 for "10 BCE"/"20 BCE") also sit on a different
+// phase than CE ticks and the era-boundary tick at year 0 (ordinary ≡ 0 mod
+// stepYears, unchanged) — see docs/adr/0001-astronomical-year-numbering.md.
+function phaseOffsetYears(stepYears: number, anchorRemainder: number, originYear: number): number {
+  const raw = (anchorRemainder - originYear) % stepYears;
   return ((raw % stepYears) + stepYears) % stepYears;
 }
-export const DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 0);
-export const CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 0);
-export const BCE_DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 1);
-export const BCE_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 1);
+export const DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 0, 0);
+export const CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 0, 0);
+export const BCE_DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 1, MIN_YEAR);
+export const BCE_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 1, MIN_YEAR);
 // Same round-year phase alignment, at the lane background's 25-year zebra-
 // band interval (TimelineCanvas.tsx's .zebraLayer) — replaces the old
 // decade-interval gridlines (`/grill-with-docs`).
-export const QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(QUARTER_CENTURY_STEP_YEARS, 0);
-export const BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(QUARTER_CENTURY_STEP_YEARS, 1);
+export const QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(QUARTER_CENTURY_STEP_YEARS, 0, 0);
+export const BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(QUARTER_CENTURY_STEP_YEARS, 1, MIN_YEAR);
 
 /** Shared time domain: the D3 x-axis for every lane, keyed by pixels-per-year zoom level. */
 export function buildXScale(pixelsPerYear: number): { scale: d3.ScaleLinear<number, number>; totalWidth: number } {

@@ -54,9 +54,12 @@ function trueMod(n: number, m: number): number {
   return ((n % m) + m) % m;
 }
 
-test('DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align MIN_YEAR + offset to a plain multiple of the step (year 0/CE phase)', () => {
-  expect(trueMod(PAN_MIN_DATE.year + DECADE_TICK_PHASE_OFFSET_YEARS, DECADE_STEP_YEARS)).toBe(0);
-  expect(trueMod(PAN_MIN_DATE.year + CENTURY_TICK_PHASE_OFFSET_YEARS, CENTURY_STEP_YEARS)).toBe(0);
+test('DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align the CE ruler\'s own local origin (year 0) + offset to a plain multiple of the step', () => {
+  // The CE ruler's local x=0 is astronomical year 0, not MIN_YEAR (YearAxis.tsx
+  // splits the ruler into two independently-tiled regions) — so this offset
+  // must land ticks on round numbers measured from year 0, not from MIN_YEAR.
+  expect(trueMod(0 + DECADE_TICK_PHASE_OFFSET_YEARS, DECADE_STEP_YEARS)).toBe(0);
+  expect(trueMod(0 + CENTURY_TICK_PHASE_OFFSET_YEARS, CENTURY_STEP_YEARS)).toBe(0);
 });
 
 test('BCE_DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align MIN_YEAR + offset to the round-historical BCE phase (year ≡ 1 mod step)', () => {
