@@ -8,6 +8,7 @@ import { useSelectedEntity, type SelectedEntityRef } from '../features/select-ti
 import { TimelineCanvas } from '../widgets/timeline-canvas';
 import { Sidebar } from '../widgets/sidebar';
 import { DetailPanel, type DetailPanelEntity } from '../widgets/detail-panel';
+import { AboutPanel } from '../widgets/about-panel';
 import { localeDatasetsPromise } from './locale-datasets';
 import styles from './App.module.css';
 
@@ -38,6 +39,7 @@ function AppContent() {
   // overlays never compete for the same space (mobile-responsive-layout
   // spec's story 5).
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const handleEntityClick = useCallback(
     (ref: SelectedEntityRef) => {
       selectEntity(ref);
@@ -78,6 +80,7 @@ function AppContent() {
         onToggleConflictsMilestonesValue={toggleConflictsMilestonesValue}
         isOpen={isFilterDrawerOpen}
         onClose={() => setIsFilterDrawerOpen(false)}
+        onOpenAbout={() => setIsAboutOpen(true)}
       />
       <TimelineCanvas
         people={peopleData}
@@ -93,6 +96,7 @@ function AppContent() {
         onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
       />
       <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
+      <AboutPanel isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
     </div>
   );
 }

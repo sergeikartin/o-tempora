@@ -23,6 +23,7 @@ function renderSidebar(overrides: Partial<SidebarProps> = {}) {
       onToggleConflictsMilestonesValue={vi.fn()}
       isOpen={false}
       onClose={vi.fn()}
+      onOpenAbout={vi.fn()}
       {...overrides}
     />,
   );
@@ -153,6 +154,7 @@ test('below the mobile breakpoint, a closed drawer is inert (off-screen filter c
         onToggleConflictsMilestonesValue={vi.fn()}
         isOpen={true}
         onClose={vi.fn()}
+        onOpenAbout={vi.fn()}
       />,
     );
     expect(container.querySelector('aside')?.hasAttribute('inert')).toBe(false);
