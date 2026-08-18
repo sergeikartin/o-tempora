@@ -24,8 +24,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build:en --workspace packages/web
-      - run: npm run build:ru --workspace packages/web
+      - run: npm run build --workspace packages/web
       - run: echo "otempora.info" > packages/web/dist/CNAME
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

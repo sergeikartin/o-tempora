@@ -7,22 +7,18 @@
     "node": ">=22.21.0"
   },
   "scripts": {
-    "predev": "npm run paraglide:en",
+    "predev": "npm run paraglide:compile",
     "dev": "vite",
-    "build": "npm run build:en",
-    "prebuild:en": "npm run paraglide:en",
-    "build:en": "tsc -b && vite build --mode en --outDir dist",
-    "prebuild:ru": "npm run paraglide:ru",
-    "build:ru": "tsc -b && vite build --mode ru --outDir dist/ru",
+    "prebuild": "npm run paraglide:compile",
+    "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "pretypecheck": "npm run paraglide:en",
+    "pretypecheck": "npm run paraglide:compile",
     "typecheck": "tsc -b",
     "lint": "eslint .",
     "lint:boundaries": "steiger ./src",
-    "pretest": "npm run paraglide:en",
+    "pretest": "npm run paraglide:compile",
     "test": "vitest run",
-    "paraglide:en": "paraglide-js compile --project ./project.en.inlang --outdir ./src/shared/paraglide --strategy baseLocale --emit-ts-declarations",
-    "paraglide:ru": "paraglide-js compile --project ./project.ru.inlang --outdir ./src/shared/paraglide --strategy baseLocale --emit-ts-declarations"
+    "paraglide:compile": "paraglide-js compile --project ./project.inlang --outdir ./src/shared/paraglide --strategy url baseLocale --emit-ts-declarations"
   },
   "dependencies": {
     "@fontsource/archivo": "^5.3.0",

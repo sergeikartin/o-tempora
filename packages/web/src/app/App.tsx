@@ -1,8 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
-import peopleDataRaw from '@same-sky/shared-types/src/data/people.json';
-import conflictsDataRaw from '@same-sky/shared-types/src/data/conflicts.json';
-import milestonesDataRaw from '@same-sky/shared-types/src/data/milestones.json';
-import type { Milestone, Person, ConflictEntry } from '../shared/types';
+import { Suspense, use, useCallback, useMemo, useState } from 'react';
 import { m } from '../shared/paraglide/messages.js';
 import { useFameScoreFilters, type FilteredCounts } from '../features/filter-by-fame-score';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
@@ -12,13 +8,22 @@ import { useSelectedEntity, type SelectedEntityRef } from '../features/select-ti
 import { TimelineCanvas } from '../widgets/timeline-canvas';
 import { Sidebar } from '../widgets/sidebar';
 import { DetailPanel, type DetailPanelEntity } from '../widgets/detail-panel';
+import { localeDatasetsPromise } from './locale-datasets';
 import styles from './App.module.css';
 
-const peopleData = peopleDataRaw as Person[];
-const conflictsData = conflictsDataRaw as ConflictEntry[];
-const milestonesData = milestonesDataRaw as Milestone[];
-
 export function App() {
+  return (
+    <>
+      <h1 className={styles.srOnly}>{m.siteTitle()}</h1>
+      <Suspense fallback={<div className={styles.loading} />}>
+        <AppContent />
+      </Suspense>
+    </>
+  );
+}
+
+function AppContent() {
+  const { people: peopleData, conflicts: conflictsData, milestones: milestonesData } = use(localeDatasetsPromise);
   const { values: fameScoreValues, setValue: setFameScoreValue } = useFameScoreFilters();
   const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
   const { selectedRegions, toggleRegion } = useRegionFilter();
@@ -57,40 +62,37 @@ export function App() {
     }
     const milestone = milestonesData.find((candidate) => candidate.id === selectedRef.id);
     return milestone ? { entityType: 'milestone', entity: milestone } : null;
-  }, [selectedRef]);
+  }, [selectedRef, peopleData, conflictsData, milestonesData]);
 
   return (
-    <>
-      <h1 className={styles.srOnly}>{m.siteTitle()}</h1>
-      <div className={styles.layout}>
-        <Sidebar
-          fameScoreValues={fameScoreValues}
-          onFameScoreChange={setFameScoreValue}
-          filteredCounts={filteredCounts}
-          selectedDomains={selectedDomains}
-          onToggleDomain={toggleDomain}
-          selectedRegions={selectedRegions}
-          onToggleRegion={toggleRegion}
-          selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
-          onToggleConflictsMilestonesValue={toggleConflictsMilestonesValue}
-          isOpen={isFilterDrawerOpen}
-          onClose={() => setIsFilterDrawerOpen(false)}
-        />
-        <TimelineCanvas
-          people={peopleData}
-          conflicts={conflictsData}
-          milestones={milestonesData}
-          fameScoreValues={fameScoreValues}
-          selectedDomains={selectedDomains}
-          selectedRegions={selectedRegions}
-          selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
-          onEntityClick={handleEntityClick}
-          onFilteredCountsChange={setFilteredCounts}
-          isFilterDrawerOpen={isFilterDrawerOpen}
-          onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
-        />
-        <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
-      </div>
-    </>
+    <div className={styles.layout}>
+      <Sidebar
+        fameScoreValues={fameScoreValues}
+        onFameScoreChange={setFameScoreValue}
+        filteredCounts={filteredCounts}
+        selectedDomains={selectedDomains}
+        onToggleDomain={toggleDomain}
+        selectedRegions={selectedRegions}
+        onToggleRegion={toggleRegion}
+        selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
+        onToggleConflictsMilestonesValue={toggleConflictsMilestonesValue}
+        isOpen={isFilterDrawerOpen}
+        onClose={() => setIsFilterDrawerOpen(false)}
+      />
+      <TimelineCanvas
+        people={peopleData}
+        conflicts={conflictsData}
+        milestones={milestonesData}
+        fameScoreValues={fameScoreValues}
+        selectedDomains={selectedDomains}
+        selectedRegions={selectedRegions}
+        selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
+        onEntityClick={handleEntityClick}
+        onFilteredCountsChange={setFilteredCounts}
+        isFilterDrawerOpen={isFilterDrawerOpen}
+        onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
+      />
+      <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
+    </div>
   );
 }

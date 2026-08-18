@@ -1,19 +1,14 @@
 # Deployment
 
-<!-- How the two language builds ship as static output. Read when touching build/deploy config. -->
+<!-- How the two-language build ships as static output. Read when touching build/deploy config. -->
 
-Two fully independent static builds, English and Russian (`.scratch/russian-localization/spec.md`) — no runtime language toggle, no shared server-side logic between them. Hosted on GitHub Pages at `otempora.info` (`docs/adr/0003-english-served-from-domain-root.md`).
+One build, two languages, resolved at runtime from the URL (`docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`) — no server-side logic, no per-language build fork. Hosted on GitHub Pages at `otempora.info` (`docs/adr/0003-english-served-from-domain-root.md`).
 
 ## Building
 
-From `packages/web`:
+From `packages/web`: `npm run build` → `dist/`.
 
-- `npm run build:en` → `dist/` (also just `npm run build`, the default)
-- `npm run build:ru` → `dist/ru/` (requires `packages/shared-types/src/data/{people,conflicts,milestones}.ru.json` to already exist — see `packages/data-pipeline/CLAUDE.md`'s fetch step)
-
-Run `build:en` before `build:ru` when producing both — `build:en`'s `vite build` clears `dist/` before writing English's output; `build:ru` only clears `dist/ru/`, leaving English's files at `dist/` root untouched.
-
-Each build's `vite.config.ts` `base` matches where it's served: `/` for English, `/ru/` for Russian, so asset URLs baked into that build's `index.html`/JS resolve correctly once deployed.
+`vite.config.ts` uses Vite's multi-page-app support — `index.html` and `ru/index.html` are two Rollup inputs loading the same `/src/main.tsx` — so this single `vite build` emits both `dist/index.html` and `dist/ru/index.html`, sharing the same `dist/assets/*` JS/CSS chunks. Which language actually renders is decided in the browser: Paraglide's `url` strategy reads the request path (`/` vs `/ru/`) to pick the locale, and `src/app/locale-datasets.ts` dynamically imports that locale's `people.json`/`conflicts.json`/`milestones.json` (requires `packages/shared-types/src/data/{people,conflicts,milestones}.ru.json` to already exist for the Russian path — see `packages/data-pipeline/CLAUDE.md`'s fetch step) — a given page load only ever fetches one language's dataset, never both.
 
 ## URL structure
 
@@ -21,7 +16,7 @@ English is served from the domain root; every other locale gets its own `/<local
 
 ## Deploying
 
-`.github/workflows/deploy.yml` builds both locales and deploys to GitHub Pages automatically on every push to `main` (or via manual `workflow_dispatch`). It writes a `CNAME` file (`otempora.info`) into the merged `packages/web/dist/` output so the custom domain survives each deploy, then publishes that directory through `actions/upload-pages-artifact` + `actions/deploy-pages`.
+`.github/workflows/deploy.yml` builds and deploys to GitHub Pages automatically on every push to `main` (or via manual `workflow_dispatch`). It writes a `CNAME` file (`otempora.info`) into `packages/web/dist/` so the custom domain survives each deploy, then publishes that directory through `actions/upload-pages-artifact` + `actions/deploy-pages`.
 
 One-time manual setup (not repo config — done once in GitHub's UI and at the domain registrar):
 
@@ -42,13 +37,13 @@ One-time manual setup (not repo config — done once in GitHub's UI and at the d
   2606:50c0:8003::153
   ```
 
-Each build carries a visible link to the sibling build's default (home) view — `packages/web/src/widgets/sidebar/ui/Sidebar.tsx`'s language switcher, `/` ↔ `/ru/`, root-relative so it works regardless of domain. No deep-link/viewport-state preservation across the switch (spec's Out of Scope).
+Each page carries a visible link to the sibling locale's default (home) view — `packages/web/src/widgets/sidebar/ui/Sidebar.tsx`'s language switcher, `/` ↔ `/ru/`, root-relative so it works regardless of domain. No deep-link/viewport-state preservation across the switch (spec's Out of Scope).
 
 ## Verifying locally
 
 ```
 cd packages/web
-npm run build:en && npm run build:ru
+npm run build
 cd dist && python3 -m http.server 8000
 ```
 
