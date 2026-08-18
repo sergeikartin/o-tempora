@@ -12,8 +12,12 @@ export function initMonitoring(): void {
   Sentry.init({
     dsn,
     environment: import.meta.env.MODE,
-    // Read-only app with no user-triggered actions worth tracing — capture
-    // every error, skip performance monitoring entirely.
+    integrations: [Sentry.browserTracingIntegration()],
+    // Capture every error and pageload transaction (the latter is how
+    // Sentry gets Web Vitals — LCP/CLS/INP/TTFB — with no separate setup).
+    // Traffic here is low enough that 100% tracing won't meaningfully touch
+    // the free tier's separate, smaller span quota; revisit if that changes.
     sampleRate: 1,
+    tracesSampleRate: 1,
   });
 }
