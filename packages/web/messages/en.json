@@ -14,6 +14,7 @@
   "minimapAriaLabel": "Timeline density minimap",
   "closeAriaLabel": "Close",
   "closeFiltersAriaLabel": "Close filters",
+  "timelineErrorFallback": "Something went wrong displaying the timeline. Try reloading the page.",
   "closeAboutAriaLabel": "Close about panel",
   "detailsAriaLabel": "{name} details",
   "readOnWikipedia": "Read on Wikipedia →",
