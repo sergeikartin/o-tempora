@@ -73,3 +73,7 @@ This is reached via a `/grilling` + `/domain-modeling` session; no `CONTEXT.md` 
 - The Conflicts curated raw file's own placeholder text (`"name": "conflict label"`) suggests curators were already hand-copying Wikidata's label into `name` rather than freely editorializing — consistent with the spot check finding curator names already match Wikidata's `en` label exactly in the sampled cases.
 - Testing-seam decisions (what gets unit-tested vs. covered at the transform/output boundary vs. UI boundary) were not part of this grilling session and should be worked out at implementation time, following this repo's existing seam conventions (see `tagline-description-split/spec.md`'s Testing Decisions section for the shape that discussion should take).
 - `docs/product-scope.md`'s success criteria will need a Russian-dataset-completeness bar defined (e.g. does "top 200 people" apply per-language, or is the English set the floor and Russian inherits whatever coverage falls out of fallback) — not decided in this session, needs settling before the doc rewrite.
+
+## Comments
+
+This spec's "no runtime language toggle... build-time fork producing two static outputs" decision is superseded by `packages/web/docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`: the app is now a single build with the locale resolved at runtime from the URL. The `/` ↔ `/ru/` URL scheme and the switcher's full-page-navigation, no-state-preservation behavior are unchanged — only the build/deploy mechanism producing them moved.
