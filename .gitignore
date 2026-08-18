@@ -1,6 +1,8 @@
 node_modules/
 dist/
 .playwright-mcp/
+.env
+.env.local
 
 # Spartan AI config (contains API keys)
 .spartan/ai.env

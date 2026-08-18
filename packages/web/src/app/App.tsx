@@ -9,6 +9,7 @@ import { TimelineCanvas } from '../widgets/timeline-canvas';
 import { Sidebar } from '../widgets/sidebar';
 import { DetailPanel, type DetailPanelEntity } from '../widgets/detail-panel';
 import { AboutPanel } from '../widgets/about-panel';
+import { ErrorBoundary } from '../shared/ui';
 import { localeDatasetsPromise } from './locale-datasets';
 import styles from './App.module.css';
 
@@ -82,19 +83,21 @@ function AppContent() {
         onClose={() => setIsFilterDrawerOpen(false)}
         onOpenAbout={() => setIsAboutOpen(true)}
       />
-      <TimelineCanvas
-        people={peopleData}
-        conflicts={conflictsData}
-        milestones={milestonesData}
-        fameScoreValues={fameScoreValues}
-        selectedDomains={selectedDomains}
-        selectedRegions={selectedRegions}
-        selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
-        onEntityClick={handleEntityClick}
-        onFilteredCountsChange={setFilteredCounts}
-        isFilterDrawerOpen={isFilterDrawerOpen}
-        onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
-      />
+      <ErrorBoundary fallback={<div className={styles.timelineError}>{m.timelineErrorFallback()}</div>}>
+        <TimelineCanvas
+          people={peopleData}
+          conflicts={conflictsData}
+          milestones={milestonesData}
+          fameScoreValues={fameScoreValues}
+          selectedDomains={selectedDomains}
+          selectedRegions={selectedRegions}
+          selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
+          onEntityClick={handleEntityClick}
+          onFilteredCountsChange={setFilteredCounts}
+          isFilterDrawerOpen={isFilterDrawerOpen}
+          onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
+        />
+      </ErrorBoundary>
       <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
       <AboutPanel isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
     </div>

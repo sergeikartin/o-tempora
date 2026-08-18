@@ -1,10 +1,37 @@
 import { getLocale } from '../shared/paraglide/runtime.js';
+import { logError } from '../shared/lib/log-error';
 import type { Milestone, Person, ConflictEntry } from '../shared/types';
 
 export interface LocaleDatasets {
   people: Person[];
   conflicts: ConflictEntry[];
   milestones: Milestone[];
+}
+
+// The datasets are pipeline-generated, never hand-edited (CLAUDE.md), so
+// this isn't validating user input — it's a tripwire for schema drift
+// between the pipeline's output and what the frontend expects, since a
+// missing id or a non-finite year would otherwise surface as a confusing
+// crash deep inside D3 rendering rather than a clear, attributable error.
+function primaryYear(entry: Person | ConflictEntry | Milestone): unknown {
+  if ('lifespan' in entry) return entry.lifespan.start.year;
+  if ('period' in entry) return entry.period.start.year;
+  return entry.at.year;
+}
+
+export function validateEntries<T extends Person | ConflictEntry | Milestone>(entries: T[], entityType: string): T[] {
+  return entries.filter((entry) => {
+    if (!entry.id || !entry.name) {
+      logError(new Error(`${entityType} entry missing id or name`), { entityType, entry });
+      return false;
+    }
+    const year = primaryYear(entry);
+    if (typeof year !== 'number' || !Number.isFinite(year)) {
+      logError(new Error(`${entityType} entry has a non-finite date`), { entityType, id: entry.id, year });
+      return false;
+    }
+    return true;
+  });
 }
 
 // Per-locale dynamic import (docs/adr/0009) — keeps a single page load's
@@ -19,9 +46,9 @@ const loaders: Record<'en' | 'ru', () => Promise<LocaleDatasets>> = {
       import('@same-sky/shared-types/src/data/milestones.json'),
     ]);
     return {
-      people: people.default as Person[],
-      conflicts: conflicts.default as ConflictEntry[],
-      milestones: milestones.default as Milestone[],
+      people: validateEntries(people.default as Person[], 'person'),
+      conflicts: validateEntries(conflicts.default as ConflictEntry[], 'conflict'),
+      milestones: validateEntries(milestones.default as Milestone[], 'milestone'),
     };
   },
   ru: async () => {
@@ -31,9 +58,9 @@ const loaders: Record<'en' | 'ru', () => Promise<LocaleDatasets>> = {
       import('@same-sky/shared-types/src/data/milestones.ru.json'),
     ]);
     return {
-      people: people.default as Person[],
-      conflicts: conflicts.default as ConflictEntry[],
-      milestones: milestones.default as Milestone[],
+      people: validateEntries(people.default as Person[], 'person'),
+      conflicts: validateEntries(conflicts.default as ConflictEntry[], 'conflict'),
+      milestones: validateEntries(milestones.default as Milestone[], 'milestone'),
     };
   },
 };

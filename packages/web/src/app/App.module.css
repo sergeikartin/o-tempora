@@ -20,6 +20,18 @@
   background: var(--color-bg-base);
 }
 
+.timelineError {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding-inline: 1.5rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  background: var(--color-bg-base);
+}
+
 /* Below the mobile breakpoint, the sidebar/detail-panel become overlays
    (fixed position, see their own CSS) rather than layout columns, so the
    canvas is the only thing actually in flow — letting the page grow taller

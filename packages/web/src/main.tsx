@@ -10,8 +10,11 @@ import '@fontsource/archivo/600.css';
 import '@fontsource/archivo/700.css';
 import '@fontsource/fraunces/600.css';
 import { createRoot } from 'react-dom/client';
+import { initMonitoring } from './shared/lib/init-monitoring';
 import { App } from './app';
 import './app/global.css';
+
+initMonitoring();
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- index.html always provides #root
 createRoot(document.getElementById('root')!).render(<App />);
