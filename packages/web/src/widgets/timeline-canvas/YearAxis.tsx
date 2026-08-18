@@ -154,7 +154,11 @@ export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(function 
               className={`year-axis-label ${styles.label} ${label.isCentury ? `year-axis-label-century ${styles.centuryLabel}` : ''}`}
               style={{ left: label.x }}
             >
-              <span className={`year-axis-label-scale ${styles.labelScale}`}>{formatYear(label.year)}</span>
+              <span
+                className={`year-axis-label-scale ${styles.labelScale} ${label.isCentury ? styles.centuryLabelScale : ''}`}
+              >
+                {formatYear(label.year)}
+              </span>
             </span>
           ) : null,
         )}

@@ -17,8 +17,11 @@ import { useIsMobileViewport } from '../../shared/lib/viewport';
 import type { FameScoreValues, FilteredCounts } from '../../features/filter-by-fame-score';
 import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
 import {
+  BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
   BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS,
   buildXScale,
+  CENTURY_STEP_YEARS,
+  CENTURY_TICK_PHASE_OFFSET_YEARS,
   defaultPixelsPerYear,
   FALLBACK_VIEWPORT_WIDTH_PX,
   MIN_YEAR,
@@ -285,18 +288,30 @@ export function TimelineCanvas({
   // (`/grill-with-docs`) — same BCE/CE phase split as YearAxis's own ruler
   // (see its comment): round-historical BCE tick positions sit on a
   // different phase than CE ones, so this renders as two adjacent regions
-  // split at year 0 rather than one continuous background.
+  // split at year 0 rather than one continuous background. A second layered
+  // background-image on the same .zebraBand draws a century-boundary seam —
+  // one ink motif shared with YearAxis's own century tab and tick (see
+  // `/grill-with-docs`'s "Survey Lines" design) — at the same pixelsPerYear,
+  // so it lines up pixel-exact under each century tab. This layer paints
+  // behind the ruler bar too, not just the two lanes (see .zebraLayer's
+  // height), so the seam is traceable in one continuous line from the
+  // People lane straight down through Conflicts & Milestones.
   const zebraBoundaryX = Math.min(Math.max(scale(0), 0), totalWidth);
   const zebraBandSizePx = `${pixelsPerYear * QUARTER_CENTURY_STEP_YEARS}px`;
+  const centurySeamSizePx = `${pixelsPerYear * CENTURY_STEP_YEARS}px`;
   const bceZebraStyle = {
     width: zebraBoundaryX,
     '--zebra-band-px': zebraBandSizePx,
     '--zebra-offset-px': `${pixelsPerYear * BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
+    '--century-seam-px': centurySeamSizePx,
+    '--century-seam-offset-px': `${pixelsPerYear * BCE_CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
   const ceZebraStyle = {
     width: totalWidth - zebraBoundaryX,
     '--zebra-band-px': zebraBandSizePx,
     '--zebra-offset-px': `${pixelsPerYear * QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
+    '--century-seam-px': centurySeamSizePx,
+    '--century-seam-offset-px': `${pixelsPerYear * CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
   const filteredPeople = useMemo(
     () =>
