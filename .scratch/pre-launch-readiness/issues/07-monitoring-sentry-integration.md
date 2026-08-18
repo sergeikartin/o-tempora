@@ -1,5 +1,5 @@
 Type: task
-Status: open
+Status: resolved
 
 # Monitoring: Sentry account + SDK integration
 
@@ -23,4 +23,8 @@ AFK side is done ahead of the DSN existing, so wiring in the real one is a one-l
 - One DSN, shared across `en`/`ru` — they're one JS bundle, not a per-language build (`docs/deployment.md`).
 - `docs/config-variables.md` has the full writeup.
 
-Still blocked on the HITL step: Sergei creates the Sentry account/project, drops the DSN into the `VITE_SENTRY_DSN` GitHub repo secret (already read by `.github/workflows/deploy.yml`), and confirms a deliberately-thrown test error shows up in the dashboard. Leaving `Status: open` until that's done.
+## Answer
+
+HITL step done: Sergei created the Sentry account/project and added the DSN as the `VITE_SENTRY_DSN` GitHub repo secret (read by `.github/workflows/deploy.yml`). A redeploy baked it into the production bundle, confirmed present in the built JS asset. End-to-end verification: a deliberately-thrown uncaught error on the live `otempora.info` site showed up in the Sentry dashboard.
+
+DSN/project: Sergei's Sentry account (free tier), DSN stored only as the `VITE_SENTRY_DSN` GitHub repo secret — not itself sensitive (a Sentry DSN is meant to ship in client bundles; it only allows submitting events, not reading them), so no other storage needed. Sample rate: `sampleRate: 1` (capture every error, no performance tracing). Wiring: one DSN/one Sentry.init(), shared across both `en`/`ru` — they're one JS bundle, not a per-language build.
