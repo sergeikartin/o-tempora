@@ -86,7 +86,9 @@ export function Sidebar({
         <section className={styles.section}>
           <h2 className={styles.heading}>{m.dataDepthHeading()}</h2>
           <DataDepthSwitch values={fameScoreValues} onChange={onFameScoreChange} />
-          <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
+          {import.meta.env.DEV && (
+            <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
+          )}
         </section>
         <section className={styles.section}>
           <h2 className={styles.heading}>{m.regionHeading()}</h2>
