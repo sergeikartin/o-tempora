@@ -17,12 +17,12 @@ Every pre-publish concern for this world-history timeline — the items on Serge
 
 - Mobile-friendly layout — **already shipped**, not just spec'd: commit `0b07b26` ("Add a mobile-responsive layout: drawer sidebar, bottom-sheet detail panel, pinch-to-zoom") landed the full `.scratch/mobile-responsive-layout/spec.md`. No ticket needed on this map.
 - Timeline canvas redesign (`/grill-with-docs`, resolving [03](issues/03-axis-duplication.md)): "Mountain Profile" renamed to "Minimap" project-wide (reverses ADR 0004's original naming — see `CONTEXT.md`); `YearAxis` reduced from three instances to one (middle only); lane gridlines replaced by 25-year zebra striping; Minimap gains a top-edge century-tick strip. Split into implementation tickets [03](issues/03-axis-duplication.md), [11](issues/11-rename-mountain-profile-to-minimap.md), [12](issues/12-lane-zebra-striping.md), [13](issues/13-minimap-century-marks.md). [02](issues/02-years-axis-eras.md) (labeled era bands) stays open and unrelated.
+- [License choice & README](issues/08-license-and-readme.md): MIT for the code (root `LICENSE`), coexisting with `LICENSE-DATA.md`'s existing data terms (disjoint subtrees, no conflict). New root `README.md` (title "O tempora"). Scope grew mid-grill to also cover in-app attribution — CC BY-SA 4.0's attribution clause reaches the live site, not just the repo — landed as a new `widgets/about-panel` About modal (EN/RU), closing the thread left open in `alt-data-sources` issue 10.
 
 ## Not yet specified
 
 - [Search bar](issues/15-search-bar.md): whether search is in scope for v1 at all (product-scope.md rules out search *outside* the current Fame Tier, implying in-tier search may be intended but it's never been spec'd), what it searches over, and how it interacts with the existing filter pills — needs a scope decision before it's implementation-ready.
 - Whether error monitoring should extend beyond error capture (performance monitoring, session replay) and how its setup ties into whichever host [Hosting & deployment choice](issues/06-hosting-deployment-choice.md) eventually picks (env/release tagging) — too fuzzy until that ticket resolves.
-- Legal/attribution interplay between the code license (once chosen) and the existing data license (`packages/shared-types/LICENSE-DATA.md` — Pantheon CC BY-SA 4.0, Wikidata CC0) — unexamined; may need a revisit once [License choice & README](issues/08-license-and-readme.md) resolves.
 - Canonical-URL, `sitemap.xml`, and `hreflang` specifics for [SEO, social preview & meta basics](issues/09-seo-meta-social-basics.md) need the real domain, which is why that ticket is blocked on [Hosting & deployment choice](issues/06-hosting-deployment-choice.md).
 
 ## Out of scope

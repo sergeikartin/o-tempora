@@ -25,17 +25,28 @@
   color: var(--color-text-secondary);
 }
 
-.languageSwitcher {
+.footer {
   margin-top: auto;
   padding-top: 12px;
   border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerLink {
+  border: none;
+  background: none;
+  padding: 0;
   font-size: 12px;
+  font-family: inherit;
   color: var(--color-text-secondary);
   text-decoration: underline;
+  cursor: pointer;
   transition: color var(--motion-duration-fast) var(--motion-easing);
 }
 
-.languageSwitcher:hover {
+.footerLink:hover {
   color: var(--color-text-primary);
 }
 

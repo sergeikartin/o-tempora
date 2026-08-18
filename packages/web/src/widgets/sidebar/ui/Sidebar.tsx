@@ -34,6 +34,7 @@ interface SidebarProps {
   // widgets share.
   isOpen: boolean;
   onClose: () => void;
+  onOpenAbout: () => void;
 }
 
 // Always-visible alongside TimelineCanvas — Data Depth (the fame-score
@@ -58,6 +59,7 @@ export function Sidebar({
   onToggleConflictsMilestonesValue,
   isOpen,
   onClose,
+  onOpenAbout,
 }: SidebarProps) {
   const isMobileViewport = useIsMobileViewport();
   // Off-canvas (translateX, not display:none — Sidebar.module.css) is
@@ -105,9 +107,14 @@ export function Sidebar({
             onToggleValue={onToggleConflictsMilestonesValue}
           />
         </section>
-        <a className={styles.languageSwitcher} href={SWITCH_LANGUAGE_HREF}>
-          {m.switchLanguageLabel()}
-        </a>
+        <div className={styles.footer}>
+          <button type="button" className={styles.footerLink} onClick={onOpenAbout}>
+            {m.aboutLabel()}
+          </button>
+          <a className={styles.footerLink} href={SWITCH_LANGUAGE_HREF}>
+            {m.switchLanguageLabel()}
+          </a>
+        </div>
       </aside>
     </>
   );
