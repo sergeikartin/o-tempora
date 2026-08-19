@@ -26,7 +26,7 @@ jobs:
       - run: npm ci
       - run: npm run build --workspace packages/web
         env:
-          VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
+          VITE_GLITCHTIP_DSN: ${{ secrets.VITE_GLITCHTIP_DSN }}
       - run: echo "otempora.info" > packages/web/dist/CNAME
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
