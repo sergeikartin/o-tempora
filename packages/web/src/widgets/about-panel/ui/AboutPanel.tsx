@@ -67,8 +67,19 @@ export function AboutPanel({ isOpen, onClose }: AboutPanelProps) {
 
   return (
     <>
-      <button type="button" className={styles.backdrop} aria-label={m.closeAriaLabel()} onClick={onClose} />
-      <div ref={panelRef} className={styles.panel} role="dialog" aria-modal="true" aria-label={m.aboutHeading()}>
+      <button
+        type="button"
+        className={styles.backdrop}
+        aria-label={m.closeAriaLabel()}
+        onClick={onClose}
+      />
+      <div
+        ref={panelRef}
+        className={styles.panel}
+        role="dialog"
+        aria-modal="true"
+        aria-label={m.aboutHeading()}
+      >
         <button
           ref={closeButtonRef}
           type="button"
@@ -83,7 +94,12 @@ export function AboutPanel({ isOpen, onClose }: AboutPanelProps) {
 
         <h3 className={styles.sectionHeading}>{m.aboutCodeHeading()}</h3>
         <p className={styles.body}>{m.aboutCodeBody()}</p>
-        <a className={styles.link} href={CODE_LICENSE_URL} target="_blank" rel="noreferrer">
+        <a
+          className={styles.link}
+          href={CODE_LICENSE_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
           {m.aboutViewOnGithub()}
         </a>
 
@@ -91,7 +107,12 @@ export function AboutPanel({ isOpen, onClose }: AboutPanelProps) {
         <p className={styles.body}>{m.aboutDataPeopleBody()}</p>
         <p className={styles.citation}>{PANTHEON_CITATION}</p>
         <p className={styles.body}>{m.aboutDataEventsBody()}</p>
-        <a className={styles.link} href={DATA_LICENSE_URL} target="_blank" rel="noreferrer">
+        <a
+          className={styles.link}
+          href={DATA_LICENSE_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
           {m.aboutViewDataLicense()}
         </a>
       </div>

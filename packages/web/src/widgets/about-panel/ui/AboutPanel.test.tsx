@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
-import { test, expect, vi, afterEach } from 'vitest';
+import { afterEach, expect, test, vi } from 'vitest';
 import { AboutPanel } from './AboutPanel';
 
 afterEach(cleanup);
@@ -13,17 +13,21 @@ test('renders the data-attribution links when open', () => {
   const { getByRole } = render(<AboutPanel isOpen={true} onClose={vi.fn()} />);
 
   expect(getByRole('dialog')).toBeTruthy();
-  expect(getByRole('link', { name: /View source on GitHub/ }).getAttribute('href')).toBe(
-    'https://github.com/sergeikartin/same-sky/blob/main/LICENSE',
-  );
-  expect(getByRole('link', { name: /Full data license/ }).getAttribute('href')).toBe(
+  expect(
+    getByRole('link', { name: /View source on GitHub/ }).getAttribute('href'),
+  ).toBe('https://github.com/sergeikartin/same-sky/blob/main/LICENSE');
+  expect(
+    getByRole('link', { name: /Full data license/ }).getAttribute('href'),
+  ).toBe(
     'https://github.com/sergeikartin/same-sky/blob/main/packages/shared-types/LICENSE-DATA.md',
   );
 });
 
 test('calls onClose when the backdrop is clicked', () => {
   const onClose = vi.fn();
-  const { getByLabelText } = render(<AboutPanel isOpen={true} onClose={onClose} />);
+  const { getByLabelText } = render(
+    <AboutPanel isOpen={true} onClose={onClose} />,
+  );
 
   fireEvent.click(getByLabelText('Close'));
 

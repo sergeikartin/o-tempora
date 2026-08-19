@@ -1,7 +1,7 @@
 import { act, cleanup, fireEvent, render } from '@testing-library/react';
-import { test, expect, afterEach, beforeAll } from 'vitest';
-import { TimelineCanvas } from './TimelineCanvas';
+import { afterEach, beforeAll, expect, test } from 'vitest';
 import type { Person } from '../../shared/types';
+import { TimelineCanvas } from './TimelineCanvas';
 
 afterEach(cleanup);
 
@@ -27,7 +27,10 @@ beforeAll(() => {
     removeListener: () => {},
     dispatchEvent: () => false,
   })) as unknown as typeof window.matchMedia;
-  document.documentElement.style.setProperty('--motion-duration-base', '0.01ms');
+  document.documentElement.style.setProperty(
+    '--motion-duration-base',
+    '0.01ms',
+  );
 });
 
 const aristotle: Person = {
@@ -44,7 +47,9 @@ const aristotle: Person = {
 const defaultFameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
 
 function personLineWidth(container: HTMLElement): number {
-  const [peopleSvg] = Array.from(container.querySelectorAll('svg')) as [SVGSVGElement];
+  const [peopleSvg] = Array.from(container.querySelectorAll('svg')) as [
+    SVGSVGElement,
+  ];
   const line = peopleSvg.querySelector('.d3-line');
   return Number(line?.getAttribute('x2')) - Number(line?.getAttribute('x1'));
 }

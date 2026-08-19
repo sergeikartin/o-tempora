@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vitest/config';
 
 // Locale is resolved at runtime from the URL, not forked at build time
 // (docs/adr/0009 supersedes 0005's baseLocale-only strategy): English is

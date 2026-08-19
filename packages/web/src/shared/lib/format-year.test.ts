@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 import {
   centuryBoundariesInRange,
   formatYear,
@@ -48,18 +48,27 @@ test('centuryBoundariesInRange labels a CE range with decade-style "N00s" names'
 
 test('centuryBoundariesInRange labels a BCE range with ordinal century names', () => {
   const boundaries = centuryBoundariesInRange(-250, -50);
-  expect(boundaries.map((b) => b.label)).toEqual(['3rd century BCE', '2nd century BCE', '1st century BCE']);
+  expect(boundaries.map((b) => b.label)).toEqual([
+    '3rd century BCE',
+    '2nd century BCE',
+    '1st century BCE',
+  ]);
 });
 
 test('centuryBoundariesInRange spans the BCE/CE boundary correctly', () => {
   const boundaries = centuryBoundariesInRange(-50, 50);
-  expect(boundaries.map((b) => b.label)).toEqual(['1st century BCE', '1st century CE']);
+  expect(boundaries.map((b) => b.label)).toEqual([
+    '1st century BCE',
+    '1st century CE',
+  ]);
 });
 
 test('centuryBoundariesInRange gives each boundary a contiguous, non-overlapping year span', () => {
   const boundaries = centuryBoundariesInRange(-250, 250);
   for (let i = 1; i < boundaries.length; i++) {
-    expect(boundaries[i]?.startYear).toBe((boundaries[i - 1]?.endYear ?? 0) + 1);
+    expect(boundaries[i]?.startYear).toBe(
+      (boundaries[i - 1]?.endYear ?? 0) + 1,
+    );
   }
 });
 
@@ -109,12 +118,25 @@ test('isRoundTickYear is true for the astronomical year that renders as a round 
 
 test('roundTickYearsInRange produces round-historical century ticks, boundary tick at "1 BCE"', () => {
   const years = roundTickYearsInRange(-350, 250, 100);
-  expect(years.map(formatYear)).toEqual(['300 BCE', '200 BCE', '100 BCE', '1 BCE', '100', '200']);
+  expect(years.map(formatYear)).toEqual([
+    '300 BCE',
+    '200 BCE',
+    '100 BCE',
+    '1 BCE',
+    '100',
+    '200',
+  ]);
 });
 
 test('roundTickYearsInRange produces round-historical decade ticks, boundary tick at "1 BCE"', () => {
   const years = roundTickYearsInRange(-25, 25, 10);
-  expect(years.map(formatYear)).toEqual(['20 BCE', '10 BCE', '1 BCE', '10', '20']);
+  expect(years.map(formatYear)).toEqual([
+    '20 BCE',
+    '10 BCE',
+    '1 BCE',
+    '10',
+    '20',
+  ]);
 });
 
 test('roundTickYearsInRange leaves only the last BCE segment (touching the boundary) one tick narrower than every other segment', () => {

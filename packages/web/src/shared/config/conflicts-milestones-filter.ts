@@ -1,7 +1,10 @@
-import { MILESTONE_CATEGORY_GROUPS } from '../types';
 import { m } from '../paraglide/messages.js';
+import { MILESTONE_CATEGORY_GROUPS } from '../types';
 import { CONFLICT_COLOR } from './conflict-color';
-import { MILESTONE_CATEGORY_GROUP_COLORS, MILESTONE_CATEGORY_GROUP_LABELS } from './milestone-category-group';
+import {
+  MILESTONE_CATEGORY_GROUP_COLORS,
+  MILESTONE_CATEGORY_GROUP_LABELS,
+} from './milestone-category-group';
 
 // The sidebar's "Conflicts & Milestones" section is ONE multi-select
 // filter, not two separate controls — mirrors Region/Occupation Domain's
@@ -14,11 +17,18 @@ import { MILESTONE_CATEGORY_GROUP_COLORS, MILESTONE_CATEGORY_GROUP_LABELS } from
 // plus a separately-styled Conflicts visibility toggle; folded into one
 // list per feedback that the section should behave like every other
 // multi-select filter in the sidebar.
-export const CONFLICTS_MILESTONES_FILTER_VALUES = ['conflicts', ...MILESTONE_CATEGORY_GROUPS] as const;
+export const CONFLICTS_MILESTONES_FILTER_VALUES = [
+  'conflicts',
+  ...MILESTONE_CATEGORY_GROUPS,
+] as const;
 
-export type ConflictsMilestonesFilterValue = (typeof CONFLICTS_MILESTONES_FILTER_VALUES)[number];
+export type ConflictsMilestonesFilterValue =
+  (typeof CONFLICTS_MILESTONES_FILTER_VALUES)[number];
 
-export const CONFLICTS_MILESTONES_FILTER_LABELS: Record<ConflictsMilestonesFilterValue, string> = {
+export const CONFLICTS_MILESTONES_FILTER_LABELS: Record<
+  ConflictsMilestonesFilterValue,
+  string
+> = {
   conflicts: m['taxonomy.conflicts-milestones-filter.conflicts'](),
   ...MILESTONE_CATEGORY_GROUP_LABELS,
 };
@@ -27,7 +37,10 @@ export const CONFLICTS_MILESTONES_FILTER_LABELS: Record<ConflictsMilestonesFilte
 // for the flat Conflicts fill, MILESTONE_CATEGORY_GROUP_COLORS for the 2
 // Milestone groups — same "honest, truthful legend" principle as every
 // other sidebar swatch.
-export const CONFLICTS_MILESTONES_FILTER_COLORS: Record<ConflictsMilestonesFilterValue, string> = {
+export const CONFLICTS_MILESTONES_FILTER_COLORS: Record<
+  ConflictsMilestonesFilterValue,
+  string
+> = {
   conflicts: CONFLICT_COLOR,
   ...MILESTONE_CATEGORY_GROUP_COLORS,
 };

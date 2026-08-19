@@ -183,13 +183,14 @@
        page background, the next 25 years left transparent — no new hue, just
        the existing surface token blended low enough to read as ambient
        structure rather than a hard-edged stripe. */
-      linear-gradient(
-        to right,
-        color-mix(in srgb, var(--color-bg-surface) 25%, transparent) 0,
-        color-mix(in srgb, var(--color-bg-surface) 25%, transparent) var(--zebra-band-px),
-        transparent var(--zebra-band-px),
-        transparent calc(var(--zebra-band-px) * 2)
-      );
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-bg-surface) 25%, transparent) 0,
+      color-mix(in srgb, var(--color-bg-surface) 25%, transparent)
+        var(--zebra-band-px),
+      transparent var(--zebra-band-px),
+      transparent calc(var(--zebra-band-px) * 2)
+    );
 }
 
 /* Active mouse-drag pan (TimelineCanvas.tsx's pointer handlers) — grabbing

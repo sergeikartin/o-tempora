@@ -93,7 +93,10 @@ function centuryBoundaryForYear(year: number): CenturyBoundary {
 }
 
 /** Every century boundary overlapping [startYear, endYear], ascending, no gaps. */
-export function centuryBoundariesInRange(startYear: number, endYear: number): CenturyBoundary[] {
+export function centuryBoundariesInRange(
+  startYear: number,
+  endYear: number,
+): CenturyBoundary[] {
   const boundaries: CenturyBoundary[] = [];
   let cursor = startYear;
   while (cursor <= endYear) {
@@ -121,7 +124,11 @@ export function isRoundTickYear(year: number, stepYears: number): boolean {
 }
 
 /** Every round `stepYears` tick year in [startYear, endYear], ascending. */
-export function roundTickYearsInRange(startYear: number, endYear: number, stepYears: number): number[] {
+export function roundTickYearsInRange(
+  startYear: number,
+  endYear: number,
+  stepYears: number,
+): number[] {
   const years: number[] = [];
   if (startYear <= 0 && endYear >= 0) years.push(0);
   if (startYear < 0) {
@@ -132,8 +139,12 @@ export function roundTickYearsInRange(startYear: number, endYear: number, stepYe
     }
   }
   if (endYear > 0) {
-    const firstCeYear = Math.max(stepYears, Math.ceil(Math.max(startYear, 1) / stepYears) * stepYears);
-    for (let year = firstCeYear; year <= endYear; year += stepYears) years.push(year);
+    const firstCeYear = Math.max(
+      stepYears,
+      Math.ceil(Math.max(startYear, 1) / stepYears) * stepYears,
+    );
+    for (let year = firstCeYear; year <= endYear; year += stepYears)
+      years.push(year);
   }
   return years.sort((a, b) => a - b);
 }

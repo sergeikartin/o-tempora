@@ -1,6 +1,6 @@
 import { act, cleanup, renderHook } from '@testing-library/react';
-import { test, expect, afterEach, beforeEach } from 'vitest';
-import { useIsMobileViewport, MOBILE_BREAKPOINT_PX } from './viewport';
+import { afterEach, beforeEach, expect, test } from 'vitest';
+import { MOBILE_BREAKPOINT_PX, useIsMobileViewport } from './viewport';
 
 afterEach(cleanup);
 

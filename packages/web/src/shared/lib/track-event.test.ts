@@ -1,4 +1,4 @@
-import { test, expect, afterEach, vi } from 'vitest';
+import { afterEach, expect, test, vi } from 'vitest';
 import { trackEvent } from './track-event';
 
 afterEach(() => {

@@ -108,7 +108,11 @@
   top: 0;
   bottom: 0;
   min-width: 24px; /* mirrors MIN_VIEWPORT_RECT_PX in Minimap.tsx */
-  background-color: color-mix(in srgb, var(--color-accent-selected) 18%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-selected) 18%,
+    transparent
+  );
   border-left: 1px solid var(--color-accent-selected);
   border-right: 1px solid var(--color-accent-selected);
   cursor: grab;
@@ -125,12 +129,20 @@
 }
 
 .viewportRect:hover {
-  background-color: color-mix(in srgb, var(--color-accent-selected) 28%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-selected) 28%,
+    transparent
+  );
 }
 
 .viewportRect.dragging {
   cursor: grabbing;
-  background-color: color-mix(in srgb, var(--color-accent-selected) 28%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-selected) 28%,
+    transparent
+  );
 }
 
 /* Hover tooltip — recovers the exact date/Row-Depth numbers the log scale
@@ -148,7 +160,8 @@
   border-radius: 6px; /* radius-sm */
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border-subtle);
-  box-shadow: 0 2px 6px color-mix(in srgb, var(--color-text-primary) 15%, transparent);
+  box-shadow: 0 2px 6px
+    color-mix(in srgb, var(--color-text-primary) 15%, transparent);
   font-family: Archivo, sans-serif;
   font-variant-numeric: tabular-nums;
   font-size: 11px;

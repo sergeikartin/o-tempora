@@ -1,5 +1,5 @@
-import { REGIONS, type Region } from '../../../shared/types';
 import { REGION_LABELS } from '../../../shared/config';
+import { REGIONS, type Region } from '../../../shared/types';
 import { FilterPillList } from '../../../shared/ui';
 
 interface RegionFiltersProps {
@@ -11,7 +11,10 @@ interface RegionFiltersProps {
 // Conflicts, and Milestones together (grill-with-docs session 2026-08-12).
 // Multi-select OR; no regions active means unfiltered — see CONTEXT.md's
 // Region entry.
-export function RegionFilters({ selectedRegions, onToggleRegion }: RegionFiltersProps) {
+export function RegionFilters({
+  selectedRegions,
+  onToggleRegion,
+}: RegionFiltersProps) {
   return (
     <FilterPillList
       values={REGIONS}

@@ -1,10 +1,14 @@
-import { test, expect } from 'vitest';
-import { centuryTicksInRange, computeDensityProfile, logScaleHeightPx } from './minimap';
-import { computeRowAssignment } from './map-to-items';
+import { expect, test } from 'vitest';
 import { PAN_MIN_DATE } from '../../shared/config';
 import { today } from '../../shared/lib/dates';
 import { centuryBoundariesInRange } from '../../shared/lib/format-year';
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
+import { computeRowAssignment } from './map-to-items';
+import {
+  centuryTicksInRange,
+  computeDensityProfile,
+  logScaleHeightPx,
+} from './minimap';
 
 const REFERENCE_PIXELS_PER_YEAR = 8;
 
@@ -12,12 +16,32 @@ const REFERENCE_PIXELS_PER_YEAR = 8;
 // the same Row Depth resolvers the real lanes render with — since none of
 // these tests filter their input, that's a row assignment computed over
 // the entire, unfiltered set every time.
-function profileFor(people: Person[], conflicts: ConflictEntry[], milestones: Milestone[]) {
-  const { personRowFor, eventsRowFor } = computeRowAssignment(people, conflicts, milestones);
-  return computeDensityProfile(people, conflicts, milestones, REFERENCE_PIXELS_PER_YEAR, personRowFor, eventsRowFor);
+function profileFor(
+  people: Person[],
+  conflicts: ConflictEntry[],
+  milestones: Milestone[],
+) {
+  const { personRowFor, eventsRowFor } = computeRowAssignment(
+    people,
+    conflicts,
+    milestones,
+  );
+  return computeDensityProfile(
+    people,
+    conflicts,
+    milestones,
+    REFERENCE_PIXELS_PER_YEAR,
+    personRowFor,
+    eventsRowFor,
+  );
 }
 
-function person(id: string, startYear: number, endYear: number, fameScore = 90): Person {
+function person(
+  id: string,
+  startYear: number,
+  endYear: number,
+  fameScore = 90,
+): Person {
   return {
     id,
     name: id,
@@ -37,14 +61,19 @@ test('computeDensityProfile returns an all-zero profile spanning the pannable do
   // Each bucket's reported year is its midpoint, not its left edge, so the
   // first/last bucket sit half a bucket-width inside the domain's true
   // bounds rather than exactly on them.
-  const bucketWidthYears = (today().year - PAN_MIN_DATE.year) / profile.years.length;
+  const bucketWidthYears =
+    (today().year - PAN_MIN_DATE.year) / profile.years.length;
   expect(profile.years[0]).toBeGreaterThanOrEqual(PAN_MIN_DATE.year);
   expect(profile.years[0]).toBeLessThan(PAN_MIN_DATE.year + bucketWidthYears);
-  expect(profile.years[profile.years.length - 1]).toBeLessThanOrEqual(today().year);
-  expect(profile.years[profile.years.length - 1]).toBeGreaterThan(today().year - bucketWidthYears);
+  expect(profile.years[profile.years.length - 1]).toBeLessThanOrEqual(
+    today().year,
+  );
+  expect(profile.years[profile.years.length - 1]).toBeGreaterThan(
+    today().year - bucketWidthYears,
+  );
 });
 
-test('computeDensityProfile marks depth 1 across a single person\'s full lifespan bucket range', () => {
+test("computeDensityProfile marks depth 1 across a single person's full lifespan bucket range", () => {
   const profile = profileFor([person('a', 1000, 1050)], [], []);
   const withinLifespan = profile.years
     .map((year, i) => ({ year, depth: profile.peopleDepth[i] ?? 0 }))
@@ -61,7 +90,9 @@ test('computeDensityProfile raises People depth to 2 where two lifespans overlap
   const depthAtYear = (year: number) => {
     const bucket = profile.years.reduce((closest, candidate, i) => {
       const closestYear = profile.years[closest] ?? 0;
-      return Math.abs(candidate - year) < Math.abs(closestYear - year) ? i : closest;
+      return Math.abs(candidate - year) < Math.abs(closestYear - year)
+        ? i
+        : closest;
     }, 0);
     return profile.peopleDepth[bucket] ?? 0;
   };
@@ -98,7 +129,11 @@ test("computeDensityProfile's People depth reflects each person's compacted stat
   // Statically (full dataset), 'a' (fame 100) claims row 0. 'b' (fame 90)
   // overlaps 'a' and is bumped to row 1. 'c' (fame 80) doesn't overlap 'a'
   // and reuses row 0.
-  const all = [person('a', 1000, 1010, 100), person('b', 1005, 1015, 90), person('c', 1030, 1040, 80)];
+  const all = [
+    person('a', 1000, 1010, 100),
+    person('b', 1005, 1015, 90),
+    person('c', 1030, 1040, 80),
+  ];
   const { personRowFor, eventsRowFor } = computeRowAssignment(all, [], []);
   // Now filter 'a' out, as e.g. a fame-score filter would. A fresh
   // assignRows call over just [b, c] would give both row 0 (they never
@@ -107,11 +142,20 @@ test("computeDensityProfile's People depth reflects each person's compacted stat
   // (already contiguous here), keeping 'b' on its own row, so Row Depth
   // during 'b''s span must stay 2, not collapse to 1.
   const filtered = [all[1] as Person, all[2] as Person];
-  const profile = computeDensityProfile(filtered, [], [], REFERENCE_PIXELS_PER_YEAR, personRowFor, eventsRowFor);
+  const profile = computeDensityProfile(
+    filtered,
+    [],
+    [],
+    REFERENCE_PIXELS_PER_YEAR,
+    personRowFor,
+    eventsRowFor,
+  );
   const depthAtYear = (year: number) => {
     const bucket = profile.years.reduce((closest, candidate, i) => {
       const closestYear = profile.years[closest] ?? 0;
-      return Math.abs(candidate - year) < Math.abs(closestYear - year) ? i : closest;
+      return Math.abs(candidate - year) < Math.abs(closestYear - year)
+        ? i
+        : closest;
     }, 0);
     return profile.peopleDepth[bucket] ?? 0;
   };
@@ -124,14 +168,19 @@ test('logScaleHeightPx returns 0 at depth 0 and maxHeightPx at the maximum depth
 });
 
 test('centuryTicksInRange drops a boundary whose true start precedes minYear, but keeps the next one', () => {
-  const rawBoundaries = centuryBoundariesInRange(PAN_MIN_DATE.year, PAN_MIN_DATE.year + 200);
+  const rawBoundaries = centuryBoundariesInRange(
+    PAN_MIN_DATE.year,
+    PAN_MIN_DATE.year + 200,
+  );
   const ticks = centuryTicksInRange(PAN_MIN_DATE.year, PAN_MIN_DATE.year + 200);
   // The real PAN_MIN_DATE doesn't land exactly on a century boundary, so
   // centuryBoundariesInRange's first entry starts before it — exactly the
   // case centuryTicksInRange exists to filter out, without dropping the
   // boundary right after it too.
   expect(rawBoundaries[0]?.startYear).toBeLessThan(PAN_MIN_DATE.year);
-  expect(ticks.every((boundary) => boundary.startYear >= PAN_MIN_DATE.year)).toBe(true);
+  expect(
+    ticks.every((boundary) => boundary.startYear >= PAN_MIN_DATE.year),
+  ).toBe(true);
   expect(ticks[0]).toEqual(rawBoundaries[1]);
 });
 

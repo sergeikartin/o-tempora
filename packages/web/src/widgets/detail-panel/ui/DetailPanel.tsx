@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { buildDrawerContent, type DetailPanelEntity } from '../lib/build-drawer-content';
 import { m } from '../../../shared/paraglide/messages.js';
+import {
+  buildDrawerContent,
+  type DetailPanelEntity,
+} from '../lib/build-drawer-content';
 import styles from './DetailPanel.module.css';
 
 interface DetailPanelProps {
@@ -40,14 +43,20 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   // https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
   // — an effect here would commit the stale flag for one extra frame,
   // flashing the previous entity's crop mode before snapping to the new one.
-  const [portraitImage, setPortraitImage] = useState<{ entityId: string | null; isPortrait: boolean }>({
+  const [portraitImage, setPortraitImage] = useState<{
+    entityId: string | null;
+    isPortrait: boolean;
+  }>({
     entityId: null,
     isPortrait: false,
   });
   // Fades the image in on load instead of popping in the instant the
   // network response lands, so a slow-loading photo doesn't read as a
   // blink between the blank banner and the finished image.
-  const [imageLoaded, setImageLoaded] = useState<{ entityId: string | null; loaded: boolean }>({
+  const [imageLoaded, setImageLoaded] = useState<{
+    entityId: string | null;
+    loaded: boolean;
+  }>({
     entityId: null,
     loaded: false,
   });
@@ -55,7 +64,9 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   // has a frame to animate — `selected` goes null the instant a close is
   // requested, so content keeps rendering from the last non-null value
   // while the slide-out plays, rather than blanking immediately.
-  const [lastSelected, setLastSelected] = useState<DetailPanelEntity | null>(null);
+  const [lastSelected, setLastSelected] = useState<DetailPanelEntity | null>(
+    null,
+  );
   if (selected && selected !== lastSelected) {
     setLastSelected(selected);
   }
@@ -84,7 +95,8 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
     function handlePointerUp(event: PointerEvent) {
       const start = pressStart;
       pressStart = null;
-      if (!panelRef.current || panelRef.current.contains(event.target as Node)) return;
+      if (!panelRef.current || panelRef.current.contains(event.target as Node))
+        return;
       // A pointerdown on a mark fires before the click that follows it
       // (TimelineCanvas's delegated click listener, dynamic-tooltips spec
       // §2), and that click always re-selects — including re-clicking the
@@ -98,7 +110,10 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
       // the panel too) — only treat this as a dismiss click if the press
       // barely moved.
       if (start) {
-        const moved = Math.hypot(event.clientX - start.x, event.clientY - start.y);
+        const moved = Math.hypot(
+          event.clientX - start.x,
+          event.clientY - start.y,
+        );
         if (moved > OUTSIDE_PRESS_DRAG_THRESHOLD_PX) return;
       }
       onClose();
@@ -120,18 +135,26 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
 
   const isOpen = selected !== null;
   const content = displayedEntity ? buildDrawerContent(displayedEntity) : null;
-  const showImage = Boolean(content?.image) && displayedEntity?.entity.id !== failedEntityId;
+  const showImage =
+    Boolean(content?.image) && displayedEntity?.entity.id !== failedEntityId;
 
   return (
     <aside
       ref={panelRef}
       className={isOpen ? `${styles.panel} ${styles.open}` : styles.panel}
-      aria-label={content ? m.detailsAriaLabel({ name: content.name }) : undefined}
+      aria-label={
+        content ? m.detailsAriaLabel({ name: content.name }) : undefined
+      }
       inert={!isOpen}
     >
       {content && displayedEntity && (
         <>
-          <button type="button" onClick={onClose} aria-label={m.closeAriaLabel()} className={styles.closeButton}>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={m.closeAriaLabel()}
+            className={styles.closeButton}
+          >
             ×
           </button>
           {showImage && (
@@ -153,13 +176,24 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
           )}
           <div key={`body-${selectedEntityId}`} className={styles.body}>
             {showImage && content.imageAttribution && (
-              <p className={styles.imageAttribution}>{content.imageAttribution}</p>
+              <p className={styles.imageAttribution}>
+                {content.imageAttribution}
+              </p>
             )}
             <h2 className={styles.name}>{content.name}</h2>
-            {content.dateLine && <p className={styles.dateLine}>{content.dateLine}</p>}
+            {content.dateLine && (
+              <p className={styles.dateLine}>{content.dateLine}</p>
+            )}
             <p className={styles.tagline}>{content.tagline}</p>
-            {content.description && <p className={styles.description}>{content.description}</p>}
-            <a href={content.wikipediaUrl} target="_blank" rel="noreferrer" className={styles.wikipediaButton}>
+            {content.description && (
+              <p className={styles.description}>{content.description}</p>
+            )}
+            <a
+              href={content.wikipediaUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.wikipediaButton}
+            >
               {m.readOnWikipedia()}
             </a>
           </div>

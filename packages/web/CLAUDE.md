@@ -12,7 +12,7 @@ Run from repo root:
 - Build: `npm run build --workspace packages/web`
 - Preview build: `npm run preview --workspace packages/web`
 - Test: `npm run test --workspace packages/web` (Vitest)
-- Lint: `npm run lint --workspace packages/web` (ESLint) · `npm run lint:boundaries --workspace packages/web` (Steiger, FSD boundaries)
+- Lint: `npm run lint --workspace packages/web` (Biome) · `npm run lint:boundaries --workspace packages/web` (Steiger, FSD boundaries)
 - Type check: `npm run typecheck --workspace packages/web`
 
 
@@ -25,7 +25,7 @@ Run from repo root:
 | Timeline rendering | D3 |
 | Styling | CSS Modules |
 | Testing | Vitest + RTL |
-| Lint / boundary tooling | ESLint + typescript-eslint + eslint-plugin-jsx-a11y + Steiger, enforcing mini-FSD boundaries |
+| Lint / format / boundary tooling | Biome (lint + format, incl. a11y rules) + Steiger, enforcing mini-FSD boundaries |
 
 ## Docs
 

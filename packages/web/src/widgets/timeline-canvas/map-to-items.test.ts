@@ -1,4 +1,14 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
+import type { ConflictsMilestonesFilterValue } from '../../shared/config';
+import { today } from '../../shared/lib/dates';
+import type {
+  Conflict,
+  ConflictEvent,
+  Milestone,
+  MilestoneCategory,
+  Person,
+  Region,
+} from '../../shared/types';
 import {
   assignRows,
   compactRows,
@@ -8,13 +18,10 @@ import {
   filterByOccupationDomain,
   filterByRegion,
   filterConflictsByFilterValues,
+  mapConflicts,
   mapMilestones,
   mapPeople,
-  mapConflicts,
 } from './map-to-items';
-import { today } from '../../shared/lib/dates';
-import type { Milestone, MilestoneCategory, Person, Conflict, ConflictEvent, Region } from '../../shared/types';
-import type { ConflictsMilestonesFilterValue } from '../../shared/config';
 
 const person: Person = {
   id: 'Q868',
@@ -191,7 +198,11 @@ test('mapMilestones maps a period-shaped milestone to a range item (isPoint: fal
 });
 
 test('mapMilestones widens a zero-width milestone range (start === end) by one year', () => {
-  const zeroWidth: Milestone = { ...blackDeath, id: 'Q9003', period: { start: { year: 1346 }, end: { year: 1346 } } };
+  const zeroWidth: Milestone = {
+    ...blackDeath,
+    id: 'Q9003',
+    period: { start: { year: 1346 }, end: { year: 1346 } },
+  };
   const [item] = mapMilestones([zeroWidth]);
   expect(item?.isPoint).toBe(false);
   expect(item?.startYear).toBe(1346);
@@ -200,8 +211,15 @@ test('mapMilestones widens a zero-width milestone range (start === end) by one y
 
 // filterByFameScore — shared client-side Fame Tier gate for all three lanes.
 test('filterByFameScore keeps only items whose fameScore clears the threshold', () => {
-  const items = [{ id: 'a', fameScore: 90 }, { id: 'b', fameScore: 89 }, { id: 'c', fameScore: 100 }];
-  expect(filterByFameScore(items, 90).map((item) => item.id)).toEqual(['a', 'c']);
+  const items = [
+    { id: 'a', fameScore: 90 },
+    { id: 'b', fameScore: 89 },
+    { id: 'c', fameScore: 100 },
+  ];
+  expect(filterByFameScore(items, 90).map((item) => item.id)).toEqual([
+    'a',
+    'c',
+  ]);
 });
 
 test('filterByFameScore keeps a value exactly at the threshold', () => {
@@ -211,7 +229,10 @@ test('filterByFameScore keeps a value exactly at the threshold', () => {
 
 // filterByOccupationDomain — People-only Legend-pill filter.
 test('filterByOccupationDomain returns items unchanged when no domains are selected', () => {
-  const items = [{ id: 'a', occupationDomain: 'arts' as const }, { id: 'b', occupationDomain: 'sports' as const }];
+  const items = [
+    { id: 'a', occupationDomain: 'arts' as const },
+    { id: 'b', occupationDomain: 'sports' as const },
+  ];
   expect(filterByOccupationDomain(items, [])).toEqual(items);
 });
 
@@ -221,7 +242,9 @@ test('filterByOccupationDomain keeps only items whose domain is selected', () =>
     { id: 'b', occupationDomain: 'sports' as const },
     { id: 'c', occupationDomain: 'humanities' as const },
   ];
-  expect(filterByOccupationDomain(items, ['arts']).map((item) => item.id)).toEqual(['a']);
+  expect(
+    filterByOccupationDomain(items, ['arts']).map((item) => item.id),
+  ).toEqual(['a']);
 });
 
 test('filterByOccupationDomain unions multiple selected domains (OR)', () => {
@@ -230,7 +253,9 @@ test('filterByOccupationDomain unions multiple selected domains (OR)', () => {
     { id: 'b', occupationDomain: 'sports' as const },
     { id: 'c', occupationDomain: 'humanities' as const },
   ];
-  expect(filterByOccupationDomain(items, ['arts', 'sports']).map((item) => item.id)).toEqual(['a', 'b']);
+  expect(
+    filterByOccupationDomain(items, ['arts', 'sports']).map((item) => item.id),
+  ).toEqual(['a', 'b']);
 });
 
 // filterByRegion — one shared filter across all three lanes. Takes a
@@ -244,7 +269,10 @@ interface RegionFixture {
 const regionsOf = (item: RegionFixture) => item.regionTags;
 
 test('filterByRegion returns items unchanged when no regions are selected', () => {
-  const items: RegionFixture[] = [{ id: 'a', regionTags: ['western-europe'] }, { id: 'b', regionTags: [] }];
+  const items: RegionFixture[] = [
+    { id: 'a', regionTags: ['western-europe'] },
+    { id: 'b', regionTags: [] },
+  ];
   expect(filterByRegion(items, [], regionsOf)).toEqual(items);
 });
 
@@ -254,7 +282,9 @@ test('filterByRegion keeps only items tagged with a selected region', () => {
     { id: 'b', regionTags: ['northern-africa'] },
     { id: 'c', regionTags: [] },
   ];
-  expect(filterByRegion(items, ['western-europe'], regionsOf).map((item) => item.id)).toEqual(['a']);
+  expect(
+    filterByRegion(items, ['western-europe'], regionsOf).map((item) => item.id),
+  ).toEqual(['a']);
 });
 
 test('filterByRegion unions multiple selected regions (OR) and matches any tag in a multi-tag item', () => {
@@ -263,7 +293,13 @@ test('filterByRegion unions multiple selected regions (OR) and matches any tag i
     { id: 'b', regionTags: ['northern-america'] },
     { id: 'c', regionTags: ['southern-asia'] },
   ];
-  expect(filterByRegion(items, ['northern-africa', 'northern-america'], regionsOf).map((item) => item.id)).toEqual(['a', 'b']);
+  expect(
+    filterByRegion(
+      items,
+      ['northern-africa', 'northern-america'],
+      regionsOf,
+    ).map((item) => item.id),
+  ).toEqual(['a', 'b']);
 });
 
 test('filterByRegion excludes an item with no region tags once a filter is active', () => {
@@ -281,7 +317,9 @@ interface MilestoneGroupFixture {
 }
 
 test('filterByMilestoneCategoryGroup returns items unchanged when no values are selected', () => {
-  const items: MilestoneGroupFixture[] = [{ id: 'a', category: 'science-theory' }];
+  const items: MilestoneGroupFixture[] = [
+    { id: 'a', category: 'science-theory' },
+  ];
   expect(filterByMilestoneCategoryGroup(items, [])).toEqual(items);
 });
 
@@ -290,7 +328,11 @@ test('filterByMilestoneCategoryGroup excludes items from a non-selected group', 
     { id: 'a', category: 'science-theory' }, // science-innovation
     { id: 'b', category: 'commerce-finance' }, // social-culture
   ];
-  expect(filterByMilestoneCategoryGroup(items, ['science-innovation']).map((item) => item.id)).toEqual(['a']);
+  expect(
+    filterByMilestoneCategoryGroup(items, ['science-innovation']).map(
+      (item) => item.id,
+    ),
+  ).toEqual(['a']);
 });
 
 test('filterByMilestoneCategoryGroup unions multiple selected groups (OR)', () => {
@@ -300,12 +342,17 @@ test('filterByMilestoneCategoryGroup unions multiple selected groups (OR)', () =
     { id: 'c', category: 'law-jurisprudence' }, // social-culture
   ];
   expect(
-    filterByMilestoneCategoryGroup(items, ['science-innovation', 'social-culture']).map((item) => item.id),
+    filterByMilestoneCategoryGroup(items, [
+      'science-innovation',
+      'social-culture',
+    ]).map((item) => item.id),
   ).toEqual(['a', 'b', 'c']);
 });
 
-test('filterByMilestoneCategoryGroup ignores a selected \'conflicts\' sentinel — never matches a MilestoneCategoryGroup', () => {
-  const items: MilestoneGroupFixture[] = [{ id: 'a', category: 'science-theory' }];
+test("filterByMilestoneCategoryGroup ignores a selected 'conflicts' sentinel — never matches a MilestoneCategoryGroup", () => {
+  const items: MilestoneGroupFixture[] = [
+    { id: 'a', category: 'science-theory' },
+  ];
   const selectedValues: ConflictsMilestonesFilterValue[] = ['conflicts'];
   expect(filterByMilestoneCategoryGroup(items, selectedValues)).toEqual([]);
 });
@@ -315,15 +362,17 @@ test('filterConflictsByFilterValues returns items unchanged when no values are s
   expect(filterConflictsByFilterValues(items, [])).toEqual(items);
 });
 
-test('filterConflictsByFilterValues keeps items when \'conflicts\' is selected', () => {
+test("filterConflictsByFilterValues keeps items when 'conflicts' is selected", () => {
   const items = [{ id: 'a' }, { id: 'b' }];
   const selectedValues: ConflictsMilestonesFilterValue[] = ['conflicts'];
   expect(filterConflictsByFilterValues(items, selectedValues)).toEqual(items);
 });
 
-test('filterConflictsByFilterValues excludes items when a non-empty selection omits \'conflicts\'', () => {
+test("filterConflictsByFilterValues excludes items when a non-empty selection omits 'conflicts'", () => {
   const items = [{ id: 'a' }, { id: 'b' }];
-  const selectedValues: ConflictsMilestonesFilterValue[] = ['science-innovation'];
+  const selectedValues: ConflictsMilestonesFilterValue[] = [
+    'science-innovation',
+  ];
   expect(filterConflictsByFilterValues(items, selectedValues)).toEqual([]);
 });
 
@@ -448,13 +497,20 @@ test("assignRows lets a lower-fame item slot in before an already-placed higher-
 test('computeRowAssignment gives two time-overlapping people different rows, the more famous one row 0', () => {
   const famous: Person = { ...person, id: 'Q-famous', fameScore: 999 };
   const obscure: Person = { ...person, id: 'Q-obscure', fameScore: 1 };
-  const rows = computeRowAssignment([famous, obscure], [], []).personRowFor(['Q-famous', 'Q-obscure']);
+  const rows = computeRowAssignment([famous, obscure], [], []).personRowFor([
+    'Q-famous',
+    'Q-obscure',
+  ]);
   expect(rows.get('Q-famous')).toBe(0);
   expect(rows.get('Q-obscure')).not.toBe(0);
 });
 
 test('computeRowAssignment packs a non-overlapping Conflict and Milestone into the same row', () => {
-  const rows = computeRowAssignment([], [conflictWithEndYear], [milestone]).eventsRowFor([conflictWithEndYear.id, milestone.id]);
+  const rows = computeRowAssignment(
+    [],
+    [conflictWithEndYear],
+    [milestone],
+  ).eventsRowFor([conflictWithEndYear.id, milestone.id]);
   expect(rows.get(conflictWithEndYear.id)).toBe(rows.get(milestone.id));
 });
 

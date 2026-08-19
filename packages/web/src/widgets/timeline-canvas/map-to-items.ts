@@ -1,25 +1,25 @@
 import type * as d3 from 'd3';
+import type { ConflictsMilestonesFilterValue } from '../../shared/config';
+import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
 import type {
   ConflictCategory,
+  ConflictEntry,
   Milestone,
   MilestoneCategory,
   OccupationDomain,
   Period,
   Person,
-  ConflictEntry,
   Region,
 } from '../../shared/types';
 import { MILESTONE_CATEGORY_TO_GROUP } from '../../shared/types';
-import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
-import type { ConflictsMilestonesFilterValue } from '../../shared/config';
 import {
   buildXScale,
+  estimateLabelWidthPx,
   MILESTONES_LABEL_MAX_WIDTH_PX,
   MIN_ROW_GAP_PX,
   MIN_ROW_GAP_YEARS,
   POINT_RADIUS,
   REFERENCE_PIXELS_PER_YEAR,
-  estimateLabelWidthPx,
   wrapLabelLines,
 } from './options';
 
@@ -32,7 +32,10 @@ export interface PixelInterval {
 // A zero- or negative-width range (e.g. a missing end) can't render as a
 // visible bar — widen it to a minimum one-year span. Rendering-only: not a
 // claim the underlying date data actually spans a year.
-function ensureMinimumRangeWidthYears(startYear: number, endYear: number): number {
+function ensureMinimumRangeWidthYears(
+  startYear: number,
+  endYear: number,
+): number {
   return endYear <= startYear ? startYear + 1 : endYear;
 }
 
@@ -41,7 +44,10 @@ function ensureMinimumRangeWidthYears(startYear: number, endYear: number): numbe
 // already ships every entry down to the specialist floor, so this is the
 // only filtering step; no re-ranking needed since each tier's threshold is
 // just a `fameScore >=` cutoff on the same already-sorted-by-tier data.
-export function filterByFameScore<T extends { fameScore: number }>(items: T[], minFameScore: number): T[] {
+export function filterByFameScore<T extends { fameScore: number }>(
+  items: T[],
+  minFameScore: number,
+): T[] {
   return items.filter((item) => item.fameScore >= minFameScore);
 }
 
@@ -50,12 +56,13 @@ export function filterByFameScore<T extends { fameScore: number }>(items: T[], m
 // matches if its domain is any of the selected ones. An empty selection
 // means unfiltered, not "match nothing" — mirrors filterByFameScore's floor
 // of 0 always passing everything.
-export function filterByOccupationDomain<T extends { occupationDomain: OccupationDomain }>(
-  items: T[],
-  selectedDomains: OccupationDomain[],
-): T[] {
+export function filterByOccupationDomain<
+  T extends { occupationDomain: OccupationDomain },
+>(items: T[], selectedDomains: OccupationDomain[]): T[] {
   if (selectedDomains.length === 0) return items;
-  return items.filter((item) => selectedDomains.includes(item.occupationDomain));
+  return items.filter((item) =>
+    selectedDomains.includes(item.occupationDomain),
+  );
 }
 
 // Shared Region filter, one control across all three lanes (grill-with-docs
@@ -68,9 +75,15 @@ export function filterByOccupationDomain<T extends { occupationDomain: Occupatio
 // OR, empty selection means unfiltered. An item with no matching region
 // tags at all never matches a non-empty selection, so it's excluded
 // whenever any region filter is active — see CONTEXT.md's Region entry.
-export function filterByRegion<T>(items: T[], selectedRegions: Region[], regionsOf: (item: T) => Region[]): T[] {
+export function filterByRegion<T>(
+  items: T[],
+  selectedRegions: Region[],
+  regionsOf: (item: T) => Region[],
+): T[] {
   if (selectedRegions.length === 0) return items;
-  return items.filter((item) => regionsOf(item).some((region) => selectedRegions.includes(region)));
+  return items.filter((item) =>
+    regionsOf(item).some((region) => selectedRegions.includes(region)),
+  );
 }
 
 // The sidebar's "Conflicts & Milestones" section is one shared multi-select
@@ -87,19 +100,23 @@ export function filterByRegion<T>(items: T[], selectedRegions: Region[], regions
 // varies at (see MILESTONE_CATEGORY_TO_GROUP), not the 21-leaf-category
 // level. A selected 'conflicts' sentinel is simply never equal to any
 // MilestoneCategoryGroup, so it has no effect here.
-export function filterByMilestoneCategoryGroup<T extends { category: MilestoneCategory }>(
-  items: T[],
-  selectedValues: ConflictsMilestonesFilterValue[],
-): T[] {
+export function filterByMilestoneCategoryGroup<
+  T extends { category: MilestoneCategory },
+>(items: T[], selectedValues: ConflictsMilestonesFilterValue[]): T[] {
   if (selectedValues.length === 0) return items;
-  return items.filter((item) => selectedValues.includes(MILESTONE_CATEGORY_TO_GROUP[item.category]));
+  return items.filter((item) =>
+    selectedValues.includes(MILESTONE_CATEGORY_TO_GROUP[item.category]),
+  );
 }
 
 // Conflicts-only: Conflicts carry no color-driving grouping of their own
 // (docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md), so
 // this is an all-or-nothing gate keyed on whether the 'conflicts' sentinel
 // is present in the shared selection, not a per-item predicate.
-export function filterConflictsByFilterValues<T>(items: T[], selectedValues: ConflictsMilestonesFilterValue[]): T[] {
+export function filterConflictsByFilterValues<T>(
+  items: T[],
+  selectedValues: ConflictsMilestonesFilterValue[],
+): T[] {
   if (selectedValues.length === 0) return items;
   return selectedValues.includes('conflicts') ? items : [];
 }
@@ -118,7 +135,9 @@ export function mapPeople(people: Person[]): PersonItem[] {
     const personStartYear = yearMonthToFractionalYear(person.lifespan.start);
     // Missing lifespan.end means still alive — draw through to today, not
     // a collapsed zero-width bar at their birth year.
-    const personEndYear = person.lifespan.end ? yearMonthToFractionalYear(person.lifespan.end) : today().year;
+    const personEndYear = person.lifespan.end
+      ? yearMonthToFractionalYear(person.lifespan.end)
+      : today().year;
 
     return {
       id: person.id,
@@ -137,7 +156,10 @@ export function mapPeople(people: Person[]): PersonItem[] {
 // name, especially at low zoom. Shared by PeopleLane (its live viewport
 // scale) and the Minimap minimap (a fixed Reference Scale, ADR
 // 0004) so both pack rows with the same rule.
-export function personPixelInterval(item: PersonItem, xScale: d3.ScaleLinear<number, number>): PixelInterval {
+export function personPixelInterval(
+  item: PersonItem,
+  xScale: d3.ScaleLinear<number, number>,
+): PixelInterval {
   const x1 = xScale(item.startYear);
   const x2 = xScale(item.endYear);
   const labelWidth = estimateLabelWidthPx(item.name);
@@ -164,7 +186,9 @@ export interface ConflictItem {
 export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
   return conflicts.map((entry) => {
     const isConflict = 'period' in entry;
-    const period: Period = isConflict ? entry.period : { start: entry.at, end: undefined };
+    const period: Period = isConflict
+      ? entry.period
+      : { start: entry.at, end: undefined };
     const isPoint = !isConflict;
     const startYear = yearMonthToFractionalYear(period.start);
     return {
@@ -173,7 +197,10 @@ export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
       startYear,
       endYear: isPoint
         ? startYear
-        : ensureMinimumRangeWidthYears(startYear, period.end ? yearMonthToFractionalYear(period.end) : startYear),
+        : ensureMinimumRangeWidthYears(
+            startYear,
+            period.end ? yearMonthToFractionalYear(period.end) : startYear,
+          ),
       isPoint,
       category: entry.category,
       fameScore: entry.fameScore,
@@ -194,17 +221,26 @@ function rangePixelInterval(
   const x2 = xScale(item.endYear);
   const center = (x1 + x2) / 2;
   const labelHalf = estimateLabelWidthPx(item.name) / 2;
-  return { start: Math.min(x1, center - labelHalf), end: Math.max(x2, center + labelHalf) };
+  return {
+    start: Math.min(x1, center - labelHalf),
+    end: Math.max(x2, center + labelHalf),
+  };
 }
 
 // Shared by ConflictsMilestonesLane (its live viewport scale) and the
 // Minimap minimap (a fixed Reference Scale, ADR 0004) so both pack
 // rows with the same rule.
-export function conflictPixelInterval(item: ConflictItem, xScale: d3.ScaleLinear<number, number>): PixelInterval {
+export function conflictPixelInterval(
+  item: ConflictItem,
+  xScale: d3.ScaleLinear<number, number>,
+): PixelInterval {
   if (item.isPoint) {
     const x = xScale(item.startYear);
     const labelHalf = estimateLabelWidthPx(item.name) / 2;
-    return { start: Math.min(x - POINT_RADIUS, x - labelHalf), end: Math.max(x + POINT_RADIUS, x + labelHalf) };
+    return {
+      start: Math.min(x - POINT_RADIUS, x - labelHalf),
+      end: Math.max(x + POINT_RADIUS, x + labelHalf),
+    };
   }
   return rangePixelInterval(item, xScale);
 }
@@ -225,7 +261,9 @@ export interface MilestoneItem {
 export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
   return milestones.map((milestone) => {
     const isPeriodShaped = 'period' in milestone;
-    const period: Period = isPeriodShaped ? milestone.period : { start: milestone.at, end: undefined };
+    const period: Period = isPeriodShaped
+      ? milestone.period
+      : { start: milestone.at, end: undefined };
     const isPoint = !isPeriodShaped;
     const startYear = yearMonthToFractionalYear(period.start);
     return {
@@ -234,7 +272,10 @@ export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
       startYear,
       endYear: isPoint
         ? startYear
-        : ensureMinimumRangeWidthYears(startYear, period.end ? yearMonthToFractionalYear(period.end) : startYear),
+        : ensureMinimumRangeWidthYears(
+            startYear,
+            period.end ? yearMonthToFractionalYear(period.end) : startYear,
+          ),
       isPoint,
       category: milestone.category,
       fameScore: milestone.fameScore,
@@ -255,8 +296,12 @@ export function milestonePixelInterval(
 ): PixelInterval {
   if (!item.isPoint) return rangePixelInterval(item, xScale);
   const x = xScale(item.startYear);
-  const labelHalf = Math.max(...lines.map((line) => estimateLabelWidthPx(line))) / 2;
-  return { start: Math.min(x - POINT_RADIUS, x - labelHalf), end: Math.max(x + POINT_RADIUS, x + labelHalf) };
+  const labelHalf =
+    Math.max(...lines.map((line) => estimateLabelWidthPx(line))) / 2;
+  return {
+    start: Math.min(x - POINT_RADIUS, x - labelHalf),
+    end: Math.max(x + POINT_RADIUS, x + labelHalf),
+  };
 }
 
 interface RowInterval {
@@ -295,16 +340,26 @@ interface RowInterval {
 // Field names read as years (its original use) but the algorithm is purely
 // numeric — pixel-space callers pass x-pixel positions and a much smaller
 // pixel gap instead.
-export function assignRows(items: RowInterval[], gap: number = MIN_ROW_GAP_YEARS): Map<string, number> {
+export function assignRows(
+  items: RowInterval[],
+  gap: number = MIN_ROW_GAP_YEARS,
+): Map<string, number> {
   const rowIntervals: RowInterval[][] = [];
   const rowOfId = new Map<string, number>();
 
   const sorted = [...items].sort(
-    (a, b) => Math.round(b.fameScore) - Math.round(a.fameScore) || a.startYear - b.startYear || a.id.localeCompare(b.id),
+    (a, b) =>
+      Math.round(b.fameScore) - Math.round(a.fameScore) ||
+      a.startYear - b.startYear ||
+      a.id.localeCompare(b.id),
   );
   for (const item of sorted) {
     const row = rowIntervals.findIndex((placed) =>
-      placed.every((existing) => item.startYear >= existing.endYear + gap || item.endYear + gap <= existing.startYear),
+      placed.every(
+        (existing) =>
+          item.startYear >= existing.endYear + gap ||
+          item.endYear + gap <= existing.startYear,
+      ),
     );
     if (row === -1) {
       rowOfId.set(item.id, rowIntervals.length);
@@ -333,7 +388,12 @@ function computeStaticPersonRows(people: Person[]): Map<string, number> {
   const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
   const items = mapPeople(people).map((item) => {
     const { start, end } = personPixelInterval(item, scale);
-    return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+    return {
+      id: item.id,
+      startYear: start,
+      endYear: end,
+      fameScore: item.fameScore,
+    };
   });
   return assignRows(items, MIN_ROW_GAP_PX);
 }
@@ -342,16 +402,31 @@ function computeStaticPersonRows(people: Person[]): Map<string, number> {
 // ConflictsMilestonesLane's own comment on why), so their static row
 // identity has to be computed together too, from both full datasets at
 // once.
-function computeStaticConflictsMilestonesRows(conflicts: ConflictEntry[], milestones: Milestone[]): Map<string, number> {
+function computeStaticConflictsMilestonesRows(
+  conflicts: ConflictEntry[],
+  milestones: Milestone[],
+): Map<string, number> {
   const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
   const conflictItems = mapConflicts(conflicts).map((item) => {
     const { start, end } = conflictPixelInterval(item, scale);
-    return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+    return {
+      id: item.id,
+      startYear: start,
+      endYear: end,
+      fameScore: item.fameScore,
+    };
   });
   const milestoneItems = mapMilestones(milestones).map((item) => {
-    const lines = item.isPoint ? wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX) : [];
+    const lines = item.isPoint
+      ? wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX)
+      : [];
     const { start, end } = milestonePixelInterval(item, lines, scale);
-    return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+    return {
+      id: item.id,
+      startYear: start,
+      endYear: end,
+      fameScore: item.fameScore,
+    };
   });
   return assignRows([...conflictItems, ...milestoneItems], MIN_ROW_GAP_PX);
 }
@@ -366,10 +441,22 @@ function computeStaticConflictsMilestonesRows(conflicts: ConflictEntry[], milest
 // set: assignRows' greedy first-fit choice is sensitive to exactly which
 // items are present, so adding or removing one item can genuinely swap two
 // unrelated items' relative row order — compactRows can't, by construction.
-export function compactRows(ids: string[], staticRowOf: Map<string, number>): Map<string, number> {
-  const distinctStaticRows = [...new Set(ids.map((id) => staticRowOf.get(id) ?? 0))].sort((a, b) => a - b);
-  const compactedRowOfStaticRow = new Map(distinctStaticRows.map((staticRow, index) => [staticRow, index]));
-  return new Map(ids.map((id) => [id, compactedRowOfStaticRow.get(staticRowOf.get(id) ?? 0) ?? 0]));
+export function compactRows(
+  ids: string[],
+  staticRowOf: Map<string, number>,
+): Map<string, number> {
+  const distinctStaticRows = [
+    ...new Set(ids.map((id) => staticRowOf.get(id) ?? 0)),
+  ].sort((a, b) => a - b);
+  const compactedRowOfStaticRow = new Map(
+    distinctStaticRows.map((staticRow, index) => [staticRow, index]),
+  );
+  return new Map(
+    ids.map((id) => [
+      id,
+      compactedRowOfStaticRow.get(staticRowOf.get(id) ?? 0) ?? 0,
+    ]),
+  );
 }
 
 export interface RowAssignment {
@@ -383,9 +470,16 @@ export interface RowAssignment {
 // computed once against the full dataset, then compacted down to the ids in
 // play (compactRows, above) — so no caller can reintroduce the bug of
 // narrowing a filtered set some other way (see ADR 0007's addendum).
-export function computeRowAssignment(people: Person[], conflicts: ConflictEntry[], milestones: Milestone[]): RowAssignment {
+export function computeRowAssignment(
+  people: Person[],
+  conflicts: ConflictEntry[],
+  milestones: Milestone[],
+): RowAssignment {
   const staticPersonRowOf = computeStaticPersonRows(people);
-  const staticEventsRowOf = computeStaticConflictsMilestonesRows(conflicts, milestones);
+  const staticEventsRowOf = computeStaticConflictsMilestonesRows(
+    conflicts,
+    milestones,
+  );
   return {
     personRowFor: (ids) => compactRows(ids, staticPersonRowOf),
     eventsRowFor: (ids) => compactRows(ids, staticEventsRowOf),

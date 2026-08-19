@@ -1,8 +1,8 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
-import { test, expect, afterEach, vi } from 'vitest';
+import { afterEach, expect, test, vi } from 'vitest';
+import type { Person } from '../../shared/types';
 import { Minimap } from './Minimap';
 import { computeRowAssignment } from './map-to-items';
-import type { Person } from '../../shared/types';
 
 afterEach(cleanup);
 
@@ -36,7 +36,11 @@ const defaultProps = {
 test('renders a non-empty ridge path for a series with active entities, and a flat one for an empty series', () => {
   const people = [person('a', 1000, 1900), person('b', 1200, 2000)];
   const { getByTestId } = render(
-    <Minimap {...defaultProps} people={people} personRowFor={computeRowAssignment(people, [], []).personRowFor} />,
+    <Minimap
+      {...defaultProps}
+      people={people}
+      personRowFor={computeRowAssignment(people, [], []).personRowFor}
+    />,
   );
   const peopleArea = getByTestId('minimap-people-area');
   const eventsArea = getByTestId('minimap-events-area');
@@ -50,14 +54,36 @@ test('renders a non-empty ridge path for a series with active entities, and a fl
 test('a press on the track jumps the viewport toward the click position', () => {
   const onScrollLeftJump = vi.fn();
   const { getByTestId } = render(
-    <Minimap {...defaultProps} people={[]} onScrollLeftJump={onScrollLeftJump} />,
+    <Minimap
+      {...defaultProps}
+      people={[]}
+      onScrollLeftJump={onScrollLeftJump}
+    />,
   );
   const track = getByTestId('minimap-track');
-  Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
+  Object.defineProperty(track, 'clientWidth', {
+    value: 200,
+    configurable: true,
+  });
   track.getBoundingClientRect = () =>
-    ({ left: 0, top: 0, width: 200, height: 56, right: 200, bottom: 56, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
+    ({
+      left: 0,
+      top: 0,
+      width: 200,
+      height: 56,
+      right: 200,
+      bottom: 56,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    }) as DOMRect;
 
-  fireEvent.pointerDown(track, { pointerType: 'mouse', button: 0, clientX: 100, pointerId: 1 });
+  fireEvent.pointerDown(track, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 100,
+    pointerId: 1,
+  });
 
   // Click dead-center of the track jumps to center the full domain on that
   // point: clickRatio 0.5 * totalWidth(4000) - half the track width(100).
@@ -67,14 +93,30 @@ test('a press on the track jumps the viewport toward the click position', () => 
 test('dragging the viewport rect reports a scrollLeft delta proportional to the drag distance', () => {
   const onScrollLeftChange = vi.fn();
   const { getByTestId } = render(
-    <Minimap {...defaultProps} people={[]} onScrollLeftChange={onScrollLeftChange} />,
+    <Minimap
+      {...defaultProps}
+      people={[]}
+      onScrollLeftChange={onScrollLeftChange}
+    />,
   );
   const track = getByTestId('minimap-track');
   const rect = getByTestId('minimap-viewport-rect');
-  Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
+  Object.defineProperty(track, 'clientWidth', {
+    value: 200,
+    configurable: true,
+  });
 
-  fireEvent.pointerDown(rect, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
-  fireEvent.pointerMove(rect, { pointerType: 'mouse', clientX: 510, pointerId: 1 });
+  fireEvent.pointerDown(rect, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
+  fireEvent.pointerMove(rect, {
+    pointerType: 'mouse',
+    clientX: 510,
+    pointerId: 1,
+  });
 
   expect(onScrollLeftChange).toHaveBeenCalledTimes(1);
   const [reported] = onScrollLeftChange.mock.calls[0] as [number];
@@ -84,16 +126,28 @@ test('dragging the viewport rect reports a scrollLeft delta proportional to the 
   expect(reported).toBeGreaterThan(defaultProps.scrollLeft);
 });
 
-test('a press on the viewport rect does not also trigger the track\'s own click-to-jump', () => {
+test("a press on the viewport rect does not also trigger the track's own click-to-jump", () => {
   const onScrollLeftChange = vi.fn();
   const { getByTestId } = render(
-    <Minimap {...defaultProps} people={[]} onScrollLeftChange={onScrollLeftChange} />,
+    <Minimap
+      {...defaultProps}
+      people={[]}
+      onScrollLeftChange={onScrollLeftChange}
+    />,
   );
   const track = getByTestId('minimap-track');
   const rect = getByTestId('minimap-viewport-rect');
-  Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
+  Object.defineProperty(track, 'clientWidth', {
+    value: 200,
+    configurable: true,
+  });
 
-  fireEvent.pointerDown(rect, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  fireEvent.pointerDown(rect, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
 
   // Only the rect-drag handler's setup should have run — no jump call from
   // the track's own pointerdown handler.
@@ -115,15 +169,33 @@ test('renders century tick marks spanning the pannable domain, with at least one
 test('hovering the track shows a tooltip with the date and Row Depth at that position; leaving hides it', () => {
   const people = [person('a', 1000, 1900)];
   const { getByTestId, queryByTestId } = render(
-    <Minimap {...defaultProps} people={people} personRowFor={computeRowAssignment(people, [], []).personRowFor} />,
+    <Minimap
+      {...defaultProps}
+      people={people}
+      personRowFor={computeRowAssignment(people, [], []).personRowFor}
+    />,
   );
   const track = getByTestId('minimap-track');
   track.getBoundingClientRect = () =>
-    ({ left: 0, top: 0, width: 200, height: 56, right: 200, bottom: 56, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
+    ({
+      left: 0,
+      top: 0,
+      width: 200,
+      height: 56,
+      right: 200,
+      bottom: 56,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    }) as DOMRect;
 
   expect(queryByTestId('minimap-tooltip')).toBeNull();
 
-  fireEvent.pointerMove(track, { pointerType: 'mouse', clientX: 100, pointerId: 1 });
+  fireEvent.pointerMove(track, {
+    pointerType: 'mouse',
+    clientX: 100,
+    pointerId: 1,
+  });
 
   const tooltip = getByTestId('minimap-tooltip');
   expect(tooltip.textContent).toMatch(/rows/);

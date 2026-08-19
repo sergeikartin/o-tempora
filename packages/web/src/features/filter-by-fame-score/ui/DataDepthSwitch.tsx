@@ -1,6 +1,13 @@
-import { DATA_DEPTH_LEVELS, FAME_SCORE_LANES, matchDataDepthLevel } from '../../../shared/config';
+import {
+  DATA_DEPTH_LEVELS,
+  FAME_SCORE_LANES,
+  matchDataDepthLevel,
+} from '../../../shared/config';
 import { m } from '../../../shared/paraglide/messages.js';
-import type { FameScoreLane, FameScoreValues } from '../model/useFameScoreFilters';
+import type {
+  FameScoreLane,
+  FameScoreValues,
+} from '../model/useFameScoreFilters';
 import styles from './DataDepthSwitch.module.css';
 
 interface DataDepthSwitchProps {
@@ -21,14 +28,22 @@ export function DataDepthSwitch({ values, onChange }: DataDepthSwitchProps) {
   }
 
   return (
-    <div className={styles.switch} role="group" aria-label={m.dataDepthAriaLabel()}>
+    <div
+      className={styles.switch}
+      role="group"
+      aria-label={m.dataDepthAriaLabel()}
+    >
       {DATA_DEPTH_LEVELS.map((level) => {
         const isActive = level.id === activeLevelId;
         return (
           <button
             key={level.id}
             type="button"
-            className={isActive ? `${styles.option} ${styles.optionActive}` : styles.option}
+            className={
+              isActive
+                ? `${styles.option} ${styles.optionActive}`
+                : styles.option
+            }
             aria-pressed={isActive}
             onClick={() => selectLevel(level.values)}
           >

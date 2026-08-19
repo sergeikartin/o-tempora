@@ -27,7 +27,11 @@ export function FilterPillList<T extends string>({
 }: FilterPillListProps<T>) {
   const isWrap = layout === 'wrap';
   return (
-    <ul className={[styles.list, isWrap && styles.listWrap].filter(Boolean).join(' ')}>
+    <ul
+      className={[styles.list, isWrap && styles.listWrap]
+        .filter(Boolean)
+        .join(' ')}
+    >
       {values.map((value) => {
         const isActive = selected.includes(value);
         const label = labelOf(value);
@@ -35,7 +39,11 @@ export function FilterPillList<T extends string>({
           <li key={value}>
             <button
               type="button"
-              className={[styles.pill, isWrap && styles.pillWrap, isActive && styles.pillActive]
+              className={[
+                styles.pill,
+                isWrap && styles.pillWrap,
+                isActive && styles.pillActive,
+              ]
                 .filter(Boolean)
                 .join(' ')}
               aria-pressed={isActive}
@@ -43,7 +51,11 @@ export function FilterPillList<T extends string>({
               onClick={() => onToggle(value)}
             >
               {colorOf && (
-                <span className={styles.swatch} style={{ backgroundColor: colorOf(value) }} aria-hidden="true" />
+                <span
+                  className={styles.swatch}
+                  style={{ backgroundColor: colorOf(value) }}
+                  aria-hidden="true"
+                />
               )}
               {label}
             </button>

@@ -11,7 +11,9 @@ const mobileQuery = `(max-width: ${MOBILE_BREAKPOINT_PX}px)`;
 // explicitly stub it (most of this codebase's) fall back to a stable
 // non-mobile snapshot instead of throwing.
 function hasMatchMedia(): boolean {
-  return typeof window !== 'undefined' && typeof window.matchMedia === 'function';
+  return (
+    typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+  );
 }
 
 function subscribe(onChange: () => void): () => void {

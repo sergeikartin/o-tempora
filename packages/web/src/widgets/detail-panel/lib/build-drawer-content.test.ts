@@ -1,6 +1,11 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
+import type {
+  Conflict,
+  ConflictEvent,
+  Milestone,
+  Person,
+} from '../../../shared/types';
 import { buildDrawerContent } from './build-drawer-content';
-import type { Milestone, Person, Conflict, ConflictEvent } from '../../../shared/types';
 
 const napoleon: Person = {
   id: '69880',
@@ -46,69 +51,114 @@ const printingPress: Milestone = {
   fameScore: 386,
   tagline: 'device for applying pressure to transfer ink onto paper',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
-  image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg',
+  image:
+    'https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg',
 };
 
 test('person: name/tagline/image/imageAttribution pass through, no dateLine (tagline already carries dates)', () => {
-  const content = buildDrawerContent({ entityType: 'person', entity: napoleon });
+  const content = buildDrawerContent({
+    entityType: 'person',
+    entity: napoleon,
+  });
   expect(content.name).toBe('Napoleon');
   expect(content.dateLine).toBeUndefined();
   expect(content.tagline).toBe('French military commander and emperor');
   expect(content.wikipediaUrl).toBe('https://en.wikipedia.org/wiki/Napoleon');
-  expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Napoleon.jpg');
-  expect(content.imageAttribution).toBe('Jacques-Louis David, via Wikimedia Commons');
+  expect(content.image).toBe(
+    'https://commons.wikimedia.org/wiki/Special:FilePath/Napoleon.jpg',
+  );
+  expect(content.imageAttribution).toBe(
+    'Jacques-Louis David, via Wikimedia Commons',
+  );
 });
 
 test('person: description passes through when present', () => {
   const withDescription: Person = {
     ...napoleon,
-    description: 'Napoleon Bonaparte was a French military commander and political leader.',
+    description:
+      'Napoleon Bonaparte was a French military commander and political leader.',
   };
-  const content = buildDrawerContent({ entityType: 'person', entity: withDescription });
-  expect(content.description).toBe('Napoleon Bonaparte was a French military commander and political leader.');
+  const content = buildDrawerContent({
+    entityType: 'person',
+    entity: withDescription,
+  });
+  expect(content.description).toBe(
+    'Napoleon Bonaparte was a French military commander and political leader.',
+  );
 });
 
 test('person: description is undefined when absent (no Wikipedia article resolved)', () => {
-  const content = buildDrawerContent({ entityType: 'person', entity: napoleon });
+  const content = buildDrawerContent({
+    entityType: 'person',
+    entity: napoleon,
+  });
   expect(content.description).toBeUndefined();
 });
 
 test('Conflict: no dateLine (tagline already carries dates)', () => {
-  const content = buildDrawerContent({ entityType: 'conflict', entity: koreanWar });
+  const content = buildDrawerContent({
+    entityType: 'conflict',
+    entity: koreanWar,
+  });
   expect(content.dateLine).toBeUndefined();
 });
 
 test('Conflict: image/imageAttribution pass through when present', () => {
-  const conflictWithImage: Conflict = { ...koreanWar, image: 'https://example.com/x.jpg', imageAttribution: 'x' };
-  const content = buildDrawerContent({ entityType: 'conflict', entity: conflictWithImage });
+  const conflictWithImage: Conflict = {
+    ...koreanWar,
+    image: 'https://example.com/x.jpg',
+    imageAttribution: 'x',
+  };
+  const content = buildDrawerContent({
+    entityType: 'conflict',
+    entity: conflictWithImage,
+  });
   expect(content.image).toBe('https://example.com/x.jpg');
   expect(content.imageAttribution).toBe('x');
 });
 
 test('Conflict: image/imageAttribution are undefined when absent', () => {
-  const content = buildDrawerContent({ entityType: 'conflict', entity: koreanWar });
+  const content = buildDrawerContent({
+    entityType: 'conflict',
+    entity: koreanWar,
+  });
   expect(content.image).toBeUndefined();
   expect(content.imageAttribution).toBeUndefined();
 });
 
 test('Conflict: description passes through when present', () => {
-  const conflictWithDescription: Conflict = { ...koreanWar, description: 'A war fought on the Korean peninsula.' };
-  const content = buildDrawerContent({ entityType: 'conflict', entity: conflictWithDescription });
+  const conflictWithDescription: Conflict = {
+    ...koreanWar,
+    description: 'A war fought on the Korean peninsula.',
+  };
+  const content = buildDrawerContent({
+    entityType: 'conflict',
+    entity: conflictWithDescription,
+  });
   expect(content.description).toBe('A war fought on the Korean peninsula.');
 });
 
 test('Conflict: description is undefined when absent (no Wikipedia article resolved)', () => {
-  const content = buildDrawerContent({ entityType: 'conflict', entity: koreanWar });
+  const content = buildDrawerContent({
+    entityType: 'conflict',
+    entity: koreanWar,
+  });
   expect(content.description).toBeUndefined();
 });
 
 test('ConflictEvent: no dateLine (tagline already carries dates)', () => {
-  const content = buildDrawerContent({ entityType: 'conflict', entity: battle });
+  const content = buildDrawerContent({
+    entityType: 'conflict',
+    entity: battle,
+  });
   expect(content.dateLine).toBeUndefined();
 });
 
 test('Milestone: dateLine is at.year only (year precision)', () => {
-  const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
+  const content = buildDrawerContent({
+    entityType: 'milestone',
+    entity: printingPress,
+  });
   expect(content.dateLine).toBe('1440');
 });
 
@@ -124,13 +174,21 @@ const blackDeath: Milestone = {
 };
 
 test('Milestone: no dateLine for a period-shaped milestone (tagline already carries the range)', () => {
-  const content = buildDrawerContent({ entityType: 'milestone', entity: blackDeath });
+  const content = buildDrawerContent({
+    entityType: 'milestone',
+    entity: blackDeath,
+  });
   expect(content.dateLine).toBeUndefined();
 });
 
 test('Milestone: image passes through', () => {
-  const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
-  expect(content.image).toBe('https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg');
+  const content = buildDrawerContent({
+    entityType: 'milestone',
+    entity: printingPress,
+  });
+  expect(content.image).toBe(
+    'https://commons.wikimedia.org/wiki/Special:FilePath/Printing_press.jpg',
+  );
 });
 
 test('Milestone: description passes through when present', () => {
@@ -138,11 +196,19 @@ test('Milestone: description passes through when present', () => {
     ...printingPress,
     description: 'A device for transferring text or images onto paper via ink.',
   };
-  const content = buildDrawerContent({ entityType: 'milestone', entity: withDescription });
-  expect(content.description).toBe('A device for transferring text or images onto paper via ink.');
+  const content = buildDrawerContent({
+    entityType: 'milestone',
+    entity: withDescription,
+  });
+  expect(content.description).toBe(
+    'A device for transferring text or images onto paper via ink.',
+  );
 });
 
 test('Milestone: description is undefined when absent (no Wikipedia article resolved)', () => {
-  const content = buildDrawerContent({ entityType: 'milestone', entity: printingPress });
+  const content = buildDrawerContent({
+    entityType: 'milestone',
+    entity: printingPress,
+  });
   expect(content.description).toBeUndefined();
 });
