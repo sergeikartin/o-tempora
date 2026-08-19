@@ -165,7 +165,7 @@ test('clicking the close button calls onClose', () => {
     />,
   );
 
-  fireEvent.click(screen.getByLabelText('Close'));
+  fireEvent.click(screen.getByLabelText('Close details'));
   expect(onClose).toHaveBeenCalledTimes(1);
 });
 
@@ -225,4 +225,27 @@ test('dragging outside the panel (e.g. panning the timeline) does not call onClo
   fireEvent.pointerDown(document.body, { clientX: 0, clientY: 0 });
   fireEvent.pointerUp(document.body, { clientX: 50, clientY: 0 });
   expect(onClose).not.toHaveBeenCalled();
+});
+
+// The mobile sheet only covers 80vh (DetailPanel.module.css), leaving a
+// strip of the timeline's own tappable marks exposed above it — this
+// backdrop covers that strip so a dismiss tap can't land on a mark
+// underneath and open a different entity instead of closing this one.
+test('clicking the mobile backdrop calls onClose', () => {
+  const onClose = vi.fn();
+  render(
+    <DetailPanel
+      selected={{ entityType: 'person', entity: napoleon }}
+      onClose={onClose}
+    />,
+  );
+
+  fireEvent.click(screen.getByLabelText('Close'));
+  expect(onClose).toHaveBeenCalledTimes(1);
+});
+
+test('no backdrop is rendered when the panel is closed', () => {
+  render(<DetailPanel selected={null} onClose={() => {}} />);
+
+  expect(screen.queryByLabelText('Close')).toBeNull();
 });

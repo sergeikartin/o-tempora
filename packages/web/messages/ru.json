@@ -18,6 +18,7 @@
   "expandFiltersAriaLabel": "Развернуть фильтры",
   "timelineErrorFallback": "Не удалось отобразить временную шкалу. Попробуйте перезагрузить страницу.",
   "closeAboutAriaLabel": "Закрыть окно «О проекте»",
+  "closeDetailsAriaLabel": "Закрыть подробности",
   "detailsAriaLabel": "Подробнее: {name}",
   "readOnWikipedia": "Читать в Википедии →",
   "switchLanguageLabel": "English",
