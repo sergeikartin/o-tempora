@@ -1,6 +1,6 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "siteTitle": "Хронология всемирной истории",
+  "siteTitle": "Жизнь на фоне истории",
   "filtersAriaLabel": "Фильтры",
   "filtersHeading": "Фильтры",
   "dataDepthHeading": "Глубина данных",
@@ -23,7 +23,7 @@
   "switchLanguageLabel": "English",
   "aboutLabel": "О проекте",
   "aboutHeading": "О проекте",
-  "aboutDescription": "O tempora — визуализация всемирной истории с непрерывным масштабированием, доступная только для просмотра: Люди, Конфликты и Вехи, период примерно с 800 года до н. э. по настоящее время.",
+  "aboutDescription": "O Tempora — визуализация всемирной истории с непрерывным масштабированием, доступная только для просмотра: Люди, Конфликты и Вехи, период примерно с 800 года до н. э. по настоящее время.",
   "aboutCodeHeading": "Код",
   "aboutCodeBody": "Исходный код этого сайта открыт и распространяется по лицензии MIT.",
   "aboutViewOnGithub": "Исходный код на GitHub →",

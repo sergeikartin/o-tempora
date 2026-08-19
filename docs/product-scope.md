@@ -2,7 +2,7 @@
 
 <!-- Product scope and UX decisions. Read before making a scope or UX call. -->
 
-World History Timeline: a read-only, continuously zoomable visualization of world history (~800 BCE-present, extendable to 3000 BCE), inspired by Map of Contemporaries / Wait But Why's "Horizontal History." Three lanes: **People** (birth-death range bars), **Conflicts** (wars as range bars, single-date conflicts as points, optionally nested under a parent Conflict via `parentId` — see `CONTEXT.md`'s **Container**), **Milestones** (points, or range bars for a milestone with a known end date, e.g. a pandemic). All data hardcoded ahead of time — People from Pantheon 2.0, Conflicts and Milestones each a hand-curated list backfilled with a batched Wikidata SPARQL enrichment pass — no accounts, no editing, no live fetching.
+Every life in context: a read-only, continuously zoomable visualization of world history (~800 BCE-present, extendable to 3000 BCE), inspired by Map of Contemporaries / Wait But Why's "Horizontal History." Three lanes: **People** (birth-death range bars), **Conflicts** (wars as range bars, single-date conflicts as points, optionally nested under a parent Conflict via `parentId` — see `CONTEXT.md`'s **Container**), **Milestones** (points, or range bars for a milestone with a known end date, e.g. a pandemic). All data hardcoded ahead of time — People from Pantheon 2.0, Conflicts and Milestones each a hand-curated list backfilled with a batched Wikidata SPARQL enrichment pass — no accounts, no editing, no live fetching.
 
 **Goals:** help users see whose lives overlapped in time; make the shape of history visually intuitive; no login/setup friction; ship a well-scoped v1 (connections, comparison mode, and a map view are deferred, not abandoned).
 
