@@ -8,6 +8,7 @@ import {
 } from 'react';
 import { CONFLICT_COLOR } from '../../shared/config';
 import { motionDurationMs } from '../../shared/lib/motion';
+import { m } from '../../shared/paraglide/messages.js';
 import type { ConflictEntry, Milestone } from '../../shared/types';
 import styles from './ConflictsMilestonesLane.module.css';
 import {
@@ -567,6 +568,8 @@ export const ConflictsMilestonesLane = forwardRef<
       width={totalWidth}
       height={totalHeight}
       className={styles.svg}
+      role="img"
+      aria-label={m.conflictsMilestonesHeading()}
     >
       <g className="zoomGroup">
         <g className="ranges" />

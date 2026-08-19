@@ -28,11 +28,7 @@ export function DataDepthSwitch({ values, onChange }: DataDepthSwitchProps) {
   }
 
   return (
-    <div
-      className={styles.switch}
-      role="group"
-      aria-label={m.dataDepthAriaLabel()}
-    >
+    <fieldset className={styles.switch} aria-label={m.dataDepthAriaLabel()}>
       {DATA_DEPTH_LEVELS.map((level) => {
         const isActive = level.id === activeLevelId;
         return (
@@ -51,6 +47,6 @@ export function DataDepthSwitch({ values, onChange }: DataDepthSwitchProps) {
           </button>
         );
       })}
-    </div>
+    </fieldset>
   );
 }
