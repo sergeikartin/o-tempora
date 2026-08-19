@@ -841,6 +841,8 @@ export function TimelineCanvas({
           people={filteredPeople}
           conflicts={filteredConflicts}
           milestones={filteredMilestones}
+          staticPersonRowOf={staticPersonRowOf}
+          staticConflictsMilestonesRowOf={staticConflictsMilestonesRowOf}
           totalWidth={totalWidth}
           viewportWidthPx={viewportWidthPx}
           scrollLeft={scrollLeft}

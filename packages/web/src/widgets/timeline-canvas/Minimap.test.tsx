@@ -1,6 +1,7 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, afterEach, vi } from 'vitest';
 import { Minimap } from './Minimap';
+import { computeStaticConflictsMilestonesRows, computeStaticPersonRows } from './map-to-items';
 import type { Person } from '../../shared/types';
 
 afterEach(cleanup);
@@ -21,6 +22,8 @@ function person(id: string, startYear: number, endYear: number): Person {
 const defaultProps = {
   conflicts: [],
   milestones: [],
+  staticPersonRowOf: computeStaticPersonRows([]),
+  staticConflictsMilestonesRowOf: computeStaticConflictsMilestonesRows([], []),
   totalWidth: 4000,
   viewportWidthPx: 800,
   scrollLeft: 1000,
@@ -29,8 +32,9 @@ const defaultProps = {
 };
 
 test('renders a non-empty ridge path for a series with active entities, and a flat one for an empty series', () => {
+  const people = [person('a', 1000, 1900), person('b', 1200, 2000)];
   const { getByTestId } = render(
-    <Minimap {...defaultProps} people={[person('a', 1000, 1900), person('b', 1200, 2000)]} />,
+    <Minimap {...defaultProps} people={people} staticPersonRowOf={computeStaticPersonRows(people)} />,
   );
   const peopleArea = getByTestId('minimap-people-area');
   const eventsArea = getByTestId('minimap-events-area');
@@ -107,8 +111,9 @@ test('renders century tick marks spanning the pannable domain, with at least one
 });
 
 test('hovering the track shows a tooltip with the date and Row Depth at that position; leaving hides it', () => {
+  const people = [person('a', 1000, 1900)];
   const { getByTestId, queryByTestId } = render(
-    <Minimap {...defaultProps} people={[person('a', 1000, 1900)]} />,
+    <Minimap {...defaultProps} people={people} staticPersonRowOf={computeStaticPersonRows(people)} />,
   );
   const track = getByTestId('minimap-track');
   track.getBoundingClientRect = () =>

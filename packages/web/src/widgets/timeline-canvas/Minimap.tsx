@@ -4,7 +4,7 @@ import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import { formatYear } from '../../shared/lib/format-year';
 import { m } from '../../shared/paraglide/messages.js';
 import { centuryTicksInRange, computeDensityProfile, logScaleHeightPx } from './minimap';
-import { buildXScale, defaultPixelsPerYear, FALLBACK_VIEWPORT_WIDTH_PX, MIN_YEAR } from './options';
+import { buildXScale, FALLBACK_VIEWPORT_WIDTH_PX, MIN_YEAR, REFERENCE_PIXELS_PER_YEAR } from './options';
 import styles from './Minimap.module.css';
 
 // Enforced via CSS min-width on .viewportRect, kept here too since the drag
@@ -38,6 +38,14 @@ interface MinimapProps {
   people: Person[];
   conflicts: ConflictEntry[];
   milestones: Milestone[];
+  // Each item's permanent row identity, computed once against the full,
+  // unfiltered datasets — the same maps PeopleLane/ConflictsMilestonesLane
+  // render with. The Row Depth profile narrows these to the currently-
+  // filtered people/conflicts/milestones via compactRows (map-to-items.ts),
+  // exactly like each lane does, so the depth reported here always matches
+  // what's actually stacked on canvas.
+  staticPersonRowOf: Map<string, number>;
+  staticConflictsMilestonesRowOf: Map<string, number>;
   // The live (current-zoom) scroll geometry, same values TimelineCanvas
   // already tracks for the lanes/Year Axis — used only for the draggable
   // viewport-rectangle overlay's ratio math, never for the Row Depth
@@ -76,6 +84,8 @@ export function Minimap({
   people,
   conflicts,
   milestones,
+  staticPersonRowOf,
+  staticConflictsMilestonesRowOf,
   totalWidth,
   viewportWidthPx,
   scrollLeft,
@@ -94,15 +104,24 @@ export function Minimap({
   // math below and the century-tick label spacing further down need it.
   const effectiveViewportWidthPx = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
 
-  // Recomputed only when the viewport is resized, not on every zoom/pan —
-  // this fixed Reference Scale (rather than the caller's live
-  // pixelsPerYear) is what keeps the profile's shape stable while the user
-  // navigates (ADR 0004).
-  const referencePixelsPerYear = useMemo(() => defaultPixelsPerYear(viewportWidthPx), [viewportWidthPx]);
-
+  // The same fixed Reference Scale computeStaticPersonRows/
+  // computeStaticConflictsMilestonesRows use for the lanes' own static row
+  // assignment (map-to-items.ts) — not the live measured viewport width,
+  // which would pack rows differently (row-gap/label widths are fixed pixel
+  // quantities, so a different pixels-per-year changes how many overlap) and
+  // make the Row Depth shown here disagree with what the canvas actually
+  // renders (ADR 0004).
   const profile = useMemo(
-    () => computeDensityProfile(people, conflicts, milestones, referencePixelsPerYear),
-    [people, conflicts, milestones, referencePixelsPerYear],
+    () =>
+      computeDensityProfile(
+        people,
+        conflicts,
+        milestones,
+        REFERENCE_PIXELS_PER_YEAR,
+        staticPersonRowOf,
+        staticConflictsMilestonesRowOf,
+      ),
+    [people, conflicts, milestones, staticPersonRowOf, staticConflictsMilestonesRowOf],
   );
   const bucketCount = profile.years.length;
   const maxPeopleDepth = Math.max(1, ...profile.peopleDepth);
@@ -110,7 +129,7 @@ export function Minimap({
 
   // Top-edge century-tick strip (`/grill-with-docs`) — ticks at every
   // century boundary across the same full pannable domain the ridge itself
-  // spans (reuses the same referencePixelsPerYear-built scale, so a tick's
+  // spans (reuses the same REFERENCE_PIXELS_PER_YEAR-built scale, so a tick's
   // x position always lines up with the density shape beneath it). Labels
   // use the plain "1500"/"100 BCE" numeric style (formatYear, same as
   // YearAxis's own labels and the hover tooltip below) rather than
@@ -123,7 +142,7 @@ export function Minimap({
   // threshold would still let a long label visually overlap the next tick's
   // short one.
   const centuryTicks = useMemo(() => {
-    const { scale: refScale, totalWidth: refTotalWidthPx } = buildXScale(referencePixelsPerYear);
+    const { scale: refScale, totalWidth: refTotalWidthPx } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
     if (refTotalWidthPx <= 0) return [];
     const [, domainMaxYear] = refScale.domain();
     let lastLabelRightEdgePx = -Infinity;
@@ -139,7 +158,7 @@ export function Minimap({
       if (showLabel) lastLabelRightEdgePx = xPx + halfWidthPx;
       return { startYear: boundary.startYear, label, leftPercent, showLabel };
     });
-  }, [referencePixelsPerYear, effectiveViewportWidthPx]);
+  }, [effectiveViewportWidthPx]);
 
   const { peoplePath, eventsPath } = useMemo(() => {
     const peopleArea = d3

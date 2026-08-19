@@ -1,7 +1,7 @@
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import { centuryBoundariesInRange, type CenturyBoundary } from '../../shared/lib/format-year';
 import {
-  assignRows,
+  compactRows,
   conflictPixelInterval,
   mapConflicts,
   mapMilestones,
@@ -9,7 +9,7 @@ import {
   milestonePixelInterval,
   personPixelInterval,
 } from './map-to-items';
-import { buildXScale, MILESTONES_LABEL_MAX_WIDTH_PX, MIN_ROW_GAP_PX, wrapLabelLines } from './options';
+import { buildXScale, MILESTONES_LABEL_MAX_WIDTH_PX, wrapLabelLines } from './options';
 
 // Resolution of the Minimap's bucketed Row Depth series — enough
 // buckets to trace real shape across a ~4,800-year domain without paying for
@@ -29,17 +29,18 @@ interface DepthInterval {
   id: string;
   startYear: number;
   endYear: number;
-  fameScore: number;
 }
 
 // Row Depth at a bucket is 1 + the highest row index any item overlapping
-// that bucket was greedily assigned to by assignRows — not just a count of
-// overlapping items — since that's the actual number of stacked rows a lane
-// needs to render that span without collision.
-function bucketDepths(intervals: DepthInterval[], refTotalWidth: number, bucketCount: number): number[] {
+// that bucket occupies — not just a count of overlapping items — since
+// that's the actual number of stacked rows a lane needs to render that span
+// without collision. `rowOf` must be the same per-item row assignment the
+// live lanes render with (compactRows over the static row identity, not a
+// fresh assignRows call on this filtered subset — see computeDensityProfile)
+// so the Minimap's reported depth always matches what's actually on canvas.
+function bucketDepths(intervals: DepthInterval[], rowOf: Map<string, number>, refTotalWidth: number, bucketCount: number): number[] {
   const depths = new Array<number>(bucketCount).fill(0);
   if (refTotalWidth <= 0) return depths;
-  const rowOf = assignRows(intervals, MIN_ROW_GAP_PX);
   const bucketWidthPx = refTotalWidth / bucketCount;
   for (const interval of intervals) {
     const row = rowOf.get(interval.id) ?? 0;
@@ -55,37 +56,56 @@ function bucketDepths(intervals: DepthInterval[], refTotalWidth: number, bucketC
 /**
  * Row Depth across the full pannable domain (People, and the merged
  * Conflicts+Milestones lane), computed once at a fixed Reference Scale
- * rather than the caller's live zoom (ADR 0004) — reuses assignRows' same
- * pixel-interval packing every lane already uses, just run over the whole
- * domain instead of the visible viewport.
+ * rather than the caller's live zoom (ADR 0004). `staticPersonRowOf`/
+ * `staticConflictsMilestonesRowOf` must be the same per-item row identity
+ * (computeStaticPersonRows/computeStaticConflictsMilestonesRows, run once
+ * against the full unfiltered dataset) the live lanes render with — this
+ * narrows them to the currently-filtered `people`/`conflicts`/`milestones`
+ * via compactRows, the same way each lane does, rather than re-running
+ * assignRows fresh on the filtered subset. A fresh assignRows call is
+ * order-sensitive to exactly which items are present (see compactRows'
+ * own comment), so it can assign a different row than the lane actually
+ * renders a given item on, making the Minimap's reported Row Depth disagree
+ * with what's really on canvas whenever a filter is narrowing the dataset.
  */
 export function computeDensityProfile(
   people: Person[],
   conflicts: ConflictEntry[],
   milestones: Milestone[],
   referencePixelsPerYear: number,
+  staticPersonRowOf: Map<string, number>,
+  staticConflictsMilestonesRowOf: Map<string, number>,
   bucketCount: number = MINIMAP_BUCKET_COUNT,
 ): DensityProfile {
   const { scale: refScale, totalWidth: refTotalWidth } = buildXScale(referencePixelsPerYear);
 
-  const peopleIntervals: DepthInterval[] = mapPeople(people).map((item) => {
+  const peopleItems = mapPeople(people);
+  const peopleIntervals: DepthInterval[] = peopleItems.map((item) => {
     const { start, end } = personPixelInterval(item, refScale);
-    return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+    return { id: item.id, startYear: start, endYear: end };
   });
+  const peopleRowOf = compactRows(
+    peopleItems.map((item) => item.id),
+    staticPersonRowOf,
+  );
 
   const conflictItems = mapConflicts(conflicts);
   const milestoneItems = mapMilestones(milestones);
   const eventIntervals: DepthInterval[] = [
     ...conflictItems.map((item) => {
       const { start, end } = conflictPixelInterval(item, refScale);
-      return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+      return { id: item.id, startYear: start, endYear: end };
     }),
     ...milestoneItems.map((item) => {
       const lines = wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX);
       const { start, end } = milestonePixelInterval(item, lines, refScale);
-      return { id: item.id, startYear: start, endYear: end, fameScore: item.fameScore };
+      return { id: item.id, startYear: start, endYear: end };
     }),
   ];
+  const eventsRowOf = compactRows(
+    [...conflictItems.map((item) => item.id), ...milestoneItems.map((item) => item.id)],
+    staticConflictsMilestonesRowOf,
+  );
 
   const years = Array.from({ length: bucketCount }, (_, bucket) =>
     refScale.invert(((bucket + 0.5) / bucketCount) * refTotalWidth),
@@ -93,8 +113,8 @@ export function computeDensityProfile(
 
   return {
     years,
-    peopleDepth: bucketDepths(peopleIntervals, refTotalWidth, bucketCount),
-    eventsDepth: bucketDepths(eventIntervals, refTotalWidth, bucketCount),
+    peopleDepth: bucketDepths(peopleIntervals, peopleRowOf, refTotalWidth, bucketCount),
+    eventsDepth: bucketDepths(eventIntervals, eventsRowOf, refTotalWidth, bucketCount),
   };
 }
 
