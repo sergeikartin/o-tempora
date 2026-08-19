@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { trackEvent } from '../../../shared/lib/track-event';
 
 export const ENTITY_TYPES = ['person', 'conflict', 'milestone'] as const;
 export type EntityType = (typeof ENTITY_TYPES)[number];
@@ -25,7 +26,10 @@ export interface SelectedEntityRef {
 export function useSelectedEntity() {
   const [selected, setSelected] = useState<SelectedEntityRef | null>(null);
 
-  const select = useCallback((ref: SelectedEntityRef) => setSelected(ref), []);
+  const select = useCallback((ref: SelectedEntityRef) => {
+    setSelected(ref);
+    trackEvent('entity_view', { entityType: ref.entityType });
+  }, []);
   const clear = useCallback(() => setSelected(null), []);
 
   return { selected, select, clear };

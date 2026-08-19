@@ -1,5 +1,6 @@
 import { Suspense, use, useCallback, useMemo, useState } from 'react';
 import { m } from '../shared/paraglide/messages.js';
+import { trackEvent } from '../shared/lib/track-event';
 import { useFameScoreFilters, type FilteredCounts } from '../features/filter-by-fame-score';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
 import { useRegionFilter } from '../features/filter-by-region';
@@ -87,7 +88,10 @@ function AppContent() {
         onClose={() => setIsFilterDrawerOpen(false)}
         isCollapsed={isSidebarCollapsed}
         onToggleCollapse={() => setIsSidebarCollapsed((collapsed) => !collapsed)}
-        onOpenAbout={() => setIsAboutOpen(true)}
+        onOpenAbout={() => {
+          setIsAboutOpen(true);
+          trackEvent('about_open');
+        }}
       />
       <ErrorBoundary fallback={<div className={styles.timelineError}>{m.timelineErrorFallback()}</div>}>
         <TimelineCanvas

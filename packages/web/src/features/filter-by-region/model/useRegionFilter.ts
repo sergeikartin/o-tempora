@@ -4,6 +4,6 @@ import type { Region } from '../../../shared/types';
 // Session-only Region filter state (no persistence — resets on reload).
 // One shared selection set applied across all three lanes, not per-lane.
 export function useRegionFilter() {
-  const { selected, toggle } = useMultiSelectFilter<Region>();
+  const { selected, toggle } = useMultiSelectFilter<Region>('region');
   return { selectedRegions: selected, toggleRegion: toggle };
 }

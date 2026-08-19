@@ -6,6 +6,6 @@ import type { ConflictsMilestonesFilterValue } from '../../../shared/config';
 // 'conflicts' sentinel and the MilestoneCategoryGroup values — empty means
 // unfiltered, mirroring every other multi-select filter in the sidebar.
 export function useConflictsMilestonesFilter() {
-  const { selected, toggle } = useMultiSelectFilter<ConflictsMilestonesFilterValue>();
+  const { selected, toggle } = useMultiSelectFilter<ConflictsMilestonesFilterValue>('conflicts_milestones');
   return { selectedValues: selected, toggleValue: toggle };
 }

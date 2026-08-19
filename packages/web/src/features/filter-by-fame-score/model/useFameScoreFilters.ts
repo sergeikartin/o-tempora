@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FAME_SCORE_BOUNDS, type FameScoreLane } from '../../../shared/config';
+import { trackEvent } from '../../../shared/lib/track-event';
 
 export type { FameScoreLane };
 
@@ -35,6 +36,7 @@ export function useFameScoreFilters() {
 
   function setValue(lane: FameScoreLane, value: number) {
     setValues((current) => ({ ...current, [lane]: value }));
+    trackEvent('fame_score_change', { lane });
   }
 
   return { values, setValue };
