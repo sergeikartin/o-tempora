@@ -158,6 +158,7 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
             ×
           </button>
           {showImage && (
+            // biome-ignore lint/a11y/noNoninteractiveElementInteractions: onLoad/onError are resource-loading callbacks, not user-interaction handlers
             <img
               key={`image-${selectedEntityId}`}
               src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}

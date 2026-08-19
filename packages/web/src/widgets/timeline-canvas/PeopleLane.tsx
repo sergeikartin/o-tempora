@@ -8,6 +8,7 @@ import {
 } from 'react';
 import { DOMAIN_COLORS } from '../../shared/config';
 import { motionDurationMs } from '../../shared/lib/motion';
+import { m } from '../../shared/paraglide/messages.js';
 import type { Person } from '../../shared/types';
 import { mapPeople } from './map-to-items';
 import {
@@ -275,7 +276,13 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
 
     return (
       <div className={styles.bottomAlign}>
-        <svg ref={svgRef} width={totalWidth} className={styles.svg}>
+        <svg
+          ref={svgRef}
+          width={totalWidth}
+          className={styles.svg}
+          role="img"
+          aria-label={m.peopleHeading()}
+        >
           <g className="people" />
         </svg>
       </div>

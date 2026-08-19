@@ -123,6 +123,7 @@ export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(
     // D3) — reset it here, in the same effect that lands new label positions
     // for a changed xScale, so the commit is atomic (see PeopleLane's
     // identical comment for why this can't be a frame later).
+    // biome-ignore lint/correctness/useExhaustiveDependencies: xScale isn't read in the body — it's a trigger so this transform reset commits atomically with the new label positions above, on the same xScale change
     useLayoutEffect(() => {
       const axis = axisRef.current;
       if (!axis) return;

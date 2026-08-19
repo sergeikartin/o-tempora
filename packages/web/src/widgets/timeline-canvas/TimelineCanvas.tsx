@@ -443,6 +443,7 @@ export function TimelineCanvas({
   // transition, so scrollTop tracks scrollHeight the whole way, not just at
   // the start. Not available in the jsdom test environment — the instant
   // pin below still covers that case.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: filteredPeople isn't read in the body — it's a trigger to re-pin scroll whenever the visible item set changes
   useLayoutEffect(() => {
     const el = peopleLaneRef.current;
     if (!el) return;
@@ -457,6 +458,7 @@ export function TimelineCanvas({
     observer.observe(svg);
     return () => observer.disconnect();
   }, [filteredPeople]);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: filteredConflicts/filteredMilestones aren't read in the body — they're a trigger to reset scroll whenever the visible item set changes
   useLayoutEffect(() => {
     const el = conflictsMilestonesLaneRef.current;
     if (!el) return;

@@ -16,5 +16,6 @@ import './app/global.css';
 
 initMonitoring();
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- index.html always provides #root
-createRoot(document.getElementById('root')!).render(<App />);
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('index.html is missing #root');
+createRoot(rootElement).render(<App />);
