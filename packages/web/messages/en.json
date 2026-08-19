@@ -18,6 +18,7 @@
   "expandFiltersAriaLabel": "Expand filters",
   "timelineErrorFallback": "Something went wrong displaying the timeline. Try reloading the page.",
   "closeAboutAriaLabel": "Close about panel",
+  "closeDetailsAriaLabel": "Close details",
   "detailsAriaLabel": "{name} details",
   "readOnWikipedia": "Read on Wikipedia →",
   "switchLanguageLabel": "Русский",

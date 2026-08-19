@@ -19,6 +19,10 @@
   transform: translateX(0);
 }
 
+.backdrop {
+  display: none;
+}
+
 .closeButton {
   position: absolute;
   top: 10px;
@@ -141,5 +145,23 @@
 
   .panel.open {
     transform: translateY(0);
+  }
+
+  /* The sheet only covers its own max-height: 80vh, leaving a strip of the
+     timeline (and its tappable marks) exposed above it — without this, a
+     tap meant to dismiss the sheet can land on a mark in that strip and
+     open a different entity instead of closing this one (the document
+     pointerup listener below intentionally defers to a mark's own click
+     there). This backdrop physically covers that strip so the dismiss tap
+     never reaches a mark to begin with. */
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    border: none;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: default;
   }
 }

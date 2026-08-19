@@ -30,6 +30,7 @@ const OUTSIDE_PRESS_DRAG_THRESHOLD_PX = 4;
 // mounting a new drawer per entity.
 export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   const panelRef = useRef<HTMLElement>(null);
+  const backdropRef = useRef<HTMLButtonElement>(null);
   // Tracks which entity's image failed to load, keyed by entity id (not the
   // image URL itself — two different entities can genuinely reference the
   // same Commons file) so a different entity's image always gets a fresh
@@ -97,6 +98,13 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
       pressStart = null;
       if (!panelRef.current || panelRef.current.contains(event.target as Node))
         return;
+      // The mobile backdrop button (below) owns its own onClick — closing
+      // here first would unmount it before the browser's trailing click
+      // event fires, and since that click's original target (the backdrop)
+      // is gone by then, it can land on whatever mark is newly exposed
+      // underneath instead of being safely absorbed. Leave the backdrop's
+      // own click to close it, same reasoning as the mark deferral below.
+      if (backdropRef.current?.contains(event.target as Node)) return;
       // A pointerdown on a mark fires before the click that follows it
       // (TimelineCanvas's delegated click listener, dynamic-tooltips spec
       // §2), and that click always re-selects — including re-clicking the
@@ -139,67 +147,78 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
     Boolean(content?.image) && displayedEntity?.entity.id !== failedEntityId;
 
   return (
-    <aside
-      ref={panelRef}
-      className={isOpen ? `${styles.panel} ${styles.open}` : styles.panel}
-      aria-label={
-        content ? m.detailsAriaLabel({ name: content.name }) : undefined
-      }
-      inert={!isOpen}
-    >
-      {content && displayedEntity && (
-        <>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label={m.closeAriaLabel()}
-            className={styles.closeButton}
-          >
-            ×
-          </button>
-          {showImage && (
-            // biome-ignore lint/a11y/noNoninteractiveElementInteractions: onLoad/onError are resource-loading callbacks, not user-interaction handlers
-            <img
-              key={`image-${selectedEntityId}`}
-              src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}
-              alt={content.name}
-              loading="lazy"
-              className={`${styles.image} ${portraitImage.isPortrait ? styles.imageContain : ''} ${imageLoaded.loaded ? styles.imageLoaded : ''}`}
-              onLoad={(event) => {
-                const img = event.currentTarget;
-                if (img.naturalHeight > img.naturalWidth) {
-                  setPortraitImage((prev) => ({ ...prev, isPortrait: true }));
-                }
-                setImageLoaded((prev) => ({ ...prev, loaded: true }));
-              }}
-              onError={() => setFailedEntityId(displayedEntity.entity.id)}
-            />
-          )}
-          <div key={`body-${selectedEntityId}`} className={styles.body}>
-            {showImage && content.imageAttribution && (
-              <p className={styles.imageAttribution}>
-                {content.imageAttribution}
-              </p>
-            )}
-            <h2 className={styles.name}>{content.name}</h2>
-            {content.dateLine && (
-              <p className={styles.dateLine}>{content.dateLine}</p>
-            )}
-            <p className={styles.tagline}>{content.tagline}</p>
-            {content.description && (
-              <p className={styles.description}>{content.description}</p>
-            )}
-            <a
-              href={content.wikipediaUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.wikipediaButton}
-            >
-              {m.readOnWikipedia()}
-            </a>
-          </div>
-        </>
+    <>
+      {isOpen && (
+        <button
+          ref={backdropRef}
+          type="button"
+          className={styles.backdrop}
+          aria-label={m.closeAriaLabel()}
+          onClick={onClose}
+        />
       )}
-    </aside>
+      <aside
+        ref={panelRef}
+        className={isOpen ? `${styles.panel} ${styles.open}` : styles.panel}
+        aria-label={
+          content ? m.detailsAriaLabel({ name: content.name }) : undefined
+        }
+        inert={!isOpen}
+      >
+        {content && displayedEntity && (
+          <>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label={m.closeDetailsAriaLabel()}
+              className={styles.closeButton}
+            >
+              ×
+            </button>
+            {showImage && (
+              // biome-ignore lint/a11y/noNoninteractiveElementInteractions: onLoad/onError are resource-loading callbacks, not user-interaction handlers
+              <img
+                key={`image-${selectedEntityId}`}
+                src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}
+                alt={content.name}
+                loading="lazy"
+                className={`${styles.image} ${portraitImage.isPortrait ? styles.imageContain : ''} ${imageLoaded.loaded ? styles.imageLoaded : ''}`}
+                onLoad={(event) => {
+                  const img = event.currentTarget;
+                  if (img.naturalHeight > img.naturalWidth) {
+                    setPortraitImage((prev) => ({ ...prev, isPortrait: true }));
+                  }
+                  setImageLoaded((prev) => ({ ...prev, loaded: true }));
+                }}
+                onError={() => setFailedEntityId(displayedEntity.entity.id)}
+              />
+            )}
+            <div key={`body-${selectedEntityId}`} className={styles.body}>
+              {showImage && content.imageAttribution && (
+                <p className={styles.imageAttribution}>
+                  {content.imageAttribution}
+                </p>
+              )}
+              <h2 className={styles.name}>{content.name}</h2>
+              {content.dateLine && (
+                <p className={styles.dateLine}>{content.dateLine}</p>
+              )}
+              <p className={styles.tagline}>{content.tagline}</p>
+              {content.description && (
+                <p className={styles.description}>{content.description}</p>
+              )}
+              <a
+                href={content.wikipediaUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.wikipediaButton}
+              >
+                {m.readOnWikipedia()}
+              </a>
+            </div>
+          </>
+        )}
+      </aside>
+    </>
   );
 }
