@@ -68,7 +68,7 @@ const conflictWithEndYear: Conflict = {
   name: 'Korean War',
   period: { start: { year: 1950 }, end: { year: 1953 } },
   category: 'war',
-  regionTags: ['east-asia'],
+  regionTags: ['eastern-asia'],
   fameScore: 350,
   tagline: 'war on the Korean peninsula',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
@@ -86,7 +86,7 @@ const battle: ConflictEvent = {
   name: 'Battle of Megiddo',
   at: { year: -1457 },
   category: 'war',
-  regionTags: ['americas'],
+  regionTags: ['northern-america'],
   fameScore: 250,
   tagline: 'ancient battle',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
@@ -146,7 +146,7 @@ const milestone: Milestone = {
   name: 'Printing press',
   at: { year: 1440 },
   category: 'communication',
-  regionTags: ['europe'],
+  regionTags: ['western-europe'],
   fameScore: 386,
   tagline: 'device for applying pressure to transfer ink onto paper',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
@@ -178,7 +178,7 @@ const blackDeath: Milestone = {
   name: 'Black Death',
   period: { start: { year: 1346 }, end: { year: 1353 } },
   category: 'medicine-health',
-  regionTags: ['europe'],
+  regionTags: ['western-europe'],
   fameScore: 84,
   tagline: '1346-1353 pandemic in Eurasia and North Africa',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Black_Death',
@@ -235,10 +235,9 @@ test('filterByOccupationDomain unions multiple selected domains (OR)', () => {
 });
 
 // filterByRegion — one shared filter across all three lanes. Takes a
-// regionsOf accessor rather than requiring `regionTags: Region[]` directly,
-// since People's native tags are the finer UnRegion — these tests fix the
-// accessor to a plain `regionTags` field to exercise the filtering logic
-// itself, independent of that translation.
+// regionsOf accessor rather than requiring `regionTags: Region[]` directly
+// on the item type, so it stays shape-agnostic across the three lanes'
+// entity types — these tests fix the accessor to a plain `regionTags` field.
 interface RegionFixture {
   id: string;
   regionTags: Region[];
@@ -246,31 +245,31 @@ interface RegionFixture {
 const regionsOf = (item: RegionFixture) => item.regionTags;
 
 test('filterByRegion returns items unchanged when no regions are selected', () => {
-  const items: RegionFixture[] = [{ id: 'a', regionTags: ['europe'] }, { id: 'b', regionTags: [] }];
+  const items: RegionFixture[] = [{ id: 'a', regionTags: ['western-europe'] }, { id: 'b', regionTags: [] }];
   expect(filterByRegion(items, [], regionsOf)).toEqual(items);
 });
 
 test('filterByRegion keeps only items tagged with a selected region', () => {
   const items: RegionFixture[] = [
-    { id: 'a', regionTags: ['europe'] },
-    { id: 'b', regionTags: ['africa'] },
+    { id: 'a', regionTags: ['western-europe'] },
+    { id: 'b', regionTags: ['northern-africa'] },
     { id: 'c', regionTags: [] },
   ];
-  expect(filterByRegion(items, ['europe'], regionsOf).map((item) => item.id)).toEqual(['a']);
+  expect(filterByRegion(items, ['western-europe'], regionsOf).map((item) => item.id)).toEqual(['a']);
 });
 
 test('filterByRegion unions multiple selected regions (OR) and matches any tag in a multi-tag item', () => {
   const items: RegionFixture[] = [
-    { id: 'a', regionTags: ['europe', 'africa'] },
-    { id: 'b', regionTags: ['americas'] },
-    { id: 'c', regionTags: ['south-asia'] },
+    { id: 'a', regionTags: ['western-europe', 'northern-africa'] },
+    { id: 'b', regionTags: ['northern-america'] },
+    { id: 'c', regionTags: ['southern-asia'] },
   ];
-  expect(filterByRegion(items, ['africa', 'americas'], regionsOf).map((item) => item.id)).toEqual(['a', 'b']);
+  expect(filterByRegion(items, ['northern-africa', 'northern-america'], regionsOf).map((item) => item.id)).toEqual(['a', 'b']);
 });
 
 test('filterByRegion excludes an item with no region tags once a filter is active', () => {
   const items: RegionFixture[] = [{ id: 'a', regionTags: [] }];
-  expect(filterByRegion(items, ['europe'], regionsOf)).toHaveLength(0);
+  expect(filterByRegion(items, ['western-europe'], regionsOf)).toHaveLength(0);
 });
 
 // filterByMilestoneCategoryGroup / filterConflictsByFilterValues — the

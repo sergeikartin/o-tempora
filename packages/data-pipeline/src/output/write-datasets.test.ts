@@ -49,7 +49,7 @@ function taggedMilestone(overrides: Partial<TaggedMilestone> = {}): TaggedMilest
     sitelinks: 80,
     fameScore: 52,
     category: "medicine-health",
-    regionTags: ["europe"],
+    regionTags: ["western-europe"],
     ...overrides,
   };
 }
@@ -347,7 +347,7 @@ test("buildMilestones passes through category, regionTags, and at.year", () => {
     name: "Penicillin",
     at: { year: 1928 },
     category: "medicine-health",
-    regionTags: ["europe"],
+    regionTags: ["western-europe"],
     fameScore: 52,
     tagline: "1928 discovery of the antibiotic",
     wikipediaUrl: "https://en.wikipedia.org/wiki/Penicillin",

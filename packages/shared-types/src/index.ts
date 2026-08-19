@@ -88,40 +88,15 @@ export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCat
   "archaeology-anthropology": "social-culture",
 };
 
+// The UN M49 geoscheme's 22 sub-regions — the single Region taxonomy for
+// every lane (People, Conflicts, Milestones). Historical polities
+// (Conflicts/Milestones) map to whatever sub-region their territory
+// corresponds to today, not a successor state's name; People's tags key off
+// Pantheon's present-day birth/death country instead. See
+// data-pipeline/src/transform/region-categories.ts (Wikidata Q-ID keyed)
+// and un-region-categories.ts (Pantheon country-name keyed) for the two
+// source mappings.
 export const REGIONS = [
-  "europe",
-  "east-asia",
-  "south-asia",
-  "middle-east",
-  "africa",
-  "americas",
-] as const;
-
-export type Region = (typeof REGIONS)[number];
-
-// Pantheon's own occupation-domain grouping (its "Working in" filter),
-// covering all 101 raw `occupation` values with no gaps — see
-// data-pipeline/src/transform/occupation-domain-categories.ts for the mapping.
-// Person-only: ConflictCategory/Region stay Wikidata-derived and Conflict/Milestone-only
-// (see the People-source decision this type follows from).
-export const OCCUPATION_DOMAINS = [
-  "sports",
-  "institutions",
-  "arts",
-  "humanities",
-  "science-technology",
-  "business-law",
-  "public-figure",
-  "exploration",
-] as const;
-
-export type OccupationDomain = (typeof OCCUPATION_DOMAINS)[number];
-
-// The UN M49 geoscheme's 22 sub-regions — Person-only, keyed off Pantheon's
-// present-day birth/death country rather than historical polity (unlike
-// HistoricalEvent's Region, which is historical-polity-aware). See
-// data-pipeline/src/transform/un-region-categories.ts for the country mapping.
-export const UN_REGIONS = [
   "northern-europe",
   "southern-europe",
   "eastern-europe",
@@ -146,7 +121,25 @@ export const UN_REGIONS = [
   "polynesia",
 ] as const;
 
-export type UnRegion = (typeof UN_REGIONS)[number];
+export type Region = (typeof REGIONS)[number];
+
+// Pantheon's own occupation-domain grouping (its "Working in" filter),
+// covering all 101 raw `occupation` values with no gaps — see
+// data-pipeline/src/transform/occupation-domain-categories.ts for the mapping.
+// Person-only: ConflictCategory stays Conflict/Milestone-only (see the
+// People-source decision this type follows from).
+export const OCCUPATION_DOMAINS = [
+  "sports",
+  "institutions",
+  "arts",
+  "humanities",
+  "science-technology",
+  "business-law",
+  "public-figure",
+  "exploration",
+] as const;
+
+export type OccupationDomain = (typeof OCCUPATION_DOMAINS)[number];
 
 // A calendar year plus optional month, astronomical/ISO numbering (year 0 is
 // 1 BCE, year 1 is 1 CE — see docs/adr/0001-astronomical-year-numbering.md),
@@ -224,7 +217,7 @@ export interface Person extends TimelineEntry {
   occupationDomain: OccupationDomain;
   // Birth region and death region can genuinely differ, so this stays an
   // array even though occupationDomain doesn't need to be.
-  regionTags: UnRegion[];
+  regionTags: Region[];
   // Always a Period, never a point — a life is never a single moment.
   // `end` absent means still alive.
   lifespan: Period;

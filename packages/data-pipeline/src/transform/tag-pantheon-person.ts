@@ -1,11 +1,11 @@
-import type { OccupationDomain, UnRegion } from "@same-sky/shared-types";
+import type { OccupationDomain, Region } from "@same-sky/shared-types";
 import type { PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
 import { OCCUPATION_DOMAIN_CATEGORIES } from "./occupation-domain-categories.js";
 import { UN_REGION_CATEGORIES } from "./un-region-categories.js";
 
 export interface PantheonPersonTags {
   occupationDomain?: OccupationDomain;
-  regionTags: UnRegion[];
+  regionTags: Region[];
 }
 
 // occupationDomain is undefined for the 62 rows with no occupation claim,
@@ -17,7 +17,7 @@ export interface PantheonPersonTags {
 export function tagPantheonPerson(row: PantheonPersonRow): PantheonPersonTags {
   const occupationDomain = row.occupation ? OCCUPATION_DOMAIN_CATEGORIES[row.occupation] : undefined;
 
-  const regionTags: UnRegion[] = [];
+  const regionTags: Region[] = [];
   for (const country of [row.bplaceCountry, row.dplaceCountry]) {
     if (!country) continue;
     const mapped = UN_REGION_CATEGORIES[country];

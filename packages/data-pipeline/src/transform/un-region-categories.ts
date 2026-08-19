@@ -1,6 +1,6 @@
-import type { UnRegion } from "@same-sky/shared-types";
+import type { Region } from "@same-sky/shared-types";
 
-// Pantheon `bplace_country`/`dplace_country` value -> UnRegion. Built from
+// Pantheon `bplace_country`/`dplace_country` value -> Region. Built from
 // a one-time call to Pantheon's live /country endpoint
 // (https://api.pantheon.world/country, public, no auth, PostgREST-based),
 // hardcoded here so no live dependency exists at Fetch time — same pattern
@@ -17,7 +17,7 @@ import type { UnRegion } from "@same-sky/shared-types";
 // no UN region assigned by the API at all and are deliberately left
 // unmapped, resolving to "no region" — same graceful-degradation pattern
 // region-categories.ts already uses for Oceania.
-export const UN_REGION_CATEGORIES: Record<string, UnRegion> = {
+export const UN_REGION_CATEGORIES: Record<string, Region> = {
   // australia-and-new-zealand
   Australia: "australia-and-new-zealand",
   "New Zealand": "australia-and-new-zealand",

@@ -35,7 +35,7 @@
     "name": "Организация Объединённых Наций",
     "category": "society-administration",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 95,
     "tagline": "всемирная межгосударственная организация",
@@ -97,7 +97,7 @@
     "name": "Организация Североатлантического договора",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 93,
     "tagline": "международный военно-политический блок",
@@ -114,12 +114,25 @@
     "name": "пандемия COVID-19",
     "category": "public-health",
     "regionTags": [
-      "europe",
-      "americas",
-      "middle-east",
-      "east-asia",
-      "africa",
-      "south-asia"
+      "western-europe",
+      "eastern-africa",
+      "central-america",
+      "northern-africa",
+      "south-america",
+      "southern-europe",
+      "western-asia",
+      "northern-europe",
+      "eastern-europe",
+      "northern-america",
+      "eastern-asia",
+      "caribbean",
+      "southern-africa",
+      "western-africa",
+      "middle-africa",
+      "south-eastern-asia",
+      "southern-asia",
+      "australia-and-new-zealand",
+      "central-asia"
     ],
     "fameScore": 91,
     "tagline": "пандемия коронавирусной инфекции 2019 года (COVID-19), продолжавшаяся с 2020 по 2023 год",
@@ -198,7 +211,7 @@
     "name": "Эйфелева башня",
     "category": "landmarks",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 89,
     "tagline": "архитектурная достопримечательность Парижа",
@@ -215,7 +228,7 @@
     "name": "Тадж-Махал",
     "category": "landmarks",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 89,
     "tagline": "мавзолей-мечеть в Агре, Индия",
@@ -336,7 +349,7 @@
     "name": "Суэцкий канал",
     "category": "landmarks",
     "regionTags": [
-      "middle-east"
+      "northern-africa"
     ],
     "fameScore": 87,
     "tagline": "судоходный бесшлюзовый канал в Египте",
@@ -354,7 +367,7 @@
     "name": "Мона Лиза",
     "category": "culture-arts",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 87,
     "tagline": "картина Леонардо да Винчи",
@@ -384,7 +397,7 @@
     "name": "Панамский канал",
     "category": "landmarks",
     "regionTags": [
-      "americas"
+      "central-america"
     ],
     "fameScore": 86,
     "tagline": "судоходный канал, соединяющий Тихий и Атлантический океаны",
@@ -402,7 +415,7 @@
     "name": "Протесты на площади Тяньаньмэнь (1989)",
     "category": "social-movements",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 86,
     "tagline": "акции протеста в Пекине",
@@ -426,7 +439,7 @@
     "name": "Собор Святой Софии",
     "category": "landmarks",
     "regionTags": [
-      "middle-east"
+      "western-asia"
     ],
     "fameScore": 86,
     "tagline": "в прошлом музей, православный собор, ныне мечеть",
@@ -444,7 +457,7 @@
     "name": "Колизей",
     "category": "landmarks",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 86,
     "tagline": "амфитеатр в Риме, Италия",
@@ -460,7 +473,9 @@
     "id": "Q12495",
     "name": "Бурдж-Халифа",
     "category": "landmarks",
-    "regionTags": [],
+    "regionTags": [
+      "western-asia"
+    ],
     "fameScore": 86,
     "tagline": "небоскрёб в Дубае (ОАЭ)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Burj_Khalifa",
@@ -506,10 +521,13 @@
     "name": "Великая депрессия",
     "category": "commerce-finance",
     "regionTags": [
-      "europe",
-      "south-asia",
-      "americas",
-      "africa"
+      "western-europe",
+      "northern-europe",
+      "southern-asia",
+      "south-america",
+      "southern-africa",
+      "northern-america",
+      "eastern-europe"
     ],
     "fameScore": 85,
     "tagline": "мировой экономический кризис с 1929 по 1939 год",
@@ -531,7 +549,8 @@
     "name": "Чёрная смерть",
     "category": "public-health",
     "regionTags": [
-      "europe"
+      "eastern-europe",
+      "western-asia"
     ],
     "fameScore": 84,
     "tagline": "пандемия чумы в 1346-1353 гг. в Европе",
@@ -552,7 +571,7 @@
     "name": "Пирамида Хеопса",
     "category": "landmarks",
     "regionTags": [
-      "middle-east"
+      "northern-africa"
     ],
     "fameScore": 84,
     "tagline": "старейшая и самая крупная из трех пирамид в Некрополе Гизы",
@@ -600,7 +619,7 @@
     "name": "Аполлон-11",
     "category": "expedition",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 83,
     "tagline": "американский пилотируемый космический корабль серии «Аполлон»",
@@ -617,7 +636,7 @@
     "name": "Декларация независимости США",
     "category": "society-administration",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 83,
     "tagline": "исторический документ, в котором британские колонии в Северной Америке объявили независимость от Великобритании",
@@ -766,7 +785,7 @@
     "name": "Великая хартия вольностей",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 82,
     "tagline": "документ на основе требований английской знати к Иоанну Безземельному",
@@ -783,7 +802,7 @@
     "name": "Лига Наций",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 82,
     "tagline": "международная организация, предшественник Организации Объединённых Наций",
@@ -850,7 +869,7 @@
     "name": "Реставрация Мэйдзи",
     "category": "society-administration",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 81,
     "tagline": "комплекс политических, экономических и социальных реформ",
@@ -872,7 +891,7 @@
     "name": "распад СССР",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 81,
     "tagline": "процесс развала Союза Советских Социалистических Республик",
@@ -890,7 +909,7 @@
     "name": "Розеттский камень",
     "category": "archaeology-anthropology",
     "regionTags": [
-      "middle-east"
+      "northern-africa"
     ],
     "fameScore": 81,
     "tagline": "древнеегипетский артефакт",
@@ -908,7 +927,7 @@
     "name": "Большой адронный коллайдер",
     "category": "science-theory",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 80,
     "tagline": "ускоритель заряженных частиц",
@@ -956,7 +975,7 @@
     "name": "Законы Хаммурапи",
     "category": "society-administration",
     "regionTags": [
-      "middle-east"
+      "western-asia"
     ],
     "fameScore": 80,
     "tagline": "законодательный свод старовавилонского периода, созданный при царе Хаммурапи в 1750-х годах до н. э.",
@@ -973,7 +992,7 @@
     "name": "Британская Ост-Индская компания",
     "category": "commerce-finance",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 80,
     "tagline": "акционерное общество",
@@ -1004,7 +1023,8 @@
     "name": "Евротоннель",
     "category": "landmarks",
     "regionTags": [
-      "europe"
+      "northern-europe",
+      "western-europe"
     ],
     "fameScore": 79,
     "tagline": "железнодорожный двухпутный тоннель под проливом Ла-Манш",
@@ -1051,7 +1071,7 @@
     "name": "Венский конгресс",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 79,
     "tagline": "конгресс, созванный после окончания Наполеоновских войн в Европе",
@@ -1075,7 +1095,7 @@
     "name": "Чемпионат мира по футболу 1930",
     "category": "sports-entertainment",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 79,
     "tagline": "1st FIFA World Cup, held in Uruguay",
@@ -1098,7 +1118,7 @@
     "name": "Терракотовая армия",
     "category": "archaeology-anthropology",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 79,
     "tagline": "захоронение статуй у мавзолея Цинь Шихуанди",
@@ -1146,7 +1166,7 @@
     "name": "Лондонский метрополитен",
     "category": "infrastructure",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 78,
     "tagline": "система линий метрополитена в Лондоне",
@@ -1163,7 +1183,7 @@
     "name": "Бруклинский мост",
     "category": "landmarks",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 78,
     "tagline": "Мост в США",
@@ -1255,7 +1275,7 @@
     "name": "Раздел Британской Индии",
     "category": "society-administration",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 78,
     "tagline": "раздел Британской Индии на Пакистан и Индию",
@@ -1272,7 +1292,9 @@
     "id": "Q133331",
     "name": "Первый Никейский собор",
     "category": "religion-mythology",
-    "regionTags": [],
+    "regionTags": [
+      "southern-europe"
+    ],
     "fameScore": 78,
     "tagline": "Первый Вселенский собор в истории христианства",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Council_of_Nicaea",
@@ -1308,7 +1330,7 @@
     "name": "Тунгусский метеорит",
     "category": "environment-geology",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 78,
     "tagline": "Уникальное природное явление, произошедшее 17 (30) июня 1908 года в бассейне реки Подкаменная Тунгуска (Енисейская губерния, Российская империя)",
@@ -1325,7 +1347,7 @@
     "name": "Голландская Ост-Индская компания",
     "category": "commerce-finance",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 78,
     "tagline": "первая акционерная фирма в мире",
@@ -1341,7 +1363,9 @@
     "id": "Q8080",
     "name": "Летние Олимпийские игры 1896",
     "category": "sports-entertainment",
-    "regionTags": [],
+    "regionTags": [
+      "southern-europe"
+    ],
     "fameScore": 78,
     "tagline": "Первые современные олимпийские игры, проводились в Афинах",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/1896_Summer_Olympics",
@@ -1465,7 +1489,7 @@
     "name": "Синкансэн",
     "category": "transportation",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 77,
     "tagline": "высокоскоростная сеть железных дорог в Японии",
@@ -1542,7 +1566,7 @@
     "name": "Болонский университет",
     "category": "philosophy-education",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 77,
     "tagline": "ВУЗ в Италии; старейший университет в мире",
@@ -1656,7 +1680,7 @@
     "name": "Маастрихтский договор",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 76,
     "tagline": "договор, подписанный 7 февраля 1992 года и положивший начало Европейского союза",
@@ -1674,7 +1698,7 @@
     "name": "объединение Германии",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 76,
     "tagline": "объединение германских государств во главе с Пруссией в Германскую империю (1871)",
@@ -1697,7 +1721,7 @@
     "name": "Новый курс Рузвельта",
     "category": "society-administration",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 76,
     "tagline": "экономическая программа Франклина Рузвельта",
@@ -1747,7 +1771,7 @@
     "name": "Вудсток",
     "category": "sports-entertainment",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 76,
     "tagline": "один из знаменитейших рок-фестивалей, прошедший с 15 по 18 августа 1969 года в штате Нью-Йорк",
@@ -1881,7 +1905,7 @@
     "name": "Берлинская конференция",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 75,
     "tagline": "international conference that regulated the distribution of European colonization and trade in Africa",
@@ -1904,7 +1928,7 @@
     "name": "Чиксулуб",
     "category": "environment-geology",
     "regionTags": [
-      "americas"
+      "central-america"
     ],
     "fameScore": 75,
     "tagline": "ударный кратер на Земле",
@@ -1921,7 +1945,7 @@
     "name": "Потоси",
     "category": "commerce-finance",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 75,
     "tagline": "город в Боливии, административный центр одноимённого департамента",
@@ -2044,7 +2068,7 @@
     "name": "движение за гражданские права чернокожих в США",
     "category": "social-movements",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 74,
     "tagline": "социальное движение в 1950—1960-х гг. в США",
@@ -2065,7 +2089,7 @@
     "name": "Управление по санитарному надзору за качеством пищевых продуктов и медикаментов",
     "category": "public-health",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 73,
     "tagline": "агентство Министерства здравоохранения и социальных служб США",
@@ -2082,7 +2106,7 @@
     "name": "BBC One",
     "category": "media-culture",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 73,
     "tagline": "британский общественный информационно-развлекательный телеканал",
@@ -2112,7 +2136,7 @@
     "name": "Процесс Габера",
     "category": "food-agriculture",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 73,
     "tagline": "промышленный процесс синтеза аммиака",
@@ -2127,7 +2151,7 @@
     "name": "Восток-1",
     "category": "transportation",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 73,
     "tagline": "советский космический корабль на котором Юрий Алексеевич Гагарин полетел в космическое пространство",
@@ -2144,7 +2168,7 @@
     "name": "Аполлон-8",
     "category": "expedition",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 73,
     "tagline": "второй космический корабль семейства «Апполон»",
@@ -2176,7 +2200,7 @@
     "name": "Декларация независимости Израиля",
     "category": "society-administration",
     "regionTags": [
-      "middle-east"
+      "western-asia"
     ],
     "fameScore": 73,
     "tagline": "правовой документ, в котором провозглашается образование Государства Израиль",
@@ -2193,7 +2217,7 @@
     "name": "Миланский эдикт",
     "category": "religion-mythology",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 73,
     "tagline": "legalization of Christianity in the Roman Empire, 313",
@@ -2210,7 +2234,7 @@
     "name": "Лиссабонское землетрясение",
     "category": "environment-geology",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 73,
     "tagline": "землетрясение в 1755 году",
@@ -2227,7 +2251,7 @@
     "name": "Платоновская Академия",
     "category": "philosophy-education",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 73,
     "tagline": "ancient philosophical, research and educative center, founded by Plato in Athens",
@@ -2257,7 +2281,7 @@
     "name": "проект «Геном человека»",
     "category": "science-theory",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 72,
     "tagline": "исследовательская программа по поиску генома человека",
@@ -2331,7 +2355,7 @@
     "name": "Экспедиция Льюиса и Кларка",
     "category": "expedition",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 72,
     "tagline": "American overland expedition to the Pacific coast",
@@ -2543,7 +2567,7 @@
     "name": "Калифорнийская золотая лихорадка",
     "category": "commerce-finance",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 71,
     "tagline": "золотая лихорадка с 1848 по 1855 год в Калифорнии",
@@ -2581,7 +2605,7 @@
     "name": "Система межштатных автомагистралей США",
     "category": "infrastructure",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 70,
     "tagline": "сеть скоростных автомагистралей в США",
@@ -2624,7 +2648,7 @@
     "name": "падение Берлинской стены",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 70,
     "tagline": "historical event in November 1989 where the Berlin Wall was opened and demolished",
@@ -2642,7 +2666,7 @@
     "name": "Бандунгская конференция",
     "category": "society-administration",
     "regionTags": [
-      "south-asia"
+      "south-eastern-asia"
     ],
     "fameScore": 70,
     "tagline": "конференция 29 стран Азии и Африки, прошедшая в Бандунге (Индонезия) 18–24 апреля 1955 года",
@@ -2709,7 +2733,7 @@
     "name": "Автомобиль Бенца",
     "category": "transportation",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 69,
     "tagline": "vehicle widely regarded as the first automobile",
@@ -2727,7 +2751,7 @@
     "name": "Флайер 1",
     "category": "transportation",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 69,
     "tagline": "heavier-than-air powered aircraft, designed and built by the Wright Brothers",
@@ -2774,7 +2798,7 @@
     "name": "Клондайкская золотая лихорадка",
     "category": "commerce-finance",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 69,
     "tagline": "неорганизованная массовая добыча золота в регионе Клондайк в Канаде и на полуострове Аляска в конце XIX века",
@@ -2822,7 +2846,9 @@
     "id": "Q2411998",
     "name": "извержение Везувия в 79 году",
     "category": "environment-geology",
-    "regionTags": [],
+    "regionTags": [
+      "southern-europe"
+    ],
     "fameScore": 68,
     "tagline": "major eruption of stratovolcano in southern Italy",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD",
@@ -2838,7 +2864,7 @@
     "name": "Крестьянская реформа в России",
     "category": "social-movements",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 68,
     "tagline": "Одна из \"великих реформ\" Александра II",
@@ -2854,7 +2880,7 @@
     "name": "Шарите",
     "category": "medicine-health",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 67,
     "tagline": "клиника в Берлине",
@@ -2871,7 +2897,7 @@
     "name": "Чёрный пенни",
     "category": "media-culture",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 67,
     "tagline": "первая в истории почтовая марка",
@@ -2902,7 +2928,7 @@
     "name": "Первое кругосветное плавание",
     "category": "expedition",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 67,
     "tagline": "кругосветная морская экспедиция, совершенная Фернандо Магелланом в XVI веке",
@@ -2989,7 +3015,9 @@
     "id": "Q8094772",
     "name": "Извержение вулкана Кракатау 1883 года",
     "category": "environment-geology",
-    "regionTags": [],
+    "regionTags": [
+      "south-eastern-asia"
+    ],
     "fameScore": 67,
     "tagline": "catastrophic volcanic eruption",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
@@ -3025,7 +3053,7 @@
     "name": "Альгамбрский эдикт",
     "category": "law-jurisprudence",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 67,
     "tagline": "1492 decree expelling Jews from Spain",
@@ -3146,7 +3174,7 @@
     "name": "Первая трансконтинентальная железная дорога США",
     "category": "infrastructure",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 65,
     "tagline": "first railroad in the United States to reach the Pacific coast from the eastern states",
@@ -3162,7 +3190,7 @@
     "name": "Вид из окна в Ле Гра",
     "category": "media-culture",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 65,
     "tagline": "самая первая из сохранившихся до наших дней фотография",
@@ -3213,7 +3241,7 @@
     "name": "Бреттон-Вудская конференция",
     "category": "commerce-finance",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 65,
     "tagline": "международная конференция, состоявшаяся в июле 1944 года в США",
@@ -3265,7 +3293,7 @@
     "name": "Выход рабочих из фабрики",
     "category": "media-culture",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 64,
     "tagline": "документальный немой короткометражный фильм; один из первых фильмов, снятых братьями Люмьер",
@@ -3295,7 +3323,7 @@
     "name": "Чикагская поленница-1",
     "category": "energy-industry",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 64,
     "tagline": "первый искусственный ядерный реактор",
@@ -3311,7 +3339,9 @@
     "id": "Q705693",
     "name": "Кодекс царя Ур–Намму",
     "category": "society-administration",
-    "regionTags": [],
+    "regionTags": [
+      "western-asia"
+    ],
     "fameScore": 64,
     "tagline": "oldest surviving law code",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Code_of_Ur-Nammu",
@@ -3326,7 +3356,7 @@
     "name": "Euronext Amsterdam",
     "category": "commerce-finance",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 64,
     "tagline": "stock exchange located in Amsterdam, Netherlands",
@@ -3365,7 +3395,7 @@
     "name": "Папирус Эдвина Смита",
     "category": "medicine-health",
     "regionTags": [
-      "middle-east"
+      "northern-africa"
     ],
     "fameScore": 63,
     "tagline": "oldest Egyptian medical text",
@@ -3395,7 +3425,7 @@
     "name": "Чугунный мост через Северн",
     "category": "landmarks",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 63,
     "tagline": "Мост расположен на реке Северн в Шропшире, Англия, первый крупный мост в мире, сделанный из чугуна.",
@@ -3412,7 +3442,7 @@
     "name": "Путешествия Чжэн Хэ",
     "category": "expedition",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 63,
     "tagline": "плавания китайского флота в Юго-Восточную Азию и Индийский океан в 1405—1433 гг",
@@ -3434,7 +3464,7 @@
     "name": "Акт об отмене рабства (1833)",
     "category": "social-movements",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 63,
     "tagline": "an act of the Parliament of the United Kingdom, which abolished slavery in the British Empire by way of compensated emancipation.",
@@ -3486,7 +3516,7 @@
     "name": "Обнинская АЭС",
     "category": "energy-industry",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 62,
     "tagline": "Первая в мире атомная электростанция",
@@ -3503,7 +3533,7 @@
     "name": "Железная дорога Стоктон — Дарлингтон",
     "category": "infrastructure",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 61,
     "tagline": "English railway company, 1825 to 1863",
@@ -3533,7 +3563,7 @@
     "name": "Изгнание морисков",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 61,
     "tagline": "17th century expulsion of Moriscos from Spain",
@@ -3555,7 +3585,7 @@
     "name": "Железная дорога Ливерпуль — Манчестер",
     "category": "infrastructure",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 60,
     "tagline": "транспортная ветвь в Англии",
@@ -3571,7 +3601,7 @@
     "name": "Дартмутский семинар",
     "category": "science-theory",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 59,
     "tagline": "1956 AI workshop",
@@ -3600,7 +3630,7 @@
     "name": "Норвежская полярная экспедиция (1893—1896)",
     "category": "expedition",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 59,
     "tagline": "1893–1896 attempt by Fridtjof Nansen to reach the North Pole",
@@ -3655,7 +3685,7 @@
     "name": "Британская экспедиция на Джомолунгму",
     "category": "expedition",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 57,
     "tagline": "Первая в истории экспедиция, которой удалось достигнуть вершины Джомолунгмы",
@@ -3731,8 +3761,8 @@
     "name": "The Portuguese discovery of the sea route to India",
     "category": "expedition",
     "regionTags": [
-      "south-asia",
-      "europe"
+      "southern-asia",
+      "southern-europe"
     ],
     "fameScore": 55,
     "tagline": "sea route to India was the first recorded trip made directly from Europe to India via the Cape of Good Hope, in the Atlantic Ocean",
@@ -3746,7 +3776,9 @@
     "id": "Q2096366",
     "name": "Золотая лихорадка в Виктории",
     "category": "commerce-finance",
-    "regionTags": [],
+    "regionTags": [
+      "australia-and-new-zealand"
+    ],
     "fameScore": 54,
     "tagline": "неорганизованная массовая добыча золота в Виктории",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Victorian_gold_rush",

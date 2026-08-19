@@ -35,7 +35,7 @@
     "name": "United Nations",
     "category": "society-administration",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 95,
     "tagline": "global international and intergovernmental organization",
@@ -97,7 +97,7 @@
     "name": "NATO",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 93,
     "tagline": "intergovernmental military alliance between 32 member states",
@@ -114,12 +114,25 @@
     "name": "COVID-19 pandemic",
     "category": "public-health",
     "regionTags": [
-      "europe",
-      "americas",
-      "middle-east",
-      "east-asia",
-      "africa",
-      "south-asia"
+      "western-europe",
+      "eastern-africa",
+      "central-america",
+      "northern-africa",
+      "south-america",
+      "southern-europe",
+      "western-asia",
+      "northern-europe",
+      "eastern-europe",
+      "northern-america",
+      "eastern-asia",
+      "caribbean",
+      "southern-africa",
+      "western-africa",
+      "middle-africa",
+      "south-eastern-asia",
+      "southern-asia",
+      "australia-and-new-zealand",
+      "central-asia"
     ],
     "fameScore": 91,
     "tagline": "pandemic caused by SARS-CoV-2 (2019–2023)",
@@ -198,7 +211,7 @@
     "name": "Eiffel Tower",
     "category": "landmarks",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 89,
     "tagline": "tower located on the Champ de Mars in Paris, France",
@@ -215,7 +228,7 @@
     "name": "Taj Mahal",
     "category": "landmarks",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 89,
     "tagline": "marble mausoleum in Agra, India",
@@ -336,7 +349,7 @@
     "name": "Suez Canal",
     "category": "landmarks",
     "regionTags": [
-      "middle-east"
+      "northern-africa"
     ],
     "fameScore": 87,
     "tagline": "artificial sea-level waterway in Egypt",
@@ -354,7 +367,7 @@
     "name": "Mona Lisa",
     "category": "culture-arts",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 87,
     "tagline": "oil painting by Leonardo da Vinci in the Louvre, Paris",
@@ -384,7 +397,7 @@
     "name": "Panama Canal",
     "category": "landmarks",
     "regionTags": [
-      "americas"
+      "central-america"
     ],
     "fameScore": 86,
     "tagline": "large canal in Panama",
@@ -402,7 +415,7 @@
     "name": "1989 Tiananmen Square protests and massacre",
     "category": "social-movements",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 86,
     "tagline": "Chinese pro-democracy movement and subsequent massacre",
@@ -426,7 +439,7 @@
     "name": "Hagia Sophia",
     "category": "landmarks",
     "regionTags": [
-      "middle-east"
+      "western-asia"
     ],
     "fameScore": 86,
     "tagline": "mosque, museum, and former church in Istanbul, Turkey",
@@ -444,7 +457,7 @@
     "name": "Colosseum",
     "category": "landmarks",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 86,
     "tagline": "ancient Roman amphitheatre, a landmark of Rome, Italy",
@@ -460,7 +473,9 @@
     "id": "Q12495",
     "name": "Burj Khalifa",
     "category": "landmarks",
-    "regionTags": [],
+    "regionTags": [
+      "western-asia"
+    ],
     "fameScore": 86,
     "tagline": "skyscraper in Dubai, United Arab Emirates",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Burj_Khalifa",
@@ -506,10 +521,13 @@
     "name": "Great Depression",
     "category": "commerce-finance",
     "regionTags": [
-      "europe",
-      "south-asia",
-      "americas",
-      "africa"
+      "western-europe",
+      "northern-europe",
+      "southern-asia",
+      "south-america",
+      "southern-africa",
+      "northern-america",
+      "eastern-europe"
     ],
     "fameScore": 85,
     "tagline": "worldwide economic depression (1929–1939)",
@@ -531,7 +549,8 @@
     "name": "Black Death",
     "category": "public-health",
     "regionTags": [
-      "europe"
+      "eastern-europe",
+      "western-asia"
     ],
     "fameScore": 84,
     "tagline": "1346–1353 pandemic in Eurasia and North Africa",
@@ -552,7 +571,7 @@
     "name": "Great Pyramid of Giza",
     "category": "landmarks",
     "regionTags": [
-      "middle-east"
+      "northern-africa"
     ],
     "fameScore": 84,
     "tagline": "oldest and largest of the three pyramids in the Giza Necropolis; one of the seven ancient wonders of the world",
@@ -600,7 +619,7 @@
     "name": "Apollo 11",
     "category": "expedition",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 83,
     "tagline": "first Moon landing and fifth crewed flight of the United States Apollo program",
@@ -617,7 +636,7 @@
     "name": "United States Declaration of Independence",
     "category": "society-administration",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 83,
     "tagline": "1776 assertion of colonial America's independence from Great Britain",
@@ -766,7 +785,7 @@
     "name": "Magna Carta",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 82,
     "tagline": "charter of rights agreed between King John of England and the nobility in 1215",
@@ -783,7 +802,7 @@
     "name": "League of Nations",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 82,
     "tagline": "20th-century international organisation, predecessor to the United Nations",
@@ -850,7 +869,7 @@
     "name": "Meiji restoration",
     "category": "society-administration",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 81,
     "tagline": "reform restoring the imperial rule in Japan in the last third of the 19th century",
@@ -872,7 +891,7 @@
     "name": "dissolution of the Soviet Union",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 81,
     "tagline": "process leading to the late-1991 breakup of the USSR",
@@ -890,7 +909,7 @@
     "name": "Rosetta Stone",
     "category": "archaeology-anthropology",
     "regionTags": [
-      "middle-east"
+      "northern-africa"
     ],
     "fameScore": 81,
     "tagline": "ancient Egyptian stele with inscriptions in three writing systems",
@@ -908,7 +927,7 @@
     "name": "Large Hadron Collider",
     "category": "science-theory",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 80,
     "tagline": "particle collider",
@@ -956,7 +975,7 @@
     "name": "Code of Hammurabi",
     "category": "society-administration",
     "regionTags": [
-      "middle-east"
+      "western-asia"
     ],
     "fameScore": 80,
     "tagline": "Babylonian code of law or conduct",
@@ -973,7 +992,7 @@
     "name": "East India Company",
     "category": "commerce-finance",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 80,
     "tagline": "British trading company (1600–1874)",
@@ -1004,7 +1023,8 @@
     "name": "Channel Tunnel",
     "category": "landmarks",
     "regionTags": [
-      "europe"
+      "northern-europe",
+      "western-europe"
     ],
     "fameScore": 79,
     "tagline": "rail tunnel beneath the English Channel between France and Great Britain",
@@ -1051,7 +1071,7 @@
     "name": "Congress of Vienna",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 79,
     "tagline": "conference of ambassadors of European states (September/November 1814 to June 1815)",
@@ -1075,7 +1095,7 @@
     "name": "1930 FIFA World Cup",
     "category": "sports-entertainment",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 79,
     "tagline": "1st FIFA World Cup, held in Uruguay",
@@ -1098,7 +1118,7 @@
     "name": "Terracotta Army",
     "category": "archaeology-anthropology",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 79,
     "tagline": "collection of ancient Chinese military statues",
@@ -1146,7 +1166,7 @@
     "name": "London Underground",
     "category": "infrastructure",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 78,
     "tagline": "public rapid transit system in London, UK",
@@ -1163,7 +1183,7 @@
     "name": "Brooklyn Bridge",
     "category": "landmarks",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 78,
     "tagline": "bridge in New York City, crossing the East River",
@@ -1255,7 +1275,7 @@
     "name": "partition of India",
     "category": "society-administration",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 78,
     "tagline": "1947 Partition of British India",
@@ -1272,7 +1292,9 @@
     "id": "Q133331",
     "name": "First Council of Nicaea",
     "category": "religion-mythology",
-    "regionTags": [],
+    "regionTags": [
+      "southern-europe"
+    ],
     "fameScore": 78,
     "tagline": "council of Christian bishops in Nicaea, 325",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Council_of_Nicaea",
@@ -1308,7 +1330,7 @@
     "name": "Tunguska event",
     "category": "environment-geology",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 78,
     "tagline": "powerful explosion that occurred near the Podkamennaya Tunguska River",
@@ -1325,7 +1347,7 @@
     "name": "Dutch East India Company",
     "category": "commerce-finance",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 78,
     "tagline": "1602–1799 Dutch trading company",
@@ -1341,7 +1363,9 @@
     "id": "Q8080",
     "name": "1896 Summer Olympics",
     "category": "sports-entertainment",
-    "regionTags": [],
+    "regionTags": [
+      "southern-europe"
+    ],
     "fameScore": 78,
     "tagline": "Games of the I Olympiad, celebrated in Athens (Greece) in 1896",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/1896_Summer_Olympics",
@@ -1465,7 +1489,7 @@
     "name": "Shinkansen",
     "category": "transportation",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 77,
     "tagline": "Japanese high-speed rail system",
@@ -1542,7 +1566,7 @@
     "name": "University of Bologna",
     "category": "philosophy-education",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 77,
     "tagline": "university in Bologna, Italy",
@@ -1656,7 +1680,7 @@
     "name": "Maastricht Treaty",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 76,
     "tagline": "Founding treaty of the European Union, signed in 1992 and effective from 1993",
@@ -1674,7 +1698,7 @@
     "name": "unification of Germany",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 76,
     "tagline": "creation of a politically and administratively integrated nation state of German-speaking populations on 18 January 1871, in the form of the German Empire",
@@ -1697,7 +1721,7 @@
     "name": "New Deal",
     "category": "society-administration",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 76,
     "tagline": "economic programs of U.S. president Franklin D. Roosevelt",
@@ -1747,7 +1771,7 @@
     "name": "Woodstock Festival",
     "category": "sports-entertainment",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 76,
     "tagline": "1969 music festival in New York, United States",
@@ -1881,7 +1905,7 @@
     "name": "Berlin Conference",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 75,
     "tagline": "international conference that regulated the distribution of European colonization and trade in Africa",
@@ -1904,7 +1928,7 @@
     "name": "Chicxulub crater",
     "category": "environment-geology",
     "regionTags": [
-      "americas"
+      "central-america"
     ],
     "fameScore": 75,
     "tagline": "prehistoric impact crater buried underneath the Yucatán Peninsula in Mexico",
@@ -1921,7 +1945,7 @@
     "name": "Potosí",
     "category": "commerce-finance",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 75,
     "tagline": "city in Bolivia",
@@ -2044,7 +2068,7 @@
     "name": "civil rights movement",
     "category": "social-movements",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 74,
     "tagline": "1954–1968 U.S. nonviolent social movement",
@@ -2065,7 +2089,7 @@
     "name": "United States Food and Drug Administration",
     "category": "public-health",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 73,
     "tagline": "agency of the US Department of Health and Human Services",
@@ -2082,7 +2106,7 @@
     "name": "BBC One",
     "category": "media-culture",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 73,
     "tagline": "flagship television channel of the BBC",
@@ -2112,7 +2136,7 @@
     "name": "Haber-Bosch process",
     "category": "food-agriculture",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 73,
     "tagline": "artificial nitrogen fixation process which is the main industrial procedure for the production of ammonia nowadays",
@@ -2127,7 +2151,7 @@
     "name": "Vostok 1",
     "category": "transportation",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 73,
     "tagline": "spaceflight of the Vostok programme",
@@ -2144,7 +2168,7 @@
     "name": "Apollo 8",
     "category": "expedition",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 73,
     "tagline": "second crewed flight of the United States Apollo program",
@@ -2176,7 +2200,7 @@
     "name": "Declaration of the Establishment of the State of Israel",
     "category": "society-administration",
     "regionTags": [
-      "middle-east"
+      "western-asia"
     ],
     "fameScore": 73,
     "tagline": "1948 declaration of Israel's independence",
@@ -2193,7 +2217,7 @@
     "name": "Edict of Milan",
     "category": "religion-mythology",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 73,
     "tagline": "legalization of Christianity in the Roman Empire, 313",
@@ -2210,7 +2234,7 @@
     "name": "1755 Lisbon earthquake",
     "category": "environment-geology",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 73,
     "tagline": "earthquake in 1755",
@@ -2227,7 +2251,7 @@
     "name": "Platonic Academy",
     "category": "philosophy-education",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 73,
     "tagline": "ancient philosophical, research and educative center, founded by Plato in Athens",
@@ -2257,7 +2281,7 @@
     "name": "Human Genome Project",
     "category": "science-theory",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 72,
     "tagline": "research program for sequencing the human genome",
@@ -2331,7 +2355,7 @@
     "name": "Lewis and Clark Expedition",
     "category": "expedition",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 72,
     "tagline": "American overland expedition to the Pacific coast",
@@ -2543,7 +2567,7 @@
     "name": "California Gold Rush",
     "category": "commerce-finance",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 71,
     "tagline": "gold rush from C.E.1848 until 1855 in California",
@@ -2581,7 +2605,7 @@
     "name": "Interstate Highway System",
     "category": "infrastructure",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 70,
     "tagline": "network of freeways in the United States",
@@ -2624,7 +2648,7 @@
     "name": "fall of the Berlin Wall",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 70,
     "tagline": "historical event in November 1989 where the Berlin Wall was opened and demolished",
@@ -2642,7 +2666,7 @@
     "name": "Asian–African Conference",
     "category": "society-administration",
     "regionTags": [
-      "south-asia"
+      "south-eastern-asia"
     ],
     "fameScore": 70,
     "tagline": "1955 meeting of Asian and African states in Bandung, West Java, Indonesia",
@@ -2709,7 +2733,7 @@
     "name": "Benz Patent-Motorwagen",
     "category": "transportation",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 69,
     "tagline": "vehicle widely regarded as the first automobile",
@@ -2727,7 +2751,7 @@
     "name": "Flyer I",
     "category": "transportation",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 69,
     "tagline": "heavier-than-air powered aircraft, designed and built by the Wright Brothers",
@@ -2774,7 +2798,7 @@
     "name": "Klondike Gold Rush",
     "category": "commerce-finance",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 69,
     "tagline": "C.E.1890s migration",
@@ -2822,7 +2846,9 @@
     "id": "Q2411998",
     "name": "eruption of Mount Vesuvius in 79",
     "category": "environment-geology",
-    "regionTags": [],
+    "regionTags": [
+      "southern-europe"
+    ],
     "fameScore": 68,
     "tagline": "major eruption of stratovolcano in southern Italy",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD",
@@ -2838,7 +2864,7 @@
     "name": "Emancipation reform of 1861",
     "category": "social-movements",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 68,
     "tagline": "reform passed by Tsar Alexander II of Russia which effectively abolished serfdom throughout the Russian Empire",
@@ -2854,7 +2880,7 @@
     "name": "Charité",
     "category": "medicine-health",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 67,
     "tagline": "university hospital in Berlin, Germany",
@@ -2871,7 +2897,7 @@
     "name": "Penny Black",
     "category": "media-culture",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 67,
     "tagline": "world's first adhesive postage stamp",
@@ -2902,7 +2928,7 @@
     "name": "Magellan-Elcano expedition",
     "category": "expedition",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 67,
     "tagline": "16th-century Spanish maritime expedition",
@@ -2989,7 +3015,9 @@
     "id": "Q8094772",
     "name": "1883 eruption of Krakatoa",
     "category": "environment-geology",
-    "regionTags": [],
+    "regionTags": [
+      "south-eastern-asia"
+    ],
     "fameScore": 67,
     "tagline": "catastrophic volcanic eruption",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
@@ -3025,7 +3053,7 @@
     "name": "Alhambra Decree",
     "category": "law-jurisprudence",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 67,
     "tagline": "1492 decree expelling Jews from Spain",
@@ -3146,7 +3174,7 @@
     "name": "First Transcontinental Railroad",
     "category": "infrastructure",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 65,
     "tagline": "first railroad in the United States to reach the Pacific coast from the eastern states",
@@ -3162,7 +3190,7 @@
     "name": "View from the Window at Le Gras",
     "category": "media-culture",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 65,
     "tagline": "the earliest known surviving photograph produced in the camera obscura by Joseph Nicéphore Niépce",
@@ -3213,7 +3241,7 @@
     "name": "Bretton Woods Conference",
     "category": "commerce-finance",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 65,
     "tagline": "international conference in Bretton Woods, New Hampshire, USA in July 1944",
@@ -3265,7 +3293,7 @@
     "name": "Workers Leaving the Lumière Factory",
     "category": "media-culture",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 64,
     "tagline": "1895 French short black-and-white silent documentary film directed by Auguste and Louis Lumière",
@@ -3295,7 +3323,7 @@
     "name": "Chicago Pile-1",
     "category": "energy-industry",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 64,
     "tagline": "world's first nuclear reactor to achieve criticality, part of the Manhattan Project, the Allied effort to create atomic bombs during World War II",
@@ -3311,7 +3339,9 @@
     "id": "Q705693",
     "name": "Code of Ur-Nammu",
     "category": "society-administration",
-    "regionTags": [],
+    "regionTags": [
+      "western-asia"
+    ],
     "fameScore": 64,
     "tagline": "oldest surviving law code",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Code_of_Ur-Nammu",
@@ -3326,7 +3356,7 @@
     "name": "Amsterdam Stock Exchange",
     "category": "commerce-finance",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 64,
     "tagline": "stock exchange located in Amsterdam, Netherlands",
@@ -3365,7 +3395,7 @@
     "name": "Edwin Smith Papyrus",
     "category": "medicine-health",
     "regionTags": [
-      "middle-east"
+      "northern-africa"
     ],
     "fameScore": 63,
     "tagline": "oldest Egyptian medical text",
@@ -3395,7 +3425,7 @@
     "name": "The Iron Bridge",
     "category": "landmarks",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 63,
     "tagline": "bridge that crosses the River Severn in Shropshire, England",
@@ -3412,7 +3442,7 @@
     "name": "Treasure Voyages",
     "category": "expedition",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 63,
     "tagline": "seven Ming-era maritime voyages of the treasure fleet between 1405 and 1433",
@@ -3434,7 +3464,7 @@
     "name": "Slavery Abolition Act 1833",
     "category": "social-movements",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 63,
     "tagline": "an act of the Parliament of the United Kingdom, which abolished slavery in the British Empire by way of compensated emancipation.",
@@ -3486,7 +3516,7 @@
     "name": "Obninsk Nuclear Power Plant",
     "category": "energy-industry",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 62,
     "tagline": "first in the world reactor electricity",
@@ -3503,7 +3533,7 @@
     "name": "Stockton and Darlington Railway",
     "category": "infrastructure",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 61,
     "tagline": "English railway company, 1825 to 1863",
@@ -3533,7 +3563,7 @@
     "name": "Expulsion of the Moriscos",
     "category": "society-administration",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 61,
     "tagline": "17th century expulsion of Moriscos from Spain",
@@ -3555,7 +3585,7 @@
     "name": "Liverpool and Manchester Railway",
     "category": "infrastructure",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 60,
     "tagline": "railway opened on 15 September 1830 between the Lancashire towns of Liverpool and Manchester",
@@ -3571,7 +3601,7 @@
     "name": "Dartmouth workshop",
     "category": "science-theory",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 59,
     "tagline": "1956 AI workshop",
@@ -3600,7 +3630,7 @@
     "name": "Nansen's Fram expedition (1893–1896)",
     "category": "expedition",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 59,
     "tagline": "1893–1896 attempt by Fridtjof Nansen to reach the North Pole",
@@ -3655,7 +3685,7 @@
     "name": "1953 British Mount Everest Expedition",
     "category": "expedition",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 57,
     "tagline": "first successful ascent of Mount Everest",
@@ -3731,8 +3761,8 @@
     "name": "The Portuguese discovery of the sea route to India",
     "category": "expedition",
     "regionTags": [
-      "south-asia",
-      "europe"
+      "southern-asia",
+      "southern-europe"
     ],
     "fameScore": 55,
     "tagline": "sea route to India was the first recorded trip made directly from Europe to India via the Cape of Good Hope, in the Atlantic Ocean",
@@ -3746,7 +3776,9 @@
     "id": "Q2096366",
     "name": "Victorian gold rush",
     "category": "commerce-finance",
-    "regionTags": [],
+    "regionTags": [
+      "australia-and-new-zealand"
+    ],
     "fameScore": 54,
     "tagline": "period in the history of Victoria, Australia",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Victorian_gold_rush",

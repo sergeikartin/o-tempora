@@ -10,7 +10,7 @@ import {
 } from 'react';
 import * as d3 from 'd3';
 import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
-import { DEFAULT_VIEWPORT_START, UN_REGION_TO_REGION, type ConflictsMilestonesFilterValue } from '../../shared/config';
+import { DEFAULT_VIEWPORT_START, type ConflictsMilestonesFilterValue } from '../../shared/config';
 import { m } from '../../shared/paraglide/messages.js';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { useIsMobileViewport } from '../../shared/lib/viewport';
@@ -318,10 +318,7 @@ export function TimelineCanvas({
       filterByRegion(
         filterByOccupationDomain(filterByFameScore(people, fameScoreValues.people), selectedDomains),
         selectedRegions,
-        // Person's regionTags is the finer 22-value UnRegion, not Region —
-        // translate to the shared 6-value scale at filter time (see
-        // shared/config/region.ts's UN_REGION_TO_REGION).
-        (person) => person.regionTags.map((subRegion) => UN_REGION_TO_REGION[subRegion]),
+        (person) => person.regionTags,
       ),
     [people, fameScoreValues.people, selectedDomains, selectedRegions],
   );
