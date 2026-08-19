@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 import en from './en.json';
 import ru from './ru.json';
 
@@ -7,7 +7,11 @@ import ru from './ru.json';
 // — this replaces that guarantee so a missing translation fails CI instead
 // of silently rendering blank.
 test('en and ru message catalogs have the same keys', () => {
-  const enKeys = Object.keys(en).filter((key) => key !== '$schema').sort();
-  const ruKeys = Object.keys(ru).filter((key) => key !== '$schema').sort();
+  const enKeys = Object.keys(en)
+    .filter((key) => key !== '$schema')
+    .sort();
+  const ruKeys = Object.keys(ru)
+    .filter((key) => key !== '$schema')
+    .sort();
   expect(ruKeys).toEqual(enKeys);
 });

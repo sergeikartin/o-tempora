@@ -17,7 +17,11 @@ function parseCssDurationMs(raw: string): number {
 }
 
 export function motionDurationMs(token: string): number {
-  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function' && !reducedMotionQuery) {
+  if (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    !reducedMotionQuery
+  ) {
     reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     reducedMotionQuery.addEventListener('change', invalidateDurationCache);
   }
@@ -25,7 +29,9 @@ export function motionDurationMs(token: string): number {
   const cached = durationCacheMs.get(token);
   if (cached !== undefined) return cached;
 
-  const raw = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue(token)
+    .trim();
   const ms = parseCssDurationMs(raw);
   durationCacheMs.set(token, ms);
   return ms;

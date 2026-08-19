@@ -10,8 +10,8 @@ import '@fontsource/archivo/600.css';
 import '@fontsource/archivo/700.css';
 import '@fontsource/fraunces/600.css';
 import { createRoot } from 'react-dom/client';
-import { initMonitoring } from './shared/lib/init-monitoring';
 import { App } from './app';
+import { initMonitoring } from './shared/lib/init-monitoring';
 import './app/global.css';
 
 initMonitoring();

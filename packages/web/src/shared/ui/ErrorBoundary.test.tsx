@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { test, expect, vi, afterEach } from 'vitest';
+import { afterEach, expect, test, vi } from 'vitest';
 import { ErrorBoundary } from './ErrorBoundary';
 
 function Bomb(): never {

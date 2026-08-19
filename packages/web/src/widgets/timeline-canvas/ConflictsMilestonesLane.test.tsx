@@ -1,10 +1,10 @@
 import { cleanup, render } from '@testing-library/react';
-import { test, expect, afterEach } from 'vitest';
-import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
-import { buildXScale, MILESTONE_CATEGORY_COLORS } from './options';
-import { computeRowAssignment } from './map-to-items';
+import { afterEach, expect, test } from 'vitest';
 import { CONFLICT_COLOR } from '../../shared/config';
 import type { Conflict, ConflictEvent, Milestone } from '../../shared/types';
+import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
+import { computeRowAssignment } from './map-to-items';
+import { buildXScale, MILESTONE_CATEGORY_COLORS } from './options';
 
 afterEach(cleanup);
 
@@ -67,58 +67,93 @@ test('renders a range line for a Conflict (a Period)', () => {
   const { scale } = buildXScale(2);
   const conflicts = [koreanWar];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={conflicts} milestones={[]} xScale={scale} eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={conflicts}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor}
+    />,
   );
 
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(0);
-  expect(container.querySelector('.d3-range-name')?.textContent).toBe('Korean War');
+  expect(container.querySelector('.d3-range-name')?.textContent).toBe(
+    'Korean War',
+  );
 });
 
 test('renders a point marker for a ConflictEvent (a PointInTime)', () => {
   const { scale } = buildXScale(2);
   const conflicts = [battleOfMegiddo];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={conflicts} milestones={[]} xScale={scale} eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={conflicts}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor}
+    />,
   );
 
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1);
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
-  expect(container.querySelector('.d3-point-name')?.textContent).toBe('Battle of Megiddo');
+  expect(container.querySelector('.d3-point-name')?.textContent).toBe(
+    'Battle of Megiddo',
+  );
 });
 
 test('renders a point marker for a Milestone', () => {
   const { scale } = buildXScale(2);
   const milestones = [football];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={[]} milestones={milestones} xScale={scale} eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={milestones}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor}
+    />,
   );
 
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1);
-  expect(container.querySelector('.d3-point-name')?.textContent).toBe('association football');
+  expect(container.querySelector('.d3-point-name')?.textContent).toBe(
+    'association football',
+  );
 });
 
 test('renders a range line, not a point marker, for a period-shaped Milestone', () => {
   const { scale } = buildXScale(2);
   const milestones = [blackDeath];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={[]} milestones={milestones} xScale={scale} eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={milestones}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor}
+    />,
   );
 
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(0);
-  expect(container.querySelector('.d3-range-name')?.textContent).toBe('Black Death');
+  expect(container.querySelector('.d3-range-name')?.textContent).toBe(
+    'Black Death',
+  );
 });
 
 test("a period-shaped Milestone's range line keeps its own category color and data-entity-type, unlike a Conflict range", () => {
   const { scale } = buildXScale(2);
   const milestones = [blackDeath];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={[]} milestones={milestones} xScale={scale} eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={milestones}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor}
+    />,
   );
 
   const line = container.querySelector('.d3-line');
-  expect(line?.getAttribute('stroke')).toBe(MILESTONE_CATEGORY_COLORS[blackDeath.category]);
+  expect(line?.getAttribute('stroke')).toBe(
+    MILESTONE_CATEGORY_COLORS[blackDeath.category],
+  );
   expect(line?.getAttribute('data-entity-id')).toBe('Q42005');
   expect(line?.getAttribute('data-entity-type')).toBe('milestone');
 });
@@ -126,7 +161,12 @@ test("a period-shaped Milestone's range line keeps its own category color and da
 test('renders an empty svg when both conflicts and milestones are empty', () => {
   const { scale } = buildXScale(2);
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={[]} milestones={[]} xScale={scale} eventsRowFor={computeRowAssignment([], [], []).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], [], []).eventsRowFor}
+    />,
   );
 
   expect(container.querySelectorAll('.d3-line, .d3-dot')).toHaveLength(0);
@@ -136,7 +176,12 @@ test('a Conflict range line and a ConflictEvent dot both carry data-entity-id/da
   const { scale } = buildXScale(2);
   const conflicts = [koreanWar, battleOfMegiddo];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={conflicts} milestones={[]} xScale={scale} eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={conflicts}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor}
+    />,
   );
 
   const line = container.querySelector('.d3-line');
@@ -152,7 +197,12 @@ test('a Milestone dot carries data-entity-id/data-entity-type="milestone"', () =
   const { scale } = buildXScale(2);
   const milestones = [football];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={[]} milestones={milestones} xScale={scale} eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={milestones}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor}
+    />,
   );
 
   const dot = container.querySelector('.d3-dot');
@@ -169,7 +219,9 @@ test('no longer renders a native <title> tooltip element — replaced by the cli
       conflicts={conflicts}
       milestones={milestones}
       xScale={scale}
-      eventsRowFor={computeRowAssignment([], conflicts, milestones).eventsRowFor}
+      eventsRowFor={
+        computeRowAssignment([], conflicts, milestones).eventsRowFor
+      }
     />,
   );
 
@@ -180,7 +232,12 @@ test('every Conflict marker (range or point) renders in the flat CONFLICT_COLOR,
   const { scale } = buildXScale(2);
   const conflicts = [koreanWar, battleOfMegiddo];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={conflicts} milestones={[]} xScale={scale} eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={conflicts}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor}
+    />,
   );
 
   const line = container.querySelector('.d3-line');
@@ -193,11 +250,18 @@ test('a Milestone marker keeps its own category color, distinct from CONFLICT_CO
   const { scale } = buildXScale(2);
   const milestones = [football];
   const { container } = render(
-    <ConflictsMilestonesLane conflicts={[]} milestones={milestones} xScale={scale} eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor} />,
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={milestones}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], [], milestones).eventsRowFor}
+    />,
   );
 
   const dot = container.querySelector('.d3-dot');
-  expect(dot?.getAttribute('fill')).toBe(MILESTONE_CATEGORY_COLORS[football.category]);
+  expect(dot?.getAttribute('fill')).toBe(
+    MILESTONE_CATEGORY_COLORS[football.category],
+  );
   expect(dot?.getAttribute('fill')).not.toBe(CONFLICT_COLOR);
 });
 
@@ -210,15 +274,22 @@ test('places two non-overlapping entries in the same row, two overlapping entrie
       conflicts={sameRowConflicts}
       milestones={sameRowMilestones}
       xScale={scale}
-      eventsRowFor={computeRowAssignment([], sameRowConflicts, sameRowMilestones).eventsRowFor}
+      eventsRowFor={
+        computeRowAssignment([], sameRowConflicts, sameRowMilestones)
+          .eventsRowFor
+      }
     />,
   );
-  const samePositions = Array.from(sameRow.querySelectorAll('.d3-range, .d3-point-group')).map((el) =>
-    el.getAttribute('data-row'),
-  );
+  const samePositions = Array.from(
+    sameRow.querySelectorAll('.d3-range, .d3-point-group'),
+  ).map((el) => el.getAttribute('data-row'));
   expect(new Set(samePositions).size).toBe(1);
 
-  const overlappingMilestone: Milestone = { ...football, id: 'Q-overlap', at: { year: 1951 } };
+  const overlappingMilestone: Milestone = {
+    ...football,
+    id: 'Q-overlap',
+    at: { year: 1951 },
+  };
   const overlappingConflicts = [koreanWar];
   const overlappingMilestones = [overlappingMilestone];
   const { container: differentRows } = render(
@@ -226,19 +297,31 @@ test('places two non-overlapping entries in the same row, two overlapping entrie
       conflicts={overlappingConflicts}
       milestones={overlappingMilestones}
       xScale={scale}
-      eventsRowFor={computeRowAssignment([], overlappingConflicts, overlappingMilestones).eventsRowFor}
+      eventsRowFor={
+        computeRowAssignment([], overlappingConflicts, overlappingMilestones)
+          .eventsRowFor
+      }
     />,
   );
-  const overlappingPositions = Array.from(differentRows.querySelectorAll('.d3-range, .d3-point-group')).map((el) =>
-    el.getAttribute('data-row'),
-  );
+  const overlappingPositions = Array.from(
+    differentRows.querySelectorAll('.d3-range, .d3-point-group'),
+  ).map((el) => el.getAttribute('data-row'));
   expect(new Set(overlappingPositions).size).toBe(2);
 });
 
 test('a Conflict and a Milestone compete for the same rows by fameScore — the more famous of two time-overlapping items lands in row 0', () => {
   const { scale } = buildXScale(2);
-  const famousConflict: Conflict = { ...koreanWar, id: 'Q-famous-conflict', fameScore: 999 };
-  const obscureMilestone: Milestone = { ...football, id: 'Q-obscure-milestone', at: { year: 1951 }, fameScore: 1 };
+  const famousConflict: Conflict = {
+    ...koreanWar,
+    id: 'Q-famous-conflict',
+    fameScore: 999,
+  };
+  const obscureMilestone: Milestone = {
+    ...football,
+    id: 'Q-obscure-milestone',
+    at: { year: 1951 },
+    fameScore: 1,
+  };
   const conflicts = [famousConflict];
   const milestones = [obscureMilestone];
 
@@ -247,12 +330,16 @@ test('a Conflict and a Milestone compete for the same rows by fameScore — the 
       conflicts={conflicts}
       milestones={milestones}
       xScale={scale}
-      eventsRowFor={computeRowAssignment([], conflicts, milestones).eventsRowFor}
+      eventsRowFor={
+        computeRowAssignment([], conflicts, milestones).eventsRowFor
+      }
     />,
   );
 
   const famousRange = container.querySelector('.d3-range');
-  const obscurePoint = Array.from(container.querySelectorAll('.d3-point-group')).find(
+  const obscurePoint = Array.from(
+    container.querySelectorAll('.d3-point-group'),
+  ).find(
     (el) => el.querySelector('[data-entity-id="Q-obscure-milestone"]') !== null,
   );
   expect(famousRange?.getAttribute('data-row')).toBe('0');
@@ -261,7 +348,11 @@ test('a Conflict and a Milestone compete for the same rows by fameScore — the 
 
 test("stacks two milestones in the same year onto different rows, moving each row's dot and label down together", () => {
   const { scale } = buildXScale(2);
-  const sameYear: Milestone = { ...brazil, id: 'Q999', at: { year: football.at.year } };
+  const sameYear: Milestone = {
+    ...brazil,
+    id: 'Q999',
+    at: { year: football.at.year },
+  };
   const milestones = [football, sameYear];
   const { container } = render(
     <ConflictsMilestonesLane
@@ -272,28 +363,58 @@ test("stacks two milestones in the same year onto different rows, moving each ro
     />,
   );
 
-  const dotYs = Array.from(container.querySelectorAll('.d3-dot')).map((el) => el.getAttribute('cy'));
+  const dotYs = Array.from(container.querySelectorAll('.d3-dot')).map((el) =>
+    el.getAttribute('cy'),
+  );
   expect(new Set(dotYs).size).toBe(2);
 
-  const labelYs = Array.from(container.querySelectorAll('.d3-point-name')).map((el) => el.getAttribute('y'));
+  const labelYs = Array.from(container.querySelectorAll('.d3-point-name')).map(
+    (el) => el.getAttribute('y'),
+  );
   expect(new Set(labelYs).size).toBe(2);
 });
 
 test('relative row order between a Conflict and a Milestone is preserved when a third, more-famous, overlapping item is filtered out', () => {
   const { scale } = buildXScale(2);
-  const famousConflict: Conflict = { ...koreanWar, id: 'Q-famous', fameScore: 999 };
-  const midMilestone: Milestone = { ...football, id: 'Q-mid', at: { year: 1951 }, fameScore: 500 };
-  const obscureMilestone: Milestone = { ...football, id: 'Q-obscure', at: { year: 1952 }, fameScore: 1 };
+  const famousConflict: Conflict = {
+    ...koreanWar,
+    id: 'Q-famous',
+    fameScore: 999,
+  };
+  const midMilestone: Milestone = {
+    ...football,
+    id: 'Q-mid',
+    at: { year: 1951 },
+    fameScore: 500,
+  };
+  const obscureMilestone: Milestone = {
+    ...football,
+    id: 'Q-obscure',
+    at: { year: 1952 },
+    fameScore: 1,
+  };
   // Row assignment computed against the full universe (mirrors
   // TimelineCanvas deriving it from the unfiltered dataset); only
   // mid/obscure are rendered, same as a filter hiding the famous conflict.
-  const { eventsRowFor } = computeRowAssignment([], [famousConflict], [midMilestone, obscureMilestone]);
-
-  const { container } = render(
-    <ConflictsMilestonesLane conflicts={[]} milestones={[midMilestone, obscureMilestone]} xScale={scale} eventsRowFor={eventsRowFor} />,
+  const { eventsRowFor } = computeRowAssignment(
+    [],
+    [famousConflict],
+    [midMilestone, obscureMilestone],
   );
 
-  const midRow = container.querySelector('[data-entity-id="Q-mid"]')?.closest('.d3-point-group')?.getAttribute('data-row');
+  const { container } = render(
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={[midMilestone, obscureMilestone]}
+      xScale={scale}
+      eventsRowFor={eventsRowFor}
+    />,
+  );
+
+  const midRow = container
+    .querySelector('[data-entity-id="Q-mid"]')
+    ?.closest('.d3-point-group')
+    ?.getAttribute('data-row');
   const obscureRow = container
     .querySelector('[data-entity-id="Q-obscure"]')
     ?.closest('.d3-point-group')

@@ -1,39 +1,44 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 import {
+  CONFLICT_COLOR,
+  DOMAIN_COLORS,
+  MILESTONE_CATEGORY_GROUP_COLORS,
+  PAN_MIN_DATE,
+  ZOOM_MAX_YEARS,
+  ZOOM_MIN_YEARS,
+} from '../../shared/config';
+import { today } from '../../shared/lib/dates';
+import {
+  MILESTONE_CATEGORIES,
+  MILESTONE_CATEGORY_GROUPS,
+  MILESTONE_CATEGORY_TO_GROUP,
+  OCCUPATION_DOMAINS,
+} from '../../shared/types';
+import {
+  BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
+  BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
   buildXScale,
+  CENTURY_STEP_YEARS,
+  CENTURY_TICK_PHASE_OFFSET_YEARS,
   clampPixelsPerYear,
+  DECADE_STEP_YEARS,
+  DECADE_TICK_PHASE_OFFSET_YEARS,
   defaultPixelsPerYear,
+  MILESTONE_CATEGORY_COLORS,
   MOBILE_DEFAULT_VISIBLE_YEARS,
   pinchCenterYear,
   pinchPixelsPerYear,
   pixelsPerYearBounds,
-  zoomIn,
-  zoomOut,
+  ZOOM_ANIMATION_DURATION_MULTIPLIER,
   zoomAnimationCounterScaleAttr,
   zoomAnimationCounterScaleCss,
   zoomAnimationDurationMs,
   zoomAnimationGroupTransform,
   zoomAnimationGroupTransformAttr,
   zoomAnimationGroupTransformCss,
-  ZOOM_ANIMATION_DURATION_MULTIPLIER,
-  MILESTONE_CATEGORY_COLORS,
-  BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
-  BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
-  CENTURY_STEP_YEARS,
-  CENTURY_TICK_PHASE_OFFSET_YEARS,
-  DECADE_STEP_YEARS,
-  DECADE_TICK_PHASE_OFFSET_YEARS,
+  zoomIn,
+  zoomOut,
 } from './options';
-import { today } from '../../shared/lib/dates';
-import {
-  PAN_MIN_DATE,
-  DOMAIN_COLORS,
-  MILESTONE_CATEGORY_GROUP_COLORS,
-  CONFLICT_COLOR,
-  ZOOM_MAX_YEARS,
-  ZOOM_MIN_YEARS,
-} from '../../shared/config';
-import { OCCUPATION_DOMAINS, MILESTONE_CATEGORIES, MILESTONE_CATEGORY_GROUPS, MILESTONE_CATEGORY_TO_GROUP } from '../../shared/types';
 
 test('buildXScale domains from PAN_MIN_DATE to a live today() read', () => {
   const { scale } = buildXScale(5);
@@ -54,20 +59,34 @@ function trueMod(n: number, m: number): number {
   return ((n % m) + m) % m;
 }
 
-test('DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align the CE ruler\'s own local origin (year 0) + offset to a plain multiple of the step', () => {
+test("DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align the CE ruler's own local origin (year 0) + offset to a plain multiple of the step", () => {
   // The CE ruler's local x=0 is astronomical year 0, not MIN_YEAR (YearAxis.tsx
   // splits the ruler into two independently-tiled regions) — so this offset
   // must land ticks on round numbers measured from year 0, not from MIN_YEAR.
-  expect(trueMod(0 + DECADE_TICK_PHASE_OFFSET_YEARS, DECADE_STEP_YEARS)).toBe(0);
-  expect(trueMod(0 + CENTURY_TICK_PHASE_OFFSET_YEARS, CENTURY_STEP_YEARS)).toBe(0);
+  expect(trueMod(0 + DECADE_TICK_PHASE_OFFSET_YEARS, DECADE_STEP_YEARS)).toBe(
+    0,
+  );
+  expect(trueMod(0 + CENTURY_TICK_PHASE_OFFSET_YEARS, CENTURY_STEP_YEARS)).toBe(
+    0,
+  );
 });
 
 test('BCE_DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align MIN_YEAR + offset to the round-historical BCE phase (year ≡ 1 mod step)', () => {
   // This is the phase format-year.ts's isRoundTickYear/roundTickYearsInRange
   // put BCE ticks on (e.g. -9, -19 for "10 BCE"/"20 BCE") — distinct from
   // the plain 0-phase CE grid above.
-  expect(trueMod(PAN_MIN_DATE.year + BCE_DECADE_TICK_PHASE_OFFSET_YEARS, DECADE_STEP_YEARS)).toBe(1);
-  expect(trueMod(PAN_MIN_DATE.year + BCE_CENTURY_TICK_PHASE_OFFSET_YEARS, CENTURY_STEP_YEARS)).toBe(1);
+  expect(
+    trueMod(
+      PAN_MIN_DATE.year + BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
+      DECADE_STEP_YEARS,
+    ),
+  ).toBe(1);
+  expect(
+    trueMod(
+      PAN_MIN_DATE.year + BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
+      CENTURY_STEP_YEARS,
+    ),
+  ).toBe(1);
 });
 
 test('pixelsPerYearBounds: min shows the ZOOM_MAX_YEARS bound, max shows the ZOOM_MIN_YEARS bound', () => {
@@ -94,7 +113,9 @@ test('defaultPixelsPerYear targets the default 120-year (1740-1860) viewport wid
 });
 
 test('defaultPixelsPerYear targets a given visibleYears override instead, e.g. MOBILE_DEFAULT_VISIBLE_YEARS', () => {
-  expect(defaultPixelsPerYear(1000, MOBILE_DEFAULT_VISIBLE_YEARS)).toBe(1000 / MOBILE_DEFAULT_VISIBLE_YEARS);
+  expect(defaultPixelsPerYear(1000, MOBILE_DEFAULT_VISIBLE_YEARS)).toBe(
+    1000 / MOBILE_DEFAULT_VISIBLE_YEARS,
+  );
 });
 
 test('zoomIn increases pixelsPerYear by the zoom step, clamped to the zoomed-in bound', () => {
@@ -127,7 +148,9 @@ test('pinchCenterYear resolves the year at a midpoint offset the same way zoom()
   const { scale } = buildXScale(5);
   const scrollLeft = 200;
   const midpointOffsetPx = 50;
-  expect(pinchCenterYear(scale, scrollLeft, midpointOffsetPx)).toBeCloseTo(scale.invert(scrollLeft + midpointOffsetPx));
+  expect(pinchCenterYear(scale, scrollLeft, midpointOffsetPx)).toBeCloseTo(
+    scale.invert(scrollLeft + midpointOffsetPx),
+  );
 });
 
 test('DOMAIN_COLORS has one entry per OccupationDomain, no duplicate hex values', () => {
@@ -138,13 +161,17 @@ test('DOMAIN_COLORS has one entry per OccupationDomain, no duplicate hex values'
 });
 
 test('CONFLICT_COLOR is a single flat color, distinct from every MILESTONE_CATEGORY_COLORS hue', () => {
-  const milestoneValues = MILESTONE_CATEGORIES.map((category) => MILESTONE_CATEGORY_COLORS[category]);
+  const milestoneValues = MILESTONE_CATEGORIES.map(
+    (category) => MILESTONE_CATEGORY_COLORS[category],
+  );
   expect(CONFLICT_COLOR).toBeTruthy();
   expect(milestoneValues).not.toContain(CONFLICT_COLOR);
 });
 
 test('MILESTONE_CATEGORY_COLORS has one entry per MilestoneCategory, folded into exactly 2 group hexes', () => {
-  const values = MILESTONE_CATEGORIES.map((category) => MILESTONE_CATEGORY_COLORS[category]);
+  const values = MILESTONE_CATEGORIES.map(
+    (category) => MILESTONE_CATEGORY_COLORS[category],
+  );
   expect(values).toHaveLength(MILESTONE_CATEGORIES.length);
   expect(values.every(Boolean)).toBe(true);
   // "Ledger & Ink" folds the 21-category taxonomy into 2 legible color
@@ -158,13 +185,17 @@ test('MILESTONE_CATEGORY_COLORS has one entry per MilestoneCategory, folded into
 test('MILESTONE_CATEGORY_COLORS is derived from MILESTONE_CATEGORY_TO_GROUP + MILESTONE_CATEGORY_GROUP_COLORS', () => {
   for (const category of MILESTONE_CATEGORIES) {
     const group = MILESTONE_CATEGORY_TO_GROUP[category];
-    expect(MILESTONE_CATEGORY_COLORS[category]).toBe(MILESTONE_CATEGORY_GROUP_COLORS[group]);
+    expect(MILESTONE_CATEGORY_COLORS[category]).toBe(
+      MILESTONE_CATEGORY_GROUP_COLORS[group],
+    );
   }
 });
 
 test('MILESTONE_CATEGORY_TO_GROUP covers every MilestoneCategory, resolving to exactly one of the 2 groups', () => {
   for (const category of MILESTONE_CATEGORIES) {
-    expect(MILESTONE_CATEGORY_GROUPS).toContain(MILESTONE_CATEGORY_TO_GROUP[category]);
+    expect(MILESTONE_CATEGORY_GROUPS).toContain(
+      MILESTONE_CATEGORY_TO_GROUP[category],
+    );
   }
   const coveredCategories = new Set(Object.keys(MILESTONE_CATEGORY_TO_GROUP));
   expect(coveredCategories.size).toBe(MILESTONE_CATEGORIES.length);
@@ -207,7 +238,8 @@ test('zoomAnimationGroupTransform: at currentPixelsPerYear === startPixelsPerYea
   const centerYear = 1800;
   const clientWidthPx = 1000;
   const startPixelsPerYear = 8;
-  const scrollLeftStart = (centerYear - minYear) * startPixelsPerYear - clientWidthPx / 2;
+  const scrollLeftStart =
+    (centerYear - minYear) * startPixelsPerYear - clientWidthPx / 2;
   const transform = zoomAnimationGroupTransform({
     startPixelsPerYear,
     currentPixelsPerYear: startPixelsPerYear,
@@ -229,7 +261,8 @@ test('zoomAnimationGroupTransform: tx re-centers on centerYear at viewport cente
   const clientWidthPx = 1000;
   const startPixelsPerYear = 8;
   const currentPixelsPerYear = 9.6;
-  const scrollLeftStart = (centerYear - minYear) * startPixelsPerYear - clientWidthPx / 2;
+  const scrollLeftStart =
+    (centerYear - minYear) * startPixelsPerYear - clientWidthPx / 2;
   const { tx, sx } = zoomAnimationGroupTransform({
     startPixelsPerYear,
     currentPixelsPerYear,
@@ -244,11 +277,15 @@ test('zoomAnimationGroupTransform: tx re-centers on centerYear at viewport cente
 });
 
 test('zoomAnimationGroupTransformAttr renders an SVG translate/scale (unitless, x-only) transform', () => {
-  expect(zoomAnimationGroupTransformAttr({ tx: 12, sx: 1.5 })).toBe('translate(12, 0) scale(1.5, 1)');
+  expect(zoomAnimationGroupTransformAttr({ tx: 12, sx: 1.5 })).toBe(
+    'translate(12, 0) scale(1.5, 1)',
+  );
 });
 
 test('zoomAnimationGroupTransformCss renders a CSS translateX/scaleX (px, x-only) transform', () => {
-  expect(zoomAnimationGroupTransformCss({ tx: 12, sx: 1.5 })).toBe('translateX(12px) scaleX(1.5)');
+  expect(zoomAnimationGroupTransformCss({ tx: 12, sx: 1.5 })).toBe(
+    'translateX(12px) scaleX(1.5)',
+  );
 });
 
 test('zoomAnimationCounterScaleAttr negates the group sx exactly (x-only)', () => {
@@ -265,8 +302,12 @@ test('zoomAnimationCounterScaleAttr/Css fall back to 1 rather than dividing by a
 });
 
 test('zoomAnimationDurationMs scales a base duration by ZOOM_ANIMATION_DURATION_MULTIPLIER, so it collapses to near-zero under prefers-reduced-motion automatically', () => {
-  expect(zoomAnimationDurationMs(200)).toBe(200 * ZOOM_ANIMATION_DURATION_MULTIPLIER);
-  expect(zoomAnimationDurationMs(0.01)).toBeCloseTo(0.01 * ZOOM_ANIMATION_DURATION_MULTIPLIER);
+  expect(zoomAnimationDurationMs(200)).toBe(
+    200 * ZOOM_ANIMATION_DURATION_MULTIPLIER,
+  );
+  expect(zoomAnimationDurationMs(0.01)).toBeCloseTo(
+    0.01 * ZOOM_ANIMATION_DURATION_MULTIPLIER,
+  );
 });
 
 test('the zoom-button animation targets longer than --motion-duration-base (200ms), within the spec-called-for 300-400ms range', () => {

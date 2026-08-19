@@ -1,27 +1,54 @@
+import * as d3 from 'd3';
 import {
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
   useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
-  type PointerEvent as ReactPointerEvent,
 } from 'react';
-import * as d3 from 'd3';
-import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
-import { DEFAULT_VIEWPORT_START, type ConflictsMilestonesFilterValue } from '../../shared/config';
-import { m } from '../../shared/paraglide/messages.js';
+import type {
+  FameScoreValues,
+  FilteredCounts,
+} from '../../features/filter-by-fame-score';
+import {
+  ENTITY_TYPES,
+  type SelectedEntityRef,
+} from '../../features/select-timeline-entity';
+import {
+  type ConflictsMilestonesFilterValue,
+  DEFAULT_VIEWPORT_START,
+} from '../../shared/config';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { useIsMobileViewport } from '../../shared/lib/viewport';
-import type { FameScoreValues, FilteredCounts } from '../../features/filter-by-fame-score';
-import { ENTITY_TYPES, type SelectedEntityRef } from '../../features/select-timeline-entity';
+import { m } from '../../shared/paraglide/messages.js';
+import type {
+  ConflictEntry,
+  Milestone,
+  OccupationDomain,
+  Person,
+  Region,
+} from '../../shared/types';
+import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
+import { Minimap } from './Minimap';
+import {
+  computeRowAssignment,
+  filterByFameScore,
+  filterByMilestoneCategoryGroup,
+  filterByOccupationDomain,
+  filterByRegion,
+  filterConflictsByFilterValues,
+} from './map-to-items';
 import {
   BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
   BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS,
   buildXScale,
   CENTURY_STEP_YEARS,
   CENTURY_TICK_PHASE_OFFSET_YEARS,
+  zoomIn as computeZoomIn,
+  zoomOut as computeZoomOut,
   defaultPixelsPerYear,
   FALLBACK_VIEWPORT_WIDTH_PX,
   MIN_YEAR,
@@ -31,27 +58,15 @@ import {
   QUARTER_CENTURY_STEP_YEARS,
   QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS,
   VIEWPORT_BUFFER_RATIO,
+  type ZoomAnimationHandle,
+  type ZoomAnimationTransform,
   zoomAnimationDurationMs,
   zoomAnimationGroupTransform,
   zoomAnimationGroupTransformCss,
-  zoomIn as computeZoomIn,
-  zoomOut as computeZoomOut,
-  type ZoomAnimationHandle,
-  type ZoomAnimationTransform,
 } from './options';
-import {
-  computeRowAssignment,
-  filterByFameScore,
-  filterByMilestoneCategoryGroup,
-  filterByOccupationDomain,
-  filterByRegion,
-  filterConflictsByFilterValues,
-} from './map-to-items';
 import { PeopleLane } from './PeopleLane';
-import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
-import { YearAxis } from './YearAxis';
-import { Minimap } from './Minimap';
 import styles from './TimelineCanvas.module.css';
+import { YearAxis } from './YearAxis';
 
 // Below this much total pointer movement, a mouse-drag is treated as a click
 // (e.g. a hand that isn't perfectly still on mousedown) rather than a pan —
@@ -150,7 +165,8 @@ export function TimelineCanvas({
   const zoomAnimationTargetPixelsPerYearRef = useRef<number | null>(null);
   useEffect(
     () => () => {
-      if (zoomAnimationFrameRef.current !== null) cancelAnimationFrame(zoomAnimationFrameRef.current);
+      if (zoomAnimationFrameRef.current !== null)
+        cancelAnimationFrame(zoomAnimationFrameRef.current);
     },
     [],
   );
@@ -160,7 +176,8 @@ export function TimelineCanvas({
   const panAnimationFrameRef = useRef<number | null>(null);
   useEffect(
     () => () => {
-      if (panAnimationFrameRef.current !== null) cancelAnimationFrame(panAnimationFrameRef.current);
+      if (panAnimationFrameRef.current !== null)
+        cancelAnimationFrame(panAnimationFrameRef.current);
     },
     [],
   );
@@ -179,7 +196,11 @@ export function TimelineCanvas({
   // since it's read/written every pointermove but never needs to trigger a
   // render; isDragging is state purely to toggle the grab/grabbing cursor.
   const [isDragging, setIsDragging] = useState(false);
-  const dragStartRef = useRef<{ pointerX: number; scrollLeft: number; moved: boolean } | null>(null);
+  const dragStartRef = useRef<{
+    pointerX: number;
+    scrollLeft: number;
+    moved: boolean;
+  } | null>(null);
   // Pinch-to-zoom pointer tracking: a separate axis from mouse drag-to-pan
   // above, engaging only once two concurrent non-mouse pointers are down on
   // the same .scrollContainer (mouse drag and touch pinch never both engage
@@ -188,7 +209,9 @@ export function TimelineCanvas({
   // gesture's fixed reference frame (mirrors zoom()'s own
   // domReferencePixelsPerYear/centerYear/scrollLeftStart pattern below) —
   // null while no two-finger gesture is in progress.
-  const pinchPointersRef = useRef<Map<number, { x: number; y: number }>>(new Map());
+  const pinchPointersRef = useRef<Map<number, { x: number; y: number }>>(
+    new Map(),
+  );
   const pinchStartRef = useRef<{
     distancePx: number;
     startPixelsPerYear: number;
@@ -213,7 +236,10 @@ export function TimelineCanvas({
   // needing a separate ref — same "first paint" scope the mobile default
   // zoom decision calls for (options.ts's MOBILE_DEFAULT_VISIBLE_YEARS).
   const [pixelsPerYear, setPixelsPerYear] = useState(() =>
-    defaultPixelsPerYear(0, isMobileViewport ? MOBILE_DEFAULT_VISIBLE_YEARS : undefined),
+    defaultPixelsPerYear(
+      0,
+      isMobileViewport ? MOBILE_DEFAULT_VISIBLE_YEARS : undefined,
+    ),
   );
   // Set by a zoom click to the year at the viewport's center just before the
   // change, so the effect below can re-center the scroll position on it once
@@ -221,7 +247,10 @@ export function TimelineCanvas({
   // looking at rather than snapping back to the timeline's left edge.
   const pendingCenterYearRef = useRef<number | null>(null);
 
-  const { scale, totalWidth } = useMemo(() => buildXScale(pixelsPerYear), [pixelsPerYear]);
+  const { scale, totalWidth } = useMemo(
+    () => buildXScale(pixelsPerYear),
+    [pixelsPerYear],
+  );
 
   // Tracked in state (set alongside pixelsPerYear on mount-measurement and
   // on each zoom click, both of which already read the container's real
@@ -246,7 +275,8 @@ export function TimelineCanvas({
   // always lands in the same synchronous step.
   const mirrorLaneScrollLeft = useCallback((newScrollLeft: number) => {
     if (peopleLaneRef.current) peopleLaneRef.current.scrollLeft = newScrollLeft;
-    if (conflictsMilestonesLaneRef.current) conflictsMilestonesLaneRef.current.scrollLeft = newScrollLeft;
+    if (conflictsMilestonesLaneRef.current)
+      conflictsMilestonesLaneRef.current.scrollLeft = newScrollLeft;
   }, []);
   // Stable identity (only refs in its closure) so effects that call it can
   // list it as a dependency without it forcing a re-run every render.
@@ -277,10 +307,13 @@ export function TimelineCanvas({
       if (frame) cancelAnimationFrame(frame);
     };
   }, [mirrorLaneScrollLeft]);
-  const effectiveViewportWidthPx = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
+  const effectiveViewportWidthPx =
+    viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   const viewportBufferPx = effectiveViewportWidthPx * VIEWPORT_BUFFER_RATIO;
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
-  const visibleEndYear = scale.invert(scrollLeft + effectiveViewportWidthPx + viewportBufferPx);
+  const visibleEndYear = scale.invert(
+    scrollLeft + effectiveViewportWidthPx + viewportBufferPx,
+  );
 
   // Subtle full-height 25-year zebra striping (.zebraLayer in
   // TimelineCanvas.module.css), replacing the old decade-interval gridlines
@@ -315,7 +348,10 @@ export function TimelineCanvas({
   const filteredPeople = useMemo(
     () =>
       filterByRegion(
-        filterByOccupationDomain(filterByFameScore(people, fameScoreValues.people), selectedDomains),
+        filterByOccupationDomain(
+          filterByFameScore(people, fameScoreValues.people),
+          selectedDomains,
+        ),
         selectedRegions,
         (person) => person.regionTags,
       ),
@@ -324,22 +360,44 @@ export function TimelineCanvas({
   const filteredConflicts = useMemo(
     () =>
       filterConflictsByFilterValues(
-        filterByRegion(filterByFameScore(conflicts, fameScoreValues.conflicts), selectedRegions, (entry) => entry.regionTags),
+        filterByRegion(
+          filterByFameScore(conflicts, fameScoreValues.conflicts),
+          selectedRegions,
+          (entry) => entry.regionTags,
+        ),
         selectedConflictsMilestonesValues,
       ),
-    [conflicts, fameScoreValues.conflicts, selectedRegions, selectedConflictsMilestonesValues],
+    [
+      conflicts,
+      fameScoreValues.conflicts,
+      selectedRegions,
+      selectedConflictsMilestonesValues,
+    ],
   );
   const filteredMilestones = useMemo(
     () =>
       filterByMilestoneCategoryGroup(
-        filterByRegion(filterByFameScore(milestones, fameScoreValues.milestones), selectedRegions, (milestone) => milestone.regionTags),
+        filterByRegion(
+          filterByFameScore(milestones, fameScoreValues.milestones),
+          selectedRegions,
+          (milestone) => milestone.regionTags,
+        ),
         selectedConflictsMilestonesValues,
       ),
-    [milestones, fameScoreValues.milestones, selectedRegions, selectedConflictsMilestonesValues],
+    [
+      milestones,
+      fameScoreValues.milestones,
+      selectedRegions,
+      selectedConflictsMilestonesValues,
+    ],
   );
 
   const filteredCounts = useMemo<FilteredCounts>(
-    () => ({ people: filteredPeople.length, conflicts: filteredConflicts.length, milestones: filteredMilestones.length }),
+    () => ({
+      people: filteredPeople.length,
+      conflicts: filteredConflicts.length,
+      milestones: filteredMilestones.length,
+    }),
     [filteredPeople, filteredConflicts, filteredMilestones],
   );
 
@@ -432,7 +490,9 @@ export function TimelineCanvas({
     // identical comment on its own g.people reset for why).
     if (zebraLayerRef.current) zebraLayerRef.current.style.transform = '';
     if (pendingCenterYearRef.current !== null) {
-      syncScrollLeft(scale(pendingCenterYearRef.current) - container.clientWidth / 2);
+      syncScrollLeft(
+        scale(pendingCenterYearRef.current) - container.clientWidth / 2,
+      );
       pendingCenterYearRef.current = null;
       setScrollLeft(container.scrollLeft);
       return;
@@ -457,7 +517,10 @@ export function TimelineCanvas({
   function handlePinchPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     const container = scrollRef.current;
     if (!container) return;
-    pinchPointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    pinchPointersRef.current.set(event.pointerId, {
+      x: event.clientX,
+      y: event.clientY,
+    });
     if (pinchPointersRef.current.size !== 2) return;
     cancelPanAnimation();
     const [pointA, pointB] = Array.from(pinchPointersRef.current.values());
@@ -470,7 +533,11 @@ export function TimelineCanvas({
     pinchStartRef.current = {
       distancePx,
       startPixelsPerYear: pixelsPerYear,
-      centerYear: pinchCenterYear(scale, scrollLeftStart, midpointClientX - rect.left),
+      centerYear: pinchCenterYear(
+        scale,
+        scrollLeftStart,
+        midpointClientX - rect.left,
+      ),
       scrollLeftStart,
       clientWidthPx,
     };
@@ -482,12 +549,18 @@ export function TimelineCanvas({
   // visually without a full per-mark re-render for the whole gesture.
   function handlePinchPointerMove(event: ReactPointerEvent<HTMLDivElement>) {
     if (!pinchPointersRef.current.has(event.pointerId)) return;
-    pinchPointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    pinchPointersRef.current.set(event.pointerId, {
+      x: event.clientX,
+      y: event.clientY,
+    });
     const start = pinchStartRef.current;
     if (!start || pinchPointersRef.current.size !== 2) return;
     const [pointA, pointB] = Array.from(pinchPointersRef.current.values());
     if (!pointA || !pointB) return;
-    const currentDistancePx = Math.hypot(pointA.x - pointB.x, pointA.y - pointB.y);
+    const currentDistancePx = Math.hypot(
+      pointA.x - pointB.x,
+      pointA.y - pointB.y,
+    );
     const currentPixelsPerYear = pinchPixelsPerYear(
       start.startPixelsPerYear,
       start.distancePx,
@@ -517,7 +590,8 @@ export function TimelineCanvas({
     const start = pinchStartRef.current;
     if (!start || pinchPointersRef.current.size >= 2) return;
     pinchStartRef.current = null;
-    const finalPixelsPerYear = pinchCurrentPixelsPerYearRef.current ?? start.startPixelsPerYear;
+    const finalPixelsPerYear =
+      pinchCurrentPixelsPerYearRef.current ?? start.startPixelsPerYear;
     pinchCurrentPixelsPerYearRef.current = null;
     pendingCenterYearRef.current = start.centerYear;
     setPixelsPerYear(finalPixelsPerYear);
@@ -532,7 +606,11 @@ export function TimelineCanvas({
     const container = scrollRef.current;
     if (!container) return;
     cancelPanAnimation();
-    dragStartRef.current = { pointerX: event.clientX, scrollLeft: container.scrollLeft, moved: false };
+    dragStartRef.current = {
+      pointerX: event.clientX,
+      scrollLeft: container.scrollLeft,
+      moved: false,
+    };
     // Best-effort: keeps the drag alive if the pointer leaves the container's
     // bounds mid-move. jsdom doesn't implement it at all (hence the optional
     // chaining), and even real browsers can throw NotFoundError for a
@@ -609,7 +687,10 @@ export function TimelineCanvas({
       syncScrollLeft(targetScrollLeft);
       return;
     }
-    const interpolateScrollLeft = d3.interpolateNumber(startScrollLeft, targetScrollLeft);
+    const interpolateScrollLeft = d3.interpolateNumber(
+      startScrollLeft,
+      targetScrollLeft,
+    );
     let startTimeMs: number | null = null;
 
     function tick(nowMs: number) {
@@ -653,7 +734,9 @@ export function TimelineCanvas({
       // absent, hence the optional call), so this falls back to
       // event.target there, which is exactly what a synthetic
       // fireEvent.click(mark) in tests already sets correctly.
-      const hit = document.elementFromPoint?.(event.clientX, event.clientY) ?? event.target;
+      const hit =
+        document.elementFromPoint?.(event.clientX, event.clientY) ??
+        event.target;
       if (!(hit instanceof Element)) return;
       const mark = hit.closest<SVGElement>('[data-entity-id]');
       if (!mark) return;
@@ -665,7 +748,9 @@ export function TimelineCanvas({
       // reported) rather than silently being treated as a milestone, which
       // is what App.tsx's id lookup falls through to for any unrecognized
       // entityType.
-      const entityType = ENTITY_TYPES.find((candidate) => candidate === entityTypeAttr);
+      const entityType = ENTITY_TYPES.find(
+        (candidate) => candidate === entityTypeAttr,
+      );
       if (!id || !entityType) return;
       onEntityClick({ id, entityType });
     }
@@ -684,7 +769,8 @@ export function TimelineCanvas({
     conflictsMilestonesLaneAnimRef.current?.applyZoomTransform(transform);
     yearAxisMiddleAnimRef.current?.applyZoomTransform(transform);
     if (zebraLayerRef.current) {
-      zebraLayerRef.current.style.transform = zoomAnimationGroupTransformCss(transform);
+      zebraLayerRef.current.style.transform =
+        zoomAnimationGroupTransformCss(transform);
     }
   }
 
@@ -697,7 +783,9 @@ export function TimelineCanvas({
   // at the end (see the existing useLayoutEffect below, keyed on
   // pixelsPerYear, which already implements the deferred-until-DOM-actually-
   // widens commit pattern this reuses unchanged).
-  function zoom(step: (currentPixelsPerYear: number, viewportWidthPx: number) => number) {
+  function zoom(
+    step: (currentPixelsPerYear: number, viewportWidthPx: number) => number,
+  ) {
     const container = scrollRef.current;
     if (!container) {
       setPixelsPerYear((current) => step(current, 0));
@@ -719,7 +807,8 @@ export function TimelineCanvas({
     // requirement). The *target*, though, chains off the last *requested*
     // target (or committed state, if idle), matching the old instant-zoom's
     // behavior where a rapid double-click compounds two full zoom steps.
-    const interpolateFromPixelsPerYear = zoomAnimationCurrentPixelsPerYearRef.current ?? domReferencePixelsPerYear;
+    const interpolateFromPixelsPerYear =
+      zoomAnimationCurrentPixelsPerYearRef.current ?? domReferencePixelsPerYear;
     const targetPixelsPerYear = step(
       zoomAnimationTargetPixelsPerYearRef.current ?? domReferencePixelsPerYear,
       clientWidthPx,
@@ -740,15 +829,22 @@ export function TimelineCanvas({
     // same as every other motion in the app, with no separate handling
     // needed: the tick loop below already resolves in a frame or two once
     // durationMs is that small.
-    const durationMs = zoomAnimationDurationMs(motionDurationMs('--motion-duration-base'));
-    const interpolatePixelsPerYear = d3.interpolateNumber(interpolateFromPixelsPerYear, targetPixelsPerYear);
+    const durationMs = zoomAnimationDurationMs(
+      motionDurationMs('--motion-duration-base'),
+    );
+    const interpolatePixelsPerYear = d3.interpolateNumber(
+      interpolateFromPixelsPerYear,
+      targetPixelsPerYear,
+    );
     let startTimeMs: number | null = null;
 
     function tick(nowMs: number) {
       if (startTimeMs === null) startTimeMs = nowMs;
       const elapsedMs = nowMs - startTimeMs;
       const t = durationMs <= 0 ? 1 : Math.min(1, elapsedMs / durationMs);
-      const currentPixelsPerYear = interpolatePixelsPerYear(d3.easeCubicInOut(t));
+      const currentPixelsPerYear = interpolatePixelsPerYear(
+        d3.easeCubicInOut(t),
+      );
       zoomAnimationCurrentPixelsPerYearRef.current = currentPixelsPerYear;
       applyZoomAnimationTick(
         zoomAnimationGroupTransform({
@@ -796,27 +892,48 @@ export function TimelineCanvas({
         </button>
       )}
       <div className={styles.zoomControls}>
-        <button type="button" onClick={() => zoom(computeZoomIn)} aria-label={m.zoomInAriaLabel()}>
+        <button
+          type="button"
+          onClick={() => zoom(computeZoomIn)}
+          aria-label={m.zoomInAriaLabel()}
+        >
           +
         </button>
-        <button type="button" onClick={() => zoom(computeZoomOut)} aria-label={m.zoomOutAriaLabel()}>
+        <button
+          type="button"
+          onClick={() => zoom(computeZoomOut)}
+          aria-label={m.zoomOutAriaLabel()}
+        >
           −
         </button>
       </div>
       <div
         ref={scrollRef}
-        className={isDragging ? `${styles.scrollContainer} ${styles.dragging}` : styles.scrollContainer}
+        className={
+          isDragging
+            ? `${styles.scrollContainer} ${styles.dragging}`
+            : styles.scrollContainer
+        }
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
-        <div ref={zebraLayerRef} className={styles.zebraLayer} style={{ width: totalWidth }}>
+        <div
+          ref={zebraLayerRef}
+          className={styles.zebraLayer}
+          style={{ width: totalWidth }}
+        >
           <div className={styles.zebraBand} style={bceZebraStyle} />
           <div className={styles.zebraBand} style={ceZebraStyle} />
         </div>
         <div ref={peopleLaneRef} className={styles.peopleLane}>
-          <PeopleLane ref={peopleLaneAnimRef} people={filteredPeople} xScale={scale} personRowFor={personRowFor} />
+          <PeopleLane
+            ref={peopleLaneAnimRef}
+            people={filteredPeople}
+            xScale={scale}
+            personRowFor={personRowFor}
+          />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
           <YearAxis
@@ -826,7 +943,10 @@ export function TimelineCanvas({
             visibleEndYear={visibleEndYear}
           />
         </div>
-        <div ref={conflictsMilestonesLaneRef} className={styles.conflictsMilestonesLane}>
+        <div
+          ref={conflictsMilestonesLaneRef}
+          className={styles.conflictsMilestonesLane}
+        >
           <ConflictsMilestonesLane
             ref={conflictsMilestonesLaneAnimRef}
             conflicts={filteredConflicts}

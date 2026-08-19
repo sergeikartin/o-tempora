@@ -3,10 +3,22 @@ import { m } from '../paraglide/messages.js';
 export const ZOOM_MIN_YEARS = 50;
 export const ZOOM_MAX_YEARS = 250;
 
-export const DEFAULT_VIEWPORT_START = Temporal.PlainDate.from({ year: 1740, month: 1, day: 1 });
-export const DEFAULT_VIEWPORT_END = Temporal.PlainDate.from({ year: 1860, month: 1, day: 1 });
+export const DEFAULT_VIEWPORT_START = Temporal.PlainDate.from({
+  year: 1740,
+  month: 1,
+  day: 1,
+});
+export const DEFAULT_VIEWPORT_END = Temporal.PlainDate.from({
+  year: 1860,
+  month: 1,
+  day: 1,
+});
 
-export const PAN_MIN_DATE = Temporal.PlainDate.from({ year: -801, month: 1, day: 1 });
+export const PAN_MIN_DATE = Temporal.PlainDate.from({
+  year: -801,
+  month: 1,
+  day: 1,
+});
 
 // Sidebar Fame-floor filters: a raw `fameScore` numeric floor per lane, set
 // directly by the user (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md
@@ -64,15 +76,27 @@ const DATA_DEPTH_LABELS: Record<DataDepthLevelId, string> = {
 };
 
 export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
-  { id: 'mainstream', label: DATA_DEPTH_LABELS.mainstream, values: { people: 88, conflicts: 82, milestones: 82 } },
-  { id: 'deep-cut', label: DATA_DEPTH_LABELS['deep-cut'], values: { people: 80, conflicts: 64, milestones: 55 } },
+  {
+    id: 'mainstream',
+    label: DATA_DEPTH_LABELS.mainstream,
+    values: { people: 88, conflicts: 82, milestones: 82 },
+  },
+  {
+    id: 'deep-cut',
+    label: DATA_DEPTH_LABELS['deep-cut'],
+    values: { people: 80, conflicts: 64, milestones: 55 },
+  },
 ];
 
 // Derives which level (if any) the given fame-score floor values match —
 // used only to drive the switch's highlighted state, never stored as its
 // own piece of state. Returns null ("custom") once a numeric input has
 // been hand-edited away from every preset row.
-export function matchDataDepthLevel(values: Record<FameScoreLane, number>): DataDepthLevelId | null {
-  const match = DATA_DEPTH_LEVELS.find((level) => FAME_SCORE_LANES.every((lane) => level.values[lane] === values[lane]));
+export function matchDataDepthLevel(
+  values: Record<FameScoreLane, number>,
+): DataDepthLevelId | null {
+  const match = DATA_DEPTH_LEVELS.find((level) =>
+    FAME_SCORE_LANES.every((lane) => level.values[lane] === values[lane]),
+  );
   return match ? match.id : null;
 }

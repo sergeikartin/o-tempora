@@ -1,5 +1,5 @@
-import type { Region } from '../types';
 import { m } from '../paraglide/messages.js';
+import type { Region } from '../types';
 
 // Display labels for the sidebar's Region filter pills. Picked once at
 // module load from the compiled locale's message catalog (docs/adr/0005) —

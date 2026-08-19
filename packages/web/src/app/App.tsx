@@ -1,18 +1,24 @@
 import { Suspense, use, useCallback, useMemo, useState } from 'react';
-import { m } from '../shared/paraglide/messages.js';
-import { trackEvent } from '../shared/lib/track-event';
-import { useFameScoreFilters, type FilteredCounts } from '../features/filter-by-fame-score';
+import {
+  type FilteredCounts,
+  useFameScoreFilters,
+} from '../features/filter-by-fame-score';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
 import { useRegionFilter } from '../features/filter-by-region';
 import { useConflictsMilestonesFilter } from '../features/filter-conflicts-milestones';
-import { useSelectedEntity, type SelectedEntityRef } from '../features/select-timeline-entity';
-import { TimelineCanvas } from '../widgets/timeline-canvas';
-import { Sidebar } from '../widgets/sidebar';
-import { DetailPanel, type DetailPanelEntity } from '../widgets/detail-panel';
-import { AboutPanel } from '../widgets/about-panel';
+import {
+  type SelectedEntityRef,
+  useSelectedEntity,
+} from '../features/select-timeline-entity';
+import { trackEvent } from '../shared/lib/track-event';
+import { m } from '../shared/paraglide/messages.js';
 import { ErrorBoundary } from '../shared/ui';
-import { localeDatasetsPromise } from './locale-datasets';
+import { AboutPanel } from '../widgets/about-panel';
+import { DetailPanel, type DetailPanelEntity } from '../widgets/detail-panel';
+import { Sidebar } from '../widgets/sidebar';
+import { TimelineCanvas } from '../widgets/timeline-canvas';
 import styles from './App.module.css';
+import { localeDatasetsPromise } from './locale-datasets';
 
 export function App() {
   return (
@@ -26,13 +32,24 @@ export function App() {
 }
 
 function AppContent() {
-  const { people: peopleData, conflicts: conflictsData, milestones: milestonesData } = use(localeDatasetsPromise);
-  const { values: fameScoreValues, setValue: setFameScoreValue } = useFameScoreFilters();
+  const {
+    people: peopleData,
+    conflicts: conflictsData,
+    milestones: milestonesData,
+  } = use(localeDatasetsPromise);
+  const { values: fameScoreValues, setValue: setFameScoreValue } =
+    useFameScoreFilters();
   const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
   const { selectedRegions, toggleRegion } = useRegionFilter();
-  const { selectedValues: selectedConflictsMilestonesValues, toggleValue: toggleConflictsMilestonesValue } =
-    useConflictsMilestonesFilter();
-  const { selected: selectedRef, select: selectEntity, clear: closeDetailPanel } = useSelectedEntity();
+  const {
+    selectedValues: selectedConflictsMilestonesValues,
+    toggleValue: toggleConflictsMilestonesValue,
+  } = useConflictsMilestonesFilter();
+  const {
+    selected: selectedRef,
+    select: selectEntity,
+    clear: closeDetailPanel,
+  } = useSelectedEntity();
   const [filteredCounts, setFilteredCounts] = useState<FilteredCounts>();
   // Mobile-only drawer state for Sidebar (App.module.css/Sidebar.module.css
   // gate its visual effect to narrow viewports, but the open/close state
@@ -61,14 +78,20 @@ function AppContent() {
   const selectedEntity: DetailPanelEntity | null = useMemo(() => {
     if (!selectedRef) return null;
     if (selectedRef.entityType === 'person') {
-      const person = peopleData.find((candidate) => candidate.id === selectedRef.id);
+      const person = peopleData.find(
+        (candidate) => candidate.id === selectedRef.id,
+      );
       return person ? { entityType: 'person', entity: person } : null;
     }
     if (selectedRef.entityType === 'conflict') {
-      const entry = conflictsData.find((candidate) => candidate.id === selectedRef.id);
+      const entry = conflictsData.find(
+        (candidate) => candidate.id === selectedRef.id,
+      );
       return entry ? { entityType: 'conflict', entity: entry } : null;
     }
-    const milestone = milestonesData.find((candidate) => candidate.id === selectedRef.id);
+    const milestone = milestonesData.find(
+      (candidate) => candidate.id === selectedRef.id,
+    );
     return milestone ? { entityType: 'milestone', entity: milestone } : null;
   }, [selectedRef, peopleData, conflictsData, milestonesData]);
 
@@ -87,14 +110,22 @@ function AppContent() {
         isOpen={isFilterDrawerOpen}
         onClose={() => setIsFilterDrawerOpen(false)}
         isCollapsed={isSidebarCollapsed}
-        onToggleCollapse={() => setIsSidebarCollapsed((collapsed) => !collapsed)}
+        onToggleCollapse={() =>
+          setIsSidebarCollapsed((collapsed) => !collapsed)
+        }
         onOpenAbout={() => {
           setIsAboutOpen(true);
           trackEvent('about_open');
         }}
       />
       <main className={styles.main}>
-        <ErrorBoundary fallback={<div className={styles.timelineError}>{m.timelineErrorFallback()}</div>}>
+        <ErrorBoundary
+          fallback={
+            <div className={styles.timelineError}>
+              {m.timelineErrorFallback()}
+            </div>
+          }
+        >
           <TimelineCanvas
             people={peopleData}
             conflicts={conflictsData}
@@ -102,7 +133,9 @@ function AppContent() {
             fameScoreValues={fameScoreValues}
             selectedDomains={selectedDomains}
             selectedRegions={selectedRegions}
-            selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
+            selectedConflictsMilestonesValues={
+              selectedConflictsMilestonesValues
+            }
             onEntityClick={handleEntityClick}
             onFilteredCountsChange={setFilteredCounts}
             isFilterDrawerOpen={isFilterDrawerOpen}

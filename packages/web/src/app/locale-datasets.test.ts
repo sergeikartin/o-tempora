@@ -1,6 +1,6 @@
-import { test, expect, vi } from 'vitest';
-import { validateEntries } from './locale-datasets';
+import { expect, test, vi } from 'vitest';
 import type { Person } from '../shared/types';
+import { validateEntries } from './locale-datasets';
 
 vi.mock('../shared/lib/log-error', () => ({ logError: vi.fn() }));
 

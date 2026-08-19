@@ -1,10 +1,16 @@
 import { act, cleanup, fireEvent, render } from '@testing-library/react';
-import { test, expect, afterEach, vi } from 'vitest';
-import { TimelineCanvas } from './TimelineCanvas';
+import { afterEach, expect, test, vi } from 'vitest';
+import type { ConflictsMilestonesFilterValue } from '../../shared/config';
+import type {
+  ConflictEntry,
+  Milestone,
+  OccupationDomain,
+  Person,
+  Region,
+} from '../../shared/types';
 import * as mapToItems from './map-to-items';
 import { zoomIn } from './options';
-import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
-import type { ConflictsMilestonesFilterValue } from '../../shared/config';
+import { TimelineCanvas } from './TimelineCanvas';
 
 afterEach(cleanup);
 
@@ -68,7 +74,8 @@ const fixtureMilestones: Milestone[] = [
 const defaultFameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
 const defaultSelectedDomains: OccupationDomain[] = [];
 const defaultSelectedRegions: Region[] = [];
-const defaultSelectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[] = [];
+const defaultSelectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[] =
+  [];
 const noopEntityClick = () => {};
 
 test('renders both lanes, each populated from its own dataset', () => {
@@ -80,7 +87,9 @@ test('renders both lanes, each populated from its own dataset', () => {
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -96,7 +105,10 @@ test('renders both lanes, each populated from its own dataset', () => {
     (svg) => svg.getAttribute('data-testid') !== 'minimap-ridge',
   );
   expect(svgs).toHaveLength(2);
-  const [peopleSvg, conflictsMilestonesSvg] = svgs as [SVGSVGElement, SVGSVGElement];
+  const [peopleSvg, conflictsMilestonesSvg] = svgs as [
+    SVGSVGElement,
+    SVGSVGElement,
+  ];
   expect(peopleSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Aristotle
   expect(conflictsMilestonesSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1); // association football
@@ -114,7 +126,9 @@ test('computes Row Depth once and threads the same resolvers to every consumer',
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -129,7 +143,11 @@ test('computes Row Depth once and threads the same resolvers to every consumer',
   // which is exactly what let the Minimap's reported Row Depth drift out of
   // sync with the lanes before this was fixed (see ADR 0007's addendum).
   expect(computeRowAssignment).toHaveBeenCalledTimes(1);
-  expect(computeRowAssignment).toHaveBeenCalledWith(fixturePeople, fixtureConflicts, fixtureMilestones);
+  expect(computeRowAssignment).toHaveBeenCalledWith(
+    fixturePeople,
+    fixtureConflicts,
+    fixtureMilestones,
+  );
 
   computeRowAssignment.mockRestore();
 });
@@ -143,7 +161,9 @@ test('the two lane sections and every year axis share the same rendered width', 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -159,8 +179,15 @@ test('the two lane sections and every year axis share the same rendered width', 
   );
   expect(svgs).toHaveLength(2);
   const svgWidthsPx = svgs.map((svg) => Number(svg.getAttribute('width')));
-  const axisWidthsPx = Array.from(container.querySelectorAll('.year-axis-ruler')).map((ruler) =>
-    parseFloat(((ruler.parentElement as HTMLElement)?.style.width ?? '').replace('px', '')),
+  const axisWidthsPx = Array.from(
+    container.querySelectorAll('.year-axis-ruler'),
+  ).map((ruler) =>
+    parseFloat(
+      ((ruler.parentElement as HTMLElement)?.style.width ?? '').replace(
+        'px',
+        '',
+      ),
+    ),
   );
   expect(new Set([...svgWidthsPx, ...axisWidthsPx]).size).toBe(1);
 });
@@ -179,14 +206,18 @@ test('the full-height 25-year zebra striping is split into a BCE and a CE region
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
 
-  const zebraBands = Array.from(container.querySelectorAll('[class*="zebraBand"]'));
+  const zebraBands = Array.from(
+    container.querySelectorAll('[class*="zebraBand"]'),
+  );
   expect(zebraBands).toHaveLength(2);
   const [bceBand, ceBand] = zebraBands as [HTMLElement, HTMLElement];
   expect(bceBand.style.getPropertyValue('--zebra-offset-px')).not.toBe(
@@ -194,9 +225,13 @@ test('the full-height 25-year zebra striping is split into a BCE and a CE region
   );
   // Widths sum to the full scrollable width (real PAN_MIN_DATE-to-today
   // domain, always spanning both eras).
-  const zebraLayer = container.querySelector('[class*="zebraLayer"]') as HTMLElement;
+  const zebraLayer = container.querySelector(
+    '[class*="zebraLayer"]',
+  ) as HTMLElement;
   const totalWidth = parseFloat(zebraLayer.style.width);
-  expect(parseFloat(bceBand.style.width) + parseFloat(ceBand.style.width)).toBeCloseTo(totalWidth);
+  expect(
+    parseFloat(bceBand.style.width) + parseFloat(ceBand.style.width),
+  ).toBeCloseTo(totalWidth);
 });
 
 test('renders a single year axis, between People and Conflicts+Milestones', () => {
@@ -208,7 +243,9 @@ test('renders a single year axis, between People and Conflicts+Milestones', () =
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -227,21 +264,41 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
-  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', {
+    value: 100,
+    writable: true,
+  });
 
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'mouse',
+    clientX: 460,
+    pointerId: 1,
+  });
   expect(scrollContainer.scrollLeft).toBe(140); // dragged left by 40px -> content pans right
 
   fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 300, pointerId: 1 });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'mouse',
+    clientX: 300,
+    pointerId: 1,
+  });
   expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
 });
 
@@ -254,13 +311,17 @@ test('dragging the Minimap viewport rect scrolls the container, proportional to 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   const track = getByTestId('minimap-track');
   const rect = getByTestId('minimap-viewport-rect');
   // Minimap reads scrollLeft from React state (a prop), not a live
@@ -272,17 +333,32 @@ test('dragging the Minimap viewport rect scrolls the container, proportional to 
   // jsdom never lays anything out, so clientWidth is 0 by default — pinned
   // here the same way the "shared rendered width" test above reads
   // .yearAxis's inline style rather than trusting jsdom layout.
-  Object.defineProperty(track, 'clientWidth', { value: 100, configurable: true });
+  Object.defineProperty(track, 'clientWidth', {
+    value: 100,
+    configurable: true,
+  });
   const totalWidth = Number(
-    ((container.querySelector('[class*="yearAxis"]') as HTMLElement | null)?.style.width ?? '').replace('px', ''),
+    (
+      (container.querySelector('[class*="yearAxis"]') as HTMLElement | null)
+        ?.style.width ?? ''
+    ).replace('px', ''),
   );
 
-  fireEvent.pointerDown(rect, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
+  fireEvent.pointerDown(rect, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
   // Dragged left (toward the timeline's start), away from the mounted
   // viewport's position near the domain's high end — keeps the expected
   // value comfortably inside [0, maxScrollLeft] with no clamping to reason
   // about.
-  fireEvent.pointerMove(rect, { pointerType: 'mouse', clientX: 490, pointerId: 1 });
+  fireEvent.pointerMove(rect, {
+    pointerType: 'mouse',
+    clientX: 490,
+    pointerId: 1,
+  });
 
   // Mirrors Minimap's handleRectPointerMove formula (a hand-derived
   // expected value, same style as the plain content-drag test above): a
@@ -292,11 +368,18 @@ test('dragging the Minimap viewport rect scrolls the container, proportional to 
   const rectWidthPx = Math.max(24, (100 / totalWidth) * 100);
   const maxScrollLeft = totalWidth - 100;
   const scrollLeftPerRectPx = maxScrollLeft / (100 - rectWidthPx);
-  const expectedScrollLeft = Math.min(Math.max(startScrollLeft - 10 * scrollLeftPerRectPx, 0), maxScrollLeft);
+  const expectedScrollLeft = Math.min(
+    Math.max(startScrollLeft - 10 * scrollLeftPerRectPx, 0),
+    maxScrollLeft,
+  );
   expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft);
 
   fireEvent.pointerUp(rect, { pointerType: 'mouse', pointerId: 1 });
-  fireEvent.pointerMove(rect, { pointerType: 'mouse', clientX: 300, pointerId: 1 });
+  fireEvent.pointerMove(rect, {
+    pointerType: 'mouse',
+    clientX: 300,
+    pointerId: 1,
+  });
   expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft); // no longer dragging
 });
 
@@ -309,17 +392,33 @@ test('a mousedown on the scroll container content still pans it — the custom s
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
-  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', {
+    value: 100,
+    writable: true,
+  });
 
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'mouse',
+    clientX: 460,
+    pointerId: 1,
+  });
   expect(scrollContainer.scrollLeft).toBe(140);
 });
 
@@ -332,26 +431,57 @@ test('clicking the Minimap track outside the viewport rect jumps the viewport to
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   const track = getByTestId('minimap-track');
-  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 0, writable: true });
-  Object.defineProperty(track, 'clientWidth', { value: 200, configurable: true });
+  Object.defineProperty(scrollContainer, 'scrollLeft', {
+    value: 0,
+    writable: true,
+  });
+  Object.defineProperty(track, 'clientWidth', {
+    value: 200,
+    configurable: true,
+  });
   track.getBoundingClientRect = () =>
-    ({ left: 0, top: 0, width: 200, height: 14, right: 200, bottom: 14, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
+    ({
+      left: 0,
+      top: 0,
+      width: 200,
+      height: 14,
+      right: 200,
+      bottom: 14,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    }) as DOMRect;
   const totalWidth = Number(
-    ((container.querySelector('[class*="yearAxis"]') as HTMLElement | null)?.style.width ?? '').replace('px', ''),
+    (
+      (container.querySelector('[class*="yearAxis"]') as HTMLElement | null)
+        ?.style.width ?? ''
+    ).replace('px', ''),
   );
 
-  fireEvent.pointerDown(track, { pointerType: 'mouse', button: 0, clientX: 100, pointerId: 2 });
+  fireEvent.pointerDown(track, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 100,
+    pointerId: 2,
+  });
 
   const maxScrollLeft = totalWidth - 200;
-  const expectedScrollLeft = Math.min(Math.max((100 / 200) * totalWidth - 100, 0), maxScrollLeft);
+  const expectedScrollLeft = Math.min(
+    Math.max((100 / 200) * totalWidth - 100, 0),
+    maxScrollLeft,
+  );
   expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft);
 });
 
@@ -365,17 +495,30 @@ test('releasing a drag suppresses the click event that follows it', () => {
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={onEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   const line = container.querySelector('.d3-line') as SVGLineElement;
 
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'mouse',
+    clientX: 460,
+    pointerId: 1,
+  });
   fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
   // Browsers still fire a native click at the release point after a real
   // drag, regardless of how far the pointer moved in between — simulated
@@ -396,21 +539,37 @@ test('a click preceded only by sub-threshold pointer jitter still registers', ()
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={onEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   const line = container.querySelector('.d3-line') as SVGLineElement;
 
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 502, pointerId: 1 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'mouse',
+    clientX: 502,
+    pointerId: 1,
+  });
   fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
   fireEvent.click(line);
 
-  expect(onEntityClick).toHaveBeenCalledWith({ id: 'Q868', entityType: 'person' });
+  expect(onEntityClick).toHaveBeenCalledWith({
+    id: 'Q868',
+    entityType: 'person',
+  });
 });
 
 test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll already handles them', () => {
@@ -422,17 +581,32 @@ test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll alrea
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
-  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', {
+    value: 100,
+    writable: true,
+  });
 
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', clientX: 500, pointerId: 1 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', clientX: 460, pointerId: 1 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'touch',
+    clientX: 500,
+    pointerId: 1,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'touch',
+    clientX: 460,
+    pointerId: 1,
+  });
   expect(scrollContainer.scrollLeft).toBe(100);
 });
 
@@ -445,17 +619,31 @@ test('a single touch pointer does not start a pinch — zoom only engages once a
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   const initialWidth = personLineWidth(container);
 
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 400, clientY: 300 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 300, clientY: 300 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 1,
+    clientX: 400,
+    clientY: 300,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 1,
+    clientX: 300,
+    clientY: 300,
+  });
   fireEvent.pointerUp(scrollContainer, { pointerType: 'touch', pointerId: 1 });
 
   expect(personLineWidth(container)).toBe(initialWidth);
@@ -470,18 +658,34 @@ test('a mouse pointer never starts a pinch, even alongside a stray touch pointer
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   const initialWidth = personLineWidth(container);
-  Object.defineProperty(scrollContainer, 'scrollLeft', { value: 100, writable: true });
+  Object.defineProperty(scrollContainer, 'scrollLeft', {
+    value: 100,
+    writable: true,
+  });
 
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'mouse', button: 0, clientX: 500, pointerId: 1 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'mouse', clientX: 460, pointerId: 1 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'mouse',
+    clientX: 460,
+    pointerId: 1,
+  });
   fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
 
   expect(scrollContainer.scrollLeft).toBe(140); // drag-to-pan, unaffected by pinch tracking
@@ -497,21 +701,45 @@ test('a two-finger touch pinch scales pixelsPerYear by the live distance ratio, 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   const initialWidth = personLineWidth(container);
 
   // Two touches start 100px apart, spread to 200px apart (a 2x distance
   // ratio) — mirrors pinching outward to zoom in.
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 400, clientY: 300 });
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 2, clientX: 500, clientY: 300 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 350, clientY: 300 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 2, clientX: 550, clientY: 300 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 1,
+    clientX: 400,
+    clientY: 300,
+  });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 2,
+    clientX: 500,
+    clientY: 300,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 1,
+    clientX: 350,
+    clientY: 300,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 2,
+    clientX: 550,
+    clientY: 300,
+  });
   // The first finger lifting is gesture end — commits immediately (no
   // rAF-driven animation, unlike button-zoom), so no wait is needed.
   fireEvent.pointerUp(scrollContainer, { pointerType: 'touch', pointerId: 1 });
@@ -533,28 +761,54 @@ test('a two-finger touch pinch pinching inward (fingers moving closer) zooms out
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   const initialWidth = personLineWidth(container);
 
   // Two touches start 200px apart, pinch together to 100px apart (a 0.5x
   // distance ratio).
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 350, clientY: 300 });
-  fireEvent.pointerDown(scrollContainer, { pointerType: 'touch', pointerId: 2, clientX: 550, clientY: 300 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 1, clientX: 400, clientY: 300 });
-  fireEvent.pointerMove(scrollContainer, { pointerType: 'touch', pointerId: 2, clientX: 500, clientY: 300 });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 1,
+    clientX: 350,
+    clientY: 300,
+  });
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 2,
+    clientX: 550,
+    clientY: 300,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 1,
+    clientX: 400,
+    clientY: 300,
+  });
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'touch',
+    pointerId: 2,
+    clientX: 500,
+    clientY: 300,
+  });
   fireEvent.pointerUp(scrollContainer, { pointerType: 'touch', pointerId: 2 });
 
   expect(personLineWidth(container)).toBeCloseTo(initialWidth * 0.5);
 });
 
 function personLineWidth(container: HTMLElement): number {
-  const [peopleSvg] = Array.from(container.querySelectorAll('svg')) as [SVGSVGElement];
+  const [peopleSvg] = Array.from(container.querySelectorAll('svg')) as [
+    SVGSVGElement,
+  ];
   const line = peopleSvg.querySelector('.d3-line');
   return Number(line?.getAttribute('x2')) - Number(line?.getAttribute('x1'));
 }
@@ -588,7 +842,9 @@ test('the zoom-in button animates rendered lines wider, landing exactly on the t
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -618,7 +874,9 @@ test('a second zoom-in click fired while the first animation is still in flight 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -636,7 +894,9 @@ test('a second zoom-in click fired while the first animation is still in flight 
   await waitOutZoomAnimation();
 
   const finalWidth = personLineWidth(container);
-  expect(finalWidth).toBeCloseTo(initialWidth * ZOOM_STEP_RATIO * ZOOM_STEP_RATIO);
+  expect(finalWidth).toBeCloseTo(
+    initialWidth * ZOOM_STEP_RATIO * ZOOM_STEP_RATIO,
+  );
 });
 
 test('a zoom animation moves People, Conflicts+Milestones marks, and the Year Axis ticks together, all landing on the same target pixelsPerYear', async () => {
@@ -648,7 +908,9 @@ test('a zoom animation moves People, Conflicts+Milestones marks, and the Year Ax
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -662,9 +924,15 @@ test('a zoom animation moves People, Conflicts+Milestones marks, and the Year Ax
   fireEvent.click(getByLabelText('Zoom in'));
   await waitOutZoomAnimation();
 
-  expect(personLineWidth(container)).toBeCloseTo(initialPersonWidth * ZOOM_STEP_RATIO);
-  expect(conflictLineWidth(container)).toBeCloseTo(initialConflictWidth * ZOOM_STEP_RATIO);
-  expect(yearAxisDecadeTickPx(container)).toBeCloseTo(initialTickPx * ZOOM_STEP_RATIO);
+  expect(personLineWidth(container)).toBeCloseTo(
+    initialPersonWidth * ZOOM_STEP_RATIO,
+  );
+  expect(conflictLineWidth(container)).toBeCloseTo(
+    initialConflictWidth * ZOOM_STEP_RATIO,
+  );
+  expect(yearAxisDecadeTickPx(container)).toBeCloseTo(
+    initialTickPx * ZOOM_STEP_RATIO,
+  );
 });
 
 test("Minimap's viewport rect reflects the new range once a zoom animation settles, not a stale pre-zoom one, even after an interrupted (double-clicked) animation", async () => {
@@ -676,7 +944,9 @@ test("Minimap's viewport rect reflects the new range once a zoom animation settl
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -714,7 +984,9 @@ test('zooming does not change which entities are rendered — density is gated b
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -746,7 +1018,9 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -762,7 +1036,9 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
       fameScoreValues={{ ...defaultFameScoreValues, people: 75 }}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -780,7 +1056,9 @@ test('a person outside an active Occupation Domain filter is excluded; clearing 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={['science-technology']}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -796,7 +1074,9 @@ test('a person outside an active Occupation Domain filter is excluded; clearing 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -814,7 +1094,9 @@ test('an item outside an active Region filter is excluded; clearing the filter r
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={['northern-africa']}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -830,7 +1112,9 @@ test('an item outside an active Region filter is excluded; clearing the filter r
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={['eastern-asia']}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -848,7 +1132,9 @@ test('an item with no region tags is excluded once a Region filter is active', (
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={['western-europe']}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -868,14 +1154,21 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const peopleLane = container.querySelector('[class*="peopleLane"]') as HTMLElement;
-  Object.defineProperty(peopleLane, 'scrollHeight', { value: 500, configurable: true });
+  const peopleLane = container.querySelector(
+    '[class*="peopleLane"]',
+  ) as HTMLElement;
+  Object.defineProperty(peopleLane, 'scrollHeight', {
+    value: 500,
+    configurable: true,
+  });
   Object.defineProperty(peopleLane, 'scrollTop', { value: 0, writable: true });
 
   // Changing the People fame-score floor gives filteredPeople a new
@@ -889,7 +1182,9 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
       fameScoreValues={{ ...defaultFameScoreValues, people: 80 }}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -899,7 +1194,7 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
   expect(peopleLane.scrollTop).toBe(500);
 });
 
-test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axis-adjacent edge) whenever its visible item set changes", () => {
+test('the Conflicts+Milestones lane defaults its vertical scroll to the top (axis-adjacent edge) whenever its visible item set changes', () => {
   const { container, rerender } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -908,14 +1203,21 @@ test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const conflictsMilestonesLane = container.querySelector('[class*="conflictsMilestonesLane"]') as HTMLElement;
-  Object.defineProperty(conflictsMilestonesLane, 'scrollTop', { value: 300, writable: true });
+  const conflictsMilestonesLane = container.querySelector(
+    '[class*="conflictsMilestonesLane"]',
+  ) as HTMLElement;
+  Object.defineProperty(conflictsMilestonesLane, 'scrollTop', {
+    value: 300,
+    writable: true,
+  });
 
   rerender(
     <TimelineCanvas
@@ -925,7 +1227,9 @@ test("the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
       fameScoreValues={{ ...defaultFameScoreValues, conflicts: 90 }}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -945,7 +1249,9 @@ test('clicking a mark reports its entity id/type via onEntityClick, resolved thr
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={onEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
@@ -955,7 +1261,10 @@ test('clicking a mark reports its entity id/type via onEntityClick, resolved thr
   const line = container.querySelector('.d3-line') as SVGLineElement;
   fireEvent.click(line);
 
-  expect(onEntityClick).toHaveBeenCalledWith({ id: 'Q868', entityType: 'person' });
+  expect(onEntityClick).toHaveBeenCalledWith({
+    id: 'Q868',
+    entityType: 'person',
+  });
 });
 
 test('clicking empty canvas space (no data-entity-id ancestor) does not call onEntityClick', () => {
@@ -968,14 +1277,18 @@ test('clicking empty canvas space (no data-entity-id ancestor) does not call onE
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={onEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
 
-  const scrollContainer = container.querySelector('[class*="scrollContainer"]') as HTMLElement;
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
   fireEvent.click(scrollContainer);
 
   expect(onEntityClick).not.toHaveBeenCalled();
@@ -991,7 +1304,9 @@ test('a mark with an unrecognized data-entity-type is ignored rather than report
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
       selectedRegions={defaultSelectedRegions}
-      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      selectedConflictsMilestonesValues={
+        defaultSelectedConflictsMilestonesValues
+      }
       onEntityClick={onEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}

@@ -1,5 +1,5 @@
-import type { OccupationDomain } from '../types';
 import { m } from '../paraglide/messages.js';
+import type { OccupationDomain } from '../types';
 
 // Mirrors design-tokens.md's Occupation Domain Palette, sourced directly
 // from pantheon.world's own CSS custom properties (--colorInstitutions etc.)

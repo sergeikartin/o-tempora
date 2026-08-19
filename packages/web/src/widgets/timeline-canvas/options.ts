@@ -1,14 +1,17 @@
 import * as d3 from 'd3';
+import {
+  DEFAULT_VIEWPORT_END,
+  DEFAULT_VIEWPORT_START,
+  MILESTONE_CATEGORY_GROUP_COLORS,
+  PAN_MIN_DATE,
+  ZOOM_MAX_YEARS,
+  ZOOM_MIN_YEARS,
+} from '../../shared/config';
 import { today } from '../../shared/lib/dates';
 import {
-  ZOOM_MIN_YEARS,
-  ZOOM_MAX_YEARS,
-  DEFAULT_VIEWPORT_START,
-  DEFAULT_VIEWPORT_END,
-  PAN_MIN_DATE,
-  MILESTONE_CATEGORY_GROUP_COLORS,
-} from '../../shared/config';
-import { MILESTONE_CATEGORY_TO_GROUP, type MilestoneCategory } from '../../shared/types';
+  MILESTONE_CATEGORY_TO_GROUP,
+  type MilestoneCategory,
+} from '../../shared/types';
 
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
@@ -122,7 +125,8 @@ export const MILESTONES_LABEL_MAX_WIDTH_PX = 72;
 const PERSON_LABEL_GAP = 2;
 // Vertical budget per row: label height + gap + lifespan line + breathing
 // room to the next row.
-export const PERSON_ROW_PITCH = LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT + ROW_GAP;
+export const PERSON_ROW_PITCH =
+  LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT + ROW_GAP;
 
 // assignRows hands back row 0 as the most-famous-heavy row (see its own
 // comment), and the People lane wants that row closest to the bottom of its
@@ -137,7 +141,12 @@ export function personLabelYForRow(row: number, rowCount: number): number {
 
 /** y (vertical center) of a row's lifespan line. */
 export function personLineCenterYForRow(row: number, rowCount: number): number {
-  return personLabelYForRow(row, rowCount) + LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT / 2;
+  return (
+    personLabelYForRow(row, rowCount) +
+    LABEL_TEXT_HEIGHT_PX +
+    PERSON_LABEL_GAP +
+    PERIOD_LINE_HEIGHT / 2
+  );
 }
 
 /** Total SVG height needed for the People lane with this many stacked rows. */
@@ -167,12 +176,13 @@ export function personLaneHeight(rowCount: number): number {
 // sidebar's Milestone Category Group filter can never silently drift apart
 // — public shape and values are unchanged (still one hex per
 // MilestoneCategory, still exactly 2 distinct hexes).
-export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> = Object.fromEntries(
-  Object.entries(MILESTONE_CATEGORY_TO_GROUP).map(([category, group]) => [
-    category,
-    MILESTONE_CATEGORY_GROUP_COLORS[group],
-  ]),
-) as Record<MilestoneCategory, string>;
+export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> =
+  Object.fromEntries(
+    Object.entries(MILESTONE_CATEGORY_TO_GROUP).map(([category, group]) => [
+      category,
+      MILESTONE_CATEGORY_GROUP_COLORS[group],
+    ]),
+  ) as Record<MilestoneCategory, string>;
 
 export const MIN_YEAR = PAN_MIN_DATE.year;
 
@@ -185,30 +195,65 @@ export const MIN_YEAR = PAN_MIN_DATE.year;
 // stepYears, e.g. -9/-19 for "10 BCE"/"20 BCE") also sit on a different
 // phase than CE ticks and the era-boundary tick at year 0 (ordinary ≡ 0 mod
 // stepYears, unchanged) — see docs/adr/0001-astronomical-year-numbering.md.
-function phaseOffsetYears(stepYears: number, anchorRemainder: number, originYear: number): number {
+function phaseOffsetYears(
+  stepYears: number,
+  anchorRemainder: number,
+  originYear: number,
+): number {
   const raw = (anchorRemainder - originYear) % stepYears;
   return ((raw % stepYears) + stepYears) % stepYears;
 }
-export const DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 0, 0);
-export const CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 0, 0);
-export const BCE_DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(DECADE_STEP_YEARS, 1, MIN_YEAR);
-export const BCE_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(CENTURY_STEP_YEARS, 1, MIN_YEAR);
+export const DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
+  DECADE_STEP_YEARS,
+  0,
+  0,
+);
+export const CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
+  CENTURY_STEP_YEARS,
+  0,
+  0,
+);
+export const BCE_DECADE_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
+  DECADE_STEP_YEARS,
+  1,
+  MIN_YEAR,
+);
+export const BCE_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
+  CENTURY_STEP_YEARS,
+  1,
+  MIN_YEAR,
+);
 // Same round-year phase alignment, at the lane background's 25-year zebra-
 // band interval (TimelineCanvas.tsx's .zebraLayer) — replaces the old
 // decade-interval gridlines (`/grill-with-docs`).
-export const QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(QUARTER_CENTURY_STEP_YEARS, 0, 0);
-export const BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(QUARTER_CENTURY_STEP_YEARS, 1, MIN_YEAR);
+export const QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
+  QUARTER_CENTURY_STEP_YEARS,
+  0,
+  0,
+);
+export const BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
+  QUARTER_CENTURY_STEP_YEARS,
+  1,
+  MIN_YEAR,
+);
 
 /** Shared time domain: the D3 x-axis for every lane, keyed by pixels-per-year zoom level. */
-export function buildXScale(pixelsPerYear: number): { scale: d3.ScaleLinear<number, number>; totalWidth: number } {
+export function buildXScale(pixelsPerYear: number): {
+  scale: d3.ScaleLinear<number, number>;
+  totalWidth: number;
+} {
   const maxYear = today().year;
   const totalYears = maxYear - MIN_YEAR;
   const totalWidth = totalYears * pixelsPerYear;
-  const scale = d3.scaleLinear().domain([MIN_YEAR, maxYear]).range([0, totalWidth]);
+  const scale = d3
+    .scaleLinear()
+    .domain([MIN_YEAR, maxYear])
+    .range([0, totalWidth]);
   return { scale, totalWidth };
 }
 
-export const DEFAULT_VISIBLE_YEARS = DEFAULT_VIEWPORT_END.year - DEFAULT_VIEWPORT_START.year;
+export const DEFAULT_VISIBLE_YEARS =
+  DEFAULT_VIEWPORT_END.year - DEFAULT_VIEWPORT_START.year;
 // A narrower first-paint window for phone-width viewports — without this,
 // a narrow screen would render the same DEFAULT_VISIBLE_YEARS span as
 // desktop, just smaller and denser, rather than genuinely more zoomed in.
@@ -231,18 +276,27 @@ export const VIEWPORT_BUFFER_RATIO = 0.5;
  * `min` shows ZOOM_MAX_YEARS at once (zoomed all the way out), `max` shows
  * ZOOM_MIN_YEARS at once (zoomed all the way in).
  */
-export function pixelsPerYearBounds(viewportWidthPx: number): { min: number; max: number } {
+export function pixelsPerYearBounds(viewportWidthPx: number): {
+  min: number;
+  max: number;
+} {
   const width = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   return { min: width / ZOOM_MAX_YEARS, max: width / ZOOM_MIN_YEARS };
 }
 
-export function clampPixelsPerYear(pixelsPerYear: number, viewportWidthPx: number): number {
+export function clampPixelsPerYear(
+  pixelsPerYear: number,
+  viewportWidthPx: number,
+): number {
   const { min, max } = pixelsPerYearBounds(viewportWidthPx);
   return Math.min(max, Math.max(min, pixelsPerYear));
 }
 
 /** Initial zoom level: shows `visibleYears` (DEFAULT_VISIBLE_YEARS unless overridden, e.g. by MOBILE_DEFAULT_VISIBLE_YEARS) at once. */
-export function defaultPixelsPerYear(viewportWidthPx: number, visibleYears: number = DEFAULT_VISIBLE_YEARS): number {
+export function defaultPixelsPerYear(
+  viewportWidthPx: number,
+  visibleYears: number = DEFAULT_VISIBLE_YEARS,
+): number {
   const width = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   return clampPixelsPerYear(width / visibleYears, width);
 }
@@ -254,13 +308,18 @@ export function defaultPixelsPerYear(viewportWidthPx: number, visibleYears: numb
 // FALLBACK_VIEWPORT_WIDTH_PX rather than a measured width: this has to be
 // a true constant, computable before anything has rendered, not just
 // stable-in-practice.
-export const REFERENCE_PIXELS_PER_YEAR = defaultPixelsPerYear(FALLBACK_VIEWPORT_WIDTH_PX);
+export const REFERENCE_PIXELS_PER_YEAR = defaultPixelsPerYear(
+  FALLBACK_VIEWPORT_WIDTH_PX,
+);
 
 export function zoomIn(pixelsPerYear: number, viewportWidthPx: number): number {
   return clampPixelsPerYear(pixelsPerYear * (1 + ZOOM_STEP), viewportWidthPx);
 }
 
-export function zoomOut(pixelsPerYear: number, viewportWidthPx: number): number {
+export function zoomOut(
+  pixelsPerYear: number,
+  viewportWidthPx: number,
+): number {
   return clampPixelsPerYear(pixelsPerYear / (1 + ZOOM_STEP), viewportWidthPx);
 }
 
@@ -281,8 +340,12 @@ export function pinchPixelsPerYear(
   currentDistancePx: number,
   viewportWidthPx: number,
 ): number {
-  const distanceRatio = startDistancePx > 0 ? currentDistancePx / startDistancePx : 1;
-  return clampPixelsPerYear(startPixelsPerYear * distanceRatio, viewportWidthPx);
+  const distanceRatio =
+    startDistancePx > 0 ? currentDistancePx / startDistancePx : 1;
+  return clampPixelsPerYear(
+    startPixelsPerYear * distanceRatio,
+    viewportWidthPx,
+  );
 }
 
 /**
@@ -338,19 +401,34 @@ export function zoomAnimationGroupTransform(params: {
   scrollLeftStart: number;
   clientWidthPx: number;
 }): ZoomAnimationTransform {
-  const { startPixelsPerYear, currentPixelsPerYear, minYear, centerYear, scrollLeftStart, clientWidthPx } = params;
-  const sx = startPixelsPerYear !== 0 ? currentPixelsPerYear / startPixelsPerYear : 1;
-  const scrollLeftTarget = (centerYear - minYear) * currentPixelsPerYear - clientWidthPx / 2;
+  const {
+    startPixelsPerYear,
+    currentPixelsPerYear,
+    minYear,
+    centerYear,
+    scrollLeftStart,
+    clientWidthPx,
+  } = params;
+  const sx =
+    startPixelsPerYear !== 0 ? currentPixelsPerYear / startPixelsPerYear : 1;
+  const scrollLeftTarget =
+    (centerYear - minYear) * currentPixelsPerYear - clientWidthPx / 2;
   return { tx: scrollLeftStart - scrollLeftTarget, sx };
 }
 
 /** SVG `transform` attribute value (unitless, SVG user-space) for a ZoomAnimationTransform. */
-export function zoomAnimationGroupTransformAttr({ tx, sx }: ZoomAnimationTransform): string {
+export function zoomAnimationGroupTransformAttr({
+  tx,
+  sx,
+}: ZoomAnimationTransform): string {
   return `translate(${tx}, 0) scale(${sx}, 1)`;
 }
 
 /** CSS `transform` value (px units, HTML elements) for a ZoomAnimationTransform. */
-export function zoomAnimationGroupTransformCss({ tx, sx }: ZoomAnimationTransform): string {
+export function zoomAnimationGroupTransformCss({
+  tx,
+  sx,
+}: ZoomAnimationTransform): string {
   return `translateX(${tx}px) scaleX(${sx})`;
 }
 

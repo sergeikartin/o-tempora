@@ -1,5 +1,5 @@
-import type { Milestone, Person, ConflictEntry } from '../../../shared/types';
 import { formatYearMonth } from '../../../shared/lib/format-year';
+import type { ConflictEntry, Milestone, Person } from '../../../shared/types';
 
 // Discriminates which of the three lane shapes a click resolved to — the
 // same union App.tsx builds after looking a SelectedEntityRef id up in its
@@ -60,7 +60,9 @@ function conflictEntryContent(entry: ConflictEntry): DrawerContent {
 function milestoneContent(milestone: Milestone): DrawerContent {
   return {
     name: milestone.name,
-    ...('period' in milestone ? {} : { dateLine: formatYearMonth(milestone.at) }),
+    ...('period' in milestone
+      ? {}
+      : { dateLine: formatYearMonth(milestone.at) }),
     tagline: milestone.tagline,
     description: milestone.description,
     wikipediaUrl: milestone.wikipediaUrl,

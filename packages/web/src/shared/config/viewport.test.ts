@@ -1,8 +1,14 @@
-import { test, expect } from 'vitest';
-import { DATA_DEPTH_LEVELS, matchDataDepthLevel, FAME_SCORE_BOUNDS } from './viewport';
+import { expect, test } from 'vitest';
+import {
+  DATA_DEPTH_LEVELS,
+  FAME_SCORE_BOUNDS,
+  matchDataDepthLevel,
+} from './viewport';
 
 test('mainstream level equals the existing FAME_SCORE_BOUNDS defaults — launch behavior is unchanged', () => {
-  const mainstream = DATA_DEPTH_LEVELS.find((level) => level.id === 'mainstream');
+  const mainstream = DATA_DEPTH_LEVELS.find(
+    (level) => level.id === 'mainstream',
+  );
   expect(mainstream?.values).toEqual({
     people: FAME_SCORE_BOUNDS.people.default,
     conflicts: FAME_SCORE_BOUNDS.conflicts.default,
@@ -17,5 +23,7 @@ test('matchDataDepthLevel matches each preset row exactly', () => {
 });
 
 test('matchDataDepthLevel returns null for values that match no preset row (custom)', () => {
-  expect(matchDataDepthLevel({ people: 84, conflicts: 70, milestones: 70 })).toBeNull();
+  expect(
+    matchDataDepthLevel({ people: 84, conflicts: 70, milestones: 70 }),
+  ).toBeNull();
 });

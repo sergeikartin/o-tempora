@@ -1,8 +1,4 @@
 import { useEffect, useRef } from 'react';
-import type { OccupationDomain, Region } from '../../../shared/types';
-import { SWITCH_LANGUAGE_HREF, type ConflictsMilestonesFilterValue } from '../../../shared/config';
-import { m } from '../../../shared/paraglide/messages.js';
-import { useIsMobileViewport } from '../../../shared/lib/viewport';
 import {
   DataDepthSwitch,
   FameScoreFilters,
@@ -13,6 +9,13 @@ import {
 import { OccupationDomainFilters } from '../../../features/filter-by-occupation-domain';
 import { RegionFilters } from '../../../features/filter-by-region';
 import { ConflictsMilestonesFilters } from '../../../features/filter-conflicts-milestones';
+import {
+  type ConflictsMilestonesFilterValue,
+  SWITCH_LANGUAGE_HREF,
+} from '../../../shared/config';
+import { useIsMobileViewport } from '../../../shared/lib/viewport';
+import { m } from '../../../shared/paraglide/messages.js';
+import type { OccupationDomain, Region } from '../../../shared/types';
 import styles from './Sidebar.module.css';
 
 interface SidebarProps {
@@ -26,7 +29,9 @@ interface SidebarProps {
   selectedRegions: Region[];
   onToggleRegion: (region: Region) => void;
   selectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[];
-  onToggleConflictsMilestonesValue: (value: ConflictsMilestonesFilterValue) => void;
+  onToggleConflictsMilestonesValue: (
+    value: ConflictsMilestonesFilterValue,
+  ) => void;
   // Drawer open/close state (mobile-only visual effect — see
   // Sidebar.module.css's mobile breakpoint block; above that width this
   // prop has no effect since .sidebar isn't positioned/transformed at all).
@@ -100,7 +105,8 @@ export function Sidebar({
   useEffect(() => {
     if (!isMobileViewport) return;
     if (isOpen) {
-      previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+      previouslyFocusedRef.current =
+        document.activeElement as HTMLElement | null;
       closeButtonRef.current?.focus();
     } else {
       previouslyFocusedRef.current?.focus();
@@ -138,20 +144,39 @@ export function Sidebar({
 
   return (
     <>
-      {isOpen && <button type="button" className={styles.backdrop} aria-label={m.closeAriaLabel()} onClick={onClose} />}
+      {isOpen && (
+        <button
+          type="button"
+          className={styles.backdrop}
+          aria-label={m.closeAriaLabel()}
+          onClick={onClose}
+        />
+      )}
       <aside
         ref={asideRef}
-        className={[styles.sidebar, isOpen && styles.open, collapsed && styles.collapsed].filter(Boolean).join(' ')}
+        className={[
+          styles.sidebar,
+          isOpen && styles.open,
+          collapsed && styles.collapsed,
+        ]
+          .filter(Boolean)
+          .join(' ')}
         aria-label={m.filtersAriaLabel()}
         inert={isInert}
       >
         {!isMobileViewport && (
           <div className={styles.collapseHeader}>
-            {!collapsed && <h2 className={styles.headerTitle}>{m.filtersHeading()}</h2>}
+            {!collapsed && (
+              <h2 className={styles.headerTitle}>{m.filtersHeading()}</h2>
+            )}
             <button
               type="button"
               className={styles.collapseButton}
-              aria-label={collapsed ? m.expandFiltersAriaLabel() : m.collapseFiltersAriaLabel()}
+              aria-label={
+                collapsed
+                  ? m.expandFiltersAriaLabel()
+                  : m.collapseFiltersAriaLabel()
+              }
               aria-expanded={!collapsed}
               onClick={onToggleCollapse}
             >
@@ -177,28 +202,47 @@ export function Sidebar({
             )}
             <section className={styles.section}>
               <h2 className={styles.heading}>{m.dataDepthHeading()}</h2>
-              <DataDepthSwitch values={fameScoreValues} onChange={onFameScoreChange} />
+              <DataDepthSwitch
+                values={fameScoreValues}
+                onChange={onFameScoreChange}
+              />
               {import.meta.env.DEV && (
-                <FameScoreFilters values={fameScoreValues} onChange={onFameScoreChange} counts={filteredCounts} />
+                <FameScoreFilters
+                  values={fameScoreValues}
+                  onChange={onFameScoreChange}
+                  counts={filteredCounts}
+                />
               )}
             </section>
             <section className={styles.section}>
               <h2 className={styles.heading}>{m.regionHeading()}</h2>
-              <RegionFilters selectedRegions={selectedRegions} onToggleRegion={onToggleRegion} />
+              <RegionFilters
+                selectedRegions={selectedRegions}
+                onToggleRegion={onToggleRegion}
+              />
             </section>
             <section className={styles.section}>
               <h2 className={styles.heading}>{m.peopleHeading()}</h2>
-              <OccupationDomainFilters selectedDomains={selectedDomains} onToggleDomain={onToggleDomain} />
+              <OccupationDomainFilters
+                selectedDomains={selectedDomains}
+                onToggleDomain={onToggleDomain}
+              />
             </section>
             <section className={styles.section}>
-              <h2 className={styles.heading}>{m.conflictsMilestonesHeading()}</h2>
+              <h2 className={styles.heading}>
+                {m.conflictsMilestonesHeading()}
+              </h2>
               <ConflictsMilestonesFilters
                 selectedValues={selectedConflictsMilestonesValues}
                 onToggleValue={onToggleConflictsMilestonesValue}
               />
             </section>
             <div className={styles.footer}>
-              <button type="button" className={styles.footerLink} onClick={onOpenAbout}>
+              <button
+                type="button"
+                className={styles.footerLink}
+                onClick={onOpenAbout}
+              >
                 {m.aboutLabel()}
               </button>
               <a className={styles.footerLink} href={SWITCH_LANGUAGE_HREF}>

@@ -38,8 +38,18 @@
     var(--century-tick-px) 100%,
     var(--decade-tick-px) 55%;
   background-image:
-    linear-gradient(to right, var(--color-border-emphasis) 0, var(--color-border-emphasis) 2px, transparent 2px),
-    linear-gradient(to right, var(--color-border-strong) 0, var(--color-border-strong) 1.5px, transparent 1.5px);
+    linear-gradient(
+      to right,
+      var(--color-border-emphasis) 0,
+      var(--color-border-emphasis) 2px,
+      transparent 2px
+    ),
+    linear-gradient(
+      to right,
+      var(--color-border-strong) 0,
+      var(--color-border-strong) 1.5px,
+      transparent 1.5px
+    );
 }
 
 .labelRow {

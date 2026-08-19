@@ -1,7 +1,7 @@
 import {
-  CONFLICTS_MILESTONES_FILTER_VALUES,
   CONFLICTS_MILESTONES_FILTER_COLORS,
   CONFLICTS_MILESTONES_FILTER_LABELS,
+  CONFLICTS_MILESTONES_FILTER_VALUES,
   type ConflictsMilestonesFilterValue,
 } from '../../../shared/config';
 import { FilterPillList } from '../../../shared/ui';
@@ -20,7 +20,10 @@ interface ConflictsMilestonesFiltersProps {
 // MilestoneCategoryGroup values into one list, since from the user's
 // perspective it's one filter over one sidebar section, not two
 // differently-behaved controls.
-export function ConflictsMilestonesFilters({ selectedValues, onToggleValue }: ConflictsMilestonesFiltersProps) {
+export function ConflictsMilestonesFilters({
+  selectedValues,
+  onToggleValue,
+}: ConflictsMilestonesFiltersProps) {
   return (
     <FilterPillList
       values={CONFLICTS_MILESTONES_FILTER_VALUES}

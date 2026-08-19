@@ -10,13 +10,5 @@
     "@playwright/test": "^1.62.1",
     "@types/node": "^22.10.0",
     "typescript": "^7.0.2"
-  },
-  "overrides": {
-    "ts-api-utils": {
-      "typescript": "6.0.3"
-    },
-    "cosmiconfig": {
-      "typescript": "6.0.3"
-    }
   }
 }

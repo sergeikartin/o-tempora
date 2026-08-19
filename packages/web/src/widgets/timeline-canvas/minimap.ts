@@ -1,7 +1,21 @@
+import {
+  type CenturyBoundary,
+  centuryBoundariesInRange,
+} from '../../shared/lib/format-year';
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
-import { centuryBoundariesInRange, type CenturyBoundary } from '../../shared/lib/format-year';
-import { conflictPixelInterval, mapConflicts, mapMilestones, mapPeople, milestonePixelInterval, personPixelInterval } from './map-to-items';
-import { buildXScale, MILESTONES_LABEL_MAX_WIDTH_PX, wrapLabelLines } from './options';
+import {
+  conflictPixelInterval,
+  mapConflicts,
+  mapMilestones,
+  mapPeople,
+  milestonePixelInterval,
+  personPixelInterval,
+} from './map-to-items';
+import {
+  buildXScale,
+  MILESTONES_LABEL_MAX_WIDTH_PX,
+  wrapLabelLines,
+} from './options';
 
 // Resolution of the Minimap's bucketed Row Depth series — enough
 // buckets to trace real shape across a ~4,800-year domain without paying for
@@ -29,14 +43,25 @@ interface DepthInterval {
 // without collision. `rowOf` must be the same per-item row assignment the
 // live lanes render with (see computeDensityProfile) so the Minimap's
 // reported depth always matches what's actually on canvas.
-function bucketDepths(intervals: DepthInterval[], rowOf: Map<string, number>, refTotalWidth: number, bucketCount: number): number[] {
+function bucketDepths(
+  intervals: DepthInterval[],
+  rowOf: Map<string, number>,
+  refTotalWidth: number,
+  bucketCount: number,
+): number[] {
   const depths = new Array<number>(bucketCount).fill(0);
   if (refTotalWidth <= 0) return depths;
   const bucketWidthPx = refTotalWidth / bucketCount;
   for (const interval of intervals) {
     const row = rowOf.get(interval.id) ?? 0;
-    const startBucket = Math.min(bucketCount - 1, Math.max(0, Math.floor(interval.startYear / bucketWidthPx)));
-    const endBucket = Math.min(bucketCount - 1, Math.max(0, Math.floor(interval.endYear / bucketWidthPx)));
+    const startBucket = Math.min(
+      bucketCount - 1,
+      Math.max(0, Math.floor(interval.startYear / bucketWidthPx)),
+    );
+    const endBucket = Math.min(
+      bucketCount - 1,
+      Math.max(0, Math.floor(interval.endYear / bucketWidthPx)),
+    );
     for (let bucket = startBucket; bucket <= endBucket; bucket += 1) {
       depths[bucket] = Math.max(depths[bucket] ?? 0, row + 1);
     }
@@ -65,7 +90,9 @@ export function computeDensityProfile(
   eventsRowFor: (ids: string[]) => Map<string, number>,
   bucketCount: number = MINIMAP_BUCKET_COUNT,
 ): DensityProfile {
-  const { scale: refScale, totalWidth: refTotalWidth } = buildXScale(referencePixelsPerYear);
+  const { scale: refScale, totalWidth: refTotalWidth } = buildXScale(
+    referencePixelsPerYear,
+  );
 
   const peopleItems = mapPeople(people);
   const peopleIntervals: DepthInterval[] = peopleItems.map((item) => {
@@ -87,7 +114,10 @@ export function computeDensityProfile(
       return { id: item.id, startYear: start, endYear: end };
     }),
   ];
-  const eventsRowOf = eventsRowFor([...conflictItems.map((item) => item.id), ...milestoneItems.map((item) => item.id)]);
+  const eventsRowOf = eventsRowFor([
+    ...conflictItems.map((item) => item.id),
+    ...milestoneItems.map((item) => item.id),
+  ]);
 
   const years = Array.from({ length: bucketCount }, (_, bucket) =>
     refScale.invert(((bucket + 0.5) / bucketCount) * refTotalWidth),
@@ -95,8 +125,18 @@ export function computeDensityProfile(
 
   return {
     years,
-    peopleDepth: bucketDepths(peopleIntervals, peopleRowOf, refTotalWidth, bucketCount),
-    eventsDepth: bucketDepths(eventIntervals, eventsRowOf, refTotalWidth, bucketCount),
+    peopleDepth: bucketDepths(
+      peopleIntervals,
+      peopleRowOf,
+      refTotalWidth,
+      bucketCount,
+    ),
+    eventsDepth: bucketDepths(
+      eventIntervals,
+      eventsRowOf,
+      refTotalWidth,
+      bucketCount,
+    ),
   };
 }
 
@@ -108,15 +148,24 @@ export function computeDensityProfile(
  * negative x). Powers the Minimap's top-edge century-tick strip
  * (`/grill-with-docs`).
  */
-export function centuryTicksInRange(minYear: number, maxYear: number): CenturyBoundary[] {
-  return centuryBoundariesInRange(minYear, maxYear).filter((boundary) => boundary.startYear >= minYear);
+export function centuryTicksInRange(
+  minYear: number,
+  maxYear: number,
+): CenturyBoundary[] {
+  return centuryBoundariesInRange(minYear, maxYear).filter(
+    (boundary) => boundary.startYear >= minYear,
+  );
 }
 
 // Depth is log1p-scaled (not linear) so low-density eras stay visually
 // non-flat against high-density ones — under a linear scale, a depth of 2
 // next to a depth of 30 would render at ~7% height, all but invisible;
 // log1p compresses that same pair to ~20% vs. 100%.
-export function logScaleHeightPx(depth: number, maxDepth: number, maxHeightPx: number): number {
+export function logScaleHeightPx(
+  depth: number,
+  maxDepth: number,
+  maxHeightPx: number,
+): number {
   if (maxDepth <= 0 || depth <= 0) return 0;
   return (Math.log1p(depth) / Math.log1p(maxDepth)) * maxHeightPx;
 }

@@ -1,11 +1,25 @@
-import { useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import * as d3 from 'd3';
-import type { ConflictEntry, Milestone, Person } from '../../shared/types';
+import {
+  type PointerEvent as ReactPointerEvent,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { formatYear } from '../../shared/lib/format-year';
 import { m } from '../../shared/paraglide/messages.js';
-import { centuryTicksInRange, computeDensityProfile, logScaleHeightPx } from './minimap';
-import { buildXScale, FALLBACK_VIEWPORT_WIDTH_PX, MIN_YEAR, REFERENCE_PIXELS_PER_YEAR } from './options';
+import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import styles from './Minimap.module.css';
+import {
+  centuryTicksInRange,
+  computeDensityProfile,
+  logScaleHeightPx,
+} from './minimap';
+import {
+  buildXScale,
+  FALLBACK_VIEWPORT_WIDTH_PX,
+  MIN_YEAR,
+  REFERENCE_PIXELS_PER_YEAR,
+} from './options';
 
 // Enforced via CSS min-width on .viewportRect, kept here too since the drag
 // math below needs the same floor to convert a rect pointer-move into a
@@ -93,7 +107,11 @@ export function Minimap({
   onScrollLeftJump,
 }: MinimapProps) {
   const trackRef = useRef<HTMLDivElement>(null);
-  const rectDragRef = useRef<{ pointerX: number; startScrollLeft: number; trackWidthPx: number } | null>(null);
+  const rectDragRef = useRef<{
+    pointerX: number;
+    startScrollLeft: number;
+    trackWidthPx: number;
+  } | null>(null);
   const [isRectDragging, setIsRectDragging] = useState(false);
   const [hover, setHover] = useState<HoverInfo | null>(null);
 
@@ -102,7 +120,8 @@ export function Minimap({
   // for free rather than reading it during render, which isn't available
   // before layout. Computed up front since both the viewport-rect ratio
   // math below and the century-tick label spacing further down need it.
-  const effectiveViewportWidthPx = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
+  const effectiveViewportWidthPx =
+    viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
 
   // The same fixed Reference Scale computeRowAssignment's static row
   // assignment uses (map-to-items.ts) — not the live measured viewport
@@ -111,7 +130,15 @@ export function Minimap({
   // overlap) and make the Row Depth shown here disagree with what the
   // canvas actually renders (ADR 0004).
   const profile = useMemo(
-    () => computeDensityProfile(people, conflicts, milestones, REFERENCE_PIXELS_PER_YEAR, personRowFor, eventsRowFor),
+    () =>
+      computeDensityProfile(
+        people,
+        conflicts,
+        milestones,
+        REFERENCE_PIXELS_PER_YEAR,
+        personRowFor,
+        eventsRowFor,
+      ),
     [people, conflicts, milestones, personRowFor, eventsRowFor],
   );
   const bucketCount = profile.years.length;
@@ -133,22 +160,27 @@ export function Minimap({
   // threshold would still let a long label visually overlap the next tick's
   // short one.
   const centuryTicks = useMemo(() => {
-    const { scale: refScale, totalWidth: refTotalWidthPx } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
+    const { scale: refScale, totalWidth: refTotalWidthPx } = buildXScale(
+      REFERENCE_PIXELS_PER_YEAR,
+    );
     if (refTotalWidthPx <= 0) return [];
     const [, domainMaxYear] = refScale.domain();
     let lastLabelRightEdgePx = -Infinity;
-    return centuryTicksInRange(MIN_YEAR, domainMaxYear ?? MIN_YEAR).map((boundary) => {
-      const label = formatYear(boundary.startYear);
-      const leftPercent = (refScale(boundary.startYear) / refTotalWidthPx) * 100;
-      const xPx = (leftPercent / 100) * effectiveViewportWidthPx;
-      // Labels are centered under their tick (CSS translateX(-50%)), so the
-      // collision check is against each label's own left/right half-width,
-      // not its raw x position.
-      const halfWidthPx = estimateCenturyLabelWidthPx(label) / 2;
-      const showLabel = xPx - halfWidthPx >= lastLabelRightEdgePx;
-      if (showLabel) lastLabelRightEdgePx = xPx + halfWidthPx;
-      return { startYear: boundary.startYear, label, leftPercent, showLabel };
-    });
+    return centuryTicksInRange(MIN_YEAR, domainMaxYear ?? MIN_YEAR).map(
+      (boundary) => {
+        const label = formatYear(boundary.startYear);
+        const leftPercent =
+          (refScale(boundary.startYear) / refTotalWidthPx) * 100;
+        const xPx = (leftPercent / 100) * effectiveViewportWidthPx;
+        // Labels are centered under their tick (CSS translateX(-50%)), so the
+        // collision check is against each label's own left/right half-width,
+        // not its raw x position.
+        const halfWidthPx = estimateCenturyLabelWidthPx(label) / 2;
+        const showLabel = xPx - halfWidthPx >= lastLabelRightEdgePx;
+        if (showLabel) lastLabelRightEdgePx = xPx + halfWidthPx;
+        return { startYear: boundary.startYear, label, leftPercent, showLabel };
+      },
+    );
   }, [effectiveViewportWidthPx]);
 
   const { peoplePath, eventsPath } = useMemo(() => {
@@ -156,13 +188,21 @@ export function Minimap({
       .area<number>()
       .x((_depth, i) => i)
       .y0(RIDGE_BASELINE)
-      .y1((depth) => RIDGE_BASELINE - logScaleHeightPx(depth, maxPeopleDepth, RIDGE_BASELINE))
+      .y1(
+        (depth) =>
+          RIDGE_BASELINE -
+          logScaleHeightPx(depth, maxPeopleDepth, RIDGE_BASELINE),
+      )
       .curve(d3.curveMonotoneX);
     const eventsArea = d3
       .area<number>()
       .x((_depth, i) => i)
       .y0(RIDGE_BASELINE)
-      .y1((depth) => RIDGE_BASELINE + logScaleHeightPx(depth, maxEventsDepth, RIDGE_BASELINE))
+      .y1(
+        (depth) =>
+          RIDGE_BASELINE +
+          logScaleHeightPx(depth, maxEventsDepth, RIDGE_BASELINE),
+      )
       .curve(d3.curveMonotoneX);
     return {
       peoplePath: peopleArea(profile.peopleDepth) ?? '',
@@ -173,12 +213,22 @@ export function Minimap({
   // Same ratio-based geometry the scrollbar thumb this replaces used
   // (TimelineCanvas.tsx) — effectiveViewportWidthPx itself is computed above,
   // shared with the century-tick label spacing.
-  const rectWidthRatio = totalWidth > 0 ? Math.min(effectiveViewportWidthPx / totalWidth, 1) : 1;
-  const maxScrollLeftForRect = Math.max(totalWidth - effectiveViewportWidthPx, 0);
-  const rectLeftRatio = maxScrollLeftForRect > 0 ? (scrollLeft / maxScrollLeftForRect) * (1 - rectWidthRatio) : 0;
+  const rectWidthRatio =
+    totalWidth > 0 ? Math.min(effectiveViewportWidthPx / totalWidth, 1) : 1;
+  const maxScrollLeftForRect = Math.max(
+    totalWidth - effectiveViewportWidthPx,
+    0,
+  );
+  const rectLeftRatio =
+    maxScrollLeftForRect > 0
+      ? (scrollLeft / maxScrollLeftForRect) * (1 - rectWidthRatio)
+      : 0;
 
   function bucketIndexForRatio(ratio: number): number {
-    return Math.min(bucketCount - 1, Math.max(0, Math.round(ratio * (bucketCount - 1))));
+    return Math.min(
+      bucketCount - 1,
+      Math.max(0, Math.round(ratio * (bucketCount - 1))),
+    );
   }
 
   function handleRectPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
@@ -189,7 +239,11 @@ export function Minimap({
     event.stopPropagation();
     const track = trackRef.current;
     if (!track) return;
-    rectDragRef.current = { pointerX: event.clientX, startScrollLeft: scrollLeft, trackWidthPx: track.clientWidth };
+    rectDragRef.current = {
+      pointerX: event.clientX,
+      startScrollLeft: scrollLeft,
+      trackWidthPx: track.clientWidth,
+    };
     try {
       event.currentTarget.setPointerCapture?.(event.pointerId);
     } catch {
@@ -206,11 +260,19 @@ export function Minimap({
     // Same MIN_VIEWPORT_RECT_PX floor as the rect's own CSS min-width —
     // needed here so a dragged pixel maps to the same scrollLeft distance
     // the rendered (possibly floor-clamped) rect width implies.
-    const rectWidthPx = Math.max(MIN_VIEWPORT_RECT_PX, (drag.trackWidthPx / totalWidth) * drag.trackWidthPx);
+    const rectWidthPx = Math.max(
+      MIN_VIEWPORT_RECT_PX,
+      (drag.trackWidthPx / totalWidth) * drag.trackWidthPx,
+    );
     const maxRectOffsetPx = Math.max(drag.trackWidthPx - rectWidthPx, 1);
     const deltaPx = event.clientX - drag.pointerX;
     const scrollLeftPerRectPx = maxScrollLeft / maxRectOffsetPx;
-    onScrollLeftChange(Math.min(Math.max(drag.startScrollLeft + deltaPx * scrollLeftPerRectPx, 0), maxScrollLeft));
+    onScrollLeftChange(
+      Math.min(
+        Math.max(drag.startScrollLeft + deltaPx * scrollLeftPerRectPx, 0),
+        maxScrollLeft,
+      ),
+    );
   }
 
   function endRectDrag(event: ReactPointerEvent<HTMLDivElement>) {
@@ -232,9 +294,15 @@ export function Minimap({
     const track = trackRef.current;
     if (!track) return;
     const rect = track.getBoundingClientRect();
-    const clickRatio = rect.width > 0 ? (event.clientX - rect.left) / rect.width : 0;
+    const clickRatio =
+      rect.width > 0 ? (event.clientX - rect.left) / rect.width : 0;
     const maxScrollLeft = Math.max(totalWidth - track.clientWidth, 0);
-    onScrollLeftJump(Math.min(Math.max(clickRatio * totalWidth - track.clientWidth / 2, 0), maxScrollLeft));
+    onScrollLeftJump(
+      Math.min(
+        Math.max(clickRatio * totalWidth - track.clientWidth / 2, 0),
+        maxScrollLeft,
+      ),
+    );
   }
 
   // Recovers the precision the log scale deliberately compresses away —
@@ -244,7 +312,10 @@ export function Minimap({
     if (!track) return;
     const rect = track.getBoundingClientRect();
     if (rect.width <= 0) return;
-    const xRatio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+    const xRatio = Math.min(
+      1,
+      Math.max(0, (event.clientX - rect.left) / rect.width),
+    );
     const bucketIndex = bucketIndexForRatio(xRatio);
     setHover({
       xRatio,
@@ -260,10 +331,20 @@ export function Minimap({
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.centuryStrip} data-testid="minimap-century-strip" aria-hidden="true">
+      <div
+        className={styles.centuryStrip}
+        data-testid="minimap-century-strip"
+        aria-hidden="true"
+      >
         {centuryTicks.map((tick) => (
-          <div key={tick.startYear} className={styles.centuryTick} style={{ left: `${tick.leftPercent}%` }}>
-            {tick.showLabel && <span className={styles.centuryLabel}>{tick.label}</span>}
+          <div
+            key={tick.startYear}
+            className={styles.centuryTick}
+            style={{ left: `${tick.leftPercent}%` }}
+          >
+            {tick.showLabel && (
+              <span className={styles.centuryLabel}>{tick.label}</span>
+            )}
           </div>
         ))}
       </div>
@@ -289,15 +370,36 @@ export function Minimap({
           preserveAspectRatio="none"
           aria-hidden="true"
         >
-          <line className={styles.baseline} x1={0} x2={bucketCount - 1} y1={RIDGE_BASELINE} y2={RIDGE_BASELINE} />
-          <path className={styles.peopleArea} data-testid="minimap-people-area" d={peoplePath} />
-          <path className={styles.eventsArea} data-testid="minimap-events-area" d={eventsPath} />
+          <line
+            className={styles.baseline}
+            x1={0}
+            x2={bucketCount - 1}
+            y1={RIDGE_BASELINE}
+            y2={RIDGE_BASELINE}
+          />
+          <path
+            className={styles.peopleArea}
+            data-testid="minimap-people-area"
+            d={peoplePath}
+          />
+          <path
+            className={styles.eventsArea}
+            data-testid="minimap-events-area"
+            d={eventsPath}
+          />
         </svg>
       </div>
       <div
-        className={isRectDragging ? `${styles.viewportRect} ${styles.dragging}` : styles.viewportRect}
+        className={
+          isRectDragging
+            ? `${styles.viewportRect} ${styles.dragging}`
+            : styles.viewportRect
+        }
         data-testid="minimap-viewport-rect"
-        style={{ width: `${rectWidthRatio * 100}%`, left: `${rectLeftRatio * 100}%` }}
+        style={{
+          width: `${rectWidthRatio * 100}%`,
+          left: `${rectLeftRatio * 100}%`,
+        }}
         onPointerDown={handleRectPointerDown}
         onPointerMove={handleRectPointerMove}
         onPointerUp={endRectDrag}
@@ -310,9 +412,15 @@ export function Minimap({
           style={{ left: `${hover.xRatio * 100}%` }}
           role="tooltip"
         >
-          <div className={styles.tooltipDate}>{formatYear(Math.round(hover.year))}</div>
-          <div className={styles.tooltipRow}>People: {hover.peopleDepth} rows</div>
-          <div className={styles.tooltipRow}>Conflicts+Milestones: {hover.eventsDepth} rows</div>
+          <div className={styles.tooltipDate}>
+            {formatYear(Math.round(hover.year))}
+          </div>
+          <div className={styles.tooltipRow}>
+            People: {hover.peopleDepth} rows
+          </div>
+          <div className={styles.tooltipRow}>
+            Conflicts+Milestones: {hover.eventsDepth} rows
+          </div>
         </div>
       )}
     </div>

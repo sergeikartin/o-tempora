@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
-import { test, expect, afterEach, vi } from 'vitest';
-import { TimelineCanvas } from './TimelineCanvas';
+import { afterEach, expect, test, vi } from 'vitest';
 import type { Person } from '../../shared/types';
+import { TimelineCanvas } from './TimelineCanvas';
 
 afterEach(cleanup);
 

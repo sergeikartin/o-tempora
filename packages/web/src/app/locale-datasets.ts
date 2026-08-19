@@ -1,6 +1,6 @@
-import { getLocale } from '../shared/paraglide/runtime.js';
 import { logError } from '../shared/lib/log-error';
-import type { Milestone, Person, ConflictEntry } from '../shared/types';
+import { getLocale } from '../shared/paraglide/runtime.js';
+import type { ConflictEntry, Milestone, Person } from '../shared/types';
 
 export interface LocaleDatasets {
   people: Person[];
@@ -19,15 +19,25 @@ function primaryYear(entry: Person | ConflictEntry | Milestone): unknown {
   return entry.at.year;
 }
 
-export function validateEntries<T extends Person | ConflictEntry | Milestone>(entries: T[], entityType: string): T[] {
+export function validateEntries<T extends Person | ConflictEntry | Milestone>(
+  entries: T[],
+  entityType: string,
+): T[] {
   return entries.filter((entry) => {
     if (!entry.id || !entry.name) {
-      logError(new Error(`${entityType} entry missing id or name`), { entityType, entry });
+      logError(new Error(`${entityType} entry missing id or name`), {
+        entityType,
+        entry,
+      });
       return false;
     }
     const year = primaryYear(entry);
     if (typeof year !== 'number' || !Number.isFinite(year)) {
-      logError(new Error(`${entityType} entry has a non-finite date`), { entityType, id: entry.id, year });
+      logError(new Error(`${entityType} entry has a non-finite date`), {
+        entityType,
+        id: entry.id,
+        year,
+      });
       return false;
     }
     return true;
@@ -47,8 +57,14 @@ const loaders: Record<'en' | 'ru', () => Promise<LocaleDatasets>> = {
     ]);
     return {
       people: validateEntries(people.default as Person[], 'person'),
-      conflicts: validateEntries(conflicts.default as ConflictEntry[], 'conflict'),
-      milestones: validateEntries(milestones.default as Milestone[], 'milestone'),
+      conflicts: validateEntries(
+        conflicts.default as ConflictEntry[],
+        'conflict',
+      ),
+      milestones: validateEntries(
+        milestones.default as Milestone[],
+        'milestone',
+      ),
     };
   },
   ru: async () => {
@@ -59,12 +75,19 @@ const loaders: Record<'en' | 'ru', () => Promise<LocaleDatasets>> = {
     ]);
     return {
       people: validateEntries(people.default as Person[], 'person'),
-      conflicts: validateEntries(conflicts.default as ConflictEntry[], 'conflict'),
-      milestones: validateEntries(milestones.default as Milestone[], 'milestone'),
+      conflicts: validateEntries(
+        conflicts.default as ConflictEntry[],
+        'conflict',
+      ),
+      milestones: validateEntries(
+        milestones.default as Milestone[],
+        'milestone',
+      ),
     };
   },
 };
 
 // Module-scope, started immediately on import rather than inside an effect,
 // so the dataset fetch overlaps with initial render instead of trailing it.
-export const localeDatasetsPromise: Promise<LocaleDatasets> = loaders[getLocale()]();
+export const localeDatasetsPromise: Promise<LocaleDatasets> =
+  loaders[getLocale()]();

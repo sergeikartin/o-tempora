@@ -14,7 +14,7 @@
     "preview": "vite preview",
     "pretypecheck": "npm run paraglide:compile",
     "typecheck": "tsc -b",
-    "lint": "eslint .",
+    "lint": "biome check .",
     "lint:boundaries": "steiger ./src",
     "pretest": "npm run paraglide:compile",
     "test": "vitest run",
@@ -31,7 +31,7 @@
     "temporal-polyfill": "^1.0.2"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@biomejs/biome": "^2.5.9",
     "@feature-sliced/steiger-plugin": "^0.7.0",
     "@inlang/paraglide-js": "^2.23.2",
     "@testing-library/dom": "^10.4.1",
@@ -40,14 +40,8 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
-    "eslint": "^10.8.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.3",
-    "globals": "^17.8.0",
     "jsdom": "^30.0.1",
     "steiger": "^0.6.0",
-    "typescript-eslint": "^8.65.0",
     "vite": "^8.2.0",
     "vitest": "^4.1.10"
   }
