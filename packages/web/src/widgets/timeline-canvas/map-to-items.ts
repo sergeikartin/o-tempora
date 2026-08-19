@@ -329,7 +329,7 @@ export function assignRows(items: RowInterval[], gap: number = MIN_ROW_GAP_YEARS
 // milestones props, which are stable references for the whole session)
 // and pass the result down to each lane, which then narrows it to
 // whatever's currently visible via compactRows below.
-export function computeStaticPersonRows(people: Person[]): Map<string, number> {
+function computeStaticPersonRows(people: Person[]): Map<string, number> {
   const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
   const items = mapPeople(people).map((item) => {
     const { start, end } = personPixelInterval(item, scale);
@@ -342,7 +342,7 @@ export function computeStaticPersonRows(people: Person[]): Map<string, number> {
 // ConflictsMilestonesLane's own comment on why), so their static row
 // identity has to be computed together too, from both full datasets at
 // once.
-export function computeStaticConflictsMilestonesRows(conflicts: ConflictEntry[], milestones: Milestone[]): Map<string, number> {
+function computeStaticConflictsMilestonesRows(conflicts: ConflictEntry[], milestones: Milestone[]): Map<string, number> {
   const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
   const conflictItems = mapConflicts(conflicts).map((item) => {
     const { start, end } = conflictPixelInterval(item, scale);
@@ -370,4 +370,24 @@ export function compactRows(ids: string[], staticRowOf: Map<string, number>): Ma
   const distinctStaticRows = [...new Set(ids.map((id) => staticRowOf.get(id) ?? 0))].sort((a, b) => a - b);
   const compactedRowOfStaticRow = new Map(distinctStaticRows.map((staticRow, index) => [staticRow, index]));
   return new Map(ids.map((id) => [id, compactedRowOfStaticRow.get(staticRowOf.get(id) ?? 0) ?? 0]));
+}
+
+export interface RowAssignment {
+  personRowFor: (ids: string[]) => Map<string, number>;
+  eventsRowFor: (ids: string[]) => Map<string, number>;
+}
+
+// The one seam a consumer (a lane, the Minimap) needs for Row Depth: give it
+// an id set it's currently rendering, get back the row each one occupies.
+// Hides that this is actually two steps — a static per-item identity
+// computed once against the full dataset, then compacted down to the ids in
+// play (compactRows, above) — so no caller can reintroduce the bug of
+// narrowing a filtered set some other way (see ADR 0007's addendum).
+export function computeRowAssignment(people: Person[], conflicts: ConflictEntry[], milestones: Milestone[]): RowAssignment {
+  const staticPersonRowOf = computeStaticPersonRows(people);
+  const staticEventsRowOf = computeStaticConflictsMilestonesRows(conflicts, milestones);
+  return {
+    personRowFor: (ids) => compactRows(ids, staticPersonRowOf),
+    eventsRowFor: (ids) => compactRows(ids, staticEventsRowOf),
+  };
 }

@@ -3,13 +3,7 @@ import * as d3 from 'd3';
 import type { ConflictEntry, Milestone } from '../../shared/types';
 import { CONFLICT_COLOR } from '../../shared/config';
 import { motionDurationMs } from '../../shared/lib/motion';
-import {
-  compactRows,
-  conflictPixelInterval,
-  mapConflicts,
-  mapMilestones,
-  milestonePixelInterval,
-} from './map-to-items';
+import { conflictPixelInterval, mapConflicts, mapMilestones, milestonePixelInterval } from './map-to-items';
 import {
   HIT_AREA_PADDING_PX,
   LANE_TOP_PADDING,
@@ -58,12 +52,12 @@ interface ConflictsMilestonesLaneProps {
   conflicts: ConflictEntry[];
   milestones: Milestone[];
   xScale: d3.ScaleLinear<number, number>;
-  // A conflict/milestone's permanent row identity, computed once against
-  // the full (unfiltered) datasets — see map-to-items.ts's
-  // computeStaticConflictsMilestonesRows. Keeps a row stable across every
-  // filter/zoom change instead of being re-derived from whatever's
-  // currently visible.
-  staticRowOf: Map<string, number>;
+  // Resolves this lane's currently-visible ids to their Row Depth — backed
+  // by a permanent row identity computed once against the full (unfiltered)
+  // datasets (see map-to-items.ts's computeRowAssignment), so a row stays
+  // stable across every filter/zoom change instead of being re-derived from
+  // whatever's currently visible.
+  eventsRowFor: (ids: string[]) => Map<string, number>;
 }
 
 // Conflicts and Milestones share one below-marker row-stacking pass — the
@@ -88,7 +82,7 @@ interface ConflictsMilestonesLaneProps {
 // way — color, not shape, is what tells a Conflict marker apart from a
 // Milestone one now that they can share a row.
 export const ConflictsMilestonesLane = forwardRef<ZoomAnimationHandle, ConflictsMilestonesLaneProps>(
-  function ConflictsMilestonesLane({ conflicts, milestones, xScale, staticRowOf }, ref) {
+  function ConflictsMilestonesLane({ conflicts, milestones, xScale, eventsRowFor }, ref) {
     const svgRef = useRef<SVGSVGElement>(null);
 
     const conflictItems = useMemo(() => mapConflicts(conflicts), [conflicts]);
@@ -102,12 +96,9 @@ export const ConflictsMilestonesLane = forwardRef<ZoomAnimationHandle, Conflicts
       return map;
     }, [milestoneItems]);
 
-    // compactRows, not a fresh assignRows call — see map-to-items.ts's
-    // comment on why re-running assignRows against the currently-filtered set
-    // would let two unrelated items swap relative rows.
     const rowOfId = useMemo(
-      () => compactRows([...conflictItems.map((item) => item.id), ...milestoneItems.map((item) => item.id)], staticRowOf),
-      [conflictItems, milestoneItems, staticRowOf],
+      () => eventsRowFor([...conflictItems.map((item) => item.id), ...milestoneItems.map((item) => item.id)]),
+      [conflictItems, milestoneItems, eventsRowFor],
     );
 
     // Row height is dynamic — the tallest label actually assigned to a row

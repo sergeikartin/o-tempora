@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import type { Person } from '../../shared/types';
 import { DOMAIN_COLORS } from '../../shared/config';
 import { motionDurationMs } from '../../shared/lib/motion';
-import { compactRows, mapPeople } from './map-to-items';
+import { mapPeople } from './map-to-items';
 import {
   estimateLabelWidthPx,
   HIT_AREA_PADDING_PX,
@@ -31,11 +31,12 @@ interface PersonLayout {
 interface PeopleLaneProps {
   people: Person[];
   xScale: d3.ScaleLinear<number, number>;
-  // A person's permanent row identity, computed once against the full
-  // (unfiltered) dataset — see map-to-items.ts's computeStaticPersonRows.
-  // Keeps a person's row stable across every filter/zoom change instead of
-  // being re-derived from whatever's currently visible.
-  staticRowOf: Map<string, number>;
+  // Resolves this lane's currently-visible ids to their Row Depth — backed
+  // by a permanent row identity computed once against the full (unfiltered)
+  // dataset (see map-to-items.ts's computeRowAssignment), so a person's row
+  // stays stable across every filter/zoom change instead of being
+  // re-derived from whatever's currently visible.
+  personRowFor: (ids: string[]) => Map<string, number>;
 }
 
 // A person's lifespan (a Period) renders as a rounded-cap line, not a solid
@@ -45,19 +46,16 @@ interface PeopleLaneProps {
 // separate rows same as before; a colliding label (wider than its own line)
 // claims the row via pixelInterval above rather than moving to its own band.
 export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(function PeopleLane(
-  { people, xScale, staticRowOf },
+  { people, xScale, personRowFor },
   ref,
 ) {
   const svgRef = useRef<SVGSVGElement>(null);
   const hasMountedRef = useRef(false);
 
   const items = useMemo(() => mapPeople(people), [people]);
-  // compactRows, not a fresh assignRows call — see map-to-items.ts's
-  // comment on why re-running assignRows against the currently-filtered set
-  // would let two unrelated people swap relative rows.
   const rowOfPerson = useMemo(
-    () => compactRows(items.map((item) => item.id), staticRowOf),
-    [items, staticRowOf],
+    () => personRowFor(items.map((item) => item.id)),
+    [items, personRowFor],
   );
   const rowCount = rowOfPerson.size > 0 ? Math.max(...rowOfPerson.values()) + 1 : 0;
   const totalHeight = personLaneHeight(rowCount);

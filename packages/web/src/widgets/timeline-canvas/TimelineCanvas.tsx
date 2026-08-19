@@ -40,8 +40,7 @@ import {
   type ZoomAnimationTransform,
 } from './options';
 import {
-  computeStaticConflictsMilestonesRows,
-  computeStaticPersonRows,
+  computeRowAssignment,
   filterByFameScore,
   filterByMilestoneCategoryGroup,
   filterByOccupationDomain,
@@ -344,16 +343,17 @@ export function TimelineCanvas({
     [filteredPeople, filteredConflicts, filteredMilestones],
   );
 
-  // Each item's permanent row identity, computed once against the full,
-  // unfiltered datasets (people/conflicts/milestones are stable references
-  // for the whole session, so these only ever run once) — see
-  // map-to-items.ts's computeStaticPersonRows/
-  // computeStaticConflictsMilestonesRows for why this can't be derived from
-  // filteredPeople/filteredConflicts/filteredMilestones instead.
-  const staticPersonRowOf = useMemo(() => computeStaticPersonRows(people), [people]);
-  const staticConflictsMilestonesRowOf = useMemo(
-    () => computeStaticConflictsMilestonesRows(conflicts, milestones),
-    [conflicts, milestones],
+  // Each item's Row Depth, computed once against the full, unfiltered
+  // datasets (people/conflicts/milestones are stable references for the
+  // whole session, so this only ever runs once) — see map-to-items.ts's
+  // computeRowAssignment for why this can't be derived from
+  // filteredPeople/filteredConflicts/filteredMilestones instead. One shared
+  // computation, threaded to every consumer (PeopleLane,
+  // ConflictsMilestonesLane, Minimap) so none of them can derive a
+  // conflicting row for the same item.
+  const { personRowFor, eventsRowFor } = useMemo(
+    () => computeRowAssignment(people, conflicts, milestones),
+    [people, conflicts, milestones],
   );
   // useLayoutEffect (not useEffect) so a filter change's new counts land in
   // the Sidebar's DOM before the browser paints, avoiding a one-frame flash
@@ -816,7 +816,7 @@ export function TimelineCanvas({
           <div className={styles.zebraBand} style={ceZebraStyle} />
         </div>
         <div ref={peopleLaneRef} className={styles.peopleLane}>
-          <PeopleLane ref={peopleLaneAnimRef} people={filteredPeople} xScale={scale} staticRowOf={staticPersonRowOf} />
+          <PeopleLane ref={peopleLaneAnimRef} people={filteredPeople} xScale={scale} personRowFor={personRowFor} />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
           <YearAxis
@@ -832,7 +832,7 @@ export function TimelineCanvas({
             conflicts={filteredConflicts}
             milestones={filteredMilestones}
             xScale={scale}
-            staticRowOf={staticConflictsMilestonesRowOf}
+            eventsRowFor={eventsRowFor}
           />
         </div>
       </div>
@@ -841,8 +841,8 @@ export function TimelineCanvas({
           people={filteredPeople}
           conflicts={filteredConflicts}
           milestones={filteredMilestones}
-          staticPersonRowOf={staticPersonRowOf}
-          staticConflictsMilestonesRowOf={staticConflictsMilestonesRowOf}
+          personRowFor={personRowFor}
+          eventsRowFor={eventsRowFor}
           totalWidth={totalWidth}
           viewportWidthPx={viewportWidthPx}
           scrollLeft={scrollLeft}

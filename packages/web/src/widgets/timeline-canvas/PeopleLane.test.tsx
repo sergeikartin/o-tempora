@@ -2,7 +2,7 @@ import { cleanup, render } from '@testing-library/react';
 import { test, expect, afterEach } from 'vitest';
 import { PeopleLane } from './PeopleLane';
 import { buildXScale } from './options';
-import { computeStaticPersonRows } from './map-to-items';
+import { computeRowAssignment } from './map-to-items';
 import type { Person } from '../../shared/types';
 
 afterEach(cleanup);
@@ -32,7 +32,7 @@ const caesar: Person = {
 test('renders one lifespan line per person, with the name labeled above it', () => {
   const { scale } = buildXScale(2);
   const people = [aristotle, caesar];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   const lines = container.querySelectorAll('.d3-line');
   expect(lines).toHaveLength(2);
@@ -43,7 +43,7 @@ test('renders one lifespan line per person, with the name labeled above it', () 
 test("a person's name label sits above their lifespan line", () => {
   const { scale } = buildXScale(2);
   const people = [aristotle];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   const line = container.querySelector('.d3-line');
   const label = container.querySelector('.d3-name');
@@ -53,7 +53,7 @@ test("a person's name label sits above their lifespan line", () => {
 test("a person's name label is colored to match their lifespan line", () => {
   const { scale } = buildXScale(2);
   const people = [aristotle];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   const line = container.querySelector('.d3-line');
   const label = container.querySelector('.d3-name');
@@ -63,7 +63,7 @@ test("a person's name label is colored to match their lifespan line", () => {
 test('renders no stems', () => {
   const { scale } = buildXScale(2);
   const people = [aristotle, caesar];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   expect(container.querySelectorAll('.d3-stem')).toHaveLength(0);
 });
@@ -75,7 +75,7 @@ test('two overlapping lifespans render at different y positions (separate rows)'
     lifespan: { start: { year: -383 }, end: { year: -321 } },
   };
   const people = [aristotle, overlappingCaesar];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   const lines = Array.from(container.querySelectorAll('.d3-line'));
   const ys = lines.map((line) => line.getAttribute('y1'));
@@ -85,7 +85,7 @@ test('two overlapping lifespans render at different y positions (separate rows)'
 test('two non-overlapping lifespans render at the same y position (same row)', () => {
   const { scale } = buildXScale(2);
   const people = [aristotle, caesar];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   const lines = Array.from(container.querySelectorAll('.d3-line'));
   const ys = lines.map((line) => line.getAttribute('y1'));
@@ -97,7 +97,7 @@ test('the more famous of two overlapping people renders closer to the bottom of 
   const famousOverlap: Person = { ...caesar, id: 'Q-famous', fameScore: 999 };
   const obscureOverlap: Person = { ...aristotle, id: 'Q-obscure', lifespan: caesar.lifespan, fameScore: 1 };
   const people = [obscureOverlap, famousOverlap];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   const lines = Array.from(container.querySelectorAll('.d3-line'));
   const famousLine = lines.find((line) => line.getAttribute('data-entity-id') === 'Q-famous');
@@ -108,7 +108,7 @@ test('the more famous of two overlapping people renders closer to the bottom of 
 test('renders an empty svg for an empty people list', () => {
   const { scale } = buildXScale(2);
   const people: Person[] = [];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
 });
@@ -116,7 +116,7 @@ test('renders an empty svg for an empty people list', () => {
 test("a lifespan line carries data-entity-id/data-entity-type so TimelineCanvas's delegated click listener can resolve it", () => {
   const { scale } = buildXScale(2);
   const people = [aristotle];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   const line = container.querySelector('.d3-line');
   expect(line?.getAttribute('data-entity-id')).toBe('Q868');
@@ -126,7 +126,7 @@ test("a lifespan line carries data-entity-id/data-entity-type so TimelineCanvas'
 test('no longer renders a native <title> tooltip element — replaced by the click-to-open drawer', () => {
   const { scale } = buildXScale(2);
   const people = [aristotle];
-  const { container } = render(<PeopleLane people={people} xScale={scale} staticRowOf={computeStaticPersonRows(people)} />);
+  const { container } = render(<PeopleLane people={people} xScale={scale} personRowFor={computeRowAssignment(people, [], []).personRowFor} />);
 
   expect(container.querySelector('title')).toBeNull();
 });
@@ -137,12 +137,12 @@ test('relative row order between two people is preserved when a third, different
   const famous: Person = { ...aristotle, id: 'Q-famous', lifespan: overlappingSpan, fameScore: 999 };
   const middle: Person = { ...aristotle, id: 'Q-middle', lifespan: overlappingSpan, fameScore: 500 };
   const obscure: Person = { ...aristotle, id: 'Q-obscure', lifespan: overlappingSpan, fameScore: 1 };
-  // The static map is computed against the full 3-person universe — mirrors
+  // Row assignment is computed against the full 3-person universe — mirrors
   // how TimelineCanvas derives it from the unfiltered dataset — but only
   // famous/obscure are actually rendered, same as a filter hiding `middle`.
-  const staticRowOf = computeStaticPersonRows([famous, middle, obscure]);
+  const { personRowFor } = computeRowAssignment([famous, middle, obscure], [], []);
 
-  const { container } = render(<PeopleLane people={[famous, obscure]} xScale={scale} staticRowOf={staticRowOf} />);
+  const { container } = render(<PeopleLane people={[famous, obscure]} xScale={scale} personRowFor={personRowFor} />);
 
   const lines = Array.from(container.querySelectorAll('.d3-line'));
   const famousLine = lines.find((line) => line.getAttribute('data-entity-id') === 'Q-famous');

@@ -249,11 +249,11 @@ export function defaultPixelsPerYear(viewportWidthPx: number, visibleYears: numb
 
 // A fixed scale (not the live viewport's, not the live zoom's) used to
 // compute each lane's *static* row assignment (see map-to-items.ts's
-// computeStaticPersonRows/computeStaticConflictsMilestonesRows) — a row is
-// a permanent per-item identity, so the scale that decides it must never
-// change at runtime. FALLBACK_VIEWPORT_WIDTH_PX rather than a measured
-// width: this has to be a true constant, computable before anything has
-// rendered, not just stable-in-practice.
+// computeRowAssignment) — a row is a permanent per-item identity, so the
+// scale that decides it must never change at runtime.
+// FALLBACK_VIEWPORT_WIDTH_PX rather than a measured width: this has to be
+// a true constant, computable before anything has rendered, not just
+// stable-in-practice.
 export const REFERENCE_PIXELS_PER_YEAR = defaultPixelsPerYear(FALLBACK_VIEWPORT_WIDTH_PX);
 
 export function zoomIn(pixelsPerYear: number, viewportWidthPx: number): number {
