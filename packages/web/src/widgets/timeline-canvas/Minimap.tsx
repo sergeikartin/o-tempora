@@ -38,14 +38,14 @@ interface MinimapProps {
   people: Person[];
   conflicts: ConflictEntry[];
   milestones: Milestone[];
-  // Each item's permanent row identity, computed once against the full,
-  // unfiltered datasets — the same maps PeopleLane/ConflictsMilestonesLane
-  // render with. The Row Depth profile narrows these to the currently-
-  // filtered people/conflicts/milestones via compactRows (map-to-items.ts),
-  // exactly like each lane does, so the depth reported here always matches
-  // what's actually stacked on canvas.
-  staticPersonRowOf: Map<string, number>;
-  staticConflictsMilestonesRowOf: Map<string, number>;
+  // Resolves an id set to its Row Depth — the same resolvers
+  // PeopleLane/ConflictsMilestonesLane render with (map-to-items.ts's
+  // computeRowAssignment). The Row Depth profile below calls these with the
+  // currently-filtered people/conflicts/milestones ids, exactly like each
+  // lane does, so the depth reported here always matches what's actually
+  // stacked on canvas.
+  personRowFor: (ids: string[]) => Map<string, number>;
+  eventsRowFor: (ids: string[]) => Map<string, number>;
   // The live (current-zoom) scroll geometry, same values TimelineCanvas
   // already tracks for the lanes/Year Axis — used only for the draggable
   // viewport-rectangle overlay's ratio math, never for the Row Depth
@@ -84,8 +84,8 @@ export function Minimap({
   people,
   conflicts,
   milestones,
-  staticPersonRowOf,
-  staticConflictsMilestonesRowOf,
+  personRowFor,
+  eventsRowFor,
   totalWidth,
   viewportWidthPx,
   scrollLeft,
@@ -104,24 +104,15 @@ export function Minimap({
   // math below and the century-tick label spacing further down need it.
   const effectiveViewportWidthPx = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
 
-  // The same fixed Reference Scale computeStaticPersonRows/
-  // computeStaticConflictsMilestonesRows use for the lanes' own static row
-  // assignment (map-to-items.ts) — not the live measured viewport width,
-  // which would pack rows differently (row-gap/label widths are fixed pixel
-  // quantities, so a different pixels-per-year changes how many overlap) and
-  // make the Row Depth shown here disagree with what the canvas actually
-  // renders (ADR 0004).
+  // The same fixed Reference Scale computeRowAssignment's static row
+  // assignment uses (map-to-items.ts) — not the live measured viewport
+  // width, which would pack rows differently (row-gap/label widths are
+  // fixed pixel quantities, so a different pixels-per-year changes how many
+  // overlap) and make the Row Depth shown here disagree with what the
+  // canvas actually renders (ADR 0004).
   const profile = useMemo(
-    () =>
-      computeDensityProfile(
-        people,
-        conflicts,
-        milestones,
-        REFERENCE_PIXELS_PER_YEAR,
-        staticPersonRowOf,
-        staticConflictsMilestonesRowOf,
-      ),
-    [people, conflicts, milestones, staticPersonRowOf, staticConflictsMilestonesRowOf],
+    () => computeDensityProfile(people, conflicts, milestones, REFERENCE_PIXELS_PER_YEAR, personRowFor, eventsRowFor),
+    [people, conflicts, milestones, personRowFor, eventsRowFor],
   );
   const bucketCount = profile.years.length;
   const maxPeopleDepth = Math.max(1, ...profile.peopleDepth);

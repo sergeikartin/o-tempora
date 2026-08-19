@@ -1,6 +1,6 @@
 import { test, expect } from 'vitest';
 import { centuryTicksInRange, computeDensityProfile, logScaleHeightPx } from './minimap';
-import { computeStaticConflictsMilestonesRows, computeStaticPersonRows } from './map-to-items';
+import { computeRowAssignment } from './map-to-items';
 import { PAN_MIN_DATE } from '../../shared/config';
 import { today } from '../../shared/lib/dates';
 import { centuryBoundariesInRange } from '../../shared/lib/format-year';
@@ -9,18 +9,12 @@ import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 const REFERENCE_PIXELS_PER_YEAR = 8;
 
 // Test-only helper mirroring TimelineCanvas: computeDensityProfile expects
-// the same static row-of maps the real lanes render with, narrowed to
-// whatever's passed in via compactRows — since none of these tests filter
-// their input, that's the entire, unfiltered set every time.
+// the same Row Depth resolvers the real lanes render with — since none of
+// these tests filter their input, that's a row assignment computed over
+// the entire, unfiltered set every time.
 function profileFor(people: Person[], conflicts: ConflictEntry[], milestones: Milestone[]) {
-  return computeDensityProfile(
-    people,
-    conflicts,
-    milestones,
-    REFERENCE_PIXELS_PER_YEAR,
-    computeStaticPersonRows(people),
-    computeStaticConflictsMilestonesRows(conflicts, milestones),
-  );
+  const { personRowFor, eventsRowFor } = computeRowAssignment(people, conflicts, milestones);
+  return computeDensityProfile(people, conflicts, milestones, REFERENCE_PIXELS_PER_YEAR, personRowFor, eventsRowFor);
 }
 
 function person(id: string, startYear: number, endYear: number, fameScore = 90): Person {
@@ -105,7 +99,7 @@ test("computeDensityProfile's People depth reflects each person's compacted stat
   // overlaps 'a' and is bumped to row 1. 'c' (fame 80) doesn't overlap 'a'
   // and reuses row 0.
   const all = [person('a', 1000, 1010, 100), person('b', 1005, 1015, 90), person('c', 1030, 1040, 80)];
-  const staticPersonRowOf = computeStaticPersonRows(all);
+  const { personRowFor, eventsRowFor } = computeRowAssignment(all, [], []);
   // Now filter 'a' out, as e.g. a fame-score filter would. A fresh
   // assignRows call over just [b, c] would give both row 0 (they never
   // overlap each other) — the bug this guards against. The real PeopleLane
@@ -113,14 +107,7 @@ test("computeDensityProfile's People depth reflects each person's compacted stat
   // (already contiguous here), keeping 'b' on its own row, so Row Depth
   // during 'b''s span must stay 2, not collapse to 1.
   const filtered = [all[1] as Person, all[2] as Person];
-  const profile = computeDensityProfile(
-    filtered,
-    [],
-    [],
-    REFERENCE_PIXELS_PER_YEAR,
-    staticPersonRowOf,
-    computeStaticConflictsMilestonesRows([], []),
-  );
+  const profile = computeDensityProfile(filtered, [], [], REFERENCE_PIXELS_PER_YEAR, personRowFor, eventsRowFor);
   const depthAtYear = (year: number) => {
     const bucket = profile.years.reduce((closest, candidate, i) => {
       const closestYear = profile.years[closest] ?? 0;

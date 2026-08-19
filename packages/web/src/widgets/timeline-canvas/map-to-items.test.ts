@@ -2,8 +2,7 @@ import { test, expect } from 'vitest';
 import {
   assignRows,
   compactRows,
-  computeStaticConflictsMilestonesRows,
-  computeStaticPersonRows,
+  computeRowAssignment,
   filterByFameScore,
   filterByMilestoneCategoryGroup,
   filterByOccupationDomain,
@@ -441,21 +440,21 @@ test("assignRows lets a lower-fame item slot in before an already-placed higher-
   expect(rows.get('obscure')).toBe(0);
 });
 
-// computeStaticPersonRows / computeStaticConflictsMilestonesRows / compactRows
-// — the static, filter/zoom-invariant row identity every lane derives its
-// own live per-render rows from (see options.ts's REFERENCE_PIXELS_PER_YEAR
-// and PeopleLane/ConflictsMilestonesLane's own use of these).
+// computeRowAssignment / compactRows — the static, filter/zoom-invariant
+// row identity every lane derives its own live per-render rows from (see
+// options.ts's REFERENCE_PIXELS_PER_YEAR and PeopleLane/
+// ConflictsMilestonesLane's own use of personRowFor/eventsRowFor).
 
-test('computeStaticPersonRows gives two time-overlapping people different rows, the more famous one row 0', () => {
+test('computeRowAssignment gives two time-overlapping people different rows, the more famous one row 0', () => {
   const famous: Person = { ...person, id: 'Q-famous', fameScore: 999 };
   const obscure: Person = { ...person, id: 'Q-obscure', fameScore: 1 };
-  const rows = computeStaticPersonRows([famous, obscure]);
+  const rows = computeRowAssignment([famous, obscure], [], []).personRowFor(['Q-famous', 'Q-obscure']);
   expect(rows.get('Q-famous')).toBe(0);
   expect(rows.get('Q-obscure')).not.toBe(0);
 });
 
-test('computeStaticConflictsMilestonesRows packs a non-overlapping Conflict and Milestone into the same row', () => {
-  const rows = computeStaticConflictsMilestonesRows([conflictWithEndYear], [milestone]);
+test('computeRowAssignment packs a non-overlapping Conflict and Milestone into the same row', () => {
+  const rows = computeRowAssignment([], [conflictWithEndYear], [milestone]).eventsRowFor([conflictWithEndYear.id, milestone.id]);
   expect(rows.get(conflictWithEndYear.id)).toBe(rows.get(milestone.id));
 });
 

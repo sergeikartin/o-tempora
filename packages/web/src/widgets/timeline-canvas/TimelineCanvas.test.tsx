@@ -1,6 +1,7 @@
 import { act, cleanup, fireEvent, render } from '@testing-library/react';
 import { test, expect, afterEach, vi } from 'vitest';
 import { TimelineCanvas } from './TimelineCanvas';
+import * as mapToItems from './map-to-items';
 import { zoomIn } from './options';
 import type { Milestone, Person, ConflictEntry, OccupationDomain, Region } from '../../shared/types';
 import type { ConflictsMilestonesFilterValue } from '../../shared/config';
@@ -100,6 +101,37 @@ test('renders both lanes, each populated from its own dataset', () => {
   expect(conflictsMilestonesSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(1); // association football
   expect(container.querySelector('.d3-name')?.textContent).toBe('Aristotle');
+});
+
+test('computes Row Depth once and threads the same resolvers to every consumer', () => {
+  const computeRowAssignment = vi.spyOn(mapToItems, 'computeRowAssignment');
+
+  render(
+    <TimelineCanvas
+      people={fixturePeople}
+      conflicts={fixtureConflicts}
+      milestones={fixtureMilestones}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={defaultSelectedDomains}
+      selectedRegions={defaultSelectedRegions}
+      selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
+      onEntityClick={noopEntityClick}
+      isFilterDrawerOpen={false}
+      onToggleFilterDrawer={() => {}}
+    />,
+  );
+
+  // TimelineCanvas computes Row Depth exactly once, from the full
+  // unfiltered datasets, and threads the resulting personRowFor/
+  // eventsRowFor down to PeopleLane, ConflictsMilestonesLane, and Minimap —
+  // no consumer is free to derive its own. A second call here would mean a
+  // consumer (or a future one) recomputed row assignment independently,
+  // which is exactly what let the Minimap's reported Row Depth drift out of
+  // sync with the lanes before this was fixed (see ADR 0007's addendum).
+  expect(computeRowAssignment).toHaveBeenCalledTimes(1);
+  expect(computeRowAssignment).toHaveBeenCalledWith(fixturePeople, fixtureConflicts, fixtureMilestones);
+
+  computeRowAssignment.mockRestore();
 });
 
 test('the two lane sections and every year axis share the same rendered width', () => {
