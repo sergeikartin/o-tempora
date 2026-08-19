@@ -1,12 +1,15 @@
-.legend {
+.list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-/* Pill-shaped toggle button — same shape the old visual-only Legend pill
-   used, now a real <button> so it's keyboard/screen-reader operable. */
+.listWrap {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .pill {
   display: flex;
   align-items: center;
@@ -26,6 +29,10 @@
     background-color var(--motion-duration-fast) var(--motion-easing);
 }
 
+.pillWrap {
+  width: auto;
+}
+
 .pill:hover {
   border-color: var(--color-border-strong);
   background: var(--color-bg-surface);
@@ -36,10 +43,6 @@
   outline-offset: 1px;
 }
 
-/* Active state doesn't rely on the swatch color alone (some domain hues sit
-   close together) — a bolder border/background plus font-weight carries it
-   independently, same "selected" language as color-accent-selected use
-   elsewhere in the app. */
 .pillActive {
   border-color: var(--color-accent-selected);
   background: var(--color-bg-surface);
@@ -48,8 +51,7 @@
 }
 
 /* Same specificity as .pill:hover — placed after it so the selected look
-   (accent border) survives hovering an already-active pill instead of
-   getting overridden by the plain hover border-strong. */
+   (accent border) survives hovering an already-active pill. */
 .pillActive:hover {
   border-color: var(--color-accent-selected);
 }

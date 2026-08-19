@@ -1,17 +1,9 @@
-import { useState } from 'react';
+import { useMultiSelectFilter } from '../../../shared/lib/useMultiSelectFilter';
 import type { OccupationDomain } from '../../../shared/types';
 
 // Session-only Occupation Domain filter state (no persistence — resets on
-// reload, same convention as useFameScoreFilters). Multi-select toggle set:
-// empty means unfiltered.
+// reload).
 export function useOccupationDomainFilter() {
-  const [selectedDomains, setSelectedDomains] = useState<OccupationDomain[]>([]);
-
-  function toggleDomain(domain: OccupationDomain) {
-    setSelectedDomains((current) =>
-      current.includes(domain) ? current.filter((selected) => selected !== domain) : [...current, domain],
-    );
-  }
-
-  return { selectedDomains, toggleDomain };
+  const { selected, toggle } = useMultiSelectFilter<OccupationDomain>();
+  return { selectedDomains: selected, toggleDomain: toggle };
 }
