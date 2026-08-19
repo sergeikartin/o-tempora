@@ -1,6 +1,6 @@
-# O tempora
+# O Tempora
 
-**World History Timeline** — a read-only, continuously zoomable visualization of world history (~800 BCE–present). Three lanes — **People**, **Conflicts**, and **Milestones** — hardcoded ahead of time, with pan/zoom, fame-based density filtering, and occupation/region filters. No accounts, no editing, no live data fetching.
+**Every life in context** — a read-only, continuously zoomable visualization of world history (~800 BCE–present). Three lanes — **People**, **Conflicts**, and **Milestones** — hardcoded ahead of time, with pan/zoom, fame-based density filtering, and occupation/region filters. No accounts, no editing, no live data fetching.
 
 **Live site:** [otempora.info](https://otempora.info) ([Russian](https://otempora.info/ru/))
 
