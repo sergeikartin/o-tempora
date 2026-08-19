@@ -67,7 +67,7 @@
     "name": "French Revolution",
     "category": "revolution",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 90,
     "tagline": "revolution in France from 1789 to 1799",
@@ -111,7 +111,7 @@
     "name": "Vietnam War",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "south-eastern-asia"
     ],
     "fameScore": 89,
     "tagline": "armed conflict in Vietnam, Laos, and Cambodia between North Vietnam and South Vietnam, from 1955 to 1975",
@@ -134,7 +134,7 @@
     "name": "full-scale Russo-Ukrainian war",
     "category": "war",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 88,
     "tagline": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War",
@@ -171,7 +171,7 @@
     "name": "Korean War",
     "category": "war",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 86,
     "tagline": "war between North and South Korea, 1950–1953",
@@ -194,7 +194,7 @@
     "name": "Russian Revolution",
     "category": "revolution",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 84,
     "tagline": "1917-1922 political change in Russia",
@@ -252,7 +252,7 @@
     "name": "Thirty Years' War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 84,
     "tagline": "war principally fought in Central Europe from 1618 to 1648",
@@ -273,7 +273,7 @@
     "name": "Spanish Civil War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 84,
     "tagline": "war between the Republicans and the Nationalists in Spain from 1936 to 1939",
@@ -296,7 +296,7 @@
     "name": "Syrian Civil War",
     "category": "war",
     "regionTags": [
-      "middle-east"
+      "western-asia"
     ],
     "fameScore": 84,
     "tagline": "2011–2024 armed conflict in Syria",
@@ -320,7 +320,7 @@
     "name": "atomic bombings of Hiroshima and Nagasaki",
     "category": "military-operation",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 84,
     "tagline": "1945 use of nuclear weapons against Japan in World War II",
@@ -337,7 +337,7 @@
     "name": "Cultural Revolution",
     "category": "revolution",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 83,
     "tagline": "1966–1976 Maoist sociopolitical movement in China",
@@ -360,7 +360,8 @@
     "name": "Gaza War",
     "category": "war",
     "regionTags": [
-      "middle-east"
+      "western-asia",
+      "southern-asia"
     ],
     "fameScore": 83,
     "tagline": "armed conflict around the Gaza Strip that started on 7 October 2023",
@@ -485,7 +486,7 @@
     "name": "Iranian Revolution",
     "category": "revolution",
     "regionTags": [
-      "middle-east"
+      "southern-asia"
     ],
     "fameScore": 81,
     "tagline": "1978–1979 revolution that overthrew the Iranian monarchy",
@@ -573,7 +574,8 @@
     "name": "Winter War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "eastern-europe",
+      "northern-europe"
     ],
     "fameScore": 81,
     "tagline": "1939–1940 war between the Soviet Union and Finland",
@@ -616,7 +618,7 @@
     "name": "Falklands War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 81,
     "tagline": "undeclared war between Argentina and the United Kingdom in 1982",
@@ -638,7 +640,7 @@
     "name": "Attack on Pearl Harbor",
     "category": "military-operation",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 81,
     "tagline": "1941 Japanese surprise attack on the U.S",
@@ -740,7 +742,7 @@
     "name": "Eastern Front",
     "category": "war",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 80,
     "tagline": "1941–1945 World War II theater",
@@ -786,7 +788,7 @@
     "name": "American Revolution",
     "category": "revolution",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 79,
     "tagline": "revolution establishing the United States of America",
@@ -807,7 +809,7 @@
     "name": "Cuban Revolution",
     "category": "revolution",
     "regionTags": [
-      "americas"
+      "caribbean"
     ],
     "fameScore": 79,
     "tagline": "revolution in Cuba starting in 1953 culminating in 1959",
@@ -845,7 +847,7 @@
     "name": "War in Afghanistan (2001–2021)",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 79,
     "tagline": "armed conflict between NATO countries and Afghanistan from 2001 to 2021",
@@ -892,8 +894,8 @@
     "name": "Fall of Constantinople",
     "category": "military-operation",
     "regionTags": [
-      "europe",
-      "middle-east"
+      "southern-europe",
+      "western-asia"
     ],
     "fameScore": 79,
     "tagline": "1453 capture of the Byzantine capital by the Ottoman Empire",
@@ -916,7 +918,7 @@
     "name": "Chinese Civil War",
     "category": "war",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 79,
     "tagline": "The civil war between the government of the Republic of China and the Chinese Communist Party",
@@ -939,7 +941,7 @@
     "name": "Wars of the Roses",
     "category": "war",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 78,
     "tagline": "dynastic civil war in England from 1455 to 1487",
@@ -963,7 +965,7 @@
     "name": "Indian Mutiny of 1857",
     "category": "rebellion",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 78,
     "tagline": "1857–58 uprising against British Company rule",
@@ -1054,8 +1056,8 @@
     "name": "Boxer Rebellion",
     "category": "rebellion",
     "regionTags": [
-      "east-asia",
-      "europe"
+      "eastern-asia",
+      "western-europe"
     ],
     "fameScore": 78,
     "tagline": "anti-imperialist uprising which took place in China 1899-1901",
@@ -1078,7 +1080,7 @@
     "name": "Mexican-American War",
     "category": "war",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 78,
     "tagline": "military conflict between the United States of America and Mexico from 1846 to 1848",
@@ -1101,7 +1103,7 @@
     "name": "Euromaidan",
     "category": "coup-d-etat",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 78,
     "tagline": "2013–2014 pro-european protests in Ukraine",
@@ -1125,7 +1127,7 @@
     "name": "January 6 United States Capitol attack",
     "category": "rebellion",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 78,
     "tagline": "2021 attempt to prevent the U.S. presidential electoral vote count",
@@ -1208,7 +1210,7 @@
     "name": "Hungarian Revolution of 1956",
     "category": "rebellion",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 77,
     "tagline": "1956 revolution in Hungary",
@@ -1315,7 +1317,7 @@
     "name": "Mexican Revolution",
     "category": "revolution",
     "regionTags": [
-      "americas"
+      "central-america"
     ],
     "fameScore": 77,
     "tagline": "nationwide armed struggle in Mexico (1910–1920)",
@@ -1360,7 +1362,7 @@
     "name": "First Opium War",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 76,
     "tagline": "war between Great Britain and China in the 19th century",
@@ -1383,7 +1385,7 @@
     "name": "Second Punic War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 76,
     "tagline": "second war between the Roman Republic and Carthage, fought between 218 and 201 BCE",
@@ -1405,7 +1407,7 @@
     "name": "Russian annexation of Crimea",
     "category": "military-operation",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 76,
     "tagline": "annexation of Crimea into Russia in 2014",
@@ -1448,7 +1450,7 @@
     "name": "Second Nagorno-Karabakh War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "western-asia"
     ],
     "fameScore": 76,
     "tagline": "armed conflict in South Caucasus",
@@ -1472,7 +1474,7 @@
     "name": "Eighty Years' War",
     "category": "war-of-independence",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 76,
     "tagline": "16th- and 17th-century Dutch revolt against the Habsburgs",
@@ -1577,7 +1579,7 @@
     "name": "Russian Revolution of 1905",
     "category": "revolution",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 75,
     "tagline": "wave of mass political and social unrest that spread through vast areas of the Russian Empire",
@@ -1600,7 +1602,7 @@
     "name": "Norman conquest of England",
     "category": "military-operation",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 75,
     "tagline": "1066 invasion and conquest of England by Normans",
@@ -1622,7 +1624,7 @@
     "name": "Peninsular War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 75,
     "tagline": "1807–1814 conflict during the Napoleonic Wars",
@@ -1667,7 +1669,7 @@
     "name": "War of the Pacific",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 75,
     "tagline": "war between Chile and a Bolivian–Peruvian alliance",
@@ -1690,7 +1692,7 @@
     "name": "Taiping Rebellion",
     "category": "rebellion",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 75,
     "tagline": "Qing Dynasty era rebellion (1851–1864)",
@@ -1714,7 +1716,7 @@
     "name": "Glorious Revolution",
     "category": "revolution",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 75,
     "tagline": "British revolution of 1688",
@@ -1735,7 +1737,7 @@
     "name": "Haitian Revolution",
     "category": "revolution",
     "regionTags": [
-      "americas"
+      "caribbean"
     ],
     "fameScore": 74,
     "tagline": "1791 slave revolt in the French colony of Saint-Domingue",
@@ -1966,7 +1968,7 @@
     "name": "Battle of Plassey",
     "category": "military-operation",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 73,
     "tagline": "1757 battle which established the British Raj in India",
@@ -2046,7 +2048,7 @@
     "name": "Phoney War",
     "category": "military-operation",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 72,
     "tagline": "eight-month period at the start of World War II, during which there was only one limited military land operation on the Western Front",
@@ -2070,7 +2072,7 @@
     "name": "Greek Civil War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 72,
     "tagline": "1946–1949 civil war in Greece",
@@ -2093,7 +2095,7 @@
     "name": "1973 Chilean coup d'état",
     "category": "coup-d-etat",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 72,
     "tagline": "military overthrow of the Popular Unity coalition government in 1973 in Chile",
@@ -2111,7 +2113,8 @@
     "name": "Twelve-Day War",
     "category": "war",
     "regionTags": [
-      "middle-east"
+      "western-asia",
+      "southern-asia"
     ],
     "fameScore": 71,
     "tagline": "2025 armed conflict in the Middle East",
@@ -2156,7 +2159,7 @@
     "name": "Chaco War",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 71,
     "tagline": "war between Bolivia and Paraguay",
@@ -2279,7 +2282,7 @@
     "name": "Rif War",
     "category": "war",
     "regionTags": [
-      "africa"
+      "northern-africa"
     ],
     "fameScore": 68,
     "tagline": "1921–1926 war between Spain and Berber tribes of Morocco",
@@ -2302,7 +2305,7 @@
     "name": "Battle of Adwa",
     "category": "military-operation",
     "regionTags": [
-      "africa"
+      "eastern-africa"
     ],
     "fameScore": 68,
     "tagline": "battle between the Ethiopian Empire and the Kingdom of Italy near the town of Adwa, the climactic battle of the First Italo-Ethiopian War, securing Ethiopian sovereignty",
@@ -2363,7 +2366,7 @@
     "name": "Genpei War",
     "category": "war",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 66,
     "tagline": "conflict during late-Heian period of Japan",
@@ -2427,7 +2430,7 @@
     "name": "Granada War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 66,
     "tagline": "1482–1492 war",
@@ -2468,7 +2471,7 @@
     "name": "War of Devolution",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 65,
     "tagline": "war between France and Spain for the Spanish Netherlands (1667–1668)",
@@ -2553,7 +2556,7 @@
     "name": "Thousand Days' War",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 65,
     "tagline": "1899–1902 civil war in Colombia",
@@ -2577,7 +2580,7 @@
     "name": "Ōnin War",
     "category": "war",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 64,
     "tagline": "15th-century civil war in Japan",
@@ -2619,7 +2622,7 @@
     "name": "Bleeding Kansas",
     "category": "rebellion",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 64,
     "tagline": "violent political confrontations in the United States centered around slavery",
@@ -2675,7 +2678,7 @@
     "name": "Carnatic Wars",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 63,
     "tagline": "18th-century wars between the French and the British",
@@ -2719,7 +2722,7 @@
     "name": "First Anglo-Maratha War",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 63,
     "tagline": "war between the British East India Company and the Maratha Empire, 1775-1782",
@@ -2741,7 +2744,7 @@
     "name": "Red Turban Rebellion",
     "category": "rebellion",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 63,
     "tagline": "Revolt against the Yuan dynasty in China (1351–1368)",
@@ -2763,7 +2766,7 @@
     "name": "Lamian War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 62,
     "tagline": "fought by a coalition of Greek cities against Macedon and its ally Boeotia",
@@ -2785,7 +2788,7 @@
     "name": "Arauco War",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 62,
     "tagline": "war between Spaniards and Mapuche people in Chile",
@@ -2806,7 +2809,7 @@
     "name": "Second Anglo-Maratha War",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 62,
     "tagline": "conflict between the British East India Company and the Maratha Empire",
@@ -2827,7 +2830,7 @@
     "name": "Third Anglo-Maratha War",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 62,
     "tagline": "conflict between the British East India Company and the Maratha Empire (1817–1819)",
@@ -2849,7 +2852,9 @@
     "id": "Q880629",
     "name": "Black War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "australia-and-new-zealand"
+    ],
     "fameScore": 62,
     "tagline": "period of violent conflict between British colonists and Aboriginal Australians in Tasmania",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_War",
@@ -2909,7 +2914,7 @@
     "name": "Second Barons' War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 60,
     "tagline": "1260s civil war in England",
@@ -2973,7 +2978,7 @@
     "name": "King George's War",
     "category": "war",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 60,
     "tagline": "North American theater of the War of the Austrian Succession",
@@ -3034,7 +3039,7 @@
     "name": "First Messenian War",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 57,
     "tagline": "war between Messenia and Sparta",
@@ -3095,7 +3100,7 @@
     "name": "Jinshin War",
     "category": "rebellion",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 56,
     "tagline": "672 succession war in Japan",
@@ -3135,7 +3140,7 @@
     "name": "Count's Feud",
     "category": "war",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 55,
     "tagline": "war of succession (1534–36) that brought about the Reformation in Denmark",
@@ -3351,7 +3356,7 @@
     "name": "2026 Iran War",
     "category": "military-operation",
     "regionTags": [
-      "middle-east"
+      "southern-asia"
     ],
     "fameScore": 47,
     "tagline": "Ongoing armed conflict in West Asia",
@@ -3367,7 +3372,7 @@
     "name": "Emboabas' War",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 47,
     "tagline": "conflict in colonial-era Brazil",
@@ -3396,7 +3401,7 @@
     "name": "Naning War",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "south-eastern-asia"
     ],
     "fameScore": 33,
     "tagline": "19th century conflict",

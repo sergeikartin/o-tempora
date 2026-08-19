@@ -9,7 +9,7 @@ test("tagCuratedMilestone passes the given category straight through", () => {
 
 test("tagCuratedMilestone maps countries to regionTags", () => {
   const { regionTags } = tagCuratedMilestone("transportation", ["Q142"]);
-  assert.deepEqual(regionTags, ["europe"]);
+  assert.deepEqual(regionTags, ["western-europe"]);
 });
 
 test("tagCuratedConflict passes the given category straight through", () => {
@@ -19,5 +19,5 @@ test("tagCuratedConflict passes the given category straight through", () => {
 
 test("tagCuratedConflict maps countries to regionTags the same way tagCuratedMilestone does", () => {
   const { regionTags } = tagCuratedConflict("war", ["Q142"]);
-  assert.deepEqual(regionTags, ["europe"]);
+  assert.deepEqual(regionTags, ["western-europe"]);
 });

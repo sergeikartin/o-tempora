@@ -1,334 +1,417 @@
 import type { Region } from "@same-sky/shared-types";
 
-// Explicit Wikidata country/state Q-ID -> app Region, built by hand against
-// the distinct country Q-IDs actually present in the grouped pool (see
-// list-unmapped-countries.ts). Historical polities are mapped to the region
-// their territory geographically corresponds to, not a current-day
-// successor state's name. Oceania/Australia has no region in the app's
-// fixed set (per project-overview.md) — those Q-IDs are deliberately left
-// unmapped, resolving to "no region" rather than inventing a ninth region.
+// Explicit Wikidata country/state Q-ID -> app Region (the UN M49 22-value
+// sub-region scheme, shared with People's Pantheon-sourced tags — see
+// un-region-categories.ts). Built by hand against the distinct country
+// Q-IDs actually present in the grouped pool (see list-unmapped-countries.ts).
+// Historical polities are mapped to the sub-region their territory
+// geographically corresponds to today, not a current-day successor state's
+// name — e.g. the Byzantine Empire resolves to southern-europe (its
+// Greek/Balkan core) rather than western-asia (modern Turkey, where its
+// capital Constantinople sits), preserving the historical-polity awareness
+// this table exists for. Where an entry's modern-day territory maps
+// cleanly onto one of un-region-categories.ts's Pantheon country names,
+// that table's value is reused directly, so the two taxonomies agree.
 export const REGION_CATEGORIES: Record<string, Region> = {
-  // europe
-  Q222: "europe", // Albania
-  Q40: "europe", // Austria
-  Q28513: "europe", // Austria-Hungary
-  Q131964: "europe", // Austrian Empire
-  Q184: "europe", // Belarus
-  Q31: "europe", // Belgium
-  Q225: "europe", // Bosnia and Herzegovina
-  Q1274468: "europe", // Republic of Bosnia and Herzegovina
-  Q207162: "europe", // Bourbon Restoration in France
-  Q8680: "europe", // British Empire
-  Q219: "europe", // Bulgaria
-  Q420759: "europe", // Second Bulgarian Empire
-  Q12544: "europe", // Byzantine Empire
-  Q31929: "europe", // Carolingian Empire
-  Q224: "europe", // Croatia
-  Q204920: "europe", // Crown of Aragon
-  Q217196: "europe", // Crown of Castile
-  Q213: "europe", // Czech Republic
-  Q33946: "europe", // Czechoslovakia
-  Q152750: "europe", // Protectorate of Bohemia and Moravia
-  Q42585: "europe", // Kingdom of Bohemia
-  Q35: "europe", // Denmark
-  Q756617: "europe", // Kingdom of Denmark
-  Q16150196: "europe", // Donetsk People's Republic
-  Q47261: "europe", // Duchy of Bavaria
-  Q693570: "europe", // Duchy of Ferrara
-  Q153529: "europe", // Duchy of Milan
-  Q170072: "europe", // Dutch Republic
-  Q191: "europe", // Estonia
-  Q33: "europe", // Finland
-  Q142: "europe", // France
-  Q146246: "europe", // Francia
-  Q70972: "europe", // Kingdom of France
-  Q501303: "europe", // Free City of Krakow
-  Q58296: "europe", // French First Republic
-  Q71092: "europe", // Second French Empire
-  Q230: "europe", // Georgia
-  Q154667: "europe", // Kingdom of Georgia
-  Q16957: "europe", // German Democratic Republic
-  Q43287: "europe", // German Empire
-  Q1206012: "europe", // German Reich
-  Q183: "europe", // Germany
-  Q7318: "europe", // Nazi Germany
-  Q41304: "europe", // Weimar Republic
-  Q154849: "europe", // Grand Duchy of Tuscany
-  Q170770: "europe", // Grand Principality of Moscow
-  Q83546: "europe", // Grand Principality of Vladimir
-  Q41: "europe", // Greece
-  Q223: "europe", // Greenland
-  Q153136: "europe", // Habsburg monarchy
-  Q1031430: "europe", // Habsburg Netherlands
-  Q766543: "europe", // Hispanic Monarchy
-  Q12548: "europe", // Holy Roman Empire
-  Q3355522: "europe", // Hospitaller Malta
-  Q28: "europe", // Hungary
-  Q171150: "europe", // Kingdom of Hungary
-  Q600018: "europe", // Kingdom of Hungary
-  Q16056854: "europe", // Kingdom of Hungary
-  Q10295972: "europe", // Hunnic Empire
-  Q189: "europe", // Iceland
-  Q62389: "europe", // Icelandic Commonwealth
-  Q27: "europe", // Ireland
-  Q215530: "europe", // Kingdom of Ireland
-  Q38: "europe", // Italy
-  Q172579: "europe", // Kingdom of Italy
-  Q838931: "europe", // Kingdom of Italy
-  Q148540: "europe", // Republic of Florence
-  Q174306: "europe", // Republic of Genoa
-  Q1365493: "europe", // Republic of Pisa
-  Q4948: "europe", // Republic of Venice
-  Q1108445: "europe", // Kievan Rus'
-  Q200262: "europe", // Kingdom of Navarre
-  Q107299: "europe", // Kingdom of Northumbria
-  Q105313: "europe", // Kingdom of Wessex
-  Q161885: "europe", // Kingdom of Great Britain
-  Q174193: "europe", // United Kingdom of Great Britain and Ireland
-  Q179876: "europe", // Kingdom of England
-  Q230791: "europe", // Kingdom of Scotland
-  Q1649871: "europe", // Kingdom of Poland
-  Q45670: "europe", // Kingdom of Portugal
-  Q27306: "europe", // Kingdom of Prussia
-  Q38872: "europe", // Prussia
-  Q153015: "europe", // Kingdom of Saxony
-  Q188586: "europe", // Kingdom of Sicily
-  Q3399982: "europe", // Kingdom of Spain
-  Q29999: "europe", // Kingdom of the Netherlands
-  Q15864: "europe", // United Kingdom of the Netherlands
-  Q2940142: "europe", // Kingdom of Toledo
-  Q178897: "europe", // Latin Empire
-  Q211: "europe", // Latvia
-  Q37: "europe", // Lithuania
-  Q6673921: "europe", // Lotharingia
-  Q16746854: "europe", // Luhansk People's Republic
-  Q83958: "europe", // Macedonia
-  Q13405524: "europe", // Macedonian Empire
-  Q233: "europe", // Malta
-  Q221: "europe", // North Macedonia
-  Q23681: "europe", // Northern Cyprus
-  Q229: "europe", // Cyprus
-  Q27996474: "europe", // Northern Low Countries
-  Q6581823: "europe", // Southern Netherlands
-  Q622783: "europe", // Spanish Netherlands
-  Q330533: "europe", // Seventeen Provinces
-  Q55: "europe", // Netherlands
-  Q20: "europe", // Norway
-  Q435583: "europe", // Old Swiss Confederacy
-  Q39: "europe", // Switzerland
-  Q583038: "europe", // Ostrogothic Kingdom
-  Q42834: "europe", // Western Roman Empire
-  Q1747689: "europe", // Ancient Rome
-  Q36: "europe", // Poland
-  Q211274: "europe", // Polish People's Republic
-  Q45: "europe", // Portugal
-  Q1483510: "europe", // Principality of Wales
-  Q389004: "europe", // Principality of Wallachia
-  Q124653007: "europe", // realm of the United Kingdom
-  Q145: "europe", // United Kingdom
-  Q31354462: "europe", // Republic of Abkhazia
-  Q244165: "europe", // Republic of Artsakh
-  Q15925436: "europe", // Republic of Crimea
-  Q1247508: "europe", // Romain-Gaul domain of Soissons
-  Q218: "europe", // Romania
-  Q159: "europe", // Russia
-  Q34266: "europe", // Russian Empire
-  Q139319: "europe", // Russian Republic
-  Q2305208: "europe", // Russian Socialist Federative Soviet Republic
-  Q15180: "europe", // Soviet Union
-  Q186096: "europe", // Tsardom of Russia
-  Q403: "europe", // Serbia
-  Q878319: "europe", // Serbian Despotate
-  Q214: "europe", // Slovakia
-  Q215: "europe", // Slovenia
-  Q23427: "europe", // South Ossetia
-  Q29: "europe", // Spain
-  Q80702: "europe", // Spanish Empire
-  Q6123746: "europe", // Spanish Republic at War
-  Q34: "europe", // Sweden
-  Q215443: "europe", // Swedish Empire
-  Q212: "europe", // Ukraine
-  Q243610: "europe", // Ukrainian People's Republic
-  Q457167: "europe", // West Ukrainian People's Republic
-  Q114318324: "europe", // Kherson Oblast
-  Q114318415: "europe", // Zaporozhye Oblast
-  Q237: "europe", // Vatican City
-  Q46370: "europe", // West Francia
-  Q227: "europe", // Azerbaijan
-  Q131337: "europe", // Azerbaijan Soviet Socialist Republic
-  Q399: "europe", // Armenia
-  Q244796: "europe", // Achaean League
-  Q3606949: "europe", // Agyrion
-  Q3607380: "europe", // Akragas
-  Q833665: "europe", // Boeotian confederation
-  Q11266977: "europe", // Epirus
-  Q4420718: "europe", // Syracuse
-  Q5690: "europe", // Sparta
-  Q844930: "europe", // Classical Athens
-  Q1247159: "europe", // Messenia
-  Q42295059: "europe", // Mytilene
-  Q13580795: "europe", // Samos
-  Q636389: "europe", // Archbishopric of Magdeburg
-  Q1743884: "europe", // Kition (Cyprus)
-  Q170174: "europe", // Papal States
+  // australia-and-new-zealand
+  Q408: "australia-and-new-zealand", // Australia
+  Q664: "australia-and-new-zealand", // New Zealand
 
-  // east-asia
-  Q29520: "east-asia", // China
-  Q148: "east-asia", // People's Republic of China
-  Q13426199: "east-asia", // Republic of China
-  Q17: "east-asia", // Japan
-  Q188712: "east-asia", // Empire of Japan
-  Q30623: "east-asia", // Manchukuo
-  Q9903: "east-asia", // Ming dynasty
-  Q7462: "east-asia", // Song dynasty
-  Q1065073: "east-asia", // Song
-  Q9683: "east-asia", // Tang dynasty
-  Q8733: "east-asia", // Qing dynasty
-  Q7183: "east-asia", // Qin dynasty
-  Q34756: "east-asia", // Qin
-  Q837855: "east-asia", // Qi
-  Q912068: "east-asia", // Wu
-  Q736936: "east-asia", // Lu
-  Q227007: "east-asia", // Zhu
-  Q35216: "east-asia", // Zhou dynasty
-  Q1072949: "east-asia", // Western Han
-  Q504769: "east-asia", // Xin dynasty
-  Q7313: "east-asia", // Yuan dynasty
-  Q711: "east-asia", // Mongolia
-  Q12557: "east-asia", // Mongol Empire
-  Q212056: "east-asia", // Mongolian People's Republic
-  Q423: "east-asia", // North Korea
-  Q884: "east-asia", // South Korea
-  Q491559: "east-asia", // First Republic of South Korea
-  Q484104: "east-asia", // United States Army Military Government in Korea
-  Q865: "east-asia", // Taiwan
-  Q2444884: "east-asia", // Tibet
+  // caribbean
+  Q781: "caribbean", // Antigua and Barbuda
+  Q21203: "caribbean", // Aruba
+  Q241: "caribbean", // Cuba
+  Q25279: "caribbean", // Curaçao
+  Q786: "caribbean", // Dominican Republic
+  Q769: "caribbean", // Grenada
+  Q766: "caribbean", // Jamaica
+  Q861551: "caribbean", // Saint-Domingue
+  Q760: "caribbean", // Saint Lucia
+  Q757: "caribbean", // Saint Vincent and the Grenadines
+  Q26273: "caribbean", // Sint Maarten
+  Q754: "caribbean", // Trinidad and Tobago
 
-  // south-asia (incl. Southeast Asia, uncovered by the fixed 6-region set)
-  Q889: "south-asia", // Afghanistan
-  Q1415128: "south-asia", // Republic of Afghanistan
-  Q902: "south-asia", // Bangladesh
-  Q129286: "south-asia", // British Raj
-  Q112660052: "south-asia", // British India
-  Q668: "south-asia", // India
-  Q252: "south-asia", // Indonesia
-  Q2320255: "south-asia", // Islamic Emirate of Waziristan
-  Q813: "south-asia", // Kyrgyzstan
-  Q874: "south-asia", // Turkmenistan
-  Q62943: "south-asia", // Maurya empire
-  Q836: "south-asia", // Myanmar
-  Q843: "south-asia", // Pakistan
-  Q928: "south-asia", // Philippines
-  Q334: "south-asia", // Singapore
-  Q881: "south-asia", // Vietnam
-  Q180573: "south-asia", // South Vietnam
-  Q185682: "south-asia", // French Indochina
-  Q1081620: "south-asia", // Siam
-  Q833: "south-asia", // Malaysia
-  Q871091: "south-asia", // British Malaya
+  // central-america
+  Q2608489: "central-america", // Aztec Empire
+  Q800: "central-america", // Costa Rica
+  Q792: "central-america", // El Salvador
+  Q774: "central-america", // Guatemala
+  Q783: "central-america", // Honduras
+  Q96: "central-america", // Mexico
+  Q811: "central-america", // Nicaragua
+  Q804: "central-america", // Panama
 
-  // middle-east
-  Q12536: "middle-east", // Abbasid Caliphate
-  Q389688: "middle-east", // Achaemenid Empire
-  Q569107: "middle-east", // Anshan Persia
-  Q555994: "middle-east", // Aq Qoyunlu
-  Q63135869: "middle-east", // Ayyubid Sultanate
-  Q47690: "middle-east", // Babylonia
-  Q624887: "middle-east", // Neo-Babylonian Empire
-  Q79: "middle-east", // Egypt
-  Q11768: "middle-east", // Ancient Egypt
-  Q127861: "middle-east", // Khedivate of Egypt
-  Q124943: "middle-east", // Kingdom of Egypt
-  Q177819: "middle-east", // Old Kingdom of Egypt
-  Q3087763: "middle-east", // Republic of Egypt
-  Q370173: "middle-east", // Sultanate of Egypt
-  Q2320005: "middle-east", // Ptolemaic Kingdom
-  Q160307: "middle-east", // Fatimid Caliphate
-  Q47611: "middle-east", // Ephesus
-  Q5843680: "middle-east", // Halicarnassus
-  Q169460: "middle-east", // Miletus
-  Q107557833: "middle-east", // Sinope
-  Q679305: "middle-east", // Cyme
-  Q2022162: "middle-east", // Kingdom of Pergamon
-  Q975405: "middle-east", // Sultanate of Rum
-  Q249578: "middle-east", // Ghaznavid Empire
-  Q169977: "middle-east", // Hejaz
-  Q16000109: "middle-east", // Herodian Kingdom of Judea
-  Q794: "middle-east", // Iran
-  Q18234383: "middle-east", // Safavid Iran
-  Q796: "middle-east", // Iraq
-  Q3108185: "middle-east", // Ba'athist Iraq
-  Q801: "middle-east", // Israel
-  Q810: "middle-east", // Jordan
-  Q55502: "middle-east", // Kingdom of Jerusalem
-  Q822: "middle-east", // Lebanon
-  Q193714: "middle-east", // Mandatory Palestine
-  Q23792: "middle-east", // Palestine
-  Q219060: "middle-east", // Palestine
-  Q12560: "middle-east", // Ottoman Empire
-  Q846: "middle-east", // Qatar
-  Q12490507: "middle-east", // Rashidun Caliphate
-  Q12150341: "middle-east", // Samanid Empire
-  Q83891: "middle-east", // Sasanian Empire
-  Q851: "middle-east", // Saudi Arabia
-  Q93180: "middle-east", // Seleucid Empire
-  Q3708094: "middle-east", // Seljuk Empire
-  Q858: "middle-east", // Syria
-  Q484195: "middle-east", // Timurid Empire
-  Q43: "middle-east", // Turkey
-  Q8575586: "middle-east", // Umayyad Caliphate
-  Q805: "middle-east", // Yemen
-  Q138573104: "middle-east", // Kingdom of Tyre
+  // central-asia
+  Q232: "central-asia", // Kazakhstan
+  Q813: "central-asia", // Kyrgyzstan
+  Q12150341: "central-asia", // Samanid Empire
+  Q484195: "central-asia", // Timurid Empire
+  Q874: "central-asia", // Turkmenistan
 
-  // africa
-  Q199688: "africa", // Almohad Caliphate
-  Q2429397: "africa", // Ancient Carthage
-  Q963: "africa", // Botswana
-  Q1011: "africa", // Cape Verde
-  Q974: "africa", // Democratic Republic of the Congo
-  Q115: "africa", // Ethiopia
-  Q207521: "africa", // Ethiopian Empire
-  Q907234: "africa", // French protectorate in Morocco
-  Q457242: "africa", // Spanish protectorate in Morocco
-  Q153963: "africa", // German East Africa
-  Q622855: "africa", // Ifriqiya
-  Q284568: "africa", // Italian Libya
-  Q1016: "africa", // Libya
-  Q184536: "africa", // Mali Empire
-  Q1045: "africa", // Somalia
-  Q258: "africa", // South Africa
-  Q1039: "africa", // Sao Tome and Principe
-  Q924: "africa", // Tanzania
-  Q948: "africa", // Tunisia
-  Q1774: "africa", // Zanzibar Islands
-  Q729768: "africa", // Zulu Kingdom
+  // eastern-africa
+  Q115: "eastern-africa", // Ethiopia
+  Q207521: "eastern-africa", // Ethiopian Empire
+  Q153963: "eastern-africa", // German East Africa
+  Q114: "eastern-africa", // Kenya
+  Q1037: "eastern-africa", // Rwanda
+  Q1045: "eastern-africa", // Somalia
+  Q924: "eastern-africa", // Tanzania
+  Q1774: "eastern-africa", // Zanzibar Islands
 
-  // americas
-  Q781: "americas", // Antigua and Barbuda
-  Q414: "americas", // Argentina
-  Q750: "americas", // Bolivia
-  Q155: "americas", // Brazil
-  Q258532: "americas", // British America
-  Q16: "americas", // Canada
-  Q298: "americas", // Chile
-  Q739: "americas", // Colombia
-  Q81931: "americas", // Confederate States of America
-  Q800: "americas", // Costa Rica
-  Q804: "americas", // Panama
-  Q241: "americas", // Cuba
-  Q786: "americas", // Dominican Republic
-  Q736: "americas", // Ecuador
-  Q769: "americas", // Grenada
-  Q96: "americas", // Mexico
-  Q811: "americas", // Nicaragua
-  Q419: "americas", // Peru
-  Q170604: "americas", // New France
-  Q861551: "americas", // Saint-Domingue
-  Q179997: "americas", // Thirteen Colonies
-  Q30: "americas", // United States
-  Q77: "americas", // Uruguay
-  Q717: "americas", // Venezuela
-  Q210551: "americas", // Viceroyalty of the Rio de la Plata
-  Q2608489: "americas", // Aztec Empire
-  Q26273: "americas", // Sint Maarten
+  // eastern-asia
+  Q29520: "eastern-asia", // China
+  Q148: "eastern-asia", // People's Republic of China
+  Q13426199: "eastern-asia", // Republic of China
+  Q17: "eastern-asia", // Japan
+  Q188712: "eastern-asia", // Empire of Japan
+  Q14773: "eastern-asia", // Macau
+  Q30623: "eastern-asia", // Manchukuo
+  Q9903: "eastern-asia", // Ming dynasty
+  Q7462: "eastern-asia", // Song dynasty
+  Q1065073: "eastern-asia", // Song
+  Q9683: "eastern-asia", // Tang dynasty
+  Q8733: "eastern-asia", // Qing dynasty
+  Q7183: "eastern-asia", // Qin dynasty
+  Q34756: "eastern-asia", // Qin
+  Q837855: "eastern-asia", // Qi
+  Q912068: "eastern-asia", // Wu
+  Q736936: "eastern-asia", // Lu
+  Q227007: "eastern-asia", // Zhu
+  Q35216: "eastern-asia", // Zhou dynasty
+  Q1072949: "eastern-asia", // Western Han
+  Q504769: "eastern-asia", // Xin dynasty
+  Q7313: "eastern-asia", // Yuan dynasty
+  Q711: "eastern-asia", // Mongolia
+  Q12557: "eastern-asia", // Mongol Empire
+  Q212056: "eastern-asia", // Mongolian People's Republic
+  Q423: "eastern-asia", // North Korea
+  Q884: "eastern-asia", // South Korea
+  Q491559: "eastern-asia", // First Republic of South Korea
+  Q484104: "eastern-asia", // United States Army Military Government in Korea
+  Q865: "eastern-asia", // Taiwan
+  Q2444884: "eastern-asia", // Tibet
+
+  // eastern-europe
+  Q184: "eastern-europe", // Belarus
+  Q219: "eastern-europe", // Bulgaria
+  Q420759: "eastern-europe", // Second Bulgarian Empire
+  Q213: "eastern-europe", // Czech Republic
+  Q33946: "eastern-europe", // Czechoslovakia
+  Q152750: "eastern-europe", // Protectorate of Bohemia and Moravia
+  Q42585: "eastern-europe", // Kingdom of Bohemia
+  Q16150196: "eastern-europe", // Donetsk People's Republic
+  Q501303: "eastern-europe", // Free City of Krakow
+  Q170770: "eastern-europe", // Grand Principality of Moscow
+  Q83546: "eastern-europe", // Grand Principality of Vladimir
+  Q28: "eastern-europe", // Hungary
+  Q171150: "eastern-europe", // Kingdom of Hungary
+  Q600018: "eastern-europe", // Kingdom of Hungary
+  Q16056854: "eastern-europe", // Kingdom of Hungary
+  Q10295972: "eastern-europe", // Hunnic Empire
+  Q1108445: "eastern-europe", // Kievan Rus'
+  Q1649871: "eastern-europe", // Kingdom of Poland
+  Q16746854: "eastern-europe", // Luhansk People's Republic
+  Q217: "eastern-europe", // Moldova
+  Q36: "eastern-europe", // Poland
+  Q211274: "eastern-europe", // Polish People's Republic
+  Q389004: "eastern-europe", // Principality of Wallachia
+  Q15925436: "eastern-europe", // Republic of Crimea
+  Q218: "eastern-europe", // Romania
+  Q159: "eastern-europe", // Russia
+  Q34266: "eastern-europe", // Russian Empire
+  Q139319: "eastern-europe", // Russian Republic
+  Q2305208: "eastern-europe", // Russian Socialist Federative Soviet Republic
+  Q15180: "eastern-europe", // Soviet Union
+  Q186096: "eastern-europe", // Tsardom of Russia
+  Q214: "eastern-europe", // Slovakia
+  Q212: "eastern-europe", // Ukraine
+  Q243610: "eastern-europe", // Ukrainian People's Republic
+  Q457167: "eastern-europe", // West Ukrainian People's Republic
+  Q114318324: "eastern-europe", // Kherson Oblast
+  Q114318415: "eastern-europe", // Zaporozhye Oblast
+
+  // middle-africa
+  Q974: "middle-africa", // Democratic Republic of the Congo
+  Q1009: "middle-africa", // Cameroon
+  Q1039: "middle-africa", // Sao Tome and Principe
+
+  // northern-africa
+  Q199688: "northern-africa", // Almohad Caliphate
+  Q2429397: "northern-africa", // Ancient Carthage
+  Q79: "northern-africa", // Egypt
+  Q11768: "northern-africa", // Ancient Egypt
+  Q127861: "northern-africa", // Khedivate of Egypt
+  Q124943: "northern-africa", // Kingdom of Egypt
+  Q177819: "northern-africa", // Old Kingdom of Egypt
+  Q3087763: "northern-africa", // Republic of Egypt
+  Q370173: "northern-africa", // Sultanate of Egypt
+  Q2320005: "northern-africa", // Ptolemaic Kingdom
+  Q160307: "northern-africa", // Fatimid Caliphate
+  Q63135869: "northern-africa", // Ayyubid Sultanate
+  Q907234: "northern-africa", // French protectorate in Morocco
+  Q457242: "northern-africa", // Spanish protectorate in Morocco
+  Q622855: "northern-africa", // Ifriqiya
+  Q284568: "northern-africa", // Italian Libya
+  Q1016: "northern-africa", // Libya
+  Q1028: "northern-africa", // Morocco
+  Q1049: "northern-africa", // Sudan
+  Q948: "northern-africa", // Tunisia
+  Q262: "northern-africa", // Algeria
+
+  // northern-america
+  Q258532: "northern-america", // British America
+  Q16: "northern-america", // Canada
+  Q81931: "northern-america", // Confederate States of America
+  Q223: "northern-america", // Greenland
+  Q170604: "northern-america", // New France
+  Q179997: "northern-america", // Thirteen Colonies
+  Q30: "northern-america", // United States
+
+  // northern-europe
+  Q8680: "northern-europe", // British Empire
+  Q35: "northern-europe", // Denmark
+  Q756617: "northern-europe", // Kingdom of Denmark
+  Q191: "northern-europe", // Estonia
+  Q33: "northern-europe", // Finland
+  Q189: "northern-europe", // Iceland
+  Q62389: "northern-europe", // Icelandic Commonwealth
+  Q27: "northern-europe", // Ireland
+  Q215530: "northern-europe", // Kingdom of Ireland
+  Q107299: "northern-europe", // Kingdom of Northumbria
+  Q105313: "northern-europe", // Kingdom of Wessex
+  Q161885: "northern-europe", // Kingdom of Great Britain
+  Q174193: "northern-europe", // United Kingdom of Great Britain and Ireland
+  Q179876: "northern-europe", // Kingdom of England
+  Q230791: "northern-europe", // Kingdom of Scotland
+  Q1483510: "northern-europe", // Principality of Wales
+  Q124653007: "northern-europe", // realm of the United Kingdom
+  Q145: "northern-europe", // United Kingdom
+  Q211: "northern-europe", // Latvia
+  Q37: "northern-europe", // Lithuania
+  Q20: "northern-europe", // Norway
+  Q34: "northern-europe", // Sweden
+  Q215443: "northern-europe", // Swedish Empire
+
+  // south-america
+  Q414: "south-america", // Argentina
+  Q750: "south-america", // Bolivia
+  Q155: "south-america", // Brazil
+  Q298: "south-america", // Chile
+  Q739: "south-america", // Colombia
+  Q736: "south-america", // Ecuador
+  Q734: "south-america", // Guyana
+  Q733: "south-america", // Paraguay
+  Q419: "south-america", // Peru
+  Q730: "south-america", // Suriname
+  Q77: "south-america", // Uruguay
+  Q717: "south-america", // Venezuela
+  Q210551: "south-america", // Viceroyalty of the Rio de la Plata
+
+  // south-eastern-asia
+  Q921: "south-eastern-asia", // Brunei
+  Q424: "south-eastern-asia", // Cambodia
+  Q188161: "south-eastern-asia", // Dutch East Indies
+  Q185682: "south-eastern-asia", // French Indochina
+  Q252: "south-eastern-asia", // Indonesia
+  Q833: "south-eastern-asia", // Malaysia
+  Q871091: "south-eastern-asia", // British Malaya
+  Q836: "south-eastern-asia", // Myanmar
+  Q928: "south-eastern-asia", // Philippines
+  Q334: "south-eastern-asia", // Singapore
+  Q1081620: "south-eastern-asia", // Siam
+  Q869: "south-eastern-asia", // Thailand
+  Q574: "south-eastern-asia", // Timor-Leste
+  Q881: "south-eastern-asia", // Vietnam
+  Q180573: "south-eastern-asia", // South Vietnam
+
+  // southern-africa
+  Q963: "southern-africa", // Botswana
+  Q1050: "southern-africa", // Eswatini
+  Q258: "southern-africa", // South Africa
+  Q729768: "southern-africa", // Zulu Kingdom
+
+  // southern-asia
+  Q889: "southern-asia", // Afghanistan
+  Q1415128: "southern-asia", // Republic of Afghanistan
+  Q389688: "southern-asia", // Achaemenid Empire
+  Q569107: "southern-asia", // Anshan Persia
+  Q555994: "southern-asia", // Aq Qoyunlu
+  Q902: "southern-asia", // Bangladesh
+  Q917: "southern-asia", // Bhutan
+  Q129286: "southern-asia", // British Raj
+  Q112660052: "southern-asia", // British India
+  Q249578: "southern-asia", // Ghaznavid Empire
+  Q668: "southern-asia", // India
+  Q794: "southern-asia", // Iran
+  Q18234383: "southern-asia", // Safavid Iran
+  Q826: "southern-asia", // Maldives
+  Q62943: "southern-asia", // Maurya empire
+  Q837: "southern-asia", // Nepal
+  Q843: "southern-asia", // Pakistan
+  Q83891: "southern-asia", // Sasanian Empire
+  Q3708094: "southern-asia", // Seljuk Empire
+  Q854: "southern-asia", // Sri Lanka
+  Q2320255: "southern-asia", // Islamic Emirate of Waziristan
+
+  // southern-europe
+  Q222: "southern-europe", // Albania
+  Q228: "southern-europe", // Andorra
+  Q225: "southern-europe", // Bosnia and Herzegovina
+  Q1274468: "southern-europe", // Republic of Bosnia and Herzegovina
+  Q12544: "southern-europe", // Byzantine Empire
+  Q224: "southern-europe", // Croatia
+  Q204920: "southern-europe", // Crown of Aragon
+  Q217196: "southern-europe", // Crown of Castile
+  Q693570: "southern-europe", // Duchy of Ferrara
+  Q153529: "southern-europe", // Duchy of Milan
+  Q238445: "southern-europe", // Emirate of Granada
+  Q154849: "southern-europe", // Grand Duchy of Tuscany
+  Q41: "southern-europe", // Greece
+  Q209065: "southern-europe", // Kingdom of Greece
+  Q766543: "southern-europe", // Hispanic Monarchy
+  Q3355522: "southern-europe", // Hospitaller Malta
+  Q38: "southern-europe", // Italy
+  Q172579: "southern-europe", // Kingdom of Italy
+  Q838931: "southern-europe", // Kingdom of Italy
+  Q148540: "southern-europe", // Republic of Florence
+  Q174306: "southern-europe", // Republic of Genoa
+  Q1365493: "southern-europe", // Republic of Pisa
+  Q4948: "southern-europe", // Republic of Venice
+  Q1246: "southern-europe", // Kosovo
+  Q200262: "southern-europe", // Kingdom of Navarre
+  Q45670: "southern-europe", // Kingdom of Portugal
+  Q188586: "southern-europe", // Kingdom of Sicily
+  Q3399982: "southern-europe", // Kingdom of Spain
+  Q2940142: "southern-europe", // Kingdom of Toledo
+  Q178897: "southern-europe", // Latin Empire
+  Q83958: "southern-europe", // Macedonia
+  Q13405524: "southern-europe", // Macedonian Empire
+  Q233: "southern-europe", // Malta
+  Q221: "southern-europe", // North Macedonia
+  Q583038: "southern-europe", // Ostrogothic Kingdom
+  Q42834: "southern-europe", // Western Roman Empire
+  Q1747689: "southern-europe", // Ancient Rome
+  Q2277: "southern-europe", // Roman Empire
+  Q45: "southern-europe", // Portugal
+  Q238: "southern-europe", // San Marino
+  Q403: "southern-europe", // Serbia
+  Q878319: "southern-europe", // Serbian Despotate
+  Q215: "southern-europe", // Slovenia
+  Q29: "southern-europe", // Spain
+  Q80702: "southern-europe", // Spanish Empire
+  Q6123746: "southern-europe", // Spanish Republic at War
+  Q237: "southern-europe", // Vatican City
+  Q244796: "southern-europe", // Achaean League
+  Q3606949: "southern-europe", // Agyrion
+  Q3607380: "southern-europe", // Akragas
+  Q833665: "southern-europe", // Boeotian confederation
+  Q11266977: "southern-europe", // Epirus
+  Q4420718: "southern-europe", // Syracuse
+  Q5690: "southern-europe", // Sparta
+  Q844930: "southern-europe", // Classical Athens
+  Q1247159: "southern-europe", // Messenia
+  Q42295059: "southern-europe", // Mytilene
+  Q13580795: "southern-europe", // Samos
+  Q170174: "southern-europe", // Papal States
+
+  // western-africa
+  Q1011: "western-africa", // Cape Verde
+  Q1006: "western-africa", // Guinea
+  Q184536: "western-africa", // Mali Empire
+  Q1025: "western-africa", // Mauritania
+  Q1033: "western-africa", // Nigeria
+  Q1041: "western-africa", // Senegal
+  Q945: "western-africa", // Togo
+
+  // western-asia
+  Q31354462: "western-asia", // Republic of Abkhazia
+  Q244165: "western-asia", // Republic of Artsakh
+  Q227: "western-asia", // Azerbaijan
+  Q131337: "western-asia", // Azerbaijan Soviet Socialist Republic
+  Q399: "western-asia", // Armenia
+  Q12536: "western-asia", // Abbasid Caliphate
+  Q47690: "western-asia", // Babylonia
+  Q624887: "western-asia", // Neo-Babylonian Empire
+  Q723587: "western-asia", // Third Dynasty of Ur
+  Q398: "western-asia", // Bahrain
+  Q679305: "western-asia", // Cyme
+  Q229: "western-asia", // Cyprus
+  Q23681: "western-asia", // Northern Cyprus
+  Q1743884: "western-asia", // Kition (Cyprus)
+  Q230: "western-asia", // Georgia
+  Q154667: "western-asia", // Kingdom of Georgia
+  Q47611: "western-asia", // Ephesus
+  Q5843680: "western-asia", // Halicarnassus
+  Q169460: "western-asia", // Miletus
+  Q107557833: "western-asia", // Sinope
+  Q2022162: "western-asia", // Kingdom of Pergamon
+  Q975405: "western-asia", // Sultanate of Rum
+  Q169977: "western-asia", // Hejaz
+  Q16000109: "western-asia", // Herodian Kingdom of Judea
+  Q796: "western-asia", // Iraq
+  Q3108185: "western-asia", // Ba'athist Iraq
+  Q801: "western-asia", // Israel
+  Q810: "western-asia", // Jordan
+  Q55502: "western-asia", // Kingdom of Jerusalem
+  Q817: "western-asia", // Kuwait
+  Q822: "western-asia", // Lebanon
+  Q842: "western-asia", // Oman
+  Q193714: "western-asia", // Mandatory Palestine
+  Q23792: "western-asia", // Palestine
+  Q219060: "western-asia", // Palestine
+  Q12560: "western-asia", // Ottoman Empire
+  Q846: "western-asia", // Qatar
+  Q12490507: "western-asia", // Rashidun Caliphate
+  Q851: "western-asia", // Saudi Arabia
+  Q93180: "western-asia", // Seleucid Empire
+  Q23427: "western-asia", // South Ossetia
+  Q858: "western-asia", // Syria
+  Q43: "western-asia", // Turkey
+  Q8575586: "western-asia", // Umayyad Caliphate
+  Q878: "western-asia", // United Arab Emirates
+  Q805: "western-asia", // Yemen
+  Q138573104: "western-asia", // Kingdom of Tyre
+
+  // western-europe
+  Q40: "western-europe", // Austria
+  Q28513: "western-europe", // Austria-Hungary
+  Q131964: "western-europe", // Austrian Empire
+  Q31: "western-europe", // Belgium
+  Q207162: "western-europe", // Bourbon Restoration in France
+  Q31929: "western-europe", // Carolingian Empire
+  Q47261: "western-europe", // Duchy of Bavaria
+  Q170072: "western-europe", // Dutch Republic
+  Q142: "western-europe", // France
+  Q146246: "western-europe", // Francia
+  Q70972: "western-europe", // Kingdom of France
+  Q58296: "western-europe", // French First Republic
+  Q71092: "western-europe", // Second French Empire
+  Q16957: "western-europe", // German Democratic Republic
+  Q43287: "western-europe", // German Empire
+  Q1206012: "western-europe", // German Reich
+  Q183: "western-europe", // Germany
+  Q7318: "western-europe", // Nazi Germany
+  Q41304: "western-europe", // Weimar Republic
+  Q153136: "western-europe", // Habsburg monarchy
+  Q1031430: "western-europe", // Habsburg Netherlands
+  Q12548: "western-europe", // Holy Roman Empire
+  Q347: "western-europe", // Liechtenstein
+  Q6673921: "western-europe", // Lotharingia
+  Q32: "western-europe", // Luxembourg
+  Q235: "western-europe", // Monaco
+  Q27996474: "western-europe", // Northern Low Countries
+  Q6581823: "western-europe", // Southern Netherlands
+  Q622783: "western-europe", // Spanish Netherlands
+  Q330533: "western-europe", // Seventeen Provinces
+  Q55: "western-europe", // Netherlands
+  Q29999: "western-europe", // Kingdom of the Netherlands
+  Q15864: "western-europe", // United Kingdom of the Netherlands
+  Q435583: "western-europe", // Old Swiss Confederacy
+  Q39: "western-europe", // Switzerland
+  Q27306: "western-europe", // Kingdom of Prussia
+  Q38872: "western-europe", // Prussia
+  Q153015: "western-europe", // Kingdom of Saxony
+  Q1247508: "western-europe", // Romain-Gaul domain of Soissons
+  Q46370: "western-europe", // West Francia
+  Q636389: "western-europe", // Archbishopric of Magdeburg
 };

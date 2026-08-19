@@ -63,14 +63,11 @@ export function filterByOccupationDomain<T extends { occupationDomain: Occupatio
 // ConflictEntry/Milestone) alongside filterByFameScore/
 // filterByOccupationDomain above — not the mapped *Item render shapes,
 // which nothing downstream needs region tags on. Takes a `regionsOf`
-// accessor rather than requiring `regionTags: Region[]` directly on T,
-// since Conflicts/Milestones' native regionTags is already Region[] but
-// People's is the finer UnRegion[] (see shared/config/region.ts's
-// UN_REGION_TO_REGION) — callers resolve that difference, this stays
-// region-shape-agnostic. Multi-select OR, empty selection means unfiltered.
-// An item with no matching region tags at all never matches a non-empty
-// selection, so it's excluded whenever any region filter is active — see
-// CONTEXT.md's Region entry.
+// accessor rather than requiring `regionTags: Region[]` directly on T so it
+// stays shape-agnostic across the three lanes' entity types. Multi-select
+// OR, empty selection means unfiltered. An item with no matching region
+// tags at all never matches a non-empty selection, so it's excluded
+// whenever any region filter is active — see CONTEXT.md's Region entry.
 export function filterByRegion<T>(items: T[], selectedRegions: Region[], regionsOf: (item: T) => Region[]): T[] {
   if (selectedRegions.length === 0) return items;
   return items.filter((item) => regionsOf(item).some((region) => selectedRegions.includes(region)));

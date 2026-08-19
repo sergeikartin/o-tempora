@@ -63,16 +63,16 @@ test('renders one Region pill per Region', () => {
 
   const region = getByRole('heading', { name: 'Region' }).closest('section');
   expect(region?.querySelectorAll('li')).toHaveLength(REGIONS.length);
-  expect(region?.textContent).toContain('Middle East');
+  expect(region?.textContent).toContain('Western Asia');
 });
 
 test('clicking a Region pill calls onToggleRegion with that region', () => {
   const onToggleRegion = vi.fn();
   const { getByLabelText } = renderSidebar({ onToggleRegion });
 
-  fireEvent.click(getByLabelText('Filter by Middle East'));
+  fireEvent.click(getByLabelText('Filter by Western Asia'));
 
-  expect(onToggleRegion).toHaveBeenCalledWith('middle-east');
+  expect(onToggleRegion).toHaveBeenCalledWith('western-asia');
 });
 
 test('renders the Conflicts & Milestones section with one pill per filter value (Conflicts + 2 Milestone Category Groups), none pressed by default', () => {

@@ -44,7 +44,7 @@ const fixtureConflicts: ConflictEntry[] = [
     name: 'Korean War',
     period: { start: { year: 1950 }, end: { year: 1953 } },
     category: 'war',
-    regionTags: ['east-asia'],
+    regionTags: ['eastern-asia'],
     fameScore: 143,
     tagline: 'war between North and South Korea, 1950–1953',
     wikipediaUrl: 'https://en.wikipedia.org/wiki/Korean_War',
@@ -781,14 +781,14 @@ test('an item outside an active Region filter is excluded; clearing the filter r
       milestones={[]}
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
-      selectedRegions={['africa']}
+      selectedRegions={['northern-africa']}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
       onToggleFilterDrawer={() => {}}
     />,
   );
-  expect(container.querySelectorAll('.d3-line')).toHaveLength(0); // Korean War is tagged east-asia, not africa
+  expect(container.querySelectorAll('.d3-line')).toHaveLength(0); // Korean War is tagged eastern-asia, not northern-africa
 
   rerender(
     <TimelineCanvas
@@ -797,7 +797,7 @@ test('an item outside an active Region filter is excluded; clearing the filter r
       milestones={[]}
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
-      selectedRegions={['east-asia']}
+      selectedRegions={['eastern-asia']}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}
@@ -815,7 +815,7 @@ test('an item with no region tags is excluded once a Region filter is active', (
       milestones={fixtureMilestones}
       fameScoreValues={defaultFameScoreValues}
       selectedDomains={defaultSelectedDomains}
-      selectedRegions={['europe']}
+      selectedRegions={['western-europe']}
       selectedConflictsMilestonesValues={defaultSelectedConflictsMilestonesValues}
       onEntityClick={noopEntityClick}
       isFilterDrawerOpen={false}

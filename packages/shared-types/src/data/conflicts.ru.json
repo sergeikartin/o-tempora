@@ -67,7 +67,7 @@
     "name": "Великая французская революция",
     "category": "revolution",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 90,
     "tagline": "буржуазная революция во Франции 1789—1799 годов",
@@ -111,7 +111,7 @@
     "name": "война во Вьетнаме",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "south-eastern-asia"
     ],
     "fameScore": 89,
     "tagline": "вооружённый конфликт в Юго-Восточной Азии",
@@ -134,7 +134,7 @@
     "name": "вторжение России на Украину (с 2022)",
     "category": "war",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 88,
     "tagline": "нападение российских войск на Украину, начавшееся 24 февраля 2022 года",
@@ -171,7 +171,7 @@
     "name": "Корейская война",
     "category": "war",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 86,
     "tagline": "война между Северной и Южной частью Корейского полуострова с 1950-го по 1953 год",
@@ -194,7 +194,7 @@
     "name": "Революция 1917 года в России",
     "category": "revolution",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 84,
     "tagline": "серия событий, произошедших в России в 1917 году, в результате которых был изменён государственный строй в стране",
@@ -252,7 +252,7 @@
     "name": "Тридцатилетняя война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 84,
     "tagline": "ряд войн, проходивших главным образом в Центральной Европе с 1618 по 1648 год",
@@ -273,7 +273,7 @@
     "name": "гражданская война в Испании",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 84,
     "tagline": "конфликт между республиканцами и националистами 1936—1939",
@@ -296,7 +296,7 @@
     "name": "Гражданская война в Сирии",
     "category": "war",
     "regionTags": [
-      "middle-east"
+      "western-asia"
     ],
     "fameScore": 84,
     "tagline": "вооружённые и социальные конфликты на территории Сирии с 2011 года",
@@ -320,7 +320,7 @@
     "name": "атомные бомбардировки Хиросимы и Нагасаки",
     "category": "military-operation",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 84,
     "tagline": "бомбардировки США атомными бомбами японских городов 6 и 9 августа 1945 года",
@@ -337,7 +337,7 @@
     "name": "культурная революция в Китае",
     "category": "revolution",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 83,
     "tagline": "политические события с ноября 1965 по октябрь 1976 года в КНР",
@@ -360,7 +360,8 @@
     "name": "Война в Газе",
     "category": "war",
     "regionTags": [
-      "middle-east"
+      "western-asia",
+      "southern-asia"
     ],
     "fameScore": 83,
     "tagline": "вооружённый конфликт в секторе Газа, начавшийся 7 октября 2023 года",
@@ -485,7 +486,7 @@
     "name": "Исламская революция в Иране",
     "category": "revolution",
     "regionTags": [
-      "middle-east"
+      "southern-asia"
     ],
     "fameScore": 81,
     "tagline": "революция 1979 года в Иране",
@@ -573,7 +574,8 @@
     "name": "Советско-финляндская война (1939—1940)",
     "category": "war",
     "regionTags": [
-      "europe"
+      "eastern-europe",
+      "northern-europe"
     ],
     "fameScore": 81,
     "tagline": "война между СССР и Финляндией (1939—1940)",
@@ -616,7 +618,7 @@
     "name": "Фолклендская война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 81,
     "tagline": "война 1982 года между Великобританией и Аргентиной за контроль над Фолклендскими (Мальвинскими) островами",
@@ -638,7 +640,7 @@
     "name": "нападение на Перл-Харбор",
     "category": "military-operation",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 81,
     "tagline": "атака Японского императорского флота на американские базы в районе гавани Перл-Харбор",
@@ -740,7 +742,7 @@
     "name": "Великая Отечественная война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 80,
     "tagline": "советско-германский театр Второй мировой войны",
@@ -786,7 +788,7 @@
     "name": "Американская революция",
     "category": "revolution",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 79,
     "tagline": "Политические события в британских колониях Северной Америки в 1775 (по некоторым источникам в 1765—1783 годах)",
@@ -807,7 +809,7 @@
     "name": "Кубинская революция",
     "category": "revolution",
     "regionTags": [
-      "americas"
+      "caribbean"
     ],
     "fameScore": 79,
     "tagline": "вооружённая борьба за власть на Кубе с 1953 по 1959 год",
@@ -845,7 +847,7 @@
     "name": "Война в Афганистане",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 79,
     "tagline": "асимметричный военный конфликт между ISAF и исламистской организацией Талибан",
@@ -892,8 +894,8 @@
     "name": "Падение Константинополя",
     "category": "military-operation",
     "regionTags": [
-      "europe",
-      "middle-east"
+      "southern-europe",
+      "western-asia"
     ],
     "fameScore": 79,
     "tagline": "захват столицы Византийской империи армией османского султана Мехмеда II",
@@ -916,7 +918,7 @@
     "name": "Гражданская война в Китае",
     "category": "war",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 79,
     "tagline": "серия вооружённых конфликтов на территории Китая между силами Китайской Республики и китайскими коммунистами (1927—1950)",
@@ -939,7 +941,7 @@
     "name": "Война Алой и Белой розы",
     "category": "war",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 78,
     "tagline": "династическая война за трон Англии в XV веке",
@@ -963,7 +965,7 @@
     "name": "Восстание сипаев",
     "category": "rebellion",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 78,
     "tagline": "восстание индийских солдат против колониальной политики англичан в 1857—1859 годах",
@@ -1054,8 +1056,8 @@
     "name": "Ихэтуаньское восстание",
     "category": "rebellion",
     "regionTags": [
-      "east-asia",
-      "europe"
+      "eastern-asia",
+      "western-europe"
     ],
     "fameScore": 78,
     "tagline": "восстание ихэтуаней против иностранного вмешательства в экономику, внутреннюю политику и религиозную жизнь Китая в 1898—1901 годах",
@@ -1078,7 +1080,7 @@
     "name": "американо-мексиканская война",
     "category": "war",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 78,
     "tagline": "военный конфликт между США и Мексикой в 1846—1848 гг.",
@@ -1101,7 +1103,7 @@
     "name": "Евромайдан",
     "category": "coup-d-etat",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 78,
     "tagline": "протесты на Украине с 30 ноября 2013 года по 22 февраля 2014 года",
@@ -1125,7 +1127,7 @@
     "name": "захват Капитолия",
     "category": "rebellion",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 78,
     "tagline": "попытка демонстрантов в 2021 году предотвратить смену власти в США по итогам выборов 2020 года",
@@ -1208,7 +1210,7 @@
     "name": "Венгерское восстание 1956 года",
     "category": "rebellion",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 77,
     "tagline": "вооружённое восстание венгерского народа против просоветского режима в 1956 году",
@@ -1315,7 +1317,7 @@
     "name": "Мексиканская революция",
     "category": "revolution",
     "regionTags": [
-      "americas"
+      "central-america"
     ],
     "fameScore": 77,
     "tagline": "период в истории Мексики, во время которого в стране шла гражданская война",
@@ -1360,7 +1362,7 @@
     "name": "Первая опиумная война",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 76,
     "tagline": "война Великобритании против империи Цин",
@@ -1383,7 +1385,7 @@
     "name": "Вторая Пуническая война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 76,
     "tagline": "военный конфликт между двумя коалициями, во главе которых стояли Рим и Карфаген",
@@ -1405,7 +1407,7 @@
     "name": "аннексия Крыма Российской Федерацией",
     "category": "military-operation",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 76,
     "tagline": "присоединение Крыма Россией в 2014 году",
@@ -1448,7 +1450,7 @@
     "name": "Вторая карабахская война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "western-asia"
     ],
     "fameScore": 76,
     "tagline": "война Азербайджана с непризнанной Нагорно-Карабахской Республикой и Арменией",
@@ -1472,7 +1474,7 @@
     "name": "Восьмидесятилетняя война",
     "category": "war-of-independence",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 76,
     "tagline": "война за независимость от испанского владычества",
@@ -1577,7 +1579,7 @@
     "name": "Революция 1905—1907 годов в России",
     "category": "revolution",
     "regionTags": [
-      "europe"
+      "eastern-europe"
     ],
     "fameScore": 75,
     "tagline": "массовые выступления рабочих и крестьян, ставшие причиной учреждения Думы и Парламента",
@@ -1600,7 +1602,7 @@
     "name": "Нормандское завоевание Англии",
     "category": "military-operation",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 75,
     "tagline": "нормандское вторжение в Англию",
@@ -1622,7 +1624,7 @@
     "name": "Пиренейские войны",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 75,
     "tagline": "совокупность вооружённых конфликтов на Пиренейском полуострове в ходе наполеоновских войн начала XIX века",
@@ -1667,7 +1669,7 @@
     "name": "Вторая тихоокеанская война",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 75,
     "tagline": "война Чили против Перу и Боливии с целью захвата месторождений селитры на чужой территории",
@@ -1690,7 +1692,7 @@
     "name": "Восстание тайпинов",
     "category": "rebellion",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 75,
     "tagline": "Восстание против династии Цин",
@@ -1714,7 +1716,7 @@
     "name": "Славная революция",
     "category": "revolution",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 75,
     "tagline": "British revolution of 1688",
@@ -1735,7 +1737,7 @@
     "name": "Гаитянская революция",
     "category": "revolution",
     "regionTags": [
-      "americas"
+      "caribbean"
     ],
     "fameScore": 74,
     "tagline": "единственное в истории успешное восстание рабов",
@@ -1966,7 +1968,7 @@
     "name": "Битва при Плесси",
     "category": "military-operation",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 73,
     "tagline": "1757 battle which established the British Raj in India",
@@ -2046,7 +2048,7 @@
     "name": "Странная война",
     "category": "military-operation",
     "regionTags": [
-      "europe"
+      "western-europe"
     ],
     "fameScore": 72,
     "tagline": "период Второй мировой войны с 3 сентября 1939 по 10 мая 1940 года",
@@ -2070,7 +2072,7 @@
     "name": "Гражданская война в Греции",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 72,
     "tagline": "вооружённый конфликт между греческой правительственной армией и вооружённым крылом Коммунистической партии Греции",
@@ -2093,7 +2095,7 @@
     "name": "Военный переворот 1973 года в Чили",
     "category": "coup-d-etat",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 72,
     "tagline": "Военный переворот",
@@ -2111,7 +2113,8 @@
     "name": "ирано-израильская война",
     "category": "war",
     "regionTags": [
-      "middle-east"
+      "western-asia",
+      "southern-asia"
     ],
     "fameScore": 71,
     "tagline": "вооружённый конфликт на Ближнем Востоке, начавшийся 13 июня 2025 года и закончившийся 24 июня 2025 года",
@@ -2156,7 +2159,7 @@
     "name": "Чакская война",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 71,
     "tagline": "Конфликт между Боливией и Парагваем 1932—1935",
@@ -2279,7 +2282,7 @@
     "name": "Рифская война",
     "category": "war",
     "regionTags": [
-      "africa"
+      "northern-africa"
     ],
     "fameScore": 68,
     "tagline": "колониальный конфликт между Испанией и Францией с одной стороны и берберским эмиратом Риф с другой",
@@ -2302,7 +2305,7 @@
     "name": "Сражение при Адуа",
     "category": "military-operation",
     "regionTags": [
-      "africa"
+      "eastern-africa"
     ],
     "fameScore": 68,
     "tagline": "решающее сражение Итало-эфиопской войны 1895—1896 годов, произошло 1 марта 1896 года близ города Адуа",
@@ -2363,7 +2366,7 @@
     "name": "Война Тайра и Минамото",
     "category": "war",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 66,
     "tagline": "Война Тайра и Минамото, которая закончилась сокрушительным поражением дома Тайра",
@@ -2427,7 +2430,7 @@
     "name": "Гранадская война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 66,
     "tagline": "1482–1492 war",
@@ -2468,7 +2471,7 @@
     "name": "Деволюционная война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 65,
     "tagline": "war between France and Spain for the Spanish Netherlands (1667–1668)",
@@ -2553,7 +2556,7 @@
     "name": "Тысячедневная война",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 65,
     "tagline": "гражданская война в Республике Колумбия",
@@ -2577,7 +2580,7 @@
     "name": "Война годов Онин",
     "category": "war",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 64,
     "tagline": "гражданская война в средневековой Японии",
@@ -2619,7 +2622,7 @@
     "name": "Гражданская война в Канзасе",
     "category": "rebellion",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 64,
     "tagline": "violent political confrontations in the United States centered around slavery",
@@ -2675,7 +2678,7 @@
     "name": "Карнатикские войны",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 63,
     "tagline": "серия военных конфликтов в Индии в середине XVIII века",
@@ -2719,7 +2722,7 @@
     "name": "Первая англо-маратхская война",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 63,
     "tagline": "war between the British East India Company and the Maratha Empire, 1775-1782",
@@ -2741,7 +2744,7 @@
     "name": "Восстание Красных повязок",
     "category": "rebellion",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 63,
     "tagline": "Восстание",
@@ -2763,7 +2766,7 @@
     "name": "Ламийская война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 62,
     "tagline": "война в Древней Греции",
@@ -2785,7 +2788,7 @@
     "name": "Арауканская война",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 62,
     "tagline": "военный конфликт между креольским населением Генерал-капитанства Чили и народом мапуче",
@@ -2806,7 +2809,7 @@
     "name": "Вторая англо-маратхская война",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 62,
     "tagline": "conflict between the British East India Company and the Maratha Empire",
@@ -2827,7 +2830,7 @@
     "name": "Третья англо-маратхская война",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "southern-asia"
     ],
     "fameScore": 62,
     "tagline": "conflict between the British East India Company and the Maratha Empire (1817–1819)",
@@ -2849,7 +2852,9 @@
     "id": "Q880629",
     "name": "Чёрная война",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "australia-and-new-zealand"
+    ],
     "fameScore": 62,
     "tagline": "период ожесточенного конфликта между британскими колонистами и австралийскими аборигенами в Тасмании",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_War",
@@ -2909,7 +2914,7 @@
     "name": "Вторая баронская война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 60,
     "tagline": "1260s civil war in England",
@@ -2973,7 +2978,7 @@
     "name": "Война короля Георга",
     "category": "war",
     "regionTags": [
-      "americas"
+      "northern-america"
     ],
     "fameScore": 60,
     "tagline": "North American theater of the War of the Austrian Succession",
@@ -3034,7 +3039,7 @@
     "name": "Первая Мессенская война",
     "category": "war",
     "regionTags": [
-      "europe"
+      "southern-europe"
     ],
     "fameScore": 57,
     "tagline": "war between Messenia and Sparta",
@@ -3095,7 +3100,7 @@
     "name": "Смута года Дзинсин",
     "category": "rebellion",
     "regionTags": [
-      "east-asia"
+      "eastern-asia"
     ],
     "fameScore": 56,
     "tagline": "вооружённый конфликт за японский императорский престол в 672 году",
@@ -3135,7 +3140,7 @@
     "name": "Графская распря",
     "category": "war",
     "regionTags": [
-      "europe"
+      "northern-europe"
     ],
     "fameScore": 55,
     "tagline": "war of succession (1534–36) that brought about the Reformation in Denmark",
@@ -3351,7 +3356,7 @@
     "name": "Американо-израильско-иранская война (2026)",
     "category": "military-operation",
     "regionTags": [
-      "middle-east"
+      "southern-asia"
     ],
     "fameScore": 47,
     "tagline": "война Израиля, США и их союзников против ИРИ, начавшаяся 28.02.2026 с ударов по объектам в Иране",
@@ -3367,7 +3372,7 @@
     "name": "Emboabas' War",
     "category": "war",
     "regionTags": [
-      "americas"
+      "south-america"
     ],
     "fameScore": 47,
     "tagline": "conflict in colonial-era Brazil",
@@ -3396,7 +3401,7 @@
     "name": "Naning War",
     "category": "war",
     "regionTags": [
-      "south-asia"
+      "south-eastern-asia"
     ],
     "fameScore": 33,
     "tagline": "19th century conflict",

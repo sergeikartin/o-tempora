@@ -12,7 +12,6 @@ export type {
   MilestoneCategoryGroup,
   OccupationDomain,
   Region,
-  UnRegion,
 } from '@same-sky/shared-types';
 export {
   CONFLICT_CATEGORIES,
@@ -21,5 +20,4 @@ export {
   MILESTONE_CATEGORY_TO_GROUP,
   OCCUPATION_DOMAINS,
   REGIONS,
-  UN_REGIONS,
 } from '@same-sky/shared-types';
