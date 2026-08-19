@@ -1,7 +1,6 @@
 import { REGIONS, type Region } from '../../../shared/types';
 import { REGION_LABELS } from '../../../shared/config';
-import { m } from '../../../shared/paraglide/messages.js';
-import styles from './RegionFilters.module.css';
+import { FilterPillList } from '../../../shared/ui';
 
 interface RegionFiltersProps {
   selectedRegions: Region[];
@@ -14,24 +13,12 @@ interface RegionFiltersProps {
 // Region entry.
 export function RegionFilters({ selectedRegions, onToggleRegion }: RegionFiltersProps) {
   return (
-    <ul className={styles.regions}>
-      {REGIONS.map((region) => {
-        const isActive = selectedRegions.includes(region);
-        const label = REGION_LABELS[region];
-        return (
-          <li key={region}>
-            <button
-              type="button"
-              className={isActive ? `${styles.pill} ${styles.pillActive}` : styles.pill}
-              aria-pressed={isActive}
-              aria-label={m.filterByLabel({ label })}
-              onClick={() => onToggleRegion(region)}
-            >
-              {label}
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+    <FilterPillList
+      values={REGIONS}
+      selected={selectedRegions}
+      onToggle={onToggleRegion}
+      labelOf={(region) => REGION_LABELS[region]}
+      layout="wrap"
+    />
   );
 }

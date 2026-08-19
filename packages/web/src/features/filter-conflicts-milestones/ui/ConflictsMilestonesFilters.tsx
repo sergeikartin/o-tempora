@@ -4,8 +4,7 @@ import {
   CONFLICTS_MILESTONES_FILTER_LABELS,
   type ConflictsMilestonesFilterValue,
 } from '../../../shared/config';
-import { m } from '../../../shared/paraglide/messages.js';
-import styles from './ConflictsMilestonesFilters.module.css';
+import { FilterPillList } from '../../../shared/ui';
 
 interface ConflictsMilestonesFiltersProps {
   selectedValues: ConflictsMilestonesFilterValue[];
@@ -18,34 +17,17 @@ interface ConflictsMilestonesFiltersProps {
 // and independently toggleable, empty selection means unfiltered). Folds
 // the 'conflicts' sentinel (Conflicts carry no color-driving grouping of
 // their own — see CONTEXT.md's Conflict Category entry) together with the
-// 3 MilestoneCategoryGroup values into one list, since from the user's
+// MilestoneCategoryGroup values into one list, since from the user's
 // perspective it's one filter over one sidebar section, not two
 // differently-behaved controls.
 export function ConflictsMilestonesFilters({ selectedValues, onToggleValue }: ConflictsMilestonesFiltersProps) {
   return (
-    <ul className={styles.filters}>
-      {CONFLICTS_MILESTONES_FILTER_VALUES.map((value) => {
-        const isActive = selectedValues.includes(value);
-        const label = CONFLICTS_MILESTONES_FILTER_LABELS[value];
-        return (
-          <li key={value}>
-            <button
-              type="button"
-              className={isActive ? `${styles.pill} ${styles.pillActive}` : styles.pill}
-              aria-pressed={isActive}
-              aria-label={m.filterByLabel({ label })}
-              onClick={() => onToggleValue(value)}
-            >
-              <span
-                className={styles.swatch}
-                style={{ backgroundColor: CONFLICTS_MILESTONES_FILTER_COLORS[value] }}
-                aria-hidden="true"
-              />
-              {label}
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+    <FilterPillList
+      values={CONFLICTS_MILESTONES_FILTER_VALUES}
+      selected={selectedValues}
+      onToggle={onToggleValue}
+      labelOf={(value) => CONFLICTS_MILESTONES_FILTER_LABELS[value]}
+      colorOf={(value) => CONFLICTS_MILESTONES_FILTER_COLORS[value]}
+    />
   );
 }

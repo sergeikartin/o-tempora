@@ -1,7 +1,6 @@
 import { OCCUPATION_DOMAINS, type OccupationDomain } from '../../../shared/types';
 import { DOMAIN_COLORS, DOMAIN_LABELS } from '../../../shared/config';
-import { m } from '../../../shared/paraglide/messages.js';
-import styles from './OccupationDomainFilters.module.css';
+import { FilterPillList } from '../../../shared/ui';
 
 interface OccupationDomainFiltersProps {
   selectedDomains: OccupationDomain[];
@@ -14,25 +13,12 @@ interface OccupationDomainFiltersProps {
 // unfiltered — see CONTEXT.md's Occupation Domain entry.
 export function OccupationDomainFilters({ selectedDomains, onToggleDomain }: OccupationDomainFiltersProps) {
   return (
-    <ul className={styles.legend}>
-      {OCCUPATION_DOMAINS.map((domain) => {
-        const isActive = selectedDomains.includes(domain);
-        const label = DOMAIN_LABELS[domain];
-        return (
-          <li key={domain}>
-            <button
-              type="button"
-              className={isActive ? `${styles.pill} ${styles.pillActive}` : styles.pill}
-              aria-pressed={isActive}
-              aria-label={m.filterByLabel({ label })}
-              onClick={() => onToggleDomain(domain)}
-            >
-              <span className={styles.swatch} style={{ backgroundColor: DOMAIN_COLORS[domain] }} aria-hidden="true" />
-              {label}
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+    <FilterPillList
+      values={OCCUPATION_DOMAINS}
+      selected={selectedDomains}
+      onToggle={onToggleDomain}
+      labelOf={(domain) => DOMAIN_LABELS[domain]}
+      colorOf={(domain) => DOMAIN_COLORS[domain]}
+    />
   );
 }
