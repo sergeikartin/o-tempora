@@ -23,6 +23,8 @@ function renderSidebar(overrides: Partial<SidebarProps> = {}) {
       onToggleConflictsMilestonesValue={vi.fn()}
       isOpen={false}
       onClose={vi.fn()}
+      isCollapsed={false}
+      onToggleCollapse={vi.fn()}
       onOpenAbout={vi.fn()}
       {...overrides}
     />,
@@ -154,6 +156,8 @@ test('below the mobile breakpoint, a closed drawer is inert (off-screen filter c
         onToggleConflictsMilestonesValue={vi.fn()}
         isOpen={true}
         onClose={vi.fn()}
+        isCollapsed={false}
+        onToggleCollapse={vi.fn()}
         onOpenAbout={vi.fn()}
       />,
     );
@@ -194,8 +198,47 @@ test('below the mobile breakpoint, an explicit close button renders inside the d
   }
 });
 
-test('above the mobile breakpoint, no drawer header (title + explicit close button) renders — desktop has no drawer to close', () => {
+test('above the mobile breakpoint, the same "Filters" title renders as mobile\'s, but with no drawer close button — desktop has no drawer to close', () => {
   const { queryByLabelText, queryByRole } = renderSidebar({ isOpen: true });
   expect(queryByLabelText('Close filters')).toBeNull();
+  expect(queryByRole('heading', { name: 'Filters' })).toBeTruthy();
+});
+
+test('collapsed (isCollapsed: true) renders no filter sections and no title, but keeps the collapse button itself reachable', () => {
+  const { container, queryByRole, getByLabelText } = renderSidebar({ isCollapsed: true });
+
+  expect(queryByRole('heading', { name: 'Region' })).toBeNull();
   expect(queryByRole('heading', { name: 'Filters' })).toBeNull();
+  expect(container.querySelector('aside')?.hasAttribute('inert')).toBe(false);
+  expect(getByLabelText('Expand filters')).toBeTruthy();
+});
+
+test('clicking the collapse handle calls onToggleCollapse', () => {
+  const onToggleCollapse = vi.fn();
+  const { getByLabelText } = renderSidebar({ onToggleCollapse });
+
+  fireEvent.click(getByLabelText('Collapse filters'));
+
+  expect(onToggleCollapse).toHaveBeenCalledTimes(1);
+});
+
+test('below the mobile breakpoint, isCollapsed has no effect — filter sections still render', () => {
+  const originalMatchMedia = window.matchMedia;
+  window.matchMedia = ((query: string) => ({
+    matches: query.includes('max-width'),
+    media: query,
+    onchange: null,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    addListener: () => {},
+    removeListener: () => {},
+    dispatchEvent: () => false,
+  })) as unknown as typeof window.matchMedia;
+
+  try {
+    const { queryByRole } = renderSidebar({ isCollapsed: true, isOpen: true });
+    expect(queryByRole('heading', { name: 'Region' })).toBeTruthy();
+  } finally {
+    window.matchMedia = originalMatchMedia;
+  }
 });

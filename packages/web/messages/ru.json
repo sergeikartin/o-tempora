@@ -14,6 +14,8 @@
   "minimapAriaLabel": "Мини-карта плотности хронологии",
   "closeAriaLabel": "Закрыть",
   "closeFiltersAriaLabel": "Закрыть фильтры",
+  "collapseFiltersAriaLabel": "Свернуть фильтры",
+  "expandFiltersAriaLabel": "Развернуть фильтры",
   "timelineErrorFallback": "Не удалось отобразить временную шкалу. Попробуйте перезагрузить страницу.",
   "closeAboutAriaLabel": "Закрыть окно «О проекте»",
   "detailsAriaLabel": "Подробнее: {name}",

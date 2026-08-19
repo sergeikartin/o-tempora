@@ -40,6 +40,10 @@ function AppContent() {
   // overlays never compete for the same space (mobile-responsive-layout
   // spec's story 5).
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
+  // Desktop-only sidebar collapse, toggled by the « handle in Sidebar's own
+  // header — no effect on mobile, where the drawer above already covers
+  // hiding the sidebar.
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const handleEntityClick = useCallback(
     (ref: SelectedEntityRef) => {
@@ -81,6 +85,8 @@ function AppContent() {
         onToggleConflictsMilestonesValue={toggleConflictsMilestonesValue}
         isOpen={isFilterDrawerOpen}
         onClose={() => setIsFilterDrawerOpen(false)}
+        isCollapsed={isSidebarCollapsed}
+        onToggleCollapse={() => setIsSidebarCollapsed((collapsed) => !collapsed)}
         onOpenAbout={() => setIsAboutOpen(true)}
       />
       <ErrorBoundary fallback={<div className={styles.timelineError}>{m.timelineErrorFallback()}</div>}>
