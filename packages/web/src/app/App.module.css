@@ -15,6 +15,13 @@
   height: 100vh;
 }
 
+/* display: contents keeps this a pure landmark wrapper — TimelineCanvas's
+   own flex sizing still applies directly against .layout, as if this
+   element weren't in the tree at all. */
+.main {
+  display: contents;
+}
+
 .loading {
   height: 100vh;
   background: var(--color-bg-base);

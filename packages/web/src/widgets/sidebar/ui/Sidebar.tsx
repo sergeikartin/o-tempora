@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { OccupationDomain, Region } from '../../../shared/types';
 import { SWITCH_LANGUAGE_HREF, type ConflictsMilestonesFilterValue } from '../../../shared/config';
 import { m } from '../../../shared/paraglide/messages.js';
@@ -86,10 +87,60 @@ export function Sidebar({
   // below rather than merely hidden, and inert-ing the whole aside would
   // also disable the collapse button itself, leaving no way back out.
   const isInert = isMobileViewport && !isOpen;
+
+  const asideRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  // The drawer sits behind a full-screen backdrop on mobile, so it reads as
+  // a modal even though the underlying DOM (Sidebar before TimelineCanvas,
+  // where the toggle button that opens this lives) would otherwise let Tab
+  // walk straight past it into the visually-hidden canvas. Move focus in on
+  // open, trap Tab/Shift+Tab inside the backdrop+aside while open, and give
+  // it back to whatever had it (the toggle button) on close.
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (!isMobileViewport) return;
+    if (isOpen) {
+      previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+      closeButtonRef.current?.focus();
+    } else {
+      previouslyFocusedRef.current?.focus();
+      previouslyFocusedRef.current = null;
+    }
+  }, [isOpen, isMobileViewport]);
+
+  useEffect(() => {
+    if (!isMobileViewport || !isOpen) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        onClose();
+        return;
+      }
+      if (event.key !== 'Tab' || !asideRef.current) return;
+      const focusable = asideRef.current.querySelectorAll<HTMLElement>(
+        'button, a[href], input, [tabindex]:not([tabindex="-1"])',
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, isMobileViewport, onClose]);
+
   return (
     <>
       {isOpen && <button type="button" className={styles.backdrop} aria-label={m.closeAriaLabel()} onClick={onClose} />}
       <aside
+        ref={asideRef}
         className={[styles.sidebar, isOpen && styles.open, collapsed && styles.collapsed].filter(Boolean).join(' ')}
         aria-label={m.filtersAriaLabel()}
         inert={isInert}
@@ -114,6 +165,7 @@ export function Sidebar({
               <div className={styles.header}>
                 <h2 className={styles.headerTitle}>{m.filtersHeading()}</h2>
                 <button
+                  ref={closeButtonRef}
                   type="button"
                   className={styles.closeButton}
                   aria-label={m.closeFiltersAriaLabel()}
