@@ -22,16 +22,45 @@ const PANTHEON_CITATION =
 // class dance) is enough.
 export function AboutPanel({ isOpen, onClose }: AboutPanelProps) {
   const panelRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  // aria-modal="true" below promises assistive tech that everything outside
+  // is inert — move focus in on open and trap Tab/Shift+Tab inside so that
+  // promise actually holds, then give focus back to whatever opened this
+  // (the sidebar's About link) on close.
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
 
+    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') onClose();
+      if (event.key === 'Escape') {
+        onClose();
+        return;
+      }
+      if (event.key !== 'Tab' || !panelRef.current) return;
+      const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+        'button, a[href], input, [tabindex]:not([tabindex="-1"])',
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
 
     document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previouslyFocusedRef.current?.focus();
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -40,7 +69,13 @@ export function AboutPanel({ isOpen, onClose }: AboutPanelProps) {
     <>
       <button type="button" className={styles.backdrop} aria-label={m.closeAriaLabel()} onClick={onClose} />
       <div ref={panelRef} className={styles.panel} role="dialog" aria-modal="true" aria-label={m.aboutHeading()}>
-        <button type="button" onClick={onClose} aria-label={m.closeAboutAriaLabel()} className={styles.closeButton}>
+        <button
+          ref={closeButtonRef}
+          type="button"
+          onClick={onClose}
+          aria-label={m.closeAboutAriaLabel()}
+          className={styles.closeButton}
+        >
           ×
         </button>
         <h2 className={styles.heading}>{m.aboutHeading()}</h2>

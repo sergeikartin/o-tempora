@@ -25,7 +25,7 @@ Run from repo root:
 | Timeline rendering | D3 |
 | Styling | CSS Modules |
 | Testing | Vitest + RTL |
-| Lint / boundary tooling | ESLint + typescript-eslint + Steiger, enforcing mini-FSD boundaries |
+| Lint / boundary tooling | ESLint + typescript-eslint + eslint-plugin-jsx-a11y + Steiger, enforcing mini-FSD boundaries |
 
 ## Docs
 

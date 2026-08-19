@@ -271,6 +271,12 @@ export function Minimap({
         ref={trackRef}
         className={styles.track}
         data-testid="minimap-track"
+        // role="img": the implicit "generic" role a bare div otherwise gets
+        // doesn't support an accessible name — an aria-label on it is
+        // invalid ARIA usage — and img is the closest fit for a density
+        // graphic. The click/drag-to-jump interaction itself stays
+        // mouse/touch-only, same as every other mark in the canvas.
+        role="img"
         aria-label={m.minimapAriaLabel()}
         onPointerDown={handleTrackPointerDown}
         onPointerMove={handleTrackPointerMove}

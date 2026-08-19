@@ -93,21 +93,23 @@ function AppContent() {
           trackEvent('about_open');
         }}
       />
-      <ErrorBoundary fallback={<div className={styles.timelineError}>{m.timelineErrorFallback()}</div>}>
-        <TimelineCanvas
-          people={peopleData}
-          conflicts={conflictsData}
-          milestones={milestonesData}
-          fameScoreValues={fameScoreValues}
-          selectedDomains={selectedDomains}
-          selectedRegions={selectedRegions}
-          selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
-          onEntityClick={handleEntityClick}
-          onFilteredCountsChange={setFilteredCounts}
-          isFilterDrawerOpen={isFilterDrawerOpen}
-          onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
-        />
-      </ErrorBoundary>
+      <main className={styles.main}>
+        <ErrorBoundary fallback={<div className={styles.timelineError}>{m.timelineErrorFallback()}</div>}>
+          <TimelineCanvas
+            people={peopleData}
+            conflicts={conflictsData}
+            milestones={milestonesData}
+            fameScoreValues={fameScoreValues}
+            selectedDomains={selectedDomains}
+            selectedRegions={selectedRegions}
+            selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
+            onEntityClick={handleEntityClick}
+            onFilteredCountsChange={setFilteredCounts}
+            isFilterDrawerOpen={isFilterDrawerOpen}
+            onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
+          />
+        </ErrorBoundary>
+      </main>
       <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
       <AboutPanel isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
     </div>
