@@ -1,23 +1,21 @@
 import * as Sentry from '@sentry/react';
 
-// No-op until VITE_SENTRY_DSN is set (docs/config-variables.md) — lets the
-// logError()/ErrorBoundary plumbing ship ahead of the Sentry account being
-// created (a separate, human, one-time step). Sentry's default
-// GlobalHandlers integration already installs window.onerror and
+// GlitchTip speaks the Sentry ingestion protocol, so the @sentry/react SDK
+// works unmodified — only the DSN points at GlitchTip instead of Sentry.
+// No-op until VITE_GLITCHTIP_DSN is set (docs/config-variables.md). Sentry's
+// default GlobalHandlers integration already installs window.onerror and
 // unhandledrejection listeners once initialized, so nothing here duplicates
-// that wiring by hand.
+// that wiring by hand. Web Vitals/page-behavior tracking is Umami's job
+// (track-event.ts) — this is errors and crashes only, so no tracing
+// integration or tracesSampleRate here.
 export function initMonitoring(): void {
-  const dsn = import.meta.env.VITE_SENTRY_DSN;
+  const dsn = import.meta.env.VITE_GLITCHTIP_DSN;
   if (!dsn) return;
   Sentry.init({
     dsn,
     environment: import.meta.env.MODE,
-    integrations: [Sentry.browserTracingIntegration()],
-    // Capture every error and pageload transaction (the latter is how
-    // Sentry gets Web Vitals — LCP/CLS/INP/TTFB — with no separate setup).
-    // Traffic here is low enough that 100% tracing won't meaningfully touch
-    // the free tier's separate, smaller span quota; revisit if that changes.
+    // Traffic here is low enough that 100% error capture won't meaningfully
+    // touch the free tier's quota; revisit if that changes.
     sampleRate: 1,
-    tracesSampleRate: 1,
   });
 }
