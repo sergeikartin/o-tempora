@@ -75,7 +75,7 @@ export interface CenturyBoundary {
 // so they fall back to ordinal form for consistency with the BCE side.
 // BCE centuries are always 100 years wide and ordinal-numbered outward from
 // year 1 BCE (astronomical year 0) — 1st century BCE is years 1-100 BCE.
-function centuryBoundaryForYear(year: number): CenturyBoundary {
+export function centuryBoundaryForYear(year: number): CenturyBoundary {
   if (year >= 100) {
     const startYear = Math.floor(year / 100) * 100;
     return { startYear, endYear: startYear + 99, label: `${startYear}s` };
