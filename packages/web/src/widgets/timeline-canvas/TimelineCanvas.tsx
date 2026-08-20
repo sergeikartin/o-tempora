@@ -21,7 +21,9 @@ import {
   type ConflictsMilestonesFilterValue,
   DEFAULT_VIEWPORT_START,
 } from '../../shared/config';
+import { centuryBoundaryForYear } from '../../shared/lib/format-year';
 import { motionDurationMs } from '../../shared/lib/motion';
+import { trackEvent } from '../../shared/lib/track-event';
 import { useIsMobileViewport } from '../../shared/lib/viewport';
 import { m } from '../../shared/paraglide/messages.js';
 import type {
@@ -72,6 +74,22 @@ import { YearAxis } from './YearAxis';
 // (e.g. a hand that isn't perfectly still on mousedown) rather than a pan —
 // see suppressNextClickRef below.
 const DRAG_CLICK_SUPPRESSION_PX = 4;
+
+// Pan can be driven by continuous input (drag, touch swipe, trackpad/wheel
+// scroll, Minimap rect drag) that fires many native 'scroll' events per
+// gesture — tracking each one would blow through Umami's event quota for a
+// single swipe. Instead the scroll listener below debounces: one 'pan'
+// event fires this long after the *last* scroll event in a burst, so a
+// whole gesture (however long) still counts once.
+const PAN_TRACK_DEBOUNCE_MS = 500;
+
+// Buckets a viewport-center year down to its century (e.g. "1800s", "3rd
+// century BCE") for zoom/pan event data — a few dozen values across the
+// whole timeline, low-cardinality enough for Umami's per-property quota
+// while still saying roughly what era the user was looking at.
+function periodBucket(year: number): string {
+  return centuryBoundaryForYear(Math.round(year)).label;
+}
 
 interface TimelineCanvasProps {
   people: Person[];
@@ -251,6 +269,13 @@ export function TimelineCanvas({
     () => buildXScale(pixelsPerYear),
     [pixelsPerYear],
   );
+  // Read inside the pan debounce's setTimeout callback below, which fires
+  // well after the render that scheduled it — a plain closure over `scale`
+  // there would capture whatever pixelsPerYear was current at gesture
+  // *start*, not the (possibly zoomed) scale by the time the timer actually
+  // fires.
+  const scaleRef = useRef(scale);
+  scaleRef.current = scale;
 
   // Tracked in state (set alongside pixelsPerYear on mount-measurement and
   // on each zoom click, both of which already read the container's real
@@ -289,11 +314,33 @@ export function TimelineCanvas({
     },
     [mirrorLaneScrollLeft],
   );
+  // One-shot: set true immediately before a scrollLeft write that isn't a
+  // user pan (mount positioning, zoom recentring below) so the 'scroll'
+  // event it triggers doesn't restart/count toward the pan debounce.
+  // Consumed by the very next scroll event, not cleared synchronously here
+  // — 'scroll' fires as a separate task, after this write's own script has
+  // already finished running.
+  const skipNextPanTrackRef = useRef(false);
+  const panTrackTimeoutRef = useRef<number | null>(null);
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
     let frame = 0;
     const onScroll = () => {
+      if (skipNextPanTrackRef.current) {
+        skipNextPanTrackRef.current = false;
+      } else {
+        if (panTrackTimeoutRef.current !== null) {
+          window.clearTimeout(panTrackTimeoutRef.current);
+        }
+        panTrackTimeoutRef.current = window.setTimeout(() => {
+          panTrackTimeoutRef.current = null;
+          const centerYear = scaleRef.current.invert(
+            container.scrollLeft + container.clientWidth / 2,
+          );
+          trackEvent('pan', { period: periodBucket(centerYear) });
+        }, PAN_TRACK_DEBOUNCE_MS);
+      }
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
@@ -305,6 +352,9 @@ export function TimelineCanvas({
     return () => {
       container.removeEventListener('scroll', onScroll);
       if (frame) cancelAnimationFrame(frame);
+      if (panTrackTimeoutRef.current !== null) {
+        window.clearTimeout(panTrackTimeoutRef.current);
+      }
     };
   }, [mirrorLaneScrollLeft]);
   const effectiveViewportWidthPx =
@@ -492,6 +542,7 @@ export function TimelineCanvas({
     // identical comment on its own g.people reset for why).
     if (zebraLayerRef.current) zebraLayerRef.current.style.transform = '';
     if (pendingCenterYearRef.current !== null) {
+      skipNextPanTrackRef.current = true;
       syncScrollLeft(
         scale(pendingCenterYearRef.current) - container.clientWidth / 2,
       );
@@ -507,6 +558,7 @@ export function TimelineCanvas({
     // equal what that effect measured — i.e. for this render's scale to be
     // the real one, not the pre-layout fallback — before panning.
     if (pixelsPerYear === measuredPixelsPerYearRef.current) {
+      skipNextPanTrackRef.current = true;
       syncScrollLeft(scale(DEFAULT_VIEWPORT_START.year));
       setScrollLeft(container.scrollLeft);
     }
@@ -597,6 +649,13 @@ export function TimelineCanvas({
     pinchCurrentPixelsPerYearRef.current = null;
     pendingCenterYearRef.current = start.centerYear;
     setPixelsPerYear(finalPixelsPerYear);
+    if (finalPixelsPerYear !== start.startPixelsPerYear) {
+      trackEvent('zoom', {
+        method: 'pinch',
+        direction: finalPixelsPerYear > start.startPixelsPerYear ? 'in' : 'out',
+        period: periodBucket(start.centerYear),
+      });
+    }
   }
 
   function handlePointerDown(event: ReactPointerEvent<HTMLDivElement>) {
@@ -787,6 +846,7 @@ export function TimelineCanvas({
   // widens commit pattern this reuses unchanged).
   function zoom(
     step: (currentPixelsPerYear: number, viewportWidthPx: number) => number,
+    direction: 'in' | 'out',
   ) {
     const container = scrollRef.current;
     if (!container) {
@@ -799,6 +859,14 @@ export function TimelineCanvas({
     // so this stays valid across however many clicks retarget it.
     const scrollLeftStart = container.scrollLeft;
     const centerYear = scale.invert(scrollLeftStart + clientWidthPx / 2);
+    // Zoom re-centers on the same year it started at (see the pendingCenterYearRef
+    // commit below), so this pre-zoom center is the right bucket for the
+    // whole gesture, not just its start.
+    trackEvent('zoom', {
+      method: 'button',
+      direction,
+      period: periodBucket(centerYear),
+    });
     // The DOM's real geometry is still drawn at the last *committed*
     // pixelsPerYear — that never changes mid-gesture (see above), so it's
     // the fixed reference every tick's transform is computed relative to.
@@ -896,14 +964,14 @@ export function TimelineCanvas({
       <div className={styles.zoomControls}>
         <button
           type="button"
-          onClick={() => zoom(computeZoomIn)}
+          onClick={() => zoom(computeZoomIn, 'in')}
           aria-label={m.zoomInAriaLabel()}
         >
           +
         </button>
         <button
           type="button"
-          onClick={() => zoom(computeZoomOut)}
+          onClick={() => zoom(computeZoomOut, 'out')}
           aria-label={m.zoomOutAriaLabel()}
         >
           −
