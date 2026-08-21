@@ -5,6 +5,7 @@
   "filtersHeading": "Filters",
   "dataDepthHeading": "Data Depth",
   "dataDepthAriaLabel": "Data Depth",
+  "dataDepthLoadingAriaLabel": "Loading additional data",
   "regionHeading": "Region",
   "peopleHeading": "People",
   "conflictsMilestonesHeading": "Conflicts & Milestones",

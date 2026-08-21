@@ -10,6 +10,7 @@ import {
   type SelectedEntityRef,
   useSelectedEntity,
 } from '../features/select-timeline-entity';
+import type { DataDepthLevel } from '../shared/config';
 import { trackEvent } from '../shared/lib/track-event';
 import { m } from '../shared/paraglide/messages.js';
 import { ErrorBoundary } from '../shared/ui';
@@ -19,6 +20,7 @@ import { Sidebar } from '../widgets/sidebar';
 import { TimelineCanvas } from '../widgets/timeline-canvas';
 import styles from './App.module.css';
 import { localeDatasetsPromise } from './locale-datasets';
+import { useMergedDatasets } from './use-merged-datasets';
 
 export function App() {
   return (
@@ -32,16 +34,33 @@ export function App() {
 }
 
 function AppContent() {
+  const tier0 = use(localeDatasetsPromise);
   const {
-    people: peopleData,
-    conflicts: conflictsData,
-    milestones: milestonesData,
-  } = use(localeDatasetsPromise);
+    datasets: {
+      people: peopleData,
+      conflicts: conflictsData,
+      milestones: milestonesData,
+    },
+    isTier1Loading,
+    loadTier1,
+  } = useMergedDatasets(tier0);
   const {
     values: fameScoreValues,
     setValue: setFameScoreValue,
     setLevel: setFameScoreLevel,
   } = useFameScoreFilters();
+  // Deep Cut's data ships in Tier 1 (CONTEXT.md's Payload Tier), a deferred
+  // second chunk — picking it triggers the on-demand fallback in case the
+  // idle-prefetch hasn't started yet (save-data/slow connection) or hasn't
+  // finished; a no-op otherwise (docs/adr/0004-payload-tier-split-defers-
+  // low-fame-data.md).
+  const handleSelectDepthLevel = useCallback(
+    (level: DataDepthLevel) => {
+      if (level.id === 'deep-cut') loadTier1();
+      setFameScoreLevel(level);
+    },
+    [loadTier1, setFameScoreLevel],
+  );
   const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
   const { selectedRegions, toggleRegion } = useRegionFilter();
   const {
@@ -103,7 +122,8 @@ function AppContent() {
       <Sidebar
         fameScoreValues={fameScoreValues}
         onFameScoreChange={setFameScoreValue}
-        onSelectDepthLevel={setFameScoreLevel}
+        onSelectDepthLevel={handleSelectDepthLevel}
+        isTier1Loading={isTier1Loading}
         filteredCounts={filteredCounts}
         selectedDomains={selectedDomains}
         onToggleDomain={toggleDomain}

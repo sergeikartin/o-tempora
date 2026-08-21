@@ -1,3 +1,4 @@
+import { TIER_0_FAME_SCORE_FLOOR } from '@same-sky/shared-types';
 import { m } from '../paraglide/messages.js';
 
 export const ZOOM_MIN_YEARS = 50;
@@ -44,11 +45,19 @@ export interface FameScoreBounds {
 // same bounds instead of lane-specific raw-count ranges. 1-100/default-82
 // is a provisional starting point (the ADR's documented consequence),
 // pending a manual re-tune once real blended scores are visible in the
-// running app.
+// running app. `default` per lane reuses TIER_0_FAME_SCORE_FLOOR (shared
+// with data-pipeline's Output stage, docs/adr/0004-payload-tier-split-
+// defers-low-fame-data.md) rather than repeating the same three numbers a
+// third time — Mainstream's launch behavior and Payload Tier's loading
+// boundary are independent mechanisms that happen to want the same floor.
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
-  people: { min: 75, max: 100, default: 88 },
-  conflicts: { min: 1, max: 100, default: 82 },
-  milestones: { min: 1, max: 100, default: 82 },
+  people: { min: 75, max: 100, default: TIER_0_FAME_SCORE_FLOOR.people },
+  conflicts: { min: 1, max: 100, default: TIER_0_FAME_SCORE_FLOOR.conflicts },
+  milestones: {
+    min: 1,
+    max: 100,
+    default: TIER_0_FAME_SCORE_FLOOR.milestones,
+  },
 };
 
 // Data Depth: a two-position UI preset that writes canonical values into
@@ -58,7 +67,8 @@ export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
 // the app's launch behavior is unchanged by this feature; `deep-cut` digs
 // deeper (lower floor, more entries) rather than narrower. Purely a UI
 // convenience — distinct from the retired pipeline-side Fame Tier gating
-// (ADR 0003).
+// (ADR 0003), and from the unrelated Payload Tier loading split above,
+// despite sharing these same numbers (CONTEXT.md's Payload Tier entry).
 export type DataDepthLevelId = 'mainstream' | 'deep-cut';
 
 export interface DataDepthLevel {
@@ -79,7 +89,7 @@ export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
   {
     id: 'mainstream',
     label: DATA_DEPTH_LABELS.mainstream,
-    values: { people: 88, conflicts: 82, milestones: 82 },
+    values: { ...TIER_0_FAME_SCORE_FLOOR },
   },
   {
     id: 'deep-cut',

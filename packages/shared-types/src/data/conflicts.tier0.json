@@ -1,0 +1,484 @@
+[
+  {
+    "id": "Q362",
+    "name": "World War II",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 97,
+    "tagline": "1939–1945 global conflict",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/World_War_II",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Infobox%20collage%20for%20WWII.PNG",
+    "imageAttribution": "User:Staberinde, via Wikimedia Commons",
+    "description": "World War II, or the Second World War, was a global conflict between two coalitions: the Allies and the Axis powers. Nearly all of the world's countries participated, with many engaging in total war on an unprecedented scale. World War II was the deadliest conflict in history, causing the deaths of 60 to 75 million people, a majority of whom were civilians. Millions died as a result of massacres, starvation, disease, and genocides including the Holocaust. After the Allied victory, Germany, Austria, Japan, and Korea were occupied, and German and Japanese leaders were tried for war crimes.",
+    "period": {
+      "start": {
+        "year": 1939,
+        "month": 9
+      },
+      "end": {
+        "year": 1945,
+        "month": 9
+      }
+    }
+  },
+  {
+    "id": "Q361",
+    "name": "World War I",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 95,
+    "tagline": "1914–1918 global conflict",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/World_War_I",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WWImontage.jpg",
+    "description": "World War I, or the First World War, also known as the Great War, was a global conflict between two coalitions: the Allies and the Central Powers. Theatres of war included Europe, the Middle East, Africa, and the Asia-Pacific. One of the deadliest conflicts in history, World War I resulted in an estimated 15 to 22 million deaths, including those in war crimes and genocides. The war also helped spread the Spanish flu pandemic. The conflict saw important developments in weaponry, including the first large-scale use of machine guns, artillery, aircraft, chemical weapons, and tanks.",
+    "period": {
+      "start": {
+        "year": 1914,
+        "month": 7
+      },
+      "end": {
+        "year": 1918,
+        "month": 11
+      }
+    }
+  },
+  {
+    "id": "Q8683",
+    "name": "Cold War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 91,
+    "tagline": "1947–1991 tension between the Soviet Union and the United States and their respective allies",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cold_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/US%20Army%20tanks%20face%20off%20against%20Soviet%20tanks%2C%20Berlin%201961.jpg",
+    "description": "The Cold War was a period of international geopolitical rivalry between the United States (US) and the Soviet Union (USSR) and their respective allies, the capitalist Western Bloc and communist Eastern Bloc. It began in the aftermath of the Second World War and ended with the dissolution of the Soviet Union in 1991. The term cold war is used because there was no direct fighting between the two superpowers, though each supported opposing sides in regional conflicts known as proxy wars. In addition to the struggle for ideological and economic influence and an arms race in both conventional and nuclear weapons, the Cold War was expressed through technological rivalries such as the Space Race, espionage, propaganda campaigns, embargoes, and sports diplomacy.",
+    "period": {
+      "start": {
+        "year": 1945
+      },
+      "end": {
+        "year": 1991,
+        "month": 12
+      }
+    }
+  },
+  {
+    "id": "Q6534",
+    "name": "French Revolution",
+    "category": "revolution",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 90,
+    "tagline": "revolution in France from 1789 to 1799",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/French_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LouisXVIExecutionBig.jpg",
+    "description": "The French Revolution was a period of political and societal change in France that began with the Estates General of 1789 and ended with the Coup of 18 Brumaire on 9 November 1799. Many of the revolution's ideas are considered fundamental principles of liberal democracy, and its values remain central to modern French political discourse. It was caused by a combination of social, political, and economic factors which the existing regime proved unable to manage.",
+    "period": {
+      "start": {
+        "year": 1789,
+        "month": 7
+      },
+      "end": {
+        "year": 1799,
+        "month": 11
+      }
+    }
+  },
+  {
+    "id": "Q8676",
+    "name": "American Civil War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 89,
+    "tagline": "1861–1865 civil war in the United States between the North and the South over the enslavement of African-Americans",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/American_Civil_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CivilWarUSAColl.png",
+    "description": "The American Civil War was a civil war in the United States between the Union and the Confederacy, which was formed in 1861 by states that had seceded from the Union to preserve slavery in the United States. The South saw slavery as threatened because of the election of Abraham Lincoln and the growing abolitionist movement in the North. The war ended with Union victory, the dissolution of the Confederacy and the abolition of slavery, freeing four million African Americans.",
+    "period": {
+      "start": {
+        "year": 1861,
+        "month": 4
+      },
+      "end": {
+        "year": 1865,
+        "month": 4
+      }
+    }
+  },
+  {
+    "id": "Q8740",
+    "name": "Vietnam War",
+    "category": "war",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 89,
+    "tagline": "armed conflict in Vietnam, Laos, and Cambodia between North Vietnam and South Vietnam, from 1955 to 1975",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vietnam_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VietnamMural.jpg",
+    "description": "The Vietnam War was an armed conflict in Vietnam, Laos, and Cambodia fought between North Vietnam and South Vietnam and their allies. North Vietnam was supported by the Soviet Union and China, while South Vietnam was supported by the United States and other anti-communist nations. The conflict was the second of the Indochina wars and a proxy war of the Cold War. The Vietnam War was one of the postcolonial wars of national liberation, a theater in the Cold War, and a civil war, with civil warfare a defining feature from the outset. Direct US military involvement escalated from 1965 until US forces were withdrawn in 1973. The fighting spilled into the Laotian and Cambodian civil wars, which ended with all three countries becoming communist in 1975.",
+    "period": {
+      "start": {
+        "year": 1955,
+        "month": 11
+      },
+      "end": {
+        "year": 1975,
+        "month": 4
+      }
+    }
+  },
+  {
+    "id": "Q110999040",
+    "name": "full-scale Russo-Ukrainian war",
+    "category": "war",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 88,
+    "tagline": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg",
+    "imageAttribution": "Arrikel, via Wikimedia Commons",
+    "description": "On 24 February 2022, Russia invaded Ukraine, starting the largest and deadliest war in Europe since World War II, in a major escalation of the existing war between the two countries that began when Russia attacked Ukraine in 2014. The fighting has caused hundreds of thousands of military casualties and tens of thousands of Ukrainian civilian casualties. As of August 2026, Russian troops occupy roughly 20% of Ukraine. From a population of 41 million, about 8 million Ukrainians have been internally displaced and 6–7 million have fled the country, creating Europe's largest refugee crisis since World War II.",
+    "at": {
+      "year": 2022,
+      "month": 2
+    }
+  },
+  {
+    "id": "Q12546",
+    "name": "Crusades",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 87,
+    "tagline": "mass military expeditions and wars initiated by the Catholic Church in the High Middle Ages",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Crusades",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Combat%20deuxi%C3%A8me%20croisade.jpg",
+    "description": "The Crusades were a series of military campaigns launched by the papacy between 1095 and 1291 against Muslim rulers for the recovery and defence of the Holy Land, as part of a wider crusading movement. The First Crusade was proclaimed by Pope Urban II at the Council of Clermont in November 1095—a call to arms for Christians to reconquer Jerusalem from the Muslims, with promises of spiritual reward. By this time, the papacy's position as head of the Catholic Church had strengthened, and earlier conflicts with secular rulers and wars on the frontiers of Western Christendom had prepared it for the direction of armed force in religious causes. The successes of the First Crusade led to the establishment of four Crusader states in the Levant, whose defence required further expeditions from Catholic Europe. The organisation of such large-scale campaigns demanded complex religious, social, and economic institutions, including crusade indulgences, military orders, and the taxation of clerical income. Over time, the crusading movement expanded to include campaigns against pagans, Christian dissidents, and other enemies of the papacy, promoted with similar spiritual rewards and continuing into the 18th century.",
+    "period": {
+      "start": {
+        "year": 1095
+      },
+      "end": {
+        "year": 1291
+      }
+    }
+  },
+  {
+    "id": "Q8663",
+    "name": "Korean War",
+    "category": "war",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "war between North and South Korea, 1950–1953",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Korean_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Korean%20War%20Montage%202.png",
+    "description": "The Korean War was an armed conflict fought on the Korean Peninsula between North Korea and South Korea and their allies. North Korea was supported by China and the Soviet Union, while South Korea was supported by the United Nations led by the United States under the auspices of the United Nations Command (UNC).",
+    "period": {
+      "start": {
+        "year": 1950,
+        "month": 6
+      },
+      "end": {
+        "year": 1953,
+        "month": 7
+      }
+    }
+  },
+  {
+    "id": "Q8729",
+    "name": "Russian Revolution",
+    "category": "revolution",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 84,
+    "tagline": "1917-1922 political change in Russia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Revoluci%C3%B3n-marzo-rusia--russianbolshevik00rossuoft.png",
+    "description": "The Russian Revolution was a period of political and social change in Russia, starting in 1917. This period saw Russia abolish its monarchy and adopt a socialist form of government following two successive revolutions and a civil war. It can be seen as the precursor for other revolutions that occurred in the aftermath of World War I, such as the German Revolution of 1918–1919. The Russian Revolution was a key event of the 20th century.",
+    "at": {
+      "year": 1917
+    }
+  },
+  {
+    "id": "Q12551",
+    "name": "Hundred Years' War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 84,
+    "tagline": "series of conflicts and wars between England and France between 1337 and 1453",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hundred_Years%27_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20crecy%20froissart.jpg",
+    "description": "The Hundred Years' War was a series of conflicts between the kingdoms of England and France and a civil war in France during the late Middle Ages. It emerged from feudal disputes over the Duchy of Aquitaine and was triggered by a claim to the French throne made by Edward III of England. The war grew into a broader military, economic, and political struggle involving factions from across Western Europe, fuelled by emerging nationalism on both sides. The periodisation of the war typically charts it as taking place over 116 years. However, it was an intermittent conflict which was frequently interrupted by external factors, such as the Black Death, and several years of truces.",
+    "period": {
+      "start": {
+        "year": 1337,
+        "month": 6
+      },
+      "end": {
+        "year": 1453,
+        "month": 10
+      }
+    }
+  },
+  {
+    "id": "Q37643",
+    "name": "Gulf War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 84,
+    "tagline": "1990–1991 conflict between Iraq and a 42-country coalition",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gulf_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WarGulf%20photobox.jpg",
+    "description": "The Gulf War was an armed conflict between Iraq and a 42-country coalition led by the United States. The coalition's efforts were in two phases: Operation Desert Shield, which marked the military buildup from August 1990 to January 1991; and Operation Desert Storm, from the bombing campaign against Iraq on 17 January until the American-led liberation of Kuwait on 28 February.",
+    "period": {
+      "start": {
+        "year": 1990,
+        "month": 8
+      },
+      "end": {
+        "year": 1991,
+        "month": 2
+      }
+    }
+  },
+  {
+    "id": "Q2487",
+    "name": "Thirty Years' War",
+    "category": "war",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 84,
+    "tagline": "war principally fought in Central Europe from 1618 to 1648",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Magdeburg%201631.jpg",
+    "description": "The Thirty Years' War, fought primarily in Central Europe between 1618 and 1648, was one of the most destructive conflicts in European history. An estimated 4.5 to 8 million soldiers and civilians died from the effects of battle, famine, or disease, with parts of Germany reporting population declines of more than 50%. Related conflicts include the Eighty Years' War, the War of the Mantuan Succession, the Franco-Spanish War, the Torstenson War, the Dutch–Portuguese War, and the Portuguese Restoration War.",
+    "period": {
+      "start": {
+        "year": 1618
+      },
+      "end": {
+        "year": 1648
+      }
+    }
+  },
+  {
+    "id": "Q10859",
+    "name": "Spanish Civil War",
+    "category": "war",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 84,
+    "tagline": "war between the Republicans and the Nationalists in Spain from 1936 to 1939",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_Civil_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Soldrepteruel1937.jpg",
+    "description": "The Spanish Civil War was fought from 1936 to 1939 between the Republicans and the Nationalist rebels. Republicans loyal to the left-leaning Popular Front government of the Second Spanish Republic included socialists, anarchists, communists, and separatists, supported by the Soviet Union. The opposing Nationalists were an alliance of Falangists, monarchists, conservatives, traditionalists, syndicalists and fascists supported by Nazi Germany and Fascist Italy. The Nationalists were initially led by a military junta, until General Francisco Franco was appointed supreme leader on 1 October 1936 of what he called the Spanish State. Due to the international political climate at the time, the war was variously viewed as class struggle, religious struggle, or struggle between republican democracy and dictatorship, revolution and counterrevolution, or between fascism and communism. The Nationalists won the war in early 1939, and ruled Spain until Franco's death in November 1975.",
+    "period": {
+      "start": {
+        "year": 1936,
+        "month": 7
+      },
+      "end": {
+        "year": 1939,
+        "month": 4
+      }
+    }
+  },
+  {
+    "id": "Q178810",
+    "name": "Syrian Civil War",
+    "category": "war",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 84,
+    "tagline": "2011–2024 armed conflict in Syria",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Syrian_civil_war",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Syrian%20Civil%20War%20map.svg",
+    "imageAttribution": "Ermanarich, via Wikimedia Commons",
+    "description": "The Syrian civil war was an armed conflict that began with the Syrian revolution in March 2011, when popular discontent with the Ba'athist regime ruled by Bashar al-Assad triggered large-scale protests and pro-democracy rallies across Syria, as part of the wider Arab Spring. The Assad regime responded to the protests with lethal force, which led to a series of defections, the emergence of armed opposition groups, and the civilian uprising descending into a civil war. The war lasted almost 14 years and culminated in the fall of the Assad regime in December 2024. Many sources regard this as the end of the civil war even though clashes have continued into 2026.",
+    "period": {
+      "start": {
+        "year": 2011,
+        "month": 3
+      },
+      "end": {
+        "year": 2024,
+        "month": 12
+      }
+    }
+  },
+  {
+    "id": "Q488",
+    "name": "atomic bombings of Hiroshima and Nagasaki",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 84,
+    "tagline": "1945 use of nuclear weapons against Japan in World War II",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Atomic%20bombing%20of%20Japan.jpg",
+    "description": "On 6 and 9 August 1945, the United States detonated two atomic bombs over the Japanese cities of Hiroshima and Nagasaki, respectively, during the final days of World War II. The aerial bombings killed 150,000 to 246,000 people, most of whom were civilians, and remain the first and only uses of nuclear weapons in an armed conflict.",
+    "at": {
+      "year": 1945,
+      "month": 8
+    }
+  },
+  {
+    "id": "Q8690",
+    "name": "Cultural Revolution",
+    "category": "revolution",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 83,
+    "tagline": "1966–1976 Maoist sociopolitical movement in China",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cultural_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1967-02%201967%E5%B9%B4%E7%9A%84%E7%BA%A2%E5%8D%AB%E5%85%B5.jpg",
+    "description": "The Cultural Revolution, formally known as the Great Proletarian Cultural Revolution, was a sociopolitical movement in the People's Republic of China (PRC). It was launched by CCP chairman Mao Zedong in 1966 and lasted until his death in 1976. Its stated goal was to preserve Chinese communism by purging remnants of capitalist and traditional elements from Chinese society.",
+    "period": {
+      "start": {
+        "year": 1966,
+        "month": 5
+      },
+      "end": {
+        "year": 1976,
+        "month": 10
+      }
+    }
+  },
+  {
+    "id": "Q122962941",
+    "name": "Gaza War",
+    "category": "war",
+    "regionTags": [
+      "western-asia",
+      "southern-asia"
+    ],
+    "fameScore": 83,
+    "tagline": "armed conflict around the Gaza Strip that started on 7 October 2023",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gaza_war",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Damage%20in%20Gaza%20Strip%20during%20the%20October%202023%20-%2029.jpg",
+    "imageAttribution": "WAFA (Q2915969) in contract with a local company (APAimages)‏‏, via Wikimedia Commons",
+    "description": "The Gaza war is an armed conflict in the Gaza Strip and Israel, fought as part of the unresolved Israeli–Palestinian and Gaza–Israel conflicts. The war began on 7 October 2023, when the Palestinian militant group Hamas led an attack on Israel, in which 1,195 Israelis and foreign nationals were killed and 251 were taken hostage. Since the start of the Israeli offensive that followed, over 73,000 Palestinians in Gaza have been killed; several studies in The Lancet indicate this figure is likely a significant undercount. Many scholarly sources and international organizations—including UN bodies, NGOs, and the International Association of Genocide Scholars—have concluded that Israel's actions in Gaza constitute genocide under international law. Several countries have also acknowledged that genocide is occurring and have supported legal proceedings before the International Court of Justice. Israel and its supporters, including the United States, deny that genocide has occurred.",
+    "at": {
+      "year": 2023,
+      "month": 10
+    }
+  },
+  {
+    "id": "Q40949",
+    "name": "American Revolutionary War",
+    "category": "war-of-independence",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "1775–1783 war between Great Britain and the Thirteen Colonies, which won independence as the United States of America",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/American_Revolutionary_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rev%20collage.png",
+    "description": "The American Revolutionary War, also known as the Revolutionary War or American War of Independence or simply the American Revolution, was the armed conflict that comprised the final eight years of the broader American Revolution, in which American Patriot forces organized as the Continental Army and commanded by George Washington defeated the British Army. The conflict was fought in North America, the Caribbean, and the Atlantic Ocean. The war's outcome seemed uncertain for most of the war, but Washington and the Continental Army's decisive victory in the Siege of Yorktown in 1781 led King George III and the Kingdom of Great Britain to negotiate an end to the war. In 1783, in the Treaty of Paris, the British monarchy acknowledged the independence of the Thirteen Colonies, leading to the establishment of the United States as an independent and sovereign nation.",
+    "parentId": "Q192769",
+    "period": {
+      "start": {
+        "year": 1775,
+        "month": 4
+      },
+      "end": {
+        "year": 1783,
+        "month": 9
+      }
+    }
+  },
+  {
+    "id": "Q545449",
+    "name": "Iraq War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "2003–2011 war after an American-led invasion",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Iraq_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Iraq%20War%20montage.png",
+    "imageAttribution": "Futuretrillionaire, via Wikimedia Commons",
+    "description": "The Iraq War, also referred to as the Second Gulf War, was a protracted armed conflict in Iraq from 2003 to 2011. It began with the invasion by a United States–led coalition, which resulted in the overthrow of the Ba'athist government of Saddam Hussein. During the US occupation of Iraq, the conflict persisted as an insurgency that arose against coalition forces and the newly established Iraqi government. US forces were officially withdrawn in 2011. In 2014, the US became re-engaged in Iraq, leading a new coalition under Combined Joint Task Force – Operation Inherent Resolve, as the conflict evolved into the ongoing Islamic State insurgency.",
+    "parentId": "Q185729",
+    "period": {
+      "start": {
+        "year": 2003,
+        "month": 3
+      },
+      "end": {
+        "year": 2011,
+        "month": 12
+      }
+    }
+  },
+  {
+    "id": "Q33761",
+    "name": "Arab Spring",
+    "category": "revolution",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "protests and revolutions in the Arab world in the 2010s",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Arab_Spring",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arab%20Spring%20and%20Regional%20Conflict%20Map.svg",
+    "description": "The Arab Spring was a series of pro-democracy anti-government protests, uprisings, and armed rebellions that spread across much of the Arab world in the early 2010s. It began in Tunisia in response to the death of Mohamed Bouazizi by self-immolation. From Tunisia, the protests initially spread to five other countries: Libya, Egypt, Yemen, Syria and Bahrain. The rulers deposed include: Zine El Abidine Ben Ali of Tunisia, Muammar Gaddafi of Libya, and Hosni Mubarak of Egypt, all in 2011; and Ali Abdullah Saleh of Yemen in 2012. Major uprisings and social violence occurred, including riots, civil wars, or insurgencies. Sustained street demonstrations took place in Morocco, Iraq, Algeria, Lebanon, Jordan, Kuwait, Oman and Sudan. Minor protests took place in Djibouti, Mauritania, Palestine, Saudi Arabia and the Western Sahara. A major slogan of the demonstrators in the Arab world is ash-shaʻb yurīd isqāṭ an-niẓām!.",
+    "period": {
+      "start": {
+        "year": 2010,
+        "month": 12
+      },
+      "end": {
+        "year": 2012,
+        "month": 12
+      }
+    }
+  },
+  {
+    "id": "Q42937",
+    "name": "Trojan War",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "legendary war in Greek mythology",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Trojan_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giovanni%20Domenico%20Tiepolo%20-%20The%20Procession%20of%20the%20Trojan%20Horse%20in%20Troy%20-%20WGA22382.jpg",
+    "description": "The Trojan War was a legendary conflict in Greek mythology that took place around the thirteenth or early twelfth century BC. The war was waged by the Achaeans (Greeks) against the city of Troy after Paris of Troy took Helen from her husband Menelaus, king of Sparta. The war is one of the most important events in Greek mythology, and it has been narrated through many works of Greek literature, most notably Homer's Iliad. The core of the Iliad describes a period of four days and two nights in the tenth year of the decade-long siege of Troy; the Odyssey describes the journey home of Odysseus, one of the war's heroes. Other parts of the war are described in a cycle of epic poems, which have survived through fragments. Episodes from the war provided material for Greek tragedy and other works of Greek literature, and for Roman poets including Virgil and Ovid.",
+    "period": {
+      "start": {
+        "year": -1257
+      },
+      "end": {
+        "year": -1179
+      }
+    }
+  },
+  {
+    "id": "Q83085",
+    "name": "Soviet-Afghan War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "1979–1989 war between the Soviet Union and Afghan insurgents",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Afghan-Soviet%20war.png",
+    "imageAttribution": "LLs, via Wikimedia Commons",
+    "description": "The Soviet–Afghan War took place in Afghanistan from December 1979 to February 1989. Marking the beginning of the 47-year-long Afghan conflict, it saw the Soviet Union and the Communist-led Afghan military fight against the rebelling Afghan mujahideen, aided by Pakistan. While backed by various countries and organizations, the majority of the mujahideen's support came from Pakistan, the United States, the United Kingdom, China, Iran, and the Arab states of the Persian Gulf, in addition to a large influx of foreign fighters known as the Afghan Arabs. American and British involvement on the side of the mujahideen escalated the Cold War, ending a short period of relaxed Soviet Union–United States relations.",
+    "period": {
+      "start": {
+        "year": 1979,
+        "month": 12
+      },
+      "end": {
+        "year": 1989,
+        "month": 2
+      }
+    }
+  }
+]
