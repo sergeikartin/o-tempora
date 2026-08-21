@@ -521,6 +521,13 @@ export function TimelineCanvas({
   // width once available; the pan-to-default-viewport below waits for that
   // recomputed pixelsPerYear to actually land (see the ref's comment).
   const measuredPixelsPerYearRef = useRef<number | null>(null);
+  // Perf-audit instrumentation (.scratch/pre-launch-readiness/issues/14): a
+  // 'timeline-initial-render' mark, read back via the Performance API, gives
+  // an exact timestamp for when the real (not fallback-width) geometry
+  // actually commits — the closest thing this app has to "the timeline is
+  // done rendering", since Chrome's native LCP heuristic can't see canvas/SVG
+  // content and instead flags some unrelated DOM text/image element.
+  const hasMarkedInitialRenderRef = useRef(false);
   useLayoutEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -561,6 +568,10 @@ export function TimelineCanvas({
       skipNextPanTrackRef.current = true;
       syncScrollLeft(scale(DEFAULT_VIEWPORT_START.year));
       setScrollLeft(container.scrollLeft);
+      if (!hasMarkedInitialRenderRef.current) {
+        hasMarkedInitialRenderRef.current = true;
+        performance.mark('timeline-initial-render');
+      }
     }
   }, [pixelsPerYear, scale, syncScrollLeft]);
 
