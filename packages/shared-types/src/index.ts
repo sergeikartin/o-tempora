@@ -339,6 +339,16 @@ export const AVG_CHAR_WIDTH_PX = 6;
 export const POINT_RADIUS = 5;
 export const MILESTONES_LABEL_MAX_WIDTH_PX = 72;
 
+// CONTEXT.md's Reference Scale: the fixed pixels-per-year data-pipeline
+// packs TimelineEntry.row against (row-assignment.ts) and packages/web
+// packs the Minimap's Row Depth curve against (Minimap.tsx) — both must
+// agree on the same number for a Minimap-reported Row Depth to match what
+// actually shipped in `row`. Equal to packages/web's default 120-year
+// opening view at its 1000px fallback viewport width
+// (FALLBACK_VIEWPORT_WIDTH_PX / DEFAULT_VISIBLE_YEARS); web's own
+// options.test.ts asserts that derivation still equals this constant.
+export const REFERENCE_SCALE_PIXELS_PER_YEAR = 1000 / 120;
+
 export function estimateLabelWidthPx(name: string): number {
   return name.length * AVG_CHAR_WIDTH_PX;
 }

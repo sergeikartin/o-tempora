@@ -13,6 +13,7 @@ import {
   MILESTONE_CATEGORY_GROUPS,
   MILESTONE_CATEGORY_TO_GROUP,
   OCCUPATION_DOMAINS,
+  REFERENCE_SCALE_PIXELS_PER_YEAR,
 } from '../../shared/types';
 import {
   BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
@@ -29,6 +30,7 @@ import {
   pinchCenterYear,
   pinchPixelsPerYear,
   pixelsPerYearBounds,
+  REFERENCE_PIXELS_PER_YEAR,
   ZOOM_ANIMATION_DURATION_MULTIPLIER,
   zoomAnimationCounterScaleAttr,
   zoomAnimationCounterScaleCss,
@@ -53,6 +55,16 @@ test('buildXScale sizes totalWidth as totalYears * pixelsPerYear', () => {
   const totalYears = today().year - PAN_MIN_DATE.year;
   expect(totalWidth).toBe(totalYears * pixelsPerYear);
   expect(scale.range()).toEqual([0, totalWidth]);
+});
+
+test('REFERENCE_PIXELS_PER_YEAR matches shared-types REFERENCE_SCALE_PIXELS_PER_YEAR', () => {
+  // data-pipeline's row-assignment.ts imports the shared constant directly;
+  // this side derives the same number live via defaultPixelsPerYear() so it
+  // keeps auto-following DEFAULT_VISIBLE_YEARS/FALLBACK_VIEWPORT_WIDTH_PX.
+  // If a future change to either moves this value without updating the
+  // shared constant, this assertion catches the drift instead of the
+  // pipeline and the Minimap silently disagreeing on Row Depth.
+  expect(REFERENCE_PIXELS_PER_YEAR).toBe(REFERENCE_SCALE_PIXELS_PER_YEAR);
 });
 
 function trueMod(n: number, m: number): number {
