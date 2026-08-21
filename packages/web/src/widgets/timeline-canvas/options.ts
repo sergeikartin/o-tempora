@@ -9,9 +9,22 @@ import {
 } from '../../shared/config';
 import { today } from '../../shared/lib/dates';
 import {
+  AVG_CHAR_WIDTH_PX,
+  estimateLabelWidthPx,
   MILESTONE_CATEGORY_TO_GROUP,
+  MILESTONES_LABEL_MAX_WIDTH_PX,
   type MilestoneCategory,
+  POINT_RADIUS,
+  wrapLabelLines,
 } from '../../shared/types';
+
+export {
+  AVG_CHAR_WIDTH_PX,
+  estimateLabelWidthPx,
+  MILESTONES_LABEL_MAX_WIDTH_PX,
+  POINT_RADIUS,
+  wrapLabelLines,
+};
 
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
@@ -53,10 +66,6 @@ export const MIN_DECADE_LABEL_SPACING_PX = 40;
 // vs. "8th century BCE"), so a flat floor alone still let long labels
 // visually overlap the next tick's short one.
 export const MINIMAP_CENTURY_STRIP_HEIGHT_PX = 20;
-export const POINT_RADIUS = 5;
-// Minimum gap (in scroll years) kept between two bars placed in the same
-// row — pure visual breathing room, not a claim about the underlying dates.
-export const MIN_ROW_GAP_YEARS = 5;
 
 // A Period (a real duration — Person lifespans, Conflict ranges) always
 // renders as a rounded-cap line; a PointInTime
@@ -70,38 +79,8 @@ export const PERIOD_LINE_HEIGHT = 6;
 // it with a gap that would otherwise be dead space between two separately
 // clickable elements.
 export const HIT_AREA_PADDING_PX = 4;
-// Rough per-character estimate for the 11px label font — good enough to
-// size row-stacking without a real DOM text-measurement pass.
-export const AVG_CHAR_WIDTH_PX = 6;
-// Row-stacking gap for pixel-space layouts — real screen pixels, not years,
-// so much smaller than MIN_ROW_GAP_YEARS.
-export const MIN_ROW_GAP_PX = 8;
 // Approx rendered height of an 11px label.
 const LABEL_TEXT_HEIGHT_PX = 13;
-
-export function estimateLabelWidthPx(name: string): number {
-  return name.length * AVG_CHAR_WIDTH_PX;
-}
-
-// Greedy word-wrap using the same rough per-character estimate as
-// estimateLabelWidthPx — good enough to bound a label's rendered width
-// without a real DOM text-measurement pass.
-export function wrapLabelLines(name: string, maxWidthPx: number): string[] {
-  const words = name.split(' ');
-  const lines: string[] = [];
-  let currentLine = '';
-  for (const word of words) {
-    const candidate = currentLine ? `${currentLine} ${word}` : word;
-    if (currentLine !== '' && estimateLabelWidthPx(candidate) > maxWidthPx) {
-      lines.push(currentLine);
-      currentLine = word;
-    } else {
-      currentLine = candidate;
-    }
-  }
-  if (currentLine !== '') lines.push(currentLine);
-  return lines;
-}
 
 // Below-marker label layout, shared by the merged Conflicts+Milestones lane
 // for every item it stacks — range lines, Conflict point dots, and
@@ -115,7 +94,6 @@ export function wrapLabelLines(name: string, maxWidthPx: number): string[] {
 // pitch — see ConflictsMilestonesLane.tsx's row-height computation.
 export const MILESTONES_MARKER_LABEL_GAP = 4;
 export const MILESTONES_LABEL_LINE_HEIGHT_PX = LABEL_TEXT_HEIGHT_PX;
-export const MILESTONES_LABEL_MAX_WIDTH_PX = 72;
 
 // Above-line label layout, used by People — the one lane whose Period bars
 // don't all share a fixed marker y (they stack into vertical bands like a
@@ -301,13 +279,17 @@ export function defaultPixelsPerYear(
   return clampPixelsPerYear(width / visibleYears, width);
 }
 
-// A fixed scale (not the live viewport's, not the live zoom's) used to
-// compute each lane's *static* row assignment (see map-to-items.ts's
-// computeRowAssignment) — a row is a permanent per-item identity, so the
-// scale that decides it must never change at runtime.
-// FALLBACK_VIEWPORT_WIDTH_PX rather than a measured width: this has to be
-// a true constant, computable before anything has rendered, not just
-// stable-in-practice.
+// A fixed scale (not the live viewport's, not the live zoom's) the Minimap
+// packs its area-sparkline and century ticks against (Minimap.tsx,
+// packages/web/docs/adr/0004-density-minimap-replaces-scrollbar.md) — a
+// Row Depth curve computed at the live zoom would disagree with what the
+// canvas actually renders as the user zooms. Also the exact scale
+// data-pipeline's row-assignment.ts packs each entry's permanent
+// TimelineEntry.row against (docs/adr/0005-row-assignment-moves-to-the-
+// pipeline.md) — duplicated there as a literal (1000 / 120) rather than
+// imported, since packages/data-pipeline doesn't depend on packages/web;
+// changing DEFAULT_VISIBLE_YEARS or FALLBACK_VIEWPORT_WIDTH_PX means
+// updating that literal to match.
 export const REFERENCE_PIXELS_PER_YEAR = defaultPixelsPerYear(
   FALLBACK_VIEWPORT_WIDTH_PX,
 );

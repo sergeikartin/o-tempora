@@ -12,16 +12,7 @@ import type {
   Region,
 } from '../../shared/types';
 import { MILESTONE_CATEGORY_TO_GROUP } from '../../shared/types';
-import {
-  buildXScale,
-  estimateLabelWidthPx,
-  MILESTONES_LABEL_MAX_WIDTH_PX,
-  MIN_ROW_GAP_PX,
-  MIN_ROW_GAP_YEARS,
-  POINT_RADIUS,
-  REFERENCE_PIXELS_PER_YEAR,
-  wrapLabelLines,
-} from './options';
+import { estimateLabelWidthPx, POINT_RADIUS } from './options';
 
 /** Pixel-space [start, end] interval a value maps to under a linear scale. */
 export interface PixelInterval {
@@ -304,143 +295,14 @@ export function milestonePixelInterval(
   };
 }
 
-interface RowInterval {
-  id: string;
-  startYear: number;
-  endYear: number;
-  fameScore: number;
-}
-
-// Fame-priority interval-graph row assignment: processes items by fame
-// *tier* — fameScore rounded to the nearest integer, descending — rather
-// than chronologically, greedily dropping each into the lowest-numbered row
-// that's free of it (with `gap` breathing room) anywhere in its span — not
-// just past the row's rightmost-so-far extent, since a lower-tier item
-// processed later can need to slot in *before* an already-placed
-// higher-tier item's start. The most famous tier claims row 0 first and
-// keeps it as long as nothing later conflicts with it, so row 0 accumulates
-// the highest-fame tier and each successive row skews progressively less
-// famous — an approximate rank, not a guaranteed one, in exchange for never
-// leaving a row empty just to preserve exact order. Each lane then decides
-// which edge of its box row 0 sits against (see personLabelYForRow's
-// row-count-based inversion vs. the below-marker lanes' row-0-at-top
-// default) to land it next to the shared Year Axis.
-//
-// Rounding to an integer tier rather than sorting on the raw continuous
-// score matters: items are processed chronologically *within* a tier
-// (secondary sort key), which is the row-minimal order for greedy interval
-// coloring — sorting by the raw score instead effectively randomizes
-// processing order relative to time and fragments rows (a long-lived,
-// slightly-more-famous person forces a new row for everyone whose span
-// crosses theirs, even when a time-ordered pass would've interleaved them
-// tightly). Real fameScore values cluster densely enough (People's default
-// view spans just ~16 distinct integers) that this loses very little
-// ranking precision for a real reduction in wasted rows.
-//
-// Field names read as years (its original use) but the algorithm is purely
-// numeric — pixel-space callers pass x-pixel positions and a much smaller
-// pixel gap instead.
-export function assignRows(
-  items: RowInterval[],
-  gap: number = MIN_ROW_GAP_YEARS,
-): Map<string, number> {
-  const rowIntervals: RowInterval[][] = [];
-  const rowOfId = new Map<string, number>();
-
-  const sorted = [...items].sort(
-    (a, b) =>
-      Math.round(b.fameScore) - Math.round(a.fameScore) ||
-      a.startYear - b.startYear ||
-      a.id.localeCompare(b.id),
-  );
-  for (const item of sorted) {
-    const row = rowIntervals.findIndex((placed) =>
-      placed.every(
-        (existing) =>
-          item.startYear >= existing.endYear + gap ||
-          item.endYear + gap <= existing.startYear,
-      ),
-    );
-    if (row === -1) {
-      rowOfId.set(item.id, rowIntervals.length);
-      rowIntervals.push([item]);
-    } else {
-      rowOfId.set(item.id, row);
-      rowIntervals[row]?.push(item);
-    }
-  }
-
-  return rowOfId;
-}
-
-// Static per-item row identity: unlike a lane's own live per-render
-// assignRows call (which packs whatever's currently filtered, at the
-// live zoom), these run once against the *entire* dataset at a fixed
-// REFERENCE_PIXELS_PER_YEAR — so a given person/conflict/milestone's row
-// never changes because of a filter or a zoom level, only because the
-// underlying dataset itself changed (a pipeline rebuild, not anything a
-// user does in-session). Callers own memoizing this once per dataset
-// (TimelineCanvas keys it off the full, unfiltered people/conflicts/
-// milestones props, which are stable references for the whole session)
-// and pass the result down to each lane, which then narrows it to
-// whatever's currently visible via compactRows below.
-function computeStaticPersonRows(people: Person[]): Map<string, number> {
-  const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
-  const items = mapPeople(people).map((item) => {
-    const { start, end } = personPixelInterval(item, scale);
-    return {
-      id: item.id,
-      startYear: start,
-      endYear: end,
-      fameScore: item.fameScore,
-    };
-  });
-  return assignRows(items, MIN_ROW_GAP_PX);
-}
-
-// Conflicts and Milestones share one row-packing pass (see
-// ConflictsMilestonesLane's own comment on why), so their static row
-// identity has to be computed together too, from both full datasets at
-// once.
-function computeStaticConflictsMilestonesRows(
-  conflicts: ConflictEntry[],
-  milestones: Milestone[],
-): Map<string, number> {
-  const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
-  const conflictItems = mapConflicts(conflicts).map((item) => {
-    const { start, end } = conflictPixelInterval(item, scale);
-    return {
-      id: item.id,
-      startYear: start,
-      endYear: end,
-      fameScore: item.fameScore,
-    };
-  });
-  const milestoneItems = mapMilestones(milestones).map((item) => {
-    const lines = item.isPoint
-      ? wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX)
-      : [];
-    const { start, end } = milestonePixelInterval(item, lines, scale);
-    return {
-      id: item.id,
-      startYear: start,
-      endYear: end,
-      fameScore: item.fameScore,
-    };
-  });
-  return assignRows([...conflictItems, ...milestoneItems], MIN_ROW_GAP_PX);
-}
-
-// Narrows a static row map (computed once against the full dataset, see
-// above) down to just the currently-visible `ids`, closing gaps left by
-// whatever got filtered out. This re-indexes to consecutive integers
-// starting at 0 in the *same relative order* as the static rows, so it
-// never reorders two simultaneously-visible items relative to each other
-// — it only ever shifts the whole set uniformly as gaps open/close. That's
-// the key difference from re-running assignRows itself on a changed input
-// set: assignRows' greedy first-fit choice is sensitive to exactly which
-// items are present, so adding or removing one item can genuinely swap two
-// unrelated items' relative row order — compactRows can't, by construction.
+// Narrows a static row map (each entry's permanent TimelineEntry.row,
+// precomputed once by data-pipeline at Output time — see
+// docs/adr/0005-row-assignment-moves-to-the-pipeline.md) down to just the
+// currently-visible `ids`, closing gaps left by whatever got filtered out.
+// This re-indexes to consecutive integers starting at 0 in the *same
+// relative order* as the static rows, so it never reorders two
+// simultaneously-visible items relative to each other — it only ever shifts
+// the whole set uniformly as gaps open/close.
 export function compactRows(
   ids: string[],
   staticRowOf: Map<string, number>,
@@ -466,20 +328,28 @@ export interface RowAssignment {
 
 // The one seam a consumer (a lane, the Minimap) needs for Row Depth: give it
 // an id set it's currently rendering, get back the row each one occupies.
-// Hides that this is actually two steps — a static per-item identity
-// computed once against the full dataset, then compacted down to the ids in
-// play (compactRows, above) — so no caller can reintroduce the bug of
-// narrowing a filtered set some other way (see ADR 0007's addendum).
+// Hides that this is actually two steps — each entry's static row, read
+// straight off its pipeline-precomputed TimelineEntry.row (docs/adr/0005-
+// row-assignment-moves-to-the-pipeline.md), then compacted down to the ids
+// in play (compactRows, above) — so no caller can reintroduce the bug of
+// narrowing a filtered set some other way (see ADR 0007's addendum). Safe to
+// recompute on every render regardless of whether `people`/`conflicts`/
+// `milestones` grow mid-session (Payload Tier's Tier 1 merge,
+// docs/adr/0004-payload-tier-split-defers-low-fame-data.md) — it's a plain
+// lookup, not a packing pass, so an already-visible entry's row can never
+// shift underneath it.
 export function computeRowAssignment(
   people: Person[],
   conflicts: ConflictEntry[],
   milestones: Milestone[],
 ): RowAssignment {
-  const staticPersonRowOf = computeStaticPersonRows(people);
-  const staticEventsRowOf = computeStaticConflictsMilestonesRows(
-    conflicts,
-    milestones,
+  const staticPersonRowOf = new Map(
+    people.map((person) => [person.id, person.row ?? 0]),
   );
+  const staticEventsRowOf = new Map<string, number>([
+    ...conflicts.map((entry): [string, number] => [entry.id, entry.row ?? 0]),
+    ...milestones.map((entry): [string, number] => [entry.id, entry.row ?? 0]),
+  ]);
   return {
     personRowFor: (ids) => compactRows(ids, staticPersonRowOf),
     eventsRowFor: (ids) => compactRows(ids, staticEventsRowOf),

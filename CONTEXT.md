@@ -52,11 +52,11 @@ The log-scaled, mirrored-ridge area-sparkline that replaces the timeline's scrol
 _Avoid_: Mountain Profile (this term's retired prior name — the "ambiguous with a literal miniature-thumbnail rendering" concern that motivated the original name didn't hold up in practice), density chart, sparkline (bare)
 
 **Row Depth**:
-The number of vertical rows a lane's items need at a given point in time to render without overlap — what `assignRows` (`map-to-items.ts`) computes per item as its row index; a location's Row Depth is `max(row index) + 1` among items covering it. Drives both a lane's live rendered height and, computed at the Reference Scale, the Minimap's per-series height.
+The number of vertical rows a lane's items need at a given point in time to render without overlap — a location's Row Depth is `max(row index) + 1` among items covering it. Each item's own row index (`TimelineEntry.row`) is computed once by data-pipeline's Output stage (`row-assignment.ts`'s `assignRows`), against the *entire* lane at once, and shipped as data — not derived client-side (`docs/adr/0005-row-assignment-moves-to-the-pipeline.md`; `packages/web`'s `compactRows` only narrows that precomputed row down to whatever's currently visible, never recomputes it). Drives both a lane's live rendered height and, computed at the Reference Scale, the Minimap's per-series height.
 _Avoid_: lane height (the rendered pixel consequence, not this count), row count, stack depth
 
 **Reference Scale**:
-The fixed `pixelsPerYear` (`defaultPixelsPerYear()`, derived from `DEFAULT_VISIBLE_YEARS`) the Minimap packs items against to compute Row Depth across the whole pannable range — deliberately decoupled from the user's live zoom, so the Minimap reflects the app's default 120-year opening view rather than a worst-case (most-zoomed-out) or arbitrary scale.
+The fixed `pixelsPerYear` (`defaultPixelsPerYear()`, derived from `DEFAULT_VISIBLE_YEARS`) the Minimap packs items against to compute Row Depth across the whole pannable range — deliberately decoupled from the user's live zoom, so the Minimap reflects the app's default 120-year opening view rather than a worst-case (most-zoomed-out) or arbitrary scale. The same numeric scale data-pipeline's `row-assignment.ts` packs each entry's permanent Row Depth row against, duplicated there as a literal since data-pipeline doesn't depend on packages/web (`docs/adr/0005-row-assignment-moves-to-the-pipeline.md`).
 _Avoid_: default zoom (the opening viewport itself; this is the packing scale reused from it), base scale
 
 **Locale**:

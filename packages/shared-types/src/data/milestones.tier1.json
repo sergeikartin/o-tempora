@@ -18,7 +18,8 @@
         "year": 1920,
         "month": 12
       }
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q34467",
@@ -33,7 +34,8 @@
     "description": "The compact disc (CD) is a digital optical disc data storage format co-developed by Philips and Sony to store and play digital audio recordings. It employs the Compact Disc Digital Audio (CD-DA) standard and is capable of holding uncompressed stereo audio. First released in Japan in October 1982, the CD was the second optical disc format to reach the market, following the larger LaserDisc (LD). In later years, the technology was adapted for computer data storage as CD-ROM and subsequently expanded into various writable and multimedia formats. By 2007, over 200 billion CDs had been sold worldwide.",
     "at": {
       "year": 1979
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q8707",
@@ -55,7 +57,8 @@
         "year": 1889,
         "month": 2
       }
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q5167679",
@@ -73,7 +76,8 @@
     "at": {
       "year": 1991,
       "month": 12
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q48584",
@@ -91,7 +95,8 @@
     "at": {
       "year": 1799,
       "month": 7
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q40605",
@@ -109,7 +114,8 @@
     "at": {
       "year": 2008,
       "month": 10
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q47616",
@@ -124,7 +130,8 @@
     "description": "An incandescent light bulb, also known as an incandescent lamp or incandescent light globe, is an electric light that produces illumination by Joule heating a filament until it glows. The filament is enclosed in a glass bulb that is either evacuated or filled with inert gas to protect the filament from oxidation. Electric current is supplied to the filament by terminals or wires embedded in the glass. A bulb socket provides mechanical support and electrical connections.",
     "at": {
       "year": 1879
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q48469",
@@ -139,7 +146,8 @@
     "at": {
       "year": 1977,
       "month": 9
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q93304",
@@ -156,7 +164,8 @@
     "description": "The Code of Hammurabi is a Babylonian legal text composed c. 1753 BC. It is the longest, best-organized, and best-preserved legal text from the ancient Near East. It is written in the Old Babylonian dialect of Akkadian, purportedly by Hammurabi, sixth king of the First Dynasty of Babylon. The primary copy of the text is inscribed on a basalt stele 2.25 m tall.",
     "at": {
       "year": -1751
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q83164",
@@ -173,7 +182,8 @@
     "at": {
       "year": 1600,
       "month": 12
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q162297",
@@ -187,7 +197,8 @@
     "description": "Hygiene is a set of practices performed to preserve health.According to the World Health Organization (WHO), \"Hygiene refers to conditions and practices that help to maintain health and prevent the spread of diseases.\" Personal hygiene refers to maintaining the body's cleanliness. Hygiene activities can be grouped into the following: home and everyday hygiene, personal hygiene, medical hygiene, sleep hygiene, and food hygiene. Home and every day hygiene includes hand washing, respiratory hygiene, food hygiene at home, hygiene in the kitchen, hygiene in the bathroom, laundry hygiene, and medical hygiene at home.",
     "at": {
       "year": -2999
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q10257",
@@ -206,7 +217,8 @@
     "at": {
       "year": 1993,
       "month": 6
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q72313",
@@ -221,7 +233,8 @@
     "description": "An electric motor is a machine that converts electrical energy into mechanical energy. Most electric motors operate through the interaction between the motor's magnetic field and electric current in a wire winding to generate Lorentz force in the form of torque applied on the motor's shaft. An electric generator is mechanically identical to an electric motor but operates inversely, converting mechanical energy into electrical energy.",
     "at": {
       "year": 1834
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q80728",
@@ -235,7 +248,8 @@
     "description": "Dynamite is an explosive made of nitroglycerin, sorbents, and stabilizers. It was invented by the Swedish chemist and engineer Alfred Nobel in Geesthacht, Northern Germany, and was patented in 1867. It rapidly gained wide-scale use as a more robust alternative to the traditional black powder explosives. It allows the use of nitroglycerine's favorable explosive properties while greatly reducing its risk of accidental detonation.",
     "at": {
       "year": 1867
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q46362",
@@ -259,7 +273,8 @@
         "year": 1815,
         "month": 6
       }
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q48432",
@@ -282,7 +297,8 @@
         "year": 1930,
         "month": 7
       }
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q47672",
@@ -300,7 +316,8 @@
     "at": {
       "year": 1974,
       "month": 3
-    }
+    },
+    "row": 9
   },
   {
     "id": "Q228036",
@@ -315,7 +332,8 @@
     "description": "Caesarean section, also known as C-section, cesarean, or caesarean delivery, is the surgical procedure by which one or more babies are delivered through an incision in the mother's abdomen. It is often performed because vaginal delivery would put the mother or child at risk of injury or death. Reasons for the operation include, but are not limited to, obstructed labor, twin pregnancy, high blood pressure in the mother, breech birth, shoulder presentation, and problems with the placenta or umbilical cord. A caesarean delivery may be performed based upon the shape of the mother's pelvis or history of a previous C-section. A trial of vaginal birth after C-section may be possible. The World Health Organization recommends that caesarean section be performed only when medically necessary.",
     "at": {
       "year": -319
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q133585",
@@ -330,7 +348,8 @@
     "description": "An airship, dirigible balloon or dirigible is a type of aerostat (lighter-than-air) aircraft that can navigate through the air flying under its own power. Aerostats use buoyancy from a lifting gas that is less dense than the surrounding air to achieve the lift needed to stay airborne.",
     "at": {
       "year": 1852
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q20075",
@@ -347,7 +366,8 @@
     "description": "The London Underground is a rapid transit system serving Greater London and some parts of the adjacent home counties of Buckinghamshire, Essex, and Hertfordshire in England. It is part of the network of transport services managed by Transport for London.",
     "at": {
       "year": 1890
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q125006",
@@ -365,7 +385,8 @@
     "at": {
       "year": 1883,
       "month": 5
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q58148",
@@ -380,7 +401,8 @@
     "at": {
       "year": 1864,
       "month": 4
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q80811",
@@ -395,7 +417,8 @@
     "at": {
       "year": 1957,
       "month": 10
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q48475",
@@ -410,7 +433,8 @@
     "at": {
       "year": 1977,
       "month": 8
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q101017",
@@ -425,7 +449,8 @@
     "description": "Distillation, also classical distillation, is the process of separating the component substances of a liquid mixture of two or more chemically discrete substances by selective boiling of the mixture and the condensation of the vapors in a still.",
     "at": {
       "year": 300
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q47433",
@@ -439,7 +464,8 @@
     "description": "A banknote or bank note – also called a bill or simply a note – is a type of paper money that is made and distributed (\"issued\") by a bank of issue, payable to the bearer on demand. Banknotes were originally issued by commercial banks, which were legally required to redeem the notes for legal tender when presented to the chief cashier of the originating bank. These commercial banknotes were only traded at face value in the market served by the issuing bank. Commercial banknotes have primarily been replaced by national banknotes issued by central banks or monetary authorities.",
     "at": {
       "year": 618
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q129053",
@@ -457,7 +483,8 @@
     "at": {
       "year": 1947,
       "month": 8
-    }
+    },
+    "row": 14
   },
   {
     "id": "Q133331",
@@ -480,7 +507,8 @@
         "year": 325,
         "month": 7
       }
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q51648",
@@ -494,7 +522,8 @@
     "at": {
       "year": 1054,
       "month": 7
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q125953",
@@ -511,7 +540,8 @@
     "at": {
       "year": 1908,
       "month": 6
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q159766",
@@ -528,7 +558,8 @@
     "description": "The United East India Company, commonly known as the Dutch East India Company, was a chartered trading company and one of the first joint-stock companies in the world. Established on 20 March 1602 by the States General of the Netherlands amalgamating existing companies, it was granted a 21-year monopoly to carry out trade activities in Asia. Shares in the company could be purchased by any citizen of the Dutch Republic and bought and sold in open-air secondary markets, one of which became the Amsterdam Stock Exchange. The company possessed quasi-governmental powers, including the ability to wage war, imprison and execute convicts, negotiate treaties, strike its own coins, and establish colonies. Because it traded across multiple colonies and countries from both the East and the West, the VOC is sometimes considered to have been the world's first multinational corporation.",
     "at": {
       "year": 1602
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q8080",
@@ -551,7 +582,8 @@
         "year": 1896,
         "month": 4
       }
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q988780",
@@ -566,7 +598,8 @@
     "description": "Electromagnetic induction or magnetic induction is the production of an electromotive force (emf) across an electrical conductor in a changing magnetic field.",
     "at": {
       "year": 1831
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q20124",
@@ -581,7 +614,8 @@
     "at": {
       "year": 1859,
       "month": 11
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q144334",
@@ -595,7 +629,8 @@
     "description": "A printing press is a machine that transfers ink onto materials such as paper or cloth by applying pressure to an inked surface. It marked a major advance on earlier methods, in which ink was applied to the printing surface and the paper was rubbed by hand to transfer it. The invention and global spread of the printing press transformed book production and communication during the early modern period.",
     "at": {
       "year": 1439
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q46904",
@@ -608,7 +643,8 @@
     "description": "The Global System for Mobile Communications (GSM) is a family of standards to describe the protocols for second-generation (2G) digital cellular networks, as used by mobile devices such as mobile phones and mobile broadband modems. GSM is also a trademark owned by the GSM Association. \"GSM\" may also refer to the voice codec initially used in GSM.",
     "at": {
       "year": 1990
-    }
+    },
+    "row": 11
   },
   {
     "id": "Q171043",
@@ -623,7 +659,8 @@
     "description": "A steam locomotive is a type of locomotive that provides the force to move itself and other vehicles by means of the expansion of steam. It is fuelled by burning combustible material to heat water in the locomotive's boiler to the point where it becomes gaseous and its volume increases 1,600 to 1,700 times. Functionally, it is a self-propelled steam engine on wheels.",
     "at": {
       "year": 1814
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q193692",
@@ -638,7 +675,8 @@
     "description": "An electric car or electric vehicle (EV) is an automobile that uses electrical energy as the primary source of propulsion. The term normally refers to a plug-in electric vehicle, typically a battery electric vehicle (BEV), which only uses energy stored in on-board battery packs, but broadly may also include plug-in hybrid electric vehicle (PHEV), range-extended electric vehicle (REEV) and fuel cell electric vehicle (FCEV), which can convert electric power from other fuels via a generator or a fuel cell.",
     "at": {
       "year": 1835
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q174174",
@@ -653,7 +691,8 @@
     "description": "A diesel engine is an internal combustion engine in which ignition of diesel fuel is caused by the elevated temperature of the air in the cylinder due to mechanical compression; thus, the diesel engine is also called a compression-ignition engine. This contrasts with engines using spark plug-ignition of the air-fuel mixture, such as a petrol engine or a gas engine. The diesel engine is named after its inventor, German engineer Rudolf Diesel.",
     "at": {
       "year": 1893
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q164338",
@@ -671,7 +710,8 @@
     "at": {
       "year": 1964,
       "month": 10
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q79757",
@@ -686,7 +726,8 @@
     "description": "A barometer is a scientific instrument that is used to measure air pressure. Pressure tendency, which is derived from barometric readings, can forecast short term changes in the weather. Many measurements of air pressure are used within surface weather analysis to help find surface troughs, pressure systems and frontal boundaries.",
     "at": {
       "year": 1643
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q189511",
@@ -701,7 +742,8 @@
     "description": "An electronic cigarette (e-cigarette) or vape is a device that simulates tobacco smoking. It consists of an atomizer, a power source such as a battery, and a container such as a cartridge or tank. Instead of smoke, the user inhales vapor, often called \"vaping\".",
     "at": {
       "year": 1963
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q64403",
@@ -715,7 +757,8 @@
     "description": "In chemistry and manufacturing, electrolysis is a technique that uses direct electric current (DC) to drive an otherwise non-spontaneous biological and physical reaction. Electrolysis is commercially important as a stage in the separation of elements from naturally occurring sources such as ores using an electrolytic cell. The voltage that is needed for electrolysis to occur is called the decomposition potential. The word \"lysis\" means to separate or break, so in terms, electrolysis would mean \"breakdown via electricity.\"",
     "at": {
       "year": 1787
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q131502",
@@ -730,7 +773,8 @@
     "description": "In electricity generation, a generator, also called an electric generator, electrical generator, and electromagnetic generator is an electromechanical device that converts mechanical energy to electrical energy for use in an external circuit. In most generators which are rotating machines, a source of kinetic power rotates the generator's shaft, and the generator produces an electric current at its output terminals which flows through an external circuit, powering electrical loads. Sources of mechanical energy used to drive generators include steam turbines, gas turbines, water turbines, internal combustion engines, wind turbines and even hand cranks. Generators produce nearly all of the electric power for worldwide electric power grids. The first electromagnetic generator, the Faraday disk, was invented in 1831 by British scientist Michael Faraday.",
     "at": {
       "year": 1873
-    }
+    },
+    "row": 6
   },
   {
     "id": "Q131262",
@@ -747,7 +791,8 @@
     "description": "The University of Bologna is a public research university in Bologna, Italy. It is the oldest university in continuous operation in the world, and the first degree-awarding institution of higher learning. Teaching began around 1088, with the university becoming organised as universitas scholarium or guilds of students by the late 12th century. The university's emblem carries the motto Alma Mater Studiorum and the date A.D. 1088. With over 90,000 students, the University of Bologna is one of the largest universities in Europe.",
     "at": {
       "year": 1088
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q132560",
@@ -762,7 +807,8 @@
     "description": "An electron microscope is a microscope that uses a beam of electrons as a source of illumination. It uses electron optics that are analogous to the glass lenses of an optical light microscope to control the electron beam, for instance focusing it to produce magnified images or electron diffraction patterns. As the wavelength of an electron can be more than 100,000 times smaller than that of visible light, electron microscopes have a much higher resolution of about 0.1 nm, which compares to about 200 nm for light microscopes. Electron microscope may refer to:Transmission electron microscope (TEM) where swift electrons go through a thin sampleScanning transmission electron microscope (STEM) which is similar to TEM with a scanned electron probeScanning electron microscope (SEM) which is similar to STEM, but with thick samplesElectron microprobe similar to a SEM, but more for chemical analysisLow-energy electron microscope (LEEM), used to image surfacesPhotoemission electron microscope (PEEM) which is similar to LEEM using electrons emitted from surfaces by photons",
     "at": {
       "year": 1931
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q116434",
@@ -776,7 +822,8 @@
     "description": "A phonograph, later called a gramophone, and since the 1940s a record player, or more recently a turntable, is a device for the mechanical and analogue reproduction of sound.",
     "at": {
       "year": 1877
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q160464",
@@ -791,7 +838,8 @@
     "description": "A button is a fastener that joins two pieces of fabric together by slipping through a loop or by sliding through a buttonhole.",
     "at": {
       "year": 1200
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q160137",
@@ -806,7 +854,8 @@
     "description": "A ballpoint pen, also known as a biro, ball pen, or dot pen, is a pen that dispenses ink over a hard ball at its point, i.e., over a \"ball point\". The materials commonly used are steel, brass, or tungsten carbide. The design was conceived and developed as a cleaner and more reliable alternative to dip pens and fountain pens, and it is now the world's most-used writing instrument; millions are manufactured and sold daily. It has influenced art and graphic design and spawned an artwork genre.",
     "at": {
       "year": 1888
-    }
+    },
+    "row": 6
   },
   {
     "id": "Q180548",
@@ -825,7 +874,8 @@
       "end": {
         "year": -3000
       }
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q188371",
@@ -844,7 +894,8 @@
       "end": {
         "year": 1852
       }
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q11146",
@@ -862,7 +913,8 @@
     "at": {
       "year": 1992,
       "month": 2
-    }
+    },
+    "row": 6
   },
   {
     "id": "Q154705",
@@ -885,7 +937,8 @@
         "year": 1871,
         "month": 5
       }
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q186356",
@@ -906,7 +959,8 @@
       "end": {
         "year": 1939
       }
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q157506",
@@ -921,7 +975,8 @@
     "at": {
       "year": 1517,
       "month": 11
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q188468",
@@ -935,7 +990,8 @@
     "description": "The ancient Olympic Games, or the ancient Olympics, were a series of athletic competitions among representatives of city-states and one of the Panhellenic Games of ancient Greece. They were held at the Panhellenic religious sanctuary of Olympia, in honor of Zeus, and the Greeks gave them a mythological origin. The originating Olympic Games are traditionally dated to 776 BC. The games were held every four years, or Olympiad, which became a unit of time in historical chronologies. These Olympiads were referred to based on the winner of their stadion sprint, e.g., \"the third year of the eighteenth Olympiad when Ladas of Argos won the stadion\". They continued to be celebrated when Greece came under Roman rule in the 2nd century BC. Their last recorded celebration was in AD 393, under the emperor Theodosius I, but archaeological evidence indicates that some games were still held after this date. The games likely came to an end under Theodosius II, possibly in connection with a fire that burned down the temple of the Olympian Zeus during his reign.",
     "at": {
       "year": -775
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q164815",
@@ -958,7 +1014,8 @@
         "year": 1969,
         "month": 8
       }
-    }
+    },
+    "row": 11
   },
   {
     "id": "Q171433",
@@ -974,7 +1031,8 @@
     "at": {
       "year": 1996,
       "month": 7
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q190035",
@@ -990,7 +1048,8 @@
     "at": {
       "year": 2015,
       "month": 9
-    }
+    },
+    "row": 12
   },
   {
     "id": "Q205921",
@@ -1004,7 +1063,8 @@
     "description": "Philosophiæ Naturalis Principia Mathematica, often called simply the Principia, is a book by Sir Isaac Newton that expounds Newton's laws of motion and his law of universal gravitation.",
     "at": {
       "year": 1680
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q182323",
@@ -1019,7 +1079,8 @@
     "at": {
       "year": 1908,
       "month": 9
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q15003",
@@ -1034,7 +1095,8 @@
     "description": "An escalator is a moving staircase which carries people between floors of a building or structure. It consists of a motor-driven chain of individually linked steps on a track which cycle on a pair of tracks which keep the step tread horizontal.",
     "at": {
       "year": 1891
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q1932",
@@ -1055,7 +1117,8 @@
         "year": 1975,
         "month": 7
       }
-    }
+    },
+    "row": 13
   },
   {
     "id": "Q180253",
@@ -1069,7 +1132,8 @@
     "description": "A fuel cell is an electrochemical cell that converts the chemical energy of a fuel and an oxidizing agent into electricity through a pair of redox reactions. Fuel cells are different from most batteries in requiring a continuous source of fuel and oxygen to sustain the chemical reaction, whereas in a battery the chemical energy usually comes from substances that are already present in the battery. Fuel cells can produce electricity continuously for as long as fuel and oxygen are supplied.",
     "at": {
       "year": 1842
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q13582",
@@ -1092,7 +1156,8 @@
         "year": 1885,
         "month": 2
       }
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q55816",
@@ -1109,7 +1174,8 @@
     "description": "The Chicxulub crater is an impact crater buried underneath the Yucatán Peninsula in Mexico. The crater is named after the onshore inland community of Chicxulub Pueblo. It was formed slightly over 66 million years ago when an asteroid, about ten kilometers in diameter, struck Earth. The crater is estimated to be two hundred kilometers (120 mi) in diameter and is buried to a depth of about one kilometer (0.6 mi) beneath younger sedimentary rocks. It is one of the largest impact structures on Earth, alongside the much older Sudbury and Vredefort impact structures, and the only one whose peak ring is intact and directly accessible for scientific research.",
     "at": {
       "year": 1981
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q35045",
@@ -1126,7 +1192,8 @@
     "description": "Potosí, known as Villa Imperial de Potosí in the colonial period, is the capital city and a municipality of the Department of Potosí in Bolivia. It is one of the highest cities in the world at a nominal 4,067 m (13,343 ft). Diego Huallpa, an indigenous prospector, is traditionally credited with the discovery of the Cerro Rico in 1545, which led to the founding and rapid growth of Potosí due to its extraordinary silver wealth.",
     "at": {
       "year": 1545
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q211382",
@@ -1141,7 +1208,8 @@
     "description": "High-speed rail (HSR) is a type of rail transport network utilizing trains that run significantly faster than those of traditional rail, using an integrated system of specialized rolling stock and dedicated tracks. While there is no single definition or standard that applies worldwide, lines built to handle speeds of at least 250 km/h (155 mph) or upgraded lines of at least 200 km/h (125 mph) are generally considered to be high-speed.",
     "at": {
       "year": 1964
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q179744",
@@ -1156,7 +1224,8 @@
     "description": "Daguerreotype was the first publicly available photographic process, widely used from the 1830s to 1850s. \"Daguerreotype\" also refers to an image created through this process.",
     "at": {
       "year": 1839
-    }
+    },
+    "row": 6
   },
   {
     "id": "Q227467",
@@ -1172,7 +1241,8 @@
     "at": {
       "year": 1955,
       "month": 6
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q221474",
@@ -1187,7 +1257,8 @@
     "at": {
       "year": 1492,
       "month": 10
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q179430",
@@ -1202,7 +1273,8 @@
     "description": "A sextant is a doubly reflecting navigation instrument that measures the angular distance between two visible objects. Its primary use is to measure the angle between an astronomical object and the horizon in celestial navigation.",
     "at": {
       "year": 1757
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q178032",
@@ -1217,7 +1289,8 @@
     "description": "An electromagnet is a type of magnet in which the magnetic field is produced by an electric current. Electromagnets usually consist of copper wire wound into a coil. A current through the wire creates a magnetic field which is concentrated along the center of the coil. The magnetic field disappears when the current is turned off. The wire turns are often wound around a magnetic core made from a ferromagnetic or ferrimagnetic material such as iron; the magnetic core concentrates the magnetic flux and makes a more powerful magnet.",
     "at": {
       "year": 1825
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q233562",
@@ -1232,7 +1305,8 @@
     "at": {
       "year": 1776,
       "month": 3
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q48537",
@@ -1253,7 +1327,8 @@
       "end": {
         "year": 1968
       }
-    }
+    },
+    "row": 9
   },
   {
     "id": "Q204711",
@@ -1270,7 +1345,8 @@
     "at": {
       "year": 1906,
       "month": 6
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q191472",
@@ -1286,7 +1362,8 @@
     "at": {
       "year": 1936,
       "month": 11
-    }
+    },
+    "row": 14
   },
   {
     "id": "Q185757",
@@ -1300,7 +1377,8 @@
     "description": "A hovercraft, also known as an air-cushion vehicle or ACV, is an amphibious craft capable of travelling over land, water, mud, ice, and various other surfaces.",
     "at": {
       "year": 1955
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q213669",
@@ -1315,7 +1393,8 @@
     "description": "The Haber process, also called the Haber–Bosch process, is the main industrial procedure for the production of ammonia. It converts atmospheric nitrogen (N2) to ammonia (NH3) by a reaction with hydrogen (H2) using finely divided iron metal as a catalyst:",
     "at": {
       "year": 1909
-    }
+    },
+    "row": 12
   },
   {
     "id": "Q182524",
@@ -1332,7 +1411,8 @@
     "at": {
       "year": 1961,
       "month": 4
-    }
+    },
+    "row": 14
   },
   {
     "id": "Q184201",
@@ -1349,7 +1429,8 @@
     "at": {
       "year": 1968,
       "month": 12
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q189859",
@@ -1364,7 +1445,8 @@
     "description": "A steam turbine or steam turbine engine is a machine or heat engine that extracts thermal energy from pressurized steam and uses it to do mechanical work utilising a rotating output shaft. Its modern manifestation was invented by Sir Charles Parsons in 1884 and revolutionized marine propulsion and navigation. Fabrication of a modern steam turbine involves advanced metalwork to form high-grade steel alloys into precision parts using technologies that first became available in the 20th century; continued advances in durability and efficiency of steam turbines remains central to the energy economics of the 21st century. The largest steam turbine ever built is the 1,770 MW Arabelle steam turbine built by Arabelle Solutions, two units of which will be installed at Hinkley Point C Nuclear Power Station, England.",
     "at": {
       "year": 1884
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q223732",
@@ -1381,7 +1463,8 @@
     "at": {
       "year": 1948,
       "month": 5
-    }
+    },
+    "row": 16
   },
   {
     "id": "Q180764",
@@ -1398,7 +1481,8 @@
     "at": {
       "year": 313,
       "month": 6
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q191055",
@@ -1415,7 +1499,8 @@
     "at": {
       "year": 1755,
       "month": 11
-    }
+    },
+    "row": 6
   },
   {
     "id": "Q193093",
@@ -1431,7 +1516,8 @@
     "description": "The Academy was founded by Plato in ca. 387 BC in Athens. Aristotle studied there for twenty years before founding his own school, the Lyceum. The academy persisted throughout the Hellenistic period as a skeptical school, until coming to an end after the death of Philo of Larissa in 83 BC. Although philosophers continued to teach Plato's philosophy in Athens during the Roman era, it was not until AD 410 that a revived Academy was re-established as a center for Neoplatonism, persisting until 529 AD when it was closed down by Justinian I.",
     "at": {
       "year": -386
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q447",
@@ -1445,7 +1531,8 @@
     "description": "The Encyclopédie, ou dictionnaire raisonné des sciences, des arts et des métiers, better known as the Encyclopédie, was a general encyclopedia published in France between 1751 and 1772, with later supplements, revised editions, an index, and translations. It had many contributors, known among contemporaries as the Encyclopédistes. It was edited by Denis Diderot and, until 1759, co-edited by Jean le Rond d'Alembert.",
     "at": {
       "year": 1751
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q192446",
@@ -1460,7 +1547,8 @@
     "description": "The Human Genome Project (HGP) was an international scientific research project with the goal of determining the base pairs that make up human DNA, and of identifying, mapping and sequencing all of the genes of the human genome from both a physical and a functional standpoint. It started in 1990 and was completed in 2003. It was the world's largest collaborative biological project. Planning for the project began in 1984 by the US government, and it officially launched in 1990. It was declared complete on 14 April 2003, and included about 92% of the genome. Level \"complete genome\" was achieved in May 2021, with only 0.3% of the bases covered by potential issues. The full gapless sequence containing 22 autosomes and the X chromosome was published in January 2022, making it the first fully sequenced human genome. The full sequence of the Y chromosome was only published in August 2023 due to challenges with sequencing and assembling, caused by its highly repetitive nature.",
     "at": {
       "year": 1990
-    }
+    },
+    "row": 12
   },
   {
     "id": "Q158075",
@@ -1475,7 +1563,8 @@
     "description": "The Gutenberg Bible, also known as the 42-line Bible, the Mazarin Bible or the B42, is the earliest major book printed in Europe using mass-produced metal movable type. It marked the start of the \"Gutenberg Revolution\" and the age of printed books in the West. The book is valued and revered for its high aesthetic and artistic qualities and its historical significance.",
     "at": {
       "year": 1450
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q178193",
@@ -1490,7 +1579,8 @@
     "description": "A steamboat is a boat that is propelled primarily by steam power, typically driving propellers or paddlewheels. The term steamboat is used to refer to small steam-powered vessels working on lakes, rivers, and in short-sea shipping. The development of the steamboat led to the larger steamship, which is a seaworthy and often ocean-going ship.",
     "at": {
       "year": 1783
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q208708",
@@ -1506,7 +1596,8 @@
     "at": {
       "year": 1923,
       "month": 1
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q960800",
@@ -1519,7 +1610,8 @@
     "description": "Chlorofluorocarbons (CFCs) and hydrochlorofluorocarbons (HCFCs) are fully or partly halogenated hydrocarbons that contain carbon (C), hydrogen (H), chlorine (Cl), and fluorine (F). They are produced as volatile derivatives of methane, ethane, and propane.",
     "at": {
       "year": 1890
-    }
+    },
+    "row": 12
   },
   {
     "id": "Q505802",
@@ -1542,7 +1634,8 @@
         "year": 1806,
         "month": 9
       }
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q209440",
@@ -1557,7 +1650,8 @@
     "description": "A galvanic cell or voltaic cell, named after the scientists Luigi Galvani and Alessandro Volta, respectively, is an electrochemical cell in which an electric current is generated from spontaneous oxidation–reduction reactions. An example of a galvanic cell consists of two different metals, each immersed in separate beakers containing their respective metal ions in solution that are connected by a salt bridge or separated by a porous membrane.",
     "at": {
       "year": 1786
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q188631",
@@ -1571,7 +1665,8 @@
     "description": "Vulcanization is a range of processes for hardening rubbers. The term originally referred exclusively to the treatment of natural rubber with sulfur and heat, which remains the most common practice. It has also grown to include the hardening of other (synthetic) rubbers via various means. Examples include silicone rubber via room temperature vulcanising and chloroprene rubber (neoprene) using metal oxides.",
     "at": {
       "year": 1839
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q171375",
@@ -1586,7 +1681,8 @@
     "at": {
       "year": 1947,
       "month": 3
-    }
+    },
+    "row": 19
   },
   {
     "id": "Q207875",
@@ -1600,7 +1696,8 @@
     "description": "The Requiem in D minor, K. 626, is a Requiem Mass by Wolfgang Amadeus Mozart (1756–1791). Mozart composed part of the Requiem in Vienna in late 1791, but it was unfinished at his death on 5 December the same year. A completed version was delivered to Count Franz von Walsegg, who had commissioned the piece for a requiem service on 14 February 1792 to commemorate the first anniversary of the death of his wife Anna, who had died at the age of 20 on 14 February 1791.",
     "at": {
       "year": 1791
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q25169",
@@ -1613,7 +1710,8 @@
     "description": "The Hitchhiker's Guide to the Galaxy is a comedy science fiction franchise created by Douglas Adams. Originally a radio sitcom broadcast over two series on BBC Radio 4 between 1978 and 1980, it was soon adapted to other formats, including both novels and comic books, a 1981 BBC television series, a 1984 text adventure game, stage shows and a 2005 feature film.",
     "at": {
       "year": 1979
-    }
+    },
+    "row": 14
   },
   {
     "id": "Q209625",
@@ -1628,7 +1726,8 @@
     "description": "The year 1816 is known as the Year Without a Summer because of severe climate abnormalities that caused average global temperatures to decrease by 0.4–0.7 °C (0.7–1 °F). Summer temperatures in Europe that year were the coldest of any on record between 1766 and 2000, resulting in crop failures and major food shortages across the Northern Hemisphere.",
     "at": {
       "year": 1816
-    }
+    },
+    "row": 6
   },
   {
     "id": "Q391358",
@@ -1643,7 +1742,8 @@
     "at": {
       "year": 1862,
       "month": 9
-    }
+    },
+    "row": 12
   },
   {
     "id": "Q151060",
@@ -1659,7 +1759,8 @@
     "at": {
       "year": 1804,
       "month": 3
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q817281",
@@ -1674,7 +1775,8 @@
     "description": "The combined oral contraceptive pill (COCP), often referred to as the birth control pill or colloquially as \"the pill\", is a type of birth control that is designed to be taken orally by women. It is the oral form of combined hormonal contraception. The pill contains two important hormones: a progestin and estrogen. When taken correctly, it alters the menstrual cycle to eliminate ovulation and prevent pregnancy.",
     "at": {
       "year": 1961
-    }
+    },
+    "row": 18
   },
   {
     "id": "Q1519099",
@@ -1688,7 +1790,8 @@
     "description": "Polio vaccine is a vaccine used to prevent poliomyelitis (polio). Two types are used: an inactivated poliovirus given by injection (IPV) and a weakened poliovirus given by mouth (OPV). The World Health Organization (WHO) recommends all children be fully vaccinated against polio. The two vaccines have eliminated polio from most of the world, and reduced the number of cases reported each year from an estimated 350,000 in 1988 to 33 in 2018.",
     "at": {
       "year": 1952
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q146578",
@@ -1703,7 +1806,8 @@
     "description": "Bakelite was the first plastic made from synthetic components. It was developed by chemist Leo Baekeland in Yonkers, New York, in 1907, and patented on December 7, 1909.",
     "at": {
       "year": 1907
-    }
+    },
+    "row": 15
   },
   {
     "id": "Q5860",
@@ -1718,7 +1822,8 @@
     "description": "Carbon fibers or carbon fibres are fibers about 5 to 10 micrometers (0.00020–0.00039 in) in diameter and composed mostly of carbon atoms. Carbon fibers have several advantages: high stiffness, high tensile strength, high strength-to-weight ratio, high chemical resistance, high-temperature tolerance, and low thermal expansion. These properties have made carbon fiber very popular in aerospace, civil engineering, military, motorsport, and other competition sports. However, they are relatively expensive compared to similar fibers, such as glass fiber, basalt fibers, or plastic fibers.",
     "at": {
       "year": 1958
-    }
+    },
+    "row": 11
   },
   {
     "id": "Q192803",
@@ -1731,7 +1836,8 @@
     "description": "Double-entry bookkeeping, also known as double-entry accounting, is a method of bookkeeping in which every financial transaction is recorded with equal and opposite entries - thus \"balancing the books\". The purpose of double-entry bookkeeping is to maintain accuracy in financial records and allow detection of errors or fraud.",
     "at": {
       "year": 1494
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q17550",
@@ -1753,7 +1859,8 @@
       "end": {
         "year": 1854
       }
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q245388",
@@ -1769,7 +1876,8 @@
     "at": {
       "year": 1974,
       "month": 11
-    }
+    },
+    "row": 15
   },
   {
     "id": "Q94247",
@@ -1785,7 +1893,8 @@
     "at": {
       "year": 1956,
       "month": 6
-    }
+    },
+    "row": 19
   },
   {
     "id": "Q337724",
@@ -1799,7 +1908,8 @@
     "description": "The lead–acid battery is a type of rechargeable battery. First invented in 1859 by French physicist Gaston Planté, it was the first type of rechargeable battery ever created. Compared to the more modern rechargeable batteries, lead–acid batteries have relatively low energy density and heavier weight. Despite this, they are able to supply high surge currents. These features, along with their low cost, make them useful for motor vehicles in order to provide the high current required by starter motors. Lead–acid batteries suffer from relatively short cycle lifespan and overall lifespan, as well as long charging times; an average automotive battery takes anywhere between 6 and 12 hours to fully charge from a discharged state.",
     "at": {
       "year": 1859
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q193841",
@@ -1812,7 +1922,8 @@
     "description": "Cellophane is a thin, transparent sheet made of regenerated cellulose. Its low permeability to air, oils, greases, bacteria, and liquid water makes it useful for food packaging. Cellophane is highly permeable to water vapour, but may be coated with nitrocellulose lacquer to prevent this.",
     "at": {
       "year": 1908
-    }
+    },
+    "row": 16
   },
   {
     "id": "Q69163529",
@@ -1830,7 +1941,8 @@
     "at": {
       "year": 1989,
       "month": 11
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q208191",
@@ -1852,7 +1964,8 @@
         "year": 1955,
         "month": 4
       }
-    }
+    },
+    "row": 20
   },
   {
     "id": "Q214634",
@@ -1867,7 +1980,8 @@
     "description": "A cloud chamber, also known as a Wilson chamber, is a particle detector used for visualizing the passage of ionizing radiation.",
     "at": {
       "year": 1911
-    }
+    },
+    "row": 17
   },
   {
     "id": "Q166543",
@@ -1882,7 +1996,8 @@
     "description": "General anaesthesia (UK) or general anesthesia (US) is medically induced loss of consciousness that renders a patient unarousable even by painful stimuli. It is achieved through medications, which can be injected or inhaled, often with an analgesic and neuromuscular blocking agent.",
     "at": {
       "year": -3499
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q625151",
@@ -1897,7 +2012,8 @@
     "description": "An electric locomotive is a type of locomotive powered by electricity from overhead lines, a third rail or on-board energy storage such as a battery or a supercapacitor. Locomotives with on-board fuelled prime movers, such as diesel engines or gas turbines, are classed as diesel–electric or gas turbine–electric and not as electric locomotives, because the electric generator/motor combination serves only as a power transmission system.",
     "at": {
       "year": 1837
-    }
+    },
+    "row": 5
   },
   {
     "id": "Q326248",
@@ -1915,7 +2031,8 @@
     "at": {
       "year": 1886,
       "month": 1
-    }
+    },
+    "row": 13
   },
   {
     "id": "Q688605",
@@ -1932,7 +2049,8 @@
     "at": {
       "year": 1903,
       "month": 12
-    }
+    },
+    "row": 17
   },
   {
     "id": "Q194154",
@@ -1947,7 +2065,8 @@
     "description": "The cavity magnetron is a high-power vacuum tube used in early radar systems and subsequently in microwave ovens and in linear particle accelerators. A cavity magnetron generates microwaves using the interaction of a stream of electrons with a magnetic field, while moving past a series of cavity resonators, which are small, open cavities in a metal block. Electrons pass by the cavities and cause microwaves to oscillate within, similar to the functioning of a whistle producing a tone when excited by an air stream blown past its opening. The resonant frequency of the arrangement is determined by the cavities' physical dimensions. Unlike other vacuum tubes, such as a klystron or a traveling-wave tube (TWT), the magnetron cannot function as an amplifier for increasing the intensity of an applied microwave signal; the magnetron serves solely as an electronic oscillator generating a microwave signal from direct-current electricity supplied to the vacuum tube.",
     "at": {
       "year": 1940
-    }
+    },
+    "row": 15
   },
   {
     "id": "Q843389",
@@ -1962,7 +2081,8 @@
     "description": "Canning is a method of food preservation in which food is processed and sealed in an airtight container. Canning provides a shelf life that typically ranges from one to five years, although under specific circumstances, it can be much longer. A freeze-dried canned product, such as canned dried lentils, could last as long as 30 years in an edible state.",
     "at": {
       "year": 1810
-    }
+    },
+    "row": 9
   },
   {
     "id": "Q631489",
@@ -1983,7 +2103,8 @@
       "end": {
         "year": 1899
       }
-    }
+    },
+    "row": 9
   },
   {
     "id": "Q234027",
@@ -1997,7 +2118,8 @@
     "at": {
       "year": 1978,
       "month": 7
-    }
+    },
+    "row": 17
   },
   {
     "id": "Q334055",
@@ -2011,7 +2133,8 @@
     "description": "The Bessemer process was the first inexpensive industrial process for the mass production of steel from molten pig iron before the development of the open hearth furnace. The key principle is removal of impurities and undesired elements, primarily excess carbon, contained in the pig iron by oxidation with air being blown through the molten iron. Oxidation of the excess carbon also raises the temperature of the iron mass and keeps it molten.Virtually all the pig iron carbon is removed by the converter, and so carbon must be added at the end of the process to create steel. 0.25% carbon content is a typical value for low carbon steel which is used in construction and other low-stress applications.",
     "at": {
       "year": 1855
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q2411998",
@@ -2028,7 +2151,8 @@
     "at": {
       "year": 79,
       "month": 10
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q1192212",
@@ -2044,7 +2168,8 @@
     "description": "The emancipation reform of 1861 in Russia, also known as the Edict of Emancipation of Russia, was the first and most important of the liberal reforms enacted during the reign of Emperor Alexander II of Russia. The reform effectively abolished serfdom throughout the Russian Empire.",
     "at": {
       "year": 1861
-    }
+    },
+    "row": 13
   },
   {
     "id": "Q162684",
@@ -2061,7 +2186,8 @@
     "description": "The Charité – Universitätsmedizin Berlin is a public medical school and hospital in Berlin, Germany. It is the largest university hospital in Europe. The medical school is affiliated with Humboldt University of Berlin and Free University of Berlin.",
     "at": {
       "year": 1710
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q107701",
@@ -2078,7 +2204,8 @@
     "at": {
       "year": 1840,
       "month": 4
-    }
+    },
+    "row": 9
   },
   {
     "id": "Q1136790",
@@ -2092,7 +2219,8 @@
     "description": "A cotton gin—meaning \"cotton engine\"—is a machine that quickly and easily separates cotton fibers from their seeds, enabling much greater productivity than manual cotton separation. The separated seeds may be used to grow more cotton or to produce cottonseed oil. Handheld roller gins had been used in the Indian subcontinent since around 500 A.D. and later in other regions. The Indian worm-gear roller gin was invented sometime around the 16th century and has, according to Lakwete, remained virtually unchanged today.",
     "at": {
       "year": 1793
-    }
+    },
+    "row": 9
   },
   {
     "id": "Q1225170",
@@ -2115,7 +2243,8 @@
         "year": 1522,
         "month": 9
       }
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q654562",
@@ -2129,7 +2258,8 @@
     "description": "The Travels of Marco Polo, also known as The Book of the Marvels of the World and by its Italian name Il Milione, is a 13th-century travelogue written down by Rustichello da Pisa from stories told by the Venetian explorer Marco Polo. It describes Polo's travels through Asia between 1271 and 1295, and his experiences at the court of Kublai Khan.",
     "at": {
       "year": 1298
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q8414",
@@ -2150,7 +2280,8 @@
         "year": 1912,
         "month": 1
       }
-    }
+    },
+    "row": 18
   },
   {
     "id": "Q663273",
@@ -2165,7 +2296,8 @@
     "description": "The voltaic pile was the first electrical battery that could continuously provide an electric current to a circuit. It was invented by Italian chemist Alessandro Volta, who published his experiments in 1799. Its invention can be traced back to an argument between Volta and Luigi Galvani, Volta's fellow Italian scientist who had conducted experiments on frogs' legs. Use of the voltaic pile enabled a rapid series of other discoveries, including the electrical decomposition (electrolysis) of water into oxygen and hydrogen by William Nicholson and Anthony Carlisle (1800), and the discovery or isolation of the chemical elements sodium (1807), potassium (1807), calcium (1808), boron (1808), barium (1808), strontium (1808), and magnesium (1808) by Humphry Davy.",
     "at": {
       "year": 1800
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q217817",
@@ -2180,7 +2312,8 @@
     "description": "The Francis turbine is a type of water turbine. It is an inward-flow reaction turbine that combines radial and axial flow concepts. Francis turbines are the most common water turbine in use, and can achieve over 95% efficiency.",
     "at": {
       "year": 1849
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q8094772",
@@ -2203,7 +2336,8 @@
         "year": 1883,
         "month": 10
       }
-    }
+    },
+    "row": 15
   },
   {
     "id": "Q300646",
@@ -2217,7 +2351,8 @@
     "description": "A Vindication of the Rights of Woman: with Strictures on Political and Moral Subjects is a 1792 essay by British philosopher and women's rights advocate Mary Wollstonecraft. It is considered a feminist or, more precisely, proto-feminist piece, and one of the pioneering works in the tradition now known as feminist philosophy.",
     "at": {
       "year": 1792
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q1061030",
@@ -2234,7 +2369,8 @@
     "at": {
       "year": 1492,
       "month": 4
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q1037810",
@@ -2248,7 +2384,8 @@
     "description": "The smallpox vaccine is used to prevent smallpox infection caused by the variola virus. It is the first vaccine to have been developed against a contagious disease. In 1796, British physician Edward Jenner demonstrated that an infection with the relatively mild cowpox virus conferred immunity against the deadly smallpox virus. Cowpox served as a natural vaccine until the modern smallpox vaccine emerged in the 20th century. From 1958 to 1977, the World Health Organization (WHO) conducted a global vaccination campaign that eradicated smallpox, making it the only human disease to be eradicated. Although routine smallpox vaccination is no longer performed on the general public, the vaccine is still being produced for research, and to guard against bioterrorism and biological warfare.",
     "at": {
       "year": 1798
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q841282",
@@ -2263,7 +2400,8 @@
     "description": "An arc lamp or arc light is a lamp that produces light by an electric arc.",
     "at": {
       "year": 1802
-    }
+    },
+    "row": 8
   },
   {
     "id": "Q973919",
@@ -2284,7 +2422,8 @@
         "year": 1913,
         "month": 6
       }
-    }
+    },
+    "row": 19
   },
   {
     "id": "Q338613",
@@ -2298,7 +2437,8 @@
     "description": "An aeolipile, aeolipyle, or eolipile, also known as a Hero's engine, is a simple, bladeless radial steam turbine which spins when the central water container is heated. Torque is produced by steam jets exiting the turbine. The Greek-Egyptian mathematician and engineer Hero of Alexandria described the device in the 1st century CE, and many sources give him the credit for its invention. However, at least one source credits Vitruvius as the first to describe this appliance in his De architectura.",
     "at": {
       "year": 1
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q654400",
@@ -2311,7 +2451,8 @@
     "description": "The Fischer–Tropsch process (FT) is a collection of chemical reactions that converts a mixture of carbon monoxide and hydrogen, known as syngas, into liquid hydrocarbons. These reactions occur in the presence of metal catalysts, typically at temperatures of 150–300 °C (302–572 °F) and pressures of one to several tens of atmospheres. The Fischer–Tropsch process is an important reaction in both coal liquefaction and gas to liquids technology for producing liquid hydrocarbons.",
     "at": {
       "year": 1925
-    }
+    },
+    "row": 14
   },
   {
     "id": "Q683846",
@@ -2325,7 +2466,8 @@
     "description": "The Manila galleon was a Spanish trade route linking the Philippines in the Spanish East Indies to Mexico, across the Pacific Ocean, in use from 1565 to 1815. The term also describes the sailing ships which plied the route, each making one or two round-trip voyages per year between Manila and Acapulco.",
     "at": {
       "year": 1565
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q6501061",
@@ -2338,7 +2480,8 @@
     "description": "Electrical telegraphy is point-to-point distance communicating via sending electric signals over wire, a system primarily used from the 1840s until the late 20th century. It was the first electrical telecommunications system and the most widely used of a number of early messaging systems called telegraphs, that were devised to send text messages more quickly than physically carrying them. Electrical telegraphy can be considered the first example of electrical engineering.",
     "at": {
       "year": 1816
-    }
+    },
+    "row": 10
   },
   {
     "id": "Q1753108",
@@ -2354,7 +2497,8 @@
     "description": "America's first transcontinental railroad was a 1,911-mile (3,075 km) continuous railroad line built between 1863 and 1869 that connected the existing eastern U.S. rail network at Council Bluffs, Iowa, with the Pacific coast at the Oakland Long Wharf on San Francisco Bay. The rail line was built by three private companies over public lands provided by extensive U.S. land grants. Building was financed by both state and U.S. government subsidy bonds as well as by company-issued mortgage bonds. The Western Pacific Railroad Company built 132 miles (212 km) of track from the road's western terminus at Alameda/Oakland to Sacramento, California. The Central Pacific Railroad Company of California (CPRR) constructed 690 miles (1,110 km) east from Sacramento to Promontory Summit, Utah Territory. The Union Pacific Railroad (UPRR) built 1,085 miles (1,746 km) from the road's eastern terminus at the Missouri River settlements of Council Bluffs and Omaha, Nebraska, westward to Promontory Summit.",
     "at": {
       "year": 1869
-    }
+    },
+    "row": 14
   },
   {
     "id": "Q616159",
@@ -2370,7 +2514,8 @@
     "description": "View from the Window at Le Gras is the oldest surviving photograph. It was created by French inventor Nicéphore Niépce between June 4 and July 18, 1827, in Saint-Loup-de-Varennes, France, and shows parts of the buildings and surrounding countryside of his estate, Le Gras, as seen from a high window. The image was created by heliography, a process which Niépce had invented around 1822, and which uses the hardening of bitumen in light to record an image after washing off the remaining unhardened material.",
     "at": {
       "year": 1827
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q1162294",
@@ -2391,7 +2536,8 @@
         "year": 1917,
         "month": 1
       }
-    }
+    },
+    "row": 21
   },
   {
     "id": "Q833645",
@@ -2405,7 +2551,8 @@
     "description": "Mr. William Shakespeare's Comedies, Histories, & Tragedies is a collection of plays by William Shakespeare, commonly referred to by modern scholars as the First Folio, published in 1623, about seven years after Shakespeare's death. It is considered one of the most influential books ever published.",
     "at": {
       "year": 1623
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q1194052",
@@ -2429,7 +2576,8 @@
         "year": 1944,
         "month": 7
       }
-    }
+    },
+    "row": 21
   },
   {
     "id": "Q310301",
@@ -2443,7 +2591,8 @@
     "description": "The Ebers Papyrus, also known as Papyrus Ebers, is an Egyptian medical papyrus of herbal knowledge dating to c. 1550 BCE. Among the oldest and most important medical papyri of Ancient Egypt, it was sold by Mohareb Todros to the German Egyptologist Georg Ebers at Luxor in the winter of 1873–1874. It is currently kept at the Leipzig University Library in Germany.",
     "at": {
       "year": -1599
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q46872",
@@ -2457,7 +2606,8 @@
     "description": "A cinematograph or kinematograph was an early motion picture film mechanism of various kinds. The name was originally used for machines that combined the functions of a movie camera and of a film projector, and in the case of the Cinématographe Lumière, also means to print films from the negative. The term would also be used for separate devices, and became the root for the now more common terms \"cinematography\" and \"cinema\".",
     "at": {
       "year": 1892
-    }
+    },
+    "row": 17
   },
   {
     "id": "Q8665",
@@ -2474,7 +2624,8 @@
     "at": {
       "year": 1895,
       "month": 3
-    }
+    },
+    "row": 19
   },
   {
     "id": "Q505668",
@@ -2487,7 +2638,8 @@
     "description": "Chemical vapor deposition (CVD) is a thin film deposition method used to produce high-quality, and high-performance, solid materials. The process is often used in the semiconductor industry to produce electrically conductive layers in the range of a few 100 nm up to a few μm.",
     "at": {
       "year": 1852
-    }
+    },
+    "row": 12
   },
   {
     "id": "Q284681",
@@ -2504,7 +2656,8 @@
     "at": {
       "year": 1942,
       "month": 12
-    }
+    },
+    "row": 20
   },
   {
     "id": "Q705693",
@@ -2520,7 +2673,8 @@
     "description": "The Code of Ur-Nammu is the oldest known surviving law code. It is from Mesopotamia and is written on tablets, in the Sumerian language. It contains strong statements of royal power like \"I eliminated enmity, violence, and cries for justice.\"",
     "at": {
       "year": -2049
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q478720",
@@ -2537,7 +2691,8 @@
     "description": "Euronext Amsterdam is a stock exchange based in Amsterdam, Netherlands. Formerly known as the Amsterdam Stock Exchange, it merged on 22 September 2000 with the Brussels Stock Exchange and the Paris Stock Exchange to form Euronext. The registered office of Euronext, itself incorporated in the Netherlands a public limited company, is also located in the exchange.",
     "at": {
       "year": 1700
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q2736155",
@@ -2559,7 +2714,8 @@
         "year": 1848,
         "month": 7
       }
-    }
+    },
+    "row": 11
   },
   {
     "id": "Q842363",
@@ -2575,7 +2731,8 @@
     "description": "The Edwin Smith Papyrus is an ancient Egyptian medical text, named after Edwin Smith who bought it in 1862, and the oldest known surgical treatise on trauma. This document, which may have been a manual of military surgery, describes 48 cases of injuries, fractures, wounds, dislocations and tumors.",
     "at": {
       "year": -1580
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q949801",
@@ -2589,7 +2746,8 @@
     "description": "A rotary-wing aircraft, rotorwing aircraft or rotorcraft is a heavier-than-air aircraft with rotary wings that spin around a vertical mast to generate lift. The assembly of several rotor blades mounted on a single mast is referred to as a rotor.",
     "at": {
       "year": 1907
-    }
+    },
+    "row": 22
   },
   {
     "id": "Q99200",
@@ -2606,7 +2764,8 @@
     "description": "The Iron Bridge is a cast iron arch bridge that crosses the River Severn in Shropshire, England. Opened in 1781, it was the first major bridge in the world to be made of cast iron. Its success inspired the widespread use of cast iron as a structural material, and today the bridge is celebrated as a symbol of the Industrial Revolution.",
     "at": {
       "year": 1779
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q699127",
@@ -2628,7 +2787,8 @@
       "end": {
         "year": 1433
       }
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q487420",
@@ -2645,7 +2805,8 @@
     "description": "The Slavery Abolition Act 1833 was an act of the Parliament of the United Kingdom which abolished slavery in the British Empire by way of compensated emancipation. The act was legislated by Whig Prime Minister Charles Grey, 2nd Earl Grey's reforming administration, and it was enacted by ordering the British government to purchase the freedom of all slaves in the British Empire, and by outlawing the further practice of slavery in the British Empire. The Act explicitly delineated 19 separate pots of compensation covering the Caribbean, South Africa, and Mauritius. Although Britain, Canada, Australia, and New Zealand were technically included, these had relatively few slaves at this time for other reasons. India was excluded. Around 800,000 freed slaves were attested in the claims process.",
     "at": {
       "year": 1833
-    }
+    },
+    "row": 11
   },
   {
     "id": "Q1261053",
@@ -2659,7 +2820,8 @@
     "description": "Woodblock printing or block printing is a technique for printing text, images or patterns used widely throughout East Asia and originating in China in antiquity as a method of printing on textiles and later on paper. Each page or image is created by carving a wooden block to leave only some areas and lines at the original level; it is these that are inked and show in the print, in a relief printing process. Carving the blocks is skilled and laborious work, but a large number of impressions can then be printed.",
     "at": {
       "year": 800
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q644521",
@@ -2680,7 +2842,8 @@
         "year": 1876,
         "month": 5
       }
-    }
+    },
+    "row": 17
   },
   {
     "id": "Q1739453",
@@ -2697,7 +2860,8 @@
     "description": "Obninsk Nuclear Power Plant was built in the \"Science City\" of Obninsk, Kaluga Oblast, about 110 km (68 mi) southwest of Moscow, Soviet Union. Connected to the power grid in June 1954, Obninsk was the first grid-connected nuclear power plant in the world, i.e. the first nuclear reactor that produced electricity industrially, albeit at small scale. It was located at the Institute of Physics and Power Engineering. The plant is also known as APS-1 Obninsk. It remained in operation between 1954 and 2002. Its production of electricity for the grid ceased in 2002; thereafter it functioned as a research and isotope production plant only.",
     "at": {
       "year": 1954
-    }
+    },
+    "row": 22
   },
   {
     "id": "Q375044",
@@ -2713,7 +2877,8 @@
     "description": "The Stockton and Darlington Railway  (S&DR) was a railway company that operated in north-east England from 1825 to 1863. The world's first public railway to use steam locomotives, its first line connected collieries near Shildon with Darlington and Stockton in County Durham, and was officially opened on 27 September 1825. The movement of coal to ships rapidly became a lucrative business, and the line was soon extended to a new port at Middlesbrough. While coal waggons were hauled by steam locomotives from the start, passengers were carried in coaches drawn by horses until carriages hauled by steam locomotives were introduced in 1833.",
     "at": {
       "year": 1825
-    }
+    },
+    "row": 7
   },
   {
     "id": "Q2224989",
@@ -2727,7 +2892,8 @@
     "description": "The atmospheric engine was invented by Thomas Newcomen in 1712, and is sometimes referred to as the Newcomen fire engine or Newcomen engine. The engine was operated by condensing steam being drawn into the cylinder, thereby creating a partial vacuum which allowed atmospheric pressure to push the piston into the cylinder. It is significant as the first practical device to harness steam to produce mechanical work. Newcomen engines were used throughout Britain and Europe, principally to pump water out of mines. Hundreds were constructed during the 18th century. James Watt's later engine design was an improved version of the Newcomen engine that roughly doubled fuel efficiency. Many atmospheric engines were converted to the Watt design. As a result, Watt is today better known than Newcomen in relation to the origin of the steam engine.",
     "at": {
       "year": 1712
-    }
+    },
+    "row": 3
   },
   {
     "id": "Q2345573",
@@ -2749,7 +2915,8 @@
       "end": {
         "year": 1614
       }
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q1398696",
@@ -2765,7 +2932,8 @@
     "description": "The Liverpool and Manchester Railway (L&MR) was the first inter-city railway in the world. It opened on 15 September 1830 between the Lancashire towns of Liverpool and Manchester in England. It was also the first railway to rely exclusively on locomotives driven by steam power, with no horse-drawn traffic permitted at any time; the first to be entirely double track throughout its length; the first to have a true signalling system; the first to be fully timetabled; and the first to carry mail.",
     "at": {
       "year": 1823
-    }
+    },
+    "row": 9
   },
   {
     "id": "Q2453355",
@@ -2780,7 +2948,8 @@
     "description": "The Dartmouth Summer Research Project on Artificial Intelligence was a 1956 summer workshop widely considered to be the founding event of artificial intelligence as a field. The workshop has been referred to as \"the Constitutional Convention of AI\". The project's four organizers, Claude Shannon, John McCarthy, Nathaniel Rochester and Marvin Minsky, are considered some of the \"founding fathers\" of AI. However it was not the first conference devoted to what would now be described as the question of artificial intelligence: it postdated meetings such as the 1951 Paris cybernetics conference and the Macy meetings.",
     "at": {
       "year": 1956
-    }
+    },
+    "row": 23
   },
   {
     "id": "Q3984081",
@@ -2794,7 +2963,8 @@
     "description": "Copernican heliocentrism is the astronomical model developed by the Renaissance astronomer Nicolaus Copernicus and published in 1543. This model positioned the Sun near the center of the Universe, motionless, with Earth and the other planets orbiting around it in circular paths, modified by epicycles, and at uniform speeds. The Copernican model challenged the geocentric model of Ptolemy that had prevailed for centuries, which had placed Earth at the center of the Universe.",
     "at": {
       "year": 1543
-    }
+    },
+    "row": 1
   },
   {
     "id": "Q1964751",
@@ -2815,7 +2985,8 @@
       "end": {
         "year": 1896
       }
-    }
+    },
+    "row": 23
   },
   {
     "id": "Q1564366",
@@ -2836,7 +3007,8 @@
         "year": 1836,
         "month": 10
       }
-    }
+    },
+    "row": 13
   },
   {
     "id": "Q1290001",
@@ -2849,7 +3021,8 @@
     "description": "The Brāhma-sphuṭa-siddhānta is a main work of Brahmagupta, written c. 628. This text of mathematical astronomy contains significant mathematical content, including the first good understanding of the role of zero, rules for manipulating both negative and positive numbers, a method for computing square roots, methods of solving linear and quadratic equations, rules for summing series, Brahmagupta's identity, and Brahmagupta theorem.",
     "at": {
       "year": 628
-    }
+    },
+    "row": 2
   },
   {
     "id": "Q4567715",
@@ -2873,7 +3046,8 @@
         "year": 1953,
         "month": 6
       }
-    }
+    },
+    "row": 24
   },
   {
     "id": "Q3178839",
@@ -2892,7 +3066,8 @@
       "end": {
         "year": 1771
       }
-    }
+    },
+    "row": 9
   },
   {
     "id": "Q233260",
@@ -2910,7 +3085,8 @@
       "end": {
         "year": 1743
       }
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q3518429",
@@ -2925,7 +3101,8 @@
     "description": "Aryabhatiya or Aryabhatiyam, a Sanskrit astronomical treatise, is the magnum opus and only known surviving work of the 5th century Indian mathematician Aryabhata. Historian of astronomy Roger Billard estimates that the book was composed around 510 CE based on historical references it mentions.",
     "at": {
       "year": 510
-    }
+    },
+    "row": 0
   },
   {
     "id": "Q951383",
@@ -2941,7 +3118,8 @@
     "description": "The Portuguese discovery of the sea route to India was the first recorded trip directly from Europe to the Indian subcontinent, via the Cape of Good Hope. Under the command of the Portuguese explorer Vasco da Gama, it was undertaken during the reign of King Manuel in 1497–1499. It is one of the most important events of the Age of Discovery and the Portuguese Empire, and it initiated the Portuguese maritime trade on the Malabar Coast and other parts of the Indian Ocean, the military presence and settlements of the Portuguese in Goa and Bombay.",
     "at": {
       "year": 1498
-    }
+    },
+    "row": 4
   },
   {
     "id": "Q2096366",
@@ -2957,7 +3135,8 @@
     "description": "The Victorian gold rush was a period in the history of Victoria, Australia, approximately between 1851 and the late 1860s. It led to a period of extreme prosperity for the Australian colony and an influx of population growth and financial capital for Melbourne, which was dubbed \"Marvellous Melbourne\" as a result of the procurement of wealth.",
     "at": {
       "year": 1851
-    }
+    },
+    "row": 13
   },
   {
     "id": "Q13443401",
@@ -2970,7 +3149,8 @@
     "description": "The invention of the telephone was the culmination of work done by many different people, and led to an array of lawsuits relating to the conflicting patent claims made by several individuals and numerous companies. Notable people included in this process were Antonio Meucci, Philipp Reis, Elisha Gray and Alexander Graham Bell.",
     "at": {
       "year": 1876
-    }
+    },
+    "row": 12
   },
   {
     "id": "Q2631085",
@@ -2984,6 +3164,7 @@
     "at": {
       "year": 1997,
       "month": 5
-    }
+    },
+    "row": 13
   }
 ]
