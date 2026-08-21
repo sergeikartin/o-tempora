@@ -46,6 +46,19 @@ export function assignRows(items: RowInterval[], gap: number): Map<string, numbe
   const rowIntervals: RowInterval[][] = [];
   const rowOfId = new Map<string, number>();
 
+  // Tier must stay the primary sort key: a lower-tier item is always
+  // processed after every higher-tier item, so it can never occupy a row a
+  // higher-tier item needs — dropping a whole tier from the input changes
+  // nothing about the rows of what's left (`packages/web/docs/adr/0007-
+  // static-row-assignment-replaces-live-per-render-packing.md`'s Why
+  // section). That guarantee is per-tier only, not per-raw-score: two
+  // same-tier items are ordered by the startYear/id tie-break below, so a
+  // floor that splits a tier (e.g. fameScore>=88 inside tier 88's
+  // [87.5, 88.5) range) can shift a surviving same-tier item's row — see
+  // this file's test `assignRows can shift a same-tier survivor's row when
+  // a floor splits its tier`. Reordering these sort keys, or adding a new
+  // primary key ahead of tier (e.g. to group by category), breaks the
+  // guarantee ADR 0007 depends on.
   const sorted = [...items].sort(
     (a, b) =>
       Math.round(b.fameScore) - Math.round(a.fameScore) ||
