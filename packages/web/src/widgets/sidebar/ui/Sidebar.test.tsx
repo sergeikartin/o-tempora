@@ -42,12 +42,25 @@ test('renders one Occupation Domain pill per OccupationDomain', () => {
   expect(people?.textContent).toContain('Science & Technology');
 });
 
-test('renders the fame-score filter inputs, pre-filled with the given values', () => {
-  const { getByLabelText } = renderSidebar();
+test('renders the fame-score filter inputs when the fameFilters flag is set, pre-filled with the given values', () => {
+  window.history.pushState({}, '', '/?fameFilters=1');
 
-  expect(
-    (getByLabelText('Minimum fame score for People') as HTMLInputElement).value,
-  ).toBe('90');
+  try {
+    const { getByLabelText } = renderSidebar();
+
+    expect(
+      (getByLabelText('Minimum fame score for People') as HTMLInputElement)
+        .value,
+    ).toBe('90');
+  } finally {
+    window.history.pushState({}, '', '/');
+  }
+});
+
+test('hides the fame-score filter inputs when the fameFilters flag is absent', () => {
+  const { queryByLabelText } = renderSidebar();
+
+  expect(queryByLabelText('Minimum fame score for People')).toBeNull();
 });
 
 test('renders the Data Depth switch, showing Mainstream active for the default values', () => {
