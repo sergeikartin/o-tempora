@@ -45,95 +45,89 @@ export function validateEntries<T extends Person | ConflictEntry | Milestone>(
 }
 
 type Locale = 'en' | 'ru';
+type Tier = 'tier0' | 'tier1';
+
+// Every lane's own key alongside the entityType string validateEntries logs
+// under — the one place this pairing is written down, instead of once per
+// loader.
+const LANES = [
+  { key: 'people', entityType: 'person' },
+  { key: 'conflicts', entityType: 'conflict' },
+  { key: 'milestones', entityType: 'milestone' },
+] as const;
+
+type LaneKey = (typeof LANES)[number]['key'];
+
+type DatasetModule = { default: unknown };
+type Importer = () => Promise<DatasetModule>;
 
 // Payload Tier (CONTEXT.md, docs/adr/0004-payload-tier-split-defers-low-fame-
-// data.md): each lane's dataset ships as two pipeline-generated files, Tier 0
-// (what a default-state page load needs) and Tier 1 (the deferred
-// remainder). Tier 0 loaders mirror the pre-split per-locale dynamic import
-// (docs/adr/0009) exactly; Tier 1 loaders are the same shape, read
-// separately below once actually needed.
-const tier0Loaders: Record<Locale, () => Promise<LocaleDatasets>> = {
-  en: async () => {
-    const [people, conflicts, milestones] = await Promise.all([
-      import('@same-sky/shared-types/src/data/people.tier0.json'),
-      import('@same-sky/shared-types/src/data/conflicts.tier0.json'),
-      import('@same-sky/shared-types/src/data/milestones.tier0.json'),
-    ]);
-    return {
-      people: validateEntries(people.default as Person[], 'person'),
-      conflicts: validateEntries(
-        conflicts.default as ConflictEntry[],
-        'conflict',
-      ),
-      milestones: validateEntries(
-        milestones.default as Milestone[],
-        'milestone',
-      ),
-    };
+// data.md): each lane's dataset ships as two pipeline-generated files per
+// locale (docs/adr/0009) — Tier 0 (what a default-state page load needs) and
+// Tier 1 (the deferred remainder). Every import() below must stay a literal
+// specifier — Vite needs that to keep each file its own chunk, so Tier 1 and
+// the other locale never end up inside Tier 0's eager chunk — which is why
+// this is a lookup table of 12 literal imports rather than one templated
+// path. A tier/locale/lane combination missing from this table is a
+// TypeScript error, not a runtime gap.
+const IMPORTERS: Record<Tier, Record<Locale, Record<LaneKey, Importer>>> = {
+  tier0: {
+    en: {
+      people: () => import('@same-sky/shared-types/src/data/people.tier0.json'),
+      conflicts: () =>
+        import('@same-sky/shared-types/src/data/conflicts.tier0.json'),
+      milestones: () =>
+        import('@same-sky/shared-types/src/data/milestones.tier0.json'),
+    },
+    ru: {
+      people: () =>
+        import('@same-sky/shared-types/src/data/people.tier0.ru.json'),
+      conflicts: () =>
+        import('@same-sky/shared-types/src/data/conflicts.tier0.ru.json'),
+      milestones: () =>
+        import('@same-sky/shared-types/src/data/milestones.tier0.ru.json'),
+    },
   },
-  ru: async () => {
-    const [people, conflicts, milestones] = await Promise.all([
-      import('@same-sky/shared-types/src/data/people.tier0.ru.json'),
-      import('@same-sky/shared-types/src/data/conflicts.tier0.ru.json'),
-      import('@same-sky/shared-types/src/data/milestones.tier0.ru.json'),
-    ]);
-    return {
-      people: validateEntries(people.default as Person[], 'person'),
-      conflicts: validateEntries(
-        conflicts.default as ConflictEntry[],
-        'conflict',
-      ),
-      milestones: validateEntries(
-        milestones.default as Milestone[],
-        'milestone',
-      ),
-    };
+  tier1: {
+    en: {
+      people: () => import('@same-sky/shared-types/src/data/people.tier1.json'),
+      conflicts: () =>
+        import('@same-sky/shared-types/src/data/conflicts.tier1.json'),
+      milestones: () =>
+        import('@same-sky/shared-types/src/data/milestones.tier1.json'),
+    },
+    ru: {
+      people: () =>
+        import('@same-sky/shared-types/src/data/people.tier1.ru.json'),
+      conflicts: () =>
+        import('@same-sky/shared-types/src/data/conflicts.tier1.ru.json'),
+      milestones: () =>
+        import('@same-sky/shared-types/src/data/milestones.tier1.ru.json'),
+    },
   },
 };
 
-const tier1Loaders: Record<Locale, () => Promise<LocaleDatasets>> = {
-  en: async () => {
-    const [people, conflicts, milestones] = await Promise.all([
-      import('@same-sky/shared-types/src/data/people.tier1.json'),
-      import('@same-sky/shared-types/src/data/conflicts.tier1.json'),
-      import('@same-sky/shared-types/src/data/milestones.tier1.json'),
-    ]);
-    return {
-      people: validateEntries(people.default as Person[], 'person'),
-      conflicts: validateEntries(
-        conflicts.default as ConflictEntry[],
-        'conflict',
-      ),
-      milestones: validateEntries(
-        milestones.default as Milestone[],
-        'milestone',
-      ),
-    };
-  },
-  ru: async () => {
-    const [people, conflicts, milestones] = await Promise.all([
-      import('@same-sky/shared-types/src/data/people.tier1.ru.json'),
-      import('@same-sky/shared-types/src/data/conflicts.tier1.ru.json'),
-      import('@same-sky/shared-types/src/data/milestones.tier1.ru.json'),
-    ]);
-    return {
-      people: validateEntries(people.default as Person[], 'person'),
-      conflicts: validateEntries(
-        conflicts.default as ConflictEntry[],
-        'conflict',
-      ),
-      milestones: validateEntries(
-        milestones.default as Milestone[],
-        'milestone',
-      ),
-    };
-  },
-};
+async function loadTier(tier: Tier, locale: Locale): Promise<LocaleDatasets> {
+  const importers = IMPORTERS[tier][locale];
+  const entries = await Promise.all(
+    LANES.map(async ({ key, entityType }) => {
+      const module = await importers[key]();
+      const validated = validateEntries(
+        module.default as (Person | ConflictEntry | Milestone)[],
+        entityType,
+      );
+      return [key, validated] as const;
+    }),
+  );
+  return Object.fromEntries(entries) as unknown as LocaleDatasets;
+}
 
 // Module-scope, started immediately on import rather than inside an effect,
 // so the dataset fetch overlaps with initial render instead of trailing it.
-export const localeDatasetsPromise: Promise<LocaleDatasets> =
-  tier0Loaders[getLocale()]();
+export const localeDatasetsPromise: Promise<LocaleDatasets> = loadTier(
+  'tier0',
+  getLocale(),
+);
 
 interface NetworkInformation {
   saveData?: boolean;
@@ -165,7 +159,7 @@ let startTier1Load: (() => void) | undefined;
 export const tier1DatasetsPromise: Promise<LocaleDatasets> = new Promise(
   (resolve) => {
     const run = () => {
-      tier1Loaders[getLocale()]().then(resolve);
+      loadTier('tier1', getLocale()).then(resolve);
     };
     if (typeof window === 'undefined') {
       run();
