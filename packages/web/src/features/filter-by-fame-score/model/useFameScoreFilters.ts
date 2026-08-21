@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { FAME_SCORE_BOUNDS, type FameScoreLane } from '../../../shared/config';
+import {
+  type DataDepthLevel,
+  FAME_SCORE_BOUNDS,
+  type FameScoreLane,
+} from '../../../shared/config';
 import { trackEvent } from '../../../shared/lib/track-event';
 
 export type { FameScoreLane };
@@ -39,5 +43,14 @@ export function useFameScoreFilters() {
     trackEvent('fame_score_change', { lane });
   }
 
-  return { values, setValue };
+  // Bulk-applies a Data Depth preset (DataDepthSwitch) in one state update
+  // and one tracked event, rather than routing through setValue per lane —
+  // that would fire three 'fame_score_change' events for what is really one
+  // 'data_depth_change' interaction.
+  function setLevel(level: DataDepthLevel) {
+    setValues(level.values);
+    trackEvent('data_depth_change', { level: level.id });
+  }
+
+  return { values, setValue, setLevel };
 }

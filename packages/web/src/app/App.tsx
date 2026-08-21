@@ -37,8 +37,11 @@ function AppContent() {
     conflicts: conflictsData,
     milestones: milestonesData,
   } = use(localeDatasetsPromise);
-  const { values: fameScoreValues, setValue: setFameScoreValue } =
-    useFameScoreFilters();
+  const {
+    values: fameScoreValues,
+    setValue: setFameScoreValue,
+    setLevel: setFameScoreLevel,
+  } = useFameScoreFilters();
   const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
   const { selectedRegions, toggleRegion } = useRegionFilter();
   const {
@@ -100,6 +103,7 @@ function AppContent() {
       <Sidebar
         fameScoreValues={fameScoreValues}
         onFameScoreChange={setFameScoreValue}
+        onSelectDepthLevel={setFameScoreLevel}
         filteredCounts={filteredCounts}
         selectedDomains={selectedDomains}
         onToggleDomain={toggleDomain}

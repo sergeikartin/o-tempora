@@ -11,6 +11,7 @@ import { RegionFilters } from '../../../features/filter-by-region';
 import { ConflictsMilestonesFilters } from '../../../features/filter-conflicts-milestones';
 import {
   type ConflictsMilestonesFilterValue,
+  type DataDepthLevel,
   SWITCH_LANGUAGE_HREF,
 } from '../../../shared/config';
 import { useIsMobileViewport } from '../../../shared/lib/viewport';
@@ -21,6 +22,7 @@ import styles from './Sidebar.module.css';
 interface SidebarProps {
   fameScoreValues: FameScoreValues;
   onFameScoreChange: (lane: FameScoreLane, value: number) => void;
+  onSelectDepthLevel: (level: DataDepthLevel) => void;
   // Post-filter entry count per lane, from TimelineCanvas via app/ — see
   // FameScoreFilters' own comment on why this is optional.
   filteredCounts?: FilteredCounts;
@@ -63,6 +65,7 @@ interface SidebarProps {
 export function Sidebar({
   fameScoreValues,
   onFameScoreChange,
+  onSelectDepthLevel,
   filteredCounts,
   selectedDomains,
   onToggleDomain,
@@ -204,7 +207,7 @@ export function Sidebar({
               <h2 className={styles.heading}>{m.dataDepthHeading()}</h2>
               <DataDepthSwitch
                 values={fameScoreValues}
-                onChange={onFameScoreChange}
+                onSelectLevel={onSelectDepthLevel}
               />
               {import.meta.env.DEV && (
                 <FameScoreFilters
