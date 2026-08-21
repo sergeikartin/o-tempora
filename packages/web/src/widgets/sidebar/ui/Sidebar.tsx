@@ -54,14 +54,14 @@ interface SidebarProps {
 
 // Always-visible alongside TimelineCanvas — Data Depth (the fame-score
 // floor controls that replaced the old zoom-coupled Fame Tier system, ADR
-// 0003), a shared Region filter (one control narrowing all three lanes
-// together), People (its Occupation Domain pills doubling as a
-// click-to-toggle filter), and Conflicts & Milestones (one shared
-// multi-select pill list — Conflicts plus the 3 Milestone Category Groups
-// — mirroring Region/People's exact "one flat list, empty means
-// unfiltered" shape; revised 2026-08-12 from an earlier two-control design,
-// see docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md
-// for why Conflicts has no per-category granularity of its own).
+// 0003), People (its Occupation Domain pills doubling as a click-to-toggle
+// filter), Conflicts & Milestones (one shared multi-select pill list —
+// Conflicts plus the 3 Milestone Category Groups — mirroring Region/People's
+// exact "one flat list, empty means unfiltered" shape; revised 2026-08-12
+// from an earlier two-control design, see
+// docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md for why
+// Conflicts has no per-category granularity of its own), and a shared Region
+// filter (one control narrowing all three lanes together) last.
 export function Sidebar({
   fameScoreValues,
   onFameScoreChange,
@@ -218,13 +218,6 @@ export function Sidebar({
               )}
             </section>
             <section className={styles.section}>
-              <h2 className={styles.heading}>{m.regionHeading()}</h2>
-              <RegionFilters
-                selectedRegions={selectedRegions}
-                onToggleRegion={onToggleRegion}
-              />
-            </section>
-            <section className={styles.section}>
               <h2 className={styles.heading}>{m.peopleHeading()}</h2>
               <OccupationDomainFilters
                 selectedDomains={selectedDomains}
@@ -238,6 +231,13 @@ export function Sidebar({
               <ConflictsMilestonesFilters
                 selectedValues={selectedConflictsMilestonesValues}
                 onToggleValue={onToggleConflictsMilestonesValue}
+              />
+            </section>
+            <section className={styles.section}>
+              <h2 className={styles.heading}>{m.regionHeading()}</h2>
+              <RegionFilters
+                selectedRegions={selectedRegions}
+                onToggleRegion={onToggleRegion}
               />
             </section>
             <div className={styles.footer}>
