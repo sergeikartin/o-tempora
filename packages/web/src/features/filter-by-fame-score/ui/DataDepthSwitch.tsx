@@ -1,18 +1,15 @@
 import {
   DATA_DEPTH_LEVELS,
-  FAME_SCORE_LANES,
+  type DataDepthLevel,
   matchDataDepthLevel,
 } from '../../../shared/config';
 import { m } from '../../../shared/paraglide/messages.js';
-import type {
-  FameScoreLane,
-  FameScoreValues,
-} from '../model/useFameScoreFilters';
+import type { FameScoreValues } from '../model/useFameScoreFilters';
 import styles from './DataDepthSwitch.module.css';
 
 interface DataDepthSwitchProps {
   values: FameScoreValues;
-  onChange: (lane: FameScoreLane, value: number) => void;
+  onSelectLevel: (level: DataDepthLevel) => void;
 }
 
 // Two-position preset that writes canonical values into the three
@@ -20,12 +17,11 @@ interface DataDepthSwitchProps {
 // No separate "active level" state — the highlighted option is derived
 // straight from `values` each render, so a hand-edited numeric input
 // automatically drops the switch to no option shown as active ("custom").
-export function DataDepthSwitch({ values, onChange }: DataDepthSwitchProps) {
+export function DataDepthSwitch({
+  values,
+  onSelectLevel,
+}: DataDepthSwitchProps) {
   const activeLevelId = matchDataDepthLevel(values);
-
-  function selectLevel(levelValues: Record<FameScoreLane, number>) {
-    for (const lane of FAME_SCORE_LANES) onChange(lane, levelValues[lane]);
-  }
 
   return (
     <fieldset className={styles.switch} aria-label={m.dataDepthAriaLabel()}>
@@ -41,7 +37,7 @@ export function DataDepthSwitch({ values, onChange }: DataDepthSwitchProps) {
                 : styles.option
             }
             aria-pressed={isActive}
-            onClick={() => selectLevel(level.values)}
+            onClick={() => onSelectLevel(level)}
           >
             {level.label}
           </button>

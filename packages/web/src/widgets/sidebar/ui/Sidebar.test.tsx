@@ -15,6 +15,7 @@ function renderSidebar(overrides: Partial<SidebarProps> = {}) {
     <Sidebar
       fameScoreValues={fameScoreValues}
       onFameScoreChange={vi.fn()}
+      onSelectDepthLevel={vi.fn()}
       selectedDomains={[]}
       onToggleDomain={vi.fn()}
       selectedRegions={[]}
@@ -168,6 +169,7 @@ test('below the mobile breakpoint, a closed drawer is inert (off-screen filter c
       <Sidebar
         fameScoreValues={fameScoreValues}
         onFameScoreChange={vi.fn()}
+        onSelectDepthLevel={vi.fn()}
         selectedDomains={[]}
         onToggleDomain={vi.fn()}
         selectedRegions={[]}

@@ -8,7 +8,7 @@ test('shows Mainstream as active for the default values', () => {
   const { getByRole } = render(
     <DataDepthSwitch
       values={{ people: 88, conflicts: 82, milestones: 82 }}
-      onChange={vi.fn()}
+      onSelectLevel={vi.fn()}
     />,
   );
 
@@ -24,7 +24,7 @@ test('shows no level active when values match no preset row (custom)', () => {
   const { getByRole } = render(
     <DataDepthSwitch
       values={{ people: 84, conflicts: 70, milestones: 70 }}
-      onChange={vi.fn()}
+      onSelectLevel={vi.fn()}
     />,
   );
 
@@ -36,19 +36,22 @@ test('shows no level active when values match no preset row (custom)', () => {
   ).toBe('false');
 });
 
-test("clicking a level calls onChange once per lane with that level's values", () => {
-  const onChange = vi.fn();
+test('clicking a level calls onSelectLevel once with that level', () => {
+  const onSelectLevel = vi.fn();
   const { getByRole } = render(
     <DataDepthSwitch
       values={{ people: 88, conflicts: 82, milestones: 82 }}
-      onChange={onChange}
+      onSelectLevel={onSelectLevel}
     />,
   );
 
   fireEvent.click(getByRole('button', { name: 'Deep Cut' }));
 
-  expect(onChange).toHaveBeenCalledWith('people', 80);
-  expect(onChange).toHaveBeenCalledWith('conflicts', 64);
-  expect(onChange).toHaveBeenCalledWith('milestones', 55);
-  expect(onChange).toHaveBeenCalledTimes(3);
+  expect(onSelectLevel).toHaveBeenCalledTimes(1);
+  expect(onSelectLevel).toHaveBeenCalledWith(
+    expect.objectContaining({
+      id: 'deep-cut',
+      values: { people: 80, conflicts: 64, milestones: 55 },
+    }),
+  );
 });
