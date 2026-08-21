@@ -286,10 +286,12 @@ export function defaultPixelsPerYear(
 // canvas actually renders as the user zooms. Also the exact scale
 // data-pipeline's row-assignment.ts packs each entry's permanent
 // TimelineEntry.row against (docs/adr/0005-row-assignment-moves-to-the-
-// pipeline.md) — duplicated there as a literal (1000 / 120) rather than
-// imported, since packages/data-pipeline doesn't depend on packages/web;
-// changing DEFAULT_VISIBLE_YEARS or FALLBACK_VIEWPORT_WIDTH_PX means
-// updating that literal to match.
+// pipeline.md), imported there as shared-types' REFERENCE_SCALE_PIXELS_PER_YEAR
+// rather than re-derived, since packages/data-pipeline doesn't depend on
+// packages/web. This export stays a live defaultPixelsPerYear() call rather
+// than importing that same shared constant, so it keeps auto-following
+// DEFAULT_VISIBLE_YEARS/FALLBACK_VIEWPORT_WIDTH_PX if either ever changes;
+// options.test.ts asserts the two values still agree.
 export const REFERENCE_PIXELS_PER_YEAR = defaultPixelsPerYear(
   FALLBACK_VIEWPORT_WIDTH_PX,
 );

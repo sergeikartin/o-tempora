@@ -23,6 +23,7 @@ export {
   MILESTONES_LABEL_MAX_WIDTH_PX,
   OCCUPATION_DOMAINS,
   POINT_RADIUS,
+  REFERENCE_SCALE_PIXELS_PER_YEAR,
   REGIONS,
   wrapLabelLines,
   yearMonthToFractionalYear,

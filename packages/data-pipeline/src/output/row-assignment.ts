@@ -2,6 +2,7 @@ import {
   estimateLabelWidthPx,
   MILESTONES_LABEL_MAX_WIDTH_PX,
   POINT_RADIUS,
+  REFERENCE_SCALE_PIXELS_PER_YEAR as REFERENCE_PIXELS_PER_YEAR,
   wrapLabelLines,
   yearMonthToFractionalYear,
   type ConflictEntry,
@@ -10,18 +11,10 @@ import {
   type Person,
 } from "@same-sky/shared-types";
 
-// Mirrors packages/web/src/widgets/timeline-canvas/options.ts's
-// REFERENCE_PIXELS_PER_YEAR exactly (that module's own comment documents
-// this pipeline-side duplicate): FALLBACK_VIEWPORT_WIDTH_PX (1000) /
-// DEFAULT_VISIBLE_YEARS (120), clamped to that module's 4-20px/year zoom
-// bounds (a no-op here, since 8.33 already sits inside them). Duplicated as
-// a literal rather than re-deriving the clamp machinery here, since only
-// the numeric factor matters for row-packing — see assignRows below for why
-// the scale's origin (MIN_YEAR) doesn't matter, only this per-year factor.
-const REFERENCE_PIXELS_PER_YEAR = 1000 / 120;
-
 // Row-stacking gap in the same pixel space as REFERENCE_PIXELS_PER_YEAR —
-// mirrors options.ts's MIN_ROW_GAP_PX.
+// a pipeline-only value (nothing in packages/web packs rows anymore, so
+// there's nothing to keep it in sync with; see assignRows below for why the
+// scale's origin (MIN_YEAR) doesn't matter, only the per-year factor).
 const MIN_ROW_GAP_PX = 8;
 
 // A zero- or negative-width range (e.g. a missing end) can't pack as a
