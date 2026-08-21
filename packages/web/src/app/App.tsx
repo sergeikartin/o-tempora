@@ -1,4 +1,4 @@
-import { Suspense, use, useCallback, useMemo, useState } from 'react';
+import { lazy, Suspense, use, useCallback, useMemo, useState } from 'react';
 import {
   type FilteredCounts,
   useFameScoreFilters,
@@ -14,13 +14,27 @@ import type { DataDepthLevel } from '../shared/config';
 import { trackEvent } from '../shared/lib/track-event';
 import { m } from '../shared/paraglide/messages.js';
 import { ErrorBoundary } from '../shared/ui';
-import { AboutPanel } from '../widgets/about-panel';
-import { DetailPanel, type DetailPanelEntity } from '../widgets/detail-panel';
+import type { DetailPanelEntity } from '../widgets/detail-panel';
 import { Sidebar } from '../widgets/sidebar';
 import { TimelineCanvas } from '../widgets/timeline-canvas';
 import styles from './App.module.css';
 import { localeDatasetsPromise } from './locale-datasets';
 import { useMergedDatasets } from './use-merged-datasets';
+
+// Both are closed/empty by default (rendered unconditionally but paint
+// nothing until opened) — lazy-loading keeps their code out of the bundle
+// that has to parse+execute before the initial timeline paint (LCP audit,
+// .scratch/pre-launch-readiness/issues/14).
+const AboutPanel = lazy(() =>
+  import('../widgets/about-panel').then((mod) => ({
+    default: mod.AboutPanel,
+  })),
+);
+const DetailPanel = lazy(() =>
+  import('../widgets/detail-panel').then((mod) => ({
+    default: mod.DetailPanel,
+  })),
+);
 
 export function App() {
   return (
@@ -167,8 +181,15 @@ function AppContent() {
           />
         </ErrorBoundary>
       </main>
-      <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
-      <AboutPanel isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
+      <Suspense fallback={null}>
+        <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <AboutPanel
+          isOpen={isAboutOpen}
+          onClose={() => setIsAboutOpen(false)}
+        />
+      </Suspense>
     </div>
   );
 }
