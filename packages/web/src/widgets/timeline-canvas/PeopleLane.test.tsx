@@ -101,8 +101,9 @@ test('two overlapping lifespans render at different y positions (separate rows)'
   const overlappingCaesar: Person = {
     ...caesar,
     lifespan: { start: { year: -383 }, end: { year: -321 } },
+    row: 1,
   };
-  const people = [aristotle, overlappingCaesar];
+  const people = [{ ...aristotle, row: 0 }, overlappingCaesar];
   const { container } = render(
     <PeopleLane
       people={people}
@@ -134,12 +135,18 @@ test('two non-overlapping lifespans render at the same y position (same row)', (
 
 test('the more famous of two overlapping people renders closer to the bottom of the lane (nearer the shared Year Axis below)', () => {
   const { scale } = buildXScale(2);
-  const famousOverlap: Person = { ...caesar, id: 'Q-famous', fameScore: 999 };
+  const famousOverlap: Person = {
+    ...caesar,
+    id: 'Q-famous',
+    fameScore: 999,
+    row: 0,
+  };
   const obscureOverlap: Person = {
     ...aristotle,
     id: 'Q-obscure',
     lifespan: caesar.lifespan,
     fameScore: 1,
+    row: 1,
   };
   const people = [obscureOverlap, famousOverlap];
   const { container } = render(
@@ -214,21 +221,25 @@ test('relative row order between two people is preserved when a third, different
     id: 'Q-famous',
     lifespan: overlappingSpan,
     fameScore: 999,
+    row: 0,
   };
   const middle: Person = {
     ...aristotle,
     id: 'Q-middle',
     lifespan: overlappingSpan,
     fameScore: 500,
+    row: 1,
   };
   const obscure: Person = {
     ...aristotle,
     id: 'Q-obscure',
     lifespan: overlappingSpan,
     fameScore: 1,
+    row: 2,
   };
-  // Row assignment is computed against the full 3-person universe — mirrors
-  // how TimelineCanvas derives it from the unfiltered dataset — but only
+  // Row assignment (data-pipeline's precomputed TimelineEntry.row, docs/adr/
+  // 0005) is computed against the full 3-person universe — mirrors how
+  // TimelineCanvas derives it from the unfiltered dataset — but only
   // famous/obscure are actually rendered, same as a filter hiding `middle`.
   const { personRowFor } = computeRowAssignment(
     [famous, middle, obscure],

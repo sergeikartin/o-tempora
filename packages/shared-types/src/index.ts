@@ -218,6 +218,18 @@ export interface TimelineEntry {
   // image's license doesn't require a credit (the common, public-domain
   // case for this dataset's historical subjects).
   imageAttribution?: string;
+  // Permanent per-item Row Depth identity (CONTEXT.md's Row Depth) —
+  // data-pipeline computes this once, over the *entire* lane at Output time
+  // (People among themselves; Conflicts and Milestones together, one shared
+  // pass), so it never changes because of a client-side filter, zoom, or
+  // Payload Tier's Tier 1 merge (docs/adr/0005-row-assignment-moves-to-the-
+  // pipeline.md) — only a pipeline rebuild can move it. Optional in the type
+  // purely so hand-built test fixtures that don't care about row-packing
+  // don't need to supply one; real shipped data always sets it, and
+  // packages/web's locale-datasets.ts validateEntries treats a missing/non-
+  // finite row as schema drift, the same tripwire it already applies to a
+  // missing id/name/date.
+  row?: number;
 }
 
 // Sourced from Pantheon 2.0, not Wikidata — fameScore is Pantheon's own HPI
@@ -305,3 +317,48 @@ interface MilestonePoint extends TimelineEntry, PointInTime {
 }
 
 export type Milestone = MilestonePeriod | MilestonePoint;
+
+// Projects a YearMonth onto a single continuous number, e.g. for use as a
+// position on a year-keyed x-scale — plain `year` when month is unknown
+// (same as month 1, i.e. no offset), else `year` plus the fraction of the
+// year elapsed by the start of that month. Shared verbatim by data-pipeline
+// (TimelineEntry.row's one-time Output-stage packing) and packages/web
+// (its own live, per-render pixel positioning) — see TimelineEntry.row.
+export function yearMonthToFractionalYear(yearMonth: YearMonth): number {
+  if (yearMonth.month === undefined) return yearMonth.year;
+  return yearMonth.year + (yearMonth.month - 1) / 12;
+}
+
+// Label-sizing heuristic shared by data-pipeline (TimelineEntry.row's
+// one-time Output-stage packing — a label's rendered width affects which
+// items count as overlapping) and packages/web (the same estimate, reused
+// for its own live pixel positioning) — a rough per-character estimate
+// rather than a real DOM text-measurement pass, since data-pipeline has no
+// DOM and the two need to agree on one answer regardless.
+export const AVG_CHAR_WIDTH_PX = 6;
+export const POINT_RADIUS = 5;
+export const MILESTONES_LABEL_MAX_WIDTH_PX = 72;
+
+export function estimateLabelWidthPx(name: string): number {
+  return name.length * AVG_CHAR_WIDTH_PX;
+}
+
+// Greedy word-wrap using the same rough per-character estimate as
+// estimateLabelWidthPx — good enough to bound a label's rendered width
+// without a real DOM text-measurement pass.
+export function wrapLabelLines(name: string, maxWidthPx: number): string[] {
+  const words = name.split(' ');
+  const lines: string[] = [];
+  let currentLine = '';
+  for (const word of words) {
+    const candidate = currentLine ? `${currentLine} ${word}` : word;
+    if (currentLine !== '' && estimateLabelWidthPx(candidate) > maxWidthPx) {
+      lines.push(currentLine);
+      currentLine = word;
+    } else {
+      currentLine = candidate;
+    }
+  }
+  if (currentLine !== '') lines.push(currentLine);
+  return lines;
+}

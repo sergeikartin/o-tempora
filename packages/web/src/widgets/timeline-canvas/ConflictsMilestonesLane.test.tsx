@@ -267,8 +267,8 @@ test('a Milestone marker keeps its own category color, distinct from CONFLICT_CO
 
 test('places two non-overlapping entries in the same row, two overlapping entries in different rows', () => {
   const { scale } = buildXScale(2);
-  const sameRowConflicts = [koreanWar];
-  const sameRowMilestones = [football];
+  const sameRowConflicts = [{ ...koreanWar, row: 0 }];
+  const sameRowMilestones = [{ ...football, row: 0 }];
   const { container: sameRow } = render(
     <ConflictsMilestonesLane
       conflicts={sameRowConflicts}
@@ -289,8 +289,9 @@ test('places two non-overlapping entries in the same row, two overlapping entrie
     ...football,
     id: 'Q-overlap',
     at: { year: 1951 },
+    row: 1,
   };
-  const overlappingConflicts = [koreanWar];
+  const overlappingConflicts = [{ ...koreanWar, row: 0 }];
   const overlappingMilestones = [overlappingMilestone];
   const { container: differentRows } = render(
     <ConflictsMilestonesLane
@@ -315,12 +316,14 @@ test('a Conflict and a Milestone compete for the same rows by fameScore — the 
     ...koreanWar,
     id: 'Q-famous-conflict',
     fameScore: 999,
+    row: 0,
   };
   const obscureMilestone: Milestone = {
     ...football,
     id: 'Q-obscure-milestone',
     at: { year: 1951 },
     fameScore: 1,
+    row: 1,
   };
   const conflicts = [famousConflict];
   const milestones = [obscureMilestone];
@@ -352,8 +355,9 @@ test("stacks two milestones in the same year onto different rows, moving each ro
     ...brazil,
     id: 'Q999',
     at: { year: football.at.year },
+    row: 1,
   };
-  const milestones = [football, sameYear];
+  const milestones = [{ ...football, row: 0 }, sameYear];
   const { container } = render(
     <ConflictsMilestonesLane
       conflicts={[]}
@@ -380,22 +384,26 @@ test('relative row order between a Conflict and a Milestone is preserved when a 
     ...koreanWar,
     id: 'Q-famous',
     fameScore: 999,
+    row: 0,
   };
   const midMilestone: Milestone = {
     ...football,
     id: 'Q-mid',
     at: { year: 1951 },
     fameScore: 500,
+    row: 1,
   };
   const obscureMilestone: Milestone = {
     ...football,
     id: 'Q-obscure',
     at: { year: 1952 },
     fameScore: 1,
+    row: 2,
   };
-  // Row assignment computed against the full universe (mirrors
-  // TimelineCanvas deriving it from the unfiltered dataset); only
-  // mid/obscure are rendered, same as a filter hiding the famous conflict.
+  // Row assignment (data-pipeline's precomputed TimelineEntry.row, docs/adr/
+  // 0005) computed against the full universe (mirrors TimelineCanvas
+  // deriving it from the unfiltered dataset); only mid/obscure are rendered,
+  // same as a filter hiding the famous conflict.
   const { eventsRowFor } = computeRowAssignment(
     [],
     [famousConflict],

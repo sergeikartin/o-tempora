@@ -14,10 +14,16 @@ export type {
   YearMonth,
 } from '@same-sky/shared-types';
 export {
+  AVG_CHAR_WIDTH_PX,
   CONFLICT_CATEGORIES,
+  estimateLabelWidthPx,
   MILESTONE_CATEGORIES,
   MILESTONE_CATEGORY_GROUPS,
   MILESTONE_CATEGORY_TO_GROUP,
+  MILESTONES_LABEL_MAX_WIDTH_PX,
   OCCUPATION_DOMAINS,
+  POINT_RADIUS,
   REGIONS,
+  wrapLabelLines,
+  yearMonthToFractionalYear,
 } from '@same-sky/shared-types';

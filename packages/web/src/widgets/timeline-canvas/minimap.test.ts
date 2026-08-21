@@ -41,6 +41,7 @@ function person(
   startYear: number,
   endYear: number,
   fameScore = 90,
+  row = 0,
 ): Person {
   return {
     id,
@@ -51,6 +52,7 @@ function person(
     fameScore,
     tagline: '',
     wikipediaUrl: '',
+    row,
   };
 }
 
@@ -85,7 +87,10 @@ test("computeDensityProfile marks depth 1 across a single person's full lifespan
 });
 
 test('computeDensityProfile raises People depth to 2 where two lifespans overlap, keeping 1 where only one does', () => {
-  const overlapping = [person('a', 1000, 1100), person('b', 1050, 1150)];
+  const overlapping = [
+    person('a', 1000, 1100, 90, 0),
+    person('b', 1050, 1150, 90, 1),
+  ];
   const profile = profileFor(overlapping, [], []);
   const depthAtYear = (year: number) => {
     const bucket = profile.years.reduce((closest, candidate, i) => {
@@ -110,6 +115,7 @@ test("computeDensityProfile's eventsDepth reflects the merged Conflicts+Mileston
     fameScore: 90,
     tagline: '',
     wikipediaUrl: '',
+    row: 0,
   };
   const milestone = {
     id: 'm1',
@@ -120,6 +126,7 @@ test("computeDensityProfile's eventsDepth reflects the merged Conflicts+Mileston
     fameScore: 90,
     tagline: '',
     wikipediaUrl: '',
+    row: 1,
   };
   const profile = profileFor([], [conflict], [milestone]);
   expect(Math.max(...profile.eventsDepth)).toBe(2); // they collide and stack into two rows
@@ -130,9 +137,9 @@ test("computeDensityProfile's People depth reflects each person's compacted stat
   // overlaps 'a' and is bumped to row 1. 'c' (fame 80) doesn't overlap 'a'
   // and reuses row 0.
   const all = [
-    person('a', 1000, 1010, 100),
-    person('b', 1005, 1015, 90),
-    person('c', 1030, 1040, 80),
+    person('a', 1000, 1010, 100, 0),
+    person('b', 1005, 1015, 90, 1),
+    person('c', 1030, 1040, 80, 0),
   ];
   const { personRowFor, eventsRowFor } = computeRowAssignment(all, [], []);
   // Now filter 'a' out, as e.g. a fame-score filter would. A fresh
