@@ -326,3 +326,29 @@ export function buildMilestones(
 
   return { milestones, report: { dropped: rows.length - milestones.length, reasons } };
 }
+
+export interface PayloadTierSplit<T> {
+  tier0: T[];
+  tier1: T[];
+}
+
+// Splits an already-built lane array into the two Payload Tier files
+// (CONTEXT.md's Payload Tier, docs/adr/0004-payload-tier-split-defers-low-
+// fame-data.md) — Tier 0 holds everything at or above `floor` (what a
+// default-state page load needs), Tier 1 the remainder. A separate pass from
+// buildPeople/buildConflicts/buildMilestones above on purpose: those build
+// and validate entities, this only partitions an already-built array, and
+// keeping the two responsibilities apart is what lets this be tested
+// independently of any one lane's build rules. Preserves `entries`' existing
+// order in each tier rather than re-sorting.
+export function splitByPayloadTier<T extends { fameScore: number }>(
+  entries: T[],
+  floor: number,
+): PayloadTierSplit<T> {
+  const tier0: T[] = [];
+  const tier1: T[] = [];
+  for (const entry of entries) {
+    (entry.fameScore >= floor ? tier0 : tier1).push(entry);
+  }
+  return { tier0, tier1 };
+}

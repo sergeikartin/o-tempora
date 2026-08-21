@@ -172,6 +172,19 @@ export interface PointInTime {
   at: YearMonth;
 }
 
+// Payload Tier: the fame-score floor each lane's Output stage (data-pipeline)
+// uses to split its shipped dataset file in two — CONTEXT.md's "Payload
+// Tier", docs/adr/0004-payload-tier-split-defers-low-fame-data.md. Defined
+// once here, shared by data-pipeline (which splits by it) and web (whose
+// Data Depth "Mainstream" preset reuses the same numbers) so the two can
+// never silently drift apart, even though they're conceptually independent —
+// which tier an entry ships in never affects whether it renders.
+export const TIER_0_FAME_SCORE_FLOOR = {
+  people: 88,
+  conflicts: 82,
+  milestones: 82,
+} as const;
+
 // Shared by Person, Conflict, ConflictEvent, and Milestone — every lane's entries
 // carry these fields regardless of whether they render as a period or a
 // point (see Period/PointInTime above for the date shapes themselves,

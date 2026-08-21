@@ -10,6 +10,12 @@ import styles from './DataDepthSwitch.module.css';
 interface DataDepthSwitchProps {
   values: FameScoreValues;
   onSelectLevel: (level: DataDepthLevel) => void;
+  // Whether Payload Tier 1 (CONTEXT.md) is still loading — Deep Cut's data
+  // ships in a deferred second chunk (docs/adr/0004-payload-tier-split-
+  // defers-low-fame-data.md), so selecting it can briefly precede the data
+  // actually being in memory. Only ever rendered against the Deep Cut
+  // option, never Mainstream, which never needs Tier 1.
+  isLoadingTier1?: boolean;
 }
 
 // Two-position preset that writes canonical values into the three
@@ -20,6 +26,7 @@ interface DataDepthSwitchProps {
 export function DataDepthSwitch({
   values,
   onSelectLevel,
+  isLoadingTier1,
 }: DataDepthSwitchProps) {
   const activeLevelId = matchDataDepthLevel(values);
 
@@ -27,6 +34,8 @@ export function DataDepthSwitch({
     <fieldset className={styles.switch} aria-label={m.dataDepthAriaLabel()}>
       {DATA_DEPTH_LEVELS.map((level) => {
         const isActive = level.id === activeLevelId;
+        const showSpinner =
+          isActive && level.id === 'deep-cut' && isLoadingTier1;
         return (
           <button
             key={level.id}
@@ -37,9 +46,17 @@ export function DataDepthSwitch({
                 : styles.option
             }
             aria-pressed={isActive}
+            aria-busy={showSpinner}
             onClick={() => onSelectLevel(level)}
           >
             {level.label}
+            {showSpinner && (
+              <span
+                className={styles.spinner}
+                role="status"
+                aria-label={m.dataDepthLoadingAriaLabel()}
+              />
+            )}
           </button>
         );
       })}

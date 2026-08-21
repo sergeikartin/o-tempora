@@ -24,6 +24,9 @@ interface SidebarProps {
   fameScoreValues: FameScoreValues;
   onFameScoreChange: (lane: FameScoreLane, value: number) => void;
   onSelectDepthLevel: (level: DataDepthLevel) => void;
+  // Whether Payload Tier 1 is still loading — threaded down to
+  // DataDepthSwitch's Deep Cut option, see that component's own comment.
+  isTier1Loading: boolean;
   // Post-filter entry count per lane, from TimelineCanvas via app/ — see
   // FameScoreFilters' own comment on why this is optional.
   filteredCounts?: FilteredCounts;
@@ -65,6 +68,7 @@ interface SidebarProps {
 // filter (one control narrowing all three lanes together) last.
 export function Sidebar({
   fameScoreValues,
+  isTier1Loading,
   onFameScoreChange,
   onSelectDepthLevel,
   filteredCounts,
@@ -209,6 +213,7 @@ export function Sidebar({
               <DataDepthSwitch
                 values={fameScoreValues}
                 onSelectLevel={onSelectDepthLevel}
+                isLoadingTier1={isTier1Loading}
               />
               {hasFeatureFlag('fameFilters') && (
                 <FameScoreFilters

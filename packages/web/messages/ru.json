@@ -5,6 +5,7 @@
   "filtersHeading": "Фильтры",
   "dataDepthHeading": "Глубина данных",
   "dataDepthAriaLabel": "Глубина данных",
+  "dataDepthLoadingAriaLabel": "Загрузка дополнительных данных",
   "regionHeading": "Регион",
   "peopleHeading": "Люди",
   "conflictsMilestonesHeading": "Конфликты и вехи",

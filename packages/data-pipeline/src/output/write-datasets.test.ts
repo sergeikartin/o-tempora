@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
-import { buildPeople, buildConflicts, buildMilestones } from "./write-datasets.js";
+import { buildPeople, buildConflicts, buildMilestones, splitByPayloadTier } from "./write-datasets.js";
 
 function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
   return {
@@ -408,4 +408,22 @@ test("buildMilestones builds a period-shaped entry when the row has an endYear, 
   assert.deepEqual(periodEntry.period, { start: { year: 1346, month: 1 }, end: { year: 1353, month: 12 } });
   assert.ok(pointEntry && "at" in pointEntry);
   assert.deepEqual(pointEntry.at, { year: 1928 });
+});
+
+test("splitByPayloadTier puts entries at or above the floor in tier0, the rest in tier1", () => {
+  const entries = [{ fameScore: 90 }, { fameScore: 88 }, { fameScore: 87 }, { fameScore: 50 }];
+
+  const { tier0, tier1 } = splitByPayloadTier(entries, 88);
+
+  assert.deepEqual(tier0, [{ fameScore: 90 }, { fameScore: 88 }]);
+  assert.deepEqual(tier1, [{ fameScore: 87 }, { fameScore: 50 }]);
+});
+
+test("splitByPayloadTier preserves input order within each tier", () => {
+  const entries = [{ fameScore: 50 }, { fameScore: 95 }, { fameScore: 60 }, { fameScore: 99 }];
+
+  const { tier0, tier1 } = splitByPayloadTier(entries, 88);
+
+  assert.deepEqual(tier0, [{ fameScore: 95 }, { fameScore: 99 }]);
+  assert.deepEqual(tier1, [{ fameScore: 50 }, { fameScore: 60 }]);
 });
