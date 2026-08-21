@@ -14,6 +14,7 @@ import {
   type DataDepthLevel,
   SWITCH_LANGUAGE_HREF,
 } from '../../../shared/config';
+import { hasFeatureFlag } from '../../../shared/lib/feature-flags';
 import { useIsMobileViewport } from '../../../shared/lib/viewport';
 import { m } from '../../../shared/paraglide/messages.js';
 import type { OccupationDomain, Region } from '../../../shared/types';
@@ -209,7 +210,7 @@ export function Sidebar({
                 values={fameScoreValues}
                 onSelectLevel={onSelectDepthLevel}
               />
-              {import.meta.env.DEV && (
+              {(import.meta.env.DEV || hasFeatureFlag('fameFilters')) && (
                 <FameScoreFilters
                   values={fameScoreValues}
                   onChange={onFameScoreChange}

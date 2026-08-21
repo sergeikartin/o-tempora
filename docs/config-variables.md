@@ -8,6 +8,10 @@ Locale is resolved at runtime, not selected by build mode (`docs/adr/0009-runtim
 
 There's a single `project.inlang/` config directory (`baseLocale: "en"`, `locales: ["en", "ru"]`) compiled by the Paraglide Vite plugin into `src/shared/paraglide/` (gitignored). Because `tsc -b` doesn't run Vite plugins, `npm run typecheck`/`build`/`dev`/`test` each run a `paraglide-js compile` prestep (`npm run paraglide:compile`) so the generated output exists on disk first.
 
+## `packages/web` feature flags
+
+`src/shared/lib/feature-flags/`'s `hasFeatureFlag(name)` checks for a URL query param of that name — no build config or persistence, since these gate developer-only debug UI rather than user-facing behavior. `?fameFilters=1` reveals the raw numeric fame-score inputs in the sidebar's Data Depth section (`FameScoreFilters`, normally shown only in dev builds alongside the Mainstream/Deep Cut preset switch) on a production build too, for tuning `FAME_SCORE_BOUNDS` without a local dev server.
+
 ## `packages/web` monitoring (GlitchTip) and analytics (Umami)
 
 Errors and page behavior are split across two services:
