@@ -210,7 +210,7 @@ export function Sidebar({
                 values={fameScoreValues}
                 onSelectLevel={onSelectDepthLevel}
               />
-              {(import.meta.env.DEV || hasFeatureFlag('fameFilters')) && (
+              {hasFeatureFlag('fameFilters') && (
                 <FameScoreFilters
                   values={fameScoreValues}
                   onChange={onFameScoreChange}

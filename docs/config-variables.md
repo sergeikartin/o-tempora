@@ -10,7 +10,7 @@ There's a single `project.inlang/` config directory (`baseLocale: "en"`, `locale
 
 ## `packages/web` feature flags
 
-`src/shared/lib/feature-flags/`'s `hasFeatureFlag(name)` checks for a URL query param of that name — no build config or persistence, since these gate developer-only debug UI rather than user-facing behavior. `?fameFilters=1` reveals the raw numeric fame-score inputs in the sidebar's Data Depth section (`FameScoreFilters`, normally shown only in dev builds alongside the Mainstream/Deep Cut preset switch) on a production build too, for tuning `FAME_SCORE_BOUNDS` without a local dev server.
+`src/shared/lib/feature-flags/`'s `hasFeatureFlag(name)` checks for a URL query param of that name — no build config or persistence, since these gate developer-only debug UI rather than user-facing behavior. `?fameFilters=1` reveals the raw numeric fame-score inputs (`FameScoreFilters`, otherwise hidden) in the sidebar's Data Depth section, alongside the always-visible Mainstream/Deep Cut preset switch — for tuning `FAME_SCORE_BOUNDS` without a local dev server.
 
 ## `packages/web` monitoring (GlitchTip) and analytics (Umami)
 
