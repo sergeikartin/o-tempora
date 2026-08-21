@@ -137,6 +137,56 @@ test("assignRows sorts by the rounded tier, not the raw score — a tiny raw gap
   assert.equal(reversed.get("tier-89"), 1);
 });
 
+// ADR 0007's static-row-assignment design relies on assignRows giving
+// identical rows to survivors whether it runs against the full dataset or a
+// dataset already filtered down to a fame floor — that's what lets the
+// pipeline compute rows once, against everything, instead of per filter
+// setting. The two tests below pin down exactly how far that guarantee
+// reaches: it holds across a whole-tier boundary, but not across a floor
+// that splits a tier (see the corrected "Why" section of
+// packages/web/docs/adr/0007-static-row-assignment-replaces-live-per-render-
+// packing.md).
+
+test("assignRows: dropping every item below some tier doesn't change a survivor's row", () => {
+  const all = [
+    { id: "high-tier", startYear: 1900, endYear: 1920, fameScore: 90 },
+    { id: "mid-tier", startYear: 1905, endYear: 1925, fameScore: 80 },
+    { id: "low-tier", startYear: 1930, endYear: 1940, fameScore: 50 },
+  ];
+  const full = assignRows(all, 5);
+  // A floor between tiers 80 and 50 drops low-tier entirely, without
+  // splitting any tier that survives.
+  const subset = assignRows(
+    all.filter((item) => item.fameScore >= 75),
+    5,
+  );
+  assert.equal(subset.get("high-tier"), full.get("high-tier"));
+  assert.equal(subset.get("mid-tier"), full.get("mid-tier"));
+});
+
+test("assignRows can shift a same-tier survivor's row when a floor splits its tier", () => {
+  // Both round to tier 88 ([87.5, 88.5)); "low" sorts first on the
+  // chronological tie-break and claims row 0 in the full run.
+  const all = [
+    { id: "low", startYear: 1900, endYear: 1920, fameScore: 87.9 },
+    { id: "high", startYear: 1905, endYear: 1925, fameScore: 88.3 },
+  ];
+  const full = assignRows(all, 5);
+  assert.equal(full.get("low"), 0);
+  assert.equal(full.get("high"), 1);
+
+  // fameScore>=88 splits tier 88, dropping "low" but keeping "high" — the
+  // survivor's row shifts from 1 to 0. Documented, not asserted-safe: no
+  // production code path recomputes assignRows against a filtered subset
+  // (packages/web narrows the precomputed row via compactRows instead,
+  // which never reorders visible items regardless of this shift).
+  const subset = assignRows(
+    all.filter((item) => item.fameScore >= 88),
+    5,
+  );
+  assert.equal(subset.get("high"), 0);
+});
+
 test("assignRows reuses a row once it clears, rather than always opening a new one", () => {
   const rows = assignRows(
     [
