@@ -1,7 +1,7 @@
 import { cleanup, render } from '@testing-library/react';
 import * as d3 from 'd3';
 import { afterEach, expect, test } from 'vitest';
-import { PAN_MIN_DATE } from '../../shared/config';
+import { PAN_MIN_YEAR } from '../../shared/config';
 import {
   AXIS_HEIGHT,
   MIN_DECADE_LABEL_SPACING_PX,
@@ -266,9 +266,9 @@ test("a BCE decade label sits exactly on the BCE ruler region's own tick grid (t
   // (options.ts), so this synthetic domain's start must share MIN_YEAR's
   // residue mod 10/100 for the two to line up — shifting by 1000 (itself
   // a multiple of both) keeps that residue while staying a self-contained
-  // synthetic domain, so this doesn't need updating whenever PAN_MIN_DATE
+  // synthetic domain, so this doesn't need updating whenever PAN_MIN_YEAR
   // does.
-  const domainStart = PAN_MIN_DATE.year - 1000;
+  const domainStart = PAN_MIN_YEAR - 1000;
   const { container } = render(
     <YearAxis
       xScale={scaleFor(domainStart, domainStart + 2000, 20000)}

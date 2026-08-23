@@ -11,7 +11,7 @@ import {
   formatYear,
   isRoundTickYear,
   roundTickYearsInRange,
-} from '../../shared/lib/format-year';
+} from '../../shared/lib/date';
 import {
   AXIS_HEIGHT,
   BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,

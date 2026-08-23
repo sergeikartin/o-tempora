@@ -1,13 +1,13 @@
 import * as d3 from 'd3';
 import {
-  DEFAULT_VIEWPORT_END,
-  DEFAULT_VIEWPORT_START,
+  DEFAULT_VIEWPORT_END_YEAR,
+  DEFAULT_VIEWPORT_START_YEAR,
   MILESTONE_CATEGORY_GROUP_COLORS,
-  PAN_MIN_DATE,
+  PAN_MIN_YEAR,
   ZOOM_MAX_YEARS,
   ZOOM_MIN_YEARS,
 } from '../../shared/config';
-import { today } from '../../shared/lib/dates';
+import { today } from '../../shared/lib/date';
 import {
   AVG_CHAR_WIDTH_PX,
   estimateLabelWidthPx,
@@ -162,7 +162,7 @@ export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> =
     ]),
   ) as Record<MilestoneCategory, string>;
 
-export const MIN_YEAR = PAN_MIN_DATE.year;
+export const MIN_YEAR = PAN_MIN_YEAR;
 
 // The Year Axis's CSS tick gradients (and the scroll container's full-height
 // decade gridlines) render as two adjacent regions split at year 0 — a BCE
@@ -220,7 +220,7 @@ export function buildXScale(pixelsPerYear: number): {
   scale: d3.ScaleLinear<number, number>;
   totalWidth: number;
 } {
-  const maxYear = today().year;
+  const maxYear = today();
   const totalYears = maxYear - MIN_YEAR;
   const totalWidth = totalYears * pixelsPerYear;
   const scale = d3
@@ -231,7 +231,7 @@ export function buildXScale(pixelsPerYear: number): {
 }
 
 export const DEFAULT_VISIBLE_YEARS =
-  DEFAULT_VIEWPORT_END.year - DEFAULT_VIEWPORT_START.year;
+  DEFAULT_VIEWPORT_END_YEAR - DEFAULT_VIEWPORT_START_YEAR;
 // A narrower first-paint window for phone-width viewports — without this,
 // a narrow screen would render the same DEFAULT_VISIBLE_YEARS span as
 // desktop, just smaller and denser, rather than genuinely more zoomed in.

@@ -223,7 +223,7 @@ test('the full-height 25-year zebra striping is split into a BCE and a CE region
   expect(bceBand.style.getPropertyValue('--zebra-offset-px')).not.toBe(
     ceBand.style.getPropertyValue('--zebra-offset-px'),
   );
-  // Widths sum to the full scrollable width (real PAN_MIN_DATE-to-today
+  // Widths sum to the full scrollable width (real PAN_MIN_YEAR-to-today
   // domain, always spanning both eras).
   const zebraLayer = container.querySelector(
     '[class*="zebraLayer"]',
@@ -327,7 +327,7 @@ test('dragging the Minimap viewport rect scrolls the container, proportional to 
   // Minimap reads scrollLeft from React state (a prop), not a live
   // DOM ref — unlike the plain content-drag test above, so this drag's
   // start position is whatever TimelineCanvas already panned to on mount
-  // (DEFAULT_VIEWPORT_START), not a value this test can reset via a raw
+  // (DEFAULT_VIEWPORT_START_YEAR), not a value this test can reset via a raw
   // scrollLeft property override.
   const startScrollLeft = scrollContainer.scrollLeft;
   // jsdom never lays anything out, so clientWidth is 0 by default — pinned

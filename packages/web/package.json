@@ -27,8 +27,7 @@
     "@sentry/react": "^10.70.0",
     "d3": "^7.9.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "temporal-polyfill": "^1.0.2"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.9",

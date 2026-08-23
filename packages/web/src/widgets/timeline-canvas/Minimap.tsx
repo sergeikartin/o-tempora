@@ -5,7 +5,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { formatYear } from '../../shared/lib/format-year';
+import { formatYear } from '../../shared/lib/date';
 import { m } from '../../shared/paraglide/messages.js';
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import styles from './Minimap.module.css';

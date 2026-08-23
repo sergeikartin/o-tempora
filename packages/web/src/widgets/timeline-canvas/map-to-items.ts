@@ -1,6 +1,6 @@
 import type * as d3 from 'd3';
 import type { ConflictsMilestonesFilterValue } from '../../shared/config';
-import { today, yearMonthToFractionalYear } from '../../shared/lib/dates';
+import { today, yearMonthToFractionalYear } from '../../shared/lib/date';
 import type {
   ConflictCategory,
   ConflictEntry,
@@ -122,13 +122,14 @@ export interface PersonItem {
 }
 
 export function mapPeople(people: Person[]): PersonItem[] {
+  const currentYear = today();
   return people.map((person) => {
     const personStartYear = yearMonthToFractionalYear(person.lifespan.start);
     // Missing lifespan.end means still alive — draw through to today, not
     // a collapsed zero-width bar at their birth year.
     const personEndYear = person.lifespan.end
       ? yearMonthToFractionalYear(person.lifespan.end)
-      : today().year;
+      : currentYear;
 
     return {
       id: person.id,

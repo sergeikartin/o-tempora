@@ -1,7 +1,7 @@
 import {
   type CenturyBoundary,
   centuryBoundariesInRange,
-} from '../../shared/lib/format-year';
+} from '../../shared/lib/date';
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import {
   conflictPixelInterval,

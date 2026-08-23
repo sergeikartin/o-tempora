@@ -3,11 +3,11 @@ import {
   CONFLICT_COLOR,
   DOMAIN_COLORS,
   MILESTONE_CATEGORY_GROUP_COLORS,
-  PAN_MIN_DATE,
+  PAN_MIN_YEAR,
   ZOOM_MAX_YEARS,
   ZOOM_MIN_YEARS,
 } from '../../shared/config';
-import { today } from '../../shared/lib/dates';
+import { today } from '../../shared/lib/date';
 import {
   MILESTONE_CATEGORIES,
   MILESTONE_CATEGORY_GROUPS,
@@ -42,17 +42,17 @@ import {
   zoomOut,
 } from './options';
 
-test('buildXScale domains from PAN_MIN_DATE to a live today() read', () => {
+test('buildXScale domains from PAN_MIN_YEAR to a live today() read', () => {
   const { scale } = buildXScale(5);
   const [minYear, maxYear] = scale.domain();
-  expect(minYear).toBe(PAN_MIN_DATE.year);
-  expect(maxYear).toBe(today().year);
+  expect(minYear).toBe(PAN_MIN_YEAR);
+  expect(maxYear).toBe(today());
 });
 
 test('buildXScale sizes totalWidth as totalYears * pixelsPerYear', () => {
   const pixelsPerYear = 5;
   const { scale, totalWidth } = buildXScale(pixelsPerYear);
-  const totalYears = today().year - PAN_MIN_DATE.year;
+  const totalYears = today() - PAN_MIN_YEAR;
   expect(totalWidth).toBe(totalYears * pixelsPerYear);
   expect(scale.range()).toEqual([0, totalWidth]);
 });
@@ -89,13 +89,13 @@ test('BCE_DECADE/CENTURY_TICK_PHASE_OFFSET_YEARS align MIN_YEAR + offset to the 
   // the plain 0-phase CE grid above.
   expect(
     trueMod(
-      PAN_MIN_DATE.year + BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
+      PAN_MIN_YEAR + BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
       DECADE_STEP_YEARS,
     ),
   ).toBe(1);
   expect(
     trueMod(
-      PAN_MIN_DATE.year + BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
+      PAN_MIN_YEAR + BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
       CENTURY_STEP_YEARS,
     ),
   ).toBe(1);

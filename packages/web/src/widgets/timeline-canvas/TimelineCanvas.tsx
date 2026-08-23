@@ -19,9 +19,9 @@ import {
 } from '../../features/select-timeline-entity';
 import {
   type ConflictsMilestonesFilterValue,
-  DEFAULT_VIEWPORT_START,
+  DEFAULT_VIEWPORT_START_YEAR,
 } from '../../shared/config';
-import { centuryBoundaryForYear } from '../../shared/lib/format-year';
+import { centuryBoundaryForYear } from '../../shared/lib/date';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { trackEvent } from '../../shared/lib/track-event';
 import { useIsMobileViewport } from '../../shared/lib/viewport';
@@ -566,7 +566,7 @@ export function TimelineCanvas({
     // the real one, not the pre-layout fallback — before panning.
     if (pixelsPerYear === measuredPixelsPerYearRef.current) {
       skipNextPanTrackRef.current = true;
-      syncScrollLeft(scale(DEFAULT_VIEWPORT_START.year));
+      syncScrollLeft(scale(DEFAULT_VIEWPORT_START_YEAR));
       setScrollLeft(container.scrollLeft);
       if (!hasMarkedInitialRenderRef.current) {
         hasMarkedInitialRenderRef.current = true;

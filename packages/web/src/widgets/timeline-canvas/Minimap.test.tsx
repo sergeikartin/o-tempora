@@ -158,8 +158,8 @@ test('renders century tick marks spanning the pannable domain, with at least one
   const { getByTestId } = render(<Minimap {...defaultProps} people={[]} />);
   const strip = getByTestId('minimap-century-strip');
   const ticks = strip.querySelectorAll('[class*="centuryTick"]');
-  // Dozens of centuries across the real PAN_MIN_DATE-to-today domain — not
-  // asserting an exact count, since PAN_MIN_DATE and "today" both drift.
+  // Dozens of centuries across the real PAN_MIN_YEAR-to-today domain — not
+  // asserting an exact count, since PAN_MIN_YEAR and "today" both drift.
   expect(ticks.length).toBeGreaterThan(15);
   const labels = strip.querySelectorAll('[class*="centuryLabel"]');
   expect(labels.length).toBeGreaterThan(0);

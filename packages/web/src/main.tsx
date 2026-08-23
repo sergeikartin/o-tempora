@@ -1,4 +1,3 @@
-import 'temporal-polyfill/global';
 // Self-hosted at build time (no runtime network fetch) — weights match what
 // docs/design-tokens.md's Typography table and the CSS below actually use.
 // Archivo covers UI chrome, entry labels, and data (tabular-nums, no

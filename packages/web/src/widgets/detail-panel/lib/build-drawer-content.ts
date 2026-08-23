@@ -1,4 +1,4 @@
-import { formatYearMonth } from '../../../shared/lib/format-year';
+import { formatYearMonth } from '../../../shared/lib/date';
 import type { ConflictEntry, Milestone, Person } from '../../../shared/types';
 
 // Discriminates which of the three lane shapes a click resolved to — the

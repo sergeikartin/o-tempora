@@ -1,8 +1,9 @@
-import type { YearMonth } from '../types';
+import type { YearMonth } from '../../types';
 
 // Every year in the rendering path is a plain signed integer using
-// Temporal's ISO/astronomical numbering (year 0 is 1 BCE, year 1 is 1 CE —
-// see packages/shared-types's TimelineEntry comment). This is the one place
+// astronomical numbering (year 0 is 1 BCE, year 1 is 1 CE — the same
+// convention Temporal.PlainDate's ISO calendar uses natively; see
+// packages/shared-types's TimelineEntry comment). This is the one place
 // that turns that internal representation into the "N BCE" / plain "N"
 // strings users actually see, so BCE-ness and the off-by-one BCE-year
 // conversion aren't reimplemented at each call site (YearAxis's ticks and
@@ -35,12 +36,9 @@ const MONTH_NAMES = [
 
 // month absent means the source data is only certain to the year (see
 // shared-types's YearMonth) — falls back to formatYear alone rather than
-// guessing a month. Hardcoded month names rather than
-// Temporal.PlainYearMonth#toLocaleString: the polyfill's locale-formatting
-// path requires an explicit calendar-qualified locale to avoid throwing
-// ("Mismatching Calendars") and buys nothing over a plain lookup here,
-// where the source of truth is already a 1-12 integer, not a Temporal
-// value needing calendar-aware arithmetic.
+// guessing a month. Hardcoded month names rather than a date-object
+// formatter: the source of truth is already a plain 1-12 integer, not a
+// date value needing calendar-aware construction just to name a month.
 export function formatYearMonth(yearMonth: YearMonth): string {
   if (yearMonth.month === undefined) return formatYear(yearMonth.year);
   return `${MONTH_NAMES[yearMonth.month - 1]} ${formatYear(yearMonth.year)}`;

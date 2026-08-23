@@ -147,9 +147,9 @@ export type OccupationDomain = (typeof OCCUPATION_DOMAINS)[number];
 // when the source data's actual claim precision resolves to month-or-finer
 // (e.g. Wikidata's wikibase:timePrecision >= 10) — never defaulted to
 // January to paper over an unknown month, which would misrepresent
-// precision Wikidata itself doesn't claim to have. The frontend adapter
-// constructs a real Temporal.PlainYearMonth from this shape once month is
-// known; year-only values stay plain numbers (see shared/lib/dates.ts).
+// precision Wikidata itself doesn't claim to have. The frontend formats
+// this shape as plain text, not a date object (see
+// packages/web/src/shared/lib/date/format-year.ts's formatYearMonth).
 export interface YearMonth {
   year: number;
   month?: number;
