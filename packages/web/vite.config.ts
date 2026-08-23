@@ -1,6 +1,8 @@
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
+import { criticalFontPreloadPlugin } from './vite-plugins/critical-font-preload';
+import { tier0ModulePreloadPlugin } from './vite-plugins/tier0-modulepreload';
 
 // Locale is resolved at runtime from the URL, not forked at build time
 // (docs/adr/0009 supersedes 0005's baseLocale-only strategy): English is
@@ -22,6 +24,8 @@ export default defineConfig({
       strategy: ['url', 'baseLocale'],
       emitTsDeclarations: true,
     }),
+    tier0ModulePreloadPlugin(),
+    criticalFontPreloadPlugin(),
   ],
   build: {
     rollupOptions: {
