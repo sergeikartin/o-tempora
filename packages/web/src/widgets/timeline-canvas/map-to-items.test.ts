@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import type { ConflictsMilestonesFilterValue } from '../../shared/config';
-import { today } from '../../shared/lib/dates';
+import { today } from '../../shared/lib/date';
 import type {
   Conflict,
   ConflictEvent,
@@ -52,7 +52,7 @@ test('mapPeople maps a person with both years to an item with matching start/end
 
 test('mapPeople falls back to today when lifespan.end is missing — still alive, not a collapsed bar', () => {
   const [item] = mapPeople([personWithoutDeathYear]);
-  expect(item?.endYear).toBe(today().year);
+  expect(item?.endYear).toBe(today());
 });
 
 const personWithMonths: Person = {

@@ -1,8 +1,8 @@
 import { expect, test } from 'vitest';
 import { today, yearMonthToFractionalYear } from './dates';
 
-test('today matches a live Temporal.Now.plainDateISO() read', () => {
-  expect(today().year).toBe(Temporal.Now.plainDateISO().year);
+test('today matches a live Date read', () => {
+  expect(today()).toBe(new Date().getFullYear());
 });
 
 test('yearMonthToFractionalYear returns the plain year when month is absent', () => {

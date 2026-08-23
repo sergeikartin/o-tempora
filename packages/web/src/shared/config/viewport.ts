@@ -4,22 +4,10 @@ import { m } from '../paraglide/messages.js';
 export const ZOOM_MIN_YEARS = 50;
 export const ZOOM_MAX_YEARS = 250;
 
-export const DEFAULT_VIEWPORT_START = Temporal.PlainDate.from({
-  year: 1740,
-  month: 1,
-  day: 1,
-});
-export const DEFAULT_VIEWPORT_END = Temporal.PlainDate.from({
-  year: 1860,
-  month: 1,
-  day: 1,
-});
+export const DEFAULT_VIEWPORT_START_YEAR = 1740;
+export const DEFAULT_VIEWPORT_END_YEAR = 1860;
 
-export const PAN_MIN_DATE = Temporal.PlainDate.from({
-  year: -801,
-  month: 1,
-  day: 1,
-});
+export const PAN_MIN_YEAR = -801;
 
 // Sidebar Fame-floor filters: a raw `fameScore` numeric floor per lane, set
 // directly by the user (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md

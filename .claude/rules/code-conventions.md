@@ -3,7 +3,7 @@
 <!-- Shared code conventions across both packages. Read before implementing shared/cross-package code. Package-specific conventions: packages/web/docs/code-conventions.md · packages/data-pipeline/docs/code-conventions.md -->
 
 ## Date handling
-- use  JavaScript Temporal API for all dates in app
+- No Temporal API/polyfill. Years are plain signed integers end-to-end (astronomical numbering — `docs/adr/0001-astronomical-year-numbering.md`); native `Date` is only for reading the current calendar year (`shared/lib/date/dates.ts`'s `today()`).
 
 ## Data and Storage
 
