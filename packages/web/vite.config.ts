@@ -1,6 +1,7 @@
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
+import { criticalCssPlugin } from './vite-plugins/critical-css';
 import { criticalFontPreloadPlugin } from './vite-plugins/critical-font-preload';
 import { tier0ModulePreloadPlugin } from './vite-plugins/tier0-modulepreload';
 
@@ -26,6 +27,7 @@ export default defineConfig({
     }),
     tier0ModulePreloadPlugin(),
     criticalFontPreloadPlugin(),
+    criticalCssPlugin(),
   ],
   build: {
     rollupOptions: {

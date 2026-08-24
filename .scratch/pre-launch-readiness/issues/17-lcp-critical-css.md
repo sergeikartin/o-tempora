@@ -1,5 +1,5 @@
 Type: task
-Status: open
+Status: resolved
 
 # LCP: critical-CSS extraction/inlining
 
@@ -28,3 +28,19 @@ Use an automated tool rather than hand-curating critical CSS — `beasties` (the
 Real engineering, not a cheap change — per issue 14: "risks visual regressions across two locales and both layouts if done hastily." Budget for iterating on `beasties`' config (its critical-viewport heuristics may need tuning for this app's above-the-fold content) and for the regression test in step 2 actually catching a bad extraction before it ships, not after.
 
 ## Comments
+
+Implemented as `packages/web/vite-plugins/critical-css.ts`, following the same `transformIndexHtml`-post-hook pattern as issue 16's two plugins — reads stylesheet CSS straight out of Vite's in-memory bundle (the dist files don't exist on disk yet at this point in the build) and runs it through `beasties`.
+
+Discovered mid-implementation: `beasties` decides "critical" purely by matching selectors against the given HTML's DOM — but this app's build-time `index.html` is a bare CSR shell (`<div id="root"></div>`, nothing rendered), so every class selector failed that check and got dropped wholesale, keeping only bare-tag/`:root` rules. This is exactly the "heuristics may need tuning" risk flagged up front. Fixed via `allowRules`, force-including `.wrapper`/`.scrollContainer` (matched by prefix regex against their CSS-Modules-mangled names, `._wrapper_<hash>_<n>` / `._scrollContainer_<hash>_<n>` — the hash is per-source-file, not per-build, so the regex survives rebuilds) regardless of the DOM-presence heuristic. Non-critical CSS is deferred via the standard `media="print"` + `onload` swap, with a `<noscript>` fallback.
+
+Added a regression test (`critical-css.test.ts`) asserting the inlined output includes both force-included selectors and excludes an unrelated one the heuristic would legitimately drop — proving `allowRules` targets only what it's meant to, not a beasties-inlines-everything false pass.
+
+Verified against a production build: both `dist/index.html` and `dist/ru/index.html` inline the identical critical `<style>` block (same shared chunk, per `vite.config.ts`'s locale-sharing design) and defer the same `main.css` link. Checked both viewports visually (`chrome-devtools-mcp` screenshots) on both locales — mobile drawer layout and desktop `Minimap` layout both render correctly on first paint, no unstyled flash.
+
+**LCP measurement**: sandboxed session, no `otempora.info` egress, so a same-hardware local-build A/B (`vite preview`/static-served, fresh isolated cold-cache browser context per run, Slow 4G + 4x CPU throttle, EN, mobile viewport):
+- Before (critical-CSS plugin disabled, otherwise identical build): LCP 10,383 ms — in line with issue 16's `dev`-HEAD baseline of 12,041 ms (small delta is normal run-to-run/hardware noise, not a regression).
+- After (this ticket): LCP ~1,800–1,850 ms (two runs, 1,787 ms / 1,850 ms).
+- **≈ −8,500 ms (−82%)** — far beyond the `RenderBlocking` insight's own ~387–394 ms estimate. That estimate only models the isolated paint-blocking effect; the actual mechanism is bigger: `main.css` sat before the app's `<script type="module">` in `<head>`, and a pending stylesheet defers *all* subsequent script execution (module scripts are implicitly deferred), so the render-blocking link was gating the entire React app's mount, not just first paint. Removing it unblocks JS execution itself under throttling, not only the paint pipeline.
+- CLS: 0.00 on both before and after — invariant preserved.
+
+Mobile LCP moves from "Poor" to solidly "Good" (<2,500 ms) on this throttle profile. Note the LCP element Chrome's heuristic picks is a visually-hidden `sr-only` `<h1>` (a11y heading), not the timeline itself — consistent with the existing code comment on `TimelineCanvas.tsx`'s `timeline-initial-render` perf mark noting Chrome's LCP heuristic can't see canvas/SVG content. The measured number is still a legitimate, large win (it reflects real JS-execution unblocking), just not literally "the timeline paints in 1.8s" — that instrumentation mark remains the more meaningful signal for this app's actual rendering.
