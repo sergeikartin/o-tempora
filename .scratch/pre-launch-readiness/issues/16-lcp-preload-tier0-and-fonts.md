@@ -1,5 +1,5 @@
 Type: task
-Status: implemented, pending LCP measurement
+Status: resolved
 
 # LCP: preload tier0 data chunks + above-the-fold fonts (mobile)
 
@@ -33,4 +33,16 @@ If pursued later: no critical-CSS tooling exists in the repo yet (checked — no
 
 Implemented both levers as two small `transformIndexHtml` Vite plugins (`packages/web/vite-plugins/tier0-modulepreload.ts`, `critical-font-preload.ts`), each reading the build's output bundle to inject the right `<link>` tags per HTML entry — locale-scoped `modulepreload` for tier0 chunks, `preload` for the Archivo 400/700 latin-subset `.woff2` files. Verified against a production build: `dist/index.html` preloads only the three EN tier0 chunks, `dist/ru/index.html` only the three RU ones, and both preload the same two font files. Full test/typecheck/lint suite green.
 
-LCP measurement (issue-14 methodology, deployed prod with local-build fallback) intentionally deferred — not run as part of this session; do before closing.
+LCP measurement (issue-14 methodology): `otempora.info` was unreachable from this session's sandbox (network egress blocked), so both runs used the local-build fallback exclusively, in a fresh isolated browser context with cache disabled per navigation (cold-cache, matching a first-time visitor) — `chrome-devtools-mcp`, Slow 4G + 4x CPU throttle, EN.
+
+**Desktop** (no throttle, current `dev`/HEAD build): LCP 1,763 ms — "Good", in line with issue 14/16's 1,616–1,763 ms range (a local `http.server` isn't as fast as the CDN issue 14 measured against, accounting for the small delta).
+
+**Mobile, isolated A/B on this session's machine** (same hardware/throttle profile both runs, to isolate this ticket's change from cross-session hardware noise — absolute numbers here run higher than issue 14's 6,931 ms baseline, which was measured on different hardware; the *relative* delta is the reliable signal):
+- Before (commit `5f8abef`, pre-preload): LCP 18,508 ms. `RenderBlocking` insight: ~1,002 ms estimated savings.
+- After (commit `aeb8735`, this ticket's preload plugins only): LCP 13,377 ms. `RenderBlocking` insight: ~387 ms estimated savings.
+- **Preload alone: −5,131 ms (−28%).**
+- Current `dev`/HEAD (preload + later unrelated cleanup — named Sentry imports, Temporal removal): LCP 12,041 ms, a further −1,336 ms from bundle trimming.
+
+Both before and after runs show render delay at ~99.9% of LCP (TTFB ~7 ms) — confirms issue 14's finding that this is a JS-parse/fetch/render-bound page, not network-latency-bound, and that finding is unchanged by this ticket's fix. Mobile LCP is meaningfully improved but still "Poor" (>4,000 ms) on this throttle profile; the preload levers reduced, but didn't eliminate, the gap.
+
+**Decision on the deferred critical-CSS follow-up**: still worth pursuing. The `RenderBlocking` insight persists post-preload (~387–394 ms estimated LCP savings, consistent with issue 14's original ~1,010 ms estimate before other levers landed) and mobile LCP remains well outside "Good". Keep it as its own future ticket per issue 14's original scoping — not attempted here.
