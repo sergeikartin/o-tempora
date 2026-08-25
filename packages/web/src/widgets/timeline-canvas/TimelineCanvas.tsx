@@ -802,6 +802,17 @@ export function TimelineCanvas({
   // eased-scroll mechanism. Centers on the entity's own start/end midpoint
   // (mapPeople/mapConflicts/mapMilestones already resolve the "still alive"/
   // zero-width edge cases the same way the lanes themselves render it).
+  //
+  // The People and Conflicts/Milestones lanes each scroll vertically on
+  // their own (independent of this horizontal pan), so a mark outside the
+  // fame-priority default scroll position (see the pin-to-edge effects
+  // above) can land outside the viewport even once centered horizontally.
+  // Rather than duplicate each lane's row-y layout math here (People's is a
+  // simple row/rowCount formula in options.ts, but Conflicts/Milestones
+  // packs dynamic per-row label heights inside its own component), find the
+  // mark PeopleLane/ConflictsMilestonesLane already rendered — via the same
+  // data-entity-id attribute the delegated click listener below reads — and
+  // scroll it to the lane's vertical center directly off its real geometry.
   // biome-ignore lint/correctness/useExhaustiveDependencies: only searchJumpTarget should retrigger a jump — handleTrackJump/scale/people/conflicts/milestones are unmemoized and change every render, so including them would refire this on every render once a jump target is set, fighting the user's next pan/zoom
   useEffect(() => {
     if (!searchJumpTarget) return;
@@ -824,6 +835,21 @@ export function TimelineCanvas({
     }
     if (centerYear === null) return;
     handleTrackJump(scale(centerYear) - container.clientWidth / 2);
+
+    const laneEl =
+      searchJumpTarget.entityType === 'person'
+        ? peopleLaneRef.current
+        : conflictsMilestonesLaneRef.current;
+    const mark = laneEl?.querySelector(
+      `[data-entity-id="${searchJumpTarget.id}"]`,
+    );
+    if (laneEl && mark) {
+      const laneRect = laneEl.getBoundingClientRect();
+      const markRect = mark.getBoundingClientRect();
+      const markTopWithinLane = markRect.top - laneRect.top + laneEl.scrollTop;
+      laneEl.scrollTop =
+        markTopWithinLane - laneEl.clientHeight / 2 + markRect.height / 2;
+    }
   }, [searchJumpTarget]);
 
   // One delegated click listener for every mark in all three lanes, keyed
