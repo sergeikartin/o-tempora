@@ -70,6 +70,9 @@ interface ConflictsMilestonesLaneProps {
   // stable across every filter/zoom change instead of being re-derived from
   // whatever's currently visible.
   eventsRowFor: (ids: string[]) => Map<string, number>;
+  // The currently-selected entity's id (DetailPanel is open for it), or null
+  // — see PeopleLane's identical prop for the shared rationale.
+  selectedId?: string | null;
 }
 
 // Conflicts and Milestones share one below-marker row-stacking pass — the
@@ -97,7 +100,7 @@ export const ConflictsMilestonesLane = forwardRef<
   ZoomAnimationHandle,
   ConflictsMilestonesLaneProps
 >(function ConflictsMilestonesLane(
-  { conflicts, milestones, xScale, eventsRowFor },
+  { conflicts, milestones, xScale, eventsRowFor, selectedId },
   ref,
 ) {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -539,6 +542,23 @@ export const ConflictsMilestonesLane = forwardRef<
       .duration(durationMs)
       .attr('y', (d) => d.labelY);
   }, [rangeLayout, pointLayout]);
+
+  // A plain DOM class toggle, decoupled from the joins above (their
+  // enter/update/exit selections aren't touched) — see PeopleLane's
+  // identical effect for the shared rationale.
+  useLayoutEffect(() => {
+    if (!svgRef.current) return;
+    // The class always exists in the compiled CSS module — the indexed
+    // access only reads as possibly-undefined because of
+    // noUncheckedIndexedAccess, not because it might really be missing.
+    const highlightClass = styles.searchHighlight as string;
+    for (const el of svgRef.current.querySelectorAll('[data-entity-id]')) {
+      el.classList.toggle(
+        highlightClass,
+        el.getAttribute('data-entity-id') === selectedId,
+      );
+    }
+  }, [selectedId]);
 
   // TimelineCanvas's single rAF driver calls this every animation-frame
   // tick, once per lane/axis — see options.ts's ZoomAnimationTransform

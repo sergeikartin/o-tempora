@@ -44,6 +44,11 @@ interface PeopleLaneProps {
   // stays stable across every filter/zoom change instead of being
   // re-derived from whatever's currently visible.
   personRowFor: (ids: string[]) => Map<string, number>;
+  // The currently-selected entity's id (DetailPanel is open for it), or null
+  // — CONTEXT.md's Search entry: picking a result highlights its mark, tied
+  // to selection state rather than a timer. Extended to every selection
+  // source (not just search), since the mechanism is identical either way.
+  selectedId?: string | null;
 }
 
 // A person's lifespan (a Period) renders as a rounded-cap line, not a solid
@@ -53,7 +58,7 @@ interface PeopleLaneProps {
 // separate rows same as before; a colliding label (wider than its own line)
 // claims the row via pixelInterval above rather than moving to its own band.
 export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
-  function PeopleLane({ people, xScale, personRowFor }, ref) {
+  function PeopleLane({ people, xScale, personRowFor, selectedId }, ref) {
     const svgRef = useRef<SVGSVGElement>(null);
     const hasMountedRef = useRef(false);
 
@@ -251,6 +256,26 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
         .duration(durationMs)
         .attr('y', (d) => d.labelY);
     }, [layout, totalHeight]);
+
+    // A plain DOM class toggle, decoupled from the join above (its
+    // enter/update/exit selections aren't touched) — every mark carries the
+    // same data-entity-id the delegated click listener already reads, so
+    // this just re-scans them whenever the selection or the mark set itself
+    // changes, rather than threading a "am I selected" flag through the
+    // join's own data binding.
+    useLayoutEffect(() => {
+      if (!svgRef.current) return;
+      // The class always exists in the compiled CSS module — the indexed
+      // access only reads as possibly-undefined because of
+      // noUncheckedIndexedAccess, not because it might really be missing.
+      const highlightClass = styles.searchHighlight as string;
+      for (const el of svgRef.current.querySelectorAll('[data-entity-id]')) {
+        el.classList.toggle(
+          highlightClass,
+          el.getAttribute('data-entity-id') === selectedId,
+        );
+      }
+    }, [selectedId]);
 
     // TimelineCanvas's single rAF driver calls this every animation-frame
     // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
