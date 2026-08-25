@@ -7,6 +7,10 @@ import { useOccupationDomainFilter } from '../features/filter-by-occupation-doma
 import { useRegionFilter } from '../features/filter-by-region';
 import { useConflictsMilestonesFilter } from '../features/filter-conflicts-milestones';
 import {
+  type SearchResult,
+  useTimelineSearch,
+} from '../features/search-timeline-entities';
+import {
   type SelectedEntityRef,
   useSelectedEntity,
 } from '../features/select-timeline-entity';
@@ -86,6 +90,23 @@ function AppContent() {
     select: selectEntity,
     clear: closeDetailPanel,
   } = useSelectedEntity();
+  const {
+    query: searchQuery,
+    setQuery: setSearchQuery,
+    results: searchResults,
+  } = useTimelineSearch({
+    people: peopleData,
+    conflicts: conflictsData,
+    milestones: milestonesData,
+    fameScoreValues,
+    selectedDomains,
+    selectedRegions,
+    selectedConflictsMilestonesValues,
+  });
+  // Set only by a search pick (never a canvas click, which is already in
+  // view) — TimelineCanvas watches this to pan, see its own comment.
+  const [searchJumpTarget, setSearchJumpTarget] =
+    useState<SelectedEntityRef | null>(null);
   const [filteredCounts, setFilteredCounts] = useState<FilteredCounts>();
   // Mobile-only drawer state for Sidebar (App.module.css/Sidebar.module.css
   // gate its visual effect to narrow viewports, but the open/close state
@@ -103,6 +124,23 @@ function AppContent() {
     (ref: SelectedEntityRef) => {
       selectEntity(ref);
       setIsFilterDrawerOpen(false);
+    },
+    [selectEntity],
+  );
+
+  // A search pick is a superset of handleEntityClick above (same select +
+  // drawer-close), plus a fresh jump-target object TimelineCanvas's effect
+  // watches to pan the timeline — a canvas click never sets this since
+  // what's clicked is already on screen.
+  const handleSelectSearchResult = useCallback(
+    (result: SearchResult) => {
+      const ref: SelectedEntityRef = {
+        id: result.id,
+        entityType: result.entityType,
+      };
+      selectEntity(ref);
+      setIsFilterDrawerOpen(false);
+      setSearchJumpTarget(ref);
     },
     [selectEntity],
   );
@@ -139,6 +177,10 @@ function AppContent() {
         onSelectDepthLevel={handleSelectDepthLevel}
         isTier1Loading={isTier1Loading}
         filteredCounts={filteredCounts}
+        searchQuery={searchQuery}
+        onSearchQueryChange={setSearchQuery}
+        searchResults={searchResults}
+        onSelectSearchResult={handleSelectSearchResult}
         selectedDomains={selectedDomains}
         onToggleDomain={toggleDomain}
         selectedRegions={selectedRegions}
@@ -178,6 +220,8 @@ function AppContent() {
             onFilteredCountsChange={setFilteredCounts}
             isFilterDrawerOpen={isFilterDrawerOpen}
             onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
+            selectedEntity={selectedRef}
+            searchJumpTarget={searchJumpTarget}
           />
         </ErrorBoundary>
       </main>

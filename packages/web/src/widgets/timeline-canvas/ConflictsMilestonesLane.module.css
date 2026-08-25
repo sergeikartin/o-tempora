@@ -75,6 +75,16 @@
   transform: scale(1.15);
 }
 
+/* Search-jump / current-selection highlight (grill-with-docs session,
+   CONTEXT.md's Search entry) — see PeopleLane.module.css's identical rule
+   for the shared rationale (a glow, not a fill/stroke override, so it
+   layers on top of a Conflict's flat color or a Milestone's own category
+   color instead of fighting either). */
+.searchHighlight {
+  filter: drop-shadow(0 0 4px var(--color-accent-selected));
+  transition: filter var(--motion-duration-fast) var(--motion-easing);
+}
+
 .label {
   font-family: Archivo, sans-serif;
   font-size: 11px;

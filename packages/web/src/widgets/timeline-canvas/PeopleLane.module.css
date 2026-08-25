@@ -80,6 +80,16 @@
   transform: scale(1.15);
 }
 
+/* Search-jump / current-selection highlight (grill-with-docs session,
+   CONTEXT.md's Search entry) — a persistent glow using the app's existing
+   "selected" token, toggled by id in PeopleLane.tsx's own effect rather than
+   through the D3 join above, so it layers on top of (never replaces) each
+   mark's own occupation-domain fill and hover treatment. */
+.searchHighlight {
+  filter: drop-shadow(0 0 4px var(--color-accent-selected));
+  transition: filter var(--motion-duration-fast) var(--motion-easing);
+}
+
 .name {
   font-family: Archivo, sans-serif;
   font-size: 11px;

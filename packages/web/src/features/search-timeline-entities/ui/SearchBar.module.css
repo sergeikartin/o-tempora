@@ -1,0 +1,95 @@
+.container {
+  position: relative;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  font: inherit;
+  font-size: 12px;
+  color: var(--color-text-primary);
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-easing),
+    background-color var(--motion-duration-fast) var(--motion-easing);
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.input:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-bg-surface);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 4px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--color-bg-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.empty {
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.result {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 12px;
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.result:hover,
+.resultActive {
+  background: var(--color-bg-surface);
+}
+
+.badge {
+  flex: 0 0 auto;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+}
+
+.name {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.name strong {
+  color: var(--color-accent-selected);
+  font-weight: 700;
+}

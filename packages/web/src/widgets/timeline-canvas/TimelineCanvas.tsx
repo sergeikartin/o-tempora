@@ -42,6 +42,9 @@ import {
   filterByOccupationDomain,
   filterByRegion,
   filterConflictsByFilterValues,
+  mapConflicts,
+  mapMilestones,
+  mapPeople,
 } from './map-to-items';
 import {
   BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
@@ -128,6 +131,16 @@ interface TimelineCanvasProps {
   // despite the drawer it opens living in a different widget.
   isFilterDrawerOpen: boolean;
   onToggleFilterDrawer: () => void;
+  // The entity DetailPanel is currently open for (any source — a canvas
+  // click or a search pick), or null. Threaded to PeopleLane/
+  // ConflictsMilestonesLane so the matching mark gets the search-highlight
+  // treatment (CONTEXT.md's Search entry) for as long as it stays selected.
+  selectedEntity?: SelectedEntityRef | null;
+  // Set only when a features/search-timeline-entities pick should also pan
+  // the timeline to it (never by a canvas click, which is already in view)
+  // — App.tsx passes a fresh object each time, so re-picking the same
+  // result still retriggers the jump.
+  searchJumpTarget?: SelectedEntityRef | null;
 }
 
 export function TimelineCanvas({
@@ -142,6 +155,8 @@ export function TimelineCanvas({
   onFilteredCountsChange,
   isFilterDrawerOpen,
   onToggleFilterDrawer,
+  selectedEntity,
+  searchJumpTarget,
 }: TimelineCanvasProps) {
   const isMobileViewport = useIsMobileViewport();
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -781,6 +796,36 @@ export function TimelineCanvas({
     panAnimationFrameRef.current = requestAnimationFrame(tick);
   }
 
+  // features/search-timeline-entities picking a result: pans (never zooms —
+  // grill-with-docs session decided against a zoom-to-fit, matching the
+  // Minimap's own click-jump above) to center it, reusing that exact same
+  // eased-scroll mechanism. Centers on the entity's own start/end midpoint
+  // (mapPeople/mapConflicts/mapMilestones already resolve the "still alive"/
+  // zero-width edge cases the same way the lanes themselves render it).
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only searchJumpTarget should retrigger a jump — handleTrackJump/scale/people/conflicts/milestones are unmemoized and change every render, so including them would refire this on every render once a jump target is set, fighting the user's next pan/zoom
+  useEffect(() => {
+    if (!searchJumpTarget) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    let centerYear: number | null = null;
+    if (searchJumpTarget.entityType === 'person') {
+      const item = mapPeople(people).find((p) => p.id === searchJumpTarget.id);
+      if (item) centerYear = (item.startYear + item.endYear) / 2;
+    } else if (searchJumpTarget.entityType === 'conflict') {
+      const item = mapConflicts(conflicts).find(
+        (c) => c.id === searchJumpTarget.id,
+      );
+      if (item) centerYear = (item.startYear + item.endYear) / 2;
+    } else {
+      const item = mapMilestones(milestones).find(
+        (m) => m.id === searchJumpTarget.id,
+      );
+      if (item) centerYear = (item.startYear + item.endYear) / 2;
+    }
+    if (centerYear === null) return;
+    handleTrackJump(scale(centerYear) - container.clientWidth / 2);
+  }, [searchJumpTarget]);
+
   // One delegated click listener for every mark in all three lanes, keyed
   // off the data-entity-id/data-entity-type attributes each Lane sets on
   // its .d3-line/.d3-dot elements (dynamic-tooltips spec §2) — avoids
@@ -1014,6 +1059,9 @@ export function TimelineCanvas({
             people={filteredPeople}
             xScale={scale}
             personRowFor={personRowFor}
+            selectedId={
+              selectedEntity?.entityType === 'person' ? selectedEntity.id : null
+            }
           />
         </div>
         <div className={styles.yearAxis} style={{ width: totalWidth }}>
@@ -1034,6 +1082,11 @@ export function TimelineCanvas({
             milestones={filteredMilestones}
             xScale={scale}
             eventsRowFor={eventsRowFor}
+            selectedId={
+              selectedEntity?.entityType === 'person'
+                ? null
+                : (selectedEntity?.id ?? null)
+            }
           />
         </div>
       </div>

@@ -10,6 +10,10 @@ import { OccupationDomainFilters } from '../../../features/filter-by-occupation-
 import { RegionFilters } from '../../../features/filter-by-region';
 import { ConflictsMilestonesFilters } from '../../../features/filter-conflicts-milestones';
 import {
+  SearchBar,
+  type SearchResult,
+} from '../../../features/search-timeline-entities';
+import {
   type ConflictsMilestonesFilterValue,
   type DataDepthLevel,
   SWITCH_LANGUAGE_HREF,
@@ -30,6 +34,10 @@ interface SidebarProps {
   // Post-filter entry count per lane, from TimelineCanvas via app/ — see
   // FameScoreFilters' own comment on why this is optional.
   filteredCounts?: FilteredCounts;
+  searchQuery: string;
+  onSearchQueryChange: (query: string) => void;
+  searchResults: SearchResult[];
+  onSelectSearchResult: (result: SearchResult) => void;
   selectedDomains: OccupationDomain[];
   onToggleDomain: (domain: OccupationDomain) => void;
   selectedRegions: Region[];
@@ -72,6 +80,10 @@ export function Sidebar({
   onFameScoreChange,
   onSelectDepthLevel,
   filteredCounts,
+  searchQuery,
+  onSearchQueryChange,
+  searchResults,
+  onSelectSearchResult,
   selectedDomains,
   onToggleDomain,
   selectedRegions,
@@ -208,6 +220,14 @@ export function Sidebar({
                 </button>
               </div>
             )}
+            <div className={styles.section}>
+              <SearchBar
+                query={searchQuery}
+                onQueryChange={onSearchQueryChange}
+                results={searchResults}
+                onSelectResult={onSelectSearchResult}
+              />
+            </div>
             <section className={styles.section}>
               <h2 className={styles.heading}>{m.dataDepthHeading()}</h2>
               <DataDepthSwitch
