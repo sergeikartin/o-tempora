@@ -31,4 +31,5 @@ Every pre-publish concern for this world-history timeline — the items on Serge
 
 ## Out of scope
 
-(none yet — nothing has been ruled out of this effort so far)
+- [Years axis: labeled era bands](issues/02-years-axis-eras.md): skipped — judged an unnecessary complication for v1. Existing numeric BCE/CE `YearAxis` ticks stand as-is.
+- [Vertical hover-indicator redesign](issues/01-hover-indicator-redesign.md): skipped — out of scope for this launch. Stays reverted (commit `b1e370b`); not coming back for v1.

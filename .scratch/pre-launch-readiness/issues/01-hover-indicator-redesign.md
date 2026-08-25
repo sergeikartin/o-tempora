@@ -1,5 +1,5 @@
 Type: grilling
-Status: open
+Status: resolved
 
 # Vertical hover-indicator: rethink the approach
 
@@ -13,3 +13,7 @@ Resolve:
 - What specifically was wrong with the original implementation (visual clutter against the minimap / lane density, performance, interaction feel, something else)?
 - What should the redesigned version actually look/behave like?
 - Should it reuse the reverted commit's mechanism (`onHoverYearChange` reporting up, `TimelineCanvas` owning the line render) or take a different technical approach?
+
+## Answer
+
+Skipped — out of scope for this launch. Stays reverted; the feature is not coming back for v1.
