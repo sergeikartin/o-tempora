@@ -1,6 +1,8 @@
-# Split `description` into `Tagline` + `Description`, adding Wikipedia's REST API as a second live dependency
+---
+status: accepted
+---
 
-Status: accepted
+# Split `description` into `Tagline` + `Description`, adding Wikipedia's REST API as a second live dependency
 
 Every entity's single `description` field held Wikidata's short one-line `schema:description` claim — a terse disambiguating subtitle ("American physicist"), not real prose. `DetailPanel` is a scrollable, uncapped-length drawer built to hold much more, so the field was split in two, per `CONTEXT.md`'s `Tagline`/`Description` glossary entries:
 

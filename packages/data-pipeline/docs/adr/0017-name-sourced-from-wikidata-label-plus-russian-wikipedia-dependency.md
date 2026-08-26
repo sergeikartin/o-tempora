@@ -1,6 +1,8 @@
-# Source `name` from Wikidata's `rdfs:label` (English + Russian) instead of curator text or Pantheon's CSV, and add `ru.wikipedia.org` as a second live Wikipedia dependency
+---
+status: accepted
+---
 
-Status: accepted
+# Source `name` from Wikidata's `rdfs:label` (English + Russian) instead of curator text or Pantheon's CSV, and add `ru.wikipedia.org` as a second live Wikipedia dependency
 
 Shipping a Russian build (`.scratch/russian-localization/spec.md`) required every entity-content field — `name`, `tagline`, `description` — to resolve symmetrically in English and Russian, with per-field English fallback baked in by the pipeline. `tagline`/`description` already had a live-fetch mechanism to extend; `name` did not, and its three lanes each sourced it differently:
 

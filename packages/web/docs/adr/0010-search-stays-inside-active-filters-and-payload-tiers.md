@@ -1,3 +1,7 @@
+---
+status: accepted
+---
+
 # Search stays inside active filters and Payload Tiers, rather than searching everything
 
 ## Context

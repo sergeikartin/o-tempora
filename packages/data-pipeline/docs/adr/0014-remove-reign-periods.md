@@ -1,3 +1,8 @@
+---
+status: accepted
+supersedes: 0003-reigns-fetch-depends-on-people-fetch-output.md
+---
+
 # Remove reign periods entirely
 
 `Person.reignPeriods` (Wikidata P39 head-of-state/government positions, fetched via a secondary batched SPARQL pass — `fetch-reigns.ts`/`queries/reigns.ts`/`group-reigns.ts`) is removed, not deprecated: the type, the fetch/transform/output wiring, and the detail-panel's "Reign periods" UI section are all deleted.
