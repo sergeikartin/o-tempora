@@ -8,11 +8,11 @@ Each lane's join call is restructured to select existing nodes, call `seedPreren
 
 **Blocked by:** 01 (needs `mark-shape.ts`'s `MARK_ID_SELECTOR` and the refactored `enter` branches from that ticket to attach adoption to).
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] `mark-shape.ts` exports `seedPrerenderedData`, self-limiting by construction (a no-op once every node already has bound data).
-- [ ] `PeopleLane.tsx`'s join and both of `ConflictsMilestonesLane.tsx`'s joins (ranges, points) call `seedPrerenderedData` on the existing selection before `.data(layout, keyFn).join(...)`.
-- [ ] New test in `PeopleLane.test.tsx`: inject an unbound fixture `.d3-person` fragment (carrying `data-entity-id` matching a fixture person) into the container before `render()`; after render, assert the *same* DOM node is still present (not a replacement — e.g. tag it with a marker attribute/property before render and check it survived), its data-bound attributes match the fixture's real computed values, and no fade-in (`opacity` transition / enter styling) was ever applied to it.
-- [ ] Equivalent new tests in `ConflictsMilestonesLane.test.tsx` for both the range and point adoption paths.
-- [ ] Existing join/enter/exit tests in both files continue to pass unchanged — a normal fresh mount (no pre-existing DOM) still goes through the ordinary `enter` path with its fade-in, exactly as today.
-- [ ] `npm run typecheck --workspace packages/web` and `npm run test --workspace packages/web` pass.
+- [x] `mark-shape.ts` exports `seedPrerenderedData`, self-limiting by construction (a no-op once every node already has bound data).
+- [x] `PeopleLane.tsx`'s join and both of `ConflictsMilestonesLane.tsx`'s joins (ranges, points) call `seedPrerenderedData` on the existing selection before `.data(layout, keyFn).join(...)`.
+- [x] New test in `PeopleLane.test.tsx`: inject an unbound fixture `.d3-person` fragment (carrying `data-entity-id` matching a fixture person) into the container before `render()`; after render, assert the *same* DOM node is still present (not a replacement — e.g. tag it with a marker attribute/property before render and check it survived), its data-bound attributes match the fixture's real computed values, and no fade-in (`opacity` transition / enter styling) was ever applied to it.
+- [x] Equivalent new tests in `ConflictsMilestonesLane.test.tsx` for both the range and point adoption paths.
+- [x] Existing join/enter/exit tests in both files continue to pass unchanged — a normal fresh mount (no pre-existing DOM) still goes through the ordinary `enter` path with its fade-in, exactly as today.
+- [x] `npm run typecheck --workspace packages/web` and `npm run test --workspace packages/web` pass.

@@ -186,3 +186,27 @@ export function buildMarkChildren<Datum>(
     build(shape[4]),
   ];
 }
+
+/**
+ * Seeds `__data__` on any node in `selection` that's still unbound — the
+ * state a prerendered/hydrating page's mark nodes are in before the first
+ * D3 join has run. Reads the node's `MARK_ID_SELECTOR` child's
+ * `data-entity-id` and looks up the matching item in `layout`, so the
+ * keyed `.data(layout, (d) => d.id).join(...)` that runs right after this
+ * treats the node as an `update` instead of destroying and recreating it
+ * as a fresh `enter`. A no-op on any node that already carries real bound
+ * data — once a real join has run once, that's every node, so this never
+ * needs a first-run flag of its own.
+ */
+export function seedPrerenderedData<Item extends { id: string }>(
+  selection: d3.Selection<SVGGElement, Item | undefined, SVGGElement, unknown>,
+  layout: Item[],
+): void {
+  const layoutById = new Map(layout.map((item) => [item.id, item]));
+  selection.property('__data__', function seedOne(existing) {
+    if (existing !== undefined) return existing;
+    const id =
+      this.querySelector(MARK_ID_SELECTOR)?.getAttribute('data-entity-id');
+    return id ? layoutById.get(id) : undefined;
+  });
+}
