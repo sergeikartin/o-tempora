@@ -4,7 +4,7 @@
 
 ## `packages/web` locale resolution
 
-Locale is resolved at runtime, not selected by build mode (`docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`). Paraglide's `strategy: ['url', 'baseLocale']` (`packages/web/vite.config.ts`) reads the request path — `/` resolves to English (the base locale), `/ru/*` to Russian — using Paraglide's default URL pattern, no custom `urlPatterns` needed. `src/app/locale-datasets.ts` reads that resolved locale via `getLocale()` and dynamically imports the matching `packages/shared-types/src/data/{people,conflicts,milestones}.tier0(.ru)?.json` files eagerly (gating first paint), so a given page load only ever fetches one language's Tier 0 payload; the `.tier1` siblings load separately, deferred to idle time (or on demand — see Payload Tier below).
+Locale is resolved at runtime, not selected by build mode (`packages/web/docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`). Paraglide's `strategy: ['url', 'baseLocale']` (`packages/web/vite.config.ts`) reads the request path — `/` resolves to English (the base locale), `/ru/*` to Russian — using Paraglide's default URL pattern, no custom `urlPatterns` needed. `src/app/locale-datasets.ts` reads that resolved locale via `getLocale()` and dynamically imports the matching `packages/shared-types/src/data/{people,conflicts,milestones}.tier0(.ru)?.json` files eagerly (gating first paint), so a given page load only ever fetches one language's Tier 0 payload; the `.tier1` siblings load separately, deferred to idle time (or on demand — see Payload Tier below).
 
 ## `packages/web`/`packages/data-pipeline` Payload Tier
 

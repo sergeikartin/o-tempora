@@ -1,3 +1,7 @@
+---
+status: accepted
+---
+
 # Fetch becomes lane-scoped; combined cross-lane raw files split per lane
 
 `fetchImageAttribution`, `fetchPageviews`, and `fetchWikipediaExtracts` used to read all three lanes together and each overwrite one combined raw file (`image-attribution.raw.json`, `pageviews.raw.json`, `wikipedia-extracts.raw.json`) on every run — the one remaining gap in lane separation after ADR 0001, and the reason a full `npm run fetch` cost ~35 minutes (dominated by `fetchWikipediaExtracts`'s ~2 req/sec pass over ~4,150 People + 154 Wars + 121 Discoveries, per ADR 0011) even to pick up a single new curated entry. Each of these three stages now writes one raw file per lane instead, and `fetch/index.ts` gained a `--lane=<people|wars|discoveries>` flag so a run can be scoped to just the lane that changed (no flag still runs all three, unchanged). "Discoveries" was chosen as the lane's canonical public name over "events" — the pre-existing internal name in fetch-stage code and the curated file — matching what the shipped output type/file already use; that internal rename is deliberately deferred to a separate effort (`.scratch/discoveries-file-rename/spec.md`) rather than bundled in here.

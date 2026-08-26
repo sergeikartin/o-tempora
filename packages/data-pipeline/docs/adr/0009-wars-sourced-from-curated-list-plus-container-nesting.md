@@ -1,3 +1,7 @@
+---
+status: accepted
+---
+
 # Wars & Conflicts sources from a curated QID list plus Wikidata enrichment, with Container/parentId nesting
 
 Wars & Conflicts' original source (`fetch-historical-events.ts`) ran 9 independent per-`ConflictCategory` Wikidata SPARQL scans, one `instance-of` type-claim query per category — the same low-signal, no-real-classification pattern that made Discoveries' original source produce junk top entries before that lane switched to a curated list (ADR 0008). Wars hadn't hit that exact failure mode, but the underlying problem was identical: nobody was choosing which conflicts matter, Wikidata's `instance of` claims were. Separately, umbrella conflicts (a multi-phase campaign containing individual wars, which in turn contain point-in-time events) had no way to be represented — a prior effort removed the one mechanism that gestured at this (`partOfWarName`, a free-text string) because a flat string can't reliably resolve to a real entity.
