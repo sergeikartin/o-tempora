@@ -6,37 +6,24 @@ import {
   useMemo,
   useRef,
 } from 'react';
-import { DOMAIN_COLORS } from '../../shared/config';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { m } from '../../shared/paraglide/messages.js';
 import type { Person } from '../../shared/types';
-import { mapPeople } from './map-to-items';
 import {
-  estimateLabelWidthPx,
+  buildPersonLayout,
+  mapPeople,
+  type PersonLayout,
+} from './map-to-items';
+import { buildMarkChildren, PERSON_MARK_SHAPE } from './mark-shape';
+import {
   HIT_AREA_PADDING_PX,
   PERIOD_LINE_HEIGHT,
-  personLabelYForRow,
   personLaneHeight,
-  personLineCenterYForRow,
-  SELECTED_LINE_HEIGHT_PX,
-  SELECTION_RING_GAP_PX,
-  SELECTION_RING_WIDTH_PX,
   type ZoomAnimationHandle,
   zoomAnimationCounterScaleAttr,
   zoomAnimationGroupTransformAttr,
 } from './options';
 import styles from './PeopleLane.module.css';
-
-interface PersonLayout {
-  id: string;
-  name: string;
-  x1: number;
-  x2: number;
-  hitX2: number;
-  labelY: number;
-  lineY: number;
-  fill: string;
-}
 
 interface PeopleLaneProps {
   people: Person[];
@@ -76,26 +63,8 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
     const totalWidth = xScale.range()[1] ?? 0;
 
     const layout: PersonLayout[] = useMemo(
-      () =>
-        items.map((item) => {
-          const row = rowOfPerson.get(item.id) ?? 0;
-          const x1 = xScale(item.startYear);
-          const x2 = Math.max(xScale(item.endYear), x1 + 2);
-          return {
-            id: item.id,
-            name: item.name,
-            x1,
-            x2,
-            // Label is left-aligned at x1, so it never extends left of the
-            // line — only right, past x2 for a short-lived person with a
-            // long name.
-            hitX2: Math.max(x2, x1 + estimateLabelWidthPx(item.name)),
-            labelY: personLabelYForRow(row, rowCount),
-            lineY: personLineCenterYForRow(row, rowCount),
-            fill: DOMAIN_COLORS[item.occupationDomain],
-          };
-        }),
-      [items, rowOfPerson, rowCount, xScale],
+      () => buildPersonLayout(people, xScale, personRowFor),
+      [people, xScale, personRowFor],
     );
 
     // D3 owns the DOM inside <g class="people"> — one <g class="d3-person">
@@ -151,56 +120,12 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
               .append('g')
               .attr('class', 'd3-person')
               .style('opacity', 0);
-            // Invisible, oversized rect behind the line/label — the real hover
-            // and click target, since a 6px line and its label are too thin
-            // and too far apart (see HIT_AREA_PADDING_PX) to hit reliably on
-            // their own. Appended first so it paints behind the visible marks.
-            const hit = g
-              .append('rect')
-              .attr('class', `d3-hit ${styles.hitArea}`);
-            // Two concentric, wider duplicate lines painted behind the real
-            // one, invisible (opacity: 0) until the search-jump/selection
-            // effect below shows them — see PeopleLane.module.css's
-            // .lineRingOuter/.lineRingGap for why a ring on a round-capped
-            // line has to be real geometry rather than a CSS outline filter.
-            const lineRingOuter = g
-              .append('line')
-              .attr('class', `d3-line-ring-outer ${styles.lineRingOuter}`)
-              .attr(
-                'stroke-width',
-                SELECTED_LINE_HEIGHT_PX +
-                  2 * (SELECTION_RING_GAP_PX + SELECTION_RING_WIDTH_PX),
-              )
-              .attr('stroke-linecap', 'round');
-            const lineRingGap = g
-              .append('line')
-              .attr('class', `d3-line-ring-gap ${styles.lineRingGap}`)
-              .attr(
-                'stroke-width',
-                SELECTED_LINE_HEIGHT_PX + 2 * SELECTION_RING_GAP_PX,
-              )
-              .attr('stroke-linecap', 'round');
-            const line = g
-              .append('line')
-              .attr('class', `d3-line ${styles.line}`)
-              .attr('stroke-width', PERIOD_LINE_HEIGHT)
-              .attr('stroke-linecap', 'round');
-            // Wrapped in its own <g> (a literal marker class, not styled
-            // itself) so the zoom-animation counter-scale below can target
-            // that wrapper instead of .d3-name directly — .name has its own
-            // `transition: transform` for the hover-grow effect, which would
-            // otherwise fight the counter-scale's own per-frame writes to the
-            // very same CSS property (both count as "the transform property
-            // changed", so the browser's transition engine tries to smooth
-            // between every animation-frame value, lagging a frame behind and
-            // producing a visible width wobble/flicker instead of an exact
-            // per-tick cancellation).
-            const name = g
-              .append('g')
-              .attr('class', 'd3-name-zoom')
-              .append('text')
-              .attr('class', `d3-name ${styles.name}`)
-              .attr('dominant-baseline', 'hanging');
+            // Children built from PERSON_MARK_SHAPE, in its declared order —
+            // hit rect, selection rings, the lifespan line, then the
+            // zoom-wrapped name label — see mark-shape.ts's own comments for
+            // why each is shaped the way it is.
+            const [hit, lineRingOuter, lineRingGap, line, name] =
+              buildMarkChildren(g, PERSON_MARK_SHAPE, styles);
             // A brand-new mark starts already at its target row — only a
             // pre-existing mark's row *change* animates (below), via the
             // shift transition on personGroups; an entering mark should just

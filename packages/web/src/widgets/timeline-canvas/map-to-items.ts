@@ -1,6 +1,19 @@
 import type * as d3 from 'd3';
+import { CONFLICT_COLOR, DOMAIN_COLORS } from '../../shared/config';
 import { today, yearMonthToFractionalYear } from '../../shared/lib/date';
-import { estimateLabelWidthPx, POINT_RADIUS } from './options';
+import {
+  estimateLabelWidthPx,
+  LANE_TOP_PADDING,
+  MILESTONE_CATEGORY_COLORS,
+  MILESTONES_LABEL_LINE_HEIGHT_PX,
+  MILESTONES_LABEL_MAX_WIDTH_PX,
+  MILESTONES_MARKER_LABEL_GAP,
+  POINT_RADIUS,
+  personLabelYForRow,
+  personLineCenterYForRow,
+  ROW_GAP,
+  wrapLabelLines,
+} from './options';
 
 // The five filterBy*/filterConflictsByFilterValues functions moved to
 // shared/lib/entity/ so features/search-timeline-entities (an FSD
@@ -85,6 +98,47 @@ export function personPixelInterval(
   const x2 = xScale(item.endYear);
   const labelWidth = estimateLabelWidthPx(item.name);
   return { start: x1, end: Math.max(x2, x1 + labelWidth) };
+}
+
+export interface PersonLayout {
+  id: string;
+  name: string;
+  x1: number;
+  x2: number;
+  hitX2: number;
+  labelY: number;
+  lineY: number;
+  fill: string;
+}
+
+/** Per-person screen-space layout for PeopleLane's D3 join — one row-stacked lifespan line + label per person. */
+export function buildPersonLayout(
+  people: Person[],
+  xScale: d3.ScaleLinear<number, number>,
+  personRowFor: (ids: string[]) => Map<string, number>,
+): PersonLayout[] {
+  const items = mapPeople(people);
+  const rowOfPerson = personRowFor(items.map((item) => item.id));
+  const rowCount =
+    rowOfPerson.size > 0 ? Math.max(...rowOfPerson.values()) + 1 : 0;
+  return items.map((item) => {
+    const row = rowOfPerson.get(item.id) ?? 0;
+    const x1 = xScale(item.startYear);
+    const x2 = Math.max(xScale(item.endYear), x1 + 2);
+    return {
+      id: item.id,
+      name: item.name,
+      x1,
+      x2,
+      // Label is left-aligned at x1, so it never extends left of the
+      // line — only right, past x2 for a short-lived person with a
+      // long name.
+      hitX2: Math.max(x2, x1 + estimateLabelWidthPx(item.name)),
+      labelY: personLabelYForRow(row, rowCount),
+      lineY: personLineCenterYForRow(row, rowCount),
+      fill: DOMAIN_COLORS[item.occupationDomain],
+    };
+  });
 }
 
 export interface ConflictItem {
@@ -223,6 +277,198 @@ export function milestonePixelInterval(
     start: Math.min(x - POINT_RADIUS, x - labelHalf),
     end: Math.max(x + POINT_RADIUS, x + labelHalf),
   };
+}
+
+export interface RangeLayout {
+  id: string;
+  name: string;
+  x1: number;
+  x2: number;
+  hitX1: number;
+  hitX2: number;
+  row: number;
+  markerY: number;
+  labelY: number;
+  fill: string;
+  kind: 'conflict' | 'milestone';
+}
+
+export interface PointLayout {
+  id: string;
+  lines: string[];
+  x: number;
+  hitX1: number;
+  hitX2: number;
+  row: number;
+  markerY: number;
+  labelY: number;
+  fill: string;
+  kind: 'conflict' | 'milestone';
+}
+
+export interface RangeAndPointLayout {
+  rangeLayout: RangeLayout[];
+  pointLayout: PointLayout[];
+  totalHeight: number;
+}
+
+/**
+ * Combined screen-space layout for ConflictsMilestonesLane's two D3 joins —
+ * ranges (Conflict periods + period-shaped Milestones) and points (Conflict
+ * events + point-shaped Milestones) share one below-marker row-stacking pass
+ * (see ConflictsMilestonesLane.tsx's own comment for why), so both come out
+ * of a single function rather than two independently-packed ones.
+ */
+export function buildRangeAndPointLayout(
+  conflicts: ConflictEntry[],
+  milestones: Milestone[],
+  xScale: d3.ScaleLinear<number, number>,
+  eventsRowFor: (ids: string[]) => Map<string, number>,
+): RangeAndPointLayout {
+  const conflictItems = mapConflicts(conflicts);
+  const milestoneItems = mapMilestones(milestones);
+
+  const milestoneLinesById = new Map<string, string[]>();
+  for (const item of milestoneItems) {
+    milestoneLinesById.set(
+      item.id,
+      wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX),
+    );
+  }
+
+  const rowOfId = eventsRowFor([
+    ...conflictItems.map((item) => item.id),
+    ...milestoneItems.map((item) => item.id),
+  ]);
+
+  // Row height is dynamic — the tallest label actually assigned to a row
+  // (a wrapped multi-line Milestone label, or a single-line Conflict label)
+  // sets that row's pitch, so a multi-line label never bleeds into the row
+  // below it.
+  const maxLinesByRow: number[] = [];
+  const noteRow = (row: number, lineCount: number) => {
+    maxLinesByRow[row] = Math.max(maxLinesByRow[row] ?? 0, lineCount);
+  };
+  for (const item of conflictItems) noteRow(rowOfId.get(item.id) ?? 0, 1);
+  for (const item of milestoneItems) {
+    // Range-shaped Milestones render a single-line label like a Conflict
+    // range does — only point-shaped Milestones wrap onto multiple lines.
+    if (!item.isPoint) {
+      noteRow(rowOfId.get(item.id) ?? 0, 1);
+      continue;
+    }
+    const lines = milestoneLinesById.get(item.id) ?? [item.name];
+    noteRow(rowOfId.get(item.id) ?? 0, lines.length);
+  }
+  const markerYs: number[] = [];
+  const labelStarts: number[] = [];
+  let y = LANE_TOP_PADDING + POINT_RADIUS; // marker center for row 0
+  for (let row = 0; row < maxLinesByRow.length; row += 1) {
+    markerYs[row] = y;
+    const labelY = y + POINT_RADIUS + MILESTONES_MARKER_LABEL_GAP;
+    labelStarts[row] = labelY;
+    y =
+      labelY +
+      (maxLinesByRow[row] ?? 1) * MILESTONES_LABEL_LINE_HEIGHT_PX +
+      ROW_GAP +
+      POINT_RADIUS;
+  }
+  const totalHeight = y - POINT_RADIUS;
+
+  const fallbackMarkerY = LANE_TOP_PADDING + POINT_RADIUS;
+  const fallbackLabelY =
+    fallbackMarkerY + POINT_RADIUS + MILESTONES_MARKER_LABEL_GAP;
+
+  const conflictRanges: RangeLayout[] = conflictItems
+    .filter((item) => !item.isPoint)
+    .map((item) => {
+      const row = rowOfId.get(item.id) ?? 0;
+      const { start: hitX1, end: hitX2 } = conflictPixelInterval(item, xScale);
+      return {
+        id: item.id,
+        name: item.name,
+        x1: xScale(item.startYear),
+        x2: xScale(item.endYear),
+        hitX1,
+        hitX2,
+        row,
+        markerY: markerYs[row] ?? fallbackMarkerY,
+        labelY: labelStarts[row] ?? fallbackLabelY,
+        fill: CONFLICT_COLOR,
+        kind: 'conflict' as const,
+      };
+    });
+  const milestoneRanges: RangeLayout[] = milestoneItems
+    .filter((item) => !item.isPoint)
+    .map((item) => {
+      const row = rowOfId.get(item.id) ?? 0;
+      // lines is only read on the point branch, which this (range) item
+      // never takes — see milestonePixelInterval.
+      const { start: hitX1, end: hitX2 } = milestonePixelInterval(
+        item,
+        [],
+        xScale,
+      );
+      return {
+        id: item.id,
+        name: item.name,
+        x1: xScale(item.startYear),
+        x2: xScale(item.endYear),
+        hitX1,
+        hitX2,
+        row,
+        markerY: markerYs[row] ?? fallbackMarkerY,
+        labelY: labelStarts[row] ?? fallbackLabelY,
+        fill: MILESTONE_CATEGORY_COLORS[item.category],
+        kind: 'milestone' as const,
+      };
+    });
+  const rangeLayout = [...conflictRanges, ...milestoneRanges];
+
+  const conflictPoints: PointLayout[] = conflictItems
+    .filter((item) => item.isPoint)
+    .map((item) => {
+      const row = rowOfId.get(item.id) ?? 0;
+      const { start: hitX1, end: hitX2 } = conflictPixelInterval(item, xScale);
+      return {
+        id: item.id,
+        lines: [item.name],
+        x: xScale(item.startYear),
+        hitX1,
+        hitX2,
+        row,
+        markerY: markerYs[row] ?? fallbackMarkerY,
+        labelY: labelStarts[row] ?? fallbackLabelY,
+        fill: CONFLICT_COLOR,
+        kind: 'conflict' as const,
+      };
+    });
+  const milestonePoints: PointLayout[] = milestoneItems
+    .filter((item) => item.isPoint)
+    .map((item) => {
+      const row = rowOfId.get(item.id) ?? 0;
+      const lines = milestoneLinesById.get(item.id) ?? [item.name];
+      const { start: hitX1, end: hitX2 } = milestonePixelInterval(
+        item,
+        lines,
+        xScale,
+      );
+      return {
+        id: item.id,
+        lines,
+        x: xScale(item.startYear),
+        hitX1,
+        hitX2,
+        row,
+        markerY: markerYs[row] ?? fallbackMarkerY,
+        labelY: labelStarts[row] ?? fallbackLabelY,
+        fill: MILESTONE_CATEGORY_COLORS[item.category],
+        kind: 'milestone' as const,
+      };
+    });
+  const pointLayout = [...conflictPoints, ...milestonePoints];
+
+  return { rangeLayout, pointLayout, totalHeight };
 }
 
 // Narrows a static row map (each entry's permanent TimelineEntry.row,
