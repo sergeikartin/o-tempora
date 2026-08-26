@@ -378,6 +378,160 @@ test("stacks two milestones in the same year onto different rows, moving each ro
   expect(new Set(labelYs).size).toBe(2);
 });
 
+test('adopts a prerendered, unbound .d3-range node instead of destroying and recreating it', async () => {
+  const { scale } = buildXScale(2);
+  const conflicts = [koreanWar];
+  const { eventsRowFor } = computeRowAssignment([], conflicts, []);
+
+  // What a normal fresh mount computes for this exact input — the values
+  // the adopted fixture below should end up corrected to.
+  const reference = render(
+    <ConflictsMilestonesLane
+      conflicts={conflicts}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={eventsRowFor}
+    />,
+  );
+  const referenceLine = reference.container.querySelector('.d3-line');
+  const expectedX1 = referenceLine?.getAttribute('x1');
+  const expectedY1 = referenceLine?.getAttribute('y1');
+  reference.unmount();
+
+  // Mount with nothing first, so `g.ranges` exists but is empty, then
+  // hand-inject a fixture matching mark-shape.ts's RANGE_MARK_SHAPE
+  // directly into it — simulating the DOM a prerendered page would already
+  // have before hydration's first real join runs. React never manages
+  // g.ranges's children (D3 does, imperatively), so this bypasses React
+  // entirely rather than fighting a second render's fresh DOM tree.
+  const { container, rerender } = render(
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={eventsRowFor}
+    />,
+  );
+  const rangesGroup = container.querySelector('g.ranges') as SVGGElement;
+  rangesGroup.insertAdjacentHTML(
+    'beforeend',
+    `<g class="d3-range" style="opacity: 1">
+      <rect class="d3-hit" data-entity-id="${koreanWar.id}" data-entity-type="conflict"></rect>
+      <line class="d3-line-ring-outer"></line>
+      <line class="d3-line-ring-gap"></line>
+      <line class="d3-line" x1="-999" y1="-999" data-entity-id="${koreanWar.id}" data-entity-type="conflict"></line>
+      <g class="d3-range-name-zoom"><text class="d3-range-name" x="-999" y="-999" data-entity-id="${koreanWar.id}" data-entity-type="conflict">${koreanWar.name}</text></g>
+    </g>`,
+  );
+  const prerenderedNode = rangesGroup.querySelector('.d3-range') as HTMLElement;
+  prerenderedNode.setAttribute('data-test-marker', 'prerendered');
+
+  rerender(
+    <ConflictsMilestonesLane
+      conflicts={conflicts}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={eventsRowFor}
+    />,
+  );
+
+  // Same node, not a replacement — an exit+enter would have removed this
+  // node and appended a fresh one instead.
+  expect(container.querySelector('[data-test-marker="prerendered"]')).toBe(
+    prerenderedNode,
+  );
+  expect(container.querySelectorAll('.d3-range')).toHaveLength(1);
+  // enter is what sets opacity:0 to fade in from — update never touches
+  // opacity, so an adopted node never flashes invisible.
+  expect(prerenderedNode.style.opacity).not.toBe('0');
+
+  const line = prerenderedNode.querySelector('.d3-line') as SVGLineElement;
+  // x is applied instantly (not through the row-shift transition).
+  expect(line.getAttribute('x1')).toBe(expectedX1);
+
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  // y corrects too, once the row-shift transition settles.
+  expect(line.getAttribute('y1')).toBe(expectedY1);
+});
+
+test('adopts a prerendered, unbound .d3-point-group node instead of destroying and recreating it', async () => {
+  const { scale } = buildXScale(2);
+  const milestones = [football];
+  const { eventsRowFor } = computeRowAssignment([], [], milestones);
+
+  // What a normal fresh mount computes for this exact input — the values
+  // the adopted fixture below should end up corrected to.
+  const reference = render(
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={milestones}
+      xScale={scale}
+      eventsRowFor={eventsRowFor}
+    />,
+  );
+  const referenceDot = reference.container.querySelector('.d3-dot');
+  const expectedCx = referenceDot?.getAttribute('cx');
+  const expectedCy = referenceDot?.getAttribute('cy');
+  reference.unmount();
+
+  // Mount with nothing first, so `g.points` exists but is empty, then
+  // hand-inject a fixture matching mark-shape.ts's POINT_MARK_SHAPE
+  // directly into it — simulating the DOM a prerendered page would already
+  // have before hydration's first real join runs. React never manages
+  // g.points's children (D3 does, imperatively), so this bypasses React
+  // entirely rather than fighting a second render's fresh DOM tree.
+  const { container, rerender } = render(
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={eventsRowFor}
+    />,
+  );
+  const pointsGroup = container.querySelector('g.points') as SVGGElement;
+  pointsGroup.insertAdjacentHTML(
+    'beforeend',
+    `<g class="d3-point-group" style="opacity: 1">
+      <rect class="d3-hit" data-entity-id="${football.id}" data-entity-type="milestone"></rect>
+      <circle class="d3-dot-ring-outer"></circle>
+      <circle class="d3-dot-ring-gap"></circle>
+      <circle class="d3-dot" cx="-999" cy="-999" data-entity-id="${football.id}" data-entity-type="milestone"></circle>
+      <g class="d3-point-name-zoom"><text class="d3-point-name" x="-999" y="-999" data-entity-id="${football.id}" data-entity-type="milestone">${football.name}</text></g>
+    </g>`,
+  );
+  const prerenderedNode = pointsGroup.querySelector(
+    '.d3-point-group',
+  ) as HTMLElement;
+  prerenderedNode.setAttribute('data-test-marker', 'prerendered');
+
+  rerender(
+    <ConflictsMilestonesLane
+      conflicts={[]}
+      milestones={milestones}
+      xScale={scale}
+      eventsRowFor={eventsRowFor}
+    />,
+  );
+
+  // Same node, not a replacement — an exit+enter would have removed this
+  // node and appended a fresh one instead.
+  expect(container.querySelector('[data-test-marker="prerendered"]')).toBe(
+    prerenderedNode,
+  );
+  expect(container.querySelectorAll('.d3-point-group')).toHaveLength(1);
+  // enter is what sets opacity:0 to fade in from — update never touches
+  // opacity, so an adopted node never flashes invisible.
+  expect(prerenderedNode.style.opacity).not.toBe('0');
+
+  const dot = prerenderedNode.querySelector('.d3-dot') as SVGCircleElement;
+  // cx is applied instantly (not through the row-shift transition).
+  expect(dot.getAttribute('cx')).toBe(expectedCx);
+
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  // cy corrects too, once the row-shift transition settles.
+  expect(dot.getAttribute('cy')).toBe(expectedCy);
+});
+
 test('relative row order between a Conflict and a Milestone is preserved when a third, more-famous, overlapping item is filtered out', () => {
   const { scale } = buildXScale(2);
   const famousConflict: Conflict = {

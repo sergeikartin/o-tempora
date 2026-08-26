@@ -19,6 +19,7 @@ import {
   buildMarkChildren,
   POINT_MARK_SHAPE,
   RANGE_MARK_SHAPE,
+  seedPrerenderedData,
 } from './mark-shape';
 import {
   HIT_AREA_PADDING_PX,
@@ -101,10 +102,16 @@ export const ConflictsMilestonesLane = forwardRef<
       )
       .attr('transform', null);
 
-    const rangeGroups = svg
+    // A prerendered/hydrating page's g.d3-range nodes exist before this
+    // effect's first run but carry no bound data yet — seed it from their
+    // own data-entity-id before the keyed join below, so it adopts them as
+    // `update` instead of tearing them down and fading in a fresh `enter`.
+    const rangeNodes = svg
       .select<SVGGElement>('g.ranges')
-      .selectAll<SVGGElement, RangeLayout>('g.d3-range')
-      .data(rangeLayout, (d) => d.id)
+      .selectAll<SVGGElement, RangeLayout | undefined>('g.d3-range');
+    seedPrerenderedData(rangeNodes, rangeLayout);
+    const rangeGroups = rangeNodes
+      .data(rangeLayout, (d) => d?.id ?? '')
       .join(
         (enter) => {
           const g = enter
@@ -230,10 +237,17 @@ export const ConflictsMilestonesLane = forwardRef<
       .duration(durationMs)
       .attr('y', (d) => d.labelY);
 
-    const pointGroups = svg
+    // A prerendered/hydrating page's g.d3-point-group nodes exist before
+    // this effect's first run but carry no bound data yet — seed it from
+    // their own data-entity-id before the keyed join below, so it adopts
+    // them as `update` instead of tearing them down and fading in a fresh
+    // `enter`.
+    const pointNodes = svg
       .select<SVGGElement>('g.points')
-      .selectAll<SVGGElement, PointLayout>('g.d3-point-group')
-      .data(pointLayout, (d) => d.id)
+      .selectAll<SVGGElement, PointLayout | undefined>('g.d3-point-group');
+    seedPrerenderedData(pointNodes, pointLayout);
+    const pointGroups = pointNodes
+      .data(pointLayout, (d) => d?.id ?? '')
       .join(
         (enter) => {
           const g = enter

@@ -14,7 +14,11 @@ import {
   mapPeople,
   type PersonLayout,
 } from './map-to-items';
-import { buildMarkChildren, PERSON_MARK_SHAPE } from './mark-shape';
+import {
+  buildMarkChildren,
+  PERSON_MARK_SHAPE,
+  seedPrerenderedData,
+} from './mark-shape';
 import {
   HIT_AREA_PADDING_PX,
   PERIOD_LINE_HEIGHT,
@@ -110,10 +114,16 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
         hasMountedRef.current = true;
       }
 
-      const personGroups = svg
+      // A prerendered/hydrating page's g.d3-person nodes exist before this
+      // effect's first run but carry no bound data yet — seed it from their
+      // own data-entity-id before the keyed join below, so it adopts them as
+      // `update` instead of tearing them down and fading in a fresh `enter`.
+      const personNodes = svg
         .select<SVGGElement>('g.people')
-        .selectAll<SVGGElement, PersonLayout>('g.d3-person')
-        .data(layout, (d) => d.id)
+        .selectAll<SVGGElement, PersonLayout | undefined>('g.d3-person');
+      seedPrerenderedData(personNodes, layout);
+      const personGroups = personNodes
+        .data(layout, (d) => d?.id ?? '')
         .join(
           (enter) => {
             const g = enter
