@@ -141,6 +141,7 @@ function AppContent() {
       selectEntity(ref);
       setIsFilterDrawerOpen(false);
       setSearchJumpTarget(ref);
+      trackEvent('search_jump', { entityType: result.entityType });
     },
     [selectEntity],
   );
