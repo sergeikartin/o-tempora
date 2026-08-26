@@ -28,10 +28,25 @@ function getSnapshot(): boolean {
   return window.matchMedia(mobileQuery).matches;
 }
 
+// Always false, deliberately never reading a real matchMedia value — the
+// prerender step (vite-plugins/prerender-default-viewport.ts) always builds
+// its default-state layout assuming desktop (ADR 0013), so the client's
+// first hydration pass must assume the same, even on an actually-narrow
+// device. Reusing getSnapshot here would read the *real* browser width
+// during that first pass and mismatch the server's fixed assumption,
+// throwing a hydration error — React reconciles the real value in a normal
+// follow-up render right after, via the subscription below.
+function getServerSnapshot(): boolean {
+  return false;
+}
+
 // Subscribes to the width breakpoint via useSyncExternalStore — the
 // React-idiomatic way to read a live value from a browser API (matchMedia)
 // outside React's own state, without the cascading-render risk of setting
-// state from inside an effect body.
+// state from inside an effect body. A third (getServerSnapshot) argument is
+// required for React's SSR entry points (renderToReadableStream, used by
+// vite-plugins/prerender-default-viewport.ts) — omitting it makes React
+// suspend the whole tree instead of rendering.
 export function useIsMobileViewport(): boolean {
-  return useSyncExternalStore(subscribe, getSnapshot);
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

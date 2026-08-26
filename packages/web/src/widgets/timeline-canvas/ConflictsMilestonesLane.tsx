@@ -5,6 +5,7 @@ import {
   useLayoutEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { m } from '../../shared/paraglide/messages.js';
@@ -21,6 +22,10 @@ import {
   RANGE_MARK_SHAPE,
   seedPrerenderedData,
 } from './mark-shape';
+import {
+  renderPointsMarkupHtml,
+  renderRangesMarkupHtml,
+} from './mark-shape-html';
 import {
   HIT_AREA_PADDING_PX,
   MILESTONES_LABEL_LINE_HEIGHT_PX,
@@ -82,6 +87,19 @@ export const ConflictsMilestonesLane = forwardRef<
   );
   const totalWidth = xScale.range()[1] ?? 0;
 
+  // Frozen at mount — see PeopleLane's identical initialPeopleHtmlProp
+  // comment for the full rationale, including why the whole `{ __html }`
+  // object (not just the string) has to be frozen: a fresh object literal
+  // in the JSX below on every render makes React re-apply
+  // dangerouslySetInnerHTML on every re-render (a new reference, even with
+  // the same string), stomping every D3 update since mount.
+  const [initialRangesHtmlProp] = useState(() => ({
+    __html: renderRangesMarkupHtml(rangeLayout, styles),
+  }));
+  const [initialPointsHtmlProp] = useState(() => ({
+    __html: renderPointsMarkupHtml(pointLayout, styles),
+  }));
+
   // useLayoutEffect, not useEffect — see PeopleLane's identical comment: a
   // deferred passive effect shows one stale frame when xScale changes in
   // the same commit.
@@ -102,10 +120,12 @@ export const ConflictsMilestonesLane = forwardRef<
       )
       .attr('transform', null);
 
-    // A prerendered/hydrating page's g.d3-range nodes exist before this
-    // effect's first run but carry no bound data yet — seed it from their
-    // own data-entity-id before the keyed join below, so it adopts them as
-    // `update` instead of tearing them down and fading in a fresh `enter`.
+    // g.ranges's real children are already there before this effect's first
+    // run — rendered by the initialRangesHtml dangerouslySetInnerHTML below,
+    // on both server and client — but carry no bound data yet; seed it from
+    // their own data-entity-id before the keyed join below, so it adopts
+    // them as `update` instead of tearing them down and fading in a fresh
+    // `enter`.
     const rangeNodes = svg
       .select<SVGGElement>('g.ranges')
       .selectAll<SVGGElement, RangeLayout | undefined>('g.d3-range');
@@ -237,8 +257,9 @@ export const ConflictsMilestonesLane = forwardRef<
       .duration(durationMs)
       .attr('y', (d) => d.labelY);
 
-    // A prerendered/hydrating page's g.d3-point-group nodes exist before
-    // this effect's first run but carry no bound data yet — seed it from
+    // g.points's real children are already there before this effect's first
+    // run — rendered by the initialPointsHtml dangerouslySetInnerHTML below,
+    // on both server and client — but carry no bound data yet; seed it from
     // their own data-entity-id before the keyed join below, so it adopts
     // them as `update` instead of tearing them down and fading in a fresh
     // `enter`.
@@ -444,8 +465,16 @@ export const ConflictsMilestonesLane = forwardRef<
       aria-label={m.conflictsMilestonesHeading()}
     >
       <g className="zoomGroup">
-        <g className="ranges" />
-        <g className="points" />
+        <g
+          className="ranges"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: initialRangesHtmlProp is our own pure templater's output (mark-shape-html.ts), not user input — see PeopleLane's identical initialPeopleHtmlProp comment for why this exists at all.
+          dangerouslySetInnerHTML={initialRangesHtmlProp}
+        />
+        <g
+          className="points"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: same as g.ranges above.
+          dangerouslySetInnerHTML={initialPointsHtmlProp}
+        />
       </g>
     </svg>
   );

@@ -22,7 +22,7 @@ import type { DetailPanelEntity } from '../widgets/detail-panel';
 import { Sidebar } from '../widgets/sidebar';
 import { TimelineCanvas } from '../widgets/timeline-canvas';
 import styles from './App.module.css';
-import { localeDatasetsPromise } from './locale-datasets';
+import { type LocaleDatasets, localeDatasetsPromise } from './locale-datasets';
 import { useMergedDatasets } from './use-merged-datasets';
 
 // Both are closed/empty by default (rendered unconditionally but paint
@@ -40,19 +40,29 @@ const DetailPanel = lazy(() =>
   })),
 );
 
-export function App() {
+interface AppProps {
+  // Set only by the build-time prerender step (vite-plugins/prerender-
+  // default-viewport.ts), which already has the resolved Tier 0 dataset in
+  // hand and can't reproduce main.tsx's runtime dynamic-import/locale-
+  // detection path outside a browser. main.tsx's real mount always omits
+  // this, so the client keeps resolving `localeDatasetsPromise` exactly as
+  // before.
+  initialDatasets?: LocaleDatasets;
+}
+
+export function App({ initialDatasets }: AppProps = {}) {
   return (
     <>
       <h1 className={styles.srOnly}>{m.siteTitle()}</h1>
       <Suspense fallback={<div className={styles.loading} />}>
-        <AppContent />
+        <AppContent initialDatasets={initialDatasets} />
       </Suspense>
     </>
   );
 }
 
-function AppContent() {
-  const tier0 = use(localeDatasetsPromise);
+function AppContent({ initialDatasets }: AppProps) {
+  const tier0 = initialDatasets ?? use(localeDatasetsPromise);
   const {
     datasets: {
       people: peopleData,

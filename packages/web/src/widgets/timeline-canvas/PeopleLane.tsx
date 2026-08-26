@@ -5,6 +5,7 @@ import {
   useLayoutEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { m } from '../../shared/paraglide/messages.js';
@@ -19,6 +20,7 @@ import {
   PERSON_MARK_SHAPE,
   seedPrerenderedData,
 } from './mark-shape';
+import { renderPeopleMarkupHtml } from './mark-shape-html';
 import {
   HIT_AREA_PADDING_PX,
   PERIOD_LINE_HEIGHT,
@@ -71,6 +73,24 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       [people, xScale, personRowFor],
     );
 
+    // Frozen at mount (the lazy initializer runs once, ever) — g.people's
+    // real starting content, identical on server and client since both
+    // derive it from the same layout via the same shared templater
+    // (mark-shape-html.ts). Never recomputed on a later `layout` change: the
+    // D3 join below owns every update after mount, same as it always has —
+    // this only exists so first paint (server or client, before that join
+    // has ever run) already shows real marks instead of an empty <g>. The
+    // whole `{ __html }` object (not just the string) is frozen here — React
+    // re-applies dangerouslySetInnerHTML whenever that object's *reference*
+    // changes, and a fresh `{ __html: x }` literal in the JSX below would be
+    // a new reference on every render, re-stomping every D3 update since
+    // mount (this is what a zoom animation's re-render was doing before this
+    // fix — reverting every mark straight back to its frozen starting
+    // position).
+    const [initialPeopleHtmlProp] = useState(() => ({
+      __html: renderPeopleMarkupHtml(layout, styles),
+    }));
+
     // D3 owns the DOM inside <g class="people"> — one <g class="d3-person">
     // per person, containing its lifespan line and name label. Literal
     // (non-CSS-Module) marker classes drive the join's enter/update/exit
@@ -114,10 +134,12 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
         hasMountedRef.current = true;
       }
 
-      // A prerendered/hydrating page's g.d3-person nodes exist before this
-      // effect's first run but carry no bound data yet — seed it from their
-      // own data-entity-id before the keyed join below, so it adopts them as
-      // `update` instead of tearing them down and fading in a fresh `enter`.
+      // g.people's real children are already there before this effect's
+      // first run — rendered by the initialPeopleHtml dangerouslySetInnerHTML
+      // above, on both server and client — but carry no bound data yet; seed
+      // it from their own data-entity-id before the keyed join below, so it
+      // adopts them as `update` instead of tearing them down and fading in a
+      // fresh `enter`.
       const personNodes = svg
         .select<SVGGElement>('g.people')
         .selectAll<SVGGElement, PersonLayout | undefined>('g.d3-person');
@@ -310,7 +332,11 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
           role="img"
           aria-label={m.peopleHeading()}
         >
-          <g className="people" />
+          <g
+            className="people"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: initialPeopleHtmlProp is our own pure templater's output (mark-shape-html.ts), not user input — see its own comment for why this exists at all.
+            dangerouslySetInnerHTML={initialPeopleHtmlProp}
+          />
         </svg>
       </div>
     );
