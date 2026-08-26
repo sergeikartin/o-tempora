@@ -160,7 +160,6 @@
    needs this different treatment. */
 .searchHighlightLabel {
   fill: var(--color-accent-selection-ring);
-  font-weight: 700;
   transform: scale(1.15);
 }
 
