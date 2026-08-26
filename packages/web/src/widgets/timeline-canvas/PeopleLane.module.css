@@ -81,13 +81,67 @@
 }
 
 /* Search-jump / current-selection highlight (grill-with-docs session,
-   CONTEXT.md's Search entry) — a persistent glow using the app's existing
-   "selected" token, toggled by id in PeopleLane.tsx's own effect rather than
-   through the D3 join above, so it layers on top of (never replaces) each
-   mark's own occupation-domain fill and hover treatment. */
+   CONTEXT.md's Search entry) — two real, wider duplicate lines drawn behind
+   the mark's own line (PeopleLane.tsx's .d3-line-ring-outer/-gap), not a CSS
+   outline filter: a real SVG outline filter (feMorphology + feFlood) clips
+   to nothing on a perfectly horizontal <line>, since the filter region is
+   sized off the shape's geometry bounding box, which is zero-height
+   regardless of stroke width. Both lines share the real line's round
+   linecap, so at a shared centerline they nest as concentric pill shapes —
+   exact geometry, not an approximated outline.
+   Always present in the DOM (created once per mark, never rebuilt) and
+   invisible by default; toggled to opaque by id in PeopleLane.tsx's own
+   effect rather than through the D3 join above, so it layers on top of
+   (never replaces) each mark's own occupation-domain fill and hover
+   treatment. pointer-events: none since these are purely decorative and
+   sit wider than the mark's own hit area (PeopleLane.tsx's toggle-selector
+   comment). */
+.lineRingOuter,
+.lineRingGap {
+  fill: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-duration-fast) var(--motion-easing);
+}
+
+/* The parchment gap sits between the mark's own color and the bronze ring
+   so the two never touch directly — an oxblood or bronze ring reads as
+   muddying rather than as an accent against a lane hue already close to it
+   (Institutions, Conflicts). */
+.lineRingGap {
+  stroke: var(--color-bg-base);
+}
+
+.lineRingOuter {
+  stroke: var(--color-accent-selection-ring);
+}
+
 .searchHighlight {
-  filter: drop-shadow(0 0 4px var(--color-accent-selected));
-  transition: filter var(--motion-duration-fast) var(--motion-easing);
+  opacity: 1;
+}
+
+/* A selected mark stays permanently at its hover-grown size instead of
+   shrinking back the moment the pointer leaves — a click is a hover that
+   stuck, so there's no separate "selected size", only whichever of
+   hover/selected is currently true. Same hardcoded 9px as the :hover rule
+   above (options.ts's SELECTED_LINE_HEIGHT_PX sizes the ring against this
+   same number on the JS side). */
+.line.searchHighlight {
+  stroke-width: 9px;
+}
+
+/* The label half of the same highlight — recolored to the same bronze as
+   the ring (rather than plain ink) so the label and its mark read as one
+   highlighted unit, plus the same hover-grow scale as .line above for the
+   same "selected = hover that stuck" reason. No outline/halo on the text
+   itself — an outline dilates a small glyph's own strokes into its
+   neighbors' gaps, reading as a solid blob rather than legible text.
+   Toggled by id alongside .searchHighlight above, but scoped to .name in
+   PeopleLane.tsx's effect since it needs this different treatment. */
+.searchHighlightLabel {
+  fill: var(--color-accent-selection-ring);
+  font-weight: 700;
+  transform: scale(1.15);
 }
 
 .name {

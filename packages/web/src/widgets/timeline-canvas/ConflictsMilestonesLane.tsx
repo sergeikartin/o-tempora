@@ -27,6 +27,10 @@ import {
   PERIOD_LINE_HEIGHT,
   POINT_RADIUS,
   ROW_GAP,
+  SELECTED_LINE_HEIGHT_PX,
+  SELECTED_POINT_RADIUS_PX,
+  SELECTION_RING_GAP_PX,
+  SELECTION_RING_WIDTH_PX,
   wrapLabelLines,
   type ZoomAnimationHandle,
   zoomAnimationCounterScaleAttr,
@@ -301,7 +305,9 @@ export const ConflictsMilestonesLane = forwardRef<
     // (see PeopleLane's identical comment for why).
     svg.select('g.zoomGroup').attr('transform', null);
     svg
-      .selectAll('.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot')
+      .selectAll(
+        '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
+      )
       .attr('transform', null);
 
     const rangeGroups = svg
@@ -321,6 +327,28 @@ export const ConflictsMilestonesLane = forwardRef<
           const hit = g
             .append('rect')
             .attr('class', `d3-hit ${styles.hitArea}`);
+          // Two concentric, wider duplicate lines painted behind the real
+          // one, invisible (opacity: 0) until the search-jump/selection
+          // effect below shows them — see PeopleLane's identical marks for
+          // the shared rationale (a real SVG outline filter clips to
+          // nothing on this lane's perfectly horizontal range lines too).
+          const lineRingOuter = g
+            .append('line')
+            .attr('class', `d3-line-ring-outer ${styles.lineRingOuter}`)
+            .attr(
+              'stroke-width',
+              SELECTED_LINE_HEIGHT_PX +
+                2 * (SELECTION_RING_GAP_PX + SELECTION_RING_WIDTH_PX),
+            )
+            .attr('stroke-linecap', 'round');
+          const lineRingGap = g
+            .append('line')
+            .attr('class', `d3-line-ring-gap ${styles.lineRingGap}`)
+            .attr(
+              'stroke-width',
+              SELECTED_LINE_HEIGHT_PX + 2 * SELECTION_RING_GAP_PX,
+            )
+            .attr('stroke-linecap', 'round');
           const line = g
             .append('line')
             .attr('class', `d3-line ${styles.line}`)
@@ -357,6 +385,10 @@ export const ConflictsMilestonesLane = forwardRef<
                 (d.markerY - PERIOD_LINE_HEIGHT / 2) +
                 HIT_AREA_PADDING_PX * 2,
             );
+          lineRingOuter
+            .attr('y1', (d) => d.markerY)
+            .attr('y2', (d) => d.markerY);
+          lineRingGap.attr('y1', (d) => d.markerY).attr('y2', (d) => d.markerY);
           line.attr('y1', (d) => d.markerY).attr('y2', (d) => d.markerY);
           name.attr('y', (d) => d.labelY);
           g.transition().duration(durationMs).style('opacity', 1);
@@ -399,6 +431,32 @@ export const ConflictsMilestonesLane = forwardRef<
           HIT_AREA_PADDING_PX * 2,
       );
 
+    // The ring/gap lines only need x1/x2 kept in sync with the real line
+    // (their y and stroke-width are fixed at creation). They're
+    // pointer-events: none (ConflictsMilestonesLane.module.css) so carrying
+    // the same data-entity-id as the real line never makes them a
+    // click/hover target — it's only there so the selection effect below
+    // can find them by the same selector pattern every other mark uses.
+    rangeGroups
+      .select<SVGLineElement>('.d3-line-ring-outer')
+      .attr('x1', (d) => d.x1)
+      .attr('x2', (d) => d.x2)
+      .attr('data-entity-id', (d) => d.id)
+      .transition()
+      .duration(durationMs)
+      .attr('y1', (d) => d.markerY)
+      .attr('y2', (d) => d.markerY);
+
+    rangeGroups
+      .select<SVGLineElement>('.d3-line-ring-gap')
+      .attr('x1', (d) => d.x1)
+      .attr('x2', (d) => d.x2)
+      .attr('data-entity-id', (d) => d.id)
+      .transition()
+      .duration(durationMs)
+      .attr('y1', (d) => d.markerY)
+      .attr('y2', (d) => d.markerY);
+
     rangeGroups
       .select<SVGLineElement>('.d3-line')
       .attr('x1', (d) => d.x1)
@@ -439,6 +497,24 @@ export const ConflictsMilestonesLane = forwardRef<
           const hit = g
             .append('rect')
             .attr('class', `d3-hit ${styles.hitArea}`);
+          // Two concentric, wider duplicate circles painted behind the real
+          // dot, invisible (opacity: 0) until the search-jump/selection
+          // effect below shows them — the point-marker equivalent of a
+          // range's .d3-line-ring-outer/-gap above, so a point's selection
+          // reads as the same ring rather than a same-scale full recolor.
+          const dotRingOuter = g
+            .append('circle')
+            .attr('class', `d3-dot-ring-outer ${styles.dotRingOuter}`)
+            .attr(
+              'r',
+              SELECTED_POINT_RADIUS_PX +
+                SELECTION_RING_GAP_PX +
+                SELECTION_RING_WIDTH_PX,
+            );
+          const dotRingGap = g
+            .append('circle')
+            .attr('class', `d3-dot-ring-gap ${styles.dotRingGap}`)
+            .attr('r', SELECTED_POINT_RADIUS_PX + SELECTION_RING_GAP_PX);
           const dot = g
             .append('circle')
             .attr('class', `d3-dot ${styles.dot}`)
@@ -466,6 +542,8 @@ export const ConflictsMilestonesLane = forwardRef<
                 (d.markerY - POINT_RADIUS) +
                 HIT_AREA_PADDING_PX * 2,
             );
+          dotRingOuter.attr('cy', (d) => d.markerY);
+          dotRingGap.attr('cy', (d) => d.markerY);
           dot.attr('cy', (d) => d.markerY);
           name.attr('y', (d) => d.labelY);
           g.transition().duration(durationMs).style('opacity', 1);
@@ -504,6 +582,28 @@ export const ConflictsMilestonesLane = forwardRef<
           (d.markerY - POINT_RADIUS) +
           HIT_AREA_PADDING_PX * 2,
       );
+
+    // The ring/gap circles only need cx/cy kept in sync with the real dot
+    // (their r is fixed at creation). They're pointer-events: none
+    // (ConflictsMilestonesLane.module.css) so carrying the same
+    // data-entity-id as the real dot never makes them a click/hover target
+    // — it's only there so the selection effect below can find them by the
+    // same selector pattern every other mark uses.
+    pointGroups
+      .select<SVGCircleElement>('.d3-dot-ring-outer')
+      .attr('cx', (d) => d.x)
+      .attr('data-entity-id', (d) => d.id)
+      .transition()
+      .duration(durationMs)
+      .attr('cy', (d) => d.markerY);
+
+    pointGroups
+      .select<SVGCircleElement>('.d3-dot-ring-gap')
+      .attr('cx', (d) => d.x)
+      .attr('data-entity-id', (d) => d.id)
+      .transition()
+      .duration(durationMs)
+      .attr('cy', (d) => d.markerY);
 
     pointGroups
       .select<SVGCircleElement>('.d3-dot')
@@ -545,19 +645,35 @@ export const ConflictsMilestonesLane = forwardRef<
 
   // A plain DOM class toggle, decoupled from the joins above (their
   // enter/update/exit selections aren't touched) — see PeopleLane's
-  // identical effect for the shared rationale.
+  // identical effect for the shared rationale. The ring/gap lines plus the
+  // real .d3-line (a range's selection outline and its own
+  // grow-to-hover-size), the ring/gap circles plus the real .d3-dot (same,
+  // for a point), and .d3-range-name/.d3-point-name (either mark's label)
+  // get different classes — see ConflictsMilestonesLane.module.css's
+  // .searchHighlight/.searchHighlightLabel for why the outline can't just
+  // apply to all three.
   useLayoutEffect(() => {
     if (!svgRef.current) return;
-    // The class always exists in the compiled CSS module — the indexed
+    const svg = svgRef.current;
+    // The classes always exist in the compiled CSS module — the indexed
     // access only reads as possibly-undefined because of
-    // noUncheckedIndexedAccess, not because it might really be missing.
-    const highlightClass = styles.searchHighlight as string;
-    for (const el of svgRef.current.querySelectorAll('[data-entity-id]')) {
-      el.classList.toggle(
-        highlightClass,
-        el.getAttribute('data-entity-id') === selectedId,
-      );
-    }
+    // noUncheckedIndexedAccess, not because they might really be missing.
+    const toggleHighlight = (selector: string, className: string) => {
+      for (const el of svg.querySelectorAll(selector)) {
+        el.classList.toggle(
+          className,
+          el.getAttribute('data-entity-id') === selectedId,
+        );
+      }
+    };
+    toggleHighlight(
+      '.d3-line-ring-outer[data-entity-id], .d3-line-ring-gap[data-entity-id], .d3-line[data-entity-id], .d3-dot-ring-outer[data-entity-id], .d3-dot-ring-gap[data-entity-id], .d3-dot[data-entity-id]',
+      styles.searchHighlight as string,
+    );
+    toggleHighlight(
+      '.d3-range-name[data-entity-id], .d3-point-name[data-entity-id]',
+      styles.searchHighlightLabel as string,
+    );
   }, [selectedId]);
 
   // TimelineCanvas's single rAF driver calls this every animation-frame
@@ -575,7 +691,9 @@ export const ConflictsMilestonesLane = forwardRef<
           .select('g.zoomGroup')
           .attr('transform', zoomAnimationGroupTransformAttr(transform));
         svg
-          .selectAll('.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot')
+          .selectAll(
+            '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
+          )
           .attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
       },
     }),

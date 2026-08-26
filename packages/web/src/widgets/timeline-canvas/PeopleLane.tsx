@@ -18,6 +18,9 @@ import {
   personLabelYForRow,
   personLaneHeight,
   personLineCenterYForRow,
+  SELECTED_LINE_HEIGHT_PX,
+  SELECTION_RING_GAP_PX,
+  SELECTION_RING_WIDTH_PX,
   type ZoomAnimationHandle,
   zoomAnimationCounterScaleAttr,
   zoomAnimationGroupTransformAttr,
@@ -155,6 +158,28 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
             const hit = g
               .append('rect')
               .attr('class', `d3-hit ${styles.hitArea}`);
+            // Two concentric, wider duplicate lines painted behind the real
+            // one, invisible (opacity: 0) until the search-jump/selection
+            // effect below shows them — see PeopleLane.module.css's
+            // .lineRingOuter/.lineRingGap for why a ring on a round-capped
+            // line has to be real geometry rather than a CSS outline filter.
+            const lineRingOuter = g
+              .append('line')
+              .attr('class', `d3-line-ring-outer ${styles.lineRingOuter}`)
+              .attr(
+                'stroke-width',
+                SELECTED_LINE_HEIGHT_PX +
+                  2 * (SELECTION_RING_GAP_PX + SELECTION_RING_WIDTH_PX),
+              )
+              .attr('stroke-linecap', 'round');
+            const lineRingGap = g
+              .append('line')
+              .attr('class', `d3-line-ring-gap ${styles.lineRingGap}`)
+              .attr(
+                'stroke-width',
+                SELECTED_LINE_HEIGHT_PX + 2 * SELECTION_RING_GAP_PX,
+              )
+              .attr('stroke-linecap', 'round');
             const line = g
               .append('line')
               .attr('class', `d3-line ${styles.line}`)
@@ -190,6 +215,8 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
                   d.labelY +
                   HIT_AREA_PADDING_PX * 2,
               );
+            lineRingOuter.attr('y1', (d) => d.lineY).attr('y2', (d) => d.lineY);
+            lineRingGap.attr('y1', (d) => d.lineY).attr('y2', (d) => d.lineY);
             line.attr('y1', (d) => d.lineY).attr('y2', (d) => d.lineY);
             name.attr('y', (d) => d.labelY);
             g.transition().duration(durationMs).style('opacity', 1);
@@ -229,6 +256,32 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
             HIT_AREA_PADDING_PX * 2,
         );
 
+      // The ring/gap lines only need x1/x2 kept in sync with the real line
+      // (their y and stroke-width are fixed at creation). They're
+      // pointer-events: none (PeopleLane.module.css) so carrying the same
+      // data-entity-id as the real line never makes them a click/hover
+      // target — it's only there so the selection effect below can find
+      // them by the same selector pattern every other mark uses.
+      personGroups
+        .select<SVGLineElement>('.d3-line-ring-outer')
+        .attr('x1', (d) => d.x1)
+        .attr('x2', (d) => d.x2)
+        .attr('data-entity-id', (d) => d.id)
+        .transition()
+        .duration(durationMs)
+        .attr('y1', (d) => d.lineY)
+        .attr('y2', (d) => d.lineY);
+
+      personGroups
+        .select<SVGLineElement>('.d3-line-ring-gap')
+        .attr('x1', (d) => d.x1)
+        .attr('x2', (d) => d.x2)
+        .attr('data-entity-id', (d) => d.id)
+        .transition()
+        .duration(durationMs)
+        .attr('y1', (d) => d.lineY)
+        .attr('y2', (d) => d.lineY);
+
       personGroups
         .select<SVGLineElement>('.d3-line')
         .attr('x1', (d) => d.x1)
@@ -262,19 +315,33 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
     // same data-entity-id the delegated click listener already reads, so
     // this just re-scans them whenever the selection or the mark set itself
     // changes, rather than threading a "am I selected" flag through the
-    // join's own data binding.
+    // join's own data binding. The ring/gap lines and the real .d3-line (the
+    // lifespan mark's selection outline plus its own grow-to-hover-size) and
+    // .d3-name (its label) get different classes — see PeopleLane.module.
+    // css's .searchHighlight/.searchHighlightLabel for why the outline can't
+    // just apply to both.
     useLayoutEffect(() => {
       if (!svgRef.current) return;
-      // The class always exists in the compiled CSS module — the indexed
+      const svg = svgRef.current;
+      // The classes always exist in the compiled CSS module — the indexed
       // access only reads as possibly-undefined because of
-      // noUncheckedIndexedAccess, not because it might really be missing.
-      const highlightClass = styles.searchHighlight as string;
-      for (const el of svgRef.current.querySelectorAll('[data-entity-id]')) {
-        el.classList.toggle(
-          highlightClass,
-          el.getAttribute('data-entity-id') === selectedId,
-        );
-      }
+      // noUncheckedIndexedAccess, not because they might really be missing.
+      const toggleHighlight = (selector: string, className: string) => {
+        for (const el of svg.querySelectorAll(selector)) {
+          el.classList.toggle(
+            className,
+            el.getAttribute('data-entity-id') === selectedId,
+          );
+        }
+      };
+      toggleHighlight(
+        '.d3-line-ring-outer[data-entity-id], .d3-line-ring-gap[data-entity-id], .d3-line[data-entity-id]',
+        styles.searchHighlight as string,
+      );
+      toggleHighlight(
+        '.d3-name[data-entity-id]',
+        styles.searchHighlightLabel as string,
+      );
     }, [selectedId]);
 
     // TimelineCanvas's single rAF driver calls this every animation-frame

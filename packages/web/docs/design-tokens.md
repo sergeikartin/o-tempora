@@ -18,7 +18,8 @@ Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact
 | `color-border-emphasis` | `#837757` | Year Axis's century tick mark (darkest of its three tick layers) |
 | `color-text-primary` | `#241A10` | Primary text (ink) |
 | `color-text-secondary` | `#6B6046` | Secondary/muted text (faded ink) |
-| `color-accent-selected` | `#8A2A1A` | Selected entity, viewport indicator, focus ring (oxblood) |
+| `color-accent-selected` | `#8A2A1A` | Viewport indicator, focus ring (oxblood) |
+| `color-accent-selection-ring` | `#866F2C` | The timeline's selected/search-jumped entity ring and label (a dedicated warm bronze, OKLCH-derived, kept off the mark's own color by a `color-bg-base` ring drawn between them — an oxblood or ink ring read as "a different category" or as muddying directly against a lane hue already close to it); the mark itself also grows to its hover size while selected, so selecting reads as a hover that stuck rather than a further size change |
 | `color-focus-ring` | `#6E2013` | Keyboard focus outline |
 | `color-bg-axis` | `#EBDDBD` | Year Axis ruler background — a shade darker than the page so it reads as a distinct bar |
 

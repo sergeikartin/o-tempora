@@ -77,12 +77,91 @@
 
 /* Search-jump / current-selection highlight (grill-with-docs session,
    CONTEXT.md's Search entry) — see PeopleLane.module.css's identical rule
-   for the shared rationale (a glow, not a fill/stroke override, so it
-   layers on top of a Conflict's flat color or a Milestone's own category
-   color instead of fighting either). */
+   for the shared rationale: two real, wider duplicate lines drawn behind a
+   range's own line (ConflictsMilestonesLane.tsx's
+   .d3-line-ring-outer/-gap), not a CSS outline filter (which clips to
+   nothing on this lane's perfectly horizontal range lines). The parchment
+   gap keeps the bronze ring from fighting a Conflict's flat color or a
+   Milestone's own category color the way the oxblood accent used to on
+   hues already close to it. Always present in the DOM, invisible by
+   default, toggled to opaque by id in ConflictsMilestonesLane.tsx's own
+   effect. pointer-events: none — see PeopleLane's identical rule. */
+.lineRingOuter,
+.lineRingGap {
+  fill: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-duration-fast) var(--motion-easing);
+}
+
+.lineRingGap {
+  stroke: var(--color-bg-base);
+}
+
+.lineRingOuter {
+  stroke: var(--color-accent-selection-ring);
+}
+
+/* The point-marker half of the same highlight: two real, wider duplicate
+   circles drawn behind the real dot (ConflictsMilestonesLane.tsx's
+   .d3-dot-ring-outer/-gap) — same ring-plus-gap idea as a range's line
+   ring above, sized off POINT_RADIUS instead of PERIOD_LINE_HEIGHT.
+   transform-box: fill-box matches .dot's own — both need the zoom
+   animation's per-frame counter-scale (ConflictsMilestonesLane.tsx) to
+   pivot at the circle's own center, not the svg origin. */
+.dotRingOuter,
+.dotRingGap {
+  opacity: 0;
+  pointer-events: none;
+  transform-box: fill-box;
+  transition: opacity var(--motion-duration-fast) var(--motion-easing);
+}
+
+.dotRingGap {
+  fill: var(--color-bg-base);
+}
+
+.dotRingOuter {
+  fill: var(--color-accent-selection-ring);
+}
+
+/* Shared "make the selection outline above visible" toggle — applies
+   equally to the line ring/gap and dot ring/gap, since all four are
+   otherwise identical opacity: 0 → 1 switches. Declared after every rule
+   it overrides (plain opacity: 0 above, same specificity) since CSS Modules
+   compile each class to an equally-specific single-class selector, so
+   source order — not specificity — decides the tie. */
 .searchHighlight {
-  filter: drop-shadow(0 0 4px var(--color-accent-selected));
-  transition: filter var(--motion-duration-fast) var(--motion-easing);
+  opacity: 1;
+}
+
+/* A selected mark stays permanently at its hover-grown size instead of
+   shrinking back the moment the pointer leaves — a click is a hover that
+   stuck, so there's no separate "selected size", only whichever of
+   hover/selected is currently true. Same hardcoded 9px/7px as the :hover
+   rules above (options.ts's SELECTED_LINE_HEIGHT_PX/SELECTED_POINT_RADIUS_PX
+   size the rings against these same two numbers on the JS side). */
+.line.searchHighlight {
+  stroke-width: 9px;
+}
+
+.dot.searchHighlight {
+  r: 7px;
+}
+
+/* The label half of the same highlight — recolored to the same bronze as
+   the ring (rather than plain ink) so the label and its mark read as one
+   highlighted unit, plus the same hover-grow scale as .line/.dot above for
+   the same "selected = hover that stuck" reason. No outline/halo on the
+   text itself — an outline dilates a small glyph's own strokes into its
+   neighbors' gaps, reading as a solid blob rather than legible text.
+   Toggled by id alongside .searchHighlight above, but scoped to
+   .range-name/.point-name in ConflictsMilestonesLane.tsx's effect since it
+   needs this different treatment. */
+.searchHighlightLabel {
+  fill: var(--color-accent-selection-ring);
+  font-weight: 700;
+  transform: scale(1.15);
 }
 
 .label {
