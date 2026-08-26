@@ -2,6 +2,8 @@
 
 <!-- UI/visual design tokens. Read before touching styling. -->
 
+Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact/a7a65576-55d0-4602-b113-7b178bdb0a57
+
 **Design concept ("Ledger & Ink"):** a parchment-and-ink page — aged paper, iron-gall text, one sharp accent (oxblood) standing in for a wax seal — with color distinguishing entries within that warm neutral base. Color encodes **milestone category** (Milestones) or **occupation domain** (People); Conflicts render in one flat color instead (see Conflict Color below) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Conflicts'/Milestones' below their marker) plus, within the merged Conflicts+Milestones lane, color itself (flat Conflict Color vs. Milestones' multi-color palette). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `MilestoneCategory` and `OccupationDomain` are separate enums from separate sources (hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified. `ConflictCategory` still exists as curator-assigned data (see `CONTEXT.md`) but no longer drives a color.
 
 ## Color Palette
