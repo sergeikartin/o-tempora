@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import {
   forwardRef,
+  memo,
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
@@ -72,7 +73,10 @@ interface ConflictsMilestonesLaneProps {
 // color (CONFLICT_COLOR); Milestones keep their own category palette either
 // way — color, not shape, is what tells a Conflict marker apart from a
 // Milestone one now that they can share a row.
-export const ConflictsMilestonesLane = forwardRef<
+// memo: see PeopleLane's identical comment — TimelineCanvas re-renders every
+// rAF tick while scrolling, but none of this component's props change from
+// that.
+const ConflictsMilestonesLaneImpl = forwardRef<
   ZoomAnimationHandle,
   ConflictsMilestonesLaneProps
 >(function ConflictsMilestonesLane(
@@ -479,3 +483,4 @@ export const ConflictsMilestonesLane = forwardRef<
     </svg>
   );
 });
+export const ConflictsMilestonesLane = memo(ConflictsMilestonesLaneImpl);
