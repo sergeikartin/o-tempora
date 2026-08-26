@@ -1,5 +1,6 @@
 import { cleanup, render } from '@testing-library/react';
 import * as d3 from 'd3';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, expect, test } from 'vitest';
 import { PAN_MIN_YEAR } from '../../shared/config';
 import {
@@ -351,4 +352,56 @@ test('the axis height fits the ruler bar plus the label row', () => {
   expect(
     (container.querySelector('.year-axis-ruler') as HTMLElement).style.height,
   ).toBe(`${RULER_HEIGHT}px`);
+});
+
+// vite-plugins/prerender-default-viewport.ts server-renders YearAxis
+// directly (ADR 0013 — it's already plain JSX, no D3/DOM ownership, so it
+// needs no shared shape descriptor or grafting step the way PeopleLane/
+// ConflictsMilestonesLane do). These compare renderToStaticMarkup's output
+// against the same live-rendered assertions above for the same props, so a
+// future change can't silently break the prerendered output without a test
+// catching it.
+// jsdom's own CSSStyleDeclaration serialization adds whitespace
+// (`width: 1px;`) and always keeps the unit on a zero length (`width: 0px;`)
+// where React's static markup omits both (`width:0`) — both are the exact
+// same CSS to a real browser, so normalize that away rather than compare
+// raw bytes.
+function normalizeInlineStyleSpacing(html: string): string {
+  return html.replace(
+    /style="([^"]*)"/g,
+    (_match, style: string) =>
+      `style="${style
+        .replace(/;\s+/g, ';')
+        .replace(/:\s+/g, ':')
+        .replace(/;$/, '')
+        .replace(/:0px\b/g, ':0')}"`,
+  );
+}
+
+test('renderToStaticMarkup output matches the live render for the same props', () => {
+  const props = {
+    xScale: scaleFor(1000, 3000, 20000),
+    visibleStartYear: 1750,
+    visibleEndYear: 1950,
+  };
+  const { container } = render(<YearAxis {...props} />);
+  const staticHtml = renderToStaticMarkup(<YearAxis {...props} />);
+
+  expect(normalizeInlineStyleSpacing(staticHtml)).toBe(
+    normalizeInlineStyleSpacing(container.innerHTML),
+  );
+});
+
+test('renderToStaticMarkup renders real decade-label text for a BCE/CE fixture', () => {
+  const staticHtml = renderToStaticMarkup(
+    <YearAxis
+      xScale={scaleFor(-1000, 1000, 20000)}
+      visibleStartYear={-150}
+      visibleEndYear={50}
+    />,
+  );
+
+  expect(staticHtml).toContain('100 BCE');
+  expect(staticHtml).toContain('1 BCE');
+  expect(staticHtml).toContain('>50<');
 });

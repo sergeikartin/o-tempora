@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
 import { criticalCssPlugin } from './vite-plugins/critical-css';
 import { criticalFontPreloadPlugin } from './vite-plugins/critical-font-preload';
+import { prerenderDefaultViewportPlugin } from './vite-plugins/prerender-default-viewport';
 import { tier0ModulePreloadPlugin } from './vite-plugins/tier0-modulepreload';
 
 // Locale is resolved at runtime from the URL, not forked at build time
@@ -27,6 +28,11 @@ export default defineConfig({
     }),
     tier0ModulePreloadPlugin(),
     criticalFontPreloadPlugin(),
+    // Between font preload and critical CSS: the latter's Beasties pass
+    // (critical-css.ts) needs the real, class-bearing default-viewport
+    // markup already rendered into #root to decide what's critical, not the
+    // bare <div id="root"></div> shell.
+    prerenderDefaultViewportPlugin(),
     criticalCssPlugin(),
   ],
   build: {

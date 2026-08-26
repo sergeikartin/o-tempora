@@ -7,8 +7,9 @@ import '@fontsource/archivo/400.css';
 import '@fontsource/archivo/600.css';
 import '@fontsource/archivo/700.css';
 import '@fontsource/fraunces/600.css';
-import { createRoot } from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
 import { App } from './app';
+import { localeDatasetsPromise } from './app/locale-datasets';
 import { initMonitoring } from './shared/lib/init-monitoring';
 import './app/global.css';
 
@@ -16,4 +17,15 @@ initMonitoring();
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('index.html is missing #root');
-createRoot(rootElement).render(<App />);
+// The build-time prerender step (vite-plugins/prerender-default-viewport.ts)
+// renders against an already-resolved dataset (App.tsx's `initialDatasets`),
+// so App.tsx's own top-level Suspense boundary never actually suspends
+// there. Hydrating before this promise settles would suspend on
+// `use(localeDatasetsPromise)` (App.tsx) immediately, mismatching the
+// server's already-resolved render and throwing a hydration error — waiting
+// here instead just means hydration (attaching listeners) lands slightly
+// after the data it needs anyway arrives, same as it always effectively
+// depended on.
+localeDatasetsPromise.then(() => {
+  hydrateRoot(rootElement, <App />);
+});
