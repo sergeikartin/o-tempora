@@ -6,63 +6,29 @@ import {
   useMemo,
   useRef,
 } from 'react';
-import { CONFLICT_COLOR } from '../../shared/config';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { m } from '../../shared/paraglide/messages.js';
 import type { ConflictEntry, Milestone } from '../../shared/types';
 import styles from './ConflictsMilestonesLane.module.css';
 import {
-  conflictPixelInterval,
-  mapConflicts,
-  mapMilestones,
-  milestonePixelInterval,
+  buildRangeAndPointLayout,
+  type PointLayout,
+  type RangeLayout,
 } from './map-to-items';
 import {
+  buildMarkChildren,
+  POINT_MARK_SHAPE,
+  RANGE_MARK_SHAPE,
+} from './mark-shape';
+import {
   HIT_AREA_PADDING_PX,
-  LANE_TOP_PADDING,
-  MILESTONE_CATEGORY_COLORS,
   MILESTONES_LABEL_LINE_HEIGHT_PX,
-  MILESTONES_LABEL_MAX_WIDTH_PX,
-  MILESTONES_MARKER_LABEL_GAP,
   PERIOD_LINE_HEIGHT,
   POINT_RADIUS,
-  ROW_GAP,
-  SELECTED_LINE_HEIGHT_PX,
-  SELECTED_POINT_RADIUS_PX,
-  SELECTION_RING_GAP_PX,
-  SELECTION_RING_WIDTH_PX,
-  wrapLabelLines,
   type ZoomAnimationHandle,
   zoomAnimationCounterScaleAttr,
   zoomAnimationGroupTransformAttr,
 } from './options';
-
-interface RangeLayout {
-  id: string;
-  name: string;
-  x1: number;
-  x2: number;
-  hitX1: number;
-  hitX2: number;
-  row: number;
-  markerY: number;
-  labelY: number;
-  fill: string;
-  kind: 'conflict' | 'milestone';
-}
-
-interface PointLayout {
-  id: string;
-  lines: string[];
-  x: number;
-  hitX1: number;
-  hitX2: number;
-  row: number;
-  markerY: number;
-  labelY: number;
-  fill: string;
-  kind: 'conflict' | 'milestone';
-}
 
 interface ConflictsMilestonesLaneProps {
   conflicts: ConflictEntry[];
@@ -109,186 +75,11 @@ export const ConflictsMilestonesLane = forwardRef<
 ) {
   const svgRef = useRef<SVGSVGElement>(null);
 
-  const conflictItems = useMemo(() => mapConflicts(conflicts), [conflicts]);
-  const milestoneItems = useMemo(() => mapMilestones(milestones), [milestones]);
-
-  const milestoneLinesById = useMemo(() => {
-    const map = new Map<string, string[]>();
-    for (const item of milestoneItems) {
-      map.set(
-        item.id,
-        wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX),
-      );
-    }
-    return map;
-  }, [milestoneItems]);
-
-  const rowOfId = useMemo(
-    () =>
-      eventsRowFor([
-        ...conflictItems.map((item) => item.id),
-        ...milestoneItems.map((item) => item.id),
-      ]),
-    [conflictItems, milestoneItems, eventsRowFor],
+  const { rangeLayout, pointLayout, totalHeight } = useMemo(
+    () => buildRangeAndPointLayout(conflicts, milestones, xScale, eventsRowFor),
+    [conflicts, milestones, xScale, eventsRowFor],
   );
-
-  // Row height is dynamic — the tallest label actually assigned to a row
-  // (a wrapped multi-line Milestone label, or a single-line Conflict label)
-  // sets that row's pitch, so a multi-line label never bleeds into the row
-  // below it.
-  const rowLayout = useMemo(() => {
-    const maxLinesByRow: number[] = [];
-    const noteRow = (row: number, lineCount: number) => {
-      maxLinesByRow[row] = Math.max(maxLinesByRow[row] ?? 0, lineCount);
-    };
-    for (const item of conflictItems) noteRow(rowOfId.get(item.id) ?? 0, 1);
-    for (const item of milestoneItems) {
-      // Range-shaped Milestones render a single-line label like a Conflict
-      // range does — only point-shaped Milestones wrap onto multiple lines.
-      if (!item.isPoint) {
-        noteRow(rowOfId.get(item.id) ?? 0, 1);
-        continue;
-      }
-      const lines = milestoneLinesById.get(item.id) ?? [item.name];
-      noteRow(rowOfId.get(item.id) ?? 0, lines.length);
-    }
-    const markerYs: number[] = [];
-    const labelStarts: number[] = [];
-    let y = LANE_TOP_PADDING + POINT_RADIUS; // marker center for row 0
-    for (let row = 0; row < maxLinesByRow.length; row += 1) {
-      markerYs[row] = y;
-      const labelY = y + POINT_RADIUS + MILESTONES_MARKER_LABEL_GAP;
-      labelStarts[row] = labelY;
-      y =
-        labelY +
-        (maxLinesByRow[row] ?? 1) * MILESTONES_LABEL_LINE_HEIGHT_PX +
-        ROW_GAP +
-        POINT_RADIUS;
-    }
-    return { markerYs, labelStarts, totalHeight: y - POINT_RADIUS };
-  }, [conflictItems, milestoneItems, milestoneLinesById, rowOfId]);
-
-  const totalHeight = rowLayout.totalHeight;
   const totalWidth = xScale.range()[1] ?? 0;
-  const fallbackMarkerY = LANE_TOP_PADDING + POINT_RADIUS;
-  const fallbackLabelY =
-    fallbackMarkerY + POINT_RADIUS + MILESTONES_MARKER_LABEL_GAP;
-
-  const rangeLayout: RangeLayout[] = useMemo(() => {
-    const conflictRanges: RangeLayout[] = conflictItems
-      .filter((item) => !item.isPoint)
-      .map((item) => {
-        const row = rowOfId.get(item.id) ?? 0;
-        const { start: hitX1, end: hitX2 } = conflictPixelInterval(
-          item,
-          xScale,
-        );
-        return {
-          id: item.id,
-          name: item.name,
-          x1: xScale(item.startYear),
-          x2: xScale(item.endYear),
-          hitX1,
-          hitX2,
-          row,
-          markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
-          labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
-          fill: CONFLICT_COLOR,
-          kind: 'conflict' as const,
-        };
-      });
-    const milestoneRanges: RangeLayout[] = milestoneItems
-      .filter((item) => !item.isPoint)
-      .map((item) => {
-        const row = rowOfId.get(item.id) ?? 0;
-        // lines is only read on the point branch, which this (range) item
-        // never takes — see milestonePixelInterval.
-        const { start: hitX1, end: hitX2 } = milestonePixelInterval(
-          item,
-          [],
-          xScale,
-        );
-        return {
-          id: item.id,
-          name: item.name,
-          x1: xScale(item.startYear),
-          x2: xScale(item.endYear),
-          hitX1,
-          hitX2,
-          row,
-          markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
-          labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
-          fill: MILESTONE_CATEGORY_COLORS[item.category],
-          kind: 'milestone' as const,
-        };
-      });
-    return [...conflictRanges, ...milestoneRanges];
-  }, [
-    conflictItems,
-    milestoneItems,
-    rowOfId,
-    rowLayout,
-    xScale,
-    fallbackMarkerY,
-    fallbackLabelY,
-  ]);
-
-  const pointLayout: PointLayout[] = useMemo(() => {
-    const conflictPoints: PointLayout[] = conflictItems
-      .filter((item) => item.isPoint)
-      .map((item) => {
-        const row = rowOfId.get(item.id) ?? 0;
-        const { start: hitX1, end: hitX2 } = conflictPixelInterval(
-          item,
-          xScale,
-        );
-        return {
-          id: item.id,
-          lines: [item.name],
-          x: xScale(item.startYear),
-          hitX1,
-          hitX2,
-          row,
-          markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
-          labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
-          fill: CONFLICT_COLOR,
-          kind: 'conflict' as const,
-        };
-      });
-    const milestonePoints: PointLayout[] = milestoneItems
-      .filter((item) => item.isPoint)
-      .map((item) => {
-        const row = rowOfId.get(item.id) ?? 0;
-        const lines = milestoneLinesById.get(item.id) ?? [item.name];
-        const { start: hitX1, end: hitX2 } = milestonePixelInterval(
-          item,
-          lines,
-          xScale,
-        );
-        return {
-          id: item.id,
-          lines,
-          x: xScale(item.startYear),
-          hitX1,
-          hitX2,
-          row,
-          markerY: rowLayout.markerYs[row] ?? fallbackMarkerY,
-          labelY: rowLayout.labelStarts[row] ?? fallbackLabelY,
-          fill: MILESTONE_CATEGORY_COLORS[item.category],
-          kind: 'milestone' as const,
-        };
-      });
-    return [...conflictPoints, ...milestonePoints];
-  }, [
-    conflictItems,
-    milestoneItems,
-    milestoneLinesById,
-    rowOfId,
-    rowLayout,
-    xScale,
-    fallbackMarkerY,
-    fallbackLabelY,
-  ]);
 
   // useLayoutEffect, not useEffect — see PeopleLane's identical comment: a
   // deferred passive effect shows one stale frame when xScale changes in
@@ -320,54 +111,11 @@ export const ConflictsMilestonesLane = forwardRef<
             .append('g')
             .attr('class', 'd3-range')
             .style('opacity', 0);
-          // Invisible, oversized rect behind the line/label — see
-          // PeopleLane's identical .d3-hit for why (thin line + a
-          // separately-clickable label below it are both poor, gapped hit
-          // targets on their own).
-          const hit = g
-            .append('rect')
-            .attr('class', `d3-hit ${styles.hitArea}`);
-          // Two concentric, wider duplicate lines painted behind the real
-          // one, invisible (opacity: 0) until the search-jump/selection
-          // effect below shows them — see PeopleLane's identical marks for
-          // the shared rationale (a real SVG outline filter clips to
-          // nothing on this lane's perfectly horizontal range lines too).
-          const lineRingOuter = g
-            .append('line')
-            .attr('class', `d3-line-ring-outer ${styles.lineRingOuter}`)
-            .attr(
-              'stroke-width',
-              SELECTED_LINE_HEIGHT_PX +
-                2 * (SELECTION_RING_GAP_PX + SELECTION_RING_WIDTH_PX),
-            )
-            .attr('stroke-linecap', 'round');
-          const lineRingGap = g
-            .append('line')
-            .attr('class', `d3-line-ring-gap ${styles.lineRingGap}`)
-            .attr(
-              'stroke-width',
-              SELECTED_LINE_HEIGHT_PX + 2 * SELECTION_RING_GAP_PX,
-            )
-            .attr('stroke-linecap', 'round');
-          const line = g
-            .append('line')
-            .attr('class', `d3-line ${styles.line}`)
-            .attr('stroke-width', PERIOD_LINE_HEIGHT)
-            .attr('stroke-linecap', 'round');
-          // Wrapped in its own <g> (a literal marker class, not styled
-          // itself) so the zoom-animation counter-scale below can target
-          // that wrapper instead of .d3-range-name directly — see
-          // PeopleLane's identical .d3-name-zoom comment for why: .label
-          // has its own `transition: transform` for the hover-grow
-          // effect, which would otherwise fight the counter-scale's own
-          // per-frame writes to the same CSS property.
-          const name = g
-            .append('g')
-            .attr('class', 'd3-range-name-zoom')
-            .append('text')
-            .attr('class', `d3-range-name ${styles.label}`)
-            .attr('text-anchor', 'middle')
-            .attr('dominant-baseline', 'hanging');
+          // Children built from RANGE_MARK_SHAPE, in its declared order —
+          // see mark-shape.ts's own comments and PeopleLane's identical
+          // marks for why each is shaped the way it is.
+          const [hit, lineRingOuter, lineRingGap, line, name] =
+            buildMarkChildren(g, RANGE_MARK_SHAPE, styles);
           // A brand-new mark starts already at its target row — only a
           // pre-existing mark's row *change* animates (below), via the
           // shift transition on rangeGroups; an entering mark should just
@@ -492,42 +240,14 @@ export const ConflictsMilestonesLane = forwardRef<
             .append('g')
             .attr('class', 'd3-point-group')
             .style('opacity', 0);
-          // Invisible, oversized rect behind the dot/label — see
-          // PeopleLane's identical .d3-hit for why.
-          const hit = g
-            .append('rect')
-            .attr('class', `d3-hit ${styles.hitArea}`);
-          // Two concentric, wider duplicate circles painted behind the real
-          // dot, invisible (opacity: 0) until the search-jump/selection
-          // effect below shows them — the point-marker equivalent of a
-          // range's .d3-line-ring-outer/-gap above, so a point's selection
-          // reads as the same ring rather than a same-scale full recolor.
-          const dotRingOuter = g
-            .append('circle')
-            .attr('class', `d3-dot-ring-outer ${styles.dotRingOuter}`)
-            .attr(
-              'r',
-              SELECTED_POINT_RADIUS_PX +
-                SELECTION_RING_GAP_PX +
-                SELECTION_RING_WIDTH_PX,
-            );
-          const dotRingGap = g
-            .append('circle')
-            .attr('class', `d3-dot-ring-gap ${styles.dotRingGap}`)
-            .attr('r', SELECTED_POINT_RADIUS_PX + SELECTION_RING_GAP_PX);
-          const dot = g
-            .append('circle')
-            .attr('class', `d3-dot ${styles.dot}`)
-            .attr('r', POINT_RADIUS);
-          // Wrapped in its own <g> — see the identical d3-range-name-zoom
-          // comment above.
-          const name = g
-            .append('g')
-            .attr('class', 'd3-point-name-zoom')
-            .append('text')
-            .attr('class', `d3-point-name ${styles.label}`)
-            .attr('text-anchor', 'middle')
-            .attr('dominant-baseline', 'hanging');
+          // Children built from POINT_MARK_SHAPE, in its declared order —
+          // see mark-shape.ts's own comments and the range mark above for
+          // why each is shaped the way it is.
+          const [hit, dotRingOuter, dotRingGap, dot, name] = buildMarkChildren(
+            g,
+            POINT_MARK_SHAPE,
+            styles,
+          );
           // A brand-new mark starts already at its target row — only a
           // pre-existing mark's row *change* animates (below), via the
           // shift transition on pointGroups; an entering mark should just

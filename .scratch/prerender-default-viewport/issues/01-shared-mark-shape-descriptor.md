@@ -6,11 +6,11 @@ A new `widgets/timeline-canvas/mark-shape.ts` (not exported from the slice's pub
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] `map-to-items.ts` exports `buildPersonLayout` and `buildRangeAndPointLayout`; `PersonLayout`/`RangeLayout`/`PointLayout` types live there.
-- [ ] `PeopleLane.tsx`'s and `ConflictsMilestonesLane.tsx`'s layout `useMemo`s call the new exports instead of computing layout inline — no change to their dependency arrays or memoization behavior.
-- [ ] `mark-shape.ts` exists with `PERSON_MARK_SHAPE`, `RANGE_MARK_SHAPE`, `POINT_MARK_SHAPE`, and `MARK_ID_SELECTOR`, each descriptor covering all 5 children in the exact DOM order the current `enter` branches produce (rect hit, ring-outer, ring-gap, main line/dot, name wrapper — point marks flag `supportsTspans: true` for the wrapped-label case).
-- [ ] `PeopleLane.tsx`'s and `ConflictsMilestonesLane.tsx`'s `enter` branches build nodes from the matching descriptor array rather than a hand-written chain.
-- [ ] `PeopleLane.test.tsx` and `ConflictsMilestonesLane.test.tsx` pass unchanged — the refactor produces byte-identical DOM structure to before (verify by running the existing suite, not by relaxing assertions).
-- [ ] `npm run typecheck --workspace packages/web`, `npm run test --workspace packages/web`, and `npm run lint:boundaries --workspace packages/web` all pass.
+- [x] `map-to-items.ts` exports `buildPersonLayout` and `buildRangeAndPointLayout`; `PersonLayout`/`RangeLayout`/`PointLayout` types live there.
+- [x] `PeopleLane.tsx`'s and `ConflictsMilestonesLane.tsx`'s layout `useMemo`s call the new exports instead of computing layout inline — no change to their dependency arrays or memoization behavior.
+- [x] `mark-shape.ts` exists with `PERSON_MARK_SHAPE`, `RANGE_MARK_SHAPE`, `POINT_MARK_SHAPE`, and `MARK_ID_SELECTOR`, each descriptor covering all 5 children in the exact DOM order the current `enter` branches produce (rect hit, ring-outer, ring-gap, main line/dot, name wrapper — point marks flag `supportsTspans: true` for the wrapped-label case).
+- [x] `PeopleLane.tsx`'s and `ConflictsMilestonesLane.tsx`'s `enter` branches build nodes from the matching descriptor array rather than a hand-written chain.
+- [x] `PeopleLane.test.tsx` and `ConflictsMilestonesLane.test.tsx` pass unchanged — the refactor produces byte-identical DOM structure to before (verify by running the existing suite, not by relaxing assertions).
+- [x] `npm run typecheck --workspace packages/web`, `npm run test --workspace packages/web`, and `npm run lint:boundaries --workspace packages/web` all pass.
