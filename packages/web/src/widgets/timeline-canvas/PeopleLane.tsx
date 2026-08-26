@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import {
   forwardRef,
+  memo,
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
@@ -53,7 +54,13 @@ interface PeopleLaneProps {
 // line's own occupation-domain fill. Overlapping people are stacked into
 // separate rows same as before; a colliding label (wider than its own line)
 // claims the row via pixelInterval above rather than moving to its own band.
-export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
+// memo: props stay referentially stable across scroll/pan frames (TimelineCanvas
+// re-renders every rAF tick while scrolling, but none of people/xScale/
+// personRowFor/selectedId change from that) — without this, the whole render
+// body (and React's reconciliation of its output) reruns on every such frame
+// for nothing, since the D3 join below is already separately gated on [layout,
+// totalHeight].
+const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
   function PeopleLane({ people, xScale, personRowFor, selectedId }, ref) {
     const svgRef = useRef<SVGSVGElement>(null);
     const hasMountedRef = useRef(false);
@@ -342,3 +349,4 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
     );
   },
 );
+export const PeopleLane = memo(PeopleLaneImpl);
