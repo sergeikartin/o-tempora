@@ -15,10 +15,11 @@
 
 ### Styling
 
-- CSS Modules only; one base/reset file is the sole global stylesheet.
+- CSS Modules only; one base/reset file is the sole global stylesheet. Co-locate a component's `.module.css` with its component file.
 - No hardcoded hex — color/typography/radius come from tokens (`docs/design-tokens.md`) as CSS custom properties. Prefer to use CSS variables.
 - Occupation category colors are the single source of truth across People-lane lines, Events-lane marker borders, and the matching filter chip — one palette, never per-surface copies.
 - Shape, not color, carries Period vs. PointInTime, the same rule across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Person vs. event is instead carried by lane, label position, and palette — never by color alone.
+- Never use CSS Modules class names as JS/test hooks (query by role/text or a dedicated `data-*` attribute instead) — the same reason D3 joins in this widget key off literal marker classes, not CSS-Module classes.
 
 ### Timeline Rendering (D3)
 
