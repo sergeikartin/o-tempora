@@ -1,8 +1,5 @@
 import { lazy, Suspense, use, useCallback, useMemo, useState } from 'react';
-import {
-  type FilteredCounts,
-  useFameScoreFilters,
-} from '../features/filter-by-fame-score';
+import { useFameScoreFilters } from '../features/filter-by-fame-score';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
 import { useRegionFilter } from '../features/filter-by-region';
 import { useConflictsMilestonesFilter } from '../features/filter-conflicts-milestones';
@@ -14,7 +11,7 @@ import {
   type SelectedEntityRef,
   useSelectedEntity,
 } from '../features/select-timeline-entity';
-import type { DataDepthLevel } from '../shared/config';
+import type { DetailLevel } from '../shared/config';
 import { trackEvent } from '../shared/lib/track-event';
 import { m } from '../shared/paraglide/messages.js';
 import { ErrorBoundary } from '../shared/ui';
@@ -23,7 +20,7 @@ import { Sidebar } from '../widgets/sidebar';
 import { TimelineCanvas } from '../widgets/timeline-canvas';
 import styles from './App.module.css';
 import { type LocaleDatasets, localeDatasetsPromise } from './locale-datasets';
-import { useMergedDatasets } from './use-merged-datasets';
+import { useDetailLevelDatasets } from './use-detail-level-datasets';
 
 // Both are closed/empty by default (rendered unconditionally but paint
 // nothing until opened) — lazy-loading keeps their code out of the bundle
@@ -42,7 +39,7 @@ const DetailPanel = lazy(() =>
 
 interface AppProps {
   // Set only by the build-time prerender step (vite-plugins/prerender-
-  // default-viewport.ts), which already has the resolved Tier 0 dataset in
+  // default-viewport.ts), which already has the resolved level 1+2 dataset in
   // hand and can't reproduce main.tsx's runtime dynamic-import/locale-
   // detection path outside a browser. main.tsx's real mount always omits
   // this, so the client keeps resolving `localeDatasetsPromise` exactly as
@@ -62,32 +59,32 @@ export function App({ initialDatasets }: AppProps = {}) {
 }
 
 function AppContent({ initialDatasets }: AppProps) {
-  const tier0 = initialDatasets ?? use(localeDatasetsPromise);
+  const level1And2 = initialDatasets ?? use(localeDatasetsPromise);
   const {
     datasets: {
       people: peopleData,
       conflicts: conflictsData,
       milestones: milestonesData,
     },
-    isTier1Loading,
-    loadTier1,
-  } = useMergedDatasets(tier0);
+    loadingLevelIds,
+    requestLevel,
+  } = useDetailLevelDatasets(level1And2);
   const {
     values: fameScoreValues,
-    setValue: setFameScoreValue,
+    level: selectedLevel,
     setLevel: setFameScoreLevel,
   } = useFameScoreFilters();
-  // Deep Cut's data ships in Tier 1 (CONTEXT.md's Payload Tier), a deferred
-  // second chunk — picking it triggers the on-demand fallback in case the
-  // idle-prefetch hasn't started yet (save-data/slow connection) or hasn't
-  // finished; a no-op otherwise (docs/adr/0004-payload-tier-split-defers-
-  // low-fame-data.md).
-  const handleSelectDepthLevel = useCallback(
-    (level: DataDepthLevel) => {
-      if (level.id === 'deep-cut') loadTier1();
+  // Specialized/Deep Cut's data ships in a deferred delta file (CONTEXT.md's
+  // Detail Level) — picking either triggers the on-demand fallback in case
+  // the idle-prefetch hasn't started yet (save-data/slow connection) or
+  // hasn't finished; a no-op otherwise (docs/adr/0006-detail-level-merges-
+  // data-depth-and-payload-tier.md).
+  const handleSelectDetailLevel = useCallback(
+    (level: DetailLevel) => {
+      requestLevel(level.id);
       setFameScoreLevel(level);
     },
-    [loadTier1, setFameScoreLevel],
+    [requestLevel, setFameScoreLevel],
   );
   const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
   const { selectedRegions, toggleRegion } = useRegionFilter();
@@ -117,7 +114,6 @@ function AppContent({ initialDatasets }: AppProps) {
   // view) — TimelineCanvas watches this to pan, see its own comment.
   const [searchJumpTarget, setSearchJumpTarget] =
     useState<SelectedEntityRef | null>(null);
-  const [filteredCounts, setFilteredCounts] = useState<FilteredCounts>();
   // Mobile-only drawer state for Sidebar (App.module.css/Sidebar.module.css
   // gate its visual effect to narrow viewports, but the open/close state
   // itself is tracked unconditionally, same shape as the other cross-widget
@@ -183,11 +179,9 @@ function AppContent({ initialDatasets }: AppProps) {
   return (
     <div className={styles.layout}>
       <Sidebar
-        fameScoreValues={fameScoreValues}
-        onFameScoreChange={setFameScoreValue}
-        onSelectDepthLevel={handleSelectDepthLevel}
-        isTier1Loading={isTier1Loading}
-        filteredCounts={filteredCounts}
+        selectedLevelId={selectedLevel.id}
+        onSelectDetailLevel={handleSelectDetailLevel}
+        loadingLevelIds={loadingLevelIds}
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
         searchResults={searchResults}
@@ -228,7 +222,6 @@ function AppContent({ initialDatasets }: AppProps) {
               selectedConflictsMilestonesValues
             }
             onEntityClick={handleEntityClick}
-            onFilteredCountsChange={setFilteredCounts}
             isFilterDrawerOpen={isFilterDrawerOpen}
             onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
             selectedEntity={selectedRef}

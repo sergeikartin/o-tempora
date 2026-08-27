@@ -45,7 +45,7 @@ export function validateEntries<T extends Person | ConflictEntry | Milestone>(
 }
 
 type Locale = 'en' | 'ru';
-type Tier = 'tier0' | 'tier1';
+type DetailLevelIndex = 1 | 2 | 3 | 4;
 
 // Every lane's own key alongside the entityType string validateEntries logs
 // under — the one place this pairing is written down, instead of once per
@@ -61,54 +61,98 @@ type LaneKey = (typeof LANES)[number]['key'];
 type DatasetModule = { default: unknown };
 type Importer = () => Promise<DatasetModule>;
 
-// Payload Tier (CONTEXT.md, docs/adr/0004-payload-tier-split-defers-low-fame-
-// data.md): each lane's dataset ships as two pipeline-generated files per
-// locale (docs/adr/0009) — Tier 0 (what a default-state page load needs) and
-// Tier 1 (the deferred remainder). Every import() below must stay a literal
-// specifier — Vite needs that to keep each file its own chunk, so Tier 1 and
-// the other locale never end up inside Tier 0's eager chunk — which is why
-// this is a lookup table of 12 literal imports rather than one templated
-// path. A tier/locale/lane combination missing from this table is a
-// TypeScript error, not a runtime gap.
-const IMPORTERS: Record<Tier, Record<Locale, Record<LaneKey, Importer>>> = {
-  tier0: {
+// Detail Level (CONTEXT.md, docs/adr/0006-detail-level-merges-data-depth-
+// and-payload-tier.md): each lane's dataset ships as 4 pipeline-generated
+// delta files per locale (docs/adr/0009), one per Detail Level. Every
+// import() below must stay a literal specifier — Vite needs that to keep
+// each file its own chunk, so a deeper level and the other locale never end
+// up inside level 1/2's eager chunk — which is why this is a lookup table of
+// 24 literal imports rather than one templated path. A level/locale/lane
+// combination missing from this table is a TypeScript error, not a runtime
+// gap.
+const IMPORTERS: Record<
+  DetailLevelIndex,
+  Record<Locale, Record<LaneKey, Importer>>
+> = {
+  1: {
     en: {
-      people: () => import('@same-sky/shared-types/src/data/people.tier0.json'),
+      people: () =>
+        import('@same-sky/shared-types/src/data/people.detail1.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.tier0.json'),
+        import('@same-sky/shared-types/src/data/conflicts.detail1.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.tier0.json'),
+        import('@same-sky/shared-types/src/data/milestones.detail1.json'),
     },
     ru: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.tier0.ru.json'),
+        import('@same-sky/shared-types/src/data/people.detail1.ru.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.tier0.ru.json'),
+        import('@same-sky/shared-types/src/data/conflicts.detail1.ru.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.tier0.ru.json'),
+        import('@same-sky/shared-types/src/data/milestones.detail1.ru.json'),
     },
   },
-  tier1: {
+  2: {
     en: {
-      people: () => import('@same-sky/shared-types/src/data/people.tier1.json'),
+      people: () =>
+        import('@same-sky/shared-types/src/data/people.detail2.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.tier1.json'),
+        import('@same-sky/shared-types/src/data/conflicts.detail2.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.tier1.json'),
+        import('@same-sky/shared-types/src/data/milestones.detail2.json'),
     },
     ru: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.tier1.ru.json'),
+        import('@same-sky/shared-types/src/data/people.detail2.ru.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.tier1.ru.json'),
+        import('@same-sky/shared-types/src/data/conflicts.detail2.ru.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.tier1.ru.json'),
+        import('@same-sky/shared-types/src/data/milestones.detail2.ru.json'),
+    },
+  },
+  3: {
+    en: {
+      people: () =>
+        import('@same-sky/shared-types/src/data/people.detail3.json'),
+      conflicts: () =>
+        import('@same-sky/shared-types/src/data/conflicts.detail3.json'),
+      milestones: () =>
+        import('@same-sky/shared-types/src/data/milestones.detail3.json'),
+    },
+    ru: {
+      people: () =>
+        import('@same-sky/shared-types/src/data/people.detail3.ru.json'),
+      conflicts: () =>
+        import('@same-sky/shared-types/src/data/conflicts.detail3.ru.json'),
+      milestones: () =>
+        import('@same-sky/shared-types/src/data/milestones.detail3.ru.json'),
+    },
+  },
+  4: {
+    en: {
+      people: () =>
+        import('@same-sky/shared-types/src/data/people.detail4.json'),
+      conflicts: () =>
+        import('@same-sky/shared-types/src/data/conflicts.detail4.json'),
+      milestones: () =>
+        import('@same-sky/shared-types/src/data/milestones.detail4.json'),
+    },
+    ru: {
+      people: () =>
+        import('@same-sky/shared-types/src/data/people.detail4.ru.json'),
+      conflicts: () =>
+        import('@same-sky/shared-types/src/data/conflicts.detail4.ru.json'),
+      milestones: () =>
+        import('@same-sky/shared-types/src/data/milestones.detail4.ru.json'),
     },
   },
 };
 
-async function loadTier(tier: Tier, locale: Locale): Promise<LocaleDatasets> {
-  const importers = IMPORTERS[tier][locale];
+async function loadLevel(
+  level: DetailLevelIndex,
+  locale: Locale,
+): Promise<LocaleDatasets> {
+  const importers = IMPORTERS[level][locale];
   const entries = await Promise.all(
     LANES.map(async ({ key, entityType }) => {
       const module = await importers[key]();
@@ -122,12 +166,22 @@ async function loadTier(tier: Tier, locale: Locale): Promise<LocaleDatasets> {
   return Object.fromEntries(entries) as unknown as LocaleDatasets;
 }
 
+function mergeDatasets(a: LocaleDatasets, b: LocaleDatasets): LocaleDatasets {
+  return {
+    people: a.people.concat(b.people),
+    conflicts: a.conflicts.concat(b.conflicts),
+    milestones: a.milestones.concat(b.milestones),
+  };
+}
+
 // Module-scope, started immediately on import rather than inside an effect,
-// so the dataset fetch overlaps with initial render instead of trailing it.
-export const localeDatasetsPromise: Promise<LocaleDatasets> = loadTier(
-  'tier0',
-  getLocale(),
-);
+// so the fetch overlaps with initial render instead of trailing it. Level 1
+// + level 2 combined — byte-identical cost to today's eager Mainstream/tier0
+// load, since level 2's floor equals it exactly.
+export const localeDatasetsPromise: Promise<LocaleDatasets> = Promise.all([
+  loadLevel(1, getLocale()),
+  loadLevel(2, getLocale()),
+]).then(([level1, level2]) => mergeDatasets(level1, level2));
 
 interface NetworkInformation {
   saveData?: boolean;
@@ -135,9 +189,9 @@ interface NetworkInformation {
 }
 
 // Save-data or a 2G-class connection means the idle-prefetch below never
-// runs automatically — Tier 1 instead loads only on demand, triggered by
-// requestTier1Load (features/filter-by-fame-score's Deep Cut control calls
-// it when the user actually asks for the deeper data).
+// runs automatically — level 3 instead loads only on demand, triggered by
+// requestLevel3Load (also called by requestLevel4Load below, since level
+// 4's cumulative view needs level 3's data too).
 function isSaveDataOrSlowConnection(): boolean {
   const connection = (
     navigator as Navigator & { connection?: NetworkInformation }
@@ -150,23 +204,23 @@ function isSaveDataOrSlowConnection(): boolean {
   );
 }
 
-let startTier1Load: (() => void) | undefined;
+let startLevel3Load: (() => void) | undefined;
 
-// Resolves once Tier 1 has loaded — automatically, deferred to idle time, so
-// it never competes with Tier 0's render-critical load above, unless the
-// connection looks slow/save-data, in which case nothing runs until
-// requestTier1Load is called explicitly.
-export const tier1DatasetsPromise: Promise<LocaleDatasets> = new Promise(
+// Resolves once level 3 has loaded — automatically, deferred to idle time,
+// so it never competes with level 1+2's render-critical load above, unless
+// the connection looks slow/save-data, in which case nothing runs until
+// requestLevel3Load is called explicitly.
+export const level3DatasetPromise: Promise<LocaleDatasets> = new Promise(
   (resolve) => {
     const run = () => {
-      loadTier('tier1', getLocale()).then(resolve);
+      loadLevel(3, getLocale()).then(resolve);
     };
     if (typeof window === 'undefined') {
       run();
       return;
     }
     if (isSaveDataOrSlowConnection()) {
-      startTier1Load = run;
+      startLevel3Load = run;
       return;
     }
     const schedule =
@@ -176,9 +230,32 @@ export const tier1DatasetsPromise: Promise<LocaleDatasets> = new Promise(
 );
 
 // On-demand fallback for save-data/slow connections, where the automatic
-// idle-prefetch above never starts on its own — a no-op once Tier 1 is
+// idle-prefetch above never starts on its own — a no-op once level 3 is
 // already loading or loaded.
-export function requestTier1Load(): void {
-  startTier1Load?.();
-  startTier1Load = undefined;
+export function requestLevel3Load(): void {
+  startLevel3Load?.();
+  startLevel3Load = undefined;
+}
+
+let startLevel4Load: (() => void) | undefined;
+let level4Requested = false;
+
+// Level 4 never auto-starts, regardless of connection — strictly on demand,
+// once the user actually selects Deep Cut (requestLevel4Load below).
+export const level4DatasetPromise: Promise<LocaleDatasets> = new Promise(
+  (resolve) => {
+    startLevel4Load = () => {
+      loadLevel(4, getLocale()).then(resolve);
+    };
+  },
+);
+
+// Deep Cut's cumulative view is level 1+2+3+4, so selecting it must also
+// make sure level 3 is (or starts) loading, not just level 4 itself — a
+// no-op past the first call, or once level 3 is already loading/loaded.
+export function requestLevel4Load(): void {
+  requestLevel3Load();
+  if (level4Requested) return;
+  level4Requested = true;
+  startLevel4Load?.();
 }

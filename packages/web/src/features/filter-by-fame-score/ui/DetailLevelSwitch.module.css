@@ -8,6 +8,13 @@
   overflow: hidden;
 }
 
+.description {
+  margin: 6px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
 .option {
   display: flex;
   align-items: center;

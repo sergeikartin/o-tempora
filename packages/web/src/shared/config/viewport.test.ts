@@ -1,29 +1,30 @@
 import { expect, test } from 'vitest';
 import {
-  DATA_DEPTH_LEVELS,
+  DEFAULT_DETAIL_LEVEL,
+  DETAIL_LEVELS,
   FAME_SCORE_BOUNDS,
-  matchDataDepthLevel,
 } from './viewport';
 
 test('mainstream level equals the existing FAME_SCORE_BOUNDS defaults — launch behavior is unchanged', () => {
-  const mainstream = DATA_DEPTH_LEVELS.find(
-    (level) => level.id === 'mainstream',
-  );
-  expect(mainstream?.values).toEqual({
+  expect(DEFAULT_DETAIL_LEVEL.id).toBe('mainstream');
+  expect(DEFAULT_DETAIL_LEVEL.values).toEqual({
     people: FAME_SCORE_BOUNDS.people.default,
     conflicts: FAME_SCORE_BOUNDS.conflicts.default,
     milestones: FAME_SCORE_BOUNDS.milestones.default,
   });
 });
 
-test('matchDataDepthLevel matches each preset row exactly', () => {
-  for (const level of DATA_DEPTH_LEVELS) {
-    expect(matchDataDepthLevel(level.values)).toBe(level.id);
+test('DETAIL_LEVELS holds all 4 levels, strictly narrowing from legendary to deep-cut per lane', () => {
+  expect(DETAIL_LEVELS.map((level) => level.id)).toEqual([
+    'legendary',
+    'mainstream',
+    'specialized',
+    'deep-cut',
+  ]);
+  const [legendary, mainstream, specialized, deepCut] = DETAIL_LEVELS;
+  for (const lane of ['people', 'conflicts', 'milestones'] as const) {
+    expect(mainstream.values[lane]).toBeLessThan(legendary.values[lane]);
+    expect(specialized.values[lane]).toBeLessThan(mainstream.values[lane]);
+    expect(deepCut.values[lane]).toBeLessThan(specialized.values[lane]);
   }
-});
-
-test('matchDataDepthLevel returns null for values that match no preset row (custom)', () => {
-  expect(
-    matchDataDepthLevel({ people: 84, conflicts: 70, milestones: 70 }),
-  ).toBeNull();
 });

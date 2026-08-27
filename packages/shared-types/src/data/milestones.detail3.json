@@ -1,0 +1,1020 @@
+[
+  {
+    "id": "Q178275",
+    "name": "1918–1920 flu pandemic",
+    "category": "public-health",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "1918–1920 global influenza pandemic caused by the H1N1 influenza A virus",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_flu",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emergency%20hospital%20during%20Influenza%20epidemic%2C%20Camp%20Funston%2C%20Kansas%20-%20NCP%201603.jpg",
+    "description": "The 1918–1920 flu pandemic, also known as the Great Influenza epidemic or by the misleading name Spanish flu, was an exceptionally deadly global influenza pandemic caused by the H1N1 subtype of the influenza A virus. The earliest probable cases were documented in March 1918 in Haskell County, Kansas, United States, with further cases recorded in France, Germany and the United Kingdom in April. Two years later, nearly a third of the global population, or an estimated 500 million people, had been infected. Estimates of deaths range from 17 million to 50 million, and possibly as high as 100 million, making it one of the deadliest pandemics in history.",
+    "period": {
+      "start": {
+        "year": 1918,
+        "month": 1
+      },
+      "end": {
+        "year": 1920,
+        "month": 12
+      }
+    },
+    "row": 5
+  },
+  {
+    "id": "Q34467",
+    "name": "compact disc",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "digital optical disc data storage format",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Compact_disc",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OD%20Compact%20disc.svg",
+    "imageAttribution": "The original uploader was Sakurambo~commonswiki at  Wikimedia Commons., via Wikimedia Commons",
+    "description": "The compact disc (CD) is a digital optical disc data storage format co-developed by Philips and Sony to store and play digital audio recordings. It employs the Compact Disc Digital Audio (CD-DA) standard and is capable of holding uncompressed stereo audio. First released in Japan in October 1982, the CD was the second optical disc format to reach the market, following the larger LaserDisc (LD). In later years, the technology was adapted for computer data storage as CD-ROM and subsequently expanded into various writable and multimedia formats. By 2007, over 200 billion CDs had been sold worldwide.",
+    "at": {
+      "year": 1979
+    },
+    "row": 0
+  },
+  {
+    "id": "Q8707",
+    "name": "Meiji restoration",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 81,
+    "tagline": "reform restoring the imperial rule in Japan in the last third of the 19th century",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Meiji_Restoration",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MeijiJoukyou.jpg",
+    "description": "The Meiji Restoration , referred to at the time as the Honorable Restoration , was a political event that restored imperial rule to Japan in 1868 under Emperor Meiji and led to the westernisation of Japan. Although there were ruling emperors before the Meiji Restoration, the events restored practical power to, and consolidated the political system under, the Emperor of Japan. The Restoration led to enormous changes in Japan's political and social structure and spanned both the late Edo period and the beginning of the Meiji era, during which time Japan rapidly industrialised and adopted Western ideas, production methods and technology.",
+    "period": {
+      "start": {
+        "year": 1868
+      },
+      "end": {
+        "year": 1889,
+        "month": 2
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q5167679",
+    "name": "dissolution of the Soviet Union",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 81,
+    "tagline": "process leading to the late-1991 breakup of the USSR",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RIAN%20archive%20140800%20Signing%20of%20Protocol%20on%20Establishing%20Commonwealth%20of%20Independent%20States.jpg",
+    "imageAttribution": "Yuriy Kuydin / Юрий Куйдин, via Wikimedia Commons",
+    "description": "The Soviet Union was formally dissolved and ceased to exist as a sovereign state and subject of international law on December 26, 1991. It also brought an end to the Soviet Union's federal government and to Soviet leader Mikhail Gorbachev's efforts to reform the Soviet political and economic system in an attempt to stop a period of political and economic stagnation.",
+    "at": {
+      "year": 1991,
+      "month": 12
+    },
+    "row": 7
+  },
+  {
+    "id": "Q48584",
+    "name": "Rosetta Stone",
+    "category": "archaeology-anthropology",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 81,
+    "tagline": "ancient Egyptian stele with inscriptions in three writing systems",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rosetta%20Stone%20-%20front%20face%20-%20corrected%20image.jpg",
+    "imageAttribution": "Awikimate, via Wikimedia Commons",
+    "description": "The Rosetta Stone is a stele of granodiorite inscribed with three versions of a decree issued in 196 BC during the Ptolemaic dynasty of Egypt, on behalf of King Ptolemy V Epiphanes. The top and middle texts are in Ancient Egyptian using hieroglyphic and Demotic scripts, respectively, while the bottom is in Ancient Greek. The decree has only minor differences across the three versions, making the Rosetta Stone key to deciphering the Egyptian scripts.",
+    "at": {
+      "year": 1799,
+      "month": 7
+    },
+    "row": 1
+  },
+  {
+    "id": "Q40605",
+    "name": "Large Hadron Collider",
+    "category": "science-theory",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "particle collider",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Large_Hadron_Collider",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CERN%20LHC%20Tunnel1.jpg",
+    "imageAttribution": "Julian Herzog (Website), via Wikimedia Commons",
+    "description": "The Large Hadron Collider (LHC) is the world's largest and highest-energy particle accelerator. It was built by the European Organization for Nuclear Research (CERN) between 1998 and 2008, in collaboration with over 10,000 scientists, and hundreds of universities and laboratories across more than 100 countries. It lies in a tunnel 27 kilometres (17 mi) in circumference and as deep as 175 metres (574 ft) beneath the France–Switzerland border near Geneva.",
+    "at": {
+      "year": 2008,
+      "month": 10
+    },
+    "row": 5
+  },
+  {
+    "id": "Q47616",
+    "name": "incandescent light bulb",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "electric light bulb with a resistively heated wire filament",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Incandescent_light_bulb",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christ%20Church%20NYC%20117.jpg",
+    "imageAttribution": "Steven Bornholtz, via Wikimedia Commons",
+    "description": "An incandescent light bulb, also known as an incandescent lamp or incandescent light globe, is an electric light that produces illumination by Joule heating a filament until it glows. The filament is enclosed in a glass bulb that is either evacuated or filled with inert gas to protect the filament from oxidation. Electric current is supplied to the filament by terminals or wires embedded in the glass. A bulb socket provides mechanical support and electrical connections.",
+    "at": {
+      "year": 1879
+    },
+    "row": 5
+  },
+  {
+    "id": "Q48469",
+    "name": "Voyager 1",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "space probe launched by NASA to study the outer Solar System, furthest spacecraft from Earth",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_1",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Voyager%20spacecraft.jpg",
+    "description": "Voyager 1 is a space probe launched by NASA on September 5, 1977, as part of the Voyager program, to study the outer Solar System and the interstellar space beyond the Sun's heliosphere. It was launched 16 days after its twin, Voyager 2. It communicates through the NASA Deep Space Network (DSN) to receive routine commands and to transmit data to Earth. Real-time distance and velocity data are provided by NASA and JPL. At a distance of 172.59 AU as of August 2026, it is the most distant human-made object from Earth. Voyager 1 is projected to reach a distance of one light day from Earth in November 2026.",
+    "at": {
+      "year": 1977,
+      "month": 9
+    },
+    "row": 8
+  },
+  {
+    "id": "Q93304",
+    "name": "Code of Hammurabi",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 80,
+    "tagline": "Babylonian code of law or conduct",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Code_of_Hammurabi",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/P1050763%20Louvre%20code%20Hammurabi%20face%20rwk-gradient.jpg",
+    "imageAttribution": "Mbzt, via Wikimedia Commons",
+    "description": "The Code of Hammurabi is a Babylonian legal text composed c. 1753 BC. It is the longest, best-organized, and best-preserved legal text from the ancient Near East. It is written in the Old Babylonian dialect of Akkadian, purportedly by Hammurabi, sixth king of the First Dynasty of Babylon. The primary copy of the text is inscribed on a basalt stele 2.25 m tall.",
+    "at": {
+      "year": -1751
+    },
+    "row": 0
+  },
+  {
+    "id": "Q83164",
+    "name": "East India Company",
+    "category": "commerce-finance",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "British trading company (1600–1874)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/East_India_Company",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/B26055943A%20-%20A%20map%20of%20the%20East-Indies%20and%20the%20adjacent%20countries.jpg",
+    "description": "The East India Company (EIC) was an English, and later British, joint-stock company that was founded in 1600 and dissolved in 1874. It was formed for Indian Ocean trade, initially with the East Indies, and later with East Asia. The company gained control of large parts of the Indian subcontinent and Hong Kong. At its peak, the company was the largest corporation in the world by various measures and had its own armed forces in the form of the company's three presidency armies, totalling about 260,000 soldiers, twice the size of the British Army at certain times.",
+    "at": {
+      "year": 1600,
+      "month": 12
+    },
+    "row": 0
+  },
+  {
+    "id": "Q162297",
+    "name": "hygiene",
+    "category": "public-health",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "set of practices performed for the preservation of health",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hygiene",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OCD%20handwash.jpg",
+    "description": "Hygiene is a set of practices performed to preserve health.According to the World Health Organization (WHO), \"Hygiene refers to conditions and practices that help to maintain health and prevent the spread of diseases.\" Personal hygiene refers to maintaining the body's cleanliness. Hygiene activities can be grouped into the following: home and everyday hygiene, personal hygiene, medical hygiene, sleep hygiene, and food hygiene. Home and every day hygiene includes hand washing, respiratory hygiene, food hygiene at home, hygiene in the kitchen, hygiene in the bathroom, laundry hygiene, and medical hygiene at home.",
+    "at": {
+      "year": -2999
+    },
+    "row": 0
+  },
+  {
+    "id": "Q10257",
+    "name": "Channel Tunnel",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-europe",
+      "western-europe"
+    ],
+    "fameScore": 79,
+    "tagline": "rail tunnel beneath the English Channel between France and Great Britain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/TGV%20TMST%203011-2%20-%20Sortie%20Tunnel%20sous%20la%20Manche%20%C3%A0%20Coquelles.jpg",
+    "imageAttribution": "Billy69150 (voir les conditions d'utilisation / see licensing below), via Wikimedia Commons",
+    "description": "The Channel Tunnel, sometimes referred to as the Chunnel, is a 50.46-kilometre (31.35-mile) railway tunnel beneath the English Channel which connects Folkestone in the United Kingdom with Coquelles in northern France. Opened in 1994, it remains the only fixed link between Great Britain and the European mainland.",
+    "at": {
+      "year": 1993,
+      "month": 6
+    },
+    "row": 5
+  },
+  {
+    "id": "Q72313",
+    "name": "electric motor",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "electromechanical device",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_motor",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stator%20and%20rotor%20by%20Zureks.JPG",
+    "imageAttribution": "Zureks, via Wikimedia Commons",
+    "description": "An electric motor is a machine that converts electrical energy into mechanical energy. Most electric motors operate through the interaction between the motor's magnetic field and electric current in a wire winding to generate Lorentz force in the form of torque applied on the motor's shaft. An electric generator is mechanically identical to an electric motor but operates inversely, converting mechanical energy into electrical energy.",
+    "at": {
+      "year": 1834
+    },
+    "row": 1
+  },
+  {
+    "id": "Q80728",
+    "name": "dynamite",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "explosive preparation of stabilized nitroglycerin",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dynamite",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nobel%20patent.jpg",
+    "description": "Dynamite is an explosive made of nitroglycerin, sorbents, and stabilizers. It was invented by the Swedish chemist and engineer Alfred Nobel in Geesthacht, Northern Germany, and was patented in 1867. It rapidly gained wide-scale use as a more robust alternative to the traditional black powder explosives. It allows the use of nitroglycerine's favorable explosive properties while greatly reducing its risk of accidental detonation.",
+    "at": {
+      "year": 1867
+    },
+    "row": 5
+  },
+  {
+    "id": "Q46362",
+    "name": "Congress of Vienna",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 79,
+    "tagline": "conference of ambassadors of European states (September/November 1814 to June 1815)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wiener%20Kongress%20Abschlussdokument%202.JPG",
+    "imageAttribution": "Thomas Ledl, via Wikimedia Commons",
+    "description": "The Congress of Vienna of 1814–1815 was a series of international diplomatic meetings to discuss and agree upon a possible new layout of the European political and constitutional order after the downfall of the French emperor Napoleon Bonaparte. Participants were representatives of all European powers and other stakeholders. The Congress was chaired by Austrian statesman Klemens von Metternich and was held in Vienna from September 1814 to June 1815.",
+    "period": {
+      "start": {
+        "year": 1814,
+        "month": 9
+      },
+      "end": {
+        "year": 1815,
+        "month": 6
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q48432",
+    "name": "1930 FIFA World Cup",
+    "category": "sports-entertainment",
+    "regionTags": [
+      "south-america"
+    ],
+    "fameScore": 79,
+    "tagline": "1st FIFA World Cup, held in Uruguay",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Uruguay%20goal%20v%20argentina%201930.jpg",
+    "description": "The 1930 FIFA World Cup was the first FIFA World Cup, the world championship for men's national football teams. It took place in Uruguay from 13 to 30 July 1930. FIFA, football's international governing body, selected Uruguay as the host nation, as the country would be celebrating the centenary of its first constitution and the Uruguay national football team had retained their football title at the 1928 Summer Olympics. All matches were played in the Uruguayan capital, Montevideo, the majority at the purpose-built Estadio Centenario.",
+    "period": {
+      "start": {
+        "year": 1930,
+        "month": 7
+      },
+      "end": {
+        "year": 1930,
+        "month": 7
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q47672",
+    "name": "Terracotta Army",
+    "category": "archaeology-anthropology",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 79,
+    "tagline": "collection of ancient Chinese military statues",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Terracotta_Army",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/51714-Terracota-Army.jpg",
+    "imageAttribution": "xiquinhosilva, via Wikimedia Commons",
+    "description": "The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first emperor of China. It is a form of funerary art buried with the emperor in 210–209 BCE in his mausoleum with the purpose of protecting him in his afterlife.",
+    "at": {
+      "year": 1974,
+      "month": 3
+    },
+    "row": 9
+  },
+  {
+    "id": "Q228036",
+    "name": "cesarean section",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "surgical procedure in which a baby is delivered through a parent’s abdomen",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Caesarean_section",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caesarian.jpg",
+    "imageAttribution": "Erich gasboy, via Wikimedia Commons",
+    "description": "Caesarean section, also known as C-section, cesarean, or caesarean delivery, is the surgical procedure by which one or more babies are delivered through an incision in the mother's abdomen. It is often performed because vaginal delivery would put the mother or child at risk of injury or death. Reasons for the operation include, but are not limited to, obstructed labor, twin pregnancy, high blood pressure in the mother, breech birth, shoulder presentation, and problems with the placenta or umbilical cord. A caesarean delivery may be performed based upon the shape of the mother's pelvis or history of a previous C-section. A trial of vaginal birth after C-section may be possible. The World Health Organization recommends that caesarean section be performed only when medically necessary.",
+    "at": {
+      "year": -319
+    },
+    "row": 0
+  },
+  {
+    "id": "Q133585",
+    "name": "airship",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "powered lighter-than-air aircraft",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Airship",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zeppellin%20NT%20amk.JPG",
+    "imageAttribution": "AngMoKio, via Wikimedia Commons",
+    "description": "An airship, dirigible balloon or dirigible is a type of aerostat (lighter-than-air) aircraft that can navigate through the air flying under its own power. Aerostats use buoyancy from a lifting gas that is less dense than the surrounding air to achieve the lift needed to stay airborne.",
+    "at": {
+      "year": 1852
+    },
+    "row": 4
+  },
+  {
+    "id": "Q20075",
+    "name": "London Underground",
+    "category": "infrastructure",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "public rapid transit system in London, UK",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/London_Underground",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lancaster%20Gate%20tube.jpg",
+    "imageAttribution": "tompagenet (Tom Page), via Wikimedia Commons",
+    "description": "The London Underground is a rapid transit system serving Greater London and some parts of the adjacent home counties of Buckinghamshire, Essex, and Hertfordshire in England. It is part of the network of transport services managed by Transport for London.",
+    "at": {
+      "year": 1890
+    },
+    "row": 5
+  },
+  {
+    "id": "Q125006",
+    "name": "Brooklyn Bridge",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 78,
+    "tagline": "bridge in New York City, crossing the East River",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Brooklyn_Bridge",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Brooklyn%20Bridge%20and%20the%20Lower%20Manhattan%20skyline%20from%20Pebble%20Beach%2C%20New%20York.jpg",
+    "imageAttribution": "Christian David, via Wikimedia Commons",
+    "description": "The Brooklyn Bridge is a cable-stayed suspension bridge in New York City, spanning the East River between the boroughs of Manhattan and Brooklyn. Opened on May 24, 1883, the Brooklyn Bridge was the first fixed crossing of the East River. It was also the longest suspension bridge in the world when opened, with a main span of 1,595.5 feet (486.3 m) and a deck 127 ft (38.7 m) above mean high water. The span was originally called the New York and Brooklyn Bridge or the East River Bridge but was officially renamed the Brooklyn Bridge in 1915.",
+    "at": {
+      "year": 1883,
+      "month": 5
+    },
+    "row": 4
+  },
+  {
+    "id": "Q58148",
+    "name": "pasteurization",
+    "category": "food-agriculture",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "process in which certain foods are treated with mild heat in order to eliminate pathogens and extend shelf life",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pasteurization",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Milk%20Vat.jpg",
+    "description": "In food processing, pasteurization (-isation) is a process of food preservation in which packaged foods are treated with mild heat, usually to less than 100 °C (212 °F), to eliminate pathogens and extend shelf life. Pasteurization either destroys or deactivates microorganisms and enzymes that contribute to food spoilage or the risk of disease, including vegetative bacteria, but most bacterial spores survive the process.",
+    "at": {
+      "year": 1864,
+      "month": 4
+    },
+    "row": 7
+  },
+  {
+    "id": "Q80811",
+    "name": "Sputnik 1",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "first artificial Earth satellite",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sputnik_1",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sputnik%201%20satellite%20model.png",
+    "description": "Sputnik 1, often referred to as simply Sputnik, was the first artificial Earth satellite. It was launched into an elliptical low Earth orbit by the Soviet Union on 4 October 1957 as part of the Soviet space program. It sent a radio signal back to Earth for three weeks before its three silver-zinc batteries became depleted. Aerodynamic drag caused it to fall back into the atmosphere on 4 January, 1958.",
+    "at": {
+      "year": 1957,
+      "month": 10
+    },
+    "row": 3
+  },
+  {
+    "id": "Q48475",
+    "name": "Voyager 2",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "space probe launched by NASA to study the outer Solar System, second furthest spacecraft from Earth after Voyager 1",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_2",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Voyager%20spacecraft.jpg",
+    "description": "Voyager 2 is a space probe launched by NASA on August 20, 1977, as a part of the Voyager program. It was launched on a trajectory towards the gas giants and enabled further encounters with the ice giants. The only spacecraft to have visited either of the ice giant planets, it was the third of five spacecraft to achieve Solar escape velocity, which allowed it to leave the Solar System. Launched 16 days before its twin Voyager 1, the primary mission of the spacecraft was to study the outer planets and its extended mission is to study interstellar space beyond the Sun's heliosphere.",
+    "at": {
+      "year": 1977,
+      "month": 8
+    },
+    "row": 10
+  },
+  {
+    "id": "Q101017",
+    "name": "distillation",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "method of separating mixtures based on differences in volatility of components in a boiling liquid mixture",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Distillation",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dorf%20Lore%20-%20Schnaps-Destillation.jpg",
+    "imageAttribution": "Hans-Peter Grumpe, via Wikimedia Commons",
+    "description": "Distillation, also classical distillation, is the process of separating the component substances of a liquid mixture of two or more chemically discrete substances by selective boiling of the mixture and the condensation of the vapors in a still.",
+    "at": {
+      "year": 300
+    },
+    "row": 0
+  },
+  {
+    "id": "Q47433",
+    "name": "banknote",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "form of physical currency made of paper or polymer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Banknote",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BOH%26MOR-10-Protectorate%20of%20Bohemia%20and%20Moravia-50%20Korun%20%281944%29.jpg",
+    "description": "A banknote or bank note – also called a bill or simply a note – is a type of paper money that is made and distributed (\"issued\") by a bank of issue, payable to the bearer on demand. Banknotes were originally issued by commercial banks, which were legally required to redeem the notes for legal tender when presented to the chief cashier of the originating bank. These commercial banknotes were only traded at face value in the market served by the issuing bank. Commercial banknotes have primarily been replaced by national banknotes issued by central banks or monetary authorities.",
+    "at": {
+      "year": 618
+    },
+    "row": 0
+  },
+  {
+    "id": "Q129053",
+    "name": "partition of India",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 78,
+    "tagline": "1947 Partition of British India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Partition_of_India",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Partition%20of%20India%201947%20es.svg",
+    "imageAttribution": "Superbenjamin (original)derivative work by Milenioscuro\n\ntranslator: Manlleus (ca), via Wikimedia Commons",
+    "description": "The partition of India in 1947 was the division of British India into two independent dominion states, the Union of India and Dominion of Pakistan. The Union of India is today the Republic of India, and the Dominion of Pakistan is the Islamic Republic of Pakistan and the People's Republic of Bangladesh. The partition involved the division of two provinces, Bengal and the Punjab, based on district-wide non-Muslim or Muslim majorities. It also involved the division of the British Indian Army, the Royal Indian Navy, the Indian Civil Service, the railways, and the central treasury, between the two new dominions. The partition was set forth in the Indian Independence Act 1947 and resulted in the end of the British Raj, or Crown rule in India. The two self-governing countries of India and Pakistan legally came into existence at midnight on 14–15 August 1947.",
+    "at": {
+      "year": 1947,
+      "month": 8
+    },
+    "row": 14
+  },
+  {
+    "id": "Q133331",
+    "name": "First Council of Nicaea",
+    "category": "religion-mythology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "council of Christian bishops in Nicaea, 325",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Council_of_Nicaea",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/THE%20FIRST%20COUNCIL%20OF%20NICEA.jpg",
+    "description": "The First Council of Nicaea was a council of Christian bishops convened in the Bithynian city of Nicaea by the Roman Emperor Constantine I, also known as the First Ecumenical Council. It met from May until the end of July 325.",
+    "period": {
+      "start": {
+        "year": 325,
+        "month": 5
+      },
+      "end": {
+        "year": 325,
+        "month": 7
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q51648",
+    "name": "East-West Schism",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "division of Christianity into two large parts in 1054",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/East%E2%80%93West_Schism",
+    "description": "The East–West Schism, also known as the Great Schism or the Schism of 1054, is the break of communion between the Catholic Church and the Eastern Orthodox Church since 1054. A series of ecclesiastical differences, theological disputes and geopolitical tensions between the Greek East and Latin West preceded the formal split in 1054. Prominent among these were the Filioque clause of the Nicene Creed, whether leavened or unleavened bread should be used in the Eucharist, iconoclasm, the coronation of Charlemagne as emperor of the Romans in 800, the pope's claim to universal jurisdiction, and the place of the See of Constantinople in relation to the pentarchy. Although 1054 has become conventional, various scholars have proposed different dates for the Great Schism, including 1009, 1204, 1277, and 1484.",
+    "at": {
+      "year": 1054,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q125953",
+    "name": "Tunguska event",
+    "category": "environment-geology",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "powerful explosion that occurred near the Podkamennaya Tunguska River",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tunguska_event",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tunguska%20Ereignis-1.jpg",
+    "description": "The Tunguska event was a large explosion of between 3 and 50 megatons TNT equivalent that occurred near the Podkamennaya Tunguska River in Yeniseysk Governorate, Russia, on the morning of 30 June [O.S. 17 June] 1908.",
+    "at": {
+      "year": 1908,
+      "month": 6
+    },
+    "row": 4
+  },
+  {
+    "id": "Q159766",
+    "name": "Dutch East India Company",
+    "category": "commerce-finance",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "1602–1799 Dutch trading company",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dutch_East_India_Company",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vereenigde%20Oostindische%20Compagnie%20spiegelretourschip%20Amsterdam%20replica.jpg",
+    "imageAttribution": "McKarri, via Wikimedia Commons",
+    "description": "The United East India Company, commonly known as the Dutch East India Company, was a chartered trading company and one of the first joint-stock companies in the world. Established on 20 March 1602 by the States General of the Netherlands amalgamating existing companies, it was granted a 21-year monopoly to carry out trade activities in Asia. Shares in the company could be purchased by any citizen of the Dutch Republic and bought and sold in open-air secondary markets, one of which became the Amsterdam Stock Exchange. The company possessed quasi-governmental powers, including the ability to wage war, imprison and execute convicts, negotiate treaties, strike its own coins, and establish colonies. Because it traded across multiple colonies and countries from both the East and the West, the VOC is sometimes considered to have been the world's first multinational corporation.",
+    "at": {
+      "year": 1602
+    },
+    "row": 1
+  },
+  {
+    "id": "Q8080",
+    "name": "1896 Summer Olympics",
+    "category": "sports-entertainment",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "Games of the I Olympiad, celebrated in Athens (Greece) in 1896",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1896_Summer_Olympics",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jeux%20Olympiques%20d%27Ath%C3%A8nes%201896.jpg",
+    "description": "The 1896 Summer Olympics, officially known as the Games of the I Olympiad, and commonly known as Athens 1896, were the first international Olympic Games held in modern history. Organised by the International Olympic Committee (IOC), which had been created by French aristocrat Pierre de Coubertin, the event was held in Athens, Greece, from 6 to 15 April 1896.",
+    "period": {
+      "start": {
+        "year": 1896,
+        "month": 4
+      },
+      "end": {
+        "year": 1896,
+        "month": 4
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q988780",
+    "name": "Electromagnetic induction",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "production of voltage by a varying magnetic field",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Experiencia%20de%20Faraday.gif",
+    "imageAttribution": "Juancarcole, via Wikimedia Commons",
+    "description": "Electromagnetic induction or magnetic induction is the production of an electromotive force (emf) across an electrical conductor in a changing magnetic field.",
+    "at": {
+      "year": 1831
+    },
+    "row": 2
+  },
+  {
+    "id": "Q20124",
+    "name": "On the Origin of Species",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "treatise on natural selection, written by Charles Darwin",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Origin%20of%20Species%20title%20page.jpg",
+    "description": "On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life is a work of scientific literature by the English naturalist Charles Darwin that is considered to be the foundation of evolutionary biology. It was published on 24 November 1859. Darwin's book introduced the scientific theory that populations evolve over the course of generations through a process of natural selection, although Lamarckism was also included as a mechanism of lesser importance. The book presented a body of evidence that the diversity of life arose by common descent through a branching pattern of evolution. Darwin included evidence that he had collected on the Beagle expedition in the 1830s and his subsequent findings from research, correspondence, and experimentation.",
+    "at": {
+      "year": 1859,
+      "month": 11
+    },
+    "row": 0
+  },
+  {
+    "id": "Q144334",
+    "name": "printing press",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "device for evenly printing ink onto a print medium",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg",
+    "description": "A printing press is a machine that transfers ink onto materials such as paper or cloth by applying pressure to an inked surface. It marked a major advance on earlier methods, in which ink was applied to the printing surface and the paper was rubbed by hand to transfer it. The invention and global spread of the printing press transformed book production and communication during the early modern period.",
+    "at": {
+      "year": 1439
+    },
+    "row": 1
+  },
+  {
+    "id": "Q46904",
+    "name": "Global System for Mobile Communications",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "standard to describe protocols for second generation digital cellular networks used by mobile phones",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/GSM",
+    "description": "The Global System for Mobile Communications (GSM) is a family of standards to describe the protocols for second-generation (2G) digital cellular networks, as used by mobile devices such as mobile phones and mobile broadband modems. GSM is also a trademark owned by the GSM Association. \"GSM\" may also refer to the voice codec initially used in GSM.",
+    "at": {
+      "year": 1990
+    },
+    "row": 11
+  },
+  {
+    "id": "Q171043",
+    "name": "steam locomotive",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "railway locomotive which generates its tractive power from a steam engine",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_locomotive",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/3511%20-%20Hartswater%20240481.jpg",
+    "imageAttribution": "User:Malcolm Best, via Wikimedia Commons",
+    "description": "A steam locomotive is a type of locomotive that provides the force to move itself and other vehicles by means of the expansion of steam. It is fuelled by burning combustible material to heat water in the locomotive's boiler to the point where it becomes gaseous and its volume increases 1,600 to 1,700 times. Functionally, it is a self-propelled steam engine on wheels.",
+    "at": {
+      "year": 1814
+    },
+    "row": 4
+  },
+  {
+    "id": "Q193692",
+    "name": "electric car",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "automobile propelled by an electric motor using energy stored in rechargeable batteries",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_car",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Electric%20Car%20recharging.jpg",
+    "imageAttribution": "original: Michael Movchinedited by Felix Müller, via Wikimedia Commons",
+    "description": "An electric car or electric vehicle (EV) is an automobile that uses electrical energy as the primary source of propulsion. The term normally refers to a plug-in electric vehicle, typically a battery electric vehicle (BEV), which only uses energy stored in on-board battery packs, but broadly may also include plug-in hybrid electric vehicle (PHEV), range-extended electric vehicle (REEV) and fuel cell electric vehicle (FCEV), which can convert electric power from other fuels via a generator or a fuel cell.",
+    "at": {
+      "year": 1835
+    },
+    "row": 3
+  },
+  {
+    "id": "Q174174",
+    "name": "diesel engine",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "internal combustion engine with quality rotational frequency governing, internal mixture formation, lean air-fuel-ratio, diffusion flame and compression ignition",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Diesel_engine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MAN%20TGX%20V8%20engine.JPG",
+    "imageAttribution": "High Contrast, via Wikimedia Commons",
+    "description": "A diesel engine is an internal combustion engine in which ignition of diesel fuel is caused by the elevated temperature of the air in the cylinder due to mechanical compression; thus, the diesel engine is also called a compression-ignition engine. This contrasts with engines using spark plug-ignition of the air-fuel mixture, such as a petrol engine or a gas engine. The diesel engine is named after its inventor, German engineer Rudolf Diesel.",
+    "at": {
+      "year": 1893
+    },
+    "row": 3
+  },
+  {
+    "id": "Q164338",
+    "name": "Shinkansen",
+    "category": "transportation",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 77,
+    "tagline": "Japanese high-speed rail system",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Shinkansen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/JR%20East%20Shinkansen%20lineup%20at%20Niigata%20Depot%20201210.jpg",
+    "imageAttribution": "Rsa, via Wikimedia Commons",
+    "description": "The Shinkansen , colloquially known in English as the bullet train, is a network of high-speed railway lines in Japan. The system was developed to provide connections between Tokyo and other regions of the country. In addition to long-distance services, some sections in and around the largest metropolitan areas are used for commuter travel.",
+    "at": {
+      "year": 1964,
+      "month": 10
+    },
+    "row": 8
+  },
+  {
+    "id": "Q79757",
+    "name": "barometer",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "scientific instrument used to measure atmospheric pressure",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Barometer",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Barometr%2C%20Skwer%20Bowiena%2C%20Sopot%20-%20panoramio.jpg",
+    "imageAttribution": "Krzysztof Rakowski, via Wikimedia Commons",
+    "description": "A barometer is a scientific instrument that is used to measure air pressure. Pressure tendency, which is derived from barometric readings, can forecast short term changes in the weather. Many measurements of air pressure are used within surface weather analysis to help find surface troughs, pressure systems and frontal boundaries.",
+    "at": {
+      "year": 1643
+    },
+    "row": 2
+  },
+  {
+    "id": "Q189511",
+    "name": "electronic cigarette",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "device usually used to quit or be an alternative to tobacco",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electronic_cigarette",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2020%20E-papieros%20mod.jpg",
+    "imageAttribution": "Jacek Halicki, via Wikimedia Commons",
+    "description": "An electronic cigarette (e-cigarette) or vape is a device that simulates tobacco smoking. It consists of an atomizer, a power source such as a battery, and a container such as a cartridge or tank. Instead of smoke, the user inhales vapor, often called \"vaping\".",
+    "at": {
+      "year": 1963
+    },
+    "row": 7
+  },
+  {
+    "id": "Q64403",
+    "name": "electrolysis",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "technique that uses a direct electric current to drive an otherwise non-spontaneous chemical reaction",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electrolysis",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Elektrolyse%20Allgemein.svg",
+    "description": "In chemistry and manufacturing, electrolysis is a technique that uses direct electric current (DC) to drive an otherwise non-spontaneous biological and physical reaction. Electrolysis is commercially important as a stage in the separation of elements from naturally occurring sources such as ores using an electrolytic cell. The voltage that is needed for electrolysis to occur is called the decomposition potential. The word \"lysis\" means to separate or break, so in terms, electrolysis would mean \"breakdown via electricity.\"",
+    "at": {
+      "year": 1787
+    },
+    "row": 4
+  },
+  {
+    "id": "Q131502",
+    "name": "electrical generator",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "device that converts mechanical energy to electrical energy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_generator",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siemens%20Brothers%20-%20DC%20Generator%20-%20Electricity%20Gallery%20-%20BITM%20-%20Kolkata%202015-05-09%206509.JPG",
+    "imageAttribution": "Biswarup Ganguly, via Wikimedia Commons",
+    "description": "In electricity generation, a generator, also called an electric generator, electrical generator, and electromagnetic generator is an electromechanical device that converts mechanical energy to electrical energy for use in an external circuit. In most generators which are rotating machines, a source of kinetic power rotates the generator's shaft, and the generator produces an electric current at its output terminals which flows through an external circuit, powering electrical loads. Sources of mechanical energy used to drive generators include steam turbines, gas turbines, water turbines, internal combustion engines, wind turbines and even hand cranks. Generators produce nearly all of the electric power for worldwide electric power grids. The first electromagnetic generator, the Faraday disk, was invented in 1831 by British scientist Michael Faraday.",
+    "at": {
+      "year": 1873
+    },
+    "row": 6
+  },
+  {
+    "id": "Q131262",
+    "name": "University of Bologna",
+    "category": "philosophy-education",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "university in Bologna, Italy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/University_of_Bologna",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Palazzo%20Poggi%20UniBo.jpg",
+    "imageAttribution": "Utente:Mattia Barci, via Wikimedia Commons",
+    "description": "The University of Bologna is a public research university in Bologna, Italy. It is the oldest university in continuous operation in the world, and the first degree-awarding institution of higher learning. Teaching began around 1088, with the university becoming organised as universitas scholarium or guilds of students by the late 12th century. The university's emblem carries the motto Alma Mater Studiorum and the date A.D. 1088. With over 90,000 students, the University of Bologna is one of the largest universities in Europe.",
+    "at": {
+      "year": 1088
+    },
+    "row": 0
+  },
+  {
+    "id": "Q132560",
+    "name": "electron microscope",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "a magnifying system capable of showing the interior or surface of a microscopic object by means of directed electron beams",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electron_microscope",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Elektronenmikroskop.jpg",
+    "imageAttribution": "Stahlkocher, via Wikimedia Commons",
+    "description": "An electron microscope is a microscope that uses a beam of electrons as a source of illumination. It uses electron optics that are analogous to the glass lenses of an optical light microscope to control the electron beam, for instance focusing it to produce magnified images or electron diffraction patterns. As the wavelength of an electron can be more than 100,000 times smaller than that of visible light, electron microscopes have a much higher resolution of about 0.1 nm, which compares to about 200 nm for light microscopes. Electron microscope may refer to:Transmission electron microscope (TEM) where swift electrons go through a thin sampleScanning transmission electron microscope (STEM) which is similar to TEM with a scanned electron probeScanning electron microscope (SEM) which is similar to STEM, but with thick samplesElectron microprobe similar to a SEM, but more for chemical analysisLow-energy electron microscope (LEEM), used to image surfacesPhotoemission electron microscope (PEEM) which is similar to LEEM using electrons emitted from surfaces by photons",
+    "at": {
+      "year": 1931
+    },
+    "row": 2
+  },
+  {
+    "id": "Q116434",
+    "name": "phonograph",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "device for the analogue recording and playback of sound",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Phonograph",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Phonograph%20disc.jpg",
+    "description": "A phonograph, later called a gramophone, and since the 1940s a record player, or more recently a turntable, is a device for the mechanical and analogue reproduction of sound.",
+    "at": {
+      "year": 1877
+    },
+    "row": 0
+  },
+  {
+    "id": "Q160464",
+    "name": "button",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "small fastener used in clothing",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Button",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Plastic%20%26%20fabric%20buttons%20showing%20holes%20%26%20shank.jpg",
+    "imageAttribution": "Richard Wheeler (Zephyris) 2007. ==Licensing==, via Wikimedia Commons",
+    "description": "A button is a fastener that joins two pieces of fabric together by slipping through a loop or by sliding through a buttonhole.",
+    "at": {
+      "year": 1200
+    },
+    "row": 1
+  },
+  {
+    "id": "Q160137",
+    "name": "ballpoint pen",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "writing implement",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ballpoint_pen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/03-BICcristal2008-03-26.jpg",
+    "imageAttribution": "Trounce, via Wikimedia Commons",
+    "description": "A ballpoint pen, also known as a biro, ball pen, or dot pen, is a pen that dispenses ink over a hard ball at its point, i.e., over a \"ball point\". The materials commonly used are steel, brass, or tungsten carbide. The design was conceived and developed as a cleaner and more reliable alternative to dip pens and fountain pens, and it is now the world's most-used writing instrument; millions are manufactured and sold daily. It has influenced art and graphic design and spawned an artwork genre.",
+    "at": {
+      "year": 1888
+    },
+    "row": 6
+  },
+  {
+    "id": "Q180548",
+    "name": "neolithic revolution",
+    "category": "food-agriculture",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "transition from hunter gatherer to settled peoples",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Neolithic_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Knapp%20of%20Howar%202.jpg",
+    "description": "The Neolithic Revolution, also known as the  First Agricultural Revolution, was the wide-scale transition of many human cultures during the Neolithic period in Afro-Eurasia from a lifestyle of hunting and gathering to one of agriculture and settlement, making an increasingly large population possible. These settled communities permitted humans to observe and experiment with plants, learning how they grew and developed. This new knowledge led to the domestication of plants into crops.",
+    "period": {
+      "start": {
+        "year": -9000
+      },
+      "end": {
+        "year": -3000
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q188371",
+    "name": "Great Irish Famine",
+    "category": "public-health",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "1845–1852 famine in Ireland",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Famine_(Ireland)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Irish%20potato%20famine%20Bridget%20O%27Donnel.jpg",
+    "description": "The Great Famine, also known as the Great Hunger, the Famine and the Irish Potato Famine, was a period of mass starvation and disease in Ireland from 1845 to 1852. It constituted a major historical social crisis and had a significant impact on Irish society and history. The most severely affected areas were in western and southern Ireland—where the Irish language was dominant—hence, in Irish, the period was contemporaneously known as an Drochshaol, which translates to \"the bad life\" and loosely translates to \"the hard times\". Debate exists regarding nomenclature for the event, including whether to use the terms \"Famine\", \"Potato Famine\" or \"Great Hunger\".",
+    "period": {
+      "start": {
+        "year": 1845
+      },
+      "end": {
+        "year": 1852
+      }
+    },
+    "row": 5
+  },
+  {
+    "id": "Q11146",
+    "name": "Maastricht Treaty",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "Founding treaty of the European Union, signed in 1992 and effective from 1993",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Maastricht_Treaty",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/GER%20%E2%80%94%20BY%20%E2%80%94%20Regensburg%20-%20Donaumarkt%201%20%28Museum%20der%20Bayerischen%20Geschichte%3B%20Vertrag%20von%20Maastricht%29%20%28cropped%29.JPG",
+    "imageAttribution": "User:Mateus2019, via Wikimedia Commons",
+    "description": "The Treaty on European Union, commonly known as the Maastricht Treaty, is the foundation treaty of the European Union (EU). Concluded in 1992 between the then-twelve member states of the European Communities, it announced \"a new stage in the process of European integration\" chiefly in provisions for a shared European citizenship, for the eventual introduction of a single currency, and for common foreign and security policies, and a number of changes to the European institutions and their decision-making procedures, not least a strengthening of the powers of the European Parliament and more majority voting on the Council of Ministers. Although these were seen by many to presage a \"federal Europe\", key areas remained inter-governmental with national governments collectively taking key decisions. This constitutional debate continued through the negotiation of subsequent treaties, culminating in the 2007 Treaty of Lisbon.",
+    "at": {
+      "year": 1992,
+      "month": 2
+    },
+    "row": 6
+  },
+  {
+    "id": "Q154705",
+    "name": "unification of Germany",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "creation of a politically and administratively integrated nation state of German-speaking populations on 18 January 1871, in the form of the German Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Unification_of_Germany",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/A%20v%20Werner%20-%20Kaiserproklamation%20am%2018%20Januar%201871%20%283.%20Fassung%201885%29.jpg",
+    "description": "The Unification of Germany was a process of building the first nation-state for Germans with federal features based on the concept of Lesser Germany. It commenced on 18 August 1866 with the adoption of the North German Confederation Treaty establishing the North German Confederation, initially a military alliance de facto dominated by the Kingdom of Prussia, which was subsequently deepened through adoption of the North German Constitution.",
+    "period": {
+      "start": {
+        "year": 1866,
+        "month": 8
+      },
+      "end": {
+        "year": 1871,
+        "month": 5
+      }
+    },
+    "row": 8
+  },
+  {
+    "id": "Q186356",
+    "name": "New Deal",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 76,
+    "tagline": "economic programs of U.S. president Franklin D. Roosevelt",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/New_Deal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/New%20Deal%20collage.jpg",
+    "description": "The New Deal was a 1933–1938 series of economic, social, and political reforms in response to the Great Depression in the United States under President Franklin D. Roosevelt. He introduced the phrase when accepting the Democratic Party presidential nomination in the 1932 United States presidential election, winning in a landslide over incumbent Herbert Hoover, whose administration was widely viewed as ineffective. Roosevelt attributed the Depression to inherent market instability and inadequate aggregate demand, and argued that stabilizing and rationalizing the economy required massive government intervention.",
+    "period": {
+      "start": {
+        "year": 1933
+      },
+      "end": {
+        "year": 1939
+      }
+    },
+    "row": 5
+  },
+  {
+    "id": "Q157506",
+    "name": "Ninety-five Theses",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "disputation by Martin Luther on indulgences",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ninety-five_Theses",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Luther%2095%20Thesen.png",
+    "description": "The  Ninety-five Theses or  Disputation on the Power and Efficacy of Indulgences is a list of propositions for an academic disputation written in 1517 by Martin Luther, then a professor of moral theology at the University of Wittenberg, Germany. The Theses are retrospectively considered to have launched the Protestant Reformation and the birth of Protestantism, despite various quasi- or proto-Protestant groups having existed previously.",
+    "at": {
+      "year": 1517,
+      "month": 11
+    },
+    "row": 0
+  },
+  {
+    "id": "Q188468",
+    "name": "ancient Olympic Games",
+    "category": "sports-entertainment",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "athletic competitions in ancient Greece",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ancient_Olympic_Games",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/In%20the%20earlist%20times%20a%20simple%20foot-race%20was%20the%20only%20event.jpg",
+    "description": "The ancient Olympic Games, or the ancient Olympics, were a series of athletic competitions among representatives of city-states and one of the Panhellenic Games of ancient Greece. They were held at the Panhellenic religious sanctuary of Olympia, in honor of Zeus, and the Greeks gave them a mythological origin. The originating Olympic Games are traditionally dated to 776 BC. The games were held every four years, or Olympiad, which became a unit of time in historical chronologies. These Olympiads were referred to based on the winner of their stadion sprint, e.g., \"the third year of the eighteenth Olympiad when Ladas of Argos won the stadion\". They continued to be celebrated when Greece came under Roman rule in the 2nd century BC. Their last recorded celebration was in AD 393, under the emperor Theodosius I, but archaeological evidence indicates that some games were still held after this date. The games likely came to an end under Theodosius II, possibly in connection with a fire that burned down the temple of the Olympian Zeus during his reign.",
+    "at": {
+      "year": -775
+    },
+    "row": 0
+  },
+  {
+    "id": "Q164815",
+    "name": "Woodstock Festival",
+    "category": "sports-entertainment",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 76,
+    "tagline": "1969 music festival in New York, United States",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Woodstock",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Woodstock%20redmond%20crowd.JPG",
+    "imageAttribution": "Derek Redmond and Paul Campbell, via Wikimedia Commons",
+    "description": "The Woodstock Music and Art Fair, commonly referred to as Woodstock, was a music festival held from August 15 to 18, 1969, on Max Yasgur's dairy farm in Bethel, New York, 60 miles (95 km) southwest of the town of Woodstock. Billed as \"an Aquarian Exposition: 3 Days of Peace & Music\", it attracted an audience of more than 460,000. Thirty-two acts performed outdoors despite overcast skies and sporadic rain. It was one of the largest music festivals in history and would become the peak musical event to reflect the counterculture of the 1960s.",
+    "period": {
+      "start": {
+        "year": 1969
+      },
+      "end": {
+        "year": 1969,
+        "month": 8
+      }
+    },
+    "row": 11
+  }
+]
