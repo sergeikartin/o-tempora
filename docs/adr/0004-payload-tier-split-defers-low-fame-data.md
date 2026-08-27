@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0006-detail-level-merges-data-depth-and-payload-tier.md
 ---
 
 # Payload Tier splits pipeline output by Fame Score to cut initial-load bytes
