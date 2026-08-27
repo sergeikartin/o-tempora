@@ -37,6 +37,21 @@ const DetailPanel = lazy(() =>
   })),
 );
 
+// Eagerly pulled into the main CSS bundle (the component itself stays
+// lazy above) so `.panel`'s closed-by-default transform is already applied
+// before first paint. DetailPanel stays mounted at all times, closed state
+// and all (docs/adr/0006), and the prerender step (vite-plugins/prerender-
+// default-viewport.ts) bakes that closed `<aside>` straight into
+// index.html — without this, the browser paints it unstyled first and only
+// gets `.panel`'s rules (including its `transition: transform`) once the
+// lazy chunk's CSS arrives, which animates the on-screen "no transform yet"
+// state into the off-screen one: a visible slide-away flash on every load.
+// A bare side-effect import gets tree-shaken away (the CSS module's JS
+// proxy has no used export) — referencing a class name keeps it.
+import detailPanelStyles from '../widgets/detail-panel/ui/DetailPanel.module.css';
+
+void detailPanelStyles.panel;
+
 interface AppProps {
   // Set only by the build-time prerender step (vite-plugins/prerender-
   // default-viewport.ts), which already has the resolved level 1+2 dataset in
