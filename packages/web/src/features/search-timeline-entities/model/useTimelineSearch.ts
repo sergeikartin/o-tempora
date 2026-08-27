@@ -66,14 +66,15 @@ function matchesQuery(
 //
 // Reuses the exact same filterBy*/filterConflictsByFilterValues pipeline
 // TimelineCanvas applies (shared/lib/entity/) so a search result
-// can never surface an entity the current Data Depth/Region/Occupation
+// can never surface an entity the current Detail Level/Region/Occupation
 // Domain/Conflicts & Milestones filters have hidden from the canvas — see
 // CONTEXT.md's Search entry and
-// docs/adr/0010-search-stays-inside-active-filters-and-payload-tiers.md.
+// docs/adr/0010-search-stays-inside-active-filters-and-payload-tiers.md
+// (pre-dates the Detail Level merge, ADR 0006 — its substance is unchanged).
 // `people`/`conflicts`/`milestones` are expected to be the same merged
-// Tier0(+Tier1) arrays already passed to TimelineCanvas, so results
-// automatically reflect however much of Tier 1 has loaded so far, with no
-// separate load triggered here.
+// arrays already passed to TimelineCanvas, so results automatically reflect
+// however much of the deeper Detail Level delta files have loaded so far,
+// with no separate load triggered here.
 export function useTimelineSearch({
   people,
   conflicts,

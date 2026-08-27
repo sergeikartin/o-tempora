@@ -128,7 +128,7 @@
    edge as a sheet instead of the right edge as a side drawer, sized to fit
    the narrow width instead of a fixed 340px column. Declared after the base
    .panel/.panel.open rules above so it wins the cascade. */
-@media (max-width: 640px) {
+@media (max-width: 960px) {
   .panel {
     top: auto;
     left: 0;

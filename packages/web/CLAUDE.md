@@ -1,6 +1,6 @@
 # packages/web
 
-Frontend: React 19 + TypeScript + Vite + D3. Reads static JSON (from `packages/shared-types`) bundled at build time — no live/changing data, though each lane's dataset loads as two build-time-bundled chunks (Payload Tier's Tier 0/Tier 1, `docs/config-variables.md`) fetched over the network at different times rather than one inlined blob.
+Frontend: React 19 + TypeScript + Vite + D3. Reads static JSON (from `packages/shared-types`) bundled at build time — no live/changing data, though each lane's dataset loads as 4 build-time-bundled chunks (Detail Level's per-level delta files, `docs/config-variables.md`) fetched over the network at different times rather than one inlined blob.
 
 - Entry Point: `src/main.tsx` (app composition in `src/app/`)
 

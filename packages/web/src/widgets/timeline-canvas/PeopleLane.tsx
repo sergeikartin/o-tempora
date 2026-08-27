@@ -1,42 +1,36 @@
 import * as d3 from 'd3';
 import {
   forwardRef,
+  memo,
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react';
-import { DOMAIN_COLORS } from '../../shared/config';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { m } from '../../shared/paraglide/messages.js';
 import type { Person } from '../../shared/types';
-import { mapPeople } from './map-to-items';
 import {
-  estimateLabelWidthPx,
+  buildPersonLayout,
+  mapPeople,
+  type PersonLayout,
+} from './map-to-items';
+import {
+  buildMarkChildren,
+  PERSON_MARK_SHAPE,
+  seedPrerenderedData,
+} from './mark-shape';
+import { renderPeopleMarkupHtml } from './mark-shape-html';
+import {
   HIT_AREA_PADDING_PX,
   PERIOD_LINE_HEIGHT,
-  personLabelYForRow,
   personLaneHeight,
-  personLineCenterYForRow,
-  SELECTED_LINE_HEIGHT_PX,
-  SELECTION_RING_GAP_PX,
-  SELECTION_RING_WIDTH_PX,
   type ZoomAnimationHandle,
   zoomAnimationCounterScaleAttr,
   zoomAnimationGroupTransformAttr,
 } from './options';
 import styles from './PeopleLane.module.css';
-
-interface PersonLayout {
-  id: string;
-  name: string;
-  x1: number;
-  x2: number;
-  hitX2: number;
-  labelY: number;
-  lineY: number;
-  fill: string;
-}
 
 interface PeopleLaneProps {
   people: Person[];
@@ -60,7 +54,13 @@ interface PeopleLaneProps {
 // line's own occupation-domain fill. Overlapping people are stacked into
 // separate rows same as before; a colliding label (wider than its own line)
 // claims the row via pixelInterval above rather than moving to its own band.
-export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
+// memo: props stay referentially stable across scroll/pan frames (TimelineCanvas
+// re-renders every rAF tick while scrolling, but none of people/xScale/
+// personRowFor/selectedId change from that) — without this, the whole render
+// body (and React's reconciliation of its output) reruns on every such frame
+// for nothing, since the D3 join below is already separately gated on [layout,
+// totalHeight].
+const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
   function PeopleLane({ people, xScale, personRowFor, selectedId }, ref) {
     const svgRef = useRef<SVGSVGElement>(null);
     const hasMountedRef = useRef(false);
@@ -76,27 +76,43 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
     const totalWidth = xScale.range()[1] ?? 0;
 
     const layout: PersonLayout[] = useMemo(
-      () =>
-        items.map((item) => {
-          const row = rowOfPerson.get(item.id) ?? 0;
-          const x1 = xScale(item.startYear);
-          const x2 = Math.max(xScale(item.endYear), x1 + 2);
-          return {
-            id: item.id,
-            name: item.name,
-            x1,
-            x2,
-            // Label is left-aligned at x1, so it never extends left of the
-            // line — only right, past x2 for a short-lived person with a
-            // long name.
-            hitX2: Math.max(x2, x1 + estimateLabelWidthPx(item.name)),
-            labelY: personLabelYForRow(row, rowCount),
-            lineY: personLineCenterYForRow(row, rowCount),
-            fill: DOMAIN_COLORS[item.occupationDomain],
-          };
-        }),
-      [items, rowOfPerson, rowCount, xScale],
+      () => buildPersonLayout(people, xScale, personRowFor),
+      [people, xScale, personRowFor],
     );
+
+    // Frozen at mount (the lazy initializer runs once, ever) — g.people's
+    // real starting content, identical on server and client since both
+    // derive it from the same layout via the same shared templater
+    // (mark-shape-html.ts). Never recomputed on a later `layout` change: the
+    // D3 join below owns every update after mount, same as it always has —
+    // this only exists so first paint (server or client, before that join
+    // has ever run) already shows real marks instead of an empty <g>. The
+    // whole `{ __html }` object (not just the string) is frozen here — React
+    // re-applies dangerouslySetInnerHTML whenever that object's *reference*
+    // changes, and a fresh `{ __html: x }` literal in the JSX below would be
+    // a new reference on every render, re-stomping every D3 update since
+    // mount (this is what a zoom animation's re-render was doing before this
+    // fix — reverting every mark straight back to its frozen starting
+    // position).
+    const [initialPeopleHtmlProp] = useState(() => ({
+      __html: renderPeopleMarkupHtml(layout, styles),
+    }));
+
+    // Frozen at mount, same reasoning as initialPeopleHtmlProp above: without
+    // it, the <svg> below has no height at all on first paint (server or
+    // client, before the D3 effect below has ever run) — .bottomAlign's
+    // min-height: 100% then pads it up to fill .peopleLane's box exactly,
+    // reporting as *not overflowing* (scrollHeight === clientHeight) even
+    // though the real row count does overflow. TimelineCanvas.tsx's own
+    // scroll-to-bottom pin (and the prerender build step's matching
+    // pre-hydration pin, vite-plugins/prerender-default-viewport.ts) both
+    // read scrollHeight to do that, so a wrong pre-D3 scrollHeight here was
+    // the actual root cause of the CLS/forced-reflow regression the vertical
+    // scroll-jump piece of that ticket kept finding (.scratch/
+    // prerender-default-viewport/issues/06) — not PeopleLane's D3 mount
+    // effect below, which was already applying the correct height
+    // synchronously (no transition) on first mount, just one commit later.
+    const [initialSvgHeightPx] = useState(() => totalHeight);
 
     // D3 owns the DOM inside <g class="people"> — one <g class="d3-person">
     // per person, containing its lifespan line and name label. Literal
@@ -141,66 +157,30 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
         hasMountedRef.current = true;
       }
 
-      const personGroups = svg
+      // g.people's real children are already there before this effect's
+      // first run — rendered by the initialPeopleHtml dangerouslySetInnerHTML
+      // above, on both server and client — but carry no bound data yet; seed
+      // it from their own data-entity-id before the keyed join below, so it
+      // adopts them as `update` instead of tearing them down and fading in a
+      // fresh `enter`.
+      const personNodes = svg
         .select<SVGGElement>('g.people')
-        .selectAll<SVGGElement, PersonLayout>('g.d3-person')
-        .data(layout, (d) => d.id)
+        .selectAll<SVGGElement, PersonLayout | undefined>('g.d3-person');
+      seedPrerenderedData(personNodes, layout);
+      const personGroups = personNodes
+        .data(layout, (d) => d?.id ?? '')
         .join(
           (enter) => {
             const g = enter
               .append('g')
               .attr('class', 'd3-person')
               .style('opacity', 0);
-            // Invisible, oversized rect behind the line/label — the real hover
-            // and click target, since a 6px line and its label are too thin
-            // and too far apart (see HIT_AREA_PADDING_PX) to hit reliably on
-            // their own. Appended first so it paints behind the visible marks.
-            const hit = g
-              .append('rect')
-              .attr('class', `d3-hit ${styles.hitArea}`);
-            // Two concentric, wider duplicate lines painted behind the real
-            // one, invisible (opacity: 0) until the search-jump/selection
-            // effect below shows them — see PeopleLane.module.css's
-            // .lineRingOuter/.lineRingGap for why a ring on a round-capped
-            // line has to be real geometry rather than a CSS outline filter.
-            const lineRingOuter = g
-              .append('line')
-              .attr('class', `d3-line-ring-outer ${styles.lineRingOuter}`)
-              .attr(
-                'stroke-width',
-                SELECTED_LINE_HEIGHT_PX +
-                  2 * (SELECTION_RING_GAP_PX + SELECTION_RING_WIDTH_PX),
-              )
-              .attr('stroke-linecap', 'round');
-            const lineRingGap = g
-              .append('line')
-              .attr('class', `d3-line-ring-gap ${styles.lineRingGap}`)
-              .attr(
-                'stroke-width',
-                SELECTED_LINE_HEIGHT_PX + 2 * SELECTION_RING_GAP_PX,
-              )
-              .attr('stroke-linecap', 'round');
-            const line = g
-              .append('line')
-              .attr('class', `d3-line ${styles.line}`)
-              .attr('stroke-width', PERIOD_LINE_HEIGHT)
-              .attr('stroke-linecap', 'round');
-            // Wrapped in its own <g> (a literal marker class, not styled
-            // itself) so the zoom-animation counter-scale below can target
-            // that wrapper instead of .d3-name directly — .name has its own
-            // `transition: transform` for the hover-grow effect, which would
-            // otherwise fight the counter-scale's own per-frame writes to the
-            // very same CSS property (both count as "the transform property
-            // changed", so the browser's transition engine tries to smooth
-            // between every animation-frame value, lagging a frame behind and
-            // producing a visible width wobble/flicker instead of an exact
-            // per-tick cancellation).
-            const name = g
-              .append('g')
-              .attr('class', 'd3-name-zoom')
-              .append('text')
-              .attr('class', `d3-name ${styles.name}`)
-              .attr('dominant-baseline', 'hanging');
+            // Children built from PERSON_MARK_SHAPE, in its declared order —
+            // hit rect, selection rings, the lifespan line, then the
+            // zoom-wrapped name label — see mark-shape.ts's own comments for
+            // why each is shaped the way it is.
+            const [hit, lineRingOuter, lineRingGap, line, name] =
+              buildMarkChildren(g, PERSON_MARK_SHAPE, styles);
             // A brand-new mark starts already at its target row — only a
             // pre-existing mark's row *change* animates (below), via the
             // shift transition on personGroups; an entering mark should just
@@ -371,13 +351,19 @@ export const PeopleLane = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
         <svg
           ref={svgRef}
           width={totalWidth}
+          height={initialSvgHeightPx}
           className={styles.svg}
           role="img"
           aria-label={m.peopleHeading()}
         >
-          <g className="people" />
+          <g
+            className="people"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: initialPeopleHtmlProp is our own pure templater's output (mark-shape-html.ts), not user input — see its own comment for why this exists at all.
+            dangerouslySetInnerHTML={initialPeopleHtmlProp}
+          />
         </svg>
       </div>
     );
   },
 );
+export const PeopleLane = memo(PeopleLaneImpl);

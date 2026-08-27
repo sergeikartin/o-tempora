@@ -1,0 +1,2152 @@
+[
+  {
+    "id": "Q171433",
+    "name": "Dolly the Sheep",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 75,
+    "tagline": "cloned female sheep; first cloned animal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dolly_(sheep)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dolly%20face%20closeup.jpg",
+    "imageAttribution": "Toni Barros from São Paulo, Brasil, via Wikimedia Commons",
+    "description": "Dolly was a female Finn-Dorset sheep and the first mammal that was cloned from an adult somatic cell. She was cloned by associates of the Roslin Institute in Scotland, using the process of nuclear transfer from a cell taken from a mammary gland. Her cloning proved that a cloned organism could be produced from a mature cell from a specific body part. Contrary to popular belief, she was not the first animal to be cloned.",
+    "at": {
+      "year": 1996,
+      "month": 7
+    },
+    "row": 4
+  },
+  {
+    "id": "Q190035",
+    "name": "gravitational wave",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 75,
+    "tagline": "propagating spacetime ripple",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gravitational_wave",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maya-NR-Simulation-with-Waveform-frame788-overlay.png",
+    "imageAttribution": "File:Maya-NR-Simulation-with-Waveform-frame788.png: Deborah Ferguson, Karan Jani, Deirdre Shoemaker, Pablo Laguna, Georgia Tech, MAYA Collaboration\nderivative work: MikeRun, via Wikimedia Commons",
+    "description": "Gravitational waves are waves of spacetime curvature produced by the relative motion of gravitating masses and which propagate away at the speed of light. They were first predicted by Albert Einstein as a consequence of his general theory of relativity, appearing as \"ripples in spacetime curvature\".Hundreds of these gravitational waves have since then been observed, first indirectly using binary-pulsar observations and, since 2015, directly through dedicated observatories.",
+    "at": {
+      "year": 2015,
+      "month": 9
+    },
+    "row": 12
+  },
+  {
+    "id": "Q205921",
+    "name": "Philosophiæ Naturalis Principia Mathematica",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 75,
+    "tagline": "1687 work by Isaac Newton describing his laws of motion and gravitation",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newton%27s%20Principia%20title%20page.png",
+    "description": "Philosophiæ Naturalis Principia Mathematica, often called simply the Principia, is a book by Sir Isaac Newton that expounds Newton's laws of motion and his law of universal gravitation.",
+    "at": {
+      "year": 1680
+    },
+    "row": 0
+  },
+  {
+    "id": "Q182323",
+    "name": "Ford Model T",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 75,
+    "tagline": "American car (1908-1927)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ford_Model_T",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ford%20T%20Jon%20Sullivan.jpg",
+    "description": "The Ford Model T is an automobile that was produced by the Ford Motor Company from October 1, 1908, to May 26, 1927. It is generally regarded as the first mass-affordable automobile, which made car travel available to middle-class Americans. The relatively low price was partly the result of Ford's efficient fabrication, including assembly line production instead of individual handcrafting. The savings from mass production allowed the price to decline from $780 in 1910 to $290 in 1924. It was mainly designed by three engineers, Joseph A. Galamb, Eugene Farkas, and Childe Harold Wills. The Model T was colloquially known as the \"Tin Lizzie\".",
+    "at": {
+      "year": 1908,
+      "month": 9
+    },
+    "row": 7
+  },
+  {
+    "id": "Q15003",
+    "name": "escalator",
+    "category": "landmarks",
+    "regionTags": [],
+    "fameScore": 75,
+    "tagline": "moving staircase",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Escalator",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Copenhagen%20Metro%20escalators.jpg",
+    "imageAttribution": "Stig Nygaard from Copenhagen, Denmark, via Wikimedia Commons",
+    "description": "An escalator is a moving staircase which carries people between floors of a building or structure. It consists of a motor-driven chain of individually linked steps on a track which cycle on a pair of tracks which keep the step tread horizontal.",
+    "at": {
+      "year": 1891
+    },
+    "row": 10
+  },
+  {
+    "id": "Q1932",
+    "name": "space race",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 75,
+    "tagline": "competition to explore space between USA and USSR",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Space_Race",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo-Soyuz-Test-Program-artist-rendering.jpg",
+    "description": "The Space Race was a 20th-century competition between the Cold War rivals, the United States and the Soviet Union, to achieve superior spaceflight capability. It had its origins in the ballistic missile-based nuclear arms race between the two nations following World War II and the onset of the Cold War. The technological advantage demonstrated by spaceflight achievement was seen as necessary for national security, particularly in regard to intercontinental ballistic missile and satellite reconnaissance capability, but also became part of the cultural symbolism and ideology of the time. The Space Race brought pioneering launches of artificial satellites, robotic landers to the Moon, Venus, and Mars, and human spaceflight in low Earth orbit and ultimately to the Moon.",
+    "period": {
+      "start": {
+        "year": 1957,
+        "month": 10
+      },
+      "end": {
+        "year": 1975,
+        "month": 7
+      }
+    },
+    "row": 13
+  },
+  {
+    "id": "Q180253",
+    "name": "fuel cell",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 75,
+    "tagline": "electrochemical cell that converts chemical energy into electricity by oxidizing a fuel",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fuel_cell",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fuel%20cell%20NASA%20p48600ac.jpg",
+    "description": "A fuel cell is an electrochemical cell that converts the chemical energy of a fuel and an oxidizing agent into electricity through a pair of redox reactions. Fuel cells are different from most batteries in requiring a continuous source of fuel and oxygen to sustain the chemical reaction, whereas in a battery the chemical energy usually comes from substances that are already present in the battery. Fuel cells can produce electricity continuously for as long as fuel and oxygen are supplied.",
+    "at": {
+      "year": 1842
+    },
+    "row": 2
+  },
+  {
+    "id": "Q13582",
+    "name": "Berlin Conference",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "international conference that regulated the distribution of European colonization and trade in Africa",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Berlin_Conference",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kongokonferenz.jpg",
+    "description": "The Berlin Conference of 1884–1885 was a meeting of colonial powers that concluded with the signing of the General Act of Berlin, an agreement regulating European colonisation and trade in Africa during the New Imperialism period. The conference of fourteen countries was organised by Otto von Bismarck, the first chancellor of Germany, at the request of Leopold II of Belgium at a building on Berlin's central Wilhelmstrasse. It met on 15 November 1884 and, after an adjournment, concluded on 26 February 1885 with the signing of the General Act. During the conference, attendees also discussed other related issues and agreed on a common framework for the recognition of European ''effective occupation'' of African coastal territory elsewhere on the continent. After the conference, European claims on African territory increased with international legal recognition, having a newly established legal framework for establishing colonies.",
+    "period": {
+      "start": {
+        "year": 1884,
+        "month": 11
+      },
+      "end": {
+        "year": 1885,
+        "month": 2
+      }
+    },
+    "row": 8
+  },
+  {
+    "id": "Q55816",
+    "name": "Chicxulub crater",
+    "category": "environment-geology",
+    "regionTags": [
+      "central-america"
+    ],
+    "fameScore": 75,
+    "tagline": "prehistoric impact crater buried underneath the Yucatán Peninsula in Mexico",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chicxulub_crater",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Chicxulub%20Impact%20Crater%2C%20Gulf%20of%20Mexico%20%2833789560443%29.jpg",
+    "imageAttribution": "O.V.E.R.V.I.E.W., via Wikimedia Commons",
+    "description": "The Chicxulub crater is an impact crater buried underneath the Yucatán Peninsula in Mexico. The crater is named after the onshore inland community of Chicxulub Pueblo. It was formed slightly over 66 million years ago when an asteroid, about ten kilometers in diameter, struck Earth. The crater is estimated to be two hundred kilometers (120 mi) in diameter and is buried to a depth of about one kilometer (0.6 mi) beneath younger sedimentary rocks. It is one of the largest impact structures on Earth, alongside the much older Sudbury and Vredefort impact structures, and the only one whose peak ring is intact and directly accessible for scientific research.",
+    "at": {
+      "year": 1981
+    },
+    "row": 1
+  },
+  {
+    "id": "Q35045",
+    "name": "Potosí",
+    "category": "commerce-finance",
+    "regionTags": [
+      "south-america"
+    ],
+    "fameScore": 75,
+    "tagline": "city in Bolivia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Potos%C3%AD",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vista%20de%20la%20Villa%20Imperial%20de%20Potos%C3%AD.jpg",
+    "imageAttribution": "Parallelepiped09, via Wikimedia Commons",
+    "description": "Potosí, known as Villa Imperial de Potosí in the colonial period, is the capital city and a municipality of the Department of Potosí in Bolivia. It is one of the highest cities in the world at a nominal 4,067 m (13,343 ft). Diego Huallpa, an indigenous prospector, is traditionally credited with the discovery of the Cerro Rico in 1545, which led to the founding and rapid growth of Potosí due to its extraordinary silver wealth.",
+    "at": {
+      "year": 1545
+    },
+    "row": 0
+  },
+  {
+    "id": "Q211382",
+    "name": "high-speed rail",
+    "category": "infrastructure",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "type of rail network utilizing trains that run significantly faster than those of traditional rail",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/High-speed_rail",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Steigung%20NIM.jpg",
+    "imageAttribution": "S. Terfloth / Sese Ingolstadt at German Wikipedia, via Wikimedia Commons",
+    "description": "High-speed rail (HSR) is a type of rail transport network utilizing trains that run significantly faster than those of traditional rail, using an integrated system of specialized rolling stock and dedicated tracks. While there is no single definition or standard that applies worldwide, lines built to handle speeds of at least 250 km/h (155 mph) or upgraded lines of at least 200 km/h (125 mph) are generally considered to be high-speed.",
+    "at": {
+      "year": 1964
+    },
+    "row": 2
+  },
+  {
+    "id": "Q179744",
+    "name": "daguerreotype process",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "photographic process invented by L. Daguerre",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Daguerreotype",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Daguerreotype%20process.jpg",
+    "imageAttribution": ".mw-parser-output .messagebox{margin:4px 0;width:auto;border-collapse:collapse;border:2px solid var(--border-color-progressive,#6485d1);background-color:var(--background-color-neutral-subtle,#fbfcff);color:var(--color-base,#202122);box-sizing:border-box;border-inline-start-width:8px}.mw-parser-output .messagebox.mbox-small{font-size:88%;line-height:1.25em}.mw-parser-output .mbox-warning,.mw-parser-output .mbox-speedy{border:2px solid var(--border-color-error,#b22222);background:var(--background-color-error-subtle,#ffdbdb);border-inline-start-width:8px}.mw-parser-output .mbox-serious,.mw-parser-output .mbox-delete,.mw-parser-output .mbox-stop{border:2px solid var(--border-color-error,#b22222);border-inline-start-width:8px}.mw-parser-output .mbox-issue,.mw-parser-output .mbox-content{border:2px solid #f28500;background:var(--background-color-warning-subtle,#ffe);border-inline-start-width:8px}.mw-parser-output .mbox-query,.mw-parser-output .mbox-style{border:2px solid #f4c430;background:var(--background-color-warning-subtle,#ffe);border-inline-start-width:8px}.mw-parser-output .mbox-shit{border:2px solid #960;border-inline-start-width:8px}.mw-parser-output .mbox-license{border:2px solid #88a;border-inline-start-width:initial}.mw-parser-output .mbox-legal{border:2px solid var(--border-color-notice,#666);background:var(--background-color-base,#fff);border-inline-start-width:8px}.mw-parser-output .mbox-honor{border:2px solid #ca3;background:var(--background-color-warning-subtle,#fcf4db);border-inline-start-width:8px}.mw-parser-output .mbox-growth{border:2px solid #8d4;background:var(--background-color-success-subtle,#d5fdf4);border-inline-start-width:8px}.mw-parser-output .mbox-move{border:2px solid #93c;border-inline-start-width:8px}.mw-parser-output .mbox-protection,.mw-parser-output .mbox-message{border:2px solid var(--border-color-base,#aaa);border-inline-start-width:8px}.mw-parser-output .messagebox .mbox-text{border:none;padding:0.25em 0.9em;width:100%}.mw-parser-output .messagebox .mbox-image{border:none;padding-top:2px;padding-bottom:2px;padding-inline-start:0.9em;padding-inline-end:0;text-align:center}.mw-parser-output .messagebox .mbox-imageright{border:none;padding-top:2px;padding-bottom:2px;padding-inline-start:0;padding-inline-end:0.9em;text-align:center}.mw-parser-output .messagebox .mbox-empty-cell{border:none;padding:0;width:1px}.mw-parser-output .messagebox .mbox-invalid-type{text-align:center}@media(min-width:720px){.mw-parser-output .messagebox{margin:4px 10%}.mw-parser-output .messagebox.mbox-small{clear:right;float:right;margin:4px 0 4px 1em;width:238px}}body.skin--responsive .mw-parser-output table.messagebox img{max-width:none!important}This image has been created during \"DensityDesign Integrated Course Final Synthesis Studio\" at  Politecnico di Milano, organized by DensityDesign Research Lab in 2015. Credits goes to Susanna Celeste Castelli, via Wikimedia Commons",
+    "description": "Daguerreotype was the first publicly available photographic process, widely used from the 1830s to 1850s. \"Daguerreotype\" also refers to an image created through this process.",
+    "at": {
+      "year": 1839
+    },
+    "row": 6
+  },
+  {
+    "id": "Q227467",
+    "name": "atomic clock",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "extremely accurate reference clock used as a standard for timekeeping",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Atomic_clock",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ytterbium%20Optical%20Lattice%20Clock%20purple%20and%20green%20light.png",
+    "imageAttribution": "NMIJ, National Metrology Institute of Japan, via Wikimedia Commons",
+    "description": "An atomic clock is a clock that measures time by monitoring the resonant frequency of atoms. It is based on the fact that atoms have quantised energy levels, and transitions between such levels are driven by very specific frequencies of electromagnetic radiation. This phenomenon serves as the basis for the SI definition of the second:The second, symbol s, is the SI unit of time. It is defined by taking the fixed numerical value of the caesium frequency, , the unperturbed ground-state hyperfine transition frequency of the caesium-133 atom, to be 9192631770 when expressed in the unit Hz, which is equal to s−1.",
+    "at": {
+      "year": 1955,
+      "month": 6
+    },
+    "row": 8
+  },
+  {
+    "id": "Q221474",
+    "name": "first arrival of Christopher Columbus to America",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "arrival of Christopher Columbus and crew to America",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Discovery_of_the_Americas",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Flickr%20-%20USCapitol%20-%20Landing%20of%20Columbus%20%281%29.jpg",
+    "description": "The human history of the Americas is thought to begin with people migrating to these areas from Asia during the height of an ice age. These groups are generally believed to have been isolated from the people of the \"Old World\" until the coming of Europeans in 1492 with the voyages of Christopher Columbus.",
+    "at": {
+      "year": 1492,
+      "month": 10
+    },
+    "row": 0
+  },
+  {
+    "id": "Q179430",
+    "name": "sextant",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "angle measurement navigational instrument",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sextant",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sextant%20von%20Alexander%20von%20Humboldt.jpg",
+    "imageAttribution": "Burkhard Mücke, via Wikimedia Commons",
+    "description": "A sextant is a doubly reflecting navigation instrument that measures the angular distance between two visible objects. Its primary use is to measure the angle between an astronomical object and the horizon in celestial navigation.",
+    "at": {
+      "year": 1757
+    },
+    "row": 2
+  },
+  {
+    "id": "Q178032",
+    "name": "electromagnet",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "type of magnet in which the magnetic field is produced by the flow of electric current",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electromagnet",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/9%20v%20electromagnet.png",
+    "imageAttribution": "HuskyMamaArt, via Wikimedia Commons",
+    "description": "An electromagnet is a type of magnet in which the magnetic field is produced by an electric current. Electromagnets usually consist of copper wire wound into a coil. A current through the wire creates a magnetic field which is concentrated along the center of the coil. The magnetic field disappears when the current is turned off. The wire turns are often wound around a magnetic core made from a ferromagnetic or ferrimagnetic material such as iron; the magnetic core concentrates the magnetic flux and makes a more powerful magnet.",
+    "at": {
+      "year": 1825
+    },
+    "row": 1
+  },
+  {
+    "id": "Q233562",
+    "name": "The Wealth of Nations",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "1776 work on economics by Adam Smith",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wealth%20of%20Nations.jpg",
+    "description": "An Inquiry into the Nature and Causes of the Wealth of Nations, usually referred to by its shortened title The Wealth of Nations, is a book by Scottish economist and moral philosopher Adam Smith. Published on 9 March 1776 as Smith's central intellectual project, the treatise sought to examine and explain the underlying political and economic principles by which commercial and industrial societies generate wealth. It has become a fundamental work in classical economics, and been described as \"the first formulation of a comprehensive system of political economy\". Smith radically transformed economic thought, laying the foundations for policies that would produce unprecedented increases in productivity and wealth.",
+    "at": {
+      "year": 1776,
+      "month": 3
+    },
+    "row": 2
+  },
+  {
+    "id": "Q48537",
+    "name": "civil rights movement",
+    "category": "social-movements",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 74,
+    "tagline": "1954–1968 U.S. nonviolent social movement",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Civil_rights_movement",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Civil%20Rights%20March%20on%20Washington%2C%20D.C.%20%28Dr.%20Martin%20Luther%20King%2C%20Jr.%20speaking.%29%20-%20NARA%20-%20542068.tif",
+    "description": "The civil rights movement was a social movement in the United States from 1954 to 1968 which aimed to abolish legalized racial segregation, discrimination, and disenfranchisement in the country, which most commonly affected African Americans. The movement had origins in the Reconstruction era in the late 19th century, and modern roots in the 1940s and in Mahatma Gandhi's nonviolent movement in India. After years of nonviolent protests and civil disobedience campaigns, the civil rights movement achieved many of its legislative goals in the 1960s, during which it secured new protections in federal law for the civil rights of all Americans, including the Civil Rights Act of 1964, the Voting Rights Act of 1965, and the Civil Rights Act of 1968.",
+    "period": {
+      "start": {
+        "year": 1954
+      },
+      "end": {
+        "year": 1968
+      }
+    },
+    "row": 9
+  },
+  {
+    "id": "Q204711",
+    "name": "United States Food and Drug Administration",
+    "category": "public-health",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 73,
+    "tagline": "agency of the US Department of Health and Human Services",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Food_and_Drug_Administration",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/FDA%20Bldg%201%20-%20Exterior%20With%20Circle%20%285161374950%29.jpg",
+    "description": "The Food and Drug Administration (FDA) is a federal agency of the United States Department of Health and Human Services (HHS). The FDA is responsible for protecting and promoting public health through the control and supervision of food safety, tobacco products, caffeine products, dietary supplements, prescription and over-the-counter pharmaceutical drugs (medications), vaccines, biopharmaceuticals, blood transfusions, medical devices, electromagnetic radiation emitting devices (ERED), cosmetics, animal foods & feed, and veterinary products.",
+    "at": {
+      "year": 1906,
+      "month": 6
+    },
+    "row": 10
+  },
+  {
+    "id": "Q191472",
+    "name": "BBC One",
+    "category": "media-culture",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "flagship television channel of the BBC",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/BBC_One",
+    "description": "BBC One is a British free-to-air public broadcast television channel owned and operated by the BBC. It is the corporation's oldest and flagship channel, and is known for broadcasting mainstream programming, which includes BBC News television bulletins, primetime drama and entertainment, and live BBC Sport events.",
+    "at": {
+      "year": 1936,
+      "month": 11
+    },
+    "row": 14
+  },
+  {
+    "id": "Q185757",
+    "name": "hovercraft",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "vehicle capable of movement within ground effect at speed or stationary over all surfaces without contact",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hovercraft",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LCAC%2019970620.jpg",
+    "description": "A hovercraft, also known as an air-cushion vehicle or ACV, is an amphibious craft capable of travelling over land, water, mud, ice, and various other surfaces.",
+    "at": {
+      "year": 1955
+    },
+    "row": 10
+  },
+  {
+    "id": "Q213669",
+    "name": "Haber-Bosch process",
+    "category": "food-agriculture",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "artificial nitrogen fixation process which is the main industrial procedure for the production of ammonia nowadays",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Haber_process",
+    "description": "The Haber process, also called the Haber–Bosch process, is the main industrial procedure for the production of ammonia. It converts atmospheric nitrogen (N2) to ammonia (NH3) by a reaction with hydrogen (H2) using finely divided iron metal as a catalyst:",
+    "at": {
+      "year": 1909
+    },
+    "row": 12
+  },
+  {
+    "id": "Q182524",
+    "name": "Vostok 1",
+    "category": "transportation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "spaceflight of the Vostok programme",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vostok_1",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vostokpanel.JPG",
+    "description": "Vostok 1 was the first spaceflight of the Vostok programme and the first human orbital spaceflight in history. The Vostok 3KA space capsule was launched from Baikonur Cosmodrome on 12 April 1961, with Soviet cosmonaut Yuri Gagarin aboard, making him the first human to reach orbital velocity around the Earth and to complete a full orbit around the Earth.",
+    "at": {
+      "year": 1961,
+      "month": 4
+    },
+    "row": 14
+  },
+  {
+    "id": "Q184201",
+    "name": "Apollo 8",
+    "category": "expedition",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 73,
+    "tagline": "second crewed flight of the United States Apollo program",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_8",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%208%20Crewmembers%20-%20GPN-2000-001125.jpg",
+    "description": "Apollo 8 was the first crewed spacecraft to leave Earth's gravitational sphere of influence, and the first human spaceflight to reach the Moon. The crew orbited the Moon ten times without landing and then returned to Earth. The three astronauts—Frank Borman, Jim Lovell, and William Anders—were the first humans to see and photograph the far side of the Moon and an Earthrise.",
+    "at": {
+      "year": 1968,
+      "month": 12
+    },
+    "row": 10
+  },
+  {
+    "id": "Q189859",
+    "name": "steam turbine",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "type of turbine device which uses steam from a boiler to rotate the turbine blades",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_turbine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dampfturbine%20Laeufer01.jpg",
+    "imageAttribution": "Siemens Pressebild, http://www.siemens.com, via Wikimedia Commons",
+    "description": "A steam turbine or steam turbine engine is a machine or heat engine that extracts thermal energy from pressurized steam and uses it to do mechanical work utilising a rotating output shaft. Its modern manifestation was invented by Sir Charles Parsons in 1884 and revolutionized marine propulsion and navigation. Fabrication of a modern steam turbine involves advanced metalwork to form high-grade steel alloys into precision parts using technologies that first became available in the 20th century; continued advances in durability and efficiency of steam turbines remains central to the energy economics of the 21st century. The largest steam turbine ever built is the 1,770 MW Arabelle steam turbine built by Arabelle Solutions, two units of which will be installed at Hinkley Point C Nuclear Power Station, England.",
+    "at": {
+      "year": 1884
+    },
+    "row": 10
+  },
+  {
+    "id": "Q223732",
+    "name": "Declaration of the Establishment of the State of Israel",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "1948 declaration of Israel's independence",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Israel%20Declaration%20of%20Independence.jpg",
+    "description": "The Israeli Declaration of Independence, formally the Declaration of the Establishment of the State of Israel, was proclaimed at the Tel Aviv Museum on 14 May 1948, at the end of the civil war phase and beginning of the Arab–Israeli War of the 1948 Palestine war, by the Va'ad Leumi led by David Ben-Gurion, the executive head of the World Zionist Organization and chairman of the Jewish Agency for Palestine.",
+    "at": {
+      "year": 1948,
+      "month": 5
+    },
+    "row": 16
+  },
+  {
+    "id": "Q180764",
+    "name": "Edict of Milan",
+    "category": "religion-mythology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "legalization of Christianity in the Roman Empire, 313",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Edict_of_Milan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%CE%91%CE%9D%CE%A4%CE%99%CE%93%CE%A1%CE%91%CE%A6%CE%9F%CE%9D%20%CE%92%CE%91%CE%A3%CE%99%CE%9B%CE%99%CE%9A%CE%A9%CE%9D%20%CE%94%CE%99%CE%91%CE%A4%CE%91%CE%9E%CE%95%CE%A9%CE%9D%20%CE%95%CE%9A%20%CE%A1%CE%A9%CE%9C%CE%91%CE%99%CE%9A%CE%97%CE%A3.png",
+    "description": "The Edict of Milan was the 13 February 313 AD agreement to treat Christians benevolently within the Roman Empire. Western Roman Emperor Constantine I and Emperor Licinius, who controlled the Balkans, met in Mediolanum and, among other things, agreed to change policies towards Christians following the edict of toleration issued by Emperor Galerius two years earlier in Serdica. The Edict of Milan gave Christianity legal status and a reprieve from persecution but did not make it the state church of the Roman Empire, which occurred in AD 380 with the Edict of Thessalonica, when Nicene Christianity received normative status.",
+    "at": {
+      "year": 313,
+      "month": 6
+    },
+    "row": 1
+  },
+  {
+    "id": "Q191055",
+    "name": "1755 Lisbon earthquake",
+    "category": "environment-geology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "earthquake in 1755",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1755_Lisbon_earthquake",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1755%20Lisbon%20Earthquake%20Location.png",
+    "description": "The 1755 Lisbon earthquake, also known as the Great Lisbon earthquake, hit the Iberian Peninsula and Northwest Africa on the morning of Saturday, 1 November, Feast of All Saints, at around 09:40 local time. In combination with subsequent fires and a tsunami, the earthquake almost completely destroyed Lisbon and adjoining areas. Seismologists estimate the Lisbon earthquake had a magnitude of 7.7 or greater on the moment magnitude scale, with its epicenter in the Atlantic Ocean about 200 km west-southwest of Cape St. Vincent, a cape in the Algarve region, and about 290 km southwest of Lisbon.",
+    "at": {
+      "year": 1755,
+      "month": 11
+    },
+    "row": 6
+  },
+  {
+    "id": "Q193093",
+    "name": "Platonic Academy",
+    "category": "philosophy-education",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "ancient philosophical, research and educative center, founded by Plato in Athens",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Platonic_Academy",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Plato%27s%20Academy%20mosaic%20from%20Pompeii.jpg",
+    "description": "The Academy was founded by Plato in ca. 387 BC in Athens. Aristotle studied there for twenty years before founding his own school, the Lyceum. The academy persisted throughout the Hellenistic period as a skeptical school, until coming to an end after the death of Philo of Larissa in 83 BC. Although philosophers continued to teach Plato's philosophy in Athens during the Roman era, it was not until AD 410 that a revived Academy was re-established as a center for Neoplatonism, persisting until 529 AD when it was closed down by Justinian I.",
+    "at": {
+      "year": -386
+    },
+    "row": 0
+  },
+  {
+    "id": "Q447",
+    "name": "Encyclopédie",
+    "category": "philosophy-education",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "general encyclopedia published in Paris, France between 1751 and 1772",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Encyclop%C3%A9die",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Encyclopedie%20de%20D%27Alembert%20et%20Diderot%20-%20Premiere%20Page%20-%20ENC%201-NA5.jpg",
+    "description": "The Encyclopédie, ou dictionnaire raisonné des sciences, des arts et des métiers, better known as the Encyclopédie, was a general encyclopedia published in France between 1751 and 1772, with later supplements, revised editions, an index, and translations. It had many contributors, known among contemporaries as the Encyclopédistes. It was edited by Denis Diderot and, until 1759, co-edited by Jean le Rond d'Alembert.",
+    "at": {
+      "year": 1751
+    },
+    "row": 3
+  },
+  {
+    "id": "Q192446",
+    "name": "Human Genome Project",
+    "category": "science-theory",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 72,
+    "tagline": "research program for sequencing the human genome",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Human_Genome_Project",
+    "description": "The Human Genome Project (HGP) was an international scientific research project with the goal of determining the base pairs that make up human DNA, and of identifying, mapping and sequencing all of the genes of the human genome from both a physical and a functional standpoint. It started in 1990 and was completed in 2003. It was the world's largest collaborative biological project. Planning for the project began in 1984 by the US government, and it officially launched in 1990. It was declared complete on 14 April 2003, and included about 92% of the genome. Level \"complete genome\" was achieved in May 2021, with only 0.3% of the bases covered by potential issues. The full gapless sequence containing 22 autosomes and the X chromosome was published in January 2022, making it the first fully sequenced human genome. The full sequence of the Y chromosome was only published in August 2023 due to challenges with sequencing and assembling, caused by its highly repetitive nature.",
+    "at": {
+      "year": 1990
+    },
+    "row": 12
+  },
+  {
+    "id": "Q158075",
+    "name": "Gutenberg Bible",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "early book printed with movable type",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gutenberg_Bible",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gutenberg%20Bible%2C%20Lenox%20Copy%2C%20New%20York%20Public%20Library%2C%202009.%20Pic%2001.jpg",
+    "imageAttribution": "NYC Wanderer (Kevin Eng), via Wikimedia Commons",
+    "description": "The Gutenberg Bible, also known as the 42-line Bible, the Mazarin Bible or the B42, is the earliest major book printed in Europe using mass-produced metal movable type. It marked the start of the \"Gutenberg Revolution\" and the age of printed books in the West. The book is valued and revered for its high aesthetic and artistic qualities and its historical significance.",
+    "at": {
+      "year": 1450
+    },
+    "row": 2
+  },
+  {
+    "id": "Q178193",
+    "name": "steamboat",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "type of steam powered vessel; smaller than a steamship; boat in which the primary method of marine propulsion is steam power",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Steamboat",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/100%20Jahre%20Dampfschiff%20%27Stadt%20Rapperswil%27%20-%20Tag%20der%20offenen%20Dampfschiff-T%C3%BCre%20am%20B%C3%BCrkliplatz%20-%20Alpenquai%202014-04-26%2017-47-28%20%28P7700%29.JPG",
+    "imageAttribution": "Roland zh, via Wikimedia Commons",
+    "description": "A steamboat is a boat that is propelled primarily by steam power, typically driving propellers or paddlewheels. The term steamboat is used to refer to small steam-powered vessels working on lakes, rivers, and in short-sea shipping. The development of the steamboat led to the larger steamship, which is a seaworthy and often ocean-going ship.",
+    "at": {
+      "year": 1783
+    },
+    "row": 5
+  },
+  {
+    "id": "Q208708",
+    "name": "autogyro",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "rotorcraft with rotor unpowered in flight",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Autogyro",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg",
+    "imageAttribution": "Fgarganese, via Wikimedia Commons",
+    "description": "An autogyro, gyroplane or gyrocopter, is a class of rotorcraft that uses an unpowered rotor in free autorotation to develop lift. A gyroplane \"means a rotorcraft whose rotors are not engine-driven, except for initial starting, but are made to rotate by action of the air when the rotorcraft is moving; and whose means of propulsion, consisting usually of conventional propellers, is independent of the rotor system.\" While similar to a helicopter rotor in appearance, the autogyro's unpowered rotor disc must have air flowing upward across it to make it rotate. Forward thrust is provided independently, by an engine-driven propeller.",
+    "at": {
+      "year": 1923,
+      "month": 1
+    },
+    "row": 8
+  },
+  {
+    "id": "Q960800",
+    "name": "chlorofluorocarbon",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "hydrocarbon derivative that contains only carbon, chlorine and fluorine",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chlorofluorocarbon",
+    "description": "Chlorofluorocarbons (CFCs) and hydrochlorofluorocarbons (HCFCs) are fully or partly halogenated hydrocarbons that contain carbon (C), hydrogen (H), chlorine (Cl), and fluorine (F). They are produced as volatile derivatives of methane, ethane, and propane.",
+    "at": {
+      "year": 1890
+    },
+    "row": 12
+  },
+  {
+    "id": "Q505802",
+    "name": "Lewis and Clark Expedition",
+    "category": "expedition",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 72,
+    "tagline": "American overland expedition to the Pacific coast",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lewis%20and%20clark-expedition.jpg",
+    "description": "The Lewis and Clark Expedition, also known as the Corps of Discovery Expedition, was the United States expedition to cross the newly acquired western portion of the country after the Louisiana Purchase. The Corps of Discovery was a select group of U.S. Army and civilian volunteers under the command of Captain Meriwether Lewis and his close friend Second Lieutenant William Clark. Clark, along with 30 others, set out from Camp Dubois, Illinois, on May 14, 1804, met Lewis and ten other members of the group in St. Charles, Missouri, then went up the Missouri River. The expedition crossed the Continental Divide of the Americas near the Lemhi Pass, eventually coming to the Columbia River, and the Pacific Ocean in 1805. The return voyage began on March 23, 1806, at Fort Clatsop, Oregon, ending six months later on September 23.",
+    "period": {
+      "start": {
+        "year": 1804,
+        "month": 5
+      },
+      "end": {
+        "year": 1806,
+        "month": 9
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q209440",
+    "name": "galvanic cell",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "device for spontaneous conversion of chemical into electrical energy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Galvanic_cell",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Galvanische%20Zelle%202009-02-08.svg",
+    "imageAttribution": "Henry Mühlpfordt / *File:Galvanic Cell.svg: Gringer, via Wikimedia Commons",
+    "description": "A galvanic cell or voltaic cell, named after the scientists Luigi Galvani and Alessandro Volta, respectively, is an electrochemical cell in which an electric current is generated from spontaneous oxidation–reduction reactions. An example of a galvanic cell consists of two different metals, each immersed in separate beakers containing their respective metal ions in solution that are connected by a salt bridge or separated by a porous membrane.",
+    "at": {
+      "year": 1786
+    },
+    "row": 7
+  },
+  {
+    "id": "Q188631",
+    "name": "vulcanization",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "chemical process for converting natural rubber or related polymers into more durable materials",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vulcanization",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VulcanizationMold1941.jpg",
+    "description": "Vulcanization is a range of processes for hardening rubbers. The term originally referred exclusively to the treatment of natural rubber with sulfur and heat, which remains the most common practice. It has also grown to include the hardening of other (synthetic) rubbers via various means. Examples include silicone rubber via room temperature vulcanising and chloroprene rubber (neoprene) using metal oxides.",
+    "at": {
+      "year": 1839
+    },
+    "row": 7
+  },
+  {
+    "id": "Q171375",
+    "name": "Truman Doctrine",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "United States Cold War policy to contain communism in Europe and elsewhere",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Truman_Doctrine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Special%20Message%20to%20Congress%20on%20Greece%20and%20Turkey%20The%20Truman%20Doctrine.jpg",
+    "description": "The Truman Doctrine is a U.S. foreign policy that pledges American support for U.S.-aligned nations against alleged authoritarian threats. The doctrine originated with the primary goal of countering the growth of the Soviet bloc during the Cold War. It was announced to Congress by President Harry S. Truman on March 12, 1947, and further developed on July 4, 1948, when he pledged to oppose the communist rebellions in Greece and Soviet demands on Turkey. More generally, the Truman Doctrine implied U.S. support for other nations threatened by the Soviet Union. It led to the formation of NATO in 1949. Historians often use Truman's speech to Congress on March 12, 1947, to date the start of the Cold War.",
+    "at": {
+      "year": 1947,
+      "month": 3
+    },
+    "row": 19
+  },
+  {
+    "id": "Q207875",
+    "name": "Requiem",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "mass composed by Wolfgang Amadeus Mozart in Vienna in 1791",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Requiem_(Mozart)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/K626%20Requiem%20Mozart.jpg",
+    "description": "The Requiem in D minor, K. 626, is a Requiem Mass by Wolfgang Amadeus Mozart (1756–1791). Mozart composed part of the Requiem in Vienna in late 1791, but it was unfinished at his death on 5 December the same year. A completed version was delivered to Count Franz von Walsegg, who had commissioned the piece for a requiem service on 14 February 1792 to commemorate the first anniversary of the death of his wife Anna, who had died at the age of 20 on 14 February 1791.",
+    "at": {
+      "year": 1791
+    },
+    "row": 3
+  },
+  {
+    "id": "Q25169",
+    "name": "The Hitchhiker's Guide to the Galaxy",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "1979–1992 series of five books by Douglas Adams",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy",
+    "description": "The Hitchhiker's Guide to the Galaxy is a comedy science fiction franchise created by Douglas Adams. Originally a radio sitcom broadcast over two series on BBC Radio 4 between 1978 and 1980, it was soon adapted to other formats, including both novels and comic books, a 1981 BBC television series, a 1984 text adventure game, stage shows and a 2005 feature film.",
+    "at": {
+      "year": 1979
+    },
+    "row": 14
+  },
+  {
+    "id": "Q209625",
+    "name": "Year Without a Summer",
+    "category": "environment-geology",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "1816, a volcanic winter event during the Little Ice Age",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Year_Without_a_Summer",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1816%20summer.png",
+    "imageAttribution": "Giorgiogp2, via Wikimedia Commons",
+    "description": "The year 1816 is known as the Year Without a Summer because of severe climate abnormalities that caused average global temperatures to decrease by 0.4–0.7 °C (0.7–1 °F). Summer temperatures in Europe that year were the coldest of any on record between 1766 and 2000, resulting in crop failures and major food shortages across the Northern Hemisphere.",
+    "at": {
+      "year": 1816
+    },
+    "row": 6
+  },
+  {
+    "id": "Q391358",
+    "name": "Emancipation Proclamation",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "executive order issued by president Abraham Lincoln on January 1, 1863 that freed southern slaves",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_Proclamation",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emancipation%20Proclamation%2C%2001-01-1863%20%28Page%205%20of%205%29%20%283695345254%29.jpg",
+    "description": "The Emancipation Proclamation, officially Proclamation 95, was a presidential proclamation and executive order issued by United States president Abraham Lincoln on January 1, 1863, during the American Civil War. The Proclamation changed the legal status of more than 3.5 million enslaved African Americans in the secessionist Confederate states from enslaved to free. As soon as slaves escaped the control of their enslavers, either by fleeing to Union lines or through the advance of federal troops, they were permanently free. In addition, the Proclamation allowed for former slaves to \"be received into the armed service of the United States\". The Emancipation Proclamation played a significant part in the end of slavery in the United States.",
+    "at": {
+      "year": 1862,
+      "month": 9
+    },
+    "row": 12
+  },
+  {
+    "id": "Q151060",
+    "name": "Civil Code of the French",
+    "category": "law-jurisprudence",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "civil code of 1804",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Napoleonic_Code",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Speyer%2C%20Historical%20Museum%20of%20the%20Palatinate%20-%20Code%20civil%20des%20Fran%C3%A7ais.jpg",
+    "imageAttribution": "DerHexer, via Wikimedia Commons",
+    "description": "The Napoleonic Code, officially the Civil Code of the French, is the French civil code established during the French Consulate in 1804 and still in force in France, although heavily and frequently amended since its inception. Although Napoleon himself was not directly involved in the drafting of the Code, as it was drafted by a commission of four eminent jurists, he chaired many of the commission's plenary sessions, and his support was crucial to its enactment.",
+    "at": {
+      "year": 1804,
+      "month": 3
+    },
+    "row": 4
+  },
+  {
+    "id": "Q817281",
+    "name": "combined oral contraceptive pill",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "birth control method that includes a combination of an estrogen (estradiol) and a progestogen (progestin)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Combined_oral_contraceptive_pill",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pillpacketopen.jpg",
+    "imageAttribution": "Tristanb at English Wikipedia, via Wikimedia Commons",
+    "description": "The combined oral contraceptive pill (COCP), often referred to as the birth control pill or colloquially as \"the pill\", is a type of birth control that is designed to be taken orally by women. It is the oral form of combined hormonal contraception. The pill contains two important hormones: a progestin and estrogen. When taken correctly, it alters the menstrual cycle to eliminate ovulation and prevent pregnancy.",
+    "at": {
+      "year": 1961
+    },
+    "row": 18
+  },
+  {
+    "id": "Q1519099",
+    "name": "polio vaccine",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "vaccine to prevent poliomyelitis",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Polio_vaccine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Poliodrops.jpg",
+    "description": "Polio vaccine is a vaccine used to prevent poliomyelitis (polio). Two types are used: an inactivated poliovirus given by injection (IPV) and a weakened poliovirus given by mouth (OPV). The World Health Organization (WHO) recommends all children be fully vaccinated against polio. The two vaccines have eliminated polio from most of the world, and reduced the number of cases reported each year from an estimated 350,000 in 1988 to 33 in 2018.",
+    "at": {
+      "year": 1952
+    },
+    "row": 1
+  },
+  {
+    "id": "Q146578",
+    "name": "Bakelite",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "early plastic",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bakelite",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakelite%20bangles.jpg",
+    "imageAttribution": "Izzy from Montreal, Canada, via Wikimedia Commons",
+    "description": "Bakelite was the first plastic made from synthetic components. It was developed by chemist Leo Baekeland in Yonkers, New York, in 1907, and patented on December 7, 1909.",
+    "at": {
+      "year": 1907
+    },
+    "row": 15
+  },
+  {
+    "id": "Q5860",
+    "name": "carbon fibers",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "material fibers about 5–10 μm in diameter composed of carbon",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Carbon_fibers",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kohlenstoff%20fasern%208mm%20laenge%202000dpi.jpg",
+    "imageAttribution": "Achim Hering, via Wikimedia Commons",
+    "description": "Carbon fibers or carbon fibres are fibers about 5 to 10 micrometers (0.00020–0.00039 in) in diameter and composed mostly of carbon atoms. Carbon fibers have several advantages: high stiffness, high tensile strength, high strength-to-weight ratio, high chemical resistance, high-temperature tolerance, and low thermal expansion. These properties have made carbon fiber very popular in aerospace, civil engineering, military, motorsport, and other competition sports. However, they are relatively expensive compared to similar fibers, such as glass fiber, basalt fibers, or plastic fibers.",
+    "at": {
+      "year": 1958
+    },
+    "row": 11
+  },
+  {
+    "id": "Q192803",
+    "name": "double-entry bookkeeping",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "seamless, chronological and factual ordered recording of all business processes in a company based of documented evidence",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Double-entry_bookkeeping",
+    "description": "Double-entry bookkeeping, also known as double-entry accounting, is a method of bookkeeping in which every financial transaction is recorded with equal and opposite entries - thus \"balancing the books\". The purpose of double-entry bookkeeping is to maintain accuracy in financial records and allow detection of errors or fraud.",
+    "at": {
+      "year": 1494
+    },
+    "row": 1
+  },
+  {
+    "id": "Q17550",
+    "name": "California Gold Rush",
+    "category": "commerce-finance",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 71,
+    "tagline": "gold rush from C.E.1848 until 1855 in California",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/California_gold_rush",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/California%20Gold%20Rush%20handbill.jpg",
+    "description": "The California gold rush (1848–1855) was a gold rush in California, which began on January 24, 1848, when gold was found by James W. Marshall at Sutter's Mill in Coloma, California. The news of gold brought approximately 300,000 people from the rest of the United States and abroad to California, which had recently been conquered from Mexico. The sudden influx of gold into the money supply reinvigorated the American economy; the sudden population increase allowed California to grow rapidly into statehood in the Compromise of 1850. The gold rush had severe effects on Native Californians and accelerated the Native American population's decline from factors including disease, starvation, and according to certain sources, acts of unprovoked aggression.",
+    "period": {
+      "start": {
+        "year": 1848,
+        "month": 1
+      },
+      "end": {
+        "year": 1854
+      }
+    },
+    "row": 8
+  },
+  {
+    "id": "Q245388",
+    "name": "Lucy",
+    "category": "archaeology-anthropology",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "fossilized skeleton of a female Australopithecus afarensis",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lucy_(hominid)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Reconstruction%20of%20the%20fossil%20skeleton%20of%20%22Lucy%22%20the%20Australopithecus%20afarensis.jpg",
+    "imageAttribution": "120, via Wikimedia Commons",
+    "description": "AL 288-1, commonly known as Lucy or Dinkʼinesh, is a collection of several hundred pieces of fossilized bone comprising 40% of the skeleton of a female of the hominin species Australopithecus afarensis. It was discovered in 1974 in Ethiopia, at Hadar, a site in the Awash Valley of the Afar Triangle by Donald Johanson, a paleoanthropologist of the Cleveland Museum of Natural History.",
+    "at": {
+      "year": 1974,
+      "month": 11
+    },
+    "row": 15
+  },
+  {
+    "id": "Q94247",
+    "name": "Interstate Highway System",
+    "category": "infrastructure",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 70,
+    "tagline": "network of freeways in the United States",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Interstate_Highway_System",
+    "description": "The Dwight D. Eisenhower National System of Interstate and Defense Highways, commonly known as the Interstate Highway System, or the Eisenhower Interstate System, is a network of controlled-access highways that forms part of the National Highway System in the United States. The system extends throughout the contiguous United States and has routes in Hawaii, Alaska, and Puerto Rico.",
+    "at": {
+      "year": 1956,
+      "month": 6
+    },
+    "row": 19
+  },
+  {
+    "id": "Q337724",
+    "name": "lead–acid battery",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 70,
+    "tagline": "rechargeable battery type often used in cars",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Lead%E2%80%93acid_battery",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/UTX12-BS%28MF%29.png",
+    "description": "The lead–acid battery is a type of rechargeable battery. First invented in 1859 by French physicist Gaston Planté, it was the first type of rechargeable battery ever created. Compared to the more modern rechargeable batteries, lead–acid batteries have relatively low energy density and heavier weight. Despite this, they are able to supply high surge currents. These features, along with their low cost, make them useful for motor vehicles in order to provide the high current required by starter motors. Lead–acid batteries suffer from relatively short cycle lifespan and overall lifespan, as well as long charging times; an average automotive battery takes anywhere between 6 and 12 hours to fully charge from a discharged state.",
+    "at": {
+      "year": 1859
+    },
+    "row": 4
+  },
+  {
+    "id": "Q193841",
+    "name": "cellophane",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 70,
+    "tagline": "chemical compound",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cellophane",
+    "description": "Cellophane is a thin, transparent sheet made of regenerated cellulose. Its low permeability to air, oils, greases, bacteria, and liquid water makes it useful for food packaging. Cellophane is highly permeable to water vapour, but may be coated with nitrocellulose lacquer to prevent this.",
+    "at": {
+      "year": 1908
+    },
+    "row": 16
+  },
+  {
+    "id": "Q69163529",
+    "name": "fall of the Berlin Wall",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 70,
+    "tagline": "historical event in November 1989 where the Berlin Wall was opened and demolished",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/West%20and%20East%20Germans%20at%20the%20Brandenburg%20Gate%20in%201989.jpg",
+    "imageAttribution": "Unknown photographer, Reproduction by Lear 21 at English Wikipedia., via Wikimedia Commons",
+    "description": "The Berlin Wall fell on 9 November 1989 during the Peaceful Revolution, marking the beginning of the destruction of the figurative Iron Curtain, as East Berlin transit restrictions were overwhelmed and discarded. Sections of the wall were breached, and planned deconstruction began the following June. It was one of the series of events that started the fall of communism in Central and Eastern Europe. The fall of the inner German border took place shortly afterward. An end to the Cold War was declared at the Malta Summit in early December, and German reunification took place in October the following year.",
+    "at": {
+      "year": 1989,
+      "month": 11
+    },
+    "row": 10
+  },
+  {
+    "id": "Q208191",
+    "name": "Asian–African Conference",
+    "category": "society-administration",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 70,
+    "tagline": "1955 meeting of Asian and African states in Bandung, West Java, Indonesia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandung_Conference",
+    "description": "The first large-scale Asian–African or Afro–Asian Conference, also known as the Bandung Conference, was a meeting of Asian and African states, most of which were newly independent, which took place on 18–24 April 1955 in Bandung, West Java, Indonesia. The twenty-nine countries that participated represented a total population of 1.5 billion people, 54% of the world's population. The conference was organized by Indonesia, Burma (Myanmar), India, Ceylon, and Pakistan and was coordinated by Ruslan Abdulgani, secretary general of the Ministry of Foreign Affairs of the Republic of Indonesia.",
+    "period": {
+      "start": {
+        "year": 1955,
+        "month": 4
+      },
+      "end": {
+        "year": 1955,
+        "month": 4
+      }
+    },
+    "row": 20
+  },
+  {
+    "id": "Q214634",
+    "name": "cloud chamber",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "scientific device",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cloud_chamber",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CTRwilsonCloudChamberCavendishLab2013-08-29-17-09-40.jpg",
+    "imageAttribution": "Rolf Kickuth, via Wikimedia Commons",
+    "description": "A cloud chamber, also known as a Wilson chamber, is a particle detector used for visualizing the passage of ionizing radiation.",
+    "at": {
+      "year": 1911
+    },
+    "row": 17
+  },
+  {
+    "id": "Q166543",
+    "name": "general anaesthesia",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "medically induced coma with loss of protective reflexes, resulting from the administration of one or more general anaesthetic agents",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/General_anaesthesia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Remus%20after%20anesthesia.jpg",
+    "imageAttribution": ".Anja., via Wikimedia Commons",
+    "description": "General anaesthesia (UK) or general anesthesia (US) is medically induced loss of consciousness that renders a patient unarousable even by painful stimuli. It is achieved through medications, which can be injected or inhaled, often with an analgesic and neuromuscular blocking agent.",
+    "at": {
+      "year": -3499
+    },
+    "row": 0
+  },
+  {
+    "id": "Q625151",
+    "name": "electric locomotive",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "locomotive powered by electricity",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_locomotive",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%A7%D0%A17-282%2C%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%2C%20%D0%9E%D1%80%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%9E%D1%80%D1%91%D0%BB%20%28Trainpix%20147617%29.jpg",
+    "imageAttribution": "Mihail_Z, via Wikimedia Commons",
+    "description": "An electric locomotive is a type of locomotive powered by electricity from overhead lines, a third rail or on-board energy storage such as a battery or a supercapacitor. Locomotives with on-board fuelled prime movers, such as diesel engines or gas turbines, are classed as diesel–electric or gas turbine–electric and not as electric locomotives, because the electric generator/motor combination serves only as a power transmission system.",
+    "at": {
+      "year": 1837
+    },
+    "row": 5
+  },
+  {
+    "id": "Q326248",
+    "name": "Benz Patent-Motorwagen",
+    "category": "transportation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 69,
+    "tagline": "vehicle widely regarded as the first automobile",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Patent-Motorwagen%20Nr.1%20Benz%202.jpg",
+    "imageAttribution": "DaimlerChrysler AG, via Wikimedia Commons",
+    "description": "Benz Patent-Motorwagen is used today to refer to the first cars produced by Benz & Cie between 1885 and 1893; these had three wheels, a single-cylinder four-stroke engine and belt-drive. Benz & Cie used the designation \"Patent-Motorwagen\" for their four-wheel cars until c.1900, but these are known today by their other names, such as Viktoria and Velo. All these cars used the same layout and belt-drive technology for which Benz received patent number DRP37435 in 1886, hence the designation.",
+    "at": {
+      "year": 1886,
+      "month": 1
+    },
+    "row": 13
+  },
+  {
+    "id": "Q688605",
+    "name": "Flyer I",
+    "category": "transportation",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 69,
+    "tagline": "heavier-than-air powered aircraft, designed and built by the Wright Brothers",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Wright_Flyer",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20flight2.jpg",
+    "description": "The Wright Flyer made the first sustained flight by a manned heavier-than-air powered and controlled aircraft on December 17, 1903. Invented and flown by brothers Orville and Wilbur Wright, it marked the beginning of the pioneer era of aviation.",
+    "at": {
+      "year": 1903,
+      "month": 12
+    },
+    "row": 17
+  },
+  {
+    "id": "Q194154",
+    "name": "cavity magnetron",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "device for generating microwaves",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cavity_magnetron",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caso%20SMG20%20-%20Witol%202M219J-0173.jpg",
+    "imageAttribution": "Raimond Spekking, via Wikimedia Commons",
+    "description": "The cavity magnetron is a high-power vacuum tube used in early radar systems and subsequently in microwave ovens and in linear particle accelerators. A cavity magnetron generates microwaves using the interaction of a stream of electrons with a magnetic field, while moving past a series of cavity resonators, which are small, open cavities in a metal block. Electrons pass by the cavities and cause microwaves to oscillate within, similar to the functioning of a whistle producing a tone when excited by an air stream blown past its opening. The resonant frequency of the arrangement is determined by the cavities' physical dimensions. Unlike other vacuum tubes, such as a klystron or a traveling-wave tube (TWT), the magnetron cannot function as an amplifier for increasing the intensity of an applied microwave signal; the magnetron serves solely as an electronic oscillator generating a microwave signal from direct-current electricity supplied to the vacuum tube.",
+    "at": {
+      "year": 1940
+    },
+    "row": 15
+  },
+  {
+    "id": "Q843389",
+    "name": "canning",
+    "category": "food-agriculture",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "method of preserving food",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Canning",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%93%D0%BE%D0%B2%D1%8F%D0%B4%D0%B8%D0%BD%D0%B0%20%D1%82%D1%83%D1%88%D1%91%D0%BD%D0%B0%D1%8F%20%D0%BA%D1%83%D1%81%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BD%D0%B0%D1%82%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F.%20%D0%A4%D0%BE%D1%82%D0%BE%20%D0%90.%20%D0%A9%D0%B5%D0%BA%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0.jpg",
+    "imageAttribution": "Schekinov Alexey Victorovich, via Wikimedia Commons",
+    "description": "Canning is a method of food preservation in which food is processed and sealed in an airtight container. Canning provides a shelf life that typically ranges from one to five years, although under specific circumstances, it can be much longer. A freeze-dried canned product, such as canned dried lentils, could last as long as 30 years in an edible state.",
+    "at": {
+      "year": 1810
+    },
+    "row": 9
+  },
+  {
+    "id": "Q631489",
+    "name": "Klondike Gold Rush",
+    "category": "commerce-finance",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 69,
+    "tagline": "C.E.1890s migration",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Klondike_Gold_Rush",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Miners%20register%20claims.jpg",
+    "description": "The Klondike Gold Rush was a migration by an estimated 100,000 prospectors to the Klondike region of Yukon in northwestern Canada, between 1896 and 1898. Gold was discovered there by local miners on August 16, 1896; when news reached Seattle and San Francisco the following year, it triggered a stampede of prospectors. Some became wealthy, but the majority went in vain. It has been immortalized in films, literature, and photographs.",
+    "period": {
+      "start": {
+        "year": 1896
+      },
+      "end": {
+        "year": 1899
+      }
+    },
+    "row": 9
+  },
+  {
+    "id": "Q234027",
+    "name": "Louise Brown",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 68,
+    "tagline": "first in-vitro baby",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Louise_Brown",
+    "description": "Louise Joy Brown is an English woman noted as the first human born following conception by in vitro fertilisation (IVF). Her birth, following a procedure pioneered in Britain, has been lauded among \"the most remarkable medical breakthroughs of the 20th century\".",
+    "at": {
+      "year": 1978,
+      "month": 7
+    },
+    "row": 17
+  },
+  {
+    "id": "Q334055",
+    "name": "Bessemer process",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 68,
+    "tagline": "steel production method",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bessemer_process",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bessemer%20converter.jpg",
+    "description": "The Bessemer process was the first inexpensive industrial process for the mass production of steel from molten pig iron before the development of the open hearth furnace. The key principle is removal of impurities and undesired elements, primarily excess carbon, contained in the pig iron by oxidation with air being blown through the molten iron. Oxidation of the excess carbon also raises the temperature of the iron mass and keeps it molten.Virtually all the pig iron carbon is removed by the converter, and so carbon must be added at the end of the process to create steel. 0.25% carbon content is a typical value for low carbon steel which is used in construction and other low-stress applications.",
+    "at": {
+      "year": 1855
+    },
+    "row": 7
+  },
+  {
+    "id": "Q2411998",
+    "name": "eruption of Mount Vesuvius in 79",
+    "category": "environment-geology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "major eruption of stratovolcano in southern Italy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aivazovsky%20-%20Destruction%20of%20Pompeii.jpg",
+    "description": "In 79 AD, Mount Vesuvius, a stratovolcano located in the modern-day region of Campania, Italy, erupted, causing one of the deadliest eruptions in history. Vesuvius violently ejected a cloud of super-heated tephra and gases to a height of 33 km (21 mi), ejecting molten rock, pulverized pumice and hot ash at 1.5 million tons per second, ultimately releasing 100,000 times the thermal energy of the atomic bombings of Hiroshima and Nagasaki. The event gives its name to the Vesuvian type of volcanic eruption, characterised by columns of hot gases and ash reaching the stratosphere, although the event also included pyroclastic flows associated with Peléan eruptions.",
+    "at": {
+      "year": 79,
+      "month": 10
+    },
+    "row": 1
+  },
+  {
+    "id": "Q1192212",
+    "name": "Emancipation reform of 1861",
+    "category": "social-movements",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "reform passed by Tsar Alexander II of Russia which effectively abolished serfdom throughout the Russian Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Emancipation_reform_of_1861",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Reading%20of%20the%20Manifest%20%28Liberation%20of%20peasants%29%20-%20Kustodiev%2C%201907.jpg",
+    "description": "The emancipation reform of 1861 in Russia, also known as the Edict of Emancipation of Russia, was the first and most important of the liberal reforms enacted during the reign of Emperor Alexander II of Russia. The reform effectively abolished serfdom throughout the Russian Empire.",
+    "at": {
+      "year": 1861
+    },
+    "row": 13
+  },
+  {
+    "id": "Q162684",
+    "name": "Charité",
+    "category": "medicine-health",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 67,
+    "tagline": "university hospital in Berlin, Germany",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Charit%C3%A9",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2016%20Charite%20Hospital.jpg",
+    "imageAttribution": "INTERRAILS, via Wikimedia Commons",
+    "description": "The Charité – Universitätsmedizin Berlin is a public medical school and hospital in Berlin, Germany. It is the largest university hospital in Europe. The medical school is affiliated with Humboldt University of Berlin and Free University of Berlin.",
+    "at": {
+      "year": 1710
+    },
+    "row": 2
+  },
+  {
+    "id": "Q107701",
+    "name": "Penny Black",
+    "category": "media-culture",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 67,
+    "tagline": "world's first adhesive postage stamp",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Penny_Black",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Penny%20black.jpg",
+    "description": "The Penny Black was the world's first adhesive postage stamp used in a public postal system. It was first issued in the United Kingdom on 1 May 1840 but was not valid for use until 6 May. The stamp features a profile of 21-year-old Queen Victoria.",
+    "at": {
+      "year": 1840,
+      "month": 4
+    },
+    "row": 9
+  },
+  {
+    "id": "Q1136790",
+    "name": "cotton gin",
+    "category": "food-agriculture",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "machine that separates cotton fibers from seeds",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cotton_gin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cotton%20gin%20EWM%202007.jpg",
+    "description": "A cotton gin—meaning \"cotton engine\"—is a machine that quickly and easily separates cotton fibers from their seeds, enabling much greater productivity than manual cotton separation. The separated seeds may be used to grow more cotton or to produce cottonseed oil. Handheld roller gins had been used in the Indian subcontinent since around 500 A.D. and later in other regions. The Indian worm-gear roller gin was invented sometime around the 16th century and has, according to Lakwete, remained virtually unchanged today.",
+    "at": {
+      "year": 1793
+    },
+    "row": 9
+  },
+  {
+    "id": "Q1225170",
+    "name": "Magellan-Elcano expedition",
+    "category": "expedition",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 67,
+    "tagline": "16th-century Spanish maritime expedition",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Magellan_expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Detail%20from%20a%20map%20of%20Ortelius%20-%20Magellan%27s%20ship%20Victoria.png",
+    "description": "The Magellan expedition, sometimes termed the Magellan–Elcano expedition, was a 16th-century Spanish expedition planned and initially led by Portuguese explorer Ferdinand Magellan and completed by the Spanish navigator Juan Sebastián Elcano which resulted in the first circumnavigation of the Earth.. Its purpose was to secure a maritime trade route with the Moluccas, or Spice Islands, in present-day Indonesia. The expedition departed Spain in 1519 and returned there in 1522 under the command of Elcano, who continued the voyage after Magellan's death in the Philippines. One of the most significant voyages in the Age of Discovery, the nearly three-year expedition totaled 60,440 km (37,560 mi) and was the first to sail around the earth. It also marked the first crossing of the Pacific by a European expedition, revealing the vast scale of that ocean, and proved that ships could sail around the world on a western sea route.",
+    "period": {
+      "start": {
+        "year": 1519,
+        "month": 8
+      },
+      "end": {
+        "year": 1522,
+        "month": 9
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q654562",
+    "name": "The Travels of Marco Polo",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "13th-century travelogue written down by Rustichello da Pisa from stories told by Marco Polo",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Travels_of_Marco_Polo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dettaglio%20fr2810%20folio%201r.jpg",
+    "description": "The Travels of Marco Polo, also known as The Book of the Marvels of the World and by its Italian name Il Milione, is a 13th-century travelogue written down by Rustichello da Pisa from stories told by the Venetian explorer Marco Polo. It describes Polo's travels through Asia between 1271 and 1295, and his experiences at the court of Kublai Khan.",
+    "at": {
+      "year": 1298
+    },
+    "row": 0
+  },
+  {
+    "id": "Q8414",
+    "name": "Amundsen's South Pole expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "first expedition to reach the geographic South Pole",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Amundsen%27s_South_Pole_expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nla.pic-an23814300.jpeg",
+    "description": "The first expedition to reach the Geographic South Pole was led by the Norwegian explorer Roald Amundsen. He and four other crew members made it to the geographical South Pole on 14 December 1911, which was to be five weeks ahead of the British party led by Robert Falcon Scott as part of the Terra Nova Expedition. Amundsen and his team returned safely to their base, and about a year later heard that Scott and his four companions had perished on their return journey.",
+    "period": {
+      "start": {
+        "year": 1910,
+        "month": 6
+      },
+      "end": {
+        "year": 1912,
+        "month": 1
+      }
+    },
+    "row": 18
+  },
+  {
+    "id": "Q663273",
+    "name": "voltaic pile",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "first electrical battery that could continuously provide an electric current to a circuit",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Voltaic_pile",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Volta%20battery-MHS%20373-IMG%203840-gradient.jpg",
+    "imageAttribution": "Rama, via Wikimedia Commons",
+    "description": "The voltaic pile was the first electrical battery that could continuously provide an electric current to a circuit. It was invented by Italian chemist Alessandro Volta, who published his experiments in 1799. Its invention can be traced back to an argument between Volta and Luigi Galvani, Volta's fellow Italian scientist who had conducted experiments on frogs' legs. Use of the voltaic pile enabled a rapid series of other discoveries, including the electrical decomposition (electrolysis) of water into oxygen and hydrogen by William Nicholson and Anthony Carlisle (1800), and the discovery or isolation of the chemical elements sodium (1807), potassium (1807), calcium (1808), boron (1808), barium (1808), strontium (1808), and magnesium (1808) by Humphry Davy.",
+    "at": {
+      "year": 1800
+    },
+    "row": 2
+  },
+  {
+    "id": "Q217817",
+    "name": "Francis turbine",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "type of water turbine",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Francis_turbine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Francis%20Turbine%20High%20flow.jpg",
+    "imageAttribution": "The original uploader was Stahlkocher at German Wikipedia., via Wikimedia Commons",
+    "description": "The Francis turbine is a type of water turbine. It is an inward-flow reaction turbine that combines radial and axial flow concepts. Francis turbines are the most common water turbine in use, and can achieve over 95% efficiency.",
+    "at": {
+      "year": 1849
+    },
+    "row": 10
+  },
+  {
+    "id": "Q8094772",
+    "name": "1883 eruption of Krakatoa",
+    "category": "environment-geology",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 67,
+    "tagline": "catastrophic volcanic eruption",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/De%20uitbarsting%20van%20de%20Krakatau%2C%20KITLV%205888.tiff",
+    "description": "Between 19 May and 21 October 1883, the volcanic island of Krakatoa began erupting, lasting more than five months. On 27 August, the island had its most significant eruption, which destroyed over 70% of the island and its surrounding archipelago, the island collapsing into a caldera. The eruption of 27 August had an estimated volcanic explosivity index of 6, and is one of the deadliest and most destructive volcanic events in recorded history; the third explosion of that day, that occurred at 10:02 a.m., remains the loudest-known sound in history.",
+    "period": {
+      "start": {
+        "year": 1883,
+        "month": 5
+      },
+      "end": {
+        "year": 1883,
+        "month": 10
+      }
+    },
+    "row": 15
+  },
+  {
+    "id": "Q300646",
+    "name": "A Vindication of the Rights of Woman",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "work by Mary Wollstonecraft",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/A_Vindication_of_the_Rights_of_Woman",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vindication1b.jpg",
+    "description": "A Vindication of the Rights of Woman: with Strictures on Political and Moral Subjects is a 1792 essay by British philosopher and women's rights advocate Mary Wollstonecraft. It is considered a feminist or, more precisely, proto-feminist piece, and one of the pioneering works in the tradition now known as feminist philosophy.",
+    "at": {
+      "year": 1792
+    },
+    "row": 8
+  },
+  {
+    "id": "Q1061030",
+    "name": "Alhambra Decree",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 67,
+    "tagline": "1492 decree expelling Jews from Spain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alhambra_Decree",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alhambra%20Decree.jpg",
+    "description": "The Alhambra Decree was an edict issued on 31 March 1492 by the joint Catholic Monarchs of Spain, Isabella I of Castile and Ferdinand II of Aragon, ordering the expulsion of unconverted Jews from the Crowns of Castile and Aragon and its territories and possessions by 31 July of that year. Its primary purpose was to minimize the influence of the remaining Jews on Spain's large converso New Christian population, converted from Judaism, to minimize the possibility that the latter and their descendants would be able to secretly practice their former faith.",
+    "at": {
+      "year": 1492,
+      "month": 4
+    },
+    "row": 2
+  },
+  {
+    "id": "Q1037810",
+    "name": "smallpox vaccine",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "first successful vaccine to be developed",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Smallpox_vaccine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Smallpox%20vaccine%20injection.jpg",
+    "description": "The smallpox vaccine is used to prevent smallpox infection caused by the variola virus. It is the first vaccine to have been developed against a contagious disease. In 1796, British physician Edward Jenner demonstrated that an infection with the relatively mild cowpox virus conferred immunity against the deadly smallpox virus. Cowpox served as a natural vaccine until the modern smallpox vaccine emerged in the 20th century. From 1958 to 1977, the World Health Organization (WHO) conducted a global vaccination campaign that eradicated smallpox, making it the only human disease to be eradicated. Although routine smallpox vaccination is no longer performed on the general public, the vaccine is still being produced for research, and to guard against bioterrorism and biological warfare.",
+    "at": {
+      "year": 1798
+    },
+    "row": 3
+  },
+  {
+    "id": "Q841282",
+    "name": "arc lamp",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "light created by electrical breakdown of gas",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Arc_lamp",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Xenon%20short%20arc%201.jpg",
+    "imageAttribution": "I attest that I am the copyright holder for this image and I release it for use under the Creative Commons 2.5 license,\n\nprovided that proper attribution of my copyright is made. - Atlant 19:15, 26 August 2005 (UTC), via Wikimedia Commons",
+    "description": "An arc lamp or arc light is a lamp that produces light by an electric arc.",
+    "at": {
+      "year": 1802
+    },
+    "row": 8
+  },
+  {
+    "id": "Q973919",
+    "name": "Terra Nova Expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "Antarctic research expedition (1910–1913)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Terra_Nova_Expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Scottgroup.jpg",
+    "description": "The Terra Nova Expedition, officially the British Antarctic Expedition, was an expedition to Antarctica which took place between 1910 and 1913. Led by Captain Robert Falcon Scott, the expedition had various scientific and geographical objectives. Scott wished to continue the scientific work that he had begun when leading the Discovery Expedition from 1901 to 1904, and wanted to be the first to reach the geographic South Pole.",
+    "period": {
+      "start": {
+        "year": 1910,
+        "month": 6
+      },
+      "end": {
+        "year": 1913,
+        "month": 6
+      }
+    },
+    "row": 19
+  },
+  {
+    "id": "Q338613",
+    "name": "aeolipile",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "simple, bladeless radial steam turbine",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aeolipile",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aeolipile.jpg",
+    "description": "An aeolipile, aeolipyle, or eolipile, also known as a Hero's engine, is a simple, bladeless radial steam turbine which spins when the central water container is heated. Torque is produced by steam jets exiting the turbine. The Greek-Egyptian mathematician and engineer Hero of Alexandria described the device in the 1st century CE, and many sources give him the credit for its invention. However, at least one source credits Vitruvius as the first to describe this appliance in his De architectura.",
+    "at": {
+      "year": 1
+    },
+    "row": 0
+  },
+  {
+    "id": "Q654400",
+    "name": "Fischer-Tropsch process",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "chemical reactions that convert carbon monoxide and hydrogen into liquid hydrocarbons",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fischer%E2%80%93Tropsch_process",
+    "description": "The Fischer–Tropsch process (FT) is a collection of chemical reactions that converts a mixture of carbon monoxide and hydrogen, known as syngas, into liquid hydrocarbons. These reactions occur in the presence of metal catalysts, typically at temperatures of 150–300 °C (302–572 °F) and pressures of one to several tens of atmospheres. The Fischer–Tropsch process is an important reaction in both coal liquefaction and gas to liquids technology for producing liquid hydrocarbons.",
+    "at": {
+      "year": 1925
+    },
+    "row": 14
+  },
+  {
+    "id": "Q683846",
+    "name": "Manila galleon",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "Royal Spanish trading ships, 1565–1815",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Manila_galleon",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/16th%20century%20Portuguese%20Spanish%20trade%20routes.png",
+    "description": "The Manila galleon was a Spanish trade route linking the Philippines in the Spanish East Indies to Mexico, across the Pacific Ocean, in use from 1565 to 1815. The term also describes the sailing ships which plied the route, each making one or two round-trip voyages per year between Manila and Acapulco.",
+    "at": {
+      "year": 1565
+    },
+    "row": 0
+  },
+  {
+    "id": "Q6501061",
+    "name": "electrical telegraph",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 65,
+    "tagline": "early system for transmitting text over wires",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electrical_telegraph",
+    "description": "Electrical telegraphy is point-to-point distance communicating via sending electric signals over wire, a system primarily used from the 1840s until the late 20th century. It was the first electrical telecommunications system and the most widely used of a number of early messaging systems called telegraphs, that were devised to send text messages more quickly than physically carrying them. Electrical telegraphy can be considered the first example of electrical engineering.",
+    "at": {
+      "year": 1816
+    },
+    "row": 10
+  },
+  {
+    "id": "Q1753108",
+    "name": "First Transcontinental Railroad",
+    "category": "infrastructure",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 65,
+    "tagline": "first railroad in the United States to reach the Pacific coast from the eastern states",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_transcontinental_railroad",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/69workmen.jpg",
+    "description": "America's first transcontinental railroad was a 1,911-mile (3,075 km) continuous railroad line built between 1863 and 1869 that connected the existing eastern U.S. rail network at Council Bluffs, Iowa, with the Pacific coast at the Oakland Long Wharf on San Francisco Bay. The rail line was built by three private companies over public lands provided by extensive U.S. land grants. Building was financed by both state and U.S. government subsidy bonds as well as by company-issued mortgage bonds. The Western Pacific Railroad Company built 132 miles (212 km) of track from the road's western terminus at Alameda/Oakland to Sacramento, California. The Central Pacific Railroad Company of California (CPRR) constructed 690 miles (1,110 km) east from Sacramento to Promontory Summit, Utah Territory. The Union Pacific Railroad (UPRR) built 1,085 miles (1,746 km) from the road's eastern terminus at the Missouri River settlements of Council Bluffs and Omaha, Nebraska, westward to Promontory Summit.",
+    "at": {
+      "year": 1869
+    },
+    "row": 14
+  },
+  {
+    "id": "Q616159",
+    "name": "View from the Window at Le Gras",
+    "category": "media-culture",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 65,
+    "tagline": "the earliest known surviving photograph produced in the camera obscura by Joseph Nicéphore Niépce",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/View_from_the_Window_at_Le_Gras",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Untitled%20%28point%20de%20vue%29%2C%20Ni%C3%A9pce%201827%20%E2%80%94%20HRC%202020%20%28cropped%29.jpg",
+    "description": "View from the Window at Le Gras is the oldest surviving photograph. It was created by French inventor Nicéphore Niépce between June 4 and July 18, 1827, in Saint-Loup-de-Varennes, France, and shows parts of the buildings and surrounding countryside of his estate, Le Gras, as seen from a high window. The image was created by heliography, a process which Niépce had invented around 1822, and which uses the hardening of bitumen in light to record an image after washing off the remaining unhardened material.",
+    "at": {
+      "year": 1827
+    },
+    "row": 4
+  },
+  {
+    "id": "Q1162294",
+    "name": "Expedition Endurance",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 65,
+    "tagline": "British Antarctic expedition from 1914 to 1917",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Imperial_Trans-Antarctic_Expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Endurance%20under%20full%20sail%20Frank%20Hurley%20State%20Library%20NSW%20a090012h.jpg",
+    "description": "The Imperial Trans-Antarctic Expedition of 1914–1917 is considered to be the last major expedition of the Heroic Age of Antarctic Exploration. Conceived by Sir Ernest Shackleton, the expedition was an attempt to make the first land crossing of the Antarctic continent. After Roald Amundsen's South Pole expedition in 1911, this crossing remained, in Shackleton's words, the \"one great main object of Antarctic journeyings\". Shackleton's expedition failed to accomplish this objective but became recognised instead as an epic feat of endurance.",
+    "period": {
+      "start": {
+        "year": 1914,
+        "month": 8
+      },
+      "end": {
+        "year": 1917,
+        "month": 1
+      }
+    },
+    "row": 21
+  },
+  {
+    "id": "Q833645",
+    "name": "First Folio",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 65,
+    "tagline": "First edition copy of 1623 collection of William Shakespeare's plays held by State Library of New South Wales",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Folio",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/William%20Shakespeare%20-%20First%20Folio%201623.jpg",
+    "description": "Mr. William Shakespeare's Comedies, Histories, & Tragedies is a collection of plays by William Shakespeare, commonly referred to by modern scholars as the First Folio, published in 1623, about seven years after Shakespeare's death. It is considered one of the most influential books ever published.",
+    "at": {
+      "year": 1623
+    },
+    "row": 2
+  },
+  {
+    "id": "Q1194052",
+    "name": "Bretton Woods Conference",
+    "category": "commerce-finance",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 65,
+    "tagline": "international conference in Bretton Woods, New Hampshire, USA in July 1944",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bretton_Woods_Conference",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Gold%20Room%20Bretton%20Woods%20Reverse%20Angle.jpg",
+    "imageAttribution": "Barry Livingstone, via Wikimedia Commons",
+    "description": "The Bretton Woods Conference, formally known as the United Nations Monetary and Financial Conference, was the gathering of 730 delegates from all 44 allied nations at the Mount Washington Hotel, in Bretton Woods, New Hampshire, United States, to regulate what would be the international monetary and financial order after the conclusion of World War II.",
+    "period": {
+      "start": {
+        "year": 1944,
+        "month": 7
+      },
+      "end": {
+        "year": 1944,
+        "month": 7
+      }
+    },
+    "row": 21
+  },
+  {
+    "id": "Q310301",
+    "name": "Ebers Papyrus",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "ancient Egyptian medical papyrus",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ebers_Papyrus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ebers7766.jpg",
+    "description": "The Ebers Papyrus, also known as Papyrus Ebers, is an Egyptian medical papyrus of herbal knowledge dating to c. 1550 BCE. Among the oldest and most important medical papyri of Ancient Egypt, it was sold by Mohareb Todros to the German Egyptologist Georg Ebers at Luxor in the winter of 1873–1874. It is currently kept at the Leipzig University Library in Germany.",
+    "at": {
+      "year": -1599
+    },
+    "row": 0
+  },
+  {
+    "id": "Q46872",
+    "name": "cinematograph",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "motion picture film camera which also serves as a projector and printer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cinematograph",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cinematographe%20Lumiere.jpg",
+    "description": "A cinematograph or kinematograph was an early motion picture film mechanism of various kinds. The name was originally used for machines that combined the functions of a movie camera and of a film projector, and in the case of the Cinématographe Lumière, also means to print films from the negative. The term would also be used for separate devices, and became the root for the now more common terms \"cinematography\" and \"cinema\".",
+    "at": {
+      "year": 1892
+    },
+    "row": 17
+  },
+  {
+    "id": "Q8665",
+    "name": "Workers Leaving the Lumière Factory",
+    "category": "media-culture",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "1895 French short black-and-white silent documentary film directed by Auguste and Louis Lumière",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Workers_Leaving_the_Lumi%C3%A8re_Factory",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20sortie%20des%20usines%20Lumiere.jpg",
+    "description": "Workers Leaving The Lumière Factory in Lyon, also known as Employees Leaving the Lumière Factory and Exiting the Factory, is an 1895 French short black-and-white silent documentary film directed and produced by Louis Lumière. It is often referred to as the first real motion picture ever made, although Louis Le Prince's 1888 Roundhay Garden Scene pre-dated it by six and a half years.",
+    "at": {
+      "year": 1895,
+      "month": 3
+    },
+    "row": 19
+  },
+  {
+    "id": "Q505668",
+    "name": "Chemical vapor deposition",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "process used to make thin films for semiconductors or surface coating",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chemical_vapor_deposition",
+    "description": "Chemical vapor deposition (CVD) is a thin film deposition method used to produce high-quality, and high-performance, solid materials. The process is often used in the semiconductor industry to produce electrically conductive layers in the range of a few 100 nm up to a few μm.",
+    "at": {
+      "year": 1852
+    },
+    "row": 12
+  },
+  {
+    "id": "Q284681",
+    "name": "Chicago Pile-1",
+    "category": "energy-industry",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 64,
+    "tagline": "world's first nuclear reactor to achieve criticality, part of the Manhattan Project, the Allied effort to create atomic bombs during World War II",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chicago_Pile-1",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stagg%20Field%20reactor.jpg",
+    "description": "Chicago Pile-1 (CP-1) was the first artificial nuclear reactor. On 2 December 1942, the first human-made self-sustaining nuclear chain reaction was initiated in CP-1 during an experiment led by Enrico Fermi. The secret development of the reactor was the first major technical achievement for the Manhattan Project, the Allied effort to create nuclear weapons during World War II. Developed by the Metallurgical Laboratory at the University of Chicago, CP-1 was built under the west viewing stands of the original Stagg Field. Although the project's civilian and military leaders had misgivings about the possibility of a disastrous runaway reaction, they trusted Fermi's safety calculations and decided they could carry out the experiment in a densely populated area. Fermi described the reactor as \"a crude pile of black bricks and wooden timbers\".",
+    "at": {
+      "year": 1942,
+      "month": 12
+    },
+    "row": 20
+  },
+  {
+    "id": "Q705693",
+    "name": "Code of Ur-Nammu",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 64,
+    "tagline": "oldest surviving law code",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Code_of_Ur-Nammu",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ur%20Nammu%20code%20Istanbul.jpg",
+    "description": "The Code of Ur-Nammu is the oldest known surviving law code. It is from Mesopotamia and is written on tablets, in the Sumerian language. It contains strong statements of royal power like \"I eliminated enmity, violence, and cries for justice.\"",
+    "at": {
+      "year": -2049
+    },
+    "row": 0
+  },
+  {
+    "id": "Q478720",
+    "name": "Amsterdam Stock Exchange",
+    "category": "commerce-finance",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "stock exchange located in Amsterdam, Netherlands",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Euronext_Amsterdam",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/20220525.Amsterdam.-028.jpg",
+    "imageAttribution": "Bybbisch94, Christian Gebhardt, via Wikimedia Commons",
+    "description": "Euronext Amsterdam is a stock exchange based in Amsterdam, Netherlands. Formerly known as the Amsterdam Stock Exchange, it merged on 22 September 2000 with the Brussels Stock Exchange and the Paris Stock Exchange to form Euronext. The registered office of Euronext, itself incorporated in the Netherlands a public limited company, is also located in the exchange.",
+    "at": {
+      "year": 1700
+    },
+    "row": 3
+  },
+  {
+    "id": "Q2736155",
+    "name": "Seneca Falls Convention",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "1848 women's rights convention in New York",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Seneca_Falls_Convention",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Woman%27s%20Rights%20Convention.jpg",
+    "imageAttribution": "https://pbs.twimg.com/media/CKXzBSKWwAEzQT8.jpg, via Wikimedia Commons",
+    "description": "The Seneca Falls Convention was the first women's rights convention. Its organizers advertised it as \"a convention to discuss the social, civil, and religious condition and rights of woman\". Held in the Wesleyan Chapel of the town of Seneca Falls, New York, it spanned two days over July 19–20, 1848. Attracting widespread attention, it was soon followed by other women's rights conventions, including the Rochester Women's Rights Convention in Rochester, New York, two weeks later. In 1850 the first in a series of annual National Women's Rights Conventions met in Worcester, Massachusetts.",
+    "period": {
+      "start": {
+        "year": 1848,
+        "month": 7
+      },
+      "end": {
+        "year": 1848,
+        "month": 7
+      }
+    },
+    "row": 11
+  },
+  {
+    "id": "Q842363",
+    "name": "Edwin Smith Papyrus",
+    "category": "medicine-health",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 63,
+    "tagline": "oldest Egyptian medical text",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Edwin_Smith_Papyrus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Edwin%20Smith%20Papyrus%20v2.jpg",
+    "description": "The Edwin Smith Papyrus is an ancient Egyptian medical text, named after Edwin Smith who bought it in 1862, and the oldest known surgical treatise on trauma. This document, which may have been a manual of military surgery, describes 48 cases of injuries, fractures, wounds, dislocations and tumors.",
+    "at": {
+      "year": -1580
+    },
+    "row": 0
+  },
+  {
+    "id": "Q949801",
+    "name": "rotorcraft",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 63,
+    "tagline": "heavier-than-air aircraft which generates lift over rotating wings",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rotorcraft",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Belvedere%20helicopter%20at%20Filton%2C%20Bristol%2C%20England.jpg",
+    "description": "A rotary-wing aircraft, rotorwing aircraft or rotorcraft is a heavier-than-air aircraft with rotary wings that spin around a vertical mast to generate lift. The assembly of several rotor blades mounted on a single mast is referred to as a rotor.",
+    "at": {
+      "year": 1907
+    },
+    "row": 22
+  },
+  {
+    "id": "Q99200",
+    "name": "The Iron Bridge",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 63,
+    "tagline": "bridge that crosses the River Severn in Shropshire, England",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Iron_Bridge",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ironbridge%202014.jpg",
+    "imageAttribution": "Colin, via Wikimedia Commons",
+    "description": "The Iron Bridge is a cast iron arch bridge that crosses the River Severn in Shropshire, England. Opened in 1781, it was the first major bridge in the world to be made of cast iron. Its success inspired the widespread use of cast iron as a structural material, and today the bridge is celebrated as a symbol of the Industrial Revolution.",
+    "at": {
+      "year": 1779
+    },
+    "row": 7
+  },
+  {
+    "id": "Q699127",
+    "name": "Treasure Voyages",
+    "category": "expedition",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 63,
+    "tagline": "seven Ming-era maritime voyages of the treasure fleet between 1405 and 1433",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ming_treasure_voyages",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zheng%20He%27s%20Treasure%20Ship%203.jpg",
+    "imageAttribution": "Photograph by Mike Peel (www.mikepeel.net)., via Wikimedia Commons",
+    "description": "Ming China's treasure fleet undertook maritime expeditions between 1405 and 1433. The Yongle Emperor ordered the construction of the fleet in 1403. The grand project resulted in seven far-reaching ocean voyages to the coastal territories and islands of the South China Sea and Indian Ocean. Admiral Zheng He was commissioned to command the fleet for the expeditions. Six of the voyages occurred during the Yongle Emperor's reign and the seventh voyage occurred during the Xuande Emperor's reign. The first three voyages reached up to Calicut on India's Malabar Coast, while the fourth voyage went as far as Hormuz in the Persian Gulf. In the last three voyages, the fleet traveled up to the Arabian Peninsula and East Africa.",
+    "period": {
+      "start": {
+        "year": 1405
+      },
+      "end": {
+        "year": 1433
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q487420",
+    "name": "Slavery Abolition Act 1833",
+    "category": "social-movements",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 63,
+    "tagline": "an act of the Parliament of the United Kingdom, which abolished slavery in the British Empire by way of compensated emancipation.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Slavery_Abolition_Act_1833",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Great%20Britain%20%281714%E2%80%931801%29.svg",
+    "imageAttribution": "Sodacan, via Wikimedia Commons",
+    "description": "The Slavery Abolition Act 1833 was an act of the Parliament of the United Kingdom which abolished slavery in the British Empire by way of compensated emancipation. The act was legislated by Whig Prime Minister Charles Grey, 2nd Earl Grey's reforming administration, and it was enacted by ordering the British government to purchase the freedom of all slaves in the British Empire, and by outlawing the further practice of slavery in the British Empire. The Act explicitly delineated 19 separate pots of compensation covering the Caribbean, South Africa, and Mauritius. Although Britain, Canada, Australia, and New Zealand were technically included, these had relatively few slaves at this time for other reasons. India was excluded. Around 800,000 freed slaves were attested in the claims process.",
+    "at": {
+      "year": 1833
+    },
+    "row": 11
+  },
+  {
+    "id": "Q1261053",
+    "name": "woodblock printing",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 62,
+    "tagline": "early printing technique",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Woodblock_printing",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jingangjing.jpg",
+    "description": "Woodblock printing or block printing is a technique for printing text, images or patterns used widely throughout East Asia and originating in China in antiquity as a method of printing on textiles and later on paper. Each page or image is created by carving a wooden block to leave only some areas and lines at the original level; it is these that are inked and show in the print, in a relief printing process. Carving the blocks is skilled and laborious work, but a large number of impressions can then be printed.",
+    "at": {
+      "year": 800
+    },
+    "row": 0
+  },
+  {
+    "id": "Q644521",
+    "name": "Challenger Expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 62,
+    "tagline": "oceanic research expedition (1872–1876)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Challenger_expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Challenger%20expedition.jpg",
+    "description": "The Challenger expedition of 1872–1876 was a scientific programme that made many discoveries to lay the foundation of oceanography. The expedition was named after the naval vessel that undertook the trip, HMS Challenger.",
+    "period": {
+      "start": {
+        "year": 1872,
+        "month": 12
+      },
+      "end": {
+        "year": 1876,
+        "month": 5
+      }
+    },
+    "row": 17
+  },
+  {
+    "id": "Q1739453",
+    "name": "Obninsk Nuclear Power Plant",
+    "category": "energy-industry",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 62,
+    "tagline": "first in the world reactor electricity",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Obninsk_Nuclear_Power_Plant",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Obninsk-AES.jpg",
+    "imageAttribution": "A.Savin, via Wikimedia Commons",
+    "description": "Obninsk Nuclear Power Plant was built in the \"Science City\" of Obninsk, Kaluga Oblast, about 110 km (68 mi) southwest of Moscow, Soviet Union. Connected to the power grid in June 1954, Obninsk was the first grid-connected nuclear power plant in the world, i.e. the first nuclear reactor that produced electricity industrially, albeit at small scale. It was located at the Institute of Physics and Power Engineering. The plant is also known as APS-1 Obninsk. It remained in operation between 1954 and 2002. Its production of electricity for the grid ceased in 2002; thereafter it functioned as a research and isotope production plant only.",
+    "at": {
+      "year": 1954
+    },
+    "row": 22
+  },
+  {
+    "id": "Q375044",
+    "name": "Stockton and Darlington Railway",
+    "category": "infrastructure",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 61,
+    "tagline": "English railway company, 1825 to 1863",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Stockton_and_Darlington_Railway",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/StocktonDarlingtonOpening.jpg",
+    "description": "The Stockton and Darlington Railway  (S&DR) was a railway company that operated in north-east England from 1825 to 1863. The world's first public railway to use steam locomotives, its first line connected collieries near Shildon with Darlington and Stockton in County Durham, and was officially opened on 27 September 1825. The movement of coal to ships rapidly became a lucrative business, and the line was soon extended to a new port at Middlesbrough. While coal waggons were hauled by steam locomotives from the start, passengers were carried in coaches drawn by horses until carriages hauled by steam locomotives were introduced in 1833.",
+    "at": {
+      "year": 1825
+    },
+    "row": 7
+  },
+  {
+    "id": "Q2224989",
+    "name": "Newcomen atmospheric engine",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 61,
+    "tagline": "early steam engine type",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Newcomen6325.png",
+    "description": "The atmospheric engine was invented by Thomas Newcomen in 1712, and is sometimes referred to as the Newcomen fire engine or Newcomen engine. The engine was operated by condensing steam being drawn into the cylinder, thereby creating a partial vacuum which allowed atmospheric pressure to push the piston into the cylinder. It is significant as the first practical device to harness steam to produce mechanical work. Newcomen engines were used throughout Britain and Europe, principally to pump water out of mines. Hundreds were constructed during the 18th century. James Watt's later engine design was an improved version of the Newcomen engine that roughly doubled fuel efficiency. Many atmospheric engines were converted to the Watt design. As a result, Watt is today better known than Newcomen in relation to the origin of the steam engine.",
+    "at": {
+      "year": 1712
+    },
+    "row": 3
+  },
+  {
+    "id": "Q2345573",
+    "name": "Expulsion of the Moriscos",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 61,
+    "tagline": "17th century expulsion of Moriscos from Spain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Expulsion_of_the_Moriscos",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20Expulsi%C3%B3n%20en%20el%20Puerto%20de%20Denia.%20Vicente%20Mestre.jpg",
+    "description": "The Expulsion of the Moriscos was decreed by King Philip III of Spain on April 9, 1609. The Moriscos were descendants of Spain's Muslim population who had been forced to convert to Christianity. Since the Spanish were fighting wars in the Americas, feeling threatened by the Ottomans raiding along the Spanish coast and by two Morisco revolts in the century since Islam was outlawed in Spain, it seems that the expulsions were a reaction to an internal problem of the stretched Spanish Empire. Between 1609 and 1614, the Crown systematically expelled Moriscos through a number of decrees affecting Spain's various kingdoms, with varying levels of success. Between 1492 and 1610, about three million Muslims left or were expelled from Spain.",
+    "period": {
+      "start": {
+        "year": 1609,
+        "month": 4
+      },
+      "end": {
+        "year": 1614
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q1398696",
+    "name": "Liverpool and Manchester Railway",
+    "category": "infrastructure",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 60,
+    "tagline": "railway opened on 15 September 1830 between the Lancashire towns of Liverpool and Manchester",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Liverpool_and_Manchester_Railway",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Opening%20Liverpool%20and%20Manchester%20Railway.jpg",
+    "description": "The Liverpool and Manchester Railway (L&MR) was the first inter-city railway in the world. It opened on 15 September 1830 between the Lancashire towns of Liverpool and Manchester in England. It was also the first railway to rely exclusively on locomotives driven by steam power, with no horse-drawn traffic permitted at any time; the first to be entirely double track throughout its length; the first to have a true signalling system; the first to be fully timetabled; and the first to carry mail.",
+    "at": {
+      "year": 1823
+    },
+    "row": 9
+  },
+  {
+    "id": "Q2453355",
+    "name": "Dartmouth workshop",
+    "category": "science-theory",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 59,
+    "tagline": "1956 AI workshop",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dartmouth_workshop",
+    "description": "The Dartmouth Summer Research Project on Artificial Intelligence was a 1956 summer workshop widely considered to be the founding event of artificial intelligence as a field. The workshop has been referred to as \"the Constitutional Convention of AI\". The project's four organizers, Claude Shannon, John McCarthy, Nathaniel Rochester and Marvin Minsky, are considered some of the \"founding fathers\" of AI. However it was not the first conference devoted to what would now be described as the question of artificial intelligence: it postdated meetings such as the 1951 Paris cybernetics conference and the Macy meetings.",
+    "at": {
+      "year": 1956
+    },
+    "row": 23
+  },
+  {
+    "id": "Q3984081",
+    "name": "Copernican heliocentrism",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "concept that the Earth rotates around the Sun",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Complete%20wildfowler%20%281912%29%20%2814775413253%29.jpg",
+    "description": "Copernican heliocentrism is the astronomical model developed by the Renaissance astronomer Nicolaus Copernicus and published in 1543. This model positioned the Sun near the center of the Universe, motionless, with Earth and the other planets orbiting around it in circular paths, modified by epicycles, and at uniform speeds. The Copernican model challenged the geocentric model of Ptolemy that had prevailed for centuries, which had placed Earth at the center of the Universe.",
+    "at": {
+      "year": 1543
+    },
+    "row": 1
+  },
+  {
+    "id": "Q1964751",
+    "name": "Nansen's Fram expedition (1893–1896)",
+    "category": "expedition",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 59,
+    "tagline": "1893–1896 attempt by Fridtjof Nansen to reach the North Pole",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nansen%27s_Fram_expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fram%20March%201894.jpg",
+    "description": "Nansen's Fram expedition of 1893–1896 was an attempt by the Norwegian explorer Fridtjof Nansen to reach the geographical North Pole by harnessing the natural east–west current of the Arctic Ocean. In the face of much discouragement from other polar explorers, Nansen took his ship Fram to the New Siberian Islands in the eastern Arctic Ocean, froze her into the pack ice, and waited for the drift to carry her towards the pole. Impatient with the slow speed and erratic character of the drift, after 18 months Nansen and a chosen companion, Hjalmar Johansen, left the ship with a team of Samoyed dogs and sledges and made for the pole. They did not reach it, but they achieved a record Farthest North latitude of 86°13.6′N before a long retreat over ice and water to reach safety in Franz Josef Land. Meanwhile, Fram continued to drift westward, finally emerging in the North Atlantic Ocean.",
+    "period": {
+      "start": {
+        "year": 1893
+      },
+      "end": {
+        "year": 1896
+      }
+    },
+    "row": 23
+  },
+  {
+    "id": "Q1564366",
+    "name": "Second voyage of HMS Beagle",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 58,
+    "tagline": "exploration associated with the theory of evolution (1831-1836)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_voyage_of_HMS_Beagle",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/HMS%20Beagle%20by%20Conrad%20Martens.jpg",
+    "description": "The second survey expedition of HMS Beagle took place from 27 December 1831 to 2 October 1836. Robert FitzRoy, the newest commander of Beagle, had thought of the advantages of having someone onboard who could investigate geology, and sought a naturalist to accompany them as a supernumerary. At the age of 22, the graduate Charles Darwin hoped to see the tropics before becoming a parson, and accepted the opportunity. He was greatly influenced by reading Charles Lyell's Principles of Geology during the voyage. By the end of the expedition, Darwin had made his name as a geologist, and fossil collector, and the publication of his journal gave him wide renown as a writer.",
+    "period": {
+      "start": {
+        "year": 1831,
+        "month": 12
+      },
+      "end": {
+        "year": 1836,
+        "month": 10
+      }
+    },
+    "row": 13
+  },
+  {
+    "id": "Q1290001",
+    "name": "Brāhmasphuṭasiddhānta",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "Indian mathematics treatise",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Br%C4%81hmasphu%E1%B9%ADasiddh%C4%81nta",
+    "description": "The Brāhma-sphuṭa-siddhānta is a main work of Brahmagupta, written c. 628. This text of mathematical astronomy contains significant mathematical content, including the first good understanding of the role of zero, rules for manipulating both negative and positive numbers, a method for computing square roots, methods of solving linear and quadratic equations, rules for summing series, Brahmagupta's identity, and Brahmagupta theorem.",
+    "at": {
+      "year": 628
+    },
+    "row": 2
+  },
+  {
+    "id": "Q4567715",
+    "name": "1953 British Mount Everest Expedition",
+    "category": "expedition",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 57,
+    "tagline": "first successful ascent of Mount Everest",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Everest%20kalapatthar.jpg",
+    "imageAttribution": "Pavel Novak, via Wikimedia Commons",
+    "description": "The 1953 British Mount Everest expedition was the ninth mountaineering expedition to attempt the first ascent of Mount Everest, and the first confirmed to have succeeded when Tenzing Norgay and Edmund Hillary reached the summit on 29 May 1953 at 11:30 a.m. Led by Colonel John Hunt, it was organised and financed by the Joint Himalayan Committee. News of the expedition's success reached London in time to be released on the morning of Queen Elizabeth II's coronation, on 2 June that year.",
+    "period": {
+      "start": {
+        "year": 1953,
+        "month": 2
+      },
+      "end": {
+        "year": 1953,
+        "month": 6
+      }
+    },
+    "row": 24
+  },
+  {
+    "id": "Q3178839",
+    "name": "first voyage of James Cook",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "combined Royal Navy and Royal Society expedition to the south Pacific",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_voyage_of_James_Cook",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Landing%20of%20Lieutenant%20James%20Cook%20at%20Botany%20Bay%2C%2029%20April%201770%20%28painting%20by%20E%20Phillips%20Fox%29.jpg",
+    "description": "The first voyage of James Cook was a combined Royal Navy and Royal Society expedition to the south Pacific Ocean aboard HMS Endeavour, from 1768 to 1771. The aims were to observe the 1769 transit of Venus from Tahiti and to seek evidence of the postulated Terra Australis Incognita or \"undiscovered southern land\". It was the first of three voyages of which Cook was the commander.",
+    "period": {
+      "start": {
+        "year": 1768
+      },
+      "end": {
+        "year": 1771
+      }
+    },
+    "row": 9
+  },
+  {
+    "id": "Q233260",
+    "name": "Great Northern Expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "research expedition in Siberia (1733–1743)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Northern_Expedition",
+    "description": "The Great Northern Expedition or Second Kamchatka Expedition was a major Russian Arctic expedition between roughly 1733 and 1743, which mapped most of the Arctic coast of Siberia and much of the Arctic coast of North America, greatly reducing \"white areas\" on maps. It was conceived by Russian emperor Peter the Great, and took place under empresses Anna and Elizabeth. Peter hoped for the 18th-century Russian Navy to map a Northern Sea Route from Europe to the Pacific. The endeavour was sponsored by the Admiralty College in Saint Petersburg. The main organiser and leader of the expedition was Vitus Bering, who had been commissioned by Peter to lead the earlier First Kamchatka Expedition. With over 3,000 people directly or indirectly involved, it was one of the largest expeditions in history.",
+    "period": {
+      "start": {
+        "year": 1733
+      },
+      "end": {
+        "year": 1743
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q3518429",
+    "name": "Āryabhaṭīya",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 55,
+    "tagline": "Sanskrit astronomical treatise by the 5th century Indian mathematician Aryabhata",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aryabhatiya",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Description%20of%20Kuttaka%20in%20Aryabhatiya.jpg",
+    "imageAttribution": "Krishnachandranvn, via Wikimedia Commons",
+    "description": "Aryabhatiya or Aryabhatiyam, a Sanskrit astronomical treatise, is the magnum opus and only known surviving work of the 5th century Indian mathematician Aryabhata. Historian of astronomy Roger Billard estimates that the book was composed around 510 CE based on historical references it mentions.",
+    "at": {
+      "year": 510
+    },
+    "row": 0
+  },
+  {
+    "id": "Q951383",
+    "name": "The Portuguese discovery of the sea route to India",
+    "category": "expedition",
+    "regionTags": [
+      "southern-asia",
+      "southern-europe"
+    ],
+    "fameScore": 55,
+    "tagline": "sea route to India was the first recorded trip made directly from Europe to India via the Cape of Good Hope, in the Atlantic Ocean",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Portuguese_discovery_of_the_sea_route_to_India",
+    "description": "The Portuguese discovery of the sea route to India was the first recorded trip directly from Europe to the Indian subcontinent, via the Cape of Good Hope. Under the command of the Portuguese explorer Vasco da Gama, it was undertaken during the reign of King Manuel in 1497–1499. It is one of the most important events of the Age of Discovery and the Portuguese Empire, and it initiated the Portuguese maritime trade on the Malabar Coast and other parts of the Indian Ocean, the military presence and settlements of the Portuguese in Goa and Bombay.",
+    "at": {
+      "year": 1498
+    },
+    "row": 4
+  },
+  {
+    "id": "Q2096366",
+    "name": "Victorian gold rush",
+    "category": "commerce-finance",
+    "regionTags": [
+      "australia-and-new-zealand"
+    ],
+    "fameScore": 54,
+    "tagline": "period in the history of Victoria, Australia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Victorian_gold_rush",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Prospectors%27%20hut%20Upper%20Dargo%2C%20Gippsland%2C%20ca%201870%20%28SLV%20b19603%29.jpg",
+    "description": "The Victorian gold rush was a period in the history of Victoria, Australia, approximately between 1851 and the late 1860s. It led to a period of extreme prosperity for the Australian colony and an influx of population growth and financial capital for Melbourne, which was dubbed \"Marvellous Melbourne\" as a result of the procurement of wealth.",
+    "at": {
+      "year": 1851
+    },
+    "row": 13
+  },
+  {
+    "id": "Q13443401",
+    "name": "invention of telephone",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 53,
+    "tagline": "overview about the invention of the telephone",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Invention_of_the_telephone",
+    "description": "The invention of the telephone was the culmination of work done by many different people, and led to an array of lawsuits relating to the conflicting patent claims made by several individuals and numerous companies. Notable people included in this process were Antonio Meucci, Philipp Reis, Elisha Gray and Alexander Graham Bell.",
+    "at": {
+      "year": 1876
+    },
+    "row": 12
+  },
+  {
+    "id": "Q2631085",
+    "name": "Deep Blue versus Kasparov, 1997, Game 6",
+    "category": "sports-entertainment",
+    "regionTags": [],
+    "fameScore": 46,
+    "tagline": "chess game between human and computer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Kasparov,_1997,_Game_6",
+    "description": "Game 6 of the Deep Blue–Kasparov rematch, played in New York City on 11 May 1997 and starting at 3:00 p.m. EDT, was the final chess game in the 1997 rematch between Deep Blue and Garry Kasparov.",
+    "at": {
+      "year": 1997,
+      "month": 5
+    },
+    "row": 13
+  }
+]

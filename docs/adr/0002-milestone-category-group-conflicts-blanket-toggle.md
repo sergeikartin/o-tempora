@@ -1,3 +1,7 @@
+---
+status: accepted
+---
+
 # Formalize Milestone Category Group; Conflicts filtered as a single toggle, not per-category
 
 Adding sidebar filters for Conflicts and Milestones surfaced that only Milestones has ever had a color-driving grouping above its category values (3 groups over 20 leaf `MilestoneCategory` values, previously just unnamed local color constants in `options.ts`); Conflicts' per-category color palette was retired earlier in favor of one flat `CONFLICT_COLOR`, so no grouping exists there. We formalized the Milestone grouping as a shared `MilestoneCategoryGroup` type + `MILESTONE_CATEGORY_TO_GROUP` map in `packages/shared-types` (so color logic and the new filter read one canonical source instead of duplicating it), and filter Milestones by those 3 groups — the literal match for "same as color grouping." For Conflicts, rather than inventing a group layer with no color meaning, or filtering by 6 ungrouped raw categories, we ship a single blanket "Conflicts" visibility toggle: the two lanes' filters are intentionally asymmetric because their underlying category structures already are.

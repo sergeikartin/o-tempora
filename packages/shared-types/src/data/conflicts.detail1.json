@@ -1,0 +1,201 @@
+[
+  {
+    "id": "Q362",
+    "name": "World War II",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 97,
+    "tagline": "1939–1945 global conflict",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/World_War_II",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Infobox%20collage%20for%20WWII.PNG",
+    "imageAttribution": "User:Staberinde, via Wikimedia Commons",
+    "description": "World War II, or the Second World War, was a global conflict between two coalitions: the Allies and the Axis powers. Nearly all of the world's countries participated, with many engaging in total war on an unprecedented scale. World War II was the deadliest conflict in history, causing the deaths of 60 to 75 million people, a majority of whom were civilians. Millions died as a result of massacres, starvation, disease, and genocides including the Holocaust. After the Allied victory, Germany, Austria, Japan, and Korea were occupied, and German and Japanese leaders were tried for war crimes.",
+    "period": {
+      "start": {
+        "year": 1939,
+        "month": 9
+      },
+      "end": {
+        "year": 1945,
+        "month": 9
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q361",
+    "name": "World War I",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 95,
+    "tagline": "1914–1918 global conflict",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/World_War_I",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WWImontage.jpg",
+    "description": "World War I, or the First World War, also known as the Great War, was a global conflict between two coalitions: the Allies and the Central Powers. Theatres of war included Europe, the Middle East, Africa, and the Asia-Pacific. One of the deadliest conflicts in history, World War I resulted in an estimated 15 to 22 million deaths, including those in war crimes and genocides. The war also helped spread the Spanish flu pandemic. The conflict saw important developments in weaponry, including the first large-scale use of machine guns, artillery, aircraft, chemical weapons, and tanks.",
+    "period": {
+      "start": {
+        "year": 1914,
+        "month": 7
+      },
+      "end": {
+        "year": 1918,
+        "month": 11
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q8683",
+    "name": "Cold War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 91,
+    "tagline": "1947–1991 tension between the Soviet Union and the United States and their respective allies",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cold_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/US%20Army%20tanks%20face%20off%20against%20Soviet%20tanks%2C%20Berlin%201961.jpg",
+    "description": "The Cold War was a period of international geopolitical rivalry between the United States (US) and the Soviet Union (USSR) and their respective allies, the capitalist Western Bloc and communist Eastern Bloc. It began in the aftermath of the Second World War and ended with the dissolution of the Soviet Union in 1991. The term cold war is used because there was no direct fighting between the two superpowers, though each supported opposing sides in regional conflicts known as proxy wars. In addition to the struggle for ideological and economic influence and an arms race in both conventional and nuclear weapons, the Cold War was expressed through technological rivalries such as the Space Race, espionage, propaganda campaigns, embargoes, and sports diplomacy.",
+    "period": {
+      "start": {
+        "year": 1945
+      },
+      "end": {
+        "year": 1991,
+        "month": 12
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q6534",
+    "name": "French Revolution",
+    "category": "revolution",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 90,
+    "tagline": "revolution in France from 1789 to 1799",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/French_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LouisXVIExecutionBig.jpg",
+    "description": "The French Revolution was a period of political and societal change in France that began with the Estates General of 1789 and ended with the Coup of 18 Brumaire on 9 November 1799. Many of the revolution's ideas are considered fundamental principles of liberal democracy, and its values remain central to modern French political discourse. It was caused by a combination of social, political, and economic factors which the existing regime proved unable to manage.",
+    "period": {
+      "start": {
+        "year": 1789,
+        "month": 7
+      },
+      "end": {
+        "year": 1799,
+        "month": 11
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q8676",
+    "name": "American Civil War",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 89,
+    "tagline": "1861–1865 civil war in the United States between the North and the South over the enslavement of African-Americans",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/American_Civil_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CivilWarUSAColl.png",
+    "description": "The American Civil War was a civil war in the United States between the Union and the Confederacy, which was formed in 1861 by states that had seceded from the Union to preserve slavery in the United States. The South saw slavery as threatened because of the election of Abraham Lincoln and the growing abolitionist movement in the North. The war ended with Union victory, the dissolution of the Confederacy and the abolition of slavery, freeing four million African Americans.",
+    "period": {
+      "start": {
+        "year": 1861,
+        "month": 4
+      },
+      "end": {
+        "year": 1865,
+        "month": 4
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q8740",
+    "name": "Vietnam War",
+    "category": "war",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 89,
+    "tagline": "armed conflict in Vietnam, Laos, and Cambodia between North Vietnam and South Vietnam, from 1955 to 1975",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vietnam_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/VietnamMural.jpg",
+    "description": "The Vietnam War was an armed conflict in Vietnam, Laos, and Cambodia fought between North Vietnam and South Vietnam and their allies. North Vietnam was supported by the Soviet Union and China, while South Vietnam was supported by the United States and other anti-communist nations. The conflict was the second of the Indochina wars and a proxy war of the Cold War. The Vietnam War was one of the postcolonial wars of national liberation, a theater in the Cold War, and a civil war, with civil warfare a defining feature from the outset. Direct US military involvement escalated from 1965 until US forces were withdrawn in 1973. The fighting spilled into the Laotian and Cambodian civil wars, which ended with all three countries becoming communist in 1975.",
+    "period": {
+      "start": {
+        "year": 1955,
+        "month": 11
+      },
+      "end": {
+        "year": 1975,
+        "month": 4
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q110999040",
+    "name": "full-scale Russo-Ukrainian war",
+    "category": "war",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 88,
+    "tagline": "full-scale invasion of Ukraine by Russia starting on 24 February 2022, part of Russo-Ukrainian War",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg",
+    "imageAttribution": "Arrikel, via Wikimedia Commons",
+    "description": "On 24 February 2022, Russia invaded Ukraine, starting the largest and deadliest war in Europe since World War II, in a major escalation of the existing war between the two countries that began when Russia attacked Ukraine in 2014. The fighting has caused hundreds of thousands of military casualties and tens of thousands of Ukrainian civilian casualties. As of August 2026, Russian troops occupy roughly 20% of Ukraine. From a population of 41 million, about 8 million Ukrainians have been internally displaced and 6–7 million have fled the country, creating Europe's largest refugee crisis since World War II.",
+    "at": {
+      "year": 2022,
+      "month": 2
+    },
+    "row": 2
+  },
+  {
+    "id": "Q12546",
+    "name": "Crusades",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 87,
+    "tagline": "mass military expeditions and wars initiated by the Catholic Church in the High Middle Ages",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Crusades",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Combat%20deuxi%C3%A8me%20croisade.jpg",
+    "description": "The Crusades were a series of military campaigns launched by the papacy between 1095 and 1291 against Muslim rulers for the recovery and defence of the Holy Land, as part of a wider crusading movement. The First Crusade was proclaimed by Pope Urban II at the Council of Clermont in November 1095—a call to arms for Christians to reconquer Jerusalem from the Muslims, with promises of spiritual reward. By this time, the papacy's position as head of the Catholic Church had strengthened, and earlier conflicts with secular rulers and wars on the frontiers of Western Christendom had prepared it for the direction of armed force in religious causes. The successes of the First Crusade led to the establishment of four Crusader states in the Levant, whose defence required further expeditions from Catholic Europe. The organisation of such large-scale campaigns demanded complex religious, social, and economic institutions, including crusade indulgences, military orders, and the taxation of clerical income. Over time, the crusading movement expanded to include campaigns against pagans, Christian dissidents, and other enemies of the papacy, promoted with similar spiritual rewards and continuing into the 18th century.",
+    "period": {
+      "start": {
+        "year": 1095
+      },
+      "end": {
+        "year": 1291
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q8663",
+    "name": "Korean War",
+    "category": "war",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "war between North and South Korea, 1950–1953",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Korean_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Korean%20War%20Montage%202.png",
+    "description": "The Korean War was an armed conflict fought on the Korean Peninsula between North Korea and South Korea and their allies. North Korea was supported by China and the Soviet Union, while South Korea was supported by the United Nations led by the United States under the auspices of the United Nations Command (UNC).",
+    "period": {
+      "start": {
+        "year": 1950,
+        "month": 6
+      },
+      "end": {
+        "year": 1953,
+        "month": 7
+      }
+    },
+    "row": 0
+  }
+]

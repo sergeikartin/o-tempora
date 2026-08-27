@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: docs/adr/0005-row-assignment-moves-to-the-pipeline.md
 ---
 
 # Lane rows are a static per-item identity, computed once against the full dataset

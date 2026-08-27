@@ -249,10 +249,6 @@ export function buildXScale(pixelsPerYear: number): {
 
 export const DEFAULT_VISIBLE_YEARS =
   DEFAULT_VIEWPORT_END_YEAR - DEFAULT_VIEWPORT_START_YEAR;
-// A narrower first-paint window for phone-width viewports — without this,
-// a narrow screen would render the same DEFAULT_VISIBLE_YEARS span as
-// desktop, just smaller and denser, rather than genuinely more zoomed in.
-export const MOBILE_DEFAULT_VISIBLE_YEARS = 50;
 
 const ZOOM_STEP = 0.2;
 // Real browsers report the scroll container's actual clientWidth; this only
@@ -287,13 +283,10 @@ export function clampPixelsPerYear(
   return Math.min(max, Math.max(min, pixelsPerYear));
 }
 
-/** Initial zoom level: shows `visibleYears` (DEFAULT_VISIBLE_YEARS unless overridden, e.g. by MOBILE_DEFAULT_VISIBLE_YEARS) at once. */
-export function defaultPixelsPerYear(
-  viewportWidthPx: number,
-  visibleYears: number = DEFAULT_VISIBLE_YEARS,
-): number {
+/** Initial zoom level: shows DEFAULT_VISIBLE_YEARS at once, on every viewport. */
+export function defaultPixelsPerYear(viewportWidthPx: number): number {
   const width = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
-  return clampPixelsPerYear(width / visibleYears, width);
+  return clampPixelsPerYear(width / DEFAULT_VISIBLE_YEARS, width);
 }
 
 // A fixed scale (not the live viewport's, not the live zoom's) the Minimap

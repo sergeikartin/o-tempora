@@ -3,9 +3,9 @@
   "siteTitle": "Every life in context",
   "filtersAriaLabel": "Filters",
   "filtersHeading": "Filters",
-  "dataDepthHeading": "Data Depth",
-  "dataDepthAriaLabel": "Data Depth",
-  "dataDepthLoadingAriaLabel": "Loading additional data",
+  "detailLevelHeading": "Detail Level",
+  "detailLevelAriaLabel": "Detail Level",
+  "detailLevelLoadingAriaLabel": "Loading additional data",
   "regionHeading": "Region",
   "peopleHeading": "People",
   "conflictsMilestonesHeading": "Conflicts & Milestones",
@@ -73,6 +73,12 @@
   "taxonomy.milestone-category-group.science-innovation": "Science & Innovation",
   "taxonomy.milestone-category-group.social-culture": "Social & Human Culture",
   "taxonomy.conflicts-milestones-filter.conflicts": "Conflicts",
-  "taxonomy.data-depth.mainstream": "Mainstream",
-  "taxonomy.data-depth.deep-cut": "Deep Cut"
+  "taxonomy.detail-level.legendary": "Legendary",
+  "taxonomy.detail-level.mainstream": "Mainstream",
+  "taxonomy.detail-level.specialized": "Specialized",
+  "taxonomy.detail-level.deep-cut": "Deep Cut",
+  "detailLevelDescription.legendary": "Only top-tier, world-altering figures, major conflicts, and pivotal milestones.",
+  "detailLevelDescription.mainstream": "Essential historical figures, key conflicts, and primary milestones.",
+  "detailLevelDescription.specialized": "Includes notable figures, secondary conflicts, and regional milestones.",
+  "detailLevelDescription.deep-cut": "Displays high-density details, including niche figures, minor conflicts, and obscure milestones."
 }

@@ -213,6 +213,76 @@ test('no longer renders a native <title> tooltip element — replaced by the cli
   expect(container.querySelector('title')).toBeNull();
 });
 
+test('adopts a prerendered, unbound .d3-person node instead of destroying and recreating it', async () => {
+  const { scale } = buildXScale(2);
+  const { personRowFor } = computeRowAssignment([aristotle], [], []);
+
+  // What a normal fresh mount computes for this exact input — the values
+  // the adopted fixture below should end up corrected to.
+  const reference = render(
+    <PeopleLane
+      people={[aristotle]}
+      xScale={scale}
+      personRowFor={personRowFor}
+    />,
+  );
+  const referenceLine = reference.container.querySelector('.d3-line');
+  const expectedX1 = referenceLine?.getAttribute('x1');
+  const expectedY1 = referenceLine?.getAttribute('y1');
+  reference.unmount();
+
+  // Mount with no people first, so `g.people` exists but is empty, then
+  // hand-inject a fixture matching mark-shape.ts's PERSON_MARK_SHAPE
+  // directly into it — simulating the DOM a prerendered page would already
+  // have before hydration's first real join runs. React never manages
+  // g.people's children (D3 does, imperatively), so this bypasses React
+  // entirely rather than fighting a second render's fresh DOM tree.
+  const { container, rerender } = render(
+    <PeopleLane people={[]} xScale={scale} personRowFor={personRowFor} />,
+  );
+  const peopleGroup = container.querySelector('g.people') as SVGGElement;
+  peopleGroup.insertAdjacentHTML(
+    'beforeend',
+    `<g class="d3-person" style="opacity: 1">
+      <rect class="d3-hit" data-entity-id="${aristotle.id}" data-entity-type="person"></rect>
+      <line class="d3-line-ring-outer"></line>
+      <line class="d3-line-ring-gap"></line>
+      <line class="d3-line" x1="-999" y1="-999" data-entity-id="${aristotle.id}" data-entity-type="person"></line>
+      <g class="d3-name-zoom"><text class="d3-name" x="-999" y="-999" data-entity-id="${aristotle.id}" data-entity-type="person">${aristotle.name}</text></g>
+    </g>`,
+  );
+  const prerenderedNode = peopleGroup.querySelector(
+    '.d3-person',
+  ) as HTMLElement;
+  prerenderedNode.setAttribute('data-test-marker', 'prerendered');
+
+  rerender(
+    <PeopleLane
+      people={[aristotle]}
+      xScale={scale}
+      personRowFor={personRowFor}
+    />,
+  );
+
+  // Same node, not a replacement — an exit+enter would have removed this
+  // node and appended a fresh one instead.
+  expect(container.querySelector('[data-test-marker="prerendered"]')).toBe(
+    prerenderedNode,
+  );
+  expect(container.querySelectorAll('.d3-person')).toHaveLength(1);
+  // enter is what sets opacity:0 to fade in from — update never touches
+  // opacity, so an adopted node never flashes invisible.
+  expect(prerenderedNode.style.opacity).not.toBe('0');
+
+  const line = prerenderedNode.querySelector('.d3-line') as SVGLineElement;
+  // x is applied instantly (not through the row-shift transition).
+  expect(line.getAttribute('x1')).toBe(expectedX1);
+
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  // y corrects too, once the row-shift transition settles.
+  expect(line.getAttribute('y1')).toBe(expectedY1);
+});
+
 test('relative row order between two people is preserved when a third, differently-ranked, overlapping person is filtered out', () => {
   const { scale } = buildXScale(2);
   const overlappingSpan = { start: { year: -383 }, end: { year: -321 } };

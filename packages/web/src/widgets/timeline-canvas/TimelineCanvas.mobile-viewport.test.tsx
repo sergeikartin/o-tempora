@@ -109,10 +109,10 @@ test('below the mobile breakpoint, Minimap does not render', () => {
   expect(queryByTestId('minimap-track')).toBeNull();
 });
 
-test('above the mobile breakpoint, Minimap renders', () => {
+test('above the mobile breakpoint, Minimap renders', async () => {
   mobileMatches = false;
   mockMatchMedia();
-  const { queryByTestId } = render(
+  const { findByTestId } = render(
     <TimelineCanvas
       people={[aristotle]}
       conflicts={[]}
@@ -127,7 +127,10 @@ test('above the mobile breakpoint, Minimap renders', () => {
     />,
   );
 
-  expect(queryByTestId('minimap-track')).not.toBeNull();
+  // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
+  // isMinimapIdle) — findByTestId waits it out instead of assuming it's
+  // there synchronously after render.
+  expect(await findByTestId('minimap-track')).not.toBeNull();
 });
 
 test('the drawer-toggle button reflects isFilterDrawerOpen via aria-expanded', () => {

@@ -1,3 +1,7 @@
+---
+status: accepted
+---
+
 # Milestones taxonomy expands to 20 categories; year/month move from curator-authored to live-fetched
 
 A second AI-sourced candidate list of ~94 milestones was merged into the existing 121-entry curated list (`data/raw/milestones-curated.raw.json`). Its QIDs were almost entirely wrong — 83 of 94 resolved to an unrelated Wikidata item (e.g. the candidate id for "Great Wall of China" actually resolved to "Grand Canal") — so every new entry was re-resolved to its correct QID by name against live Wikidata, and any candidate with no matching Wikidata item or no live date-property claim on any of the 10 candidate properties (see below) was dropped rather than guessed at (67 of the 94 survived). That list also introduced 10 new `MilestoneCategory` values (`culture-arts`, `religion-mythology`, `environment-geology`, `commerce-finance`, `social-movements`, `sports-entertainment`, `philosophy-education`, `law-jurisprudence`, `archaeology-anthropology`, `architecture-design`) alongside the original 10 — folded into the taxonomy as-is rather than remapped into the existing categories, since the only mandatory downstream cost turned out to be 10 new hex values in `MILESTONE_CATEGORY_COLORS` (`packages/web/src/widgets/timeline-canvas/options.ts`); everything else (validation, tests, rendering) is already generic over `MILESTONE_CATEGORIES`.

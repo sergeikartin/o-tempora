@@ -1,11 +1,5 @@
 import { useEffect, useRef } from 'react';
-import {
-  DataDepthSwitch,
-  FameScoreFilters,
-  type FameScoreLane,
-  type FameScoreValues,
-  type FilteredCounts,
-} from '../../../features/filter-by-fame-score';
+import { DetailLevelSwitch } from '../../../features/filter-by-fame-score';
 import { OccupationDomainFilters } from '../../../features/filter-by-occupation-domain';
 import { RegionFilters } from '../../../features/filter-by-region';
 import { ConflictsMilestonesFilters } from '../../../features/filter-conflicts-milestones';
@@ -15,25 +9,21 @@ import {
 } from '../../../features/search-timeline-entities';
 import {
   type ConflictsMilestonesFilterValue,
-  type DataDepthLevel,
+  type DetailLevel,
+  type DetailLevelId,
   SWITCH_LANGUAGE_HREF,
 } from '../../../shared/config';
-import { hasFeatureFlag } from '../../../shared/lib/feature-flags';
 import { useIsMobileViewport } from '../../../shared/lib/viewport';
 import { m } from '../../../shared/paraglide/messages.js';
 import type { OccupationDomain, Region } from '../../../shared/types';
 import styles from './Sidebar.module.css';
 
 interface SidebarProps {
-  fameScoreValues: FameScoreValues;
-  onFameScoreChange: (lane: FameScoreLane, value: number) => void;
-  onSelectDepthLevel: (level: DataDepthLevel) => void;
-  // Whether Payload Tier 1 is still loading — threaded down to
-  // DataDepthSwitch's Deep Cut option, see that component's own comment.
-  isTier1Loading: boolean;
-  // Post-filter entry count per lane, from TimelineCanvas via app/ — see
-  // FameScoreFilters' own comment on why this is optional.
-  filteredCounts?: FilteredCounts;
+  selectedLevelId: DetailLevelId;
+  onSelectDetailLevel: (level: DetailLevel) => void;
+  // Detail Level ids still loading their delta file — threaded down to
+  // DetailLevelSwitch, see that component's own comment.
+  loadingLevelIds: DetailLevelId[];
   searchQuery: string;
   onSearchQueryChange: (query: string) => void;
   searchResults: SearchResult[];
@@ -75,11 +65,9 @@ interface SidebarProps {
 // Conflicts has no per-category granularity of its own), and a shared Region
 // filter (one control narrowing all three lanes together) last.
 export function Sidebar({
-  fameScoreValues,
-  isTier1Loading,
-  onFameScoreChange,
-  onSelectDepthLevel,
-  filteredCounts,
+  selectedLevelId,
+  onSelectDetailLevel,
+  loadingLevelIds,
   searchQuery,
   onSearchQueryChange,
   searchResults,
@@ -229,19 +217,12 @@ export function Sidebar({
               />
             </div>
             <section className={styles.section}>
-              <h2 className={styles.heading}>{m.dataDepthHeading()}</h2>
-              <DataDepthSwitch
-                values={fameScoreValues}
-                onSelectLevel={onSelectDepthLevel}
-                isLoadingTier1={isTier1Loading}
+              <h2 className={styles.heading}>{m.detailLevelHeading()}</h2>
+              <DetailLevelSwitch
+                selectedLevelId={selectedLevelId}
+                onSelectLevel={onSelectDetailLevel}
+                loadingLevelIds={loadingLevelIds}
               />
-              {hasFeatureFlag('fameFilters') && (
-                <FameScoreFilters
-                  values={fameScoreValues}
-                  onChange={onFameScoreChange}
-                  counts={filteredCounts}
-                />
-              )}
             </section>
             <section className={styles.section}>
               <h2 className={styles.heading}>{m.peopleHeading()}</h2>

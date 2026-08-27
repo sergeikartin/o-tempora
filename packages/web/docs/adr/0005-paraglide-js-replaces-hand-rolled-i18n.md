@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0009-runtime-locale-switch-replaces-per-locale-builds.md
 ---
 
 # Paraglide JS (stable API) replaces the hand-rolled UI-string i18n

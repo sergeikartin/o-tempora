@@ -1,5 +1,6 @@
 ---
 status: accepted
+supersedes: packages/web/docs/adr/0007-static-row-assignment-replaces-live-per-render-packing.md
 ---
 
 # Row Depth's per-item row moves from a client-side computation to a pipeline-precomputed field

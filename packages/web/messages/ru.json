@@ -3,9 +3,9 @@
   "siteTitle": "Жизнь на фоне истории",
   "filtersAriaLabel": "Фильтры",
   "filtersHeading": "Фильтры",
-  "dataDepthHeading": "Глубина данных",
-  "dataDepthAriaLabel": "Глубина данных",
-  "dataDepthLoadingAriaLabel": "Загрузка дополнительных данных",
+  "detailLevelHeading": "Уровень детализации",
+  "detailLevelAriaLabel": "Уровень детализации",
+  "detailLevelLoadingAriaLabel": "Загрузка дополнительных данных",
   "regionHeading": "Регион",
   "peopleHeading": "Люди",
   "conflictsMilestonesHeading": "Конфликты и вехи",
@@ -73,6 +73,12 @@
   "taxonomy.milestone-category-group.science-innovation": "Наука и инновации",
   "taxonomy.milestone-category-group.social-culture": "Общество и культура",
   "taxonomy.conflicts-milestones-filter.conflicts": "Конфликты",
-  "taxonomy.data-depth.mainstream": "Мейнстрим",
-  "taxonomy.data-depth.deep-cut": "Для знатоков"
+  "taxonomy.detail-level.legendary": "Легендарный",
+  "taxonomy.detail-level.mainstream": "Мейнстрим",
+  "taxonomy.detail-level.specialized": "Специализированный",
+  "taxonomy.detail-level.deep-cut": "Для знатоков",
+  "detailLevelDescription.legendary": "Только самые значимые фигуры, изменившие мир, крупнейшие конфликты и переломные вехи.",
+  "detailLevelDescription.mainstream": "Ключевые исторические фигуры, важнейшие конфликты и главные вехи.",
+  "detailLevelDescription.specialized": "Включает известных деятелей, второстепенные конфликты и региональные вехи.",
+  "detailLevelDescription.deep-cut": "Данные высокой плотности, включая малоизвестных деятелей, незначительные конфликты и малоизвестные вехи."
 }
