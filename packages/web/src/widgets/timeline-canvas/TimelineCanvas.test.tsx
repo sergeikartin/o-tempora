@@ -302,8 +302,8 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
   expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
 });
 
-test('dragging the Minimap viewport rect scrolls the container, proportional to the (mocked) track width vs. the timeline width', () => {
-  const { container, getByTestId } = render(
+test('dragging the Minimap viewport rect scrolls the container, proportional to the (mocked) track width vs. the timeline width', async () => {
+  const { container, findByTestId } = render(
     <TimelineCanvas
       people={fixturePeople}
       conflicts={fixtureConflicts}
@@ -322,8 +322,11 @@ test('dragging the Minimap viewport rect scrolls the container, proportional to 
   const scrollContainer = container.querySelector(
     '[class*="scrollContainer"]',
   ) as HTMLElement;
-  const track = getByTestId('minimap-track');
-  const rect = getByTestId('minimap-viewport-rect');
+  // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
+  // isMinimapIdle) — findByTestId waits it out instead of assuming it's
+  // there synchronously after render.
+  const track = await findByTestId('minimap-track');
+  const rect = await findByTestId('minimap-viewport-rect');
   // Minimap reads scrollLeft from React state (a prop), not a live
   // DOM ref — unlike the plain content-drag test above, so this drag's
   // start position is whatever TimelineCanvas already panned to on mount
@@ -422,8 +425,8 @@ test('a mousedown on the scroll container content still pans it — the custom s
   expect(scrollContainer.scrollLeft).toBe(140);
 });
 
-test('clicking the Minimap track outside the viewport rect jumps the viewport toward the click position', () => {
-  const { container, getByTestId } = render(
+test('clicking the Minimap track outside the viewport rect jumps the viewport toward the click position', async () => {
+  const { container, findByTestId } = render(
     <TimelineCanvas
       people={fixturePeople}
       conflicts={fixtureConflicts}
@@ -442,7 +445,10 @@ test('clicking the Minimap track outside the viewport rect jumps the viewport to
   const scrollContainer = container.querySelector(
     '[class*="scrollContainer"]',
   ) as HTMLElement;
-  const track = getByTestId('minimap-track');
+  // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
+  // isMinimapIdle) — findByTestId waits it out instead of assuming it's
+  // there synchronously after render.
+  const track = await findByTestId('minimap-track');
   Object.defineProperty(scrollContainer, 'scrollLeft', {
     value: 0,
     writable: true,
@@ -936,7 +942,7 @@ test('a zoom animation moves People, Conflicts+Milestones marks, and the Year Ax
 });
 
 test("Minimap's viewport rect reflects the new range once a zoom animation settles, not a stale pre-zoom one, even after an interrupted (double-clicked) animation", async () => {
-  const { getByLabelText, getByTestId } = render(
+  const { getByLabelText, findByTestId } = render(
     <TimelineCanvas
       people={fixturePeople}
       conflicts={fixtureConflicts}
@@ -952,7 +958,10 @@ test("Minimap's viewport rect reflects the new range once a zoom animation settl
       onToggleFilterDrawer={() => {}}
     />,
   );
-  const rect = getByTestId('minimap-viewport-rect');
+  // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
+  // isMinimapIdle) — findByTestId waits it out instead of assuming it's
+  // there synchronously after render.
+  const rect = await findByTestId('minimap-viewport-rect');
   const initialWidthPct = parseFloat(rect.style.width);
 
   // Two rapid clicks — the second interrupts/retargets the first — so this
