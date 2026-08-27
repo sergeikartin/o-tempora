@@ -6,17 +6,14 @@ import { Sidebar } from './Sidebar';
 
 afterEach(cleanup);
 
-const fameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
-
 type SidebarProps = Parameters<typeof Sidebar>[0];
 
 function renderSidebar(overrides: Partial<SidebarProps> = {}) {
   return render(
     <Sidebar
-      fameScoreValues={fameScoreValues}
-      isTier1Loading={false}
-      onFameScoreChange={vi.fn()}
-      onSelectDepthLevel={vi.fn()}
+      selectedLevelId="mainstream"
+      onSelectDetailLevel={vi.fn()}
+      loadingLevelIds={[]}
       searchQuery=""
       onSearchQueryChange={vi.fn()}
       searchResults={[]}
@@ -47,35 +44,21 @@ test('renders one Occupation Domain pill per OccupationDomain', () => {
   expect(people?.textContent).toContain('Science & Technology');
 });
 
-test('renders the fame-score filter inputs when the fameFilters flag is set, pre-filled with the given values', () => {
-  window.history.pushState({}, '', '/?fameFilters=1');
-
-  try {
-    const { getByLabelText } = renderSidebar();
-
-    expect(
-      (getByLabelText('Minimum fame score for People') as HTMLInputElement)
-        .value,
-    ).toBe('90');
-  } finally {
-    window.history.pushState({}, '', '/');
-  }
-});
-
-test('hides the fame-score filter inputs when the fameFilters flag is absent', () => {
+test('renders no manual fame-score numeric inputs — retired from production UI', () => {
   const { queryByLabelText } = renderSidebar();
 
   expect(queryByLabelText('Minimum fame score for People')).toBeNull();
 });
 
-test('renders the Data Depth switch, showing Mainstream active for the default values', () => {
-  const { getByRole } = renderSidebar({
-    fameScoreValues: { people: 88, conflicts: 82, milestones: 82 },
-  });
+test('renders the Detail Level switch, showing the given level active', () => {
+  const { getByRole } = renderSidebar({ selectedLevelId: 'deep-cut' });
 
   expect(
-    getByRole('button', { name: 'Mainstream' }).getAttribute('aria-pressed'),
+    getByRole('button', { name: 'Deep Cut' }).getAttribute('aria-pressed'),
   ).toBe('true');
+  expect(
+    getByRole('button', { name: 'Mainstream' }).getAttribute('aria-pressed'),
+  ).toBe('false');
 });
 
 test('clicking an Occupation Domain pill calls onToggleDomain with that domain', () => {
@@ -185,10 +168,9 @@ test('below the mobile breakpoint, a closed drawer is inert (off-screen filter c
 
     rerender(
       <Sidebar
-        fameScoreValues={fameScoreValues}
-        isTier1Loading={false}
-        onFameScoreChange={vi.fn()}
-        onSelectDepthLevel={vi.fn()}
+        selectedLevelId="mainstream"
+        onSelectDetailLevel={vi.fn()}
+        loadingLevelIds={[]}
         searchQuery=""
         onSearchQueryChange={vi.fn()}
         searchResults={[]}

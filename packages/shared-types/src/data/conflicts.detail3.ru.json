@@ -1,0 +1,737 @@
+[
+  {
+    "id": "Q126065",
+    "name": "Исламская революция в Иране",
+    "category": "revolution",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 81,
+    "tagline": "революция 1979 года в Иране",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Iranian_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mass%20demonstration%20in%20Iran%2C%20date%20unknown.jpg",
+    "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
+    "description": "Исламская революция, Иранская революция, Революция 1979 года — цепь событий в Иране, результатом которых стали эмиграция шаха Мохаммеда Реза Пехлеви, упразднение монархии и установление новой администрации, которую возглавил аятолла Хомейни.",
+    "period": {
+      "start": {
+        "year": 1978,
+        "month": 1
+      },
+      "end": {
+        "year": 1979,
+        "month": 2
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q254106",
+    "name": "Крымская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "война 1853—1856 годов между Россией и протурецкой коалицией ряда европейских государств",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Crimean_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Crimean%20War%2C%201854-1856%20Q69851.jpg",
+    "description": "Кры́мская война́ 1853—1856 годо́в, или Восто́чная война́ — глобальный военный конфликт между Российской империей при дружественном нейтралитете со стороны Соединённых Штатов Америки, Персии и империи Цин с одной стороны, и коалицией в составе Британской, Французской, Османской империй и Сардинского королевства при дружественном нейтралитете со стороны Австрийской империи, Королевства Пруссии и Шведско-норвежской унии, с другой. В самой Российской империи до начала XX века использовалось «французское» название «Восточная война», а также «Турецкая война», пока не было принято общеупотребительное обозначение «Крымская война». Боевые действия разворачивались на Кавказе, в Закавказье, Дунайских княжествах, на Балтийском, Чёрном, Азовском, Белом и Баренцевом морях, а также в низовьях Амура, на Камчатке и Курилах. Наибольшего напряжения они достигли в Крыму, ввиду чего война и получила название «Крымской».",
+    "period": {
+      "start": {
+        "year": 1853,
+        "month": 10
+      },
+      "end": {
+        "year": 1856,
+        "month": 2
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q33143",
+    "name": "Семилетняя война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "крупный военный конфликт XVIII века (1756—1763)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Seven_Years%27_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SevenYearsWar.png",
+    "imageAttribution": "Gabagool, via Wikimedia Commons",
+    "description": "Семиле́тняя война́ или Третья силезская война, (1756—1763) — крупный военный конфликт XVIII века, один из самых масштабных конфликтов Нового времени.",
+    "period": {
+      "start": {
+        "year": 1756,
+        "month": 5
+      },
+      "end": {
+        "year": 1763,
+        "month": 2
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q82664",
+    "name": "Ирано-иракская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "военный конфликт между Ираном и Ираком",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Iran-Iraq%20War%20Montage.png",
+    "description": "Ирано-иракская война, Первая война в Персидском заливе, или Первая война в заливе — вооружённый конфликт между Ираком и Ираном. Войне предшествовали серия территориальных споров между Ираном и Ираком, мотивированных желанием Ирака отторгнуть от Ирана богатую нефтью провинцию Хузестан (Арабистан) с арабским населением и восточный берег реки Шатт-эль-Араб, а также споры между двумя странами за лидерство среди государств в Персидском заливе. Ирано-иракская война явилась последним крупным конфликтом в рамках холодной войны и одним из наиболее длительных вооружённых конфликтов XX века.",
+    "period": {
+      "start": {
+        "year": 1980,
+        "month": 9
+      },
+      "end": {
+        "year": 1988,
+        "month": 8
+      }
+    },
+    "row": 5
+  },
+  {
+    "id": "Q134949",
+    "name": "Советско-финляндская война (1939—1940)",
+    "category": "war",
+    "regionTags": [
+      "eastern-europe",
+      "northern-europe"
+    ],
+    "fameScore": 81,
+    "tagline": "война между СССР и Финляндией (1939—1940)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Winter_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/A%20Finnish%20Maxim%20M-32%20machine%20gun%20nest%20during%20the%20Winter%20War.jpg",
+    "description": "Советско-финляндская война 1939—1940 годов, также известная как Советско-финская война 1939—1940 годов, Зимняя война, Финская война, Финская кампания 1939—1940 годов, Третья советско-финская война, Советско-финский вооружённый конфликт 1939—1940 годов — война между СССР и Финляндией в период с 30 ноября 1939 года по 12 марта 1940 года. Продолжительность войны составила 105 дней.",
+    "parentId": "Q362",
+    "period": {
+      "start": {
+        "year": 1939,
+        "month": 11
+      },
+      "end": {
+        "year": 1940,
+        "month": 3
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q78994",
+    "name": "Наполеоновские войны",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "совокупность войн, главным образом направленных против Наполеона Бонапарта",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Napoleonic_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bonaparte%20David%20Charlottenburg.jpg",
+    "description": "Наполеоновские войны — серия войн государств Европы против Наполеона Бонапарта в период его правления Францией в качестве Первого консула и императора. Состояли из пяти коалиционных войн (1803—1815) и двух отдельных конфликтов — Пиренейской войны (1808—1814) и Русской кампании 1812 года.",
+    "period": {
+      "start": {
+        "year": 1803
+      },
+      "end": {
+        "year": 1815
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q48249",
+    "name": "Фолклендская война",
+    "category": "war",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 81,
+    "tagline": "война 1982 года между Великобританией и Аргентиной за контроль над Фолклендскими (Мальвинскими) островами",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Falklands_War",
+    "description": "Фолкле́ндская война — война между Аргентиной и Великобританией за две британские заморские территории в Южной Атлантике: Фолклендские острова, а также Южную Георгию и Южные Сандвичевы Острова. Первая ракетная война на море. Она началась 2 апреля 1982 года с вторжения и захвата Аргентиной Фолклендских островов в попытке установить суверенитет, на который она претендовала. 5 апреля правительство Великобритании отправило военно-морское оперативное соединение для атаки ВМС и ВВС Аргентины перед высадкой морского десанта на территории островов. Конфликт завершился поражением Аргентины. В общей сложности во время боевых действий погибло 649 аргентинских и 255 британских военнослужащих, а также трое жителей Фолклендских островов.",
+    "period": {
+      "start": {
+        "year": 1982,
+        "month": 4
+      },
+      "end": {
+        "year": 1982,
+        "month": 6
+      }
+    },
+    "row": 6
+  },
+  {
+    "id": "Q52418",
+    "name": "нападение на Перл-Харбор",
+    "category": "military-operation",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 81,
+    "tagline": "атака Японского императорского флота на американские базы в районе гавани Перл-Харбор",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/USS%20SHAW%20exploding%20Pearl%20Harbor%20Nara%2080-G-16871%202.jpg",
+    "description": "Нападе́ние на Перл-Ха́рбор — внезапная комбинированная атака воздушных и подводных сил японского флота на американские силы, находившиеся на военно-морской базе в Перл-Харборе. Атака произошла воскресным утром, 7 декабря 1941 года и стала поводом к вступлению США во Вторую мировую войну.",
+    "at": {
+      "year": 1941,
+      "month": 12
+    },
+    "row": 8
+  },
+  {
+    "id": "Q80330",
+    "name": "Английская революция",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "революция и гражданская война в Англии, Шотландии и Ирландии (1642–1651)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/English_Civil_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Burton%2C%20William%20Shakespeare-%20The%20Wounded%20Cavalier.jpg",
+    "description": "Английская революция или Английская гражданская война — гражданский и военный конфликт, происходивший в 1639—1660 годах и ознаменовавший переход Англии от монархии к республике; закончился смертью протектора Кромвеля и реставрацией монархии.",
+    "period": {
+      "start": {
+        "year": 1642
+      },
+      "end": {
+        "year": 1651,
+        "month": 9
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q46083",
+    "name": "франко-прусская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "военный конфликт между Францией и Пруссией в 1870—1871 годах",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Franco-Prussian_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle-Mars-Le-Tour-large.jpg",
+    "description": "Фра́нко-пру́сская или Фра́нко-герма́нская война́ 1870—1871 годов — война, начавшаяся как конфликт между империей Наполеона III и германскими государствами во главе с Пруссией, добивавшейся европейской гегемонии и окончившаяся как война между Французской республикой и объединённой Германской империей.",
+    "period": {
+      "start": {
+        "year": 1870,
+        "month": 7
+      },
+      "end": {
+        "year": 1871,
+        "month": 1
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q159950",
+    "name": "Русско-японская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "война между Российской и Японской империями в 1904—1905 годах",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Japanese_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RUSSOJAPANESEWARIMAGE.jpg",
+    "description": "Ру́сско-япо́нская война́ — война между Российской и Японской империями за контроль над Маньчжурией, Кореей и Жёлтым морем.",
+    "period": {
+      "start": {
+        "year": 1904,
+        "month": 2
+      },
+      "end": {
+        "year": 1905,
+        "month": 9
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q170314",
+    "name": "японо-китайская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "война между Китайской Республикой и Японской империей",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20Occupation%20of%20China%201940.svg",
+    "imageAttribution": "File:Japanese_Occupation_-_Map.jpg: original\nFile:OcupaciónJaponesaDeChina1940.svg: Rowanwindwhistler (talk) \"Turned into SVG and translated into Spanish.\"\nOdie5533 \"Translated back into English\", via Wikimedia Commons",
+    "description": "Япо́но-кита́йская война́ 1937—1945 годо́в — война между Китайской Республикой и Японской империей, начавшаяся до Второй мировой войны и продолжавшаяся до её окончания.",
+    "parentId": "Q362",
+    "period": {
+      "start": {
+        "year": 1937,
+        "month": 7
+      },
+      "end": {
+        "year": 1945,
+        "month": 9
+      }
+    },
+    "row": 9
+  },
+  {
+    "id": "Q189266",
+    "name": "Великая Отечественная война",
+    "category": "war",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "советско-германский театр Второй мировой войны",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20146-1981-149-34A%2C%20Russland%2C%20Herausziehen%20eines%20Autos.jpg",
+    "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
+    "description": "Великая Отечественная война, также Восточный фронт Второй мировой войны — война Советского Союза и в дальнейшем его союзников против напавших на него нацистской Германии и других сил «оси», начавшаяся с самого крупного вторжения в мировой истории их войск на советскую территорию и закончившаяся освобождением от оккупации блоком «оси» стран Центральной и Восточной Европы и ликвидации в этих регионах входивших в блок «оси» тоталитарных и авторитарных государств вместе с самим блоком. По своим масштабам это был самый крупный и кровопролитный вооружённый конфликт в мировой истории. Восточный фронт являлся главной составной частью Второй мировой войны, завершившейся победой Красной армии и безоговорочной капитуляцией вооружённых сил Германии. Название «Великая Отечественная война» возникло в советской историографии и до сих пор используется, в первую очередь, в России; в большинстве стран мира именуется «Восточный фронт», в нынешней германской и украинской историографии — также «германо-советская война».",
+    "parentId": "Q362",
+    "period": {
+      "start": {
+        "year": 1941,
+        "month": 6
+      },
+      "end": {
+        "year": 1945,
+        "month": 5
+      }
+    },
+    "row": 10
+  },
+  {
+    "id": "Q26013",
+    "name": "Англо-американская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "вооружённый конфликт между США и Великобританией в период наполеоновских войн",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/War_of_1812",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/USS%20Constitution%20vs%20Guerriere.jpg",
+    "description": "Англо-американская война 1812—1815 годов — вооружённый конфликт между США и Великобританией в период наполеоновских войн.",
+    "period": {
+      "start": {
+        "year": 1812,
+        "month": 6
+      },
+      "end": {
+        "year": 1815,
+        "month": 2
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q192769",
+    "name": "Американская революция",
+    "category": "revolution",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 79,
+    "tagline": "Политические события в британских колониях Северной Америки в 1775 (по некоторым источникам в 1765—1783 годах)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/American_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20Independence%20%281819%29%2C%20by%20John%20Trumbull.jpg",
+    "description": "Америка́нская револю́ция — исторический период, приходящийся на 1765—1783 годы, в ходе которого 13 британских колоний в Северной Америке избавились от колониального статуса, образовав Соединенные Штаты Америки и добившись их признания как независимого государства.",
+    "period": {
+      "start": {
+        "year": 1765
+      },
+      "end": {
+        "year": 1783
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q11264",
+    "name": "Кубинская революция",
+    "category": "revolution",
+    "regionTags": [
+      "caribbean"
+    ],
+    "fameScore": 79,
+    "tagline": "вооружённая борьба за власть на Кубе с 1953 по 1959 год",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuban_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fidel%20Castro%20-%20MATS%20Terminal%20Washington%201959.jpg",
+    "description": "Куби́нская револю́ция — социальная революция, исходом которой стала ликвидация капиталистических социально-экономических отношений на Кубе и провозглашение Кубы «социалистическим государством». Началась как вооружённое восстание Движения 26 июля и его союзников во главе с Фиделем Кастро против военной диктатуры Фульхенсио Батисты.",
+    "at": {
+      "year": 1953,
+      "month": 7
+    },
+    "row": 12
+  },
+  {
+    "id": "Q12583",
+    "name": "испано-американская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "военный конфликт между Испанией и США в 1898 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish%E2%80%93American_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maine%20explosion.jpg",
+    "description": "Испано-американская война — военный конфликт между Испанией и США в 1898 году. В ходе боевых действий США оккупировали принадлежавшие Королевству Испания с XVI века Кубу, Пуэрто-Рико и Филиппины.",
+    "period": {
+      "start": {
+        "year": 1898,
+        "month": 4
+      },
+      "end": {
+        "year": 1898,
+        "month": 8
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q182865",
+    "name": "Война в Афганистане",
+    "category": "war",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 79,
+    "tagline": "асимметричный военный конфликт между ISAF и исламистской организацией Талибан",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/War_in_Afghanistan_(2001%E2%80%932021)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Collage%20of%20the%20War%20in%20Afghanistan%20%282001-2021%29.png",
+    "imageAttribution": "Original photographers: see sourcesMontage work: Weaveravel and OspreyPL, via Wikimedia Commons",
+    "description": "Война в Афганистане (2001—2021) — один из этапов гражданской войны в Афганистане, продолжавшейся с 1978 года. Военный конфликт, во время которого в качестве ответа на теракты 11 сентября, международная военная коалиция, включающая силы США и Международные силы содействия безопасности, вторглись в Афганистан. Международная коалиция при поддержке сначала Северного альянса, а затем нового правительства Афганистана, вела боевые действия против исламистской террористической организации «Талибан», до начала конфликта контролировавшей бо́льшую часть Афганистана.",
+    "parentId": "Q185729",
+    "period": {
+      "start": {
+        "year": 2001,
+        "month": 10
+      },
+      "end": {
+        "year": 2021,
+        "month": 8
+      }
+    },
+    "row": 6
+  },
+  {
+    "id": "Q620735",
+    "name": "война в Грузии",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "вторжение России в Грузию в 2008 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Georgian_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tskhinval%20Yana%20Amelina%2010.jpg",
+    "imageAttribution": "Yana Amelina (Амелина Я. А.), via Wikimedia Commons",
+    "description": "Война́ в Гру́зии, также известная как пятидне́вная война́, а́вгустовская война́, война́ в Ю́жной Осе́тии, росси́йско-грузи́нская война́, вторже́ние Росси́и в Гру́зию и война́ 08.08.08 — боевые действия между Грузией и Россией с поддерживаемыми ею самопровозглашёнными республиками Южной Осетией и Республикой Абхазия, происходившие в августе 2008 года.",
+    "period": {
+      "start": {
+        "year": 2008,
+        "month": 8
+      },
+      "end": {
+        "year": 2008,
+        "month": 8
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q160077",
+    "name": "Падение Константинополя",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe",
+      "western-asia"
+    ],
+    "fameScore": 79,
+    "tagline": "захват столицы Византийской империи армией османского султана Мехмеда II",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Le%20si%C3%A8ge%20de%20Constantinople%20%281453%29%20by%20Jean%20Le%20Tavernier%20after%201455.jpg",
+    "description": "Падение Константинополя в 1453 году — осада столицы Византийской империи Константинополя армией османского султана Мехмеда II, которая началась 6 апреля и закончилась 29 мая 1453 года захватом города османской армией. Падение Константинополя ознаменовало уничтожение Восточной Римской империи, также называемой Византийской.",
+    "period": {
+      "start": {
+        "year": 1453,
+        "month": 4
+      },
+      "end": {
+        "year": 1453,
+        "month": 5
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q179975",
+    "name": "Гражданская война в Китае",
+    "category": "war",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 79,
+    "tagline": "серия вооружённых конфликтов на территории Китая между силами Китайской Республики и китайскими коммунистами (1927—1950)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chinese_Civil_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Shangtang.jpg",
+    "description": "Гражданская война в Китае — серия вооружённых конфликтов на территории Китая между силами Китайской Республики и Коммунистической партией Китая в 1927—1950 годах.",
+    "period": {
+      "start": {
+        "year": 1927,
+        "month": 8
+      },
+      "end": {
+        "year": 1950,
+        "month": 5
+      }
+    },
+    "row": 11
+  },
+  {
+    "id": "Q127751",
+    "name": "Война Алой и Белой розы",
+    "category": "war",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "династическая война за трон Англии в XV веке",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Wars_of_the_Roses",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/York%20victory%20over%20Lancaster.svg",
+    "imageAttribution": "Sodacan, via Wikimedia Commons",
+    "description": "Война́ А́лой и Бе́лой ро́зы или Война (войны) роз — серия вооружённых династических конфликтов между группировками английской знати в 1455—1485 годах в борьбе за власть между сторонниками двух ветвей королевской династии Плантагенетов — Ланкастеров и Йорков.",
+    "period": {
+      "start": {
+        "year": 1455,
+        "month": 5
+      },
+      "end": {
+        "year": 1487,
+        "month": 6
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q129864",
+    "name": "Восстание сипаев",
+    "category": "rebellion",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 78,
+    "tagline": "восстание индийских солдат против колониальной политики англичан в 1857—1859 годах",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Indian%20Rebellion%20of%201857.jpg",
+    "description": "Восста́ние сипа́ев — восстание индийских солдат против колониальной политики англичан в 1857—1859 годах. Восстание началось на севере от Бенгалии до Пенджаба и в центральной Индии. Основная инициатива была предпринята со стороны армии и незадолго до этого отстранённых от власти махарадж, но в некоторых областях его поддержали крестьяне, и оно превратилось в общее восстание. Дели был захвачен повстанцами, однако позже был окружён и взят британцами. Восстание положило конец власти Британской Ост-Индской компании и привело к её замене прямым правлением английской короны.",
+    "period": {
+      "start": {
+        "year": 1857,
+        "month": 5
+      },
+      "end": {
+        "year": 1858,
+        "month": 6
+      }
+    },
+    "row": 6
+  },
+  {
+    "id": "Q179250",
+    "name": "Отечественная война 1812 года",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "война между Францией и Россией 1812 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/French_invasion_of_Russia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/French%20invasion%20of%20Russia%20collage.jpg",
+    "imageAttribution": "Blaue Max, via Wikimedia Commons",
+    "description": "Оте́чественная война́ 1812 го́да, во французской историографии — Ру́сская кампа́ния 1812 го́да — военный конфликт между Российской и Французской империями, протекавший на территории первой в июне-декабре 1812 года. В дореволюционной российской историографии традиционно именовался «нашествием двуна́десяти языков» в связи с многонациональным составом армии Наполеона.",
+    "parentId": "Q78994",
+    "period": {
+      "start": {
+        "year": 1812,
+        "month": 6
+      },
+      "end": {
+        "year": 1812,
+        "month": 12
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q150812",
+    "name": "вторжение в Польшу",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "вторжение немецких, словацких и советских войск в Польшу в сентябре 1939 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/German%20soldiers%20remove%20the%20Polish%20border%20crossing%20in%20Sopot%20during%20the%20first%20stages%20of%20the%20Invasion%20of%20Poland%20%2848661789227%29.png",
+    "imageAttribution": "Cassowary Colorizations, via Wikimedia Commons",
+    "description": "Польская кампания вермахта, также Германо-польская война или нападение на Польшу, в польской историографии — «Сентябрьская кампания» — агрессивная война вооружённых сил нацистской Германии при поддержке вооружённых сил Словакии по плану «Вайс», осуществлённая 1 сентября — 6 октября 1939 года, в результате которой было нанесено сокрушительное поражение польским вооружённым силам; значительная часть западной территории Польской республики была оккупирована и превращена в генерал-губернаторство в составе Третьего Великогерманского рейха.",
+    "parentId": "Q362",
+    "period": {
+      "start": {
+        "year": 1939,
+        "month": 9
+      },
+      "end": {
+        "year": 1939,
+        "month": 10
+      }
+    },
+    "row": 13
+  },
+  {
+    "id": "Q29269",
+    "name": "Первая чеченская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "вооружённый конфликт между Россией и Чеченской Республикой Ичкерией (1994—1996)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Chechen_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Collage%20the%20First%20Chechen%20War.jpg",
+    "imageAttribution": "Derivative work:  Ostrovsky Gregory, via Wikimedia Commons",
+    "description": "Пе́рвая чече́нская война́ — боевые действия на территории Чечни и в приграничных регионах Северного Кавказа между войсками России и непризнанной Чеченской Республикой Ичкерия с целью восстановления российской власти на территории Чечни, на которой в 1991 году была провозглашена Чеченская Республика Ичкерия.",
+    "period": {
+      "start": {
+        "year": 1994,
+        "month": 12
+      },
+      "end": {
+        "year": 1996,
+        "month": 8
+      }
+    },
+    "row": 9
+  },
+  {
+    "id": "Q150229",
+    "name": "Ихэтуаньское восстание",
+    "category": "rebellion",
+    "regionTags": [
+      "eastern-asia",
+      "western-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "восстание ихэтуаней против иностранного вмешательства в экономику, внутреннюю политику и религиозную жизнь Китая в 1898—1901 годах",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Boxer_Rebellion",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Boxer-tianjing-left.jpeg",
+    "description": "Ихэтуа́ньское восста́ние или Боксёрское восстание — антиевропейское, антиимпериалистическое и антихристианское восстание ихэтуаней в Северном Китае с 1899 по 1901 годы.",
+    "period": {
+      "start": {
+        "year": 1899,
+        "month": 8
+      },
+      "end": {
+        "year": 1901,
+        "month": 9
+      }
+    },
+    "row": 5
+  },
+  {
+    "id": "Q6683",
+    "name": "американо-мексиканская война",
+    "category": "war",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 78,
+    "tagline": "военный конфликт между США и Мексикой в 1846—1848 гг.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mexican%E2%80%93American_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20Molino%20del%20Rey.jpg",
+    "description": "Американо-мексиканская война — военный конфликт между США и Централистской Республикой Мексика в 1846—1848 годах. В Мексике известна как интервенция Соединённых Штатов, в США — как Мексиканская война.",
+    "period": {
+      "start": {
+        "year": 1846,
+        "month": 4
+      },
+      "end": {
+        "year": 1848,
+        "month": 2
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q15224558",
+    "name": "Евромайдан",
+    "category": "coup-d-etat",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "протесты на Украине с 30 ноября 2013 года по 22 февраля 2014 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Euromaidan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Euromaidan%20Kyiv%201-12-13%20by%20Gnatoush%20005.jpg",
+    "imageAttribution": "Nessa Gnatoush, via Wikimedia Commons",
+    "description": "Евромайда́н — массовая многомесячная акция протеста в центре Киева, начавшаяся 21 ноября 2013 года в ответ на приостановку украинским правительством подготовки к подписанию соглашения об ассоциации между Украиной и Евросоюзом и поддержанная выступлениями населения в других регионах Украины.",
+    "period": {
+      "start": {
+        "year": 2013,
+        "month": 11
+      },
+      "end": {
+        "year": 2014,
+        "month": 2
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q104705419",
+    "name": "захват Капитолия",
+    "category": "rebellion",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 78,
+    "tagline": "попытка демонстрантов в 2021 году предотвратить смену власти в США по итогам выборов 2020 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/January_6_United_States_Capitol_attack",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2021%20storming%20of%20the%20United%20States%20Capitol%2009.jpg",
+    "imageAttribution": "Tyler Merbler, via Wikimedia Commons",
+    "description": "Штурм Капитолия США был совершён 6 января 2021 года толпой протестующих, поддерживавших попытки 45-го президента США Дональда Трампа отменить результат президентских выборов 2020 года, в которых он потерпел поражение, с целью прервать проходившее в тот момент совместное заседание Конгресса по подсчёту голосов выборщиков и подтверждению победы Джо Байдена на выборах. Прорвавшись через оцепления полиции и службу безопасности, выбив запертые окна и проникнув в офисы конгрессменов, они на несколько часов заняли части здания. Штурм привёл к эвакуации и закрытию здания Капитолия, прервав заседание Конгресса.",
+    "at": {
+      "year": 2021,
+      "month": 1
+    },
+    "row": 8
+  },
+  {
+    "id": "Q190029",
+    "name": "Косовская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "вооружённый конфликт в Косове (1998–1999)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kosovo_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kosovo%20War%20header.jpg",
+    "imageAttribution": "Clockwise from upper left: Tomislav Jagušt, User:Snake bgd, User:Zeke, Senior Airman Mitch Fuqua (U.S. Air Force), via Wikimedia Commons",
+    "description": "Ко́совская война́ — вооружённый конфликт в Косово с 28 февраля 1998 по 11 июня 1999 года, часть Югославских войн. Полиция и армия Союзной Республики Югославии, контролировавшие Косово до войны как часть Сербии, противостояли Армии освобождения Косова — сепаратистской организации косовских албанцев, стремившихся к отделению Косова в независимое государство. Позже в войну вмешалась Организация Североатлантического договора (НАТО) во главе с Соединёнными Штатами Америки, начав длительную и разрушительную кампанию бомбардировок против Югославии и вынудив югославские силы отступить из Косова.",
+    "period": {
+      "start": {
+        "year": 1998,
+        "month": 2
+      },
+      "end": {
+        "year": 1999,
+        "month": 6
+      }
+    },
+    "row": 10
+  },
+  {
+    "id": "Q181533",
+    "name": "Боснийская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "гражданская война в Боснии и Герцеговине 1992–1995 гг.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bosnian_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bosnian%20war%20header.no.png",
+    "imageAttribution": "Evstafiev, via Wikimedia Commons",
+    "description": "Война в Бо́снии и Герцегови́не — острый межэтнический конфликт на территории Республики Босния и Герцеговина между вооружёнными формированиями сербов, мусульман-автономистов, боснийских мусульман и хорватов. На начальном этапе войны участие также принимала Югославская народная армия. В дальнейшем в конфликт были вовлечены армия Хорватии, добровольцы и наёмники со всех сторон и вооружённые силы НАТО.",
+    "period": {
+      "start": {
+        "year": 1992,
+        "month": 4
+      },
+      "end": {
+        "year": 1995,
+        "month": 12
+      }
+    },
+    "row": 8
+  }
+]

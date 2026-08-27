@@ -6,10 +6,14 @@ Since there is no longer any production UI path to an off-preset value, the segm
 
 **Blocked by:** 02
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Manual numeric floor inputs are no longer present anywhere in the production UI
-- [ ] A dev-console-callable function sets arbitrary per-lane Fame Score floors and immediately re-filters the rendered dataset, available in local/dev builds
-- [ ] The console function and any code that exists solely to support it are excluded from the production bundle (verify via a production build, not just dev server behavior)
-- [ ] The segmented control never renders a "custom/unmatched" state in production — it always shows one of the 4 levels
-- [ ] The 4 levels remain fully reachable via the production UI after this change (no regression from ticket 02)
+- [x] Manual numeric floor inputs are no longer present anywhere in the production UI
+- [x] A dev-console-callable function sets arbitrary per-lane Fame Score floors and immediately re-filters the rendered dataset, available in local/dev builds
+- [x] The console function and any code that exists solely to support it are excluded from the production bundle (verify via a production build, not just dev server behavior)
+- [x] The segmented control never renders a "custom/unmatched" state in production — it always shows one of the 4 levels
+- [x] The 4 levels remain fully reachable via the production UI after this change (no regression from ticket 02)
+
+## Comments
+
+`FameScoreFilters` (component + CSS + test) deleted outright, along with its `?fameFilters=1` feature-flag gating in `Sidebar.tsx`. `useFameScoreFilters` now tracks `level: DetailLevel` as explicit state (set only by the switch) instead of deriving the active preset from `values` — `matchDataDepthLevel`/the "custom" return value are gone, so there's no remaining code path that can render an unmatched state. Dev-console replacement: `src/features/filter-by-fame-score/model/dev-fame-score-override.ts` exposes `window.__setFameScoreFloors({ people, conflicts, milestones })`, wired into `useFameScoreFilters`'s state setter, guarded by `import.meta.env.DEV`. Verified excluded from prod: `npm run build --workspace packages/web` then `grep -rl "setFameScoreFloors" dist/assets/*.js` — no matches.

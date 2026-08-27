@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
 import { criticalCssPlugin } from './vite-plugins/critical-css.ts';
 import { criticalFontPreloadPlugin } from './vite-plugins/critical-font-preload.ts';
+import { eagerDetailModulePreloadPlugin } from './vite-plugins/eager-detail-modulepreload.ts';
 import { prerenderDefaultViewportPlugin } from './vite-plugins/prerender-default-viewport.ts';
-import { tier0ModulePreloadPlugin } from './vite-plugins/tier0-modulepreload.ts';
 
 // Locale is resolved at runtime from the URL, not forked at build time
 // (docs/adr/0009 supersedes 0005's baseLocale-only strategy): English is
@@ -35,7 +35,7 @@ export default defineConfig({
       strategy: ['url', 'baseLocale'],
       emitTsDeclarations: true,
     }),
-    tier0ModulePreloadPlugin(),
+    eagerDetailModulePreloadPlugin(),
     criticalFontPreloadPlugin(),
     // Between font preload and critical CSS: the latter's Beasties pass
     // (critical-css.ts) needs the real, class-bearing default-viewport

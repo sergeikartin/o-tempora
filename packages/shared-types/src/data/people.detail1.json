@@ -1,0 +1,1827 @@
+[
+  {
+    "id": "18934",
+    "name": "Muhammad",
+    "lifespan": {
+      "start": {
+        "year": 570
+      },
+      "end": {
+        "year": 632,
+        "month": 6
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 100,
+    "tagline": "Arabian political leader and the founder of Islam (c. 570–632)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Muhammad",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siyer-i%20Nebi%20158b.jpg",
+    "description": "Muhammad was an Arab religious, military, and political leader, and the founder of Islam. According to Islam, he was the final prophet of God who was divinely inspired to preach and confirm the monotheistic teachings of Adam, Noah, Abraham, Moses, Jesus, and other prophets in Islam. He is believed by Muslims to be the Seal of the Prophets, and along with the Quran, his teachings and normative examples form the basis for Islamic religious belief.",
+    "row": 0
+  },
+  {
+    "id": "3395",
+    "name": "The Buddha",
+    "lifespan": {
+      "start": {
+        "year": -565,
+        "month": 4
+      },
+      "end": {
+        "year": -451
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 99.481783,
+    "tagline": "Indian philosopher and the founder of Buddhism (623 or 563 BCE – 543 or 483 BCE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gautama_Buddha",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Buddha%20in%20Sarnath%20Museum%20%28Dhammajak%20Mutra%29.jpg",
+    "imageAttribution": "พระมหาเทวประภาส วชิรญาณเมธี (ผู้ถ่าย-ปล่อยสัญญาอนุญาตภาพให้นำไปใช้ได้เพื่อการศึกษาโดยอยู่ภา่ยใต้ cc-by-sa-3.0)  ผู้สร้างสรรค์ผลงาน/ส่งข้อมูลเก็บในคลังข้อมูลเสรีวิกิมีเดียคอมมอนส์ - เทวประภาส มากคล้าย, via Wikimedia Commons",
+    "description": "Siddhartha Gautama, most commonly referred to as the Buddha, was a wandering ascetic and religious teacher who lived in the eastern Indo-Gangetic Plains during the 6th or 5th century BCE and founded Buddhism. According to Buddhist legends, he was born in Lumbini, in what is now Nepal, to royal parents of the Shakya clan, but renounced his home life to live as a wandering ascetic. After leading a life of mendicancy, asceticism, and meditation, he attained nirvana at Bodh Gaya in what is now Bihar, India. The Buddha then wandered through the lower Indo-Gangetic Plain, teaching and building a monastic order (sangha). Buddhist tradition holds he died in Kushinagar and reached parinirvana.",
+    "row": 0
+  },
+  {
+    "id": "14627",
+    "name": "Isaac Newton",
+    "lifespan": {
+      "start": {
+        "year": 1643,
+        "month": 1
+      },
+      "end": {
+        "year": 1726
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 99.439201,
+    "tagline": "English mathematician and physicist (1642–1727)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Isaac_Newton",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/GodfreyKneller-IsaacNewton-1689.jpg",
+    "description": "Sir Isaac Newton was an English polymath who was a mathematician, physicist, astronomer, alchemist, theologian, author and inventor. He was a key figure in the Scientific Revolution and the Enlightenment that followed. His book Philosophiæ Naturalis Principia Mathematica, first published in 1687, achieved the first great unification in physics and established classical mechanics. Newton also made seminal contributions to optics, and shares credit with the German mathematician Gottfried Wilhelm Leibniz for formulating infinitesimal calculus, although he developed calculus years before Leibniz. Newton contributed to and refined the scientific method, and his work is considered the most influential in bringing forth modern science.",
+    "row": 0
+  },
+  {
+    "id": "4848272",
+    "name": "Donald Trump",
+    "lifespan": {
+      "start": {
+        "year": 1946,
+        "month": 6
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 99.267069,
+    "tagline": "45th and 47th President of the United States (2017–2021; since 2025)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Donald_Trump",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%28cropped%29%282%29.jpg",
+    "description": "Donald John Trump is an American politician, media personality, and businessman who is the 47th president of the United States. A member of the Republican Party, he served as the 45th president from 2017 to 2021.",
+    "row": 0
+  },
+  {
+    "id": "17414699",
+    "name": "Genghis Khan",
+    "lifespan": {
+      "start": {
+        "year": 1162,
+        "month": 5
+      },
+      "end": {
+        "year": 1227,
+        "month": 8
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 98.434181,
+    "tagline": "founder and first khan of the Mongol Empire (1162–1227)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Genghis_Khan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/YuanEmperorAlbumGenghisPortrait.jpg",
+    "description": "Genghis Khan, also known as Chinggis Khan, was the founder and first khan of the Mongol Empire. After spending most of his life uniting the Mongol tribes, he launched a series of military campaigns, conquering large parts of China and Central Asia.",
+    "row": 0
+  },
+  {
+    "id": "60827",
+    "name": "Cleopatra",
+    "lifespan": {
+      "start": {
+        "year": -68,
+        "month": 1
+      },
+      "end": {
+        "year": -29,
+        "month": 8
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 98.337383,
+    "tagline": "queen of the Ptolemaic Kingdom of Egypt from 51 to 30 BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cleopatra",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kleopatra-VII.-Altes-Museum-Berlin1.jpg",
+    "description": "Cleopatra VII Thea Philopator was Queen of the Ptolemaic Kingdom of Egypt from 51 to 30 BC, and the last active Hellenistic pharaoh. A member of the Ptolemaic dynasty, she was a descendant of its founder Ptolemy I Soter, a Macedonian Greek general and companion of Alexander the Great. Her first language was Koine Greek, and she is the only Ptolemaic ruler known to have learned the Egyptian language, among several others. After her death, Egypt became a province of the Roman Empire, marking the end of the Hellenistic period in the Mediterranean, which had begun during the reign of Alexander.",
+    "row": 0
+  },
+  {
+    "id": "19379",
+    "name": "Mahatma Gandhi",
+    "lifespan": {
+      "start": {
+        "year": 1869,
+        "month": 10
+      },
+      "end": {
+        "year": 1948,
+        "month": 1
+      }
+    },
+    "occupationDomain": "public-figure",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 97.707933,
+    "tagline": "Indian independence activist (1869–1948)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mahatma-Gandhi%2C%20studio%2C%201931.jpg",
+    "description": "Mohandas Karamchand Gandhi was an Indian lawyer, anti-colonial nationalist and political ethicist who employed nonviolent resistance to lead the successful campaign for India's independence from British rule, and to later inspire movements for civil rights and freedom across the world. The honorific Mahātmā, first applied to him in 1914 in South Africa, is now used throughout the world.",
+    "row": 1
+  },
+  {
+    "id": "1687680",
+    "name": "Pope Francis",
+    "lifespan": {
+      "start": {
+        "year": 1936,
+        "month": 12
+      },
+      "end": {
+        "year": 2025,
+        "month": 4
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "south-america",
+      "southern-europe"
+    ],
+    "fameScore": 97.042983,
+    "tagline": "266th pope of the Catholic Church from 2013 to 2025 (1936–2025)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Francis",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pope%20Francis%20Korea%20Haemi%20Castle%2019.jpg",
+    "imageAttribution": "Korea.net / Korean Culture and Information Service (Jeon Han), via Wikimedia Commons",
+    "description": "Pope Francis was the head of the Catholic Church and sovereign of Vatican City from 13 March 2013 until his death in 2025. He was the first Jesuit pope, the first Latin American, and the first pope born or raised outside Europe since the 8th-century Syrian pope Gregory III.",
+    "row": 2
+  },
+  {
+    "id": "17914",
+    "name": "Ludwig van Beethoven",
+    "lifespan": {
+      "start": {
+        "year": 1770,
+        "month": 12
+      },
+      "end": {
+        "year": 1827,
+        "month": 3
+      }
+    },
+    "occupationDomain": "arts",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 96.8901,
+    "tagline": "German composer (1770-1827)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Beethoven.jpg",
+    "description": "Ludwig van Beethoven was a German composer, conductor, and pianist. Regarded as one of the greatest composers in the history of Western music, he was mentored during the Classical period, and his musical style was a key driver of the transition to Romantic music, and the expansion of instrumental forms such as the symphony, the piano sonata and the string quartet. His compositions have attracted extraordinary casual and scholarly interest, and remain among the most performed in the world.",
+    "row": 0
+  },
+  {
+    "id": "18079",
+    "name": "Leonardo da Vinci",
+    "lifespan": {
+      "start": {
+        "year": 1452,
+        "month": 4
+      },
+      "end": {
+        "year": 1519,
+        "month": 5
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "southern-europe",
+      "western-europe"
+    ],
+    "fameScore": 96.801826,
+    "tagline": "Italian Renaissance polymath (1452−1519)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Francesco%20Melzi%20-%20Portrait%20of%20Leonardo.png",
+    "description": "Leonardo di ser Piero da Vinci was an Italian polymath of the High Renaissance who was active as a painter, draughtsman, engineer, scientist, theorist, sculptor, and architect. While his fame initially rested on his achievements as a painter, he has also become known for his notebooks, in which he made drawings and notes on a variety of subjects, including anatomy, astronomy, botany, cartography, painting, and palaeontology. Leonardo is widely regarded as a genius who epitomised the Renaissance humanist ideal, and his collective works contributed to the development of European art to an extent rivalled only by that of his younger contemporary Michelangelo.",
+    "row": 0
+  },
+  {
+    "id": "308",
+    "name": "Aristotle",
+    "lifespan": {
+      "start": {
+        "year": -383
+      },
+      "end": {
+        "year": -320
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 96.252463,
+    "tagline": "4th-century BCE Classical Greek philosopher and polymath",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Aristotle",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aristotle%20Altemps%20Inv8575.jpg",
+    "description": "Aristotle was an ancient Greek philosopher and polymath. His writings span the natural sciences, philosophy, linguistics, economics, politics, psychology, and the arts. As the founder of the Peripatetic school of philosophy in the Lyceum in Athens, he began the wider Aristotelian tradition that followed, which set the groundwork for the development of modern science.",
+    "row": 1
+  },
+  {
+    "id": "19334",
+    "name": "Marco Polo",
+    "lifespan": {
+      "start": {
+        "year": 1254,
+        "month": 9
+      },
+      "end": {
+        "year": 1324,
+        "month": 1
+      }
+    },
+    "occupationDomain": "exploration",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 96.207777,
+    "tagline": "Venetian explorer and merchant who travelled through Asia (1254–1324)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Marco_Polo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Marco%20Polo%20Mosaic%20from%20Palazzo%20Tursi.jpg",
+    "description": "Marco Polo was a Venetian merchant, explorer, and writer who travelled through Asia along the Silk Road between 1271 and 1295. His travels are recorded in The Travels of Marco Polo, a book that described the then-mysterious culture and inner workings of the Eastern world, including the wealth and great size of the Mongol Empire and China under the Yuan dynasty, giving Europeans their first comprehensive look into China, Persia, India, Japan, and other Asian societies.",
+    "row": 0
+  },
+  {
+    "id": "10128",
+    "name": "Elizabeth I of England",
+    "lifespan": {
+      "start": {
+        "year": 1533,
+        "month": 9
+      },
+      "end": {
+        "year": 1603,
+        "month": 3
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 96.042419,
+    "tagline": "Queen of England and Ireland from 1558 to 1603  (1533-1603)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Elizabeth_I_of_England",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Elizabeth1England.jpg",
+    "description": "Elizabeth I was Queen of England and Ireland from 17 November 1558 until her death in 1603. She was the last and longest reigning monarch of the House of Tudor. Her eventful reign, and its effect on history and culture, gave name to the Elizabethan era.",
+    "row": 0
+  },
+  {
+    "id": "22954",
+    "name": "Plato",
+    "lifespan": {
+      "start": {
+        "year": -426,
+        "month": 5
+      },
+      "end": {
+        "year": -346
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 95.935845,
+    "tagline": "4th-century BCE Greek philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plato",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Plato%20Silanion%20Musei%20Capitolini%20MC1377.jpg",
+    "imageAttribution": "Marie-Lan Nguyen, via Wikimedia Commons",
+    "description": "Plato was an ancient Greek philosopher of Classical Athens who is most commonly considered the foundational thinker of the Western philosophical tradition. An innovator of the literary dialogue and dialectic forms, Plato influenced all the major areas of theoretical philosophy and practical philosophy, and was the founder of the Academy, a philosophical school in Athens where Plato taught the collection of philosophical theories that would later become known as Platonism.",
+    "row": 0
+  },
+  {
+    "id": "783",
+    "name": "Alexander the Great",
+    "lifespan": {
+      "start": {
+        "year": -355,
+        "month": 7
+      },
+      "end": {
+        "year": -322,
+        "month": 6
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "southern-europe",
+      "western-asia"
+    ],
+    "fameScore": 95.634894,
+    "tagline": "king of Macedonia and conqueror of Achaemenid Persia (356–323 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alexander%20the%20Great%20mosaic%20%28cropped%29.jpg",
+    "description": "Alexander III of Macedon, most commonly known as Alexander the Great, was king of the ancient Greek kingdom of Macedon. He succeeded his father Philip II to the throne in 336 BC at the age of 20, and spent most of his reign conducting a lengthy military campaign throughout Asia and Egypt. By the age of 30, he had created one of the largest empires in history, stretching from Greece to northwestern India. He was undefeated in battle and is widely considered to be one of history's greatest and most successful military commanders.",
+    "row": 2
+  },
+  {
+    "id": "31665644",
+    "name": "Saint Peter",
+    "lifespan": {
+      "start": {
+        "year": 0,
+        "month": 1
+      },
+      "end": {
+        "year": 67
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 95.455494,
+    "tagline": "apostle of Jesus Christ",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Peter",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pope-peter%20pprubens.jpg",
+    "description": "Saint Peter, also known as Peter the Apostle and Simon Peter, or Cephas was one of the Twelve Apostles of Jesus and one of the first leaders of the early Christian Church. He appears repeatedly and prominently in all four New Testament gospels, as well as the Acts of the Apostles. Catholic and Orthodox tradition treats Peter as the first bishop of Rome – or pope – and also as the first bishop of Antioch. According to Christian tradition, Peter was crucified in Rome under Emperor Nero.",
+    "row": 0
+  },
+  {
+    "id": "13633",
+    "name": "Homer",
+    "lifespan": {
+      "start": {
+        "year": -799
+      },
+      "end": {
+        "year": -749
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 95.41286,
+    "tagline": "reputed author of the Iliad and the Odyssey",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Homer",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Homer%20bust%2C%20Farnese%20collection%20%28Naples%29.jpg",
+    "imageAttribution": "NikonZ7II, via Wikimedia Commons",
+    "description": "Homer was an ancient Greek poet who is traditionally credited as the author of the Iliad and the Odyssey, two epic poems that are foundational works of ancient Greek literature. Homer was highly revered in ancient Greek society and is considered one of the most influential authors in history. Today, the question of Homer's identity and existence—dubbed the \"Homeric Question\"—continues to be debated, and scholars generally regard the two poems as the works of separate authors.",
+    "row": 0
+  },
+  {
+    "id": "69880",
+    "name": "Napoleon",
+    "lifespan": {
+      "start": {
+        "year": 1769,
+        "month": 8
+      },
+      "end": {
+        "year": 1821,
+        "month": 5
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 95.287743,
+    "tagline": "French military leader, French Emperor 1804–1814 and again in 1815 (1769–1821)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Napoleon",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jacques-Louis%20David%20-%20The%20Emperor%20Napoleon%20in%20His%20Study%20at%20the%20Tuileries%20-%20Google%20Art%20Project.jpg",
+    "description": "Napoleon Bonaparte, later known by his regnal name Napoleon I, was Emperor of the French from 18 May 1804 until his first abdication in 1814, with a brief restoration during the Hundred Days in 1815. He rose to prominence as a general during the French Revolution and led a series of military campaigns across Europe and the Middle East during the French Revolutionary and Napoleonic Wars. As a statesman, he implemented numerous legal and administrative reforms in France and Europe.",
+    "row": 1
+  },
+  {
+    "id": "29688374",
+    "name": "Galileo Galilei",
+    "lifespan": {
+      "start": {
+        "year": 1564,
+        "month": 2
+      },
+      "end": {
+        "year": 1642,
+        "month": 1
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 95.07624,
+    "tagline": "Italian polymath (1564–1642)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Galileo_Galilei",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Galileo.arp.300pix.jpg",
+    "description": "Galileo di Vincenzo Bonaiuti de' Galilei, commonly referred to as Galileo Galilei or mononymously as Galileo, was an Italian astronomer, physicist, engineer and polymath. He was born in Pisa, then part of the Duchy of Florence. Galileo has been called the father of observational astronomy, classical physics, the scientific method, and modern science.",
+    "row": 1
+  },
+  {
+    "id": "2731583",
+    "name": "Adolf Hitler",
+    "lifespan": {
+      "start": {
+        "year": 1889,
+        "month": 4
+      },
+      "end": {
+        "year": 1945,
+        "month": 4
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 94.988012,
+    "tagline": "dictator of Germany from 1933 to 1945, main instigator of World War II (1889–1945)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Adolf%20Hitler%20cropped%20restored%203x4.jpg",
+    "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
+    "description": "Adolf Hitler was an Austrian-born German politician who was dictator of Germany in the Nazi era from 1933 until his suicide in 1945. He rose to power as the leader of the Nazi Party, becoming the chancellor of Germany in 1933 and then taking the title of Führer und Reichskanzler in 1934. Germany's invasion of Poland on 1 September 1939 under his leadership marked the outbreak of the Second World War. Throughout the ensuing conflict, Hitler was closely involved in the direction of German military operations and was central to the perpetration of the genocide of about six million Jews in the Holocaust as well as the deaths of millions of other victims.",
+    "row": 0
+  },
+  {
+    "id": "5635",
+    "name": "Christopher Columbus",
+    "lifespan": {
+      "start": {
+        "year": 1451
+      },
+      "end": {
+        "year": 1506,
+        "month": 5
+      }
+    },
+    "occupationDomain": "exploration",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 94.907907,
+    "tagline": "Italian navigator, explorer, and colonist (1451–1506)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Christopher_Columbus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ridolfo%20del%20Ghirlandaio%20-%20Ritratto%20di%20Cristoforo%20Colombo%20%281520%29.jpg",
+    "description": "Christopher Columbus was an Italian explorer and navigator from the Republic of Genoa who completed four Spanish transatlantic voyages in the name of the Catholic Monarchs, opening the way for the widespread European exploration and colonization of the Americas. His expeditions were the first known European contact with the Caribbean and Central and South America.",
+    "row": 1
+  },
+  {
+    "id": "25664190",
+    "name": "Socrates",
+    "lifespan": {
+      "start": {
+        "year": -469
+      },
+      "end": {
+        "year": -398,
+        "month": 2
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 94.901124,
+    "tagline": "5th-century BCE Greek philosopher",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Socrates",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Socrates%20Louvre.jpg",
+    "description": "Socrates was an ancient Greek philosopher from Classical Athens, perhaps the first Western moral philosopher, and a major inspiration on his student Plato, who largely founded the tradition of Western philosophy. An enigmatic figure, Socrates authored no texts and is known mainly through the posthumous accounts of classical writers, particularly his students Plato and Xenophon. These accounts are written as dialogues, in which Socrates and his interlocutors examine a subject in the style of question and answer; they gave rise to the Socratic dialogue literary genre. Contradictory accounts of Socrates make a reconstruction of his philosophy nearly impossible, a situation known as the Socratic problem. Socrates was a polarizing figure in Athenian society. In 399 BC, he was accused of impiety and corrupting the youth. After a trial that lasted a day, he was sentenced to death. As related by Plato, he was put to death by administration of poison after refusing offers from allies to help him escape.",
+    "row": 1
+  },
+  {
+    "id": "736",
+    "name": "Albert Einstein",
+    "lifespan": {
+      "start": {
+        "year": 1879,
+        "month": 3
+      },
+      "end": {
+        "year": 1955,
+        "month": 4
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "western-europe",
+      "northern-america"
+    ],
+    "fameScore": 94.826997,
+    "tagline": "German-born theoretical physicist (1879–1955)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Albert_Einstein",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Albert%20Einstein%20Head%20cleaned.jpg",
+    "description": "Albert Einstein was a German-born theoretical physicist best known for developing the theory of relativity. Einstein also made important contributions to quantum theory. His mass–energy equivalence formula E = mc2, which arises from special relativity, has been called \"the world's most famous equation\". He received the 1921 Nobel Prize in Physics for \"his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect\".",
+    "row": 3
+  },
+  {
+    "id": "14187",
+    "name": "Henry VIII of England",
+    "lifespan": {
+      "start": {
+        "year": 1491,
+        "month": 6
+      },
+      "end": {
+        "year": 1547,
+        "month": 1
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 94.649076,
+    "tagline": "King of England from 1509 to 1547 (1491–1547)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_VIII_of_England",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hans%20Holbein%2C%20the%20Younger%2C%20Around%201497-1543%20-%20Portrait%20of%20Henry%20VIII%20of%20England%20-%20Google%20Art%20Project.jpg",
+    "description": "Henry VIII was King of England and Lord of Ireland from 22 April 1509, and King of England and Ireland from 14 June 1542 until his death in 1547.",
+    "row": 2
+  },
+  {
+    "id": "20408",
+    "name": "Marie Curie",
+    "lifespan": {
+      "start": {
+        "year": 1867,
+        "month": 11
+      },
+      "end": {
+        "year": 1934,
+        "month": 7
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "eastern-europe",
+      "western-europe"
+    ],
+    "fameScore": 94.302002,
+    "tagline": "Polish-born French physicist and chemist (1867–1934)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Marie_Curie",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Marie%20Curie%20%281900%29%20%28cropped%29.jpg",
+    "description": "Maria Salomea Skłodowska Curie, better known as Marie Curie was a Polish and naturalised-French physicist and chemist. She shared the 1903 Nobel Prize in Physics with her husband, Pierre Curie, \"for their joint researches on the radioactivity phenomena discovered by Professor Henri Becquerel\". She won the 1911 Nobel Prize in Chemistry \"[for] the discovery of the elements radium and polonium, by the isolation of radium and the study of the nature and compounds of this remarkable element\".",
+    "row": 2
+  },
+  {
+    "id": "1095706",
+    "name": "Jesus Christ",
+    "lifespan": {
+      "start": {
+        "year": -3
+      },
+      "end": {
+        "year": 33
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 94.236051,
+    "tagline": "central figure of Christianity (c. 6 or 4 BC – AD 30 or 33)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jesus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Spas%20vsederzhitel%20sinay%20%28cropped1%29.jpg",
+    "description": "Jesus, also known as Jesus Christ, Jesus of Nazareth, and by various other names and titles, was a 1st-century Jewish preacher and religious leader in the Roman province of Judaea. He is the central figure of Christianity, the world's largest religion. Most branches of Christianity consider Jesus the incarnation of God the Son and the awaited Messiah or Christ. Accounts of Jesus's life are contained in the Gospels, especially the four canonical Gospels of the New Testament. Since the Enlightenment, academic research has produced various views on the historical reliability of the Gospels and the extent to which they reflect the historical Jesus, but virtually all modern scholars of antiquity agree that Jesus existed historically.",
+    "row": 1
+  },
+  {
+    "id": "15992",
+    "name": "Jimmy Carter",
+    "lifespan": {
+      "start": {
+        "year": 1924,
+        "month": 10
+      },
+      "end": {
+        "year": 2024,
+        "month": 12
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 93.903276,
+    "tagline": "president of the United States from 1977 to 1981 (1924–2024)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jimmy_Carter",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/JimmyCarterPortrait2.jpg",
+    "description": "James Earl Carter Jr. was an American politician and humanitarian who served as the 39th president of the United States from 1977 to 1981. A member of the Democratic Party, Carter served as the 76th governor of Georgia from 1971 to 1975 and in the Georgia State Senate from 1963 to 1967. He lived longer than any other president in U.S. history, reaching age 100.",
+    "row": 4
+  },
+  {
+    "id": "39660",
+    "name": "Benedict XVI",
+    "lifespan": {
+      "start": {
+        "year": 1927,
+        "month": 4
+      },
+      "end": {
+        "year": 2022,
+        "month": 12
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-europe",
+      "southern-europe"
+    ],
+    "fameScore": 93.896537,
+    "tagline": "265 th pope of the Catholic Church (2005–2013)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Benedict_XVI",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Papst%20Benedikt%20XVI%20in%20Berlin%202011.jpg",
+    "imageAttribution": "WDKrause, via Wikimedia Commons",
+    "description": "Pope Benedict XVI was the head of the Catholic Church and sovereign of Vatican City from 2005 until his resignation in 2013. Following his resignation, he chose to be known as \"pope emeritus\", a title he held until his death on 31 December 2022. In addition to this, he was an important philosopher and theologian of the 20th and early 21st centuries.",
+    "row": 5
+  },
+  {
+    "id": "323592",
+    "name": "Nicolaus Copernicus",
+    "lifespan": {
+      "start": {
+        "year": 1473,
+        "month": 2
+      },
+      "end": {
+        "year": 1543,
+        "month": 5
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 93.78406,
+    "tagline": "Polish mathematician and astronomer (1473-1543)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nikolaus%20Kopernikus%20MOT.jpg",
+    "description": "Nicolaus Copernicus was a Renaissance polymath who formulated a model of the universe that placed the Sun rather than Earth at its center. The publication of Copernicus's model in his book De revolutionibus orbium coelestium, just before his death in 1543, was a major event in the history of science, triggering the Copernican Revolution and making a pioneering contribution to the Scientific Revolution. Though a similar heliocentric model had been developed eighteen centuries earlier by Aristarchus of Samos, an ancient Greek astronomer, Copernicus likely arrived at his model independently.",
+    "row": 3
+  },
+  {
+    "id": "15924",
+    "name": "Julius Caesar",
+    "lifespan": {
+      "start": {
+        "year": -99,
+        "month": 7
+      },
+      "end": {
+        "year": -43,
+        "month": 3
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 93.777536,
+    "tagline": "Roman general and dictator",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Julius_Caesar",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Retrato%20de%20Julio%20C%C3%A9sar%20%2826724093101%29%20%28cropped%29.jpg",
+    "description": "Gaius Julius Caesar was a Roman general, statesman, and author who was the dictator of the Roman Republic almost continuously from 49 BC until his assassination in 44 BC. A member of the First Triumvirate, he led the Roman armies through the Gallic Wars and defeated his political rival Pompey in Caesar's civil war. He consolidated power and proclaimed himself dictator for life in 44 BC, helping create the political conditions that led to the collapse of the Roman Republic and the emergence of the Roman Empire. For his role in these events, he is regarded as one of history's most influential figures.",
+    "row": 1
+  },
+  {
+    "id": "5823",
+    "name": "Confucius",
+    "lifespan": {
+      "start": {
+        "year": -550
+      },
+      "end": {
+        "year": -478,
+        "month": 3
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 93.574957,
+    "tagline": "5th-century BCE Chinese philosopher and politician",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Confucius",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Confucius%2C%20fresco%20from%20a%20Western%20Han%20tomb%20of%20Dongping%20County%2C%20Shandong%20province%2C%20China.jpg",
+    "description": "Confucius, born Kong Qiu, was a Chinese philosopher of the Spring and Autumn period who is traditionally considered the paragon of Chinese sages. Much of the shared cultural heritage of the Sinosphere originates in the philosophy and teachings of Confucius. His philosophical teachings, called Confucianism, emphasized personal and governmental morality, harmonious social relationships, righteousness, kindness, sincerity, and a ruler's responsibilities to lead by virtue.",
+    "row": 1
+  },
+  {
+    "id": "21019",
+    "name": "Michelangelo",
+    "lifespan": {
+      "start": {
+        "year": 1475,
+        "month": 3
+      },
+      "end": {
+        "year": 1564,
+        "month": 2
+      }
+    },
+    "occupationDomain": "arts",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 93.544328,
+    "tagline": "Italian artist and architect (1475-1564)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Michelangelo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Michelangelo%20Daniele%20da%20Volterra%20%28dettaglio%29.jpg",
+    "description": "Michelangelo di Lodovico Buonarroti Simoni, known mononymously as Michelangelo, was an Italian sculptor, painter, architect, and poet of the High Renaissance. He was born in the Republic of Florence but was mostly active in Rome from his 30s onwards. His work was inspired by models from classical antiquity and had a lasting influence on Western art. Michelangelo's creative abilities and mastery in a range of artistic arenas define him as an archetypal Renaissance man, along with his rival and elder contemporary, Leonardo da Vinci. Given the sheer volume of surviving correspondence, sketches, and reminiscences, Michelangelo is one of the best-documented artists of the 16th century. He was lauded by contemporary biographers as the most accomplished artist of his era.",
+    "row": 4
+  },
+  {
+    "id": "1844",
+    "name": "Archimedes",
+    "lifespan": {
+      "start": {
+        "year": -286
+      },
+      "end": {
+        "year": -211,
+        "month": 1
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 93.411157,
+    "tagline": "Greek mathematician and physicist (c. 287 – c. 212 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Archimedes",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Retrato%20de%20un%20erudito%20%28%C2%BFArqu%C3%ADmedes%3F%29%2C%20por%20Domenico%20Fetti.jpg",
+    "description": "Archimedes of Syracuse was an Ancient Greek mathematician, physicist, engineer, astronomer, and inventor from the city of Syracuse in Sicily. Although few details of his life are known, based on his surviving work, he is considered one of the leading scientists in classical antiquity, and one of the greatest mathematicians of all time. Archimedes anticipated modern calculus and analysis by applying the concept of the infinitesimals and the method of exhaustion to derive and rigorously prove many geometrical theorems, including the area of a circle, the surface area and volume of a sphere, the area of an ellipse, the area under a parabola, the volume of a segment of a paraboloid of revolution, the volume of a segment of a hyperboloid of revolution, and the area of a spiral.",
+    "row": 0
+  },
+  {
+    "id": "23275",
+    "name": "Pythagoras",
+    "lifespan": {
+      "start": {
+        "year": -569
+      },
+      "end": {
+        "year": -494
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 93.359732,
+    "tagline": "Greek philosopher and mathematician (c. 570 – c. 495 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pythagoras",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kapitolinischer%20Pythagoras.jpg",
+    "imageAttribution": "The original uploader was Galilea at German Wikipedia., via Wikimedia Commons",
+    "description": "Pythagoras of Samos was an ancient Ionian Greek philosopher, polymath, and the eponymous founder of Pythagoreanism. His political and religious teachings were well known in Magna Graecia and influenced the philosophies of Plato, Aristotle, and, through them, Western philosophy. Modern scholars disagree regarding Pythagoras's education and influences, but most agree that he travelled to Croton in southern Italy around 530 BC, where he founded a school in which initiates were allegedly sworn to secrecy and lived a communal, ascetic lifestyle.",
+    "row": 2
+  },
+  {
+    "id": "32603",
+    "name": "Vincent van Gogh",
+    "lifespan": {
+      "start": {
+        "year": 1853,
+        "month": 3
+      },
+      "end": {
+        "year": 1890,
+        "month": 7
+      }
+    },
+    "occupationDomain": "arts",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 93.258266,
+    "tagline": "Dutch painter (1853–1890)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Self-portrait%20-%20Vincent%20van%20Gogh.jpg",
+    "imageAttribution": "Vincent van Gogh, via Wikimedia Commons",
+    "description": "Vincent Willem van Gogh was a Dutch Post-Impressionist painter who is among the most famous and influential figures in the history of Western art. In just over a decade he created about 2,100 artworks, including around 860 oil paintings, most of them in the last two years of his life. They include landscapes, still lifes, portraits and self-portraits, and are characterised by bold colours and dramatic, impulsive and expressive brushwork that contributed to the foundations of modern art. His suicide at 37 followed years of mental illness and poverty.",
+    "row": 5
+  },
+  {
+    "id": "19577",
+    "name": "Moses",
+    "lifespan": {
+      "start": {
+        "year": -1392
+      },
+      "end": {
+        "year": -1272
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "northern-africa",
+      "western-asia"
+    ],
+    "fameScore": 93.255134,
+    "tagline": "Abrahamic prophet said to have led the Israelites out of Egypt",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Moses",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Michelangelo%27s%20Moses%20in%20San%20Pietro%20in%20Vincoli.jpg",
+    "imageAttribution": "Wknight94, via Wikimedia Commons",
+    "description": "In Abrahamic religions, Moses was the Hebrew prophet who led the Israelites out of slavery in the Exodus from Egypt. He is considered the most important prophet in Judaism and Samaritanism, and one of the most important prophets in Christianity, Islam, the Baháʼí Faith, and other Abrahamic religions. According to the Abrahamic scriptures, God dictated the Mosaic Law to Moses, which he wrote down and which formed part of the Torah.",
+    "row": 0
+  },
+  {
+    "id": "11625",
+    "name": "Fyodor Dostoyevsky",
+    "lifespan": {
+      "start": {
+        "year": 1821,
+        "month": 11
+      },
+      "end": {
+        "year": 1881,
+        "month": 2
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 93.202117,
+    "tagline": "Russian novelist (1821–1881)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fyodor_Dostoevsky",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vasily%20Perov%20-%20%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82%20%D0%A4.%D0%9C.%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20-%20Google%20Art%20Project.jpg",
+    "description": "Fyodor Mikhailovich Dostoevsky was a Russian philosopher, novelist, short-story writer, essayist and journalist. He is regarded as one of the greatest novelists in both Russian and world literature, and many of his works are considered highly influential masterpieces. Dostoevsky's literary works explore the human condition in the troubled political, social and spiritual atmospheres of 19th-century Russia, and engage with a variety of philosophical and religious themes. His most acclaimed novels include Crime and Punishment (1866), The Idiot (1869), Demons (1872), The Adolescent (1875) and The Brothers Karamazov (1880). His Notes from Underground, a novella published in 1864, is considered one of the first works of existentialist literature.",
+    "row": 4
+  },
+  {
+    "id": "29922",
+    "name": "Thomas Jefferson",
+    "lifespan": {
+      "start": {
+        "year": 1743,
+        "month": 4
+      },
+      "end": {
+        "year": 1826,
+        "month": 7
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 93.181084,
+    "tagline": "Founding Father, U.S. president from 1801 to 1809 (1743–1826)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thomas_Jefferson",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20portrait%20of%20Thomas%20Jefferson%20%28by%20Rembrandt%20Peale%2C%201800%29%28cropped%29.jpg",
+    "description": "Thomas Jefferson was a Founding Father and the third president of the United States from 1801 to 1809. He also served as the second vice president under John Adams from 1797 to 1801. Jefferson was the principal author of the Declaration of Independence in 1776.",
+    "row": 3
+  },
+  {
+    "id": "13623554",
+    "name": "Che Guevara",
+    "lifespan": {
+      "start": {
+        "year": 1928,
+        "month": 6
+      },
+      "end": {
+        "year": 1967,
+        "month": 10
+      }
+    },
+    "occupationDomain": "public-figure",
+    "regionTags": [
+      "south-america"
+    ],
+    "fameScore": 93.089165,
+    "tagline": "Argentine Marxist revolutionary (1928–1967)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Che_Guevara",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Che%20Guevara%20-%20Guerrillero%20Heroico%20by%20Alberto%20Korda.jpg",
+    "description": "Ernesto \"Che\" Guevara de la Serna was an Argentine Marxist revolutionary, author, guerrilla leader, diplomat, politician, and military theorist. A major figure of the Cuban Revolution, his stylized visage has become a countercultural symbol of rebellion and global insignia in popular culture.",
+    "row": 8
+  },
+  {
+    "id": "18553",
+    "name": "Louis XIV of France",
+    "lifespan": {
+      "start": {
+        "year": 1638,
+        "month": 9
+      },
+      "end": {
+        "year": 1715,
+        "month": 9
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 93.008697,
+    "tagline": "King of France and Navarre from 1643 to 1715 (1638-1715)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_XIV_of_France",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Louis%20XIV%20of%20France.jpg",
+    "description": "Louis XIV was King of France from 14 May 1643 until his death in 1715. He is a symbol of the Age of Absolutism in Europe for styling himself as \"The Sun King\" and \"Louis the Great\", which portrayed him as supreme leader. He presided over a great expansion of the French colonial empire and a patronage of arts in his court at the Palace of Versailles that defined the Baroque style of French architecture. His reign of 72 years and 110 days remains the longest of any sovereign monarch in history.",
+    "row": 2
+  },
+  {
+    "id": "1814",
+    "name": "Adam Smith",
+    "lifespan": {
+      "start": {
+        "year": 1723,
+        "month": 6
+      },
+      "end": {
+        "year": 1790,
+        "month": 7
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 92.990597,
+    "tagline": "Scottish moral philosopher and political economist (1723–1790)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Adam_Smith",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/AdamSmith.jpg",
+    "description": "Adam Smith was a Scottish economist and philosopher who was a pioneer in the field of political economy and key figure during the Scottish Enlightenment. Seen by many as the \"father of economics\", or the \"father of capitalism\", he is primarily known for two classic works: The Theory of Moral Sentiments (1759) and An Inquiry into the Nature and Causes of the Wealth of Nations (1776). The latter, often abbreviated as The Wealth of Nations, is regarded as his magnum opus, marking the inception of modern economic scholarship as a comprehensive system and an academic discipline. Smith refuses to explain the distribution of wealth and power in terms of divine will and instead appeals to natural, political, social, economic, legal, environmental and technological factors, as well as the interactions among them. The work is notable for its contribution to economic theory, particularly in its exposition of the concept of absolute advantage.",
+    "row": 2
+  },
+  {
+    "id": "347105",
+    "name": "Mother Teresa",
+    "lifespan": {
+      "start": {
+        "year": 1910,
+        "month": 8
+      },
+      "end": {
+        "year": 1997,
+        "month": 9
+      }
+    },
+    "occupationDomain": "public-figure",
+    "regionTags": [
+      "southern-europe",
+      "southern-asia"
+    ],
+    "fameScore": 92.983731,
+    "tagline": "Albanian-Indian Catholic nun and missionary (1910–1997)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mother_Teresa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MotherTeresa%20090.jpg",
+    "imageAttribution": "Túrelio, via Wikimedia Commons",
+    "description": "Anjezë Gonxhe Bojaxhiu, better known as Mother Teresa or Saint Mother Teresa of Calcutta, was an Albanian-Indian Catholic nun, founder of the Missionaries of Charity and a Catholic saint.",
+    "row": 6
+  },
+  {
+    "id": "9906294",
+    "name": "Johann Sebastian Bach",
+    "lifespan": {
+      "start": {
+        "year": 1685,
+        "month": 3
+      },
+      "end": {
+        "year": 1750,
+        "month": 7
+      }
+    },
+    "occupationDomain": "arts",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 92.781625,
+    "tagline": "German composer (1685–1750)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Johann_Sebastian_Bach",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Johann%20Sebastian%20Bach.png",
+    "description": "Johann Sebastian Bach was a German composer and musician of the late Baroque period. He is known for his prolific output across a variety of instruments and forms, including the orchestral Brandenburg Concertos; solo instrumental works such as the Cello Suites and Sonatas and Partitas for Solo Violin; keyboard works such as the Goldberg Variations and The Well-Tempered Clavier; organ works such as the Schübler Chorales and the Toccata and Fugue in D minor; and choral works such as the St. Matthew Passion and the Mass in B minor. He is known for his mastery of counterpoint, as heard in The Musical Offering and The Art of Fugue. Felix Mendelssohn precipitated the Bach Revival with a performance of the St. Matthew Passion in 1829. Ever since, Bach has been acclaimed as one of the greatest composers in the history of Western music.",
+    "row": 1
+  },
+  {
+    "id": "7567080",
+    "name": "Martin Luther",
+    "lifespan": {
+      "start": {
+        "year": 1483,
+        "month": 11
+      },
+      "end": {
+        "year": 1546,
+        "month": 2
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 92.768507,
+    "tagline": "German priest and theologian (1483–1546)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_Luther",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lucas%20Cranach%20d.%C3%84.%20-%20Martin%20Luther%2C%201528%20%28Veste%20Coburg%29.jpg",
+    "description": "Martin Luther was a German priest, theologian, author, hymnwriter, professor, and former Augustinian friar. Luther was the seminal figure of the Protestant Reformation, and his theological beliefs form the basis of Lutheranism. He is considered one of the most influential figures in Western and Christian history.",
+    "row": 6
+  },
+  {
+    "id": "19914843",
+    "name": "Ferdinand Magellan",
+    "lifespan": {
+      "start": {
+        "year": 1480,
+        "month": 10
+      },
+      "end": {
+        "year": 1521,
+        "month": 4
+      }
+    },
+    "occupationDomain": "exploration",
+    "regionTags": [
+      "southern-europe",
+      "south-eastern-asia"
+    ],
+    "fameScore": 92.617648,
+    "tagline": "Portuguese explorer in the service of Spain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ferdinand_Magellan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Retrato%20de%20Hernando%20de%20Magallanes.jpg",
+    "description": "Ferdinand Magellan was a Portuguese explorer best known for planning and leading the 1519–1522 Spanish expedition to the East Indies. During this expedition, he became the first European to encounter the Strait of Magellan, performed the first European crossing of the Pacific Ocean, and made the first known European contact with the Philippines. Magellan was killed in battle in the Philippines in 1521, but his crew, commanded by Spanish navigator Juan Sebastián Elcano, completed the return trip to Spain in 1522, achieving the first circumnavigation of Earth in history.",
+    "row": 5
+  },
+  {
+    "id": "32897",
+    "name": "William Shakespeare",
+    "lifespan": {
+      "start": {
+        "year": 1564,
+        "month": 4
+      },
+      "end": {
+        "year": 1616,
+        "month": 4
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 92.587866,
+    "tagline": "English playwright and poet (1564–1616)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/William_Shakespeare",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Shakespeare.jpg",
+    "description": "William Shakespeare was an English playwright, poet and actor. He is widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist. He is often called England's national poet and the \"Bard of Avon\" or simply \"the Bard\". His extant works, including collaborations, consist of some 39 plays, 154 sonnets, three long narrative poems and a few other verses, some of uncertain authorship. His plays have been translated into every major living language and are performed more often than those of any other playwright. Shakespeare remains arguably the most influential writer in the English language, and his works continue to be studied and reinterpreted.",
+    "row": 2
+  },
+  {
+    "id": "23805",
+    "name": "John Paul II",
+    "lifespan": {
+      "start": {
+        "year": 1920,
+        "month": 5
+      },
+      "end": {
+        "year": 2005,
+        "month": 4
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "eastern-europe",
+      "southern-europe"
+    ],
+    "fameScore": 92.563665,
+    "tagline": "264th pope of the Catholic Church (1978–2005)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_John_Paul_II",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pope%20John%20Paul%20II%20smile.jpg",
+    "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
+    "description": "Pope John Paul II was the head of the Catholic Church and sovereign of Vatican City from 16 October 1978 until his death in 2005. He was the first non-Italian pope since Adrian VI in the 16th century, as well as the third-longest-serving pope in history, after St. Peter and Pius IX. In addition to this, he was an important philosopher and theologian of the 20th century.",
+    "row": 7
+  },
+  {
+    "id": "20076",
+    "name": "Martin Luther King Jr.",
+    "lifespan": {
+      "start": {
+        "year": 1929,
+        "month": 1
+      },
+      "end": {
+        "year": 1968,
+        "month": 4
+      }
+    },
+    "occupationDomain": "public-figure",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 92.494023,
+    "tagline": "American Baptist minister and civil rights leader (1929–1968)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Martin%20Luther%20King%2C%20Jr.%20and%20Lyndon%20Johnson%20%28cropped%29.jpg",
+    "description": "Martin Luther King Jr. was an American civil rights activist and Baptist minister who was a prominent leader of the civil rights movement from 1955 until his assassination in 1968. He advanced civil rights for people of color in the United States through the use of nonviolent resistance and civil disobedience against Jim Crow laws and other forms of legalized discrimination, which most commonly affected African Americans.",
+    "row": 13
+  },
+  {
+    "id": "10823",
+    "name": "Frédéric Chopin",
+    "lifespan": {
+      "start": {
+        "year": 1810,
+        "month": 2
+      },
+      "end": {
+        "year": 1849,
+        "month": 10
+      }
+    },
+    "occupationDomain": "arts",
+    "regionTags": [
+      "eastern-europe",
+      "western-europe"
+    ],
+    "fameScore": 92.475538,
+    "tagline": "Polish composer and pianist (1810–1849)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Frédéric_Chopin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Frederic%20Chopin%20photo.jpeg",
+    "description": "Frédéric François Chopin was a Polish composer and virtuoso pianist of the early Romantic period who wrote primarily for solo piano. He has maintained worldwide renown as a leading composer of his era whose \"poetic genius was based on a professional technique that was without equal in his generation\".",
+    "row": 2
+  },
+  {
+    "id": "14631",
+    "name": "Immanuel Kant",
+    "lifespan": {
+      "start": {
+        "year": 1724,
+        "month": 4
+      },
+      "end": {
+        "year": 1804,
+        "month": 2
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 92.346663,
+    "tagline": "German philosopher (1724-1804)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Immanuel_Kant",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Immanuel%20Kant%20-%20Gemaelde%202.jpg",
+    "description": "Immanuel Kant was a German philosopher. Born in Königsberg in the Kingdom of Prussia, he is considered one of the central thinkers of the Enlightenment. His comprehensive and systematic works in epistemology, metaphysics, logic, ethics, aesthetics, political theory, and the philosophy of religion have made him one of the most influential and highly discussed figures in modern Western philosophy.",
+    "row": 4
+  },
+  {
+    "id": "16743",
+    "name": "Karl Marx",
+    "lifespan": {
+      "start": {
+        "year": 1818,
+        "month": 5
+      },
+      "end": {
+        "year": 1883,
+        "month": 3
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "western-europe",
+      "northern-europe"
+    ],
+    "fameScore": 92.238114,
+    "tagline": "German-born philosopher (1818–1883)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Karl_Marx",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Karl%20Marx%20001%20restored.jpg",
+    "description": "Karl Marx was a German philosopher, social and political theorist, economist, and revolutionary socialist. He developed the theory of historical materialism, analyzing class struggle under capitalism and predicting the system's overthrow by the proletariat in favour of communism. Marx co-authored The Communist Manifesto (1848) with Friedrich Engels, and undertook a critique of classical political economy in his magnum opus, Das Kapital (1867–1894). Marx's ideas and their subsequent development, collectively known as Marxism, have had enormous influence and have influenced revolutions and uprisings in many countries.",
+    "row": 6
+  },
+  {
+    "id": "15641",
+    "name": "Joseph Stalin",
+    "lifespan": {
+      "start": {
+        "year": 1879,
+        "month": 12
+      },
+      "end": {
+        "year": 1953,
+        "month": 3
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-asia",
+      "eastern-europe"
+    ],
+    "fameScore": 92.218344,
+    "tagline": "leader of the Soviet Union from 1924 to 1953",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Joseph_Stalin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/StalinCropped1943.jpg",
+    "description": "Joseph Stalin was a Soviet politician and revolutionary who ruled the Soviet Union from the mid-1920s until his death in 1953, holding the titles of General Secretary of the Communist Party of the Soviet Union from 1922 to 1952 and the nation's Premier from 1941 to 1953. Initially presiding over an oligarchic one-party system that governed by plurality, he became the de facto dictator of the Soviet Union by the 1930s. Ideologically committed to the Leninist interpretation of Marxism, Stalin helped to formalise these ideas as Marxism–Leninism, while his own policies became known as Stalinism.",
+    "row": 11
+  },
+  {
+    "id": "18945005",
+    "name": "Akbar",
+    "lifespan": {
+      "start": {
+        "year": 1542,
+        "month": 10
+      },
+      "end": {
+        "year": 1605,
+        "month": 10
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 92.192552,
+    "tagline": "the third and greatest Mughal emperor from 1556 to 1605",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Akbar",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Contemporary%20seated%20portrait%20of%20Akbar%2C%201605.jpg",
+    "description": "Akbar, also known as Akbar the Great, was the third Mughal emperor, who reigned from 1556 to 1605. Akbar succeeded his father, Humayun, under a regent, Bairam Khan, who helped the young emperor expand and consolidate Mughal domains in the Indian subcontinent. He is generally considered one of the greatest Mughal emperors.",
+    "row": 5
+  },
+  {
+    "id": "8169",
+    "name": "Dante Alighieri",
+    "lifespan": {
+      "start": {
+        "year": 1265,
+        "month": 5
+      },
+      "end": {
+        "year": 1321,
+        "month": 9
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 92.127164,
+    "tagline": "Florentine poet, writer, and philosopher (c. 1265–1321)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dante_Alighieri",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Portrait%20de%20Dante.jpg",
+    "description": "Dante Alighieri, widely known mononymously as Dante, was an Italian poet, writer, and philosopher. His Divine Comedy, originally called Comedìa and later christened Divina by Giovanni Boccaccio, is widely considered one of the most important poems of the Middle Ages and the greatest literary work in the Italian language.",
+    "row": 1
+  },
+  {
+    "id": "25525",
+    "name": "René Descartes",
+    "lifespan": {
+      "start": {
+        "year": 1596,
+        "month": 3
+      },
+      "end": {
+        "year": 1650,
+        "month": 2
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "western-europe",
+      "northern-europe"
+    ],
+    "fameScore": 92.123398,
+    "tagline": "French philosopher, mathematician, and scientist (1596–1650)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/René_Descartes",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Frans%20Hals%20-%20Portret%20van%20Ren%C3%A9%20Descartes.jpg",
+    "description": "René Descartes was a French polymath, active across philosophy, including metaphysics, epistemology, ethics, and the philosophy of science; theology; mathematics, in which he connected the previously separate fields of geometry and algebra into analytic geometry; science, including physics, optics, mechanics, cosmology, and meteorology; physiology; and medicine. He has been credited as the father of modern philosophy, particularly due to his transformation of methodology by introducing a systematic, method-based approach to pursuing knowledge.",
+    "row": 3
+  },
+  {
+    "id": "1130",
+    "name": "Avicenna",
+    "lifespan": {
+      "start": {
+        "year": 980,
+        "month": 8
+      },
+      "end": {
+        "year": 1037,
+        "month": 6
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "central-asia",
+      "southern-asia"
+    ],
+    "fameScore": 92.047737,
+    "tagline": "Persian polymath, physician and philosopher (c. 980–1037)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Avicenna",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pursina.jpg",
+    "description": "Ibn Sina, commonly known in the West as Avicenna, was a preeminent philosopher and physician of the Muslim world. He was a seminal figure of the Islamic Golden Age, serving in the courts of various Iranian rulers, and was influential to medieval European medical and Scholastic thought. Avicenna is considered one of the greatest thinkers and medical scholars in history.",
+    "row": 0
+  },
+  {
+    "id": "1273",
+    "name": "Augustus",
+    "lifespan": {
+      "start": {
+        "year": -62
+      },
+      "end": {
+        "year": 14,
+        "month": 8
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 92.030619,
+    "tagline": "first emperor of the Roman Empire and founder of the Julio-Claudian dynasty",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Augustus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Augustus%20of%20Prima%20Porta%20%28inv.%202290%29.jpg",
+    "imageAttribution": "Joel Bellviure, via Wikimedia Commons",
+    "description": "Augustus, also known as Octavian, was the founder of the Roman Empire and the first Roman emperor from 27 BC until his death in AD 14. The reign of Augustus initiated an imperial cult and an era of imperial peace when the Roman world was largely free of armed conflict. The principate, a style of government in which the emperor showed nominal deference to the Senate, was established during his reign and lasted until the Crisis of the Third Century.",
+    "row": 2
+  },
+  {
+    "id": "12281",
+    "name": "Gottfried Wilhelm Leibniz",
+    "lifespan": {
+      "start": {
+        "year": 1646,
+        "month": 7
+      },
+      "end": {
+        "year": 1716,
+        "month": 11
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 91.998728,
+    "tagline": "German mathematician and philosopher (1646–1716)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Christoph%20Bernhard%20Francke%20-%20Bildnis%20des%20Philosophen%20Leibniz%20%28ca.%201695%29.jpg",
+    "description": "Gottfried Wilhelm Leibniz was a German polymath active as a mathematician, philosopher, scientist, and diplomat who is credited, alongside Isaac Newton, with the creation of calculus in addition to many other branches of mathematics, such as binary arithmetic and statistics. Leibniz has been called the \"last universal genius\" due to his vast expertise across fields, which became a rarity after his lifetime with the coming of the Industrial Revolution and the spread of specialized labour. He is a prominent figure in both the history of philosophy and the history of mathematics. He wrote works on philosophy, theology, ethics, politics, law, history, philology, games, music, economics and other studies. Leibniz also made major contributions to physics and technology, and anticipated notions that surfaced much later in probability theory, biology, medicine, geology, psychology, linguistics and computer science.",
+    "row": 4
+  },
+  {
+    "id": "21473",
+    "name": "Nikola Tesla",
+    "lifespan": {
+      "start": {
+        "year": 1856,
+        "month": 7
+      },
+      "end": {
+        "year": 1943,
+        "month": 1
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "southern-europe",
+      "northern-america"
+    ],
+    "fameScore": 91.899779,
+    "tagline": "Serbian-American engineer and inventor (1856–1943)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tesla%20circa%201890.jpeg",
+    "description": "Nikola Tesla was a Serbian-American engineer, futurist, and inventor. He is known for his contributions to the design of the modern alternating current (AC) electricity supply system.",
+    "row": 10
+  },
+  {
+    "id": "65119",
+    "name": "Laozi",
+    "lifespan": {
+      "start": {
+        "year": -603,
+        "month": 1
+      },
+      "end": {
+        "year": -599,
+        "month": 1
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 91.854157,
+    "tagline": "6th-century BC semi-legendary Chinese philosopher, founder of Taoism",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Laozi",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zhang%20Lu-Laozi%20Riding%20an%20Ox%20%28cropped%29.jpg",
+    "description": "Laozi was a legendary Chinese philosopher considered to be the author of the Tao Te Ching, one of the foundational texts of Taoism. Modern scholarship generally regards his biographical details as later inventions and his opus a collaboration of various writers, with the name Laozi, literally meaning 'Old Master', likely intended to portray an archaic anonymity that could converse with Confucianism. Traditional accounts addend him as Li Er, born in the 6th-century BC state of Chu during China's Spring and Autumn period. Serving as the royal archivist for the Zhou court at Wangcheng, he met and impressed Confucius on one occasion, composing the Dào Dé Jīng in a single session before retiring into the western wilderness.",
+    "row": 0
+  },
+  {
+    "id": "125248",
+    "name": "Charles III",
+    "lifespan": {
+      "start": {
+        "year": 1948,
+        "month": 11
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 91.702925,
+    "tagline": "King of the United Kingdom since 2022 (born 1948)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles,_Prince_of_Wales",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/King%20Charles%20III%20%28July%202023%29.jpg",
+    "description": "Charles III is King of the United Kingdom and 14 other Commonwealth realms.",
+    "row": 9
+  },
+  {
+    "id": "29778",
+    "name": "Thomas Edison",
+    "lifespan": {
+      "start": {
+        "year": 1847,
+        "month": 2
+      },
+      "end": {
+        "year": 1931,
+        "month": 10
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 91.648295,
+    "tagline": "American inventor and businessman (1847–1931)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thomas_Edison",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Thomas%20Edison2.jpg",
+    "description": "Thomas Alva Edison was an American inventor and businessman known for his work on the incandescent light bulb, the phonograph, electric power distribution and early motion pictures. The merger of the Edison General Electric Company and the competitor Thomson-Houston Electric Company resulted in the formation of General Electric. Edison registered 1,093 patents in the United States.",
+    "row": 9
+  },
+  {
+    "id": "26992",
+    "name": "Suleiman the Magnificent",
+    "lifespan": {
+      "start": {
+        "year": 1494,
+        "month": 11
+      },
+      "end": {
+        "year": 1566,
+        "month": 9
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-asia",
+      "eastern-europe"
+    ],
+    "fameScore": 91.578159,
+    "tagline": "the tenth and greatest Sultan of Ottoman Empire (1520–1566)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Suleiman_the_Magnificent",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Suleyman%20%28enthroned%2C%20receiving%20Barbarossa%20in%201533%29.%20S%C3%BCleymanname%20%281558%29.jpg",
+    "description": "Suleiman I, commonly known as Suleiman the Magnificent, was the Ottoman sultan from 1520 to 1566. The longest reign among the Ottoman sultans, his rule brought about a notable peak in the Ottoman Empire's economic, military and political power, and raised the number of the empire's subjects to at least 25 million people.",
+    "row": 7
+  },
+  {
+    "id": "15179",
+    "name": "Indira Gandhi",
+    "lifespan": {
+      "start": {
+        "year": 1917,
+        "month": 11
+      },
+      "end": {
+        "year": 1984,
+        "month": 10
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 91.535997,
+    "tagline": "Prime Minister of India (1966-1977; 1980-1984)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Indira_Gandhi",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Face%20detail%2C%20Premier%20Indira%20Gandhi%20%28Congrespartij%29%2C%20Bestanddeelnr%20929-0811%20%28cropped%29.jpg",
+    "description": "Indira Priyadarshini Gandhi was an Indian stateswoman who twice served as the prime minister of India from 1966 to 1977 and again from 1980 until her assassination in 1984. She was India's first and only female prime minister, and a central figure in Indian politics as the leader of the Indian National Congress (INC). She also served as chair of the Non-Aligned Movement from 1983 to 1984. She was the daughter of Jawaharlal Nehru, the first prime minister of India, and the mother of Rajiv Gandhi, who succeeded her as prime minister. Her cumulative tenure of 15 years and 350 days makes her the second-longest-serving Indian prime minister after her father.",
+    "row": 12
+  },
+  {
+    "id": "11015252",
+    "name": "Vladimir Lenin",
+    "lifespan": {
+      "start": {
+        "year": 1870,
+        "month": 4
+      },
+      "end": {
+        "year": 1924,
+        "month": 1
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 91.505855,
+    "tagline": "founding leader of the Soviet Union (1870–1924)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vladimir_Lenin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vladimir%20Lenin%20in%20July%201920%20by%20Pavel%20Zhukov.jpg",
+    "description": "Vladimir Ilyich Ulyanov, better known as Vladimir Lenin, was a Russian revolutionary, politician, and political theorist. He served as the first and founding head of government of Soviet Russia from 1917 to 1924 and of the Soviet Union from 1922 to 1924. Ideologically a Marxist, his developments to the ideology are called Leninism.",
+    "row": 8
+  },
+  {
+    "id": "6125",
+    "name": "Carl Friedrich Gauss",
+    "lifespan": {
+      "start": {
+        "year": 1777,
+        "month": 4
+      },
+      "end": {
+        "year": 1855,
+        "month": 2
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 91.437654,
+    "tagline": "German mathematician and physicist (1777–1855)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Carl%20Friedrich%20Gauss.jpg",
+    "description": "Johann Carl Friedrich Gauss was a German mathematician, astronomer, geodesist, and physicist, who contributed to many fields in mathematics and science. His mathematical contributions spanned the branches of number theory, algebra, analysis, geometry, statistics, and probability. Gauss was director of the Göttingen Observatory in Germany and professor of astronomy from 1807 until his death in 1855.",
+    "row": 8
+  },
+  {
+    "id": "26983",
+    "name": "Saladin",
+    "lifespan": {
+      "start": {
+        "year": 1138
+      },
+      "end": {
+        "year": 1193
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 91.362265,
+    "tagline": "Sultan of Egypt and founder of the Ayyubid dynasty (1137–1193)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Saladin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Al-Nasir%20I%20Salah%20al-Din%20Yusuf%20%28Saladin%29.%20AH%20564-589%20%281169-1193%20CE%29%20%C3%86%20Dirham%20%2830.1mm%2C%2013.28%20g%2C%206h%29.%20Without%20mint-name.%20Dated%20AH%20586%20%28AD%201190-91%29.%20Sultan%20sitting%20facing%2C%20cross-legged%2C%20on%20high-backed%20throne%20%28obverse%29.jpg",
+    "imageAttribution": "Classical Numismatic Group (CNG), via Wikimedia Commons",
+    "description": "Salah ad-Din Yusuf ibn Ayyub, commonly known as Saladin, was a Kurdish commander and political leader. He was the founder of the Ayyubid dynasty and the first sultan of both Egypt and Syria. An important figure of the Third Crusade, he spearheaded the Muslim military effort against the Crusader states in the Levant. At the height of his power, the Ayyubid realm spanned Egypt, Syria, Upper Mesopotamia, the Hejaz, Yemen, and Nubia.",
+    "row": 1
+  },
+  {
+    "id": "24140",
+    "name": "Paul the Apostle",
+    "lifespan": {
+      "start": {
+        "year": 5
+      },
+      "end": {
+        "year": 66
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-asia",
+      "southern-europe"
+    ],
+    "fameScore": 91.310156,
+    "tagline": "Early Christian apostle and missionary (c. AD 5 – c. 64/65)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Paul_the_Apostle",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giovanni%20Francesco%20Barbieri%20-%20Saint%20Paul.jpg",
+    "description": "Paul, commonly known as Paul the Apostle or Saint Paul, was a Christian apostle who spread the teachings of Jesus in the first century AD. For his contributions towards the New Testament, he is generally regarded as one of the most important figures of the Apostolic Age, and he also founded several Christian communities in Asia Minor and Europe from the mid-40s to the mid-50s AD.",
+    "row": 3
+  },
+  {
+    "id": "15941",
+    "name": "Jean-Jacques Rousseau",
+    "lifespan": {
+      "start": {
+        "year": 1712,
+        "month": 6
+      },
+      "end": {
+        "year": 1778,
+        "month": 7
+      }
+    },
+    "occupationDomain": "humanities",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 91.26782,
+    "tagline": "Genevan philosopher, writer, and composer (1712-1778)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jean-Jacques%20Rousseau%20%28painted%20portrait%29.jpg",
+    "description": "Jean-Jacques Rousseau was a Genevan philosopher, philosophe, writer, and composer. His political philosophy influenced the progress of the Age of Enlightenment throughout Europe, as well as aspects of the French Revolution and the development of modern political, economic, and educational thought.",
+    "row": 5
+  },
+  {
+    "id": "1329090",
+    "name": "Mustafa Kemal Atatürk",
+    "lifespan": {
+      "start": {
+        "year": 1881
+      },
+      "end": {
+        "year": 1938,
+        "month": 11
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "southern-europe",
+      "western-asia"
+    ],
+    "fameScore": 91.263332,
+    "tagline": "founding father of the Republic of Turkey (c. 1881–1938)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mustafa_Kemal_Atatürk",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Atat%C3%BCrk%20Kemal.jpg",
+    "description": "Mustafa Kemal Atatürk was a Turkish field marshal and statesperson who was the founder of the Republic of Turkey and served as its first president from 1923 until his death in 1938. He led sweeping reforms, turning Turkey into a secular, industrialising nation. Ideologically a secularist, republican and nationalist, his policies and socio-political theories became known as Kemalism. Atatürk's personality cult and the Kemalist historiography developed around it have had significant and ongoing influences on Turkey's political culture and historical narrative.",
+    "row": 15
+  },
+  {
+    "id": "20754760",
+    "name": "Kublai Khan",
+    "lifespan": {
+      "start": {
+        "year": 1215,
+        "month": 9
+      },
+      "end": {
+        "year": 1294,
+        "month": 2
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 91.150456,
+    "tagline": "founding emperor of the Yuan dynasty, grandson of Genghis Khan (1215–1294)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kublai_Khan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/YuanEmperorAlbumKhubilaiPortrait.jpg",
+    "description": "Kublai Khan, also known by his temple name as the Emperor Shizu of Yuan and his regnal name Setsen Khan, was the founder and first emperor of the Mongol-led Yuan dynasty of China. He proclaimed the dynastic name \"Great Yuan\" in 1271, and ruled Yuan China until his death in 1294.",
+    "row": 2
+  },
+  {
+    "id": "26743",
+    "name": "Sigmund Freud",
+    "lifespan": {
+      "start": {
+        "year": 1856,
+        "month": 5
+      },
+      "end": {
+        "year": 1939,
+        "month": 9
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "eastern-europe",
+      "northern-europe"
+    ],
+    "fameScore": 91.086093,
+    "tagline": "Austrian psychiatrist and founder of psychoanalysis (1856–1939)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sigmund_Freud",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sigmund%20Freud%2C%20by%20Max%20Halberstadt%20%28cropped%29.jpg",
+    "description": "Sigmund Freud was an Austrian neurologist and the founder of psychoanalysis, a clinical method for evaluating and treating pathologies arising from conflicts in the psyche through dialogue between patient and psychoanalyst, and the distinctive theory of mind and human agency derived from it.",
+    "row": 14
+  },
+  {
+    "id": "45080",
+    "name": "Vasco da Gama",
+    "lifespan": {
+      "start": {
+        "year": 1460
+      },
+      "end": {
+        "year": 1524,
+        "month": 12
+      }
+    },
+    "occupationDomain": "exploration",
+    "regionTags": [
+      "southern-europe",
+      "southern-asia"
+    ],
+    "fameScore": 91.063575,
+    "tagline": "Portuguese explorer (c. 1460s – 1524)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vasco_da_Gama",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ignoto%20portoghese%2C%20ritratto%20di%20un%20cavaliere%20dell%27ordine%20di%20cristo%2C%201525-50%20ca.%2002.jpg",
+    "imageAttribution": "Sailko, via Wikimedia Commons",
+    "description": "Vasco da Gama was a Portuguese mariner, explorer and nobleman. His discovery of the first direct maritime route between Europe and India via the Cape of Good Hope and across the Indian Ocean from Malindi in Kenya to Kozhikode was to open up European exploration of, and commerce with, India, and is considered a landmark event and a turning point in world history.",
+    "row": 8
+  },
+  {
+    "id": "4068",
+    "name": "Blaise Pascal",
+    "lifespan": {
+      "start": {
+        "year": 1623,
+        "month": 6
+      },
+      "end": {
+        "year": 1662,
+        "month": 8
+      }
+    },
+    "occupationDomain": "science-technology",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 91.038048,
+    "tagline": "French mathematician, physicist, inventor, writer, and Christian philosopher (1623-1662)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Blaise_Pascal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Blaise%20Pascal%20Versailles.JPG",
+    "description": "Blaise Pascal was a French mathematician, physicist, inventor, philosopher, and Catholic writer.",
+    "row": 5
+  },
+  {
+    "id": "16509",
+    "name": "Joan of Arc",
+    "lifespan": {
+      "start": {
+        "year": 1412
+      },
+      "end": {
+        "year": 1431,
+        "month": 5
+      }
+    },
+    "occupationDomain": "institutions",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 91.024858,
+    "tagline": "French folk heroine (1412–1431), military leader who crowned Charles VII and Roman Catholic saint, canonized 500 years after her death",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Joan_of_Arc",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Contemporaine%20afb%20jeanne%20d%20arc.png",
+    "description": "Joan of Arc is a patron saint of France, honored as a defender of the French nation for her role in the siege of Orléans and her insistence on the coronation of Charles VII of France during the Hundred Years' War. Stating that she acted under divine guidance, she became a military leader who gained recognition as a savior of France.",
+    "row": 0
+  },
+  {
+    "id": "1425",
+    "name": "Antonio Vivaldi",
+    "lifespan": {
+      "start": {
+        "year": 1678,
+        "month": 3
+      },
+      "end": {
+        "year": 1741,
+        "month": 7
+      }
+    },
+    "occupationDomain": "arts",
+    "regionTags": [
+      "southern-europe",
+      "western-europe"
+    ],
+    "fameScore": 91.000281,
+    "tagline": "Italian composer and violinist (1678-1741)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Antonio_Vivaldi",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Onbekend%20-%20Antonio%20Vivaldi%20-%20Bologna%20Museo%20Internationale%20e%20biblioteca%20della%20musica%20di%20bologna%2028-04-2012%209-21-050.jpg",
+    "description": "Antonio Lucio Vivaldi was an Italian composer, virtuoso violinist and impresario of Baroque music. Regarded as one of the greatest Baroque composers, Vivaldi's influence during his lifetime was widespread across Europe, giving origin to many imitators and admirers. He pioneered many developments in orchestration, violin technique and programmatic music. He consolidated the emerging concerto form, especially the solo concerto, into a widely accepted and followed idiom.",
+    "row": 3
+  }
+]
