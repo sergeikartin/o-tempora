@@ -327,28 +327,44 @@ export function buildMilestones(
   return { milestones, report: { dropped: rows.length - milestones.length, reasons } };
 }
 
-export interface PayloadTierSplit<T> {
-  tier0: T[];
-  tier1: T[];
+export interface DetailLevelDeltas<T> {
+  detail1: T[];
+  detail2: T[];
+  detail3: T[];
+  detail4: T[];
 }
 
-// Splits an already-built lane array into the two Payload Tier files
-// (CONTEXT.md's Payload Tier, docs/adr/0004-payload-tier-split-defers-low-
-// fame-data.md) — Tier 0 holds everything at or above `floor` (what a
-// default-state page load needs), Tier 1 the remainder. A separate pass from
-// buildPeople/buildConflicts/buildMilestones above on purpose: those build
-// and validate entities, this only partitions an already-built array, and
-// keeping the two responsibilities apart is what lets this be tested
-// independently of any one lane's build rules. Preserves `entries`' existing
-// order in each tier rather than re-sorting.
-export function splitByPayloadTier<T extends { fameScore: number }>(
+// Splits an already-built lane array into the 4 Detail Level delta files
+// (CONTEXT.md's Detail Level, docs/adr/0006-detail-level-merges-data-depth-
+// and-payload-tier.md) — each delta holds only what's newly added versus the
+// previous level, not a self-contained cumulative file. `levelFloors` is
+// [level1, level2, level3, level4], highest floor first; level4's floor
+// (levelFloors[3]) is never used as a partition boundary here — it's a
+// client-side render floor only, same as today's Deep Cut floor already was
+// (never part of the old single-floor Payload Tier split either). detail4
+// instead holds everything remaining below level 3's floor with no lower
+// bound, mirroring the old Tier 1's unbounded-below shape one level deeper —
+// which is what makes all 4 deltas' union reconstruct the lane's full built
+// array with nothing dropped. A separate pass from buildPeople/
+// buildConflicts/buildMilestones above on purpose: those build and validate
+// entities, this only partitions an already-built array, and keeping the two
+// responsibilities apart is what lets this be tested independently of any
+// one lane's build rules. Preserves `entries`' existing order within each
+// delta rather than re-sorting.
+export function splitByDetailLevel<T extends { fameScore: number }>(
   entries: T[],
-  floor: number,
-): PayloadTierSplit<T> {
-  const tier0: T[] = [];
-  const tier1: T[] = [];
+  levelFloors: readonly [number, number, number, number],
+): DetailLevelDeltas<T> {
+  const [level1Floor, level2Floor, level3Floor] = levelFloors;
+  const detail1: T[] = [];
+  const detail2: T[] = [];
+  const detail3: T[] = [];
+  const detail4: T[] = [];
   for (const entry of entries) {
-    (entry.fameScore >= floor ? tier0 : tier1).push(entry);
+    if (entry.fameScore >= level1Floor) detail1.push(entry);
+    else if (entry.fameScore >= level2Floor) detail2.push(entry);
+    else if (entry.fameScore >= level3Floor) detail3.push(entry);
+    else detail4.push(entry);
   }
-  return { tier0, tier1 };
+  return { detail1, detail2, detail3, detail4 };
 }

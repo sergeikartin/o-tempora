@@ -1,3 +1,7 @@
+---
+status: accepted
+---
+
 # Rename lanes to People, Conflicts, and Milestones — one canonical name per lane, everywhere
 
 The display names "Wars & Conflicts" and "Events & Inventions" had drifted from their own internal naming: `ConflictCategory` (not `WarCategory`) already lived on the `War`/`WarEvent` types, and the pipeline's canonical internal name for the third lane was `discoveries` (`Discovery`, `discoveries.json`, `--lane=discoveries`) while its fetch stage and curated source file still said `events` (`fetchEventsEnrichment`, `events-curated.raw.json`, ADR 0012) — a rename that effort deliberately deferred to `.scratch/discoveries-file-rename/spec.md`.

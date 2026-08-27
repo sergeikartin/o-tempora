@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
-import { buildPeople, buildConflicts, buildMilestones, splitByPayloadTier } from "./write-datasets.js";
+import { buildPeople, buildConflicts, buildMilestones, splitByDetailLevel } from "./write-datasets.js";
 
 function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
   return {
@@ -410,20 +410,59 @@ test("buildMilestones builds a period-shaped entry when the row has an endYear, 
   assert.deepEqual(pointEntry.at, { year: 1928 });
 });
 
-test("splitByPayloadTier puts entries at or above the floor in tier0, the rest in tier1", () => {
-  const entries = [{ fameScore: 90 }, { fameScore: 88 }, { fameScore: 87 }, { fameScore: 50 }];
+test("splitByDetailLevel partitions entries into 4 non-overlapping deltas whose union reconstructs the input", () => {
+  const entries = [
+    { fameScore: 95 },
+    { fameScore: 90 },
+    { fameScore: 85 },
+    { fameScore: 80 },
+    { fameScore: 70 },
+    { fameScore: 50 },
+  ];
 
-  const { tier0, tier1 } = splitByPayloadTier(entries, 88);
+  const { detail1, detail2, detail3, detail4 } = splitByDetailLevel(entries, [92, 88, 82, 80]);
 
-  assert.deepEqual(tier0, [{ fameScore: 90 }, { fameScore: 88 }]);
-  assert.deepEqual(tier1, [{ fameScore: 87 }, { fameScore: 50 }]);
+  assert.deepEqual(detail1, [{ fameScore: 95 }]);
+  assert.deepEqual(detail2, [{ fameScore: 90 }]);
+  assert.deepEqual(detail3, [{ fameScore: 85 }]);
+  assert.deepEqual(detail4, [{ fameScore: 80 }, { fameScore: 70 }, { fameScore: 50 }]);
+
+  const union = [...detail1, ...detail2, ...detail3, ...detail4];
+  assert.equal(union.length, entries.length);
+  for (const entry of entries) {
+    assert.equal(union.filter((candidate) => candidate === entry).length, 1);
+  }
 });
 
-test("splitByPayloadTier preserves input order within each tier", () => {
-  const entries = [{ fameScore: 50 }, { fameScore: 95 }, { fameScore: 60 }, { fameScore: 99 }];
+test("splitByDetailLevel preserves input order within each delta", () => {
+  const entries = [
+    { fameScore: 50 },
+    { fameScore: 95 },
+    { fameScore: 60 },
+    { fameScore: 99 },
+  ];
 
-  const { tier0, tier1 } = splitByPayloadTier(entries, 88);
+  const { detail1, detail4 } = splitByDetailLevel(entries, [92, 88, 82, 80]);
 
-  assert.deepEqual(tier0, [{ fameScore: 95 }, { fameScore: 99 }]);
-  assert.deepEqual(tier1, [{ fameScore: 50 }, { fameScore: 60 }]);
+  assert.deepEqual(detail1, [{ fameScore: 95 }, { fameScore: 99 }]);
+  assert.deepEqual(detail4, [{ fameScore: 50 }, { fameScore: 60 }]);
+});
+
+test("splitByDetailLevel's level 1+2 cumulative set matches a plain floor filter at the level 2 floor — today's Mainstream/tier0 equivalence", () => {
+  const entries = [{ fameScore: 95 }, { fameScore: 88 }, { fameScore: 87 }, { fameScore: 50 }];
+
+  const { detail1, detail2 } = splitByDetailLevel(entries, [92, 88, 82, 80]);
+
+  assert.deepEqual(
+    [...detail1, ...detail2].sort((a, b) => b.fameScore - a.fameScore),
+    entries.filter((entry) => entry.fameScore >= 88),
+  );
+});
+
+test("splitByDetailLevel's full 4-delta union matches the unfiltered input regardless of the level 4 floor — today's Deep Cut/tier0+tier1 equivalence", () => {
+  const entries = [{ fameScore: 95 }, { fameScore: 88 }, { fameScore: 79 }, { fameScore: 50 }];
+
+  const { detail1, detail2, detail3, detail4 } = splitByDetailLevel(entries, [92, 88, 82, 80]);
+
+  assert.equal(detail1.length + detail2.length + detail3.length + detail4.length, entries.length);
 });

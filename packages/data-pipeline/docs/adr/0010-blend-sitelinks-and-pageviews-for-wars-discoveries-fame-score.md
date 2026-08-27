@@ -1,6 +1,8 @@
-# Blend Wikidata sitelinks with Wikimedia pageviews for Wars & Discoveries' fame score
+---
+status: accepted
+---
 
-Status: accepted
+# Blend Wikidata sitelinks with Wikimedia pageviews for Wars & Discoveries' fame score
 
 Wars & Discoveries' `fameScore` was raw sitelink count — a single signal, unlogged, unblended, per `rankBySitelinks`'s explicit "never blended" design comment. Pageviews capture sustained real-reader interest that sitelink count alone can miss, so we're blending them: `fameScore = round(0.60 * S_sitelinks + 0.40 * S_pageviews)`, where each component is log-normalized to 0–100 and clamped. This only concerns Wars & Discoveries — People's Pantheon HPI is untouched, and "never blend across lanes" still holds; only "never blend within a lane" is being overridden, and only for these two.
 

@@ -1,0 +1,32 @@
+# 04 — Verify and record the LCP win
+
+**What to build:** Not new code — a real, measured before/after confirmation that prerendering the default viewport ([[03-build-time-prerender-of-the-default-viewport]]) actually improved LCP, per spec.md user story 16 ("As a maintainer investigating a future LCP regression, I want a real before/after LCP trace of this change, so that the win is measured rather than assumed"). ADR 0013's Consequences section explicitly calls for this re-trace to confirm the lane marks (rather than JS bundle parse/boot time, font loading, or something else) were actually the remaining bottleneck post-ADR-0012.
+
+**Blocked by:** 03.
+
+**Status:** done
+
+- [x] Capture an LCP trace (e.g. via the `chrome-devtools-mcp:debug-optimize-lcp` skill, or Lighthouse) against the built `dist/` output for both `/index.html` and `/ru/index.html`, on a throttled connection/CPU profile comparable to what ADR 0012's original ~5.9s/~4.1-4.4s measurements used.
+- [x] Record the new LCP figure and identify the actual LCP element post-change (confirm it's a lane mark or axis label, not something else like font loading or JS parse time).
+- [x] Confirm no visible flash/flicker/re-layout at hydration in a real browser (not just automated tests) — a quick manual pass on both locales.
+- [x] Confirm the JS-disabled fallback (real content, no interactivity) on both locales.
+- [x] If the win is smaller than expected or the bottleneck has shifted elsewhere, note that as a follow-up rather than silently closing this out — this ticket's job is to report the real number, not to guarantee a specific result.
+- [x] Record the measured before/after LCP figures and the confirmed LCP element under this file's `## Comments` — ADR 0013 itself is append-only and isn't edited to carry the measurement (`docs/agents/issue-tracker.md`'s convention).
+
+## Comments
+
+**Setup**: `npm run build --workspace packages/web`, then `vite preview` serving `dist/`. Measured with `chrome-devtools-mcp`'s trace tooling, mobile viewport (390×844×3, touch), Slow 4G + 4x CPU throttle — the same throttle profile used throughout this repo's LCP history (`pre-launch-readiness` issues 14/16/17), which is the closest available proxy to ADR 0012's own dev-server measurements.
+
+**First-paint LCP candidate — the real win**: on both locales the first LCP candidate (a prerendered mark/label, ~460 px² — the initial content painted before any JS runs) lands at **~1.4s** (EN: 1,364 ms / RU: 1,432 ms; TTFB ~10 ms both). This is the number ADR 0013 predicted: first paint now happens before JS execution rather than after it, a huge improvement over ADR 0012's ~4.1–4.4s (itself already down from ~5.9s pre-ADR-0012).
+
+**Final LCP candidate — a real, separate finding, not the prerender's fault**: under this throttle profile, a *later and larger* LCP candidate supersedes the first one: the "United States Declaration of Independence" milestone label (already present in the prerendered HTML — confirmed via `grep` on `dist/index.html`/`dist/ru/index.html`, not injected later by JS) re-registers as a new, bigger LCP candidate once its real web font finishes loading and its SVG text box resizes. Per the standard LCP definition (last candidate before user input), this makes the *reported* LCP **10,852 ms (EN)** / **11,935 ms (RU)**, with **CLS 0.51** on both — a real layout shift, not a measurement artifact.
+
+`CLSCulprits` names the root cause precisely: the shift is caused by three fonts — `archivo-latin-ext-400`, `fraunces-latin-600`, `archivo-latin-600` — finishing their (very late, under Slow 4G) load and swapping in. Network evidence confirms these three are discovered only via `main.css`'s `@font-face` rules (referrer = `main-*.css`), unlike `archivo-latin-400`/`archivo-latin-700`, which are `<link rel="preload">`'d from the HTML document itself and load early. `fraunces-*-600` and `archivo-*-600` turn out to belong to Sidebar UI chrome (`Sidebar.module.css`'s `.headerTitle` and `.heading`, both visible on first paint), not the lane marks themselves — `critical-font-preload.ts`'s existing allowlist (`archivo-latin-{400,700}` only) was scoped correctly for a *pre-prerender* world where nothing painted before JS ran; it was never updated to account for `main.css` staying deferred while real above-the-fold content (now including this Sidebar chrome) paints immediately. `main.css` itself is deferred by the existing critical-CSS build step (`vite-plugins/critical-css.ts`), so any font only reachable through it inherits that same lateness — and under heavy throttling, that lateness is long enough to land after first paint and trigger a visible reflow.
+
+**Verdict on the LCP element**: the LCP element is exactly what ADR 0013 predicted — a lane mark (Milestones point label), not JS bundle parse/boot time. But the remaining bottleneck it exposes isn't the marks or the prerender mechanism at all — it's an unrelated, pre-existing gap in font preloading: `critical-font-preload.ts`'s allowlist doesn't cover every font weight that's actually visible at first paint. This ticket's job is to report the real number, so: the prerender win is real and confirmed for first paint, but the *reported* LCP metric under stress-throttled conditions is now dominated by this font-preload gap, not by anything this ticket's prerender work introduced.
+
+**Follow-up (not fixed here, out of scope for this ticket)**: extend `critical-font-preload.ts`'s `CRITICAL_FONT_PATTERN` to also preload `fraunces-*-600` and `archivo-*-600`/`archivo-latin-ext-400` (or set `font-display: optional` on them to avoid the swap-triggered reflow). Either would likely bring the CLS/final-LCP numbers back in line with the ~1.4s first-paint figure above.
+
+**Hydration flash/flicker**: checked in a real (unthrottled) browser on both locales — no console hydration-mismatch warnings, and a screenshot immediately after load shows real People/Conflicts+Milestones marks and Year Axis decade labels already in place (e.g. Thomas Jefferson, Napoleon, "United States Declaration of Independence" point, decade ticks 1700/1800). No visible re-render/handoff moment.
+
+**JS-disabled fallback**: confirmed via the raw `dist/index.html`/`dist/ru/index.html` markup (equivalent to what a no-JS browser renders) — both contain real prerendered content: 53 Milestones/Conflicts point marks, 191 People-lane mark elements, and real Year Axis decade labels (`1700`, `1800`, …), on both locales. Not an empty shell.

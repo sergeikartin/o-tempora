@@ -1,0 +1,479 @@
+[
+  {
+    "id": "Q11472",
+    "name": "paper",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 86,
+    "tagline": "thin, flexible material mainly used for writing upon, printing upon, drawing or for packaging",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Paper",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paperball%202.jpeg",
+    "description": "Paper is a thin sheet of matted cellulose fibers. Largely derived from lignocellulose, paper is created from a pulp dissolved into a slurry that is drained and dried into sheets. Different types of paper are defined by constituent fiber, paper pulp, sizing, coating, paper size, paper density and grammage.",
+    "at": {
+      "year": -140
+    },
+    "row": 0
+  },
+  {
+    "id": "Q7350",
+    "name": "Panama Canal",
+    "category": "landmarks",
+    "regionTags": [
+      "central-america"
+    ],
+    "fameScore": 86,
+    "tagline": "large canal in Panama",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Panama_Canal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Panama%20Canal%2C%20Agua%20Clara%20locks%2C%20Control%20tower%20%28Torre%20de%20control%29.jpg",
+    "imageAttribution": "Dr. Thomas Liptak, via Wikimedia Commons",
+    "description": "The Panama Canal is an artificial 82-kilometer (51-mile) waterway in Panama that connects the Caribbean Sea with the Pacific Ocean. It cuts across the narrowest point of the Isthmus of Panama, and is a conduit for maritime trade between the Atlantic Ocean and the Pacific Ocean. Locks at each end lift ships up to Gatun Lake, an artificial fresh water lake 26 meters (85 ft) above sea level, created by damming the Chagres River and Lake Alajuela to reduce the amount of excavation work required for the canal. Locks then lower the ships at the other end. The original locks are 33.5 meters (110 ft) wide and allow the passage of Panamax ships. A third, wider lane of locks was constructed between September 2007 and May 2016. The expanded waterway began commercial operation on 26 June 2016. The new locks allow for the transit of larger, Neopanamax ships. An average of 200,000,000 litres of fresh water is used in a single passing of a ship. The canal is threatened by low water levels during droughts.",
+    "at": {
+      "year": 1914,
+      "month": 8
+    },
+    "row": 1
+  },
+  {
+    "id": "Q99717",
+    "name": "1989 Tiananmen Square protests and massacre",
+    "category": "social-movements",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "Chinese pro-democracy movement and subsequent massacre",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E8%92%B2%E5%BF%97%E5%BC%B719890510.jpg",
+    "imageAttribution": "蔡淑芳@sfchoi8964, via Wikimedia Commons",
+    "description": "Protests led by students and workers, known in China as the June Fourth Incident, were held in Tiananmen Square in Beijing, China, from 15 April to 4 June 1989. After weeks of unsuccessful attempts between the demonstrators and the Chinese government to find a peaceful resolution, the Chinese government initiated martial law in late May and deployed troops to occupy the square on the night of 3 June in what is referred to as the Tiananmen Square massacre. The events are sometimes called the '89 Democracy Movement, the Tiananmen Square Incident, or the Tiananmen uprising. The Chinese government terms the events the political turmoil between the spring and summer of 1989.",
+    "period": {
+      "start": {
+        "year": 1989,
+        "month": 4
+      },
+      "end": {
+        "year": 1989,
+        "month": 6
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q12506",
+    "name": "Hagia Sophia",
+    "category": "landmarks",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "mosque, museum, and former church in Istanbul, Turkey",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hagia%20Sophia%20Mars%202013.jpg",
+    "imageAttribution": "Arild Vågen, via Wikimedia Commons",
+    "description": "Hagia Sophia, officially the Hagia Sophia Grand Mosque, is a mosque and a major cultural and historical site in Istanbul, Turkey. It was formerly a church (360–1453) and a museum (1935–2020). The last of three church buildings to be successively erected on the site by the Eastern Roman Empire, it was completed in AD 537, becoming the world's largest interior space and among the first to employ a fully pendentive dome. It is considered the epitome of Byzantine architecture and is said to have \"changed the history of architecture\". From its dedication in 360 until 1453, Hagia Sophia served as the cathedral of Constantinople in the Byzantine liturgical tradition, except for the period 1204–1261 when the Latin Crusaders installed their own hierarchy. After the fall of Constantinople in 1453, it served as a mosque, having its minarets added soon after. The site became a museum in 1935, and was redesignated as a mosque in 2020.",
+    "at": {
+      "year": 532,
+      "month": 2
+    },
+    "row": 0
+  },
+  {
+    "id": "Q10285",
+    "name": "Colosseum",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 86,
+    "tagline": "ancient Roman amphitheatre, a landmark of Rome, Italy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Colosseum",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%202020.jpg",
+    "imageAttribution": "FeaturedPics, via Wikimedia Commons",
+    "description": "The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the Roman Forum. It is the largest ancient amphitheatre ever built, and is the largest standing amphitheatre in the world. Construction began under the Emperor Vespasian in 72 and was completed in AD 80 under his successor and heir, Titus. Further modifications were made during the reign of Domitian. The three emperors who were patrons of the work are known as the Flavian dynasty, and the amphitheatre was named the Flavian Amphitheatre by later classicists and archaeologists for its association with their family name (Flavius).",
+    "at": {
+      "year": 82
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12495",
+    "name": "Burj Khalifa",
+    "category": "landmarks",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "skyscraper in Dubai, United Arab Emirates",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dubai%20skyline%202015%20%28crop%29.jpg",
+    "imageAttribution": "Tim.Reckmann, via Wikimedia Commons",
+    "description": "The Burj Khalifa is a megatall skyscraper in Dubai, United Arab Emirates. Designed by the SOM architectural firm, it is the world's tallest structure, with a total height of 829.8 m and a roof height of 828 m (2,717 ft). It has been the tallest building in the world since its topping out in 2009, surpassing Taipei 101, which had held the record since 2004.",
+    "at": {
+      "year": 2004
+    },
+    "row": 1
+  },
+  {
+    "id": "Q872",
+    "name": "radio",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 85,
+    "tagline": "technology of signaling and communicating using radio waves",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Radio",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pasilan%20linkkitorni.jpg",
+    "imageAttribution": "Markus Koljonen (Dilaudid), via Wikimedia Commons",
+    "description": "Radio is the technology of communicating using radio waves. Radio waves are electromagnetic waves of frequency between 3 hertz (Hz) and 300 gigahertz (GHz). They are generated by an electronic device called a transmitter connected to an antenna which radiates the waves. They can be received by other antennas connected to a radio receiver; this is the fundamental principle of radio communication. In addition to communication, radio is used for radar, radio navigation, remote control, remote sensing, and other applications.",
+    "at": {
+      "year": 1894
+    },
+    "row": 0
+  },
+  {
+    "id": "Q25271",
+    "name": "International Space Station",
+    "category": "landmarks",
+    "regionTags": [],
+    "fameScore": 85,
+    "tagline": "modular space station in low Earth orbit",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/International_Space_Station",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20station%20pictured%20from%20the%20SpaceX%20Crew%20Dragon%205%20%28cropped%29.jpg",
+    "description": "The International Space Station (ISS) is a space station in low Earth orbit (LEO). It is the product of the International Space Station program and is operated by five partner space agencies: NASA, Roscosmos (Russia), ESA (Europe), JAXA (Japan), and CSA (Canada). It is the first space station built, maintained and crewed through international cooperation and the largest human spacecraft ever constructed. It is an orbital research station, where scientific experiments in microgravity are conducted and the space environment is studied. Since 2 November 2000, it has hosted the longest continuous human presence in space. Alongside China's Tiangong, it is one of two operational space stations.",
+    "at": {
+      "year": 1998,
+      "month": 11
+    },
+    "row": 3
+  },
+  {
+    "id": "Q8698",
+    "name": "Great Depression",
+    "category": "commerce-finance",
+    "regionTags": [
+      "western-europe",
+      "northern-europe",
+      "southern-asia",
+      "south-america",
+      "southern-africa",
+      "northern-america",
+      "eastern-europe"
+    ],
+    "fameScore": 85,
+    "tagline": "worldwide economic depression (1929–1939)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lange-MigrantMother02.jpg",
+    "description": "The Great Depression was a severe global economic downturn from 1929 to 1939. The period was characterized by high rates of unemployment and poverty, drastic reductions in industrial production and international trade, and widespread bank and business failures around the world. The economic contagion began in 1929 in the United States, the largest economy in the world, with the devastating Wall Street crash of 1929 often considered the beginning of the Depression. Among the countries with the most unemployed were the U.S., the United Kingdom, and Germany.",
+    "period": {
+      "start": {
+        "year": 1929,
+        "month": 10
+      },
+      "end": {
+        "year": 1941
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q42005",
+    "name": "Black Death",
+    "category": "public-health",
+    "regionTags": [
+      "eastern-europe",
+      "western-asia"
+    ],
+    "fameScore": 84,
+    "tagline": "1346–1353 pandemic in Eurasia and North Africa",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Death",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Doutielt3.jpg",
+    "description": "The Black Death was a plague pandemic that occurred in Europe from 1346 to 1353. It was one of the most fatal pandemics in human history, leading to the death of up to 50 million people, or 50% of Europe's 14th-century population. The disease was caused by the bacterium Yersinia pestis, which is primarily spread by flea bites, though it may also spread through contact with infected tissues or fluids and, in pneumonic cases, through respiratory droplets.",
+    "period": {
+      "start": {
+        "year": 1346
+      },
+      "end": {
+        "year": 1352
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q37200",
+    "name": "Great Pyramid of Giza",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 84,
+    "tagline": "oldest and largest of the three pyramids in the Giza Necropolis; one of the seven ancient wonders of the world",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kheops-Pyramid.jpg",
+    "imageAttribution": "Nina, via Wikimedia Commons",
+    "description": "The Great Pyramid of Giza is the largest of the Egyptian pyramids and the most famous landmark of the Giza pyramid complex in Giza, Egypt. It is the oldest of the Seven Wonders of the Ancient World, and the only wonder that has remained largely intact. The Great Pyramid served as the tomb of Egyptian Pharaoh Khufu (\"Cheops\"), who ruled during the Fourth Dynasty of the Old Kingdom. It was built c. 2600 BC over a period of about 26 years.",
+    "at": {
+      "year": -2559
+    },
+    "row": 0
+  },
+  {
+    "id": "Q11452",
+    "name": "general relativity",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "standard and classical physics theory of gravity and space",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/General_relativity",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EinsteinLeiden4.jpg",
+    "imageAttribution": "Einstein (gravitational) field equations including the cosmological constant \n  \n    \n      \n        Λ\n      \n    \n    {\\displaystyle \\Lambda }\n  \n by Albert Einstein from his theory of general relativity (Stephen Weinberg, Gravitation and cosmology, New York, 1972 p. 155); painting by Jan-Willem Bruins (TegenBeeld); photograph by Vysotsky, via Wikimedia Commons",
+    "description": "General relativity, also known as the general theory of relativity, and as Einstein's theory of gravity, is the geometric theory of gravitation published by Albert Einstein in May 1916 and is the accepted description of the gravitation of macroscopic objects in modern physics. General relativity generalizes special relativity and refines Isaac Newton's law of universal gravitation, providing a unified description of gravity as a geometric property of space and time, or four-dimensional spacetime. In particular, the curvature of spacetime is directly related to the energy, momentum, and stress of whatever is present, including matter and radiation. The relation is specified by the Einstein field equations, a system of second-order partial differential equations. John Archibald Wheeler summarized it: \"Space-time tells matter how to move; matter tells space-time how to curve.\"",
+    "at": {
+      "year": 1916
+    },
+    "row": 3
+  },
+  {
+    "id": "Q5339",
+    "name": "transistor",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "a semiconductor device",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Transistor",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Transistors.agr.jpg",
+    "imageAttribution": "ArnoldReinhold, via Wikimedia Commons",
+    "description": "A transistor is a semiconductor device used to amplify or switch electrical signals and power. It is one of the basic building blocks of modern electronics. It is composed of semiconductor material, usually with at least three terminals for connection to an electronic circuit. A voltage or current applied to one pair of the transistor's terminals controls the current through another pair of terminals. Because the controlled (output) power can be higher than the controlling (input) power, a transistor can amplify a signal. Some transistors are packaged individually, but many more in miniature form are found embedded in integrated circuits. Because transistors are the key active components in practically all modern electronics, they are considered one of the 20th century's greatest inventions.",
+    "at": {
+      "year": 1947,
+      "month": 12
+    },
+    "row": 7
+  },
+  {
+    "id": "Q43653",
+    "name": "Apollo 11",
+    "category": "expedition",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 83,
+    "tagline": "first Moon landing and fifth crewed flight of the United States Apollo program",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%2011%20Crew.jpg",
+    "description": "Apollo 11 was the American spaceflight that first landed humans on the Moon, and the fifth crewed mission of NASA's Apollo program. The mission was crewed by Commander Neil Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin \"Buzz\" Aldrin, all of whom were on their second and final spaceflight.",
+    "at": {
+      "year": 1969,
+      "month": 7
+    },
+    "row": 6
+  },
+  {
+    "id": "Q127912",
+    "name": "United States Declaration of Independence",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 83,
+    "tagline": "1776 assertion of colonial America's independence from Great Britain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Declaration%20of%20Independence.jpg",
+    "description": "The Declaration of Independence, headed The unanimous Declaration of the thirteen united States of America on the document directed to be engrossed by Congress on July 19, 1776, is the founding document of the United States. On July 4, 1776, it was adopted unanimously by the Second Continental Congress, who were convened at the Pennsylvania State House, later renamed Independence Hall, in Philadelphia. These delegates became known as the nation's Founding Fathers. The Declaration explains why the Thirteen Colonies regarded themselves as independent sovereign states no longer subject to British colonial rule, and has become one of the most circulated, reprinted, and influential documents in history.",
+    "at": {
+      "year": 1776,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q11698",
+    "name": "United States Constitution",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "supreme law of the United States of America since March 4th, 1789",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Constitution_of_the_United_States",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Constitution%20of%20the%20United%20States%20-%20DPLA%20-%209ca804144bd5965e992ae3528bc3c6a3%20%28page%201%29.jpg",
+    "description": "The Constitution of the United States is the supreme law of the United States of America. It superseded the Articles of Confederation, the nation's first constitution, on March 4, 1789. Originally including seven articles, the Constitution defined the foundational structure of the federal government.",
+    "at": {
+      "year": 1787,
+      "month": 9
+    },
+    "row": 2
+  },
+  {
+    "id": "Q8272",
+    "name": "Epic of Gilgamesh",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "epic poem from Mesopotamia, is amongst the earliest surviving works of literature",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/GilgameshTablet.jpg",
+    "description": "The Epic of Gilgamesh is an epic from ancient Mesopotamia that is the world's oldest surviving example of narrative literature. The literary history of Gilgamesh begins with five Sumerian poems about Gilgamesh, king of Uruk, some of which may date back to the Third Dynasty of Ur. These independent stories were later used as source material for a combined epic in Akkadian. The first surviving version of this combined epic, known as the \"Old Babylonian\" version, dates back to the 18th century BCE and is titled after its incipit, Shūtur eli sharrī. Only a few tablets of it have survived. The later Standard Babylonian version compiled by Sîn-lēqi-unninni dates to somewhere between the 13th and 10th centuries BCE and bears the incipit Sha naqba īmuru. About two-thirds of this longer, 12-tablet version have been recovered. Some of the best copies were discovered in the library ruins of the 7th-century BCE Assyrian King Ashurbanipal.",
+    "at": {
+      "year": -2100
+    },
+    "row": 0
+  },
+  {
+    "id": "Q40591",
+    "name": "The Communist Manifesto",
+    "category": "philosophy-education",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "1848 publication written by Karl Marx and Friedrich Engels",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Communist-manifesto.png",
+    "description": "The Communist Manifesto, originally the Manifesto of the Communist Party, is a political pamphlet written by Karl Marx and Friedrich Engels. It was commissioned by the Communist League and published in London in 1848. The text represents the first and most systematic attempt by the two founders of scientific socialism to codify for wide consumption the historical materialist idea; namely, that \"the history of all hitherto existing society is the history of class struggles\", in which social classes are defined by the relationship of people to the means of production. Published amid the Revolutions of 1848 in Europe, the manifesto has become one of the world's most influential political documents. \"A spectre is haunting Europe — the spectre of communism.\" and \"Workers of the world, unite!\" stand as two iconic lines that frame the text, marking its opening and its close, respectively, with the latter being reworked and popularized into a famous slogan of working-class solidarity.",
+    "at": {
+      "year": 1848,
+      "month": 2
+    },
+    "row": 0
+  },
+  {
+    "id": "Q11455",
+    "name": "special relativity",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "physical theory of measurement in an inertial frame of reference proposed in 1905 by Albert Einstein",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Special_relativity",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gedankenexperiment%20Zeitdilitation.svg",
+    "description": "In physics, the special theory of relativity, or simply special relativity, is a scientific theory of the relationship between space and time. In Albert Einstein's 1905 paper, \"On the Electrodynamics of Moving Bodies\", the theory is presented as being based on just two postulates:The laws of physics are invariant (identical) in all inertial frames of reference. This is known as the principle of relativity.The speed of light in vacuum is the same for all observers, regardless of the motion of light source or observer. This is known as the principle of light constancy, or the principle of light speed invariance.",
+    "at": {
+      "year": 1905
+    },
+    "row": 1
+  },
+  {
+    "id": "Q12190",
+    "name": "penicillin",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "group of antibiotics derived from Penicillium fungi",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Penicillin",
+    "description": "Penicillins are a group of β-lactam antibiotics originally obtained from Penicillium moulds, principally P. chrysogenum and P. rubens. Eight species of Penicillium, in the section Chrysogena, produce penicillins. Most penicillins in clinical use are synthesised by P. chrysogenum using deep tank fermentation and then purified. A number of natural penicillins have been discovered, but only two purified compounds are in clinical use: penicillin G and penicillin V. Penicillins were among the first medications to be effective against many bacterial infections caused by staphylococci and streptococci. They are still widely used today for various bacterial infections, though many types of bacteria have developed resistance following extensive use.",
+    "at": {
+      "year": 1928,
+      "month": 9
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12757",
+    "name": "internal combustion engine",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wankel%20Cycle%20anim.gif",
+    "imageAttribution": "User:Y_tambe, via Wikimedia Commons",
+    "description": "An internal combustion engine is a heat engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber that is an integral part of the working fluid flow circuit. In an internal combustion engine, the expansion of the high-temperature and high-pressure gases produced by combustion applies direct force to components of the engine. The force is typically applied to pistons, turbine blades, a rotor, or a nozzle. This force moves the component over a distance. This process transforms chemical energy into kinetic energy which is used to propel, move or power whatever the engine is attached to.",
+    "at": {
+      "year": 1924
+    },
+    "row": 1
+  },
+  {
+    "id": "Q37828",
+    "name": "refrigerator",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "household or industrial appliance for preserving food at a low temperature",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Refrigerator",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LG%20refrigerator%20interior.jpg",
+    "description": "A refrigerator, commonly shortened to fridge, is a commercial and home appliance consisting of a thermally insulated compartment and a heat pump that transfers heat from its inside to its external environment so that its inside is cooled to a temperature below the ambient temperature of the room. Refrigeration is an essential food storage technique around the world. The low temperature reduces the reproduction rate of bacteria, so the refrigerator lowers the rate of spoilage. A refrigerator maintains a temperature a few degrees above the freezing point of water. The optimal temperature range for perishable food storage is 3 to 5 °C. A freezer is a specialized refrigerator, or portion of a refrigerator, that maintains its contents' temperature below the freezing point of water. The refrigerator replaced the icebox, which had been a common household appliance for almost a century and a half. The United States Food and Drug Administration recommends that the refrigerator be kept at or below 4 °C (40 °F) and that the freezer be regulated at −18 °C (0 °F).",
+    "at": {
+      "year": 1856
+    },
+    "row": 2
+  },
+  {
+    "id": "Q38867",
+    "name": "laser",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "device which emits light via optical amplification",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Laser",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lasers.JPG",
+    "imageAttribution": "彭嘉傑, via Wikimedia Commons",
+    "description": "A laser is a device that emits light through a process of optical amplification based on the stimulated emission of electromagnetic radiation. The word laser originated as an acronym for light amplification by stimulated emission of radiation. The first laser was built in 1960 by Theodore Maiman at Hughes Research Laboratories, based on theoretical work by Charles H. Townes and Arthur Leonard Schawlow and the optical amplifier patented by Gordon Gould.",
+    "at": {
+      "year": 1960,
+      "month": 5
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12861",
+    "name": "gunpowder",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "explosive most commonly used as propellant in firearms",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gunpowder",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2023%20Czarny%20proch%20Vesuvit%20LC%20%283%29.jpg",
+    "imageAttribution": "Jacek Halicki, via Wikimedia Commons",
+    "description": "Gunpowder, commonly referred to as black powder to distinguish it from modern smokeless powder, is the earliest known chemical explosive. It consists of a mixture of sulfur, charcoal, and potassium nitrate (saltpeter). The sulfur and charcoal act as fuels, while the saltpeter is an oxidizer. Gunpowder has been widely used as a propellant in firearms, artillery, rocketry, and pyrotechnics, including use as a blasting agent for explosives in quarrying, mining, building pipelines, tunnels, and roads.",
+    "at": {
+      "year": 900
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12519",
+    "name": "Magna Carta",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 82,
+    "tagline": "charter of rights agreed between King John of England and the nobility in 1215",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Magna_Carta",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Magna%20Carta%20%28British%20Library%20Cotton%20MS%20Augustus%20II.106%29.jpg",
+    "description": "Magna Carta, sometimes spelled Magna Charta, is a royal charter of rights sealed by King John of England at Runnymede, near Windsor, on 15 June 1215. First drafted by the Archbishop of Canterbury, Cardinal Stephen Langton, to make peace between the unpopular king and a group of rebel barons who demanded that the King confirm the Charter of Liberties, it promised the protection of church rights, protection for the barons from illegal imprisonment, access to swift and impartial justice, and limitations on feudal payments to the Crown, to be implemented through a council of 25 barons. Neither side stood by their commitments, and the charter was annulled by Pope Innocent III, leading to the First Barons' War.",
+    "at": {
+      "year": 1215,
+      "month": 6
+    },
+    "row": 1
+  },
+  {
+    "id": "Q38130",
+    "name": "League of Nations",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 82,
+    "tagline": "20th-century international organisation, predecessor to the United Nations",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/League_of_Nations",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LN%20member%20states%20animation.gif",
+    "imageAttribution": "Maps &amp; Lucy, via Wikimedia Commons",
+    "description": "The League of Nations was the first worldwide intergovernmental organisation whose principal mission was to maintain world peace. It was founded on 10 January 1920 by the Paris Peace Conference that ended the First World War. The main organisation ceased operations on 18 April 1946 when many of its components were relocated into the new United Nations (UN) which was created in the aftermath of the Second World War. The League of Nations was the precursor organisation to the United Nations.",
+    "at": {
+      "year": 1919
+    },
+    "row": 4
+  },
+  {
+    "id": "Q41644",
+    "name": "Warsaw Pact",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "European Eastern Military Alliance (1954 – 1991)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Warsaw_Pact",
+    "description": "The Warsaw Pact (WP), formally the Treaty of Friendship, Cooperation and Mutual Assistance (TFCMA), was a collective defence treaty signed in Warsaw, Poland, between the Soviet Union and seven other Eastern Bloc socialist republics in Central and Eastern Europe in May 1955, during the Cold War. The term \"Warsaw Pact\" commonly refers to both the treaty itself and its resultant military alliance, the Warsaw Pact Organisation. The Warsaw Pact was the military complement to the Council for Mutual Economic Assistance (Comecon), the economic organization for the Eastern Bloc states.",
+    "at": {
+      "year": 1955,
+      "month": 5
+    },
+    "row": 2
+  }
+]

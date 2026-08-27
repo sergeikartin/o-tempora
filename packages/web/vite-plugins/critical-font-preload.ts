@@ -3,14 +3,20 @@ import type { IndexHtmlTransformContext, Plugin } from 'vite';
 type BundleOutput = NonNullable<IndexHtmlTransformContext['bundle']>[string];
 type Asset = Extract<BundleOutput, { type: 'asset' }>;
 
-// Only the "latin" @fontsource/archivo subset covers what actually renders
-// above the fold on first paint: digits (year-axis ticks use Archivo on
-// both locale pages) and the English UI chrome text. Archivo ships no
-// Cyrillic subset (Cyrillic text falls back to the `sans-serif` system
-// font — global.css), so preloading latin-ext/vietnamese subsets here
-// would fetch bytes first paint never uses.
+// These are the specific family/subset/weight combinations that actually
+// render above the fold on first paint, now that the default viewport
+// prerenders (docs/adr/0013-prerender-default-viewport-for-lcp.md):
+// - archivo-latin 400/700: digits (year-axis ticks) and English UI chrome.
+// - archivo-latin-ext 400: accented People-lane names within the default
+//   viewport (e.g. "Frédéric Chopin").
+// - archivo-latin 600 / fraunces-latin 600: Sidebar's `.heading`/
+//   `.headerTitle`, present on first paint on both layouts.
+// Archivo/Fraunces ship no Cyrillic subset (Cyrillic text falls back to the
+// `sans-serif` system font — global.css), so preloading vietnamese/Cyrillic
+// subsets, or weights nothing above the fold uses, would fetch bytes first
+// paint never needs.
 const CRITICAL_FONT_PATTERN =
-  /^assets\/archivo-latin-(?:400|700)-normal-.*\.woff2$/;
+  /^assets\/(?:archivo-latin-(?:400|600|700)|archivo-latin-ext-400|fraunces-latin-600)-normal-.*\.woff2$/;
 
 export function criticalFontPreloadPlugin(): Plugin {
   return {

@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  type DataDepthLevel,
+  DEFAULT_DETAIL_LEVEL,
+  type DetailLevel,
   FAME_SCORE_BOUNDS,
   type FameScoreLane,
 } from '../../../shared/config';
 import { trackEvent } from '../../../shared/lib/track-event';
+import { registerDevFameScoreOverride } from './dev-fame-score-override';
 
 export type { FameScoreLane };
 
@@ -17,8 +19,8 @@ export interface FameScoreValues {
 // Post-filter entry counts per lane (all active filters applied, not just
 // the fame-score floor) — computed by widgets/timeline-canvas, the single
 // owner of the filtering pipeline, and threaded back up through app/ to
-// FameScoreFilters for display (mini-FSD's "cross-widget state lifted to
-// app/" convention).
+// the sidebar for display (mini-FSD's "cross-widget state lifted to app/"
+// convention).
 export interface FilteredCounts {
   people: number;
   conflicts: number;
@@ -31,26 +33,29 @@ const DEFAULT_VALUES: FameScoreValues = {
   milestones: FAME_SCORE_BOUNDS.milestones.default,
 };
 
-// Session-only fame-score floor state (no persistence — resets to the
-// CORE-tier-matching defaults above on reload), owned here since it's
-// shared by widgets/sidebar (the controls) and widgets/timeline-canvas
-// (the filtering itself).
+// Session-only fame-score floor state (no persistence — resets to Mainstream
+// on reload). `level` is the Detail Level switch's own selection, tracked
+// explicitly rather than derived from `values` — there's no remaining
+// production path that can hand-edit `values` away from a level's exact
+// preset (docs/adr/0006's retired "custom/unmatched" switch state), only the
+// dev-console override below, which is debug-only and doesn't need the
+// switch to represent it. Owned here since it's shared by widgets/sidebar
+// (the control) and widgets/timeline-canvas (the filtering itself).
 export function useFameScoreFilters() {
   const [values, setValues] = useState<FameScoreValues>(DEFAULT_VALUES);
+  const [level, setLevelState] = useState<DetailLevel>(DEFAULT_DETAIL_LEVEL);
 
-  function setValue(lane: FameScoreLane, value: number) {
-    setValues((current) => ({ ...current, [lane]: value }));
-    trackEvent('fame_score_change', { lane });
+  useEffect(() => {
+    registerDevFameScoreOverride((partial) =>
+      setValues((current) => ({ ...current, ...partial })),
+    );
+  }, []);
+
+  function setLevel(nextLevel: DetailLevel) {
+    setValues(nextLevel.values);
+    setLevelState(nextLevel);
+    trackEvent('data_depth_change', { level: nextLevel.id });
   }
 
-  // Bulk-applies a Data Depth preset (DataDepthSwitch) in one state update
-  // and one tracked event, rather than routing through setValue per lane —
-  // that would fire three 'fame_score_change' events for what is really one
-  // 'data_depth_change' interaction.
-  function setLevel(level: DataDepthLevel) {
-    setValues(level.values);
-    trackEvent('data_depth_change', { level: level.id });
-  }
-
-  return { values, setValue, setLevel };
+  return { values, level, setLevel };
 }

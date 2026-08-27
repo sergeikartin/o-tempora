@@ -1,3 +1,7 @@
+---
+status: accepted
+---
+
 # Milestones can be period-shaped, not just a point
 
 Milestones (`shared-types`' `Milestone`) were always a `PointInTime` (a single `at` date) — reasonable for an invention's first appearance, but wrong for an entity whose own Wikipedia tagline states a range (e.g. Q42005 Black Death, "1346-1353 pandemic in Eurasia and North Africa", stored with only `at: {year: 1346}`). Grilled with the user (grill-with-docs session, 2026-08-12) into the following design:

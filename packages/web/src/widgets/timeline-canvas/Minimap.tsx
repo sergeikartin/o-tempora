@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import {
   type PointerEvent as ReactPointerEvent,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -114,14 +115,34 @@ export function Minimap({
   } | null>(null);
   const [isRectDragging, setIsRectDragging] = useState(false);
   const [hover, setHover] = useState<HoverInfo | null>(null);
+  // TimelineCanvas only re-measures viewportWidthPx on mount and on a
+  // zoom-button click (see its own useLayoutEffect) — a plain window resize
+  // never touches it, so it can go stale while .track itself (CSS flex)
+  // resizes live. The viewport-rect ratio math below tolerates that (it's
+  // re-derived from totalWidth on every render anyway), but the
+  // century-tick label thinning below doesn't: a stale, too-wide value
+  // would keep labels the real (narrower) strip no longer has room for.
+  // ResizeObserver keeps this one in sync with .track's actual box.
+  const [measuredTrackWidthPx, setMeasuredTrackWidthPx] = useState(0);
+  useLayoutEffect(() => {
+    const el = trackRef.current;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0]?.contentRect.width;
+      if (width !== undefined) setMeasuredTrackWidthPx(width);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Same ratio-based geometry the scrollbar thumb this replaces used
-  // (TimelineCanvas.tsx) — tracks the track element's real rendered width
-  // for free rather than reading it during render, which isn't available
-  // before layout. Computed up front since both the viewport-rect ratio
-  // math below and the century-tick label spacing further down need it.
+  // (TimelineCanvas.tsx). Computed up front since both the viewport-rect
+  // ratio math below and the century-tick label spacing further down need
+  // it.
   const effectiveViewportWidthPx =
     viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
+  const effectiveTrackWidthPx =
+    measuredTrackWidthPx || effectiveViewportWidthPx;
 
   // The same fixed Reference Scale computeRowAssignment's static row
   // assignment uses (map-to-items.ts) — not the live measured viewport
@@ -171,7 +192,7 @@ export function Minimap({
         const label = formatYear(boundary.startYear);
         const leftPercent =
           (refScale(boundary.startYear) / refTotalWidthPx) * 100;
-        const xPx = (leftPercent / 100) * effectiveViewportWidthPx;
+        const xPx = (leftPercent / 100) * effectiveTrackWidthPx;
         // Labels are centered under their tick (CSS translateX(-50%)), so the
         // collision check is against each label's own left/right half-width,
         // not its raw x position.
@@ -181,7 +202,7 @@ export function Minimap({
         return { startYear: boundary.startYear, label, leftPercent, showLabel };
       },
     );
-  }, [effectiveViewportWidthPx]);
+  }, [effectiveTrackWidthPx]);
 
   const { peoplePath, eventsPath } = useMemo(() => {
     const peopleArea = d3

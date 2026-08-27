@@ -1,4 +1,4 @@
-import { TIER_0_FAME_SCORE_FLOOR } from '@same-sky/shared-types';
+import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from '@same-sky/shared-types';
 import { m } from '../paraglide/messages.js';
 
 export const ZOOM_MIN_YEARS = 50;
@@ -33,68 +33,98 @@ export interface FameScoreBounds {
 // same bounds instead of lane-specific raw-count ranges. 1-100/default-82
 // is a provisional starting point (the ADR's documented consequence),
 // pending a manual re-tune once real blended scores are visible in the
-// running app. `default` per lane reuses TIER_0_FAME_SCORE_FLOOR (shared
-// with data-pipeline's Output stage, docs/adr/0004-payload-tier-split-
-// defers-low-fame-data.md) rather than repeating the same three numbers a
-// third time — Mainstream's launch behavior and Payload Tier's loading
-// boundary are independent mechanisms that happen to want the same floor.
+// running app. `default` per lane reuses DETAIL_LEVEL_FAME_SCORE_FLOORS'
+// level 2 (Mainstream) entry rather than repeating the same three numbers a
+// third time.
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
-  people: { min: 75, max: 100, default: TIER_0_FAME_SCORE_FLOOR.people },
-  conflicts: { min: 1, max: 100, default: TIER_0_FAME_SCORE_FLOOR.conflicts },
+  people: {
+    min: 75,
+    max: 100,
+    default: DETAIL_LEVEL_FAME_SCORE_FLOORS.people[1],
+  },
+  conflicts: {
+    min: 1,
+    max: 100,
+    default: DETAIL_LEVEL_FAME_SCORE_FLOORS.conflicts[1],
+  },
   milestones: {
     min: 1,
     max: 100,
-    default: TIER_0_FAME_SCORE_FLOOR.milestones,
+    default: DETAIL_LEVEL_FAME_SCORE_FLOORS.milestones[1],
   },
 };
 
-// Data Depth: a two-position UI preset that writes canonical values into
-// the three fame-score floor inputs above in one click (grill-with-docs
-// session 2026-08-18 — see CONTEXT.md's Data Depth entry). `mainstream`
-// deliberately equals FAME_SCORE_BOUNDS's existing per-lane defaults, so
-// the app's launch behavior is unchanged by this feature; `deep-cut` digs
-// deeper (lower floor, more entries) rather than narrower. Purely a UI
-// convenience — distinct from the retired pipeline-side Fame Tier gating
-// (ADR 0003), and from the unrelated Payload Tier loading split above,
-// despite sharing these same numbers (CONTEXT.md's Payload Tier entry).
-export type DataDepthLevelId = 'mainstream' | 'deep-cut';
+// Detail Level: a 4-position UI preset that writes canonical values into the
+// three fame-score floor inputs above in one click, and is also the
+// pipeline's network-loading boundary (CONTEXT.md's Detail Level,
+// docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md).
+// `mainstream` (level 2) deliberately equals FAME_SCORE_BOUNDS's existing
+// per-lane defaults, so the app's launch behavior is unchanged; each level
+// after it digs deeper (lower floor, more entries) rather than narrower.
+export type DetailLevelId =
+  | 'legendary'
+  | 'mainstream'
+  | 'specialized'
+  | 'deep-cut';
 
-export interface DataDepthLevel {
-  id: DataDepthLevelId;
+export interface DetailLevel {
+  id: DetailLevelId;
   label: string;
+  description: string;
   values: Record<FameScoreLane, number>;
 }
 
-// Picked once at module load from the compiled locale's message catalog
-// (docs/adr/0005) — same pattern as shared/config's other taxonomy labels
-// (e.g. occupation-domain-colors.ts's DOMAIN_LABELS).
-const DATA_DEPTH_LABELS: Record<DataDepthLevelId, string> = {
-  mainstream: m['taxonomy.data-depth.mainstream'](),
-  'deep-cut': m['taxonomy.data-depth.deep-cut'](),
-};
+function detailLevel(
+  id: DetailLevelId,
+  label: string,
+  description: string,
+  index: 0 | 1 | 2 | 3,
+): DetailLevel {
+  return {
+    id,
+    label,
+    description,
+    values: {
+      people: DETAIL_LEVEL_FAME_SCORE_FLOORS.people[index],
+      conflicts: DETAIL_LEVEL_FAME_SCORE_FLOORS.conflicts[index],
+      milestones: DETAIL_LEVEL_FAME_SCORE_FLOORS.milestones[index],
+    },
+  };
+}
 
-export const DATA_DEPTH_LEVELS: DataDepthLevel[] = [
-  {
-    id: 'mainstream',
-    label: DATA_DEPTH_LABELS.mainstream,
-    values: { ...TIER_0_FAME_SCORE_FLOOR },
-  },
-  {
-    id: 'deep-cut',
-    label: DATA_DEPTH_LABELS['deep-cut'],
-    values: { people: 80, conflicts: 64, milestones: 55 },
-  },
+// Labels/descriptions picked once at module load from the compiled locale's
+// message catalog (docs/adr/0005) — same pattern as shared/config's other
+// taxonomy labels (e.g. occupation-domain-colors.ts's DOMAIN_LABELS).
+export const DETAIL_LEVELS: readonly [
+  DetailLevel,
+  DetailLevel,
+  DetailLevel,
+  DetailLevel,
+] = [
+  detailLevel(
+    'legendary',
+    m['taxonomy.detail-level.legendary'](),
+    m['detailLevelDescription.legendary'](),
+    0,
+  ),
+  detailLevel(
+    'mainstream',
+    m['taxonomy.detail-level.mainstream'](),
+    m['detailLevelDescription.mainstream'](),
+    1,
+  ),
+  detailLevel(
+    'specialized',
+    m['taxonomy.detail-level.specialized'](),
+    m['detailLevelDescription.specialized'](),
+    2,
+  ),
+  detailLevel(
+    'deep-cut',
+    m['taxonomy.detail-level.deep-cut'](),
+    m['detailLevelDescription.deep-cut'](),
+    3,
+  ),
 ];
 
-// Derives which level (if any) the given fame-score floor values match —
-// used only to drive the switch's highlighted state, never stored as its
-// own piece of state. Returns null ("custom") once a numeric input has
-// been hand-edited away from every preset row.
-export function matchDataDepthLevel(
-  values: Record<FameScoreLane, number>,
-): DataDepthLevelId | null {
-  const match = DATA_DEPTH_LEVELS.find((level) =>
-    FAME_SCORE_LANES.every((lane) => level.values[lane] === values[lane]),
-  );
-  return match ? match.id : null;
-}
+export const DEFAULT_DETAIL_LEVEL: DetailLevel = DETAIL_LEVELS[1];

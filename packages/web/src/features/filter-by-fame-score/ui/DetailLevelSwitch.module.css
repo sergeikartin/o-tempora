@@ -1,0 +1,162 @@
+.switch {
+  display: block;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  border: none;
+}
+
+.description {
+  margin: 6px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.label {
+  color: var(--color-text-primary);
+  font-size: 12px;
+  white-space: nowrap;
+  transition: color var(--motion-duration-base) var(--motion-easing);
+}
+
+.labelReached {
+  color: var(--color-accent-selected);
+  font-weight: 700;
+}
+
+.track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+}
+
+/* Registered so the fill's gradient stop (--progress) is an animatable
+   type — lets .trackFill's transition below slide the color boundary
+   instead of snapping it. */
+@property --progress {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+/* Insets equal the dot's own radius (half of .dot's 14px) so the line's
+   ends sit exactly under the first/last dot's center, matching the flex
+   row's space-between geometry (see .dot). */
+.trackFill {
+  position: absolute;
+  top: 50%;
+  left: 7px;
+  right: 7px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  transform: translateY(-50%);
+  background: linear-gradient(
+    to right,
+    var(--color-accent-selected) 0%,
+    var(--color-accent-selected) var(--progress),
+    var(--color-border-subtle) var(--progress),
+    var(--color-border-subtle) 100%
+  );
+  transition: --progress var(--motion-duration-base) var(--motion-easing);
+}
+
+.dot {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 2px solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface-raised);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-easing),
+    border-color var(--motion-duration-fast) var(--motion-easing);
+}
+
+.dot:hover {
+  border-color: var(--color-border-strong);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.dotReached {
+  border-color: var(--color-accent-selected);
+  background: var(--color-accent-selected);
+}
+
+.dotSelected {
+  border-color: var(--color-accent-selected);
+  background: var(--color-accent-selected);
+  color: var(--color-accent-selected);
+}
+
+/* Fixed-size dot box keeps the flex row's space-between math (and the
+   line's endpoints) stable — the active marker is this overlay scaling
+   in/out, not a box resize. A map-pin shape (round with one square
+   corner) rotated -45deg points its tip straight down onto the dot's own
+   center, which sits on the line. */
+.dot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  width: 18px;
+  height: 18px;
+  background: var(--color-accent-selected);
+  border-radius: 50% 50% 50% 0;
+  transform: translate(-50%, -68%) rotate(-45deg) scale(0);
+  transition: transform var(--motion-duration-base) var(--motion-easing);
+  pointer-events: none;
+}
+
+.dotSelected::after {
+  transform: translate(-50%, -68%) rotate(-45deg) scale(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dot[aria-busy="true"]::after {
+    animation: pin-loading 900ms ease-in-out infinite;
+  }
+}
+
+@keyframes pin-loading {
+  0%,
+  100% {
+    transform: translate(-50%, -68%) rotate(-45deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -68%) rotate(-45deg) scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* Visually hidden — the pin's own pulse (above) carries the loading
+   signal for sighted users; this keeps it announced for screen readers. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

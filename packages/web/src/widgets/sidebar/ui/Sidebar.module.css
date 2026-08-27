@@ -180,7 +180,7 @@
    top of the canvas (not a layout push) by a floating toggle button in
    TimelineCanvas. Desktop is untouched — this whole block is a no-op above
    the breakpoint. */
-@media (max-width: 640px) {
+@media (max-width: 960px) {
   .sidebar {
     position: fixed;
     inset: 0 auto 0 0;

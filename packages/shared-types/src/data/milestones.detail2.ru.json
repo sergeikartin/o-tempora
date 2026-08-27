@@ -1,0 +1,479 @@
+[
+  {
+    "id": "Q11472",
+    "name": "бумага",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 86,
+    "tagline": "волокнистый материал с минеральными добавками",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Paper",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paperball%202.jpeg",
+    "description": "Бума́га — волокнистый материал с минеральными добавками. Представлен в виде листов для письма, рисования, печати, упаковки и прочего, получаемый из целлюлозы: растений, а также вторсырья.",
+    "at": {
+      "year": -140
+    },
+    "row": 0
+  },
+  {
+    "id": "Q7350",
+    "name": "Панамский канал",
+    "category": "landmarks",
+    "regionTags": [
+      "central-america"
+    ],
+    "fameScore": 86,
+    "tagline": "судоходный канал, соединяющий Тихий и Атлантический океаны",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Panama_Canal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Panama%20Canal%2C%20Agua%20Clara%20locks%2C%20Control%20tower%20%28Torre%20de%20control%29.jpg",
+    "imageAttribution": "Dr. Thomas Liptak, via Wikimedia Commons",
+    "description": "Пана́мский кана́л — судоходный канал, соединяющий Панамский залив Тихого океана с Карибским морем и Атлантическим океаном, проходит по Панамскому перешейку, территория государства Панама.",
+    "at": {
+      "year": 1914,
+      "month": 8
+    },
+    "row": 1
+  },
+  {
+    "id": "Q99717",
+    "name": "Протесты на площади Тяньаньмэнь (1989)",
+    "category": "social-movements",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "акции протеста в Пекине",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E8%92%B2%E5%BF%97%E5%BC%B719890510.jpg",
+    "imageAttribution": "蔡淑芳@sfchoi8964, via Wikimedia Commons",
+    "description": "С 15 апреля по 4 июня 1989 года в Пекине проходила серия акций протеста на площади Тяньаньмэ́нь, главными участниками которых были студенты. Ранним утром 4 июня по решению политического руководства страны выступления были подавлены Народно-освободительной армией Китая с применением огнестрельного оружия и бронетехники. Оценки числа погибших варьируются от нескольких сотен до нескольких тысяч и тысяч раненых. Разгон известен как «события 4 июня» в Китае и «бойня на площади Тяньаньмэнь» на Западе.",
+    "period": {
+      "start": {
+        "year": 1989,
+        "month": 4
+      },
+      "end": {
+        "year": 1989,
+        "month": 6
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q12506",
+    "name": "Собор Святой Софии",
+    "category": "landmarks",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "в прошлом музей, православный собор, ныне мечеть",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hagia%20Sophia%20Mars%202013.jpg",
+    "imageAttribution": "Arild Vågen, via Wikimedia Commons",
+    "description": "Собо́р Свято́й Софи́и — Прему́дрости Бо́жией, Святая София Константинопольская, Айя-София — памятник архитектуры в Турции. Всемирно известный памятник византийского зодчества, символ «золотого века» Византии. Самое величественное здание юстиниановской эпохи, храм построен в византийской столице в 532—537 годах. Ныне бывший патриарший православный собор, находящийся в историческом центре современного Стамбула в районе Султанахмет. Официальное название на сегодня — Большая мечеть Айя-София.",
+    "at": {
+      "year": 532,
+      "month": 2
+    },
+    "row": 0
+  },
+  {
+    "id": "Q10285",
+    "name": "Колизей",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 86,
+    "tagline": "амфитеатр в Риме, Италия",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Colosseum",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%202020.jpg",
+    "imageAttribution": "FeaturedPics, via Wikimedia Commons",
+    "description": "Колизе́й, или амфитеатр Флавиев — амфитеатр, памятник архитектуры Древнего Рима, наиболее известное и одно из самых грандиозных сооружений Древнего мира, сохранившихся до нашего времени. Находится в Риме, в низине между Эсквилинским, Палатинским и Целиевым холмами.",
+    "at": {
+      "year": 82
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12495",
+    "name": "Бурдж-Халифа",
+    "category": "landmarks",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 86,
+    "tagline": "небоскрёб в Дубае (ОАЭ)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dubai%20skyline%202015%20%28crop%29.jpg",
+    "imageAttribution": "Tim.Reckmann, via Wikimedia Commons",
+    "description": "«Бурдж-Хали́фа» — сверхвысотный небоскрёб высотой 828 метров в Дубае (ОАЭ), самое высокое и самое многоэтажное здание в мире, а также самое высокое сооружение. Уступчатая форма здания напоминает сталагмит.",
+    "at": {
+      "year": 2004
+    },
+    "row": 1
+  },
+  {
+    "id": "Q872",
+    "name": "радио",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 85,
+    "tagline": "способ передачи информации посредством радиоволн",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Radio",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pasilan%20linkkitorni.jpg",
+    "imageAttribution": "Markus Koljonen (Dilaudid), via Wikimedia Commons",
+    "description": "Ра́дио, также радиосвязь — способ передачи сообщений на расстояние посредством радиоволн, а также область науки и техники, связанная с изучением физических явлений, лежащих в основе этого способа, и с его использованием для связи, звукового вещания, передачи изображений, сигнализации, контроля и управления, обнаружения различных объектов и определения их местоположения и для других целей.",
+    "at": {
+      "year": 1894
+    },
+    "row": 0
+  },
+  {
+    "id": "Q25271",
+    "name": "Международная космическая станция",
+    "category": "landmarks",
+    "regionTags": [],
+    "fameScore": 85,
+    "tagline": "космическая станция",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/International_Space_Station",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20station%20pictured%20from%20the%20SpaceX%20Crew%20Dragon%205%20%28cropped%29.jpg",
+    "description": "Междунаро́дная косми́ческая ста́нция, сокр. МКС — пилотируемая орбитальная станция, используемая как многоцелевой космический исследовательский комплекс; эксплуатируется с конца 1998 года по настоящее время .МКС — совместный международный проект, в котором участвуют 14 стран: Россия, США, Япония, Канада и входящие в Европейское космическое агентство Бельгия, Германия, Дания, Испания, Италия, Нидерланды, Норвегия, Франция, Швейцария, Швеция.",
+    "at": {
+      "year": 1998,
+      "month": 11
+    },
+    "row": 3
+  },
+  {
+    "id": "Q8698",
+    "name": "Великая депрессия",
+    "category": "commerce-finance",
+    "regionTags": [
+      "western-europe",
+      "northern-europe",
+      "southern-asia",
+      "south-america",
+      "southern-africa",
+      "northern-america",
+      "eastern-europe"
+    ],
+    "fameScore": 85,
+    "tagline": "мировой экономический кризис с 1929 по 1939 год",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lange-MigrantMother02.jpg",
+    "description": "Вели́кая депре́ссия — мировой экономический кризис, начавшийся 24 октября 1929 года с биржевого краха в США и продолжавшийся до 1939 года. 1930-е годы в целом считаются периодом Великой депрессии.",
+    "period": {
+      "start": {
+        "year": 1929,
+        "month": 10
+      },
+      "end": {
+        "year": 1941
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q42005",
+    "name": "Чёрная смерть",
+    "category": "public-health",
+    "regionTags": [
+      "eastern-europe",
+      "western-asia"
+    ],
+    "fameScore": 84,
+    "tagline": "пандемия чумы в 1346-1353 гг. в Европе",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Death",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Doutielt3.jpg",
+    "description": "Чёрная смерть — вторая в истории пандемия чумы, пик которой пришёлся на 1346—1353 годы, а повторные вспышки продолжались вплоть до XIX века. Жертвами болезни стали десятки миллионов людей: по разным оценкам, от болезни погибло от 30 % до 60 % населения Европы.",
+    "period": {
+      "start": {
+        "year": 1346
+      },
+      "end": {
+        "year": 1352
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q37200",
+    "name": "Пирамида Хеопса",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 84,
+    "tagline": "старейшая и самая крупная из трех пирамид в Некрополе Гизы",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kheops-Pyramid.jpg",
+    "imageAttribution": "Nina, via Wikimedia Commons",
+    "description": "Пирами́да Хео́пса, Великая пирамида Гизы — крупнейшая из египетских пирамид, памятник архитектурного искусства Древнего Египта; единственное из «Семи чудес света», сохранившееся до наших дней, и самое древнее из них: её возраст оценивается примерно в 4500 лет.",
+    "at": {
+      "year": -2559
+    },
+    "row": 0
+  },
+  {
+    "id": "Q11452",
+    "name": "общая теория относительности",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "геометрическая теория тяготения",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/General_relativity",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EinsteinLeiden4.jpg",
+    "imageAttribution": "Einstein (gravitational) field equations including the cosmological constant \n  \n    \n      \n        Λ\n      \n    \n    {\\displaystyle \\Lambda }\n  \n by Albert Einstein from his theory of general relativity (Stephen Weinberg, Gravitation and cosmology, New York, 1972 p. 155); painting by Jan-Willem Bruins (TegenBeeld); photograph by Vysotsky, via Wikimedia Commons",
+    "description": "О́бщая тео́рия относи́тельности — общепринятая в настоящее время теория тяготения, описывающая тяготение как проявление геометрии пространства-времени. Предложена Альбертом Эйнштейном 25 ноября 1915 года.",
+    "at": {
+      "year": 1916
+    },
+    "row": 3
+  },
+  {
+    "id": "Q5339",
+    "name": "транзистор",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "полупроводниковый электронный компонент",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Transistor",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Transistors.agr.jpg",
+    "imageAttribution": "ArnoldReinhold, via Wikimedia Commons",
+    "description": "Транзи́стор, полупроводнико́вый трио́д — электронный компонент из полупроводникового материала, способный небольшим входным сигналом управлять значительным током в выходной цепи, что позволяет использовать его для усиления, генерирования, коммутации и преобразования электрических сигналов. В настоящее время транзистор является основой схемотехники подавляющего большинства электронных устройств и интегральных микросхем.",
+    "at": {
+      "year": 1947,
+      "month": 12
+    },
+    "row": 7
+  },
+  {
+    "id": "Q43653",
+    "name": "Аполлон-11",
+    "category": "expedition",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 83,
+    "tagline": "американский пилотируемый космический корабль серии «Аполлон»",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%2011%20Crew.jpg",
+    "description": "«Аполло́н-11» — американский пилотируемый космический корабль серии «Аполлон», в ходе полёта которого в период с 16 по 24 июля 1969 года человечество впервые в истории совершило посадку на поверхность другого небесного тела — Луны.",
+    "at": {
+      "year": 1969,
+      "month": 7
+    },
+    "row": 6
+  },
+  {
+    "id": "Q127912",
+    "name": "Декларация независимости США",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 83,
+    "tagline": "исторический документ, в котором британские колонии в Северной Америке объявили независимость от Великобритании",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/United%20States%20Declaration%20of%20Independence.jpg",
+    "description": "Деклара́ция незави́симости США — исторический документ, в котором британские колонии в Северной Америке объявили независимость от Великобритании, принят единогласно Вторым Континентальным конгрессом 4 июля 1776 года в Филадельфии, штат Пенсильвания.",
+    "at": {
+      "year": 1776,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q11698",
+    "name": "конституция США",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "основной закон США",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Constitution_of_the_United_States",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Constitution%20of%20the%20United%20States%20-%20DPLA%20-%209ca804144bd5965e992ae3528bc3c6a3%20%28page%201%29.jpg",
+    "description": "Конститу́ция США — основной закон Соединённых Штатов Америки, имеющий высшую юридическую силу. Конституция США была принята 17 сентября 1787 года на Конституционном Конвенте в Филадельфии и впоследствии ратифицирована всеми тринадцатью существовавшими тогда американскими штатами. Считается первой в мире конституцией в современном понимании. Состоит из семи статей, за время действия Конституции были приняты двадцать семь поправок, которые являются её неотъемлемой частью.",
+    "at": {
+      "year": 1787,
+      "month": 9
+    },
+    "row": 2
+  },
+  {
+    "id": "Q8272",
+    "name": "Эпос о Гильгамеше",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "эпическая поэма Древней Месопотамии, одно из старейших сохранившихся литературных произведений в мире",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/GilgameshTablet.jpg",
+    "description": "«Э́пос о Гильгаме́ше», или поэма «О всё видавшем» , — одно из старейших сохранившихся литературных произведений в мире, самое крупное произведение, написанное клинописью, одно из величайших произведений литературы Древнего Востока. «Эпос» создавался на аккадском языке на основании шумерских сказаний на протяжении полутора тысяч лет, начиная с XVIII—XVII веков до н. э. Его наиболее полная версия обнаружена в середине XIX века при раскопках клинописной библиотеки царя Ашшурбанипала в Ниневии. Она записана на 12 шестиколонных табличках мелкой клинописью, включает около 3 тысяч стихов и датирована VII веком до н. э. Также в XX веке найдены фрагменты других версий эпоса, в том числе и на хурритском и хеттском языках.",
+    "at": {
+      "year": -2100
+    },
+    "row": 0
+  },
+  {
+    "id": "Q40591",
+    "name": "Манифест коммунистической партии",
+    "category": "philosophy-education",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "декларация целей коммунистических организаций, написанная Карлом Марксом и Фридрихом Энгельсом в 1848 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Communist-manifesto.png",
+    "description": "«Манифе́ст Коммунисти́ческой па́ртии» — работа Карла Маркса и Фридриха Энгельса, в которой авторы декларируют и обосновывают цели, задачи и методы борьбы зарождавшихся коммунистических организаций и партий.",
+    "at": {
+      "year": 1848,
+      "month": 2
+    },
+    "row": 0
+  },
+  {
+    "id": "Q11455",
+    "name": "специальная теория относительности",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "физическая теория, предложенная Альбертом Эйнштейном в 1905 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Special_relativity",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gedankenexperiment%20Zeitdilitation.svg",
+    "description": "Специа́льная тео́рия относи́тельности — теория, описывающая движение, законы механики и пространственно-временные отношения при произвольных скоростях движения, меньших скорости света в вакууме, в том числе близких к скорости света. Фактически СТО описывает геометрию четырёхмерного пространства-времени и основана на плоском пространстве Минковского. Обобщение СТО для сильных гравитационных полей называется общей теорией относительности.",
+    "at": {
+      "year": 1905
+    },
+    "row": 1
+  },
+  {
+    "id": "Q12190",
+    "name": "бензилпенициллин",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "group of antibiotics derived from Penicillium fungi",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Penicillin",
+    "description": "Пеницилли́ны — антимикробные препараты, относящиеся к классу β-лактамных антибиотиков. Были открыты Александром Флемингом в 1928 году.",
+    "at": {
+      "year": 1928,
+      "month": 9
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12757",
+    "name": "двигатель внутреннего сгорания",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "тип двигателя, в котором энергия сгорания топлива преобразуется в механическую энергию",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wankel%20Cycle%20anim.gif",
+    "imageAttribution": "User:Y_tambe, via Wikimedia Commons",
+    "description": "Дви́гатель вну́треннего сгора́ния (ДВС), ранее дви́гатель вну́треннего горе́ния — разновидность теплового двигателя, в котором топливная смесь сгорает непосредственно в рабочей камере (внутри) двигателя.",
+    "at": {
+      "year": 1924
+    },
+    "row": 1
+  },
+  {
+    "id": "Q37828",
+    "name": "холодильник",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "устройство, поддерживающее низкую температуру в теплоизолированной камере",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Refrigerator",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LG%20refrigerator%20interior.jpg",
+    "description": "Холоди́льник — устройство, поддерживающее низкую температуру в теплоизолированной камере. Применяется обычно для хранения пищи, лекарств или предметов, требующих хранения в прохладном месте или при отрицательных температурах. В развитых странах бытовой холодильник имеется почти в каждой семье. Работа холодильника основана на использовании холодильной установки, переносящей тепло из рабочей камеры холодильника наружу, где оно рассеивается во внешнюю среду. Существуют также коммерческие холодильники с большей холодопроизводительностью, которые используются на предприятиях общественного питания и в магазинах, и промышленные холодильники, объём рабочей камеры которых может достигать десятков и сотен кубометров, они используются, например, на мясокомбинатах, промышленных производствах.",
+    "at": {
+      "year": 1856
+    },
+    "row": 2
+  },
+  {
+    "id": "Q38867",
+    "name": "лазер",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "устройство, преобразующее энергию накачки в энергию узкого когерентного потока излучения",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Laser",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lasers.JPG",
+    "imageAttribution": "彭嘉傑, via Wikimedia Commons",
+    "description": "Ла́зер, или опти́ческий ква́нтовый генера́тор, — устройство, преобразующее энергию накачки в энергию когерентного, монохроматического, поляризованного и узконаправленного потока излучения.",
+    "at": {
+      "year": 1960,
+      "month": 5
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12861",
+    "name": "дымный порох",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "исторически первое и наиболее простое по химическому составу метательное взрывчатое вещество",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gunpowder",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2023%20Czarny%20proch%20Vesuvit%20LC%20%283%29.jpg",
+    "imageAttribution": "Jacek Halicki, via Wikimedia Commons",
+    "description": "Ды́мный по́рох — исторически первое метательное взрывчатое вещество (ВВ), состоящее в основном из трёх компонентов: селитры, древесного угля и серы.",
+    "at": {
+      "year": 900
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12519",
+    "name": "Великая хартия вольностей",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 82,
+    "tagline": "документ на основе требований английской знати к Иоанну Безземельному",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Magna_Carta",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Magna%20Carta%20%28British%20Library%20Cotton%20MS%20Augustus%20II.106%29.jpg",
+    "description": "Вели́кая ха́ртия во́льностей — политико-правовой документ, составленный в июне 1215 года на основе требований английской знати к королю Иоанну Безземельному и защищавший ряд юридических прав и привилегий свободного населения средневековой Англии. Состоит из 63 статей, регулировавших вопросы налогов, сборов и феодальных повинностей, судоустройства и судопроизводства, прав английской церкви, городов и купцов, наследственного права и опеки. Ряд статей Хартии содержали правила, целью которых было ограничение королевской власти путём введения в политическую систему страны особых государственных органов — общего совета королевства и комитета двадцати пяти баронов, обладавшего полномочиями предпринимать действия по принуждению короля к восстановлению нарушенных прав; в силу этого данные статьи получили название конституционных.",
+    "at": {
+      "year": 1215,
+      "month": 6
+    },
+    "row": 1
+  },
+  {
+    "id": "Q38130",
+    "name": "Лига Наций",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 82,
+    "tagline": "международная организация, предшественник Организации Объединённых Наций",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/League_of_Nations",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LN%20member%20states%20animation.gif",
+    "imageAttribution": "Maps &amp; Lucy, via Wikimedia Commons",
+    "description": "Ли́га На́ций — международная организация, основанная в результате Версальско-Вашингтонской системы Версальского соглашения в 1919—1920 годах. Первая международная организация, основной задачей которой было поддержание всеобщего мира.",
+    "at": {
+      "year": 1919
+    },
+    "row": 4
+  },
+  {
+    "id": "Q41644",
+    "name": "Организация Варшавского договора",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "военный союз восточноевропейских социалистических государств при ведущей роли Советского Союза",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Warsaw_Pact",
+    "description": "Варша́вский догово́р или Варша́вский пакт (Договор о дружбе, сотрудничестве и взаимной помощи) от 14 мая 1955 года до 1 июля 1991 года — документ, оформивший создание военного союза европейских социалистических государств при ведущей роли СССР — Организа́ции Варша́вского догово́ра (ОВД) — и закрепивший биполярность мира на 36 лет. Заключение договора явилось ответной мерой на отказ Советскому Союзу и социалистическим странам на вступление в НАТО, а также присоединение к натовскому альянсу ФРГ.",
+    "at": {
+      "year": 1955,
+      "month": 5
+    },
+    "row": 2
+  }
+]

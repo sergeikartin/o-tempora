@@ -172,17 +172,22 @@ export interface PointInTime {
   at: YearMonth;
 }
 
-// Payload Tier: the fame-score floor each lane's Output stage (data-pipeline)
-// uses to split its shipped dataset file in two — CONTEXT.md's "Payload
-// Tier", docs/adr/0004-payload-tier-split-defers-low-fame-data.md. Defined
-// once here, shared by data-pipeline (which splits by it) and web (whose
-// Data Depth "Mainstream" preset reuses the same numbers) so the two can
-// never silently drift apart, even though they're conceptually independent —
-// which tier an entry ships in never affects whether it renders.
-export const TIER_0_FAME_SCORE_FLOOR = {
-  people: 88,
-  conflicts: 82,
-  milestones: 82,
+// Detail Level: the 4 per-lane Fame Score floors that drive both which
+// entities render (web) and which delta file they ship in (data-pipeline's
+// Output stage splits by these into `<lane>.detail1.json` .. `.detail4.json`
+// — CONTEXT.md's "Detail Level", docs/adr/0006-detail-level-merges-data-
+// depth-and-payload-tier.md). Index 0 is level 1 (Legendary, the strictest
+// floor), index 3 is level 4 (Deep Cut, the loosest). Levels 2 and 4 are
+// pinned to the pre-merge Mainstream/Deep Cut presets' exact floors; levels
+// 1 and 3 are new, derived by a constant per-lane multiplicative step on
+// entity count (not fame-score points) continuing the count-ratio drift
+// Mainstream/Deep Cut already had between them. Defined once here, shared by
+// data-pipeline (which partitions by it) and web (whose Detail Level switch
+// reuses the same numbers) so the two can never silently drift apart.
+export const DETAIL_LEVEL_FAME_SCORE_FLOORS = {
+  people: [91, 88, 84, 80],
+  conflicts: [86, 82, 78, 64],
+  milestones: [87, 82, 76, 55],
 } as const;
 
 // Shared by Person, Conflict, ConflictEvent, and Milestone — every lane's entries
@@ -221,9 +226,10 @@ export interface TimelineEntry {
   // Permanent per-item Row Depth identity (CONTEXT.md's Row Depth) —
   // data-pipeline computes this once, over the *entire* lane at Output time
   // (People among themselves; Conflicts and Milestones together, one shared
-  // pass), so it never changes because of a client-side filter, zoom, or
-  // Payload Tier's Tier 1 merge (docs/adr/0005-row-assignment-moves-to-the-
-  // pipeline.md) — only a pipeline rebuild can move it. Optional in the type
+  // pass), so it never changes because of a client-side filter, zoom, or a
+  // deeper Detail Level's delta file merging in (docs/adr/0005-row-
+  // assignment-moves-to-the-pipeline.md) — only a pipeline rebuild can move
+  // it. Optional in the type
   // purely so hand-built test fixtures that don't care about row-packing
   // don't need to supply one; real shipped data always sets it, and
   // packages/web's locale-datasets.ts validateEntries treats a missing/non-

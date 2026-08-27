@@ -2,7 +2,7 @@
 
 <!-- How the two-language build ships as static output. Read when touching build/deploy config. -->
 
-One build, two languages, resolved at runtime from the URL (`docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`) — no server-side logic, no per-language build fork. Hosted on GitHub Pages at `otempora.info` (`docs/adr/0003-english-served-from-domain-root.md`).
+One build, two languages, resolved at runtime from the URL (`packages/web/docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`) — no server-side logic, no per-language build fork. Hosted on GitHub Pages at `otempora.info` (`docs/adr/0003-english-served-from-domain-root.md`).
 
 ## Building
 
@@ -12,7 +12,9 @@ From `packages/web`: `npm run build` → `dist/`.
 
 Because that tier0 fetch happens behind a runtime locale branch rather than a statically-reachable import, Vite doesn't auto-preload those chunks. Two small build-time plugins (`vite-plugins/tier0-modulepreload.ts`, `vite-plugins/critical-font-preload.ts`) read the build's output bundle in `transformIndexHtml` and inject `<link>` tags per HTML entry: `modulepreload` for that entry's own locale's three tier0 chunks (never the other locale's), and `preload` for the `@fontsource/archivo` 400/700 latin-subset `.woff2` files — the weights used by the timeline lane labels, year-axis ticks, and century tab on both locale pages. Since GitHub Pages serves one static HTML file to every visitor, the (desktop-only-visible) Sidebar's Fraunces/Archivo 600 is deliberately left unpreloaded even though it's also above the fold there — mobile is the platform this optimizes for, and mobile LCP is what the preload budget is spent on.
 
-A third plugin, `vite-plugins/critical-css.ts`, inlines above-the-fold CSS into each HTML entry's `<head>` (via `beasties`) and defers the rest with a `media="print"`/`onload` swap. `beasties` decides what's critical by matching selectors against the given HTML's DOM, but this app's build-time HTML is a bare CSR shell with nothing rendered into it — so the layout rules `TimelineCanvas`'s post-mount `container.clientWidth` measurement depends on (`.wrapper`/`.scrollContainer`, CSS-Modules-mangled to `._wrapper_<hash>_<n>` etc.) are force-included via `allowRules` rather than left to that DOM-presence heuristic.
+A third plugin, `vite-plugins/prerender-default-viewport.ts`, server-renders `<App initialDatasets={...} />` for each HTML entry's own locale and seeds `index.html`/`ru/index.html`'s `#root` with the real default-viewport markup — People/Conflicts+Milestones marks and the Year Axis, for the same `DEFAULT_VIEWPORT_START_YEAR`–`DEFAULT_VIEWPORT_END_YEAR`/fame-score-floor state `App.tsx` already initializes from (`packages/web/docs/adr/0013-prerender-default-viewport-for-lcp.md`) — so first paint shows real content before any JS runs. `main.tsx` hydrates rather than mounting fresh; `PeopleLane`/`ConflictsMilestonesLane` seed their D3-owned `<g>` containers' initial content via a frozen `dangerouslySetInnerHTML` (same shape descriptor as the live D3 join, `mark-shape-html.ts`) so hydration has nothing to reconcile there, and the D3 join then adopts those nodes instead of recreating them.
+
+A fourth plugin, `vite-plugins/critical-css.ts`, inlines above-the-fold CSS into each HTML entry's `<head>` (via `beasties`) and defers the rest with a `media="print"`/`onload` swap, registered after the prerender step above so Beasties' DOM-presence heuristic sees the real class-bearing markup, not an empty shell. The layout rules `TimelineCanvas`'s post-mount `container.clientWidth` measurement depends on (`.wrapper`/`.scrollContainer`, CSS-Modules-mangled to `._wrapper_<hash>_<n>` etc.) are still force-included via `allowRules` regardless, since that measurement effect's own layout needs are independent of whatever marks happen to be prerendered.
 
 ## URL structure
 

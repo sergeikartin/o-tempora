@@ -43,11 +43,17 @@ const bundle = {
   'assets/archivo-latin-700-normal-def.woff2': asset(
     'assets/archivo-latin-700-normal-def.woff2',
   ),
-  'assets/archivo-latin-500-normal-ghi.woff2': asset(
-    'assets/archivo-latin-500-normal-ghi.woff2',
+  'assets/archivo-latin-500-normal-yzz.woff2': asset(
+    'assets/archivo-latin-500-normal-yzz.woff2',
+  ),
+  'assets/archivo-latin-600-normal-ghi.woff2': asset(
+    'assets/archivo-latin-600-normal-ghi.woff2',
   ),
   'assets/archivo-latin-ext-400-normal-jkl.woff2': asset(
     'assets/archivo-latin-ext-400-normal-jkl.woff2',
+  ),
+  'assets/archivo-latin-ext-600-normal-jkm.woff2': asset(
+    'assets/archivo-latin-ext-600-normal-jkm.woff2',
   ),
   'assets/archivo-vietnamese-400-normal-mno.woff2': asset(
     'assets/archivo-vietnamese-400-normal-mno.woff2',
@@ -57,6 +63,9 @@ const bundle = {
   ),
   'assets/fraunces-latin-600-normal-stu.woff2': asset(
     'assets/fraunces-latin-600-normal-stu.woff2',
+  ),
+  'assets/fraunces-latin-ext-600-normal-stv.woff2': asset(
+    'assets/fraunces-latin-ext-600-normal-stv.woff2',
   ),
   'assets/main-vwx.js': chunk('assets/main-vwx.js'),
   // The real rolldown output types are opaque native handles that plain
@@ -91,13 +100,16 @@ function preloadedFontTags(transformBundle: Bundle | undefined) {
   } as IndexHtmlTransformContext);
 }
 
-test('preloads only the latin 400/700 woff2 files', () => {
+test('preloads the latin 400/600/700, latin-ext 400, and fraunces-latin 600 woff2 files', () => {
   const hrefs = preloadedFontTags(bundle)
     .map((tag) => tag.attrs.href)
     .sort();
   expect(hrefs).toEqual([
     '/assets/archivo-latin-400-normal-abc.woff2',
+    '/assets/archivo-latin-600-normal-ghi.woff2',
     '/assets/archivo-latin-700-normal-def.woff2',
+    '/assets/archivo-latin-ext-400-normal-jkl.woff2',
+    '/assets/fraunces-latin-600-normal-stu.woff2',
   ]);
 });
 

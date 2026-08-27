@@ -15,10 +15,11 @@
 
 ### Styling
 
-- CSS Modules only; one base/reset file is the sole global stylesheet.
+- CSS Modules only; one base/reset file is the sole global stylesheet. Co-locate a component's `.module.css` with its component file.
 - No hardcoded hex — color/typography/radius come from tokens (`docs/design-tokens.md`) as CSS custom properties. Prefer to use CSS variables.
 - Occupation category colors are the single source of truth across People-lane lines, Events-lane marker borders, and the matching filter chip — one palette, never per-surface copies.
 - Shape, not color, carries Period vs. PointInTime, the same rule across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Person vs. event is instead carried by lane, label position, and palette — never by color alone.
+- Never use CSS Modules class names as JS/test hooks (query by role/text or a dedicated `data-*` attribute instead) — the same reason D3 joins in this widget key off literal marker classes, not CSS-Module classes.
 
 ### Timeline Rendering (D3)
 
@@ -28,7 +29,7 @@
 - The three lanes share one horizontal-scroll container; that container's native scroll position *is* the time-axis sync across lanes — there's deliberately no cross-lane scroll listener or reentrancy guard. Each lane manages its own vertical row-overflow independently.
 - Zoom is one shared scale/state across all three lanes (they must stay in lockstep), clamped to a fixed min/max year-span.
 - **Sidebar fame-score filters gate entity density manually — zoom controls only the time-scale**, not which entities render (`packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md`). Filtering is client-side against the data-pipeline's already-broad output — no re-ranking.
-- **The Year Axis is deliberately plain HTML/CSS, not SVG/D3** like the rest of the widget — a per-tick-DOM-node approach was previously most of initial-load LCP, so don't reintroduce one. Decade labels are windowed to the visible scroll range and omitted below a minimum on-screen spacing to avoid collision at low zoom.
+- **The Year Axis is deliberately plain HTML/CSS, not SVG/D3** like the rest of the widget — tick marks are CSS background gradients, never a per-tick DOM node (`docs/adr/0012-year-axis-as-plain-css-ruler.md`). Decade labels are windowed to the visible scroll range and omitted below a minimum on-screen spacing to avoid collision at low zoom.
 - **Century marks are one ink motif drawn three times** — a lifted, bordered tab in the Year Axis label row, the axis's own bold century tick, and a 1px seam running through both lanes (and the translucent ruler bar itself) — all sharing `--color-border-emphasis`, including the Minimap's own century-strip tick. Century labels are static like every other label (no pin-to-viewport-edge behavior) — jumping to a period stays the Minimap's job.
 - Conflicts and Milestones render directly off pre-split, lane-scoped data from the data-pipeline — no client-side category filtering to route entries between lanes.
 - Colliding items in every lane are row-stacked using one shared greedy interval-stacking algorithm, sized in pixel-space rather than year-space, since on-screen label width isn't proportional to underlying date range. A row is a **static per-item identity** — computed once against the full dataset at a fixed reference scale, never the live zoom or the currently-filtered set — that each lane then compacts down to whatever it's actually rendering, so an item's row never changes just because of a filter or zoom change (`packages/web/docs/adr/0007-static-row-assignment-replaces-live-per-render-packing.md`).
