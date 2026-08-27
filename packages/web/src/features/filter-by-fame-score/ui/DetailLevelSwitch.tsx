@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import {
   DETAIL_LEVELS,
   type DetailLevel,
@@ -10,9 +11,9 @@ interface DetailLevelSwitchProps {
   selectedLevelId: DetailLevelId;
   onSelectLevel: (level: DetailLevel) => void;
   // Detail Level ids whose delta file hasn't resolved yet — see
-  // app/use-detail-level-datasets.ts. A spinner only ever renders on the
-  // active option, since a not-yet-selected level's data simply hasn't
-  // started fetching (level 4) or is prefetching invisibly (level 3).
+  // app/use-detail-level-datasets.ts. The loading pulse only ever renders
+  // on the active option, since a not-yet-selected level's data simply
+  // hasn't started fetching (level 4) or is prefetching invisibly (level 3).
   loadingLevelIds: DetailLevelId[];
 }
 
@@ -29,40 +30,66 @@ export function DetailLevelSwitch({
   onSelectLevel,
   loadingLevelIds,
 }: DetailLevelSwitchProps) {
-  const selectedLevel =
-    DETAIL_LEVELS.find((level) => level.id === selectedLevelId) ??
-    DETAIL_LEVELS[1];
+  const selectedIndex = Math.max(
+    0,
+    DETAIL_LEVELS.findIndex((level) => level.id === selectedLevelId),
+  );
+  const selectedLevel = DETAIL_LEVELS[selectedIndex] ?? DETAIL_LEVELS[1];
+  const progress = (selectedIndex / (DETAIL_LEVELS.length - 1)) * 100;
 
   return (
     <div>
       <fieldset className={styles.switch} aria-label={m.detailLevelAriaLabel()}>
-        {DETAIL_LEVELS.map((level) => {
-          const isActive = level.id === selectedLevelId;
-          const showSpinner = isActive && loadingLevelIds.includes(level.id);
-          return (
-            <button
+        <div className={styles.labels}>
+          {DETAIL_LEVELS.map((level, index) => (
+            <span
               key={level.id}
-              type="button"
               className={
-                isActive
-                  ? `${styles.option} ${styles.optionActive}`
-                  : styles.option
+                index <= selectedIndex
+                  ? `${styles.label} ${styles.labelReached}`
+                  : styles.label
               }
-              aria-pressed={isActive}
-              aria-busy={showSpinner}
-              onClick={() => onSelectLevel(level)}
             >
               {level.label}
-              {showSpinner && (
-                <span
-                  className={styles.spinner}
-                  role="status"
-                  aria-label={m.detailLevelLoadingAriaLabel()}
-                />
-              )}
-            </button>
-          );
-        })}
+            </span>
+          ))}
+        </div>
+        <div className={styles.track}>
+          <div
+            className={styles.trackFill}
+            style={{ '--progress': `${progress}%` } as CSSProperties}
+          />
+          {DETAIL_LEVELS.map((level, index) => {
+            const isSelected = level.id === selectedLevelId;
+            const showSpinner =
+              isSelected && loadingLevelIds.includes(level.id);
+            return (
+              <button
+                key={level.id}
+                type="button"
+                aria-label={level.label}
+                aria-pressed={isSelected}
+                aria-busy={showSpinner}
+                className={
+                  isSelected
+                    ? `${styles.dot} ${styles.dotSelected}`
+                    : index < selectedIndex
+                      ? `${styles.dot} ${styles.dotReached}`
+                      : styles.dot
+                }
+                onClick={() => onSelectLevel(level)}
+              >
+                {showSpinner && (
+                  <span
+                    className={styles.srOnly}
+                    role="status"
+                    aria-label={m.detailLevelLoadingAriaLabel()}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
       </fieldset>
       <p className={styles.description}>{selectedLevel.description}</p>
     </div>
