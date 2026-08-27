@@ -7,7 +7,7 @@ import '@fontsource/archivo/400.css';
 import '@fontsource/archivo/600.css';
 import '@fontsource/archivo/700.css';
 import '@fontsource/fraunces/600.css';
-import { hydrateRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { App } from './app';
 import { localeDatasetsPromise } from './app/locale-datasets';
 import { initMonitoring } from './shared/lib/init-monitoring';
@@ -26,6 +26,17 @@ if (!rootElement) throw new Error('index.html is missing #root');
 // here instead just means hydration (attaching listeners) lands slightly
 // after the data it needs anyway arrives, same as it always effectively
 // depended on.
+//
+// The dev server never runs the prerender step (it's `apply: 'build'`
+// only), so #root is genuinely empty there — hydrateRoot against nothing
+// throws a hydration-mismatch error every load and falls back to a full
+// client render anyway. Only hydrate when there's real prerendered markup
+// to reconcile against; otherwise just render fresh, same outcome either
+// way in prod.
 localeDatasetsPromise.then(() => {
-  hydrateRoot(rootElement, <App />);
+  if (rootElement.hasChildNodes()) {
+    hydrateRoot(rootElement, <App />);
+  } else {
+    createRoot(rootElement).render(<App />);
+  }
 });
