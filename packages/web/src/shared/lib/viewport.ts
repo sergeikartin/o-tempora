@@ -1,8 +1,10 @@
 import { useSyncExternalStore } from 'react';
 
-// Chosen to cover phones in both orientations while leaving tablets on the
-// desktop layout — tunable, see .scratch/mobile-responsive-layout/spec.md.
-export const MOBILE_BREAKPOINT_PX = 640;
+// 3x Sidebar.module.css's 320px .sidebar width, so the fixed-width desktop
+// column never exceeds a third of the viewport before flipping to the
+// drawer layout below the breakpoint — tunable, see
+// .scratch/mobile-responsive-layout/spec.md.
+export const MOBILE_BREAKPOINT_PX = 960;
 
 const mobileQuery = `(max-width: ${MOBILE_BREAKPOINT_PX}px)`;
 
