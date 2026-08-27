@@ -26,7 +26,6 @@ import {
   DECADE_TICK_PHASE_OFFSET_YEARS,
   defaultPixelsPerYear,
   MILESTONE_CATEGORY_COLORS,
-  MOBILE_DEFAULT_VISIBLE_YEARS,
   pinchCenterYear,
   pinchPixelsPerYear,
   pixelsPerYearBounds,
@@ -120,14 +119,8 @@ test('clampPixelsPerYear leaves an in-bounds value untouched', () => {
   expect(clampPixelsPerYear(inBounds, 1000)).toBe(inBounds);
 });
 
-test('defaultPixelsPerYear targets the default 120-year (1740-1860) viewport width', () => {
+test('defaultPixelsPerYear targets the default 120-year (1740-1860) viewport width, on every viewport', () => {
   expect(defaultPixelsPerYear(1000)).toBe(1000 / 120);
-});
-
-test('defaultPixelsPerYear targets a given visibleYears override instead, e.g. MOBILE_DEFAULT_VISIBLE_YEARS', () => {
-  expect(defaultPixelsPerYear(1000, MOBILE_DEFAULT_VISIBLE_YEARS)).toBe(
-    1000 / MOBILE_DEFAULT_VISIBLE_YEARS,
-  );
 });
 
 test('zoomIn increases pixelsPerYear by the zoom step, clamped to the zoomed-in bound', () => {

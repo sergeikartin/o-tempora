@@ -54,14 +54,13 @@ import {
   CENTURY_TICK_PHASE_OFFSET_YEARS,
   zoomIn as computeZoomIn,
   zoomOut as computeZoomOut,
-  defaultPixelsPerYear,
   FALLBACK_VIEWPORT_WIDTH_PX,
   MIN_YEAR,
-  MOBILE_DEFAULT_VISIBLE_YEARS,
   pinchCenterYear,
   pinchPixelsPerYear,
   QUARTER_CENTURY_STEP_YEARS,
   QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS,
+  REFERENCE_PIXELS_PER_YEAR,
   VIEWPORT_BUFFER_RATIO,
   type ZoomAnimationHandle,
   type ZoomAnimationTransform,
@@ -159,6 +158,27 @@ export function TimelineCanvas({
   searchJumpTarget,
 }: TimelineCanvasProps) {
   const isMobileViewport = useIsMobileViewport();
+  // Minimap's own SSR-matching mount is deliberately deferred to idle time
+  // rather than the initial hydration commit: the prerendered HTML always
+  // assumes desktop (viewport.ts's getServerSnapshot), so a real mobile
+  // visitor's hydration briefly mounts Minimap too, before isMobileViewport
+  // corrects to true and unmounts it again a beat later. Since Minimap sits
+  // in the same flex column as .scrollContainer (flex: 1 1 auto), that
+  // mount-then-unmount resizes .scrollContainer itself — a real, measurable
+  // contributor to the CLS-0.51 hydration regression
+  // (.scratch/prerender-default-viewport/issues/06), not just Minimap's own
+  // area. Gating it behind isMinimapIdle (false at SSR and at the first
+  // hydration commit, same as isMobileViewport) means it never mounts at
+  // all on mobile, and appears one idle tick later than before on desktop —
+  // a fine trade for a secondary navigation aid, not primary content.
+  const [isMinimapIdle, setIsMinimapIdle] = useState(false);
+  useEffect(() => {
+    const schedule =
+      window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 0));
+    const cancel = window.cancelIdleCallback ?? clearTimeout;
+    const handle = schedule(() => setIsMinimapIdle(true));
+    return () => cancel(handle);
+  }, []);
   const scrollRef = useRef<HTMLDivElement>(null);
   // People and Conflicts+Milestones are `position: sticky; left: 0` (see their CSS) so
   // each one's own vertical scrollbar stays docked to the viewport's right
@@ -264,16 +284,16 @@ export function TimelineCanvas({
   // otherwise open whatever mark/label happens to be under the pointer when
   // the user was only trying to pan, not select something.
   const suppressNextClickRef = useRef(false);
-  // The lazy useState initializer runs exactly once, at mount, so reading
-  // isMobileViewport here already captures its mount-time value without
-  // needing a separate ref — same "first paint" scope the mobile default
-  // zoom decision calls for (options.ts's MOBILE_DEFAULT_VISIBLE_YEARS).
-  const [pixelsPerYear, setPixelsPerYear] = useState(() =>
-    defaultPixelsPerYear(
-      0,
-      isMobileViewport ? MOBILE_DEFAULT_VISIBLE_YEARS : undefined,
-    ),
-  );
+  // A fixed density, not a width-derived guess: REFERENCE_PIXELS_PER_YEAR
+  // never changes once the real viewport is measured (see the mount effect
+  // below), so the marks the prerendered HTML already painted at this exact
+  // density never need to move — a narrower viewport just shows fewer years
+  // at the same density, not the same years rescaled. Deriving pixelsPerYear
+  // from viewport width at all was the actual mechanism behind the
+  // CLS-0.51+ hydration regression (.scratch/prerender-default-viewport/
+  // issues/06): any real width other than the prerender's assumed
+  // FALLBACK_VIEWPORT_WIDTH_PX forced a mark-repositioning correction pass.
+  const [pixelsPerYear, setPixelsPerYear] = useState(REFERENCE_PIXELS_PER_YEAR);
   // Set by a zoom click to the year at the viewport's center just before the
   // change, so the effect below can re-center the scroll position on it once
   // the new xScale is in state — zooming in/out around what the user was
@@ -530,12 +550,6 @@ export function TimelineCanvas({
     el.scrollTop = 0;
   }, [filteredConflicts, filteredMilestones]);
 
-  // Real browsers can measure the container before first paint; jsdom (and
-  // any not-yet-laid-out first paint) can't, so the initial pixelsPerYear
-  // state above already assumed a fallback width. Recompute from the real
-  // width once available; the pan-to-default-viewport below waits for that
-  // recomputed pixelsPerYear to actually land (see the ref's comment).
-  const measuredPixelsPerYearRef = useRef<number | null>(null);
   // Perf-audit instrumentation (.scratch/pre-launch-readiness/issues/14): a
   // 'timeline-initial-render' mark, read back via the Performance API, gives
   // an exact timestamp for when the real (not fallback-width) geometry
@@ -543,17 +557,15 @@ export function TimelineCanvas({
   // done rendering", since Chrome's native LCP heuristic can't see canvas/SVG
   // content and instead flags some unrelated DOM text/image element.
   const hasMarkedInitialRenderRef = useRef(false);
-  useLayoutEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-    measuredPixelsPerYearRef.current = defaultPixelsPerYear(
-      container.clientWidth,
-      isMobileViewport ? MOBILE_DEFAULT_VISIBLE_YEARS : undefined,
-    );
-    setPixelsPerYear(measuredPixelsPerYearRef.current);
-    setViewportWidthPx(container.clientWidth);
-  }, [isMobileViewport]);
-
+  // One effect for both mount and every zoom-button/pinch completion — safe
+  // to merge (they used to be two, split across two commits) now that
+  // pixelsPerYear is a fixed constant rather than a width-derived guess:
+  // there's no longer a "wait for the real pixelsPerYear to land in a second
+  // render" step, since it never changes at mount at all. pendingCenterYearRef
+  // is what distinguishes the two cases — null at mount, set by the zoom/
+  // pinch handlers below — so a single read-then-write pass here covers both:
+  // measure clientWidth once, then write viewportWidthPx/scrollLeft/the
+  // mirrored lanes off it, with no interleaved DOM read afterward.
   useLayoutEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -563,32 +575,26 @@ export function TimelineCanvas({
     // committed pixelsPerYear, so the commit is atomic (see PeopleLane's
     // identical comment on its own g.people reset for why).
     if (zebraLayerRef.current) zebraLayerRef.current.style.transform = '';
-    if (pendingCenterYearRef.current !== null) {
-      skipNextPanTrackRef.current = true;
-      syncScrollLeft(
-        scale(pendingCenterYearRef.current) - container.clientWidth / 2,
-      );
-      pendingCenterYearRef.current = null;
-      setScrollLeft(container.scrollLeft);
-      return;
+    const clientWidthPx = container.clientWidth;
+    setViewportWidthPx(clientWidthPx);
+    skipNextPanTrackRef.current = true;
+    const centerYear = pendingCenterYearRef.current;
+    pendingCenterYearRef.current = null;
+    const targetScrollLeft =
+      centerYear !== null
+        ? scale(centerYear) - clientWidthPx / 2
+        : scale(DEFAULT_VIEWPORT_START_YEAR);
+    const nextScrollLeft = Math.max(
+      0,
+      Math.min(targetScrollLeft, totalWidth - clientWidthPx),
+    );
+    syncScrollLeft(nextScrollLeft);
+    setScrollLeft(nextScrollLeft);
+    if (!hasMarkedInitialRenderRef.current) {
+      hasMarkedInitialRenderRef.current = true;
+      performance.mark('timeline-initial-render');
     }
-    // The mount effect above sets pixelsPerYear state but can't set
-    // scrollLeft itself — the lanes' widths (and so this container's
-    // scrollWidth) haven't re-rendered to match yet, so an immediate
-    // scrollLeft assignment gets silently clamped to the still-stale
-    // scrollWidth and never corrected. Wait for pixelsPerYear to actually
-    // equal what that effect measured — i.e. for this render's scale to be
-    // the real one, not the pre-layout fallback — before panning.
-    if (pixelsPerYear === measuredPixelsPerYearRef.current) {
-      skipNextPanTrackRef.current = true;
-      syncScrollLeft(scale(DEFAULT_VIEWPORT_START_YEAR));
-      setScrollLeft(container.scrollLeft);
-      if (!hasMarkedInitialRenderRef.current) {
-        hasMarkedInitialRenderRef.current = true;
-        performance.mark('timeline-initial-render');
-      }
-    }
-  }, [pixelsPerYear, scale, syncScrollLeft]);
+  }, [scale, syncScrollLeft, totalWidth]);
 
   // Second pointer's pointerdown: the gesture's fixed reference frame,
   // captured once — the same technique zoom() below uses to compute
@@ -1116,7 +1122,7 @@ export function TimelineCanvas({
           />
         </div>
       </div>
-      {!isMobileViewport && (
+      {!isMobileViewport && isMinimapIdle && (
         <Minimap
           people={filteredPeople}
           conflicts={filteredConflicts}
