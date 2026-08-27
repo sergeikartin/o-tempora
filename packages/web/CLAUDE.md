@@ -30,6 +30,7 @@ Run from repo root:
 ## Docs
 
 - `docs/code-conventions.md` — FSD/React/styling rules, file organization
+- `docs/timeline-rendering.md` — D3 timeline rendering mechanics (lanes, zoom, row assignment, Year Axis)
 - `docs/design-tokens.md` — color palette, typography, radius scale
 - `docs/adr/` — architecture decision records
 
