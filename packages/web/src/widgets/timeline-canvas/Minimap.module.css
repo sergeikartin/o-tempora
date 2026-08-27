@@ -3,7 +3,10 @@
    click/drag math never needs to guess at .scrollContainer's geometry.
    Height sits in the 48-64px band the ADR calls for, versus the old
    scrollbar's ~14px, plus MINIMAP_CENTURY_STRIP_HEIGHT_PX for the top-edge
-   century-tick strip (`/grill-with-docs`). */
+   century-tick strip (`/grill-with-docs`). A tinted rail (own background, a
+   strong top divider, a cast shadow) rather than the lanes' plain
+   background — reads as a distinct overview control instead of a second
+   years axis sitting under the lanes. */
 /* Also the positioning root for .tooltip and .viewportRect — .track itself
    needs overflow: hidden to bound the ridge, but that same rule would clip
    .tooltip's bottom: 100% offset (which deliberately floats it above
@@ -17,18 +20,26 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
+  background-color: color-mix(
+    in srgb,
+    var(--color-bg-base) 88%,
+    var(--color-border-strong) 12%
+  );
+  border-top: 2px solid var(--color-border-strong);
+  box-shadow: 0 -4px 8px -4px
+    color-mix(in srgb, var(--color-text-primary) 18%, transparent);
 }
 
 /* Top-edge century-tick strip — thin, non-interactive (pointer-events: none
    so it never intercepts .track/.viewportRect's own click/drag/hover
    handling), ticks always shown but labels thinned once they'd collide (see
-   Minimap.tsx's centuryTicks memo). */
+   Minimap.tsx's centuryTicks memo). Left transparent (no bg-surface of its
+   own) so .wrapper's tinted rail shows through behind the ticks. */
 .centuryStrip {
   position: relative;
   flex: 0 0 auto;
   height: 20px; /* MINIMAP_CENTURY_STRIP_HEIGHT_PX in options.ts */
   overflow: hidden;
-  background-color: var(--color-bg-surface);
   pointer-events: none;
 }
 
@@ -37,9 +48,9 @@
   top: 0;
   height: 5px;
   width: 1px;
-  /* Matches the Year Axis's own century tick and the lane zebra seam — one
-     color for "century boundary" everywhere it appears. */
-  background-color: var(--color-border-emphasis);
+  /* One shade lighter than the Year Axis's own century tick (border-emphasis)
+     so the minimap's marks read as quieter than the real axis above them. */
+  background-color: var(--color-border-strong);
 }
 
 .centuryLabel {
