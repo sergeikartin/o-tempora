@@ -27,6 +27,7 @@ Read on demand — only load what the current task needs.
 | [docs/product-scope.md](docs/product-scope.md) | Making a scope or UX call |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | Debugging a recurring issue |
 | [docs/config-variables.md](docs/config-variables.md) | Touching config |
+| [docs/observability.md](docs/observability.md) | Adding or changing tracked errors/events |
 | [docs/deployment.md](docs/deployment.md) | Touching build/deploy config |
 | [docs/adr/](docs/adr/) | Making a system-wide architectural call, or recording one — also check `packages/<package>/docs/adr/` for package-scoped decisions |
 | [CONTEXT.md](CONTEXT.md) | Before exploring the codebase, or naming a domain concept — see `docs/agents/domain.md` for how to consume it |
