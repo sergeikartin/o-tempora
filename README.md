@@ -19,7 +19,14 @@ npm install
 npm run dev --workspace packages/web
 ```
 
-See [`packages/web/CLAUDE.md`](packages/web/CLAUDE.md) for the full set of build/test/lint commands.
+See [`packages/web/CLAUDE.md`](packages/web/CLAUDE.md) for the full set of build/test/lint commands. `packages/shared-types/src/data/*.json` ships pre-built in the repo, so you don't need to run the data pipeline to work on `web` — only when changing the underlying data (see [`packages/data-pipeline/CLAUDE.md`](packages/data-pipeline/CLAUDE.md)).
+
+## Documentation
+
+- [`CLAUDE.md`](CLAUDE.md) — repo overview and the documentation map (what to read, and when)
+- [`CONTEXT.md`](CONTEXT.md) — domain glossary and terminology
+- [`docs/product-scope.md`](docs/product-scope.md) — what's in/out of scope, and why
+- [`docs/adr/`](docs/adr/) — architecture decision records (also `packages/{web,data-pipeline}/docs/adr/` for package-scoped decisions)
 
 ## Data & attribution
 
