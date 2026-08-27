@@ -44,7 +44,7 @@
    canvas is the only thing actually in flow — letting the page grow taller
    than the viewport and scroll normally (min-height, not a hard height)
    rather than clipping content that doesn't fit one phone screen. */
-@media (max-width: 640px) {
+@media (max-width: 960px) {
   .layout {
     height: auto;
     min-height: 100vh;
