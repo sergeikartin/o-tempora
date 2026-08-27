@@ -98,6 +98,22 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       __html: renderPeopleMarkupHtml(layout, styles),
     }));
 
+    // Frozen at mount, same reasoning as initialPeopleHtmlProp above: without
+    // it, the <svg> below has no height at all on first paint (server or
+    // client, before the D3 effect below has ever run) — .bottomAlign's
+    // min-height: 100% then pads it up to fill .peopleLane's box exactly,
+    // reporting as *not overflowing* (scrollHeight === clientHeight) even
+    // though the real row count does overflow. TimelineCanvas.tsx's own
+    // scroll-to-bottom pin (and the prerender build step's matching
+    // pre-hydration pin, vite-plugins/prerender-default-viewport.ts) both
+    // read scrollHeight to do that, so a wrong pre-D3 scrollHeight here was
+    // the actual root cause of the CLS/forced-reflow regression the vertical
+    // scroll-jump piece of that ticket kept finding (.scratch/
+    // prerender-default-viewport/issues/06) — not PeopleLane's D3 mount
+    // effect below, which was already applying the correct height
+    // synchronously (no transition) on first mount, just one commit later.
+    const [initialSvgHeightPx] = useState(() => totalHeight);
+
     // D3 owns the DOM inside <g class="people"> — one <g class="d3-person">
     // per person, containing its lifespan line and name label. Literal
     // (non-CSS-Module) marker classes drive the join's enter/update/exit
@@ -335,6 +351,7 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
         <svg
           ref={svgRef}
           width={totalWidth}
+          height={initialSvgHeightPx}
           className={styles.svg}
           role="img"
           aria-label={m.peopleHeading()}
