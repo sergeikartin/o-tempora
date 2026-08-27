@@ -20,6 +20,15 @@ export default defineConfig({
   base: '/',
   plugins: [
     react(),
+    // trackEvent() (track-event.ts) already no-ops app-triggered events in
+    // dev, but Umami's script auto-fires its own pageview/web-vitals beacons
+    // on load regardless — strip the tag so dev traffic never reaches it.
+    {
+      name: 'strip-umami-script-dev',
+      apply: 'serve',
+      transformIndexHtml: (html) =>
+        html.replace(/\s*<script[^>]*\bumami\b[^>]*><\/script>/, ''),
+    },
     paraglideVitePlugin({
       project: './project.inlang',
       outdir: './src/shared/paraglide',
