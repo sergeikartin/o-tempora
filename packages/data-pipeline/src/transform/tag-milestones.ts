@@ -1,4 +1,4 @@
-import type { ConflictCategory, MilestoneCategory, Region } from "@same-sky/shared-types";
+import type { ConflictCategory, MilestoneCategory, Region } from "@o-tempora/shared-types";
 import { REGION_CATEGORIES } from "./region-categories.js";
 
 export interface MilestoneTags {

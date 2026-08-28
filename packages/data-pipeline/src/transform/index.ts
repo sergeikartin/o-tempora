@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { ConflictCategory, MilestoneCategory, Region } from "@same-sky/shared-types";
+import type { ConflictCategory, MilestoneCategory, Region } from "@o-tempora/shared-types";
 import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
 import { parsePantheonCsv, type PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
 import { validateEnrichedMilestonesFile } from "../fetch/fetch-milestones-enrichment.js";

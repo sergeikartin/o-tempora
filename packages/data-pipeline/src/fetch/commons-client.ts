@@ -36,7 +36,7 @@ const ENDPOINT = "https://commons.wikimedia.org/w/api.php";
 // Same courtesy identification Wikidata's own client sends (wikidata-client.ts) —
 // Wikimedia asks all API traffic to self-identify.
 const USER_AGENT =
-  "same-sky-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
+  "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
 
 const MAX_RETRIES = 3;
 // Shorter than wikidata-client.ts's 55s (which is sized to WDQS's documented

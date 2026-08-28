@@ -20,7 +20,7 @@ const CRITICAL_FONT_PATTERN =
 
 export function criticalFontPreloadPlugin(): Plugin {
   return {
-    name: 'same-sky:critical-font-preload',
+    name: 'o-tempora:critical-font-preload',
     apply: 'build',
     transformIndexHtml: {
       order: 'post',
