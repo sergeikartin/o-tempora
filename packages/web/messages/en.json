@@ -33,6 +33,7 @@
   "aboutLabel": "About",
   "aboutHeading": "About",
   "aboutDescription": "O Tempora is a read-only, continuously zoomable visualization of world history — People, Conflicts, and Milestones, spanning ~800 BCE to the present.",
+  "aboutMadeBy": "Made by Sergei Kartin.",
   "aboutCodeHeading": "Code",
   "aboutCodeBody": "This site's source code is open source, licensed under the MIT License.",
   "aboutViewOnGithub": "View source on GitHub →",

@@ -1,6 +1,6 @@
 # Same Sky
 
-A read-only, continuously zoomable visualization of world history — People, Conflicts, and Milestones lanes, hardcoded ahead of time.
+A read-only, zoomable visualization of world history — People, Conflicts, and Milestones lanes, hardcoded ahead of time.
 
 ## Language
 

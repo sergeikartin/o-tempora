@@ -1,6 +1,10 @@
-# O Tempora
+# O Tempora — Every Life in Context
 
-**Every life in context** — a read-only, continuously zoomable visualization of world history (~800 BCE–present). Three lanes — **People**, **Conflicts**, and **Milestones** — hardcoded ahead of time, with pan/zoom, fame-based density filtering, and occupation/region filters. No accounts, no editing, no live data fetching.
+**O Tempora** (`otempora.info`) is an interactive web-based historical visualization tool designed to explore notable human lives and major world events across a unified timeline.
+
+## Overview
+
+History is often learned in silos, making it difficult to visualize which historical figures were contemporaries or what global events were taking place during a specific person's lifetime. **O Tempora** solves this by providing a dynamic, synchronized view of historical biographies alongside major global conflicts, cultural milestones, and technological innovations.
 
 **Live site:** [otempora.info](https://otempora.info) ([Russian](https://otempora.info/ru/))
 
@@ -20,13 +24,6 @@ npm run dev --workspace packages/web
 ```
 
 See [`packages/web/CLAUDE.md`](packages/web/CLAUDE.md) for the full set of build/test/lint commands. `packages/shared-types/src/data/*.json` ships pre-built in the repo, so you don't need to run the data pipeline to work on `web` — only when changing the underlying data (see [`packages/data-pipeline/CLAUDE.md`](packages/data-pipeline/CLAUDE.md)).
-
-## Documentation
-
-- [`CLAUDE.md`](CLAUDE.md) — repo overview and the documentation map (what to read, and when)
-- [`CONTEXT.md`](CONTEXT.md) — domain glossary and terminology
-- [`docs/product-scope.md`](docs/product-scope.md) — what's in/out of scope, and why
-- [`docs/adr/`](docs/adr/) — architecture decision records (also `packages/{web,data-pipeline}/docs/adr/` for package-scoped decisions)
 
 ## Data & attribution
 

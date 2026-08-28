@@ -91,6 +91,7 @@ export function AboutPanel({ isOpen, onClose }: AboutPanelProps) {
         </button>
         <h2 className={styles.heading}>{m.aboutHeading()}</h2>
         <p className={styles.description}>{m.aboutDescription()}</p>
+        <p className={styles.body}>{m.aboutMadeBy()}</p>
 
         <h3 className={styles.sectionHeading}>{m.aboutCodeHeading()}</h3>
         <p className={styles.body}>{m.aboutCodeBody()}</p>
