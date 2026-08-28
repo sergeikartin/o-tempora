@@ -81,6 +81,16 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   ref,
 ) {
   const svgRef = useRef<SVGSVGElement>(null);
+  // Caches the zoom tick loop's own selectAll (see applyZoomTransform below)
+  // across an entire gesture's worth of rAF frames — invalidated (set null)
+  // by the join effect below, the only place marks are created/destroyed, so
+  // a stale cache never outlives the DOM nodes it points at.
+  const zoomTargetsSelectionRef = useRef<d3.Selection<
+    Element,
+    unknown,
+    SVGSVGElement,
+    unknown
+  > | null>(null);
 
   const { rangeLayout, pointLayout, totalHeight } = useMemo(
     () => buildRangeAndPointLayout(conflicts, milestones, xScale, eventsRowFor),
@@ -120,6 +130,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
         '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
       )
       .attr('transform', null);
+    zoomTargetsSelectionRef.current = null;
 
     // g.ranges's real children are already there before this effect's first
     // run — rendered by the initialRangesHtml dangerouslySetInnerHTML below,
@@ -321,9 +332,11 @@ const ConflictsMilestonesLaneImpl = forwardRef<
 
   // TimelineCanvas's single rAF driver calls this every animation-frame
   // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
-  // comment for the mechanism. A plain D3 re-select (not a ref/cache of the
-  // layout arrays): the marks' data is already bound to their DOM nodes
-  // from the joins above, so re-selecting picks it back up for free.
+  // comment for the mechanism. The marks' data is already bound to their DOM
+  // nodes from the joins above, so re-selecting picks it back up for free —
+  // but a fresh selectAll DOM query every tick is still wasted work across a
+  // gesture's worth of frames, so it's queried once and cached in
+  // zoomTargetsSelectionRef until the join effect invalidates it.
   useImperativeHandle(
     ref,
     () => ({
@@ -333,11 +346,13 @@ const ConflictsMilestonesLaneImpl = forwardRef<
         svg
           .select('g.zoomGroup')
           .attr('transform', zoomAnimationGroupTransformAttr(transform));
-        svg
-          .selectAll(
-            '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
-          )
-          .attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
+        zoomTargetsSelectionRef.current ??= svg.selectAll<Element, unknown>(
+          '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
+        );
+        zoomTargetsSelectionRef.current.attr(
+          'transform',
+          zoomAnimationCounterScaleAttr(transform.sx),
+        );
       },
     }),
     [],
