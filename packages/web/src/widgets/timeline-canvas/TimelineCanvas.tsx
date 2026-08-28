@@ -1122,20 +1122,23 @@ export function TimelineCanvas({
           />
         </div>
       </div>
-      {!isMobileViewport && isMinimapIdle && (
-        <Minimap
-          people={filteredPeople}
-          conflicts={filteredConflicts}
-          milestones={filteredMilestones}
-          personRowFor={personRowFor}
-          eventsRowFor={eventsRowFor}
-          totalWidth={totalWidth}
-          viewportWidthPx={viewportWidthPx}
-          scrollLeft={scrollLeft}
-          onScrollLeftChange={handleScrollLeftChange}
-          onScrollLeftJump={handleTrackJump}
-        />
-      )}
+      {!isMobileViewport &&
+        (isMinimapIdle ? (
+          <Minimap
+            people={filteredPeople}
+            conflicts={filteredConflicts}
+            milestones={filteredMilestones}
+            personRowFor={personRowFor}
+            eventsRowFor={eventsRowFor}
+            totalWidth={totalWidth}
+            viewportWidthPx={viewportWidthPx}
+            scrollLeft={scrollLeft}
+            onScrollLeftChange={handleScrollLeftChange}
+            onScrollLeftJump={handleTrackJump}
+          />
+        ) : (
+          <div className={styles.minimapPlaceholder} aria-hidden="true" />
+        ))}
     </div>
   );
 }
