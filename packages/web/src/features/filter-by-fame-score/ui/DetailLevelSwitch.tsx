@@ -36,6 +36,9 @@ export function DetailLevelSwitch({
   );
   const selectedLevel = DETAIL_LEVELS[selectedIndex] ?? DETAIL_LEVELS[1];
   const progress = (selectedIndex / (DETAIL_LEVELS.length - 1)) * 100;
+  const isDeepCutLoading =
+    selectedIndex === DETAIL_LEVELS.length - 1 &&
+    loadingLevelIds.includes(selectedLevelId);
 
   return (
     <div>
@@ -59,6 +62,13 @@ export function DetailLevelSwitch({
             className={styles.trackFill}
             style={{ '--progress': `${progress}%` } as CSSProperties}
           />
+          {isDeepCutLoading && (
+            <div
+              className={styles.trackFillPulse}
+              aria-hidden="true"
+              data-testid="track-fill-pulse"
+            />
+          )}
           {DETAIL_LEVELS.map((level, index) => {
             const isSelected = level.id === selectedLevelId;
             const showSpinner =
