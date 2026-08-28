@@ -194,59 +194,61 @@ export function Sidebar({
         )}
         {!collapsed && (
           <div className={styles.content}>
-            {isMobileViewport && (
-              <div className={styles.header}>
-                <h2 className={styles.headerTitle}>{m.filtersHeading()}</h2>
-                <button
-                  ref={closeButtonRef}
-                  type="button"
-                  className={styles.closeButton}
-                  aria-label={m.closeFiltersAriaLabel()}
-                  onClick={onClose}
-                >
-                  ×
-                </button>
+            <div className={styles.scrollArea}>
+              {isMobileViewport && (
+                <div className={styles.header}>
+                  <h2 className={styles.headerTitle}>{m.filtersHeading()}</h2>
+                  <button
+                    ref={closeButtonRef}
+                    type="button"
+                    className={styles.closeButton}
+                    aria-label={m.closeFiltersAriaLabel()}
+                    onClick={onClose}
+                  >
+                    ×
+                  </button>
+                </div>
+              )}
+              <div className={styles.section}>
+                <SearchBar
+                  query={searchQuery}
+                  onQueryChange={onSearchQueryChange}
+                  results={searchResults}
+                  onSelectResult={onSelectSearchResult}
+                />
               </div>
-            )}
-            <div className={styles.section}>
-              <SearchBar
-                query={searchQuery}
-                onQueryChange={onSearchQueryChange}
-                results={searchResults}
-                onSelectResult={onSelectSearchResult}
-              />
+              <section className={styles.section}>
+                <h2 className={styles.heading}>{m.detailLevelHeading()}</h2>
+                <DetailLevelSwitch
+                  selectedLevelId={selectedLevelId}
+                  onSelectLevel={onSelectDetailLevel}
+                  loadingLevelIds={loadingLevelIds}
+                />
+              </section>
+              <section className={styles.section}>
+                <h2 className={styles.heading}>{m.peopleHeading()}</h2>
+                <OccupationDomainFilters
+                  selectedDomains={selectedDomains}
+                  onToggleDomain={onToggleDomain}
+                />
+              </section>
+              <section className={styles.section}>
+                <h2 className={styles.heading}>
+                  {m.conflictsMilestonesHeading()}
+                </h2>
+                <ConflictsMilestonesFilters
+                  selectedValues={selectedConflictsMilestonesValues}
+                  onToggleValue={onToggleConflictsMilestonesValue}
+                />
+              </section>
+              <section className={styles.section}>
+                <h2 className={styles.heading}>{m.regionHeading()}</h2>
+                <RegionFilters
+                  selectedRegions={selectedRegions}
+                  onToggleRegion={onToggleRegion}
+                />
+              </section>
             </div>
-            <section className={styles.section}>
-              <h2 className={styles.heading}>{m.detailLevelHeading()}</h2>
-              <DetailLevelSwitch
-                selectedLevelId={selectedLevelId}
-                onSelectLevel={onSelectDetailLevel}
-                loadingLevelIds={loadingLevelIds}
-              />
-            </section>
-            <section className={styles.section}>
-              <h2 className={styles.heading}>{m.peopleHeading()}</h2>
-              <OccupationDomainFilters
-                selectedDomains={selectedDomains}
-                onToggleDomain={onToggleDomain}
-              />
-            </section>
-            <section className={styles.section}>
-              <h2 className={styles.heading}>
-                {m.conflictsMilestonesHeading()}
-              </h2>
-              <ConflictsMilestonesFilters
-                selectedValues={selectedConflictsMilestonesValues}
-                onToggleValue={onToggleConflictsMilestonesValue}
-              />
-            </section>
-            <section className={styles.section}>
-              <h2 className={styles.heading}>{m.regionHeading()}</h2>
-              <RegionFilters
-                selectedRegions={selectedRegions}
-                onToggleRegion={onToggleRegion}
-              />
-            </section>
             <div className={styles.footer}>
               <button
                 type="button"
