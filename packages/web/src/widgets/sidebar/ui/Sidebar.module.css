@@ -4,7 +4,6 @@
   flex: 0 0 auto;
   width: 320px;
   height: 100vh;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   background: var(--color-bg-surface);
@@ -17,21 +16,32 @@
    layout width, same shape as the mobile drawer's own zero-footprint-when-
    closed state, so the canvas actually reclaims the space rather than just
    losing its filter sections (unmounted, not clipped — see the !collapsed
-   guard in Sidebar.tsx). overflow: visible (overriding .sidebar's own
-   overflow-y: auto, which would otherwise clip it) lets .collapseHeader's
-   handle keep rendering at its natural size and poke out past this 0-width
-   box into the canvas, exactly like TimelineCanvas's own drawerToggle
-   overlay button — just without needing absolute positioning, since a flex
-   child is free to overflow a fixed-size flex container. */
+   guard in Sidebar.tsx). .sidebar itself has no overflow rule, so it stays
+   visible and lets .collapseHeader's handle keep rendering at its natural
+   size and poke out past this 0-width box into the canvas, exactly like
+   TimelineCanvas's own drawerToggle overlay button — just without needing
+   absolute positioning, since a flex child is free to overflow a
+   fixed-size flex container. */
 .collapsed {
   width: 0;
   border-right: none;
-  overflow: visible;
 }
 
 .content {
   flex: 1 1 auto;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The only scrolling region in the sidebar (rather than .sidebar or
+   .content) so .footer stays a normal, always-visible sibling below it
+   instead of scrolling past with the filter sections, or merely sticking
+   once scrolled near the end like position: sticky would. */
+.scrollArea {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -53,8 +63,8 @@
 }
 
 .footer {
-  margin-top: auto;
-  padding-top: 12px;
+  flex-shrink: 0;
+  padding: 12px 12px 16px;
   border-top: 1px solid var(--color-border-subtle);
   display: flex;
   align-items: center;
