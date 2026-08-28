@@ -13,7 +13,11 @@ import { m } from '../../shared/paraglide/messages.js';
 import type { ConflictEntry, Milestone } from '../../shared/types';
 import styles from './ConflictsMilestonesLane.module.css';
 import { buildRangeAndPointLayout, type PointLayout } from './map-to-items';
-import { attachMarkJoin, toggleSelectionHighlight } from './mark-join';
+import {
+  attachMarkJoin,
+  ensureRingChildren,
+  toggleSelectionHighlight,
+} from './mark-join';
 import {
   buildMarkChildren,
   POINT_MARK_SHAPE,
@@ -320,6 +324,24 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   // apply to all three.
   useLayoutEffect(() => {
     if (!svgRef.current) return;
+    ensureRingChildren(
+      svgRef.current,
+      '.d3-line',
+      RANGE_MARK_SHAPE[1],
+      RANGE_MARK_SHAPE[2],
+      styles,
+      selectedId,
+      ['x1', 'x2', 'y1', 'y2'],
+    );
+    ensureRingChildren(
+      svgRef.current,
+      '.d3-dot',
+      POINT_MARK_SHAPE[1],
+      POINT_MARK_SHAPE[2],
+      styles,
+      selectedId,
+      ['cx', 'cy'],
+    );
     // The classes always exist in the compiled CSS module — the indexed
     // access only reads as possibly-undefined because of
     // noUncheckedIndexedAccess, not because they might really be missing.

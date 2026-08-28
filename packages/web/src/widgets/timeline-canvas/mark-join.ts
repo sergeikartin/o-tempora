@@ -3,6 +3,7 @@ import { motionDurationMs } from '../../shared/lib/motion';
 import {
   buildMarkChildren,
   type MarkShape,
+  type MarkShapePart,
   seedPrerenderedData,
 } from './mark-shape';
 import { HIT_AREA_PADDING_PX } from './options';
@@ -239,6 +240,59 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
   });
 
   return groups;
+}
+
+/**
+ * Creates `id`'s mark's ring-outer/ring-gap pair the first time it's ever
+ * selected — mark-shape-html.ts omits both from every mark's initial paint
+ * (see its own comment), so most marks never have them at all. Ring
+ * geometry always exactly matches the real mark's own x1/x2/y1/y2 (or
+ * cx/cy) — only stroke-width/r (fixed constants, mark-shape.ts's
+ * RING_OUTER_ATTRS/RING_GAP_ATTRS) set the two apart — so this just copies
+ * `geometryAttrs` straight off the sibling real element found via
+ * `markClass`, rather than re-deriving position from layout/scale data.
+ * A no-op once the pair exists (never rebuilt, same as the D3 join's own
+ * enter-time rings) or if `id` doesn't match any element under `markClass`
+ * in this `svg` (e.g. a point id checked against `.d3-line`).
+ */
+export function ensureRingChildren(
+  svg: SVGSVGElement,
+  markClass: string,
+  ringOuterPart: MarkShapePart,
+  ringGapPart: MarkShapePart,
+  styles: Record<string, string | undefined>,
+  id: string | null | undefined,
+  geometryAttrs: readonly string[],
+): void {
+  if (!id) return;
+  const real = svg.querySelector<SVGGraphicsElement>(
+    `${markClass}[data-entity-id="${id}"]`,
+  );
+  const group = real?.parentElement;
+  if (!real || !group) return;
+  if (group.querySelector(`.${ringOuterPart.markerClass}`)) return;
+
+  const build = (part: MarkShapePart): SVGElement => {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', part.tag);
+    el.setAttribute(
+      'class',
+      `${part.markerClass} ${styles[part.styleKey] ?? ''}`,
+    );
+    for (const [name, value] of Object.entries(part.attrs ?? {})) {
+      el.setAttribute(name, String(value));
+    }
+    for (const attr of geometryAttrs) {
+      const value = real.getAttribute(attr);
+      if (value !== null) el.setAttribute(attr, value);
+    }
+    el.setAttribute('data-entity-id', id);
+    return el;
+  };
+
+  // DOM order matters for paint order — outer, then gap, then the real
+  // mark already sitting at `real` (mark-shape.ts's declared 5-child order).
+  group.insertBefore(build(ringOuterPart), real);
+  group.insertBefore(build(ringGapPart), real);
 }
 
 /**
