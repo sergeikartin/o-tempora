@@ -100,37 +100,6 @@
   transition: --progress var(--motion-duration-base) var(--motion-easing);
 }
 
-/* Overlays the track's final segment (second-to-last dot to last dot,
-   same 2/3-to-end inset math as .trackFill) so it can pulse in sync with
-   the deep-cut dot's own loading pin below, rather than the whole bar. */
-.trackFillPulse {
-  position: absolute;
-  top: 50%;
-  left: calc(7px + (100% - 14px) * 2 / 3);
-  right: 7px;
-  height: 4px;
-  border-radius: var(--radius-full);
-  transform: translateY(-50%);
-  background: var(--color-accent-selected);
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .trackFillPulse {
-    animation: pin-loading-opacity 900ms ease-in-out infinite;
-  }
-}
-
-@keyframes pin-loading-opacity {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
 .dot {
   position: relative;
   z-index: 1;
