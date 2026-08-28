@@ -12,11 +12,8 @@ import { motionDurationMs } from '../../shared/lib/motion';
 import { m } from '../../shared/paraglide/messages.js';
 import type { ConflictEntry, Milestone } from '../../shared/types';
 import styles from './ConflictsMilestonesLane.module.css';
-import {
-  buildRangeAndPointLayout,
-  type PointLayout,
-  type RangeLayout,
-} from './map-to-items';
+import { buildRangeAndPointLayout, type PointLayout } from './map-to-items';
+import { attachMarkJoin, toggleSelectionHighlight } from './mark-join';
 import {
   buildMarkChildren,
   POINT_MARK_SHAPE,
@@ -84,6 +81,16 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   ref,
 ) {
   const svgRef = useRef<SVGSVGElement>(null);
+  // Caches the zoom tick loop's own selectAll (see applyZoomTransform below)
+  // across an entire gesture's worth of rAF frames — invalidated (set null)
+  // by the join effect below, the only place marks are created/destroyed, so
+  // a stale cache never outlives the DOM nodes it points at.
+  const zoomTargetsSelectionRef = useRef<d3.Selection<
+    Element,
+    unknown,
+    SVGSVGElement,
+    unknown
+  > | null>(null);
 
   const { rangeLayout, pointLayout, totalHeight } = useMemo(
     () => buildRangeAndPointLayout(conflicts, milestones, xScale, eventsRowFor),
@@ -117,149 +124,49 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     // without going through React — reset it here, in the same effect that
     // lands the real geometry for a new xScale, so the commit is atomic
     // (see PeopleLane's identical comment for why).
-    svg.select('g.zoomGroup').attr('transform', null);
+    svg
+      .select('g.zoomGroup')
+      .attr('transform', null)
+      .style('will-change', null);
     svg
       .selectAll(
         '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
       )
       .attr('transform', null);
+    zoomTargetsSelectionRef.current = null;
 
     // g.ranges's real children are already there before this effect's first
     // run — rendered by the initialRangesHtml dangerouslySetInnerHTML below,
-    // on both server and client — but carry no bound data yet; seed it from
-    // their own data-entity-id before the keyed join below, so it adopts
-    // them as `update` instead of tearing them down and fading in a fresh
-    // `enter`.
-    const rangeNodes = svg
-      .select<SVGGElement>('g.ranges')
-      .selectAll<SVGGElement, RangeLayout | undefined>('g.d3-range');
-    seedPrerenderedData(rangeNodes, rangeLayout);
-    const rangeGroups = rangeNodes
-      .data(rangeLayout, (d) => d?.id ?? '')
-      .join(
-        (enter) => {
-          const g = enter
-            .append('g')
-            .attr('class', 'd3-range')
-            .style('opacity', 0);
-          // Children built from RANGE_MARK_SHAPE, in its declared order —
-          // see mark-shape.ts's own comments and PeopleLane's identical
-          // marks for why each is shaped the way it is.
-          const [hit, lineRingOuter, lineRingGap, line, name] =
-            buildMarkChildren(g, RANGE_MARK_SHAPE, styles);
-          // A brand-new mark starts already at its target row — only a
-          // pre-existing mark's row *change* animates (below), via the
-          // shift transition on rangeGroups; an entering mark should just
-          // fade in, not also slide in from row 0.
-          hit
-            .attr(
-              'y',
-              (d) => d.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX,
-            )
-            .attr(
-              'height',
-              (d) =>
-                d.labelY +
-                MILESTONES_LABEL_LINE_HEIGHT_PX -
-                (d.markerY - PERIOD_LINE_HEIGHT / 2) +
-                HIT_AREA_PADDING_PX * 2,
-            );
-          lineRingOuter
-            .attr('y1', (d) => d.markerY)
-            .attr('y2', (d) => d.markerY);
-          lineRingGap.attr('y1', (d) => d.markerY).attr('y2', (d) => d.markerY);
-          line.attr('y1', (d) => d.markerY).attr('y2', (d) => d.markerY);
-          name.attr('y', (d) => d.labelY);
-          g.transition().duration(durationMs).style('opacity', 1);
-          return g;
-        },
-        (update) => update,
-        (exit) =>
-          exit
-            .style('pointer-events', 'none')
-            .transition()
-            .duration(durationMs)
-            .style('opacity', 0)
-            .remove(),
-      );
-
-    rangeGroups.attr('data-row', (d) => d.row);
-
-    // x/fill/data-* attrs apply instantly — only a row change (the y-driven
-    // attrs below) animates. An entering mark already has these set (above),
-    // so re-setting them here is a no-op for it and a live update for one
-    // that was already on screen.
-    rangeGroups
-      .select<SVGRectElement>('.d3-hit')
-      .attr('x', (d) => d.hitX1 - HIT_AREA_PADDING_PX)
-      .attr('width', (d) => d.hitX2 - d.hitX1 + HIT_AREA_PADDING_PX * 2)
-      .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', (d) => d.kind)
-      .transition()
-      .duration(durationMs)
-      .attr(
-        'y',
-        (d) => d.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX,
-      )
-      .attr(
-        'height',
-        (d) =>
+    // on both server and client — but carry no bound data yet; attachMarkJoin
+    // seeds it from each node's own data-entity-id before its keyed join, so
+    // it adopts them as `update` instead of tearing them down and fading in
+    // a fresh `enter`. A range's label sits below its marker line (hit rect
+    // grows down from markerY), the opposite of PeopleLane's lifespan lines
+    // — see LineMarkGeometry's own comment for why this varies per mark
+    // kind.
+    const rangeGroups = attachMarkJoin(
+      svgRef.current,
+      { groupSelector: 'g.ranges', nodeClass: 'd3-range' },
+      RANGE_MARK_SHAPE,
+      styles,
+      rangeLayout,
+      {
+        hitX1: (d) => d.hitX1,
+        hitY: (d) => d.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX,
+        hitHeight: (d) =>
           d.labelY +
           MILESTONES_LABEL_LINE_HEIGHT_PX -
           (d.markerY - PERIOD_LINE_HEIGHT / 2) +
           HIT_AREA_PADDING_PX * 2,
-      );
-
-    // The ring/gap lines only need x1/x2 kept in sync with the real line
-    // (their y and stroke-width are fixed at creation). They're
-    // pointer-events: none (ConflictsMilestonesLane.module.css) so carrying
-    // the same data-entity-id as the real line never makes them a
-    // click/hover target — it's only there so the selection effect below
-    // can find them by the same selector pattern every other mark uses.
-    rangeGroups
-      .select<SVGLineElement>('.d3-line-ring-outer')
-      .attr('x1', (d) => d.x1)
-      .attr('x2', (d) => d.x2)
-      .attr('data-entity-id', (d) => d.id)
-      .transition()
-      .duration(durationMs)
-      .attr('y1', (d) => d.markerY)
-      .attr('y2', (d) => d.markerY);
-
-    rangeGroups
-      .select<SVGLineElement>('.d3-line-ring-gap')
-      .attr('x1', (d) => d.x1)
-      .attr('x2', (d) => d.x2)
-      .attr('data-entity-id', (d) => d.id)
-      .transition()
-      .duration(durationMs)
-      .attr('y1', (d) => d.markerY)
-      .attr('y2', (d) => d.markerY);
-
-    rangeGroups
-      .select<SVGLineElement>('.d3-line')
-      .attr('x1', (d) => d.x1)
-      .attr('x2', (d) => d.x2)
-      .attr('stroke', (d) => d.fill)
-      .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', (d) => d.kind)
-      .transition()
-      .duration(durationMs)
-      .attr('y1', (d) => d.markerY)
-      .attr('y2', (d) => d.markerY);
-
-    rangeGroups
-      .select<SVGTextElement>('.d3-range-name')
-      .attr('x', (d) => (d.x1 + d.x2) / 2)
-      .attr('fill', (d) => d.fill)
-      // Same delegated-click wiring as the line above, so the label is an
-      // equally valid click target for opening the detail drawer.
-      .attr('data-entity-id', (d) => d.id)
-      .attr('data-entity-type', (d) => d.kind)
-      .text((d) => d.name)
-      .transition()
-      .duration(durationMs)
-      .attr('y', (d) => d.labelY);
+        centerY: (d) => d.markerY,
+        labelX: (d) => (d.x1 + d.x2) / 2,
+        entityType: (d) => d.kind,
+      },
+    );
+    // data-row is only a test hook (ConflictsMilestonesLane.test.tsx) — not
+    // part of attachMarkJoin's generic contract, so it's set here rather
+    // than threaded through as another geometry accessor.
+    rangeGroups.attr('data-row', (d) => d.row);
 
     // g.points's real children are already there before this effect's first
     // run — rendered by the initialPointsHtml dangerouslySetInnerHTML below,
@@ -413,47 +320,48 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   // apply to all three.
   useLayoutEffect(() => {
     if (!svgRef.current) return;
-    const svg = svgRef.current;
     // The classes always exist in the compiled CSS module — the indexed
     // access only reads as possibly-undefined because of
     // noUncheckedIndexedAccess, not because they might really be missing.
-    const toggleHighlight = (selector: string, className: string) => {
-      for (const el of svg.querySelectorAll(selector)) {
-        el.classList.toggle(
-          className,
-          el.getAttribute('data-entity-id') === selectedId,
-        );
-      }
-    };
-    toggleHighlight(
+    toggleSelectionHighlight(
+      svgRef.current,
       '.d3-line-ring-outer[data-entity-id], .d3-line-ring-gap[data-entity-id], .d3-line[data-entity-id], .d3-dot-ring-outer[data-entity-id], .d3-dot-ring-gap[data-entity-id], .d3-dot[data-entity-id]',
-      styles.searchHighlight as string,
-    );
-    toggleHighlight(
       '.d3-range-name[data-entity-id], .d3-point-name[data-entity-id]',
+      selectedId,
+      styles.searchHighlight as string,
       styles.searchHighlightLabel as string,
     );
   }, [selectedId]);
 
   // TimelineCanvas's single rAF driver calls this every animation-frame
   // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
-  // comment for the mechanism. A plain D3 re-select (not a ref/cache of the
-  // layout arrays): the marks' data is already bound to their DOM nodes
-  // from the joins above, so re-selecting picks it back up for free.
+  // comment for the mechanism. The marks' data is already bound to their DOM
+  // nodes from the joins above, so re-selecting picks it back up for free —
+  // but a fresh selectAll DOM query every tick is still wasted work across a
+  // gesture's worth of frames, so it's queried once and cached in
+  // zoomTargetsSelectionRef until the join effect invalidates it.
   useImperativeHandle(
     ref,
     () => ({
+      beginZoomAnimation() {
+        if (!svgRef.current) return;
+        d3.select(svgRef.current)
+          .select('g.zoomGroup')
+          .style('will-change', 'transform');
+      },
       applyZoomTransform(transform) {
         if (!svgRef.current) return;
         const svg = d3.select(svgRef.current);
         svg
           .select('g.zoomGroup')
           .attr('transform', zoomAnimationGroupTransformAttr(transform));
-        svg
-          .selectAll(
-            '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
-          )
-          .attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
+        zoomTargetsSelectionRef.current ??= svg.selectAll<Element, unknown>(
+          '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
+        );
+        zoomTargetsSelectionRef.current.attr(
+          'transform',
+          zoomAnimationCounterScaleAttr(transform.sx),
+        );
       },
     }),
     [],

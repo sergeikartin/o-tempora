@@ -351,10 +351,11 @@ export function TimelineCanvas({
   );
   // One-shot: set true immediately before a scrollLeft write that isn't a
   // user pan (mount positioning, zoom recentring below) so the 'scroll'
-  // event it triggers doesn't restart/count toward the pan debounce.
-  // Consumed by the very next scroll event, not cleared synchronously here
-  // — 'scroll' fires as a separate task, after this write's own script has
-  // already finished running.
+  // event it triggers doesn't restart/count toward the pan debounce, and
+  // doesn't re-derive scrollLeft/mirror state that the writer already set
+  // directly in the same synchronous step. Consumed by the very next scroll
+  // event, not cleared synchronously here — 'scroll' fires as a separate
+  // task, after this write's own script has already finished running.
   const skipNextPanTrackRef = useRef(false);
   const panTrackTimeoutRef = useRef<number | null>(null);
   useEffect(() => {
@@ -364,18 +365,18 @@ export function TimelineCanvas({
     const onScroll = () => {
       if (skipNextPanTrackRef.current) {
         skipNextPanTrackRef.current = false;
-      } else {
-        if (panTrackTimeoutRef.current !== null) {
-          window.clearTimeout(panTrackTimeoutRef.current);
-        }
-        panTrackTimeoutRef.current = window.setTimeout(() => {
-          panTrackTimeoutRef.current = null;
-          const centerYear = scaleRef.current.invert(
-            container.scrollLeft + container.clientWidth / 2,
-          );
-          trackEvent('pan', { period: periodBucket(centerYear) });
-        }, PAN_TRACK_DEBOUNCE_MS);
+        return;
       }
+      if (panTrackTimeoutRef.current !== null) {
+        window.clearTimeout(panTrackTimeoutRef.current);
+      }
+      panTrackTimeoutRef.current = window.setTimeout(() => {
+        panTrackTimeoutRef.current = null;
+        const centerYear = scaleRef.current.invert(
+          container.scrollLeft + container.clientWidth / 2,
+        );
+        trackEvent('pan', { period: periodBucket(centerYear) });
+      }, PAN_TRACK_DEBOUNCE_MS);
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
@@ -539,9 +540,23 @@ export function TimelineCanvas({
     if (typeof ResizeObserver === 'undefined') return;
     const svg = el.querySelector('svg');
     if (!svg) return;
-    const observer = new ResizeObserver(pinToBottom);
+    // rAF-batched, matching TimelineCanvas's own scroll-listener throttling
+    // — the height transition this tracks fires many ResizeObserver
+    // callbacks per second, and pinToBottom only needs to run once per
+    // frame, reading el.scrollHeight fresh whenever it does.
+    let frame = 0;
+    const observer = new ResizeObserver(() => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        pinToBottom();
+      });
+    });
     observer.observe(svg);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, [filteredPeople]);
   // biome-ignore lint/correctness/useExhaustiveDependencies: filteredConflicts/filteredMilestones aren't read in the body — they're a trigger to reset scroll whenever the visible item set changes
   useLayoutEffect(() => {
@@ -574,7 +589,10 @@ export function TimelineCanvas({
     // here, in the same effect that lands the real scrollLeft for a
     // committed pixelsPerYear, so the commit is atomic (see PeopleLane's
     // identical comment on its own g.people reset for why).
-    if (zebraLayerRef.current) zebraLayerRef.current.style.transform = '';
+    if (zebraLayerRef.current) {
+      zebraLayerRef.current.style.transform = '';
+      zebraLayerRef.current.style.willChange = '';
+    }
     const clientWidthPx = container.clientWidth;
     setViewportWidthPx(clientWidthPx);
     skipNextPanTrackRef.current = true;
@@ -609,6 +627,7 @@ export function TimelineCanvas({
     });
     if (pinchPointersRef.current.size !== 2) return;
     cancelPanAnimation();
+    beginZoomAnimation();
     const [pointA, pointB] = Array.from(pinchPointersRef.current.values());
     if (!pointA || !pointB) return;
     const distancePx = Math.hypot(pointA.x - pointB.x, pointA.y - pointB.y);
@@ -913,6 +932,21 @@ export function TimelineCanvas({
   // rather than each lane/axis running its own loop (ticket 02's "one
   // driver" requirement), so nothing can lag or desync from the others when
   // interrupted.
+  // Called once at the start of a button-zoom or pinch gesture — promotes
+  // every animated surface to its own compositor layer ahead of the first
+  // transform write (see ZoomAnimationHandle's own comment for why plain
+  // imperative style writes need this hint the browser won't infer on its
+  // own). Idempotent, so a retargeting click mid-gesture re-calling this is
+  // harmless.
+  function beginZoomAnimation() {
+    peopleLaneAnimRef.current?.beginZoomAnimation?.();
+    conflictsMilestonesLaneAnimRef.current?.beginZoomAnimation?.();
+    yearAxisMiddleAnimRef.current?.beginZoomAnimation?.();
+    if (zebraLayerRef.current) {
+      zebraLayerRef.current.style.willChange = 'transform';
+    }
+  }
+
   function applyZoomAnimationTick(transform: ZoomAnimationTransform) {
     peopleLaneAnimRef.current?.applyZoomTransform(transform);
     conflictsMilestonesLaneAnimRef.current?.applyZoomTransform(transform);
@@ -941,6 +975,7 @@ export function TimelineCanvas({
       setPixelsPerYear((current) => step(current, 0));
       return;
     }
+    beginZoomAnimation();
     const clientWidthPx = container.clientWidth;
     // Read once, before any animation frame runs — real scrollLeft is held
     // fixed for the whole gesture (folded into the transform's tx instead),

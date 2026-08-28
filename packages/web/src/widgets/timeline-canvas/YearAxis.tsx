@@ -128,6 +128,7 @@ export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(
       const axis = axisRef.current;
       if (!axis) return;
       axis.style.transform = '';
+      axis.style.willChange = '';
       axis
         .querySelectorAll<HTMLElement>('.year-axis-label-scale')
         .forEach((el) => {
@@ -146,6 +147,11 @@ export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(
     useImperativeHandle(
       ref,
       () => ({
+        beginZoomAnimation() {
+          const axis = axisRef.current;
+          if (!axis) return;
+          axis.style.willChange = 'transform';
+        },
         applyZoomTransform(transform) {
           const axis = axisRef.current;
           if (!axis) return;

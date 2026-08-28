@@ -127,12 +127,24 @@ export function Minimap({
   useLayoutEffect(() => {
     const el = trackRef.current;
     if (!el || typeof ResizeObserver === 'undefined') return;
+    // rAF-batched, matching TimelineCanvas's own scroll-listener throttling —
+    // a resize burst (e.g. a window drag) would otherwise re-render on every
+    // single ResizeObserver callback instead of at most once per frame.
+    let frame = 0;
+    let latestWidth: number | undefined;
     const observer = new ResizeObserver((entries) => {
-      const width = entries[0]?.contentRect.width;
-      if (width !== undefined) setMeasuredTrackWidthPx(width);
+      latestWidth = entries[0]?.contentRect.width;
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        if (latestWidth !== undefined) setMeasuredTrackWidthPx(latestWidth);
+      });
     });
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   // Same ratio-based geometry the scrollbar thumb this replaces used
