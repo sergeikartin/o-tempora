@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [main, dev]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  data-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck --workspace packages/data-pipeline
+      - run: npm run test --workspace packages/data-pipeline
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint --workspace packages/web
+      - run: npm run lint:boundaries --workspace packages/web
+      - run: npm run typecheck --workspace packages/web
+      - run: npm run test --workspace packages/web
+      - run: npm run build --workspace packages/web
+        env:
+          VITE_GLITCHTIP_DSN: ${{ secrets.VITE_GLITCHTIP_DSN }}
