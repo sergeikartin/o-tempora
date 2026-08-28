@@ -30,14 +30,28 @@ type Locale = 'en' | 'ru';
 // can never drift apart; .scrollContainer's own clamp against its real
 // scrollWidth/clientWidth still runs client-side in the script below, since
 // only the real browser knows a given visitor's clientWidth.
+//
+// .peopleLane/.conflictsMilestonesLane are themselves position: sticky with
+// their own overflow-x: hidden scrollLeft (TimelineCanvas.module.css) —
+// client-side, mirrorLaneScrollLeft keeps that in lockstep with
+// .scrollContainer's own scrollLeft on every write, mount included. Left
+// unset here, both lanes' own content sits at their default scrollLeft (0)
+// — the very start of the timeline — until hydration's mount effect mirrors
+// it, so whatever's earliest in each lane (e.g. Homer in People) flashes
+// through the pre-hydration paint even though .scrollContainer itself is
+// already pinned to the right year.
 function pinScrollScript(scrollContainerTargetLeft: number): string {
   return `<script>(function(){
 var pl=document.querySelector('[class*="peopleLane"]');
+var cm=document.querySelector('[class*="conflictsMilestonesLane"]');
 var sc=document.querySelector('[class*="scrollContainer"]');
 var plScrollHeight=pl&&pl.scrollHeight;
 var scMax=sc&&sc.scrollWidth-sc.clientWidth;
+var target=Math.max(0,Math.min(${scrollContainerTargetLeft},scMax));
 if(pl)pl.scrollTop=plScrollHeight;
-if(sc)sc.scrollLeft=Math.max(0,Math.min(${scrollContainerTargetLeft},scMax));
+if(pl)pl.scrollLeft=target;
+if(cm)cm.scrollLeft=target;
+if(sc)sc.scrollLeft=target;
 })()</script>`;
 }
 
