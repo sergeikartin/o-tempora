@@ -103,22 +103,26 @@ test('shows no spinner when the active level is not in loadingLevelIds', () => {
   ).not.toBe('true');
 });
 
-test('pulses the last track segment only while deep-cut is the loading, selected level', () => {
-  const { queryByTestId, rerender } = render(
+test('holds the track fill one stop short while deep-cut is still loading', () => {
+  const { getByTestId, rerender } = render(
     <DetailLevelSwitch
       selectedLevelId="deep-cut"
       onSelectLevel={vi.fn()}
       loadingLevelIds={['deep-cut']}
     />,
   );
-  expect(queryByTestId('track-fill-pulse')).toBeTruthy();
+  expect(getByTestId('track-fill').style.getPropertyValue('--progress')).toBe(
+    `${(2 / 3) * 100}%`,
+  );
 
   rerender(
     <DetailLevelSwitch
-      selectedLevelId="mainstream"
+      selectedLevelId="deep-cut"
       onSelectLevel={vi.fn()}
-      loadingLevelIds={['deep-cut']}
+      loadingLevelIds={[]}
     />,
   );
-  expect(queryByTestId('track-fill-pulse')).toBeNull();
+  expect(getByTestId('track-fill').style.getPropertyValue('--progress')).toBe(
+    '100%',
+  );
 });
