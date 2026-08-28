@@ -30,6 +30,12 @@
     color-mix(in srgb, var(--color-text-primary) 18%, transparent);
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
 /* Top-edge century-tick strip — thin, non-interactive (pointer-events: none
    so it never intercepts .track/.viewportRect's own click/drag/hover
    handling), ticks always shown but labels thinned once they'd collide (see
@@ -41,6 +47,12 @@
   height: 20px; /* MINIMAP_CENTURY_STRIP_HEIGHT_PX in options.ts */
   overflow: hidden;
   pointer-events: none;
+  /* .wrapper's own background/border/shadow stays solid throughout (matches
+     .minimapPlaceholder in TimelineCanvas.module.css pixel-for-pixel) —
+     fading opacity there would flash the plain-white body background
+     through it for a frame. Fading just this transparent layer instead
+     reveals .wrapper's already-solid tint underneath, never white. */
+  animation: fadeIn var(--motion-duration-base) var(--motion-easing);
 }
 
 .centuryTick {
@@ -71,6 +83,9 @@
   overflow: hidden;
   background-color: var(--color-bg-surface);
   cursor: pointer;
+  /* See .centuryStrip's comment — fades in over .wrapper's already-solid
+     background rather than .wrapper itself. */
+  animation: fadeIn var(--motion-duration-base) var(--motion-easing);
 }
 
 .ridge {
