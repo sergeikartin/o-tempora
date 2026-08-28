@@ -88,12 +88,21 @@ function renderMarkGroupHtml(
 ): string {
   const children = shape
     .map((part, i) =>
-      renderMarkPartHtml(
-        part,
-        styles,
-        partAttrs[i] as Attrs,
-        i === shape.length - 1 ? textInnerHtml : '',
-      ),
+      // Indices 1/2 (ring-outer/ring-gap): omitted from every mark's
+      // initial paint. They're only ever visible on the (at most one)
+      // selected mark, so pre-building an always-invisible pair for the
+      // other ~99% just to have them ready costs real layout/style-recalc
+      // time on first paint for no visual benefit — mark-join.ts's
+      // ensureRingChildren lazily creates them, straight off the real
+      // mark's own geometry, the first time a given mark is ever selected.
+      i === 1 || i === 2
+        ? ''
+        : renderMarkPartHtml(
+            part,
+            styles,
+            partAttrs[i] as Attrs,
+            i === shape.length - 1 ? textInnerHtml : '',
+          ),
     )
     .join('');
   return `<g class="${groupClass}"${attrsToHtml(groupAttrs)}>${children}</g>`;

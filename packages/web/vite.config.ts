@@ -45,6 +45,7 @@ export default defineConfig({
     criticalCssPlugin(),
   ],
   build: {
+    sourcemap: true,
     rollupOptions: {
       input: {
         main: 'index.html',

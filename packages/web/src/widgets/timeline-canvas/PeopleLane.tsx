@@ -16,7 +16,11 @@ import {
   mapPeople,
   type PersonLayout,
 } from './map-to-items';
-import { attachMarkJoin, toggleSelectionHighlight } from './mark-join';
+import {
+  attachMarkJoin,
+  ensureRingChildren,
+  toggleSelectionHighlight,
+} from './mark-join';
 import { PERSON_MARK_SHAPE } from './mark-shape';
 import { renderPeopleMarkupHtml } from './mark-shape-html';
 import {
@@ -208,6 +212,15 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
     // just apply to both.
     useLayoutEffect(() => {
       if (!svgRef.current) return;
+      ensureRingChildren(
+        svgRef.current,
+        '.d3-line',
+        PERSON_MARK_SHAPE[1],
+        PERSON_MARK_SHAPE[2],
+        styles,
+        selectedId,
+        ['x1', 'x2', 'y1', 'y2'],
+      );
       // The classes always exist in the compiled CSS module — the indexed
       // access only reads as possibly-undefined because of
       // noUncheckedIndexedAccess, not because they might really be missing.

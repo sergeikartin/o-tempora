@@ -102,3 +102,27 @@ test('shows no spinner when the active level is not in loadingLevelIds', () => {
     getByRole('button', { name: 'Mainstream' }).getAttribute('aria-busy'),
   ).not.toBe('true');
 });
+
+test('holds the track fill one stop short while deep-cut is still loading', () => {
+  const { getByTestId, rerender } = render(
+    <DetailLevelSwitch
+      selectedLevelId="deep-cut"
+      onSelectLevel={vi.fn()}
+      loadingLevelIds={['deep-cut']}
+    />,
+  );
+  expect(getByTestId('track-fill').style.getPropertyValue('--progress')).toBe(
+    `${(2 / 3) * 100}%`,
+  );
+
+  rerender(
+    <DetailLevelSwitch
+      selectedLevelId="deep-cut"
+      onSelectLevel={vi.fn()}
+      loadingLevelIds={[]}
+    />,
+  );
+  expect(getByTestId('track-fill').style.getPropertyValue('--progress')).toBe(
+    '100%',
+  );
+});

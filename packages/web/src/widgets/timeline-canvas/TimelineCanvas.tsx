@@ -247,7 +247,7 @@ export function TimelineCanvas({
   // on the overflow-x container for free, and layering pointer-drag on top
   // of that would double-handle touch input). Start position lives in a ref
   // since it's read/written every pointermove but never needs to trigger a
-  // render; isDragging is state purely to toggle the grab/grabbing cursor.
+  // render; isDragging is state purely to toggle the pan cursor.
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef<{
     pointerX: number;

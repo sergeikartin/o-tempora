@@ -36,6 +36,14 @@ export function DetailLevelSwitch({
   );
   const selectedLevel = DETAIL_LEVELS[selectedIndex] ?? DETAIL_LEVELS[1];
   const progress = (selectedIndex / (DETAIL_LEVELS.length - 1)) * 100;
+  const isDeepCutLoading =
+    selectedIndex === DETAIL_LEVELS.length - 1 &&
+    loadingLevelIds.includes(selectedLevelId);
+  // Hold the fill one stop short while deep-cut's data is still loading, so
+  // the last segment only turns accent-colored once it's actually ready.
+  const trackFillProgress = isDeepCutLoading
+    ? ((DETAIL_LEVELS.length - 2) / (DETAIL_LEVELS.length - 1)) * 100
+    : progress;
 
   return (
     <div>
@@ -57,7 +65,8 @@ export function DetailLevelSwitch({
         <div className={styles.track}>
           <div
             className={styles.trackFill}
-            style={{ '--progress': `${progress}%` } as CSSProperties}
+            data-testid="track-fill"
+            style={{ '--progress': `${trackFillProgress}%` } as CSSProperties}
           />
           {DETAIL_LEVELS.map((level, index) => {
             const isSelected = level.id === selectedLevelId;
