@@ -101,7 +101,16 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
         g.transition().duration(durationMs).style('opacity', 1);
         return g;
       },
-      (update) => update,
+      // A datum that re-enters before its own exit transition finished (e.g.
+      // a filter toggled back within motionDurationMs) rejoins here as
+      // `update`, not `enter` — D3 still finds its DOM node, mid-fade,
+      // still carrying that exit's pending opacity-to-0-then-remove
+      // transition (unnamed, same as below). interrupt() cancels it before
+      // it can finish and remove a mark this update is trying to keep;
+      // resetting opacity/pointer-events (a no-op for a node that was never
+      // exiting) undoes whatever it had already applied.
+      (update) =>
+        update.interrupt().style('opacity', 1).style('pointer-events', null),
       (exit) =>
         // pointer-events: none first, so a mark that's mid-fade-out can't
         // still be hovered/clicked.
@@ -200,7 +209,13 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     const priorCenterY = previousCenterYById.get(d.id) ?? geometry.centerY(d);
     const dy = priorCenterY - geometry.centerY(d);
     const group = d3.select(this);
-    group.interrupt();
+    // Named so this only interrupts a prior *row-shift* transition — an
+    // unnamed interrupt() here would also cancel the enter branch's own
+    // still-pending (unnamed) opacity fade-in, since both share the same
+    // node and D3 keys transitions by (node, name): a brand-new mark would
+    // schedule its fade-in above, then have it cancelled by this call a few
+    // lines later in the same synchronous join, leaving it stuck invisible.
+    group.interrupt('row-shift');
     if (dy === 0) {
       group.attr('transform', null);
       return;
@@ -215,7 +230,7 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     // implement.
     group.attr('transform', `translate(0, ${dy})`);
     group
-      .transition()
+      .transition('row-shift')
       .duration(durationMs)
       .attrTween('transform', () => {
         const interpolate = d3.interpolateNumber(dy, 0);
