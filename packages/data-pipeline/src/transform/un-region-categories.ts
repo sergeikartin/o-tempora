@@ -1,4 +1,4 @@
-import type { Region } from "@same-sky/shared-types";
+import type { Region } from "@o-tempora/shared-types";
 
 // Pantheon `bplace_country`/`dplace_country` value -> Region. Built from
 // a one-time call to Pantheon's live /country endpoint

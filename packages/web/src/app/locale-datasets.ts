@@ -77,73 +77,73 @@ const IMPORTERS: Record<
   1: {
     en: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.detail1.json'),
+        import('@o-tempora/shared-types/src/data/people.detail1.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.detail1.json'),
+        import('@o-tempora/shared-types/src/data/conflicts.detail1.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.detail1.json'),
+        import('@o-tempora/shared-types/src/data/milestones.detail1.json'),
     },
     ru: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.detail1.ru.json'),
+        import('@o-tempora/shared-types/src/data/people.detail1.ru.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.detail1.ru.json'),
+        import('@o-tempora/shared-types/src/data/conflicts.detail1.ru.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.detail1.ru.json'),
+        import('@o-tempora/shared-types/src/data/milestones.detail1.ru.json'),
     },
   },
   2: {
     en: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.detail2.json'),
+        import('@o-tempora/shared-types/src/data/people.detail2.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.detail2.json'),
+        import('@o-tempora/shared-types/src/data/conflicts.detail2.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.detail2.json'),
+        import('@o-tempora/shared-types/src/data/milestones.detail2.json'),
     },
     ru: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.detail2.ru.json'),
+        import('@o-tempora/shared-types/src/data/people.detail2.ru.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.detail2.ru.json'),
+        import('@o-tempora/shared-types/src/data/conflicts.detail2.ru.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.detail2.ru.json'),
+        import('@o-tempora/shared-types/src/data/milestones.detail2.ru.json'),
     },
   },
   3: {
     en: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.detail3.json'),
+        import('@o-tempora/shared-types/src/data/people.detail3.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.detail3.json'),
+        import('@o-tempora/shared-types/src/data/conflicts.detail3.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.detail3.json'),
+        import('@o-tempora/shared-types/src/data/milestones.detail3.json'),
     },
     ru: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.detail3.ru.json'),
+        import('@o-tempora/shared-types/src/data/people.detail3.ru.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.detail3.ru.json'),
+        import('@o-tempora/shared-types/src/data/conflicts.detail3.ru.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.detail3.ru.json'),
+        import('@o-tempora/shared-types/src/data/milestones.detail3.ru.json'),
     },
   },
   4: {
     en: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.detail4.json'),
+        import('@o-tempora/shared-types/src/data/people.detail4.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.detail4.json'),
+        import('@o-tempora/shared-types/src/data/conflicts.detail4.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.detail4.json'),
+        import('@o-tempora/shared-types/src/data/milestones.detail4.json'),
     },
     ru: {
       people: () =>
-        import('@same-sky/shared-types/src/data/people.detail4.ru.json'),
+        import('@o-tempora/shared-types/src/data/people.detail4.ru.json'),
       conflicts: () =>
-        import('@same-sky/shared-types/src/data/conflicts.detail4.ru.json'),
+        import('@o-tempora/shared-types/src/data/conflicts.detail4.ru.json'),
       milestones: () =>
-        import('@same-sky/shared-types/src/data/milestones.detail4.ru.json'),
+        import('@o-tempora/shared-types/src/data/milestones.detail4.ru.json'),
     },
   },
 };

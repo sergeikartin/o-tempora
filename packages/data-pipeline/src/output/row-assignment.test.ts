@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import type { Conflict, ConflictEvent, Milestone, Person } from "@same-sky/shared-types";
+import type { Conflict, ConflictEvent, Milestone, Person } from "@o-tempora/shared-types";
 import { assignConflictsMilestonesRows, assignPersonRows, assignRows } from "./row-assignment.js";
 
 function person(overrides: Partial<Person> = {}): Person {

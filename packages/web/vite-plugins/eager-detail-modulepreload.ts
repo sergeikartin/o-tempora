@@ -25,7 +25,7 @@ function eagerDetailChunkLocale(chunk: Chunk): 'en' | 'ru' | null {
 // renders them.
 export function eagerDetailModulePreloadPlugin(): Plugin {
   return {
-    name: 'same-sky:eager-detail-modulepreload',
+    name: 'o-tempora:eager-detail-modulepreload',
     apply: 'build',
     transformIndexHtml: {
       order: 'post',

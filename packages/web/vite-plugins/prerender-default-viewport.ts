@@ -137,7 +137,7 @@ async function renderDefaultViewportHtml(
 export function prerenderDefaultViewportPlugin(): Plugin {
   let resolvedConfig: ResolvedConfig;
   return {
-    name: 'same-sky:prerender-default-viewport',
+    name: 'o-tempora:prerender-default-viewport',
     apply: 'build',
     configResolved(config) {
       resolvedConfig = config;

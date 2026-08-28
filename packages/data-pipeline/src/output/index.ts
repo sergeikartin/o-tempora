@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from "@same-sky/shared-types";
+import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from "@o-tempora/shared-types";
 import { transformPeople, transformConflicts, transformMilestones } from "../transform/index.js";
 import { assignConflictsMilestonesRows, assignPersonRows } from "./row-assignment.js";
 import {

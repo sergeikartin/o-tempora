@@ -1,4 +1,4 @@
-import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from '@same-sky/shared-types';
+import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from '@o-tempora/shared-types';
 import { m } from '../paraglide/messages.js';
 
 export const ZOOM_MIN_YEARS = 50;

@@ -7,7 +7,7 @@ import type {
   ConflictEntry,
   Milestone,
   YearMonth,
-} from "@same-sky/shared-types";
+} from "@o-tempora/shared-types";
 import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
 
 export interface DropReport {

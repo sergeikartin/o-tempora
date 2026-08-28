@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { MILESTONE_CATEGORIES, type MilestoneCategory } from "@same-sky/shared-types";
+import { MILESTONE_CATEGORIES, type MilestoneCategory } from "@o-tempora/shared-types";
 import { buildMilestonesEnrichmentQuery } from "./queries/milestones-enrichment.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 import { parseIsoYear, parseMonthIfKnown } from "../transform/wikidata-date.js";
