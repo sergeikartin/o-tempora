@@ -7,6 +7,16 @@
   height: 100vh;
 }
 
+/* Reserves the Minimap's own rendered height (Minimap.module.css's .wrapper:
+   20px centuryStrip + 56px track + 2px border-top) while its mount is
+   idle-deferred (TimelineCanvas.tsx) — without this, .scrollContainer (flex:
+   1 1 auto, same column) fills the gap and then jumps up by 78px once
+   Minimap mounts, a real CLS hit on every load. */
+.minimapPlaceholder {
+  flex: 0 0 auto;
+  height: 78px;
+}
+
 /* Mirrors .zoomControls' own position/sizing, top-left instead of top-right
    — mobile-only (rendered conditionally in TimelineCanvas.tsx on
    useIsMobileViewport(), not gated here by a media query, since it also
