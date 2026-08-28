@@ -1,5 +1,5 @@
 {
-  "name": "o-tempora-data-pipeline",
+  "name": "@o-tempora/data-pipeline",
   "version": "0.1.0",
   "private": true,
   "type": "module",
