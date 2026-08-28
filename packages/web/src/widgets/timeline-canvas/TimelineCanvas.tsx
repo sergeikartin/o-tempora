@@ -351,10 +351,11 @@ export function TimelineCanvas({
   );
   // One-shot: set true immediately before a scrollLeft write that isn't a
   // user pan (mount positioning, zoom recentring below) so the 'scroll'
-  // event it triggers doesn't restart/count toward the pan debounce.
-  // Consumed by the very next scroll event, not cleared synchronously here
-  // — 'scroll' fires as a separate task, after this write's own script has
-  // already finished running.
+  // event it triggers doesn't restart/count toward the pan debounce, and
+  // doesn't re-derive scrollLeft/mirror state that the writer already set
+  // directly in the same synchronous step. Consumed by the very next scroll
+  // event, not cleared synchronously here — 'scroll' fires as a separate
+  // task, after this write's own script has already finished running.
   const skipNextPanTrackRef = useRef(false);
   const panTrackTimeoutRef = useRef<number | null>(null);
   useEffect(() => {
@@ -364,18 +365,18 @@ export function TimelineCanvas({
     const onScroll = () => {
       if (skipNextPanTrackRef.current) {
         skipNextPanTrackRef.current = false;
-      } else {
-        if (panTrackTimeoutRef.current !== null) {
-          window.clearTimeout(panTrackTimeoutRef.current);
-        }
-        panTrackTimeoutRef.current = window.setTimeout(() => {
-          panTrackTimeoutRef.current = null;
-          const centerYear = scaleRef.current.invert(
-            container.scrollLeft + container.clientWidth / 2,
-          );
-          trackEvent('pan', { period: periodBucket(centerYear) });
-        }, PAN_TRACK_DEBOUNCE_MS);
+        return;
       }
+      if (panTrackTimeoutRef.current !== null) {
+        window.clearTimeout(panTrackTimeoutRef.current);
+      }
+      panTrackTimeoutRef.current = window.setTimeout(() => {
+        panTrackTimeoutRef.current = null;
+        const centerYear = scaleRef.current.invert(
+          container.scrollLeft + container.clientWidth / 2,
+        );
+        trackEvent('pan', { period: periodBucket(centerYear) });
+      }, PAN_TRACK_DEBOUNCE_MS);
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
