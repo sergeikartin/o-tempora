@@ -1,5 +1,5 @@
 {
-  "name": "same-sky-data-pipeline",
+  "name": "o-tempora-data-pipeline",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -14,7 +14,7 @@
     "test": "tsx --test 'src/transform/**/*.test.ts' 'src/output/**/*.test.ts' 'src/fetch/**/*.test.ts'"
   },
   "dependencies": {
-    "@same-sky/shared-types": "^0.1.0",
+    "@o-tempora/shared-types": "^0.1.0",
     "seek-bzip": "^2.0.0"
   },
   "devDependencies": {

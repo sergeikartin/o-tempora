@@ -22,7 +22,7 @@ const ENDPOINT = "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-articl
 // (wikidata-client.ts, commons-client.ts) — Wikimedia asks all API traffic
 // to self-identify.
 const USER_AGENT =
-  "same-sky-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
+  "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
 
 const MAX_RETRIES = 3;
 // Same reasoning as commons-client.ts's REQUEST_TIMEOUT_MS: a per-article

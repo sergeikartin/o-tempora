@@ -7,7 +7,7 @@ interface AboutPanelProps {
   onClose: () => void;
 }
 
-const GITHUB_REPO_URL = 'https://github.com/sergeikartin/same-sky';
+const GITHUB_REPO_URL = 'https://github.com/sergeikartin/o-tempora';
 const CODE_LICENSE_URL = `${GITHUB_REPO_URL}/blob/main/LICENSE`;
 const DATA_LICENSE_URL = `${GITHUB_REPO_URL}/blob/main/packages/shared-types/LICENSE-DATA.md`;
 

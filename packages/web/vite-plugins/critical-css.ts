@@ -31,7 +31,7 @@ const CRITICAL_TIMELINE_LAYOUT_SELECTORS = [
 
 export function criticalCssPlugin(): Plugin {
   return {
-    name: 'same-sky:critical-css',
+    name: 'o-tempora:critical-css',
     apply: 'build',
     transformIndexHtml: {
       order: 'post',
@@ -57,7 +57,7 @@ export function criticalCssPlugin(): Plugin {
           const output = bundle[key];
           if (output?.type !== 'asset') {
             throw new Error(
-              `same-sky:critical-css: no bundled stylesheet for "${filename}"`,
+              `o-tempora:critical-css: no bundled stylesheet for "${filename}"`,
             );
           }
           return assetSource(output);

@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { CONFLICT_CATEGORIES, type ConflictCategory } from "@same-sky/shared-types";
+import { CONFLICT_CATEGORIES, type ConflictCategory } from "@o-tempora/shared-types";
 import { buildConflictsEnrichmentQuery } from "./queries/conflicts-enrichment.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 import { parseIsoYear, parseMonthIfKnown } from "../transform/wikidata-date.js";

@@ -12,7 +12,7 @@ export type {
   PointInTime,
   Region,
   YearMonth,
-} from '@same-sky/shared-types';
+} from '@o-tempora/shared-types';
 export {
   AVG_CHAR_WIDTH_PX,
   CONFLICT_CATEGORIES,
@@ -27,4 +27,4 @@ export {
   REGIONS,
   wrapLabelLines,
   yearMonthToFractionalYear,
-} from '@same-sky/shared-types';
+} from '@o-tempora/shared-types';

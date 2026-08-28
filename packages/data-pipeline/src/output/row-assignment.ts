@@ -9,7 +9,7 @@ import {
   type Milestone,
   type Period,
   type Person,
-} from "@same-sky/shared-types";
+} from "@o-tempora/shared-types";
 
 // Row-stacking gap in the same pixel space as REFERENCE_PIXELS_PER_YEAR —
 // a pipeline-only value (nothing in packages/web packs rows anymore, so

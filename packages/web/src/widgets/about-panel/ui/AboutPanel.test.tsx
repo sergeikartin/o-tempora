@@ -15,11 +15,11 @@ test('renders the data-attribution links when open', () => {
   expect(getByRole('dialog')).toBeTruthy();
   expect(
     getByRole('link', { name: /View source on GitHub/ }).getAttribute('href'),
-  ).toBe('https://github.com/sergeikartin/same-sky/blob/main/LICENSE');
+  ).toBe('https://github.com/sergeikartin/o-tempora/blob/main/LICENSE');
   expect(
     getByRole('link', { name: /Full data license/ }).getAttribute('href'),
   ).toBe(
-    'https://github.com/sergeikartin/same-sky/blob/main/packages/shared-types/LICENSE-DATA.md',
+    'https://github.com/sergeikartin/o-tempora/blob/main/packages/shared-types/LICENSE-DATA.md',
   );
 });
 
