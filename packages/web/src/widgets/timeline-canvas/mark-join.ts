@@ -113,18 +113,32 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
           .remove(),
     );
 
-  // x/fill/data-* attrs apply instantly — only a row change (the y-driven
-  // attrs below) animates. An entering mark already has these set (above),
-  // so re-setting them here is a no-op for it and a live update for one
-  // that was already on screen.
+  // A row change moves every one of a mark's children by the same vertical
+  // amount — captured here, before any attr below overwrites it, as each
+  // mark's currently-rendered center-y. Nothing on this path is ever
+  // attribute-transitioned (see below), so a mark's line always carries its
+  // exact last-committed y1, never a mid-tween snapshot. An entering mark's
+  // line was already created at its target y (the enter branch above), so
+  // its "previous" position already equals its new one.
+  const previousCenterYById = new Map<string, number>();
+  groups.each(function (d) {
+    const line = this.querySelector<SVGLineElement>(lineClass);
+    if (line) previousCenterYById.set(d.id, Number(line.getAttribute('y1')));
+  });
+
+  // x/y/fill/data-* attrs all apply instantly now — the row-shift animation
+  // moves below to a single group-level transform (see previousCenterYById
+  // above) instead of five separate D3 timers each transitioning one
+  // child's y/y1/y2/height, which is layout-costly work spread across every
+  // visible mark whenever a filter change reshuffles rows. An entering
+  // mark already has these set (above), so re-setting them here is a no-op
+  // for it and a live update for one that was already on screen.
   groups
     .select<SVGRectElement>(hitClass)
     .attr('x', (d) => geometry.hitX1(d) - HIT_AREA_PADDING_PX)
     .attr('width', (d) => d.hitX2 - geometry.hitX1(d) + HIT_AREA_PADDING_PX * 2)
     .attr('data-entity-id', (d) => d.id)
     .attr('data-entity-type', geometry.entityType)
-    .transition()
-    .duration(durationMs)
     .attr('y', geometry.hitY)
     .attr('height', geometry.hitHeight);
 
@@ -139,8 +153,6 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     .attr('x1', (d) => d.x1)
     .attr('x2', (d) => d.x2)
     .attr('data-entity-id', (d) => d.id)
-    .transition()
-    .duration(durationMs)
     .attr('y1', geometry.centerY)
     .attr('y2', geometry.centerY);
 
@@ -149,8 +161,6 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     .attr('x1', (d) => d.x1)
     .attr('x2', (d) => d.x2)
     .attr('data-entity-id', (d) => d.id)
-    .transition()
-    .duration(durationMs)
     .attr('y1', geometry.centerY)
     .attr('y2', geometry.centerY);
 
@@ -163,8 +173,6 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     // entity (dynamic-tooltips spec §2's click-wiring architecture).
     .attr('data-entity-id', (d) => d.id)
     .attr('data-entity-type', geometry.entityType)
-    .transition()
-    .duration(durationMs)
     .attr('y1', geometry.centerY)
     .attr('y2', geometry.centerY);
 
@@ -177,9 +185,43 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     .attr('data-entity-id', (d) => d.id)
     .attr('data-entity-type', geometry.entityType)
     .text((d) => d.name)
-    .transition()
-    .duration(durationMs)
     .attr('y', (d) => d.labelY);
+
+  // The row-shift itself: ease the mark's own <g> from a `translate` that
+  // visually holds it at its old row back to identity, now that every child
+  // above already carries its new, real position — one compositor-friendly
+  // transform per mark instead of five attribute timers.
+  // ponytail: dy is computed from the last *committed* center-y, not any
+  // live mid-tween offset, so a row change landing again inside another
+  // one's transition can show a small snap instead of a smooth redirect.
+  // Upgrade path if that's ever visible: fold the group's current
+  // translateY (parsed off its own transform attribute) into dy first.
+  groups.each(function (d) {
+    const priorCenterY = previousCenterYById.get(d.id) ?? geometry.centerY(d);
+    const dy = priorCenterY - geometry.centerY(d);
+    const group = d3.select(this);
+    group.interrupt();
+    if (dy === 0) {
+      group.attr('transform', null);
+      return;
+    }
+    // Set synchronously first (a transition's own first tick lands a frame
+    // later — see PeopleLane's identical "flash at the wrong position"
+    // comment for why that one frame matters), then ease via attrTween with
+    // a plain number rather than `.transition().attr('transform', ...)` —
+    // the latter hands `transform`/`d` strings to d3-interpolate's dedicated
+    // SVG transform interpolator, which parses the *current* CTM via
+    // SVGTransformList/baseVal, an API jsdom's test environment doesn't
+    // implement.
+    group.attr('transform', `translate(0, ${dy})`);
+    group
+      .transition()
+      .duration(durationMs)
+      .attrTween('transform', () => {
+        const interpolate = d3.interpolateNumber(dy, 0);
+        return (t) => `translate(0, ${interpolate(t)})`;
+      });
+  });
 
   return groups;
 }
