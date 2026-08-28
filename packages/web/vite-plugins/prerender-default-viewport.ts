@@ -33,9 +33,11 @@ type Locale = 'en' | 'ru';
 function pinScrollScript(scrollContainerTargetLeft: number): string {
   return `<script>(function(){
 var pl=document.querySelector('[class*="peopleLane"]');
-if(pl)pl.scrollTop=pl.scrollHeight;
 var sc=document.querySelector('[class*="scrollContainer"]');
-if(sc)sc.scrollLeft=Math.max(0,Math.min(${scrollContainerTargetLeft},sc.scrollWidth-sc.clientWidth));
+var plScrollHeight=pl&&pl.scrollHeight;
+var scMax=sc&&sc.scrollWidth-sc.clientWidth;
+if(pl)pl.scrollTop=plScrollHeight;
+if(sc)sc.scrollLeft=Math.max(0,Math.min(${scrollContainerTargetLeft},scMax));
 })()</script>`;
 }
 

@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from 'vitest';
 import {
   attachMarkJoin,
+  ensureRingChildren,
   type LineMarkDatum,
   toggleSelectionHighlight,
 } from './mark-join';
@@ -173,4 +174,73 @@ test('toggleSelectionHighlight toggles the highlight class only on the selected 
     'highlight-label',
   );
   expect(lineA?.classList.contains('highlight')).toBe(false);
+});
+
+test('ensureRingChildren creates a missing ring pair from the real mark’s own geometry, once', () => {
+  document.body.innerHTML = `
+    <svg>
+      <g class="d3-person">
+        <line class="d3-line" data-entity-id="a" x1="10" x2="20" y1="5" y2="5"></line>
+      </g>
+    </svg>`;
+  const svg = document.querySelector('svg') as unknown as SVGSVGElement;
+
+  ensureRingChildren(
+    svg,
+    '.d3-line',
+    PERSON_MARK_SHAPE[1],
+    PERSON_MARK_SHAPE[2],
+    fakeStyles,
+    'a',
+    ['x1', 'x2', 'y1', 'y2'],
+  );
+
+  const group = svg.querySelector('.d3-person') as Element;
+  const ringOuter = group.querySelector('.d3-line-ring-outer');
+  const ringGap = group.querySelector('.d3-line-ring-gap');
+  expect(ringOuter?.getAttribute('x1')).toBe('10');
+  expect(ringOuter?.getAttribute('x2')).toBe('20');
+  expect(ringOuter?.getAttribute('data-entity-id')).toBe('a');
+  expect(ringGap?.getAttribute('x1')).toBe('10');
+  // Paint order: outer, then gap, then the real line on top.
+  expect(
+    Array.from(group.children).map((el) => el.getAttribute('class')),
+  ).toEqual([
+    'd3-line-ring-outer lineRingOuter-css',
+    'd3-line-ring-gap lineRingGap-css',
+    'd3-line',
+  ]);
+
+  ensureRingChildren(
+    svg,
+    '.d3-line',
+    PERSON_MARK_SHAPE[1],
+    PERSON_MARK_SHAPE[2],
+    fakeStyles,
+    'a',
+    ['x1', 'x2', 'y1', 'y2'],
+  );
+  expect(group.querySelectorAll('.d3-line-ring-outer')).toHaveLength(1);
+});
+
+test('ensureRingChildren no-ops for an id with no matching mark', () => {
+  document.body.innerHTML = `
+    <svg>
+      <g class="d3-person">
+        <line class="d3-line" data-entity-id="a" x1="10" x2="20" y1="5" y2="5"></line>
+      </g>
+    </svg>`;
+  const svg = document.querySelector('svg') as unknown as SVGSVGElement;
+
+  ensureRingChildren(
+    svg,
+    '.d3-line',
+    PERSON_MARK_SHAPE[1],
+    PERSON_MARK_SHAPE[2],
+    fakeStyles,
+    'missing',
+    ['x1', 'x2', 'y1', 'y2'],
+  );
+
+  expect(svg.querySelector('.d3-line-ring-outer')).toBeNull();
 });

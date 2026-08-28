@@ -136,7 +136,6 @@
   flex-direction: column;
   overflow-x: scroll;
   scrollbar-width: none; /* Firefox */
-  cursor: grab;
   background-color: var(--color-bg-base);
   /* Keeps native single-finger horizontal swipe-to-scroll working exactly
      as it does today, while stopping the browser from intercepting a
@@ -215,11 +214,11 @@
     );
 }
 
-/* Active mouse-drag pan (TimelineCanvas.tsx's pointer handlers) — grabbing
-   cursor plus disabled text selection, since a fast drag would otherwise
-   select lane labels as it passes over them. */
+/* Active mouse-drag pan (TimelineCanvas.tsx's pointer handlers) — horizontal
+   arrows cursor plus disabled text selection, since a fast drag would
+   otherwise select lane labels as it passes over them. */
 .dragging {
-  cursor: grabbing;
+  cursor: ew-resize;
   user-select: none;
 }
 
