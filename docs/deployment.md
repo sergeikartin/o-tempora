@@ -20,6 +20,10 @@ A fourth plugin, `vite-plugins/critical-css.ts`, inlines above-the-fold CSS into
 
 English is served from the domain root; every other locale gets its own `/<locale>/` subpath — Russian at `/ru/` today, and the same pattern for any locale added later. There is no `/en/` path and no root redirect (`docs/adr/0003`).
 
+## CI
+
+`.github/workflows/ci.yml` runs on every push to `dev` and every PR into `main`/`dev`: typecheck + test for `data-pipeline`, and lint + `lint:boundaries` + typecheck + test + build for `web`. Branch protection on `main` requires both jobs to pass before merge.
+
 ## Deploying
 
 `dev` is the working branch; PRs merge into `main`, and `.github/workflows/deploy.yml` builds and deploys to GitHub Pages automatically on every push to `main` (or via manual `workflow_dispatch`). It writes a `CNAME` file (`otempora.info`) into `packages/web/dist/` so the custom domain survives each deploy, then publishes that directory through `actions/upload-pages-artifact` + `actions/deploy-pages`.
