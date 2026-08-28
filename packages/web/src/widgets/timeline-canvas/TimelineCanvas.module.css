@@ -29,6 +29,19 @@
     color-mix(in srgb, var(--color-text-primary) 18%, transparent);
 }
 
+/* TimelineCanvas.tsx only stops rendering this placeholder once
+   useIsMobileViewport's real (non-SSR) snapshot lands, a render pass after
+   first paint (viewport.ts's getServerSnapshot always assumes desktop) — on
+   an actual mobile device that's a visible 78px box appearing then
+   vanishing. A plain media query at the same breakpoint (viewport.ts's
+   MOBILE_BREAKPOINT_PX) hides it from the very first paint instead, since
+   CSS evaluates against the real viewport with no JS/hydration lag. */
+@media (max-width: 960px) {
+  .minimapPlaceholder {
+    display: none;
+  }
+}
+
 /* Mirrors .zoomControls' own position/sizing, top-left instead of top-right
    — mobile-only (rendered conditionally in TimelineCanvas.tsx on
    useIsMobileViewport(), not gated here by a media query, since it also
