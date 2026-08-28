@@ -102,3 +102,23 @@ test('shows no spinner when the active level is not in loadingLevelIds', () => {
     getByRole('button', { name: 'Mainstream' }).getAttribute('aria-busy'),
   ).not.toBe('true');
 });
+
+test('pulses the last track segment only while deep-cut is the loading, selected level', () => {
+  const { queryByTestId, rerender } = render(
+    <DetailLevelSwitch
+      selectedLevelId="deep-cut"
+      onSelectLevel={vi.fn()}
+      loadingLevelIds={['deep-cut']}
+    />,
+  );
+  expect(queryByTestId('track-fill-pulse')).toBeTruthy();
+
+  rerender(
+    <DetailLevelSwitch
+      selectedLevelId="mainstream"
+      onSelectLevel={vi.fn()}
+      loadingLevelIds={['deep-cut']}
+    />,
+  );
+  expect(queryByTestId('track-fill-pulse')).toBeNull();
+});
