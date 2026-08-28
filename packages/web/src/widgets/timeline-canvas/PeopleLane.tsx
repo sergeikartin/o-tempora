@@ -144,7 +144,7 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       // one half a frame before the other would flash the marks at the wrong
       // position for a frame (this is the deferred-state-commit pattern the
       // zoom-animation spec's post-mortem calls for).
-      svg.select('g.people').attr('transform', null);
+      svg.select('g.people').attr('transform', null).style('will-change', null);
       svg.selectAll('.d3-name-zoom').attr('transform', null);
       zoomNamesSelectionRef.current = null;
 
@@ -231,6 +231,12 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
     useImperativeHandle(
       ref,
       () => ({
+        beginZoomAnimation() {
+          if (!svgRef.current) return;
+          d3.select(svgRef.current)
+            .select('g.people')
+            .style('will-change', 'transform');
+        },
         applyZoomTransform(transform) {
           if (!svgRef.current) return;
           const svg = d3.select(svgRef.current);

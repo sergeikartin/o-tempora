@@ -376,6 +376,16 @@ export interface ZoomAnimationTransform {
 /** Imperative per-tick hook a lane/axis component exposes to TimelineCanvas's single rAF driver. */
 export interface ZoomAnimationHandle {
   applyZoomTransform: (transform: ZoomAnimationTransform) => void;
+  /**
+   * Called once at gesture start (button click, pinch start) — promotes the
+   * lane/axis's animated group to its own compositor layer ahead of the
+   * first transform write, since a plain imperative `style.transform`
+   * assignment (unlike a CSS transition/animation) gets no automatic
+   * pre-promotion heuristic from the browser. The matching cleanup already
+   * happens for free: each lane/axis's existing commit-time effect that
+   * resets `transform` back to identity also resets this.
+   */
+  beginZoomAnimation?: () => void;
 }
 
 /**

@@ -589,7 +589,10 @@ export function TimelineCanvas({
     // here, in the same effect that lands the real scrollLeft for a
     // committed pixelsPerYear, so the commit is atomic (see PeopleLane's
     // identical comment on its own g.people reset for why).
-    if (zebraLayerRef.current) zebraLayerRef.current.style.transform = '';
+    if (zebraLayerRef.current) {
+      zebraLayerRef.current.style.transform = '';
+      zebraLayerRef.current.style.willChange = '';
+    }
     const clientWidthPx = container.clientWidth;
     setViewportWidthPx(clientWidthPx);
     skipNextPanTrackRef.current = true;
@@ -624,6 +627,7 @@ export function TimelineCanvas({
     });
     if (pinchPointersRef.current.size !== 2) return;
     cancelPanAnimation();
+    beginZoomAnimation();
     const [pointA, pointB] = Array.from(pinchPointersRef.current.values());
     if (!pointA || !pointB) return;
     const distancePx = Math.hypot(pointA.x - pointB.x, pointA.y - pointB.y);
@@ -928,6 +932,21 @@ export function TimelineCanvas({
   // rather than each lane/axis running its own loop (ticket 02's "one
   // driver" requirement), so nothing can lag or desync from the others when
   // interrupted.
+  // Called once at the start of a button-zoom or pinch gesture — promotes
+  // every animated surface to its own compositor layer ahead of the first
+  // transform write (see ZoomAnimationHandle's own comment for why plain
+  // imperative style writes need this hint the browser won't infer on its
+  // own). Idempotent, so a retargeting click mid-gesture re-calling this is
+  // harmless.
+  function beginZoomAnimation() {
+    peopleLaneAnimRef.current?.beginZoomAnimation?.();
+    conflictsMilestonesLaneAnimRef.current?.beginZoomAnimation?.();
+    yearAxisMiddleAnimRef.current?.beginZoomAnimation?.();
+    if (zebraLayerRef.current) {
+      zebraLayerRef.current.style.willChange = 'transform';
+    }
+  }
+
   function applyZoomAnimationTick(transform: ZoomAnimationTransform) {
     peopleLaneAnimRef.current?.applyZoomTransform(transform);
     conflictsMilestonesLaneAnimRef.current?.applyZoomTransform(transform);
@@ -956,6 +975,7 @@ export function TimelineCanvas({
       setPixelsPerYear((current) => step(current, 0));
       return;
     }
+    beginZoomAnimation();
     const clientWidthPx = container.clientWidth;
     // Read once, before any animation frame runs — real scrollLeft is held
     // fixed for the whole gesture (folded into the transform's tx instead),
