@@ -124,7 +124,10 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     // without going through React — reset it here, in the same effect that
     // lands the real geometry for a new xScale, so the commit is atomic
     // (see PeopleLane's identical comment for why).
-    svg.select('g.zoomGroup').attr('transform', null);
+    svg
+      .select('g.zoomGroup')
+      .attr('transform', null)
+      .style('will-change', null);
     svg
       .selectAll(
         '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
@@ -340,6 +343,12 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   useImperativeHandle(
     ref,
     () => ({
+      beginZoomAnimation() {
+        if (!svgRef.current) return;
+        d3.select(svgRef.current)
+          .select('g.zoomGroup')
+          .style('will-change', 'transform');
+      },
       applyZoomTransform(transform) {
         if (!svgRef.current) return;
         const svg = d3.select(svgRef.current);
