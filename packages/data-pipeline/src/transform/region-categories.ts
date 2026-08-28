@@ -1,4 +1,4 @@
-import type { Region } from "@same-sky/shared-types";
+import type { Region } from "@o-tempora/shared-types";
 
 // Explicit Wikidata country/state Q-ID -> app Region (the UN M49 22-value
 // sub-region scheme, shared with People's Pantheon-sourced tags — see

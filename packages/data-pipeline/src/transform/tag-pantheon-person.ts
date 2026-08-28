@@ -1,4 +1,4 @@
-import type { OccupationDomain, Region } from "@same-sky/shared-types";
+import type { OccupationDomain, Region } from "@o-tempora/shared-types";
 import type { PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
 import { OCCUPATION_DOMAIN_CATEGORIES } from "./occupation-domain-categories.js";
 import { UN_REGION_CATEGORIES } from "./un-region-categories.js";

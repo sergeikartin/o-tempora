@@ -1,4 +1,4 @@
-import type { OccupationDomain } from "@same-sky/shared-types";
+import type { OccupationDomain } from "@o-tempora/shared-types";
 
 // Pantheon `occupation` value (all-caps, as shipped in the CSV) -> app
 // OccupationDomain. Mirrors Pantheon's own "Working in" filter grouping on
