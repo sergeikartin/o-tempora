@@ -540,9 +540,23 @@ export function TimelineCanvas({
     if (typeof ResizeObserver === 'undefined') return;
     const svg = el.querySelector('svg');
     if (!svg) return;
-    const observer = new ResizeObserver(pinToBottom);
+    // rAF-batched, matching TimelineCanvas's own scroll-listener throttling
+    // — the height transition this tracks fires many ResizeObserver
+    // callbacks per second, and pinToBottom only needs to run once per
+    // frame, reading el.scrollHeight fresh whenever it does.
+    let frame = 0;
+    const observer = new ResizeObserver(() => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        pinToBottom();
+      });
+    });
     observer.observe(svg);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, [filteredPeople]);
   // biome-ignore lint/correctness/useExhaustiveDependencies: filteredConflicts/filteredMilestones aren't read in the body — they're a trigger to reset scroll whenever the visible item set changes
   useLayoutEffect(() => {

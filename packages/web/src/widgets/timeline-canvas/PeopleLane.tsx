@@ -61,6 +61,17 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
   function PeopleLane({ people, xScale, personRowFor, selectedId }, ref) {
     const svgRef = useRef<SVGSVGElement>(null);
     const hasMountedRef = useRef(false);
+    // Caches the zoom tick loop's own selectAll (see applyZoomTransform
+    // below) across an entire gesture's worth of rAF frames — invalidated
+    // (set null) by the join effect below, the only place marks are
+    // created/destroyed, so a stale cache never outlives the DOM nodes it
+    // points at.
+    const zoomNamesSelectionRef = useRef<d3.Selection<
+      SVGGElement,
+      unknown,
+      SVGSVGElement,
+      unknown
+    > | null>(null);
 
     const items = useMemo(() => mapPeople(people), [people]);
     const rowOfPerson = useMemo(
@@ -135,6 +146,7 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       // zoom-animation spec's post-mortem calls for).
       svg.select('g.people').attr('transform', null);
       svg.selectAll('.d3-name-zoom').attr('transform', null);
+      zoomNamesSelectionRef.current = null;
 
       // Row 0 sits at the *bottom* of the svg (personLabelYForRow/
       // personLineCenterYForRow both compute from rowCount, not just row), and
@@ -211,9 +223,11 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
 
     // TimelineCanvas's single rAF driver calls this every animation-frame
     // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
-    // comment for the mechanism. A plain D3 re-select (not a ref/cache of the
-    // `layout` array): the marks' data is already bound to their DOM nodes
-    // from the join above, so re-selecting picks it back up for free.
+    // comment for the mechanism. The marks' data is already bound to their
+    // DOM nodes from the join above, so re-selecting picks it back up for
+    // free — but a fresh selectAll DOM query every tick is still wasted work
+    // across a gesture's worth of frames, so it's queried once and cached in
+    // zoomNamesSelectionRef until the join effect invalidates it.
     useImperativeHandle(
       ref,
       () => ({
@@ -223,9 +237,13 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
           svg
             .select('g.people')
             .attr('transform', zoomAnimationGroupTransformAttr(transform));
-          svg
-            .selectAll('.d3-name-zoom')
-            .attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
+          zoomNamesSelectionRef.current ??= svg.selectAll<SVGGElement, unknown>(
+            '.d3-name-zoom',
+          );
+          zoomNamesSelectionRef.current.attr(
+            'transform',
+            zoomAnimationCounterScaleAttr(transform.sx),
+          );
         },
       }),
       [],
