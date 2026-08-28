@@ -13,17 +13,47 @@
   line-height: 1.4;
 }
 
+/* Position: absolute at the exact same x-coordinates as the dots below
+   (see .trackFill's insets and .dot) rather than via flex/grid, since
+   those box models space items by their own width or by equal columns —
+   neither reproduces the dots' "fixed 14px box, space-between" geometry
+   for these variable-width text labels. Height is fixed because absolutely
+   positioned children don't contribute to it. */
 .labels {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
+  height: 16px;
   margin-bottom: 4px;
 }
 
 .label {
+  position: absolute;
+  top: 0;
+  max-width: calc(25% - 4px);
   color: var(--color-text-primary);
   font-size: 12px;
-  white-space: nowrap;
+  overflow-wrap: break-word;
   transition: color var(--motion-duration-base) var(--motion-easing);
+}
+
+.label:nth-child(1) {
+  left: 0;
+}
+
+.label:nth-child(2) {
+  left: calc(7px + (100% - 14px) / 3);
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.label:nth-child(3) {
+  left: calc(7px + (100% - 14px) * 2 / 3);
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.label:nth-child(4) {
+  right: 0;
+  text-align: right;
 }
 
 .labelReached {
@@ -50,7 +80,8 @@
 
 /* Insets equal the dot's own radius (half of .dot's 14px) so the line's
    ends sit exactly under the first/last dot's center, matching the flex
-   row's space-between geometry (see .dot). */
+   row's space-between geometry (see .dot). .labels above mirrors this same
+   inset math to keep each label centered over its dot. */
 .trackFill {
   position: absolute;
   top: 50%;

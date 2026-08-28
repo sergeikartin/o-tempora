@@ -16,11 +16,8 @@ import {
   mapPeople,
   type PersonLayout,
 } from './map-to-items';
-import {
-  buildMarkChildren,
-  PERSON_MARK_SHAPE,
-  seedPrerenderedData,
-} from './mark-shape';
+import { attachMarkJoin, toggleSelectionHighlight } from './mark-join';
+import { PERSON_MARK_SHAPE } from './mark-shape';
 import { renderPeopleMarkupHtml } from './mark-shape-html';
 import {
   HIT_AREA_PADDING_PX,
@@ -64,6 +61,17 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
   function PeopleLane({ people, xScale, personRowFor, selectedId }, ref) {
     const svgRef = useRef<SVGSVGElement>(null);
     const hasMountedRef = useRef(false);
+    // Caches the zoom tick loop's own selectAll (see applyZoomTransform
+    // below) across an entire gesture's worth of rAF frames — invalidated
+    // (set null) by the join effect below, the only place marks are
+    // created/destroyed, so a stale cache never outlives the DOM nodes it
+    // points at.
+    const zoomNamesSelectionRef = useRef<d3.Selection<
+      SVGGElement,
+      unknown,
+      SVGSVGElement,
+      unknown
+    > | null>(null);
 
     const items = useMemo(() => mapPeople(people), [people]);
     const rowOfPerson = useMemo(
@@ -136,8 +144,9 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       // one half a frame before the other would flash the marks at the wrong
       // position for a frame (this is the deferred-state-commit pattern the
       // zoom-animation spec's post-mortem calls for).
-      svg.select('g.people').attr('transform', null);
+      svg.select('g.people').attr('transform', null).style('will-change', null);
       svg.selectAll('.d3-name-zoom').attr('transform', null);
+      zoomNamesSelectionRef.current = null;
 
       // Row 0 sits at the *bottom* of the svg (personLabelYForRow/
       // personLineCenterYForRow both compute from rowCount, not just row), and
@@ -159,135 +168,32 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
 
       // g.people's real children are already there before this effect's
       // first run — rendered by the initialPeopleHtml dangerouslySetInnerHTML
-      // above, on both server and client — but carry no bound data yet; seed
-      // it from their own data-entity-id before the keyed join below, so it
-      // adopts them as `update` instead of tearing them down and fading in a
-      // fresh `enter`.
-      const personNodes = svg
-        .select<SVGGElement>('g.people')
-        .selectAll<SVGGElement, PersonLayout | undefined>('g.d3-person');
-      seedPrerenderedData(personNodes, layout);
-      const personGroups = personNodes
-        .data(layout, (d) => d?.id ?? '')
-        .join(
-          (enter) => {
-            const g = enter
-              .append('g')
-              .attr('class', 'd3-person')
-              .style('opacity', 0);
-            // Children built from PERSON_MARK_SHAPE, in its declared order —
-            // hit rect, selection rings, the lifespan line, then the
-            // zoom-wrapped name label — see mark-shape.ts's own comments for
-            // why each is shaped the way it is.
-            const [hit, lineRingOuter, lineRingGap, line, name] =
-              buildMarkChildren(g, PERSON_MARK_SHAPE, styles);
-            // A brand-new mark starts already at its target row — only a
-            // pre-existing mark's row *change* animates (below), via the
-            // shift transition on personGroups; an entering mark should just
-            // fade in, not also slide in from row 0.
-            hit
-              .attr('y', (d) => d.labelY - HIT_AREA_PADDING_PX)
-              .attr(
-                'height',
-                (d) =>
-                  d.lineY +
-                  PERIOD_LINE_HEIGHT / 2 -
-                  d.labelY +
-                  HIT_AREA_PADDING_PX * 2,
-              );
-            lineRingOuter.attr('y1', (d) => d.lineY).attr('y2', (d) => d.lineY);
-            lineRingGap.attr('y1', (d) => d.lineY).attr('y2', (d) => d.lineY);
-            line.attr('y1', (d) => d.lineY).attr('y2', (d) => d.lineY);
-            name.attr('y', (d) => d.labelY);
-            g.transition().duration(durationMs).style('opacity', 1);
-            return g;
-          },
-          (update) => update,
-          (exit) =>
-            // pointer-events: none first, so a mark that's mid-fade-out can't
-            // still be hovered/clicked.
-            exit
-              .style('pointer-events', 'none')
-              .transition()
-              .duration(durationMs)
-              .style('opacity', 0)
-              .remove(),
-        );
-
-      // x/fill/data-* attrs apply instantly — only a row change (the y-driven
-      // attrs below) animates. An entering mark already has these set (above),
-      // so re-setting them here is a no-op for it and a live update for one
-      // that was already on screen.
-      personGroups
-        .select<SVGRectElement>('.d3-hit')
-        .attr('x', (d) => d.x1 - HIT_AREA_PADDING_PX)
-        .attr('width', (d) => d.hitX2 - d.x1 + HIT_AREA_PADDING_PX * 2)
-        .attr('data-entity-id', (d) => d.id)
-        .attr('data-entity-type', 'person')
-        .transition()
-        .duration(durationMs)
-        .attr('y', (d) => d.labelY - HIT_AREA_PADDING_PX)
-        .attr(
-          'height',
-          (d) =>
+      // above, on both server and client — but carry no bound data yet;
+      // attachMarkJoin seeds it from each node's own data-entity-id before
+      // its keyed join, so it adopts them as `update` instead of tearing
+      // them down and fading in a fresh `enter`. Person's label sits above
+      // its lifespan line (hit rect grows up from labelY), the opposite of
+      // ConflictsMilestonesLane's ranges — see LineMarkGeometry's own
+      // comment for why this varies per mark kind.
+      attachMarkJoin(
+        svgRef.current,
+        { groupSelector: 'g.people', nodeClass: 'd3-person' },
+        PERSON_MARK_SHAPE,
+        styles,
+        layout,
+        {
+          hitX1: (d) => d.x1,
+          hitY: (d) => d.labelY - HIT_AREA_PADDING_PX,
+          hitHeight: (d) =>
             d.lineY +
             PERIOD_LINE_HEIGHT / 2 -
             d.labelY +
             HIT_AREA_PADDING_PX * 2,
-        );
-
-      // The ring/gap lines only need x1/x2 kept in sync with the real line
-      // (their y and stroke-width are fixed at creation). They're
-      // pointer-events: none (PeopleLane.module.css) so carrying the same
-      // data-entity-id as the real line never makes them a click/hover
-      // target — it's only there so the selection effect below can find
-      // them by the same selector pattern every other mark uses.
-      personGroups
-        .select<SVGLineElement>('.d3-line-ring-outer')
-        .attr('x1', (d) => d.x1)
-        .attr('x2', (d) => d.x2)
-        .attr('data-entity-id', (d) => d.id)
-        .transition()
-        .duration(durationMs)
-        .attr('y1', (d) => d.lineY)
-        .attr('y2', (d) => d.lineY);
-
-      personGroups
-        .select<SVGLineElement>('.d3-line-ring-gap')
-        .attr('x1', (d) => d.x1)
-        .attr('x2', (d) => d.x2)
-        .attr('data-entity-id', (d) => d.id)
-        .transition()
-        .duration(durationMs)
-        .attr('y1', (d) => d.lineY)
-        .attr('y2', (d) => d.lineY);
-
-      personGroups
-        .select<SVGLineElement>('.d3-line')
-        .attr('x1', (d) => d.x1)
-        .attr('x2', (d) => d.x2)
-        .attr('stroke', (d) => d.fill)
-        // Lets TimelineCanvas's delegated click listener resolve the source
-        // entity (dynamic-tooltips spec §2's click-wiring architecture).
-        .attr('data-entity-id', (d) => d.id)
-        .attr('data-entity-type', 'person')
-        .transition()
-        .duration(durationMs)
-        .attr('y1', (d) => d.lineY)
-        .attr('y2', (d) => d.lineY);
-
-      personGroups
-        .select<SVGTextElement>('.d3-name')
-        .attr('x', (d) => d.x1)
-        .attr('fill', (d) => d.fill)
-        // Same delegated-click wiring as the line above, so the label is an
-        // equally valid click target for opening the detail drawer.
-        .attr('data-entity-id', (d) => d.id)
-        .attr('data-entity-type', 'person')
-        .text((d) => d.name)
-        .transition()
-        .duration(durationMs)
-        .attr('y', (d) => d.labelY);
+          centerY: (d) => d.lineY,
+          labelX: (d) => d.x1,
+          entityType: () => 'person',
+        },
+      );
     }, [layout, totalHeight]);
 
     // A plain DOM class toggle, decoupled from the join above (its
@@ -302,45 +208,48 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
     // just apply to both.
     useLayoutEffect(() => {
       if (!svgRef.current) return;
-      const svg = svgRef.current;
       // The classes always exist in the compiled CSS module — the indexed
       // access only reads as possibly-undefined because of
       // noUncheckedIndexedAccess, not because they might really be missing.
-      const toggleHighlight = (selector: string, className: string) => {
-        for (const el of svg.querySelectorAll(selector)) {
-          el.classList.toggle(
-            className,
-            el.getAttribute('data-entity-id') === selectedId,
-          );
-        }
-      };
-      toggleHighlight(
+      toggleSelectionHighlight(
+        svgRef.current,
         '.d3-line-ring-outer[data-entity-id], .d3-line-ring-gap[data-entity-id], .d3-line[data-entity-id]',
-        styles.searchHighlight as string,
-      );
-      toggleHighlight(
         '.d3-name[data-entity-id]',
+        selectedId,
+        styles.searchHighlight as string,
         styles.searchHighlightLabel as string,
       );
     }, [selectedId]);
 
     // TimelineCanvas's single rAF driver calls this every animation-frame
     // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
-    // comment for the mechanism. A plain D3 re-select (not a ref/cache of the
-    // `layout` array): the marks' data is already bound to their DOM nodes
-    // from the join above, so re-selecting picks it back up for free.
+    // comment for the mechanism. The marks' data is already bound to their
+    // DOM nodes from the join above, so re-selecting picks it back up for
+    // free — but a fresh selectAll DOM query every tick is still wasted work
+    // across a gesture's worth of frames, so it's queried once and cached in
+    // zoomNamesSelectionRef until the join effect invalidates it.
     useImperativeHandle(
       ref,
       () => ({
+        beginZoomAnimation() {
+          if (!svgRef.current) return;
+          d3.select(svgRef.current)
+            .select('g.people')
+            .style('will-change', 'transform');
+        },
         applyZoomTransform(transform) {
           if (!svgRef.current) return;
           const svg = d3.select(svgRef.current);
           svg
             .select('g.people')
             .attr('transform', zoomAnimationGroupTransformAttr(transform));
-          svg
-            .selectAll('.d3-name-zoom')
-            .attr('transform', zoomAnimationCounterScaleAttr(transform.sx));
+          zoomNamesSelectionRef.current ??= svg.selectAll<SVGGElement, unknown>(
+            '.d3-name-zoom',
+          );
+          zoomNamesSelectionRef.current.attr(
+            'transform',
+            zoomAnimationCounterScaleAttr(transform.sx),
+          );
         },
       }),
       [],
