@@ -25,14 +25,31 @@
   margin-bottom: 4px;
 }
 
+/* Each label's box is only as wide as a quarter of the track (see the
+   nth-child rules below), which the longer level names (e.g. "Specialized")
+   don't fit at 12px on the mobile drawer's narrower width — the 960px
+   breakpoint below shrinks the font just enough for all four labels to
+   still render in full there. overflow/nowrap/ellipsis stay as a safety
+   net (never actually triggering at either size) rather than risking a
+   wrapped second line, which has nowhere to go without growing .labels'
+   fixed height and would render on top of the neighboring label's own
+   absolutely-positioned box. */
 .label {
   position: absolute;
   top: 0;
   max-width: calc(25% - 4px);
+  overflow: hidden;
   color: var(--color-text-primary);
   font-size: 12px;
-  overflow-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   transition: color var(--motion-duration-base) var(--motion-easing);
+}
+
+@media (max-width: 960px) {
+  .label {
+    font-size: 10px;
+  }
 }
 
 .label:nth-child(1) {
