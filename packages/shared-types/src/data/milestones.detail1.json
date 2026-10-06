@@ -426,5 +426,20 @@
       "month": 7
     },
     "row": 6
+  },
+  {
+    "id": "Q8275",
+    "name": "Iliad",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 87,
+    "tagline": "epic poem attributed to Homer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Iliad",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/P.%20Oxy.%20221.jpg",
+    "description": "The Iliad is one of two major surviving ancient Greek epic poems attributed to Homer. It is one of the oldest extant works of literature still widely read by modern readers. Like the Odyssey, the poem is divided into 24 books and was written in dactylic hexameter. It contains 15,693 lines in its standard edition. The Iliad is often regarded as the first substantial piece of European literature and is central to the study of classical philology.",
+    "at": {
+      "year": -800
+    },
+    "row": 0
   }
 ]

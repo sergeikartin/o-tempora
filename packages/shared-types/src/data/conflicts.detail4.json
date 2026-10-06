@@ -89,7 +89,7 @@
         "year": -448
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q150701",
@@ -181,7 +181,7 @@
         "month": 4
       }
     },
-    "row": 10
+    "row": 17
   },
   {
     "id": "Q191282",
@@ -205,7 +205,7 @@
         "month": 8
       }
     },
-    "row": 3
+    "row": 6
   },
   {
     "id": "Q6271",
@@ -340,7 +340,7 @@
         "month": 5
       }
     },
-    "row": 16
+    "row": 18
   },
   {
     "id": "Q31900",
@@ -359,7 +359,7 @@
       "year": -489,
       "month": 9
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q51656",
@@ -403,7 +403,7 @@
         "month": 8
       }
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q165725",
@@ -450,6 +450,30 @@
     "row": 10
   },
   {
+    "id": "Q163891",
+    "name": "St. Bartholomew's Day massacre",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "massacre of the Huguenots (French Calvinist Protestants) by the French government, 1572",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/St._Bartholomew%27s_Day_massacre",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20masacre%20de%20San%20Bartolom%C3%A9%2C%20por%20Fran%C3%A7ois%20Dubois.jpg",
+    "description": "The Saint Bartholomew's Day massacre in 1572 was a targeted group of assassinations and a wave of Catholic mob violence directed against the Huguenots during the French Wars of Religion. Traditionally believed to have been instigated by Queen Catherine de' Medici, the mother of King Charles IX, the massacre started a few days after the marriage on 18 August of the king's sister Margaret to the Protestant King Henry III of Navarre. Many of the wealthiest and most prominent Huguenots had gathered in largely Catholic Paris to attend the wedding.",
+    "period": {
+      "start": {
+        "year": 1572,
+        "month": 9
+      },
+      "end": {
+        "year": 1572,
+        "month": 10
+      }
+    },
+    "row": 2
+  },
+  {
     "id": "Q177918",
     "name": "First Balkan War",
     "category": "war",
@@ -469,7 +493,7 @@
         "month": 5
       }
     },
-    "row": 21
+    "row": 17
   },
   {
     "id": "Q182062",
@@ -489,7 +513,7 @@
         "year": 1829
       }
     },
-    "row": 3
+    "row": 1
   },
   {
     "id": "Q186284",
@@ -511,7 +535,7 @@
         "month": 3
       }
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q184928",
@@ -535,7 +559,7 @@
         "month": 6
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q200485",
@@ -605,7 +629,7 @@
         "month": 7
       }
     },
-    "row": 16
+    "row": 15
   },
   {
     "id": "Q152004",
@@ -629,7 +653,7 @@
         "month": 4
       }
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q192408",
@@ -654,7 +678,7 @@
         "month": 8
       }
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q189508",
@@ -748,7 +772,7 @@
       "year": 9,
       "month": 9
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q190517",
@@ -772,7 +796,31 @@
         "month": 2
       }
     },
-    "row": 20
+    "row": 21
+  },
+  {
+    "id": "Q371394",
+    "name": "Bangladesh Liberation War",
+    "category": "war-of-independence",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 75,
+    "tagline": "conflict that led to the independence of the majority-Bengali country",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bangladesh_Liberation_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh%201971%20Liberation.jpg",
+    "description": "The Bangladesh Liberation War, also known as the Bangladesh War of Independence, was an armed conflict sparked by the rise of the Bengali nationalist and self-determination movement in East Pakistan, which resulted in the independence of Bangladesh with the help of India. The war began when the Pakistani military junta based in West Pakistan—under the orders of Yahya Khan—launched Operation Searchlight against East Pakistanis on the night of 25 March 1971, initiating the Bangladesh genocide.",
+    "period": {
+      "start": {
+        "year": 1971,
+        "month": 3
+      },
+      "end": {
+        "year": 1971,
+        "month": 12
+      }
+    },
+    "row": 18
   },
   {
     "id": "Q689128",
@@ -951,7 +999,7 @@
         "month": 8
       }
     },
-    "row": 27
+    "row": 29
   },
   {
     "id": "Q6286",
@@ -1084,7 +1132,7 @@
         "month": 2
       }
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q190882",
@@ -1109,7 +1157,7 @@
         "month": 4
       }
     },
-    "row": 28
+    "row": 29
   },
   {
     "id": "Q203233",
@@ -1240,7 +1288,7 @@
         "month": 10
       }
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q6334",
@@ -1263,7 +1311,7 @@
         "year": -145
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q246863",
@@ -1285,7 +1333,7 @@
         "month": 5
       }
     },
-    "row": 2
+    "row": 4
   },
   {
     "id": "Q203824",
@@ -1308,7 +1356,7 @@
         "month": 10
       }
     },
-    "row": 28
+    "row": 30
   },
   {
     "id": "Q188972",
@@ -1332,7 +1380,7 @@
         "month": 10
       }
     },
-    "row": 31
+    "row": 33
   },
   {
     "id": "Q856670",
@@ -1370,7 +1418,7 @@
       "year": 451,
       "month": 6
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q210354",
@@ -1503,7 +1551,7 @@
         "year": 1989
       }
     },
-    "row": 36
+    "row": 37
   },
   {
     "id": "Q203729",
@@ -1702,6 +1750,26 @@
     "row": 2
   },
   {
+    "id": "Q1455917",
+    "name": "Umayyad conquest of Hispania",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 70,
+    "tagline": "war resulting in the destruction of the Visigothic Kingdom and the expansion of the Umayyad Caliphate (711–718)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Muslim_conquest_of_the_Iberian_Peninsula",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mariano%20Barbas%C3%A1n%20-%20Batalla%20de%20Guadalete.jpg",
+    "description": "The Umayyad Caliphate conquered the Visigothic Kingdom on the Iberian Peninsula in the early 8th century. The conquest resulted in the end of Christian rule throughout most of Iberia and the establishment of Muslim rule in that territory, which came to be known as al-Andalus under the Umayyad dynasty.",
+    "period": {
+      "start": {
+        "year": 711
+      },
+      "end": {
+        "year": 726
+      }
+    },
+    "row": 0
+  },
+  {
     "id": "Q253684",
     "name": "French invasion of Egypt and Syria",
     "category": "military-operation",
@@ -1723,7 +1791,7 @@
         "month": 9
       }
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q456993",
@@ -1786,7 +1854,7 @@
       "year": 1526,
       "month": 5
     },
-    "row": 2
+    "row": 4
   },
   {
     "id": "Q844886",
@@ -1832,6 +1900,28 @@
       }
     },
     "row": 5
+  },
+  {
+    "id": "Q828435",
+    "name": "Spanish conquest of the Aztec Empire",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "16th-century Spanish invasion of Mesoamerica",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Codex%20Mendoza%20folio%2067r%20bottom.jpg",
+    "description": "The Spanish conquest of the Aztec Empire, also known as the Conquest of Mexico, was a pivotal event that took place during the Spanish colonization of the Americas, marked by the collision of the Aztec Triple Alliance and the Spanish Empire with its American Indian allies. Between 1519 and 1521, Spanish conquistador Hernán Cortés and his small army of European soldiers and the large allied army of Indian auxiliaries, overthrew the most powerful pre-Columbian empire to exist in Mesoamerica.",
+    "period": {
+      "start": {
+        "year": 1519,
+        "month": 2
+      },
+      "end": {
+        "year": 1521,
+        "month": 8
+      }
+    },
+    "row": 2
   },
   {
     "id": "Q2092093",
@@ -1899,7 +1989,7 @@
         "month": 7
       }
     },
-    "row": 30
+    "row": 32
   },
   {
     "id": "Q302519",
@@ -1918,7 +2008,7 @@
       "year": 1896,
       "month": 3
     },
-    "row": 21
+    "row": 29
   },
   {
     "id": "Q1551794",
@@ -1940,7 +2030,7 @@
         "month": 2
       }
     },
-    "row": 30
+    "row": 31
   },
   {
     "id": "Q1463845",
@@ -1964,7 +2054,7 @@
         "month": 8
       }
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q154100",
@@ -1988,7 +2078,7 @@
         "month": 1
       }
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q253774",
@@ -2136,7 +2226,7 @@
         "month": 6
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q706183",
@@ -2159,7 +2249,7 @@
         "month": 4
       }
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q43378",
@@ -2184,7 +2274,7 @@
         "month": 11
       }
     },
-    "row": 32
+    "row": 34
   },
   {
     "id": "Q1552718",
@@ -2207,7 +2297,7 @@
         "month": 1
       }
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q317519",
@@ -2272,6 +2362,27 @@
       }
     },
     "row": 2
+  },
+  {
+    "id": "Q636771",
+    "name": "Spanish conquest of the Inca Empire",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "1532 period of Spanish conquest in South America",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Inca_Empire",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Inca-Spanish%20confrontation.JPG",
+    "description": "The Spanish conquest of the Inca Empire, also known as the Conquest of Peru, was one of the most important campaigns in the Spanish colonization of the Americas. After years of preliminary exploration and military skirmishes, 168 Spanish soldiers under conquistador Francisco Pizarro, along with his brothers in arms and their Indian auxiliaries, captured the last Sapa Inca, Atahualpa, at the Battle of Cajamarca in 1532. It was the first step in a long campaign that took decades of fighting but ended in Spanish victory in 1572 and colonization of the region as the Viceroyalty of Peru. The conquest of the Inca Empire, led to spin-off campaigns into present-day Chile and Colombia, as well as expeditions to the Amazon Basin and the surrounding rainforest.",
+    "period": {
+      "start": {
+        "year": 1532
+      },
+      "end": {
+        "year": 1572,
+        "month": 7
+      }
+    },
+    "row": 7
   },
   {
     "id": "Q654006",
@@ -2382,7 +2493,7 @@
         "month": 3
       }
     },
-    "row": 18
+    "row": 21
   },
   {
     "id": "Q385676",
@@ -2426,7 +2537,7 @@
         "month": 5
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q331377",
@@ -2449,7 +2560,7 @@
         "year": 1861
       }
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q740791",
@@ -2465,7 +2576,7 @@
       "year": 1885,
       "month": 11
     },
-    "row": 27
+    "row": 28
   },
   {
     "id": "Q25628",
@@ -2482,7 +2593,7 @@
     "at": {
       "year": 1480
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q368689",
@@ -2527,7 +2638,7 @@
         "year": 1466
       }
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q976827",
@@ -2598,7 +2709,7 @@
         "year": 1782
       }
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q112524",
@@ -2624,6 +2735,25 @@
     "row": 3
   },
   {
+    "id": "Q1078359",
+    "name": "Battle of Yamen",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 63,
+    "tagline": "1279 battle",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Yamen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jingmen002.jpg",
+    "imageAttribution": "(Long night without wind) 长夜无风, via Wikimedia Commons",
+    "description": "The Battle of Yamen, also known as the Battle of Yashan, was a naval battle which took place in southern China on 19 March 1279. It is considered to be the last stand of the Song dynasty against the invading forces of the Mongol-led Yuan dynasty.",
+    "at": {
+      "year": 1279,
+      "month": 3
+    },
+    "row": 3
+  },
+  {
     "id": "Q28365",
     "name": "Lamian War",
     "category": "war",
@@ -2644,7 +2774,7 @@
         "year": -321
       }
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q431806",
@@ -2666,7 +2796,7 @@
         "year": 1609
       }
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q233642",
@@ -2712,7 +2842,7 @@
         "month": 2
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q880629",
@@ -2773,7 +2903,7 @@
         "year": 1613
       }
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q1190696",
@@ -2795,7 +2925,7 @@
         "month": 6
       }
     },
-    "row": 19
+    "row": 23
   },
   {
     "id": "Q734700",
@@ -2813,7 +2943,7 @@
       "year": 451,
       "month": 5
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q4338038",
@@ -2836,7 +2966,7 @@
         "month": 2
       }
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q657967",
@@ -2858,7 +2988,7 @@
         "year": 1267
       }
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q807843",
@@ -2882,7 +3012,7 @@
         "month": 9
       }
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q1070342",
@@ -2970,7 +3100,7 @@
         "year": 1904
       }
     },
-    "row": 29
+    "row": 31
   },
   {
     "id": "Q4200795",
@@ -2990,7 +3120,7 @@
         "year": -324
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q582594",
@@ -3010,7 +3140,7 @@
         "year": 1879
       }
     },
-    "row": 25
+    "row": 29
   },
   {
     "id": "Q2448644",
@@ -3029,7 +3159,7 @@
         "year": 1288
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q2670327",
@@ -3053,7 +3183,7 @@
         "month": 10
       }
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q612286",
@@ -3071,7 +3201,45 @@
     "at": {
       "year": -611
     },
-    "row": 0
+    "row": 1
+  },
+  {
+    "id": "Q4817850",
+    "name": "Muslim conquest of Transoxiana",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 58,
+    "tagline": "7th and 8th-century conquests by the Arabs in Asia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D9%81%D8%AA%D9%88%D8%AD%20%D9%82%D8%AA%D9%8A%D8%A8%D8%A9%20%D8%A8%D9%86%20%D9%85%D8%B3%D9%84%D9%85%20%D9%88%D9%85%D8%AD%D9%85%D8%AF%20%D8%A8%D9%86%20%D8%A7%D9%84%D9%82%D8%A7%D8%B3%D9%85.jpg",
+    "description": "Muslims conquered Transoxiana between 651 and 751, shortly after their conquest of Persia enabled them to enter Central Asia. Relatively small-scale incursions had taken place under the Rashidun Caliphate, but it was not until after the establishment of the Umayyad Caliphate that an organized military effort was made to conquer the region that today includes all or parts of Uzbekistan, Tajikistan, Kazakhstan, and Kyrgyzstan. The campaign continued under the Abbasid Caliphate and gradually saw the Islamization of the region.",
+    "period": {
+      "start": {
+        "year": 673
+      },
+      "end": {
+        "year": 751
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q2736986",
+    "name": "Battle of Karnal",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 58,
+    "tagline": "1739 part of the Persian Invasion of India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Karnal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nadir%20Shah%20at%20the%20sack%20of%20Delhi%20-%20Battle%20scene%20with%20Nader%20Shah%20on%20horseback%2C%20possibly%20by%20Muhammad%20Ali%20ibn%20Abd%20al-Bayg%20ibn%20Ali%20Quli%20Jabbadar%2C%20mid-18th%20century%2C%20Museum%20of%20Fine%20Arts%2C%20Boston.jpg",
+    "description": "The Battle of Karnal was a decisive victory for Nader Shah, the founder of the Afsharid dynasty of Iran, during his invasion of India. Nader's forces defeated the army of Mughal emperor Muhammad Shah within three hours, paving the way for the Iranian sack of Delhi. The engagement is considered the crowning jewel in Nader's military career as well as a tactical masterpiece. The battle took place near Karnal in Haryana, 110 kilometres (68 mi) north of Delhi, India. As a result of the overwhelming defeat of the Mughal Empire at Karnal, the already-declining Mughal dynasty was critically weakened to such an extent as to hasten its demise. According to Axworthy, it is also possible that without the ruinous effects of Nader's invasion of India, European colonial takeover of the Indian subcontinent would have come in a different form or perhaps not at all.",
+    "at": {
+      "year": 1739,
+      "month": 2
+    },
+    "row": 3
   },
   {
     "id": "Q5555632",
@@ -3114,7 +3282,7 @@
         "year": -649
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q1186260",
@@ -3135,7 +3303,26 @@
         "month": 8
       }
     },
-    "row": 23
+    "row": 15
+  },
+  {
+    "id": "Q2888296",
+    "name": "Conquest of Ceuta",
+    "category": "military-operation",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 57,
+    "tagline": "Portuguese conquest of Ceuta (1415)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Portuguese_conquest_of_Ceuta",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Infante%20D.%20Henrique%20na%20conquista%20de%20Ceuta%2C%20s.XV.JPG",
+    "imageAttribution": "HombreDHojalata, via Wikimedia Commons",
+    "description": "Portuguese forces under the command of King John I conquered the North African city of Ceuta from the Marinid Sultanate on 21 August 1415. The city's defenses fell under Portuguese control after a carefully prepared attack, and the successful capture of the city marked the beginning of the Portuguese Empire. Ceuta remained under Portuguese control until it was transferred to Spain in 1668.",
+    "at": {
+      "year": 1415,
+      "month": 8
+    },
+    "row": 5
   },
   {
     "id": "Q2378252",
@@ -3158,7 +3345,7 @@
         "month": 8
       }
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q2890128",
@@ -3172,7 +3359,7 @@
     "at": {
       "year": 1192
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q2075775",
@@ -3191,7 +3378,7 @@
         "year": -667
       }
     },
-    "row": 2
+    "row": 1
   },
   {
     "id": "Q707364",
@@ -3213,7 +3400,7 @@
         "year": 1536
       }
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q4416705",
@@ -3235,7 +3422,7 @@
         "month": 3
       }
     },
-    "row": 32
+    "row": 34
   },
   {
     "id": "Q3778623",
@@ -3254,7 +3441,7 @@
         "year": 1589
       }
     },
-    "row": 8
+    "row": 7
   },
   {
     "id": "Q2288424",
@@ -3318,7 +3505,7 @@
         "month": 10
       }
     },
-    "row": 8
+    "row": 12
   },
   {
     "id": "Q2632175",
@@ -3363,7 +3550,42 @@
         "year": -512
       }
     },
-    "row": 2
+    "row": 6
+  },
+  {
+    "id": "Q16957926",
+    "name": "Chola invasion of Srivijaya",
+    "category": "military-operation",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 52,
+    "tagline": "medieval naval raids",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chola_invasion_of_Srivijaya",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rajendra%20map%20new.svg",
+    "imageAttribution": "Rajendra_map_new.png: The original uploader was Venu62 at English Wikipedia.\nderivative work: Gregors (talk), via Wikimedia Commons",
+    "description": "In 1025 AD, the Chola Emperor Rajendra I launched naval invasions on Srivijaya in maritime Southeast Asia, leading to the fall of the Sailendra Dynasty of Srivijaya.",
+    "at": {
+      "year": 1025
+    },
+    "row": 3
+  },
+  {
+    "id": "Q589285",
+    "name": "Battle of Tondibi",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 52,
+    "tagline": "1591 battle",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Tondibi",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SONGHAI%20empire%20map.PNG",
+    "imageAttribution": "No machine-readable author provided. Roke~commonswiki assumed (based on copyright claims)., via Wikimedia Commons",
+    "description": "The Battle of Tondibi was the decisive confrontation in the 16th-century invasion of the Songhai Empire by the army of the Saadi dynasty in Morocco. The Moroccan forces under Judar Pasha defeated the Songhai under Askia Ishaq II, guaranteeing the empire's downfall.",
+    "at": {
+      "year": 1591,
+      "month": 3
+    },
+    "row": 8
   },
   {
     "id": "Q2725993",
@@ -3383,7 +3605,7 @@
         "year": 1837
       }
     },
-    "row": 26
+    "row": 25
   },
   {
     "id": "Q1348785",
@@ -3406,7 +3628,7 @@
         "year": 1881
       }
     },
-    "row": 22
+    "row": 17
   },
   {
     "id": "Q5453768",
@@ -3425,7 +3647,7 @@
         "year": 1774
       }
     },
-    "row": 13
+    "row": 12
   },
   {
     "id": "Q3119025",
@@ -3447,7 +3669,7 @@
         "year": 1875
       }
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q138503695",
@@ -3495,7 +3717,93 @@
     "at": {
       "year": 1867
     },
-    "row": 21
+    "row": 22
+  },
+  {
+    "id": "Q122942662",
+    "name": "Ghaznavid campaigns in India",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 45,
+    "tagline": "1000 invasion of India by the Ghaznavid rulers",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghaznavid_campaigns_in_India",
+    "description": "The Ghaznavid campaigns in India refer to a series of military expeditions lasting over two centuries launched by the Ghaznavid Empire, a prominent empire of the 10th and 11th centuries. They went to the Indian subcontinent, led notably by Sultan Mahmud of Ghazni, leaving a profound impact on the region's history and culture. Conflicts continued until the fall of Ghaznavids in late 12th century.",
+    "period": {
+      "start": {
+        "year": 1000
+      },
+      "end": {
+        "year": 1100
+      }
+    },
+    "row": 5
+  },
+  {
+    "id": "Q123179707",
+    "name": "Sack of Delhi",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 44,
+    "tagline": "1398 sack",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sack_of_Delhi_(1398)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Timur%20pursues%20the%20Indians%2C%20led%20by%20Sultan%20Mahmud-Khan%20Tughluq%2C%20back%20into%20Delhi%2C%2017%20December%201398.%20Zafarnama%20of%20Ibrahim%20Sultan%2C%20Timurid%20Shiraz%2C%201436.%20Folio%20290v.jpg",
+    "description": "The Sack of Delhi took place on 17 December 1398 between Timur – founder of the Timurid Empire – and Nasir-ud-Din Mahmud Shah, the Sultan of Delhi. The Sultan had war elephants among his ranks, something unknown to the steppe warriors at the time. Timur might have had camels loaded with kindling that was set on fire, releasing them to spread panic among the Indian elephants, who then trampled the sultan’s soldiers.",
+    "at": {
+      "year": 1398,
+      "month": 12
+    },
+    "row": 5
+  },
+  {
+    "id": "Q112182472",
+    "name": "Umayyad conquest of Sindh",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 42,
+    "tagline": "Umayyad conquest of Sindh in 711",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Arab_conquest_of_Sindh",
+    "description": "Between 711 and 713, the Umayyad Caliphate defeated the Chach dynasty, the last Hindu dynasty to rule over Sindh, and incorporated Sindh as a province of the empire, making the lower Indus Valley first region in South Asia to become part of Islamic world.",
+    "period": {
+      "start": {
+        "year": 711
+      },
+      "end": {
+        "year": 713
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q24945556",
+    "name": "Siege of Angkor",
+    "category": "military-operation",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 40,
+    "tagline": "1431 fall of the Khmer Empire to the Kingdom of Ayutthaya",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_Angkor",
+    "description": "The fall of Angkor, also known as the sack of Angkor or siege of Angkor or also Siamese occupation of Angkor, refers to the capture of the Khmer capital at Angkor by the Ayutthaya Kingdom, conventionally dated to 1431. Thai chronicle traditions describe a siege of Angkor Thom lasting around seven months, beginning in 1430 and ending with the city's capture in 1431.",
+    "at": {
+      "year": 1431
+    },
+    "row": 5
+  },
+  {
+    "id": "Q133850450",
+    "name": "Sack of Lindisfarne",
+    "category": "military-operation",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 38,
+    "tagline": "793 sack",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sack_of_Lindisfarne",
+    "description": "The Sacking of Lindisfarne was a Viking raid in AD 793, targeting the monastery on Lindisfarne, an island off the northeastern coast of England. The attack was carried out by Norse seafarers and is often considered the beginning of the Viking Age. The monastery, founded in 635 AD by Saint Aidan, was a major centre of Christian learning in Northumbria. The Viking raiders plundered its wealth, killed or enslaved monks, and desecrated sacred relics. The event sent shockwaves through Christian Europe, with contemporaries interpreting it as divine punishment.",
+    "at": {
+      "year": 793
+    },
+    "row": 3
   },
   {
     "id": "Q22936451",
@@ -3518,6 +3826,6 @@
         "month": 6
       }
     },
-    "row": 6
+    "row": 7
   }
 ]

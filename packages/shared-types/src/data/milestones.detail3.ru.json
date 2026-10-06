@@ -202,6 +202,22 @@
     "row": 11
   },
   {
+    "id": "Q41207",
+    "name": "монета",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "кусок твёрдого материала, используемый при обмене и торговле",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Coin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/One%20Rupee%20East%20India%20Company.JPG",
+    "description": "Моне́та — денежный знак, изготовленный из металла, либо другого материала определённой (стандартизированной) формы, веса и достоинства.",
+    "approximateDate": true,
+    "at": {
+      "year": -599
+    },
+    "row": 0
+  },
+  {
     "id": "Q40605",
     "name": "Большой адронный коллайдер",
     "category": "science-theory",
@@ -509,7 +525,7 @@
     "at": {
       "year": 1834
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q80728",
@@ -658,6 +674,23 @@
       "year": 1874
     },
     "row": 10
+  },
+  {
+    "id": "Q6113985",
+    "name": "Упанишады",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "древнеиндийские религиозно-философские трактаты",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Upanishads",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MS%20Indic%2037%2C%20Isa%20upanisad.%20Wellcome%20L0027330.jpg",
+    "imageAttribution": "https://wellcomeimages.org/indexplus/obf_images/01/64/805ea5d825de7673594bd1fea9ec.jpg\n\nGallery: https://wellcomeimages.org/indexplus/image/L0027330.html\nWellcome Collection gallery (2018-03-31): https://wellcomecollection.org/works/q3ejsjwy CC-BY-4.0, via Wikimedia Commons",
+    "description": "Упаниша́ды — древнеиндийские трактаты религиозно-философского характера. Являются дополнением Вед и относятся к священным писаниям индуизма категории шрути. В них в основном обсуждается философия, медитация и природа Бога. Считается, что в Упанишадах изложена основная суть Вед, поэтому их также называют «веданта», и они являются основой ведантического индуизма. В Упанишадах главным образом описывается безличный Брахман.",
+    "approximateDate": true,
+    "at": {
+      "year": -699
+    },
+    "row": 1
   },
   {
     "id": "Q228036",
@@ -941,7 +974,7 @@
         "month": 4
       }
     },
-    "row": 5
+    "row": 10
   },
   {
     "id": "Q154255",
@@ -1096,7 +1129,7 @@
     "at": {
       "year": 1831
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q20124",
@@ -1174,7 +1207,7 @@
     "at": {
       "year": 1893
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q164338",
@@ -1352,6 +1385,95 @@
     "row": 16
   },
   {
+    "id": "Q51636",
+    "name": "Распятие Иисуса Христа",
+    "category": "religion-mythology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "смерть Иисуса Христа, описанная в Евангелиях",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cristo%20crucificado.jpg",
+    "description": "Распятие Иисуса Христа — казнь Иисуса Христа через распятие. Согласно христианскому учению, событие, завершающее Страсти Христовы, предшествующее погребению и воскресению Иисуса.",
+    "at": {
+      "year": 30,
+      "month": 4
+    },
+    "row": 0
+  },
+  {
+    "id": "Q144334",
+    "name": "ручной типографский станок",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "устройство для создания типографских оттисков",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg",
+    "description": "Ручно́й типогра́фский стано́к представляет собой механический пресс, с помощью которого изображение переносится на бумагу или иной материал посредством красочной печатной формы.",
+    "at": {
+      "year": 1439
+    },
+    "row": 3
+  },
+  {
+    "id": "Q185682",
+    "name": "Французский Индокитай",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "Бывшая колония Франции на полуострове Индокитай",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/French_Indochina",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sa%20Majest%C3%A9%20Bao-Da%C3%AF%20fit%20le%20p%C3%A8lerinage%20aux%20Tombeaux%20des%20anc%C3%AAtres%20de%20la%20Dynastie%20%C3%A0%20Thanh-H%C3%B3a%2C%201932.jpg",
+    "description": "Францу́зский Индокита́й — часть Французской колониальной империи, бывшая колония Франции на полуострове Индокитай.",
+    "at": {
+      "year": 1887
+    },
+    "row": 15
+  },
+  {
+    "id": "Q187650",
+    "name": "Большой террор",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "массовые репрессии 1937—1938 годов в СССР",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Purge",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Great%20Purge%20Resolution%20of%20Central%20Committee.jpg",
+    "description": "«Большо́й терро́р» — термин современной историографии, характеризующий период наиболее массовых политических (сталинских) репрессий в СССР 1937—1938 годов. В научных кругах до сих пор нет единого мнения, что было причиной террора. Большинство историков считает, что Сталин сыграл ключевую роль в организации и проведении репрессий.",
+    "period": {
+      "start": {
+        "year": 1936,
+        "month": 8
+      },
+      "end": {
+        "year": 1938,
+        "month": 11
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q131130",
+    "name": "Первая операция под наркозом",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "операция по уменьшению чувствительности тела",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anesthesia",
+    "description": "Анестези́я — процесс уменьшения чувствительности тела или его части вплоть до полного прекращения восприятия информации об окружающей среде и собственном состоянии.",
+    "at": {
+      "year": 1846,
+      "month": 10
+    },
+    "row": 7
+  },
+  {
     "id": "Q132560",
     "name": "электронный микроскоп",
     "category": "science-theory",
@@ -1380,7 +1502,7 @@
     "at": {
       "year": 1877
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q160464",
@@ -1452,7 +1574,7 @@
         "year": 1852
       }
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q11146",
@@ -1517,7 +1639,7 @@
         "year": 1939
       }
     },
-    "row": 7
+    "row": 23
   },
   {
     "id": "Q157506",
@@ -1572,7 +1694,7 @@
         "month": 8
       }
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q192050",
@@ -1590,7 +1712,7 @@
       "year": 1914,
       "month": 6
     },
-    "row": 17
+    "row": 16
   },
   {
     "id": "Q6743",
@@ -1615,7 +1737,7 @@
         "month": 6
       }
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q71229",
@@ -1663,7 +1785,7 @@
     "at": {
       "year": 1936
     },
-    "row": 23
+    "row": 24
   },
   {
     "id": "Q11932",
@@ -1678,7 +1800,7 @@
     "at": {
       "year": 405
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q896666",
@@ -1711,5 +1833,67 @@
       "year": -995
     },
     "row": 0
+  },
+  {
+    "id": "Q51628",
+    "name": "рождение Иисуса",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "рождение Иисуса Христа",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nativity_of_Jesus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giorgione%20-%20Adoration%20of%20the%20Shepherds%20-%20National%20Gallery%20of%20Art.jpg",
+    "description": "Рождение Иисуса Христа описано в Новом Завете. Евангельские рассказы связывают с его рождением события от Благовещения и тайны непорочного зачатия до поклонения волхвов. С разных сторон эти события описаны в Евангелиях от Матфея и от Луки. В память рождения Иисуса в христианстве празднуется Рождество Христово.",
+    "at": {
+      "year": -4
+    },
+    "row": 0
+  },
+  {
+    "id": "Q161428",
+    "name": "грузинская письменность",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "алфавитное письмо, используемое некоторыми картвельскими языками",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Georgian_scripts",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kartuli%2C%20Georgian%20scripts.png",
+    "imageAttribution": "Emperor of Emperors, via Wikimedia Commons",
+    "description": "Грузи́нское письмо́ — алфавитное письмо, используемое для записи некоторых картвельских языков — в первую очередь, грузинского, а также спорадически мегрельского, сванского и других. Читается слева направо. Современный грузинский алфавит состоит из 33 букв.",
+    "at": {
+      "year": 500
+    },
+    "row": 0
+  },
+  {
+    "id": "Q192341",
+    "name": "У меня есть мечта",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "знаменитая речь Мартина Лютера Кинга",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/I_Have_a_Dream",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Martin%20Luther%20King%20-%20March%20on%20Washington%20%28cropped%29.jpg",
+    "description": "«У меня есть мечта» — название самой известной речи Мартина Лютера Кинга, в которой он провозгласил своё видение будущего, где белокожие и чернокожие люди имели бы равные гражданские права.",
+    "at": {
+      "year": 1963,
+      "month": 8
+    },
+    "row": 19
+  },
+  {
+    "id": "Q189223",
+    "name": "тест Тьюринга",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "эмпирический тест, предложенный Аланом Тьюрингом в статье «Вычислительные машины и разум»",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Turing_test",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Turing%20Test%20version%203.png",
+    "description": "Тест Тью́ринга — эмпирический тест, идея которого была предложена Аланом Тьюрингом в статье «Вычислительные машины и разум», опубликованной в 1950 году в философском журнале Mind. Тьюринг задался целью определить, может ли машина мыслить.",
+    "at": {
+      "year": 1950
+    },
+    "row": 24
   }
 ]

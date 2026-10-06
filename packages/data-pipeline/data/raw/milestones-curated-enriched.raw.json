@@ -968,16 +968,26 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Phonograph%20disc.jpg"
     },
     {
-      "id": "Q872",
-      "name": "radio",
-      "nameRu": "радио",
+      "id": "Q729856",
+      "name": "First radio transmission",
+      "nameRu": "Первая радиопередача",
       "category": "communication",
-      "year": 1894,
-      "tagline": "technology of signaling and communicating using radio waves",
-      "taglineRu": "способ передачи информации посредством радиоволн",
-      "sitelinks": 191,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Radio",
+      "year": 1896,
+      "month": 6,
+      "tagline": "method of communication",
+      "sitelinks": 33,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wireless_telegraphy",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Wireless_telegraphy",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%84%A1%E7%B7%9A%E9%9B%BB%E5%A0%B1",
+        "es": "https://es.wikipedia.org/wiki/Telegraf%C3%ADa_sin_hilos",
+        "fr": "https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9graphie_sans_fil",
+        "de": "https://de.wikipedia.org/wiki/Funktelegrafie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%A8%D8%B1%D8%A7%D9%82_%D9%84%D8%A7%D8%B3%D9%84%D9%83%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B4%D0%B8%D0%BE%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D1%80%D0%B0%D1%84"
+      },
+      "fameSitelinks": 191,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Radio",
         "zh": "https://zh.wikipedia.org/wiki/%E6%97%A0%E7%BA%BF%E7%94%B5",
         "es": "https://es.wikipedia.org/wiki/Radiocomunicaci%C3%B3n",
@@ -987,7 +997,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B4%D0%B8%D0%BE"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pasilan%20linkkitorni.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SCR188.jpg"
     },
     {
       "id": "Q46872",
@@ -8911,6 +8921,1561 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/100%20Jahre%20Dampfschiff%20%27Stadt%20Rapperswil%27%20-%20Tag%20der%20offenen%20Dampfschiff-T%C3%BCre%20am%20B%C3%BCrkliplatz%20-%20Alpenquai%202014-04-26%2017-47-28%20%28P7700%29.JPG"
+    },
+    {
+      "id": "Q8275",
+      "name": "Iliad",
+      "nameRu": "Илиада",
+      "category": "culture-arts",
+      "year": -800,
+      "tagline": "epic poem attributed to Homer",
+      "taglineRu": "эпическая поэма Гомера",
+      "sitelinks": 181,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Iliad",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Iliad",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BC%8A%E5%88%A9%E4%BA%9A%E7%89%B9",
+        "es": "https://es.wikipedia.org/wiki/Il%C3%ADada",
+        "fr": "https://fr.wikipedia.org/wiki/Iliade",
+        "de": "https://de.wikipedia.org/wiki/Ilias",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D9%84%D9%8A%D8%A7%D8%B0%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BB%D0%B8%D0%B0%D0%B4%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/P.%20Oxy.%20221.jpg"
+    },
+    {
+      "id": "Q856544",
+      "name": "Library of Ashurbanipal",
+      "nameRu": "Библиотека Ашшурбанипала",
+      "category": "philosophy-education",
+      "year": 1849,
+      "tagline": "library",
+      "taglineRu": "крупнейшая сохранившаяся библиотека древнего мира и древнейшая из всех известных библиотек",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Library_of_Ashurbanipal",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Library_of_Ashurbanipal",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%9E%E8%BF%B0%E5%B7%B4%E5%B0%BC%E6%8B%94%E5%9C%96%E6%9B%B8%E9%A4%A8",
+        "es": "https://es.wikipedia.org/wiki/Biblioteca_de_Asurbanipal",
+        "fr": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_d%27Assurbanipal",
+        "de": "https://de.wikipedia.org/wiki/Bibliothek_des_A%C5%A1%C5%A1urbanipal",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%83%D8%AA%D8%A8%D8%A9_%D8%A2%D8%B4%D9%88%D8%B1_%D8%A8%D8%A7%D9%86%D9%8A%D8%A8%D8%A7%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D0%90%D1%88%D1%88%D1%83%D1%80%D0%B1%D0%B0%D0%BD%D0%B8%D0%BF%D0%B0%D0%BB%D0%B0"
+      },
+      "countries": [
+        "Q796"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Der%20Palast%20von%20Sennacherib.jpg"
+    },
+    {
+      "id": "Q51628",
+      "name": "Nativity of Jesus",
+      "nameRu": "рождение Иисуса",
+      "category": "religion-mythology",
+      "year": -4,
+      "tagline": "birth of Jesus",
+      "taglineRu": "рождение Иисуса Христа",
+      "sitelinks": 74,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nativity_of_Jesus",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nativity_of_Jesus",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%80%B6%E7%A8%A3%E8%AF%9E%E7%94%9F",
+        "es": "https://es.wikipedia.org/wiki/Natividad_de_Jes%C3%BAs",
+        "fr": "https://fr.wikipedia.org/wiki/Nativit%C3%A9",
+        "de": "https://de.wikipedia.org/wiki/Weihnachtsgeschichte",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%8A%D9%84%D8%A7%D8%AF_%D9%8A%D8%B3%D9%88%D8%B9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5_%D0%98%D0%B8%D1%81%D1%83%D1%81%D0%B0_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giorgione%20-%20Adoration%20of%20the%20Shepherds%20-%20National%20Gallery%20of%20Art.jpg"
+    },
+    {
+      "id": "Q51636",
+      "name": "crucifixion of Jesus",
+      "nameRu": "Распятие Иисуса Христа",
+      "category": "religion-mythology",
+      "year": 30,
+      "month": 4,
+      "tagline": "Jesus' crucifixion as described in the four canonical gospels",
+      "taglineRu": "смерть Иисуса Христа, описанная в Евангелиях",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%80%B6%E7%A9%8C%E8%A2%AB%E9%87%98%E5%8D%81%E5%AD%97%E6%9E%B6",
+        "es": "https://es.wikipedia.org/wiki/Crucifixi%C3%B3n_de_Jes%C3%BAs",
+        "fr": "https://fr.wikipedia.org/wiki/Crucifixion",
+        "de": "https://de.wikipedia.org/wiki/Kreuzigung_Jesu",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B5%D9%84%D8%A8_%D9%8A%D8%B3%D9%88%D8%B9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D0%BF%D1%8F%D1%82%D0%B8%D0%B5_%D0%98%D0%B8%D1%81%D1%83%D1%81%D0%B0_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%B0"
+      },
+      "countries": [
+        "Q2277"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cristo%20crucificado.jpg"
+    },
+    {
+      "id": "Q16402123",
+      "name": "Christianization of Armenia",
+      "nameRu": "христианизация Армении",
+      "category": "religion-mythology",
+      "year": 301,
+      "tagline": "spread of Christian faith to Armenia",
+      "taglineRu": "распространение христианства на территории исторической Армении",
+      "sitelinks": 7,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Christianization_of_Armenia",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Christianization_of_Armenia",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%86%D8%B5%D9%8A%D8%B1_%D8%A3%D8%B1%D9%85%D9%8A%D9%86%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%B8%D0%B0%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F_%D0%90%D1%80%D0%BC%D0%B5%D0%BD%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q208404"
+      ]
+    },
+    {
+      "id": "Q161428",
+      "name": "Georgian scripts",
+      "nameRu": "грузинская письменность",
+      "category": "communication",
+      "year": 500,
+      "tagline": "alphabetic writing systems mostly used to transcribe the Georgian language and other languages of the Caucasus region",
+      "taglineRu": "алфавитное письмо, используемое некоторыми картвельскими языками",
+      "sitelinks": 85,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Georgian_scripts",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Georgian_scripts",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A0%BC%E9%B2%81%E5%90%89%E4%BA%9A%E5%AD%97%E6%AF%8D",
+        "es": "https://es.wikipedia.org/wiki/Alfabeto_georgiano",
+        "fr": "https://fr.wikipedia.org/wiki/Alphabet_g%C3%A9orgien",
+        "de": "https://de.wikipedia.org/wiki/Georgisches_Alphabet",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D8%B8%D9%85_%D8%A7%D9%84%D9%83%D8%AA%D8%A7%D8%A8%D8%A9_%D8%A7%D9%84%D8%AC%D9%88%D8%B1%D8%AC%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D1%83%D0%B7%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B5_%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%BE"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kartuli%2C%20Georgian%20scripts.png"
+    },
+    {
+      "id": "Q378014",
+      "name": "University of al-Qarawiyyin",
+      "nameRu": "Аль-Карауин",
+      "category": "philosophy-education",
+      "year": 859,
+      "tagline": "university in Fez, Morocco",
+      "taglineRu": "университет в Марокко",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%A1%E9%AD%AF%E5%9B%A0%E5%A4%A7%E5%AD%B8",
+        "es": "https://es.wikipedia.org/wiki/Universidad_de_Qarawiyyin",
+        "fr": "https://fr.wikipedia.org/wiki/Universit%C3%A9_Al_Quaraouiyine",
+        "de": "https://de.wikipedia.org/wiki/Universit%C3%A4t_al-Qaraw%C4%ABy%C4%ABn",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A7%D9%84%D9%82%D8%B1%D9%88%D9%8A%D9%8A%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D1%8C-%D0%9A%D0%B0%D1%80%D0%B0%D1%83%D0%B8%D0%BD"
+      },
+      "countries": [
+        "Q12536",
+        "Q1028"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/University%20of%20Al%20Qaraouiyine.jpg"
+    },
+    {
+      "id": "Q145625",
+      "name": "Glagolitic",
+      "nameRu": "глаголица",
+      "category": "communication",
+      "year": 862,
+      "tagline": "oldest known Slavic alphabet",
+      "taglineRu": "первый славянский алфавит",
+      "sitelinks": 66,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Glagolitic_script",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Glagolitic_script",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A0%BC%E6%8B%89%E5%93%A5%E9%87%8C%E5%AD%97%E6%AF%8D",
+        "es": "https://es.wikipedia.org/wiki/Alfabeto_glagol%C3%ADtico",
+        "fr": "https://fr.wikipedia.org/wiki/Alphabet_glagolitique",
+        "de": "https://de.wikipedia.org/wiki/Glagolitische_Schrift",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%A8%D8%AC%D8%AF%D9%8A%D8%A9_%D8%BA%D9%84%D8%A7%D8%BA%D9%88%D9%84%D9%8A%D8%AA%D8%B3%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%BB%D0%B0%D0%B3%D0%BE%D0%BB%D0%B8%D1%86%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tabla%20Za%20Dicu%2003.jpg"
+    },
+    {
+      "id": "Q192823",
+      "name": "Vinland",
+      "nameRu": "Винланд",
+      "category": "expedition",
+      "year": 1000,
+      "tagline": "area of coastal North America explored by Norse Vikings",
+      "taglineRu": "Историческая область Северной Америки",
+      "sitelinks": 52,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Vinland",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Vinland",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%96%87%E8%98%AD_(%E7%B4%90%E8%8A%AC%E8%98%AD)",
+        "es": "https://es.wikipedia.org/wiki/Vinland",
+        "fr": "https://fr.wikipedia.org/wiki/Vinland",
+        "de": "https://de.wikipedia.org/wiki/Vinland",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D9%8A%D9%86%D9%84%D8%A7%D9%86%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BD%D0%BB%D0%B0%D0%BD%D0%B4"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Carlb-ansemeadows-vinland-01.jpg"
+    },
+    {
+      "id": "Q2044496",
+      "name": "Liber Abaci",
+      "nameRu": "Книга абака",
+      "category": "science-theory",
+      "year": 1202,
+      "tagline": "essay by Fibonacci",
+      "sitelinks": 27,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Liber_Abaci",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Liber_Abaci",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E4%B9%8B%E4%B9%A6",
+        "es": "https://es.wikipedia.org/wiki/Liber_abaci",
+        "fr": "https://fr.wikipedia.org/wiki/Liber_abaci",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D9%8A%D8%A8%D8%B1_%D8%A3%D8%A8%D8%A7%D8%AA%D8%B4%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BD%D0%B8%D0%B3%D0%B0_%D0%B0%D0%B1%D0%B0%D0%BA%D0%B0"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q144334",
+      "name": "printing press",
+      "nameRu": "ручной типографский станок",
+      "category": "communication",
+      "year": 1439,
+      "tagline": "device for evenly printing ink onto a print medium",
+      "taglineRu": "устройство для создания типографских оттисков",
+      "sitelinks": 80,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Printing_press",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%88%B7%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Imprenta",
+        "fr": "https://fr.wikipedia.org/wiki/Presse_typographique",
+        "de": "https://de.wikipedia.org/wiki/Druckpresse",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%A7%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%87%D0%BD%D0%BE%D0%B9_%D1%82%D0%B8%D0%BF%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%BA"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg"
+    },
+    {
+      "id": "Q204023",
+      "name": "Sengoku period",
+      "nameRu": "Период Сэнгоку",
+      "category": "society-administration",
+      "year": 1467,
+      "endYear": 1590,
+      "tagline": "period of Japanese history from 1467 to 1615",
+      "taglineRu": "период в японской истории",
+      "sitelinks": 55,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sengoku_period",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sengoku_period",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%88%98%E5%9B%BD%E6%97%B6%E4%BB%A3_(%E6%97%A5%E6%9C%AC)",
+        "es": "https://es.wikipedia.org/wiki/Per%C3%ADodo_Sengoku",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89poque_Sengoku",
+        "de": "https://de.wikipedia.org/wiki/Sengoku-Zeit",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D8%AA%D8%B1%D8%A9_%D8%B3%D9%8A%D9%86%D8%BA%D9%88%D9%83%D9%88",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B8%D0%BE%D0%B4_%D0%A1%D1%8D%D0%BD%D0%B3%D0%BE%D0%BA%D1%83"
+      },
+      "countries": [
+        "Q17"
+      ]
+    },
+    {
+      "id": "Q55264655",
+      "name": "Elmina Castle",
+      "nameRu": "Сан-Жоржи-да-Мина",
+      "category": "landmarks",
+      "year": 1482,
+      "tagline": "fortified colonial trading post in Ghana",
+      "sitelinks": 35,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Elmina_Castle",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Elmina_Castle",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9F%83%E7%88%BE%E7%B1%B3%E7%B4%8D%E5%9F%8E%E5%A0%A1",
+        "es": "https://es.wikipedia.org/wiki/San_Jorge_de_la_Mina",
+        "fr": "https://fr.wikipedia.org/wiki/Saint-Georges-de-la-Mine",
+        "de": "https://de.wikipedia.org/wiki/Fort_S%C3%A3o_Jorge_da_Mina",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D9%84%D8%B9%D8%A9_%D8%A7%D9%84%D9%85%D9%8A%D9%86%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%BC%D0%B8%D0%BD%D0%B0_(%D1%84%D0%BE%D1%80%D1%82)"
+      },
+      "countries": [
+        "Q117"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Castle%20of%20St.%20George%E2%80%99s%2003.JPG"
+    },
+    {
+      "id": "Q3042917",
+      "name": "discovery of Brazil",
+      "category": "expedition",
+      "year": 1992,
+      "month": 10,
+      "tagline": "Portuguese discovery in 1500",
+      "sitelinks": 11,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Discovery_of_Brazil",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Discovery_of_Brazil",
+        "es": "https://es.wikipedia.org/wiki/Descubrimiento_de_Brasil",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9couverte_du_Br%C3%A9sil",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%83%D8%AA%D8%B4%D8%A7%D9%81_%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D8%B2%D9%8A%D9%84"
+      },
+      "countries": [
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Museu%20do%20Forte%20de%20Copacabana%20-%20Rio%20de%20Janeiro%20%2836406560346%29.jpg"
+    },
+    {
+      "id": "Q1122859",
+      "name": "Nanban trade period",
+      "nameRu": "Торговля с южными варварами",
+      "category": "commerce-finance",
+      "year": 1543,
+      "endYear": 1650,
+      "tagline": "period in Japanese history",
+      "sitelinks": 25,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nanban_trade",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nanban_trade",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%97%E8%A0%BB%E8%B2%BF%E6%98%93",
+        "es": "https://es.wikipedia.org/wiki/Comercio_Nanban",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89poque_du_commerce_Nanban",
+        "de": "https://de.wikipedia.org/wiki/Epoche_des_Namban-Handels",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D1%80%D0%B3%D0%BE%D0%B2%D0%BB%D1%8F_%D1%81_%D1%8E%D0%B6%D0%BD%D1%8B%D0%BC%D0%B8_%D0%B2%D0%B0%D1%80%D0%B2%D0%B0%D1%80%D0%B0%D0%BC%D0%B8"
+      },
+      "countries": [
+        "Q17"
+      ]
+    },
+    {
+      "id": "Q1457297",
+      "name": "Sidereus Nuncius",
+      "category": "science-theory",
+      "year": 1610,
+      "month": 3,
+      "tagline": "astronomical treatise of Galileo",
+      "sitelinks": 27,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sidereus_Nuncius",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sidereus_Nuncius",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%98%9F%E9%9A%9B%E4%BF%A1%E4%BD%BF",
+        "es": "https://es.wikipedia.org/wiki/Sidereus_nuncius",
+        "fr": "https://fr.wikipedia.org/wiki/Sidereus_nuncius",
+        "de": "https://de.wikipedia.org/wiki/Sidereus_Nuncius",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B1%D8%B3%D8%A7%D9%84%D8%A9_%D9%81%D9%84%D9%83%D9%8A%D8%A9_(%D9%83%D8%AA%D8%A7%D8%A8)"
+      },
+      "countries": [
+        "Q38"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Houghton%20IC6.G1333.610sa%20-%20Sidereus%20nuncius.jpg"
+    },
+    {
+      "id": "Q3427966",
+      "name": "transition from Ming to Qing",
+      "nameRu": "Маньчжурское завоевание Китая",
+      "category": "society-administration",
+      "year": 1616,
+      "endYear": 1683,
+      "tagline": "transition between two major dynasties in Chinese history between 1618 and 1683",
+      "sitelinks": 23,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%98%8E%E6%B8%85%E6%88%98%E4%BA%89",
+        "es": "https://es.wikipedia.org/wiki/Transici%C3%B3n_de_Ming_a_Qing",
+        "fr": "https://fr.wikipedia.org/wiki/Transition_des_Ming_aux_Qing",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%86%D8%AA%D9%82%D8%A7%D9%84_%D8%A7%D9%84%D8%AD%D9%83%D9%85_%D9%85%D9%86_%D9%85%D9%8A%D9%86%D8%BA_%D8%A5%D9%84%D9%89_%D8%AA%D8%B4%D9%8A%D9%86%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BD%D1%8C%D1%87%D0%B6%D1%83%D1%80%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%9A%D0%B8%D1%82%D0%B0%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Shanhaiguan.gif"
+    },
+    {
+      "id": "Q3062714",
+      "name": "execution of Louis XVI",
+      "nameRu": "Казнь Людовика XVI",
+      "category": "society-administration",
+      "year": 1793,
+      "month": 1,
+      "tagline": "major event of the French Revolution",
+      "taglineRu": "значительное событие Великой французской революции",
+      "sitelinks": 22,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%B7%AF%E6%98%93%E5%8D%81%E5%85%AD%E7%9A%84%E8%99%95%E6%B1%BA",
+        "es": "https://es.wikipedia.org/wiki/Ejecuci%C3%B3n_de_Luis_XVI",
+        "fr": "https://fr.wikipedia.org/wiki/Ex%C3%A9cution_de_Louis_XVI",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B9%D8%AF%D8%A7%D9%85_%D9%84%D9%88%D9%8A%D8%B3_%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3_%D8%B9%D8%B4%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D0%B7%D0%BD%D1%8C_%D0%9B%D1%8E%D0%B4%D0%BE%D0%B2%D0%B8%D0%BA%D0%B0_XVI"
+      },
+      "countries": [
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hinrichtung%20Ludwig%20des%20XVI.png"
+    },
+    {
+      "id": "Q6541120",
+      "name": "Liberian Declaration of Independence",
+      "category": "society-administration",
+      "year": 1847,
+      "month": 7,
+      "tagline": "document written by Hilary Teague and adopted by the Liberian Constitutional Convention on 26 July 1847 to announce the independence of Liberia from the US",
+      "sitelinks": 5,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Liberian_Declaration_of_Independence",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Liberian_Declaration_of_Independence",
+        "de": "https://de.wikipedia.org/wiki/Unabh%C3%A4ngigkeitserkl%C3%A4rung_Liberias",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%B3%D8%AA%D9%82%D9%84%D8%A7%D9%84_%D9%84%D9%8A%D8%A8%D9%8A%D8%B1%D9%8A%D8%A7"
+      },
+      "countries": [
+        "Q1014"
+      ]
+    },
+    {
+      "id": "Q1359529",
+      "name": "Government of India Act 1858",
+      "nameRu": "Акт о лучшем управлении Индией",
+      "category": "law-jurisprudence",
+      "year": 1858,
+      "tagline": "1858 United Kingdom of Great Britain and Ireland Act of Parliament 21 & 22 Vic c. 106",
+      "sitelinks": 22,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Government_of_India_Act_1858",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Government_of_India_Act_1858",
+        "es": "https://es.wikipedia.org/wiki/Ley_de_Gobierno_de_la_India_de_1858",
+        "fr": "https://fr.wikipedia.org/wiki/Government_of_India_Act_de_1858",
+        "de": "https://de.wikipedia.org/wiki/Government_of_India_Act_1858",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D1%82_%D0%BE_%D0%BB%D1%83%D1%87%D1%88%D0%B5%D0%BC_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8_%D0%98%D0%BD%D0%B4%D0%B8%D0%B5%D0%B9"
+      },
+      "countries": [
+        "Q174193"
+      ]
+    },
+    {
+      "id": "Q185682",
+      "name": "French Indochina",
+      "nameRu": "Французский Индокитай",
+      "category": "society-administration",
+      "year": 1887,
+      "tagline": "federal state in Southeast Asia",
+      "taglineRu": "Бывшая колония Франции на полуострове Индокитай",
+      "sitelinks": 77,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/French_Indochina",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/French_Indochina",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B3%95%E5%B1%AC%E5%8D%B0%E5%BA%A6%E6%94%AF%E9%82%A3",
+        "es": "https://es.wikipedia.org/wiki/Indochina_francesa",
+        "fr": "https://fr.wikipedia.org/wiki/Indochine_fran%C3%A7aise",
+        "de": "https://de.wikipedia.org/wiki/Franz%C3%B6sisch-Indochina",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%87%D9%86%D8%AF_%D8%A7%D9%84%D8%B5%D9%8A%D9%86%D9%8A%D8%A9_%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A4%D1%80%D0%B0%D0%BD%D1%86%D1%83%D0%B7%D1%81%D0%BA%D0%B8%D0%B9_%D0%98%D0%BD%D0%B4%D0%BE%D0%BA%D0%B8%D1%82%D0%B0%D0%B9"
+      },
+      "countries": [
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sa%20Majest%C3%A9%20Bao-Da%C3%AF%20fit%20le%20p%C3%A8lerinage%20aux%20Tombeaux%20des%20anc%C3%AAtres%20de%20la%20Dynastie%20%C3%A0%20Thanh-H%C3%B3a%2C%201932.jpg"
+    },
+    {
+      "id": "Q503585",
+      "name": "Korea under Japanese rule",
+      "nameRu": "Генерал-губернаторство Корея",
+      "category": "society-administration",
+      "year": 1910,
+      "month": 8,
+      "tagline": "Japanese colonial period in Chōsen (Korea), 1910–1945",
+      "taglineRu": "период истории Кореи (1910—1945)",
+      "sitelinks": 54,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Korea_under_Japanese_rule",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Korea_under_Japanese_rule",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9C%9D%E9%AE%AE%E6%97%A5%E6%B2%BB%E6%99%82%E6%9C%9F",
+        "es": "https://es.wikipedia.org/wiki/Ocupaci%C3%B3n_japonesa_de_Corea",
+        "fr": "https://fr.wikipedia.org/wiki/Cor%C3%A9e_pendant_la_colonisation_japonaise",
+        "de": "https://de.wikipedia.org/wiki/Korea_unter_japanischer_Herrschaft",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%AD%D8%AA%D9%84%D8%A7%D9%84_%D8%A7%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86_%D9%84%D9%83%D9%88%D8%B1%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%B5%D1%8F_%D0%BF%D0%BE%D0%B4_%D0%B2%D0%BB%D0%B0%D1%81%D1%82%D1%8C%D1%8E_%D0%AF%D0%BF%D0%BE%D0%BD%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q188712"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20Street%20of%20Honmachi%20Keijo%20Korea%201930s.png"
+    },
+    {
+      "id": "Q330756",
+      "name": "Transcaucasian Democratic Federative Republic",
+      "nameRu": "Закавказская демократическая федеративная республика",
+      "category": "society-administration",
+      "year": 1918,
+      "month": 4,
+      "tagline": "short-lived South Caucasian state (1918)",
+      "taglineRu": "государственное образование в Закавказье, провозглашённое в 1918 году",
+      "sitelinks": 49,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Transcaucasian_Democratic_Federative_Republic",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Transcaucasian_Democratic_Federative_Republic",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%96%E9%AB%98%E5%8A%A0%E7%B4%A2%E6%B0%91%E4%B8%BB%E8%81%AF%E9%82%A6%E5%85%B1%E5%92%8C%E5%9C%8B",
+        "es": "https://es.wikipedia.org/wiki/Rep%C3%BAblica_Democr%C3%A1tica_Federal_de_Transcaucasia",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9publique_f%C3%A9d%C3%A9rative_d%C3%A9mocratique_de_Transcaucasie",
+        "de": "https://de.wikipedia.org/wiki/Transkaukasische_Demokratisch-F%C3%B6derative_Republik",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AC%D9%85%D9%87%D9%88%D8%B1%D9%8A%D8%A9_%D8%AC%D9%86%D9%88%D8%A8_%D8%A7%D9%84%D9%82%D9%88%D9%82%D8%A7%D8%B2_%D8%A7%D9%84%D8%AF%D9%8A%D9%85%D9%82%D8%B1%D8%A7%D8%B7%D9%8A%D8%A9_%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%BA%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%D1%81%D0%BA%D0%B0%D1%8F_%D0%B4%D0%B5%D0%BC%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D1%84%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F_%D1%80%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1918%20map%20of%20the%20Caucasus%20by%20the%20British%20Army.jpg"
+    },
+    {
+      "id": "Q31187690",
+      "name": "proclamation of the Republic of Turkey",
+      "category": "society-administration",
+      "year": 1923,
+      "month": 10,
+      "tagline": "October 1923 historical event in Turkey",
+      "sitelinks": 9,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_the_Republic_of_Turkey",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Proclamation_of_the_Republic_of_Turkey",
+        "es": "https://es.wikipedia.org/wiki/Proclamaci%C3%B3n_de_la_Rep%C3%BAblica_de_Turqu%C3%ADa",
+        "fr": "https://fr.wikipedia.org/wiki/Proclamation_de_la_R%C3%A9publique_de_Turquie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B9%D9%84%D8%A7%D9%86_%D8%A7%D9%84%D8%AC%D9%85%D9%87%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8%A9"
+      },
+      "countries": [
+        "Q43"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Anavatan%201927.jpg"
+    },
+    {
+      "id": "Q251600",
+      "name": "Unification of Saudi Arabia",
+      "nameRu": "Объединение Саудовской Аравии",
+      "category": "society-administration",
+      "year": 1902,
+      "endYear": 1932,
+      "tagline": "house of Saudi Arabia kingdom claim",
+      "sitelinks": 22,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Formation_of_Saudi_Arabia",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Formation_of_Saudi_Arabia",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B2%99%E7%89%B9%E9%98%BF%E6%8B%89%E4%BC%AF%E7%BB%9F%E4%B8%80",
+        "es": "https://es.wikipedia.org/wiki/Unificaci%C3%B3n_de_Arabia_Saudita",
+        "fr": "https://fr.wikipedia.org/wiki/Unification_de_l%27Arabie_saoudite",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%88%D8%AD%D9%8A%D8%AF_%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%8A%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A1%D0%B0%D1%83%D0%B4%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9_%D0%90%D1%80%D0%B0%D0%B2%D0%B8%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Saudi%20Arabia%20map.png"
+    },
+    {
+      "id": "Q187650",
+      "name": "Great Purge",
+      "nameRu": "Большой террор",
+      "category": "society-administration",
+      "year": 1936,
+      "month": 8,
+      "endYear": 1938,
+      "endMonth": 11,
+      "tagline": "Soviet campaign of political repression, imprisonment, and execution (August 1936 - March 1938)",
+      "taglineRu": "массовые репрессии 1937—1938 годов в СССР",
+      "sitelinks": 73,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Purge",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Great_Purge",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%B8%85%E6%B4%97",
+        "es": "https://es.wikipedia.org/wiki/Gran_Purga",
+        "fr": "https://fr.wikipedia.org/wiki/Grandes_Purges",
+        "de": "https://de.wikipedia.org/wiki/Gro%C3%9Fer_Terror_(Sowjetunion)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AA%D8%B7%D9%87%D9%8A%D8%B1_%D8%A7%D9%84%D9%83%D8%A8%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9_%D1%82%D0%B5%D1%80%D1%80%D0%BE%D1%80"
+      },
+      "countries": [
+        "Q15180"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Great%20Purge%20Resolution%20of%20Central%20Committee.jpg"
+    },
+    {
+      "id": "Q1661772",
+      "name": "Proclamation of Indonesian Independence",
+      "nameRu": "Декларация независимости Индонезии",
+      "category": "society-administration",
+      "year": 1945,
+      "month": 8,
+      "tagline": "1945 document declaring Indonesian independence from the Netherlands",
+      "sitelinks": 27,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_Indonesian_Independence",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Proclamation_of_Indonesian_Independence",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%BA%A6%E5%B0%BC%E8%A5%BF%E4%BA%9E%E7%8D%A8%E7%AB%8B%E5%AE%A3%E8%A8%80",
+        "es": "https://es.wikipedia.org/wiki/Declaraci%C3%B3n_de_Independencia_de_Indonesia",
+        "fr": "https://fr.wikipedia.org/wiki/Proclamation_de_l%27ind%C3%A9pendance_de_l%27Indon%C3%A9sie",
+        "de": "https://de.wikipedia.org/wiki/Indonesische_Unabh%C3%A4ngigkeitserkl%C3%A4rung",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B9%D9%84%D8%A7%D9%86_%D8%A7%D8%B3%D8%AA%D9%82%D9%84%D8%A7%D9%84_%D8%A5%D9%86%D8%AF%D9%88%D9%86%D9%8A%D8%B3%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%BD%D0%B5%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8_%D0%98%D0%BD%D0%B4%D0%BE%D0%BD%D0%B5%D0%B7%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q252"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Indonesia%20declaration%20of%20independence%2017%20August%201945.jpg"
+    },
+    {
+      "id": "Q10872057",
+      "name": "proclamation of the People's Republic of China",
+      "nameRu": "Провозглашение Китайской Народной Республики",
+      "category": "society-administration",
+      "year": 1949,
+      "month": 10,
+      "tagline": "official founding of the PRC",
+      "sitelinks": 17,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_the_People%27s_Republic_of_China",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Proclamation_of_the_People%27s_Republic_of_China",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9C%8B%E4%B8%AD%E5%A4%AE%E4%BA%BA%E6%B0%91%E6%94%BF%E5%BA%9C%E6%88%90%E7%AB%8B%E5%85%B8%E7%A6%AE",
+        "es": "https://es.wikipedia.org/wiki/Proclamaci%C3%B3n_de_la_Rep%C3%BAblica_Popular_China",
+        "fr": "https://fr.wikipedia.org/wiki/Proclamation_de_la_R%C3%A9publique_populaire_de_Chine",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B9%D9%84%D8%A7%D9%86_%D8%AC%D9%85%D9%87%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%B5%D9%8A%D9%86_%D8%A7%D9%84%D8%B4%D8%B9%D8%A8%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B7%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9A%D0%B8%D1%82%D0%B0%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%9D%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9_%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B8"
+      },
+      "countries": [
+        "Q148"
+      ]
+    },
+    {
+      "id": "Q167457",
+      "name": "Treaty of Rome",
+      "nameRu": "Римский договор",
+      "category": "law-jurisprudence",
+      "year": 1957,
+      "month": 3,
+      "tagline": "Founding Treaties of the European Communities (1957)",
+      "taglineRu": "международный договор 1957 года",
+      "sitelinks": 72,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Treaty_of_Rome",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Treaty_of_Rome",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BE%85%E9%A6%AC%E6%A2%9D%E7%B4%84",
+        "es": "https://es.wikipedia.org/wiki/Tratados_de_Roma",
+        "fr": "https://fr.wikipedia.org/wiki/Trait%C3%A9_instituant_la_Communaut%C3%A9_%C3%A9conomique_europ%C3%A9enne",
+        "de": "https://de.wikipedia.org/wiki/Vertrag_zur_Gr%C3%BCndung_der_Europ%C3%A4ischen_Gemeinschaft",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%AA%D9%81%D8%A7%D9%82%D9%8A%D8%A9_%D8%B1%D9%88%D9%85%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%B8%D0%B9_%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80"
+      },
+      "countries": [
+        "Q38"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EEC%20Treaty%20%28Treaty%20of%20Rome%29%20German%20copy.pdf"
+    },
+    {
+      "id": "Q96379430",
+      "name": "Ghana Independence Act 1957",
+      "category": "law-jurisprudence",
+      "year": 1957,
+      "tagline": "United Kingdom legislation",
+      "sitelinks": 12,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghana_Independence_Act_1957",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ghana_Independence_Act_1957",
+        "zh": "https://zh.wikipedia.org/wiki/1957%E5%B9%B4%E5%8A%A0%E7%B4%8D%E7%8D%A8%E7%AB%8B%E6%B3%95%E4%BB%A4",
+        "es": "https://es.wikipedia.org/wiki/Ley_de_Independencia_de_Ghana_de_1957",
+        "de": "https://de.wikipedia.org/wiki/Gesetz_%C3%BCber_die_Unabh%C3%A4ngigkeit_Ghanas_von_1957"
+      },
+      "countries": [
+        "Q145"
+      ]
+    },
+    {
+      "id": "Q387647",
+      "name": "Year of Africa",
+      "nameRu": "Список стран, освободившихся в Год Африки",
+      "category": "society-administration",
+      "year": 1960,
+      "tagline": "1960, year of the independence of 17 African countries",
+      "sitelinks": 18,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Year_of_Africa",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Year_of_Africa",
+        "es": "https://es.wikipedia.org/wiki/A%C3%B1o_de_%C3%81frica",
+        "de": "https://de.wikipedia.org/wiki/Afrikanisches_Jahr",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%BE%D0%B4_%D0%90%D1%84%D1%80%D0%B8%D0%BA%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Africa%20independence%20dates.svg"
+    },
+    {
+      "id": "Q192341",
+      "name": "I Have a Dream",
+      "nameRu": "У меня есть мечта",
+      "category": "social-movements",
+      "year": 1963,
+      "month": 8,
+      "tagline": "1963 speech delivered by Martin Luther King Jr. in Washington D.C. to 250.000 people of the civil rights movement, regarded as one of the most important speeches in US history",
+      "taglineRu": "знаменитая речь Мартина Лютера Кинга",
+      "sitelinks": 75,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/I_Have_a_Dream",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/I_Have_a_Dream",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%AA%E6%A2%A6%E6%83%B3",
+        "es": "https://es.wikipedia.org/wiki/Yo_tengo_un_sue%C3%B1o",
+        "fr": "https://fr.wikipedia.org/wiki/I_have_a_dream",
+        "de": "https://de.wikipedia.org/wiki/I_Have_a_Dream",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D8%AF%D9%8A_%D8%AD%D9%84%D9%85",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A3_%D0%BC%D0%B5%D0%BD%D1%8F_%D0%B5%D1%81%D1%82%D1%8C_%D0%BC%D0%B5%D1%87%D1%82%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Martin%20Luther%20King%20-%20March%20on%20Washington%20%28cropped%29.jpg"
+    },
+    {
+      "id": "Q1205521",
+      "name": "Chinese economic reform",
+      "nameRu": "Политика реформ и открытости",
+      "category": "commerce-finance",
+      "year": 1978,
+      "month": 12,
+      "tagline": "reforms allowing more free markets in China since Deng Xiaoping",
+      "sitelinks": 40,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Reform_and_opening_up",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Reform_and_opening_up",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%94%B9%E9%9D%A9%E5%BC%80%E6%94%BE",
+        "es": "https://es.wikipedia.org/wiki/Reforma_econ%C3%B3mica_china",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9forme_%C3%A9conomique_chinoise",
+        "de": "https://de.wikipedia.org/wiki/Reform-_und_%C3%96ffnungspolitik",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A_%D8%A7%D9%84%D8%B5%D9%8A%D9%86%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0_%D1%80%D0%B5%D1%84%D0%BE%D1%80%D0%BC_%D0%B8_%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D0%BE%D1%81%D1%82%D0%B8"
+      },
+      "countries": [
+        "Q148"
+      ]
+    },
+    {
+      "id": "Q12214",
+      "name": "smallpox",
+      "nameRu": "натуральная оспа",
+      "category": "public-health",
+      "year": -10000,
+      "tagline": "eradicated human disease",
+      "taglineRu": "высокозаразная инфекционная болезнь",
+      "sitelinks": 147,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Smallpox",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Smallpox",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%A9%E8%8A%B1",
+        "es": "https://es.wikipedia.org/wiki/Viruela",
+        "fr": "https://fr.wikipedia.org/wiki/Variole",
+        "de": "https://de.wikipedia.org/wiki/Pocken",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AC%D8%AF%D8%B1%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%82%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%BE%D1%81%D0%BF%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Child%20with%20Smallpox%20Bangladesh.jpg"
+    },
+    {
+      "id": "Q5333520",
+      "name": "Economic liberalisation in India",
+      "category": "commerce-finance",
+      "year": 1991,
+      "month": 7,
+      "tagline": "economic reforms in India that started on 24 July 1991",
+      "sitelinks": 13,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Economic_liberalisation_in_India",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Economic_liberalisation_in_India",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%BA%A6%E7%9A%84%E7%B6%93%E6%BF%9F%E8%87%AA%E7%94%B1%E5%8C%96",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AA%D8%AD%D8%B1%D9%8A%D8%B1_%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A_%D9%81%D9%8A_%D8%A7%D9%84%D9%87%D9%86%D8%AF"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q957012",
+      "name": "1994 South African general election",
+      "nameRu": "Парламентские выборы в ЮАР (1994)",
+      "category": "society-administration",
+      "year": 1994,
+      "month": 4,
+      "endYear": 1994,
+      "endMonth": 4,
+      "tagline": "first South African election held under universal suffrage",
+      "sitelinks": 25,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1994_South_African_general_election",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/1994_South_African_general_election",
+        "zh": "https://zh.wikipedia.org/wiki/1994%E5%B9%B4%E5%8D%97%E9%9D%9E%E5%A4%A7%E9%81%B8",
+        "es": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Sud%C3%A1frica_de_1994",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_sud-africaines_de_1994",
+        "de": "https://de.wikipedia.org/wiki/Wahlen_in_S%C3%BCdafrika_1994",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A7%D9%86%D8%AA%D8%AE%D8%A7%D8%A8%D8%A7%D8%AA_%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9_%D9%81%D9%8A_%D8%AC%D9%86%D9%88%D8%A8_%D8%A5%D9%81%D8%B1%D9%8A%D9%82%D9%8A%D8%A7_1994",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BB%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D1%8B_%D0%B2_%D0%AE%D0%90%D0%A0_(1994)"
+      },
+      "countries": [
+        "Q258"
+      ]
+    },
+    {
+      "id": "Q6113985",
+      "name": "Upanishads",
+      "nameRu": "Упанишады",
+      "category": "religion-mythology",
+      "year": -699,
+      "approximateDate": true,
+      "tagline": "ancient Sanskrit religious and philosophical texts of Hinduism",
+      "taglineRu": "древнеиндийские религиозно-философские трактаты",
+      "sitelinks": 109,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Upanishads",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Upanishads",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A5%A5%E4%B9%89%E4%B9%A6",
+        "es": "https://es.wikipedia.org/wiki/Upanishad",
+        "fr": "https://fr.wikipedia.org/wiki/Upanishad",
+        "de": "https://de.wikipedia.org/wiki/Upanishaden",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A3%D8%A8%D8%A7%D9%86%D9%8A%D8%B4%D8%A7%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A3%D0%BF%D0%B0%D0%BD%D0%B8%D1%88%D0%B0%D0%B4%D1%8B"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MS%20Indic%2037%2C%20Isa%20upanisad.%20Wellcome%20L0027330.jpg"
+    },
+    {
+      "id": "Q41207",
+      "name": "coin",
+      "nameRu": "монета",
+      "category": "commerce-finance",
+      "year": -599,
+      "approximateDate": true,
+      "tagline": "piece of hard material produced in large quantities to facilitate trade",
+      "taglineRu": "кусок твёрдого материала, используемый при обмене и торговле",
+      "sitelinks": 129,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Coin",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Coin",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A1%AC%E5%B9%A3",
+        "es": "https://es.wikipedia.org/wiki/Moneda",
+        "fr": "https://fr.wikipedia.org/wiki/Pi%C3%A8ce_de_monnaie",
+        "de": "https://de.wikipedia.org/wiki/M%C3%BCnze",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D9%82%D9%88%D8%AF_%D9%85%D8%B9%D8%AF%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B5%D1%82%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/One%20Rupee%20East%20India%20Company.JPG"
+    },
+    {
+      "id": "Q223767",
+      "name": "democracy in Athens",
+      "nameRu": "Афинская демократия",
+      "category": "society-administration",
+      "year": -507,
+      "tagline": "democratic regime in 5th- and 4th-century-BCE Athens",
+      "sitelinks": 54,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Athenian_democracy",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Athenian_democracy",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%85%E5%85%B8%E5%BC%8F%E6%B0%91%E4%B8%BB",
+        "es": "https://es.wikipedia.org/wiki/Democracia_ateniense",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9mocratie_ath%C3%A9nienne",
+        "de": "https://de.wikipedia.org/wiki/Attische_Demokratie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D9%8A%D9%85%D9%82%D8%B1%D8%A7%D8%B7%D9%8A%D8%A9_%D8%A3%D8%AB%D9%8A%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%84%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B4%D0%B5%D0%BC%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Discurso%20funebre%20pericles.PNG"
+    },
+    {
+      "id": "Q340742",
+      "name": "Axial Age",
+      "nameRu": "Осевое время",
+      "category": "philosophy-education",
+      "year": -799,
+      "endYear": -199,
+      "approximateDate": true,
+      "tagline": "pivotal age characterizing history and philosophy from the 8th to 3rd centuries BCE",
+      "sitelinks": 31,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Axial_Age",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Axial_Age",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%BB%B8%E5%BF%83%E4%B8%96%E7%B4%80",
+        "es": "https://es.wikipedia.org/wiki/Era_Axial",
+        "fr": "https://fr.wikipedia.org/wiki/P%C3%A9riode_axiale",
+        "de": "https://de.wikipedia.org/wiki/Achsenzeit",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B9%D8%B5%D8%B1_%D8%A7%D9%84%D9%85%D8%AD%D9%88%D8%B1%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%B5%D0%B2%D0%BE%D0%B5_%D0%B2%D1%80%D0%B5%D0%BC%D1%8F"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q8251",
+      "name": "The Art of War",
+      "nameRu": "Искусство войны",
+      "category": "culture-arts",
+      "year": -499,
+      "approximateDate": true,
+      "tagline": "5th century BC Chinese military treatise",
+      "taglineRu": "Древнекитайский трактат о войне",
+      "sitelinks": 128,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Art_of_War",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/The_Art_of_War",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%AD%99%E5%AD%90%E5%85%B5%E6%B3%95",
+        "es": "https://es.wikipedia.org/wiki/El_arte_de_la_guerra",
+        "fr": "https://fr.wikipedia.org/wiki/L%27Art_de_la_guerre",
+        "de": "https://de.wikipedia.org/wiki/Die_Kunst_des_Krieges_(Sunzi)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D9%86_%D8%A7%D9%84%D8%AD%D8%B1%D8%A8",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%BE_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bamboo%20book%20-%20closed%20-%20UCR.jpg"
+    },
+    {
+      "id": "Q1000970",
+      "name": "Buddhism in Sri Lanka",
+      "nameRu": "буддизм на Шри-Ланке",
+      "category": "religion-mythology",
+      "year": -249,
+      "approximateDate": true,
+      "tagline": "history and demographics of Buddhism in Sri Lanka, formerly Ceylon",
+      "sitelinks": 32,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_Sri_Lanka",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Buddhism_in_Sri_Lanka",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%96%AF%E9%87%8C%E5%85%B0%E5%8D%A1%E4%BD%9B%E6%95%99",
+        "fr": "https://fr.wikipedia.org/wiki/Bouddhisme_au_Sri_Lanka",
+        "de": "https://de.wikipedia.org/wiki/Buddhismus_in_Sri_Lanka",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A8%D9%88%D8%B0%D9%8A%D8%A9_%D9%81%D9%8A_%D8%B3%D8%B1%D9%8A%D9%84%D8%A7%D9%86%D9%83%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B4%D0%B4%D0%B8%D0%B7%D0%BC_%D0%BD%D0%B0_%D0%A8%D1%80%D0%B8-%D0%9B%D0%B0%D0%BD%D0%BA%D0%B5"
+      },
+      "countries": [
+        "Q854"
+      ]
+    },
+    {
+      "id": "Q36288",
+      "name": "Silk Road",
+      "nameRu": "Великий шёлковый путь",
+      "category": "commerce-finance",
+      "year": -137,
+      "approximateDate": true,
+      "tagline": "trade routes through Asia connecting China to the Mediterranean Sea",
+      "taglineRu": "Главный торговый путь между Европой и Азией в Античность и Средние века",
+      "sitelinks": 143,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Silk_Road",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Silk_Road",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%B8%9D%E7%BB%B8%E4%B9%8B%E8%B7%AF",
+        "es": "https://es.wikipedia.org/wiki/Ruta_de_la_Seda",
+        "fr": "https://fr.wikipedia.org/wiki/Route_de_la_soie",
+        "de": "https://de.wikipedia.org/wiki/Seidenstra%C3%9Fe",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B7%D8%B1%D9%8A%D9%82_%D8%A7%D9%84%D8%AD%D8%B1%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B8%D0%B9_%D1%88%D1%91%D0%BB%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9_%D0%BF%D1%83%D1%82%D1%8C"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Silk%20road%20Kazakhstan.svg"
+    },
+    {
+      "id": "Q10873159",
+      "name": "Buddhism in China",
+      "nameRu": "буддизм в Китае",
+      "category": "religion-mythology",
+      "year": 67,
+      "approximateDate": true,
+      "tagline": "overview role of Buddhism in China",
+      "sitelinks": 18,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_China",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Buddhism_in_China",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E4%BD%9B%E6%95%99",
+        "es": "https://es.wikipedia.org/wiki/Budismo_en_China",
+        "fr": "https://fr.wikipedia.org/wiki/Bouddhisme_en_Chine",
+        "de": "https://de.wikipedia.org/wiki/Buddhismus_in_China",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A8%D9%88%D8%B0%D9%8A%D8%A9_%D9%81%D9%8A_%D8%A7%D9%84%D8%B5%D9%8A%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B4%D0%B4%D0%B8%D0%B7%D0%BC_%D0%B2_%D0%9A%D0%B8%D1%82%D0%B0%D0%B5"
+      },
+      "countries": [
+        "Q148"
+      ]
+    },
+    {
+      "id": "Q1811550",
+      "name": "history of paper",
+      "category": "everyday-technology",
+      "year": 105,
+      "approximateDate": true,
+      "tagline": "aspect of history",
+      "sitelinks": 17,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/History_of_paper",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BA%B8%E7%9A%84%E5%8E%86%E5%8F%B2",
+        "fr": "https://fr.wikipedia.org/wiki/Histoire_du_papier",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE_%D8%A7%D9%84%D9%88%D8%B1%D9%82"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q465279",
+      "name": "trans-Saharan trade",
+      "nameRu": "Транссахарская торговля",
+      "category": "commerce-finance",
+      "year": 300,
+      "approximateDate": true,
+      "tagline": "trade between sub-Saharan Africa and North Africa",
+      "sitelinks": 48,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Trans-Saharan_trade",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Trans-Saharan_trade",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%B7%A8%E6%92%92%E5%93%88%E6%8B%89%E8%B4%B8%E6%98%93",
+        "es": "https://es.wikipedia.org/wiki/Comercio_transahariano",
+        "fr": "https://fr.wikipedia.org/wiki/Commerce_transsaharien",
+        "de": "https://de.wikipedia.org/wiki/Transsaharahandel",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9_%D8%A7%D9%84%D8%B9%D8%A7%D8%A8%D8%B1%D8%A9_%D9%84%D9%84%D8%B5%D8%AD%D8%B1%D8%A7%D8%A1_%D8%A7%D9%84%D9%83%D8%A8%D8%B1%D9%89",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B0%D0%BD%D1%81%D1%81%D0%B0%D1%85%D0%B0%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D1%82%D0%BE%D1%80%D0%B3%D0%BE%D0%B2%D0%BB%D1%8F"
+      },
+      "countries": [
+        "Q262"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/French%20language%20map%20of%20Central%20and%20Eastern%20Africa%201862.jpg"
+    },
+    {
+      "id": "Q8276",
+      "name": "Mahabharata",
+      "nameRu": "Махабхарата",
+      "category": "culture-arts",
+      "year": 400,
+      "approximateDate": true,
+      "tagline": "ancient Sanskrit epic by Vyasa",
+      "taglineRu": "древнеиндийский эпос",
+      "sitelinks": 169,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahabharata",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mahabharata",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%91%A9%E8%AF%83%E5%A9%86%E7%BD%97%E5%A4%9A",
+        "es": "https://es.wikipedia.org/wiki/Mahabharata",
+        "fr": "https://fr.wikipedia.org/wiki/Mahabharata",
+        "de": "https://de.wikipedia.org/wiki/Mahabharata",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%87%D8%A7%D8%A8%D9%87%D8%A7%D8%B1%D8%A7%D8%AA%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%85%D0%B0%D0%B1%D1%85%D0%B0%D1%80%D0%B0%D1%82%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kurukshetra.jpg"
+    },
+    {
+      "id": "Q216243",
+      "name": "Nalanda Mahavihara",
+      "nameRu": "Наланда",
+      "category": "philosophy-education",
+      "year": 450,
+      "approximateDate": true,
+      "tagline": "ancient Hindu-Buddhist monastery in present-day Bihar, India",
+      "sitelinks": 72,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nalanda_mahavihara",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nalanda_mahavihara",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%82%A3%E7%83%82%E9%99%80%E5%AF%BA",
+        "es": "https://es.wikipedia.org/wiki/Nalanda",
+        "fr": "https://fr.wikipedia.org/wiki/N%C3%A2land%C3%A2",
+        "de": "https://de.wikipedia.org/wiki/Nalanda",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D8%A7%D9%84%D9%86%D8%AF%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D0%BB%D0%B0%D0%BD%D0%B4%D0%B0"
+      },
+      "countries": [
+        "Q668"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nalanda%20The%20Great%20Stupa.jpg"
+    },
+    {
+      "id": "Q272153",
+      "name": "Sigiriya",
+      "nameRu": "Сигирия",
+      "category": "landmarks",
+      "year": 477,
+      "tagline": "ancient rock fortress near Dambulla, Sri Lanka.",
+      "taglineRu": "плато и крепость в Шри-Ланке",
+      "sitelinks": 63,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sigiriya",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sigiriya",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%94%A1%E5%90%89%E9%87%8C%E8%80%B6",
+        "es": "https://es.wikipedia.org/wiki/Sigiriya",
+        "fr": "https://fr.wikipedia.org/wiki/Sigir%C3%AEya",
+        "de": "https://de.wikipedia.org/wiki/Sigiriya",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D8%AC%D9%8A%D8%B1%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B3%D0%B8%D1%80%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q854"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Beauty%20of%20Sigiriya%20by%20Binuka.jpg"
+    },
+    {
+      "id": "Q5869513",
+      "name": "history of the Hindu–Arabic numeral system",
+      "category": "science-theory",
+      "year": 500,
+      "approximateDate": true,
+      "tagline": "aspect of history",
+      "sitelinks": 4,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Hindu%E2%80%93Arabic_numeral_system",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/History_of_the_Hindu%E2%80%93Arabic_numeral_system",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE_%D9%86%D8%B8%D8%A7%D9%85_%D8%A7%D9%84%D8%B9%D8%AF_%D8%A7%D9%84%D9%87%D9%86%D8%AF%D9%8A_%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q769743",
+      "name": "Settlement of Madagascar",
+      "nameRu": "Заселение Мадагаскара",
+      "category": "archaeology-anthropology",
+      "year": 500,
+      "approximateDate": true,
+      "tagline": "aspect of history",
+      "sitelinks": 40,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_Madagascar",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/History_of_Madagascar",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%A9%AC%E8%BE%BE%E5%8A%A0%E6%96%AF%E5%8A%A0%E5%8E%86%E5%8F%B2",
+        "es": "https://es.wikipedia.org/wiki/Historia_de_Madagascar",
+        "fr": "https://fr.wikipedia.org/wiki/Histoire_de_Madagascar",
+        "de": "https://de.wikipedia.org/wiki/Geschichte_Madagaskars",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE_%D9%85%D8%AF%D8%BA%D8%B4%D9%82%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F_%D0%9C%D0%B0%D0%B4%D0%B0%D0%B3%D0%B0%D1%81%D0%BA%D0%B0%D1%80%D0%B0"
+      },
+      "countries": [
+        "Q1019"
+      ]
+    },
+    {
+      "id": "Q31347",
+      "name": "Grand Canal",
+      "nameRu": "Великий канал",
+      "category": "infrastructure",
+      "year": 605,
+      "tagline": "longest canal or artificial river in the world located in China",
+      "taglineRu": "древний судоходный канал в Китае",
+      "sitelinks": 70,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Grand_Canal_(China)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Grand_Canal_(China)",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%A7%E8%BF%90%E6%B2%B3",
+        "es": "https://es.wikipedia.org/wiki/Gran_Canal_de_China",
+        "fr": "https://fr.wikipedia.org/wiki/Grand_Canal_(Chine)",
+        "de": "https://de.wikipedia.org/wiki/Kaiserkanal",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%82%D9%86%D8%A7%D8%A9_%D8%A7%D9%84%D8%B5%D9%8A%D9%86%D9%8A%D8%A9_%D8%A7%D9%84%D9%83%D8%A8%D8%B1%D9%89",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB"
+      },
+      "countries": [
+        "Q148"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E5%A4%A7%E9%81%8B%E6%B2%B3.png"
+    },
+    {
+      "id": "Q4378226",
+      "name": "calling of the Varangians",
+      "nameRu": "призвание варягов",
+      "category": "society-administration",
+      "year": 862,
+      "approximateDate": true,
+      "tagline": "historical legend about the origins of Rus",
+      "taglineRu": "исторический сюжет о происхождении Руси",
+      "sitelinks": 5,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Calling_of_the_Varangians",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Calling_of_the_Varangians",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B2%D0%B0%D1%80%D1%8F%D0%B3%D0%BE%D0%B2"
+      },
+      "countries": [
+        "Q19692623"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Calling%20of%20varangians%2001.jpg"
+    },
+    {
+      "id": "Q426853",
+      "name": "movable type",
+      "nameRu": "Ручной набор",
+      "category": "communication",
+      "year": 1040,
+      "approximateDate": true,
+      "tagline": "system of printing and typography that uses movable components",
+      "taglineRu": "тип книгопечатания",
+      "sitelinks": 25,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Movable_type",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Movable_type",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B4%BB%E5%AD%97%E5%8D%B0%E5%88%B7%E6%9C%AF",
+        "es": "https://es.wikipedia.org/wiki/Tipos_m%C3%B3viles",
+        "fr": "https://fr.wikipedia.org/wiki/Caract%C3%A8res_mobiles",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9_%D8%AD%D8%B1%D9%83%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%87%D0%BD%D0%BE%D0%B9_%D0%BD%D0%B0%D0%B1%D0%BE%D1%80"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q3286250",
+      "name": "Portuguese India Armadas",
+      "nameRu": "Индийские армады",
+      "category": "expedition",
+      "year": 1498,
+      "month": 5,
+      "tagline": "fleets used to trade with India",
+      "taglineRu": "Флоты использованные в Индии",
+      "sitelinks": 11,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Portuguese_India_Armadas",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Portuguese_India_Armadas",
+        "es": "https://es.wikipedia.org/wiki/Armadas_de_la_India",
+        "de": "https://de.wikipedia.org/wiki/Portugiesische_Indien-Armadas",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B5_%D0%B0%D1%80%D0%BC%D0%B0%D0%B4%D1%8B"
+      },
+      "countries": [
+        "Q45670"
+      ]
+    },
+    {
+      "id": "Q1645505",
+      "name": "English Reformation",
+      "nameRu": "Реформация в Англии",
+      "category": "religion-mythology",
+      "year": 1534,
+      "month": 11,
+      "tagline": "16th-century separation of the Church of England from the Pope of Rome",
+      "sitelinks": 37,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/English_Reformation",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/English_Reformation",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8B%B1%E6%A0%BC%E5%85%B0%E5%AE%97%E6%95%99%E6%94%B9%E9%9D%A9",
+        "es": "https://es.wikipedia.org/wiki/Reforma_anglicana",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9forme_anglaise",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B5%D9%84%D8%A7%D8%AD_%D8%A5%D9%86%D8%AC%D9%84%D9%8A%D8%B2%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F_%D0%B2_%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q179876"
+      ]
+    },
+    {
+      "id": "Q3199818",
+      "name": "Spanish colonization of the Philippines",
+      "nameRu": "Испанская колонизация Филиппин",
+      "category": "society-administration",
+      "year": 1565,
+      "month": 4,
+      "tagline": "Historical Spanish colonial period in the Philippines",
+      "sitelinks": 10,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Philippines_(1565%E2%80%931898)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/History_of_the_Philippines_(1565%E2%80%931898)",
+        "es": "https://es.wikipedia.org/wiki/Per%C3%ADodo_colonial_espa%C3%B1ol_de_Filipinas",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE_%D8%A7%D9%84%D9%81%D9%84%D8%A8%D9%8A%D9%86_(1521-1898)"
+      },
+      "countries": [
+        "Q928"
+      ]
+    },
+    {
+      "id": "Q187093",
+      "name": "Mayflower",
+      "nameRu": "Мейфлауэр",
+      "category": "expedition",
+      "year": 1620,
+      "month": 9,
+      "tagline": "sailing ship carrying English and Dutch Pilgrims from England to North America",
+      "sitelinks": 62,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mayflower",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mayflower",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%94%E6%9C%88%E8%8A%B1%E5%8F%B7",
+        "es": "https://es.wikipedia.org/wiki/Mayflower",
+        "fr": "https://fr.wikipedia.org/wiki/Mayflower",
+        "de": "https://de.wikipedia.org/wiki/Mayflower",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%81%D9%8A%D9%86%D8%A9_%D8%A7%D9%84%D9%85%D8%A7%D9%8A%D9%81%D9%84%D8%A7%D9%88%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B9%D1%84%D0%BB%D0%B0%D1%83%D1%8D%D1%80"
+      },
+      "countries": [
+        "Q179876"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mayflower%20in%20Plymouth%20Harbor%2C%20by%20William%20Halsall.jpg"
+    },
+    {
+      "id": "Q6964481",
+      "name": "Raskol",
+      "nameRu": "Раскол Русской церкви",
+      "category": "religion-mythology",
+      "year": 1666,
+      "tagline": "1650s–1660s Russian Orthodox schism creating the Old Believers",
+      "taglineRu": "раскол, начавшийся в 1650-х годах в Москве",
+      "sitelinks": 26,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Schism_of_the_Russian_Church",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Schism_of_the_Russian_Church",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BF%84%E7%BD%97%E6%96%AF%E6%AD%A3%E6%95%99%E4%BC%9A%E7%9A%84%E6%95%99%E6%B4%BE%E5%88%86%E8%A3%82",
+        "es": "https://es.wikipedia.org/wiki/Reforma_de_Nikon",
+        "fr": "https://fr.wikipedia.org/wiki/Raskol",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D0%BA%D0%BE%D0%BB_%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B9_%D1%86%D0%B5%D1%80%D0%BA%D0%B2%D0%B8"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q1551574",
+      "name": "First manned balloon flight",
+      "nameRu": "Первый полёт человека на воздушном шаре",
+      "category": "transportation",
+      "year": 1783,
+      "month": 11,
+      "tagline": "lighter than air aircraft consisting of a bag, called an envelope, which contains heated air",
+      "taglineRu": "тепловой аэростат с оболочкой, наполняемой подогретым воздухом",
+      "sitelinks": 58,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hot_air_balloon",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Hot_air_balloon",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%83%AD%E6%B0%94%E7%90%83",
+        "es": "https://es.wikipedia.org/wiki/Globo_de_aire_caliente",
+        "fr": "https://fr.wikipedia.org/wiki/Montgolfi%C3%A8re",
+        "de": "https://de.wikipedia.org/wiki/Hei%C3%9Fluftballon",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%86%D8%B7%D8%A7%D8%AF_%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%A1_%D8%A7%D9%84%D8%B3%D8%A7%D8%AE%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8C%D1%84%D1%8C%D0%B5%D1%80"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Balloon%20free%20image.jpg"
+    },
+    {
+      "id": "Q131130",
+      "name": "First surgery under anaesthesia",
+      "nameRu": "Первая операция под наркозом",
+      "category": "medicine-health",
+      "year": 1846,
+      "month": 10,
+      "tagline": "state of medically controlled temporary loss of sensation or awareness",
+      "taglineRu": "операция по уменьшению чувствительности тела",
+      "sitelinks": 90,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Anesthesia",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Anesthesia",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%BA%BB%E9%86%89",
+        "es": "https://es.wikipedia.org/wiki/Anestesia",
+        "fr": "https://fr.wikipedia.org/wiki/Anesth%C3%A9sie",
+        "de": "https://de.wikipedia.org/wiki/An%C3%A4sthesie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%AE%D8%AF%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B5%D1%81%D1%82%D0%B5%D0%B7%D0%B8%D1%8F"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q7169780",
+      "name": "Perry Expedition",
+      "category": "expedition",
+      "year": 1853,
+      "month": 7,
+      "tagline": "19th-century American diplomatic and military expedition to Japan",
+      "sitelinks": 21,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Perry_Expedition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Perry_Expedition",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%88%B9%E4%BE%86%E8%88%AA",
+        "fr": "https://fr.wikipedia.org/wiki/Exp%C3%A9dition_de_Perry",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%B9%D8%AB%D8%A9_%D8%A8%D9%8A%D8%B1%D9%8A"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Japanese%201854%20print%20Commodore%20Perry.jpg"
+    },
+    {
+      "id": "Q3447247",
+      "name": "women's suffrage in New Zealand",
+      "nameRu": "Женское избирательное право в Новой Зеландии",
+      "category": "social-movements",
+      "year": 1893,
+      "month": 9,
+      "tagline": "overview of women's voting rights in New Zealand",
+      "sitelinks": 19,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand",
+        "es": "https://es.wikipedia.org/wiki/Sufragio_femenino_en_Nueva_Zelanda",
+        "fr": "https://fr.wikipedia.org/wiki/Droit_de_vote_des_femmes_en_Nouvelle-Z%C3%A9lande",
+        "de": "https://de.wikipedia.org/wiki/Frauenwahlrecht_in_Neuseeland",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D9%82_%D8%A7%D9%84%D9%86%D8%B3%D8%A7%D8%A1_%D9%81%D9%8A_%D8%A7%D9%84%D8%AA%D8%B5%D9%88%D9%8A%D8%AA_%D9%81%D9%8A_%D9%86%D9%8A%D9%88%D8%B2%D9%8A%D9%84%D8%A7%D9%86%D8%AF%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%96%D0%B5%D0%BD%D1%81%D0%BA%D0%BE%D0%B5_%D0%B8%D0%B7%D0%B1%D0%B8%D1%80%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%B0%D0%B2%D0%BE_%D0%B2_%D0%9D%D0%BE%D0%B2%D0%BE%D0%B9_%D0%97%D0%B5%D0%BB%D0%B0%D0%BD%D0%B4%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q664"
+      ]
+    },
+    {
+      "id": "Q34777",
+      "name": "Discovery of X-rays",
+      "nameRu": "Открытие рентгеновских лучей",
+      "category": "science-theory",
+      "year": 1895,
+      "month": 11,
+      "tagline": "electromagnetic radiation of wavelength ranging from 10 pm to 10 nm",
+      "taglineRu": "вид электромагнитных волн",
+      "sitelinks": 129,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X-ray",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/X-ray",
+        "zh": "https://zh.wikipedia.org/wiki/X%E5%B0%84%E7%BA%BF",
+        "es": "https://es.wikipedia.org/wiki/Rayos_X",
+        "fr": "https://fr.wikipedia.org/wiki/Rayon_X",
+        "de": "https://de.wikipedia.org/wiki/R%C3%B6ntgenstrahlung",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%B4%D8%B9%D8%A9_%D8%B3%D9%8A%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%BD%D1%82%D0%B3%D0%B5%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B5_%D0%B8%D0%B7%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/X-ray%20by%20Wilhelm%20R%C3%B6ntgen%20of%20Albert%20von%20K%C3%B6lliker%27s%20hand%20-%2018960123-02.jpg"
+    },
+    {
+      "id": "Q455037",
+      "name": "First moving assembly line",
+      "nameRu": "Первый конвейер Форда",
+      "category": "energy-industry",
+      "year": 1913,
+      "month": 12,
+      "tagline": "manufacturing technology where an unfinished product is moved from workstation to workstation where work steps are performed or parts are added in sequence until the product is complete",
+      "sitelinks": 37,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Assembly_line",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Assembly_line",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%A3%9D%E9%85%8D%E7%B7%9A",
+        "es": "https://es.wikipedia.org/wiki/L%C3%ADnea_de_ensamble",
+        "fr": "https://fr.wikipedia.org/wiki/Ligne_de_montage",
+        "de": "https://de.wikipedia.org/wiki/Flie%C3%9Fbandfertigung",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AE%D8%B7_%D8%AA%D8%AC%D9%85%D9%8A%D8%B9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B2%D0%B5%D0%B9%D0%B5%D1%80%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hyundai%20car%20assembly%20line.jpg"
+    },
+    {
+      "id": "Q189223",
+      "name": "Turing test",
+      "nameRu": "тест Тьюринга",
+      "category": "science-theory",
+      "year": 1950,
+      "tagline": "test of a machine's ability to exhibit intelligent behaviour equivalent to, or indistinguishable from, that of a human",
+      "taglineRu": "эмпирический тест, предложенный Аланом Тьюрингом в статье «Вычислительные машины и разум»",
+      "sitelinks": 69,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Turing_test",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Turing_test",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9B%BE%E7%81%B5%E6%B5%8B%E8%AF%95",
+        "es": "https://es.wikipedia.org/wiki/Prueba_de_Turing",
+        "fr": "https://fr.wikipedia.org/wiki/Test_de_Turing",
+        "de": "https://de.wikipedia.org/wiki/Turing-Test",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1_%D8%AA%D9%88%D8%B1%D9%86%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%81%D1%82_%D0%A2%D1%8C%D1%8E%D1%80%D0%B8%D0%BD%D0%B3%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Turing%20Test%20version%203.png"
+    },
+    {
+      "id": "Q643396",
+      "name": "First human heart transplant",
+      "nameRu": "Первая пересадка сердца человека",
+      "category": "medicine-health",
+      "year": 1967,
+      "month": 12,
+      "tagline": "surgical transplant procedure performed on patients with end-stage heart failure or severe coronary artery disease in which a new heart is implanted",
+      "taglineRu": "хирургическая операция",
+      "sitelinks": 48,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Heart_transplantation",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Heart_transplantation",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%BF%83%E8%84%8F%E7%A7%BB%E6%A4%8D",
+        "es": "https://es.wikipedia.org/wiki/Trasplante_de_coraz%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Transplantation_cardiaque",
+        "de": "https://de.wikipedia.org/wiki/Herztransplantation",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9_%D8%A7%D9%84%D9%82%D9%84%D8%A8",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D1%81%D0%B0%D0%B4%D0%BA%D0%B0_%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Heart%20transplant.jpg"
+    },
+    {
+      "id": "Q193315",
+      "name": "Birth of the Internet",
+      "nameRu": "Рождение интернета",
+      "category": "communication",
+      "year": 1983,
+      "month": 1,
+      "tagline": "history of the Internet, a global system of interconnected computer networks",
+      "sitelinks": 49,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Internet",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/History_of_the_Internet",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%8E%86%E5%8F%B2",
+        "es": "https://es.wikipedia.org/wiki/Historia_de_Internet",
+        "fr": "https://fr.wikipedia.org/wiki/Histoire_d%27Internet",
+        "de": "https://de.wikipedia.org/wiki/Geschichte_des_Internets",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE_%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F_%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D0%B0"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q187899",
+      "name": "Deep Blue defeats Kasparov",
+      "nameRu": "Deep Blue побеждает Каспарова",
+      "category": "everyday-technology",
+      "year": 1997,
+      "month": 5,
+      "tagline": "chess-playing supercomputer built by IBM",
+      "taglineRu": "шахматный суперкомпьютер",
+      "sitelinks": 59,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B7%B1%E8%97%8D_(%E8%B6%85%E7%B4%9A%E9%9B%BB%E8%85%A6)",
+        "es": "https://es.wikipedia.org/wiki/Deep_Blue_(computadora)",
+        "fr": "https://fr.wikipedia.org/wiki/Deep_Blue",
+        "de": "https://de.wikipedia.org/wiki/Deep_Blue",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D9%8A%D8%A8_%D8%A8%D9%84%D9%88",
+        "ru": "https://ru.wikipedia.org/wiki/Deep_Blue"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Deep%20Blue.jpg"
+    },
+    {
+      "id": "Q28325009",
+      "name": "AlexNet",
+      "category": "science-theory",
+      "year": 2012,
+      "month": 9,
+      "tagline": "type of convolutional neural network",
+      "sitelinks": 17,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/AlexNet",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/AlexNet",
+        "zh": "https://zh.wikipedia.org/wiki/AlexNet",
+        "es": "https://es.wikipedia.org/wiki/AlexNet",
+        "fr": "https://fr.wikipedia.org/wiki/AlexNet",
+        "de": "https://de.wikipedia.org/wiki/AlexNet",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D9%84%D9%83%D8%B3%D9%86%D8%AA"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q79897",
+      "name": "Morse code",
+      "nameRu": "азбука Морзе",
+      "category": "communication",
+      "year": 1844,
+      "month": 5,
+      "tagline": "communication code with signals representing letters, punctuation marks and numbers",
+      "taglineRu": "способ знакового кодирования двумя знаками",
+      "sitelinks": 106,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Morse_code",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Morse_code",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81",
+        "es": "https://es.wikipedia.org/wiki/C%C3%B3digo_morse",
+        "fr": "https://fr.wikipedia.org/wiki/Code_Morse_international",
+        "de": "https://de.wikipedia.org/wiki/Morsecode",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%B1%D9%85%D9%8A%D8%B2_%D9%85%D9%88%D8%B1%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%B7%D0%B1%D1%83%D0%BA%D0%B0_%D0%9C%D0%BE%D1%80%D0%B7%D0%B5"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SOS.svg"
     }
   ]
 }

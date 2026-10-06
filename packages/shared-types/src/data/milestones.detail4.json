@@ -62,7 +62,7 @@
       "year": 1908,
       "month": 9
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q15003",
@@ -78,7 +78,7 @@
     "at": {
       "year": 1891
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q1932",
@@ -100,7 +100,7 @@
         "month": 7
       }
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q180253",
@@ -115,7 +115,7 @@
     "at": {
       "year": 1842
     },
-    "row": 6
+    "row": 11
   },
   {
     "id": "Q13582",
@@ -139,7 +139,7 @@
         "month": 2
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q55816",
@@ -157,7 +157,7 @@
     "at": {
       "year": 1981
     },
-    "row": 21
+    "row": 19
   },
   {
     "id": "Q35045",
@@ -191,7 +191,7 @@
       "year": 1916,
       "month": 5
     },
-    "row": 16
+    "row": 24
   },
   {
     "id": "Q608613",
@@ -252,6 +252,24 @@
     "row": 2
   },
   {
+    "id": "Q187093",
+    "name": "Mayflower",
+    "category": "expedition",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "sailing ship carrying English and Dutch Pilgrims from England to North America",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mayflower",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mayflower%20in%20Plymouth%20Harbor%2C%20by%20William%20Halsall.jpg",
+    "description": "Mayflower was an English square-rigged merchant sailing ship, active from before 1609 until 1622. Her tonnage was 180+, and she was 110 feet long and 25 feet in the beam, with several decks. She was notable in that she transported a group of English families, known today as the Pilgrims, from England to the New World in 1620.",
+    "at": {
+      "year": 1620,
+      "month": 9
+    },
+    "row": 2
+  },
+  {
     "id": "Q211382",
     "name": "high-speed rail",
     "category": "infrastructure",
@@ -281,7 +299,7 @@
     "at": {
       "year": 1839
     },
-    "row": 9
+    "row": 12
   },
   {
     "id": "Q227467",
@@ -298,7 +316,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 27
+    "row": 28
   },
   {
     "id": "Q221474",
@@ -384,7 +402,7 @@
         "year": 1968
       }
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q152006",
@@ -435,7 +453,7 @@
       "year": 1867,
       "month": 3
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q3699044",
@@ -459,6 +477,62 @@
     "row": 1
   },
   {
+    "id": "Q378014",
+    "name": "University of al-Qarawiyyin",
+    "category": "philosophy-education",
+    "regionTags": [
+      "western-asia",
+      "northern-africa"
+    ],
+    "fameScore": 74,
+    "tagline": "university in Fez, Morocco",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/University%20of%20Al%20Qaraouiyine.jpg",
+    "imageAttribution": "Abdel Hassouni, via Wikimedia Commons",
+    "description": "The University of al-Qarawiyyin, also written Al-Karaouine or Al Quaraouiyine, is a university located in Fez, Morocco. It was founded as a mosque by Fatima al-Fihri in 857–859 and subsequently became one of the leading spiritual and educational centers of the Islamic Golden Age. It was incorporated into Morocco's modern state university system in 1963 and officially renamed \"University of Al Quaraouiyine\" two years later. The mosque building itself is also a significant complex of historical Moroccan and Islamic architecture that features elements from many different periods of Moroccan history.",
+    "at": {
+      "year": 859
+    },
+    "row": 1
+  },
+  {
+    "id": "Q216243",
+    "name": "Nalanda Mahavihara",
+    "category": "philosophy-education",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 74,
+    "tagline": "ancient Hindu-Buddhist monastery in present-day Bihar, India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nalanda_mahavihara",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nalanda%20The%20Great%20Stupa.jpg",
+    "imageAttribution": "Uphogaphy, via Wikimedia Commons",
+    "description": "Nalanda was a renowned Buddhist mahavihara in medieval Magadha, eastern India. Widely considered to be among the greatest centres of learning in the ancient world and often referred to as \"the world's first residential university\", it was located near the city of Rajagriha, roughly 90 kilometres (56 mi) southeast of Pataliputra. Operating for almost a thousand years from 427 CE until around 1400 CE, Nalanda mahavihara played a vital role in promoting the patronage of arts, culture and academics during the 5th and 6th century CE, a period that has since been described as the \"Golden Age of India\" by scholars. The characterisation of Nalanda as a \"university\" in the modern sense has been challenged by scholars. They argue that while it was undoubtedly a major centre of learning, comparing it directly to a modern university is historically imprecise.",
+    "approximateDate": true,
+    "at": {
+      "year": 450
+    },
+    "row": 1
+  },
+  {
+    "id": "Q272153",
+    "name": "Sigiriya",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 74,
+    "tagline": "ancient rock fortress near Dambulla, Sri Lanka.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sigiriya",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Beauty%20of%20Sigiriya%20by%20Binuka.jpg",
+    "imageAttribution": "Binuka poojan, via Wikimedia Commons",
+    "description": "Sigiriya or Sinhagiri is an ancient rock fortress located in the northern Matale District near the town of Dambulla in the Central Province, Sri Lanka. It is a site of historical and archaeological significance that is dominated by a massive column of granite approximately 180 m (590 ft) high.",
+    "at": {
+      "year": 477
+    },
+    "row": 1
+  },
+  {
     "id": "Q204711",
     "name": "United States Food and Drug Administration",
     "category": "public-health",
@@ -474,7 +548,7 @@
       "year": 1906,
       "month": 6
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q191472",
@@ -506,7 +580,7 @@
     "at": {
       "year": 1955
     },
-    "row": 30
+    "row": 31
   },
   {
     "id": "Q213669",
@@ -522,7 +596,7 @@
     "at": {
       "year": 1909
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q182524",
@@ -540,7 +614,7 @@
       "year": 1961,
       "month": 4
     },
-    "row": 28
+    "row": 25
   },
   {
     "id": "Q184201",
@@ -558,7 +632,7 @@
       "year": 1968,
       "month": 12
     },
-    "row": 21
+    "row": 28
   },
   {
     "id": "Q1188138",
@@ -592,7 +666,7 @@
       "year": 1947,
       "month": 3
     },
-    "row": 29
+    "row": 30
   },
   {
     "id": "Q180764",
@@ -699,7 +773,7 @@
         "year": -537
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q47504",
@@ -717,6 +791,111 @@
     "row": 3
   },
   {
+    "id": "Q145625",
+    "name": "Glagolitic",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "oldest known Slavic alphabet",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Glagolitic_script",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tabla%20Za%20Dicu%2003.jpg",
+    "description": "The Glagolitic script is the oldest-known Slavic alphabet. It is generally agreed that it was created in the 9th century for the purpose of translating Greek liturgical texts into Old Church Slavonic by Cyril, a Christian monk from Thessalonica. He and his brother Methodius were sent by the Byzantine Emperor to Great Moravia as missionaries. After the deaths of Cyril and Methodius, their disciples were expelled from Moravia, and they moved to the First Bulgarian Empire instead. The Early Cyrillic alphabet, which was developed gradually in the Preslav Literary School by scribes who incorporated some Glagolitic letters when writing in the Greek alphabet, gradually replaced Glagolitic in that region. Glagolitic remained in use alongside the Cyrillic and Latin script in the Kingdom of Croatia and Dalmatia and alongside Cyrillic until the 14th century in the Second Bulgarian Empire and the Serbian Empire; in later periods, its use in its eastern range was mainly for cryptographic purposes.",
+    "at": {
+      "year": 862
+    },
+    "row": 2
+  },
+  {
+    "id": "Q204023",
+    "name": "Sengoku period",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "period of Japanese history from 1467 to 1615",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sengoku_period",
+    "description": "The Sengoku period  was the period in Japanese history in which civil wars and social upheavals took place almost continuously in the 15th and 16th centuries. The Kyōtoku incident (1454), Ōnin War (1467), or Meiō incident (1493) are generally chosen as the period's start date, but there are many competing historiographies for its end date, ranging from 1568, the date of Oda Nobunaga's march on Kyoto, to the suppression of the Shimabara Rebellion in 1638, deep into what was traditionally considered the Edo period. Regardless of the dates chosen, the Sengoku period overlaps substantially with the Muromachi period (1336–1573).",
+    "period": {
+      "start": {
+        "year": 1467
+      },
+      "end": {
+        "year": 1590
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q503585",
+    "name": "Korea under Japanese rule",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "Japanese colonial period in Chōsen (Korea), 1910–1945",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Korea_under_Japanese_rule",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20Street%20of%20Honmachi%20Keijo%20Korea%201930s.png",
+    "description": "From 1910 to 1945, Korea was ruled by the Empire of Japan as a colony under the name Chōsen (朝鮮), the Japanese reading of \"Joseon\".",
+    "at": {
+      "year": 1910,
+      "month": 8
+    },
+    "row": 28
+  },
+  {
+    "id": "Q167457",
+    "name": "Treaty of Rome",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "Founding Treaties of the European Communities (1957)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Treaty_of_Rome",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EEC%20Treaty%20%28Treaty%20of%20Rome%29%20German%20copy.pdf",
+    "description": "The Treaty of Rome, or EEC Treaty, brought about the creation of the European Economic Community (EEC), the best known of the European Communities (EC). The treaty was signed on 25 March 1957 by Belgium, France, Italy, Luxembourg, the Netherlands and West Germany, and it came into force on 1 January 1958. Originally the \"Treaty establishing the European Economic Community\", and now continuing under the name \"Treaty on the Functioning of the European Union\", it remains one of the two most important treaties in what is now the European Union (EU).",
+    "at": {
+      "year": 1957,
+      "month": 3
+    },
+    "row": 32
+  },
+  {
+    "id": "Q31347",
+    "name": "Grand Canal",
+    "category": "infrastructure",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "longest canal or artificial river in the world located in China",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Grand_Canal_(China)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E5%A4%A7%E9%81%8B%E6%B2%B3.png",
+    "imageAttribution": "Groverlynn, via Wikimedia Commons",
+    "description": "The Grand Canal is a system of interconnected canals linking various major rivers and lakes in North and East China, serving as an important waterborne transport infrastructure between the north and the south during Medieval and premodern China. It is the longest artificial waterway in the world and a World Heritage Site.",
+    "at": {
+      "year": 605
+    },
+    "row": 0
+  },
+  {
+    "id": "Q193315",
+    "name": "Birth of the Internet",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "history of the Internet, a global system of interconnected computer networks",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Internet",
+    "description": "The Internet originated in the efforts of scientists and engineers to build and interconnect computer networks. The Internet Protocol Suite, the set of rules used to communicate between networks and devices on the Internet, arose from research and development in the United States and involved international collaboration, particularly with researchers in the United Kingdom and France.",
+    "at": {
+      "year": 1983,
+      "month": 1
+    },
+    "row": 22
+  },
+  {
     "id": "Q192446",
     "name": "Human Genome Project",
     "category": "science-theory",
@@ -730,7 +909,7 @@
     "at": {
       "year": 1990
     },
-    "row": 23
+    "row": 21
   },
   {
     "id": "Q158075",
@@ -746,7 +925,7 @@
     "at": {
       "year": 1450
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q208708",
@@ -777,7 +956,7 @@
     "at": {
       "year": 1890
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q505802",
@@ -801,7 +980,7 @@
         "month": 9
       }
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q209440",
@@ -817,7 +996,7 @@
     "at": {
       "year": 1786
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q188631",
@@ -850,7 +1029,7 @@
       "year": 1948,
       "month": 5
     },
-    "row": 32
+    "row": 34
   },
   {
     "id": "Q207875",
@@ -865,7 +1044,7 @@
     "at": {
       "year": 1791
     },
-    "row": 11
+    "row": 12
   },
   {
     "id": "Q25169",
@@ -879,7 +1058,7 @@
     "at": {
       "year": 1979
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q209625",
@@ -895,7 +1074,7 @@
     "at": {
       "year": 1816
     },
-    "row": 13
+    "row": 11
   },
   {
     "id": "Q391358",
@@ -911,7 +1090,7 @@
       "year": 1862,
       "month": 9
     },
-    "row": 19
+    "row": 18
   },
   {
     "id": "Q151060",
@@ -928,7 +1107,7 @@
       "year": 1804,
       "month": 3
     },
-    "row": 11
+    "row": 12
   },
   {
     "id": "Q179788",
@@ -1016,7 +1195,7 @@
         "month": 8
       }
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q83172",
@@ -1054,6 +1233,69 @@
     "row": 10
   },
   {
+    "id": "Q192823",
+    "name": "Vinland",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "area of coastal North America explored by Norse Vikings",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vinland",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Carlb-ansemeadows-vinland-01.jpg",
+    "description": "Vinland, Vineland, or Winland was an area of coastal North America explored by Vikings. Leif Erikson landed there around AD 1000, nearly five centuries before the voyages of Christopher Columbus and John Cabot. The name appears in the Vinland sagas and describes a land beyond Greenland, Helluland, and Markland. Much of the geographical content of the sagas corresponds to present-day knowledge of transatlantic travel and North America.",
+    "at": {
+      "year": 1000
+    },
+    "row": 0
+  },
+  {
+    "id": "Q223767",
+    "name": "democracy in Athens",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "democratic regime in 5th- and 4th-century-BCE Athens",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Athenian_democracy",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Discurso%20funebre%20pericles.PNG",
+    "description": "Athenian democracy developed around the 6th century BC in the Greek city-state of Athens, comprising the city of Athens and the surrounding territory of Attica, and focusing on supporting liberty, equality, and security.",
+    "at": {
+      "year": -507
+    },
+    "row": 3
+  },
+  {
+    "id": "Q1551574",
+    "name": "First manned balloon flight",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "lighter than air aircraft consisting of a bag, called an envelope, which contains heated air",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hot_air_balloon",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Balloon%20free%20image.jpg",
+    "description": "A hot air balloon is a lighter-than-air aircraft consisting of a bag, called an envelope, which contains heated air. Suspended beneath is a gondola or wicker basket, which carries passengers and a source of heat, in most cases an open flame caused by burning liquid propane. The heated air inside the envelope makes it buoyant, since it has a lower density than the colder air outside the envelope. As with all aircraft, hot air balloons cannot fly beyond the atmosphere. The envelope does not have to be sealed at the bottom, since the air inside the envelope is at about the same pressure as the surrounding air. In modern sport balloons the envelope is generally made from nylon fabric, and the inlet of the balloon is made from a fire-resistant material such as Nomex. Modern balloons have been made in many shapes, such as rocket ships and the shapes of various commercial products, though the traditional shape is used for most non-commercial and many commercial applications.",
+    "at": {
+      "year": 1783,
+      "month": 11
+    },
+    "row": 9
+  },
+  {
+    "id": "Q187899",
+    "name": "Deep Blue defeats Kasparov",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "chess-playing supercomputer built by IBM",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Deep%20Blue.jpg",
+    "imageAttribution": "James the photographer, via Wikimedia Commons",
+    "description": "Deep Blue was a customized IBM RS/6000 SP supercomputer for chess-playing designed by computer scientist Feng-hsiung Hsu. It was the first computer to win a game, and the first to win a match, against a reigning world champion under regular time controls. Development began in 1985 at Carnegie Mellon University under the name ChipTest. It then moved to IBM, where it was first renamed Deep Thought, then again in 1989 to Deep Blue. In 1996, it was used to compete against world champion Garry Kasparov in a six-game match, where it won one, drew two, and lost three games. In 1997, it underwent an upgrade, and in a six-game rematch it defeated Kasparov by winning two games and drawing three. Deep Blue's victory is considered a milestone in the history of artificial intelligence and has been the subject of several books and films.",
+    "at": {
+      "year": 1997,
+      "month": 5
+    },
+    "row": 24
+  },
+  {
     "id": "Q817281",
     "name": "combined oral contraceptive pill",
     "category": "medicine-health",
@@ -1067,7 +1309,7 @@
     "at": {
       "year": 1961
     },
-    "row": 37
+    "row": 29
   },
   {
     "id": "Q1519099",
@@ -1082,7 +1324,7 @@
     "at": {
       "year": 1952
     },
-    "row": 35
+    "row": 36
   },
   {
     "id": "Q146578",
@@ -1114,7 +1356,7 @@
     "at": {
       "year": 1958
     },
-    "row": 33
+    "row": 38
   },
   {
     "id": "Q192803",
@@ -1151,7 +1393,7 @@
         "year": 1854
       }
     },
-    "row": 14
+    "row": 15
   },
   {
     "id": "Q245388",
@@ -1192,7 +1434,7 @@
         "month": 7
       }
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q191703",
@@ -1206,7 +1448,7 @@
     "at": {
       "year": 1963
     },
-    "row": 29
+    "row": 30
   },
   {
     "id": "Q1059758",
@@ -1286,7 +1528,7 @@
     "at": {
       "year": 868
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q333661",
@@ -1387,7 +1629,7 @@
       "year": 1945,
       "month": 5
     },
-    "row": 34
+    "row": 35
   },
   {
     "id": "Q161540",
@@ -1403,7 +1645,7 @@
       "year": 1939,
       "month": 8
     },
-    "row": 33
+    "row": 32
   },
   {
     "id": "Q94247",
@@ -1420,7 +1662,7 @@
       "year": 1956,
       "month": 6
     },
-    "row": 39
+    "row": 40
   },
   {
     "id": "Q337724",
@@ -1435,7 +1677,7 @@
     "at": {
       "year": 1859
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q193841",
@@ -1449,7 +1691,7 @@
     "at": {
       "year": 1908
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q194154",
@@ -1465,7 +1707,7 @@
     "at": {
       "year": 1940
     },
-    "row": 27
+    "row": 28
   },
   {
     "id": "Q69163529",
@@ -1484,7 +1726,7 @@
       "year": 1989,
       "month": 11
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q208191",
@@ -1507,7 +1749,7 @@
         "month": 4
       }
     },
-    "row": 38
+    "row": 39
   },
   {
     "id": "Q815567",
@@ -1525,7 +1767,7 @@
       "year": 1988,
       "month": 12
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q323813",
@@ -1560,7 +1802,7 @@
     "at": {
       "year": 1911
     },
-    "row": 29
+    "row": 31
   },
   {
     "id": "Q166543",
@@ -1592,7 +1834,7 @@
     "at": {
       "year": 1837
     },
-    "row": 12
+    "row": 17
   },
   {
     "id": "Q688605",
@@ -1610,7 +1852,7 @@
       "year": 1903,
       "month": 12
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q843389",
@@ -1626,7 +1868,7 @@
     "at": {
       "year": 1810
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q2411998",
@@ -1666,7 +1908,7 @@
         "year": 1899
       }
     },
-    "row": 17
+    "row": 24
   },
   {
     "id": "Q963303",
@@ -1682,7 +1924,7 @@
       "year": 1569,
       "month": 7
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q332075",
@@ -1703,7 +1945,7 @@
         "year": 1854
       }
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q462252",
@@ -1726,7 +1968,7 @@
         "month": 12
       }
     },
-    "row": 40
+    "row": 41
   },
   {
     "id": "Q821122",
@@ -1747,7 +1989,7 @@
         "year": 1932
       }
     },
-    "row": 29
+    "row": 30
   },
   {
     "id": "Q736311",
@@ -1765,7 +2007,7 @@
     "at": {
       "year": 600
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q202927",
@@ -1800,7 +2042,75 @@
       "year": 1971,
       "month": 11
     },
-    "row": 18
+    "row": 25
+  },
+  {
+    "id": "Q856544",
+    "name": "Library of Ashurbanipal",
+    "category": "philosophy-education",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "library",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Library_of_Ashurbanipal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Der%20Palast%20von%20Sennacherib.jpg",
+    "description": "The Royal Library of Ashurbanipal, named after Ashurbanipal, the last great king of the Assyrian Empire, is a collection of more than 30,000 clay tablets and fragments containing texts of all kinds and in various languages from the 7th century BCE. Among its holdings was the famous Epic of Gilgamesh.",
+    "at": {
+      "year": 1849
+    },
+    "row": 20
+  },
+  {
+    "id": "Q330756",
+    "name": "Transcaucasian Democratic Federative Republic",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "short-lived South Caucasian state (1918)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Transcaucasian_Democratic_Federative_Republic",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1918%20map%20of%20the%20Caucasus%20by%20the%20British%20Army.jpg",
+    "description": "The Transcaucasian Democratic Federative Republic was a short-lived state in the Caucasus that included most of the territory of present-day Armenia, Azerbaijan and Georgia, as well as parts of Russia and Turkey. The state lasted only for a month before Georgia declared independence, followed shortly after by Armenia and Azerbaijan.",
+    "at": {
+      "year": 1918,
+      "month": 4
+    },
+    "row": 36
+  },
+  {
+    "id": "Q465279",
+    "name": "trans-Saharan trade",
+    "category": "commerce-finance",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 69,
+    "tagline": "trade between sub-Saharan Africa and North Africa",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Trans-Saharan_trade",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/French%20language%20map%20of%20Central%20and%20Eastern%20Africa%201862.jpg",
+    "description": "Trans-Saharan trade is trade between North Africa and the rest of Africa that requires travel across the Sahara. Though this trade began in prehistoric times, the peak of trade extended from the 8th century until the early 17th century. The Sahara once had a different climate and environment. In Libya and Algeria, from at least 7000 BCE, pastoralism, large settlements and pottery were present. Cattle were introduced to the central Sahara (Ahaggar) between 4000 and 3500 BCE. Remarkable rock paintings in arid regions portray flora and fauna that are not present in the modern desert.",
+    "approximateDate": true,
+    "at": {
+      "year": 300
+    },
+    "row": 2
+  },
+  {
+    "id": "Q643396",
+    "name": "First human heart transplant",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "surgical transplant procedure performed on patients with end-stage heart failure or severe coronary artery disease in which a new heart is implanted",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Heart_transplantation",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Heart%20transplant.jpg",
+    "imageAttribution": "No machine-readable author provided. D Dinneen~commonswiki assumed (based on copyright claims)., via Wikimedia Commons",
+    "description": "A heart transplant, or a cardiac transplant, is a surgical transplant procedure performed on patients with end-stage heart failure when other medical or surgical treatments have failed. As of 2018, the most common procedure is to take a functioning heart from a recently deceased organ donor and implant it into the patient. The patient's own heart is either removed and replaced with the donor heart or, much less commonly, the recipient's diseased heart is left in place to support the donor heart.",
+    "at": {
+      "year": 1967,
+      "month": 12
+    },
+    "row": 33
   },
   {
     "id": "Q234027",
@@ -1815,7 +2125,7 @@
       "year": 1978,
       "month": 7
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q663273",
@@ -1846,7 +2156,7 @@
     "at": {
       "year": 1855
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q1192212",
@@ -1863,7 +2173,7 @@
     "at": {
       "year": 1861
     },
-    "row": 22
+    "row": 24
   },
   {
     "id": "Q573211",
@@ -1880,7 +2190,7 @@
     "at": {
       "year": 988
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q466060",
@@ -1931,7 +2241,41 @@
     "at": {
       "year": 1945
     },
-    "row": 41
+    "row": 42
+  },
+  {
+    "id": "Q1205521",
+    "name": "Chinese economic reform",
+    "category": "commerce-finance",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 68,
+    "tagline": "reforms allowing more free markets in China since Deng Xiaoping",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Reform_and_opening_up",
+    "description": "Reform and opening-up, also known as the Chinese economic reform or Chinese Economic Miracle or Chinese Growth Miracle, refers to a variety of economic reforms in the People's Republic of China (PRC) that began in the late 20th century, after Mao Zedong's death in 1976.",
+    "at": {
+      "year": 1978,
+      "month": 12
+    },
+    "row": 28
+  },
+  {
+    "id": "Q1645505",
+    "name": "English Reformation",
+    "category": "religion-mythology",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "16th-century separation of the Church of England from the Pope of Rome",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/English_Reformation",
+    "description": "The English Reformation began in 16th-century England when the Church of England broke away first from the authority of the pope and bishops over the King and then from some doctrines and practices of the Catholic Church. These events were part of the wider European Reformation: various religious and political movements that affected both the practice of Christianity in Western and Central Europe and relations between church and state.",
+    "at": {
+      "year": 1534,
+      "month": 11
+    },
+    "row": 5
   },
   {
     "id": "Q162684",
@@ -1967,7 +2311,7 @@
       "year": 1840,
       "month": 4
     },
-    "row": 16
+    "row": 18
   },
   {
     "id": "Q1136790",
@@ -2006,7 +2350,7 @@
         "month": 9
       }
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q654562",
@@ -2043,7 +2387,7 @@
         "month": 1
       }
     },
-    "row": 31
+    "row": 33
   },
   {
     "id": "Q217817",
@@ -2059,7 +2403,7 @@
     "at": {
       "year": 1849
     },
-    "row": 17
+    "row": 19
   },
   {
     "id": "Q8094772",
@@ -2083,7 +2427,7 @@
         "month": 10
       }
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q300646",
@@ -2098,7 +2442,7 @@
     "at": {
       "year": 1792
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q1061030",
@@ -2116,7 +2460,7 @@
       "year": 1492,
       "month": 4
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q525758",
@@ -2148,7 +2492,7 @@
       "year": 1828,
       "month": 2
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q204208",
@@ -2166,6 +2510,21 @@
     "row": 1
   },
   {
+    "id": "Q769743",
+    "name": "Settlement of Madagascar",
+    "category": "archaeology-anthropology",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_Madagascar",
+    "description": "The history of Madagascar started from the ancient supercontinent of Pangaea, containing amongst others the African continent and the Indian subcontinent, and by the island's late colonization by human settlers from South Borneo, Indonesia and from East Africa. These two factors facilitated the evolution and survival of thousands of endemic plant and animal species, some of which have gone extinct or are currently threatened with extinction.Trade in the Indian Ocean at the time of first colonization of Madagascar was dominated by Indonesian ships, probably of Borobudur ship and K'un-lun po types.",
+    "approximateDate": true,
+    "at": {
+      "year": 500
+    },
+    "row": 1
+  },
+  {
     "id": "Q1037810",
     "name": "smallpox vaccine",
     "category": "medicine-health",
@@ -2178,7 +2537,7 @@
     "at": {
       "year": 1798
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q841282",
@@ -2211,7 +2570,7 @@
     "at": {
       "year": 1827
     },
-    "row": 17
+    "row": 15
   },
   {
     "id": "Q973919",
@@ -2233,7 +2592,7 @@
         "month": 6
       }
     },
-    "row": 33
+    "row": 35
   },
   {
     "id": "Q338613",
@@ -2248,7 +2607,7 @@
     "at": {
       "year": 1
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q654400",
@@ -2262,7 +2621,7 @@
     "at": {
       "year": 1925
     },
-    "row": 32
+    "row": 34
   },
   {
     "id": "Q683846",
@@ -2277,7 +2636,7 @@
     "at": {
       "year": 1565
     },
-    "row": 4
+    "row": 8
   },
   {
     "id": "Q3350154",
@@ -2292,7 +2651,7 @@
       "year": 1948,
       "month": 1
     },
-    "row": 42
+    "row": 43
   },
   {
     "id": "Q1144693",
@@ -2327,7 +2686,7 @@
     "at": {
       "year": 1966
     },
-    "row": 31
+    "row": 35
   },
   {
     "id": "Q1419429",
@@ -2341,7 +2700,7 @@
     "at": {
       "year": 1787
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q41751",
@@ -2360,6 +2719,23 @@
     "row": 1
   },
   {
+    "id": "Q455037",
+    "name": "First moving assembly line",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "manufacturing technology where an unfinished product is moved from workstation to workstation where work steps are performed or parts are added in sequence until the product is complete",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Assembly_line",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hyundai%20car%20assembly%20line.jpg",
+    "imageAttribution": "User: Anonyme, via Wikimedia Commons",
+    "description": "An assembly line, often called progressive assembly, is a manufacturing process where the unfinished product moves in a direct line from workstation to workstation, with parts added in sequence until the final product is completed. By mechanically moving parts to workstations and transferring the unfinished product from one workstation to another, a finished product can be assembled faster and with less labor than having workers carry parts to a stationary product.",
+    "at": {
+      "year": 1913,
+      "month": 12
+    },
+    "row": 37
+  },
+  {
     "id": "Q6501061",
     "name": "electrical telegraph",
     "category": "communication",
@@ -2371,7 +2747,7 @@
     "at": {
       "year": 1816
     },
-    "row": 19
+    "row": 18
   },
   {
     "id": "Q1753108",
@@ -2388,7 +2764,7 @@
     "at": {
       "year": 1869
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q1162294",
@@ -2410,7 +2786,7 @@
         "month": 1
       }
     },
-    "row": 34
+    "row": 38
   },
   {
     "id": "Q833645",
@@ -2425,7 +2801,7 @@
     "at": {
       "year": 1623
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q1194052",
@@ -2450,7 +2826,7 @@
         "month": 7
       }
     },
-    "row": 37
+    "row": 38
   },
   {
     "id": "Q310301",
@@ -2480,7 +2856,7 @@
     "at": {
       "year": 1892
     },
-    "row": 28
+    "row": 30
   },
   {
     "id": "Q8665",
@@ -2498,7 +2874,7 @@
       "year": 1895,
       "month": 3
     },
-    "row": 30
+    "row": 32
   },
   {
     "id": "Q99200",
@@ -2516,7 +2892,7 @@
     "at": {
       "year": 1779
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q505668",
@@ -2548,7 +2924,7 @@
       "year": 1942,
       "month": 12
     },
-    "row": 43
+    "row": 44
   },
   {
     "id": "Q705693",
@@ -2606,7 +2982,7 @@
         "month": 7
       }
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q15251",
@@ -2626,7 +3002,7 @@
       "year": 1997,
       "month": 7
     },
-    "row": 21
+    "row": 27
   },
   {
     "id": "Q325656",
@@ -2665,7 +3041,7 @@
       "year": 1974,
       "month": 5
     },
-    "row": 27
+    "row": 31
   },
   {
     "id": "Q733610",
@@ -2683,6 +3059,42 @@
       "year": -781
     },
     "row": 1
+  },
+  {
+    "id": "Q55264655",
+    "name": "Elmina Castle",
+    "category": "landmarks",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "fortified colonial trading post in Ghana",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Elmina_Castle",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Castle%20of%20St.%20George%E2%80%99s%2003.JPG",
+    "imageAttribution": "Bolance, via Wikimedia Commons",
+    "description": "Elmina Castle, or Fort St. George, was erected by the Portuguese in 1482 as Castelo de São Jorge da Mina, also known as Castelo da Mina or simply Mina, in present-day Elmina, Ghana, formerly the Gold Coast. It holds several profound distinctions: it was the first trading post built on the Gulf of Guinea and is the oldest extant European building in Sub-Saharan Africa.",
+    "at": {
+      "year": 1482
+    },
+    "row": 0
+  },
+  {
+    "id": "Q340742",
+    "name": "Axial Age",
+    "category": "philosophy-education",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "pivotal age characterizing history and philosophy from the 8th to 3rd centuries BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Axial_Age",
+    "description": "Axial Age is a term coined in 1949 by the German philosopher Karl Jaspers. It refers to broad changes in religious and philosophical thought that occurred in a variety of locations from about the 8th to the 3rd century BCE.",
+    "approximateDate": true,
+    "period": {
+      "start": {
+        "year": -799
+      },
+      "end": {
+        "year": -199
+      }
+    },
+    "row": 5
   },
   {
     "id": "Q842363",
@@ -2716,7 +3128,7 @@
       "year": 1907,
       "month": 9
     },
-    "row": 35
+    "row": 39
   },
   {
     "id": "Q699127",
@@ -2757,7 +3169,7 @@
     "at": {
       "year": 1833
     },
-    "row": 20
+    "row": 23
   },
   {
     "id": "Q18408564",
@@ -2775,7 +3187,7 @@
       "year": 1783,
       "month": 4
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q570140",
@@ -2790,6 +3202,55 @@
     "description": "The Taika Reforms  were a set of doctrines established by Emperor Kōtoku in the year 645. They were written shortly after the death of Prince Shōtoku and the defeat of the Soga clan, uniting Japan. The reforms also artistically marked the end of the Asuka period and the beginning of the Hakuhō period. Crown Prince Naka no Ōe, Nakatomi no Kamatari, and Emperor Kōtoku jointly embarked on the details of the Reforms. Emperor Kōtoku then announced the era of \"Taika\" (大化), or \"Great Reform\".",
     "at": {
       "year": 645
+    },
+    "row": 3
+  },
+  {
+    "id": "Q3062714",
+    "name": "execution of Louis XVI",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 63,
+    "tagline": "major event of the French Revolution",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hinrichtung%20Ludwig%20des%20XVI.png",
+    "description": "Louis XVI, the deposed king of France, was publicly executed on 21 January 1793 during the French Revolution at the Place de la Révolution in Paris. At his trial four days prior, the National Convention had convicted Louis of high treason in a near-unanimous vote; while no one voted \"not guilty\", several deputies abstained. Ultimately, they condemned him to death by a simple majority of one vote. The execution by guillotine was performed by Charles-Henri Sanson, then high executioner of the French First Republic and previously royal executioner under Louis's reign.",
+    "at": {
+      "year": 1793,
+      "month": 1
+    },
+    "row": 22
+  },
+  {
+    "id": "Q1000970",
+    "name": "Buddhism in Sri Lanka",
+    "category": "religion-mythology",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 63,
+    "tagline": "history and demographics of Buddhism in Sri Lanka, formerly Ceylon",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_Sri_Lanka",
+    "description": "Theravada Buddhism is the largest and official religion of Sri Lanka, practiced by 69.8% of the population as of 2012. Practitioners of Sri Lankan Buddhism can be found amongst the majority Sinhalese population as well as among the minority ethnic groups, most notably the Sri Lankan Chinese. Sri Lankan Buddhists share many similarities with Southeast Asian Buddhists, specifically Thai Buddhists and Burmese Buddhists due to traditional and cultural exchange. Sri Lanka is one of only five countries in the world with a Theravada Buddhist majority, and others are Thailand, Cambodia, Laos and Myanmar.",
+    "approximateDate": true,
+    "at": {
+      "year": -249
+    },
+    "row": 2
+  },
+  {
+    "id": "Q6964481",
+    "name": "Raskol",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 63,
+    "tagline": "1650s–1660s Russian Orthodox schism creating the Old Believers",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Schism_of_the_Russian_Church",
+    "description": "The Schism of the Russian Church, also known as raskol, was an era of religious and social turmoil in Russia spanning from the late 1660s to the early 1690s, during which dissenters opposing the authority of the Russian Orthodox Church appeared in great numbers, and were persecuted and suppressed by the ecclesiastical hierarchy and secular government.",
+    "at": {
+      "year": 1666
     },
     "row": 3
   },
@@ -2828,7 +3289,7 @@
         "month": 5
       }
     },
-    "row": 28
+    "row": 20
   },
   {
     "id": "Q1739453",
@@ -2846,7 +3307,7 @@
     "at": {
       "year": 1954
     },
-    "row": 44
+    "row": 46
   },
   {
     "id": "Q2345573",
@@ -2903,7 +3364,83 @@
       "year": 1783,
       "month": 8
     },
-    "row": 21
+    "row": 23
+  },
+  {
+    "id": "Q3427966",
+    "name": "transition from Ming to Qing",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 62,
+    "tagline": "transition between two major dynasties in Chinese history between 1618 and 1683",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Shanhaiguan.gif",
+    "description": "The transition from Ming to Qing, also known as the Manchu conquest of China or Ming–Qing transition, was a decades-long period of conflict between the Qing dynasty, established by the Manchu Aisin Gioro clan in Manchuria, and the Ming dynasty in China proper and later in South China. Various other regional or temporary powers were also involved in this conflict, such as the short-lived Shun dynasty. In 1618, Nurhaci, the leader of the Aisin Gioro clan, commissioned a document titled the Seven Grievances, in which he listed complaints against the Ming before launching a rebellion. Many of the grievances concerned conflicts with the Yehe, a major Manchu clan, and the Ming's favoritism toward the Yehe at the expense of other Manchu clans. Nurhaci's demand that the Ming pay tribute to address the Seven Grievances was effectively a declaration of war, as the Ming were unwilling to pay money to a former vassal. Shortly thereafter, Nurhaci began to rebel against the Ming in Liaoning, a region in southern Manchuria.",
+    "period": {
+      "start": {
+        "year": 1616
+      },
+      "end": {
+        "year": 1683
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q1661772",
+    "name": "Proclamation of Indonesian Independence",
+    "category": "society-administration",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 62,
+    "tagline": "1945 document declaring Indonesian independence from the Netherlands",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_Indonesian_Independence",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Indonesia%20declaration%20of%20independence%2017%20August%201945.jpg",
+    "description": "The Proclamation of Indonesian Independence was read at 10:00 Tokyo Standard Time on Friday, 17 August 1945 in Jakarta. The declaration marked the start of the diplomatic and armed resistance of the Indonesian National Revolution, fighting against the forces of the Netherlands and pro-Dutch civilians, until the latter officially acknowledged Indonesia's independence in 1949. The document was signed by Sukarno and Mohammad Hatta, who were appointed president and vice-president respectively the following day.",
+    "at": {
+      "year": 1945,
+      "month": 8
+    },
+    "row": 45
+  },
+  {
+    "id": "Q957012",
+    "name": "1994 South African general election",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-africa"
+    ],
+    "fameScore": 62,
+    "tagline": "first South African election held under universal suffrage",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1994_South_African_general_election",
+    "description": "General elections were held in South Africa between 26 and 29 April 1994. The elections were the first in South Africa in which citizens of all races could vote, bringing an end to the herrenvolk democracy that had existed since 1948 and marking the country's first election under universal suffrage. The election was conducted under the direction of the Independent Electoral Commission (IEC), and marked the culmination of the four-year process that ended apartheid.",
+    "period": {
+      "start": {
+        "year": 1994,
+        "month": 4
+      },
+      "end": {
+        "year": 1994,
+        "month": 4
+      }
+    },
+    "row": 29
+  },
+  {
+    "id": "Q426853",
+    "name": "movable type",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 62,
+    "tagline": "system of printing and typography that uses movable components",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Movable_type",
+    "description": "Movable type is the system and technology of printing and typography that uses movable components to reproduce the elements of a document usually on the medium of paper.",
+    "approximateDate": true,
+    "at": {
+      "year": 1040
+    },
+    "row": 1
   },
   {
     "id": "Q375044",
@@ -2920,7 +3457,7 @@
     "at": {
       "year": 1825
     },
-    "row": 21
+    "row": 20
   },
   {
     "id": "Q2224989",
@@ -2936,6 +3473,43 @@
       "year": 1712
     },
     "row": 6
+  },
+  {
+    "id": "Q1122859",
+    "name": "Nanban trade period",
+    "category": "commerce-finance",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 61,
+    "tagline": "period in Japanese history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nanban_trade",
+    "description": "The Nanban trade  was trade between Europeans and the Japanese that took place in Japan from the arrival of Europeans in 1543 to the first Sakoku Seclusion Edicts of isolationism in 1614.",
+    "period": {
+      "start": {
+        "year": 1543
+      },
+      "end": {
+        "year": 1650
+      }
+    },
+    "row": 10
+  },
+  {
+    "id": "Q7169780",
+    "name": "Perry Expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 61,
+    "tagline": "19th-century American diplomatic and military expedition to Japan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Perry_Expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Japanese%201854%20print%20Commodore%20Perry.jpg",
+    "description": "The Perry Expedition was a diplomatic and military expedition in two separate voyages to the Tokugawa shogunate (徳川幕府) by warships of the United States Navy. The goals of this expedition included exploration, surveying, and the establishment of diplomatic relations and negotiation of trade agreements with the various nations in the region. Opening contact with the government of Japan was considered a top priority of the expedition, and was one of the key reasons for its inception.",
+    "at": {
+      "year": 1853,
+      "month": 7
+    },
+    "row": 26
   },
   {
     "id": "Q1398696",
@@ -2955,6 +3529,54 @@
     "row": 22
   },
   {
+    "id": "Q2044496",
+    "name": "Liber Abaci",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 60,
+    "tagline": "essay by Fibonacci",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Liber_Abaci",
+    "description": "The Liber Abaci or Liber Abbaci was a 1202 Latin work on arithmetic by Leonardo of Pisa, posthumously known as Fibonacci. It is primarily famous for introducing both base-10 positional notation and the symbols known as Arabic numerals in Europe.",
+    "at": {
+      "year": 1202
+    },
+    "row": 5
+  },
+  {
+    "id": "Q1457297",
+    "name": "Sidereus Nuncius",
+    "category": "science-theory",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 60,
+    "tagline": "astronomical treatise of Galileo",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sidereus_Nuncius",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Houghton%20IC6.G1333.610sa%20-%20Sidereus%20nuncius.jpg",
+    "description": "Sidereus Nuncius is a short astronomical treatise published in Neo-Latin by Galileo Galilei on March 13, 1610. It was the first published scientific work based on observations made through a telescope, and it contains the results of Galileo's early observations of the imperfect and mountainous Moon, of hundreds of stars not visible to the naked eye in the Milky Way and in certain constellations, and of the Medicean Stars that appeared to be circling Jupiter.",
+    "at": {
+      "year": 1610,
+      "month": 3
+    },
+    "row": 11
+  },
+  {
+    "id": "Q1359529",
+    "name": "Government of India Act 1858",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 60,
+    "tagline": "1858 United Kingdom of Great Britain and Ireland Act of Parliament 21 & 22 Vic c. 106",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Government_of_India_Act_1858",
+    "description": "The Government of India Act 1858 was an act of the Parliament of the United Kingdom passed on 2 August 1858. Its provisions called for the liquidation of the East India Company and the transferral of its functions to the British Crown.",
+    "at": {
+      "year": 1858
+    },
+    "row": 28
+  },
+  {
     "id": "Q2453355",
     "name": "Dartmouth workshop",
     "category": "science-theory",
@@ -2968,7 +3590,7 @@
     "at": {
       "year": 1956
     },
-    "row": 45
+    "row": 47
   },
   {
     "id": "Q3984081",
@@ -3005,7 +3627,7 @@
         "year": 1896
       }
     },
-    "row": 31
+    "row": 33
   },
   {
     "id": "Q2119319",
@@ -3020,7 +3642,7 @@
       "year": 1555,
       "month": 6
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q1739282",
@@ -3052,7 +3674,58 @@
     "at": {
       "year": 1905
     },
-    "row": 36
+    "row": 42
+  },
+  {
+    "id": "Q251600",
+    "name": "Unification of Saudi Arabia",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "house of Saudi Arabia kingdom claim",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Formation_of_Saudi_Arabia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Saudi%20Arabia%20map.png",
+    "imageAttribution": "No machine-readable author provided. NormanEinstein assumed (based on copyright claims)., via Wikimedia Commons",
+    "description": "The unification of Saudi Arabia also known as the formation of Saudi Arabia was a series of military and political campaigns in which the various tribes, sheikhdoms, city-states, emirates, and kingdoms of most of the Arabian Peninsula were brought under the rule of the House of Saud. Unification began in 1902 and culminated in 1932, when the Kingdom of Saudi Arabia was proclaimed under the leadership of Ibn Saud, marking the establishment of what is known as the Third Saudi state, the successor to the First Saudi state and the Second Saudi state. A brief final phase of consolidation continued into 1934.",
+    "period": {
+      "start": {
+        "year": 1902
+      },
+      "end": {
+        "year": 1932
+      }
+    },
+    "row": 40
+  },
+  {
+    "id": "Q1811550",
+    "name": "history of paper",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
+    "description": "Paper is a thin nonwoven material traditionally made from a combination of milled plant and other textile fibres. The first paper-like plant-based writing sheet was papyrus in Egypt, but the first true papermaking process was documented in China during the Eastern Han period, traditionally attributed to the court official Cai Lun. This plant-puree conglomerate produced by pulp mills and paper mills was used for writing, drawing, and money. During the 8th century, Chinese paper making spread to the Islamic world, replacing papyrus. By the 11th century, papermaking had reached Europe, where it initially coexisted with animal-skin-based parchment before eventually replacing it, alongside wax tablets and thin wooden leaf tablets. By the 13th century, papermaking had been refined, with paper mills in Spain using waterwheels. Later improvements to the papermaking process came in 19th-century Europe with the invention of wood-based papers.",
+    "approximateDate": true,
+    "at": {
+      "year": 105
+    },
+    "row": 0
+  },
+  {
+    "id": "Q28325009",
+    "name": "AlexNet",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "type of convolutional neural network",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/AlexNet",
+    "description": "AlexNet is a convolutional neural network architecture developed for image classification tasks, notably achieving prominence through its performance in the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). It classifies images into 1,000 distinct object categories and is regarded as the first widely recognized application of deep convolutional networks in large-scale visual recognition.",
+    "at": {
+      "year": 2012,
+      "month": 9
+    },
+    "row": 2
   },
   {
     "id": "Q4567715",
@@ -3077,7 +3750,7 @@
         "month": 6
       }
     },
-    "row": 46
+    "row": 49
   },
   {
     "id": "Q1564366",
@@ -3115,7 +3788,7 @@
     "at": {
       "year": 864
     },
-    "row": 2
+    "row": 4
   },
   {
     "id": "Q2469465",
@@ -3131,7 +3804,24 @@
       "year": 1665,
       "month": 1
     },
-    "row": 3
+    "row": 6
+  },
+  {
+    "id": "Q10872057",
+    "name": "proclamation of the People's Republic of China",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 58,
+    "tagline": "official founding of the PRC",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_the_People%27s_Republic_of_China",
+    "description": "The People's Republic of China was proclaimed by Mao Zedong, the chairman of the Chinese Communist Party (CCP), on October 1, 1949, in Tiananmen Square in Beijing. The government of a new state under the CCP, formally called the Central People's Government, was proclaimed by Mao at the ceremony, which marked the foundation of contemporary China.",
+    "at": {
+      "year": 1949,
+      "month": 10
+    },
+    "row": 48
   },
   {
     "id": "Q1290001",
@@ -3184,7 +3874,7 @@
         "year": 1743
       }
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q23016184",
@@ -3223,7 +3913,24 @@
     "at": {
       "year": 1776
     },
-    "row": 22
+    "row": 24
+  },
+  {
+    "id": "Q10873159",
+    "name": "Buddhism in China",
+    "category": "religion-mythology",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 57,
+    "tagline": "overview role of Buddhism in China",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_China",
+    "description": "Buddhism is followed by more than 40 million people in China, accounting for around 4% of the country's population. There are three main Buddhist branches there; Han or Chinese Buddhism, Tibetan Buddhism, and Theravada Buddhism. There is no definitive answer to the time when Buddhism was first introduced to China, but it is generally believed that this occurred around the time of the Han dynasty.",
+    "approximateDate": true,
+    "at": {
+      "year": 67
+    },
+    "row": 3
   },
   {
     "id": "Q3518429",
@@ -3239,7 +3946,55 @@
     "at": {
       "year": 510
     },
-    "row": 0
+    "row": 2
+  },
+  {
+    "id": "Q387647",
+    "name": "Year of Africa",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 56,
+    "tagline": "1960, year of the independence of 17 African countries",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Year_of_Africa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Africa%20independence%20dates.svg",
+    "imageAttribution": "Original uploader was Mehmetaergun; recreated by Nobelium (talk) 2010-05-10, via Wikimedia Commons",
+    "description": "The Year of Africa refers to a series of events that took place during the year 1960—mainly the independence of seventeen African nations—that highlighted the growing pan-African sentiments in the continent. The year brought about the culmination of African independence movements and the subsequent emergence of Africa as a major force in the United Nations. These rapid political developments led to speculation and hope about the future of Africa as a whole; yet at the same time, the continent was beginning to face the realities of post-colonial violence. This year also saw the beginning of armed opposition to South African apartheid government, with political ramifications across Africa and around the world. During the year, 17 colonies became independent, including 14 colonies from the French colonial empire, 2 from the British Empire and 1 from Belgium.",
+    "at": {
+      "year": 1960
+    },
+    "row": 50
+  },
+  {
+    "id": "Q5333520",
+    "name": "Economic liberalisation in India",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 56,
+    "tagline": "economic reforms in India that started on 24 July 1991",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Economic_liberalisation_in_India",
+    "description": "Economic liberalisation in India refers to a series of policy changes that opened the country's economy to the world and made it more market-oriented and consumption-driven. The goal was to expand the role of private and foreign investment, seen as a means of achieving economic growth and development. Although some attempts at liberalisation occurred in 1966 and the early 1980s, a more comprehensive reform came in 1991.",
+    "at": {
+      "year": 1991,
+      "month": 7
+    },
+    "row": 30
+  },
+  {
+    "id": "Q3447247",
+    "name": "women's suffrage in New Zealand",
+    "category": "social-movements",
+    "regionTags": [
+      "australia-and-new-zealand"
+    ],
+    "fameScore": 56,
+    "tagline": "overview of women's voting rights in New Zealand",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand",
+    "description": "Women's suffrage was an important political issue in late nineteenth-century New Zealand. In early colonial New Zealand, as in other European societies, women were excluded from any involvement in politics. Public opinion began to change in the latter half of the nineteenth century and after years of effort by women's suffrage campaigners, led by Kate Sheppard, New Zealand became the first nation in the world in which all women had the right to vote in parliamentary elections.",
+    "at": {
+      "year": 1893,
+      "month": 9
+    },
+    "row": 36
   },
   {
     "id": "Q951383",
@@ -3256,7 +4011,24 @@
     "at": {
       "year": 1498
     },
-    "row": 6
+    "row": 7
+  },
+  {
+    "id": "Q3199818",
+    "name": "Spanish colonization of the Philippines",
+    "category": "society-administration",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 55,
+    "tagline": "Historical Spanish colonial period in the Philippines",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Philippines_(1565%E2%80%931898)",
+    "description": "The history of the Philippines from 1565 to 1898 is known as the Spanish colonial period, during which the Philippine Islands were ruled as the Captaincy General of the Philippines within the Spanish East Indies, initially under the Viceroyalty of New Spain, based in Mexico City, until the independence of the Mexican Empire from Spain in 1821. This resulted in direct Spanish control during a period of governmental instability there.",
+    "at": {
+      "year": 1565,
+      "month": 4
+    },
+    "row": 11
   },
   {
     "id": "Q2096366",
@@ -3273,7 +4045,7 @@
     "at": {
       "year": 1851
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q13443401",
@@ -3287,7 +4059,7 @@
     "at": {
       "year": 1876
     },
-    "row": 30
+    "row": 32
   },
   {
     "id": "Q547513",
@@ -3304,7 +4076,7 @@
       "year": 1876,
       "month": 3
     },
-    "row": 33
+    "row": 35
   },
   {
     "id": "Q28135544",
@@ -3319,6 +4091,41 @@
       "year": 400
     },
     "row": 2
+  },
+  {
+    "id": "Q3042917",
+    "name": "discovery of Brazil",
+    "category": "expedition",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 51,
+    "tagline": "Portuguese discovery in 1500",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Discovery_of_Brazil",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Museu%20do%20Forte%20de%20Copacabana%20-%20Rio%20de%20Janeiro%20%2836406560346%29.jpg",
+    "description": "The first landing of European explorers to the territory of present-day Brazil, which was already inhabited by various Indigenous communities, is often credited to Portuguese navigator Pedro Álvares Cabral, who sighted the land later named Island of Vera Cruz, near Monte Pascoal, on 22 April 1500 while leading an expedition to Calicut, India. Cabral's voyage is part of the so-called Portuguese discoveries.",
+    "at": {
+      "year": 1992,
+      "month": 10
+    },
+    "row": 31
+  },
+  {
+    "id": "Q3286250",
+    "name": "Portuguese India Armadas",
+    "category": "expedition",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 51,
+    "tagline": "fleets used to trade with India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Portuguese_India_Armadas",
+    "description": "The Portuguese Indian Armadas were the fleets of ships funded by the Crown of Portugal, and dispatched on an annual basis from Portugal to India. The principal destination was Goa, and previously Cochin. These armadas undertook the Carreira da Índia from Portugal, following the maritime discovery of the Cape Route, to the Indian subcontinent by Vasco da Gama in 1497–99.",
+    "at": {
+      "year": 1498,
+      "month": 5
+    },
+    "row": 8
   },
   {
     "id": "Q60863552",
@@ -3338,6 +4145,22 @@
     "row": 0
   },
   {
+    "id": "Q96379430",
+    "name": "Ghana Independence Act 1957",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 49,
+    "tagline": "United Kingdom legislation",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghana_Independence_Act_1957",
+    "description": "The Ghana Independence Act 1957 is an act of the Parliament of the United Kingdom that granted the Gold Coast fully responsible government within the British Commonwealth of Nations under the name of Ghana. The act received royal assent on 7 February 1957 and Ghana came into being on 6 March 1957.",
+    "at": {
+      "year": 1957
+    },
+    "row": 51
+  },
+  {
     "id": "Q2631085",
     "name": "Deep Blue versus Kasparov, 1997, Game 6",
     "category": "sports-entertainment",
@@ -3352,7 +4175,70 @@
       "year": 1997,
       "month": 5
     },
-    "row": 26
+    "row": 32
+  },
+  {
+    "id": "Q31187690",
+    "name": "proclamation of the Republic of Turkey",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 46,
+    "tagline": "October 1923 historical event in Turkey",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_the_Republic_of_Turkey",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Anavatan%201927.jpg",
+    "description": "The proclamation of the Republic of Turkey, formally declared during a session of the Grand National Assembly of Turkey on 29 October 1923, established of Turkey's form of government as a republic. This was realized by a constitutional amendment drafted by Mustafa Kemal Atatürk.",
+    "at": {
+      "year": 1923,
+      "month": 10
+    },
+    "row": 39
+  },
+  {
+    "id": "Q4378226",
+    "name": "calling of the Varangians",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 46,
+    "tagline": "historical legend about the origins of Rus",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Calling_of_the_Varangians",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Calling%20of%20varangians%2001.jpg",
+    "description": "The calling of the Varangians, calling of the (Varangian) princes or invitation to the Varangians is a legend about the origins of the Rus' people, the Rurik dynasty and the Kievan Rus' state, recorded in many divergent versions in various manuscripts and compilations of Rus' chronicles. These include the six main witnesses of the Primary Chronicle and the Novgorod First Chronicle (NPL), as well as later textual witnesses such as the Sofia First Chronicle and the Pskov Third Chronicle.",
+    "approximateDate": true,
+    "at": {
+      "year": 862
+    },
+    "row": 5
+  },
+  {
+    "id": "Q16402123",
+    "name": "Christianization of Armenia",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 45,
+    "tagline": "spread of Christian faith to Armenia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Christianization_of_Armenia",
+    "description": "Christianity first spread to Armenia prior to the official adoption of the faith in the Kingdom of Greater Armenia in the early fourth century, although the details are obscure. Greater Armenia was the first state to adopt Christianity as its state religion. The Arsacid king of Armenia at the time, Trdat, was converted by Gregory the Illuminator, who became the first head of the Armenian Church. The traditional date for the conversion of Armenia is 301, although alternative dates have been proposed by scholars ranging from 284 to no later than 325. While Armenia's church structure was established at this time, it took longer for Christianity to fully take root in the country. The greatest progress came after the invention of the Armenian alphabet by Mesrop Mashtots and the translation of the Bible and liturgy into Armenian in the fifth century.",
+    "at": {
+      "year": 301
+    },
+    "row": 3
+  },
+  {
+    "id": "Q6541120",
+    "name": "Liberian Declaration of Independence",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 43,
+    "tagline": "document written by Hilary Teague and adopted by the Liberian Constitutional Convention on 26 July 1847 to announce the independence of Liberia from the US",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Liberian_Declaration_of_Independence",
+    "description": "The Liberian Declaration of Independence is a document adopted by the Liberian Constitutional Convention on 26 July 1847, to announce that the Commonwealth of Liberia, a colony founded and controlled by the private American Colonization Society, was an independent state known as the Republic of Liberia.",
+    "at": {
+      "year": 1847,
+      "month": 7
+    },
+    "row": 30
   },
   {
     "id": "Q5305631",
@@ -3369,6 +4255,21 @@
     "at": {
       "year": 1859
     },
-    "row": 27
+    "row": 11
+  },
+  {
+    "id": "Q5869513",
+    "name": "history of the Hindu–Arabic numeral system",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 41,
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Hindu%E2%80%93Arabic_numeral_system",
+    "description": "The Hindu–Arabic numeral system is a decimal place-value numeral system that uses a zero glyph as in \"205\". Some historians have argued that the exact development and transmission of the Hindu–Arabic numeral system remains debated, with differing interpretations regarding the contributions of Indian, Persian, and Arab scholars.Its glyphs are descended from the Indian Brahmi numerals. The full system emerged by the 8th to 9th centuries, and is first described outside India in Al-Khwarizmi's On the Calculation with Hindu Numerals (ca. 825), and second Al-Kindi's four-volume work On the Use of the Indian Numerals (c. 830). Today the name Hindu–Arabic numerals is usually used.",
+    "approximateDate": true,
+    "at": {
+      "year": 500
+    },
+    "row": 3
   }
 ]

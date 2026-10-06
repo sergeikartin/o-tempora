@@ -62,7 +62,7 @@
       "year": 1908,
       "month": 9
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q15003",
@@ -78,7 +78,7 @@
     "at": {
       "year": 1891
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q1932",
@@ -100,7 +100,7 @@
         "month": 7
       }
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q180253",
@@ -115,7 +115,7 @@
     "at": {
       "year": 1842
     },
-    "row": 6
+    "row": 11
   },
   {
     "id": "Q13582",
@@ -139,7 +139,7 @@
         "month": 2
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q55816",
@@ -157,7 +157,7 @@
     "at": {
       "year": 1981
     },
-    "row": 21
+    "row": 19
   },
   {
     "id": "Q35045",
@@ -191,7 +191,7 @@
       "year": 1916,
       "month": 5
     },
-    "row": 16
+    "row": 24
   },
   {
     "id": "Q608613",
@@ -252,6 +252,24 @@
     "row": 2
   },
   {
+    "id": "Q187093",
+    "name": "Мейфлауэр",
+    "category": "expedition",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "sailing ship carrying English and Dutch Pilgrims from England to North America",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mayflower",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mayflower%20in%20Plymouth%20Harbor%2C%20by%20William%20Halsall.jpg",
+    "description": "«Мейфлауэр» — английское торговое судно, тип которого определяют как флейт, или торговый галеон, на котором англичане в 1620 году пересекли Атлантический океан и основали Плимутскую колонию, одно из первых британских поселений в Северной Америке.",
+    "at": {
+      "year": 1620,
+      "month": 9
+    },
+    "row": 2
+  },
+  {
     "id": "Q211382",
     "name": "скоростная железная дорога",
     "category": "infrastructure",
@@ -281,7 +299,7 @@
     "at": {
       "year": 1839
     },
-    "row": 9
+    "row": 12
   },
   {
     "id": "Q227467",
@@ -298,7 +316,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 27
+    "row": 28
   },
   {
     "id": "Q221474",
@@ -384,7 +402,7 @@
         "year": 1968
       }
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q152006",
@@ -435,7 +453,7 @@
       "year": 1867,
       "month": 3
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q3699044",
@@ -459,6 +477,62 @@
     "row": 1
   },
   {
+    "id": "Q378014",
+    "name": "Аль-Карауин",
+    "category": "philosophy-education",
+    "regionTags": [
+      "western-asia",
+      "northern-africa"
+    ],
+    "fameScore": 74,
+    "tagline": "университет в Марокко",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/University%20of%20Al%20Qaraouiyine.jpg",
+    "imageAttribution": "Abdel Hassouni, via Wikimedia Commons",
+    "description": "Аль-Карауи́н — университет в городе Фес (Марокко). Основан Фатимой аль-Фихри в 859 году, является одним из духовных и образовательных центров исламского мира. Из стен университета вышел ряд учёных, философов и богословов, оказавших значительное влияние на развитие мусульманской и мировой культуры.",
+    "at": {
+      "year": 859
+    },
+    "row": 1
+  },
+  {
+    "id": "Q216243",
+    "name": "Наланда",
+    "category": "philosophy-education",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 74,
+    "tagline": "ancient Hindu-Buddhist monastery in present-day Bihar, India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nalanda_mahavihara",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nalanda%20The%20Great%20Stupa.jpg",
+    "imageAttribution": "Uphogaphy, via Wikimedia Commons",
+    "description": "Нала́нда — буддийский университет и монастырский комплекс, существовавший в V—XII веках на севере Индии, один из крупнейших образовательных центров своего времени, в котором работали, преподавали и обучались многие выдающиеся буддийские философы из разных стран, и куда съезжались многочисленные паломники,древнейший университет в мире. В настоящее время руины Наланды — исторический памятник в индийской провинции Бихар, в 90 км к юго-востоку от Патны, древней столицы Индии.",
+    "approximateDate": true,
+    "at": {
+      "year": 450
+    },
+    "row": 1
+  },
+  {
+    "id": "Q272153",
+    "name": "Сигирия",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 74,
+    "tagline": "плато и крепость в Шри-Ланке",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sigiriya",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Beauty%20of%20Sigiriya%20by%20Binuka.jpg",
+    "imageAttribution": "Binuka poojan, via Wikimedia Commons",
+    "description": "Сигирия — скальное плато, возвышающееся на 370 метров над уровнем моря и около 170 метров над окружающей равниной в самом центре острова Шри-Ланка. С 1982 года Сигирия состоит под охраной ЮНЕСКО как памятник Всемирного наследия.",
+    "at": {
+      "year": 477
+    },
+    "row": 1
+  },
+  {
     "id": "Q204711",
     "name": "Управление по санитарному надзору за качеством пищевых продуктов и медикаментов",
     "category": "public-health",
@@ -474,7 +548,7 @@
       "year": 1906,
       "month": 6
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q191472",
@@ -506,7 +580,7 @@
     "at": {
       "year": 1955
     },
-    "row": 30
+    "row": 31
   },
   {
     "id": "Q213669",
@@ -522,7 +596,7 @@
     "at": {
       "year": 1909
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q182524",
@@ -540,7 +614,7 @@
       "year": 1961,
       "month": 4
     },
-    "row": 28
+    "row": 25
   },
   {
     "id": "Q184201",
@@ -558,7 +632,7 @@
       "year": 1968,
       "month": 12
     },
-    "row": 21
+    "row": 28
   },
   {
     "id": "Q1188138",
@@ -592,7 +666,7 @@
       "year": 1947,
       "month": 3
     },
-    "row": 29
+    "row": 30
   },
   {
     "id": "Q180764",
@@ -699,7 +773,7 @@
         "year": -537
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q47504",
@@ -717,6 +791,111 @@
     "row": 3
   },
   {
+    "id": "Q145625",
+    "name": "глаголица",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "первый славянский алфавит",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Glagolitic_script",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tabla%20Za%20Dicu%2003.jpg",
+    "description": "Глаго́лица — первый славянский алфавит. Создан в середине IX века византийским миссионером Кириллом для перевода богослужебных текстов с греческого языка на старославянский.",
+    "at": {
+      "year": 862
+    },
+    "row": 2
+  },
+  {
+    "id": "Q204023",
+    "name": "Период Сэнгоку",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "период в японской истории",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sengoku_period",
+    "description": "Период Сэнгоку (яп. 戦国時代 сэнгоку дзидай, «Эпоха воюющих провинций»)— период в японской истории со второй половины XV до начала XVII века.",
+    "period": {
+      "start": {
+        "year": 1467
+      },
+      "end": {
+        "year": 1590
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q503585",
+    "name": "Генерал-губернаторство Корея",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "период истории Кореи (1910—1945)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Korea_under_Japanese_rule",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20Street%20of%20Honmachi%20Keijo%20Korea%201930s.png",
+    "description": "Корея с 1910 по 1945 годы была японской колонией. В это время она не обладала суверенитетом, власть на полуострове принадлежала японскому генерал-губернатору. Колониальный период был отмечен высокими темпами экономического роста, возникновением современной корейской культуры, формированием основ современной корейской индустрии, почти двукратным увеличением средней продолжительности жизни и широким внедрением современного начального образования. В то же время в первое и последнее десятилетия этого периода колониальные власти проводили жёсткую авторитарную политику в отношении населения, а на протяжении всего периода корейцы подвергались дискриминации по национальному и культурному признаку.",
+    "at": {
+      "year": 1910,
+      "month": 8
+    },
+    "row": 28
+  },
+  {
+    "id": "Q167457",
+    "name": "Римский договор",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "международный договор 1957 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Treaty_of_Rome",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EEC%20Treaty%20%28Treaty%20of%20Rome%29%20German%20copy.pdf",
+    "description": "Римский договор — международный договор, подписанный в 1957 году ФРГ, Францией, Италией, Бельгией, Нидерландами и Люксембургом о ликвидации всех преград на пути свободного передвижения людей, товаров, услуг и капитала.",
+    "at": {
+      "year": 1957,
+      "month": 3
+    },
+    "row": 32
+  },
+  {
+    "id": "Q31347",
+    "name": "Великий канал",
+    "category": "infrastructure",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "древний судоходный канал в Китае",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Grand_Canal_(China)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E5%A4%A7%E9%81%8B%E6%B2%B3.png",
+    "imageAttribution": "Groverlynn, via Wikimedia Commons",
+    "description": "Вели́кий кана́л — судоходный канал в Китае, одно из древнейших ныне действующих гидротехнических сооружений мира. Также это крупнейший по длине судоходный канал в мире.",
+    "at": {
+      "year": 605
+    },
+    "row": 0
+  },
+  {
+    "id": "Q193315",
+    "name": "Рождение интернета",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "history of the Internet, a global system of interconnected computer networks",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Internet",
+    "description": "История Интернета началась с разработки компьютеров и появления концепций глобальных вычислительных сетей в 1950-е годы почти одновременно в разных странах, в первую очередь в научных и военных лабораториях в США, Великобритании и Франции. Военные вычислительные сети в те времена существовали и в СССР, но были засекречены, а проект гражданской сети ОГАС (1959) не был полностью реализован в силу бюрократизма советской системы. Тем не менее, в 1978 году в СССР появляется совместимая с Интернетом гражданская Академсеть (X.25).",
+    "at": {
+      "year": 1983,
+      "month": 1
+    },
+    "row": 22
+  },
+  {
     "id": "Q192446",
     "name": "проект «Геном человека»",
     "category": "science-theory",
@@ -730,7 +909,7 @@
     "at": {
       "year": 1990
     },
-    "row": 23
+    "row": 21
   },
   {
     "id": "Q158075",
@@ -746,7 +925,7 @@
     "at": {
       "year": 1450
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q208708",
@@ -777,7 +956,7 @@
     "at": {
       "year": 1890
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q505802",
@@ -801,7 +980,7 @@
         "month": 9
       }
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q209440",
@@ -817,7 +996,7 @@
     "at": {
       "year": 1786
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q188631",
@@ -850,7 +1029,7 @@
       "year": 1948,
       "month": 5
     },
-    "row": 32
+    "row": 34
   },
   {
     "id": "Q207875",
@@ -865,7 +1044,7 @@
     "at": {
       "year": 1791
     },
-    "row": 11
+    "row": 12
   },
   {
     "id": "Q25169",
@@ -879,7 +1058,7 @@
     "at": {
       "year": 1979
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q209625",
@@ -895,7 +1074,7 @@
     "at": {
       "year": 1816
     },
-    "row": 13
+    "row": 11
   },
   {
     "id": "Q391358",
@@ -911,7 +1090,7 @@
       "year": 1862,
       "month": 9
     },
-    "row": 19
+    "row": 18
   },
   {
     "id": "Q151060",
@@ -928,7 +1107,7 @@
       "year": 1804,
       "month": 3
     },
-    "row": 11
+    "row": 12
   },
   {
     "id": "Q179788",
@@ -1016,7 +1195,7 @@
         "month": 8
       }
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q83172",
@@ -1054,6 +1233,69 @@
     "row": 10
   },
   {
+    "id": "Q192823",
+    "name": "Винланд",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "Историческая область Северной Америки",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vinland",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Carlb-ansemeadows-vinland-01.jpg",
+    "description": "Ви́нланд, Винла́ндия — название территории Северной Америки, данное исландским викингом Лейфом Эрикссоном примерно в 1000 году. В 1960 году в местечке Л’Анс-о-Медоуз на острове Ньюфаундленд было обнаружено археологическое свидетельство раннего поселения викингов. В настоящее время эта территория относится к канадской провинции Ньюфаундленд и Лабрадор. Хотя исследование викингами территории Северной Америки задолго до путешествий Христофора Колумба считается окончательно доказанным фактом, точное место их поселения до сих пор является предметом научного спора. Викинги не делали различия между исследованием и поселением в Исландии, Гренландии и Винланде. Это было продолжением их родины, и понятие другого мира появилось только после встречи с местными племенами, значительно отличавшимися от христианского населения Европы.",
+    "at": {
+      "year": 1000
+    },
+    "row": 0
+  },
+  {
+    "id": "Q223767",
+    "name": "Афинская демократия",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "democratic regime in 5th- and 4th-century-BCE Athens",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Athenian_democracy",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Discurso%20funebre%20pericles.PNG",
+    "description": "Афинская демократия — правящий режим в городе-государстве Афины, демократия продолжала традицию, установленную эвпатридами.",
+    "at": {
+      "year": -507
+    },
+    "row": 3
+  },
+  {
+    "id": "Q1551574",
+    "name": "Первый полёт человека на воздушном шаре",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "тепловой аэростат с оболочкой, наполняемой подогретым воздухом",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hot_air_balloon",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Balloon%20free%20image.jpg",
+    "description": "Монгольфье́р — тепловой аэростат с оболочкой, наполняемой подогретым воздухом.",
+    "at": {
+      "year": 1783,
+      "month": 11
+    },
+    "row": 9
+  },
+  {
+    "id": "Q187899",
+    "name": "Deep Blue побеждает Каспарова",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "шахматный суперкомпьютер",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Deep%20Blue.jpg",
+    "imageAttribution": "James the photographer, via Wikimedia Commons",
+    "description": "Deep Blue — шахматный суперкомпьютер, разработанный компанией IBM. 11 мая 1997 года выиграл матч из 6 партий у тогдашнего чемпиона мира Гарри Каспарова.",
+    "at": {
+      "year": 1997,
+      "month": 5
+    },
+    "row": 24
+  },
+  {
     "id": "Q817281",
     "name": "гормональная контрацепция",
     "category": "medicine-health",
@@ -1067,7 +1309,7 @@
     "at": {
       "year": 1961
     },
-    "row": 37
+    "row": 29
   },
   {
     "id": "Q1519099",
@@ -1082,7 +1324,7 @@
     "at": {
       "year": 1952
     },
-    "row": 35
+    "row": 36
   },
   {
     "id": "Q146578",
@@ -1114,7 +1356,7 @@
     "at": {
       "year": 1958
     },
-    "row": 33
+    "row": 38
   },
   {
     "id": "Q192803",
@@ -1151,7 +1393,7 @@
         "year": 1854
       }
     },
-    "row": 14
+    "row": 15
   },
   {
     "id": "Q245388",
@@ -1192,7 +1434,7 @@
         "month": 7
       }
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q191703",
@@ -1206,7 +1448,7 @@
     "at": {
       "year": 1963
     },
-    "row": 29
+    "row": 30
   },
   {
     "id": "Q1059758",
@@ -1286,7 +1528,7 @@
     "at": {
       "year": 868
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q333661",
@@ -1387,7 +1629,7 @@
       "year": 1945,
       "month": 5
     },
-    "row": 34
+    "row": 35
   },
   {
     "id": "Q161540",
@@ -1403,7 +1645,7 @@
       "year": 1939,
       "month": 8
     },
-    "row": 33
+    "row": 32
   },
   {
     "id": "Q94247",
@@ -1420,7 +1662,7 @@
       "year": 1956,
       "month": 6
     },
-    "row": 39
+    "row": 40
   },
   {
     "id": "Q337724",
@@ -1435,7 +1677,7 @@
     "at": {
       "year": 1859
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q193841",
@@ -1449,7 +1691,7 @@
     "at": {
       "year": 1908
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q194154",
@@ -1465,7 +1707,7 @@
     "at": {
       "year": 1940
     },
-    "row": 27
+    "row": 28
   },
   {
     "id": "Q69163529",
@@ -1484,7 +1726,7 @@
       "year": 1989,
       "month": 11
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q208191",
@@ -1507,7 +1749,7 @@
         "month": 4
       }
     },
-    "row": 38
+    "row": 39
   },
   {
     "id": "Q815567",
@@ -1525,7 +1767,7 @@
       "year": 1988,
       "month": 12
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q323813",
@@ -1560,7 +1802,7 @@
     "at": {
       "year": 1911
     },
-    "row": 29
+    "row": 31
   },
   {
     "id": "Q166543",
@@ -1592,7 +1834,7 @@
     "at": {
       "year": 1837
     },
-    "row": 12
+    "row": 17
   },
   {
     "id": "Q688605",
@@ -1610,7 +1852,7 @@
       "year": 1903,
       "month": 12
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q843389",
@@ -1626,7 +1868,7 @@
     "at": {
       "year": 1810
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q2411998",
@@ -1666,7 +1908,7 @@
         "year": 1899
       }
     },
-    "row": 17
+    "row": 24
   },
   {
     "id": "Q963303",
@@ -1682,7 +1924,7 @@
       "year": 1569,
       "month": 7
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q332075",
@@ -1703,7 +1945,7 @@
         "year": 1854
       }
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q462252",
@@ -1726,7 +1968,7 @@
         "month": 12
       }
     },
-    "row": 40
+    "row": 41
   },
   {
     "id": "Q821122",
@@ -1747,7 +1989,7 @@
         "year": 1932
       }
     },
-    "row": 29
+    "row": 30
   },
   {
     "id": "Q736311",
@@ -1765,7 +2007,7 @@
     "at": {
       "year": 600
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q202927",
@@ -1800,7 +2042,75 @@
       "year": 1971,
       "month": 11
     },
-    "row": 18
+    "row": 25
+  },
+  {
+    "id": "Q856544",
+    "name": "Библиотека Ашшурбанипала",
+    "category": "philosophy-education",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "крупнейшая сохранившаяся библиотека древнего мира и древнейшая из всех известных библиотек",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Library_of_Ashurbanipal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Der%20Palast%20von%20Sennacherib.jpg",
+    "description": "Библиотека Ашшурбанипала — крупнейшая сохранившаяся библиотека древнего мира и древнейшая из всех известных библиотек. Составлялась в течение 25 лет в ассирийской столице Ниневии по приказу царя Ашшурбанипала (Ашшурбанапала). Служила также государственным архивом. После смерти царя фонды были рассеяны по различным дворцам. Обнаруженная археологами часть библиотеки состоит из 25 000—30 000 глиняных табличек с клинописными текстами. Открытие библиотеки в середине XIX века имело огромное значение для понимания культур Месопотамии и для дешифровки клинописи.",
+    "at": {
+      "year": 1849
+    },
+    "row": 20
+  },
+  {
+    "id": "Q330756",
+    "name": "Закавказская демократическая федеративная республика",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "государственное образование в Закавказье, провозглашённое в 1918 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Transcaucasian_Democratic_Federative_Republic",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1918%20map%20of%20the%20Caucasus%20by%20the%20British%20Army.jpg",
+    "description": "Закавка́зская демократи́ческая федерати́вная респу́блика (ЗДФР) — государственное образование, провозглашённое 22 апреля 1918 года Закавказским сеймом в пределах территории Бакинской, Елизаветпольской, Эриванской, Тифлисской, Кутаисской губерний, Батумской и Карсской областей, Закатальского и Сухумского округов бывшей Российской империи. Несмотря на название, фактически не являлась федерацией.",
+    "at": {
+      "year": 1918,
+      "month": 4
+    },
+    "row": 36
+  },
+  {
+    "id": "Q465279",
+    "name": "Транссахарская торговля",
+    "category": "commerce-finance",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 69,
+    "tagline": "trade between sub-Saharan Africa and North Africa",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Trans-Saharan_trade",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/French%20language%20map%20of%20Central%20and%20Eastern%20Africa%201862.jpg",
+    "description": "Транссахарская торговля — сеть торговых операций, охватывающих большую часть Западной и Северной Африки. Торговля осуществлялась по караванным путям до середины XX в. В мирное время переход через Сахару и обратно занимал примерно 18 месяцев.",
+    "approximateDate": true,
+    "at": {
+      "year": 300
+    },
+    "row": 2
+  },
+  {
+    "id": "Q643396",
+    "name": "Первая пересадка сердца человека",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "хирургическая операция",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Heart_transplantation",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Heart%20transplant.jpg",
+    "imageAttribution": "No machine-readable author provided. D Dinneen~commonswiki assumed (based on copyright claims)., via Wikimedia Commons",
+    "description": "Пересадка (трансплантация) сердца — хирургическая операция по замене сердца пациента на сердце донора. Показана при тяжёлых заболеваниях сердца, при которых другие операции невозможны или крайне рискованны, а ожидаемая продолжительность жизни без пересадки сердца невелика. Собственное сердце при этом может быть удалено или оставлено.",
+    "at": {
+      "year": 1967,
+      "month": 12
+    },
+    "row": 33
   },
   {
     "id": "Q234027",
@@ -1815,7 +2125,7 @@
       "year": 1978,
       "month": 7
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q663273",
@@ -1846,7 +2156,7 @@
     "at": {
       "year": 1855
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q1192212",
@@ -1863,7 +2173,7 @@
     "at": {
       "year": 1861
     },
-    "row": 22
+    "row": 24
   },
   {
     "id": "Q573211",
@@ -1880,7 +2190,7 @@
     "at": {
       "year": 988
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q466060",
@@ -1931,7 +2241,41 @@
     "at": {
       "year": 1945
     },
-    "row": 41
+    "row": 42
+  },
+  {
+    "id": "Q1205521",
+    "name": "Политика реформ и открытости",
+    "category": "commerce-finance",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 68,
+    "tagline": "reforms allowing more free markets in China since Deng Xiaoping",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Reform_and_opening_up",
+    "description": "Политика реформ и открытости — программа экономических реформ, предпринятых в Китайской Народной Республике, нацеленных на создание социализма с китайской спецификой, или социалистической рыночной экономики, и открытость внешнему миру.",
+    "at": {
+      "year": 1978,
+      "month": 12
+    },
+    "row": 28
+  },
+  {
+    "id": "Q1645505",
+    "name": "Реформация в Англии",
+    "category": "religion-mythology",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "16th-century separation of the Church of England from the Pope of Rome",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/English_Reformation",
+    "description": "Реформация в Англии — процесс церковных преобразований (реформ) XVI века, начатый королём Генрихом VIII Тюдором в ходе роста популярности в Английском королевстве идей европейской реформации и снижения авторитета папы римского и католической церкви, приведший к созданию англиканской церкви.",
+    "at": {
+      "year": 1534,
+      "month": 11
+    },
+    "row": 5
   },
   {
     "id": "Q162684",
@@ -1967,7 +2311,7 @@
       "year": 1840,
       "month": 4
     },
-    "row": 16
+    "row": 18
   },
   {
     "id": "Q1136790",
@@ -2006,7 +2350,7 @@
         "month": 9
       }
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q654562",
@@ -2043,7 +2387,7 @@
         "month": 1
       }
     },
-    "row": 31
+    "row": 33
   },
   {
     "id": "Q217817",
@@ -2059,7 +2403,7 @@
     "at": {
       "year": 1849
     },
-    "row": 17
+    "row": 19
   },
   {
     "id": "Q8094772",
@@ -2083,7 +2427,7 @@
         "month": 10
       }
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q300646",
@@ -2098,7 +2442,7 @@
     "at": {
       "year": 1792
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q1061030",
@@ -2116,7 +2460,7 @@
       "year": 1492,
       "month": 4
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q525758",
@@ -2148,7 +2492,7 @@
       "year": 1828,
       "month": 2
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q204208",
@@ -2166,6 +2510,21 @@
     "row": 1
   },
   {
+    "id": "Q769743",
+    "name": "Заселение Мадагаскара",
+    "category": "archaeology-anthropology",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_Madagascar",
+    "description": "История Мадагаскара ведет своё начало с заселения острова австронезийскими колонистами, продолжается историей заселения острова различными народами, созданием королевства Имерина, колониальным периодом и созданием республики Мадагаскар.",
+    "approximateDate": true,
+    "at": {
+      "year": 500
+    },
+    "row": 1
+  },
+  {
     "id": "Q1037810",
     "name": "вакцина против оспы",
     "category": "medicine-health",
@@ -2178,7 +2537,7 @@
     "at": {
       "year": 1798
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q841282",
@@ -2211,7 +2570,7 @@
     "at": {
       "year": 1827
     },
-    "row": 17
+    "row": 15
   },
   {
     "id": "Q973919",
@@ -2233,7 +2592,7 @@
         "month": 6
       }
     },
-    "row": 33
+    "row": 35
   },
   {
     "id": "Q338613",
@@ -2248,7 +2607,7 @@
     "at": {
       "year": 1
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q654400",
@@ -2262,7 +2621,7 @@
     "at": {
       "year": 1925
     },
-    "row": 32
+    "row": 34
   },
   {
     "id": "Q683846",
@@ -2277,7 +2636,7 @@
     "at": {
       "year": 1565
     },
-    "row": 4
+    "row": 8
   },
   {
     "id": "Q3350154",
@@ -2292,7 +2651,7 @@
       "year": 1948,
       "month": 1
     },
-    "row": 42
+    "row": 43
   },
   {
     "id": "Q1144693",
@@ -2327,7 +2686,7 @@
     "at": {
       "year": 1966
     },
-    "row": 31
+    "row": 35
   },
   {
     "id": "Q1419429",
@@ -2341,7 +2700,7 @@
     "at": {
       "year": 1787
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q41751",
@@ -2360,6 +2719,23 @@
     "row": 1
   },
   {
+    "id": "Q455037",
+    "name": "Первый конвейер Форда",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "manufacturing technology where an unfinished product is moved from workstation to workstation where work steps are performed or parts are added in sequence until the product is complete",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Assembly_line",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hyundai%20car%20assembly%20line.jpg",
+    "imageAttribution": "User: Anonyme, via Wikimedia Commons",
+    "description": "Конвейерное производство — система поточной организации производства на основе конвейера, при которой оно разделено на простейшие короткие операции, а перемещение деталей осуществляется автоматически. Это такая организация выполнения операций над объектами, при которой весь процесс воздействия разделяется на последовательность стадий с целью повышения производительности путём одновременного независимого выполнения операций над несколькими объектами, проходящими различные стадии.Конвейером также называют средство продвижения объектов между стадиями при такой организации.",
+    "at": {
+      "year": 1913,
+      "month": 12
+    },
+    "row": 37
+  },
+  {
     "id": "Q6501061",
     "name": "электрический телеграф",
     "category": "communication",
@@ -2371,7 +2747,7 @@
     "at": {
       "year": 1816
     },
-    "row": 19
+    "row": 18
   },
   {
     "id": "Q1753108",
@@ -2388,7 +2764,7 @@
     "at": {
       "year": 1869
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q1162294",
@@ -2410,7 +2786,7 @@
         "month": 1
       }
     },
-    "row": 34
+    "row": 38
   },
   {
     "id": "Q833645",
@@ -2425,7 +2801,7 @@
     "at": {
       "year": 1623
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q1194052",
@@ -2450,7 +2826,7 @@
         "month": 7
       }
     },
-    "row": 37
+    "row": 38
   },
   {
     "id": "Q310301",
@@ -2480,7 +2856,7 @@
     "at": {
       "year": 1892
     },
-    "row": 28
+    "row": 30
   },
   {
     "id": "Q8665",
@@ -2498,7 +2874,7 @@
       "year": 1895,
       "month": 3
     },
-    "row": 30
+    "row": 32
   },
   {
     "id": "Q99200",
@@ -2516,7 +2892,7 @@
     "at": {
       "year": 1779
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q505668",
@@ -2548,7 +2924,7 @@
       "year": 1942,
       "month": 12
     },
-    "row": 43
+    "row": 44
   },
   {
     "id": "Q705693",
@@ -2606,7 +2982,7 @@
         "month": 7
       }
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q15251",
@@ -2626,7 +3002,7 @@
       "year": 1997,
       "month": 7
     },
-    "row": 21
+    "row": 27
   },
   {
     "id": "Q325656",
@@ -2665,7 +3041,7 @@
       "year": 1974,
       "month": 5
     },
-    "row": 27
+    "row": 31
   },
   {
     "id": "Q733610",
@@ -2683,6 +3059,42 @@
       "year": -781
     },
     "row": 1
+  },
+  {
+    "id": "Q55264655",
+    "name": "Сан-Жоржи-да-Мина",
+    "category": "landmarks",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "fortified colonial trading post in Ghana",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Elmina_Castle",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Castle%20of%20St.%20George%E2%80%99s%2003.JPG",
+    "imageAttribution": "Bolance, via Wikimedia Commons",
+    "description": "Элмина, также Форт Святого Георгия, также Сан-Жоржи-да-Мина — форт в Гане, в окрестностях города Элмина у одноимённого мыса на берегу Гвинейского залива.",
+    "at": {
+      "year": 1482
+    },
+    "row": 0
+  },
+  {
+    "id": "Q340742",
+    "name": "Осевое время",
+    "category": "philosophy-education",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "pivotal age characterizing history and philosophy from the 8th to 3rd centuries BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Axial_Age",
+    "description": "Осевое время — термин, введённый немецким философом Карлом Ясперсом для обозначения периода в истории человечества, во время которого на смену мифологическому мировоззрению пришло рациональное и (или) философское, сформировавшее тот тип человека, который существует поныне. Ясперс датирует осевое время между 800—200 годами до н. э. По мнению Ясперса, все учения осевого времени отличаются рационализмом и стремлением человека к переосмыслению существовавших до этого норм, обычаев и традиций. Те доосевые цивилизации, которые не смогли приспособиться к изменениям, прекратили своё существование, не оставив прямых наследников.",
+    "approximateDate": true,
+    "period": {
+      "start": {
+        "year": -799
+      },
+      "end": {
+        "year": -199
+      }
+    },
+    "row": 5
   },
   {
     "id": "Q842363",
@@ -2716,7 +3128,7 @@
       "year": 1907,
       "month": 9
     },
-    "row": 35
+    "row": 39
   },
   {
     "id": "Q699127",
@@ -2757,7 +3169,7 @@
     "at": {
       "year": 1833
     },
-    "row": 20
+    "row": 23
   },
   {
     "id": "Q18408564",
@@ -2775,7 +3187,7 @@
       "year": 1783,
       "month": 4
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q570140",
@@ -2790,6 +3202,55 @@
     "description": "Рефо́рмы Та́йка (яп. 大化の改新 тайка но кайсин, «обновление Тайка») — крупнейшие социально-политические преобразования в истории древней Японии, которые были проведены в VII—VIII веках под руководством принца Нака-но Оэ и его подданного Накатоми-но Каматари. Названы по девизу императорского правления Тайка.",
     "at": {
       "year": 645
+    },
+    "row": 3
+  },
+  {
+    "id": "Q3062714",
+    "name": "Казнь Людовика XVI",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 63,
+    "tagline": "значительное событие Великой французской революции",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hinrichtung%20Ludwig%20des%20XVI.png",
+    "description": "Казнь Людовика XVI на гильотине — одно из центральных событий Французской революции, которое состоялось 21 января 1793 года в 10:22 на площади Революции в Париже. Казнь была произведена Шарлем-Анри Сансоном, тогдашним верховным палачом Первой Французской республики, который ранее был королевским палачом при Людовике.",
+    "at": {
+      "year": 1793,
+      "month": 1
+    },
+    "row": 22
+  },
+  {
+    "id": "Q1000970",
+    "name": "буддизм на Шри-Ланке",
+    "category": "religion-mythology",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 63,
+    "tagline": "history and demographics of Buddhism in Sri Lanka, formerly Ceylon",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_Sri_Lanka",
+    "description": "Theravada Buddhism is the largest and official religion of Sri Lanka, practiced by 69.8% of the population as of 2012. Practitioners of Sri Lankan Buddhism can be found amongst the majority Sinhalese population as well as among the minority ethnic groups, most notably the Sri Lankan Chinese. Sri Lankan Buddhists share many similarities with Southeast Asian Buddhists, specifically Thai Buddhists and Burmese Buddhists due to traditional and cultural exchange. Sri Lanka is one of only five countries in the world with a Theravada Buddhist majority, and others are Thailand, Cambodia, Laos and Myanmar.",
+    "approximateDate": true,
+    "at": {
+      "year": -249
+    },
+    "row": 2
+  },
+  {
+    "id": "Q6964481",
+    "name": "Раскол Русской церкви",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 63,
+    "tagline": "раскол, начавшийся в 1650-х годах в Москве",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Schism_of_the_Russian_Church",
+    "description": "Раско́л Ру́сской це́ркви — церковный раскол в Русской церкви, начавшийся в 1650-х годах в Москве. Связан с реформой патриарха Никона, направленной на внесение изменений в богослужебные книги московской печати и некоторые обряды в целях их унификации с современными греческими.",
+    "at": {
+      "year": 1666
     },
     "row": 3
   },
@@ -2828,7 +3289,7 @@
         "month": 5
       }
     },
-    "row": 28
+    "row": 20
   },
   {
     "id": "Q1739453",
@@ -2846,7 +3307,7 @@
     "at": {
       "year": 1954
     },
-    "row": 44
+    "row": 46
   },
   {
     "id": "Q2345573",
@@ -2903,7 +3364,83 @@
       "year": 1783,
       "month": 8
     },
-    "row": 21
+    "row": 23
+  },
+  {
+    "id": "Q3427966",
+    "name": "Маньчжурское завоевание Китая",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 62,
+    "tagline": "transition between two major dynasties in Chinese history between 1618 and 1683",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Shanhaiguan.gif",
+    "description": "Маньчжурское завоевание Китая — военный конфликт между маньчжурской империей Цин и китайской империей Мин, происходивший в 1644—1683 годах и завершившийся поражением и прекращением существования последней.",
+    "period": {
+      "start": {
+        "year": 1616
+      },
+      "end": {
+        "year": 1683
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q1661772",
+    "name": "Декларация независимости Индонезии",
+    "category": "society-administration",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 62,
+    "tagline": "1945 document declaring Indonesian independence from the Netherlands",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_Indonesian_Independence",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Indonesia%20declaration%20of%20independence%2017%20August%201945.jpg",
+    "description": "Декларация независимости Индонезии — акт провозглашения государственной независимости Республики Индонезии, состоявшийся 17 августа 1945 года. До этого территория страны формально считалась колониальным владением Нидерландов — Нидерландской Ост-Индией, фактически же находилась под оккупацией Японии, захватившей её в начале 1942 года.",
+    "at": {
+      "year": 1945,
+      "month": 8
+    },
+    "row": 45
+  },
+  {
+    "id": "Q957012",
+    "name": "Парламентские выборы в ЮАР (1994)",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-africa"
+    ],
+    "fameScore": 62,
+    "tagline": "first South African election held under universal suffrage",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1994_South_African_general_election",
+    "description": "Парламентские выборы в Южно-Африканской Республике 1994 года прошли 26—29 апреля. Это были первые в истории страны выборы, в которых могли участвовать граждане всех рас, и, следовательно, также первые выборы со всеобщим избирательным правом для взрослых граждан. Выборы были проведены под руководством Независимой избирательной комиссии (IEC) и стали кульминацией четырёхлетнего процесса, положившего конец политики апартеида. Одновременно с парламентскими проходили выборы в законодательные собрания всех десяти провинций ЮАР.",
+    "period": {
+      "start": {
+        "year": 1994,
+        "month": 4
+      },
+      "end": {
+        "year": 1994,
+        "month": 4
+      }
+    },
+    "row": 29
+  },
+  {
+    "id": "Q426853",
+    "name": "Ручной набор",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 62,
+    "tagline": "тип книгопечатания",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Movable_type",
+    "description": "Ручной набор — способ набора текста, при котором строки подбираются вручную из металлических или деревянных литер и пробельного материала .",
+    "approximateDate": true,
+    "at": {
+      "year": 1040
+    },
+    "row": 1
   },
   {
     "id": "Q375044",
@@ -2920,7 +3457,7 @@
     "at": {
       "year": 1825
     },
-    "row": 21
+    "row": 20
   },
   {
     "id": "Q2224989",
@@ -2936,6 +3473,43 @@
       "year": 1712
     },
     "row": 6
+  },
+  {
+    "id": "Q1122859",
+    "name": "Торговля с южными варварами",
+    "category": "commerce-finance",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 61,
+    "tagline": "period in Japanese history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nanban_trade",
+    "description": "Торговля с южными варварами (яп. 南蛮貿易 намбан бо:эки) — торговля, которая осуществлялась в течение второй половины XVI — начала XVII века между Японией с одной стороны и Португалией и Испанией с другой. Название происходит от китайского термина наньмань — «южные варвары», которым японцы обозначали португальцев и испанцев, которые прибывали к Японскому архипелагу из колоний и факторий в Юго-Восточной Азии.",
+    "period": {
+      "start": {
+        "year": 1543
+      },
+      "end": {
+        "year": 1650
+      }
+    },
+    "row": 10
+  },
+  {
+    "id": "Q7169780",
+    "name": "Perry Expedition",
+    "category": "expedition",
+    "regionTags": [],
+    "fameScore": 61,
+    "tagline": "19th-century American diplomatic and military expedition to Japan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Perry_Expedition",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Japanese%201854%20print%20Commodore%20Perry.jpg",
+    "description": "The Perry Expedition was a diplomatic and military expedition in two separate voyages to the Tokugawa shogunate (徳川幕府) by warships of the United States Navy. The goals of this expedition included exploration, surveying, and the establishment of diplomatic relations and negotiation of trade agreements with the various nations in the region. Opening contact with the government of Japan was considered a top priority of the expedition, and was one of the key reasons for its inception.",
+    "at": {
+      "year": 1853,
+      "month": 7
+    },
+    "row": 26
   },
   {
     "id": "Q1398696",
@@ -2955,6 +3529,54 @@
     "row": 22
   },
   {
+    "id": "Q2044496",
+    "name": "Книга абака",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 60,
+    "tagline": "essay by Fibonacci",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Liber_Abaci",
+    "description": "Книга абака — главный труд Фибоначчи, посвящённый изложению и пропаганде десятичной арифметики. Книга написана в 1202 г., вторая переработанная редакция — 1228 г., посвящена Майклу Скоту. До наших дней дошла только вторая версия.",
+    "at": {
+      "year": 1202
+    },
+    "row": 5
+  },
+  {
+    "id": "Q1457297",
+    "name": "Sidereus Nuncius",
+    "category": "science-theory",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 60,
+    "tagline": "astronomical treatise of Galileo",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sidereus_Nuncius",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Houghton%20IC6.G1333.610sa%20-%20Sidereus%20nuncius.jpg",
+    "description": "Sidereus Nuncius is a short astronomical treatise published in Neo-Latin by Galileo Galilei on March 13, 1610. It was the first published scientific work based on observations made through a telescope, and it contains the results of Galileo's early observations of the imperfect and mountainous Moon, of hundreds of stars not visible to the naked eye in the Milky Way and in certain constellations, and of the Medicean Stars that appeared to be circling Jupiter.",
+    "at": {
+      "year": 1610,
+      "month": 3
+    },
+    "row": 11
+  },
+  {
+    "id": "Q1359529",
+    "name": "Акт о лучшем управлении Индией",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 60,
+    "tagline": "1858 United Kingdom of Great Britain and Ireland Act of Parliament 21 & 22 Vic c. 106",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Government_of_India_Act_1858",
+    "description": "Акт о лучшем управлении Индией — акт Парламента Великобритании, принятый 2 августа 1858 года, которым функции управления Индией были переданы от Ост-Индской компании Британской короне.",
+    "at": {
+      "year": 1858
+    },
+    "row": 28
+  },
+  {
     "id": "Q2453355",
     "name": "Дартмутский семинар",
     "category": "science-theory",
@@ -2968,7 +3590,7 @@
     "at": {
       "year": 1956
     },
-    "row": 45
+    "row": 47
   },
   {
     "id": "Q3984081",
@@ -3005,7 +3627,7 @@
         "year": 1896
       }
     },
-    "row": 31
+    "row": 33
   },
   {
     "id": "Q2119319",
@@ -3020,7 +3642,7 @@
       "year": 1555,
       "month": 6
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q1739282",
@@ -3052,7 +3674,58 @@
     "at": {
       "year": 1905
     },
-    "row": 36
+    "row": 42
+  },
+  {
+    "id": "Q251600",
+    "name": "Объединение Саудовской Аравии",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "house of Saudi Arabia kingdom claim",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Formation_of_Saudi_Arabia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Saudi%20Arabia%20map.png",
+    "imageAttribution": "No machine-readable author provided. NormanEinstein assumed (based on copyright claims)., via Wikimedia Commons",
+    "description": "Объединение Саудовской Аравии — процесс, при котором различные племена, шейхства и эмираты большей части Аравийского полуострова были объединены под правлением династии дома Аль Сауд (Саудитов), между 1902 и 1932 годами, когда состоялось провозглашение современного Королевства Саудовская Аравия. Проводимый под руководством харизматичного лидера Абд аль-Азиза ибн Сауда, этот процесс создал то, что иногда называют Третьим Саудовским государством, чтобы отличать его от первого и второго государств, которые были созданы кланом Аль Саудов.",
+    "period": {
+      "start": {
+        "year": 1902
+      },
+      "end": {
+        "year": 1932
+      }
+    },
+    "row": 40
+  },
+  {
+    "id": "Q1811550",
+    "name": "history of paper",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
+    "description": "Paper is a thin nonwoven material traditionally made from a combination of milled plant and other textile fibres. The first paper-like plant-based writing sheet was papyrus in Egypt, but the first true papermaking process was documented in China during the Eastern Han period, traditionally attributed to the court official Cai Lun. This plant-puree conglomerate produced by pulp mills and paper mills was used for writing, drawing, and money. During the 8th century, Chinese paper making spread to the Islamic world, replacing papyrus. By the 11th century, papermaking had reached Europe, where it initially coexisted with animal-skin-based parchment before eventually replacing it, alongside wax tablets and thin wooden leaf tablets. By the 13th century, papermaking had been refined, with paper mills in Spain using waterwheels. Later improvements to the papermaking process came in 19th-century Europe with the invention of wood-based papers.",
+    "approximateDate": true,
+    "at": {
+      "year": 105
+    },
+    "row": 0
+  },
+  {
+    "id": "Q28325009",
+    "name": "AlexNet",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "type of convolutional neural network",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/AlexNet",
+    "description": "AlexNet is a convolutional neural network architecture developed for image classification tasks, notably achieving prominence through its performance in the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). It classifies images into 1,000 distinct object categories and is regarded as the first widely recognized application of deep convolutional networks in large-scale visual recognition.",
+    "at": {
+      "year": 2012,
+      "month": 9
+    },
+    "row": 2
   },
   {
     "id": "Q4567715",
@@ -3077,7 +3750,7 @@
         "month": 6
       }
     },
-    "row": 46
+    "row": 49
   },
   {
     "id": "Q1564366",
@@ -3115,7 +3788,7 @@
     "at": {
       "year": 864
     },
-    "row": 2
+    "row": 4
   },
   {
     "id": "Q2469465",
@@ -3131,7 +3804,24 @@
       "year": 1665,
       "month": 1
     },
-    "row": 3
+    "row": 6
+  },
+  {
+    "id": "Q10872057",
+    "name": "Провозглашение Китайской Народной Республики",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 58,
+    "tagline": "official founding of the PRC",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_the_People%27s_Republic_of_China",
+    "description": "Провозглашение Китайской Народной Республики было сделано Мао Цзэдуном, председателем Коммунистической партии Китая (КПК), 1 октября 1949 года на площади Тяньаньмэнь в Пекине. На церемонии, ознаменовавшей основание Китайской Народной Республики, Мао провозгласил правительство нового государства под управлением КПК, официально именуемое Центральным народным правительством.",
+    "at": {
+      "year": 1949,
+      "month": 10
+    },
+    "row": 48
   },
   {
     "id": "Q1290001",
@@ -3184,7 +3874,7 @@
         "year": 1743
       }
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q23016184",
@@ -3223,7 +3913,24 @@
     "at": {
       "year": 1776
     },
-    "row": 22
+    "row": 24
+  },
+  {
+    "id": "Q10873159",
+    "name": "буддизм в Китае",
+    "category": "religion-mythology",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 57,
+    "tagline": "overview role of Buddhism in China",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_China",
+    "description": "Вошёл в так называемый комплекс Сань цзяо — три основных религии Китая: конфуцианство, буддизм и даосизм.",
+    "approximateDate": true,
+    "at": {
+      "year": 67
+    },
+    "row": 3
   },
   {
     "id": "Q3518429",
@@ -3239,7 +3946,55 @@
     "at": {
       "year": 510
     },
-    "row": 0
+    "row": 2
+  },
+  {
+    "id": "Q387647",
+    "name": "Список стран, освободившихся в Год Африки",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 56,
+    "tagline": "1960, year of the independence of 17 African countries",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Year_of_Africa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Africa%20independence%20dates.svg",
+    "imageAttribution": "Original uploader was Mehmetaergun; recreated by Nobelium (talk) 2010-05-10, via Wikimedia Commons",
+    "description": "Год Африки — 1960 год, вошедший в историю деколонизации Африки, как год, во время которого появилось наибольшее количество суверенных государств — 17. Словосочетание «Год Африки» впервые было употреблено заместителем секретаря ООН по специальным политическим вопросам Ральфом Банчем на симпозиуме по антиколониализму в Африке, проходившем 16—17 февраля 1960 года на историческом факультете Колледжа Уэллсли. Освобождение стран стало возможным в силу возрастания националистических и антиколониалистских настроений в Африке в конце 1950-х годов. На выборах в Палату общин в 1959 одним из предвыборных обещаний выигравшей консервативной партии, было предоставление независимости Нигерии. В 1960 году впервые действующий премьер-министр Гарольд Макмиллан посетил колониальные владения Великобритании. В сентябре 1960 года на Генеральной ассамблее ООН СССР предложил проект освобождения от колониальной зависимости всех территорий Африки. В ноябре аналогичный проект разработали 25 стран Африки и Азии, он был одобрен на сессии 14 декабря 1960 года.",
+    "at": {
+      "year": 1960
+    },
+    "row": 50
+  },
+  {
+    "id": "Q5333520",
+    "name": "Economic liberalisation in India",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 56,
+    "tagline": "economic reforms in India that started on 24 July 1991",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Economic_liberalisation_in_India",
+    "description": "Economic liberalisation in India refers to a series of policy changes that opened the country's economy to the world and made it more market-oriented and consumption-driven. The goal was to expand the role of private and foreign investment, seen as a means of achieving economic growth and development. Although some attempts at liberalisation occurred in 1966 and the early 1980s, a more comprehensive reform came in 1991.",
+    "at": {
+      "year": 1991,
+      "month": 7
+    },
+    "row": 30
+  },
+  {
+    "id": "Q3447247",
+    "name": "Женское избирательное право в Новой Зеландии",
+    "category": "social-movements",
+    "regionTags": [
+      "australia-and-new-zealand"
+    ],
+    "fameScore": 56,
+    "tagline": "overview of women's voting rights in New Zealand",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand",
+    "description": "Женское избирательное право в Новой Зеландии было закреплено на законодательном уровне в 1893 году. Борьба за избирательное право женщин в Новой Зеландии была частью движения за Женское избирательное право в конце XIX века. В ранней колониальной Новой Зеландии, как и в европейских обществах, женщины были исключены из политики. Во второй половине XIX века, после многолетних усилий борцов за избирательное право женщин во главе с Кейт Шеппард, Новая Зеландия стала первой страной в мире, в которой все женщины имели право голоса на парламентских выборах.",
+    "at": {
+      "year": 1893,
+      "month": 9
+    },
+    "row": 36
   },
   {
     "id": "Q951383",
@@ -3256,7 +4011,24 @@
     "at": {
       "year": 1498
     },
-    "row": 6
+    "row": 7
+  },
+  {
+    "id": "Q3199818",
+    "name": "Испанская колонизация Филиппин",
+    "category": "society-administration",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 55,
+    "tagline": "Historical Spanish colonial period in the Philippines",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Philippines_(1565%E2%80%931898)",
+    "description": "The history of the Philippines from 1565 to 1898 is known as the Spanish colonial period, during which the Philippine Islands were ruled as the Captaincy General of the Philippines within the Spanish East Indies, initially under the Viceroyalty of New Spain, based in Mexico City, until the independence of the Mexican Empire from Spain in 1821. This resulted in direct Spanish control during a period of governmental instability there.",
+    "at": {
+      "year": 1565,
+      "month": 4
+    },
+    "row": 11
   },
   {
     "id": "Q2096366",
@@ -3273,7 +4045,7 @@
     "at": {
       "year": 1851
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q13443401",
@@ -3287,7 +4059,7 @@
     "at": {
       "year": 1876
     },
-    "row": 30
+    "row": 32
   },
   {
     "id": "Q547513",
@@ -3304,7 +4076,7 @@
       "year": 1876,
       "month": 3
     },
-    "row": 33
+    "row": 35
   },
   {
     "id": "Q28135544",
@@ -3319,6 +4091,41 @@
       "year": 400
     },
     "row": 2
+  },
+  {
+    "id": "Q3042917",
+    "name": "discovery of Brazil",
+    "category": "expedition",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 51,
+    "tagline": "Portuguese discovery in 1500",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Discovery_of_Brazil",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Museu%20do%20Forte%20de%20Copacabana%20-%20Rio%20de%20Janeiro%20%2836406560346%29.jpg",
+    "description": "The first landing of European explorers to the territory of present-day Brazil, which was already inhabited by various Indigenous communities, is often credited to Portuguese navigator Pedro Álvares Cabral, who sighted the land later named Island of Vera Cruz, near Monte Pascoal, on 22 April 1500 while leading an expedition to Calicut, India. Cabral's voyage is part of the so-called Portuguese discoveries.",
+    "at": {
+      "year": 1992,
+      "month": 10
+    },
+    "row": 31
+  },
+  {
+    "id": "Q3286250",
+    "name": "Индийские армады",
+    "category": "expedition",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 51,
+    "tagline": "Флоты использованные в Индии",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Portuguese_India_Armadas",
+    "description": "Индийские Армады Португалии — серия морских экспедиций (1497—1511), организованных королевством Португалия в Индию через мыс Доброй Надежды по маршруту, открытому Васко да Гама.",
+    "at": {
+      "year": 1498,
+      "month": 5
+    },
+    "row": 8
   },
   {
     "id": "Q60863552",
@@ -3338,6 +4145,22 @@
     "row": 0
   },
   {
+    "id": "Q96379430",
+    "name": "Ghana Independence Act 1957",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 49,
+    "tagline": "United Kingdom legislation",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghana_Independence_Act_1957",
+    "description": "The Ghana Independence Act 1957 is an act of the Parliament of the United Kingdom that granted the Gold Coast fully responsible government within the British Commonwealth of Nations under the name of Ghana. The act received royal assent on 7 February 1957 and Ghana came into being on 6 March 1957.",
+    "at": {
+      "year": 1957
+    },
+    "row": 51
+  },
+  {
     "id": "Q2631085",
     "name": "Deep Blue — Каспаров (1997, партия 6)",
     "category": "sports-entertainment",
@@ -3352,7 +4175,70 @@
       "year": 1997,
       "month": 5
     },
-    "row": 26
+    "row": 32
+  },
+  {
+    "id": "Q31187690",
+    "name": "proclamation of the Republic of Turkey",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 46,
+    "tagline": "October 1923 historical event in Turkey",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Proclamation_of_the_Republic_of_Turkey",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Anavatan%201927.jpg",
+    "description": "The proclamation of the Republic of Turkey, formally declared during a session of the Grand National Assembly of Turkey on 29 October 1923, established of Turkey's form of government as a republic. This was realized by a constitutional amendment drafted by Mustafa Kemal Atatürk.",
+    "at": {
+      "year": 1923,
+      "month": 10
+    },
+    "row": 39
+  },
+  {
+    "id": "Q4378226",
+    "name": "призвание варягов",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 46,
+    "tagline": "исторический сюжет о происхождении Руси",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Calling_of_the_Varangians",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Calling%20of%20varangians%2001.jpg",
+    "description": "Призвание варягов — летописный сюжет о приглашении на княжение восточнославянскими и финно-угорскими племенами — варягов во главе с Рюриком и его братьями Синеусом и Трувором в Ладогу или Новгород и другие города, которое, согласно «Повести временных лет», произошло в 862 году.",
+    "approximateDate": true,
+    "at": {
+      "year": 862
+    },
+    "row": 5
+  },
+  {
+    "id": "Q16402123",
+    "name": "христианизация Армении",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 45,
+    "tagline": "распространение христианства на территории исторической Армении",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Christianization_of_Armenia",
+    "description": "Христианство было распространено в Армении ещё до официального принятия веры в начале IV века, хотя подробности этого процесса остаются малоизученными. В начале IV века Великая Армения провозгласила христианство государственной религией, став первым государством в мире, предпринявшим данный шаг. Официальной датой принятия христианства в Армении считается 301 год, что произошло в период правления Трдата III Великого из династии Аршакуни. Первым главой Армянской церкви был Григорий Просветитель. Для укоренения христианства в стране потребовалось довольно много времени. Самый значительный перелом произошел в V веке, после изобретения армянской письменности Месропом Маштоцем и последующего перевода Библии и Литургии на армянский язык.",
+    "at": {
+      "year": 301
+    },
+    "row": 3
+  },
+  {
+    "id": "Q6541120",
+    "name": "Liberian Declaration of Independence",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 43,
+    "tagline": "document written by Hilary Teague and adopted by the Liberian Constitutional Convention on 26 July 1847 to announce the independence of Liberia from the US",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Liberian_Declaration_of_Independence",
+    "description": "The Liberian Declaration of Independence is a document adopted by the Liberian Constitutional Convention on 26 July 1847, to announce that the Commonwealth of Liberia, a colony founded and controlled by the private American Colonization Society, was an independent state known as the Republic of Liberia.",
+    "at": {
+      "year": 1847,
+      "month": 7
+    },
+    "row": 30
   },
   {
     "id": "Q5305631",
@@ -3369,6 +4255,21 @@
     "at": {
       "year": 1859
     },
-    "row": 27
+    "row": 11
+  },
+  {
+    "id": "Q5869513",
+    "name": "history of the Hindu–Arabic numeral system",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 41,
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Hindu%E2%80%93Arabic_numeral_system",
+    "description": "The Hindu–Arabic numeral system is a decimal place-value numeral system that uses a zero glyph as in \"205\". Some historians have argued that the exact development and transmission of the Hindu–Arabic numeral system remains debated, with differing interpretations regarding the contributions of Indian, Persian, and Arab scholars.Its glyphs are descended from the Indian Brahmi numerals. The full system emerged by the 8th to 9th centuries, and is first described outside India in Al-Khwarizmi's On the Calculation with Hindu Numerals (ca. 825), and second Al-Kindi's four-volume work On the Use of the Indian Numerals (c. 830). Today the name Hindu–Arabic numerals is usually used.",
+    "approximateDate": true,
+    "at": {
+      "year": 500
+    },
+    "row": 3
   }
 ]

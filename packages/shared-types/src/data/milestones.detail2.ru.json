@@ -15,18 +15,18 @@
     "row": 0
   },
   {
-    "id": "Q872",
-    "name": "радио",
+    "id": "Q729856",
+    "name": "Первая радиопередача",
     "category": "communication",
     "regionTags": [],
     "fameScore": 86,
-    "tagline": "способ передачи информации посредством радиоволн",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Radio",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pasilan%20linkkitorni.jpg",
-    "imageAttribution": "Markus Koljonen (Dilaudid), via Wikimedia Commons",
-    "description": "Ра́дио, также радиосвязь — способ передачи сообщений на расстояние посредством радиоволн, а также область науки и техники, связанная с изучением физических явлений, лежащих в основе этого способа, и с его использованием для связи, звукового вещания, передачи изображений, сигнализации, контроля и управления, обнаружения различных объектов и определения их местоположения и для других целей.",
+    "tagline": "method of communication",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Wireless_telegraphy",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SCR188.jpg",
+    "description": "Радиотелегра́ф, устаревшее беспроволочный телеграф — устройство, предназначенное для передачи текстовой информации по радио с помощью азбуки (кода) Морзе или другого простого кода.",
     "at": {
-      "year": 1894
+      "year": 1896,
+      "month": 6
     },
     "row": 0
   },
@@ -213,6 +213,22 @@
     "row": 8
   },
   {
+    "id": "Q8276",
+    "name": "Махабхарата",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 86,
+    "tagline": "древнеиндийский эпос",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahabharata",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kurukshetra.jpg",
+    "description": "«Махабха́рата» — древнеиндийский эпос на санскрите, одно из крупнейших литературных произведений в мире. Состоит из восемнадцати книг (парв) и содержит более 75 000 двустиший (шлок), что в несколько раз длиннее «Илиады» и «Одиссеи» вместе взятых.",
+    "approximateDate": true,
+    "at": {
+      "year": 400
+    },
+    "row": 0
+  },
+  {
     "id": "Q42005",
     "name": "Чёрная смерть",
     "category": "public-health",
@@ -358,6 +374,21 @@
       "year": 1096
     },
     "row": 1
+  },
+  {
+    "id": "Q12214",
+    "name": "натуральная оспа",
+    "category": "public-health",
+    "regionTags": [],
+    "fameScore": 85,
+    "tagline": "высокозаразная инфекционная болезнь",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Smallpox",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Child%20with%20Smallpox%20Bangladesh.jpg",
+    "description": "Натура́льная о́спа, или чёрная о́спа — высокозаразная вирусная инфекция, особо опасная болезнь, характеризуется тяжёлым течением, лихорадкой, сыпью на коже и слизистых оболочках, нередко оставляющей после себя рубцы. Её вызывают два вида вирусов: Variola major и Variola minor, которые относятся к семейству Poxviridae, подсемейства Chordopoxvirinae, рода Orthopoxvirus. Люди, выживающие после оспы, могут частично или полностью терять зрение, и практически всегда на коже остаются многочисленные рубцы в местах бывших язв — оспины.",
+    "at": {
+      "year": -10000
+    },
+    "row": 0
   },
   {
     "id": "Q1515631",
@@ -561,6 +592,23 @@
       "month": 8
     },
     "row": 3
+  },
+  {
+    "id": "Q36288",
+    "name": "Великий шёлковый путь",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 84,
+    "tagline": "Главный торговый путь между Европой и Азией в Античность и Средние века",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Silk_Road",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Silk%20road%20Kazakhstan.svg",
+    "imageAttribution": "User:Kelvin Case\nUser:Turkish Flame\n\nUser:SmallJarsWithGreenLabels, via Wikimedia Commons",
+    "description": "Вели́кий шёлковый путь — караванная дорога, связывавшая Восточную Азию со Средиземноморьем в Античности и в Средние века. В первую очередь использовался для вывоза шёлка из Китая, с чем и связано его название. Путь был проложен во II веке до н. э., вёл из Сианя через Ланьчжоу в Дуньхуан, где раздваивался: северная дорога проходила через Турфан, далее пересекала Памир и шла в Фергану и казахские степи, южная — мимо озера Лобнор по южной окраине пустыни Такла-Макан через Яркенд и Памир вела в Бактрию, а оттуда — в Парфию, Индию и на Ближний Восток вплоть до Средиземного моря. Термин введён немецким географом Фердинандом фон Рихтгофеном в 1877 году.",
+    "approximateDate": true,
+    "at": {
+      "year": -137
+    },
+    "row": 1
   },
   {
     "id": "Q11452",
@@ -872,5 +920,55 @@
       "year": 455
     },
     "row": 0
+  },
+  {
+    "id": "Q8251",
+    "name": "Искусство войны",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "Древнекитайский трактат о войне",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Art_of_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bamboo%20book%20-%20closed%20-%20UCR.jpg",
+    "imageAttribution": "vlasta2, bluefootedbooby on flickr.com, via Wikimedia Commons",
+    "description": "«Иску́сство войны́» — самый известный древнекитайский трактат, посвящённый военной стратегии и политике и написанный Сунь-Цзы. Состоит из 13 глав (пянь). Является основополагающим текстом «школы военной философии», главным в её каноническом Семикнижии.",
+    "approximateDate": true,
+    "at": {
+      "year": -499
+    },
+    "row": 1
+  },
+  {
+    "id": "Q34777",
+    "name": "Открытие рентгеновских лучей",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "вид электромагнитных волн",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/X-ray",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/X-ray%20by%20Wilhelm%20R%C3%B6ntgen%20of%20Albert%20von%20K%C3%B6lliker%27s%20hand%20-%2018960123-02.jpg",
+    "description": "Рентге́новское излуче́ние — электромагнитные волны, энергия фотонов которых лежит на шкале электромагнитных волн между ультрафиолетовым излучением и гамма-излучением (от ~10 эВ до нескольких МэВ), что соответствует длинам волн от ~103 до ~10−2 Å (от ~102 до ~10−3 нм).",
+    "at": {
+      "year": 1895,
+      "month": 11
+    },
+    "row": 5
+  },
+  {
+    "id": "Q79897",
+    "name": "азбука Морзе",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 82,
+    "tagline": "способ знакового кодирования двумя знаками",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Morse_code",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SOS.svg",
+    "imageAttribution": "Dr. Schorsch, via Wikimedia Commons",
+    "description": "Азбука Мо́рзе, код Мо́рзе, разг. морзя́нка — способ знакового кодирования, в котором буквы, цифры, знаки препинания и другие символы представляются в виде последовательностей коротких и длинных сигналов, называемых «точками» и «тире». Предназначена для передачи по последовательным каналам связи. Уникальность азбуки Морзе состоит в том, что она совмещает в себе сразу несколько особенностей:возможность кодирования и декодирования человеком без применения специальных терминальных устройств;экономная длина сообщений ;удовлетворительная устойчивость к помехам и ручным ошибкам ;общеизвестность.",
+    "at": {
+      "year": 1844,
+      "month": 5
+    },
+    "row": 1
   }
 ]

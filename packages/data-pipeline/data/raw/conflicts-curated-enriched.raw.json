@@ -5847,6 +5847,403 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nineveh%20mashki%20gate%20from%20west.JPG",
       "tagline": "612 BC battle that saw the fall of the Assyrian capital, and the climax of the Conquest of Assyria",
       "year": -611
+    },
+    {
+      "id": "Q97279161",
+      "name": "Siege of Samaria",
+      "category": "military-operation",
+      "sitelinks": 1,
+      "articleUrls": {},
+      "countries": [],
+      "year": -107,
+      "endYear": -106
+    },
+    {
+      "id": "Q1258062",
+      "name": "Roman conquest of Britain",
+      "nameRu": "Римское завоевание Британии",
+      "category": "war",
+      "sitelinks": 34,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Roman_conquest_of_Britain",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Roman_conquest_of_Britain",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BE%85%E9%A6%AC%E5%BE%81%E6%9C%8D%E4%B8%8D%E5%88%97%E9%A1%9B",
+        "es": "https://es.wikipedia.org/wiki/Conquista_romana_de_Britania",
+        "fr": "https://fr.wikipedia.org/wiki/Conqu%C3%AAte_romaine_de_la_Grande-Bretagne",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%81%D8%AA%D8%AD_%D8%A7%D9%84%D8%B1%D9%88%D9%85%D8%A7%D9%86%D9%8A_%D9%84%D8%A8%D8%B1%D9%8A%D8%B7%D8%A7%D9%86%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%91%D1%80%D0%B8%D1%82%D0%B0%D0%BD%D0%B8%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Roman.Britain.campaigns.43.to.84.jpg",
+      "tagline": "1st century AD invasion of Britain by the Romans"
+    },
+    {
+      "id": "Q1455917",
+      "name": "Umayyad conquest of Hispania",
+      "nameRu": "Арабское завоевание Пиренейского полуострова",
+      "category": "war",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Muslim_conquest_of_the_Iberian_Peninsula",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Muslim_conquest_of_the_Iberian_Peninsula",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A9%86%E6%96%AF%E6%9E%97%E5%BE%81%E6%9C%8D%E8%A5%BF%E7%8F%AD%E7%89%99",
+        "es": "https://es.wikipedia.org/wiki/Conquista_omeya_de_Hispania",
+        "fr": "https://fr.wikipedia.org/wiki/Conqu%C3%AAte_musulmane_de_l%27Hispanie",
+        "de": "https://de.wikipedia.org/wiki/Muslimische_Eroberung_der_Iberischen_Halbinsel",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%81%D8%AA%D8%AD_%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A_%D9%84%D9%84%D8%A3%D9%86%D8%AF%D9%84%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%80%D0%B0%D0%B1%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%9F%D0%B8%D1%80%D0%B5%D0%BD%D0%B5%D0%B9%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BF%D0%BE%D0%BB%D1%83%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B2%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mariano%20Barbas%C3%A1n%20-%20Batalla%20de%20Guadalete.jpg",
+      "tagline": "war resulting in the destruction of the Visigothic Kingdom and the expansion of the Umayyad Caliphate (711–718)",
+      "year": 711,
+      "endYear": 726
+    },
+    {
+      "id": "Q112182472",
+      "name": "Umayyad conquest of Sindh",
+      "category": "war",
+      "sitelinks": 5,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Arab_conquest_of_Sindh",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Arab_conquest_of_Sindh",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D8%A3%D9%85%D9%88%D9%8A_%D9%84%D9%84%D8%B3%D9%86%D8%AF"
+      },
+      "countries": [
+        "Q110362913"
+      ],
+      "tagline": "Umayyad conquest of Sindh in 711",
+      "year": 711,
+      "endYear": 713
+    },
+    {
+      "id": "Q4817850",
+      "name": "Muslim conquest of Transoxiana",
+      "nameRu": "Арабское завоевание Средней Азии",
+      "category": "war",
+      "sitelinks": 19,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Muslim_conquest_of_Transoxiana",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A9%86%E6%96%AF%E6%9E%97%E5%BE%81%E6%9C%8D%E5%A4%96%E7%B4%A2%E5%85%8B%E8%96%A9%E5%B0%BC%E4%BA%9E",
+        "es": "https://es.wikipedia.org/wiki/Conquista_musulmana_de_Transoxiana",
+        "fr": "https://fr.wikipedia.org/wiki/Conqu%C3%AAte_musulmane_de_la_Transoxiane",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%81%D8%AA%D8%AD_%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A_%D9%84%D9%85%D8%A7_%D9%88%D8%B1%D8%A7%D8%A1_%D8%A7%D9%84%D9%86%D9%87%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%80%D0%B0%D0%B1%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%A1%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B9_%D0%90%D0%B7%D0%B8%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D9%81%D8%AA%D9%88%D8%AD%20%D9%82%D8%AA%D9%8A%D8%A8%D8%A9%20%D8%A8%D9%86%20%D9%85%D8%B3%D9%84%D9%85%20%D9%88%D9%85%D8%AD%D9%85%D8%AF%20%D8%A8%D9%86%20%D8%A7%D9%84%D9%82%D8%A7%D8%B3%D9%85.jpg",
+      "tagline": "7th and 8th-century conquests by the Arabs in Asia",
+      "taglineRu": "военные действия Арабского халифата в Средней Азии",
+      "year": 673,
+      "endYear": 751
+    },
+    {
+      "id": "Q133850450",
+      "name": "Sack of Lindisfarne",
+      "category": "military-operation",
+      "sitelinks": 4,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sack_of_Lindisfarne",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sack_of_Lindisfarne",
+        "fr": "https://fr.wikipedia.org/wiki/Sac_de_Lindisfarne"
+      },
+      "countries": [
+        "Q107299"
+      ],
+      "tagline": "793 sack",
+      "year": 793
+    },
+    {
+      "id": "Q122942662",
+      "name": "Ghaznavid campaigns in India",
+      "category": "military-operation",
+      "sitelinks": 6,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghaznavid_campaigns_in_India",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ghaznavid_campaigns_in_India"
+      },
+      "countries": [],
+      "tagline": "1000 invasion of India by the Ghaznavid rulers",
+      "year": 1000,
+      "endYear": 1100
+    },
+    {
+      "id": "Q16957926",
+      "name": "Chola invasion of Srivijaya",
+      "category": "military-operation",
+      "sitelinks": 12,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Chola_invasion_of_Srivijaya",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Chola_invasion_of_Srivijaya",
+        "fr": "https://fr.wikipedia.org/wiki/Invasion_Chola_de_Sriwijaya",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%BA%D8%B2%D9%88_%D8%AA%D8%B4%D9%88%D9%84%D8%A7_%D9%84%D8%B3%D8%B1%D9%8A%D9%81%D9%8A%D8%AC%D8%A7%D9%8A%D8%A7"
+      },
+      "countries": [
+        "Q252"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rajendra%20map%20new.svg",
+      "tagline": "medieval naval raids",
+      "year": 1025
+    },
+    {
+      "id": "Q1078359",
+      "name": "Battle of Yamen",
+      "nameRu": "Битва при Ямынь",
+      "category": "military-operation",
+      "sitelinks": 31,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Yamen",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Yamen",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B4%96%E9%97%A8%E6%B5%B7%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Yamen",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Yamen",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Yamen",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%8A%D8%A7%D9%85%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%AF%D0%BC%D1%8B%D0%BD%D0%B5"
+      },
+      "countries": [
+        "Q7462",
+        "Q7313",
+        "Q148"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jingmen002.jpg",
+      "tagline": "1279 battle",
+      "taglineRu": "битва империи Сун против монголов",
+      "year": 1279,
+      "month": 3
+    },
+    {
+      "id": "Q123179707",
+      "name": "Sack of Delhi",
+      "nameRu": "Сражение при Дели (1398)",
+      "category": "military-operation",
+      "sitelinks": 6,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sack_of_Delhi_(1398)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sack_of_Delhi_(1398)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BF%D1%80%D0%B8_%D0%94%D0%B5%D0%BB%D0%B8_(1398)"
+      },
+      "countries": [
+        "Q229411"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Timur%20pursues%20the%20Indians%2C%20led%20by%20Sultan%20Mahmud-Khan%20Tughluq%2C%20back%20into%20Delhi%2C%2017%20December%201398.%20Zafarnama%20of%20Ibrahim%20Sultan%2C%20Timurid%20Shiraz%2C%201436.%20Folio%20290v.jpg",
+      "tagline": "1398 sack",
+      "year": 1398,
+      "month": 12
+    },
+    {
+      "id": "Q2888296",
+      "name": "Conquest of Ceuta",
+      "nameRu": "Битва при Сеуте",
+      "category": "military-operation",
+      "sitelinks": 20,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Portuguese_conquest_of_Ceuta",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Portuguese_conquest_of_Ceuta",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Ceuta_(1415)",
+        "fr": "https://fr.wikipedia.org/wiki/Prise_de_Ceuta_(1415)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%82%D9%88%D8%B7_%D8%B3%D8%A8%D8%AA%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%A1%D0%B5%D1%83%D1%82%D0%B5_(1415)"
+      },
+      "countries": [
+        "Q582861",
+        "Q1028"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Infante%20D.%20Henrique%20na%20conquista%20de%20Ceuta%2C%20s.XV.JPG",
+      "tagline": "Portuguese conquest of Ceuta (1415)",
+      "year": 1415,
+      "month": 8
+    },
+    {
+      "id": "Q24945556",
+      "name": "Siege of Angkor",
+      "category": "military-operation",
+      "sitelinks": 4,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_Angkor",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Fall_of_Angkor"
+      },
+      "countries": [
+        "Q424"
+      ],
+      "tagline": "1431 fall of the Khmer Empire to the Kingdom of Ayutthaya",
+      "year": 1431
+    },
+    {
+      "id": "Q828435",
+      "name": "Spanish conquest of the Aztec Empire",
+      "nameRu": "Завоевание Мексики",
+      "category": "war",
+      "sitelinks": 44,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%A5%BF%E7%8F%AD%E7%89%99%E5%BE%81%E6%9C%8D%E9%98%BF%E5%85%B9%E7%89%B9%E5%85%8B%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Conquista_de_M%C3%A9xico-Tenochtitlan",
+        "fr": "https://fr.wikipedia.org/wiki/Chute_de_l%27Empire_azt%C3%A8que",
+        "de": "https://de.wikipedia.org/wiki/Spanische_Eroberung_Mexikos",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A_%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%A2%D8%B2%D8%AA%D9%83",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%9C%D0%B5%D0%BA%D1%81%D0%B8%D0%BA%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Codex%20Mendoza%20folio%2067r%20bottom.jpg",
+      "tagline": "16th-century Spanish invasion of Mesoamerica",
+      "taglineRu": "военная кампания Испании в ходе колонизации Америки",
+      "year": 1519,
+      "month": 2,
+      "endYear": 1521,
+      "endMonth": 8
+    },
+    {
+      "id": "Q636771",
+      "name": "Spanish conquest of the Inca Empire",
+      "nameRu": "Испанское завоевание инков",
+      "category": "war",
+      "sitelinks": 33,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Inca_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Inca_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%A5%BF%E7%8F%AD%E7%89%99%E5%BE%81%E6%9C%8D%E5%8D%B0%E5%8A%A0%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Conquista_del_Imperio_incaico",
+        "fr": "https://fr.wikipedia.org/wiki/Conqu%C3%AAte_espagnole_de_l%27Empire_inca",
+        "de": "https://de.wikipedia.org/wiki/Spanische_Eroberung_Perus",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A_%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A5%D9%86%D9%83%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D0%BF%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B8%D0%BD%D0%BA%D0%BE%D0%B2"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Inca-Spanish%20confrontation.JPG",
+      "tagline": "1532 period of Spanish conquest in South America",
+      "year": 1532,
+      "endYear": 1572,
+      "endMonth": 7
+    },
+    {
+      "id": "Q163891",
+      "name": "St. Bartholomew's Day massacre",
+      "nameRu": "Варфоломеевская ночь",
+      "category": "military-operation",
+      "sitelinks": 74,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/St._Bartholomew%27s_Day_massacre",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/St._Bartholomew%27s_Day_massacre",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9C%A3%E5%B7%B4%E5%A4%9A%E7%BD%97%E4%B9%B0%E5%A4%A7%E5%B1%A0%E6%9D%80",
+        "es": "https://es.wikipedia.org/wiki/Matanza_de_San_Bartolom%C3%A9",
+        "fr": "https://fr.wikipedia.org/wiki/Massacre_de_la_Saint-Barth%C3%A9lemy",
+        "de": "https://de.wikipedia.org/wiki/Bartholom%C3%A4usnacht",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B0%D8%A8%D8%AD%D8%A9_%D8%B9%D9%8A%D8%AF_%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%B3_%D8%A8%D8%B1%D8%AB%D9%88%D9%84%D9%85%D8%A7%D9%88%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D1%80%D1%84%D0%BE%D0%BB%D0%BE%D0%BC%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F_%D0%BD%D0%BE%D1%87%D1%8C"
+      },
+      "countries": [
+        "Q70972"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20masacre%20de%20San%20Bartolom%C3%A9%2C%20por%20Fran%C3%A7ois%20Dubois.jpg",
+      "tagline": "massacre of the Huguenots (French Calvinist Protestants) by the French government, 1572",
+      "taglineRu": "массовая резня гугенотов католиками в Париже в ночь перед праздником св. Варфоломея (24 августа 1572 года)",
+      "year": 1572,
+      "month": 9,
+      "endYear": 1572,
+      "endMonth": 10
+    },
+    {
+      "id": "Q589285",
+      "name": "Battle of Tondibi",
+      "category": "military-operation",
+      "sitelinks": 12,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Tondibi",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Tondibi",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Tondibi",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Tondibi",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Tondibi",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%AA%D9%88%D9%86%D8%AF%D9%8A%D8%A8%D9%8A"
+      },
+      "countries": [
+        "Q202687"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SONGHAI%20empire%20map.PNG",
+      "tagline": "1591 battle",
+      "year": 1591,
+      "month": 3
+    },
+    {
+      "id": "Q4128011",
+      "nameRu": "Второе народное ополчение",
+      "category": "military-operation",
+      "sitelinks": 5,
+      "articleUrls": {
+        "zh": "https://zh.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E6%B0%91%E5%85%B5",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%BE%D0%B5_%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5_%D0%BE%D0%BF%D0%BE%D0%BB%D1%87%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
+      "countries": [
+        "Q186096"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9A%D0%BE%D0%B2%D0%B5%D1%80%D0%B7%D0%BD%D0%B5%D0%B2%20%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%D0%BA%D0%BD%D1%8F%D0%B7%D1%8F%20%D0%9F%D0%BE%D0%B6%D0%B0%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D1%81%20%D0%B3%D0%B5%D1%82%D0%BC%D0%B0%D0%BD%D0%BE%D0%BC%20%D0%A5%D0%BE%D0%B4%D0%BA%D0%B5%D0%B2%D0%B8%D1%87%D0%B5%D0%BC%20%D0%BF%D0%BE%D0%B4%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%BE%D0%B9..jpg",
+      "taglineRu": "ополчение, возникшее в сентябре 1611 года в Нижнем Новгороде для борьбы с польскими интервентами"
+    },
+    {
+      "id": "Q2736986",
+      "name": "Battle of Karnal",
+      "nameRu": "Битва при Карнале",
+      "category": "military-operation",
+      "sitelinks": 21,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Karnal",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Karnal",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Karnal",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Karnal",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%83%D8%A7%D8%B1%D9%86%D8%A7%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%9A%D0%B0%D1%80%D0%BD%D0%B0%D0%BB%D0%B5"
+      },
+      "countries": [
+        "Q668"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nadir%20Shah%20at%20the%20sack%20of%20Delhi%20-%20Battle%20scene%20with%20Nader%20Shah%20on%20horseback%2C%20possibly%20by%20Muhammad%20Ali%20ibn%20Abd%20al-Bayg%20ibn%20Ali%20Quli%20Jabbadar%2C%20mid-18th%20century%2C%20Museum%20of%20Fine%20Arts%2C%20Boston.jpg",
+      "tagline": "1739 part of the Persian Invasion of India",
+      "year": 1739,
+      "month": 2
+    },
+    {
+      "id": "Q371394",
+      "name": "Bangladesh Liberation War",
+      "nameRu": "Война за независимость Бангладеш",
+      "category": "war-of-independence",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bangladesh_Liberation_War",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Bangladesh_Liberation_War",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%AD%9F%E5%8A%A0%E6%8B%89%E5%9B%BD%E8%A7%A3%E6%94%BE%E6%88%98%E4%BA%89",
+        "es": "https://es.wikipedia.org/wiki/Guerra_de_liberaci%C3%B3n_de_Banglad%C3%A9s",
+        "fr": "https://fr.wikipedia.org/wiki/Guerre_de_lib%C3%A9ration_du_Bangladesh",
+        "de": "https://de.wikipedia.org/wiki/Bangladesch-Krieg",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%82%D9%84%D8%A7%D9%84_%D8%A7%D9%84%D8%A8%D9%86%D8%BA%D9%84%D8%A7%D8%AF%D9%8A%D8%B4%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B7%D0%B0_%D0%BD%D0%B5%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C_%D0%91%D0%B0%D0%BD%D0%B3%D0%BB%D0%B0%D0%B4%D0%B5%D1%88"
+      },
+      "countries": [
+        "Q902"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh%201971%20Liberation.jpg",
+      "tagline": "conflict that led to the independence of the majority-Bengali country",
+      "year": 1971,
+      "month": 3,
+      "endYear": 1971,
+      "endMonth": 12
+    },
+    {
+      "id": "Q5759430",
+      "name": "Fall of Phnom Penh",
+      "nameRu": "Падение Пномпеня",
+      "category": "military-operation",
+      "sitelinks": 1,
+      "articleUrls": {},
+      "countries": [
+        "Q424"
+      ],
+      "tagline": "1975 siege",
+      "year": 1975,
+      "month": 4,
+      "endYear": 1975,
+      "endMonth": 4
     }
   ]
 }

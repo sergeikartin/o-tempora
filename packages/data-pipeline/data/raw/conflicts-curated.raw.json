@@ -15,7 +15,7 @@
       "category": "one of meta.categories",
       "parentId": "optional — another curated row's id; that row must be a Conflict (resolves both a start and end date from enrichment), and the chain up to its root is capped at 3 levels"
     },
-    "count": 235
+    "count": 248
   },
   "conflicts": [
     {
@@ -74,12 +74,6 @@
       "id": "Q33761",
       "name": "Arab Spring",
       "category": "revolution"
-    },
-    {
-      "id": "Q545449",
-      "name": "Iraq War",
-      "category": "war",
-      "parentId": "Q185729"
     },
     {
       "id": "Q49077",
@@ -744,12 +738,6 @@
       "category": "war"
     },
     {
-      "id": "Q79911",
-      "name": "Russian Civil War",
-      "category": "war",
-      "parentId": "Q8729"
-    },
-    {
       "id": "Q766437",
       "name": "Rif War",
       "category": "war"
@@ -949,11 +937,6 @@
     {
       "id": "Q179670",
       "name": "Battle of Gaugamela",
-      "category": "military-operation"
-    },
-    {
-      "id": "Q179684",
-      "name": "Spanish Armada",
       "category": "military-operation"
     },
     {
@@ -1215,6 +1198,86 @@
       "id": "Q612286",
       "name": "Fall of Nineveh",
       "category": "military-operation"
+    },
+    {
+      "id": "Q1455917",
+      "name": "Umayyad conquest of Hispania",
+      "category": "war"
+    },
+    {
+      "id": "Q112182472",
+      "name": "Umayyad conquest of Sindh",
+      "category": "war"
+    },
+    {
+      "id": "Q4817850",
+      "name": "Muslim conquest of Transoxiana",
+      "category": "war"
+    },
+    {
+      "id": "Q133850450",
+      "name": "Sack of Lindisfarne",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q122942662",
+      "name": "Ghaznavid campaigns in India",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q16957926",
+      "name": "Chola invasion of Srivijaya",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q1078359",
+      "name": "Battle of Yamen",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q123179707",
+      "name": "Sack of Delhi",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q2888296",
+      "name": "Conquest of Ceuta",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q24945556",
+      "name": "Siege of Angkor",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q828435",
+      "name": "Spanish conquest of the Aztec Empire",
+      "category": "war"
+    },
+    {
+      "id": "Q636771",
+      "name": "Spanish conquest of the Inca Empire",
+      "category": "war"
+    },
+    {
+      "id": "Q163891",
+      "name": "St. Bartholomew's Day massacre",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q589285",
+      "name": "Battle of Tondibi",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q2736986",
+      "name": "Battle of Karnal",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q371394",
+      "name": "Bangladesh Liberation War",
+      "category": "war-of-independence"
     }
   ]
 }

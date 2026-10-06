@@ -202,6 +202,22 @@
     "row": 11
   },
   {
+    "id": "Q41207",
+    "name": "coin",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "piece of hard material produced in large quantities to facilitate trade",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Coin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/One%20Rupee%20East%20India%20Company.JPG",
+    "description": "A coin is a small object, usually round and flat, used primarily as a medium of exchange or legal tender. They are standardized in weight, and produced in large quantities at a mint in order to facilitate trade. They are most often issued by a government. Coins often have images, numerals, or text on them. The faces of coins or medals are sometimes called the obverse and the reverse, referring to the front and back sides, respectively. The obverse of a coin is commonly called heads, because it often depicts the head of a prominent person, and the reverse is known as tails.",
+    "approximateDate": true,
+    "at": {
+      "year": -599
+    },
+    "row": 0
+  },
+  {
     "id": "Q40605",
     "name": "Large Hadron Collider",
     "category": "science-theory",
@@ -509,7 +525,7 @@
     "at": {
       "year": 1834
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q80728",
@@ -658,6 +674,23 @@
       "year": 1874
     },
     "row": 10
+  },
+  {
+    "id": "Q6113985",
+    "name": "Upanishads",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "ancient Sanskrit religious and philosophical texts of Hinduism",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Upanishads",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MS%20Indic%2037%2C%20Isa%20upanisad.%20Wellcome%20L0027330.jpg",
+    "imageAttribution": "https://wellcomeimages.org/indexplus/obf_images/01/64/805ea5d825de7673594bd1fea9ec.jpg\n\nGallery: https://wellcomeimages.org/indexplus/image/L0027330.html\nWellcome Collection gallery (2018-03-31): https://wellcomecollection.org/works/q3ejsjwy CC-BY-4.0, via Wikimedia Commons",
+    "description": "The Upanishads are Sanskrit texts of the late Vedic and post-Vedic periods that \"document the transition from the archaic ritualism of the Veda into new religious ideas and institutions\" and the emergence of the central religious concepts of Hinduism. They are the most recent addition to the Vedas, the oldest scriptures of Hinduism, and deal with meditation, philosophy, consciousness, and ontological knowledge. Earlier parts of the Vedas dealt with mantras, benedictions, rituals, ceremonies, and sacrifices.",
+    "approximateDate": true,
+    "at": {
+      "year": -699
+    },
+    "row": 1
   },
   {
     "id": "Q228036",
@@ -941,7 +974,7 @@
         "month": 4
       }
     },
-    "row": 5
+    "row": 10
   },
   {
     "id": "Q154255",
@@ -1096,7 +1129,7 @@
     "at": {
       "year": 1831
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q20124",
@@ -1174,7 +1207,7 @@
     "at": {
       "year": 1893
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q164338",
@@ -1352,6 +1385,95 @@
     "row": 16
   },
   {
+    "id": "Q51636",
+    "name": "crucifixion of Jesus",
+    "category": "religion-mythology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "Jesus' crucifixion as described in the four canonical gospels",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cristo%20crucificado.jpg",
+    "description": "Jesus was put to death by crucifixion, being nailed to an instrument made by the Romans for capital punishment, commonly named as a cross. The instrument of crucifixion is taken to be an upright wooden beam to which was added a transverse wooden beam, thus forming a \"cruciform\" or T-shaped structure. His crucifixion occurred in 1st-century Judaea, most likely in AD 30 or AD 33. The event is described in the Bible's four canonical gospels, referred to in the New Testament epistles, and later attested to by other ancient sources. Scholars nearly universally accept the historicity of Jesus' crucifixion, although there is no consensus on the details. According to the canonical gospels, Jesus was arrested and tried before the Sanhedrin, and then sentenced by Pontius Pilate to be scourged, and finally crucified by the Romans.",
+    "at": {
+      "year": 30,
+      "month": 4
+    },
+    "row": 0
+  },
+  {
+    "id": "Q144334",
+    "name": "printing press",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "device for evenly printing ink onto a print medium",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg",
+    "description": "A printing press is a machine that applies pressure to transfer ink onto a surface made of paper, cloth, or a similar material. Its workers are known as printing press operators. It marked a significant improvement on earlier methods, in which the paper was rubbed by hand to transfer applied ink to the printing surface.",
+    "at": {
+      "year": 1439
+    },
+    "row": 3
+  },
+  {
+    "id": "Q185682",
+    "name": "French Indochina",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "federal state in Southeast Asia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/French_Indochina",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sa%20Majest%C3%A9%20Bao-Da%C3%AF%20fit%20le%20p%C3%A8lerinage%20aux%20Tombeaux%20des%20anc%C3%AAtres%20de%20la%20Dynastie%20%C3%A0%20Thanh-H%C3%B3a%2C%201932.jpg",
+    "description": "French Indochina, officially known as the Indochinese Union and after 1941 as the Indochinese Federation, was a group of French-dependent territories in Southeast Asia from 1887 to 1954. It was initially a federation of French colonies (1887–1949), later a confederation of French associated states (1949–1954). It comprised Cambodia, Laos, Guangzhouwan (1898–1945), Cochinchina, and Vietnamese regions of Tonkin and Annam. It was established in 1887 and was dissolved in 1954. In 1949, Vietnam was reunited and it regained Cochinchina. Its capitals were Hanoi (1902–1945) and Saigon.",
+    "at": {
+      "year": 1887
+    },
+    "row": 15
+  },
+  {
+    "id": "Q187650",
+    "name": "Great Purge",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "Soviet campaign of political repression, imprisonment, and execution (August 1936 - March 1938)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Purge",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Great%20Purge%20Resolution%20of%20Central%20Committee.jpg",
+    "description": "The Great Purge or Great Terror, also known as the Year of '37 and the Yezhovshchina, was a political purge in the Soviet Union from 1936 to 1938. After the assassination of Sergei Kirov by Leonid Nikolaev in 1934, Joseph Stalin launched a series of show trials known as the Moscow trials to remove suspected dissenters from the Communist Party of the Soviet Union. The term \"great purge\" was popularized by historian Robert Conquest in his 1968 book The Great Terror, whose title alluded to the French Revolution's Reign of Terror.",
+    "period": {
+      "start": {
+        "year": 1936,
+        "month": 8
+      },
+      "end": {
+        "year": 1938,
+        "month": 11
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q131130",
+    "name": "First surgery under anaesthesia",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "state of medically controlled temporary loss of sensation or awareness",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Anesthesia",
+    "description": "Anesthesia or anaesthesia is a state of controlled, temporary loss of sensation or awareness that is induced for medical or veterinary purposes. It may include some or all of analgesia, paralysis, amnesia, and unconsciousness. An individual under the effects of anesthetic drugs is referred to as being anesthetized.",
+    "at": {
+      "year": 1846,
+      "month": 10
+    },
+    "row": 7
+  },
+  {
     "id": "Q132560",
     "name": "electron microscope",
     "category": "science-theory",
@@ -1380,7 +1502,7 @@
     "at": {
       "year": 1877
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q160464",
@@ -1452,7 +1574,7 @@
         "year": 1852
       }
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q11146",
@@ -1517,7 +1639,7 @@
         "year": 1939
       }
     },
-    "row": 7
+    "row": 23
   },
   {
     "id": "Q157506",
@@ -1572,7 +1694,7 @@
         "month": 8
       }
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q192050",
@@ -1590,7 +1712,7 @@
       "year": 1914,
       "month": 6
     },
-    "row": 17
+    "row": 16
   },
   {
     "id": "Q6743",
@@ -1615,7 +1737,7 @@
         "month": 6
       }
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q71229",
@@ -1663,7 +1785,7 @@
     "at": {
       "year": 1936
     },
-    "row": 23
+    "row": 24
   },
   {
     "id": "Q11932",
@@ -1678,7 +1800,7 @@
     "at": {
       "year": 405
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q896666",
@@ -1711,5 +1833,67 @@
       "year": -995
     },
     "row": 0
+  },
+  {
+    "id": "Q51628",
+    "name": "Nativity of Jesus",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "birth of Jesus",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nativity_of_Jesus",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giorgione%20-%20Adoration%20of%20the%20Shepherds%20-%20National%20Gallery%20of%20Art.jpg",
+    "description": "The Nativity or birth of Jesus is found in the biblical gospels of Matthew and Luke. The two accounts agree that Jesus was born in Bethlehem in Judea, that his mother, Mary, was engaged to a man named Joseph, who was descended from King David and was not his biological father, and that his birth was caused by divine intervention.",
+    "at": {
+      "year": -4
+    },
+    "row": 0
+  },
+  {
+    "id": "Q161428",
+    "name": "Georgian scripts",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "alphabetic writing systems mostly used to transcribe the Georgian language and other languages of the Caucasus region",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Georgian_scripts",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kartuli%2C%20Georgian%20scripts.png",
+    "imageAttribution": "Emperor of Emperors, via Wikimedia Commons",
+    "description": "The Georgian scripts are the three writing systems used to write the Georgian language: Asomtavruli, Nuskhuri and Mkhedruli. Although the systems differ in appearance, their letters share the same names and alphabetical order and are written horizontally from left to right. Of the three scripts, Mkhedruli, once the official script of the Kingdom of Georgia and mostly used for the royal charters, is now the standard script for modern Georgian and its related Kartvelian languages, whereas Asomtavruli and Nuskhuri are used only by the Georgian Orthodox Church, in ceremonial religious texts and iconography.",
+    "at": {
+      "year": 500
+    },
+    "row": 0
+  },
+  {
+    "id": "Q192341",
+    "name": "I Have a Dream",
+    "category": "social-movements",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "1963 speech delivered by Martin Luther King Jr. in Washington D.C. to 250.000 people of the civil rights movement, regarded as one of the most important speeches in US history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/I_Have_a_Dream",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Martin%20Luther%20King%20-%20March%20on%20Washington%20%28cropped%29.jpg",
+    "description": "\"I Have a Dream\" is a public speech that was delivered by American civil rights activist and Baptist minister Martin Luther King Jr. during the March on Washington for Jobs and Freedom on August 28, 1963. In the speech, King called for civil and economic rights and an end to legalized racism in the United States. Delivered to over 250,000 civil rights supporters from the steps of the Lincoln Memorial in Washington, D.C., the speech was one of the most famous moments of the civil rights movement and among the most iconic speeches in American history.",
+    "at": {
+      "year": 1963,
+      "month": 8
+    },
+    "row": 19
+  },
+  {
+    "id": "Q189223",
+    "name": "Turing test",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "test of a machine's ability to exhibit intelligent behaviour equivalent to, or indistinguishable from, that of a human",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Turing_test",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Turing%20Test%20version%203.png",
+    "description": "The Turing test was designed by Alan Turing to assess a machine's ability to exhibit intelligent behaviour equivalent to that of a human by imitating interactive dialogue. In the modern version, a human evaluator judges a text transcript of a natural-language conversation between a human and a machine. The evaluator tries to identify the machine, and the machine passes if the evaluator cannot reliably tell them apart. The results would not depend on the machine's ability to answer questions correctly, only on how closely its answers resembled those of a human. Since the Turing test is a test of indistinguishability in performance capacity, the original (verbal) version generalizes naturally to all of human performance capacity, including nonverbal (robotic).",
+    "at": {
+      "year": 1950
+    },
+    "row": 24
   }
 ]

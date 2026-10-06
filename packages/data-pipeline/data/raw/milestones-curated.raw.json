@@ -28,9 +28,10 @@
     "fields": {
       "id": "bare Wikidata QID, no URI/prefix",
       "name": "milestone label",
-      "category": "one of meta.categories"
+      "category": "one of meta.categories",
+      "date": "optional {year, month?, endYear?, endMonth?} — replaces the Wikidata-resolved date"
     },
-    "count": 371
+    "count": 442
   },
   "milestones": [
     {
@@ -229,9 +230,18 @@
       "category": "communication"
     },
     {
-      "id": "Q872",
-      "name": "Radio",
-      "category": "communication"
+      "id": "Q729856",
+      "name": "wireless telegraphy",
+      "category": "communication",
+      "displayName": {
+        "en": "First radio transmission",
+        "ru": "Первая радиопередача"
+      },
+      "fameSource": "Q872",
+      "date": {
+        "year": 1896,
+        "month": 6
+      }
     },
     {
       "id": "Q46872",
@@ -2011,6 +2021,533 @@
       "id": "Q178193",
       "name": "Steamboat",
       "category": "transportation"
+    },
+    {
+      "id": "Q8275",
+      "name": "Iliad",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q856544",
+      "name": "Library of Ashurbanipal",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q51628",
+      "name": "Nativity of Jesus",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q51636",
+      "name": "crucifixion of Jesus",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q16402123",
+      "name": "Christianization of Armenia",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q161428",
+      "name": "Georgian scripts",
+      "category": "communication"
+    },
+    {
+      "id": "Q378014",
+      "name": "University of al-Qarawiyyin",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q145625",
+      "name": "Glagolitic",
+      "category": "communication"
+    },
+    {
+      "id": "Q192823",
+      "name": "Vinland",
+      "category": "expedition"
+    },
+    {
+      "id": "Q2044496",
+      "name": "Liber Abaci",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q144334",
+      "name": "printing press",
+      "category": "communication"
+    },
+    {
+      "id": "Q204023",
+      "name": "Sengoku period",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q55264655",
+      "name": "Elmina Castle",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q3042917",
+      "name": "discovery of Brazil",
+      "category": "expedition"
+    },
+    {
+      "id": "Q1122859",
+      "name": "Nanban trade period",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q1457297",
+      "name": "Sidereus Nuncius",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q3427966",
+      "name": "transition from Ming to Qing",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q3062714",
+      "name": "execution of Louis XVI",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q6541120",
+      "name": "Liberian Declaration of Independence",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q1359529",
+      "name": "Government of India Act 1858",
+      "category": "law-jurisprudence"
+    },
+    {
+      "id": "Q185682",
+      "name": "French Indochina",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q503585",
+      "name": "Korea under Japanese rule",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q330756",
+      "name": "Transcaucasian Democratic Federative Republic",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q31187690",
+      "name": "proclamation of the Republic of Turkey",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q251600",
+      "name": "Unification of Saudi Arabia",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q187650",
+      "name": "Great Purge",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q1661772",
+      "name": "Proclamation of Indonesian Independence",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q10872057",
+      "name": "proclamation of the People's Republic of China",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q167457",
+      "name": "Treaty of Rome",
+      "category": "law-jurisprudence"
+    },
+    {
+      "id": "Q96379430",
+      "name": "Ghana Independence Act 1957",
+      "category": "law-jurisprudence"
+    },
+    {
+      "id": "Q387647",
+      "name": "Year of Africa",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q192341",
+      "name": "I Have a Dream",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q1205521",
+      "name": "Chinese economic reform",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q12214",
+      "name": "smallpox",
+      "category": "public-health"
+    },
+    {
+      "id": "Q5333520",
+      "name": "Economic liberalisation in India",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q957012",
+      "name": "1994 South African general election",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q6113985",
+      "name": "Upanishads",
+      "category": "religion-mythology",
+      "date": {
+        "year": -699,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q41207",
+      "name": "coin",
+      "category": "commerce-finance",
+      "date": {
+        "year": -599,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q223767",
+      "name": "democracy in Athens",
+      "category": "society-administration",
+      "date": {
+        "year": -507
+      }
+    },
+    {
+      "id": "Q340742",
+      "name": "Axial Age",
+      "category": "philosophy-education",
+      "date": {
+        "year": -799,
+        "endYear": -199,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q8251",
+      "name": "The Art of War",
+      "category": "culture-arts",
+      "date": {
+        "year": -499,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q1000970",
+      "name": "Buddhism in Sri Lanka",
+      "category": "religion-mythology",
+      "date": {
+        "year": -249,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q36288",
+      "name": "Silk Road",
+      "category": "commerce-finance",
+      "date": {
+        "year": -137,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q10873159",
+      "name": "Buddhism in China",
+      "category": "religion-mythology",
+      "date": {
+        "year": 67,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q1811550",
+      "name": "history of paper",
+      "category": "everyday-technology",
+      "date": {
+        "year": 105,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q465279",
+      "name": "trans-Saharan trade",
+      "category": "commerce-finance",
+      "date": {
+        "year": 300,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q8276",
+      "name": "Mahabharata",
+      "category": "culture-arts",
+      "date": {
+        "year": 400,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q216243",
+      "name": "Nalanda Mahavihara",
+      "category": "philosophy-education",
+      "date": {
+        "year": 450,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q272153",
+      "name": "Sigiriya",
+      "category": "landmarks",
+      "date": {
+        "year": 477
+      }
+    },
+    {
+      "id": "Q5869513",
+      "name": "history of the Hindu–Arabic numeral system",
+      "category": "science-theory",
+      "date": {
+        "year": 500,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q769743",
+      "name": "history of Madagascar",
+      "category": "archaeology-anthropology",
+      "displayName": {
+        "en": "Settlement of Madagascar",
+        "ru": "Заселение Мадагаскара"
+      },
+      "date": {
+        "year": 500,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q31347",
+      "name": "Grand Canal",
+      "category": "infrastructure",
+      "date": {
+        "year": 605
+      }
+    },
+    {
+      "id": "Q4378226",
+      "name": "calling of the Varangians",
+      "category": "society-administration",
+      "date": {
+        "year": 862,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q426853",
+      "name": "movable type",
+      "category": "communication",
+      "date": {
+        "year": 1040,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q3286250",
+      "name": "Portuguese India Armadas",
+      "category": "expedition",
+      "date": {
+        "year": 1498,
+        "month": 5
+      }
+    },
+    {
+      "id": "Q1645505",
+      "name": "English Reformation",
+      "category": "religion-mythology",
+      "date": {
+        "year": 1534,
+        "month": 11
+      }
+    },
+    {
+      "id": "Q3199818",
+      "name": "history of the Philippines (1565–1898)",
+      "category": "society-administration",
+      "displayName": {
+        "en": "Spanish colonization of the Philippines",
+        "ru": "Испанская колонизация Филиппин"
+      },
+      "date": {
+        "year": 1565,
+        "month": 4
+      }
+    },
+    {
+      "id": "Q187093",
+      "name": "Mayflower",
+      "category": "expedition",
+      "date": {
+        "year": 1620,
+        "month": 9
+      }
+    },
+    {
+      "id": "Q6964481",
+      "name": "Raskol",
+      "category": "religion-mythology",
+      "date": {
+        "year": 1666
+      }
+    },
+    {
+      "id": "Q1551574",
+      "name": "hot air balloon",
+      "category": "transportation",
+      "displayName": {
+        "en": "First manned balloon flight",
+        "ru": "Первый полёт человека на воздушном шаре"
+      },
+      "date": {
+        "year": 1783,
+        "month": 11
+      }
+    },
+    {
+      "id": "Q131130",
+      "name": "anaesthesia",
+      "category": "medicine-health",
+      "displayName": {
+        "en": "First surgery under anaesthesia",
+        "ru": "Первая операция под наркозом"
+      },
+      "date": {
+        "year": 1846,
+        "month": 10
+      }
+    },
+    {
+      "id": "Q7169780",
+      "name": "Perry Expedition",
+      "category": "expedition",
+      "date": {
+        "year": 1853,
+        "month": 7
+      }
+    },
+    {
+      "id": "Q3447247",
+      "name": "women's suffrage in New Zealand",
+      "category": "social-movements",
+      "date": {
+        "year": 1893,
+        "month": 9
+      }
+    },
+    {
+      "id": "Q34777",
+      "name": "X-ray",
+      "category": "science-theory",
+      "displayName": {
+        "en": "Discovery of X-rays",
+        "ru": "Открытие рентгеновских лучей"
+      },
+      "date": {
+        "year": 1895,
+        "month": 11
+      }
+    },
+    {
+      "id": "Q455037",
+      "name": "assembly line",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First moving assembly line",
+        "ru": "Первый конвейер Форда"
+      },
+      "date": {
+        "year": 1913,
+        "month": 12
+      }
+    },
+    {
+      "id": "Q189223",
+      "name": "Turing test",
+      "category": "science-theory",
+      "date": {
+        "year": 1950
+      }
+    },
+    {
+      "id": "Q643396",
+      "name": "heart transplant",
+      "category": "medicine-health",
+      "displayName": {
+        "en": "First human heart transplant",
+        "ru": "Первая пересадка сердца человека"
+      },
+      "date": {
+        "year": 1967,
+        "month": 12
+      }
+    },
+    {
+      "id": "Q193315",
+      "name": "history of the Internet",
+      "category": "communication",
+      "displayName": {
+        "en": "Birth of the Internet",
+        "ru": "Рождение интернета"
+      },
+      "date": {
+        "year": 1983,
+        "month": 1
+      }
+    },
+    {
+      "id": "Q187899",
+      "name": "Deep Blue",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "Deep Blue defeats Kasparov",
+        "ru": "Deep Blue побеждает Каспарова"
+      },
+      "date": {
+        "year": 1997,
+        "month": 5
+      }
+    },
+    {
+      "id": "Q28325009",
+      "name": "AlexNet",
+      "category": "science-theory",
+      "date": {
+        "year": 2012,
+        "month": 9
+      }
+    },
+    {
+      "id": "Q79897",
+      "name": "Morse code",
+      "category": "communication",
+      "date": {
+        "year": 1844,
+        "month": 5
+      }
     }
   ]
 }
