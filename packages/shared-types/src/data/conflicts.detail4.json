@@ -1,27 +1,5 @@
 [
   {
-    "id": "Q33745",
-    "name": "Peloponnesian War",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 77,
-    "tagline": "war fought between Athens and Sparta (431–404 BCE)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Peloponnesian_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20Peloponnesian%20War%20431%20BC-en.svg",
-    "imageAttribution": "Map_Peloponnesian_War_431_BC-fr.svg: Marsyas\nderivative work: Aeonx (talk), via Wikimedia Commons",
-    "description": "The Peloponnesian War was fought in the Eastern Mediterranean between the Athenian-led Delian League and the Spartan-led Peloponnesian League from 431 to 404 BC for hegemony over Ancient Greece. Initially inconclusive, the intervention of the Persian Empire in support of Sparta in 413 BC allowed the Spartan coalition to decisively defeat Athens, beginning a period of Spartan hegemony over Greece.",
-    "period": {
-      "start": {
-        "year": -430
-      },
-      "end": {
-        "year": -403,
-        "month": 4
-      }
-    },
-    "row": 0
-  },
-  {
     "id": "Q164348",
     "name": "Hungarian Revolution of 1956",
     "category": "rebellion",
@@ -44,7 +22,7 @@
         "month": 11
       }
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q151616",
@@ -72,7 +50,9 @@
     "id": "Q200790",
     "name": "Algerian War",
     "category": "war-of-independence",
-    "regionTags": [],
+    "regionTags": [
+      "northern-africa"
+    ],
     "fameScore": 77,
     "tagline": "war between France and the Algerian independence movement from 1954 to 1962",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Algerian_War",
@@ -88,7 +68,7 @@
         "month": 9
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q76026",
@@ -109,18 +89,20 @@
         "year": -448
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q150701",
     "name": "War of the Spanish Succession",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 77,
     "tagline": "major European conflict (1700–1714) after the death of Charles II",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakhuizen%2C%20Battle%20of%20Vigo%20Bay.jpg",
-    "description": "The War of the Spanish Succession was a conflict between the European great powers, fought between 1701 and 1714. The death of Charles II of Spain in November 1700 without children led to a succession crisis, the rival claimants being Philip of Anjou, grandson of Louis XIV of France, and Archduke Charles of Austria, supported by the Grand Alliance. Related conflicts include the Great Northern War and Queen Anne's War in North America.",
+    "description": "The War of the Spanish Succession, 1701 to 1714, was a European great power conflict, caused by the death of Charles II of Spain in November 1700 without children. This led to a succession crisis between Philip of Anjou, grandson of Louis XIV of France, and Archduke Charles of Austria, backed by the Grand Alliance. Related conflicts include the Great Northern War and Queen Anne's War in North America.",
     "period": {
       "start": {
         "year": 1701,
@@ -156,7 +138,28 @@
         "month": 5
       }
     },
-    "row": 6
+    "row": 7
+  },
+  {
+    "id": "Q124988",
+    "name": "Punic Wars",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "series of three wars fought between Rome and Carthage from 264 BC to 146 BC, at the time probably the largest wars that had ever taken place",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Punic_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20of%20Rome%20and%20Carthage%20at%20the%20start%20of%20the%20Second%20Punic%20War.svg",
+    "imageAttribution": "William Robert Shepherd, via Wikimedia Commons",
+    "description": "The Punic Wars were a series of wars fought between the Roman Republic and the Carthaginian Empire during the period 264 to 146 BC. Three such wars took place, involving a total of forty-three years of warfare on both land and sea across the western Mediterranean region, and a four-year-long revolt against Carthage.",
+    "period": {
+      "start": {
+        "year": -263
+      },
+      "end": {
+        "year": -145
+      }
+    },
+    "row": 0
   },
   {
     "id": "Q178687",
@@ -167,7 +170,7 @@
     "tagline": "1894–1895 war between the Qing dynasty and the Empire of Japan over influence in Joseon, fought chiefly in Joseon",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Sino-Japanese_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sino%20Japanese%20war%201894.jpg",
-    "description": "The First Sino-Japanese War was a conflict between the Qing dynasty of China and the Empire of Japan primarily for influence over Korea. In China it is commonly known as the Jiawu War. After 6 to 7 months of unbroken successes by Japanese land and naval forces and the loss of the ports of Lüshunkou and Weihaiwei, the Qing government sued for peace in February 1895 and signed the Treaty of Shimonoseki two months later, ending the war.",
+    "description": "The First Sino-Japanese War was a conflict between the Qing dynasty of China and the Empire of Japan primarily for influence over Korea. In China it is commonly known as the Jiawu War. After roughly 7 months of sustained military gains by Japanese land and naval forces and the loss of the ports of Lüshunkou and Weihaiwei, the Qing government sued for peace in February 1895 and signed the Treaty of Shimonoseki two months later, ending the war.",
     "period": {
       "start": {
         "year": 1894,
@@ -178,7 +181,7 @@
         "month": 4
       }
     },
-    "row": 7
+    "row": 11
   },
   {
     "id": "Q191282",
@@ -216,7 +219,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Punic_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mediterranean%20at%20218%20BC-en.svg",
     "imageAttribution": "Goran tek-en\n\ntranslator: Manlleus (ca), via Wikimedia Commons",
-    "description": "The Second Punic War was the second of three wars fought between Carthage and Rome, the two main powers of the western Mediterranean in the 3rd century BC. For 17 years the two states struggled for supremacy, primarily in Italy and Iberia, but also on the islands of Sicily and Sardinia and, towards the end of the war, in North Africa. After immense materiel and human losses on both sides, the Carthaginians were once again defeated. Macedonia, Syracuse and several Numidian kingdoms were drawn into the fighting, and Iberian and Gallic forces fought on both sides. There were three main military theatres during the war: Italy, where Hannibal defeated the Roman legions repeatedly, with occasional subsidiary campaigns in Sicily, Sardinia and Greece; Iberia, where Hasdrubal, a younger brother of Hannibal, defended the Carthaginian colonial cities with mixed success before moving into Italy; and Africa, where Rome finally won the war.",
+    "description": "The Second Punic War was the second in a series of three wars fought between Carthage and the Roman Republic, who were at the time the two main powers in the western Mediterranean. The protracted war was fought across the region, incurring immense materiel and human losses on both sides. Carthaginian general Hannibal Barca initially led his army on its infamous crossing of the Alps and invaded Italy, where he would lead an extended campaign. In Iberia, Roman troops invaded and eventually conquered the Carthaginian territories there. The final confrontation of the war occurred with the Roman invasion of North Africa. Roman general Scipio Africanus and Hannibal faced off at the Battle of Zama, which the Romans won, resulting in Carthage’s surrender. The war also drew in other powers. Macedon allied with Carthage, triggering the First Macedonian War, which caused Rome to seek its own allies in the Eastern Mediterranean. The Sicilian city state of Syracuse initially allied with Carthage, but switched sides to support Rome. The Carthaginians and Romans also both made use of Numidian, Gallic, and Iberian allies.",
     "period": {
       "start": {
         "year": -217
@@ -225,7 +228,7 @@
         "year": -200
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q15920546",
@@ -238,7 +241,7 @@
     "tagline": "annexation of Crimea into Russia in 2014",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Flags%20over%20Supreme%20Council%20of%20Crimea%20%283%20March%202014%29.png",
-    "description": "In February and March 2014, Russia invaded the Crimean Peninsula, part of Ukraine, and then annexed it. This took place in the relative power vacuum immediately following the Revolution of Dignity. It marked the beginning of the Russo-Ukrainian war.",
+    "description": "In February and March 2014, Russia invaded the Crimean Peninsula of Ukraine, occupied it, and then annexed it after an illegitimate referendum. This took place amid the uncertainty that immediately followed Ukraine's Revolution of Dignity. The invasion marked the beginning of the Russo-Ukrainian war. Crimea's annexation has been described as an instance of modern Russian imperialism. It was the first time since World War II that a European country had annexed part of another, and some analysts see the annexation as the beginning of a Second Cold War between Russia and the West.",
     "period": {
       "start": {
         "year": 2014,
@@ -249,7 +252,7 @@
         "month": 3
       }
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q185729",
@@ -260,17 +263,11 @@
     "tagline": "military campaign started after September 11 attacks",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/War_on_terror",
     "description": "The war on terror, officially the Global War on Terrorism (GWOT), is a global military campaign initiated by the United States in response to the September 11 attacks in 2001. A global conflict spanning multiple wars, some researchers and political scientists have argued that it replaced the Cold War.",
-    "period": {
-      "start": {
-        "year": 2001,
-        "month": 9
-      },
-      "end": {
-        "year": 2021,
-        "month": 8
-      }
+    "at": {
+      "year": 2001,
+      "month": 9
     },
-    "row": 11
+    "row": 8
   },
   {
     "id": "Q99659280",
@@ -308,7 +305,7 @@
     "tagline": "16th- and 17th-century Dutch revolt against the Habsburgs",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vel%C3%A1zquez%20-%20de%20Breda%20o%20Las%20Lanzas%20%28Museo%20del%20Prado%2C%201634-35%29.jpg",
-    "description": "The Eighty Years' War or Dutch Revolt(c. 1566/1568–1648) was an armed conflict in the Habsburg Netherlands between disparate groups of rebels and the Spanish government. The causes of the war included the Reformation, centralisation, excessive taxation, and the rights and privileges of the Dutch nobility and cities.",
+    "description": "The Eighty Years' War or Dutch Revolt was an armed conflict in the Habsburg Netherlands between disparate groups of rebels and the Spanish government. The causes of the war included the Reformation, centralisation, excessive taxation, and the rights and privileges of the Dutch nobility and cities.",
     "period": {
       "start": {
         "year": 1568,
@@ -319,18 +316,20 @@
         "month": 1
       }
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q215112",
     "name": "Second Boer War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "southern-africa"
+    ],
     "fameScore": 76,
     "tagline": "war between two Boer Republics (South African Republic and Orange Free State) and the United Kingdom",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Boer_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Second%20Anglo%20-%20Boer%20War%2C%20South%20Africa%201899%20-%201902%20Q82943.jpg",
-    "description": "The Second Boer War was a conflict fought between the British Empire and the Boer republics over Britain's influence in Southern Africa.",
+    "description": "The Second Boer War was a conflict fought between 1899 and 1902 between the British Empire and the Boer republics, triggered by the discovery of gold in the Transvaal, specifically the Witwatersrand gold fields, and the ensuing political dispute over the voting rights of British expatriates (Uitlanders).",
     "period": {
       "start": {
         "year": 1899,
@@ -341,7 +340,114 @@
         "month": 5
       }
     },
-    "row": 6
+    "row": 7
+  },
+  {
+    "id": "Q31900",
+    "name": "Battle of Marathon",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "490 BCE battle in the Greco-Persian wars",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Marathon",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Trophee%20bataille%20marathon.JPG",
+    "imageAttribution": "karta24, via Wikimedia Commons",
+    "description": "The Battle of Marathon took place in 490 BC during the first Persian invasion of Greece. It was fought between the citizens of Athens, aided by Plataea, against a Persian force commanded by Datis and Artaphernes. The battle was the culmination of the first attempt by Persia under King Darius I to subjugate Greece. The Greek army inflicted a crushing defeat on the more numerous Persians, marking a turning point in the Greco-Persian Wars.",
+    "at": {
+      "year": -489,
+      "month": 9
+    },
+    "row": 2
+  },
+  {
+    "id": "Q51656",
+    "name": "Fourth Crusade",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "armed expedition against Constantinople",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fourth_Crusade",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gustave%20dore%20crusades%20entry%20of%20the%20crusaders%20into%20constantinople.jpg",
+    "description": "The Fourth Crusade (1202–1204) was a Latin Christian armed expedition called by Pope Innocent III. The stated intent of the expedition was to recapture the Muslim-controlled city of Jerusalem, by first defeating the powerful Egyptian Ayyubid Sultanate. However, a sequence of economic and political events culminated in the Crusader army's 1202 siege of Zara and the 1204 sack of Constantinople, rather than the conquest of Egypt as originally planned. This led to the partition of the Byzantine Empire by the Crusaders and their Venetian allies, leading to a period known as the Frankokratia.",
+    "period": {
+      "start": {
+        "year": 1202
+      },
+      "end": {
+        "year": 1204
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q8641370",
+    "name": "Operation Overlord",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "1944 Allied liberation of German-occupied France during World War II",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Operation_Overlord",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/NormandySupply%20edit.jpg",
+    "description": "Operation Overlord was the codename for the Battle of Normandy, the Allied operation that launched the successful invasion of German-occupied Western Europe during World War II. The operation was launched on 6 June 1944 (D-Day) with the Normandy landings. A 1,200-plane airborne assault preceded an amphibious assault involving more than 5,000 vessels. Nearly 160,000 troops crossed the English Channel on 6 June, and more than two million Allied troops were in France by the end of August.",
+    "period": {
+      "start": {
+        "year": 1944,
+        "month": 6
+      },
+      "end": {
+        "year": 1944,
+        "month": 8
+      }
+    },
+    "row": 18
+  },
+  {
+    "id": "Q165725",
+    "name": "Balkan Wars",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "two consecutive wars in 1912 and 1913",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Balkan_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Balkan%20Wars%20Boundaries.jpg",
+    "description": "The Balkan Wars were two conflicts that took place in the Balkan states in 1912 and 1913. In the First Balkan War, the four Balkan states of Greece, Serbia, Montenegro and Bulgaria declared war upon the Ottoman Empire and defeated it, in the process stripping the Ottomans of their European provinces, leaving only Eastern Thrace under Ottoman control. In the Second Balkan War, Bulgaria fought against the other four combatants of the first war. It also faced an attack from Romania from the north. The Ottoman Empire lost the bulk of its territory in Europe. Although not involved as a combatant, Austria-Hungary became relatively weaker as a much enlarged Serbia pushed for union of the South Slavic peoples. The war set the stage for the July crisis of 1914 and was a prelude to the First World War.",
+    "period": {
+      "start": {
+        "year": 1912,
+        "month": 10
+      },
+      "end": {
+        "year": 1913,
+        "month": 7
+      }
+    },
+    "row": 8
+  },
+  {
+    "id": "Q3588",
+    "name": "European Revolutions of 1848",
+    "category": "revolution",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "series of political upheavals throughout Europe in 1848–49",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Revolutions_of_1848",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Horace%20Vernet-Barricade%20rue%20Soufflot.jpg",
+    "description": "The revolutions of 1848, also known as the springtime of the peoples, were a series of revolutions throughout Europe that spanned almost two years, between January 1848 and October 1849. They remain the most widespread revolutionary wave in European history to date.",
+    "period": {
+      "start": {
+        "year": 1848,
+        "month": 1
+      },
+      "end": {
+        "year": 1849,
+        "month": 10
+      }
+    },
+    "row": 8
   },
   {
     "id": "Q177918",
@@ -363,7 +469,7 @@
         "month": 5
       }
     },
-    "row": 9
+    "row": 13
   },
   {
     "id": "Q182062",
@@ -405,7 +511,7 @@
         "month": 3
       }
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q184928",
@@ -418,7 +524,7 @@
     "tagline": "wave of mass political and social unrest that spread through vast areas of the Russian Empire",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Revolution_of_1905",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Russian%20Revolution%2C%201905%20Q81553.jpg",
-    "description": "The Russian Revolution of 1905, also known as the First Russian Revolution, was a revolution in the Russian Empire which began on 22 January 1905 and led to the establishment of a constitutional monarchy under the Russian Constitution of 1906, the country's first formal constitution. The revolution was characterized by mass political and social unrest including worker strikes, peasant revolts, and military mutinies directed against Tsar Nicholas II and the autocracy, who were forced to establish the State Duma legislative assembly and grant certain rights, though both were later undermined.",
+    "description": "The Russian Revolution of 1905, also known as the First Russian Revolution, was a revolution in the Russian Empire which began on 22 January 1905 and led to the establishment of a constitutional monarchy under the Russian Constitution of 1906, the country's first. The revolution saw mass political and social unrest, including worker strikes, peasant revolts, and military mutinies directed against Tsar Nicholas II and the autocracy, who were compelled to establish the State Duma legislative assembly and grant certain rights to the population, though both were later undermined.",
     "period": {
       "start": {
         "year": 1905,
@@ -429,7 +535,7 @@
         "month": 6
       }
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q200485",
@@ -477,7 +583,7 @@
         "month": 4
       }
     },
-    "row": 5
+    "row": 8
   },
   {
     "id": "Q153650",
@@ -488,7 +594,7 @@
     "tagline": "1866 military conflict between the Kingdom of Prussia and the Austrian Empire",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Austro-Prussian_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Schlacht-bei-koeniggraetz-von-georg-bleibtreu.jpg",
-    "description": "The Austro-Prussian War was fought in 1866 between the Austrian Empire and the Kingdom of Prussia, with each also being aided by various allies within the German Confederation. Prussia had also allied with the Kingdom of Italy, linking this conflict to the Third Independence War of Italian unification. The Austro-Prussian War was part of the wider rivalry between Austria and Prussia, and resulted in Prussian dominance over the German states, having confirmed Prussia's superior military organization and technology compared to Austria at the time.",
+    "description": "The Austro-Prussian War was fought in 1866 between the Austrian Empire and the Kingdom of Prussia, with each also being aided by various allies within the German Confederation. Prussia had also allied with the Kingdom of Italy, linking this conflict to the Third Independence War of Italian unification. The Austro-Prussian War was part of the wider rivalry between Austria and Prussia, and resulted in Prussian dominance over the German states, having confirmed Prussia's superiority in military organization and technology over Austria at the time.",
     "period": {
       "start": {
         "year": 1866,
@@ -499,7 +605,7 @@
         "month": 7
       }
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q152004",
@@ -523,7 +629,7 @@
         "month": 4
       }
     },
-    "row": 9
+    "row": 12
   },
   {
     "id": "Q192408",
@@ -570,7 +676,103 @@
         "year": 1689
       }
     },
+    "row": 2
+  },
+  {
+    "id": "Q173077",
+    "name": "Battle of Tours",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "battle fought in 732 by Merovingian Franks against the Umayyad Caliphate",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Tours",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Steuben%20-%20Bataille%20de%20Poitiers.png",
+    "description": "The Battle of Tours, also called the Battle of Poitiers and the Battle of the Highway of the Martyrs, was fought on 10 October 732, and was an important battle during the Umayyad invasion of Gaul. It resulted in victory for the Frankish and Aquitanian forces, led by Charles Martel, over the invading Umayyad forces, led by Abd al-Rahman al-Ghafiqi, governor of al-Andalus. Many historians, including Edward Gibbon, have credited the Christian victory as an important factor in curtailing the spread of Islam in Western Europe.",
+    "at": {
+      "year": 732,
+      "month": 10
+    },
+    "row": 0
+  },
+  {
+    "id": "Q200855",
+    "name": "Battle of Vienna",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "1683 battle between the Christian European States and the Ottomans",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Vienna",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Juliusz%20Kossak%20Sobieski%20pod%20Wiedniem.jpeg",
+    "description": "The Battle of Vienna took place at Kahlenberg Mountain near Vienna on 12 September 1683 after the city had been besieged by the Ottoman Empire for two months. The battle was fought by the Holy Roman Empire, led by the Habsburg monarchy, and the Polish–Lithuanian Commonwealth, both under the command of Polish King John III Sobieski, against the Ottomans and their vassal and tributary states.",
+    "at": {
+      "year": 1683,
+      "month": 9
+    },
     "row": 1
+  },
+  {
+    "id": "Q33570",
+    "name": "Battle of Grunwald",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "1410 battle between the Teutonic Knights and Poland–Lithuania",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Grunwald",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Grunwald%20Witold.jpg",
+    "description": "The Battle of Grunwald, also known as the (First) Battle of Tannenberg or the Battle of Žalgiris, was fought on 15 July 1410 during the Polish–Lithuanian–Teutonic War. The alliance of the Crown of the Kingdom of Poland and the Grand Duchy of Lithuania, led respectively by King Władysław II Jagiełło (Jogaila), and Grand Duke Vytautas, decisively defeated the Teutonic Order, led by Grand Master Ulrich von Jungingen. Most of the Teutonic Order's leadership was killed or taken prisoner.",
+    "at": {
+      "year": 1410,
+      "month": 7
+    },
+    "row": 3
+  },
+  {
+    "id": "Q87779",
+    "name": "Battle of the Teutoburg Forest",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "battle between a coalition of Germanic peoples and an Imperial Roman army, 9 BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Teutoburg_Forest",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Varus01.jpg",
+    "description": "The Battle of the Teutoburg Forest, also called the Varian Disaster by Roman historians, was a major battle fought between an alliance of Germanic peoples and the Roman Empire between 8 and 11 September 9 CE, possibly near modern Kalkriese. Fighting began with an ambush by the Germanic alliance on three Roman legions being led by Publius Quinctilius Varus and their auxiliaries; the alliance was led by Arminius, a Germanic chieftain and officer of Varus's auxilia. Arminius had received Roman citizenship and a Roman military education, thus allowing him to deceive the Romans methodically and anticipate their tactical responses.",
+    "at": {
+      "year": 9,
+      "month": 9
+    },
+    "row": 0
+  },
+  {
+    "id": "Q190517",
+    "name": "Xinhai Revolution",
+    "category": "revolution",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 75,
+    "tagline": "revolution in China that overthrew the Qing dynasty and established the Republic of China",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1911_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Xinhai%20Revolution%20in%20Shanghai.jpg",
+    "description": "The 1911 Revolution, also known as the Xinhai Revolution or Hsinhai Revolution, culminated in the end of China's last imperial dynasty, the Qing dynasty, and led to the establishment of the Republic of China (ROC). The revolution was the culmination of a decade of agitation, revolts, and uprisings. Its success marked the end of Chinese monarchy, the 267-year reign of the Qing, over two millennia of imperial rule in China, and the beginning of China's early republican era.",
+    "period": {
+      "start": {
+        "year": 1911,
+        "month": 10
+      },
+      "end": {
+        "year": 1912,
+        "month": 2
+      }
+    },
+    "row": 12
   },
   {
     "id": "Q689128",
@@ -628,7 +830,7 @@
     "tagline": "large-scale conflict in South America (1864–1870)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paraguayan_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tuyuti1.jpg",
-    "description": "The Paraguayan War, also known as the War of the Triple Alliance, was a South American war that lasted from 1864 to 1870. It was fought between Paraguay and the Triple Alliance of Argentina, the Empire of Brazil, and Uruguay. It was the deadliest inter-state war in Latin American history. Paraguay sustained immense casualties, but even the approximate numbers are disputed. Paraguay was forced to cede disputed territory to Argentina and Brazil. The war began in late 1864, as a result of a conflict between Paraguay and Brazil caused by the Uruguayan War. Argentina and Uruguay entered the war against Paraguay in 1865, and it then became known as the \"War of the Triple Alliance\".",
+    "description": "The Paraguayan War, also known as the War of the Triple Alliance, was a war in South America that lasted from 1864 to 1870. It was fought between Paraguay and the Triple Alliance of Argentina, Brazil and Uruguay. It was the deadliest inter-state war in Latin American history. Paraguay sustained immense casualties, but even the approximate numbers are disputed. Paraguay was forced to cede disputed territory to Argentina and Brazil. The war began in late 1864, as a result of a conflict between Paraguay and Brazil caused by the Uruguayan War. Argentina and Uruguay entered the war against Paraguay in 1865, and it then became known as the \"War of the Triple Alliance\".",
     "period": {
       "start": {
         "year": 1864,
@@ -639,7 +841,7 @@
         "month": 3
       }
     },
-    "row": 11
+    "row": 12
   },
   {
     "id": "Q275918",
@@ -650,7 +852,7 @@
     "tagline": "historical process in 7th–8th centuries CE",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Early_Muslim_conquests",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20of%20expansion%20of%20Caliphate.svg",
-    "description": "The early Muslim conquests or early Islamic conquests, also known as the Arab conquests, were a series of religious wars initiated by Muhammad, the prophet of Islam, and continued by the early Muslims. In 622, he established the first Islamic state at Medina in Arabia, from where Muslim armies expanded rapidly under the succeeding Rashidun Caliphate and then the Umayyad Caliphate, culminating in Islamic law being extended throughout most of West Asia and North Africa, parts of South Asia and Central Asia, and parts of Mediterranean Europe over the following century. According to Scottish historian James Buchan: \"In speed and extent, the first Arab conquests were matched only by those of Alexander the Great, and they were more lasting.\" At the height of the expansion, Muslim-ruled territory under the caliphates is estimated to have covered 13,000,000 square kilometres (5,000,000 sq mi), stretching from the Indian subcontinent in the east to the Iberian Peninsula in the west.",
+    "description": "The early Muslim conquests, or the early Islamic conquests, also known as the Arab conquests, were a series of wars initiated by the Islamic prophet Muhammad, and continued by the early Muslims. In 622, he established the first Islamic state in Medina, with Muslim armies expanding rapidly out of Arabia under the succeeding Rashidun Caliphate and then the Umayyad Caliphate, culminating in Muslim rule being established throughout most of the Middle East and North Africa, parts of South Asia and Central Asia, and parts of Southern Europe over the following century. According to the Scottish historian James Buchan: \"In speed and extent, the first Arab conquests were matched only by those of Alexander the Great, and they were more lasting.\" At the height of the expansion, Muslim-ruled territory under the Caliphates is estimated to have covered 13,000,000 square kilometres (5,000,000 sq mi), stretching from the Indian subcontinent in the east to the Iberian Peninsula in the west.",
     "period": {
       "start": {
         "year": 622
@@ -659,7 +861,75 @@
         "year": 750
       }
     },
-    "row": 1
+    "row": 2
+  },
+  {
+    "id": "Q626058",
+    "name": "Battle of Karbala",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 74,
+    "tagline": "battle in October 680 between the army of Ubayd Allah ibn Ziyad and al-Husayn ibn Ali",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Karbala",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20Karbala.jpg",
+    "description": "The Battle of Karbala was fought on 10 October 680 between the forces of the second Umayyad caliph Yazid I, and a small army led by Husayn ibn Ali, second son of Ali and grandson of the Islamic prophet Muhammad, at Karbala, in modern-day southern Iraq.",
+    "at": {
+      "year": 680,
+      "month": 10
+    },
+    "row": 0
+  },
+  {
+    "id": "Q214028",
+    "name": "July Revolution",
+    "category": "revolution",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 74,
+    "tagline": "July 1830 revolution in France",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/July_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/R%C3%A9volution%20de%201830%20-%20Combat%20de%20la%20rue%20de%20Rohan%20-%2029.07.1830.jpg",
+    "description": "The July Revolution, also known as the French Revolution of 1830, Second French Revolution, or les Trois Glorieuses, was a second French Revolution after the first of 1789–99. It led to the overthrow of King Charles X, the French Bourbon monarch, and the ascent of his cousin Louis Philippe, Duke of Orléans, who governed for 18 years as the last king of France.",
+    "period": {
+      "start": {
+        "year": 1830,
+        "month": 7
+      },
+      "end": {
+        "year": 1830,
+        "month": 7
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q382861",
+    "name": "Revolutions of 1989",
+    "category": "revolution",
+    "regionTags": [
+      "eastern-europe",
+      "western-europe"
+    ],
+    "fameScore": 74,
+    "tagline": "series of protests during 1989 overthrowing communist governments in Eastern Europe",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Revolutions_of_1989",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EasternBlocAfter.svg",
+    "imageAttribution": "EasternBlocAfter.png: Mosedschurte at en.wikipedia.\nLater version(s) were uploaded by Tallicfan20 at en.wikipedia.\n\nderivative work: Malyszkz (talk), via Wikimedia Commons",
+    "description": "The revolutions of 1989, also known as the Fall of Communism, or Autumn of Nations, were a wave of liberal democratic movements that resulted in the collapse of most Marxist–Leninist governments in the Eastern Bloc and other parts of the world. The revolutions of 1989 were a key factor in the dissolution of the Soviet Union—one of the two superpowers—and abandonment of communist regimes in many parts of the world, some of which were violently overthrown. These events drastically altered the world's balance of power, marking the end of the Cold War and beginning of the post–Cold War era.",
+    "period": {
+      "start": {
+        "year": 1989,
+        "month": 3
+      },
+      "end": {
+        "year": 1992,
+        "month": 4
+      }
+    },
+    "row": 14
   },
   {
     "id": "Q184183",
@@ -681,7 +951,7 @@
         "month": 8
       }
     },
-    "row": 13
+    "row": 17
   },
   {
     "id": "Q6286",
@@ -702,7 +972,7 @@
         "year": -240
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q202161",
@@ -713,7 +983,7 @@
     "tagline": "war (58–50 BCE) between the Roman Republic and Gaul",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gallic_Wars",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lionel%20Royer%20-%20Vercingetorix%20Throwing%20down%20His%20Weapons%20at%20the%20feet%20of%20Julius%20Caesar.jpg",
-    "description": "The Gallic Wars were waged between 58 and 50 BC by the Roman general Gaius Julius Caesar against the peoples of Gaul. Gallic, Germanic, and Brittonic tribes fought to defend their homelands against an aggressive Roman campaign. The wars culminated in the decisive Battle of Alesia in 52 BC, in which a complete Roman victory resulted in the expansion of the Roman Republic over the whole of Gaul. Though the collective Gallic armies were as strong as the Roman forces, internal divisions among the Gallic tribes eased victory for Caesar. Gallic chieftain Vercingetorix's attempt to unite the Gauls under a single banner came too late. Caesar portrayed the invasion as being a preemptive and defensive action, but historians agree that he fought the wars primarily to boost his political career and to pay off his debts. Still, Gaul was of significant military importance to the Romans. Native tribes in the region, both Gallic and Germanic, had repeatedly attacked Roman territory. Conquering Gaul allowed Rome to secure the natural border of the Rhine river.",
+    "description": "The Gallic Wars were waged between 58 and 50 BC by the Roman general Gaius Julius Caesar against the peoples of Gaul, Britain and Germania. Gallic, Germanic, and Brittonic tribes fought to defend their homelands against an aggressive Roman campaign. The wars culminated in the decisive Battle of Alesia in 52 BC, in which a complete Roman victory resulted in the expansion of the Roman Republic over the whole of Gaul. Though the collective Gallic armies were as strong as the Roman forces, internal divisions among the Gallic tribes eased victory for Caesar. Gallic chieftain Vercingetorix's attempt to unite the Gauls under a single banner came too late. Caesar portrayed the invasion as being a preemptive and defensive action, but historians agree that he fought the wars primarily to boost his political career and to pay off his debts. Still, Gaul was of significant military importance to the Romans. Native tribes in the region, both Gallic and Germanic, had repeatedly attacked Roman territory. Conquering Gaul allowed Rome to secure the natural border of the Rhine river.",
     "period": {
       "start": {
         "year": -57
@@ -728,13 +998,15 @@
     "id": "Q154697",
     "name": "French and Indian War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 73,
     "tagline": "North American theatre of the worldwide Seven Years' War",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/French_and_Indian_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/French%20and%20indian%20war%20map.svg",
     "imageAttribution": "Hoodinski, via Wikimedia Commons",
-    "description": "The French and Indian War (1754–1763) was a conflict in North America between Great Britain and France, along with their respective Indigenous allies, which were called \"Indians\" at the time. Historians generally consider it part of the global Seven Years' War, which lasted from 1756 to 1763, although in the United States it is often viewed as a distinct conflict unassociated with any larger European war.",
+    "description": "The French and Indian War (1754–1763) was a conflict in North America between Great Britain and France, along with their respective Indigenous allies. Historians generally consider it part of the global Seven Years' War, which lasted from 1756 to 1763, although in the United States it is often viewed as a distinct conflict unassociated with any larger European war.",
     "parentId": "Q33143",
     "period": {
       "start": {
@@ -746,7 +1018,7 @@
         "month": 10
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q207318",
@@ -790,7 +1062,7 @@
         "month": 7
       }
     },
-    "row": 11
+    "row": 14
   },
   {
     "id": "Q94916",
@@ -812,7 +1084,32 @@
         "month": 2
       }
     },
-    "row": 12
+    "row": 19
+  },
+  {
+    "id": "Q190882",
+    "name": "Phoney War",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "eight-month period at the start of World War II, during which there was only one limited military land operation on the Western Front",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Phoney_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/8inchHowitzerCamouflagedLaquielle20October1939.jpg",
+    "description": "The Phoney War was an eight-month period at the outset of World War II, lasting from September 1939 to May 1940, during which there were virtually no major Allied military land operations on the Western Front.",
+    "parentId": "Q362",
+    "period": {
+      "start": {
+        "year": 1939,
+        "month": 10
+      },
+      "end": {
+        "year": 1958,
+        "month": 4
+      }
+    },
+    "row": 20
   },
   {
     "id": "Q203233",
@@ -830,13 +1127,128 @@
       "year": 1757,
       "month": 6
     },
-    "row": 4
+    "row": 5
+  },
+  {
+    "id": "Q152486",
+    "name": "Battle of Poltava",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "decisive battle in the Great Northern War between Tsardom Russia and the Swedish Empire in 1709",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Poltava",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Marten%27s%20Poltava.jpg",
+    "description": "The Battle of Poltava fought on 8 July 1709, was the decisive and largest battle of the Great Northern War. A Russian army under the command of Tsar Peter I defeated a Swedish army commanded by Carl Gustaf Rehnskiöld. The battle would lead to the Swedish Empire losing its status as a European great power and also marked the beginning of Russian supremacy in eastern Europe.",
+    "at": {
+      "year": 1709,
+      "month": 7
+    },
+    "row": 2
+  },
+  {
+    "id": "Q160387",
+    "name": "Battle of Actium",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "31 BCE decisive confrontation of the Final War of the Roman Republic",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Actium",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Castro%20Battle%20of%20Actium.jpg",
+    "description": "The Battle of Actium was a naval battle fought between Octavian's maritime fleet, led by Marcus Agrippa, and the combined fleets of Mark Antony and Cleopatra. The battle took place on 2 September 31 BC in the Ionian Sea, near the former Roman colony of Actium, Greece, and was the climax of over a decade of rivalry between Octavian and Mark Antony.",
+    "at": {
+      "year": -30,
+      "month": 8
+    },
+    "row": 0
+  },
+  {
+    "id": "Q179288",
+    "name": "Battle of Kosovo",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "battle on 28th June 1389",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kosovo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.10%2C%20p.299%20-%20Battle%20of%20Kosovo%20%281389%29.png",
+    "description": "The Battle of Kosovo took place on 15 June 1389 between an army led by the Serbian Prince Lazar Hrebeljanović and an invading army of the Ottoman Empire under the command of Sultan Murad I. It was one of the largest battles of the Late Middle Ages.",
+    "at": {
+      "year": 1389,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q179670",
+    "name": "Battle of Gaugamela",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia",
+      "western-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "decisive battle of Alexander the Great's invasion of the Persian Achaemenid Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Gaugamela",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20Gaugamela.jpg",
+    "description": "The Battle of Gaugamela, also called the Battle of Arbela, took place in 331 BC between the forces of the Army of Macedon under Alexander the Great and the Persian Army under King Darius III. It was the second and final battle between the two kings, and is considered to be the final blow to the Achaemenid Empire, resulting in its complete conquest by Alexander.",
+    "at": {
+      "year": -330,
+      "month": 9
+    },
+    "row": 1
+  },
+  {
+    "id": "Q200032",
+    "name": "Battle of Manzikert",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "1071 battle between the Byzantine Empire and Seljuk Turks",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Manzikert",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/131%20Bataille%20de%20Malazgirt.jpg",
+    "description": "The Battle of Manzikert or Malazgirt was fought between the Byzantine Empire and the Seljuk Empire on 26 August 1071 near Manzikert, Iberia. The decisive defeat of the Byzantine army and the capture of the emperor Romanos IV Diogenes played an important role in undermining Byzantine authority in Anatolia and Armenia, and allowed for the gradual Turkification of Anatolia. Many Turks, travelling westward during the 11th century, saw the victory at Manzikert as an entrance to Asia Minor.",
+    "at": {
+      "year": 1071,
+      "month": 9
+    },
+    "row": 1
+  },
+  {
+    "id": "Q220984",
+    "name": "Opium Wars",
+    "category": "war",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "two 19th century conflicts",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Opium_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Second%20Opium%20War-guangzhou.jpg",
+    "description": "The Opium Wars were two conflicts waged between the Qing dynasty and the Western powers during the mid-19th century.",
+    "period": {
+      "start": {
+        "year": 1839,
+        "month": 9
+      },
+      "end": {
+        "year": 1860,
+        "month": 10
+      }
+    },
+    "row": 12
   },
   {
     "id": "Q6334",
     "name": "Third Punic War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-africa"
+    ],
     "fameScore": 72,
     "tagline": "war between the Roman Republic and Carthage between 149 and 146 BCE",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_Punic_War",
@@ -873,7 +1285,7 @@
         "month": 5
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q203824",
@@ -896,32 +1308,7 @@
         "month": 10
       }
     },
-    "row": 14
-  },
-  {
-    "id": "Q190882",
-    "name": "Phoney War",
-    "category": "military-operation",
-    "regionTags": [
-      "western-europe"
-    ],
-    "fameScore": 72,
-    "tagline": "eight-month period at the start of World War II, during which there was only one limited military land operation on the Western Front",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Phoney_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/8inchHowitzerCamouflagedLaquielle20October1939.jpg",
-    "description": "The Phoney War was an eight-month period at the outset of World War II, lasting from September 1939 to May 1940, during which there were virtually no major Allied military land operations on the Western Front.",
-    "parentId": "Q362",
-    "period": {
-      "start": {
-        "year": 1939,
-        "month": 10
-      },
-      "end": {
-        "year": 1958,
-        "month": 4
-      }
-    },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q188972",
@@ -945,7 +1332,7 @@
         "month": 10
       }
     },
-    "row": 18
+    "row": 22
   },
   {
     "id": "Q856670",
@@ -959,12 +1346,69 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/1973_Chilean_coup_d%27%C3%A9tat",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Golpe%20de%20Estado%201973.jpg",
     "imageAttribution": "Biblioteca del Congreso Nacional de Chile, via Wikimedia Commons",
-    "description": "The 1973 Chilean coup d'état was a military overthrow of the socialist president of Chile Salvador Allende and his Popular Unity coalition government. Allende, who has been described as the first Marxist to be democratically elected president in a Latin American liberal democracy, faced significant social unrest and political tension with the opposition-controlled National Congress of Chile. On 11 September 1973, a group of military officers, led by General Augusto Pinochet, seized power in a coup, ending civilian rule.",
+    "description": "The 1973 Chilean coup d'état was a military overthrow of the socialist president of Chile Salvador Allende and his Popular Unity coalition government. Allende, who was the first Marxist to be democratically elected president in a Latin American liberal democracy, faced significant social unrest and political tension with the opposition-controlled National Congress of Chile. On 11 September 1973, a group of military officers, led by General Augusto Pinochet, seized power in a coup, ending civilian rule.",
     "at": {
       "year": 1973,
       "month": 9
     },
-    "row": 12
+    "row": 14
+  },
+  {
+    "id": "Q139808",
+    "name": "Battle of the Maureaco Fields",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe",
+      "western-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "battle between Romans and Huns in 451",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Catalaunian_Plains",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/De%20Neuville%20-%20The%20Huns%20at%20the%20Battle%20of%20Chalons.jpg",
+    "description": "The Battle of the Catalaunian Plains, also called the Battle of the Campus Mauriacus, Battle of Châlons, Battle of Troyes or the Battle of Maurica, took place on 20 June 451 AD, pitting a coalition led by the Roman general Flavius Aetius and the Visigothic king Theodoric I against the Huns and their vassals, commanded by their king, Attila. It proved to be one of the last major military operations of the Western Roman Empire, although Germanic foederati composed the majority of the coalition army. The exact strategic significance is disputed. Historians generally agree that the siege of Aurelianum was the decisive moment in the campaign and stopped the Huns' attempt to advance any further into Roman territory or establish vassals in Roman Gaul. However, the Huns looted and pillaged much of Gaul and crippled the military capacity of the Romans and Visigoths. Attila died only two years later, in 453. After the Battle of Nedao in 454, the coalition of the Huns and the incorporated Germanic vassals gradually disintegrated.",
+    "at": {
+      "year": 451,
+      "month": 6
+    },
+    "row": 1
+  },
+  {
+    "id": "Q210354",
+    "name": "Battle of Kulikovo",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "1380 battle between Russian principalities and Golden Horde",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kulikovo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kulikovo%20lubok.jpg",
+    "description": "The Battle of Kulikovo was fought between the forces of Mamai, a powerful Mongol military commander of the Golden Horde, and Russian forces led by Grand Prince Dmitry of Moscow. The battle took place on 8 September 1380, at Kulikovo Field near the Don River and was won by Dmitry, who became known as Donskoy after the battle.",
+    "at": {
+      "year": 1380,
+      "month": 9
+    },
+    "row": 2
+  },
+  {
+    "id": "Q194378",
+    "name": "Third Servile War",
+    "category": "rebellion",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "major slave rebellion against the Roman Republic (73-71 BCE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_Servile_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Italy%20and%20environs%2C%20218%20BC.gif",
+    "description": "The Third Servile War, also called the Gladiator War and the War of Spartacus by Plutarch, was the last in a series of slave rebellions against the Roman Republic known as the Servile Wars. This third rebellion was the only one that directly threatened the Roman heartland of Italy. It was particularly alarming to Rome because its military seemed powerless to suppress it.",
+    "period": {
+      "start": {
+        "year": -72
+      },
+      "end": {
+        "year": -70
+      }
+    },
+    "row": 0
   },
   {
     "id": "Q134900605",
@@ -990,13 +1434,15 @@
         "month": 6
       }
     },
-    "row": 5
+    "row": 8
   },
   {
     "id": "Q152218",
     "name": "Nine Years' War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 71,
     "tagline": "war principally fought in Central Europe from 1688 to 1697",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nine_Years%27_War",
@@ -1012,7 +1458,7 @@
         "month": 9
       }
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q223126",
@@ -1036,13 +1482,15 @@
         "month": 6
       }
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q75984",
     "name": "Dirty War",
     "category": "military-operation",
-    "regionTags": [],
+    "regionTags": [
+      "south-america"
+    ],
     "fameScore": 71,
     "tagline": "period of state terrorism in Argentina from 1974 to 1983",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dirty_War",
@@ -1055,7 +1503,84 @@
         "year": 1989
       }
     },
-    "row": 16
+    "row": 19
+  },
+  {
+    "id": "Q203729",
+    "name": "Battle of Kadesh",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "battle between Egyptians and Hittites fought in 1274 BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kadesh",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ramses%20II%20at%20Kadesh.jpg",
+    "description": "The Battle of Kadesh was a major military conflict in the early 13th century BC, between the attacking Ramesses II of the Egyptian Empire and defending Muwatalli II of the Hittite Empire. In the previous year, Ramesses II had invaded the neighboring province of Amurru. At the Orontes River, the armies engaged each other just upstream of Lake Homs and near the stronghold of Kadesh, along what is today the Lebanon–Syria border.",
+    "at": {
+      "year": -1273,
+      "month": 5
+    },
+    "row": 1
+  },
+  {
+    "id": "Q208156",
+    "name": "Mongol invasions of Japan",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "attempts by the Mongol Empire to conquer Japan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Japan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kikuchi%20Yoosai%20-%20Mongol%20Invasion%20%28m%C5%8Dko%20sh%C5%ABrai%29%20-%20Tokyo%20National%20Museum.jpg",
+    "description": "Major military efforts were taken by Kublai Khan of the Yuan dynasty in 1274 and 1281 to conquer the Japanese archipelago after the submission of the Korean kingdom of Goryeo to vassaldom. Ultimately a failure, the invasion attempts are of macro-historical importance because they set a limit on Mongol expansion and rank as nation-defining events in the history of Japan. The invasions are referred to in many works of fiction and are the origin of the word kamikaze, first used to describe the typhoons that destroyed the Mongol invasion fleets in the 13th century. The term was later adopted in the 20th century to describe Japanese pilots who deliberately crashed their aircraft into enemy warships during the last years of World War II.",
+    "at": {
+      "year": 1274
+    },
+    "row": 2
+  },
+  {
+    "id": "Q369560",
+    "name": "Siege of Baghdad",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "1258 Mongol conquest of the Abbasid Caliphate",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Baghdad",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bagdad1258.jpg",
+    "description": "The Siege of Baghdad, also known as the Sack of Baghdad, took place in early 1258. A large army commanded by Hulegu, a prince of the Mongol Empire, attacked the historic capital of the Abbasid Caliphate after a series of provocations from its ruler, caliph al-Musta'sim. Within a few weeks, Baghdad fell and was sacked by the Mongol army—al-Musta'sim was killed alongside hundreds of thousands of his subjects. The city's fall has traditionally been seen as marking the end of the Islamic Golden Age; in reality, its ramifications are uncertain.",
+    "period": {
+      "start": {
+        "year": 1258,
+        "month": 2
+      },
+      "end": {
+        "year": 1258,
+        "month": 2
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q126306",
+    "name": "Decembrist revolt",
+    "category": "rebellion",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 71,
+    "tagline": "1825 revolt and attempted coup in the Russian Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Decembrist_revolt",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Peterburg%2C%20Senate%20Square%2C%201825%2C%20dec.%2014.jpg",
+    "description": "The Decembrist revolt was a failed coup d'état led by liberal military and political dissidents against the Russian Empire. It took place in Saint Petersburg on 26 December [O.S. 14 December] 1825, following the death of Emperor Alexander I.",
+    "at": {
+      "year": 1825,
+      "month": 12
+    },
+    "row": 8
   },
   {
     "id": "Q228911",
@@ -1077,7 +1602,7 @@
         "month": 7
       }
     },
-    "row": 7
+    "row": 17
   },
   {
     "id": "Q1123201",
@@ -1088,7 +1613,7 @@
     "tagline": "1808–1833 armed conflicts in the Americas between Spain and independence movements",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_American_wars_of_independence",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Independencia.gif",
-    "description": "The Spanish American wars of independence were a series of conflicts that took place across the Spanish Empire during the early 19th century. The struggles in both hemispheres began shortly after the outbreak of the Peninsular War forming part of the broader context of the Napoleonic Wars. The conflicts were fought between Royalists, who favoured rule from a unitary Spanish monarchy, and Patriots, who supported either autonomous constitutional monarchies or independent republics, separated from Spain and each other. These struggles ultimately led to the independence and secession of most of Spanish America from Spanish rule, which, beyond this conflict, resulted in a process of Balkanization in Hispanic America. If defined strictly in terms of military campaigns, the time period in question ranged from the 1809 Battle of Chacaltaya in present-day Bolivia, to the 1829 Battle of Tampico in Mexico.",
+    "description": "The Spanish American wars of independence were a series of conflicts across the Spanish Empire in the early 19th century. They began shortly after the outbreak of the Peninsular War and formed part of the broader Napoleonic Wars.",
     "period": {
       "start": {
         "year": 1808,
@@ -1099,7 +1624,214 @@
         "month": 9
       }
     },
-    "row": 8
+    "row": 11
+  },
+  {
+    "id": "Q1134220",
+    "name": "Mongol invasion of Kievan Rus'",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 70,
+    "tagline": "1223–1242 Mongol military invasion of Eastern Europe",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Kievan_Rus%27",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Genghis%20Khan%20empire%20%28mul%29.svg",
+    "imageAttribution": "derivative work Bkkbrad / *File:Gengis Khan empire-fr.svg: historicair 17:01, 8 October 2007 (UTC), via Wikimedia Commons",
+    "description": "The Mongol Empire invaded and conquered much of the Kievan Rus' in the mid-13th century, sacking numerous cities such as Ryazan, Yaroslavl, Pereyaslavl and Vladimir, including the largest: Kiev and Chernigov. The siege of Kiev in 1240 by the Mongols is generally held to mark the end of the state of Kievan Rus', which had already been undergoing fragmentation. Many other principalities and urban centres in the northwest and southwest escaped complete destruction or suffered little to no damage from the Mongol invasion, including Galicia–Volhynia, Pskov, Smolensk, Polotsk, Vitebsk, and probably Rostov and Uglich.",
+    "period": {
+      "start": {
+        "year": 1223
+      },
+      "end": {
+        "year": 1240
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q14689",
+    "name": "Battle of the Ice",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 70,
+    "tagline": "1242 battle during Northern Crusades",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_on_the_Ice",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.06%2C%20page%20085%20-%20Battle%20of%20the%20Ice.jpg",
+    "description": "The Battle on the Ice, also known as the Battle of Lake Peipus, took place on 5 April 1242. It was fought on the frozen Lake Peipus when the united forces of the Republic of Novgorod and Vladimir-Suzdal, led by Prince Alexander Nevsky, emerged victorious against the forces of the Livonian Order and Bishopric of Dorpat, led by Bishop Hermann of Dorpat.",
+    "at": {
+      "year": 1242,
+      "month": 4
+    },
+    "row": 2
+  },
+  {
+    "id": "Q209387",
+    "name": "Battle of Ankara",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 70,
+    "tagline": "battle near Ankara on 20 July 1402, between the Timurid Empire and the Ottoman Sultanate",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Ankara",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Timur%20Review%20His%20Troops%20Before%20the%20Battle%20of%20Ankara%2C%20Zafarnama%201436.jpg",
+    "description": "The Battle of Ankara or Angora was fought on 28 July 1402, at the Çubuk plain near Ankara, between the forces of Timur and the Ottoman sultan Bayezid I. The battle was a major victory for Timur, leading to the Ottoman Interregnum.",
+    "at": {
+      "year": 1402,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q570204",
+    "name": "Battle of the Kalka River",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 70,
+    "tagline": "1223 middle ages battle",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Kalka_River",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%D0%BD%D0%B0%20%D0%9A%D0%B0%D0%BB%D0%BA%D0%B5.png",
+    "description": "The Battle of the Kalka River was fought between the Mongol Empire, whose armies were led by Jebe and Subutai, and a coalition of several Rus' principalities, including Kiev and Galicia-Volhynia, and the Cumans under Köten. They were under the joint command of Mstislav the Bold and Mstislav III of Kiev. The battle was fought on May 31, 1223 on the banks of the Kalka River in present-day Donetsk Oblast, Ukraine, and ended in a decisive Mongol victory.",
+    "at": {
+      "year": 1223,
+      "month": 6
+    },
+    "row": 2
+  },
+  {
+    "id": "Q253684",
+    "name": "French invasion of Egypt and Syria",
+    "category": "military-operation",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 69,
+    "tagline": "1798–1801 campaign during the War of the Second Coalition",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/French_invasion_of_Egypt_and_Syria",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Baron%20Antoine-Jean%20Gros-Battle%20Pyramids%201810.jpg",
+    "description": "The French invasion of Egypt and Syria (1798–1801) was a military expedition to Ottoman-held Egypt and Syria led by Napoleon Bonaparte during the French Revolutionary Wars. The campaign aimed to undermine British trade routes, expand French influence, and establish a scientific and administrative presence in Egypt. Napoleon also sought to sever Britain's connection to its colonial holdings in India, with the long-term ambition of challenging British dominance in the region.",
+    "period": {
+      "start": {
+        "year": 1798,
+        "month": 7
+      },
+      "end": {
+        "year": 1801,
+        "month": 9
+      }
+    },
+    "row": 12
+  },
+  {
+    "id": "Q456993",
+    "name": "Siege of Jerusalem",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "1099 battle during which the Crusaders captured Jerusalem from the Fatimid Caliphate",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1099)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1099jerusalem.jpg",
+    "description": "The siege of Jerusalem marked the successful end of the First Crusade, whose objective was the recovery of the city of Jerusalem and the Church of the Holy Sepulchre from Islamic control. The five-week siege began on 7 June 1099 and was carried out by the Christian forces of Western Europe mobilized by Pope Urban II after the Council of Clermont in 1095. The city had been out of Christian control since the Muslim conquest of the Levant in 637 and had been held for a century first by the Seljuk Turks and later by the Egyptian Fatimids. One of the chief motivations for the Crusades had been the recent hindering of Christian pilgrimages to the Holy Land, impeding a tradition which had taken place since the fourth century. A number of eyewitness accounts of the battle are recorded, including the anonymous chronicle Gesta Francorum.",
+    "period": {
+      "start": {
+        "year": 1099,
+        "month": 6
+      },
+      "end": {
+        "year": 1099,
+        "month": 7
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q492415",
+    "name": "Battle of Talas",
+    "category": "military-operation",
+    "regionTags": [
+      "central-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "751 battle between the Abbasid Caliphate and the Chinese Tang dynasty",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Talas",
+    "description": "The Battle of Talas was an armed confrontation between the Abbasid Caliphate along with the Tibetan Empire against the Tang dynasty and its allies in 751. In July of that year, the Tang and Abbasid armies clashed at the Talas River over control of the regions surrounding the Syr Darya. The Tang army under Gao Xianzhi was defeated by the Abbasid army under Ziyad ibn Salih and Karluk mercenaries. Sources differ on whether the Karluks defected to the Abbasids or if they were Abbasid allies from the start. The defeat marked the end of Tang influence in Transoxiana and halted Tang westward expansion.",
+    "period": {
+      "start": {
+        "year": 751,
+        "month": 5
+      },
+      "end": {
+        "year": 751,
+        "month": 9
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q605321",
+    "name": "Battle of Panipat",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "1526 battle.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Battle_of_Panipat",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vaki%27at-i%20Baburi%20-%20The%20Battle%20of%20Panipat%20%281526%29%20by%20Deo%20Gujarati.jpg",
+    "description": "The First Battle of Panipat, on 21 April 1526 was fought between the invading forces of Babur against Ibrahim Khan Lodi, the Sultan of Delhi, in North India. Babur's forces, employing gunpowder firearms and cannons, defeated Ibrahim. This was one of the earliest battles involving gunpowder arms on the Indian subcontinent. The victory marked the beginning of Mughal rule in India.",
+    "at": {
+      "year": 1526,
+      "month": 5
+    },
+    "row": 2
+  },
+  {
+    "id": "Q844886",
+    "name": "Siege of Jerusalem",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "siege of Jerusalem in 70 AD by the Roman army",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(70_CE)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20JerusalemfiMap.PNG",
+    "imageAttribution": "User:Barosaurus Lentus, via Wikimedia Commons",
+    "description": "The siege of Jerusalem in 70 CE was the decisive event of the First Jewish Revolt against the Roman Empire. Roman forces led by Titus, son of the emperor Vespasian, besieged Jerusalem, the Jewish capital and the revolt's main stronghold. After months of fighting, they breached the defenses, destroyed the Second Temple, and razed the city. Much of its population was killed, enslaved, or displaced by the Romans. The city's fall marked the effective end of the revolt and a turning point in Jewish history.",
+    "period": {
+      "start": {
+        "year": 70,
+        "month": 2
+      },
+      "end": {
+        "year": 70,
+        "month": 9
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q576338",
+    "name": "Japanese invasions of Korea",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "1592-1598 campaigns against Joseon by Toyotomi Hideyoshi",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Imjin_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege-of-Busanjin-1592.jpg",
+    "description": "The Imjin War was a series of two Japanese invasions of Korea: an initial invasion in 1592 also individually called the \"Imjin War\", a brief truce in 1596 between the conflicts, followed by a second invasion in 1597 called the Chŏngyu War. The conflict ended in 1598 with the withdrawal of Japanese forces from the Korean Peninsula after a military stalemate in Korea's southern provinces.",
+    "period": {
+      "start": {
+        "year": 1592,
+        "month": 5
+      },
+      "end": {
+        "year": 1598,
+        "month": 12
+      }
+    },
+    "row": 4
   },
   {
     "id": "Q2092093",
@@ -1110,7 +1842,7 @@
     "tagline": "series of Mongol invasions and conquests (1206–1405)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_conquests",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bataille%20de%20v%C3%A2liy%C3%A2n%20%281221%29.jpeg",
-    "description": "The Mongol conquests took place during the 13th and 14th centuries, creating the largest contiguous empire in history, the Mongol Empire (1206–1368), which by 1260 covered a significant portion of Eurasia. At its height, it stretched from the Pacific to Central Europe. As the Mongol Empire began to fragment from 1260, starting with its first major military defeat in the Battle of Ain Jalut against the Egyptians, conflict between the Mongols and Eastern European polities continued for centuries. Mongols continued to rule China into the 14th century under the Yuan dynasty, while Mongol rule in Persia persisted into the 15th century under the Timurid Empire. In the Indian subcontinent, the later Mughal Empire survived into the 19th century.",
+    "description": "The Mongol conquests took place during the 13th and 14th centuries, creating the largest contiguous empire in history, the Mongol Empire (1206–1368), which by 1260 covered a significant portion of Eurasia. At its height, it stretched from the Pacific to Central Europe. As the Mongol Empire began to fragment from 1260, conflict between the Mongols and Eastern European polities continued for centuries. Mongols continued to rule China into the 14th century under the Yuan dynasty, while Mongol rule in Persia persisted into the 15th century under the Timurid Empire. In the Indian subcontinent, the later Mughal Empire survived into the 19th century.",
     "period": {
       "start": {
         "year": 1206
@@ -1119,13 +1851,15 @@
         "year": 1337
       }
     },
-    "row": 2
+    "row": 4
   },
   {
     "id": "Q212658",
     "name": "War of the Polish Succession",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "eastern-europe"
+    ],
     "fameScore": 68,
     "tagline": "war in Europe 1734–1738",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/War_of_the_Polish_Succession",
@@ -1141,7 +1875,7 @@
         "month": 10
       }
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q766437",
@@ -1154,7 +1888,7 @@
     "tagline": "1921–1926 war between Spain and Berber tribes of Morocco",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rif_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Desembarco%20de%20Alhucemas%2C%20por%20Jos%C3%A9%20Moreno%20Carbonero.jpg",
-    "description": "The Rif War was fought from 1921 to 1926 between Spain and Berber tribes of the mountainous Rif region of northern Morocco.",
+    "description": "The Rif War was an anti-colonial war fought from 1921 to 1926 between the indigenous Berber tribes of the mountainous Rif region of northern Morocco and Spain.",
     "period": {
       "start": {
         "year": 1911,
@@ -1165,7 +1899,7 @@
         "month": 7
       }
     },
-    "row": 15
+    "row": 22
   },
   {
     "id": "Q302519",
@@ -1184,7 +1918,7 @@
       "year": 1896,
       "month": 3
     },
-    "row": 14
+    "row": 16
   },
   {
     "id": "Q1551794",
@@ -1206,7 +1940,98 @@
         "month": 2
       }
     },
-    "row": 16
+    "row": 23
+  },
+  {
+    "id": "Q1463845",
+    "name": "410 sack of Rome",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "410 Visigoth siege and looting of Rome",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sack_of_Rome_(410)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sack%20of%20Rome%20by%20the%20Visigoths%20on%2024%20August%20410%20by%20JN%20Sylvestre%201890.jpg",
+    "description": "The sack of Rome on 24 August 410 AD was undertaken by the Visigoths led by their king, Alaric. At that time, Rome was no longer the administrative capital of the Western Roman Empire, having been replaced first by Mediolanum in 286 and then by Ravenna in 402. Nevertheless, the city of Rome retained a paramount position as \"the eternal city\" and a spiritual center of the Empire. This was the first time in almost 800 years that Rome had fallen to a foreign enemy, and the sack was a major shock to contemporaries, friends and foes of the Empire alike.",
+    "period": {
+      "start": {
+        "year": 410,
+        "month": 8
+      },
+      "end": {
+        "year": 410,
+        "month": 8
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q154100",
+    "name": "Pugachev's Rebellion",
+    "category": "rebellion",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "peasant revolt against Empress Catherine II of Russia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pugachev%27s_Rebellion",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gorelov%20lynching%202.jpg",
+    "description": "Pugachev's Rebellion of 1773–1775 was the principal revolt in a series of popular rebellions that took place in the Russian Empire after Catherine II, known today as Catherine the Great, seized power in 1762. It began as an organized insurrection of Yaik Cossacks headed by Yemelyan Pugachev, a disaffected ex-lieutenant of the Imperial Russian Army, against a background of profound peasant unrest and war with the Ottoman Empire. After initial success, Pugachev assumed leadership of an alternative government, claiming to be Catherine's late husband Tsar Peter III and proclaiming an end to serfdom. This organized leadership presented a challenge to the imperial administration of Catherine II.",
+    "period": {
+      "start": {
+        "year": 1773,
+        "month": 9
+      },
+      "end": {
+        "year": 1775,
+        "month": 1
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q253774",
+    "name": "An Lushan Rebellion",
+    "category": "rebellion",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 68,
+    "tagline": "rebellion against the Tang dynasty of China in 755 C.E",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/An_Lushan_rebellion",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/An%20Lushan%20Rebellion.png",
+    "imageAttribution": "SY, via Wikimedia Commons",
+    "description": "The An Lushan rebellion was a civil war in China that lasted from 755 to 763, at the approximate midpoint of the Tang dynasty (618–907). It began as a commandery rebellion attempting to overthrow and replace the Tang government with the rogue Yan dynasty. The rebels succeeded in capturing the imperial capital Chang'an after the emperor had fled to Sichuan, but eventually succumbed to internal divisions and counterattacks by the Tang and their allies. The rebellion spanned the reigns of three Tang emperors: Xuanzong, Suzong, and Daizong.",
+    "period": {
+      "start": {
+        "year": 755,
+        "month": 12
+      },
+      "end": {
+        "year": 763,
+        "month": 2
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q1025466",
+    "name": "assassination of Julius Caesar",
+    "category": "coup-d-etat",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "stabbing attack that caused the death of Julius Caesar (44 BCE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vincenzo%20Camuccini%2C%20The%20Death%20of%20Julius%20Caesar%20%28detail%29.jpg",
+    "description": "Julius Caesar, the Roman dictator, was assassinated on the Ides of March, 44 BC, by a group of senators during a Senate session at the Curia of Pompey, located within the Theatre of Pompey in Rome. The conspirators, numbering 60 individuals and led by Marcus Junius Brutus, Gaius Cassius Longinus, and Decimus Junius Brutus Albinus, stabbed Caesar approximately 23 times. They justified the act as a defense of the Roman Republic, asserting that Caesar's accumulation of lifelong political authority—including his perpetual dictatorship and other honors—threatened republican traditions. The assassination failed to achieve its immediate objective of restoring the Republic's institutions. Instead, it precipitated Caesar's posthumous deification and was followed by the Liberators' civil war between his supporters and the conspirators, which became a stage in the collapse of the Republic. These events ultimately culminated in the rise of the Roman Empire under Augustus, marking the beginning of the Principate era.",
+    "at": {
+      "year": -43,
+      "month": 3
+    },
+    "row": 1
   },
   {
     "id": "Q54434",
@@ -1229,7 +2054,45 @@
         "month": 10
       }
     },
-    "row": 2
+    "row": 0
+  },
+  {
+    "id": "Q521799",
+    "name": "Battle of the Neva",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 67,
+    "tagline": "1240 battle",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Neva",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20the%20Neva.jpg",
+    "description": "The Battle of the Neva was fought between the Novgorod Republic, along with Karelians, and the Kingdom of Sweden, including Norwegian, Finnish and Tavastian forces, on the Neva River, near the settlement of Ust-Izhora, on 15 July 1240. The battle is mentioned only in Russian sources, and it remains unclear whether it was a major invasion or a small-scale raid. In Russian historiography, it has become an event of massive scale and importance.",
+    "at": {
+      "year": 1240,
+      "month": 7
+    },
+    "row": 5
+  },
+  {
+    "id": "Q751743",
+    "name": "Yellow Turban Rebellion",
+    "category": "rebellion",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "rebellion against corruption of the Imperial Court rooted in Taoist religious principles",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Three%20Brothers%20during%20the%20Yellow%20Turban%20Rebellion.jpg",
+    "description": "The Yellow Turban Rebellion, alternatively translated as the Yellow Scarves Rebellion, was a peasant revolt during the late Eastern Han dynasty of ancient China. The uprising broke out in 184 AD, during the reign of Emperor Ling. Although the main rebellion was suppressed by 185 AD, it took 21 years to fully subdue resisting areas and emerging rebellions, which was only achieved in 205 AD. The weakening of the imperial court and the rising political influence of autonomous regional military-governors, who helped suppress the rebellion, eventually led to rampant warlord dominance and the resultant Three Kingdoms period.",
+    "period": {
+      "start": {
+        "year": 184
+      },
+      "end": {
+        "year": 205
+      }
+    },
+    "row": 0
   },
   {
     "id": "Q737542",
@@ -1251,7 +2114,7 @@
         "year": 1185
       }
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q468293",
@@ -1296,7 +2159,32 @@
         "month": 4
       }
     },
-    "row": 11
+    "row": 20
+  },
+  {
+    "id": "Q43378",
+    "name": "Thousand Days' War",
+    "category": "war",
+    "regionTags": [
+      "south-america"
+    ],
+    "fameScore": 66,
+    "tagline": "1899–1902 civil war in Colombia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thousand_Days%27_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lautaro%20Sinking%20I.jpg",
+    "imageAttribution": "Carlos Chahin. Original Black and White by Donald Velasco., via Wikimedia Commons",
+    "description": "The Thousand Days' War was a civil war fought in Colombia from 17 October 1899 to 21 November 1902, at first between the Liberal Party and the government led by the National Party, and later – after the Conservative Party had ousted the National Party – between the liberals and the conservative government. Caused by the longstanding ideological tug-of-war of federalism versus centralism between the liberals, conservatives, and nationalists of Colombia following the implementation of the Constitution of 1886 and the political process known as the Regeneración, tensions ran high after the presidential election of 1898, and on 17 October 1899, official insurrection against the national government was announced by members of the Liberal Party in the Department of Santander. Hostilities did not begin until 11 November, when liberal factions attempted to take over the city of Bucaramanga, leading to active warfare. It would end three years later with the signing of the Treaty of Neerlandia and the Treaty of Wisconsin. The war resulted in a Conservative victory, and ensured the continued dominance of the Conservative Party in Colombian politics for another 28 years. Colombia's political structure as a unitary state has not been challenged since.",
+    "period": {
+      "start": {
+        "year": 1899,
+        "month": 10
+      },
+      "end": {
+        "year": 1902,
+        "month": 11
+      }
+    },
+    "row": 21
   },
   {
     "id": "Q1552718",
@@ -1320,6 +2208,70 @@
       }
     },
     "row": 3
+  },
+  {
+    "id": "Q317519",
+    "name": "Arab conquest of Egypt",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "conquest of Egypt by the Rashidun Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Arab_conquest_of_Egypt",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D9%81%D8%AA%D9%88%D8%AD%20%D9%85%D8%B5%D8%B1%20%D9%88%D8%A7%D9%84%D9%86%D9%88%D8%A8%D8%A9.jpg",
+    "description": "Forces of the Rashidun Caliphate led by Amr ibn al-As conquered Byzantine Egypt between 639 and 642 AD. The conquest ended the Roman period in Egypt, which had begun in 30 BC and lasted for approximately seven centuries, and more broadly concluded the Greco-Roman period of Egyptian history, which had endured for nearly a millennium.",
+    "period": {
+      "start": {
+        "year": 639
+      },
+      "end": {
+        "year": 642
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q325985",
+    "name": "Siege of Acre",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 66,
+    "tagline": "1291 siege by Egyptian Islamic troops",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Acre_(1291)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SiegeOfAcre1291.jpg",
+    "description": "The siege of Acre took place in 1291 and resulted in the Crusaders' losing control of Acre to the Mamluk Sultanate of Egypt. It is considered one of the most important battles of the period. Although the crusading movement continued for several more centuries, the capture of the city marked the end of further crusades to the Levant. When Acre fell, the Crusaders lost their last major stronghold of the Crusader Kingdom of Jerusalem.",
+    "period": {
+      "start": {
+        "year": 1291,
+        "month": 4
+      },
+      "end": {
+        "year": 1291,
+        "month": 5
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q551888",
+    "name": "Wars of Alexander the Great",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "conflicts fought by King Alexander III of Macedon (\"The Great\"), against other Greek powers, the Persian Empire and warlords as far east as India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alexander%20and%20Bucephalus%20-%20Battle%20of%20Issus%20mosaic%20-%20Museo%20Archeologico%20Nazionale%20-%20Naples%20BW.jpg",
+    "description": "Alexander the Great of Macedon carried out a series of conquests and military campaigns from 336 to 323 BC. They began with his conquest of the Achaemenid Empire, which was ruled by Darius III. After a series of victories over the Persians and the defeat of Darius, he began a campaign against local chieftains and warlords that stretched from Greece to as far as the Indus Valley. At the time of his death, Alexander ruled over most regions of Greece and the conquered Achaemenid Empire, including much of Achaemenid Egypt.",
+    "period": {
+      "start": {
+        "year": -335
+      },
+      "end": {
+        "year": -322
+      }
+    },
+    "row": 2
   },
   {
     "id": "Q654006",
@@ -1374,7 +2326,7 @@
     "tagline": "conflict between Native American inhabitants of present-day New England and English colonists",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/King_Philip%27s_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Philip%20King%20of%20Mount%20Hope%20by%20Paul%20Revere.jpeg",
-    "description": "King Philip's War was an armed conflict in 1675–1678 that pitted some Indian tribes of the Northeastern Woodlands against the English New England Colonies and their Indian allies. The war is named for Metacom, the Pokanoket chief and sachem of the Wampanoag, who had adopted the English name Philip because of the friendly relations between his father Massasoit and the Plymouth Colony. The war continued in the most northern reaches of New England until the signing of the Treaty of Casco Bay on April 12, 1678.",
+    "description": "King Philip's War (1675–1678) was a colonial war in which a coalition of Algonquian tribes of the Northeastern Woodlands—the Wampanoags, the Pocomtucs, the Nipmucs, and the Narragansetts—fought against the Puritan settlers of the New England Colonies and their Indian allies—the Mohegans, the Pequots, and Christian Indians. The war continued in the most northern reaches of New England until the signing of the Treaty of Casco Bay on April 12, 1678.",
     "period": {
       "start": {
         "year": 1675,
@@ -1385,7 +2337,7 @@
         "month": 4
       }
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q699849",
@@ -1406,13 +2358,15 @@
         "year": 1763
       }
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q856168",
     "name": "Pastry War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 65,
     "tagline": "war between France and Mexico",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pastry_War",
@@ -1428,32 +2382,7 @@
         "month": 3
       }
     },
-    "row": 10
-  },
-  {
-    "id": "Q43378",
-    "name": "Thousand Days' War",
-    "category": "war",
-    "regionTags": [
-      "south-america"
-    ],
-    "fameScore": 65,
-    "tagline": "1899–1902 civil war in Colombia",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thousand_Days%27_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lautaro%20Sinking%20I.jpg",
-    "imageAttribution": "Carlos Chahin. Original Black and White by Donald Velasco., via Wikimedia Commons",
-    "description": "The Thousand Days' War was a civil war fought in Colombia from 17 October 1899 to 21 November 1902, at first between the Liberal Party and the government led by the National Party, and later – after the Conservative Party had ousted the National Party – between the liberals and the conservative government. Caused by the longstanding ideological tug-of-war of federalism versus centralism between the liberals, conservatives, and nationalists of Colombia following the implementation of the Constitution of 1886 and the political process known as the Regeneración, tensions ran high after the presidential election of 1898, and on 17 October 1899, official insurrection against the national government was announced by members of the Liberal Party in the Department of Santander. Hostilities did not begin until 11 November, when liberal factions attempted to take over the city of Bucaramanga, leading to active warfare. It would end three years later with the signing of the Treaty of Neerlandia and the Treaty of Wisconsin. The war resulted in a Conservative victory, and ensured the continued dominance of the Conservative Party in Colombian politics for another 28 years. Colombia's political structure as a unitary state has not been challenged since.",
-    "period": {
-      "start": {
-        "year": 1899,
-        "month": 10
-      },
-      "end": {
-        "year": 1902,
-        "month": 11
-      }
-    },
-    "row": 20
+    "row": 14
   },
   {
     "id": "Q385676",
@@ -1497,7 +2426,7 @@
         "month": 5
       }
     },
-    "row": 10
+    "row": 9
   },
   {
     "id": "Q331377",
@@ -1520,7 +2449,7 @@
         "year": 1861
       }
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q740791",
@@ -1531,12 +2460,54 @@
     "tagline": "1885 war between Serbia and Bulgaria",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Serbo-Bulgarian_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/S-b%20war%20painting%20by%20Antoni%20Piotrowski.jpg",
-    "description": "The Serbo-Bulgarian War or the Serbian–Bulgarian War, a war between the Kingdom of Serbia and the Principality of Bulgaria, erupted on 14 November [O.S. 2 November] 1885 and lasted until 28 November [O.S. 16 November] 1885. Despite Bulgaria's status as a vassal of the Ottoman Empire, the Ottomans did not intervene in the war. Serbia initiated the fighting but suffered a decisive defeat. Austria-Hungary demanded that Bulgaria stop its invasion, and a truce resulted.",
+    "description": "The Serbo-Bulgarian War or the Serbian–Bulgarian War, a war between the Kingdom of Serbia and the Principality of Bulgaria, erupted on 14 November [O.S. 2 November] 1885 and lasted until 28 November [O.S. 16 November] 1885. Despite Bulgaria's status as a vassal of the Ottoman Empire, the Ottomans did not intervene in the war. Serbia initiated the fighting but suffered a decisive defeat. Austria-Hungary demanded that Bulgaria stop its invasion, and a truce resulted.",
     "at": {
       "year": 1885,
       "month": 11
     },
-    "row": 16
+    "row": 21
+  },
+  {
+    "id": "Q25628",
+    "name": "Great stand on the Ugra river",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "standoff in 1480 between Muscovy and Great Horde",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Stand_on_the_Ugra_River",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.16%2C%20p.%20462%20-%20Great%20standing%20on%20the%20Ugra.jpg",
+    "description": "The Great Stand on the Ugra River or the Standing on the Ugra River, also known as the Battle of the Ugra, was a standoff in 1480 on the banks of the Ugra River between the forces of Akhmat Khan of the Great Horde, and Grand Prince Ivan III of the Grand Duchy of Moscow.",
+    "at": {
+      "year": 1480
+    },
+    "row": 4
+  },
+  {
+    "id": "Q368689",
+    "name": "First Serbian Uprising",
+    "category": "rebellion",
+    "regionTags": [
+      "western-asia",
+      "southern-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "part of the Serbian Revolution",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Serbian_Uprising",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Osvajanje%20Beograda.jpg",
+    "description": "The First Serbian Uprising was an uprising of Serbs in Orašac against the Dahije, and later the Ottoman Empire from 14 February 1804 to 7 October 1813. The uprising began as a local revolt against renegade janissary officers who had seized power in a coup d'état against the Ottoman sultan. It later evolved into a war for independence, known as the Serbian Revolution, after more than three centuries of Ottoman Empire rule and brief Austrian occupations.",
+    "period": {
+      "start": {
+        "year": 1804,
+        "month": 2
+      },
+      "end": {
+        "year": 1813,
+        "month": 10
+      }
+    },
+    "row": 15
   },
   {
     "id": "Q315921",
@@ -1556,7 +2527,7 @@
         "year": 1466
       }
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q976827",
@@ -1578,13 +2549,15 @@
         "year": 1763
       }
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q869045",
     "name": "Queen Anne's War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 63,
     "tagline": "North American theater of the War of the Spanish Succession",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Queen_Anne%27s_War",
@@ -1602,7 +2575,7 @@
         "month": 7
       }
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q1362209",
@@ -1616,7 +2589,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Anglo-Maratha_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maratha%20British%20Treaty.JPG",
     "imageAttribution": "Amit20081980~commonswiki, via Wikimedia Commons",
-    "description": "The First Anglo-Maratha War (1775–1782) was the first conflict fought between the British East India Company and Maratha Empire in India. The war, fought in between Surat and Poona, began with the 1775 Treaty of Surat after the East India Company agreed to support the recently-deposed Raghunathrao's claim as peshwa of the Maratha Empire. Several years of intermittent and largely inconclusive campaigning followed, in which the East India Company failed to decisively defeat the highly mobile Marathas. The war ended in 1782 following the Treaty of Salbai. As per the treaty, both sides returned each other's captured territory, and the British withdrew their support for Raghunathrao. The British and Marathas would not fight against each other again until the Second Anglo-Maratha War 20 years later.",
+    "description": "The First Anglo-Maratha War (1775–1782) was the first conflict fought between the British East India Company and Maratha Empire in India. The war, fought in between Surat and Poona, began with the 1775 Treaty of Surat after the East India Company agreed to support the recently-deposed Raghunathrao's claim as Peshwa of the Maratha Empire. Several years of intermittent and largely inconclusive campaigning followed, in which the East India Company failed to decisively defeat the highly mobile Marathas. The war ended in 1782 following the Treaty of Salbai. As per the treaty, both sides returned each other's captured territory, and the British withdrew their support for Raghunathrao. The British and Marathas would not fight against each other again until the Second Anglo-Maratha War 20 years later.",
     "period": {
       "start": {
         "year": 1775
@@ -1625,7 +2598,7 @@
         "year": 1782
       }
     },
-    "row": 6
+    "row": 10
   },
   {
     "id": "Q112524",
@@ -1671,7 +2644,7 @@
         "year": -321
       }
     },
-    "row": 1
+    "row": 4
   },
   {
     "id": "Q431806",
@@ -1693,7 +2666,7 @@
         "year": 1609
       }
     },
-    "row": 2
+    "row": 6
   },
   {
     "id": "Q233642",
@@ -1715,7 +2688,7 @@
         "year": 1805
       }
     },
-    "row": 11
+    "row": 16
   },
   {
     "id": "Q617210",
@@ -1739,7 +2712,7 @@
         "month": 2
       }
     },
-    "row": 12
+    "row": 17
   },
   {
     "id": "Q880629",
@@ -1752,7 +2725,7 @@
     "tagline": "period of violent conflict between British colonists and Aboriginal Australians in Tasmania",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Benjamin%20Duterrau%20-%20Timmy%2C%20a%20Tasmanian%20Aboriginal%2C%20throwing%20a%20spear%20-%20Google%20Art%20Project.jpg",
-    "description": "The Black War was a period of violent conflict between British colonists and Aboriginal Tasmanians in Tasmania from the mid-1820s to 1832 which precipitated the near-extermination of the Indigenous population. The conflict was fought largely as a guerrilla war by both sides; some 600 to 900 Aboriginal people and more than 200 British colonists died.",
+    "description": "The Black War was a period of violent conflict between British colonists and Aboriginal Tasmanians in Tasmania from the mid-1820s to 1832 which precipitated the near-extermination of the Indigenous population. The conflict was fought largely as a guerrilla war by both sides; some 600 to 900 Aboriginal Australians and more than 200 British colonists died.",
     "period": {
       "start": {
         "year": 1820
@@ -1761,7 +2734,26 @@
         "year": 1832
       }
     },
-    "row": 5
+    "row": 15
+  },
+  {
+    "id": "Q1192616",
+    "name": "Battle of Didgori",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 62,
+    "tagline": "1121 battle fought between the armies of the Kingdom of Georgia and the Great Seljuq Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Didgori",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Didgori%20Memorial.jpg",
+    "imageAttribution": "Paata Vardanashvili from Tbilisi, Georgia, via Wikimedia Commons",
+    "description": "The Battle of Didgori was fought between the armies of the Kingdom of Georgia and the Seljuk Empire at the narrow place of Didgori, 40 km west of Tbilisi, on August 12, 1121. The large Muslim army, under the command of Ilghazi, was unable to maneuver and suffered a devastating defeat due to King David IV's effective military tactics.",
+    "at": {
+      "year": 1121,
+      "month": 8
+    },
+    "row": 1
   },
   {
     "id": "Q631795",
@@ -1803,7 +2795,48 @@
         "month": 6
       }
     },
-    "row": 12
+    "row": 14
+  },
+  {
+    "id": "Q734700",
+    "name": "Battle of Avarayr",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 61,
+    "tagline": "451 battle",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Avarayr",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vartanantz.jpg",
+    "description": "The Battle of Avarayr was fought on 26 May 451 on the Avarayr Plain in Vaspurakan between a Christian Armenian army under Vardan Mamikonian and Sassanid Persia. It is considered one of the first battles in defense of the Christian faith. Although the Persians were victorious on the battlefield, it was a pyrrhic victory. The Armenians were allowed to continue practising Christianity freely.",
+    "at": {
+      "year": 451,
+      "month": 5
+    },
+    "row": 2
+  },
+  {
+    "id": "Q4338038",
+    "name": "Ottoman–Mamluk War of 1516–17",
+    "category": "war",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 61,
+    "tagline": "Imperial Ottoman conquest of Egypt and the Levant",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Mamluk_War_(1516%E2%80%931517)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Abraham%20Ortelius%20-%20Tvrcici%20imperii%20descriptio.jpg",
+    "description": "The Ottoman–Mamluk War of 1516–1517 was the second major conflict between the Egypt-based Mamluk Sultanate and the Ottoman Empire, which led to the Fall of the Mamluk Sultanate and the incorporation of the Levant, Egypt, and the Hejaz as provinces of the Ottoman Empire. The war transformed the Ottoman Empire from a realm at the margins of the Islamic world, mainly located in Anatolia and the Balkans, to a huge empire encompassing much of the traditional lands of Islam, including the cities of Mecca, Cairo, Damascus, and Aleppo. Despite this expansion, the seat of the empire's political power remained in Constantinople.",
+    "period": {
+      "start": {
+        "year": 1516
+      },
+      "end": {
+        "year": 1517,
+        "month": 2
+      }
+    },
+    "row": 4
   },
   {
     "id": "Q657967",
@@ -1825,18 +2858,20 @@
         "year": 1267
       }
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q807843",
     "name": "Bishops' Wars",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-europe"
+    ],
     "fameScore": 60,
     "tagline": "17th-century religious conflicts in Britain",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bishops%27_Wars",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Riot%20against%20Anglican%20prayer%20book%201637.jpg",
-    "description": "The Bishops' Wars were two wars fought in 1639 and 1640 between Charles I and his Covenanter opponents in Scotland. They were the first of the Wars of the Three Kingdoms, that also include the First and Second English Civil Wars, the Irish Confederate Wars, and the 1650 to 1652 Anglo-Scottish War.",
+    "description": "The Bishops' Wars were two wars fought in 1639 and 1640 between Charles I and his Covenanter opponents in Scotland. They were the first of the Wars of the Three Kingdoms, which also include the First and Second English Civil Wars, the Irish Confederate Wars, and the 1650 to 1652 Anglo-Scottish War.",
     "period": {
       "start": {
         "year": 1639,
@@ -1847,13 +2882,15 @@
         "month": 9
       }
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q1070342",
     "name": "King William's War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 60,
     "tagline": "North American theater of the Nine Years' War",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/King_William%27s_War",
@@ -1870,7 +2907,7 @@
         "month": 9
       }
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q517578",
@@ -1894,7 +2931,26 @@
         "year": 1748
       }
     },
-    "row": 9
+    "row": 3
+  },
+  {
+    "id": "Q2330335",
+    "name": "Mongol invasion of Central Asia",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 60,
+    "tagline": "series of military campaigns (1209–1236)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_campaigns_in_Central_Asia",
+    "description": "The Mongol Empire conducted several campaigns in Central Asia after the unification of the Mongol and Turkic tribes on the Mongolian Plateau in 1206. Smaller military operations included the destruction of surviving Merkit and Naimans and the conquest of Qara Khitai. These were followed by a major campaign against Khwarazm. Expansion into Central Asia began in 1209 as Genghis Khan sent an expedition to pursue rivals who had fled to the region and threatened his new empire. The Uyghur kingdom Qocho and leaders of the Karluks submitted voluntarily to the Mongol Empire and married into the imperial family. By 1218 the Mongols controlled all of Xinjiang and by 1221 all the territories of the former Khwarazmian Empire. In 1236, the Mongols defeated the eastern portions of Cumania and swept into Eastern Europe.",
+    "period": {
+      "start": {
+        "year": 1216
+      },
+      "end": {
+        "year": 1221
+      }
+    },
+    "row": 5
   },
   {
     "id": "Q277450",
@@ -1914,7 +2970,27 @@
         "year": 1904
       }
     },
-    "row": 21
+    "row": 25
+  },
+  {
+    "id": "Q4200795",
+    "name": "Indian campaign of Alexander the Great",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "military campaign conducted by Alexander the Great into the northwestern Indian subcontinent",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Indian_campaign_of_Alexander_the_Great",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/AlexanderConquestsInIndia.jpg",
+    "description": "The Indian campaign of Alexander the Great began in 327 BC and lasted until 325 BC. After conquering the Achaemenid Persian Empire, the Macedonian army undertook an expedition into the Indus Valley in northwestern South Asia. Within two years, Alexander the Great expanded the Macedonian Empire, a Hellenistic kingdom, to include Gandhara and the Indus Valley, surpassing the earlier frontiers established by the Persian Achaemenid conquest.",
+    "period": {
+      "start": {
+        "year": -326
+      },
+      "end": {
+        "year": -324
+      }
+    },
+    "row": 5
   },
   {
     "id": "Q582594",
@@ -1934,7 +3010,68 @@
         "year": 1879
       }
     },
-    "row": 18
+    "row": 22
+  },
+  {
+    "id": "Q2448644",
+    "name": "Mongol invasions of Vietnam",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 58,
+    "tagline": "13th-century military campaigns of the Mongol Empire and Yuan-dynasty China in Vietnam",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Vietnam",
+    "description": "Four major military campaigns were launched by the Mongol Empire, and later the Yuan dynasty, against the kingdom of Đại Việt ruled by the Trần dynasty and the kingdom of Champa in 1258, 1282–1284, 1285, and 1287–1288. The campaigns are treated by a number of scholars as a success due to the establishment of tributary relations with Đại Việt despite the Mongols suffering major military defeats. In contrast, modern Vietnamese historiography regards the war as a major victory against the foreign invaders.",
+    "period": {
+      "start": {
+        "year": 1258
+      },
+      "end": {
+        "year": 1288
+      }
+    },
+    "row": 5
+  },
+  {
+    "id": "Q2670327",
+    "name": "Siege of Kazan",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 58,
+    "tagline": "1552 Russian conquest of Kazan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Kazan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Capture%20of%20Kazan%20%28Shamshin%2C%201894%29.jpeg",
+    "description": "The Siege of Kazan, also known as the Fall of Kazan, was the decisive military campaign of the Russo-Kazan Wars in 1552 that resulted in the capture of Kazan and the annexation of the Khanate of Kazan by the Tsardom of Russia. The siege began on 23 August 1552 and ended with the capture of the city on 2 October.",
+    "period": {
+      "start": {
+        "year": 1552,
+        "month": 9
+      },
+      "end": {
+        "year": 1552,
+        "month": 10
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q612286",
+    "name": "Fall of Nineveh",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 58,
+    "tagline": "612 BC battle that saw the fall of the Assyrian capital, and the climax of the Conquest of Assyria",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_Nineveh",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nineveh%20mashki%20gate%20from%20west.JPG",
+    "imageAttribution": "Photo by Fredarch., via Wikimedia Commons",
+    "description": "The Fall of Nineveh, also called the Battle of Nineveh, was a major battle that marked the climax of the Conquest of the Assyrian Empire in 612 BC. After the Assyrian defeat at the Fall of Assur, an allied army which involved the combined forces of Medes and the Babylonians besieged Nineveh and took what was, at that time, one of the greatest cities in the world, with the Medes playing a major part in the city's downfall. The fall of Nineveh led to the destruction of the Neo-Assyrian Empire as the dominant state in the Ancient Near East over the following three years. Archeological records show that the capital of the once-mighty Assyrian Empire was extensively de-urbanized and depopulated in the decades and centuries following the battle. A garbled account of the fall of the city later led to the story of the legendary king Sardanapalus.",
+    "at": {
+      "year": -611
+    },
+    "row": 0
   },
   {
     "id": "Q5555632",
@@ -1977,7 +3114,7 @@
         "year": -649
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q1186260",
@@ -1998,7 +3135,7 @@
         "month": 8
       }
     },
-    "row": 13
+    "row": 18
   },
   {
     "id": "Q2378252",
@@ -2021,7 +3158,21 @@
         "month": 8
       }
     },
-    "row": 0
+    "row": 1
+  },
+  {
+    "id": "Q2890128",
+    "name": "Second Battle of Tarain",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 56,
+    "tagline": "1192 battle near modern Taraori, India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Battle_of_Tarain",
+    "description": "The Second Battle of Tarain or Second Battle of Tararoi was fought in 1192 between the Ghurid forces of Muhammad Ghuri and the Rajput Confederacy of Prithviraj Chauhan. It took place near Tarain, which is 110 kilometres (68 mi), north of Delhi. The battle ended in a decisive victory for the invading Ghurids and their successful penetration into the north Indian plain.",
+    "at": {
+      "year": 1192
+    },
+    "row": 4
   },
   {
     "id": "Q2075775",
@@ -2040,7 +3191,7 @@
         "year": -667
       }
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q707364",
@@ -2084,7 +3235,7 @@
         "month": 3
       }
     },
-    "row": 19
+    "row": 23
   },
   {
     "id": "Q3778623",
@@ -2103,7 +3254,7 @@
         "year": 1589
       }
     },
-    "row": 4
+    "row": 7
   },
   {
     "id": "Q2288424",
@@ -2124,13 +3275,15 @@
         "month": 7
       }
     },
-    "row": 1
+    "row": 4
   },
   {
     "id": "Q1520241",
     "name": "Yamasee War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 53,
     "tagline": "1715–1717 conflict between British colonists and Native Americans in South Carolina",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yamasee_War",
@@ -2143,7 +3296,7 @@
         "year": 1717
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q1342672",
@@ -2154,7 +3307,7 @@
     "tagline": "series of three wars fought between English settlers of the Virginia Colony and the Powhatan alliance of Virgina Indians",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anglo-Powhatan_Wars",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Matth%C3%A4us%20Merian%20d%C3%86%2C%20S%C3%A5ledes%20blev%20ogs%C3%A5%20denne%20fred%20brudt%20p%C3%A5%20grund%20af%20bedrag%2C%20KKSgb10894-5%2C%20Statens%20Museum%20for%20Kunst.jpg",
-    "description": "The Anglo–Powhatan Wars were three wars fought between settlers of the Colony of Virginia and the Powhatan People of Tsenacommacah in the early 17th century. The first war started in 1609 and ended in a peace settlement in 1614. The second war lasted from 1622 to 1632. The third war lasted from 1644 until 1646 and ended when Opechancanough was captured and killed. That war resulted in a defined boundary between the Native Americans and colonial lands that could only be crossed for official business with a special pass. This situation lasted until 1677 and the Treaty of Middle Plantation which established Indian reservations following Bacon's Rebellion.",
+    "description": "The Anglo–Powhatan Wars were three wars fought between settlers of the Colony of Virginia and the Powhatan Confederacy of Tsenacommacah in the early 17th century. The first war started in 1609 and ended in a peace settlement in 1614. The second war lasted from 1622 to 1632. The third war lasted from 1644 until 1646 and ended when Opechancanough was captured and killed. That war resulted in a defined boundary between the Native Americans and colonial lands that could only be crossed for official business with a special pass. This situation lasted until 1677 and the Treaty of Middle Plantation which established Indian reservations following Bacon's Rebellion.",
     "period": {
       "start": {
         "year": 1609,
@@ -2165,7 +3318,7 @@
         "month": 10
       }
     },
-    "row": 5
+    "row": 8
   },
   {
     "id": "Q2632175",
@@ -2187,7 +3340,30 @@
         "month": 10
       }
     },
-    "row": 4
+    "row": 15
+  },
+  {
+    "id": "Q20717681",
+    "name": "European Scythian campaign of Darius I",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 52,
+    "tagline": "military expedition into European Scythia by Achaemenid king Darius I in 513 BCE.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Scythian_campaign_of_Darius_I",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DariusScythes%20ru.svg",
+    "imageAttribution": "Anton Gutsunaev, via Wikimedia Commons",
+    "description": "The Scythian campaign of Darius I was a military expedition into parts of European Scythia by Darius I, the king of the Achaemenid Empire, in 513 BC. The Scythians were an East Iranian-speaking people who had invaded Media, revolted against Darius and threatened to disrupt trade between Central Asia and the shores of the Black Sea as they lived between the Danube and Don Rivers and the Black Sea. The campaigns took place in parts of what is now the Balkans, Ukraine, and southern Russia.",
+    "period": {
+      "start": {
+        "year": -512
+      },
+      "end": {
+        "year": -512
+      }
+    },
+    "row": 2
   },
   {
     "id": "Q2725993",
@@ -2207,13 +3383,15 @@
         "year": 1837
       }
     },
-    "row": 14
+    "row": 19
   },
   {
     "id": "Q1348785",
     "name": "Basuto Gun War",
     "category": "rebellion",
-    "regionTags": [],
+    "regionTags": [
+      "southern-africa"
+    ],
     "fameScore": 51,
     "tagline": "1880-1881 war",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Basuto_Gun_War",
@@ -2228,7 +3406,7 @@
         "year": 1881
       }
     },
-    "row": 20
+    "row": 11
   },
   {
     "id": "Q5453768",
@@ -2247,13 +3425,15 @@
         "year": 1774
       }
     },
-    "row": 8
+    "row": 16
   },
   {
     "id": "Q3119025",
     "name": "Red River War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 48,
     "tagline": "military campaign launched by the United States Army in 1874",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Red_River_War",
@@ -2267,7 +3447,7 @@
         "year": 1875
       }
     },
-    "row": 22
+    "row": 24
   },
   {
     "id": "Q138503695",
@@ -2277,14 +3457,14 @@
       "southern-asia"
     ],
     "fameScore": 47,
-    "tagline": "Ongoing armed conflict in West Asia",
+    "tagline": "ongoing armed conflict in West Asia",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/2026_Iran_war",
-    "description": "Since 28 February 2026, the United States and Israel have been at war with Iran and its regional allies. Hostilities broke out after US–Israeli airstrikes killed several Iranian officials, including Supreme Leader Ali Khamenei. The strikes were launched amid ongoing US–Iran negotiations regarding Iran's nuclear program.",
+    "description": "Since 28 February 2026, the United States and Israel have been at war with Iran and its regional allies. The war follows the Twelve-Day War in June 2025 and sporadic fighting during the Middle Eastern crisis sparked by the Gaza war (2023–present). Amid ongoing US–Iran negotiations regarding Iran's nuclear program, the war began when the US and Israel conducted hundreds of air strikes on targets across Iran, including strikes that assassinated Supreme Leader Ali Khamenei alongside several other Iranian officials.",
     "at": {
       "year": 2026,
       "month": 2
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q3052957",
@@ -2301,7 +3481,7 @@
     "at": {
       "year": 1707
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q4209365",
@@ -2338,6 +3518,6 @@
         "month": 6
       }
     },
-    "row": 12
+    "row": 16
   }
 ]

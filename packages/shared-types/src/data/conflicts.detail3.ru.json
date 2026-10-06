@@ -158,7 +158,7 @@
         "month": 6
       }
     },
-    "row": 6
+    "row": 9
   },
   {
     "id": "Q52418",
@@ -176,7 +176,7 @@
       "year": 1941,
       "month": 12
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q80330",
@@ -197,13 +197,15 @@
         "month": 9
       }
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q46083",
-    "name": "франко-прусская война",
+    "name": "Франко-прусская война",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "western-europe"
+    ],
     "fameScore": 80,
     "tagline": "военный конфликт между Францией и Пруссией в 1870—1871 годах",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Franco-Prussian_War",
@@ -219,7 +221,7 @@
         "month": 1
       }
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q159950",
@@ -265,7 +267,7 @@
         "month": 9
       }
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q189266",
@@ -291,13 +293,15 @@
         "month": 5
       }
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q26013",
     "name": "Англо-американская война",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 80,
     "tagline": "вооружённый конфликт между США и Великобританией в период наполеоновских войн",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/War_of_1812",
@@ -313,7 +317,7 @@
         "month": 2
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q192769",
@@ -353,7 +357,7 @@
       "year": 1953,
       "month": 7
     },
-    "row": 12
+    "row": 14
   },
   {
     "id": "Q12583",
@@ -378,36 +382,12 @@
     "row": 2
   },
   {
-    "id": "Q182865",
-    "name": "Война в Афганистане",
-    "category": "war",
-    "regionTags": [
-      "southern-asia"
-    ],
-    "fameScore": 79,
-    "tagline": "асимметричный военный конфликт между ISAF и исламистской организацией Талибан",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/War_in_Afghanistan_(2001%E2%80%932021)",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Collage%20of%20the%20War%20in%20Afghanistan%20%282001-2021%29.png",
-    "imageAttribution": "Original photographers: see sourcesMontage work: Weaveravel and OspreyPL, via Wikimedia Commons",
-    "description": "Война в Афганистане (2001—2021) — один из этапов гражданской войны в Афганистане, продолжавшейся с 1978 года. Военный конфликт, во время которого в качестве ответа на теракты 11 сентября, международная военная коалиция, включающая силы США и Международные силы содействия безопасности, вторглись в Афганистан. Международная коалиция при поддержке сначала Северного альянса, а затем нового правительства Афганистана, вела боевые действия против исламистской террористической организации «Талибан», до начала конфликта контролировавшей бо́льшую часть Афганистана.",
-    "parentId": "Q185729",
-    "period": {
-      "start": {
-        "year": 2001,
-        "month": 10
-      },
-      "end": {
-        "year": 2021,
-        "month": 8
-      }
-    },
-    "row": 6
-  },
-  {
     "id": "Q620735",
     "name": "война в Грузии",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "western-asia"
+    ],
     "fameScore": 79,
     "tagline": "вторжение России в Грузию в 2008 году",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Georgian_War",
@@ -424,7 +404,30 @@
         "month": 8
       }
     },
-    "row": 7
+    "row": 6
+  },
+  {
+    "id": "Q29269",
+    "name": "Первая чеченская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "вооружённый конфликт между Россией и Чеченской Республикой Ичкерией (1994—1996)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Chechen_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Collage%20the%20First%20Chechen%20War.jpg",
+    "imageAttribution": "Derivative work:  Ostrovsky Gregory, via Wikimedia Commons",
+    "description": "Пе́рвая чече́нская война́ — боевые действия на территории Чечни и в приграничных регионах Северного Кавказа между войсками России и непризнанной Чеченской Республикой Ичкерия с целью восстановления российской власти на территории Чечни, на которой в 1991 году была провозглашена Чеченская Республика Ичкерия.",
+    "period": {
+      "start": {
+        "year": 1994,
+        "month": 12
+      },
+      "end": {
+        "year": 1996,
+        "month": 8
+      }
+    },
+    "row": 9
   },
   {
     "id": "Q160077",
@@ -449,7 +452,7 @@
         "month": 5
       }
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q179975",
@@ -473,7 +476,49 @@
         "month": 5
       }
     },
-    "row": 11
+    "row": 13
+  },
+  {
+    "id": "Q131969",
+    "name": "Фермопильское сражение",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 79,
+    "tagline": "сражение в сентябре 480 года до н. э.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Thermopylae",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/L%C3%A9onidas%20aux%20Thermopyles%20%28Jacques-Louis%20David%29.PNG",
+    "description": "Фермопи́льское сраже́ние — сражение в 480 году до н. э. в ходе Второй греко-персидской войны в ущелье Фермопилы.",
+    "at": {
+      "year": -479,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q33745",
+    "name": "Пелопоннесская война",
+    "category": "war",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "военный конфликт в Древней Греции",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Peloponnesian_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20Peloponnesian%20War%20431%20BC-en.svg",
+    "imageAttribution": "Map_Peloponnesian_War_431_BC-fr.svg: Marsyas\nderivative work: Aeonx (talk), via Wikimedia Commons",
+    "description": "Пелопонне́сская война́, ранее Пелопонесская война — военный конфликт в Древней Греции, в котором участвовали Делосский союз во главе с Афинами с одной стороны и Пелопоннесский союз под предводительством Спарты — с другой.",
+    "period": {
+      "start": {
+        "year": -430
+      },
+      "end": {
+        "year": -403,
+        "month": 4
+      }
+    },
+    "row": 0
   },
   {
     "id": "Q127751",
@@ -522,7 +567,7 @@
         "month": 6
       }
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q179250",
@@ -546,13 +591,15 @@
         "month": 12
       }
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q150812",
     "name": "вторжение в Польшу",
     "category": "military-operation",
-    "regionTags": [],
+    "regionTags": [
+      "eastern-europe"
+    ],
     "fameScore": 78,
     "tagline": "вторжение немецких, словацких и советских войск в Польшу в сентябре 1939 года",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
@@ -570,30 +617,7 @@
         "month": 10
       }
     },
-    "row": 13
-  },
-  {
-    "id": "Q29269",
-    "name": "Первая чеченская война",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 78,
-    "tagline": "вооружённый конфликт между Россией и Чеченской Республикой Ичкерией (1994—1996)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Chechen_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Collage%20the%20First%20Chechen%20War.jpg",
-    "imageAttribution": "Derivative work:  Ostrovsky Gregory, via Wikimedia Commons",
-    "description": "Пе́рвая чече́нская война́ — боевые действия на территории Чечни и в приграничных регионах Северного Кавказа между войсками России и непризнанной Чеченской Республикой Ичкерия с целью восстановления российской власти на территории Чечни, на которой в 1991 году была провозглашена Чеченская Республика Ичкерия.",
-    "period": {
-      "start": {
-        "year": 1994,
-        "month": 12
-      },
-      "end": {
-        "year": 1996,
-        "month": 8
-      }
-    },
-    "row": 9
+    "row": 15
   },
   {
     "id": "Q150229",
@@ -652,7 +676,7 @@
       "eastern-europe"
     ],
     "fameScore": 78,
-    "tagline": "протесты на Украине с 30 ноября 2013 года по 22 февраля 2014 года",
+    "tagline": "массовые протесты на Украине, длившиеся с 30 ноября 2013 года по 22 февраля 2014 года",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Euromaidan",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Euromaidan%20Kyiv%201-12-13%20by%20Gnatoush%20005.jpg",
     "imageAttribution": "Nessa Gnatoush, via Wikimedia Commons",
@@ -667,7 +691,7 @@
         "month": 2
       }
     },
-    "row": 1
+    "row": 8
   },
   {
     "id": "Q104705419",
@@ -686,7 +710,7 @@
       "year": 2021,
       "month": 1
     },
-    "row": 8
+    "row": 7
   },
   {
     "id": "Q190029",
@@ -698,7 +722,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kosovo_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kosovo%20War%20header.jpg",
     "imageAttribution": "Clockwise from upper left: Tomislav Jagušt, User:Snake bgd, User:Zeke, Senior Airman Mitch Fuqua (U.S. Air Force), via Wikimedia Commons",
-    "description": "Ко́совская война́ — вооружённый конфликт в Косово с 28 февраля 1998 по 11 июня 1999 года, часть Югославских войн. Полиция и армия Союзной Республики Югославии, контролировавшие Косово до войны как часть Сербии, противостояли Армии освобождения Косова — сепаратистской организации косовских албанцев, стремившихся к отделению Косова в независимое государство. Позже в войну вмешалась Организация Североатлантического договора (НАТО) во главе с Соединёнными Штатами Америки, начав длительную и разрушительную кампанию бомбардировок против Югославии и вынудив югославские силы отступить из Косова.",
+    "description": "Ко́совская война́ — вооружённый конфликт в Косово с 28 февраля 1998 по 11 июня 1999 года, часть Югославских войн. Полиция и армия Союзной Республики Югославии, контролировавшие Косово до войны как часть Сербии, противостояли Армии освобождения Косова — сепаратистской организации косовских албанцев, стремившихся к отделению Косова в независимое государство. Позже в войну вмешалась Организация Североатлантического договора (НАТО) во главе с Соединёнными Штатами Америки, начав длительную и разрушительную кампанию бомбардировок против Югославии и вынудив югославские силы отступить из Косова.",
     "period": {
       "start": {
         "year": 1998,
@@ -709,7 +733,7 @@
         "month": 6
       }
     },
-    "row": 10
+    "row": 5
   },
   {
     "id": "Q181533",
@@ -730,6 +754,50 @@
       "end": {
         "year": 1995,
         "month": 12
+      }
+    },
+    "row": 10
+  },
+  {
+    "id": "Q51649",
+    "name": "Первый крестовый поход",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "война на Ближнем Востоке",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Crusade",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1099jerusalem.jpg",
+    "description": "Пе́рвый кресто́вый похо́д был организован в 1096 году решением римского папы Урбана II по просьбе византийского императора Алексея I с целью помощи восточным христианам в защите Анатолии от наступления турок-сельджуков. В ходе похода также дополнительной целью стало освобождение священного города Иерусалима и Святой земли от мусульман. Первоначально обращение римского папы было адресовано только французскому рыцарству, но впоследствии поход превратился в полномасштабную военную кампанию, а его идея охватила все христианские государства Западной Европы. Феодалы и простой народ по земле и морю двинулись на Восток, по пути освободив от власти сельджуков западную часть Малой Азии и устранив мусульманскую угрозу Византии, и в июле 1099 года завоевали Иерусалим. Во время 1-го крестового похода было основано Иерусалимское королевство и другие христианские государства, которые объединяются под названием Латинского Востока. Важную роль в истории Крестовых походов сыграли духовно-рыцарские ордены.",
+    "period": {
+      "start": {
+        "year": 1096
+      },
+      "end": {
+        "year": 1099
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q133132",
+    "name": "Парижская коммуна",
+    "category": "revolution",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "революционное правительство Парижа в 1871 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Paris_Commune",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Barricade%20de%20la%20rue%20de%20Flandre%20%28%20Salle%20de%20la%20Marseillaise%29%2C%2018%20mars%201871.%20PH4142-167%281%29.jpg",
+    "description": "Парижская коммуна — революционное правительство Парижа во время событий 1871 года, когда вскоре после заключения перемирия с Пруссией во время Франко-прусской войны в Париже начались волнения, вылившиеся в революцию и установление самоуправления, длившегося 72 дня. Во главе Парижской коммуны стояли объединённые в коалицию неоякобинцы, социалисты и анархисты. Уже 26 марта прошли выборы в Парижскую коммуну.",
+    "period": {
+      "start": {
+        "year": 1871,
+        "month": 3
+      },
+      "end": {
+        "year": 1871,
+        "month": 5
       }
     },
     "row": 8

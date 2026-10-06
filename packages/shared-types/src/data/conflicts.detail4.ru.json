@@ -1,27 +1,5 @@
 [
   {
-    "id": "Q33745",
-    "name": "Пелопоннесская война",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 77,
-    "tagline": "военный конфликт в Древней Греции",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Peloponnesian_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20Peloponnesian%20War%20431%20BC-en.svg",
-    "imageAttribution": "Map_Peloponnesian_War_431_BC-fr.svg: Marsyas\nderivative work: Aeonx (talk), via Wikimedia Commons",
-    "description": "Пелопонне́сская война́, ранее Пелопонесская война — военный конфликт в Древней Греции, в котором участвовали Делосский союз во главе с Афинами с одной стороны и Пелопоннесский союз под предводительством Спарты — с другой.",
-    "period": {
-      "start": {
-        "year": -430
-      },
-      "end": {
-        "year": -403,
-        "month": 4
-      }
-    },
-    "row": 0
-  },
-  {
     "id": "Q164348",
     "name": "Венгерское восстание 1956 года",
     "category": "rebellion",
@@ -44,7 +22,7 @@
         "month": 11
       }
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q151616",
@@ -72,7 +50,9 @@
     "id": "Q200790",
     "name": "Война за независимость Алжира",
     "category": "war-of-independence",
-    "regionTags": [],
+    "regionTags": [
+      "northern-africa"
+    ],
     "fameScore": 77,
     "tagline": "война Алжира за независимость от Франции (1954—1962)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Algerian_War",
@@ -88,7 +68,7 @@
         "month": 9
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q76026",
@@ -109,13 +89,15 @@
         "year": -448
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q150701",
     "name": "Война за испанское наследство",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 77,
     "tagline": "крупный европейский конфликт (1701—1714)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
@@ -156,7 +138,28 @@
         "month": 5
       }
     },
-    "row": 6
+    "row": 7
+  },
+  {
+    "id": "Q124988",
+    "name": "Пунические войны",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "серия войн между Римской республикой и Карфагеном за влияние в Средиземноморье",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Punic_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20of%20Rome%20and%20Carthage%20at%20the%20start%20of%20the%20Second%20Punic%20War.svg",
+    "imageAttribution": "William Robert Shepherd, via Wikimedia Commons",
+    "description": "Пунические войны — три войны между Римской республикой и Карфагеном, продолжавшиеся с перерывами в 264—146 год до н. э. Одержав в этих войнах победу, Рим укрепил своё положение в Западном Средиземноморье.",
+    "period": {
+      "start": {
+        "year": -263
+      },
+      "end": {
+        "year": -145
+      }
+    },
+    "row": 0
   },
   {
     "id": "Q178687",
@@ -178,7 +181,7 @@
         "month": 4
       }
     },
-    "row": 7
+    "row": 11
   },
   {
     "id": "Q191282",
@@ -225,7 +228,7 @@
         "year": -200
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q15920546",
@@ -249,7 +252,7 @@
         "month": 3
       }
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q185729",
@@ -260,17 +263,11 @@
     "tagline": "словосочетание американского политического лексикона",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/War_on_terror",
     "description": "«Война против терроризма» — словосочетание американского политического лексикона, вошедшее в широкий оборот после террористических актов 11 сентября 2001 года, означающее военные действия США против международного терроризма. Соединёнными Штатами был проведён ряд зарубежных военных операций, объединённых под общим названием «Несокрушимая свобода», а также война в Ираке. Как сама концепция «войны с терроризмом», так и методы, которыми её вели США и их союзники, неоднократно подвергались критике и вызывали протесты.",
-    "period": {
-      "start": {
-        "year": 2001,
-        "month": 9
-      },
-      "end": {
-        "year": 2021,
-        "month": 8
-      }
+    "at": {
+      "year": 2001,
+      "month": 9
     },
-    "row": 11
+    "row": 8
   },
   {
     "id": "Q99659280",
@@ -319,18 +316,20 @@
         "month": 1
       }
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q215112",
-    "name": "Англо-бурская война",
+    "name": "Вторая англо-бурская война",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "southern-africa"
+    ],
     "fameScore": 76,
     "tagline": "война в 1899—1902 годах Великобритании против бурских республик Южной Африки - Оранжевого свободного государства и Трансвааля, в результате которой обе республики стали английскими колониями",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Boer_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Second%20Anglo%20-%20Boer%20War%2C%20South%20Africa%201899%20-%201902%20Q82943.jpg",
-    "description": "Вторая англо-бурская война 1899—1902 годов — война Бурских республик против Британской империи, закончившаяся победой последней.",
+    "description": "Вторая англо-бурская война 1899—1902 годов — война бурских республик против Британской империи, закончившаяся победой последней.",
     "period": {
       "start": {
         "year": 1899,
@@ -341,7 +340,114 @@
         "month": 5
       }
     },
-    "row": 6
+    "row": 7
+  },
+  {
+    "id": "Q31900",
+    "name": "битва при Марафоне",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "сражение между войсками афинян и персов",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Marathon",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Trophee%20bataille%20marathon.JPG",
+    "imageAttribution": "karta24, via Wikimedia Commons",
+    "description": "Марафо́нская би́тва — одно из крупнейших сухопутных сражений греко-персидских войн, состоявшееся 12 сентября 490 года до н. э. неподалёку от греческого города Марафон приблизительно в 42 км от Афин.",
+    "at": {
+      "year": -489,
+      "month": 9
+    },
+    "row": 2
+  },
+  {
+    "id": "Q51656",
+    "name": "Четвёртый крестовый поход",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "крестовый поход",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fourth_Crusade",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gustave%20dore%20crusades%20entry%20of%20the%20crusaders%20into%20constantinople.jpg",
+    "description": "Четвёртый кресто́вый похо́д — крестовый поход в 1202—1204 годах. В конце XII века за организацию нового похода на Восток взялся папа Иннокентий III.",
+    "period": {
+      "start": {
+        "year": 1202
+      },
+      "end": {
+        "year": 1204
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q8641370",
+    "name": "Нормандская операция",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "стратегическая операция по высадке войск в Нормандии",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Operation_Overlord",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/NormandySupply%20edit.jpg",
+    "description": "Норма́ндская опера́ция, или опера́ция «Оверло́рд», также «День Д» — стратегическая операция западных союзников по антигитлеровской коалиции, по высадке войск в Нормандии (Франция), начавшаяся рано утром 6 июня 1944 года и закончившаяся 25 августа 1944 года, после чего союзники пересекли реку Сену, освободили от немецких войск Париж и продолжили наступление к французско-германской границе.",
+    "period": {
+      "start": {
+        "year": 1944,
+        "month": 6
+      },
+      "end": {
+        "year": 1944,
+        "month": 8
+      }
+    },
+    "row": 18
+  },
+  {
+    "id": "Q165725",
+    "name": "Балканские войны",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "войны на балканах",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Balkan_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Balkan%20Wars%20Boundaries.jpg",
+    "description": "Балка́нские во́йны — две войны, произошедшие в 1912—1913 годах незадолго до Первой мировой войны, в результате которых страны Балканского полуострова потеснили турок с европейской территории.",
+    "period": {
+      "start": {
+        "year": 1912,
+        "month": 10
+      },
+      "end": {
+        "year": 1913,
+        "month": 7
+      }
+    },
+    "row": 8
+  },
+  {
+    "id": "Q3588",
+    "name": "Революции 1848—1849 годов",
+    "category": "revolution",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "серия политических восстаний в Центральной Европе",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Revolutions_of_1848",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Horace%20Vernet-Barricade%20rue%20Soufflot.jpg",
+    "description": "Европейские революции 1848—1849 («Весна народов») — общее наименование революционных событий, выразившихся в форме неповиновения власти, вооружённых восстаний, декларирования новой государственности в европейских странах в конце первой половины XIX века. Вспыхнувшие сразу в нескольких государствах движения носили антифеодальный и национально-освободительный характер. Участники выступлений декларировали требования демократизации общественной жизни.",
+    "period": {
+      "start": {
+        "year": 1848,
+        "month": 1
+      },
+      "end": {
+        "year": 1849,
+        "month": 10
+      }
+    },
+    "row": 8
   },
   {
     "id": "Q177918",
@@ -363,7 +469,7 @@
         "month": 5
       }
     },
-    "row": 9
+    "row": 13
   },
   {
     "id": "Q182062",
@@ -394,7 +500,7 @@
     "tagline": "война между РСФСР и Польшей (1919—1921)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Polish%E2%80%93Soviet_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Polish-soviet%20war%201920%20Polish%20defences%20near%20Milosna%2C%20August.jpg",
-    "description": "Сове́тско-по́льская война́ — война РСФСР и других советских республик против Польши и её союзников, продолжавшаяся с 28 января 1919 по 18 марта 1921 года.",
+    "description": "Советско-польская война — война РСФСР и других советских республик против Польши и её союзников, продолжавшаяся с 28 января 1919 по 18 марта 1921 года.",
     "period": {
       "start": {
         "year": 1919,
@@ -405,7 +511,7 @@
         "month": 3
       }
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q184928",
@@ -429,7 +535,7 @@
         "month": 6
       }
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q200485",
@@ -477,7 +583,7 @@
         "month": 4
       }
     },
-    "row": 5
+    "row": 8
   },
   {
     "id": "Q153650",
@@ -499,7 +605,7 @@
         "month": 7
       }
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q152004",
@@ -523,7 +629,7 @@
         "month": 4
       }
     },
-    "row": 9
+    "row": 12
   },
   {
     "id": "Q192408",
@@ -570,7 +676,103 @@
         "year": 1689
       }
     },
+    "row": 2
+  },
+  {
+    "id": "Q173077",
+    "name": "Битва при Пуатье",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "Битва между франкскими силами и арабами Аквитании",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Tours",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Steuben%20-%20Bataille%20de%20Poitiers.png",
+    "description": "Битва при Пуатье, также известная как Битва при Туре, Битва на дороге Мучеников и в арабских источниках как Битва когорты шахидов, произошла 10 октября 732 года поблизости от города Тура, недалеко от границы между Франкским королевством и тогда независимой Аквитанией. В битве столкнулись франкские силы под руководством австразийского майордома Карла Мартелла и арабские силы Омейядского Халифата под командованием Абдур-Рахмана ибн Абдаллаха, генерал-губернатора аль-Андалусии. Франки одержали победу, Абдур-Рахман ибн Абдаллах был убит, а Мартелл распространил впоследствии своё влияние дальше на юг. Хроники IX века, трактовавшие исход битвы как знамение Божьего благоволения к Карлу, дали ему прозвание «Молот» (Martellus), возможно, в память Иуды Маккавея («Молотобойца») времён восстания Маккавеев. Детали битвы, включая её точное место и численность сражавшихся, не могут быть установлены из сохранившихся источников; хотя, согласно легенде, франкские войска выиграли битву без кавалерии.",
+    "at": {
+      "year": 732,
+      "month": 10
+    },
+    "row": 0
+  },
+  {
+    "id": "Q200855",
+    "name": "Венская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "Решающая победа, остановившая Османское вторжение в Европу",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Vienna",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Juliusz%20Kossak%20Sobieski%20pod%20Wiedniem.jpeg",
+    "description": "Ве́нская би́тва — сражение 12 сентября 1683 года, завершившее двухмесячную осаду Вены, столицы Габсбургской монархии, войском Османской империи. Победа объединённых войск коалиции Священной Римской империи и Речи Посполитой у горы Каленберг остановила завоевательные войны Османской империи в Европе, а Габсбургская монархия на десятилетия стала самой мощной державой Центральной Европы.",
+    "at": {
+      "year": 1683,
+      "month": 9
+    },
     "row": 1
+  },
+  {
+    "id": "Q33570",
+    "name": "Грюнвальдская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "решающее сражение «Великой войны» 1409—1411 годов, происшедшее 15 июля 1410 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Grunwald",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Grunwald%20Witold.jpg",
+    "description": "Грюнва́льдская битва, или Битва при Та́нненберге, или Битва при Жальгирисе — решающее сражение Великой войны 1409—1411 годов, происшедшее 15 июля 1410 года. Союзные войска Королевства Польского и Великого княжества Литовского под командованием короля Владислава II Ягайло и великого князя литовского Витовта одержали решающую победу над войском Тевтонского ордена. Большинство рыцарей ордена было убито или взято в плен.",
+    "at": {
+      "year": 1410,
+      "month": 7
+    },
+    "row": 3
+  },
+  {
+    "id": "Q87779",
+    "name": "битва в Тевтобургском лесу",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "римское поражение от германских армий в 9 году нашей эры",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Teutoburg_Forest",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Varus01.jpg",
+    "description": "Би́тва в Тевтобу́ргском Лесу́ — сражение, произошедшее в сентябре 9 года между объединившимися германскими племенами и римской армией.",
+    "at": {
+      "year": 9,
+      "month": 9
+    },
+    "row": 0
+  },
+  {
+    "id": "Q190517",
+    "name": "Синьхайская революция",
+    "category": "revolution",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 75,
+    "tagline": "свержение династии Цин в Китае",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1911_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Xinhai%20Revolution%20in%20Shanghai.jpg",
+    "description": "Синьхайская революция — революция в Китае, свергнувшая монархию — империю Цин. Началась Учанским восстанием 1911 года.",
+    "period": {
+      "start": {
+        "year": 1911,
+        "month": 10
+      },
+      "end": {
+        "year": 1912,
+        "month": 2
+      }
+    },
+    "row": 12
   },
   {
     "id": "Q689128",
@@ -639,7 +841,7 @@
         "month": 3
       }
     },
-    "row": 11
+    "row": 12
   },
   {
     "id": "Q275918",
@@ -650,7 +852,7 @@
     "tagline": "historical process in 7th–8th centuries CE",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Early_Muslim_conquests",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20of%20expansion%20of%20Caliphate.svg",
-    "description": "Арабские завоевания или Мусульманские завоевания — ряд военных конфликтов в VII—VIII веках, связанных с вторжением войск арабского исламского государства, так называемого халифата, на территории сопредельных народов и государств. Начались при жизни Мухаммеда, основавшего религию ислам и исламское государство в Аравии. Арабы-мусульмане подчинили себе народы Аравии, а затем за одно столетие завоевали огромные территории в Азии, Африке и Европе: страны Ближнего Востока, Среднюю Азию, северо-западную Индию, Северную Африку, часть Кавказа, Испанию, Южную Италию, Сицилию, Мальту, Родос, Крит.",
+    "description": "Арабские завоевания или Мусульманские завоевания — ряд военных конфликтов в VII—VIII веках, связанных с вторжением войск арабского исламского государства, так называемого халифата, на территории сопредельных народов и государств. Начались при жизни Мухаммеда, основавшего религию ислам и исламское государство в Аравии. Арабы-мусульмане подчинили себе народы Аравии, а затем за одно столетие завоевали огромные территории в Азии, Африке и Европе: страны Ближнего Востока, Среднюю Азию, северо-западную Индию, Северную Африку, часть Кавказа, Испанию, Южную Италию, Сицилию, Мальту, Родос, Крит.",
     "period": {
       "start": {
         "year": 622
@@ -659,7 +861,75 @@
         "year": 750
       }
     },
-    "row": 1
+    "row": 2
+  },
+  {
+    "id": "Q626058",
+    "name": "Битва при Кербеле",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 74,
+    "tagline": "битва в октябре 680 года между армией Язида I и аль-Хусейна ибн Али",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Karbala",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20Karbala.jpg",
+    "description": "Битва при Кербеле — сражение, произошедшее в октябре 680 года в городе Кербела, расположенном на территории современного Ирака. Сражение велось между отрядом внука пророка Мухаммеда Хусейна ибн Али и и армией Язида ибн Муавии. В результате боя Хусейн был убит вместе с 72 родственниками и сторонниками.",
+    "at": {
+      "year": 680,
+      "month": 10
+    },
+    "row": 0
+  },
+  {
+    "id": "Q214028",
+    "name": "Июльская революция",
+    "category": "revolution",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 74,
+    "tagline": "восстание в июле 1830 года во Франции",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/July_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/R%C3%A9volution%20de%201830%20-%20Combat%20de%20la%20rue%20de%20Rohan%20-%2029.07.1830.jpg",
+    "description": "Июльская революция или Французская революция 1830 года или Вторая французская революция или «Три славных дня» — восстание в июле 1830 года против реставрации Бурбонов, приведшее к свержению Карла Х и установлению конституционной Июльской монархии во главе с королём Луи-Филиппом, расширению избирательного права для мужчин.",
+    "period": {
+      "start": {
+        "year": 1830,
+        "month": 7
+      },
+      "end": {
+        "year": 1830,
+        "month": 7
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q382861",
+    "name": "Революции 1989 года",
+    "category": "revolution",
+    "regionTags": [
+      "eastern-europe",
+      "western-europe"
+    ],
+    "fameScore": 74,
+    "tagline": "series of protests during 1989 overthrowing communist governments in Eastern Europe",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Revolutions_of_1989",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EasternBlocAfter.svg",
+    "imageAttribution": "EasternBlocAfter.png: Mosedschurte at en.wikipedia.\nLater version(s) were uploaded by Tallicfan20 at en.wikipedia.\n\nderivative work: Malyszkz (talk), via Wikimedia Commons",
+    "description": "Антикоммунистические революции 1989 года — политические и социальные процессы, произошедшие осенью 1989 года в странах социалистической ориентации Центральной и Восточной Европы и приведшие к смене власти во всех из них. За несколько месяцев были смещены все социалистические режимы Центральной и Восточной Европы. Произошедшие в Восточной Европе изменения значительно ускорили падение коммунистических режимов, распад Югославии и СССР, роспуск ОВД и СЭВ.",
+    "period": {
+      "start": {
+        "year": 1989,
+        "month": 3
+      },
+      "end": {
+        "year": 1992,
+        "month": 4
+      }
+    },
+    "row": 14
   },
   {
     "id": "Q184183",
@@ -681,7 +951,7 @@
         "month": 8
       }
     },
-    "row": 13
+    "row": 17
   },
   {
     "id": "Q6286",
@@ -702,7 +972,7 @@
         "year": -240
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q202161",
@@ -728,7 +998,9 @@
     "id": "Q154697",
     "name": "Война с французами и индейцами",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 73,
     "tagline": "являвшийся особым театром Семилетней войны",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/French_and_Indian_War",
@@ -746,7 +1018,7 @@
         "month": 10
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q207318",
@@ -790,7 +1062,7 @@
         "month": 7
       }
     },
-    "row": 11
+    "row": 14
   },
   {
     "id": "Q94916",
@@ -812,7 +1084,32 @@
         "month": 2
       }
     },
-    "row": 12
+    "row": 19
+  },
+  {
+    "id": "Q190882",
+    "name": "Странная война",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "период Второй мировой войны с 3 сентября 1939 по 10 мая 1940 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Phoney_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/8inchHowitzerCamouflagedLaquielle20October1939.jpg",
+    "description": "«Странная война», «Сидячая война» — период Второй мировой войны с 3 сентября 1939 по 10 мая 1940 года на Западном фронте.",
+    "parentId": "Q362",
+    "period": {
+      "start": {
+        "year": 1939,
+        "month": 10
+      },
+      "end": {
+        "year": 1958,
+        "month": 4
+      }
+    },
+    "row": 20
   },
   {
     "id": "Q203233",
@@ -830,13 +1127,128 @@
       "year": 1757,
       "month": 6
     },
-    "row": 4
+    "row": 5
+  },
+  {
+    "id": "Q152486",
+    "name": "Полтавская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "крупнейшее сражение Северной войны между русскими и шведскими войсками",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Poltava",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Marten%27s%20Poltava.jpg",
+    "description": "Полта́вская би́тва — генеральное сражение Северной войны между русскими войсками под командованием царя Петра I и шведской армией под командованием короля Карла XII.",
+    "at": {
+      "year": 1709,
+      "month": 7
+    },
+    "row": 2
+  },
+  {
+    "id": "Q160387",
+    "name": "Сражение при Акциуме",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "морское сражение между флотами Древнего Рима",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Actium",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Castro%20Battle%20of%20Actium.jpg",
+    "description": "Сражение при мы́се А́кций — последнее великое морское сражение Античности между флотами Древнего Рима на заключительном этапе периода гражданских войн.",
+    "at": {
+      "year": -30,
+      "month": 8
+    },
+    "row": 0
+  },
+  {
+    "id": "Q179288",
+    "name": "Косовская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 73,
+    "tagline": "сражение в ходе завоевания османами Балканского полуострова",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kosovo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.10%2C%20p.299%20-%20Battle%20of%20Kosovo%20%281389%29.png",
+    "description": "Битва на Косовом поле — крупное сражение, состоявшееся 15 июня 1389 года между объединённым войском сербских феодалов в союзе с Боснийским королевством с одной стороны и армией турок-османов с другой. Битва произошла на Косовом поле, в 5 километрах от современной Приштины. Сербские войска возглавляли князь Лазарь Хребелянович, его зять Вук Бранкович и боснийский воевода Влатко Вукович. Османским войском командовал султан Мурад I вместе со своими сыновьями Якубом и Баязидом.",
+    "at": {
+      "year": 1389,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q179670",
+    "name": "битва при Гавгамелах",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia",
+      "western-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "решающее сражение между армиями Александра Македонского и персидского царя Дария III",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Gaugamela",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20Gaugamela.jpg",
+    "description": "Битва при Гавгамелах — решающее сражение между войсками Александра Македонского и персидского царя Дария III, после которого Держава Ахеменидов прекратила своё существование.",
+    "at": {
+      "year": -330,
+      "month": 9
+    },
+    "row": 1
+  },
+  {
+    "id": "Q200032",
+    "name": "Битва при Манцикерте",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "битва между Византией и сельджуками в 1071 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Manzikert",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/131%20Bataille%20de%20Malazgirt.jpg",
+    "description": "Би́тва при Манцике́рте — состоявшееся 25—26 августа 1071 года на территории Византийской империи у города Манцикерта сражение между армиями турок-сельджуков и византийцев. К сельджукской армии примкнули 15 000 курдских воинов династии Марванидов и арабы Аббасидского государства. Сельджукские войска под предводительством султана Алп-Арслана нанесли поражение византийцам, несмотря на их численное превосходство, и взяли в плен императора Романа IV Диогена. Поражение византийцев в битве при Манцикерте ознаменовало начало сельджукского господства в Армении и процесса массовой миграции огузов и туркмен в глубь Малой Азии.",
+    "at": {
+      "year": 1071,
+      "month": 9
+    },
+    "row": 1
+  },
+  {
+    "id": "Q220984",
+    "name": "опиумные войны",
+    "category": "war",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "военные конфликты на территории Китая в XIX веке между западными державами и Империей Цин",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Opium_Wars",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Second%20Opium%20War-guangzhou.jpg",
+    "description": "Опиумные войны — военные конфликты на территории Китая в XIX веке между западными державами и Империей Цин. Одной из основных причин военных действий были разногласия о торговле с Китаем, в первую очередь опиумом, откуда войны получили своё название.",
+    "period": {
+      "start": {
+        "year": 1839,
+        "month": 9
+      },
+      "end": {
+        "year": 1860,
+        "month": 10
+      }
+    },
+    "row": 12
   },
   {
     "id": "Q6334",
     "name": "Третья Пуническая война",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-africa"
+    ],
     "fameScore": 72,
     "tagline": "война между Римом и Карфагеном",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_Punic_War",
@@ -873,7 +1285,7 @@
         "month": 5
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q203824",
@@ -896,32 +1308,7 @@
         "month": 10
       }
     },
-    "row": 14
-  },
-  {
-    "id": "Q190882",
-    "name": "Странная война",
-    "category": "military-operation",
-    "regionTags": [
-      "western-europe"
-    ],
-    "fameScore": 72,
-    "tagline": "период Второй мировой войны с 3 сентября 1939 по 10 мая 1940 года",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Phoney_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/8inchHowitzerCamouflagedLaquielle20October1939.jpg",
-    "description": "«Странная война», «Сидячая война» — период Второй мировой войны с 3 сентября 1939 по 10 мая 1940 года на Западном фронте.",
-    "parentId": "Q362",
-    "period": {
-      "start": {
-        "year": 1939,
-        "month": 10
-      },
-      "end": {
-        "year": 1958,
-        "month": 4
-      }
-    },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q188972",
@@ -945,7 +1332,7 @@
         "month": 10
       }
     },
-    "row": 18
+    "row": 22
   },
   {
     "id": "Q856670",
@@ -964,7 +1351,64 @@
       "year": 1973,
       "month": 9
     },
-    "row": 12
+    "row": 14
+  },
+  {
+    "id": "Q139808",
+    "name": "битва на Каталаунских полях",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe",
+      "western-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "часть гуннского вторжения в римскую провинцию Галлия в 451 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Catalaunian_Plains",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/De%20Neuville%20-%20The%20Huns%20at%20the%20Battle%20of%20Chalons.jpg",
+    "description": "Битва на Каталаунских полях — состоявшееся после 15 июня 451 года сражение в Галлии, в котором войска Западной Римской империи под началом полководца Аэция в союзе с армией Тулузского королевства вестготов временно остановили нашествие коалиции племён гуннов и германцев под началом Аттилы на Галлию. Через год Аттила пошёл уже на Рим, что завершилось разграблением северо-италийских городов, вспышкой эпидемии в войсках гуннов и отступлением на свои территории.",
+    "at": {
+      "year": 451,
+      "month": 6
+    },
+    "row": 1
+  },
+  {
+    "id": "Q210354",
+    "name": "Куликовская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "крупное сражение между русским войском и войском Золотой Орды 8 сентября 1380 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kulikovo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kulikovo%20lubok.jpg",
+    "description": "Кулико́вская би́тва — крупное сражение между объединённым русским войском и войском Мамаевой Орды, состоявшееся 8 сентября 1380 года на Куликовом поле, недалеко от впадения реки Непрядва в Дон. Решающая победа русских войск в Куликовской битве стала важным шагом на пути к обретению единства Руси и будущему свержению золотоордынского ига, которое в эпоху, последовавшую за Куликовской битвой, существенно изменило свой характер в сторону большей самостоятельности великих московских князей.",
+    "at": {
+      "year": 1380,
+      "month": 9
+    },
+    "row": 2
+  },
+  {
+    "id": "Q194378",
+    "name": "восстание Спартака",
+    "category": "rebellion",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "major slave rebellion against the Roman Republic (73-71 BCE)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_Servile_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Italy%20and%20environs%2C%20218%20BC.gif",
+    "description": "Восста́ние Спарта́ка́ — величайшее в древности и третье по счёту восстание рабов. Последнее восстание рабов в Римской республике датируется обычно периодом с 73 по 71 годы до н. э. Восстание Спартака было единственным восстанием рабов, представлявшим прямую угрозу центральной Италии. Окончательно подавлено, в основном, благодаря военным усилиям полководца Марка Лициния Красса. В последующие годы оно продолжало оказывать косвенное воздействие на политику Рима.",
+    "period": {
+      "start": {
+        "year": -72
+      },
+      "end": {
+        "year": -70
+      }
+    },
+    "row": 0
   },
   {
     "id": "Q134900605",
@@ -990,13 +1434,15 @@
         "month": 6
       }
     },
-    "row": 5
+    "row": 8
   },
   {
     "id": "Q152218",
     "name": "война Аугсбургской лиги",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 71,
     "tagline": "война в 1688—1697 годах",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nine_Years%27_War",
@@ -1012,7 +1458,7 @@
         "month": 9
       }
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q223126",
@@ -1036,13 +1482,15 @@
         "month": 6
       }
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q75984",
     "name": "Грязная война",
     "category": "military-operation",
-    "regionTags": [],
+    "regionTags": [
+      "south-america"
+    ],
     "fameScore": 71,
     "tagline": "общее название для мер государственного терроризма, предпринимавшихся аргентинскими военными диктатурами",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dirty_War",
@@ -1055,7 +1503,84 @@
         "year": 1989
       }
     },
-    "row": 16
+    "row": 19
+  },
+  {
+    "id": "Q203729",
+    "name": "Битва при Кадеше",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "сражение между войсками Египетского и Хеттского царств",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kadesh",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ramses%20II%20at%20Kadesh.jpg",
+    "description": "Би́тва при Каде́ше — сражение между войсками Египетского и Хеттского царств, сильнейших держав Ближнего Востока, в конце XIV — начале XIII веков до н. э.. Войска возглавляли фараон Рамсес II и царь Муваталли II. Столкновение произошло в городе Кадеше на реке Оронт. Хетты, имевшие явное преимущество, не смогли распорядиться им должным образом, что в итоге привело к тактической ничьей и многочисленным потерям с обеих сторон. Хетты одержали стратегическую победу, так как египтяне не сумели занять Кадеш и разбить хеттскую армию, что привело к провалу вторжения. В итоге был заключён мирный договор между хеттами и египтянами. Обе стороны приписали победу себе.",
+    "at": {
+      "year": -1273,
+      "month": 5
+    },
+    "row": 1
+  },
+  {
+    "id": "Q208156",
+    "name": "Монгольские вторжения в Японию",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "отражённые попытки завоевания Японии Монгольской империей",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Japan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kikuchi%20Yoosai%20-%20Mongol%20Invasion%20%28m%C5%8Dko%20sh%C5%ABrai%29%20-%20Tokyo%20National%20Museum.jpg",
+    "description": "Монгольские вторжения в Японию — крупные военно-морские операции, предпринятыми в 1274 и 1281 годах Хубилаем, правителем монгольской империей Юань, с целью завоевания японского архипелага.",
+    "at": {
+      "year": 1274
+    },
+    "row": 2
+  },
+  {
+    "id": "Q369560",
+    "name": "Битва за Багдад",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "осада и взятие столицы Аббасидского халифата в ходе монгольского ближневосточного похода",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Baghdad",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bagdad1258.jpg",
+    "description": "Осада Багдада 1258 года — осада и взятие столицы Аббасидского халифата, города Багдад в ходе монгольского ближневосточного похода. В 1258 году монгольские войска под командованием Хулагу и их союзники осадили Багдад, столицу Аббасидского халифата.",
+    "period": {
+      "start": {
+        "year": 1258,
+        "month": 2
+      },
+      "end": {
+        "year": 1258,
+        "month": 2
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q126306",
+    "name": "Восстание декабристов",
+    "category": "rebellion",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 71,
+    "tagline": "попытка государственного переворота в Российской империи в 1825 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Decembrist_revolt",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Peterburg%2C%20Senate%20Square%2C%201825%2C%20dec.%2014.jpg",
+    "description": "Восста́ние декабри́стов на Сенатской площади — попытка государственного переворота, состоявшаяся в Санкт-Петербурге, столице Российской империи, 14 (26) декабря 1825 года в междуцарствие.",
+    "at": {
+      "year": 1825,
+      "month": 12
+    },
+    "row": 8
   },
   {
     "id": "Q228911",
@@ -1077,7 +1602,7 @@
         "month": 7
       }
     },
-    "row": 7
+    "row": 17
   },
   {
     "id": "Q1123201",
@@ -1099,7 +1624,214 @@
         "month": 9
       }
     },
-    "row": 8
+    "row": 11
+  },
+  {
+    "id": "Q1134220",
+    "name": "монгольское нашествие на Русь",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 70,
+    "tagline": "вторжение монгольских войск на территории русских княжеств в 1237-1240 гг",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Kievan_Rus%27",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Genghis%20Khan%20empire%20%28mul%29.svg",
+    "imageAttribution": "derivative work Bkkbrad / *File:Gengis Khan empire-fr.svg: historicair 17:01, 8 October 2007 (UTC), via Wikimedia Commons",
+    "description": "Монго́льское наше́ствие на Русь, также известное как Наше́ствие Баты́я — вторжения войск Монгольской империи на территорию русских княжеств в 1237—1241 годах в ходе Западного похода монголов 1236—1242 годов под предводительством чингизида Батыя и военачальника Субэдэя.",
+    "period": {
+      "start": {
+        "year": 1223
+      },
+      "end": {
+        "year": 1240
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q14689",
+    "name": "Ледовое побоище",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 70,
+    "tagline": "битва на Чудском озере",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_on_the_Ice",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.06%2C%20page%20085%20-%20Battle%20of%20the%20Ice.jpg",
+    "description": "Ледо́вое побо́ище, также битва на Чудском озере — битва, произошедшая на льду Чудского озера в субботу 5 апреля 1242 года с участием новгородцев и владимирцев под предводительством князя Александра Невского с одной стороны и войсками Ливонского ордена и дерптского епископа — с другой.",
+    "at": {
+      "year": 1242,
+      "month": 4
+    },
+    "row": 2
+  },
+  {
+    "id": "Q209387",
+    "name": "Ангорская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 70,
+    "tagline": "battle near Ankara on 20 July 1402, between the Timurid Empire and the Ottoman Sultanate",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Ankara",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Timur%20Review%20His%20Troops%20Before%20the%20Battle%20of%20Ankara%2C%20Zafarnama%201436.jpg",
+    "description": "Анго́рская би́тва, Анка́рская би́тва или Би́тва при Анкаре́ — сражение между Османским султаном Баязидом I и среднеазиатским эмиром Тимуром (Тамерланом), произошедшее 20 июля 1402 года близ Ангоры, в котором войска Тимура разгромили турецкую армию султана Баязида Молниеносного, что привело к временному распаду Османской империи.",
+    "at": {
+      "year": 1402,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q570204",
+    "name": "битва на реке Калке",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 70,
+    "tagline": "Сражение между русскими княжествами и Монгольской империи",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Kalka_River",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%D0%BD%D0%B0%20%D0%9A%D0%B0%D0%BB%D0%BA%D0%B5.png",
+    "description": "Би́тва на реке́ Ка́лке — сражение между объединённым русско-половецким войском и монгольским корпусом, действовавшим в рамках похода Джэбэ и Субэдэя 1221—1224 годов. Сражение происходило на реке Калке, на территории современной Донецкой области Украины. Сначала были разбиты половцы и основные русские силы, а через 3 дня 31 мая 1223 года сражение закончилось полной победой монголов. В бою погибло не менее девяти князей и много родовитых бояр и простых воинов из Киевского, Галицкого, Волынского, Чернигово-Северского, Смоленского и Турово-Пинского княжеств.",
+    "at": {
+      "year": 1223,
+      "month": 6
+    },
+    "row": 2
+  },
+  {
+    "id": "Q253684",
+    "name": "Египетский поход",
+    "category": "military-operation",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 69,
+    "tagline": "кампания, предпринятая в 1798—1801 годах Наполеоном",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/French_invasion_of_Egypt_and_Syria",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Baron%20Antoine-Jean%20Gros-Battle%20Pyramids%201810.jpg",
+    "description": "Египетский поход или Египетская экспедиция — кампания, предпринятая в 1798—1801 годах по инициативе и под непосредственным руководством Наполеона Бонапарта, главной целью которой была попытка завоевания Египта.",
+    "period": {
+      "start": {
+        "year": 1798,
+        "month": 7
+      },
+      "end": {
+        "year": 1801,
+        "month": 9
+      }
+    },
+    "row": 12
+  },
+  {
+    "id": "Q456993",
+    "name": "Осада Иерусалима",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "1099 battle during which the Crusaders captured Jerusalem from the Fatimid Caliphate",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1099)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1099jerusalem.jpg",
+    "description": "Осада Иерусалима — одно из ключевых событий Первого крестового похода. Происходила с 7 июня по 15 июля 1099 года — в результате город был захвачен войсками крестоносцев. Успешный исход осады привёл к завершению Первого крестового похода и созданию в Леванте государств крестоносцев.",
+    "period": {
+      "start": {
+        "year": 1099,
+        "month": 6
+      },
+      "end": {
+        "year": 1099,
+        "month": 7
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q492415",
+    "name": "Таласская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "central-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "сражение, произошедшее в июле 751 года на реке Талас, в приграничных районах современного Казахстана.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Talas",
+    "description": "Би́тва на реке́ Тала́с, или Атла́хская би́тва — сражение, произошедшее в июле 751 года на реке Талас, в приграничных районах современных Казахстана и Кыргызстана, предположительно у города Тараза или Атлаха между войсками Аббасидского халифата и карлуков, с одной стороны, и армией танского Китая, с другой, за контроль над Средней Азией. Результатом битвы стала победа Аббасидов и их союзников, что положило начало распространению ислама в Мавераннахре и Центральной Азии, а также арабскому влиянию на участках Великого шёлкового пути в регионе.",
+    "period": {
+      "start": {
+        "year": 751,
+        "month": 5
+      },
+      "end": {
+        "year": 751,
+        "month": 9
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q605321",
+    "name": "Битва при Панипате",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "1526 battle.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Battle_of_Panipat",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vaki%27at-i%20Baburi%20-%20The%20Battle%20of%20Panipat%20%281526%29%20by%20Deo%20Gujarati.jpg",
+    "description": "Битва при Панипате — сражение между могольскими войсками Бабура и делийским султаном Ибрахим-шахом Лоди, которое произошло 21 апреля 1526 года в Северной Индии и положило начало Империи Великих Моголов. Одно из первых сражений с применением огнестрельного оружия и артиллерии на Индийском субконтиненте.",
+    "at": {
+      "year": 1526,
+      "month": 5
+    },
+    "row": 2
+  },
+  {
+    "id": "Q844886",
+    "name": "Осада Иерусалима",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "siege of Jerusalem in 70 AD by the Roman army",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(70_CE)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20JerusalemfiMap.PNG",
+    "imageAttribution": "User:Barosaurus Lentus, via Wikimedia Commons",
+    "description": "Осада Иерусалима — осада римскими войсками Иерусалима, стало одним из важнейших и решающим событием первой Иудейской войны. Римская армия, возглавляемая будущим императором Титом, с Тиберием Юлием Александром, осадила и завоевала город Иерусалим, который контролировался иудейскими повстанческими группировками после восстания в Иерусалиме в 66 году, в ходе которого было сформировано временное правительство.",
+    "period": {
+      "start": {
+        "year": 70,
+        "month": 2
+      },
+      "end": {
+        "year": 70,
+        "month": 9
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q576338",
+    "name": "Имджинская война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "два отдельных вторжения японских самураев в Корею (1592–1598)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Imjin_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege-of-Busanjin-1592.jpg",
+    "description": "Имдинская война. Название происходит от наименования 1592 года в 60-летнем цикле китайско-корейского календаря. Другие названия — Имджинская, Имчжинская или Японо-корейская война — война на Корейском полуострове в период с 1592 по 1598 годы, включающая два отдельных неудачных вторжения японских сил в Корею, разделенных периодом перемирия с 1593 года по 1596 год, когда шли мирные переговоры.",
+    "period": {
+      "start": {
+        "year": 1592,
+        "month": 5
+      },
+      "end": {
+        "year": 1598,
+        "month": 12
+      }
+    },
+    "row": 4
   },
   {
     "id": "Q2092093",
@@ -1119,13 +1851,15 @@
         "year": 1337
       }
     },
-    "row": 2
+    "row": 4
   },
   {
     "id": "Q212658",
     "name": "Война за польское наследство",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "eastern-europe"
+    ],
     "fameScore": 68,
     "tagline": "конфликт в Европе в 1733—1735 гг.",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/War_of_the_Polish_Succession",
@@ -1141,7 +1875,7 @@
         "month": 10
       }
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q766437",
@@ -1165,7 +1899,7 @@
         "month": 7
       }
     },
-    "row": 15
+    "row": 22
   },
   {
     "id": "Q302519",
@@ -1184,7 +1918,7 @@
       "year": 1896,
       "month": 3
     },
-    "row": 14
+    "row": 16
   },
   {
     "id": "Q1551794",
@@ -1206,7 +1940,98 @@
         "month": 2
       }
     },
-    "row": 16
+    "row": 23
+  },
+  {
+    "id": "Q1463845",
+    "name": "Захват Рима готами",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "захват столицы Западной Римской империи Рима вестготами в 410 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sack_of_Rome_(410)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sack%20of%20Rome%20by%20the%20Visigoths%20on%2024%20August%20410%20by%20JN%20Sylvestre%201890.jpg",
+    "description": "Разграбление Рима — захват номинальной столицы Западной Римской империи Рима вестготами 24—26 августа 410 года. Рим пал впервые за 8 веков. Разграбление великого города варварами произвело большое впечатление на современников и ускорило распад Западной Римской империи. В 455 году Рим снова подвергся разграблению в результате морского набега вандалов из Северной Африки.",
+    "period": {
+      "start": {
+        "year": 410,
+        "month": 8
+      },
+      "end": {
+        "year": 410,
+        "month": 8
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q154100",
+    "name": "Крестьянская война под предводительством Емельяна Пугачёва",
+    "category": "rebellion",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "одно из крупнейших народных восстаний в Российской империи",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pugachev%27s_Rebellion",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gorelov%20lynching%202.jpg",
+    "description": "Восстание Пугачёва — восстание (бунт) яицких казаков, переросшее в полномасштабную войну казаков, крестьян и народов Урала и Поволжья с правительством императрицы Екатерины II.",
+    "period": {
+      "start": {
+        "year": 1773,
+        "month": 9
+      },
+      "end": {
+        "year": 1775,
+        "month": 1
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q253774",
+    "name": "Мятеж Ань Лушаня",
+    "category": "rebellion",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 68,
+    "tagline": "гражданская война в танском Китае, свирепствовавшая в царствование трёх императоров, с 16 декабря 755 по 17 февраля 763 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/An_Lushan_rebellion",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/An%20Lushan%20Rebellion.png",
+    "imageAttribution": "SY, via Wikimedia Commons",
+    "description": "Мятеж Ань Лушаня или Восстание Ань Лушаня — гражданская война в танском Китае, продолжавшаяся в царствование трёх императоров, с 16 декабря 755 по 17 февраля 763 года. Самый масштабный внутрикитайский военный конфликт средневековой эпохи, происходивший в условиях формального сохранения единства страны. Восстание оказало определяющее влияние на развитие кризисных явлений в империи Тан и тем самым — на историю всего восточноазиатского региона.",
+    "period": {
+      "start": {
+        "year": 755,
+        "month": 12
+      },
+      "end": {
+        "year": 763,
+        "month": 2
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q1025466",
+    "name": "убийство Гая Юлия Цезаря",
+    "category": "coup-d-etat",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "убийство 15 марта 44 года до н. э. в Риме",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vincenzo%20Camuccini%2C%20The%20Death%20of%20Julius%20Caesar%20%28detail%29.jpg",
+    "description": "Уби́йство Га́я Ю́лия Це́заря произошло 15 марта 44 года до н. э. в Риме. Выдающийся полководец Гай Юлий Цезарь в ходе гражданской войны 49—45 годов до н. э. разгромил своих политических врагов и установил единоличную власть над Римской державой. Группа сенаторов во главе с Гаем Кассием Лонгином и Марком Юнием Брутом организовала заговор, чтобы убить Цезаря и восстановить Республику. На заседании сената в иды марта заговорщики набросились на диктатора с кинжалами и нанесли ему 23 раны, от которых он умер на месте. Вопреки распространённому мнению, изложенному, в частности, Шекспиром в пьесе «Юлий Цезарь», это произошло не в Капитолии, а в курии Помпея, где в то время заседал сенат. После этого убийцы заняли Капитолий. Они не получили ожидаемой поддержки; в день похорон Цезаря народ окончательно встал на сторону его «партии», которую возглавлял Марк Антоний. Летом 44 года до н. э. заговорщики разъехались по провинциям. Постепенно разгорелась гражданская война, в которой они к концу 42 года до н. э. потерпели поражение и погибли один за другим.",
+    "at": {
+      "year": -43,
+      "month": 3
+    },
+    "row": 1
   },
   {
     "id": "Q54434",
@@ -1229,7 +2054,45 @@
         "month": 10
       }
     },
-    "row": 2
+    "row": 0
+  },
+  {
+    "id": "Q521799",
+    "name": "Невская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 67,
+    "tagline": "сражение 1240 года между новгородским и шведским войсками у впадения Ижоры в Неву",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Neva",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20the%20Neva.jpg",
+    "description": "Не́вская би́тва — сражение, произошедшее 15 июля 1240 года у впадения реки Ижора в реку Неву, между новгородским и шведским войсками. Битва стала одним из этапов русско-шведского противостояния из-за сфер влияния в Восточной части Балтийского региона в XII—XIV веках. Битва упоминается только в древнерусских источниках, и остается неясным, было ли это крупное вторжение или небольшой набег. В русской историографии Невская битва традиционно рассматривается как событие значительного масштаба и важности.",
+    "at": {
+      "year": 1240,
+      "month": 7
+    },
+    "row": 5
+  },
+  {
+    "id": "Q751743",
+    "name": "Восстание Жёлтых повязок",
+    "category": "rebellion",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "rebellion against corruption of the Imperial Court rooted in Taoist religious principles",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Three%20Brothers%20during%20the%20Yellow%20Turban%20Rebellion.jpg",
+    "description": "Восстание «Жёлтых повязок» — народное восстание в Китае в 184—185 годах, которое привело к дестабилизации положения в стране и послужило одной из причин падения династии Хань.",
+    "period": {
+      "start": {
+        "year": 184
+      },
+      "end": {
+        "year": 205
+      }
+    },
+    "row": 0
   },
   {
     "id": "Q737542",
@@ -1251,7 +2114,7 @@
         "year": 1185
       }
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q468293",
@@ -1296,7 +2159,32 @@
         "month": 4
       }
     },
-    "row": 11
+    "row": 20
+  },
+  {
+    "id": "Q43378",
+    "name": "Тысячедневная война",
+    "category": "war",
+    "regionTags": [
+      "south-america"
+    ],
+    "fameScore": 66,
+    "tagline": "гражданская война в Республике Колумбия",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thousand_Days%27_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lautaro%20Sinking%20I.jpg",
+    "imageAttribution": "Carlos Chahin. Original Black and White by Donald Velasco., via Wikimedia Commons",
+    "description": "Тысячедневная война — гражданская война в Республике Колумбия в 1899—1902 годах между сторонниками Колумбийской консервативной партии и Колумбийской либеральной партии. Привела к провозглашению независимости Панамы.",
+    "period": {
+      "start": {
+        "year": 1899,
+        "month": 10
+      },
+      "end": {
+        "year": 1902,
+        "month": 11
+      }
+    },
+    "row": 21
   },
   {
     "id": "Q1552718",
@@ -1320,6 +2208,70 @@
       }
     },
     "row": 3
+  },
+  {
+    "id": "Q317519",
+    "name": "Арабское завоевание Египта",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "conquest of Egypt by the Rashidun Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Arab_conquest_of_Egypt",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D9%81%D8%AA%D9%88%D8%AD%20%D9%85%D8%B5%D8%B1%20%D9%88%D8%A7%D9%84%D9%86%D9%88%D8%A8%D8%A9.jpg",
+    "description": "Арабское завоевание Египта — военная операция арабской армии, начавшаяся в декабре 639 года. Отряд из 4000 человек полководца Амра ибн Аль-Аса вторгся в Египет из Палестины и примерно за 2 года завоевал всю большую и густонаселённую страну.",
+    "period": {
+      "start": {
+        "year": 639
+      },
+      "end": {
+        "year": 642
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q325985",
+    "name": "Осада Акры",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 66,
+    "tagline": "1291 siege by Egyptian Islamic troops",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Acre_(1291)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SiegeOfAcre1291.jpg",
+    "description": "Осада Акры  — осада и захват города Акра египетскими мамлюками. Битва произошла в 1291 году и стала важным событием в истории крестовых походов, поскольку ознаменовала захват одного из немногих оставшихся основных владений крестоносцев.",
+    "period": {
+      "start": {
+        "year": 1291,
+        "month": 4
+      },
+      "end": {
+        "year": 1291,
+        "month": 5
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q551888",
+    "name": "Сражения Александра Македонского",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "conflicts fought by King Alexander III of Macedon (\"The Great\"), against other Greek powers, the Persian Empire and warlords as far east as India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alexander%20and%20Bucephalus%20-%20Battle%20of%20Issus%20mosaic%20-%20Museo%20Archeologico%20Nazionale%20-%20Naples%20BW.jpg",
+    "description": "Сражения Александра Македонского — битвы, в которых правитель Македонского царства принимал участие, начиная с периода смерти Филиппа II и оканчивая походом в Индию.",
+    "period": {
+      "start": {
+        "year": -335
+      },
+      "end": {
+        "year": -322
+      }
+    },
+    "row": 2
   },
   {
     "id": "Q654006",
@@ -1385,7 +2337,7 @@
         "month": 4
       }
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q699849",
@@ -1406,13 +2358,15 @@
         "year": 1763
       }
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q856168",
     "name": "Кондитерская война",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 65,
     "tagline": "вторжение в Мексику французских войск в 1838 году",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pastry_War",
@@ -1428,32 +2382,7 @@
         "month": 3
       }
     },
-    "row": 10
-  },
-  {
-    "id": "Q43378",
-    "name": "Тысячедневная война",
-    "category": "war",
-    "regionTags": [
-      "south-america"
-    ],
-    "fameScore": 65,
-    "tagline": "гражданская война в Республике Колумбия",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Thousand_Days%27_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lautaro%20Sinking%20I.jpg",
-    "imageAttribution": "Carlos Chahin. Original Black and White by Donald Velasco., via Wikimedia Commons",
-    "description": "Тысячедневная война — гражданская война в Республике Колумбия в 1899—1902 годах между сторонниками Колумбийской консервативной партии и Колумбийской либеральной партии. Привела к провозглашению независимости Панамы.",
-    "period": {
-      "start": {
-        "year": 1899,
-        "month": 10
-      },
-      "end": {
-        "year": 1902,
-        "month": 11
-      }
-    },
-    "row": 20
+    "row": 14
   },
   {
     "id": "Q385676",
@@ -1497,7 +2426,7 @@
         "month": 5
       }
     },
-    "row": 10
+    "row": 9
   },
   {
     "id": "Q331377",
@@ -1520,7 +2449,7 @@
         "year": 1861
       }
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q740791",
@@ -1536,7 +2465,49 @@
       "year": 1885,
       "month": 11
     },
-    "row": 16
+    "row": 21
+  },
+  {
+    "id": "Q25628",
+    "name": "Стояние на Угре",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "военные действия в 1480 году между московским войском и войском хана Ахмата",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Stand_on_the_Ugra_River",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.16%2C%20p.%20462%20-%20Great%20standing%20on%20the%20Ugra.jpg",
+    "description": "Стоя́ние на Угре́ — военные действия в 1480 году между войсками хана Большой Орды Ахмата и войсками великого князя московского Ивана III при поддержке войск вологодского князя Андрея Меньшого и отрядов крымского хана Менгли I Гирея, действовавших в польско-литовских землях для сдерживания войск короля Казимира IV, завершившие свержение монголо-татарского ига на Руси, в частности в её северо-восточной части, где оно держалось дольше всего и где шёл процесс становления единого Русского государства.",
+    "at": {
+      "year": 1480
+    },
+    "row": 4
+  },
+  {
+    "id": "Q368689",
+    "name": "Первое сербское восстание",
+    "category": "rebellion",
+    "regionTags": [
+      "western-asia",
+      "southern-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "национально-освободительное восстание сербского народа под руководством Георгия Петровича против османского владычества",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Serbian_Uprising",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Osvajanje%20Beograda.jpg",
+    "description": "Первое сербское восстание 1804—1813 — национально-освободительное восстание сербского народа под руководством Георгия Петровича против османского владычества. Восстание началось в феврале 1804 года в Белградском пашалыке. На стороне восставших сербов выступила Российская империя, которая оказывала денежную помощь и дипломатическую поддержку. Франция, поддерживавшая Османскую империю в борьбе с Россией, и Австрия заняли по отношению к восстанию враждебную позицию. Первоначальный успех был на стороне восставших, и в Бухарестский мирный договор 1812 года был включён пункт, обязывающий Турцию предоставить Сербии внутреннее самоуправление. Восстание имело важное значение для становления сербской государственности, но в 1813 году Османская империя, воспользовавшись тем, что Россия была занята войной с Наполеоном, напала на Сербию, и, разгромив сербские войска, восстановила власть султана.",
+    "period": {
+      "start": {
+        "year": 1804,
+        "month": 2
+      },
+      "end": {
+        "year": 1813,
+        "month": 10
+      }
+    },
+    "row": 15
   },
   {
     "id": "Q315921",
@@ -1556,7 +2527,7 @@
         "year": 1466
       }
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q976827",
@@ -1578,13 +2549,15 @@
         "year": 1763
       }
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q869045",
     "name": "Война королевы Анны",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 63,
     "tagline": "война между Францией и Англией (1702—1713)",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Queen_Anne%27s_War",
@@ -1602,7 +2575,7 @@
         "month": 7
       }
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q1362209",
@@ -1625,7 +2598,7 @@
         "year": 1782
       }
     },
-    "row": 6
+    "row": 10
   },
   {
     "id": "Q112524",
@@ -1671,7 +2644,7 @@
         "year": -321
       }
     },
-    "row": 1
+    "row": 4
   },
   {
     "id": "Q431806",
@@ -1693,7 +2666,7 @@
         "year": 1609
       }
     },
-    "row": 2
+    "row": 6
   },
   {
     "id": "Q233642",
@@ -1715,7 +2688,7 @@
         "year": 1805
       }
     },
-    "row": 11
+    "row": 16
   },
   {
     "id": "Q617210",
@@ -1739,7 +2712,7 @@
         "month": 2
       }
     },
-    "row": 12
+    "row": 17
   },
   {
     "id": "Q880629",
@@ -1761,7 +2734,26 @@
         "year": 1832
       }
     },
-    "row": 5
+    "row": 15
+  },
+  {
+    "id": "Q1192616",
+    "name": "Дидгорская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 62,
+    "tagline": "сражение войска Грузинского царства и войска сельджуков, произошедшее 12 августа 1121 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Didgori",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Didgori%20Memorial.jpg",
+    "imageAttribution": "Paata Vardanashvili from Tbilisi, Georgia, via Wikimedia Commons",
+    "description": "Дидгорская битва (груз. დიდგორის ბრძოლა) — сражение, которое произошло 12 августа 1121 года между войсками Грузинского царства и сельджукскими войсками Тогрула, эмира Мардина Иль-Гази и эмира Хиллы Дубайса. Сражение привело к разгрому сельджукской армии и освобождению Тбилиси, который стал столицей страны. С этого момента начался «золотой век» грузинской истории. В память о сражении проводится ежегодный фестиваль, известный как Дидгороба.",
+    "at": {
+      "year": 1121,
+      "month": 8
+    },
+    "row": 1
   },
   {
     "id": "Q631795",
@@ -1803,7 +2795,48 @@
         "month": 6
       }
     },
-    "row": 12
+    "row": 14
+  },
+  {
+    "id": "Q734700",
+    "name": "Аварайрская битва",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 61,
+    "tagline": "крупное сражение",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Avarayr",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vartanantz.jpg",
+    "description": "Авара́йрская би́тва, или Варданское восстание, — одно из крупнейших сражений в истории Армении, произошедшее 26 мая или 2 июня 451 года.",
+    "at": {
+      "year": 451,
+      "month": 5
+    },
+    "row": 2
+  },
+  {
+    "id": "Q4338038",
+    "name": "Османо-мамлюкская война (1516—1517)",
+    "category": "war",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 61,
+    "tagline": "Imperial Ottoman conquest of Egypt and the Levant",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Mamluk_War_(1516%E2%80%931517)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Abraham%20Ortelius%20-%20Tvrcici%20imperii%20descriptio.jpg",
+    "description": "Османо-мамлюкская война 1516—1517 годов — вторая война между Османской империей и Мамлюкским султанатом.",
+    "period": {
+      "start": {
+        "year": 1516
+      },
+      "end": {
+        "year": 1517,
+        "month": 2
+      }
+    },
+    "row": 4
   },
   {
     "id": "Q657967",
@@ -1825,13 +2858,15 @@
         "year": 1267
       }
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q807843",
     "name": "Епископские войны",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-europe"
+    ],
     "fameScore": 60,
     "tagline": "Серия вооруженных конфликтов в 1639—1640 годах между Шотландией и Англией.",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bishops%27_Wars",
@@ -1847,13 +2882,15 @@
         "month": 9
       }
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q1070342",
     "name": "Война короля Вильгельма",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 60,
     "tagline": "North American theater of the Nine Years' War",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/King_William%27s_War",
@@ -1870,7 +2907,7 @@
         "month": 9
       }
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q517578",
@@ -1894,7 +2931,26 @@
         "year": 1748
       }
     },
-    "row": 9
+    "row": 3
+  },
+  {
+    "id": "Q2330335",
+    "name": "Монгольское завоевание Средней Азии",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 60,
+    "tagline": "series of military campaigns (1209–1236)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_campaigns_in_Central_Asia",
+    "description": "Монгольское завоевание Средней Азии под руководством Чингисхана проходило в два этапа. Основной поход был направлен против империи Хорезмшахов. В 1218 году монголы разгромили своего старого противника Кучлука, ставшего незадолго до этого гурханом Кара-киданьского государства, причём кара-киданьская территория была поделена между Монгольской империей и Хорезмом. К осени 1219 года монголы напали на территорию империи Хорезмшахов, которая продолжалась до весны 1223 года. В этот период была захвачена основная часть государства Хорезмшахов от Инда до Каспийского моря. Последний Хорезмшах Джелал ад-Дин Мангуберди, ещё несколько лет оказывавший сопротивление монголам, в конце концов был побеждён и погиб в 1231 году. По сведениям Стивена Уорда после монгольского нашествия погибло более 75% жителей в Иранском плато. Было убито более 10-15 миллионов невинных жителей.",
+    "period": {
+      "start": {
+        "year": 1216
+      },
+      "end": {
+        "year": 1221
+      }
+    },
+    "row": 5
   },
   {
     "id": "Q277450",
@@ -1914,7 +2970,27 @@
         "year": 1904
       }
     },
-    "row": 21
+    "row": 25
+  },
+  {
+    "id": "Q4200795",
+    "name": "Индийский поход (327 до н.э.)",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 59,
+    "tagline": "одна из военных компаний Александра Великого",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Indian_campaign_of_Alexander_the_Great",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/AlexanderConquestsInIndia.jpg",
+    "description": "Индийский поход — военная экспедиция Александра Македонского, состоявшаяся в 327 году до н. э.",
+    "period": {
+      "start": {
+        "year": -326
+      },
+      "end": {
+        "year": -324
+      }
+    },
+    "row": 5
   },
   {
     "id": "Q582594",
@@ -1934,7 +3010,68 @@
         "year": 1879
       }
     },
-    "row": 18
+    "row": 22
+  },
+  {
+    "id": "Q2448644",
+    "name": "Монгольские вторжения во Вьетнам",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 58,
+    "tagline": "13th-century military campaigns of the Mongol Empire and Yuan-dynasty China in Vietnam",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Vietnam",
+    "description": "Монго́льские вторже́ния в Дайвье́т и Тя́мпу или Монголо-вьетнамские войны — три военные операции, в ходе которых Монгольская империя, завоевавшая к тому времени северный Китай и Дали, вторгалась на территорию государств Дайвьет и Тямпа, расположенных в то время на территории современного Вьетнама.",
+    "period": {
+      "start": {
+        "year": 1258
+      },
+      "end": {
+        "year": 1288
+      }
+    },
+    "row": 5
+  },
+  {
+    "id": "Q2670327",
+    "name": "Взятие Казани",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 58,
+    "tagline": "1552 Russian conquest of Kazan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Kazan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Capture%20of%20Kazan%20%28Shamshin%2C%201894%29.jpeg",
+    "description": "Осада и взятие Казани — центральный эпизод Третьего Казанского похода русских войск, предпринятого царём Иваном IV в июне-октябре 1552 года для укрепления восточных границ и расширения территории Русского государства, завершением которого стали ликвидация Казанского ханства и включение его территорий в состав Русского государства. Осада 1552 года была пятой по счёту после целого ряда осад, предпринятых русскими войсками в 1487, 1524, 1530 и 1550 годах, и открыла России путь по Волге, создав предпосылки для последующего завоевания и Астраханского ханства.",
+    "period": {
+      "start": {
+        "year": 1552,
+        "month": 9
+      },
+      "end": {
+        "year": 1552,
+        "month": 10
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q612286",
+    "name": "Падение Ниневии",
+    "category": "military-operation",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 58,
+    "tagline": "612 BC battle that saw the fall of the Assyrian capital, and the climax of the Conquest of Assyria",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_Nineveh",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nineveh%20mashki%20gate%20from%20west.JPG",
+    "imageAttribution": "Photo by Fredarch., via Wikimedia Commons",
+    "description": "Падение Ниневии условно датировано между 613 и 611 годами до н. э., а 612 год до н. э. является наиболее вероятным. Союзная армия, состоявшая из мидийцев и халдеев, восстала против ассирийцев вместе со скифами и киммерийцами, захватила Ниневию, сожгла дворец и разграбила 750 гектаров города, который был в то время величайшим в мире. Это привело к падению Новоассирийской державы, до того доминировавшей на древнем Ближнем Востоке, в последующие три года. Археологические раскопки показывают, что после этой битвы Ниневия была сильно деурбанизирована и обезлюдела.",
+    "at": {
+      "year": -611
+    },
+    "row": 0
   },
   {
     "id": "Q5555632",
@@ -1977,7 +3114,7 @@
         "year": -649
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q1186260",
@@ -1998,7 +3135,7 @@
         "month": 8
       }
     },
-    "row": 13
+    "row": 18
   },
   {
     "id": "Q2378252",
@@ -2021,7 +3158,21 @@
         "month": 8
       }
     },
-    "row": 0
+    "row": 1
+  },
+  {
+    "id": "Q2890128",
+    "name": "Вторая битва при Тараине",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 56,
+    "tagline": "1192 battle near modern Taraori, India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Battle_of_Tarain",
+    "description": "Втора́я би́тва при Тараи́не — сражение, произошедшее в 1192 году близ Тараина, между войсками Гуридского султаната и конфедерации раджпутов. Сражение привело к победе вторгшейся армии Гуридского султаната.",
+    "at": {
+      "year": 1192
+    },
+    "row": 4
   },
   {
     "id": "Q2075775",
@@ -2040,7 +3191,7 @@
         "year": -667
       }
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q707364",
@@ -2084,7 +3235,7 @@
         "month": 3
       }
     },
-    "row": 19
+    "row": 23
   },
   {
     "id": "Q3778623",
@@ -2103,7 +3254,7 @@
         "year": 1589
       }
     },
-    "row": 4
+    "row": 7
   },
   {
     "id": "Q2288424",
@@ -2124,13 +3275,15 @@
         "month": 7
       }
     },
-    "row": 1
+    "row": 4
   },
   {
     "id": "Q1520241",
     "name": "Ямасийская война",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 53,
     "tagline": "1715–1717 conflict between British colonists and Native Americans in South Carolina",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yamasee_War",
@@ -2143,7 +3296,7 @@
         "year": 1717
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q1342672",
@@ -2165,7 +3318,7 @@
         "month": 10
       }
     },
-    "row": 5
+    "row": 8
   },
   {
     "id": "Q2632175",
@@ -2187,7 +3340,30 @@
         "month": 10
       }
     },
-    "row": 4
+    "row": 15
+  },
+  {
+    "id": "Q20717681",
+    "name": "Скифский поход Дария I",
+    "category": "military-operation",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 52,
+    "tagline": "military expedition into European Scythia by Achaemenid king Darius I in 513 BCE.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Scythian_campaign_of_Darius_I",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DariusScythes%20ru.svg",
+    "imageAttribution": "Anton Gutsunaev, via Wikimedia Commons",
+    "description": "Скифский поход Дария I — военный поход Дария I, царя Ахеменидской державы, в часть Европейской Скифии в 513 году до нашей эры. Скифы были восточноираноговорящим народом, который вторгся в Мидию, восстал против Дария и пригрозил нарушить торговлю между Средней Азией и берегами Черного моря, поскольку они жили между реками Дунай и Дон и Черным морем. Кампания проходила в частях нынешних Балкан, Украины и юга России.",
+    "period": {
+      "start": {
+        "year": -512
+      },
+      "end": {
+        "year": -512
+      }
+    },
+    "row": 2
   },
   {
     "id": "Q2725993",
@@ -2207,13 +3383,15 @@
         "year": 1837
       }
     },
-    "row": 14
+    "row": 19
   },
   {
     "id": "Q1348785",
     "name": "Восстание басуто",
     "category": "rebellion",
-    "regionTags": [],
+    "regionTags": [
+      "southern-africa"
+    ],
     "fameScore": 51,
     "tagline": "1880-1881 war",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Basuto_Gun_War",
@@ -2228,7 +3406,7 @@
         "year": 1881
       }
     },
-    "row": 20
+    "row": 11
   },
   {
     "id": "Q5453768",
@@ -2247,13 +3425,15 @@
         "year": 1774
       }
     },
-    "row": 8
+    "row": 16
   },
   {
     "id": "Q3119025",
     "name": "Война на Ред-Ривере",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 48,
     "tagline": "military campaign launched by the United States Army in 1874",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Red_River_War",
@@ -2267,7 +3447,7 @@
         "year": 1875
       }
     },
-    "row": 22
+    "row": 24
   },
   {
     "id": "Q138503695",
@@ -2284,7 +3464,7 @@
       "year": 2026,
       "month": 2
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q3052957",
@@ -2301,7 +3481,7 @@
     "at": {
       "year": 1707
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q4209365",
@@ -2338,6 +3518,6 @@
         "month": 6
       }
     },
-    "row": 12
+    "row": 16
   }
 ]

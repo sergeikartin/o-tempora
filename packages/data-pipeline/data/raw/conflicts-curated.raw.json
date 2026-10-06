@@ -15,7 +15,7 @@
       "category": "one of meta.categories",
       "parentId": "optional — another curated row's id; that row must be a Conflict (resolves both a start and end date from enrichment), and the chain up to its root is capped at 3 levels"
     },
-    "count": 171
+    "count": 236
   },
   "conflicts": [
     {
@@ -895,6 +895,331 @@
       "id": "Q275918",
       "name": "Muslim conquests",
       "category": "war"
+    },
+    {
+      "id": "Q1134220",
+      "name": "Mongol invasion of Kievan Rus'",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q1192616",
+      "name": "Battle of Didgori",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q131969",
+      "name": "Battle of Thermopylae",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q139808",
+      "name": "Battle of the Maureaco Fields",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q1463845",
+      "name": "410 sack of Rome",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q14689",
+      "name": "Battle of the Ice",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q152486",
+      "name": "Battle of Poltava",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q160387",
+      "name": "Battle of Actium",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q173077",
+      "name": "Battle of Tours",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q179288",
+      "name": "Battle of Kosovo",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q179670",
+      "name": "Battle of Gaugamela",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q179684",
+      "name": "Spanish Armada",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q200032",
+      "name": "Battle of Manzikert",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q200855",
+      "name": "Battle of Vienna",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q203729",
+      "name": "Battle of Kadesh",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q20717681",
+      "name": "European Scythian campaign of Darius I",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q208156",
+      "name": "Mongol invasions of Japan",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q209387",
+      "name": "Battle of Ankara",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q210354",
+      "name": "Battle of Kulikovo",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q2330335",
+      "name": "Mongol invasion of Central Asia",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q2448644",
+      "name": "Mongol invasions of Vietnam",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q253684",
+      "name": "French invasion of Egypt and Syria",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q25628",
+      "name": "Great stand on the Ugra river",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q2670327",
+      "name": "Siege of Kazan",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q2890128",
+      "name": "Second Battle of Tarain",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q31900",
+      "name": "Battle of Marathon",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q317519",
+      "name": "Arab conquest of Egypt",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q325985",
+      "name": "Siege of Acre",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q33570",
+      "name": "Battle of Grunwald",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q369560",
+      "name": "Siege of Baghdad",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q38789",
+      "name": "Battle of Stalingrad",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q4200795",
+      "name": "Indian campaign of Alexander the Great",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q456993",
+      "name": "Siege of Jerusalem",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q492415",
+      "name": "Battle of Talas",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q51649",
+      "name": "First Crusade",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q51656",
+      "name": "Fourth Crusade",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q521799",
+      "name": "Battle of the Neva",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q551888",
+      "name": "Wars of Alexander the Great",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q570204",
+      "name": "Battle of the Kalka River",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q605321",
+      "name": "Battle of Panipat",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q626058",
+      "name": "Battle of Karbala",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q734700",
+      "name": "Battle of Avarayr",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q844886",
+      "name": "Siege of Jerusalem",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q8641370",
+      "name": "Operation Overlord",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q87779",
+      "name": "Battle of the Teutoburg Forest",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q124988",
+      "name": "Punic Wars",
+      "category": "war"
+    },
+    {
+      "id": "Q15860072",
+      "name": "Russo-Ukrainian war",
+      "category": "war"
+    },
+    {
+      "id": "Q165725",
+      "name": "Balkan Wars",
+      "category": "war"
+    },
+    {
+      "id": "Q220984",
+      "name": "Opium Wars",
+      "category": "war"
+    },
+    {
+      "id": "Q4338038",
+      "name": "Ottoman–Mamluk War of 1516–17",
+      "category": "war"
+    },
+    {
+      "id": "Q576338",
+      "name": "Japanese invasions of Korea",
+      "category": "war"
+    },
+    {
+      "id": "Q126306",
+      "name": "Decembrist revolt",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q154100",
+      "name": "Pugachev's Rebellion",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q1628339",
+      "name": "Razin's Rebellion",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q194378",
+      "name": "Third Servile War",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q253774",
+      "name": "An Lushan Rebellion",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q368689",
+      "name": "First Serbian Uprising",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q751743",
+      "name": "Yellow Turban Rebellion",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q133132",
+      "name": "Paris Commune",
+      "category": "revolution"
+    },
+    {
+      "id": "Q190517",
+      "name": "Xinhai Revolution",
+      "category": "revolution"
+    },
+    {
+      "id": "Q214028",
+      "name": "July Revolution",
+      "category": "revolution"
+    },
+    {
+      "id": "Q3588",
+      "name": "European Revolutions of 1848",
+      "category": "revolution"
+    },
+    {
+      "id": "Q382861",
+      "name": "Revolutions of 1989",
+      "category": "revolution"
+    },
+    {
+      "id": "Q1025466",
+      "name": "assassination of Julius Caesar",
+      "category": "coup-d-etat"
+    },
+    {
+      "id": "Q612286",
+      "name": "Fall of Nineveh",
+      "category": "military-operation"
     }
   ]
 }

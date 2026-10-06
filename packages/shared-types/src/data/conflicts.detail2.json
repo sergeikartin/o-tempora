@@ -10,7 +10,7 @@
     "tagline": "1917-1922 political change in Russia",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Revolution",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Revoluci%C3%B3n-marzo-rusia--russianbolshevik00rossuoft.png",
-    "description": "The Russian Revolution was a period of political and social change in Russia, starting in 1917. This period saw Russia abolish its monarchy and adopt a socialist form of government following two successive revolutions and a civil war. It can be seen as the precursor for other revolutions that occurred in the aftermath of World War I, such as the German Revolution of 1918–1919. The Russian Revolution was a key event of the 20th century.",
+    "description": "The Russian Revolution was a period of political and social change in Russia starting in 1917. This period saw Russia abolish its monarchy and adopt a socialist form of government following two successive revolutions and a civil war. It can be seen as the precursor to other revolutions that occurred in the aftermath of World War I, such as the German Revolution of 1918–1919. The Russian Revolution was a key event of the 20th century.",
     "at": {
       "year": 1917
     },
@@ -25,7 +25,7 @@
     "tagline": "series of conflicts and wars between England and France between 1337 and 1453",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hundred_Years%27_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20crecy%20froissart.jpg",
-    "description": "The Hundred Years' War was a series of conflicts between the kingdoms of England and France and a civil war in France during the late Middle Ages. It emerged from feudal disputes over the Duchy of Aquitaine and was triggered by a claim to the French throne made by Edward III of England. The war grew into a broader military, economic, and political struggle involving factions from across Western Europe, fuelled by emerging nationalism on both sides. The periodisation of the war typically charts it as taking place over 116 years. However, it was an intermittent conflict which was frequently interrupted by external factors, such as the Black Death, and several years of truces.",
+    "description": "The Hundred Years' War was a series of conflicts between the kingdoms of England and France and a civil war in France during the late Middle Ages. It emerged from feudal disputes over the Duchy of Aquitaine and was triggered by a claim to the French throne made by Edward III of England. The war grew into a broader military, economic, and political struggle involving different factions from across Western Europe, fuelled by emerging nationalism on both sides. The periodisation of the war typically charts it as taking place over 116 years. However, it was an intermittent conflict which was frequently interrupted by external factors, such as the Black Death, and several years of truces.",
     "period": {
       "start": {
         "year": 1337,
@@ -36,7 +36,7 @@
         "month": 10
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q37643",
@@ -47,7 +47,7 @@
     "tagline": "1990–1991 conflict between Iraq and a 42-country coalition",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gulf_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WarGulf%20photobox.jpg",
-    "description": "The Gulf War was an armed conflict between Iraq and a 42-country coalition led by the United States. The coalition's efforts were in two phases: Operation Desert Shield, which marked the military buildup from August 1990 to January 1991; and Operation Desert Storm, from the bombing campaign against Iraq on 17 January until the American-led liberation of Kuwait on 28 February.",
+    "description": "The Gulf War was an armed conflict between Iraq and a 42-country coalition led by the United States in response to Saddam Hussein invading neighboring Kuwait on 2 August 1990. The coalition's efforts were in two phases: Operation Desert Shield, which marked the military buildup from August 1990 to January 1991; and Operation Desert Storm, from the bombing campaign against Iraq on 17 January until the American-led liberation of Kuwait on 28 February.",
     "period": {
       "start": {
         "year": 1990,
@@ -58,7 +58,30 @@
         "month": 2
       }
     },
-    "row": 1
+    "row": 3
+  },
+  {
+    "id": "Q40949",
+    "name": "American Revolutionary War",
+    "category": "war-of-independence",
+    "regionTags": [],
+    "fameScore": 84,
+    "tagline": "1775–1783 war between Great Britain and the Thirteen Colonies, which won independence as the United States of America",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/American_Revolutionary_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rev%20collage.png",
+    "description": "The American Revolutionary War, also known as the Revolutionary War or American War of Independence or simply the American Revolution, was the armed conflict that comprised the final eight years of the broader American Revolution, in which American Patriot forces organized as the Continental Army and, commanded by George Washington, defeated the British Army. The conflict was fought in North America, the Caribbean, and the Atlantic Ocean. The war's outcome seemed uncertain for most of the war, but Washington and the Continental Army's decisive victory in the Siege of Yorktown in 1781 led King George III and the Kingdom of Great Britain to negotiate an end to the war. In 1783, in the Treaty of Paris, the British monarchy acknowledged the independence of the Thirteen Colonies, leading to the establishment of the United States as an independent and sovereign nation.",
+    "parentId": "Q192769",
+    "period": {
+      "start": {
+        "year": 1775,
+        "month": 4
+      },
+      "end": {
+        "year": 1783,
+        "month": 9
+      }
+    },
+    "row": 2
   },
   {
     "id": "Q2487",
@@ -71,7 +94,7 @@
     "tagline": "war principally fought in Central Europe from 1618 to 1648",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Magdeburg%201631.jpg",
-    "description": "The Thirty Years' War, fought primarily in Central Europe between 1618 and 1648, was one of the most destructive conflicts in European history. An estimated 4.5 to 8 million soldiers and civilians died from the effects of battle, famine, or disease, with parts of Germany reporting population declines of more than 50%. Related conflicts include the Eighty Years' War, the War of the Mantuan Succession, the Franco-Spanish War, the Torstenson War, the Dutch–Portuguese War, and the Portuguese Restoration War.",
+    "description": "The Thirty Years' War, fought primarily in Central Europe between 1618 and 1648, was one of the most destructive conflicts in European history. An estimated 4.5 to 8 million soldiers and civilians died from the effects of battle, famine, or disease, with parts of Germany reporting population declines of more than 50%. Related conflicts include the Eighty Years' War, the War of the Mantuan Succession, the Franco–Spanish War, the Torstenson War, the Dutch–Portuguese War, and the Portuguese Restoration War.",
     "period": {
       "start": {
         "year": 1618
@@ -80,7 +103,7 @@
         "year": 1648
       }
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q10859",
@@ -93,7 +116,7 @@
     "tagline": "war between the Republicans and the Nationalists in Spain from 1936 to 1939",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_Civil_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Soldrepteruel1937.jpg",
-    "description": "The Spanish Civil War was fought from 1936 to 1939 between the Republicans and the Nationalist rebels. Republicans loyal to the left-leaning Popular Front government of the Second Spanish Republic included socialists, anarchists, communists, and separatists, supported by the Soviet Union. The opposing Nationalists were an alliance of Falangists, monarchists, conservatives, traditionalists, syndicalists and fascists supported by Nazi Germany and Fascist Italy. The Nationalists were initially led by a military junta, until General Francisco Franco was appointed supreme leader on 1 October 1936 of what he called the Spanish State. Due to the international political climate at the time, the war was variously viewed as class struggle, religious struggle, or struggle between republican democracy and dictatorship, revolution and counterrevolution, or between fascism and communism. The Nationalists won the war in early 1939, and ruled Spain until Franco's death in November 1975.",
+    "description": "The Spanish Civil War was fought in Spain from 1936 to 1939 between the Republicans and the Nationalist rebels. Republicans loyal to the left-leaning Popular Front government of the Second Spanish Republic included socialists, anarchists, communists, and separatists, supported by the Soviet Union. The opposing Nationalists were an alliance of Falangists, monarchists, conservatives, and traditionalists, who established the military-led Spanish State and were directly aided by an intervention from Fascist Italy and participation of Nazi Germany. Due to the international political climate at the time, the war was variously viewed as class struggle, religious struggle, or struggle between republican democracy and dictatorship, revolution and counterrevolution, or communism and fascism. The Nationalists won the war in early 1939, and ruled Spain until Franco's death in November 1975.",
     "period": {
       "start": {
         "year": 1936,
@@ -147,7 +170,26 @@
       "year": 1945,
       "month": 8
     },
-    "row": 6
+    "row": 7
+  },
+  {
+    "id": "Q15860072",
+    "name": "Russo-Ukrainian war",
+    "category": "war",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 84,
+    "tagline": "armed conflict between Russia and Ukraine since 2014",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakhmut%20during%20the%20battle%2C%202023-03.jpg",
+    "imageAttribution": "State Border Guard Service of Ukraine, via Wikimedia Commons",
+    "description": "The Russo-Ukrainian war began in February 2014 and is ongoing. Following Ukraine's Revolution of Dignity, Russia occupied Crimea and annexed it from Ukraine. It then supported Russian separatist armed groups who started a war in the eastern Donbas region against Ukraine's military. In 2018, Ukraine declared the region to be occupied by Russia. The first eight years of conflict also involved naval incidents and cyberwarfare. In February 2022, Russia launched a full-scale invasion of Ukraine and began occupying more of the country, starting the current phase of the war, the largest conflict in Europe since World War II. The war has resulted in a refugee crisis and hundreds of thousands of deaths.",
+    "at": {
+      "year": 2014,
+      "month": 2
+    },
+    "row": 4
   },
   {
     "id": "Q8690",
@@ -160,7 +202,7 @@
     "tagline": "1966–1976 Maoist sociopolitical movement in China",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cultural_Revolution",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1967-02%201967%E5%B9%B4%E7%9A%84%E7%BA%A2%E5%8D%AB%E5%85%B5.jpg",
-    "description": "The Cultural Revolution, formally known as the Great Proletarian Cultural Revolution, was a sociopolitical movement in the People's Republic of China (PRC). It was launched by CCP chairman Mao Zedong in 1966 and lasted until his death in 1976. Its stated goal was to preserve Chinese communism by purging remnants of capitalist and traditional elements from Chinese society.",
+    "description": "The Cultural Revolution, formally known as the Great Proletarian Cultural Revolution, was a sociopolitical movement in the People's Republic of China (PRC). It was launched by Mao Zedong, chairman of the Chinese Communist Party, in 1966 and lasted until his death in 1976. Its stated goal was to advance Chinese communism by purging remnants of capitalist and traditional elements from Chinese society and government.",
     "period": {
       "start": {
         "year": 1966,
@@ -186,59 +228,36 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gaza_war",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Damage%20in%20Gaza%20Strip%20during%20the%20October%202023%20-%2029.jpg",
     "imageAttribution": "WAFA (Q2915969) in contract with a local company (APAimages)‏‏, via Wikimedia Commons",
-    "description": "The Gaza war is an armed conflict in the Gaza Strip and Israel, fought as part of the unresolved Israeli–Palestinian and Gaza–Israel conflicts. The war began on 7 October 2023, when the Palestinian militant group Hamas led an attack on Israel, in which 1,195 Israelis and foreign nationals were killed and 251 were taken hostage. Since the start of the Israeli offensive that followed, over 73,000 Palestinians in Gaza have been killed; several studies in The Lancet indicate this figure is likely a significant undercount. Many scholarly sources and international organizations—including UN bodies, NGOs, and the International Association of Genocide Scholars—have concluded that Israel's actions in Gaza constitute genocide under international law. Several countries have also acknowledged that genocide is occurring and have supported legal proceedings before the International Court of Justice. Israel and its supporters, including the United States, deny that genocide has occurred.",
+    "description": "The Gaza war is an armed conflict in the Gaza Strip and Israel, fought as part of the unresolved Israeli–Palestinian and Gaza–Israel conflicts. The war began on 7 October 2023, when Palestinian militant group Hamas led an attack on Israel, in which 1,195 Israelis and foreign nationals were killed and 251 were taken hostage. Since the start of the Israeli offensive that followed, over 74,000 Palestinians in Gaza have been killed; several studies in The Lancet indicate this figure is likely a significant undercount. Many scholarly sources and international organizations—including UN bodies, NGOs, and the International Association of Genocide Scholars—have concluded that Israel's actions in Gaza constitute genocide under international law. Several countries have also stated that genocide is occurring and have supported legal proceedings before the International Court of Justice. Israel and its supporters, including the United States, deny that genocide has occurred.",
     "at": {
       "year": 2023,
       "month": 10
     },
-    "row": 4
+    "row": 6
   },
   {
-    "id": "Q40949",
-    "name": "American Revolutionary War",
-    "category": "war-of-independence",
-    "regionTags": [],
+    "id": "Q38789",
+    "name": "Battle of Stalingrad",
+    "category": "military-operation",
+    "regionTags": [
+      "eastern-europe"
+    ],
     "fameScore": 83,
-    "tagline": "1775–1783 war between Great Britain and the Thirteen Colonies, which won independence as the United States of America",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/American_Revolutionary_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rev%20collage.png",
-    "description": "The American Revolutionary War, also known as the Revolutionary War or American War of Independence or simply the American Revolution, was the armed conflict that comprised the final eight years of the broader American Revolution, in which American Patriot forces organized as the Continental Army and commanded by George Washington defeated the British Army. The conflict was fought in North America, the Caribbean, and the Atlantic Ocean. The war's outcome seemed uncertain for most of the war, but Washington and the Continental Army's decisive victory in the Siege of Yorktown in 1781 led King George III and the Kingdom of Great Britain to negotiate an end to the war. In 1783, in the Treaty of Paris, the British monarchy acknowledged the independence of the Thirteen Colonies, leading to the establishment of the United States as an independent and sovereign nation.",
-    "parentId": "Q192769",
+    "tagline": "1942 major battle of World War II",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Liberation%20of%20Stalingrad%20by%20Abram%20Krichevsky%20%28ID%2032407906%29.jpg",
+    "description": "The Battle of Stalingrad was a major battle on the Eastern Front of World War II in which Nazi Germany and its Axis allies fought the Soviet Union for control of the city of Stalingrad in southern Russia. Marked by intense close-quarters combat and heavy civilian losses during aerial bombardment, the battle is considered the largest and deadliest urban battle in military history and the deadliest battle in World War II. By the end of the fighting, the German 6th Army had been destroyed, the 4th Panzer Army had suffered severe losses, and Army Group B was routed. The defeat ended Germany’s 1942 summer offensive and passed the strategic initiative on the Eastern Front to the Soviet Union. The Soviet victory at Stalingrad is generally regarded as the pivotal turning point of the European theatre of the war.",
     "period": {
       "start": {
-        "year": 1775,
-        "month": 4
+        "year": 1942,
+        "month": 8
       },
       "end": {
-        "year": 1783,
-        "month": 9
+        "year": 1943,
+        "month": 2
       }
     },
-    "row": 1
-  },
-  {
-    "id": "Q545449",
-    "name": "Iraq War",
-    "category": "war",
-    "regionTags": [],
-    "fameScore": 83,
-    "tagline": "2003–2011 war after an American-led invasion",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Iraq_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Iraq%20War%20montage.png",
-    "imageAttribution": "Futuretrillionaire, via Wikimedia Commons",
-    "description": "The Iraq War, also referred to as the Second Gulf War, was a protracted armed conflict in Iraq from 2003 to 2011. It began with the invasion by a United States–led coalition, which resulted in the overthrow of the Ba'athist government of Saddam Hussein. During the US occupation of Iraq, the conflict persisted as an insurgency that arose against coalition forces and the newly established Iraqi government. US forces were officially withdrawn in 2011. In 2014, the US became re-engaged in Iraq, leading a new coalition under Combined Joint Task Force – Operation Inherent Resolve, as the conflict evolved into the ongoing Islamic State insurgency.",
-    "parentId": "Q185729",
-    "period": {
-      "start": {
-        "year": 2003,
-        "month": 3
-      },
-      "end": {
-        "year": 2011,
-        "month": 12
-      }
-    },
-    "row": 4
+    "row": 9
   },
   {
     "id": "Q33761",
@@ -280,7 +299,7 @@
         "year": -1179
       }
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q83085",
@@ -292,7 +311,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Afghan-Soviet%20war.png",
     "imageAttribution": "LLs, via Wikimedia Commons",
-    "description": "The Soviet–Afghan War took place in Afghanistan from December 1979 to February 1989. Marking the beginning of the 47-year-long Afghan conflict, it saw the Soviet Union and the Communist-led Afghan military fight against the rebelling Afghan mujahideen, aided by Pakistan. While backed by various countries and organizations, the majority of the mujahideen's support came from Pakistan, the United States, the United Kingdom, China, Iran, and the Arab states of the Persian Gulf, in addition to a large influx of foreign fighters known as the Afghan Arabs. American and British involvement on the side of the mujahideen escalated the Cold War, ending a short period of relaxed Soviet Union–United States relations.",
+    "description": "The Soviet–Afghan War took place in Afghanistan from December 1979 to February 1989. Marking the beginning of the 47-year-long Afghan conflict, it saw the Soviet Union and the Communist-led Afghan military fight against the rebelling Afghan mujahideen. While backed by various countries and organizations, the majority of the mujahideen's external support came from Pakistan, the United States, the United Kingdom, China, Iran, and the Arab states of the Persian Gulf, in addition to a large influx of foreign fighters known as the Afghan Arabs. American and British involvement on the side of the mujahideen escalated the Cold War, ending a short period of relaxed Soviet Union–United States relations.",
     "period": {
       "start": {
         "year": 1979,
@@ -303,6 +322,6 @@
         "month": 2
       }
     },
-    "row": 3
+    "row": 6
   }
 ]

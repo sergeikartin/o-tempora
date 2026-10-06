@@ -19,7 +19,7 @@
         "month": 12
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q34467",
@@ -39,7 +39,7 @@
   },
   {
     "id": "Q8707",
-    "name": "Meiji restoration",
+    "name": "Meiji Restoration",
     "category": "society-administration",
     "regionTags": [
       "eastern-asia"
@@ -48,7 +48,7 @@
     "tagline": "reform restoring the imperial rule in Japan in the last third of the 19th century",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Meiji_Restoration",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MeijiJoukyou.jpg",
-    "description": "The Meiji Restoration , referred to at the time as the Honorable Restoration , was a political event that restored imperial rule to Japan in 1868 under Emperor Meiji and led to the westernisation of Japan. Although there were ruling emperors before the Meiji Restoration, the events restored practical power to, and consolidated the political system under, the Emperor of Japan. The Restoration led to enormous changes in Japan's political and social structure and spanned both the late Edo period and the beginning of the Meiji era, during which time Japan rapidly industrialised and adopted Western ideas, production methods and technology.",
+    "description": "The Meiji Restoration , referred to at the time as the Honorable Restoration , was a political event that restored imperial rule to Japan in 1868 under Emperor Meiji and led to the Westernisation of Japan. Although there were ruling emperors before the Meiji Restoration, the events restored practical power to, and consolidated the political system under, the Emperor of Japan. The Restoration led to enormous changes in Japan's political and social structure and spanned both the late Edo period and the beginning of the Meiji era, during which time Japan rapidly industrialised and adopted Western ideas, production methods and technology.",
     "period": {
       "start": {
         "year": 1868
@@ -58,7 +58,7 @@
         "month": 2
       }
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q5167679",
@@ -72,7 +72,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RIAN%20archive%20140800%20Signing%20of%20Protocol%20on%20Establishing%20Commonwealth%20of%20Independent%20States.jpg",
     "imageAttribution": "Yuriy Kuydin / Юрий Куйдин, via Wikimedia Commons",
-    "description": "The Soviet Union was formally dissolved and ceased to exist as a sovereign state and subject of international law on December 26, 1991. It also brought an end to the Soviet Union's federal government and to Soviet leader Mikhail Gorbachev's efforts to reform the Soviet political and economic system in an attempt to stop a period of political and economic stagnation.",
+    "description": "On 26 December 1991, the Soviet Union was formally dissolved and ceased to exist as a sovereign state and subject of international law. It also brought an end to the Soviet Union's federal government and to Soviet leader Mikhail Gorbachev's efforts to reform the Soviet political and economic system in an attempt to stop a period of political and economic stagnation.",
     "at": {
       "year": 1991,
       "month": 12
@@ -96,7 +96,79 @@
       "year": 1799,
       "month": 7
     },
-    "row": 1
+    "row": 2
+  },
+  {
+    "id": "Q10225",
+    "name": "Indian National Congress",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 81,
+    "tagline": "centrist-liberal political party in India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Indian_National_Congress",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/INC%20Flag%20Official.jpg",
+    "description": "The Indian National Congress (INC), also known as the Congress Party, or simply the Congress, is a big tent political party in India. It is India's oldest political party and is widely regarded as one of the world's oldest continuously active political parties, outside Europe and North America. Founded on 28 December 1885, it was the first modern nationalist movement to emerge in the British Empire in Asia and Africa. From the late 19th century, and especially after 1920, under the leadership of Mahatma Gandhi, the Congress became the principal leader of the Indian independence movement. The Congress was one of the parties that led India to independence from the United Kingdom, and significantly influenced other anti-colonial nationalist movements in the British Empire.",
+    "at": {
+      "year": 1885,
+      "month": 12
+    },
+    "row": 6
+  },
+  {
+    "id": "Q128160",
+    "name": "Cuban Missile Crisis",
+    "category": "society-administration",
+    "regionTags": [
+      "caribbean"
+    ],
+    "fameScore": 81,
+    "tagline": "October 1962 confrontation between the Soviet Union, Cuba and the United States",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Soviet-R-12-nuclear-ballistic%20missile.jpg",
+    "description": "The Cuban Missile Crisis, also known as the October Crisis in Cuba, or the Caribbean Crisis, was a 13-day confrontation between the governments of the United States and the Soviet Union, when American deployments of nuclear missiles in the United Kingdom, Italy and Turkey were matched by Soviet deployments of nuclear missiles in Cuba. The crisis lasted from 16 to 28 October 1962. The confrontation is widely considered the closest the Cold War came to escalating into full-scale nuclear war.",
+    "period": {
+      "start": {
+        "year": 1962,
+        "month": 10
+      },
+      "end": {
+        "year": 1962,
+        "month": 10
+      }
+    },
+    "row": 8
+  },
+  {
+    "id": "Q2513",
+    "name": "Hubble Space Telescope",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "NASA and ESA space telescope (launched 1990)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hubble_Space_Telescope",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hubble%202009%20close-up.jpg",
+    "description": "The Hubble Space Telescope is a space telescope that was launched into low Earth orbit in 1990 and remains in operation. It was not the first space telescope, but it is one of the largest and most versatile, renowned as a vital research tool and as a public relations boon for astronomy. The Hubble Space Telescope is named after astronomer Edwin Hubble and is one of NASA's Great Observatories. The Space Telescope Science Institute (STScI) selects Hubble's targets and processes the resulting data, while the Goddard Space Flight Center (GSFC) controls the spacecraft.",
+    "at": {
+      "year": 1990,
+      "month": 4
+    },
+    "row": 8
+  },
+  {
+    "id": "Q17738",
+    "name": "Star Wars: Episode IV – A New Hope",
+    "category": "media-culture",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "1977 film directed by George Lucas",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Star_Wars_(film)",
+    "description": "Star Wars is a 1977 American epic space opera film written and directed by George Lucas. Produced by Lucasfilm Ltd. and distributed by Twentieth Century-Fox, it is the first film in the Star Wars franchise and the fourth chronological chapter of the \"Skywalker Saga\". Set in a fictional galaxy ruled by the tyrannical Galactic Empire, the film follows a resistance movement called the Rebel Alliance that aims to destroy the Empire's ultimate weapon, the Death Star. When the rebel leader Princess Leia is captured by the Galactic Empire, Luke Skywalker acquires stolen architectural plans for the Death Star and sets out to rescue her while learning the ways of a metaphysical power known as \"the Force\" from the Jedi Master Obi-Wan Kenobi. The film stars Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing, Alec Guinness, Anthony Daniels, Kenny Baker, Peter Mayhew, David Prowse, and James Earl Jones.",
+    "at": {
+      "year": 1977
+    },
+    "row": 8
   },
   {
     "id": "Q40605",
@@ -131,7 +203,7 @@
     "at": {
       "year": 1879
     },
-    "row": 5
+    "row": 7
   },
   {
     "id": "Q48469",
@@ -142,12 +214,12 @@
     "tagline": "space probe launched by NASA to study the outer Solar System, furthest spacecraft from Earth",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Voyager_1",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Voyager%20spacecraft.jpg",
-    "description": "Voyager 1 is a space probe launched by NASA on September 5, 1977, as part of the Voyager program, to study the outer Solar System and the interstellar space beyond the Sun's heliosphere. It was launched 16 days after its twin, Voyager 2. It communicates through the NASA Deep Space Network (DSN) to receive routine commands and to transmit data to Earth. Real-time distance and velocity data are provided by NASA and JPL. At a distance of 172.59 AU as of August 2026, it is the most distant human-made object from Earth. Voyager 1 is projected to reach a distance of one light day from Earth in November 2026.",
+    "description": "Voyager 1 is a space probe launched by NASA on September 5, 1977, as part of the Voyager program, to study the outer Solar System and the interstellar space beyond the Sun's heliosphere. It was launched 16 days after its twin, Voyager 2. It communicates through the NASA Deep Space Network (DSN) to receive routine commands and to transmit data to Earth. Real-time distance and velocity data are provided by NASA and JPL. At a distance of 171.19 AU as of August 2026, it is the most distant human-made object from Earth. Voyager 1 is projected to reach a distance of one light day from Earth in November 2026.",
     "at": {
       "year": 1977,
       "month": 9
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q93304",
@@ -165,7 +237,7 @@
     "at": {
       "year": -1751
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q83164",
@@ -186,6 +258,145 @@
     "row": 0
   },
   {
+    "id": "Q727413",
+    "name": "Rigveda",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "most ancient Veda of the Hindus",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rigveda",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rigveda%20MS2097.jpg",
+    "description": "The Rigveda or Rig Veda is an ancient Indian collection of Vedic Sanskrit hymns (sūktas). It is one of the four sacred canonical Hindu texts (śruti) known as the Vedas. Only one Shakha of the many survive today, namely the Śakalya Shakha. Much of the contents contained in the remaining Shakhas are now lost or are not available in the public forum.",
+    "at": {
+      "year": -1499
+    },
+    "row": 1
+  },
+  {
+    "id": "Q133274",
+    "name": "Kremlin",
+    "category": "landmarks",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "fortified complex in Moscow, Russia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kremlin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Moscow%2005-2012%20Kremlin%2022.jpg",
+    "imageAttribution": "A.Savin, via Wikimedia Commons",
+    "description": "The Moscow Kremlin, commonly known as the Kremlin, is a fortified complex (kremlin) in Moscow, Russia. Located in the historic centre of the country's capital city, the Kremlin comprises five palaces, four cathedrals, and an enclosing wall along with numerous towers. Within the complex is the Grand Kremlin Palace, which was one of the royal residences of the Tsar of Russia, and is now the residence of the president of the Russian Federation. The Kremlin overlooks the Moskva River to the south, Red Square to the east, and Alexander Garden to the west.",
+    "at": {
+      "year": 1420
+    },
+    "row": 2
+  },
+  {
+    "id": "Q47476",
+    "name": "Alhambra",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "palace and fortress complex in Granada, Andalusia, Spain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alhambra",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alhambra%20detail.jpg",
+    "description": "The Alhambra is a palace and fortress complex located in Granada, Spain. It is one of the most famous monuments of Islamic architecture and the only well-preserved palace from the medieval Islamic world. Additionally, the palace contains notable examples of Spanish Renaissance architecture.",
+    "at": {
+      "year": 1239
+    },
+    "row": 1
+  },
+  {
+    "id": "Q80290",
+    "name": "Forbidden City",
+    "category": "landmarks",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 80,
+    "tagline": "Chinese imperial palace in Beijing",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Forbidden_City",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hall%20of%20Supreme%20Harmony%20%2820241127120000%29.jpg",
+    "imageAttribution": "N509FZ, via Wikimedia Commons",
+    "description": "The Forbidden City is the imperial palace complex in the center of the Imperial City in Beijing, China. It was the residence of 24 Ming and Qing dynasty Emperors, and the center of political power in China for over 500 years from 1420 to 1924. The palace is now administered by the Palace Museum and has been a UNESCO World Heritage Site since 1987. The Forbidden City is one of the most famous palaces in all of Chinese history, and is the largest preserved royal palace complex still standing in the world.",
+    "at": {
+      "year": 1420
+    },
+    "row": 0
+  },
+  {
+    "id": "Q435",
+    "name": "Library of Alexandria",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-africa",
+      "southern-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "one of the largest libraries in the ancient world, located in Alexandria, Egypt",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ancientlibraryalex.jpg",
+    "description": "The Library of Alexandria in Alexandria, Egypt, was one of the largest and most significant libraries of the ancient world. The library was part of a larger research institution called the Mouseion, which was dedicated to the Muses, the nine goddesses of the arts. The idea of the library in Alexandria may have been proposed by Demetrius of Phalerum, an exiled Athenian statesman living in Alexandria, to Ptolemy I Soter, who may have established plans for the library, but the library itself was probably not built until the reign of his son Ptolemy II Philadelphus. The library quickly acquired many papyrus scrolls, owing largely to the Ptolemaic kings' aggressive and well-funded policies for procuring texts. It is unknown how many scrolls were housed at any given time at the Library of Alexandria, but estimates range from 40,000 to 700,000.",
+    "at": {
+      "year": -300
+    },
+    "row": 0
+  },
+  {
+    "id": "Q13164",
+    "name": "Lomonosov Moscow State University",
+    "category": "philosophy-education",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "public research university in Moscow, Russia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Moscow_State_University",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9C%D0%93%D0%A3%2C%20%D0%B2%D0%B8%D0%B4%20%D1%81%20%D0%B2%D0%BE%D0%B7%D0%B4%D1%83%D1%85%D0%B0.jpg",
+    "imageAttribution": "I.s.kopytov, via Wikimedia Commons",
+    "description": "Moscow State University (MSU), officially M. V. Lomonosov Moscow State University, is a public research university in Moscow, Russia. The university includes 15 research institutes, 43 faculties, more than 300 departments, and six branches. Alumni of the university include past leaders of the Soviet Union and other governments. As of 2019, 13 Nobel laureates, 6 Fields Medal winners, and 1 Turing Award winner were affiliated with the university.",
+    "at": {
+      "year": 1755,
+      "month": 1
+    },
+    "row": 2
+  },
+  {
+    "id": "Q402",
+    "name": "Higgs boson",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "elementary particle transmitting the Higgs field giving particles mass",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Higgs_boson",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CMS%20Higgs-event.jpg",
+    "imageAttribution": "Lucas Taylor / CERN, via Wikimedia Commons",
+    "description": "The Higgs boson, sometimes called the Higgs particle, is an elementary particle in the Standard Model of particle physics produced by the quantum excitation of the Higgs field, one of the fields in particle physics theory. In the Standard Model, the Higgs particle is a massive scalar boson that couples to particles whose mass arises from their interactions with the Higgs field, has zero spin, even (positive) parity, no electric charge, and no color charge. It is also very unstable, decaying into other particles almost immediately upon generation.",
+    "at": {
+      "year": 2012
+    },
+    "row": 1
+  },
+  {
+    "id": "Q128015",
+    "name": "guillotine",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "apparatus designed for carrying out executions by beheading",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Guillotine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Guillotine%20Luxembourg%2001.jpg",
+    "imageAttribution": "Christian Ries, via Wikimedia Commons",
+    "description": "A guillotine is an apparatus designed for effectively carrying out executions by beheading. The device consists of a tall, upright frame with a weighted and angled blade suspended at the top. The condemned person is secured with a pillory at the bottom of the frame, holding the position of the neck directly below the blade. The blade is then released, swiftly and forcefully decapitating the victim with a single, clean pass; the head falls into a basket or other receptacle below.",
+    "at": {
+      "year": 1792
+    },
+    "row": 3
+  },
+  {
     "id": "Q162297",
     "name": "hygiene",
     "category": "public-health",
@@ -198,7 +409,7 @@
     "at": {
       "year": -2999
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q10257",
@@ -218,7 +429,7 @@
       "year": 1993,
       "month": 6
     },
-    "row": 5
+    "row": 1
   },
   {
     "id": "Q72313",
@@ -245,11 +456,11 @@
     "tagline": "explosive preparation of stabilized nitroglycerin",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dynamite",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nobel%20patent.jpg",
-    "description": "Dynamite is an explosive made of nitroglycerin, sorbents, and stabilizers. It was invented by the Swedish chemist and engineer Alfred Nobel in Geesthacht, Northern Germany, and was patented in 1867. It rapidly gained wide-scale use as a more robust alternative to the traditional black powder explosives. It allows the use of nitroglycerine's favorable explosive properties while greatly reducing its risk of accidental detonation.",
+    "description": "Dynamite is an explosive made of nitroglycerin, sorbents, and stabilizers. It was invented by Swedish chemist Alfred Nobel in 1866 and patented the following year.",
     "at": {
       "year": 1867
     },
-    "row": 5
+    "row": 4
   },
   {
     "id": "Q46362",
@@ -274,7 +485,7 @@
         "month": 6
       }
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q48432",
@@ -298,7 +509,7 @@
         "month": 7
       }
     },
-    "row": 7
+    "row": 5
   },
   {
     "id": "Q47672",
@@ -317,7 +528,57 @@
       "year": 1974,
       "month": 3
     },
-    "row": 9
+    "row": 11
+  },
+  {
+    "id": "Q99309",
+    "name": "Pantheon",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 79,
+    "tagline": "ancient Roman temple in Rome, Italy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pantheon%20%28Rome%29%20-%20Right%20side%20and%20front.jpg",
+    "imageAttribution": "NikonZ7II, via Wikimedia Commons",
+    "description": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs.",
+    "at": {
+      "year": 128
+    },
+    "row": 0
+  },
+  {
+    "id": "Q8269",
+    "name": "The Tale of Genji",
+    "category": "culture-arts",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 79,
+    "tagline": "classic work of Japanese literature",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Tale_of_Genji",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Genji%20emaki%2001003%20002.jpg",
+    "description": "The Tale of Genji  is a classic work of Japanese literature said to have been written by the noblewoman, poet, and lady-in-waiting Murasaki Shikibu around the peak of the Heian period, in the early 11th century. It is the first novel written by a woman to have won global recognition. In Japan, The Tale of Genji has a stature similar to that of Shakespeare's works in English.",
+    "at": {
+      "year": 1010
+    },
+    "row": 0
+  },
+  {
+    "id": "Q45585",
+    "name": "The Starry Night",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "painting by Vincent van Gogh",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Starry_Night",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Van%20Gogh%20-%20Starry%20Night%20-%20Google%20Art%20Project.jpg",
+    "description": "The Starry Night is an oil-on-canvas painting by the Dutch Post-Impressionist painter Vincent van Gogh. Painted in June 1889, it depicts the view from the east-facing window of his asylum room at Saint-Rémy-de-Provence, just before sunrise, with the addition of an imaginary village. It has been in the permanent collection of the Museum of Modern Art in New York City since 1941, acquired through the Lillie P. Bliss Bequest. Described as a \"touchstone of modern art\", The Starry Night has been regarded as one of the most recognizable paintings in the Western canon.",
+    "at": {
+      "year": 1889
+    },
+    "row": 7
   },
   {
     "id": "Q228036",
@@ -363,11 +624,11 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/London_Underground",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lancaster%20Gate%20tube.jpg",
     "imageAttribution": "tompagenet (Tom Page), via Wikimedia Commons",
-    "description": "The London Underground is a rapid transit system serving Greater London and some parts of the adjacent home counties of Buckinghamshire, Essex, and Hertfordshire in England. It is part of the network of transport services managed by Transport for London.",
+    "description": "The London Underground is a rapid transit system serving Greater London and parts of the adjacent home counties of Buckinghamshire, Essex, and Hertfordshire in England. Managed by Transport for London (TfL), the network spans 11 lines and 250 miles (400 km) of track, serving 272 stations. While the system's nickname originates from its deep-level circular tunnels, only 45% of the network is underground, with the majority of the outer surface tracks located north of the River Thames. It is one of the busiest rapid transit networks in the world, accommodating over 1.2 billion passenger journeys annually in 2024–25.",
     "at": {
       "year": 1890
     },
-    "row": 5
+    "row": 9
   },
   {
     "id": "Q125006",
@@ -386,7 +647,23 @@
       "year": 1883,
       "month": 5
     },
-    "row": 4
+    "row": 8
+  },
+  {
+    "id": "Q79757",
+    "name": "barometer",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "scientific instrument used to measure atmospheric pressure",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Barometer",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Barometr%2C%20Skwer%20Bowiena%2C%20Sopot%20-%20panoramio.jpg",
+    "imageAttribution": "Krzysztof Rakowski, via Wikimedia Commons",
+    "description": "A barometer is a scientific instrument that is used to measure air pressure. Pressure tendency, which is derived from barometric readings, can forecast short term changes in the weather. Many measurements of air pressure are used within surface weather analysis to help find surface troughs, pressure systems and frontal boundaries.",
+    "at": {
+      "year": 1643
+    },
+    "row": 3
   },
   {
     "id": "Q58148",
@@ -413,12 +690,12 @@
     "tagline": "first artificial Earth satellite",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sputnik_1",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sputnik%201%20satellite%20model.png",
-    "description": "Sputnik 1, often referred to as simply Sputnik, was the first artificial Earth satellite. It was launched into an elliptical low Earth orbit by the Soviet Union on 4 October 1957 as part of the Soviet space program. It sent a radio signal back to Earth for three weeks before its three silver-zinc batteries became depleted. Aerodynamic drag caused it to fall back into the atmosphere on 4 January, 1958.",
+    "description": "Sputnik 1, often referred to as simply Sputnik, was the first artificial Earth satellite. It was launched into an elliptical low Earth orbit by the Soviet Union on 4 October 1957 as part of the Soviet space program. It sent a radio signal back to Earth for three weeks before its three silver-zinc batteries became depleted. Aerodynamic drag caused it to fall back into the atmosphere on 4 January 1958.",
     "at": {
       "year": 1957,
       "month": 10
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q48475",
@@ -434,7 +711,7 @@
       "year": 1977,
       "month": 8
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q101017",
@@ -484,7 +761,7 @@
       "year": 1947,
       "month": 8
     },
-    "row": 14
+    "row": 16
   },
   {
     "id": "Q133331",
@@ -536,7 +813,7 @@
     "tagline": "powerful explosion that occurred near the Podkamennaya Tunguska River",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tunguska_event",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tunguska%20Ereignis-1.jpg",
-    "description": "The Tunguska event was a large explosion of between 3 and 50 megatons TNT equivalent that occurred near the Podkamennaya Tunguska River in Yeniseysk Governorate, Russia, on the morning of 30 June [O.S. 17 June] 1908.",
+    "description": "The Tunguska event was the explosion of between 3 and 50 megatons TNT equivalent in the Russian Empire's Yeniseysk Governorate, near the Podkamennaya Tunguska River in modern Krasnoyarsk Krai, on the morning of 30 June [O.S. 17 June] 1908. It was the largest impact event on Earth in recorded history.",
     "at": {
       "year": 1908,
       "month": 6
@@ -559,7 +836,7 @@
     "at": {
       "year": 1602
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q8080",
@@ -584,6 +861,145 @@
       }
     },
     "row": 4
+  },
+  {
+    "id": "Q154255",
+    "name": "Munich agreement",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "1938 cession of German-speaking Czechoslovakia to the German Reich",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Munich_Agreement",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Munich%20Agreement%20Bundesarchiv%20Bild%20183-R69173.jpg",
+    "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
+    "description": "The Munich Agreement was reached in Munich on 30 September 1938, by Nazi Germany, the United Kingdom, France, and Italy. The agreement provided for the German annexation of part of the First Czechoslovak Republic called the Sudetenland, where three million people, mainly ethnic Germans, lived. The pact is known in some areas as the Munich Dictate, or the Munich Betrayal, because of a previous 1924 alliance agreement and a 1925 military pact between France and the Czechoslovak Republic.",
+    "at": {
+      "year": 1939,
+      "month": 9
+    },
+    "row": 6
+  },
+  {
+    "id": "Q167634",
+    "name": "perestroika",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "political movement for reformation within the Communist Party of the Soviet Union during the 1980s, widely associated with Soviet leader Mikhail Gorbachev and his glasnost policy reform",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Perestroika",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Soviet%20Union%201988%20CPA%205941%20stamp%20%28Perestroika%20%28reformation%29.%20Workers%20and%20slogans%20Speeding%20Up%2C%20Democratization.%20and%20Glasnost%20against%20Kremlin%20Palace.%20Cruiser%20Aurora%20and%20revolutionary%20soldiers%29.jpg",
+    "description": "Perestroika was a political reform movement within the Communist Party of the Soviet Union (CPSU) during the late 1980s, widely associated with CPSU general secretary Mikhail Gorbachev and his glasnost (\"transparency\") policy reform. Perestroika literally means \"restructuring\", referring to the restructuring of the political economy of the Soviet Union in an attempt to end the Era of Stagnation. The term was coined by Soviet economist and sociologist Tatyana Zaslavskaya.",
+    "period": {
+      "start": {
+        "year": 1985
+      },
+      "end": {
+        "year": 1991
+      }
+    },
+    "row": 11
+  },
+  {
+    "id": "Q51122",
+    "name": "Unification of Italy",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "creation of the politically and administratively integrated nation of Italy (1815–1871)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Unification_of_Italy",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/With%20Victor%20Emmanuel.jpg",
+    "description": "The unification of Italy, also known as the Risorgimento, was the 19th century political and social movement that in 1861 ended in the annexation of various states of the Italian Peninsula and its outlying isles to the Kingdom of Sardinia, resulting in the creation of the Kingdom of Italy. Inspired by the rebellions in the 1820s and 1830s against the outcome of the Congress of Vienna, the unification process was precipitated by the Revolutions of 1848, and reached completion in 1871 with the official designation of Rome as capital of Italy, following the capture of Rome in 1870.",
+    "period": {
+      "start": {
+        "year": 1815
+      },
+      "end": {
+        "year": 1871
+      }
+    },
+    "row": 6
+  },
+  {
+    "id": "Q193484",
+    "name": "assassination of John F. Kennedy",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 78,
+    "tagline": "1963 murder in Dallas, Texas, U.S",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Assassination_of_John_F._Kennedy",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/JFK%20Motorcade%20GettyImages-517330536.jpg",
+    "description": "On Friday, November 22, 1963, John F. Kennedy, the 35th president of the United States, was assassinated while riding in a presidential motorcade through Dallas, Texas. Kennedy was in the vehicle with First Lady Jacqueline Kennedy, Texas governor John Connally, and Connally's wife Nellie, when he was fatally shot from the nearby Texas School Book Depository by Lee Harvey Oswald, a former U.S. Marine. The motorcade rushed to Parkland Memorial Hospital, where Kennedy was pronounced dead about 30 minutes after the shooting; Connally was also wounded in the attack but recovered. Vice President Lyndon B. Johnson was hastily sworn in as president two hours and eight minutes later aboard Air Force One at Dallas Love Field.",
+    "at": {
+      "year": 1963,
+      "month": 11
+    },
+    "row": 9
+  },
+  {
+    "id": "Q5725",
+    "name": "Mohenjo-daro",
+    "category": "archaeology-anthropology",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 78,
+    "tagline": "archaeological site in the province of Sindh, Pakistan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mohenjo-daro",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mohenjodaro%20Sindh.jpeg",
+    "description": "Mohenjo-daro is an archaeological site in the Larkana District of Sindh, Pakistan. Built c. 2500 BCE, it was one of the largest settlements of the ancient Indus Valley Civilisation, and one of the world's earliest major cities, contemporaneous with the civilisations of ancient Egypt, Mesopotamia, Minoa, and Norte Chico.",
+    "period": {
+      "start": {
+        "year": -2500
+      },
+      "end": {
+        "year": -1700
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q42798",
+    "name": "Borobudur Temple",
+    "category": "landmarks",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 78,
+    "tagline": "Buddhist temple in Java, Indonesia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Borobudur",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pradaksina.jpg",
+    "imageAttribution": "Heri nugroho, via Wikimedia Commons",
+    "description": "Borobudur, also transcribed Barabudur, is a 9th-century Mahayana Buddhist temple in Magelang Regency, near the town of Muntilan, northwest of the city of Yogyakarta, in Central Java, Indonesia.",
+    "at": {
+      "year": 1814
+    },
+    "row": 5
+  },
+  {
+    "id": "Q58767",
+    "name": "Trans-Siberian railway",
+    "category": "transportation",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "railway line between Moscow, the Russian Far East and the Sea of Japan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Trans-Siberian_Railway",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vladivostok%20distencemonument.JPG",
+    "imageAttribution": "Toen96, via Wikimedia Commons",
+    "description": "The Trans-Siberian Railway, historically known as the Great Siberian Route and often shortened to Transsib, is a large railway system that connects European Russia to the Russian Far East. Spanning a length of over 9,289 kilometers, it is the longest railway line in the world. It runs from the city of Moscow in the west to the city of Vladivostok in the east.",
+    "at": {
+      "year": 1903
+    },
+    "row": 6
   },
   {
     "id": "Q988780",
@@ -626,11 +1042,11 @@
     "tagline": "device for evenly printing ink onto a print medium",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg",
-    "description": "A printing press is a machine that transfers ink onto materials such as paper or cloth by applying pressure to an inked surface. It marked a major advance on earlier methods, in which ink was applied to the printing surface and the paper was rubbed by hand to transfer it. The invention and global spread of the printing press transformed book production and communication during the early modern period.",
+    "description": "A printing press is a machine that applies pressure to transfer ink onto a surface made of paper, cloth, or a similar material. Its workers are known as printing press operators. It marked a significant improvement on earlier methods, in which the paper was rubbed by hand to transfer applied ink to the printing surface.",
     "at": {
       "year": 1439
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q46904",
@@ -644,7 +1060,7 @@
     "at": {
       "year": 1990
     },
-    "row": 11
+    "row": 12
   },
   {
     "id": "Q171043",
@@ -656,11 +1072,11 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_locomotive",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/3511%20-%20Hartswater%20240481.jpg",
     "imageAttribution": "User:Malcolm Best, via Wikimedia Commons",
-    "description": "A steam locomotive is a type of locomotive that provides the force to move itself and other vehicles by means of the expansion of steam. It is fuelled by burning combustible material to heat water in the locomotive's boiler to the point where it becomes gaseous and its volume increases 1,600 to 1,700 times. Functionally, it is a self-propelled steam engine on wheels.",
+    "description": "A steam locomotive, also known as an iron horse, is a type of locomotive that provides the force to move itself and other vehicles by means of the expansion of steam. It is fuelled by burning combustible material to heat water in the locomotive's boiler to the point where it becomes gaseous and its volume increases 1,600 to 1,700 times. Functionally, it is a self-propelled steam engine on wheels.",
     "at": {
       "year": 1814
     },
-    "row": 4
+    "row": 7
   },
   {
     "id": "Q193692",
@@ -672,7 +1088,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_car",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Electric%20Car%20recharging.jpg",
     "imageAttribution": "original: Michael Movchinedited by Felix Müller, via Wikimedia Commons",
-    "description": "An electric car or electric vehicle (EV) is an automobile that uses electrical energy as the primary source of propulsion. The term normally refers to a plug-in electric vehicle, typically a battery electric vehicle (BEV), which only uses energy stored in on-board battery packs, but broadly may also include plug-in hybrid electric vehicle (PHEV), range-extended electric vehicle (REEV) and fuel cell electric vehicle (FCEV), which can convert electric power from other fuels via a generator or a fuel cell.",
+    "description": "An electric car is an automobile that uses electrical energy as the primary source of propulsion. The term normally refers to a plug-in electric vehicle, typically a battery electric vehicle (BEV), which only uses energy stored in on-board battery packs, but broadly may also include plug-in hybrid electric vehicle (PHEV), range-extended electric vehicle (REEV) and fuel cell electric vehicle (FCEV), which can convert electric power from other fuels via a generator or a fuel cell.",
     "at": {
       "year": 1835
     },
@@ -692,7 +1108,7 @@
     "at": {
       "year": 1893
     },
-    "row": 3
+    "row": 6
   },
   {
     "id": "Q164338",
@@ -706,28 +1122,12 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shinkansen",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/JR%20East%20Shinkansen%20lineup%20at%20Niigata%20Depot%20201210.jpg",
     "imageAttribution": "Rsa, via Wikimedia Commons",
-    "description": "The Shinkansen , colloquially known in English as the bullet train, is a network of high-speed railway lines in Japan. The system was developed to provide connections between Tokyo and other regions of the country. In addition to long-distance services, some sections in and around the largest metropolitan areas are used for commuter travel.",
+    "description": "The Shinkansen , colloquially known in English as the bullet train, is a network of primarily high-speed railway lines in Japan. The system was developed to provide connections between Tokyo and other regions of the country. In addition to long-distance services, some sections in and around the largest metropolitan areas are used for commuter travel.",
     "at": {
       "year": 1964,
       "month": 10
     },
-    "row": 8
-  },
-  {
-    "id": "Q79757",
-    "name": "barometer",
-    "category": "everyday-technology",
-    "regionTags": [],
-    "fameScore": 77,
-    "tagline": "scientific instrument used to measure atmospheric pressure",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Barometer",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Barometr%2C%20Skwer%20Bowiena%2C%20Sopot%20-%20panoramio.jpg",
-    "imageAttribution": "Krzysztof Rakowski, via Wikimedia Commons",
-    "description": "A barometer is a scientific instrument that is used to measure air pressure. Pressure tendency, which is derived from barometric readings, can forecast short term changes in the weather. Many measurements of air pressure are used within surface weather analysis to help find surface troughs, pressure systems and frontal boundaries.",
-    "at": {
-      "year": 1643
-    },
-    "row": 2
+    "row": 10
   },
   {
     "id": "Q189511",
@@ -743,7 +1143,7 @@
     "at": {
       "year": 1963
     },
-    "row": 7
+    "row": 11
   },
   {
     "id": "Q64403",
@@ -774,7 +1174,7 @@
     "at": {
       "year": 1873
     },
-    "row": 6
+    "row": 9
   },
   {
     "id": "Q131262",
@@ -795,6 +1195,97 @@
     "row": 0
   },
   {
+    "id": "Q150995",
+    "name": "Peace of Westphalia",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "peace treaty ending the Thirty and Eighty Years' Wars",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Peace_of_Westphalia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Westfaelischer%20Friede%20in%20Muenster%20%28Gerard%20Terborch%201648%29.jpg",
+    "description": "The Peace of Westphalia is the collective name for two peace treaties signed in October 1648 in the Westphalian cities of Osnabrück and Münster. They ended the Thirty Years' War (1618–1648) and brought peace to the Holy Roman Empire, closing a calamitous period of European history that killed between 4.5 and 8 million people. Ferdinand III, Holy Roman Emperor, the kingdoms of France and Sweden, and their respective allies among the princes of the Holy Roman Empire, participated in the treaties.",
+    "at": {
+      "year": 1648,
+      "month": 10
+    },
+    "row": 4
+  },
+  {
+    "id": "Q131482",
+    "name": "Hijra",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "journey of Muhammad from Mecca to Yathrib (Medina)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hijrah",
+    "description": "The Hijrah, also Hegira, was the journey the Islamic prophet Muhammad and his followers took from Mecca to Medina. The year in which the Hijrah took place is also identified as the epoch of the Lunar Hijri and Solar Hijri calendars; its date equates to 16 July 622 in the Julian calendar.",
+    "period": {
+      "start": {
+        "year": 622,
+        "month": 9
+      },
+      "end": {
+        "year": 622,
+        "month": 9
+      }
+    },
+    "row": 1
+  },
+  {
+    "id": "Q129846",
+    "name": "St. Basil's Cathedral",
+    "category": "landmarks",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "church in Moscow",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Basil%27s_Cathedral",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/00%200568%20Saint%20Basil%27s%20Cathedral%20-%20Moscow.jpg",
+    "imageAttribution": "W. Bulach, via Wikimedia Commons",
+    "description": "The Cathedral of Vasily the Blessed, commonly known as Saint Basil's Cathedral, is a Russian Orthodox church on Red Square in the historic centre of Moscow. It is one of the most popular cultural symbols of Russia. The building, now a museum, is officially known as the Cathedral of the Intercession of the Most Holy Theotokos on the Moat, or Pokrovsky Cathedral. It was built from 1555 to 1561 on orders from Ivan the Terrible and commemorates the capture of Kazan and Astrakhan. It was completed, with its colours, in 1683.",
+    "at": {
+      "year": 1555
+    },
+    "row": 0
+  },
+  {
+    "id": "Q132783",
+    "name": "Hermitage Museum",
+    "category": "landmarks",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "museum in Saint Petersburg, Russia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hermitage_Museum",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Winter%20Palace%20Panorama%204.jpg",
+    "imageAttribution": "Florstein (Telegram:WikiPhoto.Space), via Wikimedia Commons",
+    "description": "The State Hermitage Museum is a museum of art and culture in Saint Petersburg, Russia, and holds the largest collection of paintings in the world. It was founded in 1764 when Empress Catherine the Great acquired a collection of paintings from the Berlin merchant Johann Ernst Gotzkowsky. The museum celebrates the anniversary of its founding each year on 7 December, Saint Catherine's Day. It has been open to the public since 1852. The Art Newspaper ranked the museum 10th in their list of the most visited art museums, with 2,812,913 visitors in 2022.",
+    "at": {
+      "year": 1764
+    },
+    "row": 2
+  },
+  {
+    "id": "Q177477",
+    "name": "Baikonur Cosmodrome",
+    "category": "infrastructure",
+    "regionTags": [
+      "central-asia"
+    ],
+    "fameScore": 77,
+    "tagline": "cosmodrome in Kazakhstan, used by Russia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Baikonur_Cosmodrome",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Soyuz%20expedition%2019%20launch%20pad.jpg",
+    "description": "The Baikonur Cosmodrome is a spaceport operated by Russia within Kazakhstan. Located in the Kazakh city of Baikonur, it is the largest operational space launch facility in terms of area. All Russian crewed spaceflights are launched from Baikonur.",
+    "at": {
+      "year": 1955,
+      "month": 6
+    },
+    "row": 10
+  },
+  {
     "id": "Q132560",
     "name": "electron microscope",
     "category": "science-theory",
@@ -804,7 +1295,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Electron_microscope",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Elektronenmikroskop.jpg",
     "imageAttribution": "Stahlkocher, via Wikimedia Commons",
-    "description": "An electron microscope is a microscope that uses a beam of electrons as a source of illumination. It uses electron optics that are analogous to the glass lenses of an optical light microscope to control the electron beam, for instance focusing it to produce magnified images or electron diffraction patterns. As the wavelength of an electron can be more than 100,000 times smaller than that of visible light, electron microscopes have a much higher resolution of about 0.1 nm, which compares to about 200 nm for light microscopes. Electron microscope may refer to:Transmission electron microscope (TEM) where swift electrons go through a thin sampleScanning transmission electron microscope (STEM) which is similar to TEM with a scanned electron probeScanning electron microscope (SEM) which is similar to STEM, but with thick samplesElectron microprobe similar to a SEM, but more for chemical analysisLow-energy electron microscope (LEEM), used to image surfacesPhotoemission electron microscope (PEEM) which is similar to LEEM using electrons emitted from surfaces by photons",
+    "description": "An electron microscope is a microscope that uses a beam of electrons as a source of \"illumination\". It uses electron optics that are analogous to the glass lenses of an optical light microscope to control the electron beam, for instance focusing it to produce magnified images or electron diffraction patterns. As the wavelength of an electron can be more than 100,000 times smaller than that of visible light, electron microscopes have a much higher resolution of about 0.1 nm, which compares to about 200 nm for light microscopes. Electron microscope may refer to:Transmission electron microscope (TEM) where swift electrons go through a thin sampleScanning transmission electron microscope (STEM) which is similar to TEM with a scanned electron probeScanning electron microscope (SEM) which is similar to STEM, but with thick samplesElectron microprobe similar to a SEM, but more for chemical analysisLow-energy electron microscope (LEEM), used to image surfacesPhotoemission electron microscope (PEEM) which is similar to LEEM using electrons emitted from surfaces by photons",
     "at": {
       "year": 1931
     },
@@ -851,11 +1342,11 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ballpoint_pen",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/03-BICcristal2008-03-26.jpg",
     "imageAttribution": "Trounce, via Wikimedia Commons",
-    "description": "A ballpoint pen, also known as a biro, ball pen, or dot pen, is a pen that dispenses ink over a hard ball at its point, i.e., over a \"ball point\". The materials commonly used are steel, brass, or tungsten carbide. The design was conceived and developed as a cleaner and more reliable alternative to dip pens and fountain pens, and it is now the world's most-used writing instrument; millions are manufactured and sold daily. It has influenced art and graphic design and spawned an artwork genre.",
+    "description": "A ballpoint pen is a pen that dispenses ink over a hard ball rolling in its point. The materials commonly used are steel, brass, or tungsten carbide. The design was conceived and developed as a cleaner and more reliable alternative to dip pens and fountain pens. It is now the world's most-used writing instrument, with millions manufactured and sold daily. It has influenced art and graphic design and spawned an artwork genre.",
     "at": {
       "year": 1888
     },
-    "row": 6
+    "row": 10
   },
   {
     "id": "Q180548",
@@ -875,7 +1366,7 @@
         "year": -3000
       }
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q188371",
@@ -895,7 +1386,7 @@
         "year": 1852
       }
     },
-    "row": 5
+    "row": 7
   },
   {
     "id": "Q11146",
@@ -914,7 +1405,7 @@
       "year": 1992,
       "month": 2
     },
-    "row": 6
+    "row": 13
   },
   {
     "id": "Q154705",
@@ -938,7 +1429,7 @@
         "month": 5
       }
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q186356",
@@ -951,7 +1442,7 @@
     "tagline": "economic programs of U.S. president Franklin D. Roosevelt",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/New_Deal",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/New%20Deal%20collage.jpg",
-    "description": "The New Deal was a 1933–1938 series of economic, social, and political reforms in response to the Great Depression in the United States under President Franklin D. Roosevelt. He introduced the phrase when accepting the Democratic Party presidential nomination in the 1932 United States presidential election, winning in a landslide over incumbent Herbert Hoover, whose administration was widely viewed as ineffective. Roosevelt attributed the Depression to inherent market instability and inadequate aggregate demand, and argued that stabilizing and rationalizing the economy required massive government intervention.",
+    "description": "The New Deal refers to a series of economic, social, and political reforms in response to the Great Depression in the United States under the first and second administrations of President Franklin D. Roosevelt. Following a demand-side economic theory, Roosevelt sought to utilize the authority of the federal government to increase spending and introduce programs to spur growth and combat issues specific to the depression, such as unemployment, labor relations, financial reform, and social welfare.",
     "period": {
       "start": {
         "year": 1933
@@ -960,7 +1451,7 @@
         "year": 1939
       }
     },
-    "row": 5
+    "row": 8
   },
   {
     "id": "Q157506",
@@ -1015,6 +1506,144 @@
         "month": 8
       }
     },
-    "row": 11
+    "row": 13
+  },
+  {
+    "id": "Q192050",
+    "name": "assassination of Archduke Franz Ferdinand",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "1914 murder in Sarajevo, Austria-Hungary",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DC-1914-27-d-Sarajevo.jpg",
+    "description": "Archduke Franz Ferdinand of Austria, heir presumptive to the Austro-Hungarian throne, and his wife, Sophie, Duchess of Hohenberg, were assassinated by Bosnian Serb student Gavrilo Princip in Sarajevo on 28 June 1914. They were shot at close range while being driven through the provincial capital of Bosnia and Herzegovina, formally annexed by Austria-Hungary in 1908. The incident was one of the key events that led to World War I.",
+    "at": {
+      "year": 1914,
+      "month": 6
+    },
+    "row": 9
+  },
+  {
+    "id": "Q6743",
+    "name": "May 68",
+    "category": "social-movements",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "May 1968 civil unrest in France",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/May_68",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paris%20July%201968.jpg",
+    "imageAttribution": "Robert Schediwy, via Wikimedia Commons",
+    "description": "May 68 was a period of widespread protests, strikes, and civil unrest in France that began in May 1968 and became one of the most significant social uprisings in modern European history. Sparked by student demonstrations against university conditions and government repression, the movement quickly escalated into a nationwide general strike involving millions of workers, bringing the country to the brink of revolution. The events have profoundly shaped French politics, labor relations, and cultural life, leaving a lasting legacy of radical thought and activism.",
+    "period": {
+      "start": {
+        "year": 1968,
+        "month": 5
+      },
+      "end": {
+        "year": 1968,
+        "month": 6
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q71229",
+    "name": "Potala Palace",
+    "category": "landmarks",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 76,
+    "tagline": "7th-century Tibetan fortress and palace in Lhasa, rebuilt in the 17th century as the winter seat of the Dalai Lamas",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Potala_Palace",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Potala.jpg",
+    "imageAttribution": "Ondřej Žváček, via Wikimedia Commons",
+    "description": "Potala Palace is a museum complex in Lhasa, the capital of the Tibet Autonomous Region of China. It was formerly the winter palace of the Dalai Lamas, and from 1649 until 1959 served as the Dalai Lamas' residence. The palace complex became a museum following the annexation of Tibet by the People's Republic of China.",
+    "at": {
+      "year": 637
+    },
+    "row": 0
+  },
+  {
+    "id": "Q172891",
+    "name": "Elements",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "mathematical treatise by Euclid",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Euclid%27s_Elements",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Title%20page%20of%20Sir%20Henry%20Billingsley%27s%20first%20English%20version%20of%20Euclid%27s%20Elements%2C%201570%20%28560x900%29.jpg",
+    "description": "The Elements is a mathematical treatise written c. 300 BC by the Ancient Greek mathematician Euclid.",
+    "at": {
+      "year": -300
+    },
+    "row": 1
+  },
+  {
+    "id": "Q163310",
+    "name": "Turing machine",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "abstract computation model; mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Turing_machine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maquina.png",
+    "description": "A Turing machine is a mathematical model of computation describing an abstract machine that manipulates symbols on a strip of tape according to a table of rules. Despite the model's simplicity, it is capable of implementing any computer algorithm.",
+    "at": {
+      "year": 1936
+    },
+    "row": 14
+  },
+  {
+    "id": "Q11932",
+    "name": "Armenian alphabet",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "alphabet used to write the Armenian language",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Armenian_alphabet",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Moses%20of%20Chorene%20%28manuscript%20X-XIth%20centuries%29.jpg",
+    "description": "The Armenian alphabet or, more broadly, the Armenian script, is an alphabetic writing system developed for Armenian and occasionally used to write other languages. It was developed around 405 AD by Mesrop Mashtots, an Armenian linguist and ecclesiastical leader. The script originally had 36 letters. Eventually, two more were adopted in the 13th century. In the reformed Armenian orthography (1920s), the ligature և, ev, is also treated as a letter, bringing the total number of letters to 39.",
+    "at": {
+      "year": 405
+    },
+    "row": 0
+  },
+  {
+    "id": "Q896666",
+    "name": "2007–2008 financial crisis",
+    "category": "commerce-finance",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "global financial crisis triggered by bursting of the United States housing bubble and the devaluation of housing-related securities",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/2008_financial_crisis",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/TED%20Spread.png",
+    "description": "A major worldwide financial crisis centered in the United States took place in 2008. The immediate cause of the crisis was the collapse of the 2000s U.S. housing bubble, which involved excessive speculation in property values by both homeowners and financial institutions, exacerbated by predatory lending and by deficiencies in regulation. The first phase was the subprime mortgage crisis, which began in early 2007 as mortgage-backed securities (MBS) tied to U.S. real estate, and a vast web of derivatives linked to those MBS, collapsed in value. A liquidity crisis spread to global institutions by mid-2007 and climaxed with the bankruptcy of Lehman Brothers in September 2008, which triggered a stock market crash and bank runs in several countries. The crisis exacerbated the Great Recession, a global recession that began in late 2007, and contributed to major crises in Iceland and the eurozone.",
+    "at": {
+      "year": 2007
+    },
+    "row": 9
+  },
+  {
+    "id": "Q223644",
+    "name": "Solomon's Temple",
+    "category": "religion-mythology",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 76,
+    "tagline": "holy temple in ancient Jerusalem before its destruction by Nebuchadnezzar II",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Solomon%27s_Temple",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Francois%20Vatable%2C%20reconstructie%20van%20de%20tempel%20van%20Salomo%20%28detail%29.jpg",
+    "description": "Solomon's Temple, also known as the First Temple, was a Temple in Jerusalem believed to have existed between the 10th and 6th centuries BCE. Its description is largely based on narratives in the Hebrew Bible, in which it was commissioned by biblical king Solomon, the son of King David. It was reportedly destroyed during the siege of Jerusalem by Nebuchadnezzar II of the Neo-Babylonian Empire in 586 BCE. According to Josephus, this was 470 years after it was built.",
+    "at": {
+      "year": -995
+    },
+    "row": 0
   }
 ]

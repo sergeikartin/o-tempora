@@ -30,7 +30,7 @@
       "name": "milestone label",
       "category": "one of meta.categories"
     },
-    "count": 237
+    "count": 361
   },
   "milestones": [
     {
@@ -1217,6 +1217,626 @@
       "id": "Q9141",
       "name": "Taj Mahal",
       "category": "landmarks"
+    },
+    {
+      "id": "Q1121044",
+      "name": "Union of Krewo",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q134840",
+      "name": "Treaty of Verdun",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q150995",
+      "name": "Peace of Westphalia",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q151423",
+      "name": "congress of Berlin",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q152006",
+      "name": "partitions of Poland",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q15251",
+      "name": "handover of Hong Kong",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q154255",
+      "name": "Munich agreement",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q167634",
+      "name": "perestroika",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q179788",
+      "name": "Edict of Nantes",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q18408564",
+      "name": "1783 Russian annexation of Crimea",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q193155",
+      "name": "Louisiana Purchase",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q211674",
+      "name": "Sykes–Picot Agreement",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q2119319",
+      "name": "Peace of Amasya",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q309029",
+      "name": "Alaska Purchase",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q525758",
+      "name": "Treaty of Pereyaslav",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q525997",
+      "name": "Treaty of Georgievsk",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q570140",
+      "name": "Taika Reform",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q8736",
+      "name": "Treaty of Versailles",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q875512",
+      "name": "Treaty of Turkmenchay",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q963303",
+      "name": "Union of Lublin",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q191703",
+      "name": "Organisation of African Unity",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q10225",
+      "name": "Indian National Congress",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q332075",
+      "name": "sakoku",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q547513",
+      "name": "Sword Abolishment Edict",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q462252",
+      "name": "history of the Soviet Union",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q5086",
+      "name": "Berlin Wall",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q7888194",
+      "name": "Brexit",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q51122",
+      "name": "Unification of Italy",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q11409",
+      "name": "apartheid",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q821122",
+      "name": "collectivization in the Soviet Union",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q3350154",
+      "name": "assassination of Mahatma Gandhi",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q193484",
+      "name": "assassination of John F. Kennedy",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q10806",
+      "name": "September 11 attacks",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q128160",
+      "name": "Cuban Missile Crisis",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q192050",
+      "name": "assassination of Archduke Franz Ferdinand",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q1059758",
+      "name": "Bronze Age collapse",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q329838",
+      "name": "Crisis of the Third Century",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q608613",
+      "name": "fall of the western Roman Empire",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q215231",
+      "name": "Great Fire of Rome",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q239344",
+      "name": "Salt March",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q6743",
+      "name": "May 68",
+      "category": "social-movements"
+    },
+    {
+      "id": "Q131482",
+      "name": "Hijra",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q1281955",
+      "name": "Christianization of Bulgaria",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q28135544",
+      "name": "Christianization of Iberia",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q573211",
+      "name": "Christianization of Kievan Rus'",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q60863552",
+      "name": "Baptism of Poland",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q12562",
+      "name": "Protestant Reformation",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q202558",
+      "name": "Avignon Papacy",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q736311",
+      "name": "Buddhism in Japan",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q325656",
+      "name": "Road to Canossa",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q727413",
+      "name": "Rigveda",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q494235",
+      "name": "Diamond Sutra",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q175447",
+      "name": "Babylonian captivity",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q11761",
+      "name": "Bronze Age",
+      "category": "archaeology-anthropology"
+    },
+    {
+      "id": "Q11764",
+      "name": "Iron Age",
+      "category": "archaeology-anthropology"
+    },
+    {
+      "id": "Q5725",
+      "name": "Mohenjo-daro",
+      "category": "archaeology-anthropology"
+    },
+    {
+      "id": "Q333661",
+      "name": "Cahokia",
+      "category": "archaeology-anthropology"
+    },
+    {
+      "id": "Q1739282",
+      "name": "Kerma kingdom",
+      "category": "archaeology-anthropology"
+    },
+    {
+      "id": "Q1144693",
+      "name": "Minoan eruption",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q3699044",
+      "name": "Woolly Mammoth",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q815567",
+      "name": "1988 Spitak earthquake",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q466060",
+      "name": "Canon of Medicine",
+      "category": "medicine-health"
+    },
+    {
+      "id": "Q486",
+      "name": "Chernobyl disaster",
+      "category": "energy-industry"
+    },
+    {
+      "id": "Q1426448",
+      "name": "Smiling Buddha",
+      "category": "energy-industry"
+    },
+    {
+      "id": "Q2269",
+      "name": "Industrial Revolution",
+      "category": "energy-industry"
+    },
+    {
+      "id": "Q39671",
+      "name": "Stonehenge",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q42798",
+      "name": "Borobudur Temple",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q43473",
+      "name": "Angkor Wat",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q676203",
+      "name": "Machu Picchu",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q5859",
+      "name": "Chichen Itza",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q916943",
+      "name": "Prahadisvarar Temple",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q99309",
+      "name": "Pantheon",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q2981",
+      "name": "Notre-Dame de Paris",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q48435",
+      "name": "Basilica and Expiatory Church of the Holy Family",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q129846",
+      "name": "St. Basil's Cathedral",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q133274",
+      "name": "Kremlin",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q47476",
+      "name": "Alhambra",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q71229",
+      "name": "Potala Palace",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q80290",
+      "name": "Forbidden City",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q10288",
+      "name": "Parthenon",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q202927",
+      "name": "Ziggurat of Ur",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q132783",
+      "name": "Hermitage Museum",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q12501",
+      "name": "Great Wall of China",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q733610",
+      "name": "Erebuni Fortress",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q173527",
+      "name": "Knossos",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q2620036",
+      "name": "Nazca Lines",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q318181",
+      "name": "Gobustan State Historical and Cultural Reserve",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q435",
+      "name": "Library of Alexandria",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q728428",
+      "name": "Second Temple",
+      "category": "landmarks"
+    },
+    {
+      "id": "Q13164",
+      "name": "Lomonosov Moscow State University",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q34433",
+      "name": "University of Oxford",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q83172",
+      "name": "Russian Academy of Sciences",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q33018",
+      "name": "House of Wisdom",
+      "category": "philosophy-education"
+    },
+    {
+      "id": "Q155952",
+      "name": "Almagest",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q172891",
+      "name": "Elements",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q163310",
+      "name": "Turing machine",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q402",
+      "name": "Higgs boson",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q2513",
+      "name": "Hubble Space Telescope",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q11184",
+      "name": "Julian calendar",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q205509",
+      "name": "Intel 4004",
+      "category": "everyday-technology"
+    },
+    {
+      "id": "Q11932",
+      "name": "Armenian alphabet",
+      "category": "communication"
+    },
+    {
+      "id": "Q8209",
+      "name": "Cyrillic script",
+      "category": "communication"
+    },
+    {
+      "id": "Q8222",
+      "name": "Hangul",
+      "category": "communication"
+    },
+    {
+      "id": "Q7476695",
+      "name": "oracle bone script",
+      "category": "communication"
+    },
+    {
+      "id": "Q204208",
+      "name": "The Knight in the Panther's Skin",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q47504",
+      "name": "The Tale of Igor's Campaign",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q8269",
+      "name": "The Tale of Genji",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q45585",
+      "name": "The Starry Night",
+      "category": "culture-arts"
+    },
+    {
+      "id": "Q17738",
+      "name": "Star Wars: Episode IV – A New Hope",
+      "category": "media-culture"
+    },
+    {
+      "id": "Q206230",
+      "name": "chaturanga",
+      "category": "sports-entertainment"
+    },
+    {
+      "id": "Q8093",
+      "name": "Nintendo",
+      "category": "sports-entertainment"
+    },
+    {
+      "id": "Q58767",
+      "name": "Trans-Siberian railway",
+      "category": "transportation"
+    },
+    {
+      "id": "Q177477",
+      "name": "Baikonur Cosmodrome",
+      "category": "infrastructure"
+    },
+    {
+      "id": "Q4916",
+      "name": "Euro",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q896666",
+      "name": "2007–2008 financial crisis",
+      "category": "commerce-finance"
+    },
+    {
+      "id": "Q128015",
+      "name": "guillotine",
+      "category": "law-jurisprudence"
+    },
+    {
+      "id": "Q700983",
+      "name": "German Instrument of Surrender",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q1419429",
+      "name": "First Fleet",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q5305631",
+      "name": "Drake Well",
+      "category": "energy-industry"
+    },
+    {
+      "id": "Q46047837",
+      "name": "Wright brothers' maiden flight",
+      "category": "transportation"
+    },
+    {
+      "id": "Q51497",
+      "name": "Annus Mirabilis papers",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q23016184",
+      "name": "AlphaGo versus Lee Sedol",
+      "category": "science-theory"
+    },
+    {
+      "id": "Q223644",
+      "name": "Solomon's Temple",
+      "category": "religion-mythology"
+    },
+    {
+      "id": "Q323813",
+      "name": "Jamestown",
+      "category": "society-administration"
     }
   ]
 }

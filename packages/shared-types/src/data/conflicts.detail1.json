@@ -3,7 +3,9 @@
     "id": "Q362",
     "name": "World War II",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "eastern-asia"
+    ],
     "fameScore": 97,
     "tagline": "1939–1945 global conflict",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/World_War_II",
@@ -26,12 +28,14 @@
     "id": "Q361",
     "name": "World War I",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "eastern-asia"
+    ],
     "fameScore": 95,
     "tagline": "1914–1918 global conflict",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/World_War_I",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WWImontage.jpg",
-    "description": "World War I, or the First World War, also known as the Great War, was a global conflict between two coalitions: the Allies and the Central Powers. Theatres of war included Europe, the Middle East, Africa, and the Asia-Pacific. One of the deadliest conflicts in history, World War I resulted in an estimated 15 to 22 million deaths, including those in war crimes and genocides. The war also helped spread the Spanish flu pandemic. The conflict saw important developments in weaponry, including the first large-scale use of machine guns, artillery, aircraft, chemical weapons, and tanks.",
+    "description": "World War I, or the First World War, also known as the Great War, was a global conflict between two coalitions: the Allies and the Central Powers. One of the deadliest conflicts in history, World War I resulted in an estimated 15 to 22 million deaths, including those in war crimes and genocides. The war also helped spread the Spanish flu pandemic. The conflict saw important developments in weaponry, including the first large-scale use of machine guns, artillery, aircraft, chemical weapons, and tanks.",
     "period": {
       "start": {
         "year": 1914,
@@ -73,7 +77,7 @@
       "western-europe"
     ],
     "fameScore": 90,
-    "tagline": "revolution in France from 1789 to 1799",
+    "tagline": "A period of political and societal change in France from 1789 to 1799",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/French_Revolution",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LouisXVIExecutionBig.jpg",
     "description": "The French Revolution was a period of political and societal change in France that began with the Estates General of 1789 and ended with the Coup of 18 Brumaire on 9 November 1799. Many of the revolution's ideas are considered fundamental principles of liberal democracy, and its values remain central to modern French political discourse. It was caused by a combination of social, political, and economic factors which the existing regime proved unable to manage.",
@@ -93,7 +97,9 @@
     "id": "Q8676",
     "name": "American Civil War",
     "category": "war",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 89,
     "tagline": "1861–1865 civil war in the United States between the North and the South over the enslavement of African-Americans",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/American_Civil_War",
@@ -147,12 +153,36 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D1%83%D0%B4%D0%B0%D1%80%D0%B0%20%D1%80%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20%D0%93%D0%BE%D0%BB%D0%BE%D1%81%D0%B5%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%BC%D1%83%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%D1%83%20%D0%9A%D0%B8%D0%B5%D0%B2%D0%B0%20%286%29.jpg",
     "imageAttribution": "Arrikel, via Wikimedia Commons",
-    "description": "On 24 February 2022, Russia invaded Ukraine, starting the largest and deadliest war in Europe since World War II, in a major escalation of the existing war between the two countries that began when Russia attacked Ukraine in 2014. The fighting has caused hundreds of thousands of military casualties and tens of thousands of Ukrainian civilian casualties. As of August 2026, Russian troops occupy roughly 20% of Ukraine. From a population of 41 million, about 8 million Ukrainians have been internally displaced and 6–7 million have fled the country, creating Europe's largest refugee crisis since World War II.",
+    "description": "On 24 February 2022, Russia invaded Ukraine, starting the largest and deadliest war in Europe since World War II, in a major escalation of the existing war between the two countries that began when Russia attacked Ukraine in 2014. The fighting has caused hundreds of thousands of military casualties and tens of thousands of Ukrainian civilian casualties. Russian troops occupy roughly 20% of Ukraine. From a population of 41 million, about 8 million Ukrainians have been internally displaced and 6–7 million have fled the country, creating Europe's largest refugee crisis since World War II.",
     "at": {
       "year": 2022,
       "month": 2
     },
     "row": 2
+  },
+  {
+    "id": "Q8663",
+    "name": "Korean War",
+    "category": "war",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 87,
+    "tagline": "war between North and South Korea, 1950–1953",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Korean_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Korean%20War%20Montage%202.png",
+    "description": "The Korean War was an armed conflict fought on the Korean Peninsula between North Korea and South Korea and their allies. North Korea was supported by China and the Soviet Union, while South Korea was supported by the United Nations led by the United States under the auspices of the United Nations Command (UNC).",
+    "period": {
+      "start": {
+        "year": 1950,
+        "month": 6
+      },
+      "end": {
+        "year": 1953,
+        "month": 7
+      }
+    },
+    "row": 0
   },
   {
     "id": "Q12546",
@@ -170,30 +200,6 @@
       },
       "end": {
         "year": 1291
-      }
-    },
-    "row": 0
-  },
-  {
-    "id": "Q8663",
-    "name": "Korean War",
-    "category": "war",
-    "regionTags": [
-      "eastern-asia"
-    ],
-    "fameScore": 86,
-    "tagline": "war between North and South Korea, 1950–1953",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Korean_War",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Korean%20War%20Montage%202.png",
-    "description": "The Korean War was an armed conflict fought on the Korean Peninsula between North Korea and South Korea and their allies. North Korea was supported by China and the Soviet Union, while South Korea was supported by the United Nations led by the United States under the auspices of the United Nations Command (UNC).",
-    "period": {
-      "start": {
-        "year": 1950,
-        "month": 6
-      },
-      "end": {
-        "year": 1953,
-        "month": 7
       }
     },
     "row": 0

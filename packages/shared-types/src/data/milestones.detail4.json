@@ -14,7 +14,7 @@
       "year": 1996,
       "month": 7
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q190035",
@@ -62,7 +62,7 @@
       "year": 1908,
       "month": 9
     },
-    "row": 7
+    "row": 11
   },
   {
     "id": "Q15003",
@@ -78,7 +78,7 @@
     "at": {
       "year": 1891
     },
-    "row": 10
+    "row": 8
   },
   {
     "id": "Q1932",
@@ -89,7 +89,7 @@
     "tagline": "competition to explore space between USA and USSR",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Space_Race",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo-Soyuz-Test-Program-artist-rendering.jpg",
-    "description": "The Space Race was a 20th-century competition between the Cold War rivals, the United States and the Soviet Union, to achieve superior spaceflight capability. It had its origins in the ballistic missile-based nuclear arms race between the two nations following World War II and the onset of the Cold War. The technological advantage demonstrated by spaceflight achievement was seen as necessary for national security, particularly in regard to intercontinental ballistic missile and satellite reconnaissance capability, but also became part of the cultural symbolism and ideology of the time. The Space Race brought pioneering launches of artificial satellites, robotic landers to the Moon, Venus, and Mars, and human spaceflight in low Earth orbit and ultimately to the Moon.",
+    "description": "The Space Race was a 20th-century competition between the Cold War rivals, the United States and the Soviet Union, to achieve superior spaceflight capability. It had its origins in the ballistic missile-based nuclear arms race between the two nations that followed World War II and the onset of the Cold War. The technological advantage demonstrated by spaceflight achievement was seen as necessary for national security, particularly in regard to intercontinental ballistic missile and satellite reconnaissance capability, but also became part of the cultural symbolism and ideology of the time. The Space Race brought pioneering launches of artificial satellites, robotic landers to the Moon, Venus, and Mars, and human spaceflight in low Earth orbit and ultimately to the Moon.",
     "period": {
       "start": {
         "year": 1957,
@@ -100,7 +100,7 @@
         "month": 7
       }
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q180253",
@@ -139,7 +139,7 @@
         "month": 2
       }
     },
-    "row": 8
+    "row": 13
   },
   {
     "id": "Q55816",
@@ -157,7 +157,7 @@
     "at": {
       "year": 1981
     },
-    "row": 1
+    "row": 13
   },
   {
     "id": "Q35045",
@@ -176,6 +176,80 @@
       "year": 1545
     },
     "row": 0
+  },
+  {
+    "id": "Q211674",
+    "name": "Sykes–Picot Agreement",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 75,
+    "tagline": "secret agreement signed in 1916 between France and the United Kingdom providing for the division of the Middle East at the end of the First World War",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sykes%E2%80%93Picot_Agreement",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MPK1-426%20Sykes%20Picot%20Agreement%20Map%20signed%208%20May%201916.jpg",
+    "description": "The Sykes–Picot Agreement was a 1916 secret treaty between the United Kingdom and France, with assent from Russia and Italy, to define their mutually agreed spheres of influence and control in an eventual partition of the Ottoman Empire.",
+    "at": {
+      "year": 1916,
+      "month": 5
+    },
+    "row": 14
+  },
+  {
+    "id": "Q608613",
+    "name": "fall of the western Roman Empire",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "loss of central political control in the Western Roman Empire in late antiquity",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire",
+    "description": "The fall of the Western Roman Empire, also called the fall of the Roman Empire or the fall of Rome, was the loss of central political control in the Western Roman Empire, a process in which the Empire failed to enforce its rule, and its vast territory was divided among several successor polities. The Roman Empire lost the strengths that had allowed it to exercise effective control over its Western provinces; modern historians posit factors including the effectiveness and numbers of the army, the health and numbers of the Roman population, the strength of the economy, the competence of the emperors, the internal struggles for power, the religious changes of the period, and the efficiency of the civil administration. Increasing pressure from invading peoples outside Roman culture also contributed greatly to the collapse. Climatic changes and both endemic and epidemic diseases drove many of these immediate factors. The reasons for the collapse are major subjects of the historiography of the ancient world and they inform much modern discourse on state failure.",
+    "period": {
+      "start": {
+        "year": 476
+      },
+      "end": {
+        "year": 476,
+        "month": 9
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q173527",
+    "name": "Knossos",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 75,
+    "tagline": "ancient Minoan through Roman administrative center and city",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Knossos",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Knossos%20-%20North%20Portico%2002.jpg",
+    "imageAttribution": "Bernard Gagnon, via Wikimedia Commons",
+    "description": "Knossos is an archaeological site and ancient urban centre in Crete, Greece. It is located within the southern periphery of Heraklion, about 5 km (3.1 mi) south of the city's historic centre. The site was occupied from the Neolithic period into the first millennium AD and became the largest and best-known centre of the Minoan civilisation.",
+    "at": {
+      "year": -6999
+    },
+    "row": 0
+  },
+  {
+    "id": "Q2620036",
+    "name": "Nazca Lines",
+    "category": "landmarks",
+    "regionTags": [
+      "south-america"
+    ],
+    "fameScore": 75,
+    "tagline": "large geoglyphs made in the soil of the Nazca Desert in Peru",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nazca_lines",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/L%C3%ADneas%20de%20Nazca%2C%20Nazca%2C%20Per%C3%BA%2C%202015-07-29%2C%20DD%2058.JPG",
+    "imageAttribution": "Diego Delso, via Wikimedia Commons",
+    "description": "The Nazca lines are a group of geoglyphs made in the soil of the Nazca Desert in southern Peru. They were created between 500 BC and 500 AD by people making depressions or shallow incisions in the desert floor, removing pebbles and leaving different-colored dirt exposed. There are two major phases of the Nazca lines, Paracas phase, from 400 to 200 BC, and Nazca phase, from 200 BC to 500 AD. In the 21st century, several hundred new figures have been found with the use of drones, and archaeologists believe that there are more to be found.",
+    "at": {
+      "year": -199
+    },
+    "row": 2
   },
   {
     "id": "Q211382",
@@ -203,11 +277,11 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Daguerreotype",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Daguerreotype%20process.jpg",
     "imageAttribution": ".mw-parser-output .messagebox{margin:4px 0;width:auto;border-collapse:collapse;border:2px solid var(--border-color-progressive,#6485d1);background-color:var(--background-color-neutral-subtle,#fbfcff);color:var(--color-base,#202122);box-sizing:border-box;border-inline-start-width:8px}.mw-parser-output .messagebox.mbox-small{font-size:88%;line-height:1.25em}.mw-parser-output .mbox-warning,.mw-parser-output .mbox-speedy{border:2px solid var(--border-color-error,#b22222);background:var(--background-color-error-subtle,#ffdbdb);border-inline-start-width:8px}.mw-parser-output .mbox-serious,.mw-parser-output .mbox-delete,.mw-parser-output .mbox-stop{border:2px solid var(--border-color-error,#b22222);border-inline-start-width:8px}.mw-parser-output .mbox-issue,.mw-parser-output .mbox-content{border:2px solid #f28500;background:var(--background-color-warning-subtle,#ffe);border-inline-start-width:8px}.mw-parser-output .mbox-query,.mw-parser-output .mbox-style{border:2px solid #f4c430;background:var(--background-color-warning-subtle,#ffe);border-inline-start-width:8px}.mw-parser-output .mbox-shit{border:2px solid #960;border-inline-start-width:8px}.mw-parser-output .mbox-license{border:2px solid #88a;border-inline-start-width:initial}.mw-parser-output .mbox-legal{border:2px solid var(--border-color-notice,#666);background:var(--background-color-base,#fff);border-inline-start-width:8px}.mw-parser-output .mbox-honor{border:2px solid #ca3;background:var(--background-color-warning-subtle,#fcf4db);border-inline-start-width:8px}.mw-parser-output .mbox-growth{border:2px solid #8d4;background:var(--background-color-success-subtle,#d5fdf4);border-inline-start-width:8px}.mw-parser-output .mbox-move{border:2px solid #93c;border-inline-start-width:8px}.mw-parser-output .mbox-protection,.mw-parser-output .mbox-message{border:2px solid var(--border-color-base,#aaa);border-inline-start-width:8px}.mw-parser-output .messagebox .mbox-text{border:none;padding:0.25em 0.9em;width:100%}.mw-parser-output .messagebox .mbox-image{border:none;padding-top:2px;padding-bottom:2px;padding-inline-start:0.9em;padding-inline-end:0;text-align:center}.mw-parser-output .messagebox .mbox-imageright{border:none;padding-top:2px;padding-bottom:2px;padding-inline-start:0;padding-inline-end:0.9em;text-align:center}.mw-parser-output .messagebox .mbox-empty-cell{border:none;padding:0;width:1px}.mw-parser-output .messagebox .mbox-invalid-type{text-align:center}@media(min-width:720px){.mw-parser-output .messagebox{margin:4px 10%}.mw-parser-output .messagebox.mbox-small{clear:right;float:right;margin:4px 0 4px 1em;width:238px}}body.skin--responsive .mw-parser-output table.messagebox img{max-width:none!important}This image has been created during \"DensityDesign Integrated Course Final Synthesis Studio\" at  Politecnico di Milano, organized by DensityDesign Research Lab in 2015. Credits goes to Susanna Celeste Castelli, via Wikimedia Commons",
-    "description": "Daguerreotype was the first publicly available photographic process, widely used from the 1830s to 1850s. \"Daguerreotype\" also refers to an image created through this process.",
+    "description": "Daguerreotype was the second publicly available photographic process, widely used from the 1830s to 1850s. \"Daguerreotype\" also refers to an image created through this process.",
     "at": {
       "year": 1839
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q227467",
@@ -224,7 +298,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 8
+    "row": 12
   },
   {
     "id": "Q221474",
@@ -256,7 +330,7 @@
     "at": {
       "year": 1757
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q178032",
@@ -272,7 +346,7 @@
     "at": {
       "year": 1825
     },
-    "row": 1
+    "row": 5
   },
   {
     "id": "Q233562",
@@ -288,7 +362,7 @@
       "year": 1776,
       "month": 3
     },
-    "row": 2
+    "row": 5
   },
   {
     "id": "Q48537",
@@ -310,7 +384,79 @@
         "year": 1968
       }
     },
-    "row": 9
+    "row": 16
+  },
+  {
+    "id": "Q152006",
+    "name": "partitions of Poland",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "forced partition of the Polish–Lithuanian Commonwealth",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Partitions_of_Poland",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ChelmonskiJozef.1875.KazimierzPulaskiPodCzestochowa.jpg",
+    "description": "The Partitions of Poland were three partitions of the Polish–Lithuanian Commonwealth that took place between 1772 and 1795, toward the end of the 18th century. The partitions ended the existence of the state, resulting in the elimination of sovereign Poland and Lithuania for 123 years. The partitions were conducted by the Habsburg monarchy, the Kingdom of Prussia, and the Russian Empire, which divided up the commonwealth's lands among themselves progressively in the process of territorial seizures and annexations.",
+    "at": {
+      "year": 1772
+    },
+    "row": 4
+  },
+  {
+    "id": "Q193155",
+    "name": "Louisiana Purchase",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 74,
+    "tagline": "1803 acquisition by the U.S. of France's claim to the territory of Louisiana",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Louisiana_Purchase",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Handover%20ceremony%20of%20Lousiana.jpg",
+    "description": "The Louisiana Purchase was the acquisition of the territory of Louisiana by the United States from the French First Republic in 1803. This consisted of most of the land in the Mississippi River's drainage basin west of the river. In return for $15 million, or approximately $18 per square mile ($7/km2), the United States nominally acquired a total of 828,000 sq mi of land now in the Central United States. However, France only controlled a small fraction of this area, most of which was inhabited by Native Americans; effectively, for the majority of the area, the United States bought the preemptive right to obtain Indian lands by treaty or by conquest, to the exclusion of other colonial powers.",
+    "at": {
+      "year": 1803,
+      "month": 4
+    },
+    "row": 3
+  },
+  {
+    "id": "Q309029",
+    "name": "Alaska Purchase",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 74,
+    "tagline": "1867 sale of Alaska to the USA by Russia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Alaska_Purchase",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alaska%20Purchase%20%28hi-res%29.jpg",
+    "description": "The Alaska Purchase in 1867 resulted in the transfer of Russian America to the United States for $7.2 million. On April 9 of that year, the United States Senate ratified a bilateral treaty that had been signed on March 30, and American sovereignty became legally effective across the territory on October 18.",
+    "at": {
+      "year": 1867,
+      "month": 3
+    },
+    "row": 13
+  },
+  {
+    "id": "Q3699044",
+    "name": "Woolly Mammoth",
+    "category": "environment-geology",
+    "regionTags": [],
+    "fameScore": 74,
+    "tagline": "extinct species of mammoth (Mammuthus)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Woolly_mammoth",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Woolly%20mammoth%20model%20Royal%20BC%20Museum%20in%20Victoria.jpg",
+    "imageAttribution": "Thomas Quine, via Wikimedia Commons",
+    "description": "The woolly mammoth is an extinct species of mammoth that lived from the Middle Pleistocene until its extinction in the Holocene epoch. It was one of the last in a line of mammoth species, beginning with the African Mammuthus subplanifrons in the early Pliocene. The woolly mammoth began to diverge from the steppe mammoth about 800,000 years ago in Siberia. Its closest extant relative is the Asian elephant. The Columbian mammoth lived alongside the woolly mammoth in North America, and DNA studies show that the two hybridised with each other. Mammoth remains were long known in Asia before they became known to Europeans. The origin of these remains was long debated and often explained as the remains of legendary creatures. The mammoth was identified as an extinct elephant species by Georges Cuvier in 1796.",
+    "period": {
+      "start": {
+        "year": -400000
+      },
+      "end": {
+        "year": -4000
+      }
+    },
+    "row": 1
   },
   {
     "id": "Q204711",
@@ -328,7 +474,7 @@
       "year": 1906,
       "month": 6
     },
-    "row": 10
+    "row": 15
   },
   {
     "id": "Q191472",
@@ -345,7 +491,7 @@
       "year": 1936,
       "month": 11
     },
-    "row": 14
+    "row": 16
   },
   {
     "id": "Q185757",
@@ -360,7 +506,7 @@
     "at": {
       "year": 1955
     },
-    "row": 10
+    "row": 13
   },
   {
     "id": "Q213669",
@@ -376,7 +522,7 @@
     "at": {
       "year": 1909
     },
-    "row": 12
+    "row": 16
   },
   {
     "id": "Q182524",
@@ -394,7 +540,7 @@
       "year": 1961,
       "month": 4
     },
-    "row": 14
+    "row": 18
   },
   {
     "id": "Q184201",
@@ -412,7 +558,7 @@
       "year": 1968,
       "month": 12
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q189859",
@@ -424,29 +570,27 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_turbine",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dampfturbine%20Laeufer01.jpg",
     "imageAttribution": "Siemens Pressebild, http://www.siemens.com, via Wikimedia Commons",
-    "description": "A steam turbine or steam turbine engine is a machine or heat engine that extracts thermal energy from pressurized steam and uses it to do mechanical work utilising a rotating output shaft. Its modern manifestation was invented by Sir Charles Parsons in 1884 and revolutionized marine propulsion and navigation. Fabrication of a modern steam turbine involves advanced metalwork to form high-grade steel alloys into precision parts using technologies that first became available in the 20th century; continued advances in durability and efficiency of steam turbines remains central to the energy economics of the 21st century. The largest steam turbine ever built is the 1,770 MW Arabelle steam turbine built by Arabelle Solutions, two units of which will be installed at Hinkley Point C Nuclear Power Station, England.",
+    "description": "A steam turbine or steam turbine engine is a machine or heat engine that extracts thermal energy from pressurized steam and uses it to do mechanical work utilising a rotating output shaft. Its modern form was invented by Sir Charles Parsons in 1884 and revolutionized marine propulsion and navigation. Fabrication of a modern steam turbine involves advanced metalwork to form high-grade steel alloys into precision parts using technologies that first became available in the 20th century; continued advances in the durability and efficiency of steam turbines remains central to the energy economics of the 21st century. The largest steam turbine ever built is the 1,770 MW Arabelle steam turbine built by Arabelle Solutions, two units of which will be installed at Hinkley Point C Nuclear Power Station, England.",
     "at": {
       "year": 1884
     },
-    "row": 10
+    "row": 14
   },
   {
-    "id": "Q223732",
-    "name": "Declaration of the Establishment of the State of Israel",
+    "id": "Q171375",
+    "name": "Truman Doctrine",
     "category": "society-administration",
-    "regionTags": [
-      "western-asia"
-    ],
+    "regionTags": [],
     "fameScore": 73,
-    "tagline": "1948 declaration of Israel's independence",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Israel%20Declaration%20of%20Independence.jpg",
-    "description": "The Israeli Declaration of Independence, formally the Declaration of the Establishment of the State of Israel, was proclaimed at the Tel Aviv Museum on 14 May 1948, at the end of the civil war phase and beginning of the Arab–Israeli War of the 1948 Palestine war, by the Va'ad Leumi led by David Ben-Gurion, the executive head of the World Zionist Organization and chairman of the Jewish Agency for Palestine.",
+    "tagline": "United States Cold War policy to contain communism in Europe and elsewhere",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Truman_Doctrine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Special%20Message%20to%20Congress%20on%20Greece%20and%20Turkey%20The%20Truman%20Doctrine.jpg",
+    "description": "The Truman Doctrine is a U.S. foreign policy that pledges American support for U.S.-aligned nations against alleged authoritarian threats. The doctrine originated with the primary goal of countering the growth of the Soviet bloc during the Cold War. It was announced to Congress by President Harry S. Truman on March 12, 1947, and further developed on July 4, 1948, when he pledged to oppose the communist rebellions in Greece and Soviet demands on Turkey. More generally, the Truman Doctrine implied U.S. support for other nations threatened by the Soviet Union. It led to the formation of NATO in 1949. Historians often use Truman's speech to Congress on March 12, 1947, to date the start of the Cold War.",
     "at": {
-      "year": 1948,
-      "month": 5
+      "year": 1947,
+      "month": 3
     },
-    "row": 16
+    "row": 21
   },
   {
     "id": "Q180764",
@@ -459,7 +603,7 @@
     "tagline": "legalization of Christianity in the Roman Empire, 313",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Edict_of_Milan",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%CE%91%CE%9D%CE%A4%CE%99%CE%93%CE%A1%CE%91%CE%A6%CE%9F%CE%9D%20%CE%92%CE%91%CE%A3%CE%99%CE%9B%CE%99%CE%9A%CE%A9%CE%9D%20%CE%94%CE%99%CE%91%CE%A4%CE%91%CE%9E%CE%95%CE%A9%CE%9D%20%CE%95%CE%9A%20%CE%A1%CE%A9%CE%9C%CE%91%CE%99%CE%9A%CE%97%CE%A3.png",
-    "description": "The Edict of Milan was the 13 February 313 AD agreement to treat Christians benevolently within the Roman Empire. Western Roman Emperor Constantine I and Emperor Licinius, who controlled the Balkans, met in Mediolanum and, among other things, agreed to change policies towards Christians following the edict of toleration issued by Emperor Galerius two years earlier in Serdica. The Edict of Milan gave Christianity legal status and a reprieve from persecution but did not make it the state church of the Roman Empire, which occurred in AD 380 with the Edict of Thessalonica, when Nicene Christianity received normative status.",
+    "description": "The Edict of Milan was the 13 February 313 AD agreement to treat Christians benevolently within the Roman Empire. Western Roman Emperor Constantine I and Emperor Licinius, who controlled the Balkans, met in Mediolanum and, among other things, agreed to change policies towards Christians following the edict of toleration issued by Emperor Galerius two years earlier in Serdica. The Edict of Milan gave Christianity legal status and a reprieve from persecution but did not make it the state church of the Roman Empire, which occurred in 380 AD with the Edict of Thessalonica, when Nicene Christianity received normative status.",
     "at": {
       "year": 313,
       "month": 6
@@ -477,12 +621,12 @@
     "tagline": "earthquake in 1755",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/1755_Lisbon_earthquake",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1755%20Lisbon%20Earthquake%20Location.png",
-    "description": "The 1755 Lisbon earthquake, also known as the Great Lisbon earthquake, hit the Iberian Peninsula and Northwest Africa on the morning of Saturday, 1 November, Feast of All Saints, at around 09:40 local time. In combination with subsequent fires and a tsunami, the earthquake almost completely destroyed Lisbon and adjoining areas. Seismologists estimate the Lisbon earthquake had a magnitude of 7.7 or greater on the moment magnitude scale, with its epicenter in the Atlantic Ocean about 200 km west-southwest of Cape St. Vincent, a cape in the Algarve region, and about 290 km southwest of Lisbon.",
+    "description": "The 1755 Lisbon earthquake, also known as the Great Lisbon earthquake, occurred in the Iberian Peninsula and Northwest Africa area on the morning of Saturday, 1 November, 1755 ; it took place at approximately 09:40 local time. In combination with subsequent fires and a tsunami, the earthquake almost completely destroyed Lisbon and adjoining areas. Seismologists estimate the Lisbon earthquake had a magnitude of 7.7 or greater on the moment magnitude scale, with its epicenter in the Atlantic Ocean about 200 km west-southwest of Cape St. Vincent, a cape in the Algarve region, and about 290 km southwest of Lisbon.",
     "at": {
       "year": 1755,
       "month": 11
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q193093",
@@ -514,7 +658,61 @@
     "at": {
       "year": 1751
     },
-    "row": 3
+    "row": 4
+  },
+  {
+    "id": "Q134840",
+    "name": "Treaty of Verdun",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "843 treaty dividing the Frankish Empire between the grandsons of Charlemagne",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Treaty_of_Verdun",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Louis%20the%20Pious%20blessing%20the%20division%20of%20the%20Carolingian%20Empire%20in%20843%20into%20West%20Francia%2C%20Lotharingia%2C%20and%20East%20Francia.jpg",
+    "description": "The Treaty of Verdun, agreed to on 10 August 843, ended the Carolingian civil war and divided the Carolingian Empire between Lothair I, Louis II and Charles II, the surviving sons of the emperor Louis I. The treaty was the culmination of negotiations lasting more than a year. It was the first in a series of partitions contributing to the dissolution of the empire created by Charlemagne and has been seen as foreshadowing the formation of many of the modern countries of western Europe.",
+    "at": {
+      "year": 843,
+      "month": 8
+    },
+    "row": 0
+  },
+  {
+    "id": "Q175447",
+    "name": "Babylonian captivity",
+    "category": "religion-mythology",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "period in Jewish history during which a number of people from the ancient Kingdom of Judah were captives in Babylon",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Babylonian_captivity",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tissot%20The%20Flight%20of%20the%20Prisoners.jpg",
+    "description": "The Babylonian captivity or Babylonian exile was the period in Jewish history during which a large number of Judeans from the ancient Kingdom of Judah were exiled to Babylonia by the Neo-Babylonian Empire. The expulsions occurred in multiple waves: After the siege of Jerusalem in 597 BCE, around 7,000 individuals were exiled to Mesopotamia. Further expulsions followed the destruction of Jerusalem and Solomon's Temple in 587 BCE.",
+    "period": {
+      "start": {
+        "year": -596,
+        "month": 3
+      },
+      "end": {
+        "year": -537
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q47504",
+    "name": "The Tale of Igor's Campaign",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 73,
+    "tagline": "Old East Slavic heroic poem",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Tale_of_Igor%27s_Campaign",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Slowo%20o%20polku%20Igorewe%201800.png",
+    "description": "The Tale of Igor's Campaign is an anonymous epic poem written in the Old East Slavic language. The poem gives an account of a failed raid of Igor Svyatoslavich against the Polovtsians of the Don River region. While some have disputed the authenticity of the poem, the current scholarly consensus is that the poem is authentic and dates to the Middle Ages.",
+    "at": {
+      "year": 1187
+    },
+    "row": 1
   },
   {
     "id": "Q192446",
@@ -530,7 +728,7 @@
     "at": {
       "year": 1990
     },
-    "row": 12
+    "row": 15
   },
   {
     "id": "Q158075",
@@ -562,7 +760,7 @@
     "at": {
       "year": 1783
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q208708",
@@ -593,7 +791,7 @@
     "at": {
       "year": 1890
     },
-    "row": 12
+    "row": 15
   },
   {
     "id": "Q505802",
@@ -617,7 +815,7 @@
         "month": 9
       }
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q209440",
@@ -633,7 +831,7 @@
     "at": {
       "year": 1786
     },
-    "row": 7
+    "row": 5
   },
   {
     "id": "Q188631",
@@ -648,23 +846,25 @@
     "at": {
       "year": 1839
     },
-    "row": 7
+    "row": 9
   },
   {
-    "id": "Q171375",
-    "name": "Truman Doctrine",
+    "id": "Q223732",
+    "name": "Declaration of the Establishment of the State of Israel",
     "category": "society-administration",
-    "regionTags": [],
+    "regionTags": [
+      "western-asia"
+    ],
     "fameScore": 72,
-    "tagline": "United States Cold War policy to contain communism in Europe and elsewhere",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Truman_Doctrine",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Special%20Message%20to%20Congress%20on%20Greece%20and%20Turkey%20The%20Truman%20Doctrine.jpg",
-    "description": "The Truman Doctrine is a U.S. foreign policy that pledges American support for U.S.-aligned nations against alleged authoritarian threats. The doctrine originated with the primary goal of countering the growth of the Soviet bloc during the Cold War. It was announced to Congress by President Harry S. Truman on March 12, 1947, and further developed on July 4, 1948, when he pledged to oppose the communist rebellions in Greece and Soviet demands on Turkey. More generally, the Truman Doctrine implied U.S. support for other nations threatened by the Soviet Union. It led to the formation of NATO in 1949. Historians often use Truman's speech to Congress on March 12, 1947, to date the start of the Cold War.",
+    "tagline": "1948 declaration of Israel's independence",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Israel%20Declaration%20of%20Independence.jpg",
+    "description": "The Israeli Declaration of Independence, formally the Declaration of the Establishment of the State of Israel, was proclaimed at the Tel Aviv Museum on 14 May 1948, at the end of the civil war phase and beginning of the Arab–Israeli War of the 1948 Palestine war, by the Va'ad Leumi led by David Ben-Gurion, the executive head of the World Zionist Organization and chairman of the Jewish Agency for Palestine.",
     "at": {
-      "year": 1947,
-      "month": 3
+      "year": 1948,
+      "month": 5
     },
-    "row": 19
+    "row": 23
   },
   {
     "id": "Q207875",
@@ -675,11 +875,11 @@
     "tagline": "mass composed by Wolfgang Amadeus Mozart in Vienna in 1791",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Requiem_(Mozart)",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/K626%20Requiem%20Mozart.jpg",
-    "description": "The Requiem in D minor, K. 626, is a Requiem Mass by Wolfgang Amadeus Mozart (1756–1791). Mozart composed part of the Requiem in Vienna in late 1791, but it was unfinished at his death on 5 December the same year. A completed version was delivered to Count Franz von Walsegg, who had commissioned the piece for a requiem service on 14 February 1792 to commemorate the first anniversary of the death of his wife Anna, who had died at the age of 20 on 14 February 1791.",
+    "description": "The Requiem in D minor, K. 626, is a Requiem Mass by Wolfgang Amadeus Mozart. Mozart composed part of the Requiem in Vienna in late 1791, but it was unfinished at his death on 5 December the same year. A completed version was delivered to Count Franz von Walsegg, who had commissioned the piece for a requiem service on 14 February 1792 to commemorate the first anniversary of the death of his wife Anna, who had died at the age of 20 on 14 February 1791.",
     "at": {
       "year": 1791
     },
-    "row": 3
+    "row": 7
   },
   {
     "id": "Q25169",
@@ -693,7 +893,7 @@
     "at": {
       "year": 1979
     },
-    "row": 14
+    "row": 16
   },
   {
     "id": "Q209625",
@@ -709,7 +909,7 @@
     "at": {
       "year": 1816
     },
-    "row": 6
+    "row": 10
   },
   {
     "id": "Q391358",
@@ -725,7 +925,7 @@
       "year": 1862,
       "month": 9
     },
-    "row": 12
+    "row": 14
   },
   {
     "id": "Q151060",
@@ -742,7 +942,114 @@
       "year": 1804,
       "month": 3
     },
-    "row": 4
+    "row": 7
+  },
+  {
+    "id": "Q179788",
+    "name": "Edict of Nantes",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "Edict granting rights for Huguenots",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Edict_of_Nantes",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Edit%20de%20Nantes%20Avril%201598.jpg",
+    "description": "The Edict of Nantes was an edict signed in April 1598 by King Henry IV of France that granted the Calvinist Protestants of France, also known as Huguenots, substantial rights in the nation, which was predominantly Catholic. While upholding Catholicism as the established religion, and requiring the re-establishment of Catholic worship in places where it had lapsed, it granted certain religious tolerance to the Protestant Huguenots, who had been waging a long and bloody struggle for their rights in France.",
+    "at": {
+      "year": 1598,
+      "month": 4
+    },
+    "row": 3
+  },
+  {
+    "id": "Q329838",
+    "name": "Crisis of the Third Century",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "Roman Imperial government crisis (235–284)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20of%20Ancient%20Rome%20271%20AD-ru.svg",
+    "imageAttribution": "User:Pomalee, User:Игорь Васильев, via Wikimedia Commons",
+    "description": "The Crisis of the Third Century, also known as the Military Anarchy or the Imperial Crisis, was a period in Roman history during which the Roman Empire nearly collapsed under the combined pressure of repeated foreign invasions, civil wars and economic disintegration. At the height of the crisis, the Roman state split into three distinct and competing polities. The period is usually dated between the death of Severus Alexander (235) and accession of Diocletian (284). The crisis resulted in such profound changes that it marks the transition between the historical periods of classical antiquity and late antiquity.",
+    "period": {
+      "start": {
+        "year": 235
+      },
+      "end": {
+        "year": 284
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q215231",
+    "name": "Great Fire of Rome",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "urban fire in Ancient Rome of July AD 64",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Fire_of_Rome",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Karl%20von%20Piloty%20Nero%20R%C3%B3ma%20%C3%A9g%C3%A9s%C3%A9t%20szeml%C3%A9li.jpg",
+    "imageAttribution": "Carl Theodor von Piloty (1826-1886), via Wikimedia Commons",
+    "description": "The Great Fire of Rome began on the evening of 18–19 July 64 AD. The fire started in the merchant shops around Rome's chariot stadium, Circus Maximus. After six days, the fire was brought under control, but before the damage could be assessed, the fire reignited and burned for another three days. In the aftermath of the fire, nearly three quarters of Rome had been destroyed.",
+    "period": {
+      "start": {
+        "year": 64,
+        "month": 7
+      },
+      "end": {
+        "year": 64,
+        "month": 7
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q728428",
+    "name": "Second Temple",
+    "category": "landmarks",
+    "regionTags": [],
+    "fameScore": 72,
+    "tagline": "Jewish Temple on the Temple Mount in Jerusalem between c. 516 BCE and 70 CE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Temple",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Second%20Temple.jpg",
+    "imageAttribution": "Ariely, via Wikimedia Commons",
+    "description": "The Second Temple was the temple in Jerusalem that replaced Solomon's Temple, which was destroyed during the Babylonian siege of Jerusalem in 587 BCE. The Second Temple was constructed either around 516 BCE or between 450 and 400 BCE and later enhanced by Herod the Great around 18 BCE, consequently also being known as Herod's Temple thereafter. Defining the Second Temple period and standing as a pivotal symbol of Jewish identity, it was the basis and namesake of Second Temple Judaism. The Second Temple served as the chief place of worship, ritual sacrifice (korban), and communal gathering for the Jewish people, among whom it regularly attracted pilgrims for the Three Pilgrimage Festivals: Passover, Shavuot, and Sukkot.",
+    "period": {
+      "start": {
+        "year": -515
+      },
+      "end": {
+        "year": 70,
+        "month": 8
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q83172",
+    "name": "Russian Academy of Sciences",
+    "category": "philosophy-education",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "academy of sciences",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Academy_of_Sciences",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Moscow%2005-2017%20img23%20Andreevsky%20Monastery.jpg",
+    "imageAttribution": "A.Savin, via Wikimedia Commons",
+    "description": "The Russian Academy of Sciences consists of the national academy of Russia; a network of scientific research institutes from across the Russian Federation; and additional scientific and social units such as libraries, publishing units, and hospitals. Peter the Great established the academy in 1724 with guidance from Gottfried Leibniz.",
+    "at": {
+      "year": 1724,
+      "month": 2
+    },
+    "row": 0
   },
   {
     "id": "Q817281",
@@ -758,7 +1065,7 @@
     "at": {
       "year": 1961
     },
-    "row": 18
+    "row": 22
   },
   {
     "id": "Q1519099",
@@ -785,11 +1092,11 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bakelite",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakelite%20bangles.jpg",
     "imageAttribution": "Izzy from Montreal, Canada, via Wikimedia Commons",
-    "description": "Bakelite was the first plastic made from synthetic components. It was developed by chemist Leo Baekeland in Yonkers, New York, in 1907, and patented on December 7, 1909.",
+    "description": "Bakelite is the first plastic made from synthetic components. It was developed by chemist Leo Baekeland in Yonkers, New York, in 1907, and patented on December 7, 1909.",
     "at": {
       "year": 1907
     },
-    "row": 15
+    "row": 19
   },
   {
     "id": "Q5860",
@@ -805,7 +1112,7 @@
     "at": {
       "year": 1958
     },
-    "row": 11
+    "row": 21
   },
   {
     "id": "Q192803",
@@ -842,7 +1149,7 @@
         "year": 1854
       }
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q245388",
@@ -859,7 +1166,226 @@
       "year": 1974,
       "month": 11
     },
-    "row": 15
+    "row": 9
+  },
+  {
+    "id": "Q151423",
+    "name": "congress of Berlin",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 71,
+    "tagline": "meeting of representatives of the major European powers in 1878",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Congress_of_Berlin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Congress%20of%20Berlin%2C%2013%20July%201878%2C%20by%20Anton%20von%20Werner.jpg",
+    "description": "At the Congress of Berlin, the major European powers revised the territorial and political terms imposed by the Russian Empire on the Ottoman Empire by the Treaty of San Stefano, which had ended the Russo-Turkish War of 1877–1878. The Congress was the result of escalating tensions, particularly British opposition to Russian hegemony over the Ottoman Empire in the Balkans through the creation of a Russian-aligned 'Greater Bulgaria'. To secure the European balance of power in favour of its splendid isolation achieved after the Crimean War, Britain stationed the Mediterranean Fleet near Constantinople to enforce British demands. To avoid war, Otto von Bismarck, Chancellor of the newly formed German Empire, was asked to mediate a solution that would restore the Ottoman Empire's position as a counterbalance to Russian influence in the Mediterranean and the Balkans, in line with the principles of the 1856 Treaty of Paris.",
+    "period": {
+      "start": {
+        "year": 1878,
+        "month": 6
+      },
+      "end": {
+        "year": 1878,
+        "month": 7
+      }
+    },
+    "row": 16
+  },
+  {
+    "id": "Q191703",
+    "name": "Organisation of African Unity",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "organization",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Organisation_of_African_Unity",
+    "description": "The Organisation of African Unity was an African intergovernmental organisation established on 25 May 1963 in Addis Ababa, Ethiopia, with 33 signatory governments. Some of the key aims of the OAU were to encourage political and economic integration among member states, and to eradicate colonialism and neo-colonialism from the African continent.",
+    "at": {
+      "year": 1963
+    },
+    "row": 23
+  },
+  {
+    "id": "Q1059758",
+    "name": "Bronze Age collapse",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "collapse of several civilizations at the end of the bronze age",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse",
+    "description": "The Late Bronze Age collapse was a period of societal collapse in the Mediterranean basin during the late 13th to early 12th century BC. It is thought to have affected much of the Eastern Mediterranean and Near East, in particular Egypt, Anatolia, the Aegean, eastern Libya, and the Balkans. The collapse was sudden, violent, and culturally disruptive for many Bronze Age civilizations, creating a sharp material decline for the region's previously existing powers.",
+    "period": {
+      "start": {
+        "year": -1199
+      },
+      "end": {
+        "year": -1149
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q239344",
+    "name": "Salt March",
+    "category": "social-movements",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "Indian independence movement led by Mahatma Gandhi",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Salt_March",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gandhi%20at%20Dandi%2C%205%20April%201930.jpg",
+    "description": "The Salt March, also known as the Salt Satyagraha, Dandi March, and the Dandi Satyagraha, was an act of nonviolent civil disobedience in colonial India, led by Mahatma Gandhi. The 24-day march (padayatra) lasted from 12 March 1930 to 6 April 1930 as a direct action campaign of tax resistance and nonviolent protest against the British salt monopoly. Another reason for this march was that the Civil Disobedience Movement needed a strong inauguration that would inspire more people to follow Gandhi's example. Gandhi started this march with 78 of his trusted volunteers. The march spanned 387 kilometres (240 mi), from Sabarmati Ashram to Dandi, which was called Navsari at that time. Growing numbers of Indians joined them along the way. When Gandhi broke the British Raj salt laws at 8:30 am on 6 April 1930, it sparked large-scale acts of civil disobedience against the salt laws by millions of Indians.",
+    "period": {
+      "start": {
+        "year": 1930
+      },
+      "end": {
+        "year": 1930,
+        "month": 4
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q202558",
+    "name": "Avignon Papacy",
+    "category": "religion-mythology",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 71,
+    "tagline": "period during which the Pope lived in Avignon, France (1309–1376)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Avignon_Papacy",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fa%C3%A7ade%20du%20Palais%20des%20Papes.jpg",
+    "imageAttribution": "Chimigi, via Wikimedia Commons",
+    "description": "The Avignon Papacy was the period from 1309 to 1376 during which seven successive popes resided in Avignon rather than in Rome. The situation arose from the conflict between the papacy and the French crown, culminating in the death of Pope Boniface VIII after his arrest and maltreatment by agents of Philip IV of France. Following the subsequent death of Pope Benedict XI, Philip pressured a deadlocked conclave to elect the archbishop of Bordeaux as Pope Clement V in 1305. Clement refused to move to Rome, and in 1309 he moved his court to the papal enclave at Avignon, where it remained for the next 67 years. This absence from Rome is sometimes referred to as the \"Babylonian captivity\" of the papacy.",
+    "period": {
+      "start": {
+        "year": 1309
+      },
+      "end": {
+        "year": 1377
+      }
+    },
+    "row": 3
+  },
+  {
+    "id": "Q494235",
+    "name": "Diamond Sutra",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "Mahayana sutra",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Diamond_Sutra",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jingangjing.jpg",
+    "description": "The Diamond Sūtra is a Mahāyāna Buddhist sutra from the genre of Prajñāpāramitā sutras. Translated into a variety of languages over a broad geographic range, the Diamond Sūtra is one of the most influential Mahayana sutras in East Asia, and it is particularly prominent within the Chan tradition, along with the Heart Sutra.",
+    "at": {
+      "year": 868
+    },
+    "row": 1
+  },
+  {
+    "id": "Q333661",
+    "name": "Cahokia",
+    "category": "archaeology-anthropology",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 71,
+    "tagline": "archaeological site near East St. Louis, Illinois, USA",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cahokia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cahokia%20Mounds%20--%20UNESCO%20reconstruction.jpg",
+    "imageAttribution": "Thank You (24 Millions ) views, via Wikimedia Commons",
+    "description": "The Cahokia Mounds is the site of a Native American city directly across the Mississippi River from present-day St. Louis. The state archaeology park lies in south-western Illinois between East St. Louis and Collinsville. The park covers 2,200 acres (890 ha), or about 3.5 square miles (9 km2), and contains about 80 manmade mounds, but the ancient city was much larger. At its apex around 1100 AD, the city covered about 6 square miles (16 km2), included about 120 earthworks in a wide range of sizes, shapes, and functions, and had a population of between 15,000 and 20,000 people at its peak in 1100.",
+    "at": {
+      "year": 1050
+    },
+    "row": 1
+  },
+  {
+    "id": "Q916943",
+    "name": "Prahadisvarar Temple",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "11th century Tamil Chola Dynasty Temple and UNESCO World Heritage Site",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Brihadisvara_Temple",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Le%20temple%20de%20Brihadishwara%20%28Tanjore%2C%20Inde%29%20%2814354574611%29.jpg",
+    "imageAttribution": "Jean-Pierre Dalbéra from Paris, France, via Wikimedia Commons",
+    "description": "Brihadisvara Temple, called Rajarajesvaram by its builder, and known locally as Thanjai Periya Kovil and Peruvudaiyar Kovil, is a Shaivite Hindu temple built in a Chola architectural style located on the south bank of the Cauvery river in Thanjavur, Tamil Nadu, India. It is one of the largest Hindu temples and an exemplar of Tamil architecture. It is also called Dakshina Meru. Built by Chola emperor Rajaraja I between 1003 and 1010 CE, the temple is a part of the UNESCO World Heritage Site known as the \"Great Living Chola Temples\", along with the Chola-era Gangaikonda Cholapuram temple and Airavatesvara temple, which are about 70 kilometres (43 mi) and 40 kilometres (25 mi) to its northeast respectively.",
+    "at": {
+      "year": 1010
+    },
+    "row": 1
+  },
+  {
+    "id": "Q33018",
+    "name": "House of Wisdom",
+    "category": "philosophy-education",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "library, translation institute and research center in medieval Baghdad",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/House_of_Wisdom",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maqamat%20hariri.jpg",
+    "description": "The House of Wisdom, also known as the Grand Library of Baghdad, was a major Abbasid-era public academy and intellectual center in Baghdad. In popular reference, it acted as one of the world's largest public libraries during the Islamic Golden Age, and was founded either as a library for the collections of the fifth Abbasid caliph Harun al-Rashid in the late 8th century or as a private collection of the second Abbasid caliph al-Mansur to house rare books and collections in the Arabic language. During the reign of the seventh Abbasid caliph al-Ma'mun, it was turned into a public academy and a library.",
+    "at": {
+      "year": 800
+    },
+    "row": 1
+  },
+  {
+    "id": "Q155952",
+    "name": "Almagest",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "astronomical treatise by Claudius Ptolemy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Almagest",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Almageste%20de%20Ptol%C3%A9m%C3%A9e%20-%20BNF%20Lat16200%20f1.jpg",
+    "description": "The Almagest is a 2nd-century mathematical and astronomical treatise on the apparent motions of the stars and planetary paths, written by Claudius Ptolemy in Koine Greek. One of the most influential scientific texts in history, it canonized a geocentric model of the Universe that was accepted for more than 1,200 years from its origin in ancient Greece, through to the medieval Byzantine and Islamic worlds, and in Western Europe through the Middle Ages and early Renaissance until the Scientific Revolution. It is also a key source of information about ancient Greek astronomy.",
+    "at": {
+      "year": 148
+    },
+    "row": 0
+  },
+  {
+    "id": "Q206230",
+    "name": "chaturanga",
+    "category": "sports-entertainment",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 71,
+    "tagline": "ancient Indian strategy game",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Chaturanga",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/National%20Museum%20of%20Ethnology%2C%20Osaka%20-%20Catur-a%E1%B9%85ga%20-%20Rajasthan%20in%20India.jpg",
+    "imageAttribution": "Yanajin33, via Wikimedia Commons",
+    "description": "Chaturanga is an ancient Indian strategy board game. It is first known from India around the seventh century CE.",
+    "at": {
+      "year": 700
+    },
+    "row": 0
+  },
+  {
+    "id": "Q700983",
+    "name": "German Instrument of Surrender",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 71,
+    "tagline": "1945 historical document",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/German_Instrument_of_Surrender",
+    "description": "The German Instrument of Surrender was a legal document effecting the unconditional surrender of the remaining German armed forces to the Allies, ending World War II in Europe. It was signed at 22:43 CET on 8 May 1945 and took effect at 23:01 CET on the same day.",
+    "at": {
+      "year": 1945,
+      "month": 5
+    },
+    "row": 24
   },
   {
     "id": "Q94247",
@@ -876,7 +1402,7 @@
       "year": 1956,
       "month": 6
     },
-    "row": 19
+    "row": 24
   },
   {
     "id": "Q337724",
@@ -901,11 +1427,27 @@
     "fameScore": 70,
     "tagline": "chemical compound",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cellophane",
-    "description": "Cellophane is a thin, transparent sheet made of regenerated cellulose. Its low permeability to air, oils, greases, bacteria, and liquid water makes it useful for food packaging. Cellophane is highly permeable to water vapour, but may be coated with nitrocellulose lacquer to prevent this.",
+    "description": "Cellophane is a thin, transparent sheet made of regenerated cellulose. Its low permeability to air, oils, greases, bacteria, and liquid water makes it useful for food packaging. Cellophane is highly permeable to water vapor, but may be coated with nitrocellulose lacquer to prevent this.",
     "at": {
       "year": 1908
     },
-    "row": 16
+    "row": 20
+  },
+  {
+    "id": "Q194154",
+    "name": "cavity magnetron",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 70,
+    "tagline": "device for generating microwaves",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cavity_magnetron",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caso%20SMG20%20-%20Witol%202M219J-0173.jpg",
+    "imageAttribution": "Raimond Spekking, via Wikimedia Commons",
+    "description": "The cavity magnetron is a high-power vacuum tube used in early radar systems and subsequently in microwave ovens and in linear particle accelerators. A cavity magnetron generates microwaves using the interaction of a stream of electrons with a magnetic field, while moving past a series of cavity resonators, which are small, open cavities in a metal block. Electrons pass by the cavities and cause microwaves to oscillate within, similar to the functioning of a whistle producing a tone when excited by an air stream blown past its opening. The resonant frequency of the arrangement is determined by the cavities' physical dimensions. Unlike other vacuum tubes, such as a klystron or a traveling-wave tube (TWT), the magnetron cannot function as an amplifier for increasing the intensity of an applied microwave signal; the magnetron serves solely as an electronic oscillator generating a microwave signal from direct-current electricity supplied to the vacuum tube.",
+    "at": {
+      "year": 1940
+    },
+    "row": 17
   },
   {
     "id": "Q69163529",
@@ -924,7 +1466,7 @@
       "year": 1989,
       "month": 11
     },
-    "row": 10
+    "row": 17
   },
   {
     "id": "Q208191",
@@ -947,7 +1489,44 @@
         "month": 4
       }
     },
-    "row": 20
+    "row": 25
+  },
+  {
+    "id": "Q815567",
+    "name": "1988 Spitak earthquake",
+    "category": "environment-geology",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 70,
+    "tagline": "December 1988 earthquake in Armenian SSR, USSR",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1988_Armenian_earthquake",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Surb%20Amenaprkitch.jpeg",
+    "description": "An earthquake occurred in northern Armenia on 7 December, 1988, at 11:41 local time with a surface-wave magnitude of 6.8 and a maximum MSK intensity of X (Devastating). The region is vulnerable to large and destructive earthquakes and is part of a larger active seismic belt that stretches from the Alps to the Himalayas. Activity in the area is associated with tectonic plate boundary interaction and the source of the event was slip on a thrust fault just to the north of Spitak. The complex incident ruptured multiple faults, with a strike-slip event occurring shortly after the initiation of the mainshock. Between 25,000 and 50,000 people were killed and up to 130,000 were injured.",
+    "at": {
+      "year": 1988,
+      "month": 12
+    },
+    "row": 16
+  },
+  {
+    "id": "Q323813",
+    "name": "Jamestown",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-europe",
+      "northern-america"
+    ],
+    "fameScore": 70,
+    "tagline": "fort and town established in the Virginia Colony",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jamestown",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jamestown%20Virginia%20in%201622%20Conquestofvirg1939sams%200590.jpg",
+    "description": "The Jamestown settlement in the Colony of Virginia was the first permanent English settlement in the Americas. It was located, in what later became James City County, on the northeast bank of the James River, about 2.5 mi (4 km) southwest of present-day Williamsburg. It was established by the Virginia Company of London as \"James Fort\" on May 4, 1607 O.S. (May 14, 1607 N.S.). It followed earlier, failed English colonization attempts, including the 1585 Roanoke Colony. A river island was selected to evade Spanish naval patrols; however, it was infested with mosquitoes, lacked potable water, and was used by the Paspahegh people. Despite supply missions, only 60 of the original 214 settlers survived the 1609–1610 winter known as Starving Time. In 1612, West Indies tobacco was successfully cultivated, leading to an economic boom for the colony and England.",
+    "at": {
+      "year": 1607,
+      "month": 5
+    },
+    "row": 3
   },
   {
     "id": "Q214634",
@@ -963,7 +1542,7 @@
     "at": {
       "year": 1911
     },
-    "row": 17
+    "row": 5
   },
   {
     "id": "Q166543",
@@ -995,7 +1574,7 @@
     "at": {
       "year": 1837
     },
-    "row": 5
+    "row": 10
   },
   {
     "id": "Q326248",
@@ -1014,7 +1593,7 @@
       "year": 1886,
       "month": 1
     },
-    "row": 13
+    "row": 18
   },
   {
     "id": "Q688605",
@@ -1032,23 +1611,7 @@
       "year": 1903,
       "month": 12
     },
-    "row": 17
-  },
-  {
-    "id": "Q194154",
-    "name": "cavity magnetron",
-    "category": "everyday-technology",
-    "regionTags": [],
-    "fameScore": 69,
-    "tagline": "device for generating microwaves",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cavity_magnetron",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caso%20SMG20%20-%20Witol%202M219J-0173.jpg",
-    "imageAttribution": "Raimond Spekking, via Wikimedia Commons",
-    "description": "The cavity magnetron is a high-power vacuum tube used in early radar systems and subsequently in microwave ovens and in linear particle accelerators. A cavity magnetron generates microwaves using the interaction of a stream of electrons with a magnetic field, while moving past a series of cavity resonators, which are small, open cavities in a metal block. Electrons pass by the cavities and cause microwaves to oscillate within, similar to the functioning of a whistle producing a tone when excited by an air stream blown past its opening. The resonant frequency of the arrangement is determined by the cavities' physical dimensions. Unlike other vacuum tubes, such as a klystron or a traveling-wave tube (TWT), the magnetron cannot function as an amplifier for increasing the intensity of an applied microwave signal; the magnetron serves solely as an electronic oscillator generating a microwave signal from direct-current electricity supplied to the vacuum tube.",
-    "at": {
-      "year": 1940
-    },
-    "row": 15
+    "row": 8
   },
   {
     "id": "Q843389",
@@ -1064,7 +1627,25 @@
     "at": {
       "year": 1810
     },
-    "row": 9
+    "row": 6
+  },
+  {
+    "id": "Q2411998",
+    "name": "eruption of Mount Vesuvius in 79",
+    "category": "environment-geology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 69,
+    "tagline": "major eruption of stratovolcano in southern Italy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aivazovsky%20-%20Destruction%20of%20Pompeii.jpg",
+    "description": "In 79 AD, Mount Vesuvius, a stratovolcano located in the modern-day region of Campania, Italy, erupted, causing one of the deadliest eruptions in history. Vesuvius violently ejected a cloud of super-heated tephra and gases to a height of 33 km (21 mi), ejecting molten rock, pulverized pumice and hot ash at 1.5 million tons per second, ultimately releasing 100,000 times the thermal energy of the atomic bombings of Hiroshima and Nagasaki. The event gives its name to the Vesuvian type of volcanic eruption, characterised by columns of hot gases and ash reaching the stratosphere, although the event also included pyroclastic flows associated with Peléan eruptions.",
+    "at": {
+      "year": 79,
+      "month": 10
+    },
+    "row": 2
   },
   {
     "id": "Q631489",
@@ -1086,7 +1667,141 @@
         "year": 1899
       }
     },
-    "row": 9
+    "row": 12
+  },
+  {
+    "id": "Q963303",
+    "name": "Union of Lublin",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "1569 union of Poland and Lithuania",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Union_of_Lublin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lublin%20Union%201569.PNG",
+    "description": "The Union of Lublin was signed on 1 July 1569 in Lublin, Poland, and created a single state, the Polish–Lithuanian Commonwealth, one of the largest countries in Europe at the time. It replaced the personal union of the Crown of the Kingdom of Poland and the Grand Duchy of Lithuania with a real union and an elective monarchy, as Sigismund II Augustus, the last of the Jagiellons, remained childless after three marriages. In addition, the autonomy of Royal Prussia was largely abandoned. The Duchy of Livonia, tied to Lithuania in real union since the Union of Grodno (1566), became a Polish–Lithuanian condominium.",
+    "at": {
+      "year": 1569,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
+    "id": "Q332075",
+    "name": "sakoku",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "Japanese isolationist policies in the Tokugawa Shogunate",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sakoku",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E5%BF%97%E7%AD%91%E5%BF%A0%E9%9B%84%E8%A8%B3%E3%80%8C%E9%8E%96%E5%9B%BD%E8%AB%96%E3%80%8D.jpg",
+    "imageAttribution": "大島明秀, via Wikimedia Commons",
+    "description": "Sakoku was the isolationist foreign policy of the Japanese Tokugawa shogunate under which, during the Edo period, relations and trade between Japan and other countries were severely limited, and almost all foreign nationals were banned from entering Japan, while common Japanese people were kept from leaving the country. The policy was enacted by the shogunate government (bakufu) under Tokugawa Iemitsu through a number of edicts and policies from 1633 to 1639.",
+    "period": {
+      "start": {
+        "year": 1639
+      },
+      "end": {
+        "year": 1854
+      }
+    },
+    "row": 13
+  },
+  {
+    "id": "Q462252",
+    "name": "history of the Soviet Union",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 69,
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Soviet_Union",
+    "description": "The history of the Soviet Union (USSR) (1922–1991) began with the ideals of the Russian Bolshevik Revolution and ended in dissolution amidst economic collapse and political disintegration. Established in 1922 following the Russian Civil War, the Soviet Union quickly became a one-party state under the Communist Party. Its early years under Lenin were marked by the implementation of socialist policies and the New Economic Policy (NEP), which allowed for market-oriented reforms.",
+    "period": {
+      "start": {
+        "year": 1922,
+        "month": 12
+      },
+      "end": {
+        "year": 1991,
+        "month": 12
+      }
+    },
+    "row": 26
+  },
+  {
+    "id": "Q821122",
+    "name": "collectivization in the Soviet Union",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 69,
+    "tagline": "forced economic reforms of collective ownership of the means of production",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Collectivization_in_the_Soviet_Union",
+    "description": "The Soviet Union introduced collectivization of its agricultural sector between 1928 and 1940. It began during and was part of the first five-year plan. The policy aimed to integrate individual landholdings and labour into nominally collectively-controlled and openly or directly state-controlled farms: kolkhozes and sovkhozes accordingly. The Soviet leadership confidently expected that the replacement of individual peasant farms by collective ones would immediately increase the food supply for the urban population, the supply of raw materials for the processing industry, and agricultural exports via state-imposed quotas on individuals working on collective farms. Planners regarded collectivization as the solution to the crisis of agricultural distribution that had developed from 1927. This problem became more severe as the Soviet Union pressed ahead with its ambitious industrialization program, meaning that more food would be needed to keep up with urban demand.",
+    "period": {
+      "start": {
+        "year": 1928
+      },
+      "end": {
+        "year": 1932
+      }
+    },
+    "row": 21
+  },
+  {
+    "id": "Q736311",
+    "name": "Buddhism in Japan",
+    "category": "religion-mythology",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "traditions of Buddhism popular in Japan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_Japan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Le%20Grand%20Bouddha%20du%20Kotoku-in%20%28Kamakura%2C%20Japon%29%20%2842096289494%29.jpg",
+    "imageAttribution": "Jean-Pierre Dalbéra from Paris, France, via Wikimedia Commons",
+    "description": "Buddhism was first established in Japan in the 6th century CE. Most of the Japanese Buddhists belong to new schools of Buddhism which were established in the Kamakura period (1185－1333). During the Edo period (1603–1868), Buddhism was controlled by the feudal Shogunate. The Meiji period (1868–1912) saw a strong response against Buddhism, with persecution and a forced separation between Buddhism and Shinto.",
+    "at": {
+      "year": 600
+    },
+    "row": 0
+  },
+  {
+    "id": "Q202927",
+    "name": "Ziggurat of Ur",
+    "category": "landmarks",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "early Bronze Age ziggurat in present-day Iraq",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ziggurat_of_Ur",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ancient%20ziggurat%20at%20Ali%20Air%20Base%20Iraq%202005.jpg",
+    "imageAttribution": "en:User:Hardnfast, via Wikimedia Commons",
+    "description": "The Ziggurat of Ur is a Neo-Sumerian ziggurat in what was the city of Ur near Nasiriyah, in present-day Dhi Qar Province, Iraq. The structure was built during the Early Bronze Age by King Ur-Nammu of the Third Dynasty of Ur. It had crumbled to ruins by the 6th century BC of the Neo-Babylonian period, when it was restored by King Nabonidus.",
+    "at": {
+      "year": -2100
+    },
+    "row": 3
+  },
+  {
+    "id": "Q205509",
+    "name": "Intel 4004",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 69,
+    "tagline": "4-bit central processing unit; one of the earliest processors made by Intel, made on November 15, 1971",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Intel_4004",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Intel%204004%20open.jpg",
+    "imageAttribution": "the Science Museum, via Wikimedia Commons",
+    "description": "The Intel 4004, released by the Intel Corporation on November 15, 1971, was the first in a long line of Intel central processing units (CPUs). Priced at US$60, the chip marked both a technological and economic milestone in computing.",
+    "at": {
+      "year": 1971,
+      "month": 11
+    },
+    "row": 17
   },
   {
     "id": "Q234027",
@@ -1101,7 +1816,23 @@
       "year": 1978,
       "month": 7
     },
-    "row": 17
+    "row": 18
+  },
+  {
+    "id": "Q663273",
+    "name": "voltaic pile",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 68,
+    "tagline": "first electrical battery that could continuously provide an electric current to a circuit",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Voltaic_pile",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Volta%20battery-MHS%20373-IMG%203840-gradient.jpg",
+    "imageAttribution": "Rama, via Wikimedia Commons",
+    "description": "The voltaic pile was the first electrical battery that could continuously provide an electric current to a circuit. It was invented by Italian chemist Alessandro Volta, who published his experiments in 1799. Its invention can be traced back to an argument between Volta and Luigi Galvani, Volta's fellow Italian scientist who had conducted experiments on frogs' legs. Use of the voltaic pile enabled a rapid series of other discoveries, including the electrical decomposition (electrolysis) of water into oxygen and hydrogen by William Nicholson and Anthony Carlisle (1800), and the discovery or isolation of the chemical elements sodium (1807), potassium (1807), calcium (1808), boron (1808), barium (1808), strontium (1808), and magnesium (1808) by Humphry Davy.",
+    "at": {
+      "year": 1800
+    },
+    "row": 8
   },
   {
     "id": "Q334055",
@@ -1112,29 +1843,11 @@
     "tagline": "steel production method",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bessemer_process",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bessemer%20converter.jpg",
-    "description": "The Bessemer process was the first inexpensive industrial process for the mass production of steel from molten pig iron before the development of the open hearth furnace. The key principle is removal of impurities and undesired elements, primarily excess carbon, contained in the pig iron by oxidation with air being blown through the molten iron. Oxidation of the excess carbon also raises the temperature of the iron mass and keeps it molten.Virtually all the pig iron carbon is removed by the converter, and so carbon must be added at the end of the process to create steel. 0.25% carbon content is a typical value for low carbon steel which is used in construction and other low-stress applications.",
+    "description": "The Bessemer process was the first inexpensive industrial process for the mass production of steel from molten pig iron before the development of the open hearth furnace. The key principle is removal of impurities and undesired elements, primarily excess carbon, contained in the pig iron by oxidation with air being blown through the molten iron. Oxidation of the excess carbon also raises the temperature of the iron mass and keeps it molten.As virtually all the pig iron carbon is removed by the converter, carbon must be added at the end of the process to create steel. 0.25% carbon content is a typical value for low carbon steel which is used in construction and other low-stress applications.",
     "at": {
       "year": 1855
     },
-    "row": 7
-  },
-  {
-    "id": "Q2411998",
-    "name": "eruption of Mount Vesuvius in 79",
-    "category": "environment-geology",
-    "regionTags": [
-      "southern-europe"
-    ],
-    "fameScore": 68,
-    "tagline": "major eruption of stratovolcano in southern Italy",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Aivazovsky%20-%20Destruction%20of%20Pompeii.jpg",
-    "description": "In 79 AD, Mount Vesuvius, a stratovolcano located in the modern-day region of Campania, Italy, erupted, causing one of the deadliest eruptions in history. Vesuvius violently ejected a cloud of super-heated tephra and gases to a height of 33 km (21 mi), ejecting molten rock, pulverized pumice and hot ash at 1.5 million tons per second, ultimately releasing 100,000 times the thermal energy of the atomic bombings of Hiroshima and Nagasaki. The event gives its name to the Vesuvian type of volcanic eruption, characterised by columns of hot gases and ash reaching the stratosphere, although the event also included pyroclastic flows associated with Peléan eruptions.",
-    "at": {
-      "year": 79,
-      "month": 10
-    },
-    "row": 1
+    "row": 11
   },
   {
     "id": "Q1192212",
@@ -1151,7 +1864,60 @@
     "at": {
       "year": 1861
     },
-    "row": 13
+    "row": 15
+  },
+  {
+    "id": "Q573211",
+    "name": "Christianization of Kievan Rus'",
+    "category": "religion-mythology",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 68,
+    "tagline": "10th-century Christianity",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Christianization_of_Kievan_Rus%27",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lebedev%20baptism.jpg",
+    "description": "The Christianization of Kievan Rus' was a long and complicated process that took place in several stages. In 867, Patriarch Photius of Constantinople told other Christian patriarchs that the Rus' people were converting enthusiastically, but his efforts seem to have entailed no lasting consequences, since the Russian Primary Chronicle and other Slavonic sources describe the tenth-century Rus' as still firmly entrenched in Slavic paganism. The traditional view, as recorded in the Russian Primary Chronicle, is that the definitive Christianization of Kievan Rus' dates happened c. 988, when Vladimir the Great was baptized in Chersonesus (Korsun) and proceeded to baptize his family and people in Kiev. The latter events are traditionally referred to as baptism of Rus'  in Russian, Ukrainian and Belarusian literature.",
+    "at": {
+      "year": 988
+    },
+    "row": 0
+  },
+  {
+    "id": "Q466060",
+    "name": "Canon of Medicine",
+    "category": "medicine-health",
+    "regionTags": [],
+    "fameScore": 68,
+    "tagline": "~1020 encyclopedia of medicine compiled by Ibn Sīnā/Avicenna",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Canon_of_Medicine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Canon%20of%20Medicine.jpg",
+    "imageAttribution": "Coffeetalkh, via Wikimedia Commons",
+    "description": "The Canon of Medicine is an encyclopedia of medicine in five books compiled by Ibn Sina and completed in 1025. It is among the most influential works of its time. It presents an overview of the contemporary medical knowledge of the Islamic world, which had been influenced by earlier traditions including Greco-Roman medicine, Persian medicine, Chinese medicine and Indian medicine. Its translation from Arabic to Latin in 12th century Toledo greatly influenced the development of medieval medicine. It became the standard textbook for teaching in European universities into the early modern period.",
+    "at": {
+      "year": 1025
+    },
+    "row": 0
+  },
+  {
+    "id": "Q7476695",
+    "name": "oracle bone script",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 68,
+    "tagline": "precursor of Chinese characters",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Oracle_bone_script",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zhou-inscription.png",
+    "description": "The oracle bone script is the oldest attested form of written Chinese, dating to the late 2nd millennium BC. Inscriptions were made by carving characters into oracle bones, usually either the shoulder bones of oxen or the plastrons of turtles. The writings themselves mainly record the results of official divinations carried out on behalf of the Late Shang royal family. These divinations took the form of scapulimancy where the oracle bones were exposed to flames, creating patterns of cracks that were then subjected to interpretation. Both the prompt and interpretation were inscribed on the same piece of bone that had been used for the divination itself.",
+    "period": {
+      "start": {
+        "year": -1499
+      },
+      "end": {
+        "year": -1049
+      }
+    },
+    "row": 4
   },
   {
     "id": "Q162684",
@@ -1169,7 +1935,7 @@
     "at": {
       "year": 1710
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q107701",
@@ -1187,7 +1953,7 @@
       "year": 1840,
       "month": 4
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q1136790",
@@ -1202,7 +1968,7 @@
     "at": {
       "year": 1793
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q1225170",
@@ -1215,7 +1981,7 @@
     "tagline": "16th-century Spanish maritime expedition",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Magellan_expedition",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Detail%20from%20a%20map%20of%20Ortelius%20-%20Magellan%27s%20ship%20Victoria.png",
-    "description": "The Magellan expedition, sometimes termed the Magellan–Elcano expedition, was a 16th-century Spanish expedition planned and initially led by Portuguese explorer Ferdinand Magellan and completed by the Spanish navigator Juan Sebastián Elcano which resulted in the first circumnavigation of the Earth.. Its purpose was to secure a maritime trade route with the Moluccas, or Spice Islands, in present-day Indonesia. The expedition departed Spain in 1519 and returned there in 1522 under the command of Elcano, who continued the voyage after Magellan's death in the Philippines. One of the most significant voyages in the Age of Discovery, the nearly three-year expedition totaled 60,440 km (37,560 mi) and was the first to sail around the earth. It also marked the first crossing of the Pacific by a European expedition, revealing the vast scale of that ocean, and proved that ships could sail around the world on a western sea route.",
+    "description": "The Magellan expedition, sometimes termed the Magellan–Elcano expedition, was a 16th-century Spanish expedition planned and initially led by Portuguese explorer Ferdinand Magellan and completed by the Spanish navigator Juan Sebastián Elcano which resulted in the first circumnavigation of the Earth. Its purpose was to secure a maritime trade route with the Moluccas, or Spice Islands, in present-day Indonesia. The expedition departed Spain in 1519 and returned there in 1522 under the command of Elcano, who continued the voyage after Magellan's death in the Philippines. One of the most significant voyages in the Age of Discovery, the nearly three-year expedition totaled 60,440 km (37,560 mi) and was the first to sail around the earth. It also marked the first crossing of the Pacific by a European expedition, revealing the vast scale of that ocean, and proved that ships could sail around the world on a western sea route.",
     "period": {
       "start": {
         "year": 1519,
@@ -1226,7 +1992,7 @@
         "month": 9
       }
     },
-    "row": 1
+    "row": 3
   },
   {
     "id": "Q654562",
@@ -1263,23 +2029,7 @@
         "month": 1
       }
     },
-    "row": 18
-  },
-  {
-    "id": "Q663273",
-    "name": "voltaic pile",
-    "category": "energy-industry",
-    "regionTags": [],
-    "fameScore": 67,
-    "tagline": "first electrical battery that could continuously provide an electric current to a circuit",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Voltaic_pile",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Volta%20battery-MHS%20373-IMG%203840-gradient.jpg",
-    "imageAttribution": "Rama, via Wikimedia Commons",
-    "description": "The voltaic pile was the first electrical battery that could continuously provide an electric current to a circuit. It was invented by Italian chemist Alessandro Volta, who published his experiments in 1799. Its invention can be traced back to an argument between Volta and Luigi Galvani, Volta's fellow Italian scientist who had conducted experiments on frogs' legs. Use of the voltaic pile enabled a rapid series of other discoveries, including the electrical decomposition (electrolysis) of water into oxygen and hydrogen by William Nicholson and Anthony Carlisle (1800), and the discovery or isolation of the chemical elements sodium (1807), potassium (1807), calcium (1808), boron (1808), barium (1808), strontium (1808), and magnesium (1808) by Humphry Davy.",
-    "at": {
-      "year": 1800
-    },
-    "row": 2
+    "row": 24
   },
   {
     "id": "Q217817",
@@ -1295,7 +2045,7 @@
     "at": {
       "year": 1849
     },
-    "row": 10
+    "row": 14
   },
   {
     "id": "Q8094772",
@@ -1319,7 +2069,7 @@
         "month": 10
       }
     },
-    "row": 15
+    "row": 19
   },
   {
     "id": "Q300646",
@@ -1334,7 +2084,7 @@
     "at": {
       "year": 1792
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q1061030",
@@ -1355,6 +2105,53 @@
     "row": 2
   },
   {
+    "id": "Q525758",
+    "name": "Treaty of Pereyaslav",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 67,
+    "tagline": "1654 meeting with Cossacks and Tsar of Muscovy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pereiaslav_Agreement",
+    "description": "The Pereiaslav Agreement or Pereyaslav Agreement was an official meeting that convened for a ceremonial pledge of allegiance by Zaporozhian Cossacks to Russian tsar Alexis in the town of Pereiaslav in central Ukraine, in January 1654. The ceremony took place concurrently with ongoing negotiations that started on the initiative of Hetman Bohdan Khmelnytsky to address the issue of the Cossack Hetmanate with the ongoing Khmelnytsky Uprising against the Polish–Lithuanian Commonwealth and which concluded the Treaty of Pereiaslav. The treaty itself was finalized in Moscow in April 1654.",
+    "at": {
+      "year": 1654
+    },
+    "row": 0
+  },
+  {
+    "id": "Q875512",
+    "name": "Treaty of Turkmenchay",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "agreement between Qajar Iran and Imperial Russia that concluded the Russo-Persian War of 1826–28",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Treaty_of_Turkmenchay",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Treaty%20of%20Turkmenchay%20p01.jpg",
+    "description": "The Treaty of Turkmenchay was an agreement between Qajar Iran and the Russian Empire, which concluded the Russo-Persian War (1826–1828). It was second of the series of treaties signed between Qajar Iran and Imperial Russia that forced Iran to cede or recognize Russian influence over the territories that formerly were part of Iran.",
+    "at": {
+      "year": 1828,
+      "month": 2
+    },
+    "row": 4
+  },
+  {
+    "id": "Q204208",
+    "name": "The Knight in the Panther's Skin",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "Georgia's national epic poem",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Knight_in_the_Panther%27s_Skin",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%E1%83%95%E1%83%94%E1%83%A4%E1%83%AE%E1%83%98%E1%83%A1%E1%83%A2%E1%83%A7%E1%83%90%E1%83%9D%E1%83%A1%E1%83%90%E1%83%9C%E1%83%98%20XVII%20%E1%83%A1%E1%83%90%E1%83%A3%E1%83%99%E1%83%A3%E1%83%9C%E1%83%94.jpg",
+    "description": "The Knight in the Panther's Skin is a Georgian medieval epic poem, written in the 12th or 13th century by Georgia's national poet Shota Rustaveli. A definitive work of the Georgian Golden Age, the poem consists of over 1600 Rustavelian Quatrains and is considered to be a \"masterpiece of Georgian literature\". Until the early 20th century, a copy of this poem was part of the dowry of every bride.",
+    "at": {
+      "year": 1180
+    },
+    "row": 2
+  },
+  {
     "id": "Q1037810",
     "name": "smallpox vaccine",
     "category": "medicine-health",
@@ -1363,11 +2160,11 @@
     "tagline": "first successful vaccine to be developed",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Smallpox_vaccine",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Smallpox%20vaccine%20injection.jpg",
-    "description": "The smallpox vaccine is used to prevent smallpox infection caused by the variola virus. It is the first vaccine to have been developed against a contagious disease. In 1796, British physician Edward Jenner demonstrated that an infection with the relatively mild cowpox virus conferred immunity against the deadly smallpox virus. Cowpox served as a natural vaccine until the modern smallpox vaccine emerged in the 20th century. From 1958 to 1977, the World Health Organization (WHO) conducted a global vaccination campaign that eradicated smallpox, making it the only human disease to be eradicated. Although routine smallpox vaccination is no longer performed on the general public, the vaccine is still being produced for research, and to guard against bioterrorism and biological warfare.",
+    "description": "The smallpox vaccine is used to prevent smallpox infection caused by the variola virus. It is the first vaccine to have been developed against a contagious disease. In 1796, British physician Edward Jenner demonstrated that an infection with the relatively mild cowpox virus conferred immunity against the deadly smallpox disease. Cowpox served as a natural vaccine until the modern smallpox vaccine emerged in the 20th century. From 1958 to 1977, the World Health Organization (WHO) conducted a global vaccination campaign that eradicated smallpox, making it the only human disease to be eradicated. Although routine smallpox vaccination is no longer performed on the general public, the vaccine is still being produced for research, and to guard against bioterrorism and biological warfare.",
     "at": {
       "year": 1798
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q841282",
@@ -1383,7 +2180,24 @@
     "at": {
       "year": 1802
     },
-    "row": 8
+    "row": 11
+  },
+  {
+    "id": "Q616159",
+    "name": "View from the Window at Le Gras",
+    "category": "media-culture",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 66,
+    "tagline": "the earliest known surviving photograph produced in the camera obscura by Joseph Nicéphore Niépce",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/View_from_the_Window_at_Le_Gras",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Untitled%20%28point%20de%20vue%29%2C%20Ni%C3%A9pce%201827%20%E2%80%94%20HRC%202020%20%28cropped%29.jpg",
+    "description": "View from the Window at Le Gras is the oldest surviving photograph. It was created by French inventor Nicéphore Niépce between June 4 and July 18, 1827, in Saint-Loup-de-Varennes, France, and shows parts of the buildings and surrounding countryside of his estate, Le Gras, as seen from a high window. The image was created by heliography, a process which Niépce had invented around 1822, and which uses the hardening of bitumen in light to record an image after washing off the remaining unhardened material.",
+    "at": {
+      "year": 1827
+    },
+    "row": 9
   },
   {
     "id": "Q973919",
@@ -1405,7 +2219,7 @@
         "month": 6
       }
     },
-    "row": 19
+    "row": 23
   },
   {
     "id": "Q338613",
@@ -1420,7 +2234,7 @@
     "at": {
       "year": 1
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q654400",
@@ -1434,7 +2248,7 @@
     "at": {
       "year": 1925
     },
-    "row": 14
+    "row": 10
   },
   {
     "id": "Q683846",
@@ -1445,11 +2259,75 @@
     "tagline": "Royal Spanish trading ships, 1565–1815",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Manila_galleon",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/16th%20century%20Portuguese%20Spanish%20trade%20routes.png",
-    "description": "The Manila galleon was a Spanish trade route linking the Philippines in the Spanish East Indies to Mexico, across the Pacific Ocean, in use from 1565 to 1815. The term also describes the sailing ships which plied the route, each making one or two round-trip voyages per year between Manila and Acapulco.",
+    "description": "The Manila galleon trade route was a Spanish trade route linking the Philippines in the Spanish East Indies to Mexico, across the Pacific Ocean, in use from 1565 to 1815. This route was plied by sailing ships or galleons i.e. the Manila galleons that made one or two round-trip voyages per year between Manila and Acapulco.",
     "at": {
       "year": 1565
     },
-    "row": 0
+    "row": 3
+  },
+  {
+    "id": "Q3350154",
+    "name": "assassination of Mahatma Gandhi",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "1948 murder in New Delhi, India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Assassination_of_Mahatma_Gandhi",
+    "description": "Mahatma Gandhi was assassinated on 30 January 1948 at the age of 78 in the compound of The Birla House, a large mansion in central New Delhi. His assassin was Nathuram Godse, from Pune, Maharastra a right-wing Hindu nationalist, with a history of association with the Rashtriya Swayamsevak Sangh (RSS), a right-wing Hindu paramilitary organization, and with membership in the Hindu Mahasabha.",
+    "at": {
+      "year": 1948,
+      "month": 1
+    },
+    "row": 27
+  },
+  {
+    "id": "Q1144693",
+    "name": "Minoan eruption",
+    "category": "environment-geology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 66,
+    "tagline": "major volcanic eruption around 1600 BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Minoan_eruption",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Minoan%20Ash.png",
+    "description": "The Minoan eruption was a catastrophic volcanic eruption that devastated the Aegean island of Thera circa 1600 BC. It destroyed the Minoan settlement at Akrotiri, as well as communities and agricultural areas on nearby islands and the coast of Crete with subsequent earthquakes and tsunamis. With a Volcanic Explosivity Index (VEI) of 7, it resulted in the ejection of approximately 28–41 km3 (6.7–9.8 mi3) of dense-rock equivalent (DRE), the eruption was one of the largest volcanic events in human history. Because tephra from the Minoan eruption serves as a marker horizon in nearly all archaeological sites in the Eastern Mediterranean, its precise date is of high importance and has been fiercely debated among archaeologists and volcanologists for decades, without coming to a definite conclusion.",
+    "at": {
+      "year": -1600
+    },
+    "row": 1
+  },
+  {
+    "id": "Q318181",
+    "name": "Gobustan State Historical and Cultural Reserve",
+    "category": "landmarks",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 66,
+    "tagline": "Protected site in Azerbaijan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gobustan_State_Historical_and_Cultural_Reserve",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Qobustan%20giri%C5%9F%20qayas%C4%B1%202026%20%281%29.jpg",
+    "imageAttribution": "Rəcəb Yaxşı, via Wikimedia Commons",
+    "description": "Gobustan State Historical and Cultural Reserve is a protected historic and natural site in Azerbaijan, located about 70 kilometres (43 mi) southwest of Baku, near the settlement of Gobustan. It was established to preserve the region's prehistoric rock carvings, mud volcanoes, and natural musical stones.",
+    "at": {
+      "year": 1966
+    },
+    "row": 20
+  },
+  {
+    "id": "Q1419429",
+    "name": "First Fleet",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 66,
+    "tagline": "11 ships that left Great Britain to found the penal colony that became the first European settlement in Australia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Fleet",
+    "description": "The First Fleet were eleven British ships which transported a group of settlers to mainland Australia, marking the beginning of the British colonisation of Australia. It consisted of two Royal Navy vessels, three storeships and six convict transports under the command of Captain Arthur Phillip. On 13 May 1787, the ships, with over 1,400 convicts, marines, sailors, colonial officials, and free settlers onboard, left Portsmouth and travelled over 24,000 kilometres and over 250 days before arriving in Botany Bay, New South Wales, on 18 January 1788. Governor Arthur Phillip rejected Botany Bay, choosing instead Port Jackson to the north as the site for the new colony; the Fleet arrived there on 26 January 1788. The Fleet established the Colony of New South Wales as a penal colony; the first British settlement in Australia.",
+    "at": {
+      "year": 1787
+    },
+    "row": 8
   },
   {
     "id": "Q6501061",
@@ -1463,7 +2341,7 @@
     "at": {
       "year": 1816
     },
-    "row": 10
+    "row": 14
   },
   {
     "id": "Q1753108",
@@ -1480,24 +2358,7 @@
     "at": {
       "year": 1869
     },
-    "row": 14
-  },
-  {
-    "id": "Q616159",
-    "name": "View from the Window at Le Gras",
-    "category": "media-culture",
-    "regionTags": [
-      "western-europe"
-    ],
-    "fameScore": 65,
-    "tagline": "the earliest known surviving photograph produced in the camera obscura by Joseph Nicéphore Niépce",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/View_from_the_Window_at_Le_Gras",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Untitled%20%28point%20de%20vue%29%2C%20Ni%C3%A9pce%201827%20%E2%80%94%20HRC%202020%20%28cropped%29.jpg",
-    "description": "View from the Window at Le Gras is the oldest surviving photograph. It was created by French inventor Nicéphore Niépce between June 4 and July 18, 1827, in Saint-Loup-de-Varennes, France, and shows parts of the buildings and surrounding countryside of his estate, Le Gras, as seen from a high window. The image was created by heliography, a process which Niépce had invented around 1822, and which uses the hardening of bitumen in light to record an image after washing off the remaining unhardened material.",
-    "at": {
-      "year": 1827
-    },
-    "row": 4
+    "row": 18
   },
   {
     "id": "Q1162294",
@@ -1519,7 +2380,7 @@
         "month": 1
       }
     },
-    "row": 21
+    "row": 25
   },
   {
     "id": "Q833645",
@@ -1559,7 +2420,7 @@
         "month": 7
       }
     },
-    "row": 21
+    "row": 28
   },
   {
     "id": "Q310301",
@@ -1574,7 +2435,7 @@
     "at": {
       "year": -1599
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q46872",
@@ -1607,7 +2468,25 @@
       "year": 1895,
       "month": 3
     },
-    "row": 19
+    "row": 22
+  },
+  {
+    "id": "Q99200",
+    "name": "The Iron Bridge",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "bridge that crosses the River Severn in Shropshire, England",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Iron_Bridge",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ironbridge%202014.jpg",
+    "imageAttribution": "Colin, via Wikimedia Commons",
+    "description": "The Iron Bridge is a cast iron arch bridge that spans the Ironbridge Gorge of the River Severn in Shropshire, England. Opened in 1781, it was the first major bridge in the world to be made of cast iron. Its success inspired the widespread use of cast iron as a structural material, and today the bridge is celebrated as a symbol of the Industrial Revolution.",
+    "at": {
+      "year": 1779
+    },
+    "row": 8
   },
   {
     "id": "Q505668",
@@ -1621,7 +2500,7 @@
     "at": {
       "year": 1852
     },
-    "row": 12
+    "row": 15
   },
   {
     "id": "Q284681",
@@ -1639,7 +2518,7 @@
       "year": 1942,
       "month": 12
     },
-    "row": 20
+    "row": 14
   },
   {
     "id": "Q705693",
@@ -1656,7 +2535,7 @@
     "at": {
       "year": -2049
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q478720",
@@ -1674,7 +2553,7 @@
     "at": {
       "year": 1700
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q2736155",
@@ -1697,7 +2576,83 @@
         "month": 7
       }
     },
+    "row": 16
+  },
+  {
+    "id": "Q15251",
+    "name": "handover of Hong Kong",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia",
+      "northern-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "transfer of sovereignty of Hong Kong to the People's Republic of China",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Handover_of_Hong_Kong",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1996%20-247-19a%20Museums%20of%20the%20Chinese%20Revolution%20and%20of%20Chinese%20History.jpg",
+    "imageAttribution": "Dan Lundberg, via Wikimedia Commons",
+    "description": "The handover of Hong Kong from the United Kingdom of Great Britain and Northern Ireland to the People's Republic of China occurred at midnight on 1 July 1997. This event ended 156 years of British rule, dating back to the capture of Hong Kong Island in 1841 during the First Opium War.",
+    "at": {
+      "year": 1997,
+      "month": 7
+    },
     "row": 11
+  },
+  {
+    "id": "Q325656",
+    "name": "Road to Canossa",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 64,
+    "tagline": "1076 ritual submission of Emperor Henry IV",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Road_to_Canossa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hugo-v-cluny%20heinrich-iv%20mathilde-v-tuszien%20cod-vat-lat-4922%201115ad.jpg",
+    "description": "The Road to Canossa or Humiliation of Canossa, or, sometimes, the Walk to Canossa was the journey of the Holy Roman Emperor Henry IV to Canossa Castle in 1077, and his subsequent ritual submission there to Pope Gregory VII. It took place during the Investiture controversy and involved the Emperor seeking absolution and the revocation of his excommunication by the Pope who had been staying at the castle as the guest of Margravine Matilda of Tuscany.",
+    "period": {
+      "start": {
+        "year": 1076,
+        "month": 12
+      },
+      "end": {
+        "year": 1077,
+        "month": 1
+      }
+    },
+    "row": 2
+  },
+  {
+    "id": "Q1426448",
+    "name": "Smiling Buddha",
+    "category": "energy-industry",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 64,
+    "tagline": "1974 India's first successful nuclear test",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Smiling_Buddha",
+    "description": "Smiling Buddha was the code name of India's first successful nuclear weapon test on 18 May 1974. The nuclear fission bomb was detonated in the Pokhran Test Range of the Indian Army in Rajasthan. As per the United States military intelligence, the operation was named as Happy Krishna. The Indian Ministry of External Affairs (MEA) described the test as a peaceful nuclear explosion.",
+    "at": {
+      "year": 1974,
+      "month": 5
+    },
+    "row": 20
+  },
+  {
+    "id": "Q733610",
+    "name": "Erebuni Fortress",
+    "category": "landmarks",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 64,
+    "tagline": "Fortress",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Erebuni_Fortress",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Erebuni.jpg",
+    "description": "Erebuni Fortress is an Urartian fortified city, located in Yerevan, Armenia. It is 1,017 metres (3,337 ft) above sea level. It was one of several fortresses built along the northern Urartian border and was one of the most important political, economic and cultural centers of the vast kingdom. The name Yerevan itself is derived from Erebuni.",
+    "at": {
+      "year": -781
+    },
+    "row": 1
   },
   {
     "id": "Q842363",
@@ -1714,7 +2669,7 @@
     "at": {
       "year": -1580
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q949801",
@@ -1729,25 +2684,7 @@
     "at": {
       "year": 1907
     },
-    "row": 22
-  },
-  {
-    "id": "Q99200",
-    "name": "The Iron Bridge",
-    "category": "landmarks",
-    "regionTags": [
-      "northern-europe"
-    ],
-    "fameScore": 63,
-    "tagline": "bridge that crosses the River Severn in Shropshire, England",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Iron_Bridge",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ironbridge%202014.jpg",
-    "imageAttribution": "Colin, via Wikimedia Commons",
-    "description": "The Iron Bridge is a cast iron arch bridge that crosses the River Severn in Shropshire, England. Opened in 1781, it was the first major bridge in the world to be made of cast iron. Its success inspired the widespread use of cast iron as a structural material, and today the bridge is celebrated as a symbol of the Industrial Revolution.",
-    "at": {
-      "year": 1779
-    },
-    "row": 7
+    "row": 26
   },
   {
     "id": "Q699127",
@@ -1770,7 +2707,7 @@
         "year": 1433
       }
     },
-    "row": 1
+    "row": 4
   },
   {
     "id": "Q487420",
@@ -1788,7 +2725,41 @@
     "at": {
       "year": 1833
     },
+    "row": 12
+  },
+  {
+    "id": "Q18408564",
+    "name": "1783 Russian annexation of Crimea",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 63,
+    "tagline": "1783 annexation of territory",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1783_Russian_annexation_of_Crimea",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B2%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%BB%D0%B0%D0%B3%D0%B5%D1%80%D1%8C%20%D0%B2%20%D0%9A%D1%80%D1%8B%D0%BC%D1%83.%201783.jpg",
+    "description": "The Russian Empire formally annexed the Crimean Khanate on 19 April [O.S. 8 April] 1783, following a decade-long campaign of intervention in the Crimean Peninsula. Russia aimed to control the Black Sea and end raids by Crimean slavers into its territory. To accomplish this, the Russians waged a series of wars against the Ottoman Empire and its Crimean vassal state, culminating in victory in the 1768–1774 Russo-Turkish War. The Treaty of Küçük Kaynarca, signed in 1774, granted the Crimean Khanate nominal independence from the Ottomans under Russian influence. In subsequent years, Russia would intervene widely in Crimean affairs, provoking a series of revolts by the Crimean Tatars, while the Ottomans watched in ambivalence. Crimea was finally annexed by Russia on 19 April 1783, after Russian imperial advisor Prince Grigory Potemkin encouraged Empress Catherine the Great to dissolve the khanate and formally claim its territory. The annexation ended the centuries-long Crimean slave trade. Under Russian administration, the former khanate was subjected to a long-term policy of de-Tatarisation. Tatar property was confiscated, and Russians were encouraged to settle in the region, sparking waves of Tatar emigration.",
+    "at": {
+      "year": 1783,
+      "month": 4
+    },
     "row": 11
+  },
+  {
+    "id": "Q570140",
+    "name": "Taika Reform",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 63,
+    "tagline": "set of doctrines established by Emperor Kōtoku",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Taika_Reform",
+    "description": "The Taika Reforms  were a set of doctrines established by Emperor Kōtoku in the year 645. They were written shortly after the death of Prince Shōtoku and the defeat of the Soga clan, uniting Japan. The reforms also artistically marked the end of the Asuka period and the beginning of the Hakuhō period. Crown Prince Naka no Ōe, Nakatomi no Kamatari, and Emperor Kōtoku jointly embarked on the details of the Reforms. Emperor Kōtoku then announced the era of \"Taika\" (大化), or \"Great Reform\".",
+    "at": {
+      "year": 645
+    },
+    "row": 0
   },
   {
     "id": "Q1261053",
@@ -1803,7 +2774,7 @@
     "at": {
       "year": 800
     },
-    "row": 0
+    "row": 2
   },
   {
     "id": "Q644521",
@@ -1825,7 +2796,7 @@
         "month": 5
       }
     },
-    "row": 17
+    "row": 15
   },
   {
     "id": "Q1739453",
@@ -1843,7 +2814,64 @@
     "at": {
       "year": 1954
     },
-    "row": 22
+    "row": 29
+  },
+  {
+    "id": "Q2345573",
+    "name": "Expulsion of the Moriscos",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 62,
+    "tagline": "17th century expulsion of Moriscos from Spain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Expulsion_of_the_Moriscos",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20Expulsi%C3%B3n%20en%20el%20Puerto%20de%20Denia.%20Vicente%20Mestre.jpg",
+    "description": "The Expulsion of the Moriscos was decreed by King Philip III of Spain on April 9, 1609. The Moriscos were descendants of Spain's Muslim population who had been forced to convert to Christianity. Since the Spanish were fighting wars in the Americas, feeling threatened by the Ottomans raiding along the Spanish coast and by two Morisco revolts in the century since Islam was outlawed in Spain, it seems that the expulsions were a reaction to an internal problem of the stretched Spanish Empire. Between 1609 and 1614, the Crown systematically expelled Moriscos through a number of decrees affecting Spain's various kingdoms, with varying levels of success. Between 1492 and 1610, about three million Muslims left or were expelled from Spain.",
+    "period": {
+      "start": {
+        "year": 1609,
+        "month": 4
+      },
+      "end": {
+        "year": 1614
+      }
+    },
+    "row": 7
+  },
+  {
+    "id": "Q1121044",
+    "name": "Union of Krewo",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 62,
+    "tagline": "1385 document between Poland and Lithuania",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Union_of_Krewo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Union%20of%20Krewo500x333.jpg",
+    "description": "In a strict sense, the Union of Krewo or Act of Krėva comprised a set of prenuptial promises made at Kreva Castle on 14 August 1385 by Jogaila, Grand Duke of Lithuania, in regard to his prospective marriage to the underage reigning Queen Jadwiga of Poland.",
+    "at": {
+      "year": 1385,
+      "month": 8
+    },
+    "row": 3
+  },
+  {
+    "id": "Q525997",
+    "name": "Treaty of Georgievsk",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 62,
+    "tagline": "treaty signed by Kartli-Kakheti and the Russian Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Treaty_of_Georgievsk",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Treaty%20of%20Georgievsk%20of%201783%20%28Esadze%2C%201913%29.JPG",
+    "description": "The Treaty of Georgievsk was a bilateral treaty concluded between the Russian Empire and the east Georgian kingdom of Kartli-Kakheti on July 24, 1783. The treaty established eastern Georgia as a protectorate of Russia, which guaranteed its territorial integrity and the continuation of its reigning Bagrationi dynasty in return for prerogatives in the conduct of Georgian foreign affairs.",
+    "at": {
+      "year": 1783,
+      "month": 8
+    },
+    "row": 14
   },
   {
     "id": "Q375044",
@@ -1860,7 +2888,7 @@
     "at": {
       "year": 1825
     },
-    "row": 7
+    "row": 14
   },
   {
     "id": "Q2224989",
@@ -1874,29 +2902,6 @@
     "description": "The atmospheric engine was invented by Thomas Newcomen in 1712, and is sometimes referred to as the Newcomen fire engine or Newcomen engine. The engine was operated by condensing steam being drawn into the cylinder, thereby creating a partial vacuum which allowed atmospheric pressure to push the piston into the cylinder. It is significant as the first practical device to harness steam to produce mechanical work. Newcomen engines were used throughout Britain and Europe, principally to pump water out of mines. Hundreds were constructed during the 18th century. James Watt's later engine design was an improved version of the Newcomen engine that roughly doubled fuel efficiency. Many atmospheric engines were converted to the Watt design. As a result, Watt is today better known than Newcomen in relation to the origin of the steam engine.",
     "at": {
       "year": 1712
-    },
-    "row": 3
-  },
-  {
-    "id": "Q2345573",
-    "name": "Expulsion of the Moriscos",
-    "category": "society-administration",
-    "regionTags": [
-      "southern-europe"
-    ],
-    "fameScore": 61,
-    "tagline": "17th century expulsion of Moriscos from Spain",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Expulsion_of_the_Moriscos",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/La%20Expulsi%C3%B3n%20en%20el%20Puerto%20de%20Denia.%20Vicente%20Mestre.jpg",
-    "description": "The Expulsion of the Moriscos was decreed by King Philip III of Spain on April 9, 1609. The Moriscos were descendants of Spain's Muslim population who had been forced to convert to Christianity. Since the Spanish were fighting wars in the Americas, feeling threatened by the Ottomans raiding along the Spanish coast and by two Morisco revolts in the century since Islam was outlawed in Spain, it seems that the expulsions were a reaction to an internal problem of the stretched Spanish Empire. Between 1609 and 1614, the Crown systematically expelled Moriscos through a number of decrees affecting Spain's various kingdoms, with varying levels of success. Between 1492 and 1610, about three million Muslims left or were expelled from Spain.",
-    "period": {
-      "start": {
-        "year": 1609,
-        "month": 4
-      },
-      "end": {
-        "year": 1614
-      }
     },
     "row": 4
   },
@@ -1915,7 +2920,7 @@
     "at": {
       "year": 1823
     },
-    "row": 9
+    "row": 12
   },
   {
     "id": "Q2453355",
@@ -1931,7 +2936,7 @@
     "at": {
       "year": 1956
     },
-    "row": 23
+    "row": 30
   },
   {
     "id": "Q3984081",
@@ -1946,7 +2951,7 @@
     "at": {
       "year": 1543
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q1964751",
@@ -1968,43 +2973,54 @@
         "year": 1896
       }
     },
-    "row": 23
+    "row": 27
   },
   {
-    "id": "Q1564366",
-    "name": "Second voyage of HMS Beagle",
-    "category": "expedition",
+    "id": "Q2119319",
+    "name": "Peace of Amasya",
+    "category": "society-administration",
     "regionTags": [],
-    "fameScore": 58,
-    "tagline": "exploration associated with the theory of evolution (1831-1836)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_voyage_of_HMS_Beagle",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/HMS%20Beagle%20by%20Conrad%20Martens.jpg",
-    "description": "The second survey expedition of HMS Beagle took place from 27 December 1831 to 2 October 1836. Robert FitzRoy, the newest commander of Beagle, had thought of the advantages of having someone onboard who could investigate geology, and sought a naturalist to accompany them as a supernumerary. At the age of 22, the graduate Charles Darwin hoped to see the tropics before becoming a parson, and accepted the opportunity. He was greatly influenced by reading Charles Lyell's Principles of Geology during the voyage. By the end of the expedition, Darwin had made his name as a geologist, and fossil collector, and the publication of his journal gave him wide renown as a writer.",
-    "period": {
-      "start": {
-        "year": 1831,
-        "month": 12
-      },
-      "end": {
-        "year": 1836,
-        "month": 10
-      }
+    "fameScore": 59,
+    "tagline": "1555 treaty between Shah Tahmasp of Safavid Iran and Sultan Suleiman the Magnificent of the Ottoman Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Peace_of_Amasya",
+    "description": "The Peace of Amasya was a treaty agreed to on 29 May 1555, between Shah Tahmasp I of Safavid Iran and Sultan Suleiman the Magnificent of the Ottoman Empire at the city of Amasya, following the Ottoman–Safavid War of 1532–1555.",
+    "at": {
+      "year": 1555,
+      "month": 6
     },
-    "row": 13
+    "row": 3
   },
   {
-    "id": "Q1290001",
-    "name": "Brāhmasphuṭasiddhānta",
+    "id": "Q1739282",
+    "name": "Kerma kingdom",
+    "category": "archaeology-anthropology",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 59,
+    "tagline": "Ancient Sudanese kingdom",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Kerma_culture",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kerma%20city.JPG",
+    "imageAttribution": "Lassi, via Wikimedia Commons",
+    "description": "The Kerma culture or the Kingdom of Kerma was an early civilization centered in Kerma, Sudan, in ancient Nubia. The culture developed from around 2500 BC, reaching its peak between 1750 BC and 1500 BC. The Kerma culture was based in the southern part of Nubia, or \"Upper Nubia\", and later extended its reach northward into Lower Nubia and the border of Egypt. The polity seems to have been one of a number of Nile Valley states during the Middle Kingdom of Egypt. The Kerma civilization was an ethnic melting pot, with origins tied to a complex web of cultures native to both the Sahara, and, farther south, parts of Central Africa, as well as to peoples originating from the Levant. In the Kingdom of Kerma's latest phase, lasting from about 1700 to 1500 BC, it absorbed the Sudanese kingdom of Sai and became a sizable, populous kingdom rivalling Egypt. Around 1500 BC, it was absorbed into the New Kingdom of Egypt, but rebellions continued for centuries. By the eleventh century BC, the more-Egyptianized Kingdom of Kush emerged, possibly from Kerma, and regained the region's independence from Egypt.",
+    "at": {
+      "year": -3499
+    },
+    "row": 1
+  },
+  {
+    "id": "Q51497",
+    "name": "Annus Mirabilis papers",
     "category": "science-theory",
     "regionTags": [],
-    "fameScore": 57,
-    "tagline": "Indian mathematics treatise",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Br%C4%81hmasphu%E1%B9%ADasiddh%C4%81nta",
-    "description": "The Brāhma-sphuṭa-siddhānta is a main work of Brahmagupta, written c. 628. This text of mathematical astronomy contains significant mathematical content, including the first good understanding of the role of zero, rules for manipulating both negative and positive numbers, a method for computing square roots, methods of solving linear and quadratic equations, rules for summing series, Brahmagupta's identity, and Brahmagupta theorem.",
+    "fameScore": 59,
+    "tagline": "papers of Albert Einstein published in the Annalen der Physik scientific journal in 1905",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Annus_mirabilis_papers",
+    "description": "The annus mirabilis papers are four papers that Albert Einstein published in the scientific journal Annalen der Physik in 1905. As major contributions to the foundation of modern physics, these scientific publications were the ones for which he gained fame among physicists. They revolutionized science's understanding of the fundamental concepts of space, time, mass, and energy.The first paper explained the photoelectric effect, which established the energy of the light quanta , and was the only specific discovery mentioned in the citation awarding Einstein the 1921 Nobel Prize in Physics.The second paper explained Brownian motion, which established the Einstein relation  and compelled physicists to accept the existence of atoms.The third paper introduced Einstein's special theory of relativity, which proclaims the constancy of the speed of light  and derives the Lorentz transformations. Einstein also examined relativistic aberration and the transverse Doppler effect.The fourth, a consequence of special relativity, developed the principle of mass–energy equivalence, expressed in the equation  and which led to the discovery and use of nuclear power decades later.",
     "at": {
-      "year": 628
+      "year": 1905
     },
-    "row": 2
+    "row": 9
   },
   {
     "id": "Q4567715",
@@ -2013,7 +3029,7 @@
     "regionTags": [
       "northern-europe"
     ],
-    "fameScore": 57,
+    "fameScore": 58,
     "tagline": "first successful ascent of Mount Everest",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Everest%20kalapatthar.jpg",
@@ -2029,7 +3045,59 @@
         "month": 6
       }
     },
-    "row": 24
+    "row": 31
+  },
+  {
+    "id": "Q1564366",
+    "name": "Second voyage of HMS Beagle",
+    "category": "expedition",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 58,
+    "tagline": "exploration associated with the theory of evolution (1831-1836)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_voyage_of_HMS_Beagle",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/HMS%20Beagle%20by%20Conrad%20Martens.jpg",
+    "description": "The second survey expedition of HMS Beagle took place from 27 December 1831 to 2 October 1836. Robert FitzRoy, the newest commander of Beagle, had thought of the advantages of having someone onboard who could investigate geology, and sought a naturalist to accompany them as a supernumerary. At the age of 22, the graduate Charles Darwin hoped to see the tropics before becoming a parson, and accepted the opportunity. He was greatly influenced by reading Charles Lyell's Principles of Geology during the voyage. By the end of the expedition, Darwin had made his name as a geologist, and fossil collector, and the publication of his journal gave him wide renown as a writer.",
+    "period": {
+      "start": {
+        "year": 1831,
+        "month": 12
+      },
+      "end": {
+        "year": 1836,
+        "month": 10
+      }
+    },
+    "row": 18
+  },
+  {
+    "id": "Q1281955",
+    "name": "Christianization of Bulgaria",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 58,
+    "tagline": "Process by which 9th-century medieval Bulgaria converted to Christianity",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Christianization_of_Bulgaria",
+    "description": "The Christianization of Bulgaria was the process by which 9th-century medieval Bulgaria converted to Christianity after the baptism of its leader Boris I.",
+    "at": {
+      "year": 864
+    },
+    "row": 2
+  },
+  {
+    "id": "Q1290001",
+    "name": "Brāhmasphuṭasiddhānta",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "Indian mathematics treatise",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Br%C4%81hmasphu%E1%B9%ADasiddh%C4%81nta",
+    "description": "The Brāhma-sphuṭa-siddhānta is a main work of Brahmagupta, written c. 628. This text of mathematical astronomy contains significant mathematical content, including the first good understanding of the role of zero, rules for manipulating both negative and positive numbers, a method for computing square roots, methods of solving linear and quadratic equations, rules for summing series, Brahmagupta's identity, and Brahmagupta theorem.",
+    "at": {
+      "year": 628
+    },
+    "row": 3
   },
   {
     "id": "Q3178839",
@@ -2049,7 +3117,7 @@
         "year": 1771
       }
     },
-    "row": 9
+    "row": 12
   },
   {
     "id": "Q233260",
@@ -2068,19 +3136,42 @@
         "year": 1743
       }
     },
-    "row": 4
+    "row": 5
+  },
+  {
+    "id": "Q23016184",
+    "name": "AlphaGo versus Lee Sedol",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "Go match between AlphaGo and Lee Sedol",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/FHvAG5.jpg",
+    "imageAttribution": "Alzinous, via Wikimedia Commons",
+    "description": "AlphaGo versus Lee Sedol, also known as the DeepMind Challenge Match, was a five-game Go match between top Go player Lee Sedol and AlphaGo, a computer Go program developed by DeepMind, played in Seoul, South Korea between the 9th and 15th of March 2016. AlphaGo won all but the fourth game; all games were won by resignation. The match has been compared with the historic chess match between Deep Blue and Garry Kasparov in 1997.",
+    "period": {
+      "start": {
+        "year": 2016,
+        "month": 3
+      },
+      "end": {
+        "year": 2016,
+        "month": 3
+      }
+    },
+    "row": 13
   },
   {
     "id": "Q3518429",
     "name": "Āryabhaṭīya",
     "category": "science-theory",
     "regionTags": [],
-    "fameScore": 55,
+    "fameScore": 56,
     "tagline": "Sanskrit astronomical treatise by the 5th century Indian mathematician Aryabhata",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Aryabhatiya",
     "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Description%20of%20Kuttaka%20in%20Aryabhatiya.jpg",
     "imageAttribution": "Krishnachandranvn, via Wikimedia Commons",
-    "description": "Aryabhatiya or Aryabhatiyam, a Sanskrit astronomical treatise, is the magnum opus and only known surviving work of the 5th century Indian mathematician Aryabhata. Historian of astronomy Roger Billard estimates that the book was composed around 510 CE based on historical references it mentions.",
+    "description": "Aryabhatiyam (IAST:, a Sanskrit astronomical treatise, is the magnum opus and only known surviving work of the 5th century Indian mathematician Aryabhata. Historian of astronomy Roger Billard estimates that the book was composed around 510 CE based on historical references it mentions.",
     "at": {
       "year": 510
     },
@@ -2118,7 +3209,7 @@
     "at": {
       "year": 1851
     },
-    "row": 13
+    "row": 18
   },
   {
     "id": "Q13443401",
@@ -2132,13 +3223,63 @@
     "at": {
       "year": 1876
     },
-    "row": 12
+    "row": 14
+  },
+  {
+    "id": "Q547513",
+    "name": "Sword Abolishment Edict",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 51,
+    "tagline": "sword hunt during the Meiji Restoration in Japan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hait%C5%8D_Edict",
+    "description": "The Sword Abolishment Edict  was an edict issued by the Meiji government of Japan on March 28, 1876, which prohibited people, with the exception of former lords (daimyōs), the military, and law enforcement officials, from carrying weapons in public; seen as an embodiment of a sword hunt. Violators would have their swords confiscated.",
+    "at": {
+      "year": 1876,
+      "month": 3
+    },
+    "row": 6
+  },
+  {
+    "id": "Q28135544",
+    "name": "Christianization of Iberia",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 51,
+    "tagline": "spread of Christianity in the Kingdom of Iberia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Christianization_of_the_Kingdom_of_Iberia",
+    "description": "The Christianization of the Kingdom of Iberia refers to the spread of Christianity in the early 4th century as a result of the preaching of Saint Nino in the ancient Georgian kingdom of Kartli, known as Iberia in classical antiquity. The then-pagan king of Iberia Mirian III declared Christianity to be the kingdom's state religion. According to Roman historian Sozomen, this led the king's \"large and warlike barbarian nation to confess Christ and renounce the religion of their fathers\", as the polytheistic Georgians had long-established anthropomorphic idols, known as the \"Gods of Kartli\". The king would become the main sponsor, architect, initiator and an organizing power of all building processes.",
+    "at": {
+      "year": 400
+    },
+    "row": 2
+  },
+  {
+    "id": "Q60863552",
+    "name": "Baptism of Poland",
+    "category": "religion-mythology",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 50,
+    "tagline": "baptism of Mieszko I of Poland and much of his court, which precipitated the Christianization of Poland",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Baptism_of_Poland",
+    "description": "The Christianization of Poland refers to the introduction and subsequent spread of Christianity in Poland. The impetus to the process was the Baptism of Poland, the personal baptism of Mieszko I, the first ruler of the future Polish state, and much of his court. The ceremony took place on Holy Saturday, 14 April 966, although the exact location is disputed by historians, with the cities of Poznań and Gniezno being the most likely sites. Mieszko's wife, Dobrawa of Bohemia, is often seen as a major influence on Mieszko's decision to accept Christianity.",
+    "at": {
+      "year": 966,
+      "month": 4
+    },
+    "row": 0
   },
   {
     "id": "Q2631085",
     "name": "Deep Blue versus Kasparov, 1997, Game 6",
     "category": "sports-entertainment",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 46,
     "tagline": "chess game between human and computer",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Kasparov,_1997,_Game_6",
@@ -2146,6 +3287,23 @@
     "at": {
       "year": 1997,
       "month": 5
+    },
+    "row": 18
+  },
+  {
+    "id": "Q5305631",
+    "name": "Drake Well",
+    "category": "energy-industry",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 41,
+    "tagline": "historic oil well in Pennsylvania, first one in United States",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Drake_Well",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20U.S.%20oil%20rig%20with%20Edwin%20Drake%2C%20crop.jpg",
+    "description": "The Drake Well is a 69.5-foot-deep (21.2 m) oil well in Cherrytree Township, Pennsylvania, the success of which sparked the first oil boom in the United States. The well is the centerpiece of the Drake Well Museum located 3 miles (5 km) south of Titusville.",
+    "at": {
+      "year": 1859
     },
     "row": 13
   }

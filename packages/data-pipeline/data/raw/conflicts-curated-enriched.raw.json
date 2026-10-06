@@ -5,7 +5,7 @@
       "name": "French Revolution",
       "nameRu": "Великая французская революция",
       "category": "revolution",
-      "sitelinks": 193,
+      "sitelinks": 195,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/French_Revolution",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/French_Revolution",
@@ -20,7 +20,7 @@
         "Q142"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LouisXVIExecutionBig.jpg",
-      "tagline": "revolution in France from 1789 to 1799",
+      "tagline": "A period of political and societal change in France from 1789 to 1799",
       "taglineRu": "буржуазная революция во Франции 1789—1799 годов",
       "year": 1789,
       "month": 7,
@@ -32,12 +32,12 @@
       "name": "full-scale Russo-Ukrainian war",
       "nameRu": "вторжение России на Украину (с 2022)",
       "category": "war",
-      "sitelinks": 175,
+      "sitelinks": 176,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)",
         "zh": "https://zh.wikipedia.org/wiki/%E4%BF%84%E7%83%8F%E6%88%B0%E7%88%AD_(2022%E5%B9%B4%E8%87%B3%E4%BB%8A)",
-        "es": "https://es.wikipedia.org/wiki/Invasi%C3%B3n_rusa_de_Ucrania",
+        "es": "https://es.wikipedia.org/wiki/Guerra_ruso-ucraniana",
         "fr": "https://fr.wikipedia.org/wiki/Invasion_de_l%27Ukraine_par_la_Russie",
         "de": "https://de.wikipedia.org/wiki/Russischer_%C3%9Cberfall_auf_die_Ukraine_seit_2022",
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D8%B1%D9%88%D8%B3%D9%8A_%D9%84%D8%A3%D9%88%D9%83%D8%B1%D8%A7%D9%86%D9%8A%D8%A7",
@@ -63,7 +63,7 @@
       "name": "Korean War",
       "nameRu": "Корейская война",
       "category": "war",
-      "sitelinks": 144,
+      "sitelinks": 145,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Korean_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Korean_War",
@@ -91,7 +91,7 @@
       "name": "Russian Revolution",
       "nameRu": "Революция 1917 года в России",
       "category": "revolution",
-      "sitelinks": 129,
+      "sitelinks": 131,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Revolution",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Russian_Revolution",
@@ -115,7 +115,7 @@
       "name": "Hundred Years' War",
       "nameRu": "Столетняя война",
       "category": "war",
-      "sitelinks": 127,
+      "sitelinks": 128,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hundred_Years%27_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Hundred_Years%27_War",
@@ -140,7 +140,7 @@
       "name": "Cultural Revolution",
       "nameRu": "культурная революция в Китае",
       "category": "revolution",
-      "sitelinks": 122,
+      "sitelinks": 123,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cultural_Revolution",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Cultural_Revolution",
@@ -251,7 +251,7 @@
       "nameRu": "Война за независимость США",
       "category": "war-of-independence",
       "parentId": "Q192769",
-      "sitelinks": 114,
+      "sitelinks": 115,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/American_Revolutionary_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/American_Revolutionary_War",
@@ -313,7 +313,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82",
         "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%80%D0%B0%D0%BA%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q796"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Iraq%20War%20montage.png",
       "tagline": "2003–2011 war after an American-led invasion",
       "taglineRu": "война международной коалиции во главе с США против Саддама Хуссейна и поддерживающих его сил в Ираке (2003-2011)",
@@ -390,7 +392,7 @@
       "countries": [
         "Q794"
       ],
-      "tagline": "Ongoing armed conflict in West Asia",
+      "tagline": "ongoing armed conflict in West Asia",
       "taglineRu": "война Израиля, США и их союзников против ИРИ, начавшаяся 28.02.2026 с ударов по объектам в Иране",
       "year": 2026,
       "month": 2
@@ -425,7 +427,7 @@
       "name": "Iranian Revolution",
       "nameRu": "Исламская революция в Иране",
       "category": "revolution",
-      "sitelinks": 101,
+      "sitelinks": 102,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Iranian_Revolution",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Iranian_Revolution",
@@ -524,7 +526,7 @@
     {
       "id": "Q46083",
       "name": "Franco-Prussian War",
-      "nameRu": "франко-прусская война",
+      "nameRu": "Франко-прусская война",
       "category": "war",
       "sitelinks": 97,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Franco-Prussian_War",
@@ -537,7 +539,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9_%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D8%B3%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%A4%D1%80%D0%B0%D0%BD%D0%BA%D0%BE-%D0%BF%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q142"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle-Mars-Le-Tour-large.jpg",
       "tagline": "1870–1871 military conflict of the Second French Empire versus Prussia and its allies",
       "taglineRu": "военный конфликт между Францией и Пруссией в 1870—1871 годах",
@@ -606,7 +610,7 @@
       "nameRu": "Война Судного дня",
       "category": "war",
       "parentId": "Q3491398",
-      "sitelinks": 93,
+      "sitelinks": 94,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Yom_Kippur_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Yom_Kippur_War",
@@ -617,7 +621,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%A1%D1%83%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B4%D0%BD%D1%8F"
       },
-      "countries": [],
+      "countries": [
+        "Q79"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Yom%20Kippur%20War.%20XXXVI.jpg",
       "tagline": "October 1973 war between Egypt and Syria at one side and Israel on the other side",
       "taglineRu": "военный конфликт в 1973 году между коалицией арабских государств и Израилем",
@@ -631,7 +637,7 @@
       "name": "Russo-Japanese War",
       "nameRu": "Русско-японская война",
       "category": "war",
-      "sitelinks": 92,
+      "sitelinks": 93,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Japanese_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Russo-Japanese_War",
@@ -760,7 +766,7 @@
       "name": "War of 1812",
       "nameRu": "Англо-американская война",
       "category": "war",
-      "sitelinks": 88,
+      "sitelinks": 89,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/War_of_1812",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/War_of_1812",
@@ -771,7 +777,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_1812",
         "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%BE-%D0%B0%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q30"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/USS%20Constitution%20vs%20Guerriere.jpg",
       "tagline": "conflict between the United States and the British Empire from 1812 to 1815",
       "taglineRu": "вооружённый конфликт между США и Великобританией в период наполеоновских войн",
@@ -877,7 +885,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A3%D9%88%D8%B3%D9%8A%D8%AA%D9%8A%D8%A7_%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9_2008",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B2_%D0%93%D1%80%D1%83%D0%B7%D0%B8%D0%B8_(2008)"
       },
-      "countries": [],
+      "countries": [
+        "Q230"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tskhinval%20Yana%20Amelina%2010.jpg",
       "tagline": "2008 Russian invasion of Georgia",
       "taglineRu": "вторжение России в Грузию в 2008 году",
@@ -891,7 +901,7 @@
       "name": "Peloponnesian War",
       "nameRu": "Пелопоннесская война",
       "category": "war",
-      "sitelinks": 81,
+      "sitelinks": 82,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Peloponnesian_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Peloponnesian_War",
@@ -902,7 +912,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%A8%D9%8A%D9%84%D9%88%D8%A8%D9%88%D9%86%D9%8A%D8%B3%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D0%BB%D0%BE%D0%BF%D0%BE%D0%BD%D0%BD%D0%B5%D1%81%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q38"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20Peloponnesian%20War%20431%20BC-en.svg",
       "tagline": "war fought between Athens and Sparta (431–404 BCE)",
       "taglineRu": "военный конфликт в Древней Греции",
@@ -942,7 +954,7 @@
       "name": "Indian Mutiny of 1857",
       "nameRu": "Восстание сипаев",
       "category": "rebellion",
-      "sitelinks": 81,
+      "sitelinks": 82,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857",
@@ -1059,7 +1071,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%BA%D8%B2%D9%88_%D8%A8%D9%88%D9%84%D9%86%D8%AF%D8%A7_(1939)",
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F_%D0%BA%D0%B0%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F_%D0%B2%D0%B5%D1%80%D0%BC%D0%B0%D1%85%D1%82%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q36"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/German%20soldiers%20remove%20the%20Polish%20border%20crossing%20in%20Sopot%20during%20the%20first%20stages%20of%20the%20Invasion%20of%20Poland%20%2848661789227%29.png",
       "tagline": "German, Soviet, and Slovak attack on and takeover of Poland that marked the start of World War II",
       "taglineRu": "вторжение немецких, словацких и советских войск в Польшу в сентябре 1939 года",
@@ -1098,7 +1112,7 @@
       "name": "First Chechen War",
       "nameRu": "Первая чеченская война",
       "category": "war",
-      "sitelinks": 78,
+      "sitelinks": 79,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Chechen_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/First_Chechen_War",
@@ -1204,7 +1218,7 @@
       "name": "First Opium War",
       "nameRu": "Первая опиумная война",
       "category": "war",
-      "sitelinks": 76,
+      "sitelinks": 77,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Opium_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/First_Opium_War",
@@ -1259,7 +1273,7 @@
       "name": "Euromaidan",
       "nameRu": "Евромайдан",
       "category": "coup-d-etat",
-      "sitelinks": 76,
+      "sitelinks": 77,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Euromaidan",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Euromaidan",
@@ -1275,7 +1289,7 @@
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Euromaidan%20Kyiv%201-12-13%20by%20Gnatoush%20005.jpg",
       "tagline": "2013–2014 pro-european protests in Ukraine",
-      "taglineRu": "протесты на Украине с 30 ноября 2013 года по 22 февраля 2014 года",
+      "taglineRu": "массовые протесты на Украине, длившиеся с 30 ноября 2013 года по 22 февраля 2014 года",
       "year": 2013,
       "month": 11,
       "endYear": 2014,
@@ -1286,7 +1300,7 @@
       "name": "Second Punic War",
       "nameRu": "Вторая Пуническая война",
       "category": "war",
-      "sitelinks": 75,
+      "sitelinks": 76,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Punic_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Second_Punic_War",
@@ -1346,7 +1360,7 @@
         "fr": "https://fr.wikipedia.org/wiki/Conflit_isra%C3%A9lo-libanais_de_2006",
         "de": "https://de.wikipedia.org/wiki/Libanonkrieg_2006",
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D9%84%D8%A8%D9%86%D8%A7%D9%86_2006",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%B0%D1%8F_%D0%BB%D0%B8%D0%B2%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%B0%D1%8F_%D0%9B%D0%B8%D0%B2%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
       "countries": [
         "Q822",
@@ -1434,9 +1448,7 @@
       "tagline": "military campaign started after September 11 attacks",
       "taglineRu": "словосочетание американского политического лексикона",
       "year": 2001,
-      "month": 9,
-      "endYear": 2021,
-      "endMonth": 8
+      "month": 9
     },
     {
       "id": "Q99659280",
@@ -1506,7 +1518,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%88%D8%B1%D8%A9_%D8%A7%D9%84%D8%AA%D8%AD%D8%B1%D9%8A%D8%B1_%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B7%D0%B0_%D0%BD%D0%B5%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C_%D0%90%D0%BB%D0%B6%D0%B8%D1%80%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q262"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Algerian%20war%20collage%20wikipedia.jpg",
       "tagline": "war between France and the Algerian independence movement from 1954 to 1962",
       "taglineRu": "война Алжира за независимость от Франции (1954—1962)",
@@ -1707,7 +1721,7 @@
       "name": "Lamian War",
       "nameRu": "Ламийская война",
       "category": "war",
-      "sitelinks": 34,
+      "sitelinks": 35,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Lamian_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Lamian_War",
@@ -1732,7 +1746,7 @@
       "name": "First Punic War",
       "nameRu": "Первая Пуническая война",
       "category": "war",
-      "sitelinks": 63,
+      "sitelinks": 64,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Punic_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/First_Punic_War",
@@ -1755,7 +1769,7 @@
       "name": "Third Punic War",
       "nameRu": "Третья Пуническая война",
       "category": "war",
-      "sitelinks": 61,
+      "sitelinks": 62,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_Punic_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Third_Punic_War",
@@ -1766,7 +1780,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%A8%D9%88%D9%86%D9%8A%D9%82%D9%8A%D8%A9_%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B5%D1%82%D1%8C%D1%8F_%D0%9F%D1%83%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q948"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Western%20Mediterranean%20territory%2C%20150%20BC.svg",
       "tagline": "war between the Roman Republic and Carthage between 149 and 146 BCE",
       "taglineRu": "война между Римом и Карфагеном",
@@ -1825,7 +1841,7 @@
       "name": "Norman conquest of England",
       "nameRu": "Нормандское завоевание Англии",
       "category": "military-operation",
-      "sitelinks": 67,
+      "sitelinks": 68,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Norman_Conquest",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Norman_Conquest",
@@ -1874,7 +1890,7 @@
       "name": "Crusades",
       "nameRu": "Крестовые походы",
       "category": "war",
-      "sitelinks": 168,
+      "sitelinks": 169,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Crusades",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Crusades",
@@ -2039,7 +2055,7 @@
       "name": "Arauco War",
       "nameRu": "Арауканская война",
       "category": "war",
-      "sitelinks": 25,
+      "sitelinks": 26,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Arauco_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Arauco_War",
@@ -2089,7 +2105,7 @@
       "name": "Eighty Years' War",
       "nameRu": "Восьмидесятилетняя война",
       "category": "war-of-independence",
-      "sitelinks": 75,
+      "sitelinks": 76,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Eighty_Years%27_War",
@@ -2214,7 +2230,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D9%88%D8%A8_%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D9%82%D9%81%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%95%D0%BF%D0%B8%D1%81%D0%BA%D0%BE%D0%BF%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B"
       },
-      "countries": [],
+      "countries": [
+        "Q145"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Riot%20against%20Anglican%20prayer%20book%201637.jpg",
       "tagline": "17th-century religious conflicts in Britain",
       "taglineRu": "Серия вооруженных конфликтов в 1639—1640 годах между Шотландией и Англией.",
@@ -2313,7 +2331,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%AA%D8%B3%D8%B9_%D8%B3%D9%86%D9%88%D8%A7%D8%AA",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%90%D1%83%D0%B3%D1%81%D0%B1%D1%83%D1%80%D0%B3%D1%81%D0%BA%D0%BE%D0%B9_%D0%BB%D0%B8%D0%B3%D0%B8"
       },
-      "countries": [],
+      "countries": [
+        "Q30"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20Namur%20%281692%29.JPG",
       "tagline": "war principally fought in Central Europe from 1688 to 1697",
       "taglineRu": "война в 1688—1697 годах",
@@ -2339,7 +2359,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%85%D9%84%D9%83_%D9%88%D9%84%D9%8A%D9%85",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%BA%D0%BE%D1%80%D0%BE%D0%BB%D1%8F_%D0%92%D0%B8%D0%BB%D1%8C%D0%B3%D0%B5%D0%BB%D1%8C%D0%BC%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q30"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Frontenac%20receiving%20the%20envoy%20of%20Sir%20William%20Phipps%20demanding%20the%20surrender%20of%20Quebec%2C%201690.jpg",
       "tagline": "North American theater of the Nine Years' War",
       "year": 1688,
@@ -2363,7 +2385,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%AE%D9%84%D8%A7%D9%81%D8%A9_%D8%A7%D9%84%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B7%D0%B0_%D0%B8%D1%81%D0%BF%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B5_%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%BE"
       },
-      "countries": [],
+      "countries": [
+        "Q30"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakhuizen%2C%20Battle%20of%20Vigo%20Bay.jpg",
       "tagline": "major European conflict (1700–1714) after the death of Charles II",
       "taglineRu": "крупный европейский конфликт (1701—1714)",
@@ -2421,7 +2445,7 @@
       "nameRu": "Война королевы Анны",
       "category": "war",
       "parentId": "Q150701",
-      "sitelinks": 28,
+      "sitelinks": 29,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Queen_Anne%27s_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Queen_Anne%27s_War",
@@ -2432,7 +2456,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%85%D9%84%D9%83%D8%A9_%D8%A2%D9%86",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%BA%D0%BE%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%8B_%D0%90%D0%BD%D0%BD%D1%8B"
       },
-      "countries": [],
+      "countries": [
+        "Q30"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/QueenAnnesWarBefore.svg",
       "tagline": "North American theater of the War of the Spanish Succession",
       "taglineRu": "война между Францией и Англией (1702—1713)",
@@ -2455,7 +2481,9 @@
         "de": "https://de.wikipedia.org/wiki/Yamasee-Krieg",
         "ru": "https://ru.wikipedia.org/wiki/%D0%AF%D0%BC%D0%B0%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q30"
+      ],
       "tagline": "1715–1717 conflict between British colonists and Native Americans in South Carolina",
       "year": 1715,
       "endYear": 1717
@@ -2476,7 +2504,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%AE%D9%84%D8%A7%D9%81%D8%A9_%D8%A7%D9%84%D8%A8%D9%88%D9%84%D9%86%D8%AF%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B7%D0%B0_%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5_%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%BE"
       },
-      "countries": [],
+      "countries": [
+        "Q36"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20Danzig%201734.PNG",
       "tagline": "war in Europe 1734–1738",
       "taglineRu": "конфликт в Европе в 1733—1735 гг.",
@@ -2491,7 +2521,7 @@
       "nameRu": "Война из-за уха Дженкинса",
       "category": "war",
       "parentId": "Q32929",
-      "sitelinks": 38,
+      "sitelinks": 39,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/War_of_Jenkins%27_Ear",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/War_of_Jenkins%27_Ear",
@@ -2577,7 +2607,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9_%D9%88%D8%A7%D9%84%D9%87%D9%86%D8%AF%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BE%D0%B0%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%82%D0%B5%D0%B0%D1%82%D1%80_%D0%A1%D0%B5%D0%BC%D0%B8%D0%BB%D0%B5%D1%82%D0%BD%D0%B5%D0%B9_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B"
       },
-      "countries": [],
+      "countries": [
+        "Q30"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/French%20and%20indian%20war%20map.svg",
       "tagline": "North American theatre of the worldwide Seven Years' War",
       "taglineRu": "являвшийся особым театром Семилетней войны",
@@ -2592,7 +2624,7 @@
       "nameRu": "Силезские войны",
       "category": "war",
       "parentId": "Q33143",
-      "sitelinks": 37,
+      "sitelinks": 38,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Silesian_Wars",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Silesian_Wars",
@@ -2770,7 +2802,7 @@
       "name": "First Barbary War",
       "nameRu": "Первая берберийская война",
       "category": "war",
-      "sitelinks": 33,
+      "sitelinks": 34,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Barbary_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/First_Barbary_War",
@@ -2841,7 +2873,7 @@
       "name": "Napoleonic Wars",
       "nameRu": "Наполеоновские войны",
       "category": "war",
-      "sitelinks": 99,
+      "sitelinks": 101,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Napoleonic_Wars",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Napoleonic_Wars",
@@ -2985,7 +3017,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%83%D8%B9%D9%83",
         "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B4%D0%B8%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q16"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%C3%89pisode%20de%20l%27exp%C3%A9dition%20du%20Mexique%20en%201838.jpg",
       "tagline": "war between France and Mexico",
       "taglineRu": "вторжение в Мексику французских войск в 1838 году",
@@ -3034,7 +3068,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%A3%D9%87%D9%84%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B2_%D0%A1%D0%A8%D0%90"
       },
-      "countries": [],
+      "countries": [
+        "Q30"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CivilWarUSAColl.png",
       "tagline": "1861–1865 civil war in the United States between the North and the South over the enslavement of African-Americans",
       "taglineRu": "гражданская война между США и КША",
@@ -3048,7 +3084,7 @@
       "name": "Paraguayan War",
       "nameRu": "Парагвайская война",
       "category": "war",
-      "sitelinks": 58,
+      "sitelinks": 60,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Paraguayan_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Paraguayan_War",
@@ -3073,7 +3109,7 @@
       "name": "Austro-Prussian War",
       "nameRu": "Австро-прусско-итальянская война",
       "category": "war",
-      "sitelinks": 67,
+      "sitelinks": 68,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Austro-Prussian_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Austro-Prussian_War",
@@ -3142,7 +3178,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%86%D9%87%D8%B1_%D8%A7%D9%84%D8%A3%D8%AD%D9%85%D8%B1",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%BD%D0%B0_%D0%A0%D0%B5%D0%B4-%D0%A0%D0%B8%D0%B2%D0%B5%D1%80%D0%B5"
       },
-      "countries": [],
+      "countries": [
+        "Q16"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ledger-sm2.jpg",
       "tagline": "military campaign launched by the United States Army in 1874",
       "year": 1874,
@@ -3207,7 +3245,7 @@
         "es": "https://es.wikipedia.org/wiki/Guerra_del_Pac%C3%ADfico",
         "fr": "https://fr.wikipedia.org/wiki/Guerre_du_Pacifique_(1879-1884)",
         "de": "https://de.wikipedia.org/wiki/Salpeterkrieg",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%85%D8%AD%D9%8A%D8%B7_%D8%A7%D9%84%D9%87%D8%A7%D8%AF%D8%A6_(1879-1884)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%85%D8%AD%D9%8A%D8%B7_%D8%A7%D9%84%D9%87%D8%A7%D8%AF%D8%A6_(1879%E2%80%931884)",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%B0%D1%8F_%D1%82%D0%B8%D1%85%D0%BE%D0%BE%D0%BA%D0%B5%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
       "countries": [
@@ -3238,7 +3276,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%A3%D8%B3%D9%84%D8%AD%D8%A9_%D9%81%D9%8A_%D8%A8%D8%A7%D8%B3%D9%88%D8%AA%D9%88",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%BC%D0%B5%D0%B6%D0%B4%D1%83_%D0%B1%D0%B0%D1%81%D1%83%D1%82%D0%BE_%D0%B8_%D0%9A%D0%B0%D0%BF%D1%81%D0%BA%D0%BE%D0%B9_%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%B5%D0%B9"
       },
-      "countries": [],
+      "countries": [
+        "Q258"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RepublikiBurskieXIXwiek.svg",
       "tagline": "1880-1881 war",
       "year": 1880,
@@ -3274,7 +3314,7 @@
       "name": "Serbo-Bulgarian War",
       "nameRu": "Сербско-болгарская война",
       "category": "war",
-      "sitelinks": 35,
+      "sitelinks": 36,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Serbo-Bulgarian_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Serbo-Bulgarian_War",
@@ -3320,7 +3360,7 @@
     {
       "id": "Q215112",
       "name": "Second Boer War",
-      "nameRu": "Англо-бурская война",
+      "nameRu": "Вторая англо-бурская война",
       "category": "war",
       "sitelinks": 66,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Boer_War",
@@ -3333,7 +3373,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%A8%D9%88%D9%8A%D8%B1_%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%B0%D1%8F_%D0%B0%D0%BD%D0%B3%D0%BB%D0%BE-%D0%B1%D1%83%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q258"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Second%20Anglo%20-%20Boer%20War%2C%20South%20Africa%201899%20-%201902%20Q82943.jpg",
       "tagline": "war between two Boer Republics (South African Republic and Orange Free State) and the United Kingdom",
       "taglineRu": "война в 1899—1902 годах Великобритании против бурских республик Южной Африки - Оранжевого свободного государства и Трансвааля, в результате которой обе республики стали английскими колониями",
@@ -3347,7 +3389,7 @@
       "name": "Thousand Days' War",
       "nameRu": "Тысячедневная война",
       "category": "war",
-      "sitelinks": 28,
+      "sitelinks": 30,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Thousand_Days%27_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Thousand_Days%27_War",
@@ -3373,7 +3415,7 @@
       "id": "Q11883242",
       "name": "Moro Rebellion",
       "category": "war",
-      "sitelinks": 12,
+      "sitelinks": 14,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Moro_Rebellion",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Moro_Rebellion",
@@ -3451,7 +3493,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89",
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D0%B0%D1%8F_%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q148"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WWImontage.jpg",
       "tagline": "1914–1918 global conflict",
       "taglineRu": "мировой вооружённый конфликт 1914—1918 годов между Антантой и Тройственным союзом",
@@ -3466,7 +3510,7 @@
       "nameRu": "Гражданская война в России",
       "category": "war",
       "parentId": "Q8729",
-      "sitelinks": 102,
+      "sitelinks": 105,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Civil_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Russian_Civil_War",
@@ -3495,7 +3539,7 @@
       "name": "Rif War",
       "nameRu": "Рифская война",
       "category": "war",
-      "sitelinks": 37,
+      "sitelinks": 39,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Rif_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Rif_War",
@@ -3603,7 +3647,7 @@
       "nameRu": "Странная война",
       "category": "military-operation",
       "parentId": "Q362",
-      "sitelinks": 58,
+      "sitelinks": 59,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Phoney_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Phoney_War",
@@ -3642,7 +3686,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9_%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%B0%D1%8F_%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
       },
-      "countries": [],
+      "countries": [
+        "Q17"
+      ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Infobox%20collage%20for%20WWII.PNG",
       "tagline": "1939–1945 global conflict",
       "taglineRu": "вооружённый конфликт, начавшийся 1 сентября 1939 года и завершившийся 2 сентября 1945 года",
@@ -3699,7 +3745,7 @@
       "name": "Vietnam War",
       "nameRu": "война во Вьетнаме",
       "category": "war",
-      "sitelinks": 167,
+      "sitelinks": 168,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Vietnam_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Vietnam_War",
@@ -3762,7 +3808,9 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D9%82%D8%B0%D8%B1%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D1%8F%D0%B7%D0%BD%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0_(%D0%90%D1%80%D0%B3%D0%B5%D0%BD%D1%82%D0%B8%D0%BD%D0%B0)"
       },
-      "countries": [],
+      "countries": [
+        "Q414"
+      ],
       "tagline": "period of state terrorism in Argentina from 1974 to 1983",
       "taglineRu": "общее название для мер государственного терроризма, предпринимавшихся аргентинскими военными диктатурами",
       "year": 1955,
@@ -3799,7 +3847,7 @@
       "name": "War in Bosnia and Herzegovina",
       "nameRu": "Боснийская война",
       "category": "war",
-      "sitelinks": 78,
+      "sitelinks": 80,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Bosnian_War",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Bosnian_War",
@@ -3905,7 +3953,7 @@
       "name": "Battle of Plassey",
       "nameRu": "Битва при Плесси",
       "category": "military-operation",
-      "sitelinks": 57,
+      "sitelinks": 58,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Plassey",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Battle_of_Plassey",
@@ -4208,7 +4256,7 @@
       "name": "Muslim conquests",
       "nameRu": "Арабские завоевания",
       "category": "war",
-      "sitelinks": 62,
+      "sitelinks": 63,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Early_Muslim_conquests",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Early_Muslim_conquests",
@@ -4224,6 +4272,1610 @@
       "tagline": "historical process in 7th–8th centuries CE",
       "year": 622,
       "endYear": 750
+    },
+    {
+      "id": "Q1134220",
+      "name": "Mongol invasion of Kievan Rus'",
+      "nameRu": "монгольское нашествие на Русь",
+      "category": "military-operation",
+      "sitelinks": 43,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Kievan_Rus%27",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mongol_invasion_of_Kievan_Rus%27",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%99%E5%8F%A4%E5%BE%81%E6%9C%8D%E5%9F%BA%E8%BC%94%E7%BE%85%E6%96%AF",
+        "es": "https://es.wikipedia.org/wiki/Invasi%C3%B3n_mongola_de_la_Rus_de_Kiev",
+        "fr": "https://fr.wikipedia.org/wiki/Invasion_mongole_des_principaut%C3%A9s_russes",
+        "de": "https://de.wikipedia.org/wiki/Mongolische_Invasion_der_Rus",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D9%85%D8%BA%D9%88%D9%84%D9%8A_%D9%84%D8%B1%D9%88%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5_%D0%BD%D0%B0%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5_%D0%BD%D0%B0_%D0%A0%D1%83%D1%81%D1%8C"
+      },
+      "countries": [
+        "Q12557"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Genghis%20Khan%20empire%20%28mul%29.svg",
+      "tagline": "1223–1242 Mongol military invasion of Eastern Europe",
+      "taglineRu": "вторжение монгольских войск на территории русских княжеств в 1237-1240 гг",
+      "year": 1223,
+      "endYear": 1240
+    },
+    {
+      "id": "Q1192616",
+      "name": "Battle of Didgori",
+      "nameRu": "Дидгорская битва",
+      "category": "military-operation",
+      "sitelinks": 29,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Didgori",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Didgori",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%BF%AA%E5%BE%B7%E6%A0%BC%E9%87%8C%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Didgori",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Didgori",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_am_Didgori",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%AF%D9%8A%D8%AF%D8%AC%D9%88%D8%B1%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D0%B4%D0%B3%D0%BE%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q230"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Didgori%20Memorial.jpg",
+      "tagline": "1121 battle fought between the armies of the Kingdom of Georgia and the Great Seljuq Empire",
+      "taglineRu": "сражение войска Грузинского царства и войска сельджуков, произошедшее 12 августа 1121 года",
+      "year": 1121,
+      "month": 8
+    },
+    {
+      "id": "Q131969",
+      "name": "Battle of Thermopylae",
+      "nameRu": "Фермопильское сражение",
+      "category": "military-operation",
+      "sitelinks": 83,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Thermopylae",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Thermopylae",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B8%A9%E6%B3%89%E5%85%B3%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_las_Term%C3%B3pilas",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_des_Thermopyles",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_den_Thermopylen_(Perserkriege)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%AA%D8%B1%D9%85%D9%88%D8%A8%D9%8A%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A4%D0%B5%D1%80%D0%BC%D0%BE%D0%BF%D0%B8%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5_%D1%81%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
+      "countries": [
+        "Q41"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/L%C3%A9onidas%20aux%20Thermopyles%20%28Jacques-Louis%20David%29.PNG",
+      "tagline": "battle of 480 BCE during Persian invasion of Greece",
+      "taglineRu": "сражение в сентябре 480 года до н. э.",
+      "year": -479,
+      "month": 7
+    },
+    {
+      "id": "Q139808",
+      "name": "Battle of the Maureaco Fields",
+      "nameRu": "битва на Каталаунских полях",
+      "category": "military-operation",
+      "sitelinks": 59,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Catalaunian_Plains",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_the_Catalaunian_Plains",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B2%99%E9%9A%86%E4%B9%8B%E6%88%B0",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_los_Campos_Catal%C3%A1unicos",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_des_champs_Catalauniques_(451)",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_auf_den_Katalaunischen_Feldern",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%B3%D9%87%D9%88%D9%84_%D9%83%D8%A7%D8%AA%D8%A7%D9%84%D9%88%D9%86%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BD%D0%B0_%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%B0%D1%83%D0%BD%D1%81%D0%BA%D0%B8%D1%85_%D0%BF%D0%BE%D0%BB%D1%8F%D1%85"
+      },
+      "countries": [
+        "Q42834",
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/De%20Neuville%20-%20The%20Huns%20at%20the%20Battle%20of%20Chalons.jpg",
+      "tagline": "battle between Romans and Huns in 451",
+      "taglineRu": "часть гуннского вторжения в римскую провинцию Галлия в 451 году",
+      "year": 451,
+      "month": 6
+    },
+    {
+      "id": "Q1463845",
+      "name": "410 sack of Rome",
+      "nameRu": "Захват Рима готами",
+      "category": "military-operation",
+      "sitelinks": 39,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sack_of_Rome_(410)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sack_of_Rome_(410)",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BD%97%E9%A9%AC%E4%B9%8B%E5%8A%AB_(410%E5%B9%B4)",
+        "es": "https://es.wikipedia.org/wiki/Saqueo_de_Roma_(410)",
+        "fr": "https://fr.wikipedia.org/wiki/Sac_de_Rome_(410)",
+        "de": "https://de.wikipedia.org/wiki/Pl%C3%BCnderung_Roms_(410)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D9%87%D8%A8_%D8%B1%D9%88%D9%85%D8%A7_(410)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%B1%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A0%D0%B8%D0%BC%D0%B0_(410)"
+      },
+      "countries": [
+        "Q42834"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sack%20of%20Rome%20by%20the%20Visigoths%20on%2024%20August%20410%20by%20JN%20Sylvestre%201890.jpg",
+      "tagline": "410 Visigoth siege and looting of Rome",
+      "taglineRu": "захват столицы Западной Римской империи Рима вестготами в 410 году",
+      "year": 410,
+      "month": 8,
+      "endYear": 410,
+      "endMonth": 8
+    },
+    {
+      "id": "Q14689",
+      "name": "Battle of the Ice",
+      "nameRu": "Ледовое побоище",
+      "category": "military-operation",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_on_the_Ice",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_on_the_Ice",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A5%9A%E5%BE%B7%E6%B9%96%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_del_Lago_Peipus",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_du_lac_Pe%C3%AFpous",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_auf_dem_Peipussee",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%A7%D9%84%D8%AB%D9%84%D8%AC",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B4%D0%BE%D0%B2%D0%BE%D0%B5_%D0%BF%D0%BE%D0%B1%D0%BE%D0%B8%D1%89%D0%B5"
+      },
+      "countries": [
+        "Q9324216"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.06%2C%20page%20085%20-%20Battle%20of%20the%20Ice.jpg",
+      "tagline": "1242 battle during Northern Crusades",
+      "taglineRu": "битва на Чудском озере",
+      "year": 1242,
+      "month": 4
+    },
+    {
+      "id": "Q152486",
+      "name": "Battle of Poltava",
+      "nameRu": "Полтавская битва",
+      "category": "military-operation",
+      "sitelinks": 62,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Poltava",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Poltava",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B3%A2%E7%88%BE%E5%A1%94%E7%93%A6%E6%88%B0%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Poltava",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Poltava",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_Poltawa",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%A8%D9%88%D9%84%D8%AA%D8%A7%D9%81%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BB%D1%82%D0%B0%D0%B2%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q212"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Marten%27s%20Poltava.jpg",
+      "tagline": "decisive battle in the Great Northern War between Tsardom Russia and the Swedish Empire in 1709",
+      "taglineRu": "крупнейшее сражение Северной войны между русскими и шведскими войсками",
+      "year": 1709,
+      "month": 7
+    },
+    {
+      "id": "Q160387",
+      "name": "Battle of Actium",
+      "nameRu": "Сражение при Акциуме",
+      "category": "military-operation",
+      "sitelinks": 66,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Actium",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Actium",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%9A%E5%85%8B%E5%85%B4%E6%B5%B7%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Accio",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_d%27Actium",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_Actium",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%A3%D9%83%D8%AA%D9%8A%D9%88%D9%85",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BF%D1%80%D0%B8_%D0%90%D0%BA%D1%86%D0%B8%D1%83%D0%BC%D0%B5"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Castro%20Battle%20of%20Actium.jpg",
+      "tagline": "31 BCE decisive confrontation of the Final War of the Roman Republic",
+      "taglineRu": "морское сражение между флотами Древнего Рима",
+      "year": -30,
+      "month": 8
+    },
+    {
+      "id": "Q173077",
+      "name": "Battle of Tours",
+      "nameRu": "Битва при Пуатье",
+      "category": "military-operation",
+      "sitelinks": 69,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Tours",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Tours",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9C%96%E7%88%BE%E6%88%B0%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Poitiers_(732)",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Poitiers_(732)",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Tours_und_Poitiers",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%A8%D9%84%D8%A7%D8%B7_%D8%A7%D9%84%D8%B4%D9%87%D8%AF%D8%A7%D8%A1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%9F%D1%83%D0%B0%D1%82%D1%8C%D0%B5_(732)"
+      },
+      "countries": [
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Steuben%20-%20Bataille%20de%20Poitiers.png",
+      "tagline": "battle fought in 732 by Merovingian Franks against the Umayyad Caliphate",
+      "taglineRu": "Битва между франкскими силами и арабами Аквитании",
+      "year": 732,
+      "month": 10
+    },
+    {
+      "id": "Q179288",
+      "name": "Battle of Kosovo",
+      "nameRu": "Косовская битва",
+      "category": "military-operation",
+      "sitelinks": 61,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kosovo",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Kosovo",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A7%91%E7%B4%A2%E6%B2%83%E6%88%98%E5%BD%B9_(1389%E5%B9%B4)",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Kosovo",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Kosovo_Polje",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_auf_dem_Amselfeld_(1389)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%82%D9%88%D8%B5%D9%88%D9%87",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BD%D0%B0_%D0%9A%D0%BE%D1%81%D0%BE%D0%B2%D0%BE%D0%BC_%D0%BF%D0%BE%D0%BB%D0%B5_(1389)"
+      },
+      "countries": [
+        "Q1246"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.10%2C%20p.299%20-%20Battle%20of%20Kosovo%20%281389%29.png",
+      "tagline": "battle on 28th June 1389",
+      "taglineRu": "сражение в ходе завоевания османами Балканского полуострова",
+      "year": 1389,
+      "month": 7
+    },
+    {
+      "id": "Q179670",
+      "name": "Battle of Gaugamela",
+      "nameRu": "битва при Гавгамелах",
+      "category": "military-operation",
+      "sitelinks": 64,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Gaugamela",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Gaugamela",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%AB%98%E5%8A%A0%E7%B1%B3%E6%8B%89%E6%88%B0%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Gaugamela",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Gaugam%C3%A8les",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Gaugamela",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%BA%D9%88%D8%BA%D9%85%D9%8A%D9%84%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%93%D0%B0%D0%B2%D0%B3%D0%B0%D0%BC%D0%B5%D0%BB%D0%B0%D1%85"
+      },
+      "countries": [
+        "Q389688",
+        "Q796"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20Gaugamela.jpg",
+      "tagline": "decisive battle of Alexander the Great's invasion of the Persian Achaemenid Empire",
+      "taglineRu": "решающее сражение между армиями Александра Македонского и персидского царя Дария III",
+      "year": -330,
+      "month": 9
+    },
+    {
+      "id": "Q179684",
+      "name": "Spanish Armada",
+      "nameRu": "Непобедимая армада",
+      "category": "military-operation",
+      "sitelinks": 71,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_Armada",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Spanish_Armada",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%A5%BF%E7%8F%AD%E7%89%99%E7%84%A1%E6%95%B5%E8%89%A6%E9%9A%8A",
+        "es": "https://es.wikipedia.org/wiki/Armada_Invencible",
+        "fr": "https://fr.wikipedia.org/wiki/Invincible_Armada",
+        "de": "https://de.wikipedia.org/wiki/Spanische_Armada",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A3%D8%B1%D9%85%D8%A7%D8%AF%D8%A7_%D8%A7%D9%84%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%BC%D0%B0%D1%8F_%D0%B0%D1%80%D0%BC%D0%B0%D0%B4%D0%B0"
+      },
+      "countries": [
+        "Q766543"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/English%20Ships%20and%20the%20Spanish%20Armada%2C%20August%201588%20RMG%20BHC0262.jpg",
+      "tagline": "fleet of Spanish ships, intended to attack England in 1588",
+      "taglineRu": "флот, собранный Испанией в 1586−1588 годах для вторжения в Англию"
+    },
+    {
+      "id": "Q200032",
+      "name": "Battle of Manzikert",
+      "nameRu": "Битва при Манцикерте",
+      "category": "military-operation",
+      "sitelinks": 64,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Manzikert",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Manzikert",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9B%BC%E9%BD%90%E5%88%BB%E5%B0%94%E7%89%B9%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Manzikert",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Manzikert",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_Manzikert",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%85%D9%84%D8%A7%D8%B0%D9%83%D8%B1%D8%AF_(1071)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%9C%D0%B0%D0%BD%D1%86%D0%B8%D0%BA%D0%B5%D1%80%D1%82%D0%B5"
+      },
+      "countries": [
+        "Q43"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/131%20Bataille%20de%20Malazgirt.jpg",
+      "tagline": "1071 battle between the Byzantine Empire and Seljuk Turks",
+      "taglineRu": "битва между Византией и сельджуками в 1071 году",
+      "year": 1071,
+      "month": 9
+    },
+    {
+      "id": "Q200855",
+      "name": "Battle of Vienna",
+      "nameRu": "Венская битва",
+      "category": "military-operation",
+      "sitelinks": 65,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Vienna",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Vienna",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BB%B4%E4%B9%9F%E7%BA%B3%E4%B9%8B%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Kahlenberg",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Vienne",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_am_Kahlenberg",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%81%D9%8A%D9%8A%D9%86%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0_(1683)"
+      },
+      "countries": [
+        "Q153136",
+        "Q40"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Juliusz%20Kossak%20Sobieski%20pod%20Wiedniem.jpeg",
+      "tagline": "1683 battle between the Christian European States and the Ottomans",
+      "taglineRu": "Решающая победа, остановившая Османское вторжение в Европу",
+      "year": 1683,
+      "month": 9
+    },
+    {
+      "id": "Q203729",
+      "name": "Battle of Kadesh",
+      "nameRu": "Битва при Кадеше",
+      "category": "military-operation",
+      "sitelinks": 56,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kadesh",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Kadesh",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%A1%E8%BF%AD%E7%9F%B3%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Qadesh",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Qadesh",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_Kadesch",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%82%D8%A7%D8%AF%D8%B4",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%9A%D0%B0%D0%B4%D0%B5%D1%88%D0%B5"
+      },
+      "countries": [
+        "Q858"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ramses%20II%20at%20Kadesh.jpg",
+      "tagline": "battle between Egyptians and Hittites fought in 1274 BCE",
+      "taglineRu": "сражение между войсками Египетского и Хеттского царств",
+      "year": -1273,
+      "month": 5
+    },
+    {
+      "id": "Q20717681",
+      "name": "European Scythian campaign of Darius I",
+      "nameRu": "Скифский поход Дария I",
+      "category": "military-operation",
+      "sitelinks": 13,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Scythian_campaign_of_Darius_I",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Scythian_campaign_of_Darius_I",
+        "es": "https://es.wikipedia.org/wiki/Campa%C3%B1a_persa_contra_los_escitas",
+        "fr": "https://fr.wikipedia.org/wiki/Campagne_scythe_de_Darius_Ier",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D9%85%D9%84%D8%A9_%D8%A7%D9%84%D8%B3%D9%83%D9%8A%D8%AB%D9%8A%D8%A9_%D9%84%D8%AF%D8%A7%D8%B1%D8%A7_%D8%A7%D9%84%D8%A3%D9%88%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%BA%D0%B8%D1%84%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%BE%D1%85%D0%BE%D0%B4_%D0%94%D0%B0%D1%80%D0%B8%D1%8F_I"
+      },
+      "countries": [
+        "Q389688"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DariusScythes%20ru.svg",
+      "tagline": "military expedition into European Scythia by Achaemenid king Darius I in 513 BCE.",
+      "year": -512,
+      "endYear": -512
+    },
+    {
+      "id": "Q208156",
+      "name": "Mongol invasions of Japan",
+      "nameRu": "Монгольские вторжения в Японию",
+      "category": "military-operation",
+      "sitelinks": 50,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Japan",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Japan",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%85%83%E6%97%A5%E6%88%98%E4%BA%89",
+        "es": "https://es.wikipedia.org/wiki/Invasiones_mongolas_de_Jap%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Invasions_mongoles_du_Japon",
+        "de": "https://de.wikipedia.org/wiki/Mongoleninvasionen_in_Japan",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D9%85%D8%BA%D9%88%D9%84%D9%8A_%D9%84%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D1%82%D0%BE%D1%80%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F_%D0%B2_%D0%AF%D0%BF%D0%BE%D0%BD%D0%B8%D1%8E"
+      },
+      "countries": [
+        "Q17"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kikuchi%20Yoosai%20-%20Mongol%20Invasion%20%28m%C5%8Dko%20sh%C5%ABrai%29%20-%20Tokyo%20National%20Museum.jpg",
+      "tagline": "attempts by the Mongol Empire to conquer Japan",
+      "taglineRu": "отражённые попытки завоевания Японии Монгольской империей",
+      "year": 1274
+    },
+    {
+      "id": "Q209387",
+      "name": "Battle of Ankara",
+      "nameRu": "Ангорская битва",
+      "category": "military-operation",
+      "sitelinks": 55,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Ankara",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Ankara",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%AE%89%E5%8D%A1%E6%8B%89%E4%B9%8B%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Angora",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_d%27Ankara",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_Ankara",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%A3%D9%86%D9%82%D8%B1%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BE%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q43"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Timur%20Review%20His%20Troops%20Before%20the%20Battle%20of%20Ankara%2C%20Zafarnama%201436.jpg",
+      "tagline": "battle near Ankara on 20 July 1402, between the Timurid Empire and the Ottoman Sultanate",
+      "year": 1402,
+      "month": 7
+    },
+    {
+      "id": "Q210354",
+      "name": "Battle of Kulikovo",
+      "nameRu": "Куликовская битва",
+      "category": "military-operation",
+      "sitelinks": 53,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Kulikovo",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Kulikovo",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%BA%93%E9%87%8C%E7%A7%91%E6%B2%83%E4%B9%8B%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Kulikovo",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Koulikovo",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_auf_dem_Kulikowo_Pole",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%83%D9%88%D9%84%D9%8A%D9%83%D9%88%D9%81%D9%88",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D1%83%D0%BB%D0%B8%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q170770",
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kulikovo%20lubok.jpg",
+      "tagline": "1380 battle between Russian principalities and Golden Horde",
+      "taglineRu": "крупное сражение между русским войском и войском Золотой Орды 8 сентября 1380 года",
+      "year": 1380,
+      "month": 9
+    },
+    {
+      "id": "Q2330335",
+      "name": "Mongol invasion of Central Asia",
+      "nameRu": "Монгольское завоевание Средней Азии",
+      "category": "military-operation",
+      "sitelinks": 24,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_campaigns_in_Central_Asia",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mongol_campaigns_in_Central_Asia",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%99%E5%8F%A4%E5%BE%81%E6%9C%8D%E4%B8%AD%E4%BA%9E",
+        "es": "https://es.wikipedia.org/wiki/Invasi%C3%B3n_mongola_de_Asia_Central",
+        "fr": "https://fr.wikipedia.org/wiki/Invasions_mongoles_en_Asie_centrale",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D9%85%D8%BA%D9%88%D9%84_%D9%84%D9%88%D8%B3%D8%B7_%D8%A2%D8%B3%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%A1%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B9_%D0%90%D0%B7%D0%B8%D0%B8"
+      },
+      "countries": [],
+      "tagline": "series of military campaigns (1209–1236)",
+      "year": 1216,
+      "endYear": 1221
+    },
+    {
+      "id": "Q2448644",
+      "name": "Mongol invasions of Vietnam",
+      "nameRu": "Монгольские вторжения во Вьетнам",
+      "category": "military-operation",
+      "sitelinks": 20,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Vietnam",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mongol_invasions_of_Vietnam",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%99%E8%B6%8A%E6%88%B0%E7%88%AD",
+        "es": "https://es.wikipedia.org/wiki/Invasiones_mongolas_de_Vietnam",
+        "fr": "https://fr.wikipedia.org/wiki/Invasions_mongoles_du_Vietnam",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D9%85%D8%BA%D9%88%D9%84%D9%8A_%D9%84%D9%81%D9%8A%D8%AA%D9%86%D8%A7%D9%85",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D1%82%D0%BE%D1%80%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F_%D0%B2%D0%BE_%D0%92%D1%8C%D0%B5%D1%82%D0%BD%D0%B0%D0%BC"
+      },
+      "countries": [],
+      "tagline": "13th-century military campaigns of the Mongol Empire and Yuan-dynasty China in Vietnam",
+      "year": 1258,
+      "endYear": 1288
+    },
+    {
+      "id": "Q253684",
+      "name": "French invasion of Egypt and Syria",
+      "nameRu": "Египетский поход",
+      "category": "military-operation",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/French_invasion_of_Egypt_and_Syria",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/French_invasion_of_Egypt_and_Syria",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B3%95%E5%9C%8B%E5%85%A5%E4%BE%B5%E5%9F%83%E5%8F%8A%E8%88%87%E6%95%98%E5%88%A9%E4%BA%9E",
+        "es": "https://es.wikipedia.org/wiki/Campa%C3%B1a_napole%C3%B3nica_en_Egipto_y_Siria",
+        "fr": "https://fr.wikipedia.org/wiki/Campagne_d%27%C3%89gypte",
+        "de": "https://de.wikipedia.org/wiki/%C3%84gyptische_Expedition",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D9%85%D9%84%D8%A9_%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9_%D8%B9%D9%84%D9%89_%D9%85%D8%B5%D8%B1_%D9%88%D8%B3%D9%88%D8%B1%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%95%D0%B3%D0%B8%D0%BF%D0%B5%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%BE%D1%85%D0%BE%D0%B4"
+      },
+      "countries": [
+        "Q79"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Baron%20Antoine-Jean%20Gros-Battle%20Pyramids%201810.jpg",
+      "tagline": "1798–1801 campaign during the War of the Second Coalition",
+      "taglineRu": "кампания, предпринятая в 1798—1801 годах Наполеоном",
+      "year": 1798,
+      "month": 7,
+      "endYear": 1801,
+      "endMonth": 9
+    },
+    {
+      "id": "Q25628",
+      "name": "Great stand on the Ugra river",
+      "nameRu": "Стояние на Угре",
+      "category": "military-operation",
+      "sitelinks": 29,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Stand_on_the_Ugra_River",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Great_Stand_on_the_Ugra_River",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%83%8F%E6%A0%BC%E6%8B%89%E6%B2%B3%E5%B0%8D%E5%B3%99",
+        "es": "https://es.wikipedia.org/wiki/Gran_encuentro_del_r%C3%ADo_Ugr%C3%A1",
+        "fr": "https://fr.wikipedia.org/wiki/Grande_halte_sur_la_rivi%C3%A8re_Ougra",
+        "de": "https://de.wikipedia.org/wiki/Stehen_an_der_Ugra",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%BD%D0%B0_%D0%A3%D0%B3%D1%80%D0%B5"
+      },
+      "countries": [
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Facial%20Chronicle%20-%20b.16%2C%20p.%20462%20-%20Great%20standing%20on%20the%20Ugra.jpg",
+      "tagline": "standoff in 1480 between Muscovy and Great Horde",
+      "taglineRu": "военные действия в 1480 году между московским войском и войском хана Ахмата",
+      "year": 1480
+    },
+    {
+      "id": "Q2670327",
+      "name": "Siege of Kazan",
+      "nameRu": "Взятие Казани",
+      "category": "military-operation",
+      "sitelinks": 18,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Kazan",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Siege_of_Kazan",
+        "es": "https://es.wikipedia.org/wiki/Asedio_de_Kaz%C3%A1n",
+        "fr": "https://fr.wikipedia.org/wiki/Prise_de_Kazan",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B5%D8%A7%D8%B1_%D9%82%D8%A7%D8%B2%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B7%D1%8F%D1%82%D0%B8%D0%B5_%D0%9A%D0%B0%D0%B7%D0%B0%D0%BD%D0%B8"
+      },
+      "countries": [
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Capture%20of%20Kazan%20%28Shamshin%2C%201894%29.jpeg",
+      "tagline": "1552 Russian conquest of Kazan",
+      "year": 1552,
+      "month": 9,
+      "endYear": 1552,
+      "endMonth": 10
+    },
+    {
+      "id": "Q2890128",
+      "name": "Second Battle of Tarain",
+      "nameRu": "Вторая битва при Тараине",
+      "category": "military-operation",
+      "sitelinks": 16,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Battle_of_Tarain",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Second_Battle_of_Tarain",
+        "es": "https://es.wikipedia.org/wiki/Segunda_batalla_de_Tarain",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%AA%D8%A7%D8%B1%D9%8A%D9%86_%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%A2%D0%B0%D1%80%D0%B0%D0%B8%D0%BD%D0%B5"
+      },
+      "countries": [],
+      "tagline": "1192 battle near modern Taraori, India",
+      "year": 1192
+    },
+    {
+      "id": "Q31900",
+      "name": "Battle of Marathon",
+      "nameRu": "битва при Марафоне",
+      "category": "military-operation",
+      "sitelinks": 76,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Marathon",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Marathon",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%A9%AC%E6%8B%89%E6%9D%BE%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Marat%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Marathon",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_Marathon",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%85%D8%A7%D8%B1%D8%A7%D8%AB%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%9C%D0%B0%D1%80%D0%B0%D1%84%D0%BE%D0%BD%D0%B5"
+      },
+      "countries": [
+        "Q41"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Trophee%20bataille%20marathon.JPG",
+      "tagline": "490 BCE battle in the Greco-Persian wars",
+      "taglineRu": "сражение между войсками афинян и персов",
+      "year": -489,
+      "month": 9
+    },
+    {
+      "id": "Q317519",
+      "name": "Arab conquest of Egypt",
+      "nameRu": "Арабское завоевание Египта",
+      "category": "military-operation",
+      "sitelinks": 37,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Arab_conquest_of_Egypt",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Arab_conquest_of_Egypt",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E6%8B%89%E4%BC%AF%E5%BE%81%E6%9C%8D%E5%9F%83%E5%8F%8A",
+        "es": "https://es.wikipedia.org/wiki/Conquista_musulmana_de_Egipto",
+        "fr": "https://fr.wikipedia.org/wiki/Conqu%C3%AAte_musulmane_de_l%27%C3%89gypte",
+        "de": "https://de.wikipedia.org/wiki/Arabische_Eroberung_%C3%84gyptens",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%81%D8%AA%D8%AD_%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A_%D9%84%D9%85%D8%B5%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%80%D0%B0%D0%B1%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%95%D0%B3%D0%B8%D0%BF%D1%82%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D9%81%D8%AA%D9%88%D8%AD%20%D9%85%D8%B5%D8%B1%20%D9%88%D8%A7%D9%84%D9%86%D9%88%D8%A8%D8%A9.jpg",
+      "tagline": "conquest of Egypt by the Rashidun Empire",
+      "year": 639,
+      "endYear": 642
+    },
+    {
+      "id": "Q325985",
+      "name": "Siege of Acre",
+      "nameRu": "Осада Акры",
+      "category": "military-operation",
+      "sitelinks": 36,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Acre_(1291)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Siege_of_Acre_(1291)",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E5%8D%A1%E5%9B%B4%E5%9F%8E%E6%88%98_(1291%E5%B9%B4)",
+        "es": "https://es.wikipedia.org/wiki/Ca%C3%ADda_de_Acre",
+        "fr": "https://fr.wikipedia.org/wiki/Si%C3%A8ge_de_Saint-Jean-d%27Acre_(1291)",
+        "de": "https://de.wikipedia.org/wiki/Belagerung_von_Akkon_(1291)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%81%D8%AA%D8%AD_%D8%B9%D9%83%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%B0%D0%B4%D0%B0_%D0%90%D0%BA%D1%80%D1%8B_(1291)"
+      },
+      "countries": [
+        "Q55502"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SiegeOfAcre1291.jpg",
+      "tagline": "1291 siege by Egyptian Islamic troops",
+      "year": 1291,
+      "month": 4,
+      "endYear": 1291,
+      "endMonth": 5
+    },
+    {
+      "id": "Q33570",
+      "name": "Battle of Grunwald",
+      "nameRu": "Грюнвальдская битва",
+      "category": "military-operation",
+      "sitelinks": 72,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Grunwald",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Grunwald",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A0%BC%E4%BC%A6%E7%93%A6%E5%BE%B7%E4%B9%8B%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Grunwald",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Grunwald",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_bei_Tannenberg_(1410)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%AC%D8%B1%D9%88%D9%86%D9%81%D8%A7%D9%84%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%80%D1%8E%D0%BD%D0%B2%D0%B0%D0%BB%D1%8C%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q1649871",
+        "Q36"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Grunwald%20Witold.jpg",
+      "tagline": "1410 battle between the Teutonic Knights and Poland–Lithuania",
+      "taglineRu": "решающее сражение «Великой войны» 1409—1411 годов, происшедшее 15 июля 1410 года",
+      "year": 1410,
+      "month": 7
+    },
+    {
+      "id": "Q369560",
+      "name": "Siege of Baghdad",
+      "nameRu": "Битва за Багдад",
+      "category": "military-operation",
+      "sitelinks": 56,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Baghdad",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Siege_of_Baghdad",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B7%B4%E6%A0%BC%E8%BE%BE%E4%B9%8B%E6%88%98_(1258%E5%B9%B4)",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Bagdad_(1258)",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Bagdad_(1258)",
+        "de": "https://de.wikipedia.org/wiki/Eroberung_von_Bagdad",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%82%D9%88%D8%B7_%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF_(1258)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%B0%D0%B4%D0%B0_%D0%91%D0%B0%D0%B3%D0%B4%D0%B0%D0%B4%D0%B0_(1258)"
+      },
+      "countries": [
+        "Q12536"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bagdad1258.jpg",
+      "tagline": "1258 Mongol conquest of the Abbasid Caliphate",
+      "taglineRu": "осада и взятие столицы Аббасидского халифата в ходе монгольского ближневосточного похода",
+      "year": 1258,
+      "month": 2,
+      "endYear": 1258,
+      "endMonth": 2
+    },
+    {
+      "id": "Q38789",
+      "name": "Battle of Stalingrad",
+      "nameRu": "Сталинградская битва",
+      "category": "military-operation",
+      "sitelinks": 108,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%96%AF%E5%A4%A7%E6%9E%97%E6%A0%BC%E5%8B%92%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Stalingrado",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Stalingrad",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Stalingrad",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%B3%D8%AA%D8%A7%D9%84%D9%8A%D9%86%D8%BA%D8%B1%D8%A7%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%BB%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Liberation%20of%20Stalingrad%20by%20Abram%20Krichevsky%20%28ID%2032407906%29.jpg",
+      "tagline": "1942 major battle of World War II",
+      "taglineRu": "одно из важнейших сражений Второй мировой войны и ВОВ",
+      "year": 1942,
+      "month": 8,
+      "endYear": 1943,
+      "endMonth": 2
+    },
+    {
+      "id": "Q4200795",
+      "name": "Indian campaign of Alexander the Great",
+      "nameRu": "Индийский поход (327 до н.э.)",
+      "category": "military-operation",
+      "sitelinks": 18,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Indian_campaign_of_Alexander_the_Great",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Indian_campaign_of_Alexander_the_Great",
+        "es": "https://es.wikipedia.org/wiki/Campa%C3%B1a_de_la_India_de_Alejandro_Magno",
+        "fr": "https://fr.wikipedia.org/wiki/Campagne_indienne_d%27Alexandre_le_Grand",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D9%85%D9%84%D8%A9_%D8%A7%D9%84%D9%87%D9%86%D8%AF%D9%8A%D8%A9_%D9%84%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1_%D8%A7%D9%84%D8%A3%D9%83%D8%A8%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%BE%D1%85%D0%BE%D0%B4_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0_%D0%9C%D0%B0%D0%BA%D0%B5%D0%B4%D0%BE%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/AlexanderConquestsInIndia.jpg",
+      "tagline": "military campaign conducted by Alexander the Great into the northwestern Indian subcontinent",
+      "taglineRu": "одна из военных компаний Александра Великого",
+      "year": -326,
+      "endYear": -324
+    },
+    {
+      "id": "Q456993",
+      "name": "Siege of Jerusalem",
+      "nameRu": "Осада Иерусалима",
+      "category": "military-operation",
+      "sitelinks": 49,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1099)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1099)",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%80%B6%E8%B7%AF%E6%92%92%E5%86%B7%E5%9B%B4%E5%9F%8E%E6%88%98_(1099%E5%B9%B4)",
+        "es": "https://es.wikipedia.org/wiki/Sitio_de_Jerusal%C3%A9n_(1099)",
+        "fr": "https://fr.wikipedia.org/wiki/Si%C3%A8ge_de_J%C3%A9rusalem_(1099)",
+        "de": "https://de.wikipedia.org/wiki/Belagerung_von_Jerusalem_(1099)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B5%D8%A7%D8%B1_%D8%A7%D9%84%D9%82%D8%AF%D8%B3_(1099)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%B0%D0%B4%D0%B0_%D0%98%D0%B5%D1%80%D1%83%D1%81%D0%B0%D0%BB%D0%B8%D0%BC%D0%B0_(1099)"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1099jerusalem.jpg",
+      "tagline": "1099 battle during which the Crusaders captured Jerusalem from the Fatimid Caliphate",
+      "year": 1099,
+      "month": 6,
+      "endYear": 1099,
+      "endMonth": 7
+    },
+    {
+      "id": "Q492415",
+      "name": "Battle of Talas",
+      "nameRu": "Таласская битва",
+      "category": "military-operation",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Talas",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Talas",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%80%9B%E7%BD%97%E6%96%AF%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_del_Talas",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Talas",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_am_Talas",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%86%D9%87%D8%B1_%D8%B7%D9%84%D8%A7%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B0%D0%BB%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q813",
+        "Q232"
+      ],
+      "tagline": "751 battle between the Abbasid Caliphate and the Chinese Tang dynasty",
+      "taglineRu": "сражение, произошедшее в июле 751 года на реке Талас, в приграничных районах современного Казахстана.",
+      "year": 751,
+      "month": 5,
+      "endYear": 751,
+      "endMonth": 9
+    },
+    {
+      "id": "Q51649",
+      "name": "First Crusade",
+      "nameRu": "Первый крестовый поход",
+      "category": "military-operation",
+      "sitelinks": 86,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Crusade",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/First_Crusade",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8D%81%E5%AD%97%E5%86%9B%E4%B8%9C%E5%BE%81",
+        "es": "https://es.wikipedia.org/wiki/Primera_cruzada",
+        "fr": "https://fr.wikipedia.org/wiki/Premi%C3%A8re_croisade",
+        "de": "https://de.wikipedia.org/wiki/Erster_Kreuzzug",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D9%85%D9%84%D8%A9_%D8%A7%D9%84%D8%B5%D9%84%D9%8A%D8%A8%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9_%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D0%BF%D0%BE%D1%85%D0%BE%D0%B4"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1099jerusalem.jpg",
+      "tagline": "1096–1099 Christian conquest of the Holy Land",
+      "taglineRu": "война на Ближнем Востоке",
+      "year": 1096,
+      "endYear": 1099
+    },
+    {
+      "id": "Q51656",
+      "name": "Fourth Crusade",
+      "nameRu": "Четвёртый крестовый поход",
+      "category": "military-operation",
+      "sitelinks": 77,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fourth_Crusade",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Fourth_Crusade",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E5%8D%81%E5%AD%97%E5%86%9B%E4%B8%9C%E5%BE%81",
+        "es": "https://es.wikipedia.org/wiki/Cuarta_cruzada",
+        "fr": "https://fr.wikipedia.org/wiki/Quatri%C3%A8me_croisade",
+        "de": "https://de.wikipedia.org/wiki/Vierter_Kreuzzug",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D9%85%D9%84%D8%A9_%D8%A7%D9%84%D8%B5%D9%84%D9%8A%D8%A8%D9%8A%D8%A9_%D8%A7%D9%84%D8%B1%D8%A7%D8%A8%D8%B9%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%82%D0%B2%D1%91%D1%80%D1%82%D1%8B%D0%B9_%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D0%BF%D0%BE%D1%85%D0%BE%D0%B4"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gustave%20dore%20crusades%20entry%20of%20the%20crusaders%20into%20constantinople.jpg",
+      "tagline": "armed expedition against Constantinople",
+      "taglineRu": "крестовый поход",
+      "year": 1202,
+      "endYear": 1204
+    },
+    {
+      "id": "Q521799",
+      "name": "Battle of the Neva",
+      "nameRu": "Невская битва",
+      "category": "military-operation",
+      "sitelinks": 43,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Neva",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_the_Neva",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B6%85%E7%93%A6%E6%B2%B3%E4%B9%8B%E6%88%B0",
+        "es": "https://es.wikipedia.org/wiki/Batalla_del_Neva",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_la_Neva",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_an_der_Newa",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%86%D9%8A%D9%81%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20the%20Neva.jpg",
+      "tagline": "1240 battle",
+      "taglineRu": "сражение 1240 года между новгородским и шведским войсками у впадения Ижоры в Неву",
+      "year": 1240,
+      "month": 7
+    },
+    {
+      "id": "Q551888",
+      "name": "Wars of Alexander the Great",
+      "nameRu": "Сражения Александра Македонского",
+      "category": "military-operation",
+      "sitelinks": 32,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Wars_of_Alexander_the_Great",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%9A%E5%8E%86%E5%B1%B1%E5%A4%A7%E5%A4%A7%E5%B8%9D%E4%B8%9C%E5%BE%81",
+        "es": "https://es.wikipedia.org/wiki/Guerras_de_Alejandro_Magno",
+        "fr": "https://fr.wikipedia.org/wiki/Chronologie_des_campagnes_d%27Alexandre_le_Grand",
+        "de": "https://de.wikipedia.org/wiki/Alexanderzug",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D9%88%D8%A8_%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1_%D8%A7%D9%84%D8%A3%D9%83%D8%A8%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0_%D0%9C%D0%B0%D0%BA%D0%B5%D0%B4%D0%BE%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Alexander%20and%20Bucephalus%20-%20Battle%20of%20Issus%20mosaic%20-%20Museo%20Archeologico%20Nazionale%20-%20Naples%20BW.jpg",
+      "tagline": "conflicts fought by King Alexander III of Macedon (\"The Great\"), against other Greek powers, the Persian Empire and warlords as far east as India",
+      "year": -335,
+      "endYear": -322
+    },
+    {
+      "id": "Q570204",
+      "name": "Battle of the Kalka River",
+      "nameRu": "битва на реке Калке",
+      "category": "military-operation",
+      "sitelinks": 49,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Kalka_River",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_the_Kalka_River",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%BF%A6%E5%8B%92%E8%BF%A6%E6%B2%B3%E4%B9%8B%E6%88%98",
+        "es": "https://es.wikipedia.org/wiki/Batalla_del_r%C3%ADo_Kalka",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_la_Kalka",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_an_der_Kalka",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%86%D9%87%D8%B1_%D9%83%D8%A7%D9%84%D9%83%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BD%D0%B0_%D0%9A%D0%B0%D0%BB%D0%BA%D0%B5"
+      },
+      "countries": [
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%D0%BD%D0%B0%20%D0%9A%D0%B0%D0%BB%D0%BA%D0%B5.png",
+      "tagline": "1223 middle ages battle",
+      "taglineRu": "Сражение между русскими княжествами и Монгольской империи",
+      "year": 1223,
+      "month": 6
+    },
+    {
+      "id": "Q605321",
+      "name": "Battle of Panipat",
+      "nameRu": "Битва при Панипате",
+      "category": "military-operation",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Battle_of_Panipat",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/First_Battle_of_Panipat",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%B8%95%E5%B0%BC%E5%B8%95%E7%89%B9%E4%B9%8B%E6%88%B0",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Panipat_(1526)",
+        "fr": "https://fr.wikipedia.org/wiki/Premi%C3%A8re_bataille_de_Panipat",
+        "de": "https://de.wikipedia.org/wiki/Erste_Schlacht_bei_Panipat",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%A8%D8%A7%D9%86%D9%8A_%D8%A8%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%9F%D0%B0%D0%BD%D0%B8%D0%BF%D0%B0%D1%82%D0%B5_(1526)"
+      },
+      "countries": [
+        "Q668"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vaki%27at-i%20Baburi%20-%20The%20Battle%20of%20Panipat%20%281526%29%20by%20Deo%20Gujarati.jpg",
+      "tagline": "1526 battle.",
+      "year": 1526,
+      "month": 5
+    },
+    {
+      "id": "Q626058",
+      "name": "Battle of Karbala",
+      "nameRu": "Битва при Кербеле",
+      "category": "military-operation",
+      "sitelinks": 62,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Karbala",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Karbala",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%A1%E5%B0%94%E5%B7%B4%E6%8B%89%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Kerbala",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Kerbala",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Kerbela",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%83%D8%B1%D8%A8%D9%84%D8%A7%D8%A1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%BF%D1%80%D0%B8_%D0%9A%D0%B5%D1%80%D0%B1%D0%B5%D0%BB%D0%B5"
+      },
+      "countries": [
+        "Q796"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20Karbala.jpg",
+      "tagline": "battle in October 680 between the army of Ubayd Allah ibn Ziyad and al-Husayn ibn Ali",
+      "taglineRu": "битва в октябре 680 года между армией Язида I и аль-Хусейна ибн Али",
+      "year": 680,
+      "month": 10
+    },
+    {
+      "id": "Q734700",
+      "name": "Battle of Avarayr",
+      "nameRu": "Аварайрская битва",
+      "category": "military-operation",
+      "sitelinks": 30,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Avarayr",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_Avarayr",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E7%93%A6%E6%8B%89%E5%B0%94%E6%88%98%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Avarayr",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_d%27Avarayr",
+        "de": "https://de.wikipedia.org/wiki/Schlacht_von_Avarayr",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%A3%D9%88%D8%A7%D8%B1%D8%A7%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D0%B0%D1%80%D0%B0%D0%B9%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%B8%D1%82%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q83891",
+        "Q794"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vartanantz.jpg",
+      "tagline": "451 battle",
+      "taglineRu": "крупное сражение",
+      "year": 451,
+      "month": 5
+    },
+    {
+      "id": "Q844886",
+      "name": "Siege of Jerusalem",
+      "nameRu": "Осада Иерусалима",
+      "category": "military-operation",
+      "sitelinks": 41,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(70_CE)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(70_CE)",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%80%B6%E8%B7%AF%E6%92%92%E5%86%B7%E5%9C%8D%E5%9F%8E%E6%88%B0_(70%E5%B9%B4)",
+        "es": "https://es.wikipedia.org/wiki/Sitio_de_Jerusal%C3%A9n_(70)",
+        "fr": "https://fr.wikipedia.org/wiki/Si%C3%A8ge_de_J%C3%A9rusalem_(70)",
+        "de": "https://de.wikipedia.org/wiki/Eroberung_von_Jerusalem_(70_n._Chr.)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B5%D8%A7%D8%B1_%D8%A7%D9%84%D9%82%D8%AF%D8%B3_(70)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%B0%D0%B4%D0%B0_%D0%98%D0%B5%D1%80%D1%83%D1%81%D0%B0%D0%BB%D0%B8%D0%BC%D0%B0_(70)"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege%20of%20JerusalemfiMap.PNG",
+      "tagline": "siege of Jerusalem in 70 AD by the Roman army",
+      "year": 70,
+      "month": 2,
+      "endYear": 70,
+      "endMonth": 9
+    },
+    {
+      "id": "Q8641370",
+      "name": "Operation Overlord",
+      "nameRu": "Нормандская операция",
+      "category": "military-operation",
+      "sitelinks": 63,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Operation_Overlord",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Operation_Overlord",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9C%B8%E7%8E%8B%E8%A1%8C%E5%8A%A8",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_Normand%C3%ADa",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Normandie",
+        "de": "https://de.wikipedia.org/wiki/Operation_Overlord",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%A3%D9%88%D9%81%D8%B1%D9%84%D9%88%D8%B1%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%BE%D1%80%D0%BC%D0%B0%D0%BD%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q7318"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/NormandySupply%20edit.jpg",
+      "tagline": "1944 Allied liberation of German-occupied France during World War II",
+      "taglineRu": "стратегическая операция по высадке войск в Нормандии",
+      "year": 1944,
+      "month": 6,
+      "endYear": 1944,
+      "endMonth": 8
+    },
+    {
+      "id": "Q87779",
+      "name": "Battle of the Teutoburg Forest",
+      "nameRu": "битва в Тевтобургском лесу",
+      "category": "military-operation",
+      "sitelinks": 65,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Teutoburg_Forest",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Battle_of_the_Teutoburg_Forest",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A2%9D%E9%A0%93%E5%A0%A1%E6%A3%AE%E6%9E%97%E4%B9%8B%E6%88%B0",
+        "es": "https://es.wikipedia.org/wiki/Batalla_del_bosque_de_Teutoburgo",
+        "fr": "https://fr.wikipedia.org/wiki/Bataille_de_Teutobourg",
+        "de": "https://de.wikipedia.org/wiki/Varusschlacht",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D8%BA%D8%A7%D8%A8%D8%A9_%D8%AA%D9%88%D9%8A%D8%AA%D9%88%D8%A8%D9%88%D8%B1%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%B2%D0%B0_%D0%B2_%D0%A2%D0%B5%D0%B2%D1%82%D0%BE%D0%B1%D1%83%D1%80%D0%B3%D1%81%D0%BA%D0%BE%D0%BC_%D0%9B%D0%B5%D1%81%D1%83"
+      },
+      "countries": [
+        "Q183"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Varus01.jpg",
+      "tagline": "battle between a coalition of Germanic peoples and an Imperial Roman army, 9 BCE",
+      "taglineRu": "римское поражение от германских армий в 9 году нашей эры",
+      "year": 9,
+      "month": 9
+    },
+    {
+      "id": "Q124988",
+      "name": "Punic Wars",
+      "nameRu": "Пунические войны",
+      "category": "war",
+      "sitelinks": 84,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Punic_Wars",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Punic_Wars",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B8%83%E5%8C%BF%E6%88%98%E4%BA%89",
+        "es": "https://es.wikipedia.org/wiki/Guerras_p%C3%BAnicas",
+        "fr": "https://fr.wikipedia.org/wiki/Guerres_puniques",
+        "de": "https://de.wikipedia.org/wiki/Punische_Kriege",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D9%88%D8%A8_%D8%A7%D9%84%D8%A8%D9%88%D9%86%D9%8A%D9%82%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%83%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Map%20of%20Rome%20and%20Carthage%20at%20the%20start%20of%20the%20Second%20Punic%20War.svg",
+      "tagline": "series of three wars fought between Rome and Carthage from 264 BC to 146 BC, at the time probably the largest wars that had ever taken place",
+      "taglineRu": "серия войн между Римской республикой и Карфагеном за влияние в Средиземноморье",
+      "year": -263,
+      "endYear": -145
+    },
+    {
+      "id": "Q15860072",
+      "name": "Russo-Ukrainian war",
+      "nameRu": "Российско-украинская война",
+      "category": "war",
+      "sitelinks": 121,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BF%84%E4%B9%8C%E6%88%98%E4%BA%89",
+        "es": "https://es.wikipedia.org/wiki/Conflicto_ruso-ucraniano_(2014-presente)",
+        "fr": "https://fr.wikipedia.org/wiki/Guerre_russo-ukrainienne",
+        "de": "https://de.wikipedia.org/wiki/Russisch-Ukrainischer_Krieg",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%B1%D9%88%D8%B3%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D9%88%D9%83%D8%B1%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE-%D1%83%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
+      },
+      "countries": [
+        "Q16746854",
+        "Q16150196",
+        "Q212",
+        "Q184",
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakhmut%20during%20the%20battle%2C%202023-03.jpg",
+      "tagline": "armed conflict between Russia and Ukraine since 2014",
+      "taglineRu": "война России против Украины с 20 февраля 2014 года",
+      "year": 2014,
+      "month": 2
+    },
+    {
+      "id": "Q165725",
+      "name": "Balkan Wars",
+      "nameRu": "Балканские войны",
+      "category": "war",
+      "sitelinks": 80,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Balkan_Wars",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Balkan_Wars",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B7%B4%E5%B0%94%E5%B9%B2%E6%88%98%E4%BA%89",
+        "es": "https://es.wikipedia.org/wiki/Guerras_de_los_Balcanes",
+        "fr": "https://fr.wikipedia.org/wiki/Guerres_balkaniques",
+        "de": "https://de.wikipedia.org/wiki/Balkankriege",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D9%88%D8%A8_%D8%A7%D9%84%D8%A8%D9%84%D9%82%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%BB%D0%BA%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Balkan%20Wars%20Boundaries.jpg",
+      "tagline": "two consecutive wars in 1912 and 1913",
+      "taglineRu": "войны на балканах",
+      "year": 1912,
+      "month": 10,
+      "endYear": 1913,
+      "endMonth": 7
+    },
+    {
+      "id": "Q220984",
+      "name": "Opium Wars",
+      "nameRu": "опиумные войны",
+      "category": "war",
+      "sitelinks": 58,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Opium_Wars",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Opium_Wars",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%B8%A6%E7%89%87%E6%88%98%E4%BA%89",
+        "es": "https://es.wikipedia.org/wiki/Guerras_del_Opio",
+        "fr": "https://fr.wikipedia.org/wiki/Guerres_de_l%27opium",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D9%88%D8%A8_%D8%A7%D9%84%D8%A3%D9%81%D9%8A%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D0%BF%D0%B8%D1%83%D0%BC%D0%BD%D1%8B%D0%B5_%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B"
+      },
+      "countries": [
+        "Q148"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Second%20Opium%20War-guangzhou.jpg",
+      "tagline": "two 19th century conflicts",
+      "taglineRu": "военные конфликты на территории Китая в XIX веке между западными державами и Империей Цин",
+      "year": 1839,
+      "month": 9,
+      "endYear": 1860,
+      "endMonth": 10
+    },
+    {
+      "id": "Q4338038",
+      "name": "Ottoman–Mamluk War of 1516–17",
+      "nameRu": "Османо-мамлюкская война (1516—1517)",
+      "category": "war",
+      "sitelinks": 27,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Mamluk_War_(1516%E2%80%931517)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ottoman%E2%80%93Mamluk_War_(1516%E2%80%931517)",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A5%A7%E6%96%AF%E6%9B%BC%E2%80%94%E9%A6%AC%E7%A9%86%E9%AD%AF%E5%85%8B%E6%88%B0%E7%88%AD_(1516%E5%B9%B4%E2%80%941517%E5%B9%B4)",
+        "es": "https://es.wikipedia.org/wiki/Guerra_otomano-mameluca_(1516-1517)",
+        "fr": "https://fr.wikipedia.org/wiki/Guerre_ottomano-mamelouke",
+        "de": "https://de.wikipedia.org/wiki/Osmanisch-Mamlukischer_Krieg_(1516%E2%80%931517)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%86%D8%B2%D8%A7%D8%B9_%D8%A7%D9%84%D8%B9%D8%AB%D9%85%D8%A7%D9%86%D9%8A_%D8%A7%D9%84%D9%85%D9%85%D9%84%D9%88%D9%83%D9%8A_(1516%E2%80%931517)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%BC%D0%B0%D0%BD%D0%BE-%D0%BC%D0%B0%D0%BC%D0%BB%D1%8E%D0%BA%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0_(1516%E2%80%941517)"
+      },
+      "countries": [
+        "Q79"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Abraham%20Ortelius%20-%20Tvrcici%20imperii%20descriptio.jpg",
+      "tagline": "Imperial Ottoman conquest of Egypt and the Levant",
+      "year": 1516,
+      "endYear": 1517,
+      "endMonth": 2
+    },
+    {
+      "id": "Q576338",
+      "name": "Japanese invasions of Korea",
+      "nameRu": "Имджинская война",
+      "category": "war",
+      "sitelinks": 46,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Imjin_War",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Imjin_War",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%90%AC%E6%9B%86%E6%9C%9D%E9%AE%AE%E4%B9%8B%E5%BD%B9",
+        "es": "https://es.wikipedia.org/wiki/Invasiones_japonesas_de_Corea_(1592-1598)",
+        "fr": "https://fr.wikipedia.org/wiki/Guerre_d%27Imjin",
+        "de": "https://de.wikipedia.org/wiki/Imjin-Krieg",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%BA%D8%B2%D9%88_%D8%A7%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86_%D9%84%D9%83%D9%88%D8%B1%D9%8A%D8%A7_(1592-1598)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%B4%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siege-of-Busanjin-1592.jpg",
+      "tagline": "1592-1598 campaigns against Joseon by Toyotomi Hideyoshi",
+      "taglineRu": "два отдельных вторжения японских самураев в Корею (1592–1598)",
+      "year": 1592,
+      "month": 5,
+      "endYear": 1598,
+      "endMonth": 12
+    },
+    {
+      "id": "Q126306",
+      "name": "Decembrist revolt",
+      "nameRu": "Восстание декабристов",
+      "category": "rebellion",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Decembrist_revolt",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Decembrist_revolt",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%81%E4%BA%8C%E6%9C%88%E5%85%9A%E4%BA%BA%E8%B5%B7%E4%B9%89",
+        "es": "https://es.wikipedia.org/wiki/Revuelta_decembrista",
+        "fr": "https://fr.wikipedia.org/wiki/Insurrection_d%C3%A9cembriste",
+        "de": "https://de.wikipedia.org/wiki/Aufstand_der_Dekabristen",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%88%D8%B1%D8%A9_%D8%A7%D9%84%D8%AF%D9%8A%D8%B3%D9%85%D8%A8%D8%B1%D9%8A%D9%8A%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B4%D0%B5%D0%BA%D0%B0%D0%B1%D1%80%D0%B8%D1%81%D1%82%D0%BE%D0%B2"
+      },
+      "countries": [
+        "Q34266"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Peterburg%2C%20Senate%20Square%2C%201825%2C%20dec.%2014.jpg",
+      "tagline": "1825 revolt and attempted coup in the Russian Empire",
+      "taglineRu": "попытка государственного переворота в Российской империи в 1825 году",
+      "year": 1825,
+      "month": 12
+    },
+    {
+      "id": "Q154100",
+      "name": "Pugachev's Rebellion",
+      "nameRu": "Крестьянская война под предводительством Емельяна Пугачёва",
+      "category": "rebellion",
+      "sitelinks": 39,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Pugachev%27s_Rebellion",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Pugachev%27s_Rebellion",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%99%AE%E5%8A%A0%E4%B9%94%E5%A4%AB%E8%B5%B7%E4%B9%89",
+        "es": "https://es.wikipedia.org/wiki/Levantamiento_de_Pugachov",
+        "fr": "https://fr.wikipedia.org/wiki/Guerre_des_Paysans_russes_(1773-1775)",
+        "de": "https://de.wikipedia.org/wiki/Pugatschow-Aufstand",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%85%D8%B1%D8%AF_%D8%A8%D9%88%D8%BA%D8%A7%D8%AA%D8%B4%D9%8A%D9%81",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%D0%9F%D1%83%D0%B3%D0%B0%D1%87%D1%91%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q34266"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gorelov%20lynching%202.jpg",
+      "tagline": "peasant revolt against Empress Catherine II of Russia",
+      "taglineRu": "одно из крупнейших народных восстаний в Российской империи",
+      "year": 1773,
+      "month": 9,
+      "endYear": 1775,
+      "endMonth": 1
+    },
+    {
+      "id": "Q1628339",
+      "name": "Razin's Rebellion",
+      "nameRu": "Восстание Разина",
+      "category": "rebellion",
+      "sitelinks": 11,
+      "articleUrls": {
+        "de": "https://de.wikipedia.org/wiki/Rasin-Aufstand",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%D0%A0%D0%B0%D0%B7%D0%B8%D0%BD%D0%B0"
+      },
+      "countries": [
+        "Q186096",
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Astrachan2.jpg",
+      "tagline": "17th century rebellion in Russia",
+      "taglineRu": "вооружённое восстание в Русском царстве в 1670—1671 годах",
+      "year": 1667,
+      "endYear": 1671
+    },
+    {
+      "id": "Q194378",
+      "name": "Third Servile War",
+      "nameRu": "восстание Спартака",
+      "category": "rebellion",
+      "sitelinks": 54,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_Servile_War",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Third_Servile_War",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%96%AF%E5%B7%B4%E8%BE%BE%E5%85%8B%E6%96%AF%E8%B5%B7%E4%B9%89",
+        "es": "https://es.wikipedia.org/wiki/Tercera_guerra_servil",
+        "fr": "https://fr.wikipedia.org/wiki/Troisi%C3%A8me_guerre_servile",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%B1%D8%A8_%D8%A7%D9%84%D8%B9%D8%A8%D9%8A%D8%AF_%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%D0%A1%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BA%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Italy%20and%20environs%2C%20218%20BC.gif",
+      "tagline": "major slave rebellion against the Roman Republic (73-71 BCE)",
+      "year": -72,
+      "endYear": -70
+    },
+    {
+      "id": "Q253774",
+      "name": "An Lushan Rebellion",
+      "nameRu": "Мятеж Ань Лушаня",
+      "category": "rebellion",
+      "sitelinks": 40,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/An_Lushan_rebellion",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/An_Lushan_rebellion",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%AE%89%E5%8F%B2%E4%B9%8B%E4%BA%82",
+        "es": "https://es.wikipedia.org/wiki/Rebeli%C3%B3n_de_An_Lushan",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9volte_d%27An_Lushan",
+        "de": "https://de.wikipedia.org/wiki/An-Lushan-Rebellion",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%88%D8%B1%D8%A9_%D8%A2%D9%86_%D9%84%D9%88%D8%B4%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D1%8F%D1%82%D0%B5%D0%B6_%D0%90%D0%BD%D1%8C_%D0%9B%D1%83%D1%88%D0%B0%D0%BD%D1%8F"
+      },
+      "countries": [
+        "Q9683"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/An%20Lushan%20Rebellion.png",
+      "tagline": "rebellion against the Tang dynasty of China in 755 C.E",
+      "taglineRu": "гражданская война в танском Китае, свирепствовавшая в царствование трёх императоров, с 16 декабря 755 по 17 февраля 763 года",
+      "year": 755,
+      "month": 12,
+      "endYear": 763,
+      "endMonth": 2
+    },
+    {
+      "id": "Q368689",
+      "name": "First Serbian Uprising",
+      "nameRu": "Первое сербское восстание",
+      "category": "rebellion",
+      "sitelinks": 38,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/First_Serbian_Uprising",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/First_Serbian_Uprising",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%A1%9E%E5%B0%94%E7%BB%B4%E4%BA%9A%E8%B5%B7%E4%B9%89",
+        "es": "https://es.wikipedia.org/wiki/Primera_insurrecci%C3%B3n_serbia",
+        "fr": "https://fr.wikipedia.org/wiki/Premier_soul%C3%A8vement_serbe_contre_les_Turcs",
+        "de": "https://de.wikipedia.org/wiki/Erster_Serbischer_Aufstand",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A7%D9%86%D8%AA%D9%81%D8%A7%D8%B6%D8%A9_%D8%A7%D9%84%D8%B5%D8%B1%D8%A8%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D0%BE%D0%B5_%D1%81%D0%B5%D1%80%D0%B1%D1%81%D0%BA%D0%BE%D0%B5_%D0%B2%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%B5"
+      },
+      "countries": [
+        "Q12560",
+        "Q403"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Osvajanje%20Beograda.jpg",
+      "tagline": "part of the Serbian Revolution",
+      "taglineRu": "национально-освободительное восстание сербского народа под руководством Георгия Петровича против османского владычества",
+      "year": 1804,
+      "month": 2,
+      "endYear": 1813,
+      "endMonth": 10
+    },
+    {
+      "id": "Q751743",
+      "name": "Yellow Turban Rebellion",
+      "nameRu": "Восстание Жёлтых повязок",
+      "category": "rebellion",
+      "sitelinks": 40,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%BB%83%E5%B7%BE%E4%B9%8B%E4%BA%82",
+        "es": "https://es.wikipedia.org/wiki/Rebeli%C3%B3n_de_los_Turbantes_Amarillos",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9bellion_des_Turbans_jaunes",
+        "de": "https://de.wikipedia.org/wiki/Gelbe_Turbane",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%85%D8%B1%D8%AF_%D8%A7%D9%84%D8%B9%D9%85%D8%A7%D9%85%D8%A7%D8%AA_%D8%A7%D9%84%D8%B5%D9%81%D8%B1%D8%A7%D8%A1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%B8%D0%B5_%C2%AB%D0%96%D1%91%D0%BB%D1%82%D1%8B%D1%85_%D0%BF%D0%BE%D0%B2%D1%8F%D0%B7%D0%BE%D0%BA%C2%BB"
+      },
+      "countries": [
+        "Q7209"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Three%20Brothers%20during%20the%20Yellow%20Turban%20Rebellion.jpg",
+      "tagline": "rebellion against corruption of the Imperial Court rooted in Taoist religious principles",
+      "year": 184,
+      "endYear": 205
+    },
+    {
+      "id": "Q133132",
+      "name": "Paris Commune",
+      "nameRu": "Парижская коммуна",
+      "category": "revolution",
+      "sitelinks": 88,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Paris_Commune",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Paris_Commune",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B7%B4%E9%BB%8E%E5%85%AC%E7%A4%BE",
+        "es": "https://es.wikipedia.org/wiki/Comuna_de_Par%C3%ADs",
+        "fr": "https://fr.wikipedia.org/wiki/Commune_de_Paris",
+        "de": "https://de.wikipedia.org/wiki/Pariser_Kommune",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%83%D9%88%D9%85%D9%88%D9%86%D8%A9_%D8%A8%D8%A7%D8%B1%D9%8A%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%B8%D0%B6%D1%81%D0%BA%D0%B0%D1%8F_%D0%BA%D0%BE%D0%BC%D0%BC%D1%83%D0%BD%D0%B0_(1871)"
+      },
+      "countries": [
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Barricade%20de%20la%20rue%20de%20Flandre%20%28%20Salle%20de%20la%20Marseillaise%29%2C%2018%20mars%201871.%20PH4142-167%281%29.jpg",
+      "tagline": "revolutionary city council of Paris in 1871",
+      "taglineRu": "революционное правительство Парижа в 1871 году",
+      "year": 1871,
+      "month": 3,
+      "endYear": 1871,
+      "endMonth": 5
+    },
+    {
+      "id": "Q190517",
+      "name": "Xinhai Revolution",
+      "nameRu": "Синьхайская революция",
+      "category": "revolution",
+      "sitelinks": 69,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1911_Revolution",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/1911_Revolution",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%BE%9B%E4%BA%A5%E9%9D%A9%E5%91%BD",
+        "es": "https://es.wikipedia.org/wiki/Revoluci%C3%B3n_de_Xinhai",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9volution_chinoise_de_1911",
+        "de": "https://de.wikipedia.org/wiki/Xinhai-Revolution",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%88%D8%B1%D8%A9_%D8%B4%D9%8A%D9%86%D9%87%D8%A7%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BD%D1%8C%D1%85%D0%B0%D0%B9%D1%81%D0%BA%D0%B0%D1%8F_%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q13426199",
+        "Q29520"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Xinhai%20Revolution%20in%20Shanghai.jpg",
+      "tagline": "revolution in China that overthrew the Qing dynasty and established the Republic of China",
+      "taglineRu": "свержение династии Цин в Китае",
+      "year": 1911,
+      "month": 10,
+      "endYear": 1912,
+      "endMonth": 2
+    },
+    {
+      "id": "Q214028",
+      "name": "July Revolution",
+      "nameRu": "Июльская революция",
+      "category": "revolution",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/July_Revolution",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/July_Revolution",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B3%95%E5%9C%8B%E4%B8%83%E6%9C%88%E9%9D%A9%E5%91%BD",
+        "es": "https://es.wikipedia.org/wiki/Revoluci%C3%B3n_de_Julio",
+        "fr": "https://fr.wikipedia.org/wiki/Trois_Glorieuses",
+        "de": "https://de.wikipedia.org/wiki/Julirevolution_von_1830",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%88%D8%B1%D8%A9_%D9%8A%D9%88%D9%84%D9%8A%D9%88_1830",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%8E%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F_%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q207162"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/R%C3%A9volution%20de%201830%20-%20Combat%20de%20la%20rue%20de%20Rohan%20-%2029.07.1830.jpg",
+      "tagline": "July 1830 revolution in France",
+      "taglineRu": "восстание в июле 1830 года во Франции",
+      "year": 1830,
+      "month": 7,
+      "endYear": 1830,
+      "endMonth": 7
+    },
+    {
+      "id": "Q3588",
+      "name": "European Revolutions of 1848",
+      "nameRu": "Революции 1848—1849 годов",
+      "category": "revolution",
+      "sitelinks": 73,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Revolutions_of_1848",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Revolutions_of_1848",
+        "zh": "https://zh.wikipedia.org/wiki/1848%E5%B9%B4%E9%9D%A9%E5%91%BD",
+        "es": "https://es.wikipedia.org/wiki/Revoluciones_de_1848",
+        "fr": "https://fr.wikipedia.org/wiki/Printemps_des_peuples",
+        "de": "https://de.wikipedia.org/wiki/Revolutionen_1848/1849",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B1%D8%A8%D9%8A%D8%B9_%D8%A7%D9%84%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A_(%D8%AB%D9%88%D8%B1%D8%A7%D8%AA_1848)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D0%B8_1848%E2%80%941849_%D0%B3%D0%BE%D0%B4%D0%BE%D0%B2"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Horace%20Vernet-Barricade%20rue%20Soufflot.jpg",
+      "tagline": "series of political upheavals throughout Europe in 1848–49",
+      "taglineRu": "серия политических восстаний в Центральной Европе",
+      "year": 1848,
+      "month": 1,
+      "endYear": 1849,
+      "endMonth": 10
+    },
+    {
+      "id": "Q382861",
+      "name": "Revolutions of 1989",
+      "nameRu": "Революции 1989 года",
+      "category": "revolution",
+      "sitelinks": 65,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Revolutions_of_1989",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Revolutions_of_1989",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%B8%9C%E6%AC%A7%E5%89%A7%E5%8F%98",
+        "es": "https://es.wikipedia.org/wiki/Revoluciones_de_1989",
+        "fr": "https://fr.wikipedia.org/wiki/Chute_des_r%C3%A9gimes_communistes_en_Europe",
+        "de": "https://de.wikipedia.org/wiki/Revolutionen_im_Jahr_1989",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%88%D8%B1%D8%A7%D8%AA_1989",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D0%B8_1989_%D0%B3%D0%BE%D0%B4%D0%B0"
+      },
+      "countries": [
+        "Q853348",
+        "Q842794",
+        "Q211274",
+        "Q121932",
+        "Q16957",
+        "Q16410"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/EasternBlocAfter.svg",
+      "tagline": "series of protests during 1989 overthrowing communist governments in Eastern Europe",
+      "year": 1989,
+      "month": 3,
+      "endYear": 1992,
+      "endMonth": 4
+    },
+    {
+      "id": "Q1025466",
+      "name": "assassination of Julius Caesar",
+      "nameRu": "убийство Гая Юлия Цезаря",
+      "category": "coup-d-etat",
+      "sitelinks": 32,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B0%A4%E5%88%A9%E7%83%8F%E6%96%AF%C2%B7%E5%87%B1%E6%92%92%E9%81%87%E5%88%BA%E6%A1%88",
+        "fr": "https://fr.wikipedia.org/wiki/Assassinat_de_Jules_C%C3%A9sar",
+        "de": "https://de.wikipedia.org/wiki/Caesarm%C3%B6rder",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%BA%D8%AA%D9%8A%D8%A7%D9%84_%D9%8A%D9%88%D9%84%D9%8A%D9%88%D8%B3_%D9%82%D9%8A%D8%B5%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A3%D0%B1%D0%B8%D0%B9%D1%81%D1%82%D0%B2%D0%BE_%D0%93%D0%B0%D1%8F_%D0%AE%D0%BB%D0%B8%D1%8F_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8F"
+      },
+      "countries": [
+        "Q1747689"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vincenzo%20Camuccini%2C%20The%20Death%20of%20Julius%20Caesar%20%28detail%29.jpg",
+      "tagline": "stabbing attack that caused the death of Julius Caesar (44 BCE)",
+      "taglineRu": "убийство 15 марта 44 года до н. э. в Риме",
+      "year": -43,
+      "month": 3
+    },
+    {
+      "id": "Q612286",
+      "name": "Fall of Nineveh",
+      "nameRu": "Падение Ниневии",
+      "category": "military-operation",
+      "sitelinks": 23,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fall_of_Nineveh",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Fall_of_Nineveh",
+        "es": "https://es.wikipedia.org/wiki/Batalla_de_N%C3%ADnive_(612_a._C.)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%B1%D9%83%D8%A9_%D9%86%D9%8A%D9%86%D9%88%D9%89_(612_%D9%82%D8%A8%D9%84_%D8%A7%D9%84%D9%85%D9%8A%D9%84%D8%A7%D8%AF)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9D%D0%B8%D0%BD%D0%B5%D0%B2%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q796"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nineveh%20mashki%20gate%20from%20west.JPG",
+      "tagline": "612 BC battle that saw the fall of the Assyrian capital, and the climax of the Conquest of Assyria",
+      "year": -611
     }
   ]
 }
