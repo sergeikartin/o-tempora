@@ -16,23 +16,6 @@
     "row": 0
   },
   {
-    "id": "Q75",
-    "name": "Internet",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 95,
-    "tagline": "global system of connected computer networks based on IP addressing and routing protocols",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Internet",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Internet%20users%20per%20100%20and%20GDP%20per%20capita.jpg",
-    "imageAttribution": "HerrGeisterhuhnmann, via Wikimedia Commons",
-    "description": "The Internet is the global system of interconnected computer networks that uses the Internet protocol suite (TCP/IP) to communicate between networks and devices. It is a network of networks that comprises private, public, academic, business, and government networks of local to global scope, linked by electronic, wireless, and optical networking technologies. The Internet carries a vast range of information services and resources, such as the interlinked hypertext documents and applications of the World Wide Web (WWW), electronic mail, discussion groups, internet telephony, streaming media and file sharing.",
-    "at": {
-      "year": 1969,
-      "month": 10
-    },
-    "row": 0
-  },
-  {
     "id": "Q1065",
     "name": "United Nations",
     "category": "society-administration",
@@ -83,18 +66,20 @@
     "row": 0
   },
   {
-    "id": "Q68",
-    "name": "computer",
+    "id": "Q169399",
+    "name": "First general-purpose computer",
     "category": "everyday-technology",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 94,
-    "tagline": "general-purpose device for performing arithmetic or logical operations",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Computer",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apple%20II%20Plus%2C%20Museum%20of%20the%20Moving%20Image.jpg",
-    "imageAttribution": "Marcin Wichary, via Wikimedia Commons",
-    "description": "A computer is a machine that can be programmed to automatically carry out sequences of arithmetic or logical operations (computation). Modern digital electronic computers can perform generic sets of operations known as programs, which enable computers to perform a wide range of tasks. The term computer system may refer to a nominally complete computer that includes the hardware, operating system, software, and peripheral equipment needed and used for full operation, or to a group of computers that are linked and function together, such as a computer network or computer cluster.",
+    "tagline": "First electronic general-purpose computer",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/ENIAC",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Two%20women%20operating%20ENIAC%20%28full%20resolution%29.jpg",
+    "description": "ENIAC was the first programmable, electronic, general-purpose digital computer, completed in 1945. Other computers had some of these features, but ENIAC was the first to have them all. ENIAC was Turing-complete and able to solve \"a large class of numerical problems\" through reprogramming.",
     "at": {
-      "year": 1945
+      "year": 1946,
+      "month": 2
     },
     "row": 2
   },
@@ -121,6 +106,8 @@
     "name": "COVID-19 pandemic",
     "category": "public-health",
     "regionTags": [
+      "eastern-africa",
+      "central-america",
       "northern-africa",
       "south-america",
       "western-europe",
@@ -133,11 +120,9 @@
       "caribbean",
       "southern-africa",
       "western-africa",
-      "eastern-africa",
       "middle-africa",
       "south-eastern-asia",
       "southern-asia",
-      "central-america",
       "australia-and-new-zealand",
       "central-asia"
     ],
@@ -154,18 +139,21 @@
     "row": 0
   },
   {
-    "id": "Q1420",
-    "name": "car",
+    "id": "Q326248",
+    "name": "First car",
     "category": "transportation",
-    "regionTags": [],
+    "regionTags": [
+      "western-europe"
+    ],
     "fameScore": 91,
-    "tagline": "motorized road vehicle designed to carry one to eight people rather than primarily goods",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Car",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20183-J0711-0001-003%2C%20Warnem%C3%BCnde%2C%20Stau.jpg",
-    "imageAttribution": "Jürgen Sindermann, via Wikimedia Commons",
-    "description": "A car, or an automobile, is a motor vehicle with wheels. Most definitions of cars state that they run primarily on roads, seat 1–8 people, have four wheels, and mainly transport people rather than cargo. There are over 1.6 billion cars in use worldwide as of 2025.",
+    "tagline": "vehicle widely regarded as the first automobile",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Patent-Motorwagen%20Nr.1%20Benz%202.jpg",
+    "imageAttribution": "DaimlerChrysler AG, via Wikimedia Commons",
+    "description": "Benz Patent-Motorwagen is used today to refer to the first cars produced by Benz & Cie between 1885 and 1893; these had three wheels, a single-cylinder four-stroke engine and belt-drive. Benz & Cie used the designation \"Patent-Motorwagen\" for their four-wheel cars until c.1900, but these are known today by their other names, such as Viktoria and Velo. All these cars used the same layout and belt-drive technology for which Benz received patent number DRP37435 in 1886, hence the designation.",
     "at": {
-      "year": 1884
+      "year": 1886,
+      "month": 1
     },
     "row": 1
   },
@@ -274,22 +262,6 @@
     "row": 0
   },
   {
-    "id": "Q11035",
-    "name": "telephone",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 88,
-    "tagline": "telecommunications device that permits two or more users to conduct a conversation",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Telephone",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Telefon%20BW%202012-02-18%2013-44-32.JPG",
-    "imageAttribution": "Berthold Werner, via Wikimedia Commons",
-    "description": "A telephone, commonly shortened to phone, is a telecommunications device that enables two or more users to conduct a conversation when they are too far apart to be easily heard directly. A telephone converts sound, typically and most efficiently the human voice, into electronic signals that are transmitted via cables and other communication channels to another telephone which reproduces the sound to the receiving user. The term is derived from Ancient Greek: τῆλε, romanized: tēle, lit. 'far' and φωνή, together meaning distant voice.",
-    "at": {
-      "year": 1876
-    },
-    "row": 2
-  },
-  {
     "id": "Q9158",
     "name": "email",
     "category": "communication",
@@ -302,22 +274,6 @@
       "year": 1971
     },
     "row": 1
-  },
-  {
-    "id": "Q11633",
-    "name": "photography",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 88,
-    "tagline": "art, science, and practice of creating durable images by recording light or other electromagnetic radiation",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Photography",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Winterswijk%20%28NL%29%2C%20Woold%2C%20Boven%20Slinge%20--%202014%20--%203170.jpg",
-    "imageAttribution": "Dietmar Rabich, via Wikimedia Commons",
-    "description": "Photography is the art, application, and practice of creating images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. It is employed in many fields of science, manufacturing, and business, as well as its more direct uses for art, film and video production, recreational purposes, hobby, and mass communication. A person who operates a camera to capture or take photographs is called a photographer, while the captured image, also known as a photograph, is the result produced by the camera.",
-    "at": {
-      "year": 1839
-    },
-    "row": 0
   },
   {
     "id": "Q466",
@@ -337,50 +293,33 @@
     "row": 2
   },
   {
-    "id": "Q17517",
-    "name": "mobile phone",
+    "id": "Q1264871",
+    "name": "First mobile phone",
     "category": "communication",
     "regionTags": [],
     "fameScore": 87,
-    "tagline": "portable device to make telephone calls using a radio link",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mobile_phone",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Android%20smartphones.jpg",
-    "imageAttribution": "Samsung Galaxy Note 10 &amp; Google, via Wikimedia Commons",
-    "description": "A mobile phone or cell phone is a portable wireless telephone that allows users to make and receive calls over a radio frequency link while moving within a designated telephone service area, unlike fixed-location phones. This radio frequency link connects to the switching systems of a mobile phone operator, providing access to the public switched telephone network (PSTN). Modern mobile telephony relies on a cellular network architecture, which is why mobile phones are often referred to as 'cell phones' in North America.",
+    "tagline": "first certificated mobile phone model",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/DynaTAC",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DynaTAC8000X.jpg",
+    "imageAttribution": "Redrum0486, via Wikimedia Commons",
+    "description": "The DynaTAC is a series of cellular telephones manufactured by Motorola from 1983 to 1994. Unveiled on March 6, 1983, the DynaTAC was the first commercially available handheld cellular phone. A full charge took roughly 10 hours, and it offered 30 minutes of talk time. It also offered an LED display for dialing or recall of one of 30 phone numbers. It was priced at US$3,995 in 1984, its commercial release year, equivalent to $12,804.76 in 2025.",
     "at": {
       "year": 1973
     },
-    "row": 5
+    "row": 2
   },
   {
-    "id": "Q11442",
-    "name": "bicycle",
+    "id": "Q1255515",
+    "name": "First bicycle",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 87,
-    "tagline": "pedal-driven two-wheel vehicle",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bicycle",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/00%208327%20Historisches%20Fahrrad.jpg",
-    "imageAttribution": "W. Bulach, via Wikimedia Commons",
-    "description": "A bicycle, also called a pedal cycle, bike, push-bike or cycle, is a human-powered or motor-assisted, pedal-driven, single-track vehicle, with two wheels attached to a frame, one behind the other. A bicycle rider is called a cyclist or bicyclist.",
+    "tagline": "two-wheeled human-powered vehicle often regarded as the predecessor of the bicycle",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dandy_horse",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Draisine1817.jpg",
+    "description": "The dandy horse, an English nickname for what was first called a Laufmaschine, then a vélocipède or draisienne, and then a pedestrian curricle or hobby-horse, or swiftwalker, is a human-powered vehicle that, as the first two-wheeled vehicle, is regarded as the first bicycle. The dandy horse is powered by the rider's feet on the ground instead of the pedals of later bicycles.",
     "at": {
-      "year": 1885
-    },
-    "row": 3
-  },
-  {
-    "id": "Q197",
-    "name": "airplane",
-    "category": "transportation",
-    "regionTags": [],
-    "fameScore": 87,
-    "tagline": "powered fixed-wing aircraft",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Airplane",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Airliners%2028.07.2009%2010-01-28.JPG",
-    "imageAttribution": "Hansueli Krapf, via Wikimedia Commons",
-    "description": "An airplane, or aeroplane, also plane, is a fixed-wing aircraft that is propelled forward by thrust from a jet engine, propeller, or rocket engine. Airplanes come in a variety of sizes, shapes, and wing configurations. The broad spectrum of uses for airplanes includes recreation, transportation of goods and people, military, and research.",
-    "at": {
-      "year": 1903
+      "year": 1817
     },
     "row": 0
   },
@@ -401,7 +340,7 @@
       "year": 1869,
       "month": 11
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q12418",

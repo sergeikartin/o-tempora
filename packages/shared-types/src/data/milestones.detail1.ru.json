@@ -16,23 +16,6 @@
     "row": 0
   },
   {
-    "id": "Q75",
-    "name": "интернет",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 95,
-    "tagline": "всемирная система объединённых компьютерных сетей",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Internet",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Internet%20users%20per%20100%20and%20GDP%20per%20capita.jpg",
-    "imageAttribution": "HerrGeisterhuhnmann, via Wikimedia Commons",
-    "description": "Интерне́т — коммуникационная сеть и глобальная система объединённых компьютерных сетей для хранения и передачи информации. Интернет соединяет автономные системы (AS) по всему миру протоколом динамической маршрутизации BGP. Количество уникальных автономных сетей в системе маршрутизации Интернета превысило 5000 в 1999 году, 30 000 в конце 2008 года, 35 000 в середине 2010 года, 42 000 в конце 2012 года, 54 000 в середине 2016 года и 60 000 в начале 2018 года. К декабрю 2020 года количество выделенных ASN превысило 100 000. По состоянию на 2025 год насчитывается около 120 000 выделенных ASN.",
-    "at": {
-      "year": 1969,
-      "month": 10
-    },
-    "row": 0
-  },
-  {
     "id": "Q1065",
     "name": "Организация Объединённых Наций",
     "category": "society-administration",
@@ -83,18 +66,20 @@
     "row": 0
   },
   {
-    "id": "Q68",
-    "name": "компьютер",
+    "id": "Q169399",
+    "name": "Первый универсальный компьютер",
     "category": "everyday-technology",
-    "regionTags": [],
+    "regionTags": [
+      "northern-america"
+    ],
     "fameScore": 94,
-    "tagline": "устройство для исполнения программ",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Computer",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apple%20II%20Plus%2C%20Museum%20of%20the%20Moving%20Image.jpg",
-    "imageAttribution": "Marcin Wichary, via Wikimedia Commons",
-    "description": "Компью́тер — функциональное электронное устройство, способное выполнять значительный объём вычислений, включая многочисленные арифметические и логические операции, без прямого вмешательства человека. Компьютер может быть как отдельным блоком, так и состоять из нескольких взаимосвязанных устройств.",
+    "tagline": "первый электронный цифровой вычислитель общего назначения, который можно было перепрограммировать для решения широкого спектра задач",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/ENIAC",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Two%20women%20operating%20ENIAC%20%28full%20resolution%29.jpg",
+    "description": "ЭНИАК — первый электронный цифровой вычислитель общего назначения, который можно было перепрограммировать для решения широкого спектра задач.",
     "at": {
-      "year": 1945
+      "year": 1946,
+      "month": 2
     },
     "row": 2
   },
@@ -121,6 +106,8 @@
     "name": "пандемия COVID-19",
     "category": "public-health",
     "regionTags": [
+      "eastern-africa",
+      "central-america",
       "northern-africa",
       "south-america",
       "western-europe",
@@ -133,11 +120,9 @@
       "caribbean",
       "southern-africa",
       "western-africa",
-      "eastern-africa",
       "middle-africa",
       "south-eastern-asia",
       "southern-asia",
-      "central-america",
       "australia-and-new-zealand",
       "central-asia"
     ],
@@ -154,18 +139,21 @@
     "row": 0
   },
   {
-    "id": "Q1420",
-    "name": "автомобиль",
+    "id": "Q326248",
+    "name": "Первый автомобиль",
     "category": "transportation",
-    "regionTags": [],
+    "regionTags": [
+      "western-europe"
+    ],
     "fameScore": 91,
-    "tagline": "безрельсовая транспортная машина на колёсном ходу с приводом от собственного двигателя, предназначенная для перевозки людей и грузов",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Car",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20183-J0711-0001-003%2C%20Warnem%C3%BCnde%2C%20Stau.jpg",
-    "imageAttribution": "Jürgen Sindermann, via Wikimedia Commons",
-    "description": "Автомоби́ль — моторное безрельсовое дорожное и/или внедорожное, чаще всего автономное, транспортное средство, используемое для перевозки людей и/или грузов, обычно имеющее не менее четырёх колёс.",
+    "tagline": "vehicle widely regarded as the first automobile",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Patent-Motorwagen%20Nr.1%20Benz%202.jpg",
+    "imageAttribution": "DaimlerChrysler AG, via Wikimedia Commons",
+    "description": "Benz Patent-Motorwagen — первый в мире автомобиль с двигателем внутреннего сгорания, построенный в 1885 году немецким изобретателем Карлом Бенцем. 29 января 1886 года на него официально был получен патент № 37435. Считается первым коммерчески доступным и успешным автомобилем с двигателем внутреннего сгорания.",
     "at": {
-      "year": 1884
+      "year": 1886,
+      "month": 1
     },
     "row": 1
   },
@@ -274,22 +262,6 @@
     "row": 0
   },
   {
-    "id": "Q11035",
-    "name": "телефон",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 88,
-    "tagline": "устройство для приёма и передачи звука на расстоянии",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Telephone",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Telefon%20BW%202012-02-18%2013-44-32.JPG",
-    "imageAttribution": "Berthold Werner, via Wikimedia Commons",
-    "description": "Телефо́н — аппарат, имеющий трубку и сигнальное устройство для вызова, предназначенный для передачи речи с помощью электрических сигналов. Термин «телефон» используется как для обозначения такого аппарата, так и в качестве названия вида электросвязи.",
-    "at": {
-      "year": 1876
-    },
-    "row": 2
-  },
-  {
     "id": "Q9158",
     "name": "электронная почта",
     "category": "communication",
@@ -302,22 +274,6 @@
       "year": 1971
     },
     "row": 1
-  },
-  {
-    "id": "Q11633",
-    "name": "фотография",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 88,
-    "tagline": "процесс получения и сохранения изображения",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Photography",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Winterswijk%20%28NL%29%2C%20Woold%2C%20Boven%20Slinge%20--%202014%20--%203170.jpg",
-    "imageAttribution": "Dietmar Rabich, via Wikimedia Commons",
-    "description": "Фотогра́фия — технология записи изображения путём регистрации оптических излучений с помощью светочувствительного фотоматериала или полупроводникового преобразователя. В отличие от некоторых других языков, в русском слово «фотография» используется только применительно к статичным изображениям. В то же время в профессиональном кинематографе этот термин обозначает изобразительное решение фильма, создаваемое кинооператором. Фотографиями также называются конечные отпечатки фотографического изображения, изготовленные на фотобумаге химическим способом или принтером.",
-    "at": {
-      "year": 1839
-    },
-    "row": 0
   },
   {
     "id": "Q466",
@@ -337,50 +293,33 @@
     "row": 2
   },
   {
-    "id": "Q17517",
-    "name": "мобильный телефон",
+    "id": "Q1264871",
+    "name": "Первый мобильный телефон",
     "category": "communication",
     "regionTags": [],
     "fameScore": 87,
-    "tagline": "переносной телефон, предназначенный для работы в сетях сотовой связи",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mobile_phone",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Android%20smartphones.jpg",
-    "imageAttribution": "Samsung Galaxy Note 10 &amp; Google, via Wikimedia Commons",
-    "description": "Со́товый телефо́н, или моби́льный телефо́н, — телефон, предназначенный для работы в сетях сотовой связи; использует приёмопередатчик радиодиапазона и традиционную телефонную коммутацию для осуществления телефонной связи на территории зоны покрытия сотовой сети.",
+    "tagline": "первый сотовый телефон, получивший сертификат FCC 21 сентября 1983 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/DynaTAC",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DynaTAC8000X.jpg",
+    "imageAttribution": "Redrum0486, via Wikimedia Commons",
+    "description": "Motorola DynaTAC 8000X был первым сотовым телефоном, получившим сертификат FCC 21 сентября 1983 года.",
     "at": {
       "year": 1973
     },
-    "row": 5
+    "row": 2
   },
   {
-    "id": "Q11442",
-    "name": "велосипед",
+    "id": "Q1255515",
+    "name": "Первый велосипед",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 87,
-    "tagline": "двухколёсное транспортное средство, приводимое в движение посредством педалей",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bicycle",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/00%208327%20Historisches%20Fahrrad.jpg",
-    "imageAttribution": "W. Bulach, via Wikimedia Commons",
-    "description": "Велосипе́д — колёсное транспортное средство, приводимое в движение мускульной силой человека через ножные педали или через ручные рычаги. Наиболее распространены двухколёсные велосипеды, но существуют также конструкции с тремя и более колёсами. Стал использоваться как средство передвижения ещё до широкого распространения городского общественного транспорта, в том числе автобусов, троллейбусов и трамваев. Также популярен среди туристов и в спортивных целях. В современном мире также используют электропривод для увеличения области использования велосипеда.",
+    "tagline": "two-wheeled human-powered vehicle often regarded as the predecessor of the bicycle",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dandy_horse",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Draisine1817.jpg",
+    "description": "Машина для бега — колёсное транспортное средство, приводимое в движение мускульной силой человека путём отталкивания ногами от поверхности земли.",
     "at": {
-      "year": 1885
-    },
-    "row": 3
-  },
-  {
-    "id": "Q197",
-    "name": "самолёт",
-    "category": "transportation",
-    "regionTags": [],
-    "fameScore": 87,
-    "tagline": "воздушное судно с силовой установкой и неподвижной относительно фюзеляжа центральной частью крыла",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Airplane",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Airliners%2028.07.2009%2010-01-28.JPG",
-    "imageAttribution": "Hansueli Krapf, via Wikimedia Commons",
-    "description": "Самолёт — класс воздушных судов тяжелее воздуха, предназначенных для полётов в атмосфере с помощью силового агрегата, создающего тягу, и неподвижного относительно других частей аппарата крыла, создающего подъёмную силу. Неподвижное крыло отличает самолёт от махолёта (орнитоптера) и вертолёта, а наличие двигателя — от планёра и мускулолёта. От дирижабля и аэростата самолёт отличается тем, что использует аэродинамический, а не аэростатический способ создания подъёмной силы.",
-    "at": {
-      "year": 1903
+      "year": 1817
     },
     "row": 0
   },
@@ -401,7 +340,7 @@
       "year": 1869,
       "month": 11
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q12418",

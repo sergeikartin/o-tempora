@@ -25,6 +25,15 @@ interface CuratedMilestone {
   // Conflicts' own unused curated `name`.
   name: string;
   category: MilestoneCategory;
+  // Replaces the Wikidata label (en/ru) for entries whose own item is named
+  // for the artifact rather than the milestone it stands for (e.g. "First
+  // car" for the Benz Patent-Motorwagen). Tagline, article and date still
+  // come from the entry's own item.
+  displayName?: { en: string; ru: string };
+  // QID of a broader concept item whose sitelinks and pageviews stand in for
+  // this entry's own when scoring fame, so a "first X" entry ranks as
+  // prominently as the concept it introduced.
+  fameSource?: string;
 }
 
 interface CuratedMilestonesFile {
@@ -76,6 +85,10 @@ export interface EnrichedMilestone {
   // has no sitelink in that language — fetch-pageviews.ts treats that as 0
   // pageviews for the language, no redirect-resolution (ADR 0010).
   articleUrls: Partial<Record<PageviewsLanguage, string>>;
+  // Sitelinks and article URLs of the curated entry's `fameSource` item;
+  // absent for entries scored on their own.
+  fameSitelinks?: number;
+  fameArticleUrls?: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
   // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim — absent
   // means no P18 claim (dynamic-tooltips spec §4.1/§4.3).
@@ -94,8 +107,16 @@ function isCuratedMilestone(value: unknown): value is CuratedMilestone {
     typeof candidate.id === "string" &&
     typeof candidate.name === "string" &&
     typeof candidate.category === "string" &&
-    (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category)
+    (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category) &&
+    (candidate.displayName === undefined || isDisplayName(candidate.displayName)) &&
+    (candidate.fameSource === undefined || typeof candidate.fameSource === "string")
   );
+}
+
+function isDisplayName(value: unknown): value is { en: string; ru: string } {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Record<string, unknown>;
+  return typeof candidate.en === "string" && typeof candidate.ru === "string";
 }
 
 function validateCuratedMilestonesFile(data: unknown): CuratedMilestonesFile {
@@ -130,6 +151,8 @@ function isEnrichedMilestone(value: unknown): value is EnrichedMilestone {
     (candidate.sitelinks === undefined || typeof candidate.sitelinks === "number") &&
     (candidate.wikipediaUrl === undefined || typeof candidate.wikipediaUrl === "string") &&
     isArticleUrlsRecord(candidate.articleUrls) &&
+    (candidate.fameSitelinks === undefined || typeof candidate.fameSitelinks === "number") &&
+    (candidate.fameArticleUrls === undefined || isArticleUrlsRecord(candidate.fameArticleUrls)) &&
     Array.isArray(candidate.countries) &&
     candidate.countries.every((country) => typeof country === "string") &&
     (candidate.image === undefined || typeof candidate.image === "string")
@@ -178,7 +201,8 @@ interface EnrichmentFields {
 export async function fetchMilestonesEnrichment(): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "milestones-curated.raw.json");
   const curated = validateCuratedMilestonesFile(JSON.parse(await readFile(curatedPath, "utf8")));
-  const ids = curated.milestones.map((milestone) => milestone.id);
+  const fameSourceIds = curated.milestones.flatMap((milestone) => (milestone.fameSource ? [milestone.fameSource] : []));
+  const ids = [...new Set([...curated.milestones.map((milestone) => milestone.id), ...fameSourceIds])];
 
   console.log(`Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated milestones...`);
   const result = await batchedSparqlFetch(ids, buildMilestonesEnrichmentQuery);
@@ -226,10 +250,11 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
 
   const milestones: EnrichedMilestone[] = curated.milestones.map((milestone) => {
     const enrichment = enrichmentById.get(milestone.id);
+    const fameSource = milestone.fameSource ? enrichmentById.get(milestone.fameSource) : undefined;
     return {
       id: milestone.id,
-      name: enrichment?.name,
-      nameRu: enrichment?.nameRu,
+      name: milestone.displayName?.en ?? enrichment?.name,
+      nameRu: milestone.displayName?.ru ?? enrichment?.nameRu,
       category: milestone.category,
       year: enrichment?.year,
       month: enrichment?.month,
@@ -240,6 +265,8 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
       sitelinks: enrichment?.sitelinks,
       wikipediaUrl: enrichment?.wikipediaUrl,
       articleUrls: enrichment?.articleUrls ?? {},
+      fameSitelinks: fameSource?.sitelinks,
+      fameArticleUrls: fameSource?.articleUrls,
       countries: enrichment?.countries ?? [],
       image: enrichment?.image,
     };

@@ -330,19 +330,16 @@
     "row": 1
   },
   {
-    "id": "Q5339",
-    "name": "транзистор",
+    "id": "Q1515631",
+    "name": "Первый транзистор",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 84,
-    "tagline": "полупроводниковый электронный компонент",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Transistor",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Transistors.agr.jpg",
-    "imageAttribution": "ArnoldReinhold, via Wikimedia Commons",
-    "description": "Транзи́стор, полупроводнико́вый трио́д — электронный компонент из полупроводникового материала, способный небольшим входным сигналом управлять значительным током в выходной цепи, что позволяет использовать его для усиления, генерирования, коммутации и преобразования электрических сигналов. В настоящее время транзистор является основой схемотехники подавляющего большинства электронных устройств и интегральных микросхем.",
+    "tagline": "first type of solid-state electronic transistor ever constructed",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Point-contact_transistor",
+    "description": "The point-contact transistor was the first type of transistor to be successfully demonstrated. It was developed by research scientists John Bardeen and Walter Brattain at Bell Laboratories in December 1947. They worked in a group led by physicist William Shockley. The group had been working together on experiments and theories of electric field effects in solid state materials, with the aim of replacing vacuum tubes with a smaller device that consumed less power.",
     "at": {
-      "year": 1947,
-      "month": 12
+      "year": 1947
     },
     "row": 10
   },
@@ -517,7 +514,7 @@
       "year": 1889,
       "month": 9
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q11452",
@@ -533,22 +530,21 @@
     "at": {
       "year": 1916
     },
-    "row": 4
+    "row": 5
   },
   {
-    "id": "Q37828",
-    "name": "холодильник",
+    "id": "Q11692568",
+    "name": "Первый бытовой холодильник",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 83,
-    "tagline": "устройство, поддерживающее низкую температуру в теплоизолированной камере",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Refrigerator",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LG%20refrigerator%20interior.jpg",
-    "description": "Холоди́льник — устройство, поддерживающее низкую температуру в теплоизолированной камере. Применяется обычно для хранения пищи, лекарств или предметов, требующих хранения в прохладном месте или при отрицательных температурах. В развитых странах бытовой холодильник имеется почти в каждой семье. Работа холодильника основана на использовании холодильной установки, переносящей тепло из рабочей камеры холодильника наружу, где оно рассеивается во внешнюю среду. Существуют также коммерческие холодильники с большей холодопроизводительностью, которые используются на предприятиях общественного питания и в магазинах, и промышленные холодильники, объём рабочей камеры которых может достигать десятков и сотен кубометров, они используются, например, на мясокомбинатах, промышленных производствах.",
+    "tagline": "First domestic electrical refrigerator",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/DOMELRE",
+    "description": "DOMELRE was one of the first domestic electrical refrigerators, invented by Frederick William Wolf Jr. (1879–1954) in 1913 and produced starting in 1914 by Wolf's Mechanical Refrigerator Company in Chicago. Several hundred units were sold, which made it the most commercially successful product out of several competing designs of its time. The unit replaced the block of ice in the icebox with an electrical-powered cooling device, and was completely automatic.",
     "at": {
-      "year": 1856
+      "year": 1913
     },
-    "row": 0
+    "row": 4
   },
   {
     "id": "Q43653",
@@ -566,7 +562,7 @@
       "year": 1969,
       "month": 7
     },
-    "row": 8
+    "row": 5
   },
   {
     "id": "Q127912",
@@ -616,7 +612,7 @@
       "year": 1848,
       "month": 2
     },
-    "row": 2
+    "row": 0
   },
   {
     "id": "Q7888194",
@@ -652,7 +648,7 @@
       "year": 1882,
       "month": 3
     },
-    "row": 5
+    "row": 4
   },
   {
     "id": "Q11184",
@@ -681,7 +677,7 @@
     "at": {
       "year": 1905
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q12190",
@@ -697,7 +693,7 @@
       "year": 1928,
       "month": 9
     },
-    "row": 7
+    "row": 4
   },
   {
     "id": "Q12757",
@@ -713,38 +709,36 @@
     "at": {
       "year": 1924
     },
-    "row": 5
+    "row": 6
   },
   {
-    "id": "Q38867",
-    "name": "лазер",
+    "id": "Q933263",
+    "name": "Первый лазер",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 82,
-    "tagline": "устройство, преобразующее энергию накачки в энергию узкого когерентного потока излучения",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Laser",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lasers.JPG",
-    "imageAttribution": "彭嘉傑, via Wikimedia Commons",
-    "description": "Ла́зер, или опти́ческий ква́нтовый генера́тор, — устройство, преобразующее энергию накачки в энергию когерентного, монохроматического, поляризованного и узконаправленного потока излучения.",
+    "tagline": "solid-state [visible light] laser with ruby as gain medium",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ruby_laser",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ruby%20laser.jpg",
+    "description": "A ruby laser is a solid-state laser that uses a synthetic ruby crystal as its gain medium. The first working laser was a ruby laser made by Theodore H. Maiman at Hughes Research Laboratories on May 16, 1960.",
     "at": {
       "year": 1960,
       "month": 5
     },
-    "row": 0
+    "row": 11
   },
   {
-    "id": "Q12861",
-    "name": "дымный порох",
+    "id": "Q44973",
+    "name": "Первая формула пороха",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 82,
-    "tagline": "исторически первое и наиболее простое по химическому составу метательное взрывчатое вещество",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gunpowder",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2023%20Czarny%20proch%20Vesuvit%20LC%20%283%29.jpg",
-    "imageAttribution": "Jacek Halicki, via Wikimedia Commons",
-    "description": "Ды́мный по́рох — исторически первое метательное взрывчатое вещество (ВВ), состоящее в основном из трёх компонентов: селитры, древесного угля и серы.",
+    "tagline": "11th century Chinese military manuscript",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Wujing_Zongyao",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Songrivership3.jpg",
+    "description": "Уцзи́н цзунъя́о — китайский военный трактат, изданный в 1044 году при династии Северная Сун. Его составители — известные учёные Цзэн Гунлян, Дин Ду и Ян Вэйдэ. Трактат охватывает широкий круг вопросов, связанных с военными технологиями, в частности, в нём рассмотрены военные корабли, метательные машины, компас, огнемёт. Этот труд является первым в мире манускриптом, в котором приведены рецепты пороха.",
     "at": {
-      "year": 900
+      "year": 1044
     },
     "row": 0
   },
@@ -782,7 +776,7 @@
     "at": {
       "year": 1919
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q41644",
@@ -797,7 +791,7 @@
       "year": 1955,
       "month": 5
     },
-    "row": 12
+    "row": 8
   },
   {
     "id": "Q5859",

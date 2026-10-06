@@ -58,7 +58,7 @@
         "month": 2
       }
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q5167679",
@@ -114,7 +114,7 @@
       "year": 1885,
       "month": 12
     },
-    "row": 7
+    "row": 6
   },
   {
     "id": "Q128160",
@@ -168,7 +168,7 @@
     "at": {
       "year": 1977
     },
-    "row": 9
+    "row": 8
   },
   {
     "id": "Q40605",
@@ -203,7 +203,7 @@
     "at": {
       "year": 1879
     },
-    "row": 8
+    "row": 7
   },
   {
     "id": "Q48469",
@@ -219,7 +219,7 @@
       "year": 1977,
       "month": 9
     },
-    "row": 2
+    "row": 12
   },
   {
     "id": "Q93304",
@@ -460,7 +460,7 @@
     "at": {
       "year": 1867
     },
-    "row": 5
+    "row": 4
   },
   {
     "id": "Q46362",
@@ -578,7 +578,7 @@
     "at": {
       "year": 1889
     },
-    "row": 9
+    "row": 8
   },
   {
     "id": "Q228036",
@@ -597,20 +597,22 @@
     "row": 0
   },
   {
-    "id": "Q133585",
-    "name": "дирижабль",
+    "id": "Q2578038",
+    "name": "Первый дирижабль",
     "category": "transportation",
-    "regionTags": [],
+    "regionTags": [
+      "western-europe"
+    ],
     "fameScore": 78,
-    "tagline": "управляемый летательный аппарат легче воздуха",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Airship",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zeppellin%20NT%20amk.JPG",
-    "imageAttribution": "AngMoKio, via Wikimedia Commons",
-    "description": "Дирижа́бль, также управля́емый аэроста́т — вид воздушного судна, снабжённого силовой установкой и способного передвигаться в заданном направлении со значительной скоростью в большом диапазоне высот. Как и аэростаты дирижабли относятся к аппаратам легче воздуха — баллон, обычно наполняемый гелием, вытесняет объём воздуха, по весу превышающий совокупный вес дирижабля, что позволяет воздушному судну преодолевать земное притяжение и отрываться от земли.",
+    "tagline": "French airship",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Giffard_dirigible",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giffard1852.jpg",
+    "description": "The Giffard dirigible or Giffard airship was an airship built in France in 1852 by Henri Giffard, it was the first powered and steerable airship to fly. The craft featured an elongated hydrogen-filled envelope that tapered to a point at each end. From this was suspended a long beam with a triangular, sail-like rudder at its aft end, and beneath the beam a platform for the pilot and steam engine. Due to the highly flammable nature of the lifting gas, special precautions were taken to minimise the potential for the envelope to be ignited by the engine beneath it. The engine's exhaust was diverted downwards to a long pipe projecting below the platform, and the area surrounding the boiler's stoke hole was surrounded by wire gauze. On 24 September 1852, Giffard flew the airship from the hippodrome at Place de l'Etoile to Élancourt, covering the 27 km (17 mi) in around 3 hours, demonstrating maneuvering along the way. The engine, however, was not sufficiently powerful to allow Giffard to fly against the wind to make a return journey.",
     "at": {
-      "year": 1852
+      "year": 1852,
+      "month": 9
     },
-    "row": 1
+    "row": 5
   },
   {
     "id": "Q20075",
@@ -628,7 +630,7 @@
     "at": {
       "year": 1890
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q125006",
@@ -647,7 +649,7 @@
       "year": 1883,
       "month": 5
     },
-    "row": 11
+    "row": 10
   },
   {
     "id": "Q79757",
@@ -679,7 +681,7 @@
       "year": 1864,
       "month": 4
     },
-    "row": 9
+    "row": 8
   },
   {
     "id": "Q80811",
@@ -695,7 +697,7 @@
       "year": 1957,
       "month": 10
     },
-    "row": 8
+    "row": 12
   },
   {
     "id": "Q48475",
@@ -711,7 +713,7 @@
       "year": 1977,
       "month": 8
     },
-    "row": 12
+    "row": 15
   },
   {
     "id": "Q101017",
@@ -800,7 +802,7 @@
       "year": 1054,
       "month": 7
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q125953",
@@ -818,7 +820,7 @@
       "year": 1908,
       "month": 6
     },
-    "row": 7
+    "row": 12
   },
   {
     "id": "Q159766",
@@ -860,7 +862,7 @@
         "month": 4
       }
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q154255",
@@ -981,7 +983,7 @@
     "at": {
       "year": 1814
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q58767",
@@ -999,7 +1001,7 @@
     "at": {
       "year": 1903
     },
-    "row": 11
+    "row": 10
   },
   {
     "id": "Q988780",
@@ -1031,22 +1033,7 @@
       "year": 1859,
       "month": 11
     },
-    "row": 11
-  },
-  {
-    "id": "Q144334",
-    "name": "ручной типографский станок",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 77,
-    "tagline": "устройство для создания типографских оттисков",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg",
-    "description": "Ручно́й типогра́фский стано́к представляет собой механический пресс, с помощью которого изображение переносится на бумагу или иной материал посредством красочной печатной формы.",
-    "at": {
-      "year": 1439
-    },
-    "row": 3
+    "row": 10
   },
   {
     "id": "Q46904",
@@ -1076,7 +1063,7 @@
     "at": {
       "year": 1814
     },
-    "row": 6
+    "row": 8
   },
   {
     "id": "Q193692",
@@ -1092,7 +1079,7 @@
     "at": {
       "year": 1835
     },
-    "row": 3
+    "row": 0
   },
   {
     "id": "Q174174",
@@ -1108,7 +1095,7 @@
     "at": {
       "year": 1893
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q164338",
@@ -1143,7 +1130,7 @@
     "at": {
       "year": 1963
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q64403",
@@ -1314,7 +1301,7 @@
     "at": {
       "year": 1877
     },
-    "row": 14
+    "row": 13
   },
   {
     "id": "Q160464",
@@ -1346,7 +1333,7 @@
     "at": {
       "year": 1888
     },
-    "row": 13
+    "row": 9
   },
   {
     "id": "Q180548",
@@ -1386,7 +1373,7 @@
         "year": 1852
       }
     },
-    "row": 6
+    "row": 8
   },
   {
     "id": "Q11146",
@@ -1429,7 +1416,7 @@
         "month": 5
       }
     },
-    "row": 13
+    "row": 11
   },
   {
     "id": "Q186356",
@@ -1506,7 +1493,7 @@
         "month": 8
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q192050",
@@ -1524,7 +1511,7 @@
       "year": 1914,
       "month": 6
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q6743",
@@ -1549,7 +1536,7 @@
         "month": 6
       }
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q71229",
@@ -1597,7 +1584,7 @@
     "at": {
       "year": 1936
     },
-    "row": 6
+    "row": 22
   },
   {
     "id": "Q11932",

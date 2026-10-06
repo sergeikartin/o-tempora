@@ -330,19 +330,16 @@
     "row": 1
   },
   {
-    "id": "Q5339",
-    "name": "transistor",
+    "id": "Q1515631",
+    "name": "First transistor",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 84,
-    "tagline": "a semiconductor device",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Transistor",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Transistors.agr.jpg",
-    "imageAttribution": "ArnoldReinhold, via Wikimedia Commons",
-    "description": "A transistor is a semiconductor device used to amplify or switch electrical signals and power. It is one of the basic building blocks of modern electronics. It is composed of semiconductor material, usually with at least three terminals for connection to an electronic circuit. A voltage or current applied to one pair of the transistor's terminals controls the current through another pair of terminals. Because the controlled (output) power can be higher than the controlling (input) power, a transistor can amplify a signal. Some transistors are packaged individually, but many more in miniature form are found embedded in integrated circuits. Because transistors are the key active components in practically all modern electronics, they are considered one of the 20th century's greatest inventions.",
+    "tagline": "first type of solid-state electronic transistor ever constructed",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Point-contact_transistor",
+    "description": "The point-contact transistor was the first type of transistor to be successfully demonstrated. It was developed by research scientists John Bardeen and Walter Brattain at Bell Laboratories in December 1947. They worked in a group led by physicist William Shockley. The group had been working together on experiments and theories of electric field effects in solid state materials, with the aim of replacing vacuum tubes with a smaller device that consumed less power.",
     "at": {
-      "year": 1947,
-      "month": 12
+      "year": 1947
     },
     "row": 10
   },
@@ -517,7 +514,7 @@
       "year": 1889,
       "month": 9
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q11452",
@@ -533,22 +530,21 @@
     "at": {
       "year": 1916
     },
-    "row": 4
+    "row": 5
   },
   {
-    "id": "Q37828",
-    "name": "refrigerator",
+    "id": "Q11692568",
+    "name": "First household refrigerator",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 83,
-    "tagline": "household or industrial appliance for preserving food at a low temperature",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Refrigerator",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LG%20refrigerator%20interior.jpg",
-    "description": "A refrigerator, commonly shortened to fridge, is a commercial and home appliance consisting of a thermally insulated compartment and a heat pump that transfers heat from its inside to its external environment so that its inside is cooled to a temperature below the ambient temperature of the room. Refrigeration is an essential food storage technique around the world. The low temperature reduces the reproduction rate of bacteria, so the refrigerator lowers the rate of spoilage. A refrigerator maintains a temperature a few degrees above the freezing point of water. The optimal temperature range for perishable food storage is 3 to 5 °C. A freezer is a specialized refrigerator, or portion of a refrigerator, that maintains its contents' temperature below the freezing point of water. The refrigerator replaced the icebox, which had been a common household appliance for almost a century and a half. The United States Food and Drug Administration recommends that the refrigerator be kept at or below 4 °C (40 °F) and that the freezer be regulated at −18 °C (0 °F).",
+    "tagline": "First domestic electrical refrigerator",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/DOMELRE",
+    "description": "DOMELRE was one of the first domestic electrical refrigerators, invented by Frederick William Wolf Jr. (1879–1954) in 1913 and produced starting in 1914 by Wolf's Mechanical Refrigerator Company in Chicago. Several hundred units were sold, which made it the most commercially successful product out of several competing designs of its time. The unit replaced the block of ice in the icebox with an electrical-powered cooling device, and was completely automatic.",
     "at": {
-      "year": 1856
+      "year": 1913
     },
-    "row": 0
+    "row": 4
   },
   {
     "id": "Q43653",
@@ -566,7 +562,7 @@
       "year": 1969,
       "month": 7
     },
-    "row": 8
+    "row": 5
   },
   {
     "id": "Q127912",
@@ -616,7 +612,7 @@
       "year": 1848,
       "month": 2
     },
-    "row": 2
+    "row": 0
   },
   {
     "id": "Q7888194",
@@ -652,7 +648,7 @@
       "year": 1882,
       "month": 3
     },
-    "row": 5
+    "row": 4
   },
   {
     "id": "Q11184",
@@ -681,7 +677,7 @@
     "at": {
       "year": 1905
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q12190",
@@ -697,7 +693,7 @@
       "year": 1928,
       "month": 9
     },
-    "row": 7
+    "row": 4
   },
   {
     "id": "Q12757",
@@ -713,38 +709,36 @@
     "at": {
       "year": 1924
     },
-    "row": 5
+    "row": 6
   },
   {
-    "id": "Q38867",
-    "name": "laser",
+    "id": "Q933263",
+    "name": "First laser",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 82,
-    "tagline": "device which emits light via optical amplification",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Laser",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lasers.JPG",
-    "imageAttribution": "彭嘉傑, via Wikimedia Commons",
-    "description": "A laser is a device that emits light through a process of optical amplification based on the stimulated emission of electromagnetic radiation. The word laser originated as an acronym for light amplification by stimulated emission of radiation. The first laser was built in 1960 by Theodore Maiman at Hughes Research Laboratories, based on theoretical work by Charles H. Townes and Arthur Leonard Schawlow and the optical amplifier patented by Gordon Gould.",
+    "tagline": "solid-state [visible light] laser with ruby as gain medium",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ruby_laser",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ruby%20laser.jpg",
+    "description": "A ruby laser is a solid-state laser that uses a synthetic ruby crystal as its gain medium. The first working laser was a ruby laser made by Theodore H. Maiman at Hughes Research Laboratories on May 16, 1960.",
     "at": {
       "year": 1960,
       "month": 5
     },
-    "row": 0
+    "row": 11
   },
   {
-    "id": "Q12861",
-    "name": "gunpowder",
+    "id": "Q44973",
+    "name": "First gunpowder formula",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 82,
-    "tagline": "explosive most commonly used as propellant in firearms",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gunpowder",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2023%20Czarny%20proch%20Vesuvit%20LC%20%283%29.jpg",
-    "imageAttribution": "Jacek Halicki, via Wikimedia Commons",
-    "description": "Gunpowder, referred to as black powder to distinguish it from modern smokeless powder, is the earliest known chemical explosive. It consists of a mixture of sulfur, charcoal, and potassium nitrate (saltpeter). The sulfur and charcoal act as fuels, while the saltpeter is an oxidizer. Gunpowder has been widely used as a propellant in firearms, artillery, rocketry, and pyrotechnics, including use as a blasting agent for explosives in quarrying, mining, building pipelines, tunnels, and roads.",
+    "tagline": "11th century Chinese military manuscript",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Wujing_Zongyao",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Songrivership3.jpg",
+    "description": "The Wujing Zongyao, sometimes rendered in English as the Complete Essentials for the Military Classics, is a Chinese military compendium written from around 1040 to 1044.",
     "at": {
-      "year": 900
+      "year": 1044
     },
     "row": 0
   },
@@ -782,7 +776,7 @@
     "at": {
       "year": 1919
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q41644",
@@ -797,7 +791,7 @@
       "year": 1955,
       "month": 5
     },
-    "row": 12
+    "row": 8
   },
   {
     "id": "Q5859",

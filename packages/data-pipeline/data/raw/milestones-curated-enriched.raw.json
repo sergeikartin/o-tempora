@@ -683,6 +683,8 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BD%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F_COVID-19"
       },
       "countries": [
+        "Q114",
+        "Q96",
         "Q79",
         "Q77",
         "Q55",
@@ -813,9 +815,7 @@
         "Q155",
         "Q148",
         "Q145",
-        "Q142",
-        "Q114",
-        "Q96"
+        "Q142"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Covid-19%20SP%20-%20UTI%20V.%20Nova%20Cachoeirinha.jpg"
     },
@@ -862,28 +862,6 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paperball%202.jpeg"
-    },
-    {
-      "id": "Q144334",
-      "name": "printing press",
-      "nameRu": "ручной типографский станок",
-      "category": "communication",
-      "year": 1439,
-      "tagline": "device for evenly printing ink onto a print medium",
-      "taglineRu": "устройство для создания типографских оттисков",
-      "sitelinks": 80,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Printing_press",
-        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%88%B7%E6%9C%BA",
-        "es": "https://es.wikipedia.org/wiki/Imprenta",
-        "fr": "https://fr.wikipedia.org/wiki/Presse_typographique",
-        "de": "https://de.wikipedia.org/wiki/Druckpresse",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%A7%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%87%D0%BD%D0%BE%D0%B9_%D1%82%D0%B8%D0%BF%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%BA"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg"
     },
     {
       "id": "Q158075",
@@ -949,28 +927,6 @@
         "Q8680"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Penny%20black.jpg"
-    },
-    {
-      "id": "Q11035",
-      "name": "telephone",
-      "nameRu": "телефон",
-      "category": "communication",
-      "year": 1876,
-      "tagline": "telecommunications device that permits two or more users to conduct a conversation",
-      "taglineRu": "устройство для приёма и передачи звука на расстоянии",
-      "sitelinks": 218,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Telephone",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Telephone",
-        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E8%AF%9D",
-        "es": "https://es.wikipedia.org/wiki/Tel%C3%A9fono",
-        "fr": "https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9phone",
-        "de": "https://de.wikipedia.org/wiki/Telefon",
-        "ar": "https://ar.wikipedia.org/wiki/%D9%87%D8%A7%D8%AA%D9%81",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Telefon%20BW%202012-02-18%2013-44-32.JPG"
     },
     {
       "id": "Q13443401",
@@ -1104,29 +1060,6 @@
       ]
     },
     {
-      "id": "Q75",
-      "name": "Internet",
-      "nameRu": "интернет",
-      "category": "communication",
-      "year": 1969,
-      "month": 10,
-      "tagline": "global system of connected computer networks based on IP addressing and routing protocols",
-      "taglineRu": "всемирная система объединённых компьютерных сетей",
-      "sitelinks": 298,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Internet",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Internet",
-        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91",
-        "es": "https://es.wikipedia.org/wiki/Internet",
-        "fr": "https://fr.wikipedia.org/wiki/Internet",
-        "de": "https://de.wikipedia.org/wiki/Internet",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Internet%20users%20per%20100%20and%20GDP%20per%20capita.jpg"
-    },
-    {
       "id": "Q177524",
       "category": "communication",
       "year": 1969,
@@ -1212,16 +1145,25 @@
       "countries": []
     },
     {
-      "id": "Q17517",
-      "name": "mobile phone",
-      "nameRu": "мобильный телефон",
+      "id": "Q1264871",
+      "name": "First mobile phone",
+      "nameRu": "Первый мобильный телефон",
       "category": "communication",
       "year": 1973,
-      "tagline": "portable device to make telephone calls using a radio link",
-      "taglineRu": "переносной телефон, предназначенный для работы в сетях сотовой связи",
-      "sitelinks": 180,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mobile_phone",
+      "tagline": "first certificated mobile phone model",
+      "taglineRu": "первый сотовый телефон, получивший сертификат FCC 21 сентября 1983 года",
+      "sitelinks": 24,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/DynaTAC",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/DynaTAC",
+        "es": "https://es.wikipedia.org/wiki/Motorola_DynaTAC",
+        "fr": "https://fr.wikipedia.org/wiki/DynaTac_8000",
+        "de": "https://de.wikipedia.org/wiki/Motorola_DynaTAC",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%88%D8%AA%D9%88%D8%B1%D9%88%D9%84%D8%A7_%D8%AF%D8%A7%D9%8A%D9%86%D8%A7_%D8%AA%D8%A7%D9%83",
+        "ru": "https://ru.wikipedia.org/wiki/Motorola_DynaTAC"
+      },
+      "fameSitelinks": 180,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Mobile_phone",
         "zh": "https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8A%A8%E7%94%B5%E8%AF%9D",
         "es": "https://es.wikipedia.org/wiki/Tel%C3%A9fono_m%C3%B3vil",
@@ -1231,7 +1173,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Android%20smartphones.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DynaTAC8000X.jpg"
     },
     {
       "id": "Q1261053",
@@ -1407,16 +1349,22 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%D0%A7%D0%A17-282%2C%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%2C%20%D0%9E%D1%80%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%9E%D1%80%D1%91%D0%BB%20%28Trainpix%20147617%29.jpg"
     },
     {
-      "id": "Q133585",
-      "name": "airship",
-      "nameRu": "дирижабль",
+      "id": "Q2578038",
+      "name": "First airship",
+      "nameRu": "Первый дирижабль",
       "category": "transportation",
       "year": 1852,
-      "tagline": "powered lighter-than-air aircraft",
-      "taglineRu": "управляемый летательный аппарат легче воздуха",
-      "sitelinks": 89,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Airship",
+      "month": 9,
+      "tagline": "French airship",
+      "sitelinks": 7,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Giffard_dirigible",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Giffard_dirigible",
+        "fr": "https://fr.wikipedia.org/wiki/A%C3%A9rostat_Giffard",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%86%D8%B7%D8%A7%D8%AF_%D8%AC%D9%8A%D9%81%D8%A7%D8%B1%D8%AF"
+      },
+      "fameSitelinks": 89,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Airship",
         "zh": "https://zh.wikipedia.org/wiki/%E9%A3%9E%E8%89%87_(%E8%BD%BB%E8%88%AA%E7%A9%BA%E5%99%A8)",
         "es": "https://es.wikipedia.org/wiki/Dirigible",
@@ -1425,8 +1373,10 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%81%D9%8A%D9%86%D8%A9_%D9%87%D9%88%D8%A7%D8%A6%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D1%80%D0%B8%D0%B6%D0%B0%D0%B1%D0%BB%D1%8C"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zeppellin%20NT%20amk.JPG"
+      "countries": [
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giffard1852.jpg"
     },
     {
       "id": "Q1753108",
@@ -1452,38 +1402,24 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/69workmen.jpg"
     },
     {
-      "id": "Q1420",
-      "name": "car",
-      "nameRu": "автомобиль",
+      "id": "Q1255515",
+      "name": "First bicycle",
+      "nameRu": "Первый велосипед",
       "category": "transportation",
-      "year": 1884,
-      "tagline": "motorized road vehicle designed to carry one to eight people rather than primarily goods",
-      "taglineRu": "безрельсовая транспортная машина на колёсном ходу с приводом от собственного двигателя, предназначенная для перевозки людей и грузов",
-      "sitelinks": 246,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Car",
+      "year": 1817,
+      "tagline": "two-wheeled human-powered vehicle often regarded as the predecessor of the bicycle",
+      "sitelinks": 23,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Dandy_horse",
       "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Car",
-        "zh": "https://zh.wikipedia.org/wiki/%E6%B1%BD%E8%BD%A6",
-        "es": "https://es.wikipedia.org/wiki/Autom%C3%B3vil",
-        "fr": "https://fr.wikipedia.org/wiki/Automobile",
-        "de": "https://de.wikipedia.org/wiki/Automobil",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D8%A7%D8%B1%D8%A9",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C"
+        "en": "https://en.wikipedia.org/wiki/Dandy_horse",
+        "es": "https://es.wikipedia.org/wiki/Draisiana",
+        "fr": "https://fr.wikipedia.org/wiki/Draisienne",
+        "de": "https://de.wikipedia.org/wiki/Draisine_(Laufmaschine)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D8%B1%D9%8A%D8%B3%D9%8A%D8%A9_(%D9%85%D8%B1%D9%83%D8%A8%D8%A9)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%88%D0%B8%D0%BD%D0%B0_%D0%B4%D0%BB%D1%8F_%D0%B1%D0%B5%D0%B3%D0%B0"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bundesarchiv%20Bild%20183-J0711-0001-003%2C%20Warnem%C3%BCnde%2C%20Stau.jpg"
-    },
-    {
-      "id": "Q11442",
-      "name": "bicycle",
-      "nameRu": "велосипед",
-      "category": "transportation",
-      "year": 1885,
-      "tagline": "pedal-driven two-wheel vehicle",
-      "taglineRu": "двухколёсное транспортное средство, приводимое в движение посредством педалей",
-      "sitelinks": 205,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bicycle",
-      "articleUrls": {
+      "fameSitelinks": 205,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Bicycle",
         "zh": "https://zh.wikipedia.org/wiki/%E9%9B%99%E8%BC%AA%E8%BB%8A",
         "es": "https://es.wikipedia.org/wiki/Bicicleta",
@@ -1493,12 +1429,12 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/00%208327%20Historisches%20Fahrrad.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Draisine1817.jpg"
     },
     {
       "id": "Q326248",
-      "name": "Benz Patent-Motorwagen",
-      "nameRu": "Автомобиль Бенца",
+      "name": "First car",
+      "nameRu": "Первый автомобиль",
       "category": "transportation",
       "year": 1886,
       "month": 1,
@@ -1513,6 +1449,16 @@
         "de": "https://de.wikipedia.org/wiki/Benz_Patent-Motorwagen_Nummer_1",
         "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%86%D8%B2_%D8%A8%D8%A7%D8%AA%D9%8A%D9%86%D8%AA_%D9%85%D9%88%D8%AA%D9%88%D8%B1%D9%81%D8%A7%D8%BA%D9%86",
         "ru": "https://ru.wikipedia.org/wiki/Benz_Patent-Motorwagen"
+      },
+      "fameSitelinks": 246,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Car",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B1%BD%E8%BD%A6",
+        "es": "https://es.wikipedia.org/wiki/Autom%C3%B3vil",
+        "fr": "https://fr.wikipedia.org/wiki/Automobile",
+        "de": "https://de.wikipedia.org/wiki/Automobil",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D8%A7%D8%B1%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C"
       },
       "countries": [
         "Q183"
@@ -1565,28 +1511,6 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MAN%20TGX%20V8%20engine.JPG"
     },
     {
-      "id": "Q197",
-      "name": "airplane",
-      "nameRu": "самолёт",
-      "category": "transportation",
-      "year": 1903,
-      "tagline": "powered fixed-wing aircraft",
-      "taglineRu": "воздушное судно с силовой установкой и неподвижной относительно фюзеляжа центральной частью крыла",
-      "sitelinks": 195,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Airplane",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Airplane",
-        "zh": "https://zh.wikipedia.org/wiki/%E9%A3%9B%E6%A9%9F",
-        "es": "https://es.wikipedia.org/wiki/Avi%C3%B3n",
-        "fr": "https://fr.wikipedia.org/wiki/Avion",
-        "de": "https://de.wikipedia.org/wiki/Flugzeug",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%B7%D8%A7%D8%A6%D8%B1%D8%A9",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BC%D0%BE%D0%BB%D1%91%D1%82"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Airliners%2028.07.2009%2010-01-28.JPG"
-    },
-    {
       "id": "Q688605",
       "name": "Flyer I",
       "nameRu": "Флайер 1",
@@ -1611,16 +1535,21 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20flight2.jpg"
     },
     {
-      "id": "Q949801",
-      "name": "rotorcraft",
-      "nameRu": "винтокрылый летательный аппарат",
+      "id": "Q13581620",
+      "name": "First rotorcraft",
+      "nameRu": "Первый винтокрыл",
       "category": "transportation",
       "year": 1907,
-      "tagline": "heavier-than-air aircraft which generates lift over rotating wings",
-      "taglineRu": "аэродинамическая техника с несущим винтом для полёта",
-      "sitelinks": 31,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rotorcraft",
+      "month": 9,
+      "tagline": "experimental gyroplane family",
+      "sitelinks": 7,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Breguet-Richet_Gyroplane",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Breguet-Richet_Gyroplane",
+        "fr": "https://fr.wikipedia.org/wiki/Gyroplane_Breguet-Richet"
+      },
+      "fameSitelinks": 31,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Rotorcraft",
         "zh": "https://zh.wikipedia.org/wiki/%E6%97%8B%E7%BF%BC%E8%88%AA%E7%A9%BA%E5%99%A8",
         "es": "https://es.wikipedia.org/wiki/Aeronave_de_alas_giratorias",
@@ -1629,7 +1558,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BD%D1%82%D0%BE%D0%BA%D1%80%D1%8B%D0%BB%D1%8B%D0%B9_%D0%BB%D0%B5%D1%82%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Belvedere%20helicopter%20at%20Filton%2C%20Bristol%2C%20England.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Breguet%20Gyroplane%201907.jpg"
     },
     {
       "id": "Q182323",
@@ -2049,28 +1978,6 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Untitled%20%28point%20de%20vue%29%2C%20Ni%C3%A9pce%201827%20%E2%80%94%20HRC%202020%20%28cropped%29.jpg"
     },
     {
-      "id": "Q11633",
-      "name": "photography",
-      "nameRu": "фотография",
-      "category": "communication",
-      "year": 1839,
-      "tagline": "art, science, and practice of creating durable images by recording light or other electromagnetic radiation",
-      "taglineRu": "процесс получения и сохранения изображения",
-      "sitelinks": 211,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Photography",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Photography",
-        "zh": "https://zh.wikipedia.org/wiki/%E6%91%84%E5%BD%B1",
-        "es": "https://es.wikipedia.org/wiki/Fotograf%C3%ADa",
-        "fr": "https://fr.wikipedia.org/wiki/Photographie",
-        "de": "https://de.wikipedia.org/wiki/Fotografie",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%B5%D9%88%D9%8A%D8%B1_%D8%B6%D9%88%D8%A6%D9%8A",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A4%D0%BE%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Winterswijk%20%28NL%29%2C%20Woold%2C%20Boven%20Slinge%20--%202014%20--%203170.jpg"
-    },
-    {
       "id": "Q179744",
       "name": "daguerreotype process",
       "nameRu": "дагеротипия",
@@ -2093,16 +2000,20 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Daguerreotype%20process.jpg"
     },
     {
-      "id": "Q37828",
-      "name": "refrigerator",
-      "nameRu": "холодильник",
+      "id": "Q11692568",
+      "name": "First household refrigerator",
+      "nameRu": "Первый бытовой холодильник",
       "category": "energy-industry",
-      "year": 1856,
-      "tagline": "household or industrial appliance for preserving food at a low temperature",
-      "taglineRu": "устройство, поддерживающее низкую температуру в теплоизолированной камере",
-      "sitelinks": 144,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Refrigerator",
+      "year": 1913,
+      "tagline": "First domestic electrical refrigerator",
+      "sitelinks": 3,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/DOMELRE",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/DOMELRE",
+        "es": "https://es.wikipedia.org/wiki/DOMELRE"
+      },
+      "fameSitelinks": 144,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Refrigerator",
         "zh": "https://zh.wikipedia.org/wiki/%E5%86%B0%E7%AE%B1",
         "es": "https://es.wikipedia.org/wiki/Refrigerador",
@@ -2111,8 +2022,7 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%84%D8%A7%D8%AC%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%A5%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LG%20refrigerator%20interior.jpg"
+      "countries": []
     },
     {
       "id": "Q337724",
@@ -2288,16 +2198,27 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Caso%20SMG20%20-%20Witol%202M219J-0173.jpg"
     },
     {
-      "id": "Q68",
-      "name": "computer",
-      "nameRu": "компьютер",
+      "id": "Q169399",
+      "name": "First general-purpose computer",
+      "nameRu": "Первый универсальный компьютер",
       "category": "everyday-technology",
-      "year": 1945,
-      "tagline": "general-purpose device for performing arithmetic or logical operations",
-      "taglineRu": "устройство для исполнения программ",
-      "sitelinks": 298,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Computer",
+      "year": 1946,
+      "month": 2,
+      "tagline": "First electronic general-purpose computer",
+      "taglineRu": "первый электронный цифровой вычислитель общего назначения, который можно было перепрограммировать для решения широкого спектра задач",
+      "sitelinks": 74,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/ENIAC",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/ENIAC",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%AD%90%E6%95%B8%E5%80%BC%E7%A9%8D%E5%88%86%E8%A8%88%E7%AE%97%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/ENIAC",
+        "fr": "https://fr.wikipedia.org/wiki/ENIAC",
+        "de": "https://de.wikipedia.org/wiki/ENIAC",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D9%86%D9%8A%D8%A7%D9%83",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%9D%D0%98%D0%90%D0%9A"
+      },
+      "fameSitelinks": 298,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Computer",
         "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA",
         "es": "https://es.wikipedia.org/wiki/Computadora",
@@ -2306,8 +2227,10 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%A7%D8%B3%D9%88%D8%A8",
         "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apple%20II%20Plus%2C%20Museum%20of%20the%20Moving%20Image.jpg"
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Two%20women%20operating%20ENIAC%20%28full%20resolution%29.jpg"
     },
     {
       "id": "Q227467",
@@ -2355,17 +2278,25 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kohlenstoff%20fasern%208mm%20laenge%202000dpi.jpg"
     },
     {
-      "id": "Q38867",
-      "name": "laser",
-      "nameRu": "лазер",
+      "id": "Q933263",
+      "name": "First laser",
+      "nameRu": "Первый лазер",
       "category": "everyday-technology",
       "year": 1960,
       "month": 5,
-      "tagline": "device which emits light via optical amplification",
-      "taglineRu": "устройство, преобразующее энергию накачки в энергию узкого когерентного потока излучения",
-      "sitelinks": 119,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Laser",
+      "tagline": "solid-state [visible light] laser with ruby as gain medium",
+      "sitelinks": 19,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ruby_laser",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ruby_laser",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%B4%85%E5%AF%B6%E7%9F%B3%E9%9B%B7%E5%B0%84",
+        "es": "https://es.wikipedia.org/wiki/L%C3%A1ser_de_rub%C3%AD",
+        "fr": "https://fr.wikipedia.org/wiki/Laser_%C3%A0_rubis",
+        "de": "https://de.wikipedia.org/wiki/Rubinlaser",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D9%8A%D8%B2%D8%B1_%D9%8A%D8%A7%D9%82%D9%88%D8%AA%D9%8A"
+      },
+      "fameSitelinks": 119,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Laser",
         "zh": "https://zh.wikipedia.org/wiki/%E6%BF%80%E5%85%89%E5%99%A8",
         "es": "https://es.wikipedia.org/wiki/L%C3%A1ser",
@@ -2375,7 +2306,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B7%D0%B5%D1%80"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lasers.JPG"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ruby%20laser.jpg"
     },
     {
       "id": "Q189511",
@@ -2422,17 +2353,23 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OD%20Compact%20disc.svg"
     },
     {
-      "id": "Q5339",
-      "name": "transistor",
-      "nameRu": "транзистор",
+      "id": "Q1515631",
+      "name": "First transistor",
+      "nameRu": "Первый транзистор",
       "category": "everyday-technology",
       "year": 1947,
-      "month": 12,
-      "tagline": "a semiconductor device",
-      "taglineRu": "полупроводниковый электронный компонент",
-      "sitelinks": 137,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Transistor",
+      "tagline": "first type of solid-state electronic transistor ever constructed",
+      "sitelinks": 14,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Point-contact_transistor",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Point-contact_transistor",
+        "es": "https://es.wikipedia.org/wiki/Transistor_de_contacto",
+        "fr": "https://fr.wikipedia.org/wiki/Transistor_%C3%A0_contact_ponctuel",
+        "de": "https://de.wikipedia.org/wiki/Spitzentransistor",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%B1%D8%A7%D9%86%D8%B2%D8%B3%D8%AA%D9%88%D8%B1_%D8%A7%D9%84%D8%AA%D9%84%D8%A7%D9%85%D8%B3_%D8%A7%D9%84%D9%86%D9%82%D8%B7%D9%8A"
+      },
+      "fameSitelinks": 137,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Transistor",
         "zh": "https://zh.wikipedia.org/wiki/%E6%99%B6%E4%BD%93%E7%AE%A1",
         "es": "https://es.wikipedia.org/wiki/Transistor",
@@ -2441,8 +2378,7 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%B1%D8%A7%D9%86%D8%B2%D8%B3%D8%AA%D9%88%D8%B1",
         "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B0%D0%BD%D0%B7%D0%B8%D1%81%D1%82%D0%BE%D1%80"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Transistors.agr.jpg"
+      "countries": []
     },
     {
       "id": "Q621427",
@@ -3535,15 +3471,24 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siemens%20Brothers%20-%20DC%20Generator%20-%20Electricity%20Gallery%20-%20BITM%20-%20Kolkata%202015-05-09%206509.JPG"
     },
     {
-      "id": "Q189859",
-      "name": "steam turbine",
-      "nameRu": "паровая турбина",
+      "id": "Q1188138",
+      "name": "First steam turbine ship",
+      "nameRu": "Первое судно с паровой турбиной",
       "category": "energy-industry",
-      "year": 1884,
-      "tagline": "type of turbine device which uses steam from a boiler to rotate the turbine blades",
-      "sitelinks": 67,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_turbine",
+      "year": 1894,
+      "month": 8,
+      "tagline": "1894 steam turbine powered boat",
+      "sitelinks": 22,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Turbinia",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Turbinia",
+        "es": "https://es.wikipedia.org/wiki/Turbinia",
+        "fr": "https://fr.wikipedia.org/wiki/Turbinia",
+        "de": "https://de.wikipedia.org/wiki/Turbinia",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D1%83%D1%80%D0%B1%D0%B8%D0%BD%D0%B8%D1%8F"
+      },
+      "fameSitelinks": 67,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Steam_turbine",
         "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E6%B1%BD%E6%B8%A6%E8%BC%AA%E7%99%BC%E5%8B%95%E6%A9%9F",
         "es": "https://es.wikipedia.org/wiki/Turbina_de_vapor",
@@ -3552,8 +3497,10 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D9%86%D9%81%D8%A9_%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%D1%8F_%D1%82%D1%83%D1%80%D0%B1%D0%B8%D0%BD%D0%B0"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dampfturbine%20Laeufer01.jpg"
+      "countries": [
+        "Q145"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Turbinia%20At%20Speed.jpg"
     },
     {
       "id": "Q654400",
@@ -3626,16 +3573,23 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Obninsk-AES.jpg"
     },
     {
-      "id": "Q12861",
-      "name": "gunpowder",
-      "nameRu": "дымный порох",
+      "id": "Q44973",
+      "name": "First gunpowder formula",
+      "nameRu": "Первая формула пороха",
       "category": "energy-industry",
-      "year": 900,
-      "tagline": "explosive most commonly used as propellant in firearms",
-      "taglineRu": "исторически первое и наиболее простое по химическому составу метательное взрывчатое вещество",
-      "sitelinks": 126,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Gunpowder",
+      "year": 1044,
+      "tagline": "11th century Chinese military manuscript",
+      "sitelinks": 18,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wujing_Zongyao",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Wujing_Zongyao",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%AD%A6%E7%BB%8F%E6%80%BB%E8%A6%81",
+        "fr": "https://fr.wikipedia.org/wiki/Wujing_Zongyao",
+        "de": "https://de.wikipedia.org/wiki/Wujing_zongyao",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A3%D1%86%D0%B7%D0%B8%D0%BD_%D1%86%D0%B7%D1%83%D0%BD%D1%8A%D1%8F%D0%BE"
+      },
+      "fameSitelinks": 126,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Gunpowder",
         "zh": "https://zh.wikipedia.org/wiki/%E9%BB%91%E7%81%AB%E8%8D%AF",
         "es": "https://es.wikipedia.org/wiki/P%C3%B3lvora",
@@ -3645,7 +3599,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D1%8B%D0%BC%D0%BD%D1%8B%D0%B9_%D0%BF%D0%BE%D1%80%D0%BE%D1%85"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2023%20Czarny%20proch%20Vesuvit%20LC%20%283%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Songrivership3.jpg"
     },
     {
       "id": "Q47433",
@@ -8482,6 +8436,47 @@
         "Q30"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jamestown%20Virginia%20in%201622%20Conquestofvirg1939sams%200590.jpg"
+    },
+    {
+      "id": "Q3099902",
+      "name": "Watt steam engine",
+      "nameRu": "паровой двигатель Ватта",
+      "category": "energy-industry",
+      "year": 1776,
+      "tagline": "Industrial Revolution era stream engine design",
+      "sitelinks": 14,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Watt_steam_engine",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Watt_steam_engine",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%93%A6%E7%89%B9%E8%92%B8%E6%B1%BD%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/M%C3%A1quina_de_vapor_de_Watt",
+        "fr": "https://fr.wikipedia.org/wiki/Machine_de_Watt",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%83_%D9%88%D8%A7%D8%B7_%D8%A7%D9%84%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maquina%20vapor%20Watt%20ETSIIM.jpg"
+    },
+    {
+      "id": "Q2469465",
+      "name": "Micrographia",
+      "nameRu": "Micrographia",
+      "category": "science-theory",
+      "year": 1665,
+      "month": 1,
+      "tagline": "1665 book by Robert Hooke",
+      "taglineRu": "книга Роберта Гука, выпущенная в 1665 году",
+      "sitelinks": 22,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Micrographia",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Micrographia",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%98%BE%E5%BE%AE%E5%9B%BE%E8%B0%B1",
+        "es": "https://es.wikipedia.org/wiki/Micrographia",
+        "fr": "https://fr.wikipedia.org/wiki/Micrographia",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%81%D8%AD%D8%B5_%D8%A7%D9%84%D9%85%D8%AC%D9%87%D8%B1%D9%8A_(%D9%83%D8%AA%D8%A7%D8%A8)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BA%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F_(%D0%BA%D0%BD%D0%B8%D0%B3%D0%B0)"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Micrographia%20title%20page.gif"
     }
   ]
 }

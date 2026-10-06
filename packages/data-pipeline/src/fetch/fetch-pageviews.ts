@@ -30,7 +30,7 @@ async function loadMilestonesPageviewsEntries(): Promise<PageviewsEntry[]> {
   const enrichedMilestones = validateEnrichedMilestonesFile(
     JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "milestones-curated-enriched.raw.json"), "utf8")),
   );
-  return enrichedMilestones.milestones.map((milestone) => ({ id: milestone.id, articleUrls: milestone.articleUrls }));
+  return enrichedMilestones.milestones.map((milestone) => ({ id: milestone.id, articleUrls: milestone.fameArticleUrls ?? milestone.articleUrls }));
 }
 
 const LOAD_PAGEVIEWS_ENTRIES: Record<PageviewsLane, () => Promise<PageviewsEntry[]>> = {

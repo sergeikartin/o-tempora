@@ -30,7 +30,7 @@
       "name": "milestone label",
       "category": "one of meta.categories"
     },
-    "count": 361
+    "count": 357
   },
   "milestones": [
     {
@@ -204,11 +204,6 @@
       "category": "communication"
     },
     {
-      "id": "Q144334",
-      "name": "Printing press",
-      "category": "communication"
-    },
-    {
       "id": "Q158075",
       "name": "Gutenberg Bible",
       "category": "communication"
@@ -222,11 +217,6 @@
       "id": "Q107701",
       "name": "Penny Black (postage stamp)",
       "category": "media-culture"
-    },
-    {
-      "id": "Q11035",
-      "name": "Telephone",
-      "category": "communication"
     },
     {
       "id": "Q13443401",
@@ -259,11 +249,6 @@
       "category": "media-culture"
     },
     {
-      "id": "Q75",
-      "name": "Internet",
-      "category": "communication"
-    },
-    {
       "id": "Q177524",
       "name": "ARPANET",
       "category": "communication"
@@ -284,9 +269,14 @@
       "category": "communication"
     },
     {
-      "id": "Q17517",
-      "name": "Mobile phone",
-      "category": "communication"
+      "id": "Q1264871",
+      "name": "Motorola DynaTAC",
+      "category": "communication",
+      "displayName": {
+        "en": "First mobile phone",
+        "ru": "Первый мобильный телефон"
+      },
+      "fameSource": "Q17517"
     },
     {
       "id": "Q1261053",
@@ -329,9 +319,14 @@
       "category": "transportation"
     },
     {
-      "id": "Q133585",
-      "name": "Airship",
-      "category": "transportation"
+      "id": "Q2578038",
+      "name": "Giffard dirigible",
+      "category": "transportation",
+      "displayName": {
+        "en": "First airship",
+        "ru": "Первый дирижабль"
+      },
+      "fameSource": "Q133585"
     },
     {
       "id": "Q1753108",
@@ -339,19 +334,24 @@
       "category": "infrastructure"
     },
     {
-      "id": "Q1420",
-      "name": "Car",
-      "category": "transportation"
-    },
-    {
-      "id": "Q11442",
-      "name": "Bicycle",
-      "category": "transportation"
+      "id": "Q1255515",
+      "name": "dandy horse",
+      "category": "transportation",
+      "displayName": {
+        "en": "First bicycle",
+        "ru": "Первый велосипед"
+      },
+      "fameSource": "Q11442"
     },
     {
       "id": "Q326248",
       "name": "Benz Patent-Motorwagen",
-      "category": "transportation"
+      "category": "transportation",
+      "displayName": {
+        "en": "First car",
+        "ru": "Первый автомобиль"
+      },
+      "fameSource": "Q1420"
     },
     {
       "id": "Q20075",
@@ -364,19 +364,19 @@
       "category": "energy-industry"
     },
     {
-      "id": "Q197",
-      "name": "Airplane",
-      "category": "transportation"
-    },
-    {
       "id": "Q688605",
       "name": "Flyer I",
       "category": "transportation"
     },
     {
-      "id": "Q949801",
-      "name": "Rotorcraft",
-      "category": "transportation"
+      "id": "Q13581620",
+      "name": "Breguet-Richet Gyroplane",
+      "category": "transportation",
+      "displayName": {
+        "en": "First rotorcraft",
+        "ru": "Первый винтокрыл"
+      },
+      "fameSource": "Q949801"
     },
     {
       "id": "Q182323",
@@ -469,19 +469,19 @@
       "category": "media-culture"
     },
     {
-      "id": "Q11633",
-      "name": "Photography",
-      "category": "communication"
-    },
-    {
       "id": "Q179744",
       "name": "Daguerreotype process",
       "category": "communication"
     },
     {
-      "id": "Q37828",
-      "name": "Refrigerator",
-      "category": "energy-industry"
+      "id": "Q11692568",
+      "name": "DOMELRE",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First household refrigerator",
+        "ru": "Первый бытовой холодильник"
+      },
+      "fameSource": "Q37828"
     },
     {
       "id": "Q337724",
@@ -524,9 +524,14 @@
       "category": "everyday-technology"
     },
     {
-      "id": "Q68",
-      "name": "Computer",
-      "category": "everyday-technology"
+      "id": "Q169399",
+      "name": "ENIAC",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First general-purpose computer",
+        "ru": "Первый универсальный компьютер"
+      },
+      "fameSource": "Q68"
     },
     {
       "id": "Q227467",
@@ -539,9 +544,14 @@
       "category": "everyday-technology"
     },
     {
-      "id": "Q38867",
-      "name": "Laser",
-      "category": "everyday-technology"
+      "id": "Q933263",
+      "name": "ruby laser",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First laser",
+        "ru": "Первый лазер"
+      },
+      "fameSource": "Q38867"
     },
     {
       "id": "Q189511",
@@ -554,9 +564,14 @@
       "category": "everyday-technology"
     },
     {
-      "id": "Q5339",
-      "name": "Transistor",
-      "category": "everyday-technology"
+      "id": "Q1515631",
+      "name": "point-contact transistor",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First transistor",
+        "ru": "Первый транзистор"
+      },
+      "fameSource": "Q5339"
     },
     {
       "id": "Q621427",
@@ -799,9 +814,14 @@
       "category": "energy-industry"
     },
     {
-      "id": "Q189859",
-      "name": "Steam turbine",
-      "category": "energy-industry"
+      "id": "Q1188138",
+      "name": "Turbinia",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First steam turbine ship",
+        "ru": "Первое судно с паровой турбиной"
+      },
+      "fameSource": "Q189859"
     },
     {
       "id": "Q654400",
@@ -819,9 +839,14 @@
       "category": "energy-industry"
     },
     {
-      "id": "Q12861",
-      "name": "Gunpowder",
-      "category": "energy-industry"
+      "id": "Q44973",
+      "name": "Wujing Zongyao",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First gunpowder formula",
+        "ru": "Первая формула пороха"
+      },
+      "fameSource": "Q12861"
     },
     {
       "id": "Q47433",
@@ -1837,6 +1862,16 @@
       "id": "Q323813",
       "name": "Jamestown",
       "category": "society-administration"
+    },
+    {
+      "id": "Q3099902",
+      "name": "Watt steam engine",
+      "category": "energy-industry"
+    },
+    {
+      "id": "Q2469465",
+      "name": "Micrographia",
+      "category": "science-theory"
     }
   ]
 }

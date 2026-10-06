@@ -14,7 +14,7 @@
       "year": 1996,
       "month": 7
     },
-    "row": 19
+    "row": 18
   },
   {
     "id": "Q190035",
@@ -31,7 +31,7 @@
       "year": 2015,
       "month": 9
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q205921",
@@ -78,7 +78,7 @@
     "at": {
       "year": 1891
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q1932",
@@ -100,7 +100,7 @@
         "month": 7
       }
     },
-    "row": 24
+    "row": 15
   },
   {
     "id": "Q180253",
@@ -115,7 +115,7 @@
     "at": {
       "year": 1842
     },
-    "row": 8
+    "row": 6
   },
   {
     "id": "Q13582",
@@ -139,7 +139,7 @@
         "month": 2
       }
     },
-    "row": 17
+    "row": 16
   },
   {
     "id": "Q55816",
@@ -157,7 +157,7 @@
     "at": {
       "year": 1981
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q35045",
@@ -191,7 +191,7 @@
       "year": 1916,
       "month": 5
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q608613",
@@ -281,7 +281,7 @@
     "at": {
       "year": 1839
     },
-    "row": 9
+    "row": 10
   },
   {
     "id": "Q227467",
@@ -298,7 +298,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 26
+    "row": 25
   },
   {
     "id": "Q221474",
@@ -346,7 +346,7 @@
     "at": {
       "year": 1825
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q233562",
@@ -384,7 +384,7 @@
         "year": 1968
       }
     },
-    "row": 25
+    "row": 24
   },
   {
     "id": "Q152006",
@@ -417,7 +417,7 @@
       "year": 1803,
       "month": 4
     },
-    "row": 9
+    "row": 10
   },
   {
     "id": "Q309029",
@@ -435,7 +435,7 @@
       "year": 1867,
       "month": 3
     },
-    "row": 17
+    "row": 16
   },
   {
     "id": "Q3699044",
@@ -474,7 +474,7 @@
       "year": 1906,
       "month": 6
     },
-    "row": 22
+    "row": 26
   },
   {
     "id": "Q191472",
@@ -522,7 +522,7 @@
     "at": {
       "year": 1909
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q182524",
@@ -540,7 +540,7 @@
       "year": 1961,
       "month": 4
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q184201",
@@ -558,23 +558,25 @@
       "year": 1968,
       "month": 12
     },
-    "row": 19
+    "row": 25
   },
   {
-    "id": "Q189859",
-    "name": "паровая турбина",
+    "id": "Q1188138",
+    "name": "Первое судно с паровой турбиной",
     "category": "energy-industry",
-    "regionTags": [],
+    "regionTags": [
+      "northern-europe"
+    ],
     "fameScore": 73,
-    "tagline": "type of turbine device which uses steam from a boiler to rotate the turbine blades",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_turbine",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dampfturbine%20Laeufer01.jpg",
-    "imageAttribution": "Siemens Pressebild, http://www.siemens.com, via Wikimedia Commons",
-    "description": "Парова́я турби́на — турбина, в которой в качестве рабочего тела используется водяной пар, получаемый при нагреве воды в паровых котлах, парогенераторах и специальных котлах-утилизаторах.",
+    "tagline": "1894 steam turbine powered boat",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Turbinia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Turbinia%20At%20Speed.jpg",
+    "description": "Турбиния — первое в мире судно с паротурбинной установкой. Построена в 1894 году английским инженером Чарлзом Парсонсом. «Турбиния» была самым скоростным судном своего времени.",
     "at": {
-      "year": 1884
+      "year": 1894,
+      "month": 8
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q171375",
@@ -744,7 +746,7 @@
     "at": {
       "year": 1450
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q178193",
@@ -791,7 +793,7 @@
     "at": {
       "year": 1890
     },
-    "row": 19
+    "row": 18
   },
   {
     "id": "Q505802",
@@ -831,7 +833,7 @@
     "at": {
       "year": 1786
     },
-    "row": 11
+    "row": 9
   },
   {
     "id": "Q188631",
@@ -879,7 +881,7 @@
     "at": {
       "year": 1791
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q25169",
@@ -909,7 +911,7 @@
     "at": {
       "year": 1816
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q391358",
@@ -925,7 +927,7 @@
       "year": 1862,
       "month": 9
     },
-    "row": 18
+    "row": 17
   },
   {
     "id": "Q151060",
@@ -942,7 +944,7 @@
       "year": 1804,
       "month": 3
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q179788",
@@ -1096,7 +1098,7 @@
     "at": {
       "year": 1907
     },
-    "row": 4
+    "row": 8
   },
   {
     "id": "Q5860",
@@ -1112,7 +1114,7 @@
     "at": {
       "year": 1958
     },
-    "row": 13
+    "row": 26
   },
   {
     "id": "Q192803",
@@ -1149,7 +1151,7 @@
         "year": 1854
       }
     },
-    "row": 14
+    "row": 13
   },
   {
     "id": "Q245388",
@@ -1190,7 +1192,7 @@
         "month": 7
       }
     },
-    "row": 20
+    "row": 19
   },
   {
     "id": "Q191703",
@@ -1302,7 +1304,7 @@
     "at": {
       "year": 1050
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q916943",
@@ -1417,7 +1419,7 @@
     "at": {
       "year": 1859
     },
-    "row": 19
+    "row": 18
   },
   {
     "id": "Q193841",
@@ -1431,7 +1433,7 @@
     "at": {
       "year": 1908
     },
-    "row": 19
+    "row": 23
   },
   {
     "id": "Q194154",
@@ -1447,7 +1449,7 @@
     "at": {
       "year": 1940
     },
-    "row": 26
+    "row": 25
   },
   {
     "id": "Q69163529",
@@ -1542,7 +1544,7 @@
     "at": {
       "year": 1911
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q166543",
@@ -1574,26 +1576,7 @@
     "at": {
       "year": 1837
     },
-    "row": 16
-  },
-  {
-    "id": "Q326248",
-    "name": "Автомобиль Бенца",
-    "category": "transportation",
-    "regionTags": [
-      "western-europe"
-    ],
-    "fameScore": 69,
-    "tagline": "vehicle widely regarded as the first automobile",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Benz_Patent-Motorwagen",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Patent-Motorwagen%20Nr.1%20Benz%202.jpg",
-    "imageAttribution": "DaimlerChrysler AG, via Wikimedia Commons",
-    "description": "Benz Patent-Motorwagen — первый в мире автомобиль с двигателем внутреннего сгорания, построенный в 1885 году немецким изобретателем Карлом Бенцем. 29 января 1886 года на него официально был получен патент № 37435. Считается первым коммерчески доступным и успешным автомобилем с двигателем внутреннего сгорания.",
-    "at": {
-      "year": 1886,
-      "month": 1
-    },
-    "row": 22
+    "row": 15
   },
   {
     "id": "Q688605",
@@ -1611,7 +1594,7 @@
       "year": 1903,
       "month": 12
     },
-    "row": 13
+    "row": 0
   },
   {
     "id": "Q843389",
@@ -1667,7 +1650,7 @@
         "year": 1899
       }
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q963303",
@@ -1704,7 +1687,7 @@
         "year": 1854
       }
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q462252",
@@ -1748,7 +1731,7 @@
         "year": 1932
       }
     },
-    "row": 25
+    "row": 28
   },
   {
     "id": "Q736311",
@@ -1832,7 +1815,7 @@
     "at": {
       "year": 1800
     },
-    "row": 16
+    "row": 5
   },
   {
     "id": "Q334055",
@@ -1847,7 +1830,7 @@
     "at": {
       "year": 1855
     },
-    "row": 20
+    "row": 19
   },
   {
     "id": "Q1192212",
@@ -1864,7 +1847,7 @@
     "at": {
       "year": 1861
     },
-    "row": 22
+    "row": 21
   },
   {
     "id": "Q573211",
@@ -1953,7 +1936,7 @@
       "year": 1840,
       "month": 4
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q1136790",
@@ -1968,7 +1951,7 @@
     "at": {
       "year": 1793
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q1225170",
@@ -2029,7 +2012,7 @@
         "month": 1
       }
     },
-    "row": 27
+    "row": 29
   },
   {
     "id": "Q217817",
@@ -2045,7 +2028,7 @@
     "at": {
       "year": 1849
     },
-    "row": 21
+    "row": 14
   },
   {
     "id": "Q8094772",
@@ -2069,7 +2052,7 @@
         "month": 10
       }
     },
-    "row": 24
+    "row": 21
   },
   {
     "id": "Q300646",
@@ -2134,7 +2117,7 @@
       "year": 1828,
       "month": 2
     },
-    "row": 12
+    "row": 17
   },
   {
     "id": "Q204208",
@@ -2197,7 +2180,7 @@
     "at": {
       "year": 1827
     },
-    "row": 14
+    "row": 19
   },
   {
     "id": "Q973919",
@@ -2219,7 +2202,7 @@
         "month": 6
       }
     },
-    "row": 25
+    "row": 30
   },
   {
     "id": "Q338613",
@@ -2248,7 +2231,7 @@
     "at": {
       "year": 1925
     },
-    "row": 28
+    "row": 31
   },
   {
     "id": "Q683846",
@@ -2327,7 +2310,7 @@
     "at": {
       "year": 1787
     },
-    "row": 16
+    "row": 13
   },
   {
     "id": "Q6501061",
@@ -2341,7 +2324,7 @@
     "at": {
       "year": 1816
     },
-    "row": 16
+    "row": 20
   },
   {
     "id": "Q1753108",
@@ -2358,7 +2341,7 @@
     "at": {
       "year": 1869
     },
-    "row": 26
+    "row": 25
   },
   {
     "id": "Q1162294",
@@ -2380,7 +2363,7 @@
         "month": 1
       }
     },
-    "row": 30
+    "row": 32
   },
   {
     "id": "Q833645",
@@ -2450,7 +2433,7 @@
     "at": {
       "year": 1892
     },
-    "row": 28
+    "row": 27
   },
   {
     "id": "Q8665",
@@ -2468,7 +2451,7 @@
       "year": 1895,
       "month": 3
     },
-    "row": 29
+    "row": 31
   },
   {
     "id": "Q99200",
@@ -2500,7 +2483,7 @@
     "at": {
       "year": 1852
     },
-    "row": 24
+    "row": 23
   },
   {
     "id": "Q284681",
@@ -2576,7 +2559,7 @@
         "month": 7
       }
     },
-    "row": 23
+    "row": 22
   },
   {
     "id": "Q15251",
@@ -2596,7 +2579,7 @@
       "year": 1997,
       "month": 7
     },
-    "row": 21
+    "row": 20
   },
   {
     "id": "Q325656",
@@ -2635,7 +2618,7 @@
       "year": 1974,
       "month": 5
     },
-    "row": 20
+    "row": 29
   },
   {
     "id": "Q733610",
@@ -2672,19 +2655,21 @@
     "row": 1
   },
   {
-    "id": "Q949801",
-    "name": "винтокрылый летательный аппарат",
+    "id": "Q13581620",
+    "name": "Первый винтокрыл",
     "category": "transportation",
     "regionTags": [],
     "fameScore": 63,
-    "tagline": "аэродинамическая техника с несущим винтом для полёта",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rotorcraft",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Belvedere%20helicopter%20at%20Filton%2C%20Bristol%2C%20England.jpg",
-    "description": "Винтокры́лый летательный аппарат — летательный аппарат тяжелее воздуха, полёт которого, главным образом, осуществляется за счёт подъёмной силы, создаваемой одним или несколькими несущими винтами.Общее название для всех аэродинамических летательных аппаратов использующих несущий винт либо несколько таких винтов для полёта.",
+    "tagline": "experimental gyroplane family",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Breguet-Richet_Gyroplane",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Breguet%20Gyroplane%201907.jpg",
+    "imageAttribution": "PHGCOM, via Wikimedia Commons",
+    "description": "The Breguet-Richet Gyroplane was an early French experimental quadcopter rotary-wing aircraft developed by Breguet Aviation.",
     "at": {
-      "year": 1907
+      "year": 1907,
+      "month": 9
     },
-    "row": 31
+    "row": 33
   },
   {
     "id": "Q699127",
@@ -2725,7 +2710,7 @@
     "at": {
       "year": 1833
     },
-    "row": 19
+    "row": 21
   },
   {
     "id": "Q18408564",
@@ -2796,7 +2781,7 @@
         "month": 5
       }
     },
-    "row": 23
+    "row": 22
   },
   {
     "id": "Q1739453",
@@ -2888,7 +2873,7 @@
     "at": {
       "year": 1825
     },
-    "row": 20
+    "row": 22
   },
   {
     "id": "Q2224989",
@@ -2920,7 +2905,7 @@
     "at": {
       "year": 1823
     },
-    "row": 21
+    "row": 23
   },
   {
     "id": "Q2453355",
@@ -2973,7 +2958,7 @@
         "year": 1896
       }
     },
-    "row": 32
+    "row": 30
   },
   {
     "id": "Q2119319",
@@ -3020,7 +3005,7 @@
     "at": {
       "year": 1905
     },
-    "row": 28
+    "row": 34
   },
   {
     "id": "Q4567715",
@@ -3069,7 +3054,7 @@
         "month": 10
       }
     },
-    "row": 22
+    "row": 25
   },
   {
     "id": "Q1281955",
@@ -3084,6 +3069,22 @@
       "year": 864
     },
     "row": 2
+  },
+  {
+    "id": "Q2469465",
+    "name": "Micrographia",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 58,
+    "tagline": "книга Роберта Гука, выпущенная в 1665 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Micrographia",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Micrographia%20title%20page.gif",
+    "description": "«Микрография» — книга Роберта Гука, посвящённая результатам наблюдений 28-летнего автора с использованием разнообразных линз. Опубликованная в сентябре 1665 года, книга тут же стала бестселлером. Гук замечательно описывает глаз блохи и клетку растения.",
+    "at": {
+      "year": 1665,
+      "month": 1
+    },
+    "row": 3
   },
   {
     "id": "Q1290001",
@@ -3159,7 +3160,23 @@
         "month": 3
       }
     },
-    "row": 15
+    "row": 16
+  },
+  {
+    "id": "Q3099902",
+    "name": "паровой двигатель Ватта",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 57,
+    "tagline": "Industrial Revolution era stream engine design",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Watt_steam_engine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Maquina%20vapor%20Watt%20ETSIIM.jpg",
+    "imageAttribution": "Nicolás Pérez, via Wikimedia Commons",
+    "description": "The Watt steam engine was an invention of James Watt that was a driving force of the Industrial Revolution. According to the Encyclopædia Britannica, it was \"the first truly efficient steam engine\".",
+    "at": {
+      "year": 1776
+    },
+    "row": 22
   },
   {
     "id": "Q3518429",
@@ -3223,7 +3240,7 @@
     "at": {
       "year": 1876
     },
-    "row": 29
+    "row": 31
   },
   {
     "id": "Q547513",
@@ -3240,7 +3257,7 @@
       "year": 1876,
       "month": 3
     },
-    "row": 33
+    "row": 32
   },
   {
     "id": "Q28135544",
@@ -3288,7 +3305,7 @@
       "year": 1997,
       "month": 5
     },
-    "row": 26
+    "row": 21
   },
   {
     "id": "Q5305631",
@@ -3305,6 +3322,6 @@
     "at": {
       "year": 1859
     },
-    "row": 28
+    "row": 27
   }
 ]

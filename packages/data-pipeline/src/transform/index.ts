@@ -287,7 +287,7 @@ export function transformMilestones(): TaggedMilestone[] {
       month: milestone.month,
       endYear: milestone.endYear,
       endMonth: milestone.endMonth,
-      sitelinks: milestone.sitelinks ?? 0,
+      sitelinks: milestone.fameSitelinks ?? milestone.sitelinks ?? 0,
       pageviews: pageviews[milestone.id] ?? 0,
       category,
       regionTags,
