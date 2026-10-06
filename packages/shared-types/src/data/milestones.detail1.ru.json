@@ -276,14 +276,14 @@
     "row": 0
   },
   {
-    "id": "Q9158",
-    "name": "электронная почта",
+    "id": "Q7391838",
+    "name": "Первое электронное письмо",
     "category": "communication",
     "regionTags": [],
     "fameScore": 88,
-    "tagline": "технология и служба по пересылке и получению электронных сообщений",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Email",
-    "description": "Электро́нная по́чта — технология и служба по пересылке и получению электронных сообщений между пользователями компьютерной сети.",
+    "tagline": "first mail transfer agent",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/SNDMSG",
+    "description": "SNDMSG was an early electronic mail program, chiefly notable because it was used to send what is considered the first networked email.",
     "at": {
       "year": 1971
     },

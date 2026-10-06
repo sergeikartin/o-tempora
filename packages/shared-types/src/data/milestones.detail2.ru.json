@@ -1,14 +1,14 @@
 [
   {
-    "id": "Q11472",
-    "name": "бумага",
+    "id": "Q1811550",
+    "name": "Первая бумага",
     "category": "communication",
     "regionTags": [],
     "fameScore": 86,
-    "tagline": "волокнистый материал с минеральными добавками",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Paper",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paperball%202.jpeg",
-    "description": "Бума́га — волокнистый материал с минеральными добавками. Представлен в виде листов для письма, рисования, печати, упаковки и прочего, получаемый из целлюлозы: растений, а также вторсырья.",
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
+    "description": "Paper is a thin nonwoven material traditionally made from a combination of milled plant and other textile fibres. The first paper-like plant-based writing sheet was papyrus in Egypt, but the first true papermaking process was documented in China during the Eastern Han period, traditionally attributed to the court official Cai Lun. This plant-puree conglomerate produced by pulp mills and paper mills was used for writing, drawing, and money. During the 8th century, Chinese paper making spread to the Islamic world, replacing papyrus. By the 11th century, papermaking had reached Europe, where it initially coexisted with animal-skin-based parchment before eventually replacing it, alongside wax tablets and thin wooden leaf tablets. By the 13th century, papermaking had been refined, with paper mills in Spain using waterwheels. Later improvements to the papermaking process came in 19th-century Europe with the invention of wood-based papers.",
+    "approximateDate": true,
     "at": {
       "year": -140
     },
@@ -806,20 +806,20 @@
     "row": 3
   },
   {
-    "id": "Q12757",
-    "name": "двигатель внутреннего сгорания",
+    "id": "Q191801",
+    "name": "Первый четырёхтактный двигатель",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 82,
-    "tagline": "тип двигателя, в котором энергия сгорания топлива преобразуется в механическую энергию",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wankel%20Cycle%20anim.gif",
-    "imageAttribution": "User:Y_tambe, via Wikimedia Commons",
-    "description": "Дви́гатель вну́треннего сгора́ния (ДВС), ранее дви́гатель вну́треннего горе́ния — разновидность теплового двигателя, в котором топливная смесь сгорает непосредственно в рабочей камере (внутри) двигателя.",
+    "tagline": "поршневой двигатель внутреннего сгорания, в котором рабочий процесс в каждом из цилиндров совершается за два оборота коленчатого вала, то есть за четыре хода поршня (такта)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Four-stroke_engine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/4StrokeEngine%20Ortho%203D%20Small.gif",
+    "imageAttribution": "Zephyris, via Wikimedia Commons",
+    "description": "Четырёхтактный двигатель — поршневой двигатель внутреннего сгорания, в котором рабочий процесс в каждом из цилиндров совершается за два оборота коленчатого вала, то есть за четыре хода поршня (такта). Начиная с середины XX века — наиболее распространённая разновидность поршневого ДВС, особенно в двигателях средней и небольшой мощности.",
     "at": {
-      "year": 1924
+      "year": 1876
     },
-    "row": 11
+    "row": 5
   },
   {
     "id": "Q933263",

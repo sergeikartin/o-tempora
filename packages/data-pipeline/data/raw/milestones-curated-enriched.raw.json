@@ -842,16 +842,23 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Poliodrops.jpg"
     },
     {
-      "id": "Q11472",
-      "name": "paper",
-      "nameRu": "бумага",
+      "id": "Q1811550",
+      "name": "First paper",
+      "nameRu": "Первая бумага",
       "category": "communication",
       "year": -140,
-      "tagline": "thin, flexible material mainly used for writing upon, printing upon, drawing or for packaging",
-      "taglineRu": "волокнистый материал с минеральными добавками",
-      "sitelinks": 198,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Paper",
+      "approximateDate": true,
+      "tagline": "aspect of history",
+      "sitelinks": 17,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/History_of_paper",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BA%B8%E7%9A%84%E5%8E%86%E5%8F%B2",
+        "fr": "https://fr.wikipedia.org/wiki/Histoire_du_papier",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE_%D8%A7%D9%84%D9%88%D8%B1%D9%82"
+      },
+      "fameSitelinks": 198,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Paper",
         "zh": "https://zh.wikipedia.org/wiki/%E7%BA%B8",
         "es": "https://es.wikipedia.org/wiki/Papel",
@@ -860,8 +867,7 @@
         "ar": "https://ar.wikipedia.org/wiki/%D9%88%D8%B1%D9%82",
         "ru": "https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%BC%D0%B0%D0%B3%D0%B0"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Paperball%202.jpeg"
+      "countries": []
     },
     {
       "id": "Q158075",
@@ -1090,16 +1096,19 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arpanet%20logical%20map%2C%20march%201977.png"
     },
     {
-      "id": "Q9158",
-      "name": "email",
-      "nameRu": "электронная почта",
+      "id": "Q7391838",
+      "name": "First email",
+      "nameRu": "Первое электронное письмо",
       "category": "communication",
       "year": 1971,
-      "tagline": "electronic changing digital messages between a network",
-      "taglineRu": "технология и служба по пересылке и получению электронных сообщений",
-      "sitelinks": 172,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Email",
+      "tagline": "first mail transfer agent",
+      "sitelinks": 2,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/SNDMSG",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/SNDMSG"
+      },
+      "fameSitelinks": 172,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Email",
         "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6",
         "es": "https://es.wikipedia.org/wiki/Correo_electr%C3%B3nico",
@@ -1227,16 +1236,22 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Screen%20of%20Facebook%20%282%29.PNG"
     },
     {
-      "id": "Q171043",
-      "name": "steam locomotive",
-      "nameRu": "паровоз",
+      "id": "Q11762476",
+      "name": "First steam locomotive",
+      "nameRu": "Первый паровоз",
       "category": "transportation",
-      "year": 1814,
-      "tagline": "railway locomotive which generates its tractive power from a steam engine",
-      "taglineRu": "вид железнодорожного локомотива",
-      "sitelinks": 84,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_locomotive",
+      "year": 1804,
+      "month": 2,
+      "tagline": "early British steam locomotive",
+      "sitelinks": 8,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Pen-y-Darren_(locomotive)",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Pen-y-Darren_(locomotive)",
+        "fr": "https://fr.wikipedia.org/wiki/Locomotive_de_Pen-y-Darren",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D0%BD%D0%B8%D0%B4%D0%B0%D1%80%D1%80%D0%B5%D0%BD_(%D0%BF%D0%B0%D1%80%D0%BE%D0%B2%D0%BE%D0%B7)"
+      },
+      "fameSitelinks": 84,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Steam_locomotive",
         "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E6%B1%BD%E6%A9%9F%E8%BB%8A",
         "es": "https://es.wikipedia.org/wiki/Locomotora_de_vapor",
@@ -1245,8 +1260,10 @@
         "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D8%B7%D8%B1%D8%A9_%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BE%D0%B2%D0%BE%D0%B7"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/3511%20-%20Hartswater%20240481.jpg"
+      "countries": [
+        "Q145"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cyfarthfa%20Castle%20-%20geograph.org.uk%20-%20288521.jpg"
     },
     {
       "id": "Q375044",
@@ -1596,16 +1613,26 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg"
     },
     {
-      "id": "Q12757",
-      "name": "internal combustion engine",
-      "nameRu": "двигатель внутреннего сгорания",
+      "id": "Q191801",
+      "name": "First four-stroke engine",
+      "nameRu": "Первый четырёхтактный двигатель",
       "category": "energy-industry",
-      "year": 1924,
-      "tagline": "engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber",
-      "taglineRu": "тип двигателя, в котором энергия сгорания топлива преобразуется в механическую энергию",
-      "sitelinks": 121,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
+      "year": 1876,
+      "tagline": "internal combustion engine type",
+      "taglineRu": "поршневой двигатель внутреннего сгорания, в котором рабочий процесс в каждом из цилиндров совершается за два оборота коленчатого вала, то есть за четыре хода поршня (такта)",
+      "sitelinks": 53,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Four-stroke_engine",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Four-stroke_engine",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9B%9B%E5%86%B2%E7%A8%8B%E5%BE%AA%E7%8E%AF",
+        "es": "https://es.wikipedia.org/wiki/Ciclo_de_cuatro_tiempos",
+        "fr": "https://fr.wikipedia.org/wiki/Moteur_%C3%A0_quatre_temps",
+        "de": "https://de.wikipedia.org/wiki/Viertaktmotor",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%83_%D8%B1%D8%A8%D8%A7%D8%B9%D9%8A_%D8%A7%D9%84%D8%A3%D8%B4%D9%88%D8%A7%D8%B7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%82%D1%8B%D1%80%D1%91%D1%85%D1%82%D0%B0%D0%BA%D1%82%D0%BD%D1%8B%D0%B9_%D0%B4%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C"
+      },
+      "fameSitelinks": 121,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Internal_combustion_engine",
         "zh": "https://zh.wikipedia.org/wiki/%E5%86%85%E7%87%83%E6%9C%BA",
         "es": "https://es.wikipedia.org/wiki/Motor_de_combusti%C3%B3n_interna",
@@ -1615,7 +1642,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B5%D0%B3%D0%BE_%D1%81%D0%B3%D0%BE%D1%80%D0%B0%D0%BD%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Wankel%20Cycle%20anim.gif"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/4StrokeEngine%20Ortho%203D%20Small.gif"
     },
     {
       "id": "Q185757",
@@ -2320,16 +2347,21 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2020%20E-papieros%20mod.jpg"
     },
     {
-      "id": "Q34467",
-      "name": "compact disc",
-      "nameRu": "компакт-диск",
+      "id": "Q3964913",
+      "name": "First CD player",
+      "nameRu": "Первый проигрыватель компакт-дисков",
       "category": "everyday-technology",
-      "year": 1979,
-      "tagline": "digital optical disc data storage format",
-      "taglineRu": "оптический диск для хранения информации",
-      "sitelinks": 112,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Compact_disc",
+      "year": 1982,
+      "month": 10,
+      "tagline": "first commercially released CD player",
+      "sitelinks": 7,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sony_CDP-101",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sony_CDP-101",
+        "de": "https://de.wikipedia.org/wiki/Sony_CDP-101"
+      },
+      "fameSitelinks": 112,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Compact_disc",
         "zh": "https://zh.wikipedia.org/wiki/%E9%9B%B7%E5%B0%84%E5%94%B1%E7%89%87",
         "es": "https://es.wikipedia.org/wiki/Disco_compacto",
@@ -2339,7 +2371,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D0%B0%D0%BA%D1%82-%D0%B4%D0%B8%D1%81%D0%BA"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OD%20Compact%20disc.svg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lettore%20CD%20Sony%20CDP-101%20-%20Museo%20della%20Scienza%20e%20della%20Tecnologia%20Leonardo%20da%20Vinci.jpg"
     },
     {
       "id": "Q1515631",
@@ -3287,16 +3319,27 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/9%20v%20electromagnet.png"
     },
     {
-      "id": "Q72313",
-      "name": "electric motor",
-      "nameRu": "электродвигатель",
+      "id": "Q2473989",
+      "name": "First electric motor",
+      "nameRu": "Первый электродвигатель",
       "category": "energy-industry",
-      "year": 1834,
-      "tagline": "electromechanical device",
-      "taglineRu": "машина для превращения электрической энергии в механическую работу",
-      "sitelinks": 101,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_motor",
+      "year": 1821,
+      "month": 9,
+      "tagline": "Direct current electric motor",
+      "taglineRu": "Электрическое устройство",
+      "sitelinks": 14,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Homopolar_motor",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Homopolar_motor",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%96%AE%E6%A5%B5%E9%A6%AC%E9%81%94",
+        "es": "https://es.wikipedia.org/wiki/Motor_homopolar",
+        "fr": "https://fr.wikipedia.org/wiki/Moteur_homopolaire",
+        "de": "https://de.wikipedia.org/wiki/Homopolarmotor",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%83_%D9%85%D8%AA%D9%85%D8%A7%D8%AB%D9%84_%D8%A7%D9%84%D8%A3%D9%82%D8%B7%D8%A7%D8%A8",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A3%D0%BD%D0%B8%D0%BF%D0%BE%D0%BB%D1%8F%D1%80%D0%BD%D1%8B%D0%B9_%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%B4%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C"
+      },
+      "fameSitelinks": 101,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Electric_motor",
         "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%8A%A8%E6%9C%BA",
         "es": "https://es.wikipedia.org/wiki/Motor_el%C3%A9ctrico",
@@ -3306,7 +3349,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B4%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stator%20and%20rotor%20by%20Zureks.JPG"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Homopolar%20Motor%20Large%20neutral.jpg"
     },
     {
       "id": "Q180253",
@@ -3591,16 +3634,22 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Songrivership3.jpg"
     },
     {
-      "id": "Q47433",
-      "name": "banknote",
-      "nameRu": "банкнота",
+      "id": "Q953729",
+      "name": "First banknote",
+      "nameRu": "Первая банкнота",
       "category": "society-administration",
-      "year": 618,
-      "tagline": "form of physical currency made of paper or polymer",
-      "taglineRu": "денежный знак, изготовленный из бумаги, ткани или пластика",
-      "sitelinks": 102,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Banknote",
+      "year": 1024,
+      "tagline": "one of the first forms of paper money",
+      "sitelinks": 13,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Jiaozi_(currency)",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Jiaozi_(currency)",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%A4%E5%AD%90",
+        "es": "https://es.wikipedia.org/wiki/Jiaozi_(moneda)",
+        "fr": "https://fr.wikipedia.org/wiki/Jiaozi_(monnaie)"
+      },
+      "fameSitelinks": 102,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Banknote",
         "zh": "https://zh.wikipedia.org/wiki/%E7%B4%99%E5%B9%A3",
         "es": "https://es.wikipedia.org/wiki/Papel_moneda",
@@ -3610,7 +3659,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%BD%D0%BA%D0%BD%D0%BE%D1%82%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BOH%26MOR-10-Protectorate%20of%20Bohemia%20and%20Moravia-50%20Korun%20%281944%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jiao%20zi.jpg"
     },
     {
       "id": "Q12138",
@@ -7590,32 +7639,6 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ancientlibraryalex.jpg"
     },
     {
-      "id": "Q728428",
-      "name": "Second Temple",
-      "nameRu": "Второй Храм",
-      "category": "landmarks",
-      "year": -515,
-      "endYear": 70,
-      "endMonth": 8,
-      "tagline": "Jewish Temple on the Temple Mount in Jerusalem between c. 516 BCE and 70 CE",
-      "taglineRu": "храм в Иерусалиме",
-      "sitelinks": 53,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Temple",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Second_Temple",
-        "zh": "https://zh.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%9C%A3%E6%AE%BF",
-        "es": "https://es.wikipedia.org/wiki/Segundo_Templo",
-        "fr": "https://fr.wikipedia.org/wiki/Second_temple_de_J%C3%A9rusalem",
-        "de": "https://de.wikipedia.org/wiki/Herodianischer_Tempel",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%87%D9%8A%D9%83%D9%84_%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%82%D0%BE%D1%80%D0%BE%D0%B9_%D1%85%D1%80%D0%B0%D0%BC"
-      },
-      "countries": [
-        "Q48685"
-      ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Second%20Temple.jpg"
-    },
-    {
       "id": "Q13164",
       "name": "Lomonosov Moscow State University",
       "nameRu": "Московский государственный университет",
@@ -9740,17 +9763,22 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/MS%20Indic%2037%2C%20Isa%20upanisad.%20Wellcome%20L0027330.jpg"
     },
     {
-      "id": "Q41207",
-      "name": "coin",
-      "nameRu": "монета",
+      "id": "Q3697061",
+      "name": "First gold coin",
+      "nameRu": "Первая золотая монета",
       "category": "commerce-finance",
-      "year": -599,
+      "year": -549,
       "approximateDate": true,
-      "tagline": "piece of hard material produced in large quantities to facilitate trade",
-      "taglineRu": "кусок твёрдого материала, используемый при обмене и торговле",
-      "sitelinks": 129,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Coin",
+      "tagline": "Lydian coin",
+      "sitelinks": 7,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Croeseid",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Croeseid",
+        "es": "https://es.wikipedia.org/wiki/Creseida",
+        "fr": "https://fr.wikipedia.org/wiki/Cr%C3%A9s%C3%A9%C3%AFde"
+      },
+      "fameSitelinks": 129,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Coin",
         "zh": "https://zh.wikipedia.org/wiki/%E7%A1%AC%E5%B9%A3",
         "es": "https://es.wikipedia.org/wiki/Moneda",
@@ -9760,7 +9788,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B5%D1%82%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/One%20Rupee%20East%20India%20Company.JPG"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kroisos.%20Circa%20564-53-550-39%20BC.%20AV%20Stater%20%2816mm%2C%2010.76%20g%29.%20Heavy%20series.%20Sardes%20mint.jpg"
     },
     {
       "id": "Q223767",
@@ -9782,28 +9810,6 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Discurso%20funebre%20pericles.PNG"
-    },
-    {
-      "id": "Q340742",
-      "name": "Axial Age",
-      "nameRu": "Осевое время",
-      "category": "philosophy-education",
-      "year": -799,
-      "endYear": -199,
-      "approximateDate": true,
-      "tagline": "pivotal age characterizing history and philosophy from the 8th to 3rd centuries BCE",
-      "sitelinks": 31,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Axial_Age",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Axial_Age",
-        "zh": "https://zh.wikipedia.org/wiki/%E8%BB%B8%E5%BF%83%E4%B8%96%E7%B4%80",
-        "es": "https://es.wikipedia.org/wiki/Era_Axial",
-        "fr": "https://fr.wikipedia.org/wiki/P%C3%A9riode_axiale",
-        "de": "https://de.wikipedia.org/wiki/Achsenzeit",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B9%D8%B5%D8%B1_%D8%A7%D9%84%D9%85%D8%AD%D9%88%D8%B1%D9%8A",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%B5%D0%B2%D0%BE%D0%B5_%D0%B2%D1%80%D0%B5%D0%BC%D1%8F"
-      },
-      "countries": []
     },
     {
       "id": "Q8251",
@@ -9895,23 +9901,6 @@
       "countries": [
         "Q148"
       ]
-    },
-    {
-      "id": "Q1811550",
-      "name": "history of paper",
-      "category": "everyday-technology",
-      "year": 105,
-      "approximateDate": true,
-      "tagline": "aspect of history",
-      "sitelinks": 17,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/History_of_paper",
-        "zh": "https://zh.wikipedia.org/wiki/%E7%BA%B8%E7%9A%84%E5%8E%86%E5%8F%B2",
-        "fr": "https://fr.wikipedia.org/wiki/Histoire_du_papier",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE_%D8%A7%D9%84%D9%88%D8%B1%D9%82"
-      },
-      "countries": []
     },
     {
       "id": "Q465279",
@@ -10476,6 +10465,30 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SOS.svg"
+    },
+    {
+      "id": "Q777026",
+      "name": "Stephenson's Rocket",
+      "nameRu": "Ракета",
+      "category": "transportation",
+      "year": 1829,
+      "tagline": "early steam locomotive",
+      "sitelinks": 30,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Stephenson%27s_Rocket",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Stephenson%27s_Rocket",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%81%AB%E7%AE%AD%E8%99%9F%E8%92%B8%E6%B1%BD%E6%A9%9F%E8%BB%8A",
+        "es": "https://es.wikipedia.org/wiki/The_Rocket",
+        "fr": "https://fr.wikipedia.org/wiki/Fus%C3%A9e_de_Stephenson",
+        "de": "https://de.wikipedia.org/wiki/Rocket_(Lokomotive)",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D8%B7%D8%B1%D8%A9_%D8%B3%D8%AA%D9%8A%D9%81%D9%86%D8%B3%D9%88%D9%86_%D8%A7%D9%84%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%BA%D0%B5%D1%82%D0%B0_(%D0%BF%D0%B0%D1%80%D0%BE%D0%B2%D0%BE%D0%B7)"
+      },
+      "countries": [
+        "Q174193",
+        "Q145"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stephenson%27s%20Rocket%20drawing.jpg"
     }
   ]
 }

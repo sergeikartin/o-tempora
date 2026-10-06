@@ -276,14 +276,14 @@
     "row": 0
   },
   {
-    "id": "Q9158",
-    "name": "email",
+    "id": "Q7391838",
+    "name": "First email",
     "category": "communication",
     "regionTags": [],
     "fameScore": 88,
-    "tagline": "electronic changing digital messages between a network",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Email",
-    "description": "Electronic mail is a method of transmitting and receiving digital messages using electronic devices over a computer network. It was conceived in the late–20th century as the digital version of, or counterpart to, mail. Email is a ubiquitous and very widely used communication medium; in current use, an email address is often treated as a basic and necessary part of many processes in business, commerce, government, education, entertainment, and other spheres of daily life in most countries.",
+    "tagline": "first mail transfer agent",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/SNDMSG",
+    "description": "SNDMSG was an early electronic mail program, chiefly notable because it was used to send what is considered the first networked email.",
     "at": {
       "year": 1971
     },

@@ -14,7 +14,7 @@
       "year": 1996,
       "month": 7
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q190035",
@@ -62,7 +62,7 @@
       "year": 1908,
       "month": 9
     },
-    "row": 20
+    "row": 19
   },
   {
     "id": "Q15003",
@@ -100,7 +100,7 @@
         "month": 7
       }
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q180253",
@@ -115,7 +115,7 @@
     "at": {
       "year": 1842
     },
-    "row": 11
+    "row": 9
   },
   {
     "id": "Q13582",
@@ -157,7 +157,7 @@
     "at": {
       "year": 1981
     },
-    "row": 19
+    "row": 22
   },
   {
     "id": "Q35045",
@@ -191,7 +191,7 @@
       "year": 1916,
       "month": 5
     },
-    "row": 24
+    "row": 21
   },
   {
     "id": "Q608613",
@@ -283,7 +283,7 @@
     "at": {
       "year": 1964
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q179744",
@@ -299,7 +299,7 @@
     "at": {
       "year": 1839
     },
-    "row": 12
+    "row": 10
   },
   {
     "id": "Q227467",
@@ -316,7 +316,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 28
+    "row": 29
   },
   {
     "id": "Q221474",
@@ -364,7 +364,7 @@
     "at": {
       "year": 1825
     },
-    "row": 9
+    "row": 8
   },
   {
     "id": "Q233562",
@@ -402,7 +402,7 @@
         "year": 1968
       }
     },
-    "row": 27
+    "row": 28
   },
   {
     "id": "Q152006",
@@ -548,7 +548,7 @@
       "year": 1906,
       "month": 6
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q191472",
@@ -580,7 +580,7 @@
     "at": {
       "year": 1955
     },
-    "row": 31
+    "row": 32
   },
   {
     "id": "Q213669",
@@ -596,7 +596,7 @@
     "at": {
       "year": 1909
     },
-    "row": 27
+    "row": 23
   },
   {
     "id": "Q182524",
@@ -614,7 +614,7 @@
       "year": 1961,
       "month": 4
     },
-    "row": 25
+    "row": 15
   },
   {
     "id": "Q184201",
@@ -632,7 +632,7 @@
       "year": 1968,
       "month": 12
     },
-    "row": 28
+    "row": 26
   },
   {
     "id": "Q1188138",
@@ -650,7 +650,7 @@
       "year": 1894,
       "month": 8
     },
-    "row": 22
+    "row": 21
   },
   {
     "id": "Q171375",
@@ -666,7 +666,7 @@
       "year": 1947,
       "month": 3
     },
-    "row": 30
+    "row": 31
   },
   {
     "id": "Q180764",
@@ -842,7 +842,7 @@
       "year": 1910,
       "month": 8
     },
-    "row": 28
+    "row": 24
   },
   {
     "id": "Q167457",
@@ -860,7 +860,7 @@
       "year": 1957,
       "month": 3
     },
-    "row": 32
+    "row": 33
   },
   {
     "id": "Q31347",
@@ -893,7 +893,7 @@
       "year": 1983,
       "month": 1
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q192446",
@@ -909,7 +909,7 @@
     "at": {
       "year": 1990
     },
-    "row": 21
+    "row": 25
   },
   {
     "id": "Q158075",
@@ -956,7 +956,7 @@
     "at": {
       "year": 1890
     },
-    "row": 21
+    "row": 23
   },
   {
     "id": "Q505802",
@@ -1029,7 +1029,7 @@
       "year": 1948,
       "month": 5
     },
-    "row": 34
+    "row": 35
   },
   {
     "id": "Q207875",
@@ -1058,7 +1058,7 @@
     "at": {
       "year": 1979
     },
-    "row": 23
+    "row": 24
   },
   {
     "id": "Q209625",
@@ -1090,7 +1090,7 @@
       "year": 1862,
       "month": 9
     },
-    "row": 18
+    "row": 20
   },
   {
     "id": "Q151060",
@@ -1174,28 +1174,6 @@
       }
     },
     "row": 0
-  },
-  {
-    "id": "Q728428",
-    "name": "Второй Храм",
-    "category": "landmarks",
-    "regionTags": [],
-    "fameScore": 72,
-    "tagline": "храм в Иерусалиме",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_Temple",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Second%20Temple.jpg",
-    "imageAttribution": "Ariely, via Wikimedia Commons",
-    "description": "Второ́й храм — бывший храм в Иерусалиме, начало строительства которого было положено в правление Кира Великого; реконструирован Иродом Великим; разрушен во время штурма Иерусалима в ходе Первой Иудейской войны римской армией во главе с Титом. С 691 года на его месте находится мечеть «Купол Скалы». Со Вторым храмом связывается период в развитии иудаизма.",
-    "period": {
-      "start": {
-        "year": -515
-      },
-      "end": {
-        "year": 70,
-        "month": 8
-      }
-    },
-    "row": 4
   },
   {
     "id": "Q83172",
@@ -1293,7 +1271,7 @@
       "year": 1997,
       "month": 5
     },
-    "row": 24
+    "row": 13
   },
   {
     "id": "Q817281",
@@ -1309,7 +1287,7 @@
     "at": {
       "year": 1961
     },
-    "row": 29
+    "row": 30
   },
   {
     "id": "Q1519099",
@@ -1324,7 +1302,7 @@
     "at": {
       "year": 1952
     },
-    "row": 36
+    "row": 37
   },
   {
     "id": "Q146578",
@@ -1356,7 +1334,7 @@
     "at": {
       "year": 1958
     },
-    "row": 38
+    "row": 39
   },
   {
     "id": "Q192803",
@@ -1434,7 +1412,7 @@
         "month": 7
       }
     },
-    "row": 22
+    "row": 21
   },
   {
     "id": "Q191703",
@@ -1448,7 +1426,7 @@
     "at": {
       "year": 1963
     },
-    "row": 30
+    "row": 31
   },
   {
     "id": "Q1059758",
@@ -1564,7 +1542,7 @@
     "at": {
       "year": 1010
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q33018",
@@ -1629,7 +1607,7 @@
       "year": 1945,
       "month": 5
     },
-    "row": 35
+    "row": 36
   },
   {
     "id": "Q161540",
@@ -1645,7 +1623,7 @@
       "year": 1939,
       "month": 8
     },
-    "row": 32
+    "row": 33
   },
   {
     "id": "Q94247",
@@ -1662,7 +1640,7 @@
       "year": 1956,
       "month": 6
     },
-    "row": 40
+    "row": 41
   },
   {
     "id": "Q337724",
@@ -1707,7 +1685,7 @@
     "at": {
       "year": 1940
     },
-    "row": 28
+    "row": 29
   },
   {
     "id": "Q69163529",
@@ -1726,7 +1704,7 @@
       "year": 1989,
       "month": 11
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q208191",
@@ -1749,7 +1727,7 @@
         "month": 4
       }
     },
-    "row": 39
+    "row": 40
   },
   {
     "id": "Q815567",
@@ -1767,7 +1745,7 @@
       "year": 1988,
       "month": 12
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q323813",
@@ -1802,7 +1780,7 @@
     "at": {
       "year": 1911
     },
-    "row": 31
+    "row": 29
   },
   {
     "id": "Q166543",
@@ -1834,7 +1812,7 @@
     "at": {
       "year": 1837
     },
-    "row": 17
+    "row": 13
   },
   {
     "id": "Q688605",
@@ -1908,7 +1886,7 @@
         "year": 1899
       }
     },
-    "row": 24
+    "row": 26
   },
   {
     "id": "Q963303",
@@ -1968,7 +1946,7 @@
         "month": 12
       }
     },
-    "row": 41
+    "row": 42
   },
   {
     "id": "Q821122",
@@ -1989,7 +1967,7 @@
         "year": 1932
       }
     },
-    "row": 30
+    "row": 31
   },
   {
     "id": "Q736311",
@@ -2042,7 +2020,7 @@
       "year": 1971,
       "month": 11
     },
-    "row": 25
+    "row": 32
   },
   {
     "id": "Q856544",
@@ -2059,7 +2037,7 @@
     "at": {
       "year": 1849
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q330756",
@@ -2075,7 +2053,7 @@
       "year": 1918,
       "month": 4
     },
-    "row": 36
+    "row": 32
   },
   {
     "id": "Q465279",
@@ -2110,7 +2088,7 @@
       "year": 1967,
       "month": 12
     },
-    "row": 33
+    "row": 29
   },
   {
     "id": "Q234027",
@@ -2125,7 +2103,7 @@
       "year": 1978,
       "month": 7
     },
-    "row": 27
+    "row": 30
   },
   {
     "id": "Q663273",
@@ -2156,7 +2134,7 @@
     "at": {
       "year": 1855
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q1192212",
@@ -2173,7 +2151,7 @@
     "at": {
       "year": 1861
     },
-    "row": 24
+    "row": 23
   },
   {
     "id": "Q573211",
@@ -2206,7 +2184,7 @@
     "at": {
       "year": 1025
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q7476695",
@@ -2241,7 +2219,7 @@
     "at": {
       "year": 1945
     },
-    "row": 42
+    "row": 43
   },
   {
     "id": "Q1205521",
@@ -2258,7 +2236,7 @@
       "year": 1978,
       "month": 12
     },
-    "row": 28
+    "row": 33
   },
   {
     "id": "Q1645505",
@@ -2311,7 +2289,7 @@
       "year": 1840,
       "month": 4
     },
-    "row": 18
+    "row": 17
   },
   {
     "id": "Q1136790",
@@ -2403,7 +2381,7 @@
     "at": {
       "year": 1849
     },
-    "row": 19
+    "row": 18
   },
   {
     "id": "Q8094772",
@@ -2427,7 +2405,7 @@
         "month": 10
       }
     },
-    "row": 25
+    "row": 24
   },
   {
     "id": "Q300646",
@@ -2492,7 +2470,7 @@
       "year": 1828,
       "month": 2
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q204208",
@@ -2553,7 +2531,7 @@
     "at": {
       "year": 1802
     },
-    "row": 8
+    "row": 20
   },
   {
     "id": "Q616159",
@@ -2570,7 +2548,7 @@
     "at": {
       "year": 1827
     },
-    "row": 15
+    "row": 18
   },
   {
     "id": "Q973919",
@@ -2592,7 +2570,7 @@
         "month": 6
       }
     },
-    "row": 35
+    "row": 34
   },
   {
     "id": "Q338613",
@@ -2621,7 +2599,7 @@
     "at": {
       "year": 1925
     },
-    "row": 34
+    "row": 36
   },
   {
     "id": "Q683846",
@@ -2651,7 +2629,7 @@
       "year": 1948,
       "month": 1
     },
-    "row": 43
+    "row": 44
   },
   {
     "id": "Q1144693",
@@ -2686,7 +2664,7 @@
     "at": {
       "year": 1966
     },
-    "row": 35
+    "row": 34
   },
   {
     "id": "Q1419429",
@@ -2733,7 +2711,7 @@
       "year": 1913,
       "month": 12
     },
-    "row": 37
+    "row": 35
   },
   {
     "id": "Q6501061",
@@ -2747,7 +2725,7 @@
     "at": {
       "year": 1816
     },
-    "row": 18
+    "row": 20
   },
   {
     "id": "Q1753108",
@@ -2786,7 +2764,7 @@
         "month": 1
       }
     },
-    "row": 38
+    "row": 37
   },
   {
     "id": "Q833645",
@@ -2826,7 +2804,7 @@
         "month": 7
       }
     },
-    "row": 38
+    "row": 39
   },
   {
     "id": "Q310301",
@@ -2906,7 +2884,7 @@
     "at": {
       "year": 1852
     },
-    "row": 23
+    "row": 25
   },
   {
     "id": "Q284681",
@@ -2924,7 +2902,7 @@
       "year": 1942,
       "month": 12
     },
-    "row": 44
+    "row": 45
   },
   {
     "id": "Q705693",
@@ -2982,7 +2960,7 @@
         "month": 7
       }
     },
-    "row": 22
+    "row": 24
   },
   {
     "id": "Q15251",
@@ -3002,7 +2980,7 @@
       "year": 1997,
       "month": 7
     },
-    "row": 27
+    "row": 22
   },
   {
     "id": "Q325656",
@@ -3041,7 +3019,7 @@
       "year": 1974,
       "month": 5
     },
-    "row": 31
+    "row": 36
   },
   {
     "id": "Q733610",
@@ -3077,26 +3055,6 @@
     "row": 0
   },
   {
-    "id": "Q340742",
-    "name": "Осевое время",
-    "category": "philosophy-education",
-    "regionTags": [],
-    "fameScore": 64,
-    "tagline": "pivotal age characterizing history and philosophy from the 8th to 3rd centuries BCE",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Axial_Age",
-    "description": "Осевое время — термин, введённый немецким философом Карлом Ясперсом для обозначения периода в истории человечества, во время которого на смену мифологическому мировоззрению пришло рациональное и (или) философское, сформировавшее тот тип человека, который существует поныне. Ясперс датирует осевое время между 800—200 годами до н. э. По мнению Ясперса, все учения осевого времени отличаются рационализмом и стремлением человека к переосмыслению существовавших до этого норм, обычаев и традиций. Те доосевые цивилизации, которые не смогли приспособиться к изменениям, прекратили своё существование, не оставив прямых наследников.",
-    "approximateDate": true,
-    "period": {
-      "start": {
-        "year": -799
-      },
-      "end": {
-        "year": -199
-      }
-    },
-    "row": 5
-  },
-  {
     "id": "Q842363",
     "name": "Папирус Эдвина Смита",
     "category": "medicine-health",
@@ -3128,7 +3086,7 @@
       "year": 1907,
       "month": 9
     },
-    "row": 39
+    "row": 36
   },
   {
     "id": "Q699127",
@@ -3169,7 +3127,7 @@
     "at": {
       "year": 1833
     },
-    "row": 23
+    "row": 22
   },
   {
     "id": "Q18408564",
@@ -3255,6 +3213,23 @@
     "row": 3
   },
   {
+    "id": "Q777026",
+    "name": "Ракета",
+    "category": "transportation",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 63,
+    "tagline": "early steam locomotive",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Stephenson%27s_Rocket",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stephenson%27s%20Rocket%20drawing.jpg",
+    "description": "«Ракета» — один из первых паровозов, построенный в 1829 году отцом и сыном Джорджем и Робертом Стефенсонами. Из ранних локомотивов «Ракета» является самым известным, причём во многом потому, что, во-первых, она выиграла единственные в своём роде соревнования паровозов — «Рейнхильские состязания», а во-вторых — это был первый в мире паровоз с трубчатым паровым котлом. В дальнейшем такая конструкция котла стала применяться на всех выпускавшихся паровозах.",
+    "at": {
+      "year": 1829
+    },
+    "row": 6
+  },
+  {
     "id": "Q1261053",
     "name": "woodblock printing",
     "category": "communication",
@@ -3289,7 +3264,7 @@
         "month": 5
       }
     },
-    "row": 20
+    "row": 26
   },
   {
     "id": "Q1739453",
@@ -3307,7 +3282,7 @@
     "at": {
       "year": 1954
     },
-    "row": 46
+    "row": 47
   },
   {
     "id": "Q2345573",
@@ -3402,7 +3377,7 @@
       "year": 1945,
       "month": 8
     },
-    "row": 45
+    "row": 46
   },
   {
     "id": "Q957012",
@@ -3425,7 +3400,7 @@
         "month": 4
       }
     },
-    "row": 29
+    "row": 28
   },
   {
     "id": "Q426853",
@@ -3457,7 +3432,7 @@
     "at": {
       "year": 1825
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q2224989",
@@ -3509,7 +3484,7 @@
       "year": 1853,
       "month": 7
     },
-    "row": 26
+    "row": 27
   },
   {
     "id": "Q1398696",
@@ -3526,7 +3501,7 @@
     "at": {
       "year": 1823
     },
-    "row": 22
+    "row": 9
   },
   {
     "id": "Q2044496",
@@ -3590,7 +3565,7 @@
     "at": {
       "year": 1956
     },
-    "row": 47
+    "row": 48
   },
   {
     "id": "Q3984081",
@@ -3627,7 +3602,7 @@
         "year": 1896
       }
     },
-    "row": 33
+    "row": 34
   },
   {
     "id": "Q2119319",
@@ -3674,7 +3649,7 @@
     "at": {
       "year": 1905
     },
-    "row": 42
+    "row": 39
   },
   {
     "id": "Q251600",
@@ -3695,22 +3670,7 @@
         "year": 1932
       }
     },
-    "row": 40
-  },
-  {
-    "id": "Q1811550",
-    "name": "history of paper",
-    "category": "everyday-technology",
-    "regionTags": [],
-    "fameScore": 59,
-    "tagline": "aspect of history",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
-    "description": "Paper is a thin nonwoven material traditionally made from a combination of milled plant and other textile fibres. The first paper-like plant-based writing sheet was papyrus in Egypt, but the first true papermaking process was documented in China during the Eastern Han period, traditionally attributed to the court official Cai Lun. This plant-puree conglomerate produced by pulp mills and paper mills was used for writing, drawing, and money. During the 8th century, Chinese paper making spread to the Islamic world, replacing papyrus. By the 11th century, papermaking had reached Europe, where it initially coexisted with animal-skin-based parchment before eventually replacing it, alongside wax tablets and thin wooden leaf tablets. By the 13th century, papermaking had been refined, with paper mills in Spain using waterwheels. Later improvements to the papermaking process came in 19th-century Europe with the invention of wood-based papers.",
-    "approximateDate": true,
-    "at": {
-      "year": 105
-    },
-    "row": 0
+    "row": 38
   },
   {
     "id": "Q28325009",
@@ -3750,7 +3710,7 @@
         "month": 6
       }
     },
-    "row": 49
+    "row": 50
   },
   {
     "id": "Q1564366",
@@ -3774,7 +3734,7 @@
         "month": 10
       }
     },
-    "row": 24
+    "row": 23
   },
   {
     "id": "Q1281955",
@@ -3821,7 +3781,7 @@
       "year": 1949,
       "month": 10
     },
-    "row": 48
+    "row": 49
   },
   {
     "id": "Q1290001",
@@ -3962,7 +3922,7 @@
     "at": {
       "year": 1960
     },
-    "row": 50
+    "row": 51
   },
   {
     "id": "Q5333520",
@@ -3977,7 +3937,7 @@
       "year": 1991,
       "month": 7
     },
-    "row": 30
+    "row": 29
   },
   {
     "id": "Q3447247",
@@ -3994,7 +3954,7 @@
       "year": 1893,
       "month": 9
     },
-    "row": 36
+    "row": 35
   },
   {
     "id": "Q951383",
@@ -4045,7 +4005,7 @@
     "at": {
       "year": 1851
     },
-    "row": 27
+    "row": 30
   },
   {
     "id": "Q13443401",
@@ -4076,7 +4036,7 @@
       "year": 1876,
       "month": 3
     },
-    "row": 35
+    "row": 36
   },
   {
     "id": "Q28135544",
@@ -4158,7 +4118,7 @@
     "at": {
       "year": 1957
     },
-    "row": 51
+    "row": 52
   },
   {
     "id": "Q2631085",
@@ -4175,7 +4135,7 @@
       "year": 1997,
       "month": 5
     },
-    "row": 32
+    "row": 30
   },
   {
     "id": "Q31187690",
@@ -4193,7 +4153,7 @@
       "year": 1923,
       "month": 10
     },
-    "row": 39
+    "row": 13
   },
   {
     "id": "Q4378226",
@@ -4238,7 +4198,7 @@
       "year": 1847,
       "month": 7
     },
-    "row": 30
+    "row": 31
   },
   {
     "id": "Q5305631",
@@ -4255,7 +4215,7 @@
     "at": {
       "year": 1859
     },
-    "row": 11
+    "row": 32
   },
   {
     "id": "Q5869513",

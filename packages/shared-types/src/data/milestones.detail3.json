@@ -22,20 +22,21 @@
     "row": 10
   },
   {
-    "id": "Q34467",
-    "name": "compact disc",
+    "id": "Q3964913",
+    "name": "First CD player",
     "category": "everyday-technology",
     "regionTags": [],
     "fameScore": 81,
-    "tagline": "digital optical disc data storage format",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Compact_disc",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/OD%20Compact%20disc.svg",
-    "imageAttribution": "The original uploader was Sakurambo~commonswiki at  Wikimedia Commons., via Wikimedia Commons",
-    "description": "The compact disc (CD) is a digital optical disc data storage format co-developed by Philips and Sony to store and play digital audio recordings. It employs the Compact Disc Digital Audio (CD-DA) standard and is capable of holding uncompressed stereo audio. First released in Japan in October 1982, the CD was the second optical disc format to reach the market, following the larger LaserDisc (LD). In later years, the technology was adapted for computer data storage as CD-ROM and subsequently expanded into various writable and multimedia formats. By 2007, over 200 billion CDs had been sold worldwide.",
+    "tagline": "first commercially released CD player",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sony_CDP-101",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lettore%20CD%20Sony%20CDP-101%20-%20Museo%20della%20Scienza%20e%20della%20Tecnologia%20Leonardo%20da%20Vinci.jpg",
+    "imageAttribution": "Alessandro Nassiri, via Wikimedia Commons",
+    "description": "The Sony CDP-101 was the world's first commercially released compact disc player. The system was launched in Japan on October 1, 1982 at a list price of 168,000 yen.",
     "at": {
-      "year": 1979
+      "year": 1982,
+      "month": 10
     },
-    "row": 7
+    "row": 12
   },
   {
     "id": "Q8707",
@@ -58,7 +59,7 @@
         "month": 2
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q5167679",
@@ -77,7 +78,7 @@
       "year": 1991,
       "month": 12
     },
-    "row": 14
+    "row": 15
   },
   {
     "id": "Q48584",
@@ -114,7 +115,7 @@
       "year": 1885,
       "month": 12
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q128160",
@@ -154,7 +155,7 @@
       "year": 1990,
       "month": 4
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q17738",
@@ -202,18 +203,19 @@
     "row": 11
   },
   {
-    "id": "Q41207",
-    "name": "coin",
+    "id": "Q3697061",
+    "name": "First gold coin",
     "category": "commerce-finance",
     "regionTags": [],
     "fameScore": 81,
-    "tagline": "piece of hard material produced in large quantities to facilitate trade",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Coin",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/One%20Rupee%20East%20India%20Company.JPG",
-    "description": "A coin is a small object, usually round and flat, used primarily as a medium of exchange or legal tender. They are standardized in weight, and produced in large quantities at a mint in order to facilitate trade. They are most often issued by a government. Coins often have images, numerals, or text on them. The faces of coins or medals are sometimes called the obverse and the reverse, referring to the front and back sides, respectively. The obverse of a coin is commonly called heads, because it often depicts the head of a prominent person, and the reverse is known as tails.",
+    "tagline": "Lydian coin",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Croeseid",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kroisos.%20Circa%20564-53-550-39%20BC.%20AV%20Stater%20%2816mm%2C%2010.76%20g%29.%20Heavy%20series.%20Sardes%20mint.jpg",
+    "imageAttribution": "CNG Coins, via Wikimedia Commons",
+    "description": "The Croeseid, anciently Kroiseioi stateres, was a type of coin, either in gold or silver, which was minted in Sardis by the king of Lydia Croesus from around 550 BC. Croesus is credited with issuing the first true gold coins with a standardised purity for general circulation, and the world's first bimetallic monetary system.",
     "approximateDate": true,
     "at": {
-      "year": -599
+      "year": -549
     },
     "row": 0
   },
@@ -250,7 +252,7 @@
     "at": {
       "year": 1879
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q48469",
@@ -266,7 +268,7 @@
       "year": 1977,
       "month": 9
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q93304",
@@ -474,7 +476,7 @@
     "at": {
       "year": 1885
     },
-    "row": 9
+    "row": 10
   },
   {
     "id": "Q162297",
@@ -509,23 +511,24 @@
       "year": 1993,
       "month": 6
     },
-    "row": 15
+    "row": 16
   },
   {
-    "id": "Q72313",
-    "name": "electric motor",
+    "id": "Q2473989",
+    "name": "First electric motor",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 79,
-    "tagline": "electromechanical device",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_motor",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stator%20and%20rotor%20by%20Zureks.JPG",
-    "imageAttribution": "Zureks, via Wikimedia Commons",
-    "description": "An electric motor is a machine that converts electrical energy into mechanical energy. Most electric motors operate through the interaction between the motor's magnetic field and electric current in a wire winding to generate Lorentz force in the form of torque applied on the motor's shaft. An electric generator is mechanically identical to an electric motor but operates inversely, converting mechanical energy into electrical energy.",
+    "tagline": "Direct current electric motor",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Homopolar_motor",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Homopolar%20Motor%20Large%20neutral.jpg",
+    "imageAttribution": "Original work: Windell H. Oskay\n\nModifications (remove logo): Smial, via Wikimedia Commons",
+    "description": "A homopolar motor is a direct current electric motor with two magnetic poles, the conductors of which always cut unidirectional lines of magnetic flux by rotating a conductor around a fixed axis so that the conductor is perpendicular to a static magnetic field. The resulting force being continuous in one direction, the homopolar motor needs no commutator but still requires slip rings. The word homopolar indicates that the electrical polarity of the conductor and the magnetic field poles do not change.",
     "at": {
-      "year": 1834
+      "year": 1821,
+      "month": 9
     },
-    "row": 2
+    "row": 1
   },
   {
     "id": "Q80728",
@@ -608,7 +611,7 @@
       "year": 1974,
       "month": 3
     },
-    "row": 14
+    "row": 15
   },
   {
     "id": "Q99309",
@@ -658,7 +661,7 @@
     "at": {
       "year": 1889
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q2064618",
@@ -673,7 +676,7 @@
     "at": {
       "year": 1874
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q6113985",
@@ -742,7 +745,7 @@
     "at": {
       "year": 1890
     },
-    "row": 13
+    "row": 12
   },
   {
     "id": "Q125006",
@@ -761,7 +764,7 @@
       "year": 1883,
       "month": 5
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q79757",
@@ -793,7 +796,7 @@
       "year": 1864,
       "month": 4
     },
-    "row": 9
+    "row": 10
   },
   {
     "id": "Q80811",
@@ -825,7 +828,7 @@
       "year": 1977,
       "month": 8
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q101017",
@@ -844,19 +847,19 @@
     "row": 0
   },
   {
-    "id": "Q47433",
-    "name": "banknote",
+    "id": "Q953729",
+    "name": "First banknote",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 78,
-    "tagline": "form of physical currency made of paper or polymer",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Banknote",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/BOH%26MOR-10-Protectorate%20of%20Bohemia%20and%20Moravia-50%20Korun%20%281944%29.jpg",
-    "description": "A banknote or bank note – also called a bill or simply a note – is a type of paper money that is made and distributed (\"issued\") by a bank of issue, payable to the bearer on demand. Banknotes were originally issued by commercial banks, which were legally required to redeem the notes for legal tender when presented to the chief cashier of the originating bank. These commercial banknotes were only traded at face value in the market served by the issuing bank. Commercial banknotes have primarily been replaced by national banknotes issued by central banks or monetary authorities.",
+    "tagline": "one of the first forms of paper money",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jiaozi_(currency)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jiao%20zi.jpg",
+    "description": "Jiaozi was a form of promissory note which appeared around the 11th century in the Sichuan capital of Chengdu, China. Numismatists regard it as the first paper money in history, a development of the Chinese Song Dynasty. Early Jiaozi notes did not have standard denominations but were denominated according to the needs of the purchaser and ranged from 500 wén to 5 guàn. The government office that issued these notes or the Jiaozi wu (交子務) demanded a payment or exchange fee (紙墨費) of 30 wén per guàn exchanged from coins to banknote. The Jiaozi were usually issued biannually.",
     "at": {
-      "year": 618
+      "year": 1024
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q129053",
@@ -932,7 +935,7 @@
       "year": 1908,
       "month": 6
     },
-    "row": 14
+    "row": 15
   },
   {
     "id": "Q159766",
@@ -974,7 +977,7 @@
         "month": 4
       }
     },
-    "row": 10
+    "row": 14
   },
   {
     "id": "Q154255",
@@ -1037,7 +1040,7 @@
         "year": 1871
       }
     },
-    "row": 8
+    "row": 7
   },
   {
     "id": "Q193484",
@@ -1055,7 +1058,7 @@
       "year": 1963,
       "month": 11
     },
-    "row": 12
+    "row": 16
   },
   {
     "id": "Q5725",
@@ -1113,7 +1116,7 @@
     "at": {
       "year": 1903
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q988780",
@@ -1129,7 +1132,7 @@
     "at": {
       "year": 1831
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q20124",
@@ -1145,7 +1148,7 @@
       "year": 1859,
       "month": 11
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q46904",
@@ -1159,23 +1162,26 @@
     "at": {
       "year": 1990
     },
-    "row": 17
+    "row": 18
   },
   {
-    "id": "Q171043",
-    "name": "steam locomotive",
+    "id": "Q11762476",
+    "name": "First steam locomotive",
     "category": "transportation",
-    "regionTags": [],
+    "regionTags": [
+      "northern-europe"
+    ],
     "fameScore": 77,
-    "tagline": "railway locomotive which generates its tractive power from a steam engine",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Steam_locomotive",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/3511%20-%20Hartswater%20240481.jpg",
-    "imageAttribution": "User:Malcolm Best, via Wikimedia Commons",
-    "description": "A steam locomotive, also known as an iron horse, is a type of locomotive that provides the force to move itself and other vehicles by means of the expansion of steam. It is fuelled by burning combustible material to heat water in the locomotive's boiler to the point where it becomes gaseous and its volume increases 1,600 to 1,700 times. Functionally, it is a self-propelled steam engine on wheels.",
+    "tagline": "early British steam locomotive",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pen-y-Darren_(locomotive)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cyfarthfa%20Castle%20-%20geograph.org.uk%20-%20288521.jpg",
+    "imageAttribution": "RAY JONES, via Wikimedia Commons",
+    "description": "Richard Trevithick was a British inventor and mining engineer. The son of a mining captain, and born in the mining heartland of Cornwall, Trevithick was immersed in mining and engineering from an early age. He was an early pioneer of steam-powered road and rail transport, and his most significant contributions were the development of the first high-pressure steam engine and the first working railway steam locomotive. The world's first locomotive-hauled railway journey took place on 21 February 1804, when Trevithick's unnamed steam locomotive hauled a train along the tramway of the Penydarren Ironworks, in Merthyr Tydfil, Wales.",
     "at": {
-      "year": 1814
+      "year": 1804,
+      "month": 2
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q193692",
@@ -1207,7 +1213,7 @@
     "at": {
       "year": 1893
     },
-    "row": 16
+    "row": 6
   },
   {
     "id": "Q164338",
@@ -1226,7 +1232,7 @@
       "year": 1964,
       "month": 10
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q189511",
@@ -1242,7 +1248,7 @@
     "at": {
       "year": 1963
     },
-    "row": 17
+    "row": 12
   },
   {
     "id": "Q64403",
@@ -1328,7 +1334,7 @@
         "month": 9
       }
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q129846",
@@ -1382,7 +1388,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 16
+    "row": 22
   },
   {
     "id": "Q51636",
@@ -1471,7 +1477,7 @@
       "year": 1846,
       "month": 10
     },
-    "row": 7
+    "row": 6
   },
   {
     "id": "Q132560",
@@ -1534,7 +1540,7 @@
     "at": {
       "year": 1888
     },
-    "row": 11
+    "row": 16
   },
   {
     "id": "Q180548",
@@ -1574,7 +1580,7 @@
         "year": 1852
       }
     },
-    "row": 9
+    "row": 8
   },
   {
     "id": "Q11146",
@@ -1593,7 +1599,7 @@
       "year": 1992,
       "month": 2
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q154705",
@@ -1617,7 +1623,7 @@
         "month": 5
       }
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q186356",
@@ -1712,7 +1718,7 @@
       "year": 1914,
       "month": 6
     },
-    "row": 16
+    "row": 14
   },
   {
     "id": "Q6743",
@@ -1894,6 +1900,6 @@
     "at": {
       "year": 1950
     },
-    "row": 24
+    "row": 26
   }
 ]

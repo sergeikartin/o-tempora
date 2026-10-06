@@ -31,7 +31,7 @@
       "category": "one of meta.categories",
       "date": "optional {year, month?, endYear?, endMonth?} — replaces the Wikidata-resolved date"
     },
-    "count": 442
+    "count": 440
   },
   "milestones": [
     {
@@ -200,9 +200,18 @@
       "category": "medicine-health"
     },
     {
-      "id": "Q11472",
-      "name": "Paper",
-      "category": "communication"
+      "id": "Q1811550",
+      "name": "history of paper",
+      "category": "communication",
+      "displayName": {
+        "en": "First paper",
+        "ru": "Первая бумага"
+      },
+      "fameSource": "Q11472",
+      "date": {
+        "year": -140,
+        "approximate": true
+      }
     },
     {
       "id": "Q158075",
@@ -264,9 +273,17 @@
       "category": "communication"
     },
     {
-      "id": "Q9158",
-      "name": "Email",
-      "category": "communication"
+      "id": "Q7391838",
+      "name": "SNDMSG",
+      "category": "communication",
+      "displayName": {
+        "en": "First email",
+        "ru": "Первое электронное письмо"
+      },
+      "fameSource": "Q9158",
+      "date": {
+        "year": 1971
+      }
     },
     {
       "id": "Q466",
@@ -299,9 +316,18 @@
       "category": "media-culture"
     },
     {
-      "id": "Q171043",
-      "name": "Steam locomotive",
-      "category": "transportation"
+      "id": "Q11762476",
+      "name": "Pen-y-Darren locomotive",
+      "category": "transportation",
+      "displayName": {
+        "en": "First steam locomotive",
+        "ru": "Первый паровоз"
+      },
+      "fameSource": "Q171043",
+      "date": {
+        "year": 1804,
+        "month": 2
+      }
     },
     {
       "id": "Q375044",
@@ -394,9 +420,17 @@
       "category": "transportation"
     },
     {
-      "id": "Q12757",
-      "name": "Internal combustion engine",
-      "category": "energy-industry"
+      "id": "Q191801",
+      "name": "four-stroke engine",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First four-stroke engine",
+        "ru": "Первый четырёхтактный двигатель"
+      },
+      "fameSource": "Q12757",
+      "date": {
+        "year": 1876
+      }
     },
     {
       "id": "Q185757",
@@ -564,9 +598,18 @@
       "category": "everyday-technology"
     },
     {
-      "id": "Q34467",
-      "name": "Compact disc",
-      "category": "everyday-technology"
+      "id": "Q3964913",
+      "name": "Sony CDP-101",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First CD player",
+        "ru": "Первый проигрыватель компакт-дисков"
+      },
+      "fameSource": "Q34467",
+      "date": {
+        "year": 1982,
+        "month": 10
+      }
     },
     {
       "id": "Q1515631",
@@ -779,9 +822,18 @@
       "category": "energy-industry"
     },
     {
-      "id": "Q72313",
-      "name": "Electric motor",
-      "category": "energy-industry"
+      "id": "Q2473989",
+      "name": "Homopolar motor",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First electric motor",
+        "ru": "Первый электродвигатель"
+      },
+      "fameSource": "Q72313",
+      "date": {
+        "year": 1821,
+        "month": 9
+      }
     },
     {
       "id": "Q180253",
@@ -854,9 +906,17 @@
       "fameSource": "Q12861"
     },
     {
-      "id": "Q47433",
-      "name": "Banknote",
-      "category": "society-administration"
+      "id": "Q953729",
+      "name": "Jiaozi",
+      "category": "society-administration",
+      "displayName": {
+        "en": "First banknote",
+        "ru": "Первая банкнота"
+      },
+      "fameSource": "Q47433",
+      "date": {
+        "year": 1024
+      }
     },
     {
       "id": "Q12138",
@@ -1689,11 +1749,6 @@
       "category": "landmarks"
     },
     {
-      "id": "Q728428",
-      "name": "Second Temple",
-      "category": "landmarks"
-    },
-    {
       "id": "Q13164",
       "name": "Lomonosov Moscow State University",
       "category": "philosophy-education"
@@ -2212,11 +2267,16 @@
       }
     },
     {
-      "id": "Q41207",
-      "name": "coin",
+      "id": "Q3697061",
+      "name": "Croeseid",
       "category": "commerce-finance",
+      "displayName": {
+        "en": "First gold coin",
+        "ru": "Первая золотая монета"
+      },
+      "fameSource": "Q41207",
       "date": {
-        "year": -599,
+        "year": -549,
         "approximate": true
       }
     },
@@ -2226,16 +2286,6 @@
       "category": "society-administration",
       "date": {
         "year": -507
-      }
-    },
-    {
-      "id": "Q340742",
-      "name": "Axial Age",
-      "category": "philosophy-education",
-      "date": {
-        "year": -799,
-        "endYear": -199,
-        "approximate": true
       }
     },
     {
@@ -2271,15 +2321,6 @@
       "category": "religion-mythology",
       "date": {
         "year": 67,
-        "approximate": true
-      }
-    },
-    {
-      "id": "Q1811550",
-      "name": "history of paper",
-      "category": "everyday-technology",
-      "date": {
-        "year": 105,
         "approximate": true
       }
     },
@@ -2548,6 +2589,11 @@
         "year": 1844,
         "month": 5
       }
+    },
+    {
+      "id": "Q777026",
+      "name": "Stephenson's Rocket",
+      "category": "transportation"
     }
   ]
 }
