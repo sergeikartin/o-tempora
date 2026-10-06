@@ -47,7 +47,7 @@
       "year": 1914,
       "month": 8
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q99717",
@@ -143,7 +143,7 @@
     "at": {
       "year": 1948
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q486",
@@ -181,6 +181,36 @@
       "year": 1450
     },
     "row": 0
+  },
+  {
+    "id": "Q34280",
+    "name": "Первый язык программирования",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 86,
+    "tagline": "первый в мире высокоуровневый язык программирования, созданный немецким инженером Конрадом Цузе в 1943—1945 году",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plankalk%C3%BCl",
+    "description": "Планкалькюль — первый в мире высокоуровневый язык программирования, созданный немецким инженером Конрадом Цузе в 1943—1945 году и впервые опубликованный в 1948 году. Прямой перевод названия как «запланированные вычисления» соответствует понятию «программирование».",
+    "at": {
+      "year": 1942
+    },
+    "row": 8
+  },
+  {
+    "id": "Q782919",
+    "name": "Первая видеоигра",
+    "category": "media-culture",
+    "regionTags": [],
+    "fameScore": 86,
+    "tagline": "компьютерная игра 1962 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spacewar!",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Spacewar%21-PDP-1-20070512.jpg",
+    "imageAttribution": "Joi Ito from Inbamura, Japan, via Wikimedia Commons",
+    "description": "Spacewar! — одна из первых известных цифровых компьютерных игр. Создана Стивом Расселом при участии Мартина Греца и Уэйна Витенена, которые объединились в неформальную творческую группу под названием Hingham Institute. Эта группа в 1961 году задумала разработать игру на платформе мини-компьютера DEC PDP-1 в Массачусетском технологическом институте (МТИ). После того, как знакомый Рассела Алан Коток получил несколько подпрограмм от компании Digital Equipment Corporation (DEC) по расчёту траектории полёта космического аппарата, Рассел занялся программированием игры, а к февралю 1962 года у него была готова первая версия Spacewar!, и на это ушло примерно 200 человеко-часов работы.",
+    "at": {
+      "year": 1962
+    },
+    "row": 8
   },
   {
     "id": "Q42005",
@@ -248,7 +278,7 @@
         "year": 1941
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q5086",
@@ -267,7 +297,7 @@
       "year": 1961,
       "month": 8
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q12562",
@@ -341,7 +371,7 @@
     "at": {
       "year": 1947
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q8272",
@@ -392,7 +422,7 @@
       "year": 1920,
       "month": 1
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q11764",
@@ -517,6 +547,22 @@
     "row": 3
   },
   {
+    "id": "Q1284532",
+    "name": "Первый танк",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 84,
+    "tagline": "world's first tank to enter combat",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mark_I_(tank)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/British%20Mark%20I%20male%20tank%20Somme%2025%20September%201916.jpg",
+    "description": "Mark I — британский тяжёлый танк периода Первой мировой войны. Разработан в 1916 году. Первый в истории танк, применённый в боевых действиях. Родоначальник семейства британских «ромбовидных» танков.",
+    "at": {
+      "year": 1916,
+      "month": 8
+    },
+    "row": 3
+  },
+  {
     "id": "Q11452",
     "name": "общая теория относительности",
     "category": "science-theory",
@@ -530,7 +576,7 @@
     "at": {
       "year": 1916
     },
-    "row": 5
+    "row": 7
   },
   {
     "id": "Q11692568",
@@ -544,7 +590,7 @@
     "at": {
       "year": 1913
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q43653",
@@ -665,6 +711,22 @@
     "row": 0
   },
   {
+    "id": "Q873501",
+    "name": "Первый калькулятор",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "механический калькулятор",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pascaline",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arts%20et%20Metiers%20Pascaline%20dsc03869.jpg",
+    "imageAttribution": "David.Monniaux, via Wikimedia Commons",
+    "description": "Суммирующая машина Паска́ля, «Паскали́на» — арифметическая машина, изобретённая французским учёным Блезом Паскалем (1623—1662) в 1642 году.",
+    "at": {
+      "year": 1642
+    },
+    "row": 2
+  },
+  {
     "id": "Q11455",
     "name": "специальная теория относительности",
     "category": "science-theory",
@@ -677,7 +739,7 @@
     "at": {
       "year": 1905
     },
-    "row": 6
+    "row": 8
   },
   {
     "id": "Q12190",
@@ -693,7 +755,7 @@
       "year": 1928,
       "month": 9
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q12757",
@@ -709,7 +771,7 @@
     "at": {
       "year": 1924
     },
-    "row": 6
+    "row": 11
   },
   {
     "id": "Q933263",
@@ -725,7 +787,7 @@
       "year": 1960,
       "month": 5
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q44973",
@@ -776,7 +838,7 @@
     "at": {
       "year": 1919
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q41644",
@@ -791,7 +853,7 @@
       "year": 1955,
       "month": 5
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q5859",

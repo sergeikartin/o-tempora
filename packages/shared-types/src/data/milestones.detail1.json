@@ -158,6 +158,20 @@
     "row": 1
   },
   {
+    "id": "Q1638417",
+    "name": "First television",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 91,
+    "tagline": "a television system that relies on a mechanical scanning device, to both scan and reproduce the video signal",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mechanical_television",
+    "description": "Mechanical television or mechanical scan television is an obsolete television system that relies on a mechanical scanning device, such as a rotating disk with holes in it or a rotating mirror drum, to scan the scene and generate the video signal, and a similar mechanical device at the receiver to display the picture. A mechanical television receiver was also called a televisor.",
+    "at": {
+      "year": 1920
+    },
+    "row": 1
+  },
+  {
     "id": "Q115564437",
     "name": "ChatGPT",
     "category": "everyday-technology",
@@ -394,5 +408,23 @@
       "year": 870
     },
     "row": 0
+  },
+  {
+    "id": "Q207342",
+    "name": "First nuclear weapon",
+    "category": "energy-industry",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 87,
+    "tagline": "1945 first detonation of a nuclear weapon",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Trinity%20Test%20Fireball%2016ms.jpg",
+    "description": "Trinity was the first detonation of a nuclear weapon, conducted by the United States Army at 5:29 a.m. Mountain War Time on July 16, 1945, as part of the Manhattan Project. The test was of an implosion-design plutonium bomb, or \"gadget\" – the same design as the Fat Man bomb later detonated over Nagasaki, Japan, on August 9, 1945. Concerns about whether the complex Fat Man design would work led to a decision to conduct the first nuclear test. The code name \"Trinity\" was assigned by J. Robert Oppenheimer, the director of the Los Alamos Laboratory. The name was possibly inspired by the poetry of John Donne.",
+    "at": {
+      "year": 1945,
+      "month": 7
+    },
+    "row": 6
   }
 ]

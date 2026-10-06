@@ -19,7 +19,7 @@
         "month": 12
       }
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q34467",
@@ -77,7 +77,7 @@
       "year": 1991,
       "month": 12
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q48584",
@@ -138,7 +138,7 @@
         "month": 10
       }
     },
-    "row": 10
+    "row": 7
   },
   {
     "id": "Q2513",
@@ -154,7 +154,7 @@
       "year": 1990,
       "month": 4
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q17738",
@@ -169,6 +169,37 @@
       "year": 1977
     },
     "row": 8
+  },
+  {
+    "id": "Q1430251",
+    "name": "First firearm",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "earliest form of firearm used in 13th century China, 14th century Europe",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hand_cannon",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gun%20Sweden%20Morko.jpg",
+    "imageAttribution": "Sven Rosborn, via Wikimedia Commons",
+    "description": "The hand cannon, also known as the gonne or handgonne, is the first true firearm and the successor of the fire lance. It is the oldest type of small arms, as well as the most mechanically simple form of metal barrel firearms. Unlike matchlock firearms it requires direct manual external ignition through a touch hole without any form of firing mechanism. It may also be considered a forerunner of the handgun. The hand cannon was widely used in China from the 13th century onward and later throughout Eurasia in the 14th century. In 15th century Europe, the hand cannon evolved to become the matchlock arquebus, which became the first firearm to have a trigger.",
+    "at": {
+      "year": 1250
+    },
+    "row": 1
+  },
+  {
+    "id": "Q223493",
+    "name": "First personal computer",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 81,
+    "tagline": "microcomputer designed in 1974",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Altair_8800",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CPU%20Altair%208800.jpg",
+    "description": "The Altair 8800 is a microcomputer introduced in 1974 by Micro Instrumentation and Telemetry Systems (MITS) based on the Intel 8080 CPU. It was the first commercially successful personal computer. Interest in the Altair 8800 grew quickly after it was featured on the cover of the January 1975 issue of Popular Electronics. It was sold by mail order through advertisements in Popular Electronics, Radio-Electronics, and in other hobbyist magazines. The Altair 8800 had no built-in screen or video output, so it would have to be connected to a serial terminal or teletype to have any output. To connect it to a terminal, a serial interface card had to be installed. Alternatively, the Altair could be programmed using its front-panel switches.",
+    "at": {
+      "year": 1975
+    },
+    "row": 11
   },
   {
     "id": "Q40605",
@@ -203,7 +234,7 @@
     "at": {
       "year": 1879
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q48469",
@@ -219,7 +250,7 @@
       "year": 1977,
       "month": 9
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q93304",
@@ -397,6 +428,39 @@
     "row": 4
   },
   {
+    "id": "Q272975",
+    "name": "First machine gun",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "1860s multi-barrel rapid-fire gun of Richard Gatling, or its 1880s-1890s variants",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gatling_gun",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fort%20Laramie%20National%20Historic%20Site%20Gatling%20gun%2016-9-2014%2015-26-03.jpg",
+    "imageAttribution": "Paul Hermans, via Wikimedia Commons",
+    "description": "The Gatling gun, also known in Russia as the Gorloff, is a rapid-firing multiple-barrel firearm invented in 1861 by Richard Jordan Gatling of North Carolina. It is an early machine gun and a forerunner of the modern electric motor-driven rotary cannon.",
+    "at": {
+      "year": 1862
+    },
+    "row": 3
+  },
+  {
+    "id": "Q944544",
+    "name": "First skyscraper",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 80,
+    "tagline": "19th century commercial building in Chicago, Illinois",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Home_Insurance_Building",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Home%20Insurance%20Building.JPG",
+    "description": "The Home Insurance Building was an early skyscraper that stood in Chicago from 1885 to its demolition in 1931. Originally ten stories and 138 ft (42.1 m) tall, it was designed by William Le Baron Jenney in 1884 and completed the next year. Two floors were added in 1891, bringing its height to 180 feet. It was the first tall building to be supported both inside and outside by a fireproof structural steel frame, though it also included reinforced concrete. It is often cited as the world's first skyscraper.",
+    "at": {
+      "year": 1885
+    },
+    "row": 9
+  },
+  {
     "id": "Q162297",
     "name": "hygiene",
     "category": "public-health",
@@ -429,7 +493,7 @@
       "year": 1993,
       "month": 6
     },
-    "row": 14
+    "row": 15
   },
   {
     "id": "Q72313",
@@ -509,7 +573,7 @@
         "month": 7
       }
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q47672",
@@ -528,7 +592,7 @@
       "year": 1974,
       "month": 3
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q99309",
@@ -578,7 +642,22 @@
     "at": {
       "year": 1889
     },
-    "row": 8
+    "row": 7
+  },
+  {
+    "id": "Q2064618",
+    "name": "First typewriter",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "typewriter",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Sholes_and_Glidden_typewriter",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sholesglidden2.png",
+    "description": "The Sholes and Glidden typewriter was the first commercially successful typewriter. Principally designed by the American inventor Christopher Latham Sholes, it was developed with the assistance of fellow printer Samuel W. Soule and amateur mechanic Carlos S. Glidden. Work began in 1867, but Soule left the enterprise shortly thereafter, replaced by James Densmore, who provided financial backing and the driving force behind the machine's continued development. After several short-lived attempts to manufacture the device, the machine was acquired by E. Remington and Sons in early 1873. An arms manufacturer seeking to diversify, Remington further refined the typewriter before finally placing it on the market on July 1, 1874.",
+    "at": {
+      "year": 1874
+    },
+    "row": 10
   },
   {
     "id": "Q228036",
@@ -630,7 +709,7 @@
     "at": {
       "year": 1890
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q125006",
@@ -649,7 +728,7 @@
       "year": 1883,
       "month": 5
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q79757",
@@ -665,7 +744,7 @@
     "at": {
       "year": 1643
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q58148",
@@ -681,7 +760,7 @@
       "year": 1864,
       "month": 4
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q80811",
@@ -697,7 +776,7 @@
       "year": 1957,
       "month": 10
     },
-    "row": 12
+    "row": 14
   },
   {
     "id": "Q48475",
@@ -763,7 +842,7 @@
       "year": 1947,
       "month": 8
     },
-    "row": 19
+    "row": 21
   },
   {
     "id": "Q133331",
@@ -820,7 +899,7 @@
       "year": 1908,
       "month": 6
     },
-    "row": 12
+    "row": 14
   },
   {
     "id": "Q159766",
@@ -881,7 +960,7 @@
       "year": 1939,
       "month": 9
     },
-    "row": 17
+    "row": 19
   },
   {
     "id": "Q167634",
@@ -925,7 +1004,7 @@
         "year": 1871
       }
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q193484",
@@ -943,7 +1022,7 @@
       "year": 1963,
       "month": 11
     },
-    "row": 14
+    "row": 12
   },
   {
     "id": "Q5725",
@@ -1001,7 +1080,7 @@
     "at": {
       "year": 1903
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q988780",
@@ -1033,7 +1112,7 @@
       "year": 1859,
       "month": 11
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q46904",
@@ -1047,7 +1126,7 @@
     "at": {
       "year": 1990
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q171043",
@@ -1063,7 +1142,7 @@
     "at": {
       "year": 1814
     },
-    "row": 8
+    "row": 7
   },
   {
     "id": "Q193692",
@@ -1095,7 +1174,7 @@
     "at": {
       "year": 1893
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q164338",
@@ -1114,7 +1193,7 @@
       "year": 1964,
       "month": 10
     },
-    "row": 9
+    "row": 15
   },
   {
     "id": "Q189511",
@@ -1161,7 +1240,7 @@
     "at": {
       "year": 1873
     },
-    "row": 12
+    "row": 14
   },
   {
     "id": "Q131262",
@@ -1195,7 +1274,7 @@
       "year": 1648,
       "month": 10
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q131482",
@@ -1270,7 +1349,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 20
+    "row": 16
   },
   {
     "id": "Q132560",
@@ -1286,7 +1365,7 @@
     "at": {
       "year": 1931
     },
-    "row": 20
+    "row": 22
   },
   {
     "id": "Q116434",
@@ -1301,7 +1380,7 @@
     "at": {
       "year": 1877
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q160464",
@@ -1333,7 +1412,7 @@
     "at": {
       "year": 1888
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q180548",
@@ -1373,7 +1452,7 @@
         "year": 1852
       }
     },
-    "row": 8
+    "row": 7
   },
   {
     "id": "Q11146",
@@ -1392,7 +1471,7 @@
       "year": 1992,
       "month": 2
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q154705",
@@ -1416,7 +1495,7 @@
         "month": 5
       }
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q186356",
@@ -1438,7 +1517,7 @@
         "year": 1939
       }
     },
-    "row": 21
+    "row": 7
   },
   {
     "id": "Q157506",
@@ -1493,7 +1572,7 @@
         "month": 8
       }
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q192050",
@@ -1511,7 +1590,7 @@
       "year": 1914,
       "month": 6
     },
-    "row": 14
+    "row": 17
   },
   {
     "id": "Q6743",
@@ -1536,7 +1615,7 @@
         "month": 6
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q71229",
@@ -1584,7 +1663,7 @@
     "at": {
       "year": 1936
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q11932",
@@ -1614,7 +1693,7 @@
     "at": {
       "year": 2007
     },
-    "row": 14
+    "row": 12
   },
   {
     "id": "Q223644",

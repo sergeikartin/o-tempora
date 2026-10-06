@@ -1217,27 +1217,6 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Screen%20of%20Facebook%20%282%29.PNG"
     },
     {
-      "id": "Q178193",
-      "name": "steamboat",
-      "nameRu": "паровая лодка",
-      "category": "transportation",
-      "year": 1783,
-      "tagline": "type of steam powered vessel; smaller than a steamship; boat in which the primary method of marine propulsion is steam power",
-      "taglineRu": "судно с паровым двигателем",
-      "sitelinks": 62,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steamboat",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Steamboat",
-        "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E6%B1%BD%E8%88%B9",
-        "es": "https://es.wikipedia.org/wiki/Barco_de_vapor",
-        "fr": "https://fr.wikipedia.org/wiki/Bateau_%C3%A0_vapeur",
-        "de": "https://de.wikipedia.org/wiki/Dampfschiff",
-        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D8%B1%D8%A8_%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/100%20Jahre%20Dampfschiff%20%27Stadt%20Rapperswil%27%20-%20Tag%20der%20offenen%20Dampfschiff-T%C3%BCre%20am%20B%C3%BCrkliplatz%20-%20Alpenquai%202014-04-26%2017-47-28%20%28P7700%29.JPG"
-    },
-    {
       "id": "Q171043",
       "name": "steam locomotive",
       "nameRu": "паровоз",
@@ -8477,6 +8456,461 @@
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Micrographia%20title%20page.gif"
+    },
+    {
+      "id": "Q161540",
+      "name": "First jet aircraft",
+      "nameRu": "Первый реактивный самолёт",
+      "category": "transportation",
+      "year": 1939,
+      "month": 8,
+      "tagline": "experimental jet aircraft",
+      "sitelinks": 39,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Heinkel_He_178",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Heinkel_He_178",
+        "zh": "https://zh.wikipedia.org/wiki/Heinkel_He_178",
+        "es": "https://es.wikipedia.org/wiki/Heinkel_He_178",
+        "fr": "https://fr.wikipedia.org/wiki/Heinkel_He_178",
+        "de": "https://de.wikipedia.org/wiki/Heinkel_He_178",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%87%D8%A7%D9%8A%D9%86%D9%83%D9%84_%D9%87%D9%8A_178",
+        "ru": "https://ru.wikipedia.org/wiki/Heinkel_He_178"
+      },
+      "fameSitelinks": 57,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Jet_aircraft",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%96%B7%E6%B0%94%E5%BC%8F%E9%A3%9E%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Avi%C3%B3n_de_reacci%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Avion_%C3%A0_r%C3%A9action",
+        "de": "https://de.wikipedia.org/wiki/Strahlflugzeug",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B7%D8%A7%D8%A6%D8%B1%D8%A9_%D9%86%D9%81%D8%A7%D8%AB%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D1%81%D0%B0%D0%BC%D0%BE%D0%BB%D1%91%D1%82"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Heinkel%20He%20178%20050602-F-1234P-002.jpg"
+    },
+    {
+      "id": "Q223365",
+      "name": "First supersonic flight",
+      "nameRu": "Первый сверхзвуковой полёт",
+      "category": "transportation",
+      "year": 1945,
+      "tagline": "1946 experimental aircraft model by Bell",
+      "sitelinks": 43,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bell_X-1",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Bell_X-1",
+        "zh": "https://zh.wikipedia.org/wiki/X-1%E8%A9%A6%E9%A9%97%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Bell_X-1",
+        "fr": "https://fr.wikipedia.org/wiki/Bell_X-1",
+        "de": "https://de.wikipedia.org/wiki/Bell_X-1",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%8A%D9%84_%D8%A5%D9%83%D8%B3-1",
+        "ru": "https://ru.wikipedia.org/wiki/Bell_X-1"
+      },
+      "fameSitelinks": 40,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sound_barrier",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%9F%B3%E9%9A%9C",
+        "es": "https://es.wikipedia.org/wiki/Barrera_del_sonido",
+        "fr": "https://fr.wikipedia.org/wiki/Mur_du_son",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AC%D8%AF%D8%A7%D8%B1_%D8%A7%D9%84%D8%B5%D9%88%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B2%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B9_%D0%B1%D0%B0%D1%80%D1%8C%D0%B5%D1%80"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bell%20X-1%20in%20flight.jpg"
+    },
+    {
+      "id": "Q1284532",
+      "name": "First tank",
+      "nameRu": "Первый танк",
+      "category": "energy-industry",
+      "year": 1916,
+      "month": 8,
+      "tagline": "world's first tank to enter combat",
+      "sitelinks": 38,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mark_I_(tank)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mark_I_(tank)",
+        "zh": "https://zh.wikipedia.org/wiki/Mark_I_%E5%9D%A6%E5%85%8B",
+        "es": "https://es.wikipedia.org/wiki/Mark_I_(carro_de_combate)",
+        "fr": "https://fr.wikipedia.org/wiki/Mark_I_(char)",
+        "de": "https://de.wikipedia.org/wiki/Mark_I_(Panzer)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D8%A8%D8%A7%D8%A8%D8%A9_%D9%85%D8%A7%D8%B1%D9%83-1",
+        "ru": "https://ru.wikipedia.org/wiki/Mark_I_(%D1%82%D0%B0%D0%BD%D0%BA)"
+      },
+      "fameSitelinks": 156,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Tank",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9D%A6%E5%85%8B",
+        "es": "https://es.wikipedia.org/wiki/Carro_de_combate",
+        "fr": "https://fr.wikipedia.org/wiki/Char_d%27assaut",
+        "de": "https://de.wikipedia.org/wiki/Kampfpanzer",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AF%D8%A8%D8%A7%D8%A8%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B0%D0%BD%D0%BA"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/British%20Mark%20I%20male%20tank%20Somme%2025%20September%201916.jpg"
+    },
+    {
+      "id": "Q272975",
+      "name": "First machine gun",
+      "nameRu": "Первый пулемёт",
+      "category": "energy-industry",
+      "year": 1862,
+      "tagline": "1860s multi-barrel rapid-fire gun of Richard Gatling, or its 1880s-1890s variants",
+      "taglineRu": "многоствольное скорострельное стрелковое оружие, один из образцов картечниц",
+      "sitelinks": 43,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Gatling_gun",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Gatling_gun",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8A%A0%E7%89%B9%E6%9E%97%E6%9C%BA%E6%9E%AA",
+        "es": "https://es.wikipedia.org/wiki/Ametralladora_Gatling",
+        "fr": "https://fr.wikipedia.org/wiki/Mitrailleuse_Gatling",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%86%D8%AF%D9%82%D9%8A%D8%A9_%D8%BA%D8%A7%D8%AA%D9%84%D9%8A%D9%86%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%80%D1%82%D0%B5%D1%87%D0%BD%D0%B8%D1%86%D0%B0_%D0%93%D0%B0%D1%82%D0%BB%D0%B8%D0%BD%D0%B3%D0%B0"
+      },
+      "fameSitelinks": 120,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Machine_gun",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9C%BA%E6%9E%AA",
+        "es": "https://es.wikipedia.org/wiki/Ametralladora",
+        "fr": "https://fr.wikipedia.org/wiki/Mitrailleuse",
+        "de": "https://de.wikipedia.org/wiki/Maschinengewehr",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B1%D8%B4%D8%A7%D8%B4_(%D8%B3%D9%84%D8%A7%D8%AD)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%83%D0%BB%D0%B5%D0%BC%D1%91%D1%82"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Fort%20Laramie%20National%20Historic%20Site%20Gatling%20gun%2016-9-2014%2015-26-03.jpg"
+    },
+    {
+      "id": "Q1430251",
+      "name": "First firearm",
+      "nameRu": "Первое огнестрельное оружие",
+      "category": "energy-industry",
+      "year": 1250,
+      "tagline": "earliest form of firearm used in 13th century China, 14th century Europe",
+      "taglineRu": "ранний тип ручного огнестрельного оружия",
+      "sitelinks": 29,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hand_cannon",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Hand_cannon",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%89%8B%E9%93%B3",
+        "es": "https://es.wikipedia.org/wiki/Ca%C3%B1%C3%B3n_de_mano",
+        "fr": "https://fr.wikipedia.org/wiki/Canon_%C3%A0_main",
+        "de": "https://de.wikipedia.org/wiki/Handrohr",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AF%D9%81%D8%B9_%D9%8A%D8%AF%D9%88%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%87%D0%BD%D0%B8%D1%86%D0%B0"
+      },
+      "fameSitelinks": 121,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Firearm",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%81%AB%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/Arma_de_fuego",
+        "fr": "https://fr.wikipedia.org/wiki/Arme_%C3%A0_feu",
+        "de": "https://de.wikipedia.org/wiki/Feuerwaffe",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D8%AD_%D9%86%D8%A7%D8%B1%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D0%B3%D0%BD%D0%B5%D1%81%D1%82%D1%80%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5_%D0%BE%D1%80%D1%83%D0%B6%D0%B8%D0%B5"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gun%20Sweden%20Morko.jpg"
+    },
+    {
+      "id": "Q207342",
+      "name": "First nuclear weapon",
+      "nameRu": "Первое ядерное оружие",
+      "category": "energy-industry",
+      "year": 1945,
+      "month": 7,
+      "tagline": "1945 first detonation of a nuclear weapon",
+      "taglineRu": "Первое в мире испытание ядерного оружия",
+      "sitelinks": 54,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%B8%89%E4%BD%8D%E4%B8%80%E9%AB%94_(%E6%A0%B8%E8%A9%A6%E9%A9%97)",
+        "es": "https://es.wikipedia.org/wiki/Prueba_Trinity",
+        "fr": "https://fr.wikipedia.org/wiki/Trinity_(essai_atomique)",
+        "de": "https://de.wikipedia.org/wiki/Trinity-Test",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%B1%D9%8A%D9%86%D9%8A%D8%AA%D9%8A_(%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1_%D9%86%D9%88%D9%88%D9%8A)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B8%D0%BD%D0%B8%D1%82%D0%B8_(%D1%8F%D0%B4%D0%B5%D1%80%D0%BD%D0%BE%D0%B5_%D0%B8%D1%81%D0%BF%D1%8B%D1%82%D0%B0%D0%BD%D0%B8%D0%B5)"
+      },
+      "fameSitelinks": 159,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nuclear_weapon",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A0%B8%E6%AD%A6%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/Arma_nuclear",
+        "fr": "https://fr.wikipedia.org/wiki/Arme_nucl%C3%A9aire",
+        "de": "https://de.wikipedia.org/wiki/Kernwaffe",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D8%AD_%D9%86%D9%88%D9%88%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AF%D0%B4%D0%B5%D1%80%D0%BD%D0%BE%D0%B5_%D0%BE%D1%80%D1%83%D0%B6%D0%B8%D0%B5"
+      },
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Trinity%20Test%20Fireball%2016ms.jpg"
+    },
+    {
+      "id": "Q944544",
+      "name": "First skyscraper",
+      "nameRu": "Первый небоскрёб",
+      "category": "landmarks",
+      "year": 1885,
+      "tagline": "19th century commercial building in Chicago, Illinois",
+      "taglineRu": "первый в мире небоскрёб",
+      "sitelinks": 31,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Home_Insurance_Building",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Home_Insurance_Building",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%AE%B6%E5%BA%AD%E4%BF%9D%E9%9A%AA%E5%A4%A7%E6%A8%93",
+        "es": "https://es.wikipedia.org/wiki/Home_Insurance_Building",
+        "fr": "https://fr.wikipedia.org/wiki/Home_Insurance_Building",
+        "de": "https://de.wikipedia.org/wiki/Home_Insurance_Building",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%A8%D9%86%D9%89_%D8%A8%D9%8A%D8%AA_%D8%A7%D9%84%D8%AA%D8%A3%D9%85%D9%8A%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A5%D0%BE%D1%83%D0%BC-%D0%B8%D0%BD%D1%88%D1%83%D1%80%D1%8D%D0%BD%D1%81-%D0%B1%D0%B8%D0%BB%D0%B4%D0%B8%D0%BD%D0%B3"
+      },
+      "fameSitelinks": 114,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Skyscraper",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%91%A9%E5%A4%A9%E5%A4%A7%E6%A8%93",
+        "es": "https://es.wikipedia.org/wiki/Rascacielos",
+        "fr": "https://fr.wikipedia.org/wiki/Gratte-ciel",
+        "de": "https://de.wikipedia.org/wiki/Wolkenkratzer",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D8%A7%D8%B7%D8%AD%D8%A9_%D8%B3%D8%AD%D8%A7%D8%A8",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D0%B1%D0%BE%D1%81%D0%BA%D1%80%D1%91%D0%B1"
+      },
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Home%20Insurance%20Building.JPG"
+    },
+    {
+      "id": "Q2064618",
+      "name": "First typewriter",
+      "nameRu": "Первая печатная машинка",
+      "category": "everyday-technology",
+      "year": 1874,
+      "tagline": "typewriter",
+      "sitelinks": 12,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sholes_and_Glidden_typewriter",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sholes_and_Glidden_typewriter",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%82%96%E7%88%BE%E6%96%AF%E8%88%87%E6%A0%BC%E9%87%8C%E9%A0%93%E6%89%93%E5%AD%97%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/M%C3%A1quina_de_escribir_Sholes_y_Glidden",
+        "fr": "https://fr.wikipedia.org/wiki/Machine_%C3%A0_%C3%A9crire_Sholes_et_Glidden",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%B4%D9%88%D9%84%D8%B2_%D9%88%D8%BA%D9%84%D8%A7%D9%8A%D8%AF%D9%86_%D8%A7%D9%84%D9%83%D8%A7%D8%AA%D8%A8%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%BC%D0%B8%D0%BD%D0%B3%D1%82%D0%BE%D0%BD_1"
+      },
+      "fameSitelinks": 106,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Typewriter",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%89%93%E5%AD%97%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/M%C3%A1quina_de_escribir",
+        "fr": "https://fr.wikipedia.org/wiki/Machine_%C3%A0_%C3%A9crire",
+        "de": "https://de.wikipedia.org/wiki/Schreibmaschine",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D9%83%D8%A7%D8%AA%D8%A8%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D1%88%D1%83%D1%89%D0%B0%D1%8F_%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%BA%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sholesglidden2.png"
+    },
+    {
+      "id": "Q34280",
+      "name": "First programming language",
+      "nameRu": "Первый язык программирования",
+      "category": "everyday-technology",
+      "year": 1942,
+      "tagline": "programming language designed 1942 to 1945",
+      "taglineRu": "первый в мире высокоуровневый язык программирования, созданный немецким инженером Конрадом Цузе в 1943—1945 году",
+      "sitelinks": 25,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Plankalk%C3%BCl",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Plankalk%C3%BCl",
+        "zh": "https://zh.wikipedia.org/wiki/Plankalk%C3%BCl",
+        "es": "https://es.wikipedia.org/wiki/Plankalk%C3%BCl",
+        "fr": "https://fr.wikipedia.org/wiki/Plankalk%C3%BCl",
+        "de": "https://de.wikipedia.org/wiki/Plankalk%C3%BCl",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%84%D8%A7%D9%86%D9%83%D8%A7%D9%84%D9%83%D9%88%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BB%D0%B0%D0%BD%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%8E%D0%BB%D1%8C"
+      },
+      "fameSitelinks": 164,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Programming_language",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80",
+        "es": "https://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Langage_de_programmation",
+        "de": "https://de.wikipedia.org/wiki/Programmiersprache",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D8%BA%D8%A9_%D8%A8%D8%B1%D9%85%D8%AC%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q223493",
+      "name": "First personal computer",
+      "nameRu": "Первый персональный компьютер",
+      "category": "everyday-technology",
+      "year": 1975,
+      "tagline": "microcomputer designed in 1974",
+      "taglineRu": "персональный компьютер",
+      "sitelinks": 42,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Altair_8800",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Altair_8800",
+        "zh": "https://zh.wikipedia.org/wiki/Altair_8800",
+        "es": "https://es.wikipedia.org/wiki/Altair_8800",
+        "fr": "https://fr.wikipedia.org/wiki/Altair_8800",
+        "de": "https://de.wikipedia.org/wiki/Altair_8800",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D9%84%D8%AA%D9%8A%D8%B1_8800",
+        "ru": "https://ru.wikipedia.org/wiki/Altair_8800"
+      },
+      "fameSitelinks": 110,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Personal_computer",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%B8%AA%E4%BA%BA%E7%94%B5%E8%84%91",
+        "es": "https://es.wikipedia.org/wiki/Computadora_personal",
+        "fr": "https://fr.wikipedia.org/wiki/Ordinateur_personnel",
+        "de": "https://de.wikipedia.org/wiki/Personal_Computer",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D8%A7%D8%B3%D9%88%D8%A8_%D8%B4%D8%AE%D8%B5%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CPU%20Altair%208800.jpg"
+    },
+    {
+      "id": "Q782919",
+      "name": "First video game",
+      "nameRu": "Первая видеоигра",
+      "category": "media-culture",
+      "year": 1962,
+      "tagline": "1962 space combat video game",
+      "taglineRu": "компьютерная игра 1962 года",
+      "sitelinks": 41,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spacewar!",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Spacewar!",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%AA%E7%A9%BA%E6%88%B0%E7%88%AD%EF%BC%81",
+        "es": "https://es.wikipedia.org/wiki/Spacewar!",
+        "fr": "https://fr.wikipedia.org/wiki/Spacewar!",
+        "de": "https://de.wikipedia.org/wiki/Spacewar!",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D8%A8%D9%8A%D8%B3%D9%88%D8%A7%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/Spacewar!"
+      },
+      "fameSitelinks": 170,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Video_game",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E6%B8%B8%E6%88%8F",
+        "es": "https://es.wikipedia.org/wiki/Videojuego",
+        "fr": "https://fr.wikipedia.org/wiki/Jeu_vid%C3%A9o",
+        "de": "https://de.wikipedia.org/wiki/Computerspiel",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D8%B9%D8%A8%D8%A9_%D9%81%D9%8A%D8%AF%D9%8A%D9%88",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%8F_%D0%B8%D0%B3%D1%80%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Spacewar%21-PDP-1-20070512.jpg"
+    },
+    {
+      "id": "Q873501",
+      "name": "First calculator",
+      "nameRu": "Первый калькулятор",
+      "category": "everyday-technology",
+      "year": 1642,
+      "tagline": "mechanical calculator",
+      "taglineRu": "механический калькулятор",
+      "sitelinks": 42,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Pascaline",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Pascaline",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%BB%BE%E8%BC%AA%E5%BC%8F%E5%8A%A0%E6%B3%95%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/Pascalina",
+        "fr": "https://fr.wikipedia.org/wiki/Pascaline",
+        "de": "https://de.wikipedia.org/wiki/Pascaline",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%A8%D8%A7%D8%B3%D9%83%D8%A7%D9%84_%D8%A7%D9%84%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D0%BC%D0%BC%D0%B8%D1%80%D1%83%D1%8E%D1%89%D0%B0%D1%8F_%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0_%D0%9F%D0%B0%D1%81%D0%BA%D0%B0%D0%BB%D1%8F"
+      },
+      "fameSitelinks": 125,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Calculator",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E5%99%A8",
+        "es": "https://es.wikipedia.org/wiki/Calculadora",
+        "fr": "https://fr.wikipedia.org/wiki/Calculatrice",
+        "de": "https://de.wikipedia.org/wiki/Taschenrechner",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arts%20et%20Metiers%20Pascaline%20dsc03869.jpg"
+    },
+    {
+      "id": "Q1638417",
+      "name": "First television",
+      "nameRu": "Первый телевизор",
+      "category": "communication",
+      "year": 1920,
+      "tagline": "a television system that relies on a mechanical scanning device, to both scan and reproduce the video signal",
+      "taglineRu": "разновидность телевидения, использующая электромеханические устройства",
+      "sitelinks": 14,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mechanical_television",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mechanical_television",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A9%9F%E6%A2%B0%E6%8E%83%E6%8F%8F%E9%9B%BB%E8%A6%96",
+        "es": "https://es.wikipedia.org/wiki/Televisi%C3%B3n_electromec%C3%A1nica",
+        "fr": "https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9vision_m%C3%A9canique",
+        "de": "https://de.wikipedia.org/wiki/Mechanisches_Fernsehen",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%84%D9%81%D8%A7%D8%B2_%D9%85%D9%8A%D9%83%D8%A7%D9%86%D9%8A%D9%83%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%85%D0%B0%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D1%82%D0%B5%D0%BB%D0%B5%D0%B2%D0%B8%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
+      "fameSitelinks": 269,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Television",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E8%A7%86",
+        "es": "https://es.wikipedia.org/wiki/Televisi%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9vision",
+        "de": "https://de.wikipedia.org/wiki/Fernsehen",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%84%D9%81%D8%B2%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BB%D0%B5%D0%B2%D0%B8%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q41751",
+      "name": "First pendulum clock",
+      "nameRu": "Первые маятниковые часы",
+      "category": "everyday-technology",
+      "year": 1656,
+      "tagline": "timekeeping device",
+      "sitelinks": 36,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Pendulum_clock",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Pendulum_clock",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%91%86%E9%92%9F",
+        "es": "https://es.wikipedia.org/wiki/Reloj_de_p%C3%A9ndulo",
+        "fr": "https://fr.wikipedia.org/wiki/Pendule_(horloge)",
+        "de": "https://de.wikipedia.org/wiki/Pendeluhr",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D8%A7%D8%B9%D8%A9_%D9%86%D9%88%D8%A7%D8%B3"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pendule%20electrique%20l%20maitrier%2005117.jpg"
+    },
+    {
+      "id": "Q178193",
+      "name": "steamboat",
+      "nameRu": "паровая лодка",
+      "category": "transportation",
+      "year": 1783,
+      "tagline": "type of steam powered vessel; smaller than a steamship; boat in which the primary method of marine propulsion is steam power",
+      "taglineRu": "судно с паровым двигателем",
+      "sitelinks": 62,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steamboat",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Steamboat",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E6%B1%BD%E8%88%B9",
+        "es": "https://es.wikipedia.org/wiki/Barco_de_vapor",
+        "fr": "https://fr.wikipedia.org/wiki/Bateau_%C3%A0_vapeur",
+        "de": "https://de.wikipedia.org/wiki/Dampfschiff",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D8%B1%D8%A8_%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/100%20Jahre%20Dampfschiff%20%27Stadt%20Rapperswil%27%20-%20Tag%20der%20offenen%20Dampfschiff-T%C3%BCre%20am%20B%C3%BCrkliplatz%20-%20Alpenquai%202014-04-26%2017-47-28%20%28P7700%29.JPG"
     }
   ]
 }

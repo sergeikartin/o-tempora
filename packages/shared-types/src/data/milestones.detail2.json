@@ -47,7 +47,7 @@
       "year": 1914,
       "month": 8
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q99717",
@@ -143,7 +143,7 @@
     "at": {
       "year": 1948
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q486",
@@ -181,6 +181,36 @@
       "year": 1450
     },
     "row": 0
+  },
+  {
+    "id": "Q34280",
+    "name": "First programming language",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 86,
+    "tagline": "programming language designed 1942 to 1945",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Plankalk%C3%BCl",
+    "description": "Plankalkül is a programming language designed for engineering purposes by Konrad Zuse between 1942 and 1945. It was the first high-level programming language to be designed for a computer. Zuse never implemented Plankalkül on any of his Z-series machines.",
+    "at": {
+      "year": 1942
+    },
+    "row": 8
+  },
+  {
+    "id": "Q782919",
+    "name": "First video game",
+    "category": "media-culture",
+    "regionTags": [],
+    "fameScore": 86,
+    "tagline": "1962 space combat video game",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spacewar!",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Spacewar%21-PDP-1-20070512.jpg",
+    "imageAttribution": "Joi Ito from Inbamura, Japan, via Wikimedia Commons",
+    "description": "Spacewar! is a space combat video game developed in 1962 by Steve Russell in collaboration with Martin Graetz, Wayne Wiitanen, Bob Saunders, Steve Piner, and others. It was written for the newly installed DEC PDP-1 minicomputer at the Massachusetts Institute of Technology. It was later expanded by other students and employees of universities in the area, including by Dan Edwards and Peter Samson. It also spread to many of the few dozen installations of PDP-1s, making it the first video game to be played at multiple computer installations.",
+    "at": {
+      "year": 1962
+    },
+    "row": 8
   },
   {
     "id": "Q42005",
@@ -248,7 +278,7 @@
         "year": 1941
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q5086",
@@ -267,7 +297,7 @@
       "year": 1961,
       "month": 8
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q12562",
@@ -341,7 +371,7 @@
     "at": {
       "year": 1947
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q8272",
@@ -392,7 +422,7 @@
       "year": 1920,
       "month": 1
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q11764",
@@ -517,6 +547,22 @@
     "row": 3
   },
   {
+    "id": "Q1284532",
+    "name": "First tank",
+    "category": "energy-industry",
+    "regionTags": [],
+    "fameScore": 84,
+    "tagline": "world's first tank to enter combat",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mark_I_(tank)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/British%20Mark%20I%20male%20tank%20Somme%2025%20September%201916.jpg",
+    "description": "British heavy tanks were a series of related armoured fighting vehicles developed by the UK during the First World War. The Mark I was the world's first tank, a tracked, armed, and armoured vehicle, to enter combat. The name \"tank\" was initially a code name to maintain secrecy and disguise its true purpose. The tank was developed in 1915 to break the stalemate of trench warfare. It could survive the machine gun and small-arms fire in \"no man's land\", travel over difficult terrain, crush barbed wire, and cross trenches to assault fortified enemy positions with powerful armament. Tanks also carried supplies and troops.",
+    "at": {
+      "year": 1916,
+      "month": 8
+    },
+    "row": 3
+  },
+  {
     "id": "Q11452",
     "name": "general relativity",
     "category": "science-theory",
@@ -530,7 +576,7 @@
     "at": {
       "year": 1916
     },
-    "row": 5
+    "row": 7
   },
   {
     "id": "Q11692568",
@@ -544,7 +590,7 @@
     "at": {
       "year": 1913
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q43653",
@@ -665,6 +711,22 @@
     "row": 0
   },
   {
+    "id": "Q873501",
+    "name": "First calculator",
+    "category": "everyday-technology",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "mechanical calculator",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pascaline",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arts%20et%20Metiers%20Pascaline%20dsc03869.jpg",
+    "imageAttribution": "David.Monniaux, via Wikimedia Commons",
+    "description": "The Pascaline is a mechanical calculator invented by Blaise Pascal in 1642. Pascal was led to develop a calculator by the laborious arithmetical calculations required by his father's work as the supervisor of taxes in Rouen, France. He designed the machine to add and subtract two numbers and to perform multiplication and division through repeated addition or subtraction. It used a stylus to perform calculations.",
+    "at": {
+      "year": 1642
+    },
+    "row": 2
+  },
+  {
     "id": "Q11455",
     "name": "special relativity",
     "category": "science-theory",
@@ -677,7 +739,7 @@
     "at": {
       "year": 1905
     },
-    "row": 6
+    "row": 8
   },
   {
     "id": "Q12190",
@@ -693,7 +755,7 @@
       "year": 1928,
       "month": 9
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q12757",
@@ -709,7 +771,7 @@
     "at": {
       "year": 1924
     },
-    "row": 6
+    "row": 11
   },
   {
     "id": "Q933263",
@@ -725,7 +787,7 @@
       "year": 1960,
       "month": 5
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q44973",
@@ -776,7 +838,7 @@
     "at": {
       "year": 1919
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q41644",
@@ -791,7 +853,7 @@
       "year": 1955,
       "month": 5
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q5859",

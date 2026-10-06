@@ -30,7 +30,7 @@
       "name": "milestone label",
       "category": "one of meta.categories"
     },
-    "count": 357
+    "count": 371
   },
   "milestones": [
     {
@@ -287,11 +287,6 @@
       "id": "Q355",
       "name": "Facebook",
       "category": "media-culture"
-    },
-    {
-      "id": "Q178193",
-      "name": "Steamboat",
-      "category": "transportation"
     },
     {
       "id": "Q171043",
@@ -1872,6 +1867,150 @@
       "id": "Q2469465",
       "name": "Micrographia",
       "category": "science-theory"
+    },
+    {
+      "id": "Q161540",
+      "name": "Heinkel He 178",
+      "category": "transportation",
+      "displayName": {
+        "en": "First jet aircraft",
+        "ru": "Первый реактивный самолёт"
+      },
+      "fameSource": "Q206592"
+    },
+    {
+      "id": "Q223365",
+      "name": "Bell X-1",
+      "category": "transportation",
+      "displayName": {
+        "en": "First supersonic flight",
+        "ru": "Первый сверхзвуковой полёт"
+      },
+      "fameSource": "Q1031651"
+    },
+    {
+      "id": "Q1284532",
+      "name": "Mark I",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First tank",
+        "ru": "Первый танк"
+      },
+      "fameSource": "Q12876"
+    },
+    {
+      "id": "Q272975",
+      "name": "Gatling gun",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First machine gun",
+        "ru": "Первый пулемёт"
+      },
+      "fameSource": "Q12800"
+    },
+    {
+      "id": "Q1430251",
+      "name": "hand cannon",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First firearm",
+        "ru": "Первое огнестрельное оружие"
+      },
+      "fameSource": "Q12796"
+    },
+    {
+      "id": "Q207342",
+      "name": "Trinity",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First nuclear weapon",
+        "ru": "Первое ядерное оружие"
+      },
+      "fameSource": "Q12802"
+    },
+    {
+      "id": "Q944544",
+      "name": "Home Insurance Building",
+      "category": "landmarks",
+      "displayName": {
+        "en": "First skyscraper",
+        "ru": "Первый небоскрёб"
+      },
+      "fameSource": "Q11303"
+    },
+    {
+      "id": "Q2064618",
+      "name": "Sholes and Glidden typewriter",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First typewriter",
+        "ru": "Первая печатная машинка"
+      },
+      "fameSource": "Q46335"
+    },
+    {
+      "id": "Q34280",
+      "name": "Plankalkül",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First programming language",
+        "ru": "Первый язык программирования"
+      },
+      "fameSource": "Q9143"
+    },
+    {
+      "id": "Q223493",
+      "name": "Altair 8800",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First personal computer",
+        "ru": "Первый персональный компьютер"
+      },
+      "fameSource": "Q16338"
+    },
+    {
+      "id": "Q782919",
+      "name": "Spacewar!",
+      "category": "media-culture",
+      "displayName": {
+        "en": "First video game",
+        "ru": "Первая видеоигра"
+      },
+      "fameSource": "Q7889"
+    },
+    {
+      "id": "Q873501",
+      "name": "Pascal's calculator",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First calculator",
+        "ru": "Первый калькулятор"
+      },
+      "fameSource": "Q31087"
+    },
+    {
+      "id": "Q1638417",
+      "name": "mechanical television",
+      "category": "communication",
+      "displayName": {
+        "en": "First television",
+        "ru": "Первый телевизор"
+      },
+      "fameSource": "Q289"
+    },
+    {
+      "id": "Q41751",
+      "name": "pendulum clock",
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "First pendulum clock",
+        "ru": "Первые маятниковые часы"
+      }
+    },
+    {
+      "id": "Q178193",
+      "name": "Steamboat",
+      "category": "transportation"
     }
   ]
 }
