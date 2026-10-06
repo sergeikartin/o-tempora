@@ -9,6 +9,7 @@ import { validateSparqlResultShape } from "./validate-sparql-result.js";
 import { extractWikipediaArticleTitle } from "./batched-pageviews-fetch.js";
 import { batchedWikipediaExtractFetch, type WikipediaExtractEntry } from "./batched-wikipedia-extract-fetch.js";
 import type { WikipediaLanguage } from "./wikipedia-client.js";
+import { filterByQids, writeRecordFile, type QidFilter } from "./qid-filter.js";
 import { LANES, type Lane } from "./lane.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
@@ -130,10 +131,6 @@ const LOAD_EXTRACT_ENTRIES_RU: Record<Lane, () => Promise<WikipediaExtractEntry[
   milestones: loadMilestonesEntriesRu,
 };
 
-function toRecord(map: Map<string, string>): Record<string, string> {
-  return Object.fromEntries(map);
-}
-
 // Runs one language's extract pass across the given lanes — same "prefix
 // the id with its lane, merge, then split back apart" shape for both the
 // English and Russian passes below, since batchedWikipediaExtractFetch
@@ -144,8 +141,9 @@ async function runExtractPass(
   loadEntries: Record<Lane, () => Promise<WikipediaExtractEntry[]>>,
   lang: WikipediaLanguage,
   fileSuffix: string,
+  qids: QidFilter,
 ): Promise<void> {
-  const entriesByLane = new Map(await Promise.all(lanes.map(async (l) => [l, await loadEntries[l]()] as const)));
+  const entriesByLane = new Map(await Promise.all(lanes.map(async (l) => [l, filterByQids(await loadEntries[l](), qids)] as const)));
 
   console.log(
     `Fetching ${lang} Wikipedia extracts for ${lanes
@@ -170,7 +168,7 @@ async function runExtractPass(
     lanes.map(async (l) => {
       const extracts = extractsByLane.get(l)!;
       const outputPath = path.join(RAW_DIR, `${l}-wikipedia-extracts${fileSuffix}.raw.json`);
-      await fsPromises.writeFile(outputPath, JSON.stringify(toRecord(extracts), null, 2));
+      await writeRecordFile(outputPath, extracts, qids);
       console.log(`Wrote ${extracts.size} ${l} ${lang} extracts to ${outputPath}`);
     }),
   );
@@ -201,10 +199,10 @@ async function runExtractPass(
 // packages/data-pipeline/CLAUDE.md and docs/adr/0012-lane-scoped-fetch.md).
 // The English and Russian passes themselves run sequentially, not
 // concurrently, for the same reason.
-export async function fetchWikipediaExtracts(lane?: Lane): Promise<void> {
+export async function fetchWikipediaExtracts(lane?: Lane, qids?: QidFilter): Promise<void> {
   const lanes: readonly Lane[] = lane ? [lane] : LANES;
-  await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES, "en", "");
-  await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES_RU, "ru", ".ru");
+  await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES, "en", "", qids);
+  await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES_RU, "ru", ".ru", qids);
 }
 
 if (fileURLToPath(import.meta.url) === process.argv[1]) {

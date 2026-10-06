@@ -5,6 +5,7 @@ import { MILESTONE_CATEGORIES, type MilestoneCategory } from "@o-tempora/shared-
 import { buildMilestonesEnrichmentQuery } from "./queries/milestones-enrichment.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 import { parseIsoYear, parseMonthIfKnown } from "../transform/wikidata-date.js";
+import { filterByQids, mergeEnriched, type QidFilter } from "./qid-filter.js";
 import { PAGEVIEWS_LANGUAGES, articleVar, isArticleUrlsRecord, type PageviewsLanguage } from "./pageviews-languages.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
@@ -198,13 +199,15 @@ interface EnrichmentFields {
 // dateProperty/source field to begin with as of the taxonomy-expansion
 // merge; name follows the same per-language rdfs:label treatment
 // Conflicts uses).
-export async function fetchMilestonesEnrichment(): Promise<void> {
+export async function fetchMilestonesEnrichment(qids?: QidFilter): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "milestones-curated.raw.json");
   const curated = validateCuratedMilestonesFile(JSON.parse(await readFile(curatedPath, "utf8")));
-  const fameSourceIds = curated.milestones.flatMap((milestone) => (milestone.fameSource ? [milestone.fameSource] : []));
-  const ids = [...new Set([...curated.milestones.map((milestone) => milestone.id), ...fameSourceIds])];
+  const selected = filterByQids(curated.milestones, qids);
+  const fameSourceIds = selected.flatMap((milestone) => (milestone.fameSource ? [milestone.fameSource] : []));
+  const ids = [...new Set([...selected.map((milestone) => milestone.id), ...fameSourceIds])];
 
   console.log(`Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated milestones...`);
+  if (qids && ids.length === 0) return;
   const result = await batchedSparqlFetch(ids, buildMilestonesEnrichmentQuery);
 
   const enrichmentById = new Map<string, EnrichmentFields>();
@@ -248,7 +251,7 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
     }
   }
 
-  const milestones: EnrichedMilestone[] = curated.milestones.map((milestone) => {
+  const enriched: EnrichedMilestone[] = selected.map((milestone) => {
     const enrichment = enrichmentById.get(milestone.id);
     const fameSource = milestone.fameSource ? enrichmentById.get(milestone.fameSource) : undefined;
     return {
@@ -273,6 +276,7 @@ export async function fetchMilestonesEnrichment(): Promise<void> {
   });
 
   const outputPath = path.join(RAW_DIR, "milestones-curated-enriched.raw.json");
+  const milestones = await mergeEnriched(outputPath, "milestones", curated.milestones.map((milestone) => milestone.id), enriched, qids);
   await writeFile(outputPath, JSON.stringify({ milestones }, null, 2));
   console.log(`Wrote ${milestones.length} enriched milestones to ${outputPath}`);
 }

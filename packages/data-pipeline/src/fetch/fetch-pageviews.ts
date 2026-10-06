@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { validateEnrichedMilestonesFile } from "./fetch-milestones-enrichment.js";
 import { validateEnrichedConflictsFile } from "./fetch-conflicts-enrichment.js";
 import { batchedPageviewsFetch } from "./batched-pageviews-fetch.js";
+import { filterByQids, writeRecordFile, type QidFilter } from "./qid-filter.js";
 import type { PageviewsLanguage } from "./pageviews-languages.js";
 import type { Lane } from "./lane.js";
 
@@ -55,15 +56,16 @@ const LOAD_PAGEVIEWS_ENTRIES: Record<PageviewsLane, () => Promise<PageviewsEntry
 // batched-pageviews-fetch.ts's BATCH_DELAY_MS, same reasoning
 // fetchImageAttribution's concurrent Promise.all uses) — same behavior as
 // before this stage was lane-scoped.
-export async function fetchPageviews(lane?: PageviewsLane): Promise<void> {
+export async function fetchPageviews(lane?: PageviewsLane, qids?: QidFilter): Promise<void> {
   const lanes = lane ? [lane] : PAGEVIEWS_LANES;
   await Promise.all(
     lanes.map(async (l) => {
-      const entries = await LOAD_PAGEVIEWS_ENTRIES[l]();
+      const entries = filterByQids(await LOAD_PAGEVIEWS_ENTRIES[l](), qids);
+      if (qids && entries.length === 0) return;
       console.log(`Fetching trailing-4-year pageviews for ${entries.length} curated ${l}...`);
       const pageviews = await batchedPageviewsFetch(entries);
       const outputPath = path.join(RAW_DIR, `${l}-pageviews.raw.json`);
-      await fsPromises.writeFile(outputPath, JSON.stringify(Object.fromEntries(pageviews), null, 2));
+      await writeRecordFile(outputPath, pageviews, qids);
       console.log(`Wrote ${pageviews.size} ${l} pageview totals to ${outputPath}`);
     }),
   );

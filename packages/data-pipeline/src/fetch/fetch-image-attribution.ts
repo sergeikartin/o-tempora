@@ -5,6 +5,7 @@ import { validateSparqlResultShape } from "./validate-sparql-result.js";
 import { validateEnrichedMilestonesFile } from "./fetch-milestones-enrichment.js";
 import { validateEnrichedConflictsFile } from "./fetch-conflicts-enrichment.js";
 import { batchedCommonsImageAttributionFetch } from "./batched-commons-image-attribution-fetch.js";
+import { filterByQids, writeRecordFile, type QidFilter } from "./qid-filter.js";
 import { LANES, type Lane } from "./lane.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
@@ -73,15 +74,16 @@ const LOAD_IMAGE_ENTRIES: Record<Lane, () => Promise<ImageEntry[]>> = {
 // batched-commons-image-attribution-fetch.ts's BATCH_DELAY_MS, so awaiting
 // them one at a time would only add wall-clock time, not correctness or
 // rate-limit safety) — same behavior as before this stage was lane-scoped.
-export async function fetchImageAttribution(lane?: Lane): Promise<void> {
+export async function fetchImageAttribution(lane?: Lane, qids?: QidFilter): Promise<void> {
   const lanes = lane ? [lane] : LANES;
   await Promise.all(
     lanes.map(async (l) => {
-      const entries = await LOAD_IMAGE_ENTRIES[l]();
+      const entries = filterByQids(await LOAD_IMAGE_ENTRIES[l](), qids);
+      if (qids && entries.length === 0) return;
       console.log(`Fetching Commons attribution for ${entries.length} ${l} images...`);
       const attribution = await batchedCommonsImageAttributionFetch(entries);
       const outputPath = path.join(RAW_DIR, `${l}-image-attribution.raw.json`);
-      await fsPromises.writeFile(outputPath, JSON.stringify(Object.fromEntries(attribution), null, 2));
+      await writeRecordFile(outputPath, attribution, qids);
       console.log(`Wrote ${attribution.size} ${l} attributions to ${outputPath}`);
     }),
   );

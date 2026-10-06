@@ -5,6 +5,7 @@ import { CONFLICT_CATEGORIES, type ConflictCategory } from "@o-tempora/shared-ty
 import { buildConflictsEnrichmentQuery } from "./queries/conflicts-enrichment.js";
 import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
 import { parseIsoYear, parseMonthIfKnown } from "../transform/wikidata-date.js";
+import { filterByQids, mergeEnriched, type QidFilter } from "./qid-filter.js";
 import { PAGEVIEWS_LANGUAGES, articleVar, isArticleUrlsRecord, type PageviewsLanguage } from "./pageviews-languages.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
@@ -161,12 +162,14 @@ interface EnrichmentFields {
 // are never curator-authored here, and name no longer is either — the
 // curated file's own `name` is left unused, only id/category/parentId are
 // still read from it (see conflicts-curated.raw.json's meta.description).
-export async function fetchConflictsEnrichment(): Promise<void> {
+export async function fetchConflictsEnrichment(qids?: QidFilter): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "conflicts-curated.raw.json");
   const curated = validateCuratedConflictsFile(JSON.parse(await readFile(curatedPath, "utf8")));
-  const ids = curated.conflicts.map((conflict) => conflict.id);
+  const selected = filterByQids(curated.conflicts, qids);
+  const ids = selected.map((conflict) => conflict.id);
 
   console.log(`Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated conflicts...`);
+  if (qids && ids.length === 0) return;
   const result = await batchedSparqlFetch(ids, buildConflictsEnrichmentQuery);
 
   const enrichmentById = new Map<string, EnrichmentFields>();
@@ -210,7 +213,7 @@ export async function fetchConflictsEnrichment(): Promise<void> {
     }
   }
 
-  const conflicts: EnrichedConflict[] = curated.conflicts.map((conflict) => {
+  const enriched: EnrichedConflict[] = selected.map((conflict) => {
     const enrichment = enrichmentById.get(conflict.id);
     return {
       id: conflict.id,
@@ -233,6 +236,7 @@ export async function fetchConflictsEnrichment(): Promise<void> {
   });
 
   const outputPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
+  const conflicts = await mergeEnriched(outputPath, "conflicts", curated.conflicts.map((conflict) => conflict.id), enriched, qids);
   await writeFile(outputPath, JSON.stringify({ conflicts }, null, 2));
   console.log(`Wrote ${conflicts.length} enriched conflicts to ${outputPath}`);
 }
