@@ -1151,6 +1151,22 @@
     "row": 13
   },
   {
+    "id": "Q158075",
+    "name": "Gutenberg Bible",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "early book printed with movable type",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gutenberg_Bible",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gutenberg%20Bible%2C%20Lenox%20Copy%2C%20New%20York%20Public%20Library%2C%202009.%20Pic%2001.jpg",
+    "imageAttribution": "NYC Wanderer (Kevin Eng), via Wikimedia Commons",
+    "description": "The Gutenberg Bible, also known as the 42-line Bible, the Mazarin Bible or the B42, is the earliest major book printed in Europe using mass-produced metal movable type. It marked the start of the \"Gutenberg Revolution\" and the age of printed books in the West. The book is valued and revered for its high aesthetic and artistic qualities and its historical significance.",
+    "at": {
+      "year": 1455
+    },
+    "row": 3
+  },
+  {
     "id": "Q46904",
     "name": "Global System for Mobile Communications",
     "category": "communication",
@@ -1266,18 +1282,16 @@
     "row": 5
   },
   {
-    "id": "Q131502",
-    "name": "electrical generator",
+    "id": "Q3249519",
+    "name": "First practical generator",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 77,
-    "tagline": "device that converts mechanical energy to electrical energy",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_generator",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siemens%20Brothers%20-%20DC%20Generator%20-%20Electricity%20Gallery%20-%20BITM%20-%20Kolkata%202015-05-09%206509.JPG",
-    "imageAttribution": "Biswarup Ganguly, via Wikimedia Commons",
-    "description": "In electricity generation, a generator, also called an electric generator, electrical generator, and electromagnetic generator is an electromechanical device that converts mechanical energy to electrical energy for use in an external circuit. In most generators which are rotating machines, a source of kinetic power rotates the generator's shaft, and the generator produces an electric current at its output terminals which flows through an external circuit, powering electrical loads. Sources of mechanical energy used to drive generators include steam turbines, gas turbines, water turbines, internal combustion engines, wind turbines and even hand cranks. Generators produce nearly all of the electric power for worldwide electric power grids. The first electromagnetic generator, the Faraday disk, was invented in 1831 by British scientist Michael Faraday.",
+    "tagline": "electrical generator that produces direct current",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gramme_machine",
+    "description": "A Gramme machine, Gramme ring, Gramme magneto, or Gramme dynamo is an electrical generator that produces direct current, named for its Belgian inventor, Zénobe Gramme, and was built as either a dynamo or a magneto. It was the first generator to produce power on a commercial scale for industry. Inspired by a machine invented by Antonio Pacinotti in 1860, Gramme was the developer of a new induced rotor in form of a wire-wrapped ring and demonstrated this apparatus to the Academy of Sciences in Paris in 1871. Although popular in 19th century electrical machines, the Gramme winding principle is no longer used since it makes inefficient use of the conductors. The portion of the winding on the interior of the ring cuts no flux and does not contribute to energy conversion in the machine. The winding requires twice the number of turns and twice the number of commutator bars as an equivalent drum-wound armature.",
     "at": {
-      "year": 1873
+      "year": 1871
     },
     "row": 14
   },
@@ -1407,21 +1421,6 @@
       "month": 4
     },
     "row": 0
-  },
-  {
-    "id": "Q144334",
-    "name": "printing press",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 77,
-    "tagline": "device for evenly printing ink onto a print medium",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg",
-    "description": "A printing press is a machine that applies pressure to transfer ink onto a surface made of paper, cloth, or a similar material. Its workers are known as printing press operators. It marked a significant improvement on earlier methods, in which the paper was rubbed by hand to transfer applied ink to the printing surface.",
-    "at": {
-      "year": 1439
-    },
-    "row": 3
   },
   {
     "id": "Q185682",

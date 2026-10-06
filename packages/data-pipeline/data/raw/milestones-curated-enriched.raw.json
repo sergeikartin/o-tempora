@@ -874,7 +874,7 @@
       "name": "Gutenberg Bible",
       "nameRu": "Библия Гутенберга",
       "category": "communication",
-      "year": 1450,
+      "year": 1455,
       "tagline": "early book printed with movable type",
       "taglineRu": "Библия, изданная Иоанном Гутенбергом",
       "sitelinks": 55,
@@ -887,6 +887,16 @@
         "de": "https://de.wikipedia.org/wiki/Gutenberg-Bibel",
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%83%D8%AA%D8%A7%D8%A8_%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3_(%D8%B7%D8%A8%D8%B9%D8%A9_%D8%BA%D9%88%D8%AA%D9%86%D8%A8%D8%B1%D8%BA)",
         "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D1%8F_%D0%93%D1%83%D1%82%D0%B5%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%D0%B0"
+      },
+      "fameSitelinks": 80,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Printing_press",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%88%B7%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Imprenta",
+        "fr": "https://fr.wikipedia.org/wiki/Presse_typographique",
+        "de": "https://de.wikipedia.org/wiki/Druckpresse",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%A7%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%87%D0%BD%D0%BE%D0%B9_%D1%82%D0%B8%D0%BF%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%BA"
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gutenberg%20Bible%2C%20Lenox%20Copy%2C%20New%20York%20Public%20Library%2C%202009.%20Pic%2001.jpg"
@@ -1645,36 +1655,25 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/4StrokeEngine%20Ortho%203D%20Small.gif"
     },
     {
-      "id": "Q185757",
-      "name": "hovercraft",
-      "nameRu": "Судно на воздушной подушке",
-      "category": "transportation",
-      "year": 1955,
-      "tagline": "vehicle capable of movement within ground effect at speed or stationary over all surfaces without contact",
-      "sitelinks": 69,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hovercraft",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Hovercraft",
-        "zh": "https://zh.wikipedia.org/wiki/%E6%B0%A3%E5%A2%8A%E8%88%B9",
-        "es": "https://es.wikipedia.org/wiki/Aerodeslizador",
-        "fr": "https://fr.wikipedia.org/wiki/A%C3%A9roglisseur",
-        "de": "https://de.wikipedia.org/wiki/Luftkissenfahrzeug",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D9%88%D8%A7%D9%85%D8%A9",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D0%B4%D0%BD%D0%BE_%D0%BD%D0%B0_%D0%B2%D0%BE%D0%B7%D0%B4%D1%83%D1%88%D0%BD%D0%BE%D0%B9_%D0%BF%D0%BE%D0%B4%D1%83%D1%88%D0%BA%D0%B5"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LCAC%2019970620.jpg"
-    },
-    {
-      "id": "Q211382",
-      "name": "high-speed rail",
-      "nameRu": "скоростная железная дорога",
+      "id": "Q660895",
+      "name": "First high-speed railway",
+      "nameRu": "Первая высокоскоростная железная дорога",
       "category": "infrastructure",
       "year": 1964,
-      "tagline": "type of rail network utilizing trains that run significantly faster than those of traditional rail",
-      "sitelinks": 66,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/High-speed_rail",
+      "month": 10,
+      "tagline": "high-speed railway line in Japan servicing between Tokyo and Shin-Ōsaka (through to Hakata) stations",
+      "sitelinks": 43,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tokaido_Shinkansen",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Tokaido_Shinkansen",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9D%B1%E6%B5%B7%E9%81%93%E6%96%B0%E5%B9%B9%E7%B7%9A",
+        "es": "https://es.wikipedia.org/wiki/T%C5%8Dkaid%C5%8D_Shinkansen",
+        "fr": "https://fr.wikipedia.org/wiki/Ligne_Shinkansen_T%C5%8Dkaid%C5%8D",
+        "de": "https://de.wikipedia.org/wiki/T%C5%8Dkaid%C5%8D-Shinkansen",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D0%BA%D0%B0%D0%B9%D0%B4%D0%BE-%D1%81%D0%B8%D0%BD%D0%BA%D0%B0%D0%BD%D1%81%D1%8D%D0%BD"
+      },
+      "fameSitelinks": 66,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/High-speed_rail",
         "zh": "https://zh.wikipedia.org/wiki/%E9%AB%98%E9%80%9F%E9%90%B5%E8%B7%AF",
         "es": "https://es.wikipedia.org/wiki/Alta_velocidad_ferroviaria",
@@ -1683,8 +1682,10 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%83%D8%A9_%D8%AD%D8%AF%D9%8A%D8%AF%D9%8A%D8%A9_%D9%81%D8%A7%D8%A6%D9%82%D8%A9_%D8%A7%D9%84%D8%B3%D8%B1%D8%B9%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D1%81%D0%BA%D0%BE%D1%80%D0%BE%D1%81%D1%82%D0%BD%D0%BE%D0%B9_%D0%BD%D0%B0%D0%B7%D0%B5%D0%BC%D0%BD%D1%8B%D0%B9_%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Steigung%20NIM.jpg"
+      "countries": [
+        "Q17"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Series-N700a-Mt.Fuji.jpg"
     },
     {
       "id": "Q164338",
@@ -3481,16 +3482,22 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nobel%20patent.jpg"
     },
     {
-      "id": "Q131502",
-      "name": "electrical generator",
-      "nameRu": "электрический генератор",
+      "id": "Q3249519",
+      "name": "First practical generator",
+      "nameRu": "Первый практический генератор",
       "category": "energy-industry",
-      "year": 1873,
-      "tagline": "device that converts mechanical energy to electrical energy",
-      "taglineRu": "устройство для преобразования неэлектрических видов энергии в электрическую",
-      "sitelinks": 84,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electric_generator",
+      "year": 1871,
+      "tagline": "electrical generator that produces direct current",
+      "sitelinks": 11,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Gramme_machine",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Gramme_machine",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A0%BC%E6%8B%89%E5%A7%86%E6%A9%9F",
+        "es": "https://es.wikipedia.org/wiki/Dinamo_de_Gramme",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%BA%D8%B1%D8%A7%D9%85"
+      },
+      "fameSitelinks": 84,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Electric_generator",
         "zh": "https://zh.wikipedia.org/wiki/%E5%8F%91%E7%94%B5%E6%9C%BA",
         "es": "https://es.wikipedia.org/wiki/Generador_el%C3%A9ctrico",
@@ -3499,8 +3506,7 @@
         "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%88%D9%84%D8%AF_%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A6%D9%8A",
         "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Siemens%20Brothers%20-%20DC%20Generator%20-%20Electricity%20Gallery%20-%20BITM%20-%20Kolkata%202015-05-09%206509.JPG"
+      "countries": []
     },
     {
       "id": "Q1188138",
@@ -3733,15 +3739,21 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/P1050763%20Louvre%20code%20Hammurabi%20face%20rwk-gradient.jpg"
     },
     {
-      "id": "Q192803",
-      "name": "double-entry bookkeeping",
-      "nameRu": "двойная запись",
+      "id": "Q19321855",
+      "name": "First double-entry bookkeeping treatise",
+      "nameRu": "Первый трактат о двойной бухгалтерии",
       "category": "society-administration",
       "year": 1494,
-      "tagline": "seamless, chronological and factual ordered recording of all business processes in a company based of documented evidence",
-      "sitelinks": 53,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Double-entry_bookkeeping",
+      "tagline": "book by Luca Pacioli",
+      "sitelinks": 12,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Summa_de_arithmetica",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Summa_de_arithmetica",
+        "es": "https://es.wikipedia.org/wiki/Summa_de_arithmetica",
+        "fr": "https://fr.wikipedia.org/wiki/Summa_de_arithmetica,_geometria,_de_proportioni_et_de_proportionalita"
+      },
+      "fameSitelinks": 53,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Double-entry_bookkeeping",
         "zh": "https://zh.wikipedia.org/wiki/%E5%A4%8D%E5%BC%8F%E7%B0%BF%E8%AE%B0",
         "es": "https://es.wikipedia.org/wiki/Partida_doble",
@@ -3750,7 +3762,8 @@
         "ar": "https://ar.wikipedia.org/wiki/%D9%82%D9%8A%D8%AF_%D9%85%D8%B2%D8%AF%D9%88%D8%AC",
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0%D1%8F_%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C"
       },
-      "countries": []
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Titelbladet%20till%20%22Summa%20de%20arithmetica%20...%22.jpg"
     },
     {
       "id": "Q7813",
@@ -8925,16 +8938,21 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pendule%20electrique%20l%20maitrier%2005117.jpg"
     },
     {
-      "id": "Q178193",
-      "name": "steamboat",
-      "nameRu": "паровая лодка",
+      "id": "Q7263709",
+      "name": "First steamboat",
+      "nameRu": "Первый пароход",
       "category": "transportation",
       "year": 1783,
-      "tagline": "type of steam powered vessel; smaller than a steamship; boat in which the primary method of marine propulsion is steam power",
-      "taglineRu": "судно с паровым двигателем",
-      "sitelinks": 62,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steamboat",
+      "tagline": "1783 French experimental steamship",
+      "sitelinks": 5,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Pyroscaphe",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Pyroscaphe",
+        "de": "https://de.wikipedia.org/wiki/Pyroscaphe",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%8A%D8%B1%D9%88%D8%B3%D9%83%D8%A7%D9%81"
+      },
+      "fameSitelinks": 62,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Steamboat",
         "zh": "https://zh.wikipedia.org/wiki/%E8%92%B8%E6%B1%BD%E8%88%B9",
         "es": "https://es.wikipedia.org/wiki/Barco_de_vapor",
@@ -8942,8 +8960,10 @@
         "de": "https://de.wikipedia.org/wiki/Dampfschiff",
         "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D8%B1%D8%A8_%D8%A8%D8%AE%D8%A7%D8%B1%D9%8A"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/100%20Jahre%20Dampfschiff%20%27Stadt%20Rapperswil%27%20-%20Tag%20der%20offenen%20Dampfschiff-T%C3%BCre%20am%20B%C3%BCrkliplatz%20-%20Alpenquai%202014-04-26%2017-47-28%20%28P7700%29.JPG"
+      "countries": [
+        "Q70972"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/D%27AbbansSteamshipModel.jpg"
     },
     {
       "id": "Q8275",
@@ -9166,28 +9186,6 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BD%D0%B8%D0%B3%D0%B0_%D0%B0%D0%B1%D0%B0%D0%BA%D0%B0"
       },
       "countries": []
-    },
-    {
-      "id": "Q144334",
-      "name": "printing press",
-      "nameRu": "ручной типографский станок",
-      "category": "communication",
-      "year": 1439,
-      "tagline": "device for evenly printing ink onto a print medium",
-      "taglineRu": "устройство для создания типографских оттисков",
-      "sitelinks": 80,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Printing_press",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Printing_press",
-        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%88%B7%E6%9C%BA",
-        "es": "https://es.wikipedia.org/wiki/Imprenta",
-        "fr": "https://fr.wikipedia.org/wiki/Presse_typographique",
-        "de": "https://de.wikipedia.org/wiki/Druckpresse",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%A7%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%87%D0%BD%D0%BE%D0%B9_%D1%82%D0%B8%D0%BF%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%BA"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/The%20Caxton%20Celebration%20-%20William%20Caxton%20showing%20specimens%20of%20his%20printing%20to%20King%20Edward%20IV%20and%20his%20Queen.jpg"
     },
     {
       "id": "Q204023",
@@ -10489,6 +10487,26 @@
         "Q145"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stephenson%27s%20Rocket%20drawing.jpg"
+    },
+    {
+      "id": "Q1785439",
+      "name": "North River Steamboat",
+      "category": "transportation",
+      "year": 1807,
+      "month": 8,
+      "tagline": "1807 passenger steamboat by Robert Fulton, first steamship in regular service",
+      "sitelinks": 14,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/North_River_Steamboat",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/North_River_Steamboat",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8C%97%E6%B2%B3%E8%99%9F",
+        "fr": "https://fr.wikipedia.org/wiki/Clermont_(navire)",
+        "de": "https://de.wikipedia.org/wiki/North_River_Steamboat"
+      },
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Clermont%20replica.jpg"
     }
   ]
 }

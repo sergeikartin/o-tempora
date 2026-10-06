@@ -31,7 +31,7 @@
       "category": "one of meta.categories",
       "date": "optional {year, month?, endYear?, endMonth?} — replaces the Wikidata-resolved date"
     },
-    "count": 440
+    "count": 439
   },
   "milestones": [
     {
@@ -216,7 +216,11 @@
     {
       "id": "Q158075",
       "name": "Gutenberg Bible",
-      "category": "communication"
+      "category": "communication",
+      "fameSource": "Q144334",
+      "date": {
+        "year": 1455
+      }
     },
     {
       "id": "Q6501061",
@@ -433,14 +437,18 @@
       }
     },
     {
-      "id": "Q185757",
-      "name": "Hovercraft",
-      "category": "transportation"
-    },
-    {
-      "id": "Q211382",
-      "name": "High-speed rail",
-      "category": "infrastructure"
+      "id": "Q660895",
+      "name": "Tōkaidō Shinkansen",
+      "category": "infrastructure",
+      "displayName": {
+        "en": "First high-speed railway",
+        "ru": "Первая высокоскоростная железная дорога"
+      },
+      "fameSource": "Q211382",
+      "date": {
+        "year": 1964,
+        "month": 10
+      }
     },
     {
       "id": "Q164338",
@@ -866,9 +874,17 @@
       "category": "energy-industry"
     },
     {
-      "id": "Q131502",
-      "name": "Electrical generator",
-      "category": "energy-industry"
+      "id": "Q3249519",
+      "name": "Gramme machine",
+      "category": "energy-industry",
+      "displayName": {
+        "en": "First practical generator",
+        "ru": "Первый практический генератор"
+      },
+      "fameSource": "Q131502",
+      "date": {
+        "year": 1871
+      }
     },
     {
       "id": "Q1188138",
@@ -934,9 +950,17 @@
       "category": "society-administration"
     },
     {
-      "id": "Q192803",
-      "name": "Double-entry bookkeeping",
-      "category": "society-administration"
+      "id": "Q19321855",
+      "name": "Summa de arithmetica",
+      "category": "society-administration",
+      "displayName": {
+        "en": "First double-entry bookkeeping treatise",
+        "ru": "Первый трактат о двойной бухгалтерии"
+      },
+      "fameSource": "Q192803",
+      "date": {
+        "year": 1494
+      }
     },
     {
       "id": "Q7813",
@@ -2073,9 +2097,17 @@
       }
     },
     {
-      "id": "Q178193",
-      "name": "Steamboat",
-      "category": "transportation"
+      "id": "Q7263709",
+      "name": "Pyroscaphe",
+      "category": "transportation",
+      "displayName": {
+        "en": "First steamboat",
+        "ru": "Первый пароход"
+      },
+      "fameSource": "Q178193",
+      "date": {
+        "year": 1783
+      }
     },
     {
       "id": "Q8275",
@@ -2126,11 +2158,6 @@
       "id": "Q2044496",
       "name": "Liber Abaci",
       "category": "science-theory"
-    },
-    {
-      "id": "Q144334",
-      "name": "printing press",
-      "category": "communication"
     },
     {
       "id": "Q204023",
@@ -2594,6 +2621,15 @@
       "id": "Q777026",
       "name": "Stephenson's Rocket",
       "category": "transportation"
+    },
+    {
+      "id": "Q1785439",
+      "name": "North River Steamboat",
+      "category": "transportation",
+      "date": {
+        "year": 1807,
+        "month": 8
+      }
     }
   ]
 }

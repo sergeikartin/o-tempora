@@ -270,18 +270,21 @@
     "row": 2
   },
   {
-    "id": "Q211382",
-    "name": "скоростная железная дорога",
+    "id": "Q660895",
+    "name": "Первая высокоскоростная железная дорога",
     "category": "infrastructure",
-    "regionTags": [],
+    "regionTags": [
+      "eastern-asia"
+    ],
     "fameScore": 74,
-    "tagline": "type of rail network utilizing trains that run significantly faster than those of traditional rail",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/High-speed_rail",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Steigung%20NIM.jpg",
-    "imageAttribution": "S. Terfloth / Sese Ingolstadt at German Wikipedia, via Wikimedia Commons",
-    "description": "Высокоскоростной наземный транспорт (ВСНТ) — наземный железнодорожный транспорт, обеспечивающий движение скоростных поездов со скоростью свыше 250 км/ч по специализированным путям, либо со скоростью более 200 км/ч по модернизированным существующим путям.",
+    "tagline": "high-speed railway line in Japan servicing between Tokyo and Shin-Ōsaka (through to Hakata) stations",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tokaido_Shinkansen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Series-N700a-Mt.Fuji.jpg",
+    "imageAttribution": "MaedaAkihiko, via Wikimedia Commons",
+    "description": "Токайдо-синкансэн — высокоскоростная магистраль в Японии, соединяющая станции Токио и Син-Осака. Самая первая линия синкансэна и первая в мире высокоскоростная магистраль. Линия открылась в 1964 год, связывает мегаполисы Токио, Нагою и Осаку. Управляется JR Central.",
     "at": {
-      "year": 1964
+      "year": 1964,
+      "month": 10
     },
     "row": 25
   },
@@ -568,21 +571,6 @@
     "row": 1
   },
   {
-    "id": "Q185757",
-    "name": "Судно на воздушной подушке",
-    "category": "transportation",
-    "regionTags": [],
-    "fameScore": 73,
-    "tagline": "vehicle capable of movement within ground effect at speed or stationary over all surfaces without contact",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hovercraft",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/LCAC%2019970620.jpg",
-    "description": "Судно на воздушной подушке — судно, у которого вся масса или значительная её часть на ходу или без хода поддерживается над водой силами избыточного давления воздуха, постоянно нагнетаемого под днище в полость, называемую воздушной подушкой.",
-    "at": {
-      "year": 1955
-    },
-    "row": 32
-  },
-  {
     "id": "Q213669",
     "name": "Процесс Габера",
     "category": "food-agriculture",
@@ -824,7 +812,7 @@
         "year": 1590
       }
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q503585",
@@ -860,7 +848,7 @@
       "year": 1957,
       "month": 3
     },
-    "row": 33
+    "row": 32
   },
   {
     "id": "Q31347",
@@ -910,22 +898,6 @@
       "year": 1990
     },
     "row": 25
-  },
-  {
-    "id": "Q158075",
-    "name": "Библия Гутенберга",
-    "category": "communication",
-    "regionTags": [],
-    "fameScore": 72,
-    "tagline": "Библия, изданная Иоанном Гутенбергом",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Gutenberg_Bible",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gutenberg%20Bible%2C%20Lenox%20Copy%2C%20New%20York%20Public%20Library%2C%202009.%20Pic%2001.jpg",
-    "imageAttribution": "NYC Wanderer (Kevin Eng), via Wikimedia Commons",
-    "description": "Библия Гутенберга — издание Вульгаты, выпущенное Иоганном Гутенбергом в первой половине 1450-х годов. Традиционно считается точкой отсчёта истории книгопечатания в Европе. Хотя это не первая инкунабула, среди других первопечатных изданий её выделяет исключительное качество оформления.",
-    "at": {
-      "year": 1450
-    },
-    "row": 4
   },
   {
     "id": "Q208708",
@@ -1029,7 +1001,7 @@
       "year": 1948,
       "month": 5
     },
-    "row": 35
+    "row": 34
   },
   {
     "id": "Q207875",
@@ -1195,16 +1167,18 @@
     "row": 0
   },
   {
-    "id": "Q178193",
-    "name": "паровая лодка",
+    "id": "Q7263709",
+    "name": "Первый пароход",
     "category": "transportation",
-    "regionTags": [],
+    "regionTags": [
+      "western-europe"
+    ],
     "fameScore": 72,
-    "tagline": "судно с паровым двигателем",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Steamboat",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/100%20Jahre%20Dampfschiff%20%27Stadt%20Rapperswil%27%20-%20Tag%20der%20offenen%20Dampfschiff-T%C3%BCre%20am%20B%C3%BCrkliplatz%20-%20Alpenquai%202014-04-26%2017-47-28%20%28P7700%29.JPG",
-    "imageAttribution": "Roland zh, via Wikimedia Commons",
-    "description": "A steamboat is a boat that is propelled primarily by steam power, typically driving propellers or paddlewheels. The term steamboat is used to refer to small steam-powered vessels working on lakes, rivers, and in short-sea shipping. The development of the steamboat led to the larger steamship, which is a seaworthy and often ocean-going ship.",
+    "tagline": "1783 French experimental steamship",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Pyroscaphe",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/D%27AbbansSteamshipModel.jpg",
+    "imageAttribution": "World Imaging, via Wikimedia Commons",
+    "description": "Pyroscaphe was an early experimental steamship built by Marquis de Jouffroy d'Abbans in 1783. The first demonstration took place on 15 July 1783 on the river Saône in France. After the first demonstration, it was said that the hull had opened up and the boiler was letting out steam, faults common in early steamboats. In this case, it seems to have been easily repaired as the boat was said to have made several trips up and down the river. A month later, on 19 August, the boat carried several passengers who signed a witness protocol for a successful journey.",
     "at": {
       "year": 1783
     },
@@ -1302,7 +1276,7 @@
     "at": {
       "year": 1952
     },
-    "row": 37
+    "row": 36
   },
   {
     "id": "Q146578",
@@ -1334,17 +1308,19 @@
     "at": {
       "year": 1958
     },
-    "row": 39
+    "row": 38
   },
   {
-    "id": "Q192803",
-    "name": "двойная запись",
+    "id": "Q19321855",
+    "name": "Первый трактат о двойной бухгалтерии",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 71,
-    "tagline": "seamless, chronological and factual ordered recording of all business processes in a company based of documented evidence",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Double-entry_bookkeeping",
-    "description": "Двойна́я за́пись — способ ведения бухгалтерского учёта, при котором каждое изменение состояния средств организации отражается по крайней мере на двух бухгалтерских счетах, обеспечивая общий баланс.",
+    "tagline": "book by Luca Pacioli",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Summa_de_arithmetica",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Titelbladet%20till%20%22Summa%20de%20arithmetica%20...%22.jpg",
+    "imageAttribution": "Stockholms Universitetsbibliotek from Stockholm, Sweden, via Wikimedia Commons",
+    "description": "Summa de arithmetica, geometria, proportioni et proportionalita is a book on mathematics written by Luca Pacioli and first published in 1494. It contains a comprehensive summary of Renaissance mathematics, including practical arithmetic, basic algebra, basic geometry and accounting, written for use as a textbook and reference work.",
     "at": {
       "year": 1494
     },
@@ -1607,7 +1583,7 @@
       "year": 1945,
       "month": 5
     },
-    "row": 36
+    "row": 35
   },
   {
     "id": "Q161540",
@@ -1623,7 +1599,7 @@
       "year": 1939,
       "month": 8
     },
-    "row": 33
+    "row": 32
   },
   {
     "id": "Q94247",
@@ -1640,7 +1616,7 @@
       "year": 1956,
       "month": 6
     },
-    "row": 41
+    "row": 40
   },
   {
     "id": "Q337724",
@@ -1727,7 +1703,7 @@
         "month": 4
       }
     },
-    "row": 40
+    "row": 39
   },
   {
     "id": "Q815567",
@@ -1946,7 +1922,7 @@
         "month": 12
       }
     },
-    "row": 42
+    "row": 41
   },
   {
     "id": "Q821122",
@@ -2053,7 +2029,7 @@
       "year": 1918,
       "month": 4
     },
-    "row": 32
+    "row": 36
   },
   {
     "id": "Q465279",
@@ -2219,7 +2195,7 @@
     "at": {
       "year": 1945
     },
-    "row": 43
+    "row": 42
   },
   {
     "id": "Q1205521",
@@ -2365,7 +2341,7 @@
         "month": 1
       }
     },
-    "row": 33
+    "row": 32
   },
   {
     "id": "Q217817",
@@ -2438,7 +2414,7 @@
       "year": 1492,
       "month": 4
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q525758",
@@ -2570,7 +2546,7 @@
         "month": 6
       }
     },
-    "row": 34
+    "row": 33
   },
   {
     "id": "Q338613",
@@ -2599,7 +2575,7 @@
     "at": {
       "year": 1925
     },
-    "row": 36
+    "row": 35
   },
   {
     "id": "Q683846",
@@ -2629,7 +2605,7 @@
       "year": 1948,
       "month": 1
     },
-    "row": 44
+    "row": 43
   },
   {
     "id": "Q1144693",
@@ -2664,7 +2640,7 @@
     "at": {
       "year": 1966
     },
-    "row": 34
+    "row": 35
   },
   {
     "id": "Q1419429",
@@ -2711,7 +2687,7 @@
       "year": 1913,
       "month": 12
     },
-    "row": 35
+    "row": 34
   },
   {
     "id": "Q6501061",
@@ -2804,7 +2780,7 @@
         "month": 7
       }
     },
-    "row": 39
+    "row": 38
   },
   {
     "id": "Q310301",
@@ -2852,7 +2828,7 @@
       "year": 1895,
       "month": 3
     },
-    "row": 32
+    "row": 34
   },
   {
     "id": "Q99200",
@@ -2902,7 +2878,7 @@
       "year": 1942,
       "month": 12
     },
-    "row": 45
+    "row": 44
   },
   {
     "id": "Q705693",
@@ -3086,7 +3062,7 @@
       "year": 1907,
       "month": 9
     },
-    "row": 36
+    "row": 35
   },
   {
     "id": "Q699127",
@@ -3282,7 +3258,7 @@
     "at": {
       "year": 1954
     },
-    "row": 47
+    "row": 46
   },
   {
     "id": "Q2345573",
@@ -3377,7 +3353,7 @@
       "year": 1945,
       "month": 8
     },
-    "row": 46
+    "row": 45
   },
   {
     "id": "Q957012",
@@ -3565,7 +3541,7 @@
     "at": {
       "year": 1956
     },
-    "row": 48
+    "row": 47
   },
   {
     "id": "Q3984081",
@@ -3602,7 +3578,7 @@
         "year": 1896
       }
     },
-    "row": 34
+    "row": 33
   },
   {
     "id": "Q2119319",
@@ -3710,7 +3686,7 @@
         "month": 6
       }
     },
-    "row": 50
+    "row": 49
   },
   {
     "id": "Q1564366",
@@ -3781,7 +3757,7 @@
       "year": 1949,
       "month": 10
     },
-    "row": 49
+    "row": 48
   },
   {
     "id": "Q1290001",
@@ -3922,7 +3898,7 @@
     "at": {
       "year": 1960
     },
-    "row": 51
+    "row": 50
   },
   {
     "id": "Q5333520",
@@ -3954,7 +3930,7 @@
       "year": 1893,
       "month": 9
     },
-    "row": 35
+    "row": 36
   },
   {
     "id": "Q951383",
@@ -4019,7 +3995,25 @@
     "at": {
       "year": 1876
     },
-    "row": 32
+    "row": 34
+  },
+  {
+    "id": "Q1785439",
+    "name": "North River Steamboat",
+    "category": "transportation",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 52,
+    "tagline": "1807 passenger steamboat by Robert Fulton, first steamship in regular service",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/North_River_Steamboat",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Clermont%20replica.jpg",
+    "description": "The North River Steamboat or North River, colloquially known as the Clermont, is widely regarded as the world's first vessel to demonstrate the viability of using steam propulsion for commercial water transportation. Built in 1807, the North River Steamboat operated on the Hudson River – at that time often known as the North River – between New York City and Albany, New York. It was built by the wealthy investor and politician Robert Livingston and inventor and entrepreneur Robert Fulton (1765–1815).",
+    "at": {
+      "year": 1807,
+      "month": 8
+    },
+    "row": 25
   },
   {
     "id": "Q547513",
@@ -4036,7 +4030,7 @@
       "year": 1876,
       "month": 3
     },
-    "row": 36
+    "row": 35
   },
   {
     "id": "Q28135544",
@@ -4118,7 +4112,7 @@
     "at": {
       "year": 1957
     },
-    "row": 52
+    "row": 51
   },
   {
     "id": "Q2631085",
