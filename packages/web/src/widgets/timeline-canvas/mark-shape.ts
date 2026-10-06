@@ -28,8 +28,6 @@ export interface MarkShapePart {
   attrs?: Record<string, string | number>;
   /** Wraps this part in its own `<g class={wrapperClass}>`. */
   wrapperClass?: string;
-  /** A point mark's label renders as `<tspan>` children for the wrapped multi-line case, not plain text — the caller still owns that `.each` pass, this just flags which part it applies to. */
-  supportsTspans?: boolean;
 }
 
 /** Every mark kind has exactly these 5 children, in DOM order — a fixed-length tuple (not a plain array) so `buildMarkChildren` can return the matching 5 selections without noUncheckedIndexedAccess treating any of them as possibly-undefined. */
@@ -99,7 +97,7 @@ export const RANGE_MARK_SHAPE: MarkShape = [
     tag: 'text',
     markerClass: 'd3-range-name',
     styleKey: 'label',
-    attrs: { 'text-anchor': 'middle', 'dominant-baseline': 'hanging' },
+    attrs: { 'text-anchor': 'start', 'dominant-baseline': 'hanging' },
     wrapperClass: 'd3-range-name-zoom',
   },
 ];
@@ -133,9 +131,8 @@ export const POINT_MARK_SHAPE: MarkShape = [
     tag: 'text',
     markerClass: 'd3-point-name',
     styleKey: 'label',
-    attrs: { 'text-anchor': 'middle', 'dominant-baseline': 'hanging' },
+    attrs: { 'text-anchor': 'start', 'dominant-baseline': 'central' },
     wrapperClass: 'd3-point-name-zoom',
-    supportsTspans: true,
   },
 ];
 

@@ -10,7 +10,10 @@ import {
   HIT_AREA_PADDING_PX,
   MILESTONES_LABEL_LINE_HEIGHT_PX,
   PERIOD_LINE_HEIGHT,
-  POINT_RADIUS,
+  POINT_LABEL_OFFSET_PX,
+  pointHitHeight,
+  pointHitY,
+  pointLabelY,
 } from './options';
 
 // HTML-string counterpart to mark-shape.ts's buildMarkChildren — same
@@ -62,7 +65,7 @@ function markTextInnerHtml(text: string): string {
   return escapeHtml(text);
 }
 
-/** `<tspan>` content for a point mark's wrapped multi-line label — mirrors ConflictsMilestonesLane's `renderLines` `.each` pass exactly (trailing space on every non-final line, so rendered textContent matches the source name). */
+/** `<tspan>` content for a wrapped multi-line label — mirrors attachMarkJoin's `renderLines` pass exactly (trailing space on every non-final line, so rendered textContent matches the source name). */
 function markTspansInnerHtml(
   lines: string[],
   x: number,
@@ -171,7 +174,7 @@ function renderRangeMarkHtml(
   const y = item.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX;
   const height =
     item.labelY +
-    MILESTONES_LABEL_LINE_HEIGHT_PX -
+    item.lines.length * MILESTONES_LABEL_LINE_HEIGHT_PX -
     (item.markerY - PERIOD_LINE_HEIGHT / 2) +
     HIT_AREA_PADDING_PX * 2;
   return renderMarkGroupHtml(
@@ -212,14 +215,14 @@ function renderRangeMarkHtml(
         'data-entity-type': item.kind,
       },
       {
-        x: (item.x1 + item.x2) / 2,
+        x: item.x1,
         y: item.labelY,
         fill: item.fill,
         'data-entity-id': item.id,
         'data-entity-type': item.kind,
       },
     ],
-    markTextInnerHtml(item.name),
+    markTspansInnerHtml(item.lines, item.x1, MILESTONES_LABEL_LINE_HEIGHT_PX),
   );
 }
 
@@ -227,12 +230,9 @@ function renderPointMarkHtml(
   item: PointLayout,
   styles: Record<string, string | undefined>,
 ): string {
-  const y = item.markerY - POINT_RADIUS - HIT_AREA_PADDING_PX;
-  const height =
-    item.labelY +
-    item.lines.length * MILESTONES_LABEL_LINE_HEIGHT_PX -
-    (item.markerY - POINT_RADIUS) +
-    HIT_AREA_PADDING_PX * 2;
+  const lineCount = item.lines.length;
+  const y = pointHitY(item.markerY, lineCount);
+  const height = pointHitHeight(lineCount);
   return renderMarkGroupHtml(
     'd3-point-group',
     { 'data-row': item.row },
@@ -257,14 +257,18 @@ function renderPointMarkHtml(
         'data-entity-type': item.kind,
       },
       {
-        x: item.x,
-        y: item.labelY,
+        x: item.x + POINT_LABEL_OFFSET_PX,
+        y: pointLabelY(item.markerY, lineCount),
         fill: item.fill,
         'data-entity-id': item.id,
         'data-entity-type': item.kind,
       },
     ],
-    markTspansInnerHtml(item.lines, item.x, MILESTONES_LABEL_LINE_HEIGHT_PX),
+    markTspansInnerHtml(
+      item.lines,
+      item.x + POINT_LABEL_OFFSET_PX,
+      MILESTONES_LABEL_LINE_HEIGHT_PX,
+    ),
   );
 }
 

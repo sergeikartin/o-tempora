@@ -12,18 +12,20 @@ import {
   AVG_CHAR_WIDTH_PX,
   estimateLabelWidthPx,
   MILESTONE_CATEGORY_TO_GROUP,
-  MILESTONES_LABEL_MAX_WIDTH_PX,
   type MilestoneCategory,
+  POINT_LABEL_OFFSET_PX,
   POINT_RADIUS,
   wrapLabelLines,
+  wrapMarkLabelLines,
 } from '../../shared/types';
 
 export {
   AVG_CHAR_WIDTH_PX,
   estimateLabelWidthPx,
-  MILESTONES_LABEL_MAX_WIDTH_PX,
+  POINT_LABEL_OFFSET_PX,
   POINT_RADIUS,
   wrapLabelLines,
+  wrapMarkLabelLines,
 };
 
 // Row layout shared by every lane's D3 rendering.
@@ -99,18 +101,29 @@ export const SELECTED_POINT_RADIUS_PX = 7;
 // Approx rendered height of an 11px label.
 const LABEL_TEXT_HEIGHT_PX = 13;
 
-// Below-marker label layout, shared by the merged Conflicts+Milestones lane
-// for every item it stacks — range lines, Conflict point dots, and
-// Milestone point dots alike — since a single shared row-packing pass means
-// any of them can land in any row (see ConflictsMilestonesLane.tsx). A
-// row's marker and label move down together, the label sitting just below
-// its own marker, same as People's above-line treatment but flipped. Row
-// height is computed per-render from the tallest label actually assigned to
-// that row (a Milestone's label can wrap across multiple lines via
-// wrapLabelLines above; Conflicts' labels are always one line), not a fixed
-// pitch — see ConflictsMilestonesLane.tsx's row-height computation.
+// Row layout shared by the merged Conflicts+Milestones lane, since a single
+// row-packing pass means any item can land in any row (see
+// ConflictsMilestonesLane.tsx). A range's label sits just below its line;
+// every label is a single line, so rows have a fixed pitch.
 export const MILESTONES_MARKER_LABEL_GAP = 4;
 export const MILESTONES_LABEL_LINE_HEIGHT_PX = LABEL_TEXT_HEIGHT_PX;
+
+// A point's label block is vertically centered on its dot.
+export function pointLabelY(markerY: number, lineCount: number): number {
+  return markerY - ((lineCount - 1) * MILESTONES_LABEL_LINE_HEIGHT_PX) / 2;
+}
+
+export function pointHitY(markerY: number, lineCount: number): number {
+  return (
+    markerY -
+    (lineCount * MILESTONES_LABEL_LINE_HEIGHT_PX) / 2 -
+    HIT_AREA_PADDING_PX
+  );
+}
+
+export function pointHitHeight(lineCount: number): number {
+  return lineCount * MILESTONES_LABEL_LINE_HEIGHT_PX + HIT_AREA_PADDING_PX * 2;
+}
 
 // Above-line label layout, used by People — the one lane whose Period bars
 // don't all share a fixed marker y (they stack into vertical bands like a

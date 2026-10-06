@@ -11,7 +11,7 @@ Shared contracts both other packages import rather than redefining:
 - Entity types — `TimelineEntry` (base fields every lane shares) extended by `Person`, `Conflict`/`ConflictEvent` (`ConflictEntry` union), `Milestone` (`MilestonePeriod`/`MilestonePoint` union); `Period`/`PointInTime`/`YearMonth` for the two date shapes (see `CONTEXT.md`'s **Mark**)
 - Taxonomies — `CONFLICT_CATEGORIES`, `MILESTONE_CATEGORIES` + `MILESTONE_CATEGORY_TO_GROUP`, `REGIONS`, `OCCUPATION_DOMAINS`
 - `DETAIL_LEVEL_FAME_SCORE_FLOORS` — the 4 per-lane Fame Score floors both data-pipeline (splits `src/data/*.json` by these) and web (its Detail Level switch) read, so the two can't drift apart (`CONTEXT.md`'s **Detail Level**, `docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md`)
-- Layout constants (`AVG_CHAR_WIDTH_PX`, `REFERENCE_SCALE_PIXELS_PER_YEAR`, …) and helpers (`yearMonthToFractionalYear`, `wrapLabelLines`) shared because data-pipeline's one-time row packing and web's live rendering must agree on the same numbers
+- Layout constants (`AVG_CHAR_WIDTH_PX`, `REFERENCE_SCALE_PIXELS_PER_YEAR`, …) and helpers (`yearMonthToFractionalYear`, `wrapMarkLabelLines`) shared because data-pipeline's one-time row packing and web's live rendering must agree on the same numbers
 
 ## `src/data/`
 

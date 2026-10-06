@@ -343,7 +343,13 @@ export function yearMonthToFractionalYear(yearMonth: YearMonth): number {
 // DOM and the two need to agree on one answer regardless.
 export const AVG_CHAR_WIDTH_PX = 6;
 export const POINT_RADIUS = 5;
-export const MILESTONES_LABEL_MAX_WIDTH_PX = 72;
+// A point mark's label starts this far right of its dot's center — clear of
+// the selection ring web draws around a selected dot.
+export const POINT_LABEL_OFFSET_PX = 13;
+// A period or point label wraps onto at most two lines once it outgrows
+// this width.
+export const MARK_LABEL_WRAP_WIDTH_PX = 140;
+export const MARK_LABEL_MAX_LINES = 2;
 
 // CONTEXT.md's Reference Scale: the fixed pixels-per-year data-pipeline
 // packs TimelineEntry.row against (row-assignment.ts) and packages/web
@@ -377,4 +383,13 @@ export function wrapLabelLines(name: string, maxWidthPx: number): string[] {
   }
   if (currentLine !== '') lines.push(currentLine);
   return lines;
+}
+
+export function wrapMarkLabelLines(name: string): string[] {
+  const lines = wrapLabelLines(name, MARK_LABEL_WRAP_WIDTH_PX);
+  if (lines.length <= MARK_LABEL_MAX_LINES) return lines;
+  return [
+    ...lines.slice(0, MARK_LABEL_MAX_LINES - 1),
+    lines.slice(MARK_LABEL_MAX_LINES - 1).join(' '),
+  ];
 }

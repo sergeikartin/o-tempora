@@ -14,11 +14,15 @@
    element/property would get caught by that transition too, smoothing/
    lagging a frame behind instead of landing exactly, and visibly wobbling
    the label's rendered width. Same anchor as .label's own hover-scale (top-
-   center) so the two independent scales agree on where "in place" is. */
-:global(.d3-range-name-zoom),
+   left) so the two independent scales agree on where "in place" is. */
+:global(.d3-range-name-zoom) {
+  transform-box: fill-box;
+  transform-origin: left top;
+}
+
 :global(.d3-point-name-zoom) {
   transform-box: fill-box;
-  transform-origin: center top;
+  transform-origin: left center;
 }
 
 .svg {
@@ -163,17 +167,21 @@
   transform: scale(1.15);
 }
 
+.label:global(.d3-point-name) {
+  transform-origin: left center;
+}
+
 .label {
   font-family: Archivo, sans-serif;
   font-size: 11px;
   /* Scaling via transform rather than font-size: the latter recomputes the
      hanging-baseline metric at each size, which visibly nudges the glyphs
      down as they grow. transform-box/-origin pin the scale to the label's
-     own top-center point (where it's already anchored — text-anchor:
-     middle, dominant-baseline: hanging) so it grows in place instead of
+     own top-left point (where it's already anchored — text-anchor:
+     start, dominant-baseline: hanging) so it grows in place instead of
      drifting. */
   transform-box: fill-box;
-  transform-origin: center top;
+  transform-origin: left top;
   transition: transform var(--motion-duration-fast) var(--motion-easing);
   /* fill is set per-item (flat conflict color or milestone category color)
      via the D3 join, not here. Clickable (same data-entity-id/-type as the

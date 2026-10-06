@@ -1,9 +1,9 @@
 import {
   estimateLabelWidthPx,
-  MILESTONES_LABEL_MAX_WIDTH_PX,
+  POINT_LABEL_OFFSET_PX,
   POINT_RADIUS,
   REFERENCE_SCALE_PIXELS_PER_YEAR as REFERENCE_PIXELS_PER_YEAR,
-  wrapLabelLines,
+  wrapMarkLabelLines,
   yearMonthToFractionalYear,
   type ConflictEntry,
   type Milestone,
@@ -110,15 +110,21 @@ export function assignPersonRows(people: Person[]): Map<string, number> {
   return assignRows(people.map(personInterval), MIN_ROW_GAP_PX);
 }
 
-// A range's (Conflict's or a period-shaped Milestone's) pixel extent is the
-// same single-line-label-centered calculation either way — see
-// packages/web's former rangePixelInterval.
+// A period's label hangs below its line, left-aligned to its start.
 function rangeInterval(name: string, startYear: number, endYear: number): { start: number; end: number } {
   const x1 = startYear * REFERENCE_PIXELS_PER_YEAR;
   const x2 = endYear * REFERENCE_PIXELS_PER_YEAR;
-  const center = (x1 + x2) / 2;
-  const labelHalf = estimateLabelWidthPx(name) / 2;
-  return { start: Math.min(x1, center - labelHalf), end: Math.max(x2, center + labelHalf) };
+  return { start: x1, end: Math.max(x2, x1 + labelWidthPx(name)) };
+}
+
+// A point's label sits to the right of its dot, on the same line.
+function pointInterval(name: string, startYear: number): { start: number; end: number } {
+  const x = startYear * REFERENCE_PIXELS_PER_YEAR;
+  return { start: x - POINT_RADIUS, end: x + POINT_LABEL_OFFSET_PX + labelWidthPx(name) };
+}
+
+function labelWidthPx(name: string): number {
+  return Math.max(...wrapMarkLabelLines(name).map(estimateLabelWidthPx));
 }
 
 function conflictInterval(entry: ConflictEntry): RowInterval {
@@ -127,14 +133,8 @@ function conflictInterval(entry: ConflictEntry): RowInterval {
   const startYear = yearMonthToFractionalYear(period.start);
 
   if (!isConflict) {
-    const x = startYear * REFERENCE_PIXELS_PER_YEAR;
-    const labelHalf = estimateLabelWidthPx(entry.name) / 2;
-    return {
-      id: entry.id,
-      startYear: Math.min(x - POINT_RADIUS, x - labelHalf),
-      endYear: Math.max(x + POINT_RADIUS, x + labelHalf),
-      fameScore: entry.fameScore,
-    };
+    const { start, end } = pointInterval(entry.name, startYear);
+    return { id: entry.id, startYear: start, endYear: end, fameScore: entry.fameScore };
   }
 
   const rawEndYear = period.end ? yearMonthToFractionalYear(period.end) : startYear;
@@ -149,15 +149,8 @@ function milestoneInterval(milestone: Milestone): RowInterval {
   const startYear = yearMonthToFractionalYear(period.start);
 
   if (!isPeriodShaped) {
-    const lines = wrapLabelLines(milestone.name, MILESTONES_LABEL_MAX_WIDTH_PX);
-    const x = startYear * REFERENCE_PIXELS_PER_YEAR;
-    const labelHalf = Math.max(...lines.map((line) => estimateLabelWidthPx(line))) / 2;
-    return {
-      id: milestone.id,
-      startYear: Math.min(x - POINT_RADIUS, x - labelHalf),
-      endYear: Math.max(x + POINT_RADIUS, x + labelHalf),
-      fameScore: milestone.fameScore,
-    };
+    const { start, end } = pointInterval(milestone.name, startYear);
+    return { id: milestone.id, startYear: start, endYear: end, fameScore: milestone.fameScore };
   }
 
   const rawEndYear = period.end ? yearMonthToFractionalYear(period.end) : startYear;

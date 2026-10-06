@@ -32,7 +32,10 @@ import {
   HIT_AREA_PADDING_PX,
   MILESTONES_LABEL_LINE_HEIGHT_PX,
   PERIOD_LINE_HEIGHT,
-  POINT_RADIUS,
+  POINT_LABEL_OFFSET_PX,
+  pointHitHeight,
+  pointHitY,
+  pointLabelY,
   type ZoomAnimationHandle,
   zoomAnimationCounterScaleAttr,
   zoomAnimationGroupTransformAttr,
@@ -159,11 +162,12 @@ const ConflictsMilestonesLaneImpl = forwardRef<
         hitY: (d) => d.markerY - PERIOD_LINE_HEIGHT / 2 - HIT_AREA_PADDING_PX,
         hitHeight: (d) =>
           d.labelY +
-          MILESTONES_LABEL_LINE_HEIGHT_PX -
+          d.lines.length * MILESTONES_LABEL_LINE_HEIGHT_PX -
           (d.markerY - PERIOD_LINE_HEIGHT / 2) +
           HIT_AREA_PADDING_PX * 2,
         centerY: (d) => d.markerY,
-        labelX: (d) => (d.x1 + d.x2) / 2,
+        labelX: (d) => d.x1,
+        lines: (d) => d.lines,
         entityType: (d) => d.kind,
       },
     );
@@ -203,19 +207,12 @@ const ConflictsMilestonesLaneImpl = forwardRef<
           // shift transition on pointGroups; an entering mark should just
           // fade in, not also slide in from row 0.
           hit
-            .attr('y', (d) => d.markerY - POINT_RADIUS - HIT_AREA_PADDING_PX)
-            .attr(
-              'height',
-              (d) =>
-                d.labelY +
-                d.lines.length * MILESTONES_LABEL_LINE_HEIGHT_PX -
-                (d.markerY - POINT_RADIUS) +
-                HIT_AREA_PADDING_PX * 2,
-            );
+            .attr('y', (d) => pointHitY(d.markerY, d.lines.length))
+            .attr('height', (d) => pointHitHeight(d.lines.length));
           dotRingOuter.attr('cy', (d) => d.markerY);
           dotRingGap.attr('cy', (d) => d.markerY);
           dot.attr('cy', (d) => d.markerY);
-          name.attr('y', (d) => d.labelY);
+          name.attr('y', (d) => pointLabelY(d.markerY, d.lines.length));
           g.transition().duration(durationMs).style('opacity', 1);
           return g;
         },
@@ -243,15 +240,8 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       .attr('data-entity-type', (d) => d.kind)
       .transition()
       .duration(durationMs)
-      .attr('y', (d) => d.markerY - POINT_RADIUS - HIT_AREA_PADDING_PX)
-      .attr(
-        'height',
-        (d) =>
-          d.labelY +
-          d.lines.length * MILESTONES_LABEL_LINE_HEIGHT_PX -
-          (d.markerY - POINT_RADIUS) +
-          HIT_AREA_PADDING_PX * 2,
-      );
+      .attr('y', (d) => pointHitY(d.markerY, d.lines.length))
+      .attr('height', (d) => pointHitHeight(d.lines.length));
 
     // The ring/gap circles only need cx/cy kept in sync with the real dot
     // (their r is fixed at creation). They're pointer-events: none
@@ -287,22 +277,20 @@ const ConflictsMilestonesLaneImpl = forwardRef<
 
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
-      .attr('x', (d) => d.x)
+      .attr('x', (d) => d.x + POINT_LABEL_OFFSET_PX)
       .attr('fill', (d) => d.fill)
       // Same delegated-click wiring as the dot above, so the label is an
       // equally valid click target for opening the detail drawer.
       .attr('data-entity-id', (d) => d.id)
       .attr('data-entity-type', (d) => d.kind)
       .each(function renderLines(d) {
-        // A trailing space on every non-final tspan reproduces the original
-        // single-space-separated name in the rendered text's textContent —
-        // invisible on screen, but keeps DOM inspection/testing matching
-        // the source name exactly.
+        // A trailing space on every non-final tspan keeps the rendered
+        // textContent equal to the source name.
         d3.select(this)
           .selectAll<SVGTSpanElement, string>('tspan')
           .data(d.lines)
           .join('tspan')
-          .attr('x', d.x)
+          .attr('x', d.x + POINT_LABEL_OFFSET_PX)
           .attr('dy', (_line, i) =>
             i === 0 ? 0 : MILESTONES_LABEL_LINE_HEIGHT_PX,
           )
@@ -310,7 +298,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       })
       .transition()
       .duration(durationMs)
-      .attr('y', (d) => d.labelY);
+      .attr('y', (d) => pointLabelY(d.markerY, d.lines.length));
   }, [rangeLayout, pointLayout]);
 
   // A plain DOM class toggle, decoupled from the joins above (their

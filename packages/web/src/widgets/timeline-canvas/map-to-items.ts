@@ -6,13 +6,13 @@ import {
   LANE_TOP_PADDING,
   MILESTONE_CATEGORY_COLORS,
   MILESTONES_LABEL_LINE_HEIGHT_PX,
-  MILESTONES_LABEL_MAX_WIDTH_PX,
   MILESTONES_MARKER_LABEL_GAP,
+  POINT_LABEL_OFFSET_PX,
   POINT_RADIUS,
   personLabelYForRow,
   personLineCenterYForRow,
   ROW_GAP,
-  wrapLabelLines,
+  wrapMarkLabelLines,
 } from './options';
 
 // The five filterBy*/filterConflictsByFilterValues functions moved to
@@ -185,7 +185,7 @@ export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
 
 // Shared by conflictPixelInterval and milestonePixelInterval's own range
 // branch below — a range's (Conflict's or a period-shaped Milestone's)
-// pixel extent is the same single-line-label-centered calculation either
+// pixel extent is the same left-aligned single-line-label calculation either
 // way, per the "identical bar treatment" call (grill-with-docs session,
 // 2026-08-12).
 function rangePixelInterval(
@@ -194,11 +194,20 @@ function rangePixelInterval(
 ): PixelInterval {
   const x1 = xScale(item.startYear);
   const x2 = xScale(item.endYear);
-  const center = (x1 + x2) / 2;
-  const labelHalf = estimateLabelWidthPx(item.name) / 2;
+  const labelWidth = Math.max(
+    ...wrapMarkLabelLines(item.name).map(estimateLabelWidthPx),
+  );
+  return { start: x1, end: Math.max(x2, x1 + labelWidth) };
+}
+
+// A point's label sits to the right of its dot, on the same line.
+function pointPixelInterval(name: string, x: number): PixelInterval {
+  const labelWidth = Math.max(
+    ...wrapMarkLabelLines(name).map(estimateLabelWidthPx),
+  );
   return {
-    start: Math.min(x1, center - labelHalf),
-    end: Math.max(x2, center + labelHalf),
+    start: x - POINT_RADIUS,
+    end: x + POINT_LABEL_OFFSET_PX + labelWidth,
   };
 }
 
@@ -210,12 +219,7 @@ export function conflictPixelInterval(
   xScale: d3.ScaleLinear<number, number>,
 ): PixelInterval {
   if (item.isPoint) {
-    const x = xScale(item.startYear);
-    const labelHalf = estimateLabelWidthPx(item.name) / 2;
-    return {
-      start: Math.min(x - POINT_RADIUS, x - labelHalf),
-      end: Math.max(x + POINT_RADIUS, x + labelHalf),
-    };
+    return pointPixelInterval(item.name, xScale(item.startYear));
   }
   return rangePixelInterval(item, xScale);
 }
@@ -260,28 +264,19 @@ export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
 
 // Shared by ConflictsMilestonesLane (its live viewport scale) and the
 // Minimap minimap (a fixed Reference Scale, ADR 0004) so both pack
-// rows with the same rule. `lines` (the wrapped label) only matters for the
-// point branch — a period-shaped Milestone renders as a range, sharing
-// conflictPixelInterval's single-line-label range calculation via
-// rangePixelInterval rather than the wrapped multi-line label points use.
+// rows with the same rule.
 export function milestonePixelInterval(
   item: MilestoneItem,
-  lines: string[],
   xScale: d3.ScaleLinear<number, number>,
 ): PixelInterval {
   if (!item.isPoint) return rangePixelInterval(item, xScale);
-  const x = xScale(item.startYear);
-  const labelHalf =
-    Math.max(...lines.map((line) => estimateLabelWidthPx(line))) / 2;
-  return {
-    start: Math.min(x - POINT_RADIUS, x - labelHalf),
-    end: Math.max(x + POINT_RADIUS, x + labelHalf),
-  };
+  return pointPixelInterval(item.name, xScale(item.startYear));
 }
 
 export interface RangeLayout {
   id: string;
   name: string;
+  lines: string[];
   x1: number;
   x2: number;
   hitX1: number;
@@ -301,7 +296,6 @@ export interface PointLayout {
   hitX2: number;
   row: number;
   markerY: number;
-  labelY: number;
   fill: string;
   kind: 'conflict' | 'milestone';
 }
@@ -328,37 +322,20 @@ export function buildRangeAndPointLayout(
   const conflictItems = mapConflicts(conflicts);
   const milestoneItems = mapMilestones(milestones);
 
-  const milestoneLinesById = new Map<string, string[]>();
-  for (const item of milestoneItems) {
-    milestoneLinesById.set(
-      item.id,
-      wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX),
-    );
-  }
-
   const rowOfId = eventsRowFor([
     ...conflictItems.map((item) => item.id),
     ...milestoneItems.map((item) => item.id),
   ]);
 
   // Row height is dynamic — the tallest label actually assigned to a row
-  // (a wrapped multi-line Milestone label, or a single-line Conflict label)
-  // sets that row's pitch, so a multi-line label never bleeds into the row
-  // below it.
+  // (a period's label wraps onto up to two lines; point labels sit beside
+  // their dot) sets that row's pitch, so a two-line label never bleeds into
+  // the row below it.
   const maxLinesByRow: number[] = [];
-  const noteRow = (row: number, lineCount: number) => {
+  for (const item of [...conflictItems, ...milestoneItems]) {
+    const row = rowOfId.get(item.id) ?? 0;
+    const lineCount = item.isPoint ? 1 : wrapMarkLabelLines(item.name).length;
     maxLinesByRow[row] = Math.max(maxLinesByRow[row] ?? 0, lineCount);
-  };
-  for (const item of conflictItems) noteRow(rowOfId.get(item.id) ?? 0, 1);
-  for (const item of milestoneItems) {
-    // Range-shaped Milestones render a single-line label like a Conflict
-    // range does — only point-shaped Milestones wrap onto multiple lines.
-    if (!item.isPoint) {
-      noteRow(rowOfId.get(item.id) ?? 0, 1);
-      continue;
-    }
-    const lines = milestoneLinesById.get(item.id) ?? [item.name];
-    noteRow(rowOfId.get(item.id) ?? 0, lines.length);
   }
   const markerYs: number[] = [];
   const labelStarts: number[] = [];
@@ -387,6 +364,7 @@ export function buildRangeAndPointLayout(
       return {
         id: item.id,
         name: item.name,
+        lines: wrapMarkLabelLines(item.name),
         x1: xScale(item.startYear),
         x2: xScale(item.endYear),
         hitX1,
@@ -402,16 +380,11 @@ export function buildRangeAndPointLayout(
     .filter((item) => !item.isPoint)
     .map((item) => {
       const row = rowOfId.get(item.id) ?? 0;
-      // lines is only read on the point branch, which this (range) item
-      // never takes — see milestonePixelInterval.
-      const { start: hitX1, end: hitX2 } = milestonePixelInterval(
-        item,
-        [],
-        xScale,
-      );
+      const { start: hitX1, end: hitX2 } = milestonePixelInterval(item, xScale);
       return {
         id: item.id,
         name: item.name,
+        lines: wrapMarkLabelLines(item.name),
         x1: xScale(item.startYear),
         x2: xScale(item.endYear),
         hitX1,
@@ -432,13 +405,12 @@ export function buildRangeAndPointLayout(
       const { start: hitX1, end: hitX2 } = conflictPixelInterval(item, xScale);
       return {
         id: item.id,
-        lines: [item.name],
+        lines: wrapMarkLabelLines(item.name),
         x: xScale(item.startYear),
         hitX1,
         hitX2,
         row,
         markerY: markerYs[row] ?? fallbackMarkerY,
-        labelY: labelStarts[row] ?? fallbackLabelY,
         fill: CONFLICT_COLOR,
         kind: 'conflict' as const,
       };
@@ -447,21 +419,15 @@ export function buildRangeAndPointLayout(
     .filter((item) => item.isPoint)
     .map((item) => {
       const row = rowOfId.get(item.id) ?? 0;
-      const lines = milestoneLinesById.get(item.id) ?? [item.name];
-      const { start: hitX1, end: hitX2 } = milestonePixelInterval(
-        item,
-        lines,
-        xScale,
-      );
+      const { start: hitX1, end: hitX2 } = milestonePixelInterval(item, xScale);
       return {
         id: item.id,
-        lines,
+        lines: wrapMarkLabelLines(item.name),
         x: xScale(item.startYear),
         hitX1,
         hitX2,
         row,
         markerY: markerYs[row] ?? fallbackMarkerY,
-        labelY: labelStarts[row] ?? fallbackLabelY,
         fill: MILESTONE_CATEGORY_COLORS[item.category],
         kind: 'milestone' as const,
       };

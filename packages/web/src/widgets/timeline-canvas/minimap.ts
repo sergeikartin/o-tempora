@@ -11,11 +11,7 @@ import {
   milestonePixelInterval,
   personPixelInterval,
 } from './map-to-items';
-import {
-  buildXScale,
-  MILESTONES_LABEL_MAX_WIDTH_PX,
-  wrapLabelLines,
-} from './options';
+import { buildXScale } from './options';
 
 // Resolution of the Minimap's bucketed Row Depth series — enough
 // buckets to trace real shape across a ~4,800-year domain without paying for
@@ -109,8 +105,7 @@ export function computeDensityProfile(
       return { id: item.id, startYear: start, endYear: end };
     }),
     ...milestoneItems.map((item) => {
-      const lines = wrapLabelLines(item.name, MILESTONES_LABEL_MAX_WIDTH_PX);
-      const { start, end } = milestonePixelInterval(item, lines, refScale);
+      const { start, end } = milestonePixelInterval(item, refScale);
       return { id: item.id, startYear: start, endYear: end };
     }),
   ];

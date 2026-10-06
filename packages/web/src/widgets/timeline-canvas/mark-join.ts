@@ -6,7 +6,10 @@ import {
   type MarkShapePart,
   seedPrerenderedData,
 } from './mark-shape';
-import { HIT_AREA_PADDING_PX } from './options';
+import {
+  HIT_AREA_PADDING_PX,
+  MILESTONES_LABEL_LINE_HEIGHT_PX,
+} from './options';
 
 /**
  * The fields every line-shaped mark's layout (PersonLayout, RangeLayout)
@@ -37,6 +40,8 @@ export interface LineMarkGeometry<Datum> {
   /** Shared by the ring-outer/ring-gap/line parts — all three sit on the same vertical center. */
   centerY: (d: Datum) => number;
   labelX: (d: Datum) => number;
+  /** Wrapped label lines; omitted for a single-line label (`d.name`). */
+  lines?: (d: Datum) => string[];
   entityType: (d: Datum) => string;
 }
 
@@ -194,7 +199,24 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     // equally valid click target for opening the detail drawer.
     .attr('data-entity-id', (d) => d.id)
     .attr('data-entity-type', geometry.entityType)
-    .text((d) => d.name)
+    .each(function renderLines(d) {
+      const lines = geometry.lines?.(d);
+      if (!lines) {
+        d3.select(this).text(d.name);
+        return;
+      }
+      // A trailing space on every non-final tspan keeps the rendered
+      // textContent equal to the source name.
+      d3.select(this)
+        .selectAll<SVGTSpanElement, string>('tspan')
+        .data(lines)
+        .join('tspan')
+        .attr('x', geometry.labelX(d))
+        .attr('dy', (_line, i) =>
+          i === 0 ? 0 : MILESTONES_LABEL_LINE_HEIGHT_PX,
+        )
+        .text((line, i) => (i < lines.length - 1 ? `${line} ` : line));
+    })
     .attr('y', (d) => d.labelY);
 
   // The row-shift itself: ease the mark's own <g> from a `translate` that
