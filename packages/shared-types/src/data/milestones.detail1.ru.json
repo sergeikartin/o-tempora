@@ -188,6 +188,24 @@
     "row": 1
   },
   {
+    "id": "Q43653",
+    "name": "Первая высадка людей на Луну",
+    "category": "expedition",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 90,
+    "tagline": "американский пилотируемый космический корабль серии «Аполлон»",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%2011%20Crew.jpg",
+    "description": "«Аполло́н-11» — американский пилотируемый космический корабль серии «Аполлон», в ходе полёта которого в период с 16 по 24 июля 1969 года человечество впервые в истории совершило посадку на поверхность другого небесного тела — Луны.",
+    "at": {
+      "year": 1969,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
     "id": "Q10806",
     "name": "Теракты 11 сентября 2001 года",
     "category": "society-administration",
@@ -205,6 +223,24 @@
       "month": 9
     },
     "row": 1
+  },
+  {
+    "id": "Q182524",
+    "name": "Первый человек в космосе",
+    "category": "expedition",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 89,
+    "tagline": "советский космический корабль на котором Юрий Алексеевич Гагарин полетел в космическое пространство",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vostok_1",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vostokpanel.JPG",
+    "description": "«Восто́к-1» («Восто́к») — советский пилотируемый космический корабль из серии «Восток», первый в мире космический аппарат, поднявший на своём борту человека на околоземную орбиту.",
+    "at": {
+      "year": 1961,
+      "month": 4
+    },
+    "row": 7
   },
   {
     "id": "Q12138",
@@ -425,7 +461,7 @@
       "year": 1945,
       "month": 7
     },
-    "row": 6
+    "row": 8
   },
   {
     "id": "Q8275",

@@ -143,7 +143,7 @@
     "at": {
       "year": 1948
     },
-    "row": 9
+    "row": 10
   },
   {
     "id": "Q486",
@@ -194,7 +194,7 @@
     "at": {
       "year": 1942
     },
-    "row": 8
+    "row": 7
   },
   {
     "id": "Q782919",
@@ -210,7 +210,7 @@
     "at": {
       "year": 1962
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q8276",
@@ -313,7 +313,7 @@
       "year": 1961,
       "month": 8
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q12562",
@@ -402,7 +402,7 @@
     "at": {
       "year": 1947
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q8272",
@@ -641,24 +641,6 @@
     "row": 6
   },
   {
-    "id": "Q43653",
-    "name": "Аполлон-11",
-    "category": "expedition",
-    "regionTags": [
-      "northern-america"
-    ],
-    "fameScore": 83,
-    "tagline": "американский пилотируемый космический корабль серии «Аполлон»",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%2011%20Crew.jpg",
-    "description": "«Аполло́н-11» — американский пилотируемый космический корабль серии «Аполлон», в ходе полёта которого в период с 16 по 24 июля 1969 года человечество впервые в истории совершило посадку на поверхность другого небесного тела — Луны.",
-    "at": {
-      "year": 1969,
-      "month": 7
-    },
-    "row": 5
-  },
-  {
     "id": "Q127912",
     "name": "Декларация независимости США",
     "category": "society-administration",
@@ -790,15 +772,14 @@
     "row": 8
   },
   {
-    "id": "Q12190",
-    "name": "бензилпенициллин",
+    "id": "Q3042914",
+    "name": "Открытие пенициллина",
     "category": "medicine-health",
     "regionTags": [],
     "fameScore": 82,
-    "tagline": "group of antibiotics derived from Penicillium fungi",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Penicillin",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Benzylpenicillin-3D-balls.png",
-    "description": "Пеницилли́ны — антимикробные препараты, относящиеся к классу β-лактамных антибиотиков. Были открыты Александром Флемингом в 1928 году.",
+    "tagline": "aspect of history",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_penicillin",
+    "description": "The history of penicillin traces how observations of antibiotic activity in the mould Penicillium led to the development of penicillins, a family of widely used antibiotics.",
     "at": {
       "year": 1928,
       "month": 9
@@ -806,16 +787,16 @@
     "row": 3
   },
   {
-    "id": "Q191801",
+    "id": "Q3507866",
     "name": "Первый четырёхтактный двигатель",
     "category": "energy-industry",
     "regionTags": [],
     "fameScore": 82,
-    "tagline": "поршневой двигатель внутреннего сгорания, в котором рабочий процесс в каждом из цилиндров совершается за два оборота коленчатого вала, то есть за четыре хода поршня (такта)",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Four-stroke_engine",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/4StrokeEngine%20Ortho%203D%20Small.gif",
-    "imageAttribution": "Zephyris, via Wikimedia Commons",
-    "description": "Четырёхтактный двигатель — поршневой двигатель внутреннего сгорания, в котором рабочий процесс в каждом из цилиндров совершается за два оборота коленчатого вала, то есть за четыре хода поршня (такта). Начиная с середины XX века — наиболее распространённая разновидность поршневого ДВС, особенно в двигателях средней и небольшой мощности.",
+    "tagline": "large stationary single-cylinder internal combustion four-stroke engine",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Otto_engine",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Enginy%20Otto-langen%201867.jpg",
+    "imageAttribution": "Mcapdevila, via Wikimedia Commons",
+    "description": "The Otto engine is a large stationary single-cylinder internal combustion four-stroke engine, designed by the German Nicolaus Otto. It was a low-RPM machine, and only fired every other stroke due to the Otto cycle, also designed by Otto.",
     "at": {
       "year": 1876
     },
@@ -835,7 +816,7 @@
       "year": 1960,
       "month": 5
     },
-    "row": 13
+    "row": 15
   },
   {
     "id": "Q44973",
@@ -901,7 +882,7 @@
       "year": 1955,
       "month": 5
     },
-    "row": 10
+    "row": 14
   },
   {
     "id": "Q5859",

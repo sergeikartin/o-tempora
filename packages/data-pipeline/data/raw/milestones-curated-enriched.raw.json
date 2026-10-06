@@ -598,16 +598,23 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Emergency%20hospital%20during%20Influenza%20epidemic%2C%20Camp%20Funston%2C%20Kansas%20-%20NCP%201603.jpg"
     },
     {
-      "id": "Q12190",
-      "name": "penicillin",
-      "nameRu": "бензилпенициллин",
+      "id": "Q3042914",
+      "name": "Discovery of penicillin",
+      "nameRu": "Открытие пенициллина",
       "category": "medicine-health",
       "year": 1928,
       "month": 9,
-      "tagline": "group of antibiotics derived from Penicillium fungi",
-      "sitelinks": 117,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Penicillin",
+      "tagline": "aspect of history",
+      "sitelinks": 7,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_penicillin",
       "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/History_of_penicillin",
+        "es": "https://es.wikipedia.org/wiki/Anexo:Descubrimiento_de_la_penicilina",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9couverte_de_la_p%C3%A9nicilline",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE_%D8%A7%D9%84%D8%A8%D9%86%D8%B3%D9%84%D9%8A%D9%86"
+      },
+      "fameSitelinks": 117,
+      "fameArticleUrls": {
         "en": "https://en.wikipedia.org/wiki/Penicillin",
         "zh": "https://zh.wikipedia.org/wiki/%E9%9D%92%E9%9C%89%E7%B4%A0",
         "es": "https://es.wikipedia.org/wiki/Penicilina",
@@ -616,8 +623,7 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%86%D8%B3%D9%84%D9%8A%D9%86",
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D0%BD%D0%B8%D1%86%D0%B8%D0%BB%D0%BB%D0%B8%D0%BD%D1%8B"
       },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Benzylpenicillin-3D-balls.png"
+      "countries": []
     },
     {
       "id": "Q817281",
@@ -1623,23 +1629,19 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/ELA%20cougar.jpg"
     },
     {
-      "id": "Q191801",
+      "id": "Q3507866",
       "name": "First four-stroke engine",
       "nameRu": "Первый четырёхтактный двигатель",
       "category": "energy-industry",
       "year": 1876,
-      "tagline": "internal combustion engine type",
-      "taglineRu": "поршневой двигатель внутреннего сгорания, в котором рабочий процесс в каждом из цилиндров совершается за два оборота коленчатого вала, то есть за четыре хода поршня (такта)",
-      "sitelinks": 53,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Four-stroke_engine",
+      "tagline": "large stationary single-cylinder internal combustion four-stroke engine",
+      "sitelinks": 16,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Otto_engine",
       "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Four-stroke_engine",
-        "zh": "https://zh.wikipedia.org/wiki/%E5%9B%9B%E5%86%B2%E7%A8%8B%E5%BE%AA%E7%8E%AF",
-        "es": "https://es.wikipedia.org/wiki/Ciclo_de_cuatro_tiempos",
-        "fr": "https://fr.wikipedia.org/wiki/Moteur_%C3%A0_quatre_temps",
-        "de": "https://de.wikipedia.org/wiki/Viertaktmotor",
-        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%83_%D8%B1%D8%A8%D8%A7%D8%B9%D9%8A_%D8%A7%D9%84%D8%A3%D8%B4%D9%88%D8%A7%D8%B7",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%82%D1%8B%D1%80%D1%91%D1%85%D1%82%D0%B0%D0%BA%D1%82%D0%BD%D1%8B%D0%B9_%D0%B4%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C"
+        "en": "https://en.wikipedia.org/wiki/Otto_engine",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A5%A5%E6%89%98%E5%9B%9B%E5%86%B2%E7%A8%8B%E5%8F%91%E5%8A%A8%E6%9C%BA",
+        "es": "https://es.wikipedia.org/wiki/Motor_Otto",
+        "de": "https://de.wikipedia.org/wiki/Ottomotor"
       },
       "fameSitelinks": 121,
       "fameArticleUrls": {
@@ -1652,7 +1654,7 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%B8%D0%B3%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B5%D0%B3%D0%BE_%D1%81%D0%B3%D0%BE%D1%80%D0%B0%D0%BD%D0%B8%D1%8F"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/4StrokeEngine%20Ortho%203D%20Small.gif"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Enginy%20Otto-langen%201867.jpg"
     },
     {
       "id": "Q660895",
@@ -2719,8 +2721,8 @@
     },
     {
       "id": "Q43653",
-      "name": "Apollo 11",
-      "nameRu": "Аполлон-11",
+      "name": "First humans on the Moon",
+      "nameRu": "Первая высадка людей на Луну",
       "category": "expedition",
       "year": 1969,
       "month": 7,
@@ -2736,6 +2738,16 @@
         "de": "https://de.wikipedia.org/wiki/Apollo_11",
         "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%A8%D9%88%D9%84%D9%88_11",
         "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BF%D0%BE%D0%BB%D0%BB%D0%BE%D0%BD-11"
+      },
+      "fameSitelinks": 219,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Neil_Armstrong",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B0%BC%E5%B0%94%C2%B7%E9%98%BF%E5%A7%86%E6%96%AF%E7%89%B9%E6%9C%97",
+        "es": "https://es.wikipedia.org/wiki/Neil_Armstrong",
+        "fr": "https://fr.wikipedia.org/wiki/Neil_Armstrong",
+        "de": "https://de.wikipedia.org/wiki/Neil_Armstrong",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%86%D9%8A%D9%84_%D8%A2%D8%B1%D9%85%D8%B3%D8%AA%D8%B1%D9%88%D9%86%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D1%80%D0%BC%D1%81%D1%82%D1%80%D0%BE%D0%BD%D0%B3,_%D0%9D%D0%B8%D0%BB"
       },
       "countries": [
         "Q30"
@@ -2767,9 +2779,9 @@
     },
     {
       "id": "Q182524",
-      "name": "Vostok 1",
-      "nameRu": "Восток-1",
-      "category": "transportation",
+      "name": "First human in space",
+      "nameRu": "Первый человек в космосе",
+      "category": "expedition",
       "year": 1961,
       "month": 4,
       "tagline": "spaceflight of the Vostok programme",
@@ -2784,6 +2796,16 @@
         "de": "https://de.wikipedia.org/wiki/Wostok_1",
         "ar": "https://ar.wikipedia.org/wiki/%D9%81%D9%88%D8%B3%D8%AA%D9%88%D9%83_1",
         "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D1%81%D1%82%D0%BE%D0%BA-1"
+      },
+      "fameSitelinks": 206,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Yuri_Gagarin",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B0%A4%E9%87%8C%C2%B7%E5%8A%A0%E5%8A%A0%E6%9E%97",
+        "es": "https://es.wikipedia.org/wiki/Yuri_Gagarin",
+        "fr": "https://fr.wikipedia.org/wiki/Youri_Gagarine",
+        "de": "https://de.wikipedia.org/wiki/Juri_Alexejewitsch_Gagarin",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%8A%D9%88%D8%B1%D9%8A_%D8%AC%D8%A7%D8%AC%D8%A7%D8%B1%D9%8A%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B0%D0%B3%D0%B0%D1%80%D0%B8%D0%BD,_%D0%AE%D1%80%D0%B8%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B5%D0%B2%D0%B8%D1%87"
       },
       "countries": [
         "Q15180"

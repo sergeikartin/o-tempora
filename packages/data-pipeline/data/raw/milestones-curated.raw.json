@@ -175,9 +175,18 @@
       "category": "public-health"
     },
     {
-      "id": "Q12190",
-      "name": "Penicillin",
-      "category": "medicine-health"
+      "id": "Q3042914",
+      "name": "history of penicillin",
+      "category": "medicine-health",
+      "displayName": {
+        "en": "Discovery of penicillin",
+        "ru": "Открытие пенициллина"
+      },
+      "fameSource": "Q12190",
+      "date": {
+        "year": 1928,
+        "month": 9
+      }
     },
     {
       "id": "Q817281",
@@ -424,8 +433,8 @@
       "category": "transportation"
     },
     {
-      "id": "Q191801",
-      "name": "four-stroke engine",
+      "id": "Q3507866",
+      "name": "Otto engine",
       "category": "energy-industry",
       "displayName": {
         "en": "First four-stroke engine",
@@ -702,7 +711,12 @@
     {
       "id": "Q43653",
       "name": "Apollo 11",
-      "category": "expedition"
+      "category": "expedition",
+      "displayName": {
+        "en": "First humans on the Moon",
+        "ru": "Первая высадка людей на Луну"
+      },
+      "fameSource": "Q1615"
     },
     {
       "id": "Q80811",
@@ -712,7 +726,12 @@
     {
       "id": "Q182524",
       "name": "Vostok 1",
-      "category": "transportation"
+      "category": "expedition",
+      "displayName": {
+        "en": "First human in space",
+        "ru": "Первый человек в космосе"
+      },
+      "fameSource": "Q7327"
     },
     {
       "id": "Q8414",

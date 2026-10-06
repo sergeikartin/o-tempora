@@ -188,6 +188,24 @@
     "row": 1
   },
   {
+    "id": "Q43653",
+    "name": "First humans on the Moon",
+    "category": "expedition",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 90,
+    "tagline": "first Moon landing and fifth crewed flight of the United States Apollo program",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Apollo%2011%20Crew.jpg",
+    "description": "Apollo 11 was the American spaceflight that first landed humans on the Moon, and the fifth crewed mission of NASA's Apollo program. The mission was crewed by Commander Neil Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin \"Buzz\" Aldrin, all of whom were on their second and final spaceflight.",
+    "at": {
+      "year": 1969,
+      "month": 7
+    },
+    "row": 0
+  },
+  {
     "id": "Q10806",
     "name": "September 11 attacks",
     "category": "society-administration",
@@ -205,6 +223,24 @@
       "month": 9
     },
     "row": 1
+  },
+  {
+    "id": "Q182524",
+    "name": "First human in space",
+    "category": "expedition",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 89,
+    "tagline": "spaceflight of the Vostok programme",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vostok_1",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vostokpanel.JPG",
+    "description": "Vostok 1 was the first spaceflight of the Vostok programme and the first human orbital spaceflight in history. The Vostok 3KA space capsule was launched from Baikonur Cosmodrome on 12 April 1961, with Soviet cosmonaut Yuri Gagarin aboard, making him the first human to reach orbital velocity around the Earth and to complete a full orbit around the Earth.",
+    "at": {
+      "year": 1961,
+      "month": 4
+    },
+    "row": 7
   },
   {
     "id": "Q12138",
@@ -425,7 +461,7 @@
       "year": 1945,
       "month": 7
     },
-    "row": 6
+    "row": 8
   },
   {
     "id": "Q8275",

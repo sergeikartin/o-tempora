@@ -14,7 +14,7 @@
       "year": 1996,
       "month": 7
     },
-    "row": 20
+    "row": 18
   },
   {
     "id": "Q190035",
@@ -286,7 +286,7 @@
       "year": 1964,
       "month": 10
     },
-    "row": 25
+    "row": 26
   },
   {
     "id": "Q179744",
@@ -587,24 +587,6 @@
     "row": 23
   },
   {
-    "id": "Q182524",
-    "name": "Vostok 1",
-    "category": "transportation",
-    "regionTags": [
-      "eastern-europe"
-    ],
-    "fameScore": 73,
-    "tagline": "spaceflight of the Vostok programme",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Vostok_1",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vostokpanel.JPG",
-    "description": "Vostok 1 was the first spaceflight of the Vostok programme and the first human orbital spaceflight in history. The Vostok 3KA space capsule was launched from Baikonur Cosmodrome on 12 April 1961, with Soviet cosmonaut Yuri Gagarin aboard, making him the first human to reach orbital velocity around the Earth and to complete a full orbit around the Earth.",
-    "at": {
-      "year": 1961,
-      "month": 4
-    },
-    "row": 15
-  },
-  {
     "id": "Q184201",
     "name": "Apollo 8",
     "category": "expedition",
@@ -620,7 +602,7 @@
       "year": 1968,
       "month": 12
     },
-    "row": 26
+    "row": 29
   },
   {
     "id": "Q1188138",
@@ -1245,7 +1227,7 @@
       "year": 1997,
       "month": 5
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q817281",
@@ -1444,7 +1426,7 @@
         "month": 4
       }
     },
-    "row": 6
+    "row": 11
   },
   {
     "id": "Q202558",
@@ -1996,7 +1978,7 @@
       "year": 1971,
       "month": 11
     },
-    "row": 32
+    "row": 18
   },
   {
     "id": "Q856544",
@@ -2064,7 +2046,7 @@
       "year": 1967,
       "month": 12
     },
-    "row": 29
+    "row": 33
   },
   {
     "id": "Q234027",
@@ -2212,7 +2194,7 @@
       "year": 1978,
       "month": 12
     },
-    "row": 33
+    "row": 29
   },
   {
     "id": "Q1645505",
@@ -2995,7 +2977,7 @@
       "year": 1974,
       "month": 5
     },
-    "row": 36
+    "row": 32
   },
   {
     "id": "Q733610",
@@ -3913,7 +3895,7 @@
       "year": 1991,
       "month": 7
     },
-    "row": 29
+    "row": 31
   },
   {
     "id": "Q3447247",
@@ -4062,7 +4044,7 @@
       "year": 1992,
       "month": 10
     },
-    "row": 31
+    "row": 32
   },
   {
     "id": "Q3286250",
@@ -4147,7 +4129,7 @@
       "year": 1923,
       "month": 10
     },
-    "row": 13
+    "row": 40
   },
   {
     "id": "Q4378226",
