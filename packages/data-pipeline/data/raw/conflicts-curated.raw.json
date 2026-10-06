@@ -15,7 +15,7 @@
       "category": "one of meta.categories",
       "parentId": "optional — another curated row's id; that row must be a Conflict (resolves both a start and end date from enrichment), and the chain up to its root is capped at 3 levels"
     },
-    "count": 236
+    "count": 235
   },
   "conflicts": [
     {
@@ -1124,11 +1124,6 @@
     {
       "id": "Q124988",
       "name": "Punic Wars",
-      "category": "war"
-    },
-    {
-      "id": "Q15860072",
-      "name": "Russo-Ukrainian war",
       "category": "war"
     },
     {

@@ -173,25 +173,6 @@
     "row": 7
   },
   {
-    "id": "Q15860072",
-    "name": "Russo-Ukrainian war",
-    "category": "war",
-    "regionTags": [
-      "eastern-europe"
-    ],
-    "fameScore": 84,
-    "tagline": "armed conflict between Russia and Ukraine since 2014",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakhmut%20during%20the%20battle%2C%202023-03.jpg",
-    "imageAttribution": "State Border Guard Service of Ukraine, via Wikimedia Commons",
-    "description": "The Russo-Ukrainian war began in February 2014 and is ongoing. Following Ukraine's Revolution of Dignity, Russia occupied Crimea and annexed it from Ukraine. It then supported Russian separatist armed groups who started a war in the eastern Donbas region against Ukraine's military. In 2018, Ukraine declared the region to be occupied by Russia. The first eight years of conflict also involved naval incidents and cyberwarfare. In February 2022, Russia launched a full-scale invasion of Ukraine and began occupying more of the country, starting the current phase of the war, the largest conflict in Europe since World War II. The war has resulted in a refugee crisis and hundreds of thousands of deaths.",
-    "at": {
-      "year": 2014,
-      "month": 2
-    },
-    "row": 4
-  },
-  {
     "id": "Q8690",
     "name": "Cultural Revolution",
     "category": "revolution",
@@ -233,7 +214,7 @@
       "year": 2023,
       "month": 10
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q38789",

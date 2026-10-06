@@ -173,25 +173,6 @@
     "row": 7
   },
   {
-    "id": "Q15860072",
-    "name": "Российско-украинская война",
-    "category": "war",
-    "regionTags": [
-      "eastern-europe"
-    ],
-    "fameScore": 84,
-    "tagline": "война России против Украины с 20 февраля 2014 года",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bakhmut%20during%20the%20battle%2C%202023-03.jpg",
-    "imageAttribution": "State Border Guard Service of Ukraine, via Wikimedia Commons",
-    "description": "Росси́йско-украи́нская война́, в украинских СМИ — «Война́ за незави́симость Украи́ны» — война между Россией и Украиной; в 2024 году на стороне России в войну вступила КНДР. Самый крупный вооружённый конфликт в Европе со времён окончания Второй мировой войны.",
-    "at": {
-      "year": 2014,
-      "month": 2
-    },
-    "row": 4
-  },
-  {
     "id": "Q8690",
     "name": "культурная революция в Китае",
     "category": "revolution",
@@ -233,7 +214,7 @@
       "year": 2023,
       "month": 10
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q38789",
