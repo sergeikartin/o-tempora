@@ -67,6 +67,7 @@ export interface TaggedMilestone {
   month?: number;
   endYear?: number;
   endMonth?: number;
+  approximateDate?: true;
   sitelinks: number;
   fameScore: number;
   category: MilestoneCategory;
@@ -287,6 +288,7 @@ export function transformMilestones(): TaggedMilestone[] {
       month: milestone.month,
       endYear: milestone.endYear,
       endMonth: milestone.endMonth,
+      approximateDate: milestone.approximateDate,
       sitelinks: milestone.fameSitelinks ?? milestone.sitelinks ?? 0,
       pageviews: pageviews[milestone.id] ?? 0,
       category,

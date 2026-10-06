@@ -162,6 +162,14 @@ test('Milestone: dateLine is at.year only (year precision)', () => {
   expect(content.dateLine).toBe('1440');
 });
 
+test('Milestone: approximate date is prefixed with "ca."', () => {
+  const content = buildDrawerContent({
+    entityType: 'milestone',
+    entity: { ...printingPress, at: { year: -138 }, approximateDate: true },
+  });
+  expect(content.dateLine).toBe('ca. 139 BCE');
+});
+
 const blackDeath: Milestone = {
   id: 'Q42005',
   name: 'Black Death',

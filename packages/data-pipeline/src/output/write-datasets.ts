@@ -307,6 +307,7 @@ export function buildMilestones(
       ...(row.image ? { image: row.image } : {}),
       ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
       ...(description ? { description } : {}),
+      ...(row.approximateDate ? { approximateDate: true as const } : {}),
     };
 
     if (row.endYear !== undefined) {

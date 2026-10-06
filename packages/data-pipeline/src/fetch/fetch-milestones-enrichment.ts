@@ -35,6 +35,21 @@ interface CuratedMilestone {
   // this entry's own when scoring fame, so a "first X" entry ranks as
   // prominently as the concept it introduced.
   fameSource?: string;
+  // Replaces the date Wikidata resolves (or fills in one it doesn't have)
+  // for entries whose own item carries no usable date claim, or a wrong one.
+  // Replaces all four fields together: an absent `endYear` makes the entry
+  // point-shaped even when Wikidata has an end date.
+  date?: DateOverride;
+}
+
+export interface DateOverride {
+  year: number;
+  month?: number;
+  endYear?: number;
+  endMonth?: number;
+  // Marks the overridden date as a scholarly estimate; the UI prefixes it
+  // with "ca.".
+  approximate?: boolean;
 }
 
 interface CuratedMilestonesFile {
@@ -67,6 +82,8 @@ export interface EnrichedMilestone {
   // buildConflicts already applies to Conflict/ConflictEvent.
   endYear?: number;
   endMonth?: number;
+  // Set only by a curated `date` override marked approximate.
+  approximateDate?: true;
   // Absent means the enrichment pass couldn't resolve an English tagline
   // for this QID — Output drops the row (write-datasets.ts's
   // validateMilestoneRow), no fallback to the curated file's old text, the
@@ -110,8 +127,38 @@ function isCuratedMilestone(value: unknown): value is CuratedMilestone {
     typeof candidate.category === "string" &&
     (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category) &&
     (candidate.displayName === undefined || isDisplayName(candidate.displayName)) &&
-    (candidate.fameSource === undefined || typeof candidate.fameSource === "string")
+    (candidate.fameSource === undefined || typeof candidate.fameSource === "string") &&
+    (candidate.date === undefined || isDateOverride(candidate.date))
   );
+}
+
+const isMonth = (value: unknown): boolean => value === undefined || (Number.isInteger(value) && (value as number) >= 1 && (value as number) <= 12);
+
+function isDateOverride(value: unknown): value is DateOverride {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Record<string, unknown>;
+  return (
+    Number.isInteger(candidate.year) &&
+    isMonth(candidate.month) &&
+    (candidate.endYear === undefined || Number.isInteger(candidate.endYear)) &&
+    isMonth(candidate.endMonth) &&
+    (candidate.endMonth === undefined || candidate.endYear !== undefined) &&
+    (candidate.approximate === undefined || typeof candidate.approximate === "boolean")
+  );
+}
+
+export function resolveDate(
+  override: DateOverride | undefined,
+  enriched: { year?: number; month?: number; endYear?: number; endMonth?: number } | undefined,
+): { year?: number; month?: number; endYear?: number; endMonth?: number; approximateDate?: true } {
+  const source = override ?? enriched;
+  return {
+    year: source?.year,
+    month: source?.month,
+    endYear: source?.endYear,
+    endMonth: source?.endMonth,
+    ...(override?.approximate ? { approximateDate: true as const } : {}),
+  };
 }
 
 function isDisplayName(value: unknown): value is { en: string; ru: string } {
@@ -254,15 +301,13 @@ export async function fetchMilestonesEnrichment(qids?: QidFilter): Promise<void>
   const enriched: EnrichedMilestone[] = selected.map((milestone) => {
     const enrichment = enrichmentById.get(milestone.id);
     const fameSource = milestone.fameSource ? enrichmentById.get(milestone.fameSource) : undefined;
+    const date = resolveDate(milestone.date, enrichment);
     return {
       id: milestone.id,
       name: milestone.displayName?.en ?? enrichment?.name,
       nameRu: milestone.displayName?.ru ?? enrichment?.nameRu,
       category: milestone.category,
-      year: enrichment?.year,
-      month: enrichment?.month,
-      endYear: enrichment?.endYear,
-      endMonth: enrichment?.endMonth,
+      ...date,
       tagline: enrichment?.tagline,
       taglineRu: enrichment?.taglineRu,
       sitelinks: enrichment?.sitelinks,

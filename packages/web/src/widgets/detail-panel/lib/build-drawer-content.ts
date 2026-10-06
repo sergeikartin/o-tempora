@@ -62,7 +62,9 @@ function milestoneContent(milestone: Milestone): DrawerContent {
     name: milestone.name,
     ...('period' in milestone
       ? {}
-      : { dateLine: formatYearMonth(milestone.at) }),
+      : {
+          dateLine: `${milestone.approximateDate ? 'ca. ' : ''}${formatYearMonth(milestone.at)}`,
+        }),
     tagline: milestone.tagline,
     description: milestone.description,
     wikipediaUrl: milestone.wikipediaUrl,

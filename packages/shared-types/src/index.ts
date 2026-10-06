@@ -311,6 +311,7 @@ export type ConflictEntry = Conflict | ConflictEvent;
 interface MilestonePeriod extends TimelineEntry {
   category: MilestoneCategory;
   regionTags: Region[];
+  approximateDate?: true;
   // Nested, like Conflict.period — not flattened the way MilestonePoint
   // flattens PointInTime's `at`, since `"period" in entry` (not `"at" in
   // entry`) is the narrowing check every consumer uses.
@@ -320,6 +321,9 @@ interface MilestonePeriod extends TimelineEntry {
 interface MilestonePoint extends TimelineEntry, PointInTime {
   category: MilestoneCategory;
   regionTags: Region[];
+  // The date is a scholarly estimate rather than a recorded one; the UI
+  // prefixes it with "ca.".
+  approximateDate?: true;
 }
 
 export type Milestone = MilestonePeriod | MilestonePoint;
