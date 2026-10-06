@@ -84,7 +84,20 @@ export function assignRows(items: RowInterval[], gap: number): Map<string, numbe
   return rowOfId;
 }
 
-function personInterval(person: Person): RowInterval {
+// Rows are language-independent (one row per entity, shared by every
+// language build), so a label's footprint is its widest rendering across
+// languages. `altNames` maps id → the other language's name.
+type AltNames = ReadonlyMap<string, string>;
+
+function widestNamePx(name: string, altName: string | undefined): number {
+  return Math.max(estimateLabelWidthPx(name), altName === undefined ? 0 : estimateLabelWidthPx(altName));
+}
+
+function altNamesById(entries: readonly { id: string; name: string }[]): AltNames {
+  return new Map(entries.map((entry) => [entry.id, entry.name]));
+}
+
+function personInterval(person: Person, altNames: AltNames): RowInterval {
   const startYear = yearMonthToFractionalYear(person.lifespan.start);
   // Missing lifespan.end means still alive — draw through to today, not a
   // collapsed zero-width bar at their birth year. Using the pipeline's own
@@ -97,7 +110,7 @@ function personInterval(person: Person): RowInterval {
   const endYear = ensureMinimumRangeWidthYears(startYear, rawEndYear);
   const x1 = startYear * REFERENCE_PIXELS_PER_YEAR;
   const x2 = endYear * REFERENCE_PIXELS_PER_YEAR;
-  const labelWidth = estimateLabelWidthPx(person.name);
+  const labelWidth = widestNamePx(person.name, altNames.get(person.id));
   return {
     id: person.id,
     startYear: x1,
@@ -106,57 +119,59 @@ function personInterval(person: Person): RowInterval {
   };
 }
 
-export function assignPersonRows(people: Person[]): Map<string, number> {
-  return assignRows(people.map(personInterval), MIN_ROW_GAP_PX);
+export function assignPersonRows(people: Person[], localizedPeople: Person[] = []): Map<string, number> {
+  const altNames = altNamesById(localizedPeople);
+  return assignRows(
+    people.map((person) => personInterval(person, altNames)),
+    MIN_ROW_GAP_PX,
+  );
+}
+
+function labelWidthPx(name: string, altName: string | undefined): number {
+  const widest = (n: string) => Math.max(...wrapMarkLabelLines(n).map(estimateLabelWidthPx));
+  return Math.max(widest(name), altName === undefined ? 0 : widest(altName));
 }
 
 // A period's label hangs below its line, left-aligned to its start.
-function rangeInterval(name: string, startYear: number, endYear: number): { start: number; end: number } {
+function rangeInterval(
+  name: string,
+  altName: string | undefined,
+  startYear: number,
+  endYear: number,
+): { start: number; end: number } {
   const x1 = startYear * REFERENCE_PIXELS_PER_YEAR;
   const x2 = endYear * REFERENCE_PIXELS_PER_YEAR;
-  return { start: x1, end: Math.max(x2, x1 + labelWidthPx(name)) };
+  return { start: x1, end: Math.max(x2, x1 + labelWidthPx(name, altName)) };
 }
 
 // A point's label sits to the right of its dot, on the same line.
-function pointInterval(name: string, startYear: number): { start: number; end: number } {
+function pointInterval(
+  name: string,
+  altName: string | undefined,
+  startYear: number,
+): { start: number; end: number } {
   const x = startYear * REFERENCE_PIXELS_PER_YEAR;
-  return { start: x - POINT_RADIUS, end: x + POINT_LABEL_OFFSET_PX + labelWidthPx(name) };
+  return { start: x - POINT_RADIUS, end: x + POINT_LABEL_OFFSET_PX + labelWidthPx(name, altName) };
 }
 
-function labelWidthPx(name: string): number {
-  return Math.max(...wrapMarkLabelLines(name).map(estimateLabelWidthPx));
-}
-
-function conflictInterval(entry: ConflictEntry): RowInterval {
-  const isConflict = "period" in entry;
-  const period: Period = isConflict ? entry.period : { start: entry.at, end: undefined };
+function eventInterval(
+  entry: ConflictEntry | Milestone,
+  altNames: AltNames,
+): RowInterval {
+  const isPeriod = "period" in entry;
+  const period: Period = isPeriod ? entry.period : { start: entry.at, end: undefined };
   const startYear = yearMonthToFractionalYear(period.start);
+  const altName = altNames.get(entry.id);
 
-  if (!isConflict) {
-    const { start, end } = pointInterval(entry.name, startYear);
+  if (!isPeriod) {
+    const { start, end } = pointInterval(entry.name, altName, startYear);
     return { id: entry.id, startYear: start, endYear: end, fameScore: entry.fameScore };
   }
 
   const rawEndYear = period.end ? yearMonthToFractionalYear(period.end) : startYear;
   const endYear = ensureMinimumRangeWidthYears(startYear, rawEndYear);
-  const { start, end } = rangeInterval(entry.name, startYear, endYear);
+  const { start, end } = rangeInterval(entry.name, altName, startYear, endYear);
   return { id: entry.id, startYear: start, endYear: end, fameScore: entry.fameScore };
-}
-
-function milestoneInterval(milestone: Milestone): RowInterval {
-  const isPeriodShaped = "period" in milestone;
-  const period: Period = isPeriodShaped ? milestone.period : { start: milestone.at, end: undefined };
-  const startYear = yearMonthToFractionalYear(period.start);
-
-  if (!isPeriodShaped) {
-    const { start, end } = pointInterval(milestone.name, startYear);
-    return { id: milestone.id, startYear: start, endYear: end, fameScore: milestone.fameScore };
-  }
-
-  const rawEndYear = period.end ? yearMonthToFractionalYear(period.end) : startYear;
-  const endYear = ensureMinimumRangeWidthYears(startYear, rawEndYear);
-  const { start, end } = rangeInterval(milestone.name, startYear, endYear);
-  return { id: milestone.id, startYear: start, endYear: end, fameScore: milestone.fameScore };
 }
 
 // Conflicts and Milestones share one row-packing pass — packages/web's
@@ -165,9 +180,12 @@ function milestoneInterval(milestone: Milestone): RowInterval {
 export function assignConflictsMilestonesRows(
   conflicts: ConflictEntry[],
   milestones: Milestone[],
+  localizedConflicts: ConflictEntry[] = [],
+  localizedMilestones: Milestone[] = [],
 ): Map<string, number> {
+  const altNames = altNamesById([...localizedConflicts, ...localizedMilestones]);
   return assignRows(
-    [...conflicts.map(conflictInterval), ...milestones.map(milestoneInterval)],
+    [...conflicts, ...milestones].map((entry) => eventInterval(entry, altNames)),
     MIN_ROW_GAP_PX,
   );
 }

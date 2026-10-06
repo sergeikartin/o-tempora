@@ -253,3 +253,11 @@ test("assignConflictsMilestonesRows gives an overlapping, more-famous ConflictEv
   assert.equal(rows.get("Q-battle"), 0);
   assert.notEqual(rows.get("Q-overlap"), 0);
 });
+
+test("assignConflictsMilestonesRows packs against the widest label across languages", () => {
+  const a = milestone({ id: "Q-a", name: "Printing", at: { year: 1440 }, fameScore: 90 });
+  const b = milestone({ id: "Q-b", name: "Gunpowder", at: { year: 1450 }, fameScore: 10 });
+  const longRu = milestone({ id: "Q-a", name: "Изобретение книгопечатания", at: { year: 1440 }, fameScore: 90 });
+  assert.equal(assignConflictsMilestonesRows([], [a, b]).get("Q-b"), 0);
+  assert.equal(assignConflictsMilestonesRows([], [a, b], [], [longRu]).get("Q-b"), 1);
+});

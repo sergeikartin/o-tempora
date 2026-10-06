@@ -33,7 +33,7 @@ async function writeDataset(fileName: string, data: unknown): Promise<void> {
 // docs/adr/0005-row-assignment-moves-to-the-pipeline.md) — row assignment is
 // language-independent (same ids/dates/fame regardless of `lang`, per
 // write-datasets.ts's Lang doc comment), so `rowOf` is computed once, off
-// the English build, and applied to both language builds by id here.
+// both builds' label widths, and applied to both language builds by id here.
 function withRows<T extends { id: string }>(entries: T[], rowOf: ReadonlyMap<string, number>): (T & { row: number })[] {
   return entries.map((entry) => ({ ...entry, row: rowOf.get(entry.id) ?? 0 }));
 }
@@ -65,7 +65,7 @@ async function main(): Promise<void> {
   const { people: peopleRu, report: peopleRuReport } = buildPeople(peopleRows, "ru");
   logReport("people.ru.json", peopleRu.length, peopleRuReport);
 
-  const personRowOf = assignPersonRows(people);
+  const personRowOf = assignPersonRows(people, peopleRu);
   const peopleWithRows = withRows(people, personRowOf);
   const peopleRuWithRows = withRows(peopleRu, personRowOf);
   await writeDetailLevelDataset(
@@ -96,9 +96,10 @@ async function main(): Promise<void> {
   logReport("milestones.ru.json", milestonesRu.length, milestonesRuReport);
 
   // Conflicts and Milestones share one row-packing pass (row-assignment.ts),
-  // so their rows are computed together off the English builds, then
-  // applied to both languages by id, same as People above.
-  const eventsRowOf = assignConflictsMilestonesRows(conflicts, milestones);
+  // so their rows are computed together off both language builds (a label's
+  // footprint is its widest rendering), then applied to both by id, same as
+  // People above.
+  const eventsRowOf = assignConflictsMilestonesRows(conflicts, milestones, conflictsRu, milestonesRu);
   const conflictsWithRows = withRows(conflicts, eventsRowOf);
   const conflictsRuWithRows = withRows(conflictsRu, eventsRowOf);
   const milestonesWithRows = withRows(milestones, eventsRowOf);
