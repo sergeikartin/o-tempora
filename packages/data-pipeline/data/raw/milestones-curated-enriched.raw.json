@@ -283,10 +283,34 @@
       "countries": []
     },
     {
-      "id": "Q1895685",
+      "id": "Q60535862",
+      "name": "Structure of DNA",
+      "nameRu": "Структура ДНК",
       "category": "science-theory",
-      "articleUrls": {},
-      "countries": []
+      "year": 1953,
+      "month": 4,
+      "tagline": "the structure formed by double-stranded molecules of nucleic acids such as DNA.",
+      "sitelinks": 20,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nucleic_acid_double_helix",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nucleic_acid_double_helix",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A0%B8%E9%85%B8%E5%8F%8C%E8%9E%BA%E6%97%8B",
+        "fr": "https://fr.wikipedia.org/wiki/Double_h%C3%A9lice",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D9%88%D9%84%D8%A8_%D8%A7%D9%84%D8%AD%D9%85%D8%B6_%D8%A7%D9%84%D9%86%D9%88%D9%88%D9%8A_%D8%A7%D9%84%D9%85%D8%B2%D8%AF%D9%88%D8%AC",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B9%D0%BD%D0%B0%D1%8F_%D1%81%D0%BF%D0%B8%D1%80%D0%B0%D0%BB%D1%8C_%D0%BD%D1%83%D0%BA%D0%BB%D0%B5%D0%B8%D0%BD%D0%BE%D0%B2%D1%8B%D1%85_%D0%BA%D0%B8%D1%81%D0%BB%D0%BE%D1%82"
+      },
+      "fameSitelinks": 189,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/DNA",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%84%B1%E6%B0%A7%E6%A0%B8%E7%B3%96%E6%A0%B8%E9%85%B8",
+        "es": "https://es.wikipedia.org/wiki/%C3%81cido_desoxirribonucleico",
+        "fr": "https://fr.wikipedia.org/wiki/Acide_d%C3%A9soxyribonucl%C3%A9ique",
+        "de": "https://de.wikipedia.org/wiki/Desoxyribonukleins%C3%A4ure",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AD%D9%85%D8%B6_%D9%86%D9%88%D9%88%D9%8A_%D8%B1%D9%8A%D8%A8%D9%88%D8%B2%D9%8A_%D9%85%D9%86%D9%82%D9%88%D8%B5_%D8%A7%D9%84%D8%A3%D9%83%D8%B3%D8%AC%D9%8A%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D0%B7%D0%BE%D0%BA%D1%81%D0%B8%D1%80%D0%B8%D0%B1%D0%BE%D0%BD%D1%83%D0%BA%D0%BB%D0%B5%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BA%D0%B8%D1%81%D0%BB%D0%BE%D1%82%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DNA%20stub.svg"
     },
     {
       "id": "Q2453355",
@@ -311,16 +335,26 @@
       ]
     },
     {
-      "id": "Q4339620",
-      "name": "discovery of electrons",
+      "id": "Q2225",
+      "name": "Discovery of the electron",
       "nameRu": "Открытие электрона",
       "category": "science-theory",
       "year": 1897,
-      "sitelinks": 2,
+      "tagline": "subatomic particle with negative charge",
+      "taglineRu": "субатомная частица с отрицательным зарядом",
+      "sitelinks": 175,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Electron",
       "articleUrls": {
-        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5_%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%B0"
+        "en": "https://en.wikipedia.org/wiki/Electron",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90",
+        "es": "https://es.wikipedia.org/wiki/Electr%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89lectron",
+        "de": "https://de.wikipedia.org/wiki/Elektron",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD"
       },
-      "countries": []
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Single%20electron%20probability%20pattern.png"
     },
     {
       "id": "Q40605",
@@ -1093,6 +1127,8 @@
     },
     {
       "id": "Q177524",
+      "name": "ARPANET",
+      "nameRu": "ARPANET",
       "category": "communication",
       "year": 1969,
       "tagline": "early packet switching network (1969–1990)",
@@ -1816,6 +1852,7 @@
     },
     {
       "id": "Q278579",
+      "name": "Aqua Appia",
       "nameRu": "Аква Аппия",
       "category": "landmarks",
       "year": -311,
@@ -1886,6 +1923,7 @@
     },
     {
       "id": "Q172822",
+      "name": "Hoover Dam",
       "nameRu": "Плотина Гувера",
       "category": "landmarks",
       "year": 1931,
@@ -2406,10 +2444,11 @@
     },
     {
       "id": "Q621427",
-      "nameRu": "IPhone (первого поколения)",
+      "name": "iPhone",
+      "nameRu": "iPhone",
       "category": "everyday-technology",
       "year": 2007,
-      "month": 1,
+      "month": 6,
       "tagline": "first smartphone of the iPhone line by Apple Inc.",
       "taglineRu": "Смартфон от Apple",
       "sitelinks": 54,
@@ -2422,6 +2461,16 @@
         "de": "https://de.wikipedia.org/wiki/IPhone_(1._Generation)",
         "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%8A%D9%81%D9%88%D9%86_(%D8%A7%D9%84%D8%AC%D9%8A%D9%84_%D8%A7%D9%84%D8%A3%D9%88%D9%84)",
         "ru": "https://ru.wikipedia.org/wiki/IPhone_(%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B3%D0%BE_%D0%BF%D0%BE%D0%BA%D0%BE%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F)"
+      },
+      "fameSitelinks": 128,
+      "fameArticleUrls": {
+        "en": "https://en.wikipedia.org/wiki/IPhone",
+        "zh": "https://zh.wikipedia.org/wiki/IPhone",
+        "es": "https://es.wikipedia.org/wiki/IPhone",
+        "fr": "https://fr.wikipedia.org/wiki/IPhone",
+        "de": "https://de.wikipedia.org/wiki/IPhone",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%8A%D9%81%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/IPhone"
       },
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/IPhone%201st%20Gen.svg"
@@ -3888,7 +3937,7 @@
       "name": "United States Constitution",
       "nameRu": "конституция США",
       "category": "society-administration",
-      "year": 2026,
+      "year": 1787,
       "month": 9,
       "tagline": "supreme law of the United States of America since March 4th, 1789",
       "taglineRu": "основной закон США",
@@ -5560,9 +5609,11 @@
       "name": "Taj Mahal",
       "nameRu": "Тадж-Махал",
       "category": "landmarks",
+      "year": 1632,
+      "endYear": 1653,
       "tagline": "marble mausoleum in Agra, India",
       "taglineRu": "мавзолей-мечеть в Агре, Индия",
-      "sitelinks": 184,
+      "sitelinks": 185,
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Taj_Mahal",
       "articleUrls": {
         "en": "https://en.wikipedia.org/wiki/Taj_Mahal",
@@ -8223,9 +8274,11 @@
     },
     {
       "id": "Q4916",
-      "nameRu": "евро",
+      "name": "Euro",
+      "nameRu": "Евро",
       "category": "commerce-finance",
-      "year": 1999,
+      "year": 2002,
+      "month": 1,
       "tagline": "currency of most countries in the European Union",
       "taglineRu": "официальная валюта большинства стран еврозоны (Евросоюза)",
       "sitelinks": 242,
@@ -8373,19 +8426,6 @@
         "Q30"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20U.S.%20oil%20rig%20with%20Edwin%20Drake%2C%20crop.jpg"
-    },
-    {
-      "id": "Q46047837",
-      "name": "Wright brothers' maiden flight",
-      "nameRu": "Первый полет братьев Райт",
-      "category": "transportation",
-      "year": 1903,
-      "month": 12,
-      "tagline": "maiden flight of the 1903 Wright Flyer, generally accepted as the first heavier-than-air powered flight",
-      "sitelinks": 1,
-      "articleUrls": {},
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/First%20flight3.jpg"
     },
     {
       "id": "Q51497",
@@ -10529,6 +10569,1434 @@
         "Q30"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Clermont%20replica.jpg"
+    },
+    {
+      "id": "Q214944",
+      "name": "Göbekli Tepe",
+      "nameRu": "Гёбекли-Тепе",
+      "category": "archaeology-anthropology",
+      "year": -9500,
+      "approximateDate": true,
+      "tagline": "neolithic archaeological site in Turkey",
+      "taglineRu": "древнейшее из крупных мегалитических сооружений в мире",
+      "sitelinks": 78,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%93%A5%E8%B4%9D%E5%85%8B%E5%8A%9B%E7%9F%B3%E9%98%B5",
+        "es": "https://es.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
+        "fr": "https://fr.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
+        "de": "https://de.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%BA%D9%88%D8%A8%D9%83%D9%84%D9%8A_%D8%AA%D8%A8%D9%87",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D1%91%D0%B1%D0%B5%D0%BA%D0%BB%D0%B8-%D0%A2%D0%B5%D0%BF%D0%B5"
+      },
+      "countries": [
+        "Q43"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/G%C3%B6bekli%20Tepe%2C%20Urfa.jpg"
+    },
+    {
+      "id": "Q446",
+      "name": "wheel",
+      "nameRu": "колесо",
+      "category": "everyday-technology",
+      "year": -3500,
+      "approximateDate": true,
+      "tagline": "circular item that rotates about an axial bearing; one of the six simple machines",
+      "taglineRu": "движитель, круглый, свободно вращающийся или закреплённый на оси диск, позволяющий поставленному на него телу катиться, а не скользить",
+      "sitelinks": 181,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wheel",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Wheel",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%BC%AA",
+        "es": "https://es.wikipedia.org/wiki/Rueda",
+        "fr": "https://fr.wikipedia.org/wiki/Roue",
+        "de": "https://de.wikipedia.org/wiki/Rad",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D8%AC%D9%84%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BB%D0%B5%D1%81%D0%BE"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tekerlek.jpg"
+    },
+    {
+      "id": "Q401",
+      "name": "cuneiform",
+      "nameRu": "клинопись",
+      "category": "communication",
+      "year": -3200,
+      "approximateDate": true,
+      "tagline": "ancient writing system used for many languages, including Akkadian and Hittite",
+      "taglineRu": "наиболее ранняя из известных систем письма",
+      "sitelinks": 102,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuneiform",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cuneiform",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%A5%94%E5%BD%A2%E6%96%87%E5%AD%97",
+        "es": "https://es.wikipedia.org/wiki/Escritura_cuneiforme",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89criture_cun%C3%A9iforme",
+        "de": "https://de.wikipedia.org/wiki/Keilschrift",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%83%D8%AA%D8%A7%D8%A8%D8%A9_%D9%85%D8%B3%D9%85%D8%A7%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BB%D0%B8%D0%BD%D0%BE%D0%BF%D0%B8%D1%81%D1%8C"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sumero-Akkadian%20cuneiform%20syllabary.jpg"
+    },
+    {
+      "id": "Q368138",
+      "name": "Narmer Palette",
+      "nameRu": "Палетка Нармера",
+      "category": "archaeology-anthropology",
+      "year": -3100,
+      "approximateDate": true,
+      "tagline": "Egyptian archaeological artifact",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Narmer_Palette",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Narmer_Palette",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%82%A3%E5%B0%94%E8%BF%88%E8%B0%83%E8%89%B2%E6%9D%BF",
+        "es": "https://es.wikipedia.org/wiki/Paleta_de_Narmer",
+        "fr": "https://fr.wikipedia.org/wiki/Palette_de_Narmer",
+        "de": "https://de.wikipedia.org/wiki/Narmer-Palette",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%84%D9%88%D8%AD%D8%A9_%D9%86%D8%B9%D8%B1%D9%85%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BB%D0%B5%D1%82%D0%BA%D0%B0_%D0%9D%D0%B0%D1%80%D0%BC%D0%B5%D1%80%D0%B0"
+      },
+      "countries": [
+        "Q79"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/NarmerPalette%20ROM.jpg"
+    },
+    {
+      "id": "Q192418",
+      "name": "Pyramid of Djoser",
+      "nameRu": "Пирамида Джосера",
+      "category": "landmarks",
+      "year": -2670,
+      "approximateDate": true,
+      "tagline": "Archeological site in Egypt",
+      "sitelinks": 56,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Pyramid_of_Djoser",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Pyramid_of_Djoser",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B7%A6%E5%A1%9E%E7%88%BE%E9%87%91%E5%AD%97%E5%A1%94",
+        "es": "https://es.wikipedia.org/wiki/Pir%C3%A1mide_escalonada_de_Zoser",
+        "fr": "https://fr.wikipedia.org/wiki/Complexe_fun%C3%A9raire_de_Dj%C3%A9ser",
+        "de": "https://de.wikipedia.org/wiki/Djoser-Pyramide",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%87%D8%B1%D9%85_%D8%B2%D9%88%D8%B3%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D1%80%D0%B0%D0%BC%D0%B8%D0%B4%D0%B0_%D0%94%D0%B6%D0%BE%D1%81%D0%B5%D1%80%D0%B0"
+      },
+      "countries": [
+        "Q79"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sakkara%2001.jpg"
+    },
+    {
+      "id": "Q4461035",
+      "name": "Akkadian Empire",
+      "nameRu": "Аккад",
+      "category": "society-administration",
+      "year": -2333,
+      "tagline": "ancient empire in the Mesopotamia (2334–2154 BC)",
+      "taglineRu": "древнее государство в Месопотамии",
+      "sitelinks": 91,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Akkadian_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Akkadian_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E5%8D%A1%E5%BE%B7%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Imperio_acadio",
+        "fr": "https://fr.wikipedia.org/wiki/Empire_d%27Akkad",
+        "de": "https://de.wikipedia.org/wiki/Reich_von_Akkad",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D9%83%D8%AF%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%BA%D0%B0%D0%B4"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q26752",
+      "name": "Phoenician script",
+      "nameRu": "финикийское письмо",
+      "category": "communication",
+      "year": -1050,
+      "approximateDate": true,
+      "tagline": "abjad found in Canaanite and Aramaic inscriptions across the Mediterranean from the 11th–2nd centuries BCE",
+      "taglineRu": "одна из первых зафиксированных в истории человечества систем фонетического письма",
+      "sitelinks": 93,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Phoenician_alphabet",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Phoenician_alphabet",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%85%93%E5%B0%BC%E5%9F%BA%E5%AD%97%E6%AF%8D",
+        "es": "https://es.wikipedia.org/wiki/Alfabeto_fenicio",
+        "fr": "https://fr.wikipedia.org/wiki/Alphabet_ph%C3%A9nicien",
+        "de": "https://de.wikipedia.org/wiki/Ph%C3%B6nizische_Schrift",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%A8%D8%AC%D8%AF%D9%8A%D8%A9_%D9%81%D9%8A%D9%86%D9%8A%D9%82%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A4%D0%B8%D0%BD%D0%B8%D0%BA%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B5_%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%BE"
+      },
+      "countries": [
+        "Q41642"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gezer%20calendar%20close%20up.jpg"
+    },
+    {
+      "id": "Q6343",
+      "name": "Carthage",
+      "nameRu": "Карфаген",
+      "category": "society-administration",
+      "year": -814,
+      "approximateDate": true,
+      "tagline": "historical city in Tunisia",
+      "taglineRu": "древний финикийский город-государство",
+      "sitelinks": 121,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Carthage",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Carthage",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%BF%A6%E5%A4%AA%E5%9F%BA",
+        "es": "https://es.wikipedia.org/wiki/Cartago",
+        "fr": "https://fr.wikipedia.org/wiki/Carthage",
+        "de": "https://de.wikipedia.org/wiki/Karthago",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%B1%D8%B7%D8%A7%D8%AC",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%80%D1%84%D0%B0%D0%B3%D0%B5%D0%BD_(%D0%B3%D0%BE%D1%80%D0%BE%D0%B4)"
+      },
+      "countries": [
+        "Q948"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tunisie%20Carthage%20Ruines%2008.JPG"
+    },
+    {
+      "id": "Q1247524",
+      "name": "founding of Rome",
+      "nameRu": "Основание Рима",
+      "category": "society-administration",
+      "year": -753,
+      "approximateDate": true,
+      "tagline": "mythical tale",
+      "sitelinks": 46,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Founding_of_Rome",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Founding_of_Rome",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BD%97%E9%A9%AC%E7%9A%84%E5%BB%BA%E7%AB%8B",
+        "es": "https://es.wikipedia.org/wiki/Fundaci%C3%B3n_de_Roma",
+        "fr": "https://fr.wikipedia.org/wiki/Fondation_de_Rome",
+        "de": "https://de.wikipedia.org/wiki/Gr%C3%BCndung_Roms",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3_%D8%B1%D9%88%D9%85%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%A0%D0%B8%D0%BC%D0%B0"
+      },
+      "countries": [
+        "Q38"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lupa%20Capitolina%2C%20Rome.jpg"
+    },
+    {
+      "id": "Q389688",
+      "name": "Achaemenid Empire",
+      "nameRu": "Держава Ахеменидов",
+      "category": "society-administration",
+      "year": -550,
+      "tagline": "Iranian (Persian) empire (550–330 BC)",
+      "taglineRu": "древнее государство на Ближнем Востоке",
+      "sitelinks": 112,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Achaemenid_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Achaemenid_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A5%91%E7%BE%8E%E5%B0%BC%E5%BE%B7%E7%8E%8B%E6%9C%9D",
+        "es": "https://es.wikipedia.org/wiki/Imperio_aquem%C3%A9nida",
+        "fr": "https://fr.wikipedia.org/wiki/Ach%C3%A9m%C3%A9nides",
+        "de": "https://de.wikipedia.org/wiki/Ach%C3%A4menidenreich",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D8%AE%D9%85%D9%8A%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D1%80%D0%B6%D0%B0%D0%B2%D0%B0_%D0%90%D1%85%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8%D0%B4%D0%BE%D0%B2"
+      },
+      "countries": [
+        "Q124003554"
+      ]
+    },
+    {
+      "id": "Q405008",
+      "name": "Cyrus cylinder",
+      "nameRu": "Манифест Кира",
+      "category": "law-jurisprudence",
+      "year": -539,
+      "tagline": "ancient cylinder covered with Akkadian cuneiform script",
+      "taglineRu": "древний глиняный цилиндр с аккадской клинописью",
+      "sitelinks": 57,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cyrus_Cylinder",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cyrus_Cylinder",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B1%85%E9%AD%AF%E5%A3%AB%E6%96%87%E6%9B%B8",
+        "es": "https://es.wikipedia.org/wiki/Cilindro_de_Ciro",
+        "fr": "https://fr.wikipedia.org/wiki/Cylindre_de_Cyrus",
+        "de": "https://de.wikipedia.org/wiki/Kyros-Zylinder",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A3%D8%B3%D8%B7%D9%88%D8%A7%D9%86%D8%A9_%D9%82%D9%88%D8%B1%D8%B4",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BD%D0%B8%D1%84%D0%B5%D1%81%D1%82_%D0%9A%D0%B8%D1%80%D0%B0"
+      },
+      "countries": [
+        "Q145"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cyrus%20Cylinder.jpg"
+    },
+    {
+      "id": "Q17167",
+      "name": "Roman Republic",
+      "nameRu": "Римская республика",
+      "category": "society-administration",
+      "year": -509,
+      "tagline": "period of ancient Roman civilization (509 BC–27 BC)",
+      "taglineRu": "историческая эпоха Древнего Рима (509—27 года до н. э.)",
+      "sitelinks": 123,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Roman_Republic",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Roman_Republic",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BD%97%E9%A9%AC%E5%85%B1%E5%92%8C%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Rep%C3%BAblica_romana",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9publique_romaine",
+        "de": "https://de.wikipedia.org/wiki/R%C3%B6mische_Republik",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AC%D9%85%D9%87%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%B1%D9%88%D9%85%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%B0%D1%8F_%D1%80%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q203686",
+      "name": "Twelve Tables",
+      "nameRu": "Законы Двенадцати таблиц",
+      "category": "law-jurisprudence",
+      "year": -450,
+      "tagline": "Roman statute",
+      "sitelinks": 56,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Twelve_Tables",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Twelve_Tables",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%81%E4%BA%8C%E9%93%9C%E8%A1%A8%E6%B3%95",
+        "es": "https://es.wikipedia.org/wiki/Ley_de_las_XII_Tablas",
+        "fr": "https://fr.wikipedia.org/wiki/Loi_des_Douze_Tables",
+        "de": "https://de.wikipedia.org/wiki/Zw%C3%B6lftafelgesetz",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D9%86%D9%88%D9%86_%D8%A7%D9%84%D8%A3%D9%84%D9%88%D8%A7%D8%AD_%D8%A7%D9%84%D8%A7%D8%AB%D9%86%D9%8A_%D8%B9%D8%B4%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD%D1%8B_%D0%B4%D0%B2%D0%B5%D0%BD%D0%B0%D0%B4%D1%86%D0%B0%D1%82%D0%B8_%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86"
+      },
+      "countries": [
+        "Q1747689"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Leipzig%20Reichsgericht%20au%C3%9Fen%20Detail%20004.jpg"
+    },
+    {
+      "id": "Q779933",
+      "name": "Edicts of Ashoka",
+      "nameRu": "Надписи Ашоки",
+      "category": "law-jurisprudence",
+      "year": -260,
+      "approximateDate": true,
+      "tagline": "3rd century BCE inscriptions in South Asia",
+      "sitelinks": 41,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Edicts_of_Ashoka",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Edicts_of_Ashoka",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E8%82%B2%E7%8E%8B%E8%A9%94%E6%9B%B8",
+        "es": "https://es.wikipedia.org/wiki/Edictos_de_Ashoka",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%89dits_d%27Ashoka",
+        "de": "https://de.wikipedia.org/wiki/Ashoka-Edikte",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B1%D8%A7%D8%B3%D9%8A%D9%85_%D8%A3%D8%B4%D9%88%D9%83%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D0%B4%D0%BF%D0%B8%D1%81%D0%B8_%D0%90%D1%88%D0%BE%D0%BA%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ashoka%20Lauriya%20Areraj%20inscription.jpg"
+    },
+    {
+      "id": "Q182324",
+      "name": "Antikythera mechanism",
+      "nameRu": "Антикитерский механизм",
+      "category": "science-theory",
+      "year": -150,
+      "approximateDate": true,
+      "tagline": "ancient analog computer designed to calculate astronomical positions",
+      "taglineRu": "Древнее астрономическое устройство",
+      "sitelinks": 71,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Antikythera_mechanism",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Antikythera_mechanism",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%E5%9F%BA%E8%A5%BF%E6%8B%89%E6%9C%BA%E6%A2%B0%E8%A3%85%E7%BD%AE",
+        "es": "https://es.wikipedia.org/wiki/Mecanismo_de_Anticitera",
+        "fr": "https://fr.wikipedia.org/wiki/Machine_d%27Anticyth%C3%A8re",
+        "de": "https://de.wikipedia.org/wiki/Mechanismus_von_Antikythera",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%A3%D9%86%D8%AA%D9%8A%D9%83%D9%8A%D8%AB%D9%8A%D8%B1%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D1%82%D0%B8%D0%BA%D0%B8%D1%82%D0%B5%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B5%D1%85%D0%B0%D0%BD%D0%B8%D0%B7%D0%BC"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/NAMA%20Machine%20d%27Anticyth%C3%A8re%201.jpg"
+    },
+    {
+      "id": "Q7183",
+      "name": "Qin dynasty",
+      "nameRu": "Цинь",
+      "category": "society-administration",
+      "year": -221,
+      "tagline": "dynasty that ruled in China from 221 to 206 BC",
+      "taglineRu": "первая империя Китая",
+      "sitelinks": 100,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Qin_dynasty",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Qin_dynasty",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A7%A6%E6%9C%9D",
+        "es": "https://es.wikipedia.org/wiki/Dinast%C3%ADa_Qin",
+        "fr": "https://fr.wikipedia.org/wiki/Dynastie_Qin",
+        "de": "https://de.wikipedia.org/wiki/Qin-Dynastie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D9%84%D8%A9_%D8%AA%D8%B4%D9%8A%D9%86_%D8%A7%D9%84%D8%AD%D8%A7%D9%83%D9%85%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A6%D0%B8%D0%BD%D1%8C_(%D0%B8%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F)"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Qin%20empire%20210%20BCE.png"
+    },
+    {
+      "id": "Q7209",
+      "name": "Han dynasty",
+      "nameRu": "империя Хань",
+      "category": "society-administration",
+      "year": -202,
+      "tagline": "imperial dynasty in China from 202 BC to 220 AD",
+      "taglineRu": "империя в истории Китая (206 г. до н.э. - 220 г. н.э.)",
+      "sitelinks": 132,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Han_dynasty",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Han_dynasty",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B1%89%E6%9C%9D",
+        "es": "https://es.wikipedia.org/wiki/Dinast%C3%ADa_Han",
+        "fr": "https://fr.wikipedia.org/wiki/Dynastie_Han",
+        "de": "https://de.wikipedia.org/wiki/Han-Dynastie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D9%84%D8%A9_%D9%87%D8%A7%D9%86_%D8%A7%D9%84%D8%AD%D8%A7%D9%83%D9%85%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F_%D0%A5%D0%B0%D0%BD%D1%8C"
+      },
+      "countries": [
+        "Q12060881"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Summer%20Vacation%202007%2C%20263%2C%20Watchtower%20In%20The%20Morning%20Light%2C%20Dunhuang%2C%20Gansu%20Province.jpg"
+    },
+    {
+      "id": "Q2277",
+      "name": "Roman Empire",
+      "nameRu": "Римская империя",
+      "category": "society-administration",
+      "year": -27,
+      "tagline": "period of Ancient Rome following the Republic",
+      "taglineRu": "период в древнеримской истории после Римской республики",
+      "sitelinks": 207,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Roman_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Roman_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BE%85%E9%A6%AC%E5%B8%9D%E5%9C%8B",
+        "es": "https://es.wikipedia.org/wiki/Imperio_romano",
+        "fr": "https://fr.wikipedia.org/wiki/Empire_romain",
+        "de": "https://de.wikipedia.org/wiki/R%C3%B6mische_Kaiserzeit",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%B1%D9%88%D9%85%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%B0%D1%8F_%D0%B8%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Inscription%20Theatre%20Leptis%20Magna%20Libya.JPG"
+    },
+    {
+      "id": "Q57357",
+      "name": "Hadrian's Wall",
+      "nameRu": "Вал Адриана",
+      "category": "landmarks",
+      "year": 122,
+      "tagline": "defensive fortification in Roman Britain",
+      "taglineRu": "оборонительное укрепление римской провинции Британия, построенное во II веке нашей эры",
+      "sitelinks": 82,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hadrian%27s_Wall",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Hadrian%27s_Wall",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%93%88%E5%BE%B7%E8%89%AF%E9%95%BF%E5%9F%8E",
+        "es": "https://es.wikipedia.org/wiki/Muro_de_Adriano",
+        "fr": "https://fr.wikipedia.org/wiki/Mur_d%27Hadrien",
+        "de": "https://de.wikipedia.org/wiki/Hadrianswall",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%88%D8%B1_%D9%87%D8%A7%D8%AF%D8%B1%D9%8A%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D0%BB_%D0%90%D0%B4%D1%80%D0%B8%D0%B0%D0%BD%D0%B0"
+      },
+      "countries": [
+        "Q145"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Section%20of%20Hadrian%27s%20Wall%201.jpg"
+    },
+    {
+      "id": "Q16869",
+      "name": "Constantinople",
+      "nameRu": "Константинополь",
+      "category": "society-administration",
+      "year": 330,
+      "tagline": "capital of the Eastern Roman, Latin and Ottoman Empires, currently Istanbul, Turkey",
+      "taglineRu": "столица Византийской, Латинской и Османской империй, сейчас — Стамбул, Турция",
+      "sitelinks": 128,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Constantinople",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Constantinople",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%90%9B%E5%A3%AB%E5%9D%A6%E4%B8%81%E5%A0%A1",
+        "es": "https://es.wikipedia.org/wiki/Constantinopla",
+        "fr": "https://fr.wikipedia.org/wiki/Constantinople",
+        "de": "https://de.wikipedia.org/wiki/Konstantinopel",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%82%D8%B3%D8%B7%D9%86%D8%B7%D9%8A%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C"
+      },
+      "countries": [
+        "Q43"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Byzantine%20Constantinople-en.png"
+    },
+    {
+      "id": "Q187719",
+      "name": "Corpus Juris Civilis",
+      "nameRu": "Corpus iuris civilis",
+      "category": "law-jurisprudence",
+      "year": 529,
+      "tagline": "collection of fundamental works in jurisprudence as codified by Justinian",
+      "sitelinks": 56,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Corpus_Juris_Civilis",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Corpus_Juris_Civilis",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B0%91%E6%B3%95%E5%A4%A7%E5%85%A8",
+        "es": "https://es.wikipedia.org/wiki/Corpus_iuris_civilis",
+        "fr": "https://fr.wikipedia.org/wiki/Corpus_juris_civilis",
+        "de": "https://de.wikipedia.org/wiki/Corpus_iuris_civilis",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D9%86%D9%88%D9%86_%D8%AC%D8%B3%D8%AA%D9%86%D9%8A%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/Corpus_iuris_civilis"
+      },
+      "countries": [
+        "Q12544"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Corpus%20juris%20civilis%20%281663%29.jpg"
+    },
+    {
+      "id": "Q821711",
+      "name": "Plague of Justinian",
+      "nameRu": "Юстинианова чума",
+      "category": "public-health",
+      "year": 541,
+      "endYear": 549,
+      "tagline": "541–549 AD pandemic in the Byzantine Empire, later northern Europe",
+      "taglineRu": "первая в истории зарегистрированная пандемия чумы, возникшая во время правления византийского императора Юстиниана I",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Plague_of_Justinian",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Plague_of_Justinian",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9F%A5%E5%A3%AB%E4%B8%81%E5%B0%BC%E5%A4%A7%E7%98%9F%E7%96%AB",
+        "es": "https://es.wikipedia.org/wiki/Plaga_de_Justiniano",
+        "fr": "https://fr.wikipedia.org/wiki/Peste_de_Justinien",
+        "de": "https://de.wikipedia.org/wiki/Justinianische_Pest",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B7%D8%A7%D8%B9%D9%88%D9%86_%D8%AC%D8%B3%D8%AA%D9%86%D9%8A%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AE%D1%81%D1%82%D0%B8%D0%BD%D0%B8%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0_%D1%87%D1%83%D0%BC%D0%B0"
+      },
+      "countries": [
+        "Q12544"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Yersinia%20pestis%20wayson.jpg"
+    },
+    {
+      "id": "Q9683",
+      "name": "Tang dynasty",
+      "nameRu": "империя Тан",
+      "category": "society-administration",
+      "year": 618,
+      "tagline": "empire in the China proper between 618 and 907 AD",
+      "taglineRu": "китайская империя (618-907)",
+      "sitelinks": 128,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tang_dynasty",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Tang_dynasty",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%94%90%E6%9C%9D",
+        "es": "https://es.wikipedia.org/wiki/Dinast%C3%ADa_Tang",
+        "fr": "https://fr.wikipedia.org/wiki/Dynastie_Tang",
+        "de": "https://de.wikipedia.org/wiki/Tang-Dynastie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D9%84%D8%A9_%D8%AA%D8%A7%D9%86%D8%BA_%D8%A7%D9%84%D8%AD%D8%A7%D9%83%D9%85%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F_%D0%A2%D0%B0%D0%BD"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tang%20Dynasty%20circa%20700%20CE.png"
+    },
+    {
+      "id": "Q1530",
+      "name": "Baghdad",
+      "nameRu": "Багдад",
+      "category": "society-administration",
+      "year": 762,
+      "tagline": "capital city of Iraq",
+      "taglineRu": "столица Ирака",
+      "sitelinks": 251,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Baghdad",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Baghdad",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B7%B4%E6%A0%BC%E8%BE%BE",
+        "es": "https://es.wikipedia.org/wiki/Bagdad",
+        "fr": "https://fr.wikipedia.org/wiki/Bagdad",
+        "de": "https://de.wikipedia.org/wiki/Bagdad",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%B3%D0%B4%D0%B0%D0%B4"
+      },
+      "countries": [
+        "Q796"
+      ]
+    },
+    {
+      "id": "Q213649",
+      "name": "Viking Age",
+      "nameRu": "эпоха викингов",
+      "category": "society-administration",
+      "year": 793,
+      "endYear": 1066,
+      "tagline": "the period of European history characterised by Viking raids and trading",
+      "taglineRu": "Период раннего Средневековья с VIII по XI вв.",
+      "sitelinks": 59,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Viking_Age",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Viking_Age",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%B6%AD%E4%BA%AC%E6%99%82%E4%BB%A3",
+        "es": "https://es.wikipedia.org/wiki/%C3%89poca_vikinga",
+        "fr": "https://fr.wikipedia.org/wiki/%C3%82ge_des_Vikings",
+        "de": "https://de.wikipedia.org/wiki/Wikingerzeit",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D8%B5%D8%B1_%D8%A7%D9%84%D9%81%D8%A7%D9%8A%D9%83%D9%86%D8%AC",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BF%D0%BE%D1%85%D0%B0_%D0%B2%D0%B8%D0%BA%D0%B8%D0%BD%D0%B3%D0%BE%D0%B2"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nicholas%20Roerich%2C%20Guests%20from%20Overseas.jpg"
+    },
+    {
+      "id": "Q31929",
+      "name": "Carolingian Empire",
+      "nameRu": "Каролингская империя",
+      "category": "society-administration",
+      "year": 800,
+      "tagline": "800–843 final stage in the history of the early medieval realm of the Franks, ruled by the Carolingian dynasty",
+      "taglineRu": "империя франков после коронации правителя Папой Римским",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Carolingian_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Carolingian_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8A%A0%E6%B4%9B%E6%9E%97%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Imperio_carolingio",
+        "fr": "https://fr.wikipedia.org/wiki/Empire_carolingien",
+        "de": "https://de.wikipedia.org/wiki/Karolingerreich",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D9%83%D8%A7%D8%B1%D9%88%D9%84%D9%86%D8%AC%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%80%D0%BE%D0%BB%D0%B8%D0%BD%D0%B3%D1%81%D0%BA%D0%B0%D1%8F_%D0%B8%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q31929"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Francia%20814.svg"
+    },
+    {
+      "id": "Q7462",
+      "name": "Song dynasty",
+      "nameRu": "империя Сун",
+      "category": "society-administration",
+      "year": 960,
+      "tagline": "former imperial dynasty of China (960–1279)",
+      "taglineRu": "средневековое китайское государство (960—1279)",
+      "sitelinks": 96,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Song_dynasty",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Song_dynasty",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%AE%8B%E6%9C%9D",
+        "es": "https://es.wikipedia.org/wiki/Dinast%C3%ADa_Song",
+        "fr": "https://fr.wikipedia.org/wiki/Dynastie_Song",
+        "de": "https://de.wikipedia.org/wiki/Song-Dynastie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D9%84%D8%A9_%D8%B3%D9%88%D9%86%D8%BA_%D8%A7%D9%84%D8%AD%D8%A7%D9%83%D9%85%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F_%D0%A1%D1%83%D0%BD"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/China%20-%20Song%20Dynasty-fr.svg"
+    },
+    {
+      "id": "Q12548",
+      "name": "Holy Roman Empire",
+      "nameRu": "Священная Римская империя",
+      "category": "society-administration",
+      "year": 962,
+      "tagline": "multi-ethnic complex of territories in Western and Central Europe (800/962–1806)",
+      "taglineRu": "межгосударственное образование, существовавшее с 962 по 1806 годы",
+      "sitelinks": 180,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Holy_Roman_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Holy_Roman_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A5%9E%E5%9C%A3%E7%BD%97%E9%A9%AC%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Sacro_Imperio_Romano_Germ%C3%A1nico",
+        "fr": "https://fr.wikipedia.org/wiki/Saint-Empire_romain_germanique",
+        "de": "https://de.wikipedia.org/wiki/Heiliges_R%C3%B6misches_Reich",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%B1%D9%88%D9%85%D8%A7%D9%86%D9%8A%D8%A9_%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B2%D1%8F%D1%89%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F_%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%B0%D1%8F_%D0%B8%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q12548"
+      ]
+    },
+    {
+      "id": "Q312342",
+      "name": "al-Azhar Mosque",
+      "nameRu": "Мечеть аль-Азхар",
+      "category": "philosophy-education",
+      "year": 970,
+      "tagline": "mosque in Islamic Cairo, Egypt",
+      "sitelinks": 41,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Al-Azhar_Mosque",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Al-Azhar_Mosque",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%88%B1%E8%B5%84%E5%93%88%E5%B0%94%E6%B8%85%E7%9C%9F%E5%A4%A7%E5%AF%BA",
+        "es": "https://es.wikipedia.org/wiki/Mezquita_de_al-Azhar",
+        "fr": "https://fr.wikipedia.org/wiki/Mosqu%C3%A9e_Al-Azhar",
+        "de": "https://de.wikipedia.org/wiki/Al-Azhar-Moschee",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AC%D8%A7%D9%85%D8%B9_%D8%A7%D9%84%D8%A3%D8%B2%D9%87%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%87%D0%B5%D1%82%D1%8C_%D0%B0%D0%BB%D1%8C-%D0%90%D0%B7%D1%85%D0%B0%D1%80"
+      },
+      "countries": [
+        "Q79"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Cairo%20-%20Islamic%20district%20-%20Al%20Azhar%20Mosque%20and%20University.JPG"
+    },
+    {
+      "id": "Q19867",
+      "name": "Domesday Book",
+      "nameRu": "Книга страшного суда",
+      "category": "society-administration",
+      "year": 1086,
+      "tagline": "manuscript record of the \"Great Survey\" of much of England and parts of Wales completed in 1086",
+      "sitelinks": 60,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Domesday_Book",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Domesday_Book",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9C%AB%E6%97%A5%E5%AE%A1%E5%88%A4%E4%B9%A6",
+        "es": "https://es.wikipedia.org/wiki/Libro_Domesday",
+        "fr": "https://fr.wikipedia.org/wiki/Domesday_Book",
+        "de": "https://de.wikipedia.org/wiki/Domesday_Book",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%83%D8%AA%D8%A7%D8%A8_%D9%88%D9%86%D8%B4%D9%8A%D8%B3%D8%AA%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BD%D0%B8%D0%B3%D0%B0_%D0%A1%D1%82%D1%80%D0%B0%D1%88%D0%BD%D0%BE%D0%B3%D0%BE_%D1%81%D1%83%D0%B4%D0%B0"
+      },
+      "countries": [
+        "Q145"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Domesday%20book--w.jpg"
+    },
+    {
+      "id": "Q12557",
+      "name": "Mongol Empire",
+      "nameRu": "Монгольская империя",
+      "category": "society-administration",
+      "year": 1206,
+      "tagline": "13th- and 14th-century empire originating in Mongolia",
+      "taglineRu": "крупнейшее по площади континентальное государство в истории человечества",
+      "sitelinks": 143,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mongol_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mongol_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%92%99%E5%8F%A4%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Imperio_mongol",
+        "fr": "https://fr.wikipedia.org/wiki/Empire_mongol",
+        "de": "https://de.wikipedia.org/wiki/Mongolisches_Reich",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D9%85%D8%BA%D9%88%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F_%D0%B8%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q184536",
+      "name": "Mali Empire",
+      "nameRu": "Империя Мали",
+      "category": "society-administration",
+      "year": 1235,
+      "approximateDate": true,
+      "tagline": "empire in West Africa from c.1230 to 1670",
+      "taglineRu": "империя на западе Африки",
+      "sitelinks": 100,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mali_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mali_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%A9%AC%E9%87%8C%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Imperio_de_Mali",
+        "fr": "https://fr.wikipedia.org/wiki/Empire_du_Mali",
+        "de": "https://de.wikipedia.org/wiki/Malireich",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D9%85%D9%84%D9%83%D8%A9_%D9%85%D8%A7%D9%84%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F_%D0%9C%D0%B0%D0%BB%D0%B8"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Catalan%20Atlas%20BNF%20Sheet%206%20Western%20Sahara.jpg"
+    },
+    {
+      "id": "Q209217",
+      "name": "Great Zimbabwe",
+      "nameRu": "Зимбабве",
+      "category": "landmarks",
+      "year": 1250,
+      "approximateDate": true,
+      "tagline": "ruined city in the south-eastern hills of Zimbabwe near Lake Mutirikwe and the town of Masvingo, was once the capital of the Kingdom of Zimbabwe during the country's Late Iron Age",
+      "taglineRu": "руины города в Зимбабве",
+      "sitelinks": 75,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%B4%A5%E5%B7%B4%E5%B8%83%E9%9F%A6",
+        "es": "https://es.wikipedia.org/wiki/Gran_Zimbabue",
+        "fr": "https://fr.wikipedia.org/wiki/Grand_Zimbabwe",
+        "de": "https://de.wikipedia.org/wiki/Gro%C3%9F-Simbabwe",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D9%8A%D9%85%D8%A8%D8%A7%D8%A8%D9%88%D9%8A_%D8%A7%D9%84%D8%B9%D8%B8%D9%85%D9%89",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9_%D0%97%D0%B8%D0%BC%D0%B1%D0%B0%D0%B1%D0%B2%D0%B5"
+      },
+      "countries": [
+        "Q954"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Great-Zimbabwe-6.jpg"
+    },
+    {
+      "id": "Q12560",
+      "name": "Ottoman Empire",
+      "nameRu": "Османская империя",
+      "category": "society-administration",
+      "year": 1299,
+      "tagline": "empire with the monarchs from the Ottoman dynasty (1299–1922)",
+      "taglineRu": "турецкое историческое государство на Ближнем Востоке и Балканах",
+      "sitelinks": 211,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ottoman_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ottoman_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%A5%A5%E6%96%AF%E6%9B%BC%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Imperio_otomano",
+        "fr": "https://fr.wikipedia.org/wiki/Empire_ottoman",
+        "de": "https://de.wikipedia.org/wiki/Osmanisches_Reich",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A9_%D8%A7%D9%84%D8%B9%D8%AB%D9%85%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B8%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q12560"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rise%20of%20Ottoman%20empire.png"
+    },
+    {
+      "id": "Q40185",
+      "name": "The Divine Comedy",
+      "nameRu": "Божественная комедия",
+      "category": "culture-arts",
+      "year": 1320,
+      "approximateDate": true,
+      "tagline": "Italian narrative poem by Dante Alighieri",
+      "taglineRu": "поэма Данте Алигьери",
+      "sitelinks": 131,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Divine_Comedy",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Divine_Comedy",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A5%9E%E6%9B%B2",
+        "es": "https://es.wikipedia.org/wiki/Divina_comedia",
+        "fr": "https://fr.wikipedia.org/wiki/Divine_Com%C3%A9die",
+        "de": "https://de.wikipedia.org/wiki/G%C3%B6ttliche_Kom%C3%B6die",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%83%D9%88%D9%85%D9%8A%D8%AF%D9%8A%D8%A7_%D8%A7%D9%84%D8%A5%D9%84%D9%87%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B6%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F_%D0%BA%D0%BE%D0%BC%D0%B5%D0%B4%D0%B8%D1%8F"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dante%20Domenico%20di%20Michelino.jpg"
+    },
+    {
+      "id": "Q13695",
+      "name": "Tenochtitlan",
+      "nameRu": "Теночтитлан",
+      "category": "society-administration",
+      "year": 1325,
+      "approximateDate": true,
+      "tagline": "former city-state in the Valley of Mexico",
+      "taglineRu": "столица Ацтекской империи",
+      "sitelinks": 88,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tenochtitlan",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Tenochtitlan",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%89%B9%E8%AB%BE%E5%A5%87%E6%8F%90%E7%89%B9%E8%98%AD",
+        "es": "https://es.wikipedia.org/wiki/M%C3%A9xico-Tenochtitlan",
+        "fr": "https://fr.wikipedia.org/wiki/Mexico-Tenochtitlan",
+        "de": "https://de.wikipedia.org/wiki/Tenochtitlan",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D9%8A%D9%86%D9%88%D8%AA%D8%B4%D8%AA%D9%8A%D8%AA%D9%84%D8%A7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BD%D0%BE%D1%87%D1%82%D0%B8%D1%82%D0%BB%D0%B0%D0%BD"
+      },
+      "countries": [
+        "Q96"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vista%20completa%20de%20Tenochtitl%C3%A1n.jpg"
+    },
+    {
+      "id": "Q9903",
+      "name": "Ming dynasty",
+      "nameRu": "империя Мин",
+      "category": "society-administration",
+      "year": 1368,
+      "tagline": "imperial dynasty of China from 1368 to 1644",
+      "taglineRu": "государство в истории Китая",
+      "sitelinks": 136,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ming_dynasty",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Ming_dynasty",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%98%8E%E6%9C%9D",
+        "es": "https://es.wikipedia.org/wiki/Dinast%C3%ADa_Ming",
+        "fr": "https://fr.wikipedia.org/wiki/Dynastie_Ming",
+        "de": "https://de.wikipedia.org/wiki/Ming-Dynastie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D9%84%D8%A9_%D9%85%D9%8A%D9%86%D8%BA_%D8%A7%D9%84%D8%AD%D8%A7%D9%83%D9%85%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F_%D0%9C%D0%B8%D0%BD"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ming%20Empire%20cca%201580%20%28en%29.svg"
+    },
+    {
+      "id": "Q28573",
+      "name": "Inca Empire",
+      "nameRu": "Империя инков",
+      "category": "society-administration",
+      "year": 1438,
+      "approximateDate": true,
+      "tagline": "1438–1533 empire in South America",
+      "taglineRu": "индейское раннеклассовое государство в Южной Америке в XI—XVI веках",
+      "sitelinks": 135,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Inca_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Inca_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%B0%E5%8A%A0%E5%B8%9D%E5%9C%8B",
+        "es": "https://es.wikipedia.org/wiki/Imperio_incaico",
+        "fr": "https://fr.wikipedia.org/wiki/Empire_inca",
+        "de": "https://de.wikipedia.org/wiki/Inkareich",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%A5%D9%86%D9%83%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F_%D0%B8%D0%BD%D0%BA%D0%BE%D0%B2"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/80%20-%20Machu%20Picchu%20-%20Juin%202009%20-%20edit.2.jpg"
+    },
+    {
+      "id": "Q4692",
+      "name": "Renaissance",
+      "nameRu": "Возрождение",
+      "category": "culture-arts",
+      "year": 1400,
+      "endYear": 1600,
+      "approximateDate": true,
+      "tagline": "cultural movement that spanned the period roughly from the 14th to the 17th century",
+      "taglineRu": "эпоха в истории культуры Европы",
+      "sitelinks": 188,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Renaissance",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Renaissance",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%96%87%E8%89%BA%E5%A4%8D%E5%85%B4",
+        "es": "https://es.wikipedia.org/wiki/Renacimiento",
+        "fr": "https://fr.wikipedia.org/wiki/Renaissance",
+        "de": "https://de.wikipedia.org/wiki/Renaissance",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D8%B5%D8%B1_%D8%A7%D9%84%D9%86%D9%87%D8%B6%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B7%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Da%20Vinci%20Vitruve%20Luc%20Viatour.jpg"
+    },
+    {
+      "id": "Q184725",
+      "name": "Spanish Inquisition",
+      "nameRu": "Испанская инквизиция",
+      "category": "religion-mythology",
+      "year": 1478,
+      "tagline": "ecclesiastical court system under the control of the kings of Spain (1478-1834)",
+      "taglineRu": "Испанская организация, созданная для укрепления католической веры и борьбы с ересью (1478-1834)",
+      "sitelinks": 68,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_Inquisition",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Spanish_Inquisition",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%A5%BF%E7%8F%AD%E7%89%99%E5%AE%97%E6%95%99%E8%A3%81%E5%88%A4%E6%89%80",
+        "es": "https://es.wikipedia.org/wiki/Inquisici%C3%B3n_espa%C3%B1ola",
+        "fr": "https://fr.wikipedia.org/wiki/Inquisition_espagnole",
+        "de": "https://de.wikipedia.org/wiki/Spanische_Inquisition",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%A7%D9%83%D9%85_%D8%A7%D9%84%D8%AA%D9%81%D8%AA%D9%8A%D8%B4_%D8%A7%D9%84%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D1%81%D0%BF%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B8%D0%BD%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%86%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q80702"
+      ]
+    },
+    {
+      "id": "Q180897",
+      "name": "Treaty of Tordesillas",
+      "nameRu": "Тордесильясский договор",
+      "category": "law-jurisprudence",
+      "year": 1494,
+      "month": 6,
+      "tagline": "treaty dividing territory between Portugal and Spain",
+      "taglineRu": "договор 1494 года между Испанией и Португалией о разделе мира",
+      "sitelinks": 67,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Treaty_of_Tordesillas",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Treaty_of_Tordesillas",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%89%98%E5%BE%B7%E8%A5%BF%E5%88%A9%E4%BA%9A%E6%96%AF%E6%9D%A1%E7%BA%A6",
+        "es": "https://es.wikipedia.org/wiki/Tratado_de_Tordesillas",
+        "fr": "https://fr.wikipedia.org/wiki/Trait%C3%A9_de_Tordesillas",
+        "de": "https://de.wikipedia.org/wiki/Vertrag_von_Tordesillas",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%A7%D9%87%D8%AF%D8%A9_%D8%AA%D9%88%D8%B1%D8%AF%D8%B3%D9%8A%D9%84%D8%A7%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D1%80%D0%B4%D0%B5%D1%81%D0%B8%D0%BB%D1%8C%D1%8F%D1%81%D1%81%D0%BA%D0%B8%D0%B9_%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80"
+      },
+      "countries": [
+        "Q80702",
+        "Q45670"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Treaty%20of%20Tordesillas.jpg"
+    },
+    {
+      "id": "Q844675",
+      "name": "Sistine Chapel ceiling",
+      "nameRu": "Потолок Сикстинской капеллы",
+      "category": "culture-arts",
+      "year": 1508,
+      "endYear": 1512,
+      "tagline": "cycle of frescoes by Michelangelo",
+      "sitelinks": 35,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%88%9B%E4%B8%96%E7%BA%AA_(%E5%A3%81%E7%94%BB)",
+        "es": "https://es.wikipedia.org/wiki/B%C3%B3veda_de_la_Capilla_Sixtina",
+        "fr": "https://fr.wikipedia.org/wiki/Plafond_de_la_chapelle_Sixtine",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%82%D9%81_%D9%83%D9%86%D9%8A%D8%B3%D8%A9_%D8%B3%D9%8A%D8%B3%D8%AA%D9%8A%D9%86%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%82%D0%BE%D0%BB%D0%BE%D0%BA_%D0%A1%D0%B8%D0%BA%D1%81%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B9_%D0%BA%D0%B0%D0%BF%D0%B5%D0%BB%D0%BB%D1%8B"
+      },
+      "countries": [
+        "Q237"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CAPPELLA%20SISTINA%20Ceiling.jpg"
+    },
+    {
+      "id": "Q33296",
+      "name": "Mughal Empire",
+      "nameRu": "Империя Великих Моголов",
+      "category": "society-administration",
+      "year": 1526,
+      "tagline": "great Turkic descent empire ruling India (1526–1857)",
+      "taglineRu": "государство, существовавшее на территории современных Индии, Пакистана, Бангладеш и юго-восточного Афганистана в XVI—XIX веках",
+      "sitelinks": 125,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mughal_Empire",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Mughal_Empire",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%8E%AB%E5%8D%A7%E5%84%BF%E5%B8%9D%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Imperio_mogol",
+        "fr": "https://fr.wikipedia.org/wiki/Empire_moghol",
+        "de": "https://de.wikipedia.org/wiki/Mogulreich",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%B7%D9%86%D8%A9_%D9%85%D8%BA%D9%88%D9%84_%D8%A7%D9%84%D9%87%D9%86%D8%AF",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F_%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B8%D1%85_%D0%9C%D0%BE%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Mughal%20Empire%20%281700%29.png"
+    },
+    {
+      "id": "Q1233009",
+      "name": "De humani corporis fabrica",
+      "nameRu": "О строении человеческого тела",
+      "category": "medicine-health",
+      "year": 1543,
+      "tagline": "1543 Anatomy books written by Andreas Vesalius",
+      "sitelinks": 27,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/De_Humani_Corporis_Fabrica_Libri_Septem",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/De_Humani_Corporis_Fabrica_Libri_Septem",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%BA%E4%BD%93%E7%9A%84%E6%9E%84%E9%80%A0",
+        "es": "https://es.wikipedia.org/wiki/De_humani_corporis_fabrica",
+        "fr": "https://fr.wikipedia.org/wiki/De_humani_corporis_fabrica",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A8%D9%86%D9%8A%D8%A9_%D8%AC%D8%B3%D9%85_%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86_(%D9%83%D8%AA%D8%A7%D8%A8)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9E_%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D0%B8_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%82%D0%B5%D0%BB%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vesalius%20Fabrica%20fronticepiece.jpg"
+    },
+    {
+      "id": "Q172991",
+      "name": "Council of Trent",
+      "nameRu": "Тридентский собор",
+      "category": "religion-mythology",
+      "year": 1545,
+      "endYear": 1563,
+      "tagline": "19th Ecumenical Council of the Catholic Church",
+      "taglineRu": "XIX Вселенский собор Католической церкви, проходивший в Тренте",
+      "sitelinks": 79,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Council_of_Trent",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Council_of_Trent",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%89%B9%E5%88%A9%E9%A8%B0%E5%A4%A7%E5%85%AC%E6%9C%83%E8%AD%B0",
+        "es": "https://es.wikipedia.org/wiki/Concilio_de_Trento",
+        "fr": "https://fr.wikipedia.org/wiki/Concile_de_Trente",
+        "de": "https://de.wikipedia.org/wiki/Konzil_von_Trient",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AC%D9%85%D8%B9_%D8%AA%D8%B1%D9%86%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Concilio%20Trento%20Museo%20Buonconsiglio.jpg"
+    },
+    {
+      "id": "Q186096",
+      "name": "Tsardom of Russia",
+      "nameRu": "Русское царство",
+      "category": "society-administration",
+      "year": 1547,
+      "tagline": "Russian state from 1547 to 1721",
+      "taglineRu": "наименование Русского государства между 1547 и 1721 годами",
+      "sitelinks": 79,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tsardom_of_Russia",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Tsardom_of_Russia",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BF%84%E7%BD%97%E6%96%AF%E6%B2%99%E7%9A%87%E5%9B%BD",
+        "es": "https://es.wikipedia.org/wiki/Zarato_ruso",
+        "fr": "https://fr.wikipedia.org/wiki/Tsarat_de_Russie",
+        "de": "https://de.wikipedia.org/wiki/Zarentum_Russland",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B1%D9%88%D8%B3%D9%8A%D8%A7_%D8%A7%D9%84%D9%82%D9%8A%D8%B5%D8%B1%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B5_%D1%86%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%BE"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q205662",
+      "name": "Tokugawa shogunate",
+      "nameRu": "Сёгунат Токугава",
+      "category": "society-administration",
+      "year": 1603,
+      "tagline": "1603–1868 Japanese military government",
+      "taglineRu": "феодальное правительство Японии в 1600—1868 годах",
+      "sitelinks": 73,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tokugawa_shogunate",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Tokugawa_shogunate",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B1%9F%E6%88%B7%E5%B9%95%E5%BA%9C",
+        "es": "https://es.wikipedia.org/wiki/Shogunato_Tokugawa",
+        "fr": "https://fr.wikipedia.org/wiki/Shogunat_Tokugawa",
+        "de": "https://de.wikipedia.org/wiki/Tokugawa-Sh%C5%8Dgunat",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B4%D9%88%D8%BA%D9%88%D9%86%D9%8A%D8%A9_%D8%AA%D9%88%D9%83%D9%88%D8%BA%D8%A7%D9%88%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D1%91%D0%B3%D1%83%D0%BD%D0%B0%D1%82_%D0%A2%D0%BE%D0%BA%D1%83%D0%B3%D0%B0%D0%B2%D0%B0"
+      },
+      "countries": [
+        "Q17"
+      ]
+    },
+    {
+      "id": "Q2517983",
+      "name": "Galileo affair",
+      "nameRu": "Процесс Галилея",
+      "category": "science-theory",
+      "year": 1633,
+      "tagline": "17th century conflict between Galileo Galilei and the Roman Catholic Church",
+      "taglineRu": "инквизиционный процесс над Галилеем, состоявшийся в 1633 году",
+      "sitelinks": 22,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Galileo_affair",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Galileo_affair",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BC%BD%E5%88%A9%E7%95%A5%E4%BA%8B%E4%BB%B6",
+        "es": "https://es.wikipedia.org/wiki/Proceso_a_Galileo_Galilei",
+        "fr": "https://fr.wikipedia.org/wiki/Proc%C3%A8s_de_Galil%C3%A9e",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%A7%D9%83%D9%85%D8%A9_%D8%AC%D8%A7%D9%84%D9%8A%D9%84%D9%8A%D9%88_%D8%AC%D8%A7%D9%84%D9%8A%D9%84%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81_%D0%93%D0%B0%D0%BB%D0%B8%D0%BB%D0%B5%D1%8F"
+      },
+      "countries": [
+        "Q170174"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Galileo%20facing%20the%20Roman%20Inquisition.jpg"
+    },
+    {
+      "id": "Q219217",
+      "name": "tulip mania",
+      "nameRu": "тюльпаномания",
+      "category": "commerce-finance",
+      "year": 1637,
+      "tagline": "17th-century economic bubble in the Netherlands",
+      "taglineRu": "кратковременный всплеск ажиотажного спроса на луковицы тюльпанов в Нидерландах в 1636—1637 годы.",
+      "sitelinks": 46,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tulip_mania",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Tulip_mania",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%AC%B1%E9%87%91%E9%A6%99%E7%8B%82%E7%86%B1",
+        "es": "https://es.wikipedia.org/wiki/Tulipoman%C3%ADa",
+        "fr": "https://fr.wikipedia.org/wiki/Tulipomanie",
+        "de": "https://de.wikipedia.org/wiki/Tulpenmanie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AC%D9%86%D9%88%D9%86_%D8%A7%D9%84%D8%AA%D9%88%D9%84%D9%8A%D8%A8",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D1%8E%D0%BB%D1%8C%D0%BF%D0%B0%D0%BD%D0%BE%D0%BC%D0%B0%D0%BD%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q170072"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tooneel%20van%20Flora%20Handel%20der%20Floristen%20in%20Amsterdam%201637%20%28Tulip%20mania%29.png"
+    },
+    {
+      "id": "Q656",
+      "name": "Saint Petersburg",
+      "nameRu": "Санкт-Петербург",
+      "category": "society-administration",
+      "year": 1703,
+      "month": 5,
+      "tagline": "federal city and former capital of Russia",
+      "taglineRu": "город федерального значения Российской Федерации",
+      "sitelinks": 273,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Petersburg",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Saint_Petersburg",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%9C%A3%E5%BD%BC%E5%BE%97%E5%A0%A1",
+        "es": "https://es.wikipedia.org/wiki/San_Petersburgo",
+        "fr": "https://fr.wikipedia.org/wiki/Saint-P%C3%A9tersbourg",
+        "de": "https://de.wikipedia.org/wiki/Sankt_Petersburg",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D8%A7%D9%86%D8%AA_%D8%A8%D8%B7%D8%B1%D8%B3%D8%A8%D8%B1%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
+      },
+      "countries": [
+        "Q159"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Peter%20%26%20Paul%20fortress%20in%20SPB%2003.jpg"
+    },
+    {
+      "id": "Q193515",
+      "name": "Acts of Union 1707",
+      "nameRu": "Акт об Унии",
+      "category": "law-jurisprudence",
+      "year": 1707,
+      "tagline": "Acts of Parliament creating the United Kingdom of Great Britain",
+      "taglineRu": "законодательный акт, принятый в течение 1706 и 1707 годов парламентами Англии и Шотландии",
+      "sitelinks": 60,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Acts_of_Union_1707",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Acts_of_Union_1707",
+        "zh": "https://zh.wikipedia.org/wiki/1707%E5%B9%B4%E8%81%AF%E5%90%88%E6%B3%95%E4%BB%A4",
+        "es": "https://es.wikipedia.org/wiki/Acta_de_Uni%C3%B3n_(1707)",
+        "fr": "https://fr.wikipedia.org/wiki/Actes_d%27Union_(1707)",
+        "de": "https://de.wikipedia.org/wiki/Act_of_Union_1707",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%A7%D9%86%D9%88%D9%86%D8%A7_%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF_1707",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D1%82_%D0%BE%D0%B1_%D1%83%D0%BD%D0%B8%D0%B8_(1707)"
+      },
+      "countries": [
+        "Q230791",
+        "Q179876",
+        "Q161885"
+      ]
+    },
+    {
+      "id": "Q12539",
+      "name": "Age of Enlightenment",
+      "nameRu": "Эпоха Просвещения",
+      "category": "philosophy-education",
+      "year": 1685,
+      "endYear": 1815,
+      "approximateDate": true,
+      "tagline": "period of European history and cultural movement of the 17th and 18th centuries",
+      "taglineRu": "период в истории Европы",
+      "sitelinks": 160,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%95%9F%E8%92%99%E6%99%82%E4%BB%A3",
+        "es": "https://es.wikipedia.org/wiki/Ilustraci%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Si%C3%A8cle_des_Lumi%C3%A8res",
+        "de": "https://de.wikipedia.org/wiki/Aufkl%C3%A4rung",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D8%B5%D8%B1_%D8%A7%D9%84%D8%AA%D9%86%D9%88%D9%8A%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BF%D0%BE%D1%85%D0%B0_%D0%9F%D1%80%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D1%8F"
+      },
+      "countries": []
+    },
+    {
+      "id": "Q214078",
+      "name": "Scientific Revolution",
+      "nameRu": "Революция в науке",
+      "category": "science-theory",
+      "year": 1543,
+      "endYear": 1687,
+      "tagline": "events that marked the emergence of modern science in the early modern period",
+      "sitelinks": 76,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Scientific_Revolution",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Scientific_Revolution",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%A7%91%E5%AD%A6%E9%9D%A9%E5%91%BD",
+        "es": "https://es.wikipedia.org/wiki/Revoluci%C3%B3n_cient%C3%ADfica",
+        "fr": "https://fr.wikipedia.org/wiki/R%C3%A9volution_scientifique",
+        "de": "https://de.wikipedia.org/wiki/Wissenschaftliche_Revolution",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AB%D9%88%D8%B1%D8%A9_%D8%B9%D9%84%D9%85%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F_%D0%B2_%D0%BD%D0%B0%D1%83%D0%BA%D0%B5"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Bertini%20fresco%20of%20Galileo%20Galilei%20and%20Doge%20of%20Venice.jpg"
+    },
+    {
+      "id": "Q169759",
+      "name": "Declaration of the Rights of Man and of the Citizen",
+      "nameRu": "Декларация прав человека и гражданина",
+      "category": "law-jurisprudence",
+      "year": 1789,
+      "month": 8,
+      "tagline": "foundational document of the French Revolution",
+      "taglineRu": "основополагающий документ Французской революции",
+      "sitelinks": 87,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%BA%E6%9D%83%E5%92%8C%E5%85%AC%E6%B0%91%E6%9D%83%E5%AE%A3%E8%A8%80",
+        "es": "https://es.wikipedia.org/wiki/Declaraci%C3%B3n_de_los_Derechos_del_Hombre_y_del_Ciudadano",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9claration_des_droits_de_l%27homme_et_du_citoyen_de_1789",
+        "de": "https://de.wikipedia.org/wiki/Erkl%C3%A4rung_der_Menschen-_und_B%C3%BCrgerrechte",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B9%D9%84%D8%A7%D9%86_%D8%AD%D9%82%D9%88%D9%82_%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86_%D9%88%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B7%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%BF%D1%80%D0%B0%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA%D0%B0_%D0%B8_%D0%B3%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D0%B8%D0%BD%D0%B0"
+      },
+      "countries": [
+        "Q70972"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20the%20Rights%20of%20Man%20and%20of%20the%20Citizen%20in%201789.jpg"
+    },
+    {
+      "id": "Q973118",
+      "name": "coronation of Napoleon I",
+      "nameRu": "Коронация Наполеона I",
+      "category": "society-administration",
+      "year": 1804,
+      "month": 12,
+      "tagline": "French royal event",
+      "taglineRu": "Событие французской истории",
+      "sitelinks": 18,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Coronation_of_Napoleon",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Coronation_of_Napoleon",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%8B%BF%E7%A0%B4%E4%BB%91%E7%9A%84%E5%8A%A0%E5%86%95%E7%A4%BC",
+        "es": "https://es.wikipedia.org/wiki/Coronaci%C3%B3n_de_Napole%C3%B3n",
+        "fr": "https://fr.wikipedia.org/wiki/Sacre_de_Napol%C3%A9on_Ier",
+        "de": "https://de.wikipedia.org/wiki/Kaiserkr%C3%B6nung_Napoleons_I.",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AA%D8%AA%D9%88%D9%8A%D8%AC_%D9%86%D8%A7%D8%A8%D9%84%D9%8A%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%BE%D0%BD%D0%B0%D1%86%D0%B8%D1%8F_%D0%9D%D0%B0%D0%BF%D0%BE%D0%BB%D0%B5%D0%BE%D0%BD%D0%B0_I"
+      },
+      "countries": [
+        "Q142"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Le%20Sacre%20de%20Napol%C3%A9on%20-%20Jacques-Louis%20David%20-%20Mus%C3%A9e%20du%20Louvre%20Peintures%20INV%203699%20%3B%20MR%201437.jpg"
+    },
+    {
+      "id": "Q472802",
+      "name": "Treaty of Waitangi",
+      "nameRu": "Договор Вайтанги",
+      "category": "law-jurisprudence",
+      "year": 1840,
+      "month": 2,
+      "tagline": "1840 treaty between the British Crown and various Māori chiefs of New Zealand",
+      "taglineRu": "Документ",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Treaty_of_Waitangi",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Treaty_of_Waitangi",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%87%B7%E5%94%90%E4%BC%8A%E6%A2%9D%E7%B4%84",
+        "es": "https://es.wikipedia.org/wiki/Tratado_de_Waitangi",
+        "fr": "https://fr.wikipedia.org/wiki/Trait%C3%A9_de_Waitangi",
+        "de": "https://de.wikipedia.org/wiki/Vertrag_von_Waitangi",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B9%D8%A7%D9%87%D8%AF%D8%A9_%D9%88%D8%A7%D9%8A%D8%AA%D8%A7%D9%86%D8%BA%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%92%D0%B0%D0%B9%D1%82%D0%B0%D0%BD%D0%B3%D0%B8"
+      },
+      "countries": [
+        "Q664"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Treatyofwaitangi.jpg"
+    },
+    {
+      "id": "Q7191",
+      "name": "Nobel Prize",
+      "nameRu": "Нобелевская премия",
+      "category": "philosophy-education",
+      "year": 1901,
+      "tagline": "set of annual international awards, primarily 5 established in 1895 by Alfred Nobel",
+      "taglineRu": "международная научная премия",
+      "sitelinks": 228,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nobel_Prize",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nobel_Prize",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%AF%BA%E8%B4%9D%E5%B0%94%E5%A5%96",
+        "es": "https://es.wikipedia.org/wiki/Premio_Nobel",
+        "fr": "https://fr.wikipedia.org/wiki/Prix_Nobel",
+        "de": "https://de.wikipedia.org/wiki/Nobelpreis",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%AC%D8%A7%D8%A6%D8%B2%D8%A9_%D9%86%D9%88%D8%A8%D9%84",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%BE%D0%B1%D0%B5%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D1%80%D0%B5%D0%BC%D0%B8%D1%8F"
+      },
+      "countries": [
+        "Q34",
+        "Q20"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Marie%20Sk%C5%82odowska-Curie%27s%20Nobel%20Prize%20in%20Chemistry%201911.jpg"
+    },
+    {
+      "id": "Q25173",
+      "name": "Titanic",
+      "nameRu": "Титаник",
+      "category": "transportation",
+      "year": 1912,
+      "month": 4,
+      "tagline": "British transatlantic passenger liner, launched and foundered in 1912",
+      "taglineRu": "пассажирский лайнер, затонувший 15 апреля 1912 года в Атлантическом океане",
+      "sitelinks": 160,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Titanic",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Titanic",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7",
+        "es": "https://es.wikipedia.org/wiki/RMS_Titanic",
+        "fr": "https://fr.wikipedia.org/wiki/Titanic",
+        "de": "https://de.wikipedia.org/wiki/Titanic_(Schiff)",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A2%D8%B1_%D8%A5%D9%85_%D8%A5%D8%B3_%D8%AA%D9%8A%D8%AA%D8%A7%D9%86%D9%8A%D9%83",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D1%82%D0%B0%D0%BD%D0%B8%D0%BA"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RMS%20Titanic%203.jpg"
+    },
+    {
+      "id": "Q328271",
+      "name": "Machtergreifung",
+      "nameRu": "Приход национал-социалистов к власти в Германии",
+      "category": "society-administration",
+      "year": 1933,
+      "month": 1,
+      "tagline": "Adolf Hitler is appointed Chancellor and subsequent establishment of the Nazi dictatorship",
+      "taglineRu": "процесс перехода власти в Германии к НСДАП во главе с Адольфом Гитлером, 30 января 1933",
+      "sitelinks": 32,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nazi_seizure_of_power",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nazi_seizure_of_power",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BA%B3%E7%B2%B9%E5%85%9A%E6%8E%8C%E6%9D%83",
+        "es": "https://es.wikipedia.org/wiki/Machtergreifung",
+        "fr": "https://fr.wikipedia.org/wiki/Machtergreifung",
+        "de": "https://de.wikipedia.org/wiki/Machtergreifung",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D1%85%D0%BE%D0%B4_%D0%BD%D0%B0%D1%86%D0%B8%D1%81%D1%82%D0%BE%D0%B2_%D0%BA_%D0%B2%D0%BB%D0%B0%D1%81%D1%82%D0%B8_%D0%B2_%D0%93%D0%B5%D1%80%D0%BC%D0%B0%D0%BD%D0%B8%D0%B8"
+      },
+      "countries": [
+        "Q183"
+      ]
+    },
+    {
+      "id": "Q2763",
+      "name": "The Holocaust",
+      "nameRu": "Холокост",
+      "category": "society-administration",
+      "year": 1941,
+      "endYear": 1945,
+      "tagline": "genocide of around 6 million Jews by Nazi Germany, other Axis powers and local collaborators in occupied territories",
+      "taglineRu": "в узком смысле: массовое уничтожение нацистами евреев",
+      "sitelinks": 204,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Holocaust",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/The_Holocaust",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%B4%8D%E7%B2%B9%E5%A4%A7%E5%B1%A0%E6%AE%BA",
+        "es": "https://es.wikipedia.org/wiki/Holocausto",
+        "fr": "https://fr.wikipedia.org/wiki/Shoah",
+        "de": "https://de.wikipedia.org/wiki/Holocaust",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%87%D9%88%D9%84%D9%88%D9%83%D9%88%D8%B3%D8%AA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A5%D0%BE%D0%BB%D0%BE%D0%BA%D0%BE%D1%81%D1%82"
+      },
+      "countries": [
+        "Q1206012",
+        "Q203493",
+        "Q153128"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Selection%20on%20the%20ramp%20at%20Auschwitz-Birkenau%2C%201944%20%28Auschwitz%20Album%29%201b.jpg"
+    },
+    {
+      "id": "Q36204",
+      "name": "2011 Tōhoku earthquake and tsunami",
+      "nameRu": "землетрясение в Японии",
+      "category": "environment-geology",
+      "year": 2011,
+      "month": 3,
+      "tagline": "megathrust earthquake off the east coast of Japan",
+      "taglineRu": "землетрясение 2011 года магнитудой 9,0—9,1 балла",
+      "sitelinks": 93,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
+        "zh": "https://zh.wikipedia.org/wiki/2011%E5%B9%B4%E6%97%A5%E6%9C%AC%E6%9D%B1%E5%8C%97%E5%9C%B0%E6%96%B9%E5%A4%AA%E5%B9%B3%E6%B4%8B%E8%BF%91%E6%B5%B7%E5%9C%B0%E9%9C%87",
+        "es": "https://es.wikipedia.org/wiki/Terremoto_y_tsunami_de_Jap%C3%B3n_de_2011",
+        "fr": "https://fr.wikipedia.org/wiki/S%C3%A9isme_de_2011_de_la_c%C3%B4te_Pacifique_du_T%C5%8Dhoku",
+        "de": "https://de.wikipedia.org/wiki/T%C5%8Dhoku-Erdbeben_2011",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D9%84%D8%B2%D8%A7%D9%84_%D9%88%D8%AA%D8%B3%D9%88%D9%86%D8%A7%D9%85%D9%8A_%D8%AA%D9%88%D9%87%D9%88%D9%83%D9%88_2011",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B5%D0%BC%D0%BB%D0%B5%D1%82%D1%80%D1%8F%D1%81%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2_%D0%AF%D0%BF%D0%BE%D0%BD%D0%B8%D0%B8_(2011)"
+      },
+      "countries": [
+        "Q17"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SH-60B%20helicopter%20flies%20over%20Sendai.jpg"
     }
   ]
 }

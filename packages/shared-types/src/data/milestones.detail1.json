@@ -102,6 +102,25 @@
     "row": 3
   },
   {
+    "id": "Q656",
+    "name": "Saint Petersburg",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 93,
+    "tagline": "federal city and former capital of Russia",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Petersburg",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Peter%20%26%20Paul%20fortress%20in%20SPB%2003.jpg",
+    "imageAttribution": "Florstein (Telegram:WikiPhoto.Space), via Wikimedia Commons",
+    "description": "Saint Petersburg, formerly known as Petrograd (Петроград), and later Leningrad (Ленинград), is the second-largest city in Russia, after Moscow, the nation's capital. Situated on the Neva River at the head of the Gulf of Finland on the Baltic Sea, its area of 1,439 square kilometers (556 sq mi) makes it the smallest administrative division of Russia by area. The city had a population of 5,601,911 residents as of 2021, with more than 6.4 million people living in the metropolitan area. Saint Petersburg is the fourth-most populous city in Europe, the most populous city on the Baltic Sea, and the world's northernmost city of more than 1 million residents. As the former capital of the Russian Empire, and a historically strategic Baltic port, it is governed as a federal city.",
+    "at": {
+      "year": 1703,
+      "month": 5
+    },
+    "row": 0
+  },
+  {
     "id": "Q81068910",
     "name": "COVID-19 pandemic",
     "category": "public-health",
@@ -158,6 +177,28 @@
     "row": 1
   },
   {
+    "id": "Q4916",
+    "name": "Euro",
+    "category": "commerce-finance",
+    "regionTags": [
+      "southern-europe",
+      "western-europe",
+      "western-asia",
+      "eastern-europe",
+      "northern-europe"
+    ],
+    "fameScore": 91,
+    "tagline": "currency of most countries in the European Union",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Euro",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Euro%20Series%20Banknotes%20%282019%29%20-%20centered.png",
+    "description": "The euro is the official currency of 21 of the 27 member states of the European Union. This group of states is officially known as the euro area, more commonly named the eurozone. Each euro is subdivided into 100 cents.",
+    "at": {
+      "year": 2002,
+      "month": 1
+    },
+    "row": 1
+  },
+  {
     "id": "Q1638417",
     "name": "First television",
     "category": "communication",
@@ -170,6 +211,61 @@
       "year": 1920
     },
     "row": 1
+  },
+  {
+    "id": "Q2277",
+    "name": "Roman Empire",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 91,
+    "tagline": "period of Ancient Rome following the Republic",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Roman_Empire",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Inscription%20Theatre%20Leptis%20Magna%20Libya.JPG",
+    "imageAttribution": "Papageizichta, via Wikimedia Commons",
+    "description": "The Roman Empire was a state that dominated the Mediterranean and much of Europe, Western Asia, and North Africa during the classical period. The Roman Republic had previously conquered most of these territories, which later came under permanent single-person rule following Octavian's rise to power and the establishment of the Augustan Principate in 27 BC. By the late 3rd century AD, the empire had been divided many times. The Western Roman Empire collapsed in 476 AD, whereas the Eastern Roman Empire persisted until the fall of Constantinople in 1453.",
+    "at": {
+      "year": -27
+    },
+    "row": 0
+  },
+  {
+    "id": "Q12560",
+    "name": "Ottoman Empire",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 91,
+    "tagline": "empire with the monarchs from the Ottoman dynasty (1299–1922)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ottoman_Empire",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Rise%20of%20Ottoman%20empire.png",
+    "description": "The Ottoman Empire, also known historically as Turkey or the Turkish Empire, was a state that spanned much of Southeastern Europe, West Asia, and North Africa from the 14th century to the early 20th century, centred in modern-day Turkey. It also controlled parts of southeastern Central Europe between the early 16th and early 18th centuries.",
+    "at": {
+      "year": 1299
+    },
+    "row": 0
+  },
+  {
+    "id": "Q2763",
+    "name": "The Holocaust",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 91,
+    "tagline": "genocide of around 6 million Jews by Nazi Germany, other Axis powers and local collaborators in occupied territories",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Holocaust",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Selection%20on%20the%20ramp%20at%20Auschwitz-Birkenau%2C%201944%20%28Auschwitz%20Album%29%201b.jpg",
+    "description": "The Holocaust, known in Hebrew as the Shoah, was the genocide of European Jews during World War II. From 1941 to 1945, Nazi Germany and its collaborators systematically murdered around six million Jews across German-occupied Europe, approximately two-thirds of Europe's Jewish population. The murders were committed primarily through mass shootings across Eastern Europe and poison gas chambers in extermination camps, chiefly Auschwitz-Birkenau, Treblinka, Belzec, Sobibor, Chełmno and Majdanek death camps in occupied Poland. Concurrent Nazi persecutions killed millions of other non-Jewish civilians and prisoners of war (POWs); the term Holocaust is sometimes used to include the murder and persecution of non-Jewish groups, such as the Romani and Soviet POWs.",
+    "period": {
+      "start": {
+        "year": 1941
+      },
+      "end": {
+        "year": 1945
+      }
+    },
+    "row": 4
   },
   {
     "id": "Q115564437",
@@ -222,7 +318,40 @@
       "year": 2001,
       "month": 9
     },
-    "row": 1
+    "row": 2
+  },
+  {
+    "id": "Q1530",
+    "name": "Baghdad",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 90,
+    "tagline": "capital city of Iraq",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Baghdad",
+    "description": "Baghdad is the capital and largest city in Iraq. It is located on the banks of the Tigris in central Iraq. With an estimated population of 8 million, it ranks among the most populous and largest cities in the Middle East and the Arab world and constitutes 22% of Iraq's population. Baghdad is a primary financial and commercial center in the region.",
+    "at": {
+      "year": 762
+    },
+    "row": 0
+  },
+  {
+    "id": "Q7191",
+    "name": "Nobel Prize",
+    "category": "philosophy-education",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 90,
+    "tagline": "set of annual international awards, primarily 5 established in 1895 by Alfred Nobel",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nobel_Prize",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Marie%20Sk%C5%82odowska-Curie%27s%20Nobel%20Prize%20in%20Chemistry%201911.jpg",
+    "description": "The Nobel Prizes are awards administered by the Nobel Foundation and granted in accordance with the principle of \"for the greatest benefit to humankind\". The prizes were first awarded in 1901, marking the fifth anniversary of Alfred Nobel's death. The original Nobel Prizes covered five fields: physics, chemistry, physiology or medicine, literature, and peace, specified in Nobel's will. A sixth prize, the Prize in Economic Sciences, was established in 1968 by Sveriges Riksbank in memory of Alfred Nobel. The Nobel Prizes are widely regarded as the most prestigious awards available in their respective fields.",
+    "at": {
+      "year": 1901
+    },
+    "row": 2
   },
   {
     "id": "Q182524",
@@ -256,7 +385,7 @@
     "at": {
       "year": 1582
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q7813",
@@ -273,7 +402,7 @@
       "year": 1948,
       "month": 12
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q243",
@@ -294,6 +423,29 @@
     "row": 2
   },
   {
+    "id": "Q9141",
+    "name": "Taj Mahal",
+    "category": "landmarks",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 89,
+    "tagline": "marble mausoleum in Agra, India",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Taj_Mahal",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Taj%20Mahal%2C%20Agra%2C%20India%20edit3.jpg",
+    "imageAttribution": "Taj_Mahal,_Agra,_India_edit2.jpg: Yann; edited by King of Hearts\nderivative work: Jbarta (talk), via Wikimedia Commons",
+    "description": "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar Pradesh, India. It was commissioned in 1631 by the fifth Mughal emperor, Shah Jahan, to house the tomb of his late wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. The tomb is the centrepiece of a 17-hectare (42-acre) complex, which includes a mosque and a guest house, and is set in formal gardens bounded on three sides by a crenellated wall.",
+    "period": {
+      "start": {
+        "year": 1632
+      },
+      "end": {
+        "year": 1653
+      }
+    },
+    "row": 0
+  },
+  {
     "id": "Q12501",
     "name": "Great Wall of China",
     "category": "landmarks",
@@ -310,6 +462,76 @@
       "year": -700
     },
     "row": 0
+  },
+  {
+    "id": "Q12548",
+    "name": "Holy Roman Empire",
+    "category": "society-administration",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 89,
+    "tagline": "multi-ethnic complex of territories in Western and Central Europe (800/962–1806)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Holy_Roman_Empire",
+    "description": "The Holy Roman Empire, also known as the Holy Roman Empire of the German Nation after 1512, was a polity comprising and controlling much of Central Europe and Western Europe, headed by the Holy Roman Emperor and characterized by a decentralized political structure. It developed in the Early Middle Ages, and lasted for a millennium until its dissolution in 1806 during the Napoleonic Wars. Initially, it consisted of three constituent kingdoms—Germany, Italy, and Burgundy—held together by the emperor's overlordship. By the 15th century, imperial governance had become concentrated in and upon the Kingdom of Germany, as the empire's effective control over Italy and Burgundy had largely disappeared.",
+    "at": {
+      "year": 962
+    },
+    "row": 0
+  },
+  {
+    "id": "Q4692",
+    "name": "Renaissance",
+    "category": "culture-arts",
+    "regionTags": [],
+    "fameScore": 89,
+    "tagline": "cultural movement that spanned the period roughly from the 14th to the 17th century",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Renaissance",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Da%20Vinci%20Vitruve%20Luc%20Viatour.jpg",
+    "description": "The Renaissance was a European period of history and cultural movement taking place at the end of the Late Middle Ages and the beginning of the early modern era. It is variously defined as covering the 15th and 16th centuries or, more broadly, as lasting from the 14th century to the 17th. It was characterized by the European rediscovery and revival of the literary, philosophical, and artistic achievements of classical antiquity. Associated with great change in art, architecture, politics, literature, exploration and technology, the Renaissance was first centered in the Republic of Florence, then spread to the rest of Italy and later throughout Europe.",
+    "approximateDate": true,
+    "period": {
+      "start": {
+        "year": 1400
+      },
+      "end": {
+        "year": 1600
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q25173",
+    "name": "Titanic",
+    "category": "transportation",
+    "regionTags": [],
+    "fameScore": 89,
+    "tagline": "British transatlantic passenger liner, launched and foundered in 1912",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Titanic",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/RMS%20Titanic%203.jpg",
+    "description": "RMS Titanic was a British ocean liner that sank in the early hours of 15 April 1912 after striking an iceberg on her maiden voyage from Southampton, England, to New York City. Of the 2,208 passengers and crew aboard, approximately 1,500 died, making the incident one of the deadliest peacetime sinkings of a single ship.",
+    "at": {
+      "year": 1912,
+      "month": 4
+    },
+    "row": 3
+  },
+  {
+    "id": "Q60535862",
+    "name": "Structure of DNA",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 88,
+    "tagline": "the structure formed by double-stranded molecules of nucleic acids such as DNA.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nucleic_acid_double_helix",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/DNA%20stub.svg",
+    "imageAttribution": "DNA_stub.png: The original uploader was Alai at English Wikipedia.\nderivative work: The Wednesday Island (talk), via Wikimedia Commons",
+    "description": "In molecular biology, the double helix is the structure formed by double-stranded molecules of nucleic acids such as DNA. The double-helical structure of a nucleic acid complex arises as a consequence of its secondary structure, and is a fundamental component in determining its tertiary structure.",
+    "at": {
+      "year": 1953,
+      "month": 4
+    },
+    "row": 8
   },
   {
     "id": "Q7391838",
@@ -340,7 +562,7 @@
       "year": 1989,
       "month": 3
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q1264871",
@@ -407,7 +629,7 @@
     "at": {
       "year": 1503
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q2269",
@@ -461,7 +683,7 @@
       "year": 1945,
       "month": 7
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q8275",

@@ -19,7 +19,7 @@
         "month": 12
       }
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q3964913",
@@ -36,7 +36,7 @@
       "year": 1982,
       "month": 10
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q8707",
@@ -78,7 +78,7 @@
       "year": 1991,
       "month": 12
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q48584",
@@ -97,7 +97,7 @@
       "year": 1799,
       "month": 7
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q10225",
@@ -139,7 +139,7 @@
         "month": 10
       }
     },
-    "row": 9
+    "row": 10
   },
   {
     "id": "Q2513",
@@ -155,7 +155,7 @@
       "year": 1990,
       "month": 4
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q17738",
@@ -169,7 +169,7 @@
     "at": {
       "year": 1977
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q1430251",
@@ -200,7 +200,7 @@
     "at": {
       "year": 1975
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q3697061",
@@ -217,7 +217,7 @@
     "at": {
       "year": -549
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q40605",
@@ -236,7 +236,7 @@
       "year": 2008,
       "month": 10
     },
-    "row": 7
+    "row": 6
   },
   {
     "id": "Q47616",
@@ -268,7 +268,7 @@
       "year": 1977,
       "month": 9
     },
-    "row": 5
+    "row": 3
   },
   {
     "id": "Q93304",
@@ -304,7 +304,7 @@
       "year": 1600,
       "month": 12
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q727413",
@@ -337,7 +337,7 @@
     "at": {
       "year": 1420
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q47476",
@@ -372,7 +372,7 @@
     "at": {
       "year": 1420
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q435",
@@ -409,7 +409,7 @@
       "year": 1755,
       "month": 1
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q402",
@@ -425,7 +425,7 @@
     "at": {
       "year": 2012
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q128015",
@@ -443,7 +443,7 @@
     "at": {
       "year": 1792
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q272975",
@@ -479,6 +479,41 @@
     "row": 10
   },
   {
+    "id": "Q401",
+    "name": "cuneiform",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "ancient writing system used for many languages, including Akkadian and Hittite",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuneiform",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sumero-Akkadian%20cuneiform%20syllabary.jpg",
+    "imageAttribution": "Gire 3pich2005, via Wikimedia Commons",
+    "description": "Cuneiform is a logo-syllabic writing system that was used to write several languages of the ancient Near East. The script was in active use from the early Bronze Age until the 1st century BC. Cuneiform scripts are marked by and named for the characteristic wedge-shaped impressions which form their signs. Cuneiform is the earliest known writing system and was originally developed to write the Sumerian language of southern Mesopotamia.",
+    "approximateDate": true,
+    "at": {
+      "year": -3200
+    },
+    "row": 1
+  },
+  {
+    "id": "Q36204",
+    "name": "2011 Tōhoku earthquake and tsunami",
+    "category": "environment-geology",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 80,
+    "tagline": "megathrust earthquake off the east coast of Japan",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SH-60B%20helicopter%20flies%20over%20Sendai.jpg",
+    "description": "On 11 March 2011, at 14:46:24 local time (UTC+9), a Mw 9.0–9.1 undersea megathrust earthquake occurred in the Pacific Ocean, 72 km (45 mi) east of the Oshika Peninsula of the Tōhoku region of Japan. It lasted approximately six minutes and caused a tsunami. It is sometimes known in Japan as the \"Great East Japan Earthquake\" , among other names. It is often referred to by its numerical date, 3.11.",
+    "at": {
+      "year": 2011,
+      "month": 3
+    },
+    "row": 8
+  },
+  {
     "id": "Q162297",
     "name": "hygiene",
     "category": "public-health",
@@ -511,7 +546,7 @@
       "year": 1993,
       "month": 6
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q2473989",
@@ -568,7 +603,7 @@
         "month": 6
       }
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q48432",
@@ -592,7 +627,7 @@
         "month": 7
       }
     },
-    "row": 13
+    "row": 10
   },
   {
     "id": "Q47672",
@@ -611,7 +646,7 @@
       "year": 1974,
       "month": 3
     },
-    "row": 15
+    "row": 8
   },
   {
     "id": "Q99309",
@@ -694,6 +729,54 @@
       "year": -699
     },
     "row": 1
+  },
+  {
+    "id": "Q7183",
+    "name": "Qin dynasty",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "dynasty that ruled in China from 221 to 206 BC",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Qin_dynasty",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Qin%20empire%20210%20BCE.png",
+    "imageAttribution": "Itsmine, via Wikimedia Commons",
+    "description": "The Qin dynasty was the first imperial dynasty of China. It is named for its progenitor state of Qin, a fief of the confederal Zhou dynasty. Beginning in 230 BC, the Qin under King Ying Zheng engaged in a series of wars conquering each of the rival states that had previously pledged fealty to the Zhou. This culminated in 221 BC with the successful unification of China. The Qin then assumed an imperial prerogative – with Ying Zheng declaring himself to be Qin Shi Huang, the first emperor of China, and bringing an end to the Warring States period. This state of affairs lasted until 206 BC, when the dynasty collapsed in the years following Qin Shi Huang's death. The Qin dynasty's 14-year existence was the shortest of any major dynasty in Chinese history, with only two emperors. However, the succeeding Han dynasty largely continued the military and administrative practices instituted by the Qin; as a result, the Qin have been credited as the originators of the Chinese imperial system that would endure in some form until the Xinhai Revolution in 1911.",
+    "at": {
+      "year": -221
+    },
+    "row": 0
+  },
+  {
+    "id": "Q7462",
+    "name": "Song dynasty",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "former imperial dynasty of China (960–1279)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Song_dynasty",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/China%20-%20Song%20Dynasty-fr.svg",
+    "imageAttribution": "derivative work: Augusta 89, via Wikimedia Commons",
+    "description": "The Song dynasty was an imperial dynasty of China that ruled from 960 to 1279. The dynasty was founded by Emperor Taizu of Song, who usurped the throne of the Later Zhou dynasty and went on to conquer the rest of the Ten Kingdoms, ending the Five Dynasties and Ten Kingdoms period. The Song often came into conflict with the contemporaneous Liao, Western Xia, and Jin dynasties in northern China. After retreating to southern China following attacks by the Jin dynasty, the Song was eventually conquered by the Mongol-led Yuan dynasty.",
+    "at": {
+      "year": 960
+    },
+    "row": 1
+  },
+  {
+    "id": "Q184536",
+    "name": "Mali Empire",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "empire in West Africa from c.1230 to 1670",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mali_Empire",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Catalan%20Atlas%20BNF%20Sheet%206%20Western%20Sahara.jpg",
+    "description": "The Mali Empire was an empire in West Africa from c. 1235 to 1610. The empire was founded by Sundiata Keita and became renowned for the wealth of its monarchs, especially Mansa Musa. At its peak, Mali was the largest empire in West Africa, widely influencing the culture of the region through the spread of its language, laws, and customs.",
+    "approximateDate": true,
+    "at": {
+      "year": 1235
+    },
+    "row": 2
   },
   {
     "id": "Q228036",
@@ -780,7 +863,7 @@
     "at": {
       "year": 1643
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q58148",
@@ -828,7 +911,7 @@
       "year": 1977,
       "month": 8
     },
-    "row": 17
+    "row": 6
   },
   {
     "id": "Q101017",
@@ -878,7 +961,7 @@
       "year": 1947,
       "month": 8
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q133331",
@@ -902,7 +985,7 @@
         "month": 7
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q51648",
@@ -935,7 +1018,7 @@
       "year": 1908,
       "month": 6
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q159766",
@@ -953,7 +1036,7 @@
     "at": {
       "year": 1602
     },
-    "row": 3
+    "row": 0
   },
   {
     "id": "Q8080",
@@ -977,7 +1060,7 @@
         "month": 4
       }
     },
-    "row": 14
+    "row": 11
   },
   {
     "id": "Q154255",
@@ -996,7 +1079,7 @@
       "year": 1939,
       "month": 9
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q167634",
@@ -1040,7 +1123,7 @@
         "year": 1871
       }
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q193484",
@@ -1058,7 +1141,7 @@
       "year": 1963,
       "month": 11
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q5725",
@@ -1098,7 +1181,7 @@
     "at": {
       "year": 1814
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q58767",
@@ -1116,7 +1199,94 @@
     "at": {
       "year": 1903
     },
-    "row": 13
+    "row": 15
+  },
+  {
+    "id": "Q214944",
+    "name": "Göbekli Tepe",
+    "category": "archaeology-anthropology",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 78,
+    "tagline": "neolithic archaeological site in Turkey",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/G%C3%B6bekli%20Tepe%2C%20Urfa.jpg",
+    "imageAttribution": "Teomancimit, via Wikimedia Commons",
+    "description": "Göbekli Tepe is a Neolithic archaeological site in Upper Mesopotamia (al-Jazira) in modern-day Turkey. The settlement was inhabited from around 9500 BCE to at least 8000 BCE, during the Pre-Pottery Neolithic. It is known for its large circular structures that contain large stone pillars – among the world's oldest known megaliths. Many of these pillars are decorated with anthropomorphic details, clothing, and sculptural reliefs of wild animals, providing archaeologists with insights into prehistoric religion and the iconography of the period. The 15 m (50 ft) high, 8 ha (20-acre) tell is covered with ancient domestic structures and other small buildings, quarries, and stone-cut cisterns from the Neolithic, as well as traces of activity from later periods.",
+    "approximateDate": true,
+    "at": {
+      "year": -9500
+    },
+    "row": 0
+  },
+  {
+    "id": "Q4461035",
+    "name": "Akkadian Empire",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "ancient empire in the Mesopotamia (2334–2154 BC)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Akkadian_Empire",
+    "description": "The Akkadian Empire or the Kingdom of Akkad/Agade was an ancient kingdom established around 2300 BCE, often seen as the first empire in world history, succeeding and unifying the long-lived city-states of the Early Dynastic period.",
+    "at": {
+      "year": -2333
+    },
+    "row": 1
+  },
+  {
+    "id": "Q26752",
+    "name": "Phoenician script",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "abjad found in Canaanite and Aramaic inscriptions across the Mediterranean from the 11th–2nd centuries BCE",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Phoenician_alphabet",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gezer%20calendar%20close%20up.jpg",
+    "imageAttribution": "oncenawhile, via Wikimedia Commons",
+    "description": "The Phoenician Script is an abjad that was used across the Mediterranean civilization of Phoenicia for most of the 1st millennium BC. It was one of the first alphabets, attested in Canaanite and Aramaic inscriptions found across the Mediterranean basin. In the history of writing systems, the Phoenician script was also the first to have a fixed writing direction—while previous systems were multi-directional, Phoenician was written horizontally, from right to left. It developed directly from the Proto-Sinaitic script used during the Late Bronze Age, which was derived in turn from Egyptian hieroglyphs.",
+    "approximateDate": true,
+    "at": {
+      "year": -1050
+    },
+    "row": 0
+  },
+  {
+    "id": "Q57357",
+    "name": "Hadrian's Wall",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "defensive fortification in Roman Britain",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hadrian%27s_Wall",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Section%20of%20Hadrian%27s%20Wall%201.jpg",
+    "imageAttribution": "quisnovus from Gloucester, England, via Wikimedia Commons",
+    "description": "Hadrian's Wall is a former defensive fortification of the Roman province of Britannia, begun in AD 122 in the reign of the Emperor Hadrian. Running from Wallsend on the River Tyne in the east to Bowness-on-Solway in the west of what is now northern England, it was a stone wall with large ditches in front and behind, stretching across the whole width of the island. Soldiers were garrisoned along the line of the wall in large forts, smaller milecastles, and intervening turrets. In addition to the wall's defensive military role, its gates may have been customs posts.",
+    "at": {
+      "year": 122
+    },
+    "row": 1
+  },
+  {
+    "id": "Q13695",
+    "name": "Tenochtitlan",
+    "category": "society-administration",
+    "regionTags": [
+      "central-america"
+    ],
+    "fameScore": 78,
+    "tagline": "former city-state in the Valley of Mexico",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tenochtitlan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vista%20completa%20de%20Tenochtitl%C3%A1n.jpg",
+    "imageAttribution": "thomas kole, via Wikimedia Commons",
+    "description": "Tenochtitlan, also known as Mexico-Tenochtitlan, was a large Mexican altepetl in what is now the historic center of Mexico City. The exact date of the founding of the city is unclear, but the date 13 March 1325 was chosen in 1925 to celebrate the 600th anniversary of the city. The city was built on an island in what was then Lake Texcoco in the Valley of Mexico. The city was the capital of the expanding Aztec Empire in the 15th century until it was captured by the Tlaxcaltec and the Spanish in 1521.",
+    "approximateDate": true,
+    "at": {
+      "year": 1325
+    },
+    "row": 1
   },
   {
     "id": "Q988780",
@@ -1164,7 +1334,7 @@
     "at": {
       "year": 1455
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q46904",
@@ -1178,7 +1348,7 @@
     "at": {
       "year": 1990
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q11762476",
@@ -1197,7 +1367,7 @@
       "year": 1804,
       "month": 2
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q193692",
@@ -1229,7 +1399,7 @@
     "at": {
       "year": 1893
     },
-    "row": 6
+    "row": 17
   },
   {
     "id": "Q164338",
@@ -1248,7 +1418,7 @@
       "year": 1964,
       "month": 10
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q189511",
@@ -1264,7 +1434,7 @@
     "at": {
       "year": 1963
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q64403",
@@ -1279,7 +1449,7 @@
     "at": {
       "year": 1787
     },
-    "row": 5
+    "row": 7
   },
   {
     "id": "Q3249519",
@@ -1327,7 +1497,7 @@
       "year": 1648,
       "month": 10
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q131482",
@@ -1348,7 +1518,7 @@
         "month": 9
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q129846",
@@ -1366,7 +1536,7 @@
     "at": {
       "year": 1555
     },
-    "row": 0
+    "row": 3
   },
   {
     "id": "Q132783",
@@ -1384,7 +1554,7 @@
     "at": {
       "year": 1764
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q177477",
@@ -1402,7 +1572,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q51636",
@@ -1437,7 +1607,7 @@
     "at": {
       "year": 1887
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q187650",
@@ -1461,7 +1631,7 @@
         "month": 11
       }
     },
-    "row": 9
+    "row": 6
   },
   {
     "id": "Q131130",
@@ -1479,6 +1649,55 @@
     "row": 6
   },
   {
+    "id": "Q182324",
+    "name": "Antikythera mechanism",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "ancient analog computer designed to calculate astronomical positions",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Antikythera_mechanism",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/NAMA%20Machine%20d%27Anticyth%C3%A8re%201.jpg",
+    "imageAttribution": "No machine-readable author provided. Marsyas assumed (based on copyright claims)., via Wikimedia Commons",
+    "description": "The Antikythera mechanism is an ancient Greek hand-powered orrery built in the 2nd century BC and discovered in 1901. It is the oldest known example of an analogue computer. It could be used to predict astronomical positions and eclipses decades in advance. It could also be used to track the four-year cycle of athletic games similar to an olympiad, the cycle of the ancient Olympic Games.",
+    "approximateDate": true,
+    "at": {
+      "year": -150
+    },
+    "row": 2
+  },
+  {
+    "id": "Q186096",
+    "name": "Tsardom of Russia",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "Russian state from 1547 to 1721",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tsardom_of_Russia",
+    "description": "The Tsardom of Russia, also known as the Tsardom of Moscow, was the centralized Russian state from the assumption of the title of tsar by Ivan IV in 1547 until the foundation of the Russian Empire by Peter the Great in 1721. It is generally regarded as the first phase of Tsarist Russia.",
+    "at": {
+      "year": 1547
+    },
+    "row": 1
+  },
+  {
+    "id": "Q169759",
+    "name": "Declaration of the Rights of Man and of the Citizen",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "foundational document of the French Revolution",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20the%20Rights%20of%20Man%20and%20of%20the%20Citizen%20in%201789.jpg",
+    "description": "The Declaration of the Rights of Man and of the Citizen, set by France's National Constituent Assembly in 1789, is a human and civil rights document from the French Revolution; the French title can be translated in the modern era as \"Declaration of Human and Civil Rights\". Inspired by Enlightenment philosophers, the declaration was a core statement of the values of the French Revolution and had a significant impact on the development of popular conceptions of individual liberty and democracy in Europe and worldwide.",
+    "at": {
+      "year": 1789,
+      "month": 8
+    },
+    "row": 8
+  },
+  {
     "id": "Q132560",
     "name": "electron microscope",
     "category": "science-theory",
@@ -1492,7 +1711,7 @@
     "at": {
       "year": 1931
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q116434",
@@ -1507,7 +1726,25 @@
     "at": {
       "year": 1877
     },
-    "row": 16
+    "row": 17
+  },
+  {
+    "id": "Q172822",
+    "name": "Hoover Dam",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 76,
+    "tagline": "hydroelectric dam on the Colorado River, United States",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hoover_Dam",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hoover%20Dam%20and%20Black%20Canyon%20seen%20from%20the%20Mike%20O%27Callaghan%E2%80%93Pat%20Tillman%20Memorial%20Bridge%2C%20panorama%2C%20Arizona%E2%80%93Nevada.jpg",
+    "imageAttribution": "Christian David, via Wikimedia Commons",
+    "description": "The Hoover Dam is a concrete arch–gravity dam in the Black Canyon of the Colorado River, on the boundary between the U.S. states of Nevada and Arizona. Constructed between 1931 and 1936, during the Great Depression, it was dedicated on September 30, 1935, by President Franklin D. Roosevelt. Its construction was the result of a massive effort involving thousands of workers, and cost over 96 lives. Bills passed by Congress during its construction referred to it as Hoover Dam, but the Roosevelt administration named it Boulder Dam. In 1947, Congress reinstated the name Hoover Dam.",
+    "at": {
+      "year": 1931
+    },
+    "row": 5
   },
   {
     "id": "Q160464",
@@ -1523,7 +1760,7 @@
     "at": {
       "year": 1200
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q160137",
@@ -1539,7 +1776,7 @@
     "at": {
       "year": 1888
     },
-    "row": 16
+    "row": 15
   },
   {
     "id": "Q180548",
@@ -1598,7 +1835,7 @@
       "year": 1992,
       "month": 2
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q154705",
@@ -1644,7 +1881,7 @@
         "year": 1939
       }
     },
-    "row": 23
+    "row": 24
   },
   {
     "id": "Q157506",
@@ -1660,7 +1897,7 @@
       "year": 1517,
       "month": 11
     },
-    "row": 0
+    "row": 3
   },
   {
     "id": "Q188468",
@@ -1699,7 +1936,7 @@
         "month": 8
       }
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q192050",
@@ -1717,7 +1954,7 @@
       "year": 1914,
       "month": 6
     },
-    "row": 14
+    "row": 20
   },
   {
     "id": "Q6743",
@@ -1742,7 +1979,7 @@
         "month": 6
       }
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q71229",
@@ -1790,7 +2027,7 @@
     "at": {
       "year": 1936
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q11932",
@@ -1820,7 +2057,7 @@
     "at": {
       "year": 2007
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q223644",
@@ -1884,7 +2121,7 @@
       "year": 1963,
       "month": 8
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q189223",
@@ -1899,6 +2136,59 @@
     "at": {
       "year": 1950
     },
-    "row": 26
+    "row": 27
+  },
+  {
+    "id": "Q184725",
+    "name": "Spanish Inquisition",
+    "category": "religion-mythology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "ecclesiastical court system under the control of the kings of Spain (1478-1834)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_Inquisition",
+    "description": "The Tribunal of the Holy Office of the Inquisition was authorized by Pope Sixtus IV in 1478 and the first inquisitors, Miguel de Morillo and Juan de San Martín, were appointed by the future Catholic Monarchs, King Ferdinand II of Aragon and Queen Isabella I of Castile, in 1480. Although its stated aim was to maintain Christian orthodoxy, it became an effective instrument of state power by replacing the Medieval Inquisition, which was under Papal control.",
+    "at": {
+      "year": 1478
+    },
+    "row": 1
+  },
+  {
+    "id": "Q172991",
+    "name": "Council of Trent",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "19th Ecumenical Council of the Catholic Church",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Council_of_Trent",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Concilio%20Trento%20Museo%20Buonconsiglio.jpg",
+    "imageAttribution": "Laurom, via Wikimedia Commons",
+    "description": "The Council of Trent, held between 1545 and 1563 in Trent, in Northern Italy, was the 19th ecumenical council of the Catholic Church. Prompted by the Protestant Reformation at the time, it has been described as the \"most characteristic embodiment of the ideals of the Counter-Reformation.\" It was the last time a Catholic ecumenical council was organized outside the city of Rome, and the second time a council was convened in the territory of the Holy Roman Empire.",
+    "period": {
+      "start": {
+        "year": 1545
+      },
+      "end": {
+        "year": 1563
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q205662",
+    "name": "Tokugawa shogunate",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 76,
+    "tagline": "1603–1868 Japanese military government",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tokugawa_shogunate",
+    "description": "The Tokugawa shogunate, also known as the Edo shogunate, was the military government of Japan during the Edo period from 1603 to 1868.",
+    "at": {
+      "year": 1603
+    },
+    "row": 4
   }
 ]

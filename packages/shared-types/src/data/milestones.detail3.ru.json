@@ -19,7 +19,7 @@
         "month": 12
       }
     },
-    "row": 10
+    "row": 12
   },
   {
     "id": "Q3964913",
@@ -36,7 +36,7 @@
       "year": 1982,
       "month": 10
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q8707",
@@ -78,7 +78,7 @@
       "year": 1991,
       "month": 12
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q48584",
@@ -97,7 +97,7 @@
       "year": 1799,
       "month": 7
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q10225",
@@ -139,7 +139,7 @@
         "month": 10
       }
     },
-    "row": 9
+    "row": 10
   },
   {
     "id": "Q2513",
@@ -155,7 +155,7 @@
       "year": 1990,
       "month": 4
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q17738",
@@ -169,7 +169,7 @@
     "at": {
       "year": 1977
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q1430251",
@@ -200,7 +200,7 @@
     "at": {
       "year": 1975
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q3697061",
@@ -217,7 +217,7 @@
     "at": {
       "year": -549
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q40605",
@@ -236,7 +236,7 @@
       "year": 2008,
       "month": 10
     },
-    "row": 7
+    "row": 6
   },
   {
     "id": "Q47616",
@@ -268,7 +268,7 @@
       "year": 1977,
       "month": 9
     },
-    "row": 5
+    "row": 3
   },
   {
     "id": "Q93304",
@@ -304,7 +304,7 @@
       "year": 1600,
       "month": 12
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q727413",
@@ -337,7 +337,7 @@
     "at": {
       "year": 1420
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q47476",
@@ -372,7 +372,7 @@
     "at": {
       "year": 1420
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q435",
@@ -409,7 +409,7 @@
       "year": 1755,
       "month": 1
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q402",
@@ -425,7 +425,7 @@
     "at": {
       "year": 2012
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q128015",
@@ -443,7 +443,7 @@
     "at": {
       "year": 1792
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q272975",
@@ -479,6 +479,41 @@
     "row": 10
   },
   {
+    "id": "Q401",
+    "name": "клинопись",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "наиболее ранняя из известных систем письма",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuneiform",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Sumero-Akkadian%20cuneiform%20syllabary.jpg",
+    "imageAttribution": "Gire 3pich2005, via Wikimedia Commons",
+    "description": "Кли́нопись — наиболее ранняя из известных систем письма. Знаки и особенности этого письма во многом определил писчий материал — глиняная табличка, на которой, пока глина ещё мягкая, деревянной палочкой для письма или заострённым тростником выдавливали знаки; отсюда и возникли «клинообразные» штрихи.",
+    "approximateDate": true,
+    "at": {
+      "year": -3200
+    },
+    "row": 1
+  },
+  {
+    "id": "Q36204",
+    "name": "землетрясение в Японии",
+    "category": "environment-geology",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 80,
+    "tagline": "землетрясение 2011 года магнитудой 9,0—9,1 балла",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SH-60B%20helicopter%20flies%20over%20Sendai.jpg",
+    "description": "Землетрясение у восточного побережья острова Хонсю в Японии (яп. 東北地方太平洋沖地震 То:хоку тихо: Тайхэйё:-оки дзисин, «Землетрясение в Тихом океане, оказавшее влияние на регион Тохоку»), также Великое восточно-японское землетрясение (яп. 東日本大震災 Хигаси Нихон дайсинсай) — землетрясение магнитудой, по текущим оценкам, от 9,0 до 9,1, произошедшее в пятницу, 11 марта 2011 года в 14:46 по местному времени. Эпицентр землетрясения был определён в точке с координатами 38,322° с. ш. 142,369° в. д. восточнее острова Хонсю, в 130 км к востоку от города Сендай и в 373 км к северо-востоку от Токио. Гипоцентр наиболее разрушительного подземного толчка находился на глубине 32 км ниже уровня моря в Тихом океане.",
+    "at": {
+      "year": 2011,
+      "month": 3
+    },
+    "row": 8
+  },
+  {
     "id": "Q162297",
     "name": "гигиена",
     "category": "public-health",
@@ -511,7 +546,7 @@
       "year": 1993,
       "month": 6
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q2473989",
@@ -568,7 +603,7 @@
         "month": 6
       }
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q48432",
@@ -592,7 +627,7 @@
         "month": 7
       }
     },
-    "row": 13
+    "row": 10
   },
   {
     "id": "Q47672",
@@ -611,7 +646,7 @@
       "year": 1974,
       "month": 3
     },
-    "row": 15
+    "row": 8
   },
   {
     "id": "Q99309",
@@ -694,6 +729,54 @@
       "year": -699
     },
     "row": 1
+  },
+  {
+    "id": "Q7183",
+    "name": "Цинь",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "первая империя Китая",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Qin_dynasty",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Qin%20empire%20210%20BCE.png",
+    "imageAttribution": "Itsmine, via Wikimedia Commons",
+    "description": "Империя Цинь — первая империя в истории Китая.",
+    "at": {
+      "year": -221
+    },
+    "row": 0
+  },
+  {
+    "id": "Q7462",
+    "name": "империя Сун",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "средневековое китайское государство (960—1279)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Song_dynasty",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/China%20-%20Song%20Dynasty-fr.svg",
+    "imageAttribution": "derivative work: Augusta 89, via Wikimedia Commons",
+    "description": "Империя Сун — государство в Китае, существовавшее с 960 по 1279 год. Правящая династия — Чжао (趙), по фамилии рода государей.",
+    "at": {
+      "year": 960
+    },
+    "row": 1
+  },
+  {
+    "id": "Q184536",
+    "name": "Империя Мали",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "империя на западе Африки",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Mali_Empire",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Catalan%20Atlas%20BNF%20Sheet%206%20Western%20Sahara.jpg",
+    "description": "Мали́ — государственное образование в северо-западной Африке, к югу от пустыни Сахара, существовавшее в XIII—XV веках. По сложившейся традиции называется империей. Сложилось под началом народности малинке, ранее находившейся в зависимости от империи Ганы и принявшей мусульманскую религию.",
+    "approximateDate": true,
+    "at": {
+      "year": 1235
+    },
+    "row": 2
   },
   {
     "id": "Q228036",
@@ -780,7 +863,7 @@
     "at": {
       "year": 1643
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q58148",
@@ -828,7 +911,7 @@
       "year": 1977,
       "month": 8
     },
-    "row": 17
+    "row": 6
   },
   {
     "id": "Q101017",
@@ -878,7 +961,7 @@
       "year": 1947,
       "month": 8
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q133331",
@@ -902,7 +985,7 @@
         "month": 7
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q51648",
@@ -935,7 +1018,7 @@
       "year": 1908,
       "month": 6
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q159766",
@@ -953,7 +1036,7 @@
     "at": {
       "year": 1602
     },
-    "row": 3
+    "row": 0
   },
   {
     "id": "Q8080",
@@ -977,7 +1060,7 @@
         "month": 4
       }
     },
-    "row": 14
+    "row": 11
   },
   {
     "id": "Q154255",
@@ -996,7 +1079,7 @@
       "year": 1939,
       "month": 9
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q167634",
@@ -1040,7 +1123,7 @@
         "year": 1871
       }
     },
-    "row": 7
+    "row": 9
   },
   {
     "id": "Q193484",
@@ -1058,7 +1141,7 @@
       "year": 1963,
       "month": 11
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q5725",
@@ -1098,7 +1181,7 @@
     "at": {
       "year": 1814
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q58767",
@@ -1116,7 +1199,94 @@
     "at": {
       "year": 1903
     },
-    "row": 13
+    "row": 15
+  },
+  {
+    "id": "Q214944",
+    "name": "Гёбекли-Тепе",
+    "category": "archaeology-anthropology",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 78,
+    "tagline": "древнейшее из крупных мегалитических сооружений в мире",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/G%C3%B6bekli%20Tepe%2C%20Urfa.jpg",
+    "imageAttribution": "Teomancimit, via Wikimedia Commons",
+    "description": "Гёбекли́-Тепе́ — археологический памятник эпохи докерамического неолита, мегалитический культовый комплекс, расположенный в 8 километрах к северо-востоку от города Шанлыурфа, в 2,5 километрах от деревни Оренджик ила Шанлыурфа в регионе Юго-Восточная Анатолия (Турция).",
+    "approximateDate": true,
+    "at": {
+      "year": -9500
+    },
+    "row": 0
+  },
+  {
+    "id": "Q4461035",
+    "name": "Аккад",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "древнее государство в Месопотамии",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Akkadian_Empire",
+    "description": "Акка́д — государство, существовавшее в XXIV—XXII веках до н. э., а также древняя область в северной части Южной Месопотамии, на территории современного Ирака. Столица — город Аккаде.",
+    "at": {
+      "year": -2333
+    },
+    "row": 1
+  },
+  {
+    "id": "Q26752",
+    "name": "финикийское письмо",
+    "category": "communication",
+    "regionTags": [],
+    "fameScore": 78,
+    "tagline": "одна из первых зафиксированных в истории человечества систем фонетического письма",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Phoenician_alphabet",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gezer%20calendar%20close%20up.jpg",
+    "imageAttribution": "oncenawhile, via Wikimedia Commons",
+    "description": "Финики́йское письмо́ — одна из первых засвидетельствованных в истории человечества систем фонетического письма. Появилась около X века до н. э. и стала родоначальницей большинства современных алфавитных и некоторых других систем письма.",
+    "approximateDate": true,
+    "at": {
+      "year": -1050
+    },
+    "row": 0
+  },
+  {
+    "id": "Q57357",
+    "name": "Вал Адриана",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "оборонительное укрепление римской провинции Британия, построенное во II веке нашей эры",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hadrian%27s_Wall",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Section%20of%20Hadrian%27s%20Wall%201.jpg",
+    "imageAttribution": "quisnovus from Gloucester, England, via Wikimedia Commons",
+    "description": "Вал Адриа́на — бывшее оборонительное укрепление римской провинции Британия, длиной 117 километров, построенное римлянами при императоре Адриане в 122—128 годах для предотвращения набегов пиктов и бригантов с севера.",
+    "at": {
+      "year": 122
+    },
+    "row": 1
+  },
+  {
+    "id": "Q13695",
+    "name": "Теночтитлан",
+    "category": "society-administration",
+    "regionTags": [
+      "central-america"
+    ],
+    "fameScore": 78,
+    "tagline": "столица Ацтекской империи",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tenochtitlan",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Vista%20completa%20de%20Tenochtitl%C3%A1n.jpg",
+    "imageAttribution": "thomas kole, via Wikimedia Commons",
+    "description": "Теночтитла́н — крупный ацтекский альтепетль (город-государство), находившийся на месте современного города Мехико. Город основан примерно в 1325 году на острове посреди солёного озера Тескоко и оставался столицей растущей Ацтекской империи в XV веке. На пике своего развития город был крупнейшим в доколумбовых Америках. В 1521 году испанские конкистадоры под руководством Эрнана Кортеса разрушили его. Город превратился в cabecera вице-королевства Новой Испании.",
+    "approximateDate": true,
+    "at": {
+      "year": 1325
+    },
+    "row": 1
   },
   {
     "id": "Q988780",
@@ -1164,7 +1334,7 @@
     "at": {
       "year": 1455
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q46904",
@@ -1178,7 +1348,7 @@
     "at": {
       "year": 1990
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q11762476",
@@ -1197,7 +1367,7 @@
       "year": 1804,
       "month": 2
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q193692",
@@ -1229,7 +1399,7 @@
     "at": {
       "year": 1893
     },
-    "row": 6
+    "row": 17
   },
   {
     "id": "Q164338",
@@ -1248,7 +1418,7 @@
       "year": 1964,
       "month": 10
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q189511",
@@ -1264,7 +1434,7 @@
     "at": {
       "year": 1963
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q64403",
@@ -1279,7 +1449,7 @@
     "at": {
       "year": 1787
     },
-    "row": 5
+    "row": 7
   },
   {
     "id": "Q3249519",
@@ -1327,7 +1497,7 @@
       "year": 1648,
       "month": 10
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q131482",
@@ -1348,7 +1518,7 @@
         "month": 9
       }
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q129846",
@@ -1366,7 +1536,7 @@
     "at": {
       "year": 1555
     },
-    "row": 0
+    "row": 3
   },
   {
     "id": "Q132783",
@@ -1384,7 +1554,7 @@
     "at": {
       "year": 1764
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q177477",
@@ -1402,7 +1572,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q51636",
@@ -1437,7 +1607,7 @@
     "at": {
       "year": 1887
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q187650",
@@ -1461,7 +1631,7 @@
         "month": 11
       }
     },
-    "row": 9
+    "row": 6
   },
   {
     "id": "Q131130",
@@ -1479,6 +1649,55 @@
     "row": 6
   },
   {
+    "id": "Q182324",
+    "name": "Антикитерский механизм",
+    "category": "science-theory",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "Древнее астрономическое устройство",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Antikythera_mechanism",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/NAMA%20Machine%20d%27Anticyth%C3%A8re%201.jpg",
+    "imageAttribution": "No machine-readable author provided. Marsyas assumed (based on copyright claims)., via Wikimedia Commons",
+    "description": "Антиките́рский механи́зм — механическое устройство, поднятое в 1901 году с затонувшего античного судна. Остатки судна и его груз обнаружены греческим водолазом 4 апреля 1900 года недалеко от греческого острова Андики́тира. Механизм датируется приблизительно второй половиной II века до нашей эры. Хранится в Национальном археологическом музее в Афинах.",
+    "approximateDate": true,
+    "at": {
+      "year": -150
+    },
+    "row": 2
+  },
+  {
+    "id": "Q186096",
+    "name": "Русское царство",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "наименование Русского государства между 1547 и 1721 годами",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tsardom_of_Russia",
+    "description": "Ру́сское ца́рство — наименование Русского государства между 1547 и 1721 годами.",
+    "at": {
+      "year": 1547
+    },
+    "row": 1
+  },
+  {
+    "id": "Q169759",
+    "name": "Декларация прав человека и гражданина",
+    "category": "law-jurisprudence",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 77,
+    "tagline": "основополагающий документ Французской революции",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20the%20Rights%20of%20Man%20and%20of%20the%20Citizen%20in%201789.jpg",
+    "description": "Деклара́ция прав челове́ка и граждани́на — важнейший документ Великой французской революции, определяющий индивидуальные права человека.",
+    "at": {
+      "year": 1789,
+      "month": 8
+    },
+    "row": 8
+  },
+  {
     "id": "Q132560",
     "name": "электронный микроскоп",
     "category": "science-theory",
@@ -1492,7 +1711,7 @@
     "at": {
       "year": 1931
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q116434",
@@ -1507,7 +1726,25 @@
     "at": {
       "year": 1877
     },
-    "row": 16
+    "row": 17
+  },
+  {
+    "id": "Q172822",
+    "name": "Плотина Гувера",
+    "category": "landmarks",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 76,
+    "tagline": "уникальное гидротехническое сооружение, плотина и гидроэлектростанция в нижнем течении реки Колорадо",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hoover_Dam",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Hoover%20Dam%20and%20Black%20Canyon%20seen%20from%20the%20Mike%20O%27Callaghan%E2%80%93Pat%20Tillman%20Memorial%20Bridge%2C%20panorama%2C%20Arizona%E2%80%93Nevada.jpg",
+    "imageAttribution": "Christian David, via Wikimedia Commons",
+    "description": "Плоти́на Гу́вера, дамба Гувера, Ху́вер — гидротехническое сооружение в США, бетонная арочно-гравитационная плотина высотой 221 м и гидроэлектростанция, сооружённая в нижнем течении реки Колорадо. Расположена в Чёрном каньоне, на границе штатов Аризона и Невада, в 48 км к юго-востоку от Лас-Вегаса, в нескольких километрах от городка Боулдер-Сити; образует озеро (водохранилище) Мид. Названа в честь Герберта Гувера, 31-го президента США, сыгравшего важную роль в её строительстве. Строительство плотины началось в 1931 году и закончилось в 1936 году, на два года раньше запланированного срока.",
+    "at": {
+      "year": 1931
+    },
+    "row": 5
   },
   {
     "id": "Q160464",
@@ -1523,7 +1760,7 @@
     "at": {
       "year": 1200
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q160137",
@@ -1539,7 +1776,7 @@
     "at": {
       "year": 1888
     },
-    "row": 16
+    "row": 15
   },
   {
     "id": "Q180548",
@@ -1598,7 +1835,7 @@
       "year": 1992,
       "month": 2
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q154705",
@@ -1644,7 +1881,7 @@
         "year": 1939
       }
     },
-    "row": 23
+    "row": 24
   },
   {
     "id": "Q157506",
@@ -1660,7 +1897,7 @@
       "year": 1517,
       "month": 11
     },
-    "row": 0
+    "row": 3
   },
   {
     "id": "Q188468",
@@ -1699,7 +1936,7 @@
         "month": 8
       }
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q192050",
@@ -1717,7 +1954,7 @@
       "year": 1914,
       "month": 6
     },
-    "row": 14
+    "row": 20
   },
   {
     "id": "Q6743",
@@ -1742,7 +1979,7 @@
         "month": 6
       }
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q71229",
@@ -1790,7 +2027,7 @@
     "at": {
       "year": 1936
     },
-    "row": 24
+    "row": 25
   },
   {
     "id": "Q11932",
@@ -1820,7 +2057,7 @@
     "at": {
       "year": 2007
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q223644",
@@ -1884,7 +2121,7 @@
       "year": 1963,
       "month": 8
     },
-    "row": 19
+    "row": 20
   },
   {
     "id": "Q189223",
@@ -1899,6 +2136,59 @@
     "at": {
       "year": 1950
     },
-    "row": 26
+    "row": 27
+  },
+  {
+    "id": "Q184725",
+    "name": "Испанская инквизиция",
+    "category": "religion-mythology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 76,
+    "tagline": "Испанская организация, созданная для укрепления католической веры и борьбы с ересью (1478-1834)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_Inquisition",
+    "description": "Трибунал священной канцелярии инквизиции — особый следственный и судебный орган, созданный в 1478 году Фердинандом II Арагонским и Изабеллой I Кастильской. Призван поддерживать чистоту католической веры в их подданных, а также заменить собой средневековую инквизицию, которая находилась под папским надзором. Первоначально инквизиция работала в значительной степени для того, чтобы обеспечить каноничность веры новообращённых, особенно евреев, мусульман, принуждённых принять католичество. Новый орган находился под прямым контролем испанской монархии. Он был окончательно упразднён лишь в 1834 году, во время правления Изабеллы II.",
+    "at": {
+      "year": 1478
+    },
+    "row": 1
+  },
+  {
+    "id": "Q172991",
+    "name": "Тридентский собор",
+    "category": "religion-mythology",
+    "regionTags": [],
+    "fameScore": 76,
+    "tagline": "XIX Вселенский собор Католической церкви, проходивший в Тренте",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Council_of_Trent",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Concilio%20Trento%20Museo%20Buonconsiglio.jpg",
+    "imageAttribution": "Laurom, via Wikimedia Commons",
+    "description": "Триде́нтский собо́р — XIX Вселенский собор Католической церкви, открывшийся по инициативе папы Павла III 13 декабря 1545 года в Тренто, в соборном комплексе, и закрывшийся там же 4 декабря 1563 года, в понтификат Пия IV.",
+    "period": {
+      "start": {
+        "year": 1545
+      },
+      "end": {
+        "year": 1563
+      }
+    },
+    "row": 4
+  },
+  {
+    "id": "Q205662",
+    "name": "Сёгунат Токугава",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 76,
+    "tagline": "феодальное правительство Японии в 1600—1868 годах",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tokugawa_shogunate",
+    "description": "Сёгуна́т Токуга́ва (яп. 徳川幕府 токугава бакуфу), или Сёгуна́т Э́до (яп. 江戸幕府 эдо бакуфу), также Токугавская Япония — феодальное военное правительство Японии, основанное в 1603 году Токугавой Иэясу и возглавляемое сёгунами из рода Токугава. Просуществовало более двух с половиной веков вплоть до 1868 года. Этот период в истории Японии известен под именем периода Эдо, по названию столицы Японии города Эдо. Ставка сёгуната находилась в замке Эдо.",
+    "at": {
+      "year": 1603
+    },
+    "row": 4
   }
 ]

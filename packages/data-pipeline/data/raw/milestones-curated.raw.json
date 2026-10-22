@@ -31,7 +31,7 @@
       "category": "one of meta.categories",
       "date": "optional {year, month?, endYear?, endMonth?} — replaces the Wikidata-resolved date"
     },
-    "count": 439
+    "count": 499
   },
   "milestones": [
     {
@@ -100,9 +100,18 @@
       "category": "science-theory"
     },
     {
-      "id": "Q1895685",
-      "name": "Molecular Structure of Nucleic Acids",
-      "category": "science-theory"
+      "id": "Q60535862",
+      "name": "nucleic acid double helix",
+      "category": "science-theory",
+      "displayName": {
+        "en": "Structure of DNA",
+        "ru": "Структура ДНК"
+      },
+      "fameSource": "Q7430",
+      "date": {
+        "year": 1953,
+        "month": 4
+      }
     },
     {
       "id": "Q2453355",
@@ -110,9 +119,16 @@
       "category": "science-theory"
     },
     {
-      "id": "Q4339620",
-      "name": "Discovery of electrons",
-      "category": "science-theory"
+      "id": "Q2225",
+      "name": "electron",
+      "category": "science-theory",
+      "displayName": {
+        "en": "Discovery of the electron",
+        "ru": "Открытие электрона"
+      },
+      "date": {
+        "year": 1897
+      }
     },
     {
       "id": "Q40605",
@@ -283,7 +299,11 @@
     {
       "id": "Q177524",
       "name": "ARPANET",
-      "category": "communication"
+      "category": "communication",
+      "displayName": {
+        "en": "ARPANET",
+        "ru": "ARPANET"
+      }
     },
     {
       "id": "Q7391838",
@@ -487,7 +507,11 @@
     {
       "id": "Q278579",
       "name": "Aqua Appia",
-      "category": "landmarks"
+      "category": "landmarks",
+      "displayName": {
+        "en": "Aqua Appia",
+        "ru": "Аква Аппия"
+      }
     },
     {
       "id": "Q94247",
@@ -502,7 +526,11 @@
     {
       "id": "Q172822",
       "name": "Hoover Dam",
-      "category": "landmarks"
+      "category": "landmarks",
+      "displayName": {
+        "en": "Hoover Dam",
+        "ru": "Плотина Гувера"
+      }
     },
     {
       "id": "Q160464",
@@ -641,7 +669,16 @@
     {
       "id": "Q621427",
       "name": "iPhone (1st generation)",
-      "category": "everyday-technology"
+      "category": "everyday-technology",
+      "displayName": {
+        "en": "iPhone",
+        "ru": "iPhone"
+      },
+      "fameSource": "Q2766",
+      "date": {
+        "year": 2007,
+        "month": 6
+      }
     },
     {
       "id": "Q2631085",
@@ -1004,7 +1041,11 @@
     {
       "id": "Q11698",
       "name": "United States Constitution",
-      "category": "society-administration"
+      "category": "society-administration",
+      "date": {
+        "year": 1787,
+        "month": 9
+      }
     },
     {
       "id": "Q11146",
@@ -1349,7 +1390,11 @@
     {
       "id": "Q9141",
       "name": "Taj Mahal",
-      "category": "landmarks"
+      "category": "landmarks",
+      "date": {
+        "year": 1632,
+        "endYear": 1653
+      }
     },
     {
       "id": "Q1121044",
@@ -1914,7 +1959,15 @@
     {
       "id": "Q4916",
       "name": "Euro",
-      "category": "commerce-finance"
+      "category": "commerce-finance",
+      "displayName": {
+        "en": "Euro",
+        "ru": "Евро"
+      },
+      "date": {
+        "year": 2002,
+        "month": 1
+      }
     },
     {
       "id": "Q896666",
@@ -1940,11 +1993,6 @@
       "id": "Q5305631",
       "name": "Drake Well",
       "category": "energy-industry"
-    },
-    {
-      "id": "Q46047837",
-      "name": "Wright brothers' maiden flight",
-      "category": "transportation"
     },
     {
       "id": "Q51497",
@@ -2648,6 +2696,524 @@
       "date": {
         "year": 1807,
         "month": 8
+      }
+    },
+    {
+      "id": "Q214944",
+      "name": "Göbekli Tepe",
+      "category": "archaeology-anthropology",
+      "date": {
+        "year": -9500,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q446",
+      "name": "wheel",
+      "category": "everyday-technology",
+      "date": {
+        "year": -3500,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q401",
+      "name": "cuneiform",
+      "category": "communication",
+      "date": {
+        "year": -3200,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q368138",
+      "name": "Narmer Palette",
+      "category": "archaeology-anthropology",
+      "date": {
+        "year": -3100,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q192418",
+      "name": "Pyramid of Djoser",
+      "category": "landmarks",
+      "date": {
+        "year": -2670,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q4461035",
+      "name": "Akkadian Empire",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q26752",
+      "name": "Phoenician script",
+      "category": "communication",
+      "date": {
+        "year": -1050,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q6343",
+      "name": "Carthage",
+      "category": "society-administration",
+      "date": {
+        "year": -814,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q1247524",
+      "name": "founding of Rome",
+      "category": "society-administration",
+      "date": {
+        "year": -753,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q389688",
+      "name": "Achaemenid Empire",
+      "category": "society-administration",
+      "date": {
+        "year": -550
+      }
+    },
+    {
+      "id": "Q405008",
+      "name": "Cyrus cylinder",
+      "category": "law-jurisprudence",
+      "date": {
+        "year": -539
+      }
+    },
+    {
+      "id": "Q17167",
+      "name": "Roman Republic",
+      "category": "society-administration",
+      "date": {
+        "year": -509
+      }
+    },
+    {
+      "id": "Q203686",
+      "name": "Twelve Tables",
+      "category": "law-jurisprudence",
+      "date": {
+        "year": -450
+      }
+    },
+    {
+      "id": "Q779933",
+      "name": "Edicts of Ashoka",
+      "category": "law-jurisprudence",
+      "date": {
+        "year": -260,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q182324",
+      "name": "Antikythera mechanism",
+      "category": "science-theory",
+      "date": {
+        "year": -150,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q7183",
+      "name": "Qin dynasty",
+      "category": "society-administration",
+      "date": {
+        "year": -221
+      }
+    },
+    {
+      "id": "Q7209",
+      "name": "Han dynasty",
+      "category": "society-administration",
+      "date": {
+        "year": -202
+      }
+    },
+    {
+      "id": "Q2277",
+      "name": "Roman Empire",
+      "category": "society-administration",
+      "date": {
+        "year": -27
+      }
+    },
+    {
+      "id": "Q57357",
+      "name": "Hadrian's Wall",
+      "category": "landmarks",
+      "date": {
+        "year": 122
+      }
+    },
+    {
+      "id": "Q16869",
+      "name": "Constantinople",
+      "category": "society-administration",
+      "date": {
+        "year": 330
+      }
+    },
+    {
+      "id": "Q187719",
+      "name": "Corpus Juris Civilis",
+      "category": "law-jurisprudence",
+      "date": {
+        "year": 529
+      }
+    },
+    {
+      "id": "Q821711",
+      "name": "Plague of Justinian",
+      "category": "public-health",
+      "date": {
+        "year": 541,
+        "endYear": 549
+      }
+    },
+    {
+      "id": "Q9683",
+      "name": "Tang dynasty",
+      "category": "society-administration",
+      "date": {
+        "year": 618
+      }
+    },
+    {
+      "id": "Q1530",
+      "name": "Baghdad",
+      "category": "society-administration",
+      "date": {
+        "year": 762
+      }
+    },
+    {
+      "id": "Q213649",
+      "name": "Viking Age",
+      "category": "society-administration",
+      "date": {
+        "year": 793,
+        "endYear": 1066
+      }
+    },
+    {
+      "id": "Q31929",
+      "name": "Carolingian Empire",
+      "category": "society-administration",
+      "date": {
+        "year": 800
+      }
+    },
+    {
+      "id": "Q7462",
+      "name": "Song dynasty",
+      "category": "society-administration",
+      "date": {
+        "year": 960
+      }
+    },
+    {
+      "id": "Q12548",
+      "name": "Holy Roman Empire",
+      "category": "society-administration",
+      "date": {
+        "year": 962
+      }
+    },
+    {
+      "id": "Q312342",
+      "name": "al-Azhar Mosque",
+      "category": "philosophy-education",
+      "date": {
+        "year": 970
+      }
+    },
+    {
+      "id": "Q19867",
+      "name": "Domesday Book",
+      "category": "society-administration",
+      "date": {
+        "year": 1086
+      }
+    },
+    {
+      "id": "Q12557",
+      "name": "Mongol Empire",
+      "category": "society-administration",
+      "date": {
+        "year": 1206
+      }
+    },
+    {
+      "id": "Q184536",
+      "name": "Mali Empire",
+      "category": "society-administration",
+      "date": {
+        "year": 1235,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q209217",
+      "name": "Great Zimbabwe",
+      "category": "landmarks",
+      "date": {
+        "year": 1250,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q12560",
+      "name": "Ottoman Empire",
+      "category": "society-administration",
+      "date": {
+        "year": 1299
+      }
+    },
+    {
+      "id": "Q40185",
+      "name": "The Divine Comedy",
+      "category": "culture-arts",
+      "date": {
+        "year": 1320,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q13695",
+      "name": "Tenochtitlan",
+      "category": "society-administration",
+      "date": {
+        "year": 1325,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q9903",
+      "name": "Ming dynasty",
+      "category": "society-administration",
+      "date": {
+        "year": 1368
+      }
+    },
+    {
+      "id": "Q28573",
+      "name": "Inca Empire",
+      "category": "society-administration",
+      "date": {
+        "year": 1438,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q4692",
+      "name": "Renaissance",
+      "category": "culture-arts",
+      "date": {
+        "year": 1400,
+        "endYear": 1600,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q184725",
+      "name": "Spanish Inquisition",
+      "category": "religion-mythology",
+      "date": {
+        "year": 1478
+      }
+    },
+    {
+      "id": "Q180897",
+      "name": "Treaty of Tordesillas",
+      "category": "law-jurisprudence",
+      "date": {
+        "year": 1494,
+        "month": 6
+      }
+    },
+    {
+      "id": "Q844675",
+      "name": "Sistine Chapel ceiling",
+      "category": "culture-arts",
+      "date": {
+        "year": 1508,
+        "endYear": 1512
+      }
+    },
+    {
+      "id": "Q33296",
+      "name": "Mughal Empire",
+      "category": "society-administration",
+      "date": {
+        "year": 1526
+      }
+    },
+    {
+      "id": "Q1233009",
+      "name": "De humani corporis fabrica",
+      "category": "medicine-health",
+      "date": {
+        "year": 1543
+      }
+    },
+    {
+      "id": "Q172991",
+      "name": "Council of Trent",
+      "category": "religion-mythology",
+      "date": {
+        "year": 1545,
+        "endYear": 1563
+      }
+    },
+    {
+      "id": "Q186096",
+      "name": "Tsardom of Russia",
+      "category": "society-administration",
+      "date": {
+        "year": 1547
+      }
+    },
+    {
+      "id": "Q205662",
+      "name": "Tokugawa shogunate",
+      "category": "society-administration",
+      "date": {
+        "year": 1603
+      }
+    },
+    {
+      "id": "Q2517983",
+      "name": "Galileo affair",
+      "category": "science-theory",
+      "date": {
+        "year": 1633
+      }
+    },
+    {
+      "id": "Q219217",
+      "name": "tulip mania",
+      "category": "commerce-finance",
+      "date": {
+        "year": 1637
+      }
+    },
+    {
+      "id": "Q656",
+      "name": "Saint Petersburg",
+      "category": "society-administration",
+      "date": {
+        "year": 1703,
+        "month": 5
+      }
+    },
+    {
+      "id": "Q193515",
+      "name": "Acts of Union 1707",
+      "category": "law-jurisprudence",
+      "date": {
+        "year": 1707
+      }
+    },
+    {
+      "id": "Q12539",
+      "name": "Age of Enlightenment",
+      "category": "philosophy-education",
+      "date": {
+        "year": 1685,
+        "endYear": 1815,
+        "approximate": true
+      }
+    },
+    {
+      "id": "Q214078",
+      "name": "Scientific Revolution",
+      "category": "science-theory",
+      "date": {
+        "year": 1543,
+        "endYear": 1687
+      }
+    },
+    {
+      "id": "Q169759",
+      "name": "Declaration of the Rights of Man and of the Citizen",
+      "category": "law-jurisprudence",
+      "date": {
+        "year": 1789,
+        "month": 8
+      }
+    },
+    {
+      "id": "Q973118",
+      "name": "coronation of Napoleon I",
+      "category": "society-administration",
+      "date": {
+        "year": 1804,
+        "month": 12
+      }
+    },
+    {
+      "id": "Q472802",
+      "name": "Treaty of Waitangi",
+      "category": "law-jurisprudence",
+      "date": {
+        "year": 1840,
+        "month": 2
+      }
+    },
+    {
+      "id": "Q7191",
+      "name": "Nobel Prize",
+      "category": "philosophy-education",
+      "date": {
+        "year": 1901
+      }
+    },
+    {
+      "id": "Q25173",
+      "name": "Titanic",
+      "category": "transportation",
+      "date": {
+        "year": 1912,
+        "month": 4
+      }
+    },
+    {
+      "id": "Q328271",
+      "name": "Machtergreifung",
+      "category": "society-administration",
+      "date": {
+        "year": 1933,
+        "month": 1
+      }
+    },
+    {
+      "id": "Q2763",
+      "name": "The Holocaust",
+      "category": "society-administration",
+      "date": {
+        "year": 1941,
+        "endYear": 1945
+      }
+    },
+    {
+      "id": "Q36204",
+      "name": "2011 Tōhoku earthquake and tsunami",
+      "category": "environment-geology",
+      "date": {
+        "year": 2011,
+        "month": 3
       }
     }
   ]
