@@ -462,7 +462,7 @@
   },
   {
     "id": "Q12557",
-    "name": "Mongol Empire",
+    "name": "Founding of the Mongol Empire",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 85,
@@ -730,7 +730,7 @@
   },
   {
     "id": "Q9903",
-    "name": "Ming dynasty",
+    "name": "Founding of the Ming dynasty",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 84,
@@ -746,7 +746,7 @@
   },
   {
     "id": "Q28573",
-    "name": "Inca Empire",
+    "name": "Founding of the Inca Empire",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 84,
@@ -763,7 +763,7 @@
   },
   {
     "id": "Q33296",
-    "name": "Mughal Empire",
+    "name": "Founding of the Mughal Empire",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 84,
@@ -958,7 +958,7 @@
   },
   {
     "id": "Q7209",
-    "name": "Han dynasty",
+    "name": "Founding of the Han dynasty",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 83,
@@ -974,7 +974,7 @@
   },
   {
     "id": "Q9683",
-    "name": "Tang dynasty",
+    "name": "Founding of the Tang dynasty",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 83,
@@ -986,7 +986,7 @@
     "at": {
       "year": 618
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q11455",
@@ -1186,7 +1186,7 @@
   },
   {
     "id": "Q389688",
-    "name": "Achaemenid Empire",
+    "name": "Founding of the Achaemenid Empire",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 82,

@@ -214,7 +214,7 @@
   },
   {
     "id": "Q2277",
-    "name": "Римская империя",
+    "name": "Основание Римской империи",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 91,
@@ -230,7 +230,7 @@
   },
   {
     "id": "Q12560",
-    "name": "Османская империя",
+    "name": "Основание Османской империи",
     "category": "society-administration",
     "regionTags": [
       "western-asia"
@@ -465,7 +465,7 @@
   },
   {
     "id": "Q12548",
-    "name": "Священная Римская империя",
+    "name": "Основание Священной Римской империи",
     "category": "society-administration",
     "regionTags": [
       "western-europe"

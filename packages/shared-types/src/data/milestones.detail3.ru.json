@@ -732,7 +732,7 @@
   },
   {
     "id": "Q7183",
-    "name": "Цинь",
+    "name": "Основание династии Цинь",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 79,
@@ -744,11 +744,11 @@
     "at": {
       "year": -221
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q7462",
-    "name": "империя Сун",
+    "name": "Основание династии Сун",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 79,
@@ -764,7 +764,7 @@
   },
   {
     "id": "Q184536",
-    "name": "Империя Мали",
+    "name": "Основание империи Мали",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 79,
@@ -1222,7 +1222,7 @@
   },
   {
     "id": "Q4461035",
-    "name": "Аккад",
+    "name": "Основание Аккадской империи",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 78,
@@ -1334,7 +1334,7 @@
     "at": {
       "year": 1455
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q46904",
@@ -1518,7 +1518,7 @@
         "month": 9
       }
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q129846",
@@ -1663,7 +1663,7 @@
     "at": {
       "year": -150
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q186096",

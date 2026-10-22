@@ -462,7 +462,7 @@
   },
   {
     "id": "Q12557",
-    "name": "Монгольская империя",
+    "name": "Основание Монгольской империи",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 85,
@@ -730,7 +730,7 @@
   },
   {
     "id": "Q9903",
-    "name": "империя Мин",
+    "name": "Основание династии Мин",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 84,
@@ -746,7 +746,7 @@
   },
   {
     "id": "Q28573",
-    "name": "Империя инков",
+    "name": "Основание империи инков",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 84,
@@ -763,7 +763,7 @@
   },
   {
     "id": "Q33296",
-    "name": "Империя Великих Моголов",
+    "name": "Основание империи Великих Моголов",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 84,
@@ -958,7 +958,7 @@
   },
   {
     "id": "Q7209",
-    "name": "империя Хань",
+    "name": "Основание династии Хань",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 83,
@@ -974,7 +974,7 @@
   },
   {
     "id": "Q9683",
-    "name": "империя Тан",
+    "name": "Основание династии Тан",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 83,
@@ -986,7 +986,7 @@
     "at": {
       "year": 618
     },
-    "row": 0
+    "row": 1
   },
   {
     "id": "Q11455",
@@ -1186,7 +1186,7 @@
   },
   {
     "id": "Q389688",
-    "name": "Держава Ахеменидов",
+    "name": "Основание державы Ахеменидов",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 82,

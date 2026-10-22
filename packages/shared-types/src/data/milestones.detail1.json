@@ -214,7 +214,7 @@
   },
   {
     "id": "Q2277",
-    "name": "Roman Empire",
+    "name": "Founding of the Roman Empire",
     "category": "society-administration",
     "regionTags": [],
     "fameScore": 91,
@@ -230,7 +230,7 @@
   },
   {
     "id": "Q12560",
-    "name": "Ottoman Empire",
+    "name": "Founding of the Ottoman Empire",
     "category": "society-administration",
     "regionTags": [
       "western-asia"
@@ -465,7 +465,7 @@
   },
   {
     "id": "Q12548",
-    "name": "Holy Roman Empire",
+    "name": "Founding of the Holy Roman Empire",
     "category": "society-administration",
     "regionTags": [
       "western-europe"

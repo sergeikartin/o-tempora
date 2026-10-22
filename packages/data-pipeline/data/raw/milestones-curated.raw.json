@@ -1684,7 +1684,11 @@
     {
       "id": "Q1739282",
       "name": "Kerma kingdom",
-      "category": "archaeology-anthropology"
+      "category": "archaeology-anthropology",
+      "displayName": {
+        "en": "Founding of the Kerma kingdom",
+        "ru": "Основание царства Керма"
+      }
     },
     {
       "id": "Q1144693",
@@ -2746,7 +2750,11 @@
     {
       "id": "Q4461035",
       "name": "Akkadian Empire",
-      "category": "society-administration"
+      "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Akkadian Empire",
+        "ru": "Основание Аккадской империи"
+      }
     },
     {
       "id": "Q26752",
@@ -2779,6 +2787,10 @@
       "id": "Q389688",
       "name": "Achaemenid Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Achaemenid Empire",
+        "ru": "Основание державы Ахеменидов"
+      },
       "date": {
         "year": -550
       }
@@ -2829,6 +2841,10 @@
       "id": "Q7183",
       "name": "Qin dynasty",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Qin dynasty",
+        "ru": "Основание династии Цинь"
+      },
       "date": {
         "year": -221
       }
@@ -2837,6 +2853,10 @@
       "id": "Q7209",
       "name": "Han dynasty",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Han dynasty",
+        "ru": "Основание династии Хань"
+      },
       "date": {
         "year": -202
       }
@@ -2845,6 +2865,10 @@
       "id": "Q2277",
       "name": "Roman Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Roman Empire",
+        "ru": "Основание Римской империи"
+      },
       "date": {
         "year": -27
       }
@@ -2886,6 +2910,10 @@
       "id": "Q9683",
       "name": "Tang dynasty",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Tang dynasty",
+        "ru": "Основание династии Тан"
+      },
       "date": {
         "year": 618
       }
@@ -2911,6 +2939,10 @@
       "id": "Q31929",
       "name": "Carolingian Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Carolingian Empire",
+        "ru": "Основание Каролингской империи"
+      },
       "date": {
         "year": 800
       }
@@ -2919,6 +2951,10 @@
       "id": "Q7462",
       "name": "Song dynasty",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Song dynasty",
+        "ru": "Основание династии Сун"
+      },
       "date": {
         "year": 960
       }
@@ -2927,6 +2963,10 @@
       "id": "Q12548",
       "name": "Holy Roman Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Holy Roman Empire",
+        "ru": "Основание Священной Римской империи"
+      },
       "date": {
         "year": 962
       }
@@ -2951,6 +2991,10 @@
       "id": "Q12557",
       "name": "Mongol Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Mongol Empire",
+        "ru": "Основание Монгольской империи"
+      },
       "date": {
         "year": 1206
       }
@@ -2959,6 +3003,10 @@
       "id": "Q184536",
       "name": "Mali Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Mali Empire",
+        "ru": "Основание империи Мали"
+      },
       "date": {
         "year": 1235,
         "approximate": true
@@ -2977,6 +3025,10 @@
       "id": "Q12560",
       "name": "Ottoman Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Ottoman Empire",
+        "ru": "Основание Османской империи"
+      },
       "date": {
         "year": 1299
       }
@@ -3003,6 +3055,10 @@
       "id": "Q9903",
       "name": "Ming dynasty",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Ming dynasty",
+        "ru": "Основание династии Мин"
+      },
       "date": {
         "year": 1368
       }
@@ -3011,6 +3067,10 @@
       "id": "Q28573",
       "name": "Inca Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Inca Empire",
+        "ru": "Основание империи инков"
+      },
       "date": {
         "year": 1438,
         "approximate": true
@@ -3056,6 +3116,10 @@
       "id": "Q33296",
       "name": "Mughal Empire",
       "category": "society-administration",
+      "displayName": {
+        "en": "Founding of the Mughal Empire",
+        "ru": "Основание империи Великих Моголов"
+      },
       "date": {
         "year": 1526
       }
