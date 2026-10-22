@@ -1,3 +1,4 @@
+import { m } from '../../paraglide/messages.js';
 import type { YearMonth } from '../../types';
 
 // Every year in the rendering path is a plain signed integer using
@@ -16,7 +17,7 @@ export function isBceYear(year: number): boolean {
 
 /** Signed plain year -> "N BCE" for BCE years, plain "N" for CE years. */
 export function formatYear(year: number): string {
-  return isBceYear(year) ? `${1 - year} BCE` : `${year}`;
+  return isBceYear(year) ? m.yearBce({ year: 1 - year }) : `${year}`;
 }
 
 const MONTH_NAMES = [

@@ -20,6 +20,7 @@
   "zoomOutAriaLabel": "Уменьшить масштаб",
   "zoomInAriaLabel": "Увеличить масштаб",
   "minimapAriaLabel": "Мини-карта плотности хронологии",
+  "yearBce": "{year} до н. э.",
   "closeAriaLabel": "Закрыть",
   "closeFiltersAriaLabel": "Закрыть фильтры",
   "collapseFiltersAriaLabel": "Свернуть фильтры",

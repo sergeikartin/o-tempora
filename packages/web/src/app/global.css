@@ -84,3 +84,10 @@ html {
 body {
   font-family: Archivo, sans-serif;
 }
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}

@@ -20,6 +20,7 @@
   "zoomOutAriaLabel": "Zoom out",
   "zoomInAriaLabel": "Zoom in",
   "minimapAriaLabel": "Timeline density minimap",
+  "yearBce": "{year} BCE",
   "closeAriaLabel": "Close",
   "closeFiltersAriaLabel": "Close filters",
   "collapseFiltersAriaLabel": "Collapse filters",
