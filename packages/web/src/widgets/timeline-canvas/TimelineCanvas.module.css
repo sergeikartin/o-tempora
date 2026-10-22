@@ -7,26 +7,23 @@
   height: 100vh;
 }
 
-/* Reserves the Minimap's own rendered height (Minimap.module.css's .wrapper:
-   20px centuryStrip + 56px track + 2px border-top) while its mount is
-   idle-deferred (TimelineCanvas.tsx) — without this, .scrollContainer (flex:
-   1 1 auto, same column) fills the gap and then jumps up by 78px once
-   Minimap mounts, a real CLS hit on every load. Also mirrors .wrapper's own
-   background/border/shadow (Minimap.module.css) rather than staying
-   transparent — bare body background is plain white, so a transparent gap
-   here reads as a stray white bar against the app's cream chrome for
-   however long the idle-defer takes, not just an empty box the right size. */
+/* Reserves the Minimap's own rendered footprint (Minimap.module.css's
+   .wrapper: 20px centuryStrip + 56px track + 1px border each side, plus its
+   12px bottom inset) while its mount is idle-deferred (TimelineCanvas.tsx) —
+   without this, .scrollContainer (flex: 1 1 auto, same column) fills the gap
+   and then jumps up by 90px once Minimap mounts, a real CLS hit on every
+   load. Also mirrors .wrapper's own surface/border/shadow rather than
+   staying transparent, so the card reads as present for however long the
+   idle-defer takes, not just an empty box the right size. */
 .minimapPlaceholder {
   flex: 0 0 auto;
   height: 78px;
-  background-color: color-mix(
-    in srgb,
-    var(--color-bg-base) 88%,
-    var(--color-border-strong) 12%
-  );
-  border-top: 2px solid var(--color-border-strong);
-  box-shadow: 0 -4px 8px -4px
-    color-mix(in srgb, var(--color-text-primary) 18%, transparent);
+  margin: 0 12px 12px;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px
+    color-mix(in srgb, var(--color-text-primary) 12%, transparent);
 }
 
 /* TimelineCanvas.tsx only stops rendering this placeholder once

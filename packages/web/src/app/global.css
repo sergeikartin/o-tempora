@@ -87,6 +87,9 @@ html {
    default serif. */
 body {
   font-family: Archivo, sans-serif;
+  /* The gutters around the floating sidebar and minimap cards show the page
+     behind them, so it needs the same parchment as the canvas. */
+  background-color: var(--color-bg-base);
 }
 
 button,

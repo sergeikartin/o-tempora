@@ -3,10 +3,10 @@
    click/drag math never needs to guess at .scrollContainer's geometry.
    Height sits in the 48-64px band the ADR calls for, versus the old
    scrollbar's ~14px, plus MINIMAP_CENTURY_STRIP_HEIGHT_PX for the top-edge
-   century-tick strip (`/grill-with-docs`). A tinted rail (own background, a
-   strong top divider, a cast shadow) rather than the lanes' plain
-   background — reads as a distinct overview control instead of a second
-   years axis sitting under the lanes. */
+   century-tick strip (`/grill-with-docs`). A floating card inset from the
+   canvas edges, the same surface treatment as the Sidebar's — reads as a
+   distinct overview control instead of a second years axis sitting under
+   the lanes. */
 /* Also the positioning root for .tooltip and .viewportRect — .track itself
    needs overflow: hidden to bound the ridge, but that same rule would clip
    .tooltip's bottom: 100% offset (which deliberately floats it above
@@ -20,14 +20,13 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  background-color: color-mix(
-    in srgb,
-    var(--color-bg-base) 88%,
-    var(--color-border-strong) 12%
-  );
-  border-top: 2px solid var(--color-border-strong);
-  box-shadow: 0 -4px 8px -4px
-    color-mix(in srgb, var(--color-text-primary) 18%, transparent);
+  margin: 0 var(--minimap-inset) var(--minimap-inset);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px
+    color-mix(in srgb, var(--color-text-primary) 12%, transparent);
+  --minimap-inset: 12px;
 }
 
 @keyframes fadeIn {
@@ -39,8 +38,8 @@
 /* Top-edge century-tick strip — thin, non-interactive (pointer-events: none
    so it never intercepts .track/.viewportRect's own click/drag/hover
    handling), ticks always shown but labels thinned once they'd collide (see
-   Minimap.tsx's centuryTicks memo). Left transparent (no bg-surface of its
-   own) so .wrapper's tinted rail shows through behind the ticks. */
+   Minimap.tsx's centuryTicks memo). Left transparent so .wrapper's surface
+   shows through behind the ticks. */
 .centuryStrip {
   position: relative;
   flex: 0 0 auto;
@@ -81,7 +80,7 @@
   position: relative;
   height: 56px;
   overflow: hidden;
-  background-color: var(--color-bg-surface);
+  border-radius: 0 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px);
   cursor: pointer;
   /* See .centuryStrip's comment — fades in over .wrapper's already-solid
      background rather than .wrapper itself. */
