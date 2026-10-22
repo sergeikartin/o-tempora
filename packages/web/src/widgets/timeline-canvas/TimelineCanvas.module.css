@@ -268,6 +268,14 @@
   left: 0;
 }
 
+/* A mask is painted against the element's own box, not its scrolled content,
+   so this stays pinned to the lane's top edge while rows scroll beneath it.
+   Set by TimelineCanvas.tsx's scroll listener only while rows sit above the
+   current scroll position. */
+.peopleLane[data-has-more-above="true"] {
+  mask-image: linear-gradient(to bottom, transparent 0, #000 40px);
+}
+
 /* The sole Year Axis, between People and Conflicts+Milestones — the only one
    importance/row-order is measured against (see ConflictsMilestonesLane.tsx
    and options.ts's personLabelYForRow). Used to be three (also above People

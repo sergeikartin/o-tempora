@@ -536,13 +536,26 @@ export function TimelineCanvas({
   useLayoutEffect(() => {
     const el = peopleLaneRef.current;
     if (!el) return;
+    // Drives .peopleLane's top fade (TimelineCanvas.module.css): rows above
+    // the current scroll position are clipped, so the fade signals that more
+    // can be scrolled into view. Toggled on the element directly rather than
+    // through React state — it changes on every scroll tick.
+    const updateScrollAffordance = () => {
+      el.dataset.hasMoreAbove = String(el.scrollTop > 1);
+    };
     const pinToBottom = () => {
       el.scrollTop = el.scrollHeight;
+      updateScrollAffordance();
     };
     pinToBottom();
-    if (typeof ResizeObserver === 'undefined') return;
+    el.addEventListener('scroll', updateScrollAffordance, { passive: true });
+    if (typeof ResizeObserver === 'undefined') {
+      return () => el.removeEventListener('scroll', updateScrollAffordance);
+    }
     const svg = el.querySelector('svg');
-    if (!svg) return;
+    if (!svg) {
+      return () => el.removeEventListener('scroll', updateScrollAffordance);
+    }
     // rAF-batched, matching TimelineCanvas's own scroll-listener throttling
     // — the height transition this tracks fires many ResizeObserver
     // callbacks per second, and pinToBottom only needs to run once per
@@ -559,6 +572,7 @@ export function TimelineCanvas({
     return () => {
       observer.disconnect();
       if (frame) cancelAnimationFrame(frame);
+      el.removeEventListener('scroll', updateScrollAffordance);
     };
   }, [filteredPeople]);
   // biome-ignore lint/correctness/useExhaustiveDependencies: filteredConflicts/filteredMilestones aren't read in the body — they're a trigger to reset scroll whenever the visible item set changes
@@ -1076,6 +1090,7 @@ export function TimelineCanvas({
 
   return (
     <div className={styles.wrapper}>
+      <ViewportRange startYear={viewportStartYear} endYear={viewportEndYear} />
       {isMobileViewport && (
         <button
           type="button"
@@ -1090,7 +1105,6 @@ export function TimelineCanvas({
       <div className={styles.zoomControls}>
         <button
           type="button"
-      <ViewportRange startYear={viewportStartYear} endYear={viewportEndYear} />
           onClick={() => zoom(computeZoomIn, 'in')}
           aria-label={m.zoomInAriaLabel()}
         >
