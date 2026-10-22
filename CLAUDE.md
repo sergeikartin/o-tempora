@@ -38,7 +38,17 @@ Read on demand — only load what the current task needs.
 
 Keep docs/*.md focused — split a doc when it stops fitting one screen rather than letting it grow unbounded.
 
+## Agent skills
+
 ### Issue tracker
 
 Issues and specs live as markdown files under `.scratch/<feature-slug>/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default five-role vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single glossary (`CONTEXT.md`) at the repo root, with system-wide ADRs in `docs/adr/` and package-scoped ADRs in `packages/<package>/docs/adr/`. See `docs/agents/domain.md`.
 
