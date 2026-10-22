@@ -196,7 +196,7 @@
     "at": {
       "year": 1450
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q34280",
@@ -243,26 +243,6 @@
       "year": 400
     },
     "row": 0
-  },
-  {
-    "id": "Q12539",
-    "name": "Age of Enlightenment",
-    "category": "philosophy-education",
-    "regionTags": [],
-    "fameScore": 86,
-    "tagline": "period of European history and cultural movement of the 17th and 18th centuries",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
-    "description": "The Age of Enlightenment, also known as the Age of Reason or simply the Enlightenment, was a period of intellectual and cultural flourishing in Europe and Western civilization, emerging in the late 17th century in Western and Central Europe. It reached its peak in the 18th century as its ideas spread more widely across Europe and into the European colonies in the Americas and Oceania. Characterized by an emphasis on reason, empirical evidence, and the scientific method, the Enlightenment promoted ideals of individual liberty, religious tolerance, progress, and natural rights. Its thinkers advocated for constitutional government, the separation of church and state, and the application of rational principles to social and political reform.",
-    "approximateDate": true,
-    "period": {
-      "start": {
-        "year": 1685
-      },
-      "end": {
-        "year": 1815
-      }
-    },
-    "row": 2
   },
   {
     "id": "Q42005",
@@ -387,7 +367,7 @@
         "year": 1648
       }
     },
-    "row": 2
+    "row": 1
   },
   {
     "id": "Q11761",
@@ -537,7 +517,7 @@
       "year": 1920,
       "month": 1
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q11764",
@@ -640,7 +620,7 @@
     "at": {
       "year": 1443
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q8093",
@@ -675,7 +655,7 @@
       "year": 1916,
       "month": 8
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q36288",
@@ -759,7 +739,7 @@
     "at": {
       "year": 1438
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q33296",
@@ -775,7 +755,30 @@
     "at": {
       "year": 1526
     },
-    "row": 1
+    "row": 0
+  },
+  {
+    "id": "Q80034",
+    "name": "Armenian Genocide",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 84,
+    "tagline": "systematic destruction of the Armenian people and identity in the Ottoman Empire during World War I implemented by the Ottoman authorities through mass murder",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Armenian_genocide",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ambassador%20Morgenthau%27s%20Story%20p314.jpg",
+    "description": "The Armenian genocide was the systematic destruction of the Armenian people and identity in the Ottoman Empire during World War I. Spearheaded by the ruling Committee of Union and Progress (CUP), it was implemented primarily through the mass murder of around one million Armenians during death marches from the Turkish-dominated Anatolia to the Syrian desert and the forced Islamization of others, primarily women and children. Alongside the concurrent Assyrian and Greek genocides, the Armenian genocide enabled the creation of an ethnonationalist Turkish state, the Republic of Turkey.",
+    "period": {
+      "start": {
+        "year": 1915,
+        "month": 4
+      },
+      "end": {
+        "year": 1923
+      }
+    },
+    "row": 5
   },
   {
     "id": "Q11452",
@@ -791,7 +794,7 @@
     "at": {
       "year": 1916
     },
-    "row": 9
+    "row": 10
   },
   {
     "id": "Q11692568",
@@ -805,7 +808,7 @@
     "at": {
       "year": 1913
     },
-    "row": 8
+    "row": 9
   },
   {
     "id": "Q127912",
@@ -823,7 +826,7 @@
       "year": 1776,
       "month": 7
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q11698",
@@ -839,7 +842,7 @@
       "year": 1787,
       "month": 9
     },
-    "row": 5
+    "row": 4
   },
   {
     "id": "Q40591",
@@ -1001,7 +1004,7 @@
     "at": {
       "year": 1905
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q3042914",
@@ -1048,7 +1051,7 @@
       "year": 1960,
       "month": 5
     },
-    "row": 16
+    "row": 15
   },
   {
     "id": "Q44973",
@@ -1099,7 +1102,7 @@
     "at": {
       "year": 1919
     },
-    "row": 11
+    "row": 13
   },
   {
     "id": "Q41644",
@@ -1114,7 +1117,7 @@
       "year": 1955,
       "month": 5
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q5859",

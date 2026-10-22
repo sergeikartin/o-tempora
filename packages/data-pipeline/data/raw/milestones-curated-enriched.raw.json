@@ -11454,30 +11454,6 @@
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/80%20-%20Machu%20Picchu%20-%20Juin%202009%20-%20edit.2.jpg"
     },
     {
-      "id": "Q4692",
-      "name": "Renaissance",
-      "nameRu": "Возрождение",
-      "category": "culture-arts",
-      "year": 1400,
-      "endYear": 1600,
-      "approximateDate": true,
-      "tagline": "cultural movement that spanned the period roughly from the 14th to the 17th century",
-      "taglineRu": "эпоха в истории культуры Европы",
-      "sitelinks": 188,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Renaissance",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Renaissance",
-        "zh": "https://zh.wikipedia.org/wiki/%E6%96%87%E8%89%BA%E5%A4%8D%E5%85%B4",
-        "es": "https://es.wikipedia.org/wiki/Renacimiento",
-        "fr": "https://fr.wikipedia.org/wiki/Renaissance",
-        "de": "https://de.wikipedia.org/wiki/Renaissance",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D8%B5%D8%B1_%D8%A7%D9%84%D9%86%D9%87%D8%B6%D8%A9",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B7%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5"
-      },
-      "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Da%20Vinci%20Vitruve%20Luc%20Viatour.jpg"
-    },
-    {
       "id": "Q184725",
       "name": "Spanish Inquisition",
       "nameRu": "Испанская инквизиция",
@@ -11756,29 +11732,6 @@
       ]
     },
     {
-      "id": "Q12539",
-      "name": "Age of Enlightenment",
-      "nameRu": "Эпоха Просвещения",
-      "category": "philosophy-education",
-      "year": 1685,
-      "endYear": 1815,
-      "approximateDate": true,
-      "tagline": "period of European history and cultural movement of the 17th and 18th centuries",
-      "taglineRu": "период в истории Европы",
-      "sitelinks": 160,
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
-      "articleUrls": {
-        "en": "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
-        "zh": "https://zh.wikipedia.org/wiki/%E5%95%9F%E8%92%99%E6%99%82%E4%BB%A3",
-        "es": "https://es.wikipedia.org/wiki/Ilustraci%C3%B3n",
-        "fr": "https://fr.wikipedia.org/wiki/Si%C3%A8cle_des_Lumi%C3%A8res",
-        "de": "https://de.wikipedia.org/wiki/Aufkl%C3%A4rung",
-        "ar": "https://ar.wikipedia.org/wiki/%D8%B9%D8%B5%D8%B1_%D8%A7%D9%84%D8%AA%D9%86%D9%88%D9%8A%D8%B1",
-        "ru": "https://ru.wikipedia.org/wiki/%D0%AD%D0%BF%D0%BE%D1%85%D0%B0_%D0%9F%D1%80%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D1%8F"
-      },
-      "countries": []
-    },
-    {
       "id": "Q214078",
       "name": "Scientific Revolution",
       "nameRu": "Революция в науке",
@@ -11997,6 +11950,548 @@
         "Q17"
       ],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/SH-60B%20helicopter%20flies%20over%20Sendai.jpg"
+    },
+    {
+      "id": "Q80034",
+      "name": "Armenian Genocide",
+      "nameRu": "геноцид армян",
+      "category": "society-administration",
+      "year": 1915,
+      "month": 4,
+      "endYear": 1923,
+      "tagline": "systematic destruction of the Armenian people and identity in the Ottoman Empire during World War I implemented by the Ottoman authorities through mass murder",
+      "taglineRu": "геноцид, организованный и осуществлённый в 1915—1917 гг. Турцией",
+      "sitelinks": 125,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Armenian_genocide",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Armenian_genocide",
+        "zh": "https://zh.wikipedia.org/wiki/%E4%BA%9A%E7%BE%8E%E5%B0%BC%E4%BA%9A%E7%A7%8D%E6%97%8F%E7%81%AD%E7%BB%9D",
+        "es": "https://es.wikipedia.org/wiki/Genocidio_armenio",
+        "fr": "https://fr.wikipedia.org/wiki/G%C3%A9nocide_arm%C3%A9nien",
+        "de": "https://de.wikipedia.org/wiki/V%C3%B6lkermord_an_den_Armeniern",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D8%A8%D8%A7%D8%AF%D8%A9_%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%A9_%D9%84%D9%84%D8%A3%D8%B1%D9%85%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B5%D0%BD%D0%BE%D1%86%D0%B8%D0%B4_%D0%B0%D1%80%D0%BC%D1%8F%D0%BD"
+      },
+      "countries": [
+        "Q12560"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ambassador%20Morgenthau%27s%20Story%20p314.jpg"
+    },
+    {
+      "id": "Q131297",
+      "name": "1994 Genocide against Tutsi",
+      "nameRu": "геноцид в Руанде",
+      "category": "society-administration",
+      "year": 1994,
+      "month": 4,
+      "endYear": 1994,
+      "endMonth": 7,
+      "tagline": "1994 genocide against the Tutsi in Rwanda in which 800,000 were killed",
+      "taglineRu": "массовое убийство руандийских тутси местными хуту 6 апреля — 18 июля 1994 года",
+      "sitelinks": 89,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rwandan_genocide",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Rwandan_genocide",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%A2%E6%97%BA%E8%BE%BE%E7%A7%8D%E6%97%8F%E7%81%AD%E7%BB%9D",
+        "es": "https://es.wikipedia.org/wiki/Genocidio_de_Ruanda",
+        "fr": "https://fr.wikipedia.org/wiki/G%C3%A9nocide_des_Tutsis_au_Rwanda",
+        "de": "https://de.wikipedia.org/wiki/V%C3%B6lkermord_in_Ruanda",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D8%A8%D8%A7%D8%AF%D8%A9_%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%A9_%D9%81%D9%8A_%D8%B1%D9%88%D8%A7%D9%86%D8%AF%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B5%D0%BD%D0%BE%D1%86%D0%B8%D0%B4_%D0%B2_%D0%A0%D1%83%D0%B0%D0%BD%D0%B4%D0%B5"
+      },
+      "countries": [
+        "Q1037"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nyamata%20Memorial%20Site%2013.jpg"
+    },
+    {
+      "id": "Q130754",
+      "name": "2004 Indian Ocean earthquake",
+      "nameRu": "Землетрясение в Индийском океане в 2004 году",
+      "category": "environment-geology",
+      "year": 2004,
+      "month": 12,
+      "tagline": "megathrust underwater earthquake and subsequent tsunami in the Indian Ocean",
+      "taglineRu": "сильнейшее землетрясение, вызвавшее смертоносное цунами 26 декабря 2004",
+      "sitelinks": 87,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami",
+        "zh": "https://zh.wikipedia.org/wiki/2004%E5%B9%B4%E5%8D%B0%E5%BA%A6%E6%B4%8B%E5%A4%A7%E5%9C%B0%E9%9C%87",
+        "es": "https://es.wikipedia.org/wiki/Terremoto_y_tsunami_del_oc%C3%A9ano_%C3%8Dndico_de_2004",
+        "fr": "https://fr.wikipedia.org/wiki/S%C3%A9isme_et_tsunami_de_2004_dans_l%27oc%C3%A9an_Indien",
+        "de": "https://de.wikipedia.org/wiki/Erdbeben_im_Indischen_Ozean_2004",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D9%84%D8%B2%D8%A7%D9%84_%D9%88%D8%AA%D8%B3%D9%88%D9%86%D8%A7%D9%85%D9%8A_%D8%A7%D9%84%D9%85%D8%AD%D9%8A%D8%B7_%D8%A7%D9%84%D9%87%D9%86%D8%AF%D9%8A_2004",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B5%D0%BC%D0%BB%D0%B5%D1%82%D1%80%D1%8F%D1%81%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2_%D0%98%D0%BD%D0%B4%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%BC_%D0%BE%D0%BA%D0%B5%D0%B0%D0%BD%D0%B5_(2004)"
+      },
+      "countries": [
+        "Q192188",
+        "Q129003",
+        "Q1045",
+        "Q1042",
+        "Q1027",
+        "Q1019",
+        "Q970",
+        "Q924",
+        "Q902",
+        "Q869",
+        "Q854",
+        "Q836",
+        "Q833",
+        "Q826",
+        "Q805",
+        "Q668",
+        "Q258",
+        "Q252",
+        "Q142",
+        "Q114"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2004-tsunami.jpg"
+    },
+    {
+      "id": "Q43777",
+      "name": "2010 Haiti earthquake",
+      "nameRu": "Землетрясение на Гаити",
+      "category": "environment-geology",
+      "year": 2010,
+      "month": 1,
+      "tagline": "12 January 2010 magnitude 7.0 Mw earthquake",
+      "taglineRu": "Природная катастрофа, унесшая более 200 тыс. жизней",
+      "sitelinks": 83,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/2010_Haiti_earthquake",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/2010_Haiti_earthquake",
+        "zh": "https://zh.wikipedia.org/wiki/2010%E5%B9%B4%E6%B5%B7%E5%9C%B0%E5%9C%B0%E9%9C%87",
+        "es": "https://es.wikipedia.org/wiki/Terremoto_de_Hait%C3%AD_de_2010",
+        "fr": "https://fr.wikipedia.org/wiki/S%C3%A9isme_de_2010_en_Ha%C3%AFti",
+        "de": "https://de.wikipedia.org/wiki/Erdbeben_in_Haiti_2010",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D9%84%D8%B2%D8%A7%D9%84_%D9%87%D8%A7%D9%8A%D8%AA%D9%8A_2010",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%97%D0%B5%D0%BC%D0%BB%D0%B5%D1%82%D1%80%D1%8F%D1%81%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BD%D0%B0_%D0%93%D0%B0%D0%B8%D1%82%D0%B8_(2010)"
+      },
+      "countries": [
+        "Q790"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ruins%20of%20Haiti%20National%20Palace%20-%20Port%20au%20Prince%202012.jpg"
+    },
+    {
+      "id": "Q192055",
+      "name": "Nanjing Massacre",
+      "nameRu": "Нанкинская резня",
+      "category": "society-administration",
+      "year": 1937,
+      "month": 12,
+      "endYear": 1938,
+      "endMonth": 2,
+      "tagline": "1937 mass murder by the Japanese army",
+      "taglineRu": "массовые убийства и изнасилования в ходе японо-китайской войны",
+      "sitelinks": 73,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nanjing_Massacre",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Nanjing_Massacre",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%8D%97%E4%BA%AC%E5%A4%A7%E5%B1%A0%E6%AE%BA",
+        "es": "https://es.wikipedia.org/wiki/Masacre_de_Nank%C3%ADn",
+        "fr": "https://fr.wikipedia.org/wiki/Massacre_de_Nankin",
+        "de": "https://de.wikipedia.org/wiki/Massaker_von_Nanking",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B0%D8%A8%D8%AD%D8%A9_%D9%86%D8%A7%D9%86%D8%AC%D9%86%D8%BA",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D0%BD%D0%BA%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D1%80%D0%B5%D0%B7%D0%BD%D1%8F"
+      },
+      "countries": [
+        "Q13426199"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nanking%20bodies%201937.jpg"
+    },
+    {
+      "id": "Q208855",
+      "name": "Jallianwala Bagh massacre",
+      "nameRu": "Бойня на Джаллианвала-багх",
+      "category": "society-administration",
+      "year": 1919,
+      "month": 4,
+      "tagline": "British Indian Army troops fire their rifles into crowd of unarmed Indian civilians (1919)",
+      "sitelinks": 59,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Jallianwala_Bagh_massacre",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Jallianwala_Bagh_massacre",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A7%86%E5%88%A9%E5%89%87%E6%85%98%E6%A1%88",
+        "es": "https://es.wikipedia.org/wiki/Masacre_de_Amritsar",
+        "fr": "https://fr.wikipedia.org/wiki/Massacre_d%27Amritsar",
+        "de": "https://de.wikipedia.org/wiki/Massaker_von_Amritsar",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%B0%D8%A8%D8%AD%D8%A9_%D8%A3%D9%85%D8%B1%D9%8A%D8%AA%D8%B3%D8%A7%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BC%D1%80%D0%B8%D1%82%D1%81%D0%B0%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%B1%D0%BE%D0%B9%D0%BD%D1%8F"
+      },
+      "countries": [
+        "Q129286"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jalian%20Wala%20Bagh%20Memorial%20311.jpg"
+    },
+    {
+      "id": "Q212618",
+      "name": "1960 Valdivia earthquake",
+      "nameRu": "Великое Чилийское землетрясение",
+      "category": "environment-geology",
+      "year": 1960,
+      "month": 5,
+      "tagline": "9.4–9.6 magnitude earthquake in Chile",
+      "taglineRu": "сильнейшее землетрясение в истории наблюдения",
+      "sitelinks": 53,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1960_Valdivia_earthquake",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/1960_Valdivia_earthquake",
+        "zh": "https://zh.wikipedia.org/wiki/1960%E5%B9%B4%E6%99%BA%E5%88%A9%E5%A4%A7%E5%9C%B0%E9%9C%87",
+        "es": "https://es.wikipedia.org/wiki/Terremoto_de_Valdivia_de_1960",
+        "fr": "https://fr.wikipedia.org/wiki/S%C3%A9isme_de_1960_%C3%A0_Valdivia",
+        "de": "https://de.wikipedia.org/wiki/Erdbeben_von_Valdivia_1960",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D9%84%D8%B2%D8%A7%D9%84_%D9%81%D8%A7%D9%84%D8%AF%D9%8A%D9%81%D9%8A%D8%A7_1960",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%B5_%D0%A7%D0%B8%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B5%D0%BC%D0%BB%D0%B5%D1%82%D1%80%D1%8F%D1%81%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
+      "countries": [
+        "Q298"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Destroyed%20steel%20factory%20near%20Corral%20-%20Photo%20from%20the%20autumn%20of%201960.png"
+    },
+    {
+      "id": "Q2885072",
+      "name": "Cambodian genocide",
+      "nameRu": "геноцид в Камбодже",
+      "category": "society-administration",
+      "year": 1975,
+      "month": 4,
+      "endYear": 1979,
+      "endMonth": 1,
+      "tagline": "genocide of as many as 3,000,000 Cambodians by communist Khmer Rogue in 1975–79",
+      "sitelinks": 52,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cambodian_genocide",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Cambodian_genocide",
+        "zh": "https://zh.wikipedia.org/wiki/%E7%BA%A2%E8%89%B2%E9%AB%98%E6%A3%89%E5%A4%A7%E5%B1%A0%E6%9D%80",
+        "es": "https://es.wikipedia.org/wiki/Genocidio_camboyano",
+        "fr": "https://fr.wikipedia.org/wiki/G%C3%A9nocide_cambodgien",
+        "de": "https://de.wikipedia.org/wiki/Genozid_in_Kambodscha",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D8%A8%D8%A7%D8%AF%D8%A9_%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%A9_%D9%81%D9%8A_%D9%83%D9%85%D8%A8%D9%88%D8%AF%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B5%D0%BD%D0%BE%D1%86%D0%B8%D0%B4_%D0%B2_%D0%9A%D0%B0%D0%BC%D0%B1%D0%BE%D0%B4%D0%B6%D0%B5"
+      },
+      "countries": [
+        "Q424"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Skulls%20from%20the%20killing%20fields.jpg"
+    },
+    {
+      "id": "Q274498",
+      "name": "1923 Great Kantō Earthquake",
+      "nameRu": "Великое землетрясение Канто",
+      "category": "environment-geology",
+      "year": 1923,
+      "month": 9,
+      "tagline": "earthquake",
+      "taglineRu": "сильное землетрясение в Японии в 1923 году",
+      "sitelinks": 51,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Kant%C5%8D_Earthquake",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Great_Kant%C5%8D_Earthquake",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%97%9C%E6%9D%B1%E5%A4%A7%E5%9C%B0%E9%9C%87",
+        "es": "https://es.wikipedia.org/wiki/Gran_terremoto_de_Kant%C5%8D",
+        "fr": "https://fr.wikipedia.org/wiki/S%C3%A9isme_de_1923_du_Kant%C5%8D",
+        "de": "https://de.wikipedia.org/wiki/Gro%C3%9Fes_Kant%C5%8D-Erdbeben_1923",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D9%84%D8%B2%D8%A7%D9%84_%D9%83%D8%A7%D9%86%D8%AA%D9%88_%D8%A7%D9%84%D9%83%D8%A8%D9%8A%D8%B1_1923",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B5%D0%BC%D0%BB%D0%B5%D1%82%D1%80%D1%8F%D1%81%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9A%D0%B0%D0%BD%D1%82%D0%BE"
+      },
+      "countries": [
+        "Q17"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kanto-daishinsai.jpg"
+    },
+    {
+      "id": "Q2578778",
+      "name": "Circassian genocide",
+      "nameRu": "черкесское мухаджирство",
+      "category": "society-administration",
+      "year": 1800,
+      "endYear": 1864,
+      "tagline": "19th century genocide of Circassians by the Russian Empire",
+      "taglineRu": "массовое переселение в Османскую империю черкесов, абазов и убыхов, во время и по окончании Кавказской войны, оцениваемое как геноцид",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Circassian_genocide",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Circassian_genocide",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%88%87%E7%88%BE%E5%85%8B%E6%96%AF%E6%B0%91%E6%97%8F%E6%B8%85%E6%B4%97",
+        "es": "https://es.wikipedia.org/wiki/Genocidio_circasiano",
+        "fr": "https://fr.wikipedia.org/wiki/Nettoyage_ethnique_des_Circassiens",
+        "de": "https://de.wikipedia.org/wiki/V%C3%B6lkermord_an_den_Tscherkessen",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D8%A8%D8%A7%D8%AF%D8%A9_%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%A9_%D9%84%D9%84%D8%B4%D8%B1%D9%83%D8%B3",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%80%D0%BA%D0%B5%D1%81%D1%81%D0%BA%D0%BE%D0%B5_%D0%BC%D1%83%D1%85%D0%B0%D0%B4%D0%B6%D0%B8%D1%80%D1%81%D1%82%D0%B2%D0%BE"
+      },
+      "countries": [
+        "Q34266"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zass%20impaling.png"
+    },
+    {
+      "id": "Q522837",
+      "name": "Bengal famine of 1943",
+      "nameRu": "Голод в Бенгалии",
+      "category": "public-health",
+      "year": 1943,
+      "endYear": 1944,
+      "tagline": "Famine in British India during World War II",
+      "sitelinks": 47,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bengal_famine_of_1943",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Bengal_famine_of_1943",
+        "zh": "https://zh.wikipedia.org/wiki/1943%E5%B9%B4%E5%AD%9F%E5%8A%A0%E6%8B%89%E9%A5%A5%E8%8D%92",
+        "es": "https://es.wikipedia.org/wiki/Hambruna_en_Bengala_de_1943",
+        "fr": "https://fr.wikipedia.org/wiki/Famine_du_Bengale_de_1943",
+        "de": "https://de.wikipedia.org/wiki/Hungersnot_in_Bengalen_1943",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%85%D8%AC%D8%A7%D8%B9%D8%A9_%D8%A7%D9%84%D8%A8%D9%86%D8%BA%D8%A7%D9%84_1943",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%BE%D0%BB%D0%BE%D0%B4_%D0%B2_%D0%91%D0%B5%D0%BD%D0%B3%D0%B0%D0%BB%D0%B8%D0%B8_(1943)"
+      },
+      "countries": [
+        "Q129286"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WomanDeadFromStarvationBengalFamine1943.jpg"
+    },
+    {
+      "id": "Q85125",
+      "name": "population transfer in the Soviet Union",
+      "nameRu": "Депортации народов в СССР",
+      "category": "society-administration",
+      "year": 1930,
+      "tagline": "transfer and deportation of people in the Soviet Union",
+      "taglineRu": "перемещение и депортация людей в Советском Союзе",
+      "sitelinks": 46,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Population_transfer_in_the_Soviet_Union",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Population_transfer_in_the_Soviet_Union",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%98%87%E8%81%AF%E7%9A%84%E4%BA%BA%E5%8F%A3%E8%BD%89%E7%A7%BB",
+        "es": "https://es.wikipedia.org/wiki/Deportaciones_de_pueblos_en_la_Uni%C3%B3n_Sovi%C3%A9tica",
+        "fr": "https://fr.wikipedia.org/wiki/D%C3%A9portation_des_peuples_en_URSS",
+        "de": "https://de.wikipedia.org/wiki/Ethnische_Deportationen_in_der_UdSSR",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%86%D8%AA%D9%82%D8%A7%D9%84_%D8%A7%D9%84%D8%B3%D9%83%D8%A7%D9%86_%D9%81%D9%8A_%D8%A7%D9%84%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF_%D8%A7%D9%84%D8%B3%D9%88%D9%81%D9%8A%D8%AA%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%86%D0%B8%D0%B8_%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BE%D0%B2_%D0%B2_%D0%A1%D0%A1%D0%A1%D0%A0"
+      },
+      "countries": [
+        "Q15180"
+      ]
+    },
+    {
+      "id": "Q913640",
+      "name": "Great Smog of London",
+      "nameRu": "Великий смог 1952 года",
+      "category": "environment-geology",
+      "year": 1952,
+      "month": 12,
+      "endYear": 1952,
+      "endMonth": 12,
+      "tagline": "1952 air pollution event in London, England",
+      "taglineRu": "серьёзное загрязнение воздуха, произошедшее в Лондоне в декабре 1952 года",
+      "sitelinks": 46,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Smog_of_London",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Great_Smog_of_London",
+        "zh": "https://zh.wikipedia.org/wiki/1952%E5%B9%B4%E4%BC%A6%E6%95%A6%E7%83%9F%E9%9B%BE%E4%BA%8B%E4%BB%B6",
+        "es": "https://es.wikipedia.org/wiki/Gran_Niebla_de_Londres",
+        "fr": "https://fr.wikipedia.org/wiki/Grand_smog_de_Londres",
+        "de": "https://de.wikipedia.org/wiki/Smog-Katastrophe_in_London_1952",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B6%D8%A8%D8%AE%D8%A7%D9%86_%D8%A7%D9%84%D9%83%D8%A8%D9%8A%D8%B1_%D9%81%D9%8A_1952",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B8%D0%B9_%D1%81%D0%BC%D0%BE%D0%B3"
+      },
+      "countries": [
+        "Q145"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nelson%27s%20Column%20during%20the%20Great%20Smog%20of%201952.jpg"
+    },
+    {
+      "id": "Q2092950",
+      "name": "Hamidian massacres",
+      "nameRu": "Массовые убийства армян в 1894—1896 годах",
+      "category": "society-administration",
+      "year": 1894,
+      "endYear": 1897,
+      "tagline": "massacres of Armenians in the Ottoman Empire which took place in the mid-1890s",
+      "sitelinks": 46,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hamidian_massacres",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Hamidian_massacres",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%93%88%E7%B1%B3%E5%BE%B7%E5%A4%A7%E5%B1%A0%E6%AE%BA",
+        "es": "https://es.wikipedia.org/wiki/Masacres_hamidianas",
+        "fr": "https://fr.wikipedia.org/wiki/Massacres_hamidiens",
+        "de": "https://de.wikipedia.org/wiki/Massaker_an_den_Armeniern_1894%E2%80%931896",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D8%B2%D8%B1_%D8%A7%D9%84%D8%AD%D9%85%D9%8A%D8%AF%D9%8A%D8%A9",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%81%D1%81%D0%BE%D0%B2%D1%8B%D0%B5_%D1%83%D0%B1%D0%B8%D0%B9%D1%81%D1%82%D0%B2%D0%B0_%D0%B0%D1%80%D0%BC%D1%8F%D0%BD_%D0%B2_1894%E2%80%941896_%D0%B3%D0%BE%D0%B4%D0%B0%D1%85"
+      },
+      "countries": [
+        "Q12560"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1895erzurum-victims.jpg"
+    },
+    {
+      "id": "Q1025404",
+      "name": "assassination of Abraham Lincoln",
+      "nameRu": "убийство Авраама Линкольна",
+      "category": "society-administration",
+      "year": 1865,
+      "month": 4,
+      "tagline": "1865 murder in Washington, D.C",
+      "taglineRu": "убийство 16-ого президента США в 1865 году",
+      "sitelinks": 45,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Assassination_of_Abraham_Lincoln",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Assassination_of_Abraham_Lincoln",
+        "zh": "https://zh.wikipedia.org/wiki/%E6%9E%97%E8%82%AF%E9%81%87%E5%88%BA%E6%A1%88",
+        "es": "https://es.wikipedia.org/wiki/Asesinato_de_Abraham_Lincoln",
+        "fr": "https://fr.wikipedia.org/wiki/Assassinat_d%27Abraham_Lincoln",
+        "de": "https://de.wikipedia.org/wiki/Attentat_auf_Abraham_Lincoln",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D8%BA%D8%AA%D9%8A%D8%A7%D9%84_%D8%A3%D8%A8%D8%B1%D8%A7%D9%87%D8%A7%D9%85_%D9%84%D9%8A%D9%86%D9%83%D9%88%D9%86",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A3%D0%B1%D0%B8%D0%B9%D1%81%D1%82%D0%B2%D0%BE_%D0%90%D0%B2%D1%80%D0%B0%D0%B0%D0%BC%D0%B0_%D0%9B%D0%B8%D0%BD%D0%BA%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0"
+      },
+      "countries": [
+        "Q30"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Assassination%20of%20President%20Lincoln%2C%20Ford%27s%20Theatre%2C%20Washington%2C%20April%2014%2C%201865%20LCCN2003656453.jpg"
+    },
+    {
+      "id": "Q1356047",
+      "name": "execution of the Romanov family",
+      "nameRu": "расстрел царской семьи",
+      "category": "society-administration",
+      "year": 1918,
+      "month": 7,
+      "tagline": "1918 murder of Nicholas II of Russia and his family",
+      "taglineRu": "расстрел семьи Николая II Романова в Екатеринбурге, в 1918 году",
+      "sitelinks": 45,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Murder_of_the_Romanov_family",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Murder_of_the_Romanov_family",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%B0%BC%E5%8F%A4%E6%8B%89%E4%BA%8C%E4%B8%96%E7%81%AD%E9%97%A8%E6%A1%88",
+        "es": "https://es.wikipedia.org/wiki/Ejecuci%C3%B3n_de_la_familia_Rom%C3%A1nov",
+        "fr": "https://fr.wikipedia.org/wiki/Assassinat_de_la_famille_imp%C3%A9riale_russe",
+        "de": "https://de.wikipedia.org/wiki/Ermordung_der_Zarenfamilie",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A5%D8%B9%D8%AF%D8%A7%D9%85_%D8%B9%D8%A7%D8%A6%D9%84%D8%A9_%D8%B1%D9%88%D9%85%D8%A7%D9%86%D9%88%D9%81",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D1%80%D0%B5%D0%BB_%D1%86%D0%B0%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D1%81%D0%B5%D0%BC%D1%8C%D0%B8"
+      },
+      "countries": [
+        "Q2305208"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ipatyev%20house%20basement.jpg"
+    },
+    {
+      "id": "Q726501",
+      "name": "Dust Bowl",
+      "nameRu": "Пыльный котёл",
+      "category": "environment-geology",
+      "year": 1930,
+      "endYear": 1936,
+      "tagline": "period of severe dust storms in North America",
+      "taglineRu": "серия катастрофических пыльных бурь, происходивших в прериях США и Канады",
+      "sitelinks": 44,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Dust_Bowl",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Dust_Bowl",
+        "zh": "https://zh.wikipedia.org/wiki/%E9%BB%91%E8%89%B2%E9%A3%8E%E6%9A%B4%E4%BA%8B%E4%BB%B6",
+        "es": "https://es.wikipedia.org/wiki/Dust_Bowl",
+        "fr": "https://fr.wikipedia.org/wiki/Dust_Bowl",
+        "de": "https://de.wikipedia.org/wiki/Dust_Bowl",
+        "ar": "https://ar.wikipedia.org/wiki/%D9%82%D8%B5%D8%B9%D8%A9_%D8%A7%D9%84%D8%BA%D8%A8%D8%A7%D8%B1",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D1%8B%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%BA%D0%BE%D1%82%D1%91%D0%BB"
+      },
+      "countries": [
+        "Q30",
+        "Q16"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dust%20Bowl%20-%20Dallas%2C%20South%20Dakota%201936.jpg"
+    },
+    {
+      "id": "Q599141",
+      "name": "Antonine Plague",
+      "nameRu": "Антонинова чума",
+      "category": "public-health",
+      "year": 165,
+      "endYear": 1,
+      "tagline": "pandemic",
+      "taglineRu": "Эпидемия чумы (165 - 180 годы н.э.)",
+      "sitelinks": 42,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Antonine_Plague",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Antonine_Plague",
+        "zh": "https://zh.wikipedia.org/wiki/%E5%AE%89%E6%9D%B1%E5%B0%BC%E5%A4%A7%E7%98%9F%E7%96%AB",
+        "es": "https://es.wikipedia.org/wiki/Peste_antonina",
+        "fr": "https://fr.wikipedia.org/wiki/Peste_antonine",
+        "de": "https://de.wikipedia.org/wiki/Antoninische_Pest",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%B7%D8%A7%D8%B9%D9%88%D9%86_%D8%A7%D9%84%D8%A3%D9%86%D8%B7%D9%88%D9%86%D9%8A",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D1%82%D0%BE%D0%BD%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0_%D1%87%D1%83%D0%BC%D0%B0"
+      },
+      "countries": [
+        "Q1747689"
+      ]
+    },
+    {
+      "id": "Q312492",
+      "name": "Herero and Nama genocide",
+      "nameRu": "Геноцид племён гереро и нама",
+      "category": "society-administration",
+      "year": 1904,
+      "endYear": 1908,
+      "tagline": "1904–1908 genocide committed by the German colonial administration in Africa",
+      "sitelinks": 40,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Herero_and_Nama_genocide",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Herero_and_Nama_genocide",
+        "zh": "https://zh.wikipedia.org/wiki/%E8%B5%AB%E9%9B%B7%E7%BD%97%E4%BA%BA%E5%92%8C%E7%BA%B3%E9%A9%AC%E4%BA%BA%E5%A4%A7%E5%B1%A0%E6%9D%80",
+        "es": "https://es.wikipedia.org/wiki/Genocidio_herero_y_namaqua",
+        "fr": "https://fr.wikipedia.org/wiki/G%C3%A9nocide_des_H%C3%A9r%C3%A9ros_et_des_Namas",
+        "de": "https://de.wikipedia.org/wiki/V%C3%B6lkermord_an_den_Herero_und_Nama",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D8%A8%D8%A7%D8%AF%D8%A9_%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D9%84%D9%85%D8%A7%D9%86%D9%8A%D8%A9_%D9%84%D9%87%D9%8A%D8%B1%D9%8A%D8%B1%D9%88_%D9%88%D9%86%D8%A7%D9%85%D8%A7_%D9%81%D9%8A_%D9%86%D8%A7%D9%85%D9%8A%D8%A8%D9%8A%D8%A7",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%93%D0%B5%D0%BD%D0%BE%D1%86%D0%B8%D0%B4_%D0%BF%D0%BB%D0%B5%D0%BC%D1%91%D0%BD_%D0%B3%D0%B5%D1%80%D0%B5%D1%80%D0%BE_%D0%B8_%D0%BD%D0%B0%D0%BC%D0%B0"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Herero%20and%20Nama%20prisoners.jpg"
+    },
+    {
+      "id": "Q1988505",
+      "name": "Great Famine of 1315–1317",
+      "nameRu": "Великий голод",
+      "category": "public-health",
+      "year": 1315,
+      "endYear": 1317,
+      "tagline": "famine in 14th century medieval Europe",
+      "taglineRu": "бедствие средневековья XIV века",
+      "sitelinks": 40,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Famine_of_1315%E2%80%931317",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/Great_Famine_of_1315%E2%80%931317",
+        "zh": "https://zh.wikipedia.org/wiki/1315%E2%80%931317%E5%B9%B4%E5%A4%A7%E9%A5%A5%E8%8D%92",
+        "es": "https://es.wikipedia.org/wiki/Gran_hambruna_de_1315-1317",
+        "fr": "https://fr.wikipedia.org/wiki/Grande_famine_de_1315-1317",
+        "de": "https://de.wikipedia.org/wiki/Hungersnot_von_1315%E2%80%931317",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D8%B9%D8%A9_%D8%A7%D9%84%D9%83%D8%A8%D8%B1%D9%89_(1315%E2%80%931317)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B8%D0%B9_%D0%B3%D0%BE%D0%BB%D0%BE%D0%B4_(1315%E2%80%941317)"
+      },
+      "countries": [],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Great%20famine.jpg"
+    },
+    {
+      "id": "Q1348910",
+      "name": "1908 Messina earthquake",
+      "nameRu": "Мессинское землетрясение",
+      "category": "environment-geology",
+      "year": 1908,
+      "month": 12,
+      "tagline": "December 1908 earthquake in Messina, Italy",
+      "sitelinks": 36,
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1908_Messina_earthquake",
+      "articleUrls": {
+        "en": "https://en.wikipedia.org/wiki/1908_Messina_earthquake",
+        "zh": "https://zh.wikipedia.org/wiki/1908%E5%B9%B4%E5%A2%A8%E8%A5%BF%E6%8B%BF%E5%9C%B0%E9%9C%87",
+        "es": "https://es.wikipedia.org/wiki/Terremoto_de_Mesina_de_1908",
+        "fr": "https://fr.wikipedia.org/wiki/S%C3%A9isme_du_28_d%C3%A9cembre_1908_%C3%A0_Messine",
+        "de": "https://de.wikipedia.org/wiki/Erdbeben_von_Messina_1908",
+        "ar": "https://ar.wikipedia.org/wiki/%D8%B2%D9%84%D8%B2%D8%A7%D9%84_%D9%85%D8%B3%D9%8A%D9%86%D8%A7_(1908)",
+        "ru": "https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%81%D1%81%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B5_%D0%B7%D0%B5%D0%BC%D0%BB%D0%B5%D1%82%D1%80%D1%8F%D1%81%D0%B5%D0%BD%D0%B8%D0%B5"
+      },
+      "countries": [
+        "Q172579",
+        "Q38"
+      ],
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Comerio%2C%20Luca%20%281878-1940%29%20-%20Vittime%20del%20terremoto%20di%20Messina%20%28dicembre%201908%29.jpg"
     }
   ]
 }

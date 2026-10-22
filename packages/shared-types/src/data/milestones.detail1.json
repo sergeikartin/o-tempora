@@ -385,7 +385,7 @@
     "at": {
       "year": 1582
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q7813",
@@ -476,27 +476,6 @@
     "description": "The Holy Roman Empire, also known as the Holy Roman Empire of the German Nation after 1512, was a polity comprising and controlling much of Central Europe and Western Europe, headed by the Holy Roman Emperor and characterized by a decentralized political structure. It developed in the Early Middle Ages, and lasted for a millennium until its dissolution in 1806 during the Napoleonic Wars. Initially, it consisted of three constituent kingdoms—Germany, Italy, and Burgundy—held together by the emperor's overlordship. By the 15th century, imperial governance had become concentrated in and upon the Kingdom of Germany, as the empire's effective control over Italy and Burgundy had largely disappeared.",
     "at": {
       "year": 962
-    },
-    "row": 0
-  },
-  {
-    "id": "Q4692",
-    "name": "Renaissance",
-    "category": "culture-arts",
-    "regionTags": [],
-    "fameScore": 89,
-    "tagline": "cultural movement that spanned the period roughly from the 14th to the 17th century",
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Renaissance",
-    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Da%20Vinci%20Vitruve%20Luc%20Viatour.jpg",
-    "description": "The Renaissance was a European period of history and cultural movement taking place at the end of the Late Middle Ages and the beginning of the early modern era. It is variously defined as covering the 15th and 16th centuries or, more broadly, as lasting from the 14th century to the 17th. It was characterized by the European rediscovery and revival of the literary, philosophical, and artistic achievements of classical antiquity. Associated with great change in art, architecture, politics, literature, exploration and technology, the Renaissance was first centered in the Republic of Florence, then spread to the rest of Italy and later throughout Europe.",
-    "approximateDate": true,
-    "period": {
-      "start": {
-        "year": 1400
-      },
-      "end": {
-        "year": 1600
-      }
     },
     "row": 0
   },
@@ -629,7 +608,7 @@
     "at": {
       "year": 1503
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q2269",

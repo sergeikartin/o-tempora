@@ -14,7 +14,7 @@
       "year": 1996,
       "month": 7
     },
-    "row": 18
+    "row": 24
   },
   {
     "id": "Q190035",
@@ -31,7 +31,7 @@
       "year": 2015,
       "month": 9
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q205921",
@@ -62,7 +62,7 @@
       "year": 1908,
       "month": 9
     },
-    "row": 22
+    "row": 27
   },
   {
     "id": "Q15003",
@@ -78,7 +78,7 @@
     "at": {
       "year": 1891
     },
-    "row": 21
+    "row": 23
   },
   {
     "id": "Q1932",
@@ -115,7 +115,7 @@
     "at": {
       "year": 1842
     },
-    "row": 7
+    "row": 10
   },
   {
     "id": "Q13582",
@@ -139,7 +139,7 @@
         "month": 2
       }
     },
-    "row": 20
+    "row": 22
   },
   {
     "id": "Q55816",
@@ -157,7 +157,7 @@
     "at": {
       "year": 1981
     },
-    "row": 23
+    "row": 25
   },
   {
     "id": "Q35045",
@@ -175,7 +175,7 @@
     "at": {
       "year": 1545
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q211674",
@@ -191,7 +191,7 @@
       "year": 1916,
       "month": 5
     },
-    "row": 25
+    "row": 30
   },
   {
     "id": "Q608613",
@@ -320,7 +320,7 @@
     "at": {
       "year": 1969
     },
-    "row": 6
+    "row": 8
   },
   {
     "id": "Q660895",
@@ -339,7 +339,7 @@
       "year": 1964,
       "month": 10
     },
-    "row": 26
+    "row": 29
   },
   {
     "id": "Q179744",
@@ -355,7 +355,7 @@
     "at": {
       "year": 1839
     },
-    "row": 10
+    "row": 13
   },
   {
     "id": "Q227467",
@@ -372,7 +372,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 30
+    "row": 35
   },
   {
     "id": "Q221474",
@@ -388,7 +388,7 @@
       "year": 1492,
       "month": 10
     },
-    "row": 2
+    "row": 1
   },
   {
     "id": "Q179430",
@@ -404,7 +404,7 @@
     "at": {
       "year": 1757
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q178032",
@@ -420,7 +420,7 @@
     "at": {
       "year": 1825
     },
-    "row": 8
+    "row": 10
   },
   {
     "id": "Q233562",
@@ -458,7 +458,7 @@
         "year": 1968
       }
     },
-    "row": 29
+    "row": 33
   },
   {
     "id": "Q152006",
@@ -491,7 +491,7 @@
       "year": 1803,
       "month": 4
     },
-    "row": 12
+    "row": 15
   },
   {
     "id": "Q309029",
@@ -509,7 +509,7 @@
       "year": 1867,
       "month": 3
     },
-    "row": 20
+    "row": 21
   },
   {
     "id": "Q3699044",
@@ -606,7 +606,7 @@
         "year": 1066
       }
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q209217",
@@ -640,7 +640,25 @@
       "year": 1494,
       "month": 6
     },
-    "row": 3
+    "row": 2
+  },
+  {
+    "id": "Q208855",
+    "name": "Jallianwala Bagh massacre",
+    "category": "society-administration",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 74,
+    "tagline": "British Indian Army troops fire their rifles into crowd of unarmed Indian civilians (1919)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Jallianwala_Bagh_massacre",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Jalian%20Wala%20Bagh%20Memorial%20311.jpg",
+    "description": "The Jallianwala Bagh massacre, also known as the Amritsar massacre, took place on 13 April 1919. A large crowd had gathered at the Jallianwala Bagh in Amritsar, Punjab, British India, during the annual Baisakhi fair to protest against the Rowlatt Act and the arrest of pro-Indian independence activists Saifuddin Kitchlew and Satyapal. In response to the public gathering, Brigadier-General Reginald Dyer surrounded the people with Gurkhas of Nepalese origin and Sikh infantrymen of the British Indian Army.",
+    "at": {
+      "year": 1919,
+      "month": 4
+    },
+    "row": 33
   },
   {
     "id": "Q204711",
@@ -658,7 +676,7 @@
       "year": 1906,
       "month": 6
     },
-    "row": 28
+    "row": 38
   },
   {
     "id": "Q191472",
@@ -691,7 +709,7 @@
     "at": {
       "year": 1909
     },
-    "row": 27
+    "row": 32
   },
   {
     "id": "Q184201",
@@ -709,7 +727,7 @@
       "year": 1968,
       "month": 12
     },
-    "row": 27
+    "row": 25
   },
   {
     "id": "Q1188138",
@@ -743,7 +761,7 @@
       "year": 1947,
       "month": 3
     },
-    "row": 32
+    "row": 41
   },
   {
     "id": "Q180764",
@@ -779,7 +797,7 @@
       "year": 1755,
       "month": 11
     },
-    "row": 10
+    "row": 8
   },
   {
     "id": "Q193093",
@@ -811,7 +829,7 @@
     "at": {
       "year": 1751
     },
-    "row": 8
+    "row": 7
   },
   {
     "id": "Q134840",
@@ -865,7 +883,7 @@
     "at": {
       "year": 1187
     },
-    "row": 1
+    "row": 4
   },
   {
     "id": "Q145625",
@@ -880,7 +898,7 @@
     "at": {
       "year": 862
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q204023",
@@ -901,7 +919,7 @@
         "year": 1590
       }
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q503585",
@@ -919,7 +937,7 @@
       "year": 1910,
       "month": 8
     },
-    "row": 29
+    "row": 35
   },
   {
     "id": "Q167457",
@@ -937,7 +955,7 @@
       "year": 1957,
       "month": 3
     },
-    "row": 33
+    "row": 30
   },
   {
     "id": "Q31347",
@@ -970,7 +988,7 @@
       "year": 1983,
       "month": 1
     },
-    "row": 24
+    "row": 28
   },
   {
     "id": "Q19867",
@@ -990,6 +1008,49 @@
     "row": 4
   },
   {
+    "id": "Q212618",
+    "name": "1960 Valdivia earthquake",
+    "category": "environment-geology",
+    "regionTags": [
+      "south-america"
+    ],
+    "fameScore": 73,
+    "tagline": "9.4–9.6 magnitude earthquake in Chile",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1960_Valdivia_earthquake",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Destroyed%20steel%20factory%20near%20Corral%20-%20Photo%20from%20the%20autumn%20of%201960.png",
+    "imageAttribution": "Buonasera, via Wikimedia Commons",
+    "description": "On 22 May 1960, an earthquake and tsunami occurred in Chile, devastating the city of Valdivia. Most studies have placed it at 9.4–9.6 on the moment magnitude scale, making it the strongest earthquake ever recorded, while some studies have placed the magnitude lower than 9.4. It occurred in the afternoon, and lasted 10 minutes. The resulting tsunamis affected southern Chile, Hawaii, Japan, the Philippines, eastern New Zealand, southeast Australia, and the Aleutian Islands.",
+    "at": {
+      "year": 1960,
+      "month": 5
+    },
+    "row": 38
+  },
+  {
+    "id": "Q2885072",
+    "name": "Cambodian genocide",
+    "category": "society-administration",
+    "regionTags": [
+      "south-eastern-asia"
+    ],
+    "fameScore": 73,
+    "tagline": "genocide of as many as 3,000,000 Cambodians by communist Khmer Rogue in 1975–79",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Cambodian_genocide",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Skulls%20from%20the%20killing%20fields.jpg",
+    "description": "The Cambodian genocide was the systematic persecution and killing of Cambodian citizens by the Khmer Rouge under the general secretaryship of Pol Pot. It resulted in the deaths of approximately 2 million people from 1975 to 1979, around 25% of Cambodia's population in 1975.",
+    "period": {
+      "start": {
+        "year": 1975,
+        "month": 4
+      },
+      "end": {
+        "year": 1979,
+        "month": 1
+      }
+    },
+    "row": 27
+  },
+  {
     "id": "Q192446",
     "name": "Human Genome Project",
     "category": "science-theory",
@@ -1003,7 +1064,7 @@
     "at": {
       "year": 1990
     },
-    "row": 26
+    "row": 29
   },
   {
     "id": "Q208708",
@@ -1020,7 +1081,7 @@
       "year": 1923,
       "month": 1
     },
-    "row": 13
+    "row": 11
   },
   {
     "id": "Q960800",
@@ -1034,7 +1095,7 @@
     "at": {
       "year": 1890
     },
-    "row": 22
+    "row": 27
   },
   {
     "id": "Q505802",
@@ -1058,7 +1119,7 @@
         "month": 9
       }
     },
-    "row": 15
+    "row": 18
   },
   {
     "id": "Q209440",
@@ -1089,7 +1150,7 @@
     "at": {
       "year": 1839
     },
-    "row": 12
+    "row": 2
   },
   {
     "id": "Q223732",
@@ -1107,7 +1168,7 @@
       "year": 1948,
       "month": 5
     },
-    "row": 35
+    "row": 44
   },
   {
     "id": "Q207875",
@@ -1136,7 +1197,7 @@
     "at": {
       "year": 1979
     },
-    "row": 25
+    "row": 31
   },
   {
     "id": "Q209625",
@@ -1152,7 +1213,7 @@
     "at": {
       "year": 1816
     },
-    "row": 14
+    "row": 19
   },
   {
     "id": "Q391358",
@@ -1168,7 +1229,7 @@
       "year": 1862,
       "month": 9
     },
-    "row": 19
+    "row": 22
   },
   {
     "id": "Q151060",
@@ -1185,7 +1246,7 @@
       "year": 1804,
       "month": 3
     },
-    "row": 13
+    "row": 17
   },
   {
     "id": "Q179788",
@@ -1203,7 +1264,7 @@
       "year": 1598,
       "month": 4
     },
-    "row": 5
+    "row": 2
   },
   {
     "id": "Q329838",
@@ -1288,7 +1349,7 @@
     "at": {
       "year": 1783
     },
-    "row": 12
+    "row": 11
   },
   {
     "id": "Q192823",
@@ -1334,7 +1395,7 @@
       "year": 1783,
       "month": 11
     },
-    "row": 13
+    "row": 12
   },
   {
     "id": "Q187899",
@@ -1351,7 +1412,7 @@
       "year": 1997,
       "month": 5
     },
-    "row": 15
+    "row": 25
   },
   {
     "id": "Q192418",
@@ -1386,7 +1447,43 @@
     "at": {
       "year": 1707
     },
-    "row": 5
+    "row": 4
+  },
+  {
+    "id": "Q1025404",
+    "name": "assassination of Abraham Lincoln",
+    "category": "society-administration",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 72,
+    "tagline": "1865 murder in Washington, D.C",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Assassination_of_Abraham_Lincoln",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Assassination%20of%20President%20Lincoln%2C%20Ford%27s%20Theatre%2C%20Washington%2C%20April%2014%2C%201865%20LCCN2003656453.jpg",
+    "description": "On April 14, 1865, Abraham Lincoln, the 16th president of the United States, was shot in the head while attending a play at Ford's Theatre in Washington, D.C.. He died the following day, six weeks into his second term and a month before the conclusion of the American Civil War. Lincoln was watching the play Our American Cousin with his wife Mary Todd, Major Henry Rathbone, and Rathbone's fiancé Clara Harris when John Wilkes Booth, an actor and Confederate sympathizer, shot him from behind. Lincoln was taken to the Petersen House across the street, where he died the following morning.",
+    "at": {
+      "year": 1865,
+      "month": 4
+    },
+    "row": 23
+  },
+  {
+    "id": "Q1356047",
+    "name": "execution of the Romanov family",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 72,
+    "tagline": "1918 murder of Nicholas II of Russia and his family",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Murder_of_the_Romanov_family",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ipatyev%20house%20basement.jpg",
+    "description": "Members of the Romanov family–the former Emperor Nicholas II of Russia, Empress Alexandra, and their children, Olga, Tatiana, Maria, Anastasia, and Alexei–were shot and stabbed to death by Bolshevik revolutionaries under Yakov Yurovsky on the orders of the Ural Regional Soviet in Yekaterinburg on the night of 16–17 July 1918. Also killed that night were members of the imperial entourage who had accompanied them: court physician Eugene Botkin; lady-in-waiting Anna Demidova; footman Alexei Trupp; and head cook Ivan Kharitonov. The bodies were taken to the Koptyaki forest, where they were stripped, mutilated with grenades and acid to prevent identification, and buried.",
+    "at": {
+      "year": 1918,
+      "month": 7
+    },
+    "row": 40
   },
   {
     "id": "Q817281",
@@ -1402,7 +1499,7 @@
     "at": {
       "year": 1961
     },
-    "row": 31
+    "row": 34
   },
   {
     "id": "Q1519099",
@@ -1417,7 +1514,7 @@
     "at": {
       "year": 1952
     },
-    "row": 37
+    "row": 49
   },
   {
     "id": "Q146578",
@@ -1449,7 +1546,7 @@
     "at": {
       "year": 1958
     },
-    "row": 39
+    "row": 45
   },
   {
     "id": "Q19321855",
@@ -1465,7 +1562,7 @@
     "at": {
       "year": 1494
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q17550",
@@ -1505,7 +1602,7 @@
       "year": 1974,
       "month": 11
     },
-    "row": 16
+    "row": 15
   },
   {
     "id": "Q151423",
@@ -1529,7 +1626,7 @@
         "month": 7
       }
     },
-    "row": 23
+    "row": 25
   },
   {
     "id": "Q191703",
@@ -1543,7 +1640,7 @@
     "at": {
       "year": 1963
     },
-    "row": 32
+    "row": 37
   },
   {
     "id": "Q1059758",
@@ -1585,7 +1682,7 @@
         "month": 4
       }
     },
-    "row": 4
+    "row": 9
   },
   {
     "id": "Q202558",
@@ -1608,7 +1705,7 @@
         "year": 1377
       }
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q494235",
@@ -1641,7 +1738,7 @@
     "at": {
       "year": 1050
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q916943",
@@ -1659,7 +1756,7 @@
     "at": {
       "year": 1010
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q33018",
@@ -1676,7 +1773,7 @@
     "at": {
       "year": 800
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q155952",
@@ -1724,7 +1821,7 @@
       "year": 1945,
       "month": 5
     },
-    "row": 36
+    "row": 48
   },
   {
     "id": "Q161540",
@@ -1740,7 +1837,7 @@
       "year": 1939,
       "month": 8
     },
-    "row": 33
+    "row": 45
   },
   {
     "id": "Q405008",
@@ -1818,6 +1915,53 @@
     "row": 9
   },
   {
+    "id": "Q913640",
+    "name": "Great Smog of London",
+    "category": "environment-geology",
+    "regionTags": [
+      "northern-europe"
+    ],
+    "fameScore": 71,
+    "tagline": "1952 air pollution event in London, England",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Smog_of_London",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nelson%27s%20Column%20during%20the%20Great%20Smog%20of%201952.jpg",
+    "imageAttribution": "N T Stobbs, via Wikimedia Commons",
+    "description": "The Great Smog was a severe air pollution event that affected London, England, in December 1952. A period of unusually cold weather, combined with an anticyclone and windless conditions, collected airborne pollutants—mostly arising from the use of coal—to form a thick layer of smog over the city. It lasted from Friday, 5 December, to Tuesday, 9 December 1952, then dispersed quickly when the weather changed.",
+    "period": {
+      "start": {
+        "year": 1952,
+        "month": 12
+      },
+      "end": {
+        "year": 1952,
+        "month": 12
+      }
+    },
+    "row": 50
+  },
+  {
+    "id": "Q726501",
+    "name": "Dust Bowl",
+    "category": "environment-geology",
+    "regionTags": [
+      "northern-america"
+    ],
+    "fameScore": 71,
+    "tagline": "period of severe dust storms in North America",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Dust_Bowl",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dust%20Bowl%20-%20Dallas%2C%20South%20Dakota%201936.jpg",
+    "description": "The Dust Bowl was a period of severe dust storms that greatly damaged the agriculture and ecology of the American and Canadian prairies during the 1930s. The phenomenon was caused by a combination of natural factors, including severe drought, and human behavior, including the destruction of natural topsoil by settlers who did not use dryland farming methods to prevent wind erosion. The drought came in three waves: 1934, 1936, and 1939–1940, but some regions of the High Plains experienced drought conditions for as long as eight years. It exacerbated an already existing agricultural recession.",
+    "period": {
+      "start": {
+        "year": 1930
+      },
+      "end": {
+        "year": 1936
+      }
+    },
+    "row": 18
+  },
+  {
     "id": "Q94247",
     "name": "Interstate Highway System",
     "category": "infrastructure",
@@ -1832,7 +1976,7 @@
       "year": 1956,
       "month": 6
     },
-    "row": 41
+    "row": 56
   },
   {
     "id": "Q337724",
@@ -1861,7 +2005,7 @@
     "at": {
       "year": 1908
     },
-    "row": 7
+    "row": 8
   },
   {
     "id": "Q194154",
@@ -1877,7 +2021,7 @@
     "at": {
       "year": 1940
     },
-    "row": 30
+    "row": 51
   },
   {
     "id": "Q69163529",
@@ -1896,7 +2040,7 @@
       "year": 1989,
       "month": 11
     },
-    "row": 28
+    "row": 33
   },
   {
     "id": "Q208191",
@@ -1919,7 +2063,7 @@
         "month": 4
       }
     },
-    "row": 40
+    "row": 55
   },
   {
     "id": "Q815567",
@@ -1937,7 +2081,7 @@
       "year": 1988,
       "month": 12
     },
-    "row": 27
+    "row": 32
   },
   {
     "id": "Q323813",
@@ -1956,7 +2100,7 @@
       "year": 1607,
       "month": 5
     },
-    "row": 1
+    "row": 6
   },
   {
     "id": "Q187719",
@@ -1992,7 +2136,51 @@
       "year": 1840,
       "month": 2
     },
-    "row": 13
+    "row": 17
+  },
+  {
+    "id": "Q2578778",
+    "name": "Circassian genocide",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 70,
+    "tagline": "19th century genocide of Circassians by the Russian Empire",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Circassian_genocide",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Zass%20impaling.png",
+    "description": "The Circassian genocide, or Tsitsekun, was the systematic mass killing, ethnic cleansing, and forced displacement of between 95% and 97% of the Circassian people during the final stages of the Russian invasion of Circassia in the 19th century. It resulted in the deaths of up to 1.5 million people and the destruction of Circassia, which was then annexed by the Russian Empire. Those planned for extermination were mainly the Circassians, who are predominantly Muslims, but other ethnic groups in the Caucasus were also affected, as part of the Caucasian War. The Imperial Russian Army also impaled their victims and tore open the bellies of pregnant women to intimidate the Circassians and devastate their morale. Many Russian generals, such as Grigory Zass, described the Circassians as a \"lowly race\" to justify and glorify their wholesale slaughter and their use as human test subjects in unethical scientific experiments. Russian soldiers were also permitted to rape Circassian women.",
+    "period": {
+      "start": {
+        "year": 1800
+      },
+      "end": {
+        "year": 1864
+      }
+    },
+    "row": 21
+  },
+  {
+    "id": "Q522837",
+    "name": "Bengal famine of 1943",
+    "category": "public-health",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 70,
+    "tagline": "Famine in British India during World War II",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Bengal_famine_of_1943",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/WomanDeadFromStarvationBengalFamine1943.jpg",
+    "description": "The Bengal famine of 1943 was a famine during World War II in the Bengal Province and Orissa Province of British India. An estimated 800,000–3.8 million people died, in the Bengal region, from starvation, malaria and other diseases aggravated by malnutrition, population displacement, unsanitary conditions, poor British wartime policies, and lack of health care. Millions were impoverished as the crisis overwhelmed large segments of the economy and catastrophically disrupted the social fabric. Eventually, families disintegrated; men sold their small farms and left home to look for work or to join the British Indian Army, and women and children became homeless migrants, often travelling to Calcutta or other large cities in search of organised relief.",
+    "period": {
+      "start": {
+        "year": 1943
+      },
+      "end": {
+        "year": 1944
+      }
+    },
+    "row": 53
   },
   {
     "id": "Q214634",
@@ -2008,7 +2196,7 @@
     "at": {
       "year": 1911
     },
-    "row": 32
+    "row": 42
   },
   {
     "id": "Q166543",
@@ -2040,7 +2228,7 @@
     "at": {
       "year": 1837
     },
-    "row": 16
+    "row": 18
   },
   {
     "id": "Q688605",
@@ -2074,7 +2262,7 @@
     "at": {
       "year": 1810
     },
-    "row": 18
+    "row": 25
   },
   {
     "id": "Q2411998",
@@ -2092,7 +2280,7 @@
       "year": 79,
       "month": 10
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q631489",
@@ -2114,7 +2302,7 @@
         "year": 1899
       }
     },
-    "row": 23
+    "row": 29
   },
   {
     "id": "Q963303",
@@ -2151,7 +2339,7 @@
         "year": 1854
       }
     },
-    "row": 17
+    "row": 23
   },
   {
     "id": "Q462252",
@@ -2174,7 +2362,7 @@
         "month": 12
       }
     },
-    "row": 42
+    "row": 57
   },
   {
     "id": "Q821122",
@@ -2195,7 +2383,7 @@
         "year": 1932
       }
     },
-    "row": 22
+    "row": 44
   },
   {
     "id": "Q736311",
@@ -2248,7 +2436,7 @@
       "year": 1971,
       "month": 11
     },
-    "row": 33
+    "row": 40
   },
   {
     "id": "Q856544",
@@ -2265,7 +2453,7 @@
     "at": {
       "year": 1849
     },
-    "row": 21
+    "row": 24
   },
   {
     "id": "Q330756",
@@ -2281,7 +2469,7 @@
       "year": 1918,
       "month": 4
     },
-    "row": 37
+    "row": 49
   },
   {
     "id": "Q465279",
@@ -2316,7 +2504,7 @@
       "year": 1967,
       "month": 12
     },
-    "row": 30
+    "row": 39
   },
   {
     "id": "Q1247524",
@@ -2337,6 +2525,40 @@
     "row": 0
   },
   {
+    "id": "Q274498",
+    "name": "1923 Great Kantō Earthquake",
+    "category": "environment-geology",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 69,
+    "tagline": "earthquake",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Kant%C5%8D_Earthquake",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kanto-daishinsai.jpg",
+    "description": "The Great Kantō Earthquake was a megathrust earthquake that struck the Kantō Plain on the main Japanese island of Honshu at 11:58:32 JST on Saturday, 1 September 1923. It had an approximate magnitude of 8.0 on the moment magnitude scale (Mw), with its epicenter located some 100 km (62 mi) southwest of the capital Tokyo. The earthquake devastated Tokyo, the port city of Yokohama, and the surrounding prefectures of Kanagawa, Chiba, and Shizuoka, causing widespread damage throughout the Kantō region.",
+    "at": {
+      "year": 1923,
+      "month": 9
+    },
+    "row": 43
+  },
+  {
+    "id": "Q85125",
+    "name": "population transfer in the Soviet Union",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 69,
+    "tagline": "transfer and deportation of people in the Soviet Union",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Population_transfer_in_the_Soviet_Union",
+    "description": "From 1930 to 1952, the government of the Soviet Union, on the orders of Soviet leader Joseph Stalin and under the direction of the NKVD official Lavrentiy Beria, forcibly transferred populations of various groups. These actions may be classified into the following broad categories: deportations of \"anti-Soviet\" categories of population, deportations of entire ethnic groups, labor force transfer, and organized migrations in opposite directions to fill ethnically cleansed territories. Dekulakization marked the first time that an entire class was deported, whereas the deportation of Soviet Koreans in 1937 marked the precedent of a specific ethnic deportation of an entire nationality.",
+    "at": {
+      "year": 1930
+    },
+    "row": 50
+  },
+  {
     "id": "Q234027",
     "name": "Louise Brown",
     "category": "medicine-health",
@@ -2349,7 +2571,7 @@
       "year": 1978,
       "month": 7
     },
-    "row": 31
+    "row": 34
   },
   {
     "id": "Q663273",
@@ -2365,7 +2587,7 @@
     "at": {
       "year": 1800
     },
-    "row": 19
+    "row": 6
   },
   {
     "id": "Q334055",
@@ -2380,7 +2602,7 @@
     "at": {
       "year": 1855
     },
-    "row": 22
+    "row": 25
   },
   {
     "id": "Q1192212",
@@ -2397,7 +2619,7 @@
     "at": {
       "year": 1861
     },
-    "row": 25
+    "row": 27
   },
   {
     "id": "Q573211",
@@ -2465,7 +2687,7 @@
     "at": {
       "year": 1945
     },
-    "row": 43
+    "row": 62
   },
   {
     "id": "Q1205521",
@@ -2482,7 +2704,7 @@
       "year": 1978,
       "month": 12
     },
-    "row": 34
+    "row": 36
   },
   {
     "id": "Q1645505",
@@ -2499,7 +2721,7 @@
       "year": 1534,
       "month": 11
     },
-    "row": 7
+    "row": 10
   },
   {
     "id": "Q368138",
@@ -2540,7 +2762,49 @@
         "year": 1512
       }
     },
-    "row": 5
+    "row": 7
+  },
+  {
+    "id": "Q2092950",
+    "name": "Hamidian massacres",
+    "category": "society-administration",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 68,
+    "tagline": "massacres of Armenians in the Ottoman Empire which took place in the mid-1890s",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Hamidian_massacres",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/1895erzurum-victims.jpg",
+    "description": "The Hamidian massacres, also called the Armenian massacres, were massacres of Armenians in the Ottoman Empire in the mid-1890s. Estimated casualties ranged from 100,000 to 300,000, resulting in 50,000 orphaned children. The massacres were named after Sultan Abdul Hamid II, who, in his efforts to maintain the imperial domain of the declining Ottoman Empire, reasserted pan-Islamism as a state ideology. Although the massacres were aimed mainly at the Armenians, in some cases they turned into indiscriminate anti-Christian pogroms, including the Diyarbekir massacres, where, at least according to one contemporary source, up to 25,000 Assyrians were also killed.",
+    "period": {
+      "start": {
+        "year": 1894
+      },
+      "end": {
+        "year": 1897
+      }
+    },
+    "row": 30
+  },
+  {
+    "id": "Q312492",
+    "name": "Herero and Nama genocide",
+    "category": "society-administration",
+    "regionTags": [],
+    "fameScore": 68,
+    "tagline": "1904–1908 genocide committed by the German colonial administration in Africa",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Herero_and_Nama_genocide",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Herero%20and%20Nama%20prisoners.jpg",
+    "description": "The Herero and Nama genocide, or the Namibian genocide, was the extermination of the Herero and the Nama people in German South West Africa perpetrated by the German Empire between 1904 and 1908. Around 40,000 to 80,000 Hereros and 10,000 Nama died.",
+    "period": {
+      "start": {
+        "year": 1904
+      },
+      "end": {
+        "year": 1908
+      }
+    },
+    "row": 43
   },
   {
     "id": "Q162684",
@@ -2558,7 +2822,7 @@
     "at": {
       "year": 1710
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q107701",
@@ -2576,7 +2840,7 @@
       "year": 1840,
       "month": 4
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q1136790",
@@ -2615,7 +2879,7 @@
         "month": 9
       }
     },
-    "row": 7
+    "row": 10
   },
   {
     "id": "Q654562",
@@ -2652,7 +2916,7 @@
         "month": 1
       }
     },
-    "row": 34
+    "row": 47
   },
   {
     "id": "Q217817",
@@ -2692,7 +2956,7 @@
         "month": 10
       }
     },
-    "row": 26
+    "row": 31
   },
   {
     "id": "Q300646",
@@ -2707,7 +2971,7 @@
     "at": {
       "year": 1792
     },
-    "row": 18
+    "row": 22
   },
   {
     "id": "Q1061030",
@@ -2725,7 +2989,7 @@
       "year": 1492,
       "month": 4
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q525758",
@@ -2822,7 +3086,48 @@
     "at": {
       "year": 970
     },
-    "row": 3
+    "row": 2
+  },
+  {
+    "id": "Q599141",
+    "name": "Antonine Plague",
+    "category": "public-health",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 67,
+    "tagline": "pandemic",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Antonine_Plague",
+    "description": "The Antonine Plague of AD 165 to 180, also known as the Plague of Galen, was a prolonged and destructive epidemic, which affected the Roman Empire. It was possibly contracted and spread by soldiers who were returning from a campaign in the Near East.",
+    "period": {
+      "start": {
+        "year": 165
+      },
+      "end": {
+        "year": 1
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q1988505",
+    "name": "Great Famine of 1315–1317",
+    "category": "public-health",
+    "regionTags": [],
+    "fameScore": 67,
+    "tagline": "famine in 14th century medieval Europe",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Famine_of_1315%E2%80%931317",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Great%20famine.jpg",
+    "description": "The Great Famine of 1315–1317 was the first of a series of large-scale crises that struck parts of Europe early in the 14th century. Most of Europe was affected. The famine caused widespread population loss over an extended number of years, marking a clear end to the period of growth and prosperity from the 11th to the 13th centuries.",
+    "period": {
+      "start": {
+        "year": 1315
+      },
+      "end": {
+        "year": 1317
+      }
+    },
+    "row": 4
   },
   {
     "id": "Q1037810",
@@ -2837,7 +3142,7 @@
     "at": {
       "year": 1798
     },
-    "row": 21
+    "row": 28
   },
   {
     "id": "Q841282",
@@ -2853,7 +3158,7 @@
     "at": {
       "year": 1802
     },
-    "row": 23
+    "row": 30
   },
   {
     "id": "Q616159",
@@ -2892,7 +3197,7 @@
         "month": 6
       }
     },
-    "row": 36
+    "row": 48
   },
   {
     "id": "Q338613",
@@ -2921,7 +3226,7 @@
     "at": {
       "year": 1925
     },
-    "row": 26
+    "row": 54
   },
   {
     "id": "Q683846",
@@ -2936,7 +3241,7 @@
     "at": {
       "year": 1565
     },
-    "row": 1
+    "row": 10
   },
   {
     "id": "Q3350154",
@@ -2951,7 +3256,7 @@
       "year": 1948,
       "month": 1
     },
-    "row": 44
+    "row": 63
   },
   {
     "id": "Q1144693",
@@ -2986,7 +3291,7 @@
     "at": {
       "year": 1966
     },
-    "row": 36
+    "row": 41
   },
   {
     "id": "Q1419429",
@@ -3033,7 +3338,7 @@
       "year": 1913,
       "month": 12
     },
-    "row": 38
+    "row": 51
   },
   {
     "id": "Q6501061",
@@ -3047,7 +3352,7 @@
     "at": {
       "year": 1816
     },
-    "row": 19
+    "row": 24
   },
   {
     "id": "Q1753108",
@@ -3064,7 +3369,7 @@
     "at": {
       "year": 1869
     },
-    "row": 28
+    "row": 35
   },
   {
     "id": "Q1162294",
@@ -3086,7 +3391,7 @@
         "month": 1
       }
     },
-    "row": 35
+    "row": 52
   },
   {
     "id": "Q833645",
@@ -3101,7 +3406,7 @@
     "at": {
       "year": 1623
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q1194052",
@@ -3126,7 +3431,7 @@
         "month": 7
       }
     },
-    "row": 39
+    "row": 65
   },
   {
     "id": "Q328271",
@@ -3143,7 +3448,7 @@
       "year": 1933,
       "month": 1
     },
-    "row": 45
+    "row": 64
   },
   {
     "id": "Q310301",
@@ -3173,7 +3478,7 @@
     "at": {
       "year": 1892
     },
-    "row": 30
+    "row": 37
   },
   {
     "id": "Q8665",
@@ -3191,7 +3496,7 @@
       "year": 1895,
       "month": 3
     },
-    "row": 31
+    "row": 39
   },
   {
     "id": "Q99200",
@@ -3223,7 +3528,7 @@
     "at": {
       "year": 1852
     },
-    "row": 24
+    "row": 28
   },
   {
     "id": "Q284681",
@@ -3241,7 +3546,7 @@
       "year": 1942,
       "month": 12
     },
-    "row": 46
+    "row": 66
   },
   {
     "id": "Q705693",
@@ -3276,7 +3581,7 @@
     "at": {
       "year": 1700
     },
-    "row": 7
+    "row": 6
   },
   {
     "id": "Q2736155",
@@ -3299,7 +3604,7 @@
         "month": 7
       }
     },
-    "row": 23
+    "row": 26
   },
   {
     "id": "Q15251",
@@ -3319,7 +3624,7 @@
       "year": 1997,
       "month": 7
     },
-    "row": 23
+    "row": 34
   },
   {
     "id": "Q325656",
@@ -3341,7 +3646,7 @@
         "month": 1
       }
     },
-    "row": 2
+    "row": 5
   },
   {
     "id": "Q1426448",
@@ -3358,7 +3663,7 @@
       "year": 1974,
       "month": 5
     },
-    "row": 37
+    "row": 33
   },
   {
     "id": "Q733610",
@@ -3394,6 +3699,24 @@
     "row": 9
   },
   {
+    "id": "Q1348910",
+    "name": "1908 Messina earthquake",
+    "category": "environment-geology",
+    "regionTags": [
+      "southern-europe"
+    ],
+    "fameScore": 64,
+    "tagline": "December 1908 earthquake in Messina, Italy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/1908_Messina_earthquake",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Comerio%2C%20Luca%20%281878-1940%29%20-%20Vittime%20del%20terremoto%20di%20Messina%20%28dicembre%201908%29.jpg",
+    "description": "A devastating earthquake occurred on 28 December 1908 in Sicily and Calabria, southern Italy, with a moment magnitude of 7.1 and a maximum Mercalli intensity of XI (Extreme). The epicentre was in the Strait of Messina which separates Sicily from the Italian mainland. The cities of Messina and Reggio Calabria were nearly destroyed and around 120,000 people died, making it the deadliest earthquake in the history of Europe.",
+    "at": {
+      "year": 1908,
+      "month": 12
+    },
+    "row": 50
+  },
+  {
     "id": "Q842363",
     "name": "Edwin Smith Papyrus",
     "category": "medicine-health",
@@ -3425,7 +3748,7 @@
       "year": 1907,
       "month": 9
     },
-    "row": 39
+    "row": 53
   },
   {
     "id": "Q699127",
@@ -3448,7 +3771,7 @@
         "year": 1433
       }
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q487420",
@@ -3466,7 +3789,7 @@
     "at": {
       "year": 1833
     },
-    "row": 22
+    "row": 27
   },
   {
     "id": "Q18408564",
@@ -3484,7 +3807,7 @@
       "year": 1783,
       "month": 4
     },
-    "row": 24
+    "row": 27
   },
   {
     "id": "Q570140",
@@ -3500,7 +3823,7 @@
     "at": {
       "year": 645
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q3062714",
@@ -3518,7 +3841,7 @@
       "year": 1793,
       "month": 1
     },
-    "row": 25
+    "row": 32
   },
   {
     "id": "Q1000970",
@@ -3566,7 +3889,7 @@
     "at": {
       "year": 1829
     },
-    "row": 20
+    "row": 25
   },
   {
     "id": "Q1261053",
@@ -3603,7 +3926,7 @@
         "month": 5
       }
     },
-    "row": 21
+    "row": 29
   },
   {
     "id": "Q1739453",
@@ -3621,7 +3944,7 @@
     "at": {
       "year": 1954
     },
-    "row": 48
+    "row": 68
   },
   {
     "id": "Q2345573",
@@ -3644,7 +3967,7 @@
         "year": 1614
       }
     },
-    "row": 6
+    "row": 9
   },
   {
     "id": "Q1121044",
@@ -3662,7 +3985,7 @@
       "year": 1385,
       "month": 8
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q525997",
@@ -3678,7 +4001,7 @@
       "year": 1783,
       "month": 8
     },
-    "row": 26
+    "row": 29
   },
   {
     "id": "Q3427966",
@@ -3698,7 +4021,7 @@
         "year": 1683
       }
     },
-    "row": 10
+    "row": 11
   },
   {
     "id": "Q1661772",
@@ -3716,7 +4039,7 @@
       "year": 1945,
       "month": 8
     },
-    "row": 47
+    "row": 67
   },
   {
     "id": "Q957012",
@@ -3739,7 +4062,7 @@
         "month": 4
       }
     },
-    "row": 29
+    "row": 35
   },
   {
     "id": "Q426853",
@@ -3771,7 +4094,7 @@
     "at": {
       "year": 1825
     },
-    "row": 23
+    "row": 28
   },
   {
     "id": "Q2224989",
@@ -3786,7 +4109,7 @@
     "at": {
       "year": 1712
     },
-    "row": 9
+    "row": 8
   },
   {
     "id": "Q1122859",
@@ -3807,7 +4130,7 @@
         "year": 1650
       }
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q7169780",
@@ -3823,7 +4146,7 @@
       "year": 1853,
       "month": 7
     },
-    "row": 27
+    "row": 30
   },
   {
     "id": "Q1233009",
@@ -3838,7 +4161,7 @@
     "at": {
       "year": 1543
     },
-    "row": 9
+    "row": 4
   },
   {
     "id": "Q2517983",
@@ -3872,7 +4195,7 @@
     "at": {
       "year": 1823
     },
-    "row": 24
+    "row": 29
   },
   {
     "id": "Q2044496",
@@ -3886,7 +4209,7 @@
     "at": {
       "year": 1202
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q1457297",
@@ -3904,7 +4227,7 @@
       "year": 1610,
       "month": 3
     },
-    "row": 13
+    "row": 14
   },
   {
     "id": "Q1359529",
@@ -3920,7 +4243,7 @@
     "at": {
       "year": 1858
     },
-    "row": 29
+    "row": 31
   },
   {
     "id": "Q2453355",
@@ -3936,7 +4259,7 @@
     "at": {
       "year": 1956
     },
-    "row": 49
+    "row": 69
   },
   {
     "id": "Q3984081",
@@ -3951,7 +4274,7 @@
     "at": {
       "year": 1543
     },
-    "row": 5
+    "row": 6
   },
   {
     "id": "Q278579",
@@ -3990,7 +4313,7 @@
         "year": 1896
       }
     },
-    "row": 33
+    "row": 40
   },
   {
     "id": "Q2119319",
@@ -4005,7 +4328,7 @@
       "year": 1555,
       "month": 6
     },
-    "row": 13
+    "row": 9
   },
   {
     "id": "Q1739282",
@@ -4037,7 +4360,7 @@
     "at": {
       "year": 1905
     },
-    "row": 41
+    "row": 54
   },
   {
     "id": "Q251600",
@@ -4058,7 +4381,7 @@
         "year": 1932
       }
     },
-    "row": 40
+    "row": 56
   },
   {
     "id": "Q28325009",
@@ -4073,7 +4396,7 @@
       "year": 2012,
       "month": 9
     },
-    "row": 17
+    "row": 20
   },
   {
     "id": "Q973118",
@@ -4091,7 +4414,7 @@
       "year": 1804,
       "month": 12
     },
-    "row": 27
+    "row": 35
   },
   {
     "id": "Q4567715",
@@ -4116,7 +4439,7 @@
         "month": 6
       }
     },
-    "row": 51
+    "row": 71
   },
   {
     "id": "Q1564366",
@@ -4140,7 +4463,7 @@
         "month": 10
       }
     },
-    "row": 25
+    "row": 30
   },
   {
     "id": "Q1281955",
@@ -4187,7 +4510,7 @@
       "year": 1949,
       "month": 10
     },
-    "row": 50
+    "row": 70
   },
   {
     "id": "Q1290001",
@@ -4201,7 +4524,7 @@
     "at": {
       "year": 628
     },
-    "row": 4
+    "row": 6
   },
   {
     "id": "Q3178839",
@@ -4221,7 +4544,7 @@
         "year": 1771
       }
     },
-    "row": 14
+    "row": 13
   },
   {
     "id": "Q233260",
@@ -4240,7 +4563,7 @@
         "year": 1743
       }
     },
-    "row": 5
+    "row": 4
   },
   {
     "id": "Q23016184",
@@ -4263,7 +4586,7 @@
         "month": 3
       }
     },
-    "row": 18
+    "row": 21
   },
   {
     "id": "Q3099902",
@@ -4279,7 +4602,7 @@
     "at": {
       "year": 1776
     },
-    "row": 27
+    "row": 26
   },
   {
     "id": "Q10873159",
@@ -4296,7 +4619,7 @@
     "at": {
       "year": 67
     },
-    "row": 3
+    "row": 4
   },
   {
     "id": "Q3518429",
@@ -4328,7 +4651,7 @@
     "at": {
       "year": 1960
     },
-    "row": 52
+    "row": 46
   },
   {
     "id": "Q5333520",
@@ -4343,7 +4666,7 @@
       "year": 1991,
       "month": 7
     },
-    "row": 30
+    "row": 37
   },
   {
     "id": "Q3447247",
@@ -4360,7 +4683,7 @@
       "year": 1893,
       "month": 9
     },
-    "row": 37
+    "row": 41
   },
   {
     "id": "Q951383",
@@ -4411,7 +4734,7 @@
     "at": {
       "year": 1851
     },
-    "row": 28
+    "row": 32
   },
   {
     "id": "Q13443401",
@@ -4425,7 +4748,7 @@
     "at": {
       "year": 1876
     },
-    "row": 31
+    "row": 33
   },
   {
     "id": "Q1785439",
@@ -4443,7 +4766,7 @@
       "year": 1807,
       "month": 8
     },
-    "row": 28
+    "row": 37
   },
   {
     "id": "Q547513",
@@ -4460,7 +4783,7 @@
       "year": 1876,
       "month": 3
     },
-    "row": 35
+    "row": 42
   },
   {
     "id": "Q28135544",
@@ -4492,7 +4815,7 @@
       "year": 1992,
       "month": 10
     },
-    "row": 32
+    "row": 38
   },
   {
     "id": "Q3286250",
@@ -4526,7 +4849,7 @@
       "year": 966,
       "month": 4
     },
-    "row": 4
+    "row": 5
   },
   {
     "id": "Q96379430",
@@ -4542,7 +4865,7 @@
     "at": {
       "year": 1957
     },
-    "row": 53
+    "row": 65
   },
   {
     "id": "Q2631085",
@@ -4559,7 +4882,7 @@
       "year": 1997,
       "month": 5
     },
-    "row": 31
+    "row": 39
   },
   {
     "id": "Q31187690",
@@ -4577,7 +4900,7 @@
       "year": 1923,
       "month": 10
     },
-    "row": 39
+    "row": 26
   },
   {
     "id": "Q4378226",
@@ -4607,7 +4930,7 @@
     "at": {
       "year": 301
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q6541120",
@@ -4622,7 +4945,7 @@
       "year": 1847,
       "month": 7
     },
-    "row": 31
+    "row": 33
   },
   {
     "id": "Q5305631",
@@ -4639,7 +4962,7 @@
     "at": {
       "year": 1859
     },
-    "row": 32
+    "row": 34
   },
   {
     "id": "Q5869513",

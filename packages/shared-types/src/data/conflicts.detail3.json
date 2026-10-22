@@ -115,7 +115,7 @@
         "month": 3
       }
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q78994",
@@ -135,7 +135,7 @@
         "year": 1815
       }
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q48249",
@@ -176,7 +176,49 @@
       "year": 1941,
       "month": 12
     },
-    "row": 17
+    "row": 18
+  },
+  {
+    "id": "Q48314",
+    "name": "Battle of Waterloo",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 81,
+    "tagline": "1815 battle during the War of the Seventh Coalition",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Battle_of_Waterloo",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20Waterloo%201815.PNG",
+    "description": "The Battle of Waterloo was fought on Sunday 18 June 1815, near Waterloo, being the last engagement with Napoleon I. The French Imperial Army under the command of Napoleon I was defeated by two armies of the Seventh Coalition. One was a British-led force with units from the United Kingdom, the Netherlands, Hanover, Brunswick, and Nassau, under the command of Field Marshal Arthur Wellesley, Duke of Wellington. The other comprised three corps of the Prussian army under Generalfeldmarschall Gebhard Leberecht von Blücher. The battle was known contemporaneously as the Battle of Mont Saint-Jean in France and La Belle Alliance in Prussia.",
+    "at": {
+      "year": 1815,
+      "month": 6
+    },
+    "row": 2
+  },
+  {
+    "id": "Q79911",
+    "name": "Russian Civil War",
+    "category": "war",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 81,
+    "tagline": "multi-sided civil war in the former Russian Empire, November 1917-October 1922",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_Civil_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/CWRArticleImage.jpg",
+    "description": "The Russian Civil War was a multi-party civil war in the former Russian Empire, lasting from 1917 to 1922, sparked by the overthrowing of the Russian Provisional Government in the October Revolution, as many factions vied to determine Russia's political future. It resulted in the formation of the Russian Socialist Federative Soviet Republic and later the Soviet Union in most of its territory. Its finale marked the end of the Russian Revolution, which was one of the key events of the 20th century.",
+    "period": {
+      "start": {
+        "year": 1917,
+        "month": 11
+      },
+      "end": {
+        "year": 1922,
+        "month": 10
+      }
+    },
+    "row": 14
   },
   {
     "id": "Q80330",
@@ -243,7 +285,7 @@
         "month": 9
       }
     },
-    "row": 13
+    "row": 16
   },
   {
     "id": "Q170314",
@@ -267,7 +309,7 @@
         "month": 9
       }
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q189266",
@@ -293,7 +335,7 @@
         "month": 5
       }
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q26013",
@@ -317,7 +359,29 @@
         "month": 2
       }
     },
-    "row": 5
+    "row": 4
+  },
+  {
+    "id": "Q83055",
+    "name": "Operation Barbarossa",
+    "category": "military-operation",
+    "regionTags": [],
+    "fameScore": 80,
+    "tagline": "invasion of the Soviet Union by the Nazi German-led Axis powers in Europe",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Battle%20of%20Moscow.jpg",
+    "description": "Operation Barbarossa was the invasion of the Soviet Union by Nazi Germany and several of its European Axis allies starting on Sunday, 22 June 1941, during World War II. More than 3.8 million Axis troops invaded the western Soviet Union along a 2,900-kilometer (1,800 mi) front, with the main goal of capturing territory up to a line between Arkhangelsk and Astrakhan, known as the A–A line. The attack became the largest and costliest military offensive in human history, with around 10 million combatants taking part in the opening phase and over 8 million casualties by the end of the operation on 5 December 1941. It marked a major escalation of World War II, opened the Eastern Front—the largest and deadliest land war in history—and brought the Soviet Union into the Allied powers.",
+    "period": {
+      "start": {
+        "year": 1941,
+        "month": 6
+      },
+      "end": {
+        "year": 1941,
+        "month": 12
+      }
+    },
+    "row": 20
   },
   {
     "id": "Q192769",
@@ -339,7 +403,7 @@
         "year": 1783
       }
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q11264",
@@ -357,7 +421,7 @@
       "year": 1953,
       "month": 7
     },
-    "row": 19
+    "row": 21
   },
   {
     "id": "Q12583",
@@ -379,7 +443,32 @@
         "month": 8
       }
     },
-    "row": 9
+    "row": 12
+  },
+  {
+    "id": "Q182865",
+    "name": "War in Afghanistan (2001–2021)",
+    "category": "war",
+    "regionTags": [
+      "southern-asia"
+    ],
+    "fameScore": 79,
+    "tagline": "armed conflict between NATO countries and Afghanistan from 2001 to 2021",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/War_in_Afghanistan_(2001%E2%80%932021)",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Collage%20of%20the%20War%20in%20Afghanistan%20%282001-2021%29.png",
+    "imageAttribution": "Original photographers: see sourcesMontage work: Weaveravel and OspreyPL, via Wikimedia Commons",
+    "description": "The war in Afghanistan was a prolonged armed conflict from 2001 to 2021. It began with an invasion by a United States–led coalition under the name Operation Enduring Freedom in response to the September 11 attacks (9/11) carried out by the Taliban-allied and Afghanistan-based al-Qaeda. The Taliban were expelled from major population centers by American-led forces supporting the anti-Taliban Northern Alliance, thus toppling the Taliban-ruled Islamic Emirate. In 2004, the U.S.-backed Islamic Republic was established, but by then, the Taliban, led by founder Mullah Omar, had reorganized and begun an insurgency against the Afghan government and coalition forces. The conflict ended as the 2021 Taliban offensive reestablished the Islamic Emirate. It was the longest war in United States military history, surpassing the Vietnam War by six months.",
+    "period": {
+      "start": {
+        "year": 2001,
+        "month": 10
+      },
+      "end": {
+        "year": 2021,
+        "month": 8
+      }
+    },
+    "row": 14
   },
   {
     "id": "Q620735",
@@ -404,7 +493,7 @@
         "month": 8
       }
     },
-    "row": 10
+    "row": 15
   },
   {
     "id": "Q29269",
@@ -427,7 +516,7 @@
         "month": 8
       }
     },
-    "row": 12
+    "row": 13
   },
   {
     "id": "Q160077",
@@ -452,7 +541,7 @@
         "month": 5
       }
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q179975",
@@ -476,7 +565,7 @@
         "month": 5
       }
     },
-    "row": 19
+    "row": 21
   },
   {
     "id": "Q131969",
@@ -495,6 +584,52 @@
       "month": 7
     },
     "row": 0
+  },
+  {
+    "id": "Q49101",
+    "name": "Suez Crisis",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 79,
+    "tagline": "1956 invasion of Egypt by Israel, the United Kingdom, and France",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Suez_Crisis",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Tanks%20Destroyed%20Sinai.jpg",
+    "description": "The Suez Crisis, also known as the second Arab–Israeli war, the Tripartite Aggression in the Arab world and the Sinai War in Israel, was a British–French–Israeli invasion of Egypt in 1956. Israel invaded on 29 October, with the primary objective of re-opening the Straits of Tiran and the Gulf of Aqaba as the recent tightening of the eight-year-long Egyptian blockade prevented Israeli passage. After issuing a joint ultimatum for a ceasefire, the United Kingdom and France joined the Israelis on 31 October in an attempt to depose Egyptian president Gamal Abdel Nasser and regain control of the Suez Canal. The countries came under heavy political pressure from the United States, the Soviet Union and the United Nations, prompting their withdrawal from Egypt.",
+    "period": {
+      "start": {
+        "year": 1956,
+        "month": 10
+      },
+      "end": {
+        "year": 1956,
+        "month": 11
+      }
+    },
+    "row": 0
+  },
+  {
+    "id": "Q101534",
+    "name": "February Revolution",
+    "category": "revolution",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "first of two revolutions in Russia in 1917",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/February_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Arrest%20of%20generals.jpg",
+    "description": "The February Revolution, known in Soviet historiography as the February Bourgeois Democratic Revolution, and sometimes as the March Revolution, was the first of two revolutions which took place in Russia in 1917.",
+    "period": {
+      "start": {
+        "year": 1917,
+        "month": 3
+      },
+      "end": {
+        "year": 1917,
+        "month": 3
+      }
+    },
+    "row": 19
   },
   {
     "id": "Q33745",
@@ -543,7 +678,7 @@
         "month": 6
       }
     },
-    "row": 2
+    "row": 1
   },
   {
     "id": "Q129864",
@@ -617,7 +752,7 @@
         "month": 10
       }
     },
-    "row": 21
+    "row": 23
   },
   {
     "id": "Q150229",
@@ -642,7 +777,7 @@
         "month": 9
       }
     },
-    "row": 14
+    "row": 13
   },
   {
     "id": "Q6683",
@@ -691,7 +826,7 @@
         "month": 2
       }
     },
-    "row": 11
+    "row": 12
   },
   {
     "id": "Q104705419",
@@ -801,5 +936,29 @@
       }
     },
     "row": 12
+  },
+  {
+    "id": "Q16470",
+    "name": "Normandy landings",
+    "category": "military-operation",
+    "regionTags": [
+      "western-europe"
+    ],
+    "fameScore": 78,
+    "tagline": "1944 landing operations of the Allied invasion of Normandy",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Normandy_landings",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Into%20the%20Jaws%20of%20Death%2023-0455M%20edit.jpg",
+    "description": "The Normandy landings were the landing operations and associated airborne operations on 6 June 1944 of the Allied invasion of Normandy in Operation Overlord during the Second World War. Codenamed Operation Neptune and often referred to as D-Day, it is the largest seaborne invasion in history. The operation began the liberation of France and the rest of Western Europe, and laid the foundations for the Allied victory on the Western Front.",
+    "period": {
+      "start": {
+        "year": 1944,
+        "month": 6
+      },
+      "end": {
+        "year": 1944,
+        "month": 8
+      }
+    },
+    "row": 24
   }
 ]

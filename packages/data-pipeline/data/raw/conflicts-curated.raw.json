@@ -15,7 +15,7 @@
       "category": "one of meta.categories",
       "parentId": "optional — another curated row's id; that row must be a Conflict (resolves both a start and end date from enrichment), and the chain up to its root is capped at 3 levels"
     },
-    "count": 248
+    "count": 360
   },
   "conflicts": [
     {
@@ -56,8 +56,7 @@
     {
       "id": "Q42976",
       "name": "October Revolution",
-      "category": "revolution",
-      "parentId": "Q8729"
+      "category": "revolution"
     },
     {
       "id": "Q37643",
@@ -78,8 +77,7 @@
     {
       "id": "Q49077",
       "name": "Six-Day War",
-      "category": "war",
-      "parentId": "Q3491398"
+      "category": "war"
     },
     {
       "id": "Q42937",
@@ -135,8 +133,7 @@
     {
       "id": "Q49100",
       "name": "Yom Kippur War",
-      "category": "war",
-      "parentId": "Q3491398"
+      "category": "war"
     },
     {
       "id": "Q159950",
@@ -178,14 +175,12 @@
     {
       "id": "Q101534",
       "name": "February Revolution",
-      "category": "revolution",
-      "parentId": "Q8729"
+      "category": "revolution"
     },
     {
       "id": "Q182865",
       "name": "War in Afghanistan (2001–2021)",
-      "category": "war",
-      "parentId": "Q185729"
+      "category": "war"
     },
     {
       "id": "Q620735",
@@ -282,8 +277,7 @@
     {
       "id": "Q49104",
       "name": "2006 Lebanon War",
-      "category": "war",
-      "parentId": "Q3491398"
+      "category": "war"
     },
     {
       "id": "Q15920546",
@@ -718,8 +712,8 @@
       "category": "war"
     },
     {
-      "id": "Q11883242",
-      "name": "Moro Wars",
+      "id": "Q6355746",
+      "name": "Spanish–Moro conflict",
       "category": "war"
     },
     {
@@ -774,11 +768,6 @@
       "category": "war"
     },
     {
-      "id": "Q3491398",
-      "name": "Arab-Israeli wars",
-      "category": "war"
-    },
-    {
       "id": "Q8740",
       "name": "Vietnam War",
       "category": "war"
@@ -786,8 +775,7 @@
     {
       "id": "Q322607",
       "name": "War of Attrition",
-      "category": "war",
-      "parentId": "Q3491398"
+      "category": "war"
     },
     {
       "id": "Q75984",
@@ -1140,11 +1128,6 @@
       "category": "rebellion"
     },
     {
-      "id": "Q1628339",
-      "name": "Razin's Rebellion",
-      "category": "rebellion"
-    },
-    {
       "id": "Q194378",
       "name": "Third Servile War",
       "category": "rebellion"
@@ -1278,6 +1261,579 @@
       "id": "Q371394",
       "name": "Bangladesh Liberation War",
       "category": "war-of-independence"
+    },
+    {
+      "id": "Q48314",
+      "name": "Battle of Waterloo",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q83055",
+      "name": "Operation Barbarossa",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q49101",
+      "name": "Suez Crisis",
+      "category": "war"
+    },
+    {
+      "id": "Q83224",
+      "name": "Battle of Hastings",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q171416",
+      "name": "Battle of Trafalgar",
+      "category": "war"
+    },
+    {
+      "id": "Q154720",
+      "name": "Battle of Britain",
+      "category": "war"
+    },
+    {
+      "id": "Q174205",
+      "name": "Tenth Russo-Turkish War",
+      "category": "war"
+    },
+    {
+      "id": "Q151340",
+      "name": "Battle of France",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q134114",
+      "name": "Battle of Austerlitz",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q164983",
+      "name": "Gallipoli Campaign",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q130861",
+      "name": "Battle of Kursk",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q16470",
+      "name": "Normandy landings",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q170850",
+      "name": "Anglo-Zanzibar War",
+      "category": "war"
+    },
+    {
+      "id": "Q151860",
+      "name": "Siege of Leningrad",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q165425",
+      "name": "Battle of Lepanto",
+      "category": "war"
+    },
+    {
+      "id": "Q130847",
+      "name": "Battle of Verdun",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q132568",
+      "name": "Battle of the Somme",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q178510",
+      "name": "Battle of Mohács",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q179591",
+      "name": "Battle of Cannae",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q178850",
+      "name": "Battle of Salamis",
+      "category": "war"
+    },
+    {
+      "id": "Q173034",
+      "name": "Battle of Midway",
+      "category": "war"
+    },
+    {
+      "id": "Q418151",
+      "name": "Second Opium War",
+      "category": "war",
+      "parentId": "Q220984"
+    },
+    {
+      "id": "Q1402078",
+      "name": "Warsaw Uprising",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q151290",
+      "name": "Battle of Moscow",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q151005",
+      "name": "Battle of Leipzig",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q193245",
+      "name": "Carnation Revolution",
+      "category": "revolution"
+    },
+    {
+      "id": "Q46333",
+      "name": "Long March",
+      "category": "war"
+    },
+    {
+      "id": "Q184320",
+      "name": "Battle of Borodino",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q208484",
+      "name": "Lebanese Civil War",
+      "category": "war"
+    },
+    {
+      "id": "Q242352",
+      "name": "Yugoslav Wars",
+      "category": "war"
+    },
+    {
+      "id": "Q188495",
+      "name": "Battle of Agincourt",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q233568",
+      "name": "Battle of Hattin",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q221382",
+      "name": "1991 Soviet coup d'état attempt",
+      "category": "coup-d-etat"
+    },
+    {
+      "id": "Q470596",
+      "name": "Year of the Four Emperors",
+      "category": "war"
+    },
+    {
+      "id": "Q6539",
+      "name": "Storming of the Bastille",
+      "category": "war"
+    },
+    {
+      "id": "Q194226",
+      "name": "Battle of Yarmouk",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q604897",
+      "name": "Battle of Dien Bien Phu",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q33132",
+      "name": "Battle of Gettysburg",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q51657",
+      "name": "Albigensian Crusade",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q200056",
+      "name": "Battle of Zama",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q887684",
+      "name": "Muslim conquest of Persia",
+      "category": "war"
+    },
+    {
+      "id": "Q239060",
+      "name": "Arab Revolt",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q207327",
+      "name": "Sicilian Vespers",
+      "category": "war"
+    },
+    {
+      "id": "Q223933",
+      "name": "Belgian Revolution",
+      "category": "revolution"
+    },
+    {
+      "id": "Q242099",
+      "name": "Mukden incident",
+      "category": "war"
+    },
+    {
+      "id": "Q51658",
+      "name": "Children's Crusade",
+      "category": "war"
+    },
+    {
+      "id": "Q58732",
+      "name": "Siege of Malta",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q87138",
+      "name": "Greco-Turkish War",
+      "category": "war"
+    },
+    {
+      "id": "Q201526",
+      "name": "Battle of Issus",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q478301",
+      "name": "Hussite Wars",
+      "category": "war"
+    },
+    {
+      "id": "Q51660",
+      "name": "Sixth Crusade",
+      "category": "war"
+    },
+    {
+      "id": "Q829875",
+      "name": "Nigerian Civil War",
+      "category": "war"
+    },
+    {
+      "id": "Q14665",
+      "name": "Emu War",
+      "category": "war"
+    },
+    {
+      "id": "Q329203",
+      "name": "First Boer War",
+      "category": "war"
+    },
+    {
+      "id": "Q334502",
+      "name": "Bar Kokhba revolt",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q200716",
+      "name": "Battle of Chaeronea",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q192473",
+      "name": "Battle of Adrianople",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q244356",
+      "name": "Battle of Ain Jalut",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q222520",
+      "name": "Battle of Bannockburn",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q27759",
+      "name": "Battle of Crécy",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q422082",
+      "name": "Philippine Revolution",
+      "category": "revolution"
+    },
+    {
+      "id": "Q4373",
+      "name": "Battle of White Mountain",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q593774",
+      "name": "1953 Iranian coup d'état",
+      "category": "coup-d-etat"
+    },
+    {
+      "id": "Q75756",
+      "name": "Second Congo War",
+      "category": "war"
+    },
+    {
+      "id": "Q1780431",
+      "name": "1952 Egyptian revolution",
+      "category": "revolution"
+    },
+    {
+      "id": "Q213074",
+      "name": "Battle of the Hydaspes",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q462964",
+      "name": "November Uprising",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q49092",
+      "name": "1948 Arab–Israeli War",
+      "category": "war"
+    },
+    {
+      "id": "Q620965",
+      "name": "coup of 18 Brumaire",
+      "category": "coup-d-etat"
+    },
+    {
+      "id": "Q989092",
+      "name": "First Anglo-Afghan War",
+      "category": "war"
+    },
+    {
+      "id": "Q154031",
+      "name": "German Peasants' War",
+      "category": "war"
+    },
+    {
+      "id": "Q162665",
+      "name": "Nika Riots",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q205887",
+      "name": "Battle of Carrhae",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q205422",
+      "name": "Battle of the Little Bighorn",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q188925",
+      "name": "Battles of Khalkhin Gol",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q207576",
+      "name": "First Turkish Siege of Vienna",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q212220",
+      "name": "Battle of Nicopolis",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q32832",
+      "name": "Battle of Varna",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q468823",
+      "name": "March on Rome",
+      "category": "coup-d-etat"
+    },
+    {
+      "id": "Q153376",
+      "name": "Second Battle of El Alamein",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q234188",
+      "name": "Battle of Sekigahara",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q219697",
+      "name": "Battle of Las Navas de Tolosa",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q27900",
+      "name": "Siege of Constantinople",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q749811",
+      "name": "Mutiny on the Bounty",
+      "category": "war"
+    },
+    {
+      "id": "Q821283",
+      "name": "Battle of Warsaw",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q222013",
+      "name": "Battle of Bosworth Field",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q217145",
+      "name": "Guadalcanal campaign",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q498871",
+      "name": "Peasants' Revolt of 1381",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q4298662",
+      "name": "Young Turk Revolution of 1908",
+      "category": "revolution"
+    },
+    {
+      "id": "Q736268",
+      "name": "Finnish War",
+      "category": "war"
+    },
+    {
+      "id": "Q296754",
+      "name": "Battle of Singapore",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q339321",
+      "name": "Battle of the Milvian Bridge",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q332543",
+      "name": "Battle of the Pyramids",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q459447",
+      "name": "Siege of Yorktown",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q244980",
+      "name": "Siege of Belgrade",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q541369",
+      "name": "Anglo-Soviet invasion of Iran",
+      "category": "war",
+      "parentId": "Q362"
+    },
+    {
+      "id": "Q745110",
+      "name": "Battle of Chaldiran",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q957186",
+      "name": "Battle of Covadonga",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q838980",
+      "name": "May Revolution",
+      "category": "revolution"
+    },
+    {
+      "id": "Q208261",
+      "name": "Ionian Revolt",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q7930888",
+      "name": "Maccabean Revolt",
+      "category": "rebellion"
+    },
+    {
+      "id": "Q220602",
+      "name": "Soviet–Japanese War",
+      "category": "war",
+      "parentId": "Q362"
+    },
+    {
+      "id": "Q2092033",
+      "name": "Conquest of Mecca",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q221967",
+      "name": "Brusilov Offensive",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q273069",
+      "name": "Battle of Lechfeld",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q461599",
+      "name": "Battle of Leuctra",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q476855",
+      "name": "Mau Mau rebellion",
+      "category": "war"
+    },
+    {
+      "id": "Q677316",
+      "name": "Social War of 91-87 BCE",
+      "category": "war"
+    },
+    {
+      "id": "Q1259218",
+      "name": "Third Battle of Panipat",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q44732",
+      "name": "Battle of the Golden Spurs",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q735349",
+      "name": "Colonization of Siberia",
+      "category": "military-operation"
+    },
+    {
+      "id": "Q545449",
+      "name": "Iraq War",
+      "category": "war"
+    },
+    {
+      "id": "Q79911",
+      "name": "Russian Civil War",
+      "category": "war"
+    },
+    {
+      "id": "Q1133574",
+      "name": "Battle of the Camel",
+      "category": "military-operation"
     }
   ]
 }

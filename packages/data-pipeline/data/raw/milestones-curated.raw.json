@@ -31,7 +31,7 @@
       "category": "one of meta.categories",
       "date": "optional {year, month?, endYear?, endMonth?} — replaces the Wikidata-resolved date"
     },
-    "count": 499
+    "count": 518
   },
   "milestones": [
     {
@@ -3077,16 +3077,6 @@
       }
     },
     {
-      "id": "Q4692",
-      "name": "Renaissance",
-      "category": "culture-arts",
-      "date": {
-        "year": 1400,
-        "endYear": 1600,
-        "approximate": true
-      }
-    },
-    {
       "id": "Q184725",
       "name": "Spanish Inquisition",
       "category": "religion-mythology",
@@ -3191,16 +3181,6 @@
       }
     },
     {
-      "id": "Q12539",
-      "name": "Age of Enlightenment",
-      "category": "philosophy-education",
-      "date": {
-        "year": 1685,
-        "endYear": 1815,
-        "approximate": true
-      }
-    },
-    {
       "id": "Q214078",
       "name": "Scientific Revolution",
       "category": "science-theory",
@@ -3279,6 +3259,111 @@
         "year": 2011,
         "month": 3
       }
+    },
+    {
+      "id": "Q80034",
+      "name": "Armenian Genocide",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q131297",
+      "name": "1994 Genocide against Tutsi",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q130754",
+      "name": "2004 Indian Ocean earthquake",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q43777",
+      "name": "2010 Haiti earthquake",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q192055",
+      "name": "Nanjing Massacre",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q208855",
+      "name": "Jallianwala Bagh massacre",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q212618",
+      "name": "1960 Valdivia earthquake",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q2885072",
+      "name": "Cambodian genocide",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q274498",
+      "name": "1923 Great Kantō Earthquake",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q2578778",
+      "name": "Circassian genocide",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q522837",
+      "name": "Bengal famine of 1943",
+      "category": "public-health"
+    },
+    {
+      "id": "Q85125",
+      "name": "population transfer in the Soviet Union",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q913640",
+      "name": "Great Smog of London",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q2092950",
+      "name": "Hamidian massacres",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q1025404",
+      "name": "assassination of Abraham Lincoln",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q1356047",
+      "name": "execution of the Romanov family",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q726501",
+      "name": "Dust Bowl",
+      "category": "environment-geology"
+    },
+    {
+      "id": "Q599141",
+      "name": "Antonine Plague",
+      "category": "public-health"
+    },
+    {
+      "id": "Q312492",
+      "name": "Herero and Nama genocide",
+      "category": "society-administration"
+    },
+    {
+      "id": "Q1988505",
+      "name": "Great Famine of 1315–1317",
+      "category": "public-health"
+    },
+    {
+      "id": "Q1348910",
+      "name": "1908 Messina earthquake",
+      "category": "environment-geology"
     }
   ]
 }

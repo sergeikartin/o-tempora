@@ -19,7 +19,7 @@
         "month": 12
       }
     },
-    "row": 12
+    "row": 15
   },
   {
     "id": "Q3964913",
@@ -78,7 +78,7 @@
       "year": 1991,
       "month": 12
     },
-    "row": 16
+    "row": 17
   },
   {
     "id": "Q48584",
@@ -97,7 +97,7 @@
       "year": 1799,
       "month": 7
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q10225",
@@ -155,7 +155,7 @@
       "year": 1990,
       "month": 4
     },
-    "row": 9
+    "row": 16
   },
   {
     "id": "Q17738",
@@ -268,7 +268,7 @@
       "year": 1977,
       "month": 9
     },
-    "row": 3
+    "row": 8
   },
   {
     "id": "Q93304",
@@ -337,7 +337,7 @@
     "at": {
       "year": 1420
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q47476",
@@ -372,7 +372,7 @@
     "at": {
       "year": 1420
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q435",
@@ -409,7 +409,7 @@
       "year": 1755,
       "month": 1
     },
-    "row": 5
+    "row": 4
   },
   {
     "id": "Q402",
@@ -425,7 +425,7 @@
     "at": {
       "year": 2012
     },
-    "row": 9
+    "row": 11
   },
   {
     "id": "Q128015",
@@ -443,7 +443,7 @@
     "at": {
       "year": 1792
     },
-    "row": 6
+    "row": 5
   },
   {
     "id": "Q272975",
@@ -514,6 +514,54 @@
     "row": 8
   },
   {
+    "id": "Q131297",
+    "name": "1994 Genocide against Tutsi",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-africa"
+    ],
+    "fameScore": 80,
+    "tagline": "1994 genocide against the Tutsi in Rwanda in which 800,000 were killed",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Rwandan_genocide",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nyamata%20Memorial%20Site%2013.jpg",
+    "imageAttribution": "Fanny Schertzer, via Wikimedia Commons",
+    "description": "The Rwandan genocide, also known as the genocide against Tutsi, occurred from 7 April to 19 July 1994 during the Rwandan Civil War. Over a span of approximately 100 days, members of the Tutsi ethnic group, as well as some moderate Hutu and Twa, were systematically killed by Hutu militias. While the Rwandan Constitution states that over 1 million people were killed, most scholarly estimates suggest between 500,000 and 662,000 Tutsi died. The genocide was marked by extreme violence, with victims often murdered by neighbours, and widespread sexual violence, with between 250,000 and 500,000 cases of rape.",
+    "period": {
+      "start": {
+        "year": 1994,
+        "month": 4
+      },
+      "end": {
+        "year": 1994,
+        "month": 7
+      }
+    },
+    "row": 12
+  },
+  {
+    "id": "Q130754",
+    "name": "2004 Indian Ocean earthquake",
+    "category": "environment-geology",
+    "regionTags": [
+      "eastern-africa",
+      "southern-asia",
+      "south-eastern-asia",
+      "western-asia",
+      "southern-africa",
+      "western-europe"
+    ],
+    "fameScore": 80,
+    "tagline": "megathrust underwater earthquake and subsequent tsunami in the Indian Ocean",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/2004-tsunami.jpg",
+    "description": "On 26 December 2004, at 07:58:53 local time (UTC+7), a Mw 9.2–9.3 earthquake struck with its epicenter off the west coast of Aceh, in northern Sumatra, Indonesia. The undersea megathrust earthquake, known in the scientific community as the Sumatra–Andaman earthquake, was caused by a rupture along the fault boundary between the Burma plate and the Indian plate, and reached a maximum Mercalli intensity of IX in some areas.",
+    "at": {
+      "year": 2004,
+      "month": 12
+    },
+    "row": 10
+  },
+  {
     "id": "Q162297",
     "name": "hygiene",
     "category": "public-health",
@@ -546,7 +594,7 @@
       "year": 1993,
       "month": 6
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q2473989",
@@ -603,7 +651,7 @@
         "month": 6
       }
     },
-    "row": 3
+    "row": 5
   },
   {
     "id": "Q48432",
@@ -627,7 +675,7 @@
         "month": 7
       }
     },
-    "row": 10
+    "row": 6
   },
   {
     "id": "Q47672",
@@ -646,7 +694,7 @@
       "year": 1974,
       "month": 3
     },
-    "row": 8
+    "row": 17
   },
   {
     "id": "Q99309",
@@ -779,6 +827,30 @@
     "row": 2
   },
   {
+    "id": "Q192055",
+    "name": "Nanjing Massacre",
+    "category": "society-administration",
+    "regionTags": [
+      "eastern-asia"
+    ],
+    "fameScore": 79,
+    "tagline": "1937 mass murder by the Japanese army",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nanjing_Massacre",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Nanking%20bodies%201937.jpg",
+    "description": "The Nanjing Massacre or the Rape of Nanjing was the mass rape and murder, between December 1937 and March 1938, of Chinese civilians, noncombatants, and prisoners of war by the Imperial Japanese Army in Nanjing, the capital of the Republic of China. It took place immediately after the Battle of Nanjing and retreat of the National Revolutionary Army during the Second Sino-Japanese War.",
+    "period": {
+      "start": {
+        "year": 1937,
+        "month": 12
+      },
+      "end": {
+        "year": 1938,
+        "month": 2
+      }
+    },
+    "row": 8
+  },
+  {
     "id": "Q228036",
     "name": "cesarean section",
     "category": "medicine-health",
@@ -828,7 +900,7 @@
     "at": {
       "year": 1890
     },
-    "row": 12
+    "row": 14
   },
   {
     "id": "Q125006",
@@ -895,7 +967,7 @@
       "year": 1957,
       "month": 10
     },
-    "row": 0
+    "row": 17
   },
   {
     "id": "Q48475",
@@ -911,7 +983,7 @@
       "year": 1977,
       "month": 8
     },
-    "row": 6
+    "row": 16
   },
   {
     "id": "Q101017",
@@ -961,7 +1033,7 @@
       "year": 1947,
       "month": 8
     },
-    "row": 22
+    "row": 25
   },
   {
     "id": "Q133331",
@@ -1018,7 +1090,7 @@
       "year": 1908,
       "month": 6
     },
-    "row": 16
+    "row": 18
   },
   {
     "id": "Q159766",
@@ -1060,7 +1132,7 @@
         "month": 4
       }
     },
-    "row": 11
+    "row": 15
   },
   {
     "id": "Q154255",
@@ -1079,7 +1151,7 @@
       "year": 1939,
       "month": 9
     },
-    "row": 20
+    "row": 22
   },
   {
     "id": "Q167634",
@@ -1101,7 +1173,7 @@
         "year": 1991
       }
     },
-    "row": 18
+    "row": 9
   },
   {
     "id": "Q51122",
@@ -1141,7 +1213,7 @@
       "year": 1963,
       "month": 11
     },
-    "row": 17
+    "row": 18
   },
   {
     "id": "Q5725",
@@ -1199,7 +1271,7 @@
     "at": {
       "year": 1903
     },
-    "row": 15
+    "row": 17
   },
   {
     "id": "Q214944",
@@ -1302,7 +1374,7 @@
     "at": {
       "year": 1831
     },
-    "row": 2
+    "row": 3
   },
   {
     "id": "Q20124",
@@ -1334,7 +1406,7 @@
     "at": {
       "year": 1455
     },
-    "row": 5
+    "row": 4
   },
   {
     "id": "Q46904",
@@ -1399,7 +1471,7 @@
     "at": {
       "year": 1893
     },
-    "row": 17
+    "row": 19
   },
   {
     "id": "Q164338",
@@ -1418,7 +1490,7 @@
       "year": 1964,
       "month": 10
     },
-    "row": 18
+    "row": 19
   },
   {
     "id": "Q189511",
@@ -1449,7 +1521,7 @@
     "at": {
       "year": 1787
     },
-    "row": 7
+    "row": 6
   },
   {
     "id": "Q3249519",
@@ -1536,7 +1608,7 @@
     "at": {
       "year": 1555
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q132783",
@@ -1554,7 +1626,7 @@
     "at": {
       "year": 1764
     },
-    "row": 7
+    "row": 6
   },
   {
     "id": "Q177477",
@@ -1572,7 +1644,7 @@
       "year": 1955,
       "month": 6
     },
-    "row": 23
+    "row": 27
   },
   {
     "id": "Q51636",
@@ -1607,7 +1679,7 @@
     "at": {
       "year": 1887
     },
-    "row": 16
+    "row": 18
   },
   {
     "id": "Q187650",
@@ -1631,7 +1703,7 @@
         "month": 11
       }
     },
-    "row": 6
+    "row": 10
   },
   {
     "id": "Q131130",
@@ -1677,7 +1749,7 @@
     "at": {
       "year": 1547
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q169759",
@@ -1698,6 +1770,23 @@
     "row": 8
   },
   {
+    "id": "Q43777",
+    "name": "2010 Haiti earthquake",
+    "category": "environment-geology",
+    "regionTags": [],
+    "fameScore": 77,
+    "tagline": "12 January 2010 magnitude 7.0 Mw earthquake",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/2010_Haiti_earthquake",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ruins%20of%20Haiti%20National%20Palace%20-%20Port%20au%20Prince%202012.jpg",
+    "imageAttribution": "Trocaire from Ireland, via Wikimedia Commons",
+    "description": "A catastrophic magnitude 7.0 Mw earthquake struck Haiti at 16:53 local time on Tuesday, 12 January 2010. The epicenter was near the town of Léogâne, Ouest department, approximately 25 kilometres (16 mi) west of Port-au-Prince, Haiti's capital. The earthquake is locally nicknamed Goudougoudou, an onomatopoeia for the sound of collapsing buildings.",
+    "at": {
+      "year": 2010,
+      "month": 1
+    },
+    "row": 16
+  },
+  {
     "id": "Q132560",
     "name": "electron microscope",
     "category": "science-theory",
@@ -1711,7 +1800,7 @@
     "at": {
       "year": 1931
     },
-    "row": 23
+    "row": 31
   },
   {
     "id": "Q116434",
@@ -1726,7 +1815,7 @@
     "at": {
       "year": 1877
     },
-    "row": 17
+    "row": 16
   },
   {
     "id": "Q172822",
@@ -1776,7 +1865,7 @@
     "at": {
       "year": 1888
     },
-    "row": 15
+    "row": 16
   },
   {
     "id": "Q180548",
@@ -1835,7 +1924,7 @@
       "year": 1992,
       "month": 2
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q154705",
@@ -1881,7 +1970,7 @@
         "year": 1939
       }
     },
-    "row": 24
+    "row": 32
   },
   {
     "id": "Q157506",
@@ -1897,7 +1986,7 @@
       "year": 1517,
       "month": 11
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q188468",
@@ -1936,7 +2025,7 @@
         "month": 8
       }
     },
-    "row": 22
+    "row": 23
   },
   {
     "id": "Q192050",
@@ -1954,7 +2043,7 @@
       "year": 1914,
       "month": 6
     },
-    "row": 20
+    "row": 24
   },
   {
     "id": "Q6743",
@@ -1979,7 +2068,7 @@
         "month": 6
       }
     },
-    "row": 21
+    "row": 22
   },
   {
     "id": "Q71229",
@@ -2027,7 +2116,7 @@
     "at": {
       "year": 1936
     },
-    "row": 25
+    "row": 33
   },
   {
     "id": "Q11932",
@@ -2057,7 +2146,7 @@
     "at": {
       "year": 2007
     },
-    "row": 14
+    "row": 18
   },
   {
     "id": "Q223644",
@@ -2136,7 +2225,7 @@
     "at": {
       "year": 1950
     },
-    "row": 27
+    "row": 32
   },
   {
     "id": "Q184725",
@@ -2152,7 +2241,7 @@
     "at": {
       "year": 1478
     },
-    "row": 1
+    "row": 0
   },
   {
     "id": "Q172991",
@@ -2173,7 +2262,7 @@
         "year": 1563
       }
     },
-    "row": 4
+    "row": 3
   },
   {
     "id": "Q205662",

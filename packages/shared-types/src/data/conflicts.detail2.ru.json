@@ -14,7 +14,7 @@
     "at": {
       "year": 1917
     },
-    "row": 6
+    "row": 7
   },
   {
     "id": "Q12551",
@@ -36,7 +36,7 @@
         "month": 10
       }
     },
-    "row": 2
+    "row": 1
   },
   {
     "id": "Q37643",
@@ -81,7 +81,7 @@
         "month": 9
       }
     },
-    "row": 3
+    "row": 2
   },
   {
     "id": "Q2487",
@@ -103,7 +103,7 @@
         "year": 1648
       }
     },
-    "row": 1
+    "row": 2
   },
   {
     "id": "Q10859",
@@ -127,7 +127,7 @@
         "month": 4
       }
     },
-    "row": 8
+    "row": 12
   },
   {
     "id": "Q178810",
@@ -217,6 +217,29 @@
     "row": 5
   },
   {
+    "id": "Q49077",
+    "name": "Шестидневная война",
+    "category": "war",
+    "regionTags": [],
+    "fameScore": 83,
+    "tagline": "война, длившаяся шесть дней, между Израилем с одной стороны и Египтом, Иорданией и Сирией с другой",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Six-Day_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gu%C3%A8rra%20dei%20Si%C3%A8is%20Jorns.png",
+    "imageAttribution": "Nicolas Eynaud, via Wikimedia Commons",
+    "description": "Шестидне́вная война́ — война на Ближнем Востоке между Израилем с одной стороны и Египтом, Сирией, Иорданией и Ираком с другой, продолжавшаяся с 5 по 10 июня 1967 года.",
+    "period": {
+      "start": {
+        "year": 1967,
+        "month": 6
+      },
+      "end": {
+        "year": 1967,
+        "month": 6
+      }
+    },
+    "row": 6
+  },
+  {
     "id": "Q38789",
     "name": "Сталинградская битва",
     "category": "military-operation",
@@ -236,6 +259,55 @@
       "end": {
         "year": 1943,
         "month": 2
+      }
+    },
+    "row": 15
+  },
+  {
+    "id": "Q545449",
+    "name": "Иракская война",
+    "category": "war",
+    "regionTags": [
+      "western-asia"
+    ],
+    "fameScore": 83,
+    "tagline": "война международной коалиции во главе с США против Саддама Хуссейна и поддерживающих его сил в Ираке (2003-2011)",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Iraq_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Iraq%20War%20montage.png",
+    "imageAttribution": "Futuretrillionaire, via Wikimedia Commons",
+    "description": "Иракская война, также как Вторая война в Персидском заливе — затяжной вооружённый конфликт в Ираке, продолжавшийся с 2003 по 2011 год. Началом конфликту послужило вторжение в Ирак коалиции, возглавляемой Соединёнными Штатами, целью вторжения являлась смена иракского правительства Саддама Хусейна. Конфликт продолжался бо́льшую часть следующего десятилетия, когда возникло повстанческое движение, противостоящее силам коалиции и новому правительству Ирака после вторжения. Войска Соединённых Штатов были официально выведены в 2011 году. В 2014 году Соединённые Штаты вновь стали участниками новой коалиции. Вторжение произошло в рамках войны с террором администрации Джорджа Буша после террористических актов 11 сентября.",
+    "period": {
+      "start": {
+        "year": 2003,
+        "month": 3
+      },
+      "end": {
+        "year": 2011,
+        "month": 12
+      }
+    },
+    "row": 9
+  },
+  {
+    "id": "Q42976",
+    "name": "Октябрьская революция",
+    "category": "revolution",
+    "regionTags": [
+      "eastern-europe"
+    ],
+    "fameScore": 82,
+    "tagline": "социалистическая революция, произошедшая в Российской республике 25-26 октября (по новому стилю 7-8 ноября) 1917 года",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/October_Revolution",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/After%20the%20capture%20of%20the%20Winter%20Palace%2026%20October%201917.jpg",
+    "description": "Октя́брьская револю́ция — вооружённое восстание в Петрограде в октябре 1917 года, итогом которой стало свержение Временного правительства и установление советской власти. В историографии рассматривается либо как самостоятельное историческое событие, либо как продолжение Февральской революции.",
+    "period": {
+      "start": {
+        "year": 1917,
+        "month": 11
+      },
+      "end": {
+        "year": 1917,
+        "month": 11
       }
     },
     "row": 12
@@ -304,5 +376,30 @@
       }
     },
     "row": 7
+  },
+  {
+    "id": "Q49100",
+    "name": "Война Судного дня",
+    "category": "war",
+    "regionTags": [
+      "northern-africa"
+    ],
+    "fameScore": 82,
+    "tagline": "военный конфликт в 1973 году между коалицией арабских государств и Израилем",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Yom_Kippur_War",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Yom%20Kippur%20War.%20XXXVI.jpg",
+    "imageAttribution": "Bamahane photographer, via Wikimedia Commons",
+    "description": "Война Судного дня — военный конфликт между коалицией арабских государств с одной стороны и Израилем с другой стороны, происходивший с 6 по 25 октября 1973 года.",
+    "period": {
+      "start": {
+        "year": 1973,
+        "month": 10
+      },
+      "end": {
+        "year": 1973,
+        "month": 10
+      }
+    },
+    "row": 3
   }
 ]
