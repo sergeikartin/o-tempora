@@ -3,6 +3,7 @@ import {
   centuryBoundariesInRange,
   formatYear,
   formatYearMonth,
+  formatYearRange,
   isBceYear,
   isRoundTickYear,
   roundTickYearsInRange,
@@ -144,4 +145,16 @@ test('roundTickYearsInRange leaves only the last BCE segment (touching the bound
   // 20 BCE -> 10 BCE -> 1 BCE -> 10 -> 20
   const gaps = years.slice(1).map((year, i) => year - (years[i] ?? 0));
   expect(gaps).toEqual([10, 9, 10, 10]); // the 10 BCE -> 1 BCE gap is the odd one out
+});
+
+test('formatYearRange joins two CE years with an en dash', () => {
+  expect(formatYearRange(1750, 1850)).toBe('1750 – 1850');
+});
+
+test('formatYearRange states the era once when both ends are BCE', () => {
+  expect(formatYearRange(-299, -199)).toBe('300 – 200 BCE');
+});
+
+test('formatYearRange keeps both labels when the range crosses the era boundary', () => {
+  expect(formatYearRange(-49, 51)).toBe('50 BCE – 51');
 });

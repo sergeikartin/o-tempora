@@ -59,7 +59,7 @@ Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values 
 
 | Role | Typeface |
 |---|---|
-| Display | Fraunces (serif, variable) — used sparingly (currently: DetailPanel's entity name) |
+| Display | Fraunces (serif, variable) — used sparingly (currently: DetailPanel's entity name and the timeline's Viewport Range heading) |
 | Body / UI / Data | Archivo — all UI chrome, entry labels, and data. No separate mono face: year ranges and dates set in Archivo with `font-variant-numeric: tabular-nums` instead, so a date never reads as a costume change from the surrounding text |
 
 ## Mark Opacity

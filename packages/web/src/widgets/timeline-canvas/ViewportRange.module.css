@@ -1,0 +1,29 @@
+/* Display heading in its own strip above the lanes. The filter-drawer toggle
+   and zoom controls (TimelineCanvas.module.css) are absolutely positioned
+   over this strip's corners, so its height clears both. The left padding
+   clears the collapsed Sidebar's expand handle, which pokes out into this
+   corner (Sidebar.module.css's .collapseHeader). */
+.viewportRange {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  height: 72px;
+  padding-inline: 52px 16px;
+  background-color: var(--color-bg-base);
+  font-family: Fraunces, serif;
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--color-text-primary);
+  user-select: none;
+}
+
+@media (max-width: 960px) {
+  .viewportRange {
+    height: 48px;
+    padding-inline: 44px 16px;
+    font-size: 32px;
+  }
+}

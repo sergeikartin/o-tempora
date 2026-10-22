@@ -5,6 +5,7 @@ export {
   centuryBoundaryForYear,
   formatYear,
   formatYearMonth,
+  formatYearRange,
   isRoundTickYear,
   roundTickYearsInRange,
 } from './format-year';

@@ -20,6 +20,15 @@ export function formatYear(year: number): string {
   return isBceYear(year) ? m.yearBce({ year: 1 - year }) : `${year}`;
 }
 
+// When both ends are BCE the era suffix is stated once, on the later end
+// ("300 – 200 BCE"), so a range stays short enough to set at display size.
+export function formatYearRange(startYear: number, endYear: number): string {
+  if (isBceYear(startYear) && isBceYear(endYear)) {
+    return `${1 - startYear} – ${formatYear(endYear)}`;
+  }
+  return `${formatYear(startYear)} – ${formatYear(endYear)}`;
+}
+
 const MONTH_NAMES = [
   'January',
   'February',

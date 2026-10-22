@@ -70,6 +70,7 @@ import {
 } from './options';
 import { PeopleLane } from './PeopleLane';
 import styles from './TimelineCanvas.module.css';
+import { ViewportRange } from './ViewportRange';
 import { YearAxis } from './YearAxis';
 
 // Below this much total pointer movement, a mouse-drag is treated as a click
@@ -396,6 +397,8 @@ export function TimelineCanvas({
   const effectiveViewportWidthPx =
     viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   const viewportBufferPx = effectiveViewportWidthPx * VIEWPORT_BUFFER_RATIO;
+  const viewportStartYear = scale.invert(scrollLeft);
+  const viewportEndYear = scale.invert(scrollLeft + effectiveViewportWidthPx);
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
   const visibleEndYear = scale.invert(
     scrollLeft + effectiveViewportWidthPx + viewportBufferPx,
@@ -1087,6 +1090,7 @@ export function TimelineCanvas({
       <div className={styles.zoomControls}>
         <button
           type="button"
+      <ViewportRange startYear={viewportStartYear} endYear={viewportEndYear} />
           onClick={() => zoom(computeZoomIn, 'in')}
           aria-label={m.zoomInAriaLabel()}
         >
