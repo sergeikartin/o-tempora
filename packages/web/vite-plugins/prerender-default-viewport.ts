@@ -40,11 +40,25 @@ type Locale = 'en' | 'ru';
 // it, so whatever's earliest in each lane (e.g. Homer in People) flashes
 // through the pre-hydration paint even though .scrollContainer itself is
 // already pinned to the right year.
-function pinScrollScript(scrollContainerTargetLeft: number): string {
+//
+// The Viewport Range heading is likewise prerendered against
+// FALLBACK_VIEWPORT_WIDTH_PX, so its end year would only correct itself once
+// hydration measures the visitor's real clientWidth. The same script rewrites
+// it from the real clientWidth (mirroring TimelineCanvas's
+// scale.invert(scrollLeft) / scale.invert(scrollLeft + clientWidth)); the
+// element opts out of hydration text-mismatch checks (ViewportRange.tsx) so
+// React leaves this value in place until its own mount effect lands the same
+// one. Only CE years are formatted here — the default window never reaches BCE.
+function pinScrollScript(
+  scrollContainerTargetLeft: number,
+  defaultStartYear: number,
+  pixelsPerYear: number,
+): string {
   return `<script>(function(){
 var pl=document.querySelector('[class*="peopleLane"]');
 var cm=document.querySelector('[class*="conflictsMilestonesLane"]');
 var sc=document.querySelector('[class*="scrollContainer"]');
+var vr=document.querySelector('[class*="viewportRange"]');
 var plScrollHeight=pl&&pl.scrollHeight;
 var scMax=sc&&sc.scrollWidth-sc.clientWidth;
 var target=Math.max(0,Math.min(${scrollContainerTargetLeft},scMax));
@@ -52,6 +66,11 @@ if(pl)pl.scrollTop=plScrollHeight;
 if(pl)pl.scrollLeft=target;
 if(cm)cm.scrollLeft=target;
 if(sc)sc.scrollLeft=target;
+if(vr&&sc){
+var startYear=${defaultStartYear}+(target-${scrollContainerTargetLeft})/${pixelsPerYear};
+var endYear=startYear+sc.clientWidth/${pixelsPerYear};
+vr.textContent=Math.round(startYear)+' \\u2013 '+Math.round(endYear);
+}
 })()</script>`;
 }
 
@@ -68,7 +87,12 @@ if(sc)sc.scrollLeft=target;
 async function renderDefaultViewportHtml(
   locale: Locale,
   resolvedConfig: ResolvedConfig,
-): Promise<{ appHtml: string; scrollContainerTargetLeft: number }> {
+): Promise<{
+  appHtml: string;
+  scrollContainerTargetLeft: number;
+  defaultStartYear: number;
+  pixelsPerYear: number;
+}> {
   const server = await createServer({
     configFile: false,
     root: resolvedConfig.root,
@@ -128,7 +152,12 @@ async function renderDefaultViewportHtml(
     );
     await stream.allReady;
     const appHtml = await new Response(stream).text();
-    return { appHtml, scrollContainerTargetLeft };
+    return {
+      appHtml,
+      scrollContainerTargetLeft,
+      defaultStartYear: DEFAULT_VIEWPORT_START_YEAR,
+      pixelsPerYear: REFERENCE_PIXELS_PER_YEAR,
+    };
   } finally {
     await server.close();
   }
@@ -147,11 +176,15 @@ export function prerenderDefaultViewportPlugin(): Plugin {
       async handler(html, ctx: IndexHtmlTransformContext) {
         if (!ctx.bundle) return html;
         const locale: Locale = ctx.path.startsWith('/ru/') ? 'ru' : 'en';
-        const { appHtml, scrollContainerTargetLeft } =
-          await renderDefaultViewportHtml(locale, resolvedConfig);
+        const {
+          appHtml,
+          scrollContainerTargetLeft,
+          defaultStartYear,
+          pixelsPerYear,
+        } = await renderDefaultViewportHtml(locale, resolvedConfig);
         return html.replace(
           '<div id="root"></div>',
-          `<div id="root">${appHtml}</div>${pinScrollScript(scrollContainerTargetLeft)}`,
+          `<div id="root">${appHtml}</div>${pinScrollScript(scrollContainerTargetLeft, defaultStartYear, pixelsPerYear)}`,
         );
       },
     },

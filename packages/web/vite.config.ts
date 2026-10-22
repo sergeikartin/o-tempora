@@ -29,6 +29,17 @@ export default defineConfig({
       transformIndexHtml: (html) =>
         html.replace(/\s*<script[^>]*\bumami\b[^>]*><\/script>/, ''),
     },
+    // The above-fold text is prerendered and its fonts are preloaded
+    // (critical-font-preload.ts), so briefly holding text invisible beats
+    // painting the system fallback and swapping it a moment later.
+    {
+      name: 'o-tempora:font-display-block',
+      enforce: 'pre',
+      transform(code, id) {
+        if (!/@fontsource\/[^?]+\.css/.test(id)) return null;
+        return code.replaceAll('font-display: swap', 'font-display: block');
+      },
+    },
     paraglideVitePlugin({
       project: './project.inlang',
       outdir: './src/shared/paraglide',

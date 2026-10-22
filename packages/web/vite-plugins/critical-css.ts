@@ -43,6 +43,10 @@ export function criticalCssPlugin(): Plugin {
           publicPath: '/',
           preload: 'media',
           allowRules: CRITICAL_TIMELINE_LAYOUT_SELECTORS,
+          // The @font-face rules otherwise live only in the deferred
+          // stylesheet, so the preloaded fonts wouldn't be wired to any
+          // family until after first paint.
+          inlineFonts: true,
           logLevel: 'warn',
         });
         // Beasties normally resolves stylesheet hrefs against real files on
