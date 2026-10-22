@@ -158,7 +158,6 @@ function renderPersonMarkHtml(
       {
         x: item.x1,
         y: item.labelY,
-        fill: item.fill,
         'data-entity-id': item.id,
         'data-entity-type': 'person',
       },
@@ -217,7 +216,6 @@ function renderRangeMarkHtml(
       {
         x: item.x1,
         y: item.labelY,
-        fill: item.fill,
         'data-entity-id': item.id,
         'data-entity-type': item.kind,
       },
@@ -259,7 +257,6 @@ function renderPointMarkHtml(
       {
         x: item.x + POINT_LABEL_OFFSET_PX,
         y: pointLabelY(item.markerY, lineCount),
-        fill: item.fill,
         'data-entity-id': item.id,
         'data-entity-type': item.kind,
       },

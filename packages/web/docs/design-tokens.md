@@ -4,7 +4,7 @@
 
 Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact/a7a65576-55d0-4602-b113-7b178bdb0a57
 
-**Design concept ("Ledger & Ink"):** a parchment-and-ink page — aged paper, iron-gall text, one sharp accent (oxblood) standing in for a wax seal — with color distinguishing entries within that warm neutral base. Color encodes **milestone category** (Milestones) or **occupation domain** (People); Conflicts render in one flat color instead (see Conflict Color below) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Conflicts'/Milestones' range labels below their line, point labels to the right of their dot) plus, within the merged Conflicts+Milestones lane, color itself (flat Conflict Color vs. Milestones' multi-color palette). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline entries share the same color end-to-end within each lane. `MilestoneCategory` and `OccupationDomain` are separate enums from separate sources (hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified. `ConflictCategory` still exists as curator-assigned data (see `CONTEXT.md`) but no longer drives a color.
+**Design concept ("Ledger & Ink"):** a parchment-and-ink page — aged paper, iron-gall text, one sharp accent (oxblood) standing in for a wax seal — with color distinguishing entries within that warm neutral base. Color encodes **milestone category** (Milestones) or **occupation domain** (People); Conflicts render in one flat color instead (see Conflict Color below) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Conflicts'/Milestones' range labels below their line, point labels to the right of their dot) plus, within the merged Conflicts+Milestones lane, color itself (flat Conflict Color vs. Milestones' multi-color palette). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline marks share the same color end-to-end within each lane; entry labels are always ink (`color-text-primary`), never the mark's color, so the bar or dot alone carries the category. `MilestoneCategory` and `OccupationDomain` are separate enums from separate sources (hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified. `ConflictCategory` still exists as curator-assigned data (see `CONTEXT.md`) but no longer drives a color.
 
 ## Color Palette
 
@@ -61,6 +61,12 @@ Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values 
 |---|---|
 | Display | Fraunces (serif, variable) — used sparingly (currently: DetailPanel's entity name) |
 | Body / UI / Data | Archivo — all UI chrome, entry labels, and data. No separate mono face: year ranges and dates set in Archivo with `font-variant-numeric: tabular-nums` instead, so a date never reads as a costume change from the surrounding text |
+
+## Mark Opacity
+
+| Token | Value | Usage |
+|---|---|---|
+| `mark-opacity-resting` | `0.8` | Resting opacity of every lane line and dot; hover and selection restore `1`. Labels are unaffected. At this value the lighter hues (Public Figure, Social & Human Culture) blend to roughly 2.1–2.2:1 against parchment — below the contrast of their full-strength values, offset by the always-visible ink label beside every mark. |
 
 ## Motion
 

@@ -73,7 +73,6 @@ test('attaches hit/ring/line/name attrs per the supplied geometry accessors', ()
   const name = svg.querySelector('.d3-name');
   expect(name?.textContent).toBe('Alpha');
   expect(name?.getAttribute('x')).toBe('10');
-  expect(name?.getAttribute('fill')).toBe('red');
 });
 
 test('adopts a prerendered, unbound node instead of destroying and recreating it', () => {

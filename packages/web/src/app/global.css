@@ -37,6 +37,10 @@
   --radius-md: 8px;
   --radius-lg: 12px;
 
+  /* Resting opacity of lane marks (lines and dots); hover and selection
+     restore full strength so the bar under the pointer stands out. */
+  --mark-opacity-resting: 0.8;
+
   --motion-duration-fast: 120ms;
   --motion-duration-base: 200ms;
   --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);

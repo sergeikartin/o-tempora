@@ -67,13 +67,17 @@
 }
 
 .line {
-  transition: stroke-width var(--motion-duration-fast) var(--motion-easing);
+  opacity: var(--mark-opacity-resting);
+  transition:
+    stroke-width var(--motion-duration-fast) var(--motion-easing),
+    opacity var(--motion-duration-fast) var(--motion-easing);
 }
 
 /* Absolute px (not a multiplier of PERIOD_LINE_HEIGHT in options.ts) since
    CSS can't read that JS constant — kept close to it (6px) by hand. */
 :global(.d3-person):hover .line {
   stroke-width: 9px;
+  opacity: 1;
 }
 
 :global(.d3-person):hover .name {
@@ -138,7 +142,7 @@
    neighbors' gaps, reading as a solid blob rather than legible text.
    Toggled by id alongside .searchHighlight above, but scoped to .name in
    PeopleLane.tsx's effect since it needs this different treatment. */
-.searchHighlightLabel {
+.name.searchHighlightLabel {
   fill: var(--color-accent-selection-ring);
   transform: scale(1.15);
 }
@@ -154,9 +158,10 @@
   transform-box: fill-box;
   transform-origin: left center;
   transition: transform var(--motion-duration-fast) var(--motion-easing);
-  /* fill is set per-item (occupation-domain color) via the D3 join, not here.
-     Clickable (same data-entity-id/-type as the line, see PeopleLane.tsx) so
-     pointer-events stays default rather than none; user-select stays off so
+  fill: var(--color-text-primary);
+  /* Ink rather than the mark's own color: the bar carries the domain, the
+     label stays legible on parchment. Clickable (same data-entity-id/-type as
+     the line, see PeopleLane.tsx) so pointer-events stays default rather than none; user-select stays off so
      a click doesn't also select the text. */
   user-select: none;
 }

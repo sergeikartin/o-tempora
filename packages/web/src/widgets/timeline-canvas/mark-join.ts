@@ -194,7 +194,6 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
   groups
     .select<SVGTextElement>(nameClass)
     .attr('x', geometry.labelX)
-    .attr('fill', (d) => d.fill)
     // Same delegated-click wiring as the line above, so the label is an
     // equally valid click target for opening the detail drawer.
     .attr('data-entity-id', (d) => d.id)

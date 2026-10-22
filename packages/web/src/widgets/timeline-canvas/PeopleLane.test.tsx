@@ -66,7 +66,7 @@ test("a person's name label sits above their lifespan line", () => {
   );
 });
 
-test("a person's name label is colored to match their lifespan line", () => {
+test("a person's name label takes its fill from CSS, not the lifespan line's color", () => {
   const { scale } = buildXScale(2);
   const people = [aristotle];
   const { container } = render(
@@ -79,7 +79,8 @@ test("a person's name label is colored to match their lifespan line", () => {
 
   const line = container.querySelector('.d3-line');
   const label = container.querySelector('.d3-name');
-  expect(label?.getAttribute('fill')).toBe(line?.getAttribute('stroke'));
+  expect(line?.getAttribute('stroke')).toBeTruthy();
+  expect(label?.hasAttribute('fill')).toBe(false);
 });
 
 test('renders no stems', () => {

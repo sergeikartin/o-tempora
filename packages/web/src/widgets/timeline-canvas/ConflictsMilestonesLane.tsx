@@ -278,7 +278,6 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
       .attr('x', (d) => d.x + POINT_LABEL_OFFSET_PX)
-      .attr('fill', (d) => d.fill)
       // Same delegated-click wiring as the dot above, so the label is an
       // equally valid click target for opening the detail drawer.
       .attr('data-entity-id', (d) => d.id)
