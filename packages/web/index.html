@@ -10,6 +10,12 @@
     <link rel="alternate" hreflang="ru" href="https://otempora.info/ru/" />
     <link rel="alternate" hreflang="x-default" href="https://otempora.info/" />
 
+    <!-- Paints the parchment before any stylesheet or JS loads (dev serves CSS
+         via main.tsx's imports; prod defers non-critical CSS). Mirrors
+         --color-bg-base in src/app/global.css. -->
+    <style>html{background-color:#f2e9d2}</style>
+    <meta name="theme-color" content="#f2e9d2" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
