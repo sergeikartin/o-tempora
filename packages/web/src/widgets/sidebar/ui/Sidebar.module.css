@@ -113,13 +113,6 @@
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
-.headerTitle {
-  font-family: Fraunces, serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
 /* An explicit way to dismiss the drawer alongside the existing tap-
    outside/backdrop and toggle-again paths, mirroring DetailPanel's own
    .closeButton visually — laid out in .header's flex row rather than
@@ -175,7 +168,7 @@
   flex-shrink: 0;
   width: 28px;
   height: 28px;
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border-control);
   border-radius: var(--radius-full);
   background: var(--color-bg-surface-raised);
   color: var(--color-text-primary);

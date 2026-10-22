@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0014-ink-selection-halo.md
 ---
 
 # Selection/search-jump highlight renders as concentric duplicate marks, not a CSS filter

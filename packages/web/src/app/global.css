@@ -14,23 +14,28 @@
   --color-bg-surface-raised: #ffffff;
   --color-border-subtle: #e0d3ac;
   --color-border-strong: #c7b383;
+  --color-border-control: #837757;
   --color-border-emphasis: #837757;
   --color-text-primary: #241a10;
   --color-text-secondary: #6b6046;
   --color-accent-selected: #8a2a1a;
-  --color-accent-selection-ring: #866f2c;
+  --color-selection-halo: color-mix(
+    in srgb,
+    var(--color-text-primary) 14%,
+    transparent
+  );
   --color-focus-ring: #6e2013;
   --color-conflict: #8c2d2b;
   --color-bg-axis: #ebddbd;
 
-  --color-domain-institutions: #ba534e;
-  --color-domain-arts: #bd6545;
+  --color-domain-institutions: #b6514c;
+  --color-domain-arts: #a85a3d;
   --color-domain-business-law: #347830;
-  --color-domain-public-figure: #bb883a;
-  --color-domain-science-technology: #3f936e;
+  --color-domain-public-figure: #8e672c;
+  --color-domain-science-technology: #357b5c;
   --color-domain-exploration: #3e70b0;
   --color-domain-humanities: #4e4993;
-  --color-domain-sports: #ba6f8a;
+  --color-domain-sports: #9a5c73;
 
   --radius-full: 9999px;
   --radius-sm: 6px;

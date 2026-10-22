@@ -81,20 +81,18 @@ export const PERIOD_LINE_HEIGHT = 6;
 // it with a gap that would otherwise be dead space between two separately
 // clickable elements.
 export const HIT_AREA_PADDING_PX = 4;
-// The search-jump/selection ring drawn around a Period line (a duplicate,
+// The search-jump/selection halo drawn around a Period line (a duplicate,
 // wider <line> underneath the real one, not a filter — see PeopleLane and
-// ConflictsMilestonesLane's .lineRingOuter/.lineRingGap) or around a point's
-// dot (a duplicate, wider <circle>). SELECTION_RING_GAP_PX is a parchment
-// band between the mark's own color and the ring, so the two never blend
-// into each other; SELECTION_RING_WIDTH_PX is the ring's own thickness.
-export const SELECTION_RING_GAP_PX = 2;
-export const SELECTION_RING_WIDTH_PX = 2;
+// ConflictsMilestonesLane's .lineHalo) or around a point's dot (a duplicate,
+// wider <circle>). It is a translucent ink fill that extends this many px
+// past the grown mark on every side.
+export const SELECTION_HALO_PX = 8;
 // A selected mark renders permanently at its hover-grown size (not just the
 // resting PERIOD_LINE_HEIGHT/POINT_RADIUS) — a click is a hover that stuck,
 // so selecting shouldn't itself trigger a further size change. These mirror
 // the same two numbers PeopleLane/ConflictsMilestonesLane's own :hover CSS
 // rules hardcode (CSS can't read PERIOD_LINE_HEIGHT/POINT_RADIUS either),
-// and size the selection ring's own thickness so it tracks the grown mark
+// and size the selection halo so it tracks the grown mark
 // rather than the resting one.
 export const SELECTED_LINE_HEIGHT_PX = 9;
 export const SELECTED_POINT_RADIUS_PX = 7;

@@ -15,7 +15,7 @@ import styles from './ConflictsMilestonesLane.module.css';
 import { buildRangeAndPointLayout, type PointLayout } from './map-to-items';
 import {
   attachMarkJoin,
-  ensureRingChildren,
+  ensureHaloChild,
   toggleSelectionHighlight,
 } from './mark-join';
 import {
@@ -137,7 +137,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       .style('will-change', null);
     svg
       .selectAll(
-        '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
+        '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-halo',
       )
       .attr('transform', null);
     zoomTargetsSelectionRef.current = null;
@@ -197,7 +197,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
           // Children built from POINT_MARK_SHAPE, in its declared order —
           // see mark-shape.ts's own comments and the range mark above for
           // why each is shaped the way it is.
-          const [hit, dotRingOuter, dotRingGap, dot, name] = buildMarkChildren(
+          const [hit, dotHalo, dot, name] = buildMarkChildren(
             g,
             POINT_MARK_SHAPE,
             styles,
@@ -209,8 +209,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
           hit
             .attr('y', (d) => pointHitY(d.markerY, d.lines.length))
             .attr('height', (d) => pointHitHeight(d.lines.length));
-          dotRingOuter.attr('cy', (d) => d.markerY);
-          dotRingGap.attr('cy', (d) => d.markerY);
+          dotHalo.attr('cy', (d) => d.markerY);
           dot.attr('cy', (d) => d.markerY);
           name.attr('y', (d) => pointLabelY(d.markerY, d.lines.length));
           g.transition().duration(durationMs).style('opacity', 1);
@@ -243,22 +242,14 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       .attr('y', (d) => pointHitY(d.markerY, d.lines.length))
       .attr('height', (d) => pointHitHeight(d.lines.length));
 
-    // The ring/gap circles only need cx/cy kept in sync with the real dot
-    // (their r is fixed at creation). They're pointer-events: none
+    // The halo circle only needs cx/cy kept in sync with the real dot
+    // (its r is fixed at creation). It's pointer-events: none
     // (ConflictsMilestonesLane.module.css) so carrying the same
     // data-entity-id as the real dot never makes them a click/hover target
     // — it's only there so the selection effect below can find them by the
     // same selector pattern every other mark uses.
     pointGroups
-      .select<SVGCircleElement>('.d3-dot-ring-outer')
-      .attr('cx', (d) => d.x)
-      .attr('data-entity-id', (d) => d.id)
-      .transition()
-      .duration(durationMs)
-      .attr('cy', (d) => d.markerY);
-
-    pointGroups
-      .select<SVGCircleElement>('.d3-dot-ring-gap')
+      .select<SVGCircleElement>('.d3-dot-halo')
       .attr('cx', (d) => d.x)
       .attr('data-entity-id', (d) => d.id)
       .transition()
@@ -302,29 +293,27 @@ const ConflictsMilestonesLaneImpl = forwardRef<
 
   // A plain DOM class toggle, decoupled from the joins above (their
   // enter/update/exit selections aren't touched) — see PeopleLane's
-  // identical effect for the shared rationale. The ring/gap lines plus the
-  // real .d3-line (a range's selection outline and its own
-  // grow-to-hover-size), the ring/gap circles plus the real .d3-dot (same,
+  // identical effect for the shared rationale. The halo line plus the
+  // real .d3-line (a range's selection halo and its own
+  // grow-to-hover-size), the halo circle plus the real .d3-dot (same,
   // for a point), and .d3-range-name/.d3-point-name (either mark's label)
   // get different classes — see ConflictsMilestonesLane.module.css's
   // .searchHighlight/.searchHighlightLabel for why the outline can't just
   // apply to all three.
   useLayoutEffect(() => {
     if (!svgRef.current) return;
-    ensureRingChildren(
+    ensureHaloChild(
       svgRef.current,
       '.d3-line',
       RANGE_MARK_SHAPE[1],
-      RANGE_MARK_SHAPE[2],
       styles,
       selectedId,
       ['x1', 'x2', 'y1', 'y2'],
     );
-    ensureRingChildren(
+    ensureHaloChild(
       svgRef.current,
       '.d3-dot',
       POINT_MARK_SHAPE[1],
-      POINT_MARK_SHAPE[2],
       styles,
       selectedId,
       ['cx', 'cy'],
@@ -334,7 +323,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     // noUncheckedIndexedAccess, not because they might really be missing.
     toggleSelectionHighlight(
       svgRef.current,
-      '.d3-line-ring-outer[data-entity-id], .d3-line-ring-gap[data-entity-id], .d3-line[data-entity-id], .d3-dot-ring-outer[data-entity-id], .d3-dot-ring-gap[data-entity-id], .d3-dot[data-entity-id]',
+      '.d3-line-halo[data-entity-id], .d3-line[data-entity-id], .d3-dot-halo[data-entity-id], .d3-dot[data-entity-id]',
       '.d3-range-name[data-entity-id], .d3-point-name[data-entity-id]',
       selectedId,
       styles.searchHighlight as string,
@@ -365,7 +354,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
           .select('g.zoomGroup')
           .attr('transform', zoomAnimationGroupTransformAttr(transform));
         zoomTargetsSelectionRef.current ??= svg.selectAll<Element, unknown>(
-          '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-ring-outer, .d3-dot-ring-gap',
+          '.d3-range-name-zoom, .d3-point-name-zoom, .d3-dot, .d3-dot-halo',
         );
         zoomTargetsSelectionRef.current.attr(
           'transform',

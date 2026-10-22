@@ -214,12 +214,12 @@ test('below the mobile breakpoint, an explicit close button renders inside the d
 
   try {
     const onClose = vi.fn();
-    const { getByLabelText, getByRole } = renderSidebar({
+    const { getByLabelText, getByText } = renderSidebar({
       isOpen: true,
       onClose,
     });
 
-    expect(getByRole('heading', { name: 'Filters' })).toBeTruthy();
+    expect(getByText('O Tempora')).toBeTruthy();
     fireEvent.click(getByLabelText('Close filters'));
 
     expect(onClose).toHaveBeenCalledTimes(1);
@@ -228,19 +228,19 @@ test('below the mobile breakpoint, an explicit close button renders inside the d
   }
 });
 
-test('above the mobile breakpoint, the same "Filters" title renders as mobile\'s, but with no drawer close button — desktop has no drawer to close', () => {
-  const { queryByLabelText, queryByRole } = renderSidebar({ isOpen: true });
+test("above the mobile breakpoint, the same logo renders as mobile's, but with no drawer close button — desktop has no drawer to close", () => {
+  const { queryByLabelText, queryByText } = renderSidebar({ isOpen: true });
   expect(queryByLabelText('Close filters')).toBeNull();
-  expect(queryByRole('heading', { name: 'Filters' })).toBeTruthy();
+  expect(queryByText('O Tempora')).toBeTruthy();
 });
 
-test('collapsed (isCollapsed: true) renders no filter sections and no title, but keeps the collapse button itself reachable', () => {
-  const { container, queryByRole, getByLabelText } = renderSidebar({
-    isCollapsed: true,
-  });
+test('collapsed (isCollapsed: true) renders no filter sections and no logo, but keeps the collapse button itself reachable', () => {
+  const { container, queryByRole, queryByText, getByLabelText } = renderSidebar(
+    { isCollapsed: true },
+  );
 
   expect(queryByRole('heading', { name: 'Region' })).toBeNull();
-  expect(queryByRole('heading', { name: 'Filters' })).toBeNull();
+  expect(queryByText('O Tempora')).toBeNull();
   expect(container.querySelector('aside')?.hasAttribute('inert')).toBe(false);
   expect(getByLabelText('Expand filters')).toBeTruthy();
 });

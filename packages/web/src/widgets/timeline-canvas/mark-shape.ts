@@ -4,15 +4,14 @@ import {
   POINT_RADIUS,
   SELECTED_LINE_HEIGHT_PX,
   SELECTED_POINT_RADIUS_PX,
-  SELECTION_RING_GAP_PX,
-  SELECTION_RING_WIDTH_PX,
+  SELECTION_HALO_PX,
 } from './options';
 
 // Not exported from the slice's public index.ts — internal to PeopleLane and
 // ConflictsMilestonesLane's own enter branches.
 
 /**
- * One of a mark's 5 fixed DOM children — built once per entering datum, in
+ * One of a mark's 4 fixed DOM children — built once per entering datum, in
  * declaration order, from a `<rect>`/`<line>`/`<circle>`/`<text>`, optionally
  * wrapped in its own `<g>` (the zoom-animation counter-scale target for a
  * label — see PeopleLane's `.d3-name-zoom` comment for why the wrapper has
@@ -30,23 +29,16 @@ export interface MarkShapePart {
   wrapperClass?: string;
 }
 
-/** Every mark kind has exactly these 5 children, in DOM order — a fixed-length tuple (not a plain array) so `buildMarkChildren` can return the matching 5 selections without noUncheckedIndexedAccess treating any of them as possibly-undefined. */
+/** Every mark kind has exactly these 4 children, in DOM order — a fixed-length tuple (not a plain array) so `buildMarkChildren` can return the matching 4 selections without noUncheckedIndexedAccess treating any of them as possibly-undefined. */
 export type MarkShape = readonly [
-  MarkShapePart,
   MarkShapePart,
   MarkShapePart,
   MarkShapePart,
   MarkShapePart,
 ];
 
-const RING_OUTER_ATTRS = {
-  'stroke-width':
-    SELECTED_LINE_HEIGHT_PX +
-    2 * (SELECTION_RING_GAP_PX + SELECTION_RING_WIDTH_PX),
-  'stroke-linecap': 'round',
-};
-const RING_GAP_ATTRS = {
-  'stroke-width': SELECTED_LINE_HEIGHT_PX + 2 * SELECTION_RING_GAP_PX,
+const HALO_LINE_ATTRS = {
+  'stroke-width': SELECTED_LINE_HEIGHT_PX + 2 * SELECTION_HALO_PX,
   'stroke-linecap': 'round',
 };
 const LINE_ATTRS = {
@@ -58,15 +50,9 @@ export const PERSON_MARK_SHAPE: MarkShape = [
   { tag: 'rect', markerClass: 'd3-hit', styleKey: 'hitArea' },
   {
     tag: 'line',
-    markerClass: 'd3-line-ring-outer',
-    styleKey: 'lineRingOuter',
-    attrs: RING_OUTER_ATTRS,
-  },
-  {
-    tag: 'line',
-    markerClass: 'd3-line-ring-gap',
-    styleKey: 'lineRingGap',
-    attrs: RING_GAP_ATTRS,
+    markerClass: 'd3-line-halo',
+    styleKey: 'lineHalo',
+    attrs: HALO_LINE_ATTRS,
   },
   { tag: 'line', markerClass: 'd3-line', styleKey: 'line', attrs: LINE_ATTRS },
   {
@@ -82,15 +68,9 @@ export const RANGE_MARK_SHAPE: MarkShape = [
   { tag: 'rect', markerClass: 'd3-hit', styleKey: 'hitArea' },
   {
     tag: 'line',
-    markerClass: 'd3-line-ring-outer',
-    styleKey: 'lineRingOuter',
-    attrs: RING_OUTER_ATTRS,
-  },
-  {
-    tag: 'line',
-    markerClass: 'd3-line-ring-gap',
-    styleKey: 'lineRingGap',
-    attrs: RING_GAP_ATTRS,
+    markerClass: 'd3-line-halo',
+    styleKey: 'lineHalo',
+    attrs: HALO_LINE_ATTRS,
   },
   { tag: 'line', markerClass: 'd3-line', styleKey: 'line', attrs: LINE_ATTRS },
   {
@@ -106,20 +86,9 @@ export const POINT_MARK_SHAPE: MarkShape = [
   { tag: 'rect', markerClass: 'd3-hit', styleKey: 'hitArea' },
   {
     tag: 'circle',
-    markerClass: 'd3-dot-ring-outer',
-    styleKey: 'dotRingOuter',
-    attrs: {
-      r:
-        SELECTED_POINT_RADIUS_PX +
-        SELECTION_RING_GAP_PX +
-        SELECTION_RING_WIDTH_PX,
-    },
-  },
-  {
-    tag: 'circle',
-    markerClass: 'd3-dot-ring-gap',
-    styleKey: 'dotRingGap',
-    attrs: { r: SELECTED_POINT_RADIUS_PX + SELECTION_RING_GAP_PX },
+    markerClass: 'd3-dot-halo',
+    styleKey: 'dotHalo',
+    attrs: { r: SELECTED_POINT_RADIUS_PX + SELECTION_HALO_PX },
   },
   {
     tag: 'circle',
@@ -159,7 +128,6 @@ export function buildMarkChildren<Datum>(
   MarkChild<Datum>,
   MarkChild<Datum>,
   MarkChild<Datum>,
-  MarkChild<Datum>,
 ] {
   const build = (part: MarkShapePart): MarkChild<Datum> => {
     const parent = part.wrapperClass
@@ -175,13 +143,7 @@ export function buildMarkChildren<Datum>(
     }
     return el as unknown as MarkChild<Datum>;
   };
-  return [
-    build(shape[0]),
-    build(shape[1]),
-    build(shape[2]),
-    build(shape[3]),
-    build(shape[4]),
-  ];
+  return [build(shape[0]), build(shape[1]), build(shape[2]), build(shape[3])];
 }
 
 /**

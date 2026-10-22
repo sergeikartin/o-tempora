@@ -1,7 +1,7 @@
 import { afterEach, expect, test } from 'vitest';
 import {
   attachMarkJoin,
-  ensureRingChildren,
+  ensureHaloChild,
   type LineMarkDatum,
   toggleSelectionHighlight,
 } from './mark-join';
@@ -14,8 +14,7 @@ afterEach(() => {
 
 const fakeStyles = {
   hitArea: 'hitArea-css',
-  lineRingOuter: 'lineRingOuter-css',
-  lineRingGap: 'lineRingGap-css',
+  lineHalo: 'lineHalo-css',
   line: 'line-css',
   name: 'name-css',
 };
@@ -82,8 +81,7 @@ test('adopts a prerendered, unbound node instead of destroying and recreating it
     'beforeend',
     `<g class="d3-thing" style="opacity: 1">
       <rect class="d3-hit hitArea-css" data-entity-id="a" data-entity-type="thing"></rect>
-      <line class="d3-line-ring-outer lineRingOuter-css"></line>
-      <line class="d3-line-ring-gap lineRingGap-css"></line>
+      <line class="d3-line-halo lineHalo-css"></line>
       <line class="d3-line line-css" x1="-1" y1="-1" data-entity-id="a" data-entity-type="thing"></line>
       <g class="d3-name-zoom"><text class="d3-name name-css" x="-1" y="-1" data-entity-id="a" data-entity-type="thing">Alpha</text></g>
     </g>`,
@@ -175,7 +173,7 @@ test('toggleSelectionHighlight toggles the highlight class only on the selected 
   expect(lineA?.classList.contains('highlight')).toBe(false);
 });
 
-test('ensureRingChildren creates a missing ring pair from the real mark’s own geometry, once', () => {
+test('ensureHaloChild creates a missing halo from the real mark’s own geometry, once', () => {
   document.body.innerHTML = `
     <svg>
       <g class="d3-person">
@@ -184,45 +182,33 @@ test('ensureRingChildren creates a missing ring pair from the real mark’s own 
     </svg>`;
   const svg = document.querySelector('svg') as unknown as SVGSVGElement;
 
-  ensureRingChildren(
-    svg,
-    '.d3-line',
-    PERSON_MARK_SHAPE[1],
-    PERSON_MARK_SHAPE[2],
-    fakeStyles,
-    'a',
-    ['x1', 'x2', 'y1', 'y2'],
-  );
-
-  const group = svg.querySelector('.d3-person') as Element;
-  const ringOuter = group.querySelector('.d3-line-ring-outer');
-  const ringGap = group.querySelector('.d3-line-ring-gap');
-  expect(ringOuter?.getAttribute('x1')).toBe('10');
-  expect(ringOuter?.getAttribute('x2')).toBe('20');
-  expect(ringOuter?.getAttribute('data-entity-id')).toBe('a');
-  expect(ringGap?.getAttribute('x1')).toBe('10');
-  // Paint order: outer, then gap, then the real line on top.
-  expect(
-    Array.from(group.children).map((el) => el.getAttribute('class')),
-  ).toEqual([
-    'd3-line-ring-outer lineRingOuter-css',
-    'd3-line-ring-gap lineRingGap-css',
-    'd3-line',
+  ensureHaloChild(svg, '.d3-line', PERSON_MARK_SHAPE[1], fakeStyles, 'a', [
+    'x1',
+    'x2',
+    'y1',
+    'y2',
   ]);
 
-  ensureRingChildren(
-    svg,
-    '.d3-line',
-    PERSON_MARK_SHAPE[1],
-    PERSON_MARK_SHAPE[2],
-    fakeStyles,
-    'a',
-    ['x1', 'x2', 'y1', 'y2'],
-  );
-  expect(group.querySelectorAll('.d3-line-ring-outer')).toHaveLength(1);
+  const group = svg.querySelector('.d3-person') as Element;
+  const halo = group.querySelector('.d3-line-halo');
+  expect(halo?.getAttribute('x1')).toBe('10');
+  expect(halo?.getAttribute('x2')).toBe('20');
+  expect(halo?.getAttribute('data-entity-id')).toBe('a');
+  // Paint order: the halo first, then the real line on top.
+  expect(
+    Array.from(group.children).map((el) => el.getAttribute('class')),
+  ).toEqual(['d3-line-halo lineHalo-css', 'd3-line']);
+
+  ensureHaloChild(svg, '.d3-line', PERSON_MARK_SHAPE[1], fakeStyles, 'a', [
+    'x1',
+    'x2',
+    'y1',
+    'y2',
+  ]);
+  expect(group.querySelectorAll('.d3-line-halo')).toHaveLength(1);
 });
 
-test('ensureRingChildren no-ops for an id with no matching mark', () => {
+test('ensureHaloChild no-ops for an id with no matching mark', () => {
   document.body.innerHTML = `
     <svg>
       <g class="d3-person">
@@ -231,15 +217,14 @@ test('ensureRingChildren no-ops for an id with no matching mark', () => {
     </svg>`;
   const svg = document.querySelector('svg') as unknown as SVGSVGElement;
 
-  ensureRingChildren(
+  ensureHaloChild(
     svg,
     '.d3-line',
     PERSON_MARK_SHAPE[1],
-    PERSON_MARK_SHAPE[2],
     fakeStyles,
     'missing',
     ['x1', 'x2', 'y1', 'y2'],
   );
 
-  expect(svg.querySelector('.d3-line-ring-outer')).toBeNull();
+  expect(svg.querySelector('.d3-line-halo')).toBeNull();
 });

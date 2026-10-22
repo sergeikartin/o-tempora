@@ -16,6 +16,7 @@ import {
 import { useIsMobileViewport } from '../../../shared/lib/viewport';
 import { m } from '../../../shared/paraglide/messages.js';
 import type { OccupationDomain, Region } from '../../../shared/types';
+import { Logo } from '../../../shared/ui';
 import styles from './Sidebar.module.css';
 
 interface SidebarProps {
@@ -174,9 +175,7 @@ export function Sidebar({
       >
         {!isMobileViewport && (
           <div className={styles.collapseHeader}>
-            {!collapsed && (
-              <h2 className={styles.headerTitle}>{m.filtersHeading()}</h2>
-            )}
+            {!collapsed && <Logo />}
             <button
               type="button"
               className={styles.collapseButton}
@@ -197,7 +196,7 @@ export function Sidebar({
             <div className={styles.scrollArea}>
               {isMobileViewport && (
                 <div className={styles.header}>
-                  <h2 className={styles.headerTitle}>{m.filtersHeading()}</h2>
+                  <Logo />
                   <button
                     ref={closeButtonRef}
                     type="button"

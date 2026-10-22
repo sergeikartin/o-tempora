@@ -86,19 +86,19 @@ function renderMarkGroupHtml(
   groupAttrs: Attrs,
   shape: MarkShape,
   styles: Record<string, string | undefined>,
-  partAttrs: readonly [Attrs, Attrs, Attrs, Attrs, Attrs],
+  partAttrs: readonly [Attrs, Attrs, Attrs, Attrs],
   textInnerHtml: string,
 ): string {
   const children = shape
     .map((part, i) =>
-      // Indices 1/2 (ring-outer/ring-gap): omitted from every mark's
-      // initial paint. They're only ever visible on the (at most one)
-      // selected mark, so pre-building an always-invisible pair for the
-      // other ~99% just to have them ready costs real layout/style-recalc
-      // time on first paint for no visual benefit — mark-join.ts's
-      // ensureRingChildren lazily creates them, straight off the real
-      // mark's own geometry, the first time a given mark is ever selected.
-      i === 1 || i === 2
+      // Index 1 (halo): omitted from every mark's initial paint. It's only
+      // ever visible on the (at most one) selected mark, so pre-building
+      // an always-invisible one for the other ~99% just to have it ready
+      // costs real layout/style-recalc time on first paint for no visual
+      // benefit — mark-join.ts's ensureHaloChild lazily creates it,
+      // straight off the real mark's own geometry, the first time a given
+      // mark is ever selected.
+      i === 1
         ? ''
         : renderMarkPartHtml(
             part,
@@ -131,13 +131,6 @@ function renderPersonMarkHtml(
         height,
         'data-entity-id': item.id,
         'data-entity-type': 'person',
-      },
-      {
-        x1: item.x1,
-        x2: item.x2,
-        y1: item.lineY,
-        y2: item.lineY,
-        'data-entity-id': item.id,
       },
       {
         x1: item.x1,
@@ -202,13 +195,6 @@ function renderRangeMarkHtml(
         x2: item.x2,
         y1: item.markerY,
         y2: item.markerY,
-        'data-entity-id': item.id,
-      },
-      {
-        x1: item.x1,
-        x2: item.x2,
-        y1: item.markerY,
-        y2: item.markerY,
         stroke: item.fill,
         'data-entity-id': item.id,
         'data-entity-type': item.kind,
@@ -245,7 +231,6 @@ function renderPointMarkHtml(
         'data-entity-id': item.id,
         'data-entity-type': item.kind,
       },
-      { cx: item.x, cy: item.markerY, 'data-entity-id': item.id },
       { cx: item.x, cy: item.markerY, 'data-entity-id': item.id },
       {
         cx: item.x,

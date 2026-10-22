@@ -11,8 +11,8 @@ export const MILESTONE_CATEGORY_GROUP_COLORS: Record<
   MilestoneCategoryGroup,
   string
 > = {
-  'science-innovation': '#008456',
-  'social-culture': '#BC8118',
+  'science-innovation': '#008255',
+  'social-culture': '#946513',
 };
 
 // Display labels for the sidebar's Milestone Category Group filter pills —

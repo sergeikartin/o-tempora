@@ -422,8 +422,7 @@ test('adopts a prerendered, unbound .d3-point-group node instead of destroying a
     'beforeend',
     `<g class="d3-point-group" style="opacity: 1">
       <rect class="d3-hit" data-entity-id="${football.id}" data-entity-type="milestone"></rect>
-      <circle class="d3-dot-ring-outer"></circle>
-      <circle class="d3-dot-ring-gap"></circle>
+      <circle class="d3-dot-halo"></circle>
       <circle class="d3-dot" cx="-999" cy="-999" data-entity-id="${football.id}" data-entity-type="milestone"></circle>
       <g class="d3-point-name-zoom"><text class="d3-point-name" x="-999" y="-999" data-entity-id="${football.id}" data-entity-type="milestone">${football.name}</text></g>
     </g>`,

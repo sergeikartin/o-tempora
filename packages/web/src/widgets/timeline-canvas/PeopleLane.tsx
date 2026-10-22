@@ -18,7 +18,7 @@ import {
 } from './map-to-items';
 import {
   attachMarkJoin,
-  ensureRingChildren,
+  ensureHaloChild,
   toggleSelectionHighlight,
 } from './mark-join';
 import { PERSON_MARK_SHAPE } from './mark-shape';
@@ -205,18 +205,17 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
     // same data-entity-id the delegated click listener already reads, so
     // this just re-scans them whenever the selection or the mark set itself
     // changes, rather than threading a "am I selected" flag through the
-    // join's own data binding. The ring/gap lines and the real .d3-line (the
+    // join's own data binding. The halo line and the real .d3-line (the
     // lifespan mark's selection outline plus its own grow-to-hover-size) and
     // .d3-name (its label) get different classes — see PeopleLane.module.
     // css's .searchHighlight/.searchHighlightLabel for why the outline can't
     // just apply to both.
     useLayoutEffect(() => {
       if (!svgRef.current) return;
-      ensureRingChildren(
+      ensureHaloChild(
         svgRef.current,
         '.d3-line',
         PERSON_MARK_SHAPE[1],
-        PERSON_MARK_SHAPE[2],
         styles,
         selectedId,
         ['x1', 'x2', 'y1', 'y2'],
@@ -226,7 +225,7 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       // noUncheckedIndexedAccess, not because they might really be missing.
       toggleSelectionHighlight(
         svgRef.current,
-        '.d3-line-ring-outer[data-entity-id], .d3-line-ring-gap[data-entity-id], .d3-line[data-entity-id]',
+        '.d3-line-halo[data-entity-id], .d3-line[data-entity-id]',
         '.d3-name[data-entity-id]',
         selectedId,
         styles.searchHighlight as string,

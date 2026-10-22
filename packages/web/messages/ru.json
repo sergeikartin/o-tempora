@@ -2,7 +2,6 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "siteTitle": "Жизнь на фоне истории",
   "filtersAriaLabel": "Фильтры",
-  "filtersHeading": "Фильтры",
   "detailLevelHeading": "Уровень детализации",
   "detailLevelAriaLabel": "Уровень детализации",
   "detailLevelLoadingAriaLabel": "Загрузка дополнительных данных",

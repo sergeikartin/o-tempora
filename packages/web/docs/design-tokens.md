@@ -15,11 +15,12 @@ Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact
 | `color-bg-surface-raised` | `#FFFFFF` | Filter chips, filter pills |
 | `color-border-subtle` | `#E0D3AC` | Default borders, dividers |
 | `color-border-strong` | `#C7B383` | Hover/active borders |
+| `color-border-control` | `#837757` | Borders of interactive controls (filter pills, search input, switch dots, zoom/drawer/collapse buttons) — 3.7:1 on `color-bg-base`, 4.4:1 on `color-bg-surface-raised`; hover steps to `color-text-secondary` |
 | `color-border-emphasis` | `#837757` | Year Axis's century tick mark (darkest of its three tick layers) |
 | `color-text-primary` | `#241A10` | Primary text (ink) |
 | `color-text-secondary` | `#6B6046` | Secondary/muted text (faded ink) |
 | `color-accent-selected` | `#8A2A1A` | Viewport indicator, focus ring (oxblood) |
-| `color-accent-selection-ring` | `#866F2C` | The timeline's selected/search-jumped entity ring and label — a dedicated warm bronze, kept off the mark's own color by a `color-bg-base` gap ring drawn between them (`docs/adr/0011-selection-highlight-as-concentric-ring-marks.md`) |
+| `color-selection-halo` | `#241A10` at 14% | The timeline's selected/search-jumped entity halo — a translucent ink fill behind the mark, extending 8px past it, so it reads against every lane hue without a gap band (`docs/adr/0014-ink-selection-halo.md`) |
 | `color-focus-ring` | `#6E2013` | Keyboard focus outline |
 | `color-bg-axis` | `#EBDDBD` | Year Axis ruler background — a shade darker than the page so it reads as a distinct bar |
 
@@ -33,27 +34,27 @@ Used as the stroke/fill color for every Conflict's range line and point-dot mark
 
 ## Occupation Domain Palette
 
-People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and source than the flat Conflict Color above, or Milestones' own category palette). Used as the stroke color on People-lane lifespan lines and the sidebar legend swatch. Re-derived from Pantheon's source hues, muted into the Ledger & Ink chroma range (most sit at or just above the OKLCH chroma floor — as desaturated as they can go before reading as gray) and ordered so every adjacent pair in the table below clears the CVD-safety checks — this is also the order the sidebar legend should render in; reordering it re-opens the adjacency question. Validated with `dataviz`'s `validate_palette.js` (OKLCH lightness/chroma bounds, CVD separation simulated under protanopia/deuteranopia, a normal-vision floor, contrast vs. the parchment surface): lightness band and chroma floor pass; CVD separation lands in the legal floor band (worst adjacent pair ΔE 6.4, deutan) rather than a clean pass, the trade for pulling every hue this close to gray — legal only because color here is never the only identity channel (label, lane, and line-vs-dot shape carry it too, same principle the Design Concept above states); contrast is a WARN for Public Figure (2.6:1 vs. parchment), mitigated by the always-visible label beside every bar.
+People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and source than the flat Conflict Color above, or Milestones' own category palette). Used as the stroke color on People-lane lifespan lines and the sidebar legend swatch. Re-derived from Pantheon's source hues, muted into the Ledger & Ink chroma range (most sit at or just above the OKLCH chroma floor — as desaturated as they can go before reading as gray) and ordered so every adjacent pair in the table below clears the CVD-safety checks — this is also the order the sidebar legend should render in; reordering it re-opens the adjacency question. Lightness is set so every domain color holds at least 3:1 against the parchment surface at `mark-opacity-resting`, and adjacent pairs stay separable under simulated protanopia/deuteranopia; this works because color here is never the only identity channel (label, lane, and line-vs-dot shape carry it too, same principle the Design Concept above states).
 
 | Domain | Token | Hex |
 |---|---|---|
-| Sports | `color-domain-sports` | `#BA6F8A` |
+| Sports | `color-domain-sports` | `#9A5C73` |
 | Business & Law | `color-domain-business-law` | `#347830` |
 | Humanities | `color-domain-humanities` | `#4E4993` |
-| Institutions | `color-domain-institutions` | `#BA534E` |
+| Institutions | `color-domain-institutions` | `#B6514C` |
 | Exploration | `color-domain-exploration` | `#3E70B0` |
-| Arts | `color-domain-arts` | `#BD6545` |
-| Science & Technology | `color-domain-science-technology` | `#3F936E` |
-| Public Figure | `color-domain-public-figure` | `#BB883A` |
+| Arts | `color-domain-arts` | `#A85A3D` |
+| Science & Technology | `color-domain-science-technology` | `#357B5C` |
+| Public Figure | `color-domain-public-figure` | `#8E672C` |
 
 ## Milestone Category Palette
 
-Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values for filtering, tooltips, and filter-chip labels — only *color* folds it down to 2 legible groups, each one a darker, richer step of the People-domain hue its content actually echoes (same pigment, different register: People reads as the lit, vivid layer; Conflicts/Milestones as the darker ink marking what happened). This set, together with the flat Conflict Color above, is small enough (3 colors) to validate *every* pair against every other, not just neighbors — and unlike the Occupation Domain palette above, it clears the full CVD target even muted: lightness band, chroma floor, and CVD separation (worst adjacent ΔE 8.1, protan) all pass; contrast is a WARN only for Social & Human Culture (2.8:1), mitigated the same way as the domain palette above. See `docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md` for how this 2-group split and the current per-category assignment were arrived at.
+Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values for filtering, tooltips, and filter-chip labels — only *color* folds it down to 2 legible groups, each one a darker, richer step of the People-domain hue its content actually echoes (same pigment, different register: People reads as the lit, vivid layer; Conflicts/Milestones as the darker ink marking what happened). This set, together with the flat Conflict Color above, is small enough (3 colors) to validate *every* pair against every other, not just neighbors — and unlike the Occupation Domain palette above, it clears the full CVD target even muted: lightness band, chroma floor, and CVD separation (worst adjacent ΔE 8.1, protan) all pass; both groups hold at least 3:1 against parchment at `mark-opacity-resting`. See `docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md` for how this 2-group split and the current per-category assignment were arrived at.
 
 | Group | Hex | Rhymes with (People domain) | `MilestoneCategory` values |
 |---|---|---|---|
-| Science & Innovation | `#008456` | Science & Technology | `science-theory`, `medicine-health`, `communication`, `transportation`, `everyday-technology`, `food-agriculture`, `energy-industry` |
-| Social & Human Culture | `#BC8118` | Public Figure | `public-health`, `media-culture`, `landmarks`, `infrastructure`, `expedition`, `society-administration`, `culture-arts`, `religion-mythology`, `environment-geology`, `commerce-finance`, `social-movements`, `sports-entertainment`, `philosophy-education`, `law-jurisprudence`, `archaeology-anthropology` |
+| Science & Innovation | `#008255` | Science & Technology | `science-theory`, `medicine-health`, `communication`, `transportation`, `everyday-technology`, `food-agriculture`, `energy-industry` |
+| Social & Human Culture | `#946513` | Public Figure | `public-health`, `media-culture`, `landmarks`, `infrastructure`, `expedition`, `society-administration`, `culture-arts`, `religion-mythology`, `environment-geology`, `commerce-finance`, `social-movements`, `sports-entertainment`, `philosophy-education`, `law-jurisprudence`, `archaeology-anthropology` |
 
 ## Typography
 
@@ -66,7 +67,7 @@ Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values 
 
 | Token | Value | Usage |
 |---|---|---|
-| `mark-opacity-resting` | `0.8` | Resting opacity of every lane line and dot; hover and selection restore `1`. Labels are unaffected. At this value the lighter hues (Public Figure, Social & Human Culture) blend to roughly 2.1–2.2:1 against parchment — below the contrast of their full-strength values, offset by the always-visible ink label beside every mark. |
+| `mark-opacity-resting` | `0.8` | Resting opacity of every lane line and dot; hover and selection restore `1`. Labels are unaffected. Every domain, group and Conflict color is set dark enough to hold at least 3:1 against parchment at this opacity. |
 
 ## Motion
 

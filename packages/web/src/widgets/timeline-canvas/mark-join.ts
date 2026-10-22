@@ -37,7 +37,7 @@ export interface LineMarkGeometry<Datum> {
   hitX1: (d: Datum) => number;
   hitY: (d: Datum) => number;
   hitHeight: (d: Datum) => number;
-  /** Shared by the ring-outer/ring-gap/line parts — all three sit on the same vertical center. */
+  /** Shared by the halo/line parts — both sit on the same vertical center. */
   centerY: (d: Datum) => number;
   labelX: (d: Datum) => number;
   /** Wrapped label lines; omitted for a single-line label (`d.name`). */
@@ -70,13 +70,12 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
   const svg = d3.select(svgEl);
   const durationMs = motionDurationMs('--motion-duration-base');
   // Tuple-indexed (not .map()'d) so noUncheckedIndexedAccess doesn't treat
-  // any of these as possibly-undefined — MarkShape's fixed 5-tuple length
-  // guarantees all five exist.
+  // any of these as possibly-undefined — MarkShape's fixed 4-tuple length
+  // guarantees all four exist.
   const hitClass = `.${shape[0].markerClass}`;
-  const ringOuterClass = `.${shape[1].markerClass}`;
-  const ringGapClass = `.${shape[2].markerClass}`;
-  const lineClass = `.${shape[3].markerClass}`;
-  const nameClass = `.${shape[4].markerClass}`;
+  const haloClass = `.${shape[1].markerClass}`;
+  const lineClass = `.${shape[2].markerClass}`;
+  const nameClass = `.${shape[3].markerClass}`;
 
   const nodes = svg
     .select<SVGGElement>(groupSelector)
@@ -94,14 +93,9 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
         // pre-existing mark's row *change* animates (below, via the update
         // selection's transition); an entering mark should just fade in, not
         // also slide in from row 0.
-        const [hit, ringOuter, ringGap, line, name] = buildMarkChildren(
-          g,
-          shape,
-          styles,
-        );
+        const [hit, halo, line, name] = buildMarkChildren(g, shape, styles);
         hit.attr('y', geometry.hitY).attr('height', geometry.hitHeight);
-        ringOuter.attr('y1', geometry.centerY).attr('y2', geometry.centerY);
-        ringGap.attr('y1', geometry.centerY).attr('y2', geometry.centerY);
+        halo.attr('y1', geometry.centerY).attr('y2', geometry.centerY);
         line.attr('y1', geometry.centerY).attr('y2', geometry.centerY);
         name.attr('y', (d) => d.labelY);
         g.transition().duration(durationMs).style('opacity', 1);
@@ -157,22 +151,14 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     .attr('y', geometry.hitY)
     .attr('height', geometry.hitHeight);
 
-  // The ring/gap lines only need x1/x2 kept in sync with the real line
-  // (their y and stroke-width are fixed at creation). They're
+  // The halo line only needs x1/x2 kept in sync with the real line
+  // (its y and stroke-width are fixed at creation). It's
   // pointer-events: none so carrying the same data-entity-id as the real
   // line never makes them a click/hover target — it's only there so
   // toggleSelectionHighlight can find them by the same selector pattern
   // every other mark uses.
   groups
-    .select<SVGLineElement>(ringOuterClass)
-    .attr('x1', (d) => d.x1)
-    .attr('x2', (d) => d.x2)
-    .attr('data-entity-id', (d) => d.id)
-    .attr('y1', geometry.centerY)
-    .attr('y2', geometry.centerY);
-
-  groups
-    .select<SVGLineElement>(ringGapClass)
+    .select<SVGLineElement>(haloClass)
     .attr('x1', (d) => d.x1)
     .attr('x2', (d) => d.x2)
     .attr('data-entity-id', (d) => d.id)
@@ -264,23 +250,22 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
 }
 
 /**
- * Creates `id`'s mark's ring-outer/ring-gap pair the first time it's ever
- * selected — mark-shape-html.ts omits both from every mark's initial paint
- * (see its own comment), so most marks never have them at all. Ring
- * geometry always exactly matches the real mark's own x1/x2/y1/y2 (or
- * cx/cy) — only stroke-width/r (fixed constants, mark-shape.ts's
- * RING_OUTER_ATTRS/RING_GAP_ATTRS) set the two apart — so this just copies
- * `geometryAttrs` straight off the sibling real element found via
- * `markClass`, rather than re-deriving position from layout/scale data.
- * A no-op once the pair exists (never rebuilt, same as the D3 join's own
- * enter-time rings) or if `id` doesn't match any element under `markClass`
- * in this `svg` (e.g. a point id checked against `.d3-line`).
+ * Creates `id`'s mark's halo the first time it's ever selected —
+ * mark-shape-html.ts omits it from every mark's initial paint (see its own
+ * comment), so most marks never have one at all. Halo geometry always
+ * exactly matches the real mark's own x1/x2/y1/y2 (or cx/cy) — only
+ * stroke-width/r (fixed constants, mark-shape.ts's HALO_LINE_ATTRS) set the
+ * two apart — so this just copies `geometryAttrs` straight off the sibling
+ * real element found via `markClass`, rather than re-deriving position
+ * from layout/scale data. A no-op once the halo exists (never rebuilt,
+ * same as the D3 join's own enter-time halo) or if `id` doesn't match any
+ * element under `markClass` in this `svg` (e.g. a point id checked against
+ * `.d3-line`).
  */
-export function ensureRingChildren(
+export function ensureHaloChild(
   svg: SVGSVGElement,
   markClass: string,
-  ringOuterPart: MarkShapePart,
-  ringGapPart: MarkShapePart,
+  haloPart: MarkShapePart,
   styles: Record<string, string | undefined>,
   id: string | null | undefined,
   geometryAttrs: readonly string[],
@@ -291,7 +276,7 @@ export function ensureRingChildren(
   );
   const group = real?.parentElement;
   if (!real || !group) return;
-  if (group.querySelector(`.${ringOuterPart.markerClass}`)) return;
+  if (group.querySelector(`.${haloPart.markerClass}`)) return;
 
   const build = (part: MarkShapePart): SVGElement => {
     const el = document.createElementNS('http://www.w3.org/2000/svg', part.tag);
@@ -310,10 +295,9 @@ export function ensureRingChildren(
     return el;
   };
 
-  // DOM order matters for paint order — outer, then gap, then the real
-  // mark already sitting at `real` (mark-shape.ts's declared 5-child order).
-  group.insertBefore(build(ringOuterPart), real);
-  group.insertBefore(build(ringGapPart), real);
+  // DOM order matters for paint order — the halo goes behind the real mark
+  // already sitting at `real` (mark-shape.ts's declared 4-child order).
+  group.insertBefore(build(haloPart), real);
 }
 
 /**

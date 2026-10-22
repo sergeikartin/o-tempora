@@ -2,7 +2,6 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "siteTitle": "Every life in context",
   "filtersAriaLabel": "Filters",
-  "filtersHeading": "Filters",
   "detailLevelHeading": "Detail Level",
   "detailLevelAriaLabel": "Detail Level",
   "detailLevelLoadingAriaLabel": "Loading additional data",
