@@ -1,0 +1,386 @@
+<!doctype html>
+<!-- PROTOTYPE (ticket 02): three landing-page variants, switch with ?variant=A|B|C or ←/→. Throwaway; mock data, real tokens and fonts. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O Tempora — landing prototype</title>
+<style>
+@font-face{font-family:Archivo;font-weight:400;src:url(../../../../node_modules/@fontsource/archivo/files/archivo-latin-400-normal.woff2)}
+@font-face{font-family:Archivo;font-weight:500;src:url(../../../../node_modules/@fontsource/archivo/files/archivo-latin-500-normal.woff2)}
+@font-face{font-family:Archivo;font-weight:600;src:url(../../../../node_modules/@fontsource/archivo/files/archivo-latin-600-normal.woff2)}
+@font-face{font-family:Archivo;font-weight:700;src:url(../../../../node_modules/@fontsource/archivo/files/archivo-latin-700-normal.woff2)}
+@font-face{font-family:Fraunces;font-weight:600;src:url(../../../../node_modules/@fontsource/fraunces/files/fraunces-latin-600-normal.woff2)}
+@font-face{font-family:Fraunces;font-weight:900;src:url(../../../../node_modules/@fontsource/fraunces/files/fraunces-latin-900-normal.woff2)}
+:root{
+  --bg:#F2E9D2;--surface:#FBF6E9;--raised:#FFF;--border:#E0D3AC;--border-strong:#C7B383;--control:#837757;
+  --ink:#241A10;--ink2:#6B6046;--accent:#8A2A1A;--focus:#6E2013;--axis:#EBDDBD;
+  --sh-sports:#9A5C73;--sh-biz:#347830;--sh-hum:#4E4993;--sh-inst:#B6514C;--sh-exp:#3E70B0;--sh-arts:#A85A3D;--sh-sci:#357B5C;--sh-pub:#8E672C;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;font:400 16px/1.5 Archivo,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+.serif{font-family:Fraunces,Georgia,serif}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* nav */
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font:900 22px Fraunces,serif;text-decoration:none}
+.brand svg{width:30px;height:30px}
+.nav-r{display:flex;gap:18px;align-items:center;font-size:14px;color:var(--ink2)}
+.nav-r a{text-decoration:none;padding:6px 2px}
+.nav-r b{color:var(--ink);font-weight:600}
+.nav-r .ghost{border:1px solid var(--control);border-radius:9999px;padding:6px 14px;color:var(--ink)}
+
+/* shared bits */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--bg);border:0;border-radius:9999px;padding:15px 30px;font:600 17px Archivo,sans-serif;text-decoration:none;box-shadow:0 1px 0 #6E2013,0 6px 16px -6px rgba(138,42,26,.55);cursor:pointer}
+.btn:hover{background:#7A2415}
+.btn:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.sub{font-size:20px;line-height:1.45;color:var(--ink2);max-width:34ch}
+.eyebrow{font:600 12px Archivo;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.frame{background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;box-shadow:0 18px 40px -22px rgba(36,26,16,.45);overflow:hidden}
+.frame-bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--border);background:var(--surface);font-size:12px;color:var(--ink2)}
+.frame-bar i{width:9px;height:9px;border-radius:50%;background:var(--border-strong)}
+.frame-bar span{margin-left:8px}
+svg.tl{display:block;width:100%}
+.tl text{font:400 11.5px Archivo,sans-serif;fill:var(--ink)}
+.tl .ax text{fill:var(--ink2);font-size:11px}
+.pt{display:flex;gap:14px}
+.pt .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--bg);font:700 14px/30px Archivo;text-align:center}
+.pt b{display:block;font-weight:600;font-size:17px;line-height:1.3;margin-bottom:3px}
+.pt span{color:var(--ink2);font-size:15px}
+footer{border-top:1px solid var(--border-strong);margin-top:72px;padding:26px 0 90px;font-size:13.5px;color:var(--ink2)}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr auto;gap:28px;align-items:start}
+footer p+p{margin-top:6px}
+footer .lang a{margin-left:12px}
+.v{display:none}
+body[data-v=A] #A,body[data-v=B] #B,body[data-v=C] #C{display:block}
+
+/* switcher */
+#sw{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:#111;color:#fff;border-radius:9999px;padding:6px 8px;font:500 13px system-ui;box-shadow:0 6px 20px rgba(0,0,0,.35);z-index:99}
+#sw button{background:#333;color:#fff;border:0;width:28px;height:28px;border-radius:50%;cursor:pointer}
+body.bare #sw{display:none}
+
+/* ---------- A: stacked poster ---------- */
+#A .hero{text-align:center;padding:40px 0 36px}
+#A h1{font:900 clamp(44px,8vw,84px)/1 Fraunces,serif;letter-spacing:-.01em}
+#A .sub{margin:18px auto 28px;max-width:38ch}
+#A .shot{position:relative;margin-top:6px}
+#A .pin{position:absolute;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--bg);font:700 13px/28px Archivo;text-align:center;box-shadow:0 0 0 4px rgba(242,233,210,.9)}
+#A .three{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:44px}
+#A .start{margin-top:60px}
+#A .start h2{font:600 28px Fraunces,serif;margin-bottom:6px}
+#A .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+#A .card{background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;padding:18px;text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:border-color .12s,transform .12s}
+#A .card:hover{border-color:var(--accent);transform:translateY(-2px)}
+#A .card .era{font:600 12px Archivo;letter-spacing:.08em;color:var(--accent)}
+#A .card h3{font:600 21px/1.2 Fraunces,serif}
+#A .card p{font-size:14.5px;color:var(--ink2)}
+#A .card .kind{margin-top:auto;padding-top:8px;font-size:12px;color:var(--ink2)}
+
+/* ---------- B: split + looping preview ---------- */
+#B .split{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:center;padding:28px 0 20px}
+#B h1{font:900 clamp(44px,6vw,68px)/1.02 Fraunces,serif}
+#B .sub{margin:18px 0 26px}
+#B .pts{display:flex;flex-direction:column;gap:18px;margin-top:34px}
+#B .vp{font:900 40px/1 Fraunces,serif;letter-spacing:-.01em;padding:14px 18px 0;background:var(--surface)}
+#B .play{display:flex;justify-content:space-between;padding:0 18px 8px;background:var(--surface);font-size:12px;color:var(--ink2)}
+#B .ledger{margin-top:56px;border-top:2px solid var(--ink)}
+#B .ledger h2{font:600 12px Archivo;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);padding:12px 0}
+#B .row{display:grid;grid-template-columns:150px 230px 1fr 28px;gap:20px;align-items:baseline;padding:16px 4px;border-top:1px solid var(--border-strong);text-decoration:none}
+#B .row:hover{background:var(--surface)}
+#B .row .era{font:600 13px Archivo;color:var(--accent);letter-spacing:.04em}
+#B .row h3{font:600 22px Fraunces,serif}
+#B .row p{color:var(--ink2);font-size:15px}
+#B .row .ar{color:var(--accent);font-size:20px}
+
+/* ---------- C: timeline is the page ---------- */
+#C .band{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;padding-top:24px;padding-bottom:28px}
+#C h1{font:900 clamp(40px,6vw,76px)/1 Fraunces,serif}
+#C .band-r{max-width:340px}
+#C .sub{font-size:18px;margin:0 0 16px}
+#C .stage{background:var(--surface);border-top:1px solid var(--border-strong);border-bottom:1px solid var(--border-strong)}
+#C .statusrow{display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;padding-bottom:2px}
+#C .vph{font:900 34px/1 Fraunces,serif}
+#C .hint{font-size:13px;color:var(--ink2)}
+#C .stage svg{cursor:grab;touch-action:pan-y}
+#C .stage svg:active{cursor:grabbing}
+#C .three{display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px}
+#C .three .pt{padding:4px 28px;border-left:1px solid var(--border-strong)}
+#C .three .pt:first-child{border-left:0;padding-left:0}
+#C .jump{margin-top:44px}
+#C .jump h2{font:600 12px Archivo;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:12px}
+#C .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+#C .chip{background:var(--raised);border:1px solid var(--control);border-radius:12px;padding:12px 16px;text-align:left;font:inherit;cursor:pointer;display:block;text-decoration:none}
+#C .chip:hover,#C .chip.on{border-color:var(--accent);background:var(--surface);box-shadow:0 0 0 1px var(--accent)}
+#C .chip .era{font:600 12px Archivo;color:var(--accent);letter-spacing:.06em}
+#C .chip b{display:block;font:600 18px Fraunces,serif;margin:1px 0 2px}
+#C .chip span.t{font-size:13.5px;color:var(--ink2);line-height:1.35;display:block}
+#C .go{margin-top:10px;font-size:13px;color:var(--ink2)}
+
+@media (max-width:860px){
+  #A .three,#C .three{grid-template-columns:1fr;gap:18px}
+  #C .three .pt{border-left:0;padding:0}
+  #A .cards,#C .chips{grid-template-columns:1fr 1fr}
+  #B .split{grid-template-columns:1fr;gap:28px}
+  #B .row{grid-template-columns:110px 1fr 20px}
+  #B .row p{grid-column:1/3;grid-row:2}
+  footer .wrap{grid-template-columns:1fr}
+  #C .band{grid-template-columns:1fr;gap:16px}
+  #C .band-r{max-width:none}
+  #A .pin{display:none}
+}
+@media (max-width:520px){
+  .nav-r a.hide-s{display:none}
+  .sub{font-size:18px}
+  #A .cards,#C .chips{grid-template-columns:1fr}
+  #A .hero{padding-top:20px;text-align:left}
+  #A .sub{margin-left:0}
+  .btn{width:100%;justify-content:center}
+  #B .row{grid-template-columns:1fr 20px}
+  #B .row .era{grid-column:1/3}
+  #B .row p{grid-column:1/3;grid-row:auto}
+  #C .hint{display:none}
+  #C .vph{font-size:28px}
+}
+</style>
+</head>
+<body data-v="A">
+
+<template id="nav">
+  <div class="wrap nav">
+    <a class="brand" href="#"><svg viewBox="0 0 1024 1024"><circle cx="512" cy="524" r="330" fill="#6E2013"/><circle cx="512" cy="524" r="306" fill="#8A2A1A"/><rect x="362" y="409" width="260" height="62" rx="31" fill="#F2E9D2"/><rect x="402" y="493" width="300" height="62" rx="31" fill="#F2E9D2"/><rect x="362" y="577" width="170" height="62" rx="31" fill="#F2E9D2"/></svg>O Tempora</a>
+    <div class="nav-r"><a class="hide-s" href="#">About</a><a class="hide-s" href="#">GitHub</a><a class="ghost" href="#"><b>EN</b> · RU</a></div>
+  </div>
+</template>
+
+<template id="foot">
+  <footer><div class="wrap">
+    <div><p><b style="color:var(--ink)">O Tempora</b> — a zoomable timeline of world history. Read-only, no accounts.</p><p><a href="#">About</a> · <a href="#">GitHub</a></p></div>
+    <div><p>Data from Pantheon, Wikidata and Wikipedia (CC BY-SA).</p><p>Privacy: anonymous page-view stats via Umami, no cookies.</p></div>
+    <div class="lang"><b style="color:var(--ink)">EN</b><a href="#">RU</a></div>
+  </div></footer>
+</template>
+
+<!-- ===== A ===== -->
+<main class="v" id="A">
+  <div class="wrap" data-nav></div>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Every life in context.</h1>
+      <p class="sub">See who lived at the same time, and what else was happening.</p>
+      <a class="btn" href="#">Explore the timeline <span aria-hidden="true">→</span></a>
+    </section>
+    <div class="shot frame">
+      <div class="frame-bar"><i></i><i></i><i></i><span>otempora.info/timeline</span></div>
+      <svg class="tl" data-static data-from="1740" data-to="1873" data-h="350"></svg>
+    </div>
+    <div class="three">
+      <div class="pt"><div class="n">1</div><div><b>Time runs left to right.</b><span>Drag to travel, pinch or scroll to zoom.</span></div></div>
+      <div class="pt"><div class="n">2</div><div><b>Lives, conflicts and milestones share one timeline.</b><span>A bar is a life or a conflict, a dot is a single moment.</span></div></div>
+      <div class="pt"><div class="n">3</div><div><b>Tap anything for the story.</b><span>Begin with the famous, then dig deeper.</span></div></div>
+    </div>
+    <section class="start">
+      <h2>Or start somewhere</h2>
+      <div class="cards" data-cards></div>
+    </section>
+  </div>
+  <div data-foot></div>
+</main>
+
+<!-- ===== B ===== -->
+<main class="v" id="B">
+  <div class="wrap" data-nav></div>
+  <div class="wrap">
+    <section class="split">
+      <div>
+        <h1>Every life in context.</h1>
+        <p class="sub">See who lived at the same time, and what else was happening.</p>
+        <a class="btn" href="#">Explore the timeline <span aria-hidden="true">→</span></a>
+        <div class="pts">
+          <div class="pt"><div class="n">1</div><div><b>Time runs left to right.</b><span>Drag to travel, pinch or scroll to zoom.</span></div></div>
+          <div class="pt"><div class="n">2</div><div><b>Lives, conflicts and milestones share one timeline.</b><span>A bar is a life or a conflict, a dot is a single moment.</span></div></div>
+          <div class="pt"><div class="n">3</div><div><b>Tap anything for the story.</b><span>Begin with the famous, then dig deeper.</span></div></div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="vp num" id="bvp">1740 – 1873</div>
+        <div class="play"><span>People</span><span>Looping preview · pauses on hover</span></div>
+        <svg class="tl" id="bsvg" data-h="410" data-lane-labels></svg>
+      </div>
+    </section>
+    <section class="ledger">
+      <h2>Or start somewhere</h2>
+      <div data-rows></div>
+    </section>
+  </div>
+  <div data-foot></div>
+</main>
+
+<!-- ===== C ===== -->
+<main class="v" id="C">
+  <div class="wrap" data-nav></div>
+  <div class="wrap band">
+    <h1>Every life in context.</h1>
+    <div class="band-r">
+      <p class="sub">See who lived at the same time, and what else was happening.</p>
+      <a class="btn" href="#">Explore the timeline <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <section class="stage">
+    <div class="wrap statusrow"><span class="vph num" id="cvp">1740 – 1873</span><span class="hint">↔ Drag to travel · scroll to zoom — this is live</span></div>
+    <svg class="tl" id="csvg" data-h="380"></svg>
+  </section>
+  <div class="wrap">
+    <div class="three">
+      <div class="pt"><div class="n">1</div><div><b>Time runs left to right.</b><span>Drag to travel, pinch or scroll to zoom.</span></div></div>
+      <div class="pt"><div class="n">2</div><div><b>Lives, conflicts and milestones share one timeline.</b><span>A bar is a life or a conflict, a dot is a single moment.</span></div></div>
+      <div class="pt"><div class="n">3</div><div><b>Tap anything for the story.</b><span>Begin with the famous, then dig deeper.</span></div></div>
+    </div>
+    <section class="jump">
+      <h2>Or start somewhere</h2>
+      <div class="chips" data-chips></div>
+      <p class="go">Each opens the full timeline on that entry.</p>
+    </section>
+  </div>
+  <div data-foot></div>
+</main>
+
+<div id="sw"><button id="prev" aria-label="Previous">←</button><span id="lbl"></span><button id="next" aria-label="Next">→</button></div>
+
+<script>
+const COL={sports:'#9A5C73',biz:'#347830',hum:'#4E4993',inst:'#B6514C',exp:'#3E70B0',arts:'#A85A3D',sci:'#357B5C',pub:'#8E672C'};
+// [name,start,end,domain,fame 1(top)..3]
+const P=[
+['Socrates',-470,-399,'hum',1],['Plato',-428,-348,'hum',1],['Aristotle',-384,-322,'hum',1],['Alexander the Great',-356,-323,'inst',1],['Euclid',-325,-265,'sci',2],['Archimedes',-287,-212,'sci',1],['Hannibal',-247,-183,'inst',2],['Cicero',-106,-43,'hum',2],['Julius Caesar',-100,-44,'inst',1],['Cleopatra',-69,-30,'inst',1],['Augustus',-63,14,'inst',1],['Virgil',-70,-19,'arts',2],
+['Charlemagne',748,814,'inst',1],['Marco Polo',1254,1324,'exp',2],['Genghis Khan',1162,1227,'inst',1],['Dante',1265,1321,'arts',2],['Columbus',1451,1506,'exp',1],['Leonardo da Vinci',1452,1519,'arts',1],['Vasco da Gama',1469,1524,'exp',2],['Copernicus',1473,1543,'sci',2],['Michelangelo',1475,1564,'arts',1],['Magellan',1480,1521,'exp',2],['Martin Luther',1483,1546,'hum',2],['Galileo',1564,1642,'sci',1],['Shakespeare',1564,1616,'arts',1],['Isaac Newton',1643,1727,'sci',1],['J. S. Bach',1685,1750,'arts',2],
+['Benjamin Franklin',1706,1790,'sci',2],['Immanuel Kant',1724,1804,'hum',2],['George Washington',1732,1799,'inst',1],['Captain Cook',1728,1779,'exp',2],['Mozart',1756,1791,'arts',1],['Napoleon',1769,1821,'inst',1],['Beethoven',1770,1827,'arts',1],['Charles Darwin',1809,1882,'sci',1],['Abraham Lincoln',1809,1865,'inst',1],['Karl Marx',1818,1883,'hum',2],['Leo Tolstoy',1828,1910,'arts',2],['Thomas Edison',1847,1931,'sci',2],['Marie Curie',1867,1934,'sci',1],['Mahatma Gandhi',1869,1948,'inst',2],['Winston Churchill',1874,1965,'inst',2],['Albert Einstein',1879,1955,'sci',1],['Pablo Picasso',1881,1973,'arts',2]
+];
+// conflicts: bars. milestones: [name,year,color group]
+const C=[
+['Peloponnesian War',-431,-404,2],['Punic Wars',-264,-146,1],['Gallic Wars',-58,-50,2],['Crusades',1096,1291,1],['Hundred Years\' War',1337,1453,1],['Thirty Years\' War',1618,1648,1],['Seven Years\' War',1756,1763,2],['American Revolutionary War',1775,1783,1],['French Revolution',1789,1799,1],['Napoleonic Wars',1803,1815,1],['American Civil War',1861,1865,1],['First World War',1914,1918,1],['Second World War',1939,1945,1]
+];
+const M=[
+['Parthenon',-447,'soc',2],['Euclid\'s Elements',-300,'sci',2],['Magna Carta',1215,'soc',1],['Printing press',1440,'sci',1],['Telescope',1608,'sci',2],['Steam engine',1769,'sci',2],['Declaration of Independence',1776,'soc',1],['Boston Tea Party',1773,'soc',3],['First bicycle',1817,'sci',3],['Telegraph',1837,'sci',2],['The Communist Manifesto',1848,'soc',2],['Light bulb',1879,'sci',2],['Theory of relativity',1905,'sci',1],['Titanic sinks',1912,'soc',2],['Penicillin',1928,'sci',2],['Moon landing',1969,'sci',1]
+];
+const MCOL={sci:'#008255',soc:'#946513'},CONFLICT='#8C2D2B';
+
+const fmt=y=>{y=Math.round(y);return y<0?`${-y} BCE`:y<=0?'1 BCE':`${y}`};
+const fmtRange=(a,b)=>`${fmt(a)} – ${fmt(b)}`;
+const tw=s=>s.length*6.1;
+
+function ticks(from,to,w){
+  for(const s of [1,5,10,20,25,50,100,200,250,500,1000]) if(w/((to-from)/s)>=74){const o=[];for(let y=Math.ceil(from/s)*s;y<=to;y+=s)o.push(y);return o}
+  return [];
+}
+function pack(items,rowCount){ // items: {lx,end}
+  const rows=[];const out=[];
+  for(const it of items){let r=rows.findIndex(e=>e<=it.lx);if(r<0){r=rows.length}
+    if(r>=rowCount)continue;rows[r]=it.end+10;out.push({...it,r})}
+  return out;
+}
+function render(svg,from,to,{labels=false}={}){
+  const w=svg.clientWidth||svg.getBoundingClientRect().width||1000,h=+svg.dataset.h;
+  const span=to-from,x=y=>(y-from)/span*w;
+  const maxF=span>1400?1:span>500?2:3;
+  const gut=labels&&w>520?0:0;
+  const axH=26,pH=Math.round((h-axH)*.56),cH=h-axH-pH,rowH=26;
+  const o=[`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">`];
+  // people
+  const ppl=P.filter(p=>p[4]<=maxF&&x(p[2])>0&&x(p[1])<w).sort((a,b)=>a[1]-b[1]).map(p=>{
+    const sx=x(p[1]),ex=x(p[2]),lx=Math.max(sx,0)+6;return{p,sx,ex,lx,end:Math.max(ex,lx+tw(p[0]))}});
+  for(const it of pack(ppl,Math.floor((pH-8)/rowH))){
+    const y=8+it.r*rowH,[n,,,d]=it.p;
+    o.push(`<text x="${it.lx}" y="${y+11}">${n}</text><line x1="${Math.max(it.sx,2)}" x2="${Math.min(it.ex,w-2)}" y1="${y+18}" y2="${y+18}" stroke="${COL[d]}" stroke-width="4" stroke-linecap="round" opacity=".85"/>`);
+  }
+  // axis
+  const ay=pH;
+  o.push(`<g class="ax"><rect x="0" y="${ay}" width="${w}" height="${axH}" fill="#EBDDBD"/>`);
+  for(const t of ticks(from,to,w)){const tx=x(t);o.push(`<line x1="${tx}" x2="${tx}" y1="${ay}" y2="${ay+6}" stroke="#837757"/><text x="${tx+4}" y="${ay+18}">${fmt(t)}</text>`)}
+  o.push('</g>');
+  // conflicts + milestones
+  const cm=[];
+  for(const c of C){if(c[3]>maxF||x(c[2])<0||x(c[1])>w)continue;const sx=x(c[1]),ex=Math.max(x(c[2]),sx+4),lx=Math.max(sx,0)+2;cm.push({k:'c',c,sx,ex,lx,end:Math.max(ex,lx+tw(c[0]))})}
+  for(const m of M){if(m[3]>maxF||x(m[1])<0||x(m[1])>w)continue;const sx=x(m[1]),lx=sx-5;cm.push({k:'m',m,sx,lx,end:sx+12+tw(m[0])})}
+  cm.sort((a,b)=>b.k==='c'?1:-1);cm.sort((a,b)=>a.lx-b.lx);
+  const cy=ay+axH+10;
+  for(const it of pack(cm,Math.floor((cH-10)/rowH))){
+    const y=cy+it.r*rowH;
+    if(it.k==='c')o.push(`<line x1="${Math.max(it.sx,2)}" x2="${Math.min(it.ex,w-2)}" y1="${y+4}" y2="${y+4}" stroke="${CONFLICT}" stroke-width="4" stroke-linecap="round" opacity=".85"/><text x="${it.lx}" y="${y+18}">${it.c[0]}</text>`);
+    else o.push(`<circle cx="${it.sx}" cy="${y+8}" r="5" fill="${MCOL[it.m[2]]}" opacity=".85"/><text x="${it.sx+10}" y="${y+12}">${it.m[0]}</text>`);
+  }
+  if(labels&&svg.hasAttribute('data-lane-labels')){
+    o.push(`<g><rect x="8" y="${pH-24}" width="${w>520?64:0}" height="0"/></g>`);
+  }
+  o.push('</svg>');
+  svg.innerHTML=o.slice(1,-1).join('');
+  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.setAttribute('height',h);
+}
+
+/* ---- content shared by variants ---- */
+const SP=[
+{id:'60827',t:'Cleopatra',era:'68–29 BCE',k:'Person',teaser:'Egypt\'s last pharaoh, caught between Caesar, Augustus and the birth of the Roman Empire.',win:[-140,40]},
+{id:'5635',t:'Christopher Columbus',era:'1451–1506',k:'Person',teaser:'The age of exploration, with Vasco da Gama and Magellan setting sail while Leonardo paints.',win:[1400,1560]},
+{id:'Q6534',t:'French Revolution',era:'1789–1799',k:'Conflict',teaser:'A decade that remade Europe, with Napoleon rising and Beethoven composing.',win:[1740,1830]},
+{id:'Q25173',t:'Titanic',era:'1912',k:'Milestone',teaser:'April 1912, two years before the First World War, with Einstein, Curie and Edison still at work.',win:[1860,1960]}
+];
+document.querySelectorAll('[data-nav]').forEach(e=>e.appendChild(document.getElementById('nav').content.cloneNode(true)));
+document.querySelectorAll('[data-nav]').forEach(e=>{const n=e.firstElementChild;e.replaceWith(...n.childNodes.length?[n]:[]);});
+document.querySelectorAll('[data-foot]').forEach(e=>e.replaceWith(document.getElementById('foot').content.cloneNode(true)));
+document.querySelector('[data-cards]').innerHTML=SP.map(s=>`<a class="card" href="#"><span class="era num">${s.era}</span><h3>${s.t}</h3><p>${s.teaser}</p><span class="kind">${s.k} →</span></a>`).join('');
+document.querySelector('[data-rows]').innerHTML=SP.map(s=>`<a class="row" href="#"><span class="era num">${s.era}</span><h3>${s.t}</h3><p>${s.teaser}</p><span class="ar">→</span></a>`).join('');
+
+/* ---- A: static ---- */
+function drawA(){document.querySelectorAll('svg[data-static]').forEach(s=>render(s,+s.dataset.from,+s.dataset.to))}
+
+/* ---- B: looping pan/zoom ---- */
+const q=new URLSearchParams(location.search);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const KEY=[[-600,2000],[1400,1900],[1700,1900],[1740,1873],[1800,1960],[-600,2000]];
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+let bT0=null,bPause=false,bOff=0;
+function bFrame(ts){
+  if(!document.body.dataset.v||document.body.dataset.v!=='B'){bT0=null;return requestAnimationFrame(bFrame)}
+  if(bT0===null)bT0=ts;
+  if(q.has('freeze'))bOff=+q.get('freeze');else if(bPause){bT0=ts-bOff}else bOff=ts-bT0;
+  const seg=3200,hold=1100,N=KEY.length-1,t=(bOff%(seg*N))/seg,i=Math.floor(t),f=Math.min(1,(t-i)*seg/(seg-hold)),e=ease(f);
+  const [a0,a1]=KEY[i],[b0,b1]=KEY[i+1];
+  const c0=(a0+a1)/2,c1=(b0+b1)/2,s0=Math.log(a1-a0),s1=Math.log(b1-b0);
+  const c=c0+(c1-c0)*e,s=Math.exp(s0+(s1-s0)*e);
+  render(bsvg,c-s/2,c+s/2);bvp.textContent=fmtRange(c-s/2,c+s/2);
+  requestAnimationFrame(bFrame);
+}
+const bsvg=document.getElementById('bsvg'),bvp=document.getElementById('bvp');
+bsvg.addEventListener('pointerenter',()=>bPause=true);bsvg.addEventListener('pointerleave',()=>bPause=false);
+
+/* ---- C: live, draggable ---- */
+const csvg=document.getElementById('csvg'),cvp=document.getElementById('cvp');
+let cw=[1740,1873],tween=null;
+function drawC(){render(csvg,cw[0],cw[1]);cvp.textContent=fmtRange(cw[0],cw[1])}
+let drag=null;
+csvg.addEventListener('pointerdown',e=>{drag={x:e.clientX,w:[...cw]};csvg.setPointerCapture(e.pointerId)});
+csvg.addEventListener('pointermove',e=>{if(!drag)return;const d=(e.clientX-drag.x)/csvg.clientWidth*(drag.w[1]-drag.w[0]);cw=[drag.w[0]-d,drag.w[1]-d];drawC()});
+csvg.addEventListener('pointerup',()=>drag=null);
+csvg.addEventListener('wheel',e=>{e.preventDefault();const r=csvg.getBoundingClientRect(),f=(e.clientX-r.left)/r.width,k=Math.exp(e.deltaY*.0015),span=cw[1]-cw[0],ns=Math.min(3000,Math.max(30,span*k)),p=cw[0]+span*f;cw=[p-ns*f,p+ns*(1-f)];drawC()},{passive:false});
+function flyC(to){const from=[...cw],t0=performance.now();cancelAnimationFrame(tween);(function st(n){const f=Math.min(1,(n-t0)/900),e=ease(f);
+  const c=(from[0]+from[1])/2+((to[0]+to[1])/2-(from[0]+from[1])/2)*e,s=Math.exp(Math.log(from[1]-from[0])+(Math.log(to[1]-to[0])-Math.log(from[1]-from[0]))*e);cw=[c-s/2,c+s/2];drawC();if(f<1)tween=requestAnimationFrame(st)})(t0)}
+document.querySelector('[data-chips]').innerHTML=SP.map((s,i)=>`<a class="chip" href="#" data-i="${i}"><span class="era num">${s.era}</span><b>${s.t}</b><span class="t">${s.teaser}</span></a>`).join('');
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',e=>{e.preventDefault();document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');flyC(SP[+c.dataset.i].win)}));
+
+/* ---- switcher ---- */
+const V=[['A','Stacked poster + screenshot'],['B','Split + looping preview'],['C','Timeline is the page + live']];
+if(q.has('bare'))document.body.classList.add('bare');
+let cur=Math.max(0,V.findIndex(v=>v[0]===(q.get('variant')||'A')));
+function show(){document.body.dataset.v=V[cur][0];lbl.textContent=`${V[cur][0]} — ${V[cur][1]}`;
+  const u=new URL(location);u.searchParams.set('variant',V[cur][0]);history.replaceState(null,'',u);
+  requestAnimationFrame(()=>{drawA();drawC()})}
+prev.onclick=()=>{cur=(cur+V.length-1)%V.length;show()};next.onclick=()=>{cur=(cur+1)%V.length;show()};
+addEventListener('keydown',e=>{if(e.key==='ArrowLeft')prev.onclick();if(e.key==='ArrowRight')next.onclick()});
+addEventListener('resize',()=>{drawA();drawC()});
+document.fonts.ready.then(()=>{show();if(!reduce)requestAnimationFrame(bFrame);else render(bsvg,1740,1873)});
+</script>
+</body>
+</html>

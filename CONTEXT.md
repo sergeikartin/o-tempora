@@ -91,3 +91,11 @@ _Avoid_: deep link, permalink, share link, shareable state
 **Starting Point**:
 One of the few hand-picked **Entity Links** the **Landing Page** offers as a way into the timeline — chosen so the overlap of lives and events around the entity is visible on arrival.
 _Avoid_: example, demo, tour (curated narrated tours are out of scope), featured entry
+
+**Help**:
+The explanation a visitor can open at any time from inside the timeline, for those who skipped the **Landing Page** or are returning. Restates the Landing Page's three plain points and what the marks mean, and is the home of the links to About & data and the language switch. Always opened by the visitor — never appears on its own, and remembers nothing about whether it was seen.
+_Avoid_: tutorial, onboarding, tour (curated narrated tours are out of scope), coach marks, FAQ
+
+**Empty Lane**:
+A lane with no **Marks** in the current **Viewport Range**. Says why: filters hid everything (offers to clear them), or nothing exists at the current **Detail Level** in that period (offers the next level up; at the deepest level, just says nothing is recorded). Shown only when the lane is completely empty, never for a merely sparse one.
+_Avoid_: no results (that is **Search**'s own empty state), blank lane

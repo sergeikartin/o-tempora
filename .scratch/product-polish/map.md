@@ -28,6 +28,9 @@ A spec — `spec.md` in this directory — for the pre-launch pass that makes ot
 - [Routes and URL state](issues/03-routes-and-url-state.md) — landing at `/` and `/ru/`, timeline at `/timeline/` and `/ru/timeline/`, no redirects; the only URL state is `?e=<id>` (an Entity Link) resolved by progressive delta loading; language switch carries it across locales; four self-canonical pages with hreflang pairs; two ADRs (root route split superseding 0003, web entity URL state) plus living-doc updates.
 - [Example starting points](issues/04-example-starting-points.md) — four static Entity Links (Cleopatra `60827`, Columbus `5635`, French Revolution `Q6534`, Titanic `Q25173`) with one-line teasers, a post-regeneration test that the ids still resolve, same set on `/ru/`.
 - [Plain-language labels](issues/05-plain-language-labels.md) — Detail Level names kept with a "how much to show" hint; "People" heading → Occupation; "Institutions" → Politics & Religion; "Public Figure" → Public Figures; "Social & Human Culture" → Society & Culture; landing says "conflicts", not "wars".
+- [Prototype landing hero preview](issues/02-prototype-landing-hero-preview.md) — stacked layout with a static screenshot of the real timeline under the CTA (no datasets or timeline JS on the landing), three points in a row, four Starting Point cards, light footer; the split-with-loop and live-miniature variants were rejected.
+- [Prototype in-app help](issues/06-prototype-in-app-help.md) — a Help popover (desktop) / bottom sheet (phone) from the top bar's "?", holding the landing's three points, the Detail Level hint, a colour key, and links to About & data and the language switch; per-lane Empty Lane messages for filters-hide-everything and nothing-in-period; never auto-opens. Extending the About modal was rejected.
+- [Finalize the polish spec](issues/07-finalize-polish-spec.md) — `spec.md`: ten ordered items, launch check, deferred list; no time budget.
 
 ## Settled for the spec (decided in grilling, no ticket)
 
@@ -41,7 +44,7 @@ A spec — `spec.md` in this directory — for the pre-launch pass that makes ot
 
 ## Not yet specified
 
-None outside the open tickets: the hero preview (02), the first-view frame (09), and in-app help (06) are all ticketed prototypes.
+None. The destination artifact is written: [spec.md](spec.md).
 
 ## Out of scope
 
