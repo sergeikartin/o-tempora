@@ -322,7 +322,12 @@ export function TimelineCanvas({
   // Drives the Year Axis's viewport-windowed tick rendering (see YearAxis.tsx)
   // — tracked separately from viewportWidthPx above since this one needs to
   // follow live scroll position, not just mount/zoom-time measurements.
-  const [scrollLeft, setScrollLeft] = useState(0);
+  // Seeded with the default start year's offset so the prerendered/first
+  // render's Viewport Range already shows the default window instead of the
+  // timeline's earliest years until the mount effect measures and scrolls.
+  const [scrollLeft, setScrollLeft] = useState(() =>
+    Math.max(0, scale(DEFAULT_VIEWPORT_START_YEAR)),
+  );
   // The two sticky lanes' (position: sticky) internal horizontal pan is
   // driven by mirroring scrollRef's scrollLeft onto them (see the ref
   // comment above) — mirroring it only from the throttled native-scroll
