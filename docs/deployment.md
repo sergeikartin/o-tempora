@@ -57,10 +57,14 @@ Each page carries a visible link to the sibling locale's default (home) view —
 
 ## Verifying locally
 
+`npm run preview` serves `dist/` the way Pages does, including the 404 page for unknown paths (`http.server` would not). Run it detached so the shell call returns, and curl `127.0.0.1` with the proxy bypassed — agent and CI shells often set `http_proxy`, which turns every `localhost` request into a 502:
+
 ```
-cd packages/web
-npm run build
-cd dist && python3 -m http.server 8000
+npm run build --workspace packages/web
+cd packages/web && (setsid npx vite preview --port 4173 >/dev/null 2>&1 </dev/null &)
+for p in / /ru/ /anything-else; do curl --noproxy '*' -s -o /dev/null -w "$p %{http_code}\n" http://127.0.0.1:4173$p; done
 ```
 
-Then check `http://localhost:8000/` and `http://localhost:8000/ru/` both load, and the switcher link on each navigates to the other. To check the 404 page, use `npm run preview` instead of `http.server` (which serves its own error page) and open any unknown path, e.g. `/anything-else`.
+Expect `200`, `200`, `404`. In a browser, check that the language switcher on each locale navigates to the other, and that the unknown path shows the branded 404 page.
+
+Stop the server by PID — `kill $(ss -ltnp | rg ':4173' | rg -o 'pid=[0-9]+' | cut -d= -f2)`. `pkill -f "vite preview"` also matches the invoking shell's own command line and kills it.
