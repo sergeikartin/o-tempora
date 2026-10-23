@@ -6,6 +6,7 @@ import {
   yearMonthToFractionalYear,
 } from '../../shared/lib/date';
 import { entityLinkSearch } from '../../shared/lib/entity';
+import { trackEvent } from '../../shared/lib/track-event';
 import { m } from '../../shared/paraglide/messages.js';
 import type { YearMonth } from '../../shared/types';
 import type { Curiosity, CuriosityMark } from './curiosities';
@@ -129,6 +130,9 @@ export function CuriosityFigure({
               onPointerEnter={onLinkIntent}
               onFocus={onLinkIntent}
               onTouchStart={onLinkIntent}
+              onClick={() =>
+                trackEvent('landing_mark_open', { curiosity: curiosity.id })
+              }
             >
               {mark.label()}
             </a>

@@ -1,9 +1,13 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { afterEach, expect, test } from 'vitest';
+import { afterEach, expect, test, vi } from 'vitest';
+import { trackEvent } from '../../shared/lib/track-event';
 import { LandingPage } from './LandingPage';
+
+vi.mock('../../shared/lib/track-event');
 
 afterEach(() => {
   cleanup();
+  vi.clearAllMocks();
   document.head.innerHTML = '';
   window.history.replaceState(null, '', '/');
 });
@@ -146,4 +150,38 @@ test('arrow keys move through the chips, which are a single tab stop', () => {
   expect(second.getAttribute('aria-pressed')).toBe('true');
   expect(document.activeElement).toBe(second);
   expect(second.tabIndex).toBe(0);
+});
+
+test('tracks the picked curiosity with the control that picked it', () => {
+  render(<LandingPage />);
+  fireEvent.click(screen.getByRole('button', { name: 'Monet & Monroe' }));
+  expect(trackEvent).toHaveBeenLastCalledWith('landing_curiosity_select', {
+    curiosity: 'monet-monroe',
+    method: 'chip',
+  });
+  fireEvent.click(screen.getByRole('button', { name: 'Next curious overlap' }));
+  expect(trackEvent).toHaveBeenLastCalledWith('landing_curiosity_select', {
+    curiosity: 'ali-hawking',
+    method: 'stepper',
+  });
+});
+
+test('does not track the curiosity opened from the hash', () => {
+  window.history.replaceState(null, '', '/#year-1564');
+  render(<LandingPage />);
+  expect(trackEvent).not.toHaveBeenCalled();
+});
+
+test('tracks the call-to-action and mark links with the open curiosity', () => {
+  render(<LandingPage />);
+  fireEvent.click(
+    screen.getByRole('link', { name: 'See them on the timeline' }),
+  );
+  expect(trackEvent).toHaveBeenLastCalledWith('landing_cta_click', {
+    curiosity: 'einstein-jobs',
+  });
+  fireEvent.click(screen.getByRole('link', { name: 'Steve Jobs' }));
+  expect(trackEvent).toHaveBeenLastCalledWith('landing_mark_open', {
+    curiosity: 'einstein-jobs',
+  });
 });

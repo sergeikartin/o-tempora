@@ -6,6 +6,7 @@ import {
   TIMELINE_HREF,
 } from '../../shared/config';
 import { entityLinkSearch } from '../../shared/lib/entity';
+import { trackEvent } from '../../shared/lib/track-event';
 import { m } from '../../shared/paraglide/messages.js';
 import { Logo } from '../../shared/ui';
 import { CuriosityFigure } from './CuriosityFigure';
@@ -64,15 +65,19 @@ export function LandingPage() {
     }
   }, []);
 
-  const pickIndex = (index: number) => {
+  const pickIndex = (index: number, method: 'chip' | 'stepper') => {
     const next = CURIOSITIES[index];
     if (!next) return;
+    trackEvent('landing_curiosity_select', { curiosity: next.id, method });
     setActiveId(next.id);
     setHash(`#${next.id}`);
     window.history.replaceState(null, '', `#${next.id}`);
   };
   const step = (delta: number) =>
-    pickIndex((activeIndex + delta + CURIOSITIES.length) % CURIOSITIES.length);
+    pickIndex(
+      (activeIndex + delta + CURIOSITIES.length) % CURIOSITIES.length,
+      'stepper',
+    );
 
   const onChipKeyDown = (event: KeyboardEvent) => {
     const last = CURIOSITIES.length - 1;
@@ -86,7 +91,7 @@ export function LandingPage() {
     }[event.key];
     if (target === undefined) return;
     event.preventDefault();
-    pickIndex(target);
+    pickIndex(target, 'chip');
     chipRefs.current[target]?.focus();
   };
 
@@ -119,6 +124,9 @@ export function LandingPage() {
           onPointerEnter={prefetchTimeline}
           onFocus={prefetchTimeline}
           onTouchStart={prefetchTimeline}
+          onClick={() =>
+            trackEvent('landing_cta_click', { curiosity: active.id })
+          }
         >
           {m.landingCta()}
         </a>
@@ -142,7 +150,7 @@ export function LandingPage() {
                 data-label={curiosity.chip()}
                 aria-pressed={curiosity.id === active.id}
                 tabIndex={curiosity.id === active.id ? 0 : -1}
-                onClick={() => pickIndex(index)}
+                onClick={() => pickIndex(index, 'chip')}
                 onKeyDown={onChipKeyDown}
               >
                 {curiosity.chip()}

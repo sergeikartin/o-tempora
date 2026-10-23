@@ -47,7 +47,7 @@ Tickets 10, 11 and 12 are blocked on this decision.
 | 11 | In-app Help | blocked by 09 |
 | 12 | Accessibility and touch-target sweep | last; blocked by 10, 11 |
 | 13 | Launch check | blocked by 12 |
-| 14 | Landing gaps | About/GitHub nav, footer privacy line, Mainstream-resolution test; blocked by 06 |
+| 14 | Landing gaps | Mainstream-resolution test, RU length check, copy review; blocked by 06 |
 
 ## Launch check
 
