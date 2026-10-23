@@ -165,7 +165,7 @@ components:
 
 O Tempora reads as a chronicle kept by one careful hand: aged parchment for the page, iron-gall ink for every word, and a single oxblood accent standing in for a wax seal. The data is the ornament. Colour, line and dot do the encoding, so chrome stays small, warm and quiet, and nothing competes with the marks on the timeline.
 
-The system is dense but unhurried. Controls are small, pill-shaped and exact; labels are short sentence-case nouns; years are set in tabular figures in the same face as the text around them. Fraunces appears only where a chronicle would letter a heading: the Viewport Range, an entity's name, the wordmark. There is one theme, light, and the system does not ask for a second.
+The system is dense but unhurried. Controls are small, pill-shaped and exact; labels are short sentence-case nouns; years are set in tabular figures in the same face as the text around them. Fraunces appears only where a chronicle would letter a heading: the Viewport Range, an entity's name, the wordmark, and the landing page's headline and lede. There is one theme, light, and the system does not ask for a second.
 
 **Key Characteristics:**
 - Warm parchment ground with ink text. No pure black, no pure-white page.
@@ -219,6 +219,8 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 - **Viewport Range** (Fraunces 600, 56px, 1; 32px below 960px): The window of years as the screen's heading, tabular figures.
 - **Panel Heading** (Fraunces 600, 20px, 1.2): Entity name in the detail panel and heading of the About panel.
 - **Wordmark** (Fraunces 600, 18px): "O Tempora" beside the 24px seal mark.
+- **Landing Headline and Lede** (Fraunces 600): headline 40–60px at 1.05, lede 20–30px at 1.4, on the landing page only.
+- **Landing Pitch** (Archivo 400, 16px, 1.5, Faded Ink): the one-line explanation under the landing headline. Curiosity chips on the landing page are the filter pill at 14px.
 - **Body** (Archivo 400, 14px, 1.5): Descriptions in the detail panel. Keep lines near 40 characters in the 340px panel.
 - **Body Small** (Archivo 400, 13px, 1.5): Date lines, buttons and links; taglines in italic.
 - **Control** (Archivo 400, 12px, 1.4): Pills, inputs, results, switch labels; 600 for an active pill, 700 for a reached switch label.
@@ -229,7 +231,7 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 ### Named Rules
 **The Same Face Rule.** Years and dates use Archivo with tabular figures, never a separate monospace.
 
-**The Three Headings Rule.** Fraunces is for the Viewport Range, the entity name and the wordmark. Chrome stays in Archivo.
+**The Three Headings Rule.** Fraunces is for the Viewport Range, the entity name and the wordmark, plus the landing page's headline and lede. Chrome stays in Archivo.
 
 ## Layout
 

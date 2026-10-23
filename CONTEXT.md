@@ -81,7 +81,7 @@ A live text query, matched case-insensitively as a substring against an entry's 
 _Avoid_: filter (bare — Search narrows within the filters, it isn't one), lookup, autocomplete
 
 **Landing Page**:
-The short explanatory first page a cold visitor reaches at the root of each **Locale**: what the product is, real counts of what the dataset holds, a few **Starting Points** as story cards, a framed preview of the real timeline, and one button into the timeline. Separate from the timeline: arriving at the root never drops a visitor onto the timeline, and returning visitors are not redirected past it.
+The short explanatory first page a cold visitor reaches at the root of each **Locale**: what the product is, one **Curiosity** drawn the way the timeline draws it with a row of others to switch between, and one button into the timeline. Separate from the timeline: arriving at the root never drops a visitor onto the timeline, and returning visitors are not redirected past it.
 _Avoid_: home page (ambiguous with the language switcher), splash, intro, onboarding
 
 **Slug**:
@@ -92,9 +92,9 @@ _Avoid_: permalink, handle, key (bare — ambiguous with `id`)
 A timeline URL that identifies one Person, Conflict, ConflictEvent or Milestone. Opening it brings the timeline to that entity and shows its details, as picking it in **Search** does, whichever **Detail Level** the visitor arrives at. Carries only the entity (`?e=<slug>`) — never a viewport, Detail Level or filter. Selecting an entity adds a history entry, closing the panel replaces it, and the language switch carries the slug to the sibling **Locale**. A slug missing from the loaded levels loads level 3, then level 4, raising the Detail Level only as far as that entity's Fame Score needs; a slug no level contains opens the timeline with no panel.
 _Avoid_: deep link, permalink, share link, shareable state
 
-**Starting Point**:
-One of the few hand-picked **Entity Links** the **Landing Page** offers as a way into the timeline, each a story card with a one-line teaser, chosen so the overlap of lives and events around the entity is visible on arrival.
-_Avoid_: example, demo, tour (curated narrated tours are out of scope), featured entry
+**Curiosity**:
+One hand-picked overlap the **Landing Page** shows: a sentence stating the coincidence, the lives, conflicts and milestones involved drawn as marks over a short stretch of axis, and an **Entity Link** to each of them the timeline can show. Every date is checked against the published dataset to the month, so a Curiosity never claims more than the data holds.
+_Avoid_: starting point, example, demo, tour (curated narrated tours are out of scope), fun fact
 
 **Help**:
 The explanation a visitor can open at any time from inside the timeline, for those who skipped the **Landing Page** or are returning. Explains how to read the timeline in three plain points and what the marks mean, and hosts the links to About & data and the language switch. Always opened by the visitor — never appears on its own, and remembers nothing about whether it was seen.

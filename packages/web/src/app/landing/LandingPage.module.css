@@ -1,4 +1,6 @@
 .page {
+  --landing-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -11,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1080px;
+  max-width: 1120px;
   margin-inline: auto;
 }
 
@@ -28,32 +30,70 @@
   color: var(--color-text-primary);
 }
 
-.hero {
-  display: flex;
+.main {
+  display: grid;
   flex: 1 1 auto;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  max-width: 720px;
+  align-content: center;
+  gap: 28px 80px;
+  grid-template-areas:
+    "copy"
+    "cta"
+    "chips"
+    "figure";
+  width: 100%;
+  max-width: 1120px;
   margin-inline: auto;
-  text-align: center;
+  padding-block: 32px 48px;
+}
+
+.copy {
+  grid-area: copy;
 }
 
 .headline {
   font-family: Fraunces, Georgia, serif;
-  font-size: clamp(2.25rem, 7vw, 3.75rem);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
-.subhead {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  line-height: 1.5;
+.pitch {
+  max-width: 34em;
+  margin-top: 16px;
   color: var(--color-text-secondary);
+  font-size: 16px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Every lede shares one grid cell, so the block is as tall as the longest
+   sentence in the current locale and width and picking a case never moves
+   the call to action. */
+.ledeStack {
+  display: grid;
+  margin-top: 20px;
+}
+
+.lede {
+  grid-area: 1 / 1;
+  max-width: 26em;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.4;
+  text-wrap: pretty;
+  visibility: hidden;
+}
+
+.ledeActive {
+  visibility: visible;
+  animation: fade-in 240ms var(--landing-ease) both;
 }
 
 .cta {
+  grid-area: cta;
+  justify-self: start;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -66,18 +106,280 @@
   text-decoration: none;
 }
 
-.cta:hover {
+.cta:hover,
+.cta:active {
   background: var(--color-focus-ring);
 }
 
+.chips {
+  grid-area: chips;
+  min-inline-size: 0;
+  border: 0;
+  display: flex;
+  gap: 8px;
+  margin-inline: -20px;
+  padding: 2px 20px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+.legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.chip {
+  flex: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border-control);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface-raised);
+  color: var(--color-text-primary);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-easing),
+    border-color var(--motion-duration-fast) var(--motion-easing);
+}
+
+/* Reserves the bold width so the active chip never reflows its neighbours. */
+.chip::after {
+  content: attr(data-label);
+  height: 0;
+  overflow: hidden;
+  font-weight: 600;
+  visibility: hidden;
+}
+
+.chip:hover {
+  border-color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+}
+
+.chip[aria-pressed="true"] {
+  border-color: var(--color-accent-selected);
+  background: var(--color-bg-surface);
+  box-shadow: inset 0 0 0 1px var(--color-accent-selected);
+  font-weight: 600;
+}
+
+.figure {
+  grid-area: figure;
+  max-width: 440px;
+}
+
+.chart {
+  position: relative;
+}
+
+.band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--start);
+  width: var(--span);
+  background: var(--color-selection-halo);
+  animation: fade-in 500ms var(--landing-ease) 700ms both;
+}
+
+.bandConflict {
+  background: color-mix(in srgb, var(--color-conflict) 10%, transparent);
+}
+
+.row {
+  padding-block: 10px;
+}
+
+.label {
+  position: relative;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.years {
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  position: relative;
+  display: block;
+  height: 6px;
+}
+
+.bar {
+  position: absolute;
+  background: var(--mark);
+  opacity: var(--mark-opacity-resting);
+}
+
+.bar {
+  left: var(--start);
+  width: var(--span);
+  height: 100%;
+  min-width: 10px;
+  border-radius: var(--radius-full);
+  transform-origin: left center;
+  animation: draw-bar 700ms var(--landing-ease) calc(200ms + var(--i) * 140ms)
+    both;
+}
+
+.clipsStart {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.clipsEnd {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.axis {
+  position: relative;
+  height: 28px;
+  border-block: 1px solid var(--color-border-strong);
+  background: color-mix(in srgb, var(--color-bg-axis) 82%, transparent);
+}
+
+.tick {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  padding-left: 4px;
+  border-left: 1px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.caption {
+  margin-top: 14px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.captionText {
+  display: block;
+}
+
+.openOn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 14px;
+  margin-top: 6px;
+}
+
+.openLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: var(--color-text-secondary);
+  text-underline-offset: 3px;
+}
+
+.openLink:hover {
+  color: var(--color-text-primary);
+}
+
+.footer {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.page ::selection {
+  background: color-mix(in srgb, var(--color-accent-selected) 22%, transparent);
+}
+
 .navLink:focus-visible,
-.cta:focus-visible {
+.cta:focus-visible,
+.chip:focus-visible,
+.openLink:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
 
+.chip:focus-visible {
+  outline-offset: 1px;
+}
+
+@keyframes draw-bar {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .chips {
+    flex-wrap: wrap;
+    margin-inline: 0;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+@media (min-width: 960px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr) 420px;
+    grid-template-areas:
+      "copy figure"
+      "cta figure"
+      "chips figure";
+    grid-template-rows: auto auto auto;
+    align-items: start;
+  }
+}
+
 @media (max-width: 480px) {
   .cta {
-    align-self: stretch;
+    justify-self: stretch;
+  }
+}
+
+@media (pointer: coarse) {
+  .chip {
+    min-height: 44px;
+  }
+
+  .openLink {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar,
+  .band,
+  .ledeActive {
+    animation: none;
   }
 }

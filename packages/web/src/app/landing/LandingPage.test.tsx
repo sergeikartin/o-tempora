@@ -45,3 +45,43 @@ test('prefetches the timeline only once the call-to-action shows intent', () => 
     '/assets/main-abc.css',
   ]);
 });
+
+test('opens on the first curiosity with its sentence and caption', () => {
+  render(<LandingPage />);
+  expect(
+    screen.getByText(
+      'Albert Einstein and Steve Jobs were alive at the same time.',
+    ),
+  ).toBeTruthy();
+  expect(screen.getByText(/Jobs was born in February 1955/)).toBeTruthy();
+  expect(
+    screen
+      .getByRole('button', { name: 'Einstein & Jobs' })
+      .getAttribute('aria-pressed'),
+  ).toBe('true');
+});
+
+test('picking another curiosity swaps the sentence and redraws the marks', () => {
+  render(<LandingPage />);
+  fireEvent.click(screen.getByRole('button', { name: 'Monet & Monroe' }));
+  expect(screen.getByText('1840 – 1926')).toBeTruthy();
+  expect(
+    screen
+      .getByRole('button', { name: 'Monet & Monroe' })
+      .getAttribute('aria-pressed'),
+  ).toBe('true');
+  expect(
+    screen
+      .getByRole('button', { name: 'Einstein & Jobs' })
+      .getAttribute('aria-pressed'),
+  ).toBe('false');
+});
+
+test('links each mark of the open curiosity to its entity on the timeline', () => {
+  render(<LandingPage />);
+  const hrefs = screen
+    .getAllByRole('link')
+    .map((link) => link.getAttribute('href'));
+  expect(hrefs).toContain('/timeline/?e=albert-einstein');
+  expect(hrefs).toContain('/timeline/?e=steve-jobs');
+});

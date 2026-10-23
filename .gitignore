@@ -6,3 +6,6 @@ dist/
 
 # Spartan AI config (contains API keys)
 .spartan/ai.env
+
+# Impeccable design-tool state
+.impeccable/
