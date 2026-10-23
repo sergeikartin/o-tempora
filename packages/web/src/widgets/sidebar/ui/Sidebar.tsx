@@ -45,6 +45,7 @@ interface SidebarProps {
   // remains. No effect on mobile, where isOpen/onClose covers hiding it.
   isCollapsed: boolean;
   onToggleCollapse: () => void;
+  onOpenHelp: () => void;
   onOpenAbout: () => void;
   // Sibling-locale home, already carrying the open Entity Link (if any).
   switchLanguageHref: string;
@@ -73,6 +74,7 @@ export function Sidebar({
   onClose,
   isCollapsed,
   onToggleCollapse,
+  onOpenHelp,
   onOpenAbout,
   switchLanguageHref,
 }: SidebarProps) {
@@ -232,6 +234,13 @@ export function Sidebar({
               </section>
             </div>
             <div className={styles.footer}>
+              <button
+                type="button"
+                className={styles.footerLink}
+                onClick={onOpenHelp}
+              >
+                {m.helpLabel()}
+              </button>
               <button
                 type="button"
                 className={styles.footerLink}

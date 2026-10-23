@@ -43,6 +43,11 @@ const AboutPanel = lazy(() =>
     default: mod.AboutPanel,
   })),
 );
+const HelpPanel = lazy(() =>
+  import('../widgets/help-panel').then((mod) => ({
+    default: mod.HelpPanel,
+  })),
+);
 const DetailPanel = lazy(() =>
   import('../widgets/detail-panel').then((mod) => ({
     default: mod.DetailPanel,
@@ -178,6 +183,28 @@ function AppContent({ initialDatasets }: AppProps) {
   // Desktop-only sidebar collapse, toggled by Sidebar's « handle.
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
+
+  // `?` opens Help from anywhere outside a text field, never over another
+  // open modal.
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== '?' || event.ctrlKey || event.metaKey || event.altKey)
+        return;
+      const target = event.target;
+      if (
+        target instanceof HTMLElement &&
+        (target.isContentEditable ||
+          ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))
+      )
+        return;
+      if (document.querySelector('[aria-modal="true"]')) return;
+      setIsHelpOpen(true);
+      trackEvent('help_open', { via: 'key' });
+    }
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // An Entity Link (`?e=<slug>`) names only a slug: look it up in what's loaded,
   // fetching level 3 and then level 4 one at a time while it's missing, then
@@ -310,6 +337,10 @@ function AppContent({ initialDatasets }: AppProps) {
           setIsSidebarCollapsed((collapsed) => !collapsed)
         }
         switchLanguageHref={switchLanguageHref(selectedSlug ?? pendingLinkSlug)}
+        onOpenHelp={() => {
+          setIsHelpOpen(true);
+          trackEvent('help_open', { via: 'link' });
+        }}
         onOpenAbout={() => {
           setIsAboutOpen(true);
           trackEvent('about_open');
@@ -343,6 +374,9 @@ function AppContent({ initialDatasets }: AppProps) {
       </main>
       <Suspense fallback={null}>
         <DetailPanel selected={selectedEntity} onClose={closeDetailPanel} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <HelpPanel isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
       </Suspense>
       <Suspense fallback={null}>
         <AboutPanel

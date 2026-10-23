@@ -55,7 +55,9 @@ import {
   zoomIn as computeZoomIn,
   zoomOut as computeZoomOut,
   FALLBACK_VIEWPORT_WIDTH_PX,
+  LANE_CAPTION_GUTTER_PX,
   MIN_YEAR,
+  type PeopleLaneHandle,
   pinchCenterYear,
   pinchPixelsPerYear,
   QUARTER_CENTURY_STEP_YEARS,
@@ -159,7 +161,7 @@ export function TimelineCanvas({
   // Per-tick targets for the zoom animation's single rAF driver (zoom()): one
   // group transform per lane/axis, not per-mark recompute (options.ts's
   // ZoomAnimationTransform). zebraLayerRef is rendered here, so a plain ref.
-  const peopleLaneAnimRef = useRef<ZoomAnimationHandle>(null);
+  const peopleLaneAnimRef = useRef<PeopleLaneHandle>(null);
   const conflictsMilestonesLaneAnimRef = useRef<ZoomAnimationHandle>(null);
   // The one Year Axis, between People and Conflicts+Milestones. Each lane
   // scrolls internally, so no other copy needs to stay visible.
@@ -260,6 +262,7 @@ export function TimelineCanvas({
   // scrollLeft write calls this to mirror in the same synchronous step.
   const mirrorLaneScrollLeft = useCallback((newScrollLeft: number) => {
     if (peopleLaneRef.current) peopleLaneRef.current.scrollLeft = newScrollLeft;
+    peopleLaneAnimRef.current?.pinLabelsToViewport(newScrollLeft);
     if (conflictsMilestonesLaneRef.current)
       conflictsMilestonesLaneRef.current.scrollLeft = newScrollLeft;
   }, []);
@@ -922,7 +925,14 @@ export function TimelineCanvas({
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={styles.wrapper}
+      style={
+        {
+          '--lane-caption-gutter': `${LANE_CAPTION_GUTTER_PX}px`,
+        } as CSSProperties
+      }
+    >
       <ViewportRange startYear={viewportStartYear} endYear={viewportEndYear} />
       {isMobileViewport && (
         <button
@@ -972,6 +982,9 @@ export function TimelineCanvas({
           <div className={styles.zebraBand} style={ceZebraStyle} />
         </div>
         <div ref={peopleLaneRef} className={styles.peopleLane}>
+          <div className={styles.laneCaption} aria-hidden="true">
+            <span className={styles.laneCaptionText}>{m.peopleHeading()}</span>
+          </div>
           <PeopleLane
             ref={peopleLaneAnimRef}
             people={filteredPeople}
@@ -994,6 +1007,11 @@ export function TimelineCanvas({
           ref={conflictsMilestonesLaneRef}
           className={styles.conflictsMilestonesLane}
         >
+          <div className={styles.laneCaption} aria-hidden="true">
+            <span className={styles.laneCaptionText}>
+              {m.conflictsMilestonesHeading()}
+            </span>
+          </div>
           <ConflictsMilestonesLane
             ref={conflictsMilestonesLaneAnimRef}
             conflicts={filteredConflicts}

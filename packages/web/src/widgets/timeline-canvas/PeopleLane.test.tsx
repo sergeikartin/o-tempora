@@ -1,8 +1,9 @@
-import { cleanup, render } from '@testing-library/react';
+import { act, cleanup, render } from '@testing-library/react';
+import { createRef } from 'react';
 import { afterEach, expect, test } from 'vitest';
 import type { Person } from '../../shared/types';
 import { computeRowAssignment } from './map-to-items';
-import { buildXScale } from './options';
+import { buildXScale, type PeopleLaneHandle } from './options';
 import { PeopleLane } from './PeopleLane';
 
 afterEach(cleanup);
@@ -273,4 +274,26 @@ test('relative row order between two people is preserved when a third, different
   expect(Number(famousLine?.getAttribute('y1'))).toBeGreaterThan(
     Number(obscureLine?.getAttribute('y1')),
   );
+});
+
+test('a label whose bar began left of the viewport is pinned to the viewport edge, then restored', () => {
+  const { scale } = buildXScale(2);
+  const people = [aristotle];
+  const ref = createRef<PeopleLaneHandle>();
+  const { container } = render(
+    <PeopleLane
+      ref={ref}
+      people={people}
+      xScale={scale}
+      personRowFor={computeRowAssignment(people, [], []).personRowFor}
+    />,
+  );
+  const label = container.querySelector('.d3-name');
+  const startX = Number(label?.getAttribute('x'));
+
+  act(() => ref.current?.pinLabelsToViewport(startX + 20));
+  expect(Number(label?.getAttribute('x'))).toBeGreaterThan(startX + 20);
+
+  act(() => ref.current?.pinLabelsToViewport(0));
+  expect(Number(label?.getAttribute('x'))).toBe(startX);
 });

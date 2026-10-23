@@ -28,6 +28,11 @@ export {
   wrapMarkLabelLines,
 };
 
+// Width of the margin strip at each lane's left edge that carries its caption
+// (TimelineCanvas.module.css's .laneCaption); marks pass under it, and pinned
+// labels keep clear of it.
+export const LANE_CAPTION_GUTTER_PX = 18;
+
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
 export const LANE_TOP_PADDING = 12;
@@ -340,6 +345,11 @@ export interface ZoomAnimationHandle {
    * cleans this up.
    */
   beginZoomAnimation?: () => void;
+}
+
+/** The People lane's handle: the zoom hooks plus label pinning, driven from the scroll position. */
+export interface PeopleLaneHandle extends ZoomAnimationHandle {
+  pinLabelsToViewport: (scrollLeft: number) => void;
 }
 
 /**

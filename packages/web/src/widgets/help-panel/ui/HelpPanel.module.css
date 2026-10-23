@@ -1,0 +1,22 @@
+.list {
+  margin-top: 16px;
+}
+
+.entry + .entry {
+  margin-top: 12px;
+}
+
+.term {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}

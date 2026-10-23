@@ -273,3 +273,49 @@
   position: sticky;
   left: 0;
 }
+
+/* Each lane is a size container so its caption can span the lane's own visible
+   height (100cqh) whatever the 4:2 flex split resolves to. */
+.peopleLane,
+.conflictsMilestonesLane {
+  container-type: size;
+}
+
+/* A ledger margin note: a strip at the lane's left edge, pinned against both
+   scrolls (sticky on the panned lane, top-stuck against its row overflow),
+   carrying the lane's name read bottom to top. It takes no flow space
+   (negative bottom margin cancels its height), lets pointer events through to
+   the pan/click handlers, and sits over marks that start beneath it. */
+.laneCaption {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lane-caption-gutter);
+  height: 100cqh;
+  margin-bottom: -100cqh;
+  overflow: hidden;
+  background-color: var(--color-bg-base);
+  border-right: 1px solid var(--color-border-subtle);
+  pointer-events: none;
+  user-select: none;
+}
+
+.laneCaptionText {
+  max-height: 100%;
+  overflow: hidden;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+}

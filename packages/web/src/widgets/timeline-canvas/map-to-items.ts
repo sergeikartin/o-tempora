@@ -3,6 +3,7 @@ import { CONFLICT_COLOR, DOMAIN_COLORS } from '../../shared/config';
 import { today, yearMonthToFractionalYear } from '../../shared/lib/date';
 import {
   estimateLabelWidthPx,
+  LANE_CAPTION_GUTTER_PX,
   LANE_TOP_PADDING,
   MILESTONE_CATEGORY_COLORS,
   MILESTONES_LABEL_LINE_HEIGHT_PX,
@@ -97,12 +98,18 @@ export function personPixelInterval(
   return { start: x1, end: Math.max(x2, x1 + labelWidth) };
 }
 
+// Gap kept between the lane caption's margin strip and a pinned label.
+export const PINNED_LABEL_INSET_PX = LANE_CAPTION_GUTTER_PX + 8;
+
 export interface PersonLayout {
   id: string;
   name: string;
   x1: number;
   x2: number;
   hitX2: number;
+  // Where the next bar in this row starts (Infinity for the last): the room a
+  // pinned label may extend into once its own bar has ended.
+  labelRoomX2: number;
   labelY: number;
   lineY: number;
   fill: string;
@@ -118,7 +125,7 @@ export function buildPersonLayout(
   const rowOfPerson = personRowFor(items.map((item) => item.id));
   const rowCount =
     rowOfPerson.size > 0 ? Math.max(...rowOfPerson.values()) + 1 : 0;
-  return items.map((item) => {
+  const layout = items.map((item) => {
     const row = rowOfPerson.get(item.id) ?? 0;
     const x1 = xScale(item.startYear);
     const x2 = Math.max(xScale(item.endYear), x1 + 2);
@@ -131,11 +138,43 @@ export function buildPersonLayout(
       // line — only right, past x2 for a short-lived person with a
       // long name.
       hitX2: Math.max(x2, x1 + estimateLabelWidthPx(item.name)),
+      labelRoomX2: Number.POSITIVE_INFINITY,
       labelY: personLabelYForRow(row, rowCount),
       lineY: personLineCenterYForRow(row, rowCount),
       fill: DOMAIN_COLORS[item.occupationDomain],
     };
   });
+  const rowMembers = new Map<number, PersonLayout[]>();
+  for (const entry of layout) {
+    const members = rowMembers.get(entry.labelY) ?? [];
+    members.push(entry);
+    rowMembers.set(entry.labelY, members);
+  }
+  for (const members of rowMembers.values()) {
+    members.sort((a, b) => a.x1 - b.x1);
+    members.forEach((entry, i) => {
+      const next = members[i + 1];
+      if (next) entry.labelRoomX2 = next.x1;
+    });
+  }
+  return layout;
+}
+
+/**
+ * Where a person's label sits at `scrollLeft`. A label whose bar began left of
+ * the viewport slides right to stay readable. It leaves with the bar's end
+ * (`x2`) and stops short of the next bar in its row (`labelRoomX2`), so it can
+ * never float free of its bar or run into the next label.
+ */
+export function pinnedLabelX(
+  item: Pick<PersonLayout, 'name' | 'x1' | 'x2' | 'labelRoomX2'>,
+  scrollLeft: number,
+): number {
+  const lastX = Math.min(
+    item.x2,
+    item.labelRoomX2 - estimateLabelWidthPx(item.name),
+  );
+  return Math.max(item.x1, Math.min(scrollLeft + PINNED_LABEL_INSET_PX, lastX));
 }
 
 export interface ConflictItem {

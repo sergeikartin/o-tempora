@@ -23,4 +23,6 @@ Zoom and pan are gesture-bound, not frame-bound: `TimelineCanvas.tsx` fires one 
 
 `period` is the viewport-center year's century bucket (`shared/lib/date/format-year.ts`'s `centuryBoundaryForYear`, e.g. `"1800s"`, `"3rd century BCE"`) — a few dozen values across the whole timeline, low-cardinality enough for Umami's per-property quota while still saying roughly what era the user was looking at.
 
+The timeline's Help panel fires `help_open` (`{ via: 'link' | 'key' }`) when a visitor opens it from the sidebar footer link or the `?` key.
+
 The landing page (`packages/web/src/app/landing/`) fires three events, each carrying `curiosity` (one of the fixed set of Curiosity ids, so a few dozen values at most): `landing_curiosity_select` (`{ curiosity, method: 'chip' | 'stepper' }`, on a visitor's pick — not when the hash opens one on load), `landing_cta_click` (`{ curiosity }`, the call-to-action) and `landing_mark_open` (`{ curiosity }`, a mark link under the figure; the mark's slug is deliberately not sent).

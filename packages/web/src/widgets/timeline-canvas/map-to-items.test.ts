@@ -7,12 +7,16 @@ import type {
   Person,
 } from '../../shared/types';
 import {
+  buildPersonLayout,
   compactRows,
   computeRowAssignment,
   mapConflicts,
   mapMilestones,
   mapPeople,
+  PINNED_LABEL_INSET_PX,
+  pinnedLabelX,
 } from './map-to-items';
+import { buildXScale } from './options';
 
 const person: Person = {
   id: 'Q868',
@@ -267,4 +271,56 @@ test('compactRows keeps two items that share the same static row in the same com
   const compacted = compactRows(['a', 'b', 'c'], staticRowOf);
   expect(compacted.get('a')).toBe(compacted.get('b'));
   expect(compacted.get('c')).not.toBe(compacted.get('a'));
+});
+
+const longLived = {
+  name: 'Aristotle',
+  x1: 100,
+  x2: 500,
+  labelRoomX2: Number.POSITIVE_INFINITY,
+};
+
+test('a label stays at its bar start while the bar begins inside the viewport', () => {
+  expect(pinnedLabelX(longLived, 0)).toBe(100);
+  expect(pinnedLabelX(longLived, 100 - PINNED_LABEL_INSET_PX)).toBe(100);
+});
+
+test('a label whose bar began off-screen slides to the viewport edge', () => {
+  expect(pinnedLabelX(longLived, 150)).toBe(150 + PINNED_LABEL_INSET_PX);
+});
+
+test('a pinned label leaves with the end of its bar', () => {
+  expect(pinnedLabelX(longLived, 495)).toBe(500);
+});
+
+test('a pinned label stops short of the next bar in its row', () => {
+  const crowded = { ...longLived, labelRoomX2: 300 };
+  const x = pinnedLabelX(crowded, 290);
+  expect(x).toBeLessThan(300);
+});
+
+test('buildPersonLayout reserves each label the room up to the next bar in its row', () => {
+  const { scale } = buildXScale(2);
+  const early = {
+    ...person,
+    id: 'a',
+    lifespan: { start: { year: -400 }, end: { year: -390 } },
+  };
+  const late = {
+    ...person,
+    id: 'b',
+    lifespan: { start: { year: -100 }, end: { year: -90 } },
+  };
+  const layout = buildPersonLayout(
+    [early, late],
+    scale,
+    () =>
+      new Map([
+        ['a', 0],
+        ['b', 0],
+      ]),
+  );
+  const [first, second] = layout;
+  expect(first?.labelRoomX2).toBe(second?.x1);
+  expect(second?.labelRoomX2).toBe(Number.POSITIVE_INFINITY);
 });
