@@ -1,6 +1,6 @@
 # O Tempora
 
-A read-only, zoomable visualization of world history — People, Conflicts, and Milestones lanes, hardcoded ahead of time.
+An interactive timeline of world history — People, Conflicts, and Milestones lanes, hardcoded ahead of time.
 
 ## Language
 

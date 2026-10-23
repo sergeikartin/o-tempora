@@ -1,6 +1,6 @@
 ---
 name: O Tempora
-description: A read-only timeline of world history set as a parchment ledger — iron-gall ink, one oxblood seal.
+description: An interactive timeline of world history set as a parchment ledger — iron-gall ink, one oxblood seal.
 colors:
   parchment: "#f2e9d2"
   ledger-paper: "#fbf6e9"
