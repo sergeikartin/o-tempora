@@ -9,7 +9,7 @@ Re-run the 2026-10-22 live-site audit's method against the result: headless Chro
 - axe: no serious or moderate violations on all six combinations, for the landing and the timeline.
 - LCP and CLS no worse than before (0.7–1.2 s, 0) on both pages.
 - No Mixed Content warnings, no failed requests, no stock 404.
-- Starting Point ids all resolve at `Mainstream`.
+- Every Curiosity mark resolves at `Mainstream`.
 - Cover what the first audit did not: the filter drawer/sheet on phone, zoom controls in motion, zero-result filter states, Detail Levels beyond `Mainstream`.
 
 Write the findings to `.scratch/product-polish/research/launch-check.md`.

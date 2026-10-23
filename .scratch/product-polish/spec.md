@@ -39,7 +39,7 @@ Tickets 10, 11 and 12 are blocked on this decision.
 | 03 | Plain-language labels | |
 | 04 | Entity Links | |
 | 05 | Route split and landing shell | ships with 06 |
-| 06 | Landing content | ships with 05 |
+| 06 | Landing content | **Done.** Switchable Curiosities in place of screenshot, stats and cards |
 | 07 | Canvas craft | |
 | 08 | Empty Lane states | |
 | 09 | Timeline layout decision | prototype, decided by the owner |
@@ -47,6 +47,7 @@ Tickets 10, 11 and 12 are blocked on this decision.
 | 11 | In-app Help | blocked by 09 |
 | 12 | Accessibility and touch-target sweep | last; blocked by 10, 11 |
 | 13 | Launch check | blocked by 12 |
+| 14 | Landing gaps | About/GitHub nav, footer privacy line, Mainstream-resolution test; blocked by 06 |
 
 ## Launch check
 
