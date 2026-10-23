@@ -1,0 +1,10 @@
+npx lint-staged
+
+staged=$(git diff --cached --name-only)
+if echo "$staged" | grep -q '^packages/web/'; then
+  npm run typecheck --workspace packages/web
+  npm run lint:boundaries --workspace packages/web
+fi
+if echo "$staged" | grep -q '^packages/data-pipeline/'; then
+  npm run typecheck --workspace packages/data-pipeline
+fi

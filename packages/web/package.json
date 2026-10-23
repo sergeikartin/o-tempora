@@ -15,6 +15,7 @@
     "pretypecheck": "npm run paraglide:compile",
     "typecheck": "tsc -b",
     "lint": "biome check .",
+    "lint:fix": "biome check --write .",
     "lint:boundaries": "steiger ./src",
     "pretest": "npm run paraglide:compile",
     "test": "vitest run",

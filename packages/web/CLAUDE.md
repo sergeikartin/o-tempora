@@ -12,7 +12,9 @@ Run from repo root:
 - Build: `npm run build --workspace packages/web`
 - Preview build: `npm run preview --workspace packages/web`
 - Test: `npm run test --workspace packages/web` (Vitest)
-- Lint: `npm run lint --workspace packages/web` (Biome) · `npm run lint:boundaries --workspace packages/web` (Steiger, FSD boundaries)
+- Lint: `npm run lint --workspace packages/web` (Biome; `lint:fix` applies fixes) · `npm run lint:boundaries --workspace packages/web` (Steiger, FSD boundaries)
+- Biome's config root is `packages/web`: invoke it through these scripts, never via `npx biome` from another directory (it errors with "nested root configuration").
+- A pre-commit hook (`.husky/pre-commit`) runs Biome on staged files, then the typecheck and boundary checks for the packages you touched; tests run in CI.
 - Type check: `npm run typecheck --workspace packages/web`
 
 
