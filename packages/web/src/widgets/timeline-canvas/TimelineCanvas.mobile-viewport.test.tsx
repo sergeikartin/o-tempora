@@ -29,6 +29,7 @@ function mockMatchMedia() {
 
 const aristotle: Person = {
   id: 'Q868',
+  slug: 'Q868',
   name: 'Aristotle',
   lifespan: { start: { year: -383 }, end: { year: -321 } },
   occupationDomain: 'humanities',

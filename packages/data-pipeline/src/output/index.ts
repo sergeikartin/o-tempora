@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from "@o-tempora/shared-types";
 import { transformPeople, transformConflicts, transformMilestones } from "../transform/index.js";
 import { assignConflictsMilestonesRows, assignPersonRows } from "./row-assignment.js";
+import { assignSlugs } from "./slugs.js";
 import {
   buildPeople,
   buildConflicts,
@@ -27,6 +28,13 @@ function logReport(label: string, kept: number, report: DropReport): void {
 async function writeDataset(fileName: string, data: unknown): Promise<void> {
   await mkdir(DATA_DIR, { recursive: true });
   await writeFile(path.join(DATA_DIR, fileName), JSON.stringify(data, null, 2));
+}
+
+// Attaches each entity's slug (slugs.ts) — computed once off the English
+// build and applied to both language builds by id, since the slug is the same
+// in both locales.
+function withSlugs<T extends { id: string }>(entries: T[], slugOf: ReadonlyMap<string, string>): (T & { slug: string })[] {
+  return entries.map((entry) => ({ ...entry, slug: slugOf.get(entry.id) ?? entry.id }));
 }
 
 // Attaches each entry's permanent Row Depth identity (TimelineEntry.row,
@@ -59,11 +67,36 @@ async function writeDetailLevelDataset<T extends { fameScore: number }>(
 }
 
 async function main(): Promise<void> {
+  // Every lane is built in both languages first: slugs are unique across
+  // lanes, so they can only be assigned once all three are built. Both
+  // language builds resolve from the same rows and decide inclusion off
+  // English fields regardless of `lang` (write-datasets.ts's Lang doc
+  // comment), which is what keeps the two files' entity sets identical.
   const peopleRows = transformPeople();
-  const { people, report: peopleReport } = buildPeople(peopleRows, "en");
-  logReport("people.json", people.length, peopleReport);
-  const { people: peopleRu, report: peopleRuReport } = buildPeople(peopleRows, "ru");
-  logReport("people.ru.json", peopleRu.length, peopleRuReport);
+  const { people: peopleEn, report: peopleReport } = buildPeople(peopleRows, "en");
+  logReport("people.json", peopleEn.length, peopleReport);
+  const { people: peopleRuBuilt, report: peopleRuReport } = buildPeople(peopleRows, "ru");
+  logReport("people.ru.json", peopleRuBuilt.length, peopleRuReport);
+
+  const conflictRows = transformConflicts();
+  const { entries: conflictsEn, report: conflictsReport } = buildConflicts(conflictRows, "en");
+  logReport("conflicts.json", conflictsEn.length, conflictsReport);
+  const { entries: conflictsRuBuilt, report: conflictsRuReport } = buildConflicts(conflictRows, "ru");
+  logReport("conflicts.ru.json", conflictsRuBuilt.length, conflictsRuReport);
+
+  const milestoneRows = transformMilestones();
+  const { milestones: milestonesEn, report: milestonesReport } = buildMilestones(milestoneRows, "en");
+  logReport("milestones.json", milestonesEn.length, milestonesReport);
+  const { milestones: milestonesRuBuilt, report: milestonesRuReport } = buildMilestones(milestoneRows, "ru");
+  logReport("milestones.ru.json", milestonesRuBuilt.length, milestonesRuReport);
+
+  const slugOf = assignSlugs([...peopleEn, ...conflictsEn, ...milestonesEn]);
+  const people = withSlugs(peopleEn, slugOf);
+  const peopleRu = withSlugs(peopleRuBuilt, slugOf);
+  const conflicts = withSlugs(conflictsEn, slugOf);
+  const conflictsRu = withSlugs(conflictsRuBuilt, slugOf);
+  const milestones = withSlugs(milestonesEn, slugOf);
+  const milestonesRu = withSlugs(milestonesRuBuilt, slugOf);
 
   const personRowOf = assignPersonRows(people, peopleRu);
   const peopleWithRows = withRows(people, personRowOf);
@@ -78,22 +111,6 @@ async function main(): Promise<void> {
     peopleRuWithRows,
     DETAIL_LEVEL_FAME_SCORE_FLOORS.people,
   );
-
-  // Both language builds resolve from the same rows — buildConflicts
-  // itself decides inclusion off English fields regardless of `lang`, so
-  // calling it twice on identical input is what keeps the two files'
-  // entity sets identical (see write-datasets.ts's Lang doc comment).
-  const conflictRows = transformConflicts();
-  const { entries: conflicts, report: conflictsReport } = buildConflicts(conflictRows, "en");
-  logReport("conflicts.json", conflicts.length, conflictsReport);
-  const { entries: conflictsRu, report: conflictsRuReport } = buildConflicts(conflictRows, "ru");
-  logReport("conflicts.ru.json", conflictsRu.length, conflictsRuReport);
-
-  const milestoneRows = transformMilestones();
-  const { milestones, report: milestonesReport } = buildMilestones(milestoneRows, "en");
-  logReport("milestones.json", milestones.length, milestonesReport);
-  const { milestones: milestonesRu, report: milestonesRuReport } = buildMilestones(milestoneRows, "ru");
-  logReport("milestones.ru.json", milestonesRu.length, milestonesRuReport);
 
   // Conflicts and Milestones share one row-packing pass (row-assignment.ts),
   // so their rows are computed together off both language builds (a label's

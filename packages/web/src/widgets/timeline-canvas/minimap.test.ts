@@ -44,6 +44,7 @@ function person(
 ): Person {
   return {
     id,
+    slug: id,
     name: id,
     lifespan: { start: { year: startYear }, end: { year: endYear } },
     occupationDomain: 'humanities',
@@ -104,6 +105,7 @@ test('computeDensityProfile raises People depth to 2 where two lifespans overlap
 test("computeDensityProfile's eventsDepth reflects the merged Conflicts+Milestones row packing, not two independent series", () => {
   const conflict = {
     id: 'c1',
+    slug: 'c1',
     name: 'War',
     period: { start: { year: 1500 }, end: { year: 1510 } },
     category: 'war' as const,
@@ -115,6 +117,7 @@ test("computeDensityProfile's eventsDepth reflects the merged Conflicts+Mileston
   };
   const milestone = {
     id: 'm1',
+    slug: 'm1',
     name: 'Invention',
     at: { year: 1503 },
     category: 'science-theory' as const,

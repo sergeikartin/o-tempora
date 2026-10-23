@@ -29,6 +29,7 @@ function renderSidebar(overrides: Partial<SidebarProps> = {}) {
       isCollapsed={false}
       onToggleCollapse={vi.fn()}
       onOpenAbout={vi.fn()}
+      switchLanguageHref="/ru/"
       {...overrides}
     />,
   );
@@ -188,6 +189,7 @@ test('below the mobile breakpoint, a closed drawer is inert (off-screen filter c
         isCollapsed={false}
         onToggleCollapse={vi.fn()}
         onOpenAbout={vi.fn()}
+        switchLanguageHref="/ru/"
       />,
     );
     expect(container.querySelector('aside')?.hasAttribute('inert')).toBe(false);

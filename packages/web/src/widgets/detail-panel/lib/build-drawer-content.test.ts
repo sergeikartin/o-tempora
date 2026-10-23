@@ -9,6 +9,7 @@ import { buildDrawerContent } from './build-drawer-content';
 
 const napoleon: Person = {
   id: '69880',
+  slug: '69880',
   name: 'Napoleon',
   lifespan: { start: { year: 1769, month: 8 }, end: { year: 1821, month: 5 } },
   occupationDomain: 'institutions',
@@ -22,6 +23,7 @@ const napoleon: Person = {
 
 const koreanWar: Conflict = {
   id: 'Q8214',
+  slug: 'Q8214',
   name: 'Korean War',
   period: { start: { year: 1950, month: 6 }, end: { year: 1953, month: 7 } },
   category: 'war',
@@ -33,6 +35,7 @@ const koreanWar: Conflict = {
 
 const battle: ConflictEvent = {
   id: 'Q46341',
+  slug: 'Q46341',
   name: 'Battle of Gettysburg',
   at: { year: 1863, month: 7 },
   category: 'war',
@@ -44,6 +47,7 @@ const battle: ConflictEvent = {
 
 const printingPress: Milestone = {
   id: 'Q11042',
+  slug: 'Q11042',
   name: 'Printing press',
   at: { year: 1440 },
   category: 'communication',
@@ -172,6 +176,7 @@ test('Milestone: approximate date is prefixed with "ca."', () => {
 
 const blackDeath: Milestone = {
   id: 'Q42005',
+  slug: 'Q42005',
   name: 'Black Death',
   period: { start: { year: 1346 }, end: { year: 1353 } },
   category: 'medicine-health',

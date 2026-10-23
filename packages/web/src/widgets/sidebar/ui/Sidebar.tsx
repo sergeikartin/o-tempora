@@ -7,11 +7,10 @@ import {
   SearchBar,
   type SearchResult,
 } from '../../../features/search-timeline-entities';
-import {
-  type ConflictsMilestonesFilterValue,
-  type DetailLevel,
-  type DetailLevelId,
-  SWITCH_LANGUAGE_HREF,
+import type {
+  ConflictsMilestonesFilterValue,
+  DetailLevel,
+  DetailLevelId,
 } from '../../../shared/config';
 import { useIsMobileViewport } from '../../../shared/lib/viewport';
 import { m } from '../../../shared/paraglide/messages.js';
@@ -53,6 +52,8 @@ interface SidebarProps {
   isCollapsed: boolean;
   onToggleCollapse: () => void;
   onOpenAbout: () => void;
+  // Sibling-locale home, already carrying the open Entity Link (if any).
+  switchLanguageHref: string;
 }
 
 // Always-visible alongside TimelineCanvas — Data Depth (the fame-score
@@ -84,6 +85,7 @@ export function Sidebar({
   isCollapsed,
   onToggleCollapse,
   onOpenAbout,
+  switchLanguageHref,
 }: SidebarProps) {
   const isMobileViewport = useIsMobileViewport();
   // isCollapsed only takes effect on desktop — a stale true value carried
@@ -256,7 +258,7 @@ export function Sidebar({
               >
                 {m.aboutLabel()}
               </button>
-              <a className={styles.footerLink} href={SWITCH_LANGUAGE_HREF}>
+              <a className={styles.footerLink} href={switchLanguageHref}>
                 {m.switchLanguageLabel()}
               </a>
             </div>

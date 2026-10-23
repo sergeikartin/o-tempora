@@ -197,6 +197,11 @@ export const DETAIL_LEVEL_FAME_SCORE_FLOORS = {
 // same one).
 export interface TimelineEntry {
   id: string;
+  // The readable identifier an Entity Link carries (`?e=<slug>`, CONTEXT.md).
+  // Lowercase ASCII derived from the English name, so it is the same in both
+  // locales, and unique across all three lanes. Never changes with the
+  // entity's displayed name or locale.
+  slug: string;
   name: string;
   fameScore: number;
   tagline: string;

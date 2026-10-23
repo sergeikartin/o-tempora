@@ -25,6 +25,7 @@ afterEach(cleanup);
 // filter before passing `people`/`conflicts`/`milestones` down.
 const aristotle: Person = {
   id: 'Q868',
+  slug: 'Q868',
   name: 'Aristotle',
   lifespan: { start: { year: -383 }, end: { year: -321 } },
   occupationDomain: 'humanities',
@@ -36,6 +37,7 @@ const aristotle: Person = {
 
 const koreanWar: Conflict = {
   id: 'Q8214',
+  slug: 'Q8214',
   name: 'Korean War',
   period: { start: { year: 1950 }, end: { year: 1953 } },
   category: 'war',
@@ -47,6 +49,7 @@ const koreanWar: Conflict = {
 
 const battleOfMegiddo: ConflictEvent = {
   id: 'Q217799',
+  slug: 'Q217799',
   name: 'Battle of Megiddo',
   at: { year: -1457 },
   category: 'war',

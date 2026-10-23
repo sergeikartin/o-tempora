@@ -34,6 +34,7 @@ async function waitOutZoomAnimation() {
 
 const aristotle: Person = {
   id: 'Q868',
+  slug: 'Q868',
   name: 'Aristotle',
   lifespan: { start: { year: -383 }, end: { year: -321 } },
   occupationDomain: 'humanities',
@@ -48,6 +49,7 @@ const fixturePeople: Person[] = [aristotle];
 const fixtureConflicts: ConflictEntry[] = [
   {
     id: 'Q8663',
+    slug: 'Q8663',
     name: 'Korean War',
     period: { start: { year: 1950 }, end: { year: 1953 } },
     category: 'war',
@@ -61,6 +63,7 @@ const fixtureConflicts: ConflictEntry[] = [
 const fixtureMilestones: Milestone[] = [
   {
     id: 'Q2736',
+    slug: 'Q2736',
     name: 'association football',
     at: { year: 1863 },
     category: 'everyday-technology',

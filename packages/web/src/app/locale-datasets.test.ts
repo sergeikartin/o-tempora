@@ -7,6 +7,7 @@ vi.mock('../shared/lib/log-error', () => ({ logError: vi.fn() }));
 function person(overrides: Partial<Person> = {}): Person {
   return {
     id: 'Q1',
+    slug: 'Q1',
     name: 'Ada Lovelace',
     fameScore: 50,
     tagline: 'Mathematician',

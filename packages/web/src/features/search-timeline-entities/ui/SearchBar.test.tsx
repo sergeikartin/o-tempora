@@ -8,6 +8,7 @@ afterEach(cleanup);
 const results: SearchResult[] = [
   {
     id: 'Q868',
+    slug: 'Q868',
     entityType: 'person',
     name: 'Aristotle',
     tagline: 'Greek philosopher',
@@ -15,6 +16,7 @@ const results: SearchResult[] = [
   },
   {
     id: 'Q8214',
+    slug: 'Q8214',
     entityType: 'conflict',
     name: 'Korean War',
     tagline: 'war on the Korean peninsula',

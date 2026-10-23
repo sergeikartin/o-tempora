@@ -32,6 +32,7 @@ const MAX_RESULTS = 8;
 
 export interface SearchResult {
   id: string;
+  slug: string;
   entityType: EntityType;
   name: string;
   tagline: string;
@@ -142,6 +143,7 @@ export function useTimelineSearch({
         .filter((person) => matchesQuery(person, trimmed))
         .map((person) => ({
           id: person.id,
+          slug: person.slug,
           entityType: 'person' as const,
           name: person.name,
           tagline: person.tagline,
@@ -151,6 +153,7 @@ export function useTimelineSearch({
         .filter((entry) => matchesQuery(entry, trimmed))
         .map((entry) => ({
           id: entry.id,
+          slug: entry.slug,
           entityType: 'conflict' as const,
           name: entry.name,
           tagline: entry.tagline,
@@ -160,6 +163,7 @@ export function useTimelineSearch({
         .filter((milestone) => matchesQuery(milestone, trimmed))
         .map((milestone) => ({
           id: milestone.id,
+          slug: milestone.slug,
           entityType: 'milestone' as const,
           name: milestone.name,
           tagline: milestone.tagline,

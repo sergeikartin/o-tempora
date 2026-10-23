@@ -14,6 +14,7 @@
     "at": {
       "year": 1917
     },
+    "slug": "russian-revolution",
     "row": 7
   },
   {
@@ -36,6 +37,7 @@
         "month": 10
       }
     },
+    "slug": "hundred-years-war",
     "row": 1
   },
   {
@@ -58,6 +60,7 @@
         "month": 2
       }
     },
+    "slug": "gulf-war",
     "row": 8
   },
   {
@@ -81,6 +84,7 @@
         "month": 9
       }
     },
+    "slug": "american-revolutionary-war",
     "row": 2
   },
   {
@@ -103,6 +107,7 @@
         "year": 1648
       }
     },
+    "slug": "thirty-years-war",
     "row": 2
   },
   {
@@ -127,6 +132,7 @@
         "month": 4
       }
     },
+    "slug": "spanish-civil-war",
     "row": 12
   },
   {
@@ -152,6 +158,7 @@
         "month": 12
       }
     },
+    "slug": "syrian-civil-war",
     "row": 4
   },
   {
@@ -170,6 +177,7 @@
       "year": 1945,
       "month": 8
     },
+    "slug": "atomic-bombings-of-hiroshima-and-nagasaki",
     "row": 13
   },
   {
@@ -194,6 +202,7 @@
         "month": 10
       }
     },
+    "slug": "cultural-revolution",
     "row": 9
   },
   {
@@ -214,6 +223,7 @@
       "year": 2023,
       "month": 10
     },
+    "slug": "gaza-war",
     "row": 5
   },
   {
@@ -237,6 +247,7 @@
         "month": 6
       }
     },
+    "slug": "six-day-war",
     "row": 6
   },
   {
@@ -261,6 +272,7 @@
         "month": 2
       }
     },
+    "slug": "battle-of-stalingrad",
     "row": 15
   },
   {
@@ -286,6 +298,7 @@
         "month": 12
       }
     },
+    "slug": "iraq-war",
     "row": 9
   },
   {
@@ -310,6 +323,7 @@
         "month": 11
       }
     },
+    "slug": "october-revolution",
     "row": 12
   },
   {
@@ -332,6 +346,7 @@
         "month": 12
       }
     },
+    "slug": "arab-spring",
     "row": 1
   },
   {
@@ -352,6 +367,7 @@
         "year": -1179
       }
     },
+    "slug": "trojan-war",
     "row": 2
   },
   {
@@ -375,6 +391,7 @@
         "month": 2
       }
     },
+    "slug": "soviet-afghan-war",
     "row": 7
   },
   {
@@ -400,6 +417,7 @@
         "month": 10
       }
     },
+    "slug": "yom-kippur-war",
     "row": 3
   }
 ]

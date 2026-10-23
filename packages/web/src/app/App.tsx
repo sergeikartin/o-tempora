@@ -1,4 +1,12 @@
-import { lazy, Suspense, use, useCallback, useMemo, useState } from 'react';
+import {
+  lazy,
+  Suspense,
+  use,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { useFameScoreFilters } from '../features/filter-by-fame-score';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
 import { useRegionFilter } from '../features/filter-by-region';
@@ -8,10 +16,16 @@ import {
   useTimelineSearch,
 } from '../features/search-timeline-entities';
 import {
+  type EntityType,
   type SelectedEntityRef,
   useSelectedEntity,
 } from '../features/select-timeline-entity';
-import type { DetailLevel } from '../shared/config';
+import {
+  DETAIL_LEVELS,
+  type DetailLevel,
+  type FameScoreLane,
+  switchLanguageHref,
+} from '../shared/config';
 import { trackEvent } from '../shared/lib/track-event';
 import { m } from '../shared/paraglide/messages.js';
 import { ErrorBoundary } from '../shared/ui';
@@ -73,6 +87,43 @@ export function App({ initialDatasets }: AppProps = {}) {
   );
 }
 
+const LANE_BY_ENTITY_TYPE: Record<EntityType, FameScoreLane> = {
+  person: 'people',
+  conflict: 'conflicts',
+  milestone: 'milestones',
+};
+
+interface FoundEntity {
+  id: string;
+  slug: string;
+  entityType: EntityType;
+  lane: FameScoreLane;
+  fameScore: number;
+}
+
+function findEntity(
+  datasets: LocaleDatasets,
+  matches: (entity: { id: string; slug: string }) => boolean,
+): FoundEntity | null {
+  const entityTypes: EntityType[] = ['person', 'conflict', 'milestone'];
+  for (const entityType of entityTypes) {
+    const lane = LANE_BY_ENTITY_TYPE[entityType];
+    const entity = (
+      datasets[lane] as { id: string; slug: string; fameScore: number }[]
+    ).find(matches);
+    if (entity) {
+      return {
+        id: entity.id,
+        slug: entity.slug,
+        entityType,
+        lane,
+        fameScore: entity.fameScore,
+      };
+    }
+  }
+  return null;
+}
+
 function AppContent({ initialDatasets }: AppProps) {
   const level1And2 = initialDatasets ?? use(localeDatasetsPromise);
   const {
@@ -109,7 +160,10 @@ function AppContent({ initialDatasets }: AppProps) {
   } = useConflictsMilestonesFilter();
   const {
     selected: selectedRef,
+    selectedSlug,
+    pendingLinkSlug,
     select: selectEntity,
+    openLink: openEntityLink,
     clear: closeDetailPanel,
   } = useSelectedEntity();
   const {
@@ -141,12 +195,75 @@ function AppContent({ initialDatasets }: AppProps) {
   // hiding the sidebar.
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+
+  // An Entity Link (`?e=<slug>`) names only a slug: look it up in what's loaded,
+  // fetching level 3 and then level 4 one at a time while it's missing, then
+  // open it exactly as a search pick does — raising the Detail Level only as
+  // far as the entity's own Fame Score needs. A slug that no level contains
+  // opens the timeline with no panel.
+  useEffect(() => {
+    if (!pendingLinkSlug) return;
+    const found = findEntity(
+      {
+        people: peopleData,
+        conflicts: conflictsData,
+        milestones: milestonesData,
+      },
+      (entity) => entity.slug === pendingLinkSlug,
+    );
+    if (found) {
+      const currentIndex = DETAIL_LEVELS.indexOf(selectedLevel);
+      const neededLevel =
+        DETAIL_LEVELS.slice(currentIndex).find(
+          (level) => level.values[found.lane] <= found.fameScore,
+        ) ?? selectedLevel;
+      if (neededLevel.id !== selectedLevel.id) {
+        handleSelectDetailLevel(neededLevel);
+      }
+      const ref: SelectedEntityRef = {
+        id: found.id,
+        entityType: found.entityType,
+      };
+      openEntityLink(ref, found.slug);
+      setIsFilterDrawerOpen(false);
+      setSearchJumpTarget(ref);
+      return;
+    }
+    if (loadingLevelIds.includes('specialized')) {
+      requestLevel('specialized');
+    } else if (loadingLevelIds.includes('deep-cut')) {
+      requestLevel('deep-cut');
+    } else {
+      closeDetailPanel();
+    }
+  }, [
+    pendingLinkSlug,
+    peopleData,
+    conflictsData,
+    milestonesData,
+    loadingLevelIds,
+    selectedLevel,
+    requestLevel,
+    handleSelectDetailLevel,
+    openEntityLink,
+    closeDetailPanel,
+  ]);
+
   const handleEntityClick = useCallback(
     (ref: SelectedEntityRef) => {
-      selectEntity(ref);
+      const found = findEntity(
+        {
+          people: peopleData,
+          conflicts: conflictsData,
+          milestones: milestonesData,
+        },
+        (entity) => entity.id === ref.id,
+      );
+      if (!found) return;
+      selectEntity(ref, found.slug);
       setIsFilterDrawerOpen(false);
     },
-    [selectEntity],
+    [selectEntity, peopleData, conflictsData, milestonesData],
   );
 
   // A search pick is a superset of handleEntityClick above (same select +
@@ -159,7 +276,7 @@ function AppContent({ initialDatasets }: AppProps) {
         id: result.id,
         entityType: result.entityType,
       };
-      selectEntity(ref);
+      selectEntity(ref, result.slug);
       setIsFilterDrawerOpen(false);
       setSearchJumpTarget(ref);
       trackEvent('search_jump', { entityType: result.entityType });
@@ -213,6 +330,7 @@ function AppContent({ initialDatasets }: AppProps) {
         onToggleCollapse={() =>
           setIsSidebarCollapsed((collapsed) => !collapsed)
         }
+        switchLanguageHref={switchLanguageHref(selectedSlug ?? pendingLinkSlug)}
         onOpenAbout={() => {
           setIsAboutOpen(true);
           trackEvent('about_open');

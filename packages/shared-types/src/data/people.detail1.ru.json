@@ -19,6 +19,7 @@
     "tagline": "арабский религиозный и политический деятель, основатель ислама",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Muhammad",
     "description": "Муха́ммед, также Муха́ммад, Магоме́т — арабский религиозный, общественный и политический деятель, основатель и центральная фигура ислама. Согласно исламской доктрине, он был пророком, вдохновлённым Богом для проповеди и подтверждения монотеистических учений Адама, Нуха, Ибрахима, Мусы, Исы и других пророков. В исламе считается печатью пророков. Мухаммед объединил Аравию в единое мусульманское государство, а Коран, учения и традиции Мухаммеда стали основой исламской религиозной веры.",
+    "slug": "muhammad",
     "row": 0
   },
   {
@@ -43,6 +44,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Buddha%20in%20Sarnath%20Museum%20%28Dhammajak%20Mutra%29.jpg",
     "imageAttribution": "พระมหาเทวประภาส วชิรญาณเมธี (ผู้ถ่าย-ปล่อยสัญญาอนุญาตภาพให้นำไปใช้ได้เพื่อการศึกษาโดยอยู่ภา่ยใต้ cc-by-sa-3.0)  ผู้สร้างสรรค์ผลงาน/ส่งข้อมูลเก็บในคลังข้อมูลเสรีวิกิมีเดียคอมมอนส์ - เทวประภาส มากคล้าย, via Wikimedia Commons",
     "description": "Сиддха́ртха Гаута́ма, позже стал известен как Бу́дда Ша́кьямуни или просто Бу́дда — духовный учитель, который жил в Южной Азии в VI или V веке до н. э., основатель и центральная фигура буддизма.",
+    "slug": "the-buddha",
     "row": 0
   },
   {
@@ -66,6 +68,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Isaac_Newton",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GodfreyKneller-IsaacNewton-1689.jpg",
     "description": "Исаа́к Нью́то́н — английский физик, математик, механик и астроном, один из создателей классической физики и математического анализа.",
+    "slug": "isaac-newton",
     "row": 0
   },
   {
@@ -86,6 +89,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Donald_Trump",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%28cropped%29%282%29.jpg",
     "description": "До́нальд Джон Трамп — американский государственный и политический деятель, предприниматель, шоумен и миллиардер. 45-й (2017—2021) и 47-й президент США. Основатель собственной политической идеологии и движения — «трампизма».",
+    "slug": "donald-trump",
     "row": 0
   },
   {
@@ -110,6 +114,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Genghis_Khan",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/YuanEmperorAlbumGenghisPortrait.jpg",
     "description": "Чингисха́н, собственное имя — Тэмуджи́н, Темучи́н, Темучжи́н — основатель и первый великий хан Монгольской империи, объединивший разрозненные монгольские и тюркские племена; полководец, организовавший завоевательные походы монголов в Китай, Среднюю Азию, Ближний Восток, на Кавказ и в Восточную Европу. Основатель самой крупной в истории человечества континентальной империи.",
+    "slug": "genghis-khan",
     "row": 0
   },
   {
@@ -134,6 +139,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cleopatra",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kleopatra-VII.-Altes-Museum-Berlin1.jpg",
     "description": "Клеопа́тра VII Филопа́тор — последняя царица эллинистического Египта из македонской династии Птолемеев (Лагидов).",
+    "slug": "cleopatra",
     "row": 0
   },
   {
@@ -158,6 +164,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mahatma-Gandhi%2C%20studio%2C%201931.jpg",
     "description": "Маха́тма Моханда́с Карамча́нд Га́нди — индийский политический, государственный и общественный деятель, один из руководителей и идеологов движения за независимость Индии от Великобритании. Его философия ненасилия (сатьяграха) оказала влияние на движения сторонников мирных перемен.",
+    "slug": "mahatma-gandhi",
     "row": 1
   },
   {
@@ -184,6 +191,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pope%20Francis%20Korea%20Haemi%20Castle%2019.jpg",
     "imageAttribution": "Korea.net / Korean Culture and Information Service (Jeon Han), via Wikimedia Commons",
     "description": "Франци́ск — епископ Римско-католической церкви, папа римский (2013—2025). Первый в истории папа из Нового Света и первый за более чем 1200 лет папа не из Европы. Первый папа-иезуит. Первый папа-монах со времён Григория XVI (1831—1846), состоявший в ордене камальдулов.",
+    "slug": "pope-francis",
     "row": 2
   },
   {
@@ -208,6 +216,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Beethoven.jpg",
     "description": "Лю́двиг ван Бетхо́вен — немецкий композитор, пианист, скрипач и дирижёр, третий и последний по времени из «венских классиков».",
+    "slug": "ludwig-van-beethoven",
     "row": 0
   },
   {
@@ -233,6 +242,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco%20Melzi%20-%20Portrait%20of%20Leonardo.png",
     "description": "Леона́рдо ди сер Пье́ро да Ви́нчи — итальянский художник, учёный, изобретатель, писатель, музыкант, один из крупнейших представителей искусства Высокого Возрождения, яркий пример «универсального человека».",
+    "slug": "leonardo-da-vinci",
     "row": 0
   },
   {
@@ -255,6 +265,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Aristotle",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Aristotle%20Altemps%20Inv8575.jpg",
     "description": "Аристо́тель — греческий философ и эрудит классического периода в Древней Греции, яркий пример «универсального человека».",
+    "slug": "aristotle",
     "row": 1
   },
   {
@@ -279,6 +290,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Marco_Polo",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Marco%20Polo%20Mosaic%20from%20Palazzo%20Tursi.jpg",
     "description": "Ма́рко По́ло — венецианский купец и путешественник, представивший историю своего путешествия по Азии в «Книге о разнообразии мира». Несмотря на сомнения в достоверности фактов, изложенных в книге, она служит ценным источником знаний по географии, этнографии, истории Армении, Ирана, Китая, Казахстана, Монголии, Индии, Индонезии и других стран в Средние века. Книга оказала значительное влияние на мореплавателей, картографов, писателей XIV—XVI веков. В частности, она была на корабле Христофора Колумба во время его поиска маршрута в Индию; по подсчётам исследователей, Колумб сделал на ней 70 пометок.",
+    "slug": "marco-polo",
     "row": 0
   },
   {
@@ -303,6 +315,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Elizabeth_I_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Elizabeth1England.jpg",
     "description": "Елизаве́та I, Елизаве́та Тюдо́р — королева Англии и Ирландии с 1558 года, последний монарх Британских островов из дома Тюдоров, 44-летнее царствование которой составило самостоятельный период в истории страны, известный под её именем.",
+    "slug": "elizabeth-i-of-england",
     "row": 0
   },
   {
@@ -327,6 +340,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Plato%20Silanion%20Musei%20Capitolini%20MC1377.jpg",
     "imageAttribution": "Marie-Lan Nguyen, via Wikimedia Commons",
     "description": "Плато́н, настоящее имя Аристо́кл — афинский философ классического периода Древней Греции, основатель платонической школы мысли и Академии, первого высшего учебного заведения в западном мире.",
+    "slug": "plato",
     "row": 0
   },
   {
@@ -352,6 +366,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alexander%20the%20Great%20mosaic%20%28cropped%29.jpg",
     "description": "Алекса́ндр Македо́нский — царь Македонии из династии Аргеадов, выдающийся полководец, создатель мировой державы, распавшейся после его смерти.",
+    "slug": "alexander-the-great",
     "row": 2
   },
   {
@@ -375,6 +390,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Peter",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pope-peter%20pprubens.jpg",
     "description": "Апо́стол Пётр в христианстве — один из двенадцати апостолов Иисуса Христа. Вместе с апостолом Павлом называется «первоверховным апостолом». Святой Православной и Католической церквей; память — 12 июля (православие), 29 июня. В Католической церкви — первый папа римский.",
+    "slug": "saint-peter",
     "row": 0
   },
   {
@@ -398,6 +414,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Homer%20bust%2C%20Farnese%20collection%20%28Naples%29.jpg",
     "imageAttribution": "NikonZ7II, via Wikimedia Commons",
     "description": "Гоме́р — легендарный древнегреческий поэт-сказитель, создатель эпических поэм «Илиада» и «Одиссея». Жизнь датируется VIII—VII вв. до н. э., однако историчность всё же не бесспорна.Предположительно, был аэдом.",
+    "slug": "homer",
     "row": 0
   },
   {
@@ -422,6 +439,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Napoleon",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacques-Louis%20David%20-%20The%20Emperor%20Napoleon%20in%20His%20Study%20at%20the%20Tuileries%20-%20Google%20Art%20Project.jpg",
     "description": "Наполео́н I Бонапа́рт — император французов в 1804—1814 и 1815 годах, полководец и государственный деятель, заложивший основы современного французского государства, один из наиболее выдающихся деятелей в истории Запада.",
+    "slug": "napoleon",
     "row": 1
   },
   {
@@ -446,6 +464,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Galileo_Galilei",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Galileo.arp.300pix.jpg",
     "description": "Галиле́о Галиле́й — итальянский физик, механик, астроном, философ, математик, оказавший значительное влияние на науку своего времени.",
+    "slug": "galileo-galilei",
     "row": 1
   },
   {
@@ -471,6 +490,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Adolf%20Hitler%20cropped%20restored%203x4.jpg",
     "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
     "description": "Адо́льф Ги́тлер — немецкий политик австрийского происхождения, с 1933 года до своей смерти диктатор Германского рейха. С 1921 года был председателем Национал-социалистической немецкой рабочей партии (НСДАП), в 1933—1945 годах — рейхсканцлером Германии, с 1934 года также главой государства, а с 1938 года — верховным главнокомандующим Вермахта. Развязал Вторую мировую войну, в ходе которой погибли более 70 млн человек, и сыграл центральную роль в Холокосте, жертвами которого стали около 6 млн европейских евреев.",
+    "slug": "adolf-hitler",
     "row": 0
   },
   {
@@ -494,6 +514,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Christopher_Columbus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ridolfo%20del%20Ghirlandaio%20-%20Ritratto%20di%20Cristoforo%20Colombo%20%281520%29.jpg",
     "description": "Христофо́р Колу́мб — испанский мореплаватель генуэзского происхождения, в 1492 году открывший для европейцев Новый Свет (Америку).",
+    "slug": "christopher-columbus",
     "row": 1
   },
   {
@@ -517,6 +538,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Socrates",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Socrates%20Louvre.jpg",
     "description": "Сокра́т — древнегреческий философ.",
+    "slug": "socrates",
     "row": 1
   },
   {
@@ -542,6 +564,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Albert_Einstein",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Albert%20Einstein%20Head%20cleaned.jpg",
     "description": "Альбе́рт Эйнште́йн — швейцарский, немецкий и американский физик-теоретик и общественный деятель-гуманист, один из основателей современной теоретической физики. Лауреат Нобелевской премии по физике 1921 года. Его теория относительности изменила основания физики, заменив классическую механику и закон всемирного тяготения Ньютона. Персона XX века по версии журнала Time.",
+    "slug": "albert-einstein",
     "row": 3
   },
   {
@@ -566,6 +589,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_VIII_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hans%20Holbein%2C%20the%20Younger%2C%20Around%201497-1543%20-%20Portrait%20of%20Henry%20VIII%20of%20England%20-%20Google%20Art%20Project.jpg",
     "description": "Ге́нрих VIII — король Англии с 22 апреля 1509, сын и наследник короля Англии Генриха VII, второй английский монарх из династии Тюдоров. С согласия Римской католической церкви английские короли именовались также «Повелителями Ирландии», однако в 1541 году, по требованию отлучённого от католической церкви Генриха VIII, ирландский парламент наделил его титулом «Король Ирландии». Образованный и одарённый, Генрих правил как представитель европейского абсолютизма, к концу царствования жестоко преследовал своих действительных и мнимых политических оппонентов. В поздние годы страдал от ожирения и гангрены ноги.",
+    "slug": "henry-viii-of-england",
     "row": 2
   },
   {
@@ -591,6 +615,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Marie_Curie",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Marie%20Curie%20%281900%29%20%28cropped%29.jpg",
     "description": "Мари́я Склодо́вская-Кюри́ — польская и французская учёная-экспериментатор, педагог и общественная деятельница. Совместно с мужем Пьером Кюри и Антуаном Анри Беккерелем является первооткрывательницей радиоактивности и автором термина «радиоактивность». Также вместе с мужем открыла элементы радий и полоний.",
+    "slug": "marie-curie",
     "row": 2
   },
   {
@@ -613,6 +638,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jesus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Spas%20vsederzhitel%20sinay%20%28cropped1%29.jpg",
     "description": "Иису́с Христо́с — в христианстве Бог Сын, Богочеловек и предсказанный в Ветхом Завете Мессия, ставший искупительной жертвой за грехи людей. Эпитетом Иисуса Христа стал Спаси́тель (Спас). Согласно христианству, в единстве его личности вмещается и вся полнота божественной природы как Бога Сына, и вся конкретность конечной человеческой природы как человека, проповедовавшего в Галилее и распятого на кресте около 30 года н. э. Сын Божий называется Иисусом Христом начиная с боговоплощения. Был иудеем, еврейским проповедником, последователи которого, начиная с апостолов, создали религиозное движение, развившееся в новую религию, отделившуюся от иудаизма — христианство.",
+    "slug": "jesus-christ",
     "row": 1
   },
   {
@@ -637,6 +663,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jimmy_Carter",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/JimmyCarterPortrait2.jpg",
     "description": "Джи́мми Ка́ртер — американский государственный и политический деятель. 39-й президент США (1977—1981) и 76-й губернатор штата Джорджия (1971—1975) от Демократической партии. Лауреат Нобелевской премии мира 2002 года. Первый и единственный президент в истории США, достигший возраста 100 лет. Рекордсмен по пребыванию в статусе экс-президента США — 43 года и 344 дня. Лейтенант ВМС США (1952).",
+    "slug": "jimmy-carter",
     "row": 4
   },
   {
@@ -663,6 +690,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Papst%20Benedikt%20XVI%20in%20Berlin%202011.jpg",
     "imageAttribution": "WDKrause, via Wikimedia Commons",
     "description": "Бенеди́кт XVI (лат. Benedictus PP. XVI, итал. Benedetto XVI; в миру — Йо́зеф Алои́з Ра́тцингер — епископ Римско-католической церкви, папа римский с 19 апреля 2005 года по 28 февраля 2013 года.",
+    "slug": "benedict-xvi",
     "row": 5
   },
   {
@@ -687,6 +715,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nikolaus%20Kopernikus%20MOT.jpg",
     "description": "Никола́й Копе́рник — польский и немецкий астроном, математик, механик, экономист, каноник эпохи Возрождения. Наиболее известен как автор гелиоцентрической системы мира, положившей начало первой научной революции.",
+    "slug": "nicolaus-copernicus",
     "row": 3
   },
   {
@@ -711,6 +740,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Julius_Caesar",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Retrato%20de%20Julio%20C%C3%A9sar%20%2826724093101%29%20%28cropped%29.jpg",
     "description": "Гай Ю́лий Це́зарь — древнеримский государственный и политический деятель, полководец, писатель. Консул 59, 48, 46, 45 и 44 гг. до н. э., диктатор 49, 48–47 и 46–44 гг. до н. э., великий понтифик с 63 г. до н. э.",
+    "slug": "julius-caesar",
     "row": 1
   },
   {
@@ -734,6 +764,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Confucius",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Confucius%2C%20fresco%20from%20a%20Western%20Han%20tomb%20of%20Dongping%20County%2C%20Shandong%20province%2C%20China.jpg",
     "description": "Конфу́ций — древний мыслитель и философ Китая. Его учение оказало глубокое влияние на жизнь Китая и Восточной Азии, став основой философской системы, известной как конфуцианство.",
+    "slug": "confucius",
     "row": 1
   },
   {
@@ -758,6 +789,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Michelangelo",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Michelangelo%20Daniele%20da%20Volterra%20%28dettaglio%29.jpg",
     "description": "Микела́нджело Буонарро́ти, также Микельаньоло, Микельанджело; полное имя Микела́нджело ди Лодови́ко ди Леона́рдо ди Буонарро́ти Симо́ни — итальянский скульптор, живописец, архитектор, поэт и мыслитель. Один из крупнейших мастеров эпохи Высокого Возрождения и раннего барокко — именно его считают подлинным «отцом архитектуры римского барокко».",
+    "slug": "michelangelo",
     "row": 4
   },
   {
@@ -781,6 +813,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Archimedes",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Retrato%20de%20un%20erudito%20%28%C2%BFArqu%C3%ADmedes%3F%29%2C%20por%20Domenico%20Fetti.jpg",
     "description": "Архиме́д — древнегреческий учёный и инженер, самый известный математик Античности. Родился и бо́льшую часть жизни прожил в городе Сиракузы на Сицилии.",
+    "slug": "archimedes",
     "row": 0
   },
   {
@@ -804,6 +837,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kapitolinischer%20Pythagoras.jpg",
     "imageAttribution": "The original uploader was Galilea at German Wikipedia., via Wikimedia Commons",
     "description": "Пифаго́р Са́мосский — древнегреческий философ, математик, теоретик музыки и мистик, создатель религиозно-философской школы пифагорейцев.",
+    "slug": "pythagoras",
     "row": 2
   },
   {
@@ -829,6 +863,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Self-portrait%20-%20Vincent%20van%20Gogh.jpg",
     "imageAttribution": "Vincent van Gogh, via Wikimedia Commons",
     "description": "Винсе́нт Ви́ллем ван Гог — нидерландский живописец и график, один из величайших художников «прекрасной эпохи», общепризнанный лидер постимпрессионистского движения, чьё творчество оказало значительное влияние на живопись XX века.",
+    "slug": "vincent-van-gogh",
     "row": 5
   },
   {
@@ -853,6 +888,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Michelangelo%27s%20Moses%20in%20San%20Pietro%20in%20Vincoli.jpg",
     "imageAttribution": "Wknight94, via Wikimedia Commons",
     "description": "Моисе́й в Пятикнижии — еврейский пророк и законодатель, основоположник иудаизма, организовал Исход евреев из Древнего Египта, сплотил израильские колена в единый народ и записал Моисеев закон. Важнейший пророк в иудаизме. В исламе — пророк Муса.",
+    "slug": "moses",
     "row": 0
   },
   {
@@ -877,6 +913,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Fyodor_Dostoevsky",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vasily%20Perov%20-%20%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82%20%D0%A4.%D0%9C.%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20-%20Google%20Art%20Project.jpg",
     "description": "Фёдор Миха́йлович Достое́вский — русский писатель, мыслитель, философ и публицист.",
+    "slug": "fyodor-dostoyevsky",
     "row": 4
   },
   {
@@ -901,6 +938,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thomas_Jefferson",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Official%20Presidential%20portrait%20of%20Thomas%20Jefferson%20%28by%20Rembrandt%20Peale%2C%201800%29%28cropped%29.jpg",
     "description": "То́мас Дже́фферсон — американский государственный деятель, один из отцов-основателей США и авторов Декларации независимости (1776), 3-й президент США — в 1801—1809 годах, выдающийся политик, дипломат и философ эпохи Просвещения.",
+    "slug": "thomas-jefferson",
     "row": 3
   },
   {
@@ -925,6 +963,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Che_Guevara",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Che%20Guevara%20-%20Guerrillero%20Heroico%20by%20Alberto%20Korda.jpg",
     "description": "Эрне́сто Че Гева́ра — аргентинский революционер, команданте Кубинской революции 1959 года и кубинский государственный деятель.",
+    "slug": "che-guevara",
     "row": 8
   },
   {
@@ -949,6 +988,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_XIV_of_France",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Louis%20XIV%20of%20France.jpg",
     "description": "Людо́вик XIV де Бурбо́н, получивший при рождении имя Луи́-Дьёдонне́, также известный как «король-солнце», также Людовик Великий — король Франции и Наварры с 14 мая 1643 года по 1 сентября 1715 года.",
+    "slug": "louis-xiv-of-france",
     "row": 2
   },
   {
@@ -973,6 +1013,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Adam_Smith",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/AdamSmith.jpg",
     "description": "А́дам Смит — шотландский экономист и философ-этик, один из основоположников экономической теории как науки. Считается основателем классической политэкономии.",
+    "slug": "adam-smith",
     "row": 2
   },
   {
@@ -999,6 +1040,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/MotherTeresa%20090.jpg",
     "imageAttribution": "Túrelio, via Wikimedia Commons",
     "description": "Святая Тере́за Кальку́ттская, известная во всём мире как мать Тереза — католическая монахиня, основательница женской монашеской конгрегации сестёр — миссионерок любви, занимающейся служением бедным и больным.",
+    "slug": "mother-teresa",
     "row": 6
   },
   {
@@ -1023,6 +1065,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Johann_Sebastian_Bach",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Johann%20Sebastian%20Bach.png",
     "description": "Иога́нн Себастья́н Бах — немецкий композитор, органист, капельмейстер, музыкальный педагог.",
+    "slug": "johann-sebastian-bach",
     "row": 1
   },
   {
@@ -1047,6 +1090,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_Luther",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lucas%20Cranach%20d.%C3%84.%20-%20Martin%20Luther%2C%201528%20%28Veste%20Coburg%29.jpg",
     "description": "Ма́ртин Лю́тер — немецкий христианский богослов, бывший католический монах-августинец, инициатор Реформации, ведущий переводчик Библии на немецкий язык. Ключевой создатель протестантизма, именем которого названо одно из его крупнейших направлений — лютеранство. Один из создателей немецкого литературного языка.",
+    "slug": "martin-luther",
     "row": 6
   },
   {
@@ -1072,6 +1116,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ferdinand_Magellan",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Retrato%20de%20Hernando%20de%20Magallanes.jpg",
     "description": "Ферна́н Магелла́н — португальский и испанский мореплаватель с титулом аделантадо. Командовал экспедицией, совершившей первое из известных кругосветных путешествий. Открыл пролив, позже названный его именем, став первым европейцем, проследовавшим по морю из Атлантического океана в Тихий. Погиб во время путешествия, не успев лично завершить его.",
+    "slug": "ferdinand-magellan",
     "row": 5
   },
   {
@@ -1096,6 +1141,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/William_Shakespeare",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shakespeare.jpg",
     "description": "Уи́льям Шекспи́р — английский поэт и драматург, зачастую считается величайшим англоязычным писателем и одним из лучших драматургов мира. Часто именуется национальным поэтом Англии.",
+    "slug": "william-shakespeare",
     "row": 2
   },
   {
@@ -1122,6 +1168,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pope%20John%20Paul%20II%20smile.jpg",
     "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
     "description": "Святой Иоа́нн Па́вел II — епископ Римско-католической церкви, папа римский с 16 октября 1978 по 2 апреля 2005 года. Беатифицирован 1 мая 2011 года папой римским Бенедиктом XVI. Канонизирован 27 апреля 2014 года папой Франциском и сослужившим ему папой римским на покое Бенедиктом XVI.",
+    "slug": "john-paul-ii",
     "row": 7
   },
   {
@@ -1146,6 +1193,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Martin%20Luther%20King%2C%20Jr.%20and%20Lyndon%20Johnson%20%28cropped%29.jpg",
     "description": "Ма́ртин Лю́тер Кинг — младший — американский баптистский проповедник, общественный деятель и активист, получивший известность как самый заметный представитель и лидер движения за гражданские права чернокожих в США с 1954 года до своей смерти в 1968 году. Кинг выступал за защиту гражданских прав с помощью ненасилия и гражданского неповиновения, тактик, вдохновлённых его христианскими убеждениями и ненасильственным активизмом Махатмы Ганди. Лауреат Нобелевской премии мира (1964) за борьбу с расовым неравенством через ненасильственное сопротивление.",
+    "slug": "martin-luther-king-jr",
     "row": 13
   },
   {
@@ -1171,6 +1219,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Frédéric_Chopin",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Frederic%20Chopin%20photo.jpeg",
     "description": "Фридери́к Франци́шек Шопе́н — польский композитор и пианист, творческая деятельность которого почти полностью посвящена фортепиано. Один из ведущих представителей западноевропейского музыкального романтизма, основоположник польской национальной композиторской школы. Творчество Шопена оказало значительное влияние на развитие музыкальной культуры Европы, он возродил на романтической основе такие музыкальные формы, как прелюдии, этюды и экспромты. Шопен написал два фортепианных концерта, три сонаты, четыре баллады, шестьдесят мазурок, шестнадцать полонезов, семнадцать вальсов, двадцать семь этюдов.",
+    "slug": "frederic-chopin",
     "row": 2
   },
   {
@@ -1195,6 +1244,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Immanuel_Kant",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Immanuel%20Kant%20-%20Gemaelde%202.jpg",
     "description": "Иммануи́л Кант — немецкий философ, один из центральных мыслителей эпохи Просвещения. Всесторонние и систематические работы Канта в области эпистемологии, метафизики, этики и эстетики сделали его одной из самых влиятельных фигур в западной философии Нового времени.",
+    "slug": "immanuel-kant",
     "row": 4
   },
   {
@@ -1220,6 +1270,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karl_Marx",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Karl%20Marx%20001%20restored.jpg",
     "description": "Карл Ге́нрих Маркс — немецкий философ, социолог, экономист, писатель, поэт, политический журналист, общественный деятель, историк. Наиболее известными его трудами являются «Манифест Коммунистической партии» и «Капитал. Критика политической экономии» (1867—1883). Политическая и философская мысль Маркса оказала огромное влияние на последующую интеллектуальную, экономическую и политическую историю.",
+    "slug": "karl-marx",
     "row": 6
   },
   {
@@ -1245,6 +1296,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Joseph_Stalin",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/StalinCropped1943.jpg",
     "description": "Ио́сиф Виссарио́нович Ста́лин — российский революционер, советский политический, государственный, военный и партийный деятель, один из основателей и многолетний фактический лидер Советского Союза, одна из самых известных и влиятельных личностей XX века. Генеральный секретарь ЦК РКП(б) — ВКП(б) (1922—1934), секретарь ЦК ВКП(б) — КПСС (1934—1953), народный комиссар обороны СССР (1941—1946), председатель Совнаркома СССР и Совета Министров СССР (1941—1953), председатель Государственного комитета обороны СССР (1941—1945). Маршал Советского Союза (1943), Генералиссимус Советского Союза (1945).",
+    "slug": "joseph-stalin",
     "row": 11
   },
   {
@@ -1269,6 +1321,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Akbar",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Contemporary%20seated%20portrait%20of%20Akbar%2C%201605.jpg",
     "description": "Абу́ль-Фатх Джалалудди́н Муха́ммад Акба́р, более известный как Акба́р Вели́кий — государственный деятель, третий император (падишах) Империи Великих Моголов, внук основателя династии Великих Моголов в Индии Бабура. Акбар укрепил могущество Могольской династии, путём завоеваний значительно расширил границы государства. К концу его правления в 1605 году империя Великих Моголов охватывала бо́льшую часть Северной и Центральной Индии. Осуществил ряд крупных государственных, военных, религиозных реформ. При Акбаре Великом достигли своего расцвета культура и искусство Индии.",
+    "slug": "akbar",
     "row": 5
   },
   {
@@ -1293,6 +1346,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dante_Alighieri",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20de%20Dante.jpg",
     "description": "Да́нте Алигье́ри — итальянский поэт, мыслитель, богослов, один из основоположников литературного итальянского языка, политический деятель. Создатель «Комедии», в которой был дан синтез позднесредневековой культуры; «Божественная комедия» является одним из основополагающих произведений западной литературы.",
+    "slug": "dante-alighieri",
     "row": 1
   },
   {
@@ -1318,6 +1372,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/René_Descartes",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Frans%20Hals%20-%20Portret%20van%20Ren%C3%A9%20Descartes.jpg",
     "description": "Рене́ Дека́рт — французский философ, математик и естествоиспытатель; один из основоположников философии Нового времени, создатель аналитической геометрии, одна из ключевых фигур научной революции.",
+    "slug": "rene-descartes",
     "row": 3
   },
   {
@@ -1343,6 +1398,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Avicenna",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pursina.jpg",
     "description": "Абу́ Али́ Хусе́йн ибн Абдулла́х ибн аль-Хаса́н ибн Али́ ибн Си́на, известный на Западе как Авице́нна — средневековый персидский учёный, философ и врач, представитель восточного аристотелизма. Был придворным врачом саманидских эмиров и дейлемитских султанов, некоторое время был визирем в Хамадане. Всего написал более 450 трудов в 29 областях науки, из которых до нас дошли только 274. Самый известный и влиятельный философ-учёный средневекового исламского мира.",
+    "slug": "avicenna",
     "row": 0
   },
   {
@@ -1367,6 +1423,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Augustus%20of%20Prima%20Porta%20%28inv.%202290%29.jpg",
     "imageAttribution": "Joel Bellviure, via Wikimedia Commons",
     "description": "Гай Ю́лий Це́зарь Октавиа́н А́вгуст — римский политический деятель. Первый римский император и основатель Римской империи. 13 раз занимал должность консула, с 12 года до н. э. — великий понтифик, с 23 года до н. э. обладал полномочиями трибуна, во 2 году до н. э. получил почётный титул «отец отечества».",
+    "slug": "augustus",
     "row": 2
   },
   {
@@ -1391,6 +1448,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Christoph%20Bernhard%20Francke%20-%20Bildnis%20des%20Philosophen%20Leibniz%20%28ca.%201695%29.jpg",
     "description": "Го́тфрид Ви́льгельм Ле́йбниц — немецкий философ, логик, математик, механик, физик, юрист, историк, дипломат, изобретатель и языковед. Основатель и первый президент Берлинской академии наук, член Лондонского королевского общества (1673), иностранный член Французской академии наук.",
+    "slug": "gottfried-wilhelm-leibniz",
     "row": 4
   },
   {
@@ -1416,6 +1474,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tesla%20circa%201890.jpeg",
     "description": "Ни́кола Те́сла — американский инженер и физик-электроник сербского происхождения, изобретатель в области электротехники и радиотехники, внёсший существенный вклад в развитие электроинженерии. Наиболее известен разработкой современной системы электроснабжения переменного тока. После победы в «Войне токов» и демонстрации радио стал одной из самых известных личностей в истории науки XX века.",
+    "slug": "nikola-tesla",
     "row": 10
   },
   {
@@ -1440,6 +1499,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Laozi",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Zhang%20Lu-Laozi%20Riding%20an%20Ox%20%28cropped%29.jpg",
     "description": "Лао-цзы — древнекитайский философ VI-V веков до н. э., которому приписывается авторство классического даосского философского трактата «Дао дэ цзин». В рамках современной исторической науки историчность Лао-цзы подвергается сомнению, тем не менее в научной литературе он часто всё равно определяется как основоположник даосизма. В религиозно-философском учении большинства даосских школ Лао-цзы традиционно почитается как божество — один из Трёх Чистых.",
+    "slug": "laozi",
     "row": 0
   },
   {
@@ -1460,6 +1520,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles,_Prince_of_Wales",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/King%20Charles%20III%20%28July%202023%29.jpg",
     "description": "Карл III, полное имя Чарльз Фи́липп А́ртур Джордж — король Великобритании и Северной Ирландии и королевств Содружества из Виндзорской династии, верховный главнокомандующий вооружёнными силами Великобритании, верховный правитель Церкви Англии, глава Содружества наций с 8 сентября 2022 года. Наряду с Великобританией, является монархом в четырнадцати независимых государствах: Австралии, Антигуа и Барбуде, Багамских Островах, Белизе, Гренаде, Канаде, Новой Зеландии, Папуа — Новой Гвинее, Сент-Винсенте и Гренадинах, Сент-Китсе и Невисе, Сент-Люсии, Соломоновых Островах, Тувалу и Ямайке.",
+    "slug": "charles-iii",
     "row": 9
   },
   {
@@ -1484,6 +1545,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thomas_Edison",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Thomas%20Edison2.jpg",
     "description": "То́мас А́лва Э́дисон — американский инженер, изобретатель и предприниматель. Создатель фонографа; усовершенствовал телеграф, телефон, киноаппаратуру, разработал один из первых коммерчески успешных вариантов электрической лампы накаливания. Получил в США 1093 патента и около 3 тысяч — в других странах мира.",
+    "slug": "thomas-edison",
     "row": 9
   },
   {
@@ -1509,6 +1571,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Suleiman_the_Magnificent",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Suleyman%20%28enthroned%2C%20receiving%20Barbarossa%20in%201533%29.%20S%C3%BCleymanname%20%281558%29.jpg",
     "description": "Сулейма́н I Великоле́пный — десятый султан Османской империи (1520—1566), и халиф с 1520 года. В Европе его чаще всего называют Сулейманом Великолепным, в мусульманском мире — Сулейманом Кануни («законодателем»). Правление Сулеймана I турецкой историографией считается пиком законодательного расцвета, экономического роста и политической безопасности в истории Османской империи, а Оттоманская Порта достигла апогея своего развития. При Сулеймане І Османская империя существенно расширила свои территории в Европе, на Ближнем Востоке и в Средиземноморье.",
+    "slug": "suleiman-the-magnificent",
     "row": 7
   },
   {
@@ -1533,6 +1596,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Indira_Gandhi",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Face%20detail%2C%20Premier%20Indira%20Gandhi%20%28Congrespartij%29%2C%20Bestanddeelnr%20929-0811%20%28cropped%29.jpg",
     "description": "Инди́ра Приядарши́ни Га́нди — индийский политический и государственный деятель, центральная фигура в партии Индийский национальный конгресс, единственная женщина — премьер-министр Индии. Дочь первого премьер-министра страны Джавахарлала Неру.",
+    "slug": "indira-gandhi",
     "row": 12
   },
   {
@@ -1557,6 +1621,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vladimir_Lenin",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vladimir%20Lenin%20in%20July%201920%20by%20Pavel%20Zhukov.jpg",
     "description": "Влади́мир Ильи́ч Ле́нин — российский революционер, юрист по образованию, теоретик марксизма, советский политический и государственный деятель. Создатель Российской социал-демократической рабочей партии (большевиков), организатор и лидер Октябрьской революции 1917 года в России, после которой началась Гражданская война в России, в ходе которой выступил инициатором политики Красного террора, идеолог и создатель Третьего (Коммунистического) интернационала, основатель Союза Советских Социалистических Республик. Первый председатель Совета народных комиссаров РСФСР и Совета народных комиссаров СССР.",
+    "slug": "vladimir-lenin",
     "row": 8
   },
   {
@@ -1581,6 +1646,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Carl%20Friedrich%20Gauss.jpg",
     "description": "Иога́нн Карл Фри́дрих Га́усс — немецкий математик, механик, физик, астроном и геодезист. Считается одним из величайших математиков всех времён, «королём математиков».",
+    "slug": "carl-friedrich-gauss",
     "row": 8
   },
   {
@@ -1604,6 +1670,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Al-Nasir%20I%20Salah%20al-Din%20Yusuf%20%28Saladin%29.%20AH%20564-589%20%281169-1193%20CE%29%20%C3%86%20Dirham%20%2830.1mm%2C%2013.28%20g%2C%206h%29.%20Without%20mint-name.%20Dated%20AH%20586%20%28AD%201190-91%29.%20Sultan%20sitting%20facing%2C%20cross-legged%2C%20on%20high-backed%20throne%20%28obverse%29.jpg",
     "imageAttribution": "Classical Numismatic Group (CNG), via Wikimedia Commons",
     "description": "Аль-Ма́лик ан-На́сир Сала́х ад-Дунья ва-д-Дин Абу́-ль-Муза́ффар Ю́суф ибн Айю́б ибн Ша́зи аль-Курди́, в русской и западной традиции Салади́н, известный как Салах ад-Дин аль-Айюби — мусульманский полководец и лидер XII века курдского происхождения. Основатель династии Айюбидов, которая в период своего расцвета правила Египтом, Сирией, Ираком, Хиджазом и Йеменом.",
+    "slug": "saladin",
     "row": 1
   },
   {
@@ -1627,6 +1694,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paul_the_Apostle",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Giovanni%20Francesco%20Barbieri%20-%20Saint%20Paul.jpg",
     "description": "Апо́стол Па́вел, при рождении — Савл, в христианской традиции также именуется «апостол язычников» — первоверховный апостол. Не входит в число двенадцати апостолов и в число семидесяти апостолов. Автор посланий (писем), входящих в состав Нового Завета, христианский святой. Основными источниками информации о жизни апостола Павла являются новозаветная книга Деяния святых апостолов и, отчасти, послания самого апостола Павла.",
+    "slug": "paul-the-apostle",
     "row": 3
   },
   {
@@ -1651,6 +1719,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jean-Jacques%20Rousseau%20%28painted%20portrait%29.jpg",
     "description": "Жан-Жак Руссо́ — франко-швейцарский философ, писатель и мыслитель эпохи Просвещения, а также музыковед, композитор и ботаник. Виднейший представитель сентиментализма. Наиболее значительные произведения Руссо — трактаты «Рассуждение о происхождении и основаниях неравенства между людьми» и «Об общественном договоре», эпистолярный роман «Юлия, или Новая Элоиза», автобиографическая книга «Исповедь». Проповедовал «возврат к природе» и призывал к установлению полного социального равенства, в связи с чем считается предтечей Великой французской революции. Называется отцом-основателем Французской Республики и современной французской нации.",
+    "slug": "jean-jacques-rousseau",
     "row": 5
   },
   {
@@ -1675,6 +1744,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mustafa_Kemal_Atatürk",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Atat%C3%BCrk%20Kemal.jpg",
     "description": "Мустафа́ Кема́ль Ататю́рк — османский и турецкий государственный, политический и военный деятель. Основатель и первый лидер Республиканской народной партии Турции; первый президент Турецкой Республики, основатель современного турецкого государства.",
+    "slug": "mustafa-kemal-ataturk",
     "row": 15
   },
   {
@@ -1699,6 +1769,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kublai_Khan",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/YuanEmperorAlbumKhubilaiPortrait.jpg",
     "description": "Хубила́й — монгольский хан, основатель монгольского государства Юань, в состав которого входил Китай. Девизы правления — Чжунтун, Чжиюань. На Западе известен благодаря Марко Поло под именем «Кублай-хан»; это имя произносилось также как «Кубилай», или «Кубла».",
+    "slug": "kublai-khan",
     "row": 2
   },
   {
@@ -1724,6 +1795,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sigmund_Freud",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sigmund%20Freud%2C%20by%20Max%20Halberstadt%20%28cropped%29.jpg",
     "description": "Зи́гмунд Фрейд — австрийский психолог, психоаналитик, психиатр и невролог еврейского происхождения. Фрейд наиболее известен как основатель психоанализа, который оказал значительное влияние на психологию, медицину, социологию, антропологию, литературу и искусство XX века. Воззрения Фрейда на природу человека были новаторскими для его времени, и на протяжении всей жизни психолога его работы не прекращали вызывать резонанс и критику в научном сообществе. Интерес к теориям учёного не угасает и по сей день.",
+    "slug": "sigmund-freud",
     "row": 14
   },
   {
@@ -1749,6 +1821,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ignoto%20portoghese%2C%20ritratto%20di%20un%20cavaliere%20dell%27ordine%20di%20cristo%2C%201525-50%20ca.%2002.jpg",
     "imageAttribution": "Sailko, via Wikimedia Commons",
     "description": "Ва́ско да Га́ма — португальский мореплаватель эпохи Великих географических открытий. Командующий экспедицией, которая впервые в истории прошла морским путём из Европы в Индию. Граф Видигейра. Губернатор Португальской Индии, вице-король Индии (1524).",
+    "slug": "vasco-da-gama",
     "row": 8
   },
   {
@@ -1773,6 +1846,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Blaise_Pascal",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Blaise%20Pascal%20Versailles.JPG",
     "description": "Блез Паска́ль — французский математик, механик, физик, литератор, философ и теолог. Классик французской литературы, один из основателей математического анализа, теории вероятностей и проективной геометрии, создатель первых образцов счётной техники, автор основного закона гидростатики.",
+    "slug": "blaise-pascal",
     "row": 5
   },
   {
@@ -1796,6 +1870,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Joan_of_Arc",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Contemporaine%20afb%20jeanne%20d%20arc.png",
     "description": "Жа́нна д’Арк, Орлеа́нская де́ва — национальная героиня Франции, одна из командующих французскими войсками в Столетней войне. Попав в плен к бургундцам, была передана англичанам, осуждена судом католической церкви как ведьма и сожжена на костре. Впоследствии в 1456 году была реабилитирована и в 1920 году канонизирована — причислена католической церковью к лику святых.",
+    "slug": "joan-of-arc",
     "row": 0
   },
   {
@@ -1821,6 +1896,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Antonio_Vivaldi",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Onbekend%20-%20Antonio%20Vivaldi%20-%20Bologna%20Museo%20Internationale%20e%20biblioteca%20della%20musica%20di%20bologna%2028-04-2012%209-21-050.jpg",
     "description": "Анто́нио Лучио Вива́льди — итальянский композитор и скрипач-виртуоз, педагог, дирижёр, католический священник.",
+    "slug": "antonio-vivaldi",
     "row": 3
   }
 ]

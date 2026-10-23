@@ -1,3 +1,4 @@
+export { entityLinkSearch, readEntityLinkSlug } from './entity-link';
 export {
   filterByFameScore,
   filterByMilestoneCategoryGroup,

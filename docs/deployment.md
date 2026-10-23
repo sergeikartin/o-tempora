@@ -53,7 +53,7 @@ One-time manual setup (not repo config — done once in GitHub's UI and at the d
   2606:50c0:8003::153
   ```
 
-Each page carries a visible link to the sibling locale's default (home) view — `packages/web/src/widgets/sidebar/ui/Sidebar.tsx`'s language switcher, `/` ↔ `/ru/`, root-relative so it works regardless of domain. No deep-link/viewport-state preservation across the switch (spec's Out of Scope).
+Each page carries a visible link to the sibling locale's default (home) view — `packages/web/src/widgets/sidebar/ui/Sidebar.tsx`'s language switcher, `/` ↔ `/ru/`, root-relative so it works regardless of domain. When an entity is open the link carries its `?e=<slug>` to the sibling; nothing else (viewport, Detail Level, filters) is preserved across the switch.
 
 ## Verifying locally
 

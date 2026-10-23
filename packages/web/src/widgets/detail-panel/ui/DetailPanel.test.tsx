@@ -7,6 +7,7 @@ afterEach(cleanup);
 
 const napoleon: Person = {
   id: '69880',
+  slug: '69880',
   name: 'Napoleon',
   lifespan: { start: { year: 1769 }, end: { year: 1821 } },
   occupationDomain: 'institutions',

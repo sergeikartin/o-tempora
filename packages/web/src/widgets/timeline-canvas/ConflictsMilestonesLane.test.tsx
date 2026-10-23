@@ -10,6 +10,7 @@ afterEach(cleanup);
 
 const koreanWar: Conflict = {
   id: 'Q8214',
+  slug: 'Q8214',
   name: 'Korean War',
   period: { start: { year: 1950 }, end: { year: 1953 } },
   category: 'war',
@@ -21,6 +22,7 @@ const koreanWar: Conflict = {
 
 const battleOfMegiddo: ConflictEvent = {
   id: 'Q217799',
+  slug: 'Q217799',
   name: 'Battle of Megiddo',
   at: { year: -1457 },
   category: 'war',
@@ -32,6 +34,7 @@ const battleOfMegiddo: ConflictEvent = {
 
 const football: Milestone = {
   id: 'Q2736',
+  slug: 'Q2736',
   name: 'association football',
   at: { year: 1863 },
   category: 'everyday-technology',
@@ -43,6 +46,7 @@ const football: Milestone = {
 
 const blackDeath: Milestone = {
   id: 'Q42005',
+  slug: 'Q42005',
   name: 'Black Death',
   period: { start: { year: 1346 }, end: { year: 1353 } },
   category: 'medicine-health',
@@ -54,6 +58,7 @@ const blackDeath: Milestone = {
 
 const brazil: Milestone = {
   id: 'Q155',
+  slug: 'Q155',
   name: 'Brazil',
   at: { year: 1500 },
   category: 'expedition',

@@ -22,6 +22,7 @@
         "month": 11
       }
     },
+    "slug": "hungarian-revolution-of-1956",
     "row": 26
   },
   {
@@ -44,6 +45,7 @@
         "month": 9
       }
     },
+    "slug": "great-northern-war",
     "row": 1
   },
   {
@@ -68,6 +70,7 @@
         "month": 9
       }
     },
+    "slug": "algerian-war",
     "row": 31
   },
   {
@@ -89,6 +92,7 @@
         "year": -448
       }
     },
+    "slug": "greco-persian-wars",
     "row": 3
   },
   {
@@ -113,6 +117,7 @@
         "month": 9
       }
     },
+    "slug": "war-of-the-spanish-succession",
     "row": 2
   },
   {
@@ -138,6 +143,7 @@
         "month": 5
       }
     },
+    "slug": "mexican-revolution",
     "row": 20
   },
   {
@@ -159,6 +165,7 @@
         "year": -145
       }
     },
+    "slug": "punic-wars",
     "row": 2
   },
   {
@@ -177,6 +184,7 @@
       "year": 1066,
       "month": 10
     },
+    "slug": "battle-of-hastings",
     "row": 0
   },
   {
@@ -195,6 +203,7 @@
       "year": 1805,
       "month": 10
     },
+    "slug": "battle-of-trafalgar",
     "row": 11
   },
   {
@@ -219,6 +228,7 @@
         "month": 10
       }
     },
+    "slug": "battle-of-britain",
     "row": 27
   },
   {
@@ -244,6 +254,7 @@
         "month": 6
       }
     },
+    "slug": "battle-of-france",
     "row": 26
   },
   {
@@ -263,6 +274,7 @@
       "year": 1805,
       "month": 12
     },
+    "slug": "battle-of-austerlitz",
     "row": 12
   },
   {
@@ -287,6 +299,7 @@
         "month": 1
       }
     },
+    "slug": "gallipoli-campaign",
     "row": 22
   },
   {
@@ -312,6 +325,7 @@
         "month": 8
       }
     },
+    "slug": "battle-of-kursk",
     "row": 30
   },
   {
@@ -337,6 +351,7 @@
         "month": 1
       }
     },
+    "slug": "siege-of-leningrad",
     "row": 28
   },
   {
@@ -361,6 +376,7 @@
         "month": 12
       }
     },
+    "slug": "battle-of-verdun",
     "row": 23
   },
   {
@@ -385,6 +401,7 @@
         "month": 6
       }
     },
+    "slug": "battle-of-midway",
     "row": 29
   },
   {
@@ -408,6 +425,7 @@
         "month": 8
       }
     },
+    "slug": "yugoslav-wars",
     "row": 21
   },
   {
@@ -430,6 +448,7 @@
         "month": 4
       }
     },
+    "slug": "first-sino-japanese-war",
     "row": 21
   },
   {
@@ -454,6 +473,7 @@
         "month": 8
       }
     },
+    "slug": "first-opium-war",
     "row": 7
   },
   {
@@ -477,6 +497,7 @@
         "year": -200
       }
     },
+    "slug": "second-punic-war",
     "row": 3
   },
   {
@@ -502,6 +523,7 @@
         "month": 8
       }
     },
+    "slug": "2006-lebanon-war",
     "row": 19
   },
   {
@@ -526,6 +548,7 @@
         "month": 3
       }
     },
+    "slug": "russian-annexation-of-crimea",
     "row": 13
   },
   {
@@ -541,6 +564,7 @@
       "year": 2001,
       "month": 9
     },
+    "slug": "war-on-terrorism",
     "row": 23
   },
   {
@@ -566,6 +590,7 @@
         "month": 11
       }
     },
+    "slug": "second-nagorno-karabakh-war",
     "row": 9
   },
   {
@@ -590,6 +615,7 @@
         "month": 1
       }
     },
+    "slug": "eighty-years-war",
     "row": 7
   },
   {
@@ -614,6 +640,7 @@
         "month": 5
       }
     },
+    "slug": "second-boer-war",
     "row": 10
   },
   {
@@ -633,6 +660,7 @@
       "year": -489,
       "month": 9
     },
+    "slug": "battle-of-marathon",
     "row": 1
   },
   {
@@ -653,6 +681,7 @@
         "year": 1204
       }
     },
+    "slug": "fourth-crusade",
     "row": 3
   },
   {
@@ -677,6 +706,7 @@
         "month": 8
       }
     },
+    "slug": "operation-overlord",
     "row": 34
   },
   {
@@ -699,6 +729,7 @@
         "month": 7
       }
     },
+    "slug": "balkan-wars",
     "row": 21
   },
   {
@@ -721,6 +752,7 @@
         "month": 10
       }
     },
+    "slug": "european-revolutions-of-1848",
     "row": 11
   },
   {
@@ -745,6 +777,7 @@
         "month": 10
       }
     },
+    "slug": "st-bartholomew-s-day-massacre",
     "row": 3
   },
   {
@@ -767,6 +800,7 @@
         "month": 3
       }
     },
+    "slug": "tenth-russo-turkish-war",
     "row": 17
   },
   {
@@ -791,6 +825,7 @@
         "month": 11
       }
     },
+    "slug": "battle-of-the-somme",
     "row": 25
   },
   {
@@ -813,6 +848,7 @@
         "month": 5
       }
     },
+    "slug": "first-balkan-war",
     "row": 29
   },
   {
@@ -833,6 +869,7 @@
         "year": 1829
       }
     },
+    "slug": "greek-war-of-independence",
     "row": 8
   },
   {
@@ -855,6 +892,7 @@
         "month": 3
       }
     },
+    "slug": "polish-soviet-war",
     "row": 34
   },
   {
@@ -879,6 +917,7 @@
         "month": 6
       }
     },
+    "slug": "russian-revolution-of-1905",
     "row": 26
   },
   {
@@ -902,6 +941,7 @@
         "year": 1075
       }
     },
+    "slug": "norman-conquest-of-england",
     "row": 2
   },
   {
@@ -927,6 +967,7 @@
         "month": 4
       }
     },
+    "slug": "peninsular-war",
     "row": 13
   },
   {
@@ -949,6 +990,7 @@
         "month": 7
       }
     },
+    "slug": "austro-prussian-war",
     "row": 18
   },
   {
@@ -973,6 +1015,7 @@
         "month": 4
       }
     },
+    "slug": "war-of-the-pacific",
     "row": 20
   },
   {
@@ -998,6 +1041,7 @@
         "month": 8
       }
     },
+    "slug": "taiping-rebellion",
     "row": 12
   },
   {
@@ -1020,6 +1064,7 @@
         "year": 1689
       }
     },
+    "slug": "glorious-revolution",
     "row": 3
   },
   {
@@ -1038,6 +1083,7 @@
       "year": 732,
       "month": 10
     },
+    "slug": "battle-of-tours",
     "row": 0
   },
   {
@@ -1056,6 +1102,7 @@
       "year": 1683,
       "month": 9
     },
+    "slug": "battle-of-vienna",
     "row": 1
   },
   {
@@ -1074,6 +1121,7 @@
       "year": 1410,
       "month": 7
     },
+    "slug": "battle-of-grunwald",
     "row": 3
   },
   {
@@ -1092,6 +1140,7 @@
       "year": 9,
       "month": 9
     },
+    "slug": "battle-of-the-teutoburg-forest",
     "row": 1
   },
   {
@@ -1116,6 +1165,7 @@
         "month": 2
       }
     },
+    "slug": "xinhai-revolution",
     "row": 28
   },
   {
@@ -1140,6 +1190,7 @@
         "month": 12
       }
     },
+    "slug": "bangladesh-liberation-war",
     "row": 21
   },
   {
@@ -1158,6 +1209,7 @@
       "year": 1571,
       "month": 10
     },
+    "slug": "battle-of-lepanto",
     "row": 4
   },
   {
@@ -1176,6 +1228,7 @@
       "year": -215,
       "month": 7
     },
+    "slug": "battle-of-cannae",
     "row": 4
   },
   {
@@ -1201,6 +1254,7 @@
         "month": 4
       }
     },
+    "slug": "battle-of-moscow",
     "row": 35
   },
   {
@@ -1220,6 +1274,7 @@
       "year": 1974,
       "month": 4
     },
+    "slug": "carnation-revolution",
     "row": 24
   },
   {
@@ -1238,6 +1293,7 @@
       "year": 1812,
       "month": 9
     },
+    "slug": "battle-of-borodino",
     "row": 14
   },
   {
@@ -1263,6 +1319,7 @@
         "month": 10
       }
     },
+    "slug": "lebanese-civil-war",
     "row": 19
   },
   {
@@ -1281,6 +1338,7 @@
       "year": 1415,
       "month": 11
     },
+    "slug": "battle-of-agincourt",
     "row": 4
   },
   {
@@ -1299,6 +1357,7 @@
       "year": 1789,
       "month": 7
     },
+    "slug": "storming-of-the-bastille",
     "row": 7
   },
   {
@@ -1323,6 +1382,7 @@
         "month": 1
       }
     },
+    "slug": "haitian-revolution",
     "row": 9
   },
   {
@@ -1346,6 +1406,7 @@
         "month": 10
       }
     },
+    "slug": "war-of-the-austrian-succession",
     "row": 0
   },
   {
@@ -1368,6 +1429,7 @@
         "month": 3
       }
     },
+    "slug": "paraguayan-war",
     "row": 20
   },
   {
@@ -1388,6 +1450,7 @@
         "year": 750
       }
     },
+    "slug": "muslim-conquests",
     "row": 2
   },
   {
@@ -1406,6 +1469,7 @@
       "year": 680,
       "month": 10
     },
+    "slug": "battle-of-karbala",
     "row": 0
   },
   {
@@ -1430,6 +1494,7 @@
         "month": 7
       }
     },
+    "slug": "july-revolution",
     "row": 4
   },
   {
@@ -1456,6 +1521,7 @@
         "month": 4
       }
     },
+    "slug": "revolutions-of-1989",
     "row": 26
   },
   {
@@ -1478,6 +1544,7 @@
         "month": 8
       }
     },
+    "slug": "anglo-zanzibar-war",
     "row": 20
   },
   {
@@ -1497,6 +1564,7 @@
       "year": -479,
       "month": 9
     },
+    "slug": "battle-of-salamis",
     "row": 2
   },
   {
@@ -1520,6 +1588,7 @@
         "year": 1860
       }
     },
+    "slug": "second-opium-war",
     "row": 16
   },
   {
@@ -1544,6 +1613,7 @@
         "month": 10
       }
     },
+    "slug": "warsaw-uprising",
     "row": 37
   },
   {
@@ -1568,6 +1638,7 @@
         "month": 10
       }
     },
+    "slug": "battle-of-leipzig",
     "row": 16
   },
   {
@@ -1592,6 +1663,7 @@
         "month": 10
       }
     },
+    "slug": "long-march",
     "row": 36
   },
   {
@@ -1616,6 +1688,7 @@
         "month": 7
       }
     },
+    "slug": "battle-of-hattin",
     "row": 1
   },
   {
@@ -1640,6 +1713,7 @@
         "month": 8
       }
     },
+    "slug": "1991-soviet-coup-d-etat-attempt",
     "row": 27
   },
   {
@@ -1664,6 +1738,7 @@
         "month": 7
       }
     },
+    "slug": "battle-of-gettysburg",
     "row": 19
   },
   {
@@ -1688,6 +1763,7 @@
         "month": 12
       }
     },
+    "slug": "emu-war",
     "row": 4
   },
   {
@@ -1710,6 +1786,7 @@
         "month": 8
       }
     },
+    "slug": "second-balkan-war",
     "row": 36
   },
   {
@@ -1731,6 +1808,7 @@
         "year": -240
       }
     },
+    "slug": "first-punic-war",
     "row": 0
   },
   {
@@ -1751,6 +1829,7 @@
         "year": -50
       }
     },
+    "slug": "gallic-war",
     "row": 0
   },
   {
@@ -1777,6 +1856,7 @@
         "month": 10
       }
     },
+    "slug": "french-and-indian-war",
     "row": 3
   },
   {
@@ -1799,6 +1879,7 @@
         "month": 3
       }
     },
+    "slug": "french-revolutionary-wars",
     "row": 13
   },
   {
@@ -1821,6 +1902,7 @@
         "month": 7
       }
     },
+    "slug": "philippine-american-war",
     "row": 31
   },
   {
@@ -1843,6 +1925,7 @@
         "month": 2
       }
     },
+    "slug": "second-italo-ethiopian-war",
     "row": 39
   },
   {
@@ -1868,6 +1951,7 @@
         "month": 4
       }
     },
+    "slug": "phoney-war",
     "row": 40
   },
   {
@@ -1886,6 +1970,7 @@
       "year": 1757,
       "month": 6
     },
+    "slug": "battle-of-plassey",
     "row": 10
   },
   {
@@ -1904,6 +1989,7 @@
       "year": 1709,
       "month": 7
     },
+    "slug": "battle-of-poltava",
     "row": 3
   },
   {
@@ -1920,6 +2006,7 @@
       "year": -30,
       "month": 8
     },
+    "slug": "battle-of-actium",
     "row": 1
   },
   {
@@ -1938,6 +2025,7 @@
       "year": 1389,
       "month": 7
     },
+    "slug": "battle-of-kosovo",
     "row": 0
   },
   {
@@ -1957,6 +2045,7 @@
       "year": -330,
       "month": 9
     },
+    "slug": "battle-of-gaugamela",
     "row": 1
   },
   {
@@ -1975,6 +2064,7 @@
       "year": 1071,
       "month": 9
     },
+    "slug": "battle-of-manzikert",
     "row": 1
   },
   {
@@ -1999,6 +2089,7 @@
         "month": 10
       }
     },
+    "slug": "opium-wars",
     "row": 14
   },
   {
@@ -2017,6 +2108,7 @@
       "year": 1526,
       "month": 8
     },
+    "slug": "battle-of-mohacs",
     "row": 3
   },
   {
@@ -2040,6 +2132,7 @@
         "month": 8
       }
     },
+    "slug": "battle-of-yarmouk",
     "row": 3
   },
   {
@@ -2064,6 +2157,7 @@
         "month": 5
       }
     },
+    "slug": "battle-of-dien-bien-phu",
     "row": 36
   },
   {
@@ -2089,6 +2183,7 @@
         "month": 1
       }
     },
+    "slug": "nigerian-civil-war",
     "row": 32
   },
   {
@@ -2113,6 +2208,7 @@
         "month": 3
       }
     },
+    "slug": "1948-arab-israeli-war",
     "row": 42
   },
   {
@@ -2131,6 +2227,7 @@
       "year": 1876,
       "month": 6
     },
+    "slug": "battle-of-the-little-bighorn",
     "row": 24
   },
   {
@@ -2154,6 +2251,7 @@
         "year": -145
       }
     },
+    "slug": "third-punic-war",
     "row": 4
   },
   {
@@ -2176,6 +2274,7 @@
         "month": 5
       }
     },
+    "slug": "livonian-war",
     "row": 6
   },
   {
@@ -2199,6 +2298,7 @@
         "month": 10
       }
     },
+    "slug": "italo-turkish-war",
     "row": 37
   },
   {
@@ -2223,6 +2323,7 @@
         "month": 10
       }
     },
+    "slug": "greek-civil-war",
     "row": 43
   },
   {
@@ -2242,6 +2343,7 @@
       "year": 1973,
       "month": 9
     },
+    "slug": "1973-chilean-coup-d-etat",
     "row": 30
   },
   {
@@ -2261,6 +2363,7 @@
       "year": 451,
       "month": 6
     },
+    "slug": "battle-of-the-maureaco-fields",
     "row": 2
   },
   {
@@ -2279,6 +2382,7 @@
       "year": 1380,
       "month": 9
     },
+    "slug": "battle-of-kulikovo",
     "row": 2
   },
   {
@@ -2299,6 +2403,7 @@
         "year": -70
       }
     },
+    "slug": "third-servile-war",
     "row": 0
   },
   {
@@ -2320,6 +2425,7 @@
         "month": 12
       }
     },
+    "slug": "year-of-the-four-emperors",
     "row": 1
   },
   {
@@ -2342,6 +2448,7 @@
         "year": 1229
       }
     },
+    "slug": "albigensian-crusade",
     "row": 4
   },
   {
@@ -2360,6 +2467,7 @@
       "year": -201,
       "month": 10
     },
+    "slug": "battle-of-zama",
     "row": 5
   },
   {
@@ -2381,6 +2489,7 @@
         "year": 654
       }
     },
+    "slug": "muslim-conquest-of-persia",
     "row": 4
   },
   {
@@ -2405,6 +2514,7 @@
         "month": 10
       }
     },
+    "slug": "arab-revolt",
     "row": 39
   },
   {
@@ -2423,6 +2533,7 @@
       "year": 1931,
       "month": 9
     },
+    "slug": "mukden-incident",
     "row": 42
   },
   {
@@ -2445,6 +2556,7 @@
         "month": 10
       }
     },
+    "slug": "greco-turkish-war",
     "row": 41
   },
   {
@@ -2467,6 +2579,7 @@
         "month": 8
       }
     },
+    "slug": "1953-iranian-coup-d-etat",
     "row": 39
   },
   {
@@ -2491,6 +2604,7 @@
         "month": 6
       }
     },
+    "slug": "second-congo-war",
     "row": 30
   },
   {
@@ -2517,6 +2631,7 @@
         "month": 6
       }
     },
+    "slug": "twelve-day-war",
     "row": 11
   },
   {
@@ -2541,6 +2656,7 @@
         "month": 9
       }
     },
+    "slug": "nine-years-war",
     "row": 4
   },
   {
@@ -2565,6 +2681,7 @@
         "month": 6
       }
     },
+    "slug": "chaco-war",
     "row": 11
   },
   {
@@ -2586,6 +2703,7 @@
         "year": 1989
       }
     },
+    "slug": "dirty-war",
     "row": 51
   },
   {
@@ -2604,6 +2722,7 @@
       "year": -1273,
       "month": 5
     },
+    "slug": "battle-of-kadesh",
     "row": 1
   },
   {
@@ -2621,6 +2740,7 @@
     "at": {
       "year": 1274
     },
+    "slug": "mongol-invasions-of-japan",
     "row": 1
   },
   {
@@ -2645,6 +2765,7 @@
         "month": 2
       }
     },
+    "slug": "siege-of-baghdad",
     "row": 2
   },
   {
@@ -2663,6 +2784,7 @@
       "year": 1825,
       "month": 12
     },
+    "slug": "decembrist-revolt",
     "row": 11
   },
   {
@@ -2687,6 +2809,7 @@
         "month": 7
       }
     },
+    "slug": "belgian-revolution",
     "row": 5
   },
   {
@@ -2702,6 +2825,7 @@
     "at": {
       "year": 1212
     },
+    "slug": "children-s-crusade",
     "row": 5
   },
   {
@@ -2726,6 +2850,7 @@
         "month": 9
       }
     },
+    "slug": "siege-of-malta",
     "row": 0
   },
   {
@@ -2748,6 +2873,7 @@
         "month": 6
       }
     },
+    "slug": "hussite-wars",
     "row": 5
   },
   {
@@ -2765,6 +2891,7 @@
       "year": 1260,
       "month": 9
     },
+    "slug": "battle-of-ain-jalut",
     "row": 4
   },
   {
@@ -2789,6 +2916,7 @@
         "month": 7
       }
     },
+    "slug": "battle-of-bannockburn",
     "row": 3
   },
   {
@@ -2807,6 +2935,7 @@
       "year": 1346,
       "month": 9
     },
+    "slug": "battle-of-crecy",
     "row": 3
   },
   {
@@ -2831,6 +2960,7 @@
         "month": 11
       }
     },
+    "slug": "coup-of-18-brumaire",
     "row": 19
   },
   {
@@ -2854,6 +2984,7 @@
         "year": 1525
       }
     },
+    "slug": "german-peasants-war",
     "row": 4
   },
   {
@@ -2878,6 +3009,7 @@
         "month": 9
       }
     },
+    "slug": "battles-of-khalkhin-gol",
     "row": 46
   },
   {
@@ -2896,6 +3028,7 @@
       "year": 1600,
       "month": 10
     },
+    "slug": "battle-of-sekigahara",
     "row": 5
   },
   {
@@ -2913,6 +3046,7 @@
       "year": 1789,
       "month": 4
     },
+    "slug": "mutiny-on-the-bounty",
     "row": 16
   },
   {
@@ -2935,6 +3069,7 @@
         "month": 2
       }
     },
+    "slug": "guadalcanal-campaign",
     "row": 47
   },
   {
@@ -2957,6 +3092,7 @@
         "month": 7
       }
     },
+    "slug": "anglo-zulu-war",
     "row": 26
   },
   {
@@ -2980,6 +3116,7 @@
         "month": 8
       }
     },
+    "slug": "war-of-attrition",
     "row": 35
   },
   {
@@ -3002,6 +3139,7 @@
         "month": 9
       }
     },
+    "slug": "spanish-american-wars-of-independence",
     "row": 20
   },
   {
@@ -3025,6 +3163,7 @@
         "year": 1240
       }
     },
+    "slug": "mongol-invasion-of-kievan-rus",
     "row": 6
   },
   {
@@ -3041,6 +3180,7 @@
       "year": 1242,
       "month": 4
     },
+    "slug": "battle-of-the-ice",
     "row": 4
   },
   {
@@ -3059,6 +3199,7 @@
       "year": 1402,
       "month": 7
     },
+    "slug": "battle-of-ankara",
     "row": 2
   },
   {
@@ -3077,6 +3218,7 @@
       "year": 1223,
       "month": 6
     },
+    "slug": "battle-of-the-kalka-river",
     "row": 3
   },
   {
@@ -3097,6 +3239,7 @@
         "year": 726
       }
     },
+    "slug": "umayyad-conquest-of-hispania",
     "row": 0
   },
   {
@@ -3115,6 +3258,7 @@
       "year": 1282,
       "month": 5
     },
+    "slug": "sicilian-vespers",
     "row": 2
   },
   {
@@ -3133,6 +3277,7 @@
       "year": -332,
       "month": 10
     },
+    "slug": "battle-of-issus",
     "row": 2
   },
   {
@@ -3155,6 +3300,7 @@
         "month": 3
       }
     },
+    "slug": "first-boer-war",
     "row": 28
   },
   {
@@ -3177,6 +3323,7 @@
         "year": 1898
       }
     },
+    "slug": "philippine-revolution",
     "row": 24
   },
   {
@@ -3193,6 +3340,7 @@
       "year": -325,
       "month": 5
     },
+    "slug": "battle-of-the-hydaspes",
     "row": 3
   },
   {
@@ -3217,6 +3365,7 @@
         "month": 10
       }
     },
+    "slug": "first-anglo-afghan-war",
     "row": 16
   },
   {
@@ -3235,6 +3384,7 @@
       "year": -52,
       "month": 6
     },
+    "slug": "battle-of-carrhae",
     "row": 1
   },
   {
@@ -3259,6 +3409,7 @@
         "month": 11
       }
     },
+    "slug": "second-battle-of-el-alamein",
     "row": 52
   },
   {
@@ -3277,6 +3428,7 @@
       "year": 1485,
       "month": 8
     },
+    "slug": "battle-of-bosworth-field",
     "row": 4
   },
   {
@@ -3301,6 +3453,7 @@
         "month": 10
       }
     },
+    "slug": "siege-of-yorktown",
     "row": 17
   },
   {
@@ -3319,6 +3472,7 @@
       "year": 1810,
       "month": 5
     },
+    "slug": "may-revolution",
     "row": 22
   },
   {
@@ -3342,6 +3496,7 @@
         "month": 9
       }
     },
+    "slug": "soviet-japanese-war",
     "row": 54
   },
   {
@@ -3360,6 +3515,7 @@
       "year": 656,
       "month": 11
     },
+    "slug": "battle-of-the-camel",
     "row": 0
   },
   {
@@ -3384,6 +3540,7 @@
         "month": 9
       }
     },
+    "slug": "french-invasion-of-egypt-and-syria",
     "row": 24
   },
   {
@@ -3406,6 +3563,7 @@
         "month": 7
       }
     },
+    "slug": "siege-of-jerusalem",
     "row": 5
   },
   {
@@ -3429,6 +3587,7 @@
         "month": 9
       }
     },
+    "slug": "battle-of-talas",
     "row": 1
   },
   {
@@ -3447,6 +3606,7 @@
       "year": 1526,
       "month": 5
     },
+    "slug": "battle-of-panipat",
     "row": 7
   },
   {
@@ -3470,6 +3630,7 @@
         "month": 9
       }
     },
+    "slug": "siege-of-jerusalem-q844886",
     "row": 2
   },
   {
@@ -3492,6 +3653,7 @@
         "month": 12
       }
     },
+    "slug": "japanese-invasions-of-korea",
     "row": 9
   },
   {
@@ -3514,6 +3676,7 @@
         "month": 8
       }
     },
+    "slug": "spanish-conquest-of-the-aztec-empire",
     "row": 6
   },
   {
@@ -3536,6 +3699,7 @@
         "year": 1229
       }
     },
+    "slug": "sixth-crusade",
     "row": 8
   },
   {
@@ -3557,6 +3721,7 @@
         "year": 136
       }
     },
+    "slug": "bar-kokhba-revolt",
     "row": 2
   },
   {
@@ -3575,6 +3740,7 @@
       "year": -337,
       "month": 8
     },
+    "slug": "battle-of-chaeronea",
     "row": 4
   },
   {
@@ -3595,6 +3761,7 @@
       "year": 378,
       "month": 8
     },
+    "slug": "battle-of-adrianople",
     "row": 0
   },
   {
@@ -3613,6 +3780,7 @@
       "year": 1952,
       "month": 7
     },
+    "slug": "1952-egyptian-revolution",
     "row": 60
   },
   {
@@ -3636,6 +3804,7 @@
         "month": 10
       }
     },
+    "slug": "november-uprising",
     "row": 12
   },
   {
@@ -3656,6 +3825,7 @@
       "year": 532,
       "month": 1
     },
+    "slug": "nika-riots",
     "row": 3
   },
   {
@@ -3680,6 +3850,7 @@
         "month": 10
       }
     },
+    "slug": "first-turkish-siege-of-vienna",
     "row": 9
   },
   {
@@ -3698,6 +3869,7 @@
       "year": 1396,
       "month": 9
     },
+    "slug": "battle-of-nicopolis",
     "row": 4
   },
   {
@@ -3717,6 +3889,7 @@
       "year": 1444,
       "month": 11
     },
+    "slug": "battle-of-varna",
     "row": 5
   },
   {
@@ -3741,6 +3914,7 @@
         "month": 10
       }
     },
+    "slug": "march-on-rome",
     "row": 17
   },
   {
@@ -3760,6 +3934,7 @@
       "year": 1212,
       "month": 7
     },
+    "slug": "battle-of-las-navas-de-tolosa",
     "row": 7
   },
   {
@@ -3784,6 +3959,7 @@
         "month": 8
       }
     },
+    "slug": "battle-of-warsaw",
     "row": 16
   },
   {
@@ -3808,6 +3984,7 @@
         "month": 11
       }
     },
+    "slug": "peasants-revolt-of-1381",
     "row": 3
   },
   {
@@ -3832,6 +4009,7 @@
         "month": 2
       }
     },
+    "slug": "battle-of-singapore",
     "row": 59
   },
   {
@@ -3857,6 +4035,7 @@
         "month": 9
       }
     },
+    "slug": "anglo-soviet-invasion-of-iran",
     "row": 58
   },
   {
@@ -3879,6 +4058,7 @@
         "year": 1960
       }
     },
+    "slug": "mau-mau-rebellion",
     "row": 61
   },
   {
@@ -3897,6 +4077,7 @@
       "year": 1761,
       "month": 1
     },
+    "slug": "third-battle-of-panipat",
     "row": 11
   },
   {
@@ -3917,6 +4098,7 @@
         "year": 1337
       }
     },
+    "slug": "mongol-invasions-and-conquests",
     "row": 9
   },
   {
@@ -3941,6 +4123,7 @@
         "month": 10
       }
     },
+    "slug": "war-of-the-polish-succession",
     "row": 1
   },
   {
@@ -3965,6 +4148,7 @@
         "month": 7
       }
     },
+    "slug": "rif-war",
     "row": 45
   },
   {
@@ -3984,6 +4168,7 @@
       "year": 1896,
       "month": 3
     },
+    "slug": "battle-of-adwa",
     "row": 33
   },
   {
@@ -4006,6 +4191,7 @@
         "month": 2
       }
     },
+    "slug": "japanese-invasion-of-manchuria",
     "row": 55
   },
   {
@@ -4030,6 +4216,7 @@
         "month": 8
       }
     },
+    "slug": "410-sack-of-rome",
     "row": 0
   },
   {
@@ -4054,6 +4241,7 @@
         "month": 1
       }
     },
+    "slug": "pugachev-s-rebellion",
     "row": 18
   },
   {
@@ -4079,6 +4267,7 @@
         "month": 2
       }
     },
+    "slug": "an-lushan-rebellion",
     "row": 2
   },
   {
@@ -4097,6 +4286,7 @@
       "year": -43,
       "month": 3
     },
+    "slug": "assassination-of-julius-caesar",
     "row": 2
   },
   {
@@ -4115,6 +4305,7 @@
       "year": 1620,
       "month": 11
     },
+    "slug": "battle-of-white-mountain",
     "row": 4
   },
   {
@@ -4133,6 +4324,7 @@
       "year": 1908,
       "month": 7
     },
+    "slug": "young-turk-revolution-of-1908",
     "row": 44
   },
   {
@@ -4157,6 +4349,7 @@
         "month": 9
       }
     },
+    "slug": "finnish-war",
     "row": 27
   },
   {
@@ -4175,6 +4368,7 @@
       "year": 312,
       "month": 10
     },
+    "slug": "battle-of-the-milvian-bridge",
     "row": 2
   },
   {
@@ -4193,6 +4387,7 @@
       "year": 1798,
       "month": 7
     },
+    "slug": "battle-of-the-pyramids",
     "row": 26
   },
   {
@@ -4211,6 +4406,7 @@
     "at": {
       "year": 718
     },
+    "slug": "battle-of-covadonga",
     "row": 1
   },
   {
@@ -4234,6 +4430,7 @@
         "year": -159
       }
     },
+    "slug": "maccabean-revolt",
     "row": 0
   },
   {
@@ -4251,6 +4448,7 @@
     "at": {
       "year": 629
     },
+    "slug": "conquest-of-mecca",
     "row": 5
   },
   {
@@ -4273,6 +4471,7 @@
         "month": 9
       }
     },
+    "slug": "brusilov-offensive",
     "row": 46
   },
   {
@@ -4294,6 +4493,7 @@
         "year": 1700
       }
     },
+    "slug": "colonization-of-siberia",
     "row": 10
   },
   {
@@ -4317,6 +4517,7 @@
         "month": 10
       }
     },
+    "slug": "war-of-jenkins-ear",
     "row": 2
   },
   {
@@ -4335,6 +4536,7 @@
       "year": 1240,
       "month": 7
     },
+    "slug": "battle-of-the-neva",
     "row": 5
   },
   {
@@ -4355,6 +4557,7 @@
         "year": 205
       }
     },
+    "slug": "yellow-turban-rebellion",
     "row": 0
   },
   {
@@ -4381,6 +4584,7 @@
         "month": 8
       }
     },
+    "slug": "siege-of-constantinople",
     "row": 3
   },
   {
@@ -4400,6 +4604,7 @@
       "year": 1514,
       "month": 9
     },
+    "slug": "battle-of-chaldiran",
     "row": 8
   },
   {
@@ -4418,6 +4623,7 @@
       "year": -370,
       "month": 7
     },
+    "slug": "battle-of-leuctra",
     "row": 1
   },
   {
@@ -4440,6 +4646,7 @@
         "year": 1185
       }
     },
+    "slug": "genpei-war",
     "row": 3
   },
   {
@@ -4462,6 +4669,7 @@
         "month": 6
       }
     },
+    "slug": "first-barbary-war",
     "row": 29
   },
   {
@@ -4485,6 +4693,7 @@
         "month": 4
       }
     },
+    "slug": "sino-french-war",
     "row": 32
   },
   {
@@ -4510,6 +4719,7 @@
         "month": 11
       }
     },
+    "slug": "thousand-days-war",
     "row": 34
   },
   {
@@ -4533,6 +4743,7 @@
         "month": 1
       }
     },
+    "slug": "granada-war",
     "row": 7
   },
   {
@@ -4553,6 +4764,7 @@
         "year": 642
       }
     },
+    "slug": "arab-conquest-of-egypt",
     "row": 0
   },
   {
@@ -4577,6 +4789,7 @@
         "month": 5
       }
     },
+    "slug": "siege-of-acre",
     "row": 3
   },
   {
@@ -4597,6 +4810,7 @@
         "year": -322
       }
     },
+    "slug": "wars-of-alexander-the-great",
     "row": 5
   },
   {
@@ -4618,6 +4832,7 @@
         "month": 7
       }
     },
+    "slug": "spanish-conquest-of-the-inca-empire",
     "row": 11
   },
   {
@@ -4643,6 +4858,7 @@
         "month": 7
       }
     },
+    "slug": "siege-of-belgrade",
     "row": 6
   },
   {
@@ -4664,6 +4880,7 @@
         "year": -492
       }
     },
+    "slug": "ionian-revolt",
     "row": 5
   },
   {
@@ -4682,6 +4899,7 @@
       "year": 955,
       "month": 8
     },
+    "slug": "battle-of-lechfeld",
     "row": 4
   },
   {
@@ -4704,6 +4922,7 @@
         "year": -87
       }
     },
+    "slug": "social-war-of-91-87-bce",
     "row": 0
   },
   {
@@ -4722,6 +4941,7 @@
       "year": 1302,
       "month": 7
     },
+    "slug": "battle-of-the-golden-spurs",
     "row": 5
   },
   {
@@ -4742,6 +4962,7 @@
         "year": 1660
       }
     },
+    "slug": "second-northern-war",
     "row": 2
   },
   {
@@ -4766,6 +4987,7 @@
         "month": 5
       }
     },
+    "slug": "war-of-devolution",
     "row": 3
   },
   {
@@ -4788,6 +5010,7 @@
         "month": 4
       }
     },
+    "slug": "king-philip-s-war",
     "row": 2
   },
   {
@@ -4809,6 +5032,7 @@
         "year": 1763
       }
     },
+    "slug": "silesian-wars",
     "row": 5
   },
   {
@@ -4833,6 +5057,7 @@
         "month": 3
       }
     },
+    "slug": "pastry-war",
     "row": 22
   },
   {
@@ -4855,6 +5080,7 @@
         "year": 1477
       }
     },
+    "slug": "onin-war",
     "row": 2
   },
   {
@@ -4877,6 +5103,7 @@
         "month": 5
       }
     },
+    "slug": "war-of-the-bavarian-succession",
     "row": 24
   },
   {
@@ -4900,6 +5127,7 @@
         "year": 1861
       }
     },
+    "slug": "bleeding-kansas",
     "row": 29
   },
   {
@@ -4916,6 +5144,7 @@
       "year": 1885,
       "month": 11
     },
+    "slug": "serbo-bulgarian-war",
     "row": 36
   },
   {
@@ -4933,6 +5162,7 @@
     "at": {
       "year": 1480
     },
+    "slug": "great-stand-on-the-ugra-river",
     "row": 8
   },
   {
@@ -4958,6 +5188,7 @@
         "month": 10
       }
     },
+    "slug": "first-serbian-uprising",
     "row": 31
   },
   {
@@ -4978,6 +5209,7 @@
         "year": 1466
       }
     },
+    "slug": "thirteen-years-war",
     "row": 7
   },
   {
@@ -5000,6 +5232,7 @@
         "year": 1763
       }
     },
+    "slug": "carnatic-wars",
     "row": 9
   },
   {
@@ -5026,6 +5259,7 @@
         "month": 7
       }
     },
+    "slug": "queen-anne-s-war",
     "row": 7
   },
   {
@@ -5049,6 +5283,7 @@
         "year": 1782
       }
     },
+    "slug": "first-anglo-maratha-war",
     "row": 25
   },
   {
@@ -5072,6 +5307,7 @@
         "year": 1368
       }
     },
+    "slug": "red-turban-rebellion",
     "row": 4
   },
   {
@@ -5091,6 +5327,7 @@
       "year": 1279,
       "month": 3
     },
+    "slug": "battle-of-yamen",
     "row": 4
   },
   {
@@ -5114,6 +5351,7 @@
         "year": -321
       }
     },
+    "slug": "lamian-war",
     "row": 6
   },
   {
@@ -5136,6 +5374,7 @@
         "year": 1609
       }
     },
+    "slug": "arauco-war",
     "row": 12
   },
   {
@@ -5158,6 +5397,7 @@
         "year": 1805
       }
     },
+    "slug": "second-anglo-maratha-war",
     "row": 33
   },
   {
@@ -5182,6 +5422,7 @@
         "month": 2
       }
     },
+    "slug": "third-anglo-maratha-war",
     "row": 26
   },
   {
@@ -5204,6 +5445,7 @@
         "year": 1832
       }
     },
+    "slug": "black-war",
     "row": 17
   },
   {
@@ -5223,6 +5465,7 @@
       "year": 1121,
       "month": 8
     },
+    "slug": "battle-of-didgori",
     "row": 1
   },
   {
@@ -5243,6 +5486,7 @@
         "year": 1613
       }
     },
+    "slug": "kalmar-war",
     "row": 12
   },
   {
@@ -5265,6 +5509,7 @@
         "month": 6
       }
     },
+    "slug": "war-of-the-oranges",
     "row": 34
   },
   {
@@ -5283,6 +5528,7 @@
       "year": 451,
       "month": 5
     },
+    "slug": "battle-of-avarayr",
     "row": 3
   },
   {
@@ -5306,6 +5552,7 @@
         "month": 2
       }
     },
+    "slug": "ottoman-mamluk-war-of-1516-17",
     "row": 12
   },
   {
@@ -5328,6 +5575,7 @@
         "year": 1267
       }
     },
+    "slug": "second-barons-war",
     "row": 3
   },
   {
@@ -5352,6 +5600,7 @@
         "month": 9
       }
     },
+    "slug": "bishops-wars",
     "row": 12
   },
   {
@@ -5377,6 +5626,7 @@
         "month": 9
       }
     },
+    "slug": "king-william-s-war",
     "row": 5
   },
   {
@@ -5401,6 +5651,7 @@
         "year": 1748
       }
     },
+    "slug": "king-george-s-war",
     "row": 6
   },
   {
@@ -5420,6 +5671,7 @@
         "year": 1221
       }
     },
+    "slug": "mongol-invasion-of-central-asia",
     "row": 10
   },
   {
@@ -5440,6 +5692,7 @@
         "year": 1904
       }
     },
+    "slug": "aceh-war",
     "row": 38
   },
   {
@@ -5460,6 +5713,7 @@
         "year": -324
       }
     },
+    "slug": "indian-campaign-of-alexander-the-great",
     "row": 7
   },
   {
@@ -5480,6 +5734,7 @@
         "year": 1879
       }
     },
+    "slug": "xhosa-wars",
     "row": 36
   },
   {
@@ -5499,6 +5754,7 @@
         "year": 1288
       }
     },
+    "slug": "mongol-invasions-of-vietnam",
     "row": 5
   },
   {
@@ -5523,6 +5779,7 @@
         "month": 10
       }
     },
+    "slug": "siege-of-kazan",
     "row": 7
   },
   {
@@ -5541,6 +5798,7 @@
     "at": {
       "year": -611
     },
+    "slug": "fall-of-nineveh",
     "row": 0
   },
   {
@@ -5561,6 +5819,7 @@
         "year": 751
       }
     },
+    "slug": "muslim-conquest-of-transoxiana",
     "row": 4
   },
   {
@@ -5579,6 +5838,7 @@
       "year": 1739,
       "month": 2
     },
+    "slug": "battle-of-karnal",
     "row": 3
   },
   {
@@ -5601,6 +5861,7 @@
         "year": -723
       }
     },
+    "slug": "first-messenian-war",
     "row": 1
   },
   {
@@ -5622,6 +5883,7 @@
         "year": -649
       }
     },
+    "slug": "lelantine-war",
     "row": 2
   },
   {
@@ -5643,6 +5905,7 @@
         "month": 8
       }
     },
+    "slug": "creek-war",
     "row": 32
   },
   {
@@ -5662,6 +5925,7 @@
       "year": 1415,
       "month": 8
     },
+    "slug": "conquest-of-ceuta",
     "row": 7
   },
   {
@@ -5685,6 +5949,7 @@
         "month": 8
       }
     },
+    "slug": "jinshin-war",
     "row": 1
   },
   {
@@ -5699,6 +5964,7 @@
     "at": {
       "year": 1192
     },
+    "slug": "second-battle-of-tarain",
     "row": 5
   },
   {
@@ -5718,6 +5984,7 @@
         "year": -667
       }
     },
+    "slug": "second-messenian-war",
     "row": 1
   },
   {
@@ -5740,6 +6007,7 @@
         "year": 1536
       }
     },
+    "slug": "count-s-feud",
     "row": 12
   },
   {
@@ -5762,6 +6030,7 @@
         "month": 3
       }
     },
+    "slug": "serbian-ottoman-wars",
     "row": 34
   },
   {
@@ -5781,6 +6050,7 @@
         "year": 1589
       }
     },
+    "slug": "war-of-the-three-henrys",
     "row": 6
   },
   {
@@ -5802,6 +6072,7 @@
         "month": 7
       }
     },
+    "slug": "war-of-the-eight-saints",
     "row": 4
   },
   {
@@ -5823,6 +6094,7 @@
         "year": 1717
       }
     },
+    "slug": "yamasee-war",
     "row": 9
   },
   {
@@ -5845,6 +6117,7 @@
         "month": 10
       }
     },
+    "slug": "anglo-powhatan-wars",
     "row": 15
   },
   {
@@ -5867,6 +6140,7 @@
         "month": 10
       }
     },
+    "slug": "dunmore-s-war",
     "row": 0
   },
   {
@@ -5890,6 +6164,7 @@
         "year": -512
       }
     },
+    "slug": "european-scythian-campaign-of-darius-i",
     "row": 6
   },
   {
@@ -5908,6 +6183,7 @@
     "at": {
       "year": 1025
     },
+    "slug": "chola-invasion-of-srivijaya",
     "row": 5
   },
   {
@@ -5925,6 +6201,7 @@
       "year": 1591,
       "month": 3
     },
+    "slug": "battle-of-tondibi",
     "row": 11
   },
   {
@@ -5945,6 +6222,7 @@
         "year": 1837
       }
     },
+    "slug": "padri-war",
     "row": 38
   },
   {
@@ -5968,6 +6246,7 @@
         "year": 1881
       }
     },
+    "slug": "basuto-gun-war",
     "row": 30
   },
   {
@@ -5988,6 +6267,7 @@
         "year": 1898
       }
     },
+    "slug": "spanish-moro-conflict",
     "row": 43
   },
   {
@@ -6007,6 +6287,7 @@
         "year": 1774
       }
     },
+    "slug": "first-rohilla-war",
     "row": 15
   },
   {
@@ -6029,6 +6310,7 @@
         "year": 1875
       }
     },
+    "slug": "red-river-war",
     "row": 37
   },
   {
@@ -6046,6 +6328,7 @@
       "year": 2026,
       "month": 2
     },
+    "slug": "2026-iran-war",
     "row": 12
   },
   {
@@ -6063,6 +6346,7 @@
     "at": {
       "year": 1707
     },
+    "slug": "emboabas-war",
     "row": 10
   },
   {
@@ -6077,6 +6361,7 @@
     "at": {
       "year": 1867
     },
+    "slug": "klang-war",
     "row": 26
   },
   {
@@ -6096,6 +6381,7 @@
         "year": 1100
       }
     },
+    "slug": "ghaznavid-campaigns-in-india",
     "row": 6
   },
   {
@@ -6112,6 +6398,7 @@
       "year": 1398,
       "month": 12
     },
+    "slug": "sack-of-delhi",
     "row": 5
   },
   {
@@ -6131,6 +6418,7 @@
         "year": 713
       }
     },
+    "slug": "umayyad-conquest-of-sindh",
     "row": 5
   },
   {
@@ -6147,6 +6435,7 @@
     "at": {
       "year": 1431
     },
+    "slug": "siege-of-angkor",
     "row": 7
   },
   {
@@ -6163,6 +6452,7 @@
     "at": {
       "year": 793
     },
+    "slug": "sack-of-lindisfarne",
     "row": 5
   },
   {
@@ -6186,6 +6476,7 @@
         "month": 6
       }
     },
+    "slug": "naning-war",
     "row": 31
   }
 ]

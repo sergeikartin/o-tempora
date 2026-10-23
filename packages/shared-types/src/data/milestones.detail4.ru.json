@@ -14,6 +14,7 @@
       "year": 1996,
       "month": 7
     },
+    "slug": "dolly-the-sheep",
     "row": 24
   },
   {
@@ -31,6 +32,7 @@
       "year": 2015,
       "month": 9
     },
+    "slug": "gravitational-wave",
     "row": 17
   },
   {
@@ -46,6 +48,7 @@
     "at": {
       "year": 1680
     },
+    "slug": "philosophi-naturalis-principia-mathematica",
     "row": 0
   },
   {
@@ -62,6 +65,7 @@
       "year": 1908,
       "month": 9
     },
+    "slug": "ford-model-t",
     "row": 27
   },
   {
@@ -78,6 +82,7 @@
     "at": {
       "year": 1891
     },
+    "slug": "escalator",
     "row": 23
   },
   {
@@ -100,6 +105,7 @@
         "month": 7
       }
     },
+    "slug": "space-race",
     "row": 28
   },
   {
@@ -115,6 +121,7 @@
     "at": {
       "year": 1842
     },
+    "slug": "fuel-cell",
     "row": 10
   },
   {
@@ -139,6 +146,7 @@
         "month": 2
       }
     },
+    "slug": "berlin-conference",
     "row": 22
   },
   {
@@ -157,6 +165,7 @@
     "at": {
       "year": 1981
     },
+    "slug": "chicxulub-crater",
     "row": 25
   },
   {
@@ -175,6 +184,7 @@
     "at": {
       "year": 1545
     },
+    "slug": "potosi",
     "row": 2
   },
   {
@@ -191,6 +201,7 @@
       "year": 1916,
       "month": 5
     },
+    "slug": "sykes-picot-agreement",
     "row": 30
   },
   {
@@ -213,6 +224,7 @@
         "month": 9
       }
     },
+    "slug": "fall-of-the-western-roman-empire",
     "row": 0
   },
   {
@@ -231,6 +243,7 @@
     "at": {
       "year": -6999
     },
+    "slug": "knossos",
     "row": 0
   },
   {
@@ -249,6 +262,7 @@
     "at": {
       "year": -199
     },
+    "slug": "nazca-lines",
     "row": 1
   },
   {
@@ -267,6 +281,7 @@
       "year": 1620,
       "month": 9
     },
+    "slug": "mayflower",
     "row": 3
   },
   {
@@ -285,6 +300,7 @@
     "at": {
       "year": 800
     },
+    "slug": "founding-of-the-carolingian-empire",
     "row": 1
   },
   {
@@ -305,6 +321,7 @@
         "year": 1687
       }
     },
+    "slug": "scientific-revolution",
     "row": 8
   },
   {
@@ -320,6 +337,7 @@
     "at": {
       "year": 1969
     },
+    "slug": "arpanet",
     "row": 8
   },
   {
@@ -339,6 +357,7 @@
       "year": 1964,
       "month": 10
     },
+    "slug": "first-high-speed-railway",
     "row": 29
   },
   {
@@ -355,6 +374,7 @@
     "at": {
       "year": 1839
     },
+    "slug": "daguerreotype-process",
     "row": 13
   },
   {
@@ -372,6 +392,7 @@
       "year": 1955,
       "month": 6
     },
+    "slug": "atomic-clock",
     "row": 35
   },
   {
@@ -388,6 +409,7 @@
       "year": 1492,
       "month": 10
     },
+    "slug": "first-arrival-of-christopher-columbus-to-america",
     "row": 1
   },
   {
@@ -404,6 +426,7 @@
     "at": {
       "year": 1757
     },
+    "slug": "sextant",
     "row": 2
   },
   {
@@ -420,6 +443,7 @@
     "at": {
       "year": 1825
     },
+    "slug": "electromagnet",
     "row": 10
   },
   {
@@ -436,6 +460,7 @@
       "year": 1776,
       "month": 3
     },
+    "slug": "the-wealth-of-nations",
     "row": 10
   },
   {
@@ -458,6 +483,7 @@
         "year": 1968
       }
     },
+    "slug": "civil-rights-movement",
     "row": 33
   },
   {
@@ -473,6 +499,7 @@
     "at": {
       "year": 1772
     },
+    "slug": "partitions-of-poland",
     "row": 9
   },
   {
@@ -491,6 +518,7 @@
       "year": 1803,
       "month": 4
     },
+    "slug": "louisiana-purchase",
     "row": 15
   },
   {
@@ -509,6 +537,7 @@
       "year": 1867,
       "month": 3
     },
+    "slug": "alaska-purchase",
     "row": 21
   },
   {
@@ -530,6 +559,7 @@
         "year": -4000
       }
     },
+    "slug": "woolly-mammoth",
     "row": 1
   },
   {
@@ -549,6 +579,7 @@
     "at": {
       "year": 859
     },
+    "slug": "university-of-al-qarawiyyin",
     "row": 1
   },
   {
@@ -568,6 +599,7 @@
     "at": {
       "year": 450
     },
+    "slug": "nalanda-mahavihara",
     "row": 1
   },
   {
@@ -586,6 +618,7 @@
     "at": {
       "year": 477
     },
+    "slug": "sigiriya",
     "row": 1
   },
   {
@@ -606,6 +639,7 @@
         "year": 1066
       }
     },
+    "slug": "viking-age",
     "row": 3
   },
   {
@@ -622,6 +656,7 @@
     "at": {
       "year": 1250
     },
+    "slug": "great-zimbabwe",
     "row": 3
   },
   {
@@ -640,6 +675,7 @@
       "year": 1494,
       "month": 6
     },
+    "slug": "treaty-of-tordesillas",
     "row": 2
   },
   {
@@ -658,6 +694,7 @@
       "year": 1919,
       "month": 4
     },
+    "slug": "jallianwala-bagh-massacre",
     "row": 33
   },
   {
@@ -676,6 +713,7 @@
       "year": 1906,
       "month": 6
     },
+    "slug": "united-states-food-and-drug-administration",
     "row": 38
   },
   {
@@ -693,6 +731,7 @@
       "year": 1936,
       "month": 11
     },
+    "slug": "bbc-one",
     "row": 1
   },
   {
@@ -709,6 +748,7 @@
     "at": {
       "year": 1909
     },
+    "slug": "haber-bosch-process",
     "row": 32
   },
   {
@@ -727,6 +767,7 @@
       "year": 1968,
       "month": 12
     },
+    "slug": "apollo-8",
     "row": 25
   },
   {
@@ -745,6 +786,7 @@
       "year": 1894,
       "month": 8
     },
+    "slug": "first-steam-turbine-ship",
     "row": 25
   },
   {
@@ -761,6 +803,7 @@
       "year": 1947,
       "month": 3
     },
+    "slug": "truman-doctrine",
     "row": 41
   },
   {
@@ -779,6 +822,7 @@
       "year": 313,
       "month": 6
     },
+    "slug": "edict-of-milan",
     "row": 0
   },
   {
@@ -797,6 +841,7 @@
       "year": 1755,
       "month": 11
     },
+    "slug": "1755-lisbon-earthquake",
     "row": 8
   },
   {
@@ -814,6 +859,7 @@
     "at": {
       "year": -386
     },
+    "slug": "platonic-academy",
     "row": 0
   },
   {
@@ -829,6 +875,7 @@
     "at": {
       "year": 1751
     },
+    "slug": "encyclopedie",
     "row": 7
   },
   {
@@ -845,6 +892,7 @@
       "year": 843,
       "month": 8
     },
+    "slug": "treaty-of-verdun",
     "row": 0
   },
   {
@@ -868,6 +916,7 @@
         "year": -537
       }
     },
+    "slug": "babylonian-captivity",
     "row": 2
   },
   {
@@ -883,6 +932,7 @@
     "at": {
       "year": 1187
     },
+    "slug": "the-tale-of-igor-s-campaign",
     "row": 4
   },
   {
@@ -898,6 +948,7 @@
     "at": {
       "year": 862
     },
+    "slug": "glagolitic",
     "row": 2
   },
   {
@@ -919,6 +970,7 @@
         "year": 1590
       }
     },
+    "slug": "sengoku-period",
     "row": 5
   },
   {
@@ -937,6 +989,7 @@
       "year": 1910,
       "month": 8
     },
+    "slug": "korea-under-japanese-rule",
     "row": 35
   },
   {
@@ -955,6 +1008,7 @@
       "year": 1957,
       "month": 3
     },
+    "slug": "treaty-of-rome",
     "row": 30
   },
   {
@@ -973,6 +1027,7 @@
     "at": {
       "year": 605
     },
+    "slug": "grand-canal",
     "row": 0
   },
   {
@@ -988,6 +1043,7 @@
       "year": 1983,
       "month": 1
     },
+    "slug": "birth-of-the-internet",
     "row": 28
   },
   {
@@ -1005,6 +1061,7 @@
     "at": {
       "year": 1086
     },
+    "slug": "domesday-book",
     "row": 4
   },
   {
@@ -1024,6 +1081,7 @@
       "year": 1960,
       "month": 5
     },
+    "slug": "1960-valdivia-earthquake",
     "row": 38
   },
   {
@@ -1048,6 +1106,7 @@
         "month": 1
       }
     },
+    "slug": "cambodian-genocide",
     "row": 27
   },
   {
@@ -1064,6 +1123,7 @@
     "at": {
       "year": 1990
     },
+    "slug": "human-genome-project",
     "row": 29
   },
   {
@@ -1081,6 +1141,7 @@
       "year": 1923,
       "month": 1
     },
+    "slug": "autogyro",
     "row": 11
   },
   {
@@ -1095,6 +1156,7 @@
     "at": {
       "year": 1890
     },
+    "slug": "chlorofluorocarbon",
     "row": 27
   },
   {
@@ -1119,6 +1181,7 @@
         "month": 9
       }
     },
+    "slug": "lewis-and-clark-expedition",
     "row": 18
   },
   {
@@ -1135,6 +1198,7 @@
     "at": {
       "year": 1786
     },
+    "slug": "galvanic-cell",
     "row": 14
   },
   {
@@ -1150,6 +1214,7 @@
     "at": {
       "year": 1839
     },
+    "slug": "vulcanization",
     "row": 2
   },
   {
@@ -1168,6 +1233,7 @@
       "year": 1948,
       "month": 5
     },
+    "slug": "declaration-of-the-establishment-of-the-state-of-israel",
     "row": 44
   },
   {
@@ -1183,6 +1249,7 @@
     "at": {
       "year": 1791
     },
+    "slug": "requiem",
     "row": 15
   },
   {
@@ -1197,6 +1264,7 @@
     "at": {
       "year": 1979
     },
+    "slug": "the-hitchhiker-s-guide-to-the-galaxy",
     "row": 31
   },
   {
@@ -1213,6 +1281,7 @@
     "at": {
       "year": 1816
     },
+    "slug": "year-without-a-summer",
     "row": 19
   },
   {
@@ -1229,6 +1298,7 @@
       "year": 1862,
       "month": 9
     },
+    "slug": "emancipation-proclamation",
     "row": 22
   },
   {
@@ -1246,6 +1316,7 @@
       "year": 1804,
       "month": 3
     },
+    "slug": "civil-code-of-the-french",
     "row": 17
   },
   {
@@ -1264,6 +1335,7 @@
       "year": 1598,
       "month": 4
     },
+    "slug": "edict-of-nantes",
     "row": 2
   },
   {
@@ -1287,6 +1359,7 @@
         "year": 284
       }
     },
+    "slug": "crisis-of-the-third-century",
     "row": 0
   },
   {
@@ -1312,6 +1385,7 @@
         "month": 7
       }
     },
+    "slug": "great-fire-of-rome",
     "row": 0
   },
   {
@@ -1331,6 +1405,7 @@
       "year": 1724,
       "month": 2
     },
+    "slug": "russian-academy-of-sciences",
     "row": 0
   },
   {
@@ -1349,6 +1424,7 @@
     "at": {
       "year": 1783
     },
+    "slug": "first-steamboat",
     "row": 11
   },
   {
@@ -1364,6 +1440,7 @@
     "at": {
       "year": 1000
     },
+    "slug": "vinland",
     "row": 0
   },
   {
@@ -1379,6 +1456,7 @@
     "at": {
       "year": -507
     },
+    "slug": "democracy-in-athens",
     "row": 4
   },
   {
@@ -1395,6 +1473,7 @@
       "year": 1783,
       "month": 11
     },
+    "slug": "first-manned-balloon-flight",
     "row": 12
   },
   {
@@ -1412,6 +1491,7 @@
       "year": 1997,
       "month": 5
     },
+    "slug": "deep-blue-defeats-kasparov",
     "row": 25
   },
   {
@@ -1431,6 +1511,7 @@
     "at": {
       "year": -2670
     },
+    "slug": "pyramid-of-djoser",
     "row": 1
   },
   {
@@ -1447,6 +1528,7 @@
     "at": {
       "year": 1707
     },
+    "slug": "acts-of-union-1707",
     "row": 4
   },
   {
@@ -1465,6 +1547,7 @@
       "year": 1865,
       "month": 4
     },
+    "slug": "assassination-of-abraham-lincoln",
     "row": 23
   },
   {
@@ -1483,6 +1566,7 @@
       "year": 1918,
       "month": 7
     },
+    "slug": "execution-of-the-romanov-family",
     "row": 40
   },
   {
@@ -1499,6 +1583,7 @@
     "at": {
       "year": 1961
     },
+    "slug": "combined-oral-contraceptive-pill",
     "row": 34
   },
   {
@@ -1514,6 +1599,7 @@
     "at": {
       "year": 1952
     },
+    "slug": "polio-vaccine",
     "row": 49
   },
   {
@@ -1530,6 +1616,7 @@
     "at": {
       "year": 1907
     },
+    "slug": "bakelite",
     "row": 1
   },
   {
@@ -1546,6 +1633,7 @@
     "at": {
       "year": 1958
     },
+    "slug": "carbon-fibers",
     "row": 45
   },
   {
@@ -1562,6 +1650,7 @@
     "at": {
       "year": 1494
     },
+    "slug": "first-double-entry-bookkeeping-treatise",
     "row": 3
   },
   {
@@ -1585,6 +1674,7 @@
         "year": 1854
       }
     },
+    "slug": "california-gold-rush",
     "row": 15
   },
   {
@@ -1602,6 +1692,7 @@
       "year": 1974,
       "month": 11
     },
+    "slug": "lucy",
     "row": 15
   },
   {
@@ -1626,6 +1717,7 @@
         "month": 7
       }
     },
+    "slug": "congress-of-berlin",
     "row": 25
   },
   {
@@ -1640,6 +1732,7 @@
     "at": {
       "year": 1963
     },
+    "slug": "organisation-of-african-unity",
     "row": 37
   },
   {
@@ -1659,6 +1752,7 @@
         "year": -1149
       }
     },
+    "slug": "bronze-age-collapse",
     "row": 3
   },
   {
@@ -1682,6 +1776,7 @@
         "month": 4
       }
     },
+    "slug": "salt-march",
     "row": 9
   },
   {
@@ -1705,6 +1800,7 @@
         "year": 1377
       }
     },
+    "slug": "avignon-papacy",
     "row": 2
   },
   {
@@ -1720,6 +1816,7 @@
     "at": {
       "year": 868
     },
+    "slug": "diamond-sutra",
     "row": 4
   },
   {
@@ -1738,6 +1835,7 @@
     "at": {
       "year": 1050
     },
+    "slug": "cahokia",
     "row": 2
   },
   {
@@ -1756,6 +1854,7 @@
     "at": {
       "year": 1010
     },
+    "slug": "prahadisvarar-temple",
     "row": 2
   },
   {
@@ -1773,6 +1872,7 @@
     "at": {
       "year": 800
     },
+    "slug": "house-of-wisdom",
     "row": 2
   },
   {
@@ -1788,6 +1888,7 @@
     "at": {
       "year": 148
     },
+    "slug": "almagest",
     "row": 0
   },
   {
@@ -1806,6 +1907,7 @@
     "at": {
       "year": 700
     },
+    "slug": "chaturanga",
     "row": 0
   },
   {
@@ -1821,6 +1923,7 @@
       "year": 1945,
       "month": 5
     },
+    "slug": "german-instrument-of-surrender",
     "row": 48
   },
   {
@@ -1837,6 +1940,7 @@
       "year": 1939,
       "month": 8
     },
+    "slug": "first-jet-aircraft",
     "row": 45
   },
   {
@@ -1855,6 +1959,7 @@
     "at": {
       "year": -539
     },
+    "slug": "cyrus-cylinder",
     "row": 3
   },
   {
@@ -1873,6 +1978,7 @@
     "at": {
       "year": -450
     },
+    "slug": "twelve-tables",
     "row": 0
   },
   {
@@ -1895,6 +2001,7 @@
         "year": 549
       }
     },
+    "slug": "plague-of-justinian",
     "row": 1
   },
   {
@@ -1912,6 +2019,7 @@
     "at": {
       "year": 1637
     },
+    "slug": "tulip-mania",
     "row": 9
   },
   {
@@ -1937,6 +2045,7 @@
         "month": 12
       }
     },
+    "slug": "great-smog-of-london",
     "row": 50
   },
   {
@@ -1959,6 +2068,7 @@
         "year": 1936
       }
     },
+    "slug": "dust-bowl",
     "row": 18
   },
   {
@@ -1976,6 +2086,7 @@
       "year": 1956,
       "month": 6
     },
+    "slug": "interstate-highway-system",
     "row": 56
   },
   {
@@ -1991,6 +2102,7 @@
     "at": {
       "year": 1859
     },
+    "slug": "lead-acid-battery",
     "row": 17
   },
   {
@@ -2005,6 +2117,7 @@
     "at": {
       "year": 1908
     },
+    "slug": "cellophane",
     "row": 8
   },
   {
@@ -2021,6 +2134,7 @@
     "at": {
       "year": 1940
     },
+    "slug": "cavity-magnetron",
     "row": 51
   },
   {
@@ -2040,6 +2154,7 @@
       "year": 1989,
       "month": 11
     },
+    "slug": "fall-of-the-berlin-wall",
     "row": 33
   },
   {
@@ -2063,6 +2178,7 @@
         "month": 4
       }
     },
+    "slug": "asian-african-conference",
     "row": 55
   },
   {
@@ -2081,6 +2197,7 @@
       "year": 1988,
       "month": 12
     },
+    "slug": "1988-spitak-earthquake",
     "row": 32
   },
   {
@@ -2100,6 +2217,7 @@
       "year": 1607,
       "month": 5
     },
+    "slug": "jamestown",
     "row": 6
   },
   {
@@ -2118,6 +2236,7 @@
     "at": {
       "year": 529
     },
+    "slug": "corpus-juris-civilis",
     "row": 2
   },
   {
@@ -2136,6 +2255,7 @@
       "year": 1840,
       "month": 2
     },
+    "slug": "treaty-of-waitangi",
     "row": 17
   },
   {
@@ -2158,6 +2278,7 @@
         "year": 1864
       }
     },
+    "slug": "circassian-genocide",
     "row": 21
   },
   {
@@ -2180,6 +2301,7 @@
         "year": 1944
       }
     },
+    "slug": "bengal-famine-of-1943",
     "row": 53
   },
   {
@@ -2196,6 +2318,7 @@
     "at": {
       "year": 1911
     },
+    "slug": "cloud-chamber",
     "row": 42
   },
   {
@@ -2212,6 +2335,7 @@
     "at": {
       "year": -3499
     },
+    "slug": "general-anaesthesia",
     "row": 1
   },
   {
@@ -2228,6 +2352,7 @@
     "at": {
       "year": 1837
     },
+    "slug": "electric-locomotive",
     "row": 18
   },
   {
@@ -2246,6 +2371,7 @@
       "year": 1903,
       "month": 12
     },
+    "slug": "flyer-i",
     "row": 5
   },
   {
@@ -2262,6 +2388,7 @@
     "at": {
       "year": 1810
     },
+    "slug": "canning",
     "row": 25
   },
   {
@@ -2280,6 +2407,7 @@
       "year": 79,
       "month": 10
     },
+    "slug": "eruption-of-mount-vesuvius-in-79",
     "row": 3
   },
   {
@@ -2302,6 +2430,7 @@
         "year": 1899
       }
     },
+    "slug": "klondike-gold-rush",
     "row": 29
   },
   {
@@ -2318,6 +2447,7 @@
       "year": 1569,
       "month": 7
     },
+    "slug": "union-of-lublin",
     "row": 9
   },
   {
@@ -2339,6 +2469,7 @@
         "year": 1854
       }
     },
+    "slug": "sakoku",
     "row": 23
   },
   {
@@ -2362,6 +2493,7 @@
         "month": 12
       }
     },
+    "slug": "history-of-the-soviet-union",
     "row": 57
   },
   {
@@ -2383,6 +2515,7 @@
         "year": 1932
       }
     },
+    "slug": "collectivization-in-the-soviet-union",
     "row": 44
   },
   {
@@ -2401,6 +2534,7 @@
     "at": {
       "year": 600
     },
+    "slug": "buddhism-in-japan",
     "row": 1
   },
   {
@@ -2419,6 +2553,7 @@
     "at": {
       "year": -2100
     },
+    "slug": "ziggurat-of-ur",
     "row": 3
   },
   {
@@ -2436,6 +2571,7 @@
       "year": 1971,
       "month": 11
     },
+    "slug": "intel-4004",
     "row": 40
   },
   {
@@ -2453,6 +2589,7 @@
     "at": {
       "year": 1849
     },
+    "slug": "library-of-ashurbanipal",
     "row": 24
   },
   {
@@ -2469,6 +2606,7 @@
       "year": 1918,
       "month": 4
     },
+    "slug": "transcaucasian-democratic-federative-republic",
     "row": 49
   },
   {
@@ -2487,6 +2625,7 @@
     "at": {
       "year": 300
     },
+    "slug": "trans-saharan-trade",
     "row": 1
   },
   {
@@ -2504,6 +2643,7 @@
       "year": 1967,
       "month": 12
     },
+    "slug": "first-human-heart-transplant",
     "row": 39
   },
   {
@@ -2522,6 +2662,7 @@
     "at": {
       "year": -753
     },
+    "slug": "founding-of-rome",
     "row": 0
   },
   {
@@ -2540,6 +2681,7 @@
       "year": 1923,
       "month": 9
     },
+    "slug": "1923-great-kanto-earthquake",
     "row": 43
   },
   {
@@ -2556,6 +2698,7 @@
     "at": {
       "year": 1930
     },
+    "slug": "population-transfer-in-the-soviet-union",
     "row": 50
   },
   {
@@ -2571,6 +2714,7 @@
       "year": 1978,
       "month": 7
     },
+    "slug": "louise-brown",
     "row": 34
   },
   {
@@ -2587,6 +2731,7 @@
     "at": {
       "year": 1800
     },
+    "slug": "voltaic-pile",
     "row": 6
   },
   {
@@ -2602,6 +2747,7 @@
     "at": {
       "year": 1855
     },
+    "slug": "bessemer-process",
     "row": 25
   },
   {
@@ -2619,6 +2765,7 @@
     "at": {
       "year": 1861
     },
+    "slug": "emancipation-reform-of-1861",
     "row": 27
   },
   {
@@ -2636,6 +2783,7 @@
     "at": {
       "year": 988
     },
+    "slug": "christianization-of-kievan-rus",
     "row": 1
   },
   {
@@ -2652,6 +2800,7 @@
     "at": {
       "year": 1025
     },
+    "slug": "canon-of-medicine",
     "row": 4
   },
   {
@@ -2672,6 +2821,7 @@
         "year": -1049
       }
     },
+    "slug": "oracle-bone-script",
     "row": 4
   },
   {
@@ -2687,6 +2837,7 @@
     "at": {
       "year": 1945
     },
+    "slug": "first-supersonic-flight",
     "row": 62
   },
   {
@@ -2704,6 +2855,7 @@
       "year": 1978,
       "month": 12
     },
+    "slug": "chinese-economic-reform",
     "row": 36
   },
   {
@@ -2721,6 +2873,7 @@
       "year": 1534,
       "month": 11
     },
+    "slug": "english-reformation",
     "row": 10
   },
   {
@@ -2739,6 +2892,7 @@
     "at": {
       "year": -3100
     },
+    "slug": "narmer-palette",
     "row": 1
   },
   {
@@ -2762,6 +2916,7 @@
         "year": 1512
       }
     },
+    "slug": "sistine-chapel-ceiling",
     "row": 7
   },
   {
@@ -2784,6 +2939,7 @@
         "year": 1897
       }
     },
+    "slug": "hamidian-massacres",
     "row": 30
   },
   {
@@ -2804,6 +2960,7 @@
         "year": 1908
       }
     },
+    "slug": "herero-and-nama-genocide",
     "row": 43
   },
   {
@@ -2822,6 +2979,7 @@
     "at": {
       "year": 1710
     },
+    "slug": "charite",
     "row": 5
   },
   {
@@ -2840,6 +2998,7 @@
       "year": 1840,
       "month": 4
     },
+    "slug": "penny-black",
     "row": 19
   },
   {
@@ -2855,6 +3014,7 @@
     "at": {
       "year": 1793
     },
+    "slug": "cotton-gin",
     "row": 20
   },
   {
@@ -2879,6 +3039,7 @@
         "month": 9
       }
     },
+    "slug": "magellan-elcano-expedition",
     "row": 10
   },
   {
@@ -2894,6 +3055,7 @@
     "at": {
       "year": 1298
     },
+    "slug": "the-travels-of-marco-polo",
     "row": 1
   },
   {
@@ -2916,6 +3078,7 @@
         "month": 1
       }
     },
+    "slug": "amundsen-s-south-pole-expedition",
     "row": 47
   },
   {
@@ -2932,6 +3095,7 @@
     "at": {
       "year": 1849
     },
+    "slug": "francis-turbine",
     "row": 20
   },
   {
@@ -2956,6 +3120,7 @@
         "month": 10
       }
     },
+    "slug": "1883-eruption-of-krakatoa",
     "row": 31
   },
   {
@@ -2971,6 +3136,7 @@
     "at": {
       "year": 1792
     },
+    "slug": "a-vindication-of-the-rights-of-woman",
     "row": 22
   },
   {
@@ -2989,6 +3155,7 @@
       "year": 1492,
       "month": 4
     },
+    "slug": "alhambra-decree",
     "row": 6
   },
   {
@@ -3005,6 +3172,7 @@
     "at": {
       "year": 1654
     },
+    "slug": "treaty-of-pereyaslav",
     "row": 1
   },
   {
@@ -3021,6 +3189,7 @@
       "year": 1828,
       "month": 2
     },
+    "slug": "treaty-of-turkmenchay",
     "row": 6
   },
   {
@@ -3036,6 +3205,7 @@
     "at": {
       "year": 1180
     },
+    "slug": "the-knight-in-the-panther-s-skin",
     "row": 2
   },
   {
@@ -3051,6 +3221,7 @@
     "at": {
       "year": 500
     },
+    "slug": "settlement-of-madagascar",
     "row": 1
   },
   {
@@ -3068,6 +3239,7 @@
     "at": {
       "year": -260
     },
+    "slug": "edicts-of-ashoka",
     "row": 1
   },
   {
@@ -3086,6 +3258,7 @@
     "at": {
       "year": 970
     },
+    "slug": "al-azhar-mosque",
     "row": 2
   },
   {
@@ -3107,6 +3280,7 @@
         "year": 1
       }
     },
+    "slug": "antonine-plague",
     "row": 0
   },
   {
@@ -3127,6 +3301,7 @@
         "year": 1317
       }
     },
+    "slug": "great-famine-of-1315-1317",
     "row": 4
   },
   {
@@ -3142,6 +3317,7 @@
     "at": {
       "year": 1798
     },
+    "slug": "smallpox-vaccine",
     "row": 28
   },
   {
@@ -3158,6 +3334,7 @@
     "at": {
       "year": 1802
     },
+    "slug": "arc-lamp",
     "row": 30
   },
   {
@@ -3175,6 +3352,7 @@
     "at": {
       "year": 1827
     },
+    "slug": "view-from-the-window-at-le-gras",
     "row": 15
   },
   {
@@ -3197,6 +3375,7 @@
         "month": 6
       }
     },
+    "slug": "terra-nova-expedition",
     "row": 48
   },
   {
@@ -3212,6 +3391,7 @@
     "at": {
       "year": 1
     },
+    "slug": "aeolipile",
     "row": 2
   },
   {
@@ -3226,6 +3406,7 @@
     "at": {
       "year": 1925
     },
+    "slug": "fischer-tropsch-process",
     "row": 54
   },
   {
@@ -3241,6 +3422,7 @@
     "at": {
       "year": 1565
     },
+    "slug": "manila-galleon",
     "row": 10
   },
   {
@@ -3256,6 +3438,7 @@
       "year": 1948,
       "month": 1
     },
+    "slug": "assassination-of-mahatma-gandhi",
     "row": 63
   },
   {
@@ -3273,6 +3456,7 @@
     "at": {
       "year": -1600
     },
+    "slug": "minoan-eruption",
     "row": 1
   },
   {
@@ -3291,6 +3475,7 @@
     "at": {
       "year": 1966
     },
+    "slug": "gobustan-state-historical-and-cultural-reserve",
     "row": 41
   },
   {
@@ -3305,6 +3490,7 @@
     "at": {
       "year": 1787
     },
+    "slug": "first-fleet",
     "row": 19
   },
   {
@@ -3321,6 +3507,7 @@
     "at": {
       "year": 1656
     },
+    "slug": "first-pendulum-clock",
     "row": 0
   },
   {
@@ -3338,6 +3525,7 @@
       "year": 1913,
       "month": 12
     },
+    "slug": "first-moving-assembly-line",
     "row": 51
   },
   {
@@ -3352,6 +3540,7 @@
     "at": {
       "year": 1816
     },
+    "slug": "electrical-telegraph",
     "row": 24
   },
   {
@@ -3369,6 +3558,7 @@
     "at": {
       "year": 1869
     },
+    "slug": "first-transcontinental-railroad",
     "row": 35
   },
   {
@@ -3391,6 +3581,7 @@
         "month": 1
       }
     },
+    "slug": "expedition-endurance",
     "row": 52
   },
   {
@@ -3406,6 +3597,7 @@
     "at": {
       "year": 1623
     },
+    "slug": "first-folio",
     "row": 5
   },
   {
@@ -3431,6 +3623,7 @@
         "month": 7
       }
     },
+    "slug": "bretton-woods-conference",
     "row": 65
   },
   {
@@ -3448,6 +3641,7 @@
       "year": 1933,
       "month": 1
     },
+    "slug": "machtergreifung",
     "row": 64
   },
   {
@@ -3463,6 +3657,7 @@
     "at": {
       "year": -1599
     },
+    "slug": "ebers-papyrus",
     "row": 2
   },
   {
@@ -3478,6 +3673,7 @@
     "at": {
       "year": 1892
     },
+    "slug": "cinematograph",
     "row": 37
   },
   {
@@ -3496,6 +3692,7 @@
       "year": 1895,
       "month": 3
     },
+    "slug": "workers-leaving-the-lumiere-factory",
     "row": 39
   },
   {
@@ -3514,6 +3711,7 @@
     "at": {
       "year": 1779
     },
+    "slug": "the-iron-bridge",
     "row": 21
   },
   {
@@ -3528,6 +3726,7 @@
     "at": {
       "year": 1852
     },
+    "slug": "chemical-vapor-deposition",
     "row": 28
   },
   {
@@ -3546,6 +3745,7 @@
       "year": 1942,
       "month": 12
     },
+    "slug": "chicago-pile-1",
     "row": 66
   },
   {
@@ -3563,6 +3763,7 @@
     "at": {
       "year": -2049
     },
+    "slug": "code-of-ur-nammu",
     "row": 1
   },
   {
@@ -3581,6 +3782,7 @@
     "at": {
       "year": 1700
     },
+    "slug": "amsterdam-stock-exchange",
     "row": 6
   },
   {
@@ -3604,6 +3806,7 @@
         "month": 7
       }
     },
+    "slug": "seneca-falls-convention",
     "row": 26
   },
   {
@@ -3624,6 +3827,7 @@
       "year": 1997,
       "month": 7
     },
+    "slug": "handover-of-hong-kong",
     "row": 34
   },
   {
@@ -3646,6 +3850,7 @@
         "month": 1
       }
     },
+    "slug": "road-to-canossa",
     "row": 5
   },
   {
@@ -3663,6 +3868,7 @@
       "year": 1974,
       "month": 5
     },
+    "slug": "smiling-buddha",
     "row": 33
   },
   {
@@ -3680,6 +3886,7 @@
     "at": {
       "year": -781
     },
+    "slug": "erebuni-fortress",
     "row": 1
   },
   {
@@ -3696,6 +3903,7 @@
     "at": {
       "year": 1482
     },
+    "slug": "elmina-castle",
     "row": 9
   },
   {
@@ -3714,6 +3922,7 @@
       "year": 1908,
       "month": 12
     },
+    "slug": "1908-messina-earthquake",
     "row": 50
   },
   {
@@ -3731,6 +3940,7 @@
     "at": {
       "year": -1580
     },
+    "slug": "edwin-smith-papyrus",
     "row": 1
   },
   {
@@ -3748,6 +3958,7 @@
       "year": 1907,
       "month": 9
     },
+    "slug": "first-rotorcraft",
     "row": 53
   },
   {
@@ -3771,6 +3982,7 @@
         "year": 1433
       }
     },
+    "slug": "treasure-voyages",
     "row": 6
   },
   {
@@ -3789,6 +4001,7 @@
     "at": {
       "year": 1833
     },
+    "slug": "slavery-abolition-act-1833",
     "row": 27
   },
   {
@@ -3807,6 +4020,7 @@
       "year": 1783,
       "month": 4
     },
+    "slug": "1783-russian-annexation-of-crimea",
     "row": 27
   },
   {
@@ -3823,6 +4037,7 @@
     "at": {
       "year": 645
     },
+    "slug": "taika-reform",
     "row": 5
   },
   {
@@ -3841,6 +4056,7 @@
       "year": 1793,
       "month": 1
     },
+    "slug": "execution-of-louis-xvi",
     "row": 32
   },
   {
@@ -3858,6 +4074,7 @@
     "at": {
       "year": -249
     },
+    "slug": "buddhism-in-sri-lanka",
     "row": 3
   },
   {
@@ -3872,6 +4089,7 @@
     "at": {
       "year": 1666
     },
+    "slug": "raskol",
     "row": 4
   },
   {
@@ -3889,6 +4107,7 @@
     "at": {
       "year": 1829
     },
+    "slug": "stephenson-s-rocket",
     "row": 25
   },
   {
@@ -3904,6 +4123,7 @@
     "at": {
       "year": 800
     },
+    "slug": "woodblock-printing",
     "row": 4
   },
   {
@@ -3926,6 +4146,7 @@
         "month": 5
       }
     },
+    "slug": "challenger-expedition",
     "row": 29
   },
   {
@@ -3944,6 +4165,7 @@
     "at": {
       "year": 1954
     },
+    "slug": "obninsk-nuclear-power-plant",
     "row": 68
   },
   {
@@ -3967,6 +4189,7 @@
         "year": 1614
       }
     },
+    "slug": "expulsion-of-the-moriscos",
     "row": 9
   },
   {
@@ -3985,6 +4208,7 @@
       "year": 1385,
       "month": 8
     },
+    "slug": "union-of-krewo",
     "row": 5
   },
   {
@@ -4001,6 +4225,7 @@
       "year": 1783,
       "month": 8
     },
+    "slug": "treaty-of-georgievsk",
     "row": 29
   },
   {
@@ -4021,6 +4246,7 @@
         "year": 1683
       }
     },
+    "slug": "transition-from-ming-to-qing",
     "row": 11
   },
   {
@@ -4039,6 +4265,7 @@
       "year": 1945,
       "month": 8
     },
+    "slug": "proclamation-of-indonesian-independence",
     "row": 67
   },
   {
@@ -4062,6 +4289,7 @@
         "month": 4
       }
     },
+    "slug": "1994-south-african-general-election",
     "row": 35
   },
   {
@@ -4077,6 +4305,7 @@
     "at": {
       "year": 1040
     },
+    "slug": "movable-type",
     "row": 1
   },
   {
@@ -4094,6 +4323,7 @@
     "at": {
       "year": 1825
     },
+    "slug": "stockton-and-darlington-railway",
     "row": 28
   },
   {
@@ -4109,6 +4339,7 @@
     "at": {
       "year": 1712
     },
+    "slug": "newcomen-atmospheric-engine",
     "row": 8
   },
   {
@@ -4130,6 +4361,7 @@
         "year": 1650
       }
     },
+    "slug": "nanban-trade-period",
     "row": 13
   },
   {
@@ -4146,6 +4378,7 @@
       "year": 1853,
       "month": 7
     },
+    "slug": "perry-expedition",
     "row": 30
   },
   {
@@ -4161,6 +4394,7 @@
     "at": {
       "year": 1543
     },
+    "slug": "de-humani-corporis-fabrica",
     "row": 4
   },
   {
@@ -4178,6 +4412,7 @@
     "at": {
       "year": 1633
     },
+    "slug": "galileo-affair",
     "row": 6
   },
   {
@@ -4195,6 +4430,7 @@
     "at": {
       "year": 1823
     },
+    "slug": "liverpool-and-manchester-railway",
     "row": 29
   },
   {
@@ -4209,6 +4445,7 @@
     "at": {
       "year": 1202
     },
+    "slug": "liber-abaci",
     "row": 6
   },
   {
@@ -4227,6 +4464,7 @@
       "year": 1610,
       "month": 3
     },
+    "slug": "sidereus-nuncius",
     "row": 14
   },
   {
@@ -4243,6 +4481,7 @@
     "at": {
       "year": 1858
     },
+    "slug": "government-of-india-act-1858",
     "row": 31
   },
   {
@@ -4259,6 +4498,7 @@
     "at": {
       "year": 1956
     },
+    "slug": "dartmouth-workshop",
     "row": 69
   },
   {
@@ -4274,6 +4514,7 @@
     "at": {
       "year": 1543
     },
+    "slug": "copernican-heliocentrism",
     "row": 6
   },
   {
@@ -4291,6 +4532,7 @@
     "at": {
       "year": -311
     },
+    "slug": "aqua-appia",
     "row": 1
   },
   {
@@ -4313,6 +4555,7 @@
         "year": 1896
       }
     },
+    "slug": "nansen-s-fram-expedition-1893-1896",
     "row": 40
   },
   {
@@ -4328,6 +4571,7 @@
       "year": 1555,
       "month": 6
     },
+    "slug": "peace-of-amasya",
     "row": 9
   },
   {
@@ -4346,6 +4590,7 @@
     "at": {
       "year": -3499
     },
+    "slug": "founding-of-the-kerma-kingdom",
     "row": 2
   },
   {
@@ -4360,6 +4605,7 @@
     "at": {
       "year": 1905
     },
+    "slug": "annus-mirabilis-papers",
     "row": 54
   },
   {
@@ -4381,6 +4627,7 @@
         "year": 1932
       }
     },
+    "slug": "unification-of-saudi-arabia",
     "row": 56
   },
   {
@@ -4396,6 +4643,7 @@
       "year": 2012,
       "month": 9
     },
+    "slug": "alexnet",
     "row": 20
   },
   {
@@ -4414,6 +4662,7 @@
       "year": 1804,
       "month": 12
     },
+    "slug": "coronation-of-napoleon-i",
     "row": 35
   },
   {
@@ -4439,6 +4688,7 @@
         "month": 6
       }
     },
+    "slug": "1953-british-mount-everest-expedition",
     "row": 71
   },
   {
@@ -4463,6 +4713,7 @@
         "month": 10
       }
     },
+    "slug": "second-voyage-of-hms-beagle",
     "row": 30
   },
   {
@@ -4477,6 +4728,7 @@
     "at": {
       "year": 864
     },
+    "slug": "christianization-of-bulgaria",
     "row": 5
   },
   {
@@ -4493,6 +4745,7 @@
       "year": 1665,
       "month": 1
     },
+    "slug": "micrographia",
     "row": 5
   },
   {
@@ -4510,6 +4763,7 @@
       "year": 1949,
       "month": 10
     },
+    "slug": "proclamation-of-the-people-s-republic-of-china",
     "row": 70
   },
   {
@@ -4524,6 +4778,7 @@
     "at": {
       "year": 628
     },
+    "slug": "brahmasphutasiddhanta",
     "row": 6
   },
   {
@@ -4544,6 +4799,7 @@
         "year": 1771
       }
     },
+    "slug": "first-voyage-of-james-cook",
     "row": 13
   },
   {
@@ -4563,6 +4819,7 @@
         "year": 1743
       }
     },
+    "slug": "great-northern-expedition",
     "row": 4
   },
   {
@@ -4586,6 +4843,7 @@
         "month": 3
       }
     },
+    "slug": "alphago-versus-lee-sedol",
     "row": 21
   },
   {
@@ -4602,6 +4860,7 @@
     "at": {
       "year": 1776
     },
+    "slug": "watt-steam-engine",
     "row": 26
   },
   {
@@ -4619,6 +4878,7 @@
     "at": {
       "year": 67
     },
+    "slug": "buddhism-in-china",
     "row": 4
   },
   {
@@ -4635,6 +4895,7 @@
     "at": {
       "year": 510
     },
+    "slug": "aryabhatiya",
     "row": 2
   },
   {
@@ -4651,6 +4912,7 @@
     "at": {
       "year": 1960
     },
+    "slug": "year-of-africa",
     "row": 46
   },
   {
@@ -4666,6 +4928,7 @@
       "year": 1991,
       "month": 7
     },
+    "slug": "economic-liberalisation-in-india",
     "row": 37
   },
   {
@@ -4683,6 +4946,7 @@
       "year": 1893,
       "month": 9
     },
+    "slug": "women-s-suffrage-in-new-zealand",
     "row": 41
   },
   {
@@ -4700,6 +4964,7 @@
     "at": {
       "year": 1498
     },
+    "slug": "the-portuguese-discovery-of-the-sea-route-to-india",
     "row": 9
   },
   {
@@ -4717,6 +4982,7 @@
       "year": 1565,
       "month": 4
     },
+    "slug": "spanish-colonization-of-the-philippines",
     "row": 14
   },
   {
@@ -4734,6 +5000,7 @@
     "at": {
       "year": 1851
     },
+    "slug": "victorian-gold-rush",
     "row": 32
   },
   {
@@ -4748,6 +5015,7 @@
     "at": {
       "year": 1876
     },
+    "slug": "invention-of-telephone",
     "row": 33
   },
   {
@@ -4766,6 +5034,7 @@
       "year": 1807,
       "month": 8
     },
+    "slug": "north-river-steamboat",
     "row": 37
   },
   {
@@ -4783,6 +5052,7 @@
       "year": 1876,
       "month": 3
     },
+    "slug": "sword-abolishment-edict",
     "row": 42
   },
   {
@@ -4797,6 +5067,7 @@
     "at": {
       "year": 400
     },
+    "slug": "christianization-of-iberia",
     "row": 2
   },
   {
@@ -4815,6 +5086,7 @@
       "year": 1992,
       "month": 10
     },
+    "slug": "discovery-of-brazil",
     "row": 38
   },
   {
@@ -4832,6 +5104,7 @@
       "year": 1498,
       "month": 5
     },
+    "slug": "portuguese-india-armadas",
     "row": 10
   },
   {
@@ -4849,6 +5122,7 @@
       "year": 966,
       "month": 4
     },
+    "slug": "baptism-of-poland",
     "row": 5
   },
   {
@@ -4865,6 +5139,7 @@
     "at": {
       "year": 1957
     },
+    "slug": "ghana-independence-act-1957",
     "row": 65
   },
   {
@@ -4882,6 +5157,7 @@
       "year": 1997,
       "month": 5
     },
+    "slug": "deep-blue-versus-kasparov-1997-game-6",
     "row": 39
   },
   {
@@ -4900,6 +5176,7 @@
       "year": 1923,
       "month": 10
     },
+    "slug": "proclamation-of-the-republic-of-turkey",
     "row": 26
   },
   {
@@ -4916,6 +5193,7 @@
     "at": {
       "year": 862
     },
+    "slug": "calling-of-the-varangians",
     "row": 6
   },
   {
@@ -4930,6 +5208,7 @@
     "at": {
       "year": 301
     },
+    "slug": "christianization-of-armenia",
     "row": 3
   },
   {
@@ -4945,6 +5224,7 @@
       "year": 1847,
       "month": 7
     },
+    "slug": "liberian-declaration-of-independence",
     "row": 33
   },
   {
@@ -4962,6 +5242,7 @@
     "at": {
       "year": 1859
     },
+    "slug": "drake-well",
     "row": 34
   },
   {
@@ -4977,6 +5258,7 @@
     "at": {
       "year": 500
     },
+    "slug": "history-of-the-hindu-arabic-numeral-system",
     "row": 3
   }
 ]

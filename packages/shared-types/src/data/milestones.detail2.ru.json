@@ -13,6 +13,7 @@
     "at": {
       "year": 1897
     },
+    "slug": "discovery-of-the-electron",
     "row": 4
   },
   {
@@ -28,6 +29,7 @@
     "at": {
       "year": -140
     },
+    "slug": "first-paper",
     "row": 0
   },
   {
@@ -44,6 +46,7 @@
       "year": 1896,
       "month": 6
     },
+    "slug": "first-radio-transmission",
     "row": 0
   },
   {
@@ -63,6 +66,7 @@
       "year": 1914,
       "month": 8
     },
+    "slug": "panama-canal",
     "row": 4
   },
   {
@@ -88,6 +92,7 @@
         "month": 6
       }
     },
+    "slug": "1989-tiananmen-square-protests-and-massacre",
     "row": 6
   },
   {
@@ -107,6 +112,7 @@
       "year": 532,
       "month": 2
     },
+    "slug": "hagia-sophia",
     "row": 0
   },
   {
@@ -125,6 +131,7 @@
     "at": {
       "year": 82
     },
+    "slug": "colosseum",
     "row": 0
   },
   {
@@ -143,6 +150,7 @@
     "at": {
       "year": 2004
     },
+    "slug": "burj-khalifa",
     "row": 5
   },
   {
@@ -159,6 +167,7 @@
     "at": {
       "year": 1948
     },
+    "slug": "apartheid",
     "row": 11
   },
   {
@@ -178,6 +187,7 @@
       "year": 1986,
       "month": 4
     },
+    "slug": "chernobyl-disaster",
     "row": 4
   },
   {
@@ -196,6 +206,7 @@
     "at": {
       "year": 1450
     },
+    "slug": "machu-picchu",
     "row": 0
   },
   {
@@ -210,6 +221,7 @@
     "at": {
       "year": 1942
     },
+    "slug": "first-programming-language",
     "row": 7
   },
   {
@@ -226,6 +238,7 @@
     "at": {
       "year": 1962
     },
+    "slug": "first-video-game",
     "row": 11
   },
   {
@@ -242,6 +255,7 @@
     "at": {
       "year": 400
     },
+    "slug": "mahabharata",
     "row": 0
   },
   {
@@ -265,6 +279,7 @@
         "year": 1352
       }
     },
+    "slug": "black-death",
     "row": 0
   },
   {
@@ -282,6 +297,7 @@
       "year": 2007,
       "month": 6
     },
+    "slug": "iphone",
     "row": 3
   },
   {
@@ -298,6 +314,7 @@
       "year": 1998,
       "month": 11
     },
+    "slug": "international-space-station",
     "row": 7
   },
   {
@@ -327,6 +344,7 @@
         "year": 1941
       }
     },
+    "slug": "great-depression",
     "row": 2
   },
   {
@@ -346,6 +364,7 @@
       "year": 1961,
       "month": 8
     },
+    "slug": "berlin-wall",
     "row": 12
   },
   {
@@ -367,6 +386,7 @@
         "year": 1648
       }
     },
+    "slug": "protestant-reformation",
     "row": 1
   },
   {
@@ -388,6 +408,7 @@
         "year": -1199
       }
     },
+    "slug": "bronze-age",
     "row": 0
   },
   {
@@ -406,6 +427,7 @@
     "at": {
       "year": 1096
     },
+    "slug": "university-of-oxford",
     "row": 1
   },
   {
@@ -421,6 +443,7 @@
     "at": {
       "year": -10000
     },
+    "slug": "smallpox",
     "row": 0
   },
   {
@@ -438,6 +461,7 @@
     "at": {
       "year": -3500
     },
+    "slug": "wheel",
     "row": 0
   },
   {
@@ -452,6 +476,7 @@
     "at": {
       "year": 1206
     },
+    "slug": "founding-of-the-mongol-empire",
     "row": 1
   },
   {
@@ -466,6 +491,7 @@
     "at": {
       "year": 1947
     },
+    "slug": "first-transistor",
     "row": 14
   },
   {
@@ -481,6 +507,7 @@
     "at": {
       "year": -2100
     },
+    "slug": "epic-of-gilgamesh",
     "row": 1
   },
   {
@@ -499,6 +526,7 @@
     "at": {
       "year": -2559
     },
+    "slug": "great-pyramid-of-giza",
     "row": 1
   },
   {
@@ -517,6 +545,7 @@
       "year": 1920,
       "month": 1
     },
+    "slug": "treaty-of-versailles",
     "row": 8
   },
   {
@@ -533,6 +562,7 @@
     "at": {
       "year": -1199
     },
+    "slug": "iron-age",
     "row": 1
   },
   {
@@ -551,6 +581,7 @@
     "at": {
       "year": -3000
     },
+    "slug": "stonehenge",
     "row": 1
   },
   {
@@ -569,6 +600,7 @@
     "at": {
       "year": 802
     },
+    "slug": "angkor-wat",
     "row": 0
   },
   {
@@ -587,6 +619,7 @@
     "at": {
       "year": 1163
     },
+    "slug": "notre-dame-de-paris",
     "row": 1
   },
   {
@@ -605,6 +638,7 @@
     "at": {
       "year": -500
     },
+    "slug": "parthenon",
     "row": 0
   },
   {
@@ -620,6 +654,7 @@
     "at": {
       "year": 1443
     },
+    "slug": "hangul",
     "row": 3
   },
   {
@@ -639,6 +674,7 @@
       "year": 1889,
       "month": 9
     },
+    "slug": "nintendo",
     "row": 3
   },
   {
@@ -655,6 +691,7 @@
       "year": 1916,
       "month": 8
     },
+    "slug": "first-tank",
     "row": 6
   },
   {
@@ -672,6 +709,7 @@
     "at": {
       "year": -137
     },
+    "slug": "silk-road",
     "row": 1
   },
   {
@@ -690,6 +728,7 @@
     "at": {
       "year": 330
     },
+    "slug": "constantinople",
     "row": 0
   },
   {
@@ -706,6 +745,7 @@
     "at": {
       "year": 1320
     },
+    "slug": "the-divine-comedy",
     "row": 0
   },
   {
@@ -722,6 +762,7 @@
     "at": {
       "year": 1368
     },
+    "slug": "founding-of-the-ming-dynasty",
     "row": 0
   },
   {
@@ -739,6 +780,7 @@
     "at": {
       "year": 1438
     },
+    "slug": "founding-of-the-inca-empire",
     "row": 2
   },
   {
@@ -755,6 +797,7 @@
     "at": {
       "year": 1526
     },
+    "slug": "founding-of-the-mughal-empire",
     "row": 0
   },
   {
@@ -778,6 +821,7 @@
         "year": 1923
       }
     },
+    "slug": "armenian-genocide",
     "row": 5
   },
   {
@@ -794,6 +838,7 @@
     "at": {
       "year": 1916
     },
+    "slug": "general-relativity",
     "row": 10
   },
   {
@@ -808,6 +853,7 @@
     "at": {
       "year": 1913
     },
+    "slug": "first-household-refrigerator",
     "row": 9
   },
   {
@@ -826,6 +872,7 @@
       "year": 1776,
       "month": 7
     },
+    "slug": "united-states-declaration-of-independence",
     "row": 3
   },
   {
@@ -842,6 +889,7 @@
       "year": 1787,
       "month": 9
     },
+    "slug": "united-states-constitution",
     "row": 4
   },
   {
@@ -858,6 +906,7 @@
       "year": 1848,
       "month": 2
     },
+    "slug": "the-communist-manifesto",
     "row": 0
   },
   {
@@ -875,6 +924,7 @@
       "year": 2020,
       "month": 1
     },
+    "slug": "brexit",
     "row": 3
   },
   {
@@ -894,6 +944,7 @@
       "year": 1882,
       "month": 3
     },
+    "slug": "basilica-and-expiatory-church-of-the-holy-family",
     "row": 5
   },
   {
@@ -908,6 +959,7 @@
     "at": {
       "year": -44
     },
+    "slug": "julian-calendar",
     "row": 0
   },
   {
@@ -924,6 +976,7 @@
     "at": {
       "year": 1642
     },
+    "slug": "first-calculator",
     "row": 3
   },
   {
@@ -943,6 +996,7 @@
     "at": {
       "year": -814
     },
+    "slug": "carthage",
     "row": 0
   },
   {
@@ -957,6 +1011,7 @@
     "at": {
       "year": -509
     },
+    "slug": "roman-republic",
     "row": 1
   },
   {
@@ -973,6 +1028,7 @@
     "at": {
       "year": -202
     },
+    "slug": "founding-of-the-han-dynasty",
     "row": 0
   },
   {
@@ -989,6 +1045,7 @@
     "at": {
       "year": 618
     },
+    "slug": "founding-of-the-tang-dynasty",
     "row": 1
   },
   {
@@ -1004,6 +1061,7 @@
     "at": {
       "year": 1905
     },
+    "slug": "special-relativity",
     "row": 11
   },
   {
@@ -1019,6 +1077,7 @@
       "year": 1928,
       "month": 9
     },
+    "slug": "discovery-of-penicillin",
     "row": 3
   },
   {
@@ -1035,6 +1094,7 @@
     "at": {
       "year": 1876
     },
+    "slug": "first-four-stroke-engine",
     "row": 4
   },
   {
@@ -1051,6 +1111,7 @@
       "year": 1960,
       "month": 5
     },
+    "slug": "first-laser",
     "row": 15
   },
   {
@@ -1066,6 +1127,7 @@
     "at": {
       "year": 1044
     },
+    "slug": "first-gunpowder-formula",
     "row": 0
   },
   {
@@ -1084,6 +1146,7 @@
       "year": 1215,
       "month": 6
     },
+    "slug": "magna-carta",
     "row": 2
   },
   {
@@ -1102,6 +1165,7 @@
     "at": {
       "year": 1919
     },
+    "slug": "league-of-nations",
     "row": 13
   },
   {
@@ -1117,6 +1181,7 @@
       "year": 1955,
       "month": 5
     },
+    "slug": "warsaw-pact",
     "row": 16
   },
   {
@@ -1135,6 +1200,7 @@
     "at": {
       "year": 455
     },
+    "slug": "chichen-itza",
     "row": 0
   },
   {
@@ -1152,6 +1218,7 @@
     "at": {
       "year": -499
     },
+    "slug": "the-art-of-war",
     "row": 2
   },
   {
@@ -1168,6 +1235,7 @@
       "year": 1895,
       "month": 11
     },
+    "slug": "discovery-of-x-rays",
     "row": 6
   },
   {
@@ -1185,6 +1253,7 @@
       "year": 1844,
       "month": 5
     },
+    "slug": "morse-code",
     "row": 1
   },
   {
@@ -1199,6 +1268,7 @@
     "at": {
       "year": -550
     },
+    "slug": "founding-of-the-achaemenid-empire",
     "row": 0
   }
 ]

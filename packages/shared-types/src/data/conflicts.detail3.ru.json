@@ -22,6 +22,7 @@
         "month": 2
       }
     },
+    "slug": "iranian-revolution",
     "row": 12
   },
   {
@@ -44,6 +45,7 @@
         "month": 2
       }
     },
+    "slug": "crimean-war",
     "row": 2
   },
   {
@@ -67,6 +69,7 @@
         "month": 2
       }
     },
+    "slug": "seven-years-war",
     "row": 0
   },
   {
@@ -89,6 +92,7 @@
         "month": 8
       }
     },
+    "slug": "iran-iraq-war",
     "row": 10
   },
   {
@@ -115,6 +119,7 @@
         "month": 3
       }
     },
+    "slug": "winter-war",
     "row": 17
   },
   {
@@ -135,6 +140,7 @@
         "year": 1815
       }
     },
+    "slug": "napoleonic-wars",
     "row": 3
   },
   {
@@ -158,6 +164,7 @@
         "month": 6
       }
     },
+    "slug": "falklands-war",
     "row": 15
   },
   {
@@ -176,6 +183,7 @@
       "year": 1941,
       "month": 12
     },
+    "slug": "attack-on-pearl-harbor",
     "row": 18
   },
   {
@@ -194,6 +202,7 @@
       "year": 1815,
       "month": 6
     },
+    "slug": "battle-of-waterloo",
     "row": 2
   },
   {
@@ -218,6 +227,7 @@
         "month": 10
       }
     },
+    "slug": "russian-civil-war",
     "row": 14
   },
   {
@@ -239,6 +249,7 @@
         "month": 9
       }
     },
+    "slug": "english-civil-war",
     "row": 4
   },
   {
@@ -263,6 +274,7 @@
         "month": 1
       }
     },
+    "slug": "franco-prussian-war",
     "row": 8
   },
   {
@@ -285,6 +297,7 @@
         "month": 9
       }
     },
+    "slug": "russo-japanese-war",
     "row": 16
   },
   {
@@ -309,6 +322,7 @@
         "month": 9
       }
     },
+    "slug": "second-sino-japanese-war",
     "row": 16
   },
   {
@@ -335,6 +349,7 @@
         "month": 5
       }
     },
+    "slug": "eastern-front",
     "row": 19
   },
   {
@@ -359,6 +374,7 @@
         "month": 2
       }
     },
+    "slug": "war-of-1812",
     "row": 4
   },
   {
@@ -381,6 +397,7 @@
         "month": 12
       }
     },
+    "slug": "operation-barbarossa",
     "row": 20
   },
   {
@@ -403,6 +420,7 @@
         "year": 1783
       }
     },
+    "slug": "american-revolution",
     "row": 5
   },
   {
@@ -421,6 +439,7 @@
       "year": 1953,
       "month": 7
     },
+    "slug": "cuban-revolution",
     "row": 21
   },
   {
@@ -443,6 +462,7 @@
         "month": 8
       }
     },
+    "slug": "spanish-american-war",
     "row": 12
   },
   {
@@ -468,6 +488,7 @@
         "month": 8
       }
     },
+    "slug": "war-in-afghanistan-2001-2021",
     "row": 14
   },
   {
@@ -493,6 +514,7 @@
         "month": 8
       }
     },
+    "slug": "russo-georgian-war",
     "row": 15
   },
   {
@@ -516,6 +538,7 @@
         "month": 8
       }
     },
+    "slug": "first-chechen-war",
     "row": 13
   },
   {
@@ -541,6 +564,7 @@
         "month": 5
       }
     },
+    "slug": "fall-of-constantinople",
     "row": 3
   },
   {
@@ -565,6 +589,7 @@
         "month": 5
       }
     },
+    "slug": "chinese-civil-war",
     "row": 21
   },
   {
@@ -583,6 +608,7 @@
       "year": -479,
       "month": 7
     },
+    "slug": "battle-of-thermopylae",
     "row": 0
   },
   {
@@ -605,6 +631,7 @@
         "month": 11
       }
     },
+    "slug": "suez-crisis",
     "row": 0
   },
   {
@@ -629,6 +656,7 @@
         "month": 3
       }
     },
+    "slug": "february-revolution",
     "row": 19
   },
   {
@@ -653,6 +681,7 @@
         "month": 4
       }
     },
+    "slug": "peloponnesian-war",
     "row": 0
   },
   {
@@ -678,6 +707,7 @@
         "month": 6
       }
     },
+    "slug": "wars-of-the-roses",
     "row": 1
   },
   {
@@ -702,6 +732,7 @@
         "month": 6
       }
     },
+    "slug": "indian-mutiny-of-1857",
     "row": 7
   },
   {
@@ -726,6 +757,7 @@
         "month": 12
       }
     },
+    "slug": "french-invasion-of-russia",
     "row": 6
   },
   {
@@ -752,6 +784,7 @@
         "month": 10
       }
     },
+    "slug": "1939-invasion-of-poland",
     "row": 23
   },
   {
@@ -777,6 +810,7 @@
         "month": 9
       }
     },
+    "slug": "boxer-rebellion",
     "row": 13
   },
   {
@@ -801,6 +835,7 @@
         "month": 2
       }
     },
+    "slug": "mexican-american-war",
     "row": 4
   },
   {
@@ -826,6 +861,7 @@
         "month": 2
       }
     },
+    "slug": "euromaidan",
     "row": 12
   },
   {
@@ -845,6 +881,7 @@
       "year": 2021,
       "month": 1
     },
+    "slug": "january-6-united-states-capitol-attack",
     "row": 7
   },
   {
@@ -868,6 +905,7 @@
         "month": 6
       }
     },
+    "slug": "kosovo-war",
     "row": 11
   },
   {
@@ -891,6 +929,7 @@
         "month": 12
       }
     },
+    "slug": "war-in-bosnia-and-herzegovina",
     "row": 19
   },
   {
@@ -911,6 +950,7 @@
         "year": 1099
       }
     },
+    "slug": "first-crusade",
     "row": 2
   },
   {
@@ -935,6 +975,7 @@
         "month": 5
       }
     },
+    "slug": "paris-commune",
     "row": 12
   },
   {
@@ -959,6 +1000,7 @@
         "month": 8
       }
     },
+    "slug": "normandy-landings",
     "row": 24
   }
 ]

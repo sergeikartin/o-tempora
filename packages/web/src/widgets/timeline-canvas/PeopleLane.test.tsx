@@ -9,6 +9,7 @@ afterEach(cleanup);
 
 const aristotle: Person = {
   id: 'Q868',
+  slug: 'Q868',
   name: 'Aristotle',
   lifespan: { start: { year: -383 }, end: { year: -321 } },
   occupationDomain: 'humanities',
@@ -20,6 +21,7 @@ const aristotle: Person = {
 
 const caesar: Person = {
   id: 'Q1048',
+  slug: 'Q1048',
   name: 'Julius Caesar',
   lifespan: { start: { year: -100 }, end: { year: -44 } },
   occupationDomain: 'institutions',

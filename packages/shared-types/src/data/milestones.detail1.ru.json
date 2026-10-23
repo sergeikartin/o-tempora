@@ -13,6 +13,7 @@
       "year": 2004,
       "month": 2
     },
+    "slug": "facebook",
     "row": 0
   },
   {
@@ -31,6 +32,7 @@
       "year": 1945,
       "month": 10
     },
+    "slug": "united-nations",
     "row": 1
   },
   {
@@ -47,6 +49,7 @@
     "at": {
       "year": 631
     },
+    "slug": "islam",
     "row": 0
   },
   {
@@ -63,6 +66,7 @@
       "year": 1869,
       "month": 3
     },
+    "slug": "periodic-table",
     "row": 0
   },
   {
@@ -81,6 +85,7 @@
       "year": 1946,
       "month": 2
     },
+    "slug": "first-general-purpose-computer",
     "row": 2
   },
   {
@@ -99,6 +104,7 @@
       "year": 1949,
       "month": 4
     },
+    "slug": "nato",
     "row": 3
   },
   {
@@ -118,6 +124,7 @@
       "year": 1703,
       "month": 5
     },
+    "slug": "saint-petersburg",
     "row": 0
   },
   {
@@ -155,6 +162,7 @@
       "year": 2019,
       "month": 12
     },
+    "slug": "covid-19-pandemic",
     "row": 0
   },
   {
@@ -174,6 +182,7 @@
       "year": 1886,
       "month": 1
     },
+    "slug": "first-car",
     "row": 1
   },
   {
@@ -196,6 +205,7 @@
       "year": 2002,
       "month": 1
     },
+    "slug": "euro",
     "row": 1
   },
   {
@@ -210,6 +220,7 @@
     "at": {
       "year": 1920
     },
+    "slug": "first-television",
     "row": 1
   },
   {
@@ -226,6 +237,7 @@
     "at": {
       "year": -27
     },
+    "slug": "founding-of-the-roman-empire",
     "row": 0
   },
   {
@@ -243,6 +255,7 @@
     "at": {
       "year": 1299
     },
+    "slug": "founding-of-the-ottoman-empire",
     "row": 0
   },
   {
@@ -265,6 +278,7 @@
         "year": 1945
       }
     },
+    "slug": "the-holocaust",
     "row": 4
   },
   {
@@ -281,6 +295,7 @@
       "year": 2022,
       "month": 11
     },
+    "slug": "chatgpt",
     "row": 1
   },
   {
@@ -299,6 +314,7 @@
       "year": 1969,
       "month": 7
     },
+    "slug": "first-humans-on-the-moon",
     "row": 0
   },
   {
@@ -318,6 +334,7 @@
       "year": 2001,
       "month": 9
     },
+    "slug": "september-11-attacks",
     "row": 2
   },
   {
@@ -334,6 +351,7 @@
     "at": {
       "year": 762
     },
+    "slug": "baghdad",
     "row": 0
   },
   {
@@ -351,6 +369,7 @@
     "at": {
       "year": 1901
     },
+    "slug": "nobel-prize",
     "row": 2
   },
   {
@@ -369,6 +388,7 @@
       "year": 1961,
       "month": 4
     },
+    "slug": "first-human-in-space",
     "row": 7
   },
   {
@@ -385,6 +405,7 @@
     "at": {
       "year": 1582
     },
+    "slug": "gregorian-calendar",
     "row": 0
   },
   {
@@ -402,6 +423,7 @@
       "year": 1948,
       "month": 12
     },
+    "slug": "universal-declaration-of-human-rights",
     "row": 6
   },
   {
@@ -420,6 +442,7 @@
       "year": 1887,
       "month": 1
     },
+    "slug": "eiffel-tower",
     "row": 2
   },
   {
@@ -443,6 +466,7 @@
         "year": 1653
       }
     },
+    "slug": "taj-mahal",
     "row": 0
   },
   {
@@ -461,6 +485,7 @@
     "at": {
       "year": -700
     },
+    "slug": "great-wall-of-china",
     "row": 0
   },
   {
@@ -477,6 +502,7 @@
     "at": {
       "year": 962
     },
+    "slug": "founding-of-the-holy-roman-empire",
     "row": 0
   },
   {
@@ -493,6 +519,7 @@
       "year": 1912,
       "month": 4
     },
+    "slug": "titanic",
     "row": 3
   },
   {
@@ -510,6 +537,7 @@
       "year": 1953,
       "month": 4
     },
+    "slug": "structure-of-dna",
     "row": 8
   },
   {
@@ -524,6 +552,7 @@
     "at": {
       "year": 1971
     },
+    "slug": "first-email",
     "row": 1
   },
   {
@@ -541,6 +570,7 @@
       "year": 1989,
       "month": 3
     },
+    "slug": "world-wide-web",
     "row": 3
   },
   {
@@ -557,6 +587,7 @@
     "at": {
       "year": 1973
     },
+    "slug": "first-mobile-phone",
     "row": 2
   },
   {
@@ -572,6 +603,7 @@
     "at": {
       "year": 1817
     },
+    "slug": "first-bicycle",
     "row": 0
   },
   {
@@ -591,6 +623,7 @@
       "year": 1869,
       "month": 11
     },
+    "slug": "suez-canal",
     "row": 2
   },
   {
@@ -608,6 +641,7 @@
     "at": {
       "year": 1503
     },
+    "slug": "mona-lisa",
     "row": 0
   },
   {
@@ -628,6 +662,7 @@
         "year": 1820
       }
     },
+    "slug": "industrial-revolution",
     "row": 1
   },
   {
@@ -644,6 +679,7 @@
     "at": {
       "year": 870
     },
+    "slug": "cyrillic-script",
     "row": 0
   },
   {
@@ -662,6 +698,7 @@
       "year": 1945,
       "month": 7
     },
+    "slug": "first-nuclear-weapon",
     "row": 9
   },
   {
@@ -677,6 +714,7 @@
     "at": {
       "year": -800
     },
+    "slug": "iliad",
     "row": 0
   }
 ]

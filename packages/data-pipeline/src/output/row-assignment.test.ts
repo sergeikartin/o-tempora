@@ -6,6 +6,7 @@ import { assignConflictsMilestonesRows, assignPersonRows, assignRows } from "./r
 function person(overrides: Partial<Person> = {}): Person {
   return {
     id: "Q868",
+    slug: "Q868",
     name: "Aristotle",
     lifespan: { start: { year: -383 }, end: { year: -321 } },
     occupationDomain: "humanities",
@@ -20,6 +21,7 @@ function person(overrides: Partial<Person> = {}): Person {
 function conflict(overrides: Partial<Conflict> = {}): Conflict {
   return {
     id: "Q8214",
+    slug: "Q8214",
     name: "Korean War",
     period: { start: { year: 1950 }, end: { year: 1953 } },
     category: "war",
@@ -34,6 +36,7 @@ function conflict(overrides: Partial<Conflict> = {}): Conflict {
 function milestone(overrides: Partial<Milestone> = {}): Milestone {
   return {
     id: "Q11042",
+    slug: "Q11042",
     name: "Printing press",
     at: { year: 1440 },
     category: "communication",
@@ -241,6 +244,7 @@ test("assignConflictsMilestonesRows packs a non-overlapping Conflict and Milesto
 test("assignConflictsMilestonesRows gives an overlapping, more-famous ConflictEvent priority over a Milestone", () => {
   const battle: ConflictEvent = {
     id: "Q-battle",
+    slug: "Q-battle",
     name: "Battle",
     at: { year: 1440 },
     category: "war",

@@ -20,6 +20,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cnut_the_Great",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Knut%20der%20Gro%C3%9Fe%20cropped.jpg",
     "description": "Кнуд Великий — Король Англии с 1016 года, Король Дании с 1018 года, Король Норвегии с 1028 года, владетель Шлезвига и Померании из династии Кнутлингов, Сын датского короля Свена Вилобородого и Гунхильды. Он создал могущественное государство, включавшее в себя Англию, Данию, Норвегию и часть Швеции, которое иногда называют «Империей Северного моря», распавшееся после его смерти.",
+    "slug": "cnut-the-great",
     "row": 2
   },
   {
@@ -44,6 +45,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_John_XXIII",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ioannes%20XXIII%2C%20by%20De%20Agostini%2C%201958%E2%80%931963.jpg",
     "description": "Святой Иоанн XXIII — папа римский с 1958 по 1963 год. Дипломат Ватикана, Апостольский визитатор в Болгарии, Апостольский делегат в Турции и Греции, администратор Апостольского викариата Стамбула и Апостольский нунций во Франции. Взойдя на папский престол, выступал за мир и мирное сосуществование государств с различными социальными системами. Стремился модернизировать Католическую церковь в связи с изменившимися в мире условиями. В 1962 году созвал Второй Ватиканский собор.",
+    "slug": "john-xxiii",
     "row": 39
   },
   {
@@ -68,6 +70,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/National%20Museum%20of%20Iran%20Darafsh%20%28784%29.JPG",
     "imageAttribution": "Darafsh, via Wikimedia Commons",
     "description": "Ксеркс I, широко известный как Ксеркс Великий — четвёртый шахиншах Ахеменидской державы, правивший с 486 по 465 год до н. э. Сын Дария I и Атоссы, дочери Кира II.",
+    "slug": "xerxes-i",
     "row": 6
   },
   {
@@ -92,6 +95,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicholas_II_of_Russia",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nicolas%20II%20de%20russie.jpg",
     "description": "Никола́й II Алекса́ндрович — последний император Всероссийский, царь Польский и великий князь Финляндский из династии Романовых, старший сын Александра III. Полковник гвардии (1892); кроме того, от британских монархов имел звания адмирала флота Королевского ВМФ Великобритании и фельдмаршала британской армии.",
+    "slug": "nicholas-ii-of-russia",
     "row": 37
   },
   {
@@ -116,6 +120,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/John_Locke",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/JohnLocke.png",
     "description": "Джон Локк — английский педагог и философ, представитель эмпиризма и либерализма.",
+    "slug": "john-locke",
     "row": 13
   },
   {
@@ -140,6 +145,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pelé",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pele%20con%20brasil%20%28cropped%29.jpg",
     "description": "Э́дсон Ара́нтис ду Насиме́нту, более известный как Пеле́ — бразильский футболист, нападающий. Играл за клубы «Сантос» и «Нью-Йорк Космос». Провёл 92 матча и забил 77 голов в составе сборной Бразилии. Считается одним из лучших футболистов в истории.",
+    "slug": "pele",
     "row": 43
   },
   {
@@ -165,6 +171,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_Kissinger",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Henry%20A.%20Kissinger%2C%20U.S.%20Secretary%20of%20State%2C%201973-1977.jpg",
     "description": "Ге́нри А́льфред Ки́ссинджер — американский государственный деятель, дипломат и эксперт в области международных отношений. Советник президента США по национальной безопасности и Государственный секретарь США. Лауреат Нобелевской премии мира (1973).",
+    "slug": "henry-kissinger",
     "row": 37
   },
   {
@@ -189,6 +196,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Abraham_Lincoln",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Abraham%20Lincoln%201846%2047%20interpreted%20Gemini.png",
     "description": "Авраа́м Ли́нкольн — американский государственный и политический деятель, 16-й президент США (1861—1865) и первый от Республиканской партии, освободитель американских рабов, национальный герой американского народа.",
+    "slug": "abraham-lincoln",
     "row": 30
   },
   {
@@ -213,6 +221,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Molière",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pierre%20Mignard%20-%20Portrait%20de%20Jean-Baptiste%20Poquelin%20dit%20Moli%C3%A8re%20%281622-1673%29%20-%20Google%20Art%20Project%20%28cropped%29.jpg",
     "description": "Жан-Бати́ст Покле́н, театральный псевдоним — Молье́р — французский драматург XVII века, создатель классической комедии, по профессии актёр и директор театра, более известного как труппа Мольера.",
+    "slug": "moliere",
     "row": 10
   },
   {
@@ -237,6 +246,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ada_Lovelace",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ada%20Byron%20daguerreotype%20by%20Antoine%20Claudet%201843%20or%201850%20-%20cropped.png",
     "description": "Авгу́ста А́да Кинг, графиня Ла́влейс — английский математик. Известна прежде всего созданием описания вычислительной машины, проект которой был разработан Чарльзом Бэббиджем.",
+    "slug": "ada-lovelace",
     "row": 14
   },
   {
@@ -261,6 +271,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/James_K._Polk",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/JamesKnoxPolk.jpg",
     "description": "Джеймс Нокс Полк — американский политический и государственный деятель, одиннадцатый президент США, с 4 марта 1845 по 4 марта 1849 года.",
+    "slug": "james-k-polk",
     "row": 22
   },
   {
@@ -285,6 +296,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/William_III_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/G.%20Kneller%20-%20Willem%20III%20%281650-1702%29%2C%20prins%20van%20Oranje%2C%20koning%20van%20Engeland%20-%20C252%20-%20Cultural%20Heritage%20Agency%20of%20the%20Netherlands%20Art%20Collection.jpg",
     "description": "Вильге́льм III, принц Оранский, или Виллем ван Оранье-Нассау — правитель Нидерландов (статхаудер) с 28 июня (8 июля) 1672, король Англии с 13 (23) февраля 1689 и король Шотландии с 11 (21) апреля 1689.",
+    "slug": "william-iii-of-england",
     "row": 9
   },
   {
@@ -309,6 +321,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Franz_Schubert",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Franz%20Schubert%20by%20Wilhelm%20August%20Rieder%201875%20larger%20version.png",
     "description": "Франц Пе́тер Шу́берт — австрийский композитор, один из основоположников романтизма в музыке, автор 602 вокальных композиций, девяти симфоний, а также большого количества камерных и сольных фортепианных произведений.",
+    "slug": "franz-schubert",
     "row": 9
   },
   {
@@ -333,6 +346,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Francis_of_Assisi",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/StFrancis%20part.jpg",
     "description": "Франци́ск Асси́зский — католический святой, почитаемый в качестве богослова и философа также многими христианами других конфессий, включая восточных, православных христиан, учредитель названного его именем нищенствующего ордена — ордена францисканцев (1209). Знаменует собой перелом в истории аскетического идеала, а потому и новую эпоху в истории монашества Дальнего Запада, Западной Европы.",
+    "slug": "francis-of-assisi",
     "row": 5
   },
   {
@@ -358,6 +372,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/James_II_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/King%20James%20II%20by%20Sir%20Godfrey%20Kneller%2C%20Bt.jpg",
     "description": "Я́ков II Стю́арт — король Англии, Шотландии и Ирландии, как шотландский монарх именовался Яковом VII (1685—1688), внук Якова I, второй сын Карла I и младший брат Карла II. Последний британский король-католик; свергнут в результате «Славной революции» 1688 года.",
+    "slug": "james-ii-of-england",
     "row": 14
   },
   {
@@ -382,6 +397,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_XII",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pius%20XII%20with%20tabard%2C%20by%20Michael%20Pitcairn%2C%201951%20%28retouched%29.jpg",
     "description": "Пий XII — папа римский с 2 марта 1939 года по 9 октября 1958 года. Провозгласил догмат о Вознесении Девы Марии и символически посвятил мир Непорочному сердцу Марии в 1942 году. 18 октября 1967 Папа Павел VI начал процесс беатификации Пия XII. Стал первым папой, избранным из государственных секретарей, начиная с Климента IX в 1667 году. Во время своего понтификата Пий XII канонизировал 34 человека, в том числе Пия X, и беатифицировал — 41. В 1949 году предал анафеме коммунистических лидеров Чехословакии. Пия XII называли «Папой Марии» — за его огромную приверженность Матери Божией, проявившуюся в объявленном им вероопределении относительно Её Успения. Он внёс значительный вклад в развитие католического социального учения. Папа Пий XII скончался 9 октября 1958 года. С его понтификатом заканчивается «Эпоха Пиев».",
+    "slug": "pius-xii",
     "row": 38
   },
   {
@@ -408,6 +424,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pompey%20the%20Great.jpg",
     "imageAttribution": "Alphanidon, via Wikimedia Commons",
     "description": "Гней Помпе́й Вели́кий, или Гней Помпей Магн — древнеримский государственный деятель и полководец, консул Римской республики 70, 55 и 52 годов до н. э., командующий лояльными сенату войсками в гражданской войне 49—45 годов до н. э.",
+    "slug": "pompey",
     "row": 4
   },
   {
@@ -433,6 +450,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Darius%20the%20great.%20jpg.jpg",
     "imageAttribution": "Surenae, via Wikimedia Commons",
     "description": "Да́рий I Великий — царь Ахеменидской державы, правил в 522—486 годах до н. э.",
+    "slug": "darius-i",
     "row": 5
   },
   {
@@ -454,6 +472,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Steven%20Spielberg%202025.jpg",
     "imageAttribution": "Raph_PH, via Wikimedia Commons",
     "description": "Сти́вен А́ллан Спи́лберг — американский кинорежиссёр, продюсер и сценарист. Одна из ключевых фигур эры Нового Голливуда, пионер современного блокбастера и самый коммерчески успешный режиссёр в истории мирового кинематографа. Лауреат многих премий, в частности, трёх «Оскаров», награды имени Ирвинга Тальберга, Центра Кеннеди, Сесиля Б. Де Милля. Фильмография Спилберга обширна и очень разнообразна: он с одинаковым успехом снимал приключенческие и фантастические блокбастеры, социальные и исторические драмы, а также детское кино.",
+    "slug": "steven-spielberg",
     "row": 40
   },
   {
@@ -479,6 +498,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GorbachevMS.jpg",
     "imageAttribution": "Leo Medvedev/Лев Леонидович Медведев, via Wikimedia Commons",
     "description": "Михаи́л Серге́евич Горбачёв — советский и российский государственный, политический, партийный и общественный деятель. Последний Генеральный секретарь ЦК КПСС (1985—1991). Последний Председатель Президиума Верховного Совета СССР (1988—1989), затем первый председатель Верховного Совета СССР (1989—1990). Единственный в истории президент СССР (1990—1991), а также единственный руководитель Советского государства, родившийся после Октябрьской революции.",
+    "slug": "mikhail-gorbachev",
     "row": 35
   },
   {
@@ -503,6 +523,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Miguel_de_Cervantes",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cervantes%20J%C3%A1uregui.jpg",
     "description": "Миге́ль де Серва́нтес Сааве́дра, при рождении Миге́ль де Серва́нтес — испанский писатель, драматург и поэт. Прежде всего известен как автор романа «Хитроумный идальго Дон Кихот Ламанчский». Другие его произведения — романы «Галатея» и «Странствия Персилеса и Сихизмунды», сборники «Назидательные новеллы» и «Восемь комедий и восемь интермедий».",
+    "slug": "miguel-de-cervantes",
     "row": 10
   },
   {
@@ -528,6 +549,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Leonhard_Euler",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Leonhard%20Euler.jpg",
     "description": "Леона́рд Э́йлер — швейцарский, прусский и российский математик и механик, внёсший фундаментальный вклад в развитие этих наук. Наряду с Лагранжем — крупнейший математик XVIII века, считается одним из величайших математиков в истории. Эйлер — автор более чем 850 работ по математическому анализу, дифференциальной геометрии, теории чисел, приближённым вычислениям, небесной механике, математической физике, оптике, баллистике, кораблестроению, теории музыки и другим областям. Он изучал медицину, химию, ботанику, воздухоплавание, множество европейских и древних языков. Академик Петербургской, Берлинской, Туринской, Лиссабонской и Базельской академий наук, иностранный член Парижской академии наук. Первый российский член Американской академии искусств и наук.",
+    "slug": "leonhard-euler",
     "row": 13
   },
   {
@@ -554,6 +576,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kim%20Jong-il%20on%20August%2024%2C%202011.jpg",
     "imageAttribution": "Presidential Press and Information Office, via Wikimedia Commons",
     "description": "Ким Чен Ир — северокорейский государственный, политический, партийный и военный деятель, Великий руководитель Корейской Народно-Демократической Республики, Генеральный секретарь ЦК Трудовой партии Кореи, Верховный главнокомандующий Корейской народной армии, Председатель Государственного комитета обороны КНДР. Сын Ким Ир Сена, отец Ким Чен Ына. Генералиссимус КНДР и четырежды Герой КНДР.",
+    "slug": "kim-jong-il",
     "row": 44
   },
   {
@@ -579,6 +602,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bob_Marley",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bob%20Marley%201976%20press%20photo.jpg",
     "description": "Боб Ма́рли — ямайский музыкант, гитарист, вокалист и композитор. Является самым известным исполнителем в стиле регги. Именно благодаря его международному успеху регги приобрёл широкую популярность за пределами Ямайки.",
+    "slug": "bob-marley",
     "row": 36
   },
   {
@@ -603,6 +627,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Caravaggio",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bild-Ottavio%20Leoni%2C%20Caravaggio.jpg",
     "description": "Микела́нджело Меризи да Карава́джо — итальянский художник, реформатор европейской живописи XVII века, один из самых ярких представителей реализма в живописи эпохи барокко. Одним из первых он применил манеру письма «кьяроскуро» — резкое противопоставление света и тени, а также «тенебризмо». Большую часть своей творческой жизни он работал в Риме, пользуясь покровительством влиятельных церковных лиц. В течение последних четырёх лет своей жизни он странствовал между Неаполем, Мальтой и Сицилией.Художник работал непосредственно с живых моделей, рисовал и писал сразу на холсте, отказываясь от предварительных эскизов. Этим объясняется то, что до настоящего времени не обнаружено ни одного подготовительного рисунка.",
+    "slug": "caravaggio",
     "row": 11
   },
   {
@@ -627,6 +652,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Elvis_Presley",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Elvis%20Presley%20Publicity%20Photo%20for%20The%20Trouble%20with%20Girls%201968.jpg",
     "description": "Э́лвис А́арон Пре́сли — американский певец и актёр, один из самых коммерчески успешных исполнителей популярной музыки XX века. Также известен как «король рок-н-ролла».",
+    "slug": "elvis-presley",
     "row": 42
   },
   {
@@ -651,6 +677,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Icon%20of%20Saint%20George%2C%2014th%20century%20from%20Constantinople%2C%20Byzantine%20and%20Christian%20Museum%2C%20Athens.jpg",
     "imageAttribution": "Ricardo André Frantz (User:Tetraktys), via Wikimedia Commons",
     "description": "Гео́ргий Победоно́сец — христианский святой, великомученик, наиболее почитаемый святой с таким именем и один из наиболее известных святых в христианском мире. Существует множество вариантов его жития, как канонических, так и апокрифических. Согласно каноническому житию, пострадал во время Великого гонения при императоре Диоклетиане и после восьмидневных тяжких мучений в 303 (304) году был обезглавлен. Одним из самых известных сказаний о его чудесах является «Чудо о змие».",
+    "slug": "saint-george",
     "row": 2
   },
   {
@@ -675,6 +702,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_IX",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pius%20IX%2C%20by%20Adolphe%20Braun%2C%201875.jpg",
     "description": "Блаженный Пий IX — папский и итальянский религиозный и политический деятель, кардинал. Папа римский с 16 июня 1846 года по 7 февраля 1878 года, последний суверен Папского государства, возглавлявший вооружённую борьбу против Италии.",
+    "slug": "pius-ix",
     "row": 21
   },
   {
@@ -700,6 +728,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Arthur_Schopenhauer",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Arthur%20Schopenhauer%20by%20J%20Sch%C3%A4fer%2C%201859b.jpg",
     "description": "Арту́р Шопенга́уэр — немецкий философ. Один из самых известных мыслителей иррационализма, мизантроп. Тяготел к немецкому романтизму, увлекался мистикой. Основной философский труд — «Мир как воля и представление», комментированием и популяризацией которого Шопенгауэр занимался до самой смерти.",
+    "slug": "arthur-schopenhauer",
     "row": 20
   },
   {
@@ -725,6 +754,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles_V,_Holy_Roman_Emperor",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Charles%20V%2C%20Holy%20Roman%20Emperor%2C%20seated%20%281500%E2%80%931558%29%2C%20formerly%20attributed%20to%20Titian%20%28Alte%20Pinakothek%2C%20Munich%29.jpg",
     "description": "Карл V Габсбург — король Испании под именем Карлос I с 23 января 1516 года, король Германии с 28 июня 1519 по 1556 год, император Священной Римской империи с 1520 года. Крупнейший государственный деятель Европы первой половины XVI века, внёсший наибольший вклад в историю среди правителей того времени. Карл V — последний император, официально коронованный римским папой, он же — последний император, отпраздновавший в Риме триумф; правитель первой в мире трансокеанской империи.",
+    "slug": "charles-v",
     "row": 13
   },
   {
@@ -749,6 +779,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Attila",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Attila%20Hunnorum%20Rex%20Flagellum%20Dei%20Aquilejae%20Eversor%20Utini%20Instaurator.jpg",
     "description": "Атти́ла — правитель гуннов в 434—453 годах, объединивший под своей властью тюркские, германские, иранские и другие племена, создавший державу, простиравшуюся от Рейна до Волги.",
+    "slug": "attila",
     "row": 1
   },
   {
@@ -773,6 +804,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Maria_Theresa",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kaiserin%20Maria%20Theresia%20%28HRR%29.jpg",
     "description": "Мари́я Тере́зия Вальбурга Амалия Кристина — эрцгерцогиня Австрии, королева Венгрии с 25 июня 1741, королева Богемии с 20 октября 1740. Супруга, а затем вдова Франца I Стефана Лотарингского, избранного императором в 1745 году.",
+    "slug": "maria-theresa-of-austria",
     "row": 18
   },
   {
@@ -797,6 +829,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Marie_Antoinette",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Louise%20Elisabeth%20Vig%C3%A9e-Lebrun%20-%20Marie-Antoinette%20dit%20%C2%AB%20%C3%A0%20la%20Rose%20%C2%BB%20-%20Google%20Art%20Project.jpg",
     "description": "Мари́я-Антуане́тта Австрийская — королева Франции и Наварры, младшая дочь императора Франца I и Марии-Терезии. Супруга короля Франции Людовика XVI с 1770 года. После начала Французской революции была объявлена вдохновительницей контрреволюционных заговоров и иностранной интервенции. Осуждена Конвентом и казнена на гильотине.",
+    "slug": "marie-antoinette",
     "row": 22
   },
   {
@@ -822,6 +855,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Francisco_Goya",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vicente%20L%C3%B3pez%20Porta%C3%B1a%20-%20el%20pintor%20Francisco%20de%20Goya.jpg",
     "description": "Франси́ско Хосе́ де Го́йя-и-Лусье́нтес — испанский живописец и график, один из первых и наиболее ярких художников эпохи романтизма.",
+    "slug": "francisco-goya",
     "row": 27
   },
   {
@@ -845,6 +879,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Osman_I",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/I.%20Osman%20Han.jpg",
     "description": "Осма́н I Га́зи — первый правитель Османского бейлика в Малой Азии (1299—1324).",
+    "slug": "osman-i",
     "row": 3
   },
   {
@@ -871,6 +906,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Marcus%20Aurelius%20Louvre%20MR561%20n02.jpg",
     "imageAttribution": "Marie-Lan Nguyen (2011), via Wikimedia Commons",
     "description": "Марк Авре́лий Антони́н — римский император с 161 года из династии Антонинов, философ, представитель позднего стоицизма, последователь Эпиктета. Последний из пяти хороших императоров.",
+    "slug": "marcus-aurelius",
     "row": 2
   },
   {
@@ -895,6 +931,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Maximilien_Robespierre",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Robespierre.jpg",
     "description": "Максимилье́н Мари́ Изидо́р де Робеспье́р — французский революционер, адвокат, один из наиболее известных и влиятельных политических деятелей Великой французской революции.",
+    "slug": "maximilien-robespierre",
     "row": 23
   },
   {
@@ -920,6 +957,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Igor_Stravinsky",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Igor%20Stravinsky%20LOC%2032392u.jpg",
     "description": "И́горь Фёдорович Страви́нский — русский композитор. Гражданин Франции (1934) и США (1945). Один из крупнейших представителей мировой музыкальной культуры XX века. Музыку Стравинского отличает стилистическое многообразие: в первом периоде творчества она несёт яркий отпечаток русской культурной традиции. Стилистика позднейших сочинений выдаёт, среди прочего, влияние неоклассицизма и додекафонии Новой венской школы.",
+    "slug": "igor-stravinsky",
     "row": 51
   },
   {
@@ -945,6 +983,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gustav_Mahler",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Photo%20of%20Gustav%20Mahler%20by%20Moritz%20N%C3%A4hr%2001.jpg",
     "description": "Гу́став Ма́лер — австрийский композитор, оперный и симфонический дирижёр.",
+    "slug": "gustav-mahler",
     "row": 47
   },
   {
@@ -970,6 +1009,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Flickr%20-%20Government%20Press%20Office%20%28GPO%29%20-%20Jean%20Paul%20Sartre%20and%20Simone%20De%20Beauvoir%20welcomed%20by%20Avraham%20Shlonsky%20and%20Leah%20Goldberg%20%28cropped%29.jpg",
     "imageAttribution": "Moshe Milner, via Wikimedia Commons",
     "description": "Жан-Поль Шарль Эма́р Сартр — французский философ-экзистенциалист, представитель атеистического экзистенциализма, писатель, драматург и эссеист, социалист. Лауреат Нобелевской премии по литературе 1964 года, от которой отказался.",
+    "slug": "jean-paul-sartre",
     "row": 58
   },
   {
@@ -994,6 +1034,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Johannes_Vermeer",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cropped%20version%20of%20Jan%20Vermeer%20van%20Delft%20002.jpg",
     "description": "Ян (Йоханнис) Верме́ер, Верме́р, в историографии также Верме́ер Де́лфтский — нидерландский живописец, мастер бытового и портретного жанров, один из самых выдающихся художников «Золотого века голландской живописи» наряду с Питером де Хохом, Герардом Терборхом, Рембрандтом и Франсом Халсом.",
+    "slug": "johannes-vermeer",
     "row": 11
   },
   {
@@ -1018,6 +1059,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nofretete%20Neues%20Museum.jpg",
     "imageAttribution": "Miguel Hermoso Cuesta, via Wikimedia Commons",
     "description": "Неферти́ти — «главная супруга» древнеегипетского фараона XVIII династии Нового царства Эхнатона. Время правления Эхнатона и Нефертити, известное как «амарнский период», ознаменовалось религиозной реформой (атонизм), когда главным божеством провозгласили бога Атона. Роль самой царицы в проведении «солнцепоклоннического переворота» спорна. Дискуссионной в научной среде остаётся идентификация Нефертити с фараоном-женщиной Нефернефруатон, вероятно, правившей около 2 лет.",
+    "slug": "nefertiti",
     "row": 3
   },
   {
@@ -1043,6 +1085,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/T._S._Eliot",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Thomas%20Stearns%20Eliot%20by%20Lady%20Ottoline%20Morrell%20%281934%29.jpg",
     "description": "Томас Стернз Элиот, более известный под сокращённым именем Т. С. Элиот — американо-британский поэт, драматург и литературный критик, представитель модернизма в поэзии. Лауреат Нобелевской премии по литературе 1948 года.",
+    "slug": "t-s-eliot",
     "row": 53
   },
   {
@@ -1067,6 +1110,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sandro_Botticelli",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sandro%20Botticelli%20Self-portrait%20ca%201475.jpg",
     "description": "Са́ндро Боттиче́лли — итальянский живописец, выдающийся мастер эпохи раннего итальянского Возрождения, представитель флорентийской школы живописи периода кватроченто, развивавшейся под патронажем семьи Медичи, он сумел разработать утончённый, элегантный стиль, предлагающий новую модель идеальной красоты и воплотивший вкусы аристократического общества того времени. На его искусство также повлияли Андреа Верроккьо и братья Антонио и Пьеро дель Поллайоло. Боттичелли — автор картин «Весна», «Венера и Марс», а также «Рождение Венеры», которые принесли художнику мировую известность.",
+    "slug": "sandro-botticelli",
     "row": 14
   },
   {
@@ -1090,6 +1134,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Musa_I_of_Mali",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kanga%20Moussa%20Atlas%20Catalan.jpg",
     "description": "Муса́ I, также известный как Манса Муса , — манса средневековой империи Мали, находившийся у власти в 1307/1312—1332/1337 годах. Происходил из династии Кейта, был племянником основателя государства Мали Сундиаты Кейта. Родился в первой декаде мая, а умер в последней декаде августа. При нём Мали имело наибольшие размеры за свою историю, значительно усилилось и достигло вершины своего могущества и культурного развития.",
+    "slug": "mansa-musa",
     "row": 4
   },
   {
@@ -1114,6 +1159,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Max_Weber",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Max%20Weber%20in%201918.png",
     "description": "Максимилиа́н Карл Эми́ль Ве́бер, известный как Макс Вебер — немецкий социолог, философ, историк, политический экономист. Идеи Вебера оказали значительное влияние на развитие общественных наук, в особенности — социологии. Наряду с Эмилем Дюркгеймом и Карлом Марксом Вебер считается одним из основоположников социологической науки.",
+    "slug": "max-weber",
     "row": 49
   },
   {
@@ -1139,6 +1185,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Yuri%20Gagarin%20portrait.png",
     "imageAttribution": "В. Жихаренко / ТАСС\n\nОбработка: Roman Kubanskiy, via Wikimedia Commons",
     "description": "Ю́рий Алексе́евич Гага́рин — советский космонавт и военный лётчик, первый человек, совершивший космический полёт. Герой Советского Союза, кавалер высших знаков отличия ряда государств, почётный гражданин многих российских и зарубежных городов.",
+    "slug": "yuri-gagarin",
     "row": 49
   },
   {
@@ -1163,6 +1210,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nero",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nero%20Palatino%20Inv618.jpg",
     "description": "Неро́н Кла́вдий Це́зарь А́вгуст Герма́ник — римский император c 13 октября 54 года, последний из династии Юлиев-Клавдиев. Также принцепс сената, консулярный трибун, отец отечества, великий понтифик, пятикратный ординарный консул. Полный титул к моменту смерти: «император Нерон Клавдий Цезарь Август Германик, великий понтифик, наделён властью трибуна 14 раз, властью императора 13 раз, пятикратный консул, отец отечества».",
+    "slug": "nero",
     "row": 1
   },
   {
@@ -1187,6 +1235,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Edvard_Munch",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Edvard%20Munch%201933-2.jpg",
     "description": "Э́двард Мунк — норвежский живописец и график, один из первых представителей экспрессионизма, самым узнаваемым образом которого стала картина «Крик». Его творчество охвачено мотивами смерти, одиночества, но при этом и жаждой жизни.",
+    "slug": "edvard-munch",
     "row": 48
   },
   {
@@ -1211,6 +1260,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Wilhelm_Röntgen",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Wilhelm%20Conrad%20R%C3%B6ntgen%20%281888-1900%29%2C%2088374%20p.jpg",
     "description": "Вильге́льм Ко́нрад Рёнтген — немецкий физик, работавший в Вюрцбургском университете. С 1875 года служил профессором в Хоэнхайме, с 1876 года — профессором физики в Страсбурге, с 1879 года — в Гиссене, с 1885 года — в Вюрцбурге, с 1899 года — в Мюнхене. Первый в истории лауреат Нобелевской премии по физике (1901 год) за открытие в 1895 году излучения, впоследствии названного в его честь.",
+    "slug": "wilhelm-rontgen",
     "row": 43
   },
   {
@@ -1236,6 +1286,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Giuseppe_Garibaldi",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Giuseppe%20Garibaldi%201861.jpg",
     "description": "Джузе́ппе Гариба́льди — итальянский военачальник, революционер и политический деятель. Один из лидеров Рисорджименто. Национальный герой Италии. Писатель, мемуарист.",
+    "slug": "giuseppe-garibaldi",
     "row": 40
   },
   {
@@ -1258,6 +1309,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ptolemy",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/PSM%20V78%20D326%20Ptolemy.png",
     "description": "Кла́вдий Птолеме́й — античный учёный греко-египетского происхождения; астроном, математик, географ, механик, оптик и теоретик музыки. Жил и работал в Александрии Египетской, где проводил астрономические наблюдения.",
+    "slug": "ptolemy",
     "row": 1
   },
   {
@@ -1283,6 +1335,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Francis_II,_Holy_Roman_Emperor",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Francis%20II%2C%20Holy%20Roman%20Emperor%20by%20Friedrich%20von%20Amerling%20003.jpg",
     "description": "Франц II — последний император Священной Римской империи (1792—1806), под именем Франц I — первый император Австрии, король Богемии и Венгрии из Габсбург-Лотарингского дома.",
+    "slug": "francis-ii-holy-roman-emperor",
     "row": 31
   },
   {
@@ -1307,6 +1360,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_VI_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/King%20Henry%20VI.jpg",
     "description": "Ге́нрих VI — третий и последний король Англии из династии Ланкастеров. Единственный из всех английских королей, носивших во время Столетней войны и после неё титул короля Франции, который был на самом деле коронован (1431 год) и царствовал на значительной её части. Стал королём в младенческом возрасте при регентстве своих дядьёв. Впоследствии, женившись на Маргарите Анжуйской, полностью попал под её влияние. Из-за манипуляций жены начал войну с домом Йорков, закончившуюся поражением королевских войск, гибелью Генриха и его сына и пресечением династии Ланкастеров. Большинством историков оценивается как недалёкий и слабый правитель, некоторые причисляют его к слабоумным. Активно занимался благотворительностью и меценатством, покровительствовал церкви, развитию литературы и искусства.",
+    "slug": "henry-vi-of-england",
     "row": 3
   },
   {
@@ -1332,6 +1386,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Freddie_Mercury",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Freddie%20Mercury%20at%20Sheraton%20Hotel%20Buenos%20Aires.jpg",
     "description": "Фре́дди Ме́ркьюри — британский рок-певец, композитор и автор песен. Вокалист рок-группы Queen.",
+    "slug": "freddie-mercury",
     "row": 48
   },
   {
@@ -1356,6 +1411,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Diego_Velázquez",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Diego%20Vel%C3%A1zquez%20Autorretrato%2045%20x%2038%20cm%20-%20Colecci%C3%B3n%20Real%20Academia%20de%20Bellas%20Artes%20de%20San%20Carlos%20-%20Museo%20de%20Bellas%20Artes%20de%20Valencia.jpg",
     "description": "Дие́го Родри́гес де Си́льва-и-Вела́скес — испанский художник, крупнейший представитель мадридской школы времён золотого века испанской живописи, придворный живописец короля Филиппа IV. Среди его учеников — Эстебан Мурильо и Хуан де Пареха. Единственное высказывание художника, которое сохранилось — «Предпочитаю быть лучшим в изображении уродства, а не вторым в изображении красоты».",
+    "slug": "diego-velazquez",
     "row": 15
   },
   {
@@ -1380,6 +1436,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_XV_of_France",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Louis-Michel%20van%20Loo%20%28School%20of%29%20-%20Portrait%20of%20Louis%20XV%20-%20Louvre%20-%20INV%206319.jpg",
     "description": "Людовик XV, официальное прозвище Возлюбленный — король Франции c 1 сентября 1715 года из династии Бурбонов. Его царствование — одно из самых длительных в мировой истории, второе во французской истории по продолжительности после его прадеда, предыдущего короля Франции Людовика XIV. Оно характеризуется расцветом французской культуры, так называемой эпохой рококо, но его многолетнее правление ознаменовалось постепенным упадком экономики и нарастанием напряжённости в стране, что в конечном счёте привело спустя 15 лет после его смерти к свержению монархии Бурбонов.",
+    "slug": "louis-xv-of-france",
     "row": 8
   },
   {
@@ -1404,6 +1461,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dmitri_Mendeleev",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dmitri%20Mendeleev.jpg",
     "description": "Дми́трий Ива́нович Менделе́ев — русский учёный-энциклопедист: химик, физикохимик, физик, метролог, экономист, технолог, геолог, метеоролог, нефтяник, педагог, воздухоплаватель, приборостроитель.",
+    "slug": "dmitri-mendeleev",
     "row": 42
   },
   {
@@ -1428,6 +1486,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Antoni_Gaudí",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gaud%C3%AD%20%281878%29.jpg",
     "description": "Анто́ни Пла́сид Гилье́м Гауди́-и-Корне́т — испанский архитектор, большинство проектов которого, включая самую масштабную его постройку, храм Святого Семейства, возведено в Барселоне.",
+    "slug": "antoni-gaudi",
     "row": 44
   },
   {
@@ -1452,6 +1511,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/William_IV_of_the_United_Kingdom",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/William%20IV%20in%201833%20by%20Shee%20cropped.jpg",
     "description": "Вильгельм IV — король Великобритании и Ганновера с 26 июня 1830, герцог Кларенс и Сент-Эндрюс и граф Манстер в 1789—1830 годах, адмирал флота, третий сын Георга III и младший брат Георга IV.",
+    "slug": "william-iv",
     "row": 29
   },
   {
@@ -1477,6 +1537,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Edward_IV_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Edward4.jpg",
     "description": "Эдуа́рд IV — король Англии в 1461—1470 и 1471—1483 годах, захвативший престол в ходе Войны Алой и Белой розы, представитель Йоркской линии Плантагенетов. Был первым королём Англии из династии Йорков.",
+    "slug": "edward-iv-of-england",
     "row": 13
   },
   {
@@ -1499,6 +1560,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cyrus_the_Great",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Great%20Men%20and%20Famous%20Women%20Volume%201%20-%20Cyrus%20the%20Great.png",
     "description": "Кир II Вели́кий — персидский царь из династии Ахеменидов, правивший в 559—530 годах до н. э., основатель Ахеменидской державы.",
+    "slug": "cyrus-the-great",
     "row": 4
   },
   {
@@ -1523,6 +1585,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Peter_the_Great",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Inconnu%20d%27apr%C3%A8s%20J.-M.%20Nattier%2C%20Portrait%20de%20Pierre%20Ier%20%28mus%C3%A9e%20de%20l%E2%80%99Ermitage%29.jpg",
     "description": "Пётр I Алексе́евич — царь всея Руси с 1682 года, первый император Всероссийский с 1721 года.",
+    "slug": "peter-the-great",
     "row": 15
   },
   {
@@ -1547,6 +1610,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Muhammad_Ali_Jinnah",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jinnah1945c.jpg",
     "description": "Мухамма́д Али́ Джинна́ — мусульманский политик, который почитается в Пакистане как отец-основатель национальной государственности. Один из инициаторов и самых активных участников раздела Британской Индии.",
+    "slug": "mohammad-ali-jinnah",
     "row": 50
   },
   {
@@ -1572,6 +1636,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ovid%20by%20an%20anonymous%20sculptor.jpg",
     "imageAttribution": "Lucasaw, via Wikimedia Commons",
     "description": "Пу́блий Ови́дий Назо́н — древнеримский поэт. Более всего известен как автор поэм «Метаморфозы» и «Наука любви», а также элегий — «Любовные элегии» и «Скорбные элегии». По одной из версий, из-за несоответствия пропагандируемых им идеалов любви официальной политике императора Августа в отношении семьи и брака был сослан из Рима в западное Причерноморье, где провёл последние годы жизни. Оказал огромное влияние на европейскую литературу, в том числе на Пушкина, в 1821 году посвятившего ему обширное послание в стихах.",
+    "slug": "ovid",
     "row": 7
   },
   {
@@ -1597,6 +1662,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Unknown%20greek%20pushkin.jpg",
     "imageAttribution": "user:shakko, via Wikimedia Commons",
     "description": "Демокри́т Абдерский — древнегреческий философ, ученик Левкиппа, один из основателей атомистики и материалистической философии.",
+    "slug": "democritus",
     "row": 5
   },
   {
@@ -1621,6 +1687,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Le_Corbusier",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Le%20Corbusier%20%281964%29.jpg",
     "description": "Ле Корбюзье́ — французский архитектор швейцарского происхождения, пионер архитектурного модернизма и функционализма, представитель архитектуры интернационального стиля, живописец и градостроитель, теоретик архитектуры, писатель и публицист. Псевдоним «Ле Корбюзье» по фамилии своего прадеда Жаннере взял в 1917 году.",
+    "slug": "le-corbusier",
     "row": 52
   },
   {
@@ -1645,6 +1712,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Haile_Selassie",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Haile%20Selassie%20in%20full%20dress.jpg",
     "description": "Ха́йле Села́ссие I, до коронации — рас Тэфэри́ Мэконны́н, последний император Эфиопии, происходивший из легендарной династии потомков царя Соломона. Возглавлял борьбу против итальянских захватчиков во время итало-эфиопской войны 1935—1936 годов. Один из инициаторов создания в 1963 году Организации африканского единства. В сентябре 1974 года свергнут военными. Умер в августе 1975 года. В растафарианстве считается одним из воплощений Джа на земле.",
+    "slug": "haile-selassie-i",
     "row": 57
   },
   {
@@ -1668,6 +1736,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/F0182%20Louvre%20Code%20Hammourabi%20Bas-relief%20Sb8%20rwk.jpg",
     "imageAttribution": "Mbzt, via Wikimedia Commons",
     "description": "Хаммура́пи — царь Вавилона, правил приблизительно в 1793—1750 годах до н. э., из I Вавилонской (аморейской) династии. Наиболее известен написанием в годы его правления свода законов, которые известны в историографии как законы Хаммурапи.",
+    "slug": "hammurabi",
     "row": 0
   },
   {
@@ -1692,6 +1761,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexandre_Dumas",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alexander%20Dumas%20p%C3%A8re%20par%20Nadar%20-%20Google%20Art%20Project.jpg",
     "description": "Алекса́ндр Дюма́ — французский писатель, драматург и журналист. Один из самых читаемых французских авторов, мастер приключенческого романа. Две самые известные его книги — «Граф Монте-Кристо» и «Три мушкетёра» — были написаны в 1844—1845 годах. Под именем Дюма вышло огромное количество исторических романов, в написании которых участвовали литературные подёнщики. Всего за авторством Дюма опубликовано не менее 100 000 страниц. Помимо романов, его перу принадлежат также пьесы, статьи и книги о путешествиях, исторические хроники, сказки, рассказы, повести, мемуары, Большой кулинарный словарь, поэзия, письма, сборник исторических повестей «Знаменитые преступления».",
+    "slug": "alexandre-dumas",
     "row": 33
   },
   {
@@ -1716,6 +1786,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dijon%20fine%20arts%20museum%20mg%201626.jpg",
     "imageAttribution": "anonymous, via Wikimedia Commons",
     "description": "Иа́ков Зеведе́ев, Иа́ков Ста́рший — один из двенадцати апостолов, ближайших учеников Иисуса Христа; единственный апостол, чья смерть описана в Новом Завете. Сын Зеведея, родился в Галилее; старший брат Иоанна Богослова. Был убит в 44 году в Иерусалиме. В испанской традиции именуется Сантья́го и «мавробо́рцем».",
+    "slug": "st-james-the-elder",
     "row": 9
   },
   {
@@ -1737,6 +1808,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Elon%20Musk%20%2854816836217%29%20%28cropped%202%29%20%28b%29.jpg",
     "imageAttribution": "Gage Skidmore, via Wikimedia Commons",
     "description": "И́лон Рив Маск — американский и южноафриканский предприниматель, инженер и долларовый триллионер, государственный, политический и общественный деятель ультраправых и либертарианских взглядов. Основатель, генеральный директор и главный инженер компании SpaceX; крупнейший акционер, член совета директоров и генеральный директор компании Tesla; основатель The Boring Company; соучредитель Neuralink и OpenAI; генеральный директор XAI.",
+    "slug": "elon-musk",
     "row": 3
   },
   {
@@ -1760,6 +1832,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Duble%20herma%20of%20Socrates%20and%20Seneca%20Antikensammlung%20Berlin%2007.jpg",
     "imageAttribution": "Calidius, via Wikimedia Commons",
     "description": "Лу́ций Анне́й Се́не́ка, Се́не́ка Мла́дший, или просто Се́не́ка — римский философ-стоик, поэт и государственный деятель. Воспитатель Нерона и один из крупнейших представителей стоицизма. Сын Луция (Марка) Аннея Сенеки Старшего и Гельвии, младший брат Юния Галлиона. Автор «Нравственных писем к Луцилию», ряда философских трактатов и трагедий.",
+    "slug": "seneca",
     "row": 8
   },
   {
@@ -1785,6 +1858,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Albert_Camus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Albert%20Camus%2C%20gagnant%20de%20prix%20Nobel%2C%20portrait%20en%20buste%2C%20pos%C3%A9%20au%20bureau%2C%20faisant%20face%20%C3%A0%20gauche%2C%20cigarette%20de%20tabagisme.jpg",
     "description": "Альбе́р Камю́ — французский континентальный философ, абсурдист, а также журналист, писатель, драматург, публицист и эссеист. Автор известных произведений «Посторонний» (1942), «Чума» (1947) и прочих, лауреат Нобелевской премии по литературе 1957 года.",
+    "slug": "albert-camus",
     "row": 46
   },
   {
@@ -1810,6 +1884,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bust%20of%20Ibn%20Khaldun%20%28Casbah%20of%20Bejaia%2C%20Algeria%29.jpg",
     "imageAttribution": "Reda Kerbush, via Wikimedia Commons",
     "description": "Абу Зейд Абдуррахма́н ибн Мухаммад ибн Хальду́н аль-Ха́драми, более известный как Ибн Хальду́н или Ибн Халду́н — арабский мусульманский философ, историк, социальный мыслитель.",
+    "slug": "ibn-khaldun",
     "row": 1
   },
   {
@@ -1833,6 +1908,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hesiod",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pseudo-Seneca%20BM%20GR1962.8-24.1.jpg",
     "description": "Гесио́д — первый исторически достоверный древнегреческий поэт, рапсод, представитель направления дидактического и генеалогического эпоса. К первому направлению относится его поэма «Труды и дни», а ко второму — «Теогония» , — его основные произведения.",
+    "slug": "hesiod",
     "row": 1
   },
   {
@@ -1857,6 +1933,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles_de_Gaulle",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/General%20Charles%20de%20Gaulle%20in%201945.jpg",
     "description": "Шарль Андре́ Жозе́ф Мари́ де Голль — французский военный, политический и государственный деятель, бригадный генерал. Во время Второй мировой войны стал символом французского сопротивления. Основатель и первый Президент (1959—1969) Пятой республики. Премьер-министр (1958—1959) и министр обороны Франции (1958—1959).",
+    "slug": "charles-de-gaulle",
     "row": 55
   },
   {
@@ -1882,6 +1959,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Omar%20Khayyam2.JPG",
     "imageAttribution": "The original uploader was Atilin at French Wikipedia., via Wikimedia Commons",
     "description": "Гия́с-ад-Ди́н Абу-ль-Фатх Ома́р ибн Ибрахи́м Хайя́м Нишапури́, более известный как Ома́р Хайя́м ; 18 мая 1048, Нишапур, Государство Сельджукидов или Hira, Государство Сельджукидов — 4 декабря 1131, Нишапур, Государство Сельджукидов) — персидский философ, математик, астроном и поэт. Известен во всём мире как выдающийся поэт, автор цикла философских рубаи; считается национальным поэтом в Иране, Таджикистане и Афганистане.",
+    "slug": "omar-khayyam",
     "row": 0
   },
   {
@@ -1903,6 +1981,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Drottning%20Margrethe%20av%20Danmark.jpg",
     "imageAttribution": "Johannes Jansson, via Wikimedia Commons",
     "description": "Маргре́те II, полное имя — Маргрете Александрина Тоурхильдюр Ингрид, — член датской королевской семьи, королева Дании с 14 января 1972 до своего отречения 14 января 2024 года. Правление Маргрете II в 52 года является вторым по продолжительности в истории страны, уступая только Кристиану IV.",
+    "slug": "margrethe-ii-of-denmark",
     "row": 59
   },
   {
@@ -1928,6 +2007,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anton_Chekhov",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Anton%20Chekhov%20with%20bow-tie%20sepia%20image.jpg",
     "description": "Анто́н Па́влович Че́хов — русский писатель, прозаик, драматург, публицист, врач, общественный деятель в сфере благотворительности.",
+    "slug": "anton-chekhov",
     "row": 46
   },
   {
@@ -1952,6 +2032,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_XI",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pius%20XI%2C%20by%20Nicola%20Perscheid%2C%20circa%201922%20%28retouched%29.jpg",
     "description": "Пий XI — папа римский с 6 февраля 1922 года по 10 февраля 1939 года. В годы его понтификата, а именно в 1929 году было учреждено государство Ватикан.",
+    "slug": "pius-xi",
     "row": 45
   },
   {
@@ -1976,6 +2057,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Epicurus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Epikouros%20BM%201843.jpg",
     "description": "Эпику́р — древнегреческий философ, основатель эпикуреизма в Афинах.",
+    "slug": "epicurus",
     "row": 5
   },
   {
@@ -2000,6 +2082,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ho%20Chi%20Minh%201946.jpg",
     "description": "Хо Ши Мин (вьет. Hồ Chí Minh, тьы-ном 胡志明, Хо Ти Мынь ); настоящие имена: Нгуен Шинь Кунг, Нгуен Тат Тхань; псевдонимы: «Нгуен Ай Куок», «Ли Цюй», «товарищ Выонг», «Тхау Тин», «Хо Ши Мин»; — вьетнамский революционер, государственный, политический, военный и партийный деятель. Последователь марксизма-ленинизма, член Французской коммунистической партии с 1920 года, видный деятель Коминтерна, основатель Коммунистической партии Вьетнама (1930) и Коммунистической партии Индокитая (1930), создатель Вьетминя (1941), руководитель августовской революции (1945), с 19 августа 1945 по 2 сентября 1969 года — первый президент Демократической Республики Вьетнам и создатель Национального фронта освобождения Южного Вьетнама («Вьетконга») (1960).Верховный Главнокомандующий Вооружёнными силами СРЮВ во Вьетнамской войне в 1964—1969 годах.",
+    "slug": "ho-chi-minh",
     "row": 54
   },
   {
@@ -2024,6 +2107,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nostradamus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nostradamus%201846.jpg",
     "description": "Мише́ль де Нотрда́м, известный также как Нострада́мус — французский врач‑фармацевт, писатель, поэт и алхимик, знаменитый своими пророчествами.",
+    "slug": "nostradamus",
     "row": 16
   },
   {
@@ -2049,6 +2133,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rumi",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mevlana-celaleddin-i-rumi-1.jpg",
     "description": "Мавлана́ Джалаладди́н Мухáммад Балхи́ Руми́, известный обычно как Руми́ или Мавланá — персидский поэт-суфий XIII века, исламский богослов, факих. Иногда его называли также Мавлана Джалаладдин Мухаммад Балхи, по названию региона Балха,, откуда он родом. Влияние Руми выходит за пределы национальных границ и этнических различий: персы, таджики, турки, греки, пуштуны, другие мусульмане Центральной и Южной Азии высоко оценили его духовное наследие за последние семь веков. Его стихи переведены на многие языки мира и перенесены в различные форматы. Руми был описан как «самый популярный поэт» и «самый продаваемый поэт» в США.",
+    "slug": "rumi",
     "row": 7
   },
   {
@@ -2073,6 +2158,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Colossal%20bust%20of%20Ramesses%20II%20in%20the%20British%20Museum.jpg",
     "imageAttribution": "Unknown artistUnknown artist, via Wikimedia Commons",
     "description": "Рамсе́с II Великий (также — Рамзес II) — фараон Древнего Египта из XIX династии, правивший приблизительно в 1279—1213 годах до н. э.. Один из величайших фараонов Древнего Египта. При нём Новоегипетское царство достигло пика своего могущества.",
+    "slug": "ramesses-ii",
     "row": 1
   },
   {
@@ -2097,6 +2183,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ögedei_Khan",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/YuanEmperorAlbumOgedeiPortrait.jpg",
     "description": "Угэдэй, Огодай, Огодэй — третий сын Чингисхана и Бортэ и преемник своего отца в качестве каана Монгольской империи (1229—1241). Чингисхан ещё задолго до смерти избрал Угэдэя в качестве преемника, а в сентябре 1229 года этот выбор был утверждён курултаем; до этого момента империей управлял в качестве регента его младший брат Толуй. Угэдэй-каан провёл ряд успешных административных реформ и продолжил экспансионистскую политику Чингисхана. Подобно другим его сыновьям, участвовал в походах на Северный Китай и Среднюю Азию. До избрания великим ханом был правителем Угэдэйского улуса.",
+    "slug": "ogedei-khan",
     "row": 6
   },
   {
@@ -2122,6 +2209,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hannibal",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mommsen%20p265.jpg",
     "description": "Ганниба́л Ба́рка или Анниба́л Ба́рка — карфагенский военачальник. Считается одним из величайших полководцев и государственных деятелей древности. Был заклятым врагом Римской республики и последним значимым лидером Карфагена перед его падением в серии Пунических войн.",
+    "slug": "hannibal",
     "row": 2
   },
   {
@@ -2145,6 +2233,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Catherine_the_Great",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Catherine%20II%20after%20Roslin%2C%20Rokotov%20%281780s%2C%20Kunsthistorisches%20Museum%29.jpg",
     "description": "Екатери́на II Алексе́евна, Екатери́на Вели́кая, урождённая Софи́я Авгу́ста Фредери́ка А́нгальт-Це́рбстская — Императрица и Самодержица Всероссийская (1762—1796). Племянница шведского короля Адольфа Фридриха, двоюродная племянница прусского короля Фридриха Великого.",
+    "slug": "catherine-ii-of-russia",
     "row": 19
   },
   {
@@ -2169,6 +2258,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Petrarch",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Altichiero%2C%20ritratto%20di%20Francesco%20Petrarca.jpg",
     "description": "Франче́ско Петра́рка — итальянский поэт, глава старшего поколения гуманистов, один из величайших деятелей итальянского Проторенессанса, ученик Варлаама Калабрийского.",
+    "slug": "petrarch",
     "row": 2
   },
   {
@@ -2194,6 +2284,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Grace_Kelly",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gracia%20van%20Monaco%20%281972%29.jpg",
     "description": "Грейс Патриция Ке́лли — американская актриса, с 1956 года — супруга князя Монако Ренье III, 10-я княгиня Монако, мать ныне правящего князя Альбера II. На её счету немногим более 10 фильмов, один «Оскар» и слава самой кассовой актрисы своего времени.",
+    "slug": "grace-kelly",
     "row": 47
   },
   {
@@ -2218,6 +2309,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ignoto%2C%20c.d.%20solone%2C%20replica%20del%2090%20dc%20ca%20da%20orig.%20greco%20del%20110%20ac.%20ca%2C%206143.JPG",
     "imageAttribution": "Sailko, via Wikimedia Commons",
     "description": "Соло́н — афинский политик, законодатель и поэт, один из «семи мудрецов» Древней Греции.",
+    "slug": "solon",
     "row": 1
   },
   {
@@ -2241,6 +2333,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khufu",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Khufu%20statue.jpg",
     "description": "Хео́пс — фараон Древнего Египта, правивший приблизительно в 2589—2566 годах до н. э.; из IV династии.",
+    "slug": "khufu",
     "row": 0
   },
   {
@@ -2265,6 +2358,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/George_IV_of_the_United_Kingdom",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/George%20IVcoronation.jpg",
     "description": "Гео́рг IV — король Великобритании и Ганновера c 29 января 1820 года, из Ганноверской династии. Фактически возглавлял страну гораздо раньше, с рубежа веков, когда обострилась психическая болезнь его отца, Георга III. 5 февраля 1811 года Георг III был признан недееспособным, и с этого времени его старший сын был провозглашён принцем-регентом и оставался им до смерти отца 29 января 1820 года. Период 1811—1820 годов называется эпохой Регентства. В правление Георга IV продолжилось расширение британской колониальной империи. В Европе после Наполеоновских войн Великобритания имела большой авторитет и являлась одной из ведущих держав. В этот период вступил в завершающую фазу промышленный переворот.",
+    "slug": "george-iv-of-the-united-kingdom",
     "row": 28
   },
   {
@@ -2290,6 +2384,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Khadijah.png",
     "imageAttribution": "UsmanullahPK, via Wikimedia Commons",
     "description": "Хади́джа бинт Хувайлид ибн Асад ибн ‘Абдуль‘узза ибн Киляб аль-Курашия аль-Асадия — первая и до своей смерти единственная жена пророка Мухаммеда.",
+    "slug": "khadija-bint-khuwaylid",
     "row": 5
   },
   {
@@ -2314,6 +2409,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Amerigo_Vespucci",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Amerigo%20Vespucci01.jpg",
     "description": "Аме́риго Веспу́ччи — итальянский путешественник и мореплаватель, в честь которого Новый Свет был назван Америкой.",
+    "slug": "amerigo-vespucci",
     "row": 15
   },
   {
@@ -2339,6 +2435,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Richard_I_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Richard%20I%20of%20England%20in%20the%20Brief%20Abridgement%20of%20the%20Chronicles%20of%20England.jpg",
     "description": "Ри́чард I Льви́ное Се́рдце — король Англии, правивший с 1189 по 1199 год. Традиционно считается одним из величайших крестоносцев в истории средневековой Европы. Представитель династии Плантагенетов. Сын короля Генриха II и герцогини Алиеноры Аквитанской. Старший брат короля Иоанна Безземельного, с которым у Ричарда сложилась особая система отношений. У него также имелось другое прозвище — Ричард Да-и-Нет, которое означало его лаконичность или же что его легко склонить в ту или другую сторону. Один из самых известных крестоносцев, большую часть своего правления провёл за пределами Англии в крестовых походах и иных войнах, прославился как выдающийся полководец; однако при этом фактически страной в его отсутствие поочерёдно управляли Гийом Лоншан, Алиенора Аквитанская и Хьюберт Уолтер.",
+    "slug": "richard-i-of-england",
     "row": 2
   },
   {
@@ -2363,6 +2460,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Josip_Broz_Tito",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Josip%20Broz%20Tito%20uniform%20portrait.jpg",
     "description": "Ио́сип Броз Ти́то, при рождении Иосип Броз ; — югославский революционер, политический, государственный, военный и партийный деятель; президент Югославии с 1945 года вплоть до своей смерти в 1980 году; руководитель Коммунистической партии Югославии (КПЮ) с декабря 1937 года, председатель Союза коммунистов Югославии с 1966 года.",
+    "slug": "josip-broz-tito",
     "row": 56
   },
   {
@@ -2387,6 +2485,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Fatimah",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Paris%2C%20BnF%2C%20Suppl%C3%A9ment%20Persan%201030%20fol.%20467v%20cropped%20Fatima.jpg",
     "description": "Фатима бинт Мухаммад, более известная как Фа́тима аз-Захра́ — младшая дочь исламского пророка Мухаммада от его первой жены Хадиджи и мать его внуков Хасана и Хусейна от Али ибн Абу Талиба. Единственная из всех детей Мухаммада, которая пережила его.",
+    "slug": "fatima",
     "row": 6
   },
   {
@@ -2411,6 +2510,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Malcolm_X",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Malcolm%20X%20in%201964.jpg",
     "description": "Малкольм Икс, или эль-Хадж Малик эш-Шабазз — афроамериканский исламский духовный лидер и борец за права чернокожих. Среди сторонников Икс известен как защитник прав чернокожего населения США, резкий критик американцев европейского происхождения, виновных, по его мнению, в преступлениях против афроамериканцев. Противники Икса обвиняли его в апологии расизма и насилия. Икс был назван одним из наиболее влиятельных афроамериканцев в истории.",
+    "slug": "malcolm-x",
     "row": 61
   },
   {
@@ -2435,6 +2535,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Honoré_de_Balzac",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Honor%C3%A9%20de%20Balzac%20%281842%29%20detail.jpg",
     "description": "Оноре́ де Бальза́к — французский писатель: романист, драматург, литературный и художественный критик, эссеист, журналист и издатель; один из основоположников реализма в европейской литературе.",
+    "slug": "honore-de-balzac",
     "row": 36
   },
   {
@@ -2459,6 +2560,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vlad_the_Impaler",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vlad%20%C5%A2epe%C5%9F%2C%20the%20Impaler%2C%20Prince%20of%20Wallachia%20%281456-1462%29%20%28died%201477%29.jpg",
     "description": "Влад III — господарь Валахии в 1448, 1456—1462 и 1476 годах. Благодаря роману ирландского писателя Брэма Стокера «Дракула» прозвище Влада III вошло в мировую культуру как имя архетипического вампира — графа Дракулы.",
+    "slug": "vlad-the-impaler",
     "row": 5
   },
   {
@@ -2482,6 +2584,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pericles",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pericles%20Pio-Clementino%20Inv269.jpg",
     "description": "Пери́кл — древнегреческий государственный деятель, один из «отцов-основателей» афинской демократии, знаменитый оратор и полководец. Принадлежал к древней аттической аристократии, был сыном видного политика Ксантиппа из рода Бузигов и Агаристы из рода Алкмеонидов.",
+    "slug": "pericles",
     "row": 7
   },
   {
@@ -2505,6 +2608,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anne_Boleyn",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Anne%20boleyn.jpg",
     "description": "Анна Болейн — вторая супруга короля Англии Генриха VIII Тюдора, до замужества — маркиза Пембрук в собственном праве. Мать второй правящей королевы Англии, Елизаветы I Английской.",
+    "slug": "ana-bolena",
     "row": 18
   },
   {
@@ -2529,6 +2633,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ronald_Reagan",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ronald%20Reagan%201981%20presidential%20portrait.jpg",
     "description": "Ро́нальд Уи́лсон Ре́йган — американский государственный и политический деятель, актёр. 40-й президент США (1981—1989) от Республиканской партии. Как политик Рейган известен своей социально-экономической инициативой внедрения англосаксонской модели и рейганомикой.",
+    "slug": "ronald-reagan",
     "row": 62
   },
   {
@@ -2553,6 +2658,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Aesop%20pushkin01.jpg",
     "imageAttribution": "user:shakko, via Wikimedia Commons",
     "description": "Эзо́п — легендарный древнегреческий баснописец. Предположительно жил около 600 г. до н. э. Оригинальные произведения Эзопа не сохранились. Древнейшие «басни Эзопа» дошли до нас в позднейших поэтических переработках — (латинской) Федра (I в.), (греческой) Бабрия (II в.) и (латинской) Авиана.",
+    "slug": "aesop",
     "row": 5
   },
   {
@@ -2577,6 +2683,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Queen_Victoria",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Queen%20Victoria%20by%20Bassano.jpg",
     "description": "Викто́рия — королева Соединённого королевства Великобритании и Ирландии с 20 июня 1837 года, императрица Индии с 1 мая 1876 года. Период правления Виктории ознаменовал эпоху наивысшего расцвета Британской империи.",
+    "slug": "victoria",
     "row": 58
   },
   {
@@ -2601,6 +2708,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mary_II_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sir%20Godfrey%20Kneller%20%281646-1723%29%20-%20Mary%20II%20%281662-1694%29%20-%20RCIN%20405674%20-%20Royal%20Collection.jpg",
     "description": "Мари́я II — королева Англии, Шотландии и Ирландии; соправительница и супруга своего кузена Вильгельма III Оранского.",
+    "slug": "mary-ii-of-england",
     "row": 18
   },
   {
@@ -2626,6 +2734,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Publius%20Septimius%20Geta%20Louvre%20Ma1076.jpg",
     "imageAttribution": "ChrisO (original upload on the English Wikipedia under the same filename, 4 June 2004), via Wikimedia Commons",
     "description": "Пу́блий Септи́мий Ге́та — римский император, правивший в 211 году.",
+    "slug": "geta",
     "row": 2
   },
   {
@@ -2650,6 +2759,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Caligula",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20Head%20of%20Caligula%20-%20Getty%20Museum%20%2872.AA.155%29.jpg",
     "description": "Гай Ю́лий Це́зарь А́вгуст Герма́ник — римский император, третий представитель династии Юлиев-Клавдиев; также — великий понтифик, трибун, Отец отечества, четырежды консул.",
+    "slug": "caligula",
     "row": 10
   },
   {
@@ -2674,6 +2784,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Henri_Matisse",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Henri%20Matisse%201933%20May%2020.jpg",
     "description": "Анри́ Эми́ль Бенуа́ Мати́сс — французский живописец, рисовальщик, гравёр и скульптор. Один из главных европейских художников периода модернизма. Вошёл в историю искусства своим стремлением передачи эмоций через форму и цвет. Один из основоположников и ведущих представителей фовизма.",
+    "slug": "henri-matisse",
     "row": 66
   },
   {
@@ -2699,6 +2810,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bruce_Lee",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bruce%20Lee%201973%20%28cropped%29.jpg",
     "description": "Брюс Ли — гонконгский и американский мастер боевых искусств, киноактёр, режиссёр, сценарист, продюсер.",
+    "slug": "bruce-lee",
     "row": 80
   },
   {
@@ -2723,6 +2835,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chiang_Kai-shek",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A3%E4%B8%AD%E6%AD%A3%E7%B8%BD%E7%B5%B1%E7%8E%89%E7%85%A7.png",
     "description": "Чан Кайши́ — китайский революционер, военный и политический деятель, возглавивший партию Гоминьдан в 1925 году после смерти Сунь Ятсена; фактический правитель материкового Китая (1928—1949); президент Китайской Республики на Тайване (1950—1975), маршал и генералиссимус. Китайский националист.",
+    "slug": "chiang-kai-shek",
     "row": 72
   },
   {
@@ -2748,6 +2861,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Leon_Trotsky",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%D0%9B%D0%B5%D0%B2%20%D0%94%D0%B0%D0%B2%D0%B8%D0%B4%D0%BE%D0%B2%D0%B8%D1%87%20%D0%A2%D1%80%D0%BE%D1%86%D0%BA%D0%B8%D0%B9.jpg",
     "description": "Лев Дави́дович Тро́цкий — российский революционер, советский государственный, партийный и военно-политический деятель, один из организаторов Октябрьской революции, создателей Красной армии и основателей Коминтерна, основатель и идеолог троцкизма.",
+    "slug": "leon-trotsky",
     "row": 68
   },
   {
@@ -2772,6 +2886,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Antoine_de_Saint-Exupéry",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Antoine%20de%20Saint-Exup%C3%A9ry.jpg",
     "description": "Антуа́н Мари́ Жан-Бати́ст Роже́ де Сент-Экзюпери́ — французский писатель, журналист, поэт, сценарист и профессиональный лётчик.",
+    "slug": "antoine-de-saint-exupery",
     "row": 76
   },
   {
@@ -2798,6 +2913,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Caracalla%20MAN%20Napoli%20Inv6033%20n01.jpg",
     "imageAttribution": "Marie-Lan Nguyen (2011), via Wikimedia Commons",
     "description": "Це́зарь Марк Авре́лий Севе́р Антони́н Пий А́вгуст  — римский император из династии Северов. Сын Септимия Севера, брат Геты. Правил с 211 по 217 год н. э.",
+    "slug": "caracalla",
     "row": 1
   },
   {
@@ -2822,6 +2938,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Édith_Piaf",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Piaf%20Harcourt%201946%202.jpg",
     "description": "Эди́т Пиа́ф, настоящее имя Эди́т Джова́нна Гассьо́н — французская певица, шансонье, киноактриса и исполнительница таких песен, как «Non, je ne regrette rien», «La Vie en rose», «Hymne à l’amour», «Mon légionnaire», «La Foule», «Milord», «Tu es partout», «Mon Dieu» и «L’Accordéoniste».",
+    "slug": "edith-piaf",
     "row": 60
   },
   {
@@ -2847,6 +2964,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Eleanor%20Roosevelt%20at%20the%20United%20Nations%2C%20circa%201946-1947%20%283x4%20cropped%29.jpg",
     "imageAttribution": "FDR Presidential Library &amp; Museum, via Wikimedia Commons",
     "description": "А́нна Элеоно́ра (Э́ленор) Ру́звельт — американская общественная деятельница, супруга президента США Франклина Делано Рузвельта. Другому президенту, Теодору Рузвельту, Элеонора приходилась племянницей.",
+    "slug": "eleanor-roosevelt",
     "row": 71
   },
   {
@@ -2871,6 +2989,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Michael_Faraday",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/M%20Faraday%20Th%20Phillips%20oil%201842.jpg",
     "description": "Майкл Фараде́й — английский физик-экспериментатор и химик.",
+    "slug": "michael-faraday",
     "row": 38
   },
   {
@@ -2897,6 +3016,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Statue%20of%20Averroes%20in%20C%C3%B3rdoba%2C%20Spain.jpg",
     "imageAttribution": "Saleemzohaib, via Wikimedia Commons",
     "description": "Абу́-ль-Вали́д Муха́ммад ибн А́хмад аль-Куртуби, известен как Ибн Рушд — андалусский математик, астроном и философ. В Западной Европе известен под латинизированным именем Аверро́эс.",
+    "slug": "averroes",
     "row": 8
   },
   {
@@ -2921,6 +3041,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Antoine_Lavoisier",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/David%20-%20Portrait%20of%20Monsieur%20Lavoisier%20%28cropped%29.jpg",
     "description": "Антуа́н Лора́н де Лавуазье́ — французский естествоиспытатель, основатель современной химии.",
+    "slug": "antoine-lavoisier",
     "row": 25
   },
   {
@@ -2945,6 +3066,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/George_Washington",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gilbert%20Stuart%20Williamstown%20Portrait%20of%20George%20Washington.jpg",
     "description": "Джордж Ва́шингтон — американский государственный и политический деятель, первый президент Соединённых Штатов Америки (1789—1797), один из отцов-основателей США, главнокомандующий Континентальной армией, участник войны за независимость и создатель американского института президентства.",
+    "slug": "george-washington",
     "row": 24
   },
   {
@@ -2969,6 +3091,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pierre-Auguste_Renoir",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pierre%20Auguste%20Renoir%2C%20uncropped%20image.jpg",
     "description": "Пьер Огю́ст Ренуа́р — французский живописец, рисовальщик и скульптор, один из основных представителей импрессионизма в изобразительном искусстве. Известен, в первую очередь, как мастер светского портрета, картин в жанре ню, не лишённых сентиментальности. Он был также рисовальщиком пастелью, гравёром, литографом, скульптором. Ренуар первым из импрессионистов снискал успех у состоятельных парижан, разработав лёгкий стиль и особую технику живописи. В середине 1880-х годов он фактически порвал с импрессионизмом, вернувшись к эстетике классицизма, к «энгризму». За большую творческую жизнь в течение шестидесяти лет он создал около четырёх тысяч картин.",
+    "slug": "pierre-auguste-renoir",
     "row": 61
   },
   {
@@ -2993,6 +3116,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_X",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pius%20X%2C%20by%20Ernest%20Walter%20Histed%20%28retouched%29.jpg",
     "description": "Святой Пий X — папа римский с 4 августа 1903 по 20 августа 1914. Святой Католической церкви. Канонизирован 29 мая 1954 папой Пием XII.",
+    "slug": "pius-x",
     "row": 60
   },
   {
@@ -3017,6 +3141,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/John_F._Kennedy",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/John%20F.%20Kennedy%2C%20White%20House%20color%20photo%20portrait.jpg",
     "description": "Джон Фицджералд Ке́ннеди — американский политический и государственный деятель, 35-й президент США (1961—1963) от Демократической партии. Член Палаты представителей США (1947—1953) от штата Массачусетс, в 1953—1960 годах работал сенатором от Массачусетса. Его президентство пришлось на особо напряжённый период Холодной войны. По мнению большинства граждан страны, Кеннеди входит в десятку величайших американских президентов в истории.",
+    "slug": "john-f-kennedy",
     "row": 77
   },
   {
@@ -3037,6 +3162,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Joe_Biden",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Joe%20Biden%20presidential%20portrait.jpg",
     "description": "Джо́зеф Робине́тт (Джо) Ба́йден-мла́дший — американский государственный и политический деятель, 46-й президент США (2021—2025) от Демократической партии, занимал пост 47-го вице-президента с 2009 по 2017 год при президенте Бараке Обаме и представлял штат Делавэр в Сенате США с 1972 по 2009 год. Доктор права (1968).",
+    "slug": "joe-biden",
     "row": 68
   },
   {
@@ -3061,6 +3187,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Clement_I",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Clemens%20Romanus.jpg",
     "description": "Кли́мент I, также Кли́мент Ри́мский — святой Православной и Католической церкви, апостол от семидесяти, епископ Рима, один из мужей апостольских. Широко почитался в Древней Руси.",
+    "slug": "clement-i",
     "row": 2
   },
   {
@@ -3085,6 +3212,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Al-Ghazali",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Al%20Ghazali.png",
     "description": "Абу́ Хами́д Муха́ммад ибн Муха́ммад аль-Газали́ ат-Туси́, известный на Западе под латинизированным именем Альгазель — средневековый исламский богослов и полимат. Он известен как один из самых выдающихся и влиятельных правоведов, теоретиков права, муфтиев, философов, теологов, логиков и мистиков в истории ислама.",
+    "slug": "al-ghazali",
     "row": 1
   },
   {
@@ -3109,6 +3237,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Giovanni_Boccaccio",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Boccaccio%20by%20Morghen.jpg",
     "description": "Джова́нни Бокка́ччо — итальянский писатель и поэт, представитель литературы эпохи Раннего Возрождения. Писал на итальянском и латинском языках. Наряду с Данте и Петраркой оказал существенное влияние на развитие европейской культуры.",
+    "slug": "giovanni-boccaccio",
     "row": 5
   },
   {
@@ -3133,6 +3262,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Neil_Armstrong",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Neil%20Armstrong%20pose.jpg",
     "description": "Нил О́лден А́рмстронг — американский астронавт НАСА, лётчик-испытатель, космический инженер, профессор университета, военно-морской лётчик США, первый человек, ступивший на Луну 21 июля 1969 года в ходе лунной экспедиции корабля «Аполлон-11».",
+    "slug": "neil-armstrong",
     "row": 78
   },
   {
@@ -3157,6 +3287,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Benedict_XV",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Benedictus%20XV%2C%20by%20Nicola%20Perscheid%2C%201915%20%28retouched%29.jpg",
     "description": "Бенеди́кт XV — итальянский священнослужитель, папа римский с 3 сентября 1914 года по 22 января 1922 года.",
+    "slug": "benedict-xv",
     "row": 63
   },
   {
@@ -3181,6 +3312,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gold%20Solidus%20of%20Julian%20the%20Apostate%2C%20Sirmium.jpg",
     "imageAttribution": "ANS, via Wikimedia Commons",
     "description": "Фла́вий Кла́вдий Юлиа́н — римский император в 355—363 годах из династии Константина. Последний языческий (неоплатонический) император Рима, ритор, философ и поэт.",
+    "slug": "julian",
     "row": 2
   },
   {
@@ -3205,6 +3337,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saddam_Hussein",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Saddam%20Hussein%20at%20trial%2C%20July%202004.JPEG",
     "description": "Садда́м Хусе́йн — иракский политический, государственный, партийный деятель и диктатор, президент (1979—2003) и премьер-министр Ирака, генеральный секретарь иракского отделения партии Баас, председатель Совета революционного командования, и верховный главнокомандующий (1979).",
+    "slug": "saddam-hussein",
     "row": 79
   },
   {
@@ -3227,6 +3360,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Akhenaten",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GD-EG-Caire-Mus%C3%A9e061.JPG",
     "description": "Эхнато́н — древнеегипетский фараон-реформатор из XVIII династии, известный до 5-го года своего правления как Аменхоте́п IV. Он правил 17 лет и скончался приблизительно между 1353 и 1336 годами до н. э.",
+    "slug": "akhenaten",
     "row": 4
   },
   {
@@ -3252,6 +3386,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/FDR%201944%20Color%20Portrait.jpg",
     "imageAttribution": "Leon Perskie, via Wikimedia Commons",
     "description": "Фра́нклин Делано́ Ру́звельт — американский государственный и политический деятель, 32-й президент США от Демократической партии с 1933 года до своей смерти в 1945 году. Единственный президент Соединённых Штатов, пробывший на этом посту более двух сроков. Его первые два срока были сосредоточены на борьбе с экономическими последствиями Великой депрессии. Преодолев их, на третьем и четвёртом сроках он руководил страной в период её участия во Второй мировой войне. Инициатор «Нового курса».",
+    "slug": "franklin-delano-roosevelt",
     "row": 69
   },
   {
@@ -3276,6 +3411,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Benjamin_Franklin",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Joseph%20Siffrein%20Duplessis%20-%20Benjamin%20Franklin%20-%20Google%20Art%20Project.jpg",
     "description": "Бе́нджамин Фра́нклин — американский политический деятель, дипломат, изобретатель, учёный, философ, писатель, масон, полимат. Одна из самых влиятельных фигур XVIII века, \"первый великий американец\".",
+    "slug": "benjamin-franklin",
     "row": 21
   },
   {
@@ -3300,6 +3436,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Edward_V_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/King-edward-v.jpg",
     "description": "Эдуа́рд V — некоронованный король Англии с 9 апреля по 25 июня 1483 года, сын Эдуарда IV и Елизаветы Вудвилл.",
+    "slug": "edward-v-of-england",
     "row": 2
   },
   {
@@ -3324,6 +3461,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Fidel_Castro",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fidel%20Castro%201950s.jpg",
     "description": "Фиде́ль Алеха́ндро Ка́стро Рус — кубинский революционер, государственный, политический и партийный деятель, руководивший Кубой с 1959 до 2008/2011 года.",
+    "slug": "fidel-castro",
     "row": 63
   },
   {
@@ -3349,6 +3487,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Trajan",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Traianus%20Glyptothek%20Munich%20336.jpg",
     "description": "Марк У́льпий Не́рва Трая́н, больше известный как Траян, — римский император, правивший с 98 по 117 год, в эпоху последнего наивысшего расцвета Римской империи со времён «Золотого века» императора Октавиана Августа. Второй представитель династии Антонинов. Известен своими обширными завоеваниями, ставшими фактически последними в истории Рима. Именно в период правления Траяна население Рима достигло, по современным оценкам, почти миллиона человек, а территория империи достигла своих максимальных размеров. Второй из пяти хороших императоров. В римской историографии традиционно считается «лучшим императором за всю историю Рима».",
+    "slug": "trajan",
     "row": 4
   },
   {
@@ -3373,6 +3512,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mumtaz_Mahal",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Mumtaz%20Mahal%20%28Arjumand%20Banu%20Begum%29.jpg",
     "description": "Мумтаз-Махал, в девичестве Арджуманад Бану Бегам, — жена Шах-Джахана, правителя империи Великих Моголов. Дочь Наваб Бахадура, персидского происхождения.",
+    "slug": "mumtaz-mahal",
     "row": 13
   },
   {
@@ -3399,6 +3539,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/1170%20M%C3%BCnze%20Deutsches%20Reich%20Friedrich%20I..jpg",
     "imageAttribution": "Münzstätte Frankfurt a.M., via Wikimedia Commons",
     "description": "Фри́дрих I Гогеншта́уфен — король Германии с 1152 года, император Священной Римской империи с 1155 года, герцог Швабии в 1147—1152 годах под именем Фри́дрих III.",
+    "slug": "frederick-barbarossa",
     "row": 7
   },
   {
@@ -3423,6 +3564,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Selim_II",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Selim%20II%20by%20Nakka%C5%9F%20Osman%2C%20%C5%9Eem%C3%A2%27iln%C3%A2me%2C%201579%2C%20Istanbul%2C%20Topkap%C4%B1%20Saray%C4%B1%20M%C3%BCzesi%2C%20%D0%9D.%201563.jpg",
     "description": "Сели́м II — одиннадцатый султан Османской империи, правивший в 1566—1574 годах. Третий сын и четвёртый ребёнок султана Сулеймана І Великолепного и хасеки Хюррем-султан. Известен под прозвищами Светловолосый.",
+    "slug": "selim-ii",
     "row": 9
   },
   {
@@ -3447,6 +3589,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Agatha_Christie",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Agatha%20Christie%20in%20Nederland%20%28detectiveschrijfster%29%2C%20bij%20aankomst%20op%20Schiphol%20me%2C%20Bestanddeelnr%20916-8898%20%28cropped%29.jpg",
     "description": "Ага́та Мэ́ри Клари́сса, ле́ди Ма́ллоуэн, более известная по фамилии первого мужа как Ага́та Кри́сти — английская писательница и драматург. Относится к числу самых известных в мире авторов детективной прозы.",
+    "slug": "agatha-christie",
     "row": 73
   },
   {
@@ -3470,6 +3613,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Eratosthenes",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Eratosthenes.jpg",
     "description": "Эратосфе́н Кире́нский — древнегреческий математик, астроном, географ, филолог и поэт. Ученик Каллимаха, с 235 г. до н. э. — глава Александрийской библиотеки. Первый известный учёный, вычисливший размеры Земли.",
+    "slug": "eratosthenes",
     "row": 4
   },
   {
@@ -3494,6 +3638,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Frederick_the_Great",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Friedrich%20der%20Gro%C3%9Fe%20%281781%20or%201786%29%20-%20Google%20Art%20Project.jpg",
     "description": "Фри́дрих II Вели́кий, известный как Старый Фриц ; 24 января 1712, Берлин — 17 августа 1786, Потсдам) — король Пруссии с 1740 года из династии Гогенцоллернов. Яркий представитель просвещённого абсолютизма, основоположник прусско-германской государственности.",
+    "slug": "frederick-ii-of-prussia",
     "row": 20
   },
   {
@@ -3518,6 +3663,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Johannes_Brahms",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/JohannesBrahms.jpg",
     "description": "Иога́ннес Брамс — немецкий композитор и пианист, один из центральных представителей эпохи романтизма.",
+    "slug": "johannes-brahms",
     "row": 59
   },
   {
@@ -3542,6 +3688,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Alain_Delon",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alain%20Delon%201961.jpg",
     "description": "Але́н Фабье́н Мори́с Марсе́ль Дело́н — французский актёр театра и кино, кинорежиссёр, сценарист и продюсер. Признанный одним из ведущих культурных и кинематографических деятелей XX века, Ален Делон стал одним из главных европейских актёров 1960-х, 1970-х и 1980-х годов и превратился в международный секс-символ. Он считается одной из самых известных фигур французского культурного ландшафта.",
+    "slug": "alain-delon",
     "row": 70
   },
   {
@@ -3567,6 +3714,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/John%20Forbes%20Nash%2C%20Jr.%20by%20Peter%20Badge.jpg",
     "imageAttribution": "Peter Badge / Typos1, via Wikimedia Commons",
     "description": "Джон Форбс Нэш-младший — американский математик, работавший в области теории игр, дифференциальной геометрии и изучения уравнений в частных производных. Его теории широко используются в экономике.",
+    "slug": "john-forbes-nash",
     "row": 64
   },
   {
@@ -3588,6 +3736,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cher%20in%202019%20cropped.jpg",
     "imageAttribution": "Raph_PH, via Wikimedia Commons",
     "description": "Шер — американская певица, актриса, кинорежиссёр, музыкальный продюсер, автор песен и общественная деятельница, чьё творческое наследие охватывает более шести десятилетий и оказывает существенное влияние на развитие популярной культуры. Обладательница престижных наград, включая «Оскар», «Золотой глобус», «Эмми» и «Грэмми», она входит в число немногих артистов, получивших три из четырёх высших наград индустрии развлечений США.",
+    "slug": "cher",
     "row": 69
   },
   {
@@ -3612,6 +3761,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/H._G._Wells",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/H.G.%20Wells%20by%20Beresford.jpg",
     "description": "Ге́рберт Джордж Уэ́ллс — британский писатель и публицист.",
+    "slug": "h-g-wells",
     "row": 65
   },
   {
@@ -3637,6 +3787,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/0%20Statue%20de%20Sainte%20H%C3%A9l%C3%A8ne%20par%20Andrea%20Bolgi%20-%20Basilique%20St-Pierre%20-%20Vatican.JPG",
     "imageAttribution": "Jean-Pol GRANDMONT, via Wikimedia Commons",
     "description": "Фла́вия Ю́лия Еле́на А́вгу́ста — мать римского императора Константина I. Прославилась своей деятельностью по распространению христианства и проведёнными ею раскопками в Иерусалиме, в ходе которых, по утверждениям христианских хронистов, были обретены Гроб Господень, Животворящий Крест и другие реликвии Страстей.",
+    "slug": "helena-augusta",
     "row": 3
   },
   {
@@ -3661,6 +3812,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thomas_Hobbes",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Thomas%20Hobbes%20%28portrait%29.jpg",
     "description": "То́мас Гоббс (Хоббс) — английский философ, один из основателей современной политической философии, теории общественного договора и теории государственного суверенитета. Известен идеями, получившими распространение в таких дисциплинах, как этика, теология, физика, геометрия и история.",
+    "slug": "thomas-hobbes",
     "row": 16
   },
   {
@@ -3682,6 +3834,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/MadonnaO2171023%20%2897%20of%20133%29%20%2853269593787%29%20%28cropped%29.jpg",
     "imageAttribution": "Raph_PH, via Wikimedia Commons",
     "description": "Мадонна, полное имя — Мадо́нна Луи́з(а) Чикко́не , — американская автор-исполнительница, поп-певица, танцовщица, музыкальный продюсер, а также актриса, режиссёр и детская писательница. Самая коммерчески успешная исполнительница в истории по версии «Книги рекордов Гиннесса».",
+    "slug": "madonna",
     "row": 17
   },
   {
@@ -3705,6 +3858,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Galen",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Galenus.jpg",
     "description": "Гале́н — древнеримский медик, хирург и философ греческого происхождения. Гален внёс весомый вклад в понимание многих научных дисциплин, включая анатомию, физиологию, патологию, фармакологию и неврологию, а также философию и логику.",
+    "slug": "galen",
     "row": 3
   },
   {
@@ -3730,6 +3884,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Giacomo_Puccini",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GiacomoPuccini.jpg",
     "description": "Джа́комо Анто́нио Доме́нико Мике́ле Секо́ндо Мари́я Пуччи́ни — итальянский оперный композитор, органист и хормейстер, один из ярких представителей веризма в музыке.",
+    "slug": "giacomo-puccini",
     "row": 64
   },
   {
@@ -3755,6 +3910,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Friedrich_Engels",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Friedrich%20Engels%20portrait%20%28cropped%29.jpg",
     "description": "Фри́дрих Э́нгельс — немецкий политический деятель, учёный, философ, историк и предприниматель. Один из основоположников марксизма. Друг и единомышленник Карла Маркса, а также соавтор многих его трудов.",
+    "slug": "friedrich-engels",
     "row": 41
   },
   {
@@ -3779,6 +3935,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Francisco_Franco",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/RETRATO%20DEL%20GRAL.%20FRANCISCO%20FRANCO%20BAHAMONDE%20%28adjusted%20levels%29.jpg",
     "description": "Франси́ско Паули́но Эрменехи́льдо Тео́дуло Фра́нко Баамо́нде — испанский военный и государственный деятель, диктатор, глава Испанского государства в 1939—1975 годах. Генералиссимус.",
+    "slug": "francisco-franco",
     "row": 74
   },
   {
@@ -3803,6 +3960,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Elijah",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/N.Novgorod%20Elijah%20icon.jpg",
     "description": "Илия́ — библейский пророк в Израильском царстве в IX веке до н. э.",
+    "slug": "elijah",
     "row": 2
   },
   {
@@ -3829,6 +3987,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ivana%20Trump%20cropped%20retouched.jpg",
     "imageAttribution": "By Christopherpeterson at English Wikipedia, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=3071583, via Wikimedia Commons",
     "description": "Ива́на Мари́ Трамп — американская предпринимательница, модель и общественный деятель чехословацкого происхождения. Получила широкую известность как первая супруга Дональда Трампа и одна из ключевых фигур в формировании и управлении семейной бизнес-империи «The Trump Organization» в 1980-е годы.",
+    "slug": "ivana-trump",
     "row": 65
   },
   {
@@ -3855,6 +4014,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mosaic%20of%20Justinianus%20I%20-%20Basilica%20San%20Vitale%20%28Ravenna%29.jpg",
     "imageAttribution": "Petar Milošević, via Wikimedia Commons",
     "description": "Фла́вий Пётр Савва́тий Юстиниа́н — византийский император, правивший с 1 августа 527 года вплоть до своей смерти в 565 году, правление которого стало периодом наивысшего расцвета Византии. Сам Юстиниан в указах называл себя Цезарем Флавием Юстинианом Аламанским, Готским, Франкским, Германским, Антским, Аланским, Вандальским, Африканским, так как при нём были присоединены многие земли бывшей Западной Римской империи, в частности, упразднены королевство вандалов и аланов в Африке, королевство остготов в Италии, присоединена часть земель королевства вестготов в Испании. Вестготы, франки, алеманны, анты признали себя вассалами. Юстиниан, полководец и реформатор, — считается одним из наиболее выдающихся монархов раннего средневековья. Его правление знаменует собой окончательный этап перехода от древнеримских традиций к византийскому стилю правления.",
+    "slug": "justinian-i",
     "row": 0
   },
   {
@@ -3879,6 +4039,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gregor_Mendel",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gregor%20Mendel%202.jpg",
     "description": "Грегор Иоганн Мендель — чешско-австрийский биолог-генетик, монах-августинец, аббат.",
+    "slug": "gregor-mendel",
     "row": 52
   },
   {
@@ -3903,6 +4064,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Antonín_Dvořák",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dvorak.jpg",
     "description": "Антонин Дво́ржак — чешский композитор, представитель романтизма. Кавалер ордена Железной короны 3-й степени (1889).",
+    "slug": "antonin-dvorak",
     "row": 62
   },
   {
@@ -3927,6 +4089,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Carl_Jung",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/ETH-BIB-Jung%2C%20Carl%20Gustav%20%281875-1961%29-Portrait-Portr%2014163%20%28cropped%29.tif",
     "description": "Карл Гу́став Юнг — швейцарский психолог и психиатр, философ и культуролог, педагог, основоположник аналитической психологии. С 1907 по 1912 год был близким соратником Зигмунда Фрейда.",
+    "slug": "carl-jung",
     "row": 67
   },
   {
@@ -3951,6 +4114,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nikita_Khrushchev",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nikita%20Khrushchev%20official%20portrait.jpg",
     "description": "Ники́та Серге́евич Хрущёв — советский политический, государственный и партийный деятель. Первый секретарь ЦК КПСС (1953—1964). Председатель Совета Министров СССР (1958—1964). Председатель Бюро ЦК КПСС по РСФСР (1956—1964). Герой Советского Союза (1964), трижды Герой Социалистического Труда, лауреат Международной Ленинской премии «За укрепление мира между народами» (1959) и Республиканской премии имени Тараса Шевченко (1964), кавалер семи орденов Ленина. Герой Народной Республики Болгария. Участник Великой Отечественной войны.",
+    "slug": "nikita-khrushchev",
     "row": 75
   },
   {
@@ -3975,6 +4139,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hernán_Cortés",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Retrato%20de%20Hern%C3%A1n%20Cort%C3%A9s.jpg",
     "description": "Ферна́ндо Корте́с де Монро́й и Писа́рро Альтамира́но, более известный как Ферна́ндо, Эрна́ндо, Ферна́н или Эрна́н Корте́с — испанский конкистадор, завоевавший Мексику и уничтоживший государственность ацтеков. Благодаря ему в Европе с 1520-х годов стали потреблять ваниль и шоколад.",
+    "slug": "hernan-cortes",
     "row": 17
   },
   {
@@ -4000,6 +4165,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khalil_Gibran",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kahlil%20Gibran%201913.jpg",
     "description": "Джебран Халиль Джебран — ливанский и американский философ, художник, поэт и писатель. Выдающийся арабский писатель и философ XX века.",
+    "slug": "kahlil-gibran",
     "row": 70
   },
   {
@@ -4023,6 +4189,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Edmond_Halley",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Edmond%20Halley%20072.jpg",
     "description": "Э́дмунд Галле́й — английский астроном, геофизик, физик и демограф, внёс крупный вклад во все перечисленные науки. Наиболее известен исследованиями кометы, которой присвоено его имя — Галлей показал периодичность её появления и высказал мнение об аналогичном поведении других комет.",
+    "slug": "edmond-halley",
     "row": 17
   },
   {
@@ -4047,6 +4214,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pocahontas",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NPG%2065%2061%20Pocahontas.tif",
     "description": "Покахо́нтас — дочь Поухатана — вождя индейского племени поухатанов, жившего на территории современной Виргинии. Вышла замуж за англичанина, побывала с ним в Англии, на обратном пути умерла от оспы. Покахонтас переводится как «маленькая баловница / проказница».",
+    "slug": "pocahontas",
     "row": 14
   },
   {
@@ -4072,6 +4240,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Muammar%20al-Gaddafi%20in%202010%20%28cropped%29.jpg",
     "imageAttribution": "Hamza Turkia, © European Union, 2010, via Wikimedia Commons",
     "description": "Муа́ммар Муха́ммад Абу́ Минья́р аль-Кадда́фи — ливийский революционер, государственный и военный деятель, политический теоретик. Он был фактическим лидером Ливии с 1969 по 2011 год, сначала как революционный председатель Ливийской Арабской Республики с 1969 по 1977 год, а затем как «братский вождь» Великой Социалистической Народной Ливийской Арабской Джамахирии с 1977 по 2011 год. Первоначально идеологически приверженный арабскому национализму и арабскому социализму, он позже правил в соответствии со своей собственной, более ориентированной на Африку, Третьей всемирной теорией.",
+    "slug": "muammar-gaddafi",
     "row": 90
   },
   {
@@ -4097,6 +4266,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mural%20painting%20of%20Guru%20Nanak%20from%20Gurdwara%20Baba%20Atal%20Rai.jpg",
     "imageAttribution": "Amritpal Singh Mann. Painted by Jaimal Singh Naqqash (1860–1916), Mehtab Singh Naqqash (1871–1940), and Hukum Singh., via Wikimedia Commons",
     "description": "Гуру Нанак Дэв — основатель религии сикхизма и первый сикхский гуру из Десяти гуру сикхов. Имеет много других имён и титулов. В Пенджабе его почитают не только сикхи, но и индуисты и мусульмане.",
+    "slug": "guru-nanak",
     "row": 20
   },
   {
@@ -4121,6 +4291,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Alexander_VI",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Pope%20Alexander%20VI%20Borgia%20%28Vatican%20Museums%20-%20Musei%20Vaticani%2C%20Vatican%29.jpg",
     "description": "Александр VI — папа римский с 11 августа 1492 года по 18 августа 1503 года. Второй и последний папа римский из испанского рода Борджиа (Борха).",
+    "slug": "alexander-vi",
     "row": 19
   },
   {
@@ -4142,6 +4313,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Prime%20Minister%20of%20Bharat%2C%20Shri%20Narendra%20Damodardas%20Modi%20is%20conferred%20with%20the%20Grand%20Cross%20of%20the%20Royal%20Norwegian%20Order%20of%20Merit%20by%20King%20Harald%20V%20%28cropped%29.jpg",
     "imageAttribution": "Prime Minister's Office, via Wikimedia Commons",
     "description": "Ха́ральд V — король Норвегии с 17 января 1991 года. Вступил на престол после кончины отца, Улафа V. Первый король Норвегии с именем «Харальд» с начала XII века, со времён Харальда IV.",
+    "slug": "harald-v-of-norway",
     "row": 101
   },
   {
@@ -4166,6 +4338,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jeremiah",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dome%20of%20Immanuel%20in%20St%20Mark%27s%20Basilica-Jeremiah.jpg",
     "description": "Иереми́я — второй из четырёх великих пророков Ветхого Завета, автор книги пророка Иеремии и книги «Плач Иеремии».",
+    "slug": "jeremiah",
     "row": 2
   },
   {
@@ -4191,6 +4364,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20dAuguste%20Comte%20%28maison%20dA.%20Comte%2C%20Paris%29%20%282424895050%29.jpg",
     "imageAttribution": "Jean-Pierre Dalbéra from Paris, France, via Wikimedia Commons",
     "description": "Исидо́р Мари́ Огю́ст Франсуа́ Ксавье́ Конт — французский социолог и философ. Основоположник позитивизма и социологии как самостоятельной науки, а также дисциплины истории науки. Основные труды — принесший ему наибольшую известность «Курс позитивной философии» и «Система позитивной политики, или Трактат по социологии, устанавливающий религию Человечества» (фр. Système de politique positive ou Traité de sociologie instituant la religion de l'Humanité).",
+    "slug": "auguste-comte",
     "row": 46
   },
   {
@@ -4212,6 +4386,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Martin%20Scorsese%20MFF%202023.jpg",
     "imageAttribution": "Harald Krichel, via Wikimedia Commons",
     "description": "Ма́ртин Чарльз Скорсе́зе — американский кинорежиссёр, продюсер, сценарист и актёр.",
+    "slug": "martin-scorsese",
     "row": 103
   },
   {
@@ -4236,6 +4411,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jean-Auguste-Dominique_Ingres",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ingres%2C%20Self-portrait.jpg",
     "description": "Жан Огю́ст Домини́к Энгр — французский художник: живописец и график, общепризнанный лидер европейского академизма XIX века. Получил и художественное, и музыкальное образование, в 1797—1801 годах учился в мастерской живописца Жака-Луи Давида. В 1806—1824 и 1835—1841 годах жил и работал в Италии, преимущественно в Риме и Флоренции (1820—1824). Член Института Франции — Академии изящных искусств по классу живописи, директор Школы изящных искусств в Париже (1834—1835) и Французской Академии в Риме (1835—1840). В молодости профессионально занимался музыкой, играл в оркестре Тулузской оперы (1793—1796), в дальнейшем общался с Никколо Паганини, Луиджи Керубини, Шарлем Гуно, Гектором Берлиозом и Францем Листом.",
+    "slug": "jean-auguste-dominique-ingres",
     "row": 50
   },
   {
@@ -4258,6 +4434,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Zoroaster",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Zartosht%2030salegee.jpg",
     "description": "Зарату́штра, также Зарату́стра, или Зороа́стр — основатель зороастризма (маздаясны), жрец, которому приписывается авторство Авесты — писания зороастризма.",
+    "slug": "zoroaster",
     "row": 0
   },
   {
@@ -4282,6 +4459,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hans_Christian_Ørsted",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%C3%98rsted%2C%20Hans%20Christian%20%28av%20Christian%20Albrecht%20Jensen%201842%29.jpg",
     "description": "Ханс Кристиан Э́рстед — датский учёный, физик, исследователь явлений электромагнетизма.",
+    "slug": "hans-christian-rsted",
     "row": 45
   },
   {
@@ -4307,6 +4485,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Max%20Planck.png",
     "imageAttribution": "Courtesy of the Clendening History of Medicine Library, University of Kansas Medical Center., via Wikimedia Commons",
     "description": "Макс Карл Эрнст Людвиг Планк — немецкий физик-теоретик, основоположник квантовой физики. Лауреат Нобелевской премии по физике (1918) и других наград, член Прусской академии наук (1894), ряда иностранных научных обществ и академий наук. На протяжении многих лет один из руководителей немецкой науки.",
+    "slug": "max-planck",
     "row": 81
   },
   {
@@ -4331,6 +4510,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Leonid_Brezhnev",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Leonid%20Brezjnev%2C%20leider%20van%20de%20Sovjet-Unie%2C%20Bestanddeelnr%20925-6564.jpg",
     "description": "Леони́д Ильи́ч Бре́жнев — советский государственный, политический и партийный деятель, занимавший высшую руководящую должность в КПСС в течение 18 лет. Первый секретарь ЦК КПСС в 1964—1966 годах и Генеральный секретарь ЦК КПСС с 1966 по 1982 год. Маршал Советского Союза (1976). Четырежды Герой Советского Союза, Герой Социалистического Труда (1961).",
+    "slug": "leonid-brezhnev",
     "row": 96
   },
   {
@@ -4355,6 +4535,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nebuchadnezzar_II",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nebukadnessar%20II.jpg",
     "description": "Навуходоно́сор II — царь Нововавилонского царства с 7 сентября 605 до н. э. по 7 октября 562 до н. э. из X Нововавилонской (халдейской) династии.",
+    "slug": "nebuchadnezzar-ii",
     "row": 6
   },
   {
@@ -4379,6 +4560,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Joseph_Smith",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Joseph%20Smith%2C%20Jr.%20%281843%20photograph%29.jpg",
     "description": "Джо́зеф Смит-младший — американский религиозный и политический лидер, основатель мормонизма и движения святых последних дней. Опубликовав Книгу Мормона в возрасте 24 лет, Смит привлек десятки тысяч последователей к моменту своей смерти четырнадцать лет спустя. Основанному им религиозному движению в настоящее время следуют миллионы приверженцев по всему миру и несколько церквей, крупнейшей из которых является Церковь Иисуса Христа святых последних дней.",
+    "slug": "joseph-smith",
     "row": 47
   },
   {
@@ -4403,6 +4585,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Alessandro_Volta",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alessandro%20Volta.jpeg",
     "description": "Алесса́ндро Джузе́ппе Анто́нио Анаста́сио Во́льта — итальянский физик, химик и физиолог, один из основоположников учения об электричестве; граф (1810).",
+    "slug": "alessandro-volta",
     "row": 35
   },
   {
@@ -4427,6 +4610,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Emmanuel%20Tzanes%20-%20St.%20Mark%20the%20Evangelist%20-%201657.jpg",
     "imageAttribution": "Ricardo André Frantz (User:Tetraktys), via Wikimedia Commons",
     "description": "Марк — согласно христианской традиции один из четверых евангелистов, автор Евангелия от Марка. Марк-евангелист включается в число апостолов от семидесяти и отождествляется с Марком-Иоанном, учеником апостола Петра; ему приписывается роль основателя александрийской церкви, позднее ставшей одним из важнейших епископских престолов. Предполагаемые мощи святого Марка были в 829 году вывезены из Александрии в Венецию, где для них был выстроен Собор Святого Марка; святой Марк считается покровителем этого города. Символом святого Марка является крылатый лев.",
+    "slug": "mark-the-evangelist",
     "row": 14
   },
   {
@@ -4451,6 +4635,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Basil_II",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Basilios%20II.jpg",
     "description": "Васи́лий II Болгаробо́йца (Вулгарокто́н) — византийский император из Македонской династии, период правления которого ознаменовал собой эпоху последнего наивысшего расцвета византийской цивилизации после «Золотого века Юстиниана». Сын императора Романа II и преемник Иоанна I Цимисхия. Известен войнами, которые он вынужден был вести для защиты империи от многочисленных врагов: против императора Оттона III, лангобардских герцогов Беневента и славян, особенно против болгар. Борьба с последними была крайне упорна и ожесточённа, откуда и прозвище «Болгаробойца».",
+    "slug": "basil-ii",
     "row": 3
   },
   {
@@ -4475,6 +4660,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Brutus_the_Younger",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20Brutus%20Massimo.jpg",
     "description": "Марк Ю́ний Брут — римский политический деятель и военачальник из плебейского рода Юниев, известный в первую очередь как убийца Гая Юлия Цезаря. На ранних этапах своей карьеры, в 50-е годы до н. э., считался видным оратором и получил почётный титул princeps iuventutis — «первый среди молодёжи». В гражданской войне между Цезарем и Помпеем встал на сторону последнего. После битвы при Фарсале перешёл на сторону Цезаря и занял видное место в его окружении. Получил претуру на 44 год до н. э. и должен был стать консулом в 41 году. Несмотря на это и на близкие отношения с Цезарем, Брут стал одним из организаторов и непосредственных участников убийства диктатора, которое произошло 15 марта 44 года до н. э. Целью заговорщиков было восстановление республики, но они не получили поддержки в Риме и были вынуждены оставить Италию. Брут уехал в Македонию, где собрал армию для борьбы с политическими наследниками Гая Юлия — Марком Антонием, Октавианом и Марком Эмилием Лепидом, создавшими Второй триумвират. Он разбил цезарианского наследника Иллирии и силой заставил города Ликии дать ему денег и солдат. Объединившись с Гаем Кассием Лонгином, Брут сразился с главными силами врага при Филиппах в октябре 42 года до н. э. и покончил с собой после поражения.",
+    "slug": "marcus-junius-brutus",
     "row": 6
   },
   {
@@ -4499,6 +4685,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicolae_Ceaușescu",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nicolae%20Ceau%C8%99escu.jpg",
     "description": "Никола́е Чауше́ску — румынский государственный, политический и партийный деятель, генеральный секретарь ЦК Румынской коммунистической партии (РКП) с 1965 года, генеральный секретарь РКП с 1969 года. Председатель Государственного совета Социалистической Республики Румыния (СРР) с 1967 года по 1974 год, президент СРР с 1974 года по 1989 год.",
+    "slug": "nicolae-ceausescu",
     "row": 99
   },
   {
@@ -4524,6 +4711,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bernhard_Riemann",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Georg%20Friedrich%20Bernhard%20Riemann.jpeg",
     "description": "Гео́рг Фри́дрих Бе́рнхард Ри́ман — немецкий математик, механик и физик.",
+    "slug": "bernhard-riemann",
     "row": 1
   },
   {
@@ -4548,6 +4736,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paul_Cézanne",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Paul-Cezanne.jpg",
     "description": "Поль Сеза́нн — французский живописец, представитель постимпрессионизма. Своеобразие его творчества породило термин «сезаннизм», которым в истории искусства обозначают неофициальное течение и работы его последователей, открывших дорогу другому течению в искусстве модернизма — кубизму.",
+    "slug": "paul-cezanne",
     "row": 77
   },
   {
@@ -4572,6 +4761,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anne_Frank",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Anne%20Frank%20%28cropped%29.jpg",
     "description": "А́нна Франк — юная уроженка Германии, в силу еврейского происхождения, после прихода Гитлера к власти, пострадавшая от нацистского террора. Скрываясь с семьёй в Нидерландах, в итоге была схвачена и отправлена в Освенцим, а оттуда в Берген-Бельзен, где умерла в конце войны от тифа. Автор знаменитого «Дневника Анны Франк» — документа, обличающего нацизм, который переведён на многие языки мира. Эта книга сразу стала мировым бестселлером — не только из-за своей пронзительной интонации, но и главным образом потому, что сумела объединить в судьбе одной девочки миллионы человеческих трагедий, связанных с Холокостом. Анна Франк и её семья считаются одними из самых известных жертв нацизма.",
+    "slug": "anne-frank",
     "row": 84
   },
   {
@@ -4598,6 +4788,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/George%20Orwell%2C%20c.%201940%20%2841928180381%29.jpg",
     "imageAttribution": "Cassowary Colorizations, via Wikimedia Commons",
     "description": "Джордж О́руэлл, настоящее имя Э́рик Арту́р Блэр — британский писатель, журналист и литературный критик, радиоведущий, автор мемуаров, публицист. Его работы отличаются простым стилем изложения, критикой тоталитаризма и национализма, а также поддержкой демократического социализма.",
+    "slug": "george-orwell",
     "row": 95
   },
   {
@@ -4623,6 +4814,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sigismund,_Holy_Roman_Emperor",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pisanello%20024b.jpg",
     "description": "Сигизму́нд I Люксембу́рг — курфюрст Бранденбурга с 1378 по 1388 год и с 1411 по 1415 год, король Венгрии с 1387 года, король Германии с 20 сентября 1410 года; король Чехии с 16 августа 1419 по 7 июня 1421 года — коронация 28 июля 1420 года, с 16 августа 1436 года ; король Ломбардии с 25 ноября 1431 года, император Священной Римской империи с 3 мая 1433 года — являлся последним императором из дома Люксембургов. Сигизмунд был одной из движущих сил Констанцского собора (1414-1418), прекратившего папский раскол, но другим последствием которого были гуситские войны, которые доминировали в его жизни в последующий период.",
+    "slug": "sigismund",
     "row": 4
   },
   {
@@ -4648,6 +4840,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Coco%20Chanel%20in%20Los%20Angeles%2C%201931%20%28cropped%29.jpg",
     "imageAttribution": "Los Angeles Times, via Wikimedia Commons",
     "description": "Габриэ́ль Бонёр (Коко́) Шане́ль — французский модельер и основательница модного дома Chanel. Оказала существенное влияние на интернациональную моду XX века. Оказала ключевое влияние на признание моды центральным феноменом XX века.",
+    "slug": "coco-chanel",
     "row": 87
   },
   {
@@ -4672,6 +4865,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hirohito",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hirohito%20in%20dress%20uniform.jpg",
     "description": "Император Сёва (яп. 昭和天皇 сё:ва тэнно:, девиз правления, букв. — «просвещённый мир», прижизненное имя Хирохи́то  ; 29 апреля 1901, Токио — 7 января 1989, там же) — 124-й император Японии, правивший с 25 декабря 1926 года вплоть до своей смерти 7 января 1989 года. Последний монарх Японской империи, которая прекратила своё существование в результате поражения во Второй мировой войне. Генералиссимус японских войск. Также имел чин британского почётного генерала (1921), а затем почётного фельдмаршала. В 1979 году после свержения монархии в Центральноафриканской империи стал единственным в мире монархом с титулом «император». Хотя за пределами Японии он в настоящее время часто упоминается как «Император Хирохито», в Японии умершие императоры именуются только посмертным именем.",
+    "slug": "hirohito",
     "row": 93
   },
   {
@@ -4696,6 +4890,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/John_Calvin",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/John%20Calvin%20Museum%20Catharijneconvent%20RMCC%20s84%20cropped.png",
     "description": "Жан Кове́н, или Жан Кальви́н — французский теолог, полемист и пастор времён протестантской Реформации. Считается одним из основателей кальвинизма ― системы христианского богословия, включающей доктрины предопределения и абсолютного суверенитета Бога в спасении человеческой души от смерти и вечного проклятия, в которых Кальвин развил учение Августина и других христианских богословов.",
+    "slug": "john-calvin",
     "row": 19
   },
   {
@@ -4720,6 +4915,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mary_I_of_England",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Anthonis%20Mor%20001.jpg",
     "description": "Мари́я I — первая коронованная королева Англии и Ирландии с 1553 года, королева-консорт Испании с 16 января 1556 года, старшая дочь Генриха VIII от брака с Екатериной Арагонской. Также известна как Мария Кровавая, Мария Католичка.",
+    "slug": "mary-i",
     "row": 14
   },
   {
@@ -4744,6 +4940,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles_Dickens",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dickens%20Gurney%20head.jpg",
     "description": "Чарльз Джон Ха́ффем Ди́ккенс — британский писатель, прозаик, стенограф, репортёр, романист и эссеист. Творчество Диккенса относят к вершинам реализма, но в его романах отразились и сентиментальное, и сказочное начала. Самые знаменитые романы Диккенса: «Посмертные записки Пиквикского клуба», «Оливер Твист», «Николас Никльби», «Дэвид Копперфилд», «Холодный дом», «Повесть о двух городах», «Наш общий друг», «Большие надежды», «Тайна Эдвина Друда».",
+    "slug": "charles-dickens",
     "row": 54
   },
   {
@@ -4767,6 +4964,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Otzi-Quinson.jpg",
     "imageAttribution": "120, via Wikimedia Commons",
     "description": "Этци — ледяная мумия человека эпохи медного века, обнаруженная в 1991 году в Эцтальских Альпах в Тироле в седловине Хауслабьох вблизи горы Симилаун, на высоте 3200 метров, в результате сильного таяния льда. Возраст мумии, определённый радиоуглеродным методом, составляет примерно 5300 лет. В Австрии мумию называют Этци, а в Италии мумия известна как Симилаунский человек и Тирольский ледяной человек.",
+    "slug": "otzi",
     "row": 0
   },
   {
@@ -4791,6 +4989,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_XIII_of_France",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/LouisXIII.jpg",
     "description": "Людовик XIII Справедливый — король Франции и Наварры с 14 мая 1610 года из династии Бурбонов; сын Генриха IV и Марии Медичи.",
+    "slug": "louis-xiii-of-france",
     "row": 17
   },
   {
@@ -4814,6 +5013,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Grigori_Rasputin",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rasputin%20PA.jpg",
     "description": "Григо́рий Ефи́мович Распу́тин — сибирский крестьянин. Приобрёл всемирную известность благодаря тому, что был другом семьи российского императора Николая II. В 1910-е годы в определённых кругах петербургского общества имел репутацию «царского друга», «старца», прозорливца и целителя. Негативный образ Распутина использовался в революционной, а позднее в советской пропаганде. До сих пор вокруг личности Распутина и его влияния на судьбу Российской империи ведутся многочисленные споры.",
+    "slug": "grigori-rasputin",
     "row": 82
   },
   {
@@ -4839,6 +5039,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paul_Gauguin",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Paul%20Gauguin%201891.png",
     "description": "Эже́н Анри́ Поль Гоге́н — французский живописец, скульптор-керамист и график.",
+    "slug": "paul-gauguin",
     "row": 78
   },
   {
@@ -4863,6 +5064,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Matsuo_Bashō",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Basho%20by%20Buson.jpg",
     "description": "Басё — японский поэт, теоретик стиха, сыгравший большую роль в становлении поэтического жанра хайку.",
+    "slug": "matsuo-basho",
     "row": 19
   },
   {
@@ -4887,6 +5089,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Alan_Turing",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alan%20Turing%20%281951%29%20%28crop%29.jpg",
     "description": "А́лан Мэ́тисон Тью́ринг — британский математик, логик и криптограф, оказавший существенное влияние на развитие информатики. Офицер ордена Британской империи, член Лондонского королевского общества (1951).",
+    "slug": "alan-turing",
     "row": 98
   },
   {
@@ -4911,6 +5114,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Émile_Durkheim",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%C3%89mile%20Durkheim.jpg",
     "description": "Дави́д Эми́ль Дюркге́йм — французский социолог и философ, основатель французской социологической школы и предшественник структурно-функционального анализа. Наряду с Огюстом Контом, Карлом Марксом и Максом Вебером считается основоположником социологии как самостоятельной науки.",
+    "slug": "emile-durkheim",
     "row": 79
   },
   {
@@ -4935,6 +5139,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Selim_I",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sultan%20Selim%20I%20enthroned%2C%20in%20Istanbul%20in%201514.%20Sel%C4%ABm-n%C4%81ma%2C%20by%20%C5%9E%C5%ABkr%C4%AB-i%20Bitlis%C4%AB%2C%201524%20%28National%20Library%20of%20Israel%2C%20Ms.%20Yah.%20Ar.%201116%29.jpg",
     "description": "Сели́м I Яву́з («Гро́зный») — девятый султан Османской империи (1512—1520) и 88-й халиф c 1517 года. Под его началом велась активная захватническая политика, были присоединены Левант, Хиджаз, Тихама, Египет. В общей сложности Селим I увеличил размеры Османской империи на 70 %, и на момент его смерти её площадь составляла 1,494 млн км2. В 1514 году после Чалдыранской битвы была временно захвачена столица сефевидской Персии — Тебриз.",
+    "slug": "selim-i",
     "row": 21
   },
   {
@@ -4960,6 +5165,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hermann%20Hesse%202.jpg",
     "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
     "description": "Ге́рман Карл Ге́ссе  — немецко-швейцарский писатель, поэт и художник.",
+    "slug": "hermann-hesse",
     "row": 85
   },
   {
@@ -4984,6 +5190,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Emily_Dickinson",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Emily%20Dickinson%20daguerreotype%20%28Restored%2C%20cropped%2C%20blown%20up%2C%20sepia%29.jpg",
     "description": "Э́мили Эли́забет Ди́кинсон — американская поэтесса",
+    "slug": "emily-dickinson",
     "row": 0
   },
   {
@@ -5010,6 +5217,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ferdinand%20Marcos%20%28cropped%29.jpg",
     "imageAttribution": "derivative work: Bluemask (talk)\nFerdinand_Marcos_and_George_Shultz_DA-SC-84-05877.JPEG: Spec. 4 Dino Bartomucci, via Wikimedia Commons",
     "description": "Фердина́нд Эммануэ́ль Эдра́лин Ма́ркос — филиппинский государственный и политический деятель. Президент Филиппин (1965—1986).",
+    "slug": "ferdinand-marcos",
     "row": 82
   },
   {
@@ -5034,6 +5242,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Michael_Jackson",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Michael%20Jackson%201983%20%283x4%20cropped%29%20%28contrast%29.jpg",
     "description": "Майкл Джо́зеф Дже́ксон — американский певец, автор песен, танцор и филантроп. Внёс значительный вклад в развитие популярной музыки, видеоклипов, танца и моды. Считается одной из наиболее значимых фигур XX века, известен как «король поп-музыки». По совокупности достижений и общему признанию, он часто называется величайшим артистом в истории шоу-бизнеса. Самый известный представитель семьи Джексонов.",
+    "slug": "michael-jackson",
     "row": 27
   },
   {
@@ -5059,6 +5268,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Baron%20Fran%C3%A7ois%20G%C3%A9rard%20-%20Jos%C3%A9phine%20in%20coronation%20costume%20-%20Google%20Art%20Project.jpg",
     "description": "Жозефи́на де Богарне́ — императрица Франции с 1804 по 1809 год, первая жена Наполеона I.",
+    "slug": "josephine-de-beauharnais",
     "row": 39
   },
   {
@@ -5084,6 +5294,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ashoka%27s%20visit%20to%20the%20Ramagrama%20stupa%20Sanchi%20Stupa%201%20Southern%20gateway.jpg",
     "imageAttribution": "Photo Dharma from Sadao, Thailand, via Wikimedia Commons",
     "description": "Ашо́ка — император Империи Маурьев, правивший с 273 года до н. э. вплоть до своей смерти в 232 году до н. э.",
+    "slug": "ashoka",
     "row": 6
   },
   {
@@ -5108,6 +5319,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bust%20of%20Ibn%20Battuta%20at%20Ibn%20Battuta%20museum.jpg",
     "imageAttribution": "Ideophagous, via Wikimedia Commons",
     "description": "Абу Абдуллах Муха́ммад ибн Абдулла́х ат-Танджи́, более известен как Ибн Батту́та — мусульманский путешественник и купец, объехавший страны исламского и неисламского мира — от Булгара до Момбасы, от Томбукту до Китая. Автор книги «Подарок созерцающим о диковинках городов и чудесах странствий».",
+    "slug": "ibn-battuta",
     "row": 7
   },
   {
@@ -5133,6 +5345,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Napoleon_III",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Napoleon%20III%20by%20Mayer%20%26%20Pierson%20c1860%20%28cropped%29.png",
     "description": "Шарль Луи́ Наполео́н Бонапа́рт, именовавшийся Луи-Наполеон Бонапарт, позже — Наполеон III — французский государственный и политический деятель, первый и единственный президент Второй Французской республики в 1848—1852 годах, первый и единственный правитель Второй Французской империи в 1852—1870 годах.",
+    "slug": "napoleon-iii",
     "row": 51
   },
   {
@@ -5157,6 +5370,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Urban_VII",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Pope%20Urban%20VII%20Castagna%20%28Jacopo%20del%20Conte%2C%20Vatican%20Museums%29.jpg",
     "description": "Урба́н VII — папа римский с 15 по 27 сентября 1590 года.",
+    "slug": "urban-vii",
     "row": 15
   },
   {
@@ -5182,6 +5396,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Uffizi%20Giotto.jpg",
     "imageAttribution": "Original uploader was Frieda at it.wikipedia, via Wikimedia Commons",
     "description": "Джо́тто — итальянский живописец и архитектор XIV века, один из первых представителей проторенессанса. Ключевая фигура в истории западноевропейского искусства. Преодолевая византийскую иконописную традицию, Джотто стал основателем итальянской школы живописи, разработал новый подход к изображению пространства. Произведениями Джотто вдохновлялись Леонардо да Винчи, Рафаэль Санти, Микеланджело Буонарроти.",
+    "slug": "giotto",
     "row": 6
   },
   {
@@ -5206,6 +5421,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Roald_Amundsen",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Amundsen%20in%20fur%20skins.jpg",
     "description": "Ру́аль Э́нгельбрегт Гра́внинг А́мундсен — норвежский полярный путешественник-исследователь и рекордсмен, «Наполеон полярных стран» по выражению Роланда Хантфорда.",
+    "slug": "roald-amundsen",
     "row": 84
   },
   {
@@ -5230,6 +5446,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ernest_Hemingway",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/ErnestHemingway.jpg",
     "description": "Эрне́ст Ми́ллер Хемингуэ́й — американский писатель, журналист и военный корреспондент. Лауреат Нобелевской премии по литературе (1954).",
+    "slug": "ernest-hemingway",
     "row": 91
   },
   {
@@ -5254,6 +5471,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Franz_Liszt",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/FLisztFXD.jpg",
     "description": "Фе́ренц (Франц) Лист — венгро-немецкий композитор, пианист-виртуоз, педагог, дирижёр, публицист, крупный представитель музыкального романтизма.",
+    "slug": "franz-liszt",
     "row": 53
   },
   {
@@ -5274,6 +5492,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Al_Gore",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Al%20Gore%2C%20Vice%20President%20of%20the%20United%20States%2C%20official%20portrait%201994.jpg",
     "description": "А́льберт Арно́льд Гор II — американский политический и государственный деятель; член Демократической партии США, 45-й вице-президент США (1993—2001) в администрации Билла Клинтона, лауреат Нобелевской премии мира (2007).",
+    "slug": "al-gore",
     "row": 104
   },
   {
@@ -5298,6 +5517,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Otto_I,_Holy_Roman_Emperor",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Otto%20I%20Manuscriptum%20Mediolanense%20c%201200.jpg",
     "description": "Отто́н I Вели́кий — герцог Саксонии в 936—961 годах, король Германии с 936 года, король Италии с 961 года, основатель и первый император Священной Римской империи с 962 года.",
+    "slug": "otto-i-the-great",
     "row": 0
   },
   {
@@ -5322,6 +5542,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pablo_Escobar",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pablo%20Escobar%20Mug.jpg",
     "description": "Па́бло Эми́лио Эскоба́р Гави́рия — колумбийский наркобарон и террорист. Эскобара называют «Королём кокаина», поскольку он был лидером Медельинского картеля, контролировавшего к концу 1980 года 80 % от мирового рынка кокаина.",
+    "slug": "pablo-escobar",
     "row": 50
   },
   {
@@ -5346,6 +5567,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Clement_VII",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/El%20papa%20Clemente%20VII%2C%20por%20Sebastiano%20del%20Piombo.jpg",
     "description": "Климе́нт VII — папа римский с 19 ноября 1523 года по 25 сентября 1534 года.",
+    "slug": "clement-vii",
     "row": 22
   },
   {
@@ -5369,6 +5591,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ivan_the_Terrible",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ivan%20grozny%20frame.jpg",
     "description": "Ива́н IV Васи́льевич, Ива́н Гро́зный, в постриге — Иона — государь, великий князь Московский и всея Руси с 1533 года, первый венчанный царь всея Руси.",
+    "slug": "ivan-the-terrible",
     "row": 25
   },
   {
@@ -5394,6 +5617,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Heidegger%202%20%281960%29.jpg",
     "imageAttribution": "Willy Pragher, via Wikimedia Commons",
     "description": "Ма́ртин Ха́йдеггер — немецкий философ-экзистенциалист, создал учение о Бытии (Dasein) в своей наиболее известной работе «Бытие и время» (1927) в духе экзистенциализма. Существенно повлиял на онтологию и континентальную философию XX века.",
+    "slug": "martin-heidegger",
     "row": 88
   },
   {
@@ -5418,6 +5642,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karl_Dönitz",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Karl%20D%C3%B6nitz.jpg",
     "description": "Карл Дёниц — немецкий военный и государственный деятель, гроссадмирал (1943). Командующий подводным флотом (1939—1943), главнокомандующий военно-морским флотом нацистской Германии (1943—1945), рейхспрезидент и верховный главнокомандующий вооружёнными силами нацистской Германии с 30 апреля по 23 мая 1945 года.",
+    "slug": "karl-donitz",
     "row": 89
   },
   {
@@ -5443,6 +5668,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%D0%91%D0%BE%D1%80%D0%B8%D1%81%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87%20%D0%95%D0%BB%D1%8C%D1%86%D0%B8%D0%BD-1%20%28cropped%29%20%28cropped%29.jpg",
     "imageAttribution": "Presidential Press and Information Office, via Wikimedia Commons",
     "description": "Бори́с Никола́евич Е́льцин — советский и российский партийный, государственный и политический деятель, первый Президент Российской Федерации (1991—1999); в ноябре 1991 — июне 1992 года одновременно возглавлял правительство России. С марта по май 1992 года исполнял обязанности министра обороны Российской Федерации.",
+    "slug": "boris-yeltsin",
     "row": 100
   },
   {
@@ -5468,6 +5694,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bundesarchiv%20Bild%20183-S72707%2C%20Heinrich%20Himmler.jpg",
     "imageAttribution": "Friedrich Franz Bauer, via Wikimedia Commons",
     "description": "Ге́нрих Лу́итпольд Ги́ммлер — немецкий политический и военный деятель, один из главных руководителей нацистской Германии, рейхсфюрер СС (1929—1945), а также рейхсминистр внутренних дел (1943—1945), начальник РСХА (1942—1943). Будучи одной из наиболее влиятельных фигур нацистской Германии, причастен к совершению нацистских преступлений, входит в число главных организаторов Холокоста.",
+    "slug": "heinrich-himmler",
     "row": 92
   },
   {
@@ -5491,6 +5718,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hypatia",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hipatia67.jpg",
     "description": "Гипа́тия Александри́йская — философ-неоплатоник времён поздней античности, математик, астроном и механик.",
+    "slug": "hypatia",
     "row": 3
   },
   {
@@ -5512,6 +5740,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rey%20Juan%20Carlos%202013.jpg",
     "imageAttribution": "Irekia, via Wikimedia Commons",
     "description": "Хуа́н Ка́рлос I де Бурбон — король Испании, глава испанского государства и Верховный главнокомандующий вооружёнными силами страны с 22 ноября 1975 года по 18 июня 2014 года. Генерал-капитан (1975).",
+    "slug": "juan-carlos-i-of-spain",
     "row": 102
   },
   {
@@ -5536,6 +5765,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Uffizi%20Donatello.jpg",
     "imageAttribution": "Original uploader was Frieda (dillo a Ubi) at it.wikipedia, via Wikimedia Commons",
     "description": "Донате́лло, полное имя — Донато ди Никколо ди Бетто Барди — итальянский скульптор эпохи Возрождения флорентийской школы.",
+    "slug": "donatello",
     "row": 9
   },
   {
@@ -5560,6 +5790,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tiberius",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%28Venice%29%20Tiberius%20Portrait%20of%20the%20%27Imperium%20Maius%27%20type%20in%20Museo%20Archeologico%20Nazionale.jpg",
     "description": "Тибе́рий Ю́лий Це́зарь А́вгуст — второй римский император с 14 года из династии Юлиев-Клавдиев.",
+    "slug": "tiberius",
     "row": 11
   },
   {
@@ -5584,6 +5815,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Harald_Hardrada",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Harald%20III%20of%20Norway.jpg",
     "description": "Харальд III Суровый, Гаральд Гардрад, Гаральд III Строгий, Харальд Хардероде ; ок. 1015 — 25 сентября 1066) — король Норвегии (1046—1066).Погиб в битве при Стамфорд-Бридже при попытке завоевать английский трон. С гибелью Харальда прекратился трёхвековой период вооружённой экспансии скандинавских правителей — эпоха викингов. Главный герой «Саги о Харальде Суровом» в составе «Круга Земного».",
+    "slug": "harald-iii-of-norway",
     "row": 4
   },
   {
@@ -5604,6 +5836,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/George_W._Bush",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/George-W-Bush.jpeg",
     "description": "Джордж Уо́кер Буш, также известный как Джордж Буш — мла́дший, — американский государственный и политический деятель. 43-й президент США в 2001—2009 годах от Республиканской партии. Губернатор штата Техас с 1995 по 2000. Сын 41-го президента США Джорджа Буша — старшего.",
+    "slug": "george-w-bush",
     "row": 76
   },
   {
@@ -5628,6 +5861,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Horace",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Quintus%20Horatius%20Flaccus.jpg",
     "description": "Квинт Гора́ций Флакк, часто просто Гора́ций — древнеримский поэт «золотого века» римской литературы. Его творчество приходится на эпоху гражданских войн конца республики и первые десятилетия нового режима Октавиана Августа. Гораций считается одним из двух величайших поэтов этой эпохи наряду с Вергилием. Его главные произведения — сборники стихотворений «Сатиры», «Эподы», «Оды» и «Послания».",
+    "slug": "horace",
     "row": 8
   },
   {
@@ -5650,6 +5884,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jonah",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sistine%20jonah.jpg",
     "description": "Ио́на — ветхозаветный пророк Северного Израильского царства, относящийся к так называемым «малым» пророкам, преемник пророка Елисея. Жил во время царствования израильского царя Иеровоама II, то есть на рубеже IX—VIII веков до н. э.. При Иеровоаме II осуществилось предсказанное Ионой «приращение» территории Израиля в результате успешной для Северного царства войны с Сирией.",
+    "slug": "jonah",
     "row": 0
   },
   {
@@ -5674,6 +5909,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Philip_II_of_Spain",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Philip%20II%20of%20Spain%20by%20Sofonisba%20Anguissola%20-%20002b.jpg",
     "description": "Фили́пп II — король Испании из династии Габсбургов. Сын и наследник императора Священной Римской империи Карла V, Филипп с 1554 года был королём Неаполя и Сицилии, а с 1556 года, после отречения своего отца от престола, стал королём Испании, герцогом Нидерландов и обладателем всех заморских владений Испании. В 1580 году присоединил также Португалию и стал её королём. Самый могущественный европейский монарх своего времени.",
+    "slug": "philip-ii-of-spain",
     "row": 21
   },
   {
@@ -5698,6 +5934,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexander_Fleming",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Synthetic%20Production%20of%20Penicillin%20TR1468.jpg",
     "description": "Александр Флеминг — британский микробиолог. Открыл лизоцим и впервые выделил пенициллин из плесневых грибов Penicillium notatum — исторически первый антибиотик.",
+    "slug": "alexander-fleming",
     "row": 86
   },
   {
@@ -5719,6 +5956,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Queen%20Camilla%20in%20Aotearoa%202019.jpg",
     "imageAttribution": "Mark Tantrum, via Wikimedia Commons",
     "description": "Камилла, королева Великобритании — член Британской королевской семьи, вторая жена короля Великобритании Карла III. Коронована 6 мая 2023 года вместе с мужем.",
+    "slug": "queen-camilla",
     "row": 92
   },
   {
@@ -5739,6 +5977,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Queen_of_Sheba",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Queen%20of%20Sheba0027.jpg",
     "description": "Царица Са́вская, X век до н. э. — легендарная правительница аравийского царства Саба (Шеба), чей визит в Иерусалим к царю Соломону описан в Библии.",
+    "slug": "queen-of-sheba",
     "row": 3
   },
   {
@@ -5763,6 +6002,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hurrem_Sultan",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Khourrem.jpg",
     "description": "Хюрре́м Хасеки́-султа́н — наложница, а затем супруга османского султана Сулеймана I Великолепного, мать султана Селима II.",
+    "slug": "hurrem-sultan",
     "row": 24
   },
   {
@@ -5787,6 +6027,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_XVI",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gregory%20XVI.jpg",
     "description": "Григорий XVI — папа римский с 2 февраля 1831 года по 1 июня 1846 года.",
+    "slug": "gregory-xvi",
     "row": 44
   },
   {
@@ -5808,6 +6049,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sultan%20Hassanal%20Bolkiah%20-%2053857993945.jpg",
     "imageAttribution": "Chin Yu Chu / Pangalau, via Wikimedia Commons",
     "description": "Хассанал Болкиах — султан Брунея, премьер-министр, министр обороны, министр иностранных дел и министр финансов Брунея.",
+    "slug": "hassanal-bolkiah-i-of-brunei",
     "row": 84
   },
   {
@@ -5832,6 +6074,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hulagu_Khan",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Representation%20of%20Hulagu%20Khan%20%281217-1265%29%20Persian%20miniature%20taken%20from%20Jami%20al-tawarikh%20%28Jami%20al-tawarikh%29%20or%20Universal%20History%20by%20historian%20Rashid%20al-din%20%28al%20din%29%20%281247-1318%29%20Around%201430.%20Paris%2C%20B.N%20%28portrait%29.jpg",
     "description": "Хулагу́, Гулагу — монгольский правитель и военачальник. Внук Чингис-хана, сын Толуя и Сорхахтани, брат каганов Мункэ и Хубилая. Основатель династии Хулагуидов, правившей в созданном им Иранском ильханстве в Передней Азии.",
+    "slug": "hulegu-khan",
     "row": 8
   },
   {
@@ -5856,6 +6099,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Murad_II",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Murad%20II.%20H%C3%BCnername%2C%20folio%20143b.%20TSMK%20Hazine%201523%20%28created%201584-1588%29.jpg",
     "description": "Мура́д II — султан Османской империи, правивший в 1421—1444 и 1446—1451 годах. Сын султана Мехмеда I и, предположительно, дочери правителя бейлика Дулкадир Эмине-хатун. Мурад II существенно расширил влияние османов на Балканском полуострове, укрепил власть в Анатолии и помог империи оправиться после тяжёлого поражения, нанесённого Тамерланом в Ангорской битве 1402 года.",
+    "slug": "murad-ii",
     "row": 7
   },
   {
@@ -5882,6 +6126,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bartolomeu%20Dias%2C%20South%20Africa%20House%20%28cut%29.JPG",
     "imageAttribution": "Bartolomeu_Dias,_South_Africa_House.JPG: RedCoat (en:User:RedCoat10)\nderivative work: Biser Todorov (talk), via Wikimedia Commons",
     "description": "Бартоломе́у Ди́аш де Нова́иш — португальский мореплаватель. В 1488 году в поисках морского маршрута в Индию он первым из европейцев обогнул Африку с юга, открыл мыс Доброй Надежды и вышел в Индийский океан.",
+    "slug": "bartolomeu-dias",
     "row": 16
   },
   {
@@ -5906,6 +6151,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Louis_XVIII_of_France",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/G%C3%A9rard%20-%20Louis%20XVIII%20of%20France%20in%20Coronation%20Robes.jpg",
     "description": "Людо́вик XVIII, Луи-Станислас-Ксавье — король Франции в 1814—1824 годах, с перерывом в 1815 году, брат Людовика XVI, носивший во время его царствования титул графа Прованского и почётное именование Месье, а потом, во время эмиграции, принявший титул графа де Лилль. Занял престол в результате Реставрации Бурбонов, последовавшей за свержением Наполеона I. Людовик был последним монархом Франции, который не был свергнут в результате революции. Предпринял поход в Испанию (1823) для укрепления законности.",
+    "slug": "louis-xviii-of-france",
     "row": 34
   },
   {
@@ -5930,6 +6176,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sulla%20Glyptothek%20Munich%20309.jpg",
     "imageAttribution": "CNG, via Wikimedia Commons",
     "description": "Лу́ций Корне́лий Су́лла Фе́ликс — древнеримский государственный деятель и военачальник, бессрочный диктатор «для написания законов и укрепления республики», консул 88 и 80 годов до н. э., организатор кровавых проскрипций и реформатор государственного устройства. Стал первым римлянином, который захватил Вечный город силой, причём дважды. Остался в памяти потомков как жестокий тиран, добровольно отказавшийся от неограниченной власти.",
+    "slug": "sulla",
     "row": 0
   },
   {
@@ -5954,6 +6201,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/F._Scott_Fitzgerald",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/F.%20Scott%20Fitzgerald%20%281929%20photo%20portrait%20by%20Nickolas%20Muray%29%20Cropped.jpg",
     "description": "Фрэ́нсис Ско́тт Ки Фицдже́ральд — американский писатель, один из наиболее известных представителей потерянного поколения в литературе. Широкую известность Фицджеральду принёс роман «Великий Гэтсби», опубликованный в 1925 году, а также ряд романов и рассказов об американской «эпохе джаза» 1920-х годов. Термин «эпоха джаза» или «век джаза» был придуман самим Фицджеральдом и обозначал период американской истории с момента окончания Первой мировой войны до Великой депрессии 1930-х годов.",
+    "slug": "f-scott-fitzgerald",
     "row": 90
   },
   {
@@ -5980,6 +6228,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ch%C3%A2teau%20de%20Versailles%2C%20salon%20de%20la%20paix%2C%20buste%20d%27empereur%20romain%20%28Claude%29.jpg",
     "imageAttribution": "Coyau, via Wikimedia Commons",
     "description": "Тибе́рий Кла́вдий Це́зарь А́вгуст Герма́ник, при рождении Тибе́рий Кла́вдий Друз, правил с 41 по 54 годы — Тибе́рий Кла́вдий Неро́н Герма́ник, иногда — Кла́вдий I — римский император из династии Юлиев-Клавдиев.",
+    "slug": "claudius",
     "row": 13
   },
   {
@@ -6004,6 +6253,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexander_Pushkin",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kiprensky%20Pushkin.jpg",
     "description": "Алекса́ндр Серге́евич Пу́шкин — русский поэт, драматург и прозаик, заложивший основы русского реалистического направления, литературный критик и теоретик литературы, историк, публицист, журналист, редактор и издатель.",
+    "slug": "alexander-pushkin",
     "row": 18
   },
   {
@@ -6028,6 +6278,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Johann_Strauss_II",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Johann%20Strauss%20II%20%283%29.jpg",
     "description": "Иога́нн Бати́ст Штра́ус II — австрийский композитор, дирижёр и скрипач, признанный «король вальса», автор многочисленных танцевальных произведений и нескольких популярных оперетт.",
+    "slug": "johann-strauss-ii",
     "row": 76
   },
   {
@@ -6053,6 +6304,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Simone%20de%20Beauvoir2.png",
     "imageAttribution": "Moshe Milner, via Wikimedia Commons",
     "description": "Симо́на де Бовуа́р — французская писательница, представительница экзистенциальной философии, идеолог феминистского движения. Продолжительное время состояла в открытых отношениях с Сартром. Их взаимоотношения были наполнены интенсивным творческим взаимодействием.",
+    "slug": "simone-de-beauvoir",
     "row": 97
   },
   {
@@ -6076,6 +6328,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Titian",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vecellio%20di%20Gregorio%20Tiziano%20-%20autoritratto.jpg",
     "description": "Тициа́н (Тициа́но) Вече́ллио — итальянский живописец, крупнейший представитель венецианской школы эпохи Высокого и Позднего Возрождения. Стоит в одном ряду с такими художниками Возрождения, как Леонардо да Винчи, Рафаэль и Микеланджело. Писал картины на библейские и мифологические сюжеты, прославился и как портретист. Тициану не было и тридцати лет, когда его признали лучшим живописцем Венеции.",
+    "slug": "titian",
     "row": 23
   },
   {
@@ -6100,6 +6353,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hokusai",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hokusai%20as%20an%20old%20man.jpg",
     "description": "Кацуси́ка Хокуса́й (яп. 葛飾 北斎, 31 октября 1760 года, Эдо — 10 мая 1849 года, там же) — японский художник укиё-э, иллюстратор, гравёр периода Эдо. Работал под множеством псевдонимов. Является одним из самых известных на Западе японских гравёров, мастер завершающего периода японской ксилографии.",
+    "slug": "katsushika-hokusai",
     "row": 37
   },
   {
@@ -6124,6 +6378,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Walt_Disney",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Walt%20Disney%201946.JPG",
     "description": "Уо́лтер (Уо́лт) Эла́йас Дисне́й, Ди́сни, Ди́зни — американский художник-мультипликатор, кинематографист и антрепренёр, один из основоположников индустрии анимационного кино, кинорежиссёр, актёр, сценарист и продюсер.",
+    "slug": "walt-disney",
     "row": 94
   },
   {
@@ -6149,6 +6404,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Maria_Montessori",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Maria%20Montessori%20%28portrait%29.jpg",
     "description": "Мари́я Те́кла Артеми́зия Монтессо́ри — итальянский врач и педагог, наиболее известна своей уникальной педагогической системой, основанной на идее свободного воспитания, которая носит её имя. Её педагогическая система до настоящего времени используется во многих государственных и частных школах по всему миру, действует Международная Монтессори-ассоциация.",
+    "slug": "maria-montessori",
     "row": 83
   },
   {
@@ -6173,6 +6429,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hadrian",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bust%20Hadrian%20Musei%20Capitolini%20MC817.jpg",
     "description": "Пу́блий Э́лий Трая́н Адриа́н, более известный как Адриан — римский император в 117—138 годах. Третий из пяти хороших императоров.",
+    "slug": "hadrian",
     "row": 0
   },
   {
@@ -6197,6 +6454,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Friedrich_Schiller",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Friedrich%20Schiller%20by%20Ludovike%20Simanowiz.jpg",
     "description": "Иоганн Кри́стоф Фри́дрих фон Ши́ллер — немецкий поэт, драматург, философ, теоретик искусства и историк. В молодости принадлежал к литературному направлению «Буря и натиск». Известность Шиллеру принесла драма «Разбойники», после которой были написаны исторические пьесы «Заговор Фиеско в Генуе» и «Дон Карлос», основанная на современном материале пьеса «Коварство и любовь». К штюрмерскому периоду творчества Шиллера относятся также роман «Духовидец», «Философские письма», ряд стихотворений, включая оду «К радости», изменённая версия которой была положена на музыку Бетховеном и включена им в финал его 9-й симфонии.",
+    "slug": "friedrich-schiller",
     "row": 26
   },
   {
@@ -6221,6 +6479,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pontius_Pilate",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pilate%20medal.svg",
     "description": "По́нтий Пила́т — римский префект Иудеи c 26 по 36 год, из всаднического сословия. Корнелий Тацит называет его прокуратором Иудеи, Иосиф Флавий — правителем (игемоном) и наместником, однако найденная в 1961 году плита из Кесарии, датируемая периодом правления Пилата, показывает, что он, как и другие римские правители Иудеи с 6 по 41 год, был в должности префекта.",
+    "slug": "pontius-pilatus",
     "row": 12
   },
   {
@@ -6245,6 +6504,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gustav_Klimt",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gustav%20Klimt%20in%201887.jpg",
     "description": "Гу́став Климт — австрийский художник и декоратор, один из самых ярких представителей венского модерна. Живописец и график, мастер оформления архитектурного интерьера. Один из основателей Венского сецессиона и участник Венских мастерских. Его монументально-декоративные и живописные произведения отличают стилизация, символизм и эротизм.",
+    "slug": "gustav-klimt",
     "row": 80
   },
   {
@@ -6269,6 +6529,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Robert_Schumann",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Robert-schumann.jpg",
     "description": "Ро́берт Шу́ман — немецкий композитор, педагог и влиятельный музыкальный критик. Широко известен как один из выдающихся композиторов эпохи романтизма. Был женат на Кларе Шуман.",
+    "slug": "robert-schumann",
     "row": 64
   },
   {
@@ -6293,6 +6554,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Julius_II",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pope%20Julius%20II.jpg",
     "description": "Ю́лий II, в миру — Джулиа́но де́лла Ро́вере — папа римский с 1 ноября 1503 года по 21 февраля 1513 года. Как и все папы той эпохи, был озабочен прежде всего мирскими делами. Известен тем, что многое сделал для превращения Папской области в централизованное государство.",
+    "slug": "julius-ii",
     "row": 25
   },
   {
@@ -6318,6 +6580,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Albert_A._Michelson",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Albert%20Abraham%20Michelson2.jpg",
     "description": "Альбе́рт Абраха́м Ма́йкельсо́н — американский физик, известен изобретением названного его именем интерферометра Майкельсона и прецизионными измерениями скорости света. В 1907 году стал лауреатом Нобелевской премии по физике «за создание точных оптических инструментов и спектроскопических и метрологических исследований, выполненных с их помощью».",
+    "slug": "albert-abraham-michelson",
     "row": 102
   },
   {
@@ -6339,6 +6602,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/06.11.2025%20%E2%80%93%20Recep%C3%A7%C3%A3o%20Oficial%20dos%20Chefes%20de%20Delega%C3%A7%C3%A3o%20da%20C%C3%BApula%20do%20Clima%20%2854906269035%29%20%28Carlos%20XVI%20Gustavo%29.jpg",
     "imageAttribution": "Lula Oficial, via Wikimedia Commons",
     "description": "Карл XVI Густав — король Швеции с 15 сентября 1973 года. Двоюродный брат бывшей королевы Дании Маргрете II, двоюродный дядя нынешнего короля Дании Фредерика X.",
+    "slug": "carl-xvi-gustaf-of-sweden",
     "row": 105
   },
   {
@@ -6363,6 +6627,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Busto%20di%20Parmenide%20%28cropped%29.jpg",
     "imageAttribution": "Sergio Spolti, via Wikimedia Commons",
     "description": "Пармени́д из Эле́и — древнегреческий философ, главный представитель Элейской школы.",
+    "slug": "parmenides",
     "row": 9
   },
   {
@@ -6386,6 +6651,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bust%20of%20Aristophanes.jpg",
     "imageAttribution": "Alexander Mayatsky, via Wikimedia Commons",
     "description": "Аристофа́н — древнегреческий комедиограф. Древние греки называли Аристофана просто «комиком», подобно тому, как Гомер был известен под именем «поэта».",
+    "slug": "aristophanes",
     "row": 8
   },
   {
@@ -6410,6 +6676,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Søren_Kierkegaard",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/S%C3%B8ren%20Kierkegaard%20%281813-1855%29%20-%20%28cropped%29.jpg",
     "description": "Сёрен О́бье Кьеркего́р — датский философ, лютеранский теолог, поэт и религиозный писатель, которого многие считают первым философом-экзистенциалистом. К середине XX века его мысли оказали существенное влияние на философию, теологию и западную культуру.",
+    "slug": "s-ren-kierkegaard",
     "row": 67
   },
   {
@@ -6435,6 +6702,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Origen",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Origen3.jpg",
     "description": "Ориге́н Адама́нт — греческий христианский теолог, философ, учёный; основатель библейской филологии, основоположник оригенизма, автор термина «Богочеловек».",
+    "slug": "origen",
     "row": 4
   },
   {
@@ -6459,6 +6727,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Gregory_XIII",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lavinia%20Fontana%20-%20Portrait%20of%20Pope%20Gregory%20XIII.jpg",
     "description": "Григо́рий XIII — папа римский с 13 мая 1572 года по 31 марта 1585 года. Провёл календарную реформу, приняв вместо юлианского календаря более точный григорианский.",
+    "slug": "gregory-xiii",
     "row": 31
   },
   {
@@ -6483,6 +6752,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thomas_Hardy",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Thomashardy%20restored.jpg",
     "description": "То́мас Ха́рди — крупнейший английский писатель и поэт поздневикторианской эпохи.",
+    "slug": "thomas-hardy",
     "row": 100
   },
   {
@@ -6507,6 +6777,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles_Baudelaire",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Baudelaire%20crop.jpg",
     "description": "Шарль Пьер Бодле́р — французский поэт, критик, эссеист и переводчик; основоположник декаданса и символизма, повлиявший на развитие всей последующей европейской поэзии. Классик французской и мировой литературы.",
+    "slug": "charles-baudelaire",
     "row": 68
   },
   {
@@ -6527,6 +6798,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rodrigo_Duterte",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/President%20Rodrigo%20Duterte%20portrait%20%28half-body%20crop%29.jpg",
     "description": "Родри́го Ро́а Дуте́рте — филиппинский государственный деятель. Президент Филиппин с 30 июня 2016 по 30 июня 2022.",
+    "slug": "rodrigo-duterte",
     "row": 109
   },
   {
@@ -6551,6 +6823,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Marcel_Proust",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Marcel%20Proust%201895.jpg",
     "description": "Валенте́н Луи́ Жорж Эже́н Марсе́ль Пруст — французский писатель, новеллист и поэт, романист, представитель модернизма в литературе.",
+    "slug": "marcel-proust",
     "row": 107
   },
   {
@@ -6577,6 +6850,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/0%20Alexandre%20S%C3%A9v%C3%A8re%20-%20MR%20408%20-%20Louvre%20%281b%29.JPG",
     "imageAttribution": "Jean-Pol GRANDMONT, via Wikimedia Commons",
     "description": "Марк Аврелий Севе́р Алекса́ндр А́вгуст — римский император c 13 марта 222 по 21 марта 235 года, последний из династии Севе́ров.",
+    "slug": "severus-alexander",
     "row": 0
   },
   {
@@ -6602,6 +6876,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NiccoloPaganini.jpeg",
     "description": "Никко́ло́ Пагани́ни — итальянский скрипач-виртуоз, композитор.",
+    "slug": "niccolo-paganini",
     "row": 56
   },
   {
@@ -6626,6 +6901,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Strabo",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Strabo.jpg",
     "description": "Страбо́н — греко-римский античный историк, географ и философ. Автор «Истории» и сохранившейся почти полностью «Географии» в 17 книгах, которая служит лучшим источником для изучения географии древнего мира.",
+    "slug": "strabo",
     "row": 15
   },
   {
@@ -6650,6 +6926,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Henry_IV_of_France",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Henry%20IV%20of%20france%20by%20pourbous%20younger.jpg",
     "description": "Ге́нрих IV — король Франции с 1589 года, король Наварры с 1572 года под именем Генрих III. Первый представитель дома Бурбонов на французском престоле, старший выживший сын первого принца крови, герцога де Вандом Антуана де Бурбона и королевы Наварры Иоанны III д’Альбре, лидер гугенотов в заключительный период Религиозных войн.",
+    "slug": "henry-iv-of-france",
     "row": 22
   },
   {
@@ -6674,6 +6951,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pierre_Curie",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pierre%20Curie%20by%20Dujardin%20c1906.jpg",
     "description": "Пьер Кюри́ — французский учёный-физик, один из первых исследователей радиоактивности, член Французской академии наук, лауреат Нобелевской премии по физике за 1903 год. Муж Марии Склодовской-Кюри.",
+    "slug": "pierre-curie",
     "row": 104
   },
   {
@@ -6698,6 +6976,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Uthman",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20third%20caliph%20Uthman.png",
     "description": "Усма́н ибн Аффа́н аль-Умави́ аль-Кураши́ — арабский государственный и политический деятель. Один из ближайших сподвижников исламского пророка Мухаммеда и его зять. В суннитской традиции — третий праведный халиф, правивший в 644—656 годах, и один из десяти обрадованных раем. При нём завершилось собрание письменного текста Корана в единую книгу.",
+    "slug": "uthman-ibn-affan",
     "row": 7
   },
   {
@@ -6723,6 +7002,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Josef_Mengele",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Josef%20Mengele%2C%20Auschwitz.%20Album%20H%C3%B6cker%20%28cropped%29.jpg",
     "description": "Йо́зеф Ме́нгеле — немецкий врач, гауптштурмфюрер СС. Один из самых известных нацистских преступников, избежавших суда и наказания.",
+    "slug": "josef-mengele",
     "row": 120
   },
   {
@@ -6747,6 +7027,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Prince_Henry_the_Navigator",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Henry%20the%20Navigator1.jpg",
     "description": "Ге́нрих Морепла́ватель — инфант Португалии, сын короля Жуана I, организатор многих португальских морских экспедиций на юг от Мавритании вдоль западноафриканского побережья. Один из наиболее популярных правителей в истории Португалии.",
+    "slug": "prince-henry-the-navigator",
     "row": 11
   },
   {
@@ -6771,6 +7052,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Leo_XI",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pope%20Leo%20XI%20-%20Portrait.jpg",
     "description": "Лев XI — папа римский с 1 по 27 апреля 1605 года.",
+    "slug": "leo-xi",
     "row": 29
   },
   {
@@ -6795,6 +7077,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Denis_Diderot",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Denis%20Diderot%20-%20Alix%20-%20Vanloo.png",
     "description": "Дени́ Дидро́ — французский писатель, философ-просветитель и драматург, основавший «Энциклопедию, или Толковый словарь наук, искусств и ремёсел» (1751). Иностранный почётный член Петербургской академии наук (1773).",
+    "slug": "denis-diderot",
     "row": 30
   },
   {
@@ -6819,6 +7102,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/André-Marie_Ampère",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ampere%20portrait%20at%20the%20Musee%20Poleymieux.jpg",
     "description": "Андре́-Мари́ Ампе́р — французский физик, математик и естествоиспытатель.",
+    "slug": "andre-marie-ampere",
     "row": 55
   },
   {
@@ -6843,6 +7127,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Murad_III",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20reception%20of%20the%20Persian%20ambassador%20Maksud%20by%20Sultan%20Murad%20III%20%28detail%29%20and%20his%20entourage%20%2824b%29.%20Manuscript%20miniature%20ms.%20TSMK%20B.200%20%E2%80%9CSehinsahname%E2%80%9D.jpg",
     "description": "Мура́д III — двенадцатый султан Османской империи (1574—1595), сын султана Селима II от Нурбану-султан.",
+    "slug": "murad-iii",
     "row": 3
   },
   {
@@ -6867,6 +7152,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Pius_VII",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacques-Louis%20David%20018.jpg",
     "description": "Пий VII — папа римский с 14 марта 1800 года по 20 августа 1823 года.",
+    "slug": "pius-vii",
     "row": 42
   },
   {
@@ -6891,6 +7177,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Evangelista_Torricelli",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Evangelista%20Torricelli%20by%20Lorenzo%20Lippi%20%28circa%201647%2C%20Galleria%20Silvano%20Lodi%20%26%20Due%29.jpg",
     "description": "Эванджели́ста Торриче́лли — итальянский математик и физик, ученик Галилея. Известен как автор концепции атмосферного давления и продолжатель дела Галилея в области разработки новой механики.",
+    "slug": "evangelista-torricelli",
     "row": 21
   },
   {
@@ -6914,6 +7201,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/El_Greco",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/El%20Greco%20-%20Portrait%20of%20a%20Man%20-%20WGA10554.jpg",
     "description": "Доме́никос Теотоко́пулос, более известный как Эль Греко — испанский живописец, скульптор и архитектор греческого происхождения, один из крупнейших мастеров позднего Испанского Ренессанса. Прозвище Эль Греко отражает его греческое происхождение и испанское подданство. Свои работы он обычно подписывал полным именем греческими буквами, Δομήνικος Θεοτοκόπουλος, иногда добавляя слово Κρής.",
+    "slug": "el-greco",
     "row": 18
   },
   {
@@ -6939,6 +7227,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jan_Hus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jan%20hus%201.jpg",
     "description": "Ян Гус — чешский проповедник, мыслитель, идеолог чешской Реформации. Национальный герой чешского народа. Был священником и некоторое время ректором Пражского университета. 6 июля 1415 года в Констанце был сожжён вместе со своими трудами. Казнь Гуса вызвала Гуситские войны (1419—1434).",
+    "slug": "jan-hus",
     "row": 6
   },
   {
@@ -6963,6 +7252,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Émile_Zola",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Emile%20Zola%201902.jpg",
     "description": "Эми́ль Золя́ — французский писатель, драматург и публицист.",
+    "slug": "emile-zola",
     "row": 96
   },
   {
@@ -6987,6 +7277,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ahmed_I",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Sultan%20Ahmet%20I%20%28r.%201603%E2%80%9317%29%20%28cropped%29.jpg",
     "description": "Ахме́д I — четырнадцатый султан Османской империи (1603—1617), сын султана Мехмеда III и наложницы Хандан-султан, старший брат султана Мустафы I и отец султанов Османа II, Мурада IV и Ибрагима I.",
+    "slug": "ahmed-i",
     "row": 19
   },
   {
@@ -7011,6 +7302,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Erwin_Schrödinger",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Erwin%20Schr%C3%B6dinger%20-%20Narodowe%20Archiwum%20Cyfrowe%20%281-E-939%29.jpg",
     "description": "Э́рвин Ру́дольф Йо́зеф Алекса́ндр Шрёдингер — австрийский физик-теоретик, один из создателей квантовой механики. Лауреат Нобелевской премии (1933). Член Австрийской академии наук (1956), а также ряда академий наук мира, в том числе иностранный член Академии наук СССР (1934).",
+    "slug": "erwin-schrodinger",
     "row": 112
   },
   {
@@ -7033,6 +7325,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Barbara",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Palma%20il%20Vecchio%20-%20Polyptych%20of%20St%20Barbara%20%28central%20panel%29%20-%20WGA16932.jpg",
     "description": "Варва́ра Илиопо́льская — христианская великомученица. Верующими почитается как защитница от внезапной и насильственной смерти.",
+    "slug": "saint-barbara",
     "row": 7
   },
   {
@@ -7059,6 +7352,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Farabi.jpg",
     "imageAttribution": "Iraninhk, via Wikimedia Commons",
     "description": "Абу́ Наср Муха́ммед ибн Муха́ммед аль-Фараби́, употребительное сокращение имени — аль-Фараби — один из крупнейших представителей средневековой исламской философии, математик, астроном, физик, теоретик музыки, ботаник, лингвист, учёный Востока эпохи исламского Золотого века. В связи с его ролью в развитии философии и науки аль-Фараби получил известность, как «Второй учитель», «Первым учителем» называли Аристотеля.",
+    "slug": "farabi",
     "row": 2
   },
   {
@@ -7083,6 +7377,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Herod_the_Great",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/HerodtheGreat2.jpg",
     "description": "И́род I Великий — идумеянин, сын Антипатра, римского наместника Иудеи. Царь Иудеи в течение официально 37 лет, фактически 34 лет — до смерти. Основатель идумейской династии Иродиадов. Его описывали как «сумасшедшего, убившего свою семью и множество раввинов», «злого гения Иудейской нации», «готового на любое преступление в угоду своим неограниченным амбициям», и «величайшего строителя в еврейской истории». Его имя стало нарицательным для обозначения злого и жестокого человека.",
+    "slug": "herod-the-great",
     "row": 10
   },
   {
@@ -7107,6 +7402,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Leo_X",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Raffaello%2C%20ritratto%20di%20papa%20leone%20X%20tra%20i%20cardinali%20luigi%20de%27%20rossi%20e%20giulio%20de%27%20medici%2C%201518%2C%2003.jpg",
     "description": "Лев X — папа римский с 11 марта 1513 года по 1 декабря 1521 года. Последний Папа, не имевший священного сана на момент избрания.",
+    "slug": "leo-x",
     "row": 29
   },
   {
@@ -7130,6 +7426,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Zheng%20He.jpg",
     "imageAttribution": "Marcin Konsek, via Wikimedia Commons",
     "description": "Чжэн Хэ — адмирал империи Мин, путешественник, флотоводец и дипломат, хуэйцзу по происхождению. Он организовал и возглавил семь крупномасштабных морских военно-торговых экспедиций, посланных императорами Мин в страны Индокитая, Индостана, Аравийского полуострова и Восточной Африки. Есть версии, что экспедиции, организованные им, даже достигали берегов Америки и Австралии.",
+    "slug": "zheng-he",
     "row": 10
   },
   {
@@ -7154,6 +7451,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bernard_Montgomery",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/General%20Sir%20Bernard%20Montgomery%20in%20England%2C%201943%20TR1036.jpg",
     "description": "Бе́рнард Ло́у Монтго́мери, 1-й виконт Монтго́мери Аламе́йнский — британский фельдмаршал (1944), крупный военачальник Второй мировой войны. Кавалер советского ордена «Победа».",
+    "slug": "bernard-montgomery",
     "row": 113
   },
   {
@@ -7179,6 +7477,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Silvio%20Berlusconi%202018.jpg",
     "imageAttribution": "European People’s Party, via Wikimedia Commons",
     "description": "Си́львио Берлуско́ни — итальянский государственный и политический деятель, четырежды занимавший должность председателя Совета министров Италии — дольше всех в послевоенной Италии, предприниматель.",
+    "slug": "silvio-berlusconi",
     "row": 125
   },
   {
@@ -7203,6 +7502,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pope_Leo_XII",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Charles%20Picqu%C3%A9%20%E2%80%93%20Portrait%20de%20L%C3%A9on%20XII%20%281828%29.jpg",
     "description": "Лев XII — папа римский с 28 сентября 1823 года по 10 февраля 1829 года.",
+    "slug": "leo-xii",
     "row": 43
   },
   {
@@ -7227,6 +7527,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/John_the_Apostle",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rubens%20apostel%20johannes%20grt.jpg",
     "description": "Иоа́нн Богосло́в — один из двенадцати апостолов, единственный из них умерший естественной смертью. Сын Зеведея, прозванный «Богословом», евангелист, брат апостола Иакова. В Евангелии от Марка вместе с братом прозван Иисусом Христом «Сы́ном гро́ма».",
+    "slug": "john-the-apostle",
     "row": 19
   },
   {
@@ -7252,6 +7553,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Joseph-Louis_Lagrange",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%D0%9B%D0%B0%D0%B3%D1%80%D0%B0%D0%BD%D0%B6.jpg",
     "description": "Жозе́ф Луи́ Лагра́нж — французский математик, астроном и механик итальянского происхождения. Наряду с Эйлером — крупнейший математик XVIII века. Особенно прославился исключительным мастерством в области обобщения и синтеза накопленного научного материала.",
+    "slug": "joseph-louis-lagrange",
     "row": 41
   },
   {
@@ -7277,6 +7579,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Wassily_Kandinsky",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Wassily%20kandinsky.jpg",
     "description": "Васи́лий Васи́льевич Канди́нский — живописец и график русского зарубежья, идеолог абстракционизма, культовая личность художественного авангарда времён конца belle époque. Сооснователь «Нового Мюнхенского художественного объединения», впоследствии ставшего группой «Синий всадник».",
+    "slug": "wassily-kandinsky",
     "row": 105
   },
   {
@@ -7302,6 +7605,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Albert,_Prince_Consort",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Prince%20Albert%20%28by%20Roger%20Fenton%29%20%E2%80%93%20Royal%20Collection%20%E2%80%93%20unframed%20%28detail%29%20FXD.jpg",
     "description": "А́льберт Са́ксен-Ко́бург-Го́тский — саксонский принц из Саксен-Кобург-Готской династии, супруг и консорт королевы Великобритании Виктории.",
+    "slug": "prince-albert-of-saxe-coburg-and-gotha",
     "row": 39
   },
   {
@@ -7327,6 +7631,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Piet_Mondrian",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Piet%20Mondriaan.jpg",
     "description": "Пи́тер Корне́лис (Пит) Мондриа́н — нидерландский художник, который одновременно с Кандинским и Малевичем положил начало абстрактной живописи.",
+    "slug": "piet-mondrian",
     "row": 109
   },
   {
@@ -7351,6 +7656,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lorenzo_de'_Medici",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Verrocchio%20Lorenzo%20de%20Medici.jpg",
     "description": "Лоре́нцо ди Пье́ро де Ме́дичи «Великоле́пный» — флорентийский государственный деятель, глава Флорентийской республики в эпоху Возрождения, покровитель наук и искусств, поэт.",
+    "slug": "lorenzo-de-medici",
     "row": 18
   },
   {
@@ -7376,6 +7682,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/James_Cook",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Captainjamescookportrait.jpg",
     "description": "Джеймс Кук — британский военный моряк, путешественник-исследователь, картограф и первооткрыватель, член Королевского общества (1776) и капитан Королевских ВМС. Возглавлял три кругосветные экспедиции по исследованию Мирового океана. Во время этих экспедиций Кук совершил ряд географических открытий: так, он обследовал и нанёс на карту малоизвестные и редко посещаемые до него части Ньюфаундленда и восточного побережья Канады, Австралии, Новой Зеландии, западного побережья Северной Америки, Тихого, Индийского и Атлантического океанов. Благодаря тому вниманию, которое Кук уделял картографии, многие из составленных им карт по своей точности и аккуратности не имели аналогов на протяжении многих десятилетий и служили мореплавателям вплоть до второй половины XIX века.",
+    "slug": "james-cook",
     "row": 15
   },
   {
@@ -7400,6 +7707,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gustave_Flaubert",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gustave%20Flaubert.jpg",
     "description": "Гюста́в Флобе́р — французский прозаик-реалист, считающийся одним из крупнейших европейских писателей XIX века.",
+    "slug": "gustave-flaubert",
     "row": 69
   },
   {
@@ -7422,6 +7730,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Euripides",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Euripides%20Pio-Clementino%20Inv302.jpg",
     "description": "Еврипи́д — древнегреческий драматург, крупнейший представитель классической афинской трагедии. Написал около 90 произведений, из которых до нас дошло 17 трагедий и сатировская драма «Киклоп».",
+    "slug": "euripides",
     "row": 11
   },
   {
@@ -7442,6 +7751,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Brigitte_Bardot",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Brigitte%20Bardot%20-%201962.jpg",
     "description": "Брижи́т Анн-Мари́ Бардо́ — французская киноактриса, певица, фотомодель, писательница и активистка движения за права животных. Основательница и глава фонда защиты животных «Фонд Брижит Бардо». Являлась одним из секс-символов 1950—1960-х годов.",
+    "slug": "brigitte-bardot",
     "row": 124
   },
   {
@@ -7466,6 +7776,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Li_Bai",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%9D%8E%E7%99%BD.png",
     "description": "Ли Бо или Ли Тай-бо — китайский поэт времён династии Тан. Известный как «бессмертный в поэзии», Ли Бо принадлежит к числу самых почитаемых поэтов в истории китайской литературы и считается одним из крупнейших мировых поэтов. Он оставил после себя около 1100 произведений.",
+    "slug": "li-bai",
     "row": 0
   },
   {
@@ -7490,6 +7801,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Édouard_Manet",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%C3%89douard%20Manet%2C%20en%20buste%2C%20de%20face%20-%20Nadar.jpg",
     "description": "Эдуа́рд (Эдуа́р) Мане́ — французский живописец и график, один из родоначальников импрессионизма.",
+    "slug": "edouard-manet",
     "row": 71
   },
   {
@@ -7514,6 +7826,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Octave_Mirbeau",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Octave%20Mirbeau%20portrait.jpg",
     "description": "Окта́в Мирбо́ — французский писатель, романист, драматург, публицист и художественный критик, член Академии Гонкуров.",
+    "slug": "octave-mirbeau",
     "row": 101
   },
   {
@@ -7538,6 +7851,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Henri_Becquerel",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Paul%20Nadar%20-%20Henri%20Becquerel.jpg",
     "description": "Антуа́н Анри́ Беккере́ль — французский физик, лауреат Нобелевской премии по физике и один из первооткрывателей радиоактивности. В честь него названа единица измерения активности радиоактивного источника в Международной системе единиц (СИ) — беккерель.",
+    "slug": "antoine-henri-becquerel",
     "row": 99
   },
   {
@@ -7560,6 +7874,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/James,_brother_of_Jesus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Saint%20James%20the%20Just.jpg",
     "description": "Иа́ков, «брат Господень», Иаков Младший, Иаков Праведный — один из апостолов Иисуса Христа от семидесяти, почитается как первый епископ Иерусалимский. Казнён около 62 года в Иерусалиме иудеями.",
+    "slug": "james-the-just",
     "row": 16
   },
   {
@@ -7582,6 +7897,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Titus",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Head%20Titus%20Glyptothek%20Munich%20338.jpg",
     "description": "Тит Фла́вий Веспасиа́н, в отличие от отца, своего полного тёзки, вошедший в историю под личным именем Тит, — римский император из династии Флавиев, правивший с 79 по 81 год. В юности принадлежал к окружению Цезаря Британника, в дальнейшем начал военную карьеру. Под началом отца с 67 года сражался с восставшими иудеями. В 70 году, когда Веспасиан захватил императорскую власть, Тит возглавил армию в Иудее. После ожесточённых боёв он взял штурмом Иерусалим и разрушил Храм, а по возвращении в Рим отпраздновал триумф.",
+    "slug": "titus",
     "row": 7
   },
   {
@@ -7606,6 +7922,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Diocletian",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Istanbul%20-%20Museo%20archeol.%20-%20Diocleziano%20%28284-305%20d.C.%29%20-%20Foto%20G.%20Dall%27Orto%2028-5-2006.jpg",
     "description": "Гай Авре́лий Вале́рий Диоклетиа́н — римский император с 20 ноября 284 года по 1 мая 305 года. Приход к власти Диоклетиана завершил так называемый кризис третьего века в Римской империи. Он установил твёрдое правление и устранил фикцию, согласно которой император был лишь первым из сенаторов (принцепсом), после чего объявил себя полновластным правителем. С его правления начинается период в римской истории, называемый доминатом.",
+    "slug": "diocletian",
     "row": 5
   },
   {
@@ -7630,6 +7947,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/HatshepsutStatuette%20MuseumOfFineArtsBoston.png",
     "imageAttribution": "Keith Schengili-Roberts, via Wikimedia Commons",
     "description": "Хатшепсу́т — женщина-фараон Нового царства Древнего Египта из XVIII династии. Она была второй исторически подтверждённой женщиной-фараоном, а первой была Себекнеферу. До воцарения носила то же имя, которое не было изменено при восшествии на престол. Носила титулы «Великая жена царя» и «Супруга бога Амона».",
+    "slug": "hatshepsut",
     "row": 0
   },
   {
@@ -7655,6 +7973,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Johan_Cruyff",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Johan%20Cruijff%20%281974%29.jpg",
     "description": "Хе́ндрик Йо́ханнес (Йо́хан) Кройф — нидерландский футболист и тренер. В качестве игрока в основном выступал на атакующих позициях, став первым трёхкратным обладателем «Золотого мяча» и других наград. Считается одним из лучших футболистов и тренеров в истории футбола. Персона Кройфа ассоциируется со стилем игры под названием «тотальный футбол».",
+    "slug": "johan-cruyff",
     "row": 132
   },
   {
@@ -7681,6 +8000,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Maria%20Callas%201958.jpg",
     "imageAttribution": "Joop van Bilsen / Anefo, via Wikimedia Commons",
     "description": "Мари́я Ка́ллас — американская певица, одна из величайших оперных певиц XX века.",
+    "slug": "maria-meneghini-callas",
     "row": 107
   },
   {
@@ -7705,6 +8025,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hermann_Göring",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hermann%20G%C3%B6ring%20-%20R%C3%B6hr.jpg",
     "description": "Ге́рман Вильге́льм Ге́ринг — политический, государственный и военный деятель нацистской Германии, один из ближайших соратников и пособников Гитлера, председатель рейхстага (1932–1945), премьер-министр Пруссии, рейхсминистр авиации, главнокомандующий люфтваффе, рейхсмаршал. Официальный «преемник фюрера».",
+    "slug": "hermann-goring",
     "row": 115
   },
   {
@@ -7729,6 +8050,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/George_Marshall",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/General%20George%20C.%20Marshall%20%284616939916%29.jpg",
     "description": "Джордж Кэтлетт Ма́ршалл-младший — американский государственный и военный деятель, генерал армии, инициатор плана Маршалла, лауреат Нобелевской премии мира (1953). Занимал посты начальника штаба армии США (1939—1945), президентского специального представителя в Китае (1945—1947), государственного секретаря (1947—1949) и министра обороны (1950—1951).",
+    "slug": "george-marshall",
     "row": 110
   },
   {
@@ -7753,6 +8075,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mary,_Queen_of_Scots",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mary%20Queen%20of%20Scots%20Blairs%20Museum.jpg",
     "description": "Мари́я I, Мари́я Стюа́рт — королева Шотландии с 6 дня жизни, фактически правила с 1561 года до низложения в 1567 году, а также королева Франции в 1559—1560 годах и претендентка на английский престол. Её трагическая судьба, наполненная «литературными» по драматизму поворотами и событиями, привлекала писателей романтической и последующих эпох.",
+    "slug": "mary-queen-of-scots",
     "row": 20
   },
   {
@@ -7777,6 +8100,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saint_Stephen",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/St-stephen.jpg",
     "description": "Стефа́н Первому́ченик — первый христианский мученик, происходивший из диаспоры евреев; был привлечён к суду Синедриона и побит камнями за христианскую проповедь в Иерусалиме около 33—36 годов.",
+    "slug": "saint-stephen",
     "row": 18
   }
 ]

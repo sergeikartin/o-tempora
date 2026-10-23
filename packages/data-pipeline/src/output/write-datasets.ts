@@ -11,6 +11,11 @@ import type {
 import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
 import { imageFields } from "./image-fields.js";
 
+// What the builders return: an entry before `slug` is attached. A slug is
+// unique across every lane (slugs.ts), so it can only be assigned once all
+// lanes are built.
+export type Unslugged<T> = T extends unknown ? Omit<T, "slug"> : never;
+
 export interface DropReport {
   dropped: number;
   reasons: Record<string, number>;
@@ -112,8 +117,8 @@ const MAX_PLAUSIBLE_LIFESPAN_YEARS = 130;
 // ever sees this data. wikipediaUrl needs no presence check here — it's
 // derived deterministically from Pantheon's slug column, which
 // parsePantheonCsv already guarantees is non-empty.
-export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: Person[]; report: DropReport } {
-  const people: Person[] = [];
+export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: Unslugged<Person>[]; report: DropReport } {
+  const people: Unslugged<Person>[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
@@ -184,7 +189,7 @@ export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: 
 // otherwise terminate.
 function validateParentChain(
   id: string,
-  built: ReadonlyMap<string, ConflictEntry>,
+  built: ReadonlyMap<string, Unslugged<ConflictEntry>>,
 ): { ok: true } | { ok: false; reason: string } {
   let currentId: string | undefined = id;
   let depth = 0;
@@ -210,9 +215,9 @@ function validateParentChain(
 export function buildConflicts(
   rows: TaggedConflict[],
   lang: Lang = "en",
-): { entries: ConflictEntry[]; report: DropReport } {
+): { entries: Unslugged<ConflictEntry>[]; report: DropReport } {
   const reasons: Record<string, number> = {};
-  const built = new Map<string, ConflictEntry>();
+  const built = new Map<string, Unslugged<ConflictEntry>>();
 
   for (const row of rows) {
     // Inclusion is always gated on English fields (validated.name/tagline
@@ -240,7 +245,7 @@ export function buildConflicts(
     };
 
     if (row.endYear !== undefined) {
-      const conflict: Conflict = {
+      const conflict: Unslugged<Conflict> = {
         ...shared,
         period: {
           start: yearMonth(validated.year, validated.month),
@@ -249,12 +254,12 @@ export function buildConflicts(
       };
       built.set(row.id, conflict);
     } else {
-      const conflictEvent: ConflictEvent = { ...shared, at: yearMonth(validated.year, validated.month) };
+      const conflictEvent: Unslugged<ConflictEvent> = { ...shared, at: yearMonth(validated.year, validated.month) };
       built.set(row.id, conflictEvent);
     }
   }
 
-  const entries: ConflictEntry[] = [];
+  const entries: Unslugged<ConflictEntry>[] = [];
   for (const [id, entry] of built) {
     const result = validateParentChain(id, built);
     if (result.ok) {
@@ -280,8 +285,8 @@ export function buildConflicts(
 export function buildMilestones(
   rows: TaggedMilestone[],
   lang: Lang = "en",
-): { milestones: Milestone[]; report: DropReport } {
-  const milestones: Milestone[] = [];
+): { milestones: Unslugged<Milestone>[]; report: DropReport } {
+  const milestones: Unslugged<Milestone>[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {

@@ -9,6 +9,7 @@ afterEach(cleanup);
 function person(id: string, startYear: number, endYear: number): Person {
   return {
     id,
+    slug: id,
     name: id,
     lifespan: { start: { year: startYear }, end: { year: endYear } },
     occupationDomain: 'humanities',

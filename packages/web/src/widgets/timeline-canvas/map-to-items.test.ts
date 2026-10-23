@@ -16,6 +16,7 @@ import {
 
 const person: Person = {
   id: 'Q868',
+  slug: 'Q868',
   name: 'Aristotle',
   lifespan: { start: { year: -383 }, end: { year: -321 } },
   occupationDomain: 'humanities',
@@ -62,6 +63,7 @@ test('mapPeople offsets startYear/endYear within their year when lifespan dates 
 
 const conflictWithEndYear: Conflict = {
   id: 'Q8214',
+  slug: 'Q8214',
   name: 'Korean War',
   period: { start: { year: 1950 }, end: { year: 1953 } },
   category: 'war',
@@ -80,6 +82,7 @@ const conflictZeroWidth: Conflict = {
 
 const battle: ConflictEvent = {
   id: 'Q217799',
+  slug: 'Q217799',
   name: 'Battle of Megiddo',
   at: { year: -1457 },
   category: 'war',
@@ -140,6 +143,7 @@ test('mapConflicts offsets a ConflictEvent point within its year when at carries
 
 const milestone: Milestone = {
   id: 'Q11042',
+  slug: 'Q11042',
   name: 'Printing press',
   at: { year: 1440 },
   category: 'communication',
@@ -172,6 +176,7 @@ test('mapMilestones offsets startYear within its year when at carries a month', 
 
 const blackDeath: Milestone = {
   id: 'Q42005',
+  slug: 'Q42005',
   name: 'Black Death',
   period: { start: { year: 1346 }, end: { year: 1353 } },
   category: 'medicine-health',

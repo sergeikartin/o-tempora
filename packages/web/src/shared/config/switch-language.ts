@@ -1,3 +1,4 @@
+import { entityLinkSearch } from '../lib/entity';
 import { getLocale } from '../paraglide/runtime.js';
 
 // The sibling deployment's default (home) view — English is served from the
@@ -5,8 +6,10 @@ import { getLocale } from '../paraglide/runtime.js';
 // at `/ru`; see docs/deployment.md, docs/adr/0003). Root-relative so it
 // resolves correctly regardless of which subpath this page was served
 // from. getLocale() resolves the locale from the current URL at runtime
-// (docs/adr/0009's strategy: ['url', 'baseLocale']) — the drop-in
-// replacement for the old shared/i18n LANG flag. Points at the sibling's
-// root only — no deep-link/viewport-state preservation across the switch
-// (russian-localization spec's Out of Scope).
-export const SWITCH_LANGUAGE_HREF = getLocale() === 'ru' ? '/' : '/ru/';
+// (docs/adr/0009's strategy: ['url', 'baseLocale']). Carries only the
+// Entity Link across the switch, never viewport or filter state.
+const SIBLING_HOME_HREF = getLocale() === 'ru' ? '/' : '/ru/';
+
+export function switchLanguageHref(entitySlug: string | null): string {
+  return SIBLING_HOME_HREF + entityLinkSearch(entitySlug);
+}
