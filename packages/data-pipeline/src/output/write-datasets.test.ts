@@ -118,7 +118,7 @@ test("buildPeople passes through image/imageAttribution when present", () => {
   const { people } = buildPeople([
     taggedPerson({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/X.jpg", imageAttribution: "X, via Wikimedia Commons" }),
   ]);
-  assert.equal(people[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/X.jpg");
+  assert.equal(people[0]?.image, "https://commons.wikimedia.org/wiki/Special:Redirect/file/X.jpg");
   assert.equal(people[0]?.imageAttribution, "X, via Wikimedia Commons");
 });
 
@@ -191,7 +191,7 @@ test("buildConflicts passes through image/imageAttribution when present", () => 
   const { entries } = buildConflicts([
     taggedConflict({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg", imageAttribution: "W, via Wikimedia Commons" }),
   ]);
-  assert.equal(entries[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/W.jpg");
+  assert.equal(entries[0]?.image, "https://commons.wikimedia.org/wiki/Special:Redirect/file/W.jpg");
   assert.equal(entries[0]?.imageAttribution, "W, via Wikimedia Commons");
 });
 
@@ -387,7 +387,7 @@ test("buildMilestones passes through image/imageAttribution when present", () =>
   const { milestones } = buildMilestones([
     taggedMilestone({ image: "https://commons.wikimedia.org/wiki/Special:FilePath/Y.jpg", imageAttribution: "Y, via Wikimedia Commons" }),
   ]);
-  assert.equal(milestones[0]?.image, "https://commons.wikimedia.org/wiki/Special:FilePath/Y.jpg");
+  assert.equal(milestones[0]?.image, "https://commons.wikimedia.org/wiki/Special:Redirect/file/Y.jpg");
   assert.equal(milestones[0]?.imageAttribution, "Y, via Wikimedia Commons");
 });
 

@@ -9,6 +9,7 @@ import type {
   YearMonth,
 } from "@o-tempora/shared-types";
 import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
+import { imageFields } from "./image-fields.js";
 
 export interface DropReport {
   dropped: number;
@@ -164,8 +165,7 @@ export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: 
       fameScore: row.hpi,
       tagline: resolveField(row.tagline, row.taglineRu, lang),
       wikipediaUrl: row.wikipediaUrl,
-      ...(row.image ? { image: row.image } : {}),
-      ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
+      ...imageFields(row.id, row.image, row.imageAttribution),
       ...(description ? { description } : {}),
     });
   }
@@ -234,8 +234,7 @@ export function buildConflicts(
       fameScore: row.fameScore,
       tagline: resolveField(validated.tagline, row.taglineRu, lang),
       wikipediaUrl: validated.article,
-      ...(row.image ? { image: row.image } : {}),
-      ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
+      ...imageFields(row.id, row.image, row.imageAttribution),
       ...(description ? { description } : {}),
       ...(row.parentId ? { parentId: row.parentId } : {}),
     };
@@ -304,8 +303,7 @@ export function buildMilestones(
       fameScore: row.fameScore,
       tagline: resolveField(validated.tagline, row.taglineRu, lang),
       wikipediaUrl: validated.article,
-      ...(row.image ? { image: row.image } : {}),
-      ...(row.imageAttribution ? { imageAttribution: row.imageAttribution } : {}),
+      ...imageFields(row.id, row.image, row.imageAttribution),
       ...(description ? { description } : {}),
       ...(row.approximateDate ? { approximateDate: true as const } : {}),
     };
