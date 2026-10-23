@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found — O Tempora · Страница не найдена</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f2e9d2" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <style>
+      /* Static page: no bundle, so the Ledger & Ink tokens
+         (docs/design-tokens.md) are repeated here, and fonts fall back to
+         system faces rather than the hashed @fontsource files. */
+      :root {
+        --color-bg-base: #f2e9d2;
+        --color-bg-surface: #fbf6e9;
+        --color-border-subtle: #e0d3ac;
+        --color-text-primary: #241a10;
+        --color-text-secondary: #6b6046;
+        --color-accent-selected: #8a2a1a;
+        --color-focus-ring: #6e2013;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+        background-color: var(--color-bg-base);
+        color: var(--color-text-primary);
+        font-family: Archivo, ui-sans-serif, system-ui, sans-serif;
+        line-height: 1.5;
+      }
+      main {
+        width: 100%;
+        max-width: 880px;
+      }
+      .brand {
+        margin-bottom: 16px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-text-secondary);
+      }
+      .panel {
+        display: grid;
+        grid-template-columns: 1fr;
+        background-color: var(--color-bg-surface);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: 12px;
+      }
+      section {
+        padding: 28px 24px;
+      }
+      section + section {
+        border-top: 1px solid var(--color-border-subtle);
+      }
+      h1 {
+        margin-bottom: 8px;
+        font-family: Fraunces, Georgia, "Times New Roman", serif;
+        font-size: 1.75rem;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+      p {
+        margin-bottom: 20px;
+        color: var(--color-text-secondary);
+      }
+      a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--color-accent-selected);
+        font-weight: 600;
+        text-underline-offset: 3px;
+      }
+      a:focus-visible {
+        outline: 2px solid var(--color-focus-ring);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      @media (min-width: 720px) {
+        .panel {
+          grid-template-columns: 1fr 1fr;
+        }
+        section {
+          padding: 40px 36px;
+        }
+        section + section {
+          border-top: 0;
+          border-left: 1px solid var(--color-border-subtle);
+        }
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand">O Tempora</div>
+      <div class="panel">
+        <section lang="en" aria-labelledby="title-en">
+          <h1 id="title-en">Page not found</h1>
+          <p>This page doesn’t exist. The timeline is one click away.</p>
+          <a href="/">Back to the timeline</a>
+        </section>
+        <section lang="ru" aria-labelledby="title-ru">
+          <h1 id="title-ru">Страница не найдена</h1>
+          <p>Такой страницы нет. Шкала времени — в один клик.</p>
+          <a href="/ru/">Вернуться к шкале времени</a>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

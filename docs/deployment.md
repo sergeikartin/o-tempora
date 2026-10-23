@@ -22,6 +22,10 @@ A fourth plugin, `vite-plugins/critical-css.ts`, inlines above-the-fold CSS into
 
 English is served from the domain root; every other locale gets its own `/<locale>/` subpath — Russian at `/ru/` today, and the same pattern for any locale added later. There is no `/en/` path and no root redirect (`docs/adr/0003`).
 
+## 404 page
+
+`packages/web/public/404.html` is a static, bilingual (EN + RU on one page) parchment-styled page with inline CSS and no JS or datasets; Vite copies it to `dist/404.html`, which GitHub Pages serves (with a 404 status) for any path that isn't a real file. It links to `/` and `/ru/` root-relatively, so it works from any depth, and it is `noindex`. The Ledger & Ink tokens are repeated inline since it loads no bundle, and fonts fall back to system faces. `vite.config.ts` sets `appType: 'mpa'` (no SPA fallback to `index.html`) and a small preview-only plugin serves `404.html` for unresolved paths, so `npm run preview` behaves like Pages.
+
 ## CI
 
 `.github/workflows/ci.yml` runs on every push to `dev` and every PR into `main`/`dev`: typecheck + test for `data-pipeline`, and lint + `lint:boundaries` + typecheck + test + build for `web`. Branch protection on `main` requires both jobs to pass before merge.
@@ -59,4 +63,4 @@ npm run build
 cd dist && python3 -m http.server 8000
 ```
 
-Then check `http://localhost:8000/` and `http://localhost:8000/ru/` both load, and the switcher link on each navigates to the other.
+Then check `http://localhost:8000/` and `http://localhost:8000/ru/` both load, and the switcher link on each navigates to the other. To check the 404 page, use `npm run preview` instead of `http.server` (which serves its own error page) and open any unknown path, e.g. `/anything-else`.
