@@ -225,7 +225,7 @@ export function Sidebar({
                 />
               </section>
               <section className={styles.section}>
-                <h2 className={styles.heading}>{m.peopleHeading()}</h2>
+                <h2 className={styles.heading}>{m.occupationHeading()}</h2>
                 <OccupationDomainFilters
                   selectedDomains={selectedDomains}
                   onToggleDomain={onToggleDomain}

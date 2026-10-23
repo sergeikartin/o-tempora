@@ -169,8 +169,8 @@ export function personLaneHeight(rowCount: number): number {
 // CVD-safe spacing and more colors than a legend can hold anyway. Each
 // group rhymes with (is a darker, richer step of) the People-domain hue its
 // content actually echoes, so the color language is learned once: Science &
-// Innovation deepens Science & Technology, Social & Human Culture deepens
-// Public Figure. See docs/design-tokens.md for the validation report and
+// Innovation deepens Science & Technology, Society & Culture deepens
+// Public Figures. See docs/design-tokens.md for the validation report and
 // the full category -> group mapping. MILESTONE_CATEGORY_GROUP_COLORS
 // itself lives in shared/config (imported above), not here, since the
 // sidebar's Milestone Category Group filter pills need it too and

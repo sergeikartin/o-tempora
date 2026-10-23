@@ -48,7 +48,7 @@ test('clicking a pill calls onToggleValue with that value', () => {
     />,
   );
 
-  fireEvent.click(getByLabelText('Filter by Social & Human Culture'));
+  fireEvent.click(getByLabelText('Filter by Society & Culture'));
 
   expect(onToggleValue).toHaveBeenCalledWith('social-culture');
 });

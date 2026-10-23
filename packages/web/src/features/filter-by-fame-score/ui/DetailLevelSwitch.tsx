@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import { type CSSProperties, useId } from 'react';
 import {
   DETAIL_LEVELS,
   type DetailLevel,
@@ -30,6 +30,7 @@ export function DetailLevelSwitch({
   onSelectLevel,
   loadingLevelIds,
 }: DetailLevelSwitchProps) {
+  const hintId = useId();
   const selectedIndex = Math.max(
     0,
     DETAIL_LEVELS.findIndex((level) => level.id === selectedLevelId),
@@ -47,7 +48,11 @@ export function DetailLevelSwitch({
 
   return (
     <div>
-      <fieldset className={styles.switch} aria-label={m.detailLevelAriaLabel()}>
+      <fieldset
+        className={styles.switch}
+        aria-label={m.detailLevelAriaLabel()}
+        aria-describedby={hintId}
+      >
         <div className={styles.labels}>
           {DETAIL_LEVELS.map((level, index) => (
             <span
@@ -100,6 +105,9 @@ export function DetailLevelSwitch({
           })}
         </div>
       </fieldset>
+      <p id={hintId} className={styles.description}>
+        {m.detailLevelHint()}
+      </p>
       <p className={styles.description}>{selectedLevel.description}</p>
     </div>
   );

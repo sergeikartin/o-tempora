@@ -37,7 +37,9 @@ function renderSidebar(overrides: Partial<SidebarProps> = {}) {
 test('renders one Occupation Domain pill per OccupationDomain', () => {
   const { getByRole } = renderSidebar();
 
-  const people = getByRole('heading', { name: 'People' }).closest('section');
+  const people = getByRole('heading', { name: 'Occupation' }).closest(
+    'section',
+  );
   expect(people?.querySelectorAll('li')).toHaveLength(
     OCCUPATION_DOMAINS.length,
   );
@@ -108,7 +110,7 @@ test('clicking a Milestone Category Group pill calls onToggleConflictsMilestones
     onToggleConflictsMilestonesValue,
   });
 
-  fireEvent.click(getByLabelText('Filter by Social & Human Culture'));
+  fireEvent.click(getByLabelText('Filter by Society & Culture'));
 
   expect(onToggleConflictsMilestonesValue).toHaveBeenCalledWith(
     'social-culture',

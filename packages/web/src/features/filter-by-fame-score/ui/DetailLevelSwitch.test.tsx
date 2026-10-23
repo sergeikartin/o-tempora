@@ -126,3 +126,16 @@ test('holds the track fill one stop short while deep-cut is still loading', () =
     '100%',
   );
 });
+
+test('describes the control with the fixed hint, shown as a line under it', () => {
+  const { getByRole, getByText } = render(
+    <DetailLevelSwitch
+      selectedLevelId="mainstream"
+      onSelectLevel={vi.fn()}
+      loadingLevelIds={[]}
+    />,
+  );
+
+  const hint = getByText('How much to show, most famous first.');
+  expect(getByRole('group').getAttribute('aria-describedby')).toBe(hint.id);
+});

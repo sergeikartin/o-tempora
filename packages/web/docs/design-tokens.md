@@ -28,7 +28,7 @@ Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact
 
 ## Conflict Color
 
-Used as the stroke/fill color for every Conflict's range line and point-dot marker, regardless of `ConflictCategory`. Retired the old per-category Conflict Category Palette (six hues keyed by `ConflictCategory`) once Conflicts and Milestones merged into one mixed, fame-ranked lane (`packages/web/src/widgets/timeline-canvas/ConflictsMilestonesLane.tsx`) — a Conflict needs to read as one visual group at a glance next to Milestones' own multi-color palette below, not blend into it category-by-category. Rhymes with the People-domain Institutions hue (state power), stepped darker — see Milestone Category Palette below for the same treatment applied to each Milestone group. Wired as a CSS custom property (`--color-conflict`, `global.css`) for CSS-side consumers like `Minimap.module.css`'s SVG fill; the lane rendering itself still reads the plain `CONFLICT_COLOR` JS constant below, since D3 sets that as an SVG presentation attribute directly rather than through CSS.
+Used as the stroke/fill color for every Conflict's range line and point-dot marker, regardless of `ConflictCategory`. Retired the old per-category Conflict Category Palette (six hues keyed by `ConflictCategory`) once Conflicts and Milestones merged into one mixed, fame-ranked lane (`packages/web/src/widgets/timeline-canvas/ConflictsMilestonesLane.tsx`) — a Conflict needs to read as one visual group at a glance next to Milestones' own multi-color palette below, not blend into it category-by-category. Rhymes with the People-domain Politics & Religion hue (state power), stepped darker — see Milestone Category Palette below for the same treatment applied to each Milestone group. Wired as a CSS custom property (`--color-conflict`, `global.css`) for CSS-side consumers like `Minimap.module.css`'s SVG fill; the lane rendering itself still reads the plain `CONFLICT_COLOR` JS constant below, since D3 sets that as an SVG presentation attribute directly rather than through CSS.
 
 | Token | Hex |
 |---|---|
@@ -43,11 +43,11 @@ People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and s
 | Sports | `color-domain-sports` | `#9A5C73` |
 | Business & Law | `color-domain-business-law` | `#347830` |
 | Humanities | `color-domain-humanities` | `#4E4993` |
-| Institutions | `color-domain-institutions` | `#B6514C` |
+| Politics & Religion | `color-domain-institutions` | `#B6514C` |
 | Exploration | `color-domain-exploration` | `#3E70B0` |
 | Arts | `color-domain-arts` | `#A85A3D` |
 | Science & Technology | `color-domain-science-technology` | `#357B5C` |
-| Public Figure | `color-domain-public-figure` | `#8E672C` |
+| Public Figures | `color-domain-public-figure` | `#8E672C` |
 
 ## Milestone Category Palette
 
@@ -56,7 +56,7 @@ Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values 
 | Group | Hex | Rhymes with (People domain) | `MilestoneCategory` values |
 |---|---|---|---|
 | Science & Innovation | `#008255` | Science & Technology | `science-theory`, `medicine-health`, `communication`, `transportation`, `everyday-technology`, `food-agriculture`, `energy-industry` |
-| Social & Human Culture | `#946513` | Public Figure | `public-health`, `media-culture`, `landmarks`, `infrastructure`, `expedition`, `society-administration`, `culture-arts`, `religion-mythology`, `environment-geology`, `commerce-finance`, `social-movements`, `sports-entertainment`, `philosophy-education`, `law-jurisprudence`, `archaeology-anthropology` |
+| Society & Culture | `#946513` | Public Figures | `public-health`, `media-culture`, `landmarks`, `infrastructure`, `expedition`, `society-administration`, `culture-arts`, `religion-mythology`, `environment-geology`, `commerce-finance`, `social-movements`, `sports-entertainment`, `philosophy-education`, `law-jurisprudence`, `archaeology-anthropology` |
 
 ## Typography
 

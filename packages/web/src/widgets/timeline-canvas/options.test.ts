@@ -180,7 +180,7 @@ test('MILESTONE_CATEGORY_COLORS has one entry per MilestoneCategory, folded into
   expect(values).toHaveLength(MILESTONE_CATEGORIES.length);
   expect(values.every(Boolean)).toBe(true);
   // "Ledger & Ink" folds the 21-category taxonomy into 2 legible color
-  // groups (Science & Innovation / Social & Human Culture) — duplicate hex
+  // groups (Science & Innovation / Society & Culture) — duplicate hex
   // across categories is the intended design, not an accident, so this
   // asserts the fold lands on exactly 2 distinct hexes rather than the old
   // one-hue-per-category invariant.

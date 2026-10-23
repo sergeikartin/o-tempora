@@ -3,7 +3,7 @@
 // group at a glance (Milestones keep their own multi-color category
 // palette, see milestone-category-group.ts), so the old per-category
 // Conflict Category Palette is retired in favor of this single flat color.
-// "Ledger & Ink" rhymes this with the People-domain Institutions hue
+// "Ledger & Ink" rhymes this with the People-domain Politics & Religion hue
 // (--color-domain-institutions), stepped darker — Conflict deepens state
 // power the same way each Milestone Category Group color deepens its own
 // People-domain counterpart. Validated (OKLCH lightness/chroma bounds, CVD
