@@ -5,15 +5,16 @@ import { LandingPage } from './LandingPage';
 afterEach(() => {
   cleanup();
   document.head.innerHTML = '';
+  window.history.replaceState(null, '', '/');
 });
 
-test('links the call-to-action to the timeline and the language switch to the sibling landing', () => {
+test('links the call-to-action to the open curiosity on the timeline and the language switch to the sibling landing', () => {
   render(<LandingPage />);
   expect(
     screen
-      .getByRole('link', { name: 'Explore the timeline' })
+      .getByRole('link', { name: 'See them on the timeline' })
       .getAttribute('href'),
-  ).toBe('/timeline/');
+  ).toBe('/timeline/?e=albert-einstein');
   expect(
     screen.getByRole('link', { name: 'Русский' }).getAttribute('href'),
   ).toBe('/ru/');
@@ -34,7 +35,9 @@ test('prefetches the timeline only once the call-to-action shows intent', () => 
     0,
   );
 
-  fireEvent.focus(screen.getByRole('link', { name: 'Explore the timeline' }));
+  fireEvent.focus(
+    screen.getByRole('link', { name: 'See them on the timeline' }),
+  );
 
   const hrefs = [...document.head.querySelectorAll('link[rel="prefetch"]')].map(
     (link) => link.getAttribute('href'),
@@ -50,7 +53,7 @@ test('opens on the first curiosity with its sentence and caption', () => {
   render(<LandingPage />);
   expect(
     screen.getByText(
-      'Albert Einstein and Steve Jobs were alive at the same time.',
+      'Steve Jobs was born two months before Albert Einstein died.',
     ),
   ).toBeTruthy();
   expect(screen.getByText(/Jobs was born in February 1955/)).toBeTruthy();
@@ -102,4 +105,45 @@ test('links each mark of the open curiosity to its entity on the timeline', () =
     .map((link) => link.getAttribute('href'));
   expect(hrefs).toContain('/timeline/?e=albert-einstein');
   expect(hrefs).toContain('/timeline/?e=steve-jobs');
+});
+
+test('retargets the call-to-action when another curiosity is picked', () => {
+  render(<LandingPage />);
+  fireEvent.click(screen.getByRole('button', { name: 'Monet & Monroe' }));
+  expect(
+    screen
+      .getByRole('link', { name: 'See them on the timeline' })
+      .getAttribute('href'),
+  ).toBe('/timeline/?e=claude-monet');
+});
+
+test('keeps the picked curiosity in the hash and carries it to the sibling landing', () => {
+  render(<LandingPage />);
+  fireEvent.click(screen.getByRole('button', { name: 'Jefferson & Adams' }));
+  expect(window.location.hash).toBe('#jefferson-adams');
+  expect(
+    screen.getByRole('link', { name: 'Русский' }).getAttribute('href'),
+  ).toBe('/ru/#jefferson-adams');
+});
+
+test('opens on the curiosity named in the hash', () => {
+  window.history.replaceState(null, '', '/#year-1564');
+  render(<LandingPage />);
+  expect(
+    screen
+      .getByRole('button', { name: 'Michelangelo & Galileo' })
+      .getAttribute('aria-pressed'),
+  ).toBe('true');
+});
+
+test('arrow keys move through the chips, which are a single tab stop', () => {
+  render(<LandingPage />);
+  const first = screen.getByRole('button', { name: 'Einstein & Jobs' });
+  const second = screen.getByRole('button', { name: 'Monet & Monroe' });
+  expect(first.tabIndex).toBe(0);
+  expect(second.tabIndex).toBe(-1);
+  fireEvent.keyDown(first, { key: 'ArrowRight' });
+  expect(second.getAttribute('aria-pressed')).toBe('true');
+  expect(document.activeElement).toBe(second);
+  expect(second.tabIndex).toBe(0);
 });

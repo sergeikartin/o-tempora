@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { type KeyboardEvent, useEffect, useRef, useState } from 'react';
 import {
   DATA_LICENSE_URL,
   GITHUB_REPO_URL,
   SIBLING_LANDING_HREF,
   TIMELINE_HREF,
 } from '../../shared/config';
+import { entityLinkSearch } from '../../shared/lib/entity';
 import { m } from '../../shared/paraglide/messages.js';
 import { Logo } from '../../shared/ui';
 import { CuriosityFigure } from './CuriosityFigure';
@@ -36,6 +37,11 @@ function Chevron({ direction }: { direction: 'left' | 'right' }) {
   );
 }
 
+function curiosityIdFromHash(): string | null {
+  const id = window.location.hash.slice(1);
+  return CURIOSITIES.some((curiosity) => curiosity.id === id) ? id : null;
+}
+
 export function LandingPage() {
   const [activeId, setActiveId] = useState(CURIOSITIES[0].id);
   const active =
@@ -45,39 +51,50 @@ export function LandingPage() {
   const activeIndex = CURIOSITIES.findIndex(
     (curiosity) => curiosity.id === active.id,
   );
-  const figureRef = useRef<HTMLElement>(null);
-  const picked = useRef(false);
+  const chipRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [hash, setHash] = useState('');
 
-  const pick = (id: string) => {
-    picked.current = true;
-    setActiveId(id);
-  };
-  const step = (delta: number) => {
-    const next =
-      (activeIndex + delta + CURIOSITIES.length) % CURIOSITIES.length;
-    pick(CURIOSITIES[next].id);
-  };
-
-  // On a phone the figure sits below the chips; reveal it after a pick so the
-  // tap visibly answers.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: runs on each pick
+  // The chosen curiosity lives in the hash so a reload or shared link reopens
+  // it; it is read after mount because the prerendered HTML has no hash.
   useEffect(() => {
-    if (!picked.current) return;
-    picked.current = false;
-    const reduceMotion = window.matchMedia?.(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
-    figureRef.current?.scrollIntoView?.({
-      block: 'nearest',
-      behavior: reduceMotion ? 'auto' : 'smooth',
-    });
-  }, [activeId]);
+    const id = curiosityIdFromHash();
+    if (id) {
+      setActiveId(id);
+      setHash(`#${id}`);
+    }
+  }, []);
+
+  const pickIndex = (index: number) => {
+    const next = CURIOSITIES[index];
+    if (!next) return;
+    setActiveId(next.id);
+    setHash(`#${next.id}`);
+    window.history.replaceState(null, '', `#${next.id}`);
+  };
+  const step = (delta: number) =>
+    pickIndex((activeIndex + delta + CURIOSITIES.length) % CURIOSITIES.length);
+
+  const onChipKeyDown = (event: KeyboardEvent) => {
+    const last = CURIOSITIES.length - 1;
+    const target = {
+      ArrowRight: activeIndex === last ? 0 : activeIndex + 1,
+      ArrowDown: activeIndex === last ? 0 : activeIndex + 1,
+      ArrowLeft: activeIndex === 0 ? last : activeIndex - 1,
+      ArrowUp: activeIndex === 0 ? last : activeIndex - 1,
+      Home: 0,
+      End: last,
+    }[event.key];
+    if (target === undefined) return;
+    event.preventDefault();
+    pickIndex(target);
+    chipRefs.current[target]?.focus();
+  };
 
   return (
     <div className={styles.page}>
       <header className={styles.nav}>
         <Logo />
-        <a className={styles.navLink} href={SIBLING_LANDING_HREF}>
+        <a className={styles.navLink} href={`${SIBLING_LANDING_HREF}${hash}`}>
           {m.switchLanguageLabel()}
         </a>
       </header>
@@ -98,33 +115,40 @@ export function LandingPage() {
         </div>
         <a
           className={styles.cta}
-          href={TIMELINE_HREF}
+          href={`${TIMELINE_HREF}${entityLinkSearch(active.marks[0]?.slug ?? null)}`}
           onPointerEnter={prefetchTimeline}
           onFocus={prefetchTimeline}
           onTouchStart={prefetchTimeline}
         >
           {m.landingCta()}
         </a>
-        <fieldset className={styles.chips}>
-          <legend className={styles.legend}>{m.landingCasesLabel()}</legend>
-          {CURIOSITIES.map((curiosity) => (
-            <button
-              key={curiosity.id}
-              type="button"
-              className={styles.chip}
-              data-label={curiosity.chip()}
-              aria-pressed={curiosity.id === active.id}
-              onClick={() => pick(curiosity.id)}
-            >
-              {curiosity.chip()}
-            </button>
-          ))}
-        </fieldset>
-        <CuriosityFigure
-          curiosity={active}
-          onLinkIntent={prefetchTimeline}
-          figureRef={figureRef}
-        >
+        <div className={styles.picker}>
+          <p className={styles.legend} id="landing-cases-label">
+            {m.landingCasesLabel()}
+          </p>
+          <div
+            className={styles.chips}
+            role="toolbar"
+            aria-labelledby="landing-cases-label"
+          >
+            {CURIOSITIES.map((curiosity, index) => (
+              <button
+                key={curiosity.id}
+                ref={(node) => {
+                  chipRefs.current[index] = node;
+                }}
+                type="button"
+                className={styles.chip}
+                data-label={curiosity.chip()}
+                aria-pressed={curiosity.id === active.id}
+                tabIndex={curiosity.id === active.id ? 0 : -1}
+                onClick={() => pickIndex(index)}
+                onKeyDown={onChipKeyDown}
+              >
+                {curiosity.chip()}
+              </button>
+            ))}
+          </div>
           <div className={styles.stepper}>
             <button
               type="button"
@@ -149,7 +173,8 @@ export function LandingPage() {
               <Chevron direction="right" />
             </button>
           </div>
-        </CuriosityFigure>
+        </div>
+        <CuriosityFigure curiosity={active} onLinkIntent={prefetchTimeline} />
       </main>
       <footer className={styles.footer}>
         <p className={styles.footerGroup}>

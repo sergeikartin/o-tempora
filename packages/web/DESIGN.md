@@ -219,8 +219,8 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 - **Viewport Range** (Fraunces 600, 56px, 1; 32px below 960px): The window of years as the screen's heading, tabular figures.
 - **Panel Heading** (Fraunces 600, 20px, 1.2): Entity name in the detail panel and heading of the About panel.
 - **Wordmark** (Fraunces 600, 18px): "O Tempora" beside the 24px seal mark.
-- **Landing Headline and Lede** (Fraunces 600): headline 40–60px at 1.05, lede 20–30px at 1.4, on the landing page only.
-- **Landing Pitch** (Archivo 400, 16px, 1.5, Faded Ink): the one-line explanation under the landing headline. Curiosity chips on the landing page are the filter pill at 14px.
+- **Landing Headline and Lede** (Fraunces 600): lede (the curiosity sentence) 24–36px at 1.2 leads; headline 26–32px at 1.15 sits above it as the page title, on the landing page only.
+- **Landing Pitch** (Archivo 400, 16px, 1.5, Faded Ink): the one-line explanation under the landing headline. Curiosity chips on the landing page are the filter pill at 14px, headed by a 13px Faded Ink prompt; below 640px a prev/next stepper under that prompt replaces them. Landing axis ticks are 12px.
 - **Body** (Archivo 400, 14px, 1.5): Descriptions in the detail panel. Keep lines near 40 characters in the 340px panel.
 - **Body Small** (Archivo 400, 13px, 1.5): Date lines, buttons and links; taglines in italic.
 - **Control** (Archivo 400, 12px, 1.4): Pills, inputs, results, switch labels; 600 for an active pill, 700 for a reached switch label.

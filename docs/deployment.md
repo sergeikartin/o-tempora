@@ -31,7 +31,7 @@ English is served from the domain root; every other locale gets its own `/<local
 
 Each page is its own canonical. `hreflang` pairs landing with landing and timeline with timeline, with `x-default` pointing at `/`. Entity Links (`?e=<slug>`) live on the timeline routes and canonicalise to `/timeline/`. `public/sitemap.xml` lists the four URLs and `og-image.png` is shared by all of them.
 
-Each page carries a visible link to the sibling locale's same page kind — the landing's nav (`/` ↔ `/ru/`) and `packages/web/src/widgets/sidebar/ui/Sidebar.tsx`'s language switcher (`/timeline/` ↔ `/ru/timeline/`), root-relative so they work regardless of domain. When an entity is open the timeline's link carries its `?e=<slug>` to the sibling; nothing else (viewport, Detail Level, filters) is preserved across the switch.
+Each page carries a visible link to the sibling locale's same page kind — the landing's nav (`/` ↔ `/ru/`) and `packages/web/src/widgets/sidebar/ui/Sidebar.tsx`'s language switcher (`/timeline/` ↔ `/ru/timeline/`), root-relative so they work regardless of domain. When an entity is open the timeline's link carries its `?e=<slug>` to the sibling; nothing else (viewport, Detail Level, filters) is preserved across the switch. The landing's link likewise carries the chosen curiosity's `#<id>` hash to the sibling landing.
 
 ## 404 page
 

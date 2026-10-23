@@ -81,7 +81,7 @@ A live text query, matched case-insensitively as a substring against an entry's 
 _Avoid_: filter (bare — Search narrows within the filters, it isn't one), lookup, autocomplete
 
 **Landing Page**:
-The short explanatory first page a cold visitor reaches at the root of each **Locale**: what the product is, one **Curiosity** drawn the way the timeline draws it with a row of others to switch between, and one button into the timeline. Separate from the timeline: arriving at the root never drops a visitor onto the timeline, and returning visitors are not redirected past it.
+The short explanatory first page a cold visitor reaches at the root of each **Locale**: what the product is, one **Curiosity** drawn the way the timeline draws it with a row of others to switch between (the chosen one is kept in the URL hash), and one button that opens the shown Curiosity's first mark on the timeline. Separate from the timeline: arriving at the root never drops a visitor onto the timeline, and returning visitors are not redirected past it.
 _Avoid_: home page (ambiguous with the language switcher), splash, intro, onboarding
 
 **Slug**:

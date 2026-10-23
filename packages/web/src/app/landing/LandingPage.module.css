@@ -52,15 +52,15 @@
 
 .headline {
   font-family: Fraunces, Georgia, serif;
-  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  font-size: clamp(1.625rem, 3vw, 2rem);
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.15;
   text-wrap: balance;
 }
 
 .pitch {
   max-width: 34em;
-  margin-top: 16px;
+  margin-top: 8px;
   color: var(--color-text-secondary);
   font-size: 16px;
   line-height: 1.5;
@@ -72,16 +72,16 @@
    the call to action. */
 .ledeStack {
   display: grid;
-  margin-top: 20px;
+  margin-top: 28px;
 }
 
 .lede {
   grid-area: 1 / 1;
-  max-width: 26em;
+  max-width: 22em;
   font-family: Fraunces, Georgia, serif;
-  font-size: clamp(1.25rem, 2.4vw, 1.875rem);
+  font-size: clamp(1.5rem, 3.2vw, 2.25rem);
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.2;
   text-wrap: pretty;
   visibility: hidden;
 }
@@ -113,8 +113,11 @@
   background: var(--color-focus-ring);
 }
 
-.chips {
+.picker {
   grid-area: chips;
+}
+
+.chips {
   min-inline-size: 0;
   border: 0;
   display: flex;
@@ -124,12 +127,11 @@
 }
 
 .legend {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  margin-bottom: 10px;
+  padding: 0;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .chip {
@@ -182,7 +184,6 @@
   grid-template-columns: 44px minmax(0, 1fr) 44px;
   align-items: center;
   gap: 12px;
-  margin-top: 16px;
 }
 
 .stepButton {
@@ -230,7 +231,7 @@
 
 .figure {
   grid-area: figure;
-  max-width: 440px;
+  max-width: 560px;
 }
 
 .chart {
@@ -244,7 +245,7 @@
   left: var(--start);
   width: var(--span);
   background: var(--color-selection-halo);
-  animation: fade-in 500ms var(--landing-ease) 700ms both;
+  animation: fade-in 400ms var(--landing-ease) 450ms both;
 }
 
 .bandConflict {
@@ -252,6 +253,7 @@
 }
 
 .row {
+  min-height: 54px;
   padding-block: 10px;
 }
 
@@ -271,7 +273,7 @@
 .track {
   position: relative;
   display: block;
-  height: 6px;
+  height: 8px;
 }
 
 .bar {
@@ -287,7 +289,7 @@
   min-width: 10px;
   border-radius: var(--radius-full);
   transform-origin: left center;
-  animation: draw-bar 700ms var(--landing-ease) calc(200ms + var(--i) * 140ms)
+  animation: draw-bar 480ms var(--landing-ease) calc(120ms + var(--i) * 100ms)
     both;
 }
 
@@ -303,7 +305,7 @@
 
 .axis {
   position: relative;
-  height: 28px;
+  height: 30px;
   border-block: 1px solid var(--color-border-strong);
   background: color-mix(in srgb, var(--color-bg-axis) 82%, transparent);
 }
@@ -315,16 +317,16 @@
   padding-left: 4px;
   border-left: 1px solid var(--color-border-strong);
   color: var(--color-text-secondary);
-  font-size: 10px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
-  line-height: 26px;
+  line-height: 28px;
   white-space: nowrap;
 }
 
 .caption {
   margin-top: 14px;
   color: var(--color-text-secondary);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -403,10 +405,6 @@
   outline-offset: 3px;
 }
 
-.chip:focus-visible {
-  outline-offset: 1px;
-}
-
 @keyframes draw-bar {
   from {
     transform: scaleX(0);
@@ -427,13 +425,52 @@
   }
 
   .main {
-    grid-template-columns: minmax(0, 1fr) 420px;
+    grid-template-columns: minmax(0, 1fr) 480px;
     grid-template-areas:
       "copy figure"
       "cta figure"
       "chips figure";
     grid-template-rows: auto auto auto;
     align-items: start;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr) 540px;
+  }
+}
+
+/* A landscape phone is wide but short: keep the copy and the figure side by
+   side so the call to action and the figure share the first screen. */
+@media (min-width: 600px) and (max-height: 500px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-areas:
+      "copy figure"
+      "cta figure"
+      "chips figure";
+    grid-template-rows: auto auto auto;
+    gap: 16px 40px;
+    align-items: start;
+    padding-block: 12px 24px;
+  }
+
+  .ledeStack {
+    margin-top: 16px;
+  }
+
+  .lede {
+    font-size: 1.375rem;
+  }
+
+  .pitch,
+  .chips {
+    display: none;
+  }
+
+  .stepper {
+    display: grid;
   }
 }
 
@@ -459,16 +496,8 @@
     padding-block: 20px 40px;
   }
 
-  .headline {
-    font-size: 2.25rem;
-  }
-
   .ledeStack {
-    margin-top: 16px;
-  }
-
-  .lede {
-    font-size: 1.125rem;
+    margin-top: 20px;
   }
 
   .cta {
