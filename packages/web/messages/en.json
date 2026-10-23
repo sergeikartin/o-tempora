@@ -83,5 +83,8 @@
   "detailLevelDescription.legendary": "Only top-tier, world-altering figures, major conflicts, and pivotal milestones.",
   "detailLevelDescription.mainstream": "Essential historical figures, key conflicts, and primary milestones.",
   "detailLevelDescription.specialized": "Includes notable figures, secondary conflicts, and regional milestones.",
-  "detailLevelDescription.deep-cut": "Displays high-density details, including niche figures, minor conflicts, and obscure milestones."
+  "detailLevelDescription.deep-cut": "Displays high-density details, including niche figures, minor conflicts, and obscure milestones.",
+  "landingHeadline": "Every life in context.",
+  "landingSubhead": "See who lived at the same time, and what else was happening.",
+  "landingCta": "Explore the timeline"
 }

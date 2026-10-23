@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O Tempora — Visualize human history and global events in context</title>
+    <meta name="description" content="Explore history interactively with O Tempora. See famous lives, conflicts, and milestones side by side on one zoomable timeline." />
+    <link rel="canonical" href="https://otempora.info/timeline/" />
+    <link rel="alternate" hreflang="en" href="https://otempora.info/timeline/" />
+    <link rel="alternate" hreflang="ru" href="https://otempora.info/ru/timeline/" />
+    <link rel="alternate" hreflang="x-default" href="https://otempora.info/" />
+
+    <!-- Paints the parchment before any stylesheet or JS loads (dev serves CSS
+         via main.tsx's imports; prod defers non-critical CSS). Mirrors
+         --color-bg-base in src/app/global.css. -->
+    <style>html{background-color:#f2e9d2}</style>
+    <meta name="theme-color" content="#f2e9d2" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="O Tempora" />
+    <meta property="og:title" content="O Tempora — Visualize human history and global events in context" />
+    <meta property="og:description" content="Explore history interactively with O Tempora. See famous lives, conflicts, and milestones side by side on one zoomable timeline." />
+    <meta property="og:url" content="https://otempora.info/timeline/" />
+    <meta property="og:image" content="https://otempora.info/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ru_RU" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="O Tempora — Visualize human history and global events in context" />
+    <meta name="twitter:description" content="Explore history interactively with O Tempora. See famous lives, conflicts, and milestones side by side on one zoomable timeline." />
+    <meta name="twitter:image" content="https://otempora.info/og-image.png" />
+
+    <script async src="https://cloud.umami.is/script.js" data-website-id="e1fce68c-3b99-40bc-97f0-2c647c0efba9" data-performance="true"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

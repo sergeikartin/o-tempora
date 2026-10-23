@@ -99,7 +99,7 @@ function preloadedHrefs(path: string, transformBundle: Bundle | undefined) {
 }
 
 test('preloads only the EN level 1+2 chunks for the EN entry html, not level 3/4', () => {
-  expect(preloadedHrefs('/index.html', bundle).sort()).toEqual([
+  expect(preloadedHrefs('/timeline/index.html', bundle).sort()).toEqual([
     '/assets/conflicts.detail1-def.js',
     '/assets/milestones.detail2-ghi.js',
     '/assets/people.detail1-abc.js',
@@ -107,15 +107,20 @@ test('preloads only the EN level 1+2 chunks for the EN entry html, not level 3/4
 });
 
 test('preloads only the RU level 1+2 chunks for the RU entry html', () => {
-  expect(preloadedHrefs('/ru/index.html', bundle).sort()).toEqual([
+  expect(preloadedHrefs('/ru/timeline/index.html', bundle).sort()).toEqual([
     '/assets/conflicts.detail2.ru-mno.js',
     '/assets/milestones.detail1.ru-pqr.js',
     '/assets/people.detail1.ru-jkl.js',
   ]);
 });
 
+test('preloads no datasets on the landing entries', () => {
+  expect(preloadedHrefs('/index.html', bundle)).toEqual([]);
+  expect(preloadedHrefs('/ru/index.html', bundle)).toEqual([]);
+});
+
 test('returns nothing when no bundle is present (dev server)', () => {
-  expect(preloadedHrefs('/index.html', undefined)).toEqual([]);
+  expect(preloadedHrefs('/timeline/index.html', undefined)).toEqual([]);
 });
 
 test('matches a chunk whose facadeModuleId uses Windows-style backslashes', () => {
@@ -125,7 +130,7 @@ test('matches a chunk whose facadeModuleId uses Windows-style backslashes', () =
       'C:\\repo\\packages\\shared-types\\src\\data\\people.detail1.json',
     ),
   } as unknown as Bundle;
-  expect(preloadedHrefs('/index.html', windowsBundle)).toEqual([
+  expect(preloadedHrefs('/timeline/index.html', windowsBundle)).toEqual([
     '/assets/people.detail1-abc.js',
   ]);
 });

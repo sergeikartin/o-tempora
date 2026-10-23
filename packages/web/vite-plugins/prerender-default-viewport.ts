@@ -1,10 +1,14 @@
 import path from 'node:path';
-import { createElement } from 'react';
+import { createElement, type ReactElement } from 'react';
 import { renderToReadableStream } from 'react-dom/server';
-import type { IndexHtmlTransformContext, Plugin, ResolvedConfig } from 'vite';
+import type {
+  IndexHtmlTransformContext,
+  Plugin,
+  ResolvedConfig,
+  ViteDevServer,
+} from 'vite';
 import { createServer } from 'vite';
-
-type Locale = 'en' | 'ru';
+import { type EntryLocale, htmlEntry } from './html-entry.ts';
 
 // TimelineCanvas.tsx's own mount effect pins .peopleLane's scroll to its
 // bottom (fame-priority rows sit there, axis-adjacent) and centers
@@ -74,25 +78,17 @@ vr.textContent=Math.round(startYear)+' \\u2013 '+Math.round(endYear);
 })()</script>`;
 }
 
-// Spins up a throwaway Vite SSR module graph for exactly one locale's
-// render — reusing the real build's resolved css/resolve config (ADR 0013)
-// so CSS-Module class hashes match the real build's output — and renders
-// <App initialDatasets={...} />. PeopleLane's/ConflictsMilestonesLane's own
-// lazy-initialized dangerouslySetInnerHTML (mark-shape-html.ts) already puts
-// real default-state marks in the output; there's no separate markup
-// computation or graft step here. Called once per HTML entry
-// (transformIndexHtml runs once per Rollup input), so English and Russian
-// each get their own fully isolated module instances — no shared Paraglide
-// locale state to leak between them.
-async function renderDefaultViewportHtml(
-  locale: Locale,
+// Spins up a throwaway Vite SSR module graph for exactly one entry's
+// render — reusing the real build's resolved css/resolve config (ADR 0013) so
+// CSS-Module class hashes match the real build's output. Called once per HTML
+// entry (transformIndexHtml runs once per Rollup input), so each entry gets
+// its own fully isolated module instances — no shared Paraglide locale state
+// to leak between them.
+async function withSsrServer<T>(
+  locale: EntryLocale,
   resolvedConfig: ResolvedConfig,
-): Promise<{
-  appHtml: string;
-  scrollContainerTargetLeft: number;
-  defaultStartYear: number;
-  pixelsPerYear: number;
-}> {
+  render: (server: ViteDevServer) => Promise<T>,
+): Promise<T> {
   const server = await createServer({
     configFile: false,
     root: resolvedConfig.root,
@@ -107,11 +103,44 @@ async function renderDefaultViewportHtml(
     const runtime = await server.ssrLoadModule(
       path.resolve(resolvedConfig.root, 'src/shared/paraglide/runtime.js'),
     );
-    // Must land before locale-datasets.ts (below) evaluates — its
-    // module-scope localeDatasetsPromise reads getLocale() once, at import
-    // time.
+    // Must land before any module that reads getLocale() at import time
+    // (locale-datasets.ts's localeDatasetsPromise, config/routes.ts) evaluates.
     runtime.overwriteGetLocale(() => locale);
+    return await render(server);
+  } finally {
+    await server.close();
+  }
+}
 
+async function renderToHtml(element: ReactElement): Promise<string> {
+  // renderToReadableStream, not renderToStaticMarkup/renderToString: the
+  // timeline's tree still has real <Suspense> boundaries even though
+  // initialDatasets makes the top one a no-op here — the two lazy-loaded
+  // panels (AboutPanel/DetailPanel) each trigger a real dynamic import(),
+  // which only a streaming SSR API actually waits for (renderToString
+  // renders their `fallback` immediately and logs a "does not support
+  // Suspense" warning; renderToStaticMarkup skips hydration markers
+  // entirely). Awaiting `allReady` blocks until every boundary — including
+  // those two — has its real content, matching what hydrateRoot expects.
+  const stream = await renderToReadableStream(element);
+  await stream.allReady;
+  return new Response(stream).text();
+}
+
+// Renders <App initialDatasets={...} />. PeopleLane's/
+// ConflictsMilestonesLane's own lazy-initialized dangerouslySetInnerHTML
+// (mark-shape-html.ts) already puts real default-state marks in the output;
+// there's no separate markup computation or graft step here.
+async function renderDefaultViewportHtml(
+  locale: EntryLocale,
+  resolvedConfig: ResolvedConfig,
+): Promise<{
+  appHtml: string;
+  scrollContainerTargetLeft: number;
+  defaultStartYear: number;
+  pixelsPerYear: number;
+}> {
+  return withSsrServer(locale, resolvedConfig, async (server) => {
     const [
       { App },
       { localeDatasetsPromise },
@@ -136,31 +165,28 @@ async function renderDefaultViewportHtml(
     ]);
     const datasets = await localeDatasetsPromise;
     const { scale } = buildXScale(REFERENCE_PIXELS_PER_YEAR);
-    const scrollContainerTargetLeft = scale(DEFAULT_VIEWPORT_START_YEAR);
-
-    // renderToReadableStream, not renderToStaticMarkup/renderToString:
-    // App.tsx's tree still has real <Suspense> boundaries even though
-    // initialDatasets makes the top one a no-op here — the two lazy-loaded
-    // panels (AboutPanel/DetailPanel) each trigger a real dynamic import(),
-    // which only a streaming SSR API actually waits for (renderToString
-    // renders their `fallback` immediately and logs a "does not support
-    // Suspense" warning; renderToStaticMarkup skips hydration markers
-    // entirely). Awaiting `allReady` blocks until every boundary — including
-    // those two — has its real content, matching what hydrateRoot expects.
-    const stream = await renderToReadableStream(
-      createElement(App, { initialDatasets: datasets }),
-    );
-    await stream.allReady;
-    const appHtml = await new Response(stream).text();
     return {
-      appHtml,
-      scrollContainerTargetLeft,
+      appHtml: await renderToHtml(
+        createElement(App, { initialDatasets: datasets }),
+      ),
+      scrollContainerTargetLeft: scale(DEFAULT_VIEWPORT_START_YEAR),
       defaultStartYear: DEFAULT_VIEWPORT_START_YEAR,
       pixelsPerYear: REFERENCE_PIXELS_PER_YEAR,
     };
-  } finally {
-    await server.close();
-  }
+  });
+}
+
+// The landing page loads no datasets, so its prerender is the whole page.
+async function renderLandingHtml(
+  locale: EntryLocale,
+  resolvedConfig: ResolvedConfig,
+): Promise<string> {
+  return withSsrServer(locale, resolvedConfig, async (server) => {
+    const { LandingPage } = await server.ssrLoadModule(
+      path.resolve(resolvedConfig.root, 'src/app/landing/index.ts'),
+    );
+    return renderToHtml(createElement(LandingPage));
+  });
 }
 
 export function prerenderDefaultViewportPlugin(): Plugin {
@@ -175,7 +201,14 @@ export function prerenderDefaultViewportPlugin(): Plugin {
       order: 'post',
       async handler(html, ctx: IndexHtmlTransformContext) {
         if (!ctx.bundle) return html;
-        const locale: Locale = ctx.path.startsWith('/ru/') ? 'ru' : 'en';
+        const { locale, kind } = htmlEntry(ctx.path);
+        if (kind === 'landing') {
+          const landingHtml = await renderLandingHtml(locale, resolvedConfig);
+          return html.replace(
+            '<div id="root"></div>',
+            `<div id="root">${landingHtml}</div>`,
+          );
+        }
         const {
           appHtml,
           scrollContainerTargetLeft,

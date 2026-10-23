@@ -186,7 +186,7 @@ test('the language switch carries the open entity to the sibling locale', async 
   await waitFor(() =>
     expect(
       container.querySelector('a[href^="/ru/"]')?.getAttribute('href'),
-    ).toBe('/ru/?e=slug-of-mainstream'),
+    ).toBe('/ru/timeline/?e=slug-of-mainstream'),
   );
 });
 
@@ -194,6 +194,6 @@ test('the language switch has no entity when nothing is open', async () => {
   const { container } = await renderApp();
 
   expect(container.querySelector('a[href^="/ru/"]')?.getAttribute('href')).toBe(
-    '/ru/',
+    '/ru/timeline/',
   );
 });

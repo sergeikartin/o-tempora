@@ -83,7 +83,10 @@ type PreloadTag = {
   };
 };
 
-function preloadedFontTags(transformBundle: Bundle | undefined) {
+function preloadedFontTags(
+  transformBundle: Bundle | undefined,
+  path = '/timeline/index.html',
+) {
   const plugin = criticalFontPreloadPlugin();
   const hook = plugin.transformIndexHtml;
   if (!hook || typeof hook === 'function') {
@@ -94,8 +97,8 @@ function preloadedFontTags(transformBundle: Bundle | undefined) {
     ctx: IndexHtmlTransformContext,
   ) => PreloadTag[];
   return handler('', {
-    path: '/index.html',
-    filename: '/index.html',
+    path,
+    filename: path,
     bundle: transformBundle,
   } as IndexHtmlTransformContext);
 }
@@ -111,6 +114,18 @@ test('preloads the latin 400/600/700, latin-ext 400, and fraunces-latin 600 woff
     '/assets/archivo-latin-ext-400-normal-jkl.woff2',
     '/assets/fraunces-latin-600-normal-stu.woff2',
   ]);
+});
+
+test('preloads only the landing faces on the landing entries', () => {
+  for (const path of ['/index.html', '/ru/index.html']) {
+    const hrefs = preloadedFontTags(bundle, path)
+      .map((tag) => tag.attrs.href)
+      .sort();
+    expect(hrefs).toEqual([
+      '/assets/archivo-latin-400-normal-abc.woff2',
+      '/assets/fraunces-latin-600-normal-stu.woff2',
+    ]);
+  }
 });
 
 test('sets font preload attributes required to avoid a double fetch', () => {

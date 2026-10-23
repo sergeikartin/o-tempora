@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0007-landing-and-timeline-split-into-four-routes.md
 ---
 
 # English Served From the Domain Root

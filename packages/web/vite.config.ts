@@ -6,18 +6,21 @@ import { defineConfig } from 'vitest/config';
 import { criticalCssPlugin } from './vite-plugins/critical-css.ts';
 import { criticalFontPreloadPlugin } from './vite-plugins/critical-font-preload.ts';
 import { eagerDetailModulePreloadPlugin } from './vite-plugins/eager-detail-modulepreload.ts';
+import { landingTimelinePrefetchPlugin } from './vite-plugins/landing-timeline-prefetch.ts';
 import { prerenderDefaultViewportPlugin } from './vite-plugins/prerender-default-viewport.ts';
 
 // Locale is resolved at runtime from the URL, not forked at build time
 // (docs/adr/0009 supersedes 0005's baseLocale-only strategy): English is
-// unprefixed at the domain root, Russian lives at `/ru/*`
-// (docs/deployment.md, docs/adr/0003) — Paraglide's default url-pattern
-// (no custom `urlPatterns` needed) already resolves exactly that scheme,
-// falling back to the base locale for any unrecognized first path segment.
-// `ru/index.html` is a second Rollup input so one `vite build` emits both
-// `dist/index.html` and `dist/ru/index.html`, sharing the same JS/CSS
-// chunks — see `App.tsx`'s `locale-datasets.ts` for the per-locale dynamic
-// data imports that keep each page load's payload single-language.
+// unprefixed at the domain root, Russian lives at `/ru/*` — Paraglide's
+// default url-pattern (no custom `urlPatterns` needed) already resolves
+// exactly that scheme, falling back to the base locale for any unrecognized
+// first path segment. Four HTML entries are Rollup inputs so one `vite build`
+// emits the landing pages (`/`, `/ru/`, loading `src/landing.tsx`) and the
+// timeline pages (`/timeline/`, `/ru/timeline/`, loading `src/main.tsx`),
+// the two locales of each sharing the same JS/CSS chunks (docs/deployment.md,
+// docs/adr/0007). See `App.tsx`'s `locale-datasets.ts` for the per-locale
+// dynamic data imports that keep each timeline page load's payload
+// single-language.
 export default defineConfig({
   base: '/',
   // No SPA fallback: unknown paths must 404 like GitHub Pages does, not
@@ -77,6 +80,7 @@ export default defineConfig({
     }),
     eagerDetailModulePreloadPlugin(),
     criticalFontPreloadPlugin(),
+    landingTimelinePrefetchPlugin(),
     // Between font preload and critical CSS: the latter's Beasties pass
     // (critical-css.ts) needs the real, class-bearing default-viewport
     // markup already rendered into #root to decide what's critical, not the
@@ -88,8 +92,10 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       input: {
-        main: 'index.html',
-        ru: 'ru/index.html',
+        landing: 'index.html',
+        landingRu: 'ru/index.html',
+        timeline: 'timeline/index.html',
+        timelineRu: 'ru/timeline/index.html',
       },
     },
   },
