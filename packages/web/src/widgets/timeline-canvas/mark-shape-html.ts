@@ -16,25 +16,20 @@ import {
   pointLabelY,
 } from './options';
 
-// HTML-string counterpart to mark-shape.ts's buildMarkChildren — same
-// MarkShape descriptor, same fixed attrs, same per-datum attrs each lane's
-// D3 join sets on a freshly-entered mark, but rendered as a literal string
-// instead of appended to a live D3 selection. PeopleLane/ConflictsMilestones
-// Lane each call the list-level renderers below (renderPeopleMarkupHtml etc.)
-// once, in a lazy useState initializer, to seed their <g>'s
-// dangerouslySetInnerHTML with real content on first render — identically on
-// the server (vite-plugins/prerender-default-viewport.ts, via
-// App.tsx's initialDatasets seam) and the client, so hydration has nothing
-// to reconcile there. The D3 join's `enter` branch (buildMarkChildren)
-// remains the separate consumer for marks that appear *after* that first
-// render (a filter change, Tier 1 merging in) — this module and mark-shape.ts
-// share one descriptor between the two, never a hand-duplicated second shape.
+// HTML-string counterpart to mark-shape.ts's buildMarkChildren: the same
+// MarkShape descriptor and attrs, rendered as a string. PeopleLane and
+// ConflictsMilestonesLane call the list-level renderers below once, in a lazy
+// useState initializer, to seed their <g>'s dangerouslySetInnerHTML,
+// identically on the server (vite-plugins/prerender-default-viewport.ts via
+// App.tsx's initialDatasets) and the client, so hydration has nothing to
+// reconcile. The D3 join's `enter` branch (buildMarkChildren) handles marks
+// that appear later (e.g. a filter change, a deeper Detail Level loading);
+// both share one descriptor.
 
 type Attrs = Record<string, string | number>;
 
-// Mirrors what a real browser attribute serializes to; the datasets here are
-// pipeline-generated (CLAUDE.md), not user input, but escaping stays cheap
-// insurance against a name/label containing '&', '<', or '"'.
+// Mirrors browser attribute serialization. The data is pipeline-generated, but
+// escaping is cheap insurance against '&', '<' or '"' in a name.
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -91,13 +86,10 @@ function renderMarkGroupHtml(
 ): string {
   const children = shape
     .map((part, i) =>
-      // Index 1 (halo): omitted from every mark's initial paint. It's only
-      // ever visible on the (at most one) selected mark, so pre-building
-      // an always-invisible one for the other ~99% just to have it ready
-      // costs real layout/style-recalc time on first paint for no visual
-      // benefit — mark-join.ts's ensureHaloChild lazily creates it,
-      // straight off the real mark's own geometry, the first time a given
-      // mark is ever selected.
+      // Index 1 (halo): omitted from the initial paint. Only the one selected mark
+      // shows a halo, and pre-building invisible ones for the rest costs layout and
+      // style recalc on first paint; mark-join.ts's ensureHaloChild creates it from
+      // the real mark's geometry the first time a mark is selected.
       i === 1
         ? ''
         : renderMarkPartHtml(

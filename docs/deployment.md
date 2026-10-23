@@ -31,6 +31,8 @@ English is served from the domain root; every other locale gets its own `/<local
 
 Each page is its own canonical. `hreflang` pairs landing with landing and timeline with timeline, with `x-default` pointing at `/`. Entity Links (`?e=<slug>`) live on the timeline routes and canonicalise to `/timeline/`. `public/sitemap.xml` lists the four URLs and `og-image.png` is shared by all of them.
 
+Each page carries a visible link to the sibling locale's same page kind — the landing's nav (`/` ↔ `/ru/`) and `packages/web/src/widgets/sidebar/ui/Sidebar.tsx`'s language switcher (`/timeline/` ↔ `/ru/timeline/`), root-relative so they work regardless of domain. When an entity is open the timeline's link carries its `?e=<slug>` to the sibling; nothing else (viewport, Detail Level, filters) is preserved across the switch.
+
 ## 404 page
 
 `packages/web/public/404.html` is a static, bilingual (EN + RU on one page) parchment-styled page with inline CSS and no JS or datasets; Vite copies it to `dist/404.html`, which GitHub Pages serves (with a 404 status) for any path that isn't a real file. It links to `/timeline/` and `/ru/timeline/` root-relatively, so it works from any depth, and it is `noindex`. The Ledger & Ink tokens are repeated inline since it loads no bundle, and fonts fall back to system faces. `vite.config.ts` sets `appType: 'mpa'` (no SPA fallback to `index.html`) and a small preview-only plugin serves `404.html` for unresolved paths, so `npm run preview` behaves like Pages.
@@ -47,7 +49,7 @@ One-time manual setup (not repo config — done once in GitHub's UI and at the d
 
 - Repo Settings → Pages → Source: "GitHub Actions".
 - Repo Settings → Pages → Custom domain: `otempora.info`; enable "Enforce HTTPS" once GitHub finishes issuing the certificate.
-- At the registrar for `otempora.info` (DNS managed directly there, no Cloudflare — `docs/adr/` grilling session), add apex `A` records pointing at GitHub Pages:
+- At the registrar for `otempora.info` (DNS is managed directly there), add apex `A` records pointing at GitHub Pages:
   ```
   185.199.108.153
   185.199.109.153
@@ -61,8 +63,6 @@ One-time manual setup (not repo config — done once in GitHub's UI and at the d
   2606:50c0:8002::153
   2606:50c0:8003::153
   ```
-
-Each page carries a visible link to the sibling locale's same page kind — the landing's nav (`/` ↔ `/ru/`) and `packages/web/src/widgets/sidebar/ui/Sidebar.tsx`'s language switcher (`/timeline/` ↔ `/ru/timeline/`), root-relative so they work regardless of domain. When an entity is open the timeline's link carries its `?e=<slug>` to the sibling; nothing else (viewport, Detail Level, filters) is preserved across the switch.
 
 ## Verifying locally
 

@@ -1,9 +1,7 @@
-// Wikimedia Commons' `action=query&prop=imageinfo` REST API — a distinct
-// MediaWiki API from Wikidata's SPARQL endpoint (wikidata-client.ts), used
-// only to resolve per-file license/attribution metadata for an already-known
-// P18 image URI (dynamic-tooltips spec §4.2). Kept as its own client rather
-// than folded into wikidata-client.ts since it's a different protocol
-// entirely (plain REST query params, not a SPARQL query body).
+// Wikimedia Commons' `action=query&prop=imageinfo` API, distinct from Wikidata's
+// SPARQL endpoint (wikidata-client.ts), used only to resolve license/attribution
+// for a known P18 image URI. Its own client because it is a different protocol
+// (query params, not a SPARQL body).
 
 export interface CommonsExtMetadataField {
   value: string;
@@ -24,26 +22,23 @@ export interface CommonsPage {
   imageinfo?: CommonsImageInfo[];
 }
 
-// `formatversion=2` (requested below) shapes `query.pages` as a plain
-// array, not the legacy pageid-keyed object — simpler to iterate, no
-// numeric-key indirection needed.
+// `formatversion=2` (requested below) makes `query.pages` a plain array, not
+// the legacy pageid-keyed object.
 export interface CommonsImageInfoResponse {
   query?: { pages?: CommonsPage[] };
 }
 
 const ENDPOINT = "https://commons.wikimedia.org/w/api.php";
 
-// Same courtesy identification Wikidata's own client sends (wikidata-client.ts) —
-// Wikimedia asks all API traffic to self-identify.
+// Same courtesy identification as wikidata-client.ts; Wikimedia asks all API
+// traffic to self-identify.
 const USER_AGENT =
   "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
 
 const MAX_RETRIES = 3;
-// Shorter than wikidata-client.ts's 55s (which is sized to WDQS's documented
-// 60s hard query deadline for a graph query): an imageinfo lookup is a plain
-// indexed metadata read on a batch of titles, not a query with an unbounded
-// evaluation cost, so it has no comparable server-side deadline to budget
-// against.
+// Shorter than wikidata-client.ts's 55s, which is sized to WDQS's 60s query
+// deadline: an imageinfo lookup is an indexed metadata read with no comparable
+// server-side deadline.
 const REQUEST_TIMEOUT_MS = 30_000;
 const RETRYABLE_SERVER_ERROR_STATUSES = new Set([502, 503, 504]);
 const BACKOFF_BASE_MS = 2_000;

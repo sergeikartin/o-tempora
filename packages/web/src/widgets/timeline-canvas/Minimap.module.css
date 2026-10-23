@@ -1,20 +1,15 @@
-/* Replaces .scrollbarTrack/.scrollbarThumb (ADR 0004) — a plain flex sibling
-   below .scrollContainer, always the full timeline width so its own
-   click/drag math never needs to guess at .scrollContainer's geometry.
-   Height sits in the 48-64px band the ADR calls for, versus the old
-   scrollbar's ~14px, plus MINIMAP_CENTURY_STRIP_HEIGHT_PX for the top-edge
-   century-tick strip (`/grill-with-docs`). A floating card inset from the
-   canvas edges, the same surface treatment as the Sidebar's — reads as a
-   distinct overview control instead of a second years axis sitting under
-   the lanes. */
-/* Also the positioning root for .tooltip and .viewportRect — .track itself
-   needs overflow: hidden to bound the ridge, but that same rule would clip
-   .tooltip's bottom: 100% offset (which deliberately floats it above
-   .centuryStrip + .track) and would stop .viewportRect from spanning up
-   into .centuryStrip. Sized to its content via flex: 0 0 auto (the direct
-   flex item in TimelineCanvas's column); flex-direction: column stacks
-   .centuryStrip above .track, while .tooltip/.viewportRect (position:
-   absolute) are taken out of that flow. */
+/* A flex sibling below .scrollContainer, always the full timeline width so
+   click/drag math needn't guess at .scrollContainer's geometry. Height is in
+   the 48-64px band of web/docs/adr/0004 plus MINIMAP_CENTURY_STRIP_HEIGHT_PX
+   for the century-tick strip. A floating card inset from the canvas edges with
+   the Sidebar's surface treatment, so it reads as an overview control, not a
+   second years axis. */
+/* Also the positioning root for .tooltip and .viewportRect: .track needs
+   overflow: hidden to bound the ridge, which would clip .tooltip's bottom: 100%
+   offset (above .centuryStrip + .track) and stop .viewportRect spanning into
+   .centuryStrip. Sized to content via flex: 0 0 auto; flex-direction: column
+   stacks .centuryStrip above .track, and the absolutely positioned
+   .tooltip/.viewportRect leave that flow. */
 .wrapper {
   position: relative;
   display: flex;
@@ -122,12 +117,10 @@
   vector-effect: non-scaling-stroke;
 }
 
-/* Draggable viewport indicator — same geometry math as the old
-   .scrollbarThumb (ratio-based left/width), just full-height instead of an
-   inset bar, and translucent so the density shape underneath it stays
-   legible. A direct child of .wrapper (not .track), positioned against
-   .wrapper's own box, so it spans the century-tick strip above the ridge
-   too, not just the ridge itself. */
+/* Draggable viewport indicator: ratio-based left/width, full height, and
+   translucent so the density shape stays legible. A direct child of .wrapper
+   (not .track), positioned against .wrapper, so it also spans the century-tick
+   strip above the ridge. */
 .viewportRect {
   position: absolute;
   top: 0;
@@ -141,15 +134,10 @@
   border-left: 1px solid var(--color-accent-selected);
   border-right: 1px solid var(--color-accent-selected);
   cursor: grab;
-  /* No left/width transition: a track click-to-jump already arrives here as
-     a stream of per-frame scrollLeft values eased by TimelineCanvas's own
-     rAF loop (the same values driving the lanes/axis), so this rect already
-     glides in lockstep with them just by re-rendering on every one. Adding
-     a CSS transition on top would smooth a target that's already moving,
-     making the rect visibly lag the lanes instead of matching them. Every
-     other pan source (drag-to-pan, native scroll, this rect's own drag)
-     updates scrollLeft 1:1 with no animation on the lanes either, so
-     instant tracking here is the consistent behavior, not a gap. */
+  /* No left/width transition: a track click-to-jump already arrives as per-frame
+     scrollLeft values eased by TimelineCanvas's rAF loop, so the rect glides in
+     lockstep; a CSS transition on top would lag the lanes. Other pan sources
+     update scrollLeft 1:1 without animation, so instant tracking is consistent. */
   transition: background-color var(--motion-duration-fast) var(--motion-easing);
 }
 
@@ -170,12 +158,10 @@
   );
 }
 
-/* Hover tooltip — recovers the exact date/Row-Depth numbers the log scale
-   deliberately compresses away visually. Follows the cursor's x position
-   (inline `left` style in Minimap.tsx); centered on it and clamped
-   to the track's own bounds via translateX rather than edge-anchoring, kept
-   simple since the track scrolls the tooltip out of view with everything
-   else if it would overflow (no dedicated edge-flip logic). */
+/* Hover tooltip: exact date/Row-Depth numbers the log scale compresses away.
+   Follows the cursor's x (inline `left` in Minimap.tsx), centered via
+   translateX and clamped to the track's bounds. No edge-flip logic: it scrolls
+   out of view with the track if it would overflow. */
 .tooltip {
   position: absolute;
   bottom: 100%;

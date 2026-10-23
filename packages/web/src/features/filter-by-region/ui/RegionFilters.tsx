@@ -7,10 +7,8 @@ interface RegionFiltersProps {
   onToggleRegion: (region: Region) => void;
 }
 
-// One shared Region filter control (not one per lane) narrowing People,
-// Conflicts, and Milestones together (grill-with-docs session 2026-08-12).
-// Multi-select OR; no regions active means unfiltered — see CONTEXT.md's
-// Region entry.
+// One Region filter narrowing People, Conflicts, and Milestones together.
+// Multi-select OR; none active means unfiltered (CONTEXT.md's Region).
 export function RegionFilters({
   selectedRegions,
   onToggleRegion,

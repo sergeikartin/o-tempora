@@ -10,20 +10,16 @@ function assetSource(asset: Asset): string {
     : Buffer.from(asset.source).toString('utf-8');
 }
 
-// Beasties decides what's "critical" by checking which selectors match
-// elements in the HTML it's given — but this app's build-time HTML is a
-// bare CSR shell (`<div id="root"></div>`, nothing rendered into it yet), so
-// every class selector fails that check and would otherwise get dropped
-// wholesale, keeping only bare-tag/`:root` rules. container.clientWidth is
-// measured synchronously in a useLayoutEffect (TimelineCanvas.tsx) — before
-// the browser's first paint, so it runs before a deferred (non-critical)
-// stylesheet could ever have loaded over the network. The layout rules that
-// measurement depends on (`.wrapper` / `.scrollContainer`,
-// TimelineCanvas.module.css) must therefore be force-included via
-// `allowRules` rather than left to the DOM-presence heuristic. CSS Modules
-// mangles these to `._wrapper_<hash>_<n>` / `._scrollContainer_<hash>_<n>`
-// (hash is per-source-file, not per-build), hence the prefix match instead
-// of the literal class name.
+// Beasties decides what's critical by matching selectors against elements in
+// the HTML it's given. This plugin runs after the prerender, so #root holds the
+// real default-viewport markup, but the rules TimelineCanvas's measurement
+// depends on are force-included anyway: container.clientWidth is measured
+// synchronously in a useLayoutEffect (TimelineCanvas.tsx) before first paint,
+// before a deferred stylesheet could load, so `.wrapper`/`.scrollContainer`
+// (TimelineCanvas.module.css) go in via `allowRules`, independent of which
+// marks happen to be prerendered. CSS Modules mangles them to
+// `._wrapper_<hash>_<n>` (hash per source file, not per build), hence the
+// prefix match.
 const CRITICAL_TIMELINE_LAYOUT_SELECTORS = [
   /^\._wrapper_/,
   /^\._scrollContainer_/,
@@ -49,13 +45,10 @@ export function criticalCssPlugin(): Plugin {
           inlineFonts: true,
           logLevel: 'warn',
         });
-        // Beasties normally resolves stylesheet hrefs against real files on
-        // disk (fs.readFile). The build hasn't written dist/ yet at this
-        // point in Vite's pipeline — transformIndexHtml runs against the
-        // in-memory bundle — so pull the CSS straight from ctx.bundle
-        // instead, keyed by the same fileName Rollup already emitted it
-        // under (always forward-slashed, per Rollup's OutputAsset contract,
-        // regardless of host OS).
+        // Beasties normally reads stylesheets from disk, but dist/ isn't written yet
+        // (transformIndexHtml runs against the in-memory bundle), so take the CSS from
+        // ctx.bundle by the fileName Rollup emitted it under (always forward-slashed,
+        // per Rollup's OutputAsset contract).
         beasties.readFile = (filename: string) => {
           const key = filename.replace(/\\/g, '/').replace(/^\/+/, '');
           const output = bundle[key];

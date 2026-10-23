@@ -11,15 +11,14 @@ import {
   type Person,
 } from "@o-tempora/shared-types";
 
-// Row-stacking gap in the same pixel space as REFERENCE_PIXELS_PER_YEAR —
-// a pipeline-only value (nothing in packages/web packs rows anymore, so
-// there's nothing to keep it in sync with; see assignRows below for why the
-// scale's origin (MIN_YEAR) doesn't matter, only the per-year factor).
+// Row-stacking gap in the pixel space of REFERENCE_PIXELS_PER_YEAR. Pipeline
+// only: packages/web no longer packs rows (see assignRows for why the scale's
+// origin, MIN_YEAR, doesn't matter, only the per-year factor).
 const MIN_ROW_GAP_PX = 8;
 
-// A zero- or negative-width range (e.g. a missing end) can't pack as a
-// visible bar — widen it to a minimum one-year span, the same rule
-// packages/web's map-to-items.ts applies for live rendering.
+// A zero- or negative-width range (e.g. a missing end) can't pack as a bar, so
+// it is widened to a minimum one-year span, as in packages/web's
+// map-to-items.ts.
 function ensureMinimumRangeWidthYears(startYear: number, endYear: number): number {
   return endYear <= startYear ? startYear + 1 : endYear;
 }
@@ -31,34 +30,28 @@ interface RowInterval {
   fameScore: number;
 }
 
-// Fame-priority interval-graph row assignment, ported verbatim from
-// packages/web's former map-to-items.ts (see docs/adr/0005-row-assignment-
-// moves-to-the-pipeline.md for why it moved here): processes items by fame
-// *tier* — fameScore rounded to the nearest integer, descending — rather
-// than chronologically, greedily dropping each into the lowest-numbered row
-// that's free of it (with `gap` breathing room) anywhere in its span. The
-// most famous tier claims row 0 first and keeps it as long as nothing later
-// conflicts with it, so row 0 accumulates the highest-fame tier and each
-// successive row skews progressively less famous. Field names read as
-// years, but the algorithm is purely numeric — every caller below passes
-// pixel-space positions at REFERENCE_PIXELS_PER_YEAR.
+// Fame-priority interval-graph row assignment (docs/adr/0005-row-assignment-moves-to-the-pipeline.md):
+// processes items by fame tier (fameScore rounded to the nearest integer,
+// descending), not chronologically, greedily placing each in the lowest row
+// that's free (with `gap`) anywhere in its span. The top tier claims row 0
+// first and keeps it as long as nothing later conflicts, so row 0 holds the
+// highest-fame tier and each later row is progressively less famous. Fields
+// read as years but the algorithm is numeric: every caller passes pixel-space
+// positions at REFERENCE_PIXELS_PER_YEAR.
 export function assignRows(items: RowInterval[], gap: number): Map<string, number> {
   const rowIntervals: RowInterval[][] = [];
   const rowOfId = new Map<string, number>();
 
-  // Tier must stay the primary sort key: a lower-tier item is always
-  // processed after every higher-tier item, so it can never occupy a row a
-  // higher-tier item needs — dropping a whole tier from the input changes
-  // nothing about the rows of what's left (`packages/web/docs/adr/0007-
-  // static-row-assignment-replaces-live-per-render-packing.md`'s Why
-  // section). That guarantee is per-tier only, not per-raw-score: two
-  // same-tier items are ordered by the startYear/id tie-break below, so a
-  // floor that splits a tier (e.g. fameScore>=88 inside tier 88's
-  // [87.5, 88.5) range) can shift a surviving same-tier item's row — see
-  // this file's test `assignRows can shift a same-tier survivor's row when
-  // a floor splits its tier`. Reordering these sort keys, or adding a new
-  // primary key ahead of tier (e.g. to group by category), breaks the
-  // guarantee ADR 0007 depends on.
+  // Tier must stay the primary sort key: a lower-tier item is processed after
+  // every higher-tier one and can never take a row a higher-tier item needs, so
+  // dropping a whole tier changes nothing about the remaining rows
+  // (packages/web/docs/adr/0007-static-row-assignment-replaces-live-per-render-packing.md's
+  // Why section). The guarantee is per tier, not per raw score: same-tier items
+  // are ordered by the startYear/id tie-break below, so a floor that splits a
+  // tier (e.g. fameScore>=88 inside tier 88's [87.5, 88.5)) can shift a surviving
+  // item's row (see the test `assignRows can shift a same-tier survivor's row
+  // when a floor splits its tier`). Reordering these keys or adding a primary key
+  // ahead of tier (e.g. category) breaks what web ADR 0007 depends on.
   const sorted = [...items].sort(
     (a, b) =>
       Math.round(b.fameScore) - Math.round(a.fameScore) ||
@@ -84,9 +77,9 @@ export function assignRows(items: RowInterval[], gap: number): Map<string, numbe
   return rowOfId;
 }
 
-// Rows are language-independent (one row per entity, shared by every
-// language build), so a label's footprint is its widest rendering across
-// languages. `altNames` maps id → the other language's name.
+// Rows are language-independent (one per entity, shared by every language
+// build), so a label's footprint is its widest rendering across languages.
+// `altNames` maps id → the other language's name.
 type AltNames = ReadonlyMap<string, string>;
 
 function widestNamePx(name: string, altName: string | undefined): number {
@@ -99,11 +92,9 @@ function altNamesById(entries: readonly { id: string; name: string }[]): AltName
 
 function personInterval(person: Person, altNames: AltNames): RowInterval {
   const startYear = yearMonthToFractionalYear(person.lifespan.start);
-  // Missing lifespan.end means still alive — draw through to today, not a
-  // collapsed zero-width bar at their birth year. Using the pipeline's own
-  // build-time "today" rather than a live one is fine: Row Depth only needs
-  // to be roughly consistent, not pixel-exact with whatever "today" the
-  // browser renders with, and a rebuild refreshes it periodically anyway.
+  // Missing lifespan.end means still alive: draw through to today, not a
+  // zero-width bar at birth. The build-time "today" is fine since Row Depth only
+  // needs rough consistency with the browser's, and rebuilds refresh it.
   const rawEndYear = person.lifespan.end
     ? yearMonthToFractionalYear(person.lifespan.end)
     : new Date().getUTCFullYear();
@@ -174,9 +165,9 @@ function eventInterval(
   return { id: entry.id, startYear: start, endYear: end, fameScore: entry.fameScore };
 }
 
-// Conflicts and Milestones share one row-packing pass — packages/web's
-// merged ConflictsMilestonesLane renders both in one shared row space, so
-// their permanent rows have to be assigned together, not per-lane.
+// Conflicts and Milestones share one row-packing pass: packages/web's merged
+// ConflictsMilestonesLane renders both in one row space, so their permanent
+// rows are assigned together, not per lane.
 export function assignConflictsMilestonesRows(
   conflicts: ConflictEntry[],
   milestones: Milestone[],

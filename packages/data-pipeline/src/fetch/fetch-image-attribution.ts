@@ -59,21 +59,13 @@ const LOAD_IMAGE_ENTRIES: Record<Lane, () => Promise<ImageEntry[]>> = {
   milestones: loadMilestonesImageEntries,
 };
 
-// Reads the raw files fetch-taglines.ts/fetch-milestones-enrichment.ts/
-// fetch-conflicts-enrichment.ts already wrote (each now carrying a raw P18
-// `image` URI) and, for every entity that resolved an image, runs a second
-// batched Commons `imageinfo` pass to resolve `imageAttribution`
-// (dynamic-tooltips spec §4.2) — a distinct MediaWiki REST API from
-// Wikidata SPARQL, so this is new fetch machinery, not a reuse of
-// batched-sparql-fetch.ts. Ordered after all three in fetch/index.ts, since
-// it depends on their output being on disk.
-//
-// A lane arg scopes the whole pass (source file read, Commons fetch, raw
-// file written) to one lane; omitted runs all three lanes concurrently
-// (each already paces its own requests internally via
-// batched-commons-image-attribution-fetch.ts's BATCH_DELAY_MS, so awaiting
-// them one at a time would only add wall-clock time, not correctness or
-// rate-limit safety) — same behavior as before this stage was lane-scoped.
+// Reads the raw files written by fetch-taglines.ts,
+// fetch-milestones-enrichment.ts and fetch-conflicts-enrichment.ts (each with a
+// raw P18 `image` URI) and, for every entity with an image, runs a batched
+// Commons `imageinfo` pass to resolve `imageAttribution`: a MediaWiki REST API
+// distinct from Wikidata SPARQL, so new fetch machinery rather than a reuse of
+// batched-sparql-fetch.ts. Runs after all three in fetch/index.ts, since it
+// depends on their output.
 export async function fetchImageAttribution(lane?: Lane, qids?: QidFilter): Promise<void> {
   const lanes = lane ? [lane] : LANES;
   await Promise.all(

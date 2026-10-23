@@ -3,12 +3,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Bunzip from "seek-bzip";
 
-// Public, unauthenticated GCS object — no API key/login, confirmed live
-// during research (.scratch/alt-data-sources/research/pantheon-schema.md).
-// Pantheon also lists 2020/2019 person datasets and Pantheon 1.0 legacy
-// files at the same bucket; this pipeline only ever consumes the 2025
-// release, pinned explicitly rather than "latest" so a future Pantheon
-// release doesn't silently reshape this pipeline's input.
+// Public, unauthenticated GCS object (.scratch/alt-data-sources/research/pantheon-schema.md).
+// The bucket also lists 2020/2019 person datasets and Pantheon 1.0 files; the
+// 2025 release is pinned explicitly, not "latest", so a new release can't
+// silently reshape this pipeline's input.
 const DATASET_URL = "https://storage.googleapis.com/pantheon-public-data/person_2025_update.csv.bz2";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
@@ -23,10 +21,8 @@ export async function fetchPantheon(): Promise<void> {
   const compressed = Buffer.from(await response.arrayBuffer());
   console.log(`Downloaded ${compressed.length} bytes, decompressing...`);
 
-  // Decompressed, not the raw .bz2 — Fetch's "raw results only" rule
-  // (never merge/score/tag) is about not transforming the data itself;
-  // decompression is an encoding detail, and a plain CSV is directly
-  // readable/diffable in git history without extra tooling.
+  // Decompressed, not raw .bz2: Fetch's "raw results only" rule is about not
+  // transforming the data, and a plain CSV is readable and diffable in git.
   const decompressed = Bunzip.decode(compressed);
 
   await mkdir(RAW_DIR, { recursive: true });

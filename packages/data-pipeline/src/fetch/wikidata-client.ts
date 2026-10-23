@@ -15,17 +15,14 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// WDQS's documented hard query deadline is 60 seconds; the prior 30s client
-// timeout was self-aborting queries the server would have finished. Left a
-// small margin under 60s so our own timeout fires (and can be logged/retried)
-// before the server would kill the connection uncleanly.
+// WDQS's hard query deadline is 60 seconds; the timeout sits just under it so
+// our own timeout fires (and can be logged/retried) before the server kills the
+// connection uncleanly.
 const REQUEST_TIMEOUT_MS = 55_000;
 
 // 502/503/504 are WMF's documented ambient WDQS instability (Blazegraph
-// deadlocks), not a problem with the query itself — their own incident
-// guidance says to retry these with exponential backoff, same as this
-// project already does for 429. Unlike 429, they carry no Retry-After
-// header to honor.
+// deadlocks), not a query problem; their guidance is to retry with exponential
+// backoff, as for 429. Unlike 429 they carry no Retry-After header.
 const RETRYABLE_SERVER_ERROR_STATUSES = new Set([502, 503, 504]);
 const BACKOFF_BASE_MS = 2_000;
 

@@ -1,11 +1,9 @@
 import { PAGEVIEWS_LANGUAGES, articleVar } from "../pageviews-languages.js";
 
-// Each pageviews-basket language's per-QID Wikipedia article title is
-// resolved here (an OPTIONAL binding per language, same shape as the
-// pre-existing English-only ?article binding) rather than via a second
-// SPARQL pass, so title resolution reuses this enrichment query's own
-// VALUES-clause batching. Shared with milestones-enrichment.ts's identical
-// binding set.
+// Each pageviews-basket language's Wikipedia article title is an OPTIONAL
+// binding in this query (like the English ?article), so it reuses the query's
+// VALUES-clause batching instead of a second SPARQL pass. Shared with
+// milestones-enrichment.ts's identical binding set.
 function articleOptionalBlocks(): string {
   return PAGEVIEWS_LANGUAGES.map(
     (lang) =>
@@ -14,34 +12,25 @@ function articleOptionalBlocks(): string {
 }
 
 // Enrichment for the hand-curated Conflicts list
-// (data/raw/conflicts-curated.raw.json) — not a corpus scan, parameterized on a
-// batch of specific curated Q-IDs, same VALUES-clause shape as
-// milestones-enrichment.ts. Backfills sitelinks (-> fameScore), a Wikipedia
-// article URL per language in the pageviews basket, country (-> regionTags),
-// the P18 image claim, an English + Russian name (rdfs:label) and tagline,
-// and start/end dates with precision — the p:/psv: statement-value-node pattern makes
-// wikibase:timePrecision available alongside each date. Unlike
-// milestones-enrichment.ts, category/parentId are curator-authored and
-// never refetched here, but name, tagline, and dates are not: name comes
-// from Wikidata's own rdfs:label in both languages, the same symmetric
-// per-language mechanism tagline uses, so English and Russian names share
-// one consistent source with no per-entity editorial drift between them —
-// the curated file's own hand-typed `name` is left on disk, unused. ?date
-// prefers P580 (start
-// time) over P585 (point in time): conflicts already carry an explicit
-// start/end range, and some items (e.g. Q127751 Wars of the Roses) also
-// carry an unrelated/looser P585 that would otherwise clobber the real
-// start date. P585 is only a fallback for rows with no P580. Every P585/
-// P580/P582 statement pattern is restricted to `a wikibase:BestRank` so a
-// Preferred-rank claim always wins over a Normal-rank one on the same item
-// (e.g. Q32929 War of the Austrian Succession carries a precise
-// Preferred-rank end date alongside a coarser, unpreferred Normal-rank
-// one). Some items (e.g. Q189266 Eastern Front) still carry two
-// conflicting BestRank claims with no Preferred rank to break the tie —
-// ORDER BY ?date ?endDate makes the earliest value come first per ?event,
-// and fetchConflictsEnrichment takes the first value it sees, so ties resolve
-// deterministically to the earliest claim instead of whichever row the
-// endpoint happens to return first.
+// (data/raw/conflicts-curated.raw.json), parameterized on a batch of curated
+// Q-IDs (as in milestones-enrichment.ts), not a corpus scan. Backfills sitelinks
+// (-> fameScore), a Wikipedia article URL per pageviews-basket language,
+// country (-> regionTags), the P18 image claim, an English and Russian name
+// (rdfs:label) and tagline, and start/end dates with precision (the p:/psv:
+// statement-value-node pattern exposes wikibase:timePrecision). category/parentId
+// are curator-authored and never refetched; name comes from Wikidata's label in
+// both languages so they share one source, and the curated `name` is unused.
+//
+// ?date prefers P580 (start time) over P585 (point in time): conflicts already
+// carry an explicit range, and some items (e.g. Q127751 Wars of the Roses) carry
+// an unrelated, looser P585 that would clobber the real start. P585 is only a
+// fallback for rows with no P580. Every P585/P580/P582 pattern is restricted to
+// `a wikibase:BestRank` so a Preferred-rank claim wins over a Normal-rank one
+// (e.g. Q32929 War of the Austrian Succession's precise Preferred end date over
+// a coarser Normal one). Some items (e.g. Q189266 Eastern Front) still carry two
+// conflicting BestRank claims with no Preferred rank; ORDER BY ?date ?endDate
+// puts the earliest first per ?event and fetchConflictsEnrichment takes the first
+// value, so ties resolve to the earliest claim.
 export function buildConflictsEnrichmentQuery(ids: string[]): string {
   const values = ids.map((id) => `wd:${id}`).join(" ");
   const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `?${articleVar(lang)}`).join(" ");

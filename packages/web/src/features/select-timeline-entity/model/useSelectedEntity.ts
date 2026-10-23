@@ -7,10 +7,8 @@ import {
 } from '../../../shared/lib/entity';
 import { trackEvent } from '../../../shared/lib/track-event';
 
-// Re-exported for every existing import site (TimelineCanvas.tsx, App.tsx)
-// — the types themselves moved to shared/lib/entity/ since
-// features/search-timeline-entities also needs them and FSD forbids
-// same-layer features importing each other.
+// Defined in shared/lib/entity/ because features/search-timeline-entities
+// also needs them and FSD forbids same-layer feature imports.
 export type {
   EntityType,
   SelectedEntityRef,
@@ -30,21 +28,16 @@ function writeEntityLink(slug: string | null, mode: 'push' | 'replace') {
   else window.history.replaceState(window.history.state, '', url);
 }
 
-// Selection state for the click-to-open detail drawer
-// (.scratch/dynamic-tooltips/spec.md §2), mirrored into the URL's Entity
-// Link (`?e=<slug>`, CONTEXT.md) — owned here since it's shared by
-// widgets/timeline-canvas (the click source) and widgets/detail-panel (the
-// drawer), same "feature owns cross-widget state" pattern
-// features/filter-by-fame-score already uses.
+// Selection state for the detail panel, mirrored into the URL's Entity Link
+// (`?e=<slug>`, CONTEXT.md). Shared by widgets/timeline-canvas (the click
+// source) and widgets/detail-panel.
 //
 // The URL carries only a slug, so a slug arriving from outside (initial load,
-// Back/forward) surfaces as `pendingLinkSlug` until app/ has found the entity
-// in the datasets and hands its ref and slug to `openLink`. select/openLink/
-// clear are stable function identities (useCallback) since they're threaded
-// as effect dependencies downstream — TimelineCanvas's delegated click
-// listener and DetailPanel's document-level dismiss listeners — and a fresh
-// identity on every unrelated App render would tear down and re-add those
-// listeners far more often than the selection itself actually changes.
+// Back/forward) surfaces as `pendingLinkSlug` until app/ finds the entity in
+// the datasets and hands its ref and slug to `openLink`. select/openLink/
+// clear are stable (useCallback) because they are effect dependencies in
+// TimelineCanvas's click listener and DetailPanel's dismiss listeners, which
+// would otherwise be re-added on every App render.
 export function useSelectedEntity() {
   const [selection, setSelection] = useState<{
     ref: SelectedEntityRef;

@@ -12,15 +12,13 @@ const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 
 export interface CuratedConflict {
   id: string;
-  // Curator-typed, but no longer read by the pipeline — name is now sourced
-  // from Wikidata's rdfs:label (both en and ru) via the enrichment pass
-  // below, the same symmetric mechanism tagline already used. Kept in the
-  // curated file and this shape rather than deleted, same precedent as
-  // Discoveries' old curated `description`.
+  // Curator-typed but unread: name comes from Wikidata's rdfs:label (en and ru)
+  // via the enrichment pass below, like tagline. Kept in the curated file and
+  // this shape.
   name: string;
   category: ConflictCategory;
-  // Another curated row's id — always resolves to a Conflict, capped at 3 levels
-  // deep. Validated at Output (write-datasets.ts's buildConflicts), not here.
+  // Another curated row's id; always a Conflict, capped at 3 levels. Validated at
+  // Output (write-datasets.ts's buildConflicts), not here.
   parentId?: string;
 }
 
@@ -30,52 +28,45 @@ interface CuratedConflictsFile {
 
 export interface EnrichedConflict {
   id: string;
-  // Wikidata's rdfs:label(en) — absent only when the QID itself couldn't be
-  // resolved (same "enrichment failed" case sitelinks/tagline already
-  // handle); Output drops the row when this is missing (see
-  // write-datasets.ts's buildConflicts).
+  // Wikidata's rdfs:label(en); absent only when the QID couldn't be resolved (the
+  // "enrichment failed" case as for sitelinks/tagline), and Output then drops the
+  // row (write-datasets.ts's buildConflicts).
   name?: string;
-  // Wikidata's rdfs:label(ru) — absent whenever no Russian label resolves.
-  // Output falls back to `name` (English) per field, at output time, when
-  // building the Russian dataset file.
+  // Wikidata's rdfs:label(ru); absent when none resolves. Output falls back to
+  // `name` (English) per field when building the Russian file.
   nameRu?: string;
   category: ConflictCategory;
   parentId?: string;
-  // Absent means the enrichment pass couldn't resolve this QID (e.g. a
-  // stale/redirected id) — Output drops the row rather than guessing (see
-  // write-datasets.ts's buildConflicts).
+  // Absent means enrichment couldn't resolve this QID (e.g. a stale or
+  // redirected id); Output drops the row (write-datasets.ts's buildConflicts).
   sitelinks?: number;
   wikipediaUrl?: string;
-  // Per pageviews-basket-language Wikipedia article URL (raw, verbatim —
-  // same "store the URI, let the reader extract a title" convention `image`
-  // uses), keyed by language code. Absent per-language keys mean this QID
-  // has no sitelink in that language — fetch-pageviews.ts treats that as 0
-  // pageviews for the language, no redirect-resolution (ADR 0010).
+  // Wikipedia article URL per pageviews-basket language, stored verbatim (like
+  // `image`; the reader extracts the title), keyed by language code. A missing
+  // key means no sitelink in that language: fetch-pageviews.ts counts 0
+  // pageviews, with no redirect resolution (docs/adr/0010).
   articleUrls: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
   // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim.
   image?: string;
   tagline?: string;
-  // Russian schema:description binding, same fallback-at-output-time
-  // contract as nameRu above.
+  // Russian schema:description; same fallback contract as nameRu.
   taglineRu?: string;
-  // Wikidata's own claim precision decides whether month is present (see
-  // wikidata-date.ts's MONTH_OR_FINER_PRECISION) — never defaulted to
-  // January to paper over an unknown month.
+  // Wikidata's claim precision decides whether month is present (see
+  // wikidata-date.ts's MONTH_OR_FINER_PRECISION); never defaulted to January.
   year?: number;
   month?: number;
-  // Absent endYear means this row resolved only one date (a point-in-time
-  // claim, or a start with no recorded end) — Output builds a ConflictEvent
-  // rather than a Conflict for it (see buildConflicts's shape rule).
+  // Absent endYear means only one date resolved (a point-in-time claim, or a
+  // start with no recorded end); Output builds a ConflictEvent (see
+  // buildConflicts's shape rule).
   endYear?: number;
   endMonth?: number;
 }
 
-// Validated at the boundary before Fetch reads it (docs/code-conventions.md's
-// "Validate unknown external input... at system boundaries") — the curated
-// file is hand-authored, not machine-generated, so a typo'd `category` value
-// is a real risk a bare `JSON.parse(...) as CuratedConflictsFile` cast would
-// silently let through, only to break rendering downstream in ConflictsLane.
+// Validated at the boundary before Fetch reads it (docs/code-conventions.md):
+// the curated file is hand-authored, so a typo'd `category` would pass a bare
+// `JSON.parse(...) as CuratedConflictsFile` cast and break rendering
+// downstream.
 function isCuratedConflict(value: unknown): value is CuratedConflict {
   if (typeof value !== "object" || value === null) return false;
   const candidate = value as Record<string, unknown>;
@@ -96,10 +87,9 @@ export function validateCuratedConflictsFile(data: unknown): CuratedConflictsFil
   return { conflicts };
 }
 
-// Same boundary-validation reasoning as validateCuratedConflictsFile, applied
-// where Transform reads this file back in — it's Fetch's own output, but
-// still an external file on disk, same as every other raw snapshot this
-// pipeline validates on read.
+// Same boundary validation as validateCuratedConflictsFile, for where
+// Transform reads this file back: it is Fetch's own output, but still an
+// external file on disk.
 function isEnrichedConflict(value: unknown): value is EnrichedConflict {
   if (typeof value !== "object" || value === null) return false;
   const candidate = value as Record<string, unknown>;
@@ -157,11 +147,9 @@ interface EnrichmentFields {
 
 // Reads the checked-in curated list (data/raw/conflicts-curated.raw.json) and
 // backfills sitelinks/wikipediaUrl/country/image/name/tagline/dates via a
-// batched per-QID SPARQL pass (same VALUES-clause pattern as
-// fetch-milestones-enrichment.ts). Unlike Milestones, tagline and dates
-// are never curator-authored here, and name no longer is either — the
-// curated file's own `name` is left unused, only id/category/parentId are
-// still read from it (see conflicts-curated.raw.json's meta.description).
+// batched per-QID SPARQL pass (as in fetch-milestones-enrichment.ts). Only
+// id/category/parentId are read from the curated file; its own `name` is unused
+// (see conflicts-curated.raw.json's meta.description).
 export async function fetchConflictsEnrichment(qids?: QidFilter): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "conflicts-curated.raw.json");
   const curated = validateCuratedConflictsFile(JSON.parse(await readFile(curatedPath, "utf8")));
@@ -190,10 +178,8 @@ export async function fetchConflictsEnrichment(qids?: QidFilter): Promise<void> 
       const url = row[articleVar(lang)]?.value;
       if (url && entry.articleUrls[lang] === undefined) entry.articleUrls[lang] = url;
     }
-    // wikipediaUrl is the English-basket article, same field the old
-    // single-language ?article binding populated — kept as its own field
-    // (rather than always reading articleUrls.en downstream) since every
-    // other consumer of EnrichedConflict already expects wikipediaUrl.
+    // wikipediaUrl is the English-basket article, kept as its own field because
+    // every consumer of EnrichedConflict reads it rather than articleUrls.en.
     if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
     if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
     if (entry.name === undefined && row.nameEn?.value) entry.name = row.nameEn.value;

@@ -21,25 +21,22 @@ export interface DropReport {
   reasons: Record<string, number>;
 }
 
-// The two languages a lane's dataset file can be built for. Row inclusion
-// (which entities survive at all — sitelinks, tagline presence, date
-// resolution, parentId chains) is decided once, off each row's English
-// fields, regardless of `lang` (see buildConflicts) — only which per-field
-// text (name/tagline/description) ends up in the built entry varies by
-// language, falling back to English whenever the Russian value didn't
-// resolve for that field. This keeps both language files sharing the exact
-// same entity set, per-field text aside.
+// The two languages a dataset file is built for. Row inclusion (sitelinks,
+// tagline presence, date resolution, parentId chains) is decided once from each
+// row's English fields regardless of `lang` (see buildConflicts); only the
+// per-field text (name/tagline/description) varies, falling back to English
+// where the Russian value didn't resolve. Both files therefore share the same
+// entity set.
 export type Lang = "en" | "ru";
 
-// Picks the Russian value when building the Russian output and it
-// resolved, English otherwise — the one per-field fallback rule every
-// language-varying field in this module follows.
+// Picks the Russian value when building the Russian output and it resolved,
+// English otherwise: the one fallback rule for every language-varying field.
 function resolveField(en: string, ru: string | undefined, lang: Lang): string {
   return lang === "ru" ? (ru ?? en) : en;
 }
 
-// Same fallback rule as resolveField, for fields (like description) that
-// are optional in English too — never gates row inclusion either way.
+// Same rule as resolveField, for fields (like description) that are optional
+// in English too; never gates row inclusion.
 function resolveOptionalField(en: string | undefined, ru: string | undefined, lang: Lang): string | undefined {
   return lang === "ru" ? (ru ?? en) : en;
 }
@@ -48,7 +45,7 @@ function record(reasons: Record<string, number>, reason: string): void {
   reasons[reason] = (reasons[reason] ?? 0) + 1;
 }
 
-// month absent means year-only precision — see shared-types's YearMonth.
+// An absent month means year-only precision (shared-types's YearMonth).
 function yearMonth(year: number, month: number | undefined): YearMonth {
   return month === undefined ? { year } : { year, month };
 }
@@ -66,12 +63,10 @@ interface ValidatedEventRow<C> {
   category: C;
 }
 
-// Shared by buildConflicts/buildMilestones — both lanes require the same five
-// fields before an entry is worth keeping; only what they build from a
-// validated row (the Period/PointInTime split) differs, and
-// each lane has its own category type (ConflictCategory for Conflicts,
-// MilestoneCategory for Milestones — see packages/shared-types), hence the
-// type param.
+// Shared by buildConflicts/buildMilestones: both require the same five fields
+// before keeping an entry; only what is built from a validated row (the
+// Period/PointInTime split) differs, and each lane has its own category type
+// (hence the type param).
 function validateEventRow<C>(
   row: { label?: string; article?: string; tagline?: string; year?: number; month?: number; category?: C },
   reasons: Record<string, number>,
@@ -106,24 +101,21 @@ function validateEventRow<C>(
   };
 }
 
-// Above the longest verified human lifespan (Jeanne Calment, 122 years) —
-// leaves slack for real date-precision edge cases, while still catching
-// clearly-wrong upstream data (mirrors the same guard the old Wikidata
-// pipeline needed) rather than rendering an obviously-broken, centuries-
-// wide bar.
+// Above the longest verified human lifespan (Jeanne Calment, 122 years): slack
+// for date-precision edge cases, while catching clearly wrong upstream data
+// instead of rendering a centuries-wide bar.
 const MAX_PLAUSIBLE_LIFESPAN_YEARS = 130;
 
-// Output is the last chance to catch a schema violation before the frontend
-// ever sees this data. wikipediaUrl needs no presence check here — it's
-// derived deterministically from Pantheon's slug column, which
-// parsePantheonCsv already guarantees is non-empty.
+// Output is the last chance to catch a schema violation before the frontend.
+// wikipediaUrl needs no presence check: it derives from Pantheon's slug column,
+// which parsePantheonCsv guarantees is non-empty.
 export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: Unslugged<Person>[]; report: DropReport } {
   const people: Unslugged<Person>[] = [];
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    // Inclusion is always gated on the English name/tagline, regardless of
-    // `lang` — see Lang's doc comment above.
+    // Inclusion is gated on the English name/tagline regardless of `lang` (see
+    // Lang).
     if (!row.name) {
       record(reasons, "missing name");
       continue;
@@ -137,11 +129,10 @@ export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: 
       continue;
     }
     if (row.deathyear === undefined && !row.alive) {
-      // A missing deathyear means "ongoing" per Period's contract (see
-      // shared-types) — true only for a confirmed-alive person. Pantheon
-      // also omits deathyear for people whose death date is simply
-      // unrecorded (e.g. Jack the Ripper, never identified), which isn't
-      // "ongoing" and shouldn't render through to today.
+      // A missing deathyear means "ongoing" (Period's contract) only for a
+      // confirmed-alive person. Pantheon also omits deathyear when the death is
+      // unrecorded (e.g. Jack the Ripper), which isn't "ongoing" and shouldn't render
+      // through to today.
       record(reasons, "no deathyear and not confirmed alive");
       continue;
     }
@@ -178,15 +169,12 @@ export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: 
   return { people, report: { dropped: rows.length - people.length, reasons } };
 }
 
-// A curated row's `parentId` chain, validated depth-first from `id` up to
-// its root: every ancestor must exist among the rows that already survived
-// validation (built), every ancestor beyond `id` itself must be a Conflict (a
-// ConflictEvent can never have children — see shared-types's parentId doc
-// comment), and the chain (Container → level 2 → level 3) is capped at 3
-// entries deep. Naturally loop-safe with no separate cycle guard needed — a
-// cyclic chain still increments depth every iteration, so it's caught by
-// the depth check within 4 iterations regardless of whether it would
-// otherwise terminate.
+// A curated row's `parentId` chain, validated up from `id` to its root: every
+// ancestor must exist among the rows that survived validation (built), every
+// ancestor beyond `id` must be a Conflict (a ConflictEvent can't have
+// children; see shared-types's parentId), and the chain (Container → level 2 →
+// level 3) is capped at 3 entries. Loop-safe without a cycle guard: a cycle
+// keeps incrementing depth and trips the cap within 4 iterations.
 function validateParentChain(
   id: string,
   built: ReadonlyMap<string, Unslugged<ConflictEntry>>,
@@ -206,12 +194,10 @@ function validateParentChain(
   return { ok: true };
 }
 
-// Shape follows what the curated row's Wikidata enrichment actually
-// resolved, not `category` — a row with both a start and an end date
-// becomes a Conflict (a real Period); a row with only one becomes a
-// ConflictEvent (a PointInTime); a row with neither is dropped as an
-// enrichment failure. See shared-types's Conflict/ConflictEvent doc
-// comments.
+// Shape follows what enrichment resolved, not `category`: both a start and an
+// end date make a Conflict (a Period), one makes a ConflictEvent (a
+// PointInTime), neither drops the row as an enrichment failure (shared-types's
+// Conflict/ConflictEvent).
 export function buildConflicts(
   rows: TaggedConflict[],
   lang: Lang = "en",
@@ -220,9 +206,8 @@ export function buildConflicts(
   const built = new Map<string, Unslugged<ConflictEntry>>();
 
   for (const row of rows) {
-    // Inclusion is always gated on English fields (validated.name/tagline
-    // come from row.label/row.tagline, never the Ru variants) — see Lang's
-    // doc comment above.
+    // Inclusion is gated on English fields (validated.name/tagline come from
+    // row.label/row.tagline, never the Ru variants); see Lang.
     const validated = validateEventRow<ConflictCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
@@ -272,16 +257,13 @@ export function buildConflicts(
   return { entries, report: { dropped: rows.length - entries.length, reasons } };
 }
 
-// sitelinks<=0 means fetch-milestones-enrichment.ts's SPARQL pass couldn't
-// resolve this curated QID (see transformMilestones's `?? 0` coercion) —
-// dropped here rather than treated as a genuinely-zero-sitelink item, per
-// the map's enrichment-failure-handling decision.
+// sitelinks<=0 means fetch-milestones-enrichment.ts couldn't resolve this QID
+// (transformMilestones's `?? 0`), so the row is dropped rather than treated as
+// a zero-sitelink item.
 //
-// Shape follows what enrichment resolved, not `category` — same rule
-// buildConflicts already applies: a row with a resolved endYear (P582, via
-// milestones-enrichment.ts) becomes a period-shaped Milestone (e.g. the
-// Black Death, 1346-1353), a row without one stays point-shaped. See
-// shared-types's Milestone doc comment.
+// Shape follows what enrichment resolved, not `category` (as in buildConflicts):
+// a resolved endYear (P582) makes a period-shaped Milestone (e.g. the Black
+// Death, 1346-1353), otherwise a point (shared-types's Milestone).
 export function buildMilestones(
   rows: TaggedMilestone[],
   lang: Lang = "en",
@@ -290,8 +272,7 @@ export function buildMilestones(
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    // Inclusion is always gated on English fields, regardless of `lang` —
-    // see Lang's doc comment above.
+    // Inclusion is gated on English fields regardless of `lang` (see Lang).
     const validated = validateEventRow<MilestoneCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
@@ -322,8 +303,8 @@ export function buildMilestones(
         },
       });
     } else {
-      // Wikidata's own claim precision decides whether month is present
-      // (fetch-milestones-enrichment.ts), same as Conflicts.
+      // Wikidata's claim precision decides whether month is present
+      // (fetch-milestones-enrichment.ts), as for Conflicts.
       milestones.push({ ...shared, at: yearMonth(validated.year, validated.month) });
     }
   }
@@ -338,23 +319,15 @@ export interface DetailLevelDeltas<T> {
   detail4: T[];
 }
 
-// Splits an already-built lane array into the 4 Detail Level delta files
-// (CONTEXT.md's Detail Level, docs/adr/0006-detail-level-merges-data-depth-
-// and-payload-tier.md) — each delta holds only what's newly added versus the
-// previous level, not a self-contained cumulative file. `levelFloors` is
-// [level1, level2, level3, level4], highest floor first; level4's floor
-// (levelFloors[3]) is never used as a partition boundary here — it's a
-// client-side render floor only, same as today's Deep Cut floor already was
-// (never part of the old single-floor Payload Tier split either). detail4
-// instead holds everything remaining below level 3's floor with no lower
-// bound, mirroring the old Tier 1's unbounded-below shape one level deeper —
-// which is what makes all 4 deltas' union reconstruct the lane's full built
-// array with nothing dropped. A separate pass from buildPeople/
-// buildConflicts/buildMilestones above on purpose: those build and validate
-// entities, this only partitions an already-built array, and keeping the two
-// responsibilities apart is what lets this be tested independently of any
-// one lane's build rules. Preserves `entries`' existing order within each
-// delta rather than re-sorting.
+// Splits a built lane array into the 4 Detail Level delta files (CONTEXT.md's
+// Detail Level, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md),
+// each holding only what is new versus the previous level. `levelFloors` is
+// [level1..level4], highest floor first. Level 4's floor is never a partition
+// boundary (it is only the client-side render floor): detail4 holds everything
+// below level 3's floor with no lower bound, so the 4 deltas' union is the full
+// built array. Separate from the build* functions so it is testable
+// independently of any lane's build rules. Preserves `entries`' order within
+// each delta.
 export function splitByDetailLevel<T extends { fameScore: number }>(
   entries: T[],
   levelFloors: readonly [number, number, number, number],

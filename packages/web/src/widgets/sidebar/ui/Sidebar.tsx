@@ -21,8 +21,7 @@ import styles from './Sidebar.module.css';
 interface SidebarProps {
   selectedLevelId: DetailLevelId;
   onSelectDetailLevel: (level: DetailLevel) => void;
-  // Detail Level ids still loading their delta file — threaded down to
-  // DetailLevelSwitch, see that component's own comment.
+  // Detail Level ids still loading their delta file (see DetailLevelSwitch).
   loadingLevelIds: DetailLevelId[];
   searchQuery: string;
   onSearchQueryChange: (query: string) => void;
@@ -36,19 +35,14 @@ interface SidebarProps {
   onToggleConflictsMilestonesValue: (
     value: ConflictsMilestonesFilterValue,
   ) => void;
-  // Drawer open/close state (mobile-only visual effect — see
-  // Sidebar.module.css's mobile breakpoint block; above that width this
-  // prop has no effect since .sidebar isn't positioned/transformed at all).
-  // The toggle button itself lives in TimelineCanvas, mirroring the
-  // existing zoom-controls overlay's position — App.tsx owns the state both
-  // widgets share.
+  // Drawer open/close state; mobile-only (Sidebar.module.css's mobile
+  // breakpoint block). The toggle button lives in TimelineCanvas; App.tsx
+  // owns the state both widgets share.
   isOpen: boolean;
   onClose: () => void;
-  // Desktop-only collapse, toggled by a « handle in the sidebar's own
-  // header (below). Collapsed, the sidebar reserves zero layout width —
-  // mirroring the mobile drawer's own zero-footprint-when-closed shape —
-  // with only the handle itself left poking into the canvas. No effect on
-  // mobile, where the drawer's own isOpen/onClose already covers hiding it.
+  // Desktop-only collapse, toggled by the « handle in the sidebar header.
+  // Collapsed, the sidebar reserves no layout width and only the handle
+  // remains. No effect on mobile, where isOpen/onClose covers hiding it.
   isCollapsed: boolean;
   onToggleCollapse: () => void;
   onOpenAbout: () => void;
@@ -56,16 +50,11 @@ interface SidebarProps {
   switchLanguageHref: string;
 }
 
-// Always-visible alongside TimelineCanvas — Data Depth (the fame-score
-// floor controls that replaced the old zoom-coupled Fame Tier system, ADR
-// 0003), People (its Occupation Domain pills doubling as a click-to-toggle
-// filter), Conflicts & Milestones (one shared multi-select pill list —
-// Conflicts plus the 3 Milestone Category Groups — mirroring Region/People's
-// exact "one flat list, empty means unfiltered" shape; revised 2026-08-12
-// from an earlier two-control design, see
-// docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md for why
-// Conflicts has no per-category granularity of its own), and a shared Region
-// filter (one control narrowing all three lanes together) last.
+// Always visible alongside TimelineCanvas: search, the Detail Level switch,
+// People (Occupation Domain pills), Conflicts & Milestones (one multi-select
+// pill list: Conflicts plus the 2 Milestone Category Groups, see
+// docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md), and a
+// Region filter narrowing all three lanes.
 export function Sidebar({
   selectedLevelId,
   onSelectDetailLevel,
@@ -88,30 +77,22 @@ export function Sidebar({
   switchLanguageHref,
 }: SidebarProps) {
   const isMobileViewport = useIsMobileViewport();
-  // isCollapsed only takes effect on desktop — a stale true value carried
-  // over from a desktop session must not hide the mobile drawer's content
-  // once the handle that set it is no longer even rendered (TimelineCanvas
-  // gates it the same way).
+  // isCollapsed only applies on desktop: a value left over from a desktop
+  // session must not hide the mobile drawer's content (TimelineCanvas gates
+  // the handle the same way).
   const collapsed = isCollapsed && !isMobileViewport;
-  // Off-canvas (translateX, not display:none — Sidebar.module.css) is
-  // invisible but not otherwise non-interactive: without this, a closed
-  // mobile drawer's filter controls would still be keyboard-tabbable and
-  // screen-reader-visible despite being off-screen. Only applies on mobile
-  // — the desktop column (isOpen always false there, since the toggle
-  // button that would flip it never renders) must stay interactive.
-  // collapsed doesn't need the same treatment: its content is unmounted
-  // below rather than merely hidden, and inert-ing the whole aside would
-  // also disable the collapse button itself, leaving no way back out.
+  // The closed mobile drawer is off-canvas via translateX, not display:none,
+  // so without inert its controls stay tabbable and screen-reader-visible.
+  // Mobile only: the desktop column (isOpen is always false there) must stay
+  // interactive. `collapsed` needs no inert: its content is unmounted, and
+  // inerting the aside would disable the collapse handle too.
   const isInert = isMobileViewport && !isOpen;
 
   const asideRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  // The drawer sits behind a full-screen backdrop on mobile, so it reads as
-  // a modal even though the underlying DOM (Sidebar before TimelineCanvas,
-  // where the toggle button that opens this lives) would otherwise let Tab
-  // walk straight past it into the visually-hidden canvas. Move focus in on
-  // open, trap Tab/Shift+Tab inside the backdrop+aside while open, and give
-  // it back to whatever had it (the toggle button) on close.
+  // The mobile drawer acts as a modal behind a full-screen backdrop: move
+  // focus in on open, trap Tab/Shift+Tab inside the backdrop+aside, and
+  // restore focus to the toggle button on close.
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     if (!isMobileViewport) return;

@@ -42,14 +42,11 @@ interface DecadeLabel {
   isCentury: boolean;
 }
 
-// startYear/endYear come in pre-buffered past the viewport edge (see
-// TimelineCanvas's VIEWPORT_BUFFER_RATIO) and d3 scales extrapolate freely
-// past their domain, so near either end of the timeline the buffered range
-// can reach years the scale was never built for — e.g. past today on the
-// right. Clamping to the scale's own domain keeps every label's x inside
-// [0, totalWidth]; nothing here clips horizontal overflow, so an
-// unclamped label would silently grow the scroll container's scrollWidth,
-// letting a user scroll past the timeline's real bounds into blank space.
+// startYear/endYear arrive pre-buffered past the viewport edge and d3 scales
+// extrapolate, so near either end of the timeline the range can reach years
+// the scale wasn't built for (e.g. past today). Clamping to the scale's domain
+// keeps each label's x inside [0, totalWidth]; an unclamped label would grow
+// the scroll container's scrollWidth and let users scroll into blank space.
 function decadeLabelsInRange(
   startYear: number,
   endYear: number,
@@ -67,18 +64,12 @@ function decadeLabelsInRange(
   );
 }
 
-// The ruler's tick marks are pure CSS — two layered repeating background-
-// gradients on .ruler (decade/century, see YearAxis.module.css), sized
-// and phase-aligned via the CSS custom properties set below — rather than
-// one DOM node per tick. Their rendering cost is ~flat no matter how wide
-// the scrollable timeline gets, so unlike every other lane they need no
-// viewport-windowing at all; this replaces an earlier design (first d3's
-// adaptive axisBottom, then a fixed-step D3 join) that generated a real DOM
-// node per tick and made the axis the single biggest contributor to
-// initial-load time. Only the decade number labels are real DOM elements —
-// a plain positioned list, no D3 join, since there's no per-item enter/exit
-// choreography here to justify one — and so are windowed to visibleStartYear/
-// visibleEndYear, same as everything else.
+// The ruler's ticks are pure CSS: two layered repeating background gradients
+// on .ruler (decade/century, see YearAxis.module.css), sized and phased via
+// the custom properties below, not one DOM node per tick. Their cost is flat
+// however wide the timeline gets, so only the decade number labels are DOM
+// elements: a plain positioned list (no D3 join, since there is no enter/exit
+// choreography), windowed to visibleStartYear/visibleEndYear.
 export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(
   function YearAxis({ xScale, visibleStartYear, visibleEndYear }, ref) {
     const axisRef = useRef<HTMLDivElement>(null);
@@ -97,10 +88,9 @@ export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(
       '--century-tick-px': `${pixelsPerYear * CENTURY_STEP_YEARS}px`,
     };
 
-    // Round-historical BCE ticks (format-year.ts) sit on a different phase
-    // than CE ticks and the era-boundary tick at year 0 — see options.ts's
-    // phaseOffsetYears — so the ruler is two adjacent, independently-phased
-    // regions split at year 0, not one continuous background.
+    // Round BCE ticks (format-year.ts) sit on a different phase than CE ticks and
+    // the year-0 boundary tick (options.ts's phaseOffsetYears), so the ruler is
+    // two adjacent, independently phased regions split at year 0.
     const boundaryX = Math.min(Math.max(xScale(0), 0), totalWidth);
     const bceRulerStyle = {
       height: RULER_HEIGHT,
@@ -117,12 +107,10 @@ export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(
       '--century-tick-offset-px': `${pixelsPerYear * CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
     } as CSSProperties;
 
-    // A zoom animation's rAF loop (see the imperative handle below) writes a
-    // transform straight to this root div and every .year-axis-label-scale
-    // span every tick, without going through React (these are plain HTML, no
-    // D3) — reset it here, in the same effect that lands new label positions
-    // for a changed xScale, so the commit is atomic (see PeopleLane's
-    // identical comment for why this can't be a frame later).
+    // The zoom animation's rAF loop writes transforms straight to this root div
+    // and every .year-axis-label-scale span, bypassing React; reset them in the
+    // same effect that lands new label positions so the commit is atomic (see
+    // PeopleLane).
     // biome-ignore lint/correctness/useExhaustiveDependencies: xScale isn't read in the body — it's a trigger so this transform reset commits atomically with the new label positions above, on the same xScale change
     useLayoutEffect(() => {
       const axis = axisRef.current;
@@ -136,14 +124,11 @@ export const YearAxis = forwardRef<ZoomAnimationHandle, YearAxisProps>(
         });
     }, [xScale]);
 
-    // TimelineCanvas's single rAF driver calls this every animation-frame
-    // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
-    // comment for the mechanism. The whole axis (ruler backgrounds + label
-    // row) gets the group transform; each label additionally gets a counter-
-    // scale on an inner span so its own text doesn't stretch — the outer
-    // span (queried here) keeps the unanimated `left`/centering that
-    // positions it, untouched, so this never has to reason about composing
-    // with that existing transform.
+    // Called every frame by TimelineCanvas's single rAF driver (see options.ts's
+    // ZoomAnimationTransform). The whole axis gets the group transform; each label
+    // also gets a counter-scale on an inner span so its text doesn't stretch. The
+    // outer span (queried here) keeps its unanimated `left`/centering untouched, so
+    // nothing has to compose with it.
     useImperativeHandle(
       ref,
       () => ({

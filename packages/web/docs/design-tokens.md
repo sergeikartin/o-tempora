@@ -13,7 +13,7 @@ Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact
 | Token | Hex | Usage |
 |---|---|---|
 | `color-bg-base` | `#F2E9D2` | Page background (parchment) |
-| `color-bg-surface` | `#FBF6E9` | Filter bar, sidebar, event point-markers, detail/tooltip panel (ledger) |
+| `color-bg-surface` | `#FBF6E9` | Sidebar, cards, detail panel, search results (ledger) |
 | `color-bg-surface-raised` | `#FFFFFF` | Filter chips, filter pills |
 | `color-border-subtle` | `#E0D3AC` | Default borders, dividers |
 | `color-border-strong` | `#C7B383` | Hover/active borders |
@@ -28,7 +28,7 @@ Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact
 
 ## Conflict Color
 
-Used as the stroke/fill color for every Conflict's range line and point-dot marker, regardless of `ConflictCategory`. Retired the old per-category Conflict Category Palette (six hues keyed by `ConflictCategory`) once Conflicts and Milestones merged into one mixed, fame-ranked lane (`packages/web/src/widgets/timeline-canvas/ConflictsMilestonesLane.tsx`) — a Conflict needs to read as one visual group at a glance next to Milestones' own multi-color palette below, not blend into it category-by-category. Rhymes with the People-domain Politics & Religion hue (state power), stepped darker — see Milestone Category Palette below for the same treatment applied to each Milestone group. Wired as a CSS custom property (`--color-conflict`, `global.css`) for CSS-side consumers like `Minimap.module.css`'s SVG fill; the lane rendering itself still reads the plain `CONFLICT_COLOR` JS constant below, since D3 sets that as an SVG presentation attribute directly rather than through CSS.
+Used as the stroke/fill color for every Conflict's range line and point-dot marker, regardless of `ConflictCategory`. Conflicts and Milestones share one mixed, fame-ranked lane (`packages/web/src/widgets/timeline-canvas/ConflictsMilestonesLane.tsx`), so a Conflict must read as one visual group at a glance next to Milestones' multi-color palette below, not blend into it category by category. Rhymes with the People-domain Politics & Religion hue (state power), stepped darker — see Milestone Category Palette below for the same treatment applied to each Milestone group. Wired as a CSS custom property (`--color-conflict`, `global.css`) for CSS-side consumers like `Minimap.module.css`'s SVG fill; the lane rendering itself still reads the plain `CONFLICT_COLOR` JS constant below, since D3 sets that as an SVG presentation attribute directly rather than through CSS.
 
 | Token | Hex |
 |---|---|
@@ -51,7 +51,7 @@ People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and s
 
 ## Milestone Category Palette
 
-Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values for filtering, tooltips, and filter-chip labels — only *color* folds it down to 2 legible groups, each one a darker, richer step of the People-domain hue its content actually echoes (same pigment, different register: People reads as the lit, vivid layer; Conflicts/Milestones as the darker ink marking what happened). This set, together with the flat Conflict Color above, is small enough (3 colors) to validate *every* pair against every other, not just neighbors — and unlike the Occupation Domain palette above, it clears the full CVD target even muted: lightness band, chroma floor, and CVD separation (worst adjacent ΔE 8.1, protan) all pass; both groups hold at least 3:1 against parchment at `mark-opacity-resting`. See `docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md` for how this 2-group split and the current per-category assignment were arrived at.
+Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values for filtering and the detail panel — only *color* folds it down to 2 legible groups, each one a darker, richer step of the People-domain hue its content actually echoes (same pigment, different register: People reads as the lit, vivid layer; Conflicts/Milestones as the darker ink marking what happened). This set, together with the flat Conflict Color above, is small enough (3 colors) to validate *every* pair against every other, not just neighbors — and unlike the Occupation Domain palette above, it clears the full CVD target even muted: lightness band, chroma floor, and CVD separation (worst adjacent ΔE 8.1, protan) all pass; both groups hold at least 3:1 against parchment at `mark-opacity-resting`. See `docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md` for the 2-group split.
 
 | Group | Hex | Rhymes with (People domain) | `MilestoneCategory` values |
 |---|---|---|---|
@@ -86,7 +86,7 @@ Honors `prefers-reduced-motion: reduce` — all transitions using these tokens a
 | Token | Value | Usage |
 |---|---|---|
 | `radius-full` | `9999px` | Filter chips |
-| `radius-sm` | `6px` | Event point-markers |
+| `radius-sm` | `6px` | Search result rows, tooltips |
 | `radius-md` | `8px` | Not currently consumed by `widgets/timeline-canvas` — Period lines (People, Conflicts) use `stroke-linecap: round` for their rounded caps instead of a corner radius |
 | `radius-lg` | `12px` | Panels |
 | `radius-xl` | `16px` | Reserved for future modal/overlay |

@@ -20,7 +20,7 @@ People, conflicts and milestones on one shared, pannable axis, with density cont
 
 ## Operating Context
 
-- Opens on a ~100–120-year window of the 1800s at Mainstream; pan and zoom map-style, with no "see all history" view.
+- Opens on 1740–1860 at Mainstream; pan and zoom map-style, with no "see all history" view.
 - Occupation and Region filters, a Detail Level switch, Search, and a detail panel (tagline, Wikipedia description, image, link) for any mark.
 - English at the domain root and Russian under `/ru/` (landing at `/` and `/ru/`, timeline at `/timeline/` and `/ru/timeline/`), one build, locale resolved from the URL; both locales ship the identical entity set, with per-field English fallback.
 

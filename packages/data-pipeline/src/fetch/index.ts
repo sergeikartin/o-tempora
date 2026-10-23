@@ -8,10 +8,10 @@ import { fetchWikipediaExtracts } from "./fetch-wikipedia-extracts.js";
 import { parseLaneFlag, type Lane } from "./lane.js";
 import { parseQidsFlag, type QidFilter } from "./qid-filter.js";
 
-// Depends on people-pantheon.raw.csv already being on disk (fetchTaglines
-// reads the HPI-filtered candidate wd_id list back out of it) — must run
-// after fetchPantheon(). People has no pageviews stage (Score's People path
-// uses Pantheon HPI directly, untouched by ADR 0010).
+// Depends on people-pantheon.raw.csv being on disk (fetchTaglines reads the
+// HPI-filtered wd_id candidates from it), so it runs after fetchPantheon().
+// People has no pageviews stage: Score's People path uses Pantheon HPI directly
+// (docs/adr/0010).
 async function fetchPeopleLane(qids: QidFilter): Promise<void> {
   // A QID-scoped run reuses the Pantheon CSV already on disk.
   if (!qids) await fetchPantheon();
@@ -40,41 +40,34 @@ const LANE_RUNNERS: Record<Lane, (qids: QidFilter) => Promise<void>> = {
   milestones: fetchMilestonesLane,
 };
 
-// No `--lane` flag: today's unchanged behavior and timing — all three
-// lanes, same order as before this pipeline was lane-scoped. Deliberately
-// not composed from fetchPeopleLane/fetchConflictsLane/fetchMilestonesLane
-// above: those call fetchImageAttribution/fetchPageviews/
-// fetchWikipediaExtracts scoped to one lane at a time, which would
-// serialize what these three stages otherwise run concurrently across all
-// three lanes internally (see each stage's own comments) — a real
-// wall-clock regression for the common "fetch everything" case. Calling
-// each stage once, unscoped, keeps that concurrency intact.
+// No `--lane` flag: all three lanes. Deliberately not composed from
+// fetchPeopleLane/fetchConflictsLane/fetchMilestonesLane above: those scope
+// fetchImageAttribution/fetchPageviews/fetchWikipediaExtracts to one lane at a
+// time, serializing what these stages otherwise run concurrently across lanes
+// (see each stage's comments), a wall-clock regression for the common "fetch
+// everything" case. Calling each stage once, unscoped, keeps the concurrency.
 async function fetchAllLanes(qids: QidFilter): Promise<void> {
   if (!qids) await fetchPantheon();
-  // Depends on people-pantheon.raw.csv already being on disk (reads the
-  // HPI-filtered candidate wd_id list back out of it) — must run after
-  // fetchPantheon().
+  // Depends on people-pantheon.raw.csv (reads the HPI-filtered wd_id candidates);
+  // must run after fetchPantheon().
   await fetchTaglines(qids);
-  // Both read a checked-in curated list, independent of the above and of
-  // each other — ordered last just to keep the log output grouped by lane.
+  // Both read a checked-in curated list, independent of the above and of each
+  // other; ordered last only to group log output by lane.
   await fetchMilestonesEnrichment(qids);
   await fetchConflictsEnrichment(qids);
-  // Depends on fetchTaglines', fetchMilestonesEnrichment's, and
-  // fetchConflictsEnrichment's raw output already being on disk (each now
-  // carries a P18 image URI) — must run after all three.
+  // Depends on the raw output of fetchTaglines, fetchMilestonesEnrichment and
+  // fetchConflictsEnrichment (each carries a P18 image URI), so runs after all
+  // three.
   await fetchImageAttribution(undefined, qids);
-  // Depends on fetchMilestonesEnrichment's/fetchConflictsEnrichment's raw output
-  // being on disk (each now carries per-language sitelink article URLs) —
-  // must run after both. Independent of fetchImageAttribution, but ordered
-  // after it just to keep the log output grouped by "depends on
-  // enrichment" stages.
+  // Depends on fetchMilestonesEnrichment's and fetchConflictsEnrichment's raw
+  // output (per-language sitelink article URLs), so runs after both. Independent
+  // of fetchImageAttribution; ordered after it to group the "depends on
+  // enrichment" stages in the log.
   await fetchPageviews(undefined, qids);
-  // Depends on people-pantheon.raw.csv (People's slug source) and
-  // fetchMilestonesEnrichment's/fetchConflictsEnrichment's wikipediaUrl output —
-  // ordered last since it's by far the slowest stage (~2 req/sec, paced
-  // one entity at a time across all three lanes combined; see
-  // batched-wikipedia-extract-fetch.ts) and every other stage's raw output
-  // it depends on is already on disk well before this point.
+  // Depends on people-pantheon.raw.csv (People's slug source) and the Conflicts/
+  // Milestones wikipediaUrl output. Ordered last: by far the slowest stage (~2
+  // req/sec, one entity at a time across all three lanes; see
+  // batched-wikipedia-extract-fetch.ts), and its inputs are on disk well before.
   await fetchWikipediaExtracts(undefined, qids);
 }
 

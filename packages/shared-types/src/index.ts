@@ -1,13 +1,9 @@
-// Canonical Person/Conflict/Milestone data contracts, shared between
-// /data-pipeline (which produces them) and /src (which will consume them
-// from Unit 3/4 onward) via this workspace package rather than each project
-// redefining them, per code-standards.md's "share those types" rule.
+// Person/Conflict/Milestone data contracts shared by data-pipeline (which
+// produces them) and web (which consumes them), so neither redefines them.
 
-// Shrunk from nine values to six ([[Container/parentId nesting]] effort,
-// see .scratch/wars-curated-source/spec.md) — battle, siege, and
-// peace-treaty removed entirely, not deprecated/left unused. They're
-// inherently sub-events of a war rather than standalone conflicts; every
-// value that remains can stand alone as a top-level curated conflict.
+// Six values, each able to stand alone as a top-level curated conflict
+// (sub-events of a war such as battles, sieges and treaties are not
+// categories). See .scratch/wars-curated-source/spec.md.
 export const CONFLICT_CATEGORIES = [
   "war",
   "military-operation",
@@ -19,11 +15,9 @@ export const CONFLICT_CATEGORIES = [
 
 export type ConflictCategory = (typeof CONFLICT_CATEGORIES)[number];
 
-// Milestones lane's own taxonomy, taken verbatim from the
-// hand-curated source's `meta.categories`
-// (data-pipeline/data/raw/milestones-curated.raw.json) — disjoint from
-// ConflictCategory above (Conflicts' Wikidata-?type-claim-derived
-// taxonomy), not a shared value even where names might coincide.
+// Milestones lane's taxonomy, taken verbatim from the hand-curated source's
+// `meta.categories` (data-pipeline/data/raw/milestones-curated.raw.json).
+// Disjoint from ConflictCategory, even where names might coincide.
 export const MILESTONE_CATEGORIES = [
   "science-theory",
   "medicine-health",
@@ -51,13 +45,12 @@ export const MILESTONE_CATEGORIES = [
 
 export type MilestoneCategory = (typeof MILESTONE_CATEGORIES)[number];
 
-// The 2-value grouping above MilestoneCategory's 22 leaf values, driving
-// the Milestones lane's color palette (packages/web's options.ts) and the
-// sidebar's Milestone Category Group filter — the single canonical source
-// both read from. See docs/design-tokens.md's Milestone Category Palette
-// table for the current category -> group assignments, and
-// docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md for
-// the rationale behind the current split.
+// The 2-value grouping above MilestoneCategory's 22 leaf values, driving the
+// Milestones lane's color (packages/web's options.ts) and the sidebar's
+// Conflicts & Milestones filter; the one source both read. See
+// docs/design-tokens.md's Milestone Category Palette for the assignments and
+// docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md for the
+// rationale.
 export const MILESTONE_CATEGORY_GROUPS = ["science-innovation", "social-culture"] as const;
 
 export type MilestoneCategoryGroup = (typeof MILESTONE_CATEGORY_GROUPS)[number];
@@ -88,14 +81,12 @@ export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCat
   "archaeology-anthropology": "social-culture",
 };
 
-// The UN M49 geoscheme's 22 sub-regions — the single Region taxonomy for
-// every lane (People, Conflicts, Milestones). Historical polities
-// (Conflicts/Milestones) map to whatever sub-region their territory
-// corresponds to today, not a successor state's name; People's tags key off
-// Pantheon's present-day birth/death country instead. See
-// data-pipeline/src/transform/region-categories.ts (Wikidata Q-ID keyed)
-// and un-region-categories.ts (Pantheon country-name keyed) for the two
-// source mappings.
+// The UN M49 geoscheme's 22 sub-regions, the one Region taxonomy for every
+// lane. Historical polities (Conflicts/Milestones) map to the sub-region their
+// territory is in today; People's tags key off Pantheon's present-day
+// birth/death country. See data-pipeline/src/transform/region-categories.ts
+// (Wikidata Q-ID keyed) and un-region-categories.ts (Pantheon country-name
+// keyed).
 export const REGIONS = [
   "northern-europe",
   "southern-europe",
@@ -123,11 +114,9 @@ export const REGIONS = [
 
 export type Region = (typeof REGIONS)[number];
 
-// Pantheon's own occupation-domain grouping (its "Working in" filter),
-// covering all 101 raw `occupation` values with no gaps — see
-// data-pipeline/src/transform/occupation-domain-categories.ts for the mapping.
-// Person-only: ConflictCategory stays Conflict/Milestone-only (see the
-// People-source decision this type follows from).
+// Pantheon's occupation-domain grouping (its "Working in" filter), covering
+// all 101 raw `occupation` values; see
+// data-pipeline/src/transform/occupation-domain-categories.ts. Person-only.
 export const OCCUPATION_DOMAINS = [
   "sports",
   "institutions",
@@ -141,60 +130,49 @@ export const OCCUPATION_DOMAINS = [
 
 export type OccupationDomain = (typeof OCCUPATION_DOMAINS)[number];
 
-// A calendar year plus optional month, astronomical/ISO numbering (year 0 is
-// 1 BCE, year 1 is 1 CE — see docs/adr/0001-astronomical-year-numbering.md),
-// matching Temporal.PlainDate's own sign convention. `month` (1-12) is present only
-// when the source data's actual claim precision resolves to month-or-finer
-// (e.g. Wikidata's wikibase:timePrecision >= 10) — never defaulted to
-// January to paper over an unknown month, which would misrepresent
-// precision Wikidata itself doesn't claim to have. The frontend formats
-// this shape as plain text, not a date object (see
-// packages/web/src/shared/lib/date/format-year.ts's formatYearMonth).
+// A calendar year plus optional month in astronomical numbering (year 0 is
+// 1 BCE, year 1 is 1 CE; docs/adr/0001-astronomical-year-numbering.md).
+// `month` (1-12) is present only when the source claim's precision is
+// month-or-finer (e.g. Wikidata's wikibase:timePrecision >= 10), never
+// defaulted to January, which would claim precision Wikidata doesn't. The
+// frontend formats it as text, not a date object
+// (packages/web/src/shared/lib/date/format-year.ts's formatYearMonth).
 export interface YearMonth {
   year: number;
   month?: number;
 }
 
-// A real duration with a known start and (usually) a known end — a
-// person's lifespan, a war's span, a reign/term of office. `end` absent
-// means genuinely ongoing/open-ended (a still-living person, a position
-// with no recorded end date), not "unknown" in the sense of missing data —
-// the frontend adapter renders these through to the present.
+// A real duration with a known start and usually a known end: a lifespan, a
+// war's span. `end` absent means genuinely ongoing (a living person), not
+// missing data; the frontend renders it through to the present.
 export interface Period {
   start: YearMonth;
   end?: YearMonth;
 }
 
-// A single moment — a battle, a treaty signing, an invention's first
-// appearance. Distinct from Period (not "a Period with no end"): a point in
-// time was never a duration to begin with.
+// A single moment (an invention's first appearance, a treaty signing). Not "a
+// Period with no end": it was never a duration.
 export interface PointInTime {
   at: YearMonth;
 }
 
-// Detail Level: the 4 per-lane Fame Score floors that drive both which
+// Detail Level: the 4 per-lane Fame Score floors that decide both which
 // entities render (web) and which delta file they ship in (data-pipeline's
-// Output stage splits by these into `<lane>.detail1.json` .. `.detail4.json`
-// — CONTEXT.md's "Detail Level", docs/adr/0006-detail-level-merges-data-
-// depth-and-payload-tier.md). Index 0 is level 1 (Legendary, the strictest
-// floor), index 3 is level 4 (Deep Cut, the loosest). Levels 2 and 4 are
-// pinned to the pre-merge Mainstream/Deep Cut presets' exact floors; levels
-// 1 and 3 are new, derived by a constant per-lane multiplicative step on
-// entity count (not fame-score points) continuing the count-ratio drift
-// Mainstream/Deep Cut already had between them. Defined once here, shared by
-// data-pipeline (which partitions by it) and web (whose Detail Level switch
-// reuses the same numbers) so the two can never silently drift apart.
+// Output stage writes `<lane>.detail1.json` .. `.detail4.json`; CONTEXT.md's
+// Detail Level, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md).
+// Index 0 is level 1 (Legendary, strictest floor), index 3 is level 4 (Deep
+// Cut, loosest). Floors step by a constant per-lane multiplicative factor on
+// entity count, not fame-score points. Defined once so the pipeline's split and
+// web's switch can't drift apart.
 export const DETAIL_LEVEL_FAME_SCORE_FLOORS = {
   people: [91, 88, 84, 80],
   conflicts: [86, 82, 78, 64],
   milestones: [87, 82, 76, 55],
 } as const;
 
-// Shared by Person, Conflict, ConflictEvent, and Milestone — every lane's entries
-// carry these fields regardless of whether they render as a period or a
-// point (see Period/PointInTime above for the date shapes themselves,
-// which now live on each entity directly since not every entity has the
-// same one).
+// Shared by Person, Conflict, ConflictEvent and Milestone, whether the entry
+// renders as a period or a point (the date shapes live on each entity, since
+// not every entity has the same one).
 export interface TimelineEntry {
   id: string;
   // The readable identifier an Entity Link carries (`?e=<slug>`, CONTEXT.md).
@@ -205,54 +183,42 @@ export interface TimelineEntry {
   name: string;
   fameScore: number;
   tagline: string;
-  // Wikipedia's REST summary API's lead-paragraph `extract` for this
-  // entity's English article — real prose, distinct from `tagline`'s short
-  // Wikidata subtitle. Absent (not a fallback to `tagline`) whenever no
-  // English Wikipedia article resolves; never causes the entity to be
-  // dropped at publish (only a missing `tagline` does — see
-  // write-datasets.ts). No length cap anywhere in the pipeline or the UI.
+  // Wikipedia's REST summary API lead-paragraph `extract` for this entity's
+  // article in the dataset's language (en/ru): prose, distinct from `tagline`'s
+  // short Wikidata subtitle. Absent (not a `tagline` fallback) when no article
+  // resolves; never drops the entity (only a missing `tagline` does; see
+  // write-datasets.ts). No length cap in the pipeline or the UI.
   description?: string;
   wikipediaUrl: string;
-  // The raw Wikidata P18 Commons `Special:FilePath` URI, stored exactly as
-  // SPARQL returns it — no width baked in, same "store verbatim" convention
-  // wikipediaUrl already uses. Absent means no P18 claim — true for all
-  // four entity types now (People, Milestones, and, since the Wars &
-  // Conflicts taxonomy restructure, Conflict/ConflictEvent too — see
-  // .scratch/wars-conflicts-taxonomy/map.md, which reverses the earlier
-  // "Wars & Conflicts images are out of scope" call). The frontend appends
-  // `?width=<n>` at render time, a plain string append onto this value.
+  // The raw Wikidata P18 Commons `Special:FilePath` URI, stored verbatim with no
+  // width baked in (like wikipediaUrl). Absent means no P18 claim, for all four
+  // entity types. The frontend appends `?width=<n>` at render time.
   image?: string;
-  // A plain display-ready credit string (e.g. "Jacques-Louis David, via
-  // Wikimedia Commons"), populated only when the image's Commons license
-  // requires attribution — absent both when there's no image and when the
-  // image's license doesn't require a credit (the common, public-domain
-  // case for this dataset's historical subjects).
+  // A display-ready credit string (e.g. "Jacques-Louis David, via Wikimedia
+  // Commons"), set only when the image's Commons license requires attribution;
+  // absent with no image or a license needing no credit (the common
+  // public-domain case here).
   imageAttribution?: string;
-  // Permanent per-item Row Depth identity (CONTEXT.md's Row Depth) —
-  // data-pipeline computes this once, over the *entire* lane at Output time
-  // (People among themselves; Conflicts and Milestones together, one shared
-  // pass), so it never changes because of a client-side filter, zoom, or a
-  // deeper Detail Level's delta file merging in (docs/adr/0005-row-
-  // assignment-moves-to-the-pipeline.md) — only a pipeline rebuild can move
-  // it. Optional in the type
-  // purely so hand-built test fixtures that don't care about row-packing
-  // don't need to supply one; real shipped data always sets it, and
-  // packages/web's locale-datasets.ts validateEntries treats a missing/non-
-  // finite row as schema drift, the same tripwire it already applies to a
-  // missing id/name/date.
+  // Permanent per-item row (CONTEXT.md's Row Depth). data-pipeline computes it
+  // once over the entire lane at Output (People among themselves; Conflicts and
+  // Milestones in one shared pass), so client filters, zoom and deeper Detail
+  // Level delta files never change it (docs/adr/0005-row-assignment-moves-to-the-pipeline.md);
+  // only a pipeline rebuild can. Optional in the type only so test fixtures
+  // needn't supply one; shipped data always sets it, and packages/web's
+  // locale-datasets.ts validateEntries treats a missing or non-finite row as
+  // schema drift.
   row?: number;
 }
 
-// Sourced from Pantheon 2.0, not Wikidata — fameScore is Pantheon's own HPI
-// (0-100), not a sitelink count (see ../data-pipeline/src/transform/score.ts's
-// FAME_TIER_MIN_HPI, independent of Conflict/Milestone's sitelink-based tiers).
+// Sourced from Pantheon 2.0, not Wikidata: fameScore is Pantheon's HPI (0-100)
+// (see ../data-pipeline/src/transform/score.ts's FAME_TIER_MIN_HPI), separate
+// from Conflicts/Milestones' blended score.
 export interface Person extends TimelineEntry {
-  // Pantheon's `occupation` field is single-valued per person, unlike
-  // Wikidata's potentially-multiple occupation claims — one domain, not an
-  // array of tags.
+  // Pantheon's `occupation` is single-valued per person (Wikidata's can be
+  // multiple): one domain, not an array.
   occupationDomain: OccupationDomain;
-  // Birth region and death region can genuinely differ, so this stays an
-  // array even though occupationDomain doesn't need to be.
+  // Birth and death regions can differ, so this is an array even though
+  // occupationDomain isn't.
   regionTags: Region[];
   // Always a Period, never a point — a life is never a single moment.
   // `end` absent means still alive.
@@ -260,66 +226,53 @@ export interface Person extends TimelineEntry {
 }
 
 // Shape is decoupled from category (data-pipeline's Wikidata enrichment
-// pass decides it, not a fixed type-QID allowlist): a curated conflict
-// becomes a Conflict when its enrichment resolves both a start and an end
-// date, a ConflictEvent (below) when it resolves only one. Any of the six
-// ConflictCategory values can produce either shape depending on what
-// Wikidata actually knows about that QID — see
+// decides it): a curated conflict is a Conflict when enrichment resolves both
+// a start and an end date, a ConflictEvent (below) when only one. Any of the
+// six ConflictCategory values can produce either; see
 // data-pipeline/src/output/write-datasets.ts's buildConflicts.
 export interface Conflict extends TimelineEntry {
-  // Kept as the shared ConflictCategory type rather than a narrower literal
-  // union so Conflict and ConflictEvent can share CONFLICT_CATEGORY_COLORS
-  // and other ConflictCategory-keyed lookups on the frontend.
+  // The shared ConflictCategory type (not a narrower union) so Conflict and
+  // ConflictEvent can share ConflictCategory-keyed lookups.
   category: ConflictCategory;
   regionTags: Region[];
   period: Period;
-  // Another curated row's id, always resolving to a Conflict (never a
-  // ConflictEvent) — a "Container" is simply a Conflict with no parentId.
-  // Absent means this Conflict is either a Container itself or stands
-  // alone. Nesting is capped at 3 levels (Container → this row → a further
-  // ConflictEvent/Conflict), enforced at Output (write-datasets.ts's
+  // Another curated row's id, always a Conflict (never a ConflictEvent); a
+  // "Container" is a Conflict with no parentId. Absent means a Container or a
+  // standalone Conflict. Nesting is capped at 3 levels (Container → this row →
+  // a further ConflictEvent/Conflict), enforced at Output (write-datasets.ts's
   // buildConflicts), not by this type.
   parentId?: string;
 }
 
-// A single-moment Conflicts entry. See Conflict above for why these are
-// a separate type from Conflict (shape follows what Wikidata's enrichment
-// resolves) rather than an optional end date on it.
+// A single-moment Conflicts entry; a separate type from Conflict because shape
+// follows what Wikidata's enrichment resolves (see Conflict above).
 export interface ConflictEvent extends TimelineEntry, PointInTime {
   category: ConflictCategory;
   regionTags: Region[];
-  // Same contract as Conflict.parentId above — always resolves to a
-  // Conflict, never another ConflictEvent (a ConflictEvent is always the
-  // deepest level, level 3).
+  // Same contract as Conflict.parentId, and a ConflictEvent is always the
+  // deepest level (3).
   parentId?: string;
 }
 
-// The Conflicts lane's dataset (conflicts.json) is one array mixing both
-// shapes — Conflict and ConflictEvent are structurally disjoint (`period`
-// vs `at`), so consumers narrow with `"period" in entry` rather than
-// needing a separate `kind` discriminant field.
+// A Conflicts dataset is one array mixing both shapes. Conflict and
+// ConflictEvent are structurally disjoint (`period` vs `at`), so consumers
+// narrow with `"period" in entry`, with no `kind` discriminant.
 export type ConflictEntry = Conflict | ConflictEvent;
 
-// Sourced from the hand-curated milestones list, not a Wikidata-?type-claim
-// scan — category is curator-assigned directly (see tagCuratedMilestone in
-// data-pipeline/src/transform/tag-milestones.ts), hence its own
-// MilestoneCategory taxonomy rather than Conflict's Category. Date shape
-// follows what Wikidata's enrichment resolves, the same rule
-// Conflict/ConflictEvent already use: a period when both start (P580) and
-// end (P582) resolve (e.g. the Black Death, 1346-1353), a point otherwise
-// (e.g. an invention's first appearance) — see
-// data-pipeline/src/output/write-datasets.ts's buildMilestones. Kept as one
-// exported type (unlike Conflict/ConflictEvent's two names) since a
-// period-shaped milestone isn't a different kind of thing, just a
-// better-known date; narrow with `"period" in entry`, not a `kind`
-// discriminant.
+// Sourced from the hand-curated milestones list; the category is
+// curator-assigned (data-pipeline/src/transform/tag-milestones.ts's
+// tagCuratedMilestone), hence its own MilestoneCategory taxonomy. Date shape
+// follows enrichment, as for Conflict/ConflictEvent: a period when both start
+// (P580) and end (P582) resolve (e.g. the Black Death, 1346-1353), a point
+// otherwise (see data-pipeline/src/output/write-datasets.ts's buildMilestones).
+// One exported type, since a period-shaped milestone is the same kind of thing
+// with a better-known date; narrow with `"period" in entry`.
 interface MilestonePeriod extends TimelineEntry {
   category: MilestoneCategory;
   regionTags: Region[];
   approximateDate?: true;
-  // Nested, like Conflict.period — not flattened the way MilestonePoint
-  // flattens PointInTime's `at`, since `"period" in entry` (not `"at" in
-  // entry`) is the narrowing check every consumer uses.
+  // Nested like Conflict.period, not flattened like MilestonePoint's `at`, since
+  // `"period" in entry` is the narrowing check every consumer uses.
   period: Period;
 }
 
@@ -333,23 +286,19 @@ interface MilestonePoint extends TimelineEntry, PointInTime {
 
 export type Milestone = MilestonePeriod | MilestonePoint;
 
-// Projects a YearMonth onto a single continuous number, e.g. for use as a
-// position on a year-keyed x-scale — plain `year` when month is unknown
-// (same as month 1, i.e. no offset), else `year` plus the fraction of the
-// year elapsed by the start of that month. Shared verbatim by data-pipeline
-// (TimelineEntry.row's one-time Output-stage packing) and packages/web
-// (its own live, per-render pixel positioning) — see TimelineEntry.row.
+// Projects a YearMonth onto one continuous number for a year-keyed x-scale:
+// `year` when month is unknown (same as month 1), else `year` plus the
+// fraction of the year elapsed by that month's start. Shared by data-pipeline's
+// one-time row packing and web's live positioning (see TimelineEntry.row).
 export function yearMonthToFractionalYear(yearMonth: YearMonth): number {
   if (yearMonth.month === undefined) return yearMonth.year;
   return yearMonth.year + (yearMonth.month - 1) / 12;
 }
 
-// Label-sizing heuristic shared by data-pipeline (TimelineEntry.row's
-// one-time Output-stage packing — a label's rendered width affects which
-// items count as overlapping) and packages/web (the same estimate, reused
-// for its own live pixel positioning) — a rough per-character estimate
-// rather than a real DOM text-measurement pass, since data-pipeline has no
-// DOM and the two need to agree on one answer regardless.
+// Label-sizing heuristic shared by data-pipeline (one-time row packing, where
+// label width affects which items overlap) and web (live positioning): a rough
+// per-character estimate, since data-pipeline has no DOM and both need one
+// answer.
 export const AVG_CHAR_WIDTH_PX = 6;
 export const POINT_RADIUS = 5;
 // A point mark's label starts this far right of its dot's center — clear of
@@ -360,23 +309,21 @@ export const POINT_LABEL_OFFSET_PX = 13;
 export const MARK_LABEL_WRAP_WIDTH_PX = 140;
 export const MARK_LABEL_MAX_LINES = 2;
 
-// CONTEXT.md's Reference Scale: the fixed pixels-per-year data-pipeline
-// packs TimelineEntry.row against (row-assignment.ts) and packages/web
-// packs the Minimap's Row Depth curve against (Minimap.tsx) — both must
-// agree on the same number for a Minimap-reported Row Depth to match what
-// actually shipped in `row`. Equal to packages/web's default 120-year
-// opening view at its 1000px fallback viewport width
-// (FALLBACK_VIEWPORT_WIDTH_PX / DEFAULT_VISIBLE_YEARS); web's own
-// options.test.ts asserts that derivation still equals this constant.
+// CONTEXT.md's Reference Scale: the fixed pixels-per-year data-pipeline packs
+// TimelineEntry.row against (row-assignment.ts) and web packs the Minimap's
+// Row Depth curve against (Minimap.tsx); both must agree for the Minimap's
+// depth to match the shipped `row`. Equal to web's default 120-year opening
+// view at its 1000px fallback viewport width
+// (FALLBACK_VIEWPORT_WIDTH_PX / DEFAULT_VISIBLE_YEARS); web's options.test.ts
+// asserts the derivation matches this constant.
 export const REFERENCE_SCALE_PIXELS_PER_YEAR = 1000 / 120;
 
 export function estimateLabelWidthPx(name: string): number {
   return name.length * AVG_CHAR_WIDTH_PX;
 }
 
-// Greedy word-wrap using the same rough per-character estimate as
-// estimateLabelWidthPx — good enough to bound a label's rendered width
-// without a real DOM text-measurement pass.
+// Greedy word-wrap using the estimateLabelWidthPx estimate, bounding a label's
+// width without DOM measurement.
 export function wrapLabelLines(name: string, maxWidthPx: number): string[] {
   const words = name.split(' ');
   const lines: string[] = [];

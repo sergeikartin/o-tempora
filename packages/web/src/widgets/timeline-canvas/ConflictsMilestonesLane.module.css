@@ -7,14 +7,11 @@
   transform-origin: 0 0;
 }
 
-/* The zoom-button animation's per-label counter-scale
-   (ConflictsMilestonesLane.tsx) targets these wrappers, not .label directly
-   — .label has its own `transition: transform` for the hover-grow effect
-   below, and a JS-driven, every-frame `transform` write on the same
-   element/property would get caught by that transition too, smoothing/
-   lagging a frame behind instead of landing exactly, and visibly wobbling
-   the label's rendered width. Same anchor as .label's own hover-scale (top-
-   left) so the two independent scales agree on where "in place" is. */
+/* The zoom animation's per-label counter-scale (ConflictsMilestonesLane.tsx)
+   targets these wrappers, not .label: .label has `transition: transform` for
+   the hover-grow, which would smooth a per-frame JS transform write and lag it
+   a frame, wobbling the label's width. Same top-left anchor as .label's
+   hover-scale so both scales agree on "in place". */
 :global(.d3-range-name-zoom) {
   transform-box: fill-box;
   transform-origin: left top;
@@ -87,16 +84,13 @@
   transform: scale(1.15);
 }
 
-/* Search-jump / current-selection highlight (CONTEXT.md's Search entry) —
-   see PeopleLane.module.css's identical rule for the shared rationale: a
-   real, wider duplicate line drawn behind a range's own line
-   (ConflictsMilestonesLane.tsx's .d3-line-halo), not a CSS outline filter
-   (which clips to nothing on this lane's perfectly horizontal range lines).
-   The translucent ink fill lets the parchment show through, so the halo
-   never fights a Conflict's flat color or a Milestone's own category
-   color. Always present once a mark has been selected, invisible by
-   default, toggled to opaque by id in ConflictsMilestonesLane.tsx's own
-   effect. pointer-events: none — see PeopleLane's identical rule. */
+/* Selection / search-jump highlight (CONTEXT.md's Search); see
+   PeopleLane.module.css's identical rule. A wider duplicate line behind the
+   range's own line (.d3-line-halo), not a CSS outline filter, which clips to
+   nothing on horizontal lines. The translucent ink fill never fights a
+   Conflict's flat color or a Milestone's category color. Always present once a
+   mark has been selected, invisible by default, toggled by id in
+   ConflictsMilestonesLane.tsx's effect. pointer-events: none. */
 .lineHalo {
   fill: none;
   stroke: var(--color-selection-halo);
@@ -143,14 +137,11 @@
   r: 7px;
 }
 
-/* The label half of the same highlight — kept in ink and scaled so the
-   label and its mark read as one highlighted unit, via the same hover-grow scale as .line/.dot above for
-   the same "selected = hover that stuck" reason. No outline/halo on the
-   text itself — an outline dilates a small glyph's own strokes into its
-   neighbors' gaps, reading as a solid blob rather than legible text.
-   Toggled by id alongside .searchHighlight above, but scoped to
-   .range-name/.point-name in ConflictsMilestonesLane.tsx's effect since it
-   needs this different treatment. */
+/* The label half of the highlight: kept in ink and scaled with the same
+   hover-grow as .line/.dot ("selected = hover that stuck"). No outline or halo
+   on text, which would dilate glyph strokes into a blob. Toggled alongside
+   .searchHighlight but scoped to .range-name/.point-name in
+   ConflictsMilestonesLane.tsx's effect. */
 .label.searchHighlightLabel {
   fill: var(--color-text-primary);
   transform: scale(1.15);
@@ -173,10 +164,8 @@
   transform-origin: left top;
   transition: transform var(--motion-duration-fast) var(--motion-easing);
   fill: var(--color-text-primary);
-  /* Ink rather than the mark's own color: the bar or dot carries the
-     category, the label stays legible on parchment. Clickable (same data-entity-id/-type as the
-     line/dot, see ConflictsMilestonesLane.tsx) so pointer-events stays
-     default rather than none; user-select stays off so a click doesn't also
-     select the text. */
+  /* Ink rather than the mark's color: the bar or dot carries the category.
+     Clickable (same data-entity-id/-type as the line/dot), so pointer-events
+     stays default; user-select stays off so a click doesn't select the text. */
   user-select: none;
 }

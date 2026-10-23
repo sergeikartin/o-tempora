@@ -31,78 +31,55 @@ export {
 // Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
 export const LANE_TOP_PADDING = 12;
-// Year Axis: a ruler bar whose tick marks are pure CSS (two layered
-// repeating background-gradients — decade/century — no per-tick DOM
-// node, so its cost is ~flat regardless of the scrollable width) plus a
-// label row below showing decade numbers as plain positioned elements,
-// windowed to the visible viewport (+ buffer — see TimelineCanvas's
-// VIEWPORT_BUFFER_RATIO). Replaces an earlier design that generated one DOM
-// node per tick (first via d3's adaptive axisBottom, later a fixed-step D3
-// join) — sizing tick count off the entire scrollable width regardless of
-// scroll position was the single biggest contributor to initial-load time;
-// the CSS-gradient approach sidesteps that per-tick cost entirely rather
-// than just windowing it.
+// Year Axis: a ruler bar whose ticks are two layered CSS repeating gradients
+// (decade/century), so cost stays flat however wide the scroll area is, plus a
+// label row of decade numbers windowed to the viewport plus a buffer
+// (VIEWPORT_BUFFER_RATIO).
 export const DECADE_STEP_YEARS = 10;
 export const QUARTER_CENTURY_STEP_YEARS = 25;
 export const CENTURY_STEP_YEARS = 100;
 export const RULER_HEIGHT = 20;
 export const RULER_LABEL_ROW_HEIGHT = 18;
 export const AXIS_HEIGHT = RULER_HEIGHT + RULER_LABEL_ROW_HEIGHT;
-// Tick height as a % of RULER_HEIGHT, top-anchored (a tick "hangs down"
-// from the top of the ruler bar, taller = more prominent) — passed as CSS
-// custom properties rather than baked into the CSS Module since the
-// underlying px spacing is zoom-dependent (see TimelineCanvas's
-// `--decade-tick-px`/`--century-tick-px` custom properties).
+// Tick height as a % of RULER_HEIGHT, hanging from the ruler's top (taller =
+// more prominent). Passed as CSS custom properties because the px spacing
+// depends on zoom (`--decade-tick-px`/`--century-tick-px`).
 export const DECADE_TICK_HEIGHT_PCT = 55;
 export const CENTURY_TICK_HEIGHT_PCT = 100;
-// Decade labels are skipped once zoomed out far enough that a decade's
-// pixel width would make the year text collide with its neighbor's —
-// century labels are still shown, spaced 10x further apart.
+// Decade labels are skipped once a decade is too narrow to fit its text;
+// century labels still show, spaced 10x further apart.
 export const MIN_DECADE_LABEL_SPACING_PX = 40;
-// The Minimap's top-edge century-tick strip (Minimap.tsx): ticks always
-// render across the full pannable range, but labels are thinned by walking
-// left to right and skipping any that would overlap the previous shown
-// label's own estimated rendered width — unlike YearAxis's decade labels
-// (uniform spacing at any given zoom, so a single show/hide toggle against a
-// flat px floor works), century labels vary a lot in text length ("1800s"
-// vs. "8th century BCE"), so a flat floor alone still let long labels
-// visually overlap the next tick's short one.
+// The Minimap's century-tick strip (Minimap.tsx): ticks render across the full
+// pannable range, but labels are thinned left to right, skipping any that
+// would overlap the previous shown label's estimated width. Century labels
+// vary in length ("1800s" vs. "8th century BCE"), so a flat spacing floor like
+// the decade labels' isn't enough.
 export const MINIMAP_CENTURY_STRIP_HEIGHT_PX = 20;
 
-// A Period (a real duration — Person lifespans, Conflict ranges) always
-// renders as a rounded-cap line; a PointInTime
-// (ConflictEvents, Milestones) always renders as a dot. Both are drawn
-// with SVG stroke, not fill, so `stroke-linecap: round` gives the
-// pill-shaped caps.
+// A Period (Person lifespans, Conflict ranges) renders as a rounded-cap line;
+// a PointInTime (ConflictEvents, Milestones) as a dot. Both use SVG stroke so
+// `stroke-linecap: round` gives the caps.
 export const PERIOD_LINE_HEIGHT = 6;
-// Extra margin (in every direction) added around a mark's own visible
-// bounds for its invisible hit-area rect — the thin 6px line/5px dot alone
-// is a poor hover/click target, and a mark's label sits a few px above/below
-// it with a gap that would otherwise be dead space between two separately
-// clickable elements.
+// Margin added on every side of a mark's bounds for its invisible hit-area
+// rect: the thin line/dot is a poor target, and the gap to its label would be
+// dead space.
 export const HIT_AREA_PADDING_PX = 4;
-// The search-jump/selection halo drawn around a Period line (a duplicate,
-// wider <line> underneath the real one, not a filter — see PeopleLane and
-// ConflictsMilestonesLane's .lineHalo) or around a point's dot (a duplicate,
-// wider <circle>). It is a translucent ink fill that extends this many px
-// past the grown mark on every side.
+// The selection/search-jump halo: a duplicate, wider <line> (see .lineHalo in
+// PeopleLane and ConflictsMilestonesLane) or <circle> underneath the real mark,
+// a translucent ink fill extending this many px past the grown mark.
 export const SELECTION_HALO_PX = 8;
-// A selected mark renders permanently at its hover-grown size (not just the
-// resting PERIOD_LINE_HEIGHT/POINT_RADIUS) — a click is a hover that stuck,
-// so selecting shouldn't itself trigger a further size change. These mirror
-// the same two numbers PeopleLane/ConflictsMilestonesLane's own :hover CSS
-// rules hardcode (CSS can't read PERIOD_LINE_HEIGHT/POINT_RADIUS either),
-// and size the selection halo so it tracks the grown mark
-// rather than the resting one.
+// A selected mark stays at its hover-grown size (a click is a hover that
+// stuck). These mirror the numbers hardcoded in PeopleLane/
+// ConflictsMilestonesLane's :hover CSS (CSS can't read
+// PERIOD_LINE_HEIGHT/POINT_RADIUS) and size the halo to the grown mark.
 export const SELECTED_LINE_HEIGHT_PX = 9;
 export const SELECTED_POINT_RADIUS_PX = 7;
 // Approx rendered height of an 11px label.
 const LABEL_TEXT_HEIGHT_PX = 13;
 
-// Row layout shared by the merged Conflicts+Milestones lane, since a single
-// row-packing pass means any item can land in any row (see
-// ConflictsMilestonesLane.tsx). A range's label sits just below its line;
-// every label is a single line, so rows have a fixed pitch.
+// Row layout of the merged Conflicts+Milestones lane, where any item can land
+// in any row (see ConflictsMilestonesLane.tsx). A range's label sits just
+// below its line; every label is one line, so rows have a fixed pitch.
 export const MILESTONES_MARKER_LABEL_GAP = 4;
 export const MILESTONES_LABEL_LINE_HEIGHT_PX = LABEL_TEXT_HEIGHT_PX;
 
@@ -123,22 +100,18 @@ export function pointHitHeight(lineCount: number): number {
   return lineCount * MILESTONES_LABEL_LINE_HEIGHT_PX + HIT_AREA_PADDING_PX * 2;
 }
 
-// Above-line label layout, used by People — the one lane whose Period bars
-// don't all share a fixed marker y (they stack into vertical bands like a
-// Gantt chart), so unlike the below-marker lane above, the label tier and
-// the vertical band are the same "row" concept: a person's label sits just
-// above their own lifespan line, both moving together per row.
+// Above-line label layout, used by People: its Period bars stack into
+// vertical bands, so label tier and band are the same "row", and a person's
+// label sits just above their own line.
 const PERSON_LABEL_GAP = 2;
 // Vertical budget per row: label height + gap + lifespan line + breathing
 // room to the next row.
 export const PERSON_ROW_PITCH =
   LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT + ROW_GAP;
 
-// assignRows hands back row 0 as the most-famous-heavy row (see its own
-// comment), and the People lane wants that row closest to the bottom of its
-// box — the edge next to the shared Year Axis below it — so row indices are
-// inverted against rowCount here: row 0 lands at the highest y (bottom),
-// row (rowCount - 1) at LANE_TOP_PADDING (top, furthest from the axis).
+// Row 0 is the most famous row, and People wants it at the bottom, next to
+// the shared Year Axis, so indices are inverted against rowCount: row 0 gets
+// the highest y, row (rowCount - 1) sits at LANE_TOP_PADDING.
 
 /** y of a row's label — hangs just above that row's lifespan line. */
 export function personLabelYForRow(row: number, rowCount: number): number {
@@ -161,27 +134,17 @@ export function personLaneHeight(rowCount: number): number {
   return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
 }
 
-// Milestones' own palette. MilestoneCategory keeps its full 22-value
-// taxonomy for filtering/labels (disjoint from Conflicts' ConflictCategory,
-// which no longer drives a color — see CONFLICT_COLOR above), but color
-// folds every category into 2 legible groups plus the flat Conflict red —
-// a 22-hue-per-category palette sits at well under 10° hue separation, below any
-// CVD-safe spacing and more colors than a legend can hold anyway. Each
-// group rhymes with (is a darker, richer step of) the People-domain hue its
-// content actually echoes, so the color language is learned once: Science &
-// Innovation deepens Science & Technology, Society & Culture deepens
-// Public Figures. See docs/design-tokens.md for the validation report and
-// the full category -> group mapping. MILESTONE_CATEGORY_GROUP_COLORS
-// itself lives in shared/config (imported above), not here, since the
-// sidebar's Milestone Category Group filter pills need it too and
-// features/ can't import from widgets/ under mini-FSD's layer rule — see
-// that file's own comment.
+// Milestones' palette. MilestoneCategory keeps its 22 values for filtering
+// and labels (disjoint from ConflictCategory), but color folds them into 2
+// groups plus the flat Conflict color: 22 hues would be under 10° apart, below
+// CVD-safe spacing. Each group is a darker step of the People-domain hue it
+// echoes (Science & Innovation: Science & Technology; Society & Culture:
+// Public Figures); see docs/design-tokens.md. MILESTONE_CATEGORY_GROUP_COLORS
+// lives in shared/config because features/ can't import from widgets/.
 //
-// Derived from MILESTONE_CATEGORY_TO_GROUP (packages/shared-types) rather
-// than listing per-category hexes directly, so the timeline's color and the
-// sidebar's Milestone Category Group filter can never silently drift apart
-// — public shape and values are unchanged (still one hex per
-// MilestoneCategory, still exactly 2 distinct hexes).
+// Derived from MILESTONE_CATEGORY_TO_GROUP (packages/shared-types) so the
+// timeline's color and the sidebar filter can't drift apart: one hex per
+// MilestoneCategory, 2 distinct hexes.
 export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> =
   Object.fromEntries(
     Object.entries(MILESTONE_CATEGORY_TO_GROUP).map(([category, group]) => [
@@ -192,15 +155,13 @@ export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> =
 
 export const MIN_YEAR = PAN_MIN_YEAR;
 
-// The Year Axis's CSS tick gradients (and the scroll container's full-height
-// decade gridlines) render as two adjacent regions split at year 0 — a BCE
-// ruler tiling from its own x=0 (= MIN_YEAR) and a CE ruler tiling from its
-// own x=0 (= year 0), each needing an offset computed relative to *its own*
-// local origin, not the other's. Round-historical BCE tick positions
-// (format-year.ts's isRoundTickYear/roundTickYearsInRange — year ≡ 1 mod
-// stepYears, e.g. -9/-19 for "10 BCE"/"20 BCE") also sit on a different
-// phase than CE ticks and the era-boundary tick at year 0 (ordinary ≡ 0 mod
-// stepYears, unchanged) — see docs/adr/0001-astronomical-year-numbering.md.
+// The Year Axis's CSS tick gradients render as two adjacent regions split at
+// year 0, a BCE ruler tiling from its own x=0 (= MIN_YEAR) and a CE ruler from
+// x=0 (= year 0), each with an offset relative to its own origin. Round BCE
+// tick years (format-year.ts's isRoundTickYear/roundTickYearsInRange: year ≡ 1
+// mod stepYears, e.g. -9/-19 for "10 BCE"/"20 BCE") sit on a different phase
+// than CE ticks and the year-0 boundary tick (≡ 0 mod stepYears); see
+// docs/adr/0001-astronomical-year-numbering.md.
 function phaseOffsetYears(
   stepYears: number,
   anchorRemainder: number,
@@ -229,9 +190,8 @@ export const BCE_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
   1,
   MIN_YEAR,
 );
-// Same round-year phase alignment, at the lane background's 25-year zebra-
-// band interval (TimelineCanvas.tsx's .zebraLayer) — replaces the old
-// decade-interval gridlines (`/grill-with-docs`).
+// Same round-year phase alignment at the 25-year zebra interval
+// (TimelineCanvas.tsx's .zebraLayer).
 export const QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
   QUARTER_CENTURY_STEP_YEARS,
   0,
@@ -262,21 +222,17 @@ export const DEFAULT_VISIBLE_YEARS =
   DEFAULT_VIEWPORT_END_YEAR - DEFAULT_VIEWPORT_START_YEAR;
 
 const ZOOM_STEP = 0.2;
-// Real browsers report the scroll container's actual clientWidth; this only
-// matters before that ref has measured anything (e.g. jsdom in tests, or a
-// not-yet-laid-out first paint) — exported since TimelineCanvas's Year Axis
-// viewport-windowing needs the same fallback before its own first measurement.
+// Fallback width before the scroll container has been measured (jsdom, first
+// paint); exported because TimelineCanvas's Year Axis windowing needs it too.
 export const FALLBACK_VIEWPORT_WIDTH_PX = 1000;
-// Extra years rendered on each side of the visible viewport for the Year
-// Axis's decade/century ticks, as a fraction of viewport width — avoids
-// ticks visibly popping in right at the scroll edge.
+// Extra years rendered on each side of the viewport for the Year Axis ticks,
+// as a fraction of viewport width, so ticks don't pop in at the scroll edge.
 export const VIEWPORT_BUFFER_RATIO = 0.5;
 
 /**
- * Pixels-per-year bounds implied by ZOOM_MIN_YEARS/ZOOM_MAX_YEARS (the same
- * bounds vis-timeline's zoomMin/zoomMax enforced) at a given viewport width:
- * `min` shows ZOOM_MAX_YEARS at once (zoomed all the way out), `max` shows
- * ZOOM_MIN_YEARS at once (zoomed all the way in).
+ * Pixels-per-year bounds implied by ZOOM_MIN_YEARS/ZOOM_MAX_YEARS at a
+ * given viewport width: `min` shows ZOOM_MAX_YEARS at once (zoomed all the
+ * way out), `max` shows ZOOM_MIN_YEARS at once (zoomed all the way in).
  */
 export function pixelsPerYearBounds(viewportWidthPx: number): {
   min: number;
@@ -300,19 +256,15 @@ export function defaultPixelsPerYear(viewportWidthPx: number): number {
   return clampPixelsPerYear(width / DEFAULT_VISIBLE_YEARS, width);
 }
 
-// A fixed scale (not the live viewport's, not the live zoom's) the Minimap
-// packs its area-sparkline and century ticks against (Minimap.tsx,
-// packages/web/docs/adr/0004-density-minimap-replaces-scrollbar.md) — a
-// Row Depth curve computed at the live zoom would disagree with what the
-// canvas actually renders as the user zooms. Also the exact scale
+// A fixed scale the Minimap packs its sparkline and century ticks against
+// (web/docs/adr/0004-density-minimap-replaces-scrollbar.md); a curve computed
+// at the live zoom would disagree with the canvas. Also the scale
 // data-pipeline's row-assignment.ts packs each entry's permanent
-// TimelineEntry.row against (docs/adr/0005-row-assignment-moves-to-the-
-// pipeline.md), imported there as shared-types' REFERENCE_SCALE_PIXELS_PER_YEAR
-// rather than re-derived, since packages/data-pipeline doesn't depend on
-// packages/web. This export stays a live defaultPixelsPerYear() call rather
-// than importing that same shared constant, so it keeps auto-following
-// DEFAULT_VISIBLE_YEARS/FALLBACK_VIEWPORT_WIDTH_PX if either ever changes;
-// options.test.ts asserts the two values still agree.
+// TimelineEntry.row against (docs/adr/0005-row-assignment-moves-to-the-pipeline.md)
+// via shared-types' REFERENCE_SCALE_PIXELS_PER_YEAR, since data-pipeline doesn't
+// depend on web. This stays a live defaultPixelsPerYear() so it follows
+// DEFAULT_VISIBLE_YEARS/FALLBACK_VIEWPORT_WIDTH_PX; options.test.ts asserts the
+// two agree.
 export const REFERENCE_PIXELS_PER_YEAR = defaultPixelsPerYear(
   FALLBACK_VIEWPORT_WIDTH_PX,
 );
@@ -328,16 +280,13 @@ export function zoomOut(
   return clampPixelsPerYear(pixelsPerYear / (1 + ZOOM_STEP), viewportWidthPx);
 }
 
-// Pinch-to-zoom math, extracted as pure functions (mirroring zoomIn/zoomOut
-// above) so the gesture's core arithmetic is unit-testable without
-// simulating real multi-touch pointer events.
+// Pinch-to-zoom math as pure functions (like zoomIn/zoomOut above), so it is
+// unit-testable without simulating multi-touch.
 
 /**
- * Live pixelsPerYear implied by a pinch gesture's current two-point
- * distance relative to where the gesture started — the gesture's own
- * distance ratio applied to the pixelsPerYear committed at gesture start,
- * clamped by the same bounds button-zoom uses. No discrete step/snap: a
- * pinch's "minimal, no momentum" behavior is this ratio committing as-is.
+ * Live pixelsPerYear for a pinch: the gesture's distance ratio applied to
+ * the pixelsPerYear committed at gesture start, clamped by the button-zoom
+ * bounds. No discrete step/snap.
  */
 export function pinchPixelsPerYear(
   startPixelsPerYear: number,
@@ -354,9 +303,8 @@ export function pinchPixelsPerYear(
 }
 
 /**
- * The year under a pinch gesture's midpoint — same scale.invert technique
- * `zoom()`'s centerYear uses for the viewport's center (TimelineCanvas.tsx),
- * just anchored to the pinch midpoint's offset within the viewport instead.
+ * The year under a pinch gesture's midpoint (scale.invert, as `zoom()`'s
+ * centerYear does for the viewport center in TimelineCanvas.tsx).
  */
 export function pinchCenterYear(
   scale: d3.ScaleLinear<number, number>,
@@ -366,16 +314,13 @@ export function pinchCenterYear(
   return scale.invert(scrollLeft + midpointOffsetPx);
 }
 
-// Zoom-button animation: a single `translate(tx) scale(sx)` group transform
-// per lane/axis, driven by a per-frame JS interpolation of pixelsPerYear —
-// not per-mark attribute recompute (benchmarked at 250-530ms/frame at this
-// app's worst-case density, 15-30x over the 16ms frame budget) and not a CSS
-// `transition` (confirmed unreliable through React's commit model — see
-// .scratch/zoom-filter-transitions/spec.md's post-mortem). Every mark stays
-// drawn at the animation's start pixelsPerYear for the whole gesture (the
-// real pixelsPerYear/scrollLeft state commits exactly once, at the end —
-// TimelineCanvas.tsx) — this transform is what makes them visually track
-// the interpolated value each tick instead.
+// Zoom animation: one `translate(tx) scale(sx)` group transform per lane/axis,
+// driven by per-frame JS interpolation of pixelsPerYear. Per-mark attribute
+// recompute costs 250-530ms/frame at worst-case density (16ms budget), and a
+// CSS `transition` is unreliable through React's commit model. Every mark
+// stays drawn at the start pixelsPerYear for the whole gesture and this
+// transform makes them track the interpolated value; real state commits once
+// at the end (TimelineCanvas.tsx).
 
 export interface ZoomAnimationTransform {
   /** Horizontal translation, in the same px units as the content it's applied to. */
@@ -388,25 +333,21 @@ export interface ZoomAnimationTransform {
 export interface ZoomAnimationHandle {
   applyZoomTransform: (transform: ZoomAnimationTransform) => void;
   /**
-   * Called once at gesture start (button click, pinch start) — promotes the
-   * lane/axis's animated group to its own compositor layer ahead of the
-   * first transform write, since a plain imperative `style.transform`
-   * assignment (unlike a CSS transition/animation) gets no automatic
-   * pre-promotion heuristic from the browser. The matching cleanup already
-   * happens for free: each lane/axis's existing commit-time effect that
-   * resets `transform` back to identity also resets this.
+   * Called once at gesture start: promotes the animated group to its own
+   * compositor layer before the first transform write, since a plain
+   * imperative `style.transform` gets no automatic promotion from the
+   * browser. The commit-time effect that resets `transform` to identity also
+   * cleans this up.
    */
   beginZoomAnimation?: () => void;
 }
 
 /**
- * The wrapping group's tx/sx mid-zoom-animation: marks are still drawn at
- * startPixelsPerYear (the DOM hasn't re-laid-out to the new scale yet), so
- * this is what makes them appear at currentPixelsPerYear instead, centered
- * on centerYear (the year at viewport center when the gesture began), with
- * the real scrollLeft held fixed for the whole animation — its own eventual
- * change is folded into tx here instead of ever being written mid-gesture
- * (the scroll-clamp race this app's zoom-animation history warns about).
+ * The wrapping group's tx/sx mid-animation: marks are still drawn at
+ * startPixelsPerYear, so this makes them appear at currentPixelsPerYear,
+ * centered on centerYear (viewport center when the gesture began). The real
+ * scrollLeft is held fixed and its eventual change is folded into tx, since
+ * writing it mid-gesture races with scroll clamping.
  */
 export function zoomAnimationGroupTransform(params: {
   startPixelsPerYear: number;
@@ -447,17 +388,12 @@ export function zoomAnimationGroupTransformCss({
   return `translateX(${tx}px) scaleX(${sx})`;
 }
 
-// A label/dot's own shape-preserving counter-scale — negates the wrapping
-// group's x-only scale so glyphs/circles don't stretch into ellipses (Key
-// Gotcha #5). Deliberately just a bare `scale(1/sx, 1)`, not a
-// translate/anchor composition: each label/dot's own transform-origin
-// (already set in its .module.css, reusing the same transform-box: fill-box
-// pattern the existing hover-scale relies on — PeopleLane's `.name`,
-// ConflictsMilestonesLane's `.label`/`.dot`) pivots it at its own natural
-// anchor point for free, so no per-item anchor coordinate needs threading
-// through here. Computed fresh from the same sx every tick, so — unlike a
-// CSS custom-property reciprocal transition — it's always exact, never an
-// approximation of `eased(1/target)`.
+// A label/dot's counter-scale: negates the group's x-only scale so glyphs and
+// circles don't stretch. A bare `scale(1/sx, 1)`: each label/dot's own CSS
+// transform-origin (transform-box: fill-box, as the hover-scale uses; see
+// PeopleLane's `.name`, ConflictsMilestonesLane's `.label`/`.dot`) pivots it at
+// its natural anchor. Computed fresh from sx each tick, so it is exact, unlike
+// a CSS custom-property reciprocal transition.
 export function zoomAnimationCounterScaleAttr(groupSx: number): string {
   const inverse = groupSx !== 0 ? 1 / groupSx : 1;
   return `scale(${inverse}, 1)`;
@@ -468,11 +404,9 @@ export function zoomAnimationCounterScaleCss(groupSx: number): string {
   return `scaleX(${inverse})`;
 }
 
-// Target duration for the zoom-button animation — longer than
-// --motion-duration-base (200ms) per the spec, tuned within the 300-400ms
-// range it calls for. Scaling the live token (rather than a bare literal)
-// means this collapses to near-zero automatically under
-// prefers-reduced-motion, exactly like every other motion in the app.
+// Zoom animation target duration (300-400ms, longer than
+// --motion-duration-base). Scaling the live token collapses it to near-zero
+// under prefers-reduced-motion like all other motion.
 export const ZOOM_ANIMATION_DURATION_MULTIPLIER = 1.75;
 
 export function zoomAnimationDurationMs(baseDurationMs: number): number {

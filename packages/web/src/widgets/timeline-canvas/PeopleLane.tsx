@@ -36,40 +36,27 @@ import styles from './PeopleLane.module.css';
 interface PeopleLaneProps {
   people: Person[];
   xScale: d3.ScaleLinear<number, number>;
-  // Resolves this lane's currently-visible ids to their Row Depth — backed
-  // by a permanent row identity computed once against the full (unfiltered)
-  // dataset (see map-to-items.ts's computeRowAssignment), so a person's row
-  // stays stable across every filter/zoom change instead of being
-  // re-derived from whatever's currently visible.
+  // Resolves visible ids to their permanent row, computed once against the full
+  // unfiltered dataset (map-to-items.ts's computeRowAssignment), so a person's
+  // row is stable across filter/zoom changes.
   personRowFor: (ids: string[]) => Map<string, number>;
-  // The currently-selected entity's id (DetailPanel is open for it), or null
-  // — CONTEXT.md's Search entry: picking a result highlights its mark, tied
-  // to selection state rather than a timer. Extended to every selection
-  // source (not just search), since the mechanism is identical either way.
+  // The entity DetailPanel is open for, or null; its mark gets the selection
+  // highlight (CONTEXT.md's Search), whether picked by click or search.
   selectedId?: string | null;
 }
 
-// A person's lifespan (a Period) renders as a rounded-cap line, not a solid
-// bar — their name label sits left-aligned just above it, the same
-// above-line treatment every Period gets, colored to match the lifespan
-// line's own occupation-domain fill. Overlapping people are stacked into
-// separate rows same as before; a colliding label (wider than its own line)
-// claims the row via pixelInterval above rather than moving to its own band.
-// memo: props stay referentially stable across scroll/pan frames (TimelineCanvas
-// re-renders every rAF tick while scrolling, but none of people/xScale/
-// personRowFor/selectedId change from that) — without this, the whole render
-// body (and React's reconciliation of its output) reruns on every such frame
-// for nothing, since the D3 join below is already separately gated on [layout,
-// totalHeight].
+// A person's lifespan renders as a rounded-cap line with the name label
+// left-aligned just above it, colored by occupation domain. Overlapping people
+// stack into rows; a label wider than its line claims the row via pixelInterval.
+// memo: TimelineCanvas re-renders every rAF tick while scrolling, but none of
+// these props change from that, and the D3 join is gated on [layout,
+// totalHeight], so skipping the render body avoids per-frame work.
 const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
   function PeopleLane({ people, xScale, personRowFor, selectedId }, ref) {
     const svgRef = useRef<SVGSVGElement>(null);
     const hasMountedRef = useRef(false);
-    // Caches the zoom tick loop's own selectAll (see applyZoomTransform
-    // below) across an entire gesture's worth of rAF frames — invalidated
-    // (set null) by the join effect below, the only place marks are
-    // created/destroyed, so a stale cache never outlives the DOM nodes it
-    // points at.
+    // Caches the zoom tick loop's selectAll across a gesture's frames; the join
+    // effect, the only place marks are created/destroyed, invalidates it (null).
     const zoomNamesSelectionRef = useRef<d3.Selection<
       SVGGElement,
       unknown,
@@ -92,77 +79,50 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       [people, xScale, personRowFor],
     );
 
-    // Frozen at mount (the lazy initializer runs once, ever) — g.people's
-    // real starting content, identical on server and client since both
-    // derive it from the same layout via the same shared templater
-    // (mark-shape-html.ts). Never recomputed on a later `layout` change: the
-    // D3 join below owns every update after mount, same as it always has —
-    // this only exists so first paint (server or client, before that join
-    // has ever run) already shows real marks instead of an empty <g>. The
-    // whole `{ __html }` object (not just the string) is frozen here — React
-    // re-applies dangerouslySetInnerHTML whenever that object's *reference*
-    // changes, and a fresh `{ __html: x }` literal in the JSX below would be
-    // a new reference on every render, re-stomping every D3 update since
-    // mount (this is what a zoom animation's re-render was doing before this
-    // fix — reverting every mark straight back to its frozen starting
-    // position).
+    // Frozen at mount: g.people's starting content, identical on server and
+    // client (same layout, same templater, mark-shape-html.ts), so first paint shows
+    // real marks. The D3 join owns every update after mount. The whole `{ __html }`
+    // object is frozen because React re-applies dangerouslySetInnerHTML when its
+    // reference changes, and a fresh literal per render would revert every D3
+    // update.
     const [initialPeopleHtmlProp] = useState(() => ({
       __html: renderPeopleMarkupHtml(layout, styles),
     }));
 
-    // Frozen at mount, same reasoning as initialPeopleHtmlProp above: without
-    // it, the <svg> below has no height at all on first paint (server or
-    // client, before the D3 effect below has ever run) — .bottomAlign's
-    // min-height: 100% then pads it up to fill .peopleLane's box exactly,
-    // reporting as *not overflowing* (scrollHeight === clientHeight) even
-    // though the real row count does overflow. TimelineCanvas.tsx's own
-    // scroll-to-bottom pin (and the prerender build step's matching
-    // pre-hydration pin, vite-plugins/prerender-default-viewport.ts) both
-    // read scrollHeight to do that, so a wrong pre-D3 scrollHeight here was
-    // the actual root cause of the CLS/forced-reflow regression the vertical
-    // scroll-jump piece of that ticket kept finding (.scratch/
-    // prerender-default-viewport/issues/06) — not PeopleLane's D3 mount
-    // effect below, which was already applying the correct height
-    // synchronously (no transition) on first mount, just one commit later.
+    // Frozen at mount like initialPeopleHtmlProp: without a height, the <svg> is
+    // padded by .bottomAlign's min-height: 100% to exactly fill .peopleLane and
+    // reports no overflow (scrollHeight === clientHeight) even when rows overflow.
+    // TimelineCanvas's scroll-to-bottom pin and the prerender's pre-hydration pin
+    // (vite-plugins/prerender-default-viewport.ts) both read scrollHeight, so a
+    // wrong pre-D3 value caused layout shift.
     const [initialSvgHeightPx] = useState(() => totalHeight);
 
-    // D3 owns the DOM inside <g class="people"> — one <g class="d3-person">
-    // per person, containing its lifespan line and name label. Literal
-    // (non-CSS-Module) marker classes drive the join's enter/update/exit
-    // matching; CSS-Module classes ride alongside purely for styling and are
-    // never used as join selectors.
+    // D3 owns the DOM inside <g class="people">: one <g class="d3-person"> per
+    // person with its lifespan line and name label. Literal marker classes drive
+    // the join's enter/update/exit matching; CSS-Module classes are styling only.
     //
-    // useLayoutEffect, not useEffect: this write must land before paint,
-    // otherwise a filter/zoom change that also touches xScale in the same
-    // commit shows one stale frame before the marks catch up.
+    // useLayoutEffect so the write lands before paint; otherwise a filter/zoom
+    // change that also touches xScale shows one stale frame.
     useLayoutEffect(() => {
       if (!svgRef.current) return;
       const svg = d3.select(svgRef.current);
       const durationMs = motionDurationMs('--motion-duration-base');
 
-      // A zoom animation's rAF loop (see the imperative handle below) writes
-      // a transform straight to g.people and every .d3-name every tick,
-      // without going through React — reset it here, in the same effect that
-      // lands the real geometry for a new xScale, so the commit (real x/y
-      // attrs landing + transform resetting to identity) is atomic. Landing
-      // one half a frame before the other would flash the marks at the wrong
-      // position for a frame (this is the deferred-state-commit pattern the
-      // zoom-animation spec's post-mortem calls for).
+      // The zoom animation's rAF loop (imperative handle below) writes transforms
+      // straight to g.people and every .d3-name, bypassing React. Reset them in the
+      // same effect that lands the real geometry for a new xScale, so the commit
+      // (real x/y attrs plus identity transform) is atomic and marks never flash at
+      // the wrong position.
       svg.select('g.people').attr('transform', null).style('will-change', null);
       svg.selectAll('.d3-name-zoom').attr('transform', null);
       zoomNamesSelectionRef.current = null;
 
-      // Row 0 sits at the *bottom* of the svg (personLabelYForRow/
-      // personLineCenterYForRow both compute from rowCount, not just row), and
-      // .bottomAlign bottom-aligns the svg within its wrapper — so an instant
-      // height change moves every mark's on-screen position, even one whose
-      // own row didn't change, before the row-shift transition below corrects
-      // it back: a visible jump-then-slide. Transitioning height with the
-      // exact same duration (and default easing) as the row-shift below makes
-      // the two cancel out instead: a mark whose row didn't change doesn't
-      // visibly move at all, and one that did glides directly, with no jump.
-      // React no longer sets this attribute (removed from the <svg> JSX below)
-      // so D3 fully owns it, same as every mark attribute already is.
+      // Row 0 sits at the bottom of the svg (personLabelYForRow/
+      // personLineCenterYForRow compute from rowCount) and .bottomAlign bottom-aligns
+      // it, so an instant height change would move every mark before the row-shift
+      // transition corrects it. Transitioning height with the same duration and
+      // easing makes them cancel: unchanged marks don't move, changed ones glide.
+      // D3 fully owns this attribute.
       if (hasMountedRef.current) {
         svg.transition().duration(durationMs).attr('height', totalHeight);
       } else {
@@ -170,15 +130,12 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
         hasMountedRef.current = true;
       }
 
-      // g.people's real children are already there before this effect's
-      // first run — rendered by the initialPeopleHtml dangerouslySetInnerHTML
-      // above, on both server and client — but carry no bound data yet;
-      // attachMarkJoin seeds it from each node's own data-entity-id before
-      // its keyed join, so it adopts them as `update` instead of tearing
-      // them down and fading in a fresh `enter`. Person's label sits above
-      // its lifespan line (hit rect grows up from labelY), the opposite of
-      // ConflictsMilestonesLane's ranges — see LineMarkGeometry's own
-      // comment for why this varies per mark kind.
+      // g.people's children already exist before this effect first runs (rendered by
+      // initialPeopleHtml on server and client) but carry no bound data;
+      // attachMarkJoin seeds it from each node's data-entity-id, so the join adopts
+      // them as `update` instead of tearing them down and fading in a fresh `enter`.
+      // A person's label sits above its line (hit rect grows up from labelY), the
+      // opposite of ConflictsMilestonesLane's ranges; see LineMarkGeometry.
       attachMarkJoin(
         svgRef.current,
         { groupSelector: 'g.people', nodeClass: 'd3-person' },
@@ -200,16 +157,11 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       );
     }, [layout, totalHeight]);
 
-    // A plain DOM class toggle, decoupled from the join above (its
-    // enter/update/exit selections aren't touched) — every mark carries the
-    // same data-entity-id the delegated click listener already reads, so
-    // this just re-scans them whenever the selection or the mark set itself
-    // changes, rather than threading a "am I selected" flag through the
-    // join's own data binding. The halo line and the real .d3-line (the
-    // lifespan mark's selection outline plus its own grow-to-hover-size) and
-    // .d3-name (its label) get different classes — see PeopleLane.module.
-    // css's .searchHighlight/.searchHighlightLabel for why the outline can't
-    // just apply to both.
+    // A DOM class toggle independent of the join: it re-scans marks by the
+    // data-entity-id the click listener reads whenever the selection or mark set
+    // changes. The halo line, the real .d3-line (outline plus grow-to-hover) and
+    // .d3-name get different classes; see PeopleLane.module.css's
+    // .searchHighlight/.searchHighlightLabel.
     useLayoutEffect(() => {
       if (!svgRef.current) return;
       ensureHaloChild(
@@ -220,9 +172,8 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
         selectedId,
         ['x1', 'x2', 'y1', 'y2'],
       );
-      // The classes always exist in the compiled CSS module — the indexed
-      // access only reads as possibly-undefined because of
-      // noUncheckedIndexedAccess, not because they might really be missing.
+      // The classes exist in the compiled CSS module; indexed access reads as
+      // possibly undefined only because of noUncheckedIndexedAccess.
       toggleSelectionHighlight(
         svgRef.current,
         '.d3-line-halo[data-entity-id], .d3-line[data-entity-id]',
@@ -233,13 +184,10 @@ const PeopleLaneImpl = forwardRef<ZoomAnimationHandle, PeopleLaneProps>(
       );
     }, [selectedId]);
 
-    // TimelineCanvas's single rAF driver calls this every animation-frame
-    // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
-    // comment for the mechanism. The marks' data is already bound to their
-    // DOM nodes from the join above, so re-selecting picks it back up for
-    // free — but a fresh selectAll DOM query every tick is still wasted work
-    // across a gesture's worth of frames, so it's queried once and cached in
-    // zoomNamesSelectionRef until the join effect invalidates it.
+    // Called every frame by TimelineCanvas's single rAF driver (mechanism in
+    // options.ts's ZoomAnimationTransform). Bound data is already on the DOM nodes,
+    // but a fresh selectAll per tick is wasted work, so it is queried once and
+    // cached in zoomNamesSelectionRef until the join effect invalidates it.
     useImperativeHandle(
       ref,
       () => ({

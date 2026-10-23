@@ -13,9 +13,8 @@ import {
 } from './map-to-items';
 import { buildXScale } from './options';
 
-// Resolution of the Minimap's bucketed Row Depth series — enough
-// buckets to trace real shape across a ~4,800-year domain without paying for
-// a per-year sample.
+// Resolution of the bucketed Row Depth series: enough buckets to trace shape
+// across ~4,800 years without a per-year sample.
 export const MINIMAP_BUCKET_COUNT = 300;
 
 export interface DensityProfile {
@@ -33,12 +32,10 @@ interface DepthInterval {
   endYear: number;
 }
 
-// Row Depth at a bucket is 1 + the highest row index any item overlapping
-// that bucket occupies — not just a count of overlapping items — since
-// that's the actual number of stacked rows a lane needs to render that span
-// without collision. `rowOf` must be the same per-item row assignment the
-// live lanes render with (see computeDensityProfile) so the Minimap's
-// reported depth always matches what's actually on canvas.
+// Row Depth at a bucket is 1 + the highest row index of any item overlapping
+// it, the number of stacked rows needed to render that span without collision,
+// not a count of items. `rowOf` must be the live lanes' per-item row
+// assignment (see computeDensityProfile) so the depth matches the canvas.
 function bucketDepths(
   intervals: DepthInterval[],
   rowOf: Map<string, number>,
@@ -68,14 +65,11 @@ function bucketDepths(
 /**
  * Row Depth across the full pannable domain (People, and the merged
  * Conflicts+Milestones lane), computed once at a fixed Reference Scale
- * rather than the caller's live zoom (ADR 0004). `personRowFor`/
- * `eventsRowFor` must be the same Row Depth resolvers the live lanes render
- * with (map-to-items.ts's computeRowAssignment) — passing this profile's
- * own `people`/`conflicts`/`milestones` ids through them, rather than
- * running a fresh assignRows pass on this filtered subset, is what keeps
- * the Minimap's reported Row Depth from disagreeing with what's really on
- * canvas whenever a filter is narrowing the dataset (see ADR 0007's
- * addendum).
+ * rather than the caller's live zoom (web/docs/adr/0004). `personRowFor`/
+ * `eventsRowFor` must be the live lanes' resolvers (map-to-items.ts's
+ * computeRowAssignment), fed this profile's own ids; a fresh assignRows pass
+ * on the filtered subset would disagree with the canvas whenever a filter
+ * narrows the dataset (web/docs/adr/0007's addendum).
  */
 export function computeDensityProfile(
   people: Person[],
@@ -136,12 +130,10 @@ export function computeDensityProfile(
 }
 
 /**
- * Century boundaries whose start actually falls within [minYear, maxYear] —
- * unlike centuryBoundariesInRange itself, which always includes the century
- * minYear happens to sit inside, even when that century's true start
- * precedes minYear (it would place a tick off the Minimap's left edge, at a
- * negative x). Powers the Minimap's top-edge century-tick strip
- * (`/grill-with-docs`).
+ * Century boundaries whose start falls within [minYear, maxYear]. Unlike
+ * centuryBoundariesInRange, which includes the century containing minYear
+ * even when its start precedes minYear (a tick off the left edge, at
+ * negative x). Powers the Minimap's century-tick strip.
  */
 export function centuryTicksInRange(
   minYear: number,
@@ -152,10 +144,8 @@ export function centuryTicksInRange(
   );
 }
 
-// Depth is log1p-scaled (not linear) so low-density eras stay visually
-// non-flat against high-density ones — under a linear scale, a depth of 2
-// next to a depth of 30 would render at ~7% height, all but invisible;
-// log1p compresses that same pair to ~20% vs. 100%.
+// Depth is log1p-scaled so low-density eras stay visible: linear would render
+// depth 2 next to depth 30 at ~7% height; log1p gives ~20% vs. 100%.
 export function logScaleHeightPx(
   depth: number,
   maxDepth: number,

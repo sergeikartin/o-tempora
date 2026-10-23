@@ -1,13 +1,10 @@
-// Wikipedia's REST summary API — a distinct API from Wikidata's SPARQL
-// endpoint (wikidata-client.ts), Commons' imageinfo API (commons-client.ts),
-// and the Pageviews Analytics API (pageviews-client.ts), used to resolve an
-// entity's Wikipedia lead-paragraph prose for the `description` field
-// (tagline-description-split spec). Single-title lookups only — unlike
-// Wikidata's SPARQL, there's no VALUES-clause batch equivalent for this
-// REST endpoint. Queried against both en.wikipedia.org and ru.wikipedia.org
-// (per-language `lang` argument below) — Russian description sourcing is
-// this same REST client pointed at the Russian article, not a translation
-// of the English extract.
+// Wikipedia's REST summary API, distinct from Wikidata's SPARQL endpoint
+// (wikidata-client.ts), Commons' imageinfo API (commons-client.ts) and the
+// Pageviews Analytics API (pageviews-client.ts). Resolves an entity's
+// lead-paragraph prose for `description`. Single-title lookups only (no
+// VALUES-style batching), against en.wikipedia.org or ru.wikipedia.org via the
+// `lang` argument; the Russian description is the Russian article's own
+// extract, not a translation.
 
 export type WikipediaLanguage = "en" | "ru";
 
@@ -24,17 +21,15 @@ function endpoint(lang: WikipediaLanguage): string {
   return `https://${lang}.wikipedia.org/api/rest_v1/page/summary`;
 }
 
-// Same courtesy identification Wikidata's/Commons'/Pageviews' clients send
-// (wikidata-client.ts, commons-client.ts, pageviews-client.ts) — Wikimedia
-// asks all API traffic to self-identify.
+// Same courtesy identification as the Wikidata, Commons and Pageviews clients;
+// Wikimedia asks all API traffic to self-identify.
 const USER_AGENT =
   "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
 
 const MAX_RETRIES = 3;
-// Same reasoning as commons-client.ts/pageviews-client.ts's
-// REQUEST_TIMEOUT_MS: a single-title summary read is a plain indexed
-// lookup, not an unbounded graph query, so it carries no comparable
-// server-side deadline to budget against.
+// As in commons-client.ts and pageviews-client.ts: a single-title summary read
+// is an indexed lookup with no comparable server-side deadline to budget
+// against.
 const REQUEST_TIMEOUT_MS = 30_000;
 const RETRYABLE_SERVER_ERROR_STATUSES = new Set([502, 503, 504]);
 const BACKOFF_BASE_MS = 2_000;

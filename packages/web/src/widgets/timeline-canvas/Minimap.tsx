@@ -22,23 +22,18 @@ import {
   REFERENCE_PIXELS_PER_YEAR,
 } from './options';
 
-// Enforced via CSS min-width on .viewportRect, kept here too since the drag
-// math below needs the same floor to convert a rect pointer-move into a
-// scrollLeft delta — mirrors the old scrollbar thumb's own
-// MIN_SCROLLBAR_THUMB_PX (ADR 0004).
+// Enforced via CSS min-width on .viewportRect; the drag math needs the same
+// floor to convert a pointer move into a scrollLeft delta.
 const MIN_VIEWPORT_RECT_PX = 24;
 
-// SVG viewBox coordinate space for the ridge — arbitrary units, scaled to
-// the track's real rendered size by preserveAspectRatio="none" below, so
-// resizing the track never requires recomputing the path data.
+// SVG viewBox space for the ridge: arbitrary units scaled to the track by
+// preserveAspectRatio="none", so resizing never recomputes the path.
 const RIDGE_VIEWBOX_HEIGHT = 100;
 const RIDGE_BASELINE = RIDGE_VIEWBOX_HEIGHT / 2;
 
-// Rough per-character estimate for the century strip's 9px label font (see
-// options.ts's own AVG_CHAR_WIDTH_PX, tuned for the lanes' 11px labels) plus
-// a little breathing room before the next tick's own label — good enough to
-// bound label width for the centuryTicks thinning pass below without a real
-// DOM text-measurement.
+// Rough per-character width for the century strip's 9px labels (see
+// options.ts's AVG_CHAR_WIDTH_PX, tuned for 11px) plus breathing room; enough
+// to bound label width for the thinning pass without DOM measurement.
 const CENTURY_LABEL_CHAR_WIDTH_PX = 5;
 const CENTURY_LABEL_GAP_PX = 6;
 
@@ -47,34 +42,27 @@ function estimateCenturyLabelWidthPx(label: string): number {
 }
 
 interface MinimapProps {
-  // Already fame-filtered by the caller (TimelineCanvas) — the profile
-  // recomputes on every fame-score change with no debounce, so it always
-  // reflects the currently visible entity set (ADR 0004).
+  // Already fame-filtered by the caller; the profile recomputes on every
+  // fame-score change, so it reflects the visible entity set
+  // (web/docs/adr/0004).
   people: Person[];
   conflicts: ConflictEntry[];
   milestones: Milestone[];
-  // Resolves an id set to its Row Depth — the same resolvers
-  // PeopleLane/ConflictsMilestonesLane render with (map-to-items.ts's
-  // computeRowAssignment). The Row Depth profile below calls these with the
-  // currently-filtered people/conflicts/milestones ids, exactly like each
-  // lane does, so the depth reported here always matches what's actually
-  // stacked on canvas.
+  // Resolves an id set to its rows, with the same resolvers PeopleLane and
+  // ConflictsMilestonesLane use (map-to-items.ts's computeRowAssignment), called
+  // with the filtered ids so the depth matches what is stacked on canvas.
   personRowFor: (ids: string[]) => Map<string, number>;
   eventsRowFor: (ids: string[]) => Map<string, number>;
-  // The live (current-zoom) scroll geometry, same values TimelineCanvas
-  // already tracks for the lanes/Year Axis — used only for the draggable
-  // viewport-rectangle overlay's ratio math, never for the Row Depth
-  // computation itself (that uses its own fixed Reference Scale).
+  // The live scroll geometry TimelineCanvas tracks, used only for the viewport
+  // rectangle's ratio math, never for Row Depth (fixed Reference Scale).
   totalWidth: number;
   viewportWidthPx: number;
   scrollLeft: number;
-  // Fired continuously while the viewport rect is being dragged — must stay
-  // 1:1 with the pointer (see handleRectPointerMove), so the caller applies
-  // it instantly, no animation.
+  // Fired continuously while the viewport rect is dragged; applied instantly to
+  // stay 1:1 with the pointer (see handleRectPointerMove).
   onScrollLeftChange: (scrollLeft: number) => void;
-  // Fired once for a track click-to-jump — a discrete target the caller is
-  // free to (and does) glide the lanes toward, since there's no pointer to
-  // lag behind.
+  // Fired once per track click-to-jump: a discrete target, so the caller glides
+  // toward it.
   onScrollLeftJump: (scrollLeft: number) => void;
 }
 
@@ -85,16 +73,13 @@ interface HoverInfo {
   eventsDepth: number;
 }
 
-// Replaces the custom scrollbar (ADR 0004): an SVG area-sparkline spanning
-// the full pannable range, People's Row Depth mirrored above a center
-// baseline against the merged Conflicts+Milestones' Row Depth below it.
-// Keeps the scrollbar's own interaction model — a press anywhere on the
-// track jumps the viewport there, dragging the overlaid translucent
-// .viewportRect pans — and adds a hover tooltip with exact date/Row-Depth
-// numbers, recovering the precision the log scale deliberately compresses
-// away. A thin, non-interactive strip of century tick marks runs along the
-// top edge (`/grill-with-docs`), purely decorative — it never intercepts
-// the track/rect's own click-to-jump, drag, or hover handling.
+// An SVG area sparkline over the full pannable range, People's Row Depth
+// mirrored above a center baseline against Conflicts+Milestones below
+// (web/docs/adr/0004). A press on the track jumps the viewport there, dragging
+// the translucent .viewportRect pans, and a hover tooltip gives exact
+// date/Row-Depth numbers the log scale compresses away. A decorative century
+// tick strip along the top edge never intercepts the track's or rect's
+// handlers.
 export function Minimap({
   people,
   conflicts,
@@ -115,21 +100,16 @@ export function Minimap({
   } | null>(null);
   const [isRectDragging, setIsRectDragging] = useState(false);
   const [hover, setHover] = useState<HoverInfo | null>(null);
-  // TimelineCanvas only re-measures viewportWidthPx on mount and on a
-  // zoom-button click (see its own useLayoutEffect) — a plain window resize
-  // never touches it, so it can go stale while .track itself (CSS flex)
-  // resizes live. The viewport-rect ratio math below tolerates that (it's
-  // re-derived from totalWidth on every render anyway), but the
-  // century-tick label thinning below doesn't: a stale, too-wide value
-  // would keep labels the real (narrower) strip no longer has room for.
-  // ResizeObserver keeps this one in sync with .track's actual box.
+  // TimelineCanvas re-measures viewportWidthPx only on mount and zoom, so a
+  // window resize leaves it stale while .track (CSS flex) resizes. The rect
+  // ratio math tolerates that (re-derived from totalWidth each render), but
+  // century-label thinning doesn't: a stale too-wide value would keep labels the
+  // narrower strip can't fit. A ResizeObserver keeps this in sync with .track.
   const [measuredTrackWidthPx, setMeasuredTrackWidthPx] = useState(0);
   useLayoutEffect(() => {
     const el = trackRef.current;
     if (!el || typeof ResizeObserver === 'undefined') return;
-    // rAF-batched, matching TimelineCanvas's own scroll-listener throttling —
-    // a resize burst (e.g. a window drag) would otherwise re-render on every
-    // single ResizeObserver callback instead of at most once per frame.
+    // rAF-batched: at most one re-render per frame during a resize burst.
     let frame = 0;
     let latestWidth: number | undefined;
     const observer = new ResizeObserver((entries) => {
@@ -147,21 +127,17 @@ export function Minimap({
     };
   }, []);
 
-  // Same ratio-based geometry the scrollbar thumb this replaces used
-  // (TimelineCanvas.tsx). Computed up front since both the viewport-rect
-  // ratio math below and the century-tick label spacing further down need
-  // it.
+  // Viewport-rect ratio geometry; effectiveViewportWidthPx is shared with the
+  // century-label spacing.
   const effectiveViewportWidthPx =
     viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   const effectiveTrackWidthPx =
     measuredTrackWidthPx || effectiveViewportWidthPx;
 
-  // The same fixed Reference Scale computeRowAssignment's static row
-  // assignment uses (map-to-items.ts) — not the live measured viewport
-  // width, which would pack rows differently (row-gap/label widths are
-  // fixed pixel quantities, so a different pixels-per-year changes how many
-  // overlap) and make the Row Depth shown here disagree with what the
-  // canvas actually renders (ADR 0004).
+  // The fixed Reference Scale computeRowAssignment uses, not the live viewport
+  // width: row gaps and label widths are fixed pixel quantities, so another
+  // pixels-per-year packs differently and the depth shown would disagree with
+  // the canvas (web/docs/adr/0004).
   const profile = useMemo(
     () =>
       computeDensityProfile(
@@ -178,20 +154,13 @@ export function Minimap({
   const maxPeopleDepth = Math.max(1, ...profile.peopleDepth);
   const maxEventsDepth = Math.max(1, ...profile.eventsDepth);
 
-  // Top-edge century-tick strip (`/grill-with-docs`) — ticks at every
-  // century boundary across the same full pannable domain the ridge itself
-  // spans (reuses the same REFERENCE_PIXELS_PER_YEAR-built scale, so a tick's
-  // x position always lines up with the density shape beneath it). Labels
-  // use the plain "1500"/"100 BCE" numeric style (formatYear, same as
-  // YearAxis's own labels and the hover tooltip below) rather than
-  // centuryBoundaryForYear's ordinal "1500s"/"15th century BCE" phrasing —
-  // shorter, and consistent with the rest of the app's date formatting.
-  // Labels thin out by walking left to right and only keeping one that
-  // clears the *previous shown label's own rendered width* (not a flat gap
-  // like YearAxis's MIN_DECADE_LABEL_SPACING_PX toggle) — even this shorter
-  // style varies enough in length ("1800" vs. "800 BCE") that a uniform
-  // threshold would still let a long label visually overlap the next tick's
-  // short one.
+  // Century-tick strip: ticks at every century boundary across the ridge's
+  // domain, built on the same REFERENCE_PIXELS_PER_YEAR scale so they line up
+  // with the shape below. Labels use formatYear's numeric style ("1500",
+  // "100 BCE"), as YearAxis and the tooltip do, not centuryBoundaryForYear's
+  // ordinals. They thin out left to right, keeping a label only if it clears the
+  // previous shown label's rendered width; lengths vary ("1800" vs. "800 BCE"),
+  // so a flat gap like YearAxis's MIN_DECADE_LABEL_SPACING_PX would overlap.
   const centuryTicks = useMemo(() => {
     const { scale: refScale, totalWidth: refTotalWidthPx } = buildXScale(
       REFERENCE_PIXELS_PER_YEAR,
@@ -205,9 +174,8 @@ export function Minimap({
         const leftPercent =
           (refScale(boundary.startYear) / refTotalWidthPx) * 100;
         const xPx = (leftPercent / 100) * effectiveTrackWidthPx;
-        // Labels are centered under their tick (CSS translateX(-50%)), so the
-        // collision check is against each label's own left/right half-width,
-        // not its raw x position.
+        // Labels are centered under their tick (translateX(-50%)), so collisions are
+        // checked on each label's half-widths, not its x position.
         const halfWidthPx = estimateCenturyLabelWidthPx(label) / 2;
         const showLabel = xPx - halfWidthPx >= lastLabelRightEdgePx;
         if (showLabel) lastLabelRightEdgePx = xPx + halfWidthPx;
@@ -243,9 +211,8 @@ export function Minimap({
     };
   }, [profile, maxPeopleDepth, maxEventsDepth]);
 
-  // Same ratio-based geometry the scrollbar thumb this replaces used
-  // (TimelineCanvas.tsx) — effectiveViewportWidthPx itself is computed above,
-  // shared with the century-tick label spacing.
+  // Viewport-rect ratio geometry; effectiveViewportWidthPx is shared with the
+  // century-label spacing.
   const rectWidthRatio =
     totalWidth > 0 ? Math.min(effectiveViewportWidthPx / totalWidth, 1) : 1;
   const maxScrollLeftForRect = Math.max(
@@ -266,9 +233,8 @@ export function Minimap({
 
   function handleRectPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
-    // Stops this press from also reaching the track's own click-to-jump
-    // handler below (React events bubble like native ones) — a press that
-    // starts on the rect should drag it, not also jump-to-position.
+    // Stops this press from reaching the track's click-to-jump (React events
+    // bubble): a press on the rect drags it instead.
     event.stopPropagation();
     const track = trackRef.current;
     if (!track) return;
@@ -290,9 +256,8 @@ export function Minimap({
     if (!drag) return;
     const maxScrollLeft = Math.max(totalWidth - drag.trackWidthPx, 0);
     if (maxScrollLeft <= 0) return;
-    // Same MIN_VIEWPORT_RECT_PX floor as the rect's own CSS min-width —
-    // needed here so a dragged pixel maps to the same scrollLeft distance
-    // the rendered (possibly floor-clamped) rect width implies.
+    // Same MIN_VIEWPORT_RECT_PX floor as the rect's CSS min-width, so a dragged
+    // pixel maps to the scrollLeft distance the rendered rect width implies.
     const rectWidthPx = Math.max(
       MIN_VIEWPORT_RECT_PX,
       (drag.trackWidthPx / totalWidth) * drag.trackWidthPx,
@@ -319,9 +284,8 @@ export function Minimap({
     setIsRectDragging(false);
   }
 
-  // A press anywhere else on the track jumps the viewport to center on that
-  // point — the rect drag above stops its own press from ever bubbling
-  // here.
+  // A press elsewhere on the track jumps to center on that point; the rect drag
+  // stops its own press from bubbling here.
   function handleTrackPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
     const track = trackRef.current;
@@ -338,8 +302,8 @@ export function Minimap({
     );
   }
 
-  // Recovers the precision the log scale deliberately compresses away —
-  // exact date and Row Depth numbers per series at the cursor's position.
+  // Recovers the precision the log scale compresses: exact date and Row Depth
+  // per series at the cursor.
   function handleTrackPointerMove(event: ReactPointerEvent<HTMLDivElement>) {
     const track = trackRef.current;
     if (!track) return;
@@ -385,11 +349,9 @@ export function Minimap({
         ref={trackRef}
         className={styles.track}
         data-testid="minimap-track"
-        // role="img": the implicit "generic" role a bare div otherwise gets
-        // doesn't support an accessible name — an aria-label on it is
-        // invalid ARIA usage — and img is the closest fit for a density
-        // graphic. The click/drag-to-jump interaction itself stays
-        // mouse/touch-only, same as every other mark in the canvas.
+        // role="img": a bare div's generic role can't take an accessible name (an
+        // aria-label there is invalid ARIA), and img fits a density graphic. The
+        // click/drag interaction stays mouse/touch-only like the canvas marks.
         role="img"
         aria-label={m.minimapAriaLabel()}
         onPointerDown={handleTrackPointerDown}

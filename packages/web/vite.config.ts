@@ -10,17 +10,14 @@ import { landingTimelinePrefetchPlugin } from './vite-plugins/landing-timeline-p
 import { prerenderDefaultViewportPlugin } from './vite-plugins/prerender-default-viewport.ts';
 
 // Locale is resolved at runtime from the URL, not forked at build time
-// (docs/adr/0009 supersedes 0005's baseLocale-only strategy): English is
-// unprefixed at the domain root, Russian lives at `/ru/*` — Paraglide's
-// default url-pattern (no custom `urlPatterns` needed) already resolves
-// exactly that scheme, falling back to the base locale for any unrecognized
-// first path segment. Four HTML entries are Rollup inputs so one `vite build`
-// emits the landing pages (`/`, `/ru/`, loading `src/landing.tsx`) and the
-// timeline pages (`/timeline/`, `/ru/timeline/`, loading `src/main.tsx`),
-// the two locales of each sharing the same JS/CSS chunks (docs/deployment.md,
-// docs/adr/0007). See `App.tsx`'s `locale-datasets.ts` for the per-locale
-// dynamic data imports that keep each timeline page load's payload
-// single-language.
+// (web/docs/adr/0009): English is unprefixed at the domain root, Russian lives
+// at `/ru/*`. Paraglide's default url pattern resolves that and falls back to
+// the base locale for an unrecognized first path segment. Four HTML entries are
+// Rollup inputs, so one `vite build` emits the landing pages (`/`, `/ru/`,
+// loading `src/landing.tsx`) and timeline pages (`/timeline/`, `/ru/timeline/`,
+// loading `src/main.tsx`), sharing JS/CSS chunks (docs/deployment.md,
+// docs/adr/0007). `locale-datasets.ts` does the per-locale dynamic data
+// imports that keep each timeline page load single-language.
 export default defineConfig({
   base: '/',
   // No SPA fallback: unknown paths must 404 like GitHub Pages does, not
@@ -52,9 +49,8 @@ export default defineConfig({
         };
       },
     },
-    // trackEvent() (track-event.ts) already no-ops app-triggered events in
-    // dev, but Umami's script auto-fires its own pageview/web-vitals beacons
-    // on load regardless — strip the tag so dev traffic never reaches it.
+    // trackEvent() (track-event.ts) no-ops app events in dev, but Umami's script
+    // auto-fires its own pageview/web-vitals beacons on load, so strip the tag.
     {
       name: 'strip-umami-script-dev',
       apply: 'serve',

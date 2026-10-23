@@ -1,26 +1,22 @@
 import { fetchWikipediaSummary, type WikipediaLanguage, type WikipediaSummaryResponse } from "./wikipedia-client.js";
 
-// Wikimedia's REST summary API has no VALUES-clause batch equivalent
-// (unlike Wikidata SPARQL) and asks for a gentler pace than this pipeline's
-// other batch fetchers (commons-client.ts/pageviews-client.ts run 50-wide
-// concurrent bursts every 500ms) — so this paces one request at a time,
-// roughly 2/second, rather than reusing that burst pattern.
+// Wikimedia's REST summary API has no batch form and asks for a gentler pace
+// than commons-client.ts/pageviews-client.ts's 50-wide bursts every 500ms, so
+// this paces one request at a time, ~2/second.
 const REQUEST_DELAY_MS = 500;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// Strips stray Unicode control (Cc) and format (Cf) characters — e.g. the
-// left-to-right mark (U+200E) Wikipedia's REST extracts sometimes carry
-// around dates/numbers — that a plain .trim() alone doesn't catch, since
-// they're not leading/trailing whitespace.
+// Strips stray Unicode control (Cc) and format (Cf) characters, e.g. the
+// left-to-right mark (U+200E) around dates/numbers in Wikipedia extracts, which
+// .trim() misses because they aren't leading/trailing whitespace.
 const CONTROL_AND_FORMAT_CHARS = /[\p{Cc}\p{Cf}]/gu;
 
-// A disambiguation page's "extract" is a list-page blurb, not real prose —
-// treated the same as no extract at all. An empty/whitespace-only extract
-// (after control-character stripping) is likewise treated as absent rather
-// than published as a blank string.
+// A disambiguation page's extract is a list-page blurb, not prose, so it counts
+// as no extract; so does an empty or whitespace-only one (after control-character
+// stripping), rather than being published blank.
 export function cleanExtract(summary: WikipediaSummaryResponse | undefined): string | undefined {
   if (!summary || summary.type === "disambiguation" || !summary.extract) return undefined;
   const cleaned = summary.extract.replace(CONTROL_AND_FORMAT_CHARS, "").trim();

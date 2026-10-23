@@ -14,14 +14,12 @@ import { LANES, type Lane } from "./lane.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
-// People's article title comes straight from Pantheon's own `slug` column
-// (no enrichment/SPARQL round-trip needed to resolve it — unlike Conflicts/
-// Milestones, whose titles are recovered from their enrichment pass's
-// wikipediaUrl via extractWikipediaArticleTitle). Filtered to MIN_HPI, same
-// floor fetch-taglines.ts/fetch-reigns.ts apply for the same reason:
-// anything below it never survives Score. Keyed by wdId, matching this
-// lane's other enrichment maps (loadPeopleEnrichmentMap in
-// transform/index.ts) rather than Pantheon's own id.
+// People's article title is Pantheon's `slug` column (no SPARQL round-trip,
+// unlike Conflicts/Milestones, whose titles come from their enrichment's
+// wikipediaUrl via extractWikipediaArticleTitle). Filtered to MIN_HPI, the
+// floor fetch-taglines.ts applies, since lower never survives Score. Keyed by
+// wdId, like the lane's other enrichment maps (loadPeopleEnrichmentMap in
+// transform/index.ts).
 async function loadPeopleEntries(): Promise<WikipediaExtractEntry[]> {
   const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
   const rows = parsePantheonCsv(await fsPromises.readFile(csvPath, "utf8"));
@@ -71,14 +69,12 @@ function extractQid(uri: string): string | undefined {
   return ENTITY_URI_PATTERN.exec(uri)?.[1];
 }
 
-// People's Russian article title has no CSV-column equivalent to
-// loadPeopleEntries' Pantheon slug — it comes back as ?articleRu on
-// queries/taglines.ts's own enrichment query (the only per-language
-// article title People fetches; Conflicts/Milestones already have one for
-// every pageviews-basket language, "ru" included, via their own enrichment
-// pass — see loadConflictsEntriesRu/loadMilestonesEntriesRu below). Reads
-// fetch-taglines.ts's raw SPARQL output back in, the same "raw file is the
-// handoff" pattern loadPeopleEntries already uses for Pantheon's CSV.
+// People's Russian article title has no CSV column; it comes back as
+// ?articleRu from queries/taglines.ts's enrichment query (the only
+// per-language title People fetch; Conflicts/Milestones already have one per
+// basket language, "ru" included; see loadConflictsEntriesRu/
+// loadMilestonesEntriesRu). Reads fetch-taglines.ts's raw SPARQL output, the
+// same raw-file handoff loadPeopleEntries uses for Pantheon's CSV.
 async function loadPeopleEntriesRu(): Promise<WikipediaExtractEntry[]> {
   const raw = validateSparqlResultShape(
     JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "people-taglines.raw.json"), "utf8")),
@@ -131,11 +127,9 @@ const LOAD_EXTRACT_ENTRIES_RU: Record<Lane, () => Promise<WikipediaExtractEntry[
   milestones: loadMilestonesEntriesRu,
 };
 
-// Runs one language's extract pass across the given lanes — same "prefix
-// the id with its lane, merge, then split back apart" shape for both the
-// English and Russian passes below, since batchedWikipediaExtractFetch
-// paces its titles as one flat list regardless of which lane they came
-// from.
+// Runs one language's extract pass across the given lanes: prefix each id with
+// its lane, merge, split back apart. Both language passes share this, since
+// batchedWikipediaExtractFetch paces its titles as one flat list.
 async function runExtractPass(
   lanes: readonly Lane[],
   loadEntries: Record<Lane, () => Promise<WikipediaExtractEntry[]>>,
@@ -175,30 +169,22 @@ async function runExtractPass(
 }
 
 // Fetches a Wikipedia lead-paragraph extract for every People/Conflicts/
-// Milestones entity with a resolvable English Wikipedia article, and a
-// second, parallel pass against ru.wikipedia.org for whichever of those
-// entities also has a resolvable Russian article — the raw foundation for
-// the `description` field's per-language fallback (tagline-description-
-// split spec, extended for Russian), consumed by transform/index.ts's
-// loadRawRecord calls (transformPeople/transformConflicts/
-// transformMilestones). Runs after fetchPantheon() (People's slug/
-// ?articleRu source via fetch-taglines.ts), fetchConflictsEnrichment(), and
-// fetchMilestonesEnrichment() (Conflicts'/Milestones' wikipediaUrl/
-// articleUrls.ru source) are already on disk. Materially lower Russian
-// coverage than English is expected here — the per-field English fallback
-// this ticket introduces exists exactly for that gap, not treated as an
-// error.
+// Milestones entity with a resolvable English article, and a second pass
+// against ru.wikipedia.org for those with a resolvable Russian one: the raw
+// source of `description`, consumed by transform/index.ts's loadRawRecord calls
+// (transformPeople/transformConflicts/transformMilestones). Runs after
+// fetchPantheon() (People's slug/?articleRu source via fetch-taglines.ts),
+// fetchConflictsEnrichment() and fetchMilestonesEnrichment()
+// (wikipediaUrl/articleUrls.ru source) are on disk. Lower Russian coverage is
+// expected; the per-field English fallback covers it, and it isn't an error.
 //
-// A lane arg scopes the source-file read and output to one lane; the
-// ~2/second courtesy pace (batchedWikipediaExtractFetch) is preserved
-// within that lane-scoped run, per language pass. Omitted, all three
-// lanes' entries are paced together in one sequential run per language
-// rather than three concurrent ones — this is a real global ceiling only
-// when lane-scoped fetches also aren't run concurrently in separate
-// processes (see the "don't run concurrent lane fetches" convention,
-// packages/data-pipeline/CLAUDE.md and docs/adr/0012-lane-scoped-fetch.md).
-// The English and Russian passes themselves run sequentially, not
-// concurrently, for the same reason.
+// A lane arg scopes the source read and output to one lane; the ~2/second
+// courtesy pace (batchedWikipediaExtractFetch) holds within that lane-scoped
+// run, per language pass. Omitted, all lanes' entries are paced together in one
+// sequential run per language, not three concurrent ones. That pace is a global
+// ceiling only if lane-scoped fetches aren't also run concurrently in separate
+// processes (packages/data-pipeline/CLAUDE.md, docs/adr/0012-lane-scoped-fetch.md).
+// The English and Russian passes run sequentially for the same reason.
 export async function fetchWikipediaExtracts(lane?: Lane, qids?: QidFilter): Promise<void> {
   const lanes: readonly Lane[] = lane ? [lane] : LANES;
   await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES, "en", "", qids);

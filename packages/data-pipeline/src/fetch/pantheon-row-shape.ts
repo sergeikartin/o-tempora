@@ -1,29 +1,19 @@
 import { parseCsvLine } from "./csv.js";
 
-// Only the columns this pipeline actually consumes — Pantheon's 2025
-// Person Dataset has 34 columns total (id, wd_id, wp_id, slug, name,
-// occupation, prob_ratio, gender, twitter, alive, l, hpi_raw, bplace_name,
-// bplace_lat, bplace_lon, bplace_geonameid, bplace_country, birthdate,
-// birthyear, dplace_name, dplace_lat, dplace_lon, dplace_geonameid,
-// dplace_country, deathdate, deathyear, bplace_geacron_name,
-// dplace_geacron_name, is_group, l_, age, non_en_page_views,
-// coefficient_of_variation, hpi); the rest are unused (raw date strings,
-// coordinates, GeoNames IDs, HPI's individual components) — see
-// .scratch/alt-data-sources/research/pantheon-schema.md for the full field
-// list and provenance.
+// Only the columns this pipeline consumes: Pantheon's 2025 Person Dataset has
+// 34, and the rest (raw date strings, coordinates, GeoNames IDs, HPI's
+// components) are unused. See .scratch/alt-data-sources/research/pantheon-schema.md
+// for the full field list and provenance.
 export interface PantheonPersonRow {
   id: string;
   wdId: string;
-  // Kept for CSV structural validation (parsePantheonCsv requires it
-  // non-empty) but no longer read by Output — a person's display name is
-  // now sourced from Wikidata's rdfs:label via the same batched
-  // enrichment pass as tagline (see transform/index.ts's TaggedPerson),
-  // not this frozen Pantheon snapshot value.
+  // Kept for CSV structural validation (parsePantheonCsv requires it non-empty),
+  // but Output reads a person's name from Wikidata's rdfs:label via the
+  // enrichment pass (transform/index.ts's TaggedPerson), not this snapshot
+  // value.
   name: string;
-  // Wikipedia article slug — the closest thing Pantheon has to a
-  // Wikipedia link column; wikipediaUrl is built from this
-  // (https://en.wikipedia.org/wiki/{slug}) rather than a dedicated URL
-  // field, which doesn't exist in this CSV.
+  // Wikipedia article slug; wikipediaUrl is built from it
+  // (https://en.wikipedia.org/wiki/{slug}) since the CSV has no URL column.
   slug: string;
   // Empty string for the 62 rows with no occupation claim at all.
   occupation: string;
@@ -33,30 +23,23 @@ export interface PantheonPersonRow {
   // explicit about this).
   bplaceCountry: string;
   dplaceCountry: string;
-  // Astronomical numbering (year 0 = 1 BCE — see
-  // docs/adr/0001-astronomical-year-numbering.md), converted at parse time
-  // from Pantheon's own `birthyear`/`deathyear` column convention, which
-  // encodes BCE via a naive sign flip instead (551 BC -> -551, not the
-  // astronomical -550) — see toAstronomicalYear.
+  // Astronomical numbering (year 0 = 1 BCE, docs/adr/0001-astronomical-year-numbering.md),
+  // converted at parse time from Pantheon's `birthyear`/`deathyear`, which encode
+  // BCE by a naive sign flip (551 BC -> -551, not astronomical -550); see
+  // toAstronomicalYear.
   birthyear?: number;
-  // Derived from the `birthdate`/`deathdate` columns (format "YYYY-MM-DD",
-  // BCE flagged by a trailing " BC" rather than a leading minus sign —
-  // Pantheon's own convention). Only kept when that column's own year
-  // agrees with birthyear/deathyear (both compared in astronomical
-  // numbering) — the two columns occasionally disagree (e.g. a
-  // Julian/Gregorian calendar-boundary date), and birthyear/deathyear is
-  // what the rest of the pipeline already treats as ground truth, so a
-  // disagreeing month is dropped rather than risk attaching it to the
-  // wrong year.
+  // Derived from `birthdate`/`deathdate` ("YYYY-MM-DD", BCE flagged by a
+  // trailing " BC"). Kept only when the column's year agrees with
+  // birthyear/deathyear (both astronomical), which the pipeline treats as ground
+  // truth; they occasionally disagree (e.g. a Julian/Gregorian boundary date), and
+  // a disagreeing month is dropped rather than attached to the wrong year.
   birthmonth?: number;
   deathyear?: number;
   deathmonth?: number;
-  // Pantheon's own alive/dead flag — the only source signal distinguishing
-  // a genuinely still-living person (no deathyear because there isn't one
-  // yet) from one whose death date is simply unrecorded (no deathyear
-  // because Pantheon never captured it, e.g. an unidentified historical
-  // figure). Output relies on this rather than deathyear presence alone
-  // when deciding whether "no end date" means "ongoing."
+  // Pantheon's alive/dead flag, the only signal separating a still-living person
+  // (no deathyear yet) from one whose death date was never captured (e.g. an
+  // unidentified historical figure). Output uses it, not deathyear presence
+  // alone, to decide whether "no end date" means "ongoing".
   alive: boolean;
 }
 
@@ -101,23 +84,19 @@ function parseOptionalInt(value: string): number | undefined {
   return value === "" ? undefined : Number.parseInt(value, 10);
 }
 
-// Pantheon's birthyear/deathyear columns already arrive as negative for
-// BCE, but via a naive sign flip (551 BC -> -551) rather than astronomical
-// numbering (551 BC -> -550, since year 0 = 1 BCE) — see
-// docs/adr/0001-astronomical-year-numbering.md. CE values (>= 0) are
-// unaffected; only the BCE shift applies.
+// Pantheon's birthyear/deathyear arrive negative for BCE via a naive sign flip
+// (551 BC -> -551) rather than astronomical numbering (-550); see
+// docs/adr/0001-astronomical-year-numbering.md. CE values (>= 0) are unaffected.
 function toAstronomicalYear(pantheonYear: number | undefined): number | undefined {
   return pantheonYear === undefined || pantheonYear >= 0 ? pantheonYear : pantheonYear + 1;
 }
 
 const PANTHEON_DATE_PATTERN = /^(\d{4})-(\d{2})-\d{2}( BC)?$/;
 
-// `referenceYear` is the already-astronomical birthyear/deathyear — the
-// month is only trusted when the date column's own year agrees with it
-// (see PantheonPersonRow's comment), so this parses the date string's BC
-// suffix into astronomical numbering too, the same conversion
-// toAstronomicalYear applies to the CSV's separate birthyear/deathyear
-// column.
+// `referenceYear` is the astronomical birthyear/deathyear. The month is trusted
+// only when the date column's year agrees (see PantheonPersonRow), so the date
+// string's BC suffix is converted to astronomical numbering too, as
+// toAstronomicalYear does for the year columns.
 function parseOptionalDateMonth(value: string, referenceYear: number | undefined): number | undefined {
   if (value === "" || referenceYear === undefined) return undefined;
   const match = PANTHEON_DATE_PATTERN.exec(value);

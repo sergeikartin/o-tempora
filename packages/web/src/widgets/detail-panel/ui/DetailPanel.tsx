@@ -11,39 +11,32 @@ interface DetailPanelProps {
   onClose: () => void;
 }
 
-// Sized for this drawer's fixed 340px-wide panel at typical device pixel
-// ratios — not load-bearing, see spec §4.1.
+// Sized for the panel's fixed 340px width at typical device pixel ratios; not
+// load-bearing.
 const IMAGE_BANNER_WIDTH_PX = 400;
 
-// Below this much pointerdown-to-pointerup movement, an outside press is
-// treated as a click (dismiss) rather than a drag-to-pan release (ignore)
-// — mirrors TimelineCanvas's own DRAG_CLICK_SUPPRESSION_PX, tracked
-// independently here since this widget has no visibility into that one's
-// internal drag state.
+// Below this much pointerdown-to-pointerup movement, an outside press is a
+// click (dismiss) rather than a drag-to-pan release (ignore). Mirrors
+// TimelineCanvas's DRAG_CLICK_SUPPRESSION_PX, tracked independently since this
+// widget can't see that drag state.
 const OUTSIDE_PRESS_DRAG_THRESHOLD_PX = 4;
 
-// Click-to-open side drawer, docked to the viewport's right edge,
-// decoupled from the clicked mark's screen position entirely (dynamic-
-// tooltips spec §2) — no anchoring math, so panning/zooming the timeline
-// underneath it needs no special handling. One global instance: App.tsx
-// renders exactly one of these, swapping `selected` in place rather than
-// mounting a new drawer per entity.
+// Click-to-open side panel docked to the viewport's right edge, independent of
+// the clicked mark's position, so panning/zooming underneath needs no special
+// handling. One global instance: App.tsx swaps `selected` in place rather than
+// mounting a panel per entity.
 export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   const panelRef = useRef<HTMLElement>(null);
   const backdropRef = useRef<HTMLButtonElement>(null);
-  // Tracks which entity's image failed to load, keyed by entity id (not the
-  // image URL itself — two different entities can genuinely reference the
-  // same Commons file) so a different entity's image always gets a fresh
-  // attempt (spec §3.1: a runtime 404 hides the image, it doesn't blank the
-  // slot for every entity after).
+  // Which entity's image failed to load, keyed by entity id (not URL: different
+  // entities can share a Commons file), so another entity's image gets a fresh
+  // attempt: a runtime 404 hides the image, not the slot for every later entity.
   const [failedEntityId, setFailedEntityId] = useState<string | null>(null);
-  // Portrait photos would otherwise get their top/bottom cropped by
-  // object-fit: cover in the fixed-height banner — switch those to
-  // contain (letterboxed on the sides) once we know the image's shape.
-  // Keyed by entity id and reset during render (not in an effect) per
-  // https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
-  // — an effect here would commit the stale flag for one extra frame,
-  // flashing the previous entity's crop mode before snapping to the new one.
+  // Portrait photos would get cropped top and bottom by object-fit: cover in the
+  // fixed-height banner, so they switch to contain (letterboxed) once the shape
+  // is known. Keyed by entity id and reset during render, not in an effect
+  // (https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes),
+  // which would flash the previous entity's crop mode for a frame.
   const [portraitImage, setPortraitImage] = useState<{
     entityId: string | null;
     isPortrait: boolean;
@@ -51,9 +44,7 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
     entityId: null,
     isPortrait: false,
   });
-  // Fades the image in on load instead of popping in the instant the
-  // network response lands, so a slow-loading photo doesn't read as a
-  // blink between the blank banner and the finished image.
+  // Fades the image in on load so a slow photo doesn't blink in.
   const [imageLoaded, setImageLoaded] = useState<{
     entityId: string | null;
     loaded: boolean;
@@ -61,10 +52,9 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
     entityId: null,
     loaded: false,
   });
-  // The panel stays mounted at all times (docs/adr/0006) so its close slide
-  // has a frame to animate — `selected` goes null the instant a close is
-  // requested, so content keeps rendering from the last non-null value
-  // while the slide-out plays, rather than blanking immediately.
+  // The panel stays mounted (web/docs/adr/0006) so its close slide has a frame to
+  // animate: `selected` goes null the instant a close is requested, so content
+  // keeps rendering from the last non-null value during the slide-out.
   const [lastSelected, setLastSelected] = useState<DetailPanelEntity | null>(
     null,
   );
@@ -84,9 +74,9 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   useEffect(() => {
     if (!selected) return;
 
-    // Recorded on pointerdown, consumed on pointerup — closing is decided
-    // at release, not press, so a drag-to-pan that starts outside the
-    // panel gets a chance to prove itself a drag before we act on it.
+    // Recorded on pointerdown, consumed on pointerup: closing is decided at
+    // release, so a drag-to-pan that starts outside the panel can prove itself a
+    // drag first.
     let pressStart: { x: number; y: number } | null = null;
 
     function handlePointerDown(event: PointerEvent) {
@@ -98,25 +88,20 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
       pressStart = null;
       if (!panelRef.current || panelRef.current.contains(event.target as Node))
         return;
-      // The mobile backdrop button (below) owns its own onClick — closing
-      // here first would unmount it before the browser's trailing click
-      // event fires, and since that click's original target (the backdrop)
-      // is gone by then, it can land on whatever mark is newly exposed
-      // underneath instead of being safely absorbed. Leave the backdrop's
-      // own click to close it, same reasoning as the mark deferral below.
+      // The mobile backdrop button (below) owns its onClick. Closing here first
+      // would unmount it before the browser's trailing click, which would then land
+      // on whatever mark is exposed underneath. Same reasoning as the mark deferral
+      // below.
       if (backdropRef.current?.contains(event.target as Node)) return;
       // A pointerdown on a mark fires before the click that follows it
-      // (TimelineCanvas's delegated click listener, dynamic-tooltips spec
-      // §2), and that click always re-selects — including re-clicking the
-      // same entity already open. Closing here first would unmount the
-      // panel a beat before that click reopens it, a close/reopen flash
-      // most visible when the entity doesn't change. Leave the mark's own
-      // click to decide the next selection instead of pre-empting it.
+      // (TimelineCanvas's delegated listener), and that click always re-selects,
+      // even the entity already open. Closing here first would unmount the panel just
+      // before the click reopens it, a close/reopen flash. Leave the next selection
+      // to the mark's click.
       const target = event.target as Element | null;
       if (target?.closest?.('[data-entity-id]')) return;
-      // A drag-to-pan release also lands here (its start point is outside
-      // the panel too) — only treat this as a dismiss click if the press
-      // barely moved.
+      // A drag-to-pan release also lands here (its start is outside the panel too);
+      // only dismiss if the press barely moved.
       if (start) {
         const moved = Math.hypot(
           event.clientX - start.x,

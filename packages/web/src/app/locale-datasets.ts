@@ -8,11 +8,9 @@ export interface LocaleDatasets {
   milestones: Milestone[];
 }
 
-// The datasets are pipeline-generated, never hand-edited (CLAUDE.md), so
-// this isn't validating user input — it's a tripwire for schema drift
-// between the pipeline's output and what the frontend expects, since a
-// missing id or a non-finite year would otherwise surface as a confusing
-// crash deep inside D3 rendering rather than a clear, attributable error.
+// A tripwire for schema drift between the pipeline's output and the frontend:
+// a missing id or non-finite year would otherwise crash deep inside D3
+// rendering with no clear cause.
 function primaryYear(entry: Person | ConflictEntry | Milestone): unknown {
   if ('lifespan' in entry) return entry.lifespan.start.year;
   if ('period' in entry) return entry.period.start.year;
@@ -47,9 +45,7 @@ export function validateEntries<T extends Person | ConflictEntry | Milestone>(
 type Locale = 'en' | 'ru';
 type DetailLevelIndex = 1 | 2 | 3 | 4;
 
-// Every lane's own key alongside the entityType string validateEntries logs
-// under — the one place this pairing is written down, instead of once per
-// loader.
+// Each lane's key paired with the entityType validateEntries logs under.
 const LANES = [
   { key: 'people', entityType: 'person' },
   { key: 'conflicts', entityType: 'conflict' },
@@ -61,15 +57,11 @@ type LaneKey = (typeof LANES)[number]['key'];
 type DatasetModule = { default: unknown };
 type Importer = () => Promise<DatasetModule>;
 
-// Detail Level (CONTEXT.md, docs/adr/0006-detail-level-merges-data-depth-
-// and-payload-tier.md): each lane's dataset ships as 4 pipeline-generated
-// delta files per locale (docs/adr/0009), one per Detail Level. Every
-// import() below must stay a literal specifier — Vite needs that to keep
-// each file its own chunk, so a deeper level and the other locale never end
-// up inside level 1/2's eager chunk — which is why this is a lookup table of
-// 24 literal imports rather than one templated path. A level/locale/lane
-// combination missing from this table is a TypeScript error, not a runtime
-// gap.
+// Each lane's dataset ships as 4 delta files per locale, one per Detail Level
+// (CONTEXT.md, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md,
+// web/docs/adr/0009). Every import() must be a literal specifier so Vite
+// keeps each file its own chunk, which is why this is a table of 24 literal
+// imports; a missing level/locale/lane combination is a type error.
 const IMPORTERS: Record<
   DetailLevelIndex,
   Record<Locale, Record<LaneKey, Importer>>
@@ -174,10 +166,8 @@ function mergeDatasets(a: LocaleDatasets, b: LocaleDatasets): LocaleDatasets {
   };
 }
 
-// Module-scope, started immediately on import rather than inside an effect,
-// so the fetch overlaps with initial render instead of trailing it. Level 1
-// + level 2 combined — byte-identical cost to today's eager Mainstream/tier0
-// load, since level 2's floor equals it exactly.
+// Level 1 + 2 combined. Started at module scope so the fetch overlaps the
+// initial render.
 export const localeDatasetsPromise: Promise<LocaleDatasets> = Promise.all([
   loadLevel(1, getLocale()),
   loadLevel(2, getLocale()),
@@ -188,10 +178,8 @@ interface NetworkInformation {
   effectiveType?: string;
 }
 
-// Save-data or a 2G-class connection means the idle-prefetch below never
-// runs automatically — level 3 instead loads only on demand, triggered by
-// requestLevel3Load (also called by requestLevel4Load below, since level
-// 4's cumulative view needs level 3's data too).
+// On save-data or a 2G-class connection the idle-prefetch below never runs;
+// level 3 then loads only through requestLevel3Load.
 function isSaveDataOrSlowConnection(): boolean {
   const connection = (
     navigator as Navigator & { connection?: NetworkInformation }
@@ -206,10 +194,8 @@ function isSaveDataOrSlowConnection(): boolean {
 
 let startLevel3Load: (() => void) | undefined;
 
-// Resolves once level 3 has loaded — automatically, deferred to idle time,
-// so it never competes with level 1+2's render-critical load above, unless
-// the connection looks slow/save-data, in which case nothing runs until
-// requestLevel3Load is called explicitly.
+// Level 3, loaded at idle time so it never competes with level 1+2, or on
+// requestLevel3Load for slow/save-data connections.
 export const level3DatasetPromise: Promise<LocaleDatasets> = new Promise(
   (resolve) => {
     const run = () => {
@@ -229,9 +215,7 @@ export const level3DatasetPromise: Promise<LocaleDatasets> = new Promise(
   },
 );
 
-// On-demand fallback for save-data/slow connections, where the automatic
-// idle-prefetch above never starts on its own — a no-op once level 3 is
-// already loading or loaded.
+// No-op once level 3 is loading or loaded.
 export function requestLevel3Load(): void {
   startLevel3Load?.();
   startLevel3Load = undefined;
@@ -240,8 +224,7 @@ export function requestLevel3Load(): void {
 let startLevel4Load: (() => void) | undefined;
 let level4Requested = false;
 
-// Level 4 never auto-starts, regardless of connection — strictly on demand,
-// once the user actually selects Deep Cut (requestLevel4Load below).
+// Level 4 never auto-starts; it loads when the user selects Deep Cut.
 export const level4DatasetPromise: Promise<LocaleDatasets> = new Promise(
   (resolve) => {
     startLevel4Load = () => {
@@ -250,9 +233,8 @@ export const level4DatasetPromise: Promise<LocaleDatasets> = new Promise(
   },
 );
 
-// Deep Cut's cumulative view is level 1+2+3+4, so selecting it must also
-// make sure level 3 is (or starts) loading, not just level 4 itself — a
-// no-op past the first call, or once level 3 is already loading/loaded.
+// Deep Cut's view is levels 1-4, so this also starts level 3. No-op past the
+// first call.
 export function requestLevel4Load(): void {
   requestLevel3Load();
   if (level4Requested) return;

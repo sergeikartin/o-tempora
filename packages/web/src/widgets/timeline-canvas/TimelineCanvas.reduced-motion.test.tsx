@@ -74,14 +74,7 @@ test('with prefers-reduced-motion: reduce, a zoom-button click resolves to the t
   const initialWidth = personLineWidth(container);
 
   fireEvent.click(getByLabelText('Zoom in'));
-  // A generous real-time wait (matching this codebase's other zoom-
-  // animation tests, since a real, un-mockable requestAnimationFrame loop
-  // needs actual wall-clock time under real test-runner load) — the
-  // meaningful assertion here isn't the wait's own length, it's that the
-  // collapsed near-zero --motion-duration-base (mocked above, mirroring
-  // global.css's real prefers-reduced-motion collapse) still resolves to
-  // the target correctly, exercising the same "durationMs <= 0 resolves on
-  // the next tick" path ticket 03 calls for.
+  // the next tick" path.
   await act(async () => {
     await new Promise((resolve) => setTimeout(resolve, 100));
   });

@@ -1,17 +1,13 @@
 import type { Region } from "@o-tempora/shared-types";
 
-// Explicit Wikidata country/state Q-ID -> app Region (the UN M49 22-value
-// sub-region scheme, shared with People's Pantheon-sourced tags — see
-// un-region-categories.ts). Built by hand against the distinct country
-// Q-IDs actually present in the grouped pool (see list-unmapped-countries.ts).
-// Historical polities are mapped to the sub-region their territory
-// geographically corresponds to today, not a current-day successor state's
-// name — e.g. the Byzantine Empire resolves to southern-europe (its
-// Greek/Balkan core) rather than western-asia (modern Turkey, where its
-// capital Constantinople sits), preserving the historical-polity awareness
-// this table exists for. Where an entry's modern-day territory maps
-// cleanly onto one of un-region-categories.ts's Pantheon country names,
-// that table's value is reused directly, so the two taxonomies agree.
+// Wikidata country/state Q-ID -> Region (the UN M49 22 sub-region scheme shared
+// with People's Pantheon-sourced tags; see un-region-categories.ts). Built by
+// hand against the country Q-IDs present in the data (see
+// list-unmapped-countries.ts). Historical polities map to the sub-region their
+// territory corresponds to today, not a successor state's: the Byzantine Empire
+// is southern-europe (its Greek/Balkan core), not western-asia (modern Turkey).
+// Where a modern territory maps cleanly onto a Pantheon country name in
+// un-region-categories.ts, that value is reused so the two agree.
 export const REGION_CATEGORIES: Record<string, Region> = {
   // australia-and-new-zealand
   Q408: "australia-and-new-zealand", // Australia

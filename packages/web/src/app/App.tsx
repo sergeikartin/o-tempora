@@ -36,10 +36,8 @@ import styles from './App.module.css';
 import { type LocaleDatasets, localeDatasetsPromise } from './locale-datasets';
 import { useDetailLevelDatasets } from './use-detail-level-datasets';
 
-// Both are closed/empty by default (rendered unconditionally but paint
-// nothing until opened) — lazy-loading keeps their code out of the bundle
-// that has to parse+execute before the initial timeline paint (LCP audit,
-// .scratch/pre-launch-readiness/issues/14).
+// Both paint nothing until opened; lazy-loading keeps their code out of the
+// bundle that must parse and execute before the initial timeline paint.
 const AboutPanel = lazy(() =>
   import('../widgets/about-panel').then((mod) => ({
     default: mod.AboutPanel,
@@ -51,28 +49,21 @@ const DetailPanel = lazy(() =>
   })),
 );
 
-// Eagerly pulled into the main CSS bundle (the component itself stays
-// lazy above) so `.panel`'s closed-by-default transform is already applied
-// before first paint. DetailPanel stays mounted at all times, closed state
-// and all (docs/adr/0006), and the prerender step (vite-plugins/prerender-
-// default-viewport.ts) bakes that closed `<aside>` straight into
-// index.html — without this, the browser paints it unstyled first and only
-// gets `.panel`'s rules (including its `transition: transform`) once the
-// lazy chunk's CSS arrives, which animates the on-screen "no transform yet"
-// state into the off-screen one: a visible slide-away flash on every load.
-// A bare side-effect import gets tree-shaken away (the CSS module's JS
-// proxy has no used export) — referencing a class name keeps it.
+// Pulled into the main CSS bundle (the component stays lazy above) so
+// `.panel`'s closed transform applies before first paint. DetailPanel is
+// always mounted (web/docs/adr/0006) and the prerender bakes its closed
+// `<aside>` into index.html; if the CSS arrived with the lazy chunk, the
+// unstyled panel would animate off-screen on every load. A bare side-effect
+// import is tree-shaken away, so a class name is referenced instead.
 import detailPanelStyles from '../widgets/detail-panel/ui/DetailPanel.module.css';
 
 void detailPanelStyles.panel;
 
 interface AppProps {
-  // Set only by the build-time prerender step (vite-plugins/prerender-
-  // default-viewport.ts), which already has the resolved level 1+2 dataset in
-  // hand and can't reproduce main.tsx's runtime dynamic-import/locale-
-  // detection path outside a browser. main.tsx's real mount always omits
-  // this, so the client keeps resolving `localeDatasetsPromise` exactly as
-  // before.
+  // Set only by the build-time prerender
+  // (vite-plugins/prerender-default-viewport.ts), which has the level 1+2
+  // dataset resolved already and can't run main.tsx's runtime locale
+  // detection. main.tsx omits it and resolves `localeDatasetsPromise`.
   initialDatasets?: LocaleDatasets;
 }
 
@@ -140,11 +131,9 @@ function AppContent({ initialDatasets }: AppProps) {
     level: selectedLevel,
     setLevel: setFameScoreLevel,
   } = useFameScoreFilters();
-  // Specialized/Deep Cut's data ships in a deferred delta file (CONTEXT.md's
-  // Detail Level) — picking either triggers the on-demand fallback in case
-  // the idle-prefetch hasn't started yet (save-data/slow connection) or
-  // hasn't finished; a no-op otherwise (docs/adr/0006-detail-level-merges-
-  // data-depth-and-payload-tier.md).
+  // Specialized/Deep Cut data ships in deferred delta files (CONTEXT.md's
+  // Detail Level); picking either triggers the on-demand load if the
+  // idle-prefetch hasn't started or finished, and is a no-op otherwise.
   const handleSelectDetailLevel = useCallback(
     (level: DetailLevel) => {
       requestLevel(level.id);
@@ -179,20 +168,14 @@ function AppContent({ initialDatasets }: AppProps) {
     selectedRegions,
     selectedConflictsMilestonesValues,
   });
-  // Set only by a search pick (never a canvas click, which is already in
-  // view) — TimelineCanvas watches this to pan, see its own comment.
+  // Set only by a search pick (a canvas click is already in view);
+  // TimelineCanvas pans to it.
   const [searchJumpTarget, setSearchJumpTarget] =
     useState<SelectedEntityRef | null>(null);
-  // Mobile-only drawer state for Sidebar (App.module.css/Sidebar.module.css
-  // gate its visual effect to narrow viewports, but the open/close state
-  // itself is tracked unconditionally, same shape as the other cross-widget
-  // state below) — opening the detail panel auto-closes it so the two
-  // overlays never compete for the same space (mobile-responsive-layout
-  // spec's story 5).
+  // Mobile drawer state for Sidebar (only narrow viewports show its effect).
+  // Opening the detail panel closes it so the two overlays never compete.
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
-  // Desktop-only sidebar collapse, toggled by the « handle in Sidebar's own
-  // header — no effect on mobile, where the drawer above already covers
-  // hiding the sidebar.
+  // Desktop-only sidebar collapse, toggled by Sidebar's « handle.
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
 
@@ -266,10 +249,8 @@ function AppContent({ initialDatasets }: AppProps) {
     [selectEntity, peopleData, conflictsData, milestonesData],
   );
 
-  // A search pick is a superset of handleEntityClick above (same select +
-  // drawer-close), plus a fresh jump-target object TimelineCanvas's effect
-  // watches to pan the timeline — a canvas click never sets this since
-  // what's clicked is already on screen.
+  // handleEntityClick plus a fresh jump-target object that TimelineCanvas's
+  // effect watches to pan the timeline.
   const handleSelectSearchResult = useCallback(
     (result: SearchResult) => {
       const ref: SelectedEntityRef = {
@@ -284,10 +265,8 @@ function AppContent({ initialDatasets }: AppProps) {
     [selectEntity],
   );
 
-  // Looks the clicked id up in the already-in-memory datasets (dynamic-
-  // tooltips spec §2's "on-demand rendering" — nothing about drawer content
-  // is precomputed for the full filtered dataset) rather than threading a
-  // full entity object through the click event itself.
+  // Looks the clicked id up in the in-memory datasets rather than threading
+  // a full entity through the click event.
   const selectedEntity: DetailPanelEntity | null = useMemo(() => {
     if (!selectedRef) return null;
     if (selectedRef.entityType === 'person') {

@@ -9,14 +9,10 @@ export const DEFAULT_VIEWPORT_END_YEAR = 1860;
 
 export const PAN_MIN_YEAR = -801;
 
-// Sidebar Fame-floor filters: a raw `fameScore` numeric floor per lane, set
-// directly by the user (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md
-// — supersedes the zoom-coupled Fame Tier system, ADR 0002). Bounds mirror
-// each lane's real fameScore range (People: Pantheon HPI 75-100; Conflicts &
-// Milestones: Wikidata sitelinks). Zoom no longer affects entity density —
-// see shared/config/occupation-domain-colors.ts's sibling comment for why
-// this config lives here rather than under widgets/timeline-canvas: the
-// sidebar filter feature needs it too.
+// Per-lane `fameScore` floors, independent of zoom
+// (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md).
+// Lives here rather than under widgets/timeline-canvas because the sidebar
+// filter feature needs it too.
 export const FAME_SCORE_LANES = ['people', 'conflicts', 'milestones'] as const;
 export type FameScoreLane = (typeof FAME_SCORE_LANES)[number];
 
@@ -26,16 +22,10 @@ export interface FameScoreBounds {
   default: number;
 }
 
-// conflicts/milestones fameScore is no longer a raw sitelink count — ADR 0010
-// (packages/data-pipeline/docs/adr/0010-blend-sitelinks-and-pageviews-for-
-// wars-discoveries-fame-score.md) blends sitelinks with Wikimedia pageviews
-// into one shared 0-100 log-normalized scale, so both lanes now share the
-// same bounds instead of lane-specific raw-count ranges. 1-100/default-82
-// is a provisional starting point (the ADR's documented consequence),
-// pending a manual re-tune once real blended scores are visible in the
-// running app. `default` per lane reuses DETAIL_LEVEL_FAME_SCORE_FLOORS'
-// level 2 (Mainstream) entry rather than repeating the same three numbers a
-// third time.
+// People use Pantheon HPI (75-100); Conflicts and Milestones share one
+// 0-100 blended sitelinks/pageviews scale
+// (packages/data-pipeline/docs/adr/0010-blend-sitelinks-and-pageviews-for-wars-discoveries-fame-score.md).
+// `default` is DETAIL_LEVEL_FAME_SCORE_FLOORS' level 2 (Mainstream) entry.
 export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
   people: {
     min: 75,
@@ -54,13 +44,11 @@ export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
   },
 };
 
-// Detail Level: a 4-position UI preset that writes canonical values into the
-// three fame-score floor inputs above in one click, and is also the
-// pipeline's network-loading boundary (CONTEXT.md's Detail Level,
-// docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md).
-// `mainstream` (level 2) deliberately equals FAME_SCORE_BOUNDS's existing
-// per-lane defaults, so the app's launch behavior is unchanged; each level
-// after it digs deeper (lower floor, more entries) rather than narrower.
+// Detail Level: a 4-position preset that sets all three fame-score floors at
+// once and is also the pipeline's network-loading boundary (CONTEXT.md's
+// Detail Level, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md).
+// `mainstream` (level 2) equals FAME_SCORE_BOUNDS's per-lane defaults; each
+// later level has lower floors and more entries.
 export type DetailLevelId =
   | 'legendary'
   | 'mainstream'
@@ -92,9 +80,9 @@ function detailLevel(
   };
 }
 
-// Labels/descriptions picked once at module load from the compiled locale's
-// message catalog (docs/adr/0005) — same pattern as shared/config's other
-// taxonomy labels (e.g. occupation-domain-colors.ts's DOMAIN_LABELS).
+// Labels/descriptions are resolved once at module load from the compiled
+// locale's message catalog (docs/adr/0005), like shared/config's other
+// taxonomy labels.
 export const DETAIL_LEVELS: readonly [
   DetailLevel,
   DetailLevel,

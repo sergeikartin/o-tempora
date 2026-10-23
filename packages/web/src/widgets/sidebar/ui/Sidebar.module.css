@@ -16,17 +16,12 @@
   --sidebar-inset: 12px;
 }
 
-/* Desktop-only (Sidebar.tsx folds isCollapsed to false on mobile, where the
-   drawer's own isOpen/translateX already handles hiding it) — reserves zero
-   layout width, same shape as the mobile drawer's own zero-footprint-when-
-   closed state, so the canvas actually reclaims the space rather than just
-   losing its filter sections (unmounted, not clipped — see the !collapsed
-   guard in Sidebar.tsx). .sidebar itself has no overflow rule, so it stays
-   visible and lets .collapseHeader's handle keep rendering at its natural
-   size and poke out past this 0-width box into the canvas, exactly like
-   TimelineCanvas's own drawerToggle overlay button — just without needing
-   absolute positioning, since a flex child is free to overflow a
-   fixed-size flex container. */
+/* Desktop-only (Sidebar.tsx folds isCollapsed to false on mobile). Reserves
+   zero layout width so the canvas reclaims the space; the filter sections are
+   unmounted, not clipped (the !collapsed guard in Sidebar.tsx). .sidebar has
+   no overflow rule, so .collapseHeader's handle still renders and pokes into
+   the canvas past this 0-width box, like TimelineCanvas's drawerToggle, with
+   no absolute positioning needed. */
 .collapsed {
   width: 0;
   margin-left: 0;
@@ -113,10 +108,9 @@
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
-/* An explicit way to dismiss the drawer alongside the existing tap-
-   outside/backdrop and toggle-again paths, mirroring DetailPanel's own
-   .closeButton visually — laid out in .header's flex row rather than
-   absolutely positioned, now that it shares a row with the title. */
+/* Explicit dismiss for the drawer (besides tapping the backdrop or the
+   toggle), styled like DetailPanel's .closeButton and laid out in .header's
+   flex row. */
 .closeButton {
   flex-shrink: 0;
   width: 28px;
@@ -135,21 +129,14 @@
   outline-offset: 2px;
 }
 
-/* Desktop counterpart to .header — same title, but always rendered above
-   the filter sections (even while .collapsed, unlike .header, which is
-   mobile-only and lives inside .content instead), so its « handle stays the
-   one constant, reachable way to toggle the rest of the sidebar. The title
-   itself still hides when collapsed (Sidebar.tsx), leaving just the button
-   — space-between degrades to flush-start for that single remaining child,
-   the same place it'd sit under flex-start, so this doesn't need a
-   collapsed-specific justify-content variant. Carries its own padding
-   (rather than relying on .sidebar's, which .collapsed zeroes out along
-   with the width) so the handle sits at a fixed 8px/8px inset from the
-   top-left corner in both states — deliberately anchored to flex-start
-   (via a lone child, not the property directly) rather than flex-end:
-   .collapsed's container is width: 0, so flex-end would align the button's
-   *right* edge to that 0-width box's right edge, pushing the whole button
-   off-screen to the left instead of overflowing rightward into the canvas. */
+/* Desktop counterpart to .header: the same title, always rendered above the
+   filter sections (even while .collapsed; .header is mobile-only), so the «
+   handle always toggles the sidebar. The title hides when collapsed, leaving
+   the lone button, which space-between places flush-start, so no
+   collapsed-specific justify-content is needed. It carries its own padding
+   (.collapsed zeroes .sidebar's) for a fixed 8px inset from the top-left in
+   both states. Not flex-end: .collapsed is width 0, so the button's right edge
+   would sit at the box's right edge and push it off-screen to the left. */
 .collapseHeader {
   flex-shrink: 0;
   display: flex;

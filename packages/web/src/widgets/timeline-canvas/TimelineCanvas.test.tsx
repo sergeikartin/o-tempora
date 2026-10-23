@@ -14,18 +14,14 @@ import { TimelineCanvas } from './TimelineCanvas';
 
 afterEach(cleanup);
 
-// The zoom-button animation runs via a real requestAnimationFrame loop
-// (TimelineCanvas.tsx) — jsdom has no real rAF/paint fidelity to drive
-// deterministically frame-by-frame (see this feature's spec, .scratch/
-// zoom-filter-transitions/spec.md, on why this app doesn't commit
-// frame-timing tests), so tests instead wait out real wall-clock time past
-// the animation's own duration and assert on the settled end state, same as
-// every other transition test in this codebase. No global.css is loaded in
-// this test environment, so --motion-duration-base already reads as 0 here
-// (motionDurationMs's own documented fallback) — the same near-instant path
-// prefers-reduced-motion collapses to in production — but the real
-// per-frame rAF loop still needs at least one real animation frame to
-// observe it, hence the wait rather than a synchronous assertion.
+// The zoom animation runs on a real requestAnimationFrame loop
+// (TimelineCanvas.tsx); jsdom has no rAF/paint fidelity to drive it frame by
+// frame, so tests wait out real wall-clock time past the animation's duration
+// and assert on the settled end state, like every other transition test here.
+// No global.css is loaded in this test environment, so --motion-duration-base
+// already reads as 0 here (motionDurationMs's fallback), the same near-instant
+// path prefers-reduced-motion collapses to in production, but the rAF loop
+// still needs one real frame to observe it, hence the wait.
 async function waitOutZoomAnimation() {
   await act(async () => {
     await new Promise((resolve) => setTimeout(resolve, 100));

@@ -7,8 +7,8 @@ import {
   SELECTION_HALO_PX,
 } from './options';
 
-// Not exported from the slice's public index.ts — internal to PeopleLane and
-// ConflictsMilestonesLane's own enter branches.
+// Not exported from the slice's public index.ts: internal to PeopleLane and
+// ConflictsMilestonesLane's enter branches.
 
 /**
  * One of a mark's 4 fixed DOM children — built once per entering datum, in
@@ -119,9 +119,8 @@ type MarkChild<Datum> = d3.Selection<Element, Datum, SVGGElement, unknown>;
 export function buildMarkChildren<Datum>(
   g: d3.Selection<SVGGElement, Datum, SVGGElement, unknown>,
   shape: MarkShape,
-  // CSS-Module classes always exist in the compiled module — the indexed
-  // access only reads as possibly-undefined because of
-  // noUncheckedIndexedAccess, not because a key might really be missing.
+  // CSS-Module classes exist in the compiled module; indexed access reads as
+  // possibly undefined only because of noUncheckedIndexedAccess.
   styles: Record<string, string | undefined>,
 ): readonly [
   MarkChild<Datum>,

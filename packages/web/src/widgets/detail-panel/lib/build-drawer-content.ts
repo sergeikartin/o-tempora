@@ -1,20 +1,17 @@
 import { formatYearMonth } from '../../../shared/lib/date';
 import type { ConflictEntry, Milestone, Person } from '../../../shared/types';
 
-// Discriminates which of the three lane shapes a click resolved to — the
-// same union App.tsx builds after looking a SelectedEntityRef id up in its
-// in-memory dataset (dynamic-tooltips spec §2, "on-demand rendering": the
-// drawer looks up the full entity by id only at click time, nothing
-// precomputed).
+// Which of the three lane shapes a click resolved to: the union App.tsx builds
+// after looking a SelectedEntityRef id up in its in-memory dataset at click
+// time (nothing is precomputed).
 export type DetailPanelEntity =
   | { entityType: 'person'; entity: Person }
   | { entityType: 'conflict'; entity: ConflictEntry }
   | { entityType: 'milestone'; entity: Milestone };
 
-// Every field the drawer chrome (ui/DetailPanel.tsx) needs to render,
-// regardless of entity type — spec §3's "all four entity shapes render into
-// the same drawer chrome" table. Which optional fields end up populated
-// depends on entityType (see buildDrawerContent below), not on the caller.
+// Every field the panel chrome (ui/DetailPanel.tsx) renders, whatever the
+// entity type. Which optional fields are populated depends on entityType (see
+// buildDrawerContent below), not on the caller.
 export interface DrawerContent {
   name: string;
   // Point-shaped Milestone only — People, Conflicts, and period-shaped

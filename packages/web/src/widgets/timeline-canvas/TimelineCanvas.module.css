@@ -7,14 +7,12 @@
   height: 100vh;
 }
 
-/* Reserves the Minimap's own rendered footprint (Minimap.module.css's
-   .wrapper: 20px centuryStrip + 56px track + 1px border each side, plus its
-   12px bottom inset) while its mount is idle-deferred (TimelineCanvas.tsx) —
-   without this, .scrollContainer (flex: 1 1 auto, same column) fills the gap
-   and then jumps up by 90px once Minimap mounts, a real CLS hit on every
-   load. Also mirrors .wrapper's own surface/border/shadow rather than
-   staying transparent, so the card reads as present for however long the
-   idle-defer takes, not just an empty box the right size. */
+/* Reserves the Minimap's footprint (Minimap.module.css's .wrapper: 20px
+   centuryStrip + 56px track + 1px border each side + 12px bottom inset) while
+   its mount is idle-deferred (TimelineCanvas.tsx); otherwise .scrollContainer
+   (flex: 1 1 auto) jumps up by 90px when Minimap mounts, shifting layout.
+   Mirrors .wrapper's surface/border/shadow so the card reads as present
+   meanwhile. */
 .minimapPlaceholder {
   flex: 0 0 auto;
   height: 78px;
@@ -123,21 +121,15 @@
   outline-offset: -2px;
 }
 
-/* The container's own scroll position *is* the time-axis sync (ADR 0001's
-   Consequences): no rangechange listener, no reentrancy guard. overflow-x:
-   scroll (not auto) keeps scrolling always enabled regardless of whether
-   zoom currently makes content overflow — each lane below also pins
-   overflow-x: hidden so none of them grows a second, independent horizontal
-   scrollbar of its own (see their comments). The native scrollbar itself is
-   hidden (scrollbar-width/::-webkit-scrollbar below): it isn't a real DOM
-   node, so a mousedown on its thumb can't be told apart from a mousedown on
-   the timeline content by any reliable, cross-browser means (whether a
-   browser reserves layout space for it at all varies — e.g. Firefox's
-   overlay scrollbars don't), which made the drag-to-pan handlers below
-   swallow scrollbar drags instead of leaving them to the browser.
-   Minimap.tsx now renders the pan/jump control as an ordinary
-   sibling element instead (ADR 0004), sidestepping that ambiguity
-   entirely. */
+/* The container's scroll position is the time-axis sync (web/docs/adr/0001):
+   no rangechange listener or reentrancy guard. overflow-x: scroll (not auto)
+   keeps scrolling enabled whether or not zoom overflows; each lane pins
+   overflow-x: hidden so none grows its own scrollbar. The native scrollbar is
+   hidden (scrollbar-width/::-webkit-scrollbar below) because it isn't a DOM
+   node: a mousedown on its thumb can't be told from one on the content (and
+   whether a browser reserves space for it varies, e.g. Firefox overlay
+   scrollbars), so the drag-to-pan handlers swallowed scrollbar drags. Minimap.tsx
+   is the pan/jump control instead (web/docs/adr/0004). */
 .scrollContainer {
   position: relative;
   flex: 1 1 auto;
@@ -147,14 +139,11 @@
   overflow-x: scroll;
   scrollbar-width: none; /* Firefox */
   background-color: var(--color-bg-base);
-  /* Keeps native single-finger horizontal swipe-to-scroll working exactly
-     as it does today, while stopping the browser from intercepting a
-     two-finger gesture as native page pinch-zoom, so the pinch pointer
-     handlers above actually receive both touches. Scoped to this element
-     only — everywhere else on the page (drawer, bottom sheet, their text)
-     keeps native pinch-zoom available as an accessibility fallback for
-     low-vision users relying on OS/browser zoom, since nothing there sets
-     touch-action. */
+  /* Keeps native single-finger horizontal swipe scrolling while stopping the
+     browser from taking a two-finger gesture as page pinch-zoom, so the pinch
+     handlers above get both touches. Scoped to this element: elsewhere (drawer,
+     bottom sheet) native pinch-zoom stays available as an accessibility
+     fallback for low-vision users. */
   touch-action: pan-x;
 }
 
@@ -162,19 +151,13 @@
   display: none; /* Chrome/Safari/Edge counterpart to scrollbar-width above */
 }
 
-/* Subtle alternating-background-band ("zebra striping") at every 25-year
-   interval, spanning the full scroll height behind the lanes — replaces the
-   earlier faint vertical gridlines (`/grill-with-docs`: a repeating line
-   read as busier "dark columns" than the calm ambient texture wanted here).
-   A real totalWidth-wide child (TimelineCanvas.tsx), not a
-   background-attachment: local trick on .scrollContainer itself —
-   round-historical BCE tick positions (format-year.ts) sit on a different
-   phase than CE ticks, the same reason YearAxis's own ruler is split this
-   way (see its .rulerRow), and a single repeating background can't tile two
-   phases. position: absolute takes it out of the flex flow so it doesn't
-   disturb the yearAxis/peopleLane/conflictsMilestonesLane siblings below it
-   in source order — painted first, so it sits behind them (they have no
-   background of their own, letting it show through). */
+/* Alternating background bands ("zebra striping") every 25 years across the
+   full scroll height behind the lanes. A real totalWidth-wide child
+   (TimelineCanvas.tsx), not a background-attachment: local trick, because
+   round BCE tick positions (format-year.ts) sit on a different phase than CE
+   ticks, as in YearAxis's .rulerRow, and one repeating background can't tile
+   two phases. position: absolute removes it from the flex flow, and painted
+   first it sits behind the lanes, which have no background of their own. */
 .zebraLayer {
   position: absolute;
   top: 0;
@@ -232,33 +215,22 @@
   user-select: none;
 }
 
-/* 4:2 height ratio across People and the combined Conflicts / Milestones
-   region — People takes two-thirds of the scroll container,
-   Conflicts+Milestones share the remaining third as one scroll region (below).
-   min-height: 0 lets People shrink below content height so its own
-   overflow-y, not flexbox, handles row overflow (11 rows over 49 people,
-   today).
+/* 4:2 height ratio between People and the combined Conflicts / Milestones
+   region: People takes two-thirds, Conflicts+Milestones share the remaining
+   third as one scroll region (below). min-height: 0 lets People shrink below
+   its content so its own overflow-y handles row overflow.
 
-   This lane does NOT get the inline totalWidth style .yearAxis gets — it
-   stays exactly as wide as .scrollContainer's viewport (the flex default),
-   with its own totalWidth-wide content (the SVG the Lane component renders)
+   This lane does not get the inline totalWidth style .yearAxis gets: it stays
+   as wide as .scrollContainer's viewport, with its totalWidth-wide content
    panned by TimelineCanvas.tsx mirroring scrollRef's scrollLeft onto this
-   element's own scrollLeft. That's what position: sticky; left: 0 is for:
-   without it, this lane would be laid out at local x:[0, viewportWidth]
-   inside .scrollContainer's shared (totalWidth-wide, from .yearAxis)
-   content box and would scroll straight out of view the moment
-   .scrollContainer pans right, since nothing of this lane's own box extends
-   past that point. Sticky pins its box to the scrollport's left edge
-   instead, so it's always on screen — and with it always on screen, its own
-   vertical scrollbar (right at this box's own right edge) is always on
-   screen too, at any horizontal scroll position. overflow-x: hidden keeps
-   the pan above as scrollRef-driven only (no independent user drag/wheel on
-   this element) and, as a side effect, stops this lane from also growing
-   its own horizontal scrollbar: per the CSS overflow spec, an element with
-   overflow-y non-visible and overflow-x left as the visible default has its
-   overflow-x computed value forced to auto too, and this lane's own
-   vertical scrollbar (when 11 rows overflow it) would otherwise trip that
-   forced-auto axis into showing a second, redundant scrollbar. */
+   element. position: sticky; left: 0 is what keeps it on screen: otherwise it
+   would sit at local x:[0, viewportWidth] in .scrollContainer's totalWidth-wide
+   content box and scroll out of view on a right pan. Pinned, its own vertical
+   scrollbar at its right edge is always on screen too. overflow-x: hidden keeps
+   the pan scrollRef-driven (no independent drag/wheel) and stops a second
+   horizontal scrollbar: per the CSS overflow spec, overflow-x: visible with a
+   non-visible overflow-y computes to auto, so the lane's vertical overflow
+   would otherwise show a redundant one. */
 .peopleLane {
   flex: 4 1 0;
   min-height: 0;
@@ -276,33 +248,23 @@
   mask-image: linear-gradient(to bottom, transparent 0, #000 40px);
 }
 
-/* The sole Year Axis, between People and Conflicts+Milestones — the only one
-   importance/row-order is measured against (see ConflictsMilestonesLane.tsx
-   and options.ts's personLabelYForRow). Used to be three (also above People
-   and below Conflicts+Milestones), removed as redundant
-   (`.scratch/pre-launch-readiness/issues/03-axis-duplication.md`): no
-   position: sticky was ever needed to keep any of them visible during a
-   lane's own vertical scroll — each is a plain flex sibling outside
-   .peopleLane/.conflictsMilestonesLane's own overflow-y box, so a lane
-   scrolling internally never carried an axis out of view with it, three
-   copies or one. Not part of the 4:2 lane ratio above/below. Kept at the
-   inline totalWidth style (via TimelineCanvas.tsx), wider than
-   .scrollContainer — that mismatch is what drives the shared horizontal
-   scrollbar above, and (now that .peopleLane/.conflictsMilestonesLane no
-   longer carry that width themselves) the only thing that does. Not sticky
-   against .scrollContainer's own horizontal pan, by design: it's meant to
-   pan normally so its ticks track the visible year range. */
+/* The one Year Axis, between People and Conflicts+Milestones, which row order
+   is measured against (see ConflictsMilestonesLane.tsx and options.ts's
+   personLabelYForRow). It is a plain flex sibling outside the lanes'
+   overflow-y boxes, so a lane scrolling internally never carries it out of
+   view and it needs no position: sticky. Not part of the 4:2 lane ratio. It
+   keeps the inline totalWidth style (TimelineCanvas.tsx), wider than
+   .scrollContainer, which is what creates the shared horizontal scrollbar
+   (the lanes don't carry that width). Not sticky against the horizontal pan,
+   by design: its ticks pan with the visible year range. */
 .yearAxis {
   flex: 0 0 auto;
 }
 
-/* Conflicts and Milestones share one vertical scroll region *and* one
-   row-packing pass (ConflictsMilestonesLane.tsx) — a single mixed lane, not
-   two lanes stacked in the same box, so a viewer scans both at once instead
-   of hunting for whichever lane happens to have the item they want scrolled
-   out of view. Ratio 2 (vs. People's 4) preserves the old 4:1:1 split's
-   combined Conflicts+Milestones share. position: sticky/overflow-x: hidden for the
-   same reason as .peopleLane above. */
+/* Conflicts and Milestones share one vertical scroll region and one row-packing
+   pass (ConflictsMilestonesLane.tsx): a single mixed lane, so a viewer scans
+   both at once. Ratio 2 (People's is 4). position: sticky/overflow-x: hidden
+   for the same reason as .peopleLane above. */
 .conflictsMilestonesLane {
   flex: 2 1 0;
   min-height: 0;
@@ -311,7 +273,3 @@
   position: sticky;
   left: 0;
 }
-
-/* The old custom scrollbar (.scrollbarTrack/.scrollbarThumb) that used to
-   render here is gone — replaced by Minimap.tsx (ADR 0004), which owns its
-   own styling in Minimap.module.css. */

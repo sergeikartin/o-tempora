@@ -1,14 +1,11 @@
 import { m } from '../../paraglide/messages.js';
 import type { YearMonth } from '../../types';
 
-// Every year in the rendering path is a plain signed integer using
-// astronomical numbering (year 0 is 1 BCE, year 1 is 1 CE — the same
-// convention Temporal.PlainDate's ISO calendar uses natively; see
-// packages/shared-types's TimelineEntry comment). This is the one place
-// that turns that internal representation into the "N BCE" / plain "N"
-// strings users actually see, so BCE-ness and the off-by-one BCE-year
-// conversion aren't reimplemented at each call site (YearAxis's ticks and
-// century header, map-to-items.ts's tooltips).
+// Every year in the rendering path is a plain signed integer in astronomical
+// numbering (year 0 is 1 BCE, year 1 is 1 CE; docs/adr/0001-astronomical-year-numbering.md).
+// This is the one place that turns it into the "N BCE" / plain "N" strings
+// users see, so the BCE off-by-one isn't reimplemented at each call site
+// (YearAxis ticks and century header, the detail panel's dates).
 
 /** True when a plain end-to-end year (ISO/astronomical numbering) falls BCE. */
 export function isBceYear(year: number): boolean {
@@ -44,11 +41,10 @@ const MONTH_NAMES = [
   'December',
 ];
 
-// month absent means the source data is only certain to the year (see
-// shared-types's YearMonth) — falls back to formatYear alone rather than
-// guessing a month. Hardcoded month names rather than a date-object
-// formatter: the source of truth is already a plain 1-12 integer, not a
-// date value needing calendar-aware construction just to name a month.
+// An absent month means the source is only certain to the year (see
+// shared-types's YearMonth), so this falls back to formatYear alone rather
+// than guessing. Month names are hardcoded: the source is a plain 1-12
+// integer, not a date value.
 export function formatYearMonth(yearMonth: YearMonth): string {
   if (yearMonth.month === undefined) return formatYear(yearMonth.year);
   return `${MONTH_NAMES[yearMonth.month - 1]} ${formatYear(yearMonth.year)}`;
@@ -115,15 +111,13 @@ export function centuryBoundariesInRange(
   return boundaries;
 }
 
-// A tick grid built from round *astronomical* numbers (..., -200, -100, 0,
-// 100, ...) mislabels every BCE tick by one year once formatYear converts it
-// (year -100 reads "101 BCE", not "100 BCE") — astronomical numbering has a
-// year 0 that true historical BCE/CE counting doesn't. The common historical-
-// timeline fix isn't to relabel every BCE tick — it's to keep every *other*
-// tick on its normal round-number spacing and absorb the missing year 0 into
-// a single dedicated tick right at the era boundary, year 0 itself ("1 BCE"),
-// which makes exactly the one BCE segment touching it (e.g. "10 BCE" to
-// "1 BCE") one tick narrower than every other segment.
+// A tick grid of round astronomical numbers (..., -200, -100, 0, 100, ...)
+// mislabels every BCE tick by one year once formatYear converts it (year -100
+// reads "101 BCE"), since astronomical numbering has a year 0 that historical
+// BCE/CE counting doesn't. Instead of relabeling BCE ticks, every other tick
+// keeps round spacing and the missing year 0 is absorbed into one tick at the
+// era boundary, year 0 itself ("1 BCE"), which makes the one BCE segment
+// touching it (e.g. "10 BCE" to "1 BCE") a tick narrower than the rest.
 
 /** True when `year` sits on a round `stepYears` tick in historical (no-year-0) terms. */
 export function isRoundTickYear(year: number, stepYears: number): boolean {

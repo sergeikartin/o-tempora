@@ -11,15 +11,10 @@ interface ConflictsMilestonesFiltersProps {
   onToggleValue: (value: ConflictsMilestonesFilterValue) => void;
 }
 
-// The sidebar's "Conflicts & Milestones" section — one shared multi-select
-// pill list (revised 2026-08-12 to mirror OccupationDomainFilters/
-// RegionFilters' exact shape: one flat list of values, each pill swatched
-// and independently toggleable, empty selection means unfiltered). Folds
-// the 'conflicts' sentinel (Conflicts carry no color-driving grouping of
-// their own — see CONTEXT.md's Conflict Category entry) together with the
-// MilestoneCategoryGroup values into one list, since from the user's
-// perspective it's one filter over one sidebar section, not two
-// differently-behaved controls.
+// The sidebar's "Conflicts & Milestones" section: one multi-select pill list
+// shaped like OccupationDomainFilters/RegionFilters (swatched pills, empty
+// selection means unfiltered), holding the 'conflicts' value alongside the
+// MilestoneCategoryGroup values (CONTEXT.md's Milestone Category Group).
 export function ConflictsMilestonesFilters({
   selectedValues,
   onToggleValue,

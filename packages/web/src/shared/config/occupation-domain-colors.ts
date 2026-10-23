@@ -1,16 +1,11 @@
 import { m } from '../paraglide/messages.js';
 import type { OccupationDomain } from '../types';
 
-// Mirrors design-tokens.md's Occupation Domain Palette, sourced directly
-// from pantheon.world's own CSS custom properties (--colorInstitutions etc.)
-// so ours matches theirs exactly. References the CSS custom properties
-// wired in app/global.css's :root rather than repeating hex here — SVG
-// presentation attributes (People lane's fill/stroke) resolve var() same as
-// any other CSS property, so this works for D3-rendered and plain-DOM
-// consumers alike. Lives in shared/config, not
-// widgets/timeline-canvas/options.ts, since both the People lane (bar fill)
-// and the sidebar's Occupation Domain pills (swatch) need it — a shared
-// value, not D3-rendering-specific.
+// Mirrors design-tokens.md's Occupation Domain Palette. References the CSS
+// custom properties in app/global.css's :root rather than repeating hex;
+// SVG presentation attributes resolve var() too, so D3-rendered and DOM
+// consumers share it. Lives in shared/config because both the People lane
+// and the sidebar pills (swatch) need it.
 export const DOMAIN_COLORS: Record<OccupationDomain, string> = {
   institutions: 'var(--color-domain-institutions)',
   arts: 'var(--color-domain-arts)',
@@ -22,10 +17,8 @@ export const DOMAIN_COLORS: Record<OccupationDomain, string> = {
   sports: 'var(--color-domain-sports)',
 };
 
-// Display labels for the Occupation Domain pills — design-tokens.md's
-// Occupation Domain Palette table names. Picked once at module load from
-// the compiled locale's message catalog (docs/adr/0005) — every consumer
-// reads the same DOMAIN_LABELS export regardless of language, unchanged.
+// Pill labels, resolved once at module load from the locale's message
+// catalog (web/docs/adr/0005).
 export const DOMAIN_LABELS: Record<OccupationDomain, string> = {
   institutions: m['taxonomy.domain.institutions'](),
   arts: m['taxonomy.domain.arts'](),

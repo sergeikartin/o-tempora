@@ -85,21 +85,16 @@
   display: inline-block;
 }
 
-/* The century tab's lifted, bordered chrome (`/grill-with-docs`'s "Survey
-   Lines" design) — deliberately on .labelScale (the counter-scaled inner
-   span), not the outer .label/.centuryLabel: the zoom-button animation
-   applies its group `scaleX` to the whole .axis ancestor, so any border/
-   padding/background living on an un-counter-scaled element would visibly
-   stretch non-uniformly for the ~300-400ms of the gesture before snapping
-   back on commit — exactly the distortion the counter-scale exists to
-   prevent for text glyphs elsewhere (options.ts's zoomAnimationCounterScale*
-   comment). Putting the chrome here instead means it rides along with that
-   same correction for free. Sized to fit inside the existing label row
-   (RULER_LABEL_ROW_HEIGHT) — this budget was deliberately freed up for the
-   Minimap's own century strip and isn't meant to grow back, so this stays a
-   restyle, not a taller row. Static, like every other label — it scrolls
-   off-screen with its tick rather than pinning to the viewport edge;
-   jumping to a period stays the Minimap's job. */
+/* The century tab's lifted, bordered chrome, on .labelScale (the
+   counter-scaled inner span), not the outer .label/.centuryLabel: the zoom
+   animation applies its group `scaleX` to the whole .axis, so a border,
+   padding or background on an un-counter-scaled element would stretch for the
+   ~300-400ms gesture before snapping back (options.ts's
+   zoomAnimationCounterScale* comment). Here it gets the same correction. Sized
+   to fit RULER_LABEL_ROW_HEIGHT, which was freed up for the Minimap's century
+   strip and should not grow. Static like every label: it scrolls off with its
+   tick instead of pinning to the viewport edge; jumping to a period is the
+   Minimap's job. */
 .centuryLabelScale {
   font-weight: 700;
   color: var(--color-text-primary);

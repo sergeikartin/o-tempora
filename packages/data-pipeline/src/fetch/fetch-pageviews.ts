@@ -10,8 +10,8 @@ import type { Lane } from "./lane.js";
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
-// People has no pageviews stage — Score's People path uses Pantheon HPI
-// directly, untouched by ADR 0010.
+// People has no pageviews stage: Score's People path uses Pantheon HPI directly
+// (docs/adr/0010).
 export type PageviewsLane = Exclude<Lane, "people">;
 const PAGEVIEWS_LANES: readonly PageviewsLane[] = ["conflicts", "milestones"];
 
@@ -39,23 +39,17 @@ const LOAD_PAGEVIEWS_ENTRIES: Record<PageviewsLane, () => Promise<PageviewsEntry
   milestones: loadMilestonesPageviewsEntries,
 };
 
-// Reads the conflicts/milestones enriched raw files (now widened with
-// per-language sitelink article URLs — see conflicts-enrichment.ts's/
-// milestones-enrichment.ts's articleUrls fields) and, for every curated
-// Conflicts/Milestones entity, sums trailing-4-year monthly Wikimedia
-// pageviews across the fixed 7-language basket via a new REST client
-// (pageviews-client.ts) — the data-acquisition half of ADR 0010's fameScore
-// blend (packages/data-pipeline/docs/adr/
-// 0010-blend-sitelinks-and-pageviews-for-wars-discoveries-fame-score.md).
-// Ordered in fetch/index.ts after fetchConflictsEnrichment/fetchMilestonesEnrichment,
-// since it depends on their (now-widened) output being on disk — same
-// dependency shape fetchImageAttribution already has on those two stages.
+// Reads the enriched Conflicts/Milestones raw files (with per-language sitelink
+// article URLs, the articleUrls fields) and, for every curated entity, sums
+// trailing-4-year monthly Wikimedia pageviews across the fixed 7-language
+// basket via pageviews-client.ts: the data-acquisition half of the fameScore
+// blend (docs/adr/0010-blend-sitelinks-and-pageviews-for-wars-discoveries-fame-score.md).
+// Runs after fetchConflictsEnrichment/fetchMilestonesEnrichment in
+// fetch/index.ts, like fetchImageAttribution.
 //
-// A lane arg scopes the whole pass to one lane; omitted runs both
-// concurrently (each already paces its own requests internally via
-// batched-pageviews-fetch.ts's BATCH_DELAY_MS, same reasoning
-// fetchImageAttribution's concurrent Promise.all uses) — same behavior as
-// before this stage was lane-scoped.
+// A lane arg scopes the pass to one lane; omitted runs both concurrently, each
+// pacing its own requests (batched-pageviews-fetch.ts's BATCH_DELAY_MS, as
+// fetchImageAttribution's Promise.all does).
 export async function fetchPageviews(lane?: PageviewsLane, qids?: QidFilter): Promise<void> {
   const lanes = lane ? [lane] : PAGEVIEWS_LANES;
   await Promise.all(

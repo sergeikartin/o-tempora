@@ -16,11 +16,8 @@ export interface FameScoreValues {
   milestones: number;
 }
 
-// Post-filter entry counts per lane (all active filters applied, not just
-// the fame-score floor) — computed by widgets/timeline-canvas, the single
-// owner of the filtering pipeline, and threaded back up through app/ to
-// the sidebar for display (mini-FSD's "cross-widget state lifted to app/"
-// convention).
+// Post-filter entry counts per lane (all active filters applied), computed
+// by widgets/timeline-canvas and threaded up through app/ to the sidebar.
 export interface FilteredCounts {
   people: number;
   conflicts: number;
@@ -33,14 +30,12 @@ const DEFAULT_VALUES: FameScoreValues = {
   milestones: FAME_SCORE_BOUNDS.milestones.default,
 };
 
-// Session-only fame-score floor state (no persistence — resets to Mainstream
-// on reload). `level` is the Detail Level switch's own selection, tracked
-// explicitly rather than derived from `values` — there's no remaining
-// production path that can hand-edit `values` away from a level's exact
-// preset (docs/adr/0006's retired "custom/unmatched" switch state), only the
-// dev-console override below, which is debug-only and doesn't need the
-// switch to represent it. Owned here since it's shared by widgets/sidebar
-// (the control) and widgets/timeline-canvas (the filtering itself).
+// Session-only fame-score floor state (resets to Mainstream on reload).
+// `level` is the Detail Level switch's own selection, tracked explicitly
+// rather than derived from `values`: only the debug-only dev-console
+// override can move `values` off a level's preset, and the switch needn't
+// represent that. Shared by widgets/sidebar (the control) and
+// widgets/timeline-canvas (the filtering).
 export function useFameScoreFilters() {
   const [values, setValues] = useState<FameScoreValues>(DEFAULT_VALUES);
   const [level, setLevelState] = useState<DetailLevel>(DEFAULT_DETAIL_LEVEL);

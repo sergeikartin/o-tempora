@@ -45,41 +45,27 @@ interface ConflictsMilestonesLaneProps {
   conflicts: ConflictEntry[];
   milestones: Milestone[];
   xScale: d3.ScaleLinear<number, number>;
-  // Resolves this lane's currently-visible ids to their Row Depth — backed
-  // by a permanent row identity computed once against the full (unfiltered)
-  // datasets (see map-to-items.ts's computeRowAssignment), so a row stays
-  // stable across every filter/zoom change instead of being re-derived from
-  // whatever's currently visible.
+  // Resolves visible ids to their permanent row, computed once against the full
+  // unfiltered datasets (map-to-items.ts's computeRowAssignment), so rows are
+  // stable across filter/zoom changes.
   eventsRowFor: (ids: string[]) => Map<string, number>;
-  // The currently-selected entity's id (DetailPanel is open for it), or null
-  // — see PeopleLane's identical prop for the shared rationale.
+  // The entity DetailPanel is open for, or null (see PeopleLane's prop).
   selectedId?: string | null;
 }
 
-// Conflicts and Milestones share one below-marker row-stacking pass — the
-// "mixed" lane's whole point (grill-with-docs session, 2026-08-11): a
-// Conflict and a Milestone with similar fame/time can land in the same row,
-// not just the same scroll region. That's sound because Conflicts and
-// Milestones already share one 0-100 fame scale (ADR 0010's blended
-// sitelinks+pageviews score), unlike People's separate raw-HPI scale, so
-// comparing fameScore directly across the two lanes is meaningful.
-// assignRows hands back row 0 as the most-famous-heavy row, which already
-// sits at this lane's own top — the edge next to the shared Year Axis above
-// it — so, unlike PeopleLane, no row-index inversion is needed here.
+// Conflicts and Milestones share one below-marker row-stacking pass, so a
+// Conflict and a Milestone of similar fame and time can share a row. That is
+// meaningful because both use one 0-100 fame scale (the blended
+// sitelinks+pageviews score, packages/data-pipeline/docs/adr/0010), unlike
+// People's raw HPI. Row 0, the most famous row, is already at this lane's top,
+// next to the Year Axis, so unlike PeopleLane no row inversion is needed.
 //
-// A range renders as a rounded-cap line, a point (Conflict or Milestone) as
-// a dot — the same Period-vs-PointInTime shape rule every lane uses, and,
-// as of period-shaped Milestones (grill-with-docs session, 2026-08-12), the
-// rule that decides *within* Milestones too: a period-shaped Milestone (e.g.
-// the Black Death) lands in rangeLayout and renders with the exact same
-// rounded-cap-line treatment a Conflict period gets — no distinct visual
-// style for "this range is an era, not a war". Conflicts render in one flat
-// color (CONFLICT_COLOR); Milestones keep their own category palette either
-// way — color, not shape, is what tells a Conflict marker apart from a
-// Milestone one now that they can share a row.
-// memo: see PeopleLane's identical comment — TimelineCanvas re-renders every
-// rAF tick while scrolling, but none of this component's props change from
-// that.
+// A range renders as a rounded-cap line and a point as a dot, the shape rule
+// every lane uses, including for period-shaped Milestones (e.g. the Black
+// Death), which get the same line treatment as a Conflict period. Conflicts
+// use one flat color (CONFLICT_COLOR); Milestones keep their category palette,
+// so color, not shape, tells a Conflict from a Milestone.
+// memo: see PeopleLane; none of this component's props change on scroll ticks.
 const ConflictsMilestonesLaneImpl = forwardRef<
   ZoomAnimationHandle,
   ConflictsMilestonesLaneProps
@@ -88,10 +74,8 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   ref,
 ) {
   const svgRef = useRef<SVGSVGElement>(null);
-  // Caches the zoom tick loop's own selectAll (see applyZoomTransform below)
-  // across an entire gesture's worth of rAF frames — invalidated (set null)
-  // by the join effect below, the only place marks are created/destroyed, so
-  // a stale cache never outlives the DOM nodes it points at.
+  // Caches the zoom tick loop's selectAll across a gesture's frames; the join
+  // effect invalidates it (null).
   const zoomTargetsSelectionRef = useRef<d3.Selection<
     Element,
     unknown,
@@ -105,12 +89,8 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   );
   const totalWidth = xScale.range()[1] ?? 0;
 
-  // Frozen at mount — see PeopleLane's identical initialPeopleHtmlProp
-  // comment for the full rationale, including why the whole `{ __html }`
-  // object (not just the string) has to be frozen: a fresh object literal
-  // in the JSX below on every render makes React re-apply
-  // dangerouslySetInnerHTML on every re-render (a new reference, even with
-  // the same string), stomping every D3 update since mount.
+  // Frozen at mount, whole `{ __html }` object included; see PeopleLane's
+  // initialPeopleHtmlProp.
   const [initialRangesHtmlProp] = useState(() => ({
     __html: renderRangesMarkupHtml(rangeLayout, styles),
   }));
@@ -118,19 +98,15 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     __html: renderPointsMarkupHtml(pointLayout, styles),
   }));
 
-  // useLayoutEffect, not useEffect — see PeopleLane's identical comment: a
-  // deferred passive effect shows one stale frame when xScale changes in
-  // the same commit.
+  // useLayoutEffect so an xScale change lands before paint (see PeopleLane).
   useLayoutEffect(() => {
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
     const durationMs = motionDurationMs('--motion-duration-base');
 
-    // A zoom animation's rAF loop (see the imperative handle below) writes
-    // a transform straight to g.zoomGroup and every label/dot every tick,
-    // without going through React — reset it here, in the same effect that
-    // lands the real geometry for a new xScale, so the commit is atomic
-    // (see PeopleLane's identical comment for why).
+    // The zoom animation's rAF loop writes transforms straight to g.zoomGroup and
+    // every label/dot, bypassing React; reset them in the same effect that lands
+    // the real geometry, so the commit is atomic (see PeopleLane).
     svg
       .select('g.zoomGroup')
       .attr('transform', null)
@@ -142,15 +118,11 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       .attr('transform', null);
     zoomTargetsSelectionRef.current = null;
 
-    // g.ranges's real children are already there before this effect's first
-    // run — rendered by the initialRangesHtml dangerouslySetInnerHTML below,
-    // on both server and client — but carry no bound data yet; attachMarkJoin
-    // seeds it from each node's own data-entity-id before its keyed join, so
-    // it adopts them as `update` instead of tearing them down and fading in
-    // a fresh `enter`. A range's label sits below its marker line (hit rect
-    // grows down from markerY), the opposite of PeopleLane's lifespan lines
-    // — see LineMarkGeometry's own comment for why this varies per mark
-    // kind.
+    // g.ranges's children already exist (rendered by initialRangesHtml) but carry
+    // no bound data; attachMarkJoin seeds it from each node's data-entity-id so
+    // the join adopts them as `update`. A range's label sits below its marker line
+    // (hit rect grows down from markerY), the opposite of PeopleLane; see
+    // LineMarkGeometry.
     const rangeGroups = attachMarkJoin(
       svgRef.current,
       { groupSelector: 'g.ranges', nodeClass: 'd3-range' },
@@ -171,17 +143,13 @@ const ConflictsMilestonesLaneImpl = forwardRef<
         entityType: (d) => d.kind,
       },
     );
-    // data-row is only a test hook (ConflictsMilestonesLane.test.tsx) — not
-    // part of attachMarkJoin's generic contract, so it's set here rather
-    // than threaded through as another geometry accessor.
+    // data-row is a test hook (ConflictsMilestonesLane.test.tsx), not part of
+    // attachMarkJoin's generic contract, so it is set here.
     rangeGroups.attr('data-row', (d) => d.row);
 
-    // g.points's real children are already there before this effect's first
-    // run — rendered by the initialPointsHtml dangerouslySetInnerHTML below,
-    // on both server and client — but carry no bound data yet; seed it from
-    // their own data-entity-id before the keyed join below, so it adopts
-    // them as `update` instead of tearing them down and fading in a fresh
-    // `enter`.
+    // g.points's children already exist (rendered by initialPointsHtml) but carry
+    // no bound data; seed it from data-entity-id so the join adopts them as
+    // `update`.
     const pointNodes = svg
       .select<SVGGElement>('g.points')
       .selectAll<SVGGElement, PointLayout | undefined>('g.d3-point-group');
@@ -194,18 +162,15 @@ const ConflictsMilestonesLaneImpl = forwardRef<
             .append('g')
             .attr('class', 'd3-point-group')
             .style('opacity', 0);
-          // Children built from POINT_MARK_SHAPE, in its declared order —
-          // see mark-shape.ts's own comments and the range mark above for
-          // why each is shaped the way it is.
+          // Children built from POINT_MARK_SHAPE, in its declared order (see
+          // mark-shape.ts).
           const [hit, dotHalo, dot, name] = buildMarkChildren(
             g,
             POINT_MARK_SHAPE,
             styles,
           );
-          // A brand-new mark starts already at its target row — only a
-          // pre-existing mark's row *change* animates (below), via the
-          // shift transition on pointGroups; an entering mark should just
-          // fade in, not also slide in from row 0.
+          // A new mark starts at its target row: only an existing mark's row change
+          // animates (shift transition on pointGroups); an entering mark just fades in.
           hit
             .attr('y', (d) => pointHitY(d.markerY, d.lines.length))
             .attr('height', (d) => pointHitHeight(d.lines.length));
@@ -227,10 +192,8 @@ const ConflictsMilestonesLaneImpl = forwardRef<
 
     pointGroups.attr('data-row', (d) => d.row);
 
-    // x/fill/data-* attrs apply instantly — only a row change (the y-driven
-    // attrs below) animates. An entering mark already has these set (above),
-    // so re-setting them here is a no-op for it and a live update for one
-    // that was already on screen.
+    // x/fill/data-* attrs apply instantly; only a row change (the y-driven attrs
+    // below) animates. Re-setting them on an entering mark is a no-op.
     pointGroups
       .select<SVGRectElement>('.d3-hit')
       .attr('x', (d) => d.hitX1 - HIT_AREA_PADDING_PX)
@@ -242,12 +205,10 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       .attr('y', (d) => pointHitY(d.markerY, d.lines.length))
       .attr('height', (d) => pointHitHeight(d.lines.length));
 
-    // The halo circle only needs cx/cy kept in sync with the real dot
-    // (its r is fixed at creation). It's pointer-events: none
-    // (ConflictsMilestonesLane.module.css) so carrying the same
-    // data-entity-id as the real dot never makes them a click/hover target
-    // — it's only there so the selection effect below can find them by the
-    // same selector pattern every other mark uses.
+    // The halo circle only needs cx/cy synced with the real dot (r is fixed at
+    // creation). It is pointer-events: none (ConflictsMilestonesLane.module.css),
+    // so sharing the dot's data-entity-id doesn't make it a target; it exists so
+    // the selection effect finds it by the usual selector.
     pointGroups
       .select<SVGCircleElement>('.d3-dot-halo')
       .attr('cx', (d) => d.x)
@@ -269,8 +230,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
       .attr('x', (d) => d.x + POINT_LABEL_OFFSET_PX)
-      // Same delegated-click wiring as the dot above, so the label is an
-      // equally valid click target for opening the detail drawer.
+      // Same delegated-click wiring as the dot, so the label is also a click target.
       .attr('data-entity-id', (d) => d.id)
       .attr('data-entity-type', (d) => d.kind)
       .each(function renderLines(d) {
@@ -291,15 +251,10 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       .attr('y', (d) => pointLabelY(d.markerY, d.lines.length));
   }, [rangeLayout, pointLayout]);
 
-  // A plain DOM class toggle, decoupled from the joins above (their
-  // enter/update/exit selections aren't touched) — see PeopleLane's
-  // identical effect for the shared rationale. The halo line plus the
-  // real .d3-line (a range's selection halo and its own
-  // grow-to-hover-size), the halo circle plus the real .d3-dot (same,
-  // for a point), and .d3-range-name/.d3-point-name (either mark's label)
-  // get different classes — see ConflictsMilestonesLane.module.css's
-  // .searchHighlight/.searchHighlightLabel for why the outline can't just
-  // apply to all three.
+  // A DOM class toggle independent of the joins (see PeopleLane). The halo line
+  // + real .d3-line (range), halo circle + real .d3-dot (point), and
+  // .d3-range-name/.d3-point-name (labels) get different classes; see
+  // ConflictsMilestonesLane.module.css's .searchHighlight/.searchHighlightLabel.
   useLayoutEffect(() => {
     if (!svgRef.current) return;
     ensureHaloChild(
@@ -318,9 +273,8 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       selectedId,
       ['cx', 'cy'],
     );
-    // The classes always exist in the compiled CSS module — the indexed
-    // access only reads as possibly-undefined because of
-    // noUncheckedIndexedAccess, not because they might really be missing.
+    // The classes exist in the compiled CSS module; indexed access reads as
+    // possibly undefined only because of noUncheckedIndexedAccess.
     toggleSelectionHighlight(
       svgRef.current,
       '.d3-line-halo[data-entity-id], .d3-line[data-entity-id], .d3-dot-halo[data-entity-id], .d3-dot[data-entity-id]',
@@ -331,12 +285,8 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     );
   }, [selectedId]);
 
-  // TimelineCanvas's single rAF driver calls this every animation-frame
-  // tick, once per lane/axis — see options.ts's ZoomAnimationTransform
-  // comment for the mechanism. The marks' data is already bound to their DOM
-  // nodes from the joins above, so re-selecting picks it back up for free —
-  // but a fresh selectAll DOM query every tick is still wasted work across a
-  // gesture's worth of frames, so it's queried once and cached in
+  // Called every frame by TimelineCanvas's single rAF driver (see options.ts's
+  // ZoomAnimationTransform). The selectAll is queried once and cached in
   // zoomTargetsSelectionRef until the join effect invalidates it.
   useImperativeHandle(
     ref,

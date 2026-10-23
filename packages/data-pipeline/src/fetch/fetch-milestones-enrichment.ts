@@ -10,20 +10,15 @@ import { PAGEVIEWS_LANGUAGES, articleVar, isArticleUrlsRecord, type PageviewsLan
 
 const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
 
-// Milestones taxonomy-expansion merge: the curated file dropped its old
-// hand-typed year/dateProperty/source/tagline fields — id/name/category are
-// curator-authored, everything else (including the date, via
-// DATE_PROPERTIES' priority-ordered COALESCE in
-// queries/milestones-enrichment.ts) is live-fetched, matching how Conflicts
-// already sources its dates (see conflicts-curated.raw.json's
-// meta.description).
+// The curated file carries id/name/category (curator-authored); everything
+// else, including the date via DATE_PROPERTIES' priority-ordered COALESCE in
+// queries/milestones-enrichment.ts, is live-fetched, as Conflicts does (see
+// conflicts-curated.raw.json's meta.description).
 interface CuratedMilestone {
   id: string;
-  // Curator-typed, but no longer read by the pipeline — name is now sourced
-  // from Wikidata's rdfs:label (both en and ru) via the enrichment pass
-  // below, the same symmetric mechanism tagline already used. Kept in the
-  // curated file and this shape rather than deleted, same precedent as
-  // Conflicts' own unused curated `name`.
+  // Curator-typed but unread: name comes from Wikidata's rdfs:label (en and ru)
+  // via the enrichment pass below, like tagline. Kept in the curated file and
+  // this shape, as with Conflicts' unused curated `name`.
   name: string;
   category: MilestoneCategory;
   // Replaces the Wikidata label (en/ru) for entries whose own item is named
@@ -58,66 +53,57 @@ interface CuratedMilestonesFile {
 
 export interface EnrichedMilestone {
   id: string;
-  // Wikidata's rdfs:label(en) — absent only when the QID itself couldn't be
-  // resolved; Output drops the row when this is missing (see
-  // write-datasets.ts's buildMilestones).
+  // Wikidata's rdfs:label(en); absent only when the QID couldn't be resolved,
+  // and Output then drops the row (write-datasets.ts's buildMilestones).
   name?: string;
-  // Wikidata's rdfs:label(ru) — absent whenever no Russian label resolves.
-  // Output falls back to `name` (English) per field, at output time, when
-  // building the Russian dataset file.
+  // Wikidata's rdfs:label(ru); absent when none resolves. Output falls back to
+  // `name` (English) per field when building the Russian file.
   nameRu?: string;
   category: MilestoneCategory;
   // Absent means DATE_PROPERTIES' COALESCE (queries/milestones-enrichment.ts)
-  // found no claim on any of the 10 candidate properties for this QID —
-  // Output drops the row (write-datasets.ts's validateEventRow), same
-  // "no fallback, drop instead" behavior as a missing tagline below.
+  // found no claim on any of the 10 candidate properties; Output drops the row
+  // (write-datasets.ts's validateEventRow), as for a missing tagline.
   year?: number;
-  // Wikidata's own claim precision decides whether month is present (see
-  // wikidata-date.ts's MONTH_OR_FINER_PRECISION) — never defaulted to
-  // January to paper over an unknown month, same as Conflicts.
+  // Wikidata's claim precision decides whether month is present (see
+  // wikidata-date.ts's MONTH_OR_FINER_PRECISION); never defaulted to January,
+  // as for Conflicts.
   month?: number;
-  // Absent endYear means this row resolved no P582 claim (a point-in-time
-  // event, or a start with no recorded end) — Output builds a point-shaped
-  // Milestone rather than a period-shaped one for it, same shape rule
-  // buildConflicts already applies to Conflict/ConflictEvent.
+  // Absent endYear means no P582 claim resolved (a point-in-time event, or a
+  // start with no recorded end); Output builds a point-shaped Milestone, the
+  // same shape rule as buildConflicts.
   endYear?: number;
   endMonth?: number;
   // Set only by a curated `date` override marked approximate.
   approximateDate?: true;
-  // Absent means the enrichment pass couldn't resolve an English tagline
-  // for this QID — Output drops the row (write-datasets.ts's
-  // validateMilestoneRow), no fallback to the curated file's old text, the
-  // same "no fallback, drop instead" behavior Conflicts/People already have.
+  // Absent means enrichment couldn't resolve an English tagline for this QID;
+  // Output drops the row (write-datasets.ts's validateMilestoneRow), as for
+  // Conflicts and People.
   tagline?: string;
-  // Russian schema:description binding, same fallback-at-output-time
-  // contract as nameRu above.
+  // Russian schema:description; same fallback contract as nameRu.
   taglineRu?: string;
-  // Absent means the enrichment pass couldn't resolve this QID (e.g. a
-  // stale/redirected id) — Output drops the row rather than guessing (see
-  // write-datasets.ts's buildMilestones).
+  // Absent means enrichment couldn't resolve this QID (e.g. a stale or
+  // redirected id); Output drops the row (write-datasets.ts's buildMilestones).
   sitelinks?: number;
   wikipediaUrl?: string;
-  // Per pageviews-basket-language Wikipedia article URL (raw, verbatim —
-  // same "store the URI, let the reader extract a title" convention `image`
-  // uses), keyed by language code. Absent per-language keys mean this QID
-  // has no sitelink in that language — fetch-pageviews.ts treats that as 0
-  // pageviews for the language, no redirect-resolution (ADR 0010).
+  // Wikipedia article URL per pageviews-basket language, stored verbatim (like
+  // `image`; the reader extracts the title), keyed by language code. A missing
+  // key means no sitelink in that language: fetch-pageviews.ts counts 0
+  // pageviews, with no redirect resolution (docs/adr/0010).
   articleUrls: Partial<Record<PageviewsLanguage, string>>;
   // Sitelinks and article URLs of the curated entry's `fameSource` item;
   // absent for entries scored on their own.
   fameSitelinks?: number;
   fameArticleUrls?: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
-  // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim — absent
-  // means no P18 claim (dynamic-tooltips spec §4.1/§4.3).
+  // Raw Wikidata P18 Commons Special:FilePath URI, stored verbatim; absent means
+  // no P18 claim.
   image?: string;
 }
 
-// Validated at the boundary before Fetch reads it (docs/code-conventions.md's
-// "Validate unknown external input... at system boundaries") — the curated
-// file is hand-authored, not machine-generated, so a typo'd `category` value
-// is a real risk a bare `JSON.parse(...) as CuratedMilestonesFile` cast would
-// silently let through, only to break rendering downstream in MilestonesLane.
+// Validated at the boundary before Fetch reads it (docs/code-conventions.md):
+// the curated file is hand-authored, so a typo'd `category` would pass a bare
+// `JSON.parse(...) as CuratedMilestonesFile` cast and break rendering
+// downstream.
 function isCuratedMilestone(value: unknown): value is CuratedMilestone {
   if (typeof value !== "object" || value === null) return false;
   const candidate = value as Record<string, unknown>;
@@ -175,12 +161,10 @@ function validateCuratedMilestonesFile(data: unknown): CuratedMilestonesFile {
   return { milestones };
 }
 
-// Same boundary-validation reasoning as validateCuratedMilestonesFile, applied
-// where Transform (transform/index.ts) and the region-tagging maintenance
-// script (list-unmapped-countries.ts) read this file back in — it's Fetch's
-// own output, but still an external file on disk, same as every other raw
-// snapshot this pipeline validates on read (validateSparqlResultShape,
-// parsePantheonCsv).
+// Same boundary validation as validateCuratedMilestonesFile, for where
+// Transform (transform/index.ts) and list-unmapped-countries.ts read this file
+// back: it is Fetch's own output, but still an external file on disk, like every
+// raw snapshot validated on read (validateSparqlResultShape, parsePantheonCsv).
 function isEnrichedMilestone(value: unknown): value is EnrichedMilestone {
   if (typeof value !== "object" || value === null) return false;
   const candidate = value as Record<string, unknown>;
@@ -239,13 +223,9 @@ interface EnrichmentFields {
 
 // Reads the checked-in curated list (data/raw/milestones-curated.raw.json) and
 // backfills sitelinks/wikipediaUrl/country/image/name/tagline/date via a
-// batched per-QID SPARQL pass (same VALUES-clause pattern as
-// fetch-reigns.ts/fetch-taglines.ts) — tagline, name, and date are all
-// live-fetched here, not read from the curated file, matching how Conflicts
-// already sources them (tagline/description split, and no curated year/
-// dateProperty/source field to begin with as of the taxonomy-expansion
-// merge; name follows the same per-language rdfs:label treatment
-// Conflicts uses).
+// batched per-QID SPARQL pass (VALUES-clause pattern as in fetch-taglines.ts).
+// Tagline, name and date are live-fetched, not read from the curated file, as
+// for Conflicts.
 export async function fetchMilestonesEnrichment(qids?: QidFilter): Promise<void> {
   const curatedPath = path.join(RAW_DIR, "milestones-curated.raw.json");
   const curated = validateCuratedMilestonesFile(JSON.parse(await readFile(curatedPath, "utf8")));
@@ -275,10 +255,8 @@ export async function fetchMilestonesEnrichment(qids?: QidFilter): Promise<void>
       const url = row[articleVar(lang)]?.value;
       if (url && entry.articleUrls[lang] === undefined) entry.articleUrls[lang] = url;
     }
-    // wikipediaUrl is the English-basket article, same field the old
-    // single-language ?article binding populated — kept as its own field
-    // (rather than always reading articleUrls.en downstream) since every
-    // other consumer of EnrichedMilestone already expects wikipediaUrl.
+    // wikipediaUrl is the English-basket article, kept as its own field because
+    // every consumer of EnrichedMilestone reads it rather than articleUrls.en.
     if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
     if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
     if (entry.name === undefined && row.nameEn?.value) entry.name = row.nameEn.value;

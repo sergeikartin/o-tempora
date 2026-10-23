@@ -47,8 +47,7 @@ export function buildAttributionDisplayString(info: CommonsImageInfo): string | 
 // id (not the Commons filename, which multiple entities could in principle
 // share). Entities with no license-required attribution — the common,
 // public-domain case for this dataset — are simply absent from the
-// returned map, same "absent means not applicable" convention `image`/
-// `imageAttribution` use throughout (dynamic-tooltips spec §4.1).
+// returned map: "absent means not applicable", as for `image`/`imageAttribution`.
 export async function batchedCommonsImageAttributionFetch(
   entries: Array<{ id: string; imageUri: string }>,
 ): Promise<Map<string, string>> {

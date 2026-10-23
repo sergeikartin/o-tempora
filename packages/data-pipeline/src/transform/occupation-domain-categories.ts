@@ -1,14 +1,10 @@
 import type { OccupationDomain } from "@o-tempora/shared-types";
 
-// Pantheon `occupation` value (all-caps, as shipped in the CSV) -> app
-// OccupationDomain. Mirrors Pantheon's own "Working in" filter grouping on
-// pantheon.world/explore/rankings — verified to cover all 101 distinct
-// non-empty occupation values in the 2025 Person Dataset with no gaps
-// (.scratch/alt-data-sources/issues/12-occupation-taxonomy-mapping.md).
-// Unlike the Wikidata-QID occupation table this replaces for People, this
-// is a closed, fully-enumerated set (Pantheon has no long tail of
-// unmapped values the way Wikidata occupation claims do) — no
-// list-unmapped-* maintenance script needed.
+// Pantheon `occupation` value (all-caps, as in the CSV) -> OccupationDomain.
+// Mirrors Pantheon's "Working in" filter grouping on
+// pantheon.world/explore/rankings and covers all 101 distinct non-empty values
+// in the 2025 Person Dataset. A closed, fully enumerated set, so no
+// list-unmapped-* script is needed.
 export const OCCUPATION_DOMAIN_CATEGORIES: Record<string, OccupationDomain> = {
   // sports
   "SOCCER PLAYER": "sports",

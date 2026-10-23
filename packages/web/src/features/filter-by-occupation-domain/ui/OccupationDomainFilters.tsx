@@ -10,10 +10,9 @@ interface OccupationDomainFiltersProps {
   onToggleDomain: (domain: OccupationDomain) => void;
 }
 
-// The sidebar's People section — Occupation Domain pills doubling as the
-// filter (grill-with-docs session 2026-08-12): clicking a pill toggles that
-// domain in/out of the active set. Multi-select OR; no domains active means
-// unfiltered — see CONTEXT.md's Occupation Domain entry.
+// The sidebar's People section: Occupation Domain pills that toggle the
+// domain in/out of the active set. Multi-select OR; none active means
+// unfiltered (CONTEXT.md's Occupation Domain).
 export function OccupationDomainFilters({
   selectedDomains,
   onToggleDomain,

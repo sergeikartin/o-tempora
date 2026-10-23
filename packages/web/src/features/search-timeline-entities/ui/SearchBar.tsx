@@ -18,13 +18,9 @@ const ENTITY_TYPE_LABEL: Record<EntityType, () => string> = {
   milestone: m.searchEntityTypeMilestone,
 };
 
-// New input pattern for this app (grill-with-docs session, resolving
-// .scratch/pre-launch-readiness/issues/15-search-bar.md) — a live typeahead
-// over the same filtered entity pool TimelineCanvas renders (see
-// useTimelineSearch). Picking a result clears the query (CONTEXT.md's
-// Search entry: "Search... nothing more" — it's a jump-to, not a persisted
-// filter) rather than leaving stale text implying the view is still
-// narrowed by it.
+// Live typeahead over the same filtered entity pool TimelineCanvas renders
+// (see useTimelineSearch). Picking a result clears the query: Search is a
+// jump-to, not a persisted filter (CONTEXT.md's Search).
 export function SearchBar({
   query,
   onQueryChange,
@@ -89,9 +85,7 @@ export function SearchBar({
         autoComplete="off"
       />
       {isOpen && (
-        // div, not ul/li: role="listbox"/"option" on semantic list elements
-        // trips this repo's a11y lint (non-interactive element, interactive
-        // role) — a div carries no implicit role of its own to conflict with.
+        // div, not ul/li: listbox/option roles on list elements trip the a11y lint.
         <div
           id={listId}
           className={styles.dropdown}
@@ -110,10 +104,8 @@ export function SearchBar({
                 id={`${listId}-${index}`}
                 role="option"
                 aria-selected={isActive}
-                // Not in tab order — the input keeps real keyboard focus the
-                // whole time (aria-activedescendant above points at whichever
-                // option is active), same combobox-listbox pattern as e.g. a
-                // native <select>'s options never taking focus themselves.
+                // Not in tab order: the input keeps focus and points at the
+                // active option via aria-activedescendant.
                 tabIndex={-1}
               >
                 <button

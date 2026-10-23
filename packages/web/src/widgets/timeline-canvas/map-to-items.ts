@@ -15,11 +15,9 @@ import {
   wrapMarkLabelLines,
 } from './options';
 
-// The five filterBy*/filterConflictsByFilterValues functions moved to
-// shared/lib/entity/ so features/search-timeline-entities (an FSD
-// features/ module, which can't import from a widgets/ module) can reuse the
-// exact same filtering pipeline as this widget — re-exported here so every
-// existing import site (TimelineCanvas.tsx) keeps working unchanged.
+// The filterBy*/filterConflictsByFilterValues functions live in
+// shared/lib/entity/ so features/search-timeline-entities (which can't import
+// from widgets/) uses the same filtering pipeline; re-exported here.
 export {
   filterByFameScore,
   filterByMilestoneCategoryGroup,
@@ -44,9 +42,9 @@ export interface PixelInterval {
   end: number;
 }
 
-// A zero- or negative-width range (e.g. a missing end) can't render as a
-// visible bar — widen it to a minimum one-year span. Rendering-only: not a
-// claim the underlying date data actually spans a year.
+// A zero- or negative-width range (e.g. a missing end) can't render as a bar,
+// so it is widened to a minimum one-year span. Rendering only; not a claim the
+// data spans a year.
 function ensureMinimumRangeWidthYears(
   startYear: number,
   endYear: number,
@@ -84,12 +82,11 @@ export function mapPeople(people: Person[]): PersonItem[] {
   });
 }
 
-// Row-stacking works in screen pixels, not years — a person's name label is
-// left-aligned above the start of their lifespan line, so it can extend
-// well past the line's own pixel span for a short-lived person with a long
-// name, especially at low zoom. Shared by PeopleLane (its live viewport
-// scale) and the Minimap minimap (a fixed Reference Scale, ADR
-// 0004) so both pack rows with the same rule.
+// Row-stacking works in screen pixels, not years: a person's label is
+// left-aligned above their line start, so for a short-lived person with a long
+// name it can extend well past the line, especially at low zoom. Shared by
+// PeopleLane (live scale) and the Minimap (Reference Scale, web/docs/adr/0004)
+// so both pack rows the same way.
 export function personPixelInterval(
   item: PersonItem,
   xScale: d3.ScaleLinear<number, number>,
@@ -151,13 +148,11 @@ export interface ConflictItem {
   fameScore: number;
 }
 
-// conflicts.json mixes Conflict (a Period, `period` field) and
-// ConflictEvent (a PointInTime, `at` field) — structurally disjoint, so
-// this narrows with `"period" in entry` rather than a `kind` discriminant
-// (see ConflictEntry in shared-types). Every entry maps 1:1 into one
-// unified ConflictItem shape either way; conflicts.json is already
-// Conflicts-lane-only (data-pipeline's EVENT_TYPES filter), so no category
-// filtering happens here.
+// conflicts.json mixes Conflict (a Period, `period` field) and ConflictEvent
+// (a PointInTime, `at` field), structurally disjoint, so this narrows with
+// `"period" in entry` instead of a `kind` discriminant (see ConflictEntry in
+// shared-types). Every entry maps 1:1 to one ConflictItem shape; the data is
+// already Conflicts-only, so no category filtering happens here.
 export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
   return conflicts.map((entry) => {
     const isConflict = 'period' in entry;
@@ -183,11 +178,9 @@ export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
   });
 }
 
-// Shared by conflictPixelInterval and milestonePixelInterval's own range
-// branch below — a range's (Conflict's or a period-shaped Milestone's)
-// pixel extent is the same left-aligned single-line-label calculation either
-// way, per the "identical bar treatment" call (grill-with-docs session,
-// 2026-08-12).
+// Shared by conflictPixelInterval and milestonePixelInterval's range branch:
+// a Conflict's or period-shaped Milestone's pixel extent is the same
+// left-aligned single-line-label calculation.
 function rangePixelInterval(
   item: { name: string; startYear: number; endYear: number },
   xScale: d3.ScaleLinear<number, number>,
@@ -211,9 +204,8 @@ function pointPixelInterval(name: string, x: number): PixelInterval {
   };
 }
 
-// Shared by ConflictsMilestonesLane (its live viewport scale) and the
-// Minimap minimap (a fixed Reference Scale, ADR 0004) so both pack
-// rows with the same rule.
+// Shared by ConflictsMilestonesLane (live scale) and the Minimap (Reference
+// Scale, web/docs/adr/0004) so both pack rows the same way.
 export function conflictPixelInterval(
   item: ConflictItem,
   xScale: d3.ScaleLinear<number, number>,
@@ -234,9 +226,8 @@ export interface MilestoneItem {
   fameScore: number;
 }
 
-// milestones.json mixes point- and period-shaped Milestone rows — same
-// "period" in entry narrowing mapConflicts uses (Milestone is now a
-// Conflict/ConflictEvent-style union, see shared-types).
+// milestones.json mixes point- and period-shaped Milestones, narrowed with
+// `"period" in entry` like mapConflicts.
 export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
   return milestones.map((milestone) => {
     const isPeriodShaped = 'period' in milestone;
@@ -262,9 +253,8 @@ export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
   });
 }
 
-// Shared by ConflictsMilestonesLane (its live viewport scale) and the
-// Minimap minimap (a fixed Reference Scale, ADR 0004) so both pack
-// rows with the same rule.
+// Shared by ConflictsMilestonesLane (live scale) and the Minimap (Reference
+// Scale, web/docs/adr/0004) so both pack rows the same way.
 export function milestonePixelInterval(
   item: MilestoneItem,
   xScale: d3.ScaleLinear<number, number>,
@@ -307,11 +297,10 @@ export interface RangeAndPointLayout {
 }
 
 /**
- * Combined screen-space layout for ConflictsMilestonesLane's two D3 joins —
+ * Combined screen-space layout for ConflictsMilestonesLane's two D3 joins:
  * ranges (Conflict periods + period-shaped Milestones) and points (Conflict
- * events + point-shaped Milestones) share one below-marker row-stacking pass
- * (see ConflictsMilestonesLane.tsx's own comment for why), so both come out
- * of a single function rather than two independently-packed ones.
+ * events + point-shaped Milestones) share one row-stacking pass (see
+ * ConflictsMilestonesLane.tsx), so one function produces both.
  */
 export function buildRangeAndPointLayout(
   conflicts: ConflictEntry[],
@@ -327,10 +316,9 @@ export function buildRangeAndPointLayout(
     ...milestoneItems.map((item) => item.id),
   ]);
 
-  // Row height is dynamic — the tallest label actually assigned to a row
-  // (a period's label wraps onto up to two lines; point labels sit beside
-  // their dot) sets that row's pitch, so a two-line label never bleeds into
-  // the row below it.
+  // Row height is dynamic: the tallest label in a row (a period's label wraps to
+  // up to two lines; point labels sit beside their dot) sets its pitch, so a
+  // two-line label never bleeds into the next row.
   const maxLinesByRow: number[] = [];
   for (const item of [...conflictItems, ...milestoneItems]) {
     const row = rowOfId.get(item.id) ?? 0;
@@ -437,14 +425,11 @@ export function buildRangeAndPointLayout(
   return { rangeLayout, pointLayout, totalHeight };
 }
 
-// Narrows a static row map (each entry's permanent TimelineEntry.row,
-// precomputed once by data-pipeline at Output time — see
-// docs/adr/0005-row-assignment-moves-to-the-pipeline.md) down to just the
-// currently-visible `ids`, closing gaps left by whatever got filtered out.
-// This re-indexes to consecutive integers starting at 0 in the *same
-// relative order* as the static rows, so it never reorders two
-// simultaneously-visible items relative to each other — it only ever shifts
-// the whole set uniformly as gaps open/close.
+// Narrows a static row map (each entry's permanent TimelineEntry.row, computed
+// by the pipeline, docs/adr/0005-row-assignment-moves-to-the-pipeline.md) to
+// the visible `ids`, closing gaps. Rows are re-indexed from 0 in the same
+// relative order, so two visible items never swap; the set only shifts
+// uniformly as gaps open and close.
 export function compactRows(
   ids: string[],
   staticRowOf: Map<string, number>,
@@ -468,18 +453,13 @@ export interface RowAssignment {
   eventsRowFor: (ids: string[]) => Map<string, number>;
 }
 
-// The one seam a consumer (a lane, the Minimap) needs for Row Depth: give it
-// an id set it's currently rendering, get back the row each one occupies.
-// Hides that this is actually two steps — each entry's static row, read
-// straight off its pipeline-precomputed TimelineEntry.row (docs/adr/0005-
-// row-assignment-moves-to-the-pipeline.md), then compacted down to the ids
-// in play (compactRows, above) — so no caller can reintroduce the bug of
-// narrowing a filtered set some other way (see ADR 0007's addendum). Safe to
-// recompute on every render regardless of whether `people`/`conflicts`/
-// `milestones` grow mid-session (Payload Tier's Tier 1 merge,
-// docs/adr/0004-payload-tier-split-defers-low-fame-data.md) — it's a plain
-// lookup, not a packing pass, so an already-visible entry's row can never
-// shift underneath it.
+// The one seam a lane or the Minimap needs for Row Depth: give it the ids
+// being rendered, get each one's row. It hides the two steps (read each
+// entry's pipeline-computed TimelineEntry.row, then compactRows) so no caller
+// can narrow a filtered set another way (docs/adr/0005's addendum). A plain
+// lookup, not a packing pass, so it is safe to recompute every render, even as
+// the datasets grow when deeper Detail Levels load: an already-visible entry's
+// row can't shift.
 export function computeRowAssignment(
   people: Person[],
   conflicts: ConflictEntry[],

@@ -1,10 +1,9 @@
 import { fetchArticlePageviews } from "./pageviews-client.js";
 import { PAGEVIEWS_LANGUAGES, type PageviewsLanguage } from "./pageviews-languages.js";
 
-// Same batch size/delay convention batched-sparql-fetch.ts and
-// batched-commons-image-attribution-fetch.ts use — here it paces individual
-// per-article REST calls (no VALUES-clause batching available; this is a
-// REST API, not SPARQL) rather than titles= batches.
+// Same batch size/delay convention as batched-sparql-fetch.ts and
+// batched-commons-image-attribution-fetch.ts, here pacing per-article REST
+// calls (no VALUES-style batching).
 const BATCH_SIZE = 50;
 const BATCH_DELAY_MS = 500;
 
@@ -12,12 +11,10 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// A resolved sitelink article URL (from conflicts-enrichment.ts's/
-// milestones-enrichment.ts's widened per-language OPTIONAL bindings) is a full
-// `https://{lang}.wikipedia.org/wiki/<Title>` URI — the pageviews endpoint
-// instead wants a bare, underscore-joined title, so this recovers it from
-// the URI's last path segment (same approach commons-client.ts's
-// extractCommonsFileTitle uses for P18 image URIs).
+// A sitelink article URL (from the enrichment queries' per-language OPTIONAL
+// bindings) is `https://{lang}.wikipedia.org/wiki/<Title>`, while the pageviews
+// endpoint wants a bare underscore-joined title; this takes the URI's last path
+// segment (as commons-client.ts's extractCommonsFileTitle does for P18 URIs).
 export function extractWikipediaArticleTitle(articleUrl: string): string | undefined {
   let pathname: string;
   try {
@@ -34,10 +31,9 @@ export interface PageviewsWindow {
   endYYYYMM01: string;
 }
 
-// The 4 most recently *completed* calendar years as of `now` — excludes the
-// current partial year, matching ADR 0010's benchmark-derivation pilot
-// window. Not configurable (ADR 0010's "Consequences": a fixed pipeline
-// constant, requires a code change + re-run to alter).
+// The 4 most recently completed calendar years as of `now`, excluding the
+// current partial year (docs/adr/0010's benchmark window). A fixed pipeline
+// constant: changing it needs a code change and a re-run.
 export function trailingFourYearWindow(now: Date = new Date()): PageviewsWindow {
   const lastCompletedYear = now.getUTCFullYear() - 1;
   const startYear = lastCompletedYear - 3;

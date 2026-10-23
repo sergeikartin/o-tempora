@@ -69,9 +69,7 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
 ): d3.Selection<SVGGElement, Datum, SVGGElement, unknown> {
   const svg = d3.select(svgEl);
   const durationMs = motionDurationMs('--motion-duration-base');
-  // Tuple-indexed (not .map()'d) so noUncheckedIndexedAccess doesn't treat
-  // any of these as possibly-undefined — MarkShape's fixed 4-tuple length
-  // guarantees all four exist.
+  // Tuple-indexed so noUncheckedIndexedAccess doesn't flag the 4-tuple's items.
   const hitClass = `.${shape[0].markerClass}`;
   const haloClass = `.${shape[1].markerClass}`;
   const lineClass = `.${shape[2].markerClass}`;
@@ -89,10 +87,8 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
           .append('g')
           .attr('class', nodeClass)
           .style('opacity', 0);
-        // A brand-new mark starts already at its target row — only a
-        // pre-existing mark's row *change* animates (below, via the update
-        // selection's transition); an entering mark should just fade in, not
-        // also slide in from row 0.
+        // A new mark starts at its target row: only an existing mark's row change
+        // animates (update selection's transition); an entering mark just fades in.
         const [hit, halo, line, name] = buildMarkChildren(g, shape, styles);
         hit.attr('y', geometry.hitY).attr('height', geometry.hitHeight);
         halo.attr('y1', geometry.centerY).attr('y2', geometry.centerY);
@@ -101,19 +97,16 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
         g.transition().duration(durationMs).style('opacity', 1);
         return g;
       },
-      // A datum that re-enters before its own exit transition finished (e.g.
-      // a filter toggled back within motionDurationMs) rejoins here as
-      // `update`, not `enter` — D3 still finds its DOM node, mid-fade,
-      // still carrying that exit's pending opacity-to-0-then-remove
-      // transition (unnamed, same as below). interrupt() cancels it before
-      // it can finish and remove a mark this update is trying to keep;
-      // resetting opacity/pointer-events (a no-op for a node that was never
-      // exiting) undoes whatever it had already applied.
+      // A datum that re-enters before its exit transition finished (e.g. a filter
+      // toggled back within motionDurationMs) rejoins as `update` with its DOM node
+      // mid-fade and the pending unnamed opacity-to-0-then-remove transition.
+      // interrupt() cancels it so it can't remove a mark being kept, and resetting
+      // opacity/pointer-events undoes what it applied (a no-op for a node that
+      // wasn't exiting).
       (update) =>
         update.interrupt().style('opacity', 1).style('pointer-events', null),
       (exit) =>
-        // pointer-events: none first, so a mark that's mid-fade-out can't
-        // still be hovered/clicked.
+        // pointer-events: none first, so a fading-out mark can't be hovered or clicked.
         exit
           .style('pointer-events', 'none')
           .transition()
@@ -122,26 +115,21 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
           .remove(),
     );
 
-  // A row change moves every one of a mark's children by the same vertical
-  // amount — captured here, before any attr below overwrites it, as each
-  // mark's currently-rendered center-y. Nothing on this path is ever
-  // attribute-transitioned (see below), so a mark's line always carries its
-  // exact last-committed y1, never a mid-tween snapshot. An entering mark's
-  // line was already created at its target y (the enter branch above), so
-  // its "previous" position already equals its new one.
+  // A row change moves all of a mark's children by the same vertical amount;
+  // capture each mark's currently rendered center-y before any attr below
+  // overwrites it. Nothing here is attribute-transitioned, so a line always
+  // carries its last committed y1, never a mid-tween value. An entering mark was
+  // created at its target y, so its previous position equals its new one.
   const previousCenterYById = new Map<string, number>();
   groups.each(function (d) {
     const line = this.querySelector<SVGLineElement>(lineClass);
     if (line) previousCenterYById.set(d.id, Number(line.getAttribute('y1')));
   });
 
-  // x/y/fill/data-* attrs all apply instantly now — the row-shift animation
-  // moves below to a single group-level transform (see previousCenterYById
-  // above) instead of five separate D3 timers each transitioning one
-  // child's y/y1/y2/height, which is layout-costly work spread across every
-  // visible mark whenever a filter change reshuffles rows. An entering
-  // mark already has these set (above), so re-setting them here is a no-op
-  // for it and a live update for one that was already on screen.
+  // x/y/fill/data-* attrs apply instantly; the row-shift animation is one
+  // group-level transform (see previousCenterYById) rather than five D3 timers
+  // per mark, which is layout-costly across every visible mark when a filter
+  // reshuffles rows. Re-setting them on an entering mark is a no-op.
   groups
     .select<SVGRectElement>(hitClass)
     .attr('x', (d) => geometry.hitX1(d) - HIT_AREA_PADDING_PX)
@@ -151,12 +139,10 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     .attr('y', geometry.hitY)
     .attr('height', geometry.hitHeight);
 
-  // The halo line only needs x1/x2 kept in sync with the real line
-  // (its y and stroke-width are fixed at creation). It's
-  // pointer-events: none so carrying the same data-entity-id as the real
-  // line never makes them a click/hover target — it's only there so
-  // toggleSelectionHighlight can find them by the same selector pattern
-  // every other mark uses.
+  // The halo line only needs x1/x2 synced with the real line (y and
+  // stroke-width are fixed at creation). It is pointer-events: none, so sharing
+  // the real line's data-entity-id doesn't make it a target; it exists so
+  // toggleSelectionHighlight finds it by the usual selector.
   groups
     .select<SVGLineElement>(haloClass)
     .attr('x1', (d) => d.x1)
@@ -170,8 +156,7 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     .attr('x1', (d) => d.x1)
     .attr('x2', (d) => d.x2)
     .attr('stroke', (d) => d.fill)
-    // Lets TimelineCanvas's delegated click listener resolve the source
-    // entity (dynamic-tooltips spec §2's click-wiring architecture).
+    // Lets TimelineCanvas's delegated click listener resolve the entity.
     .attr('data-entity-id', (d) => d.id)
     .attr('data-entity-type', geometry.entityType)
     .attr('y1', geometry.centerY)
@@ -180,8 +165,7 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
   groups
     .select<SVGTextElement>(nameClass)
     .attr('x', geometry.labelX)
-    // Same delegated-click wiring as the line above, so the label is an
-    // equally valid click target for opening the detail drawer.
+    // Same delegated-click wiring as the line, so the label is also a click target.
     .attr('data-entity-id', (d) => d.id)
     .attr('data-entity-type', geometry.entityType)
     .each(function renderLines(d) {
@@ -204,38 +188,30 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
     })
     .attr('y', (d) => d.labelY);
 
-  // The row-shift itself: ease the mark's own <g> from a `translate` that
-  // visually holds it at its old row back to identity, now that every child
-  // above already carries its new, real position — one compositor-friendly
-  // transform per mark instead of five attribute timers.
-  // ponytail: dy is computed from the last *committed* center-y, not any
-  // live mid-tween offset, so a row change landing again inside another
-  // one's transition can show a small snap instead of a smooth redirect.
-  // Upgrade path if that's ever visible: fold the group's current
-  // translateY (parsed off its own transform attribute) into dy first.
+  // The row shift: ease the mark's <g> from a `translate` that holds it at its
+  // old row back to identity, now that its children carry their new positions;
+  // one compositor-friendly transform instead of five attribute timers.
+  // Known limitation: dy is computed from the last committed center-y, not a live
+  // mid-tween offset, so a row change landing inside another's transition can
+  // snap. Fix by folding the group's current translateY (parsed from its
+  // transform attribute) into dy.
   groups.each(function (d) {
     const priorCenterY = previousCenterYById.get(d.id) ?? geometry.centerY(d);
     const dy = priorCenterY - geometry.centerY(d);
     const group = d3.select(this);
-    // Named so this only interrupts a prior *row-shift* transition — an
-    // unnamed interrupt() here would also cancel the enter branch's own
-    // still-pending (unnamed) opacity fade-in, since both share the same
-    // node and D3 keys transitions by (node, name): a brand-new mark would
-    // schedule its fade-in above, then have it cancelled by this call a few
-    // lines later in the same synchronous join, leaving it stuck invisible.
+    // Named so this only interrupts a prior row-shift transition: an unnamed
+    // interrupt() would also cancel the enter branch's pending unnamed fade-in
+    // (D3 keys transitions by node and name), leaving a new mark invisible.
     group.interrupt('row-shift');
     if (dy === 0) {
       group.attr('transform', null);
       return;
     }
-    // Set synchronously first (a transition's own first tick lands a frame
-    // later — see PeopleLane's identical "flash at the wrong position"
-    // comment for why that one frame matters), then ease via attrTween with
-    // a plain number rather than `.transition().attr('transform', ...)` —
-    // the latter hands `transform`/`d` strings to d3-interpolate's dedicated
-    // SVG transform interpolator, which parses the *current* CTM via
-    // SVGTransformList/baseVal, an API jsdom's test environment doesn't
-    // implement.
+    // Set synchronously first (a transition's first tick lands a frame later; see
+    // PeopleLane's comment on the flash), then eased with attrTween on a plain
+    // number: `.transition().attr('transform', ...)` hands strings to d3's SVG
+    // transform interpolator, which parses the CTM via SVGTransformList/baseVal, an
+    // API jsdom lacks.
     group.attr('transform', `translate(0, ${dy})`);
     group
       .transition('row-shift')
@@ -250,16 +226,13 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
 }
 
 /**
- * Creates `id`'s mark's halo the first time it's ever selected —
- * mark-shape-html.ts omits it from every mark's initial paint (see its own
- * comment), so most marks never have one at all. Halo geometry always
- * exactly matches the real mark's own x1/x2/y1/y2 (or cx/cy) — only
- * stroke-width/r (fixed constants, mark-shape.ts's HALO_LINE_ATTRS) set the
- * two apart — so this just copies `geometryAttrs` straight off the sibling
- * real element found via `markClass`, rather than re-deriving position
- * from layout/scale data. A no-op once the halo exists (never rebuilt,
- * same as the D3 join's own enter-time halo) or if `id` doesn't match any
- * element under `markClass` in this `svg` (e.g. a point id checked against
+ * Creates `id`'s mark's halo the first time it's selected (mark-shape-html.ts
+ * omits it from the initial paint, so most marks have none). Halo geometry
+ * matches the real mark's x1/x2/y1/y2 (or cx/cy); only stroke-width/r
+ * (mark-shape.ts's HALO_LINE_ATTRS) differ, so this copies `geometryAttrs`
+ * from the sibling real element found via `markClass` instead of re-deriving
+ * from layout data. A no-op if the halo exists or `id` matches no element
+ * under `markClass` in this `svg` (e.g. a point id checked against
  * `.d3-line`).
  */
 export function ensureHaloChild(

@@ -1,13 +1,9 @@
-/* Color/radius tokens from docs/design-tokens.md ("Ledger & Ink"), wired as
-   CSS custom properties. The Occupation Domain palette is wired here too
-   (used by both the Sidebar legend and the D3 People-lane's fill/stroke
-   attrs — SVG presentation attributes resolve var() same as any CSS
-   property). The Milestone Category palette still provisionally inlines
-   hex in widgets/timeline-canvas/options.ts pending ticket 05 — see
-   docs/code-conventions.md's Styling section; --color-conflict below is
-   this widget's one CSS-side exception, added for Minimap.module.css's SVG
-   fill (options.ts's own CONFLICT_COLOR JS constant, used for the lanes'
-   D3-set attrs, stays separate — a CSS custom property doesn't help there). */
+/* Color/radius tokens from docs/design-tokens.md ("Ledger & Ink") as CSS custom
+   properties. The Occupation Domain palette is wired here for both the Sidebar
+   pills and the D3 People lane (SVG presentation attributes resolve var()).
+   Milestone group colors are hex in shared/config/milestone-category-group.ts.
+   --color-conflict below exists for Minimap.module.css's SVG fill; the lanes use
+   the JS CONFLICT_COLOR (shared/config/conflict-color.ts) for D3-set attrs. */
 :root {
   --color-bg-base: #f2e9d2;
   --color-bg-surface: #fbf6e9;

@@ -1,22 +1,17 @@
 import type { Region } from "@o-tempora/shared-types";
 
-// Pantheon `bplace_country`/`dplace_country` value -> Region. Built from
-// a one-time call to Pantheon's live /country endpoint
-// (https://api.pantheon.world/country, public, no auth, PostgREST-based),
-// hardcoded here so no live dependency exists at Fetch time — same pattern
-// region-categories.ts already uses for Wikidata Q-IDs
-// (.scratch/alt-data-sources/issues/13-region-taxonomy-mapping.md).
+// Pantheon `bplace_country`/`dplace_country` value -> Region. Built from a
+// one-time call to Pantheon's /country endpoint
+// (https://api.pantheon.world/country, public, PostgREST) and hardcoded so
+// Fetch has no live dependency, as region-categories.ts does for Wikidata
+// Q-IDs.
 //
-// The person CSV's country names don't always match the /country
-// endpoint's canonical names exactly (verified against all 241 distinct
-// bplace_country/dplace_country values in the actual 2025 dataset — only 4
-// mismatches, listed as extra keys pointing at the same region below:
-// "Bahamas, The"/"The Bahamas", "Czech Republic"/"Czechia",
-// "Federated States of Micronesia"/"Micronesia", "Swaziland"/"Eswatini").
-// 20 small territories (American Samoa, Antarctica, Gibraltar, etc.) have
-// no UN region assigned by the API at all and are deliberately left
-// unmapped, resolving to "no region" — same graceful-degradation pattern
-// region-categories.ts already uses for Oceania.
+// The person CSV's country names occasionally differ from the endpoint's (4 of
+// 241 distinct values in the 2025 dataset), listed as extra keys pointing at
+// the same region: "Bahamas, The"/"The Bahamas", "Czech Republic"/"Czechia",
+// "Federated States of Micronesia"/"Micronesia", "Swaziland"/"Eswatini". 20
+// small territories (American Samoa, Antarctica, Gibraltar, etc.) have no UN
+// region in the API and are left unmapped, resolving to "no region".
 export const UN_REGION_CATEGORIES: Record<string, Region> = {
   // australia-and-new-zealand
   Australia: "australia-and-new-zealand",

@@ -1,12 +1,9 @@
-// Wikimedia's Pageviews Analytics REST API — a distinct API from both
-// Wikidata's SPARQL endpoint (wikidata-client.ts) and Commons' imageinfo
-// API (commons-client.ts), used to sum trailing-4-year monthly pageviews
-// per Wikipedia article for ADR 0010's fameScore pageviews blend
-// (packages/data-pipeline/docs/adr/0010-blend-sitelinks-and-pageviews-for-
-// wars-discoveries-fame-score.md). Kept as its own client for the same
-// reason commons-client.ts is its own module: a different protocol
-// entirely (plain REST path segments, not a SPARQL query body or MediaWiki
-// action=query params).
+// Wikimedia's Pageviews Analytics REST API, distinct from Wikidata's SPARQL
+// endpoint (wikidata-client.ts) and Commons' imageinfo API (commons-client.ts).
+// Sums trailing-4-year monthly pageviews per Wikipedia article for the fameScore
+// blend (docs/adr/0010-blend-sitelinks-and-pageviews-for-wars-discoveries-fame-score.md).
+// Its own client because it is a different protocol (REST path segments, not a
+// SPARQL body or MediaWiki action=query params).
 
 export interface PageviewsPerArticleItem {
   views: number;
@@ -18,16 +15,14 @@ export interface PageviewsPerArticleResponse {
 
 const ENDPOINT = "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article";
 
-// Same courtesy identification Wikidata's and Commons' clients send
-// (wikidata-client.ts, commons-client.ts) — Wikimedia asks all API traffic
-// to self-identify.
+// Same courtesy identification as the Wikidata and Commons clients; Wikimedia
+// asks all API traffic to self-identify.
 const USER_AGENT =
   "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
 
 const MAX_RETRIES = 3;
-// Same reasoning as commons-client.ts's REQUEST_TIMEOUT_MS: a per-article
-// monthly-granularity read over a fixed 4-year window is a plain indexed
-// metric lookup, not an unbounded graph query, so it carries no comparable
+// As commons-client.ts's REQUEST_TIMEOUT_MS: a per-article monthly read over a
+// fixed 4-year window is an indexed metric lookup with no comparable
 // server-side deadline to budget against.
 const REQUEST_TIMEOUT_MS = 30_000;
 const RETRYABLE_SERVER_ERROR_STATUSES = new Set([502, 503, 504]);

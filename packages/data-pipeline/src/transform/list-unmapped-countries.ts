@@ -4,20 +4,12 @@ import { validateEnrichedMilestonesFile } from "../fetch/fetch-milestones-enrich
 import { validateEnrichedConflictsFile } from "../fetch/fetch-conflicts-enrichment.js";
 
 // Dumps any country Q-ID a Conflicts/Milestones entry carries (across both
-// enriched sources, unioned) that isn't yet in REGION_CATEGORIES. Run after
-// each batch of manual additions to region-categories.ts until this reports
-// zero — except for Q-IDs that genuinely have no home in the app's fixed
-// 6-region set (e.g. Oceania), which are expected to stay unmapped forever
-// and resolve to "no region" by design.
-//
-// People no longer contributes here — it's Pantheon-sourced now, using a
-// separate, fully-enumerated country-name lookup (un-region-categories.ts,
-// no unmapped-value maintenance script needed).
-//
-// Both Conflicts and Milestones are the hand-curated + enriched list now, not a
-// raw SPARQL binding dump — already one row per entry with a plain
-// `countries: string[]` field, no groupRows step needed (same reasoning as
-// transformConflicts/transformMilestones).
+// enriched sources, unioned) that isn't yet in REGION_CATEGORIES. Run after each
+// batch of additions to region-categories.ts until it reports zero, except
+// Q-IDs with no home in the 22 sub-regions, which stay unmapped and resolve to
+// "no region". People need no such script: their Pantheon country-name lookup
+// (un-region-categories.ts) is fully enumerated. Both lanes are already one row
+// per entry with a plain `countries: string[]`, so no groupRows step is needed.
 const { conflicts } = validateEnrichedConflictsFile(JSON.parse(fs.readFileSync("data/raw/conflicts-curated-enriched.raw.json", "utf8")));
 const { milestones } = validateEnrichedMilestonesFile(
   JSON.parse(fs.readFileSync("data/raw/milestones-curated-enriched.raw.json", "utf8")),

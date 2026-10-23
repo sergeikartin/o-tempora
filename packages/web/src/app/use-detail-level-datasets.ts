@@ -10,9 +10,8 @@ import {
 
 interface DetailLevelDatasetsResult {
   datasets: LocaleDatasets;
-  // Detail Level ids whose delta file hasn't resolved yet — DetailLevelSwitch
-  // shows a spinner on the active option only while its id is in this list
-  // (never for legendary/mainstream, both already loaded eagerly).
+  // Detail Level ids whose delta file hasn't resolved yet; never includes
+  // legendary/mainstream, which load eagerly.
   loadingLevelIds: DetailLevelId[];
   requestLevel: (levelId: DetailLevelId) => void;
 }
@@ -29,17 +28,12 @@ function mergeDatasets(
   };
 }
 
-// Merges Detail Level 3/4's delta files (CONTEXT.md, docs/adr/0006-detail-
-// level-merges-data-depth-and-payload-tier.md) into the level 1+2 base once
-// each resolves — either from level 3's automatic idle-prefetch or from
-// requestLevel's on-demand trigger (called when the user picks Specialized/
-// Deep Cut before that level is ready, or on a save-data/slow connection
-// where the idle-prefetch never starts on its own). Plain concatenation is
-// enough: which level an entry ships in never affects whether it renders —
-// only the client-side Fame Score filter does (ADR 0003) — so the merged
-// arrays are a drop-in superset of the base alone. Level 3/4 never re-fetch
-// or evict once loaded, since the promises they resolve from are module-
-// scope singletons.
+// Concatenates Detail Level 3/4's delta files (CONTEXT.md, docs/adr/0006-detail-
+// level-merges-data-depth-and-payload-tier.md) onto the level 1+2 base once
+// each resolves. Which level an entry ships in never affects whether it
+// renders; only the Fame Score filter does (web/docs/adr/0003). Loaded
+// levels are never re-fetched or evicted: they resolve from module-scope
+// promises.
 export function useDetailLevelDatasets(
   base: LocaleDatasets,
 ): DetailLevelDatasetsResult {

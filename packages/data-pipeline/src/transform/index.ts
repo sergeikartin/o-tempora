@@ -10,34 +10,27 @@ import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-perso
 import { tagCuratedMilestone, tagCuratedConflict } from "./tag-milestones.js";
 import { rankByFameScore, scoreAndRankByHpi } from "./score.js";
 
-// Omits PantheonPersonRow's own `name` — Output no longer reads it
-// (name is now sourced from the Wikidata label enrichment pass below, the
-// same symmetric per-language mechanism Conflicts/Milestones use), so this
-// redeclares it as the enrichment-sourced, possibly-absent field rather
-// than inheriting Pantheon's always-present one.
+// Omits PantheonPersonRow's `name`: name comes from the Wikidata label
+// enrichment pass below (the same per-language mechanism as Conflicts and
+// Milestones), so it is redeclared as enrichment-sourced and possibly absent.
 export type TaggedPerson = Omit<PantheonPersonRow, "name"> &
   PantheonPersonTags & {
-    // Wikidata's rdfs:label(en) for this person's Wikidata QID — absent
-    // only when the enrichment pass couldn't resolve one; Output drops the
-    // row when this is missing (see write-datasets.ts's buildPeople).
+    // Wikidata's rdfs:label(en) for this QID; absent only when enrichment couldn't
+    // resolve one, and Output then drops the row (write-datasets.ts's buildPeople).
     name?: string;
-    // Wikidata's rdfs:label(ru) — absent whenever no Russian label
-    // resolves. Output falls back to `name` (English) per field, at output
-    // time, when building the Russian dataset file.
+    // Wikidata's rdfs:label(ru); absent when none resolves. Output falls back to
+    // `name` (English) per field when building the Russian file.
     nameRu?: string;
     tagline?: string;
-    // Russian schema:description binding, same fallback-at-output-time
-    // contract as nameRu above.
+    // Russian schema:description; same fallback contract as the Russian label.
     taglineRu?: string;
-    // Wikipedia lead-paragraph extract (fetch-wikipedia-extracts.ts's
-    // output) — independent of tagline, never a fallback for it. Absent
-    // never drops the row (only a missing tagline does).
+    // Wikipedia lead-paragraph extract (fetch-wikipedia-extracts.ts); independent
+    // of tagline, never a fallback for it. Absent never drops the row (only a
+    // missing tagline does).
     description?: string;
-    // ru.wikipedia.org's own lead-paragraph extract for the same entity —
-    // absent whenever no Russian article resolves (materially more often
-    // than English, expected). Output falls back to `description`
-    // (English) at output time, when building the Russian dataset file,
-    // the same per-field fallback contract as name/tagline.
+    // ru.wikipedia.org's extract for the same entity; absent when no Russian
+    // article resolves (expected more often than English). Output falls back to
+    // `description` (English), as for name/tagline.
     descriptionRu?: string;
     wikipediaUrl: string;
     image?: string;
@@ -47,21 +40,18 @@ export type TaggedPerson = Omit<PantheonPersonRow, "name"> &
 export interface TaggedMilestone {
   id: string;
   label: string;
-  // Russian rdfs:label — absent whenever no Russian label resolves; Output
-  // falls back to `label` (English) per field when building the Russian
-  // dataset file.
+  // Russian rdfs:label; absent when none resolves. Output falls back to `label`
+  // (English) per field when building the Russian file.
   labelRu?: string;
   article?: string;
-  // Absent means the live enrichment pass couldn't resolve an English
-  // tagline for this curated QID — Output drops the row (no fallback to
-  // the curated file's old hand-typed text), the same "no fallback, drop
-  // instead" behavior Conflicts/People already have.
+  // Absent means enrichment couldn't resolve an English tagline for this
+  // curated QID; Output drops the row, with no fallback, as for Conflicts and
+  // People.
   tagline?: string;
-  // Russian schema:description binding, same fallback-at-output-time
-  // contract as labelRu above.
+  // Russian schema:description; same fallback contract as the Russian label.
   taglineRu?: string;
   description?: string;
-  // Same fallback-at-output-time contract as taglineRu above.
+  // Same fallback contract as taglineRu.
   descriptionRu?: string;
   year?: number;
   month?: number;
@@ -79,17 +69,15 @@ export interface TaggedMilestone {
 export interface TaggedConflict {
   id: string;
   label: string;
-  // Russian rdfs:label — absent whenever no Russian label resolves; Output
-  // falls back to `label` (English) per field when building the Russian
-  // dataset file.
+  // Russian rdfs:label; absent when none resolves. Output falls back to `label`
+  // (English) per field when building the Russian file.
   labelRu?: string;
   article?: string;
   tagline?: string;
-  // Russian schema:description binding, same fallback-at-output-time
-  // contract as labelRu above.
+  // Russian schema:description; same fallback contract as the Russian label.
   taglineRu?: string;
   description?: string;
-  // Same fallback-at-output-time contract as taglineRu above.
+  // Same fallback contract as taglineRu.
   descriptionRu?: string;
   year?: number;
   month?: number;
@@ -122,17 +110,14 @@ interface PersonEnrichment {
   image?: string;
 }
 
-// Keyed by Wikidata QID, extracted from the tagline-query's ?person
-// URI binding. Also carries the P18 image URI and an English+Russian
-// name/tagline the same query backfills (queries/taglines.ts) — name
-// replaces Pantheon's own CSV `name` column as this pipeline's source of
-// truth for a person's display name. Every field here is single-valued (a
-// FILTER(LANG=..) claim per language) except P18, which isn't — a person
-// with more than one English-Wikidata image claim produces multiple
-// binding rows for the same ?person, so this keeps only the first value
-// seen per person per field (first-wins, same convention
-// fetchMilestonesEnrichment's own binding merge uses) rather than letting
-// whichever row the endpoint returns last silently overwrite it.
+// Keyed by Wikidata QID from the tagline query's ?person binding. Also carries
+// the P18 image URI and the English+Russian name/tagline the same query
+// backfills (queries/taglines.ts); name replaces Pantheon's CSV `name` as the
+// source of a person's display name. Every field is single-valued
+// (FILTER(LANG=..) per language) except P18: a person with several image
+// claims yields several binding rows, so the first value per person per field
+// wins (as in fetchMilestonesEnrichment's merge) instead of the last row
+// overwriting it.
 function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
   const raw = loadRaw("people-taglines.raw.json");
   const map = new Map<string, PersonEnrichment>();
@@ -154,32 +139,27 @@ function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
   return map;
 }
 
-// fetch-image-attribution.ts/fetch-pageviews.ts/fetch-wikipedia-extracts.ts
-// each write one raw file per lane (docs/adr/0012-lane-scoped-fetch.md) —
-// keyed by the same ids as loadPeopleEnrichmentMap (Wikidata QID) for
-// People, and by the curated row's own id for Conflicts/Milestones. A missing
-// id means that stage didn't resolve one for this entity (or the pipeline
-// hasn't been re-fetched since it was added): image attribution and
-// Wikipedia extract degrade to an absent field, never a dropped row (only
-// a missing `tagline` drops); pageviews coerces to 0 at the call site, not
-// here — score.ts's blend formula degrades gracefully to a sitelinks-only
-// score for that row (ADR 0010).
+// fetch-image-attribution.ts, fetch-pageviews.ts and
+// fetch-wikipedia-extracts.ts each write one raw file per lane
+// (docs/adr/0012-lane-scoped-fetch.md), keyed by Wikidata QID for People and
+// by the curated row's id for Conflicts/Milestones. A missing id means that
+// stage resolved nothing for this entity: image attribution and Wikipedia
+// extract become absent fields, never a dropped row (only a missing `tagline`
+// drops). Pageviews coerce to 0 at the call site, so score.ts's blend degrades
+// to a sitelinks-only score (docs/adr/0010).
 function loadRawRecord<T>(fileName: string): Record<string, T> {
   return (JSON.parse(fs.readFileSync(path.join(RAW_DIR, fileName), "utf8")) as Record<string, T> | undefined) ?? {};
 }
 
-// group -> tag -> score, per lane. People, Conflicts, and
-// Milestones are three entirely independent lanes end to
-// end — each fed by its own raw snapshot and scored on its own.
-// Sourced from Pantheon 2.0, not Wikidata — no grouping needed (the CSV is
-// already one row per person, unlike SPARQL's denormalized bindings).
-// name/tagline come from a separate batched SPARQL fetch keyed on the
-// Wikidata QID Pantheon retains per row (fetch-taglines.ts/
-// queries/taglines.ts) — Pantheon's own CSV `name` column is left unused
-// (Pantheon's is a frozen snapshot; Wikidata's rdfs:label reflects the
-// entity's current name, and is fetched in both en/ru, the one symmetric
-// mechanism all three lanes now share), and Pantheon's CSV has no
-// tagline-equivalent field of its own to begin with.
+// group -> tag -> score, per lane. People, Conflicts and Milestones are three
+// independent lanes, each fed by its own raw snapshot and scored on its own.
+// People come from Pantheon 2.0, one row per person, so no grouping is needed
+// (unlike SPARQL's denormalized bindings). name/tagline come from a batched
+// SPARQL fetch keyed on the Wikidata QID Pantheon retains per row
+// (fetch-taglines.ts, queries/taglines.ts). Pantheon's CSV `name` is unused:
+// its snapshot is frozen while Wikidata's rdfs:label (en/ru, the mechanism all
+// three lanes share) tracks the entity's current name, and the CSV has no
+// tagline field.
 export function transformPeople(): TaggedPerson[] {
   const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
   const rows = parsePantheonCsv(fs.readFileSync(csvPath, "utf8"));
@@ -205,21 +185,16 @@ export function transformPeople(): TaggedPerson[] {
   return scoreAndRankByHpi(tagged);
 }
 
-// Sourced from the hand-curated + enriched conflicts list
-// (fetch-conflicts-enrichment.ts's output), not a raw SPARQL binding dump —
-// already one row per conflict, so no groupRows step needed here (same
-// reasoning as transformPeople/transformMilestones). A missing enriched
-// `sitelinks` means the enrichment pass couldn't resolve that QID; coerced
-// to 0 here so it sorts last and Output's buildConflicts can drop it explicitly
-// (same convention transformMilestones uses). name/tagline/year/endYear are
-// all enrichment-sourced here, not curator-authored — left `undefined`
-// (label falls back to `""`, matching the existing `!row.label` falsy
-// check buildConflicts's validateEventRow already does) rather than
-// coerced when the enrichment pass didn't resolve them, since
-// buildConflicts needs to distinguish "no date at all" (drop) from "one
-// date" (ConflictEvent) from "two dates" (Conflict). Milestones' own
-// year/endYear are enrichment-sourced the same way, for the same
-// point-vs-period distinction in buildMilestones.
+// From the hand-curated, enriched conflicts list (fetch-conflicts-enrichment.ts
+// output), already one row per conflict, so no groupRows step (as for
+// People/Milestones). A missing enriched `sitelinks` means enrichment couldn't
+// resolve the QID; it is coerced to 0 so the row sorts last and
+// buildConflicts drops it explicitly (as transformMilestones does).
+// name/tagline/year/endYear are enrichment-sourced, left `undefined` (label
+// falls back to `""`, matching validateEventRow's `!row.label` check) so
+// buildConflicts can tell "no date" (drop) from "one date" (ConflictEvent) from
+// "two dates" (Conflict). Milestones' year/endYear work the same way for
+// buildMilestones' point-vs-period split.
 export function transformConflicts(): TaggedConflict[] {
   const enrichedPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
   const { conflicts } = validateEnrichedConflictsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
@@ -256,15 +231,11 @@ export function transformConflicts(): TaggedConflict[] {
   return rankByFameScore(tagged);
 }
 
-// Sourced from the hand-curated + enriched milestones list
-// (fetch-milestones-enrichment.ts's output), not a raw SPARQL binding dump —
-// already one row per milestone, so no groupRows step needed here either
-// (same reasoning as transformPeople). A missing enriched `sitelinks`
-// means the enrichment pass couldn't resolve that QID; coerced to 0 here
-// so it sorts last and Output's buildMilestones can drop it explicitly.
-// name is enrichment-sourced too, same as Conflicts — label falls back to
-// `""` (matching validateEventRow's `!row.label` falsy check) rather than
-// coerced when the enrichment pass didn't resolve an English label.
+// From the hand-curated, enriched milestones list (fetch-milestones-enrichment.ts
+// output), one row per milestone, so no groupRows step. A missing enriched
+// `sitelinks` is coerced to 0 so the row sorts last and buildMilestones drops
+// it explicitly. name is enrichment-sourced too: label falls back to `""`
+// (matching validateEventRow's `!row.label`) when no English label resolved.
 export function transformMilestones(): TaggedMilestone[] {
   const enrichedPath = path.join(RAW_DIR, "milestones-curated-enriched.raw.json");
   const { milestones } = validateEnrichedMilestonesFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));

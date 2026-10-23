@@ -6,14 +6,11 @@
   transform-origin: 0 0;
 }
 
-/* The zoom-button animation's per-label counter-scale (PeopleLane.tsx)
-   targets this wrapper, not .name directly — .name has its own `transition:
-   transform` for the hover-grow effect below, and a JS-driven, every-frame
-   `transform` write on the same element/property would get caught by that
-   transition too, smoothing/lagging a frame behind instead of landing
-   exactly, and visibly wobbling the label's rendered width. Same anchor as
-   .name's own hover-scale (left edge, vertically centered) so the two
-   independent scales agree on where "in place" is. */
+/* The zoom animation's per-label counter-scale (PeopleLane.tsx) targets this
+   wrapper, not .name: .name has `transition: transform` for the hover-grow,
+   which would smooth a per-frame JS transform write and lag it a frame,
+   wobbling the label's width. Same anchor as .name's hover-scale (left edge,
+   vertically centered) so both scales agree on "in place". */
 :global(.d3-name-zoom) {
   transform-box: fill-box;
   transform-origin: left center;
@@ -29,25 +26,18 @@
   overflow: visible;
 }
 
-/* Row 0 (fame-priority, see options.ts's personLabelYForRow) sits at the
-   *bottom* of the svg above — the axis-adjacent edge — but the svg shrinks
-   to fit its own row count (personLaneHeight), and .peopleLane
-   (TimelineCanvas.module.css) is a plain overflow-y: auto block box, so
-   ordinary top-aligned flow would float a shrunken svg to that box's top,
-   stranding it above the Year Axis whenever a filter narrows the row count.
-   This wrapper is the flex column doing the flex-end alignment instead of
-   .peopleLane itself: putting justify-content: flex-end directly on a
-   scrolling (overflow-y: auto) flex/grid container is a known cross-browser
-   trap — the scrollable-overflow region isn't extended to cover content
-   that overflows on the flex-start side, so scrollHeight collapses to equal
-   clientHeight and the lane becomes unscrollable the moment row count grows
-   past what fits (verified against real Chromium during this fix). Nesting
-   the alignment one level in avoids it: .peopleLane stays a plain block box
-   whose scrollHeight is just this wrapper's ordinary rendered height, and
-   min-height: 100% only pads the wrapper *up* to .peopleLane's own height
-   when the svg is shorter — it never suppresses genuine overflow, so
-   scrollTop = scrollHeight (TimelineCanvas.tsx) still works once row count
-   grows enough to overflow the lane. */
+/* Row 0 (see options.ts's personLabelYForRow) sits at the bottom of the svg,
+   next to the axis, but the svg shrinks to its row count, and .peopleLane
+   (TimelineCanvas.module.css) is a plain overflow-y: auto block, so top-aligned
+   flow would strand a shrunken svg above the Year Axis. This wrapper does the
+   flex-end alignment instead of .peopleLane: justify-content: flex-end on a
+   scrolling flex/grid container is a cross-browser trap, as the scrollable
+   overflow region doesn't cover content overflowing the flex-start side, so
+   scrollHeight collapses to clientHeight and the lane stops scrolling once
+   rows overflow. One level in, .peopleLane stays a plain block whose
+   scrollHeight is this wrapper's height, and min-height: 100% only pads the
+   wrapper up, never suppressing real overflow, so scrollTop = scrollHeight
+   (TimelineCanvas.tsx) works. */
 .bottomAlign {
   display: flex;
   flex-direction: column;
@@ -84,22 +74,16 @@
   transform: scale(1.15);
 }
 
-/* Search-jump / current-selection highlight (CONTEXT.md's Search entry) — a
-   real, wider duplicate line drawn behind the mark's own line
-   (PeopleLane.tsx's .d3-line-halo), not a CSS outline filter: a real SVG
-   outline filter (feMorphology + feFlood) clips to nothing on a perfectly
-   horizontal <line>, since the filter region is sized off the shape's
-   geometry bounding box, which is zero-height regardless of stroke width.
-   The duplicate shares the real line's round linecap, so at a shared
-   centerline it reads as a soft pill-shaped halo around the mark. Always
-   present once a mark has been selected and invisible by default; toggled
-   to opaque by id in PeopleLane.tsx's own effect rather than through the D3
-   join above, so it layers behind (never replaces) each mark's own
-   occupation-domain fill and hover treatment. The translucent ink fill
-   (--color-selection-halo) lets the parchment show through, so no gap band
-   is needed against any lane hue. pointer-events: none since it is purely
-   decorative and sits wider than the mark's own hit area (PeopleLane.tsx's
-   toggle-selector comment). */
+/* Selection / search-jump highlight (CONTEXT.md's Search): a wider duplicate
+   line behind the mark's line (PeopleLane.tsx's .d3-line-halo), not a CSS
+   outline filter, since an SVG filter region is sized off the geometry bounding
+   box, which is zero-height for a horizontal <line>, so it clips to nothing.
+   The duplicate shares the round linecap, reading as a pill-shaped halo. Always
+   present once a mark has been selected, invisible by default, toggled by id in
+   PeopleLane.tsx's effect, so it layers behind each mark's domain fill and
+   hover treatment. The translucent ink fill (--color-selection-halo) needs no
+   gap band against any lane hue. pointer-events: none: decorative, and wider
+   than the mark's hit area. */
 .lineHalo {
   fill: none;
   stroke: var(--color-selection-halo);
@@ -122,13 +106,11 @@
   stroke-width: 9px;
 }
 
-/* The label half of the same highlight — kept in ink and scaled so the
-   label and its mark read as one highlighted unit, via the same hover-grow scale as .line above for the
-   same "selected = hover that stuck" reason. No outline/halo on the text
-   itself — an outline dilates a small glyph's own strokes into its
-   neighbors' gaps, reading as a solid blob rather than legible text.
-   Toggled by id alongside .searchHighlight above, but scoped to .name in
-   PeopleLane.tsx's effect since it needs this different treatment. */
+/* The label half of the highlight: kept in ink and scaled with the same
+   hover-grow as .line ("selected = hover that stuck"), so label and mark read
+   as one unit. No outline or halo on text, which would dilate glyph strokes
+   into a blob. Toggled alongside .searchHighlight but scoped to .name in
+   PeopleLane.tsx's effect. */
 .name.searchHighlightLabel {
   fill: var(--color-text-primary);
   transform: scale(1.15);
