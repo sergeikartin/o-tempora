@@ -81,7 +81,7 @@ A live text query, matched case-insensitively as a substring against an entry's 
 _Avoid_: filter (bare — Search narrows within the existing filters, it isn't one of them), lookup, autocomplete (describes the UI widget, not this domain concept)
 
 **Landing Page**:
-The short explanatory first page a cold visitor reaches at the site root of each **Locale** — what the product is, three plain points on how to read it, a few **Starting Points**, and one button into the timeline. Separate from the timeline itself: arriving at the root never drops a visitor straight onto the timeline, and returning visitors are not redirected past it.
+The short explanatory first page a cold visitor reaches at the site root of each **Locale** — what the product is, real counts of what the dataset holds, a few **Starting Points** shown as story cards, a framed preview of the real timeline, and one button into the timeline. Separate from the timeline itself: arriving at the root never drops a visitor straight onto the timeline, and returning visitors are not redirected past it.
 _Avoid_: home page (ambiguous with the language switcher's "home-level" link), splash, intro, onboarding (this is a page, not a pop-up or coach marks)
 
 **Entity Link**:
@@ -89,11 +89,11 @@ A timeline URL that identifies one Person, Conflict, ConflictEvent or Milestone.
 _Avoid_: deep link, permalink, share link, shareable state
 
 **Starting Point**:
-One of the few hand-picked **Entity Links** the **Landing Page** offers as a way into the timeline — chosen so the overlap of lives and events around the entity is visible on arrival.
+One of the few hand-picked **Entity Links** the **Landing Page** offers as a way into the timeline, each presented as a story card with a one-line teaser — chosen so the overlap of lives and events around the entity is visible on arrival.
 _Avoid_: example, demo, tour (curated narrated tours are out of scope), featured entry
 
 **Help**:
-The explanation a visitor can open at any time from inside the timeline, for those who skipped the **Landing Page** or are returning. Restates the Landing Page's three plain points and what the marks mean, and is the home of the links to About & data and the language switch. Always opened by the visitor — never appears on its own, and remembers nothing about whether it was seen.
+The explanation a visitor can open at any time from inside the timeline, for those who skipped the **Landing Page** or are returning. Explains how to read the timeline in three plain points and what the marks mean, and is the home of the links to About & data and the language switch. Always opened by the visitor — never appears on its own, and remembers nothing about whether it was seen.
 _Avoid_: tutorial, onboarding, tour (curated narrated tours are out of scope), coach marks, FAQ
 
 **Empty Lane**:
