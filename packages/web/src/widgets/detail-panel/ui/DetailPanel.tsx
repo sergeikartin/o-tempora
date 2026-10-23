@@ -176,22 +176,29 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
               ×
             </button>
             {showImage && (
-              // biome-ignore lint/a11y/noNoninteractiveElementInteractions: onLoad/onError are resource-loading callbacks, not user-interaction handlers
-              <img
-                key={`image-${selectedEntityId}`}
-                src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}
-                alt={content.name}
-                loading="lazy"
-                className={`${styles.image} ${portraitImage.isPortrait ? styles.imageContain : ''} ${imageLoaded.loaded ? styles.imageLoaded : ''}`}
-                onLoad={(event) => {
-                  const img = event.currentTarget;
-                  if (img.naturalHeight > img.naturalWidth) {
-                    setPortraitImage((prev) => ({ ...prev, isPortrait: true }));
-                  }
-                  setImageLoaded((prev) => ({ ...prev, loaded: true }));
-                }}
-                onError={() => setFailedEntityId(displayedEntity.entity.id)}
-              />
+              <div
+                className={`${styles.imageSlot} ${imageLoaded.loaded ? '' : styles.imageSlotLoading}`}
+              >
+                {/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: onLoad/onError are resource-loading callbacks, not user-interaction handlers */}
+                <img
+                  key={`image-${selectedEntityId}`}
+                  src={`${content.image}?width=${IMAGE_BANNER_WIDTH_PX}`}
+                  alt={content.name}
+                  loading="lazy"
+                  className={`${styles.image} ${portraitImage.isPortrait ? styles.imageContain : ''} ${imageLoaded.loaded ? styles.imageLoaded : ''}`}
+                  onLoad={(event) => {
+                    const img = event.currentTarget;
+                    if (img.naturalHeight > img.naturalWidth) {
+                      setPortraitImage((prev) => ({
+                        ...prev,
+                        isPortrait: true,
+                      }));
+                    }
+                    setImageLoaded((prev) => ({ ...prev, loaded: true }));
+                  }}
+                  onError={() => setFailedEntityId(displayedEntity.entity.id)}
+                />
+              </div>
             )}
             <div key={`body-${selectedEntityId}`} className={styles.body}>
               {showImage && content.imageAttribution && (

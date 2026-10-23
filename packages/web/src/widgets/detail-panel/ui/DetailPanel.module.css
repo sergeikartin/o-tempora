@@ -29,9 +29,10 @@
   right: 10px;
   width: 28px;
   height: 28px;
-  border: none;
   border-radius: var(--radius-full);
-  background: var(--color-bg-base);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-strong);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   color: var(--color-text-primary);
   font-size: 16px;
   line-height: 1;
@@ -44,10 +45,27 @@
   outline-offset: 2px;
 }
 
+.imageSlot {
+  height: 260px;
+  background: var(--color-bg-base);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .imageSlotLoading {
+    animation: image-slot-pulse 1.4s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes image-slot-pulse {
+  to {
+    background: var(--color-bg-axis);
+  }
+}
+
 .image {
   display: block;
   width: 100%;
-  height: 260px;
+  height: 100%;
   object-fit: cover;
   opacity: 0;
   transition: opacity var(--motion-duration-fast) var(--motion-easing);
