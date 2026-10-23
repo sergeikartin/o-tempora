@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { CODE_LICENSE_URL, DATA_LICENSE_URL } from '../../../shared/config';
 import { m } from '../../../shared/paraglide/messages.js';
 import styles from './AboutPanel.module.css';
 
@@ -6,10 +7,6 @@ interface AboutPanelProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-const GITHUB_REPO_URL = 'https://github.com/sergeikartin/o-tempora';
-const CODE_LICENSE_URL = `${GITHUB_REPO_URL}/blob/main/LICENSE`;
-const DATA_LICENSE_URL = `${GITHUB_REPO_URL}/blob/main/packages/shared-types/LICENSE-DATA.md`;
 
 // Citations stay in their original (untranslated) form across locales, same
 // convention as the DOI/author string in LICENSE-DATA.md.

@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { SIBLING_LANDING_HREF, TIMELINE_HREF } from '../../shared/config';
+import {
+  DATA_LICENSE_URL,
+  GITHUB_REPO_URL,
+  SIBLING_LANDING_HREF,
+  TIMELINE_HREF,
+} from '../../shared/config';
 import { m } from '../../shared/paraglide/messages.js';
 import { Logo } from '../../shared/ui';
 import { CuriosityFigure } from './CuriosityFigure';
@@ -62,7 +67,30 @@ export function LandingPage() {
         </fieldset>
         <CuriosityFigure curiosity={active} onLinkIntent={prefetchTimeline} />
       </main>
-      <footer className={styles.footer}>{m.landingAttribution()}</footer>
+      <footer className={styles.footer}>
+        <p className={styles.footerGroup}>
+          <span>{m.landingFooterData()}</span>
+          <a
+            className={styles.footerLink}
+            href={DATA_LICENSE_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {m.landingFooterLicense()}
+          </a>
+        </p>
+        <p className={styles.footerGroup}>
+          <span>{m.aboutMadeBy()}</span>
+          <a
+            className={styles.footerLink}
+            href={GITHUB_REPO_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {m.landingFooterSource()}
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

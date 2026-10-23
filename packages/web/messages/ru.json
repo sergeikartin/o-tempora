@@ -140,6 +140,8 @@
   "landingMark.joan-of-arc": "Жанна д’Арк",
   "landingMark.vlad-the-impaler": "Влад III Цепеш",
   "landingMark.hundred-years-war": "Столетняя война",
-  "landingAttribution": "Данные: Pantheon 2.0, Wikidata и Wikipedia. Полная атрибуция — в разделе «О проекте» на шкале времени.",
+  "landingFooterData": "Данные: Pantheon 2.0, Wikidata и Wikipedia.",
+  "landingFooterLicense": "Лицензии и атрибуция данных",
+  "landingFooterSource": "Исходный код на GitHub",
   "landingCta": "Открыть шкалу времени"
 }

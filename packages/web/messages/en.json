@@ -140,6 +140,8 @@
   "landingMark.joan-of-arc": "Joan of Arc",
   "landingMark.vlad-the-impaler": "Vlad the Impaler",
   "landingMark.hundred-years-war": "Hundred Years' War",
-  "landingAttribution": "Data from Pantheon 2.0, Wikidata and Wikipedia. Full attribution is under About, in the timeline.",
+  "landingFooterData": "Data from Pantheon 2.0, Wikidata and Wikipedia.",
+  "landingFooterLicense": "Data licenses & attribution",
+  "landingFooterSource": "Source on GitHub",
   "landingCta": "Explore the timeline"
 }
