@@ -87,6 +87,8 @@
   "landingHeadline": "Жизнь на фоне истории.",
   "landingPitch": "Люди, конфликты и вехи примерно с 800 года до н. э. до наших дней на одной оси: сразу видно, кто жил в одно время.",
   "landingCasesLabel": "Любопытные совпадения",
+  "landingPrevCase": "Предыдущее совпадение",
+  "landingNextCase": "Следующее совпадение",
   "landingOpenOnTimeline": "Открыть на шкале времени:",
   "landingCase.einstein-jobs.chip": "Эйнштейн и Джобс",
   "landingCase.einstein-jobs.lede": "Альберт Эйнштейн и Стив Джобс жили в одно время.",

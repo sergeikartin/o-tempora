@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
 import { TIMELINE_HREF } from '../../shared/config';
 import {
   formatYear,
@@ -65,9 +65,13 @@ function MarkRow({
 export function CuriosityFigure({
   curiosity,
   onLinkIntent,
+  figureRef,
+  children,
 }: {
   curiosity: Curiosity;
   onLinkIntent: () => void;
+  figureRef?: Ref<HTMLElement>;
+  children?: ReactNode;
 }) {
   const people = curiosity.marks.filter((mark) => mark.kind === 'person');
   const events = curiosity.marks.filter((mark) => mark.kind !== 'person');
@@ -80,7 +84,7 @@ export function CuriosityFigure({
     : undefined;
 
   return (
-    <figure className={styles.figure}>
+    <figure className={styles.figure} ref={figureRef}>
       <div className={styles.chart} key={curiosity.id}>
         {band && (
           <span
@@ -117,10 +121,11 @@ export function CuriosityFigure({
           />
         ))}
       </div>
+      {children}
       <figcaption className={styles.caption}>
         <span className={styles.captionText}>{curiosity.caption()}</span>
         <span className={styles.openOn}>
-          {m.landingOpenOnTimeline()}
+          <span className={styles.openLabel}>{m.landingOpenOnTimeline()}</span>
           {curiosity.marks.map((mark) => (
             <a
               key={mark.slug}

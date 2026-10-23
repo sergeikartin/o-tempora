@@ -77,6 +77,24 @@ test('picking another curiosity swaps the sentence and redraws the marks', () =>
   ).toBe('false');
 });
 
+test('stepping through curiosities wraps around both ends', () => {
+  render(<LandingPage />);
+  fireEvent.click(
+    screen.getByRole('button', { name: 'Previous curious overlap' }),
+  );
+  expect(
+    screen
+      .getByRole('button', { name: 'Joan & Vlad' })
+      .getAttribute('aria-pressed'),
+  ).toBe('true');
+  fireEvent.click(screen.getByRole('button', { name: 'Next curious overlap' }));
+  expect(
+    screen
+      .getByRole('button', { name: 'Einstein & Jobs' })
+      .getAttribute('aria-pressed'),
+  ).toBe('true');
+});
+
 test('links each mark of the open curiosity to its entity on the timeline', () => {
   render(<LandingPage />);
   const hrefs = screen

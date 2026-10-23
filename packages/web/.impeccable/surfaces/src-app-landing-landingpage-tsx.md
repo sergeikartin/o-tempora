@@ -17,7 +17,7 @@ OWN-WORLD: Existing Ledger & Ink: parchment ground, ink text, one oxblood CTA, r
 
 STORY: The visitor reads one surprising sentence, sees the marks that prove it on one axis, understands the product, and either presses the button or taps another curiosity and gets the same reaction again.
 
-FIRST VIEWPORT: Left column: headline 60px, 16px pitch, the curiosity sentence at 30px Fraunces (block sized to the longest sentence so nothing below it moves), CTA, then pill chips. Right column (about 420px): figure with its marks, axis and caption plus Entity Links. CTA stays above the fold on a 360x640 phone, chips scroll in one row under it, figure below.
+FIRST VIEWPORT: Left column: headline 60px, 16px pitch, the curiosity sentence at 30px Fraunces (block sized to the longest sentence so nothing below it moves), CTA, then pill chips. Right column (about 420px): figure with its marks, axis and caption plus Entity Links. CTA stays above the fold on a 360x640 phone, chips wrap under it, figure below. Below 640px the chips give way to a prev/next stepper under the figure, so the figure enters the first screen.
 
 FORM: Quiet Folio with a case switcher; user-chosen over a scroll of curiosities and an auto-rotating hero (seed:d12fb562934fb476, reroll 3, assigned form kept).
 

@@ -87,6 +87,8 @@
   "landingHeadline": "Every life in context.",
   "landingPitch": "People, conflicts and milestones from about 800 BCE to today share one axis, so you can see who lived at the same time.",
   "landingCasesLabel": "Curious overlaps",
+  "landingPrevCase": "Previous curious overlap",
+  "landingNextCase": "Next curious overlap",
   "landingOpenOnTimeline": "Open on the timeline:",
   "landingCase.einstein-jobs.chip": "Einstein & Jobs",
   "landingCase.einstein-jobs.lede": "Albert Einstein and Steve Jobs were alive at the same time.",
