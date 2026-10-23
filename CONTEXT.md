@@ -1,4 +1,4 @@
-# Same Sky
+# O Tempora
 
 A read-only, zoomable visualization of world history — People, Conflicts, and Milestones lanes, hardcoded ahead of time.
 

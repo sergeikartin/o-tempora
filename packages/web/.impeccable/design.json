@@ -1,0 +1,595 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T07:50:51.060Z",
+  "title": "Design System: O Tempora",
+  "extensions": {
+    "colorMeta": {
+      "parchment": {
+        "role": "neutral",
+        "displayName": "Parchment",
+        "canonical": "#f2e9d2",
+        "oklch": "oklch(93.5% 0.032 89)",
+        "tonalRamp": [
+          "#1c1504",
+          "#362f1d",
+          "#524b38",
+          "#716955",
+          "#908873",
+          "#b1a993",
+          "#d4cbb4",
+          "#f7eed7"
+        ]
+      },
+      "ledger-paper": {
+        "role": "neutral",
+        "displayName": "Ledger Paper",
+        "canonical": "#fbf6e9",
+        "oklch": "oklch(97.3% 0.018 89)",
+        "tonalRamp": [
+          "#19160d",
+          "#332f25",
+          "#4f4b41",
+          "#6d695e",
+          "#8d887d",
+          "#aea99d",
+          "#d0cbbf",
+          "#f3eee1"
+        ]
+      },
+      "white-sheet": {
+        "role": "neutral",
+        "displayName": "White Sheet",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#161616",
+          "#2f2f2f",
+          "#4b4b4b",
+          "#696969",
+          "#898989",
+          "#a9a9a9",
+          "#cbcbcb",
+          "#eeeeee"
+        ]
+      },
+      "axis-bar": {
+        "role": "neutral",
+        "displayName": "Axis Bar",
+        "canonical": "#ebddbd",
+        "oklch": "oklch(90.1% 0.045 87)",
+        "tonalRamp": [
+          "#1e1400",
+          "#392e13",
+          "#564a2e",
+          "#74684b",
+          "#94876a",
+          "#b6a88a",
+          "#d8caab",
+          "#fbedcd"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e0d3ac",
+        "oklch": "oklch(86.8% 0.054 92)",
+        "tonalRamp": [
+          "#1d1500",
+          "#392e0a",
+          "#564b28",
+          "#746945",
+          "#948863",
+          "#b6a983",
+          "#d8cba4",
+          "#fbeec6"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "canonical": "#c7b383",
+        "oklch": "oklch(77.2% 0.068 88)",
+        "tonalRamp": [
+          "#1e1500",
+          "#3d2d00",
+          "#5b491b",
+          "#7a6739",
+          "#9a8758",
+          "#bba878",
+          "#deca99",
+          "#ffedc3"
+        ]
+      },
+      "control-border": {
+        "role": "neutral",
+        "displayName": "Control Border",
+        "canonical": "#837757",
+        "oklch": "oklch(57.2% 0.048 90)",
+        "tonalRamp": [
+          "#1e1500",
+          "#392e10",
+          "#564a2c",
+          "#746849",
+          "#948867",
+          "#b5a987",
+          "#d8cba8",
+          "#fbeeca"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#241a10",
+        "oklch": "oklch(22.7% 0.024 66)",
+        "tonalRamp": [
+          "#1e140a",
+          "#382d23",
+          "#55493e",
+          "#73675b",
+          "#93867a",
+          "#b4a79a",
+          "#d7c9bb",
+          "#faecde"
+        ]
+      },
+      "faded-ink": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#6b6046",
+        "oklch": "oklch(49.2% 0.041 88)",
+        "tonalRamp": [
+          "#1e1500",
+          "#382e16",
+          "#554a31",
+          "#73684e",
+          "#93886c",
+          "#b4a88c",
+          "#d7caad",
+          "#faeed0"
+        ]
+      },
+      "oxblood": {
+        "role": "primary",
+        "displayName": "Oxblood Seal",
+        "canonical": "#8a2a1a",
+        "oklch": "oklch(43.0% 0.133 32)",
+        "tonalRamp": [
+          "#320100",
+          "#5c0d02",
+          "#852515",
+          "#a84635",
+          "#cc6753",
+          "#f18873",
+          "#fcb9ab",
+          "#ffe9e4"
+        ]
+      },
+      "oxblood-deep": {
+        "role": "primary",
+        "displayName": "Deep Oxblood",
+        "canonical": "#6e2013",
+        "oklch": "oklch(36.6% 0.113 32)",
+        "tonalRamp": [
+          "#320100",
+          "#5c0d02",
+          "#7d2e21",
+          "#a04d3e",
+          "#c36d5d",
+          "#e88e7c",
+          "#fcb9ab",
+          "#ffe9e4"
+        ]
+      },
+      "conflict-red": {
+        "role": "secondary",
+        "displayName": "Conflict Red",
+        "canonical": "#8c2d2b",
+        "oklch": "oklch(44.0% 0.130 25)",
+        "tonalRamp": [
+          "#330002",
+          "#5e050b",
+          "#842524",
+          "#a74641",
+          "#cb6660",
+          "#f0877f",
+          "#ffb6af",
+          "#ffe9e6"
+        ]
+      },
+      "domain-sports": {
+        "role": "secondary",
+        "displayName": "Rosewood",
+        "canonical": "#9a5c73",
+        "oklch": "oklch(55.1% 0.086 357)",
+        "tonalRamp": [
+          "#310017",
+          "#4f1931",
+          "#6f364d",
+          "#91536a",
+          "#b3738a",
+          "#d693ab",
+          "#fab4cd",
+          "#ffe7ef"
+        ]
+      },
+      "domain-business-law": {
+        "role": "secondary",
+        "displayName": "Fern",
+        "canonical": "#347830",
+        "oklch": "oklch(51.1% 0.127 143)",
+        "tonalRamp": [
+          "#001d00",
+          "#053b04",
+          "#135c11",
+          "#377b33",
+          "#589c53",
+          "#78be73",
+          "#9ae194",
+          "#ccffc7"
+        ]
+      },
+      "domain-humanities": {
+        "role": "secondary",
+        "displayName": "Indigo Ink",
+        "canonical": "#4e4993",
+        "oklch": "oklch(44.8% 0.118 284)",
+        "tonalRamp": [
+          "#150048",
+          "#2b2167",
+          "#453f88",
+          "#625eaa",
+          "#807ecd",
+          "#a09ff1",
+          "#c4c5fd",
+          "#ecedff"
+        ]
+      },
+      "domain-institutions": {
+        "role": "secondary",
+        "displayName": "Brick",
+        "canonical": "#b6514c",
+        "oklch": "oklch(56.2% 0.132 25)",
+        "tonalRamp": [
+          "#320003",
+          "#5f020a",
+          "#852323",
+          "#a84541",
+          "#cc655f",
+          "#f1867e",
+          "#fcb8b1",
+          "#fee9e7"
+        ]
+      },
+      "domain-exploration": {
+        "role": "secondary",
+        "displayName": "Slate Blue",
+        "canonical": "#3e70b0",
+        "oklch": "oklch(54.1% 0.114 255)",
+        "tonalRamp": [
+          "#001534",
+          "#042e5f",
+          "#194b88",
+          "#386aaa",
+          "#588bcd",
+          "#78acf1",
+          "#abcefd",
+          "#e4f0ff"
+        ]
+      },
+      "domain-arts": {
+        "role": "secondary",
+        "displayName": "Terracotta",
+        "canonical": "#a85a3d",
+        "oklch": "oklch(55.4% 0.111 41)",
+        "tonalRamp": [
+          "#2d0700",
+          "#541a01",
+          "#7b3214",
+          "#9e5134",
+          "#c17053",
+          "#e59172",
+          "#fdb9a0",
+          "#fee9e2"
+        ]
+      },
+      "domain-science-technology": {
+        "role": "secondary",
+        "displayName": "Verdigris",
+        "canonical": "#357b5c",
+        "oklch": "oklch(52.9% 0.087 162)",
+        "tonalRamp": [
+          "#001c10",
+          "#003a25",
+          "#0a5a3d",
+          "#33795a",
+          "#549979",
+          "#75bb99",
+          "#97deba",
+          "#c3ffe0"
+        ]
+      },
+      "domain-public-figure": {
+        "role": "secondary",
+        "displayName": "Ochre",
+        "canonical": "#8e672c",
+        "oklch": "oklch(54.2% 0.091 75)",
+        "tonalRamp": [
+          "#211300",
+          "#422a00",
+          "#664408",
+          "#886125",
+          "#a98146",
+          "#cba167",
+          "#efc388",
+          "#ffebd2"
+        ]
+      },
+      "milestone-science-innovation": {
+        "role": "secondary",
+        "displayName": "Deep Verdigris",
+        "canonical": "#008255",
+        "oklch": "oklch(53.5% 0.120 160)",
+        "tonalRamp": [
+          "#001c0f",
+          "#023a24",
+          "#005b3a",
+          "#157c53",
+          "#359f70",
+          "#5bc190",
+          "#7fe4b1",
+          "#c4fede"
+        ]
+      },
+      "milestone-social-culture": {
+        "role": "secondary",
+        "displayName": "Dark Ochre",
+        "canonical": "#946513",
+        "oklch": "oklch(54.3% 0.108 75)",
+        "tonalRamp": [
+          "#211300",
+          "#432a00",
+          "#664406",
+          "#8d5f06",
+          "#af7e34",
+          "#d19f57",
+          "#f5c179",
+          "#ffebd2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "viewport-range": {
+        "displayName": "Viewport Range",
+        "purpose": "The window of years as the screen heading."
+      },
+      "panel-heading": {
+        "displayName": "Panel Heading",
+        "purpose": "Entity name and About heading."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "O Tempora beside the seal mark."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions in the detail panel."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Date lines, buttons, links, italic taglines."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Pills, inputs, results, switch labels."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Attribution and switch descriptions."
+      },
+      "lane-label": {
+        "displayName": "Lane Label",
+        "purpose": "Entry labels on the timeline."
+      },
+      "eyebrow": {
+        "displayName": "Eyebrow",
+        "purpose": "Uppercase section headings."
+      },
+      "axis-label": {
+        "displayName": "Axis Label",
+        "purpose": "Year Axis tick labels."
+      },
+      "badge": {
+        "displayName": "Badge",
+        "purpose": "Type badge in search results."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card",
+        "value": "0 4px 16px rgba(36, 26, 16, 0.12)",
+        "purpose": "Floating sidebar and minimap card."
+      },
+      {
+        "name": "tooltip",
+        "value": "0 2px 6px rgba(36, 26, 16, 0.15)",
+        "purpose": "Minimap hover tooltip."
+      },
+      {
+        "name": "dropdown",
+        "value": "0 4px 12px rgba(0, 0, 0, 0.15)",
+        "purpose": "Search results."
+      },
+      {
+        "name": "drawer",
+        "value": "8px 0 32px rgba(0, 0, 0, 0.15)",
+        "purpose": "Mobile drawer and detail side panel."
+      },
+      {
+        "name": "modal",
+        "value": "0 8px 32px rgba(0, 0, 0, 0.25)",
+        "purpose": "About modal."
+      }
+    ],
+    "motion": [
+      {
+        "name": "duration-fast",
+        "value": "120ms",
+        "purpose": "Hover feedback."
+      },
+      {
+        "name": "duration-base",
+        "value": "200ms",
+        "purpose": "Panel slides and fades."
+      },
+      {
+        "name": "easing",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "All transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "960px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Filter Pill",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Multi-select filter for an Occupation Domain, Region or lane group; the swatch carries the lane colour.",
+      "html": "<ul style=\"list-style:none;display:flex;gap:6px;flex-wrap:wrap\"><li><button class=\"ds-pill\"><span class=\"ds-swatch\" style=\"background:#347830\"></span>Business &amp; Law</button></li><li><button class=\"ds-pill ds-pill-active\"><span class=\"ds-swatch\" style=\"background:#4e4993\"></span>Humanities</button></li></ul>",
+      "css": ".ds-pill{display:flex;align-items:center;gap:8px;padding:4px 10px;border-radius:9999px;background:var(--color-bg-surface-raised, #fff);border:1px solid var(--color-border-control, #837757);font:inherit;font-family:'Archivo', sans-serif;font-size:12px;color:var(--color-text-primary, #241a10);cursor:pointer;transition:border-color 120ms cubic-bezier(.4,0,.2,1),background-color 120ms cubic-bezier(.4,0,.2,1)}.ds-pill:hover{border-color:var(--color-text-secondary, #6b6046);background:var(--color-bg-surface, #fbf6e9)}.ds-pill:focus-visible{outline: 2px solid var(--color-focus-ring, #6e2013); outline-offset: 1px;}.ds-pill-active{border-color:var(--color-accent-selected, #8a2a1a);background:var(--color-bg-surface, #fbf6e9);font-weight:600;box-shadow:inset 0 0 0 1px var(--color-accent-selected, #8a2a1a)}.ds-pill-active:hover{border-color:var(--color-accent-selected, #8a2a1a)}.ds-swatch{flex:0 0 auto;width:10px;height:10px;border-radius:9999px}"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "search-input",
+      "description": "Pill-shaped search field with a ledger-paper hover; matches show in oxblood.",
+      "html": "<input class=\"ds-search\" type=\"text\" placeholder=\"Search people, conflicts, milestones\" />",
+      "css": ".ds-search{box-sizing:border-box;width:100%;padding:6px 10px;border-radius:9999px;background:var(--color-bg-surface-raised, #fff);border:1px solid var(--color-border-control, #837757);font:inherit;font-family:'Archivo', sans-serif;font-size:12px;color:var(--color-text-primary, #241a10);transition:border-color 120ms cubic-bezier(.4,0,.2,1),background-color 120ms cubic-bezier(.4,0,.2,1)}.ds-search::placeholder{color:var(--color-text-secondary, #6b6046)}.ds-search:hover{border-color:var(--color-text-secondary, #6b6046);background:var(--color-bg-surface, #fbf6e9)}.ds-search:focus-visible{outline: 2px solid var(--color-focus-ring, #6e2013); outline-offset: 1px;}"
+    },
+    {
+      "name": "Detail Level Switch",
+      "kind": "custom",
+      "refersTo": "switch-dot",
+      "description": "Four-stop segmented track; oxblood fills up to the selected level and a pin marks it.",
+      "html": "<div class=\"ds-switch\"><div class=\"ds-labels\"><span class=\"ds-l1 ds-reached\">Legendary</span><span class=\"ds-l2 ds-reached\">Mainstream</span><span class=\"ds-l3\">Specialized</span><span class=\"ds-l4\">Deep Cut</span></div><div class=\"ds-track\"><div class=\"ds-fill\"></div><button class=\"ds-dot ds-dot-on\" aria-label=\"Legendary\"></button><button class=\"ds-dot ds-dot-on ds-dot-sel\" aria-label=\"Mainstream\"></button><button class=\"ds-dot\" aria-label=\"Specialized\"></button><button class=\"ds-dot\" aria-label=\"Deep Cut\"></button></div><p class=\"ds-desc\">Well-known figures and events.</p></div>",
+      "css": ".ds-switch{width:260px;font-family:'Archivo', sans-serif}.ds-labels{position:relative;height:16px;margin-bottom:4px;font-size:12px;color:var(--color-text-primary, #241a10)}.ds-labels span{position:absolute;top:0;white-space:nowrap}.ds-l1{left:0}.ds-l2{left:calc(7px + (100% - 14px)/3);transform:translateX(-50%)}.ds-l3{left:calc(7px + (100% - 14px)*2/3);transform:translateX(-50%)}.ds-l4{right:0}.ds-reached{color:var(--color-accent-selected, #8a2a1a);font-weight:700}.ds-track{position:relative;display:flex;justify-content:space-between;align-items:center;height:24px}.ds-fill{position:absolute;top:50%;left:7px;right:7px;height:4px;border-radius:9999px;transform:translateY(-50%);background:linear-gradient(to right,var(--color-accent-selected, #8a2a1a) 0%,var(--color-accent-selected, #8a2a1a) 33%,var(--color-border-subtle, #e0d3ac) 33%,var(--color-border-subtle, #e0d3ac) 100%)}.ds-dot{position:relative;z-index:1;flex:none;width:14px;height:14px;padding:0;border:2px solid var(--color-border-control, #837757);border-radius:9999px;background:var(--color-bg-surface-raised, #fff);cursor:pointer}.ds-dot:hover{border-color:var(--color-text-secondary, #6b6046)}.ds-dot:focus-visible{outline:2px solid var(--color-focus-ring, #6e2013);outline-offset:2px}.ds-dot-on{border-color:var(--color-accent-selected, #8a2a1a);background:var(--color-accent-selected, #8a2a1a)}.ds-dot-sel::after{content:\"\";position:absolute;left:50%;top:50%;z-index:-1;width:18px;height:18px;background:var(--color-accent-selected, #8a2a1a);border-radius:50% 50% 50% 0;transform:translate(-50%,-68%) rotate(-45deg)}.ds-desc{margin:6px 0 0;color:var(--color-text-secondary, #6b6046);font-size:11px;line-height:1.4}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single oxblood call to action, such as the Wikipedia link in the detail panel.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Read on Wikipedia</a>",
+      "css": ".ds-btn{display:inline-block;padding:8px 14px;border-radius:8px;background:var(--color-accent-selected, #8a2a1a);color:var(--color-bg-surface-raised, #fff);font-family:'Archivo', sans-serif;font-size:13px;text-decoration:none}.ds-btn:hover{background:var(--color-focus-ring, #6e2013)}.ds-btn:focus-visible{outline:2px solid var(--color-focus-ring, #6e2013);outline-offset:2px}"
+    },
+    {
+      "name": "Zoom Controls",
+      "kind": "custom",
+      "refersTo": "icon-button",
+      "description": "Joined vertical group of 28px glyph buttons with a Control Border outline.",
+      "html": "<div class=\"ds-zoom\"><button aria-label=\"Zoom in\">+</button><button aria-label=\"Zoom out\">&minus;</button></div>",
+      "css": ".ds-zoom{display:inline-flex;flex-direction:column;border:1px solid var(--color-border-control, #837757);border-radius:8px;overflow:hidden}.ds-zoom button{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;border-bottom:1px solid var(--color-border-control, #837757);background:var(--color-bg-surface-raised, #fff);color:var(--color-text-primary, #241a10);font-family:'Archivo', sans-serif;font-size:16px;line-height:1;cursor:pointer}.ds-zoom button:last-child{border-bottom:none}.ds-zoom button:hover{background:var(--color-bg-surface, #fbf6e9)}.ds-zoom button:focus-visible{outline:2px solid var(--color-focus-ring, #6e2013);outline-offset:-2px}"
+    },
+    {
+      "name": "Close Button",
+      "kind": "button",
+      "refersTo": "close-button",
+      "description": "28px round parchment button with a × glyph, used in panels and drawers.",
+      "html": "<button class=\"ds-close\" aria-label=\"Close\">&times;</button>",
+      "css": ".ds-close{width:28px;height:28px;border:none;border-radius:9999px;background:var(--color-bg-base, #f2e9d2);color:var(--color-text-primary, #241a10);font-size:16px;line-height:1;cursor:pointer}.ds-close:focus-visible{outline:2px solid var(--color-focus-ring, #6e2013);outline-offset:2px}"
+    },
+    {
+      "name": "Floating Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Ledger-paper card with a hairline border and soft ink-tinted shadow; eyebrow heading over pills.",
+      "html": "<section class=\"ds-card\"><h3 class=\"ds-eyebrow\">Occupation</h3><p class=\"ds-card-body\">Pills, inputs and sections sit on this surface.</p></section>",
+      "css": ".ds-card{width:280px;padding:12px;background:var(--color-bg-surface, #fbf6e9);border:1px solid var(--color-border-subtle, #e0d3ac);border-radius:12px;box-shadow:0 4px 16px rgba(36,26,16,.12);font-family:'Archivo', sans-serif;color:var(--color-text-primary, #241a10)}.ds-eyebrow{margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-secondary, #6b6046)}.ds-card-body{margin:0;font-size:13px;line-height:1.5}"
+    },
+    {
+      "name": "Entity Heading",
+      "kind": "custom",
+      "refersTo": "panel-heading",
+      "description": "Detail-panel header: Fraunces name, dated line and italic tagline in Faded Ink.",
+      "html": "<div class=\"ds-entity\"><h3 class=\"ds-name\">Leonardo da Vinci</h3><p class=\"ds-date\">1452 &ndash; 1519</p><p class=\"ds-tagline\">Italian polymath of the Renaissance</p></div>",
+      "css": ".ds-entity{width:300px;font-family:'Archivo', sans-serif;color:var(--color-text-primary, #241a10)}.ds-name{margin:0;font-family:'Fraunces',serif;font-size:20px;font-weight:600;line-height:1.2}.ds-date{margin:4px 0 10px;font-size:13px;color:var(--color-text-secondary, #6b6046);font-variant-numeric:tabular-nums}.ds-tagline{margin:0;font-size:13px;font-style:italic;color:var(--color-text-secondary, #6b6046)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Scribe's Chronicle",
+    "overview": "**Creative North Star: \"The Scribe's Chronicle\"**\n\nO Tempora reads as a chronicle kept by one careful hand: aged parchment for the page, iron-gall ink for every word, and a single oxblood accent standing in for a wax seal. The data is the ornament. Colour, line and dot do the encoding, so chrome stays small, warm and quiet, and nothing competes with the marks on the timeline.\n\nThe system is dense but unhurried. Controls are small, pill-shaped and exact; labels are short sentence-case nouns; years are set in tabular figures in the same face as the text around them. Fraunces appears only where a chronicle would letter a heading: the Viewport Range, an entity's name, the wordmark. There is one theme, light, and the system does not ask for a second.",
+    "keyCharacteristics": [
+      "Warm parchment ground with ink text. No pure black, no pure-white page.",
+      "One sharp accent (oxblood) reserved for state: selected, reached, primary action.",
+      "Colour encodes category within a lane; shape encodes duration (rounded-cap line for a period, dot for a moment), identically in all three lanes.",
+      "Tonal layering for depth. Shadows only on cards that float over the canvas.",
+      "Quiet and exact controls: hairline borders, 12px type, 28px targets."
+    ],
+    "rules": [
+      {
+        "name": "The One Seal Rule",
+        "body": "Oxblood marks state and nothing else. It is never decoration and never a lane colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink Label Rule",
+        "body": "Entry labels are always Ink, never the mark's colour; the bar or dot alone carries the category.",
+        "section": "colors"
+      },
+      {
+        "name": "The Fixed Legend Rule",
+        "body": "The eight People domains render in the order listed above. Reordering re-opens the colour-blind adjacency checks.",
+        "section": "colors"
+      },
+      {
+        "name": "The Border Ladder Rule",
+        "body": "An interactive control's border is Control Border. Hairline and Strong Rule never border a control.",
+        "section": "colors"
+      },
+      {
+        "name": "The Same Face Rule",
+        "body": "Years and dates use Archivo with tabular figures, never a separate monospace.",
+        "section": "typography"
+      },
+      {
+        "name": "The Three Headings Rule",
+        "body": "Fraunces is for the Viewport Range, the entity name and the wordmark. Chrome stays in Archivo.",
+        "section": "typography"
+      },
+      {
+        "name": "The Floaters-Only Rule",
+        "body": "A surface gets a shadow only if it sits over the canvas. Everything inline is separated by tone and hairlines.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Halo Rule",
+        "body": "A selected or search-jumped mark gets a duplicate shape in Selection Halo, 8px wider than the grown mark, drawn behind it. The mark itself is never recoloured.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use Ink for text and every entry label, and Faded Ink for secondary text; both pass 4.5:1 on every surface they sit on.",
+      "**Do** border interactive controls with Control Border (#837757) and step hover to Faded Ink.",
+      "**Do** give every interactive control a 2px Deep Oxblood focus outline with a 1–2px offset (negative inside joined groups).",
+      "**Do** keep chrome type at 12px or larger where it is not data; 10–11px is for ticks, badges and lane labels only.",
+      "**Do** use tabular figures for every year and date.",
+      "**Do** keep marks at least 3:1 against parchment at resting opacity; check any new mark colour against the existing set, not just its neighbour.",
+      "**Do** use text glyphs (`×`, `+`, `−`, `«`) for tight controls."
+    ],
+    "donts": [
+      "**Don't** use oxblood as a lane colour, a decoration, or a hover tint.",
+      "**Don't** recolour a selected mark; add the halo.",
+      "**Don't** colour entry labels with their mark's colour.",
+      "**Don't** add a dark theme or a second accent.",
+      "**Don't** use gradients, imagery or emoji in chrome, or exclamation marks and marketing voice in copy.",
+      "**Don't** add a shadow to an inline surface or a border to a control in Hairline or Strong Rule.",
+      "**Don't** introduce an icon set or a monospace face.",
+      "**Don't** reorder the People domain legend."
+    ]
+  }
+}
