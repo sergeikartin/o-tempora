@@ -1,183 +1,176 @@
 .switch {
+  position: relative;
   display: block;
   margin: 0;
   padding: 0;
   min-width: 0;
   border: none;
-}
-
-/* Position: absolute at the exact same x-coordinates as the dots below
-   (see .trackFill's insets and .dot) rather than via flex/grid, since
-   those box models space items by their own width or by equal columns —
-   neither reproduces the dots' "fixed 14px box, space-between" geometry
-   for these variable-width text labels. Height is fixed because absolutely
-   positioned children don't contribute to it. */
-.labels {
-  position: relative;
-  height: 16px;
-  margin-bottom: 4px;
-}
-
-/* Each label's box is a quarter of the track; the Top Bar gives the track at
-   least ~280px, enough for the longer level names (e.g. "Specialized") at
-   11px. overflow/nowrap/ellipsis are a safety net: a wrapped line would
-   overflow .labels' fixed height and overlap the neighboring label. */
-.label {
-  position: absolute;
-  top: 0;
-  max-width: calc(25% - 4px);
-  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.4;
   color: var(--color-text-primary);
-  font-size: 11px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  transition: color var(--motion-duration-base) var(--motion-easing);
 }
 
-.label:nth-child(1) {
-  left: 0;
+.switch button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
-.label:nth-child(2) {
-  left: calc(7px + (100% - 14px) / 3);
-  text-align: center;
-  transform: translateX(-50%);
+.switch button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
 }
 
-.label:nth-child(3) {
-  left: calc(7px + (100% - 14px) * 2 / 3);
-  text-align: center;
-  transform: translateX(-50%);
-}
-
-.label:nth-child(4) {
-  right: 0;
-  text-align: right;
-}
-
-.labelReached {
-  color: var(--color-accent-selected);
-  font-weight: 700;
-}
-
-.track {
-  position: relative;
+.trigger {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 24px;
-}
-
-/* Registered so the fill's gradient stop (--progress) is an animatable
-   type — lets .trackFill's transition below slide the color boundary
-   instead of snapping it. */
-@property --progress {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
-
-/* Insets equal the dot's own radius (half of .dot's 14px) so the line's
-   ends sit exactly under the first/last dot's center, matching the flex
-   row's space-between geometry (see .dot). .labels above mirrors this same
-   inset math to keep each label centered over its dot. */
-.trackFill {
-  position: absolute;
-  top: 50%;
-  left: 7px;
-  right: 7px;
-  height: 4px;
-  border-radius: var(--radius-full);
-  transform: translateY(-50%);
-  background: linear-gradient(
-    to right,
-    var(--color-accent-selected) 0%,
-    var(--color-accent-selected) var(--progress),
-    var(--color-border-subtle) var(--progress),
-    var(--color-border-subtle) 100%
-  );
-  transition: --progress var(--motion-duration-base) var(--motion-easing);
-}
-
-.dot {
-  position: relative;
-  z-index: 1;
-  flex: none;
-  width: 14px;
-  height: 14px;
-  padding: 0;
-  border: 2px solid var(--color-border-control);
+  gap: 8px;
+  width: 100%;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border-control);
   border-radius: var(--radius-full);
   background: var(--color-bg-surface-raised);
-  cursor: pointer;
+  text-align: left;
   transition:
-    background-color var(--motion-duration-fast) var(--motion-easing),
-    border-color var(--motion-duration-fast) var(--motion-easing);
+    border-color var(--motion-duration-fast) var(--motion-easing),
+    background-color var(--motion-duration-fast) var(--motion-easing);
 }
 
-.dot:hover {
+.trigger:hover {
   border-color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
 }
 
-.dot:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-
-.dotReached {
+.trigger[aria-expanded="true"] {
   border-color: var(--color-accent-selected);
+  box-shadow: inset 0 0 0 1px var(--color-accent-selected);
+  background: var(--color-bg-surface);
+}
+
+.switch .trigger:focus-visible {
+  outline-offset: 1px;
+}
+
+.label {
+  flex: none;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  flex: none;
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  transition: transform var(--motion-duration-fast) var(--motion-easing);
+}
+
+.trigger[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+.pips {
+  display: inline-flex;
+  flex: none;
+  gap: 3px;
+}
+
+.pip {
+  width: 10px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-border-subtle);
+  transition: background-color var(--motion-duration-base) var(--motion-easing);
+}
+
+.pipOn {
   background: var(--color-accent-selected);
 }
 
-.dotSelected {
-  border-color: var(--color-accent-selected);
-  background: var(--color-accent-selected);
-  color: var(--color-accent-selected);
-}
-
-/* Fixed-size dot box keeps the flex row's space-between math (and the
-   line's endpoints) stable — the active marker is this overlay scaling
-   in/out, not a box resize. A map-pin shape (round with one square
-   corner) rotated -45deg points its tip straight down onto the dot's own
-   center, which sits on the line. */
-.dot::after {
-  content: "";
+.panel {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: -1;
-  width: 18px;
-  height: 18px;
-  background: var(--color-accent-selected);
-  border-radius: 50% 50% 50% 0;
-  transform: translate(-50%, -68%) rotate(-45deg) scale(0);
-  transition: transform var(--motion-duration-base) var(--motion-easing);
-  pointer-events: none;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 40;
+  display: grid;
+  gap: 2px;
+  width: max(100%, 300px);
+  max-width: calc(100vw - 24px);
+  padding: 4px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface-raised);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.dotSelected::after {
-  transform: translate(-50%, -68%) rotate(-45deg) scale(1);
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 12px;
+  min-height: 44px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  text-align: left;
+}
+
+.row:hover {
+  background: var(--color-bg-surface);
+}
+
+.row[aria-pressed="true"] {
+  background: var(--color-bg-surface);
+  box-shadow: inset 0 0 0 1px var(--color-accent-selected);
+}
+
+.row[aria-pressed="true"] .name {
+  font-weight: 600;
+}
+
+.name {
+  grid-column: 1;
+}
+
+.description {
+  grid-column: 1;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+}
+
+.row .pips {
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .dot[aria-busy="true"]::after {
-    animation: pin-loading 900ms ease-in-out infinite;
+  .trigger[aria-busy="true"] {
+    animation: trigger-loading 900ms ease-in-out infinite;
   }
 }
 
-@keyframes pin-loading {
+@keyframes trigger-loading {
   0%,
   100% {
-    transform: translate(-50%, -68%) rotate(-45deg) scale(1);
     opacity: 1;
   }
   50% {
-    transform: translate(-50%, -68%) rotate(-45deg) scale(1.2);
-    opacity: 0.7;
+    opacity: 0.55;
   }
 }
 
-/* Visually hidden — the pin's own pulse (above) carries the loading
+/* Visually hidden — the trigger's own pulse (above) carries the loading
    signal for sighted users; this keeps it announced for screen readers. */
 .srOnly {
   position: absolute;

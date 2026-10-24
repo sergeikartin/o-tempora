@@ -98,11 +98,10 @@ function panelText(container: HTMLElement) {
 }
 
 function isLevelSelected(container: HTMLElement, label: string) {
-  return (
-    container
-      .querySelector(`button[aria-label="${label}"]`)
-      ?.getAttribute('aria-pressed') === 'true'
+  const trigger = container.querySelector(
+    'fieldset[aria-label="Detail Level"] > button',
   );
+  return trigger?.textContent?.includes(label) ?? false;
 }
 
 beforeEach(() => {
@@ -442,7 +441,14 @@ test('a member the Detail Level hides stays selected, keeps its band and is note
 
   await act(async () => {
     rtl.fireEvent.click(
-      container.querySelector('button[aria-label="Legendary"]') as Element,
+      container.querySelector(
+        'fieldset[aria-label="Detail Level"] > button',
+      ) as Element,
+    );
+  });
+  await act(async () => {
+    rtl.fireEvent.click(
+      rtl.within(container).getByRole('button', { name: /^Legendary/ }),
     );
   });
 

@@ -17,7 +17,7 @@ Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact
 | `color-bg-surface-raised` | `#FFFFFF` | Filter chips, filter pills |
 | `color-border-subtle` | `#E0D3AC` | Default borders, dividers |
 | `color-border-strong` | `#C7B383` | Hover/active borders |
-| `color-border-control` | `#837757` | Borders of interactive controls (filter pills, search input, switch dots, zoom, Filters and Help buttons) — 3.7:1 on `color-bg-base`, 4.4:1 on `color-bg-surface-raised`; hover steps to `color-text-secondary` |
+| `color-border-control` | `#837757` | Borders of interactive controls (filter pills, search input, Detail Level trigger, zoom, Filters and Help buttons) — 3.7:1 on `color-bg-base`, 4.4:1 on `color-bg-surface-raised`; hover steps to `color-text-secondary` |
 | `color-border-emphasis` | `#837757` | Year Axis's century tick mark (darkest of its three tick layers) |
 | `color-text-primary` | `#241A10` | Primary text (ink) |
 | `color-text-secondary` | `#6B6046` | Secondary/muted text (faded ink) |

@@ -4,46 +4,58 @@ import { DetailLevelSwitch } from './DetailLevelSwitch';
 
 afterEach(cleanup);
 
-test('shows all 4 level names as labels, with the selected one active', () => {
-  const { getByRole } = render(
+const TRIGGER_NAME = /^Detail Level/;
+
+function renderSwitch(
+  overrides: Partial<Parameters<typeof DetailLevelSwitch>[0]> = {},
+) {
+  return render(
     <DetailLevelSwitch
       selectedLevelId="mainstream"
       onSelectLevel={vi.fn()}
       loadingLevelIds={[]}
+      {...overrides}
     />,
   );
+}
+
+test('collapsed, shows only the selected level name on the trigger', () => {
+  const { getByRole, queryByRole } = renderSwitch();
+
+  const trigger = getByRole('button', { name: TRIGGER_NAME });
+  expect(trigger.textContent).toContain('Mainstream');
+  expect(trigger.getAttribute('aria-expanded')).toBe('false');
+  expect(queryByRole('button', { name: /^Legendary/ })).toBeNull();
+});
+
+test('opening lists all 4 levels, with the selected one pressed', () => {
+  const { getByRole } = renderSwitch();
+
+  fireEvent.click(getByRole('button', { name: TRIGGER_NAME }));
 
   expect(
-    getByRole('button', { name: 'Mainstream' }).getAttribute('aria-pressed'),
+    getByRole('button', { name: TRIGGER_NAME }).getAttribute('aria-expanded'),
   ).toBe('true');
-  for (const label of ['Legendary', 'Specialized', 'Deep Cut']) {
+  expect(
+    getByRole('button', { name: /^Mainstream/ }).getAttribute('aria-pressed'),
+  ).toBe('true');
+  for (const label of [/^Legendary/, /^Specialized/, /^Deep Cut/]) {
     expect(
       getByRole('button', { name: label }).getAttribute('aria-pressed'),
     ).toBe('false');
   }
 });
 
-test('renders the selected level description as helper text, updating on selection', () => {
-  const { getByText, rerender } = render(
-    <DetailLevelSwitch
-      selectedLevelId="mainstream"
-      onSelectLevel={vi.fn()}
-      loadingLevelIds={[]}
-    />,
-  );
+test('each row carries its level description', () => {
+  const { getByRole, getByText } = renderSwitch();
+
+  fireEvent.click(getByRole('button', { name: TRIGGER_NAME }));
+
   expect(
     getByText(
       'Essential historical figures, key conflicts, and primary milestones.',
     ),
   ).toBeTruthy();
-
-  rerender(
-    <DetailLevelSwitch
-      selectedLevelId="deep-cut"
-      onSelectLevel={vi.fn()}
-      loadingLevelIds={[]}
-    />,
-  );
   expect(
     getByText(
       'Displays high-density details, including niche figures, minor conflicts, and obscure milestones.',
@@ -51,17 +63,12 @@ test('renders the selected level description as helper text, updating on selecti
   ).toBeTruthy();
 });
 
-test('clicking a level calls onSelectLevel once with that level', () => {
+test('picking a level calls onSelectLevel once with that level and closes', () => {
   const onSelectLevel = vi.fn();
-  const { getByRole } = render(
-    <DetailLevelSwitch
-      selectedLevelId="mainstream"
-      onSelectLevel={onSelectLevel}
-      loadingLevelIds={[]}
-    />,
-  );
+  const { getByRole, queryByRole } = renderSwitch({ onSelectLevel });
 
-  fireEvent.click(getByRole('button', { name: 'Deep Cut' }));
+  fireEvent.click(getByRole('button', { name: TRIGGER_NAME }));
+  fireEvent.click(getByRole('button', { name: /^Deep Cut/ }));
 
   expect(onSelectLevel).toHaveBeenCalledTimes(1);
   expect(onSelectLevel).toHaveBeenCalledWith(
@@ -70,71 +77,46 @@ test('clicking a level calls onSelectLevel once with that level', () => {
       values: { people: 80, conflicts: 64, milestones: 55 },
     }),
   );
+  expect(queryByRole('button', { name: /^Legendary/ })).toBeNull();
 });
 
-test('shows a spinner only on the active option when its level is still loading', () => {
-  const { getByRole } = render(
-    <DetailLevelSwitch
-      selectedLevelId="deep-cut"
-      onSelectLevel={vi.fn()}
-      loadingLevelIds={['deep-cut']}
-    />,
-  );
+test('Escape and an outside press both close the list', () => {
+  const { getByRole, queryByRole } = renderSwitch();
+  const open = () =>
+    fireEvent.click(getByRole('button', { name: TRIGGER_NAME }));
 
+  open();
+  fireEvent.keyDown(document, { key: 'Escape' });
+  expect(queryByRole('button', { name: /^Legendary/ })).toBeNull();
+
+  open();
+  fireEvent.pointerDown(document.body);
+  expect(queryByRole('button', { name: /^Legendary/ })).toBeNull();
+});
+
+test('marks the trigger busy only when the selected level is still loading', () => {
+  const { getByRole, rerender } = renderSwitch({
+    selectedLevelId: 'deep-cut',
+    loadingLevelIds: ['deep-cut'],
+  });
   expect(
-    getByRole('button', { name: /Deep Cut/ }).getAttribute('aria-busy'),
+    getByRole('button', { name: TRIGGER_NAME }).getAttribute('aria-busy'),
   ).toBe('true');
-  expect(
-    getByRole('button', { name: 'Mainstream' }).getAttribute('aria-busy'),
-  ).not.toBe('true');
-});
-
-test('shows no spinner when the active level is not in loadingLevelIds', () => {
-  const { getByRole } = render(
-    <DetailLevelSwitch
-      selectedLevelId="mainstream"
-      onSelectLevel={vi.fn()}
-      loadingLevelIds={['deep-cut']}
-    />,
-  );
-
-  expect(
-    getByRole('button', { name: 'Mainstream' }).getAttribute('aria-busy'),
-  ).not.toBe('true');
-});
-
-test('holds the track fill one stop short while deep-cut is still loading', () => {
-  const { getByTestId, rerender } = render(
-    <DetailLevelSwitch
-      selectedLevelId="deep-cut"
-      onSelectLevel={vi.fn()}
-      loadingLevelIds={['deep-cut']}
-    />,
-  );
-  expect(getByTestId('track-fill').style.getPropertyValue('--progress')).toBe(
-    `${(2 / 3) * 100}%`,
-  );
 
   rerender(
     <DetailLevelSwitch
-      selectedLevelId="deep-cut"
-      onSelectLevel={vi.fn()}
-      loadingLevelIds={[]}
-    />,
-  );
-  expect(getByTestId('track-fill').style.getPropertyValue('--progress')).toBe(
-    '100%',
-  );
-});
-
-test('describes the control with the fixed hint, shown as a line under it', () => {
-  const { getByRole, getByText } = render(
-    <DetailLevelSwitch
       selectedLevelId="mainstream"
       onSelectLevel={vi.fn()}
-      loadingLevelIds={[]}
+      loadingLevelIds={['deep-cut']}
     />,
   );
+  expect(
+    getByRole('button', { name: TRIGGER_NAME }).getAttribute('aria-busy'),
+  ).not.toBe('true');
+});
+
+test('describes the control with the fixed hint', () => {
+  const { getByRole, getByText } = renderSwitch();
 
   const hint = getByText('How much to show, most famous first.');
   expect(getByRole('group').getAttribute('aria-describedby')).toBe(hint.id);

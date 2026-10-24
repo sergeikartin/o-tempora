@@ -1,4 +1,4 @@
-import { type CSSProperties, useId } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import {
   DETAIL_LEVELS,
   type DetailLevel,
@@ -16,95 +16,120 @@ interface DetailLevelSwitchProps {
   loadingLevelIds: DetailLevelId[];
 }
 
+// One filled pip per level reached, so the trigger and every row read as a
+// position on the same 4-step scale.
+function Pips({ count }: { count: number }) {
+  return (
+    <span className={styles.pips} aria-hidden="true">
+      {DETAIL_LEVELS.map((level, index) => (
+        <span
+          key={level.id}
+          className={
+            index < count ? `${styles.pip} ${styles.pipOn}` : styles.pip
+          }
+        />
+      ))}
+    </span>
+  );
+}
+
 // 4-position preset that sets the three fame-score floors and triggers
 // whatever fetch the selected level still needs
 // (docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md). The
 // active option is the caller's explicit `selectedLevelId`, not derived from
-// the fame-score values.
+// the fame-score values. Collapsed to a single pill that opens the levels as
+// rows, each with its one-line description.
 export function DetailLevelSwitch({
   selectedLevelId,
   onSelectLevel,
   loadingLevelIds,
 }: DetailLevelSwitchProps) {
   const hintId = useId();
+  const panelId = useId();
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLFieldSetElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const selectedIndex = Math.max(
     0,
     DETAIL_LEVELS.findIndex((level) => level.id === selectedLevelId),
   );
   const selectedLevel = DETAIL_LEVELS[selectedIndex] ?? DETAIL_LEVELS[1];
-  const progress = (selectedIndex / (DETAIL_LEVELS.length - 1)) * 100;
-  const isDeepCutLoading =
-    selectedIndex === DETAIL_LEVELS.length - 1 &&
-    loadingLevelIds.includes(selectedLevelId);
-  // Hold the fill one stop short while deep-cut's data is still loading, so
-  // the last segment only turns accent-colored once it's actually ready.
-  const trackFillProgress = isDeepCutLoading
-    ? ((DETAIL_LEVELS.length - 2) / (DETAIL_LEVELS.length - 1)) * 100
-    : progress;
+  const isLoading = loadingLevelIds.includes(selectedLevelId);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setOpen(false);
+      triggerRef.current?.focus();
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open]);
 
   return (
     <div>
       <fieldset
+        ref={rootRef}
         className={styles.switch}
         aria-label={m.detailLevelAriaLabel()}
         aria-describedby={hintId}
       >
-        <div className={styles.labels}>
-          {DETAIL_LEVELS.map((level, index) => (
+        <button
+          ref={triggerRef}
+          type="button"
+          className={styles.trigger}
+          aria-expanded={open}
+          aria-controls={panelId}
+          aria-busy={isLoading}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className={styles.label}>{m.detailLevelAriaLabel()}</span>
+          <span className={styles.value}>{selectedLevel.label}</span>
+          <Pips count={selectedIndex + 1} />
+          <span className={styles.chevron} aria-hidden="true">
+            ▾
+          </span>
+          {isLoading && (
             <span
-              key={level.id}
-              className={
-                index <= selectedIndex
-                  ? `${styles.label} ${styles.labelReached}`
-                  : styles.label
-              }
-            >
-              {level.label}
-            </span>
-          ))}
-        </div>
-        <div className={styles.track}>
-          <div
-            className={styles.trackFill}
-            data-testid="track-fill"
-            style={{ '--progress': `${trackFillProgress}%` } as CSSProperties}
-          />
-          {DETAIL_LEVELS.map((level, index) => {
-            const isSelected = level.id === selectedLevelId;
-            const showSpinner =
-              isSelected && loadingLevelIds.includes(level.id);
-            return (
+              className={styles.srOnly}
+              role="status"
+              aria-label={m.detailLevelLoadingAriaLabel()}
+            />
+          )}
+        </button>
+        {open && (
+          <div id={panelId} className={styles.panel}>
+            {DETAIL_LEVELS.map((level, index) => (
               <button
                 key={level.id}
                 type="button"
-                aria-label={level.label}
-                aria-pressed={isSelected}
-                aria-busy={showSpinner}
-                className={
-                  isSelected
-                    ? `${styles.dot} ${styles.dotSelected}`
-                    : index < selectedIndex
-                      ? `${styles.dot} ${styles.dotReached}`
-                      : styles.dot
-                }
-                onClick={() => onSelectLevel(level)}
+                className={styles.row}
+                aria-pressed={level.id === selectedLevelId}
+                onClick={() => {
+                  onSelectLevel(level);
+                  setOpen(false);
+                  triggerRef.current?.focus();
+                }}
               >
-                {showSpinner && (
-                  <span
-                    className={styles.srOnly}
-                    role="status"
-                    aria-label={m.detailLevelLoadingAriaLabel()}
-                  />
-                )}
+                <span className={styles.name}>{level.label}</span>
+                <span className={styles.description}>{level.description}</span>
+                <Pips count={index + 1} />
               </button>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
       </fieldset>
       <p id={hintId} className={styles.srOnly}>
         {m.detailLevelHint()}
       </p>
-      <p className={styles.srOnly}>{selectedLevel.description}</p>
     </div>
   );
 }

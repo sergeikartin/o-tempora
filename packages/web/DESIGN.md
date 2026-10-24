@@ -119,11 +119,13 @@ components:
     typography: "{typography.control}"
     rounded: "{rounded.full}"
     padding: "6px 10px"
-  switch-dot:
+  switch-trigger:
     backgroundColor: "{colors.white-sheet}"
+    textColor: "{colors.ink}"
+    typography: "{typography.control}"
     rounded: "{rounded.full}"
-    size: "14px"
-  switch-dot-reached:
+    padding: "0 12px"
+  switch-pip-reached:
     backgroundColor: "{colors.oxblood}"
   button-primary:
     backgroundColor: "{colors.oxblood}"
@@ -179,7 +181,7 @@ The system is dense but unhurried. Controls are small, pill-shaped and exact; la
 A warm neutral ladder from parchment to white, one oxblood accent, and a muted, colour-blind-checked palette that exists only to encode data.
 
 ### Primary
-- **Oxblood Seal** (#8a2a1a): The only accent. Active pill border, reached switch dots and track, primary button fill, search-match emphasis, the minimap viewport rectangle and the scrubber thumb. 6.4:1 or better as text on parchment and ledger paper.
+- **Oxblood Seal** (#8a2a1a): The only accent. Active pill border, reached Detail Level pips, primary button fill, search-match emphasis, the minimap viewport rectangle and the scrubber thumb. 6.4:1 or better as text on parchment and ledger paper.
 - **Deep Oxblood** (#6e2013): Keyboard focus ring only (2px outline, 8.3:1 or better on every ground).
 
 ### Secondary (data encoding)
@@ -190,7 +192,7 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 ### Neutral
 - **Parchment** (#f2e9d2): Page and canvas background; also the fill of close buttons.
 - **Ledger Paper** (#fbf6e9): Floating cards, panels, tooltips, and the hover state of pills.
-- **White Sheet** (#ffffff): Interactive controls only: pills, search input, dropdown, zoom buttons, switch dots.
+- **White Sheet** (#ffffff): Interactive controls only: pills, search input, dropdown, zoom buttons, the Detail Level trigger and its list.
 - **Axis Bar** (#ebddbd): Year Axis ruler, painted at 82% so the zebra bands show through.
 - **Ink** (#241a10): All primary text and every entry label.
 - **Faded Ink** (#6b6046): Dates, captions, placeholders, eyebrows, tick labels (4.6:1 or better).
@@ -224,8 +226,8 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 - **Landing Pitch** (Archivo 400, 16px, 1.5, Faded Ink): the one-line explanation under the landing headline. Curiosity chips on the landing page are the filter pill at 14px, headed by a 13px Faded Ink prompt; below 640px a prev/next stepper under that prompt replaces them. Landing axis ticks are 12px.
 - **Body** (Archivo 400, 14px, 1.5): Descriptions in the detail panel. Keep lines near 40 characters in the 340px panel.
 - **Body Small** (Archivo 400, 13px, 1.5): Date lines, buttons and links; taglines in italic.
-- **Control** (Archivo 400, 12px, 1.4): Pills, inputs, results, switch labels; 600 for an active pill, 700 for a reached switch label.
-- **Caption and Lane Label** (Archivo 400, 11px): Image attribution, switch descriptions, and entry labels on the timeline.
+- **Control** (Archivo 400, 12px, 1.4): Pills, inputs, results, the Detail Level trigger and rows; 600 for an active pill, the selected level and its row.
+- **Caption and Lane Label** (Archivo 400, 11px): Image attribution, Detail Level row descriptions, the trigger's "Detail Level" prefix, and entry labels on the timeline.
 - **Eyebrow** (Archivo 600, 11px, 0.06em, uppercase in CSS): Section headings in Faded Ink.
 - **Axis Label and Badge** (Archivo 400, 10px): Year Axis ticks and the type badge in search results; nothing smaller occurs.
 
@@ -261,7 +263,7 @@ Depth is tonal first: Parchment, then Ledger Paper, then White Sheet for anythin
 
 ## Shapes
 
-Round where the hand touches, gentle where it reads. Pills, inputs, close buttons, switch dots and swatches are fully round (9999px); small rectangular buttons and the zoom group use 8px; tooltips, result rows and point markers use 6px; cards, the dropdown and the minimap use 12px; the About modal uses 16px. Period marks are lines with round caps, never boxes. A point in time is a dot.
+Round where the hand touches, gentle where it reads. Pills, inputs, close buttons, the Detail Level trigger and swatches are fully round (9999px); small rectangular buttons and the zoom group use 8px; tooltips, result rows and point markers use 6px; cards, the dropdown and the minimap use 12px; the About modal uses 16px. Period marks are lines with round caps, never boxes. A point in time is a dot.
 
 ## Components
 
@@ -276,9 +278,10 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 - **Results:** White Sheet dropdown with Hairline border and 12px radius; rows 6px radius, Ledger Paper on hover or active; a 10px uppercase badge in Faded Ink; matched text in Oxblood at weight 700.
 
 ### Detail Level Switch
-- **Style:** A four-stop segmented track. A 4px line fills from the left in Oxblood up to the selected dot over a Hairline track; each stop is a 14px round dot with a 2px Control Border.
-- **State:** Reached dots fill Oxblood; the selected dot lifts a map-pin overlay (scale in over 200ms). Reached labels turn Oxblood at weight 700. A loading level pulses its pin, gated on motion preference.
-- **Size:** Labels sit above the track at 11px; the track is 280px in the Top Bar and full width on the second row at 960px and below. The level description is read by assistive tech only.
+- **Style:** One pill, 32px tall: a Faded Ink "Detail Level" prefix, the selected level's name in Ink at 600, four 10×4px pips (one per level reached, Oxblood; the rest Hairline) and a `▾` glyph. White Sheet fill, 1px Control Border, hover to Ledger Paper with a Faded Ink border. Open, it takes the active-pill treatment (Oxblood border plus inset ring, Ledger Paper fill) and the glyph flips.
+- **List:** Opens beneath the pill as a White Sheet panel (Hairline border, 12px radius, Dropdown shadow), at least 300px wide and right-aligned to the pill. Each row is 44px tall with a 6px radius: level name at 12px, its one-line description at 11px in Faded Ink, and its pips on the right. The selected row is Ledger Paper with an Oxblood inset ring and a 600 name. Picking a row closes the list and returns focus to the pill; Escape or a press outside closes it too.
+- **State:** A level whose data is still loading pulses the pill's opacity, gated on motion preference, and is announced to assistive tech.
+- **Size:** The pill is 280px in the Top Bar and full width on the second row at 960px and below.
 
 ### Buttons
 - **Primary:** Oxblood fill, White Sheet text, 13px, 8px radius, 8px/14px padding. Used for the Wikipedia link.

@@ -39,12 +39,9 @@ test('Search, Detail Level, Filters and Help are all reachable with nothing open
   const { getByRole } = renderTopBar({ selectedLevelId: 'deep-cut' });
 
   expect(getByRole('combobox', { name: 'Search timeline' })).toBeTruthy();
-  expect(
-    getByRole('button', { name: 'Deep Cut' }).getAttribute('aria-pressed'),
-  ).toBe('true');
-  expect(
-    getByRole('button', { name: 'Mainstream' }).getAttribute('aria-pressed'),
-  ).toBe('false');
+  expect(getByRole('button', { name: /^Detail Level/ }).textContent).toContain(
+    'Deep Cut',
+  );
   expect(getByRole('button', { name: 'Filters' })).toBeTruthy();
   expect(getByRole('button', { name: 'Help' })).toBeTruthy();
 });
