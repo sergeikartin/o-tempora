@@ -9,6 +9,10 @@ export const DEFAULT_VIEWPORT_END_YEAR = 1860;
 
 export const PAN_MIN_YEAR = -801;
 
+// The desktop detail drawer's width (DetailPanel.module.css's .panel); an
+// Entity Link's arrival fit leaves this much of the canvas out of its math.
+export const DETAIL_DRAWER_WIDTH_PX = 340;
+
 // Per-lane `fameScore` floors, independent of zoom
 // (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md).
 // Lives here rather than under widgets/timeline-canvas because the sidebar

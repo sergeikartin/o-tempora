@@ -136,7 +136,7 @@ test('removes a mark no longer present in layout', async () => {
   expect(svg.querySelectorAll('.d3-thing')).toHaveLength(0);
 });
 
-test('toggleSelectionHighlight toggles the highlight class only on the selected entity', () => {
+test('toggleSelectionHighlight toggles the highlight class only on the selected entities', () => {
   document.body.innerHTML = `
     <svg>
       <line class="d3-line" data-entity-id="a"></line>
@@ -150,7 +150,7 @@ test('toggleSelectionHighlight toggles the highlight class only on the selected 
     svg,
     '.d3-line[data-entity-id]',
     '.d3-name[data-entity-id]',
-    'a',
+    ['a'],
     'highlight',
     'highlight-label',
   );
@@ -166,11 +166,22 @@ test('toggleSelectionHighlight toggles the highlight class only on the selected 
     svg,
     '.d3-line[data-entity-id]',
     '.d3-name[data-entity-id]',
-    null,
+    [],
     'highlight',
     'highlight-label',
   );
   expect(lineA?.classList.contains('highlight')).toBe(false);
+
+  toggleSelectionHighlight(
+    svg,
+    '.d3-line[data-entity-id]',
+    '.d3-name[data-entity-id]',
+    ['a', 'b'],
+    'highlight',
+    'highlight-label',
+  );
+  expect(lineA?.classList.contains('highlight')).toBe(true);
+  expect(lineB?.classList.contains('highlight')).toBe(true);
 });
 
 test('ensureHaloChild creates a missing halo from the real mark’s own geometry, once', () => {

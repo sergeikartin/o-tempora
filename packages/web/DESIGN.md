@@ -197,6 +197,7 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 - **Control Border** (#837757): Borders of every interactive control and the century ticks (3.7:1 on parchment). Hover steps to Faded Ink.
 - **Hairline** (#e0d3ac) and **Strong Rule** (#c7b383): Decorative dividers and decade ticks only; below 3:1 by design.
 - **Selection Halo** (#241a10 at 14%): Translucent ink fill drawn 8px beyond a selected mark.
+- **Span Band** (Oxblood at 9%, edges at 28%; a PointInTime is a 1px hairline at 55%) and **Overlap Band** (Oxblood at 24%, at least 4px wide): Full-height washes behind the marks of every lane for a Selection's members and the span they share.
 - **Scrim** (#000000 at 40%): Behind drawers, sheets and the About modal.
 
 ### Named Rules
@@ -287,7 +288,7 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 ### Cards and Panels
 - **Corner style:** 12px; panel edges square against the viewport; mobile sheet 8px on its top corners.
 - **Background:** Ledger Paper with a 1px Hairline border. Floating cards carry the Card shadow.
-- **Detail panel:** 340px right drawer, 260px image slot, 20px body padding, name in Fraunces, tagline italic in Faded Ink, a 200ms slide.
+- **Detail panel:** 340px right drawer, 260px image slot, 20px body padding, name in Fraunces, tagline italic in Faded Ink, a 200ms slide. With two or more members it drops the banner image and lists each in short form (lane swatch, 44px thumbnail, name, dates, tagline, Wikipedia link, ×) under a one-line overlap summary; on a phone that sheet sits at a 40vh peek so the lanes stay visible. "Add to comparison" is not in the panel: it floats on the canvas's top edge, just left of the drawer (top-right on a phone), shown only while a Selection is open.
 
 ### Timeline Marks and Year Axis (signature)
 - **Marks:** Round-cap lines and dots at 0.8 opacity at rest, 1 on hover and selection. Lane labels 11px Ink, the label scaling 1.15 on hover.

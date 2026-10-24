@@ -16,6 +16,7 @@ import {
   REFERENCE_SCALE_PIXELS_PER_YEAR,
 } from '../../shared/types';
 import {
+  arrivalFitViewport,
   BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
   BCE_DECADE_TICK_PHASE_OFFSET_YEARS,
   buildXScale,
@@ -320,4 +321,23 @@ test('the zoom-button animation targets longer than --motion-duration-base (200m
   expect(durationMs).toBeGreaterThan(200);
   expect(durationMs).toBeGreaterThanOrEqual(300);
   expect(durationMs).toBeLessThanOrEqual(400);
+});
+
+test('arrivalFitViewport pads the union by 10% each side and sizes it to the uncovered canvas', () => {
+  const fit = arrivalFitViewport({ startYear: 1900, endYear: 1950 }, 1340, 340);
+  expect(fit.pixelsPerYear).toBeCloseTo(1000 / 60);
+  // The union's midpoint (1925) sits in the middle of the uncovered 1000px.
+  expect(fit.centerYear).toBeCloseTo(1925 + 170 / fit.pixelsPerYear);
+});
+
+test('arrivalFitViewport never shows fewer than the minimum or more than the maximum years', () => {
+  const point = arrivalFitViewport({ startYear: 1944, endYear: 1944 }, 1000, 0);
+  expect(1000 / point.pixelsPerYear).toBe(ZOOM_MIN_YEARS);
+  const huge = arrivalFitViewport({ startYear: -500, endYear: 1900 }, 1000, 0);
+  expect(1000 / huge.pixelsPerYear).toBe(ZOOM_MAX_YEARS);
+});
+
+test('arrivalFitViewport centres on the union when nothing is covered', () => {
+  const fit = arrivalFitViewport({ startYear: 1900, endYear: 1950 }, 1000, 0);
+  expect(fit.centerYear).toBe(1925);
 });

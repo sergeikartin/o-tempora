@@ -255,6 +255,40 @@ export function clampPixelsPerYear(
   return Math.min(max, Math.max(min, pixelsPerYear));
 }
 
+// Breathing room around an Entity Link's spans, each side, as a fraction of
+// their union.
+const ARRIVAL_FIT_PADDING_RATIO = 0.1;
+
+/**
+ * Where an Entity Link's arrival puts the viewport: the union of the
+ * Selection's spans plus padding, clamped to the zoom limits, sized to the
+ * canvas minus the `coveredWidthPx` the detail drawer hides on its right.
+ * `centerYear` is the year to center the whole canvas on so the union's
+ * midpoint lands in the middle of the uncovered part.
+ */
+export function arrivalFitViewport(
+  union: { startYear: number; endYear: number },
+  canvasWidthPx: number,
+  coveredWidthPx: number,
+): { pixelsPerYear: number; centerYear: number } {
+  const uncoveredWidthPx = Math.max(canvasWidthPx - coveredWidthPx, 1);
+  const paddedYears =
+    (union.endYear - union.startYear) * (1 + 2 * ARRIVAL_FIT_PADDING_RATIO);
+  const visibleYears = Math.min(
+    ZOOM_MAX_YEARS,
+    Math.max(ZOOM_MIN_YEARS, paddedYears),
+  );
+  const pixelsPerYear = clampPixelsPerYear(
+    uncoveredWidthPx / visibleYears,
+    canvasWidthPx,
+  );
+  const midYear = (union.startYear + union.endYear) / 2;
+  return {
+    pixelsPerYear,
+    centerYear: midYear + coveredWidthPx / 2 / pixelsPerYear,
+  };
+}
+
 /** Initial zoom level: shows DEFAULT_VISIBLE_YEARS at once, on every viewport. */
 export function defaultPixelsPerYear(viewportWidthPx: number): number {
   const width = viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;

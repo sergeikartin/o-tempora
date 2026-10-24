@@ -1,4 +1,5 @@
 import { m } from '../../paraglide/messages.js';
+import { getLocale } from '../../paraglide/runtime.js';
 import type { YearMonth } from '../../types';
 
 // Every year in the rendering path is a plain signed integer in astronomical
@@ -26,28 +27,50 @@ export function formatYearRange(startYear: number, endYear: number): string {
   return `${formatYear(startYear)} – ${formatYear(endYear)}`;
 }
 
-const MONTH_NAMES = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+// Month names come from Intl in the active locale, so the Russian UI never
+// shows English months. The source is a plain 1-12 integer, not a date value,
+// so the formatter is fed a fixed UTC date in that month.
+function monthName(month: number, width: 'long' | 'short'): string {
+  return new Intl.DateTimeFormat(getLocale(), {
+    month: width,
+    timeZone: 'UTC',
+  }).format(Date.UTC(2000, month - 1, 1));
+}
 
 // An absent month means the source is only certain to the year (see
 // shared-types's YearMonth), so this falls back to formatYear alone rather
-// than guessing. Month names are hardcoded: the source is a plain 1-12
-// integer, not a date value.
+// than guessing.
 export function formatYearMonth(yearMonth: YearMonth): string {
   if (yearMonth.month === undefined) return formatYear(yearMonth.year);
-  return `${MONTH_NAMES[yearMonth.month - 1]} ${formatYear(yearMonth.year)}`;
+  return `${monthName(yearMonth.month, 'long')} ${formatYear(yearMonth.year)}`;
+}
+
+/** Like formatYearMonth with the month abbreviated, for lists and ranges. */
+export function formatYearMonthShort(yearMonth: YearMonth): string {
+  if (yearMonth.month === undefined) return formatYear(yearMonth.year);
+  return `${monthName(yearMonth.month, 'short')} ${formatYear(yearMonth.year)}`;
+}
+
+/**
+ * A span's ends to the precision the source has: "Feb – Apr 1955" when both
+ * ends share a year and carry months, "Feb 1955 – Apr 1956" otherwise, a single
+ * date when the ends coincide.
+ */
+export function formatYearMonthRange(start: YearMonth, end: YearMonth): string {
+  if (start.year === end.year && start.month === end.month) {
+    return formatYearMonthShort(start);
+  }
+  if (
+    start.year === end.year &&
+    start.month !== undefined &&
+    end.month !== undefined
+  ) {
+    return `${monthName(start.month, 'short')} – ${formatYearMonthShort(end)}`;
+  }
+  if (start.month === undefined && end.month === undefined) {
+    return formatYearRange(start.year, end.year);
+  }
+  return `${formatYearMonthShort(start)} – ${formatYearMonthShort(end)}`;
 }
 
 function ordinal(n: number): string {

@@ -571,10 +571,10 @@ test('a click preceded only by sub-threshold pointer jitter still registers', ()
   fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
   fireEvent.click(line);
 
-  expect(onEntityClick).toHaveBeenCalledWith({
-    id: 'Q868',
-    entityType: 'person',
-  });
+  expect(onEntityClick).toHaveBeenCalledWith(
+    { id: 'Q868', entityType: 'person' },
+    false,
+  );
 });
 
 test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll already handles them', () => {
@@ -1269,10 +1269,10 @@ test('clicking a mark reports its entity id/type via onEntityClick, resolved thr
   const line = container.querySelector('.d3-line') as SVGLineElement;
   fireEvent.click(line);
 
-  expect(onEntityClick).toHaveBeenCalledWith({
-    id: 'Q868',
-    entityType: 'person',
-  });
+  expect(onEntityClick).toHaveBeenCalledWith(
+    { id: 'Q868', entityType: 'person' },
+    false,
+  );
 });
 
 test('clicking empty canvas space (no data-entity-id ancestor) does not call onEntityClick', () => {
@@ -1326,4 +1326,151 @@ test('a mark with an unrecognized data-entity-type is ignored rather than report
   fireEvent.click(line);
 
   expect(onEntityClick).not.toHaveBeenCalled();
+});
+
+const baseCanvasProps: React.ComponentProps<typeof TimelineCanvas> = {
+  people: fixturePeople,
+  conflicts: fixtureConflicts,
+  milestones: fixtureMilestones,
+  fameScoreValues: defaultFameScoreValues,
+  selectedDomains: defaultSelectedDomains,
+  selectedRegions: defaultSelectedRegions,
+  selectedConflictsMilestonesValues: defaultSelectedConflictsMilestonesValues,
+  onEntityClick: () => {},
+  isFilterDrawerOpen: false,
+  onToggleFilterDrawer: () => {},
+};
+
+function renderCanvas(
+  props: Partial<React.ComponentProps<typeof TimelineCanvas>> = {},
+) {
+  return render(<TimelineCanvas {...baseCanvasProps} {...props} />);
+}
+
+test.each([['shiftKey'], ['ctrlKey'], ['metaKey']])(
+  'a click with %s held reports the mark as additive',
+  (modifier) => {
+    const onEntityClick = vi.fn();
+    const { container } = renderCanvas({ onEntityClick });
+
+    fireEvent.click(container.querySelector('.d3-line') as SVGLineElement, {
+      [modifier]: true,
+    });
+
+    expect(onEntityClick).toHaveBeenCalledWith(
+      { id: 'Q868', entityType: 'person' },
+      true,
+    );
+  },
+);
+
+test('draws no bands without a Selection', () => {
+  const { container } = renderCanvas();
+
+  expect(container.querySelector('[data-span-band]')).toBeNull();
+  expect(container.querySelector('[data-overlap-band]')).toBeNull();
+});
+
+test('draws a band per period member and a hairline per point member', () => {
+  const { container } = renderCanvas({
+    selectionBands: {
+      spans: [
+        { id: 'period', startYear: 1900, endYear: 1950, isPoint: false },
+        { id: 'point', startYear: 1920, endYear: 1920, isPoint: true },
+      ],
+      overlap: null,
+      description: 'Highlighted',
+    },
+  });
+
+  const bands = container.querySelectorAll('[data-span-band]');
+  expect(bands).toHaveLength(2);
+  const period = container.querySelector(
+    '[data-span-band="period"]',
+  ) as HTMLElement;
+  const point = container.querySelector(
+    '[data-span-band="point"]',
+  ) as HTMLElement;
+  expect(Number.parseFloat(period.style.width)).toBeGreaterThan(100);
+  expect(point.style.width).toBe('');
+  expect(container.querySelector('[data-overlap-band]')).toBeNull();
+});
+
+test('an overlap of a month is still drawn at least 4px wide, centred on the span', () => {
+  const { container } = renderCanvas({
+    selectionBands: {
+      spans: [
+        { id: 'a', startYear: 1900, endYear: 1955.25, isPoint: false },
+        { id: 'b', startYear: 1955 + 1 / 12, endYear: 2011, isPoint: false },
+      ],
+      overlap: { startYear: 1955 + 1 / 12, endYear: 1955.25 },
+      description: 'Highlighted',
+    },
+  });
+
+  const overlap = container.querySelector('[data-overlap-band]') as HTMLElement;
+  expect(Number.parseFloat(overlap.style.width)).toBeGreaterThanOrEqual(4);
+});
+
+test('describes the bands to assistive technology', () => {
+  const { getByText } = renderCanvas({
+    selectionBands: {
+      spans: [{ id: 'a', startYear: 1900, endYear: 1950, isPoint: false }],
+      overlap: null,
+      description: 'Highlighted on the timeline: A (1900 – 1950).',
+    },
+  });
+
+  expect(
+    getByText('Highlighted on the timeline: A (1900 – 1950).'),
+  ).toBeTruthy();
+});
+
+const someBands = {
+  spans: [{ id: 'a', startYear: 1900, endYear: 1950, isPoint: false }],
+  overlap: null,
+  description: 'Highlighted',
+};
+
+test('shows no add button without a Selection', () => {
+  const { queryByRole } = renderCanvas({
+    addToSelection: { isAdding: false, isFull: false, onToggle: () => {} },
+  });
+  expect(queryByRole('button', { name: 'Add to comparison' })).toBeNull();
+});
+
+test('floats an add button while a Selection is open, and a pending add says what to do', () => {
+  const onToggle = vi.fn();
+  const { getByRole, rerender } = renderCanvas({
+    selectionBands: someBands,
+    addToSelection: { isAdding: false, isFull: false, onToggle },
+  });
+
+  fireEvent.click(getByRole('button', { name: 'Add to comparison' }));
+  expect(onToggle).toHaveBeenCalledOnce();
+
+  rerender(
+    <TimelineCanvas
+      {...baseCanvasProps}
+      selectionBands={someBands}
+      addToSelection={{ isAdding: true, isFull: false, onToggle }}
+    />,
+  );
+  expect(
+    getByRole('button', { name: 'Select a mark to add…' }).getAttribute(
+      'aria-pressed',
+    ),
+  ).toBe('true');
+});
+
+test('a full Selection disables the add button and notes the cap', () => {
+  const { getByRole, getByText } = renderCanvas({
+    selectionBands: someBands,
+    addToSelection: { isAdding: false, isFull: true, onToggle: () => {} },
+  });
+  expect(
+    (getByRole('button', { name: 'Add to comparison' }) as HTMLButtonElement)
+      .disabled,
+  ).toBe(true);
+  expect(getByText('Up to 4')).toBeTruthy();
 });

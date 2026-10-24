@@ -20,8 +20,17 @@ import {
 import {
   type ConflictsMilestonesFilterValue,
   DEFAULT_VIEWPORT_START_YEAR,
+  DETAIL_DRAWER_WIDTH_PX,
 } from '../../shared/config';
 import { centuryBoundaryForYear } from '../../shared/lib/date';
+import {
+  type ActiveFilters,
+  MAX_SELECTION_SIZE,
+  visibleConflicts,
+  visibleMilestones,
+  visiblePeople,
+  type YearSpan,
+} from '../../shared/lib/entity';
 import { motionDurationMs } from '../../shared/lib/motion';
 import { trackEvent } from '../../shared/lib/track-event';
 import { useIsMobileViewport } from '../../shared/lib/viewport';
@@ -37,16 +46,12 @@ import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
 import { Minimap } from './Minimap';
 import {
   computeRowAssignment,
-  filterByFameScore,
-  filterByMilestoneCategoryGroup,
-  filterByOccupationDomain,
-  filterByRegion,
-  filterConflictsByFilterValues,
   mapConflicts,
   mapMilestones,
   mapPeople,
 } from './map-to-items';
 import {
+  arrivalFitViewport,
   BCE_CENTURY_TICK_PHASE_OFFSET_YEARS,
   BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS,
   buildXScale,
@@ -71,6 +76,11 @@ import {
   zoomAnimationGroupTransformCss,
 } from './options';
 import { PeopleLane } from './PeopleLane';
+import {
+  type BandOverlap,
+  type BandSpan,
+  SelectionBands,
+} from './SelectionBands';
 import styles from './TimelineCanvas.module.css';
 import { ViewportRange } from './ViewportRange';
 import { YearAxis } from './YearAxis';
@@ -104,8 +114,10 @@ interface TimelineCanvasProps {
   // MilestoneCategoryGroup values; empty means unfiltered.
   selectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[];
   // Reports a click on any lane's mark (one delegated listener); App.tsx looks
-  // the id up in the full dataset and opens the detail panel.
-  onEntityClick: (ref: SelectedEntityRef) => void;
+  // the id up in the full dataset and updates the Selection. `additive` is true
+  // for a Shift/Ctrl/Cmd-click, which toggles the mark instead of replacing the
+  // Selection.
+  onEntityClick: (ref: SelectedEntityRef, additive: boolean) => void;
   // Reports post-filter entry counts per lane for the Sidebar; this widget
   // stays the single owner of the filtering pipeline (docs/code-conventions.md).
   onFilteredCountsChange?: (counts: FilteredCounts) => void;
@@ -113,13 +125,42 @@ interface TimelineCanvasProps {
   // toggle button lives here, beside the zoom controls.
   isFilterDrawerOpen: boolean;
   onToggleFilterDrawer: () => void;
-  // The entity DetailPanel is open for (canvas click or search pick), or null.
-  // Its mark gets the selection highlight while it stays selected.
-  selectedEntity?: SelectedEntityRef | null;
+  // The Selection's members (CONTEXT.md). Their marks get the selection
+  // highlight while they stay selected.
+  selectedEntities?: readonly SelectedEntityRef[];
+  // Span Bands and the Overlap Band for the Selection, plus the sentence that
+  // describes them to assistive technology.
+  selectionBands?: SelectionBandsData | null;
   // Set only by a search pick (a canvas click is already in view). App.tsx
   // passes a fresh object each time, so re-picking the same result re-jumps.
   searchJumpTarget?: SelectedEntityRef | null;
+  // The floating "Add to comparison" button, shown while a Selection is open:
+  // `isAdding` means the next mark picked is added to the Selection.
+  addToSelection?: AddToSelectionControl;
+  // Set only when an Entity Link opens: fits the viewport to the union of the
+  // Selection's spans. App.tsx passes a fresh object each time.
+  arrivalFit?: ArrivalFit | null;
 }
+
+export interface AddToSelectionControl {
+  isAdding: boolean;
+  isFull: boolean;
+  onToggle: () => void;
+}
+
+export interface SelectionBandsData {
+  spans: readonly BandSpan[];
+  overlap: BandOverlap | null;
+  description: string;
+}
+
+export interface ArrivalFit {
+  years: YearSpan;
+  // The Selection's members, scrolled into view in their lanes.
+  entities: readonly SelectedEntityRef[];
+}
+
+const NO_ENTITIES: readonly SelectedEntityRef[] = [];
 
 export function TimelineCanvas({
   people,
@@ -133,8 +174,11 @@ export function TimelineCanvas({
   onFilteredCountsChange,
   isFilterDrawerOpen,
   onToggleFilterDrawer,
-  selectedEntity,
+  selectedEntities = NO_ENTITIES,
+  selectionBands,
+  addToSelection,
   searchJumpTarget,
+  arrivalFit,
 }: TimelineCanvasProps) {
   const isMobileViewport = useIsMobileViewport();
   // Minimap mounts at idle time, not in the hydration commit. The prerender
@@ -241,6 +285,20 @@ export function TimelineCanvas({
     () => buildXScale(pixelsPerYear),
     [pixelsPerYear],
   );
+  // While a Selection is open the desktop detail drawer covers the right
+  // DETAIL_DRAWER_WIDTH_PX of the canvas, and the timeline ends at the present,
+  // so anything recent would sit under it with no way to pan clear. The scroll
+  // width grows by that much, as empty space after the present, for as long as
+  // the Selection is open. Phones get a bottom sheet over the lanes' lower edge
+  // instead, which needs no room to the right.
+  const hasSelection = (selectionBands?.spans.length ?? 0) > 0;
+  const trailingSlackPx =
+    hasSelection && !isMobileViewport ? DETAIL_DRAWER_WIDTH_PX : 0;
+  const scrollWidth = totalWidth + trailingSlackPx;
+  // A ref, not a dependency of the commit effect below: that effect also
+  // re-positions the viewport, which opening a Selection must not do.
+  const scrollWidthRef = useRef(scrollWidth);
+  scrollWidthRef.current = scrollWidth;
   // Read in the pan debounce's setTimeout callback, which fires after the
   // render that scheduled it and would otherwise close over a stale scale.
   const scaleRef = useRef(scale);
@@ -321,7 +379,11 @@ export function TimelineCanvas({
     viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   const viewportBufferPx = effectiveViewportWidthPx * VIEWPORT_BUFFER_RATIO;
   const viewportStartYear = scale.invert(scrollLeft);
-  const viewportEndYear = scale.invert(scrollLeft + effectiveViewportWidthPx);
+  // The heading never reads past the present, even over the trailing slack.
+  const viewportEndYear = Math.min(
+    scale.invert(scrollLeft + effectiveViewportWidthPx),
+    scale.domain()[1] ?? Number.POSITIVE_INFINITY,
+  );
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
   const visibleEndYear = scale.invert(
     scrollLeft + effectiveViewportWidthPx + viewportBufferPx,
@@ -350,51 +412,31 @@ export function TimelineCanvas({
     '--century-seam-px': centurySeamSizePx,
     '--century-seam-offset-px': `${pixelsPerYear * CENTURY_TICK_PHASE_OFFSET_YEARS}px`,
   } as CSSProperties;
+  const filters = useMemo<ActiveFilters>(
+    () => ({
+      fameScoreValues,
+      selectedDomains,
+      selectedRegions,
+      selectedConflictsMilestonesValues,
+    }),
+    [
+      fameScoreValues,
+      selectedDomains,
+      selectedRegions,
+      selectedConflictsMilestonesValues,
+    ],
+  );
   const filteredPeople = useMemo(
-    () =>
-      filterByRegion(
-        filterByOccupationDomain(
-          filterByFameScore(people, fameScoreValues.people),
-          selectedDomains,
-        ),
-        selectedRegions,
-        (person) => person.regionTags,
-      ),
-    [people, fameScoreValues.people, selectedDomains, selectedRegions],
+    () => visiblePeople(people, filters),
+    [people, filters],
   );
   const filteredConflicts = useMemo(
-    () =>
-      filterConflictsByFilterValues(
-        filterByRegion(
-          filterByFameScore(conflicts, fameScoreValues.conflicts),
-          selectedRegions,
-          (entry) => entry.regionTags,
-        ),
-        selectedConflictsMilestonesValues,
-      ),
-    [
-      conflicts,
-      fameScoreValues.conflicts,
-      selectedRegions,
-      selectedConflictsMilestonesValues,
-    ],
+    () => visibleConflicts(conflicts, filters),
+    [conflicts, filters],
   );
   const filteredMilestones = useMemo(
-    () =>
-      filterByMilestoneCategoryGroup(
-        filterByRegion(
-          filterByFameScore(milestones, fameScoreValues.milestones),
-          selectedRegions,
-          (milestone) => milestone.regionTags,
-        ),
-        selectedConflictsMilestonesValues,
-      ),
-    [
-      milestones,
-      fameScoreValues.milestones,
-      selectedRegions,
-      selectedConflictsMilestonesValues,
-    ],
+    () => visibleMilestones(milestones, filters),
+    [milestones, filters],
   );
 
   const filteredCounts = useMemo<FilteredCounts>(
@@ -404,6 +446,23 @@ export function TimelineCanvas({
       milestones: filteredMilestones.length,
     }),
     [filteredPeople, filteredConflicts, filteredMilestones],
+  );
+
+  // Stable per Selection so the memoized lanes only re-scan their marks when
+  // the Selection actually changes.
+  const selectedPersonIds = useMemo(
+    () =>
+      selectedEntities
+        .filter((entity) => entity.entityType === 'person')
+        .map((entity) => entity.id),
+    [selectedEntities],
+  );
+  const selectedEventIds = useMemo(
+    () =>
+      selectedEntities
+        .filter((entity) => entity.entityType !== 'person')
+        .map((entity) => entity.id),
+    [selectedEntities],
   );
 
   // Each item's row, computed once against the full unfiltered datasets (stable
@@ -510,7 +569,7 @@ export function TimelineCanvas({
         : scale(DEFAULT_VIEWPORT_START_YEAR);
     const nextScrollLeft = Math.max(
       0,
-      Math.min(targetScrollLeft, totalWidth - clientWidthPx),
+      Math.min(targetScrollLeft, scrollWidthRef.current - clientWidthPx),
     );
     syncScrollLeft(nextScrollLeft);
     setScrollLeft(nextScrollLeft);
@@ -518,7 +577,7 @@ export function TimelineCanvas({
       hasMarkedInitialRenderRef.current = true;
       performance.mark('timeline-initial-render');
     }
-  }, [scale, syncScrollLeft, totalWidth]);
+  }, [scale, syncScrollLeft]);
 
   // Second pointerdown: capture the gesture's fixed reference frame, as zoom()
   // does for button zoom, anchored at the pinch midpoint.
@@ -710,16 +769,30 @@ export function TimelineCanvas({
     panAnimationFrameRef.current = requestAnimationFrame(tick);
   }
 
-  // A search pick pans to center the entity (no zoom-to-fit), reusing the
-  // eased scroll above, on the midpoint of its start/end (the map* functions
-  // already resolve the "still alive"/zero-width cases as the lanes render
-  // them).
-  //
   // Each lane also scrolls vertically on its own, so a mark away from the
   // fame-priority default position can land outside the viewport. Rather than
   // duplicate each lane's row layout math, find the rendered mark by the
   // data-entity-id attribute the click listener reads and scroll it to the
   // lane's vertical center from its real geometry.
+  function scrollMarkToLaneCenter(ref: SelectedEntityRef) {
+    const laneEl =
+      ref.entityType === 'person'
+        ? peopleLaneRef.current
+        : conflictsMilestonesLaneRef.current;
+    const mark = laneEl?.querySelector(`[data-entity-id="${ref.id}"]`);
+    if (!laneEl || !mark) return;
+    const laneRect = laneEl.getBoundingClientRect();
+    const markRect = mark.getBoundingClientRect();
+    const markTopWithinLane = markRect.top - laneRect.top + laneEl.scrollTop;
+    laneEl.scrollTop =
+      markTopWithinLane - laneEl.clientHeight / 2 + markRect.height / 2;
+  }
+
+  // A search pick pans to center the entity (no zoom-to-fit), reusing the
+  // eased scroll above, on the midpoint of its start/end (the map* functions
+  // already resolve the "still alive"/zero-width cases as the lanes render
+  // them).
+  //
   // biome-ignore lint/correctness/useExhaustiveDependencies: only searchJumpTarget should retrigger a jump — handleTrackJump/scale/people/conflicts/milestones are unmemoized and change every render, so including them would refire this on every render once a jump target is set, fighting the user's next pan/zoom
   useEffect(() => {
     if (!searchJumpTarget) return;
@@ -743,21 +816,41 @@ export function TimelineCanvas({
     if (centerYear === null) return;
     handleTrackJump(scale(centerYear) - container.clientWidth / 2);
 
-    const laneEl =
-      searchJumpTarget.entityType === 'person'
-        ? peopleLaneRef.current
-        : conflictsMilestonesLaneRef.current;
-    const mark = laneEl?.querySelector(
-      `[data-entity-id="${searchJumpTarget.id}"]`,
-    );
-    if (laneEl && mark) {
-      const laneRect = laneEl.getBoundingClientRect();
-      const markRect = mark.getBoundingClientRect();
-      const markTopWithinLane = markRect.top - laneRect.top + laneEl.scrollTop;
-      laneEl.scrollTop =
-        markTopWithinLane - laneEl.clientHeight / 2 + markRect.height / 2;
-    }
+    scrollMarkToLaneCenter(searchJumpTarget);
   }, [searchJumpTarget]);
+
+  // An Entity Link fits the viewport to the union of its spans, measured
+  // against the part of the canvas the desktop detail drawer leaves uncovered
+  // (the phone sheet only covers the bottom, so the full width is free). A zoom
+  // change commits through the pixelsPerYear layout effect, which re-centers on
+  // pendingCenterYearRef; an unchanged zoom just pans.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only arrivalFit should retrigger a fit — see searchJumpTarget's note above
+  useEffect(() => {
+    if (!arrivalFit) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    const canvasWidthPx = container.clientWidth || FALLBACK_VIEWPORT_WIDTH_PX;
+    const drawerWidthPx = isMobileViewport ? 0 : DETAIL_DRAWER_WIDTH_PX;
+    const fit = arrivalFitViewport(
+      arrivalFit.years,
+      canvasWidthPx,
+      drawerWidthPx,
+    );
+    if (fit.pixelsPerYear === pixelsPerYear) {
+      handleTrackJump(scale(fit.centerYear) - canvasWidthPx / 2);
+    } else {
+      cancelPanAnimation();
+      pendingCenterYearRef.current = fit.centerYear;
+      setPixelsPerYear(fit.pixelsPerYear);
+    }
+    const scrolledLanes = new Set<boolean>();
+    for (const entity of arrivalFit.entities) {
+      const isPerson = entity.entityType === 'person';
+      if (scrolledLanes.has(isPerson)) continue;
+      scrolledLanes.add(isPerson);
+      scrollMarkToLaneCenter(entity);
+    }
+  }, [arrivalFit]);
 
   // One delegated click listener for every mark in all three lanes, keyed off
   // the data-entity-id/data-entity-type attributes each lane sets; it composes
@@ -792,7 +885,10 @@ export function TimelineCanvas({
         (candidate) => candidate === entityTypeAttr,
       );
       if (!id || !entityType) return;
-      onEntityClick({ id, entityType });
+      onEntityClick(
+        { id, entityType },
+        event.shiftKey || event.ctrlKey || event.metaKey,
+      );
     }
 
     container.addEventListener('click', handleClick);
@@ -930,10 +1026,14 @@ export function TimelineCanvas({
       style={
         {
           '--lane-caption-gutter': `${LANE_CAPTION_GUTTER_PX}px`,
+          '--detail-drawer-width': `${DETAIL_DRAWER_WIDTH_PX}px`,
         } as CSSProperties
       }
     >
       <ViewportRange startYear={viewportStartYear} endYear={viewportEndYear} />
+      {selectionBands && selectionBands.spans.length > 0 && (
+        <p className={styles.srOnly}>{selectionBands.description}</p>
+      )}
       {isMobileViewport && (
         <button
           type="button"
@@ -944,6 +1044,26 @@ export function TimelineCanvas({
         >
           ☰
         </button>
+      )}
+      {hasSelection && addToSelection && (
+        <div className={styles.addToSelection} data-selection-control>
+          {addToSelection.isFull && (
+            <span className={styles.addToSelectionNote}>
+              {m.comparisonFullNote({ count: MAX_SELECTION_SIZE })}
+            </span>
+          )}
+          <button
+            type="button"
+            className={styles.addToSelectionButton}
+            aria-pressed={addToSelection.isAdding}
+            disabled={addToSelection.isFull}
+            onClick={addToSelection.onToggle}
+          >
+            {addToSelection.isAdding
+              ? m.addToComparisonActive()
+              : m.addToComparison()}
+          </button>
+        </div>
       )}
       <div className={styles.zoomControls}>
         <button
@@ -980,6 +1100,13 @@ export function TimelineCanvas({
         >
           <div className={styles.zebraBand} style={bceZebraStyle} />
           <div className={styles.zebraBand} style={ceZebraStyle} />
+          {selectionBands && selectionBands.spans.length > 0 && (
+            <SelectionBands
+              spans={selectionBands.spans}
+              overlap={selectionBands.overlap}
+              xScale={scale}
+            />
+          )}
         </div>
         <div ref={peopleLaneRef} className={styles.peopleLane}>
           <div className={styles.laneCaption} aria-hidden="true">
@@ -990,12 +1117,15 @@ export function TimelineCanvas({
             people={filteredPeople}
             xScale={scale}
             personRowFor={personRowFor}
-            selectedId={
-              selectedEntity?.entityType === 'person' ? selectedEntity.id : null
-            }
+            selectedIds={selectedPersonIds}
+          />
+          <div
+            className={styles.trailingSlack}
+            style={{ width: scrollWidth }}
+            aria-hidden="true"
           />
         </div>
-        <div className={styles.yearAxis} style={{ width: totalWidth }}>
+        <div className={styles.yearAxis} style={{ width: scrollWidth }}>
           <YearAxis
             ref={yearAxisMiddleAnimRef}
             xScale={scale}
@@ -1018,11 +1148,12 @@ export function TimelineCanvas({
             milestones={filteredMilestones}
             xScale={scale}
             eventsRowFor={eventsRowFor}
-            selectedId={
-              selectedEntity?.entityType === 'person'
-                ? null
-                : (selectedEntity?.id ?? null)
-            }
+            selectedIds={selectedEventIds}
+          />
+          <div
+            className={styles.trailingSlack}
+            style={{ width: scrollWidth }}
+            aria-hidden="true"
           />
         </div>
       </div>

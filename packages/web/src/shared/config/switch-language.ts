@@ -11,6 +11,6 @@ import { getLocale } from '../paraglide/runtime.js';
 const SIBLING_TIMELINE_HREF =
   getLocale() === 'ru' ? '/timeline/' : '/ru/timeline/';
 
-export function switchLanguageHref(entitySlug: string | null): string {
-  return SIBLING_TIMELINE_HREF + entityLinkSearch(entitySlug);
+export function switchLanguageHref(entitySlugs: readonly string[]): string {
+  return SIBLING_TIMELINE_HREF + entityLinkSearch(entitySlugs);
 }

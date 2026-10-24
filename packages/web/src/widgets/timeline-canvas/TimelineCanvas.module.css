@@ -319,3 +319,75 @@
   white-space: nowrap;
   color: var(--color-text-secondary);
 }
+
+/* Text for assistive technology only, in the reading order after the Viewport
+   Range heading. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Widens a lane's scrollable width past its svg (TimelineCanvas.tsx's
+   trailingSlackPx) so the lane can pan as far as the Year Axis does. */
+.trailingSlack {
+  height: 0;
+}
+
+/* Floats over the canvas, just left of the desktop detail drawer (which
+   covers the canvas's right edge) so it never hides under it; on a phone the
+   bottom sheet leaves the top-right corner free. */
+.addToSelection {
+  position: absolute;
+  top: 8px;
+  right: calc(var(--detail-drawer-width) + 12px);
+  /* Above the phone sheet's dimming backdrop (DetailPanel.module.css, 99), so
+     the control stays tappable while a single entity's sheet is open. */
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 960px) {
+  .addToSelection {
+    right: 8px;
+  }
+}
+
+.addToSelectionButton {
+  padding: 7px 12px;
+  border: 1px solid var(--color-border-control);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 13px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.addToSelectionButton[aria-pressed="true"] {
+  border-color: var(--color-accent-selected);
+  color: var(--color-accent-selected);
+}
+
+.addToSelectionButton:disabled {
+  cursor: default;
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-subtle);
+}
+
+.addToSelectionButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.addToSelectionNote {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}

@@ -12,13 +12,13 @@ afterEach(() => {
   window.history.replaceState(null, '', '/');
 });
 
-test('links the call-to-action to the open curiosity on the timeline and the language switch to the sibling landing', () => {
+test('links the call-to-action to all of the open curiosity’s marks as one selection and the language switch to the sibling landing', () => {
   render(<LandingPage />);
   expect(
     screen
       .getByRole('link', { name: 'See them on the timeline' })
       .getAttribute('href'),
-  ).toBe('/timeline/?e=albert-einstein');
+  ).toBe('/timeline/?e=albert-einstein&e=steve-jobs');
   expect(
     screen.getByRole('link', { name: 'Русский' }).getAttribute('href'),
   ).toBe('/ru/');
@@ -118,7 +118,7 @@ test('retargets the call-to-action when another curiosity is picked', () => {
     screen
       .getByRole('link', { name: 'See them on the timeline' })
       .getAttribute('href'),
-  ).toBe('/timeline/?e=claude-monet');
+  ).toBe('/timeline/?e=claude-monet&e=elizabeth-ii&e=marilyn-monroe');
 });
 
 test('keeps the picked curiosity in the hash and carries it to the sibling landing', () => {

@@ -1,9 +1,21 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, expect, test, vi } from 'vitest';
 import type { Person } from '../../../shared/types';
-import { DetailPanel } from './DetailPanel';
+import type { DetailPanelEntity } from '../lib/build-drawer-content';
+import { DetailPanel, type DetailPanelMember } from './DetailPanel';
 
 afterEach(cleanup);
+
+const closed = {
+  members: [] as DetailPanelMember[],
+  overlapLine: null,
+  isAdding: false,
+  onRemoveMember: () => {},
+};
+
+function open(entity: DetailPanelEntity, isHidden = false) {
+  return { ...closed, members: [{ entity, isHidden }] };
+}
 
 const napoleon: Person = {
   id: '69880',
@@ -20,9 +32,7 @@ const napoleon: Person = {
 };
 
 test('renders an inert, contentless panel when selected is null', () => {
-  const { container } = render(
-    <DetailPanel selected={null} onClose={() => {}} />,
-  );
+  const { container } = render(<DetailPanel {...closed} onClose={() => {}} />);
   const panel = container.querySelector('aside');
   expect(panel).toBeTruthy();
   expect(panel?.hasAttribute('inert')).toBe(true);
@@ -32,7 +42,7 @@ test('renders an inert, contentless panel when selected is null', () => {
 test('renders name, tagline, image, credit line, and a Wikipedia link', () => {
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={() => {}}
     />,
   );
@@ -56,7 +66,7 @@ test('renders name, tagline, image, credit line, and a Wikipedia link', () => {
 test('does not render a date line for a person (tagline already carries dates)', () => {
   const { container } = render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={() => {}}
     />,
   );
@@ -71,7 +81,7 @@ test('renders description as a body paragraph, below the tagline subtitle, when 
   };
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: withDescription }}
+      {...open({ entityType: 'person', entity: withDescription })}
       onClose={() => {}}
     />,
   );
@@ -89,7 +99,7 @@ test('renders description as a body paragraph, below the tagline subtitle, when 
 test('shows the tagline subtitle alone, with no empty/placeholder body paragraph, when description is absent', () => {
   const { container } = render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={() => {}}
     />,
   );
@@ -106,10 +116,10 @@ test('shows the tagline subtitle alone, with no empty/placeholder body paragraph
 test('omits the image slot entirely when the entity has no image', () => {
   render(
     <DetailPanel
-      selected={{
+      {...open({
         entityType: 'person',
         entity: { ...napoleon, image: undefined, imageAttribution: undefined },
-      }}
+      })}
       onClose={() => {}}
     />,
   );
@@ -119,7 +129,7 @@ test('omits the image slot entirely when the entity has no image', () => {
 test('hides the image (and its credit line) after the <img> fails to load at runtime', () => {
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={() => {}}
     />,
   );
@@ -140,7 +150,7 @@ test("a different entity sharing the exact same image URL still gets a fresh att
   };
   const { rerender } = render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={() => {}}
     />,
   );
@@ -150,7 +160,7 @@ test("a different entity sharing the exact same image URL still gets a fresh att
 
   rerender(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleonTwin }}
+      {...open({ entityType: 'person', entity: napoleonTwin })}
       onClose={() => {}}
     />,
   );
@@ -161,7 +171,7 @@ test('clicking the close button calls onClose', () => {
   const onClose = vi.fn();
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={onClose}
     />,
   );
@@ -174,7 +184,7 @@ test('pressing Escape calls onClose', () => {
   const onClose = vi.fn();
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={onClose}
     />,
   );
@@ -187,7 +197,7 @@ test('clicking outside the panel calls onClose', () => {
   const onClose = vi.fn();
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={onClose}
     />,
   );
@@ -201,7 +211,7 @@ test('clicking inside the panel does not call onClose', () => {
   const onClose = vi.fn();
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={onClose}
     />,
   );
@@ -218,7 +228,7 @@ test('dragging outside the panel (e.g. panning the timeline) does not call onClo
   const onClose = vi.fn();
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={onClose}
     />,
   );
@@ -236,7 +246,7 @@ test('clicking the mobile backdrop calls onClose', () => {
   const onClose = vi.fn();
   render(
     <DetailPanel
-      selected={{ entityType: 'person', entity: napoleon }}
+      {...open({ entityType: 'person', entity: napoleon })}
       onClose={onClose}
     />,
   );
@@ -246,7 +256,137 @@ test('clicking the mobile backdrop calls onClose', () => {
 });
 
 test('no backdrop is rendered when the panel is closed', () => {
-  render(<DetailPanel selected={null} onClose={() => {}} />);
+  render(<DetailPanel {...closed} onClose={() => {}} />);
 
   expect(screen.queryByLabelText('Close')).toBeNull();
+});
+
+const wellington: Person = {
+  id: 'wellington',
+  slug: 'wellington',
+  name: 'Wellington',
+  lifespan: { start: { year: 1769, month: 5 }, end: { year: 1852, month: 9 } },
+  occupationDomain: 'institutions',
+  regionTags: [],
+  fameScore: 95,
+  tagline: 'British field marshal',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Wellington',
+};
+
+function comparison(
+  overrides: Partial<Parameters<typeof DetailPanel>[0]> = {},
+) {
+  return {
+    ...closed,
+    members: [
+      { entity: { entityType: 'person', entity: napoleon }, isHidden: false },
+      { entity: { entityType: 'person', entity: wellington }, isHidden: false },
+    ] as DetailPanelMember[],
+    overlapLine: 'Overlap: May 1769 – 1821',
+    onClose: () => {},
+    ...overrides,
+  };
+}
+
+test('two members list each in short form under the overlap line, without a banner image or description', () => {
+  const { container } = render(<DetailPanel {...comparison()} />);
+
+  expect(screen.getByText('Overlap: May 1769 – 1821')).toBeTruthy();
+  const items = screen.getAllByRole('listitem');
+  expect(items.map((item) => item.querySelector('p')?.textContent)).toEqual([
+    'Napoleon',
+    'Wellington',
+  ]);
+  expect(screen.getByText('May 1769 – Sep 1852')).toBeTruthy();
+  expect(screen.getByText('British field marshal')).toBeTruthy();
+  expect(screen.getAllByRole('link', { name: /Wikipedia/ })).toHaveLength(2);
+  expect(container.querySelectorAll('img')).toHaveLength(1);
+  expect(container.querySelector('img')?.getAttribute('src')).toContain(
+    'width=96',
+  );
+  expect(
+    screen.getByRole('complementary', { name: 'Comparison details' }),
+  ).toBeTruthy();
+});
+
+test('a member filtered off the canvas says so, and its × removes it', () => {
+  const onRemoveMember = vi.fn();
+  const props = comparison({ onRemoveMember });
+  props.members = [
+    props.members[0] as DetailPanelMember,
+    { ...(props.members[1] as DetailPanelMember), isHidden: true },
+  ];
+  render(<DetailPanel {...props} />);
+
+  expect(screen.getAllByText('Hidden by filters')).toHaveLength(1);
+  fireEvent.click(
+    screen.getByRole('button', { name: 'Remove Wellington from comparison' }),
+  );
+  expect(onRemoveMember).toHaveBeenCalledWith('wellington');
+});
+
+test('a hidden single member is noted under its tagline', () => {
+  render(
+    <DetailPanel
+      {...open({ entityType: 'person', entity: napoleon }, true)}
+      onClose={() => {}}
+    />,
+  );
+  expect(screen.getByText('Hidden by filters')).toBeTruthy();
+});
+
+test('an ongoing life is listed through to the present', () => {
+  const living: Person = {
+    ...wellington,
+    id: 'living',
+    slug: 'living',
+    name: 'Living',
+    lifespan: { start: { year: 1955, month: 2 } },
+  };
+  const props = comparison();
+  props.members = [
+    props.members[0] as DetailPanelMember,
+    { entity: { entityType: 'person', entity: living }, isHidden: false },
+  ];
+  render(<DetailPanel {...props} />);
+  expect(screen.getByText('Feb 1955 – present')).toBeTruthy();
+});
+
+test('a comparison member with an image shows it as a small thumbnail, and a broken one is dropped', () => {
+  const withImage: Person = {
+    ...wellington,
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Wellington.jpg',
+    imageAttribution: 'Thomas Lawrence, via Wikimedia Commons',
+  };
+  const props = comparison();
+  props.members = [
+    {
+      entity: {
+        entityType: 'person',
+        entity: { ...napoleon, image: undefined },
+      },
+      isHidden: false,
+    },
+    { entity: { entityType: 'person', entity: withImage }, isHidden: false },
+  ];
+  const { container } = render(<DetailPanel {...props} />);
+
+  const thumbs = container.querySelectorAll('li img');
+  expect(thumbs).toHaveLength(1);
+  expect((thumbs[0] as HTMLImageElement).src).toContain(
+    'Wellington.jpg?width=96',
+  );
+  expect(thumbs[0]?.getAttribute('title')).toBe(
+    'Thomas Lawrence, via Wikimedia Commons',
+  );
+
+  fireEvent.error(thumbs[0] as Element);
+  expect(container.querySelectorAll('li img')).toHaveLength(0);
+});
+
+test('the panel itself has no add button; adding lives on the canvas', () => {
+  render(<DetailPanel {...comparison()} />);
+  expect(
+    screen.queryByRole('button', { name: 'Add to comparison' }),
+  ).toBeNull();
 });

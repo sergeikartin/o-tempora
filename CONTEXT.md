@@ -40,6 +40,18 @@ _Avoid_: geography filter, area filter, macro-region/sub-region
 One entity's rendered visual item on the timeline, regardless of lane or date shape. A `Period` (`start`/optional `end`, e.g. `Person.lifespan`, `Conflict.period`) renders as a rounded-cap line; a `PointInTime` (`at`, e.g. `ConflictEvent`, a point-shaped `Milestone`) renders as a dot (`PERIOD_LINE_HEIGHT`/`POINT_RADIUS` in `packages/web/src/widgets/timeline-canvas/options.ts`). Both shapes share the same mechanics — a padded invisible hit area, a larger selected size, a selection/search-jump ring drawn as a wider duplicate underneath — and are targeted identically: `data-entity-id`/`data-entity-type` attributes for the delegated click listener (`TimelineCanvas.tsx`), and Search's "clicking its rendered mark". Which shape an entity gets is decided once at Output by what dates resolved (see **Container**), never by lane.
 _Avoid_: Lifespan (that is `Person.lifespan`'s field name, not the rendered shape), marker (bare — reserved for the label-gap constants that use it literally, e.g. `MILESTONES_MARKER_LABEL_GAP`), item (too generic)
 
+**Selection**:
+The set of up to 4 entities the visitor has picked, in the order they were picked. A plain click or a **Search** pick replaces it with one entity; Shift/Ctrl/Cmd-click toggles an entity in or out, as does the next mark picked after the floating "Add to comparison" button on the timeline (the route for touch, which has no modifier keys). Closing the detail panel clears it. Its members are what an **Entity Link** carries and what the detail panel lists.
+_Avoid_: comparison (the feature name, not the set), multi-select, pinned entities
+
+**Span Band**:
+A faint vertical band drawn behind the **Marks** of all three **Lanes** for each member of the **Selection**, covering exactly that entity's span, so which lives and events coincide with it can be read straight down the screen. A `Period` gets a band from start to end; a `PointInTime` gets a hairline at its date. A selection state only: hover never draws it, it clears with the **Selection**, and it neither dims nor emphasises other Marks. No connection lines and no ranking.
+_Avoid_: overlap highlight, connection, range highlight, halo (the selection halo is the ink glow around the Mark itself)
+
+**Overlap Band**:
+The span every member of a **Selection** of two or more shares, drawn over the **Span Bands** in a stronger tone with a minimum on-screen width so a month-scale overlap stays visible. A `PointInTime` member counts only if it falls inside every `Period`'s span; with no common span nothing is drawn. The detail panel states the same span in words, with months, from the same computation.
+_Avoid_: intersection, common span, overlap highlight
+
 **Fame Score**:
 `TimelineEntry.fameScore` — the numeric field behind each lane's fame floor (`FAME_SCORE_BOUNDS`/`FameScoreFilters`) and each lane's vertical row order (`assignRows` in `map-to-items.ts`, processed fame-descending): the highest-fame items land in row 0, which each lane places against the shared Year Axis (bottom of People, top of the merged Conflicts+Milestones lane), so importance radiates outward from the axis. Computed per lane, never blended across lanes: People use raw Pantheon HPI (0–100); Conflicts and Milestones use one shared 0–100 log-normalized blend of Wikidata sitelinks and Wikimedia pageviews (`packages/data-pipeline/docs/adr/0010-blend-sitelinks-and-pageviews-for-wars-discoveries-fame-score.md`), which lets them compete for the same rows. Never drives zoom or mark size; row position is distinct from z-order.
 _Avoid_: Importance score, significance score, popularity score
@@ -51,6 +63,18 @@ _Avoid_: track, Wars & Conflicts, Events & Inventions, wars, discoveries, events
 **Minimap**:
 The log-scaled, mirrored-ridge area sparkline that replaces the timeline's scrollbar — People's **Row Depth** curve above a center baseline, Conflicts+Milestones' inverted below it, across the full pannable range (`PAN_MIN_YEAR` to present), so users see ahead of panning where a region needs many rows. Computed client-side from loaded lane data and recomputed as the fame floors change. Also the pan/zoom control: click jumps, dragging the viewport rectangle pans, hovering shows exact per-series Row Depth in a tooltip. A thin non-interactive strip of century ticks runs along its top edge, labels thinned once they would collide (`packages/web/docs/adr/0004-density-minimap-replaces-scrollbar.md`).
 _Avoid_: Mountain Profile, density chart, sparkline (bare)
+
+**Scrubber**:
+The phone-width stand-in for the **Minimap**: a thin strip of century ticks with a thumb for the **Viewport Range**, position only and no density. Tapping it jumps and dragging the thumb pans. Shown exactly where the Minimap is not.
+_Avoid_: mini-minimap, timeline bar, slider
+
+**Top Bar**:
+The slim strip of always-needed controls above the timeline: **Search**, **Detail Level**, the Filters Panel trigger and Help. Replaces the floating sidebar on every screen width.
+_Avoid_: header, toolbar, navbar, sidebar (the retired floating card)
+
+**Filters Panel**:
+The single place the occasional filters live — Occupation Domain, Region and Conflicts & Milestones — opened from the **Top Bar**'s Filters button, which shows how many filters are active. A popover on desktop and a bottom sheet at phone width.
+_Avoid_: filter drawer, sidebar filters, filter menu
 
 **Row Depth**:
 The number of vertical rows a lane needs at a given point in time to render without overlap — `max(row index) + 1` among items covering it. Each item's row (`TimelineEntry.row`) is computed once by the pipeline's Output stage (`row-assignment.ts`'s `assignRows`) against the entire lane and shipped as data, not derived client-side (`docs/adr/0005-row-assignment-moves-to-the-pipeline.md`); `packages/web`'s `compactRows` only narrows it to what is currently visible. Drives both a lane's rendered height and, at the **Reference Scale**, the Minimap's per-series height.
@@ -81,7 +105,7 @@ A live text query, matched case-insensitively as a substring against an entry's 
 _Avoid_: filter (bare — Search narrows within the filters, it isn't one), lookup, autocomplete
 
 **Landing Page**:
-The short explanatory first page a cold visitor reaches at the root of each **Locale**: what the product is, one **Curiosity** drawn the way the timeline draws it with a row of others to switch between (the chosen one is kept in the URL hash), and one button that opens the shown Curiosity's first mark on the timeline. Separate from the timeline: arriving at the root never drops a visitor onto the timeline, and returning visitors are not redirected past it.
+The short explanatory first page a cold visitor reaches at the root of each **Locale**: what the product is, one **Curiosity** drawn the way the timeline draws it with a row of others to switch between (the chosen one is kept in the URL hash), and one button that opens all of the shown Curiosity's marks on the timeline as one **Selection**. Separate from the timeline: arriving at the root never drops a visitor onto the timeline, and returning visitors are not redirected past it.
 _Avoid_: home page (ambiguous with the language switcher), splash, intro, onboarding
 
 **Slug**:
@@ -89,7 +113,7 @@ The readable identifier of one entity (`slug` on every Person, Conflict, Conflic
 _Avoid_: permalink, handle, key (bare — ambiguous with `id`)
 
 **Entity Link**:
-A timeline URL that identifies one Person, Conflict, ConflictEvent or Milestone. Opening it brings the timeline to that entity and shows its details, as picking it in **Search** does, whichever **Detail Level** the visitor arrives at. Carries only the entity (`?e=<slug>`) — never a viewport, Detail Level or filter. Selecting an entity adds a history entry, closing the panel replaces it, and the language switch carries the slug to the sibling **Locale**. A slug missing from the loaded levels loads level 3, then level 4, raising the Detail Level only as far as that entity's Fame Score needs; a slug no level contains opens the timeline with no panel.
+A timeline URL that identifies a **Selection** of one to four Persons, Conflicts, ConflictEvents or Milestones. Opening it selects them and shows their details, whichever **Detail Level** the visitor arrives at, and fits the viewport to the union of their spans with a little padding (clicks and **Search** picks keep the current zoom and only centre). Carries only the entities (`?e=<slug>`, repeated, in selection order, extras beyond four ignored) — never a viewport, Detail Level or filter. The first entity picked from an empty Selection adds a history entry, so Back closes the panel in one step; every later change to the Selection, and closing, replaces it. The language switch carries the slugs to the sibling **Locale**. A slug missing from the loaded levels loads level 3, then level 4, raising the Detail Level only as far as the least famous entity's Fame Score needs; a slug no level contains is dropped, and with none left the timeline opens with no panel.
 _Avoid_: deep link, permalink, share link, shareable state
 
 **Curiosity**:

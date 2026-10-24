@@ -67,3 +67,61 @@ export function filterConflictsByFilterValues<T>(
   if (selectedValues.length === 0) return items;
   return selectedValues.includes('conflicts') ? items : [];
 }
+
+// Every filter that narrows what the lanes draw, as one value. The lane
+// pipelines below are the single definition of "visible", shared by the canvas
+// (what it draws), Search (what it offers) and the Selection (which members
+// are hidden).
+export interface ActiveFilters {
+  fameScoreValues: { people: number; conflicts: number; milestones: number };
+  selectedDomains: OccupationDomain[];
+  selectedRegions: Region[];
+  selectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[];
+}
+
+export function visiblePeople<
+  T extends {
+    fameScore: number;
+    occupationDomain: OccupationDomain;
+    regionTags: Region[];
+  },
+>(people: T[], filters: ActiveFilters): T[] {
+  return filterByRegion(
+    filterByOccupationDomain(
+      filterByFameScore(people, filters.fameScoreValues.people),
+      filters.selectedDomains,
+    ),
+    filters.selectedRegions,
+    (person) => person.regionTags,
+  );
+}
+
+export function visibleConflicts<
+  T extends { fameScore: number; regionTags: Region[] },
+>(conflicts: T[], filters: ActiveFilters): T[] {
+  return filterConflictsByFilterValues(
+    filterByRegion(
+      filterByFameScore(conflicts, filters.fameScoreValues.conflicts),
+      filters.selectedRegions,
+      (entry) => entry.regionTags,
+    ),
+    filters.selectedConflictsMilestonesValues,
+  );
+}
+
+export function visibleMilestones<
+  T extends {
+    fameScore: number;
+    regionTags: Region[];
+    category: MilestoneCategory;
+  },
+>(milestones: T[], filters: ActiveFilters): T[] {
+  return filterByMilestoneCategoryGroup(
+    filterByRegion(
+      filterByFameScore(milestones, filters.fameScoreValues.milestones),
+      filters.selectedRegions,
+      (milestone) => milestone.regionTags,
+    ),
+    filters.selectedConflictsMilestonesValues,
+  );
+}

@@ -2,11 +2,9 @@ import { useMemo, useState } from 'react';
 import type { ConflictsMilestonesFilterValue } from '../../../shared/config';
 import {
   type EntityType,
-  filterByFameScore,
-  filterByMilestoneCategoryGroup,
-  filterByOccupationDomain,
-  filterByRegion,
-  filterConflictsByFilterValues,
+  visibleConflicts,
+  visibleMilestones,
+  visiblePeople,
 } from '../../../shared/lib/entity';
 import type {
   ConflictEntry,
@@ -65,8 +63,7 @@ function matchesQuery(
 // result into a pan + selection, mirroring features/select-timeline-entity's
 // "feature owns cross-widget state" comment).
 //
-// Uses the same filterBy*/filterConflictsByFilterValues pipeline as
-// TimelineCanvas (shared/lib/entity/), so a result never surfaces an entity
+// Uses the same visible* pipelines as TimelineCanvas (shared/lib/entity/), so a result never surfaces an entity
 // the current Detail Level, Region, Occupation Domain or Conflicts &
 // Milestones filters hide from the canvas (CONTEXT.md's Search;
 // web/docs/adr/0010-search-stays-inside-active-filters-and-payload-tiers.md).
@@ -84,51 +81,31 @@ export function useTimelineSearch({
 }: UseTimelineSearchArgs) {
   const [query, setQuery] = useState('');
 
+  const filters = useMemo(
+    () => ({
+      fameScoreValues,
+      selectedDomains,
+      selectedRegions,
+      selectedConflictsMilestonesValues,
+    }),
+    [
+      fameScoreValues,
+      selectedDomains,
+      selectedRegions,
+      selectedConflictsMilestonesValues,
+    ],
+  );
   const filteredPeople = useMemo(
-    () =>
-      filterByRegion(
-        filterByOccupationDomain(
-          filterByFameScore(people, fameScoreValues.people),
-          selectedDomains,
-        ),
-        selectedRegions,
-        (person) => person.regionTags,
-      ),
-    [people, fameScoreValues.people, selectedDomains, selectedRegions],
+    () => visiblePeople(people, filters),
+    [people, filters],
   );
   const filteredConflicts = useMemo(
-    () =>
-      filterConflictsByFilterValues(
-        filterByRegion(
-          filterByFameScore(conflicts, fameScoreValues.conflicts),
-          selectedRegions,
-          (entry) => entry.regionTags,
-        ),
-        selectedConflictsMilestonesValues,
-      ),
-    [
-      conflicts,
-      fameScoreValues.conflicts,
-      selectedRegions,
-      selectedConflictsMilestonesValues,
-    ],
+    () => visibleConflicts(conflicts, filters),
+    [conflicts, filters],
   );
   const filteredMilestones = useMemo(
-    () =>
-      filterByMilestoneCategoryGroup(
-        filterByRegion(
-          filterByFameScore(milestones, fameScoreValues.milestones),
-          selectedRegions,
-          (milestone) => milestone.regionTags,
-        ),
-        selectedConflictsMilestonesValues,
-      ),
-    [
-      milestones,
-      fameScoreValues.milestones,
-      selectedRegions,
-      selectedConflictsMilestonesValues,
-    ],
+    () => visibleMilestones(milestones, filters),
+    [milestones, filters],
   );
 
   const results = useMemo<SearchResult[]>(() => {

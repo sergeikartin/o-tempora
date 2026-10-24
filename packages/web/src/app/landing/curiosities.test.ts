@@ -1,4 +1,5 @@
 import { expect, test } from 'vitest';
+import { MAX_SELECTION_SIZE } from '../../shared/lib/entity';
 import { CURIOSITIES, type CuriosityMark } from './curiosities';
 
 interface DatasetEntry {
@@ -51,5 +52,13 @@ test('each curiosity window holds the part of the story it tells', () => {
       expect(tick).toBeGreaterThanOrEqual(from);
       expect(tick).toBeLessThan(to);
     }
+  }
+});
+
+test('every curiosity fits in one Selection, since its call-to-action opens all its marks', () => {
+  for (const curiosity of CURIOSITIES) {
+    expect(curiosity.marks.length, curiosity.id).toBeLessThanOrEqual(
+      MAX_SELECTION_SIZE,
+    );
   }
 });

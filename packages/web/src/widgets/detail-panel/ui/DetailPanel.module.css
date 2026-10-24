@@ -141,6 +141,112 @@
   outline-offset: 2px;
 }
 
+.hiddenNote {
+  font-size: 12px;
+  color: var(--color-accent-selected);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Leaves room for the close button, which floats over the top-right corner. */
+.overlapLine {
+  padding-right: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.memberList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.member {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.swatch {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-radius: var(--radius-full);
+}
+
+.memberImage {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  background: var(--color-bg-base);
+}
+
+.memberText {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.memberName {
+  font-family: Fraunces, serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.memberDates {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.memberTagline {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+.memberLink {
+  align-self: flex-start;
+  font-size: 12px;
+  color: var(--color-accent-selected);
+}
+
+.memberLink:focus-visible,
+.removeButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.removeButton {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
 /* Below the mobile breakpoint the panel is anchored to the bottom edge as a
    sheet instead of the right edge as a side drawer, sized to the narrow width
    instead of a fixed 340px column. Declared after the base .panel/.panel.open
@@ -162,6 +268,12 @@
 
   .panel.open {
     transform: translateY(0);
+  }
+
+  /* A comparison (or a pending add) sits at a peek height so the lanes and
+     bands stay visible and tappable above it; the list scrolls inside. */
+  .panel.compact {
+    max-height: 40vh;
   }
 
   /* The sheet only covers its own max-height: 80vh, leaving a strip of the

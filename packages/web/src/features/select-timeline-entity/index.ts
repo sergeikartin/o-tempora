@@ -1,2 +1,6 @@
-export type { EntityType, SelectedEntityRef } from './model/useSelectedEntity';
-export { ENTITY_TYPES, useSelectedEntity } from './model/useSelectedEntity';
+export type {
+  EntityType,
+  SelectedEntityRef,
+  SelectionMember,
+} from './model/useSelection';
+export { ENTITY_TYPES, useSelection } from './model/useSelection';

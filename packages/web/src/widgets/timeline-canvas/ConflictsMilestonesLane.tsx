@@ -49,9 +49,11 @@ interface ConflictsMilestonesLaneProps {
   // unfiltered datasets (map-to-items.ts's computeRowAssignment), so rows are
   // stable across filter/zoom changes.
   eventsRowFor: (ids: string[]) => Map<string, number>;
-  // The entity DetailPanel is open for, or null (see PeopleLane's prop).
-  selectedId?: string | null;
+  // The Selection's members in this lane (see PeopleLane's prop).
+  selectedIds?: readonly string[];
 }
+
+const NO_IDS: readonly string[] = [];
 
 // Conflicts and Milestones share one below-marker row-stacking pass, so a
 // Conflict and a Milestone of similar fame and time can share a row. That is
@@ -70,7 +72,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   ZoomAnimationHandle,
   ConflictsMilestonesLaneProps
 >(function ConflictsMilestonesLane(
-  { conflicts, milestones, xScale, eventsRowFor, selectedId },
+  { conflicts, milestones, xScale, eventsRowFor, selectedIds = NO_IDS },
   ref,
 ) {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -257,33 +259,35 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   // ConflictsMilestonesLane.module.css's .searchHighlight/.searchHighlightLabel.
   useLayoutEffect(() => {
     if (!svgRef.current) return;
-    ensureHaloChild(
-      svgRef.current,
-      '.d3-line',
-      RANGE_MARK_SHAPE[1],
-      styles,
-      selectedId,
-      ['x1', 'x2', 'y1', 'y2'],
-    );
-    ensureHaloChild(
-      svgRef.current,
-      '.d3-dot',
-      POINT_MARK_SHAPE[1],
-      styles,
-      selectedId,
-      ['cx', 'cy'],
-    );
+    for (const id of selectedIds) {
+      ensureHaloChild(
+        svgRef.current,
+        '.d3-line',
+        RANGE_MARK_SHAPE[1],
+        styles,
+        id,
+        ['x1', 'x2', 'y1', 'y2'],
+      );
+      ensureHaloChild(
+        svgRef.current,
+        '.d3-dot',
+        POINT_MARK_SHAPE[1],
+        styles,
+        id,
+        ['cx', 'cy'],
+      );
+    }
     // The classes exist in the compiled CSS module; indexed access reads as
     // possibly undefined only because of noUncheckedIndexedAccess.
     toggleSelectionHighlight(
       svgRef.current,
       '.d3-line-halo[data-entity-id], .d3-line[data-entity-id], .d3-dot-halo[data-entity-id], .d3-dot[data-entity-id]',
       '.d3-range-name[data-entity-id], .d3-point-name[data-entity-id]',
-      selectedId,
+      selectedIds,
       styles.searchHighlight as string,
       styles.searchHighlightLabel as string,
     );
-  }, [selectedId]);
+  }, [selectedIds]);
 
   // Called every frame by TimelineCanvas's single rAF driver (see options.ts's
   // ZoomAnimationTransform). The selectAll is queried once and cached in

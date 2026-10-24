@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0016-url-carries-a-selection-and-arrival-fits-it.md
 ---
 
 # URL state is the selected entity only, resolved by loading deeper levels progressively

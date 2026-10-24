@@ -275,7 +275,7 @@ export function ensureHaloChild(
 
 /**
  * Toggles the selection-highlight classes on whichever of a lane's marks
- * (already-rendered DOM, found by data-entity-id) match `selectedId` —
+ * (already-rendered DOM, found by data-entity-id) match one of `selectedIds` —
  * decoupled from any D3 join's own data binding, since PeopleLane's and
  * ConflictsMilestonesLane's marks are targeted identically here regardless
  * of which join (or join module) produced them.
@@ -284,7 +284,7 @@ export function toggleSelectionHighlight(
   svg: SVGSVGElement,
   markSelector: string,
   labelSelector: string,
-  selectedId: string | null | undefined,
+  selectedIds: readonly string[],
   highlightClass: string,
   labelHighlightClass: string,
 ): void {
@@ -292,7 +292,7 @@ export function toggleSelectionHighlight(
     for (const el of svg.querySelectorAll(selector)) {
       el.classList.toggle(
         className,
-        el.getAttribute('data-entity-id') === selectedId,
+        selectedIds.includes(el.getAttribute('data-entity-id') ?? ''),
       );
     }
   };

@@ -3,6 +3,8 @@ import {
   centuryBoundariesInRange,
   formatYear,
   formatYearMonth,
+  formatYearMonthRange,
+  formatYearMonthShort,
   formatYearRange,
   isBceYear,
   isRoundTickYear,
@@ -157,4 +159,36 @@ test('formatYearRange states the era once when both ends are BCE', () => {
 
 test('formatYearRange keeps both labels when the range crosses the era boundary', () => {
   expect(formatYearRange(-49, 51)).toBe('50 BCE – 51');
+});
+
+test('formatYearMonthShort abbreviates the month and keeps the year-only fallback', () => {
+  expect(formatYearMonthShort({ year: 1955, month: 2 })).toBe('Feb 1955');
+  expect(formatYearMonthShort({ year: 1955 })).toBe('1955');
+});
+
+test('formatYearMonthRange states the year once when both ends share it', () => {
+  expect(
+    formatYearMonthRange({ year: 1955, month: 2 }, { year: 1955, month: 4 }),
+  ).toBe('Feb – Apr 1955');
+});
+
+test('formatYearMonthRange spells out both years when they differ', () => {
+  expect(
+    formatYearMonthRange({ year: 1955, month: 2 }, { year: 1956, month: 4 }),
+  ).toBe('Feb 1955 – Apr 1956');
+  expect(formatYearMonthRange({ year: 1914, month: 7 }, { year: 1918 })).toBe(
+    'Jul 1914 – 1918',
+  );
+});
+
+test('formatYearMonthRange collapses equal ends to one date and year-only ends to a year range', () => {
+  expect(
+    formatYearMonthRange({ year: 1955, month: 3 }, { year: 1955, month: 3 }),
+  ).toBe('Mar 1955');
+  expect(formatYearMonthRange({ year: 1914 }, { year: 1918 })).toBe(
+    '1914 – 1918',
+  );
+  expect(formatYearMonthRange({ year: -300 }, { year: -200 })).toBe(
+    '301 – 201 BCE',
+  );
 });

@@ -42,10 +42,13 @@ interface PeopleLaneProps {
   // unfiltered dataset (map-to-items.ts's computeRowAssignment), so a person's
   // row is stable across filter/zoom changes.
   personRowFor: (ids: string[]) => Map<string, number>;
-  // The entity DetailPanel is open for, or null; its mark gets the selection
-  // highlight (CONTEXT.md's Search), whether picked by click or search.
-  selectedId?: string | null;
+  // The Selection's members in this lane; their marks get the selection
+  // highlight, whether picked by click or search. Needs a stable identity
+  // across renders that don't change the Selection.
+  selectedIds?: readonly string[];
 }
+
+const NO_IDS: readonly string[] = [];
 
 // A person's lifespan renders as a rounded-cap line with the name label
 // left-aligned just above it, colored by occupation domain. Overlapping people
@@ -54,7 +57,10 @@ interface PeopleLaneProps {
 // these props change from that, and the D3 join is gated on [layout,
 // totalHeight], so skipping the render body avoids per-frame work.
 const PeopleLaneImpl = forwardRef<PeopleLaneHandle, PeopleLaneProps>(
-  function PeopleLane({ people, xScale, personRowFor, selectedId }, ref) {
+  function PeopleLane(
+    { people, xScale, personRowFor, selectedIds = NO_IDS },
+    ref,
+  ) {
     const svgRef = useRef<SVGSVGElement>(null);
     const hasMountedRef = useRef(false);
     // Caches the zoom tick loop's selectAll across a gesture's frames; the join
@@ -202,25 +208,27 @@ const PeopleLaneImpl = forwardRef<PeopleLaneHandle, PeopleLaneProps>(
     // .searchHighlight/.searchHighlightLabel.
     useLayoutEffect(() => {
       if (!svgRef.current) return;
-      ensureHaloChild(
-        svgRef.current,
-        '.d3-line',
-        PERSON_MARK_SHAPE[1],
-        styles,
-        selectedId,
-        ['x1', 'x2', 'y1', 'y2'],
-      );
+      for (const id of selectedIds) {
+        ensureHaloChild(
+          svgRef.current,
+          '.d3-line',
+          PERSON_MARK_SHAPE[1],
+          styles,
+          id,
+          ['x1', 'x2', 'y1', 'y2'],
+        );
+      }
       // The classes exist in the compiled CSS module; indexed access reads as
       // possibly undefined only because of noUncheckedIndexedAccess.
       toggleSelectionHighlight(
         svgRef.current,
         '.d3-line-halo[data-entity-id], .d3-line[data-entity-id]',
         '.d3-name[data-entity-id]',
-        selectedId,
+        selectedIds,
         styles.searchHighlight as string,
         styles.searchHighlightLabel as string,
       );
-    }, [selectedId]);
+    }, [selectedIds]);
 
     // Called every frame by TimelineCanvas's single rAF driver (mechanism in
     // options.ts's ZoomAnimationTransform). Bound data is already on the DOM nodes,

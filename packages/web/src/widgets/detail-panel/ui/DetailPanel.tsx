@@ -2,18 +2,42 @@ import { useEffect, useRef, useState } from 'react';
 import { m } from '../../../shared/paraglide/messages.js';
 import {
   buildDrawerContent,
+  buildMemberSummary,
   type DetailPanelEntity,
 } from '../lib/build-drawer-content';
 import styles from './DetailPanel.module.css';
 
+// One member of the Selection (CONTEXT.md) as the panel shows it.
+export interface DetailPanelMember {
+  entity: DetailPanelEntity;
+  // Filtered out of the canvas by Detail Level or filters; it stays selected.
+  isHidden: boolean;
+}
+
 interface DetailPanelProps {
-  selected: DetailPanelEntity | null;
+  // The Selection in selection order; empty closes the panel.
+  members: readonly DetailPanelMember[];
+  // The one-line summary of what two or more members share, or null.
+  overlapLine: string | null;
+  // Whether the next mark picked is added to the Selection (the floating add
+  // button on the canvas arms it); the sheet then stays at peek height on a
+  // phone so that mark can be tapped.
+  isAdding: boolean;
+  onRemoveMember: (id: string) => void;
   onClose: () => void;
+}
+
+interface PanelView {
+  members: readonly DetailPanelMember[];
+  overlapLine: string | null;
 }
 
 // Sized for the panel's fixed 340px width at typical device pixel ratios; not
 // load-bearing.
 const IMAGE_BANNER_WIDTH_PX = 400;
+
+// The comparison list's thumbnail is 44px; this covers 2x displays.
+const MEMBER_IMAGE_WIDTH_PX = 96;
 
 // Below this much pointerdown-to-pointerup movement, an outside press is a
 // click (dismiss) rather than a drag-to-pan release (ignore). Mirrors
@@ -25,13 +49,23 @@ const OUTSIDE_PRESS_DRAG_THRESHOLD_PX = 4;
 // the clicked mark's position, so panning/zooming underneath needs no special
 // handling. One global instance: App.tsx swaps `selected` in place rather than
 // mounting a panel per entity.
-export function DetailPanel({ selected, onClose }: DetailPanelProps) {
+export function DetailPanel({
+  members,
+  overlapLine,
+  isAdding,
+  onRemoveMember,
+  onClose,
+}: DetailPanelProps) {
   const panelRef = useRef<HTMLElement>(null);
   const backdropRef = useRef<HTMLButtonElement>(null);
   // Which entity's image failed to load, keyed by entity id (not URL: different
   // entities can share a Commons file), so another entity's image gets a fresh
   // attempt: a runtime 404 hides the image, not the slot for every later entity.
   const [failedEntityId, setFailedEntityId] = useState<string | null>(null);
+  // The comparison list shows several images at once, so failures are a set.
+  const [failedMemberImageIds, setFailedMemberImageIds] = useState<
+    ReadonlySet<string>
+  >(new Set());
   // Portrait photos would get cropped top and bottom by object-fit: cover in the
   // fixed-height banner, so they switch to contain (letterboxed) once the shape
   // is known. Keyed by entity id and reset during render, not in an effect
@@ -53,15 +87,21 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
     loaded: false,
   });
   // The panel stays mounted (web/docs/adr/0006) so its close slide has a frame to
-  // animate: `selected` goes null the instant a close is requested, so content
-  // keeps rendering from the last non-null value during the slide-out.
-  const [lastSelected, setLastSelected] = useState<DetailPanelEntity | null>(
-    null,
-  );
-  if (selected && selected !== lastSelected) {
-    setLastSelected(selected);
+  // animate: `members` goes empty the instant a close is requested, so content
+  // keeps rendering from the last non-empty view during the slide-out.
+  const isOpen = members.length > 0;
+  const [lastView, setLastView] = useState<PanelView | null>(null);
+  if (
+    isOpen &&
+    (members !== lastView?.members || overlapLine !== lastView?.overlapLine)
+  ) {
+    setLastView({ members, overlapLine });
   }
-  const displayedEntity = selected ?? lastSelected;
+  const view = isOpen ? { members, overlapLine } : lastView;
+  const displayedMembers = view?.members ?? [];
+  const isComparison = displayedMembers.length >= 2;
+  const displayedMember = isComparison ? null : (displayedMembers[0] ?? null);
+  const displayedEntity = displayedMember?.entity ?? null;
 
   const selectedEntityId = displayedEntity?.entity.id ?? null;
   if (portraitImage.entityId !== selectedEntityId) {
@@ -72,7 +112,7 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
   }
 
   useEffect(() => {
-    if (!selected) return;
+    if (!isOpen) return;
 
     // Recorded on pointerdown, consumed on pointerup: closing is decided at
     // release, so a drag-to-pan that starts outside the panel can prove itself a
@@ -98,8 +138,16 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
       // even the entity already open. Closing here first would unmount the panel just
       // before the click reopens it, a close/reopen flash. Leave the next selection
       // to the mark's click.
-      const target = event.target as Element | null;
+      // Hit-tested at the release position, not event.target: a mouse press on
+      // the canvas captures the pointer there (TimelineCanvas's drag-to-pan), which
+      // retargets this pointerup to the canvas itself, hiding the mark under it.
+      const target =
+        document.elementFromPoint?.(event.clientX, event.clientY) ??
+        (event.target as Element | null);
       if (target?.closest?.('[data-entity-id]')) return;
+      // The canvas's floating add button works on the open Selection, so
+      // pressing it must not dismiss it.
+      if (target?.closest?.('[data-selection-control]')) return;
       // A drag-to-pan release also lands here (its start is outside the panel too);
       // only dismiss if the press barely moved.
       if (start) {
@@ -124,16 +172,25 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
       document.removeEventListener('pointerup', handlePointerUp);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selected, onClose]);
+  }, [isOpen, onClose]);
 
-  const isOpen = selected !== null;
   const content = displayedEntity ? buildDrawerContent(displayedEntity) : null;
   const showImage =
     Boolean(content?.image) && displayedEntity?.entity.id !== failedEntityId;
+  // A comparison, or a pending add, keeps the lanes uncovered on a phone so the
+  // bands stay readable and the next mark can be tapped.
+  const isCompact = isComparison || isAdding;
+  const panelClassName = [
+    styles.panel,
+    isOpen && styles.open,
+    isCompact && styles.compact,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <>
-      {isOpen && (
+      {isOpen && !isCompact && (
         <button
           ref={backdropRef}
           type="button"
@@ -144,12 +201,92 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
       )}
       <aside
         ref={panelRef}
-        className={isOpen ? `${styles.panel} ${styles.open}` : styles.panel}
+        className={panelClassName}
         aria-label={
-          content ? m.detailsAriaLabel({ name: content.name }) : undefined
+          isComparison
+            ? m.comparisonAriaLabel()
+            : content
+              ? m.detailsAriaLabel({ name: content.name })
+              : undefined
         }
         inert={!isOpen}
       >
+        {isComparison && (
+          <>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label={m.closeDetailsAriaLabel()}
+              className={styles.closeButton}
+            >
+              ×
+            </button>
+            <div className={styles.body}>
+              <h2 className={styles.srOnly}>{m.comparisonAriaLabel()}</h2>
+              <p className={styles.overlapLine}>{view?.overlapLine}</p>
+              <ul className={styles.memberList}>
+                {displayedMembers.map((member) => {
+                  const summary = buildMemberSummary(member.entity);
+                  return (
+                    <li key={summary.id} className={styles.member}>
+                      <span
+                        className={styles.swatch}
+                        style={{ background: summary.color }}
+                        aria-hidden="true"
+                      />
+                      {summary.image &&
+                        !failedMemberImageIds.has(summary.id) && (
+                          // biome-ignore lint/a11y/noNoninteractiveElementInteractions: onError is a resource-loading callback, not a user-interaction handler
+                          <img
+                            src={`${summary.image}?width=${MEMBER_IMAGE_WIDTH_PX}`}
+                            alt=""
+                            title={summary.imageAttribution}
+                            loading="lazy"
+                            className={styles.memberImage}
+                            onError={() =>
+                              setFailedMemberImageIds((ids) =>
+                                new Set(ids).add(summary.id),
+                              )
+                            }
+                          />
+                        )}
+                      <div className={styles.memberText}>
+                        <p className={styles.memberName}>{summary.name}</p>
+                        <p className={styles.memberDates}>{summary.dates}</p>
+                        <p className={styles.memberTagline}>
+                          {summary.tagline}
+                        </p>
+                        {member.isHidden && (
+                          <p className={styles.hiddenNote}>
+                            {m.hiddenByFiltersNote()}
+                          </p>
+                        )}
+                        <a
+                          href={summary.wikipediaUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={styles.memberLink}
+                        >
+                          {m.readOnWikipedia()}
+                        </a>
+                      </div>
+                      <button
+                        type="button"
+                        className={styles.removeButton}
+                        aria-label={m.removeFromComparisonAriaLabel({
+                          name: summary.name,
+                        })}
+                        onClick={() => onRemoveMember(summary.id)}
+                      >
+                        ×
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </>
+        )}
         {content && displayedEntity && (
           <>
             <button
@@ -196,6 +333,9 @@ export function DetailPanel({ selected, onClose }: DetailPanelProps) {
                 <p className={styles.dateLine}>{content.dateLine}</p>
               )}
               <p className={styles.tagline}>{content.tagline}</p>
+              {displayedMember?.isHidden && (
+                <p className={styles.hiddenNote}>{m.hiddenByFiltersNote()}</p>
+              )}
               {content.description && (
                 <p className={styles.description}>{content.description}</p>
               )}
