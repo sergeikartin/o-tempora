@@ -20,6 +20,7 @@
   "zoomOutAriaLabel": "Уменьшить масштаб",
   "zoomInAriaLabel": "Увеличить масштаб",
   "minimapAriaLabel": "Мини-карта плотности хронологии",
+  "scrubberAriaLabel": "Полоса положения на хронологии",
   "yearBce": "{year} до н. э.",
   "closeAriaLabel": "Закрыть",
   "closeFiltersAriaLabel": "Закрыть фильтры",

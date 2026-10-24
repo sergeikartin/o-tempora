@@ -1,6 +1,7 @@
 import {
   type CenturyBoundary,
   centuryBoundariesInRange,
+  formatYear,
 } from '../../shared/lib/date';
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import {
@@ -11,7 +12,7 @@ import {
   milestonePixelInterval,
   personPixelInterval,
 } from './map-to-items';
-import { buildXScale } from './options';
+import { buildXScale, MIN_YEAR, REFERENCE_PIXELS_PER_YEAR } from './options';
 
 // Resolution of the bucketed Row Depth series: enough buckets to trace shape
 // across ~4,800 years without a per-year sample.
@@ -153,4 +154,51 @@ export function logScaleHeightPx(
 ): number {
   if (maxDepth <= 0 || depth <= 0) return 0;
   return (Math.log1p(depth) / Math.log1p(maxDepth)) * maxHeightPx;
+}
+
+// Rough per-character width for the century strip's 9px labels (see
+// options.ts's AVG_CHAR_WIDTH_PX, tuned for 11px) plus breathing room; enough
+// to bound label width for the thinning pass without DOM measurement.
+const CENTURY_LABEL_CHAR_WIDTH_PX = 5;
+const CENTURY_LABEL_GAP_PX = 6;
+
+function estimateCenturyLabelWidthPx(label: string): number {
+  return label.length * CENTURY_LABEL_CHAR_WIDTH_PX + CENTURY_LABEL_GAP_PX;
+}
+
+export interface CenturyStripTick {
+  startYear: number;
+  label: string;
+  leftPercent: number;
+  showLabel: boolean;
+}
+
+// Ticks at every century boundary across the pannable range, on the same
+// REFERENCE_PIXELS_PER_YEAR scale as the Minimap's ridge so they line up with
+// it. Labels use formatYear's numeric style ("1500", "100 BCE"), as YearAxis
+// does, not centuryBoundaryForYear's ordinals. They thin out left to right,
+// keeping a label only if it clears the previous shown label's rendered width;
+// lengths vary ("1800" vs. "800 BCE"), so a flat gap like YearAxis's
+// MIN_DECADE_LABEL_SPACING_PX would overlap.
+export function centuryStripTicks(trackWidthPx: number): CenturyStripTick[] {
+  const { scale: refScale, totalWidth: refTotalWidthPx } = buildXScale(
+    REFERENCE_PIXELS_PER_YEAR,
+  );
+  if (refTotalWidthPx <= 0) return [];
+  const [, domainMaxYear] = refScale.domain();
+  let lastLabelRightEdgePx = -Infinity;
+  return centuryTicksInRange(MIN_YEAR, domainMaxYear ?? MIN_YEAR).map(
+    (boundary) => {
+      const label = formatYear(boundary.startYear);
+      const leftPercent =
+        (refScale(boundary.startYear) / refTotalWidthPx) * 100;
+      const xPx = (leftPercent / 100) * trackWidthPx;
+      // Labels are centered under their tick (translateX(-50%)), so collisions
+      // are checked on each label's half-widths, not its x position.
+      const halfWidthPx = estimateCenturyLabelWidthPx(label) / 2;
+      const showLabel = xPx - halfWidthPx >= lastLabelRightEdgePx;
+      if (showLabel) lastLabelRightEdgePx = xPx + halfWidthPx;
+      return { startYear: boundary.startYear, label, leftPercent, showLabel };
+    },
+  );
 }

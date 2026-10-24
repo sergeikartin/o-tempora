@@ -424,6 +424,20 @@ export function zoomAnimationGroupTransformAttr({
   return `translate(${tx}, 0) scale(${sx}, 1)`;
 }
 
+/**
+ * The year span the zoom animation shows at `currentPixelsPerYear`: it keeps
+ * `centerYear` at the viewport centre (the same frame zoomAnimationGroupTransform
+ * folds into its translation), so the Scrubber can follow it without a commit.
+ */
+export function zoomedViewportYears(
+  centerYear: number,
+  currentPixelsPerYear: number,
+  clientWidthPx: number,
+): [startYear: number, endYear: number] {
+  const halfYears = clientWidthPx / 2 / currentPixelsPerYear;
+  return [centerYear - halfYears, centerYear + halfYears];
+}
+
 /** CSS `transform` value (px units, HTML elements) for a ZoomAnimationTransform. */
 export function zoomAnimationGroupTransformCss({
   tx,

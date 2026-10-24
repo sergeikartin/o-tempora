@@ -1,0 +1,77 @@
+/* A flat 24px strip under the Viewport Range, in normal flow so the bottom
+   Selection sheet never covers it. Sits on the page parchment like the heading
+   above it; touch-action: none keeps a finger on the strip from scrolling the
+   page. */
+.track {
+  position: relative;
+  height: 24px;
+  margin-inline: 12px;
+  touch-action: none;
+  cursor: pointer;
+}
+
+/* Decorative: never intercepts the track's or thumb's handlers. */
+.ticks {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tick {
+  position: absolute;
+  top: 0;
+  height: 6px;
+  width: 1px;
+  background-color: var(--color-border-strong);
+}
+
+.tickLabel {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: Archivo, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 9px;
+  color: var(--color-text-secondary);
+}
+
+/* Left and width are written imperatively during a pinch (Scrubber.tsx's
+   setViewport), so no transition: it would lag the lanes. The ::before widens
+   the hit area to a 44px touch target, upward only so it never shadows the
+   lanes below. */
+.thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-selected) 18%,
+    transparent
+  );
+  border-left: 1px solid var(--color-accent-selected);
+  border-right: 1px solid var(--color-accent-selected);
+  cursor: grab;
+}
+
+.thumb::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  bottom: 0;
+  left: 50%;
+  width: max(100%, 44px);
+  transform: translateX(-50%);
+}
+
+.thumb:active {
+  cursor: grabbing;
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-selected) 28%,
+    transparent
+  );
+}

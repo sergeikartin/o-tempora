@@ -179,7 +179,7 @@ The system is dense but unhurried. Controls are small, pill-shaped and exact; la
 A warm neutral ladder from parchment to white, one oxblood accent, and a muted, colour-blind-checked palette that exists only to encode data.
 
 ### Primary
-- **Oxblood Seal** (#8a2a1a): The only accent. Active pill border, reached switch dots and track, primary button fill, search-match emphasis, the minimap viewport rectangle. 6.4:1 or better as text on parchment and ledger paper.
+- **Oxblood Seal** (#8a2a1a): The only accent. Active pill border, reached switch dots and track, primary button fill, search-match emphasis, the minimap viewport rectangle and the scrubber thumb. 6.4:1 or better as text on parchment and ledger paper.
 - **Deep Oxblood** (#6e2013): Keyboard focus ring only (2px outline, 8.3:1 or better on every ground).
 
 ### Secondary (data encoding)
@@ -236,9 +236,9 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 
 ## Layout
 
-A full-viewport canvas read left to right, with the Viewport Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A 56px Top Bar above it holds search, Detail Level, the Filters button and Help; the Filters Panel opens as a popover beneath it. A minimap card sits beneath the lanes on desktop.
+A full-viewport canvas read left to right, with the Viewport Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A 56px Top Bar above it holds search, Detail Level, the Filters button and Help; the Filters Panel opens as a popover beneath it. A minimap card sits beneath the lanes on desktop; on phones a 24px scrubber strip sits between the Viewport Range and the lanes instead.
 
-Spacing is a short ladder of 4, 6, 8, 10, 12, 16, 20 and 24px. Controls sit 8px from canvas corners, cards are inset 12px, and sections are separated by 24px. At 960px and below the Top Bar wraps to two rows (search, Filters and Help, then Detail Level at full width) and drops the wordmark, the Filters Panel and the detail panel become bottom sheets (80vh max) over a scrim, the Viewport Range shrinks to 32px, and the minimap is omitted. Zoom buttons are hidden on coarse pointers in favour of pinch.
+Spacing is a short ladder of 4, 6, 8, 10, 12, 16, 20 and 24px. Controls sit 8px from canvas corners, cards are inset 12px, and sections are separated by 24px. At 960px and below the Top Bar wraps to two rows (search, Filters and Help, then Detail Level at full width) and drops the wordmark, the Filters Panel and the detail panel become bottom sheets (80vh max) over a scrim, the Viewport Range shrinks to 32px, and the minimap gives way to the scrubber. Zoom buttons are hidden on coarse pointers in favour of pinch.
 
 Background texture is a faint 25-year zebra wash with century seams in Control Border at 45%. There are no gradients and no imagery in chrome; entity photos appear only in the detail panel.
 

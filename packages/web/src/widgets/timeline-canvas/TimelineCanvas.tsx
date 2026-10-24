@@ -74,8 +74,10 @@ import {
   zoomAnimationDurationMs,
   zoomAnimationGroupTransform,
   zoomAnimationGroupTransformCss,
+  zoomedViewportYears,
 } from './options';
 import { PeopleLane } from './PeopleLane';
+import { Scrubber, type ScrubberHandle } from './Scrubber';
 import {
   type BandOverlap,
   type BandSpan,
@@ -205,6 +207,7 @@ export function TimelineCanvas({
   // scrolls internally, so no other copy needs to stay visible.
   const yearAxisMiddleAnimRef = useRef<ZoomAnimationHandle>(null);
   const zebraLayerRef = useRef<HTMLDivElement>(null);
+  const scrubberRef = useRef<ScrubberHandle>(null);
   // In-flight zoom animation state: the rAF handle, the pixelsPerYear being
   // retargeted from (null when idle), and the last requested target, so a rapid
   // double-click chains full zoom steps instead of stepping from mid-flight.
@@ -629,6 +632,13 @@ export function TimelineCanvas({
       start.clientWidthPx,
     );
     pinchCurrentPixelsPerYearRef.current = currentPixelsPerYear;
+    scrubberRef.current?.setViewport(
+      ...zoomedViewportYears(
+        start.centerYear,
+        currentPixelsPerYear,
+        start.clientWidthPx,
+      ),
+    );
     applyZoomAnimationTick(
       zoomAnimationGroupTransform({
         startPixelsPerYear: start.startPixelsPerYear,
@@ -761,6 +771,31 @@ export function TimelineCanvas({
     }
 
     panAnimationFrameRef.current = requestAnimationFrame(tick);
+  }
+
+  // The Scrubber speaks in years; the scroll position it maps to is clamped to
+  // the pan bounds, so a tap or drag past either end stops at the edge.
+  function scrollLeftForCenterYear(centerYear: number): number | null {
+    const container = scrollRef.current;
+    if (!container) return null;
+    const maxScrollLeft = Math.max(
+      scrollWidthRef.current - container.clientWidth,
+      0,
+    );
+    return Math.min(
+      Math.max(scale(centerYear) - container.clientWidth / 2, 0),
+      maxScrollLeft,
+    );
+  }
+
+  function handleScrubberCenterYearChange(centerYear: number) {
+    const target = scrollLeftForCenterYear(centerYear);
+    if (target !== null) handleScrollLeftChange(target);
+  }
+
+  function handleScrubberCenterYearJump(centerYear: number) {
+    const target = scrollLeftForCenterYear(centerYear);
+    if (target !== null) handleTrackJump(target);
   }
 
   // Each lane also scrolls vertically on its own, so a mark away from the
@@ -984,6 +1019,9 @@ export function TimelineCanvas({
         d3.easeCubicInOut(t),
       );
       zoomAnimationCurrentPixelsPerYearRef.current = currentPixelsPerYear;
+      scrubberRef.current?.setViewport(
+        ...zoomedViewportYears(centerYear, currentPixelsPerYear, clientWidthPx),
+      );
       applyZoomAnimationTick(
         zoomAnimationGroupTransform({
           startPixelsPerYear: domReferencePixelsPerYear,
@@ -1025,6 +1063,20 @@ export function TimelineCanvas({
       }
     >
       <ViewportRange startYear={viewportStartYear} endYear={viewportEndYear} />
+      {/* The slot is in the prerender too and hidden by CSS above the mobile
+          breakpoint, so the Scrubber's mount (after hydration, which assumes
+          desktop) doesn't shift the layout. */}
+      <div className={styles.scrubberSlot}>
+        {isMobileViewport && (
+          <Scrubber
+            ref={scrubberRef}
+            viewportStartYear={viewportStartYear}
+            viewportEndYear={viewportEndYear}
+            onCenterYearChange={handleScrubberCenterYearChange}
+            onCenterYearJump={handleScrubberCenterYearJump}
+          />
+        )}
+      </div>
       {selectionBands && selectionBands.spans.length > 0 && (
         <p className={styles.srOnly}>{selectionBands.description}</p>
       )}

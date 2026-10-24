@@ -37,6 +37,21 @@
   }
 }
 
+/* Holds the Scrubber's 24px from first paint on phones (it mounts after
+   hydration, which assumes desktop); gone above the mobile breakpoint, where
+   the Minimap takes over. */
+.scrubberSlot {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .scrubberSlot {
+    display: block;
+    flex: 0 0 auto;
+    min-height: 24px;
+  }
+}
+
 /* Joined vertical segmented group — same pattern as DataDepthSwitch's
    horizontal segmented control (border/radius on the group, a divider
    between buttons, no gap), just rotated 90°. */

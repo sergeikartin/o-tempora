@@ -1,7 +1,6 @@
 import * as d3 from 'd3';
 import {
   type PointerEvent as ReactPointerEvent,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -11,16 +10,15 @@ import { m } from '../../shared/paraglide/messages.js';
 import type { ConflictEntry, Milestone, Person } from '../../shared/types';
 import styles from './Minimap.module.css';
 import {
-  centuryTicksInRange,
+  centuryStripTicks,
   computeDensityProfile,
   logScaleHeightPx,
 } from './minimap';
 import {
-  buildXScale,
   FALLBACK_VIEWPORT_WIDTH_PX,
-  MIN_YEAR,
   REFERENCE_PIXELS_PER_YEAR,
 } from './options';
+import { useMeasuredWidthPx } from './useMeasuredWidthPx';
 
 // Enforced via CSS min-width on .viewportRect; the drag math needs the same
 // floor to convert a pointer move into a scrollLeft delta.
@@ -30,16 +28,6 @@ const MIN_VIEWPORT_RECT_PX = 24;
 // preserveAspectRatio="none", so resizing never recomputes the path.
 const RIDGE_VIEWBOX_HEIGHT = 100;
 const RIDGE_BASELINE = RIDGE_VIEWBOX_HEIGHT / 2;
-
-// Rough per-character width for the century strip's 9px labels (see
-// options.ts's AVG_CHAR_WIDTH_PX, tuned for 11px) plus breathing room; enough
-// to bound label width for the thinning pass without DOM measurement.
-const CENTURY_LABEL_CHAR_WIDTH_PX = 5;
-const CENTURY_LABEL_GAP_PX = 6;
-
-function estimateCenturyLabelWidthPx(label: string): number {
-  return label.length * CENTURY_LABEL_CHAR_WIDTH_PX + CENTURY_LABEL_GAP_PX;
-}
 
 interface MinimapProps {
   // Already fame-filtered by the caller; the profile recomputes on every
@@ -104,28 +92,8 @@ export function Minimap({
   // window resize leaves it stale while .track (CSS flex) resizes. The rect
   // ratio math tolerates that (re-derived from totalWidth each render), but
   // century-label thinning doesn't: a stale too-wide value would keep labels the
-  // narrower strip can't fit. A ResizeObserver keeps this in sync with .track.
-  const [measuredTrackWidthPx, setMeasuredTrackWidthPx] = useState(0);
-  useLayoutEffect(() => {
-    const el = trackRef.current;
-    if (!el || typeof ResizeObserver === 'undefined') return;
-    // rAF-batched: at most one re-render per frame during a resize burst.
-    let frame = 0;
-    let latestWidth: number | undefined;
-    const observer = new ResizeObserver((entries) => {
-      latestWidth = entries[0]?.contentRect.width;
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        if (latestWidth !== undefined) setMeasuredTrackWidthPx(latestWidth);
-      });
-    });
-    observer.observe(el);
-    return () => {
-      observer.disconnect();
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, []);
+  // narrower strip can't fit, so it follows .track's real width.
+  const measuredTrackWidthPx = useMeasuredWidthPx(trackRef);
 
   // Viewport-rect ratio geometry; effectiveViewportWidthPx is shared with the
   // century-label spacing.
@@ -154,35 +122,10 @@ export function Minimap({
   const maxPeopleDepth = Math.max(1, ...profile.peopleDepth);
   const maxEventsDepth = Math.max(1, ...profile.eventsDepth);
 
-  // Century-tick strip: ticks at every century boundary across the ridge's
-  // domain, built on the same REFERENCE_PIXELS_PER_YEAR scale so they line up
-  // with the shape below. Labels use formatYear's numeric style ("1500",
-  // "100 BCE"), as YearAxis and the tooltip do, not centuryBoundaryForYear's
-  // ordinals. They thin out left to right, keeping a label only if it clears the
-  // previous shown label's rendered width; lengths vary ("1800" vs. "800 BCE"),
-  // so a flat gap like YearAxis's MIN_DECADE_LABEL_SPACING_PX would overlap.
-  const centuryTicks = useMemo(() => {
-    const { scale: refScale, totalWidth: refTotalWidthPx } = buildXScale(
-      REFERENCE_PIXELS_PER_YEAR,
-    );
-    if (refTotalWidthPx <= 0) return [];
-    const [, domainMaxYear] = refScale.domain();
-    let lastLabelRightEdgePx = -Infinity;
-    return centuryTicksInRange(MIN_YEAR, domainMaxYear ?? MIN_YEAR).map(
-      (boundary) => {
-        const label = formatYear(boundary.startYear);
-        const leftPercent =
-          (refScale(boundary.startYear) / refTotalWidthPx) * 100;
-        const xPx = (leftPercent / 100) * effectiveTrackWidthPx;
-        // Labels are centered under their tick (translateX(-50%)), so collisions are
-        // checked on each label's half-widths, not its x position.
-        const halfWidthPx = estimateCenturyLabelWidthPx(label) / 2;
-        const showLabel = xPx - halfWidthPx >= lastLabelRightEdgePx;
-        if (showLabel) lastLabelRightEdgePx = xPx + halfWidthPx;
-        return { startYear: boundary.startYear, label, leftPercent, showLabel };
-      },
-    );
-  }, [effectiveTrackWidthPx]);
+  const centuryTicks = useMemo(
+    () => centuryStripTicks(effectiveTrackWidthPx),
+    [effectiveTrackWidthPx],
+  );
 
   const { peoplePath, eventsPath } = useMemo(() => {
     const peopleArea = d3

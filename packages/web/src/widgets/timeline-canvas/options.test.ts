@@ -38,6 +38,7 @@ import {
   zoomAnimationGroupTransform,
   zoomAnimationGroupTransformAttr,
   zoomAnimationGroupTransformCss,
+  zoomedViewportYears,
   zoomIn,
   zoomOut,
 } from './options';
@@ -340,4 +341,9 @@ test('arrivalFitViewport never shows fewer than the minimum or more than the max
 test('arrivalFitViewport centres on the union when nothing is covered', () => {
   const fit = arrivalFitViewport({ startYear: 1900, endYear: 1950 }, 1000, 0);
   expect(fit.centerYear).toBe(1925);
+});
+
+test('zoomedViewportYears keeps the centre year at the viewport middle', () => {
+  expect(zoomedViewportYears(1800, 10, 1000)).toEqual([1750, 1850]);
+  expect(zoomedViewportYears(1800, 20, 1000)).toEqual([1775, 1825]);
 });

@@ -58,6 +58,7 @@ test('below the mobile breakpoint, Minimap does not render', () => {
   );
 
   expect(queryByTestId('minimap-track')).toBeNull();
+  expect(queryByTestId('scrubber-track')).not.toBeNull();
 });
 
 test('above the mobile breakpoint, Minimap renders', async () => {
@@ -80,4 +81,23 @@ test('above the mobile breakpoint, Minimap renders', async () => {
   // isMinimapIdle) — findByTestId waits it out instead of assuming it's
   // there synchronously after render.
   expect(await findByTestId('minimap-track')).not.toBeNull();
+});
+
+test('above the mobile breakpoint, the Scrubber does not render', () => {
+  mobileMatches = false;
+  mockMatchMedia();
+  const { queryByTestId } = render(
+    <TimelineCanvas
+      people={[aristotle]}
+      conflicts={[]}
+      milestones={[]}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={[]}
+      selectedRegions={[]}
+      selectedConflictsMilestonesValues={[]}
+      onEntityClick={() => {}}
+    />,
+  );
+
+  expect(queryByTestId('scrubber-track')).toBeNull();
 });
