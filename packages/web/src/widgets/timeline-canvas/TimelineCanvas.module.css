@@ -261,6 +261,15 @@
   left: 0;
 }
 
+/* The lanes are the keyboard-focusable scroll regions (arrow keys scroll the
+   focused lane's rows). Inset so the ring isn't clipped by the lane's own
+   overflow. */
+.peopleLane:focus-visible,
+.conflictsMilestonesLane:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+
 /* Each lane is a size container so its caption can span the lane's own visible
    height (100cqh) whatever the 4:2 flex split resolves to. */
 .peopleLane,

@@ -16,6 +16,15 @@ function parseCssDurationMs(raw: string): number {
   return 0;
 }
 
+// For motion that has no duration token to collapse (physics-driven inertia).
+export function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+}
+
 export function motionDurationMs(token: string): number {
   if (
     typeof window !== 'undefined' &&

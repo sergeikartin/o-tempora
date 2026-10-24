@@ -26,11 +26,16 @@ import {
   DECADE_STEP_YEARS,
   DECADE_TICK_PHASE_OFFSET_YEARS,
   defaultPixelsPerYear,
+  inertiaStep,
+  keyPanStepPx,
   MILESTONE_CATEGORY_COLORS,
   pinchCenterYear,
   pinchPixelsPerYear,
   pixelsPerYearBounds,
   REFERENCE_PIXELS_PER_YEAR,
+  releaseVelocityPxPerMs,
+  wheelDeltaPx,
+  wheelZoomFactor,
   ZOOM_ANIMATION_DURATION_MULTIPLIER,
   zoomAnimationCounterScaleAttr,
   zoomAnimationCounterScaleCss,
@@ -346,4 +351,83 @@ test('arrivalFitViewport centres on the union when nothing is covered', () => {
 test('zoomedViewportYears keeps the centre year at the viewport middle', () => {
   expect(zoomedViewportYears(1800, 10, 1000)).toEqual([1750, 1850]);
   expect(zoomedViewportYears(1800, 20, 1000)).toEqual([1775, 1825]);
+});
+
+test('zoomedViewportYears keeps an off-centre anchor year at its offset', () => {
+  // 1000px at 10px/year shows 100 years; the anchor sits 200px from the left.
+  expect(zoomedViewportYears(1800, 10, 1000, 200)).toEqual([1780, 1880]);
+});
+
+test('zoomAnimationGroupTransform with an anchor offset keeps that year fixed on screen', () => {
+  const minYear = -800;
+  const startPixelsPerYear = 10;
+  const currentPixelsPerYear = 15;
+  const scrollLeftStart = 5000;
+  const anchorOffsetPx = 300;
+  const anchorYear =
+    minYear + (scrollLeftStart + anchorOffsetPx) / startPixelsPerYear;
+  const { tx, sx } = zoomAnimationGroupTransform({
+    startPixelsPerYear,
+    currentPixelsPerYear,
+    minYear,
+    centerYear: anchorYear,
+    scrollLeftStart,
+    clientWidthPx: 1000,
+    anchorOffsetPx,
+  });
+  // A mark at the anchor year's content x lands back at the same screen x.
+  const anchorContentX = (anchorYear - minYear) * startPixelsPerYear;
+  expect(anchorContentX * sx + tx - scrollLeftStart).toBeCloseTo(
+    anchorOffsetPx,
+  );
+});
+
+test('wheelZoomFactor zooms in on wheel up, out on wheel down, and caps one event', () => {
+  expect(wheelZoomFactor(-10)).toBeGreaterThan(1);
+  expect(wheelZoomFactor(10)).toBeLessThan(1);
+  expect(wheelZoomFactor(0)).toBe(1);
+  expect(wheelZoomFactor(-100)).toBe(wheelZoomFactor(-20));
+  expect(wheelZoomFactor(-20) * wheelZoomFactor(20)).toBeCloseTo(1);
+});
+
+test('wheelDeltaPx normalises line and page deltas to pixels', () => {
+  expect(wheelDeltaPx(3, 0, 800)).toBe(3);
+  expect(wheelDeltaPx(3, 1, 800)).toBe(48);
+  expect(wheelDeltaPx(1, 2, 800)).toBe(800);
+});
+
+test('keyPanStepPx is a tenth of the viewport, or half with Shift', () => {
+  expect(keyPanStepPx(1000, false)).toBe(100);
+  expect(keyPanStepPx(1000, true)).toBe(500);
+});
+
+test('releaseVelocityPxPerMs reads only the last 100ms of movement', () => {
+  const samples = [
+    { timeMs: 0, x: 0 },
+    { timeMs: 450, x: 100 },
+    { timeMs: 500, x: 150 },
+  ];
+  expect(releaseVelocityPxPerMs(samples, 510)).toBeCloseTo(1);
+});
+
+test('releaseVelocityPxPerMs is zero after a pause before release, and for a single sample', () => {
+  expect(
+    releaseVelocityPxPerMs(
+      [
+        { timeMs: 0, x: 0 },
+        { timeMs: 50, x: 100 },
+      ],
+      400,
+    ),
+  ).toBe(0);
+  expect(releaseVelocityPxPerMs([{ timeMs: 0, x: 0 }], 10)).toBe(0);
+});
+
+test('inertiaStep decays the velocity and travels the same total distance however the time is split', () => {
+  const whole = inertiaStep(2, 200);
+  const first = inertiaStep(2, 80);
+  const second = inertiaStep(first.velocityPxPerMs, 120);
+  expect(whole.velocityPxPerMs).toBeLessThan(2);
+  expect(second.velocityPxPerMs).toBeCloseTo(whole.velocityPxPerMs);
+  expect(first.distancePx + second.distancePx).toBeCloseTo(whole.distancePx);
 });

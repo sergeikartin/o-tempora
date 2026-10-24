@@ -79,3 +79,47 @@ test('with prefers-reduced-motion: reduce, a zoom-button click resolves to the t
 
   expect(personLineWidth(container)).toBeGreaterThan(initialWidth);
 });
+
+test('with prefers-reduced-motion: reduce, a released mouse drag stops where it was released instead of coasting', async () => {
+  const { container } = render(
+    <TimelineCanvas
+      people={[aristotle]}
+      conflicts={[]}
+      milestones={[]}
+      fameScoreValues={defaultFameScoreValues}
+      selectedDomains={[]}
+      selectedRegions={[]}
+      selectedConflictsMilestonesValues={[]}
+      onEntityClick={() => {}}
+    />,
+  );
+  const scrollContainer = container.querySelector(
+    '[class*="scrollContainer"]',
+  ) as HTMLElement;
+  Object.defineProperty(scrollContainer, 'scrollLeft', {
+    value: 2000,
+    writable: true,
+  });
+  const wait = (ms: number) =>
+    act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, ms));
+    });
+
+  fireEvent.pointerDown(scrollContainer, {
+    pointerType: 'mouse',
+    button: 0,
+    clientX: 500,
+    pointerId: 1,
+  });
+  await wait(10);
+  fireEvent.pointerMove(scrollContainer, {
+    pointerType: 'mouse',
+    clientX: 440,
+    pointerId: 1,
+  });
+  fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
+  expect(scrollContainer.scrollLeft).toBe(2060);
+
+  await wait(300);
+  expect(scrollContainer.scrollLeft).toBe(2060);
+});

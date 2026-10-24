@@ -353,6 +353,79 @@ export function pinchCenterYear(
   return scale.invert(scrollLeft + midpointOffsetPx);
 }
 
+// Wheel zoom: one notch (a 100px delta) matches a button step; a trackpad
+// pinch's small deltas scale proportionally. The per-event delta is clamped so
+// a fast flick can't jump the whole range in one event.
+const WHEEL_ZOOM_SENSITIVITY = 0.01;
+const WHEEL_ZOOM_MAX_DELTA = 20;
+const WHEEL_LINE_HEIGHT_PX = 16;
+
+/** Pixel-equivalent delta of a wheel event, whatever its deltaMode. */
+export function wheelDeltaPx(
+  delta: number,
+  deltaMode: number,
+  pageSizePx: number,
+): number {
+  if (deltaMode === 1) return delta * WHEEL_LINE_HEIGHT_PX;
+  if (deltaMode === 2) return delta * pageSizePx;
+  return delta;
+}
+
+/** Multiplier for pixelsPerYear from one wheel event: wheel up (negative deltaY) zooms in. */
+export function wheelZoomFactor(deltaYPx: number): number {
+  const clamped = Math.max(
+    -WHEEL_ZOOM_MAX_DELTA,
+    Math.min(WHEEL_ZOOM_MAX_DELTA, deltaYPx),
+  );
+  return Math.exp(-clamped * WHEEL_ZOOM_SENSITIVITY);
+}
+
+// Keyboard pan distance, as a fraction of the viewport width.
+const KEY_PAN_RATIO = 0.1;
+const KEY_PAN_LARGE_RATIO = 0.5;
+
+export function keyPanStepPx(clientWidthPx: number, isLarge: boolean): number {
+  return clientWidthPx * (isLarge ? KEY_PAN_LARGE_RATIO : KEY_PAN_RATIO);
+}
+
+// Drag inertia: the release velocity is read from the last
+// INERTIA_VELOCITY_WINDOW_MS of pointer movement, then decays exponentially.
+// A pause before release leaves no samples in the window, so the pan stops.
+const INERTIA_VELOCITY_WINDOW_MS = 100;
+const INERTIA_TIME_CONSTANT_MS = 325;
+export const INERTIA_MIN_SPEED_PX_PER_MS = 0.02;
+
+export interface DragSample {
+  timeMs: number;
+  x: number;
+}
+
+/** Pointer velocity (px/ms, signed) at release, from samples ordered by time. */
+export function releaseVelocityPxPerMs(
+  samples: readonly DragSample[],
+  releaseTimeMs: number,
+): number {
+  const recent = samples.filter(
+    (sample) => releaseTimeMs - sample.timeMs <= INERTIA_VELOCITY_WINDOW_MS,
+  );
+  const first = recent[0];
+  const last = recent[recent.length - 1];
+  if (!first || !last || last.timeMs <= first.timeMs) return 0;
+  return (last.x - first.x) / (last.timeMs - first.timeMs);
+}
+
+/** Exact distance travelled and remaining velocity after `dtMs` of decay, independent of frame rate. */
+export function inertiaStep(
+  velocityPxPerMs: number,
+  dtMs: number,
+): { distancePx: number; velocityPxPerMs: number } {
+  const decay = Math.exp(-dtMs / INERTIA_TIME_CONSTANT_MS);
+  return {
+    distancePx: velocityPxPerMs * INERTIA_TIME_CONSTANT_MS * (1 - decay),
+    velocityPxPerMs: velocityPxPerMs * decay,
+  };
+}
+
 // Zoom animation: one `translate(tx) scale(sx)` group transform per lane/axis,
 // driven by per-frame JS interpolation of pixelsPerYear. Per-mark attribute
 // recompute costs 250-530ms/frame at worst-case density (16ms budget), and a
@@ -400,6 +473,8 @@ export function zoomAnimationGroupTransform(params: {
   centerYear: number;
   scrollLeftStart: number;
   clientWidthPx: number;
+  /** Where `centerYear` sits in the viewport; the middle unless a wheel zoom pins it under the cursor. */
+  anchorOffsetPx?: number;
 }): ZoomAnimationTransform {
   const {
     startPixelsPerYear,
@@ -408,11 +483,12 @@ export function zoomAnimationGroupTransform(params: {
     centerYear,
     scrollLeftStart,
     clientWidthPx,
+    anchorOffsetPx = clientWidthPx / 2,
   } = params;
   const sx =
     startPixelsPerYear !== 0 ? currentPixelsPerYear / startPixelsPerYear : 1;
   const scrollLeftTarget =
-    (centerYear - minYear) * currentPixelsPerYear - clientWidthPx / 2;
+    (centerYear - minYear) * currentPixelsPerYear - anchorOffsetPx;
   return { tx: scrollLeftStart - scrollLeftTarget, sx };
 }
 
@@ -433,9 +509,10 @@ export function zoomedViewportYears(
   centerYear: number,
   currentPixelsPerYear: number,
   clientWidthPx: number,
+  anchorOffsetPx = clientWidthPx / 2,
 ): [startYear: number, endYear: number] {
-  const halfYears = clientWidthPx / 2 / currentPixelsPerYear;
-  return [centerYear - halfYears, centerYear + halfYears];
+  const startYear = centerYear - anchorOffsetPx / currentPixelsPerYear;
+  return [startYear, startYear + clientWidthPx / currentPixelsPerYear];
 }
 
 /** CSS `transform` value (px units, HTML elements) for a ZoomAnimationTransform. */

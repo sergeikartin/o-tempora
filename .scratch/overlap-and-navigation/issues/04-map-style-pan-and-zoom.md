@@ -1,4 +1,4 @@
-Status: ready-for-agent
+Status: resolved
 
 # Map-style pan and zoom
 
@@ -12,8 +12,8 @@ Spec: `../spec.md` section 5. Independent of the other tickets.
 - Rewrite the "wheel-zoom deliberately not wired" line in `docs/timeline-rendering.md` to current behaviour; no ADR.
 
 ## Acceptance
-- [ ] Zooming under the cursor keeps the year under it fixed.
-- [ ] No per-tick mark re-render during wheel zoom (same frame-cost bar as pinch).
-- [ ] Arrow keys don't fight the Detail Level radio group or Search input.
-- [ ] Inertia never overshoots the pan bounds; disabled with reduced motion.
-- [ ] The scroll regions are keyboard-focusable and `scrollable-region-focusable` is removed from `packages/web/scripts/a11y-baseline.json`; `npm run a11y --workspace packages/web` passes.
+- [x] Zooming under the cursor keeps the year under it fixed.
+- [x] No per-tick mark re-render during wheel zoom (same frame-cost bar as pinch).
+- [x] Arrow keys don't fight the Detail Level radio group or Search input.
+- [x] Inertia never overshoots the pan bounds; disabled with reduced motion.
+- [x] The scroll regions are keyboard-focusable and `scrollable-region-focusable` is removed from `packages/web/scripts/a11y-baseline.json`; `npm run a11y --workspace packages/web` passes.

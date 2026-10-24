@@ -31,7 +31,10 @@ import {
   visiblePeople,
   type YearSpan,
 } from '../../shared/lib/entity';
-import { motionDurationMs } from '../../shared/lib/motion';
+import {
+  motionDurationMs,
+  prefersReducedMotion,
+} from '../../shared/lib/motion';
 import { trackEvent } from '../../shared/lib/track-event';
 import { useIsMobileViewport } from '../../shared/lib/viewport';
 import { m } from '../../shared/paraglide/messages.js';
@@ -57,9 +60,14 @@ import {
   buildXScale,
   CENTURY_STEP_YEARS,
   CENTURY_TICK_PHASE_OFFSET_YEARS,
+  clampPixelsPerYear,
   zoomIn as computeZoomIn,
   zoomOut as computeZoomOut,
+  type DragSample,
   FALLBACK_VIEWPORT_WIDTH_PX,
+  INERTIA_MIN_SPEED_PX_PER_MS,
+  inertiaStep,
+  keyPanStepPx,
   LANE_CAPTION_GUTTER_PX,
   MIN_YEAR,
   type PeopleLaneHandle,
@@ -68,7 +76,10 @@ import {
   QUARTER_CENTURY_STEP_YEARS,
   QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS,
   REFERENCE_PIXELS_PER_YEAR,
+  releaseVelocityPxPerMs,
   VIEWPORT_BUFFER_RATIO,
+  wheelDeltaPx,
+  wheelZoomFactor,
   type ZoomAnimationHandle,
   type ZoomAnimationTransform,
   zoomAnimationDurationMs,
@@ -95,6 +106,21 @@ const DRAG_CLICK_SUPPRESSION_PX = 4;
 // debounced: it fires this long after the last scroll event in a burst, once
 // per gesture (docs/observability.md).
 const PAN_TRACK_DEBOUNCE_MS = 500;
+
+// A wheel zoom is a stream of events with no end marker; it settles, and
+// commits pixelsPerYear once, this long after the last one.
+const WHEEL_ZOOM_SETTLE_MS = 150;
+
+// Keyboard shortcuts defer to anything that uses these keys itself: text
+// fields, selects and the Detail Level radio group.
+const KEY_OWNING_CONTROL =
+  'input, textarea, select, fieldset, [contenteditable], [role="radiogroup"], [role="radio"]';
+
+function isKeyOwningTarget(target: EventTarget | null): boolean {
+  return (
+    target instanceof Element && target.closest(KEY_OWNING_CONTROL) !== null
+  );
+}
 
 // Buckets a viewport-center year into its century (e.g. "1800s", "3rd
 // century BCE") so zoom/pan event data stays low-cardinality.
@@ -196,8 +222,8 @@ export function TimelineCanvas({
   // sticky element doesn't scroll with scrollRef, so the scroll handler mirrors
   // scrollRef's scrollLeft onto these refs (scrollLeft works on overflow-x:
   // hidden elements; scrollRef alone owns the horizontal gesture).
-  const peopleLaneRef = useRef<HTMLDivElement>(null);
-  const conflictsMilestonesLaneRef = useRef<HTMLDivElement>(null);
+  const peopleLaneRef = useRef<HTMLElement>(null);
+  const conflictsMilestonesLaneRef = useRef<HTMLElement>(null);
   // Per-tick targets for the zoom animation's single rAF driver (zoom()): one
   // group transform per lane/axis, not per-mark recompute (options.ts's
   // ZoomAnimationTransform). zebraLayerRef is rendered here, so a plain ref.
@@ -224,6 +250,9 @@ export function TimelineCanvas({
   // rAF handle for a Minimap track click-to-jump's eased scroll; separate from
   // zoomAnimationFrameRef because each needs its own cancel-on-interrupt.
   const panAnimationFrameRef = useRef<number | null>(null);
+  // Where the eased jump in flight is heading, so a repeated arrow key chains
+  // from the target instead of from wherever the animation is.
+  const panAnimationTargetRef = useRef<number | null>(null);
   useEffect(
     () => () => {
       if (panAnimationFrameRef.current !== null)
@@ -237,6 +266,7 @@ export function TimelineCanvas({
       cancelAnimationFrame(panAnimationFrameRef.current);
       panAnimationFrameRef.current = null;
     }
+    panAnimationTargetRef.current = null;
   }, []);
   // Drag-to-pan state: mouse-only, since touch already gets native swipe
   // scrolling. The start position is a ref (read every pointermove, no render);
@@ -247,6 +277,8 @@ export function TimelineCanvas({
     scrollLeft: number;
     moved: boolean;
   } | null>(null);
+  // Recent mouse positions of the drag in progress, for the release velocity.
+  const dragSamplesRef = useRef<DragSample[]>([]);
   // Pinch-to-zoom pointer tracking, engaged once two non-mouse pointers are
   // down on .scrollContainer (see handlePointerDown). Keyed by pointerId so
   // either finger can lift first. pinchStartRef is the gesture's fixed
@@ -277,6 +309,22 @@ export function TimelineCanvas({
   // Set by a zoom to the viewport-center year, so the commit effect can
   // re-center on it instead of snapping to the timeline's left edge.
   const pendingCenterYearRef = useRef<number | null>(null);
+  // Where that year lands in the viewport on commit: the cursor's offset after a
+  // wheel zoom, null (the viewport centre) for every other zoom.
+  const pendingAnchorOffsetPxRef = useRef<number | null>(null);
+  const pixelsPerYearRef = useRef(pixelsPerYear);
+  pixelsPerYearRef.current = pixelsPerYear;
+  // In-flight wheel zoom: the frame it started from (marks stay drawn at
+  // startPixelsPerYear) and the year pinned under the cursor.
+  const wheelZoomRef = useRef<{
+    startPixelsPerYear: number;
+    currentPixelsPerYear: number;
+    anchorYear: number;
+    anchorOffsetPx: number;
+    scrollLeftStart: number;
+    clientWidthPx: number;
+    settleTimeout: number;
+  } | null>(null);
 
   const { scale, totalWidth } = useMemo(
     () => buildXScale(pixelsPerYear),
@@ -559,10 +607,13 @@ export function TimelineCanvas({
     setViewportWidthPx(clientWidthPx);
     skipNextPanTrackRef.current = true;
     const centerYear = pendingCenterYearRef.current;
+    const anchorOffsetPx =
+      pendingAnchorOffsetPxRef.current ?? clientWidthPx / 2;
     pendingCenterYearRef.current = null;
+    pendingAnchorOffsetPxRef.current = null;
     const targetScrollLeft =
       centerYear !== null
-        ? scale(centerYear) - clientWidthPx / 2
+        ? scale(centerYear) - anchorOffsetPx
         : scale(DEFAULT_VIEWPORT_START_YEAR);
     const nextScrollLeft = Math.max(
       0,
@@ -687,6 +738,7 @@ export function TimelineCanvas({
       scrollLeft: container.scrollLeft,
       moved: false,
     };
+    dragSamplesRef.current = [{ timeMs: event.timeStamp, x: event.clientX }];
     // Best-effort: keeps the drag alive if the pointer leaves the container.
     // jsdom lacks it and browsers can throw NotFoundError for an inactive
     // pointerId; the drag itself uses dragStartRef, so failures are swallowed.
@@ -708,6 +760,7 @@ export function TimelineCanvas({
     if (!drag || !container) return;
     const totalOffset = event.clientX - drag.pointerX;
     if (Math.abs(totalOffset) > DRAG_CLICK_SUPPRESSION_PX) drag.moved = true;
+    dragSamplesRef.current.push({ timeMs: event.timeStamp, x: event.clientX });
     syncScrollLeft(drag.scrollLeft - totalOffset);
   }
 
@@ -728,6 +781,51 @@ export function TimelineCanvas({
       // no-op — see handlePointerDown's comment
     }
     setIsDragging(false);
+    if (drag.moved && event.type === 'pointerup') {
+      startInertia(
+        -releaseVelocityPxPerMs(dragSamplesRef.current, event.timeStamp),
+      );
+    }
+    dragSamplesRef.current = [];
+  }
+
+  // Keeps a released drag coasting, decaying to a stop or to the pan bounds,
+  // whichever comes first. Skipped under prefers-reduced-motion. The scroll
+  // velocity is in px/ms, positive toward later years.
+  function startInertia(initialVelocityPxPerMs: number) {
+    const container = scrollRef.current;
+    if (!container || prefersReducedMotion()) return;
+    if (Math.abs(initialVelocityPxPerMs) < INERTIA_MIN_SPEED_PX_PER_MS) return;
+    cancelPanAnimation();
+    let velocityPxPerMs = initialVelocityPxPerMs;
+    let position = container.scrollLeft;
+    let previousTimeMs: number | null = null;
+
+    function tick(nowMs: number) {
+      const el = scrollRef.current;
+      if (!el) return;
+      const dtMs = previousTimeMs === null ? 0 : nowMs - previousTimeMs;
+      previousTimeMs = nowMs;
+      const step = inertiaStep(velocityPxPerMs, dtMs);
+      const maxScrollLeft = Math.max(
+        scrollWidthRef.current - el.clientWidth,
+        0,
+      );
+      position = Math.min(
+        Math.max(position + step.distancePx, 0),
+        maxScrollLeft,
+      );
+      velocityPxPerMs = step.velocityPxPerMs;
+      syncScrollLeft(position);
+      const hitBound = position === 0 || position === maxScrollLeft;
+      if (hitBound || Math.abs(velocityPxPerMs) < INERTIA_MIN_SPEED_PX_PER_MS) {
+        panAnimationFrameRef.current = null;
+        return;
+      }
+      panAnimationFrameRef.current = requestAnimationFrame(tick);
+    }
+
+    panAnimationFrameRef.current = requestAnimationFrame(tick);
   }
 
   // Passed to Minimap: sets the real scrollLeft (and, via syncScrollLeft, the
@@ -745,9 +843,11 @@ export function TimelineCanvas({
     const container = scrollRef.current;
     if (!container) return;
     cancelPanAnimation();
+    panAnimationTargetRef.current = targetScrollLeft;
     const startScrollLeft = container.scrollLeft;
     const durationMs = motionDurationMs('--motion-duration-base');
     if (durationMs <= 0) {
+      panAnimationTargetRef.current = null;
       syncScrollLeft(targetScrollLeft);
       return;
     }
@@ -768,6 +868,7 @@ export function TimelineCanvas({
         return;
       }
       panAnimationFrameRef.current = null;
+      panAnimationTargetRef.current = null;
     }
 
     panAnimationFrameRef.current = requestAnimationFrame(tick);
@@ -959,12 +1060,15 @@ export function TimelineCanvas({
   function zoom(
     step: (currentPixelsPerYear: number, viewportWidthPx: number) => number,
     direction: 'in' | 'out',
+    method: 'button' | 'key' = 'button',
   ) {
     const container = scrollRef.current;
     if (!container) {
       setPixelsPerYear((current) => step(current, 0));
       return;
     }
+    cancelPanAnimation();
+    abandonWheelZoom();
     beginZoomAnimation();
     const clientWidthPx = container.clientWidth;
     // Read once before any frame: real scrollLeft is held fixed for the whole
@@ -975,7 +1079,7 @@ export function TimelineCanvas({
     // Zoom re-centers on the starting year (pendingCenterYearRef commit), so
     // this pre-zoom center is the right bucket for the whole gesture.
     trackEvent('zoom', {
-      method: 'button',
+      method,
       direction,
       period: periodBucket(centerYear),
     });
@@ -1051,6 +1155,201 @@ export function TimelineCanvas({
 
     zoomAnimationFrameRef.current = requestAnimationFrame(tick);
   }
+
+  function abandonWheelZoom() {
+    const gesture = wheelZoomRef.current;
+    if (!gesture) return;
+    window.clearTimeout(gesture.settleTimeout);
+    wheelZoomRef.current = null;
+  }
+
+  // The wheel-zoom gesture ended: commit pixelsPerYear once, anchored so the
+  // year under the cursor stays under it (pending refs → the commit layout
+  // effect). A zoom that ended where it began only has the transform to undo.
+  function settleWheelZoom() {
+    const gesture = wheelZoomRef.current;
+    wheelZoomRef.current = null;
+    if (!gesture) return;
+    if (gesture.currentPixelsPerYear === gesture.startPixelsPerYear) {
+      applyZoomAnimationTick({ tx: 0, sx: 1 });
+      return;
+    }
+    pendingCenterYearRef.current = gesture.anchorYear;
+    pendingAnchorOffsetPxRef.current = gesture.anchorOffsetPx;
+    setPixelsPerYear(gesture.currentPixelsPerYear);
+    trackEvent('zoom', {
+      method: 'wheel',
+      direction:
+        gesture.currentPixelsPerYear > gesture.startPixelsPerYear
+          ? 'in'
+          : 'out',
+      period: periodBucket(gesture.anchorYear),
+    });
+  }
+
+  // Ctrl/Cmd+wheel and trackpad pinch (which browsers report as ctrl+wheel).
+  // Same transform path as button zoom and touch pinch: marks stay drawn at the
+  // starting pixelsPerYear while one group transform tracks the live value.
+  function handleWheelZoom(event: WheelEvent, container: HTMLDivElement) {
+    if (
+      zoomAnimationFrameRef.current !== null ||
+      pinchStartRef.current ||
+      dragStartRef.current
+    )
+      return;
+    const clientWidthPx = container.clientWidth;
+    const factor = wheelZoomFactor(
+      wheelDeltaPx(event.deltaY, event.deltaMode, clientWidthPx),
+    );
+    let gesture = wheelZoomRef.current;
+    const currentPixelsPerYear = clampPixelsPerYear(
+      (gesture?.currentPixelsPerYear ?? pixelsPerYearRef.current) * factor,
+      clientWidthPx,
+    );
+    if (!gesture) {
+      if (currentPixelsPerYear === pixelsPerYearRef.current) return;
+      cancelPanAnimation();
+      beginZoomAnimation();
+      const anchorOffsetPx =
+        event.clientX - container.getBoundingClientRect().left;
+      const scrollLeftStart = container.scrollLeft;
+      gesture = {
+        startPixelsPerYear: pixelsPerYearRef.current,
+        currentPixelsPerYear,
+        anchorYear: scaleRef.current.invert(scrollLeftStart + anchorOffsetPx),
+        anchorOffsetPx,
+        scrollLeftStart,
+        clientWidthPx,
+        settleTimeout: 0,
+      };
+      wheelZoomRef.current = gesture;
+    }
+    gesture.currentPixelsPerYear = currentPixelsPerYear;
+    window.clearTimeout(gesture.settleTimeout);
+    gesture.settleTimeout = window.setTimeout(
+      settleWheelZoom,
+      WHEEL_ZOOM_SETTLE_MS,
+    );
+    scrubberRef.current?.setViewport(
+      ...zoomedViewportYears(
+        gesture.anchorYear,
+        currentPixelsPerYear,
+        clientWidthPx,
+        gesture.anchorOffsetPx,
+      ),
+    );
+    applyZoomAnimationTick(
+      zoomAnimationGroupTransform({
+        startPixelsPerYear: gesture.startPixelsPerYear,
+        currentPixelsPerYear,
+        minYear: MIN_YEAR,
+        centerYear: gesture.anchorYear,
+        scrollLeftStart: gesture.scrollLeftStart,
+        clientWidthPx,
+        anchorOffsetPx: gesture.anchorOffsetPx,
+      }),
+    );
+  }
+
+  // Wheel input over the timeline. Ctrl/Cmd zooms under the cursor (and keeps
+  // the browser from zooming the page). Shift+wheel pans. A plain wheel is left
+  // alone so the lane under the cursor scrolls its rows, and so is a native
+  // horizontal wheel/trackpad swipe, which already scrolls this container with
+  // the platform's own momentum.
+  function handleWheel(event: WheelEvent) {
+    const container = scrollRef.current;
+    if (!container) return;
+    if (event.ctrlKey || event.metaKey) {
+      event.preventDefault();
+      handleWheelZoom(event, container);
+      return;
+    }
+    if (!event.shiftKey) return;
+    event.preventDefault();
+    if (wheelZoomRef.current) return;
+    const delta =
+      Math.abs(event.deltaX) > Math.abs(event.deltaY)
+        ? event.deltaX
+        : event.deltaY;
+    cancelPanAnimation();
+    panBy(wheelDeltaPx(delta, event.deltaMode, container.clientWidth));
+  }
+
+  // The target is clamped to the pan bounds, as the Scrubber's is.
+  function clampedScrollLeft(target: number): number {
+    const container = scrollRef.current;
+    const maxScrollLeft = Math.max(
+      scrollWidthRef.current - (container?.clientWidth ?? 0),
+      0,
+    );
+    return Math.min(Math.max(target, 0), maxScrollLeft);
+  }
+
+  function panBy(deltaPx: number) {
+    const container = scrollRef.current;
+    if (container)
+      syncScrollLeft(clampedScrollLeft(container.scrollLeft + deltaPx));
+  }
+
+  // ←/→ pan by a tenth of the viewport (half with Shift), eased like a track
+  // jump; a held key moves directly so the repeats don't restart the easing.
+  // +/-/= zoom about the viewport centre, as the buttons do.
+  function handleKeyDown(event: KeyboardEvent) {
+    const container = scrollRef.current;
+    if (!container || event.defaultPrevented) return;
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
+    if (isKeyOwningTarget(event.target)) return;
+    if (document.querySelector('[aria-modal="true"]')) return;
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      const direction = event.key === 'ArrowRight' ? 1 : -1;
+      const stepPx =
+        direction * keyPanStepPx(container.clientWidth, event.shiftKey);
+      const target = clampedScrollLeft(
+        (panAnimationTargetRef.current ?? container.scrollLeft) + stepPx,
+      );
+      if (event.repeat) {
+        cancelPanAnimation();
+        syncScrollLeft(target);
+      } else {
+        handleTrackJump(target);
+      }
+    } else if (event.key === '+' || event.key === '=') {
+      event.preventDefault();
+      zoom(computeZoomIn, 'in', 'key');
+    } else if (event.key === '-' || event.key === '_') {
+      event.preventDefault();
+      zoom(computeZoomOut, 'out', 'key');
+    }
+  }
+
+  // Stable listeners that call the latest handlers, which close over this
+  // render's state. wheel must be a native non-passive listener: React's
+  // onWheel is passive, so it could not prevent the page zoom.
+  const navigationHandlersRef = useRef({
+    wheel: handleWheel,
+    keyDown: handleKeyDown,
+  });
+  navigationHandlersRef.current = {
+    wheel: handleWheel,
+    keyDown: handleKeyDown,
+  };
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const onWheel = (event: WheelEvent) =>
+      navigationHandlersRef.current.wheel(event);
+    const onKeyDown = (event: KeyboardEvent) =>
+      navigationHandlersRef.current.keyDown(event);
+    container.addEventListener('wheel', onWheel, { passive: false });
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      container.removeEventListener('wheel', onWheel);
+      document.removeEventListener('keydown', onKeyDown);
+      const gesture = wheelZoomRef.current;
+      if (gesture) window.clearTimeout(gesture.settleTimeout);
+    };
+  }, []);
 
   return (
     <div
@@ -1143,7 +1442,13 @@ export function TimelineCanvas({
             />
           )}
         </div>
-        <div ref={peopleLaneRef} className={styles.peopleLane}>
+        <section
+          ref={peopleLaneRef}
+          className={styles.peopleLane}
+          // biome-ignore lint/a11y/noNoninteractiveTabindex: a scrollable region must be keyboard-focusable so its rows can be scrolled without a pointer
+          tabIndex={0}
+          aria-label={m.peopleHeading()}
+        >
           <div className={styles.laneCaption} aria-hidden="true">
             <span className={styles.laneCaptionText}>{m.peopleHeading()}</span>
           </div>
@@ -1159,7 +1464,7 @@ export function TimelineCanvas({
             style={{ width: scrollWidth }}
             aria-hidden="true"
           />
-        </div>
+        </section>
         <div className={styles.yearAxis} style={{ width: scrollWidth }}>
           <YearAxis
             ref={yearAxisMiddleAnimRef}
@@ -1168,9 +1473,12 @@ export function TimelineCanvas({
             visibleEndYear={visibleEndYear}
           />
         </div>
-        <div
+        <section
           ref={conflictsMilestonesLaneRef}
           className={styles.conflictsMilestonesLane}
+          // biome-ignore lint/a11y/noNoninteractiveTabindex: a scrollable region must be keyboard-focusable so its rows can be scrolled without a pointer
+          tabIndex={0}
+          aria-label={m.conflictsMilestonesHeading()}
         >
           <div className={styles.laneCaption} aria-hidden="true">
             <span className={styles.laneCaptionText}>
@@ -1190,7 +1498,7 @@ export function TimelineCanvas({
             style={{ width: scrollWidth }}
             aria-hidden="true"
           />
-        </div>
+        </section>
       </div>
       {!isMobileViewport &&
         (isMinimapIdle ? (
