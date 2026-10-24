@@ -1431,6 +1431,7 @@ export function TimelineCanvas({
       <FocusRange
         startYear={focusYears?.startYear ?? viewportStartYear}
         endYear={focusYears?.endYear ?? viewportEndYear}
+        isOverlap={focusYears?.isOverlap ?? false}
       />
       {/* The slot is in the prerender too and hidden by CSS above the mobile
           breakpoint, so the Scrubber's mount (after hydration, which assumes

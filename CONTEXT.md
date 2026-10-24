@@ -89,7 +89,7 @@ The span of years currently visible — from the year at the canvas's left edge 
 _Avoid_: current year, center year, hero year
 
 **Focus Range**:
-The years the screen's primary heading names (e.g. "1769 – 1821"). With one **Selection** member it is that member's own span (a single year for a `PointInTime`); with several it is their **Overlap Band** span; with none, or with several that share no span, it falls back to the **Viewport Range** and updates live while panning and zooming. While a Selection gives it years it stays on them however the visitor pans or zooms, so it can differ from the years on the axis. Years are whole, floored from the month-precise span.
+The years the screen's primary heading names (e.g. "1769 – 1821"). With one **Selection** member it is that member's own span (a single year for a `PointInTime`); with several it is their **Overlap Band** span, labelled "Overlap" beside the years; with none, or with several that share no span, it falls back to the **Viewport Range** and updates live while panning and zooming. While a Selection gives it years it stays on them however the visitor pans or zooms, so it can differ from the years on the axis. Years are whole, floored from the month-precise span.
 _Avoid_: Viewport Range (that is the visible span, which the heading no longer always shows), selection span, hero year, title
 
 **Locale**:

@@ -37,6 +37,7 @@
   "removeFromComparisonAriaLabel": "Remove {name} from comparison",
   "hiddenByFiltersNote": "Hidden by filters",
   "overlapLine": "Overlap: {range}",
+  "focusRangeOverlapLabel": "Overlap",
   "noSharedSpan": "No shared span",
   "datesPresent": "present",
   "selectionBandsDescription": "Highlighted on the timeline: {spans}. {overlap}",
