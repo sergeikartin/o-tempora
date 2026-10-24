@@ -375,7 +375,9 @@ export function TimelineCanvas({
       const container = scrollRef.current;
       if (!container) return;
       container.scrollLeft = newScrollLeft;
-      mirrorLaneScrollLeft(newScrollLeft);
+      // The browser clamps the write to the pan bounds, but a drag past an edge
+      // asks for an out-of-range value; the lanes mirror what actually applied.
+      mirrorLaneScrollLeft(container.scrollLeft);
     },
     [mirrorLaneScrollLeft],
   );
