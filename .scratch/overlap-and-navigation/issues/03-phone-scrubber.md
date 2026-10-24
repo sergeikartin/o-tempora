@@ -1,4 +1,4 @@
-Status: ready-for-agent
+Status: resolved
 Blocked by: 02
 
 # Phone Scrubber
@@ -11,7 +11,7 @@ Spec: `../spec.md` section 4. Blocked by 02 because the phone chrome layout (bar
 - Update `DESIGN.md` and `docs/timeline-rendering.md`; touch-target size to be checked on the thumb.
 
 ## Acceptance
-- [ ] Thumb tracks pan and pinch live without re-rendering marks per frame.
-- [ ] Tap and drag move the viewport; clamped to the pan bounds.
-- [ ] Not shown on desktop or wide tablets.
-- [ ] Does not collide with the Selection peek sheet.
+- [x] Thumb tracks pan and pinch live without re-rendering marks per frame.
+- [x] Tap and drag move the viewport; clamped to the pan bounds.
+- [x] Not shown on desktop or wide tablets.
+- [x] Does not collide with the Selection peek sheet.
