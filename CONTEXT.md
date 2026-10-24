@@ -85,8 +85,12 @@ The fixed `pixelsPerYear` (`defaultPixelsPerYear()`, derived from `DEFAULT_VISIB
 _Avoid_: default zoom (the opening viewport itself), base scale
 
 **Viewport Range**:
-The span of years currently visible — from the year at the canvas's left edge to the one at its right edge — shown as the screen's primary heading (e.g. "1750 – 1850") and updated live while panning and zooming. The Minimap's viewport rectangle is this same span drawn over the full pannable range.
+The span of years currently visible — from the year at the canvas's left edge to the one at its right edge — updated live while panning and zooming. The Minimap's viewport rectangle and the Scrubber's thumb are this same span drawn over the full pannable range. The big heading above the lanes is the **Focus Range**, which reads this span only when nothing is selected.
 _Avoid_: current year, center year, hero year
+
+**Focus Range**:
+The years the screen's primary heading names (e.g. "1769 – 1821"). With one **Selection** member it is that member's own span (a single year for a `PointInTime`); with several it is their **Overlap Band** span; with none, or with several that share no span, it falls back to the **Viewport Range** and updates live while panning and zooming. While a Selection gives it years it stays on them however the visitor pans or zooms, so it can differ from the years on the axis. Years are whole, floored from the month-precise span.
+_Avoid_: Viewport Range (that is the visible span, which the heading no longer always shows), selection span, hero year, title
 
 **Locale**:
 Which of the app's two languages — English (base, default) or Russian — a page load renders, resolved at runtime from the URL: `/` and `/timeline/` for English, `/ru/` and `/ru/timeline/` for Russian (Paraglide's `url` strategy, `packages/web/docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`). One build and one JS/CSS bundle serve both; the Locale selects the UI string catalog (`packages/web/messages/{en,ru}.json`) and which dataset files load (`people.detail1.json` vs. `people.detail1.ru.json`, see **Field Fallback** and **Detail Level**) via a locale-keyed dynamic import in `src/app/locale-datasets.ts`. No inline bilingual display. The two locales cross-link through the Help panel's language-switcher link, a full navigation to the sibling's same page kind that carries only the open **Entity Link**.

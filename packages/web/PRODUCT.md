@@ -27,7 +27,7 @@ People, conflicts and milestones on one shared, pannable axis, with density cont
 ## Capabilities and Constraints
 
 - Read-only. No backend, no database, no accounts. All data is pipeline-generated JSON in `packages/shared-types`, never hand-edited.
-- Domain vocabulary is defined in `CONTEXT.md`: Lane, Mark, Detail Level, Fame Score, Viewport Range, Minimap, Container, Region, Occupation Domain, Selection, Span Band, Overlap Band.
+- Domain vocabulary is defined in `CONTEXT.md`: Lane, Mark, Detail Level, Fame Score, Viewport Range, Focus Range, Minimap, Container, Region, Occupation Domain, Selection, Span Band, Overlap Band.
 - Out of scope: pairwise connection lines, dimming or ranking of unselected marks, curated tours, era bands, map view, share cards, more languages, dark mode, "on this day", embeds, PWA.
 - Public copy avoids internal domain terms (Lane, Fame Score, Container) and says "conflicts", not "wars".
 - Years are plain signed integers (astronomical numbering); BCE/CE must render correctly.

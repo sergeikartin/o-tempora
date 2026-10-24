@@ -33,12 +33,12 @@ import { type EntryLocale, htmlEntry } from './html-entry.ts';
 // timeline, until hydration's mount effect mirrors it, so the earliest items
 // (e.g. Homer in People) flash through the pre-hydration paint.
 //
-// The Viewport Range heading is prerendered against FALLBACK_VIEWPORT_WIDTH_PX,
+// The Focus Range heading is prerendered against FALLBACK_VIEWPORT_WIDTH_PX,
 // so its end year would only correct after hydration measures the real
 // clientWidth. The same script rewrites it from the real clientWidth
 // (mirroring TimelineCanvas's scale.invert(scrollLeft) and
 // scale.invert(scrollLeft + clientWidth)); the element opts out of hydration
-// text-mismatch checks (ViewportRange.tsx) so React keeps this value until its
+// text-mismatch checks (FocusRange.tsx) so React keeps this value until its
 // mount effect lands the same one. Only CE years are formatted: the default
 // window never reaches BCE.
 function pinScrollScript(
@@ -50,7 +50,7 @@ function pinScrollScript(
 var pl=document.querySelector('[class*="peopleLane"]');
 var cm=document.querySelector('[class*="conflictsMilestonesLane"]');
 var sc=document.querySelector('[class*="scrollContainer"]');
-var vr=document.querySelector('[class*="viewportRange"]');
+var vr=document.querySelector('[class*="focusRange"]');
 var plScrollHeight=pl&&pl.scrollHeight;
 var scMax=sc&&sc.scrollWidth-sc.clientWidth;
 var target=Math.max(0,Math.min(${scrollContainerTargetLeft},scMax));

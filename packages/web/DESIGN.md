@@ -27,7 +27,7 @@ colors:
   milestone-science-innovation: "#008255"
   milestone-social-culture: "#946513"
 typography:
-  viewport-range:
+  focus-range:
     fontFamily: "Fraunces, serif"
     fontSize: "56px"
     fontWeight: 600
@@ -167,7 +167,7 @@ components:
 
 O Tempora reads as a chronicle kept by one careful hand: aged parchment for the page, iron-gall ink for every word, and a single oxblood accent standing in for a wax seal. The data is the ornament. Colour, line and dot do the encoding, so chrome stays small, warm and quiet, and nothing competes with the marks on the timeline.
 
-The system is dense but unhurried. Controls are small, pill-shaped and exact; labels are short sentence-case nouns; years are set in tabular figures in the same face as the text around them. Fraunces appears only where a chronicle would letter a heading: the Viewport Range, an entity's name, the wordmark, and the landing page's headline and lede. There is one theme, light, and the system does not ask for a second.
+The system is dense but unhurried. Controls are small, pill-shaped and exact; labels are short sentence-case nouns; years are set in tabular figures in the same face as the text around them. Fraunces appears only where a chronicle would letter a heading: the Focus Range, an entity's name, the wordmark, and the landing page's headline and lede. There is one theme, light, and the system does not ask for a second.
 
 **Key Characteristics:**
 - Warm parchment ground with ink text. No pure black, no pure-white page.
@@ -219,7 +219,7 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 **Character:** Archivo does all the work of an index: labels, dates, data. Fraunces appears three times only, to letter the headings a scribe would letter.
 
 ### Hierarchy
-- **Viewport Range** (Fraunces 600, 56px, 1; 32px below 960px): The window of years as the screen's heading, tabular figures.
+- **Focus Range** (Fraunces 600, 56px, 1; 32px below 960px): The years of the selection, or the visible window when nothing is selected, as the screen's heading, tabular figures.
 - **Panel Heading** (Fraunces 600, 20px, 1.2): Entity name in the detail panel and heading of the About panel.
 - **Wordmark** (Fraunces 600, 18px): "O Tempora" beside the 24px seal mark.
 - **Landing Headline and Lede** (Fraunces 600): lede (the curiosity sentence) 24–36px at 1.2 leads; headline 26–32px at 1.15 sits above it as the page title, on the landing page only.
@@ -234,13 +234,13 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 ### Named Rules
 **The Same Face Rule.** Years and dates use Archivo with tabular figures, never a separate monospace.
 
-**The Three Headings Rule.** Fraunces is for the Viewport Range, the entity name and the wordmark, plus the landing page's headline and lede. Chrome stays in Archivo.
+**The Three Headings Rule.** Fraunces is for the Focus Range, the entity name and the wordmark, plus the landing page's headline and lede. Chrome stays in Archivo.
 
 ## Layout
 
-A full-viewport canvas read left to right, with the Viewport Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A 56px Top Bar above it holds search, Detail Level, the Filters button and Help; the Filters Panel opens as a popover beneath it. A minimap card sits beneath the lanes on desktop; on phones a 24px scrubber strip sits between the Viewport Range and the lanes instead.
+A full-viewport canvas read left to right, with the Focus Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A 56px Top Bar above it holds search, Detail Level, the Filters button and Help; the Filters Panel opens as a popover beneath it. A minimap card sits beneath the lanes on desktop; on phones a 24px scrubber strip sits between the Focus Range and the lanes instead.
 
-Spacing is a short ladder of 4, 6, 8, 10, 12, 16, 20 and 24px. Controls sit 8px from canvas corners, cards are inset 12px, and sections are separated by 24px. At 960px and below the Top Bar wraps to two rows (search, Filters and Help, then Detail Level at full width) and drops the wordmark, the Filters Panel and the detail panel become bottom sheets (80vh max) over a scrim, the Viewport Range shrinks to 32px, and the minimap gives way to the scrubber. Zoom buttons are hidden on coarse pointers in favour of pinch.
+Spacing is a short ladder of 4, 6, 8, 10, 12, 16, 20 and 24px. Controls sit 8px from canvas corners, cards are inset 12px, and sections are separated by 24px. At 960px and below the Top Bar wraps to two rows (search, Filters and Help, then Detail Level at full width) and drops the wordmark, the Filters Panel and the detail panel become bottom sheets (80vh max) over a scrim, the Focus Range shrinks to 32px, and the minimap gives way to the scrubber. Zoom buttons are hidden on coarse pointers in favour of pinch.
 
 Background texture is a faint 25-year zebra wash with century seams in Control Border at 45%. There are no gradients and no imagery in chrome; entity photos appear only in the detail panel.
 

@@ -46,6 +46,8 @@ import type {
   Region,
 } from '../../shared/types';
 import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
+import { FocusRange } from './FocusRange';
+import { selectionFocusYears } from './focus-years';
 import { Minimap } from './Minimap';
 import {
   computeRowAssignment,
@@ -95,7 +97,6 @@ import {
   SelectionBands,
 } from './SelectionBands';
 import styles from './TimelineCanvas.module.css';
-import { ViewportRange } from './ViewportRange';
 import { YearAxis } from './YearAxis';
 
 // Below this much total pointer movement, a mouse-drag counts as a click
@@ -473,6 +474,7 @@ export function TimelineCanvas({
     scale.invert(scrollLeft + effectiveViewportWidthPx),
     scale.domain()[1] ?? Number.POSITIVE_INFINITY,
   );
+  const focusYears = selectionFocusYears(selectionBands);
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
   const visibleEndYear = scale.invert(
     scrollLeft + effectiveViewportWidthPx + viewportBufferPx,
@@ -1426,7 +1428,10 @@ export function TimelineCanvas({
         } as CSSProperties
       }
     >
-      <ViewportRange startYear={viewportStartYear} endYear={viewportEndYear} />
+      <FocusRange
+        startYear={focusYears?.startYear ?? viewportStartYear}
+        endYear={focusYears?.endYear ?? viewportEndYear}
+      />
       {/* The slot is in the prerender too and hidden by CSS above the mobile
           breakpoint, so the Scrubber's mount (after hydration, which assumes
           desktop) doesn't shift the layout. */}

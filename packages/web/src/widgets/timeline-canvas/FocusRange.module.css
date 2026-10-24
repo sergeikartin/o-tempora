@@ -1,7 +1,7 @@
 /* Display heading in its own strip above the lanes. The zoom controls
    (TimelineCanvas.module.css) are absolutely positioned over this strip's
    top-right corner, so its height clears them. */
-.viewportRange {
+.focusRange {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@
 }
 
 @media (max-width: 960px) {
-  .viewportRange {
+  .focusRange {
     height: 48px;
     padding-inline: 12px;
     font-size: 32px;
