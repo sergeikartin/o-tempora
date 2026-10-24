@@ -30,6 +30,8 @@ Read on demand — only load what the current task needs.
 | [docs/observability.md](docs/observability.md) | Adding or changing tracked errors/events |
 | [docs/deployment.md](docs/deployment.md) | Touching build/deploy config |
 | [docs/adr/](docs/adr/) | Making a system-wide architectural call, or recording one — also check `packages/<package>/docs/adr/` for package-scoped decisions |
+| [docs/agents/issue-tracker.md](docs/agents/issue-tracker.md) | Picking up, finishing or filing a ticket under `.scratch/` |
+| [packages/web/DESIGN.md](packages/web/DESIGN.md), [packages/web/PRODUCT.md](packages/web/PRODUCT.md) | Changing how the UI looks or lays out (DESIGN), or its audience and positioning (PRODUCT) |
 | [CONTEXT.md](CONTEXT.md) | Before exploring the codebase, or naming a domain concept — see `docs/agents/domain.md` for how to consume it |
 
 **Two-tier docs.** `docs/*.md` (and each package's `docs/*.md` other than `docs/adr/`) are **living docs**: they describe how the system works *right now*, edited in place as it changes, with no history and no "why we chose X over Y" — that reasoning belongs in an ADR. `docs/adr/` (root and per-package) is an **append-only log**: each ADR is a decision captured at a point in time — problem, decision, rationale — and once written is never edited to match new reality. When a decision changes, write a new ADR that supersedes the old one; mark the old one's frontmatter `status: superseded` / `superseded-by: <file>`, and the new one's `supersedes: <file>`, rather than rewriting its content.

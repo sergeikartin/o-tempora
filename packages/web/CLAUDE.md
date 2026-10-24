@@ -6,29 +6,12 @@ Frontend: React 19 + TypeScript + Vite + D3. Reads static JSON (from `packages/s
 
 ## Build, Test & Verify
 
-Run from repo root:
+Scripts are in `package.json`; run them from the repo root with `--workspace packages/web`. Not obvious from there:
 
-- Dev server: `npm run dev --workspace packages/web`
-- Build: `npm run build --workspace packages/web`
-- Preview build: `npm run preview --workspace packages/web`
-- Test: `npm run test --workspace packages/web` (Vitest)
-- Lint: `npm run lint --workspace packages/web` (Biome; `lint:fix` applies fixes) · `npm run lint:boundaries --workspace packages/web` (Steiger, FSD boundaries)
-- Biome's config root is `packages/web`: invoke it through these scripts, never via `npx biome` from another directory (it errors with "nested root configuration").
-- A pre-commit hook (`.husky/pre-commit`) runs Biome on staged files, then the typecheck and boundary checks for the packages you touched; tests run in CI.
-- Accessibility: `npm run a11y --workspace packages/web` (builds, then runs axe at 1440/768/390 in both locales across the timeline, Filters Panel, Help and a comparison; fails on anything not in `scripts/a11y-baseline.json`). Needs `npx playwright install chromium` once. Not in CI.
-- Type check: `npm run typecheck --workspace packages/web`
-
-
-## Stack
-
-| Layer | Technology |
-|---|---|
-| UI framework | React + TypeScript, mini-FSD |
-| Build tool | Vite |
-| Timeline rendering | D3 |
-| Styling | CSS Modules |
-| Testing | Vitest + RTL |
-| Lint / format / boundary tooling | Biome (lint + format, incl. a11y rules) + Steiger, enforcing mini-FSD boundaries |
+- Biome's config root is `packages/web`: invoke it through `npm run lint` / `lint:fix`, never via `npx biome` from another directory (it errors with "nested root configuration").
+- The pre-commit hook (`.husky/pre-commit`) runs Biome on staged files, then typecheck and boundary checks (`lint:boundaries`, Steiger) for the packages you touched. Tests run in CI, so run `npm run test` yourself.
+- `npm run a11y` runs axe at 1440/768/390 in both locales across the timeline, Filters Panel, Help and a comparison; it fails on anything not in `scripts/a11y-baseline.json`. Not in CI.
+- `npm run shot -- --width 390 --step tap:100,170 --step eval:<js>` screenshots the built app (see `scripts/shot.mjs`); use it to check a UI change in the real app. `a11y` and `shot` need `npx playwright install chromium` once.
 
 ## Docs
 

@@ -21,6 +21,8 @@
     "test": "vitest run",
     "prea11y": "npm run build",
     "a11y": "node scripts/a11y.mjs",
+    "preshot": "npm run build",
+    "shot": "node scripts/shot.mjs",
     "paraglide:compile": "paraglide-js compile --project ./project.inlang --outdir ./src/shared/paraglide --strategy url baseLocale --emit-ts-declarations"
   },
   "dependencies": {
