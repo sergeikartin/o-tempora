@@ -5,6 +5,8 @@ import { getLocale } from '../paraglide/runtime.js';
 // current URL's locale at runtime.
 const isRussian = getLocale() === 'ru';
 
+export const LANDING_HREF = isRussian ? '/ru/' : '/';
+
 export const TIMELINE_HREF = isRussian ? '/ru/timeline/' : '/timeline/';
 
 export const SIBLING_LANDING_HREF = isRussian ? '/' : '/ru/';

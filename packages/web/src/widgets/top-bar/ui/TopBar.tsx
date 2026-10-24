@@ -4,10 +4,11 @@ import {
   SearchBar,
   type SearchResult,
 } from '../../../features/search-timeline-entities';
-import type {
-  ConflictsMilestonesFilterValue,
-  DetailLevel,
-  DetailLevelId,
+import {
+  type ConflictsMilestonesFilterValue,
+  type DetailLevel,
+  type DetailLevelId,
+  LANDING_HREF,
 } from '../../../shared/config';
 import { m } from '../../../shared/paraglide/messages.js';
 import type { OccupationDomain, Region } from '../../../shared/types';
@@ -64,9 +65,9 @@ export function TopBar({
 
   return (
     <header className={styles.topBar}>
-      <div className={styles.logo}>
+      <a className={styles.logo} href={LANDING_HREF}>
         <Logo />
-      </div>
+      </a>
       <div className={styles.search}>
         <SearchBar
           query={searchQuery}
