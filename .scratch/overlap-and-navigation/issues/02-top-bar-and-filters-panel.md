@@ -21,7 +21,7 @@ Spec: `../spec.md` section 3. Blocked by 01 because the detail-panel and framing
 
 ## Comments
 
-- `typecheck`, `test`, `lint`, `lint:boundaries` and `build` pass. axe at 1440×900, 768×1024, 390×844 (and 360×740) in `/timeline/` and `/ru/timeline/`, with the Filters Panel open and closed, reports only `region` (sr-only `h1`) and `scrollable-region-focusable` (scroll containers) — the same two as on the base timeline before this ticket; nothing comes from the Top Bar or panel. Keyboard focus for the scroll regions belongs with ticket 04.
+- `typecheck`, `test`, `lint`, `lint:boundaries` and `build` pass. axe (`npm run a11y --workspace packages/web`) reports only `region` (sr-only `h1`) and `scrollable-region-focusable` (scroll containers), both listed in `scripts/a11y-baseline.json` and present before this ticket; nothing comes from the Top Bar or panel. Keyboard focus for the scroll regions belongs with ticket 04.
 - One Top Bar widget (`widgets/top-bar`) holds both the bar and the Filters Panel, since widgets can't import each other and the popover is anchored to the bar's button. Layout is CSS-only; at ≤960px it wraps to two rows (Search, Filters, Help / Detail Level full width) and the wordmark is dropped. Russian checked at 1440, 360: no overflow in the bar, the panel or the level labels.
 - Detail Level lost its two visible helper lines to fit the bar; they remain as screen-reader description (Help still explains the levels).
 - The desktop detail panel now starts below the Top Bar so Search, Filters and Help stay reachable with a Selection open; Escape closes an open modal before the detail panel.

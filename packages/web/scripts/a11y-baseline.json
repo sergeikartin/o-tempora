@@ -1,0 +1,12 @@
+[
+  {
+    "rule": "region",
+    "target": "^h1$",
+    "reason": "The sr-only site title sits outside any landmark."
+  },
+  {
+    "rule": "scrollable-region-focusable",
+    "target": "_(scrollContainer|peopleLane|conflictsMilestonesLane)_",
+    "reason": "Keyboard focus for the timeline scroll regions arrives with overlap-and-navigation ticket 04; remove this entry then."
+  }
+]

@@ -19,6 +19,8 @@
     "lint:boundaries": "steiger ./src",
     "pretest": "npm run paraglide:compile",
     "test": "vitest run",
+    "prea11y": "npm run build",
+    "a11y": "node scripts/a11y.mjs",
     "paraglide:compile": "paraglide-js compile --project ./project.inlang --outdir ./src/shared/paraglide --strategy url baseLocale --emit-ts-declarations"
   },
   "dependencies": {
@@ -41,6 +43,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
+    "axe-core": "^4.14.0",
     "jsdom": "^30.0.1",
     "steiger": "^0.6.0",
     "vite": "^8.2.0",

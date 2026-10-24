@@ -16,3 +16,4 @@ Spec: `../spec.md` section 5. Independent of the other tickets.
 - [ ] No per-tick mark re-render during wheel zoom (same frame-cost bar as pinch).
 - [ ] Arrow keys don't fight the Detail Level radio group or Search input.
 - [ ] Inertia never overshoots the pan bounds; disabled with reduced motion.
+- [ ] The scroll regions are keyboard-focusable and `scrollable-region-focusable` is removed from `packages/web/scripts/a11y-baseline.json`; `npm run a11y --workspace packages/web` passes.
