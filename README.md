@@ -16,6 +16,8 @@ This is an npm workspaces monorepo:
 - `packages/shared-types` — shared types and the generated data the app reads
 - `packages/data-pipeline` — the offline pipeline that generates that data
 
+On a clean Ubuntu, `scripts/setup-ubuntu.sh` installs everything below plus the CLI tools and Playwright Chromium the Claude workflow uses. Node 22.21 or newer is required.
+
 From the repo root:
 
 ```
