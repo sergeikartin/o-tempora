@@ -227,12 +227,56 @@
   left: 0;
 }
 
-/* A mask is painted against the element's own box, not its scrolled content,
-   so this stays pinned to the lane's top edge while rows scroll beneath it.
-   Set by TimelineCanvas.tsx's scroll listener only while rows sit above the
-   current scroll position. */
+/* Edge fades signal that more of the lane lies beyond an edge. A mask is
+   painted against the element's own box, not its scrolled content, so each
+   fade stays pinned to its edge while the lane scrolls beneath it. Each edge
+   contributes one gradient (opaque until its data attribute is set by
+   TimelineCanvas.tsx's scroll listeners), and the layers intersect. The left
+   fade starts past the lane caption's strip, which stays solid. */
+.peopleLane,
+.conflictsMilestonesLane {
+  --fade-top: linear-gradient(#000, #000);
+  --fade-bottom: linear-gradient(#000, #000);
+  --fade-left: linear-gradient(#000, #000);
+  --fade-right: linear-gradient(#000, #000);
+}
+
 .peopleLane[data-has-more-above="true"] {
-  mask-image: linear-gradient(to bottom, transparent 0, #000 40px);
+  --fade-top: linear-gradient(to bottom, transparent 0, #000 40px);
+}
+
+.conflictsMilestonesLane[data-has-more-below="true"] {
+  --fade-bottom: linear-gradient(to top, transparent 0, #000 40px);
+}
+
+.peopleLane[data-has-more-left="true"],
+.conflictsMilestonesLane[data-has-more-left="true"] {
+  --fade-left: linear-gradient(
+    to right,
+    #000 var(--lane-caption-gutter),
+    transparent var(--lane-caption-gutter),
+    #000 calc(var(--lane-caption-gutter) + 40px)
+  );
+}
+
+.peopleLane[data-has-more-right="true"],
+.conflictsMilestonesLane[data-has-more-right="true"] {
+  --fade-right: linear-gradient(to left, transparent 0, #000 40px);
+}
+
+.peopleLane:is(
+  [data-has-more-above="true"],
+  [data-has-more-left="true"],
+  [data-has-more-right="true"]
+),
+.conflictsMilestonesLane:is(
+  [data-has-more-below="true"],
+  [data-has-more-left="true"],
+  [data-has-more-right="true"]
+) {
+  mask-image:
+    var(--fade-top), var(--fade-bottom), var(--fade-left), var(--fade-right);
+  mask-composite: intersect;
 }
 
 /* The one Year Axis, between People and Conflicts+Milestones, which row order

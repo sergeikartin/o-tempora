@@ -359,17 +359,44 @@ export function TimelineCanvas({
   const [scrollLeft, setScrollLeft] = useState(() =>
     Math.max(0, scale(DEFAULT_VIEWPORT_START_YEAR)),
   );
+  // Drives both lanes' left and right edge fades (TimelineCanvas.module.css)
+  // from the horizontal scroll position.
+  const updateHorizontalFades = useCallback((currentScrollLeft: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const hasMoreLeft = String(currentScrollLeft > 1);
+    const hasMoreRight = String(
+      currentScrollLeft < scrollWidthRef.current - container.clientWidth - 1,
+    );
+    for (const lane of [
+      peopleLaneRef.current,
+      conflictsMilestonesLaneRef.current,
+    ]) {
+      if (!lane) continue;
+      if (lane.dataset.hasMoreLeft !== hasMoreLeft)
+        lane.dataset.hasMoreLeft = hasMoreLeft;
+      if (lane.dataset.hasMoreRight !== hasMoreRight)
+        lane.dataset.hasMoreRight = hasMoreRight;
+    }
+  }, []);
   // Mirrors scrollRef's scrollLeft onto the sticky lanes. The throttled scroll
   // listener alone lags a frame, which flashes on discrete programmatic jumps
   // (zoom re-centering, mount positioning, Minimap jumps), so every direct
   // scrollLeft write calls this to mirror in the same synchronous step.
-  const mirrorLaneScrollLeft = useCallback((newScrollLeft: number) => {
-    if (peopleLaneRef.current) peopleLaneRef.current.scrollLeft = newScrollLeft;
-    peopleLaneAnimRef.current?.pinLabelsToViewport(newScrollLeft);
-    conflictsMilestonesLaneAnimRef.current?.pinLabelsToViewport(newScrollLeft);
-    if (conflictsMilestonesLaneRef.current)
-      conflictsMilestonesLaneRef.current.scrollLeft = newScrollLeft;
-  }, []);
+  const mirrorLaneScrollLeft = useCallback(
+    (newScrollLeft: number) => {
+      updateHorizontalFades(newScrollLeft);
+      if (peopleLaneRef.current)
+        peopleLaneRef.current.scrollLeft = newScrollLeft;
+      peopleLaneAnimRef.current?.pinLabelsToViewport(newScrollLeft);
+      conflictsMilestonesLaneAnimRef.current?.pinLabelsToViewport(
+        newScrollLeft,
+      );
+      if (conflictsMilestonesLaneRef.current)
+        conflictsMilestonesLaneRef.current.scrollLeft = newScrollLeft;
+    },
+    [updateHorizontalFades],
+  );
   // Stable identity (refs only), so effects can depend on it.
   const syncScrollLeft = useCallback(
     (newScrollLeft: number) => {
@@ -423,6 +450,20 @@ export function TimelineCanvas({
       }
     };
   }, [mirrorLaneScrollLeft]);
+  // The scroll range changes without a scroll event when a Selection opens or
+  // closes (trailing slack) and when the viewport resizes.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scrollWidth isn't read in the body — it's a trigger to re-derive the right fade when the scroll range changes
+  useLayoutEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    updateHorizontalFades(container.scrollLeft);
+    if (typeof ResizeObserver === 'undefined') return;
+    const observer = new ResizeObserver(() =>
+      updateHorizontalFades(container.scrollLeft),
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [scrollWidth, updateHorizontalFades]);
   const effectiveViewportWidthPx =
     viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   const viewportBufferPx = effectiveViewportWidthPx * VIEWPORT_BUFFER_RATIO;
@@ -585,6 +626,27 @@ export function TimelineCanvas({
     const el = conflictsMilestonesLaneRef.current;
     if (!el) return;
     el.scrollTop = 0;
+    // Drives .conflictsMilestonesLane's bottom fade (TimelineCanvas.module.css):
+    // rows below the visible area. Its svg height follows the visible set, so
+    // the observer catches a filter change that the scroll listener can't.
+    const updateScrollAffordance = () => {
+      el.dataset.hasMoreBelow = String(
+        el.scrollTop + el.clientHeight < el.scrollHeight - 1,
+      );
+    };
+    updateScrollAffordance();
+    el.addEventListener('scroll', updateScrollAffordance, { passive: true });
+    const observer =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(updateScrollAffordance);
+    observer?.observe(el);
+    const svg = el.querySelector('svg');
+    if (svg) observer?.observe(svg);
+    return () => {
+      observer?.disconnect();
+      el.removeEventListener('scroll', updateScrollAffordance);
+    };
   }, [filteredConflicts, filteredMilestones]);
 
   // 'timeline-initial-render' performance mark: when the real (not
