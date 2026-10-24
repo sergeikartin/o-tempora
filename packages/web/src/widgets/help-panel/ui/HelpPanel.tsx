@@ -5,9 +5,17 @@ import styles from './HelpPanel.module.css';
 interface HelpPanelProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenAbout: () => void;
+  // Sibling-locale timeline page, already carrying the open Entity Link (if any).
+  switchLanguageHref: string;
 }
 
-export function HelpPanel({ isOpen, onClose }: HelpPanelProps) {
+export function HelpPanel({
+  isOpen,
+  onClose,
+  onOpenAbout,
+  switchLanguageHref,
+}: HelpPanelProps) {
   const entries = [
     { term: m.helpTravelTerm(), description: m.helpTravelBody() },
     { term: m.helpMarksTerm(), description: m.helpMarksBody() },
@@ -31,6 +39,18 @@ export function HelpPanel({ isOpen, onClose }: HelpPanelProps) {
           </div>
         ))}
       </dl>
+      <div className={styles.footer}>
+        <button
+          type="button"
+          className={styles.footerLink}
+          onClick={onOpenAbout}
+        >
+          {m.aboutLabel()}
+        </button>
+        <a className={styles.footerLink} href={switchLanguageHref}>
+          {m.switchLanguageLabel()}
+        </a>
+      </div>
     </ModalPanel>
   );
 }

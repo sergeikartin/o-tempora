@@ -1,0 +1,131 @@
+/* One row on desktop; at the mobile breakpoint Search, Filters and Help share
+   the first row and Detail Level takes the second, full width. Layout is CSS
+   only so the prerendered markup is right before hydration knows the width.
+   No transform/filter here: the Filters Panel's mobile sheet is position:
+   fixed inside this element. */
+.topBar {
+  position: relative;
+  z-index: 30;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: var(--top-bar-height);
+  padding-inline: 16px;
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.logo {
+  flex: 0 0 auto;
+}
+
+.search {
+  flex: 1 1 200px;
+  min-width: 0;
+  max-width: 360px;
+}
+
+.detailLevel {
+  flex: 0 0 280px;
+  min-width: 0;
+  margin-inline-start: auto;
+}
+
+.filtersAnchor {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding-inline: 12px;
+  border: 1px solid var(--color-border-control);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface-raised);
+  color: var(--color-text-primary);
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-easing),
+    background-color var(--motion-duration-fast) var(--motion-easing);
+}
+
+.button:hover {
+  border-color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.button[aria-expanded="true"] {
+  border-color: var(--color-accent-selected);
+}
+
+/* Sits above the Filters Panel's click-catcher so a second press closes it. */
+.filtersAnchor .button {
+  position: relative;
+  z-index: 2;
+}
+
+.badge {
+  min-width: 18px;
+  padding-inline: 5px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-selected);
+  color: var(--color-bg-surface-raised);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  line-height: 18px;
+  text-align: center;
+}
+
+.helpButton {
+  justify-content: center;
+  width: 32px;
+  padding-inline: 0;
+  font-weight: 600;
+}
+
+@media (pointer: coarse) {
+  .button {
+    height: 44px;
+  }
+
+  .helpButton {
+    width: 44px;
+  }
+}
+
+@media (max-width: 960px) {
+  .topBar {
+    flex-wrap: wrap;
+    align-content: center;
+    height: auto;
+    min-height: var(--top-bar-height);
+    gap: 8px 12px;
+    padding-block: 6px;
+    padding-inline: 12px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .search {
+    flex: 1 1 0;
+    max-width: none;
+  }
+
+  .detailLevel {
+    flex: 1 0 100%;
+    order: 1;
+    margin-inline-start: 0;
+  }
+}

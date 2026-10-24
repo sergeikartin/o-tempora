@@ -1,7 +1,7 @@
 import { m } from '../paraglide/messages.js';
 import type { Region } from '../types';
 
-// Display labels for the sidebar's Region filter pills. Picked once at
+// Display labels for the Filters Panel's Region filter pills. Picked once at
 // module load from the compiled locale's message catalog (docs/adr/0005) —
 // same pattern as occupation-domain-colors.ts's DOMAIN_LABELS.
 export const REGION_LABELS: Record<Region, string> = {

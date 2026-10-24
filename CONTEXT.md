@@ -5,7 +5,7 @@ An interactive timeline of world history — People, Conflicts, and Milestones l
 ## Language
 
 **Conflict Category**:
-The curator-assigned classification of a Conflicts entry (`Conflict`/`ConflictEvent.category`) — `war, war-of-independence, revolution, rebellion, coup-d-etat, military-operation`. Set when the curated list (`data/raw/conflicts-curated.raw.json`) is authored, not derived from Wikidata. Conflicts-only; Milestones has its own **Milestone Category**. Drives no color: every Conflict renders in the flat `CONFLICT_COLOR` (`packages/web/src/shared/config/conflict-color.ts`; shared with the sidebar filter swatch, see `packages/web/docs/design-tokens.md`). Does not determine `Conflict` vs. `ConflictEvent` shape — see **Container**. Conflicts have no equivalent of **Milestone Category Group**: in the sidebar's Conflicts & Milestones filter, "Conflicts" is one pill alongside the 2 Milestone Category Group pills.
+The curator-assigned classification of a Conflicts entry (`Conflict`/`ConflictEvent.category`) — `war, war-of-independence, revolution, rebellion, coup-d-etat, military-operation`. Set when the curated list (`data/raw/conflicts-curated.raw.json`) is authored, not derived from Wikidata. Conflicts-only; Milestones has its own **Milestone Category**. Drives no color: every Conflict renders in the flat `CONFLICT_COLOR` (`packages/web/src/shared/config/conflict-color.ts`; shared with the Filters Panel swatch, see `packages/web/docs/design-tokens.md`). Does not determine `Conflict` vs. `ConflictEvent` shape — see **Container**. Conflicts have no equivalent of **Milestone Category Group**: in the Filters Panel's Conflicts & Milestones filter, "Conflicts" is one pill alongside the 2 Milestone Category Group pills.
 _Avoid_: Category (bare — ambiguous with Milestone Category), occupation domain, tag, type (for this specific field)
 
 **Container**:
@@ -25,11 +25,11 @@ Milestones' own curator-assigned taxonomy — 22 leaf values (e.g. `science-theo
 _Avoid_: Category (bare), conflict category (for this specific field), Discovery Category
 
 **Milestone Category Group**:
-The 2-value grouping above Milestone Category's 22 leaf values, driving the Milestones lane's color: `science-innovation` ("Science & Innovation": science-theory, medicine-health, communication, transportation, everyday-technology, food-agriculture, energy-industry) and `social-culture` ("Society & Culture": the other 15). Defined as `MilestoneCategoryGroup` + `MILESTONE_CATEGORY_TO_GROUP` in `packages/shared-types`, the one source read by both the lane's color mapping (`packages/web/src/widgets/timeline-canvas/options.ts`) and the sidebar's Conflicts & Milestones filter. That filter is one multi-select pill list (`ConflictsMilestonesFilterValue` in `packages/web/src/shared/config/conflicts-milestones-filter.ts`) spanning the 2 groups plus a UI-only `'conflicts'` value — the same "flat list, empty means unfiltered" shape as Region/Occupation Domain. See `docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md`.
+The 2-value grouping above Milestone Category's 22 leaf values, driving the Milestones lane's color: `science-innovation` ("Science & Innovation": science-theory, medicine-health, communication, transportation, everyday-technology, food-agriculture, energy-industry) and `social-culture` ("Society & Culture": the other 15). Defined as `MilestoneCategoryGroup` + `MILESTONE_CATEGORY_TO_GROUP` in `packages/shared-types`, the one source read by both the lane's color mapping (`packages/web/src/widgets/timeline-canvas/options.ts`) and the Filters Panel's Conflicts & Milestones filter. That filter is one multi-select pill list (`ConflictsMilestonesFilterValue` in `packages/web/src/shared/config/conflicts-milestones-filter.ts`) spanning the 2 groups plus a UI-only `'conflicts'` value — the same "flat list, empty means unfiltered" shape as Region/Occupation Domain. See `docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md`.
 _Avoid_: Category Group (bare — Milestones-only), Milestone Group
 
 **Occupation Domain**:
-Pantheon 2.0's occupation grouping for People entries — `sports, institutions, arts, humanities, science-technology, business-law, public-figure, exploration`. Separate from Conflict Category and Milestone Category; sourced from Pantheon, not Wikidata. Drives the Occupation Domain Palette in `packages/web/docs/design-tokens.md`. English display names: the sidebar section is "Occupation"; pills read Politics & Religion (`institutions`), Public Figures (`public-figure`), Arts, Business & Law, Science & Technology, Exploration, Humanities, Sports. The pills double as the filter: clicking one toggles that domain in/out of the People lane (multi-select, OR within the filter; none active means unfiltered).
+Pantheon 2.0's occupation grouping for People entries — `sports, institutions, arts, humanities, science-technology, business-law, public-figure, exploration`. Separate from Conflict Category and Milestone Category; sourced from Pantheon, not Wikidata. Drives the Occupation Domain Palette in `packages/web/docs/design-tokens.md`. English display names: the Filters Panel section is "Occupation"; pills read Politics & Religion (`institutions`), Public Figures (`public-figure`), Arts, Business & Law, Science & Technology, Exploration, Humanities, Sports. The pills double as the filter: clicking one toggles that domain in/out of the People lane (multi-select, OR within the filter; none active means unfiltered).
 _Avoid_: Category, occupation category, conflict category, milestone category (for this specific field), Legend (the pills are a filter, not a color key)
 
 **Region** (filter):
@@ -69,12 +69,12 @@ The phone-width stand-in for the **Minimap**: a thin strip of century ticks with
 _Avoid_: mini-minimap, timeline bar, slider
 
 **Top Bar**:
-The slim strip of always-needed controls above the timeline: **Search**, **Detail Level**, the Filters Panel trigger and Help. Replaces the floating sidebar on every screen width.
-_Avoid_: header, toolbar, navbar, sidebar (the retired floating card)
+The slim strip of always-needed controls above the timeline: **Search**, **Detail Level**, the Filters Panel trigger and Help. Always one strip above the canvas, wrapping to two rows at phone width. About and the language switch live in Help, not here.
+_Avoid_: header, toolbar, navbar, sidebar
 
 **Filters Panel**:
 The single place the occasional filters live — Occupation Domain, Region and Conflicts & Milestones — opened from the **Top Bar**'s Filters button, which shows how many filters are active. A popover on desktop and a bottom sheet at phone width.
-_Avoid_: filter drawer, sidebar filters, filter menu
+_Avoid_: filter drawer, sidebar, filter menu
 
 **Row Depth**:
 The number of vertical rows a lane needs at a given point in time to render without overlap — `max(row index) + 1` among items covering it. Each item's row (`TimelineEntry.row`) is computed once by the pipeline's Output stage (`row-assignment.ts`'s `assignRows`) against the entire lane and shipped as data, not derived client-side (`docs/adr/0005-row-assignment-moves-to-the-pipeline.md`); `packages/web`'s `compactRows` only narrows it to what is currently visible. Drives both a lane's rendered height and, at the **Reference Scale**, the Minimap's per-series height.
@@ -89,7 +89,7 @@ The span of years currently visible — from the year at the canvas's left edge 
 _Avoid_: current year, center year, hero year
 
 **Locale**:
-Which of the app's two languages — English (base, default) or Russian — a page load renders, resolved at runtime from the URL: `/` and `/timeline/` for English, `/ru/` and `/ru/timeline/` for Russian (Paraglide's `url` strategy, `packages/web/docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`). One build and one JS/CSS bundle serve both; the Locale selects the UI string catalog (`packages/web/messages/{en,ru}.json`) and which dataset files load (`people.detail1.json` vs. `people.detail1.ru.json`, see **Field Fallback** and **Detail Level**) via a locale-keyed dynamic import in `src/app/locale-datasets.ts`. No inline bilingual display. The two locales cross-link through the `Sidebar`'s language-switcher link, a full navigation to the sibling's same page kind that carries only the open **Entity Link**.
+Which of the app's two languages — English (base, default) or Russian — a page load renders, resolved at runtime from the URL: `/` and `/timeline/` for English, `/ru/` and `/ru/timeline/` for Russian (Paraglide's `url` strategy, `packages/web/docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`). One build and one JS/CSS bundle serve both; the Locale selects the UI string catalog (`packages/web/messages/{en,ru}.json`) and which dataset files load (`people.detail1.json` vs. `people.detail1.ru.json`, see **Field Fallback** and **Detail Level**) via a locale-keyed dynamic import in `src/app/locale-datasets.ts`. No inline bilingual display. The two locales cross-link through the Help panel's language-switcher link, a full navigation to the sibling's same page kind that carries only the open **Entity Link**.
 _Avoid_: language build, language mode, translation (bare)
 
 **Field Fallback**:

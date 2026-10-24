@@ -211,22 +211,35 @@ test('closing the panel replaces the entry instead of adding one', async () => {
 
 test('the language switch carries the open entity to the sibling locale', async () => {
   window.history.replaceState(null, '', '/?e=slug-of-mainstream');
-  const { container } = await renderApp();
+  const { container, rtl } = await renderApp();
+  await openHelp(container, rtl);
 
   await waitFor(() =>
-    expect(
-      container.querySelector('a[href^="/ru/"]')?.getAttribute('href'),
-    ).toBe('/ru/timeline/?e=slug-of-mainstream'),
+    expect(languageHref(container)).toBe('/ru/timeline/?e=slug-of-mainstream'),
   );
 });
 
 test('the language switch has no entity when nothing is open', async () => {
-  const { container } = await renderApp();
+  const { container, rtl } = await renderApp();
+  await openHelp(container, rtl);
 
-  expect(container.querySelector('a[href^="/ru/"]')?.getAttribute('href')).toBe(
-    '/ru/timeline/',
-  );
+  await waitFor(() => expect(languageHref(container)).toBe('/ru/timeline/'));
 });
+
+async function openHelp(
+  container: HTMLElement,
+  rtl: typeof import('@testing-library/react'),
+) {
+  await act(async () => {
+    rtl.fireEvent.click(
+      container.querySelector('button[aria-label="Help"]') as Element,
+    );
+  });
+}
+
+function languageHref(container: HTMLElement) {
+  return container.querySelector('a[href^="/ru/"]')?.getAttribute('href');
+}
 
 function markOf(container: HTMLElement, id: string) {
   const mark = container.querySelector(`[data-entity-id="${id}"]`);
@@ -447,12 +460,13 @@ test('the language switch carries every slug of the Selection', async () => {
     '',
     '/?e=slug-of-mainstream&e=slug-of-second',
   );
-  const { container } = await renderApp();
+  const { container, rtl } = await renderApp();
+  await openHelp(container, rtl);
 
   await waitFor(() =>
-    expect(
-      container.querySelector('a[href^="/ru/"]')?.getAttribute('href'),
-    ).toBe('/ru/timeline/?e=slug-of-mainstream&e=slug-of-second'),
+    expect(languageHref(container)).toBe(
+      '/ru/timeline/?e=slug-of-mainstream&e=slug-of-second',
+    ),
   );
 });
 

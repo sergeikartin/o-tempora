@@ -59,7 +59,7 @@ function matchesQuery(
 
 // Session-only search query state (no persistence, same shape as every
 // other filter hook here) — owned by this feature since it's shared by
-// widgets/sidebar (the input/dropdown) and app/ (which resolves a picked
+// widgets/top-bar (the input/dropdown) and app/ (which resolves a picked
 // result into a pan + selection, mirroring features/select-timeline-entity's
 // "feature owns cross-widget state" comment).
 //

@@ -23,7 +23,7 @@ Zoom and pan are gesture-bound, not frame-bound: `TimelineCanvas.tsx` fires one 
 
 `period` is the viewport-center year's century bucket (`shared/lib/date/format-year.ts`'s `centuryBoundaryForYear`, e.g. `"1800s"`, `"3rd century BCE"`) — a few dozen values across the whole timeline, low-cardinality enough for Umami's per-property quota while still saying roughly what era the user was looking at.
 
-The timeline's Help panel fires `help_open` (`{ via: 'link' | 'key' }`) when a visitor opens it from the sidebar footer link or the `?` key.
+The timeline's Help panel fires `help_open` (`{ via: 'link' | 'key' }`) when a visitor opens it from the Top Bar's Help button or the `?` key.
 
 The **Selection** (`features/select-timeline-entity/model/useSelection.ts`) fires `entity_view` (`{ entityType }`, a plain click or a Search pick replacing it), `selection_add` and `selection_remove` (`{ size }`, 1–4, on a toggle), `selection_full` (an add ignored at the cap of four) and `selection_open_link` (`{ size }`, an Entity Link resolving on arrival). None carries a slug or id.
 

@@ -5,7 +5,7 @@ import type { OccupationDomain } from '../types';
 // custom properties in app/global.css's :root rather than repeating hex;
 // SVG presentation attributes resolve var() too, so D3-rendered and DOM
 // consumers share it. Lives in shared/config because both the People lane
-// and the sidebar pills (swatch) need it.
+// and the Filters Panel pills (swatch) need it.
 export const DOMAIN_COLORS: Record<OccupationDomain, string> = {
   institutions: 'var(--color-domain-institutions)',
   arts: 'var(--color-domain-arts)',

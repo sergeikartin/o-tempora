@@ -1,6 +1,6 @@
 .panel {
   position: fixed;
-  top: 0;
+  top: var(--top-bar-height);
   right: 0;
   bottom: 0;
   width: 340px;

@@ -90,8 +90,6 @@ test('renders both lanes, each populated from its own dataset', () => {
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -129,8 +127,6 @@ test('computes Row Depth once and threads the same resolvers to every consumer',
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -164,8 +160,6 @@ test('the two lane sections and every year axis share the same rendered width', 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -209,8 +203,6 @@ test('the full-height 25-year zebra striping is split into a BCE and a CE region
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -246,8 +238,6 @@ test('renders a single year axis, between People and Conflicts+Milestones', () =
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -267,8 +257,6 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -314,8 +302,6 @@ test('dragging the Minimap viewport rect scrolls the container, proportional to 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -398,8 +384,6 @@ test('a mousedown on the scroll container content still pans it — the custom s
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -437,8 +421,6 @@ test('clicking the Minimap track outside the viewport rect jumps the viewport to
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -504,8 +486,6 @@ test('releasing a drag suppresses the click event that follows it', () => {
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={onEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -548,8 +528,6 @@ test('a click preceded only by sub-threshold pointer jitter still registers', ()
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={onEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -590,8 +568,6 @@ test('touch pointers do not trigger drag-to-pan — native swipe-to-scroll alrea
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -628,8 +604,6 @@ test('a single touch pointer does not start a pinch — zoom only engages once a
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -667,8 +641,6 @@ test('a mouse pointer never starts a pinch, even alongside a stray touch pointer
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -710,8 +682,6 @@ test('a two-finger touch pinch scales pixelsPerYear by the live distance ratio, 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -770,8 +740,6 @@ test('a two-finger touch pinch pinching inward (fingers moving closer) zooms out
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const scrollContainer = container.querySelector(
@@ -851,8 +819,6 @@ test('the zoom-in button animates rendered lines wider, landing exactly on the t
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -883,8 +849,6 @@ test('a second zoom-in click fired while the first animation is still in flight 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -917,8 +881,6 @@ test('a zoom animation moves People, Conflicts+Milestones marks, and the Year Ax
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -953,8 +915,6 @@ test("Minimap's viewport rect reflects the new range once a zoom animation settl
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
@@ -996,8 +956,6 @@ test('zooming does not change which entities are rendered — density is gated b
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -1030,8 +988,6 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
@@ -1048,8 +1004,6 @@ test('a person below fameScoreValues.people is excluded; raising it reveals them
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
@@ -1068,8 +1022,6 @@ test('a person outside an active Occupation Domain filter is excluded; clearing 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0);
@@ -1086,8 +1038,6 @@ test('a person outside an active Occupation Domain filter is excluded; clearing 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
@@ -1106,8 +1056,6 @@ test('an item outside an active Region filter is excluded; clearing the filter r
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(0); // Korean War is tagged eastern-asia, not northern-africa
@@ -1124,8 +1072,6 @@ test('an item outside an active Region filter is excluded; clearing the filter r
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   expect(container.querySelectorAll('.d3-line')).toHaveLength(1);
@@ -1144,8 +1090,6 @@ test('an item with no region tags is excluded once a Region filter is active', (
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   // fixtureMilestones' football entry has an empty regionTags array — it
@@ -1166,8 +1110,6 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const peopleLane = container.querySelector(
@@ -1194,8 +1136,6 @@ test('the People lane defaults its vertical scroll to the bottom (axis-adjacent 
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -1215,8 +1155,6 @@ test('the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
   const conflictsMilestonesLane = container.querySelector(
@@ -1239,8 +1177,6 @@ test('the Conflicts+Milestones lane defaults its vertical scroll to the top (axi
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={noopEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -1261,8 +1197,6 @@ test('clicking a mark reports its entity id/type via onEntityClick, resolved thr
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={onEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -1289,8 +1223,6 @@ test('clicking empty canvas space (no data-entity-id ancestor) does not call onE
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={onEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -1316,8 +1248,6 @@ test('a mark with an unrecognized data-entity-type is ignored rather than report
         defaultSelectedConflictsMilestonesValues
       }
       onEntityClick={onEntityClick}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -1337,8 +1267,6 @@ const baseCanvasProps: React.ComponentProps<typeof TimelineCanvas> = {
   selectedRegions: defaultSelectedRegions,
   selectedConflictsMilestonesValues: defaultSelectedConflictsMilestonesValues,
   onEntityClick: () => {},
-  isFilterDrawerOpen: false,
-  onToggleFilterDrawer: () => {},
 };
 
 function renderCanvas(

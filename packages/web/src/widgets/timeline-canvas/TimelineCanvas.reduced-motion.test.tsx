@@ -66,8 +66,6 @@ test('with prefers-reduced-motion: reduce, a zoom-button click resolves to the t
       selectedRegions={[]}
       selectedConflictsMilestonesValues={[]}
       onEntityClick={() => {}}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 

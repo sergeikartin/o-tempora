@@ -104,7 +104,7 @@ interface TimelineCanvasProps {
   people: Person[];
   conflicts: ConflictEntry[];
   milestones: Milestone[];
-  // Sidebar-set fame-score floors (web/docs/adr/0003), independent of zoom.
+  // Detail Level fame-score floors (web/docs/adr/0003), independent of zoom.
   fameScoreValues: FameScoreValues;
   // People-only Occupation Domain filter; empty means unfiltered.
   selectedDomains: OccupationDomain[];
@@ -118,13 +118,9 @@ interface TimelineCanvasProps {
   // for a Shift/Ctrl/Cmd-click, which toggles the mark instead of replacing the
   // Selection.
   onEntityClick: (ref: SelectedEntityRef, additive: boolean) => void;
-  // Reports post-filter entry counts per lane for the Sidebar; this widget
+  // Reports post-filter entry counts per lane for the app shell; this widget
   // stays the single owner of the filtering pipeline (docs/code-conventions.md).
   onFilteredCountsChange?: (counts: FilteredCounts) => void;
-  // Mobile drawer toggle state, owned by App.tsx and shared with Sidebar. The
-  // toggle button lives here, beside the zoom controls.
-  isFilterDrawerOpen: boolean;
-  onToggleFilterDrawer: () => void;
   // The Selection's members (CONTEXT.md). Their marks get the selection
   // highlight while they stay selected.
   selectedEntities?: readonly SelectedEntityRef[];
@@ -172,8 +168,6 @@ export function TimelineCanvas({
   selectedConflictsMilestonesValues,
   onEntityClick,
   onFilteredCountsChange,
-  isFilterDrawerOpen,
-  onToggleFilterDrawer,
   selectedEntities = NO_ENTITIES,
   selectionBands,
   addToSelection,
@@ -474,7 +468,7 @@ export function TimelineCanvas({
     () => computeRowAssignment(people, conflicts, milestones),
     [people, conflicts, milestones],
   );
-  // useLayoutEffect so new counts land in the Sidebar's DOM before paint, with
+  // useLayoutEffect so new counts land in the Top Bar's DOM before paint, with
   // no one-frame flash of the stale count.
   useLayoutEffect(() => {
     onFilteredCountsChange?.(filteredCounts);
@@ -1033,17 +1027,6 @@ export function TimelineCanvas({
       <ViewportRange startYear={viewportStartYear} endYear={viewportEndYear} />
       {selectionBands && selectionBands.spans.length > 0 && (
         <p className={styles.srOnly}>{selectionBands.description}</p>
-      )}
-      {isMobileViewport && (
-        <button
-          type="button"
-          className={styles.drawerToggle}
-          onClick={onToggleFilterDrawer}
-          aria-label={m.filtersAriaLabel()}
-          aria-expanded={isFilterDrawerOpen}
-        >
-          ☰
-        </button>
       )}
       {hasSelection && addToSelection && (
         <div className={styles.addToSelection} data-selection-control>

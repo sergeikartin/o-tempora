@@ -39,7 +39,7 @@ export function filterByRegion<T>(
   );
 }
 
-// The sidebar's "Conflicts & Milestones" section is one multi-select filter.
+// The Filters Panel's "Conflicts & Milestones" section is one multi-select filter.
 // `selectedValues` holds a UI-only 'conflicts' value plus the 2
 // MilestoneCategoryGroup values (shared/config/conflicts-milestones-filter.ts);
 // each function below reads the part that applies to its own lane.

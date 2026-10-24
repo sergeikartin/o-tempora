@@ -5,5 +5,5 @@
 // validated against the 2 milestone-group hexes as one 3-color set — see
 // docs/design-tokens.md. Lives in shared/config rather than
 // widgets/timeline-canvas/options.ts because the lane (mark fill) and the
-// sidebar's Conflicts pill (swatch) both need it.
+// the Filters Panel Conflicts pill (swatch) both need it.
 export const CONFLICT_COLOR = '#8C2D2B';

@@ -2,7 +2,7 @@
    click/drag math needn't guess at .scrollContainer's geometry. Height is in
    the 48-64px band of web/docs/adr/0004 plus MINIMAP_CENTURY_STRIP_HEIGHT_PX
    for the century-tick strip. A floating card inset from the canvas edges with
-   the Sidebar's surface treatment, so it reads as an overview control, not a
+   the same card surface as the Filters Panel, so it reads as an overview control, not a
    second years axis. */
 /* Also the positioning root for .tooltip and .viewportRect: .track needs
    overflow: hidden to bound the ridge, which would clip .tooltip's bottom: 100%

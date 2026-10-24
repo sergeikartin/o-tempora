@@ -10,8 +10,9 @@ type Asset = Extract<BundleOutput, { type: 'asset' }>;
 // - archivo-latin 400/700: digits (year-axis ticks) and English UI chrome.
 // - archivo-latin-ext 400: accented People-lane names within the default
 //   viewport (e.g. "Frédéric Chopin").
-// - archivo-latin 600 / fraunces-latin 600: Sidebar's `.heading`/
-//   `.headerTitle`, present on first paint on both layouts.
+// - archivo-latin 600 / fraunces-latin 600: the lane captions and the Viewport
+//   Range heading (plus the Top Bar wordmark on desktop), present on first
+//   paint.
 // Archivo/Fraunces ship no Cyrillic subset (Cyrillic text falls back to the
 // `sans-serif` system font — global.css), so preloading vietnamese/Cyrillic
 // subsets, or weights nothing above the fold uses, would fetch bytes first

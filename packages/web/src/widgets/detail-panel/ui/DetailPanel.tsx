@@ -161,7 +161,12 @@ export function DetailPanel({
     }
 
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') onClose();
+      // Escape belongs to an open modal (Filters Panel, Help, About) first.
+      if (
+        event.key === 'Escape' &&
+        !document.querySelector('[aria-modal="true"]')
+      )
+        onClose();
     }
 
     document.addEventListener('pointerdown', handlePointerDown);

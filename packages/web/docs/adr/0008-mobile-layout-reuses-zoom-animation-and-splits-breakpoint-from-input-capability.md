@@ -1,5 +1,6 @@
 ---
 status: accepted
+partially-superseded-by: 0017-top-bar-and-filters-panel-replace-the-sidebar.md
 ---
 
 # Mobile layout reuses the zoom-animation transform for pinch, and splits width breakpoint from input capability

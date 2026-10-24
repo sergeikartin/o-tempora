@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react';
 
-// 3x Sidebar.module.css's 320px .sidebar width, so the desktop column never
-// exceeds a third of the viewport before flipping to the drawer layout.
+// Below this width the Top Bar wraps to two rows, the Filters Panel and the
+// detail panel become bottom sheets, and the Minimap is omitted.
 export const MOBILE_BREAKPOINT_PX = 960;
 
 const mobileQuery = `(max-width: ${MOBILE_BREAKPOINT_PX}px)`;

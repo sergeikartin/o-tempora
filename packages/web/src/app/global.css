@@ -1,6 +1,6 @@
 /* Color/radius tokens from docs/design-tokens.md ("Ledger & Ink") as CSS custom
-   properties. The Occupation Domain palette is wired here for both the Sidebar
-   pills and the D3 People lane (SVG presentation attributes resolve var()).
+   properties. The Occupation Domain palette is wired here for both the Filters
+   Panel pills and the D3 People lane (SVG presentation attributes resolve var()).
    Milestone group colors are hex in shared/config/milestone-category-group.ts.
    --color-conflict below exists for Minimap.module.css's SVG fill; the lanes use
    the JS CONFLICT_COLOR (shared/config/conflict-color.ts) for D3-set attrs. */
@@ -32,6 +32,8 @@
   --color-domain-exploration: #3e70b0;
   --color-domain-humanities: #4e4993;
   --color-domain-sports: #9a5c73;
+
+  --top-bar-height: 56px;
 
   --radius-full: 9999px;
   --radius-sm: 6px;
@@ -83,13 +85,12 @@ html {
 /* docs/design-tokens.md's Typography table: Archivo for all UI chrome,
    entry labels, and data (year ranges use font-variant-numeric:
    tabular-nums where they're set, not a separate mono face). Set once here
-   so sidebar/detail-panel (which don't declare their own font-family) match
+   so top-bar/detail-panel (which don't declare their own font-family) match
    widgets/timeline-canvas's lanes instead of falling back to the browser's
    default serif. */
 body {
   font-family: Archivo, sans-serif;
-  /* The gutters around the floating sidebar and minimap cards show the page
-     behind them, so it needs the same parchment as the canvas. */
+  /* The gutter around the minimap card shows the page behind it, so it needs the same parchment as the canvas. */
   background-color: var(--color-bg-base);
 }
 

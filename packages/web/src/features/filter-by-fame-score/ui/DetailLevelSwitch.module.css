@@ -6,13 +6,6 @@
   border: none;
 }
 
-.description {
-  margin: 6px 0 0;
-  color: var(--color-text-secondary);
-  font-size: 11px;
-  line-height: 1.4;
-}
-
 /* Position: absolute at the exact same x-coordinates as the dots below
    (see .trackFill's insets and .dot) rather than via flex/grid, since
    those box models space items by their own width or by equal columns —
@@ -25,27 +18,20 @@
   margin-bottom: 4px;
 }
 
-/* Each label's box is a quarter of the track, too narrow for the longer level
-   names (e.g. "Specialized") at 12px on the mobile drawer; the 960px
-   breakpoint below shrinks the font so all four fit. overflow/nowrap/ellipsis
-   are a safety net: a wrapped line would overflow .labels' fixed height and
-   overlap the neighboring label. */
+/* Each label's box is a quarter of the track; the Top Bar gives the track at
+   least ~280px, enough for the longer level names (e.g. "Specialized") at
+   11px. overflow/nowrap/ellipsis are a safety net: a wrapped line would
+   overflow .labels' fixed height and overlap the neighboring label. */
 .label {
   position: absolute;
   top: 0;
   max-width: calc(25% - 4px);
   overflow: hidden;
   color: var(--color-text-primary);
-  font-size: 12px;
+  font-size: 11px;
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: color var(--motion-duration-base) var(--motion-easing);
-}
-
-@media (max-width: 960px) {
-  .label {
-    font-size: 10px;
-  }
 }
 
 .label:nth-child(1) {

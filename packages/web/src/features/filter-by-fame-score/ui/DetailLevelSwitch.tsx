@@ -101,10 +101,10 @@ export function DetailLevelSwitch({
           })}
         </div>
       </fieldset>
-      <p id={hintId} className={styles.description}>
+      <p id={hintId} className={styles.srOnly}>
         {m.detailLevelHint()}
       </p>
-      <p className={styles.description}>{selectedLevel.description}</p>
+      <p className={styles.srOnly}>{selectedLevel.description}</p>
     </div>
   );
 }

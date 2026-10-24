@@ -13,7 +13,7 @@ interface FilterPillListProps<T extends string> {
   layout?: 'stack' | 'wrap';
 }
 
-// One shared multi-select pill list — every session-only sidebar filter
+// One shared multi-select pill list — every session-only Filters Panel filter
 // (Region, Occupation Domain, Conflicts & Milestones) renders the same
 // toggle-chip shape; only the value set, labels, optional swatch color, and
 // layout differ per taxonomy.

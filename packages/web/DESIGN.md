@@ -198,7 +198,7 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 - **Hairline** (#e0d3ac) and **Strong Rule** (#c7b383): Decorative dividers and decade ticks only; below 3:1 by design.
 - **Selection Halo** (#241a10 at 14%): Translucent ink fill drawn 8px beyond a selected mark.
 - **Span Band** (Oxblood at 9%, edges at 28%; a PointInTime is a 1px hairline at 55%) and **Overlap Band** (Oxblood at 24%, at least 4px wide): Full-height washes behind the marks of every lane for a Selection's members and the span they share.
-- **Scrim** (#000000 at 40%): Behind drawers, sheets and the About modal.
+- **Scrim** (#000000 at 40%): Behind sheets and the About modal.
 
 ### Named Rules
 **The One Seal Rule.** Oxblood marks state and nothing else. It is never decoration and never a lane colour.
@@ -236,9 +236,9 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 
 ## Layout
 
-A full-viewport canvas read left to right, with the Viewport Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A floating 320px sidebar (inset 12px) holds search, Detail Level and the filters; a minimap card sits beneath the lanes on desktop.
+A full-viewport canvas read left to right, with the Viewport Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A 56px Top Bar above it holds search, Detail Level, the Filters button and Help; the Filters Panel opens as a popover beneath it. A minimap card sits beneath the lanes on desktop.
 
-Spacing is a short ladder of 4, 6, 8, 10, 12, 16, 20 and 24px. Controls sit 8px from canvas corners, cards are inset 12px, and sections are separated by 24px. At 960px and below the sidebar becomes a left drawer over a scrim (280px max, 85vw), the detail panel becomes a bottom sheet (80vh max), the Viewport Range shrinks to 32px, and the minimap is omitted. Zoom buttons are hidden on coarse pointers in favour of pinch.
+Spacing is a short ladder of 4, 6, 8, 10, 12, 16, 20 and 24px. Controls sit 8px from canvas corners, cards are inset 12px, and sections are separated by 24px. At 960px and below the Top Bar wraps to two rows (search, Filters and Help, then Detail Level at full width) and drops the wordmark, the Filters Panel and the detail panel become bottom sheets (80vh max) over a scrim, the Viewport Range shrinks to 32px, and the minimap is omitted. Zoom buttons are hidden on coarse pointers in favour of pinch.
 
 Background texture is a faint 25-year zebra wash with century seams in Control Border at 45%. There are no gradients and no imagery in chrome; entity photos appear only in the detail panel.
 
@@ -247,10 +247,11 @@ Background texture is a faint 25-year zebra wash with century seams in Control B
 Depth is tonal first: Parchment, then Ledger Paper, then White Sheet for anything the hand touches. Shadows are reserved for surfaces that float over the canvas and are always ink-tinted rather than black, with a Hairline border alongside. Marks are flat; selection is a halo, not a shadow.
 
 ### Shadow Vocabulary
-- **Card** (`box-shadow: 0 4px 16px rgba(36, 26, 16, 0.12)`): Floating sidebar and minimap card.
+- **Card** (`box-shadow: 0 4px 16px rgba(36, 26, 16, 0.12)`): Minimap card.
 - **Tooltip** (`box-shadow: 0 2px 6px rgba(36, 26, 16, 0.15)`): Minimap hover tooltip.
 - **Dropdown** (`box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)`): Search results.
-- **Drawer** (`box-shadow: 8px 0 32px rgba(0, 0, 0, 0.15)`): Mobile drawer and the detail side panel (x offset flipped for the right edge).
+- **Drawer** (`box-shadow: 8px 0 32px rgba(0, 0, 0, 0.15)`): The detail side panel (x offset flipped for the right edge).
+- **Popover** (`box-shadow: 0 8px 24px rgba(36, 26, 16, 0.18)`): Filters Panel on desktop.
 - **Modal** (`box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25)`): About modal.
 
 ### Named Rules
@@ -277,11 +278,11 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 ### Detail Level Switch
 - **Style:** A four-stop segmented track. A 4px line fills from the left in Oxblood up to the selected dot over a Hairline track; each stop is a 14px round dot with a 2px Control Border.
 - **State:** Reached dots fill Oxblood; the selected dot lifts a map-pin overlay (scale in over 200ms). Reached labels turn Oxblood at weight 700. A loading level pulses its pin, gated on motion preference.
-- **Helper:** One line of 11px Faded Ink under the control describes the level.
+- **Size:** Labels sit above the track at 11px; the track is 280px in the Top Bar and full width on the second row at 960px and below. The level description is read by assistive tech only.
 
 ### Buttons
 - **Primary:** Oxblood fill, White Sheet text, 13px, 8px radius, 8px/14px padding. Used for the Wikipedia link.
-- **Icon and zoom:** 28px square, White Sheet fill, 1px Control Border, 8px radius; zoom buttons form a joined vertical group with dividers and no gap. Glyphs `+`, `−`, `☰`, `«` rather than words.
+- **Icon and zoom:** 28px square, White Sheet fill, 1px Control Border, 8px radius; zoom buttons form a joined vertical group with dividers and no gap. Glyphs `+` and `−` rather than words.
 - **Close:** 28px round, Parchment fill, no border, `×` glyph.
 - **Text link:** Underlined Faded Ink at 12px, darkening to Ink on hover.
 
@@ -295,7 +296,9 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 - **Year Axis:** An Axis Bar ruler with three tick weights climbing the border ladder (decade in Strong Rule, century in Control Border), century tabs in White Sheet with bold Ink labels, tick labels at 10px tabular figures.
 
 ### Navigation
-- **Sidebar:** Wordmark and a `«` collapse handle in a header with a Hairline underline; sections of eyebrow-headed pill lists; a footer row of text links above a Hairline top rule. On mobile it is a drawer with a titled header and a `×` close.
+- **Top Bar:** A 56px Ledger Paper strip with a Hairline underline: wordmark, search pill, Detail Level switch, then a Filters pill button and a 32px round `?` Help button. The Filters button carries an Oxblood count badge while filters are active. 44px tall controls on coarse pointers.
+- **Filters Panel:** A 400px Ledger Paper popover (12px radius, Popover shadow) under the Filters button, titled in Fraunces with a `×` close; eyebrow-headed pill lists for Occupation, Conflicts & Milestones and Region, scrolling inside. At 960px and below it is a bottom sheet over a scrim.
+- **Help links:** About and the language switch are text links in a footer row of the Help panel, above a Hairline top rule.
 
 ### Motion
 Hover feedback runs 120ms and panel slides and fades 200ms on `cubic-bezier(0.4, 0, 0.2, 1)`. Animate transform and opacity only. Under `prefers-reduced-motion: reduce` both durations collapse to near zero through the shared tokens.

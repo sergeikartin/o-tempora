@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { trackEvent } from './track-event';
 
 // Generic multi-select toggle-set state, shared by every session-only
-// sidebar filter (Region, Occupation Domain, Conflicts & Milestones) — one
+// Filters Panel filter (Region, Occupation Domain, Conflicts & Milestones) — one
 // flat selection set where empty means unfiltered. `filterName` tags the
 // tracked event so all three filters funnel through one event name instead
 // of three, keeping Umami's per-event-name quota usage down.

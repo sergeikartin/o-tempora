@@ -15,7 +15,7 @@ export const DETAIL_DRAWER_WIDTH_PX = 340;
 
 // Per-lane `fameScore` floors, independent of zoom
 // (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md).
-// Lives here rather than under widgets/timeline-canvas because the sidebar
+// Lives here rather than under widgets/timeline-canvas because the Filters Panel
 // filter feature needs it too.
 export const FAME_SCORE_LANES = ['people', 'conflicts', 'milestones'] as const;
 export type FameScoreLane = (typeof FAME_SCORE_LANES)[number];

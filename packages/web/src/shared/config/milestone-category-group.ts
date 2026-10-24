@@ -3,7 +3,7 @@ import type { MilestoneCategoryGroup } from '../types';
 
 // Mirrors design-tokens.md's Milestone Category Palette. Lives in
 // shared/config because both the Milestones lane (via options.ts's
-// MILESTONE_CATEGORY_COLORS) and the sidebar pills (swatch) need it.
+// MILESTONE_CATEGORY_COLORS) and the Filters Panel pills (swatch) need it.
 export const MILESTONE_CATEGORY_GROUP_COLORS: Record<
   MilestoneCategoryGroup,
   string

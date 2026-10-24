@@ -6,7 +6,7 @@ import {
   MILESTONE_CATEGORY_GROUP_LABELS,
 } from './milestone-category-group';
 
-// The sidebar's "Conflicts & Milestones" section is ONE multi-select
+// The Filters Panel's "Conflicts & Milestones" section is ONE multi-select
 // filter, not two separate controls — mirrors Region/Occupation Domain's
 // "one flat list of values, empty means unfiltered" shape exactly. The
 // values folds a UI-only 'conflicts' sentinel (Conflicts carry no
@@ -16,7 +16,7 @@ import {
 // earlier version split this into a 3-pill Milestone Category Group filter
 // plus a separately-styled Conflicts visibility toggle; folded into one
 // list per feedback that the section should behave like every other
-// multi-select filter in the sidebar.
+// multi-select filter in the Filters Panel.
 export const CONFLICTS_MILESTONES_FILTER_VALUES = [
   'conflicts',
   ...MILESTONE_CATEGORY_GROUPS,
@@ -36,7 +36,7 @@ export const CONFLICTS_MILESTONES_FILTER_LABELS: Record<
 // Each pill's swatch matches what's already on the timeline: CONFLICT_COLOR
 // for the flat Conflicts fill, MILESTONE_CATEGORY_GROUP_COLORS for the 2
 // Milestone groups — same "honest, truthful legend" principle as every
-// other sidebar swatch.
+// other Filters Panel swatch.
 export const CONFLICTS_MILESTONES_FILTER_COLORS: Record<
   ConflictsMilestonesFilterValue,
   string

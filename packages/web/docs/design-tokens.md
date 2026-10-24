@@ -13,11 +13,11 @@ Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact
 | Token | Hex | Usage |
 |---|---|---|
 | `color-bg-base` | `#F2E9D2` | Page background (parchment) |
-| `color-bg-surface` | `#FBF6E9` | Sidebar, cards, detail panel, search results (ledger) |
+| `color-bg-surface` | `#FBF6E9` | Top Bar, Filters Panel, cards, detail panel, search results (ledger) |
 | `color-bg-surface-raised` | `#FFFFFF` | Filter chips, filter pills |
 | `color-border-subtle` | `#E0D3AC` | Default borders, dividers |
 | `color-border-strong` | `#C7B383` | Hover/active borders |
-| `color-border-control` | `#837757` | Borders of interactive controls (filter pills, search input, switch dots, zoom/drawer/collapse buttons) — 3.7:1 on `color-bg-base`, 4.4:1 on `color-bg-surface-raised`; hover steps to `color-text-secondary` |
+| `color-border-control` | `#837757` | Borders of interactive controls (filter pills, search input, switch dots, zoom, Filters and Help buttons) — 3.7:1 on `color-bg-base`, 4.4:1 on `color-bg-surface-raised`; hover steps to `color-text-secondary` |
 | `color-border-emphasis` | `#837757` | Year Axis's century tick mark (darkest of its three tick layers) |
 | `color-text-primary` | `#241A10` | Primary text (ink) |
 | `color-text-secondary` | `#6B6046` | Secondary/muted text (faded ink) |
@@ -36,7 +36,7 @@ Used as the stroke/fill color for every Conflict's range line and point-dot mark
 
 ## Occupation Domain Palette
 
-People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and source than the flat Conflict Color above, or Milestones' own category palette). Used as the stroke color on People-lane lifespan lines and the sidebar legend swatch. Re-derived from Pantheon's source hues, muted into the Ledger & Ink chroma range (most sit at or just above the OKLCH chroma floor — as desaturated as they can go before reading as gray) and ordered so every adjacent pair in the table below clears the CVD-safety checks — this is also the order the sidebar legend should render in; reordering it re-opens the adjacency question. Lightness is set so every domain color holds at least 3:1 against the parchment surface at `mark-opacity-resting`, and adjacent pairs stay separable under simulated protanopia/deuteranopia; this works because color here is never the only identity channel (label, lane, and line-vs-dot shape carry it too, same principle the Design Concept above states).
+People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and source than the flat Conflict Color above, or Milestones' own category palette). Used as the stroke color on People-lane lifespan lines and the Filters Panel swatch. Re-derived from Pantheon's source hues, muted into the Ledger & Ink chroma range (most sit at or just above the OKLCH chroma floor — as desaturated as they can go before reading as gray) and ordered so every adjacent pair in the table below clears the CVD-safety checks — this is also the order the Filters Panel should list them in; reordering it re-opens the adjacency question. Lightness is set so every domain color holds at least 3:1 against the parchment surface at `mark-opacity-resting`, and adjacent pairs stay separable under simulated protanopia/deuteranopia; this works because color here is never the only identity channel (label, lane, and line-vs-dot shape carry it too, same principle the Design Concept above states).
 
 | Domain | Token | Hex |
 |---|---|---|

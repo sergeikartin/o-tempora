@@ -1,5 +1,5 @@
-import { cleanup, fireEvent, render } from '@testing-library/react';
-import { afterEach, expect, test, vi } from 'vitest';
+import { cleanup, render } from '@testing-library/react';
+import { afterEach, expect, test } from 'vitest';
 import type { Person } from '../../shared/types';
 import { TimelineCanvas } from './TimelineCanvas';
 
@@ -41,54 +41,6 @@ const aristotle: Person = {
 
 const defaultFameScoreValues = { people: 90, conflicts: 100, milestones: 200 };
 
-test('below the mobile breakpoint, a drawer-toggle button renders and calls onToggleFilterDrawer when clicked', () => {
-  mobileMatches = true;
-  mockMatchMedia();
-  const onToggleFilterDrawer = vi.fn();
-  const { getByLabelText } = render(
-    <TimelineCanvas
-      people={[aristotle]}
-      conflicts={[]}
-      milestones={[]}
-      fameScoreValues={defaultFameScoreValues}
-      selectedDomains={[]}
-      selectedRegions={[]}
-      selectedConflictsMilestonesValues={[]}
-      onEntityClick={() => {}}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={onToggleFilterDrawer}
-    />,
-  );
-
-  const toggle = getByLabelText('Filters');
-  expect(toggle.getAttribute('aria-expanded')).toBe('false');
-
-  fireEvent.click(toggle);
-
-  expect(onToggleFilterDrawer).toHaveBeenCalledTimes(1);
-});
-
-test('above the mobile breakpoint, no drawer-toggle button renders', () => {
-  mobileMatches = false;
-  mockMatchMedia();
-  const { queryByLabelText } = render(
-    <TimelineCanvas
-      people={[aristotle]}
-      conflicts={[]}
-      milestones={[]}
-      fameScoreValues={defaultFameScoreValues}
-      selectedDomains={[]}
-      selectedRegions={[]}
-      selectedConflictsMilestonesValues={[]}
-      onEntityClick={() => {}}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
-    />,
-  );
-
-  expect(queryByLabelText('Filters')).toBeNull();
-});
-
 test('below the mobile breakpoint, Minimap does not render', () => {
   mobileMatches = true;
   mockMatchMedia();
@@ -102,8 +54,6 @@ test('below the mobile breakpoint, Minimap does not render', () => {
       selectedRegions={[]}
       selectedConflictsMilestonesValues={[]}
       onEntityClick={() => {}}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -123,8 +73,6 @@ test('above the mobile breakpoint, Minimap renders', async () => {
       selectedRegions={[]}
       selectedConflictsMilestonesValues={[]}
       onEntityClick={() => {}}
-      isFilterDrawerOpen={false}
-      onToggleFilterDrawer={() => {}}
     />,
   );
 
@@ -132,25 +80,4 @@ test('above the mobile breakpoint, Minimap renders', async () => {
   // isMinimapIdle) — findByTestId waits it out instead of assuming it's
   // there synchronously after render.
   expect(await findByTestId('minimap-track')).not.toBeNull();
-});
-
-test('the drawer-toggle button reflects isFilterDrawerOpen via aria-expanded', () => {
-  mobileMatches = true;
-  mockMatchMedia();
-  const { getByLabelText } = render(
-    <TimelineCanvas
-      people={[aristotle]}
-      conflicts={[]}
-      milestones={[]}
-      fameScoreValues={defaultFameScoreValues}
-      selectedDomains={[]}
-      selectedRegions={[]}
-      selectedConflictsMilestonesValues={[]}
-      onEntityClick={() => {}}
-      isFilterDrawerOpen={true}
-      onToggleFilterDrawer={() => {}}
-    />,
-  );
-
-  expect(getByLabelText('Filters').getAttribute('aria-expanded')).toBe('true');
 });

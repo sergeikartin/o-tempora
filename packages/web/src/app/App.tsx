@@ -46,13 +46,13 @@ import type {
   DetailPanelEntity,
   DetailPanelMember,
 } from '../widgets/detail-panel';
-import { Sidebar } from '../widgets/sidebar';
 import {
   type AddToSelectionControl,
   type ArrivalFit,
   type SelectionBandsData,
   TimelineCanvas,
 } from '../widgets/timeline-canvas';
+import { TopBar } from '../widgets/top-bar';
 import styles from './App.module.css';
 import { type LocaleDatasets, localeDatasetsPromise } from './locale-datasets';
 import { useDetailLevelDatasets } from './use-detail-level-datasets';
@@ -215,11 +215,6 @@ function AppContent({ initialDatasets }: AppProps) {
     useState<SelectedEntityRef | null>(null);
   // Set only when an Entity Link opens; TimelineCanvas fits the viewport to it.
   const [arrivalFit, setArrivalFit] = useState<ArrivalFit | null>(null);
-  // Mobile drawer state for Sidebar (only narrow viewports show its effect).
-  // Opening the detail panel closes it so the two overlays never compete.
-  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
-  // Desktop-only sidebar collapse, toggled by Sidebar's « handle.
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
 
@@ -300,7 +295,6 @@ function AppContent({ initialDatasets }: AppProps) {
     );
     openEntityLink(opened);
     setIsAdding(false);
-    setIsFilterDrawerOpen(false);
     if (years) {
       setArrivalFit({ years, entities: opened.map((member) => member.ref) });
     }
@@ -334,7 +328,6 @@ function AppContent({ initialDatasets }: AppProps) {
       if (additive || isAdding) toggleSelectionMember(member);
       else replaceSelection(member);
       setIsAdding(false);
-      setIsFilterDrawerOpen(false);
     },
     [
       replaceSelection,
@@ -357,7 +350,6 @@ function AppContent({ initialDatasets }: AppProps) {
       };
       replaceSelection({ ref, slug: result.slug });
       setIsAdding(false);
-      setIsFilterDrawerOpen(false);
       setSearchJumpTarget(ref);
       trackEvent('search_jump', { entityType: result.entityType });
     },
@@ -477,9 +469,15 @@ function AppContent({ initialDatasets }: AppProps) {
     [members],
   );
 
+  const siblingLocaleHref = switchLanguageHref(
+    pendingLinkSlugs.length > 0
+      ? pendingLinkSlugs
+      : members.map((member) => member.slug),
+  );
+
   return (
     <div className={styles.layout}>
-      <Sidebar
+      <TopBar
         selectedLevelId={selectedLevel.id}
         onSelectDetailLevel={handleSelectDetailLevel}
         loadingLevelIds={loadingLevelIds}
@@ -493,24 +491,9 @@ function AppContent({ initialDatasets }: AppProps) {
         onToggleRegion={toggleRegion}
         selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
         onToggleConflictsMilestonesValue={toggleConflictsMilestonesValue}
-        isOpen={isFilterDrawerOpen}
-        onClose={() => setIsFilterDrawerOpen(false)}
-        isCollapsed={isSidebarCollapsed}
-        onToggleCollapse={() =>
-          setIsSidebarCollapsed((collapsed) => !collapsed)
-        }
-        switchLanguageHref={switchLanguageHref(
-          pendingLinkSlugs.length > 0
-            ? pendingLinkSlugs
-            : members.map((member) => member.slug),
-        )}
         onOpenHelp={() => {
           setIsHelpOpen(true);
           trackEvent('help_open', { via: 'link' });
-        }}
-        onOpenAbout={() => {
-          setIsAboutOpen(true);
-          trackEvent('about_open');
         }}
       />
       <main className={styles.main}>
@@ -532,8 +515,6 @@ function AppContent({ initialDatasets }: AppProps) {
               selectedConflictsMilestonesValues
             }
             onEntityClick={handleEntityClick}
-            isFilterDrawerOpen={isFilterDrawerOpen}
-            onToggleFilterDrawer={() => setIsFilterDrawerOpen((open) => !open)}
             selectedEntities={selectedRefs}
             selectionBands={selectionView.bands}
             addToSelection={addToSelection}
@@ -552,7 +533,16 @@ function AppContent({ initialDatasets }: AppProps) {
         />
       </Suspense>
       <Suspense fallback={null}>
-        <HelpPanel isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
+        <HelpPanel
+          isOpen={isHelpOpen}
+          onClose={() => setIsHelpOpen(false)}
+          onOpenAbout={() => {
+            setIsHelpOpen(false);
+            setIsAboutOpen(true);
+            trackEvent('about_open');
+          }}
+          switchLanguageHref={siblingLocaleHref}
+        />
       </Suspense>
       <Suspense fallback={null}>
         <AboutPanel

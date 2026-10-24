@@ -17,7 +17,7 @@ export interface FameScoreValues {
 }
 
 // Post-filter entry counts per lane (all active filters applied), computed
-// by widgets/timeline-canvas and threaded up through app/ to the sidebar.
+// by widgets/timeline-canvas and threaded up through app/ to the Top Bar.
 export interface FilteredCounts {
   people: number;
   conflicts: number;
@@ -34,7 +34,7 @@ const DEFAULT_VALUES: FameScoreValues = {
 // `level` is the Detail Level switch's own selection, tracked explicitly
 // rather than derived from `values`: only the debug-only dev-console
 // override can move `values` off a level's preset, and the switch needn't
-// represent that. Shared by widgets/sidebar (the control) and
+// represent that. Shared by widgets/top-bar (the control) and
 // widgets/timeline-canvas (the filtering).
 export function useFameScoreFilters() {
   const [values, setValues] = useState<FameScoreValues>(DEFAULT_VALUES);

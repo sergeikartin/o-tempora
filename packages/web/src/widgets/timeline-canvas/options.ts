@@ -148,7 +148,7 @@ export function personLaneHeight(rowCount: number): number {
 // lives in shared/config because features/ can't import from widgets/.
 //
 // Derived from MILESTONE_CATEGORY_TO_GROUP (packages/shared-types) so the
-// timeline's color and the sidebar filter can't drift apart: one hex per
+// timeline's color and the Filters Panel can't drift apart: one hex per
 // MilestoneCategory, 2 distinct hexes.
 export const MILESTONE_CATEGORY_COLORS: Record<MilestoneCategory, string> =
   Object.fromEntries(
