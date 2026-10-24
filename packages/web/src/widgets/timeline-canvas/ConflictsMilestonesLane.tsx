@@ -12,7 +12,12 @@ import { motionDurationMs } from '../../shared/lib/motion';
 import { m } from '../../shared/paraglide/messages.js';
 import type { ConflictEntry, Milestone } from '../../shared/types';
 import styles from './ConflictsMilestonesLane.module.css';
-import { buildRangeAndPointLayout, type PointLayout } from './map-to-items';
+import {
+  buildRangeAndPointLayout,
+  type PointLayout,
+  pinnedLabelX,
+  type RangeLayout,
+} from './map-to-items';
 import {
   attachMarkJoin,
   ensureHaloChild,
@@ -30,16 +35,17 @@ import {
 } from './mark-shape-html';
 import {
   HIT_AREA_PADDING_PX,
+  type LabelPinningHandle,
   MILESTONES_LABEL_LINE_HEIGHT_PX,
   PERIOD_LINE_HEIGHT,
   POINT_LABEL_OFFSET_PX,
   pointHitHeight,
   pointHitY,
   pointLabelY,
-  type ZoomAnimationHandle,
   zoomAnimationCounterScaleAttr,
   zoomAnimationGroupTransformAttr,
 } from './options';
+import { usePinnedLabels } from './use-pinned-labels';
 
 interface ConflictsMilestonesLaneProps {
   conflicts: ConflictEntry[];
@@ -55,6 +61,15 @@ interface ConflictsMilestonesLaneProps {
 
 const NO_IDS: readonly string[] = [];
 
+const rangeLabelSelector = (id: string) =>
+  `.d3-range-name[data-entity-id="${id}"]`;
+// A range label's wrapped lines each carry their own x.
+const writeRangeLabelX = (label: SVGTextElement, x: number) => {
+  label.setAttribute('x', `${x}`);
+  for (const line of label.querySelectorAll('tspan'))
+    line.setAttribute('x', `${x}`);
+};
+
 // Conflicts and Milestones share one below-marker row-stacking pass, so a
 // Conflict and a Milestone of similar fame and time can share a row. That is
 // meaningful because both use one 0-100 fame scale (the blended
@@ -69,7 +84,7 @@ const NO_IDS: readonly string[] = [];
 // so color, not shape, tells a Conflict from a Milestone.
 // memo: see PeopleLane; none of this component's props change on scroll ticks.
 const ConflictsMilestonesLaneImpl = forwardRef<
-  ZoomAnimationHandle,
+  LabelPinningHandle,
   ConflictsMilestonesLaneProps
 >(function ConflictsMilestonesLane(
   { conflicts, milestones, xScale, eventsRowFor, selectedIds = NO_IDS },
@@ -90,6 +105,14 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     [conflicts, milestones, xScale, eventsRowFor],
   );
   const totalWidth = xScale.range()[1] ?? 0;
+
+  const { pinLabels, setItems: setPinnedLabelItems } =
+    usePinnedLabels<RangeLayout>({
+      svgRef,
+      labelSelector: rangeLabelSelector,
+      pinnedX: pinnedLabelX,
+      writeX: writeRangeLabelX,
+    });
 
   // Frozen at mount, whole `{ __html }` object included; see PeopleLane's
   // initialPeopleHtmlProp.
@@ -251,7 +274,10 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       .transition()
       .duration(durationMs)
       .attr('y', (d) => pointLabelY(d.markerY, d.lines.length));
-  }, [rangeLayout, pointLayout]);
+
+    // The join reset every range label to its bar's start.
+    setPinnedLabelItems(rangeLayout);
+  }, [rangeLayout, pointLayout, setPinnedLabelItems]);
 
   // A DOM class toggle independent of the joins (see PeopleLane). The halo line
   // + real .d3-line (range), halo circle + real .d3-dot (point), and
@@ -295,6 +321,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
   useImperativeHandle(
     ref,
     () => ({
+      pinLabelsToViewport: pinLabels,
       beginZoomAnimation() {
         if (!svgRef.current) return;
         d3.select(svgRef.current)
@@ -316,7 +343,7 @@ const ConflictsMilestonesLaneImpl = forwardRef<
         );
       },
     }),
-    [],
+    [pinLabels],
   );
 
   return (

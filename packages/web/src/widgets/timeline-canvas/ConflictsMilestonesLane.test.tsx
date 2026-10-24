@@ -1,10 +1,15 @@
-import { cleanup, render } from '@testing-library/react';
+import { act, cleanup, render } from '@testing-library/react';
+import { createRef } from 'react';
 import { afterEach, expect, test } from 'vitest';
 import { CONFLICT_COLOR } from '../../shared/config';
 import type { Conflict, ConflictEvent, Milestone } from '../../shared/types';
 import { ConflictsMilestonesLane } from './ConflictsMilestonesLane';
 import { computeRowAssignment } from './map-to-items';
-import { buildXScale, MILESTONE_CATEGORY_COLORS } from './options';
+import {
+  buildXScale,
+  type LabelPinningHandle,
+  MILESTONE_CATEGORY_COLORS,
+} from './options';
 
 afterEach(cleanup);
 
@@ -515,4 +520,40 @@ test('relative row order between a Conflict and a Milestone is preserved when a 
     ?.closest('.d3-point-group')
     ?.getAttribute('data-row');
   expect(Number(midRow)).toBeLessThan(Number(obscureRow));
+});
+
+test('a range label whose bar began left of the viewport is pinned to the viewport edge, then restored', () => {
+  const { scale } = buildXScale(2);
+  const longWar: Conflict = {
+    ...koreanWar,
+    id: 'Q-long',
+    name: 'Hundred Years War of Succession',
+    period: { start: { year: 1000 }, end: { year: 1900 } },
+  };
+  const conflicts = [longWar];
+  const ref = createRef<LabelPinningHandle>();
+  const { container } = render(
+    <ConflictsMilestonesLane
+      ref={ref}
+      conflicts={conflicts}
+      milestones={[]}
+      xScale={scale}
+      eventsRowFor={computeRowAssignment([], conflicts, []).eventsRowFor}
+    />,
+  );
+  const label = container.querySelector('.d3-range-name');
+  const startX = Number(label?.getAttribute('x'));
+  const lineXs = () =>
+    Array.from(label?.querySelectorAll('tspan') ?? []).map((line) =>
+      Number(line.getAttribute('x')),
+    );
+
+  act(() => ref.current?.pinLabelsToViewport(startX + 20));
+  expect(Number(label?.getAttribute('x'))).toBeGreaterThan(startX + 20);
+  const pinnedX = Number(label?.getAttribute('x'));
+  expect(lineXs().every((x) => x === pinnedX)).toBe(true);
+
+  act(() => ref.current?.pinLabelsToViewport(0));
+  expect(Number(label?.getAttribute('x'))).toBe(startX);
+  expect(lineXs().every((x) => x === startX)).toBe(true);
 });

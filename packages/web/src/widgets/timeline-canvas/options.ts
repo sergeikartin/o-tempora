@@ -454,8 +454,8 @@ export interface ZoomAnimationHandle {
   beginZoomAnimation?: () => void;
 }
 
-/** The People lane's handle: the zoom hooks plus label pinning, driven from the scroll position. */
-export interface PeopleLaneHandle extends ZoomAnimationHandle {
+/** A lane's handle when its period labels pin to the viewport: the zoom hooks plus label pinning, driven from the scroll position. */
+export interface LabelPinningHandle extends ZoomAnimationHandle {
   pinLabelsToViewport: (scrollLeft: number) => void;
 }
 

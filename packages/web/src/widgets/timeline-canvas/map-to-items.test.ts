@@ -274,7 +274,7 @@ test('compactRows keeps two items that share the same static row in the same com
 });
 
 const longLived = {
-  name: 'Aristotle',
+  labelWidthPx: 60,
   x1: 100,
   x2: 500,
   labelRoomX2: Number.POSITIVE_INFINITY,

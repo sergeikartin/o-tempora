@@ -69,8 +69,8 @@ import {
   inertiaStep,
   keyPanStepPx,
   LANE_CAPTION_GUTTER_PX,
+  type LabelPinningHandle,
   MIN_YEAR,
-  type PeopleLaneHandle,
   pinchCenterYear,
   pinchPixelsPerYear,
   QUARTER_CENTURY_STEP_YEARS,
@@ -227,8 +227,8 @@ export function TimelineCanvas({
   // Per-tick targets for the zoom animation's single rAF driver (zoom()): one
   // group transform per lane/axis, not per-mark recompute (options.ts's
   // ZoomAnimationTransform). zebraLayerRef is rendered here, so a plain ref.
-  const peopleLaneAnimRef = useRef<PeopleLaneHandle>(null);
-  const conflictsMilestonesLaneAnimRef = useRef<ZoomAnimationHandle>(null);
+  const peopleLaneAnimRef = useRef<LabelPinningHandle>(null);
+  const conflictsMilestonesLaneAnimRef = useRef<LabelPinningHandle>(null);
   // The one Year Axis, between People and Conflicts+Milestones. Each lane
   // scrolls internally, so no other copy needs to stay visible.
   const yearAxisMiddleAnimRef = useRef<ZoomAnimationHandle>(null);
@@ -366,6 +366,7 @@ export function TimelineCanvas({
   const mirrorLaneScrollLeft = useCallback((newScrollLeft: number) => {
     if (peopleLaneRef.current) peopleLaneRef.current.scrollLeft = newScrollLeft;
     peopleLaneAnimRef.current?.pinLabelsToViewport(newScrollLeft);
+    conflictsMilestonesLaneAnimRef.current?.pinLabelsToViewport(newScrollLeft);
     if (conflictsMilestonesLaneRef.current)
       conflictsMilestonesLaneRef.current.scrollLeft = newScrollLeft;
   }, []);

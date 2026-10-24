@@ -3,7 +3,7 @@ import { createRef } from 'react';
 import { afterEach, expect, test } from 'vitest';
 import type { Person } from '../../shared/types';
 import { computeRowAssignment } from './map-to-items';
-import { buildXScale, type PeopleLaneHandle } from './options';
+import { buildXScale, type LabelPinningHandle } from './options';
 import { PeopleLane } from './PeopleLane';
 
 afterEach(cleanup);
@@ -279,7 +279,7 @@ test('relative row order between two people is preserved when a third, different
 test('a label whose bar began left of the viewport is pinned to the viewport edge, then restored', () => {
   const { scale } = buildXScale(2);
   const people = [aristotle];
-  const ref = createRef<PeopleLaneHandle>();
+  const ref = createRef<LabelPinningHandle>();
   const { container } = render(
     <PeopleLane
       ref={ref}

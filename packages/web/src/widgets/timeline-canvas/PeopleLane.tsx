@@ -2,7 +2,6 @@ import * as d3 from 'd3';
 import {
   forwardRef,
   memo,
-  useCallback,
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
@@ -27,13 +26,14 @@ import { PERSON_MARK_SHAPE } from './mark-shape';
 import { renderPeopleMarkupHtml } from './mark-shape-html';
 import {
   HIT_AREA_PADDING_PX,
+  type LabelPinningHandle,
   PERIOD_LINE_HEIGHT,
-  type PeopleLaneHandle,
   personLaneHeight,
   zoomAnimationCounterScaleAttr,
   zoomAnimationGroupTransformAttr,
 } from './options';
 import styles from './PeopleLane.module.css';
+import { usePinnedLabels } from './use-pinned-labels';
 
 interface PeopleLaneProps {
   people: Person[];
@@ -50,13 +50,17 @@ interface PeopleLaneProps {
 
 const NO_IDS: readonly string[] = [];
 
+const personLabelSelector = (id: string) => `.d3-name[data-entity-id="${id}"]`;
+const writeLabelX = (label: SVGTextElement, x: number) =>
+  label.setAttribute('x', `${x}`);
+
 // A person's lifespan renders as a rounded-cap line with the name label
 // left-aligned just above it, colored by occupation domain. Overlapping people
 // stack into rows; a label wider than its line claims the row via pixelInterval.
 // memo: TimelineCanvas re-renders every rAF tick while scrolling, but none of
 // these props change from that, and the D3 join is gated on [layout,
 // totalHeight], so skipping the render body avoids per-frame work.
-const PeopleLaneImpl = forwardRef<PeopleLaneHandle, PeopleLaneProps>(
+const PeopleLaneImpl = forwardRef<LabelPinningHandle, PeopleLaneProps>(
   function PeopleLane(
     { people, xScale, personRowFor, selectedIds = NO_IDS },
     ref,
@@ -71,12 +75,6 @@ const PeopleLaneImpl = forwardRef<PeopleLaneHandle, PeopleLaneProps>(
       SVGSVGElement,
       unknown
     > | null>(null);
-
-    // Labels currently shifted off their bar's start to stay in view (id -> x),
-    // so a pan only touches labels whose pinned position changed.
-    const pinnedLabelXByIdRef = useRef(new Map<string, number>());
-    const layoutRef = useRef<PersonLayout[]>([]);
-    const scrollLeftRef = useRef(0);
 
     const items = useMemo(() => mapPeople(people), [people]);
     const rowOfPerson = useMemo(
@@ -111,31 +109,13 @@ const PeopleLaneImpl = forwardRef<PeopleLaneHandle, PeopleLaneProps>(
     // wrong pre-D3 value caused layout shift.
     const [initialSvgHeightPx] = useState(() => totalHeight);
 
-    const pinLabels = useCallback((scrollLeft: number) => {
-      scrollLeftRef.current = scrollLeft;
-      const svg = svgRef.current;
-      if (!svg) return;
-      const pinned = pinnedLabelXByIdRef.current;
-      const nextPinned = new Map<string, number>();
-      const labelOf = (id: string) =>
-        svg.querySelector<SVGTextElement>(`.d3-name[data-entity-id="${id}"]`);
-      for (const item of layoutRef.current) {
-        const x = pinnedLabelX(item, scrollLeft);
-        if (x === item.x1) continue;
-        nextPinned.set(item.id, x);
-        if (pinned.get(item.id) !== x)
-          labelOf(item.id)?.setAttribute('x', `${x}`);
-      }
-      if (pinned.size > 0) {
-        const x1ById = new Map(layoutRef.current.map((i) => [i.id, i.x1]));
-        for (const id of pinned.keys()) {
-          const x1 = x1ById.get(id);
-          if (!nextPinned.has(id) && x1 !== undefined)
-            labelOf(id)?.setAttribute('x', `${x1}`);
-        }
-      }
-      pinnedLabelXByIdRef.current = nextPinned;
-    }, []);
+    const { pinLabels, setItems: setPinnedLabelItems } =
+      usePinnedLabels<PersonLayout>({
+        svgRef,
+        labelSelector: personLabelSelector,
+        pinnedX: pinnedLabelX,
+        writeX: writeLabelX,
+      });
 
     // D3 owns the DOM inside <g class="people">: one <g class="d3-person"> per
     // person with its lifespan line and name label. Literal marker classes drive
@@ -156,7 +136,6 @@ const PeopleLaneImpl = forwardRef<PeopleLaneHandle, PeopleLaneProps>(
       svg.select('g.people').attr('transform', null).style('will-change', null);
       svg.selectAll('.d3-name-zoom').attr('transform', null);
       zoomNamesSelectionRef.current = null;
-      layoutRef.current = layout;
 
       // Row 0 sits at the bottom of the svg (personLabelYForRow/
       // personLineCenterYForRow compute from rowCount) and .bottomAlign bottom-aligns
@@ -197,9 +176,8 @@ const PeopleLaneImpl = forwardRef<PeopleLaneHandle, PeopleLaneProps>(
         },
       );
       // The join reset every label to its bar's start.
-      pinnedLabelXByIdRef.current = new Map();
-      pinLabels(scrollLeftRef.current);
-    }, [layout, totalHeight, pinLabels]);
+      setPinnedLabelItems(layout);
+    }, [layout, totalHeight, setPinnedLabelItems]);
 
     // A DOM class toggle independent of the join: it re-scans marks by the
     // data-entity-id the click listener reads whenever the selection or mark set

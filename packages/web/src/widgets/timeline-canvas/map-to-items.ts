@@ -107,6 +107,7 @@ export interface PersonLayout {
   x1: number;
   x2: number;
   hitX2: number;
+  labelWidthPx: number;
   // Where the next bar in this row starts (Infinity for the last): the room a
   // pinned label may extend into once its own bar has ended.
   labelRoomX2: number;
@@ -129,6 +130,7 @@ export function buildPersonLayout(
     const row = rowOfPerson.get(item.id) ?? 0;
     const x1 = xScale(item.startYear);
     const x2 = Math.max(xScale(item.endYear), x1 + 2);
+    const labelWidthPx = estimateLabelWidthPx(item.name);
     return {
       id: item.id,
       name: item.name,
@@ -137,7 +139,8 @@ export function buildPersonLayout(
       // Label is left-aligned at x1, so it never extends left of the
       // line — only right, past x2 for a short-lived person with a
       // long name.
-      hitX2: Math.max(x2, x1 + estimateLabelWidthPx(item.name)),
+      hitX2: Math.max(x2, x1 + labelWidthPx),
+      labelWidthPx,
       labelRoomX2: Number.POSITIVE_INFINITY,
       labelY: personLabelYForRow(row, rowCount),
       lineY: personLineCenterYForRow(row, rowCount),
@@ -161,19 +164,16 @@ export function buildPersonLayout(
 }
 
 /**
- * Where a person's label sits at `scrollLeft`. A label whose bar began left of
+ * Where a period's label sits at `scrollLeft`. A label whose bar began left of
  * the viewport slides right to stay readable. It leaves with the bar's end
  * (`x2`) and stops short of the next bar in its row (`labelRoomX2`), so it can
  * never float free of its bar or run into the next label.
  */
 export function pinnedLabelX(
-  item: Pick<PersonLayout, 'name' | 'x1' | 'x2' | 'labelRoomX2'>,
+  item: Pick<PersonLayout, 'labelWidthPx' | 'x1' | 'x2' | 'labelRoomX2'>,
   scrollLeft: number,
 ): number {
-  const lastX = Math.min(
-    item.x2,
-    item.labelRoomX2 - estimateLabelWidthPx(item.name),
-  );
+  const lastX = Math.min(item.x2, item.labelRoomX2 - item.labelWidthPx);
   return Math.max(item.x1, Math.min(scrollLeft + PINNED_LABEL_INSET_PX, lastX));
 }
 
@@ -310,6 +310,10 @@ export interface RangeLayout {
   x2: number;
   hitX1: number;
   hitX2: number;
+  labelWidthPx: number;
+  // Where the next mark in this row starts (Infinity for the last); see
+  // PersonLayout.
+  labelRoomX2: number;
   row: number;
   markerY: number;
   labelY: number;
@@ -396,6 +400,8 @@ export function buildRangeAndPointLayout(
         x2: xScale(item.endYear),
         hitX1,
         hitX2,
+        labelWidthPx: rangeLabelWidthPx(item.name),
+        labelRoomX2: Number.POSITIVE_INFINITY,
         row,
         markerY: markerYs[row] ?? fallbackMarkerY,
         labelY: labelStarts[row] ?? fallbackLabelY,
@@ -416,6 +422,8 @@ export function buildRangeAndPointLayout(
         x2: xScale(item.endYear),
         hitX1,
         hitX2,
+        labelWidthPx: rangeLabelWidthPx(item.name),
+        labelRoomX2: Number.POSITIVE_INFINITY,
         row,
         markerY: markerYs[row] ?? fallbackMarkerY,
         labelY: labelStarts[row] ?? fallbackLabelY,
@@ -461,7 +469,26 @@ export function buildRangeAndPointLayout(
     });
   const pointLayout = [...conflictPoints, ...milestonePoints];
 
+  // A range label may extend up to the next mark of either kind in its row.
+  const rowMarkStarts = new Map<number, number[]>();
+  for (const { row, hitX1 } of [...rangeLayout, ...pointLayout]) {
+    const starts = rowMarkStarts.get(row) ?? [];
+    starts.push(hitX1);
+    rowMarkStarts.set(row, starts);
+  }
+  for (const starts of rowMarkStarts.values()) starts.sort((a, b) => a - b);
+  for (const range of rangeLayout) {
+    range.labelRoomX2 =
+      rowMarkStarts.get(range.row)?.find((start) => start > range.hitX1) ??
+      Number.POSITIVE_INFINITY;
+  }
+
   return { rangeLayout, pointLayout, totalHeight };
+}
+
+// A wrapped label is as wide as its longest line.
+function rangeLabelWidthPx(name: string): number {
+  return Math.max(...wrapMarkLabelLines(name).map(estimateLabelWidthPx));
 }
 
 // Narrows a static row map (each entry's permanent TimelineEntry.row, computed
