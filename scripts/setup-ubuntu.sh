@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # Sets up a clean Ubuntu for developing o-tempora with Claude Code: system
 # packages, Node, the repo's dependencies and the Playwright Chromium that
-# `npm run a11y` and `npm run shot` need. Idempotent; run from anywhere.
+# `npm run a11y` and `npm run shot` need. Node comes from nvm. Idempotent; run from anywhere.
 set -euo pipefail
 
 NODE_MIN="22.21.0"
 NODE_MAJOR="22"
+NVM_VERSION="v0.40.3"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 log() { printf '\n==> %s\n' "$*"; }
@@ -29,14 +30,21 @@ case ":$PATH:" in
   *) echo "note: add \$HOME/.local/bin to PATH so fd and bat resolve" ;;
 esac
 
-log "Node >= $NODE_MIN"
-if command -v node >/dev/null && version_gte "$(node -p 'process.versions.node')" "$NODE_MIN"; then
-  echo "node $(node -v) is fine"
-else
-  curl -fsSL "https://deb.nodesource.com/setup_${NODE_MAJOR}.x" | sudo -E bash -
-  sudo apt-get install -y nodejs
-  version_gte "$(node -p 'process.versions.node')" "$NODE_MIN" \
-    || { echo "error: installed node $(node -v) is older than $NODE_MIN" >&2; exit 1; }
+log "Node >= $NODE_MIN (via nvm)"
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+if [ ! -s "$NVM_DIR/nvm.sh" ]; then
+  curl -fsSo- "https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh" | PROFILE=/dev/null bash
+fi
+# nvm.sh reads unset variables, so it can't be sourced under `set -u`.
+set +u
+. "$NVM_DIR/nvm.sh"
+nvm install "$NODE_MAJOR"
+nvm alias default "$NODE_MAJOR"
+set -u
+version_gte "$(node -p 'process.versions.node')" "$NODE_MIN" \
+  || { echo "error: installed node $(node -v) is older than $NODE_MIN" >&2; exit 1; }
+if ! grep -qs 'NVM_DIR' "$HOME/.bashrc"; then
+  printf '\nexport NVM_DIR="$HOME/.nvm"\n[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"\n' >> "$HOME/.bashrc"
 fi
 
 log "Repo dependencies (also installs the husky hooks)"
