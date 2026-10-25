@@ -97,7 +97,7 @@ Which of the app's two languages — English (base, default) or Russian — a pa
 _Avoid_: language build, language mode, translation (bare)
 
 **Field Fallback**:
-The per-field rule the pipeline applies at Output when building a lane's Russian dataset files (`people.detail<N>.ru.json`, siblings of the English `people.detail<N>.json`): use the Russian `name`/`tagline`/`description` if the Wikidata/`ru.wikipedia.org` fetch resolved one, else the English value (`write-datasets.ts`'s `resolveField`/`resolveOptionalField`). Baked into the Russian file — `packages/web` never resolves a fallback. Row *inclusion* is decided earlier, once, off the English fetch results, so both language files always share the identical entity set; Field Fallback only changes which language's text fills an included row.
+The per-field rule the pipeline applies at Output when building a lane's Russian dataset files (`people.detail<N>.ru.json`, siblings of the English `people.detail<N>.json`): use the Russian `name`/`tagline`/`description` if the Wikidata/`ru.wikipedia.org` fetch resolved one, else the English value (`write-datasets.ts`'s `resolveField`/`resolveOptionalField`). Baked into the Russian file — `packages/web` never resolves a fallback. Row *inclusion* is decided earlier, once, off the English fetch results, so both language files always share the identical entity set; Field Fallback only changes which language's text fills an included row. A **Profile** falls back as a whole: where a language has no Profile of its own, its file carries the English one.
 _Avoid_: translation fallback, default language, English fallback (as the primary term — the mechanism is per-field and general)
 
 **Detail Level**:
@@ -123,6 +123,22 @@ _Avoid_: deep link, permalink, share link, shareable state
 **Curiosity**:
 One hand-picked overlap the **Landing Page** shows: a sentence stating the coincidence, the lives, conflicts and milestones involved drawn as marks over a short stretch of axis, and an **Entity Link** to each of them the timeline can show. Every date is checked against the published dataset to the month, so a Curiosity never claims more than the data holds.
 _Avoid_: starting point, example, demo, tour (curated narrated tours are out of scope), fun fact
+
+**Profile**:
+The generated, memory-oriented piece for one Person, Conflict, ConflictEvent or Milestone: an overview, a few **Key Moments**, up to three **Deep Facts**, and its **Connections**. Shown in the detail panel in place of the **Description** when the entity has one; entities without a Profile keep the Description. Written offline by an LLM from one prompt shared by all three lanes, never fetched live.
+_Avoid_: Description (a different field — Wikipedia's lead paragraph), bio, extract, summary, page
+
+**Key Moment**:
+One story inside a **Profile**: a date, the essence in a few words, and a short paragraph. Named apart from **Milestone**, which is a whole lane.
+_Avoid_: milestone (bare — a lane), highlight, chapter
+
+**Deep Fact**:
+One little-known, memorable detail in a **Profile**, kept to what is documented; a legend is marked as one. Written to be quiz-grade — obscure, with one hook that makes it stick — so a visitor remembers the entity; the product itself never quizzes them.
+_Avoid_: fun fact, trivia, Curiosity (a different thing — a Landing Page overlap)
+
+**Connection**:
+One reference from a **Profile** to another entity — a Person, Conflict, ConflictEvent or Milestone — with a one-sentence reason it matters. Listed in its own section of the Profile and tappable to open that entity. One-directional: it appears only on the Profile that lists it, so a Connection can be asymmetric. Hidden only when its target is absent from the dataset. A target below the current **Detail Level** is still listed, marked with the level it appears at; opening it raises the Detail Level like an **Entity Link**.
+_Avoid_: link (bare — ambiguous with **Entity Link**), relation, related, reference
 
 **Help**:
 The explanation a visitor can open at any time from inside the timeline, for those who skipped the **Landing Page** or are returning. Explains how to read the timeline in three plain points and what the marks mean, and hosts the links to About & data and the language switch. Always opened by the visitor — never appears on its own, and remembers nothing about whether it was seen.
