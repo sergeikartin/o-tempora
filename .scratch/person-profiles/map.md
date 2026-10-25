@@ -29,11 +29,11 @@ Settled in charting:
 - [Profile panel prototype](issues/01-profile-panel-prototype.md): approved and committed (`72ddbd0`). The drawer widens to 440px with the name and tagline pinned; overview, Key Moments, Deep Facts and Connections sections; a below-level Connection carries the Detail Level pips and "Appears at <level>" and opening it raises the Detail Level. Docked-panel idea still open.
 - [Shipped Profile data shape](issues/05-shipped-data-shape.md): one static file per entity per Locale (`profiles/<locale>/<slug>.json`) fetched at runtime when the panel opens; Output marks rows `hasProfile`; `ru` copies `en` until Russian Profiles exist; Connections store `{slug, reason, name, lane, detailLevel}`; failed fetch falls back to the Description; `**bold**` rendered as elements.
 - Selection: one entity (owner chose; spec "Selection becomes one entity"). Multi-select, bands and the Entity Link's repeated `?e=` go; the Landing Page call-to-action is reopened.
+- [Landing Page without a multi-Selection](issues/09-landing-without-multi-selection.md): a Curiosity stays a hand-picked coincidence but is Profile-led; its button opens a `lead` entity with a landing-only `#moment-<n>` / `#fact-<n>` fragment that scrolls to and accents that item; per-mark links and `landing_mark_open` go; Connections never depend on Curiosities.
 - Backlinks: none — a Connection is one-directional and appears only on the Profile that lists it, so Connections can be asymmetric.
 
 ## Not yet specified
 
-- The Landing Page once a Selection is one entity (spec ticket 8): a Curiosity's button opens several marks today.
 - Rollout beyond Legendary and beyond the 30-entity sample.
 - Russian Profiles: wanted at rollout, deferred for now. Development, prototype and the first batch are English-only; Russian files keep carrying the English Profile whole.
 - The ADR set and living-doc updates that retiring the Selection comparison forces (root ADR for Selection-as-set, web ADRs for URL/Entity Link and chrome).
