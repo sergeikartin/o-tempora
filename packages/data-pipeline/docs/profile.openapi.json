@@ -1,0 +1,91 @@
+{
+  "type": "object",
+  "description": "What a profile writer returns: bounds and enums mirror parseModelProfile.",
+  "required": [
+    "subject",
+    "type",
+    "wikipedia_url",
+    "overview",
+    "key_moments",
+    "deep_facts",
+    "connections"
+  ],
+  "properties": {
+    "subject": { "type": "string" },
+    "type": { "type": "string" },
+    "wikipedia_url": { "type": "string" },
+    "overview": { "type": "string" },
+    "key_moments": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["date", "title", "text", "claims", "source"],
+        "properties": {
+          "date": { "type": "string" },
+          "title": { "type": "string" },
+          "text": { "type": "string" },
+          "claims": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "source": {
+            "type": "string",
+            "description": "An en.wikipedia.org article URL, or \"not_on_wikipedia\".",
+            "pattern": "^(not_on_wikipedia|https://en\\.wikipedia\\.org/wiki/\\S+)$"
+          }
+        }
+      }
+    },
+    "deep_facts": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "text",
+          "type",
+          "is_legend",
+          "confidence",
+          "claims",
+          "source"
+        ],
+        "properties": {
+          "text": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["hidden_story", "unique_detail"]
+          },
+          "is_legend": { "type": "boolean" },
+          "confidence": { "type": "string", "enum": ["high", "medium"] },
+          "claims": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "source": {
+            "type": "string",
+            "description": "An en.wikipedia.org article URL, or \"not_on_wikipedia\".",
+            "pattern": "^(not_on_wikipedia|https://en\\.wikipedia\\.org/wiki/\\S+)$"
+          }
+        }
+      }
+    },
+    "connections": {
+      "type": "array",
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "required": ["name", "wikipedia_url", "connection", "importance"],
+        "properties": {
+          "name": { "type": "string" },
+          "wikipedia_url": { "type": "string" },
+          "connection": { "type": "string" },
+          "importance": { "type": "string", "enum": ["high", "medium"] }
+        }
+      }
+    }
+  }
+}
