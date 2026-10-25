@@ -39,7 +39,7 @@ Each page carries a visible link to the sibling locale's same page kind — the 
 
 ## CI
 
-`.github/workflows/ci.yml` runs on every push to `dev` and every PR into `main`/`dev`: typecheck + test for `data-pipeline`, and lint + `lint:boundaries` + typecheck + test + build for `web`. Branch protection on `main` requires both jobs to pass before merge.
+`.github/workflows/ci.yml` runs on every push to `dev` and every PR into `main`/`dev`: lint for `shared-types`, lint + typecheck + test for `data-pipeline`, and lint + `lint:boundaries` + typecheck + test + build for `web`. Branch protection on `main` requires all jobs to pass before merge.
 
 ## Deploying
 

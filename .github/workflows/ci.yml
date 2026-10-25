@@ -20,8 +20,20 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run lint --workspace packages/data-pipeline
       - run: npm run typecheck --workspace packages/data-pipeline
       - run: npm run test --workspace packages/data-pipeline
+
+  shared-types:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint --workspace packages/shared-types
 
   web:
     runs-on: ubuntu-latest

@@ -2,7 +2,7 @@
 
 The published dataset: `data-pipeline` writes it, `web` reads it. No source of its own — `src/index.ts` is hand-written TypeScript (types/constants), `src/data/*.json` is 100% pipeline-generated and never hand-edited (`code-conventions.md`).
 
-- No build step: `package.json`'s `main`/`types` point straight at `src/index.ts`, consumed as source by the other two workspaces via Vite/tsc's own resolution — no compile, no test suite here.
+- No build step: `package.json`'s `main`/`types` point straight at `src/index.ts`, consumed as source by the other two workspaces via Vite/tsc's own resolution — no compile, no test suite here. `npm run lint --workspace packages/shared-types` (Biome, `src/data/` excluded) is the only check; the pre-commit hook runs it on staged files.
 
 ## `src/index.ts`
 
