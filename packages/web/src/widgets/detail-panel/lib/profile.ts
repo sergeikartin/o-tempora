@@ -1,30 +1,8 @@
-// A Profile (CONTEXT.md) as the panel renders it. Key Moment and Deep Fact
-// text carries `**bold**` runs; claims, sources and review metadata are
-// pipeline-side and never reach the panel.
-export interface ProfileKeyMoment {
-  date: string;
-  title: string;
-  text: string;
-}
+import type { Profile } from '@o-tempora/shared-types';
 
-export interface ProfileDeepFact {
-  text: string;
-  isLegend: boolean;
-}
-
-// Names the target by slug; the panel's caller resolves it against the loaded
-// datasets and drops it when the target is absent.
-export interface ProfileConnection {
-  slug: string;
-  reason: string;
-}
-
-export interface Profile {
-  overview: string;
-  keyMoments: readonly ProfileKeyMoment[];
-  deepFacts: readonly ProfileDeepFact[];
-  connections: readonly ProfileConnection[];
-}
+// What the panel renders of a Profile; its Connections are resolved against the
+// loaded datasets into ResolvedConnection rows instead.
+export type ProfileBody = Omit<Profile, 'connections'>;
 
 // A Connection target resolved against the datasets, ready to list.
 export interface ResolvedConnection {

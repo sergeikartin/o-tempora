@@ -312,6 +312,18 @@ export function buildMilestones(
   return { milestones, report: { dropped: rows.length - milestones.length, reasons } };
 }
 
+// The Detail Level whose delta file an entity ships in: the first level whose
+// floor its Fame Score reaches, else the loosest. See splitByDetailLevel.
+export function detailLevelOf(
+  fameScore: number,
+  levelFloors: readonly [number, number, number, number],
+): 1 | 2 | 3 | 4 {
+  if (fameScore >= levelFloors[0]) return 1;
+  if (fameScore >= levelFloors[1]) return 2;
+  if (fameScore >= levelFloors[2]) return 3;
+  return 4;
+}
+
 export interface DetailLevelDeltas<T> {
   detail1: T[];
   detail2: T[];
@@ -332,16 +344,13 @@ export function splitByDetailLevel<T extends { fameScore: number }>(
   entries: T[],
   levelFloors: readonly [number, number, number, number],
 ): DetailLevelDeltas<T> {
-  const [level1Floor, level2Floor, level3Floor] = levelFloors;
   const detail1: T[] = [];
   const detail2: T[] = [];
   const detail3: T[] = [];
   const detail4: T[] = [];
+  const deltas = [detail1, detail2, detail3, detail4];
   for (const entry of entries) {
-    if (entry.fameScore >= level1Floor) detail1.push(entry);
-    else if (entry.fameScore >= level2Floor) detail2.push(entry);
-    else if (entry.fameScore >= level3Floor) detail3.push(entry);
-    else detail4.push(entry);
+    deltas[detailLevelOf(entry.fameScore, levelFloors) - 1]?.push(entry);
   }
   return { detail1, detail2, detail3, detail4 };
 }

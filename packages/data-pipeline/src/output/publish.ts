@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readdir } from "node:fs/promises";
+import { copyFile, mkdir, readdir, rm } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -17,15 +17,28 @@ const DEST_DIR = path.join(
   "data",
 );
 
+// Copies `sourceDir` into `destDir`, returning the published paths relative to
+// `destDir`. A subdirectory (`profiles/`) replaces its counterpart wholesale,
+// so a file dropped from the source does not linger in the published data.
 export async function publishFiles(sourceDir: string, destDir: string): Promise<string[]> {
-  const fileNames = await readdir(sourceDir);
+  const entries = await readdir(sourceDir, { withFileTypes: true });
   await mkdir(destDir, { recursive: true });
 
-  for (const fileName of fileNames) {
-    await copyFile(path.join(sourceDir, fileName), path.join(destDir, fileName));
+  const published: string[] = [];
+  for (const entry of entries) {
+    const source = path.join(sourceDir, entry.name);
+    const dest = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      await rm(dest, { recursive: true, force: true });
+      const nested = await publishFiles(source, dest);
+      published.push(...nested.map((nestedPath) => path.posix.join(entry.name, nestedPath)));
+    } else {
+      await copyFile(source, dest);
+      published.push(entry.name);
+    }
   }
 
-  return fileNames;
+  return published;
 }
 
 async function main(): Promise<void> {

@@ -35,3 +35,21 @@ test("publishFiles creates the destination directory if it doesn't already exist
 
   await rm(root, { recursive: true, force: true });
 });
+
+test("publishFiles copies nested folders and replaces them wholesale", async () => {
+  const root = await mkdtemp(path.join(tmpdir(), "publish-test-"));
+  const sourceDir = path.join(root, "source");
+  const destDir = path.join(root, "dest");
+  await mkdir(path.join(sourceDir, "profiles", "en"), { recursive: true });
+  await writeFile(path.join(sourceDir, "profiles", "en", "newton.json"), "{}");
+  await mkdir(path.join(destDir, "profiles", "en"), { recursive: true });
+  await writeFile(path.join(destDir, "profiles", "en", "stale.json"), "{}");
+
+  const published = await publishFiles(sourceDir, destDir);
+
+  assert.deepEqual(published, ["profiles/en/newton.json"]);
+  assert.equal(await readFile(path.join(destDir, "profiles", "en", "newton.json"), "utf8"), "{}");
+  await assert.rejects(readFile(path.join(destDir, "profiles", "en", "stale.json"), "utf8"));
+
+  await rm(root, { recursive: true, force: true });
+});

@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from "@o-tempora/shared-types";
 import { transformPeople, transformConflicts, transformMilestones } from "../transform/index.js";
+import { readRawProfiles, shipProfiles, withProfileFlags, writeProfiles, type ProfileTarget } from "./profiles.js";
 import { assignConflictsMilestonesRows, assignPersonRows } from "./row-assignment.js";
 import { assignSlugs } from "./slugs.js";
 import {
@@ -17,6 +18,7 @@ import {
 // inspectable step from publishing it for consumers to read. `publish.ts`
 // copies this directory's contents into packages/shared-types/src/data/.
 const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "output");
+const RAW_PROFILES_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw", "profiles");
 
 function logReport(label: string, kept: number, report: DropReport): void {
   console.log(`${label}: kept ${kept}, dropped ${report.dropped}`);
@@ -98,9 +100,22 @@ async function main(): Promise<void> {
   const milestones = withSlugs(milestonesEn, slugOf);
   const milestonesRu = withSlugs(milestonesRuBuilt, slugOf);
 
+  // Targets come from the English build: a Connection resolves against the
+  // same entity set in either locale. A Person is joined by the Wikidata QID
+  // of its Pantheon row; Conflicts and Milestones already use QIDs as ids.
+  const personQidOf = new Map(peopleRows.map((row) => [row.id, row.wdId]));
+  const profileTargets: ProfileTarget[] = [
+    ...people.map((entry) => ({ ...entry, qid: personQidOf.get(entry.id) ?? entry.id, lane: "people" as const })),
+    ...conflicts.map((entry) => ({ ...entry, qid: entry.id, lane: "conflicts" as const })),
+    ...milestones.map((entry) => ({ ...entry, qid: entry.id, lane: "milestones" as const })),
+  ];
+  const profiles = shipProfiles(await readRawProfiles(RAW_PROFILES_DIR), profileTargets);
+  await writeProfiles(DATA_DIR, profiles);
+  console.log(`profiles: shipped ${profiles.size} (en + ru)`);
+
   const personRowOf = assignPersonRows(people, peopleRu);
-  const peopleWithRows = withRows(people, personRowOf);
-  const peopleRuWithRows = withRows(peopleRu, personRowOf);
+  const peopleWithRows = withProfileFlags(withRows(people, personRowOf), profiles);
+  const peopleRuWithRows = withProfileFlags(withRows(peopleRu, personRowOf), profiles);
   await writeDetailLevelDataset(
     (level) => `people.detail${level}.json`,
     peopleWithRows,
@@ -117,10 +132,10 @@ async function main(): Promise<void> {
   // footprint is its widest rendering), then applied to both by id, same as
   // People above.
   const eventsRowOf = assignConflictsMilestonesRows(conflicts, milestones, conflictsRu, milestonesRu);
-  const conflictsWithRows = withRows(conflicts, eventsRowOf);
-  const conflictsRuWithRows = withRows(conflictsRu, eventsRowOf);
-  const milestonesWithRows = withRows(milestones, eventsRowOf);
-  const milestonesRuWithRows = withRows(milestonesRu, eventsRowOf);
+  const conflictsWithRows = withProfileFlags(withRows(conflicts, eventsRowOf), profiles);
+  const conflictsRuWithRows = withProfileFlags(withRows(conflictsRu, eventsRowOf), profiles);
+  const milestonesWithRows = withProfileFlags(withRows(milestones, eventsRowOf), profiles);
+  const milestonesRuWithRows = withProfileFlags(withRows(milestonesRu, eventsRowOf), profiles);
 
   await writeDetailLevelDataset(
     (level) => `conflicts.detail${level}.json`,

@@ -2,14 +2,14 @@ import { DETAIL_LEVELS } from '../../../shared/config';
 import { m } from '../../../shared/paraglide/messages.js';
 import {
   isSpanDate,
-  type Profile,
+  type ProfileBody,
   parseBoldRuns,
   type ResolvedConnection,
 } from '../lib/profile';
 import styles from './ProfileView.module.css';
 
 interface ProfileViewProps {
-  profile: Profile;
+  profile: ProfileBody;
   // Lane color of the entity, for the Key Moment marks.
   color: string;
   connections: readonly ResolvedConnection[];

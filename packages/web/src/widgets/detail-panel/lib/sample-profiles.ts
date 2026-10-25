@@ -1,8 +1,12 @@
-import type { Profile } from './profile';
+import type { ProfileBody } from './profile';
+
+interface SampleProfile extends ProfileBody {
+  connections: readonly { slug: string; reason: string }[];
+}
 
 // Hand-written sample Profiles for the panel prototype, keyed by entity slug.
 // Not pipeline output; replaced by the shipped Profile data.
-export const SAMPLE_PROFILES: Readonly<Record<string, Profile>> = {
+export const SAMPLE_PROFILES: Readonly<Record<string, SampleProfile>> = {
   'isaac-newton': {
     overview:
       'Isaac Newton was an English mathematician and natural philosopher who worked out the laws of motion and universal gravitation and, alongside Leibniz, invented calculus. His Principia showed that one set of rules governs a falling apple and the orbit of the Moon. He later ran the Royal Mint and presided over the Royal Society.',

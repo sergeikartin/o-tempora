@@ -9,13 +9,14 @@ The published dataset: `data-pipeline` writes it, `web` reads it. No source of i
 Shared contracts both other packages import rather than redefining:
 
 - Entity types — `TimelineEntry` (base fields every lane shares) extended by `Person`, `Conflict`/`ConflictEvent` (`ConflictEntry` union), `Milestone` (`MilestonePeriod`/`MilestonePoint` union); `Period`/`PointInTime`/`YearMonth` for the two date shapes (see `CONTEXT.md`'s **Mark**)
+- Profile types — `Profile` (`overview`, `keyMoments`, `deepFacts`, resolved `connections`) and `ProfileConnection`, the shape of the shipped `profiles/<locale>/<slug>.json` files; `TimelineEntry.hasProfile` marks the rows that have one
 - Taxonomies — `CONFLICT_CATEGORIES`, `MILESTONE_CATEGORIES` + `MILESTONE_CATEGORY_TO_GROUP`, `REGIONS`, `OCCUPATION_DOMAINS`
 - `DETAIL_LEVEL_FAME_SCORE_FLOORS` — the 4 per-lane Fame Score floors both data-pipeline (splits `src/data/*.json` by these) and web (its Detail Level switch) read, so the two can't drift apart (`CONTEXT.md`'s **Detail Level**, `docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md`)
 - Layout constants (`AVG_CHAR_WIDTH_PX`, `REFERENCE_SCALE_PIXELS_PER_YEAR`, …) and helpers (`yearMonthToFractionalYear`, `wrapMarkLabelLines`) shared because data-pipeline's one-time row packing and web's live rendering must agree on the same numbers
 
 ## `src/data/`
 
-Per lane (`people`/`conflicts`/`milestones`) × Detail Level (`1`-`4`) × locale (base = English, `.ru` = Russian): `<lane>.detail<N>.json` / `<lane>.detail<N>.ru.json`. Each level's file is a delta — only the entities newly added versus the previous level's floor, not a self-contained cumulative file (web concatenates them client-side). Regenerated only via `data-pipeline`'s `publish-data` step (`packages/data-pipeline/CLAUDE.md`) — never edit these directly.
+Per lane (`people`/`conflicts`/`milestones`) × Detail Level (`1`-`4`) × locale (base = English, `.ru` = Russian): `<lane>.detail<N>.json` / `<lane>.detail<N>.ru.json`. Each level's file is a delta — only the entities newly added versus the previous level's floor, not a self-contained cumulative file (web concatenates them client-side). `profiles/<locale>/<slug>.json` holds one shipped Profile per entity per locale (`ru` carries the English Profile until Russian Profiles exist); an entity row's `hasProfile` says whether the file exists. Regenerated only via `data-pipeline`'s `publish-data` step (`packages/data-pipeline/CLAUDE.md`) — never edit these directly.
 
 ## Data & attribution
 

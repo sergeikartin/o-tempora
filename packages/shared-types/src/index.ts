@@ -208,6 +208,48 @@ export interface TimelineEntry {
   // locale-datasets.ts validateEntries treats a missing or non-finite row as
   // schema drift.
   row?: number;
+  // Set by Output on every entity that has a shipped Profile, in both language
+  // files, so the panel never probes for `profiles/<locale>/<slug>.json`.
+  // Absent, never `false`, when there is none.
+  hasProfile?: true;
+}
+
+// A Key Moment's and Deep Fact's text carries `**bold**` runs; Output rejects
+// any other markup, so the panel renders it as elements, never as HTML.
+export interface ProfileKeyMoment {
+  date: string;
+  title: string;
+  text: string;
+}
+
+export interface ProfileDeepFact {
+  text: string;
+  isLegend: boolean;
+}
+
+export const PROFILE_LANES = ["people", "conflicts", "milestones"] as const;
+
+export type ProfileLane = (typeof PROFILE_LANES)[number];
+
+// A Connection (CONTEXT.md) already resolved against the dataset by Output, so
+// the panel needs no matching. `detailLevel` is the lowest Detail Level that
+// shows the target (1 = Legendary .. 4 = Deep Cut).
+export interface ProfileConnection {
+  slug: string;
+  reason: string;
+  name: string;
+  lane: ProfileLane;
+  detailLevel: 1 | 2 | 3 | 4;
+}
+
+// The shipped Profile (CONTEXT.md): one file per entity per locale at
+// `profiles/<locale>/<slug>.json`. Connections are in the model's importance
+// order.
+export interface Profile {
+  overview: string;
+  keyMoments: readonly ProfileKeyMoment[];
+  deepFacts: readonly ProfileDeepFact[];
+  connections: readonly ProfileConnection[];
 }
 
 // Sourced from Pantheon 2.0, not Wikidata: fameScore is Pantheon's HPI (0-100)

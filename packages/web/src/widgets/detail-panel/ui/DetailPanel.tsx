@@ -5,7 +5,7 @@ import {
   buildMemberSummary,
   type DetailPanelEntity,
 } from '../lib/build-drawer-content';
-import type { Profile, ResolvedConnection } from '../lib/profile';
+import type { ProfileBody, ResolvedConnection } from '../lib/profile';
 import styles from './DetailPanel.module.css';
 import { ProfileView } from './ProfileView';
 
@@ -19,7 +19,7 @@ export interface DetailPanelMember {
 }
 
 export interface ProfileViewData {
-  profile: Profile;
+  profile: ProfileBody;
   color: string;
   connections: readonly ResolvedConnection[];
 }
