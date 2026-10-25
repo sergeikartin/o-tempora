@@ -1,4 +1,4 @@
-import { parseCsvLine } from "./csv.js";
+import { parseCsvLine } from './csv.js';
 
 // Only the columns this pipeline consumes: Pantheon's 2025 Person Dataset has
 // 34, and the rest (raw date strings, coordinates, GeoNames IDs, HPI's
@@ -44,51 +44,55 @@ export interface PantheonPersonRow {
 }
 
 const EXPECTED_HEADER = [
-  "id",
-  "wd_id",
-  "wp_id",
-  "slug",
-  "name",
-  "occupation",
-  "prob_ratio",
-  "gender",
-  "twitter",
-  "alive",
-  "l",
-  "hpi_raw",
-  "bplace_name",
-  "bplace_lat",
-  "bplace_lon",
-  "bplace_geonameid",
-  "bplace_country",
-  "birthdate",
-  "birthyear",
-  "dplace_name",
-  "dplace_lat",
-  "dplace_lon",
-  "dplace_geonameid",
-  "dplace_country",
-  "deathdate",
-  "deathyear",
-  "bplace_geacron_name",
-  "dplace_geacron_name",
-  "is_group",
-  "l_",
-  "age",
-  "non_en_page_views",
-  "coefficient_of_variation",
-  "hpi",
+  'id',
+  'wd_id',
+  'wp_id',
+  'slug',
+  'name',
+  'occupation',
+  'prob_ratio',
+  'gender',
+  'twitter',
+  'alive',
+  'l',
+  'hpi_raw',
+  'bplace_name',
+  'bplace_lat',
+  'bplace_lon',
+  'bplace_geonameid',
+  'bplace_country',
+  'birthdate',
+  'birthyear',
+  'dplace_name',
+  'dplace_lat',
+  'dplace_lon',
+  'dplace_geonameid',
+  'dplace_country',
+  'deathdate',
+  'deathyear',
+  'bplace_geacron_name',
+  'dplace_geacron_name',
+  'is_group',
+  'l_',
+  'age',
+  'non_en_page_views',
+  'coefficient_of_variation',
+  'hpi',
 ];
 
 function parseOptionalInt(value: string): number | undefined {
-  return value === "" ? undefined : Number.parseInt(value, 10);
+  return value === '' ? undefined : Number.parseInt(value, 10);
 }
 
 // Pantheon's birthyear/deathyear arrive negative for BCE via a naive sign flip
 // (551 BC -> -551) rather than astronomical numbering (-550); see
 // docs/adr/0001-astronomical-year-numbering.md. CE values (>= 0) are unaffected.
-function toAstronomicalYear(pantheonYear: number | undefined): number | undefined {
-  return pantheonYear === undefined || pantheonYear >= 0 ? pantheonYear : pantheonYear + 1;
+function toAstronomicalYear(
+  pantheonYear: number | undefined,
+): number | undefined {
+  return pantheonYear === undefined || pantheonYear >= 0
+    ? pantheonYear
+    : pantheonYear + 1;
 }
 
 const PANTHEON_DATE_PATTERN = /^(\d{4})-(\d{2})-\d{2}( BC)?$/;
@@ -97,10 +101,14 @@ const PANTHEON_DATE_PATTERN = /^(\d{4})-(\d{2})-\d{2}( BC)?$/;
 // only when the date column's year agrees (see PantheonPersonRow), so the date
 // string's BC suffix is converted to astronomical numbering too, as
 // toAstronomicalYear does for the year columns.
-function parseOptionalDateMonth(value: string, referenceYear: number | undefined): number | undefined {
-  if (value === "" || referenceYear === undefined) return undefined;
+function parseOptionalDateMonth(
+  value: string,
+  referenceYear: number | undefined,
+): number | undefined {
+  if (value === '' || referenceYear === undefined) return undefined;
   const match = PANTHEON_DATE_PATTERN.exec(value);
-  if (!match || match[1] === undefined || match[2] === undefined) return undefined;
+  if (!match || match[1] === undefined || match[2] === undefined)
+    return undefined;
   const year = match[3] ? 1 - Number(match[1]) : Number(match[1]);
   if (year !== referenceYear) return undefined;
   return Number(match[2]);
@@ -114,16 +122,19 @@ function parseOptionalDateMonth(value: string, referenceYear: number | undefined
  * Output, matching how validate-sparql-result.ts only checks structure.
  */
 export function parsePantheonCsv(csvText: string): PantheonPersonRow[] {
-  const lines = csvText.split("\n").filter((line) => line.length > 0);
+  const lines = csvText.split('\n').filter((line) => line.length > 0);
   const [headerLine, ...dataLines] = lines;
   if (!headerLine) {
-    throw new Error("Pantheon CSV is empty.");
+    throw new Error('Pantheon CSV is empty.');
   }
 
   const header = parseCsvLine(headerLine);
-  if (header.length !== EXPECTED_HEADER.length || !header.every((col, i) => col === EXPECTED_HEADER[i])) {
+  if (
+    header.length !== EXPECTED_HEADER.length ||
+    !header.every((col, i) => col === EXPECTED_HEADER[i])
+  ) {
     throw new Error(
-      `Pantheon CSV header doesn't match the expected 34-column shape. Got: ${header.join(",")}`,
+      `Pantheon CSV header doesn't match the expected 34-column shape. Got: ${header.join(',')}`,
     );
   }
 
@@ -143,23 +154,33 @@ export function parsePantheonCsv(csvText: string): PantheonPersonRow[] {
       );
     }
 
-    const birthyear = toAstronomicalYear(parseOptionalInt(fields[columnIndex.birthyear ?? -1] ?? ""));
-    const deathyear = toAstronomicalYear(parseOptionalInt(fields[columnIndex.deathyear ?? -1] ?? ""));
+    const birthyear = toAstronomicalYear(
+      parseOptionalInt(fields[columnIndex.birthyear ?? -1] ?? ''),
+    );
+    const deathyear = toAstronomicalYear(
+      parseOptionalInt(fields[columnIndex.deathyear ?? -1] ?? ''),
+    );
 
     return {
       id,
       wdId,
       name,
       slug,
-      occupation: fields[columnIndex.occupation ?? -1] ?? "",
+      occupation: fields[columnIndex.occupation ?? -1] ?? '',
       hpi: Number.parseFloat(hpiRaw),
-      bplaceCountry: fields[columnIndex.bplace_country ?? -1] ?? "",
-      dplaceCountry: fields[columnIndex.dplace_country ?? -1] ?? "",
+      bplaceCountry: fields[columnIndex.bplace_country ?? -1] ?? '',
+      dplaceCountry: fields[columnIndex.dplace_country ?? -1] ?? '',
       birthyear,
-      birthmonth: parseOptionalDateMonth(fields[columnIndex.birthdate ?? -1] ?? "", birthyear),
+      birthmonth: parseOptionalDateMonth(
+        fields[columnIndex.birthdate ?? -1] ?? '',
+        birthyear,
+      ),
       deathyear,
-      deathmonth: parseOptionalDateMonth(fields[columnIndex.deathdate ?? -1] ?? "", deathyear),
-      alive: (fields[columnIndex.alive ?? -1] ?? "").toUpperCase() === "TRUE",
+      deathmonth: parseOptionalDateMonth(
+        fields[columnIndex.deathdate ?? -1] ?? '',
+        deathyear,
+      ),
+      alive: (fields[columnIndex.alive ?? -1] ?? '').toUpperCase() === 'TRUE',
     };
   });
 }

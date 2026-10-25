@@ -5,12 +5,12 @@
 // (sub-events of a war such as battles, sieges and treaties are not
 // categories). See .scratch/wars-curated-source/spec.md.
 export const CONFLICT_CATEGORIES = [
-  "war",
-  "military-operation",
-  "revolution",
-  "rebellion",
-  "coup-d-etat",
-  "war-of-independence",
+  'war',
+  'military-operation',
+  'revolution',
+  'rebellion',
+  'coup-d-etat',
+  'war-of-independence',
 ] as const;
 
 export type ConflictCategory = (typeof CONFLICT_CATEGORIES)[number];
@@ -19,28 +19,28 @@ export type ConflictCategory = (typeof CONFLICT_CATEGORIES)[number];
 // `meta.categories` (data-pipeline/data/raw/milestones-curated.raw.json).
 // Disjoint from ConflictCategory, even where names might coincide.
 export const MILESTONE_CATEGORIES = [
-  "science-theory",
-  "medicine-health",
-  "public-health",
-  "communication",
-  "media-culture",
-  "transportation",
-  "infrastructure",
-  "landmarks",
-  "everyday-technology",
-  "food-agriculture",
-  "expedition",
-  "energy-industry",
-  "society-administration",
-  "culture-arts",
-  "religion-mythology",
-  "environment-geology",
-  "commerce-finance",
-  "social-movements",
-  "sports-entertainment",
-  "philosophy-education",
-  "law-jurisprudence",
-  "archaeology-anthropology",
+  'science-theory',
+  'medicine-health',
+  'public-health',
+  'communication',
+  'media-culture',
+  'transportation',
+  'infrastructure',
+  'landmarks',
+  'everyday-technology',
+  'food-agriculture',
+  'expedition',
+  'energy-industry',
+  'society-administration',
+  'culture-arts',
+  'religion-mythology',
+  'environment-geology',
+  'commerce-finance',
+  'social-movements',
+  'sports-entertainment',
+  'philosophy-education',
+  'law-jurisprudence',
+  'archaeology-anthropology',
 ] as const;
 
 export type MilestoneCategory = (typeof MILESTONE_CATEGORIES)[number];
@@ -51,34 +51,40 @@ export type MilestoneCategory = (typeof MILESTONE_CATEGORIES)[number];
 // docs/design-tokens.md's Milestone Category Palette for the assignments and
 // docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md for the
 // rationale.
-export const MILESTONE_CATEGORY_GROUPS = ["science-innovation", "social-culture"] as const;
+export const MILESTONE_CATEGORY_GROUPS = [
+  'science-innovation',
+  'social-culture',
+] as const;
 
 export type MilestoneCategoryGroup = (typeof MILESTONE_CATEGORY_GROUPS)[number];
 
-export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCategoryGroup> = {
-  "science-theory": "science-innovation",
-  "medicine-health": "science-innovation",
-  communication: "science-innovation",
-  transportation: "science-innovation",
-  "everyday-technology": "science-innovation",
-  "food-agriculture": "science-innovation",
-  "energy-industry": "science-innovation",
+export const MILESTONE_CATEGORY_TO_GROUP: Record<
+  MilestoneCategory,
+  MilestoneCategoryGroup
+> = {
+  'science-theory': 'science-innovation',
+  'medicine-health': 'science-innovation',
+  communication: 'science-innovation',
+  transportation: 'science-innovation',
+  'everyday-technology': 'science-innovation',
+  'food-agriculture': 'science-innovation',
+  'energy-industry': 'science-innovation',
 
-  "public-health": "social-culture",
-  "media-culture": "social-culture",
-  landmarks: "social-culture",
-  infrastructure: "social-culture",
-  expedition: "social-culture",
-  "society-administration": "social-culture",
-  "culture-arts": "social-culture",
-  "religion-mythology": "social-culture",
-  "environment-geology": "social-culture",
-  "commerce-finance": "social-culture",
-  "social-movements": "social-culture",
-  "sports-entertainment": "social-culture",
-  "philosophy-education": "social-culture",
-  "law-jurisprudence": "social-culture",
-  "archaeology-anthropology": "social-culture",
+  'public-health': 'social-culture',
+  'media-culture': 'social-culture',
+  landmarks: 'social-culture',
+  infrastructure: 'social-culture',
+  expedition: 'social-culture',
+  'society-administration': 'social-culture',
+  'culture-arts': 'social-culture',
+  'religion-mythology': 'social-culture',
+  'environment-geology': 'social-culture',
+  'commerce-finance': 'social-culture',
+  'social-movements': 'social-culture',
+  'sports-entertainment': 'social-culture',
+  'philosophy-education': 'social-culture',
+  'law-jurisprudence': 'social-culture',
+  'archaeology-anthropology': 'social-culture',
 };
 
 // The UN M49 geoscheme's 22 sub-regions, the one Region taxonomy for every
@@ -88,28 +94,28 @@ export const MILESTONE_CATEGORY_TO_GROUP: Record<MilestoneCategory, MilestoneCat
 // (Wikidata Q-ID keyed) and un-region-categories.ts (Pantheon country-name
 // keyed).
 export const REGIONS = [
-  "northern-europe",
-  "southern-europe",
-  "eastern-europe",
-  "western-europe",
-  "eastern-asia",
-  "south-eastern-asia",
-  "southern-asia",
-  "central-asia",
-  "western-asia",
-  "northern-africa",
-  "western-africa",
-  "middle-africa",
-  "eastern-africa",
-  "southern-africa",
-  "northern-america",
-  "central-america",
-  "caribbean",
-  "south-america",
-  "australia-and-new-zealand",
-  "melanesia",
-  "micronesia",
-  "polynesia",
+  'northern-europe',
+  'southern-europe',
+  'eastern-europe',
+  'western-europe',
+  'eastern-asia',
+  'south-eastern-asia',
+  'southern-asia',
+  'central-asia',
+  'western-asia',
+  'northern-africa',
+  'western-africa',
+  'middle-africa',
+  'eastern-africa',
+  'southern-africa',
+  'northern-america',
+  'central-america',
+  'caribbean',
+  'south-america',
+  'australia-and-new-zealand',
+  'melanesia',
+  'micronesia',
+  'polynesia',
 ] as const;
 
 export type Region = (typeof REGIONS)[number];
@@ -118,14 +124,14 @@ export type Region = (typeof REGIONS)[number];
 // all 101 raw `occupation` values; see
 // data-pipeline/src/transform/occupation-domain-categories.ts. Person-only.
 export const OCCUPATION_DOMAINS = [
-  "sports",
-  "institutions",
-  "arts",
-  "humanities",
-  "science-technology",
-  "business-law",
-  "public-figure",
-  "exploration",
+  'sports',
+  'institutions',
+  'arts',
+  'humanities',
+  'science-technology',
+  'business-law',
+  'public-figure',
+  'exploration',
 ] as const;
 
 export type OccupationDomain = (typeof OCCUPATION_DOMAINS)[number];
@@ -227,7 +233,7 @@ export interface ProfileDeepFact {
   isLegend: boolean;
 }
 
-export const PROFILE_LANES = ["people", "conflicts", "milestones"] as const;
+export const PROFILE_LANES = ['people', 'conflicts', 'milestones'] as const;
 
 export type ProfileLane = (typeof PROFILE_LANES)[number];
 

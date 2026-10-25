@@ -1,10 +1,10 @@
-import { PAGEVIEWS_LANGUAGES, articleVar } from "../pageviews-languages.js";
+import { articleVar, PAGEVIEWS_LANGUAGES } from '../pageviews-languages.js';
 
 function articleOptionalBlocks(): string {
   return PAGEVIEWS_LANGUAGES.map(
     (lang) =>
       `  OPTIONAL { ?${articleVar(lang)} schema:about ?event; schema:isPartOf <https://${lang}.wikipedia.org/>. }`,
-  ).join("\n");
+  ).join('\n');
 }
 
 // Milestones span many entity shapes (inventions, discoveries, publications,
@@ -18,7 +18,18 @@ function articleOptionalBlocks(): string {
 // items carry two BestRank claims on the winning property with no Preferred
 // rank to break the tie (e.g. Q1065 United Nations has year- and day-precision
 // P571); the query's ORDER BY, not this array, makes that deterministic.
-const DATE_PROPERTIES = ["P575", "P571", "P577", "P580", "P585", "P569", "P606", "P619", "P729", "P1619"] as const;
+const DATE_PROPERTIES = [
+  'P575',
+  'P571',
+  'P577',
+  'P580',
+  'P585',
+  'P569',
+  'P606',
+  'P619',
+  'P729',
+  'P1619',
+] as const;
 
 function dateVar(property: string): string {
   return property.toLowerCase();
@@ -38,7 +49,7 @@ function dateOptionalBlocks(): string {
     ?${v}Value wikibase:timeValue ?${v}Time ;
                wikibase:timePrecision ?${v}Precision .
   }`;
-  }).join("\n");
+  }).join('\n');
 }
 
 // Enrichment for the hand-curated Milestones list
@@ -60,10 +71,16 @@ function dateOptionalBlocks(): string {
 // Conflict/ConflictEvent split rule fetch-milestones-enrichment.ts and
 // write-datasets.ts apply.
 export function buildMilestonesEnrichmentQuery(ids: string[]): string {
-  const values = ids.map((id) => `wd:${id}`).join(" ");
-  const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `?${articleVar(lang)}`).join(" ");
-  const timeVars = DATE_PROPERTIES.map((property) => `?${dateVar(property)}Time`).join(", ");
-  const precisionVars = DATE_PROPERTIES.map((property) => `?${dateVar(property)}Precision`).join(", ");
+  const values = ids.map((id) => `wd:${id}`).join(' ');
+  const articleVars = PAGEVIEWS_LANGUAGES.map(
+    (lang) => `?${articleVar(lang)}`,
+  ).join(' ');
+  const timeVars = DATE_PROPERTIES.map(
+    (property) => `?${dateVar(property)}Time`,
+  ).join(', ');
+  const precisionVars = DATE_PROPERTIES.map(
+    (property) => `?${dateVar(property)}Precision`,
+  ).join(', ');
   return `
 SELECT ?event ?sitelinks ${articleVars} ?country ?image ?nameEn ?nameRu ?tagline ?taglineRu ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
   VALUES ?event { ${values} }

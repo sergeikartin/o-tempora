@@ -9,7 +9,7 @@
 // caller can safely split the file on "\n" before calling this per line.
 export function parseCsvLine(line: string): string[] {
   const fields: string[] = [];
-  let field = "";
+  let field = '';
   let inQuotes = false;
 
   for (let i = 0; i < line.length; i++) {
@@ -27,9 +27,9 @@ export function parseCsvLine(line: string): string[] {
       }
     } else if (char === '"') {
       inQuotes = true;
-    } else if (char === ",") {
+    } else if (char === ',') {
       fields.push(field);
-      field = "";
+      field = '';
     } else {
       field += char;
     }

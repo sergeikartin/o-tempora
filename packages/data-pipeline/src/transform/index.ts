@@ -1,19 +1,29 @@
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import type { ConflictCategory, MilestoneCategory, Region } from "@o-tempora/shared-types";
-import { validateSparqlResultShape } from "../fetch/validate-sparql-result.js";
-import { parsePantheonCsv, type PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
-import { validateEnrichedMilestonesFile } from "../fetch/fetch-milestones-enrichment.js";
-import { validateEnrichedConflictsFile } from "../fetch/fetch-conflicts-enrichment.js";
-import { tagPantheonPerson, type PantheonPersonTags } from "./tag-pantheon-person.js";
-import { tagCuratedMilestone, tagCuratedConflict } from "./tag-milestones.js";
-import { rankByFameScore, scoreAndRankByHpi } from "./score.js";
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import type {
+  ConflictCategory,
+  MilestoneCategory,
+  Region,
+} from '@o-tempora/shared-types';
+import { validateEnrichedConflictsFile } from '../fetch/fetch-conflicts-enrichment.js';
+import { validateEnrichedMilestonesFile } from '../fetch/fetch-milestones-enrichment.js';
+import {
+  type PantheonPersonRow,
+  parsePantheonCsv,
+} from '../fetch/pantheon-row-shape.js';
+import { validateSparqlResultShape } from '../fetch/validate-sparql-result.js';
+import { rankByFameScore, scoreAndRankByHpi } from './score.js';
+import { tagCuratedConflict, tagCuratedMilestone } from './tag-milestones.js';
+import {
+  type PantheonPersonTags,
+  tagPantheonPerson,
+} from './tag-pantheon-person.js';
 
 // Omits PantheonPersonRow's `name`: name comes from the Wikidata label
 // enrichment pass below (the same per-language mechanism as Conflicts and
 // Milestones), so it is redeclared as enrichment-sourced and possibly absent.
-export type TaggedPerson = Omit<PantheonPersonRow, "name"> &
+export type TaggedPerson = Omit<PantheonPersonRow, 'name'> &
   PantheonPersonTags & {
     // Wikidata's rdfs:label(en) for this QID; absent only when enrichment couldn't
     // resolve one, and Output then drops the row (write-datasets.ts's buildPeople).
@@ -92,11 +102,17 @@ export interface TaggedConflict {
   parentId?: string;
 }
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
+const RAW_DIR = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  '..',
+  'data',
+  'raw',
+);
 
 function loadRaw(fileName: string) {
   return validateSparqlResultShape(
-    JSON.parse(fs.readFileSync(path.join(RAW_DIR, fileName), "utf8")),
+    JSON.parse(fs.readFileSync(path.join(RAW_DIR, fileName), 'utf8')),
   );
 }
 
@@ -119,7 +135,7 @@ interface PersonEnrichment {
 // wins (as in fetchMilestonesEnrichment's merge) instead of the last row
 // overwriting it.
 function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
-  const raw = loadRaw("people-taglines.raw.json");
+  const raw = loadRaw('people-taglines.raw.json');
   const map = new Map<string, PersonEnrichment>();
   for (const row of raw.results.bindings) {
     const personUri = row.person?.value;
@@ -148,7 +164,11 @@ function loadPeopleEnrichmentMap(): Map<string, PersonEnrichment> {
 // drops). Pageviews coerce to 0 at the call site, so score.ts's blend degrades
 // to a sitelinks-only score (docs/adr/0010).
 function loadRawRecord<T>(fileName: string): Record<string, T> {
-  return (JSON.parse(fs.readFileSync(path.join(RAW_DIR, fileName), "utf8")) as Record<string, T> | undefined) ?? {};
+  return (
+    (JSON.parse(fs.readFileSync(path.join(RAW_DIR, fileName), 'utf8')) as
+      | Record<string, T>
+      | undefined) ?? {}
+  );
 }
 
 // group -> tag -> score, per lane. People, Conflicts and Milestones are three
@@ -161,12 +181,18 @@ function loadRawRecord<T>(fileName: string): Record<string, T> {
 // three lanes share) tracks the entity's current name, and the CSV has no
 // tagline field.
 export function transformPeople(): TaggedPerson[] {
-  const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
-  const rows = parsePantheonCsv(fs.readFileSync(csvPath, "utf8"));
+  const csvPath = path.join(RAW_DIR, 'people-pantheon.raw.csv');
+  const rows = parsePantheonCsv(fs.readFileSync(csvPath, 'utf8'));
   const enrichment = loadPeopleEnrichmentMap();
-  const imageAttribution = loadRawRecord<string>("people-image-attribution.raw.json");
-  const wikipediaExtracts = loadRawRecord<string>("people-wikipedia-extracts.raw.json");
-  const wikipediaExtractsRu = loadRawRecord<string>("people-wikipedia-extracts.ru.raw.json");
+  const imageAttribution = loadRawRecord<string>(
+    'people-image-attribution.raw.json',
+  );
+  const wikipediaExtracts = loadRawRecord<string>(
+    'people-wikipedia-extracts.raw.json',
+  );
+  const wikipediaExtractsRu = loadRawRecord<string>(
+    'people-wikipedia-extracts.ru.raw.json',
+  );
 
   const tagged = rows.map((row) => ({
     ...row,
@@ -196,18 +222,32 @@ export function transformPeople(): TaggedPerson[] {
 // "two dates" (Conflict). Milestones' year/endYear work the same way for
 // buildMilestones' point-vs-period split.
 export function transformConflicts(): TaggedConflict[] {
-  const enrichedPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
-  const { conflicts } = validateEnrichedConflictsFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
-  const imageAttribution = loadRawRecord<string>("conflicts-image-attribution.raw.json");
-  const pageviews = loadRawRecord<number>("conflicts-pageviews.raw.json");
-  const wikipediaExtracts = loadRawRecord<string>("conflicts-wikipedia-extracts.raw.json");
-  const wikipediaExtractsRu = loadRawRecord<string>("conflicts-wikipedia-extracts.ru.raw.json");
+  const enrichedPath = path.join(
+    RAW_DIR,
+    'conflicts-curated-enriched.raw.json',
+  );
+  const { conflicts } = validateEnrichedConflictsFile(
+    JSON.parse(fs.readFileSync(enrichedPath, 'utf8')),
+  );
+  const imageAttribution = loadRawRecord<string>(
+    'conflicts-image-attribution.raw.json',
+  );
+  const pageviews = loadRawRecord<number>('conflicts-pageviews.raw.json');
+  const wikipediaExtracts = loadRawRecord<string>(
+    'conflicts-wikipedia-extracts.raw.json',
+  );
+  const wikipediaExtractsRu = loadRawRecord<string>(
+    'conflicts-wikipedia-extracts.ru.raw.json',
+  );
 
   const tagged = conflicts.map((conflict) => {
-    const { category, regionTags } = tagCuratedConflict(conflict.category, conflict.countries);
+    const { category, regionTags } = tagCuratedConflict(
+      conflict.category,
+      conflict.countries,
+    );
     return {
       id: conflict.id,
-      label: conflict.name ?? "",
+      label: conflict.name ?? '',
       labelRu: conflict.nameRu,
       article: conflict.wikipediaUrl,
       tagline: conflict.tagline,
@@ -237,18 +277,32 @@ export function transformConflicts(): TaggedConflict[] {
 // it explicitly. name is enrichment-sourced too: label falls back to `""`
 // (matching validateEventRow's `!row.label`) when no English label resolved.
 export function transformMilestones(): TaggedMilestone[] {
-  const enrichedPath = path.join(RAW_DIR, "milestones-curated-enriched.raw.json");
-  const { milestones } = validateEnrichedMilestonesFile(JSON.parse(fs.readFileSync(enrichedPath, "utf8")));
-  const imageAttribution = loadRawRecord<string>("milestones-image-attribution.raw.json");
-  const pageviews = loadRawRecord<number>("milestones-pageviews.raw.json");
-  const wikipediaExtracts = loadRawRecord<string>("milestones-wikipedia-extracts.raw.json");
-  const wikipediaExtractsRu = loadRawRecord<string>("milestones-wikipedia-extracts.ru.raw.json");
+  const enrichedPath = path.join(
+    RAW_DIR,
+    'milestones-curated-enriched.raw.json',
+  );
+  const { milestones } = validateEnrichedMilestonesFile(
+    JSON.parse(fs.readFileSync(enrichedPath, 'utf8')),
+  );
+  const imageAttribution = loadRawRecord<string>(
+    'milestones-image-attribution.raw.json',
+  );
+  const pageviews = loadRawRecord<number>('milestones-pageviews.raw.json');
+  const wikipediaExtracts = loadRawRecord<string>(
+    'milestones-wikipedia-extracts.raw.json',
+  );
+  const wikipediaExtractsRu = loadRawRecord<string>(
+    'milestones-wikipedia-extracts.ru.raw.json',
+  );
 
   const tagged = milestones.map((milestone) => {
-    const { category, regionTags } = tagCuratedMilestone(milestone.category, milestone.countries);
+    const { category, regionTags } = tagCuratedMilestone(
+      milestone.category,
+      milestone.countries,
+    );
     return {
       id: milestone.id,
-      label: milestone.name ?? "",
+      label: milestone.name ?? '',
       labelRu: milestone.nameRu,
       article: milestone.wikipediaUrl,
       tagline: milestone.tagline,

@@ -13,5 +13,9 @@
     "rootDir": "src",
     "types": ["node"]
   },
-  "include": ["src/fetch/**/*.ts", "src/transform/**/*.ts", "src/output/**/*.ts"]
+  "include": [
+    "src/fetch/**/*.ts",
+    "src/transform/**/*.ts",
+    "src/output/**/*.ts"
+  ]
 }

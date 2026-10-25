@@ -6,7 +6,7 @@
 // `lang` argument; the Russian description is the Russian article's own
 // extract, not a translation.
 
-export type WikipediaLanguage = "en" | "ru";
+export type WikipediaLanguage = 'en' | 'ru';
 
 export interface WikipediaSummaryResponse {
   // "standard" for a normal article; "disambiguation" for a disambiguation
@@ -24,7 +24,7 @@ function endpoint(lang: WikipediaLanguage): string {
 // Same courtesy identification as the Wikidata, Commons and Pageviews clients;
 // Wikimedia asks all API traffic to self-identify.
 const USER_AGENT =
-  "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
+  'o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)';
 
 const MAX_RETRIES = 3;
 // As in commons-client.ts and pageviews-client.ts: a single-title summary read
@@ -38,12 +38,14 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function isWikipediaSummaryResponse(value: unknown): value is WikipediaSummaryResponse {
-  if (typeof value !== "object" || value === null) return false;
+function isWikipediaSummaryResponse(
+  value: unknown,
+): value is WikipediaSummaryResponse {
+  if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
   return (
-    (candidate.type === undefined || typeof candidate.type === "string") &&
-    (candidate.extract === undefined || typeof candidate.extract === "string")
+    (candidate.type === undefined || typeof candidate.type === 'string') &&
+    (candidate.extract === undefined || typeof candidate.extract === 'string')
   );
 }
 
@@ -59,14 +61,14 @@ function isWikipediaSummaryResponse(value: unknown): value is WikipediaSummaryRe
  */
 export async function fetchWikipediaSummary(
   title: string,
-  lang: WikipediaLanguage = "en",
+  lang: WikipediaLanguage = 'en',
   attempt = 1,
 ): Promise<WikipediaSummaryResponse | undefined> {
   const encodedTitle = encodeURIComponent(title);
   const url = `${endpoint(lang)}/${encodedTitle}`;
 
   const response = await fetch(url, {
-    headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
+    headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' },
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
 
@@ -74,9 +76,11 @@ export async function fetchWikipediaSummary(
 
   if (attempt <= MAX_RETRIES) {
     if (response.status === 429) {
-      const retryAfterHeader = Number(response.headers.get("retry-after"));
+      const retryAfterHeader = Number(response.headers.get('retry-after'));
       const retryAfterSeconds =
-        Number.isFinite(retryAfterHeader) && retryAfterHeader > 0 ? retryAfterHeader : 5 * attempt;
+        Number.isFinite(retryAfterHeader) && retryAfterHeader > 0
+          ? retryAfterHeader
+          : 5 * attempt;
       await sleep(retryAfterSeconds * 1000);
       return fetchWikipediaSummary(title, lang, attempt + 1);
     }
@@ -88,12 +92,16 @@ export async function fetchWikipediaSummary(
 
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`Wikipedia summary API returned HTTP ${response.status}: ${body.slice(0, 500)}`);
+    throw new Error(
+      `Wikipedia summary API returned HTTP ${response.status}: ${body.slice(0, 500)}`,
+    );
   }
 
   const json: unknown = await response.json();
   if (!isWikipediaSummaryResponse(json)) {
-    throw new Error("Wikipedia summary API response is not the expected shape.");
+    throw new Error(
+      'Wikipedia summary API response is not the expected shape.',
+    );
   }
   return json;
 }

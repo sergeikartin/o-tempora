@@ -1,12 +1,12 @@
-import { validateSparqlResultShape } from "./validate-sparql-result.js";
-import type { SparqlResults } from "./sparql-result-shape.js";
+import type { SparqlResults } from './sparql-result-shape.js';
+import { validateSparqlResultShape } from './validate-sparql-result.js';
 
-const ENDPOINT = "https://query.wikidata.org/sparql";
+const ENDPOINT = 'https://query.wikidata.org/sparql';
 
 // Wikidata asks all query traffic to identify itself; an unidentified or
 // generic User-Agent is more likely to be throttled.
 const USER_AGENT =
-  "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
+  'o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)';
 
 const MAX_RETRIES = 3;
 const PAGE_DELAY_MS = 500;
@@ -26,13 +26,16 @@ const REQUEST_TIMEOUT_MS = 55_000;
 const RETRYABLE_SERVER_ERROR_STATUSES = new Set([502, 503, 504]);
 const BACKOFF_BASE_MS = 2_000;
 
-export async function runSparqlQuery(query: string, attempt = 1): Promise<SparqlResults> {
+export async function runSparqlQuery(
+  query: string,
+  attempt = 1,
+): Promise<SparqlResults> {
   const response = await fetch(ENDPOINT, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      Accept: "application/sparql-results+json",
-      "Content-Type": "application/x-www-form-urlencoded",
-      "User-Agent": USER_AGENT,
+      Accept: 'application/sparql-results+json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'User-Agent': USER_AGENT,
     },
     body: new URLSearchParams({ query }),
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
@@ -40,10 +43,11 @@ export async function runSparqlQuery(query: string, attempt = 1): Promise<Sparql
 
   if (attempt <= MAX_RETRIES) {
     if (response.status === 429) {
-      const retryAfterHeader = Number(response.headers.get("retry-after"));
-      const retryAfterSeconds = Number.isFinite(retryAfterHeader) && retryAfterHeader > 0
-        ? retryAfterHeader
-        : 5 * attempt;
+      const retryAfterHeader = Number(response.headers.get('retry-after'));
+      const retryAfterSeconds =
+        Number.isFinite(retryAfterHeader) && retryAfterHeader > 0
+          ? retryAfterHeader
+          : 5 * attempt;
       await sleep(retryAfterSeconds * 1000);
       return runSparqlQuery(query, attempt + 1);
     }
@@ -56,7 +60,9 @@ export async function runSparqlQuery(query: string, attempt = 1): Promise<Sparql
 
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`Wikidata Query Service returned HTTP ${response.status}: ${body.slice(0, 500)}`);
+    throw new Error(
+      `Wikidata Query Service returned HTTP ${response.status}: ${body.slice(0, 500)}`,
+    );
   }
 
   const json: unknown = await response.json();
@@ -80,7 +86,7 @@ export async function fetchAllPages(
   maxPages: number,
 ): Promise<SparqlResults> {
   let vars: string[] = [];
-  const bindings: SparqlResults["results"]["bindings"] = [];
+  const bindings: SparqlResults['results']['bindings'] = [];
 
   for (let page = 0; page < maxPages; page++) {
     const offset = page * pageSize;
@@ -100,7 +106,9 @@ export async function fetchAllPages(
 
     vars = result.head.vars;
     bindings.push(...result.results.bindings);
-    console.log(`    page ${page + 1}: +${result.results.bindings.length} rows (total ${bindings.length})`);
+    console.log(
+      `    page ${page + 1}: +${result.results.bindings.length} rows (total ${bindings.length})`,
+    );
 
     if (result.results.bindings.length < pageSize) {
       break;

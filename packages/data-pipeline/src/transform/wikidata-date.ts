@@ -24,7 +24,10 @@ export const MONTH_OR_FINER_PRECISION = 10;
 // `undefined` precisionValue means the caller didn't bind a precision
 // variable at all (see GroupRowsConfig's datePrecisionVar) — no month
 // either way.
-export function parseMonthIfKnown(iso: string, precisionValue: string | undefined): number | undefined {
+export function parseMonthIfKnown(
+  iso: string,
+  precisionValue: string | undefined,
+): number | undefined {
   if (precisionValue === undefined) return undefined;
   if (Number(precisionValue) < MONTH_OR_FINER_PRECISION) return undefined;
   return parseIsoMonth(iso);

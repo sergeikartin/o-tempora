@@ -1,14 +1,28 @@
-import { readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { MILESTONE_CATEGORIES, type MilestoneCategory } from "@o-tempora/shared-types";
-import { buildMilestonesEnrichmentQuery } from "./queries/milestones-enrichment.js";
-import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
-import { parseIsoYear, parseMonthIfKnown } from "../transform/wikidata-date.js";
-import { filterByQids, mergeEnriched, type QidFilter } from "./qid-filter.js";
-import { PAGEVIEWS_LANGUAGES, articleVar, isArticleUrlsRecord, type PageviewsLanguage } from "./pageviews-languages.js";
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  MILESTONE_CATEGORIES,
+  type MilestoneCategory,
+} from '@o-tempora/shared-types';
+import { parseIsoYear, parseMonthIfKnown } from '../transform/wikidata-date.js';
+import { batchedSparqlFetch } from './batched-sparql-fetch.js';
+import {
+  articleVar,
+  isArticleUrlsRecord,
+  PAGEVIEWS_LANGUAGES,
+  type PageviewsLanguage,
+} from './pageviews-languages.js';
+import { filterByQids, mergeEnriched, type QidFilter } from './qid-filter.js';
+import { buildMilestonesEnrichmentQuery } from './queries/milestones-enrichment.js';
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
+const RAW_DIR = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  '..',
+  'data',
+  'raw',
+);
 
 // The curated file carries id/name/category (curator-authored); everything
 // else, including the date via DATE_PROPERTIES' priority-ordered COALESCE in
@@ -105,23 +119,29 @@ export interface EnrichedMilestone {
 // `JSON.parse(...) as CuratedMilestonesFile` cast and break rendering
 // downstream.
 function isCuratedMilestone(value: unknown): value is CuratedMilestone {
-  if (typeof value !== "object" || value === null) return false;
+  if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
   return (
-    typeof candidate.id === "string" &&
-    typeof candidate.name === "string" &&
-    typeof candidate.category === "string" &&
+    typeof candidate.id === 'string' &&
+    typeof candidate.name === 'string' &&
+    typeof candidate.category === 'string' &&
     (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category) &&
-    (candidate.displayName === undefined || isDisplayName(candidate.displayName)) &&
-    (candidate.fameSource === undefined || typeof candidate.fameSource === "string") &&
+    (candidate.displayName === undefined ||
+      isDisplayName(candidate.displayName)) &&
+    (candidate.fameSource === undefined ||
+      typeof candidate.fameSource === 'string') &&
     (candidate.date === undefined || isDateOverride(candidate.date))
   );
 }
 
-const isMonth = (value: unknown): boolean => value === undefined || (Number.isInteger(value) && (value as number) >= 1 && (value as number) <= 12);
+const isMonth = (value: unknown): boolean =>
+  value === undefined ||
+  (Number.isInteger(value) &&
+    (value as number) >= 1 &&
+    (value as number) <= 12);
 
 function isDateOverride(value: unknown): value is DateOverride {
-  if (typeof value !== "object" || value === null) return false;
+  if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
   return (
     Number.isInteger(candidate.year) &&
@@ -129,14 +149,23 @@ function isDateOverride(value: unknown): value is DateOverride {
     (candidate.endYear === undefined || Number.isInteger(candidate.endYear)) &&
     isMonth(candidate.endMonth) &&
     (candidate.endMonth === undefined || candidate.endYear !== undefined) &&
-    (candidate.approximate === undefined || typeof candidate.approximate === "boolean")
+    (candidate.approximate === undefined ||
+      typeof candidate.approximate === 'boolean')
   );
 }
 
 export function resolveDate(
   override: DateOverride | undefined,
-  enriched: { year?: number; month?: number; endYear?: number; endMonth?: number } | undefined,
-): { year?: number; month?: number; endYear?: number; endMonth?: number; approximateDate?: true } {
+  enriched:
+    | { year?: number; month?: number; endYear?: number; endMonth?: number }
+    | undefined,
+): {
+  year?: number;
+  month?: number;
+  endYear?: number;
+  endMonth?: number;
+  approximateDate?: true;
+} {
   const source = override ?? enriched;
   return {
     year: source?.year,
@@ -148,15 +177,17 @@ export function resolveDate(
 }
 
 function isDisplayName(value: unknown): value is { en: string; ru: string } {
-  if (typeof value !== "object" || value === null) return false;
+  if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
-  return typeof candidate.en === "string" && typeof candidate.ru === "string";
+  return typeof candidate.en === 'string' && typeof candidate.ru === 'string';
 }
 
 function validateCuratedMilestonesFile(data: unknown): CuratedMilestonesFile {
   const milestones = (data as Record<string, unknown> | null)?.milestones;
   if (!Array.isArray(milestones) || !milestones.every(isCuratedMilestone)) {
-    throw new Error("milestones-curated.raw.json is missing a valid milestones array.");
+    throw new Error(
+      'milestones-curated.raw.json is missing a valid milestones array.',
+    );
   }
   return { milestones };
 }
@@ -166,35 +197,47 @@ function validateCuratedMilestonesFile(data: unknown): CuratedMilestonesFile {
 // back: it is Fetch's own output, but still an external file on disk, like every
 // raw snapshot validated on read (validateSparqlResultShape, parsePantheonCsv).
 function isEnrichedMilestone(value: unknown): value is EnrichedMilestone {
-  if (typeof value !== "object" || value === null) return false;
+  if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
   return (
-    typeof candidate.id === "string" &&
-    (candidate.name === undefined || typeof candidate.name === "string") &&
-    (candidate.nameRu === undefined || typeof candidate.nameRu === "string") &&
-    (candidate.year === undefined || typeof candidate.year === "number") &&
-    (candidate.month === undefined || typeof candidate.month === "number") &&
-    (candidate.endYear === undefined || typeof candidate.endYear === "number") &&
-    (candidate.endMonth === undefined || typeof candidate.endMonth === "number") &&
-    (candidate.tagline === undefined || typeof candidate.tagline === "string") &&
-    (candidate.taglineRu === undefined || typeof candidate.taglineRu === "string") &&
-    typeof candidate.category === "string" &&
+    typeof candidate.id === 'string' &&
+    (candidate.name === undefined || typeof candidate.name === 'string') &&
+    (candidate.nameRu === undefined || typeof candidate.nameRu === 'string') &&
+    (candidate.year === undefined || typeof candidate.year === 'number') &&
+    (candidate.month === undefined || typeof candidate.month === 'number') &&
+    (candidate.endYear === undefined ||
+      typeof candidate.endYear === 'number') &&
+    (candidate.endMonth === undefined ||
+      typeof candidate.endMonth === 'number') &&
+    (candidate.tagline === undefined ||
+      typeof candidate.tagline === 'string') &&
+    (candidate.taglineRu === undefined ||
+      typeof candidate.taglineRu === 'string') &&
+    typeof candidate.category === 'string' &&
     (MILESTONE_CATEGORIES as readonly string[]).includes(candidate.category) &&
-    (candidate.sitelinks === undefined || typeof candidate.sitelinks === "number") &&
-    (candidate.wikipediaUrl === undefined || typeof candidate.wikipediaUrl === "string") &&
+    (candidate.sitelinks === undefined ||
+      typeof candidate.sitelinks === 'number') &&
+    (candidate.wikipediaUrl === undefined ||
+      typeof candidate.wikipediaUrl === 'string') &&
     isArticleUrlsRecord(candidate.articleUrls) &&
-    (candidate.fameSitelinks === undefined || typeof candidate.fameSitelinks === "number") &&
-    (candidate.fameArticleUrls === undefined || isArticleUrlsRecord(candidate.fameArticleUrls)) &&
+    (candidate.fameSitelinks === undefined ||
+      typeof candidate.fameSitelinks === 'number') &&
+    (candidate.fameArticleUrls === undefined ||
+      isArticleUrlsRecord(candidate.fameArticleUrls)) &&
     Array.isArray(candidate.countries) &&
-    candidate.countries.every((country) => typeof country === "string") &&
-    (candidate.image === undefined || typeof candidate.image === "string")
+    candidate.countries.every((country) => typeof country === 'string') &&
+    (candidate.image === undefined || typeof candidate.image === 'string')
   );
 }
 
-export function validateEnrichedMilestonesFile(data: unknown): { milestones: EnrichedMilestone[] } {
+export function validateEnrichedMilestonesFile(data: unknown): {
+  milestones: EnrichedMilestone[];
+} {
   const milestones = (data as Record<string, unknown> | null)?.milestones;
   if (!Array.isArray(milestones) || !milestones.every(isEnrichedMilestone)) {
-    throw new Error("milestones-curated-enriched.raw.json is missing a valid milestones array.");
+    throw new Error(
+      'milestones-curated-enriched.raw.json is missing a valid milestones array.',
+    );
   }
   return { milestones };
 }
@@ -226,14 +269,27 @@ interface EnrichmentFields {
 // batched per-QID SPARQL pass (VALUES-clause pattern as in fetch-taglines.ts).
 // Tagline, name and date are live-fetched, not read from the curated file, as
 // for Conflicts.
-export async function fetchMilestonesEnrichment(qids?: QidFilter): Promise<void> {
-  const curatedPath = path.join(RAW_DIR, "milestones-curated.raw.json");
-  const curated = validateCuratedMilestonesFile(JSON.parse(await readFile(curatedPath, "utf8")));
+export async function fetchMilestonesEnrichment(
+  qids?: QidFilter,
+): Promise<void> {
+  const curatedPath = path.join(RAW_DIR, 'milestones-curated.raw.json');
+  const curated = validateCuratedMilestonesFile(
+    JSON.parse(await readFile(curatedPath, 'utf8')),
+  );
   const selected = filterByQids(curated.milestones, qids);
-  const fameSourceIds = selected.flatMap((milestone) => (milestone.fameSource ? [milestone.fameSource] : []));
-  const ids = [...new Set([...selected.map((milestone) => milestone.id), ...fameSourceIds])];
+  const fameSourceIds = selected.flatMap((milestone) =>
+    milestone.fameSource ? [milestone.fameSource] : [],
+  );
+  const ids = [
+    ...new Set([
+      ...selected.map((milestone) => milestone.id),
+      ...fameSourceIds,
+    ]),
+  ];
 
-  console.log(`Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated milestones...`);
+  console.log(
+    `Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated milestones...`,
+  );
   if (qids && ids.length === 0) return;
   const result = await batchedSparqlFetch(ids, buildMilestonesEnrichmentQuery);
 
@@ -250,21 +306,32 @@ export async function fetchMilestonesEnrichment(qids?: QidFilter): Promise<void>
       enrichmentById.set(id, entry);
     }
 
-    if (entry.sitelinks === undefined && row.sitelinks?.value) entry.sitelinks = Number(row.sitelinks.value);
+    if (entry.sitelinks === undefined && row.sitelinks?.value)
+      entry.sitelinks = Number(row.sitelinks.value);
     for (const lang of PAGEVIEWS_LANGUAGES) {
       const url = row[articleVar(lang)]?.value;
-      if (url && entry.articleUrls[lang] === undefined) entry.articleUrls[lang] = url;
+      if (url && entry.articleUrls[lang] === undefined)
+        entry.articleUrls[lang] = url;
     }
     // wikipediaUrl is the English-basket article, kept as its own field because
     // every consumer of EnrichedMilestone reads it rather than articleUrls.en.
-    if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
-    if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
-    if (entry.name === undefined && row.nameEn?.value) entry.name = row.nameEn.value;
-    if (entry.nameRu === undefined && row.nameRu?.value) entry.nameRu = row.nameRu.value;
-    if (entry.tagline === undefined && row.tagline?.value) entry.tagline = row.tagline.value;
-    if (entry.taglineRu === undefined && row.taglineRu?.value) entry.taglineRu = row.taglineRu.value;
-    const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
-    if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
+    if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined)
+      entry.wikipediaUrl = entry.articleUrls.en;
+    if (entry.image === undefined && row.image?.value)
+      entry.image = row.image.value;
+    if (entry.name === undefined && row.nameEn?.value)
+      entry.name = row.nameEn.value;
+    if (entry.nameRu === undefined && row.nameRu?.value)
+      entry.nameRu = row.nameRu.value;
+    if (entry.tagline === undefined && row.tagline?.value)
+      entry.tagline = row.tagline.value;
+    if (entry.taglineRu === undefined && row.taglineRu?.value)
+      entry.taglineRu = row.taglineRu.value;
+    const countryId = row.country?.value
+      ? extractQid(row.country.value)
+      : undefined;
+    if (countryId && !entry.countries.includes(countryId))
+      entry.countries.push(countryId);
 
     if (entry.year === undefined && row.date?.value) {
       entry.year = parseIsoYear(row.date.value);
@@ -272,13 +339,18 @@ export async function fetchMilestonesEnrichment(qids?: QidFilter): Promise<void>
     }
     if (entry.endYear === undefined && row.endDate?.value) {
       entry.endYear = parseIsoYear(row.endDate.value);
-      entry.endMonth = parseMonthIfKnown(row.endDate.value, row.endDatePrecision?.value);
+      entry.endMonth = parseMonthIfKnown(
+        row.endDate.value,
+        row.endDatePrecision?.value,
+      );
     }
   }
 
   const enriched: EnrichedMilestone[] = selected.map((milestone) => {
     const enrichment = enrichmentById.get(milestone.id);
-    const fameSource = milestone.fameSource ? enrichmentById.get(milestone.fameSource) : undefined;
+    const fameSource = milestone.fameSource
+      ? enrichmentById.get(milestone.fameSource)
+      : undefined;
     const date = resolveDate(milestone.date, enrichment);
     return {
       id: milestone.id,
@@ -298,10 +370,18 @@ export async function fetchMilestonesEnrichment(qids?: QidFilter): Promise<void>
     };
   });
 
-  const outputPath = path.join(RAW_DIR, "milestones-curated-enriched.raw.json");
-  const milestones = await mergeEnriched(outputPath, "milestones", curated.milestones.map((milestone) => milestone.id), enriched, qids);
+  const outputPath = path.join(RAW_DIR, 'milestones-curated-enriched.raw.json');
+  const milestones = await mergeEnriched(
+    outputPath,
+    'milestones',
+    curated.milestones.map((milestone) => milestone.id),
+    enriched,
+    qids,
+  );
   await writeFile(outputPath, JSON.stringify({ milestones }, null, 2));
-  console.log(`Wrote ${milestones.length} enriched milestones to ${outputPath}`);
+  console.log(
+    `Wrote ${milestones.length} enriched milestones to ${outputPath}`,
+  );
 }
 
 if (fileURLToPath(import.meta.url) === process.argv[1]) {

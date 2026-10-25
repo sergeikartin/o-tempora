@@ -1,5 +1,8 @@
-import { fetchArticlePageviews } from "./pageviews-client.js";
-import { PAGEVIEWS_LANGUAGES, type PageviewsLanguage } from "./pageviews-languages.js";
+import { fetchArticlePageviews } from './pageviews-client.js';
+import {
+  PAGEVIEWS_LANGUAGES,
+  type PageviewsLanguage,
+} from './pageviews-languages.js';
 
 // Same batch size/delay convention as batched-sparql-fetch.ts and
 // batched-commons-image-attribution-fetch.ts, here pacing per-article REST
@@ -15,14 +18,16 @@ function sleep(ms: number): Promise<void> {
 // bindings) is `https://{lang}.wikipedia.org/wiki/<Title>`, while the pageviews
 // endpoint wants a bare underscore-joined title; this takes the URI's last path
 // segment (as commons-client.ts's extractCommonsFileTitle does for P18 URIs).
-export function extractWikipediaArticleTitle(articleUrl: string): string | undefined {
+export function extractWikipediaArticleTitle(
+  articleUrl: string,
+): string | undefined {
   let pathname: string;
   try {
     pathname = new URL(articleUrl).pathname;
   } catch {
     return undefined;
   }
-  const title = decodeURIComponent(pathname.split("/").pop() ?? "");
+  const title = decodeURIComponent(pathname.split('/').pop() ?? '');
   return title || undefined;
 }
 
@@ -34,7 +39,9 @@ export interface PageviewsWindow {
 // The 4 most recently completed calendar years as of `now`, excluding the
 // current partial year (docs/adr/0010's benchmark window). A fixed pipeline
 // constant: changing it needs a code change and a re-run.
-export function trailingFourYearWindow(now: Date = new Date()): PageviewsWindow {
+export function trailingFourYearWindow(
+  now: Date = new Date(),
+): PageviewsWindow {
   const lastCompletedYear = now.getUTCFullYear() - 1;
   const startYear = lastCompletedYear - 3;
   return {
@@ -56,10 +63,14 @@ function projectFor(lang: PageviewsLanguage): string {
  * degrades to 0 rather than dropping the row" decision.
  */
 export async function batchedPageviewsFetch(
-  entries: Array<{ id: string; articleUrls: Partial<Record<PageviewsLanguage, string>> }>,
+  entries: Array<{
+    id: string;
+    articleUrls: Partial<Record<PageviewsLanguage, string>>;
+  }>,
   window: PageviewsWindow = trailingFourYearWindow(),
 ): Promise<Map<string, number>> {
-  const calls: Array<{ id: string; lang: PageviewsLanguage; title: string }> = [];
+  const calls: Array<{ id: string; lang: PageviewsLanguage; title: string }> =
+    [];
   for (const entry of entries) {
     for (const lang of PAGEVIEWS_LANGUAGES) {
       const url = entry.articleUrls[lang];
@@ -77,14 +88,19 @@ export async function batchedPageviewsFetch(
     const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
     const results = await Promise.allSettled(
       batch.map((call) =>
-        fetchArticlePageviews(projectFor(call.lang), call.title, window.startYYYYMM01, window.endYYYYMM01),
+        fetchArticlePageviews(
+          projectFor(call.lang),
+          call.title,
+          window.startYYYYMM01,
+          window.endYYYYMM01,
+        ),
       ),
     );
 
     let resolved = 0;
     results.forEach((result, index) => {
       const call = batch[index]!;
-      if (result.status === "fulfilled") {
+      if (result.status === 'fulfilled') {
         totals.set(call.id, (totals.get(call.id) ?? 0) + result.value);
         resolved += 1;
       } else {
@@ -93,7 +109,9 @@ export async function batchedPageviewsFetch(
         );
       }
     });
-    console.log(`    batch ${batchNumber}: ${resolved}/${batch.length} pageviews calls resolved`);
+    console.log(
+      `    batch ${batchNumber}: ${resolved}/${batch.length} pageviews calls resolved`,
+    );
     if (i + BATCH_SIZE < calls.length) await sleep(BATCH_DELAY_MS);
   }
 

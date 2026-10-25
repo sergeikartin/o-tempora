@@ -13,7 +13,7 @@
 // per basket language, "ru" included); fetch-wikipedia-extracts.ts reads it back
 // from this query's raw output for People's Russian `description`.
 export function buildTaglinesQuery(personIds: string[]): string {
-  const values = personIds.map((id) => `wd:${id}`).join(" ");
+  const values = personIds.map((id) => `wd:${id}`).join(' ');
   return `
 SELECT ?person ?nameEn ?nameRu ?tagline ?taglineRu ?image ?articleRu WHERE {
   VALUES ?person { ${values} }

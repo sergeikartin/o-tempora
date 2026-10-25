@@ -1,14 +1,28 @@
-import { readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { CONFLICT_CATEGORIES, type ConflictCategory } from "@o-tempora/shared-types";
-import { buildConflictsEnrichmentQuery } from "./queries/conflicts-enrichment.js";
-import { batchedSparqlFetch } from "./batched-sparql-fetch.js";
-import { parseIsoYear, parseMonthIfKnown } from "../transform/wikidata-date.js";
-import { filterByQids, mergeEnriched, type QidFilter } from "./qid-filter.js";
-import { PAGEVIEWS_LANGUAGES, articleVar, isArticleUrlsRecord, type PageviewsLanguage } from "./pageviews-languages.js";
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  CONFLICT_CATEGORIES,
+  type ConflictCategory,
+} from '@o-tempora/shared-types';
+import { parseIsoYear, parseMonthIfKnown } from '../transform/wikidata-date.js';
+import { batchedSparqlFetch } from './batched-sparql-fetch.js';
+import {
+  articleVar,
+  isArticleUrlsRecord,
+  PAGEVIEWS_LANGUAGES,
+  type PageviewsLanguage,
+} from './pageviews-languages.js';
+import { filterByQids, mergeEnriched, type QidFilter } from './qid-filter.js';
+import { buildConflictsEnrichmentQuery } from './queries/conflicts-enrichment.js';
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
+const RAW_DIR = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  '..',
+  'data',
+  'raw',
+);
 
 export interface CuratedConflict {
   id: string;
@@ -68,21 +82,25 @@ export interface EnrichedConflict {
 // `JSON.parse(...) as CuratedConflictsFile` cast and break rendering
 // downstream.
 function isCuratedConflict(value: unknown): value is CuratedConflict {
-  if (typeof value !== "object" || value === null) return false;
+  if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
   return (
-    typeof candidate.id === "string" &&
-    typeof candidate.name === "string" &&
-    typeof candidate.category === "string" &&
+    typeof candidate.id === 'string' &&
+    typeof candidate.name === 'string' &&
+    typeof candidate.category === 'string' &&
     (CONFLICT_CATEGORIES as readonly string[]).includes(candidate.category) &&
-    (candidate.parentId === undefined || typeof candidate.parentId === "string")
+    (candidate.parentId === undefined || typeof candidate.parentId === 'string')
   );
 }
 
-export function validateCuratedConflictsFile(data: unknown): CuratedConflictsFile {
+export function validateCuratedConflictsFile(
+  data: unknown,
+): CuratedConflictsFile {
   const conflicts = (data as Record<string, unknown> | null)?.conflicts;
   if (!Array.isArray(conflicts) || !conflicts.every(isCuratedConflict)) {
-    throw new Error("conflicts-curated.raw.json is missing a valid conflicts array.");
+    throw new Error(
+      'conflicts-curated.raw.json is missing a valid conflicts array.',
+    );
   }
   return { conflicts };
 }
@@ -91,34 +109,44 @@ export function validateCuratedConflictsFile(data: unknown): CuratedConflictsFil
 // Transform reads this file back: it is Fetch's own output, but still an
 // external file on disk.
 function isEnrichedConflict(value: unknown): value is EnrichedConflict {
-  if (typeof value !== "object" || value === null) return false;
+  if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
   return (
-    typeof candidate.id === "string" &&
-    (candidate.name === undefined || typeof candidate.name === "string") &&
-    (candidate.nameRu === undefined || typeof candidate.nameRu === "string") &&
-    typeof candidate.category === "string" &&
+    typeof candidate.id === 'string' &&
+    (candidate.name === undefined || typeof candidate.name === 'string') &&
+    (candidate.nameRu === undefined || typeof candidate.nameRu === 'string') &&
+    typeof candidate.category === 'string' &&
     (CONFLICT_CATEGORIES as readonly string[]).includes(candidate.category) &&
-    (candidate.parentId === undefined || typeof candidate.parentId === "string") &&
-    (candidate.sitelinks === undefined || typeof candidate.sitelinks === "number") &&
-    (candidate.wikipediaUrl === undefined || typeof candidate.wikipediaUrl === "string") &&
+    (candidate.parentId === undefined ||
+      typeof candidate.parentId === 'string') &&
+    (candidate.sitelinks === undefined ||
+      typeof candidate.sitelinks === 'number') &&
+    (candidate.wikipediaUrl === undefined ||
+      typeof candidate.wikipediaUrl === 'string') &&
     isArticleUrlsRecord(candidate.articleUrls) &&
     Array.isArray(candidate.countries) &&
-    candidate.countries.every((country) => typeof country === "string") &&
-    (candidate.image === undefined || typeof candidate.image === "string") &&
-    (candidate.tagline === undefined || typeof candidate.tagline === "string") &&
-    (candidate.taglineRu === undefined || typeof candidate.taglineRu === "string") &&
-    (candidate.year === undefined || typeof candidate.year === "number") &&
-    (candidate.month === undefined || typeof candidate.month === "number") &&
-    (candidate.endYear === undefined || typeof candidate.endYear === "number") &&
-    (candidate.endMonth === undefined || typeof candidate.endMonth === "number")
+    candidate.countries.every((country) => typeof country === 'string') &&
+    (candidate.image === undefined || typeof candidate.image === 'string') &&
+    (candidate.tagline === undefined ||
+      typeof candidate.tagline === 'string') &&
+    (candidate.taglineRu === undefined ||
+      typeof candidate.taglineRu === 'string') &&
+    (candidate.year === undefined || typeof candidate.year === 'number') &&
+    (candidate.month === undefined || typeof candidate.month === 'number') &&
+    (candidate.endYear === undefined ||
+      typeof candidate.endYear === 'number') &&
+    (candidate.endMonth === undefined || typeof candidate.endMonth === 'number')
   );
 }
 
-export function validateEnrichedConflictsFile(data: unknown): { conflicts: EnrichedConflict[] } {
+export function validateEnrichedConflictsFile(data: unknown): {
+  conflicts: EnrichedConflict[];
+} {
   const conflicts = (data as Record<string, unknown> | null)?.conflicts;
   if (!Array.isArray(conflicts) || !conflicts.every(isEnrichedConflict)) {
-    throw new Error("conflicts-curated-enriched.raw.json is missing a valid conflicts array.");
+    throw new Error(
+      'conflicts-curated-enriched.raw.json is missing a valid conflicts array.',
+    );
   }
   return { conflicts };
 }
@@ -150,13 +178,19 @@ interface EnrichmentFields {
 // batched per-QID SPARQL pass (as in fetch-milestones-enrichment.ts). Only
 // id/category/parentId are read from the curated file; its own `name` is unused
 // (see conflicts-curated.raw.json's meta.description).
-export async function fetchConflictsEnrichment(qids?: QidFilter): Promise<void> {
-  const curatedPath = path.join(RAW_DIR, "conflicts-curated.raw.json");
-  const curated = validateCuratedConflictsFile(JSON.parse(await readFile(curatedPath, "utf8")));
+export async function fetchConflictsEnrichment(
+  qids?: QidFilter,
+): Promise<void> {
+  const curatedPath = path.join(RAW_DIR, 'conflicts-curated.raw.json');
+  const curated = validateCuratedConflictsFile(
+    JSON.parse(await readFile(curatedPath, 'utf8')),
+  );
   const selected = filterByQids(curated.conflicts, qids);
   const ids = selected.map((conflict) => conflict.id);
 
-  console.log(`Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated conflicts...`);
+  console.log(
+    `Fetching sitelinks/article/country/image/name/tagline/date enrichment for ${ids.length} curated conflicts...`,
+  );
   if (qids && ids.length === 0) return;
   const result = await batchedSparqlFetch(ids, buildConflictsEnrichmentQuery);
 
@@ -173,21 +207,32 @@ export async function fetchConflictsEnrichment(qids?: QidFilter): Promise<void> 
       enrichmentById.set(id, entry);
     }
 
-    if (entry.sitelinks === undefined && row.sitelinks?.value) entry.sitelinks = Number(row.sitelinks.value);
+    if (entry.sitelinks === undefined && row.sitelinks?.value)
+      entry.sitelinks = Number(row.sitelinks.value);
     for (const lang of PAGEVIEWS_LANGUAGES) {
       const url = row[articleVar(lang)]?.value;
-      if (url && entry.articleUrls[lang] === undefined) entry.articleUrls[lang] = url;
+      if (url && entry.articleUrls[lang] === undefined)
+        entry.articleUrls[lang] = url;
     }
     // wikipediaUrl is the English-basket article, kept as its own field because
     // every consumer of EnrichedConflict reads it rather than articleUrls.en.
-    if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined) entry.wikipediaUrl = entry.articleUrls.en;
-    if (entry.image === undefined && row.image?.value) entry.image = row.image.value;
-    if (entry.name === undefined && row.nameEn?.value) entry.name = row.nameEn.value;
-    if (entry.nameRu === undefined && row.nameRu?.value) entry.nameRu = row.nameRu.value;
-    if (entry.tagline === undefined && row.tagline?.value) entry.tagline = row.tagline.value;
-    if (entry.taglineRu === undefined && row.taglineRu?.value) entry.taglineRu = row.taglineRu.value;
-    const countryId = row.country?.value ? extractQid(row.country.value) : undefined;
-    if (countryId && !entry.countries.includes(countryId)) entry.countries.push(countryId);
+    if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined)
+      entry.wikipediaUrl = entry.articleUrls.en;
+    if (entry.image === undefined && row.image?.value)
+      entry.image = row.image.value;
+    if (entry.name === undefined && row.nameEn?.value)
+      entry.name = row.nameEn.value;
+    if (entry.nameRu === undefined && row.nameRu?.value)
+      entry.nameRu = row.nameRu.value;
+    if (entry.tagline === undefined && row.tagline?.value)
+      entry.tagline = row.tagline.value;
+    if (entry.taglineRu === undefined && row.taglineRu?.value)
+      entry.taglineRu = row.taglineRu.value;
+    const countryId = row.country?.value
+      ? extractQid(row.country.value)
+      : undefined;
+    if (countryId && !entry.countries.includes(countryId))
+      entry.countries.push(countryId);
 
     if (entry.year === undefined && row.date?.value) {
       entry.year = parseIsoYear(row.date.value);
@@ -195,7 +240,10 @@ export async function fetchConflictsEnrichment(qids?: QidFilter): Promise<void> 
     }
     if (entry.endYear === undefined && row.endDate?.value) {
       entry.endYear = parseIsoYear(row.endDate.value);
-      entry.endMonth = parseMonthIfKnown(row.endDate.value, row.endDatePrecision?.value);
+      entry.endMonth = parseMonthIfKnown(
+        row.endDate.value,
+        row.endDatePrecision?.value,
+      );
     }
   }
 
@@ -221,8 +269,14 @@ export async function fetchConflictsEnrichment(qids?: QidFilter): Promise<void> 
     };
   });
 
-  const outputPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
-  const conflicts = await mergeEnriched(outputPath, "conflicts", curated.conflicts.map((conflict) => conflict.id), enriched, qids);
+  const outputPath = path.join(RAW_DIR, 'conflicts-curated-enriched.raw.json');
+  const conflicts = await mergeEnriched(
+    outputPath,
+    'conflicts',
+    curated.conflicts.map((conflict) => conflict.id),
+    enriched,
+    qids,
+  );
   await writeFile(outputPath, JSON.stringify({ conflicts }, null, 2));
   console.log(`Wrote ${conflicts.length} enriched conflicts to ${outputPath}`);
 }

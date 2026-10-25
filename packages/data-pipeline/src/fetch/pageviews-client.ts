@@ -13,12 +13,13 @@ export interface PageviewsPerArticleResponse {
   items?: PageviewsPerArticleItem[];
 }
 
-const ENDPOINT = "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article";
+const ENDPOINT =
+  'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article';
 
 // Same courtesy identification as the Wikidata and Commons clients; Wikimedia
 // asks all API traffic to self-identify.
 const USER_AGENT =
-  "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
+  'o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)';
 
 const MAX_RETRIES = 3;
 // As commons-client.ts's REQUEST_TIMEOUT_MS: a per-article monthly read over a
@@ -32,13 +33,20 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function isPageviewsPerArticleResponse(value: unknown): value is PageviewsPerArticleResponse {
-  if (typeof value !== "object" || value === null) return false;
+function isPageviewsPerArticleResponse(
+  value: unknown,
+): value is PageviewsPerArticleResponse {
+  if (typeof value !== 'object' || value === null) return false;
   const items = (value as Record<string, unknown>).items;
   if (items === undefined) return true;
   return (
     Array.isArray(items) &&
-    items.every((item) => typeof item === "object" && item !== null && typeof (item as Record<string, unknown>).views === "number")
+    items.every(
+      (item) =>
+        typeof item === 'object' &&
+        item !== null &&
+        typeof (item as Record<string, unknown>).views === 'number',
+    )
   );
 }
 
@@ -62,7 +70,7 @@ export async function fetchArticlePageviews(
   const url = `${ENDPOINT}/${project}/all-access/all-agents/${encodedTitle}/monthly/${startYYYYMM01}/${endYYYYMM01}`;
 
   const response = await fetch(url, {
-    headers: { "User-Agent": USER_AGENT },
+    headers: { 'User-Agent': USER_AGENT },
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
 
@@ -70,26 +78,42 @@ export async function fetchArticlePageviews(
 
   if (attempt <= MAX_RETRIES) {
     if (response.status === 429) {
-      const retryAfterHeader = Number(response.headers.get("retry-after"));
+      const retryAfterHeader = Number(response.headers.get('retry-after'));
       const retryAfterSeconds =
-        Number.isFinite(retryAfterHeader) && retryAfterHeader > 0 ? retryAfterHeader : 5 * attempt;
+        Number.isFinite(retryAfterHeader) && retryAfterHeader > 0
+          ? retryAfterHeader
+          : 5 * attempt;
       await sleep(retryAfterSeconds * 1000);
-      return fetchArticlePageviews(project, articleTitle, startYYYYMM01, endYYYYMM01, attempt + 1);
+      return fetchArticlePageviews(
+        project,
+        articleTitle,
+        startYYYYMM01,
+        endYYYYMM01,
+        attempt + 1,
+      );
     }
     if (RETRYABLE_SERVER_ERROR_STATUSES.has(response.status)) {
       await sleep(BACKOFF_BASE_MS * 2 ** (attempt - 1));
-      return fetchArticlePageviews(project, articleTitle, startYYYYMM01, endYYYYMM01, attempt + 1);
+      return fetchArticlePageviews(
+        project,
+        articleTitle,
+        startYYYYMM01,
+        endYYYYMM01,
+        attempt + 1,
+      );
     }
   }
 
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`Pageviews API returned HTTP ${response.status}: ${body.slice(0, 500)}`);
+    throw new Error(
+      `Pageviews API returned HTTP ${response.status}: ${body.slice(0, 500)}`,
+    );
   }
 
   const json: unknown = await response.json();
   if (!isPageviewsPerArticleResponse(json)) {
-    throw new Error("Pageviews API response is not the expected items shape.");
+    throw new Error('Pageviews API response is not the expected items shape.');
   }
   return (json.items ?? []).reduce((sum, item) => sum + item.views, 0);
 }

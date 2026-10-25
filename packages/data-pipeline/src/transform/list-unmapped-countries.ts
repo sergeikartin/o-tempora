@@ -1,7 +1,7 @@
-import fs from "node:fs";
-import { REGION_CATEGORIES } from "./region-categories.js";
-import { validateEnrichedMilestonesFile } from "../fetch/fetch-milestones-enrichment.js";
-import { validateEnrichedConflictsFile } from "../fetch/fetch-conflicts-enrichment.js";
+import fs from 'node:fs';
+import { validateEnrichedConflictsFile } from '../fetch/fetch-conflicts-enrichment.js';
+import { validateEnrichedMilestonesFile } from '../fetch/fetch-milestones-enrichment.js';
+import { REGION_CATEGORIES } from './region-categories.js';
 
 // Dumps any country Q-ID a Conflicts/Milestones entry carries (across both
 // enriched sources, unioned) that isn't yet in REGION_CATEGORIES. Run after each
@@ -10,18 +10,27 @@ import { validateEnrichedConflictsFile } from "../fetch/fetch-conflicts-enrichme
 // "no region". People need no such script: their Pantheon country-name lookup
 // (un-region-categories.ts) is fully enumerated. Both lanes are already one row
 // per entry with a plain `countries: string[]`, so no groupRows step is needed.
-const { conflicts } = validateEnrichedConflictsFile(JSON.parse(fs.readFileSync("data/raw/conflicts-curated-enriched.raw.json", "utf8")));
+const { conflicts } = validateEnrichedConflictsFile(
+  JSON.parse(
+    fs.readFileSync('data/raw/conflicts-curated-enriched.raw.json', 'utf8'),
+  ),
+);
 const { milestones } = validateEnrichedMilestonesFile(
-  JSON.parse(fs.readFileSync("data/raw/milestones-curated-enriched.raw.json", "utf8")),
+  JSON.parse(
+    fs.readFileSync('data/raw/milestones-curated-enriched.raw.json', 'utf8'),
+  ),
 );
 
 const unmapped = new Set<string>();
-for (const countryId of [...conflicts.flatMap((conflict) => conflict.countries), ...milestones.flatMap((milestone) => milestone.countries)]) {
+for (const countryId of [
+  ...conflicts.flatMap((conflict) => conflict.countries),
+  ...milestones.flatMap((milestone) => milestone.countries),
+]) {
   if (!(countryId in REGION_CATEGORIES)) unmapped.add(countryId);
 }
 
 if (unmapped.size === 0) {
-  console.log("No unmapped country Q-IDs.");
+  console.log('No unmapped country Q-IDs.');
 } else {
   console.log(`${unmapped.size} unmapped country Q-ID(s):`);
   for (const id of unmapped) console.log(`  ${id}`);

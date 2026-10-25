@@ -1,4 +1,8 @@
-import { fetchWikipediaSummary, type WikipediaLanguage, type WikipediaSummaryResponse } from "./wikipedia-client.js";
+import {
+  fetchWikipediaSummary,
+  type WikipediaLanguage,
+  type WikipediaSummaryResponse,
+} from './wikipedia-client.js';
 
 // Wikimedia's REST summary API has no batch form and asks for a gentler pace
 // than commons-client.ts/pageviews-client.ts's 50-wide bursts every 500ms, so
@@ -17,9 +21,12 @@ const CONTROL_AND_FORMAT_CHARS = /[\p{Cc}\p{Cf}]/gu;
 // A disambiguation page's extract is a list-page blurb, not prose, so it counts
 // as no extract; so does an empty or whitespace-only one (after control-character
 // stripping), rather than being published blank.
-export function cleanExtract(summary: WikipediaSummaryResponse | undefined): string | undefined {
-  if (!summary || summary.type === "disambiguation" || !summary.extract) return undefined;
-  const cleaned = summary.extract.replace(CONTROL_AND_FORMAT_CHARS, "").trim();
+export function cleanExtract(
+  summary: WikipediaSummaryResponse | undefined,
+): string | undefined {
+  if (!summary || summary.type === 'disambiguation' || !summary.extract)
+    return undefined;
+  const cleaned = summary.extract.replace(CONTROL_AND_FORMAT_CHARS, '').trim();
   return cleaned || undefined;
 }
 
@@ -43,7 +50,7 @@ export interface WikipediaExtractEntry {
  */
 export async function batchedWikipediaExtractFetch(
   entries: WikipediaExtractEntry[],
-  lang: WikipediaLanguage = "en",
+  lang: WikipediaLanguage = 'en',
 ): Promise<Map<string, string>> {
   const titleToIds = new Map<string, string[]>();
   for (const entry of entries) {
@@ -61,13 +68,18 @@ export async function batchedWikipediaExtractFetch(
       const summary = await fetchWikipediaSummary(title, lang);
       const cleaned = cleanExtract(summary);
       if (cleaned) {
-        for (const id of titleToIds.get(title) ?? []) extractById.set(id, cleaned);
+        for (const id of titleToIds.get(title) ?? [])
+          extractById.set(id, cleaned);
       }
     } catch (error) {
-      console.warn(`    extract fetch failed for "${title}": ${(error as Error).message}; skipping.`);
+      console.warn(
+        `    extract fetch failed for "${title}": ${(error as Error).message}; skipping.`,
+      );
     }
     if ((i + 1) % 200 === 0) {
-      console.log(`    ${i + 1}/${titles.length} titles processed (${extractById.size} extracts resolved)`);
+      console.log(
+        `    ${i + 1}/${titles.length} titles processed (${extractById.size} extracts resolved)`,
+      );
     }
     if (i < titles.length - 1) await sleep(REQUEST_DELAY_MS);
   }

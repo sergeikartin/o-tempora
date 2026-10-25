@@ -1,22 +1,33 @@
-import { writeFile, mkdir } from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import Bunzip from "seek-bzip";
+import { mkdir, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import Bunzip from 'seek-bzip';
 
 // Public, unauthenticated GCS object (.scratch/alt-data-sources/research/pantheon-schema.md).
 // The bucket also lists 2020/2019 person datasets and Pantheon 1.0 files; the
 // 2025 release is pinned explicitly, not "latest", so a new release can't
 // silently reshape this pipeline's input.
-const DATASET_URL = "https://storage.googleapis.com/pantheon-public-data/person_2025_update.csv.bz2";
+const DATASET_URL =
+  'https://storage.googleapis.com/pantheon-public-data/person_2025_update.csv.bz2';
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
-const OUTPUT_PATH = path.join(RAW_DIR, "people-pantheon.raw.csv");
+const RAW_DIR = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  '..',
+  'data',
+  'raw',
+);
+const OUTPUT_PATH = path.join(RAW_DIR, 'people-pantheon.raw.csv');
 
 export async function fetchPantheon(): Promise<void> {
-  console.log(`Downloading Pantheon 2025 Person Dataset from ${DATASET_URL}...`);
+  console.log(
+    `Downloading Pantheon 2025 Person Dataset from ${DATASET_URL}...`,
+  );
   const response = await fetch(DATASET_URL);
   if (!response.ok) {
-    throw new Error(`Pantheon dataset download returned HTTP ${response.status}`);
+    throw new Error(
+      `Pantheon dataset download returned HTTP ${response.status}`,
+    );
   }
   const compressed = Buffer.from(await response.arrayBuffer());
   console.log(`Downloaded ${compressed.length} bytes, decompressing...`);

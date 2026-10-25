@@ -1,4 +1,4 @@
-import { PAGEVIEWS_LANGUAGES, articleVar } from "../pageviews-languages.js";
+import { articleVar, PAGEVIEWS_LANGUAGES } from '../pageviews-languages.js';
 
 // Each pageviews-basket language's Wikipedia article title is an OPTIONAL
 // binding in this query (like the English ?article), so it reuses the query's
@@ -8,7 +8,7 @@ function articleOptionalBlocks(): string {
   return PAGEVIEWS_LANGUAGES.map(
     (lang) =>
       `  OPTIONAL { ?${articleVar(lang)} schema:about ?event; schema:isPartOf <https://${lang}.wikipedia.org/>. }`,
-  ).join("\n");
+  ).join('\n');
 }
 
 // Enrichment for the hand-curated Conflicts list
@@ -32,8 +32,10 @@ function articleOptionalBlocks(): string {
 // puts the earliest first per ?event and fetchConflictsEnrichment takes the first
 // value, so ties resolve to the earliest claim.
 export function buildConflictsEnrichmentQuery(ids: string[]): string {
-  const values = ids.map((id) => `wd:${id}`).join(" ");
-  const articleVars = PAGEVIEWS_LANGUAGES.map((lang) => `?${articleVar(lang)}`).join(" ");
+  const values = ids.map((id) => `wd:${id}`).join(' ');
+  const articleVars = PAGEVIEWS_LANGUAGES.map(
+    (lang) => `?${articleVar(lang)}`,
+  ).join(' ');
   return `
 SELECT ?event ?sitelinks ${articleVars} ?country ?image ?nameEn ?nameRu ?tagline ?taglineRu ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
   VALUES ?event { ${values} }

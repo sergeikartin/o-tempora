@@ -1,5 +1,9 @@
-import type { ConflictCategory, MilestoneCategory, Region } from "@o-tempora/shared-types";
-import { REGION_CATEGORIES } from "./region-categories.js";
+import type {
+  ConflictCategory,
+  MilestoneCategory,
+  Region,
+} from '@o-tempora/shared-types';
+import { REGION_CATEGORIES } from './region-categories.js';
 
 export interface MilestoneTags {
   category: MilestoneCategory;
@@ -23,7 +27,10 @@ function regionTagsFor(countries: string[]): Region[] {
 // Curated milestones (data/raw/milestones-curated.raw.json) are already hand-
 // classified into MilestoneCategory — no lookup table needed; category just
 // passes through.
-export function tagCuratedMilestone(category: MilestoneCategory, countries: string[]): MilestoneTags {
+export function tagCuratedMilestone(
+  category: MilestoneCategory,
+  countries: string[],
+): MilestoneTags {
   return { category, regionTags: regionTagsFor(countries) };
 }
 
@@ -31,6 +38,9 @@ export function tagCuratedMilestone(category: MilestoneCategory, countries: stri
 // into ConflictCategory by the curator — same "no lookup table, category
 // just passes through" reasoning as tagCuratedMilestone above. Only
 // regionTags is derived, from the countries Wikidata enrichment resolved.
-export function tagCuratedConflict(category: ConflictCategory, countries: string[]): ConflictTags {
+export function tagCuratedConflict(
+  category: ConflictCategory,
+  countries: string[],
+): ConflictTags {
   return { category, regionTags: regionTagsFor(countries) };
 }

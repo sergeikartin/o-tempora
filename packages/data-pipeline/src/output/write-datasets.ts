@@ -1,20 +1,24 @@
 import type {
+  Conflict,
   ConflictCategory,
+  ConflictEntry,
+  ConflictEvent,
+  Milestone,
   MilestoneCategory,
   Person,
-  Conflict,
-  ConflictEvent,
-  ConflictEntry,
-  Milestone,
   YearMonth,
-} from "@o-tempora/shared-types";
-import type { TaggedPerson, TaggedConflict, TaggedMilestone } from "../transform/index.js";
-import { imageFields } from "./image-fields.js";
+} from '@o-tempora/shared-types';
+import type {
+  TaggedConflict,
+  TaggedMilestone,
+  TaggedPerson,
+} from '../transform/index.js';
+import { imageFields } from './image-fields.js';
 
 // What the builders return: an entry before `slug` is attached. A slug is
 // unique across every lane (slugs.ts), so it can only be assigned once all
 // lanes are built.
-export type Unslugged<T> = T extends unknown ? Omit<T, "slug"> : never;
+export type Unslugged<T> = T extends unknown ? Omit<T, 'slug'> : never;
 
 export interface DropReport {
   dropped: number;
@@ -27,18 +31,22 @@ export interface DropReport {
 // per-field text (name/tagline/description) varies, falling back to English
 // where the Russian value didn't resolve. Both files therefore share the same
 // entity set.
-export type Lang = "en" | "ru";
+export type Lang = 'en' | 'ru';
 
 // Picks the Russian value when building the Russian output and it resolved,
 // English otherwise: the one fallback rule for every language-varying field.
 function resolveField(en: string, ru: string | undefined, lang: Lang): string {
-  return lang === "ru" ? (ru ?? en) : en;
+  return lang === 'ru' ? (ru ?? en) : en;
 }
 
 // Same rule as resolveField, for fields (like description) that are optional
 // in English too; never gates row inclusion.
-function resolveOptionalField(en: string | undefined, ru: string | undefined, lang: Lang): string | undefined {
-  return lang === "ru" ? (ru ?? en) : en;
+function resolveOptionalField(
+  en: string | undefined,
+  ru: string | undefined,
+  lang: Lang,
+): string | undefined {
+  return lang === 'ru' ? (ru ?? en) : en;
 }
 
 function record(reasons: Record<string, number>, reason: string): void {
@@ -50,7 +58,10 @@ function yearMonth(year: number, month: number | undefined): YearMonth {
   return month === undefined ? { year } : { year, month };
 }
 
-function optionalYearMonth(year: number | undefined, month: number | undefined): YearMonth | undefined {
+function optionalYearMonth(
+  year: number | undefined,
+  month: number | undefined,
+): YearMonth | undefined {
   return year === undefined ? undefined : yearMonth(year, month);
 }
 
@@ -68,27 +79,34 @@ interface ValidatedEventRow<C> {
 // Period/PointInTime split) differs, and each lane has its own category type
 // (hence the type param).
 function validateEventRow<C>(
-  row: { label?: string; article?: string; tagline?: string; year?: number; month?: number; category?: C },
+  row: {
+    label?: string;
+    article?: string;
+    tagline?: string;
+    year?: number;
+    month?: number;
+    category?: C;
+  },
   reasons: Record<string, number>,
 ): ValidatedEventRow<C> | undefined {
   if (!row.label) {
-    record(reasons, "missing name");
+    record(reasons, 'missing name');
     return undefined;
   }
   if (!row.article) {
-    record(reasons, "missing Wikipedia article");
+    record(reasons, 'missing Wikipedia article');
     return undefined;
   }
   if (!row.tagline) {
-    record(reasons, "missing tagline");
+    record(reasons, 'missing tagline');
     return undefined;
   }
   if (row.year === undefined) {
-    record(reasons, "missing date");
+    record(reasons, 'missing date');
     return undefined;
   }
   if (!row.category) {
-    record(reasons, "no mappable event category");
+    record(reasons, 'no mappable event category');
     return undefined;
   }
   return {
@@ -109,7 +127,10 @@ const MAX_PLAUSIBLE_LIFESPAN_YEARS = 130;
 // Output is the last chance to catch a schema violation before the frontend.
 // wikipediaUrl needs no presence check: it derives from Pantheon's slug column,
 // which parsePantheonCsv guarantees is non-empty.
-export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: Unslugged<Person>[]; report: DropReport } {
+export function buildPeople(
+  rows: TaggedPerson[],
+  lang: Lang = 'en',
+): { people: Unslugged<Person>[]; report: DropReport } {
   const people: Unslugged<Person>[] = [];
   const reasons: Record<string, number> = {};
 
@@ -117,15 +138,15 @@ export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: 
     // Inclusion is gated on the English name/tagline regardless of `lang` (see
     // Lang).
     if (!row.name) {
-      record(reasons, "missing name");
+      record(reasons, 'missing name');
       continue;
     }
     if (!row.tagline) {
-      record(reasons, "missing tagline");
+      record(reasons, 'missing tagline');
       continue;
     }
     if (row.birthyear === undefined) {
-      record(reasons, "missing birth year");
+      record(reasons, 'missing birth year');
       continue;
     }
     if (row.deathyear === undefined && !row.alive) {
@@ -133,22 +154,27 @@ export function buildPeople(rows: TaggedPerson[], lang: Lang = "en"): { people: 
       // confirmed-alive person. Pantheon also omits deathyear when the death is
       // unrecorded (e.g. Jack the Ripper), which isn't "ongoing" and shouldn't render
       // through to today.
-      record(reasons, "no deathyear and not confirmed alive");
+      record(reasons, 'no deathyear and not confirmed alive');
       continue;
     }
     if (
       row.deathyear !== undefined &&
-      (row.deathyear < row.birthyear || row.deathyear - row.birthyear > MAX_PLAUSIBLE_LIFESPAN_YEARS)
+      (row.deathyear < row.birthyear ||
+        row.deathyear - row.birthyear > MAX_PLAUSIBLE_LIFESPAN_YEARS)
     ) {
-      record(reasons, "implausible lifespan");
+      record(reasons, 'implausible lifespan');
       continue;
     }
     if (!row.occupationDomain) {
-      record(reasons, "no mappable occupation domain");
+      record(reasons, 'no mappable occupation domain');
       continue;
     }
 
-    const description = resolveOptionalField(row.description, row.descriptionRu, lang);
+    const description = resolveOptionalField(
+      row.description,
+      row.descriptionRu,
+      lang,
+    );
     people.push({
       id: row.id,
       name: resolveField(row.name, row.nameRu, lang),
@@ -184,10 +210,11 @@ function validateParentChain(
 
   while (currentId !== undefined) {
     const current = built.get(currentId);
-    if (!current) return { ok: false, reason: "parentId not found" };
+    if (!current) return { ok: false, reason: 'parentId not found' };
     depth += 1;
-    if (depth > 3) return { ok: false, reason: "nesting depth exceeded" };
-    if (currentId !== id && !("period" in current)) return { ok: false, reason: "parentId is not a Conflict" };
+    if (depth > 3) return { ok: false, reason: 'nesting depth exceeded' };
+    if (currentId !== id && !('period' in current))
+      return { ok: false, reason: 'parentId is not a Conflict' };
     currentId = current.parentId;
   }
 
@@ -200,7 +227,7 @@ function validateParentChain(
 // Conflict/ConflictEvent).
 export function buildConflicts(
   rows: TaggedConflict[],
-  lang: Lang = "en",
+  lang: Lang = 'en',
 ): { entries: Unslugged<ConflictEntry>[]; report: DropReport } {
   const reasons: Record<string, number> = {};
   const built = new Map<string, Unslugged<ConflictEntry>>();
@@ -211,11 +238,15 @@ export function buildConflicts(
     const validated = validateEventRow<ConflictCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
-      record(reasons, "missing sitelinks (enrichment failed)");
+      record(reasons, 'missing sitelinks (enrichment failed)');
       continue;
     }
 
-    const description = resolveOptionalField(row.description, row.descriptionRu, lang);
+    const description = resolveOptionalField(
+      row.description,
+      row.descriptionRu,
+      lang,
+    );
     const shared = {
       id: row.id,
       name: resolveField(validated.name, row.labelRu, lang),
@@ -239,7 +270,10 @@ export function buildConflicts(
       };
       built.set(row.id, conflict);
     } else {
-      const conflictEvent: Unslugged<ConflictEvent> = { ...shared, at: yearMonth(validated.year, validated.month) };
+      const conflictEvent: Unslugged<ConflictEvent> = {
+        ...shared,
+        at: yearMonth(validated.year, validated.month),
+      };
       built.set(row.id, conflictEvent);
     }
   }
@@ -254,7 +288,10 @@ export function buildConflicts(
     }
   }
 
-  return { entries, report: { dropped: rows.length - entries.length, reasons } };
+  return {
+    entries,
+    report: { dropped: rows.length - entries.length, reasons },
+  };
 }
 
 // sitelinks<=0 means fetch-milestones-enrichment.ts couldn't resolve this QID
@@ -266,7 +303,7 @@ export function buildConflicts(
 // Death, 1346-1353), otherwise a point (shared-types's Milestone).
 export function buildMilestones(
   rows: TaggedMilestone[],
-  lang: Lang = "en",
+  lang: Lang = 'en',
 ): { milestones: Unslugged<Milestone>[]; report: DropReport } {
   const milestones: Unslugged<Milestone>[] = [];
   const reasons: Record<string, number> = {};
@@ -276,11 +313,15 @@ export function buildMilestones(
     const validated = validateEventRow<MilestoneCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
-      record(reasons, "missing sitelinks (enrichment failed)");
+      record(reasons, 'missing sitelinks (enrichment failed)');
       continue;
     }
 
-    const description = resolveOptionalField(row.description, row.descriptionRu, lang);
+    const description = resolveOptionalField(
+      row.description,
+      row.descriptionRu,
+      lang,
+    );
     const shared = {
       id: row.id,
       name: resolveField(validated.name, row.labelRu, lang),
@@ -305,11 +346,17 @@ export function buildMilestones(
     } else {
       // Wikidata's claim precision decides whether month is present
       // (fetch-milestones-enrichment.ts), as for Conflicts.
-      milestones.push({ ...shared, at: yearMonth(validated.year, validated.month) });
+      milestones.push({
+        ...shared,
+        at: yearMonth(validated.year, validated.month),
+      });
     }
   }
 
-  return { milestones, report: { dropped: rows.length - milestones.length, reasons } };
+  return {
+    milestones,
+    report: { dropped: rows.length - milestones.length, reasons },
+  };
 }
 
 // The Detail Level whose delta file an entity ships in: the first level whose

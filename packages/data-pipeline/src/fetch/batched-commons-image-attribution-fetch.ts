@@ -1,4 +1,7 @@
-import { fetchCommonsImageInfo, type CommonsImageInfo } from "./commons-client.js";
+import {
+  type CommonsImageInfo,
+  fetchCommonsImageInfo,
+} from './commons-client.js';
 
 // Same batch size batched-sparql-fetch.ts uses for Wikidata VALUES clauses
 // — also MediaWiki's own titles= batching ceiling for unauthenticated API
@@ -21,21 +24,23 @@ export function extractCommonsFileTitle(imageUri: string): string | undefined {
   } catch {
     return undefined;
   }
-  const fileName = decodeURIComponent(pathname.split("/").pop() ?? "");
+  const fileName = decodeURIComponent(pathname.split('/').pop() ?? '');
   return fileName ? `File:${fileName}` : undefined;
 }
 
 function stripHtml(value: string): string {
-  return value.replace(/<[^>]*>/g, "").trim();
+  return value.replace(/<[^>]*>/g, '').trim();
 }
 
 // Commons' extmetadata.Artist/Credit values are HTML fragments (research/
 // image-sourcing.md §2.3's live samples), not plain text — this app renders
 // the result as plain React text (auto-escaped), so tags are stripped, not
 // preserved or re-rendered as markup.
-export function buildAttributionDisplayString(info: CommonsImageInfo): string | undefined {
+export function buildAttributionDisplayString(
+  info: CommonsImageInfo,
+): string | undefined {
   const meta = info.extmetadata;
-  if (!meta || meta.AttributionRequired?.value !== "true") return undefined;
+  if (!meta || meta.AttributionRequired?.value !== 'true') return undefined;
   const credit = meta.Artist?.value ?? meta.Credit?.value;
   if (!credit) return undefined;
   const plainCredit = stripHtml(credit);
@@ -81,9 +86,13 @@ export async function batchedCommonsImageAttributionFetch(
           resolved += 1;
         }
       }
-      console.log(`    batch ${batchNumber}: +${resolved} attributions (total ${attributionById.size})`);
+      console.log(
+        `    batch ${batchNumber}: +${resolved} attributions (total ${attributionById.size})`,
+      );
     } catch (error) {
-      console.warn(`    batch ${batchNumber}: failed (${(error as Error).message}); skipping.`);
+      console.warn(
+        `    batch ${batchNumber}: failed (${(error as Error).message}); skipping.`,
+      );
     }
     if (i + BATCH_SIZE < titles.length) await sleep(BATCH_DELAY_MS);
   }

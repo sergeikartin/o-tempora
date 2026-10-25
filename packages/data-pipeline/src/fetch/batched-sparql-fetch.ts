@@ -1,5 +1,5 @@
-import { runSparqlQuery } from "./wikidata-client.js";
-import type { SparqlResults } from "./sparql-result-shape.js";
+import type { SparqlResults } from './sparql-result-shape.js';
+import { runSparqlQuery } from './wikidata-client.js';
 
 // Kept well under any practical VALUES-clause size limit; batching also
 // bounds how much a single request can cost the query service, consistent
@@ -21,7 +21,7 @@ export async function batchedSparqlFetch(
   buildQuery: (batch: string[]) => string,
 ): Promise<SparqlResults> {
   let vars: string[] = [];
-  const bindings: SparqlResults["results"]["bindings"] = [];
+  const bindings: SparqlResults['results']['bindings'] = [];
 
   for (let i = 0; i < ids.length; i += BATCH_SIZE) {
     const batch = ids.slice(i, i + BATCH_SIZE);
@@ -30,9 +30,13 @@ export async function batchedSparqlFetch(
       const result = await runSparqlQuery(buildQuery(batch));
       vars = result.head.vars;
       bindings.push(...result.results.bindings);
-      console.log(`    batch ${batchNumber}: +${result.results.bindings.length} rows (total ${bindings.length})`);
+      console.log(
+        `    batch ${batchNumber}: +${result.results.bindings.length} rows (total ${bindings.length})`,
+      );
     } catch (error) {
-      console.warn(`    batch ${batchNumber}: failed (${(error as Error).message}); skipping.`);
+      console.warn(
+        `    batch ${batchNumber}: failed (${(error as Error).message}); skipping.`,
+      );
     }
     if (i + BATCH_SIZE < ids.length) await sleep(BATCH_DELAY_MS);
   }

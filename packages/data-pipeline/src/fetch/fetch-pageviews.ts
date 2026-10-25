@@ -1,19 +1,25 @@
-import fsPromises from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { validateEnrichedMilestonesFile } from "./fetch-milestones-enrichment.js";
-import { validateEnrichedConflictsFile } from "./fetch-conflicts-enrichment.js";
-import { batchedPageviewsFetch } from "./batched-pageviews-fetch.js";
-import { filterByQids, writeRecordFile, type QidFilter } from "./qid-filter.js";
-import type { PageviewsLanguage } from "./pageviews-languages.js";
-import type { Lane } from "./lane.js";
+import fsPromises from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { batchedPageviewsFetch } from './batched-pageviews-fetch.js';
+import { validateEnrichedConflictsFile } from './fetch-conflicts-enrichment.js';
+import { validateEnrichedMilestonesFile } from './fetch-milestones-enrichment.js';
+import type { Lane } from './lane.js';
+import type { PageviewsLanguage } from './pageviews-languages.js';
+import { filterByQids, type QidFilter, writeRecordFile } from './qid-filter.js';
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
+const RAW_DIR = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  '..',
+  'data',
+  'raw',
+);
 
 // People has no pageviews stage: Score's People path uses Pantheon HPI directly
 // (docs/adr/0010).
-export type PageviewsLane = Exclude<Lane, "people">;
-const PAGEVIEWS_LANES: readonly PageviewsLane[] = ["conflicts", "milestones"];
+export type PageviewsLane = Exclude<Lane, 'people'>;
+const PAGEVIEWS_LANES: readonly PageviewsLane[] = ['conflicts', 'milestones'];
 
 interface PageviewsEntry {
   id: string;
@@ -22,19 +28,38 @@ interface PageviewsEntry {
 
 async function loadConflictsPageviewsEntries(): Promise<PageviewsEntry[]> {
   const enrichedConflicts = validateEnrichedConflictsFile(
-    JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "conflicts-curated-enriched.raw.json"), "utf8")),
+    JSON.parse(
+      await fsPromises.readFile(
+        path.join(RAW_DIR, 'conflicts-curated-enriched.raw.json'),
+        'utf8',
+      ),
+    ),
   );
-  return enrichedConflicts.conflicts.map((conflict) => ({ id: conflict.id, articleUrls: conflict.articleUrls }));
+  return enrichedConflicts.conflicts.map((conflict) => ({
+    id: conflict.id,
+    articleUrls: conflict.articleUrls,
+  }));
 }
 
 async function loadMilestonesPageviewsEntries(): Promise<PageviewsEntry[]> {
   const enrichedMilestones = validateEnrichedMilestonesFile(
-    JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "milestones-curated-enriched.raw.json"), "utf8")),
+    JSON.parse(
+      await fsPromises.readFile(
+        path.join(RAW_DIR, 'milestones-curated-enriched.raw.json'),
+        'utf8',
+      ),
+    ),
   );
-  return enrichedMilestones.milestones.map((milestone) => ({ id: milestone.id, articleUrls: milestone.fameArticleUrls ?? milestone.articleUrls }));
+  return enrichedMilestones.milestones.map((milestone) => ({
+    id: milestone.id,
+    articleUrls: milestone.fameArticleUrls ?? milestone.articleUrls,
+  }));
 }
 
-const LOAD_PAGEVIEWS_ENTRIES: Record<PageviewsLane, () => Promise<PageviewsEntry[]>> = {
+const LOAD_PAGEVIEWS_ENTRIES: Record<
+  PageviewsLane,
+  () => Promise<PageviewsEntry[]>
+> = {
   conflicts: loadConflictsPageviewsEntries,
   milestones: loadMilestonesPageviewsEntries,
 };
@@ -50,17 +75,24 @@ const LOAD_PAGEVIEWS_ENTRIES: Record<PageviewsLane, () => Promise<PageviewsEntry
 // A lane arg scopes the pass to one lane; omitted runs both concurrently, each
 // pacing its own requests (batched-pageviews-fetch.ts's BATCH_DELAY_MS, as
 // fetchImageAttribution's Promise.all does).
-export async function fetchPageviews(lane?: PageviewsLane, qids?: QidFilter): Promise<void> {
+export async function fetchPageviews(
+  lane?: PageviewsLane,
+  qids?: QidFilter,
+): Promise<void> {
   const lanes = lane ? [lane] : PAGEVIEWS_LANES;
   await Promise.all(
     lanes.map(async (l) => {
       const entries = filterByQids(await LOAD_PAGEVIEWS_ENTRIES[l](), qids);
       if (qids && entries.length === 0) return;
-      console.log(`Fetching trailing-4-year pageviews for ${entries.length} curated ${l}...`);
+      console.log(
+        `Fetching trailing-4-year pageviews for ${entries.length} curated ${l}...`,
+      );
       const pageviews = await batchedPageviewsFetch(entries);
       const outputPath = path.join(RAW_DIR, `${l}-pageviews.raw.json`);
       await writeRecordFile(outputPath, pageviews, qids);
-      console.log(`Wrote ${pageviews.size} ${l} pageview totals to ${outputPath}`);
+      console.log(
+        `Wrote ${pageviews.size} ${l} pageview totals to ${outputPath}`,
+      );
     }),
   );
 }

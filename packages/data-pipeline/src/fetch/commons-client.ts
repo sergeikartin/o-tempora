@@ -28,12 +28,12 @@ export interface CommonsImageInfoResponse {
   query?: { pages?: CommonsPage[] };
 }
 
-const ENDPOINT = "https://commons.wikimedia.org/w/api.php";
+const ENDPOINT = 'https://commons.wikimedia.org/w/api.php';
 
 // Same courtesy identification as wikidata-client.ts; Wikimedia asks all API
 // traffic to self-identify.
 const USER_AGENT =
-  "o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)";
+  'o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)';
 
 const MAX_RETRIES = 3;
 // Shorter than wikidata-client.ts's 55s, which is sized to WDQS's 60s query
@@ -47,11 +47,13 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function isCommonsImageInfoResponse(value: unknown): value is CommonsImageInfoResponse {
-  if (typeof value !== "object" || value === null) return false;
+function isCommonsImageInfoResponse(
+  value: unknown,
+): value is CommonsImageInfoResponse {
+  if (typeof value !== 'object' || value === null) return false;
   const query = (value as Record<string, unknown>).query;
   if (query === undefined) return true;
-  if (typeof query !== "object" || query === null) return false;
+  if (typeof query !== 'object' || query === null) return false;
   const pages = (query as Record<string, unknown>).pages;
   return pages === undefined || Array.isArray(pages);
 }
@@ -67,24 +69,26 @@ export async function fetchCommonsImageInfo(
   attempt = 1,
 ): Promise<CommonsImageInfoResponse> {
   const params = new URLSearchParams({
-    action: "query",
-    prop: "imageinfo",
-    iiprop: "extmetadata",
-    titles: fileTitles.join("|"),
-    format: "json",
-    formatversion: "2",
+    action: 'query',
+    prop: 'imageinfo',
+    iiprop: 'extmetadata',
+    titles: fileTitles.join('|'),
+    format: 'json',
+    formatversion: '2',
   });
 
   const response = await fetch(`${ENDPOINT}?${params.toString()}`, {
-    headers: { "User-Agent": USER_AGENT },
+    headers: { 'User-Agent': USER_AGENT },
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
 
   if (attempt <= MAX_RETRIES) {
     if (response.status === 429) {
-      const retryAfterHeader = Number(response.headers.get("retry-after"));
+      const retryAfterHeader = Number(response.headers.get('retry-after'));
       const retryAfterSeconds =
-        Number.isFinite(retryAfterHeader) && retryAfterHeader > 0 ? retryAfterHeader : 5 * attempt;
+        Number.isFinite(retryAfterHeader) && retryAfterHeader > 0
+          ? retryAfterHeader
+          : 5 * attempt;
       await sleep(retryAfterSeconds * 1000);
       return fetchCommonsImageInfo(fileTitles, attempt + 1);
     }
@@ -96,12 +100,16 @@ export async function fetchCommonsImageInfo(
 
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`Commons imageinfo API returned HTTP ${response.status}: ${body.slice(0, 500)}`);
+    throw new Error(
+      `Commons imageinfo API returned HTTP ${response.status}: ${body.slice(0, 500)}`,
+    );
   }
 
   const json: unknown = await response.json();
   if (!isCommonsImageInfoResponse(json)) {
-    throw new Error("Commons imageinfo API response is not the expected query.pages shape.");
+    throw new Error(
+      'Commons imageinfo API response is not the expected query.pages shape.',
+    );
   }
   return json;
 }

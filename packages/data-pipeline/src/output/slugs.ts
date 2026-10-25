@@ -9,11 +9,11 @@ interface Sluggable {
 // separator.
 export function slugify(name: string): string {
   return name
-    .normalize("NFKD")
-    .replace(/[̀-ͯ]/g, "")
+    .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 // One slug per entity across every lane (an Entity Link carries the slug
@@ -22,7 +22,9 @@ export function slugify(name: string): string {
 // famous keeps the plain slug (ties broken by id); the rest get their id
 // appended, which stays stable as unrelated entities come and go. A name
 // with no ASCII letters or digits falls back to the id.
-export function assignSlugs(entities: readonly Sluggable[]): Map<string, string> {
+export function assignSlugs(
+  entities: readonly Sluggable[],
+): Map<string, string> {
   const byBaseSlug = new Map<string, Sluggable[]>();
   for (const entity of entities) {
     const base = slugify(entity.name) || slugify(entity.id);

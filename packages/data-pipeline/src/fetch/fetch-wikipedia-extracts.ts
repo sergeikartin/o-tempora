@@ -1,18 +1,27 @@
-import fsPromises from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { MIN_HPI } from "./queries/min-hpi.js";
-import { parsePantheonCsv } from "./pantheon-row-shape.js";
-import { validateEnrichedConflictsFile } from "./fetch-conflicts-enrichment.js";
-import { validateEnrichedMilestonesFile } from "./fetch-milestones-enrichment.js";
-import { validateSparqlResultShape } from "./validate-sparql-result.js";
-import { extractWikipediaArticleTitle } from "./batched-pageviews-fetch.js";
-import { batchedWikipediaExtractFetch, type WikipediaExtractEntry } from "./batched-wikipedia-extract-fetch.js";
-import type { WikipediaLanguage } from "./wikipedia-client.js";
-import { filterByQids, writeRecordFile, type QidFilter } from "./qid-filter.js";
-import { LANES, type Lane } from "./lane.js";
+import fsPromises from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { extractWikipediaArticleTitle } from './batched-pageviews-fetch.js';
+import {
+  batchedWikipediaExtractFetch,
+  type WikipediaExtractEntry,
+} from './batched-wikipedia-extract-fetch.js';
+import { validateEnrichedConflictsFile } from './fetch-conflicts-enrichment.js';
+import { validateEnrichedMilestonesFile } from './fetch-milestones-enrichment.js';
+import { LANES, type Lane } from './lane.js';
+import { parsePantheonCsv } from './pantheon-row-shape.js';
+import { filterByQids, type QidFilter, writeRecordFile } from './qid-filter.js';
+import { MIN_HPI } from './queries/min-hpi.js';
+import { validateSparqlResultShape } from './validate-sparql-result.js';
+import type { WikipediaLanguage } from './wikipedia-client.js';
 
-const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "raw");
+const RAW_DIR = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+  '..',
+  'data',
+  'raw',
+);
 
 // People's article title is Pantheon's `slug` column (no SPARQL round-trip,
 // unlike Conflicts/Milestones, whose titles come from their enrichment's
@@ -21,8 +30,8 @@ const RAW_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 // wdId, like the lane's other enrichment maps (loadPeopleEnrichmentMap in
 // transform/index.ts).
 async function loadPeopleEntries(): Promise<WikipediaExtractEntry[]> {
-  const csvPath = path.join(RAW_DIR, "people-pantheon.raw.csv");
-  const rows = parsePantheonCsv(await fsPromises.readFile(csvPath, "utf8"));
+  const csvPath = path.join(RAW_DIR, 'people-pantheon.raw.csv');
+  const rows = parsePantheonCsv(await fsPromises.readFile(csvPath, 'utf8'));
   const seen = new Set<string>();
   const entries: WikipediaExtractEntry[] = [];
   for (const row of rows) {
@@ -34,8 +43,13 @@ async function loadPeopleEntries(): Promise<WikipediaExtractEntry[]> {
 }
 
 async function loadConflictsEntries(): Promise<WikipediaExtractEntry[]> {
-  const enrichedPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
-  const { conflicts } = validateEnrichedConflictsFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
+  const enrichedPath = path.join(
+    RAW_DIR,
+    'conflicts-curated-enriched.raw.json',
+  );
+  const { conflicts } = validateEnrichedConflictsFile(
+    JSON.parse(await fsPromises.readFile(enrichedPath, 'utf8')),
+  );
   const entries: WikipediaExtractEntry[] = [];
   for (const conflict of conflicts) {
     if (!conflict.wikipediaUrl) continue;
@@ -46,8 +60,13 @@ async function loadConflictsEntries(): Promise<WikipediaExtractEntry[]> {
 }
 
 async function loadMilestonesEntries(): Promise<WikipediaExtractEntry[]> {
-  const enrichedPath = path.join(RAW_DIR, "milestones-curated-enriched.raw.json");
-  const { milestones } = validateEnrichedMilestonesFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
+  const enrichedPath = path.join(
+    RAW_DIR,
+    'milestones-curated-enriched.raw.json',
+  );
+  const { milestones } = validateEnrichedMilestonesFile(
+    JSON.parse(await fsPromises.readFile(enrichedPath, 'utf8')),
+  );
   const entries: WikipediaExtractEntry[] = [];
   for (const milestone of milestones) {
     if (!milestone.wikipediaUrl) continue;
@@ -57,7 +76,10 @@ async function loadMilestonesEntries(): Promise<WikipediaExtractEntry[]> {
   return entries;
 }
 
-const LOAD_EXTRACT_ENTRIES: Record<Lane, () => Promise<WikipediaExtractEntry[]>> = {
+const LOAD_EXTRACT_ENTRIES: Record<
+  Lane,
+  () => Promise<WikipediaExtractEntry[]>
+> = {
   people: loadPeopleEntries,
   conflicts: loadConflictsEntries,
   milestones: loadMilestonesEntries,
@@ -77,7 +99,12 @@ function extractQid(uri: string): string | undefined {
 // same raw-file handoff loadPeopleEntries uses for Pantheon's CSV.
 async function loadPeopleEntriesRu(): Promise<WikipediaExtractEntry[]> {
   const raw = validateSparqlResultShape(
-    JSON.parse(await fsPromises.readFile(path.join(RAW_DIR, "people-taglines.raw.json"), "utf8")),
+    JSON.parse(
+      await fsPromises.readFile(
+        path.join(RAW_DIR, 'people-taglines.raw.json'),
+        'utf8',
+      ),
+    ),
   );
   const seen = new Set<string>();
   const entries: WikipediaExtractEntry[] = [];
@@ -96,8 +123,13 @@ async function loadPeopleEntriesRu(): Promise<WikipediaExtractEntry[]> {
 }
 
 async function loadConflictsEntriesRu(): Promise<WikipediaExtractEntry[]> {
-  const enrichedPath = path.join(RAW_DIR, "conflicts-curated-enriched.raw.json");
-  const { conflicts } = validateEnrichedConflictsFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
+  const enrichedPath = path.join(
+    RAW_DIR,
+    'conflicts-curated-enriched.raw.json',
+  );
+  const { conflicts } = validateEnrichedConflictsFile(
+    JSON.parse(await fsPromises.readFile(enrichedPath, 'utf8')),
+  );
   const entries: WikipediaExtractEntry[] = [];
   for (const conflict of conflicts) {
     const articleUrlRu = conflict.articleUrls.ru;
@@ -109,8 +141,13 @@ async function loadConflictsEntriesRu(): Promise<WikipediaExtractEntry[]> {
 }
 
 async function loadMilestonesEntriesRu(): Promise<WikipediaExtractEntry[]> {
-  const enrichedPath = path.join(RAW_DIR, "milestones-curated-enriched.raw.json");
-  const { milestones } = validateEnrichedMilestonesFile(JSON.parse(await fsPromises.readFile(enrichedPath, "utf8")));
+  const enrichedPath = path.join(
+    RAW_DIR,
+    'milestones-curated-enriched.raw.json',
+  );
+  const { milestones } = validateEnrichedMilestonesFile(
+    JSON.parse(await fsPromises.readFile(enrichedPath, 'utf8')),
+  );
   const entries: WikipediaExtractEntry[] = [];
   for (const milestone of milestones) {
     const articleUrlRu = milestone.articleUrls.ru;
@@ -121,7 +158,10 @@ async function loadMilestonesEntriesRu(): Promise<WikipediaExtractEntry[]> {
   return entries;
 }
 
-const LOAD_EXTRACT_ENTRIES_RU: Record<Lane, () => Promise<WikipediaExtractEntry[]>> = {
+const LOAD_EXTRACT_ENTRIES_RU: Record<
+  Lane,
+  () => Promise<WikipediaExtractEntry[]>
+> = {
   people: loadPeopleEntriesRu,
   conflicts: loadConflictsEntriesRu,
   milestones: loadMilestonesEntriesRu,
@@ -137,33 +177,51 @@ async function runExtractPass(
   fileSuffix: string,
   qids: QidFilter,
 ): Promise<void> {
-  const entriesByLane = new Map(await Promise.all(lanes.map(async (l) => [l, filterByQids(await loadEntries[l](), qids)] as const)));
+  const entriesByLane = new Map(
+    await Promise.all(
+      lanes.map(
+        async (l) => [l, filterByQids(await loadEntries[l](), qids)] as const,
+      ),
+    ),
+  );
 
   console.log(
     `Fetching ${lang} Wikipedia extracts for ${lanes
       .map((l) => `${entriesByLane.get(l)!.length} ${l}`)
-      .join(" + ")} (paced ~2/sec, this takes a while)...`,
+      .join(' + ')} (paced ~2/sec, this takes a while)...`,
   );
 
   const allEntries = lanes.flatMap((l) =>
-    entriesByLane.get(l)!.map((entry) => ({ ...entry, id: `${l}:${entry.id}` })),
+    entriesByLane
+      .get(l)!
+      .map((entry) => ({ ...entry, id: `${l}:${entry.id}` })),
   );
 
-  const extractByPrefixedId = await batchedWikipediaExtractFetch(allEntries, lang);
+  const extractByPrefixedId = await batchedWikipediaExtractFetch(
+    allEntries,
+    lang,
+  );
 
-  const extractsByLane = new Map<Lane, Map<string, string>>(lanes.map((l) => [l, new Map()]));
+  const extractsByLane = new Map<Lane, Map<string, string>>(
+    lanes.map((l) => [l, new Map()]),
+  );
   for (const [prefixedId, extract] of extractByPrefixedId) {
-    const [laneName, ...rest] = prefixedId.split(":");
-    const id = rest.join(":");
+    const [laneName, ...rest] = prefixedId.split(':');
+    const id = rest.join(':');
     extractsByLane.get(laneName as Lane)?.set(id, extract);
   }
 
   await Promise.all(
     lanes.map(async (l) => {
       const extracts = extractsByLane.get(l)!;
-      const outputPath = path.join(RAW_DIR, `${l}-wikipedia-extracts${fileSuffix}.raw.json`);
+      const outputPath = path.join(
+        RAW_DIR,
+        `${l}-wikipedia-extracts${fileSuffix}.raw.json`,
+      );
       await writeRecordFile(outputPath, extracts, qids);
-      console.log(`Wrote ${extracts.size} ${l} ${lang} extracts to ${outputPath}`);
+      console.log(
+        `Wrote ${extracts.size} ${l} ${lang} extracts to ${outputPath}`,
+      );
     }),
   );
 }
@@ -185,10 +243,13 @@ async function runExtractPass(
 // ceiling only if lane-scoped fetches aren't also run concurrently in separate
 // processes (packages/data-pipeline/CLAUDE.md, docs/adr/0012-lane-scoped-fetch.md).
 // The English and Russian passes run sequentially for the same reason.
-export async function fetchWikipediaExtracts(lane?: Lane, qids?: QidFilter): Promise<void> {
+export async function fetchWikipediaExtracts(
+  lane?: Lane,
+  qids?: QidFilter,
+): Promise<void> {
   const lanes: readonly Lane[] = lane ? [lane] : LANES;
-  await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES, "en", "", qids);
-  await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES_RU, "ru", ".ru", qids);
+  await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES, 'en', '', qids);
+  await runExtractPass(lanes, LOAD_EXTRACT_ENTRIES_RU, 'ru', '.ru', qids);
 }
 
 if (fileURLToPath(import.meta.url) === process.argv[1]) {

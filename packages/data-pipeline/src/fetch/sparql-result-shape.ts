@@ -2,7 +2,7 @@ export interface SparqlBindingValue {
   type: string;
   value: string;
   datatype?: string;
-  "xml:lang"?: string;
+  'xml:lang'?: string;
 }
 
 export type SparqlBinding = Record<string, SparqlBindingValue>;

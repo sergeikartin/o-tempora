@@ -1,7 +1,7 @@
-import type { OccupationDomain, Region } from "@o-tempora/shared-types";
-import type { PantheonPersonRow } from "../fetch/pantheon-row-shape.js";
-import { OCCUPATION_DOMAIN_CATEGORIES } from "./occupation-domain-categories.js";
-import { UN_REGION_CATEGORIES } from "./un-region-categories.js";
+import type { OccupationDomain, Region } from '@o-tempora/shared-types';
+import type { PantheonPersonRow } from '../fetch/pantheon-row-shape.js';
+import { OCCUPATION_DOMAIN_CATEGORIES } from './occupation-domain-categories.js';
+import { UN_REGION_CATEGORIES } from './un-region-categories.js';
 
 export interface PantheonPersonTags {
   occupationDomain?: OccupationDomain;
@@ -15,7 +15,9 @@ export interface PantheonPersonTags {
 // country and may legitimately be empty (unmapped territory, or no
 // country claim at all).
 export function tagPantheonPerson(row: PantheonPersonRow): PantheonPersonTags {
-  const occupationDomain = row.occupation ? OCCUPATION_DOMAIN_CATEGORIES[row.occupation] : undefined;
+  const occupationDomain = row.occupation
+    ? OCCUPATION_DOMAIN_CATEGORIES[row.occupation]
+    : undefined;
 
   const regionTags: Region[] = [];
   for (const country of [row.bplaceCountry, row.dplaceCountry]) {

@@ -2,7 +2,7 @@
 // end (docs/adr/0001-wars-discoveries-people-separate-lanes.md): People,
 // Conflicts, Milestones (docs/adr/0013-rename-lanes-to-conflicts-and-milestones.md).
 // `--lane` selects one (docs/adr/0012-lane-scoped-fetch.md).
-export const LANES = ["people", "conflicts", "milestones"] as const;
+export const LANES = ['people', 'conflicts', 'milestones'] as const;
 export type Lane = (typeof LANES)[number];
 
 const LANE_FLAG_PATTERN = /^--lane=(.+)$/;
@@ -19,7 +19,9 @@ export function parseLaneFlag(argv: readonly string[]): Lane | undefined {
     if (!match?.[1]) continue;
     const value = match[1];
     if (!isLane(value)) {
-      throw new Error(`Invalid --lane value "${value}" — expected one of: ${LANES.join(", ")}`);
+      throw new Error(
+        `Invalid --lane value "${value}" — expected one of: ${LANES.join(', ')}`,
+      );
     }
     return value;
   }
