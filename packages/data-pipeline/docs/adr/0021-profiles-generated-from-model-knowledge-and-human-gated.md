@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0022-profile-writer-is-an-agent-or-an-api-call.md
 ---
 
 # Profiles are written by agents from model knowledge, verified by a subagent, and gated by review

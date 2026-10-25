@@ -275,3 +275,37 @@ test('regenerating replaces a reviewed record in its original file and resets it
   assert.equal(record.meta.review.status, 'draft');
   assert.equal(record.meta.prompt_hash, 'abc123abc123');
 });
+
+test('records the model and token counts a staged `writer` block reports', async () => {
+  const options = await setup();
+  await stage(options, 'Q1', {
+    ...modelProfile(),
+    writer: {
+      provider: 'openai',
+      model: 'gpt-6-astra-2026-09-03',
+      tokens: { input: 1200, output: 5400 },
+    },
+  });
+
+  const result = await finalizeProfiles(options);
+
+  const record = JSON.parse(
+    await readFile(result.written[0] as string, 'utf8'),
+  );
+  assert.equal(record.meta.model, 'gpt-6-astra-2026-09-03');
+  assert.deepEqual(record.meta.tokens, { input: 1200, output: 5400 });
+  assert.equal(record.writer, undefined);
+});
+
+test('falls back to the agent model and null tokens without a `writer` block', async () => {
+  const options = await setup();
+  await stage(options, 'Q1', modelProfile());
+
+  const result = await finalizeProfiles(options);
+
+  const record = JSON.parse(
+    await readFile(result.written[0] as string, 'utf8'),
+  );
+  assert.equal(record.meta.model, 'opus');
+  assert.equal(record.meta.tokens, null);
+});

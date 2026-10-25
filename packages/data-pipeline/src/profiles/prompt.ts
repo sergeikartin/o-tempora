@@ -12,8 +12,12 @@ export interface PromptInfo {
 const PROMPT_BLOCK = /## Prompt[\s\S]*?```text\n([\s\S]*?)```/;
 const VERSION_LINE = /^- \*\*Version:\*\* (\S+)$/m;
 
+function promptBlock(markdown: string): string | undefined {
+  return PROMPT_BLOCK.exec(markdown)?.[1];
+}
+
 export function parsePrompt(markdown: string): PromptInfo {
-  const block = PROMPT_BLOCK.exec(markdown)?.[1];
+  const block = promptBlock(markdown);
   const version = VERSION_LINE.exec(markdown)?.[1];
   if (block === undefined || version === undefined) {
     throw new Error(
@@ -28,6 +32,34 @@ export function parsePrompt(markdown: string): PromptInfo {
 
 export async function loadPrompt(): Promise<PromptInfo> {
   return parsePrompt(await readFile(PROMPT_PATH, 'utf8'));
+}
+
+export interface PromptInputs {
+  type: string;
+  name: string;
+  dates: string;
+  wikipediaUrl: string;
+}
+
+// The text sent to the model: the prompt block with its `{type}`, `{name}`,
+// `{dates}` and `{wikipedia_url}` placeholders filled in.
+export function renderPrompt(markdown: string, inputs: PromptInputs): string {
+  const block = promptBlock(markdown);
+  if (block === undefined) throw new Error('profile.md: no "## Prompt" block');
+  const values: Record<string, string> = {
+    type: inputs.type,
+    name: inputs.name,
+    dates: inputs.dates,
+    wikipedia_url: inputs.wikipediaUrl,
+  };
+  return block.replace(
+    /\{(type|name|dates|wikipedia_url)\}/g,
+    (_, key: string) => values[key] ?? '',
+  );
+}
+
+export async function loadPromptMarkdown(): Promise<string> {
+  return readFile(PROMPT_PATH, 'utf8');
 }
 
 // The writer agent's `model:` frontmatter value, recorded in `meta.model`: a

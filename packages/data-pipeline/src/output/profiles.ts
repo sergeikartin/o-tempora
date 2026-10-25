@@ -10,7 +10,7 @@ import {
 import { detailLevelOf } from './write-datasets.js';
 
 // The slice of a raw Profile file (prompts/profile.md's JSON plus the `meta`
-// the profiles script adds, docs/adr/0021-...) that Output reads. Claims,
+// the profiles script adds, docs/adr/0022-...) that Output reads. Claims,
 // sources, confidence, importance and the Deep Fact type are review material
 // and never ship.
 export interface RawProfile {
@@ -26,7 +26,7 @@ export interface RawProfile {
   connections: { qid?: string; reason: string }[];
 }
 
-// Only these review statuses ship (docs/adr/0021-...).
+// Only these review statuses ship (docs/adr/0022-...).
 const SHIPPED_STATUSES: ReadonlySet<string> = new Set(['reviewed', 'edited']);
 
 // A shipped Profile's text is `**bold**` and plain prose; web renders the bold

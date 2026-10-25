@@ -1,5 +1,6 @@
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { asRecord, asString } from '../output/profiles.js';
 import { slugify } from '../output/slugs.js';
 import { parseModelProfile } from './model-profile.js';
 import type { PromptInfo } from './prompt.js';
@@ -7,9 +8,31 @@ import { readStoredProfiles } from './store.js';
 import { type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
 import type { ResolveArticleQids } from './wikipedia-qids.js';
 
-// The JSON shape `meta` takes (prompts/profile.md, "Meta"). `temperature` and
-// `tokens` stay null: a subagent does not expose them.
+// The JSON shape `meta` takes (prompts/profile.md, "Meta"). `temperature`
+// stays null: no writer sets it.
 const SCHEMA_VERSION = 3;
+
+interface WriterRun {
+  model: string;
+  tokens: { input: number; output: number };
+}
+
+// The `writer` block `profiles write` stages beside the Profile. A file from a
+// profile-writer agent has none: its model is `options.model` and it reports
+// no token counts.
+function parseWriterRun(root: unknown): WriterRun | undefined {
+  const writer = asRecord(root, 'staged file').writer;
+  if (writer === undefined) return undefined;
+  const run = asRecord(writer, 'writer');
+  const tokens = asRecord(run.tokens, 'writer.tokens');
+  if (typeof tokens.input !== 'number' || typeof tokens.output !== 'number') {
+    throw new Error('writer.tokens: expected input and output counts');
+  }
+  return {
+    model: asString(run.model, 'writer.model'),
+    tokens: { input: tokens.input, output: tokens.output },
+  };
+}
 
 export interface FinalizeOptions {
   incomingDir: string;
@@ -50,10 +73,9 @@ async function finalizeFile(
   }
 
   const stagingPath = path.join(options.incomingDir, fileName);
-  const profile = parseModelProfile(
-    JSON.parse(await readFile(stagingPath, 'utf8')),
-    fileName,
-  );
+  const staged: unknown = JSON.parse(await readFile(stagingPath, 'utf8'));
+  const profile = parseModelProfile(staged, fileName);
+  const writer = parseWriterRun(staged);
   if (profile.type !== SUBJECT_TYPE[subject.lane]) {
     throw new Error(
       `type is "${profile.type}", expected "${SUBJECT_TYPE[subject.lane]}"`,
@@ -91,12 +113,12 @@ async function finalizeFile(
       prompt_version: options.prompt.version,
       prompt_hash: options.prompt.hash,
       schema_version: SCHEMA_VERSION,
-      model: options.model,
+      model: writer?.model ?? options.model,
       temperature: null,
       run_id: options.runId,
       locale: 'en',
       source: { wikidata_qid: subjectQid },
-      tokens: null,
+      tokens: writer?.tokens ?? null,
       validation: {
         schema_valid: true,
         connections_returned: profile.connections.length,
@@ -126,7 +148,7 @@ async function finalizeFile(
   return { outcome: 'written', recordPath };
 }
 
-// Turns each `incoming/<QID>.json` the writer agents left into a committed
+// Turns each `incoming/<QID>.json` a writer (agent or `profiles write`) left into a committed
 // record at `draft`. A regenerated record replaces its old file and so
 // returns to `draft`; an `edited` one is never touched. A file that fails
 // validation is reported and left in place without stopping the others.

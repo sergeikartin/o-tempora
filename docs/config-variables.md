@@ -20,6 +20,10 @@ Each lane's Output stage (`packages/data-pipeline/src/output/`) splits its datas
 
 `src/features/filter-by-fame-score/model/dev-fame-score-override.ts` exposes `window.__setFameScoreFloors({ people, conflicts, milestones })` (any subset of lanes) from the browser console, wired to the same state the Detail Level switch drives — for tuning `FAME_SCORE_BOUNDS`/Detail Level floors without a local dev server. Dev-build only: guarded by `import.meta.env.DEV`, which the minifier strips from production builds entirely (verified by grepping `dist/assets/*.js` for `setFameScoreFloors` after `npm run build`).
 
+## `packages/data-pipeline` Profile writer credentials
+
+`profiles write` (`packages/data-pipeline/src/profiles/providers.ts`) reads the provider SDKs' standard environment variables: `OPENAI_API_KEY` for `--provider=openai` (the default) and `ANTHROPIC_API_KEY` for `--provider=anthropic` and `GEMINI_API_KEY` for `--provider=gemini`. None is needed by any other pipeline command. `--model` overrides the default model (`gpt-6-astra`, `claude-opus-5-5`, `gemini-4-argon`); `--concurrency` sets the parallel requests (default 3).
+
 ## Monitoring and analytics
 
 See `docs/observability.md`.
