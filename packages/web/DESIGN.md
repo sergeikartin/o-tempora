@@ -151,7 +151,7 @@ components:
   detail-panel:
     backgroundColor: "{colors.ledger-paper}"
     textColor: "{colors.ink}"
-    width: "340px"
+    width: "440px"
     padding: "20px"
   year-axis:
     backgroundColor: "{colors.axis-bar}"
@@ -224,7 +224,7 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 - **Wordmark** (Fraunces 600, 18px): "O Tempora" beside the 24px seal mark.
 - **Landing Headline and Lede** (Fraunces 600): lede (the curiosity sentence) 24–36px at 1.2 leads; headline 26–32px at 1.15 sits above it as the page title, on the landing page only.
 - **Landing Pitch** (Archivo 400, 16px, 1.5, Faded Ink): the one-line explanation under the landing headline. Curiosity chips on the landing page are the filter pill at 14px, headed by a 13px Faded Ink prompt; below 640px a prev/next stepper under that prompt replaces them. Landing axis ticks are 12px.
-- **Body** (Archivo 400, 14px, 1.5): Descriptions in the detail panel. Keep lines near 40 characters in the 340px panel.
+- **Body** (Archivo 400, 14px, 1.5): Descriptions in the detail panel. Keep lines near 55 characters in the 440px panel.
 - **Body Small** (Archivo 400, 13px, 1.5): Date lines, buttons and links; taglines in italic.
 - **Control** (Archivo 400, 12px, 1.4): Pills, inputs, results, the Detail Level trigger and rows; 600 for an active pill, the selected level and its row.
 - **Caption and Lane Label** (Archivo 400, 11px): Image attribution, Detail Level row descriptions, the trigger's "Detail Level" prefix, and entry labels on the timeline.
@@ -292,7 +292,7 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 ### Cards and Panels
 - **Corner style:** 12px; panel edges square against the viewport; mobile sheet 8px on its top corners.
 - **Background:** Ledger Paper with a 1px Hairline border. Floating cards carry the Card shadow.
-- **Detail panel:** 340px right drawer, 260px image slot, 20px body padding, name in Fraunces, tagline italic in Faded Ink, a 200ms slide. With two or more members it drops the banner image and lists each in short form (lane swatch, 44px thumbnail, name, dates, tagline, Wikipedia link, ×) under a one-line overlap summary; on a phone that sheet sits at a 40vh peek so the lanes stay visible. "Add to comparison" is not in the panel: it floats on the canvas's top edge, just left of the drawer (top-right on a phone), shown only while a Selection is open.
+- **Detail panel:** 440px right drawer, 260px image slot (200px when a Profile is shown), 20px body padding, name in Fraunces and tagline italic in Faded Ink pinned to the top of the scroll over a Hairline rule that appears once content passes beneath, a 200ms slide. With two or more members it drops the banner image and lists each in short form (lane swatch, 44px thumbnail, name, dates, tagline, Wikipedia link, ×) under a one-line overlap summary; on a phone that sheet sits at a 40vh peek so the lanes stay visible. A Profile replaces the Description with its overview, then three sections under Eyebrow headings separated by a Hairline rule: Key Moments as a Hairline thread of lane-coloured marks (a dot for a moment, a round-capped line for a span) with the date, a 600 title and a paragraph whose `**bold**` runs are weight 600; Deep Facts as Parchment wells (12px radius, no border or shadow), a legend carrying a Strong Rule-outlined "Legend" tag; Connections as rows (lane swatch, name, dates, one-sentence reason, `›`) that open the target, a target below the current Detail Level marked with the Detail Level switch's four pips in Faded Ink and "Appears at <level>". The Wikipedia button moves to a sticky footer under a Hairline rule. "Add to comparison" is not in the panel: it floats on the canvas's top edge, just left of the drawer (top-right on a phone), shown only while a Selection is open.
 
 ### Timeline Marks and Year Axis (signature)
 - **Marks:** Round-cap lines and dots at 0.8 opacity at rest, 1 on hover and selection. Lane labels 11px Ink, the label scaling 1.15 on hover.

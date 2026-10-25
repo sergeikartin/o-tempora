@@ -1,0 +1,258 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 4px;
+}
+
+.section {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.heading {
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  word-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* Key Moments: a thread of marks in the entity's lane color, a dot for a
+   moment and a round-capped line for a span, the same duration encoding the
+   lanes use. */
+.moments {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.moment {
+  position: relative;
+  padding-left: 24px;
+}
+
+.moment:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 7.5px;
+  top: 11px;
+  bottom: -31px;
+  width: 1px;
+  background: var(--color-border-strong);
+}
+
+.pointMark,
+.spanMark {
+  position: absolute;
+  z-index: 1;
+  left: 3px;
+  border: 2px solid var(--color-bg-surface);
+  box-sizing: content-box;
+}
+
+.pointMark {
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+}
+
+.spanMark {
+  top: 3px;
+  left: 4px;
+  width: 6px;
+  height: 20px;
+  border-radius: var(--radius-full);
+}
+
+.momentDate {
+  font-size: 12px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
+}
+
+.momentTitle {
+  margin: 2px 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.momentText {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.momentText strong,
+.factText strong {
+  font-weight: 600;
+}
+
+/* Deep Facts: tonal wells one step down from the panel, no border or shadow. */
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fact {
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-base);
+}
+
+.legendBadge {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 1px 8px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+}
+
+.factText {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Connections */
+.connections {
+  list-style: none;
+  margin: 0 -8px;
+  padding: 0;
+}
+
+.connections > li + li {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.connection {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 8px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--motion-duration-fast) var(--motion-easing);
+}
+
+.connection:hover {
+  background: var(--color-bg-surface-raised);
+}
+
+.connection:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+
+.swatch {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+  border-radius: var(--radius-full);
+}
+
+.connectionText {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.connectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+}
+
+.connectionName {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.connectionDates {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
+}
+
+.connectionReason {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
+.levelMarker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+/* The Detail Level switch's pips, filled in Faded Ink: reached-in-oxblood
+   stays the switch's own state. */
+.pips {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.pip,
+.pipReached {
+  width: 10px;
+  height: 4px;
+  border-radius: var(--radius-full);
+}
+
+.pip {
+  background: var(--color-border-subtle);
+}
+
+.pipReached {
+  background: var(--color-text-secondary);
+}
+
+.chevron {
+  flex: 0 0 auto;
+  align-self: center;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--color-text-secondary);
+}
+
+@media (pointer: coarse) {
+  .connection {
+    padding-block: 12px;
+  }
+}

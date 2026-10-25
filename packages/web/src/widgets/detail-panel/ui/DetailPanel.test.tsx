@@ -11,6 +11,7 @@ const closed = {
   overlapLine: null,
   isAdding: false,
   onRemoveMember: () => {},
+  onOpenConnection: () => {},
 };
 
 function open(entity: DetailPanelEntity, isHidden = false) {

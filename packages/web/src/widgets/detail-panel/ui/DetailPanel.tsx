@@ -5,13 +5,23 @@ import {
   buildMemberSummary,
   type DetailPanelEntity,
 } from '../lib/build-drawer-content';
+import type { Profile, ResolvedConnection } from '../lib/profile';
 import styles from './DetailPanel.module.css';
+import { ProfileView } from './ProfileView';
 
 // One member of the Selection (CONTEXT.md) as the panel shows it.
 export interface DetailPanelMember {
   entity: DetailPanelEntity;
   // Filtered out of the canvas by Detail Level or filters; it stays selected.
   isHidden: boolean;
+  // Present when the entity has a Profile; it replaces the Description.
+  profileView?: ProfileViewData;
+}
+
+export interface ProfileViewData {
+  profile: Profile;
+  color: string;
+  connections: readonly ResolvedConnection[];
 }
 
 interface DetailPanelProps {
@@ -24,6 +34,8 @@ interface DetailPanelProps {
   // phone so that mark can be tapped.
   isAdding: boolean;
   onRemoveMember: (id: string) => void;
+  // Opens a Profile Connection's target as the new Selection.
+  onOpenConnection: (slug: string) => void;
   onClose: () => void;
 }
 
@@ -32,7 +44,7 @@ interface PanelView {
   overlapLine: string | null;
 }
 
-// Sized for the panel's fixed 340px width at typical device pixel ratios; not
+// Sized for the panel's fixed 440px width at typical device pixel ratios; not
 // load-bearing.
 const IMAGE_BANNER_WIDTH_PX = 400;
 
@@ -54,10 +66,24 @@ export function DetailPanel({
   overlapLine,
   isAdding,
   onRemoveMember,
+  onOpenConnection,
   onClose,
 }: DetailPanelProps) {
   const panelRef = useRef<HTMLElement>(null);
   const backdropRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  // The name and tagline pin to the top of the scroll; a rule shows only once
+  // they are pinned over scrolled content.
+  const [isHeaderStuck, setIsHeaderStuck] = useState(false);
+  function handleScroll() {
+    const header = headerRef.current;
+    const panel = panelRef.current;
+    if (!header || !panel) return;
+    setIsHeaderStuck(
+      header.getBoundingClientRect().top <=
+        panel.getBoundingClientRect().top + 0.5,
+    );
+  }
   // Which entity's image failed to load, keyed by entity id (not URL: different
   // entities can share a Commons file), so another entity's image gets a fresh
   // attempt: a runtime 404 hides the image, not the slot for every later entity.
@@ -102,6 +128,7 @@ export function DetailPanel({
   const isComparison = displayedMembers.length >= 2;
   const displayedMember = isComparison ? null : (displayedMembers[0] ?? null);
   const displayedEntity = displayedMember?.entity ?? null;
+  const profileView = displayedMember?.profileView;
 
   const selectedEntityId = displayedEntity?.entity.id ?? null;
   if (portraitImage.entityId !== selectedEntityId) {
@@ -110,6 +137,12 @@ export function DetailPanel({
   if (imageLoaded.entityId !== selectedEntityId) {
     setImageLoaded({ entityId: selectedEntityId, loaded: false });
   }
+
+  // A Connection swaps the entity inside an already-scrolled panel; the new
+  // one starts at its top.
+  useEffect(() => {
+    if (selectedEntityId) panelRef.current?.scrollTo?.({ top: 0 });
+  }, [selectedEntityId]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -215,6 +248,7 @@ export function DetailPanel({
               : undefined
         }
         inert={!isOpen}
+        onScroll={handleScroll}
       >
         {isComparison && (
           <>
@@ -304,7 +338,7 @@ export function DetailPanel({
             </button>
             {showImage && (
               <div
-                className={`${styles.imageSlot} ${imageLoaded.loaded ? '' : styles.imageSlotLoading}`}
+                className={`${styles.imageSlot} ${profileView ? styles.imageSlotProfile : ''} ${imageLoaded.loaded ? '' : styles.imageSlotLoading}`}
               >
                 {/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: onLoad/onError are resource-loading callbacks, not user-interaction handlers */}
                 <img
@@ -333,26 +367,54 @@ export function DetailPanel({
                   {content.imageAttribution}
                 </p>
               )}
-              <h2 className={styles.name}>{content.name}</h2>
-              {content.dateLine && (
-                <p className={styles.dateLine}>{content.dateLine}</p>
-              )}
-              <p className={styles.tagline}>{content.tagline}</p>
+              <header
+                ref={headerRef}
+                className={`${styles.header} ${isHeaderStuck ? styles.headerStuck : ''}`}
+              >
+                <h2 className={styles.name}>{content.name}</h2>
+                {content.dateLine && (
+                  <p className={styles.dateLine}>{content.dateLine}</p>
+                )}
+                <p className={styles.tagline}>{content.tagline}</p>
+              </header>
               {displayedMember?.isHidden && (
                 <p className={styles.hiddenNote}>{m.hiddenByFiltersNote()}</p>
               )}
-              {content.description && (
-                <p className={styles.description}>{content.description}</p>
+              {profileView ? (
+                <ProfileView
+                  profile={profileView.profile}
+                  color={profileView.color}
+                  connections={profileView.connections}
+                  onOpenConnection={onOpenConnection}
+                />
+              ) : (
+                <>
+                  {content.description && (
+                    <p className={styles.description}>{content.description}</p>
+                  )}
+                  <a
+                    href={content.wikipediaUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.wikipediaButton}
+                  >
+                    {m.readOnWikipedia()}
+                  </a>
+                </>
               )}
-              <a
-                href={content.wikipediaUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={styles.wikipediaButton}
-              >
-                {m.readOnWikipedia()}
-              </a>
             </div>
+            {profileView && (
+              <div className={styles.footer}>
+                <a
+                  href={content.wikipediaUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.footerButton}
+                >
+                  {m.readOnWikipedia()}
+                </a>
+              </div>
+            )}
           </>
         )}
       </aside>

@@ -3,8 +3,10 @@
   top: var(--top-bar-height);
   right: 0;
   bottom: 0;
-  width: 340px;
+  width: 440px;
   max-width: 100vw;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
   background: var(--color-bg-surface);
   border-left: 1px solid var(--color-border-subtle);
   box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
@@ -48,6 +50,15 @@
 .imageSlot {
   height: 260px;
   background: var(--color-bg-base);
+}
+
+/* A Profile's text is the content, so its photo gives up height for it. */
+.imageSlotProfile {
+  height: 200px;
+}
+
+.imageSlotProfile .image:not(.imageContain) {
+  object-position: center 25%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -100,6 +111,24 @@
   margin-bottom: 8px;
 }
 
+/* Pinned to the top of the panel's scroll, full-bleed over the body padding. */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 -20px 10px;
+  padding: 10px 20px;
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid transparent;
+}
+
+.headerStuck {
+  border-bottom-color: var(--color-border-subtle);
+}
+
 .name {
   font-family: Fraunces, serif;
   font-size: 20px;
@@ -109,14 +138,12 @@
 .dateLine {
   font-size: 13px;
   color: var(--color-text-secondary);
-  margin-bottom: 10px;
 }
 
 .tagline {
   font-size: 13px;
   font-style: italic;
   color: var(--color-text-secondary);
-  margin-bottom: 10px;
 }
 
 .description {
@@ -144,6 +171,32 @@
 .hiddenNote {
   font-size: 12px;
   color: var(--color-accent-selected);
+}
+
+/* A Profile is long, so the one primary action stays in reach at the foot of
+   the scroll rather than at its end. */
+.footer {
+  position: sticky;
+  bottom: 0;
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-surface);
+}
+
+.footerButton {
+  display: block;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-selected);
+  color: var(--color-bg-surface-raised);
+  font-size: 13px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.footerButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .srOnly {
@@ -249,7 +302,7 @@
 
 /* Below the mobile breakpoint the panel is anchored to the bottom edge as a
    sheet instead of the right edge as a side drawer, sized to the narrow width
-   instead of a fixed 340px column. Declared after the base .panel/.panel.open
+   instead of a fixed 440px column. Declared after the base .panel/.panel.open
    rules so it wins the cascade. */
 @media (max-width: 960px) {
   .panel {

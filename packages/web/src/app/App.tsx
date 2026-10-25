@@ -42,9 +42,13 @@ import {
 import { trackEvent } from '../shared/lib/track-event';
 import { m } from '../shared/paraglide/messages.js';
 import { ErrorBoundary } from '../shared/ui';
-import type {
-  DetailPanelEntity,
-  DetailPanelMember,
+import {
+  buildConnection,
+  type DetailPanelEntity,
+  type DetailPanelMember,
+  laneColor,
+  type ResolvedConnection,
+  SAMPLE_PROFILES,
 } from '../widgets/detail-panel';
 import {
   type AddToSelectionControl,
@@ -145,6 +149,14 @@ function findEntity(
     }
   }
   return null;
+}
+
+// Index into DETAIL_LEVELS of the lowest level whose floor lets the entity in.
+function levelIndexOf(found: FoundEntity): number {
+  const index = DETAIL_LEVELS.findIndex(
+    (level) => level.values[found.lane] <= found.fameScore,
+  );
+  return index === -1 ? DETAIL_LEVELS.length - 1 : index;
 }
 
 function AppContent({ initialDatasets }: AppProps) {
@@ -356,6 +368,46 @@ function AppContent({ initialDatasets }: AppProps) {
     [replaceSelection],
   );
 
+  // A Connection opens its target the way an Entity Link does: the Selection
+  // becomes that entity, the Detail Level rises far enough to show it, and the
+  // timeline pans to it.
+  const handleOpenConnection = useCallback(
+    (slug: string) => {
+      const found = findEntity(
+        {
+          people: peopleData,
+          conflicts: conflictsData,
+          milestones: milestonesData,
+        },
+        (entity) => entity.slug === slug,
+      );
+      if (!found) return;
+      const neededLevel = DETAIL_LEVELS[levelIndexOf(found)];
+      if (
+        neededLevel &&
+        DETAIL_LEVELS.indexOf(neededLevel) >
+          DETAIL_LEVELS.indexOf(selectedLevel)
+      ) {
+        handleSelectDetailLevel(neededLevel);
+      }
+      const ref: SelectedEntityRef = {
+        id: found.id,
+        entityType: found.entityType,
+      };
+      replaceSelection({ ref, slug });
+      setIsAdding(false);
+      setSearchJumpTarget(ref);
+    },
+    [
+      peopleData,
+      conflictsData,
+      milestonesData,
+      selectedLevel,
+      handleSelectDetailLevel,
+      replaceSelection,
+    ],
+  );
+
   const handleRemoveMember = useCallback(
     (id: string) => {
       const member = members.find((candidate) => candidate.ref.id === id);
@@ -392,7 +444,7 @@ function AppContent({ initialDatasets }: AppProps) {
       name: string;
       span: ReturnType<typeof entitySpan>;
     }[] = [];
-    for (const { ref } of members) {
+    for (const { ref, slug } of members) {
       let entity: DetailPanelEntity | null = null;
       let isHidden = false;
       if (ref.entityType === 'person') {
@@ -419,7 +471,41 @@ function AppContent({ initialDatasets }: AppProps) {
         }
       }
       if (!entity) continue;
-      panelMembers.push({ entity, isHidden });
+      const profile = members.length === 1 ? SAMPLE_PROFILES[slug] : undefined;
+      const connections: ResolvedConnection[] = [];
+      for (const connection of profile?.connections ?? []) {
+        const target = findEntity(
+          {
+            people: peopleData,
+            conflicts: conflictsData,
+            milestones: milestonesData,
+          },
+          (candidate) => candidate.slug === connection.slug,
+        );
+        if (!target) continue;
+        const levelIndex = levelIndexOf(target);
+        connections.push(
+          buildConnection(
+            {
+              entityType: target.entityType,
+              entity: target.entity,
+            } as DetailPanelEntity,
+            connection.slug,
+            connection.reason,
+            {
+              levelIndex,
+              isShown: levelIndex <= DETAIL_LEVELS.indexOf(selectedLevel),
+            },
+          ),
+        );
+      }
+      panelMembers.push({
+        entity,
+        isHidden,
+        profileView: profile
+          ? { profile, color: laneColor(entity), connections }
+          : undefined,
+      });
       spans.push({
         id: entity.entity.id,
         name: entity.entity.name,
@@ -455,7 +541,25 @@ function AppContent({ initialDatasets }: AppProps) {
         .trim(),
     };
     return { panelMembers, overlapLine, bands };
-  }, [members, peopleData, conflictsData, milestonesData, filters]);
+  }, [
+    members,
+    peopleData,
+    conflictsData,
+    milestonesData,
+    filters,
+    selectedLevel,
+  ]);
+
+  // A Profile lists targets down to Deep Cut; their data is fetched when one
+  // opens so the Connections section is complete.
+  const hasProfile = selectionView.panelMembers.some(
+    (member) => member.profileView,
+  );
+  useEffect(() => {
+    if (!hasProfile) return;
+    requestLevel('specialized');
+    requestLevel('deep-cut');
+  }, [hasProfile, requestLevel]);
   const addToSelection = useMemo<AddToSelectionControl>(
     () => ({
       isAdding,
@@ -529,6 +633,7 @@ function AppContent({ initialDatasets }: AppProps) {
           overlapLine={selectionView.overlapLine}
           isAdding={isAdding}
           onRemoveMember={handleRemoveMember}
+          onOpenConnection={handleOpenConnection}
           onClose={closeDetailPanel}
         />
       </Suspense>
