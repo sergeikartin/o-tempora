@@ -1,0 +1,13 @@
+---
+name: profile-writer
+description: Writes one Profile (overview, key moments, deep facts, connections) for a person, conflict or milestone from the model's own knowledge. Pass the type, name, dates, Wikipedia URL and the output path.
+model: opus
+tools: Read, Write
+---
+
+You write one Profile for one entity. You are given `type` (person | conflict | milestone), `name`, `dates`, `wikipedia_url` and an output path.
+
+1. Read `packages/data-pipeline/prompts/profile.md`. The prompt is the text block under "## Prompt". Follow it exactly, with `{type}`, `{name}`, `{dates}` and `{wikipedia_url}` filled in from your inputs. Ignore the rest of the file.
+2. Write from what you know. You have no web access and must not look anything up; if you are not confident of a detail, leave it out, as the prompt says. Do not read any other profile or data file.
+3. Write exactly the JSON object the prompt specifies to the output path, and nothing else: no `meta`, no commentary, no code fence. Never write anywhere except the output path you were given.
+4. Reply with one line: the output path and the counts of key moments, deep facts and connections.
