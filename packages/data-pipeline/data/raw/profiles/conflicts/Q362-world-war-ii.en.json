@@ -1,0 +1,231 @@
+{
+  "subject": "World War II",
+  "type": "conflict",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_II",
+  "overview": "World War II was a global war fought from 1939 to 1945 between the Allies, led by Britain, the Soviet Union, the United States and China, and the Axis powers, led by Germany, Japan and Italy. It spread from the plains of Poland to the deserts of North Africa, the forests of Russia and the islands of the Pacific, and it included the Holocaust, the Nazi genocide of about six million European Jews. It ended with Germany's surrender in May 1945 and Japan's in September 1945, after an estimated 70 to 85 million deaths, making it the deadliest conflict in human history.",
+  "key_moments": [
+    {
+      "date": "1 September 1939",
+      "title": "Germany invades Poland",
+      "text": "A week after Nazi Germany and the Soviet Union signed the **Molotov–Ribbentrop Pact**, German troops crossed into **Poland** on 1 September 1939. Two days later **Britain and France declared war on Germany**, turning a regional invasion into a European war. Poland's army fought on, but on 17 September it was struck from the other side as well: the pact contained a secret protocol, and the **Soviet Union invaded eastern Poland**, so the country was carved up between two powers that had agreed on its partition in advance.",
+      "claims": [
+        "Germany invaded Poland on 1 September 1939.",
+        "Britain and France declared war on Germany on 3 September 1939.",
+        "The Soviet Union invaded eastern Poland on 17 September 1939.",
+        "The Molotov–Ribbentrop Pact between Germany and the Soviet Union included a secret protocol dividing Eastern Europe into spheres of influence."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Invasion_of_Poland"
+    },
+    {
+      "date": "1941–1943",
+      "title": "Barbarossa and Stalingrad",
+      "text": "On 22 June 1941 Germany broke its pact with Stalin and launched **Operation Barbarossa**, the largest land invasion in history, against the Soviet Union. German armies reached the outskirts of Moscow before winter and a Soviet counteroffensive stopped them. The next year the fighting centred on **Stalingrad** on the Volga, where soldiers fought street by street and building by building. In February 1943 the encircled German **Sixth Army surrendered**, and its commander, Friedrich Paulus, became the first German field marshal ever taken prisoner, promoted by Hitler only a day before in the expectation that he would not surrender.",
+      "claims": [
+        "Germany launched Operation Barbarossa against the Soviet Union on 22 June 1941.",
+        "The Battle of Stalingrad ended in February 1943 with the surrender of the German Sixth Army.",
+        "Friedrich Paulus was promoted to field marshal by Adolf Hitler shortly before surrendering at Stalingrad.",
+        "Friedrich Paulus was the first German field marshal to be captured."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad"
+    },
+    {
+      "date": "7 December 1941",
+      "title": "Pearl Harbor brings in the United States",
+      "text": "Japan, already at war with China since 1937, sent carrier aircraft against the **US Pacific Fleet at Pearl Harbor** in Hawaii on the morning of 7 December 1941, sinking or damaging battleships and killing more than 2,400 Americans. The **United States declared war on Japan** the next day, and on 11 December **Germany and Italy declared war on the United States**, joining the European and Pacific wars into one truly global conflict. The attack missed its most important targets: the American aircraft carriers were away from port, and six months later they sank four Japanese carriers at the **Battle of Midway**.",
+      "claims": [
+        "Japan attacked the US naval base at Pearl Harbor on 7 December 1941.",
+        "More than 2,400 Americans were killed in the attack on Pearl Harbor.",
+        "Germany declared war on the United States on 11 December 1941.",
+        "The US Pacific Fleet's aircraft carriers were not at Pearl Harbor during the attack.",
+        "Japan lost four aircraft carriers at the Battle of Midway in June 1942."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor"
+    },
+    {
+      "date": "May–September 1945",
+      "title": "Surrender in Europe, atomic bombs in Asia",
+      "text": "With Soviet troops in Berlin and Hitler dead by suicide, **Germany surrendered unconditionally**, and 8 May 1945 was celebrated as **Victory in Europe Day**. Japan fought on until the United States dropped **atomic bombs on Hiroshima on 6 August and Nagasaki on 9 August**, the product of the secret **Manhattan Project** and the only nuclear weapons ever used in war; between the two bombings the Soviet Union declared war on Japan and invaded Manchuria. Emperor Hirohito announced Japan's surrender in a radio broadcast on 15 August, the first time most of his subjects had ever heard his voice, and the formal surrender was signed aboard the battleship **USS Missouri** in Tokyo Bay on 2 September 1945.",
+      "claims": [
+        "Adolf Hitler died by suicide in Berlin in April 1945.",
+        "Victory in Europe Day is celebrated on 8 May 1945.",
+        "The United States dropped atomic bombs on Hiroshima on 6 August 1945 and on Nagasaki on 9 August 1945.",
+        "The Soviet Union declared war on Japan and invaded Manchuria in August 1945.",
+        "Hirohito announced Japan's surrender in a radio broadcast on 15 August 1945, and most Japanese had never heard the emperor's voice before.",
+        "The Japanese Instrument of Surrender was signed aboard USS Missouri in Tokyo Bay on 2 September 1945."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Surrender_of_Japan"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The popular story credits Bletchley Park and Alan Turing with breaking the German Enigma cipher, but the first break came from Poland. In 1932 the mathematician Marian Rejewski of the Polish Cipher Bureau worked out the wiring of the military Enigma machine using mathematics, and for years Polish codebreakers read German messages. In July 1939, about five weeks before Germany invaded Poland, the Poles met British and French intelligence officers in a forest near Warsaw and handed over everything they had, including replica Enigma machines. That gift became the starting point for the British work at Bletchley Park.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Marian Rejewski of the Polish Cipher Bureau reconstructed the wiring of the German military Enigma machine in 1932.",
+        "In July 1939 Polish codebreakers shared their Enigma methods and replica Enigma machines with British and French intelligence at a meeting near Warsaw.",
+        "The Polish work on Enigma provided the basis for British codebreaking at Bletchley Park."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Marian_Rejewski"
+    },
+    {
+      "text": "For Hiroo Onoda, the war lasted almost three decades. A Japanese intelligence officer sent to Lubang Island in the Philippines in 1944 with orders never to surrender, he refused to believe the leaflets and search parties telling him Japan had given up, and kept living in the jungle with his rifle and uniform. He finally came out in 1974, and only after his former commanding officer, by then a bookseller, travelled to Lubang to give him the order to stand down in person.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Hiroo Onoda was a Japanese army intelligence officer sent to Lubang Island in the Philippines in 1944.",
+        "Hiroo Onoda continued to hold out on Lubang Island until 1974.",
+        "Hiroo Onoda surrendered only after his former commanding officer, Yoshimi Taniguchi, travelled to Lubang and formally relieved him of duty.",
+        "Yoshimi Taniguchi had become a bookseller after the war."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Hiroo_Onoda"
+    },
+    {
+      "text": "Japan and Russia have still never signed a peace treaty ending World War II. In the final days of the war Soviet forces occupied the southern Kuril Islands north of Hokkaido, and Japan has claimed the southernmost islands ever since. The 1956 Soviet–Japanese Joint Declaration ended the state of war and restored diplomatic relations, but the quarrel over the islands has blocked a formal treaty for more than seventy years.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Soviet forces occupied the Kuril Islands in August and September 1945.",
+        "Japan claims the southernmost Kuril Islands, which Russia administers.",
+        "The Soviet–Japanese Joint Declaration of 1956 ended the state of war and restored diplomatic relations between the Soviet Union and Japan.",
+        "Japan and Russia have not signed a peace treaty formally ending World War II because of the Kuril Islands dispute."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Kuril_Islands_dispute"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Adolf Hitler",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+      "connection": "As dictator of Nazi Germany he ordered the invasion of Poland that started the war in Europe.",
+      "importance": "high",
+      "qid": "Q352"
+    },
+    {
+      "name": "Winston Churchill",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "connection": "Became British prime minister in May 1940 and led Britain through the war to victory.",
+      "importance": "high",
+      "qid": "Q8016"
+    },
+    {
+      "name": "Franklin D. Roosevelt",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
+      "connection": "US president who supplied the Allies through Lend-Lease and led America into the war after Pearl Harbor, dying in April 1945.",
+      "importance": "high",
+      "qid": "Q8007"
+    },
+    {
+      "name": "Joseph Stalin",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Joseph_Stalin",
+      "connection": "Soviet leader who signed the 1939 pact with Hitler, then led the Soviet war against Germany after 1941.",
+      "importance": "high",
+      "qid": "Q855"
+    },
+    {
+      "name": "The Holocaust",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/The_Holocaust",
+      "connection": "Nazi Germany's genocide of about six million European Jews was carried out under cover of the war.",
+      "importance": "high",
+      "qid": "Q2763"
+    },
+    {
+      "name": "Invasion of Poland",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
+      "connection": "The German attack on 1 September 1939 that began the war in Europe.",
+      "importance": "high",
+      "qid": "Q150812"
+    },
+    {
+      "name": "Operation Barbarossa",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "connection": "Germany's June 1941 invasion of the Soviet Union opened the war's largest front.",
+      "importance": "high",
+      "qid": "Q83055"
+    },
+    {
+      "name": "Battle of Stalingrad",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+      "connection": "The surrender of the German Sixth Army in February 1943 turned the tide on the Eastern Front.",
+      "importance": "high",
+      "qid": "Q38789"
+    },
+    {
+      "name": "Attack on Pearl Harbor",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+      "connection": "Japan's December 1941 strike on Hawaii brought the United States into the war.",
+      "importance": "high",
+      "qid": "Q52418"
+    },
+    {
+      "name": "Normandy landings",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Normandy_landings",
+      "connection": "The Allied D-Day landings in France on 6 June 1944 opened a western front against Germany.",
+      "importance": "high",
+      "qid": "Q16470"
+    },
+    {
+      "name": "Atomic bombings of Hiroshima and Nagasaki",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "connection": "The US atomic bombings in August 1945 preceded Japan's surrender and ended the war.",
+      "importance": "high",
+      "qid": "Q488"
+    },
+    {
+      "name": "Cold War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Cold_War",
+      "connection": "Grew out of the split between the Western Allies and the Soviet Union over postwar Europe.",
+      "importance": "high",
+      "qid": "Q8683"
+    },
+    {
+      "name": "World War I",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_I",
+      "connection": "Its peace settlement, including the Treaty of Versailles, left grievances that Hitler exploited on his way to power.",
+      "importance": "medium",
+      "qid": "Q361"
+    },
+    {
+      "name": "Second Sino-Japanese War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
+      "connection": "Japan's war with China from 1937 merged into World War II after Pearl Harbor.",
+      "importance": "medium",
+      "qid": "Q170314"
+    },
+    {
+      "name": "Hirohito",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Hirohito",
+      "connection": "Emperor of Japan throughout the war, who announced its surrender by radio on 15 August 1945.",
+      "importance": "medium",
+      "qid": "Q34479"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q362"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 5,
+      "connections_matched_events": 10,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

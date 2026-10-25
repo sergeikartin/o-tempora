@@ -1,0 +1,168 @@
+{
+  "subject": "Galileo Galilei",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Galileo_Galilei",
+  "overview": "Galileo Galilei was an Italian mathematician, physicist and astronomer who taught in Pisa and Padua and later worked for the Medici court in Florence. He turned a newly invented spyglass toward the night sky, found moons circling Jupiter, and used experiments and mathematics to describe how things fall and move. His public defense of the idea that the Earth moves around the Sun brought him before the Roman Inquisition, and he spent his last years under house arrest near Florence.",
+  "key_moments": [
+    {
+      "date": "1609–1610",
+      "title": "A telescope turned on the sky",
+      "text": "After hearing of a Dutch spyglass, Galileo built his own, improved it to far higher magnification, and pointed it at the heavens. In January 1610 he spotted **four moons orbiting Jupiter**, proof that not everything in the sky circled the Earth. He rushed his findings into print in March 1610 as **Sidereus Nuncius** (\"Starry Messenger\"), which also showed a Moon covered in mountains and craters. Shrewdly, he named the moons the **Medicean Stars** after his former pupil **Cosimo II de' Medici**, and the flattery worked: that same year Cosimo made him chief mathematician and philosopher to the Grand Duke of Tuscany.",
+      "claims": [
+        "Galileo Galilei built his own telescopes in 1609 after learning of a spyglass invented in the Netherlands.",
+        "Galileo Galilei observed four moons of Jupiter in January 1610.",
+        "Galileo Galilei published Sidereus Nuncius in March 1610, describing the moons of Jupiter and the rough, mountainous surface of the Moon.",
+        "Galileo Galilei named the moons of Jupiter the Medicean Stars after Cosimo II de' Medici and was appointed mathematician and philosopher to the Grand Duke of Tuscany in 1610."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Sidereus_Nuncius"
+    },
+    {
+      "date": "1616",
+      "title": "The Church draws a line",
+      "text": "As Galileo argued ever more openly for **Copernicus's** Sun-centred system, the Catholic Church stepped in. In 1616 a commission of theologians judged the claim that the Sun stands still at the centre to be contrary to Scripture, and the Congregation of the Index **suspended Copernicus's book** until it was corrected. Cardinal **Robert Bellarmine** personally told Galileo that he must not hold or defend the Copernican view. Galileo went quiet on the subject for years, but the exact wording of that 1616 warning would become the crux of his trial seventeen years later.",
+      "claims": [
+        "In 1616 a commission of Catholic theologians declared the idea that the Sun is stationary at the centre of the universe contrary to Scripture.",
+        "In 1616 the Congregation of the Index suspended Copernicus's De revolutionibus orbium coelestium until it was corrected.",
+        "In 1616 Cardinal Robert Bellarmine admonished Galileo Galilei not to hold or defend the Copernican theory.",
+        "The 1616 admonition of Galileo Galilei played a central role in his 1633 trial."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Galileo_affair"
+    },
+    {
+      "date": "1632–1633",
+      "title": "The Dialogue and the trial",
+      "text": "Encouraged by the election of his old admirer **Maffeo Barberini as Pope Urban VIII**, Galileo published the **Dialogue Concerning the Two Chief World Systems** in 1632, a conversation in which the defender of the Earth-centred view is a character named **Simplicio**. Many readers, possibly including the Pope, took the book as mockery, and Galileo was summoned to Rome. In 1633 the **Roman Inquisition** found him \"vehemently suspect of heresy\", forced him to formally **abjure** the Earth's motion, and sentenced him to house arrest, which he served at his villa at Arcetri near Florence for the rest of his life. More than three centuries later, in **1992**, Pope John Paul II publicly acknowledged that the Church had erred in its handling of the case.",
+      "claims": [
+        "Galileo Galilei published Dialogue Concerning the Two Chief World Systems in 1632.",
+        "In the Dialogue Concerning the Two Chief World Systems, the geocentric view is defended by a character named Simplicio.",
+        "In 1633 the Roman Inquisition found Galileo Galilei vehemently suspect of heresy, made him abjure, and sentenced him to house arrest.",
+        "In 1992 Pope John Paul II expressed regret for the way the Catholic Church had handled the Galileo affair."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Galileo_affair"
+    },
+    {
+      "date": "1638",
+      "title": "A final book smuggled into print",
+      "text": "Barred from publishing in Italy, Galileo used his years under house arrest to finish his work on **motion and the strength of materials**. The result, **Two New Sciences**, was printed in 1638 by the **Elzevir** house in Leiden in the Dutch Republic, beyond the reach of the Inquisition. It laid out the mathematics of falling bodies and projectile paths that later physicists, including **Isaac Newton**, would build on. By the time the book appeared, its author had gone **blind** and could no longer read it.",
+      "claims": [
+        "Galileo Galilei's Two New Sciences was published in Leiden in 1638 by the Elzevir publishers.",
+        "Two New Sciences covers the strength of materials and the motion of bodies, including falling bodies and projectiles.",
+        "Galileo Galilei had become blind by 1638."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Two_New_Sciences"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "Visitors to the Museo Galileo in Florence can see one of Galileo's own fingers, the middle finger of his right hand, standing upright in a glass egg on a small pedestal. It was cut from his body in 1737, nearly a century after his death, when his remains were moved from a modest side spot into a grand tomb in the Basilica of Santa Croce. The man the Church had condemned was thus treated, in the end, much like a saint whose relics are kept for display.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "The middle finger of Galileo Galilei's right hand is displayed at the Museo Galileo in Florence.",
+        "Galileo Galilei's finger was removed from his body in 1737 when his remains were moved to a monument in the Basilica of Santa Croce, Florence."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Museo_Galileo"
+    },
+    {
+      "text": "Galileo saw the planet Neptune more than two centuries before anyone knew it existed. His observation notes from December 1612 and January 1613 record a faint \"star\" near Jupiter that, when the old positions were recalculated in modern times, turned out to be Neptune. He even noted that it seemed to have moved, but he never followed it up, and the planet was not officially discovered until 1846.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Galileo Galilei's observation notes from December 1612 and January 1613 record an object that was later identified as the planet Neptune.",
+        "Galileo Galilei recorded Neptune as a fixed star and did not identify it as a planet.",
+        "Neptune was officially discovered in 1846."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Discovery_of_Neptune"
+    },
+    {
+      "text": "The defiant line \"And yet it moves\" (Eppur si muove), supposedly muttered by Galileo after he renounced the Earth's motion before the Inquisition, has no contemporary witness. The story first appears in print in 1757, more than a century after his death, in a book by the writer Giuseppe Baretti. Muttering it in front of his judges would have been reckless, and most historians treat the scene as legend, though a painting from shortly after his death that shows the phrase suggests the story may have circulated earlier.",
+      "type": "hidden_story",
+      "is_legend": true,
+      "confidence": "medium",
+      "claims": [
+        "A legend says that Galileo Galilei said \"Eppur si muove\" (\"And yet it moves\") after abjuring before the Inquisition.",
+        "The earliest known printed version of the Eppur si muove story appeared in 1757 in a work by Giuseppe Baretti.",
+        "A painting from the 17th century bearing the phrase Eppur si muove suggests the story may have circulated before 1757."
+      ],
+      "source": "https://en.wikipedia.org/wiki/And_yet_it_moves"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Galileo affair",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Galileo_affair",
+      "connection": "His clash with the Church over heliocentrism, ending in his 1633 trial, abjuration and house arrest.",
+      "importance": "high",
+      "qid": "Q2517983"
+    },
+    {
+      "name": "Nicolaus Copernicus",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+      "connection": "Galileo championed Copernicus's Sun-centred system, and the 1616 suspension of Copernicus's book set up Galileo's trial.",
+      "importance": "high",
+      "qid": "Q619"
+    },
+    {
+      "name": "Pope Urban VIII",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Urban_VIII",
+      "connection": "A former admirer as Cardinal Maffeo Barberini, he was pope when Galileo was tried and condemned in 1633.",
+      "importance": "high",
+      "qid": "Q131579"
+    },
+    {
+      "name": "Johannes Kepler",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Johannes_Kepler",
+      "connection": "Fellow Copernican who corresponded with Galileo and publicly backed his telescope discoveries in 1610.",
+      "importance": "high",
+      "qid": "Q8963"
+    },
+    {
+      "name": "Isaac Newton",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Isaac_Newton",
+      "connection": "Built his laws of motion on Galileo's work on falling bodies and inertia.",
+      "importance": "high",
+      "qid": "Q935"
+    },
+    {
+      "name": "Scientific Revolution",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Scientific_Revolution",
+      "connection": "Galileo's telescope observations and experimental mechanics are central episodes of this shift in science.",
+      "importance": "high",
+      "qid": "Q214078"
+    },
+    {
+      "name": "Evangelista Torricelli",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Evangelista_Torricelli",
+      "connection": "Served as Galileo's assistant during the final months of his life and succeeded him as Tuscan court mathematician.",
+      "importance": "medium",
+      "qid": "Q102490"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q307"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 13,
+      "connections_matched_people": 5,
+      "connections_matched_events": 2,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

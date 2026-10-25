@@ -1,0 +1,196 @@
+{
+  "subject": "Louis XIV of France",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Louis_XIV_of_France",
+  "overview": "Louis XIV became king of France at the age of four and reigned for 72 years, longer than any other monarch of a major European country. He ruled without a chief minister, turned a hunting lodge at Versailles into a vast palace where the nobility lived under his eye, and fought a long series of wars that pushed France's borders outward. He also revoked the toleration of French Protestants, and when he died in 1715 the throne passed to his five-year-old great-grandson.",
+  "key_moments": [
+    {
+      "date": "1643–1653",
+      "title": "Child king and the Fronde",
+      "text": "When **Louis XIII** died in 1643, his son was only four, so his mother **Anne of Austria** governed as regent with **Cardinal Mazarin** running the government. Taxes and resentment of Mazarin sparked the **Fronde**, a string of revolts by the Paris parlement and great nobles that lasted from 1648 to 1653. In January 1649 the royal family **slipped out of Paris at night** to escape the unrest. The boy never forgot the humiliation, and it helps explain why the adult king later kept his nobles close and **moved his court out of Paris**.",
+      "claims": [
+        "Louis XIV became King of France in 1643 at the age of four after the death of Louis XIII.",
+        "Anne of Austria served as regent for Louis XIV, with Cardinal Mazarin as chief minister.",
+        "The Fronde was a series of revolts in France lasting from 1648 to 1653.",
+        "In January 1649 the French royal family fled Paris at night during the Fronde."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Louis_XIV_of_France#Minority_and_the_Fronde"
+    },
+    {
+      "date": "1661",
+      "title": "Personal rule and the fall of Fouquet",
+      "text": "When **Mazarin died in 1661**, the 22-year-old Louis announced that he would govern without a chief minister. That summer his finance superintendent **Nicolas Fouquet** threw a lavish fête for him at his new château of **Vaux-le-Vicomte**. Weeks later, in September 1661, Fouquet was **arrested by d'Artagnan**, the musketeer officer later made famous by Dumas, and spent the rest of his life in prison. The king then hired the architect, painter and garden designer of Vaux, **Le Vau, Le Brun and Le Nôtre**, to work on Versailles.",
+      "claims": [
+        "Cardinal Mazarin died in 1661.",
+        "After Mazarin's death in 1661, Louis XIV ruled without appointing a chief minister.",
+        "Nicolas Fouquet held a lavish fête for Louis XIV at Vaux-le-Vicomte in August 1661.",
+        "Nicolas Fouquet was arrested in September 1661 by d'Artagnan and remained imprisoned until his death.",
+        "Louis Le Vau, Charles Le Brun and André Le Nôtre, who had worked on Vaux-le-Vicomte, went on to work on the Palace of Versailles."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Nicolas_Fouquet"
+    },
+    {
+      "date": "1682",
+      "title": "The court moves to Versailles",
+      "text": "After years of building, Louis made the **Palace of Versailles** the official seat of the court and government in **1682**. Thousands of courtiers lived there, and great nobles who once raised armies against the crown now competed for the honour of handing the king his shirt during the morning **lever** ceremony. The palace's **Hall of Mirrors** became a showcase of French wealth and craftsmanship. Versailles was copied by rulers across Europe, and the system kept the aristocracy busy with rank and etiquette instead of rebellion.",
+      "claims": [
+        "Louis XIV moved the French royal court and government to the Palace of Versailles in 1682.",
+        "Louis XIV's daily routine at Versailles included a public rising ceremony called the lever, attended by courtiers.",
+        "The Hall of Mirrors is part of the Palace of Versailles built under Louis XIV.",
+        "Louis XIV's court at Versailles drew the French nobility away from their provincial power bases."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Palace_of_Versailles"
+    },
+    {
+      "date": "1685",
+      "title": "Revoking the Edict of Nantes",
+      "text": "With the **Edict of Fontainebleau** in 1685, Louis revoked the **Edict of Nantes**, the 1598 law that had given French Protestants, the **Huguenots**, legal toleration. Protestant churches were destroyed and pastors were ordered to leave, while ordinary Protestants were forbidden to emigrate. Many left anyway; an estimated 200,000 or more fled to places such as the Dutch Republic, England, Switzerland and Brandenburg-Prussia. Their crafts and trades went with them, and **Brandenburg actively invited them in**, strengthening one of France's future rivals.",
+      "claims": [
+        "Louis XIV issued the Edict of Fontainebleau in 1685, revoking the Edict of Nantes.",
+        "The Edict of Nantes of 1598 had granted legal toleration to French Protestants.",
+        "The Edict of Fontainebleau ordered Protestant pastors to leave France while forbidding other Protestants to emigrate.",
+        "An estimated 200,000 or more Huguenots left France after the revocation of the Edict of Nantes.",
+        "Brandenburg issued the Edict of Potsdam in 1685 inviting Huguenot refugees to settle."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Edict_of_Fontainebleau"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The \"Sun King\" image started on a stage. In 1653, at fourteen, Louis danced in the **Ballet Royal de la Nuit**, a performance lasting many hours that ended at dawn with the young king appearing as the rising sun in a costume of gold. He kept dancing in court ballets for years, and in 1661 he founded the **Académie Royale de Danse**. Much of the vocabulary of classical ballet, including its French terms, grew out of the dance culture of his court.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Louis XIV danced in the Ballet Royal de la Nuit in 1653.",
+        "In the Ballet Royal de la Nuit, Louis XIV appeared as the rising sun.",
+        "Louis XIV founded the Académie Royale de Danse in 1661.",
+        "Classical ballet terminology is in French because ballet was codified at the French court."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Ballet_Royal_de_la_Nuit"
+    },
+    {
+      "text": "In 1686 the king underwent risky surgery for an **anal fistula**, performed by the surgeon **Charles-François Félix**. He recovered, and celebrations followed across France. The next year his court composer **Jean-Baptiste Lully** conducted a Te Deum honouring the king's recovery, beating time by striking the floor with a long staff. He hit his own foot, the wound turned gangrenous, he refused amputation, and he died weeks later in 1687: a composer killed by a celebration of his patron's health.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Louis XIV underwent surgery for an anal fistula in 1686.",
+        "The surgeon Charles-François Félix operated on Louis XIV's fistula.",
+        "Jean-Baptiste Lully struck his foot with his conducting staff while conducting a Te Deum celebrating Louis XIV's recovery.",
+        "Jean-Baptiste Lully refused amputation of his gangrenous foot and died in 1687."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Jean-Baptiste_Lully"
+    },
+    {
+      "text": "Louis lived so long that his heirs ran out. His only surviving legitimate son, the **Grand Dauphin**, died in 1711. In 1712 measles killed the next heir, the **Duke of Burgundy**, his wife and their elder son within weeks of each other. The two-year-old who survived, reportedly because his governess **Madame de Ventadour** kept the doctors away from him, became **Louis XV** in 1715: a great-grandson succeeding his great-grandfather.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Louis, Grand Dauphin, the son of Louis XIV, died in 1711.",
+        "Louis, Duke of Burgundy, his wife Marie Adélaïde of Savoy and their elder son died of measles in 1712.",
+        "The future Louis XV reportedly survived the 1712 measles outbreak because his governess Madame de Ventadour kept the doctors away from him.",
+        "Louis XV, the great-grandson of Louis XIV, became king in 1715."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Louis_XV#Childhood"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Cardinal Mazarin",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Cardinal_Mazarin",
+      "connection": "Ran France as chief minister during Louis's minority and taught him statecraft until his death in 1661.",
+      "importance": "high",
+      "qid": "Q166056"
+    },
+    {
+      "name": "Anne of Austria",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Anne_of_Austria",
+      "connection": "His mother, who ruled as regent from 1643 while he was a child.",
+      "importance": "high",
+      "qid": "Q151209"
+    },
+    {
+      "name": "Jean-Baptiste Colbert",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Jean-Baptiste_Colbert",
+      "connection": "His finance minister from the 1660s, who replaced Fouquet and reorganised France's trade and finances.",
+      "importance": "high",
+      "qid": "Q188971"
+    },
+    {
+      "name": "War of the Spanish Succession",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+      "connection": "His last and largest war, fought from 1701 to secure the Spanish throne for his grandson.",
+      "importance": "high",
+      "qid": "Q150701"
+    },
+    {
+      "name": "Philip V of Spain",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Philip_V_of_Spain",
+      "connection": "His grandson, who became King of Spain in 1700 and kept the throne after the War of the Spanish Succession.",
+      "importance": "high",
+      "qid": "Q170467"
+    },
+    {
+      "name": "Louis XV",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Louis_XV",
+      "connection": "His great-grandson, who succeeded him at the age of five in 1715.",
+      "importance": "high",
+      "qid": "Q7738"
+    },
+    {
+      "name": "William III of England",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/William_III_of_England",
+      "connection": "His leading opponent, who organised coalitions against France from the Dutch Republic and later from England.",
+      "importance": "high",
+      "qid": "Q129987"
+    },
+    {
+      "name": "Nine Years' War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Nine_Years'_War",
+      "connection": "Fought from 1688 against a broad European coalition seeking to contain his expansion.",
+      "importance": "medium",
+      "qid": "Q152218"
+    },
+    {
+      "name": "Maria Theresa of Spain",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Maria_Theresa_of_Spain",
+      "connection": "His queen, married in 1660 under the Peace of the Pyrenees; her Spanish lineage underpinned later French claims to Spain.",
+      "importance": "medium",
+      "qid": "Q152549"
+    },
+    {
+      "name": "Jean-Baptiste Lully",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Jean-Baptiste_Lully",
+      "connection": "His court composer, who wrote the ballets and operas performed for him and danced alongside him.",
+      "importance": "medium",
+      "qid": "Q1192"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q7742"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 8,
+      "connections_matched_events": 2,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

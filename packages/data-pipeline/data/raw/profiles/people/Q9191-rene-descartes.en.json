@@ -1,0 +1,193 @@
+{
+  "subject": "René Descartes",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/René_Descartes",
+  "overview": "René Descartes was a French philosopher and mathematician who decided to doubt everything he had been taught and rebuild knowledge from one point he could not doubt: his own thinking. He spent most of his working life in the Dutch Republic, where he wrote the books that made \"I think, therefore I am\" famous and joined algebra to geometry, so that curves could be described by equations. The x–y grid students still draw is named \"Cartesian\" after him.",
+  "key_moments": [
+    {
+      "date": "10 November 1619",
+      "title": "Three dreams in a heated room",
+      "text": "Young Descartes had joined the army as a gentleman volunteer, first under **Maurice of Nassau** in the Dutch Republic, where he met the scientist **Isaac Beeckman**, who pushed him toward mathematics and physics. By late 1619 he was in Germany with the army of **Maximilian of Bavaria**, waiting out the winter. Shut up alone in a stove-heated room, he spent a day in deep thought, and that night he had **three vivid dreams** that he took as a sign his life's task was to build a new, unified science on the model of mathematics. A career-defining insight came to him not on a battlefield but **in a soldier's winter quarters, during a dream**.",
+      "claims": [
+        "René Descartes served in the army of Maurice of Nassau in the Dutch Republic in 1618.",
+        "René Descartes met Isaac Beeckman in Breda in 1618.",
+        "René Descartes joined the army of Maximilian of Bavaria in 1619.",
+        "René Descartes had three dreams on the night of 10 November 1619 that he took as a guide to his life's work."
+      ],
+      "source": "https://en.wikipedia.org/wiki/René_Descartes"
+    },
+    {
+      "date": "1633–1637",
+      "title": "Galileo's trial, then the Discourse",
+      "text": "Descartes had nearly finished **The World**, a book explaining the universe through matter in motion, when he heard in 1633 that the Church had condemned **Galileo** for teaching that the Earth moves. He shelved the manuscript. Four years later in Leiden he published the **Discourse on the Method**, written in French rather than Latin so ordinary educated readers could follow it. It contained the line **\"I think, therefore I am\"**, and one of its appendices, **La Géométrie**, laid out what became **analytic geometry**, linking shapes to equations. The founding text of modern philosophy was first printed as **a preface to three science essays**.",
+      "claims": [
+        "René Descartes withheld his treatise The World from publication after learning of Galileo's condemnation in 1633.",
+        "René Descartes published the Discourse on the Method in Leiden in 1637.",
+        "The Discourse on the Method was written in French.",
+        "The Discourse on the Method was published with three appendices, La Dioptrique, Les Météores and La Géométrie."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Discourse_on_the_Method"
+    },
+    {
+      "date": "1641",
+      "title": "Meditations and their critics",
+      "text": "In the **Meditations on First Philosophy**, written in Latin for scholars, Descartes imagined an all-powerful deceiver trying to fool him about everything, and argued that even then he could be sure he existed while he was thinking. He went on to argue that God exists and that mind and body are two distinct kinds of thing, a view now called **mind–body dualism**. Before publication, his friend **Marin Mersenne** sent the manuscript to other thinkers, including **Thomas Hobbes**, **Pierre Gassendi** and **Antoine Arnauld**. The book appeared **with their objections and his replies printed alongside it**, so his critics were bound into the first edition.",
+      "claims": [
+        "René Descartes published the Meditations on First Philosophy in Latin in 1641.",
+        "The Meditations on First Philosophy were published together with objections from other thinkers and René Descartes's replies.",
+        "Thomas Hobbes, Pierre Gassendi and Antoine Arnauld wrote objections to the Meditations on First Philosophy.",
+        "Marin Mersenne gathered objections to the Meditations on First Philosophy from other scholars."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Meditations_on_First_Philosophy"
+    },
+    {
+      "date": "1649–1650",
+      "title": "A royal tutor in Stockholm",
+      "text": "**Queen Christina of Sweden** invited Descartes to her court, and in 1649 he sailed to Stockholm. The queen wanted her philosophy lessons early in the morning, in the middle of a Scandinavian winter, from a man who had kept the habit since his school days of staying in bed thinking until late morning. Within a few months he fell ill, and he died in Stockholm on **11 February 1650**, officially of **pneumonia**. The philosopher who did his best thinking lying in bed may have been worn down by **getting up before dawn to teach**.",
+      "claims": [
+        "René Descartes moved to Stockholm in 1649 at the invitation of Queen Christina of Sweden.",
+        "Queen Christina of Sweden had René Descartes give her lessons early in the morning.",
+        "René Descartes died in Stockholm on 11 February 1650.",
+        "The official cause of René Descartes's death was pneumonia."
+      ],
+      "source": "https://en.wikipedia.org/wiki/René_Descartes"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The man who argued that mind and body are separate had his own head and body parted after death. Descartes was first buried in Stockholm, and in 1666 his remains were sent back to France. Along the way the skull went missing from the rest of the bones. The body ended up in the church of **Saint-Germain-des-Prés** in Paris, while a skull said to be his, written over with the names of its earlier owners, is kept in Paris in the collections of the Musée de l'Homme.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "René Descartes was first buried in Stockholm.",
+        "René Descartes's remains were moved to France in 1666.",
+        "René Descartes's remains are buried at the church of Saint-Germain-des-Prés in Paris.",
+        "A skull attributed to René Descartes is held at the Musée de l'Homme in Paris, separate from the rest of his remains."
+      ],
+      "source": "https://en.wikipedia.org/wiki/René_Descartes"
+    },
+    {
+      "text": "Descartes never married, but he had a daughter, **Francine**, born in 1635 in the Dutch Republic to **Helena Jans van der Strom**, a servant in the house where he lodged. He made plans for the girl's education in France, but she died of scarlet fever in 1640, at about five years old. Descartes, who usually wrote about the passions with the cool eye of a scientist, called her death the greatest sorrow of his life.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "René Descartes had a daughter named Francine, born in 1635.",
+        "Francine's mother was Helena Jans van der Strom, a servant.",
+        "Francine, the daughter of René Descartes, died of scarlet fever in 1640 at about five years old."
+      ],
+      "source": "https://en.wikipedia.org/wiki/René_Descartes"
+    },
+    {
+      "text": "A later story claims the grieving Descartes built a lifelike **mechanical doll** of his daughter and carried it in a box on a sea voyage, until the ship's captain found it, took it for something devilish and threw it overboard. There is no evidence for the tale, which only appears long after his death. It has stuck because it fits so neatly with his real claim that animal bodies are **machines**, working like clocks and automata.",
+      "type": "hidden_story",
+      "is_legend": true,
+      "confidence": "medium",
+      "claims": [
+        "A legend says René Descartes built an automaton resembling his daughter Francine.",
+        "In the legend, a ship's captain threw the automaton overboard during a sea voyage.",
+        "The story of René Descartes's automaton daughter appears only in sources written long after his death.",
+        "René Descartes argued that animal bodies work like machines."
+      ],
+      "source": "not_on_wikipedia"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Queen Christina of Sweden",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Christina,_Queen_of_Sweden",
+      "connection": "Invited him to Stockholm in 1649 as her philosophy tutor, where he died the following winter.",
+      "importance": "high",
+      "qid": "Q52937"
+    },
+    {
+      "name": "Marin Mersenne",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Marin_Mersenne",
+      "connection": "His main correspondent in Paris, who passed his ideas around Europe and gathered the objections to the Meditations.",
+      "importance": "high",
+      "qid": "Q188663"
+    },
+    {
+      "name": "Galileo Galilei",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Galileo_Galilei",
+      "connection": "His condemnation in 1633 led Descartes to withhold his own book The World.",
+      "importance": "high",
+      "qid": "Q307"
+    },
+    {
+      "name": "Thomas Hobbes",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Thomas_Hobbes",
+      "connection": "Wrote one of the sets of objections printed with the Meditations in 1641.",
+      "importance": "medium",
+      "qid": "Q37621"
+    },
+    {
+      "name": "Baruch Spinoza",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Baruch_Spinoza",
+      "connection": "His first published book, in 1663, was an exposition of Descartes's Principles of Philosophy.",
+      "importance": "medium",
+      "qid": "Q35802"
+    },
+    {
+      "name": "Blaise Pascal",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Blaise_Pascal",
+      "connection": "Met Descartes in Paris in 1647 and later criticised his philosophy.",
+      "importance": "medium",
+      "qid": "Q1290"
+    },
+    {
+      "name": "Pierre de Fermat",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pierre_de_Fermat",
+      "connection": "Developed analytic geometry independently and clashed with him in the late 1630s over methods for finding tangents.",
+      "importance": "medium",
+      "qid": "Q75655"
+    },
+    {
+      "name": "Maurice, Prince of Orange",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Maurice,_Prince_of_Orange",
+      "connection": "Descartes served as a volunteer in his Dutch army in 1618.",
+      "importance": "medium",
+      "qid": "Q164062"
+    },
+    {
+      "name": "Thirty Years' War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
+      "connection": "Descartes joined the Bavarian army in its opening phase and had his three dreams in winter quarters in 1619.",
+      "importance": "medium",
+      "qid": "Q2487"
+    },
+    {
+      "name": "Scientific Revolution",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Scientific_Revolution",
+      "connection": "His mechanical picture of nature and analytic geometry were central contributions to it.",
+      "importance": "medium",
+      "qid": "Q214078"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q9191"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 14,
+      "connections_matched_people": 8,
+      "connections_matched_events": 2,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

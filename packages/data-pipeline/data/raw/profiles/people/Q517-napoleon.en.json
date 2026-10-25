@@ -1,0 +1,215 @@
+{
+  "subject": "Napoleon",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Napoleon",
+  "overview": "Napoleon Bonaparte was a Corsican-born artillery officer who rose through the chaos of the French Revolution to seize power in France and crown himself its emperor. For over a decade his armies fought most of Europe, redrawing borders from Spain to Poland, while at home he built a legal code and a state administration that outlived him. Defeated in Russia and finally at Waterloo, he died as a British prisoner on the remote Atlantic island of Saint Helena.",
+  "key_moments": [
+    {
+      "date": "November 1799",
+      "title": "A coup makes him First Consul",
+      "text": "Back from his campaign in Egypt, the young general joined a plot with the politician **Emmanuel-Joseph Sieyès** to overthrow France's unpopular government, the **Directory**. On the second day of the **Coup of 18 Brumaire**, Napoleon's speech to the legislators went badly: deputies shouted at him and some jostled him. His brother **Lucien Bonaparte**, who presided over the Council of Five Hundred, saved the plot by rallying the guards, who cleared the chamber. The result was the **Consulate**, with Napoleon as **First Consul**, and the plotter who had meant to use him was soon sidelined.",
+      "claims": [
+        "The Coup of 18 Brumaire took place in November 1799.",
+        "Emmanuel-Joseph Sieyès was one of the organisers of the Coup of 18 Brumaire alongside Napoleon.",
+        "Lucien Bonaparte was president of the Council of Five Hundred during the Coup of 18 Brumaire and helped rally the troops.",
+        "The Coup of 18 Brumaire replaced the Directory with the Consulate, with Napoleon as First Consul."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Coup_of_18_Brumaire"
+    },
+    {
+      "date": "1804",
+      "title": "A legal code and an imperial crown",
+      "text": "In March 1804 France adopted the **Civil Code**, later called the **Napoleonic Code**: one set of laws for the whole country, ending privileges of birth and guaranteeing equality before the law and property rights. It became a model copied across Europe and Latin America, a legal **breakthrough** whose influence still shapes civil law today. That December, in **Notre-Dame de Paris**, Napoleon was crowned **Emperor of the French**. **Pope Pius VII** had come from Rome for the ceremony, yet at the key moment Napoleon placed the crown on his own head.",
+      "claims": [
+        "The French Civil Code, later called the Napoleonic Code, was adopted in 1804.",
+        "The Napoleonic Code influenced the civil law of many countries in Europe and Latin America.",
+        "Napoleon was crowned Emperor of the French at Notre-Dame de Paris in December 1804.",
+        "Pope Pius VII attended the coronation of Napoleon, and Napoleon crowned himself."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Napoleonic_Code"
+    },
+    {
+      "date": "1812",
+      "title": "The invasion of Russia",
+      "text": "In June 1812 Napoleon led the **Grande Armée**, commonly estimated at around 600,000 men drawn from across his empire, over the Neman River into **Russia**. The Russians retreated, fought a bloody stand at **Borodino**, and let him take **Moscow**, which then burned. With **Tsar Alexander I** refusing to negotiate, Napoleon began a retreat through the Russian winter, harried by Cossacks, cold and hunger. By most estimates only a small fraction of the army that had crossed the Neman made it back, and the disaster broke the image of an unbeatable emperor.",
+      "claims": [
+        "Napoleon's Grande Armée crossed the Neman River into Russia in June 1812.",
+        "The Grande Armée that invaded Russia is commonly estimated at around 600,000 men.",
+        "Moscow burned after Napoleon's army entered it in September 1812.",
+        "Most of the Grande Armée was lost during the invasion of Russia and the retreat, according to common estimates."
+      ],
+      "source": "https://en.wikipedia.org/wiki/French_invasion_of_Russia"
+    },
+    {
+      "date": "1815",
+      "title": "The Hundred Days and Waterloo",
+      "text": "Forced to abdicate in 1814 and exiled to the Mediterranean island of **Elba**, Napoleon escaped in February 1815 and landed in southern France. Troops sent to stop him went over to his side, and he re-entered Paris without a battle, beginning the **Hundred Days**. It ended on 18 June 1815 at **Waterloo**, in present-day Belgium, where he was defeated by an Allied army under the **Duke of Wellington** and a Prussian army under **Gebhard von Blücher**. This time the British sent him far beyond Europe, to **Saint Helena** in the South Atlantic, where he died in 1821.",
+      "claims": [
+        "Napoleon was exiled to the island of Elba after abdicating in 1814.",
+        "Napoleon escaped from Elba and returned to France in February 1815, beginning the Hundred Days.",
+        "Napoleon was defeated at the Battle of Waterloo on 18 June 1815 by armies under the Duke of Wellington and Gebhard von Blücher.",
+        "Napoleon was exiled to Saint Helena, where he died in 1821."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Hundred_Days"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The image of Napoleon as a tiny man is largely a product of measurement and mockery. At his death he was recorded as 5 feet 2 inches, but in old French units, whose inch was longer than the English one; in modern terms he was about 1.69 m, roughly average for a Frenchman of his time. British cartoonists, above all **James Gillray**, drew him as a furious little 'Boney', and his affectionate nickname 'le petit caporal' (the little corporal) did not help. The so-called **Napoleon complex** is named after a man who was not short.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Napoleon's height was recorded as 5 feet 2 inches in French units, which corresponds to about 1.69 metres.",
+        "Napoleon was roughly of average height for a Frenchman of his time.",
+        "The British caricaturist James Gillray portrayed Napoleon as very small.",
+        "Napoleon's soldiers gave him the nickname 'le petit caporal'."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Napoleon_complex"
+    },
+    {
+      "text": "Napoleon's invasion of Egypt in 1798 was a military failure but a scholarly windfall: he brought along more than a hundred scientists and scholars. In 1799 French soldiers rebuilding a fort near the town of Rashid found a slab of dark stone carved with the same decree in three scripts, hieroglyphic, Demotic and ancient Greek. This was the **Rosetta Stone**, the key that let **Jean-François Champollion** decipher hieroglyphs in the 1820s. Yet the French never got to keep it: after their defeat in Egypt, the stone was handed to the British under the terms of surrender, and it has been in the **British Museum** since 1802.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Napoleon's 1798 expedition to Egypt included a large group of scientists and scholars.",
+        "French soldiers found the Rosetta Stone in 1799 near the town of Rashid (Rosetta).",
+        "The Rosetta Stone carries the same decree in hieroglyphic, Demotic and ancient Greek scripts.",
+        "The Rosetta Stone passed to the British after the French defeat in Egypt and has been in the British Museum since 1802."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Rosetta_Stone"
+    },
+    {
+      "text": "How Napoleon died is still argued over. The autopsy on Saint Helena pointed to **stomach cancer**, the disease thought to have killed his father, and most historians accept that. But in the 1960s a Swedish dentist, Sten Forshufvud, popularised the theory that he had been poisoned with **arsenic**, after locks of his hair were found to contain high levels of it. Later studies found similar arsenic levels in hair from earlier in his life and in that of his contemporaries; one suggested source was the arsenic-based green pigment then fashionable in wallpaper, including the kind on the walls of his house at Longwood.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "The autopsy of Napoleon concluded that he died of stomach cancer.",
+        "Sten Forshufvud promoted the theory that Napoleon was poisoned with arsenic.",
+        "Samples of Napoleon's hair were found to contain elevated levels of arsenic.",
+        "Arsenic-based green pigments in wallpaper have been proposed as a source of Napoleon's arsenic exposure."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Napoleon#Death"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Napoleonic Wars",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Napoleonic_Wars",
+      "connection": "The series of wars from 1803 to 1815 between Napoleon's France and shifting coalitions of European powers.",
+      "importance": "high",
+      "qid": "Q78994"
+    },
+    {
+      "name": "French Revolutionary Wars",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/French_Revolutionary_Wars",
+      "connection": "Made his name in them, from the siege of Toulon in 1793 to the Italian campaign of 1796–1797.",
+      "importance": "high",
+      "qid": "Q207318"
+    },
+    {
+      "name": "Coup of 18 Brumaire",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Coup_of_18_Brumaire",
+      "connection": "The November 1799 coup that brought him to power as First Consul.",
+      "importance": "high",
+      "qid": "Q620965"
+    },
+    {
+      "name": "Battle of Waterloo",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Battle_of_Waterloo",
+      "connection": "His final defeat, on 18 June 1815, which ended his rule for good.",
+      "importance": "high",
+      "qid": "Q48314"
+    },
+    {
+      "name": "French invasion of Russia",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/French_invasion_of_Russia",
+      "connection": "His 1812 campaign that cost most of the Grande Armée and began his downfall.",
+      "importance": "high",
+      "qid": "Q179250"
+    },
+    {
+      "name": "Battle of Austerlitz",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Battle_of_Austerlitz",
+      "connection": "His victory over Austria and Russia on 2 December 1805, a year to the day after his coronation.",
+      "importance": "high",
+      "qid": "Q134114"
+    },
+    {
+      "name": "Napoleonic Code",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Napoleonic_Code",
+      "connection": "The French civil code of 1804 that he championed and that bears his name.",
+      "importance": "high",
+      "qid": "Q151060"
+    },
+    {
+      "name": "Joséphine de Beauharnais",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Jos%C3%A9phine_de_Beauharnais",
+      "connection": "His first wife, married in 1796 and crowned empress in 1804, divorced in 1810 because she had not given him an heir.",
+      "importance": "high",
+      "qid": "Q171480"
+    },
+    {
+      "name": "Alexander I of Russia",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Alexander_I_of_Russia",
+      "connection": "Russian tsar who was his ally after Tilsit in 1807 and his enemy in 1812.",
+      "importance": "high",
+      "qid": "Q15193"
+    },
+    {
+      "name": "Gebhard Leberecht von Blücher",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Gebhard_Leberecht_von_Blücher",
+      "connection": "Prussian field marshal whose arrival at Waterloo in 1815 helped decide the battle.",
+      "importance": "medium",
+      "qid": "Q153522"
+    },
+    {
+      "name": "French campaign in Egypt and Syria",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/French_campaign_in_Egypt_and_Syria",
+      "connection": "His 1798–1801 expedition to the Middle East, which he left in 1799 to return to France.",
+      "importance": "medium",
+      "qid": "Q253684"
+    },
+    {
+      "name": "Pope Pius VII",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Pius_VII",
+      "connection": "Signed the Concordat of 1801 with him, attended his 1804 coronation, and was later held captive by him.",
+      "importance": "medium",
+      "qid": "Q124754"
+    },
+    {
+      "name": "Napoleon II",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Napoleon_II",
+      "connection": "His only legitimate son, born in 1811 to Marie Louise of Austria and given the title King of Rome.",
+      "importance": "medium",
+      "qid": "Q7723"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q517"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 5,
+      "connections_matched_events": 8,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

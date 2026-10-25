@@ -1,0 +1,178 @@
+{
+  "subject": "Albert Einstein",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+  "overview": "Albert Einstein was a German-born physicist who, while working as a clerk at the Swiss patent office in Bern, rewrote the rules of space, time and light. His theories of special and general relativity, and the equation E = mc², changed how scientists understand gravity, energy and the universe itself. After the Nazis came to power in 1933 he settled in Princeton in the United States, where he worked until his death in 1955.",
+  "key_moments": [
+    {
+      "date": "1905",
+      "title": "A patent clerk's miracle year",
+      "text": "While examining inventions at the **Swiss patent office in Bern**, Einstein published four papers in the journal **Annalen der Physik** in a single year. One explained the **photoelectric effect** by treating light as packets of energy, another used **Brownian motion** to give strong evidence that atoms exist, a third laid out **special relativity**, and a short follow-up introduced the idea behind **E = mc²**. Physicists now call 1905 his annus mirabilis, or miracle year. When the **Nobel Prize in Physics** finally came for 1921, it cited his work on the photoelectric effect, not relativity.",
+      "claims": [
+        "Albert Einstein worked at the Swiss patent office in Bern in 1905.",
+        "In 1905 Albert Einstein published four papers in Annalen der Physik.",
+        "Albert Einstein's 1905 papers covered the photoelectric effect, Brownian motion, special relativity and mass-energy equivalence.",
+        "Albert Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric effect."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Annus_mirabilis_papers"
+    },
+    {
+      "date": "1915–1919",
+      "title": "Gravity becomes curved spacetime",
+      "text": "After years of struggle with unfamiliar mathematics, Einstein presented the field equations of **general relativity** to the **Prussian Academy of Sciences** in Berlin in November 1915. The theory described gravity not as a force but as the bending of space and time by mass, and it explained a small wobble in **Mercury's orbit** that Newton's laws could not. The real test came in 1919, when British expeditions organised by **Arthur Eddington** and Frank Dyson photographed stars during a solar eclipse and found their light bent by the Sun about as much as Einstein predicted. Newspapers around the world reported the result, and a little-known professor became the most famous scientist on Earth almost overnight.",
+      "claims": [
+        "Albert Einstein presented the field equations of general relativity to the Prussian Academy of Sciences in November 1915.",
+        "General relativity explained the anomalous perihelion precession of Mercury.",
+        "In 1919 eclipse expeditions associated with Arthur Eddington and Frank Dyson measured the bending of starlight by the Sun.",
+        "The 1919 eclipse results made Albert Einstein world-famous."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Eddington_experiment"
+    },
+    {
+      "date": "1933",
+      "title": "Exile from Nazi Germany",
+      "text": "When **Adolf Hitler** came to power in January 1933, Einstein, who was Jewish and an outspoken pacifist, was visiting the United States. He never went back to Germany. He resigned from the Prussian Academy and took a post at the new **Institute for Advanced Study** in **Princeton, New Jersey**, where he spent the last two decades of his life searching, without success, for a **unified field theory** joining gravity and electromagnetism. In 1940 the man once seen as the face of German science became a **United States citizen**.",
+      "claims": [
+        "Albert Einstein was visiting the United States when Adolf Hitler came to power in January 1933.",
+        "Albert Einstein did not return to Germany after 1933.",
+        "Albert Einstein joined the Institute for Advanced Study in Princeton, New Jersey.",
+        "Albert Einstein became a United States citizen in 1940."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Albert_Einstein"
+    },
+    {
+      "date": "1939",
+      "title": "A warning letter to Roosevelt",
+      "text": "In the summer of 1939 the physicist **Leo Szilard** visited Einstein on Long Island, worried that Nazi Germany might build a bomb from **uranium fission**. Together they prepared a letter, signed by Einstein, warning President **Franklin D. Roosevelt** of the danger and urging the United States to start its own research. The letter helped set off the American nuclear effort that grew into the **Manhattan Project**, though Einstein himself did not work on it. He reportedly later told Linus Pauling that signing the letter was the one great mistake of his life.",
+      "claims": [
+        "Leo Szilard and Albert Einstein prepared a letter to President Franklin D. Roosevelt in 1939.",
+        "The Einstein–Szilard letter warned that Germany might develop atomic bombs.",
+        "The Einstein–Szilard letter helped prompt the United States nuclear research that led to the Manhattan Project.",
+        "Albert Einstein reportedly told Linus Pauling that signing the letter to Roosevelt was the one great mistake of his life."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Einstein–Szilard_letter"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "Einstein asked to be cremated, but his brain never made it to the fire. During the autopsy at Princeton Hospital in 1955, the pathologist **Thomas Harvey** removed it, apparently without the family's permission, and later obtained the reluctant consent of Einstein's son Hans Albert on condition it be used for science. Harvey had it cut into about 240 blocks, kept much of it in jars, and held on to it for decades, moving across the United States with pieces of the most famous mind of the century in his care.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Thomas Harvey removed Albert Einstein's brain during the autopsy at Princeton Hospital in 1955.",
+        "Thomas Harvey removed Albert Einstein's brain apparently without the family's permission.",
+        "Hans Albert Einstein later gave consent for the brain to be used for scientific research.",
+        "Thomas Harvey had Albert Einstein's brain cut into about 240 blocks and kept it for decades."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Albert_Einstein's_brain"
+    },
+    {
+      "text": "Einstein spent his Nobel Prize money before he had won it. In the 1919 settlement of his divorce from **Mileva Marić**, the physicist who had been his fellow student in Zurich, he agreed that the money from any future Nobel Prize would go to her. Only a few years later he received the prize for 1921, and the money went to Marić as promised.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Albert Einstein and Mileva Marić divorced in 1919.",
+        "Albert Einstein's divorce settlement promised Mileva Marić the money from any future Nobel Prize.",
+        "Mileva Marić received the money from Albert Einstein's Nobel Prize."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Mileva_Marić"
+    },
+    {
+      "text": "In 1952, after the death of Israel's first president, **Chaim Weizmann**, the Israeli government offered the presidency to a physicist living in New Jersey. Einstein turned it down, writing that he was deeply moved but lacked the natural aptitude and the experience to deal properly with people and official duties.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Chaim Weizmann, the first president of Israel, died in 1952.",
+        "In 1952 the Israeli government offered Albert Einstein the presidency of Israel.",
+        "Albert Einstein declined the presidency of Israel, citing a lack of aptitude and experience in dealing with people."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Albert_Einstein"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Mileva Marić",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Mileva_Marić",
+      "connection": "His fellow physics student in Zurich and first wife, who received his Nobel Prize money under their 1919 divorce settlement.",
+      "importance": "high",
+      "qid": "Q76346"
+    },
+    {
+      "name": "Leo Szilard",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Leo_Szilard",
+      "connection": "Drafted with him the 1939 letter warning Roosevelt about atomic bombs.",
+      "importance": "high",
+      "qid": "Q153238"
+    },
+    {
+      "name": "Franklin D. Roosevelt",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
+      "connection": "Received his 1939 letter urging the United States to begin nuclear research.",
+      "importance": "high",
+      "qid": "Q8007"
+    },
+    {
+      "name": "Max Planck",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Max_Planck",
+      "connection": "An early champion of special relativity who helped bring him to a post in Berlin in 1914.",
+      "importance": "high",
+      "qid": "Q9021"
+    },
+    {
+      "name": "Hendrik Lorentz",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Hendrik_Lorentz",
+      "connection": "His transformations of space and time became a core piece of special relativity, and Einstein deeply admired him.",
+      "importance": "medium",
+      "qid": "Q41688"
+    },
+    {
+      "name": "Chaim Weizmann",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Chaim_Weizmann",
+      "connection": "Toured the United States with him in 1921 to raise funds for the Hebrew University; his death in 1952 led to Einstein being offered Israel's presidency.",
+      "importance": "medium",
+      "qid": "Q172183"
+    },
+    {
+      "name": "Bertrand Russell",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
+      "connection": "Co-author of the 1955 manifesto warning of the dangers of nuclear war.",
+      "importance": "medium",
+      "qid": "Q33760"
+    },
+    {
+      "name": "Isaac Newton",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Isaac_Newton",
+      "connection": "His theory of gravity was replaced by general relativity, which explained Mercury's orbit where Newton's could not.",
+      "importance": "medium",
+      "qid": "Q935"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q937"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 8,
+      "connections_matched_events": 0,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

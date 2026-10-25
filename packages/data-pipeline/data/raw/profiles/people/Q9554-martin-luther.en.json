@@ -1,0 +1,185 @@
+{
+  "subject": "Martin Luther",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Martin_Luther",
+  "overview": "Martin Luther was a German monk and university professor in Wittenberg whose attack on the Catholic Church's sale of indulgences in 1517 set off the Protestant Reformation. He was excommunicated by the pope and declared an outlaw by the emperor, yet he survived, translated the Bible into everyday German, married a former nun, and founded the church tradition that still carries his name. He died in 1546 in Eisleben, the same small Saxon town where he had been born.",
+  "key_moments": [
+    {
+      "date": "July 1505",
+      "title": "A thunderstorm makes a monk",
+      "text": "Luther was a young law student at the **University of Erfurt**, on track for the career his father wanted, when a **lightning storm** caught him on the road near Stotternheim. Terrified, he cried out to **Saint Anne** and vowed to become a monk if he survived. Within weeks he had abandoned law and entered the **Augustinian monastery in Erfurt**, to his father's fury. The vow made in a moment of panic shaped everything that followed: the monk he became would one day break the very church he had run to for safety.",
+      "claims": [
+        "Martin Luther studied law at the University of Erfurt in 1505.",
+        "In July 1505 Martin Luther was caught in a thunderstorm near Stotternheim.",
+        "During the storm Martin Luther vowed to Saint Anne that he would become a monk.",
+        "Martin Luther entered the Augustinian monastery in Erfurt in 1505, against his father's wishes."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Martin_Luther"
+    },
+    {
+      "date": "31 October 1517",
+      "title": "The Ninety-five Theses",
+      "text": "Angered by the preacher **Johann Tetzel**, who was selling **indulgences** to raise money for rebuilding **St. Peter's Basilica** in Rome, Luther wrote the **Ninety-five Theses**, a list of points for academic debate challenging the practice. He sent them to Archbishop **Albert of Mainz**, and by tradition also nailed them to the door of Wittenberg's Castle Church. Thanks to the **printing press**, copies spread across Germany within weeks, turning a scholarly dispute into a public sensation. The famous hammering scene, though, rests on later accounts, and historians still debate whether it happened at all.",
+      "claims": [
+        "Johann Tetzel sold indulgences in Germany to help fund the rebuilding of St. Peter's Basilica in Rome.",
+        "Martin Luther sent his Ninety-five Theses to Archbishop Albert of Mainz on 31 October 1517.",
+        "According to tradition, Martin Luther posted the Ninety-five Theses on the door of the Castle Church in Wittenberg.",
+        "Historians debate whether Martin Luther actually nailed the Ninety-five Theses to the church door."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Ninety-five_Theses"
+    },
+    {
+      "date": "April 1521",
+      "title": "Refusing to recant at Worms",
+      "text": "After Pope **Leo X** excommunicated him, Luther was summoned before Emperor **Charles V** at the **Diet of Worms**. Shown a table of his books and told to take them back, he refused unless convinced by Scripture and plain reason. The emperor's **Edict of Worms** declared him an outlaw whom anyone could kill without punishment. His protector, Elector **Frederick the Wise** of Saxony, had him seized on the road home in a staged kidnapping and hidden at **Wartburg Castle**, where, disguised as a knight called \"Junker Jörg\", the outlaw spent his time translating the **New Testament into German**.",
+      "claims": [
+        "Pope Leo X excommunicated Martin Luther in January 1521.",
+        "Martin Luther refused to recant his writings before Emperor Charles V at the Diet of Worms in April 1521.",
+        "The Edict of Worms declared Martin Luther an outlaw.",
+        "Frederick the Wise arranged for Martin Luther to be intercepted on his way home and hidden at Wartburg Castle, where Luther lived under the name Junker Jörg and translated the New Testament into German."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Martin_Luther#Diet_of_Worms"
+    },
+    {
+      "date": "1522–1534",
+      "title": "A Bible for ordinary Germans",
+      "text": "Luther's German **New Testament** came off the presses in **September 1522**, and the complete **Luther Bible** followed in **1534**, made with the help of colleagues such as **Philip Melanchthon**. Luther wanted it to sound the way people actually spoke, saying he listened to mothers at home, children in the street and ordinary people at the market. Sold cheaply and widely, his translation did more than spread his theology: it helped fix a **common written form of the German language**, so that a book of religious reform became one of the foundations of modern German.",
+      "claims": [
+        "Martin Luther's German translation of the New Testament was published in September 1522.",
+        "Martin Luther's complete German Bible was published in 1534.",
+        "Philip Melanchthon helped Martin Luther with his Bible translation.",
+        "Martin Luther's Bible translation had a major influence on the development of the standard written German language."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Luther_Bible"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "Luther's wife reached him hidden among fish. In 1523 a group of nuns at the Cistercian convent of Nimbschen, who had read his writings, wanted out, and Luther arranged their escape with Leonhard Koppe, a Torgau merchant who delivered herring to the convent. The women left in his covered wagon, by the usual telling hidden among the fish barrels, and were brought to Wittenberg, where Luther set about finding them husbands. One of them, Katharina von Bora, turned down the matches offered to her and let it be known she would marry Luther himself. In 1525 she did, and the former nun went on to run a household of students, lodgers and six children, brewing her own beer.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Katharina von Bora escaped from the convent of Nimbschen in 1523 with other nuns, with help arranged by Martin Luther.",
+        "The merchant Leonhard Koppe, who delivered herring to the convent, carried the nuns away in his wagon, reportedly hidden among fish barrels.",
+        "Katharina von Bora married Martin Luther in 1525.",
+        "Katharina von Bora and Martin Luther had six children."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Katharina_von_Bora"
+    },
+    {
+      "text": "His family name was not originally Luther. He was born Martin Luder, and his early letters are signed that way. Around 1517, the year of the Ninety-five Theses, he began signing as \"Eleutherius\", from the Greek word for \"free\" or \"liberated\", a fashionable kind of learned pen name among humanists. He soon dropped the Greek, but kept the new spelling it had suggested: Luder became Luther, a name that quietly carried the idea of freedom inside it.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Martin Luther's family name was originally spelled Luder.",
+        "Around 1517 Martin Luther signed some letters with the name Eleutherius, from a Greek word meaning free.",
+        "Martin Luther's change of spelling from Luder to Luther is linked to his use of the name Eleutherius."
+      ],
+      "source": "not_on_wikipedia"
+    },
+    {
+      "text": "Visitors to Wartburg Castle have for centuries been shown an ink stain on the wall of the room where Luther translated the New Testament. According to legend, the devil appeared to tempt him while he worked, and Luther threw his inkwell at him. The story does not appear in Luther's own writings, though he did write about fighting the devil with ink, meaning his books. The stain itself had to be renewed repeatedly, since souvenir hunters kept scraping bits of it off the plaster.",
+      "type": "hidden_story",
+      "is_legend": true,
+      "confidence": "medium",
+      "claims": [
+        "A legend says that Martin Luther threw an inkwell at the devil while working at Wartburg Castle.",
+        "An ink stain associated with the legend has been shown to visitors at Wartburg Castle.",
+        "The legend of the inkwell is not found in Martin Luther's own writings."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Wartburg"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Reformation",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Reformation",
+      "connection": "The religious movement his 1517 Ninety-five Theses set in motion across Europe.",
+      "importance": "high",
+      "qid": "Q12562"
+    },
+    {
+      "name": "Ninety-five Theses",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Ninety-five_Theses",
+      "connection": "His 1517 list of arguments against the sale of indulgences, sent to the Archbishop of Mainz.",
+      "importance": "high",
+      "qid": "Q157506"
+    },
+    {
+      "name": "Pope Leo X",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Leo_X",
+      "connection": "Issued the bull Exsurge Domine against him in 1520 and excommunicated him in 1521; Luther publicly burned the bull.",
+      "importance": "high",
+      "qid": "Q49237"
+    },
+    {
+      "name": "Charles V",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Charles_V,_Holy_Roman_Emperor",
+      "connection": "The emperor who heard him at Worms and signed the edict that made him an outlaw.",
+      "importance": "high",
+      "qid": "Q32500"
+    },
+    {
+      "name": "Philip Melanchthon",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Philip_Melanchthon",
+      "connection": "His Wittenberg colleague and closest collaborator, who helped translate the Bible and wrote the Augsburg Confession.",
+      "importance": "high",
+      "qid": "Q76325"
+    },
+    {
+      "name": "German Peasants' War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/German_Peasants%27_War",
+      "connection": "The 1524–1525 uprising partly inspired by his ideas, which he condemned in a harsh pamphlet against the rebels.",
+      "importance": "high",
+      "qid": "Q154031"
+    },
+    {
+      "name": "Erasmus",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Erasmus",
+      "connection": "The humanist scholar whose defense of free will Luther answered in On the Bondage of the Will in 1525.",
+      "importance": "medium",
+      "qid": "Q43499"
+    },
+    {
+      "name": "Huldrych Zwingli",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Huldrych_Zwingli",
+      "connection": "The Zurich reformer he failed to agree with over the Eucharist at the Marburg Colloquy in 1529.",
+      "importance": "medium",
+      "qid": "Q123034"
+    },
+    {
+      "name": "Lucas Cranach the Elder",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Lucas_Cranach_the_Elder",
+      "connection": "The Wittenberg painter and friend whose workshop produced the best-known portraits of Luther.",
+      "importance": "medium",
+      "qid": "Q191748"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q9554"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 6,
+      "connections_matched_events": 3,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

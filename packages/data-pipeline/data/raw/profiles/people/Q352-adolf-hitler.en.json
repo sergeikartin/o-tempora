@@ -1,0 +1,212 @@
+{
+  "subject": "Adolf Hitler",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+  "overview": "Adolf Hitler was an Austrian-born failed art student and First World War soldier who became leader of the Nazi Party and dictator of Germany from 1933 to 1945. He turned Germany into a one-party state and started the Second World War in Europe by invading Poland in 1939. His regime carried out the Holocaust, the systematic murder of about six million European Jews and millions of other victims, before he killed himself in a Berlin bunker as Soviet troops closed in.",
+  "key_moments": [
+    {
+      "date": "1923–1924",
+      "title": "Failed putsch and Mein Kampf",
+      "text": "By 1923 Hitler led the small **Nazi Party** in Munich, and in November he tried to seize power in the **Beer Hall Putsch**, starting in a crowded beer hall and ending the next day when police fired on his marchers. He was convicted of treason and sent to **Landsberg Prison**, where he dictated much of **Mein Kampf** to his follower **Rudolf Hess**. The failed coup convinced him to pursue power through elections instead, and the trial itself turned an obscure agitator into a national figure.",
+      "claims": [
+        "Adolf Hitler led the Beer Hall Putsch in Munich in November 1923.",
+        "The Beer Hall Putsch failed when police confronted the Nazi marchers in Munich.",
+        "Adolf Hitler was convicted of treason after the Beer Hall Putsch and imprisoned in Landsberg Prison.",
+        "Adolf Hitler dictated much of Mein Kampf to Rudolf Hess while imprisoned in Landsberg."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Adolf_Hitler#Beer_Hall_Putsch_and_Landsberg_Prison"
+    },
+    {
+      "date": "30 January 1933",
+      "title": "Appointed chancellor, then dictator",
+      "text": "After the Nazis became the largest party in the Reichstag, President **Paul von Hindenburg** appointed Hitler **Chancellor of Germany** on 30 January 1933. Within weeks the **Reichstag fire** was used to suspend civil liberties, and in March the **Enabling Act** let his government pass laws without parliament. When Hindenburg died in August 1934, Hitler merged the offices of president and chancellor and took the title **Führer**, and the army swore a personal oath of loyalty to him rather than to the state.",
+      "claims": [
+        "Paul von Hindenburg appointed Adolf Hitler Chancellor of Germany on 30 January 1933.",
+        "The Reichstag fire of February 1933 was followed by a decree suspending civil liberties in Germany.",
+        "The Enabling Act of March 1933 allowed Adolf Hitler's government to enact laws without the Reichstag.",
+        "After Paul von Hindenburg died in August 1934, Adolf Hitler combined the offices of president and chancellor as Führer, and the armed forces swore an oath to Hitler personally."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Adolf_Hitler#Appointment_as_chancellor"
+    },
+    {
+      "date": "1939–1945",
+      "title": "World war and the Holocaust",
+      "text": "Germany's **invasion of Poland** on 1 September 1939 led Britain and France to declare war two days later, opening the **Second World War** in Europe. In June 1941 Hitler launched **Operation Barbarossa** against the Soviet Union, and in the occupied east his regime moved from mass shootings to industrialised killing in death camps such as **Auschwitz**. In what is now called **the Holocaust**, about **six million Jews** were murdered, along with millions of other victims; historians estimate that the war as a whole killed roughly 70 to 85 million people.",
+      "claims": [
+        "Germany invaded Poland on 1 September 1939.",
+        "Britain and France declared war on Germany on 3 September 1939.",
+        "Germany invaded the Soviet Union in Operation Barbarossa in June 1941.",
+        "About six million Jews were murdered in the Holocaust, and estimates of total Second World War deaths commonly range from 70 to 85 million."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Adolf_Hitler#World_War_II"
+    },
+    {
+      "date": "30 April 1945",
+      "title": "Suicide in the Führerbunker",
+      "text": "With the Red Army fighting its way into Berlin, Hitler stayed in the **Führerbunker** beneath the Reich Chancellery. Shortly after midnight on 29 April he married his long-time companion **Eva Braun**, and on 30 April the two killed themselves; their bodies were carried outside, doused in petrol and burned. Germany surrendered unconditionally about a week later, and his marriage had lasted less than two days.",
+      "claims": [
+        "Adolf Hitler married Eva Braun in the Führerbunker in Berlin on 29 April 1945.",
+        "Adolf Hitler and Eva Braun died by suicide in the Führerbunker on 30 April 1945.",
+        "The bodies of Adolf Hitler and Eva Braun were burned with petrol outside the bunker.",
+        "Germany surrendered unconditionally in early May 1945, about a week after Adolf Hitler's death."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Death_of_Adolf_Hitler"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The Iron Cross First Class that Hitler wore for the rest of his life was awarded in August 1918 on the recommendation of his regimental adjutant, **Hugo Gutmann**, a Jewish officer. Hitler rarely mentioned who had put his name forward. Gutmann later survived the Nazi years by emigrating to the United States.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Adolf Hitler was awarded the Iron Cross First Class in August 1918.",
+        "Hugo Gutmann, a Jewish officer, recommended Adolf Hitler for the Iron Cross First Class.",
+        "Hugo Gutmann emigrated to the United States."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Hugo_Gutmann"
+    },
+    {
+      "text": "For almost seven years the man who would rule Germany was not a German citizen, or a citizen of anywhere. Hitler gave up his Austrian citizenship in 1925 and stayed stateless until February 1932, when Nazi officials in the state of **Brunswick** gave him a minor government post, which automatically made him a German citizen. Without it he could not have run for president against Hindenburg that spring.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Adolf Hitler renounced his Austrian citizenship in 1925.",
+        "Adolf Hitler was stateless from 1925 until 1932.",
+        "Adolf Hitler gained German citizenship in February 1932 through appointment to a government post in the Free State of Brunswick.",
+        "Adolf Hitler ran against Paul von Hindenburg in the 1932 German presidential election."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Adolf_Hitler#Rise_to_power"
+    },
+    {
+      "text": "The family name came late. Hitler's father, **Alois**, was born illegitimate and grew up as **Alois Schicklgruber**, his mother's surname, and only began calling himself Hitler in the 1870s, years before Adolf was born. Had the change never happened, history would know the dictator by a name that his opponents later used to mock him.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Alois Hitler was born illegitimate and originally bore his mother's surname, Schicklgruber.",
+        "Alois Hitler began using the surname Hitler in the 1870s, before Adolf Hitler was born in 1889."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Alois_Hitler"
+    }
+  ],
+  "connections": [
+    {
+      "name": "World War II",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_II",
+      "connection": "Started the war in Europe by ordering the invasion of Poland in September 1939.",
+      "importance": "high",
+      "qid": "Q362"
+    },
+    {
+      "name": "The Holocaust",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/The_Holocaust",
+      "connection": "His regime organised the genocide that murdered about six million Jews.",
+      "importance": "high",
+      "qid": "Q2763"
+    },
+    {
+      "name": "Invasion of Poland",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
+      "connection": "Ordered the attack of 1 September 1939 that brought Britain and France into the war.",
+      "importance": "high",
+      "qid": "Q150812"
+    },
+    {
+      "name": "Operation Barbarossa",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "connection": "Launched the invasion of the Soviet Union in June 1941, breaking his 1939 pact with Stalin.",
+      "importance": "high",
+      "qid": "Q83055"
+    },
+    {
+      "name": "Paul von Hindenburg",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Paul_von_Hindenburg",
+      "connection": "As president, appointed Hitler chancellor on 30 January 1933.",
+      "importance": "high",
+      "qid": "Q2667"
+    },
+    {
+      "name": "Eva Braun",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Eva_Braun",
+      "connection": "His long-time companion, who married him in the bunker and died with him on 30 April 1945.",
+      "importance": "high",
+      "qid": "Q76433"
+    },
+    {
+      "name": "Joseph Stalin",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Joseph_Stalin",
+      "connection": "Signed a non-aggression pact with Hitler in 1939, then led the Soviet war against Germany after 1941.",
+      "importance": "high",
+      "qid": "Q855"
+    },
+    {
+      "name": "Winston Churchill",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "connection": "British prime minister from 1940 who refused to make peace with Hitler.",
+      "importance": "high",
+      "qid": "Q8016"
+    },
+    {
+      "name": "Benito Mussolini",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Benito_Mussolini",
+      "connection": "Italy's fascist dictator, an early model for Hitler and later his wartime ally.",
+      "importance": "medium",
+      "qid": "Q23559"
+    },
+    {
+      "name": "Joseph Goebbels",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Joseph_Goebbels",
+      "connection": "His propaganda minister, who stayed with him in the bunker to the end.",
+      "importance": "medium",
+      "qid": "Q41749"
+    },
+    {
+      "name": "Heinrich Himmler",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Heinrich_Himmler",
+      "connection": "Head of the SS, the organisation that ran the death camps.",
+      "importance": "medium",
+      "qid": "Q43067"
+    },
+    {
+      "name": "Hermann Göring",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Hermann_Göring",
+      "connection": "Commanded the Luftwaffe and was for years his designated successor.",
+      "importance": "medium",
+      "qid": "Q47906"
+    },
+    {
+      "name": "Munich Agreement",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Munich_Agreement",
+      "connection": "The 1938 deal under which Britain and France let him annex the Sudetenland.",
+      "importance": "medium",
+      "qid": "Q154255"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q352"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 8,
+      "connections_matched_events": 5,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

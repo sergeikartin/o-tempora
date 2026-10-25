@@ -1,0 +1,186 @@
+{
+  "subject": "The Holocaust",
+  "type": "milestone",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/The_Holocaust",
+  "overview": "The Holocaust was the systematic, state-organized murder of Europe's Jews by Nazi Germany and its collaborators during World War II, with an estimated six million Jewish men, women and children killed. Persecution began after the Nazis took power in Germany in 1933, but from 1941 it turned into mass killing across occupied Europe: first by shooting squads in the occupied Soviet Union, then in gas chambers at camps in occupied Poland such as Auschwitz-Birkenau and Treblinka. The killing ended only as Allied armies overran the camps and Germany surrendered in May 1945; Roma, disabled people, Soviet prisoners of war and other groups were also targeted and murdered in large numbers.",
+  "key_moments": [
+    {
+      "date": "June–September 1941",
+      "title": "Mass shootings in the East",
+      "text": "When Germany invaded the Soviet Union in **Operation Barbarossa**, mobile killing units called the **Einsatzgruppen** followed the army, rounding up Jews in town after town and shooting them at the edges of pits and ravines. Local collaborators and regular German police and army units often helped. The most notorious massacre took place at **Babi Yar**, a ravine on the edge of Kyiv, where the units' own report counted **33,771 Jews** killed in just two days at the end of September 1941.",
+      "claims": [
+        "Germany invaded the Soviet Union in June 1941 in Operation Barbarossa.",
+        "Einsatzgruppen units carried out mass shootings of Jews in the occupied Soviet Union.",
+        "The Babi Yar massacre took place in a ravine near Kyiv on 29–30 September 1941.",
+        "An Einsatzgruppe report recorded 33,771 Jews killed at Babi Yar in two days."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Babi_Yar"
+    },
+    {
+      "date": "20 January 1942",
+      "title": "The Wannsee Conference",
+      "text": "In a lakeside villa in the Berlin suburb of Wannsee, **Reinhard Heydrich** gathered senior Nazi officials and government ministry representatives to coordinate what the regime called the **\"Final Solution to the Jewish question\"**. Mass killing was already under way; the meeting's purpose was to bring the civil ministries into line behind the deportation of all of Europe's Jews. The minutes were taken by **Adolf Eichmann**, and one surviving copy, found by American investigators after the war, became one of the most important documents of the Holocaust.",
+      "claims": [
+        "The Wannsee Conference was held on 20 January 1942 in a villa in the Berlin suburb of Wannsee.",
+        "Reinhard Heydrich chaired the Wannsee Conference.",
+        "The Wannsee Conference coordinated the implementation of the Final Solution among Nazi officials and government ministries.",
+        "Adolf Eichmann prepared the minutes of the Wannsee Conference, and one copy survived the war."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Wannsee_Conference"
+    },
+    {
+      "date": "19 April – 16 May 1943",
+      "title": "The Warsaw Ghetto Uprising",
+      "text": "After hundreds of thousands of Warsaw's Jews had been deported to **Treblinka** in 1942, the remaining ghetto fighters, led by **Mordechai Anielewicz** of the Jewish Combat Organization, met German troops arriving for the final liquidation with pistols, homemade bombs and a few rifles. The Germans, commanded by **Jürgen Stroop**, burned the ghetto block by block over nearly a month. Stroop marked the end by blowing up Warsaw's **Great Synagogue**, and titled his report to Himmler \"The Warsaw Ghetto Is No More\" — the largest Jewish revolt of the war.",
+      "claims": [
+        "The Warsaw Ghetto Uprising began on 19 April 1943 and was suppressed by 16 May 1943.",
+        "Mordechai Anielewicz led the Jewish Combat Organization in the Warsaw Ghetto Uprising.",
+        "Jürgen Stroop commanded the German forces that suppressed the Warsaw Ghetto Uprising.",
+        "Jürgen Stroop ordered the destruction of the Great Synagogue of Warsaw to mark the end of the operation."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Warsaw_Ghetto_Uprising"
+    },
+    {
+      "date": "27 January 1945",
+      "title": "Soviet troops reach Auschwitz",
+      "text": "Soldiers of the **Red Army** entered **Auschwitz**, the largest of the Nazi camps, where around **1.1 million people**, the great majority of them Jews, are estimated to have been murdered. Days earlier the SS had forced tens of thousands of prisoners west on **death marches**, leaving behind only the sick and exhausted, around 7,000 people. The date of that liberation was later chosen by the United Nations as **International Holocaust Remembrance Day**.",
+      "claims": [
+        "The Soviet Red Army liberated Auschwitz on 27 January 1945.",
+        "An estimated 1.1 million people were murdered at Auschwitz, most of them Jews.",
+        "The SS evacuated tens of thousands of Auschwitz prisoners on death marches shortly before liberation.",
+        "The United Nations designated 27 January as International Holocaust Remembrance Day."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Auschwitz_concentration_camp"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "In September 1940 the Polish underground officer **Witold Pilecki** deliberately let himself be caught in a German street roundup in Warsaw so that he would be sent to Auschwitz. Inside, he built a resistance network and smuggled out reports on conditions in the camp, among the earliest intelligence on Auschwitz to reach the Polish government-in-exile and the Allies. He escaped in April 1943. The bitter twist came after the war: Poland's communist authorities arrested him, tried him as a spy, and executed him in 1948, and his story was largely suppressed until after the fall of communism.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Witold Pilecki allowed himself to be arrested in a German roundup in Warsaw in 1940 to be sent to Auschwitz.",
+        "Witold Pilecki organized a resistance movement inside Auschwitz and sent reports about the camp to the Polish underground.",
+        "Witold Pilecki escaped from Auschwitz in April 1943.",
+        "Witold Pilecki was executed by the communist authorities of Poland in 1948."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Witold_Pilecki"
+    },
+    {
+      "text": "Occupied Denmark is the rare case where almost an entire Jewish community escaped. In late September 1943, the German diplomat **Georg Ferdinand Duckwitz** leaked word of a planned roundup, and Danes hid their Jewish neighbours and ferried them across the narrow Øresund strait to neutral Sweden, much of it in small fishing boats at night. More than 7,000 people made it across in a matter of weeks; the several hundred who were caught were sent to the Theresienstadt ghetto, where most of them survived.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Georg Ferdinand Duckwitz leaked information about the planned deportation of Danish Jews in 1943.",
+        "More than 7,000 Danish Jews were evacuated by sea to neutral Sweden in October 1943.",
+        "Fishing boats were used to carry Danish Jews across the Øresund to Sweden.",
+        "Several hundred Danish Jews who were captured were deported to Theresienstadt, and most of them survived."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Rescue_of_the_Danish_Jews"
+    },
+    {
+      "text": "The word used in English carries an uncomfortable meaning. \"Holocaust\" comes from the Greek holokaustos, \"burnt whole\", a term for a sacrificial offering consumed entirely by fire, and some scholars and survivors object to it for implying that the victims were a sacrifice. Many prefer the Hebrew word **Shoah**, meaning \"catastrophe\", which is the term used in Israel.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "The word Holocaust derives from the Greek holokaustos, meaning burnt whole, a term for a burnt sacrificial offering.",
+        "Some people object to the word Holocaust because of its sacrificial connotations.",
+        "The Hebrew word Shoah, meaning catastrophe, is used as an alternative name for the Holocaust."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Names_of_the_Holocaust"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Adolf Hitler",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+      "connection": "Leader of Nazi Germany whose antisemitic ideology and authority drove the genocide.",
+      "importance": "high",
+      "qid": "Q352"
+    },
+    {
+      "name": "Heinrich Himmler",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Heinrich_Himmler",
+      "connection": "As head of the SS he oversaw the Einsatzgruppen and the extermination camps.",
+      "importance": "high",
+      "qid": "Q43067"
+    },
+    {
+      "name": "Reinhard Heydrich",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Reinhard_Heydrich",
+      "connection": "Chaired the Wannsee Conference in January 1942 to coordinate the Final Solution.",
+      "importance": "high",
+      "qid": "Q60039"
+    },
+    {
+      "name": "Adolf Eichmann",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Adolf_Eichmann",
+      "connection": "Organized the deportation of Jews to the camps and was tried and executed in Israel in 1962.",
+      "importance": "high",
+      "qid": "Q28085"
+    },
+    {
+      "name": "World War II",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_II",
+      "connection": "The Holocaust was carried out across the territories Germany conquered during the war.",
+      "importance": "high",
+      "qid": "Q362"
+    },
+    {
+      "name": "Operation Barbarossa",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "connection": "The 1941 invasion of the Soviet Union, followed by Einsatzgruppen mass shootings of Jews.",
+      "importance": "high",
+      "qid": "Q83055"
+    },
+    {
+      "name": "Anne Frank",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Anne_Frank",
+      "connection": "A Jewish girl who hid in Amsterdam and died in Bergen-Belsen; her diary became one of the best-known Holocaust accounts.",
+      "importance": "medium",
+      "qid": "Q4583"
+    },
+    {
+      "name": "Oskar Schindler",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
+      "connection": "German industrialist who saved around 1,200 Jews by employing them in his factories.",
+      "importance": "medium",
+      "qid": "Q60029"
+    },
+    {
+      "name": "Raoul Wallenberg",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Raoul_Wallenberg",
+      "connection": "Swedish diplomat who issued protective passports to Jews in Budapest in 1944.",
+      "importance": "medium",
+      "qid": "Q152850"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q2763"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 7,
+      "connections_matched_events": 2,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

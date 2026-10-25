@@ -1,0 +1,187 @@
+{
+  "subject": "NATO",
+  "type": "milestone",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/NATO",
+  "overview": "In April 1949, as the Cold War set in, twelve countries from North America and Western Europe signed a treaty in Washington promising that an armed attack on one of them would be treated as an attack on them all. That promise created the North Atlantic Treaty Organization, a military alliance built to deter the Soviet Union, with the United States at its core. NATO did not end with the Cold War: it took in many former Eastern Bloc countries, fought its first real operations in the 1990s, and after Sweden joined in 2024 it had 32 members.",
+  "key_moments": [
+    {
+      "date": "4 April 1949",
+      "title": "Twelve nations sign in Washington",
+      "text": "With the **Soviet blockade of Berlin** still under way, Western European governments wanted a firm American commitment to their defence. In Washington, D.C., representatives of **twelve founding members**, among them the United States, Canada, Britain, France, Italy and the Low Countries, signed the **North Atlantic Treaty**. Its heart was **Article 5**: an armed attack on one member would be considered an attack on all, a single sentence that would anchor American troops in Europe for decades.",
+      "claims": [
+        "The North Atlantic Treaty was signed in Washington, D.C., on 4 April 1949, while the Berlin Blockade was still under way.",
+        "The North Atlantic Treaty had twelve founding signatories.",
+        "The founding members of NATO included the United States, Canada, the United Kingdom, France, Italy, Belgium, the Netherlands and Luxembourg.",
+        "Article 5 of the North Atlantic Treaty states that an armed attack against one member shall be considered an attack against all members."
+      ],
+      "source": "https://en.wikipedia.org/wiki/NATO#History"
+    },
+    {
+      "date": "1955",
+      "title": "West Germany joins, the Soviets answer",
+      "text": "Ten years after the end of the Second World War, **West Germany** was admitted to NATO and allowed to rearm inside the alliance. Moscow answered within days: in May 1955 the Soviet Union and its Eastern European allies signed the **Warsaw Pact**, a rival alliance of their own. Europe was now split into two armed blocs facing each other across the Iron Curtain, and the country that had been defeated a decade earlier was now a front-line ally of its former enemies.",
+      "claims": [
+        "West Germany joined NATO in May 1955.",
+        "The Warsaw Pact was signed in May 1955, days after West Germany joined NATO.",
+        "The Warsaw Pact was formed by the Soviet Union and Eastern European communist states in response to West Germany joining NATO."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Warsaw_Pact"
+    },
+    {
+      "date": "1966",
+      "title": "De Gaulle walks out of the command",
+      "text": "French President **Charles de Gaulle** wanted France to control its own defence, not take orders from an American-led command. In 1966 he withdrew France from NATO's **integrated military command** and told allied forces and headquarters to leave French soil, though France stayed in the alliance itself. NATO's military headquarters moved from France to **Belgium**. France did not fully return to the integrated command until **2009**, more than four decades later.",
+      "claims": [
+        "Charles de Gaulle withdrew France from NATO's integrated military command in 1966.",
+        "France remained a member of NATO after leaving the integrated military command.",
+        "NATO's military headquarters moved from France to Belgium after the French withdrawal.",
+        "France rejoined NATO's integrated military command in 2009."
+      ],
+      "source": "https://en.wikipedia.org/wiki/NATO"
+    },
+    {
+      "date": "12 September 2001",
+      "title": "Article 5 invoked for the first time",
+      "text": "For more than fifty years, NATO's mutual-defence clause had never been used. The day after the **September 11 attacks**, the allies invoked **Article 5** for the first time in the alliance's history, and NATO went on to lead the **International Security Assistance Force** in Afghanistan. The irony was striking: a clause written mainly to bring American power to Europe's defence was first used to come to the aid of the United States.",
+      "claims": [
+        "NATO invoked Article 5 of the North Atlantic Treaty for the first time on 12 September 2001, after the September 11 attacks.",
+        "NATO led the International Security Assistance Force in Afghanistan."
+      ],
+      "source": "https://en.wikipedia.org/wiki/North_Atlantic_Treaty#Article_5"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "In 1954, only five years after the alliance was founded to contain it, the Soviet Union proposed that it should join NATO itself, presenting the idea as a way to preserve peace in Europe. The Western allies suspected the real aim was to weaken the alliance from inside, and they rejected the offer. A year later Moscow created the Warsaw Pact instead.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "The Soviet Union proposed joining NATO in 1954.",
+        "The NATO countries rejected the Soviet Union's 1954 proposal to join NATO, fearing it aimed to weaken the alliance.",
+        "The Warsaw Pact was created in 1955."
+      ],
+      "source": "https://en.wikipedia.org/wiki/NATO#History"
+    },
+    {
+      "text": "NATO's first Secretary General, the British general Lord Ismay, is credited with summing up the alliance's purpose in one dry line: to keep the Soviets out, the Americans in, and the Germans down. The quip is still widely quoted, and it captures something the treaty text never says outright: in its early years NATO was meant to reassure Europeans about a revived Germany as much as to deter Moscow.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Hastings Ismay was the first Secretary General of NATO.",
+        "Hastings Ismay is credited with saying that NATO's purpose was to keep the Soviet Union out, the Americans in, and the Germans down."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Hastings_Ismay,_1st_Baron_Ismay"
+    },
+    {
+      "text": "One of the twelve founding members of this military alliance had no army at all. Iceland signed the North Atlantic Treaty in 1949 without any standing armed forces, and it still has none. What it brought was geography: a position in the middle of the North Atlantic, where the United States later ran an air base at Keflavík to watch the sea lanes between Europe and America.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Iceland was a founding member of NATO in 1949.",
+        "Iceland has no standing army.",
+        "The United States operated a military base at Keflavík in Iceland."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Iceland"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Cold War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Cold_War",
+      "connection": "NATO was founded in 1949 as the West's main military alliance against the Soviet bloc in the Cold War.",
+      "importance": "high",
+      "qid": "Q8683"
+    },
+    {
+      "name": "Warsaw Pact",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Warsaw_Pact",
+      "connection": "The Soviet-led rival alliance, formed in 1955 after West Germany joined NATO.",
+      "importance": "high",
+      "qid": "Q41644"
+    },
+    {
+      "name": "Harry S. Truman",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Harry_S._Truman",
+      "connection": "The US president under whom the United States signed the North Atlantic Treaty in 1949.",
+      "importance": "high",
+      "qid": "Q11613"
+    },
+    {
+      "name": "September 11 attacks",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/September_11_attacks",
+      "connection": "The attacks led NATO to invoke Article 5 for the first time in its history.",
+      "importance": "high",
+      "qid": "Q10806"
+    },
+    {
+      "name": "Dwight D. Eisenhower",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Dwight_D._Eisenhower",
+      "connection": "Served as NATO's first Supreme Allied Commander Europe before becoming US president.",
+      "importance": "high",
+      "qid": "Q9916"
+    },
+    {
+      "name": "Charles de Gaulle",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Charles_de_Gaulle",
+      "connection": "Took France out of NATO's integrated military command in 1966, forcing its headquarters to move to Belgium.",
+      "importance": "medium",
+      "qid": "Q2042"
+    },
+    {
+      "name": "Kosovo War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Kosovo_War",
+      "connection": "NATO waged an air campaign against Yugoslavia in 1999 during the Kosovo War.",
+      "importance": "medium",
+      "qid": "Q190029"
+    },
+    {
+      "name": "Bosnian War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Bosnian_War",
+      "connection": "NATO carried out its first combat operations during the Bosnian War, including air strikes against Bosnian Serb forces in 1995.",
+      "importance": "medium",
+      "qid": "Q181533"
+    },
+    {
+      "name": "War in Afghanistan (2001–2021)",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/War_in_Afghanistan_(2001%E2%80%932021)",
+      "connection": "NATO led the International Security Assistance Force in Afghanistan after invoking Article 5.",
+      "importance": "medium",
+      "qid": "Q182865"
+    },
+    {
+      "name": "Russian invasion of Ukraine",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine",
+      "connection": "The 2022 invasion led Finland and Sweden to give up long-standing non-alignment and join NATO in 2023 and 2024.",
+      "importance": "medium",
+      "qid": "Q110999040"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q7184"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 13,
+      "connections_matched_people": 3,
+      "connections_matched_events": 7,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

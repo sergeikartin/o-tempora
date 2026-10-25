@@ -1,0 +1,171 @@
+{
+  "subject": "Elizabeth I of England",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Elizabeth_I_of_England",
+  "overview": "Elizabeth I was the daughter of Henry VIII and Anne Boleyn. She was declared illegitimate as a child and later imprisoned by her own half-sister, yet she went on to rule England and Ireland for 44 years, from 1558 to 1603. She settled the country's religious split with a Protestant church, outlasted plots on her life and a Spanish invasion fleet, and never married. Her death ended the Tudor dynasty and passed the crown to the Stuarts of Scotland.",
+  "key_moments": [
+    {
+      "date": "1554",
+      "title": "Prisoner in the Tower",
+      "text": "When **Wyatt's Rebellion** rose against Queen **Mary I**'s plan to marry the Catholic **Philip of Spain**, suspicion fell on Mary's Protestant half-sister. Elizabeth was questioned and sent to the **Tower of London**, the same fortress where her mother had been beheaded. No proof of her involvement was found, and after about two months she was moved to house arrest at **Woodstock**. The woman who would one day rule from the throne had spent part of her twenties wondering whether she would be executed.",
+      "claims": [
+        "Wyatt's Rebellion in 1554 opposed Mary I's planned marriage to Philip of Spain.",
+        "Mary I had Elizabeth imprisoned in the Tower of London in 1554 after Wyatt's Rebellion.",
+        "Elizabeth was moved from the Tower of London to house arrest at Woodstock.",
+        "Anne Boleyn, Elizabeth's mother, was executed at the Tower of London in 1536."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Elizabeth_I#Mary_I's_reign"
+    },
+    {
+      "date": "1558–1559",
+      "title": "Queen, and a church settlement",
+      "text": "Mary I died childless in November 1558 and Elizabeth, aged 25, became queen. Within months Parliament passed the **Act of Supremacy** and the **Act of Uniformity**, the core of the **Elizabethan Religious Settlement**: England left the Pope's authority again and returned to a Protestant prayer book. Elizabeth took the title **Supreme Governor** of the Church of England rather than her father's \"Supreme Head\", a softer wording that made the settlement easier to accept for those who objected to a woman heading the Church.",
+      "claims": [
+        "Elizabeth became Queen of England on the death of Mary I in November 1558.",
+        "The Act of Supremacy and the Act of Uniformity were passed in 1559 as part of the Elizabethan Religious Settlement.",
+        "Under the Act of Supremacy 1559 Elizabeth took the title Supreme Governor of the Church of England.",
+        "Henry VIII had used the title Supreme Head of the Church of England."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Elizabethan_Religious_Settlement"
+    },
+    {
+      "date": "1587",
+      "title": "Execution of Mary, Queen of Scots",
+      "text": "For nearly two decades Elizabeth held her Catholic cousin **Mary, Queen of Scots** captive in England, a living rallying point for plots to put Mary on the English throne. After **Francis Walsingham**'s agents uncovered the **Babington Plot**, Mary was tried and condemned, and Elizabeth signed the death warrant. Mary was beheaded at **Fotheringhay Castle** in February 1587. Elizabeth then insisted the warrant had been sent off against her wishes, and her secretary **William Davison** was sent to the Tower for it.",
+      "claims": [
+        "Mary, Queen of Scots was held captive in England for about nineteen years.",
+        "Francis Walsingham's agents uncovered the Babington Plot against Elizabeth I in 1586.",
+        "Mary, Queen of Scots was executed at Fotheringhay Castle in February 1587.",
+        "Elizabeth I's secretary William Davison was imprisoned in the Tower of London after the death warrant of Mary, Queen of Scots was dispatched."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Execution_of_Mary,_Queen_of_Scots"
+    },
+    {
+      "date": "1588",
+      "title": "The Armada and Tilbury",
+      "text": "**Philip II of Spain** sent the **Spanish Armada** to escort an invasion army across the Channel. English **fire ships** broke up the Spanish formation off Calais, the fleet was beaten at the **Battle of Gravelines**, and the survivors were driven north around Scotland and Ireland, where storms wrecked many ships. While the danger still seemed real, Elizabeth went in person to the troops at **Tilbury** and gave her best-known speech, saying she had the body of a weak and feeble woman but **the heart and stomach of a king**.",
+      "claims": [
+        "Philip II of Spain sent the Spanish Armada against England in 1588.",
+        "English fire ships scattered the Spanish Armada off Calais before the Battle of Gravelines.",
+        "Many ships of the Spanish Armada were wrecked by storms as it sailed home around Scotland and Ireland.",
+        "Elizabeth I gave a speech to her troops at Tilbury in 1588 saying she had the heart and stomach of a king."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Speech_to_the_Troops_at_Tilbury"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "Elizabeth was one of the best-educated rulers of her time, not only in name. She read Latin and Greek and spoke several modern languages, and in autumn 1593, at about sixty, with war against Spain still going, she produced her own English translation of **Boethius's Consolation of Philosophy**, a sixth-century book written by a man awaiting execution. The manuscript survives, partly in her own hurried hand.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Elizabeth I translated Boethius's Consolation of Philosophy into English in 1593.",
+        "Boethius wrote the Consolation of Philosophy while imprisoned and awaiting execution in the sixth century.",
+        "Elizabeth I was educated in Latin and Greek."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Elizabeth_I"
+    },
+    {
+      "text": "In October 1562 Elizabeth caught **smallpox** at Hampton Court and came so close to death that her councillors began arguing over who would succeed her. She recovered. One of the ladies who nursed her, **Mary Sidney**, mother of the poet Philip Sidney, caught the disease from her and was left so badly scarred that she largely withdrew from court life.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Elizabeth I fell seriously ill with smallpox in 1562.",
+        "Elizabeth I's smallpox in 1562 caused a succession crisis among her councillors.",
+        "Lady Mary Sidney nursed Elizabeth I through smallpox and was scarred by the disease.",
+        "Lady Mary Sidney was the mother of Philip Sidney."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Elizabeth_I"
+    },
+    {
+      "text": "Elizabeth died at Richmond Palace on 24 March 1603, but by the calendar her own subjects used she died in **1602**. England then began the new year on Lady Day, 25 March, so she died on the last day of the year. That is why documents written at the time date the death of the Tudor dynasty's last monarch to a year that, by modern reckoning, was already over.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Elizabeth I died at Richmond Palace on 24 March 1603.",
+        "In England at the time of Elizabeth I's death the legal year began on 25 March, Lady Day.",
+        "Under the English calendar of the time Elizabeth I's death fell in the year 1602."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Old_Style_and_New_Style_dates"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Henry VIII",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Henry_VIII",
+      "connection": "Her father, who had her mother executed and Elizabeth declared illegitimate, then restored her to the succession in 1544.",
+      "importance": "high",
+      "qid": "Q38370"
+    },
+    {
+      "name": "Anne Boleyn",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Anne_Boleyn",
+      "connection": "Her mother, beheaded in 1536 when Elizabeth was two years old.",
+      "importance": "high",
+      "qid": "Q80823"
+    },
+    {
+      "name": "Mary I of England",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Mary_I_of_England",
+      "connection": "Her Catholic half-sister and predecessor, who imprisoned Elizabeth in the Tower in 1554.",
+      "importance": "high",
+      "qid": "Q82674"
+    },
+    {
+      "name": "Mary, Queen of Scots",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Mary,_Queen_of_Scots",
+      "connection": "Her Catholic cousin and rival claimant, held captive for years and executed on Elizabeth's warrant in 1587.",
+      "importance": "high",
+      "qid": "Q131412"
+    },
+    {
+      "name": "Philip II of Spain",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Philip_II_of_Spain",
+      "connection": "Her former brother-in-law, who later sent the Armada against her in 1588.",
+      "importance": "high",
+      "qid": "Q34417"
+    },
+    {
+      "name": "James VI and I",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/James_VI_and_I",
+      "connection": "Son of Mary, Queen of Scots, who succeeded her in 1603 and united the English and Scottish crowns.",
+      "importance": "high",
+      "qid": "Q79972"
+    },
+    {
+      "name": "Francis Drake",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Francis_Drake",
+      "connection": "Backed his voyages and knighted him aboard the Golden Hind in 1581.",
+      "importance": "medium",
+      "qid": "Q36517"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q7207"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 7,
+      "connections_matched_events": 0,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "subject": "Cleopatra",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Cleopatra",
+  "overview": "Cleopatra VII was the last active ruler of Ptolemaic Egypt, a Greek-speaking dynasty that had governed the country from Alexandria since the death of Alexander the Great. For about two decades she worked to keep Egypt independent as Rome swallowed the Mediterranean, forming political and personal alliances first with Julius Caesar and then with Mark Antony. When she and Antony lost the war with Octavian, she took her own life in 30 BC, and Egypt became a Roman province.",
+  "key_moments": [
+    {
+      "date": "51 BC",
+      "title": "Takes the throne at eighteen",
+      "text": "When her father **Ptolemy XII Auletes** died, his will left Egypt jointly to Cleopatra, then about eighteen, and her younger brother **Ptolemy XIII**, under the protection of Rome. The partnership soon broke down: the boy king's advisers, among them the eunuch **Pothinus**, turned the court against her. By about 49 BC Cleopatra had been **driven out of Alexandria** and was raising an army on the edge of Egypt to fight her way back to her own throne.",
+      "claims": [
+        "Ptolemy XII Auletes died in 51 BC.",
+        "Ptolemy XII Auletes left Egypt to be ruled jointly by Cleopatra and her brother Ptolemy XIII.",
+        "Pothinus was a eunuch adviser at the court of Ptolemy XIII.",
+        "Cleopatra was forced out of Alexandria during her conflict with Ptolemy XIII and raised an army to return."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+    },
+    {
+      "date": "48–47 BC",
+      "title": "Alliance with Julius Caesar",
+      "text": "**Julius Caesar** arrived in Alexandria in pursuit of Pompey, only to be presented with Pompey's severed head by Ptolemy XIII's courtiers. Cleopatra slipped back into the city to meet Caesar in person, and the two became allies and lovers. Caesar's small force was then besieged in the palace quarter in the **Alexandrian War**, which ended in 47 BC when Ptolemy XIII **drowned in the Nile** during the fighting. Cleopatra was restored as queen, and soon afterwards she gave birth to a son, **Caesarion**, whom she presented as Caesar's child. Plutarch tells that she reached Caesar by being carried into the palace hidden inside a bundle of bedding.",
+      "claims": [
+        "Julius Caesar arrived in Alexandria in 48 BC while pursuing Pompey.",
+        "Pompey was killed in Egypt on the orders of Ptolemy XIII's court before Caesar arrived.",
+        "Ptolemy XIII drowned in the Nile in 47 BC during the Alexandrian War.",
+        "Cleopatra gave birth to Caesarion, whom she claimed was fathered by Julius Caesar.",
+        "Plutarch wrote that Cleopatra was carried in to meet Caesar hidden in a bedding sack."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Siege_of_Alexandria_(47_BC)"
+    },
+    {
+      "date": "41 BC",
+      "title": "The barge at Tarsus",
+      "text": "After Caesar's assassination in 44 BC, the eastern half of the Roman world fell to **Mark Antony**, who summoned Cleopatra to **Tarsus** in Asia Minor to answer for her conduct during the civil war. She turned the summons into a spectacle, and the meeting began an alliance and love affair that lasted the rest of their lives; she bore Antony three children, including the twins **Alexander Helios** and **Cleopatra Selene**. In Plutarch's account she sailed up the river Cydnus on a barge with a gilded stern, purple sails and silver oars, dressed as Venus, a scene Shakespeare later borrowed almost line for line.",
+      "claims": [
+        "Julius Caesar was assassinated in 44 BC.",
+        "Mark Antony met Cleopatra at Tarsus in 41 BC.",
+        "Cleopatra and Mark Antony had three children, including the twins Alexander Helios and Cleopatra Selene II.",
+        "Plutarch described Cleopatra arriving at Tarsus on a barge with a gilded stern, purple sails and silver oars.",
+        "Shakespeare's Antony and Cleopatra adapts Plutarch's description of the barge."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+    },
+    {
+      "date": "31–30 BC",
+      "title": "Actium and the end of Ptolemaic Egypt",
+      "text": "Octavian, Caesar's adopted heir, declared war on Cleopatra herself, framing the coming conflict as Rome against a foreign queen. At the **Battle of Actium** off western Greece in 31 BC, the fleet of Antony and Cleopatra was defeated, and the couple fled back to Egypt. When Octavian's army reached Alexandria the following year, Antony took his own life, and Cleopatra followed him in August 30 BC. Octavian had **Caesarion** killed and annexed Egypt as a **Roman province**, ending nearly three centuries of Ptolemaic rule, and from then on the land of the pharaohs was governed as the personal possession of Rome's emperor.",
+      "claims": [
+        "Octavian had the Roman Senate declare war on Cleopatra rather than on Mark Antony.",
+        "The fleet of Antony and Cleopatra was defeated at the Battle of Actium in 31 BC.",
+        "Mark Antony and Cleopatra both died by suicide in Alexandria in 30 BC.",
+        "Octavian had Caesarion killed in 30 BC.",
+        "Egypt became a Roman province after Cleopatra's death, ending the Ptolemaic dynasty."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Actium"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The most famous Egyptian queen was not ethnically Egyptian. The Ptolemies descended from Ptolemy I, a Macedonian general of Alexander the Great, and for nearly three centuries they ran the country in Greek from Alexandria, often marrying their own siblings to keep the bloodline in the family. According to Plutarch, Cleopatra spoke many languages and was the first ruler of her dynasty who bothered to learn Egyptian, the language of the people she ruled.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "The Ptolemaic dynasty was founded by Ptolemy I Soter, a Macedonian Greek general of Alexander the Great.",
+        "The Ptolemaic rulers of Egypt frequently practised sibling marriage.",
+        "Plutarch wrote that Cleopatra was the first Ptolemaic ruler to learn the Egyptian language."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+    },
+    {
+      "text": "Pliny the Elder tells a story of a wager: Cleopatra bet Antony that she could spend ten million sesterces on a single banquet. When the meal seemed ordinary, she took off one of a pair of enormous pearl earrings, dropped it into a cup of vinegar, let it dissolve and drank it. Whether vinegar could dissolve a large pearl that quickly has been doubted ever since, which is why the tale is best read as legend.",
+      "type": "unique_detail",
+      "is_legend": true,
+      "confidence": "medium",
+      "claims": [
+        "Pliny the Elder's Natural History contains a story of Cleopatra dissolving a pearl in vinegar to win a bet with Mark Antony.",
+        "In Pliny's story the bet was that Cleopatra could spend ten million sesterces on one banquet.",
+        "Historians question whether the pearl story could have happened as told."
+      ],
+      "source": "not_on_wikipedia"
+    },
+    {
+      "text": "The asp is the part of her story everyone knows, and the part the ancient writers were least sure of. Plutarch reports that a snake was said to have been smuggled in to her in a basket of figs, but he also admits that nobody knew the truth, mentioning that she may have kept poison in a hollow hairpin. Only two faint punctures were said to have been found on her arm, and no snake was found in the room.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Plutarch reported a story that an asp was smuggled to Cleopatra in a basket of figs.",
+        "Plutarch wrote that the true cause of Cleopatra's death was unknown.",
+        "Ancient accounts mention the possibility that Cleopatra used poison rather than a snake."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Mark Antony",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Mark_Antony",
+      "connection": "Her ally and partner from their meeting at Tarsus in 41 BC until both died in Alexandria in 30 BC.",
+      "importance": "high",
+      "qid": "Q51673"
+    },
+    {
+      "name": "Julius Caesar",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Julius_Caesar",
+      "connection": "Restored her to the throne after the Alexandrian War of 48–47 BC and was, by her account, the father of her son Caesarion.",
+      "importance": "high",
+      "qid": "Q1048"
+    },
+    {
+      "name": "Augustus",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Augustus",
+      "connection": "As Octavian he defeated her at Actium in 31 BC and annexed Egypt after her death.",
+      "importance": "high",
+      "qid": "Q1405"
+    },
+    {
+      "name": "Battle of Actium",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Battle_of_Actium",
+      "connection": "The 31 BC naval defeat off western Greece that doomed her and Antony.",
+      "importance": "high",
+      "qid": "Q160387"
+    },
+    {
+      "name": "Caesarion",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Caesarion",
+      "connection": "Her son and co-ruler, presented as Julius Caesar's child, who was killed on Octavian's orders in 30 BC.",
+      "importance": "high",
+      "qid": "Q39589"
+    },
+    {
+      "name": "Ptolemy XIII",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Ptolemy_XIII_Theos_Philopator",
+      "connection": "Her brother and co-ruler turned rival, who drowned in the Nile in 47 BC.",
+      "importance": "high",
+      "qid": "Q39938"
+    },
+    {
+      "name": "Ptolemy XII Auletes",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Ptolemy_XII_Auletes",
+      "connection": "Her father, whose will left Egypt to her and Ptolemy XIII in 51 BC.",
+      "importance": "medium",
+      "qid": "Q39991"
+    },
+    {
+      "name": "Cleopatra Selene II",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Cleopatra_Selene_II",
+      "connection": "Her daughter with Antony, who survived the fall of Egypt and became queen of Mauretania.",
+      "importance": "medium",
+      "qid": "Q40058"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q635"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 14,
+      "connections_matched_people": 7,
+      "connections_matched_events": 1,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

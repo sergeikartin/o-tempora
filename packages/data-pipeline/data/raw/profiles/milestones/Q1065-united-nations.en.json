@@ -1,0 +1,177 @@
+{
+  "subject": "United Nations",
+  "type": "milestone",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/United_Nations",
+  "overview": "In 1945, as the Second World War was ending, the countries that had fought the Axis set up a new world organization to prevent another such war, replacing the League of Nations, which had failed to stop it. Delegates from 50 countries met in San Francisco to write its Charter, and the United Nations came into existence on 24 October 1945. Its five main victors, the United States, the Soviet Union, the United Kingdom, France and China, took permanent seats with a veto on its Security Council.",
+  "key_moments": [
+    {
+      "date": "1 January 1942",
+      "title": "A wartime alliance gets its name",
+      "text": "Weeks after Pearl Harbor, representatives of **26 nations** fighting the Axis signed the **Declaration by United Nations** in Washington, pledging to use their full resources against the enemy and not to make a separate peace. The name had been proposed by **Franklin D. Roosevelt** as a label for the wartime alliance. At this point \"the United Nations\" meant a coalition at war, not a peacetime organization: the term for the countries fighting the Axis was in use more than three years before the institution of the same name existed.",
+      "claims": [
+        "The Declaration by United Nations was signed on 1 January 1942.",
+        "The Declaration by United Nations was initially signed by 26 nations.",
+        "The signatories of the Declaration by United Nations pledged not to make a separate peace with the Axis powers.",
+        "Franklin D. Roosevelt proposed the term \"United Nations\" for the Allied powers."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Declaration_by_United_Nations"
+    },
+    {
+      "date": "August–October 1944",
+      "title": "Blueprint drafted at Dumbarton Oaks",
+      "text": "At **Dumbarton Oaks**, a mansion in Washington, D.C., diplomats from the **United States, the United Kingdom, the Soviet Union and China** drafted proposals for the new organization, sketching a General Assembly of all members and a smaller **Security Council** with permanent seats for the great powers. They could not agree on how voting in the Council should work, and the question was left open. It was settled in February 1945 at the **Yalta Conference**, where Roosevelt, Churchill and Stalin agreed on the formula that became the permanent members' **veto**.",
+      "claims": [
+        "The Dumbarton Oaks Conference was held in Washington, D.C., in 1944.",
+        "Delegations from the United States, the United Kingdom, the Soviet Union and China took part in the Dumbarton Oaks Conference.",
+        "The Dumbarton Oaks Conference left the question of Security Council voting procedure unresolved.",
+        "Security Council voting, including the veto of the permanent members, was agreed at the Yalta Conference in February 1945."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Dumbarton_Oaks_Conference"
+    },
+    {
+      "date": "25 April – 26 June 1945",
+      "title": "The Charter is written in San Francisco",
+      "text": "While the war in Europe was still being fought, delegates from **50 countries** gathered in San Francisco for the **United Nations Conference on International Organization**. Over two months they turned the Dumbarton Oaks proposals into the **Charter of the United Nations**, with smaller and middle powers pushing for changes, and signed it on **26 June 1945**. The conference opened less than two weeks after the death of Franklin D. Roosevelt, the man who had done most to bring it about, and his successor **Harry S. Truman** closed it.",
+      "claims": [
+        "The United Nations Conference on International Organization was held in San Francisco from 25 April to 26 June 1945.",
+        "Delegates from 50 countries attended the United Nations Conference on International Organization.",
+        "The Charter of the United Nations was signed on 26 June 1945.",
+        "Franklin D. Roosevelt died on 12 April 1945, shortly before the San Francisco conference opened."
+      ],
+      "source": "https://en.wikipedia.org/wiki/United_Nations_Conference_on_International_Organization"
+    },
+    {
+      "date": "24 October 1945",
+      "title": "The UN comes into existence",
+      "text": "The Charter took effect once it had been ratified by the **five permanent members** of the Security Council and a majority of the other signatories, and on **24 October 1945** the United Nations formally came into being. The date is still marked every year as **United Nations Day**. The new organization had no home yet: the **first General Assembly** met in January 1946 in London, at Methodist Central Hall, before the UN settled in New York.",
+      "claims": [
+        "The Charter of the United Nations entered into force on 24 October 1945.",
+        "The Charter of the United Nations entered into force after ratification by the five permanent members of the Security Council and a majority of the other signatories.",
+        "24 October is celebrated as United Nations Day.",
+        "The first session of the United Nations General Assembly opened in January 1946 at Methodist Central Hall in London."
+      ],
+      "source": "https://en.wikipedia.org/wiki/United_Nations#History"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "Poland, the country whose invasion in 1939 had started the war in Europe, had no delegation in San Francisco: the Allies could not agree on which Polish government, the exile government in London or the Soviet-backed one in Warsaw, should represent it. A space was left for Poland on the Charter, and it signed on 15 October 1945, which is why the UN counts **51 original members** even though only 50 countries came to the conference.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Poland was not represented at the United Nations Conference on International Organization in San Francisco.",
+        "Poland was absent from the San Francisco conference because the Allies disagreed over which Polish government should represent it.",
+        "Poland signed the Charter of the United Nations on 15 October 1945.",
+        "The United Nations had 51 original member states."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations"
+    },
+    {
+      "text": "The world's diplomatic headquarters stands on land that had been slaughterhouses. In December 1946 **John D. Rockefeller Jr.** offered $8.5 million to buy a stretch of Manhattan's East River waterfront in the Turtle Bay area, then crowded with abattoirs and meatpacking plants, and the UN accepted it. Other sites had been in contention, including ones in Philadelphia and around San Francisco, and the gift settled the matter.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "John D. Rockefeller Jr. donated $8.5 million to buy the land for the United Nations headquarters in New York.",
+        "John D. Rockefeller Jr. made the offer in December 1946.",
+        "The site of the United Nations headquarters in Turtle Bay was previously occupied by slaughterhouses."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Headquarters_of_the_United_Nations"
+    },
+    {
+      "text": "When Roosevelt proposed the name \"United Nations\", Winston Churchill reportedly pointed out that the phrase already appeared in **Lord Byron's** poem *Childe Harold's Pilgrimage*, in a stanza about the Battle of Waterloo, where the allied nations had united against Napoleon. A name chosen for an alliance against one European conqueror had first been used in English poetry about the defeat of another.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Winston Churchill reportedly noted that the phrase \"United Nations\" appears in Lord Byron's poem Childe Harold's Pilgrimage.",
+        "The phrase \"United Nations\" in Childe Harold's Pilgrimage occurs in a passage about the Battle of Waterloo."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Declaration_by_United_Nations"
+    }
+  ],
+  "connections": [
+    {
+      "name": "World War II",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_II",
+      "connection": "The UN grew out of the Allied coalition and was founded as the war ended to prevent another one.",
+      "importance": "high",
+      "qid": "Q362"
+    },
+    {
+      "name": "League of Nations",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/League_of_Nations",
+      "connection": "The failed predecessor the UN replaced; the League formally dissolved in 1946 and handed its assets to the UN.",
+      "importance": "high",
+      "qid": "Q38130"
+    },
+    {
+      "name": "Franklin D. Roosevelt",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
+      "connection": "Coined the name \"United Nations\" and drove the plan for the organization, dying weeks before the San Francisco conference.",
+      "importance": "high",
+      "qid": "Q8007"
+    },
+    {
+      "name": "Winston Churchill",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "connection": "Co-author of the Atlantic Charter and a negotiator at Yalta, where the Security Council's voting was settled.",
+      "importance": "high",
+      "qid": "Q8016"
+    },
+    {
+      "name": "Joseph Stalin",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Joseph_Stalin",
+      "connection": "Secured a Security Council veto and extra General Assembly seats for Ukraine and Belarus at Yalta.",
+      "importance": "high",
+      "qid": "Q855"
+    },
+    {
+      "name": "Harry S. Truman",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Harry_S._Truman",
+      "connection": "Took office as the San Francisco conference was about to open and addressed its closing session in June 1945.",
+      "importance": "high",
+      "qid": "Q11613"
+    },
+    {
+      "name": "Universal Declaration of Human Rights",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Universal_Declaration_of_Human_Rights",
+      "connection": "Adopted by the UN General Assembly in Paris in 1948, one of the organization's first landmark acts.",
+      "importance": "medium",
+      "qid": "Q7813"
+    },
+    {
+      "name": "Eleanor Roosevelt",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Eleanor_Roosevelt",
+      "connection": "A US delegate to the first General Assembly who chaired the commission that drafted the Universal Declaration of Human Rights.",
+      "importance": "medium",
+      "qid": "Q83396"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q1065"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 5,
+      "connections_matched_events": 3,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

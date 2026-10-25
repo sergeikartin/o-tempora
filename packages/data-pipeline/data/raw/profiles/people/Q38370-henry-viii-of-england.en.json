@@ -1,0 +1,194 @@
+{
+  "subject": "Henry VIII of England",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Henry_VIII_of_England",
+  "overview": "Henry VIII was King of England from 1509 to 1547, the second monarch of the Tudor dynasty. He is best known for marrying six times, and for breaking with the Pope in Rome so that he could end his first marriage. That break made him head of a new Church of England, and he went on to shut down the country's monasteries and take their land and wealth for the Crown.",
+  "key_moments": [
+    {
+      "date": "1509",
+      "title": "A teenage king marries his brother's widow",
+      "text": "Henry was never meant to rule. His elder brother **Arthur** died in 1502, and when their father **Henry VII** died in April 1509, the 17-year-old became king. Within weeks he married **Catherine of Aragon**, Arthur's widow, under a special **papal dispensation** that allowed a man to marry his brother's widow. The irony came twenty years later: Henry would argue that this same marriage had been forbidden by the Bible all along.",
+      "claims": [
+        "Arthur, Prince of Wales, the elder brother of Henry VIII, died in 1502.",
+        "Henry VIII became King of England in April 1509 on the death of his father Henry VII, at the age of 17.",
+        "Henry VIII married Catherine of Aragon, the widow of his brother Arthur, in June 1509.",
+        "The marriage of Henry VIII and Catherine of Aragon required a papal dispensation because Catherine had been married to Henry's brother."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Henry_VIII"
+    },
+    {
+      "date": "1527–1533",
+      "title": "The King's Great Matter",
+      "text": "Catherine had given Henry a daughter, **Mary**, but no surviving son, and by the late 1520s Henry was in love with **Anne Boleyn**. He asked **Pope Clement VII** to annul his marriage, but the Pope was under the power of Catherine's nephew, Emperor **Charles V**, and stalled. Cardinal **Thomas Wolsey** fell from power in 1529 for failing to win the annulment. In 1533 Henry married Anne in secret, and his new Archbishop of Canterbury, **Thomas Cranmer**, declared the marriage to Catherine void. Months later Anne gave birth not to the longed-for son, but to a daughter: the future **Elizabeth I**.",
+      "claims": [
+        "Henry VIII sought an annulment of his marriage to Catherine of Aragon from Pope Clement VII.",
+        "Pope Clement VII was under the influence of Emperor Charles V, the nephew of Catherine of Aragon.",
+        "Thomas Wolsey fell from power in 1529 after failing to obtain the annulment for Henry VIII.",
+        "In 1533 Thomas Cranmer declared the marriage of Henry VIII and Catherine of Aragon void, and Anne Boleyn gave birth to the future Elizabeth I in September 1533."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Henry_VIII"
+    },
+    {
+      "date": "1534–1541",
+      "title": "Break with Rome and the end of the monasteries",
+      "text": "The **Act of Supremacy** of 1534 declared Henry the **Supreme Head of the Church of England**, cutting the English church off from the Pope. Those who refused to accept it paid dearly: his former Lord Chancellor **Thomas More** was beheaded in 1535. Guided by his minister **Thomas Cromwell**, Henry then began the **Dissolution of the Monasteries**, closing hundreds of religious houses and seizing their lands. The religious changes helped provoke the **Pilgrimage of Grace**, a large rising in the north of England in 1536, which Henry put down with executions.",
+      "claims": [
+        "The Act of Supremacy of 1534 declared Henry VIII the Supreme Head of the Church of England.",
+        "Thomas More, the former Lord Chancellor, was executed in 1535 after refusing to accept Henry VIII's religious changes.",
+        "The Dissolution of the Monasteries, overseen by Thomas Cromwell, closed English monasteries and transferred their property to the Crown between 1536 and 1541.",
+        "The Pilgrimage of Grace was a rising in the north of England in 1536 that was partly a reaction to the Dissolution of the Monasteries."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Dissolution_of_the_monasteries"
+    },
+    {
+      "date": "1536–1547",
+      "title": "Four more wives and a son at last",
+      "text": "Anne Boleyn was beheaded in May 1536, and Henry married **Jane Seymour** within days. In October 1537 she gave birth to the son he had waited for, the future **Edward VI**, but died less than two weeks later. Three more marriages followed: **Anne of Cleves**, annulled after about six months; **Catherine Howard**, executed in 1542; and **Catherine Parr**, who outlived him. When Henry died in January 1547, the crown passed to nine-year-old Edward, and later to both of the daughters he had once declared illegitimate, **Mary I** and **Elizabeth I**.",
+      "claims": [
+        "Anne Boleyn was executed in May 1536.",
+        "Jane Seymour gave birth to the future Edward VI in October 1537 and died less than two weeks later.",
+        "Catherine Howard, the fifth wife of Henry VIII, was executed in 1542, and Catherine Parr, his sixth wife, outlived him.",
+        "Henry VIII died in January 1547 and was succeeded by his nine-year-old son Edward VI, and later by his daughters Mary I and Elizabeth I."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Wives_of_Henry_VIII"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The king who broke with Rome was once the Pope's star defender. In 1521 Henry put his name to a book attacking Martin Luther, the Assertio Septem Sacramentorum (Defence of the Seven Sacraments), and Pope Leo X rewarded him with the title Defender of the Faith. After the break, the papacy withdrew the title, but Parliament later gave it back to the English Crown on its own authority. British monarchs still carry it today: the letters F D or FID DEF appear on British coins.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Henry VIII wrote or put his name to the Assertio Septem Sacramentorum, a defence of the seven sacraments against Martin Luther, in 1521.",
+        "Pope Leo X granted Henry VIII the title Defender of the Faith in 1521.",
+        "The papacy revoked the title Defender of the Faith after Henry VIII broke with Rome, and the English Parliament later conferred it on the monarch.",
+        "The abbreviation of Defender of the Faith, such as F D or FID DEF, appears on British coins."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Defender_of_the_Faith"
+    },
+    {
+      "text": "In July 1545, during a battle against a French invasion fleet in the Solent, Henry watched from the shore as his warship the Mary Rose, one of the pride of his navy for over thirty years, heeled over and sank. Most of the several hundred men aboard drowned. The wreck lay in the mud for more than four centuries until it was raised in 1982 in an operation watched on television by millions; its hull and thousands of objects, from longbows to the crew's combs and dice, now fill a museum in Portsmouth.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "The Mary Rose sank in July 1545 during the Battle of the Solent against a French fleet.",
+        "Henry VIII watched the sinking of the Mary Rose from the shore.",
+        "Most of the crew of the Mary Rose died in the sinking.",
+        "The wreck of the Mary Rose was raised in 1982 and is displayed in a museum in Portsmouth."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Mary_Rose"
+    },
+    {
+      "text": "A popular story says Henry wrote the song Greensleeves for Anne Boleyn, who had rejected his first advances. Henry really did compose music, but the tale falls apart on style: Greensleeves is built on an Italian pattern of harmony that only reached England after his death, and the song first turns up in records in 1580, in the reign of Elizabeth I, the daughter Anne bore him.",
+      "type": "hidden_story",
+      "is_legend": true,
+      "confidence": "medium",
+      "claims": [
+        "A popular legend holds that Henry VIII composed Greensleeves for Anne Boleyn.",
+        "Henry VIII composed music, including the song Pastime with Good Company.",
+        "Greensleeves is based on an Italian musical style that scholars say did not reach England until after the death of Henry VIII.",
+        "Greensleeves was first registered in London in 1580."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Greensleeves"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Catherine of Aragon",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Catherine_of_Aragon",
+      "connection": "His first wife for 24 years; his drive to annul their marriage set off the break with Rome.",
+      "importance": "high",
+      "qid": "Q162819"
+    },
+    {
+      "name": "Anne Boleyn",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Anne_Boleyn",
+      "connection": "His second wife, married in secret in 1533 and beheaded on his orders in 1536.",
+      "importance": "high",
+      "qid": "Q80823"
+    },
+    {
+      "name": "English Reformation",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/English_Reformation",
+      "connection": "Henry began it by making himself Supreme Head of the Church of England in 1534.",
+      "importance": "high",
+      "qid": "Q1645505"
+    },
+    {
+      "name": "Elizabeth I",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Elizabeth_I",
+      "connection": "His daughter by Anne Boleyn, born in 1533, who became queen in 1558.",
+      "importance": "high",
+      "qid": "Q7207"
+    },
+    {
+      "name": "Edward VI",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Edward_VI",
+      "connection": "His only legitimate son, born to Jane Seymour in 1537, who succeeded him at the age of nine.",
+      "importance": "high",
+      "qid": "Q83229"
+    },
+    {
+      "name": "Mary I of England",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Mary_I_of_England",
+      "connection": "His daughter by Catherine of Aragon, who became queen in 1553 and restored ties with Rome.",
+      "importance": "high",
+      "qid": "Q82674"
+    },
+    {
+      "name": "Thomas More",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Thomas_More",
+      "connection": "His former Lord Chancellor, executed in 1535 for refusing to accept Henry as head of the church.",
+      "importance": "high",
+      "qid": "Q42544"
+    },
+    {
+      "name": "Jane Seymour",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Jane_Seymour",
+      "connection": "His third wife, who gave him his son Edward in 1537 and died days later.",
+      "importance": "medium",
+      "qid": "Q182637"
+    },
+    {
+      "name": "Pope Clement VII",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Clement_VII",
+      "connection": "The pope who refused to grant Henry's annulment from Catherine of Aragon.",
+      "importance": "medium",
+      "qid": "Q83159"
+    },
+    {
+      "name": "Charles V, Holy Roman Emperor",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Charles_V,_Holy_Roman_Emperor",
+      "connection": "Catherine of Aragon's nephew, whose hold over the Pope helped block Henry's annulment.",
+      "importance": "medium",
+      "qid": "Q32500"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q38370"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 9,
+      "connections_matched_events": 1,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

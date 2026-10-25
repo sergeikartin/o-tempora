@@ -1,0 +1,162 @@
+{
+  "subject": "First nuclear weapon",
+  "type": "milestone",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+  "overview": "Before dawn on 16 July 1945, scientists of the American-led Manhattan Project set off a plutonium bomb on top of a steel tower in the New Mexico desert, the first nuclear explosion in history. The test, code-named Trinity, was run by Kenneth Bainbridge under J. Robert Oppenheimer and General Leslie Groves, and its blast turned the desert sand around the tower into green glass. It worked, and within weeks bombs of the same kind were dropped on Hiroshima and Nagasaki, ending one world war and starting the nuclear age.",
+  "key_moments": [
+    {
+      "date": "1944–1945",
+      "title": "Why the bomb had to be tested",
+      "text": "The **Manhattan Project** was making two kinds of bomb. A uranium bomb using a simple **gun-type design** was considered so reliable that it was never tested at all. Plutonium from the reactors at **Hanford** was different: it could not be used in a gun-type bomb, so physicists at **Los Alamos** designed **implosion**, a sphere of carefully shaped explosives that squeezes a plutonium core until it goes critical. Nobody was sure the symmetry could be made precise enough, so the scientists decided the only way to know was to **set one off**, a device they nicknamed simply **\"the Gadget\"**.",
+      "claims": [
+        "The Manhattan Project developed both a uranium gun-type bomb and a plutonium implosion bomb.",
+        "The uranium gun-type bomb design was not tested before it was used on Hiroshima.",
+        "Plutonium produced at the Hanford Site was unsuitable for a gun-type bomb, which led Los Alamos scientists to develop the implosion design.",
+        "The plutonium implosion device detonated in the Trinity test was nicknamed \"the Gadget\"."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)"
+    },
+    {
+      "date": "16 July 1945",
+      "title": "The first nuclear explosion",
+      "text": "The Gadget was hoisted to the top of a **100-foot steel tower** on the Alamogordo bombing range, in a stretch of desert called the **Jornada del Muerto**. Thunderstorms pushed the planned time back, and at about **5:30 a.m.** it detonated with a yield later estimated at roughly **20 to 25 kilotons of TNT**, lighting up the mountains brighter than midday and vaporizing the tower. Oppenheimer and Groves watched from bunkers miles away. To keep the secret, the Army told the public that an **ammunition magazine** had exploded, and the heat of the fireball fused the desert sand into a glassy green mineral now called **trinitite**.",
+      "claims": [
+        "The Trinity test took place on 16 July 1945 on the Alamogordo Bombing and Gunnery Range in New Mexico.",
+        "The Trinity test site lay in the Jornada del Muerto desert.",
+        "The Gadget was detonated on top of a steel tower about 100 feet tall.",
+        "Bad weather delayed the Trinity test until about 5:30 a.m.",
+        "The Trinity explosion's yield is estimated at roughly 20 to 25 kilotons of TNT.",
+        "The United States Army explained the Trinity blast to the public as an accidental explosion at an ammunition magazine.",
+        "The Trinity explosion fused desert sand into a glassy material called trinitite."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)"
+    },
+    {
+      "date": "July 1945",
+      "title": "News reaches Potsdam",
+      "text": "President **Harry S. Truman** was in Germany at the **Potsdam Conference** with Churchill and **Joseph Stalin** when word of the successful test arrived. About a week later, Truman casually mentioned to Stalin that the United States had a **new weapon of unusual destructive force**. Stalin showed little surprise, and with good reason: Soviet intelligence, helped by the spy **Klaus Fuchs** at Los Alamos, already knew about the bomb project.",
+      "claims": [
+        "Harry S. Truman learned of the successful Trinity test while attending the Potsdam Conference.",
+        "At the Potsdam Conference, Harry S. Truman told Joseph Stalin that the United States had a new weapon of unusual destructive force.",
+        "Joseph Stalin reacted with little apparent surprise to Truman's remark about the new weapon.",
+        "Klaus Fuchs passed information about the Manhattan Project to the Soviet Union while working at Los Alamos."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Potsdam_Conference"
+    },
+    {
+      "date": "6–9 August 1945",
+      "title": "From test to war",
+      "text": "Less than a month after Trinity, the United States dropped the untested uranium bomb **Little Boy** on **Hiroshima** on 6 August, and on 9 August a plutonium implosion bomb, **Fat Man**, built to the same design as the Gadget, on **Nagasaki**. The bombings killed an estimated 110,000 to 210,000 people, most of them civilians, by the end of 1945. **Japan announced its surrender** on 15 August, and the design first proven in the New Mexico desert became the basis of the **nuclear arms race** that followed.",
+      "claims": [
+        "The United States dropped the Little Boy uranium bomb on Hiroshima on 6 August 1945.",
+        "The United States dropped the Fat Man plutonium implosion bomb on Nagasaki on 9 August 1945.",
+        "Fat Man used the same implosion design as the device tested at Trinity.",
+        "The atomic bombings of Hiroshima and Nagasaki killed an estimated 110,000 to 210,000 people by the end of 1945, most of them civilians.",
+        "Japan announced its surrender on 15 August 1945."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The scientists ran a betting pool on how big the blast would be, with guesses ranging from a dud to something far larger. The pool was won by **Isidor Rabi**, who had arrived late and picked about 18 kilotons, reportedly because the low numbers were already taken. Meanwhile **Enrico Fermi** made his own measurement with almost nothing: as the shock wave passed his position miles away, he dropped small scraps of paper and watched how far the wind of the blast carried them, arriving at an estimate of about 10 kilotons on the spot.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Scientists at the Trinity test held a betting pool on the explosion's yield.",
+        "Isidor Rabi won the Trinity yield betting pool with a guess of about 18 kilotons.",
+        "Enrico Fermi estimated the Trinity yield by dropping scraps of paper and observing how far the shock wave displaced them.",
+        "Enrico Fermi's paper-strip estimate of the Trinity yield was about 10 kilotons."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)"
+    },
+    {
+      "text": "Nobody is entirely sure where the name **Trinity** came from. Oppenheimer later said he chose it, and that he was probably thinking of the poetry of **John Donne**, whose sonnet opens with \"Batter my heart, three-person'd God\". The same scientist who borrowed a Christian poem for the test's name later said the explosion brought to his mind a line from the Hindu scripture the **Bhagavad Gita**: \"Now I am become Death, the destroyer of worlds.\" The test director, Kenneth Bainbridge, put the same feeling more bluntly, telling Oppenheimer that now they were all sons of bitches.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "J. Robert Oppenheimer said he chose the code name Trinity for the test.",
+        "J. Robert Oppenheimer said the name Trinity was probably inspired by the poetry of John Donne.",
+        "J. Robert Oppenheimer later said the Trinity explosion called to mind the Bhagavad Gita line \"Now I am become Death, the destroyer of worlds.\"",
+        "Kenneth Bainbridge told J. Robert Oppenheimer after the Trinity test that they were all now sons of bitches."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)"
+    },
+    {
+      "text": "The first outsiders to detect the secret test may have been workers at **Eastman Kodak**. Radioactive fallout from Trinity drifted east across the United States, and some of it reportedly contaminated straw or cardboard used to pack film. Kodak found its film coming out fogged with spots, and its scientists traced the cause to radioactive contamination, a puzzle in a factory pointing to a weapon the government had not yet admitted existed.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Fallout from the Trinity test spread beyond New Mexico across parts of the United States.",
+        "Eastman Kodak reportedly found fogged film caused by radioactive contamination of packaging material after the Trinity test.",
+        "Kodak scientists traced the fogging of their film to radioactive contamination."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)"
+    }
+  ],
+  "connections": [
+    {
+      "name": "J. Robert Oppenheimer",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer",
+      "connection": "Director of Los Alamos who named the test Trinity and watched it from a bunker.",
+      "importance": "high",
+      "qid": "Q132537"
+    },
+    {
+      "name": "Atomic bombings of Hiroshima and Nagasaki",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "connection": "Followed within weeks; the Nagasaki bomb used the design proven at Trinity.",
+      "importance": "high",
+      "qid": "Q488"
+    },
+    {
+      "name": "World War II",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_II",
+      "connection": "The bomb was developed to end the war, which Japan's surrender closed weeks after the test.",
+      "importance": "high",
+      "qid": "Q362"
+    },
+    {
+      "name": "Enrico Fermi",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Enrico_Fermi",
+      "connection": "Watched the test and estimated its yield by dropping scraps of paper into the shock wave.",
+      "importance": "medium",
+      "qid": "Q8753"
+    },
+    {
+      "name": "Harry S. Truman",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Harry_S._Truman",
+      "connection": "Learned of the test at Potsdam and later ordered the bombs used against Japan.",
+      "importance": "medium",
+      "qid": "Q11613"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q207342"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 3,
+      "connections_matched_events": 2,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

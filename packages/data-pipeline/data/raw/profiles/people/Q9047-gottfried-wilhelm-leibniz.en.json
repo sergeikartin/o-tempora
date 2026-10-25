@@ -1,0 +1,180 @@
+{
+  "subject": "Gottfried Wilhelm Leibniz",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+  "overview": "Gottfried Wilhelm Leibniz was a German thinker from Leipzig who worked on almost everything at once: mathematics, philosophy, law, history, engineering and diplomacy. Working independently of Isaac Newton, he invented calculus, and the symbols he chose for it are still in every textbook. He also built a calculating machine, worked out binary arithmetic and argued that ours is the best of all possible worlds. For forty years he did all this as a court adviser and librarian to the dukes of Hanover.",
+  "key_moments": [
+    {
+      "date": "1672–1676",
+      "title": "Paris turns a diplomat into a mathematician",
+      "text": "Leibniz went to **Paris** on a diplomatic mission for the Elector of Mainz, carrying a plan to persuade **Louis XIV** to invade **Egypt** rather than the German lands. Nobody acted on the plan, but Paris gave him something more useful. The Dutch scientist **Christiaan Huygens** became his tutor in mathematics, and within a few years Leibniz had gone from beginner to the frontier of the subject. In 1673 he took a model of his **calculating machine** to London, and the **Royal Society** elected him a Fellow. By late **1675** his notebooks held the first **calculus** written in his own notation, including the **integral sign**, a stretched letter S for the Latin *summa*.",
+      "claims": [
+        "Gottfried Wilhelm Leibniz lived in Paris from 1672 to 1676, sent there on a diplomatic mission from the Elector of Mainz.",
+        "Gottfried Wilhelm Leibniz proposed that Louis XIV of France conquer Egypt.",
+        "Christiaan Huygens tutored Gottfried Wilhelm Leibniz in mathematics in Paris.",
+        "Gottfried Wilhelm Leibniz was elected a Fellow of the Royal Society in 1673 after showing it his calculating machine.",
+        "Gottfried Wilhelm Leibniz first used the integral sign, an elongated S standing for the Latin summa, in a manuscript of 1675."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz"
+    },
+    {
+      "date": "1676",
+      "title": "A lifetime in Hanover's service",
+      "text": "With his Paris patrons gone, Leibniz took a post with the **House of Brunswick-Lüneburg** in **Hanover**, where he stayed for the rest of his life as a court counsellor and librarian. On his way there he stopped in The Hague to talk with the philosopher **Baruch Spinoza**, whose ideas he spent years arguing against. Hanover kept him busy with jobs far from philosophy: he tried for years to drain the **Harz silver mines** with windmills, and he was told to write a history of the ducal family. The family history was his main official task, but it was **still unfinished when he died** nearly forty years later.",
+      "claims": [
+        "In 1676 Gottfried Wilhelm Leibniz entered the service of the House of Brunswick-Lüneburg in Hanover.",
+        "Gottfried Wilhelm Leibniz met Baruch Spinoza in The Hague in 1676.",
+        "Gottfried Wilhelm Leibniz worked on a project to drain the Harz mountain mines using windmills.",
+        "Gottfried Wilhelm Leibniz's commissioned history of the House of Brunswick was unfinished at his death."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz"
+    },
+    {
+      "date": "1684",
+      "title": "Calculus goes into print",
+      "text": "In the Leipzig journal **Acta Eruditorum**, Leibniz published a short paper called **Nova Methodus pro Maximis et Minimis**, a method for finding maxima, minima and tangents. It was the **first published account of differential calculus**, and it set out the rules in symbols like **dx** and **dy** that let ordinary mathematicians do in a few lines what once took a geometric proof. The Swiss brothers **Jacob and Johann Bernoulli** took the method up and spread it across Europe. Newton had worked out his own version, his fluxions, around twenty years before, but he had **published nothing** on it, which set up the dispute that later poisoned both men's last years.",
+      "claims": [
+        "Gottfried Wilhelm Leibniz published Nova Methodus pro Maximis et Minimis in Acta Eruditorum in 1684.",
+        "Nova Methodus pro Maximis et Minimis was the first published account of differential calculus.",
+        "Jacob Bernoulli and Johann Bernoulli developed and spread Leibniz's calculus.",
+        "Isaac Newton developed his method of fluxions in the 1660s but did not publish it before 1684."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy"
+    },
+    {
+      "date": "1711–1716",
+      "title": "Accused of stealing calculus",
+      "text": "Newton's supporters charged Leibniz with **plagiarism**, and when Leibniz appealed to the **Royal Society**, it set up a committee to decide who invented calculus. Its 1712 report, the **Commercium Epistolicum**, came down for Newton. Leibniz kept answering until his death, and the dispute split British and Continental mathematicians for generations. Historians now agree the two men **invented calculus independently**. The ironic part is that the report that ruled against Leibniz was **written by Newton himself**, who was president of the Society at the time.",
+      "claims": [
+        "Supporters of Isaac Newton accused Gottfried Wilhelm Leibniz of plagiarising calculus.",
+        "A Royal Society committee report of 1712, the Commercium Epistolicum, credited Isaac Newton with the invention of calculus.",
+        "Isaac Newton, then president of the Royal Society, wrote the committee's report himself.",
+        "Historians today consider that Isaac Newton and Gottfried Wilhelm Leibniz developed calculus independently."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "Leibniz worked out arithmetic using only **0 and 1** long before any computer existed, and he saw it as close to religious: one and nothing, he suggested, was enough to create everything, as God made the world from nothing. When the Jesuit missionary **Joachim Bouvet** wrote to him from China about the **I Ching**, Leibniz saw that its 64 hexagrams, built from broken and unbroken lines, could be read as the binary numbers from 0 to 63. He published his binary essay in 1703 and claimed the ancient Chinese had got there first, which makes the number system behind modern computing an unexpected meeting point of German philosophy and a Chinese book of divination.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Gottfried Wilhelm Leibniz developed the binary number system using only 0 and 1.",
+        "Gottfried Wilhelm Leibniz linked binary arithmetic to the creation of the world from nothing.",
+        "The Jesuit Joachim Bouvet corresponded with Gottfried Wilhelm Leibniz about the I Ching hexagrams.",
+        "Gottfried Wilhelm Leibniz published his essay on binary arithmetic in 1703."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Binary_number"
+    },
+    {
+      "text": "His best-known idea was mocked into a punchline. In his **Theodicy** of 1710, Leibniz argued that a good and all-powerful God must have created the **best of all possible worlds**, evil included. In 1759 **Voltaire** answered with **Candide**, in which the tutor **Pangloss** keeps saying exactly this while the characters live through shipwreck, the Lisbon earthquake, war and the Inquisition. Most people who know the phrase today know it as Voltaire's joke, not as Leibniz's argument.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Gottfried Wilhelm Leibniz published the Theodicy in 1710.",
+        "Gottfried Wilhelm Leibniz argued that the actual world is the best of all possible worlds.",
+        "Voltaire's 1759 novel Candide satirises Leibniz's optimism through the character Pangloss."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Best_of_all_possible_worlds"
+    },
+    {
+      "text": "His employer **Georg Ludwig** became **King George I of Great Britain** in 1714 and moved to London, but he ordered Leibniz to stay in Hanover and finish the overdue family history. Britain was Newton's home ground, and the Elector had no wish to bring Newton's chief rival along. Two years later Leibniz died in Hanover. The man who had written to scholars and rulers across Europe was buried with hardly anyone present: by most accounts **only his secretary** attended the funeral, and his grave stayed **unmarked for about fifty years**.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Georg Ludwig, Elector of Hanover, became King George I of Great Britain in 1714.",
+        "George I did not allow Gottfried Wilhelm Leibniz to follow the court to London.",
+        "Gottfried Wilhelm Leibniz died in Hanover in 1716.",
+        "Reportedly only Gottfried Wilhelm Leibniz's secretary attended his funeral, and his grave went unmarked for about fifty years."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Isaac Newton",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Isaac_Newton",
+      "connection": "Invented calculus independently, then drafted the 1712 Royal Society report that ruled against Leibniz.",
+      "importance": "high",
+      "qid": "Q935"
+    },
+    {
+      "name": "Christiaan Huygens",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Christiaan_Huygens",
+      "connection": "Tutored Leibniz in mathematics in Paris in the 1670s.",
+      "importance": "high",
+      "qid": "Q39599"
+    },
+    {
+      "name": "George I of Great Britain",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/George_I_of_Great_Britain",
+      "connection": "Leibniz's Hanoverian employer, who left him behind in Hanover on becoming King of Great Britain in 1714.",
+      "importance": "high",
+      "qid": "Q130805"
+    },
+    {
+      "name": "Sophia of Hanover",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Sophia_of_Hanover",
+      "connection": "Electress of Hanover who was one of Leibniz's closest correspondents and patrons.",
+      "importance": "medium",
+      "qid": "Q57224"
+    },
+    {
+      "name": "Baruch Spinoza",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Baruch_Spinoza",
+      "connection": "Leibniz visited him in The Hague in 1676 and argued against his philosophy for years after.",
+      "importance": "medium",
+      "qid": "Q35802"
+    },
+    {
+      "name": "Peter the Great",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Peter_the_Great",
+      "connection": "Met Leibniz several times and took his advice on reforms, including a Russian academy of sciences.",
+      "importance": "medium",
+      "qid": "Q8479"
+    },
+    {
+      "name": "Voltaire",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Voltaire",
+      "connection": "Mocked Leibniz's 'best of all possible worlds' through Pangloss in Candide.",
+      "importance": "medium",
+      "qid": "Q9068"
+    },
+    {
+      "name": "Johann Bernoulli",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Johann_Bernoulli",
+      "connection": "Developed Leibniz's calculus and backed him in the priority dispute with Newton.",
+      "importance": "medium",
+      "qid": "Q227897"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q9047"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 8,
+      "connections_matched_events": 0,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

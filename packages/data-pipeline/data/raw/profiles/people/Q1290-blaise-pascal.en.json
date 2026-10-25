@@ -1,0 +1,163 @@
+{
+  "subject": "Blaise Pascal",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Blaise_Pascal",
+  "overview": "Blaise Pascal was a French mathematician, physicist, inventor and religious writer who lived only 39 years, mostly in Paris, Rouen and his native Clermont. As a teenager he built one of the first mechanical calculators. He went on to help found probability theory, proved that air has weight with a barometer carried up a mountain, and wrote the Pensées, fragments of a defence of Christianity that are still read today.",
+  "key_moments": [
+    {
+      "date": "1642–1645",
+      "title": "A calculator for a tax collector",
+      "text": "His father **Étienne Pascal** had been posted to Rouen as a royal tax commissioner and spent long nights adding up columns of figures. To help him, the teenage Blaise designed a brass box of geared wheels that could add and subtract on its own: the **Pascaline**, one of the first mechanical calculators. It took him several years and many prototypes to get the carry mechanism working, and in 1649 he won a **royal privilege** over calculating machines in France. Only about twenty were ever built, because they cost so much that they ended up as **curiosities for the rich** rather than tools for clerks.",
+      "claims": [
+        "Étienne Pascal was appointed a royal tax commissioner in Rouen.",
+        "Blaise Pascal designed a mechanical calculator, later called the Pascaline, to help his father with tax calculations.",
+        "Blaise Pascal received a royal privilege for his calculating machine in 1649.",
+        "About twenty Pascaline calculators were built."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Pascal%27s_calculator"
+    },
+    {
+      "date": "1648",
+      "title": "Weighing the air on the Puy de Dôme",
+      "text": "After hearing of **Evangelista Torricelli**'s mercury tube, Pascal set out to prove that the column of mercury was held up by the weight of the air above it, not by nature's supposed horror of a vacuum. If that was true, there should be less air pushing down at the top of a mountain. In September 1648 his brother-in-law **Florin Périer** carried a mercury barometer up the **Puy de Dôme** near Clermont, and the mercury fell by several inches on the way up. The idea of **air pressure** was settled, and the SI unit of pressure is now called the **pascal**.",
+      "claims": [
+        "Blaise Pascal's vacuum experiments followed Evangelista Torricelli's experiments with mercury tubes.",
+        "In 1648 Florin Périer carried a mercury barometer up the Puy de Dôme at Blaise Pascal's request.",
+        "The mercury level in the barometer was lower at the top of the Puy de Dôme than at its base.",
+        "The SI unit of pressure, the pascal, is named after Blaise Pascal."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Blaise_Pascal"
+    },
+    {
+      "date": "1654",
+      "title": "Letters with Fermat on gambling",
+      "text": "A gambler, the **Chevalier de Méré**, asked Pascal a question: if a game of chance is broken off before it ends, how should the stakes be split fairly? Pascal took up this **problem of points** in a series of letters with the mathematician **Pierre de Fermat** in Toulouse. The two men never met, but between them they worked out how to count the possible outcomes and weigh each player's chances. Their exchange is usually taken as the founding of **probability theory**, a field that grew out of an argument over dice and ended up underpinning insurance, statistics and modern science.",
+      "claims": [
+        "The Chevalier de Méré posed gambling problems to Blaise Pascal.",
+        "Blaise Pascal corresponded with Pierre de Fermat about the problem of points in 1654.",
+        "The 1654 correspondence between Blaise Pascal and Pierre de Fermat is regarded as a foundation of probability theory."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Problem_of_points"
+    },
+    {
+      "date": "23 November 1654",
+      "title": "The night of fire",
+      "text": "Late one November night Pascal had an intense religious experience that lasted about two hours. He wrote it down at once on a scrap of paper, beginning with the single word **\"Fire\"** and the line \"God of Abraham, God of Isaac, God of Jacob, not of the philosophers and scholars.\" After it he drew close to the **Jansenists** of the convent of **Port-Royal**, where his sister **Jacqueline** was a nun, and turned his mind mostly from science to religion. He told no one about the note: he had sewn it into the lining of his coat, and a servant found it there only **after his death**.",
+      "claims": [
+        "Blaise Pascal had an intense religious experience on the night of 23 November 1654.",
+        "Blaise Pascal wrote an account of the experience, known as the Memorial, that begins with the word Fire.",
+        "Blaise Pascal's sister Jacqueline Pascal was a nun at Port-Royal.",
+        "Blaise Pascal's Memorial was found sewn into his coat after his death."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Blaise_Pascal#Religious_conversion"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "In his last year, already seriously ill, the author of the Pensées helped launch a business: the **carrosses à cinq sols**, horse-drawn coaches that ran on fixed routes through Paris on a timetable and charged anyone a fare of five sols. The service opened in March 1662, a few months before his death, and is often called the first public bus line. Pascal, who was about to give much of his money to the poor, put his share of the profits to that use.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Blaise Pascal was involved in founding the carrosses à cinq sols, a public coach service in Paris.",
+        "The carrosses à cinq sols began running in Paris in 1662.",
+        "The carrosses à cinq sols are often described as the first public bus service."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Blaise_Pascal"
+    },
+    {
+      "text": "The Provincial Letters, which Pascal published anonymously under the name **Louis de Montalte** to mock the moral reasoning of the Jesuits, contain one of the most quoted apologies in literature. Near the end of the sixteenth letter he says, in substance, that he has made this letter longer than usual only because he **did not have the time to make it shorter**. The line has since been credited to Mark Twain, Cicero and others, but it is Pascal's.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Blaise Pascal published the Provincial Letters under the pseudonym Louis de Montalte.",
+        "The Provincial Letters attacked the moral reasoning of Jesuit casuists.",
+        "In the sixteenth Provincial Letter Blaise Pascal apologised for its length because he had not had the time to make it shorter."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Lettres_provinciales"
+    },
+    {
+      "text": "**Pascal's triangle**, the number pattern in which each entry is the sum of the two above it, carries his name in the West because of his Treatise on the Arithmetical Triangle, published in 1665 after his death. The triangle itself is centuries older. In China it is known as **Yang Hui's triangle**, after a 13th-century mathematician, and in Iran it is linked to **Omar Khayyam**, better known in Europe as a poet.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Blaise Pascal's Treatise on the Arithmetical Triangle was published in 1665, after his death.",
+        "In China, Pascal's triangle is known as Yang Hui's triangle.",
+        "In Iran, Pascal's triangle is associated with Omar Khayyam.",
+        "The arithmetical triangle was known to mathematicians centuries before Blaise Pascal."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Pascal%27s_triangle#History"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Pierre de Fermat",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pierre_de_Fermat",
+      "connection": "Worked out the foundations of probability with Pascal in their 1654 letters on the problem of points.",
+      "importance": "high",
+      "qid": "Q75655"
+    },
+    {
+      "name": "Pascal's calculator",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pascal%27s_calculator",
+      "connection": "The adding machine he designed as a teenager to help his father with tax sums.",
+      "importance": "high",
+      "qid": "Q873501"
+    },
+    {
+      "name": "Evangelista Torricelli",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Evangelista_Torricelli",
+      "connection": "His mercury-tube experiment set off Pascal's own work on the vacuum and air pressure.",
+      "importance": "high",
+      "qid": "Q102490"
+    },
+    {
+      "name": "René Descartes",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Ren%C3%A9_Descartes",
+      "connection": "Met Pascal in Paris in 1647 and disagreed with him over whether a vacuum could exist.",
+      "importance": "medium",
+      "qid": "Q9191"
+    },
+    {
+      "name": "Marin Mersenne",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Marin_Mersenne",
+      "connection": "Ran the Paris circle of scholars that Pascal's father attended and young Blaise joined.",
+      "importance": "medium",
+      "qid": "Q188663"
+    },
+    {
+      "name": "Gottfried Wilhelm Leibniz",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+      "connection": "Built on the Pascaline to design his stepped reckoner, a calculator that could also multiply.",
+      "importance": "medium",
+      "qid": "Q9047"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q1290"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 14,
+      "connections_matched_people": 5,
+      "connections_matched_events": 1,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

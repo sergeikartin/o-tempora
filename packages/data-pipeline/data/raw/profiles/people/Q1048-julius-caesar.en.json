@@ -1,0 +1,195 @@
+{
+  "subject": "Julius Caesar",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Julius_Caesar",
+  "overview": "Julius Caesar was a Roman politician and general who spent eight years conquering Gaul, roughly modern France and Belgium, and then turned his army on Rome's own government. He won the civil war that followed, made himself dictator, and changed everything from Roman politics to the calendar. Senators who feared he would become a king stabbed him to death in 44 BC, and his adopted heir Octavian went on to become Rome's first emperor, Augustus.",
+  "key_moments": [
+    {
+      "date": "58–50 BC",
+      "title": "The conquest of Gaul",
+      "text": "After serving as consul in 59 BC with the backing of **Pompey** and **Crassus**, Caesar took command in Gaul and spent most of a decade fighting its tribes in the **Gallic Wars**. He also led the first Roman expeditions across the **Rhine** and over the sea to **Britain**. The war turned on the siege of **Alesia** in 52 BC, where the Gallic leader **Vercingetorix** surrendered. At Alesia Caesar's men built two rings of fortifications, one facing inward to trap the town and one facing outward to hold off the Gallic relief army, so the Romans were besieging and besieged at once. He then told the story himself in his *Commentaries on the Gallic War*, written in the third person, as if about someone else.",
+      "claims": [
+        "Julius Caesar was Roman consul in 59 BC.",
+        "Julius Caesar fought the Gallic Wars from 58 to 50 BC.",
+        "Julius Caesar led Roman expeditions to Britain in 55 and 54 BC.",
+        "Vercingetorix surrendered to Julius Caesar after the siege of Alesia in 52 BC.",
+        "At Alesia, Caesar's army built an inner line of fortifications facing the town and an outer line facing the Gallic relief army."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Gallic_Wars"
+    },
+    {
+      "date": "January 49 BC",
+      "title": "Crossing the Rubicon",
+      "text": "The Senate, now on Pompey's side, ordered Caesar to give up his army. Instead he led a legion across the **Rubicon**, a small river marking the border of his province, and Roman law treated a general who brought troops into Italy as a traitor. This started **Caesar's civil war** against Pompey and the Senate's supporters. Pompey left Italy, lost to Caesar at **Pharsalus** in Greece in 48 BC, and fled to Egypt, where he was murdered. Caesar reportedly said 'the die is cast' as he crossed, and the phrase is still used for any decision that cannot be undone.",
+      "claims": [
+        "Julius Caesar crossed the Rubicon river with an army in January 49 BC.",
+        "Crossing the Rubicon with an army began the civil war between Julius Caesar and Pompey.",
+        "Julius Caesar defeated Pompey at the Battle of Pharsalus in 48 BC.",
+        "Pompey was murdered in Egypt in 48 BC.",
+        "Julius Caesar is reported to have said 'the die is cast' when crossing the Rubicon."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Crossing_the_Rubicon"
+    },
+    {
+      "date": "46–45 BC",
+      "title": "A new calendar for Rome",
+      "text": "The old Roman calendar had drifted months away from the seasons, because officials added extra months for political reasons rather than by the sun. As dictator, Caesar replaced it with a solar year of **365 days** and a leap day every four years, worked out with the help of the Alexandrian astronomer **Sosigenes**. This **Julian calendar** took effect in 45 BC and, with a small correction in 1582, is the basis of the calendar used worldwide today. To bring the seasons back into line first, the year 46 BC was stretched to **445 days**, the longest year on record, which Romans nicknamed the 'year of confusion'.",
+      "claims": [
+        "Julius Caesar introduced the Julian calendar, which took effect in 45 BC.",
+        "The Julian calendar has 365 days with a leap day every four years.",
+        "The astronomer Sosigenes of Alexandria advised Julius Caesar on the calendar reform.",
+        "The year 46 BC was lengthened to 445 days to realign the Roman calendar with the seasons."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Julian_calendar"
+    },
+    {
+      "date": "15 March 44 BC",
+      "title": "Assassinated on the Ides of March",
+      "text": "Early in 44 BC Caesar was named **dictator for life**, and many senators believed he meant to make himself king. A group of them, led by **Marcus Junius Brutus** and **Gaius Cassius Longinus**, attacked him at a Senate meeting held in a hall attached to the **Theatre of Pompey**. He was stabbed **23 times**. Instead of saving the old republic, the murder set off a new round of civil wars and led to **Augustus** becoming the first emperor. According to Plutarch, Caesar fell at the foot of a statue of Pompey, the rival he had defeated.",
+      "claims": [
+        "Julius Caesar was named dictator for life in 44 BC.",
+        "Julius Caesar was assassinated on 15 March 44 BC.",
+        "The conspiracy against Julius Caesar was led by Marcus Junius Brutus and Gaius Cassius Longinus.",
+        "Julius Caesar was killed at a Senate meeting in the Curia of Pompey, part of the Theatre of Pompey, and suffered 23 stab wounds.",
+        "According to Plutarch, Julius Caesar fell at the base of a statue of Pompey."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "As a young man sailing the Aegean, Caesar was captured by pirates and held for ransom. According to Plutarch, when they asked for twenty talents he laughed and told them he was worth at least fifty. While waiting for the money he joined their games, read them his poems and speeches, and called them barbarians if they did not admire them. He also kept promising, as if joking, that he would come back and crucify them all. Once the ransom was paid he raised a small fleet, caught the pirates, and carried out that promise. Suetonius adds that he had their throats cut first, as a mercy.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "Julius Caesar was captured by pirates in the Aegean as a young man.",
+        "According to Plutarch, Julius Caesar told the pirates to raise their ransom demand from twenty talents to fifty.",
+        "According to Plutarch, Julius Caesar told the pirates he would crucify them and later did so after his release.",
+        "According to Suetonius, Julius Caesar had the pirates' throats cut before they were crucified."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Julius_Caesar#Early_life_and_career"
+    },
+    {
+      "text": "'Et tu, Brute?' is the most famous last line in history, and Caesar almost certainly never said it. The Latin words come from **Shakespeare's** play *Julius Caesar*, written about 1599. The Roman biographer Suetonius says Caesar died without a word, though he mentions a report that Caesar said to Brutus in Greek something like 'You too, child?'. Plutarch writes that when Caesar saw Brutus among the attackers, he pulled his toga over his head and stopped fighting.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "The line 'Et tu, Brute?' is from William Shakespeare's play Julius Caesar.",
+        "Suetonius wrote that Julius Caesar said nothing as he was killed, while also recording a report that he spoke a Greek phrase to Brutus.",
+        "Plutarch wrote that Julius Caesar covered his head with his toga when he saw Brutus among the attackers."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Et_tu,_Brute%3F"
+    },
+    {
+      "text": "Caesar never became a king, but his family name became a word for one. 'Caesar' passed to his adopted son Augustus and from him to later emperors, until it was a title rather than a name. It lives on in the German **Kaiser** and, through a Slavic form, in the Russian **tsar**. So the man killed for supposedly wanting a crown gave Europe two of its words for a monarch.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "The name Caesar became a title used by Roman emperors.",
+        "The German title Kaiser derives from the name Caesar.",
+        "The Russian title tsar derives from the name Caesar."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Caesar_(title)"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Pompey",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pompey",
+      "connection": "His ally in the First Triumvirate and husband of his daughter Julia, later his rival, defeated at Pharsalus in 48 BC.",
+      "importance": "high",
+      "qid": "Q125414"
+    },
+    {
+      "name": "Gallic Wars",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Gallic_Wars",
+      "connection": "Caesar led the Roman conquest of Gaul from 58 to 50 BC and wrote its best-known account himself.",
+      "importance": "high",
+      "qid": "Q202161"
+    },
+    {
+      "name": "Augustus",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Augustus",
+      "connection": "His grand-nephew, adopted as son and heir in his will, who became Rome's first emperor.",
+      "importance": "high",
+      "qid": "Q1405"
+    },
+    {
+      "name": "Marcus Junius Brutus",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Marcus_Junius_Brutus",
+      "connection": "Pardoned by Caesar after fighting for Pompey, then a leader of the plot that killed him in 44 BC.",
+      "importance": "high",
+      "qid": "Q172248"
+    },
+    {
+      "name": "Cleopatra",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Cleopatra",
+      "connection": "Caesar backed her claim to the Egyptian throne in 48–47 BC, and she said he was the father of her son Caesarion.",
+      "importance": "high",
+      "qid": "Q635"
+    },
+    {
+      "name": "Mark Antony",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Mark_Antony",
+      "connection": "His officer and fellow consul in 44 BC, who turned the crowd against the assassins at Caesar's funeral.",
+      "importance": "high",
+      "qid": "Q51673"
+    },
+    {
+      "name": "Marcus Licinius Crassus",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Marcus_Licinius_Crassus",
+      "connection": "Rome's richest man and his partner in the First Triumvirate, whose death at Carrhae in 53 BC ended the alliance.",
+      "importance": "medium",
+      "qid": "Q175121"
+    },
+    {
+      "name": "Vercingetorix",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Vercingetorix",
+      "connection": "The Gallic leader who surrendered to Caesar at Alesia in 52 BC and was later paraded in his triumph.",
+      "importance": "medium",
+      "qid": "Q178953"
+    },
+    {
+      "name": "Gaius Cassius Longinus",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Gaius_Cassius_Longinus",
+      "connection": "A leading organiser, with Brutus, of the conspiracy to murder him.",
+      "importance": "medium",
+      "qid": "Q207370"
+    },
+    {
+      "name": "Julian calendar",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Julian_calendar",
+      "connection": "The 365-day calendar with leap years that he introduced in 45 BC.",
+      "importance": "medium",
+      "qid": "Q11184"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q1048"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 8,
+      "connections_matched_events": 2,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}
