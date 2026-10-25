@@ -29,7 +29,7 @@ First batch: 30 entities (20 People, 4 Conflicts, 6 Milestones) in five connecte
 
 ## Build tickets
 
-Numbering continues from the map; each becomes `issues/NN-<slug>.md` with `Status: open` when filed.
+Filed in this order as `issues/10` to `issues/17` (ticket N below is file 9+N).
 
 1. **Profile types and Output** (`data-pipeline`, `shared-types`): move the types, add the Output step, `hasProfile`, validation, tests. Includes a `data-pipeline` ADR if Output needs a new stage.
 2. **`profiles` plan/finalize script** (`data-pipeline`): as in ADR 0021.
