@@ -125,7 +125,7 @@ One hand-picked overlap the **Landing Page** shows: a sentence stating the coinc
 _Avoid_: starting point, example, demo, tour (curated narrated tours are out of scope), fun fact
 
 **Profile**:
-The generated, memory-oriented piece for one Person, Conflict, ConflictEvent or Milestone: an overview, a few **Key Moments**, up to three **Deep Facts**, and its **Connections**. Shown in the detail panel in place of the **Description** when the entity has one; entities without a Profile keep the Description. Written offline by an LLM from one prompt shared by all three lanes, never fetched live.
+The generated, memory-oriented piece for one Person, Conflict, ConflictEvent or Milestone: an overview, a few **Key Moments**, up to three **Deep Facts**, and its **Connections**. Shown in the detail panel in place of the **Description** when the entity has one; entities without a Profile keep the Description. Written offline by an LLM from one prompt shared by all three lanes. Shipped as one static file per entity per **Locale**, fetched when its panel opens; an entity row carries `hasProfile` when one exists, and a failed fetch falls back to the **Description**. Never generated live.
 _Avoid_: Description (a different field — Wikipedia's lead paragraph), bio, extract, summary, page
 
 **Key Moment**:
