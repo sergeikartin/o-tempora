@@ -30,3 +30,6 @@ dist/
 **/.impeccable/live/deferred-svelte-component-accepts.json
 **/.impeccable/live/*.png
 # impeccable-ignore-end
+
+# Profile writer output awaiting finalize
+packages/data-pipeline/data/raw/profiles/incoming/

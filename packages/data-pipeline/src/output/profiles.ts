@@ -55,20 +55,23 @@ export function assertBoldOnlyMarkup(text: string, where: string): void {
   }
 }
 
-function asRecord(value: unknown, where: string): Record<string, unknown> {
+export function asRecord(
+  value: unknown,
+  where: string,
+): Record<string, unknown> {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) {
     throw new Error(`${where}: expected an object`);
   }
   return value as Record<string, unknown>;
 }
 
-function asString(value: unknown, where: string): string {
+export function asString(value: unknown, where: string): string {
   if (typeof value !== 'string' || value === '')
     throw new Error(`${where}: expected a non-empty string`);
   return value;
 }
 
-function asArray(value: unknown, where: string): unknown[] {
+export function asArray(value: unknown, where: string): unknown[] {
   if (!Array.isArray(value)) throw new Error(`${where}: expected an array`);
   return value;
 }

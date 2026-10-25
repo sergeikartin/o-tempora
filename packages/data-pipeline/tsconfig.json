@@ -16,6 +16,7 @@
   "include": [
     "src/fetch/**/*.ts",
     "src/transform/**/*.ts",
-    "src/output/**/*.ts"
+    "src/output/**/*.ts",
+    "src/profiles/**/*.ts"
   ]
 }
