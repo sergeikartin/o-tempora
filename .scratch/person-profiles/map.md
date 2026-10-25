@@ -26,6 +26,7 @@ Settled in charting:
 - [Conflict and Milestone prompts](issues/07-conflict-milestone-prompts.md): none needed; the unified prompt covers them.
 - [Profile pipeline step](issues/03-pipeline-step.md): no stage or LLM client; an Opus `profile-writer` subagent per entity plus a deterministic `profiles` plan/finalize script, one JSON per profile, a Haiku `profile-verifier` subagent, only `reviewed`/`edited` publish; ADR `packages/data-pipeline/docs/adr/0021-profiles-generated-from-model-knowledge-and-human-gated.md`.
 - [The 30-entity sample](issues/06-sample-selection.md): 20 People, 4 Conflicts, 6 Milestones in five Legendary clusters, one batch.
+- [Profile panel prototype](issues/01-profile-panel-prototype.md): approved and committed (`72ddbd0`). The drawer widens to 440px with the name and tagline pinned; overview, Key Moments, Deep Facts and Connections sections; a below-level Connection carries the Detail Level pips and "Appears at <level>" and opening it raises the Detail Level. Docked-panel idea still open.
 - Backlinks: none — a Connection is one-directional and appears only on the Profile that lists it, so Connections can be asymmetric.
 
 ## Not yet specified
