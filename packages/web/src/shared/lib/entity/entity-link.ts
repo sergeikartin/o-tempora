@@ -18,3 +18,24 @@ export function entityLinkSearch(slug: string | null, search = ''): string {
   const next = params.toString();
   return next ? `?${next}` : '';
 }
+
+// A Profile Anchor: the URL fragment `#moment-<n>` or `#fact-<n>` that names
+// one Key Moment or Deep Fact of the opened Profile, counted from 1. Only the
+// Landing Page writes it; the Entity Link itself stays one slug.
+export type ProfileAnchorKind = 'moment' | 'fact';
+
+export interface ProfileAnchor {
+  kind: ProfileAnchorKind;
+  index: number;
+}
+
+export function entityLinkHash(anchor: ProfileAnchor | undefined): string {
+  return anchor ? `#${anchor.kind}-${anchor.index}` : '';
+}
+
+// Null for anything that is not exactly a known kind and a positive integer.
+export function readEntityLinkAnchor(hash: string): ProfileAnchor | null {
+  const match = /^#(moment|fact)-([1-9]\d*)$/.exec(hash);
+  if (!match) return null;
+  return { kind: match[1] as ProfileAnchorKind, index: Number(match[2]) };
+}

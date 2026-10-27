@@ -192,8 +192,10 @@ function AppContent({ initialDatasets }: AppProps) {
   } = useConflictsMilestonesFilter();
   const {
     member,
+    anchor,
     pendingLinkSlug,
     replace: replaceSelection,
+    follow: followConnection,
     openLink: openEntityLink,
     clear: closeDetailPanel,
   } = useSelection();
@@ -330,8 +332,8 @@ function AppContent({ initialDatasets }: AppProps) {
   );
 
   // A Connection opens its target the way an Entity Link does: the Selection
-  // becomes that entity, the Detail Level rises far enough to show it, and the
-  // timeline pans to it.
+  // becomes that entity (a new history entry), the Detail Level rises far
+  // enough to show it, and the timeline pans to it. Filters never gate it.
   const handleOpenConnection = useCallback(
     (slug: string) => {
       const found = findEntity(
@@ -355,7 +357,7 @@ function AppContent({ initialDatasets }: AppProps) {
         id: found.id,
         entityType: found.entityType,
       };
-      replaceSelection({ ref, slug });
+      followConnection({ ref, slug });
       setSearchJumpTarget(ref);
     },
     [
@@ -364,7 +366,7 @@ function AppContent({ initialDatasets }: AppProps) {
       milestonesData,
       selectedLevel,
       handleSelectDetailLevel,
-      replaceSelection,
+      followConnection,
     ],
   );
 
@@ -477,8 +479,9 @@ function AppContent({ initialDatasets }: AppProps) {
       entity: selected.entity,
       isHidden: selected.isHidden,
       profileView,
+      anchor: anchor ?? undefined,
     };
-  }, [selected, profileState, lanes, selectedLevel]);
+  }, [selected, profileState, lanes, selectedLevel, anchor]);
 
   const selectedSpan = useMemo(
     () => (selected ? spanYears(entitySpan(selected.entity.entity)) : null),

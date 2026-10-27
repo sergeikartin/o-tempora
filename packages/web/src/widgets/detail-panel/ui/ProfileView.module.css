@@ -117,6 +117,18 @@
   background: var(--color-bg-base);
 }
 
+/* The item a Landing Page link named; it stays until another entity opens. */
+.moment[data-anchored],
+.fact[data-anchored] {
+  outline: 2px solid var(--color-accent-selected);
+  outline-offset: 6px;
+  border-radius: var(--radius-lg);
+}
+
+.fact[data-anchored] {
+  outline-offset: 2px;
+}
+
 .legendBadge {
   display: inline-block;
   margin-bottom: 6px;

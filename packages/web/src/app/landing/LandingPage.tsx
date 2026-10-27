@@ -5,7 +5,7 @@ import {
   SIBLING_LANDING_HREF,
   TIMELINE_HREF,
 } from '../../shared/config';
-import { entityLinkSearch } from '../../shared/lib/entity';
+import { entityLinkHash, entityLinkSearch } from '../../shared/lib/entity';
 import { trackEvent } from '../../shared/lib/track-event';
 import { m } from '../../shared/paraglide/messages.js';
 import { Logo } from '../../shared/ui';
@@ -120,7 +120,7 @@ export function LandingPage() {
         </div>
         <a
           className={styles.cta}
-          href={`${TIMELINE_HREF}${entityLinkSearch(active.marks[0]?.slug ?? null)}`}
+          href={`${TIMELINE_HREF}${entityLinkSearch(active.lead)}${entityLinkHash(active.anchor)}`}
           onPointerEnter={prefetchTimeline}
           onFocus={prefetchTimeline}
           onTouchStart={prefetchTimeline}
@@ -182,7 +182,7 @@ export function LandingPage() {
             </button>
           </div>
         </div>
-        <CuriosityFigure curiosity={active} onLinkIntent={prefetchTimeline} />
+        <CuriosityFigure curiosity={active} />
       </main>
       <footer className={styles.footer}>
         <p className={styles.footerGroup}>

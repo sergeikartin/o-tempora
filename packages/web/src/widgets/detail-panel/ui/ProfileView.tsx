@@ -1,4 +1,6 @@
+import { useEffect, useRef } from 'react';
 import { DETAIL_LEVELS } from '../../../shared/config';
+import type { ProfileAnchor } from '../../../shared/lib/entity';
 import { m } from '../../../shared/paraglide/messages.js';
 import {
   isSpanDate,
@@ -13,6 +15,9 @@ interface ProfileViewProps {
   // Lane color of the entity, for the Key Moment marks.
   color: string;
   connections: readonly ResolvedConnection[];
+  // Accented and scrolled into view on arrival; ignored when it names nothing
+  // in this Profile.
+  anchor?: ProfileAnchor;
   onOpenConnection: (slug: string) => void;
 }
 
@@ -50,8 +55,26 @@ export function ProfileView({
   profile,
   color,
   connections,
+  anchor,
   onOpenConnection,
 }: ProfileViewProps) {
+  const anchoredRef = useRef<HTMLLIElement>(null);
+  const isAnchored = (kind: ProfileAnchor['kind'], index: number) =>
+    anchor?.kind === kind && anchor.index === index + 1;
+
+  // Scrolls the nearest scroller, which is the drawer on desktop and the sheet
+  // on a phone.
+  useEffect(() => {
+    if (!anchor) return;
+    const prefersReducedMotion = window.matchMedia?.(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    anchoredRef.current?.scrollIntoView?.({
+      block: 'center',
+      behavior: prefersReducedMotion ? 'instant' : 'smooth',
+    });
+  }, [anchor]);
+
   return (
     <div className={styles.profile}>
       <p className={styles.overview}>
@@ -62,8 +85,13 @@ export function ProfileView({
         <section className={styles.section}>
           <h3 className={styles.heading}>{m.profileKeyMomentsHeading()}</h3>
           <ol className={styles.moments}>
-            {profile.keyMoments.map((moment) => (
-              <li key={moment.date + moment.title} className={styles.moment}>
+            {profile.keyMoments.map((moment, index) => (
+              <li
+                key={moment.date + moment.title}
+                ref={isAnchored('moment', index) ? anchoredRef : undefined}
+                className={styles.moment}
+                data-anchored={isAnchored('moment', index) || undefined}
+              >
                 <span
                   className={
                     isSpanDate(moment.date) ? styles.spanMark : styles.pointMark
@@ -86,8 +114,13 @@ export function ProfileView({
         <section className={styles.section}>
           <h3 className={styles.heading}>{m.profileDeepFactsHeading()}</h3>
           <ul className={styles.facts}>
-            {profile.deepFacts.map((fact) => (
-              <li key={fact.text} className={styles.fact}>
+            {profile.deepFacts.map((fact, index) => (
+              <li
+                key={fact.text}
+                ref={isAnchored('fact', index) ? anchoredRef : undefined}
+                className={styles.fact}
+                data-anchored={isAnchored('fact', index) || undefined}
+              >
                 {fact.isLegend && (
                   <span className={styles.legendBadge}>
                     {m.profileLegendBadge()}

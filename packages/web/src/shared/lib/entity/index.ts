@@ -1,4 +1,11 @@
-export { entityLinkSearch, readEntityLinkSlug } from './entity-link';
+export {
+  entityLinkHash,
+  entityLinkSearch,
+  type ProfileAnchor,
+  type ProfileAnchorKind,
+  readEntityLinkAnchor,
+  readEntityLinkSlug,
+} from './entity-link';
 export {
   type ActiveFilters,
   filterByFameScore,

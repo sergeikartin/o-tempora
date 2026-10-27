@@ -1,13 +1,9 @@
 import type { CSSProperties } from 'react';
-import { TIMELINE_HREF } from '../../shared/config';
 import {
   formatYear,
   formatYearRange,
   yearMonthToFractionalYear,
 } from '../../shared/lib/date';
-import { entityLinkSearch } from '../../shared/lib/entity';
-import { trackEvent } from '../../shared/lib/track-event';
-import { m } from '../../shared/paraglide/messages.js';
 import type { YearMonth } from '../../shared/types';
 import type { Curiosity, CuriosityMark } from './curiosities';
 import styles from './LandingPage.module.css';
@@ -63,13 +59,7 @@ function MarkRow({
   );
 }
 
-export function CuriosityFigure({
-  curiosity,
-  onLinkIntent,
-}: {
-  curiosity: Curiosity;
-  onLinkIntent: () => void;
-}) {
+export function CuriosityFigure({ curiosity }: { curiosity: Curiosity }) {
   const people = curiosity.marks.filter((mark) => mark.kind === 'person');
   const events = curiosity.marks.filter((mark) => mark.kind !== 'person');
   const band = curiosity.band;
@@ -120,24 +110,6 @@ export function CuriosityFigure({
       </div>
       <figcaption className={styles.caption}>
         <span className={styles.captionText}>{curiosity.caption()}</span>
-        <span className={styles.openOn}>
-          <span className={styles.openLabel}>{m.landingOpenOnTimeline()}</span>
-          {curiosity.marks.map((mark) => (
-            <a
-              key={mark.slug}
-              className={styles.openLink}
-              href={`${TIMELINE_HREF}${entityLinkSearch(mark.slug)}`}
-              onPointerEnter={onLinkIntent}
-              onFocus={onLinkIntent}
-              onTouchStart={onLinkIntent}
-              onClick={() =>
-                trackEvent('landing_mark_open', { curiosity: curiosity.id })
-              }
-            >
-              {mark.label()}
-            </a>
-          ))}
-        </span>
       </figcaption>
     </figure>
   );

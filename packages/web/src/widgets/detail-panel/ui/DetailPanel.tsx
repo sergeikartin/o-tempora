@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import type { ProfileAnchor } from '../../../shared/lib/entity';
 import { m } from '../../../shared/paraglide/messages.js';
 import {
   buildDrawerContent,
@@ -16,6 +17,9 @@ export interface DetailPanelMember {
   // Present when the entity has a Profile; once loaded it replaces the
   // Description, and the panel is wide while it loads or if that fails.
   profileView?: ProfileViewState;
+  // The Key Moment or Deep Fact a Landing Page link named; the Profile scrolls
+  // to it and accents it.
+  anchor?: ProfileAnchor;
 }
 
 export type ProfileViewState =
@@ -269,6 +273,7 @@ export function DetailPanel({
                   profile={profileView.profile}
                   color={profileView.color}
                   connections={profileView.connections}
+                  anchor={displayedMember?.anchor}
                   onOpenConnection={onOpenConnection}
                 />
               )}

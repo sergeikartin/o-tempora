@@ -1,4 +1,5 @@
 import { CONFLICT_COLOR, DOMAIN_COLORS } from '../../shared/config';
+import type { ProfileAnchor } from '../../shared/lib/entity';
 import { m } from '../../shared/paraglide/messages.js';
 import type { YearMonth } from '../../shared/types';
 
@@ -34,6 +35,13 @@ export interface Curiosity {
   ticks: readonly number[];
   marks: readonly CuriosityMark[];
   band?: CuriosityBand;
+  /** Slug of the mark the call-to-action opens. */
+  lead: string;
+  /**
+   * The lead's Key Moment or Deep Fact the link scrolls to. Set only once the
+   * lead's Profile ships (curiosities.test.ts pins it to the shipped text).
+   */
+  anchor?: ProfileAnchor;
 }
 
 const person = (
@@ -73,6 +81,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.einstein-jobs.caption'](),
     window: [1954.5, 1955.75],
     ticks: [1955],
+    lead: 'albert-einstein',
     marks: [
       person(
         'albert-einstein',
@@ -102,6 +111,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.monet-monroe.caption'](),
     window: [1925.5, 1927.5],
     ticks: [1926, 1927],
+    lead: 'claude-monet',
     marks: [
       person(
         'claude-monet',
@@ -138,6 +148,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.ali-hawking.caption'](),
     window: [1941.5, 1943],
     ticks: [1942],
+    lead: 'muhammad-ali',
     marks: [
       person(
         'muhammad-ali',
@@ -176,6 +187,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.class-of-1940.caption'](),
     window: [1939.5, 1941.5],
     ticks: [1940, 1941],
+    lead: 'pele',
     marks: [
       person(
         'pele',
@@ -207,6 +219,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.year-1564.caption'](),
     window: [1563.5, 1565],
     ticks: [1564],
+    lead: 'galileo-galilei',
     marks: [
       person(
         'michelangelo',
@@ -238,6 +251,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.jefferson-adams.caption'](),
     window: [1825.5, 1827],
     ticks: [1826],
+    lead: 'thomas-jefferson',
     marks: [
       person(
         'john-adams',
@@ -262,6 +276,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.kaiser.caption'](),
     window: [1910, 1946],
     ticks: [1910, 1920, 1930, 1940],
+    lead: 'world-war-i',
     marks: [
       person(
         'wilhelm-ii',
@@ -296,6 +311,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.victoria-napoleon.caption'](),
     window: [1818, 1823],
     ticks: [1819, 1820, 1821, 1822],
+    lead: 'napoleon',
     marks: [
       person(
         'napoleon',
@@ -325,6 +341,7 @@ export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
     caption: () => m['landingCase.joan-vlad.caption'](),
     window: [1400, 1460],
     ticks: [1400, 1420, 1440],
+    lead: 'joan-of-arc',
     marks: [
       person(
         'joan-of-arc',

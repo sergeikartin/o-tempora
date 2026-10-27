@@ -12,7 +12,7 @@ afterEach(() => {
   window.history.replaceState(null, '', '/');
 });
 
-test('links the call-to-action to all of the open curiosity’s marks as one selection and the language switch to the sibling landing', () => {
+test('links the call-to-action to the open curiosity’s lead entity and the language switch to the sibling landing', () => {
   render(<LandingPage />);
   expect(
     screen
@@ -102,13 +102,13 @@ test('stepping through curiosities wraps around both ends', () => {
   ).toBe('true');
 });
 
-test('links each mark of the open curiosity to its entity on the timeline', () => {
+test('leaves the marks as plain labels and the call-to-action the only way to the timeline', () => {
   render(<LandingPage />);
-  const hrefs = screen
+  expect(screen.queryByRole('link', { name: 'Steve Jobs' })).toBeNull();
+  const timelineLinks = screen
     .getAllByRole('link')
-    .map((link) => link.getAttribute('href'));
-  expect(hrefs).toContain('/timeline/?e=albert-einstein');
-  expect(hrefs).toContain('/timeline/?e=steve-jobs');
+    .filter((link) => link.getAttribute('href')?.startsWith('/timeline/'));
+  expect(timelineLinks).toHaveLength(1);
 });
 
 test('retargets the call-to-action when another curiosity is picked', () => {
@@ -172,16 +172,12 @@ test('does not track the curiosity opened from the hash', () => {
   expect(trackEvent).not.toHaveBeenCalled();
 });
 
-test('tracks the call-to-action and mark links with the open curiosity', () => {
+test('tracks the call-to-action with the open curiosity', () => {
   render(<LandingPage />);
   fireEvent.click(
     screen.getByRole('link', { name: 'See them on the timeline' }),
   );
   expect(trackEvent).toHaveBeenLastCalledWith('landing_cta_click', {
-    curiosity: 'einstein-jobs',
-  });
-  fireEvent.click(screen.getByRole('link', { name: 'Steve Jobs' }));
-  expect(trackEvent).toHaveBeenLastCalledWith('landing_mark_open', {
     curiosity: 'einstein-jobs',
   });
 });
