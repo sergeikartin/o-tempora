@@ -27,14 +27,11 @@ import {
   type FameScoreLane,
   switchLanguageHref,
 } from '../shared/config';
-import { formatYearMonthRange } from '../shared/lib/date';
 import {
   type ActiveFilters,
-  computeOverlap,
   entitySpan,
   type SpannedEntity,
   spanYears,
-  unionYears,
   visibleConflicts,
   visibleMilestones,
   visiblePeople,
@@ -50,12 +47,7 @@ import {
   type ResolvedConnection,
   useProfile,
 } from '../widgets/detail-panel';
-import {
-  type AddToSelectionControl,
-  type ArrivalFit,
-  type SelectionBandsData,
-  TimelineCanvas,
-} from '../widgets/timeline-canvas';
+import { type ArrivalFit, TimelineCanvas } from '../widgets/timeline-canvas';
 import { TopBar } from '../widgets/top-bar';
 import styles from './App.module.css';
 import { type LocaleDatasets, localeDatasetsPromise } from './locale-datasets';
@@ -199,22 +191,12 @@ function AppContent({ initialDatasets }: AppProps) {
     toggleValue: toggleConflictsMilestonesValue,
   } = useConflictsMilestonesFilter();
   const {
-    members,
-    isFull: isSelectionFull,
-    pendingLinkSlugs,
+    member,
+    pendingLinkSlug,
     replace: replaceSelection,
-    toggle: toggleSelectionMember,
     openLink: openEntityLink,
-    clear: clearSelection,
+    clear: closeDetailPanel,
   } = useSelection();
-  // The panel's "Add to comparison" arms this so the next mark picked is added
-  // to the Selection rather than replacing it (the touch route to
-  // Shift-click).
-  const [isAdding, setIsAdding] = useState(false);
-  const closeDetailPanel = useCallback(() => {
-    setIsAdding(false);
-    clearSelection();
-  }, [clearSelection]);
   const {
     query: searchQuery,
     setQuery: setSearchQuery,
@@ -258,23 +240,22 @@ function AppContent({ initialDatasets }: AppProps) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // An Entity Link (`?e=<slug>`, repeated) names only slugs: look them up in
-  // what's loaded, fetching level 3 and then level 4 one at a time while any is
-  // missing, then open them as one Selection — raising the Detail Level only as
-  // far as the least famous entity's Fame Score needs — and fit the viewport to
-  // them. A slug that no level contains is dropped; with none left the
-  // timeline opens with no panel.
+  // An Entity Link (`?e=<slug>`) names only a slug: look it up in what's
+  // loaded, fetching level 3 and then level 4 one at a time while it is
+  // missing, then open it — raising the Detail Level only as far as its Fame
+  // Score needs — and fit the viewport to it. A slug that no level contains
+  // is dropped and the timeline opens with no panel.
   useEffect(() => {
-    if (pendingLinkSlugs.length === 0) return;
-    const datasets = {
-      people: peopleData,
-      conflicts: conflictsData,
-      milestones: milestonesData,
-    };
-    const found = pendingLinkSlugs.map((slug) =>
-      findEntity(datasets, (entity) => entity.slug === slug),
+    if (!pendingLinkSlug) return;
+    const found = findEntity(
+      {
+        people: peopleData,
+        conflicts: conflictsData,
+        milestones: milestonesData,
+      },
+      (entity) => entity.slug === pendingLinkSlug,
     );
-    if (found.includes(null)) {
+    if (!found) {
       if (loadingLevelIds.includes('specialized')) {
         requestLevel('specialized');
         return;
@@ -283,42 +264,27 @@ function AppContent({ initialDatasets }: AppProps) {
         requestLevel('deep-cut');
         return;
       }
-    }
-    const resolved = found.filter((entity) => entity !== null);
-    if (resolved.length === 0) {
       closeDetailPanel();
       return;
     }
     const currentIndex = DETAIL_LEVELS.indexOf(selectedLevel);
-    const neededIndex = Math.max(
-      currentIndex,
-      ...resolved.map((entity) => {
-        const level = DETAIL_LEVELS.slice(currentIndex).find(
-          (candidate) => candidate.values[entity.lane] <= entity.fameScore,
-        );
-        return level ? DETAIL_LEVELS.indexOf(level) : currentIndex;
-      }),
+    const neededLevel = DETAIL_LEVELS.slice(currentIndex).find(
+      (candidate) => candidate.values[found.lane] <= found.fameScore,
     );
-    const neededLevel = DETAIL_LEVELS[neededIndex];
     if (neededLevel && neededLevel.id !== selectedLevel.id) {
       handleSelectDetailLevel(neededLevel);
     }
-    const opened = resolved.map(
-      (entity): SelectionMember => ({
-        ref: { id: entity.id, entityType: entity.entityType },
-        slug: entity.slug,
-      }),
-    );
-    const years = unionYears(
-      resolved.map((entity) => entitySpan(entity.entity)),
-    );
+    const opened: SelectionMember = {
+      ref: { id: found.id, entityType: found.entityType },
+      slug: found.slug,
+    };
     openEntityLink(opened);
-    setIsAdding(false);
-    if (years) {
-      setArrivalFit({ years, entities: opened.map((member) => member.ref) });
-    }
+    setArrivalFit({
+      years: spanYears(entitySpan(found.entity)),
+      entity: opened.ref,
+    });
   }, [
-    pendingLinkSlugs,
+    pendingLinkSlug,
     peopleData,
     conflictsData,
     milestonesData,
@@ -330,10 +296,9 @@ function AppContent({ initialDatasets }: AppProps) {
     closeDetailPanel,
   ]);
 
-  // A plain click replaces the Selection; a Shift/Ctrl/Cmd-click, or any click
-  // while the panel's add mode is armed, toggles the mark in or out of it.
+  // A click replaces the Selection.
   const handleEntityClick = useCallback(
-    (ref: SelectedEntityRef, additive: boolean) => {
+    (ref: SelectedEntityRef) => {
       const found = findEntity(
         {
           people: peopleData,
@@ -343,19 +308,9 @@ function AppContent({ initialDatasets }: AppProps) {
         (entity) => entity.id === ref.id,
       );
       if (!found) return;
-      const member = { ref, slug: found.slug };
-      if (additive || isAdding) toggleSelectionMember(member);
-      else replaceSelection(member);
-      setIsAdding(false);
+      replaceSelection({ ref, slug: found.slug });
     },
-    [
-      replaceSelection,
-      toggleSelectionMember,
-      isAdding,
-      peopleData,
-      conflictsData,
-      milestonesData,
-    ],
+    [replaceSelection, peopleData, conflictsData, milestonesData],
   );
 
   // A search pick replaces the Selection like a plain click, plus a fresh
@@ -368,7 +323,6 @@ function AppContent({ initialDatasets }: AppProps) {
         entityType: result.entityType,
       };
       replaceSelection({ ref, slug: result.slug });
-      setIsAdding(false);
       setSearchJumpTarget(ref);
       trackEvent('search_jump', { entityType: result.entityType });
     },
@@ -402,7 +356,6 @@ function AppContent({ initialDatasets }: AppProps) {
         entityType: found.entityType,
       };
       replaceSelection({ ref, slug });
-      setIsAdding(false);
       setSearchJumpTarget(ref);
     },
     [
@@ -413,14 +366,6 @@ function AppContent({ initialDatasets }: AppProps) {
       handleSelectDetailLevel,
       replaceSelection,
     ],
-  );
-
-  const handleRemoveMember = useCallback(
-    (id: string) => {
-      const member = members.find((candidate) => candidate.ref.id === id);
-      if (member) toggleSelectionMember(member);
-    },
-    [members, toggleSelectionMember],
   );
 
   const filters = useMemo<ActiveFilters>(
@@ -438,173 +383,119 @@ function AppContent({ initialDatasets }: AppProps) {
     ],
   );
 
-  // Looks each member up in the in-memory datasets rather than threading full
-  // entities through the click event, and derives everything the panel and the
-  // canvas show about the Selection from them: the panel members (hidden when
-  // Detail Level or a filter takes their mark off the canvas), the Span Bands
-  // and the Overlap Band with the line that states it. The bands and the line
-  // come from one computeOverlap call so they can't disagree.
-  // Only a lone member shows a Profile, and only when its row says one ships.
-  const profileSlug = useMemo(() => {
-    const [only, ...rest] = members;
-    if (!only || rest.length > 0) return null;
-    const lane =
-      only.ref.entityType === 'person'
-        ? peopleData
-        : only.ref.entityType === 'conflict'
-          ? conflictsData
-          : milestonesData;
-    return lane.find((candidate) => candidate.id === only.ref.id)?.hasProfile
-      ? only.slug
-      : null;
-  }, [members, peopleData, conflictsData, milestonesData]);
-  const profileState = useProfile(profileSlug);
+  const lanes = useMemo(
+    () => ({
+      people: peopleData,
+      conflicts: conflictsData,
+      milestones: milestonesData,
+    }),
+    [peopleData, conflictsData, milestonesData],
+  );
 
-  const selectionView = useMemo(() => {
-    const panelMembers: DetailPanelMember[] = [];
-    const spans: {
-      id: string;
-      name: string;
-      span: ReturnType<typeof entitySpan>;
-    }[] = [];
-    for (const { ref, slug } of members) {
-      let entity: DetailPanelEntity | null = null;
-      let isHidden = false;
-      if (ref.entityType === 'person') {
-        const person = peopleData.find((candidate) => candidate.id === ref.id);
-        if (person) {
-          entity = { entityType: 'person', entity: person };
-          isHidden = visiblePeople([person], filters).length === 0;
-        }
-      } else if (ref.entityType === 'conflict') {
-        const entry = conflictsData.find(
-          (candidate) => candidate.id === ref.id,
-        );
-        if (entry) {
-          entity = { entityType: 'conflict', entity: entry };
-          isHidden = visibleConflicts([entry], filters).length === 0;
-        }
-      } else {
-        const milestone = milestonesData.find(
-          (candidate) => candidate.id === ref.id,
-        );
-        if (milestone) {
-          entity = { entityType: 'milestone', entity: milestone };
-          isHidden = visibleMilestones([milestone], filters).length === 0;
-        }
-      }
-      if (!entity) continue;
-      let profileView: ProfileViewState | undefined;
-      if (slug === profileSlug && profileState) {
-        if (profileState.status !== 'ready') {
-          profileView = profileState;
-        } else {
-          const { connections: shipped, ...profile } = profileState.profile;
-          const connections: ResolvedConnection[] = shipped.map(
-            (connection) => {
-              const target = findEntity(
-                {
-                  people: peopleData,
-                  conflicts: conflictsData,
-                  milestones: milestonesData,
-                },
-                (candidate) => candidate.slug === connection.slug,
-              );
-              const levelIndex = connection.detailLevel - 1;
-              return {
-                slug: connection.slug,
-                name: connection.name,
-                reason: connection.reason,
-                color: target
-                  ? laneColor({
-                      entityType: target.entityType,
-                      entity: target.entity,
-                    } as DetailPanelEntity)
-                  : LANE_FALLBACK_COLOR[connection.lane],
-                levelIndex,
-                isShown: levelIndex <= DETAIL_LEVELS.indexOf(selectedLevel),
-              };
-            },
-          );
-          profileView = {
-            status: 'ready',
-            profile,
-            color: laneColor(entity),
-            connections,
-          };
-        }
-      }
-      panelMembers.push({ entity, isHidden, profileView });
-      spans.push({
-        id: entity.entity.id,
-        name: entity.entity.name,
-        span: entitySpan(entity.entity),
-      });
+  // Looks the Selection up in the in-memory datasets rather than threading full
+  // entities through the click event, and derives what the panel and the canvas
+  // show about it: the panel member (hidden when Detail Level or a filter takes
+  // its mark off the canvas) and the span the Focus Range names.
+  const selected = useMemo<{
+    entity: DetailPanelEntity;
+    isHidden: boolean;
+    hasProfile: boolean;
+  } | null>(() => {
+    if (!member) return null;
+    const { ref } = member;
+    if (ref.entityType === 'person') {
+      const person = lanes.people.find((candidate) => candidate.id === ref.id);
+      if (!person) return null;
+      return {
+        entity: { entityType: 'person', entity: person },
+        isHidden: visiblePeople([person], filters).length === 0,
+        hasProfile: Boolean(person.hasProfile),
+      };
     }
-    const overlap = computeOverlap(spans.map((member) => member.span));
-    let overlapLine: string | null = null;
-    if (spans.length >= 2) {
-      overlapLine = overlap
-        ? m.overlapLine({
-            range: formatYearMonthRange(overlap.start, overlap.end),
-          })
-        : m.noSharedSpan();
+    if (ref.entityType === 'conflict') {
+      const entry = lanes.conflicts.find(
+        (candidate) => candidate.id === ref.id,
+      );
+      if (!entry) return null;
+      return {
+        entity: { entityType: 'conflict', entity: entry },
+        isHidden: visibleConflicts([entry], filters).length === 0,
+        hasProfile: Boolean(entry.hasProfile),
+      };
     }
-    const bands: SelectionBandsData = {
-      spans: spans.map(({ id, span }) => ({
-        id,
-        ...spanYears(span),
-        isPoint: span.isPoint,
-      })),
-      overlap: overlap ? spanYears(overlap) : null,
-      description: m
-        .selectionBandsDescription({
-          spans: spans
-            .map(
-              ({ name, span }) =>
-                `${name} (${formatYearMonthRange(span.start, span.end)})`,
-            )
-            .join('; '),
-          overlap: overlapLine ?? '',
-        })
-        .trim(),
+    const milestone = lanes.milestones.find(
+      (candidate) => candidate.id === ref.id,
+    );
+    if (!milestone) return null;
+    return {
+      entity: { entityType: 'milestone', entity: milestone },
+      isHidden: visibleMilestones([milestone], filters).length === 0,
+      hasProfile: Boolean(milestone.hasProfile),
     };
-    return { panelMembers, overlapLine, bands };
-  }, [
-    members,
-    peopleData,
-    conflictsData,
-    milestonesData,
-    filters,
-    selectedLevel,
-    profileSlug,
-    profileState,
-  ]);
+  }, [member, lanes, filters]);
+
+  // The shipped Profile is fetched only when the row says one exists.
+  const profileState = useProfile(
+    selected?.hasProfile && member ? member.slug : null,
+  );
+
+  const panelMember = useMemo<DetailPanelMember | null>(() => {
+    if (!selected) return null;
+    let profileView: ProfileViewState | undefined;
+    if (profileState?.status === 'ready') {
+      const { connections: shipped, ...profile } = profileState.profile;
+      const connections: ResolvedConnection[] = shipped.map((connection) => {
+        const target = findEntity(
+          lanes,
+          (candidate) => candidate.slug === connection.slug,
+        );
+        const levelIndex = connection.detailLevel - 1;
+        return {
+          slug: connection.slug,
+          name: connection.name,
+          reason: connection.reason,
+          color: target
+            ? laneColor({
+                entityType: target.entityType,
+                entity: target.entity,
+              } as DetailPanelEntity)
+            : LANE_FALLBACK_COLOR[connection.lane],
+          levelIndex,
+          isShown: levelIndex <= DETAIL_LEVELS.indexOf(selectedLevel),
+        };
+      });
+      profileView = {
+        status: 'ready',
+        profile,
+        color: laneColor(selected.entity),
+        connections,
+      };
+    } else {
+      profileView = profileState;
+    }
+    return {
+      entity: selected.entity,
+      isHidden: selected.isHidden,
+      profileView,
+    };
+  }, [selected, profileState, lanes, selectedLevel]);
+
+  const selectedSpan = useMemo(
+    () => (selected ? spanYears(entitySpan(selected.entity.entity)) : null),
+    [selected],
+  );
 
   // A Profile lists targets down to Deep Cut; their data is fetched when one
   // opens so the Connections section is complete.
+  const hasProfile = selected?.hasProfile ?? false;
   useEffect(() => {
-    if (!profileSlug) return;
+    if (!hasProfile) return;
     requestLevel('specialized');
     requestLevel('deep-cut');
-  }, [profileSlug, requestLevel]);
-  const addToSelection = useMemo<AddToSelectionControl>(
-    () => ({
-      isAdding,
-      isFull: isSelectionFull,
-      onToggle: () => setIsAdding((adding) => !adding),
-    }),
-    [isAdding, isSelectionFull],
-  );
-  const selectedRefs = useMemo(
-    () => members.map((member) => member.ref),
-    [members],
-  );
+  }, [hasProfile, requestLevel]);
 
   const siblingLocaleHref = switchLanguageHref(
-    pendingLinkSlugs.length > 0
-      ? pendingLinkSlugs
-      : members.map((member) => member.slug),
+    pendingLinkSlug ?? member?.slug ?? null,
   );
 
   return (
@@ -647,9 +538,8 @@ function AppContent({ initialDatasets }: AppProps) {
               selectedConflictsMilestonesValues
             }
             onEntityClick={handleEntityClick}
-            selectedEntities={selectedRefs}
-            selectionBands={selectionView.bands}
-            addToSelection={addToSelection}
+            selectedEntity={member?.ref ?? null}
+            selectedSpan={selectedSpan}
             searchJumpTarget={searchJumpTarget}
             arrivalFit={arrivalFit}
           />
@@ -657,10 +547,7 @@ function AppContent({ initialDatasets }: AppProps) {
       </main>
       <Suspense fallback={null}>
         <DetailPanel
-          members={selectionView.panelMembers}
-          overlapLine={selectionView.overlapLine}
-          isAdding={isAdding}
-          onRemoveMember={handleRemoveMember}
+          member={panelMember}
           onOpenConnection={handleOpenConnection}
           onClose={closeDetailPanel}
         />

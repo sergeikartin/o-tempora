@@ -18,7 +18,7 @@ test('links the call-to-action to all of the open curiosity’s marks as one sel
     screen
       .getByRole('link', { name: 'See them on the timeline' })
       .getAttribute('href'),
-  ).toBe('/timeline/?e=albert-einstein&e=steve-jobs');
+  ).toBe('/timeline/?e=albert-einstein');
   expect(
     screen.getByRole('link', { name: 'Русский' }).getAttribute('href'),
   ).toBe('/ru/');
@@ -118,7 +118,7 @@ test('retargets the call-to-action when another curiosity is picked', () => {
     screen
       .getByRole('link', { name: 'See them on the timeline' })
       .getAttribute('href'),
-  ).toBe('/timeline/?e=claude-monet&e=elizabeth-ii&e=marilyn-monroe');
+  ).toBe('/timeline/?e=claude-monet');
 });
 
 test('keeps the picked curiosity in the hash and carries it to the sibling landing', () => {

@@ -1,4 +1,4 @@
-export { entityLinkSearch, readEntityLinkSlugs } from './entity-link';
+export { entityLinkSearch, readEntityLinkSlug } from './entity-link';
 export {
   type ActiveFilters,
   filterByFameScore,
@@ -10,21 +10,13 @@ export {
   visibleMilestones,
   visiblePeople,
 } from './filters';
-export {
-  computeOverlap,
-  type EntitySpan,
-  entitySpan,
-  type Overlap,
-  type SpannedEntity,
-  spanYears,
-  unionYears,
-  type YearSpan,
-} from './overlap';
 export type { EntityType, SelectedEntityRef } from './ref';
 export { ENTITY_TYPES } from './ref';
+export type { SelectionMember } from './selection';
 export {
-  isSelectionFull,
-  MAX_SELECTION_SIZE,
-  type SelectionMember,
-  toggleMember,
-} from './selection';
+  type EntitySpan,
+  entitySpan,
+  type SpannedEntity,
+  spanYears,
+  type YearSpan,
+} from './span';

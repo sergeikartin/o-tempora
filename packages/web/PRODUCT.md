@@ -21,13 +21,13 @@ People, conflicts and milestones on one shared, pannable axis, with density cont
 ## Operating Context
 
 - Opens on 1740–1860 at Mainstream; pan and zoom map-style, with no "see all history" view.
-- Occupation and Region filters, a Detail Level switch, Search, and a detail panel (tagline, Wikipedia description, image, link) for any mark. Up to four marks can be compared: each gets a band across all lanes, the span they share is drawn stronger and stated in words.
+- Occupation and Region filters, a Detail Level switch, Search, and a detail panel (tagline, Wikipedia description, image, link) for any mark. Selecting a mark shows one entity at a time; its Focus Range names its span.
 - English at the domain root and Russian under `/ru/` (landing at `/` and `/ru/`, timeline at `/timeline/` and `/ru/timeline/`), one build, locale resolved from the URL; both locales ship the identical entity set, with per-field English fallback.
 
 ## Capabilities and Constraints
 
 - Read-only. No backend, no database, no accounts. All data is pipeline-generated JSON in `packages/shared-types`, never hand-edited.
-- Domain vocabulary is defined in `CONTEXT.md`: Lane, Mark, Detail Level, Fame Score, Viewport Range, Focus Range, Minimap, Container, Region, Occupation Domain, Selection, Span Band, Overlap Band.
+- Domain vocabulary is defined in `CONTEXT.md`: Lane, Mark, Detail Level, Fame Score, Viewport Range, Focus Range, Minimap, Container, Region, Occupation Domain, Selection.
 - Out of scope: pairwise connection lines, dimming or ranking of unselected marks, curated tours, era bands, map view, share cards, more languages, dark mode, "on this day", embeds, PWA.
 - Public copy avoids internal domain terms (Lane, Fame Score, Container) and says "conflicts", not "wars".
 - Years are plain signed integers (astronomical numbering); BCE/CE must render correctly.

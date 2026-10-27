@@ -120,7 +120,7 @@ export function LandingPage() {
         </div>
         <a
           className={styles.cta}
-          href={`${TIMELINE_HREF}${entityLinkSearch(active.marks.map((mark) => mark.slug))}`}
+          href={`${TIMELINE_HREF}${entityLinkSearch(active.marks[0]?.slug ?? null)}`}
           onPointerEnter={prefetchTimeline}
           onFocus={prefetchTimeline}
           onTouchStart={prefetchTimeline}

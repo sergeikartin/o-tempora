@@ -18,26 +18,7 @@
   user-select: none;
 }
 
-.overlapLabel {
-  align-self: flex-start;
-  margin-inline-end: 12px;
-  padding-top: 6px;
-  font-family: Archivo, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-}
-
 @media (max-width: 960px) {
-  .overlapLabel {
-    padding-top: 2px;
-    margin-inline-end: 8px;
-    font-size: 11px;
-  }
-
   .focusRange {
     height: 48px;
     padding-inline: 12px;

@@ -2,14 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { m } from '../../../shared/paraglide/messages.js';
 import {
   buildDrawerContent,
-  buildMemberSummary,
   type DetailPanelEntity,
 } from '../lib/build-drawer-content';
 import type { ProfileBody, ResolvedConnection } from '../lib/profile';
 import styles from './DetailPanel.module.css';
 import { ProfileView } from './ProfileView';
 
-// One member of the Selection (CONTEXT.md) as the panel shows it.
+// The Selection (CONTEXT.md) as the panel shows it.
 export interface DetailPanelMember {
   entity: DetailPanelEntity;
   // Filtered out of the canvas by Detail Level or filters; it stays selected.
@@ -30,31 +29,16 @@ export type ProfileViewState =
     };
 
 interface DetailPanelProps {
-  // The Selection in selection order; empty closes the panel.
-  members: readonly DetailPanelMember[];
-  // The one-line summary of what two or more members share, or null.
-  overlapLine: string | null;
-  // Whether the next mark picked is added to the Selection (the floating add
-  // button on the canvas arms it); the sheet then stays at peek height on a
-  // phone so that mark can be tapped.
-  isAdding: boolean;
-  onRemoveMember: (id: string) => void;
+  // The Selection; null closes the panel.
+  member: DetailPanelMember | null;
   // Opens a Profile Connection's target as the new Selection.
   onOpenConnection: (slug: string) => void;
   onClose: () => void;
 }
 
-interface PanelView {
-  members: readonly DetailPanelMember[];
-  overlapLine: string | null;
-}
-
 // Sized for the panel's fixed 440px width at typical device pixel ratios; not
 // load-bearing.
 const IMAGE_BANNER_WIDTH_PX = 400;
-
-// The comparison list's thumbnail is 44px; this covers 2x displays.
-const MEMBER_IMAGE_WIDTH_PX = 96;
 
 // Below this much pointerdown-to-pointerup movement, an outside press is a
 // click (dismiss) rather than a drag-to-pan release (ignore). Mirrors
@@ -67,10 +51,7 @@ const OUTSIDE_PRESS_DRAG_THRESHOLD_PX = 4;
 // handling. One global instance: App.tsx swaps `selected` in place rather than
 // mounting a panel per entity.
 export function DetailPanel({
-  members,
-  overlapLine,
-  isAdding,
-  onRemoveMember,
+  member,
   onOpenConnection,
   onClose,
 }: DetailPanelProps) {
@@ -93,10 +74,6 @@ export function DetailPanel({
   // entities can share a Commons file), so another entity's image gets a fresh
   // attempt: a runtime 404 hides the image, not the slot for every later entity.
   const [failedEntityId, setFailedEntityId] = useState<string | null>(null);
-  // The comparison list shows several images at once, so failures are a set.
-  const [failedMemberImageIds, setFailedMemberImageIds] = useState<
-    ReadonlySet<string>
-  >(new Set());
   // Portrait photos would get cropped top and bottom by object-fit: cover in the
   // fixed-height banner, so they switch to contain (letterboxed) once the shape
   // is known. Keyed by entity id and reset during render, not in an effect
@@ -118,20 +95,12 @@ export function DetailPanel({
     loaded: false,
   });
   // The panel stays mounted (web/docs/adr/0006) so its close slide has a frame to
-  // animate: `members` goes empty the instant a close is requested, so content
-  // keeps rendering from the last non-empty view during the slide-out.
-  const isOpen = members.length > 0;
-  const [lastView, setLastView] = useState<PanelView | null>(null);
-  if (
-    isOpen &&
-    (members !== lastView?.members || overlapLine !== lastView?.overlapLine)
-  ) {
-    setLastView({ members, overlapLine });
-  }
-  const view = isOpen ? { members, overlapLine } : lastView;
-  const displayedMembers = view?.members ?? [];
-  const isComparison = displayedMembers.length >= 2;
-  const displayedMember = isComparison ? null : (displayedMembers[0] ?? null);
+  // animate: `member` goes null the instant a close is requested, so content
+  // keeps rendering from the last non-null member during the slide-out.
+  const isOpen = member !== null;
+  const [lastMember, setLastMember] = useState<DetailPanelMember | null>(null);
+  if (member && member !== lastMember) setLastMember(member);
+  const displayedMember = member ?? lastMember;
   const displayedEntity = displayedMember?.entity ?? null;
   const profileView = displayedMember?.profileView;
 
@@ -183,9 +152,6 @@ export function DetailPanel({
         document.elementFromPoint?.(event.clientX, event.clientY) ??
         (event.target as Element | null);
       if (target?.closest?.('[data-entity-id]')) return;
-      // The canvas's floating add button works on the open Selection, so
-      // pressing it must not dismiss it.
-      if (target?.closest?.('[data-selection-control]')) return;
       // A drag-to-pan release also lands here (its start is outside the panel too);
       // only dismiss if the press barely moved.
       if (start) {
@@ -220,20 +186,13 @@ export function DetailPanel({
   const content = displayedEntity ? buildDrawerContent(displayedEntity) : null;
   const showImage =
     Boolean(content?.image) && displayedEntity?.entity.id !== failedEntityId;
-  // A comparison, or a pending add, keeps the lanes uncovered on a phone so the
-  // bands stay readable and the next mark can be tapped.
-  const isCompact = isComparison || isAdding;
-  const panelClassName = [
-    styles.panel,
-    isOpen && styles.open,
-    isCompact && styles.compact,
-  ]
+  const panelClassName = [styles.panel, isOpen && styles.open]
     .filter(Boolean)
     .join(' ');
 
   return (
     <>
-      {isOpen && !isCompact && (
+      {isOpen && (
         <button
           ref={backdropRef}
           type="button"
@@ -246,91 +205,11 @@ export function DetailPanel({
         ref={panelRef}
         className={panelClassName}
         aria-label={
-          isComparison
-            ? m.comparisonAriaLabel()
-            : content
-              ? m.detailsAriaLabel({ name: content.name })
-              : undefined
+          content ? m.detailsAriaLabel({ name: content.name }) : undefined
         }
         inert={!isOpen}
         onScroll={handleScroll}
       >
-        {isComparison && (
-          <>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label={m.closeDetailsAriaLabel()}
-              className={styles.closeButton}
-            >
-              ×
-            </button>
-            <div className={styles.body}>
-              <h2 className={styles.srOnly}>{m.comparisonAriaLabel()}</h2>
-              <p className={styles.overlapLine}>{view?.overlapLine}</p>
-              <ul className={styles.memberList}>
-                {displayedMembers.map((member) => {
-                  const summary = buildMemberSummary(member.entity);
-                  return (
-                    <li key={summary.id} className={styles.member}>
-                      <span
-                        className={styles.swatch}
-                        style={{ background: summary.color }}
-                        aria-hidden="true"
-                      />
-                      {summary.image &&
-                        !failedMemberImageIds.has(summary.id) && (
-                          // biome-ignore lint/a11y/noNoninteractiveElementInteractions: onError is a resource-loading callback, not a user-interaction handler
-                          <img
-                            src={`${summary.image}?width=${MEMBER_IMAGE_WIDTH_PX}`}
-                            alt=""
-                            title={summary.imageAttribution}
-                            loading="lazy"
-                            className={styles.memberImage}
-                            onError={() =>
-                              setFailedMemberImageIds((ids) =>
-                                new Set(ids).add(summary.id),
-                              )
-                            }
-                          />
-                        )}
-                      <div className={styles.memberText}>
-                        <p className={styles.memberName}>{summary.name}</p>
-                        <p className={styles.memberDates}>{summary.dates}</p>
-                        <p className={styles.memberTagline}>
-                          {summary.tagline}
-                        </p>
-                        {member.isHidden && (
-                          <p className={styles.hiddenNote}>
-                            {m.hiddenByFiltersNote()}
-                          </p>
-                        )}
-                        <a
-                          href={summary.wikipediaUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className={styles.memberLink}
-                        >
-                          {m.readOnWikipedia()}
-                        </a>
-                      </div>
-                      <button
-                        type="button"
-                        className={styles.removeButton}
-                        aria-label={m.removeFromComparisonAriaLabel({
-                          name: summary.name,
-                        })}
-                        onClick={() => onRemoveMember(summary.id)}
-                      >
-                        ×
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </>
-        )}
         {content && displayedEntity && (
           <>
             <button

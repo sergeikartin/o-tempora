@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0019-url-carries-one-entity-and-arrival-fits-it.md
 supersedes: 0015-entity-only-url-state-with-progressive-loading.md
 ---
 

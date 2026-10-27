@@ -22,7 +22,7 @@ const VIEWPORTS = [
   { width: 390, height: 844 },
 ];
 const LOCALE_PREFIXES = ['', '/ru'];
-const COMPARISON_QUERY = '?e=albert-einstein&e=steve-jobs';
+const ENTITY_QUERY = '?e=albert-einstein';
 
 // Each state is a path plus whatever it takes to reach the UI under test.
 const STATES = [
@@ -38,9 +38,9 @@ const STATES = [
     open: (page) => page.click('button[aria-keyshortcuts="?"]'),
   },
   {
-    name: 'comparison open',
-    query: COMPARISON_QUERY,
-    open: (page) => page.waitForSelector('[data-overlap-band]'),
+    name: 'entity open',
+    query: ENTITY_QUERY,
+    open: (page) => page.waitForSelector('aside:not([inert]) h2'),
   },
 ];
 

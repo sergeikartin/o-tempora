@@ -25,7 +25,6 @@ import {
 import { centuryBoundaryForYear } from '../../shared/lib/date';
 import {
   type ActiveFilters,
-  MAX_SELECTION_SIZE,
   visibleConflicts,
   visibleMilestones,
   visiblePeople,
@@ -91,11 +90,6 @@ import {
 } from './options';
 import { PeopleLane } from './PeopleLane';
 import { Scrubber, type ScrubberHandle } from './Scrubber';
-import {
-  type BandOverlap,
-  type BandSpan,
-  SelectionBands,
-} from './SelectionBands';
 import styles from './TimelineCanvas.module.css';
 import { YearAxis } from './YearAxis';
 
@@ -143,49 +137,31 @@ interface TimelineCanvasProps {
   // MilestoneCategoryGroup values; empty means unfiltered.
   selectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[];
   // Reports a click on any lane's mark (one delegated listener); App.tsx looks
-  // the id up in the full dataset and updates the Selection. `additive` is true
-  // for a Shift/Ctrl/Cmd-click, which toggles the mark instead of replacing the
-  // Selection.
-  onEntityClick: (ref: SelectedEntityRef, additive: boolean) => void;
+  // the id up in the full dataset and updates the Selection.
+  onEntityClick: (ref: SelectedEntityRef) => void;
   // Reports post-filter entry counts per lane for the app shell; this widget
   // stays the single owner of the filtering pipeline (docs/code-conventions.md).
   onFilteredCountsChange?: (counts: FilteredCounts) => void;
-  // The Selection's members (CONTEXT.md). Their marks get the selection
-  // highlight while they stay selected.
-  selectedEntities?: readonly SelectedEntityRef[];
-  // Span Bands and the Overlap Band for the Selection, plus the sentence that
-  // describes them to assistive technology.
-  selectionBands?: SelectionBandsData | null;
+  // The Selection (CONTEXT.md). Its mark gets the selection highlight while it
+  // stays selected.
+  selectedEntity?: SelectedEntityRef | null;
+  // The selected entity's span, which the Focus Range heading names.
+  selectedSpan?: YearSpan | null;
   // Set only by a search pick (a canvas click is already in view). App.tsx
   // passes a fresh object each time, so re-picking the same result re-jumps.
   searchJumpTarget?: SelectedEntityRef | null;
-  // The floating "Add to comparison" button, shown while a Selection is open:
-  // `isAdding` means the next mark picked is added to the Selection.
-  addToSelection?: AddToSelectionControl;
-  // Set only when an Entity Link opens: fits the viewport to the union of the
-  // Selection's spans. App.tsx passes a fresh object each time.
+  // Set only when an Entity Link opens: fits the viewport to the Selection's
+  // span. App.tsx passes a fresh object each time.
   arrivalFit?: ArrivalFit | null;
-}
-
-export interface AddToSelectionControl {
-  isAdding: boolean;
-  isFull: boolean;
-  onToggle: () => void;
-}
-
-export interface SelectionBandsData {
-  spans: readonly BandSpan[];
-  overlap: BandOverlap | null;
-  description: string;
 }
 
 export interface ArrivalFit {
   years: YearSpan;
-  // The Selection's members, scrolled into view in their lanes.
-  entities: readonly SelectedEntityRef[];
+  // The Selection, scrolled into view in its lane.
+  entity: SelectedEntityRef;
 }
 
-const NO_ENTITIES: readonly SelectedEntityRef[] = [];
+const NO_IDS: readonly string[] = [];
 
 export function TimelineCanvas({
   people,
@@ -197,9 +173,8 @@ export function TimelineCanvas({
   selectedConflictsMilestonesValues,
   onEntityClick,
   onFilteredCountsChange,
-  selectedEntities = NO_ENTITIES,
-  selectionBands,
-  addToSelection,
+  selectedEntity = null,
+  selectedSpan = null,
   searchJumpTarget,
   arrivalFit,
 }: TimelineCanvasProps) {
@@ -337,7 +312,7 @@ export function TimelineCanvas({
   // width grows by that much, as empty space after the present, for as long as
   // the Selection is open. Phones get a bottom sheet over the lanes' lower edge
   // instead, which needs no room to the right.
-  const hasSelection = (selectionBands?.spans.length ?? 0) > 0;
+  const hasSelection = selectedEntity !== null;
   const trailingSlackPx =
     hasSelection && !isMobileViewport ? DETAIL_DRAWER_WIDTH_PX : 0;
   const scrollWidth = totalWidth + trailingSlackPx;
@@ -474,7 +449,7 @@ export function TimelineCanvas({
     scale.invert(scrollLeft + effectiveViewportWidthPx),
     scale.domain()[1] ?? Number.POSITIVE_INFINITY,
   );
-  const focusYears = selectionFocusYears(selectionBands);
+  const focusYears = selectionFocusYears(selectedSpan);
   const visibleStartYear = scale.invert(scrollLeft - viewportBufferPx);
   const visibleEndYear = scale.invert(
     scrollLeft + effectiveViewportWidthPx + viewportBufferPx,
@@ -543,17 +518,15 @@ export function TimelineCanvas({
   // the Selection actually changes.
   const selectedPersonIds = useMemo(
     () =>
-      selectedEntities
-        .filter((entity) => entity.entityType === 'person')
-        .map((entity) => entity.id),
-    [selectedEntities],
+      selectedEntity?.entityType === 'person' ? [selectedEntity.id] : NO_IDS,
+    [selectedEntity],
   );
   const selectedEventIds = useMemo(
     () =>
-      selectedEntities
-        .filter((entity) => entity.entityType !== 'person')
-        .map((entity) => entity.id),
-    [selectedEntities],
+      selectedEntity && selectedEntity.entityType !== 'person'
+        ? [selectedEntity.id]
+        : NO_IDS,
+    [selectedEntity],
   );
 
   // Each item's row, computed once against the full unfiltered datasets (stable
@@ -1016,7 +989,7 @@ export function TimelineCanvas({
     scrollMarkToLaneCenter(searchJumpTarget);
   }, [searchJumpTarget]);
 
-  // An Entity Link fits the viewport to the union of its spans, measured
+  // An Entity Link fits the viewport to the entity's span, measured
   // against the part of the canvas the desktop detail drawer leaves uncovered
   // (the phone sheet only covers the bottom, so the full width is free). A zoom
   // change commits through the pixelsPerYear layout effect, which re-centers on
@@ -1040,13 +1013,7 @@ export function TimelineCanvas({
       pendingCenterYearRef.current = fit.centerYear;
       setPixelsPerYear(fit.pixelsPerYear);
     }
-    const scrolledLanes = new Set<boolean>();
-    for (const entity of arrivalFit.entities) {
-      const isPerson = entity.entityType === 'person';
-      if (scrolledLanes.has(isPerson)) continue;
-      scrolledLanes.add(isPerson);
-      scrollMarkToLaneCenter(entity);
-    }
+    scrollMarkToLaneCenter(arrivalFit.entity);
   }, [arrivalFit]);
 
   // One delegated click listener for every mark in all three lanes, keyed off
@@ -1082,10 +1049,7 @@ export function TimelineCanvas({
         (candidate) => candidate === entityTypeAttr,
       );
       if (!id || !entityType) return;
-      onEntityClick(
-        { id, entityType },
-        event.shiftKey || event.ctrlKey || event.metaKey,
-      );
+      onEntityClick({ id, entityType });
     }
 
     container.addEventListener('click', handleClick);
@@ -1431,7 +1395,6 @@ export function TimelineCanvas({
       <FocusRange
         startYear={focusYears?.startYear ?? viewportStartYear}
         endYear={focusYears?.endYear ?? viewportEndYear}
-        isOverlap={focusYears?.isOverlap ?? false}
       />
       {/* The slot is in the prerender too and hidden by CSS above the mobile
           breakpoint, so the Scrubber's mount (after hydration, which assumes
@@ -1447,29 +1410,6 @@ export function TimelineCanvas({
           />
         )}
       </div>
-      {selectionBands && selectionBands.spans.length > 0 && (
-        <p className={styles.srOnly}>{selectionBands.description}</p>
-      )}
-      {hasSelection && addToSelection && (
-        <div className={styles.addToSelection} data-selection-control>
-          {addToSelection.isFull && (
-            <span className={styles.addToSelectionNote}>
-              {m.comparisonFullNote({ count: MAX_SELECTION_SIZE })}
-            </span>
-          )}
-          <button
-            type="button"
-            className={styles.addToSelectionButton}
-            aria-pressed={addToSelection.isAdding}
-            disabled={addToSelection.isFull}
-            onClick={addToSelection.onToggle}
-          >
-            {addToSelection.isAdding
-              ? m.addToComparisonActive()
-              : m.addToComparison()}
-          </button>
-        </div>
-      )}
       <div className={styles.zoomControls}>
         <button
           type="button"
@@ -1505,13 +1445,6 @@ export function TimelineCanvas({
         >
           <div className={styles.zebraBand} style={bceZebraStyle} />
           <div className={styles.zebraBand} style={ceZebraStyle} />
-          {selectionBands && selectionBands.spans.length > 0 && (
-            <SelectionBands
-              spans={selectionBands.spans}
-              overlap={selectionBands.overlap}
-              xScale={scale}
-            />
-          )}
         </div>
         <section
           ref={peopleLaneRef}

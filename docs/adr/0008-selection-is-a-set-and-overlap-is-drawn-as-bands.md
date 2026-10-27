@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0009-selection-is-one-entity-and-profiles-replace-the-comparison.md
 ---
 
 # The Selection is a set of up to four entities, and overlap is drawn as bands, not connections

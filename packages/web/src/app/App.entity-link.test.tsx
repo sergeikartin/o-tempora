@@ -246,13 +246,7 @@ function markOf(container: HTMLElement, id: string) {
   return mark as Element;
 }
 
-function memberNames(container: HTMLElement) {
-  return Array.from(
-    container.querySelectorAll('aside:not([inert]) li p:first-child'),
-  ).map((name) => name.textContent);
-}
-
-test('an Entity Link with several slugs opens them as one Selection, with bands and the overlap line', async () => {
+test('a link naming several entities opens only the first and rewrites the URL to it', async () => {
   window.history.replaceState(
     null,
     '',
@@ -260,183 +254,54 @@ test('an Entity Link with several slugs opens them as one Selection, with bands 
   );
   const { container } = await renderApp();
 
-  await waitFor(() =>
-    expect(panelText(container)).toContain('Overlap: 1820 – 1850'),
-  );
-  expect(memberNames(container)).toEqual(['mainstream', 'second']);
-  expect(container.querySelectorAll('[data-span-band]')).toHaveLength(2);
-  expect(container.querySelector('[data-overlap-band]')).toBeTruthy();
-  expect(window.location.search).toBe('?e=slug-of-mainstream&e=slug-of-second');
-});
-
-test('members without a common span say so and draw no Overlap Band', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=slug-of-fifth',
-  );
-  const { container } = await renderApp();
-
-  await waitFor(() => expect(panelText(container)).toContain('No shared span'));
-  expect(container.querySelectorAll('[data-span-band]')).toHaveLength(2);
-  expect(container.querySelector('[data-overlap-band]')).toBeNull();
-});
-
-test('a link names at most four entities, extras are ignored', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=slug-of-second&e=slug-of-third&e=slug-of-fourth&e=slug-of-fifth',
-  );
-  const { container } = await renderApp();
-
-  await waitFor(() => expect(memberNames(container)).toHaveLength(4));
-  expect(window.location.search).not.toContain('fifth');
-  const add = Array.from(container.querySelectorAll('button')).find(
-    (button) => button.textContent === 'Add to comparison',
-  );
-  expect((add as HTMLButtonElement).disabled).toBe(true);
-  expect(container.textContent).toContain('Up to 4');
-});
-
-test('a slug no level contains is dropped while the others open', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=no-such-slug&e=slug-of-second',
-  );
-  const { container } = await renderApp();
-
-  await waitFor(() =>
-    expect(memberNames(container)).toEqual(['mainstream', 'second']),
-  );
-  expect(window.location.search).toBe('?e=slug-of-mainstream&e=slug-of-second');
-});
-
-test('Shift-click adds a mark; Back closes the whole Selection in one step', async () => {
-  const { container, rtl } = await renderApp();
-  const lengthBefore = window.history.length;
-
-  await act(async () => {
-    rtl.fireEvent.click(markOf(container, 'mainstream'));
-  });
-  await act(async () => {
-    rtl.fireEvent.click(markOf(container, 'second'), { shiftKey: true });
-  });
-  await act(async () => {
-    rtl.fireEvent.click(markOf(container, 'third'), { shiftKey: true });
-  });
-
-  await waitFor(() =>
-    expect(memberNames(container)).toEqual(['mainstream', 'second', 'third']),
-  );
-  expect(window.location.search).toBe(
-    '?e=slug-of-mainstream&e=slug-of-second&e=slug-of-third',
-  );
-  expect(window.history.length).toBe(lengthBefore + 1);
-
-  await act(async () => {
-    window.history.back();
-    await new Promise((resolve) => setTimeout(resolve, 50));
-  });
-  expect(window.location.search).toBe('');
-  expect(panelText(container)).not.toContain('Overlap');
-});
-
-test('a plain click replaces the Selection without adding history', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=slug-of-second',
-  );
-  const { container, rtl } = await renderApp();
-  await waitFor(() => expect(memberNames(container)).toHaveLength(2));
-  const lengthBefore = window.history.length;
-
-  await act(async () => {
-    rtl.fireEvent.click(markOf(container, 'third'));
-  });
-
-  await waitFor(() =>
-    expect(panelText(container)).toContain('tagline of third'),
-  );
-  expect(window.location.search).toBe('?e=slug-of-third');
-  expect(window.history.length).toBe(lengthBefore);
-});
-
-test('a fifth add is ignored', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=slug-of-second&e=slug-of-third&e=slug-of-fourth',
-  );
-  const { container, rtl } = await renderApp();
-  await waitFor(() => expect(memberNames(container)).toHaveLength(4));
-
-  await act(async () => {
-    rtl.fireEvent.click(markOf(container, 'fifth'), { shiftKey: true });
-  });
-
-  expect(memberNames(container)).toHaveLength(4);
-  expect(window.location.search).not.toContain('fifth');
-});
-
-test('the panel button arms an add, so the next plain click adds instead of replacing', async () => {
-  window.history.replaceState(null, '', '/?e=slug-of-mainstream');
-  const { container, rtl } = await renderApp();
   await waitFor(() =>
     expect(panelText(container)).toContain('tagline of mainstream'),
   );
-
-  const add = Array.from(container.querySelectorAll('button')).find(
-    (button) => button.textContent === 'Add to comparison',
-  ) as HTMLButtonElement;
-  await act(async () => {
-    rtl.fireEvent.click(add);
-  });
-  await act(async () => {
-    rtl.fireEvent.click(markOf(container, 'second'));
-  });
-
-  await waitFor(() =>
-    expect(memberNames(container)).toEqual(['mainstream', 'second']),
-  );
-  expect(window.location.search).toBe('?e=slug-of-mainstream&e=slug-of-second');
+  expect(panelText(container)).not.toContain('tagline of second');
+  expect(window.location.search).toBe('?e=slug-of-mainstream');
 });
 
-test('removing a member with × keeps the rest and replaces the history entry', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=slug-of-second',
-  );
-  const { container, rtl } = await renderApp();
-  await waitFor(() => expect(memberNames(container)).toHaveLength(2));
-  const lengthBefore = window.history.length;
+test('the Selection draws no Span or Overlap Band and offers no comparison', async () => {
+  window.history.replaceState(null, '', '/?e=slug-of-mainstream');
+  const { container } = await renderApp();
 
-  await act(async () => {
-    rtl.fireEvent.click(
-      container.querySelector(
-        'button[aria-label="Remove mainstream from comparison"]',
-      ) as Element,
+  await waitFor(() =>
+    expect(panelText(container)).toContain('tagline of mainstream'),
+  );
+  expect(container.querySelector('[data-span-band]')).toBeNull();
+  expect(container.querySelector('[data-overlap-band]')).toBeNull();
+  expect(container.textContent).not.toContain('Add to comparison');
+});
+
+test.each([[{}], [{ shiftKey: true }]])(
+  'a click (%o) replaces the Selection without adding history',
+  async (modifiers) => {
+    window.history.replaceState(null, '', '/?e=slug-of-mainstream');
+    const { container, rtl } = await renderApp();
+    await waitFor(() =>
+      expect(panelText(container)).toContain('tagline of mainstream'),
     );
-  });
+    const lengthBefore = window.history.length;
 
-  await waitFor(() =>
-    expect(panelText(container)).toContain('tagline of second'),
-  );
-  expect(window.location.search).toBe('?e=slug-of-second');
-  expect(window.history.length).toBe(lengthBefore);
-});
+    await act(async () => {
+      rtl.fireEvent.click(markOf(container, 'third'), modifiers);
+    });
 
-test('a member the Detail Level hides stays selected, keeps its band and is noted as hidden', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=slug-of-modest',
-  );
+    await waitFor(() =>
+      expect(panelText(container)).toContain('tagline of third'),
+    );
+    expect(panelText(container)).not.toContain('tagline of mainstream');
+    expect(window.location.search).toBe('?e=slug-of-third');
+    expect(window.history.length).toBe(lengthBefore);
+  },
+);
+
+test('an entity the Detail Level hides stays selected and is noted as hidden', async () => {
+  window.history.replaceState(null, '', '/?e=slug-of-modest');
   const { container, rtl } = await renderApp();
-  await waitFor(() => expect(memberNames(container)).toHaveLength(2));
+  await waitFor(() =>
+    expect(panelText(container)).toContain('tagline of modest'),
+  );
   expect(panelText(container)).not.toContain('Hidden by filters');
 
   await act(async () => {
@@ -452,38 +317,9 @@ test('a member the Detail Level hides stays selected, keeps its band and is note
     );
   });
 
-  expect(memberNames(container)).toEqual(['mainstream', 'modest']);
+  expect(panelText(container)).toContain('tagline of modest');
   expect(panelText(container)).toContain('Hidden by filters');
-  expect(container.querySelectorAll('[data-span-band]')).toHaveLength(2);
   await waitFor(() =>
     expect(container.querySelector('[data-entity-id="modest"]')).toBeNull(),
   );
-});
-
-test('the language switch carries every slug of the Selection', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=slug-of-second',
-  );
-  const { container, rtl } = await renderApp();
-  await openHelp(container, rtl);
-
-  await waitFor(() =>
-    expect(languageHref(container)).toBe(
-      '/ru/timeline/?e=slug-of-mainstream&e=slug-of-second',
-    ),
-  );
-});
-
-test('loading stops at the deepest level any slug needs and raises the Detail Level to the least famous', async () => {
-  window.history.replaceState(
-    null,
-    '',
-    '/?e=slug-of-mainstream&e=slug-of-level3&e=slug-of-level4',
-  );
-  const { container } = await renderApp();
-
-  await waitFor(() => expect(memberNames(container)).toHaveLength(3));
-  expect(isLevelSelected(container, 'Deep Cut')).toBe(true);
 });

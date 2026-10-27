@@ -1,6 +1,2 @@
-export type {
-  AddToSelectionControl,
-  ArrivalFit,
-  SelectionBandsData,
-} from './TimelineCanvas';
+export type { ArrivalFit } from './TimelineCanvas';
 export { TimelineCanvas } from './TimelineCanvas';

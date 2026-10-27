@@ -25,6 +25,6 @@ Zoom and pan are gesture-bound, not frame-bound: `TimelineCanvas.tsx` fires one 
 
 The timeline's Help panel fires `help_open` (`{ via: 'link' | 'key' }`) when a visitor opens it from the Top Bar's Help button or the `?` key.
 
-The **Selection** (`features/select-timeline-entity/model/useSelection.ts`) fires `entity_view` (`{ entityType }`, a plain click or a Search pick replacing it), `selection_add` and `selection_remove` (`{ size }`, 1–4, on a toggle), `selection_full` (an add ignored at the cap of four) and `selection_open_link` (`{ size }`, an Entity Link resolving on arrival). None carries a slug or id.
+The **Selection** (`features/select-timeline-entity/model/useSelection.ts`) fires `entity_view` (`{ entityType }`, a click or a Search pick replacing the Selection) and `selection_open_link` (an Entity Link resolving on arrival). Neither carries a slug or id.
 
 The landing page (`packages/web/src/app/landing/`) fires three events, each carrying `curiosity` (one of the fixed set of Curiosity ids, so a few dozen values at most): `landing_curiosity_select` (`{ curiosity, method: 'chip' | 'stepper' }`, on a visitor's pick — not when the hash opens one on load), `landing_cta_click` (`{ curiosity }`, the call-to-action) and `landing_mark_open` (`{ curiosity }`, a mark link under the figure; the mark's slug is deliberately not sent).

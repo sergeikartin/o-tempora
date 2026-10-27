@@ -3,13 +3,7 @@ import {
   DOMAIN_COLORS,
   MILESTONE_CATEGORY_GROUP_COLORS,
 } from '../../../shared/config';
-import {
-  formatYearMonth,
-  formatYearMonthRange,
-  formatYearMonthShort,
-} from '../../../shared/lib/date';
-import { entitySpan } from '../../../shared/lib/entity';
-import { m } from '../../../shared/paraglide/messages.js';
+import { formatYearMonth } from '../../../shared/lib/date';
 import {
   type ConflictEntry,
   MILESTONE_CATEGORY_TO_GROUP,
@@ -97,20 +91,6 @@ export function buildDrawerContent(selected: DetailPanelEntity): DrawerContent {
   }
 }
 
-// One Selection member in the panel's short list form: a thumbnail but no
-// description, just enough to tell the members apart and read their dates.
-export interface MemberSummary {
-  id: string;
-  name: string;
-  // Lane color, so the list reads against the marks it names.
-  color: string;
-  dates: string;
-  tagline: string;
-  wikipediaUrl: string;
-  image?: string;
-  imageAttribution?: string;
-}
-
 export function laneColor(selected: DetailPanelEntity): string {
   switch (selected.entityType) {
     case 'person':
@@ -122,24 +102,4 @@ export function laneColor(selected: DetailPanelEntity): string {
         MILESTONE_CATEGORY_TO_GROUP[selected.entity.category]
       ];
   }
-}
-
-export function buildMemberSummary(selected: DetailPanelEntity): MemberSummary {
-  const { entity } = selected;
-  const span = entitySpan(entity);
-  const approximate =
-    'approximateDate' in entity && entity.approximateDate ? 'ca. ' : '';
-  const dates = span.isOngoing
-    ? `${formatYearMonthShort(span.start)} – ${m.datesPresent()}`
-    : `${approximate}${formatYearMonthRange(span.start, span.end)}`;
-  return {
-    id: entity.id,
-    name: entity.name,
-    color: laneColor(selected),
-    dates,
-    tagline: entity.tagline,
-    wikipediaUrl: entity.wikipediaUrl,
-    image: entity.image,
-    imageAttribution: entity.imageAttribution,
-  };
 }

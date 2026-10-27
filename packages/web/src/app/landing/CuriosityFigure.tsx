@@ -126,7 +126,7 @@ export function CuriosityFigure({
             <a
               key={mark.slug}
               className={styles.openLink}
-              href={`${TIMELINE_HREF}${entityLinkSearch([mark.slug])}`}
+              href={`${TIMELINE_HREF}${entityLinkSearch(mark.slug)}`}
               onPointerEnter={onLinkIntent}
               onFocus={onLinkIntent}
               onTouchStart={onLinkIntent}
