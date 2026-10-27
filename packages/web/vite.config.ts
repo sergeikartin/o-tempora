@@ -8,6 +8,7 @@ import { criticalFontPreloadPlugin } from './vite-plugins/critical-font-preload.
 import { eagerDetailModulePreloadPlugin } from './vite-plugins/eager-detail-modulepreload.ts';
 import { landingTimelinePrefetchPlugin } from './vite-plugins/landing-timeline-prefetch.ts';
 import { prerenderDefaultViewportPlugin } from './vite-plugins/prerender-default-viewport.ts';
+import { profilesStaticPlugin } from './vite-plugins/profiles-static.ts';
 
 // Locale is resolved at runtime from the URL, not forked at build time
 // (web/docs/adr/0009): English is unprefixed at the domain root, Russian lives
@@ -83,6 +84,7 @@ export default defineConfig({
     // bare <div id="root"></div> shell.
     prerenderDefaultViewportPlugin(),
     criticalCssPlugin(),
+    profilesStaticPlugin(),
   ],
   build: {
     sourcemap: true,

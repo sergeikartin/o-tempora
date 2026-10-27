@@ -54,7 +54,9 @@ export function ProfileView({
 }: ProfileViewProps) {
   return (
     <div className={styles.profile}>
-      <p className={styles.overview}>{profile.overview}</p>
+      <p className={styles.overview}>
+        <RichText text={profile.overview} />
+      </p>
 
       {profile.keyMoments.length > 0 && (
         <section className={styles.section}>
@@ -120,9 +122,6 @@ export function ProfileView({
                     <span className={styles.connectionHead}>
                       <span className={styles.connectionName}>
                         {connection.name}
-                      </span>
-                      <span className={styles.connectionDates}>
-                        {connection.dates}
                       </span>
                     </span>
                     <span className={styles.connectionReason}>

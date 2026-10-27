@@ -1,6 +1,6 @@
 # packages/web
 
-Frontend: React 19 + TypeScript + Vite + D3. Reads static JSON (from `packages/shared-types`) bundled at build time — no live/changing data, though each lane's dataset loads as 4 build-time-bundled chunks (Detail Level's per-level delta files, `docs/config-variables.md`) fetched over the network at different times rather than one inlined blob.
+Frontend: React 19 + TypeScript + Vite + D3. Reads static JSON (from `packages/shared-types`) — no live/changing data. Each lane's dataset loads as 4 build-time-bundled chunks (Detail Level's per-level delta files, `docs/config-variables.md`) fetched over the network at different times rather than one inlined blob. The one runtime fetch is an opened entity's shipped Profile, a static `profiles/<locale>/<slug>.json` on our own server (`docs/adr/0018-profiles-are-fetched-at-runtime-as-static-json.md`).
 
 - Entry Points: `src/main.tsx` (timeline; app composition in `src/app/`) and `src/landing.tsx` (landing page, `src/app/landing/`)
 

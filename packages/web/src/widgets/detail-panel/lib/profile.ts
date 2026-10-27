@@ -4,11 +4,16 @@ import type { Profile } from '@o-tempora/shared-types';
 // loaded datasets into ResolvedConnection rows instead.
 export type ProfileBody = Omit<Profile, 'connections'>;
 
-// A Connection target resolved against the datasets, ready to list.
+// Where a shipped Profile's fetch stands; absent for an entity without one.
+export type ProfileState =
+  | { status: 'loading' }
+  | { status: 'failed' }
+  | { status: 'ready'; profile: Profile };
+
+// A Connection ready to list: the shipped target plus the color of its mark.
 export interface ResolvedConnection {
   slug: string;
   name: string;
-  dates: string;
   // Lane color, so the row reads against the marks it names.
   color: string;
   reason: string;

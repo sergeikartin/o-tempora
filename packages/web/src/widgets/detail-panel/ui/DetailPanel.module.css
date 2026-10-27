@@ -175,6 +175,12 @@
 
 /* A Profile is long, so the one primary action stays in reach at the foot of
    the scroll rather than at its end. */
+/* Holds the Profile's place so the footer and the pinned header stay put while
+   it loads. */
+.profilePlaceholder {
+  min-height: 50vh;
+}
+
 .footer {
   position: sticky;
   bottom: 0;

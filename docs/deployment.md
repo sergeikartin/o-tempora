@@ -18,6 +18,10 @@ A further plugin, `vite-plugins/prerender-default-viewport.ts`, server-renders `
 
 The last plugin, `vite-plugins/critical-css.ts`, inlines above-the-fold CSS into each HTML entry's `<head>` (via `beasties`) and defers the rest with a `media="print"`/`onload` swap, registered after the prerender step above so Beasties' DOM-presence heuristic sees the real class-bearing markup, not an empty shell. The layout rules `TimelineCanvas`'s post-mount `container.clientWidth` measurement depends on (`.wrapper`/`.scrollContainer`, CSS-Modules-mangled to `._wrapper_<hash>_<n>` etc.) are still force-included via `allowRules` regardless, since that measurement effect's own layout needs are independent of whatever marks happen to be prerendered.
 
+## Profiles
+
+The shipped Profiles (`packages/shared-types/src/data/profiles/<locale>/<slug>.json`) are not bundled: `vite-plugins/profiles-static.ts` copies the folder verbatim to `dist/profiles/` on build and serves it from the dev server, and the panel fetches `/profiles/<locale>/<slug>.json` when an entity with `hasProfile` opens. GitHub Pages sets the cache headers itself (`Cache-Control: max-age=600`) and offers no override, and the files are not content-hashed, so a changed Profile reaches a returning visitor within ten minutes of a deploy.
+
 ## URL structure
 
 English is served from the domain root; every other locale gets its own `/<locale>/` subpath — Russian at `/ru/` today, and the same pattern for any locale added later. There is no `/en/` path and no root redirect.

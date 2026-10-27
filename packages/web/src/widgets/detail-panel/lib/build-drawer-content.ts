@@ -16,7 +16,6 @@ import {
   type Milestone,
   type Person,
 } from '../../../shared/types';
-import type { ResolvedConnection } from './profile';
 
 // Which of the three lane shapes a click resolved to: the union App.tsx builds
 // after looking a SelectedEntityRef id up in its in-memory dataset at click
@@ -123,18 +122,6 @@ export function laneColor(selected: DetailPanelEntity): string {
         MILESTONE_CATEGORY_TO_GROUP[selected.entity.category]
       ];
   }
-}
-
-// A Profile Connection's target as one list row; the caller decides where the
-// target sits against the current Detail Level.
-export function buildConnection(
-  target: DetailPanelEntity,
-  slug: string,
-  reason: string,
-  level: { levelIndex: number; isShown: boolean },
-): ResolvedConnection {
-  const { name, color, dates } = buildMemberSummary(target);
-  return { slug, name, color, dates, reason, ...level };
 }
 
 export function buildMemberSummary(selected: DetailPanelEntity): MemberSummary {

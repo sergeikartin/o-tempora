@@ -199,12 +199,6 @@
   line-height: 1.4;
 }
 
-.connectionDates {
-  font-size: 12px;
-  font-variant-numeric: tabular-nums;
-  color: var(--color-text-secondary);
-}
-
 .connectionReason {
   font-size: 13px;
   line-height: 1.45;

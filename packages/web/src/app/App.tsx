@@ -43,12 +43,12 @@ import { trackEvent } from '../shared/lib/track-event';
 import { m } from '../shared/paraglide/messages.js';
 import { ErrorBoundary } from '../shared/ui';
 import {
-  buildConnection,
   type DetailPanelEntity,
   type DetailPanelMember,
   laneColor,
+  type ProfileViewState,
   type ResolvedConnection,
-  SAMPLE_PROFILES,
+  useProfile,
 } from '../widgets/detail-panel';
 import {
   type AddToSelectionControl,
@@ -112,6 +112,13 @@ const LANE_BY_ENTITY_TYPE: Record<EntityType, FameScoreLane> = {
   person: 'people',
   conflict: 'conflicts',
   milestone: 'milestones',
+};
+
+// A Connection's mark color until its target's data has loaded.
+const LANE_FALLBACK_COLOR: Record<FameScoreLane, string> = {
+  people: 'var(--color-domain-public-figure)',
+  conflicts: 'var(--color-conflict)',
+  milestones: 'var(--color-text-secondary)',
 };
 
 interface FoundEntity {
@@ -437,6 +444,22 @@ function AppContent({ initialDatasets }: AppProps) {
   // Detail Level or a filter takes their mark off the canvas), the Span Bands
   // and the Overlap Band with the line that states it. The bands and the line
   // come from one computeOverlap call so they can't disagree.
+  // Only a lone member shows a Profile, and only when its row says one ships.
+  const profileSlug = useMemo(() => {
+    const [only, ...rest] = members;
+    if (!only || rest.length > 0) return null;
+    const lane =
+      only.ref.entityType === 'person'
+        ? peopleData
+        : only.ref.entityType === 'conflict'
+          ? conflictsData
+          : milestonesData;
+    return lane.find((candidate) => candidate.id === only.ref.id)?.hasProfile
+      ? only.slug
+      : null;
+  }, [members, peopleData, conflictsData, milestonesData]);
+  const profileState = useProfile(profileSlug);
+
   const selectionView = useMemo(() => {
     const panelMembers: DetailPanelMember[] = [];
     const spans: {
@@ -471,41 +494,47 @@ function AppContent({ initialDatasets }: AppProps) {
         }
       }
       if (!entity) continue;
-      const profile = members.length === 1 ? SAMPLE_PROFILES[slug] : undefined;
-      const connections: ResolvedConnection[] = [];
-      for (const connection of profile?.connections ?? []) {
-        const target = findEntity(
-          {
-            people: peopleData,
-            conflicts: conflictsData,
-            milestones: milestonesData,
-          },
-          (candidate) => candidate.slug === connection.slug,
-        );
-        if (!target) continue;
-        const levelIndex = levelIndexOf(target);
-        connections.push(
-          buildConnection(
-            {
-              entityType: target.entityType,
-              entity: target.entity,
-            } as DetailPanelEntity,
-            connection.slug,
-            connection.reason,
-            {
-              levelIndex,
-              isShown: levelIndex <= DETAIL_LEVELS.indexOf(selectedLevel),
+      let profileView: ProfileViewState | undefined;
+      if (slug === profileSlug && profileState) {
+        if (profileState.status !== 'ready') {
+          profileView = profileState;
+        } else {
+          const { connections: shipped, ...profile } = profileState.profile;
+          const connections: ResolvedConnection[] = shipped.map(
+            (connection) => {
+              const target = findEntity(
+                {
+                  people: peopleData,
+                  conflicts: conflictsData,
+                  milestones: milestonesData,
+                },
+                (candidate) => candidate.slug === connection.slug,
+              );
+              const levelIndex = connection.detailLevel - 1;
+              return {
+                slug: connection.slug,
+                name: connection.name,
+                reason: connection.reason,
+                color: target
+                  ? laneColor({
+                      entityType: target.entityType,
+                      entity: target.entity,
+                    } as DetailPanelEntity)
+                  : LANE_FALLBACK_COLOR[connection.lane],
+                levelIndex,
+                isShown: levelIndex <= DETAIL_LEVELS.indexOf(selectedLevel),
+              };
             },
-          ),
-        );
+          );
+          profileView = {
+            status: 'ready',
+            profile,
+            color: laneColor(entity),
+            connections,
+          };
+        }
       }
-      panelMembers.push({
-        entity,
-        isHidden,
-        profileView: profile
-          ? { profile, color: laneColor(entity), connections }
-          : undefined,
-      });
+      panelMembers.push({ entity, isHidden, profileView });
       spans.push({
         id: entity.entity.id,
         name: entity.entity.name,
@@ -548,18 +577,17 @@ function AppContent({ initialDatasets }: AppProps) {
     milestonesData,
     filters,
     selectedLevel,
+    profileSlug,
+    profileState,
   ]);
 
   // A Profile lists targets down to Deep Cut; their data is fetched when one
   // opens so the Connections section is complete.
-  const hasProfile = selectionView.panelMembers.some(
-    (member) => member.profileView,
-  );
   useEffect(() => {
-    if (!hasProfile) return;
+    if (!profileSlug) return;
     requestLevel('specialized');
     requestLevel('deep-cut');
-  }, [hasProfile, requestLevel]);
+  }, [profileSlug, requestLevel]);
   const addToSelection = useMemo<AddToSelectionControl>(
     () => ({
       isAdding,

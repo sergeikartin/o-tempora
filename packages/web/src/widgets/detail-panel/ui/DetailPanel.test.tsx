@@ -2,7 +2,11 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, expect, test, vi } from 'vitest';
 import type { Person } from '../../../shared/types';
 import type { DetailPanelEntity } from '../lib/build-drawer-content';
-import { DetailPanel, type DetailPanelMember } from './DetailPanel';
+import {
+  DetailPanel,
+  type DetailPanelMember,
+  type ProfileViewState,
+} from './DetailPanel';
 
 afterEach(cleanup);
 
@@ -390,4 +394,64 @@ test('the panel itself has no add button; adding lives on the canvas', () => {
   expect(
     screen.queryByRole('button', { name: 'Add to comparison' }),
   ).toBeNull();
+});
+
+const withProfile = (profileView: ProfileViewState) => ({
+  ...closed,
+  members: [
+    {
+      entity: {
+        entityType: 'person' as const,
+        entity: { ...napoleon, description: 'A long description.' },
+      },
+      isHidden: false,
+      profileView,
+    },
+  ],
+});
+
+test('a loading Profile pins name and tagline over a placeholder, with no Description', () => {
+  const { container } = render(
+    <DetailPanel {...withProfile({ status: 'loading' })} onClose={() => {}} />,
+  );
+
+  expect(screen.getByText('Napoleon')).toBeTruthy();
+  expect(
+    screen.getByText('French military commander and emperor'),
+  ).toBeTruthy();
+  expect(container.querySelector('[aria-busy="true"]')).toBeTruthy();
+  expect(screen.queryByText('A long description.')).toBeNull();
+});
+
+test('a loaded Profile replaces the Description and renders **bold** as elements', () => {
+  const { container } = render(
+    <DetailPanel
+      {...withProfile({
+        status: 'ready',
+        profile: {
+          overview: 'Rose from **artillery officer** to emperor.',
+          keyMoments: [],
+          deepFacts: [],
+        },
+        color: 'red',
+        connections: [],
+      })}
+      onClose={() => {}}
+    />,
+  );
+
+  expect(container.querySelector('strong')?.textContent).toBe(
+    'artillery officer',
+  );
+  expect(container.querySelector('[aria-busy]')).toBeNull();
+  expect(screen.queryByText('A long description.')).toBeNull();
+});
+
+test('a failed Profile falls back to the Description in the wide panel', () => {
+  render(
+    <DetailPanel {...withProfile({ status: 'failed' })} onClose={() => {}} />,
+  );
+
+  expect(screen.getByText('A long description.')).toBeTruthy();
+  expect(screen.getAllByRole('link', { name: /Wikipedia/ })).toHaveLength(1);
 });

@@ -14,15 +14,20 @@ export interface DetailPanelMember {
   entity: DetailPanelEntity;
   // Filtered out of the canvas by Detail Level or filters; it stays selected.
   isHidden: boolean;
-  // Present when the entity has a Profile; it replaces the Description.
-  profileView?: ProfileViewData;
+  // Present when the entity has a Profile; once loaded it replaces the
+  // Description, and the panel is wide while it loads or if that fails.
+  profileView?: ProfileViewState;
 }
 
-export interface ProfileViewData {
-  profile: ProfileBody;
-  color: string;
-  connections: readonly ResolvedConnection[];
-}
+export type ProfileViewState =
+  | { status: 'loading' }
+  | { status: 'failed' }
+  | {
+      status: 'ready';
+      profile: ProfileBody;
+      color: string;
+      connections: readonly ResolvedConnection[];
+    };
 
 interface DetailPanelProps {
   // The Selection in selection order; empty closes the panel.
@@ -380,26 +385,32 @@ export function DetailPanel({
               {displayedMember?.isHidden && (
                 <p className={styles.hiddenNote}>{m.hiddenByFiltersNote()}</p>
               )}
-              {profileView ? (
+              {profileView?.status === 'ready' && (
                 <ProfileView
                   profile={profileView.profile}
                   color={profileView.color}
                   connections={profileView.connections}
                   onOpenConnection={onOpenConnection}
                 />
-              ) : (
+              )}
+              {profileView?.status === 'loading' && (
+                <div className={styles.profilePlaceholder} aria-busy="true" />
+              )}
+              {(!profileView || profileView.status === 'failed') && (
                 <>
                   {content.description && (
                     <p className={styles.description}>{content.description}</p>
                   )}
-                  <a
-                    href={content.wikipediaUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.wikipediaButton}
-                  >
-                    {m.readOnWikipedia()}
-                  </a>
+                  {!profileView && (
+                    <a
+                      href={content.wikipediaUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.wikipediaButton}
+                    >
+                      {m.readOnWikipedia()}
+                    </a>
+                  )}
                 </>
               )}
             </div>
