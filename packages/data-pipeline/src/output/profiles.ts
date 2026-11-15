@@ -9,7 +9,12 @@ import {
   type ProfileKeyMoment,
   type ProfileLane,
 } from '@o-tempora/shared-types';
+import { asArray, asRecord, asString } from '../profiles/values.js';
+import { hasApproval } from '../profiles/verification/policy.js';
+
 import { detailLevelOf } from './write-datasets.js';
+
+export { asArray, asRecord, asString } from '../profiles/values.js';
 
 // The slice of a raw Profile file (prompts/profile.md's JSON plus the `meta`
 // the profiles script adds, docs/adr/0022-...) that Output reads. Claims,
@@ -20,6 +25,7 @@ export interface RawProfile {
   qid: string;
   locale: string;
   status: string;
+  approved: boolean;
   overview: string;
   keyMoments: ProfileKeyMoment[];
   deepFacts: ProfileDeepFact[];
@@ -28,7 +34,7 @@ export interface RawProfile {
   connections: { qid?: string; reason: string }[];
 }
 
-// Only these review statuses ship (docs/adr/0022-...).
+// These statuses still require a current verification receipt to ship.
 const SHIPPED_STATUSES: ReadonlySet<string> = new Set(['reviewed', 'edited']);
 
 // A shipped Profile's text is `**bold**` and plain prose; web renders the bold
@@ -57,27 +63,6 @@ export function assertBoldOnlyMarkup(text: string, where: string): void {
   }
 }
 
-export function asRecord(
-  value: unknown,
-  where: string,
-): Record<string, unknown> {
-  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
-    throw new Error(`${where}: expected an object`);
-  }
-  return value as Record<string, unknown>;
-}
-
-export function asString(value: unknown, where: string): string {
-  if (typeof value !== 'string' || value === '')
-    throw new Error(`${where}: expected a non-empty string`);
-  return value;
-}
-
-export function asArray(value: unknown, where: string): unknown[] {
-  if (!Array.isArray(value)) throw new Error(`${where}: expected an array`);
-  return value;
-}
-
 // Older Profiles can lack a source, and `not_on_wikipedia` is a review
 // sentinel. Neither should become a link, nor should malformed/unsafe URLs.
 function parseSource(value: unknown): { sourceUrl?: string } {
@@ -97,17 +82,22 @@ function parseSource(value: unknown): { sourceUrl?: string } {
   return {};
 }
 
-export function parseRawProfile(json: unknown, fileName: string): RawProfile {
+export function parseRawProfile(
+  json: unknown,
+  fileName: string,
+  report?: unknown,
+): RawProfile {
   const root = asRecord(json, fileName);
   const meta = asRecord(root.meta, `${fileName}: meta`);
   const source = asRecord(meta.source, `${fileName}: meta.source`);
   const review = asRecord(meta.review, `${fileName}: meta.review`);
 
-  return {
+  const parsed: RawProfile = {
     fileName,
     qid: asString(source.wikidata_qid, `${fileName}: meta.source.wikidata_qid`),
     locale: asString(meta.locale, `${fileName}: meta.locale`),
     status: asString(review.status, `${fileName}: meta.review.status`),
+    approved: false,
     overview: asString(root.overview, `${fileName}: overview`),
     keyMoments: asArray(root.key_moments, `${fileName}: key_moments`).map(
       (item, index) => {
@@ -157,6 +147,15 @@ export function parseRawProfile(json: unknown, fileName: string): RawProfile {
       },
     ),
   };
+  parsed.approved = hasApproval(json, report, [
+    'overview',
+    ...parsed.keyMoments.flatMap((_, i) =>
+      ['date', 'title', 'text'].map((field) => `key_moments.${i}.${field}`),
+    ),
+    ...parsed.deepFacts.map((_, i) => `deep_facts.${i}.text`),
+    ...parsed.connections.map((_, i) => `connections.${i}.connection`),
+  ]);
+  return parsed;
 }
 
 // Reads every `<lane>/*.json` Profile under `dir`. The staging folder and the
@@ -182,7 +181,25 @@ export async function readRawProfiles(dir: string): Promise<RawProfile[]> {
       const json: unknown = JSON.parse(
         await readFile(path.join(laneDir, fileName), 'utf8'),
       );
-      profiles.push(parseRawProfile(json, `${lane}/${fileName}`));
+      let report: unknown;
+      try {
+        report = JSON.parse(
+          await readFile(
+            path.join(
+              laneDir,
+              fileName.replace(/\.json$/, '.verification.json'),
+            ),
+            'utf8',
+          ),
+        );
+      } catch (error) {
+        if (
+          (error as NodeJS.ErrnoException).code !== 'ENOENT' &&
+          !(error instanceof SyntaxError)
+        )
+          throw error;
+      }
+      profiles.push(parseRawProfile(json, `${lane}/${fileName}`, report));
     }
   }
   return profiles;
@@ -222,8 +239,8 @@ function resolveConnections(
   return connections;
 }
 
-// The Profiles to ship, keyed by the entity's slug. Only `reviewed` and
-// `edited` English Profiles ship; Russian files carry the English Profile whole
+// The Profiles to ship, keyed by the entity's slug. Only approved `reviewed`
+// and `edited` English Profiles ship; Russian files carry the English Profile whole
 // (CONTEXT.md's Field Fallback), so a raw file in another locale is not read.
 export function shipProfiles(
   rawProfiles: readonly RawProfile[],
@@ -233,7 +250,12 @@ export function shipProfiles(
   const shipped = new Map<string, Profile>();
 
   for (const raw of rawProfiles) {
-    if (raw.locale !== 'en' || !SHIPPED_STATUSES.has(raw.status)) continue;
+    if (
+      raw.locale !== 'en' ||
+      !SHIPPED_STATUSES.has(raw.status) ||
+      !raw.approved
+    )
+      continue;
 
     const subject = targetByQid.get(raw.qid);
     if (!subject)

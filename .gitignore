@@ -33,3 +33,6 @@ dist/
 
 # Profile writer output awaiting finalize
 packages/data-pipeline/data/raw/profiles/incoming/
+
+# Full fetched articles are local evidence snapshots; reports retain excerpts.
+packages/data-pipeline/data/raw/profiles/evidence/

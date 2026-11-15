@@ -203,9 +203,7 @@ object to every result after the response comes back.
     "connections_returned": 0,
     "connections_matched_people": 0,
     "connections_matched_events": 0,
-    "connections_unresolved": 0,
-    "connections_qid_mismatch": 0,
-    "date_flags": []
+    "connections_unresolved": 0
   },
   "review": {
     "status": "draft | reviewed | edited",
@@ -225,8 +223,8 @@ object to every result after the response comes back.
 | `locale` | Language of the generated text, for the Russian version of the site. |
 | `source.wikidata_qid` | The subject's Wikidata ID, resolved from `wikipedia_url` and asserted equal to the dataset entity's own QID. |
 | `tokens` | Cost tracking. |
-| `validation` | Whether the JSON passed the schema, and how many connections matched people and events in the dataset. A low match rate flags a bad run or a data gap. `connections_unresolved` counts URLs that do not resolve; `connections_qid_mismatch` counts redirects that land on a different QID than the title implies; `date_flags` lists years in the overview or key-moment dates that disagree with the entity's own dates (year-level, preferred-rank, with a tolerance). None of these block generation. |
-| `review.status` | `edited` records are hand-fixed and must never be overwritten by a regeneration. |
+| `validation` | Whether the JSON passed the schema, and how many connections matched people and events in the dataset. A low match rate flags a bad run or a data gap. `connections_unresolved` counts URLs that do not resolve. Date and identity verification results live in the separate verification report; see `docs/profile-verification.md`. These generation counts do not grant approval. |
+| `review.status` | `edited` protects hand-fixed prose from regeneration and automatic repair. Publishing also requires `review.approval`, a current policy/content/report receipt issued by `profiles verify`; changing the text invalidates it. See `docs/profile-verification.md`. |
 
 ## Matching connections
 
@@ -238,3 +236,5 @@ object to every result after the response comes back.
 - Connections are one-directional: if Drake lists the Spanish Armada, the
   Armada profile does not show Drake unless its own run lists him. Do not
   merge across profiles when building them.
+
+Verification may replace a generated Wikipedia source or `not_on_wikipedia` with a fetched public HTTPS primary/scholarly source. The writer prompt stays memory-based; evidence and approval are added offline by `profiles verify`.

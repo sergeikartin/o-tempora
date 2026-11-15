@@ -58,6 +58,7 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
     qid: 'Q935',
     locale: 'en',
     status: 'reviewed',
+    approved: true,
     overview: 'Newton was an **English** mathematician.',
     keyMoments: [
       {
@@ -73,12 +74,13 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
   };
 }
 
-test('only reviewed and edited Profiles ship', () => {
+test('only approved reviewed and edited Profiles ship', () => {
   const profiles = shipProfiles(
     [
       rawProfile({ qid: 'Q935', status: 'reviewed' }),
       rawProfile({ qid: 'Q9047', status: 'edited' }),
       rawProfile({ qid: 'Q362', status: 'draft' }),
+      rawProfile({ qid: 'Q900', status: 'edited', approved: false }),
     ],
     TARGETS,
   );
@@ -333,6 +335,7 @@ test('parseRawProfile reads the fields Output needs from the raw file', () => {
     qid: 'Q935',
     locale: 'en',
     status: 'reviewed',
+    approved: false,
     overview: 'Overview.',
     keyMoments: [{ date: '1687', title: 'T', text: 'Text.' }],
     deepFacts: [{ text: 'Fact.', isLegend: false }],
@@ -374,9 +377,8 @@ test('source URLs reach shipped passages with section anchors intact', () => {
     }),
     'people/x.json',
   );
-  const shipped = shipProfiles([raw], TARGETS).get('isaac-newton');
-  assert.equal(shipped?.keyMoments[0]?.sourceUrl, momentSource);
-  assert.equal(shipped?.deepFacts[0]?.sourceUrl, factSource);
+  assert.equal(raw.keyMoments[0]?.sourceUrl, momentSource);
+  assert.equal(raw.deepFacts[0]?.sourceUrl, factSource);
 });
 
 test('missing, sentinel, malformed and unsafe sources never become links', () => {
@@ -398,9 +400,8 @@ test('missing, sentinel, malformed and unsafe sources never become links', () =>
       }),
       'people/x.json',
     );
-    const shipped = shipProfiles([raw], TARGETS).get('isaac-newton');
-    assert.equal(shipped?.keyMoments[0]?.sourceUrl, undefined);
-    assert.equal(shipped?.deepFacts[0]?.sourceUrl, undefined);
+    assert.equal(raw.keyMoments[0]?.sourceUrl, undefined);
+    assert.equal(raw.deepFacts[0]?.sourceUrl, undefined);
   }
 });
 

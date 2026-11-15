@@ -23,7 +23,7 @@ First batch: 30 entities (20 People, 4 Conflicts, 6 Milestones) in five connecte
 
 ## Pipeline
 
-- Writing: the `profile-writer` agent from `packages/data-pipeline/prompts/profile.md` (v2.1.0), one entity at a time, from model knowledge. Checking: the `profile-verifier` agent. Gating: only `reviewed` and `edited` Profiles ship. ADR 0021 covers the rest, including the deterministic `profiles` plan/finalize script (skip results already at the current `prompt_hash`, regenerate stale only on a flag, never overwrite `edited`).
+- Writing: a `profile-writer` agent or provider API call from the unified prompt, using model knowledge. Checking: `profiles verify --repair` with fetched evidence, independent audit and bounded repair. Gating: a current hash-bound verification approval is required; `edited` protects prose without bypassing verification. See pipeline ADR 0023 and `docs/profile-verification.md`. Planning skips current-prompt records, regenerates stale ones only on a flag, and never overwrites `edited`.
 - Output reads the raw Profile files and writes `shared-types` `profiles/<locale>/<slug>.json`. It sets `hasProfile` on each row in both language files, resolves each Connection to `{slug, reason, name, lane, detailLevel}` (unresolved targets dropped), and rejects a Profile with unpaired `**` or other markup.
 - Shipped shape: `overview`, `keyMoments[{date, title, text}]`, `deepFacts[{text, isLegend}]`, `connections`. The `Profile` types move from `web` to `shared-types`.
 
@@ -33,7 +33,7 @@ Filed in this order as `issues/10` to `issues/17` (ticket N below is file 9+N).
 
 1. **Profile types and Output** (`data-pipeline`, `shared-types`): move the types, add the Output step, `hasProfile`, validation, tests. Includes a `data-pipeline` ADR if Output needs a new stage.
 2. **`profiles` plan/finalize script** (`data-pipeline`): as in ADR 0021.
-3. **Generate and review the 30** (human-in-the-loop): run the writer and verifier, the owner promotes `draft` to `reviewed`.
+3. **Generate and review the 30**: run the writer and automatic verifier; audit a varied sample of approvals and resolve essential held claims or protected-edit proposals.
 4. **Panel loads shipped Profiles** (`web`): replace `sample-profiles.ts` with the per-entity fetch, the placeholder and failure fallback, `hasProfile`, and a copy of `profiles/` into `dist`.
 5. **Reduce the Selection to one entity** (`web`): remove multi-select, Span and Overlap Bands, `computeOverlap`, the overlap sentence, "Add to comparison" and the Focus Range "Overlap" label; the Entity Link carries one slug; arrival still fits the viewport to the entity.
 6. **Connection history and Detail Level raise** (`web`): a hop adds a history entry; opening a below-level target raises the Detail Level.

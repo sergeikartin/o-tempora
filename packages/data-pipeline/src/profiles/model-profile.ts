@@ -35,7 +35,6 @@ const MAX_DEEP_FACTS = 3;
 const MAX_CONNECTIONS = 15;
 
 const NOT_ON_WIKIPEDIA = 'not_on_wikipedia';
-const WIKIPEDIA_SOURCE = /^https:\/\/en\.wikipedia\.org\/wiki\/\S+$/;
 
 function asOneOf(value: unknown, allowed: readonly string[], where: string) {
   const text = asString(value, where);
@@ -47,12 +46,17 @@ function asOneOf(value: unknown, allowed: readonly string[], where: string) {
 
 function asSource(value: unknown, where: string): string {
   const text = asString(value, where);
-  if (text !== NOT_ON_WIKIPEDIA && !WIKIPEDIA_SOURCE.test(text)) {
-    throw new Error(
-      `${where}: expected an en.wikipedia.org article URL or "${NOT_ON_WIKIPEDIA}"`,
-    );
+  if (text === NOT_ON_WIKIPEDIA) return text;
+  try {
+    const url = new URL(text);
+    if (url.protocol === 'https:' && !url.username && !url.password)
+      return text;
+  } catch {
+    /* The error below names the field. */
   }
-  return text;
+  throw new Error(
+    `${where}: expected a public HTTPS source or "${NOT_ON_WIKIPEDIA}"`,
+  );
 }
 
 function asClaims(value: unknown, where: string): string[] {

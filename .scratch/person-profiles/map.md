@@ -6,7 +6,7 @@ A spec at `.scratch/person-profiles/spec.md` for **Profiles**: LLM-generated, me
 
 ## Implementation status
 
-Types/output, plan/finalize, runtime panel loading, single-entity Selection, Connection history and the landing handoff are implemented (tickets 10, 11, 13–15 and 17 resolved). Thirty raw Profiles exist: 20 People, 4 Conflicts and 6 Milestones, all still `draft`, with no verification reports or shipped Profile files. The remaining work is review automation (08), batch verification/owner review (12) and the docs/ADR sweep (16).
+Types/output, plan/finalize, runtime panel loading, single-entity Selection, Connection history and the landing handoff are implemented (tickets 10, 11, 13–15 and 17 resolved). Thirty raw Profiles exist: 20 People, 4 Conflicts and 6 Milestones, all still `draft`, with no verification reports or shipped Profile files. Review automation (08) is implemented. The remaining work is live batch verification/audit (12) and the docs/ADR sweep (16).
 
 ## Notes
 
@@ -22,6 +22,8 @@ Settled in charting:
 - Deep Facts exist to be remembered, not to quiz.
 
 ## Decisions so far
+
+- [Automate the review gate](issues/08-automate-review-gate.md): offline evidence-backed verification, separate coverage audit, bounded repair and hash-bound automatic approval; protected edits receive proposals. Human review is for essential unresolved claims and sampled approvals. ADR 0023 supersedes the human gate; the initial live batch remains pending.
 
 <!-- one line per resolved ticket -->
 
@@ -41,8 +43,7 @@ Settled in charting:
 - Rollout beyond Legendary and beyond the 30-entity sample.
 - Russian Profiles: wanted at rollout, deferred for now. Development, prototype and the first batch are English-only; Russian files keep carrying the English Profile whole.
 - [Docs and ADRs](issues/16-docs-and-adrs.md): unblocked. Selection-as-one-entity and runtime-fetch ADRs exist; landing fragments, Connection history and the living-doc sweep still need reconciliation.
-- [Generate and review the 30](issues/12-generate-and-review-the-30.md): drafts are written; verification, owner review/promotion and remaining acceptance evidence are pending.
-- [Automate the review gate](issues/08-automate-review-gate.md): the decision remains open; until then only the user promotes `draft` to `reviewed`.
+- [Generate and review the 30](issues/12-generate-and-review-the-30.md): drafts are written; live verification, sampled human audit and remaining acceptance evidence are pending.
 
 ## Out of scope
 

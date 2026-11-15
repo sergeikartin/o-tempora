@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0023-profiles-publish-after-evidence-backed-automatic-verification.md
 supersedes: 0021-profiles-generated-from-model-knowledge-and-human-gated.md
 ---
 

@@ -11,13 +11,16 @@ import {
 } from './providers.js';
 import { readStoredProfiles } from './store.js';
 import { loadSubjects } from './subjects.js';
+import { createResearcher } from './verification/researcher.js';
+import { verifyProfile } from './verification/runner.js';
 import { resolveArticleQids } from './wikipedia-qids.js';
 import { type WriteEntry, writeProfiles } from './writer.js';
 
-const USAGE = `Usage: profiles <plan|write|finalize> [flags]
+const USAGE = `Usage: profiles <plan|write|finalize|verify> [flags]
   plan      --qids=Q1,Q2,... [--regenerate-stale]
   write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>]
-  finalize  [--run-id=<id>]`;
+  finalize  [--run-id=<id>]
+  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-model=<OpenAI id>]`;
 
 const DEFAULT_CONCURRENCY = 3;
 
@@ -118,7 +121,70 @@ async function main(): Promise<void> {
   if (command === 'plan') await plan(argv);
   else if (command === 'write') await write(argv);
   else if (command === 'finalize') await finalize(argv);
+  else if (command === 'verify') await verify(argv);
   else throw new Error(USAGE);
+}
+
+async function verify(argv: readonly string[]): Promise<void> {
+  const unknown = argv.find(
+    (arg) =>
+      !['--repair', '--force'].includes(arg) &&
+      !['--qids=', '--model=', '--audit-model='].some((prefix) =>
+        arg.startsWith(prefix),
+      ),
+  );
+  if (unknown)
+    throw new Error(`Unknown verification flag: ${unknown}\n${USAGE}`);
+  const qids = parseQidsFlag(argv);
+  if (!qids)
+    throw new Error(
+      `--qids is required: verification runs per chosen batch\n${USAGE}`,
+    );
+  const model = flagValue(argv, 'model') ?? DEFAULT_MODEL.openai;
+  const auditModel = flagValue(argv, 'audit-model') ?? model;
+  const stored = await readStoredProfiles(RAW_PROFILES_DIR);
+  const subjects = new Map(
+    loadSubjects().map((subject) => [subject.qid, subject]),
+  );
+  let research: ReturnType<typeof createResearcher> | undefined;
+  let complete: ReturnType<typeof createCompleter> | undefined;
+  const counts = { approved: 0, held: 0, skipped: 0, retry: 0, failed: 0 };
+  for (const qid of qids) {
+    try {
+      const entry = stored.get(qid);
+      const subject = subjects.get(qid);
+      if (!entry || !subject)
+        throw new Error('No raw Profile or dataset entity for this QID');
+      const result = await verifyProfile({
+        filePath: entry.filePath,
+        subject,
+        research: (...args) => {
+          research ??= createResearcher(model);
+          return research(...args);
+        },
+        complete: (prompt) => {
+          complete ??= createCompleter('openai', auditModel);
+          return complete(prompt);
+        },
+        resolve: resolveArticleQids,
+        repair: argv.includes('--repair'),
+        force: argv.includes('--force'),
+        log: console.log,
+      });
+      counts[result.status]++;
+      console.log(`${qid}: ${result.status}; ${result.reportPath}`);
+      for (const blocker of result.blockers) console.log(`  ${blocker}`);
+      if (result.proposalPath)
+        console.log(`  proposed edit: ${result.proposalPath}`);
+    } catch (error) {
+      counts.failed++;
+      console.error(
+        `${qid}: failed: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+  }
+  console.log(JSON.stringify(counts));
+  if (counts.held || counts.retry || counts.failed) process.exitCode = 1;
 }
 
 main().catch((error: unknown) => {
