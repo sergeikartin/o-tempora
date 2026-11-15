@@ -5,13 +5,15 @@ import {
   PROFILE_LANES,
   type Profile,
   type ProfileConnection,
+  type ProfileDeepFact,
+  type ProfileKeyMoment,
   type ProfileLane,
 } from '@o-tempora/shared-types';
 import { detailLevelOf } from './write-datasets.js';
 
 // The slice of a raw Profile file (prompts/profile.md's JSON plus the `meta`
 // the profiles script adds, docs/adr/0022-...) that Output reads. Claims,
-// sources, confidence, importance and the Deep Fact type are review material
+// confidence, importance and the Deep Fact type are review material
 // and never ship.
 export interface RawProfile {
   fileName: string;
@@ -19,8 +21,8 @@ export interface RawProfile {
   locale: string;
   status: string;
   overview: string;
-  keyMoments: { date: string; title: string; text: string }[];
-  deepFacts: { text: string; isLegend: boolean }[];
+  keyMoments: ProfileKeyMoment[];
+  deepFacts: ProfileDeepFact[];
   // `qid` is the target's Wikidata ID, resolved from its Wikipedia URL by the
   // profiles script; a Connection without one cannot be resolved.
   connections: { qid?: string; reason: string }[];
@@ -76,6 +78,25 @@ export function asArray(value: unknown, where: string): unknown[] {
   return value;
 }
 
+// Older Profiles can lack a source, and `not_on_wikipedia` is a review
+// sentinel. Neither should become a link, nor should malformed/unsafe URLs.
+function parseSource(value: unknown): { sourceUrl?: string } {
+  if (typeof value !== 'string') return {};
+  try {
+    const url = new URL(value);
+    if (
+      (url.protocol === 'https:' || url.protocol === 'http:') &&
+      !url.username &&
+      !url.password
+    ) {
+      return { sourceUrl: url.href };
+    }
+  } catch {
+    // Missing or unusable sources leave the passage readable without a link.
+  }
+  return {};
+}
+
 export function parseRawProfile(json: unknown, fileName: string): RawProfile {
   const root = asRecord(json, fileName);
   const meta = asRecord(root.meta, `${fileName}: meta`);
@@ -104,6 +125,7 @@ export function parseRawProfile(json: unknown, fileName: string): RawProfile {
             moment.text,
             `${fileName}: key_moments[${index}].text`,
           ),
+          ...parseSource(moment.source),
         };
       },
     ),
@@ -118,6 +140,7 @@ export function parseRawProfile(json: unknown, fileName: string): RawProfile {
         return {
           text: asString(fact.text, `${fileName}: deep_facts[${index}].text`),
           isLegend: fact.is_legend,
+          ...parseSource(fact.source),
         };
       },
     ),

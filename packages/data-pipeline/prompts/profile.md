@@ -1,7 +1,7 @@
 # Profile prompt (people and events)
 
-- **Version:** 2.1.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `49a617acf74e`)
+- **Version:** 2.2.0
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `246b7e0afd6f`)
 - **Inputs:** `{type}` (person | conflict | milestone), `{name}`, `{dates}` (e.g. "c. 1540–1596", "1789–1799", "1969"), `{wikipedia_url}`
 - **Replaces:** the v1 person and conflict prompts
 - **Checked by:** `.claude/agents/profile-verifier.md`
@@ -47,8 +47,27 @@ KEY MOMENTS
   if there was one.
 
 DEEP FACTS
-- At most 3 deep, little-known, paradoxical or anecdotal facts:
-  the kind used for the hardest, highest-value quiz questions.
+- Find well-documented details that make the subject memorable and
+  build unexpected mental connections. Include obscure material when
+  its connection or story makes it rewarding to understand. Explain
+  enough context for a curious newcomer to appreciate it.
+- Consider a wider pool of candidates before choosing at most 3
+  complementary facts. Return only the selected paragraphs.
+- Select using these criteria together; each fact can have different
+  strengths:
+  - Surprise: challenges an expectation or reveals something unfamiliar.
+  - Concreteness: gives the reader an image, object, phrase or scene
+    to remember.
+  - Meaning: helps explain the subject or its historical context.
+  - Connections: links the subject to another person, field, cultural
+    reference or familiar idea. Explain the documented relationship
+    that makes the association meaningful.
+  - Distinctiveness: contains a revealing detail beyond generic biography.
+  - Variety: adds something different from the overview, key moments
+    and other deep facts.
+- Let the story or association carry the hook; an obscure name,
+  date or number alone is not enough. Choose the strongest set without
+  a quota for accessible or difficult material.
 - Vary the type. Use different types where possible:
   - hidden_story: a paradoxical or archival story, a myth or legend,
     or an unexpected connection to another field. Best when it
@@ -61,7 +80,9 @@ DEEP FACTS
 - Don't use the same shape for every fact. Vary how facts open
   and where the hook lands.
 - Include at least one concrete detail people can picture.
-- Only well-documented facts. Do not invent, embellish, or guess
+- Documentation is required regardless of how engaging a fact is;
+  apply VERIFIABILITY to every selected fact and its associations.
+  Do not invent, embellish, or guess
   dates, numbers, or quotes. Paraphrase famous lines unless the
   exact wording is well documented.
 - A myth or legend is allowed only if marked is_legend: true.
@@ -166,7 +187,7 @@ object to every result after the response comes back.
 ```json
 "meta": {
   "generated_at": "ISO 8601 timestamp, UTC",
-  "prompt_version": "2.1.0",
+  "prompt_version": "2.2.0",
   "prompt_hash": "first 12 chars of sha256 of the prompt text",
   "schema_version": 3,
   "model": "exact model ID",

@@ -125,7 +125,7 @@ One story inside a **Profile**: a date, the essence in a few words, and a short 
 _Avoid_: milestone (bare — a lane), highlight, chapter
 
 **Deep Fact**:
-One little-known, memorable detail in a **Profile**, kept to what is documented; a legend is marked as one. Written to be quiz-grade — obscure, with one hook that makes it stick — so a visitor remembers the entity; the product itself never quizzes them.
+One little-known, documented detail in a **Profile** that builds understanding and unexpected mental associations through a concrete hook, with enough context for a curious newcomer; a legend is marked as one. Obscure material earns its place through a rewarding story or association; the product itself never quizzes the visitor.
 _Avoid_: fun fact, trivia, Curiosity (a different thing — a Landing Page overlap)
 
 **Connection**:

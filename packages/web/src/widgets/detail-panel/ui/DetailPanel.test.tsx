@@ -330,3 +330,43 @@ test('a failed Profile falls back to the Description in the wide panel', () => {
   expect(screen.getByText('A long description.')).toBeTruthy();
   expect(screen.getAllByRole('link', { name: /Wikipedia/ })).toHaveLength(1);
 });
+
+test('a Profile links each sourced passage and leaves unsourced facts readable', () => {
+  const momentSource = 'https://en.wikipedia.org/wiki/Napoleon#Emperor';
+  const factSource = 'https://en.wikipedia.org/wiki/Napoleon#Legacy';
+  render(
+    <DetailPanel
+      {...withProfile({
+        status: 'ready',
+        color: 'currentColor',
+        profile: {
+          overview: 'Overview.',
+          keyMoments: [
+            {
+              date: '1804',
+              title: 'Emperor',
+              text: 'Moment.',
+              sourceUrl: momentSource,
+            },
+          ],
+          deepFacts: [
+            { text: 'Sourced fact.', isLegend: false, sourceUrl: factSource },
+            { text: 'Unsourced fact.', isLegend: false },
+          ],
+        },
+        connections: [],
+      })}
+      onClose={() => {}}
+    />,
+  );
+  const links = screen.getAllByRole('link', { name: 'Source ↗' });
+  expect(links.map((link) => link.getAttribute('href'))).toEqual([
+    momentSource,
+    factSource,
+  ]);
+  for (const link of links) {
+    expect(link.getAttribute('target')).toBe('_blank');
+    expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+  }
+  expect(screen.getByText('Unsourced fact.')).toBeTruthy();
+});

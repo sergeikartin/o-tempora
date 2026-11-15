@@ -146,6 +146,28 @@
   line-height: 1.55;
 }
 
+.sourceLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sourceLink:hover {
+  color: var(--color-text-primary);
+}
+
+.sourceLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
 /* Connections */
 .connections {
   list-style: none;
@@ -258,6 +280,11 @@
 }
 
 @media (pointer: coarse) {
+  .sourceLink {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
   .connection {
     padding-block: 12px;
   }

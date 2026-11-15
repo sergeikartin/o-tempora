@@ -226,11 +226,14 @@ export interface ProfileKeyMoment {
   date: string;
   title: string;
   text: string;
+  // An absolute HTTP(S) source URL, including its section when available.
+  sourceUrl?: string;
 }
 
 export interface ProfileDeepFact {
   text: string;
   isLegend: boolean;
+  sourceUrl?: string;
 }
 
 export const PROFILE_LANES = ['people', 'conflicts', 'milestones'] as const;

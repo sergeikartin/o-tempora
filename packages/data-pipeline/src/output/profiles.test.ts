@@ -64,6 +64,7 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
         date: '1687',
         title: 'The Principia',
         text: 'He published the **Principia**.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Isaac_Newton#Principia',
       },
     ],
     deepFacts: [{ text: 'No apple hit him.', isLegend: true }],
@@ -128,6 +129,7 @@ test("the shipped shape drops everything but the reader's fields", () => {
         date: '1687',
         title: 'The Principia',
         text: 'He published the **Principia**.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Isaac_Newton#Principia',
       },
     ],
     deepFacts: [{ text: 'No apple hit him.', isLegend: true }],
@@ -353,6 +355,53 @@ test('parseRawProfile names the field that is missing', () => {
       ),
     /meta\.source\.wikidata_qid/,
   );
+});
+
+test('source URLs reach shipped passages with section anchors intact', () => {
+  const momentSource = 'https://en.wikipedia.org/wiki/Isaac_Newton#Principia';
+  const factSource = 'https://www.example.org/archive/newton#apple';
+  const raw = parseRawProfile(
+    rawJson({
+      key_moments: [
+        {
+          date: '1687',
+          title: 'Principia',
+          text: 'Text.',
+          source: momentSource,
+        },
+      ],
+      deep_facts: [{ text: 'Fact.', is_legend: true, source: factSource }],
+    }),
+    'people/x.json',
+  );
+  const shipped = shipProfiles([raw], TARGETS).get('isaac-newton');
+  assert.equal(shipped?.keyMoments[0]?.sourceUrl, momentSource);
+  assert.equal(shipped?.deepFacts[0]?.sourceUrl, factSource);
+});
+
+test('missing, sentinel, malformed and unsafe sources never become links', () => {
+  for (const source of [
+    undefined,
+    null,
+    '',
+    'not_on_wikipedia',
+    '/wiki/Isaac_Newton',
+    'https://',
+    'javascript:alert(1)',
+    'data:text/html,hello',
+    'https://user:password@example.org',
+  ]) {
+    const raw = parseRawProfile(
+      rawJson({
+        key_moments: [{ date: '1687', title: 'T', text: 'Text.', source }],
+        deep_facts: [{ text: 'Fact.', is_legend: false, source }],
+      }),
+      'people/x.json',
+    );
+    const shipped = shipProfiles([raw], TARGETS).get('isaac-newton');
+    assert.equal(shipped?.keyMoments[0]?.sourceUrl, undefined);
+    assert.equal(shipped?.deepFacts[0]?.sourceUrl, undefined);
+  }
 });
 
 test('readRawProfiles reads lane folders and skips staging and verification files', async () => {

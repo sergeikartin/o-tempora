@@ -34,6 +34,20 @@ function RichText({ text }: { text: string }) {
   );
 }
 
+function SourceLink({ url }: { url?: string }) {
+  if (!url) return null;
+  return (
+    <a
+      className={styles.sourceLink}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {m.profileSourceLink()}
+    </a>
+  );
+}
+
 // The four Detail Level pips of the Top Bar switch, filled up to the level the
 // target first appears at.
 function LevelPips({ levelIndex }: { levelIndex: number }) {
@@ -104,6 +118,7 @@ export function ProfileView({
                 <p className={styles.momentText}>
                   <RichText text={moment.text} />
                 </p>
+                <SourceLink url={moment.sourceUrl} />
               </li>
             ))}
           </ol>
@@ -129,6 +144,7 @@ export function ProfileView({
                 <p className={styles.factText}>
                   <RichText text={fact.text} />
                 </p>
+                <SourceLink url={fact.sourceUrl} />
               </li>
             ))}
           </ul>
