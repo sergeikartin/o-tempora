@@ -14,3 +14,7 @@ Polish of the canvas itself, independent of the layout decision. Marks stay thin
 
 Acceptance: no visual regressions in the prerender (ADR 0013); LCP and CLS no worse.
 Docs: `packages/web/docs/design-tokens.md` and `DESIGN.md` if any token changes; ADR only if a mark behaviour decision is reversed.
+
+## Comments
+
+Tracker reconciliation (2026-11-15): Partially delivered: People and range labels pin to the viewport, lane edges fade (`705a9b6`, `5e2eaa8`, `46e7cc7`), and navigation/transition code respects reduced motion. Keep this open for the remaining typography/state/edge audit, before/after screenshots in both locales, owner review and LCP/CLS comparison. Those acceptance results are not recorded here.

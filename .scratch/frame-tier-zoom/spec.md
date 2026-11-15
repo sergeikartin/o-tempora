@@ -1,5 +1,9 @@
 # Fame Tier Zoom + Century Year Axis
 
+Status: superseded
+
+Originally implemented in `2495ac2`. Zoom-driven density was replaced by manual filtering (web ADR 0003), then Detail Level (root ADR 0006). Century marks moved to the Minimap. Tickets 01 and 03 are resolved; 02 and 04 are superseded. The sections below are historical scope, not current requirements.
+
 ## Destination
 
 Zoom gains a third, zoom-coupled dimension: three **Fame Tiers** (CORE, NOTABLE, EXHAUSTIVE) that automatically gate entity density as the user zooms, replacing the never-built manual fame-tier selector (Unit 9) outright. The Year Axis gains a second, sticky-in-spirit major header row showing computed century boundaries above the existing minor-tick row.

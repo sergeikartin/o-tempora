@@ -1,5 +1,5 @@
 Type: task
-Status: needs-info
+Status: resolved
 Blocked by: 09
 
 See **Help** in `CONTEXT.md`. Where it lives follows the layout decision; the content is settled.
@@ -19,3 +19,7 @@ See **Help** in `CONTEXT.md`. Where it lives follows the layout decision; the co
 - EN and RU strings together; check RU lengths.
 
 Docs: `docs/product-scope.md`, `CONTEXT.md` if wording changes.
+
+## Comments
+
+Tracker reconciliation (2026-11-15): Implemented in `705a9b6` and integrated into the Top Bar in `a5047ca`. `HelpPanel.tsx` and its tests cover visitor-controlled opening, Escape/close, About and the locale switch. The current six-point copy and shared ModalPanel replace the original three-point/popover proposal. The remaining accessibility sweep is [ticket 12](12-accessibility-and-touch-sweep.md).

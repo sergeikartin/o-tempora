@@ -1,5 +1,5 @@
 Type: task
-Status: ready-for-agent
+Status: resolved
 
 See **Entity Link** in `CONTEXT.md`. Built on the current root first; ticket 05 moves it under `/timeline/`.
 
@@ -18,3 +18,7 @@ See **Entity Link** in `CONTEXT.md`. Built on the current root first; ticket 05 
 
 ADR: `packages/web/docs/adr/0015-…` — entity-only URL state with progressive loading.
 Docs: `docs/product-scope.md` (add Entity Links, drop the language-switcher deep-link exclusion), `CONTEXT.md` if wording changes.
+
+## Comments
+
+Tracker reconciliation (2026-11-15): Implemented in `70ae408`, with progressive loading and coverage in `App.entity-link.test.tsx` and `entity-link.test.ts`. Later Selection/history rules supersede the original wording: root ADR 0009 and web ADR 0019 describe one entity, arrival fitting and replacement history; `d6c9960` adds a history entry per Connection hop. Remaining cross-feature documentation reconciliation is [Profiles ticket 16](../../person-profiles/issues/16-docs-and-adrs.md).

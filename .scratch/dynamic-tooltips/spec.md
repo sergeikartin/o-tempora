@@ -1,6 +1,8 @@
 # Dynamic tooltips — spec
 
-Status: ready to hand to `/implement`. Produced by the "Dynamic tooltips" map (`.scratch/dynamic-tooltips/map.md`) — this file is the map's destination, not a ticket answer; the three tickets under `issues/` hold the decision trail this spec was assembled from.
+Status: resolved
+
+Implemented in `52d87ba` (click-to-open entity detail panel); subsequent Profile work extends that panel. The three resolved tickets under `issues/` preserve the decision trail. The scope below is historical, not a pending handoff.
 
 ## 1. What's being replaced
 

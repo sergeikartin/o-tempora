@@ -1,5 +1,9 @@
 # D3 Timeline Migration
 
+Status: resolved
+
+Tickets 01–04 and 06 shipped in `1ee0326`. Ticket 05 is superseded: the palette was wired in `6d7134a`, and the remaining reign/bar decisions no longer apply. The sections below preserve the original migration scope; current rendering is documented in `packages/web/docs/timeline-rendering.md`.
+
 ## Destination
 
 All three timeline lanes (People, Wars & Conflicts, Events & Inventions) render via D3 inside a single shared-horizontal-scroll container, replacing vis-timeline entirely — `vis-timeline` removed from `packages/web/package.json`. Zoom (currently `Timeline.zoomIn()`/`zoomOut()`) reimplemented under D3.

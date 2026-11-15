@@ -4,7 +4,7 @@
 
 **Blocked by:** [[01-widen-pipeline-output-to-specialist-floor]] — the wider dataset has to exist before NOTABLE/EXHAUSTIVE tiers have anything extra to reveal.
 
-**Status:** ready-for-agent
+Status: superseded
 
 - [ ] `ZOOM_MAX_YEARS` widens from 250 to 500 in `shared/config/viewport.ts`; new Fame Tier boundary constants live alongside it.
 - [ ] A pure derivation from `pixelsPerYear` (or the visible-years it implies) to the active Fame Tier value, covering all three bands and their boundaries, with tests.
@@ -14,3 +14,7 @@
 - [ ] `docs/active-context.md`'s Unit 9 entry is confirmed closed/removed (already reflected in the working tree — verify it stays that way, don't reintroduce a manual selector).
 - [ ] `packages/web/docs/code-conventions.md`'s Timeline Rendering section documents the Fame Tier derivation + filtering.
 - [ ] `npm run typecheck --workspace packages/web`, `npm run test --workspace packages/web`, and `npm run lint --workspace packages/web` pass.
+
+## Comments
+
+Tracker reconciliation (2026-11-15): Originally implemented in `2495ac2`, then replaced by manual Fame Score filtering in `a99682f` (web ADR 0003). The current replacement is Detail Level (`42cab59`, root ADR 0006); zoom does not gate density. The unchecked original acceptance list is retired scope, not pending work.

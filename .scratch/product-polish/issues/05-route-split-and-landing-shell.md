@@ -1,5 +1,5 @@
 Type: task
-Status: ready-for-agent
+Status: resolved
 Blocked by: 04
 
 Ships together with ticket 06: the landing page is what changes `/`.
@@ -14,3 +14,7 @@ Ships together with ticket 06: the landing page is what changes `/`.
 
 ADR: root ADR for the route split, superseding `docs/adr/0003-english-served-from-domain-root.md` (mark 0003 `status: superseded`).
 Docs: `docs/deployment.md` (URL structure, entries per locale), `docs/product-scope.md` (landing), `docs/config-variables.md` if a variable changes.
+
+## Comments
+
+Tracker reconciliation (2026-11-15): Implemented in `439eb04` with root ADR 0007, four entries, per-entry prerender/preload handling, intent prefetch, canonical/hreflang/sitemap and the language switches. Landing content followed in `3ff5423` and later commits. The branded 404 already links to the timeline routes; remaining landing-return links and 404 verification are tracked in [ticket 02](02-branded-404.md).

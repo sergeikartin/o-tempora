@@ -1,5 +1,5 @@
 Type: task
-Status: ready-for-agent
+Status: resolved
 
 Audit findings 6 and 9. Public copy avoids internal domain terms and says "conflicts", not "wars".
 
@@ -22,3 +22,7 @@ Equivalents for all renames. The cryptic slider stops `Профи` and `Дета
 
 - No old label remains in `messages/{en,ru}.json`, components or tests.
 - `CONTEXT.md` (**Occupation Domain**, **Milestone Category Group**, **Detail Level** display names) and `packages/web/docs/design-tokens.md` (renamed palette entries) updated.
+
+## Comments
+
+Tracker reconciliation (2026-11-15): Implemented in `f27c290`: both message catalogs, components, tests, glossary and palette names were updated. The visible Detail Level hint was subsequently moved to accessible text by the accepted Top Bar decision (web ADR 0017); it is no longer an unfinished label task.

@@ -1,4 +1,6 @@
-Status: ready-for-agent (Wars & Conflicts sections below superseded — see [issues/24](issues/24-wars-source-reopen-wikidata-only.md); CDB90 dropped entirely, Wars reverted to Wikidata-only)
+Status: resolved
+
+All child tickets are complete or superseded. The CDB90 plan below was replaced by [ticket 24](issues/24-wars-source-reopen-wikidata-only.md); later curated-source efforts replaced the Conflicts and Milestones corpus scans. This spec preserves the original plan, not pending implementation scope.
 
 # Spec: Alternative data sources for the history-timeline pipeline
 

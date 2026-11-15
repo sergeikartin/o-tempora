@@ -2,7 +2,11 @@
 
 ## Destination
 
-A spec at `.scratch/person-profiles/spec.md` for **Profiles**: LLM-generated, memory-oriented pieces (overview, **Key Moments**, **Deep Facts**, **Connections**) that replace the date-overlap comparison. Visitors remember who an entity was and wander to related entities. The spec lists the build tickets; nothing is built in this map.
+A spec at `.scratch/person-profiles/spec.md` for **Profiles**: LLM-generated, memory-oriented pieces (overview, **Key Moments**, **Deep Facts**, **Connections**) that replace the date-overlap comparison. Visitors remember who an entity was and wander to related entities.
+
+## Implementation status
+
+Types/output, plan/finalize, runtime panel loading, single-entity Selection, Connection history and the landing handoff are implemented (tickets 10, 11, 13–15 and 17 resolved). Thirty raw Profiles exist: 20 People, 4 Conflicts and 6 Milestones, all still `draft`, with no verification reports or shipped Profile files. The remaining work is review automation (08), batch verification/owner review (12) and the docs/ADR sweep (16).
 
 ## Notes
 
@@ -32,12 +36,13 @@ Settled in charting:
 - [Landing Page without a multi-Selection](issues/09-landing-without-multi-selection.md): a Curiosity stays a hand-picked coincidence but is Profile-led; its button opens a `lead` entity with a landing-only `#moment-<n>` / `#fact-<n>` fragment that scrolls to and accents that item; per-mark links and `landing_mark_open` go; Connections never depend on Curiosities.
 - Backlinks: none — a Connection is one-directional and appears only on the Profile that lists it, so Connections can be asymmetric.
 
-## Not yet specified
+## Remaining work
 
 - Rollout beyond Legendary and beyond the 30-entity sample.
 - Russian Profiles: wanted at rollout, deferred for now. Development, prototype and the first batch are English-only; Russian files keep carrying the English Profile whole.
-- The ADR set and living-doc updates that retiring the Selection comparison forces (root ADR for Selection-as-set, web ADRs for URL/Entity Link and chrome).
-- How the review gate is automated (ticket 08); until then only the user promotes `draft` to `reviewed`.
+- [Docs and ADRs](issues/16-docs-and-adrs.md): unblocked. Selection-as-one-entity and runtime-fetch ADRs exist; landing fragments, Connection history and the living-doc sweep still need reconciliation.
+- [Generate and review the 30](issues/12-generate-and-review-the-30.md): drafts are written; verification, owner review/promotion and remaining acceptance evidence are pending.
+- [Automate the review gate](issues/08-automate-review-gate.md): the decision remains open; until then only the user promotes `draft` to `reviewed`.
 
 ## Out of scope
 

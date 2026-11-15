@@ -1,17 +1,12 @@
 Type: task
 Status: ready-for-agent
 
-Audit finding 8: `/anything-else` serves the stock "Page not found · GitHub Pages" page, the most recognisable pet-project marker.
+The branded bilingual 404 is implemented (`a6ed816`): `packages/web/public/404.html`, preview-server fallback and deployment docs. It links to `/timeline/` and `/ru/timeline/` without loading timeline JS or datasets.
 
-## Do
+## Remaining
 
-- One `404.html` in the parchment style, bilingual (EN and RU on the same page), with links to `/` and `/ru/` and, once ticket 05 lands, to the timeline. No timeline JS, no datasets.
-- Emitted by the build so GitHub Pages serves it for unknown paths; must not break the existing `/` and `/ru/` entries or the prerender plugins.
-- Plain-language copy, no domain jargon ("Page not found", a one-line way back).
+- [ ] Add the originally requested return links to the Landing Page at `/` and `/ru/` alongside the existing timeline links.
+- [ ] Verify an unknown path on the production-equivalent preview serves this page without breaking the four page entries or prerender plugins.
+- [ ] Record axe and Russian-length checks at 390 and 1440 px; no result for these acceptance checks is recorded in this ticket.
 
-## Acceptance
-
-- An unknown path on the preview build returns the branded page.
-- Passes axe at 390 and 1440; RU string lengths checked.
-
-Docs: `docs/deployment.md` (404 behaviour).
+Docs: `docs/deployment.md` if 404 behaviour changes.

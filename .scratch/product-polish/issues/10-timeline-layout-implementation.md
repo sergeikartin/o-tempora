@@ -1,5 +1,5 @@
 Type: task
-Status: needs-info
+Status: superseded
 Blocked by: 09
 
 Implement the layout chosen in ticket 09. Scope to be sharpened from its `## Answer`; the constraints below hold whichever layout wins.
@@ -15,3 +15,7 @@ Implement the layout chosen in ticket 09. Scope to be sharpened from its `## Ans
 
 ADR: `packages/web/docs/adr/` — the new layout, superseding the sidebar-era decisions (mark them `superseded`).
 Docs: `packages/web/docs/design-tokens.md`, `packages/web/docs/timeline-rendering.md`, `docs/product-scope.md`, `CONTEXT.md` (sidebar references in **Locale**, **Occupation Domain**, **Milestone Category Group**, **Detail Level**, **Conflict Category**), `packages/web/docs/adr/0008-mobile-layout-…` check.
+
+## Comments
+
+Tracker reconciliation (2026-11-15): Replaced by the later [Top Bar and Filters Panel ticket](../../overlap-and-navigation/issues/02-top-bar-and-filters-panel.md), resolved in `a5047ca`, and web ADR 0017. It settles the full-width canvas, filter popover/bottom sheet and Help placement. The phone [Scrubber](../../overlap-and-navigation/issues/03-phone-scrubber.md) is also resolved. The later layout uses pinch zoom on touch devices rather than the original always-visible phone +/- requirement; do not revive that requirement or the prototype decision. Remaining visual and accessibility review stays in tickets 07 and 12.

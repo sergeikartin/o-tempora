@@ -13,3 +13,7 @@ What the original landing spec asked for that the Curiosity-based landing page (
 ## Docs
 
 `docs/product-scope.md` (landing description).
+
+## Comments
+
+Tracker reconciliation (2026-11-15): Still open: `curiosities.test.ts` imports all four Detail Levels and compares dates; it does not enforce Mainstream availability. RU-at-360px and owner copy review have no completion record here. The Profile-led handoff in `d6c9960` supersedes the original first-mark CTA; validate the current lead and retained figure marks rather than restoring per-mark links.
