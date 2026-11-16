@@ -6,7 +6,7 @@ A spec at `.scratch/person-profiles/spec.md` for **Profiles**: LLM-generated, me
 
 ## Implementation status
 
-Types/output, plan/finalize, runtime panel loading, single-entity Selection, Connection history and the landing handoff are implemented (tickets 10, 11, 13–15 and 17 resolved). Thirty raw Profiles exist: 20 People, 4 Conflicts and 6 Milestones, all still `draft`, with no verification reports or shipped Profile files. Review automation (08) is implemented. The remaining work is live batch verification/audit (12) and the docs/ADR sweep (16).
+Types/output, plan/finalize, runtime panel loading, single-entity Selection, Connection history and the landing handoff are implemented (tickets 10, 11, 13–15 and 17 resolved). Thirty raw Profiles exist: 20 People, 4 Conflicts and 6 Milestones. Cleopatra and Gregorian calendar are automatically approved and published in both locales (Russian carries English); the other 28 remain `draft`. Review automation (08) is implemented. The remaining work is live batch verification/audit (12) and the docs/ADR sweep (16).
 
 ## Notes
 

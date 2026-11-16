@@ -1,0 +1,90 @@
+{
+  "overview": "By the 1500s the Julian calendar, in use since Julius Caesar, ran about 11 minutes a year too long, and the spring equinox had drifted roughly ten days away from the date the Church used to work out Easter. In 1582 Pope Gregory XIII fixed it: he deleted ten days from the calendar and changed the leap-year rule so that most century years are no longer leap years. Several Catholic states adopted it in 1582, while other countries followed over the next several centuries, and it is now the civil calendar of most of the world.",
+  "keyMoments": [
+    {
+      "date": "24 February 1582",
+      "title": "A papal bull rewrites time",
+      "text": "Pope **Gregory XIII** issued the bull **Inter gravissimas**, putting into force a reform worked out by a papal commission. Its core plan came from the Calabrian physician **Aloysius Lilius**, and the Jesuit mathematician **Christopher Clavius** refined it and later wrote its long defence. The new rule kept a leap day every four years but **skipped it in century years not divisible by 400**, so 1600 and 2000 stay leap years while 1700, 1800 and 1900 do not. Lilius did not live to see the reform; his brother **Antonio** presented his proposal to the Church.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar#Gregorian_reform"
+    },
+    {
+      "date": "October 1582",
+      "title": "Ten days vanish",
+      "text": "In **Spain, Portugal, the Papal States and Poland–Lithuania**, people went to bed on **Thursday 4 October 1582** and woke up on **Friday 15 October**. The days of the week ran on unbroken; only the dates jumped. The jump pulled the spring equinox back to around 21 March, the equinox date the reformers associated with the **Council of Nicaea** and sought to restore for calculating Easter.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar"
+    },
+    {
+      "date": "September 1752",
+      "title": "Britain finally switches",
+      "text": "**Great Britain** and its American colonies adopted the Gregorian calendar in 1752, 170 years after the initial reform, under the **Calendar (New Style) Act 1750**. By then the gap had grown to **eleven days**, so **Wednesday 2 September 1752** was followed by **Thursday 14 September**. The act also moved the start of the legal year in England and its colonies from 25 March to 1 January; Scotland already began its year on 1 January.",
+      "sourceUrl": "https://en.wikisource.org/wiki/Calendar_(New_Style)_Act_1750"
+    },
+    {
+      "date": "February 1918",
+      "title": "Russia jumps thirteen days",
+      "text": "Imperial Russia kept the Julian calendar, which the **Russian Orthodox Church** also used, so by the 20th century the country was **thirteen days** behind most of Europe. Soon after taking power, the **Bolshevik** government decreed the switch: **31 January 1918** was followed by **14 February 1918**. The change left a lasting oddity. The **October Revolution** happened on 25 October by the old calendar, which is 7 November by the new one, so the Soviet Union celebrated its October anniversary every November.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar#Adoption_in_Eastern_Europe"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Sweden tried to change gently. Instead of dropping eleven days at once, it planned in 1700 to skip every leap day for forty years and slide into the Gregorian calendar a little at a time. It skipped 1700's leap day, then kept the ones in 1704 and 1708, so the country was now on a calendar that matched nobody's. In 1712 Sweden gave up and returned to the Julian calendar by adding an extra day to February, which produced a real, officially dated **30 February 1712**. Sweden finally made the full switch in 1753.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Swedish_calendar"
+    },
+    {
+      "text": "**Shakespeare** and **Cervantes** are often linked with 23 April 1616, but the dates conceal two differences. Cervantes died on **22 April** and was buried on **23 April** in Spain’s Gregorian calendar. Shakespeare’s monument records his death as **23 April** in England’s Julian calendar, equivalent to **3 May Gregorian**—eleven days after Cervantes. England and Spain were using calendars ten days apart.",
+      "isLegend": false,
+      "sourceUrl": "https://www.college-de-france.fr/en/agenda/lecture/1616-cervantes-and-shakespeare-encounters"
+    },
+    {
+      "text": "A story about English crowds demanding their lost calendar days outlived the reform itself. In his study of the calendar controversy, historian **Robert Poole** quotes an **1820 account** that claimed people had clamoured for the return of the days and connected the story with a picture by **William Hogarth**. The later retelling is evidence that the story circulated; it does not by itself establish that calendar riots happened in 1752.",
+      "isLegend": true,
+      "sourceUrl": "https://research.cumbria.ac.uk/en/publications/give-us-our-eleven-days-calendar-reform-in-eighteenth-century-eng/"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "gregory-xiii",
+      "reason": "Promulgated the reform in the bull Inter gravissimas in February 1582, and the calendar bears his name.",
+      "name": "Gregory XIII",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "julian-calendar",
+      "reason": "The calendar it replaced, whose year ran about 11 minutes too long and caused the drift the reform corrected.",
+      "name": "Julian calendar",
+      "lane": "milestones",
+      "detailLevel": 2
+    },
+    {
+      "slug": "julius-caesar",
+      "reason": "Caesar’s Julian calendar, which took effect in 45 BC, was the system the Gregorian reform corrected.",
+      "name": "Julius Caesar",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "first-council-of-nicaea",
+      "reason": "The reformers aimed to restore the equinox date they associated with Nicaea for calculating Easter.",
+      "name": "First Council of Nicaea",
+      "lane": "milestones",
+      "detailLevel": 3
+    },
+    {
+      "slug": "council-of-trent",
+      "reason": "Left calendar and liturgical reform to the pope, opening the way for Gregory XIII's commission.",
+      "name": "Council of Trent",
+      "lane": "milestones",
+      "detailLevel": 3
+    },
+    {
+      "slug": "october-revolution",
+      "reason": "Took place on 7 November by the Gregorian calendar, which the Bolshevik government then adopted in 1918.",
+      "name": "October Revolution",
+      "lane": "conflicts",
+      "detailLevel": 2
+    }
+  ]
+}

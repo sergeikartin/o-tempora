@@ -406,7 +406,8 @@
       "year": 1582
     },
     "slug": "gregorian-calendar",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "Q7813",

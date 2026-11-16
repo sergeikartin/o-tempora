@@ -2,44 +2,43 @@
   "subject": "Gregorian calendar",
   "type": "milestone",
   "wikipedia_url": "https://en.wikipedia.org/wiki/Gregorian_calendar",
-  "overview": "By the 1500s the Julian calendar, in use since Julius Caesar, ran about 11 minutes a year too long, and the spring equinox had drifted roughly ten days away from the date the Church used to work out Easter. In 1582 Pope Gregory XIII fixed it: he deleted ten days from the calendar and changed the leap-year rule so that most century years are no longer leap years. Catholic countries switched almost at once, while Protestant and Orthodox countries held out for decades or even centuries, and it is now the civil calendar of most of the world.",
+  "overview": "By the 1500s the Julian calendar, in use since Julius Caesar, ran about 11 minutes a year too long, and the spring equinox had drifted roughly ten days away from the date the Church used to work out Easter. In 1582 Pope Gregory XIII fixed it: he deleted ten days from the calendar and changed the leap-year rule so that most century years are no longer leap years. Several Catholic states adopted it in 1582, while other countries followed over the next several centuries, and it is now the civil calendar of most of the world.",
   "key_moments": [
     {
       "date": "24 February 1582",
       "title": "A papal bull rewrites time",
-      "text": "Pope **Gregory XIII** issued the bull **Inter gravissimas**, putting into force a reform worked out by a papal commission. Its core plan came from the Calabrian physician **Aloysius Lilius**, and the Jesuit mathematician **Christopher Clavius** refined it and later wrote its long defence. The new rule kept a leap day every four years but **skipped it in century years not divisible by 400**, so 1600 and 2000 stay leap years while 1700, 1800 and 1900 do not. Lilius never saw any of it: he had **died in 1576**, and his brother Antonio presented his work to the Church.",
+      "text": "Pope **Gregory XIII** issued the bull **Inter gravissimas**, putting into force a reform worked out by a papal commission. Its core plan came from the Calabrian physician **Aloysius Lilius**, and the Jesuit mathematician **Christopher Clavius** refined it and later wrote its long defence. The new rule kept a leap day every four years but **skipped it in century years not divisible by 400**, so 1600 and 2000 stay leap years while 1700, 1800 and 1900 do not. Lilius did not live to see the reform; his brother **Antonio** presented his proposal to the Church.",
       "claims": [
         "Pope Gregory XIII issued the papal bull Inter gravissimas on 24 February 1582.",
         "The Gregorian reform was based mainly on a proposal by Aloysius Lilius.",
         "Christopher Clavius was a Jesuit mathematician who helped refine and defend the Gregorian calendar.",
         "Under the Gregorian calendar, century years are leap years only if they are divisible by 400.",
-        "Aloysius Lilius died in 1576, before the reform was promulgated."
+        "Antonio Lilius presented his deceased brother Aloysius’s calendar proposal to the Church."
       ],
-      "source": "https://en.wikipedia.org/wiki/Gregorian_calendar#History"
+      "source": "https://en.wikipedia.org/wiki/Gregorian_calendar#Gregorian_reform"
     },
     {
       "date": "October 1582",
       "title": "Ten days vanish",
-      "text": "In **Spain, Portugal, the Papal States and Poland–Lithuania**, people went to bed on **Thursday 4 October 1582** and woke up on **Friday 15 October**. The days of the week ran on unbroken; only the dates jumped. The jump pulled the spring equinox back to around 21 March, the date the Church had used since the **Council of Nicaea** era to calculate Easter. The best-known casualty of the gap was **Teresa of Ávila**, who died on the night of 4 October and was buried the next day, which the calendar now called 15 October.",
+      "text": "In **Spain, Portugal, the Papal States and Poland–Lithuania**, people went to bed on **Thursday 4 October 1582** and woke up on **Friday 15 October**. The days of the week ran on unbroken; only the dates jumped. The jump pulled the spring equinox back to around 21 March, the equinox date the reformers associated with the **Council of Nicaea** and sought to restore for calculating Easter.",
       "claims": [
         "In the first countries to adopt the Gregorian calendar, Thursday 4 October 1582 was followed by Friday 15 October 1582.",
         "Spain, Portugal, the Papal States and Poland–Lithuania adopted the Gregorian calendar in October 1582.",
-        "The Gregorian reform restored the spring equinox to around 21 March for the purpose of calculating Easter.",
-        "Teresa of Ávila died on the night of 4 October 1582 and was buried on the following day, dated 15 October 1582."
+        "The Gregorian reform restored the spring equinox to around 21 March for the purpose of calculating Easter."
       ],
       "source": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar"
     },
     {
       "date": "September 1752",
       "title": "Britain finally switches",
-      "text": "Protestant **Great Britain** and its American colonies resisted a 'popish' calendar for 170 years before the **Calendar (New Style) Act 1750** brought them in line. By then the gap had grown to **eleven days**, so **Wednesday 2 September 1752** was followed by **Thursday 14 September**. The act also moved the start of the legal year from 25 March to 1 January. That is why **George Washington**, born on 11 February 1731 by the old reckoning, has his birthday celebrated on **22 February 1732**.",
+      "text": "**Great Britain** and its American colonies adopted the Gregorian calendar in 1752, 170 years after the initial reform, under the **Calendar (New Style) Act 1750**. By then the gap had grown to **eleven days**, so **Wednesday 2 September 1752** was followed by **Thursday 14 September**. The act also moved the start of the legal year in England and its colonies from 25 March to 1 January; Scotland already began its year on 1 January.",
       "claims": [
         "Great Britain and its colonies adopted the Gregorian calendar under the Calendar (New Style) Act 1750.",
         "In Great Britain, Wednesday 2 September 1752 was followed by Thursday 14 September 1752.",
         "The Calendar (New Style) Act 1750 moved the start of the legal year in England from 25 March to 1 January.",
-        "George Washington was born on 11 February 1731 Old Style, which corresponds to 22 February 1732 New Style."
+        "Scotland had already moved the beginning of its legal year to 1 January before 1752."
       ],
-      "source": "https://en.wikipedia.org/wiki/Calendar_(New_Style)_Act_1750"
+      "source": "https://en.wikisource.org/wiki/Calendar_(New_Style)_Act_1750"
     },
     {
       "date": "February 1918",
@@ -56,7 +55,7 @@
   ],
   "deep_facts": [
     {
-      "text": "Sweden tried to change gently. Instead of dropping eleven days at once, it planned in 1700 to skip every leap day for forty years and slide into the Gregorian calendar a little at a time. It skipped 1700's leap day, then forgot or failed to skip the ones in 1704 and 1708, so the country was now on a calendar that matched nobody's. In 1712 Sweden gave up and returned to the Julian calendar by adding an extra day to February, which produced a real, officially dated **30 February 1712**. Sweden finally made the full switch in 1753.",
+      "text": "Sweden tried to change gently. Instead of dropping eleven days at once, it planned in 1700 to skip every leap day for forty years and slide into the Gregorian calendar a little at a time. It skipped 1700's leap day, then kept the ones in 1704 and 1708, so the country was now on a calendar that matched nobody's. In 1712 Sweden gave up and returned to the Julian calendar by adding an extra day to February, which produced a real, officially dated **30 February 1712**. Sweden finally made the full switch in 1753.",
       "type": "unique_detail",
       "is_legend": false,
       "confidence": "high",
@@ -69,29 +68,26 @@
       "source": "https://en.wikipedia.org/wiki/Swedish_calendar"
     },
     {
-      "text": "**Shakespeare** and **Cervantes** are often said to have died on the same day, 23 April 1616, and UNESCO's World Book Day falls on that date in their honour. But England still used the Julian calendar and Spain had already gone Gregorian. Both deaths carry the date 23 April, but on calendars ten days apart, so Cervantes actually died about ten days before Shakespeare.",
+      "text": "**Shakespeare** and **Cervantes** are often linked with 23 April 1616, but the dates conceal two differences. Cervantes died on **22 April** and was buried on **23 April** in Spain’s Gregorian calendar. Shakespeare’s monument records his death as **23 April** in England’s Julian calendar, equivalent to **3 May Gregorian**—eleven days after Cervantes. England and Spain were using calendars ten days apart.",
       "type": "hidden_story",
       "is_legend": false,
       "confidence": "high",
       "claims": [
-        "William Shakespeare's death is recorded as 23 April 1616 in the Julian calendar used in England.",
-        "Miguel de Cervantes's death is dated 23 April 1616 in the Gregorian calendar used in Spain.",
-        "In 1616 the Julian and Gregorian calendars were ten days apart.",
-        "World Book Day is held on 23 April partly in honour of Shakespeare and Cervantes."
+        "Cervantes died on 22 April 1616 and was buried on 23 April.",
+        "Shakespeare’s monument records his death as 23 April 1616 Julian, equivalent to 3 May Gregorian.",
+        "England and Spain used calendars ten days apart in 1616; the recorded deaths were eleven days apart."
       ],
-      "source": "https://en.wikipedia.org/wiki/Old_Style_and_New_Style_dates"
+      "source": "https://www.college-de-france.fr/en/agenda/lecture/1616-cervantes-and-shakespeare-encounters"
     },
     {
-      "text": "A popular story says that crowds in 1752 England rioted over the switch, shouting **'Give us our eleven days!'** in the belief that their lives had been cut short. The image survives mainly through **William Hogarth's** 1755 painting *An Election Entertainment*, where a captured election banner bears that slogan; there the slogan was a jab at the government that passed the reform. Historians have found little contemporary evidence that any such riots took place.",
+      "text": "A story about English crowds demanding their lost calendar days outlived the reform itself. In his study of the calendar controversy, historian **Robert Poole** quotes an **1820 account** that claimed people had clamoured for the return of the days and connected the story with a picture by **William Hogarth**. The later retelling is evidence that the story circulated; it does not by itself establish that calendar riots happened in 1752.",
       "type": "hidden_story",
       "is_legend": true,
       "confidence": "medium",
       "claims": [
-        "A story exists that people in England rioted in 1752 demanding 'Give us our eleven days'.",
-        "William Hogarth's painting An Election Entertainment shows a banner with the slogan 'Give us our Eleven Days'.",
-        "Historians have found little contemporary evidence for calendar riots in England in 1752."
+        "Robert Poole’s study quotes an 1820 retelling of English crowds demanding the days removed by calendar reform, connecting it with a picture by William Hogarth."
       ],
-      "source": "https://en.wikipedia.org/wiki/Calendar_(New_Style)_Act_1750"
+      "source": "https://research.cumbria.ac.uk/en/publications/give-us-our-eleven-days-calendar-reform-in-eighteenth-century-eng/"
     }
   ],
   "connections": [
@@ -112,14 +108,14 @@
     {
       "name": "Julius Caesar",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Julius_Caesar",
-      "connection": "Introduced the Julian calendar in 46 BC, the system the Gregorian reform corrected.",
+      "connection": "Caesar’s Julian calendar, which took effect in 45 BC, was the system the Gregorian reform corrected.",
       "importance": "medium",
       "qid": "Q1048"
     },
     {
       "name": "First Council of Nicaea",
       "wikipedia_url": "https://en.wikipedia.org/wiki/First_Council_of_Nicaea",
-      "connection": "Its rules on dating Easter around the spring equinox were what the reform set out to restore.",
+      "connection": "The reformers aimed to restore the equinox date they associated with Nicaea for calculating Easter.",
       "importance": "medium",
       "qid": "Q133331"
     },
@@ -136,13 +132,6 @@
       "connection": "Took place on 7 November by the Gregorian calendar, which the Bolshevik government then adopted in 1918.",
       "importance": "medium",
       "qid": "Q42976"
-    },
-    {
-      "name": "Teresa of Ávila",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Teresa_of_%C3%81vila",
-      "connection": "Died on the night of 4 October 1582 and was buried on the following day, which the new calendar dated 15 October.",
-      "importance": "medium",
-      "qid": "Q174880"
     }
   ],
   "meta": {
@@ -166,8 +155,14 @@
       "connections_unresolved": 0
     },
     "review": {
-      "status": "draft",
-      "reviewed_at": null
+      "status": "reviewed",
+      "reviewed_at": "2026-11-16T17:11:06.340Z",
+      "approval": {
+        "policy_version": "2",
+        "profile_hash": "e64f813cdc9875a6bf3c052cdd7d925281a5be714642c954b901bc8207fe0ccb",
+        "report_hash": "5c6833edd06e54d729c18ee7c4533694d9789f9c212c210a7a57cb0a1e28fe74",
+        "method": "automatic"
+      }
     }
   }
 }
