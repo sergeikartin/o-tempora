@@ -140,7 +140,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kleopatra-VII.-Altes-Museum-Berlin1.jpg",
     "description": "Клеопа́тра VII Филопа́тор — последняя царица эллинистического Египта из македонской династии Птолемеев (Лагидов).",
     "slug": "cleopatra",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "19379",

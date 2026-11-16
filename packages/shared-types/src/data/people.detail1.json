@@ -140,7 +140,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kleopatra-VII.-Altes-Museum-Berlin1.jpg",
     "description": "Cleopatra VII Thea Philopator was Queen of the Ptolemaic Kingdom of Egypt from 51 to 30 BC, and the last active Hellenistic pharaoh. A member of the Ptolemaic dynasty, she was a descendant of its founder Ptolemy I Soter, a Macedonian Greek general and companion of Alexander the Great. Her first language was Koine Greek, and she is the only Ptolemaic ruler known to have learned the Egyptian language, among several others. After her death, Egypt became a province of the Roman Empire, marking the end of the Hellenistic period in the Mediterranean, which had begun during the reign of Alexander.",
     "slug": "cleopatra",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "19379",

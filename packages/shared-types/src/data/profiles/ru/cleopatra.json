@@ -1,0 +1,104 @@
+{
+  "overview": "Cleopatra VII ruled Egypt at a time when Roman armies and politicians increasingly decided the fate of the Mediterranean. Through alliances with Julius Caesar and Mark Antony, she tried to preserve her kingdom, but her defeat and death in 30 BC brought Egypt under Roman rule.",
+  "keyMoments": [
+    {
+      "date": "51 BC",
+      "title": "A throne shared with a brother",
+      "text": "When her father **Ptolemy XII** died, **Cleopatra** inherited the Egyptian throne alongside her younger brother **Ptolemy XIII**. Their joint reign became a struggle for power: the queen who had inherited a kingdom was eventually driven out of it.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
+    },
+    {
+      "date": "48–47 BC",
+      "title": "Caesar restores her rule",
+      "text": "**Julius Caesar** arrived in Egypt during Cleopatra’s struggle with her brother and backed her claim to power. Fighting in and around Alexandria ended with **Ptolemy XIII’s defeat and death**, and Cleopatra returned to the throne. Her new fellow ruler was another younger brother, **Ptolemy XIV**.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
+    },
+    {
+      "date": "41–34 BC",
+      "title": "A partnership with Antony",
+      "text": "Cleopatra met **Mark Antony** at Tarsus, beginning a political and personal partnership with a Roman commander. At the **Donations of Alexandria**, Antony publicly assigned territories and royal titles to Cleopatra and their children. He also recognized **Caesarion**, Cleopatra’s son, as Julius Caesar’s son—a challenge to **Octavian**, Caesar’s adopted heir.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
+    },
+    {
+      "date": "31–30 BC",
+      "title": "Defeat ends the kingdom",
+      "text": "The forces of **Octavian** defeated Antony and Cleopatra at the naval **Battle of Actium**. The following year, Octavian invaded Egypt; Antony and Cleopatra both died, and **Egypt became a Roman province**. Cleopatra’s attempt to keep her dynasty in power ended with Rome taking control of the kingdom itself.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Cleopatra belonged to a dynasty whose court language was Greek, yet she could also speak Egyptian. Plutarch describes her moving between languages when speaking with foreign peoples, often without an interpreter. The ruler so often remembered through Roman stories was also someone who could address her Egyptian subjects in their own language.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
+    },
+    {
+      "text": "On an outer wall of the temple of Hathor at Dendera, a relief depicts Cleopatra with her son Caesarion. Cleopatra belonged to the Greek-speaking Ptolemaic dynasty.",
+      "isLegend": false,
+      "sourceUrl": "https://whc.unesco.org/en/tentativelists/1824/"
+    },
+    {
+      "text": "Cleopatra’s daughter Cleopatra Selene II, whose father was Mark Antony, survived the fall of her mother’s kingdom. Selene later married Juba II and became queen of Mauretania in North Africa.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra_Selene_II"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "julius-caesar",
+      "reason": "Supported Cleopatra against Ptolemy XIII and helped restore her rule in Egypt.",
+      "name": "Julius Caesar",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "mark-antony",
+      "reason": "Became Cleopatra’s political ally and partner, sharing defeat at Actium in 31 BC.",
+      "name": "Mark Antony",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "augustus",
+      "reason": "As Octavian, defeated Cleopatra and Antony and annexed Egypt in 30 BC.",
+      "name": "Augustus",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "caesarion",
+      "reason": "Cleopatra’s son became her co-ruler as Ptolemy XV and was killed after Octavian conquered Egypt.",
+      "name": "Caesarion",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "ptolemy-xiii-theos-philopator",
+      "reason": "Cleopatra’s brother and co-ruler fought her for control of Egypt before his defeat in 47 BC.",
+      "name": "Ptolemy XIII Theos Philopator",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "battle-of-actium",
+      "reason": "The naval defeat of Cleopatra and Antony in 31 BC opened the way to Octavian’s conquest of Egypt.",
+      "name": "Battle of Actium",
+      "lane": "conflicts",
+      "detailLevel": 4
+    },
+    {
+      "slug": "ptolemy-xii-auletes",
+      "reason": "Cleopatra’s father left the throne to Cleopatra and Ptolemy XIII in 51 BC.",
+      "name": "Ptolemy XII Auletes",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "cleopatra-selene-ii",
+      "reason": "Cleopatra’s daughter with Antony survived Egypt’s conquest and later ruled Mauretania with Juba II.",
+      "name": "Cleopatra Selene II",
+      "lane": "people",
+      "detailLevel": 4
+    }
+  ]
+}
