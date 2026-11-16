@@ -1,3 +1,4 @@
+import path from 'node:path';
 import { parseQidsFlag } from '../fetch/qid-filter.js';
 import { finalizeProfiles } from './finalize.js';
 import { INCOMING_DIR, RAW_PROFILES_DIR } from './paths.js';
@@ -9,6 +10,7 @@ import {
   isProvider,
   PROVIDERS,
 } from './providers.js';
+import { SessionBridge } from './session.js';
 import { readStoredProfiles } from './store.js';
 import { loadSubjects } from './subjects.js';
 import { createResearcher } from './verification/researcher.js';
@@ -18,11 +20,40 @@ import { type WriteEntry, writeProfiles } from './writer.js';
 
 const USAGE = `Usage: profiles <plan|write|finalize|verify> [flags]
   plan      --qids=Q1,Q2,... [--regenerate-stale]
-  write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>]
+  write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>] [--execution=api|session --session-dir=<absolute directory>]
   finalize  [--run-id=<id>]
-  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-model=<OpenAI id>]`;
+  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-model=<OpenAI id>] [--execution=api|session --session-dir=<absolute directory>]`;
 
 const DEFAULT_CONCURRENCY = 3;
+
+function sessionFromFlags(argv: readonly string[]): SessionBridge | undefined {
+  const execution = flagValue(argv, 'execution') ?? 'api';
+  if (execution !== 'api' && execution !== 'session') {
+    throw new Error('--execution must be api or session');
+  }
+  const directory = flagValue(argv, 'session-dir');
+  if (execution === 'api') {
+    if (directory !== undefined)
+      throw new Error('--session-dir requires --execution=session');
+    return undefined;
+  }
+  if (!directory || !path.isAbsolute(directory))
+    throw new Error(
+      '--execution=session requires --session-dir=<absolute directory>',
+    );
+  if (
+    argv.some((arg) =>
+      ['--model=', '--audit-model=', '--provider='].some((prefix) =>
+        arg.startsWith(prefix),
+      ),
+    )
+  ) {
+    throw new Error(
+      'Session agents are selected by the conversation; omit provider/model flags',
+    );
+  }
+  return new SessionBridge({ directory, log: console.log });
+}
 
 function flagValue(argv: readonly string[], name: string): string | undefined {
   const prefix = `--${name}=`;
@@ -54,6 +85,7 @@ async function plan(argv: readonly string[]): Promise<void> {
 }
 
 async function write(argv: readonly string[]): Promise<void> {
+  const session = sessionFromFlags(argv);
   const provider = flagValue(argv, 'provider') ?? 'openai';
   if (!isProvider(provider)) {
     throw new Error(`--provider must be one of ${PROVIDERS.join(', ')}`);
@@ -71,14 +103,14 @@ async function write(argv: readonly string[]): Promise<void> {
     (entry): entry is WriteEntry => entry.kind === 'write',
   );
   console.log(
-    `${toWrite.length} to write, ${entries.length - toWrite.length} skipped, with ${provider}/${model}`,
+    `${toWrite.length} to write, ${entries.length - toWrite.length} skipped, with ${session ? 'session agents' : `${provider}/${model}`}`,
   );
   if (toWrite.length === 0) return;
   const result = await writeProfiles({
     entries: toWrite,
     promptMarkdown: await loadPromptMarkdown(),
-    complete: createCompleter(provider, model),
-    provider,
+    complete: session?.complete ?? createCompleter(provider, model),
+    provider: session ? 'session' : provider,
     concurrency,
   });
   for (const file of result.written) console.log(`staged ${file}`);
@@ -127,9 +159,13 @@ async function verify(argv: readonly string[]): Promise<void> {
   const unknown = argv.find(
     (arg) =>
       !['--repair', '--force'].includes(arg) &&
-      !['--qids=', '--model=', '--audit-model='].some((prefix) =>
-        arg.startsWith(prefix),
-      ),
+      ![
+        '--qids=',
+        '--model=',
+        '--audit-model=',
+        '--execution=',
+        '--session-dir=',
+      ].some((prefix) => arg.startsWith(prefix)),
   );
   if (unknown)
     throw new Error(`Unknown verification flag: ${unknown}\n${USAGE}`);
@@ -138,6 +174,7 @@ async function verify(argv: readonly string[]): Promise<void> {
     throw new Error(
       `--qids is required: verification runs per chosen batch\n${USAGE}`,
     );
+  const session = sessionFromFlags(argv);
   const model = flagValue(argv, 'model') ?? DEFAULT_MODEL.openai;
   const auditModel = flagValue(argv, 'audit-model') ?? model;
   const stored = await readStoredProfiles(RAW_PROFILES_DIR);
@@ -157,12 +194,13 @@ async function verify(argv: readonly string[]): Promise<void> {
         filePath: entry.filePath,
         subject,
         research: (...args) => {
-          research ??= createResearcher(model);
+          research ??= session?.research ?? createResearcher(model);
           return research(...args);
         },
-        complete: (prompt) => {
-          complete ??= createCompleter('openai', auditModel);
-          return complete(prompt);
+        complete: (prompt, role) => {
+          complete ??=
+            session?.complete ?? createCompleter('openai', auditModel);
+          return complete(prompt, role);
         },
         resolve: resolveArticleQids,
         repair: argv.includes('--repair'),

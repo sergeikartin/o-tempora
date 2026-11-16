@@ -19,10 +19,13 @@ export interface Completion {
   text: string;
   // The model the provider reports having served, recorded in `meta.model`.
   model: string;
-  tokens: { input: number; output: number };
+  tokens: { input: number; output: number } | null;
 }
 
-export type Complete = (prompt: string) => Promise<Completion>;
+export type Complete = (
+  prompt: string,
+  role?: 'write' | 'audit' | 'repair',
+) => Promise<Completion>;
 
 export function isProvider(value: string): value is Provider {
   return (PROVIDERS as readonly string[]).includes(value);

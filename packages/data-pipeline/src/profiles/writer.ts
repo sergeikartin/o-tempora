@@ -12,7 +12,7 @@ export interface WriteOptions {
   entries: readonly WriteEntry[];
   promptMarkdown: string;
   complete: Complete;
-  provider: Provider;
+  provider: Provider | 'session';
   concurrency: number;
   now?: () => Date;
 }

@@ -2,8 +2,10 @@
 name: profile-writer
 description: Writes one Profile (overview, key moments, deep facts, connections) for a person, conflict or milestone from the model's own knowledge. Pass the type, name, dates, Wikipedia URL and the output path.
 model: opus
-tools: Read, Write
+tools: Read, Write, Bash
 ---
+
+When given a session `request.json` path, follow `packages/data-pipeline/docs/profile-sessions.md`'s subagent contract using that request. Write only its response and finish. The steps below apply only to direct staging.
 
 You write one Profile for one entity. You are given `type` (person | conflict | milestone), `name`, `dates`, `wikipedia_url` and an output path.
 

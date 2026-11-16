@@ -2,8 +2,10 @@
 name: profile-verifier
 description: Runs evidence-backed automatic verification for one raw Profile and summarizes unresolved claims. Pass the path of a profile JSON under packages/data-pipeline/data/raw/profiles/.
 model: haiku
-tools: Read, Bash
+tools: Read, Write, Bash, WebSearch
 ---
+
+When given a session `request.json` path, follow `packages/data-pipeline/docs/profile-sessions.md`'s subagent contract for its research, audit or repair role. Write only that request's response and source requests; the running CLI owns verification and approval. The steps below apply only to a raw Profile path.
 
 Verify the one Profile supplied by path. Read `packages/data-pipeline/docs/profile-verification.md` for the policy and report format, then read the Profile's `meta.source.wikidata_qid`.
 

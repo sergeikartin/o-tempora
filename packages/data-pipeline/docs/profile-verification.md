@@ -1,6 +1,6 @@
 # Profile verification
 
-Run `npm run profiles --workspace packages/data-pipeline -- verify --qids=Q935,Q635 --repair`. Verification requires `OPENAI_API_KEY`, uses OpenAI web search, and makes paid model calls. `--model` selects the researcher; `--audit-model` selects the separate audit/repair calls (defaults to the researcher). Omit `--repair` to check and approve without changing prose. `--force` rechecks a current approval. Run one batch at a time.
+Run `npm run profiles --workspace packages/data-pipeline -- verify --qids=Q935,Q635 --repair`. Default API execution requires `OPENAI_API_KEY`, uses OpenAI web search, and makes paid model calls. `--model` selects the researcher; `--audit-model` selects the separate audit/repair calls (defaults to the researcher). Alternatively, `--execution=session --session-dir=<absolute directory>` uses [conversation subagents](profile-sessions.md) for research, audit and repair, with the same fetched-evidence and approval rules. Omit `--repair` to check and approve without changing prose. `--force` rechecks a current approval. Run one batch at a time.
 
 ## Approval policy
 

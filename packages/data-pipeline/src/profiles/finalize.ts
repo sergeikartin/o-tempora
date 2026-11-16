@@ -13,7 +13,7 @@ const SCHEMA_VERSION = 3;
 
 interface WriterRun {
   model: string;
-  tokens: { input: number; output: number };
+  tokens: { input: number; output: number } | null;
 }
 
 // The `writer` block `profiles write` stages beside the Profile. A file from a
@@ -23,6 +23,9 @@ function parseWriterRun(root: unknown): WriterRun | undefined {
   const writer = asRecord(root, 'staged file').writer;
   if (writer === undefined) return undefined;
   const run = asRecord(writer, 'writer');
+  if (run.tokens === null) {
+    return { model: asString(run.model, 'writer.model'), tokens: null };
+  }
   const tokens = asRecord(run.tokens, 'writer.tokens');
   if (typeof tokens.input !== 'number' || typeof tokens.output !== 'number') {
     throw new Error('writer.tokens: expected input and output counts');

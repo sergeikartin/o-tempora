@@ -17,6 +17,8 @@ Humans audit a varied sample of approvals and resolve essential factual or frami
 
 Writing and verification run offline, outside `build-data`. All Profile commands below run from the repo root through `npm run profiles --workspace packages/data-pipeline -- <command>`.
 
+`write` and `verify` default to provider API calls. Add `--execution=session --session-dir=<absolute directory>` to have the active conversation dispatch subagents for every model task, without provider API keys. See the [session workflow and subagent contract](profile-sessions.md).
+
 | Command | Behavior |
 |---|---|
 | `plan --qids=Q1,Q2` | Prints writer inputs and staging paths for the chosen batch. |

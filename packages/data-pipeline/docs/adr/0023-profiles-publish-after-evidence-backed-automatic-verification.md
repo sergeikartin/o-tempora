@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0024-profiles-can-use-conversation-subagents.md
 supersedes: 0022-profile-writer-is-an-agent-or-an-api-call.md
 ---
 
