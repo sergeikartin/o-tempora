@@ -8,7 +8,7 @@
 
 ## Data Pipeline
 
-- Prefer hand-rolled parsers for narrow, well-understood formats (`src/fetch/csv.ts`); add a real dependency only when the format is genuinely non-trivial (e.g. `seek-bzip` for bzip2), and record it in `CLAUDE.md`'s Stack table.
+- Prefer hand-rolled parsers for narrow, well-understood formats (`src/fetch/csv.ts`); add a real dependency only when the format is genuinely non-trivial (e.g. `seek-bzip` for bzip2), and record it in `AGENTS.md`'s Stack table.
 
 ## File Organization
 

@@ -241,7 +241,7 @@ async function runExtractPass(
 // run, per language pass. Omitted, all lanes' entries are paced together in one
 // sequential run per language, not three concurrent ones. That pace is a global
 // ceiling only if lane-scoped fetches aren't also run concurrently in separate
-// processes (packages/data-pipeline/CLAUDE.md, docs/adr/0012-lane-scoped-fetch.md).
+// processes (packages/data-pipeline/AGENTS.md, docs/adr/0012-lane-scoped-fetch.md).
 // The English and Russian passes run sequentially for the same reason.
 export async function fetchWikipediaExtracts(
   lane?: Lane,

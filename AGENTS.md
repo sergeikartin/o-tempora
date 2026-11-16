@@ -16,7 +16,7 @@ Three-package monorepo, data flowing one direction only: `data-pipeline` fetches
 | `packages/shared-types` | The published dataset (JSON) plus the TypeScript types/constants both other packages read |
 | `packages/web` | React/D3 frontend; reads `shared-types`, renders the timeline, no live fetching |
 
-Each has its own `AGENTS.md` (and `packages/{web,data-pipeline}/docs/adr/`) for package-scoped detail.
+Each has its own `AGENTS.md` (and `packages/{web,data-pipeline}/docs/adr/`) for package-scoped detail. Package `CLAUDE.md` files import their sibling `AGENTS.md` for Claude Code; edit `AGENTS.md` as the source of truth.
 
 ## Documentation Map
 

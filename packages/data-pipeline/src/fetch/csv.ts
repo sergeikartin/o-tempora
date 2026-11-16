@@ -1,5 +1,5 @@
 // Minimal RFC4180 row parser — hand-rolled rather than adding a dependency
-// (see CLAUDE.md's "flag new dependencies" rule) since the actual format
+// (see AGENTS.md's "flag new dependencies" rule) since the actual format
 // needed is narrow: fields may be unquoted (numbers/booleans) or
 // double-quoted with "" as an escaped quote, and a quoted field may itself
 // contain literal commas (verified against real Pantheon rows, e.g.

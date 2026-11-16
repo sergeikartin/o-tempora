@@ -23,7 +23,7 @@ One shared glossary, package-scoped decision logs:
     └── shared-types/                   (no package-scoped ADRs yet)
 ```
 
-`CONTEXT.md` (domain glossary + decisions) is distinct from each package's `CLAUDE.md` (agent operating instructions) — they coexist.
+`CONTEXT.md` (domain glossary + decisions) is distinct from each package's `AGENTS.md` (agent operating instructions) — they coexist.
 
 ## Use the glossary's vocabulary
 
