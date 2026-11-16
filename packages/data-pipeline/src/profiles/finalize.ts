@@ -5,6 +5,7 @@ import { slugify } from '../output/slugs.js';
 import { parseModelProfile } from './model-profile.js';
 import { readStoredProfiles } from './store.js';
 import { type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
+import { parseTokenUsage, type TokenUsage } from './usage.js';
 import type { ResolveArticleQids } from './wikipedia-qids.js';
 
 // The JSON shape `meta` takes (prompts/profile.md, "Meta"). `temperature`
@@ -13,7 +14,8 @@ const SCHEMA_VERSION = 3;
 
 interface WriterRun {
   model: string;
-  tokens: { input: number; output: number } | null;
+  reasoningEffort: string | null;
+  tokens: TokenUsage | null;
 }
 
 // The `writer` block `profiles write` stages beside the Profile. A file from a
@@ -23,16 +25,13 @@ function parseWriterRun(root: unknown): WriterRun | undefined {
   const writer = asRecord(root, 'staged file').writer;
   if (writer === undefined) return undefined;
   const run = asRecord(writer, 'writer');
-  if (run.tokens === null) {
-    return { model: asString(run.model, 'writer.model'), tokens: null };
-  }
-  const tokens = asRecord(run.tokens, 'writer.tokens');
-  if (typeof tokens.input !== 'number' || typeof tokens.output !== 'number') {
-    throw new Error('writer.tokens: expected input and output counts');
-  }
   return {
     model: asString(run.model, 'writer.model'),
-    tokens: { input: tokens.input, output: tokens.output },
+    reasoningEffort:
+      run.reasoning_effort == null
+        ? null
+        : asString(run.reasoning_effort, 'writer.reasoning_effort'),
+    tokens: parseTokenUsage(run.tokens),
   };
 }
 
@@ -135,6 +134,7 @@ async function finalizeFile(
       prompt_hash: provenance?.prompt_hash ?? null,
       schema_version: SCHEMA_VERSION,
       model: writer?.model ?? options.model,
+      reasoning_effort: writer?.reasoningEffort ?? null,
       temperature: null,
       run_id: options.runId,
       locale: 'en',

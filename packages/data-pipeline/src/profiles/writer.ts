@@ -59,6 +59,7 @@ async function writeEntry(
     writer: {
       provider: options.provider,
       model: completion.model,
+      reasoning_effort: completion.reasoningEffort ?? null,
       tokens: completion.tokens,
     },
   };

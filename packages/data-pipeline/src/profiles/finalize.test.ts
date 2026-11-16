@@ -307,6 +307,7 @@ test('falls back to the agent model and null tokens without a `writer` block', a
   );
   assert.equal(record.meta.model, 'opus');
   assert.equal(record.meta.tokens, null);
+  assert.equal(record.meta.reasoning_effort, null);
   assert.equal(record.meta.prompt_version, null);
   assert.equal(record.meta.prompt_hash, null);
   assert.equal(record.meta.generated_at, null);

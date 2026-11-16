@@ -67,8 +67,15 @@ async function reply(directory: string, value: unknown) {
 }
 
 test('session completions preserve structured replies without inventing model usage', async (t) => {
-  const { directory, bridge } = await fixture(t);
-  const pending = bridge.complete('Write a Profile');
+  const { directory } = await fixture(t);
+  const messages: string[] = [];
+  const logged = new SessionBridge({
+    directory,
+    pollMs: 5,
+    timeoutMs: 2000,
+    log: (message) => messages.push(message),
+  });
+  const pending = logged.complete('Write a Profile');
   const task = await nextRequest(directory);
   assert.equal(task.request.role, 'write');
   assert.equal(task.request.payload.prompt, 'Write a Profile');
@@ -79,8 +86,31 @@ test('session completions preserve structured replies without inventing model us
   });
   const completion = await pending;
   assert.equal(completion.tokens, null);
+  assert.equal(completion.reasoningEffort, null);
   assert.equal(completion.model, 'session-agent (model unreported)');
   assert.deepEqual(JSON.parse(completion.text), { overview: 'A Profile.' });
+  assert.ok(
+    messages.some((message) =>
+      /model unreported.*runtime metadata/.test(message),
+    ),
+  );
+});
+
+test('session completions preserve the runtime model identifier', async (t) => {
+  const { directory, bridge } = await fixture(t);
+  const pending = bridge.complete('Write a Profile');
+  const task = await nextRequest(directory);
+  await reply(task.directory, {
+    request_hash: task.request.request_hash,
+    model: 'gpt-6.1-sol',
+    reasoning_effort: 'medium',
+    tokens: { input: 122033, output: 4182 },
+    result: { overview: 'A Profile.' },
+  });
+  const completion = await pending;
+  assert.equal(completion.model, 'gpt-6.1-sol');
+  assert.equal(completion.reasoningEffort, 'medium');
+  assert.deepEqual(completion.tokens, { input: 122033, output: 4182 });
 });
 
 test('mismatched replies and abandoned requests fail without calling a provider', async (t) => {
@@ -98,6 +128,27 @@ test('mismatched replies and abandoned requests fail without calling a provider'
   await pending;
   const timeout = new SessionBridge({ directory, timeoutMs: 10, pollMs: 1 });
   await assert.rejects(timeout.complete('Repair', 'repair'), /timed out/);
+});
+
+test('session responses reject invalid token counts', async (t) => {
+  const { directory, bridge } = await fixture(t);
+  const seen = new Set<string>();
+  for (const tokens of [
+    { input: -1, output: 4 },
+    { input: 1, output: 0.5 },
+    { input: '1', output: 4 },
+    { input: 1 },
+  ]) {
+    const pending = assert.rejects(bridge.complete('Write'), /tokens:/);
+    const task = await nextRequest(directory, seen);
+    await reply(task.directory, {
+      request_hash: task.request.request_hash,
+      model: 'session-writer',
+      tokens,
+      result: {},
+    });
+    await pending;
+  }
 });
 
 for (const repair of [false, true])

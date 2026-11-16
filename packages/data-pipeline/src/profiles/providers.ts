@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { FinishReason, GoogleGenAI, ThinkingLevel } from '@google/genai';
 import OpenAI from 'openai';
+import type { TokenUsage } from './usage.js';
 
 export const PROVIDERS = ['openai', 'anthropic', 'gemini'] as const;
 export type Provider = (typeof PROVIDERS)[number];
@@ -19,7 +20,8 @@ export interface Completion {
   text: string;
   // The model the provider reports having served, recorded in `meta.model`.
   model: string;
-  tokens: { input: number; output: number } | null;
+  reasoningEffort?: string | null;
+  tokens: TokenUsage | null;
 }
 
 export type Complete = (
@@ -55,6 +57,7 @@ function openAiCompleter(model: string): Complete {
     return {
       text: choice.message.content,
       model: response.model,
+      reasoningEffort: 'high',
       tokens: {
         input: response.usage?.prompt_tokens ?? 0,
         output: response.usage?.completion_tokens ?? 0,
@@ -83,6 +86,7 @@ function anthropicCompleter(model: string): Complete {
     return {
       text,
       model: message.model,
+      reasoningEffort: 'high',
       tokens: {
         input: message.usage.input_tokens,
         output: message.usage.output_tokens,
@@ -119,6 +123,7 @@ function geminiCompleter(model: string): Complete {
     return {
       text: response.text,
       model: response.modelVersion ?? model,
+      reasoningEffort: 'high',
       tokens: {
         input: usage?.promptTokenCount ?? 0,
         // Thinking tokens are billed as output but counted separately.

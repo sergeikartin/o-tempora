@@ -151,14 +151,15 @@
     "prompt_version": "2.2.0",
     "prompt_hash": "246b7e0afd6f",
     "schema_version": 3,
-    "model": "session-agent (model unreported)",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "medium",
     "temperature": null,
     "run_id": "2026-11-16",
     "locale": "en",
     "source": {
       "wikidata_qid": "Q635"
     },
-    "tokens": null,
+    "tokens": { "input": 122033, "output": 4182 },
     "validation": {
       "schema_valid": true,
       "connections_returned": 9,

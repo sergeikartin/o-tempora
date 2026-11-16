@@ -191,7 +191,8 @@ object to every result after the response comes back.
   "prompt_hash": "first 12 chars of sha256 of the prompt text",
   "schema_version": 3,
   "model": "exact model ID",
-  "temperature": 0.3,
+  "reasoning_effort": "high",
+  "temperature": null,
   "run_id": "batch identifier, e.g. 2026-10-25-batch-01",
   "locale": "en",
   "source": {
@@ -218,11 +219,11 @@ object to every result after the response comes back.
 | `prompt_version` | Human-readable version of the prompt used for writing; null when unknown. Bump it on meaningful prompt changes. |
 | `prompt_hash` | Hash captured from the prompt used for writing, preserved through finalization; null when unknown. Use it to find stale records to regenerate. |
 | `schema_version` | Which JSON shape this record follows, for validators and the frontend. v2: `key_moments`, `deep_facts`, `connections`; no categories. v3: adds `claims` and `source` to key moments and deep facts. |
-| `model`, `temperature` | Compare quality between models and reproduce a result. A subagent exposes neither temperature nor tokens, so those are null for agent-written Profiles. |
+| `model`, `reasoning_effort`, `temperature` | Writer model and reasoning setting when known. Temperature stays null. Session model/effort come from runtime metadata; unavailable fields stay null. |
 | `run_id` | Groups a batch so one bad run can be rolled back or re-run. |
 | `locale` | Language of the generated text, for the Russian version of the site. |
 | `source.wikidata_qid` | The subject's Wikidata ID, resolved from `wikipedia_url` and asserted equal to the dataset entity's own QID. |
-| `tokens` | Cost tracking. |
+| `tokens` | Writer input/output usage when available. Session usage covers the writer agent's task including tool turns, not the full pipeline. Cached input and reasoning output remain within their corresponding totals. |
 | `validation` | Whether the JSON passed the schema, and how many connections matched people and events in the dataset. A low match rate flags a bad run or a data gap. `connections_unresolved` counts URLs that do not resolve. Date and identity verification results live in the separate verification report; see `docs/profile-verification.md`. These generation counts do not grant approval. |
 | `review.status` | `edited` protects hand-fixed prose from regeneration and automatic repair. Publishing also requires `review.approval`, a current policy/content/report receipt issued by `profiles verify`; changing the text invalidates it. See `docs/profile-verification.md`. |
 

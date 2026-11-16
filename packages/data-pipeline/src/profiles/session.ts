@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { Complete, Completion } from './providers.js';
+import { parseTokenUsage } from './usage.js';
 import { asRecord, asString } from './values.js';
 import { hash, parseAssessment, passages } from './verification/policy.js';
 import {
@@ -116,13 +117,21 @@ export class SessionBridge {
           if (value.error !== undefined)
             throw new Error(asString(value.error, 'session error'));
           const result = asRecord(value.result, 'session result');
+          if (value.model === null)
+            this.options.log?.(
+              `session ${role}: model unreported; capture the agent's actual model identifier from runtime metadata (${path.join(directory, 'request.json')})`,
+            );
           const completion = {
             text: JSON.stringify(result),
             model:
               value.model === null
                 ? 'session-agent (model unreported)'
                 : asString(value.model, 'session model'),
-            tokens: null,
+            reasoningEffort:
+              value.reasoning_effort == null
+                ? null
+                : asString(value.reasoning_effort, 'session reasoning effort'),
+            tokens: parseTokenUsage(value.tokens),
           };
           await atomicJson(path.join(directory, 'status.json'), {
             status: 'completed',

@@ -66,7 +66,12 @@ test('stages the validated reply with a writer block, one failure not stopping t
     const text = prompt.includes('Write Bad')
       ? '{"overview": ""}'
       : `\`\`\`json\n${JSON.stringify(profile('Ada'))}\n\`\`\``;
-    return { text, model: 'm-1', tokens: { input: 10, output: 20 } };
+    return {
+      text,
+      model: 'm-1',
+      reasoningEffort: 'high',
+      tokens: { input: 10, output: 20 },
+    };
   };
 
   const result = await writeProfiles({
@@ -92,6 +97,7 @@ test('stages the validated reply with a writer block, one failure not stopping t
   assert.deepEqual(staged.writer, {
     provider: 'openai',
     model: 'm-1',
+    reasoning_effort: 'high',
     tokens: { input: 10, output: 20 },
   });
   assert.deepEqual(staged.generation, {
@@ -115,4 +121,6 @@ test('stages the validated reply with a writer block, one failure not stopping t
   assert.equal(record.meta.prompt_hash, staged.generation.prompt_hash);
   assert.equal(record.meta.prompt_version, staged.generation.prompt_version);
   assert.equal(record.meta.generated_at, staged.generation.generated_at);
+  assert.equal(record.meta.reasoning_effort, 'high');
+  assert.deepEqual(record.meta.tokens, { input: 10, output: 20 });
 });
