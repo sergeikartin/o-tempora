@@ -5,6 +5,7 @@ import path from 'node:path';
 import { test } from 'node:test';
 import { parseRawProfile } from '../output/profiles.js';
 import { type FinalizeOptions, finalizeProfiles } from './finalize.js';
+import { readStoredProfiles } from './store.js';
 import type { ProfileSubject } from './subjects.js';
 
 const SUBJECTS: ProfileSubject[] = [
@@ -101,10 +102,8 @@ async function setup(): Promise<FinalizeOptions> {
     incomingDir,
     profilesDir: root,
     subjects: SUBJECTS,
-    prompt: { version: '2.1.0', hash: 'abc123abc123' },
     model: 'opus',
     runId: 'test-run',
-    now: new Date('2026-10-25T10:00:00Z'),
     resolveArticleQids: async (urls) =>
       new Map(
         urls.flatMap((url) => {
@@ -142,7 +141,7 @@ test('writes a validated draft record with meta and resolved Connections', async
 
   const record = JSON.parse(await readFile(recordPath, 'utf8'));
   assert.deepEqual(record.meta.review, { status: 'draft', reviewed_at: null });
-  assert.equal(record.meta.prompt_hash, 'abc123abc123');
+  assert.equal(record.meta.prompt_hash, null);
   assert.equal(record.meta.source.wikidata_qid, 'Q1');
   assert.deepEqual(record.meta.validation, {
     schema_valid: true,
@@ -273,7 +272,7 @@ test('regenerating replaces a reviewed record in its original file and resets it
   ]);
   const record = JSON.parse(await readFile(recordPath, 'utf8'));
   assert.equal(record.meta.review.status, 'draft');
-  assert.equal(record.meta.prompt_hash, 'abc123abc123');
+  assert.equal(record.meta.prompt_hash, null);
 });
 
 test('records the model and token counts a staged `writer` block reports', async () => {
@@ -308,4 +307,46 @@ test('falls back to the agent model and null tokens without a `writer` block', a
   );
   assert.equal(record.meta.model, 'opus');
   assert.equal(record.meta.tokens, null);
+  assert.equal(record.meta.prompt_version, null);
+  assert.equal(record.meta.prompt_hash, null);
+  assert.equal(record.meta.generated_at, null);
+  assert.equal(
+    (await readStoredProfiles(options.profilesDir)).get('Q1')?.promptHash,
+    null,
+  );
+});
+
+test('finalize preserves staged prompt provenance without reading the current prompt', async () => {
+  const options = await setup();
+  await stage(options, 'Q1', {
+    ...modelProfile(),
+    generation: {
+      prompt_version: '1.0.0',
+      prompt_hash: '111111111111',
+      generated_at: '2026-10-24T10:00:00.000Z',
+    },
+  });
+  const result = await finalizeProfiles(options);
+  const record = JSON.parse(
+    await readFile(result.written[0] as string, 'utf8'),
+  );
+  assert.equal(record.meta.prompt_hash, '111111111111');
+  assert.equal(record.meta.prompt_version, '1.0.0');
+  assert.equal(record.meta.generated_at, '2026-10-24T10:00:00.000Z');
+});
+
+test('invalid staged provenance is rejected and kept for correction', async () => {
+  const options = await setup();
+  await stage(options, 'Q1', {
+    ...modelProfile(),
+    generation: {
+      prompt_version: '1',
+      prompt_hash: 'bad',
+      generated_at: 'yesterday',
+    },
+  });
+  const result = await finalizeProfiles(options);
+  assert.equal(result.written.length, 0);
+  assert.match(result.failed[0]?.error ?? '', /generation/);
+  assert.deepEqual(await readdir(options.incomingDir), ['Q1.json']);
 });

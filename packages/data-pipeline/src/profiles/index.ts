@@ -97,10 +97,8 @@ async function finalize(argv: readonly string[]): Promise<void> {
     incomingDir: INCOMING_DIR,
     profilesDir: RAW_PROFILES_DIR,
     subjects: loadSubjects(),
-    prompt: await loadPrompt(),
     model: await loadWriterModel(),
     runId: flagValue(argv, 'run-id') ?? now.toISOString().slice(0, 10),
-    now,
     resolveArticleQids,
   });
   for (const file of result.written) console.log(`wrote ${file}`);

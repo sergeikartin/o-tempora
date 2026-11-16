@@ -152,6 +152,7 @@ test('verified content ships through Output; changing prose, identity, policy or
         slug: 'newton',
         lane: 'people',
         fameScore: 99,
+        dates: SUBJECT.dates,
       },
     ]).size,
     1,
@@ -188,6 +189,21 @@ test('verified content ships through Output; changing prose, identity, policy or
     },
   });
   assert.equal(skipped.status, 'skipped');
+});
+
+test('Output withholds an approval after dataset dates change until reverification', async (t) => {
+  const { root, options } = await setup(t);
+  await verifyProfile(options);
+  const target = { ...SUBJECT, slug: 'newton', fameScore: 99 };
+  const files = await readRawProfiles(root);
+  assert.equal(shipProfiles(files, [target]).size, 1);
+  const changed = { ...target, dates: '1642–1727' };
+  assert.equal(shipProfiles(files, [changed]).size, 0);
+  assert.equal(
+    (await verifyProfile({ ...options, subject: changed })).status,
+    'approved',
+  );
+  assert.equal(shipProfiles(await readRawProfiles(root), [changed]).size, 1);
 });
 
 test('an edited Profile can earn approval without changing its protected content', async (t) => {

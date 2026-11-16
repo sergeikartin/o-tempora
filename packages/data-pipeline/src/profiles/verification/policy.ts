@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import type { ModelProfile } from '../model-profile.js';
 import { asArray, asRecord, asString } from '../values.js';
 
-export const POLICY_VERSION = '1';
+export const POLICY_VERSION = '2';
 
 export interface Passage {
   path: string;
@@ -295,7 +295,12 @@ export function hasApproval(
     const review = asRecord(meta.review, 'review');
     const approval = asRecord(review.approval, 'approval');
     const report = asRecord(verification, 'report');
+    const subject = asRecord(report.subject, 'report.subject');
+    const source = asRecord(meta.source, 'meta.source');
     if (
+      subject.qid !== source.wikidata_qid ||
+      typeof subject.dates !== 'string' ||
+      subject.dates.length === 0 ||
       !['reviewed', 'edited'].includes(String(review.status)) ||
       approval.policy_version !== POLICY_VERSION ||
       report.policy_version !== POLICY_VERSION ||

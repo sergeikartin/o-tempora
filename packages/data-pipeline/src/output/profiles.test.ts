@@ -27,6 +27,7 @@ const TARGETS: ProfileTarget[] = [
     slug: 'isaac-newton',
     name: 'Isaac Newton',
     lane: 'people',
+    dates: '1643–1727',
     fameScore: 95,
   },
   {
@@ -34,6 +35,7 @@ const TARGETS: ProfileTarget[] = [
     slug: 'gottfried-wilhelm-leibniz',
     name: 'Gottfried Wilhelm Leibniz',
     lane: 'people',
+    dates: '1643–1727',
     fameScore: 85,
   },
   {
@@ -41,6 +43,7 @@ const TARGETS: ProfileTarget[] = [
     slug: 'world-war-ii',
     name: 'World War II',
     lane: 'conflicts',
+    dates: '1939–1945',
     fameScore: 97,
   },
   {
@@ -48,6 +51,7 @@ const TARGETS: ProfileTarget[] = [
     slug: 'obscure-treaty',
     name: 'Obscure Treaty',
     lane: 'conflicts',
+    dates: '1939–1945',
     fameScore: 70,
   },
 ];
@@ -59,6 +63,7 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
     locale: 'en',
     status: 'reviewed',
     approved: true,
+    verifiedDates: '1643–1727',
     overview: 'Newton was an **English** mathematician.',
     keyMoments: [
       {

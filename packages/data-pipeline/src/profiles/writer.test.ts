@@ -3,14 +3,16 @@ import { mkdtemp, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
+import { finalizeProfiles } from './finalize.js';
 import { parseModelProfile } from './model-profile.js';
 import { incomingPath } from './plan.js';
+import { parsePrompt } from './prompt.js';
 import type { Complete } from './providers.js';
 import type { ProfileSubject } from './subjects.js';
 import { extractJson, type WriteEntry, writeProfiles } from './writer.js';
 
 const PROMPT =
-  '## Prompt\n\n```text\nWrite {name} ({type}). Return JSON only.\n```\n';
+  '- **Version:** 1.0.0\n\n## Prompt\n\n```text\nWrite {name} ({type}). Return JSON only.\n```\n';
 
 const subject = (qid: string, name: string): ProfileSubject => ({
   qid,
@@ -73,6 +75,7 @@ test('stages the validated reply with a writer block, one failure not stopping t
     complete,
     provider: 'openai',
     concurrency: 2,
+    now: () => new Date('2026-10-24T10:00:00.000Z'),
   });
 
   assert.deepEqual(result.written, [(ada as WriteEntry).outputPath]);
@@ -91,5 +94,25 @@ test('stages the validated reply with a writer block, one failure not stopping t
     model: 'm-1',
     tokens: { input: 10, output: 20 },
   });
+  assert.deepEqual(staged.generation, {
+    prompt_version: '1.0.0',
+    prompt_hash: parsePrompt(PROMPT).hash,
+    generated_at: '2026-10-24T10:00:00.000Z',
+  });
   parseModelProfile(staged, 'staged');
+  const finalized = await finalizeProfiles({
+    incomingDir: path.dirname((ada as WriteEntry).outputPath),
+    profilesDir: path.join(path.dirname((ada as WriteEntry).outputPath), 'raw'),
+    subjects: [(ada as WriteEntry).subject],
+    model: 'agent-fallback',
+    runId: 'later-finalization',
+    resolveArticleQids: async (urls) => new Map(urls.map((url) => [url, 'Q1'])),
+  });
+  assert.deepEqual(finalized.failed, []);
+  const record = JSON.parse(
+    await readFile(finalized.written[0] as string, 'utf8'),
+  );
+  assert.equal(record.meta.prompt_hash, staged.generation.prompt_hash);
+  assert.equal(record.meta.prompt_version, staged.generation.prompt_version);
+  assert.equal(record.meta.generated_at, staged.generation.generated_at);
 });

@@ -2,6 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from '@o-tempora/shared-types';
+import { formatDates } from '../profiles/subjects.js';
 import {
   transformConflicts,
   transformMilestones,
@@ -154,20 +155,63 @@ async function main(): Promise<void> {
   // same entity set in either locale. A Person is joined by the Wikidata QID
   // of its Pantheon row; Conflicts and Milestones already use QIDs as ids.
   const personQidOf = new Map(peopleRows.map((row) => [row.id, row.wdId]));
+  const datesByQid = new Map([
+    ...peopleRows.flatMap((row) =>
+      row.birthyear === undefined
+        ? []
+        : [
+            [
+              row.wdId,
+              formatDates({
+                startYear: row.birthyear,
+                endYear: row.deathyear,
+                ongoing: row.alive,
+              }),
+            ] as const,
+          ],
+    ),
+    ...conflictRows.flatMap((row) =>
+      row.year === undefined
+        ? []
+        : [
+            [
+              row.id,
+              formatDates({ startYear: row.year, endYear: row.endYear }),
+            ] as const,
+          ],
+    ),
+    ...milestoneRows.flatMap((row) =>
+      row.year === undefined
+        ? []
+        : [
+            [
+              row.id,
+              formatDates({
+                startYear: row.year,
+                endYear: row.endYear,
+                approximate: row.approximateDate,
+              }),
+            ] as const,
+          ],
+    ),
+  ]);
   const profileTargets: ProfileTarget[] = [
     ...people.map((entry) => ({
       ...entry,
       qid: personQidOf.get(entry.id) ?? entry.id,
+      dates: datesByQid.get(personQidOf.get(entry.id) ?? entry.id) ?? '',
       lane: 'people' as const,
     })),
     ...conflicts.map((entry) => ({
       ...entry,
       qid: entry.id,
+      dates: datesByQid.get(entry.id) ?? '',
       lane: 'conflicts' as const,
     })),
     ...milestones.map((entry) => ({
       ...entry,
       qid: entry.id,
+      dates: datesByQid.get(entry.id) ?? '',
       lane: 'milestones' as const,
     })),
   ];

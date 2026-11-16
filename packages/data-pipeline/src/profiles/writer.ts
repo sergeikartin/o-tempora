@@ -2,7 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseModelProfile } from './model-profile.js';
 import type { PlanEntry } from './plan.js';
-import { renderPrompt } from './prompt.js';
+import { parsePrompt, renderPrompt } from './prompt.js';
 import type { Complete, Provider } from './providers.js';
 import { SUBJECT_TYPE } from './subjects.js';
 
@@ -14,6 +14,7 @@ export interface WriteOptions {
   complete: Complete;
   provider: Provider;
   concurrency: number;
+  now?: () => Date;
 }
 
 export interface WriteResult {
@@ -35,6 +36,7 @@ async function writeEntry(
   options: WriteOptions,
 ): Promise<string> {
   const { subject } = entry;
+  const promptInfo = parsePrompt(options.promptMarkdown);
   const prompt = renderPrompt(options.promptMarkdown, {
     type: SUBJECT_TYPE[subject.lane],
     name: subject.name,
@@ -49,6 +51,11 @@ async function writeEntry(
   // and token counts; the agents' files simply lack it.
   const staged = {
     ...(json as object),
+    generation: {
+      prompt_version: promptInfo.version,
+      prompt_hash: promptInfo.hash,
+      generated_at: (options.now?.() ?? new Date()).toISOString(),
+    },
     writer: {
       provider: options.provider,
       model: completion.model,

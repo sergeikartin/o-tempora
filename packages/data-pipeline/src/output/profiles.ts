@@ -26,6 +26,7 @@ export interface RawProfile {
   locale: string;
   status: string;
   approved: boolean;
+  verifiedDates?: string;
   overview: string;
   keyMoments: ProfileKeyMoment[];
   deepFacts: ProfileDeepFact[];
@@ -155,6 +156,13 @@ export function parseRawProfile(
     ...parsed.deepFacts.map((_, i) => `deep_facts.${i}.text`),
     ...parsed.connections.map((_, i) => `connections.${i}.connection`),
   ]);
+  if (parsed.approved) {
+    const subject = asRecord(
+      asRecord(report, 'report').subject,
+      'report.subject',
+    );
+    parsed.verifiedDates = asString(subject.dates, 'report.subject.dates');
+  }
   return parsed;
 }
 
@@ -213,6 +221,7 @@ export interface ProfileTarget {
   name: string;
   lane: ProfileLane;
   fameScore: number;
+  dates: string;
 }
 
 function resolveConnections(
@@ -262,6 +271,7 @@ export function shipProfiles(
       throw new Error(
         `${raw.fileName}: ${raw.qid} is not an entity in the dataset`,
       );
+    if (raw.verifiedDates !== subject.dates) continue;
     if (shipped.has(subject.slug))
       throw new Error(`${raw.fileName}: a second Profile for ${raw.qid}`);
 

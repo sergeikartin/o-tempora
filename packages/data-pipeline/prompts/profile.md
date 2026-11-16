@@ -214,9 +214,9 @@ object to every result after the response comes back.
 
 | Field | Purpose |
 |---|---|
-| `generated_at` | When the result was produced. |
-| `prompt_version` | Human-readable version; bump it on meaningful prompt changes. |
-| `prompt_hash` | Changes automatically on any prompt edit, even if the version wasn't bumped. Use it to find stale records to regenerate. |
+| `generated_at` | When the writer produced the result, preserved from staged generation metadata; null when unknown. |
+| `prompt_version` | Human-readable version of the prompt used for writing; null when unknown. Bump it on meaningful prompt changes. |
+| `prompt_hash` | Hash captured from the prompt used for writing, preserved through finalization; null when unknown. Use it to find stale records to regenerate. |
 | `schema_version` | Which JSON shape this record follows, for validators and the frontend. v2: `key_moments`, `deep_facts`, `connections`; no categories. v3: adds `claims` and `source` to key moments and deep facts. |
 | `model`, `temperature` | Compare quality between models and reproduce a result. A subagent exposes neither temperature nor tokens, so those are null for agent-written Profiles. |
 | `run_id` | Groups a batch so one bad run can be rolled back or re-run. |

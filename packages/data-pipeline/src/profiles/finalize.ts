@@ -3,7 +3,6 @@ import path from 'node:path';
 import { asRecord, asString } from '../output/profiles.js';
 import { slugify } from '../output/slugs.js';
 import { parseModelProfile } from './model-profile.js';
-import type { PromptInfo } from './prompt.js';
 import { readStoredProfiles } from './store.js';
 import { type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
 import type { ResolveArticleQids } from './wikipedia-qids.js';
@@ -40,10 +39,8 @@ export interface FinalizeOptions {
   // Every entity in the dataset: the subject a file is checked against, and
   // the set a Connection has to land in.
   subjects: readonly ProfileSubject[];
-  prompt: PromptInfo;
   model: string;
   runId: string;
-  now: Date;
   resolveArticleQids: ResolveArticleQids;
 }
 
@@ -76,6 +73,27 @@ async function finalizeFile(
   const staged: unknown = JSON.parse(await readFile(stagingPath, 'utf8'));
   const profile = parseModelProfile(staged, fileName);
   const writer = parseWriterRun(staged);
+  const generation = asRecord(staged, fileName).generation;
+  let provenance:
+    | { prompt_version: string; prompt_hash: string; generated_at: string }
+    | undefined;
+  if (generation !== undefined) {
+    const fields = asRecord(generation, 'generation');
+    provenance = {
+      prompt_version: asString(
+        fields.prompt_version,
+        'generation.prompt_version',
+      ),
+      prompt_hash: asString(fields.prompt_hash, 'generation.prompt_hash'),
+      generated_at: asString(fields.generated_at, 'generation.generated_at'),
+    };
+    if (
+      !/^[a-f0-9]{12}$/.test(provenance.prompt_hash) ||
+      !Number.isFinite(Date.parse(provenance.generated_at))
+    ) {
+      throw new Error('generation: invalid prompt hash or timestamp');
+    }
+  }
   if (profile.type !== SUBJECT_TYPE[subject.lane]) {
     throw new Error(
       `type is "${profile.type}", expected "${SUBJECT_TYPE[subject.lane]}"`,
@@ -109,9 +127,9 @@ async function finalizeFile(
       ({ lane: _lane, ...connection }) => connection,
     ),
     meta: {
-      generated_at: options.now.toISOString(),
-      prompt_version: options.prompt.version,
-      prompt_hash: options.prompt.hash,
+      generated_at: provenance?.generated_at ?? null,
+      prompt_version: provenance?.prompt_version ?? null,
+      prompt_hash: provenance?.prompt_hash ?? null,
       schema_version: SCHEMA_VERSION,
       model: writer?.model ?? options.model,
       temperature: null,
