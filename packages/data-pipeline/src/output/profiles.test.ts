@@ -445,10 +445,12 @@ test('readRawProfiles returns nothing when no Profiles exist yet', async () => {
   await rm(root, { recursive: true, force: true });
 });
 
-test('writeProfiles writes the English Profile to both locales and clears the previous run', async () => {
+test('writeProfiles clears old files and does not copy English into Russian', async () => {
   const root = await mkdtemp(path.join(tmpdir(), 'profiles-test-'));
   await mkdir(path.join(root, 'profiles', 'en'), { recursive: true });
   await writeFile(path.join(root, 'profiles', 'en', 'stale.json'), '{}');
+  await mkdir(path.join(root, 'profiles', 'ru'), { recursive: true });
+  await writeFile(path.join(root, 'profiles', 'ru', 'isaac-newton.json'), '{}');
 
   const profiles = shipProfiles([rawProfile()], TARGETS);
   await writeProfiles(root, profiles);
@@ -456,18 +458,11 @@ test('writeProfiles writes the English Profile to both locales and clears the pr
   assert.deepEqual(await readdir(path.join(root, 'profiles', 'en')), [
     'isaac-newton.json',
   ]);
-  assert.deepEqual(await readdir(path.join(root, 'profiles', 'ru')), [
-    'isaac-newton.json',
-  ]);
+  assert.deepEqual(await readdir(path.join(root, 'profiles', 'ru')), []);
   const en = await readFile(
     path.join(root, 'profiles', 'en', 'isaac-newton.json'),
     'utf8',
   );
-  const ru = await readFile(
-    path.join(root, 'profiles', 'ru', 'isaac-newton.json'),
-    'utf8',
-  );
-  assert.equal(en, ru);
   assert.deepEqual(JSON.parse(en), profiles.get('isaac-newton'));
 
   await rm(root, { recursive: true, force: true });

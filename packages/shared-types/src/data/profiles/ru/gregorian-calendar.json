@@ -1,44 +1,44 @@
 {
-  "overview": "By the 1500s the Julian calendar, in use since Julius Caesar, ran about 11 minutes a year too long, and the spring equinox had drifted roughly ten days away from the date the Church used to work out Easter. In 1582 Pope Gregory XIII fixed it: he deleted ten days from the calendar and changed the leap-year rule so that most century years are no longer leap years. Several Catholic states adopted it in 1582, while other countries followed over the next several centuries, and it is now the civil calendar of most of the world.",
+  "overview": "К 1500-м годам юлианский календарь, действовавший со времён Юлия Цезаря, давал ежегодную погрешность примерно в 11 лишних минут, а весеннее равноденствие сместилось примерно на десять дней относительно даты, которую церковь использовала для расчёта Пасхи. В 1582 году папа Григорий XIII исправил положение: исключил из календаря десять дней и изменил правило високосных лет, так что большинство годов, завершающих столетия, перестали быть високосными. Несколько католических государств приняли новый календарь в 1582 году, а другие страны переходили на него в течение следующих столетий. Сегодня он служит гражданским календарём в большей части мира.",
   "keyMoments": [
     {
-      "date": "24 February 1582",
-      "title": "A papal bull rewrites time",
-      "text": "Pope **Gregory XIII** issued the bull **Inter gravissimas**, putting into force a reform worked out by a papal commission. Its core plan came from the Calabrian physician **Aloysius Lilius**, and the Jesuit mathematician **Christopher Clavius** refined it and later wrote its long defence. The new rule kept a leap day every four years but **skipped it in century years not divisible by 400**, so 1600 and 2000 stay leap years while 1700, 1800 and 1900 do not. Lilius did not live to see the reform; his brother **Antonio** presented his proposal to the Church.",
+      "date": "24 февраля 1582",
+      "title": "Папская булла переписывает время",
+      "text": "Папа **Григорий XIII** издал буллу **Inter gravissimas**, вводившую реформу, разработанную папской комиссией. Основу её плана предложил калабрийский врач **Алоизий Лилий**, а математик-иезуит **Христофор Клавий** доработал её и позднее написал пространное сочинение в её защиту. Новое правило сохраняло дополнительный день каждые четыре года, но **отменяло его в годах, кратных ста, но не кратных 400**: поэтому 1600 и 2000 годы остаются високосными, а 1700, 1800 и 1900 — нет. Лилий не дожил до реформы; его предложение представил церкви брат **Антонио**.",
       "sourceUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar#Gregorian_reform"
     },
     {
-      "date": "October 1582",
-      "title": "Ten days vanish",
-      "text": "In **Spain, Portugal, the Papal States and Poland–Lithuania**, people went to bed on **Thursday 4 October 1582** and woke up on **Friday 15 October**. The days of the week ran on unbroken; only the dates jumped. The jump pulled the spring equinox back to around 21 March, the equinox date the reformers associated with the **Council of Nicaea** and sought to restore for calculating Easter.",
+      "date": "Октябрь 1582",
+      "title": "Десять дней исчезают",
+      "text": "В **Испании, Португалии, Папской области и Речи Посполитой** люди легли спать в **четверг, 4 октября 1582 года**, а проснулись в **пятницу, 15 октября**. Чередование дней недели не прерывалось — перескочили только даты. Этот сдвиг вернул весеннее равноденствие примерно к 21 марта — дате, которую реформаторы связывали с **Никейским собором** и стремились восстановить для расчёта Пасхи.",
       "sourceUrl": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar"
     },
     {
-      "date": "September 1752",
-      "title": "Britain finally switches",
-      "text": "**Great Britain** and its American colonies adopted the Gregorian calendar in 1752, 170 years after the initial reform, under the **Calendar (New Style) Act 1750**. By then the gap had grown to **eleven days**, so **Wednesday 2 September 1752** was followed by **Thursday 14 September**. The act also moved the start of the legal year in England and its colonies from 25 March to 1 January; Scotland already began its year on 1 January.",
+      "date": "Сентябрь 1752",
+      "title": "Британия наконец переходит на новый календарь",
+      "text": "**Великобритания** и её американские колонии приняли григорианский календарь в 1752 году, через 170 лет после первоначальной реформы, на основании **Закона о календаре (новом стиле) 1750 года**. К тому времени разница выросла до **одиннадцати дней**, поэтому за **средой, 2 сентября 1752 года**, последовал **четверг, 14 сентября**. Закон также перенёс официальное начало года в Англии и её колониях с 25 марта на 1 января; в Шотландии год уже начинался 1 января.",
       "sourceUrl": "https://en.wikisource.org/wiki/Calendar_(New_Style)_Act_1750"
     },
     {
-      "date": "February 1918",
-      "title": "Russia jumps thirteen days",
-      "text": "Imperial Russia kept the Julian calendar, which the **Russian Orthodox Church** also used, so by the 20th century the country was **thirteen days** behind most of Europe. Soon after taking power, the **Bolshevik** government decreed the switch: **31 January 1918** was followed by **14 February 1918**. The change left a lasting oddity. The **October Revolution** happened on 25 October by the old calendar, which is 7 November by the new one, so the Soviet Union celebrated its October anniversary every November.",
+      "date": "Февраль 1918",
+      "title": "Россия перескакивает на тринадцать дней вперёд",
+      "text": "Российская империя сохраняла юлианский календарь, которым пользовалась и **Русская православная церковь**, поэтому к 20-му веку страна отставала от большей части Европы на **тринадцать дней**. Вскоре после прихода к власти **большевистское** правительство издало декрет о переходе: за **31 января 1918 года** последовало **14 февраля 1918 года**. Перемена оставила надолго запомнившуюся странность. **Октябрьская революция** произошла 25 октября по старому календарю — 7 ноября по новому, поэтому в Советском Союзе её октябрьскую годовщину каждый год отмечали в ноябре.",
       "sourceUrl": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar#Adoption_in_Eastern_Europe"
     }
   ],
   "deepFacts": [
     {
-      "text": "Sweden tried to change gently. Instead of dropping eleven days at once, it planned in 1700 to skip every leap day for forty years and slide into the Gregorian calendar a little at a time. It skipped 1700's leap day, then kept the ones in 1704 and 1708, so the country was now on a calendar that matched nobody's. In 1712 Sweden gave up and returned to the Julian calendar by adding an extra day to February, which produced a real, officially dated **30 February 1712**. Sweden finally made the full switch in 1753.",
+      "text": "Швеция попыталась перейти на новый календарь постепенно. Вместо того чтобы сразу исключить одиннадцать дней, в 1700 году она решила в течение сорока лет пропускать все високосные дни и понемногу приближаться к григорианскому календарю. Високосный день 1700 года пропустили, но в 1704 и 1708 годах сохранили, так что шведский календарь теперь не совпадал ни с чьим другим. В 1712 году Швеция отказалась от этого плана и вернулась к юлианскому календарю, добавив в феврале ещё один день. Так появилась настоящая, официальная дата — **30 февраля 1712 года**. Окончательно страна перешла на новый календарь в 1753 году.",
       "isLegend": false,
       "sourceUrl": "https://en.wikipedia.org/wiki/Swedish_calendar"
     },
     {
-      "text": "**Shakespeare** and **Cervantes** are often linked with 23 April 1616, but the dates conceal two differences. Cervantes died on **22 April** and was buried on **23 April** in Spain’s Gregorian calendar. Shakespeare’s monument records his death as **23 April** in England’s Julian calendar, equivalent to **3 May Gregorian**—eleven days after Cervantes. England and Spain were using calendars ten days apart.",
+      "text": "**Шекспира** и **Сервантеса** часто связывают с датой 23 апреля 1616 года, но за ней скрываются два различия. Сервантес умер **22 апреля**, а похоронен был **23 апреля** по действовавшему в Испании григорианскому календарю. На памятнике Шекспиру датой его смерти указано **23 апреля** по английскому юлианскому календарю — **3 мая по григорианскому**, на одиннадцать дней позже смерти Сервантеса. Англия и Испания пользовались календарями с разницей в десять дней.",
       "isLegend": false,
       "sourceUrl": "https://www.college-de-france.fr/en/agenda/lecture/1616-cervantes-and-shakespeare-encounters"
     },
     {
-      "text": "A story about English crowds demanding their lost calendar days outlived the reform itself. In his study of the calendar controversy, historian **Robert Poole** quotes an **1820 account** that claimed people had clamoured for the return of the days and connected the story with a picture by **William Hogarth**. The later retelling is evidence that the story circulated; it does not by itself establish that calendar riots happened in 1752.",
+      "text": "Реформа осталась позади, а история об английских толпах, требовавших вернуть потерянные календарные дни, продолжала жить. В исследовании споров о календаре историк **Роберт Пул** цитирует **описание 1820 года**, в котором утверждалось, что люди шумно требовали вернуть им дни; рассказ связывался с картиной **Уильяма Хогарта**. Этот позднейший пересказ свидетельствует о распространении истории, но сам по себе не доказывает, что в 1752 году происходили календарные бунты.",
       "isLegend": true,
       "sourceUrl": "https://research.cumbria.ac.uk/en/publications/give-us-our-eleven-days-calendar-reform-in-eighteenth-century-eng/"
     }
@@ -46,43 +46,43 @@
   "connections": [
     {
       "slug": "gregory-xiii",
-      "reason": "Promulgated the reform in the bull Inter gravissimas in February 1582, and the calendar bears his name.",
-      "name": "Gregory XIII",
+      "reason": "Обнародовал реформу в булле Inter gravissimas в феврале 1582 года; календарь носит его имя.",
+      "name": "Григорий XIII",
       "lane": "people",
       "detailLevel": 3
     },
     {
       "slug": "julian-calendar",
-      "reason": "The calendar it replaced, whose year ran about 11 minutes too long and caused the drift the reform corrected.",
-      "name": "Julian calendar",
+      "reason": "Календарь, которому пришёл на смену григорианский: его год был примерно на 11 минут длиннее нужного, что вызывало смещение, исправленное реформой.",
+      "name": "юлианский календарь",
       "lane": "milestones",
       "detailLevel": 2
     },
     {
       "slug": "julius-caesar",
-      "reason": "Caesar’s Julian calendar, which took effect in 45 BC, was the system the Gregorian reform corrected.",
-      "name": "Julius Caesar",
+      "reason": "Юлианский календарь Цезаря, вступивший в силу в 45 году до н. э., был системой, которую исправляла григорианская реформа.",
+      "name": "Гай Юлий Цезарь",
       "lane": "people",
       "detailLevel": 1
     },
     {
       "slug": "first-council-of-nicaea",
-      "reason": "The reformers aimed to restore the equinox date they associated with Nicaea for calculating Easter.",
-      "name": "First Council of Nicaea",
+      "reason": "Реформаторы стремились вернуть для расчёта Пасхи ту дату равноденствия, которую связывали с Никейским собором.",
+      "name": "Первый Никейский собор",
       "lane": "milestones",
       "detailLevel": 3
     },
     {
       "slug": "council-of-trent",
-      "reason": "Left calendar and liturgical reform to the pope, opening the way for Gregory XIII's commission.",
-      "name": "Council of Trent",
+      "reason": "Передал папе решение вопросов календарной и богослужебной реформы, открыв путь для комиссии Григория XIII.",
+      "name": "Тридентский собор",
       "lane": "milestones",
       "detailLevel": 3
     },
     {
       "slug": "october-revolution",
-      "reason": "Took place on 7 November by the Gregorian calendar, which the Bolshevik government then adopted in 1918.",
-      "name": "October Revolution",
+      "reason": "Произошла 7 ноября по григорианскому календарю, который большевистское правительство затем приняло в 1918 году.",
+      "name": "Октябрьская революция",
       "lane": "conflicts",
       "detailLevel": 2
     }

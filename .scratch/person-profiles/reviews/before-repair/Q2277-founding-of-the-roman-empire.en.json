@@ -1,0 +1,183 @@
+{
+  "subject": "Founding of the Roman Empire",
+  "type": "milestone",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Roman_Empire",
+  "overview": "After a century of civil wars, Rome stopped being a republic run by competing generals and became a state run by one man, even though nobody called him a king. Julius Caesar's adopted heir Octavian defeated Mark Antony and Cleopatra, then in 28 and 27 BC staged a careful handover in which he claimed to give power back to the Senate and the Roman people, while keeping the armies and the richest provinces for himself. The Senate gave him the name Augustus, and the regime he built, known as the Principate, lasted for centuries under the emperors who followed him.",
+  "key_moments": [
+    {
+      "date": "31–30 BC",
+      "title": "Actium ends the rivalry",
+      "text": "The last great Roman civil war ended at sea off western Greece, where **Octavian's fleet, commanded by Marcus Agrippa**, defeated **Mark Antony and Cleopatra** at the **Battle of Actium**. Antony and Cleopatra fled to Alexandria, and when Octavian's army reached Egypt the next year, both took their own lives. Octavian was left with no serious rival in the Roman world, and the wealth of Egypt, the last great Hellenistic kingdom, became his to control.",
+      "claims": [
+        "Octavian's forces defeated Mark Antony and Cleopatra at the Battle of Actium in 31 BC.",
+        "Marcus Vipsanius Agrippa commanded Octavian's fleet at the Battle of Actium.",
+        "Mark Antony and Cleopatra died by suicide in Alexandria in 30 BC.",
+        "Egypt was annexed by Rome after the deaths of Mark Antony and Cleopatra."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Actium"
+    },
+    {
+      "date": "28 BC",
+      "title": "A census and a clean slate",
+      "text": "Serving as consul alongside his closest ally **Agrippa**, Octavian began dressing his rule in republican clothing. The two men carried out a **census of Roman citizens** and completed the traditional purification ceremony that went with it, and Octavian was named **princeps senatus**, the first member of the Senate. He also cancelled the illegal acts of the triumvirate years. By his own later account, this was the first such ceremony in **forty-one years**.",
+      "claims": [
+        "Octavian and Agrippa held the consulship together in 28 BC.",
+        "Octavian and Agrippa conducted a census of Roman citizens in 28 BC.",
+        "In the Res Gestae, Augustus states that the census ceremony he held was the first in forty-one years."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Res_Gestae_Divi_Augusti"
+    },
+    {
+      "date": "January 27 BC",
+      "title": "The Republic 'restored'",
+      "text": "In a session of the Senate in **January 27 BC**, Octavian announced that he was giving up his extraordinary powers and returning the state to the **Senate and people of Rome**. The senators, as expected, pressed him to stay on, and handed him control of a group of frontier provinces, including Gaul, Spain and Syria, where most of the legions were stationed, for ten years. A few days later they voted him the new name **Augustus**, meaning roughly \"revered.\" The whole show allowed him to hold more power than any Roman before him while claiming to have saved the Republic.",
+      "claims": [
+        "In January 27 BC Octavian formally returned his powers to the Senate and people of Rome.",
+        "In 27 BC the Senate granted Octavian control of provinces including Gaul, Hispania and Syria for ten years.",
+        "The Senate gave Octavian the name Augustus in January 27 BC.",
+        "Most of the Roman legions were stationed in the provinces assigned to Augustus."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Constitutional_reforms_of_Augustus"
+    },
+    {
+      "date": "23 BC",
+      "title": "Power without the consulship",
+      "text": "After a serious illness and a political crisis, Augustus gave up the **consulship** he had held every year since 31 BC. In its place, the Senate granted him **tribunician power** for life and a **greater command (imperium maius)** that outranked that of other provincial governors. This **Second Settlement** set the pattern for the emperors who came after him: their authority rested on a bundle of republican powers, not on any single office, which freed up the consulship for other ambitious senators.",
+      "claims": [
+        "Augustus resigned the consulship in 23 BC.",
+        "Augustus received tribunician power in 23 BC.",
+        "In 23 BC Augustus received imperium maius, an authority greater than that of other provincial governors.",
+        "Augustus fell seriously ill in 23 BC."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Constitutional_reforms_of_Augustus"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The name that became a title for rulers for centuries almost turned out differently. According to the ancient historians **Suetonius** and **Cassius Dio**, some senators wanted to call Octavian **\"Romulus\"**, after the city's founder, as a fitting name for the man who had refounded Rome. The problem was that Romulus had been a king, and Romulus was also said to have been murdered by the senators. Octavian chose \"Augustus\" instead, a word with religious overtones that had never belonged to anyone before.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "medium",
+      "claims": [
+        "According to Suetonius, some senators proposed that Octavian be named Romulus as a second founder of Rome.",
+        "According to Cassius Dio, Octavian wanted the name Romulus but avoided it because it suggested kingship.",
+        "Octavian was given the name Augustus instead of Romulus."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Augustus"
+    },
+    {
+      "text": "The new regime left a mark on the calendar. In **8 BC** the Senate renamed the month **Sextilis**, which simply meant \"sixth\" in an old calendar that began in March, to **Augustus**, the month we now call August. The month was chosen because several of Augustus's major successes had happened in it, including the capture of Alexandria. It sat right next to July, which had already been renamed after his adoptive father, Julius Caesar.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "The Roman month Sextilis was renamed Augustus in honor of Augustus in 8 BC.",
+        "The name Sextilis came from the Latin word for sixth.",
+        "The month of July was named after Julius Caesar."
+      ],
+      "source": "https://en.wikipedia.org/wiki/August"
+    },
+    {
+      "text": "Augustus liked to measure his reign in building stone. **Suetonius** reports that he boasted of having found Rome a **city of brick** and left it a **city of marble**. Rome's new monuments, such as the Forum of Augustus and the Ara Pacis, the \"Altar of Augustan Peace,\" were part of the message: the man who had ended the civil wars was rebuilding the city itself, temple by temple.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Suetonius reports that Augustus boasted of finding Rome a city of brick and leaving it a city of marble.",
+        "The Ara Pacis was an altar dedicated to the Augustan peace.",
+        "The Forum of Augustus was built during the reign of Augustus."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Augustus"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Augustus",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Augustus",
+      "connection": "Founded the regime himself, receiving the name Augustus from the Senate in January 27 BC.",
+      "importance": "high",
+      "qid": "Q1405"
+    },
+    {
+      "name": "Battle of Actium",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Battle_of_Actium",
+      "connection": "The 31 BC naval victory that left Octavian without a serious rival.",
+      "importance": "high",
+      "qid": "Q160387"
+    },
+    {
+      "name": "Mark Antony",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Mark_Antony",
+      "connection": "Octavian's last rival for control of Rome, defeated at Actium and dead by suicide in 30 BC.",
+      "importance": "high",
+      "qid": "Q51673"
+    },
+    {
+      "name": "Marcus Vipsanius Agrippa",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Marcus_Vipsanius_Agrippa",
+      "connection": "Commanded the fleet at Actium and shared the consulship and census with Octavian in 28 BC.",
+      "importance": "high",
+      "qid": "Q48174"
+    },
+    {
+      "name": "Cleopatra",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Cleopatra",
+      "connection": "Antony's ally and Egypt's last Ptolemaic ruler, whose death in 30 BC let Rome annex Egypt.",
+      "importance": "high",
+      "qid": "Q635"
+    },
+    {
+      "name": "Julius Caesar",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Julius_Caesar",
+      "connection": "Octavian's adoptive father, whose name and loyal soldiers launched Octavian's rise.",
+      "importance": "high",
+      "qid": "Q1048"
+    },
+    {
+      "name": "Roman Republic",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Roman_Republic",
+      "connection": "The system the Principate replaced, while keeping its offices and Senate in name.",
+      "importance": "high",
+      "qid": "Q17167"
+    },
+    {
+      "name": "Assassination of Julius Caesar",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar",
+      "connection": "The 44 BC murder that set off the civil wars ending in Octavian's sole rule.",
+      "importance": "medium",
+      "qid": "Q1025466"
+    },
+    {
+      "name": "Tiberius",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Tiberius",
+      "connection": "Augustus's stepson and successor, whose accession in AD 14 showed the new system would outlive its founder.",
+      "importance": "medium",
+      "qid": "Q1407"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-10-25T13:05:08.317Z",
+    "prompt_version": "2.1.0",
+    "prompt_hash": "49a617acf74e",
+    "schema_version": 3,
+    "model": "opus",
+    "temperature": null,
+    "run_id": "2026-10-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q2277"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 15,
+      "connections_matched_people": 6,
+      "connections_matched_events": 3,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    }
+  }
+}

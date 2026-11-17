@@ -56,7 +56,8 @@
         "month": 1
       },
       "end": {
-        "year": 1726
+        "year": 1727,
+        "month": 3
       }
     },
     "occupationDomain": "science-technology",
@@ -69,7 +70,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GodfreyKneller-IsaacNewton-1689.jpg",
     "description": "Sir Isaac Newton was an English polymath who was a mathematician, physicist, astronomer, alchemist, theologian, author and inventor. He was a key figure in the Scientific Revolution and the Enlightenment that followed. His book Philosophiæ Naturalis Principia Mathematica, first published in 1687, achieved the first great unification in physics and established classical mechanics. Newton also made seminal contributions to optics, and shares credit with the German mathematician Gottfried Wilhelm Leibniz for formulating infinitesimal calculus, although he developed calculus years before Leibniz. Newton contributed to and refined the scientific method, and his work is considered the most influential in bringing forth modern science.",
     "slug": "isaac-newton",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "4848272",

@@ -1,0 +1,72 @@
+# World War II — manual source audit
+
+Reviewed 2026-11-15. Raw record: `packages/data-pipeline/data/raw/profiles/conflicts/Q362-world-war-ii.en.json`; SHA-256: `48f57c60a26348968b68da6809b471a7b2c35f23ef3890fd2ae6357a54a7a8bd`.
+
+**Outcome: needs corrections and further evidence.** This is a manual review, not a CLI verification report or publication approval. The raw Profile remains unchanged at `draft`. “Supported” below covers the specifically described assertions; “partial” preserves the listed gaps rather than treating a whole paragraph as verified. Paths use zero-based indices. Every visible passage was inspected, including all date/title labels and all 15 Connection explanations.
+
+## Corrections
+
+1. **`connections.3.connection` — contradicted: Stalin personally signed the pact with Hitler.** The contemporary US diplomatic telegram identifies Molotov and Ribbentrop as signatories and Stalin as present. Replace with: “Soviet leader whose government concluded the 1939 pact with Nazi Germany, then led the Soviet war against Germany after its invasion in 1941.” [Contemporary telegram][pact], [1941 chronology][europe].
+2. **`key_moments.2.text` — misleading carrier continuity.** The pronoun in “the American aircraft carriers were away from port, and six months later they sank four Japanese carriers” suggests the same carrier group. The readable wartime Enterprise diary identifies Enterprise/Hornet and Yorktown at Midway; the museum account confirms their operations and the Japanese losses. The Navy's December 1941 carrier-location page identifies a different Pacific trio (Enterprise/Lexington/Saratoga), but repeated full-page fetches failed, so that latter comparison is a follow-up evidence gap rather than a fully fetched finding here. Safe replacement: “The American aircraft carriers escaped the attack. Six months later, aircraft from Enterprise and Yorktown fatally damaged four Japanese carriers at Midway.” [Enterprise diary][diary], [museum account][midway]. Preserve the first sentence's existing Pearl Harbor source until its text is fetched; do not present search snippets as gate-ready evidence.
+3. **`connections.10.connection` — disputed causal certainty.** “The US atomic bombings … ended the war” presents an unsettled causal interpretation as a fact. Replace with: “The US atomic bombings in August 1945, followed by Japan's surrender that month and its formal signing on 2 September.” The original Key Moment already includes Soviet entry; preserve that context. The research archive explicitly identifies disagreement over the relative roles of the bombs and Soviet intervention. [Primary-document collection and scholarly introduction][bomb-debate], [surrender instrument][surrender].
+4. **`deep_facts.0.text` — qualify “the starting point for the British work”.** British work was already underway: the FCDO historians describe Dilly Knox's earlier attempt and the Polish disclosure as shortening the British attack. Use “gave British codebreakers a crucial breakthrough” rather than suggesting British work began at that meeting. Specify the **German military** Enigma when retaining the priority claim. The mathematical work and 1939 disclosure have institutional support, but the precise breakthrough date and two independent original accounts for every detail have not been established here. [FCDO history][enigma], [NSA biography][rejewski].
+5. **`key_moments.1.text` — chronology needs separation; priority needs corroboration.** Paulus entered captivity on 31 January; the northern pocket continued until 2 February. Replace the compressed ending with those two events. The “first … ever” claim has one scholarly account here, so it still lacks the policy's second independent original account. The promotion date also warrants care: the consulted Rutgers text dates receipt of the message to the night of 31 January. “Newly promoted to field marshal” avoids claiming a precision not reconciled here. [Rutgers scholarly account][stalingrad].
+
+## Passage coverage
+
+| Passage | Finding and evidence |
+|---|---|
+| `overview` | **Partial.** The European chronology, Holocaust context, and German defeat are supported by [USHMM][europe]; Japan's formal surrender by the [instrument][surrender]. The exact 70–85 million range and deadliest-ever superlative lack policy-level corroboration here. The [museum casualty table][casualties] explicitly warns that estimates vary and supplies a different aggregate, so it cannot verify that precise range. North Africa/Pacific breadth and the complete alliance list need dedicated evidence beyond this review's broad sources. |
+| `key_moments.0.date`, `.title`, `.text` | **Mostly supported; precision gap.** German invasion 1 September, declarations 3 September, and partition are in [USHMM][europe]. The [contemporary telegram][pact] establishes the pact and points to its secret protocol. The exact 17 September invasion and protocol wording should receive the underlying original text; they are not marked fully checked here. “A week after” is loose for a pact dated 23 August; “nine days after” is clearer. |
+| `key_moments.1.date`, `.title`, `.text` | **Partial.** [USHMM][europe] supports invasion on 22 June 1941 and the December Moscow counteroffensive; [Rutgers][stalingrad] covers Stalingrad and the surrender chronology. Separate 31 January from 2 February as above. “Largest land invasion in history” remains uncorroborated, as does the exact priority formulation. The year range is appropriate. |
+| `key_moments.2.date`, `.title`, `.text` | **Partial.** The attack date, naval damage, and 2,403 American deaths have [National Archives evidence][pearl]; [USHMM][europe] covers German/Italian declarations. [State Department history][china] supports full-scale war in China from 1937. [Midway][midway] and the [diary][diary] support the June naval result. Repair the carrier wording above. The [National Archives speech and declaration record][declaration] confirms US entry on 8 December. “Most important targets” is an unattributed assessment. |
+| `key_moments.3.date`, `.title`, `.text` | **Partial.** Hitler's death and German unconditional surrender are in [USHMM][europe]; the [original surrender instrument][surrender] gives 2 September and Tokyo Bay. The [NPS chronology][bomb-dates] establishes the bombing dates; the [reproduced imperial rescript and museum introduction][broadcast] establish the 15 August broadcast. Manhattan Project attribution, Soviet declaration/invasion timing, “most … heard his voice”, and “only nuclear weapons ever used in war” still need further evidence. These are not inferred verified from a familiar historical narrative. The May–September label is compatible with the dataset. |
+| `deep_facts.0.text` | **Partial; revise.** The [NSA biography][rejewski] supports mathematical work from 1932; [FCDO historians][enigma] document July 1939 sharing at Pyry and pre-existing British efforts. Replica-machine details, the “everything” absolute, and independent-original provenance for the priority claim remain open. |
+| `deep_facts.1.text` | **Partial; framing needs care.** Onoda's own recorded [ABC interview][onoda] supports his continuing guerrilla orders, rejecting surrender notices, and returning in 1974 after his commander intervened. Independent contemporary [TIME reporting][onoda-time] supports Taniguchi's bookselling and the in-person order. [NHK documentary description][onoda-nhk] supports the 1944 deployment. The anecdote omits the continuing armed conflict's impact on island residents, which the interview reports. Prefer a brief neutral reference to continuing guerrilla activity over a purely picturesque survival story. Full two-origin corroboration for every anecdotal detail remains incomplete. |
+| `deep_facts.2.text` | **Supported historical core; current wording needs dating.** [Japan's foreign ministry][territory] documents the occupation in August/September 1945, territorial disagreement, 1956 end of the state of war, and absent treaty. It is an interested party and is not neutral evidence for ownership. Current absence of a treaty is also reported in [October 2026 reporting][current-treaty]. Replace “still” and “more than seventy years” with a dated assertion or historical formulation suitable for a static dataset. |
+| `connections.0.connection` — Hitler | **Supported broad relationship.** The Nazi regime's invasion began the European war; [USHMM][europe]. Personal-order detail requires the relevant directive if retained literally. |
+| `connections.1.connection` — Churchill | **Partial, with scope qualification.** The [UK government biography][churchill] establishes 1940 and leadership to European victory; the exact May appointment still needs a dated record. He left office before Japan's formal surrender; “led Britain to victory in Europe” avoids implying he remained PM to the end of the entire war. |
+| `connections.2.connection` — Roosevelt | **Supported.** [State Department history][lend-lease] supports Lend-Lease; the [presidential library biography][fdr] supplies wartime leadership and April 1945 death. |
+| `connections.3.connection` — Stalin | **Contradicted as phrased.** Correct the signatory attribution above; [contemporary telegram][pact]. |
+| `connections.4.connection` — Holocaust | **Supported core.** [USHMM][europe] supports six million murdered European Jews and the war/genocide relationship. “Under cover” is interpretive shorthand; use a direct formulation. |
+| `connections.5.connection` — Poland | **Supported.** Date and European-war boundary: [USHMM][europe]. |
+| `connections.6.connection` — Barbarossa | **Partial.** June 1941 invasion supported by [USHMM][europe]; “largest front” still needs specific comparative evidence. |
+| `connections.7.connection` — Stalingrad | **Supported with nuance.** [Rutgers][stalingrad] supports the February end and the battle's strategic turning-point interpretation; avoid implying the entire surrender happened on one February date. |
+| `connections.8.connection` — Pearl Harbor | **Supported.** Date and US entry relationship: [National Archives][pearl]. |
+| `connections.9.connection` — Normandy | **Supported date; framing qualification.** The [presidential library][fdr] gives 6 June 1944; [USHMM][europe] supports the advance from France. A new front **in northern France** is clearer given earlier fighting in Italy. |
+| `connections.10.connection` — atomic bombings | **Disputed causal assertion.** Use chronology rather than a decisive single cause; [scholarly archive introduction][bomb-debate]. |
+| `connections.11.connection` — Cold War | **Partial.** Postwar rivalry is supported by the [Truman Doctrine history][cold-war], which also identifies disputes beyond Europe. Keep the connection as a broad contribution, not an exhaustive explanation. |
+| `connections.12.connection` — World War I | **Supported broad relationship.** [USHMM's treaty history][versailles] supports exploitation of resentment over the peace settlement. |
+| `connections.13.connection` — Sino-Japanese War | **Partial.** [State Department history][china] supports full-scale war from 1937 and its relation to US entry. The precise “merged after Pearl Harbor” boundary needs an explicit source or more careful formulation. |
+| `connections.14.connection` — Hirohito | **Partial.** The [imperial rescript and museum introduction][broadcast] support the 15 August announcement. His full wartime reign span still needs a dedicated institutional source; the surrender instrument alone does not establish it. |
+
+## Mechanical and evidence limits
+
+The [offline preflight](2026-11-15-preflight.json) found a valid raw schema, permitted markup, matching stored identity/locale, no reversed year labels or historical year zero, and all 15 Connection QIDs in the published dataset. Dataset dates are 1939–1945. URL-to-QID redirects, all passage-source URLs/anchors, and quoted-excerpt matching were not checked live. No claim-level evidence snapshots or hash-bound automatic receipt were produced. Familiar facts without fetched evidence remain explicitly unresolved above.
+
+[pact]: https://history.state.gov/historicaldocuments/frus1939v01/d335
+[europe]: https://encyclopedia.ushmm.org/content/en/article/world-war-ii-in-europe
+[diary]: https://midway1942.com/docs/usn_doc_21.shtml
+[midway]: https://www.nationalww2museum.org/war/topics/battle-of-midway
+[bomb-debate]: https://nsarchive.gwu.edu/briefing-book/nuclear-vault/2025-08-05/atomic-bombings-japan-and-end-world-war-ii-80-years-later
+[surrender]: https://www.archives.gov/milestone-documents/surrender-of-japan
+[enigma]: https://history.blog.gov.uk/2019/07/26/whats-the-context-polish-cryptologists-reveal-they-have-cracked-the-enigma-code-26-july-1939/
+[rejewski]: https://www.nsa.gov/Press-Room/Digital-Media-Center/Biographies/Biography-View-Page/Article/1621548/marian-rejewski/
+[stalingrad]: https://oralhistory.sas.rutgers.edu/projects/facing-stalingrad/facing-stalingrad-interviews/2928-facing-stalingrad-the-battle-of-stalingrad
+[casualties]: https://www.nationalww2museum.org/students-teachers/student-resources/research-starters/research-starters-worldwide-deaths-world-war
+[pearl]: https://www.archives.gov/publications/prologue/2016/winter/pearl-harbor
+[china]: https://history.state.gov/milestones/1937-1945/pearl-harbor
+[onoda]: https://www.abc.net.au/pm/archive/articles/2010/11/12/s3065235.htm
+[onoda-time]: https://content.time.com/time/subscriber/article/0,33009,942829-2,00.html
+[onoda-nhk]: https://www.kpbs.org/news/arts-culture/2018/01/23/lt-onodas-return-untold-story-japanese-war
+[territory]: https://www.mofa.go.jp/region/europe/russia/territory/overview.html
+[current-treaty]: https://apnews.com/article/9af00a424124dcbe398a97d90a7f40d9
+[churchill]: https://www.gov.uk/government/history/past-prime-ministers/winston-churchill
+[lend-lease]: https://history.state.gov/milestones/1937-1945/lend-lease
+[fdr]: https://www.fdrlibrary.org/fdr-biography
+[cold-war]: https://history.state.gov/milestones/1945-1952/truman-doctrine
+[versailles]: https://encyclopedia.ushmm.org/content/en/article/world-war-i-treaties-and-reparations
+
+[declaration]: https://www.archives.gov/milestone-documents/joint-address-to-congress-declaration-of-war-against-japan
+[bomb-dates]: https://www.nps.gov/articles/000/the-atomic-bombings-of-hiroshima-and-nagasaki.htm
+[broadcast]: https://ahf.nuclearmuseum.org/ahf/key-documents/jewel-voice-broadcast/

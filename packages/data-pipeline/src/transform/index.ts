@@ -13,6 +13,7 @@ import {
   parsePantheonCsv,
 } from '../fetch/pantheon-row-shape.js';
 import { validateSparqlResultShape } from '../fetch/validate-sparql-result.js';
+import { correctPersonDates } from './person-date-corrections.js';
 import { rankByFameScore, scoreAndRankByHpi } from './score.js';
 import { tagCuratedConflict, tagCuratedMilestone } from './tag-milestones.js';
 import {
@@ -182,7 +183,9 @@ function loadRawRecord<T>(fileName: string): Record<string, T> {
 // tagline field.
 export function transformPeople(): TaggedPerson[] {
   const csvPath = path.join(RAW_DIR, 'people-pantheon.raw.csv');
-  const rows = parsePantheonCsv(fs.readFileSync(csvPath, 'utf8'));
+  const rows = parsePantheonCsv(fs.readFileSync(csvPath, 'utf8')).map(
+    correctPersonDates,
+  );
   const enrichment = loadPeopleEnrichmentMap();
   const imageAttribution = loadRawRecord<string>(
     'people-image-attribution.raw.json',

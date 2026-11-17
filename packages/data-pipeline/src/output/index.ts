@@ -215,12 +215,19 @@ async function main(): Promise<void> {
       lane: 'milestones' as const,
     })),
   ];
-  const profiles = shipProfiles(
-    await readRawProfiles(RAW_PROFILES_DIR),
-    profileTargets,
+  const russianNames = new Map(
+    [...peopleRu, ...conflictsRu, ...milestonesRu].map((entry) => [
+      entry.slug,
+      entry.name,
+    ]),
   );
-  await writeProfiles(DATA_DIR, profiles);
-  console.log(`profiles: shipped ${profiles.size} (en + ru)`);
+  for (const target of profileTargets)
+    target.nameRu = russianNames.get(target.slug);
+  const rawProfiles = await readRawProfiles(RAW_PROFILES_DIR);
+  const profiles = shipProfiles(rawProfiles, profileTargets);
+  const profilesRu = shipProfiles(rawProfiles, profileTargets, 'ru');
+  await writeProfiles(DATA_DIR, profiles, profilesRu);
+  console.log(`profiles: shipped ${profiles.size} en, ${profilesRu.size} ru`);
 
   const personRowOf = assignPersonRows(people, peopleRu);
   const peopleWithRows = withProfileFlags(
@@ -229,7 +236,7 @@ async function main(): Promise<void> {
   );
   const peopleRuWithRows = withProfileFlags(
     withRows(peopleRu, personRowOf),
-    profiles,
+    profilesRu,
   );
   await writeDetailLevelDataset(
     (level) => `people.detail${level}.json`,
@@ -258,7 +265,7 @@ async function main(): Promise<void> {
   );
   const conflictsRuWithRows = withProfileFlags(
     withRows(conflictsRu, eventsRowOf),
-    profiles,
+    profilesRu,
   );
   const milestonesWithRows = withProfileFlags(
     withRows(milestones, eventsRowOf),
@@ -266,7 +273,7 @@ async function main(): Promise<void> {
   );
   const milestonesRuWithRows = withProfileFlags(
     withRows(milestonesRu, eventsRowOf),
-    profiles,
+    profilesRu,
   );
 
   await writeDetailLevelDataset(

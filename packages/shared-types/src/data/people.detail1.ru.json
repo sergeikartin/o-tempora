@@ -56,7 +56,8 @@
         "month": 1
       },
       "end": {
-        "year": 1726
+        "year": 1727,
+        "month": 3
       }
     },
     "occupationDomain": "science-technology",
@@ -69,7 +70,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GodfreyKneller-IsaacNewton-1689.jpg",
     "description": "Исаа́к Нью́то́н — английский физик, математик, механик и астроном, один из создателей классической физики и математического анализа.",
     "slug": "isaac-newton",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "4848272",

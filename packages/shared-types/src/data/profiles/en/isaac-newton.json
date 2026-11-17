@@ -1,0 +1,111 @@
+{
+  "overview": "Isaac Newton was an English mathematician and physicist, a farmer's son from Lincolnshire who became a Cambridge professor and worked out the laws of motion and universal gravitation. His book the Principia showed that the same force pulling an apple to the ground keeps the Moon in orbit, and he also invented a form of calculus, split white light into colours with prisms and built the first practical reflecting telescope. Later in life he moved to London, where he ran the Royal Mint and presided over the Royal Society.",
+  "keyMoments": [
+    {
+      "date": "1665–1667",
+      "title": "Plague years at Woolsthorpe",
+      "text": "During the plague years, Newton worked at his family home at **Woolsthorpe** in Lincolnshire. During his time there, he developed early ideas on **calculus**, experimented with light and explored gravitation. Decades later, **William Stukeley** recorded Newton’s recollection that watching an apple fall had prompted him to think about gravity. Stukeley preserved one of the accounts behind the famous apple story.",
+      "sourceUrl": "https://royalsociety.org/news/2010/apple-tree-gravity/"
+    },
+    {
+      "date": "1668–1672",
+      "title": "A new telescope and a theory of colour",
+      "text": "Newton built a small **reflecting telescope** that used a mirror instead of a lens, which avoided the coloured fringes that spoiled the images of ordinary refracting telescopes. His telescope attracted attention at the **Royal Society**. He was elected a Fellow in 1672, and that year he published his theory that **white light is a mixture of colours**, shown by splitting sunlight with a prism. The paper drew sharp criticism from **Robert Hooke**, and the disputes made Newton reluctant to publish further work on optics.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Isaac_Newton#Optics"
+    },
+    {
+      "date": "1684–1687",
+      "title": "Halley's question and the Principia",
+      "text": "In 1684 the astronomer **Edmond Halley** visited Newton in Cambridge to discuss planetary motion under an **inverse-square force**. Their discussion helped spur the work that became the **Philosophiæ Naturalis Principia Mathematica**, published in 1687. It set out the **three laws of motion** and **universal gravitation**, giving a mathematical account of motion on Earth and in the heavens. With the **Royal Society** short of funds after publishing a lavish book about fish, **Halley financed publication**.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"
+    },
+    {
+      "date": "1696–1705",
+      "title": "From professor to master of the Mint",
+      "text": "Newton left Cambridge to become **Warden of the Royal Mint** in 1696, during the **Great Recoinage**, and became **Master of the Mint** in 1699, holding the post for the rest of his life. He investigated counterfeiting, gathering evidence and questioning witnesses. In 1705 **Queen Anne** knighted him at Cambridge.",
+      "sourceUrl": "https://www.royalmintmuseum.org.uk/journal/people/isaac-newton/"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Newton left extensive writings on **alchemy** and **biblical prophecy**, much of them unpublished during his lifetime. The **1936 sale** of his private papers brought a large body of this work into new hands. **John Maynard Keynes** acquired many alchemical manuscripts in and after the sale. Reading the papers led Keynes to describe Newton as **the last of the magicians**, challenging the familiar image of Newton as a purely rational scientist.",
+      "isLegend": false,
+      "sourceUrl": "https://newtonproject.ox.ac.uk/view/contexts/CNTX00001"
+    },
+    {
+      "text": "Newton’s notebook describes an experiment in which he put a **bodkin** between his eye and the surrounding bone and pressed on the eyeball. His accompanying drawing records the **coloured circles** he saw. The experiment formed part of his investigation of colour and vision.",
+      "isLegend": false,
+      "sourceUrl": "https://newtonproject.ox.ac.uk/catalogue/record/ALCH00110"
+    },
+    {
+      "text": "In 1717 Newton recommended reducing the official valuation of the gold **guinea**. **George I’s proclamation** set its maximum exchange value at **21 shillings**. The proclamation explained that gold was overvalued relative to silver compared with neighbouring countries, helping drive silver coins out of Britain. Newton’s work on coin values put his calculations at the centre of a practical monetary problem.",
+      "isLegend": false,
+      "sourceUrl": "https://newtonproject.ox.ac.uk/view/texts/normalized/MINT00334"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "gottfried-wilhelm-leibniz",
+      "reason": "Developed calculus independently, sparking a bitter priority dispute in which a Royal Society report of 1712 sided with Newton.",
+      "name": "Gottfried Wilhelm Leibniz",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "edmond-halley",
+      "reason": "Prompted Newton to write the Principia after a 1684 visit and paid for its printing.",
+      "name": "Edmond Halley",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "robert-hooke",
+      "reason": "Rival who attacked Newton's 1672 theory of light and later claimed credit for the inverse-square law.",
+      "name": "Robert Hooke",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "philosophi-naturalis-principia-mathematica",
+      "reason": "Newton's 1687 book setting out the laws of motion and universal gravitation.",
+      "name": "Philosophiæ Naturalis Principia Mathematica",
+      "lane": "milestones",
+      "detailLevel": 4
+    },
+    {
+      "slug": "scientific-revolution",
+      "reason": "Newton’s mathematical account of motion and gravity became a foundation for later mechanics.",
+      "name": "Scientific Revolution",
+      "lane": "milestones",
+      "detailLevel": 4
+    },
+    {
+      "slug": "johannes-kepler",
+      "reason": "Newton linked Kepler’s idealized planetary laws to inverse-square gravitation.",
+      "name": "Johannes Kepler",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "anne-of-great-britain",
+      "reason": "Knighted Newton at Trinity College, Cambridge, in 1705.",
+      "name": "Anne of Great Britain",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "john-maynard-keynes",
+      "reason": "Acquired many of Newton’s alchemical papers in and after the 1936 sale and called him the last of the magicians.",
+      "name": "John Maynard Keynes",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "voltaire",
+      "reason": "Printed an early version of the apple story in 1727.",
+      "name": "Voltaire",
+      "lane": "people",
+      "detailLevel": 2
+    }
+  ]
+}

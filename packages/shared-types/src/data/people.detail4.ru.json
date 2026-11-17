@@ -19176,7 +19176,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Coronation%20portrait%20of%20Peter%20III%20of%20Russia%20-1761.JPG",
     "description": "Пётр III Фёдорович — император Всероссийский в 1762 году, первый представитель Гольштейн-Готторпской династии на российском престоле. С 1739 года — владетельный герцог Гольштейн-Готторпский. Внук Петра I — сын его дочери Анны и Карла Фридриха Гольштейн-Готторпского. Внучатый племянник Карла XII — внук его сестры Гедвиги-Софии. Отец императора-родоначальника Российского императорского дома — Павла I.",
     "slug": "peter-iii-of-russia",
-    "row": 0
+    "row": 50
   },
   {
     "id": "59600",
@@ -26362,7 +26362,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%C3%89lisabeth%20Vig%C3%A9e-Lebrun%20-%20Portrait%20of%20Madame%20Du%20Barry.jpg",
     "description": "Жанна Бекю́ де Кантиньи, по мужу — графиня Дюбарри́ — официальная фаворитка французского короля Людовика XV, являвшаяся, по одной из версий, незаконнорождённой дочерью монаха-францисканца Гомара де Вобернье. Помимо фамилий матери (Бекю) и отца, пользовалась также псевдонимом Ланж.",
     "slug": "madame-du-barry",
-    "row": 74
+    "row": 75
   },
   {
     "id": "313592",
@@ -26527,7 +26527,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/UB%20Maastricht%20-%20Staunton%201798%20-%20plate%20II.jpg",
     "description": "Айсиньгьоро Хунли — пятый император Империи Цин, правивший с 8 октября 1735 года до 1 февраля 1796 года, период правления которого ознаменовал собой эпоху наивысшего расцвета империи. В течение 59 лет правил под девизом «Цяньлун». Четвёртый сын Айсиньгьоро Иньчжэня, правившего под девизом «Юнчжэн». Полководец.",
     "slug": "qianlong-emperor",
-    "row": 63
+    "row": 67
   },
   {
     "id": "23958",
@@ -26827,7 +26827,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Murat2.jpg",
     "description": "Иоахи́м Мюра́т — наполеоновский маршал, великий герцог Берга в 1806—1808 годах, король Неаполитанского королевства в 1808—1815 годах.",
     "slug": "joachim-murat",
-    "row": 86
+    "row": 110
   },
   {
     "id": "90472",
@@ -28240,7 +28240,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Anonyme%20-%20Portrait%20de%20Georges%20Danton%20%281759-1794%29%2C%20orateur%20et%20homme%20politique%20-%20P712%20-%20Mus%C3%A9e%20Carnavalet%20-%202.jpg",
     "description": "Жорж Жак Данто́н — французский революционер, видный политический деятель и оратор, один из отцов-основателей Первой французской республики, сопредседатель клуба кордельеров, министр юстиции времён Французской революции, первый председатель Комитета общественного спасения. Казнён во время революционного террора.",
     "slug": "georges-danton",
-    "row": 75
+    "row": 86
   },
   {
     "id": "95871",
@@ -28816,7 +28816,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jean-Paul%20Marat%20-%20portrait%20peint%20par%20Joseph%20Boze.jpg",
     "description": "Жан-Поль Мара́т — политический деятель эпохи Великой французской революции, врач, радикальный журналист, один из лидеров якобинцев. Известен под прозвищем «Друг народа», в честь газеты, которую он издавал с сентября 1789 года.",
     "slug": "jean-paul-marat",
-    "row": 67
+    "row": 74
   },
   {
     "id": "255195",
@@ -32062,7 +32062,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/William%20Pitt%2C%201st%20Earl%20of%20Chatham%20after%20Richard%20Brompton.jpg",
     "description": "Уильям Питт, 1-й граф Чатам — британский государственный деятель из партии вигов, который в качестве военного министра в годы Семилетней войны внёс неоценимый вклад в становление Британии как мировой колониальной империи и смог значительно прирастить заморские владения британской короны. Закончил карьеру премьер-министром. Его часто называют Уильям Питт Старший, чтобы отличить его от сына Уильяма Питта Младшего, который руководил британским правительством в годы Наполеоновских войн.",
     "slug": "william-pitt-1st-earl-of-chatham",
-    "row": 50
+    "row": 63
   },
   {
     "id": "21641",
@@ -35603,7 +35603,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cavendish%20Henry%20signature.jpg",
     "description": "Ге́нри Ка́вендиш — британский физик и химик, член Лондонского королевского общества (1760), иностранный член Парижской академии наук (1803).",
     "slug": "henry-cavendish",
-    "row": 110
+    "row": 111
   },
   {
     "id": "323107",
@@ -35824,7 +35824,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Konstantin%20Kapidagli%20002.jpg",
     "description": "Сели́м III — 28-й султан Османской империи (1789—1807), сын султана Мустафы III. Пытался модернизировать страну, опираясь на европейские примеры, проводил либеральные реформы, ограничил вольности и привилегии корпуса янычар. Увлекался светским искусством и поэзией. Был свергнут янычарами. Во время бунта, приведшего к свержению Мустафы IV, Селим был убит по приказу султана.",
     "slug": "selim-iii",
-    "row": 119
+    "row": 120
   },
   {
     "id": "38740",
@@ -36300,7 +36300,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lacaille.jpg",
     "description": "Никола́ Луи́ де Лака́йль — аббат, французский астроном.",
     "slug": "nicolas-louis-de-lacaille",
-    "row": 86
+    "row": 91
   },
   {
     "id": "1570",
@@ -39213,7 +39213,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jean-%C3%89tienne%20Liotard%2C%20L%27Archiduchesse%20Marie-Antoinette%20d%27Autriche%2C%20future%20Reine%20de%20France%2C%20%C3%A0%20l%27%C3%A2ge%20de%207%20ans%20%281762%29%20-%2001.jpg",
     "description": "Мария Каролина Австрийская — королева Сицилийского и Неаполитанского королевств, в период революционных и наполеоновских войн оттеснившая от управления супруга, короля Фердинанда IV. Дочь австрийской императрицы Марии Терезии, сестра французской королевы Марии-Антуанетты.",
     "slug": "maria-carolina-of-austria",
-    "row": 111
+    "row": 119
   },
   {
     "id": "23673",
@@ -43798,7 +43798,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Princess%20Charlotte%20of%20Wales%20by%20Dawe%20%281817%29.jpg",
     "description": "Шарло́тта Авгу́ста Уэ́льская — единственный ребёнок Георга, принца Уэльского и его жены Каролины Брауншвейгской. На протяжении всей своей жизни принцесса занимала второе место в линии престолонаследия после отца.",
     "slug": "princess-charlotte-augusta-of-wales",
-    "row": 120
+    "row": 151
   },
   {
     "id": "73964",
@@ -44391,7 +44391,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Christian%20VI%20med%20tjener.jpg",
     "description": "Кристиан VI — король Дании и Норвегии с 12 октября 1730 года. Из Ольденбургской династии.",
     "slug": "christian-vi-of-denmark",
-    "row": 102
+    "row": 97
   },
   {
     "id": "165329",
@@ -44416,7 +44416,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bruckner%20-%20M%C3%BCnchhausen.jpg",
     "description": "Барон (фрайгерр) Карл Фри́дрих Иерони́м фон Мюнхга́узен — немецкий военный и рассказчик, которого прославила книга «Приключения барона Мюнхгаузена» (1786) за авторством Р. Э. Распе. Известен главным образом именно как литературный персонаж. Имя Мюнхгаузена стало нарицательным в качестве обозначения человека, рассказывающего невероятные истории.",
     "slug": "baron-munchausen",
-    "row": 125
+    "row": 129
   },
   {
     "id": "253553",
@@ -45164,7 +45164,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mustafa3.jpg",
     "description": "Мустафа́ III — султан Османской империи, правивший с 1757 года по 1774. Сын султана Ахмеда III.",
     "slug": "mustafa-iii",
-    "row": 107
+    "row": 108
   },
   {
     "id": "80481",
@@ -45468,7 +45468,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Claude%20Henri%20de%20Rouvroy.jpg",
     "description": "Анри́ Сен-Симо́н — французский философ, социолог, известный социальный реформатор, основатель школы утопического социализма. Главные произведения Сен-Симона: «Письма женевского жителя к своим современникам» (1802 г.), «Катехизис индустриалов» (1823 г.), «Новое христианство» (1825 г.).",
     "slug": "claude-henri-de-rouvroy-comte-de-saint-simon",
-    "row": 163
+    "row": 165
   },
   {
     "id": "90692",
@@ -46438,7 +46438,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gustaf%20Lundberg%20-%20Portrait%20of%20Adolf%20Frederick%2C%20King%20of%20Sweden%20-%20WGA13779.jpg",
     "description": "Адольф Фредрик — король Швеции в 1751—1771 годах.",
     "slug": "adolf-fredrik-of-sweden",
-    "row": 106
+    "row": 104
   },
   {
     "id": "182966",
@@ -46886,7 +46886,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20dauphin%20louis%20france%20hi.jpg",
     "description": "Дофин Людовик Фердинанд — старший сын Людовика XV и Марии Лещинской, наследник французского престола. Отец королей Людовика XVI, Людовика XVIII и Карла X.",
     "slug": "louis-dauphin-of-france",
-    "row": 69
+    "row": 0
   },
   {
     "id": "313503",
@@ -47287,7 +47287,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Maria%20Charlotta%20Leszczynska%2C%201703-1768%2C%20prinsessa%20av%20Polen%2C%20drottning%20av%20Frankrike%20-%20Nationalmuseum%20-%2015860FXD%20%281%29.jpg",
     "description": "Мари́я Екатери́на Софи́я Фели́ция Лещи́нская — королева Франции, супруга короля Людовика XV. Дочь бывшего короля польского и великого князя литовского Станислава Лещинского и Екатерины Опалинской.",
     "slug": "marie-leszczynska",
-    "row": 104
+    "row": 102
   },
   {
     "id": "13988",
@@ -47586,7 +47586,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/William%20Blake%20by%20Thomas%20Phillips.jpg",
     "description": "Уильям Блейк — английский поэт, художник и гравёр. Почти непризнанный при жизни, Блейк в настоящее время считается важной фигурой в истории поэзии и изобразительного искусства романтической эпохи. Всю жизнь прожил в Лондоне.",
     "slug": "william-blake",
-    "row": 159
+    "row": 163
   },
   {
     "id": "18010",
@@ -47960,7 +47960,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fran%C3%A7ois%20Hubert%20Drouais%20-%20Portrait%20of%20Buffon.jpg",
     "description": "Жорж-Луи Лекле́рк, граф де Бюффо́н или просто Бюффон; 7 сентября 1707, Монбар, Бургундия — 16 апреля 1788, Париж) — французский натуралист, биолог, математик, естествоиспытатель и писатель XVIII века. Высказал идею о единстве растительного и животного мира. Создатель первого в истории европейской науки подлинно научного и философского труда по зоологии — «Естественной истории», в котором были описаны все известные к тому времени виды млекопитающих и птиц. Выход первых трёх томов данной работы стал важною вехою как в интеллектуальной истории XVIII века, так и в истории книгоиздания.",
     "slug": "georges-louis-leclerc-comte-de-buffon",
-    "row": 120
+    "row": 121
   },
   {
     "id": "573846",
@@ -48109,7 +48109,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Leopold%20Mozart.jpg",
     "description": "Иоганн Георг Леопольд Моцарт — немецкий скрипач, композитор. Отец и учитель В. А. Моцарта, оказал значительное влияние на его творческое формирование.",
     "slug": "leopold-mozart",
-    "row": 124
+    "row": 125
   },
   {
     "id": "74379",
@@ -49567,7 +49567,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Eug%C3%A8ne%20de%20Beauharnais%2C%20vice-roi%20d%27Italie%20%28Stockholm%2C%20Oscar%20II%20Foundation%29.jpg",
     "description": "Принц Эжен де Богарне́ — пасынок Наполеона, вице-король Италии, крупный военачальник, дивизионный генерал, генерал-полковник конных егерей, командир конных егерей Императорской гвардии.",
     "slug": "eugene-de-beauharnais",
-    "row": 174
+    "row": 198
   },
   {
     "id": "23592377",
@@ -50688,7 +50688,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Giuseppe%20Tartini%20%28Tartini%20House%29.jpg",
     "description": "Джузеппе Тартини — итальянский скрипач-виртуоз, композитор, педагог и музыкальный теоретик. Автор более 350 сочинений, преимущественно скрипичных; основатель скрипичной школы, оказавший большое влияние на развитие скрипичного искусства. Считается последним крупным представителем классической итальянской скрипичной школы и в то же время провозвестником романтических тенденций в своём исполнительстве и композиторском творчестве.",
     "slug": "giuseppe-tartini",
-    "row": 98
+    "row": 99
   },
   {
     "id": "59536",
@@ -50938,7 +50938,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Maria%20Gaetana%20Agnesi.jpg",
     "description": "Мари́я Гаэта́на Анье́зи — итальянский математик, философ и филантроп.",
     "slug": "maria-gaetana-agnesi",
-    "row": 121
+    "row": 124
   },
   {
     "id": "220378",
@@ -51204,7 +51204,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Contemporary%20portrait%20of%20Nader%20Shah.%20Artist%20unknown%2C%20created%20in%20ca.%201740%20in%20Iran%20%28cropped%29.jpg",
     "description": "Нади́р-шах Афша́р — шах Персии в 1736—1747 годах, основатель династии Афшаридов, полководец. Регент и великий визирь при последнем сефевидском шахе Аббасе III, наместник ряда восточных областей Ирана в период реставрации Сефевидов. Из ветви кирклу туркоманского племени афшаров.",
     "slug": "nader-shah",
-    "row": 97
+    "row": 86
   },
   {
     "id": "74382",
@@ -51773,7 +51773,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Moritz%20Kellerhoven%2C%20K%C3%B6nig%20Max%20I.%20von%20Bayern.jpg",
     "description": "Максимилиан I Мария Михаэль Иоганн Баптист Франц де Паула Иосиф Каспар Игнатий Непомук Баварский — курфюрст Баварии в 1799—1806 годах под именем Максимилиан IV, король Баварии в 1806—1825 годах под именем Максимилиан I из династии Виттельсбахов.",
     "slug": "maximilian-i-joseph-of-bavaria",
-    "row": 151
+    "row": 159
   },
   {
     "id": "790206",
@@ -52790,7 +52790,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Eli%20Whitney%20by%20Samuel%20Finley%20Breese%20Morse%201822.jpeg",
     "description": "Эли́ (Илай) Уитни — американский изобретатель и промышленник. Изобрёл хлопкоочистительную машину (коттон-джин), одним из первых сконструировал фрезерный станок, заложил основы организации массового производства в машиностроении.",
     "slug": "eli-whitney",
-    "row": 165
+    "row": 174
   },
   {
     "id": "289962",
@@ -53060,7 +53060,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Quesnay%20Portrait.jpg",
     "description": "Франсуа́ Кенэ́ — французский экономист, основоположник школы физиократов. Член Парижской академии наук, Лондонского королевского общества (1752).",
     "slug": "francois-quesnay",
-    "row": 99
+    "row": 107
   },
   {
     "id": "594696",
@@ -55384,7 +55384,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mary%20Wollstonecraft%20by%20John%20Opie%20%28c.%201797%29.jpg",
     "description": "Мэ́ри Уо́лстонкрафт — британская писательница, философ XVIII века.",
     "slug": "mary-wollstonecraft",
-    "row": 129
+    "row": 141
   },
   {
     "id": "1229890",
@@ -55513,7 +55513,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20Stanis%C5%82aw%20I%20Leszczy%C5%84ski.jpg",
     "description": "Стани́слав I Лещи́нский — король польский и великий князь литовский в 1704—1709 и 1733—1734, затем последний герцог Лотарингии в 1737—1766 годах, тесть короля Франции Людовика XV.",
     "slug": "stanis-aw-leszczynski",
-    "row": 91
+    "row": 98
   },
   {
     "id": "562802",
@@ -56147,7 +56147,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/King%20JeongJo%20of%20Joseon.jpg",
     "description": "Чонджо́ — 22-й ван корейского государства Чосон, правивший с 27 апреля 1776 по 18 августа 1800 года. Имя — Сан. Второе имя — Хянун.",
     "slug": "jeongjo-of-joseon",
-    "row": 147
+    "row": 149
   },
   {
     "id": "3421751",
@@ -56317,7 +56317,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Man%20in%20the%20Iron%20Masque%20crop.jpg",
     "description": "Желе́зная Ма́ска, он же Челове́к в желе́зной ма́ске — таинственный узник под номером 64489001 эпохи короля Людовика XIV, арестованный в 1669 или 1670 году и содержавшийся в ряде французских тюрем, в том числе в Бастилии и Пиньероль. На протяжении 34 лет его охранником был один и тот же человек, Бенинь Доверн де Сен-Мар. Узник скончался 19 ноября 1703 года и был похоронен под именем «Marchioly». Его лицо никто не видел, поскольку он носил маску из чёрного бархата. Личность узника до сих пор остаётся загадкой: историки выдвигали разнообразные теории, которые находили своё отражение в книгах и фильмах.",
     "slug": "man-in-the-iron-mask",
-    "row": 109
+    "row": 110
   },
   {
     "id": "63012",
@@ -56939,7 +56939,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Horace%20Walpole.jpg",
     "description": "Хо́рас Уо́лпол, с 1791 года 4-й граф О́рфорд — английский писатель георгианской эпохи, основатель жанра готического романа, библиофил и коллекционер. Один из инициаторов движения «готического возрождения» в Англии.",
     "slug": "horace-walpole",
-    "row": 141
+    "row": 142
   },
   {
     "id": "83688",
@@ -59665,7 +59665,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20painting%20of%20Philippe%20of%20France%2C%20Duke%20of%20Orl%C3%A9ans%20holding%20a%20crown%20of%20a%20child%20of%20France%20%28Pierre%20Mignard%2C%20Mus%C3%A9e%20des%20Beaux-Arts%20de%20Bordeaux%29.jpg",
     "description": "Филипп I, герцог Орлеанский — сын короля Людовика XIII и Анны Австрийской, младший брат короля-солнца Людовика XIV. Родоначальник Орлеанской ветви дома Бурбонов.",
     "slug": "philippe-i-duke-of-orleans",
-    "row": 110
+    "row": 111
   },
   {
     "id": "240829",
@@ -60115,7 +60115,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pierre%20Corneille%202.jpg",
     "description": "Пьер Корне́ль — французский поэт и драматург, отец французской трагедии; член Французской академии. Старший брат драматурга Тома Корнеля.",
     "slug": "pierre-corneille",
-    "row": 98
+    "row": 109
   },
   {
     "id": "155406",
@@ -61611,7 +61611,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Emanuel%20Swedenborg%2C%201688-1772%2C%20%C3%A4mbetsman%20%28Per%20Krafft%20d.%C3%A4.%29%20-%20Nationalmuseum%20-%2015710.tif",
     "description": "Эммануил Сведенборг — шведский учёный-естествоиспытатель, христианский мистик, теософ, изобретатель. Занимался космологией, механикой, математикой, анатомией, физиологией, политикой, экономикой, металлургией, геологией, горным делом и химией. Автор трудов по обработке металлов. Считается родоначальником таких дисциплин, как минералогия и физиология мозга.",
     "slug": "emmanuel-swedenborg",
-    "row": 117
+    "row": 109
   },
   {
     "id": "19337462",
@@ -61712,7 +61712,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bartolomeo%20Cristofori.jpg",
     "description": "Бартоломео Кристо́фори — итальянский мастер-инструменталист, которого принято считать изобретателем фортепиано.",
     "slug": "bartolomeo-cristofori",
-    "row": 108
+    "row": 106
   },
   {
     "id": "175220",
@@ -61928,7 +61928,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Louis%20Duc%20de%20Bourgogne.jpg",
     "description": "Людовик, герцог Бургундский — дофин Франции с 1711 года, сын Людовика Великого Дофина и Марии Анны Баварской, старший внук Людовика XIV.",
     "slug": "louis-dauphin-of-france-duke-of-burgundy",
-    "row": 107
+    "row": 108
   },
   {
     "id": "230698",
@@ -65875,7 +65875,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/FerdinandITwoSicilies.jpg",
     "description": "Фердинанд Неаполитанский — 1-й король Обеих Сицилий под именем Фердинанда I (1816—1825), король Сицилии под именем Фердинанда III (1759—1816) и король Неаполя под именем Фердинанда IV.",
     "slug": "ferdinand-i-of-the-two-sicilies",
-    "row": 198
+    "row": 201
   },
   {
     "id": "85432",
@@ -67631,7 +67631,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alexander%20Wassiljewitsch%20Suworow%20Petersburg%20Eremitag.JPG",
     "description": "Алекса́ндр Васи́льевич Суво́ров — русский полководец, основоположник русской военной теории.",
     "slug": "alexander-suvorov",
-    "row": 143
+    "row": 147
   },
   {
     "id": "51109",
@@ -67681,7 +67681,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/M.V.%20Lomonosov%20by%20L.Miropolskiy%20after%20G.C.Prenner%20%281787%2C%20RAN%29.jpg",
     "description": "Михаи́л Васи́льевич Ломоно́сов — первый крупный русский учёный-естествоиспытатель, известный также как полимат. Статский советник, профессор химии (1745), действительный член Санкт-Петербургской Императорской академии наук (1745), почётный член Петербургской Академии художеств (1763), почётный член Королевской Шведской (1760) и Болонской академий наук (1764). Самая знаменитая личность, связанная с российским Просвещением.",
     "slug": "mikhail-lomonosov",
-    "row": 109
+    "row": 110
   },
   {
     "id": "196238",
@@ -67809,7 +67809,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sir%20Joshua%20Reynolds%20-%20Edmund%20Burke%2C%201729%20-%201797.%20Statesman%2C%20orator%20and%20author%20-%20PG%202362%20-%20National%20Galleries%20of%20Scotland.jpg",
     "description": "Эдмунд Бёрк — англо-ирландский парламентарий, политический деятель, публицист эпохи Просвещения, родоначальник идеологии консерватизма.",
     "slug": "edmund-burke",
-    "row": 142
+    "row": 143
   },
   {
     "id": "233350",
@@ -71501,7 +71501,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jean-Baptiste%20Sim%C3%A9on%20Chardin%20023.jpg",
     "description": "Жан-Бати́ст Симео́н Шарде́н — французский живописец и рисовальщик пастелью, один из выдающихся европейских художников эпохи Просвещения второй половины XVIII века, мастер натюрморта, портрета и картин бытового жанра.",
     "slug": "jean-baptiste-simeon-chardin",
-    "row": 133
+    "row": 132
   },
   {
     "id": "4348686",
@@ -71668,7 +71668,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/John%20Law.jpg",
     "description": "Джон Ло оф Лористон — шотландский экономист и финансист, основатель Banque générale и создатель так называемой «системы Ло».",
     "slug": "john-law",
-    "row": 111
+    "row": 120
   },
   {
     "id": "172609",
@@ -72435,7 +72435,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Emperor%20Yongzheng.PNG",
     "description": "Айсиньгьоро Иньчжэ́нь, пятый маньчжурский правитель империи Цин. Он взошёл на престол в сорокачетырёхлетнем возрасте к крайнему удивлению других многочисленных сыновей прежнего императора, ибо был открыто ненавидим отцом. Противодействие родни новый богдохан немедленно парировал применением силы, и на тринадцать лет стал фактически самовластным правителем империи. Правя страной самовластно, он всячески обходил Совет князей-регентов и сановников. Это, в свою очередь, обусловило напряжённость в его отношениях с маньчжурскими князьями императорской крови и всем родом Айсинь Гьоро.",
     "slug": "yongzheng-emperor",
-    "row": 123
+    "row": 122
   },
   {
     "id": "217062",
@@ -73007,7 +73007,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Celle%20Schloss%20Ernest%20Augustus%2C%20Elector%20of%20Hanover%2001.JPG",
     "description": "Эрнст Август Брауншвейг-Каленбергский — князь-епископ Оснабрюкский с 1662 года, герцог Брауншвейг-Каленберга с 1679 года, 1-й курфюрст Ганновера с 1692 года. Основатель Ганноверской династии. Отец короля Великобритании Георга I и королевы Пруссии Софии Шарлотты.",
     "slug": "ernest-augustus-elector-of-brunswick-luneburg",
-    "row": 119
+    "row": 117
   },
   {
     "id": "51456",
@@ -73995,7 +73995,7 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thomas_Newcomen",
     "description": "То́мас Нью́комен — английский изобретатель; один из создателей первого теплового (парового) двигателя, известного как паровая машина Ньюкомена.",
     "slug": "thomas-newcomen",
-    "row": 122
+    "row": 119
   },
   {
     "id": "206186",
@@ -74649,7 +74649,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shah%20Jahan%2C%20in%20The%20Rulers%20of%20the%20Mughal%20Dynasty%20from%20Babur%20to%20Awrangzeb%2C%20with%20their%20Ancestor%20Timur%20MSS%20874%2C%20India%2C%20circa%201707%E2%80%9312.%20Khalili%20Collection.jpg",
     "description": "Шахаб-уд-дин Мухаммад Хуррам, тронное имя Шах Джахан I — государственный деятель, падишах Империи Бабуридов (1627—1658), обессмертивший своё имя постройкой Тадж-Махала.",
     "slug": "shah-jahan",
-    "row": 111
+    "row": 122
   },
   {
     "id": "62558",
@@ -75948,7 +75948,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portrait%20of%20King%20Yeongjo%20-%20Chae%20Yong%20Shin%20%28%E8%94%A1%E9%BE%8D%E8%87%A3%201850-1941%29%20Cho%20Seok-jin%20%28%E8%B6%99%E9%8C%AB%E6%99%89%201853-1920%29%20et%20%28cropped%29.jpg",
     "description": "Ёнджо, также Ёнджо-тэван — 21-й ван корейского государства Чосон, правивший с 16 октября 1724 по 22 апреля 1776 года. Имя — Кым. Второе имя — Квансук.",
     "slug": "yeongjo-of-joseon",
-    "row": 132
+    "row": 123
   },
   {
     "id": "2176",
@@ -77969,7 +77969,7 @@
     "imageAttribution": "William Beechey, via Wikimedia Commons",
     "description": "Шарло́тта Великобрита́нская, также Шарло́тта Ганно́верская — британская принцесса из Ганноверской династии, старшая дочь короля Георга III и Шарлотты Мекленбург-Стрелицкой; в замужестве — последовательно герцогиня, курфюрстина и королева Вюртемберга.",
     "slug": "charlotte-princess-royal",
-    "row": 201
+    "row": 204
   },
   {
     "id": "28612109",
@@ -79382,7 +79382,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/HyderAli.jpg",
     "description": "Хайда́р Али́ — (урду سلطان حيدر علی خان, — де-факто правитель княжества Майсур. Хайдер Али имел почетное звание — султан Хайдер Али Хан или Хайдер Али Сахиб.",
     "slug": "hyder-ali",
-    "row": 135
+    "row": 133
   },
   {
     "id": "74655",
@@ -79868,7 +79868,7 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nathaniel%20Dance%20Lord%20North.jpg",
     "description": "Фре́дерик Норт, 2-й граф Гилфорд, KG — более известный по придворному титулу как Лорд Норт; премьер-министр Великобритании с 1770 по 1782 год. Норт возглавлял правительство Великобритании во все годы Американской войны за независимость, а также занимал некоторые другие посты: Министра внутренних дел и Канцлера казначейства.",
     "slug": "frederick-north-2nd-earl-of-guilford",
-    "row": 149
+    "row": 151
   },
   {
     "id": "253026",

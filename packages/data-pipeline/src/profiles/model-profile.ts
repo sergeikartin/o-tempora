@@ -1,4 +1,4 @@
-import { asArray, asRecord, asString } from '../output/profiles.js';
+import { asArray, asRecord, asString } from './values.js';
 
 // What the profile-writer agent returns (prompts/profile.md's "Return JSON
 // only" block), validated. `meta` is added later by finalize.

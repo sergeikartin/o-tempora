@@ -9,11 +9,18 @@ import {
   type ProfileKeyMoment,
   type ProfileLane,
 } from '@o-tempora/shared-types';
+import { assertBoldOnlyMarkup } from '../profiles/markup.js';
+import {
+  approvedTranslation,
+  readTranslation,
+  type TranslationFields,
+} from '../profiles/translation.js';
 import { asArray, asRecord, asString } from '../profiles/values.js';
 import { hasApproval } from '../profiles/verification/policy.js';
 
 import { detailLevelOf } from './write-datasets.js';
 
+export { assertBoldOnlyMarkup } from '../profiles/markup.js';
 export { asArray, asRecord, asString } from '../profiles/values.js';
 
 // The slice of a raw Profile file (prompts/profile.md's JSON plus the `meta`
@@ -27,6 +34,7 @@ export interface RawProfile {
   status: string;
   approved: boolean;
   verifiedDates?: string;
+  russian?: TranslationFields;
   overview: string;
   keyMoments: ProfileKeyMoment[];
   deepFacts: ProfileDeepFact[];
@@ -37,32 +45,6 @@ export interface RawProfile {
 
 // These statuses still require a current verification receipt to ship.
 const SHIPPED_STATUSES: ReadonlySet<string> = new Set(['reviewed', 'edited']);
-
-// A shipped Profile's text is `**bold**` and plain prose; web renders the bold
-// runs as elements and everything else as text, so markup it would not render
-// has to be caught here.
-const MARKDOWN_LINK = /\[[^\]]*\]\([^)]*\)/;
-
-function excerpt(text: string): string {
-  return text.length > 60 ? `${text.slice(0, 60)}…` : text;
-}
-
-export function assertBoldOnlyMarkup(text: string, where: string): void {
-  if (text.split('**').length % 2 === 0) {
-    throw new Error(`${where}: unpaired "**" in "${excerpt(text)}"`);
-  }
-  const withoutBold = text.replaceAll('**', '');
-  if (
-    withoutBold.includes('<') ||
-    withoutBold.includes('`') ||
-    withoutBold.includes('*') ||
-    MARKDOWN_LINK.test(withoutBold)
-  ) {
-    throw new Error(
-      `${where}: markup other than **bold** in "${excerpt(text)}"`,
-    );
-  }
-}
 
 // Older Profiles can lack a source, and `not_on_wikipedia` is a review
 // sentinel. Neither should become a link, nor should malformed/unsafe URLs.
@@ -183,7 +165,8 @@ export async function readRawProfiles(dir: string): Promise<RawProfile[]> {
     for (const fileName of fileNames.sort()) {
       if (
         !fileName.endsWith('.json') ||
-        fileName.endsWith('.verification.json')
+        fileName.endsWith('.verification.json') ||
+        fileName.includes('.translation.')
       )
         continue;
       const json: unknown = JSON.parse(
@@ -207,7 +190,14 @@ export async function readRawProfiles(dir: string): Promise<RawProfile[]> {
         )
           throw error;
       }
-      profiles.push(parseRawProfile(json, `${lane}/${fileName}`, report));
+      const raw = parseRawProfile(json, `${lane}/${fileName}`, report);
+      if (raw.approved && fileName.endsWith('.en.json')) {
+        raw.russian = approvedTranslation(
+          await readTranslation(path.join(laneDir, fileName)),
+          json,
+        );
+      }
+      profiles.push(raw);
     }
   }
   return profiles;
@@ -219,6 +209,7 @@ export interface ProfileTarget {
   qid: string;
   slug: string;
   name: string;
+  nameRu?: string;
   lane: ProfileLane;
   fameScore: number;
   dates: string;
@@ -227,6 +218,7 @@ export interface ProfileTarget {
 function resolveConnections(
   raw: RawProfile,
   targetByQid: ReadonlyMap<string, ProfileTarget>,
+  locale: 'en' | 'ru',
 ): ProfileConnection[] {
   const connections: ProfileConnection[] = [];
   const seen = new Set<string>();
@@ -237,7 +229,7 @@ function resolveConnections(
     connections.push({
       slug: target.slug,
       reason,
-      name: target.name,
+      name: locale === 'ru' ? (target.nameRu ?? target.name) : target.name,
       lane: target.lane,
       detailLevel: detailLevelOf(
         target.fameScore,
@@ -249,16 +241,18 @@ function resolveConnections(
 }
 
 // The Profiles to ship, keyed by the entity's slug. Only approved `reviewed`
-// and `edited` English Profiles ship; Russian files carry the English Profile whole
-// (CONTEXT.md's Field Fallback), so a raw file in another locale is not read.
+// and `edited` English Profiles ship. Russian output additionally requires a
+// current translation approval; absent/stale translations leave Description.
 export function shipProfiles(
   rawProfiles: readonly RawProfile[],
   targets: readonly ProfileTarget[],
+  locale: 'en' | 'ru' = 'en',
 ): Map<string, Profile> {
   const targetByQid = new Map(targets.map((target) => [target.qid, target]));
   const shipped = new Map<string, Profile>();
 
-  for (const raw of rawProfiles) {
+  for (const original of rawProfiles) {
+    let raw = original;
     if (
       raw.locale !== 'en' ||
       !SHIPPED_STATUSES.has(raw.status) ||
@@ -272,6 +266,30 @@ export function shipProfiles(
         `${raw.fileName}: ${raw.qid} is not an entity in the dataset`,
       );
     if (raw.verifiedDates !== subject.dates) continue;
+    if (locale === 'ru') {
+      if (!raw.russian) continue;
+      const fields = raw.russian;
+      const text = (path: string) =>
+        asString(fields[path], `${raw.fileName}: Russian ${path}`);
+      raw = {
+        ...raw,
+        overview: text('overview'),
+        keyMoments: raw.keyMoments.map((moment, i) => ({
+          ...moment,
+          date: text(`key_moments.${i}.date`),
+          title: text(`key_moments.${i}.title`),
+          text: text(`key_moments.${i}.text`),
+        })),
+        deepFacts: raw.deepFacts.map((fact, i) => ({
+          ...fact,
+          text: text(`deep_facts.${i}.text`),
+        })),
+        connections: raw.connections.map((connection, i) => ({
+          ...connection,
+          reason: text(`connections.${i}.connection`),
+        })),
+      };
+    }
     if (shipped.has(subject.slug))
       throw new Error(`${raw.fileName}: a second Profile for ${raw.qid}`);
 
@@ -307,7 +325,7 @@ export function shipProfiles(
       overview: raw.overview,
       keyMoments: raw.keyMoments,
       deepFacts: raw.deepFacts,
-      connections: resolveConnections(raw, targetByQid),
+      connections: resolveConnections(raw, targetByQid, locale),
     });
   }
 
@@ -324,8 +342,6 @@ export function withProfileFlags<T extends { slug: string }>(
   );
 }
 
-// The locales a Profile ships in; `ru` is the English Profile until Russian
-// Profiles exist.
 const PROFILE_LOCALES = ['en', 'ru'] as const;
 
 // Writes `<outputDir>/profiles/<locale>/<slug>.json`, replacing the previous
@@ -333,13 +349,16 @@ const PROFILE_LOCALES = ['en', 'ru'] as const;
 export async function writeProfiles(
   outputDir: string,
   profiles: ReadonlyMap<string, Profile>,
+  russianProfiles: ReadonlyMap<string, Profile> = new Map(),
 ): Promise<void> {
   const profilesDir = path.join(outputDir, 'profiles');
   await rm(profilesDir, { recursive: true, force: true });
   for (const locale of PROFILE_LOCALES) {
     const localeDir = path.join(profilesDir, locale);
     await mkdir(localeDir, { recursive: true });
-    for (const [slug, profile] of profiles) {
+    for (const [slug, profile] of locale === 'ru'
+      ? russianProfiles
+      : profiles) {
       await writeFile(
         path.join(localeDir, `${slug}.json`),
         JSON.stringify(profile, null, 2),

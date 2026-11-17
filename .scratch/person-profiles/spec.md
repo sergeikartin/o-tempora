@@ -10,7 +10,7 @@ The detail panel answers "who overlapped whom" with a date-overlap comparison (A
 
 Replace the comparison with **Profiles**: a generated overview, **Key Moments**, up to three **Deep Facts** and **Connections**. A visitor learns who the entity was, then follows a Connection to a related one in any lane. An entity with no Profile keeps its **Description**.
 
-First batch: 30 entities (20 People, 4 Conflicts, 6 Milestones) in five connected Legendary clusters, English only.
+First batch: 30 entities (20 People, 4 Conflicts, 6 Milestones) in five connected Legendary clusters, written in English and automatically translated into Russian after approval.
 
 ## Behaviour
 
@@ -19,7 +19,7 @@ First batch: 30 entities (20 People, 4 Conflicts, 6 Milestones) in five connecte
 - A Connection lists every target in the dataset, whatever the lane or filters. A target below the current Detail Level is marked with the level it appears at; opening it raises the Detail Level and pans to it. A target not in the dataset is not listed.
 - Every Connection hop adds a history entry. Mark clicks and Search keep today's rule.
 - `**bold**` in text renders as elements, never HTML.
-- Russian files carry the English Profile whole until Russian Profiles exist.
+- Russian Profiles translate approved English content and require a separate fidelity audit; absent or stale translations leave the Russian Description.
 
 ## Pipeline
 
@@ -61,4 +61,4 @@ The Landing Page's call-to-action therefore opens one `lead` entity instead of a
 
 ## Out of scope
 
-A quiz feature; filtering or navigating by categories; live LLM calls from the web app; rollout beyond the 30; Russian Profiles; a docked right panel (still open from the prototype).
+A quiz feature; filtering or navigating by categories; live LLM calls from the web app; rollout beyond the 30; independently authored Russian Profiles; a docked right panel (still open from the prototype).

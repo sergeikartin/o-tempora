@@ -1,0 +1,3125 @@
+{
+  "method": "offline structural and published-dataset checks; no factual or URL identity approval",
+  "checked_at": "2026-11-15T15:47:33.781Z",
+  "expected_sample_count": 30,
+  "actual_count": 30,
+  "missing_sample_qids": [],
+  "unexpected_sample_qids": [],
+  "unchecked": [
+    "live URL-to-QID identities",
+    "source page/anchor existence",
+    "factual claims",
+    "evidence corroboration",
+    "automatic audit and publication receipt"
+  ],
+  "profiles": [
+    {
+      "qid": "Q1048",
+      "subject": "Julius Caesar",
+      "lane": "people",
+      "dates": "100–44 BC",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q1048-julius-caesar.en.json",
+      "sha256": "99060d102286dfd1d36272e4886afac900f17a9f54b1f9c702a7ff0140a246e5",
+      "status": "draft",
+      "published": {
+        "name": "Julius Caesar",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 26,
+      "errors": [
+        "key_moments.0.text: markup other than **bold** in \"After serving as consul in 59 BC with the backing of **Pompe…\"",
+        "deep_facts.1.text: markup other than **bold** in \"'Et tu, Brute?' is the most famous last line in history, and…\""
+      ],
+      "connections": [
+        {
+          "qid": "Q125414",
+          "name": "Pompey",
+          "target": {
+            "name": "Pompey",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q202161",
+          "name": "Gallic Wars",
+          "target": {
+            "name": "Gallic War",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q1405",
+          "name": "Augustus",
+          "target": {
+            "name": "Augustus",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q172248",
+          "name": "Marcus Junius Brutus",
+          "target": {
+            "name": "Marcus Junius Brutus",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q635",
+          "name": "Cleopatra",
+          "target": {
+            "name": "Cleopatra",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q51673",
+          "name": "Mark Antony",
+          "target": {
+            "name": "Mark Antony",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q175121",
+          "name": "Marcus Licinius Crassus",
+          "target": {
+            "name": "Marcus Licinius Crassus",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q178953",
+          "name": "Vercingetorix",
+          "target": {
+            "name": "Vercingetorix",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q207370",
+          "name": "Gaius Cassius Longinus",
+          "target": {
+            "name": "Gaius Cassius Longinus",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q11184",
+          "name": "Julian calendar",
+          "target": {
+            "name": "Julian calendar",
+            "lane": "milestones",
+            "level": 2
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q11812",
+      "subject": "Thomas Jefferson",
+      "lane": "people",
+      "dates": "1743–1826",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q11812-thomas-jefferson.en.json",
+      "sha256": "7c898afae58ec8b8f515a4cdae60e7f45daf139d9777bd76b372c4877fb662e7",
+      "status": "draft",
+      "published": {
+        "name": "Thomas Jefferson",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 25,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q11806",
+          "name": "John Adams",
+          "target": {
+            "name": "John Adams",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q11813",
+          "name": "James Madison",
+          "target": {
+            "name": "James Madison",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q127912",
+          "name": "United States Declaration of Independence",
+          "target": {
+            "name": "United States Declaration of Independence",
+            "lane": "milestones",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q193155",
+          "name": "Louisiana Purchase",
+          "target": {
+            "name": "Louisiana Purchase",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q40949",
+          "name": "American Revolutionary War",
+          "target": {
+            "name": "American Revolutionary War",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q23",
+          "name": "George Washington",
+          "target": {
+            "name": "George Washington",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q505802",
+          "name": "Lewis and Clark Expedition",
+          "target": {
+            "name": "Lewis and Clark Expedition",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q517",
+          "name": "Napoleon",
+          "target": {
+            "name": "Napoleon",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q468293",
+          "name": "First Barbary War",
+          "target": {
+            "name": "First Barbary War",
+            "lane": "conflicts",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q1290",
+      "subject": "Blaise Pascal",
+      "lane": "people",
+      "dates": "1623–1662",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q1290-blaise-pascal.en.json",
+      "sha256": "058e92d90173b885c507ad2c560888b96596cbf2e0c39d8cf97cb978618e958e",
+      "status": "draft",
+      "published": {
+        "name": "Blaise Pascal",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 22,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q75655",
+          "name": "Pierre de Fermat",
+          "target": {
+            "name": "Pierre de Fermat",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q873501",
+          "name": "Pascal's calculator",
+          "target": {
+            "name": "First calculator",
+            "lane": "milestones",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q102490",
+          "name": "Evangelista Torricelli",
+          "target": {
+            "name": "Evangelista Torricelli",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q9191",
+          "name": "René Descartes",
+          "target": {
+            "name": "René Descartes",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q188663",
+          "name": "Marin Mersenne",
+          "target": {
+            "name": "Marin Mersenne",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q9047",
+          "name": "Gottfried Wilhelm Leibniz",
+          "target": {
+            "name": "Gottfried Wilhelm Leibniz",
+            "lane": "people",
+            "level": 1
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q1405",
+      "subject": "Augustus",
+      "lane": "people",
+      "dates": "63 BC–AD 14",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q1405-augustus.en.json",
+      "sha256": "d3b6aaac4f169e5f3c33b50288f49318e567c161316a9c3cd71632387bf46d94",
+      "status": "draft",
+      "published": {
+        "name": "Augustus",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 28,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q1048",
+          "name": "Julius Caesar",
+          "target": {
+            "name": "Julius Caesar",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q51673",
+          "name": "Mark Antony",
+          "target": {
+            "name": "Mark Antony",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q635",
+          "name": "Cleopatra",
+          "target": {
+            "name": "Cleopatra",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q48174",
+          "name": "Marcus Vipsanius Agrippa",
+          "target": {
+            "name": "Marcus Vipsanius Agrippa",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q1407",
+          "name": "Tiberius",
+          "target": {
+            "name": "Tiberius",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q469701",
+          "name": "Livia",
+          "target": {
+            "name": "Livia",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q160387",
+          "name": "Battle of Actium",
+          "target": {
+            "name": "Battle of Actium",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q2277",
+          "name": "Roman Empire",
+          "target": {
+            "name": "Founding of the Roman Empire",
+            "lane": "milestones",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q1541",
+          "name": "Cicero",
+          "target": {
+            "name": "Cicero",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q105452",
+          "name": "Marcus Aemilius Lepidus",
+          "target": {
+            "name": "Lepidus",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q87779",
+          "name": "Battle of the Teutoburg Forest",
+          "target": {
+            "name": "Battle of the Teutoburg Forest",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q1398",
+          "name": "Virgil",
+          "target": {
+            "name": "Virgil",
+            "lane": "people",
+            "level": 2
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q307",
+      "subject": "Galileo Galilei",
+      "lane": "people",
+      "dates": "1564–1642",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q307-galileo-galilei.en.json",
+      "sha256": "84de792fd0338609f756f0de05285785fcb2bb8d471d29bba8b2e2f1f764bc70",
+      "status": "draft",
+      "published": {
+        "name": "Galileo Galilei",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 23,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q2517983",
+          "name": "Galileo affair",
+          "target": {
+            "name": "Galileo affair",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q619",
+          "name": "Nicolaus Copernicus",
+          "target": {
+            "name": "Nicolaus Copernicus",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q131579",
+          "name": "Pope Urban VIII",
+          "target": {
+            "name": "Urban VIII",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q8963",
+          "name": "Johannes Kepler",
+          "target": {
+            "name": "Johannes Kepler",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q935",
+          "name": "Isaac Newton",
+          "target": {
+            "name": "Isaac Newton",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q214078",
+          "name": "Scientific Revolution",
+          "target": {
+            "name": "Scientific Revolution",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q102490",
+          "name": "Evangelista Torricelli",
+          "target": {
+            "name": "Evangelista Torricelli",
+            "lane": "people",
+            "level": 3
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q352",
+      "subject": "Adolf Hitler",
+      "lane": "people",
+      "dates": "1889–1945",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q352-adolf-hitler.en.json",
+      "sha256": "f3f1ee02d9fc13970c33f768ab8be309bcaabaf7d5ad60aa6201dd3f021dcc31",
+      "status": "draft",
+      "published": {
+        "name": "Adolf Hitler",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 29,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q362",
+          "name": "World War II",
+          "target": {
+            "name": "World War II",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q2763",
+          "name": "The Holocaust",
+          "target": {
+            "name": "The Holocaust",
+            "lane": "milestones",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q150812",
+          "name": "Invasion of Poland",
+          "target": {
+            "name": "1939 Invasion of Poland",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q83055",
+          "name": "Operation Barbarossa",
+          "target": {
+            "name": "Operation Barbarossa",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q2667",
+          "name": "Paul von Hindenburg",
+          "target": {
+            "name": "Paul von Hindenburg",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q76433",
+          "name": "Eva Braun",
+          "target": {
+            "name": "Eva Braun",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q855",
+          "name": "Joseph Stalin",
+          "target": {
+            "name": "Joseph Stalin",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q8016",
+          "name": "Winston Churchill",
+          "target": {
+            "name": "Winston Churchill",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q23559",
+          "name": "Benito Mussolini",
+          "target": {
+            "name": "Benito Mussolini",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q41749",
+          "name": "Joseph Goebbels",
+          "target": {
+            "name": "Joseph Goebbels",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q43067",
+          "name": "Heinrich Himmler",
+          "target": {
+            "name": "Heinrich Himmler",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q47906",
+          "name": "Hermann Göring",
+          "target": {
+            "name": "Hermann Göring",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q154255",
+          "name": "Munich Agreement",
+          "target": {
+            "name": "Munich agreement",
+            "lane": "milestones",
+            "level": 3
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q38370",
+      "subject": "Henry VIII of England",
+      "lane": "people",
+      "dates": "1491–1547",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q38370-henry-viii-of-england.en.json",
+      "sha256": "0c14c29e7e4a9c1518cddd9fb7166e4b79ad4806df16c9acee79f4418c2a9437",
+      "status": "draft",
+      "published": {
+        "name": "Henry VIII of England",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 26,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q162819",
+          "name": "Catherine of Aragon",
+          "target": {
+            "name": "Catherine of Aragon",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q80823",
+          "name": "Anne Boleyn",
+          "target": {
+            "name": "Ana Bolena",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q1645505",
+          "name": "English Reformation",
+          "target": {
+            "name": "English Reformation",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q7207",
+          "name": "Elizabeth I",
+          "target": {
+            "name": "Elizabeth I of England",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q83229",
+          "name": "Edward VI",
+          "target": {
+            "name": "Edward VI of England",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q82674",
+          "name": "Mary I of England",
+          "target": {
+            "name": "Mary I",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q42544",
+          "name": "Thomas More",
+          "target": {
+            "name": "Thomas More",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q182637",
+          "name": "Jane Seymour",
+          "target": {
+            "name": "Jane Seymour",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q83159",
+          "name": "Pope Clement VII",
+          "target": {
+            "name": "Clement VII",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q32500",
+          "name": "Charles V, Holy Roman Emperor",
+          "target": {
+            "name": "Charles V",
+            "lane": "people",
+            "level": 3
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q517",
+      "subject": "Napoleon",
+      "lane": "people",
+      "dates": "1769–1821",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q517-napoleon.en.json",
+      "sha256": "3a8878ae7d2bd746158d2b2ba8f089c0c986e37bb3b7fbcec26acec09576b07e",
+      "status": "draft",
+      "published": {
+        "name": "Napoleon",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 29,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q78994",
+          "name": "Napoleonic Wars",
+          "target": {
+            "name": "Napoleonic Wars",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q207318",
+          "name": "French Revolutionary Wars",
+          "target": {
+            "name": "French Revolutionary Wars",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q620965",
+          "name": "Coup of 18 Brumaire",
+          "target": {
+            "name": "coup of 18 Brumaire",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q48314",
+          "name": "Battle of Waterloo",
+          "target": {
+            "name": "Battle of Waterloo",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q179250",
+          "name": "French invasion of Russia",
+          "target": {
+            "name": "French invasion of Russia",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q134114",
+          "name": "Battle of Austerlitz",
+          "target": {
+            "name": "Battle of Austerlitz",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q151060",
+          "name": "Napoleonic Code",
+          "target": {
+            "name": "Civil Code of the French",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q171480",
+          "name": "Joséphine de Beauharnais",
+          "target": {
+            "name": "Joséphine de Beauharnais",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q15193",
+          "name": "Alexander I of Russia",
+          "target": {
+            "name": "Alexander I of Russia",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q153522",
+          "name": "Gebhard Leberecht von Blücher",
+          "target": {
+            "name": "Gebhard Leberecht von Blücher",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q253684",
+          "name": "French campaign in Egypt and Syria",
+          "target": {
+            "name": "French invasion of Egypt and Syria",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q124754",
+          "name": "Pope Pius VII",
+          "target": {
+            "name": "Pius VII",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q7723",
+          "name": "Napoleon II",
+          "target": {
+            "name": "Napoleon II",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q619",
+      "subject": "Nicolaus Copernicus",
+      "lane": "people",
+      "dates": "1473–1543",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q619-nicolaus-copernicus.en.json",
+      "sha256": "c2015f5cb829881eb6f8b50e81adee68135061a7decc1ec98144d903533a1380",
+      "status": "draft",
+      "published": {
+        "name": "Nicolaus Copernicus",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 21,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q34943",
+          "name": "Ptolemy",
+          "target": {
+            "name": "Ptolemy",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q8963",
+          "name": "Johannes Kepler",
+          "target": {
+            "name": "Johannes Kepler",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q307",
+          "name": "Galileo Galilei",
+          "target": {
+            "name": "Galileo Galilei",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q36620",
+          "name": "Tycho Brahe",
+          "target": {
+            "name": "Tycho Brahe",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q140188",
+          "name": "Aristarchus of Samos",
+          "target": {
+            "name": "Aristarchus of Samos",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q635",
+      "subject": "Cleopatra",
+      "lane": "people",
+      "dates": "69–30 BC",
+      "selected": true,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q635-cleopatra.en.json",
+      "sha256": "705bd041882f72cec635ec3d1848912b49eb753f89604c01c92877c571d04c67",
+      "status": "draft",
+      "published": {
+        "name": "Cleopatra",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 24,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q51673",
+          "name": "Mark Antony",
+          "target": {
+            "name": "Mark Antony",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q1048",
+          "name": "Julius Caesar",
+          "target": {
+            "name": "Julius Caesar",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q1405",
+          "name": "Augustus",
+          "target": {
+            "name": "Augustus",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q160387",
+          "name": "Battle of Actium",
+          "target": {
+            "name": "Battle of Actium",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q39589",
+          "name": "Caesarion",
+          "target": {
+            "name": "Caesarion",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q39938",
+          "name": "Ptolemy XIII",
+          "target": {
+            "name": "Ptolemy XIII Theos Philopator",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q39991",
+          "name": "Ptolemy XII Auletes",
+          "target": {
+            "name": "Ptolemy XII Auletes",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q40058",
+          "name": "Cleopatra Selene II",
+          "target": {
+            "name": "Cleopatra Selene II",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q6527",
+      "subject": "Jean-Jacques Rousseau",
+      "lane": "people",
+      "dates": "1712–1778",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q6527-jean-jacques-rousseau.en.json",
+      "sha256": "213a93697ed2c1880529fae66b87d6f3bd0601310f69ac4121b82fdb660dee9a",
+      "status": "draft",
+      "published": {
+        "name": "Jean-Jacques Rousseau",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 24,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q9068",
+          "name": "Voltaire",
+          "target": {
+            "name": "Voltaire",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q448",
+          "name": "Denis Diderot",
+          "target": {
+            "name": "Denis Diderot",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q37160",
+          "name": "David Hume",
+          "target": {
+            "name": "David Hume",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q6534",
+          "name": "French Revolution",
+          "target": {
+            "name": "French Revolution",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q44197",
+          "name": "Maximilien Robespierre",
+          "target": {
+            "name": "Maximilien Robespierre",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q447",
+          "name": "Encyclopédie",
+          "target": {
+            "name": "Encyclopédie",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q9312",
+          "name": "Immanuel Kant",
+          "target": {
+            "name": "Immanuel Kant",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q191055",
+          "name": "1755 Lisbon earthquake",
+          "target": {
+            "name": "1755 Lisbon earthquake",
+            "lane": "milestones",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q692",
+      "subject": "William Shakespeare",
+      "lane": "people",
+      "dates": "1564–1616",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q692-william-shakespeare.en.json",
+      "sha256": "7f96e7494871b7844706c24b1d1c77a461a0243a99596a61efea6c1ee0f7a6d5",
+      "status": "draft",
+      "published": {
+        "name": "William Shakespeare",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 20,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q237251",
+          "name": "Anne Hathaway",
+          "target": {
+            "name": "Anne Hathaway",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q79972",
+          "name": "James VI and I",
+          "target": {
+            "name": "James VI and I",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q7207",
+          "name": "Elizabeth I",
+          "target": {
+            "name": "Elizabeth I of England",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q5682",
+          "name": "Miguel de Cervantes",
+          "target": {
+            "name": "Miguel de Cervantes",
+            "lane": "people",
+            "level": 3
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q7207",
+      "subject": "Elizabeth I of England",
+      "lane": "people",
+      "dates": "1533–1603",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q7207-elizabeth-i-of-england.en.json",
+      "sha256": "45ac3d7880d6e1bb1eb85d5df3d0d8a6b247eb15f6e0e54d25a36f5c6ed8b623",
+      "status": "draft",
+      "published": {
+        "name": "Elizabeth I of England",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 23,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q38370",
+          "name": "Henry VIII",
+          "target": {
+            "name": "Henry VIII of England",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q80823",
+          "name": "Anne Boleyn",
+          "target": {
+            "name": "Ana Bolena",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q82674",
+          "name": "Mary I of England",
+          "target": {
+            "name": "Mary I",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q131412",
+          "name": "Mary, Queen of Scots",
+          "target": {
+            "name": "Mary, Queen of Scots",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q34417",
+          "name": "Philip II of Spain",
+          "target": {
+            "name": "Philip II of Spain",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q79972",
+          "name": "James VI and I",
+          "target": {
+            "name": "James VI and I",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q36517",
+          "name": "Francis Drake",
+          "target": {
+            "name": "Francis Drake",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q7742",
+      "subject": "Louis XIV of France",
+      "lane": "people",
+      "dates": "1638–1715",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q7742-louis-xiv-of-france.en.json",
+      "sha256": "68d8a16c2d30cefb3e674b9a1eede1fb8ecb12b28a4e2f3bee627ee6dc35a531",
+      "status": "draft",
+      "published": {
+        "name": "Louis XIV of France",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 26,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q166056",
+          "name": "Cardinal Mazarin",
+          "target": {
+            "name": "Cardinal Mazarin",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q151209",
+          "name": "Anne of Austria",
+          "target": {
+            "name": "Anne of Austria",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q188971",
+          "name": "Jean-Baptiste Colbert",
+          "target": {
+            "name": "Jean-Baptiste Colbert",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q150701",
+          "name": "War of the Spanish Succession",
+          "target": {
+            "name": "War of the Spanish Succession",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q170467",
+          "name": "Philip V of Spain",
+          "target": {
+            "name": "Philip V of Spain",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q7738",
+          "name": "Louis XV",
+          "target": {
+            "name": "Louis XV of France",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q129987",
+          "name": "William III of England",
+          "target": {
+            "name": "William III of England",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q152218",
+          "name": "Nine Years' War",
+          "target": {
+            "name": "Nine Years' War",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q152549",
+          "name": "Maria Theresa of Spain",
+          "target": {
+            "name": "Maria Theresa of Spain",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q1192",
+          "name": "Jean-Baptiste Lully",
+          "target": {
+            "name": "Jean-Baptiste Lully",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q855",
+      "subject": "Joseph Stalin",
+      "lane": "people",
+      "dates": "1879–1953",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q855-joseph-stalin.en.json",
+      "sha256": "403401482ca4869bfb02297e75dc27b6df1a6f77d6c793cea8e8f38dab126721",
+      "status": "draft",
+      "published": {
+        "name": "Joseph Stalin",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 28,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q1394",
+          "name": "Vladimir Lenin",
+          "target": {
+            "name": "Vladimir Lenin",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q33391",
+          "name": "Leon Trotsky",
+          "target": {
+            "name": "Leon Trotsky",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q352",
+          "name": "Adolf Hitler",
+          "target": {
+            "name": "Adolf Hitler",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q42976",
+          "name": "October Revolution",
+          "target": {
+            "name": "October Revolution",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q187650",
+          "name": "Great Purge",
+          "target": {
+            "name": "Great Purge",
+            "lane": "milestones",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q189266",
+          "name": "Eastern Front (World War II)",
+          "target": {
+            "name": "Eastern Front",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q38789",
+          "name": "Battle of Stalingrad",
+          "target": {
+            "name": "Battle of Stalingrad",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q8683",
+          "name": "Cold War",
+          "target": {
+            "name": "Cold War",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q35314",
+          "name": "Nikita Khrushchev",
+          "target": {
+            "name": "Nikita Khrushchev",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q8016",
+          "name": "Winston Churchill",
+          "target": {
+            "name": "Winston Churchill",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q8007",
+          "name": "Franklin D. Roosevelt",
+          "target": {
+            "name": "Franklin Delano Roosevelt",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q141829",
+          "name": "Lavrentiy Beria",
+          "target": {
+            "name": "Lavrentiy Beria",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q9047",
+      "subject": "Gottfried Wilhelm Leibniz",
+      "lane": "people",
+      "dates": "1646–1716",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q9047-gottfried-wilhelm-leibniz.en.json",
+      "sha256": "f7ed64a35a76df12ea828adfe248f1f240a9ce7c57596fd420e87e95983dd810",
+      "status": "draft",
+      "published": {
+        "name": "Gottfried Wilhelm Leibniz",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 24,
+      "errors": [
+        "key_moments.0.text: markup other than **bold** in \"Leibniz went to **Paris** on a diplomatic mission for the El…\""
+      ],
+      "connections": [
+        {
+          "qid": "Q935",
+          "name": "Isaac Newton",
+          "target": {
+            "name": "Isaac Newton",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q39599",
+          "name": "Christiaan Huygens",
+          "target": {
+            "name": "Christiaan Huygens",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q130805",
+          "name": "George I of Great Britain",
+          "target": {
+            "name": "George I of Great Britain",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q57224",
+          "name": "Sophia of Hanover",
+          "target": {
+            "name": "Sophia of Hanover",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q35802",
+          "name": "Baruch Spinoza",
+          "target": {
+            "name": "Benedictus de Spinoza",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q8479",
+          "name": "Peter the Great",
+          "target": {
+            "name": "Peter the Great",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q9068",
+          "name": "Voltaire",
+          "target": {
+            "name": "Voltaire",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q227897",
+          "name": "Johann Bernoulli",
+          "target": {
+            "name": "Johann Bernoulli",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q9191",
+      "subject": "René Descartes",
+      "lane": "people",
+      "dates": "1596–1650",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q9191-rene-descartes.en.json",
+      "sha256": "de5cdc08f3f0729e3f05d275691167974a9b7a61c0043c9a7cf66f73777dcbe0",
+      "status": "draft",
+      "published": {
+        "name": "René Descartes",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 26,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q52937",
+          "name": "Queen Christina of Sweden",
+          "target": {
+            "name": "Christina of Sweden",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q188663",
+          "name": "Marin Mersenne",
+          "target": {
+            "name": "Marin Mersenne",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q307",
+          "name": "Galileo Galilei",
+          "target": {
+            "name": "Galileo Galilei",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q37621",
+          "name": "Thomas Hobbes",
+          "target": {
+            "name": "Thomas Hobbes",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q35802",
+          "name": "Baruch Spinoza",
+          "target": {
+            "name": "Benedictus de Spinoza",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q1290",
+          "name": "Blaise Pascal",
+          "target": {
+            "name": "Blaise Pascal",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q75655",
+          "name": "Pierre de Fermat",
+          "target": {
+            "name": "Pierre de Fermat",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q164062",
+          "name": "Maurice, Prince of Orange",
+          "target": {
+            "name": "Maurice of Nassau",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q2487",
+          "name": "Thirty Years' War",
+          "target": {
+            "name": "Thirty Years' War",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q214078",
+          "name": "Scientific Revolution",
+          "target": {
+            "name": "Scientific Revolution",
+            "lane": "milestones",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q935",
+      "subject": "Isaac Newton",
+      "lane": "people",
+      "dates": "1643–1726",
+      "selected": true,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q935-isaac-newton.en.json",
+      "sha256": "cd87b619e403c345d9a878cc33be19243fc5f7becc694510c6d2f5cb6c553b31",
+      "status": "draft",
+      "published": {
+        "name": "Isaac Newton",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 25,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q9047",
+          "name": "Gottfried Wilhelm Leibniz",
+          "target": {
+            "name": "Gottfried Wilhelm Leibniz",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q47434",
+          "name": "Edmond Halley",
+          "target": {
+            "name": "Edmond Halley",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q46830",
+          "name": "Robert Hooke",
+          "target": {
+            "name": "Robert Hooke",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q205921",
+          "name": "Philosophiæ Naturalis Principia Mathematica",
+          "target": {
+            "name": "Philosophiæ Naturalis Principia Mathematica",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q214078",
+          "name": "Scientific Revolution",
+          "target": {
+            "name": "Scientific Revolution",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q8963",
+          "name": "Johannes Kepler",
+          "target": {
+            "name": "Johannes Kepler",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q119702",
+          "name": "Anne, Queen of Great Britain",
+          "target": {
+            "name": "Anne of Great Britain",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q9317",
+          "name": "John Maynard Keynes",
+          "target": {
+            "name": "John Maynard Keynes",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q9068",
+          "name": "Voltaire",
+          "target": {
+            "name": "Voltaire",
+            "lane": "people",
+            "level": 2
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q937",
+      "subject": "Albert Einstein",
+      "lane": "people",
+      "dates": "1879–1955",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q937-albert-einstein.en.json",
+      "sha256": "0e5d8285f842143ec0d703f600b1d557b816e4bac921a228a9eea35baef84040",
+      "status": "draft",
+      "published": {
+        "name": "Albert Einstein",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 24,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q76346",
+          "name": "Mileva Marić",
+          "target": {
+            "name": "Mileva Marić",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q153238",
+          "name": "Leo Szilard",
+          "target": {
+            "name": "Leó Szilárd",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q8007",
+          "name": "Franklin D. Roosevelt",
+          "target": {
+            "name": "Franklin Delano Roosevelt",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q9021",
+          "name": "Max Planck",
+          "target": {
+            "name": "Max Planck",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q41688",
+          "name": "Hendrik Lorentz",
+          "target": {
+            "name": "Hendrik Lorentz",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q172183",
+          "name": "Chaim Weizmann",
+          "target": {
+            "name": "Chaim Weizmann",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q33760",
+          "name": "Bertrand Russell",
+          "target": {
+            "name": "Bertrand Russell",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q935",
+          "name": "Isaac Newton",
+          "target": {
+            "name": "Isaac Newton",
+            "lane": "people",
+            "level": 1
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q9554",
+      "subject": "Martin Luther",
+      "lane": "people",
+      "dates": "1483–1546",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/people/Q9554-martin-luther.en.json",
+      "sha256": "ca6d05f0e4f03bffe98ed6d4d068f2fca2a8f6e665bfe1207daf52e2018b4a8d",
+      "status": "draft",
+      "published": {
+        "name": "Martin Luther",
+        "lane": "people",
+        "level": 1
+      },
+      "visiblePassages": 25,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q12562",
+          "name": "Reformation",
+          "target": {
+            "name": "Protestant Reformation",
+            "lane": "milestones",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q157506",
+          "name": "Ninety-five Theses",
+          "target": {
+            "name": "Ninety-five Theses",
+            "lane": "milestones",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q49237",
+          "name": "Pope Leo X",
+          "target": {
+            "name": "Leo X",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q32500",
+          "name": "Charles V",
+          "target": {
+            "name": "Charles V",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q76325",
+          "name": "Philip Melanchthon",
+          "target": {
+            "name": "Philipp Melanchthon",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q154031",
+          "name": "German Peasants' War",
+          "target": {
+            "name": "German Peasants' War",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q43499",
+          "name": "Erasmus",
+          "target": {
+            "name": "Erasmus",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q123034",
+          "name": "Huldrych Zwingli",
+          "target": {
+            "name": "Huldrych Zwingli",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q191748",
+          "name": "Lucas Cranach the Elder",
+          "target": {
+            "name": "Lucas Cranach the Elder",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q361",
+      "subject": "World War I",
+      "lane": "conflicts",
+      "dates": "1914–1918",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/conflicts/Q361-world-war-i.en.json",
+      "sha256": "9b63b968bb275c420948880b1228884823143b57ebe2e594794c8b766922b275",
+      "status": "draft",
+      "published": {
+        "name": "World War I",
+        "lane": "conflicts",
+        "level": 1
+      },
+      "visiblePassages": 30,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q43063",
+          "name": "Archduke Franz Ferdinand of Austria",
+          "target": {
+            "name": "Archduke Franz Ferdinand of Austria",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q80492",
+          "name": "Gavrilo Princip",
+          "target": {
+            "name": "Gavrilo Princip",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q2677",
+          "name": "Wilhelm II",
+          "target": {
+            "name": "Wilhelm II",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q34296",
+          "name": "Woodrow Wilson",
+          "target": {
+            "name": "Woodrow Wilson",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q171730",
+          "name": "Georges Clemenceau",
+          "target": {
+            "name": "Georges Clemenceau",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q192615",
+          "name": "Ferdinand Foch",
+          "target": {
+            "name": "Ferdinand Foch",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q2667",
+          "name": "Paul von Hindenburg",
+          "target": {
+            "name": "Paul von Hindenburg",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q58579",
+          "name": "Erich Ludendorff",
+          "target": {
+            "name": "Erich Ludendorff",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q40787",
+          "name": "Nicholas II of Russia",
+          "target": {
+            "name": "Nicholas II of Russia",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q8736",
+          "name": "Treaty of Versailles",
+          "target": {
+            "name": "Treaty of Versailles",
+            "lane": "milestones",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q8729",
+          "name": "Russian Revolution",
+          "target": {
+            "name": "Russian Revolution",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q132568",
+          "name": "Battle of the Somme",
+          "target": {
+            "name": "Battle of the Somme",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q130847",
+          "name": "Battle of Verdun",
+          "target": {
+            "name": "Battle of Verdun",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q362",
+          "name": "World War II",
+          "target": {
+            "name": "World War II",
+            "lane": "conflicts",
+            "level": 1
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q362",
+      "subject": "World War II",
+      "lane": "conflicts",
+      "dates": "1939–1945",
+      "selected": true,
+      "file": "packages/data-pipeline/data/raw/profiles/conflicts/Q362-world-war-ii.en.json",
+      "sha256": "48f57c60a26348968b68da6809b471a7b2c35f23ef3890fd2ae6357a54a7a8bd",
+      "status": "draft",
+      "published": {
+        "name": "World War II",
+        "lane": "conflicts",
+        "level": 1
+      },
+      "visiblePassages": 31,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q352",
+          "name": "Adolf Hitler",
+          "target": {
+            "name": "Adolf Hitler",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q8016",
+          "name": "Winston Churchill",
+          "target": {
+            "name": "Winston Churchill",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q8007",
+          "name": "Franklin D. Roosevelt",
+          "target": {
+            "name": "Franklin Delano Roosevelt",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q855",
+          "name": "Joseph Stalin",
+          "target": {
+            "name": "Joseph Stalin",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q2763",
+          "name": "The Holocaust",
+          "target": {
+            "name": "The Holocaust",
+            "lane": "milestones",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q150812",
+          "name": "Invasion of Poland",
+          "target": {
+            "name": "1939 Invasion of Poland",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q83055",
+          "name": "Operation Barbarossa",
+          "target": {
+            "name": "Operation Barbarossa",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q38789",
+          "name": "Battle of Stalingrad",
+          "target": {
+            "name": "Battle of Stalingrad",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q52418",
+          "name": "Attack on Pearl Harbor",
+          "target": {
+            "name": "Attack on Pearl Harbor",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q16470",
+          "name": "Normandy landings",
+          "target": {
+            "name": "Normandy landings",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q488",
+          "name": "Atomic bombings of Hiroshima and Nagasaki",
+          "target": {
+            "name": "atomic bombings of Hiroshima and Nagasaki",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q8683",
+          "name": "Cold War",
+          "target": {
+            "name": "Cold War",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q361",
+          "name": "World War I",
+          "target": {
+            "name": "World War I",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q170314",
+          "name": "Second Sino-Japanese War",
+          "target": {
+            "name": "Second Sino-Japanese War",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q34479",
+          "name": "Hirohito",
+          "target": {
+            "name": "Hirohito",
+            "lane": "people",
+            "level": 3
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q6534",
+      "subject": "French Revolution",
+      "lane": "conflicts",
+      "dates": "1789–1799",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/conflicts/Q6534-french-revolution.en.json",
+      "sha256": "deccd33e61796f0a9655e1ba4b77fc5da20de35c25d5843f05427084d731f5dc",
+      "status": "draft",
+      "published": {
+        "name": "French Revolution",
+        "lane": "conflicts",
+        "level": 1
+      },
+      "visiblePassages": 28,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q7732",
+          "name": "Louis XVI",
+          "target": {
+            "name": "Louis XVI of France",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q44197",
+          "name": "Maximilien Robespierre",
+          "target": {
+            "name": "Maximilien Robespierre",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q517",
+          "name": "Napoleon",
+          "target": {
+            "name": "Napoleon",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q6539",
+          "name": "Storming of the Bastille",
+          "target": {
+            "name": "Storming of the Bastille",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q207318",
+          "name": "French Revolutionary Wars",
+          "target": {
+            "name": "French Revolutionary Wars",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q169759",
+          "name": "Declaration of the Rights of Man and of the Citizen",
+          "target": {
+            "name": "Declaration of the Rights of Man and of the Citizen",
+            "lane": "milestones",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q620965",
+          "name": "Coup of 18 Brumaire",
+          "target": {
+            "name": "coup of 18 Brumaire",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q47365",
+          "name": "Marie Antoinette",
+          "target": {
+            "name": "Marie Antoinette",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q184623",
+          "name": "Georges Danton",
+          "target": {
+            "name": "Georges Danton",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q186652",
+          "name": "Gilbert du Motier, Marquis de Lafayette",
+          "target": {
+            "name": "Gilbert du Motier, Marquis de Lafayette",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q192769",
+          "name": "American Revolution",
+          "target": {
+            "name": "American Revolution",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q689128",
+          "name": "Haitian Revolution",
+          "target": {
+            "name": "Haitian Revolution",
+            "lane": "conflicts",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q8683",
+      "subject": "Cold War",
+      "lane": "conflicts",
+      "dates": "1945–1991",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/conflicts/Q8683-cold-war.en.json",
+      "sha256": "7a59e5c918889dcdc0d3ef6a8d1c9abd389169b883f08c822672b3bfb93061b1",
+      "status": "draft",
+      "published": {
+        "name": "Cold War",
+        "lane": "conflicts",
+        "level": 1
+      },
+      "visiblePassages": 30,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q855",
+          "name": "Joseph Stalin",
+          "target": {
+            "name": "Joseph Stalin",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q11613",
+          "name": "Harry S. Truman",
+          "target": {
+            "name": "Harry S. Truman",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q35314",
+          "name": "Nikita Khrushchev",
+          "target": {
+            "name": "Nikita Khrushchev",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q9696",
+          "name": "John F. Kennedy",
+          "target": {
+            "name": "John F. Kennedy",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q30487",
+          "name": "Mikhail Gorbachev",
+          "target": {
+            "name": "Mikhail Gorbachev",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q9960",
+          "name": "Ronald Reagan",
+          "target": {
+            "name": "Ronald Reagan",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q362",
+          "name": "World War II",
+          "target": {
+            "name": "World War II",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q8663",
+          "name": "Korean War",
+          "target": {
+            "name": "Korean War",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q8740",
+          "name": "Vietnam War",
+          "target": {
+            "name": "Vietnam War",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q128160",
+          "name": "Cuban Missile Crisis",
+          "target": {
+            "name": "Cuban Missile Crisis",
+            "lane": "milestones",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q1932",
+          "name": "Space Race",
+          "target": {
+            "name": "space race",
+            "lane": "milestones",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q382861",
+          "name": "Revolutions of 1989",
+          "target": {
+            "name": "Revolutions of 1989",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q5167679",
+          "name": "Dissolution of the Soviet Union",
+          "target": {
+            "name": "dissolution of the Soviet Union",
+            "lane": "milestones",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q83085",
+          "name": "Soviet–Afghan War",
+          "target": {
+            "name": "Soviet-Afghan War",
+            "lane": "conflicts",
+            "level": 2
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q1065",
+      "subject": "United Nations",
+      "lane": "milestones",
+      "dates": "1945",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/milestones/Q1065-united-nations.en.json",
+      "sha256": "5d2ab34d7dc74b8ab2d9dd8095f1166e97906849b66d5740be9ab2f676a563a7",
+      "status": "draft",
+      "published": {
+        "name": "United Nations",
+        "lane": "milestones",
+        "level": 1
+      },
+      "visiblePassages": 24,
+      "errors": [
+        "deep_facts.2.text: markup other than **bold** in \"When Roosevelt proposed the name \"United Nations\", Winston C…\""
+      ],
+      "connections": [
+        {
+          "qid": "Q362",
+          "name": "World War II",
+          "target": {
+            "name": "World War II",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q38130",
+          "name": "League of Nations",
+          "target": {
+            "name": "League of Nations",
+            "lane": "milestones",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q8007",
+          "name": "Franklin D. Roosevelt",
+          "target": {
+            "name": "Franklin Delano Roosevelt",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q8016",
+          "name": "Winston Churchill",
+          "target": {
+            "name": "Winston Churchill",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q855",
+          "name": "Joseph Stalin",
+          "target": {
+            "name": "Joseph Stalin",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q11613",
+          "name": "Harry S. Truman",
+          "target": {
+            "name": "Harry S. Truman",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q7813",
+          "name": "Universal Declaration of Human Rights",
+          "target": {
+            "name": "Universal Declaration of Human Rights",
+            "lane": "milestones",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q83396",
+          "name": "Eleanor Roosevelt",
+          "target": {
+            "name": "Eleanor Roosevelt",
+            "lane": "people",
+            "level": 3
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q12138",
+      "subject": "Gregorian calendar",
+      "lane": "milestones",
+      "dates": "1582",
+      "selected": true,
+      "file": "packages/data-pipeline/data/raw/profiles/milestones/Q12138-gregorian-calendar.en.json",
+      "sha256": "88db38e12d4a75f93aea9f04a929951697f5e4d778e20f0678537c99090339cb",
+      "status": "draft",
+      "published": {
+        "name": "Gregorian calendar",
+        "lane": "milestones",
+        "level": 1
+      },
+      "visiblePassages": 23,
+      "errors": [
+        "deep_facts.2.text: markup other than **bold** in \"A popular story says that crowds in 1752 England rioted over…\""
+      ],
+      "connections": [
+        {
+          "qid": "Q83029",
+          "name": "Pope Gregory XIII",
+          "target": {
+            "name": "Gregory XIII",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q11184",
+          "name": "Julian calendar",
+          "target": {
+            "name": "Julian calendar",
+            "lane": "milestones",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q1048",
+          "name": "Julius Caesar",
+          "target": {
+            "name": "Julius Caesar",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q133331",
+          "name": "First Council of Nicaea",
+          "target": {
+            "name": "First Council of Nicaea",
+            "lane": "milestones",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q172991",
+          "name": "Council of Trent",
+          "target": {
+            "name": "Council of Trent",
+            "lane": "milestones",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q42976",
+          "name": "October Revolution",
+          "target": {
+            "name": "October Revolution",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q174880",
+          "name": "Teresa of Ávila",
+          "target": {
+            "name": "Teresa of Ávila",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q207342",
+      "subject": "First nuclear weapon",
+      "lane": "milestones",
+      "dates": "1945",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/milestones/Q207342-first-nuclear-weapon.en.json",
+      "sha256": "852512bb50a26304ba77fcd8ec483d7435c9b4c1b6c938667753ee5d93a1bd93",
+      "status": "draft",
+      "published": {
+        "name": "First nuclear weapon",
+        "lane": "milestones",
+        "level": 1
+      },
+      "visiblePassages": 21,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q132537",
+          "name": "J. Robert Oppenheimer",
+          "target": {
+            "name": "Robert Oppenheimer",
+            "lane": "people",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q488",
+          "name": "Atomic bombings of Hiroshima and Nagasaki",
+          "target": {
+            "name": "atomic bombings of Hiroshima and Nagasaki",
+            "lane": "conflicts",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q362",
+          "name": "World War II",
+          "target": {
+            "name": "World War II",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q8753",
+          "name": "Enrico Fermi",
+          "target": {
+            "name": "Enrico Fermi",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q11613",
+          "name": "Harry S. Truman",
+          "target": {
+            "name": "Harry S. Truman",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q2277",
+      "subject": "Founding of the Roman Empire",
+      "lane": "milestones",
+      "dates": "28 BC",
+      "selected": true,
+      "file": "packages/data-pipeline/data/raw/profiles/milestones/Q2277-founding-of-the-roman-empire.en.json",
+      "sha256": "f0fc109a7bc5a86a665ca64f2e4d702491884d565a8cc98aef61568b7e688307",
+      "status": "draft",
+      "published": {
+        "name": "Founding of the Roman Empire",
+        "lane": "milestones",
+        "level": 1
+      },
+      "visiblePassages": 25,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q1405",
+          "name": "Augustus",
+          "target": {
+            "name": "Augustus",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q160387",
+          "name": "Battle of Actium",
+          "target": {
+            "name": "Battle of Actium",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q51673",
+          "name": "Mark Antony",
+          "target": {
+            "name": "Mark Antony",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q48174",
+          "name": "Marcus Vipsanius Agrippa",
+          "target": {
+            "name": "Marcus Vipsanius Agrippa",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q635",
+          "name": "Cleopatra",
+          "target": {
+            "name": "Cleopatra",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q1048",
+          "name": "Julius Caesar",
+          "target": {
+            "name": "Julius Caesar",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q17167",
+          "name": "Roman Republic",
+          "target": {
+            "name": "Roman Republic",
+            "lane": "milestones",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q1025466",
+          "name": "Assassination of Julius Caesar",
+          "target": {
+            "name": "assassination of Julius Caesar",
+            "lane": "conflicts",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q1407",
+          "name": "Tiberius",
+          "target": {
+            "name": "Tiberius",
+            "lane": "people",
+            "level": 3
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q2763",
+      "subject": "The Holocaust",
+      "lane": "milestones",
+      "dates": "1941–1945",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/milestones/Q2763-the-holocaust.en.json",
+      "sha256": "9e1ac5837b587d8367d9dfef14bda87a4a008c9e95b3f04707ba74a4f51151c6",
+      "status": "draft",
+      "published": {
+        "name": "The Holocaust",
+        "lane": "milestones",
+        "level": 1
+      },
+      "visiblePassages": 25,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q352",
+          "name": "Adolf Hitler",
+          "target": {
+            "name": "Adolf Hitler",
+            "lane": "people",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q43067",
+          "name": "Heinrich Himmler",
+          "target": {
+            "name": "Heinrich Himmler",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q60039",
+          "name": "Reinhard Heydrich",
+          "target": {
+            "name": "Reinhard Heydrich",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q28085",
+          "name": "Adolf Eichmann",
+          "target": {
+            "name": "Adolf Eichmann",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q362",
+          "name": "World War II",
+          "target": {
+            "name": "World War II",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q83055",
+          "name": "Operation Barbarossa",
+          "target": {
+            "name": "Operation Barbarossa",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q4583",
+          "name": "Anne Frank",
+          "target": {
+            "name": "Anne Frank",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q60029",
+          "name": "Oskar Schindler",
+          "target": {
+            "name": "Oskar Schindler",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q152850",
+          "name": "Raoul Wallenberg",
+          "target": {
+            "name": "Raoul Wallenberg",
+            "lane": "people",
+            "level": 4
+          }
+        }
+      ]
+    },
+    {
+      "qid": "Q7184",
+      "subject": "NATO",
+      "lane": "milestones",
+      "dates": "1949",
+      "selected": false,
+      "file": "packages/data-pipeline/data/raw/profiles/milestones/Q7184-nato.en.json",
+      "sha256": "9284dde1789597cd18237d22039af9de94ac3f971390acc98d1368071166d173",
+      "status": "draft",
+      "published": {
+        "name": "NATO",
+        "lane": "milestones",
+        "level": 1
+      },
+      "visiblePassages": 26,
+      "errors": [],
+      "connections": [
+        {
+          "qid": "Q8683",
+          "name": "Cold War",
+          "target": {
+            "name": "Cold War",
+            "lane": "conflicts",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q41644",
+          "name": "Warsaw Pact",
+          "target": {
+            "name": "Warsaw Pact",
+            "lane": "milestones",
+            "level": 2
+          }
+        },
+        {
+          "qid": "Q11613",
+          "name": "Harry S. Truman",
+          "target": {
+            "name": "Harry S. Truman",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q10806",
+          "name": "September 11 attacks",
+          "target": {
+            "name": "September 11 attacks",
+            "lane": "milestones",
+            "level": 1
+          }
+        },
+        {
+          "qid": "Q9916",
+          "name": "Dwight D. Eisenhower",
+          "target": {
+            "name": "Dwight D. Eisenhower",
+            "lane": "people",
+            "level": 4
+          }
+        },
+        {
+          "qid": "Q2042",
+          "name": "Charles de Gaulle",
+          "target": {
+            "name": "Charles de Gaulle",
+            "lane": "people",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q190029",
+          "name": "Kosovo War",
+          "target": {
+            "name": "Kosovo War",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q181533",
+          "name": "Bosnian War",
+          "target": {
+            "name": "War in Bosnia and Herzegovina",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q182865",
+          "name": "War in Afghanistan (2001–2021)",
+          "target": {
+            "name": "War in Afghanistan (2001–2021)",
+            "lane": "conflicts",
+            "level": 3
+          }
+        },
+        {
+          "qid": "Q110999040",
+          "name": "Russian invasion of Ukraine",
+          "target": {
+            "name": "full-scale Russo-Ukrainian war",
+            "lane": "conflicts",
+            "level": 1
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -7,19 +7,19 @@
     {
       "date": "1665–1667",
       "title": "Plague years at Woolsthorpe",
-      "text": "When the **Great Plague** closed the University of Cambridge, the young graduate went home to his family farm at **Woolsthorpe** in Lincolnshire. Working alone, he laid the groundwork of his **calculus**, ran experiments on light and began thinking about gravity, a burst of work later called his annus mirabilis, or year of wonders. Decades afterwards, an old Newton told his friend **William Stukeley** that the idea of gravitation had come to him there while watching an apple fall, the origin of the apple story still told today.",
+      "text": "During the plague years, Newton worked at his family home at **Woolsthorpe** in Lincolnshire. During his time there, he developed early ideas on **calculus**, experimented with light and explored gravitation. Decades later, **William Stukeley** recorded Newton’s recollection that watching an apple fall had prompted him to think about gravity. Stukeley preserved one of the accounts behind the famous apple story.",
       "claims": [
-        "The University of Cambridge closed in 1665 because of the Great Plague.",
-        "Isaac Newton returned to Woolsthorpe in Lincolnshire while the University of Cambridge was closed.",
+        "Newton worked at Woolsthorpe during the plague years.",
+        "Newton’s family home was at Woolsthorpe in Lincolnshire.",
         "Isaac Newton developed early ideas on calculus, optics and gravitation during the plague years of 1665 and 1666.",
         "William Stukeley recorded that Isaac Newton linked the idea of gravitation to watching an apple fall."
       ],
-      "source": "https://en.wikipedia.org/wiki/Isaac_Newton#Early_life"
+      "source": "https://royalsociety.org/news/2010/apple-tree-gravity/"
     },
     {
       "date": "1668–1672",
       "title": "A new telescope and a theory of colour",
-      "text": "Newton built a small **reflecting telescope** that used a curved mirror instead of a lens, which avoided the coloured fringes that spoiled the images of ordinary refracting telescopes. Its success with the **Royal Society** got him elected a Fellow in 1672, and that year he published his theory that **white light is a mixture of colours**, shown by splitting sunlight with a prism. The paper drew sharp criticism from **Robert Hooke**, and the quarrel left Newton so bitter that he long avoided publishing at all.",
+      "text": "Newton built a small **reflecting telescope** that used a mirror instead of a lens, which avoided the coloured fringes that spoiled the images of ordinary refracting telescopes. His telescope attracted attention at the **Royal Society**. He was elected a Fellow in 1672, and that year he published his theory that **white light is a mixture of colours**, shown by splitting sunlight with a prism. The paper drew sharp criticism from **Robert Hooke**, and the disputes made Newton reluctant to publish further work on optics.",
       "claims": [
         "Isaac Newton built a reflecting telescope in 1668.",
         "Isaac Newton was elected a Fellow of the Royal Society in 1672.",
@@ -31,65 +31,65 @@
     {
       "date": "1684–1687",
       "title": "Halley's question and the Principia",
-      "text": "In 1684 the astronomer **Edmond Halley** visited Cambridge and asked what path a planet would follow if pulled toward the Sun by a force weakening with the square of distance. Newton answered at once that it would be an ellipse, and Halley's prodding turned that answer into the **Philosophiæ Naturalis Principia Mathematica**, published in 1687, which set out the **three laws of motion** and **universal gravitation**. The Royal Society had spent its budget on a lavish book about fish, so **Halley paid for the printing himself**.",
+      "text": "In 1684 the astronomer **Edmond Halley** visited Newton in Cambridge to discuss planetary motion under an **inverse-square force**. Their discussion helped spur the work that became the **Philosophiæ Naturalis Principia Mathematica**, published in 1687. It set out the **three laws of motion** and **universal gravitation**, giving a mathematical account of motion on Earth and in the heavens. With the **Royal Society** short of funds after publishing a lavish book about fish, **Halley financed publication**.",
       "claims": [
         "Edmond Halley visited Isaac Newton in Cambridge in 1684 to ask about planetary orbits under an inverse-square force.",
         "Isaac Newton's Philosophiæ Naturalis Principia Mathematica was published in 1687.",
         "The Principia set out Isaac Newton's laws of motion and his law of universal gravitation.",
-        "Edmond Halley paid for the printing of the Principia because the Royal Society had spent its funds on De Historia Piscium."
+        "The Royal Society was short of publishing funds after De Historia Piscium, and Halley financed publication of the Principia."
       ],
       "source": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"
     },
     {
       "date": "1696–1705",
       "title": "From professor to master of the Mint",
-      "text": "Newton left Cambridge to become **Warden of the Royal Mint** in 1696, during the **Great Recoinage**, and was made **Master of the Mint** in 1699, a post he held for the rest of his life. He took on the hunt for counterfeiters himself, gathering evidence and questioning witnesses, and his case against the forger **William Chaloner** ended with Chaloner hanged in 1699. In 1705 **Queen Anne** knighted him at Cambridge, an honour historians link more to an election campaign than to his science.",
+      "text": "Newton left Cambridge to become **Warden of the Royal Mint** in 1696, during the **Great Recoinage**, and became **Master of the Mint** in 1699, holding the post for the rest of his life. He investigated counterfeiting, gathering evidence and questioning witnesses. In 1705 **Queen Anne** knighted him at Cambridge.",
       "claims": [
         "Isaac Newton became Warden of the Royal Mint in 1696.",
         "Isaac Newton became Master of the Royal Mint in 1699 and held the post until his death.",
-        "The counterfeiter William Chaloner was hanged in 1699 after being prosecuted by Isaac Newton.",
-        "Queen Anne knighted Isaac Newton in 1705, probably for political reasons connected with a parliamentary election."
+        "Newton personally investigated counterfeiting and questioned witnesses.",
+        "Queen Anne knighted Newton at Cambridge in 1705."
       ],
-      "source": "https://en.wikipedia.org/wiki/Isaac_Newton#Later_life"
+      "source": "https://www.royalmintmuseum.org.uk/journal/people/isaac-newton/"
     }
   ],
   "deep_facts": [
     {
-      "text": "The man often held up as the model of cold scientific reason spent years on **alchemy** and on reading the Bible for hidden prophecies, and wrote more on these subjects than on physics. The scale of it became clear only after his papers were sold at auction in 1936 and the economist **John Maynard Keynes** bought a large share of the alchemical manuscripts. Keynes read them and concluded that Newton was not the first of the age of reason but **the last of the magicians**.",
+      "text": "Newton left extensive writings on **alchemy** and **biblical prophecy**, much of them unpublished during his lifetime. The **1936 sale** of his private papers brought a large body of this work into new hands. **John Maynard Keynes** acquired many alchemical manuscripts in and after the sale. Reading the papers led Keynes to describe Newton as **the last of the magicians**, challenging the familiar image of Newton as a purely rational scientist.",
       "type": "hidden_story",
       "is_legend": false,
       "confidence": "high",
       "claims": [
-        "Isaac Newton wrote extensively on alchemy and biblical prophecy.",
-        "Many of Isaac Newton's unpublished papers were sold at a Sotheby's auction in 1936.",
-        "John Maynard Keynes bought many of Isaac Newton's alchemical manuscripts.",
-        "John Maynard Keynes described Isaac Newton as the last of the magicians rather than the first of the age of reason."
+        "Newton wrote extensively on alchemy and biblical prophecy; much of that work was unpublished in his lifetime.",
+        "Many of Newton’s private papers were auctioned in 1936.",
+        "Keynes acquired many alchemical manuscripts in and after the 1936 sale.",
+        "Keynes described Newton as the last of the magicians."
       ],
-      "source": "https://en.wikipedia.org/wiki/Isaac_Newton"
+      "source": "https://newtonproject.ox.ac.uk/view/contexts/CNTX00001"
     },
     {
-      "text": "To find out whether colour came from the eye or from the light, Newton experimented on himself. His notebook records that he slid a **bodkin**, a blunt needle, between his eyeball and the bone of the eye socket and pressed until he saw **white, dark and coloured circles**. He also stared at the Sun in a mirror for so long that he reportedly had to stay in a dark room for days before his sight recovered.",
+      "text": "Newton’s notebook describes an experiment in which he put a **bodkin** between his eye and the surrounding bone and pressed on the eyeball. His accompanying drawing records the **coloured circles** he saw. The experiment formed part of his investigation of colour and vision.",
       "type": "unique_detail",
       "is_legend": false,
       "confidence": "high",
       "claims": [
-        "Isaac Newton recorded inserting a bodkin between his eye and the bone of the eye socket to study vision.",
-        "Isaac Newton reported seeing coloured circles when pressing on his eye with the bodkin.",
-        "Isaac Newton reportedly damaged his sight temporarily by looking at the Sun's reflection in a mirror."
+        "Newton’s notebook records pressing on his eyeball with a bodkin placed between the eye and bone.",
+        "The accompanying drawing records the coloured circles Newton saw.",
+        "The experiment investigated colour and vision."
       ],
-      "source": "https://en.wikipedia.org/wiki/Isaac_Newton"
+      "source": "https://newtonproject.ox.ac.uk/catalogue/record/ALCH00110"
     },
     {
-      "text": "One of Newton's longest-lasting legacies has nothing to do with physics. In 1717, as Master of the Mint, he set the value of the gold **guinea at 21 shillings**. Because this priced gold high compared with silver, silver coins drained out of circulation and Britain drifted, without any law being passed, onto a de facto **gold standard** that lasted until the twentieth century.",
+      "text": "In 1717 Newton recommended reducing the official valuation of the gold **guinea**. **George I’s proclamation** set its maximum exchange value at **21 shillings**. The proclamation explained that gold was overvalued relative to silver compared with neighbouring countries, helping drive silver coins out of Britain. Newton’s work on coin values put his calculations at the centre of a practical monetary problem.",
       "type": "hidden_story",
       "is_legend": false,
       "confidence": "medium",
       "claims": [
-        "In 1717 Isaac Newton, as Master of the Mint, set the value of the guinea at 21 shillings.",
-        "The 1717 valuation of the guinea overvalued gold compared with silver.",
-        "The 1717 guinea valuation helped move Britain onto a de facto gold standard."
+        "Newton’s 1717 report recommended reducing the guinea’s valuation.",
+        "George I’s proclamation of 22 December 1717 prohibited exchanging a guinea for more than 21 shillings.",
+        "The proclamation identified gold’s overvaluation relative to silver as a cause of silver coins leaving Britain."
       ],
-      "source": "https://en.wikipedia.org/wiki/Gold_standard"
+      "source": "https://newtonproject.ox.ac.uk/view/texts/normalized/MINT00334"
     }
   ],
   "connections": [
@@ -124,14 +124,14 @@
     {
       "name": "Scientific Revolution",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Scientific_Revolution",
-      "connection": "Newton's Principia is often treated as the culmination of this transformation of science.",
+      "connection": "Newton’s mathematical account of motion and gravity became a foundation for later mechanics.",
       "importance": "high",
       "qid": "Q214078"
     },
     {
       "name": "Johannes Kepler",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Johannes_Kepler",
-      "connection": "Newton showed that Kepler's laws of planetary motion follow from an inverse-square law of gravity.",
+      "connection": "Newton linked Kepler’s idealized planetary laws to inverse-square gravitation.",
       "importance": "medium",
       "qid": "Q8963"
     },
@@ -145,14 +145,14 @@
     {
       "name": "John Maynard Keynes",
       "wikipedia_url": "https://en.wikipedia.org/wiki/John_Maynard_Keynes",
-      "connection": "Bought many of Newton's alchemical papers in 1936 and called him the last of the magicians.",
+      "connection": "Acquired many of Newton’s alchemical papers in and after the 1936 sale and called him the last of the magicians.",
       "importance": "medium",
       "qid": "Q9317"
     },
     {
       "name": "Voltaire",
       "wikipedia_url": "https://en.wikipedia.org/wiki/Voltaire",
-      "connection": "Popularised Newton's ideas in France and helped spread the apple story.",
+      "connection": "Printed an early version of the apple story in 1727.",
       "importance": "medium",
       "qid": "Q9068"
     }
@@ -178,8 +178,14 @@
       "connections_unresolved": 0
     },
     "review": {
-      "status": "draft",
-      "reviewed_at": null
+      "status": "reviewed",
+      "reviewed_at": "2026-11-17T08:39:12.076Z",
+      "approval": {
+        "policy_version": "2",
+        "profile_hash": "f62ca0cfa09428f1d6d55014d499b98c4c95c04be27b4481e8dd1cc45cfc1c33",
+        "report_hash": "94f1fb3c3f41e1ec2d14462e0637ea06164199cbee84b6642e09690a01698e41",
+        "method": "automatic"
+      }
     }
   }
 }

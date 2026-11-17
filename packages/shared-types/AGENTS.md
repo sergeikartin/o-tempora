@@ -16,7 +16,7 @@ Shared contracts both other packages import rather than redefining:
 
 ## `src/data/`
 
-Per lane (`people`/`conflicts`/`milestones`) × Detail Level (`1`-`4`) × locale (base = English, `.ru` = Russian): `<lane>.detail<N>.json` / `<lane>.detail<N>.ru.json`. Each level's file is a delta — only the entities newly added versus the previous level's floor, not a self-contained cumulative file (web concatenates them client-side). `profiles/<locale>/<slug>.json` holds one shipped Profile per entity per locale (`ru` carries the English Profile until Russian Profiles exist); an entity row's `hasProfile` says whether the file exists. Regenerated only via `data-pipeline`'s `publish-data` step (`packages/data-pipeline/AGENTS.md`) — never edit these directly.
+Per lane (`people`/`conflicts`/`milestones`) × Detail Level (`1`-`4`) × locale (base = English, `.ru` = Russian): `<lane>.detail<N>.json` / `<lane>.detail<N>.ru.json`. Each level's file is a delta — only the entities newly added versus the previous level's floor, not a self-contained cumulative file (web concatenates them client-side). `profiles/<locale>/<slug>.json` holds one shipped Profile per entity per locale (`ru` requires an approved translation of the current English source); an entity row's `hasProfile` says whether the file exists. Regenerated only via `data-pipeline`'s `publish-data` step (`packages/data-pipeline/AGENTS.md`) — never edit these directly.
 
 ## Data & attribution
 

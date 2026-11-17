@@ -13,16 +13,18 @@ import {
 import { SessionBridge } from './session.js';
 import { readStoredProfiles } from './store.js';
 import { loadSubjects } from './subjects.js';
+import { translateProfile } from './translation.js';
 import { createResearcher } from './verification/researcher.js';
 import { verifyProfile } from './verification/runner.js';
 import { resolveArticleQids } from './wikipedia-qids.js';
 import { type WriteEntry, writeProfiles } from './writer.js';
 
-const USAGE = `Usage: profiles <plan|write|finalize|verify> [flags]
+const USAGE = `Usage: profiles <plan|write|finalize|verify|translate> [flags]
   plan      --qids=Q1,Q2,... [--regenerate-stale]
   write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>] [--execution=api|session --session-dir=<absolute directory>]
   finalize  [--run-id=<id>]
-  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-model=<OpenAI id>] [--execution=api|session --session-dir=<absolute directory>]`;
+  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-model=<OpenAI id>] [--execution=api|session --session-dir=<absolute directory>]
+  translate --qids=Q1,Q2,... [--force] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--audit-model=<id>] [--execution=api|session --session-dir=<absolute directory>]`;
 
 const DEFAULT_CONCURRENCY = 3;
 
@@ -152,6 +154,7 @@ async function main(): Promise<void> {
   else if (command === 'write') await write(argv);
   else if (command === 'finalize') await finalize(argv);
   else if (command === 'verify') await verify(argv);
+  else if (command === 'translate') await translate(argv);
   else throw new Error(USAGE);
 }
 
@@ -212,6 +215,22 @@ async function verify(argv: readonly string[]): Promise<void> {
       for (const blocker of result.blockers) console.log(`  ${blocker}`);
       if (result.proposalPath)
         console.log(`  proposed edit: ${result.proposalPath}`);
+      if (result.status === 'approved' || result.status === 'skipped') {
+        const translation = await translateProfile({
+          filePath: entry.filePath,
+          dates: subject.dates,
+          complete: (prompt, role) => {
+            complete ??=
+              session?.complete ?? createCompleter('openai', auditModel);
+            return complete(prompt, role);
+          },
+        });
+        console.log(
+          `${qid}: Russian translation ${translation.status}; ${translation.filePath}`,
+        );
+        for (const blocker of translation.blockers) console.log(`  ${blocker}`);
+        if (translation.status === 'held') counts.held++;
+      }
     } catch (error) {
       counts.failed++;
       console.error(
@@ -221,6 +240,70 @@ async function verify(argv: readonly string[]): Promise<void> {
   }
   console.log(JSON.stringify(counts));
   if (counts.held || counts.retry || counts.failed) process.exitCode = 1;
+}
+
+async function translate(argv: readonly string[]): Promise<void> {
+  const unknown = argv.find(
+    (arg) =>
+      arg !== '--force' &&
+      ![
+        '--qids=',
+        '--provider=',
+        '--model=',
+        '--audit-model=',
+        '--execution=',
+        '--session-dir=',
+      ].some((prefix) => arg.startsWith(prefix)),
+  );
+  if (unknown)
+    throw new Error(`Unknown translation flag: ${unknown}\n${USAGE}`);
+  const qids = parseQidsFlag(argv);
+  if (!qids) throw new Error(`--qids is required\n${USAGE}`);
+  const session = sessionFromFlags(argv);
+  const provider = flagValue(argv, 'provider') ?? 'openai';
+  if (!isProvider(provider)) throw new Error(`Unknown provider: ${provider}`);
+  const model = flagValue(argv, 'model') ?? DEFAULT_MODEL[provider];
+  const auditModel = flagValue(argv, 'audit-model') ?? model;
+  let writer: ReturnType<typeof createCompleter> | undefined;
+  let auditor: ReturnType<typeof createCompleter> | undefined;
+  const complete: ReturnType<typeof createCompleter> = (prompt, role) => {
+    if (session) return session.complete(prompt, role);
+    if (role === 'translation-audit') {
+      auditor ??= createCompleter(provider, auditModel);
+      return auditor(prompt, role);
+    }
+    writer ??= createCompleter(provider, model);
+    return writer(prompt, role);
+  };
+  const stored = await readStoredProfiles(RAW_PROFILES_DIR);
+  const subjects = new Map(
+    loadSubjects().map((subject) => [subject.qid, subject]),
+  );
+  const counts = { approved: 0, skipped: 0, held: 0, failed: 0 };
+  for (const qid of qids) {
+    try {
+      const entry = stored.get(qid);
+      const subject = subjects.get(qid);
+      if (!entry || !subject)
+        throw new Error('No raw Profile or dataset entity for this QID');
+      const result = await translateProfile({
+        filePath: entry.filePath,
+        dates: subject.dates,
+        complete,
+        force: argv.includes('--force'),
+      });
+      counts[result.status]++;
+      console.log(`${qid}: translation ${result.status}; ${result.filePath}`);
+      for (const blocker of result.blockers) console.log(`  ${blocker}`);
+    } catch (error) {
+      counts.failed++;
+      console.error(
+        `${qid}: translation failed: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+  }
+  console.log(JSON.stringify(counts));
+  if (counts.held || counts.failed) process.exitCode = 1;
 }
 
 main().catch((error: unknown) => {
