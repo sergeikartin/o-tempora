@@ -23,7 +23,7 @@ const USAGE = `Usage: profiles <plan|write|finalize|verify|translate> [flags]
   plan      --qids=Q1,Q2,... [--regenerate-stale]
   write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>] [--execution=api|session --session-dir=<absolute directory>]
   finalize  [--run-id=<id>]
-  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-model=<OpenAI id>] [--execution=api|session --session-dir=<absolute directory>]
+  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-model=<OpenAI id>] [--translation-model=<OpenAI id>] [--execution=api|session --session-dir=<absolute directory>]
   translate --qids=Q1,Q2,... [--force] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--audit-model=<id>] [--execution=api|session --session-dir=<absolute directory>]`;
 
 const DEFAULT_CONCURRENCY = 3;
@@ -45,9 +45,12 @@ function sessionFromFlags(argv: readonly string[]): SessionBridge | undefined {
     );
   if (
     argv.some((arg) =>
-      ['--model=', '--audit-model=', '--provider='].some((prefix) =>
-        arg.startsWith(prefix),
-      ),
+      [
+        '--model=',
+        '--audit-model=',
+        '--translation-model=',
+        '--provider=',
+      ].some((prefix) => arg.startsWith(prefix)),
     )
   ) {
     throw new Error(
@@ -166,6 +169,7 @@ async function verify(argv: readonly string[]): Promise<void> {
         '--qids=',
         '--model=',
         '--audit-model=',
+        '--translation-model=',
         '--execution=',
         '--session-dir=',
       ].some((prefix) => arg.startsWith(prefix)),
@@ -180,6 +184,8 @@ async function verify(argv: readonly string[]): Promise<void> {
   const session = sessionFromFlags(argv);
   const model = flagValue(argv, 'model') ?? DEFAULT_MODEL.openai;
   const auditModel = flagValue(argv, 'audit-model') ?? model;
+  const translationModel = flagValue(argv, 'translation-model') ?? auditModel;
+  let translator: ReturnType<typeof createCompleter> | undefined;
   const stored = await readStoredProfiles(RAW_PROFILES_DIR);
   const subjects = new Map(
     loadSubjects().map((subject) => [subject.qid, subject]),
@@ -220,6 +226,10 @@ async function verify(argv: readonly string[]): Promise<void> {
           filePath: entry.filePath,
           dates: subject.dates,
           complete: (prompt, role) => {
+            if (!session && role === 'translate') {
+              translator ??= createCompleter('openai', translationModel);
+              return translator(prompt, role);
+            }
             complete ??=
               session?.complete ?? createCompleter('openai', auditModel);
             return complete(prompt, role);
