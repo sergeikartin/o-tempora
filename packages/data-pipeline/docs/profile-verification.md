@@ -2,6 +2,19 @@
 
 Run `npm run profiles --workspace packages/data-pipeline -- verify --qids=Q935,Q635 --repair`. Default API execution requires `OPENAI_API_KEY`, uses OpenAI web search, and makes paid model calls. `--model` selects the researcher; `--audit-model` selects the separate audit/repair calls (defaults to the researcher). Alternatively, `--execution=session --session-dir=<absolute directory>` uses [conversation subagents](profile-sessions.md) for research, audit and repair, with the same fetched-evidence and approval rules. Omit `--repair` to check and approve without changing prose. `--force` rechecks a current approval. Run one batch at a time.
 
+For a Gemini historical auditor, add `--audit-provider=gemini --audit-model=gemini-3.8-flash` and set `GEMINI_API_KEY`. Research, repair and Russian translation audit use OpenAI with `--model`. The Russian translator can still be selected with `--translation-model`. Provider flags apply in API mode.
+
+## Compare auditors on saved evidence
+
+Run both commands on the same QIDs to compare fresh audits without new research or changes to Profiles, reports or approvals:
+
+```sh
+npm run profiles --workspace packages/data-pipeline -- audit --qids=Q635,Q362,Q12138 --provider=gemini --model=gemini-3.8-flash
+npm run profiles --workspace packages/data-pipeline -- audit --qids=Q635,Q362,Q12138 --provider=openai --model=gpt-6.2-sol
+```
+
+Each result includes the original audit, the new audit, and reported token usage. The command needs a current verification report and its local evidence snapshots. Inspect disagreements against the excerpts, especially missed claims, misleading quotes and sources that share an origin. Include held Profiles with available evidence when testing false approvals.
+
 ## Approval policy
 
 - Extract claims from every visible field, including overview, dates, titles and Connection explanations; the writer's claims are only hints. A second call audits coverage, evidence, neutrality and narrative substance.
@@ -18,4 +31,4 @@ Each `<profile>.verification.json` contains the exact claims, evidence, correcti
 
 Humans handle essential factual/framing disagreements and protected-edit proposals. Initially audit a small selection of approvals across all three lanes, including repaired Profiles and corroborated claims; expand audits when a failure appears. Automatic approval is fallible, so use audit failures to improve fixtures and policy. Held Profiles keep the existing Description fallback.
 
-`--translation-model` can select a separate API translator while translation audits continue using `--audit-model`; omitted, it defaults to the audit model. After English approval (including a skipped current approval), the command runs [Russian translation and fidelity audit](profile-translation.md). Translation failure leaves English approval intact, exits nonzero and prevents unapproved Russian publication. Historical verification policy remains separate from the translation policy.
+`--translation-model` can select a separate API translator. The translator and translation audit default to `--audit-model` for OpenAI historical audits or `--model` for other historical audit providers. After English approval (including a skipped current approval), the command runs [Russian translation and fidelity audit](profile-translation.md). Translation failure leaves English approval intact, exits nonzero and prevents unapproved Russian publication. Historical verification policy remains separate from the translation policy.

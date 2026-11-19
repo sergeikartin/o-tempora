@@ -169,7 +169,7 @@ export async function verifyProfile(
       profile,
       options.subject,
       result.assessment,
-      sources,
+      sources.all(),
       options.complete,
     );
     const base = {

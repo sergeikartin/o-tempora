@@ -11,6 +11,7 @@ import {
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
 import type { Complete } from '../providers.js';
 import type { ProfileSubject } from '../subjects.js';
+import { auditSavedProfile } from './audit-saved.js';
 import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.js';
 import {
   type Assessment,
@@ -166,7 +167,7 @@ test('independent audit receives each finding once and shares overlapping source
     profile,
     SUBJECT,
     report,
-    sources,
+    sources.all(),
     async (prompt, role) => {
       assert.equal(role, 'audit');
       const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
@@ -226,6 +227,44 @@ async function saved(options: VerifyOptions) {
     ) as Report,
   };
 }
+
+test('saved-evidence audits use the original findings and leave approvals intact', async (t) => {
+  const { root, options } = await setup(t);
+  assert.equal((await verifyProfile(options)).status, 'approved');
+  const before = await saved(options);
+  const issues = ['overview: pilot disagrees with the original audit'];
+  const result = await auditSavedProfile(
+    options.filePath,
+    SUBJECT,
+    async (prompt, role) => {
+      assert.equal(role, 'audit');
+      const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
+      assert.equal(
+        payload.assessment.findings.length,
+        before.report.assessment.findings.length,
+      );
+      assert.deepEqual(payload.source_contexts, [
+        { source: SOURCE.id, url: SOURCE.url, excerpts: [TEXT] },
+      ]);
+      return {
+        model: 'pilot',
+        tokens: { input: 300, output: 20 },
+        text: JSON.stringify({ uncovered: [], issues, coherent: true }),
+      };
+    },
+  );
+  assert.deepEqual(result.originalAudit, before.report.audit);
+  assert.deepEqual(result.audit.issues, issues);
+  assert.deepEqual(result.tokens, { input: 300, output: 20 });
+  assert.deepEqual(await saved(options), before);
+
+  const snapshotPath = path.join(root, 'evidence', `${SOURCE.id}.json`);
+  await writeFile(snapshotPath, JSON.stringify({ ...SOURCE, text: 'changed' }));
+  await assert.rejects(
+    auditSavedProfile(options.filePath, SUBJECT, complete),
+    /Saved source content does not match/,
+  );
+});
 
 test('verified content ships through Output; changing prose, identity, policy or report revokes approval', async (t) => {
   const { root, options } = await setup(t);

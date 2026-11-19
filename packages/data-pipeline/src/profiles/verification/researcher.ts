@@ -1,7 +1,7 @@
 import OpenAI from 'openai';
 import type { ResponseInputItem } from 'openai/resources/responses/responses';
 import type { ModelProfile } from '../model-profile.js';
-import type { Complete } from '../providers.js';
+import type { Complete, Completion } from '../providers.js';
 import type { ProfileSubject } from '../subjects.js';
 import { asRecord } from '../values.js';
 import { extractJson } from '../writer.js';
@@ -12,6 +12,7 @@ import {
   parseAudit,
   passages,
   type Report,
+  type Source,
 } from './policy.js';
 import type { SourceStore } from './sources.js';
 
@@ -138,9 +139,13 @@ export async function auditProfile(
   profile: ModelProfile,
   subject: ProfileSubject,
   assessment: Assessment,
-  sources: SourceStore,
+  sources: readonly Source[],
   complete: Complete,
-): Promise<{ audit: Report['audit']; model: string }> {
+): Promise<{
+  audit: Report['audit'];
+  model: string;
+  tokens: Completion['tokens'];
+}> {
   const evidenceBySource = new Map<string, Evidence[]>();
   for (const finding of assessment.findings) {
     for (const item of finding.evidence) {
@@ -151,7 +156,7 @@ export async function auditProfile(
   }
 
   const contextIndexes = new Map<Evidence, number>();
-  const sourceContexts = sources.all().flatMap((source) => {
+  const sourceContexts = sources.flatMap((source) => {
     const items = evidenceBySource.get(source.id);
     if (!items) return [];
     const ranges = items
@@ -194,5 +199,6 @@ ${JSON.stringify({ subject, profile, passages: passages(profile), assessment: { 
   return {
     audit: parseAudit(extractJson(response.text)),
     model: response.model,
+    tokens: response.tokens,
   };
 }
