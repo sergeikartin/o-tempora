@@ -24,8 +24,6 @@ interface ShippedProfile {
   deepFacts: { text: string }[];
 }
 
-// Only reviewed Profiles ship, so this is empty until the first batch is
-// promoted.
 const profileModules = import.meta.glob<ShippedProfile>(
   '../../../../shared-types/src/data/profiles/en/*.json',
   { eager: true, import: 'default' },

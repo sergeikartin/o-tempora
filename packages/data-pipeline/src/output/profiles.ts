@@ -59,9 +59,7 @@ function parseSource(value: unknown): { sourceUrl?: string } {
     ) {
       return { sourceUrl: url.href };
     }
-  } catch {
-    // Missing or unusable sources leave the passage readable without a link.
-  }
+  } catch {}
   return {};
 }
 
@@ -203,7 +201,6 @@ export async function readRawProfiles(dir: string): Promise<RawProfile[]> {
   return profiles;
 }
 
-// An entity a Profile can describe or connect to.
 export interface ProfileTarget {
   // Wikidata QID. A Person's dataset `id` is Pantheon's, so it is not the join key.
   qid: string;
@@ -332,7 +329,6 @@ export function shipProfiles(
   return shipped;
 }
 
-// Marks each entity that has a shipped Profile (TimelineEntry.hasProfile).
 export function withProfileFlags<T extends { slug: string }>(
   entries: T[],
   profiles: ReadonlyMap<string, Profile>,

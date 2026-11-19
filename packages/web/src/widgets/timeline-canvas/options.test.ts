@@ -143,8 +143,8 @@ test('zoomOut decreases pixelsPerYear by the zoom step, clamped to the zoomed-ou
 });
 
 test('pinchPixelsPerYear scales startPixelsPerYear by the live distance ratio', () => {
-  expect(pinchPixelsPerYear(10, 100, 150, 1000)).toBeCloseTo(15); // fingers spread 1.5x -> zoom in 1.5x
-  expect(pinchPixelsPerYear(10, 100, 50, 1000)).toBeCloseTo(5); // fingers pinched to 0.5x -> zoom out 0.5x
+  expect(pinchPixelsPerYear(10, 100, 150, 1000)).toBeCloseTo(15);
+  expect(pinchPixelsPerYear(10, 100, 50, 1000)).toBeCloseTo(5);
 });
 
 test('pinchPixelsPerYear clamps the result to the same bounds as zoomIn/zoomOut', () => {
@@ -283,7 +283,7 @@ test('zoomAnimationGroupTransform: tx re-centers on centerYear at viewport cente
     scrollLeftStart,
     clientWidthPx,
   });
-  const domX = (centerYear - minYear) * startPixelsPerYear; // where centerYear is actually drawn right now
+  const domX = (centerYear - minYear) * startPixelsPerYear;
   const onScreenX = domX * sx + tx - scrollLeftStart; // domX under this transform, minus the (held-fixed) real scrollLeft
   expect(onScreenX).toBeCloseTo(clientWidthPx / 2);
 });

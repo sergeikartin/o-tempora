@@ -19,7 +19,6 @@ import styles from './TopBar.module.css';
 interface TopBarProps {
   selectedLevelId: DetailLevelId;
   onSelectDetailLevel: (level: DetailLevel) => void;
-  // Detail Level ids still loading their delta file (see DetailLevelSwitch).
   loadingLevelIds: DetailLevelId[];
   searchQuery: string;
   onSearchQueryChange: (query: string) => void;
@@ -36,10 +35,6 @@ interface TopBarProps {
   onOpenHelp: () => void;
 }
 
-// The strip of always-needed controls above the timeline (GLOSSARY.md's Top
-// Bar): Search, Detail Level, the Filters button (with its Filters Panel) and
-// Help. The row wraps via CSS alone, so the prerendered markup needs no
-// viewport width.
 export function TopBar({
   selectedLevelId,
   onSelectDetailLevel,

@@ -4,9 +4,7 @@ import {
   type PageviewsLanguage,
 } from './pageviews-languages.js';
 
-// Same batch size/delay convention as batched-sparql-fetch.ts and
-// batched-commons-image-attribution-fetch.ts, here pacing per-article REST
-// calls (no VALUES-style batching).
+// The Pageviews API takes one article per request, so pace groups of requests.
 const BATCH_SIZE = 50;
 const BATCH_DELAY_MS = 500;
 
@@ -14,10 +12,7 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// A sitelink article URL (from the enrichment queries' per-language OPTIONAL
-// bindings) is `https://{lang}.wikipedia.org/wiki/<Title>`, while the pageviews
-// endpoint wants a bare underscore-joined title; this takes the URI's last path
-// segment (as commons-client.ts's extractCommonsFileTitle does for P18 URIs).
+// Pageviews expects a bare title, while Wikidata supplies the full article URL.
 export function extractWikipediaArticleTitle(
   articleUrl: string,
 ): string | undefined {
@@ -36,9 +31,6 @@ export interface PageviewsWindow {
   endYYYYMM01: string;
 }
 
-// The 4 most recently completed calendar years as of `now`, excluding the
-// current partial year (docs/adr/0010's benchmark window). A fixed pipeline
-// constant: changing it needs a code change and a re-run.
 export function trailingFourYearWindow(
   now: Date = new Date(),
 ): PageviewsWindow {
@@ -54,14 +46,8 @@ function projectFor(lang: PageviewsLanguage): string {
   return `${lang}.wikipedia`;
 }
 
-/**
- * For every entity's resolved per-language sitelink article URLs, sums
- * trailing-4-year monthly pageviews across the fixed 7-language basket,
- * keyed by the caller's own entity id. A language with no resolved URL, an
- * unparseable URL, or a failed individual pageviews call contributes 0 for
- * that language — best-effort, matching ADR 0010's "pageviews-fetch failure
- * degrades to 0 rather than dropping the row" decision.
- */
+// A missing article or failed request contributes zero for that language so
+// one lookup failure cannot drop the entity from the score.
 export async function batchedPageviewsFetch(
   entries: Array<{
     id: string;

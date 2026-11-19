@@ -11,9 +11,6 @@ import {
   yearMonthToFractionalYear,
 } from '@o-tempora/shared-types';
 
-// Row-stacking gap in the pixel space of REFERENCE_PIXELS_PER_YEAR. Pipeline
-// only: packages/web no longer packs rows (see assignRows for why the scale's
-// origin, MIN_YEAR, doesn't matter, only the per-year factor).
 const MIN_ROW_GAP_PX = 8;
 
 // A zero- or negative-width range (e.g. a missing end) can't pack as a bar, so
@@ -33,14 +30,8 @@ interface RowInterval {
   fameScore: number;
 }
 
-// Fame-priority interval-graph row assignment (docs/adr/0005-row-assignment-moves-to-the-pipeline.md):
-// processes items by fame tier (fameScore rounded to the nearest integer,
-// descending), not chronologically, greedily placing each in the lowest row
-// that's free (with `gap`) anywhere in its span. The top tier claims row 0
-// first and keeps it as long as nothing later conflicts, so row 0 holds the
-// highest-fame tier and each later row is progressively less famous. Fields
-// read as years but the algorithm is numeric: every caller passes pixel-space
-// positions at REFERENCE_PIXELS_PER_YEAR.
+// Despite the field names, callers pass pixel positions at the Reference Scale
+// so label widths and the gap use the same units.
 export function assignRows(
   items: RowInterval[],
   gap: number,
@@ -48,16 +39,8 @@ export function assignRows(
   const rowIntervals: RowInterval[][] = [];
   const rowOfId = new Map<string, number>();
 
-  // Tier must stay the primary sort key: a lower-tier item is processed after
-  // every higher-tier one and can never take a row a higher-tier item needs, so
-  // dropping a whole tier changes nothing about the remaining rows
-  // (packages/web/docs/adr/0007-static-row-assignment-replaces-live-per-render-packing.md's
-  // Why section). The guarantee is per tier, not per raw score: same-tier items
-  // are ordered by the startYear/id tie-break below, so a floor that splits a
-  // tier (e.g. fameScore>=88 inside tier 88's [87.5, 88.5)) can shift a surviving
-  // item's row (see the test `assignRows can shift a same-tier survivor's row
-  // when a floor splits its tier`). Reordering these keys or adding a primary key
-  // ahead of tier (e.g. category) breaks what web ADR 0007 depends on.
+  // Sort by rounded Fame Score first so removing a whole lower tier cannot
+  // change higher-tier rows. Filtering inside one rounded tier has no such guarantee.
   const sorted = [...items].sort(
     (a, b) =>
       Math.round(b.fameScore) - Math.round(a.fameScore) ||
@@ -84,9 +67,7 @@ export function assignRows(
   return rowOfId;
 }
 
-// Rows are language-independent (one per entity, shared by every language
-// build), so a label's footprint is its widest rendering across languages.
-// `altNames` maps id → the other language's name.
+// Reserve the widest label across languages so both locales can share rows.
 type AltNames = ReadonlyMap<string, string>;
 
 function widestNamePx(name: string, altName: string | undefined): number {
@@ -139,7 +120,6 @@ function labelWidthPx(name: string, altName: string | undefined): number {
   return Math.max(widest(name), altName === undefined ? 0 : widest(altName));
 }
 
-// A period's label hangs below its line, left-aligned to its start.
 function rangeInterval(
   name: string,
   altName: string | undefined,
@@ -151,7 +131,6 @@ function rangeInterval(
   return { start: x1, end: Math.max(x2, x1 + labelWidthPx(name, altName)) };
 }
 
-// A point's label sits to the right of its dot, on the same line.
 function pointInterval(
   name: string,
   altName: string | undefined,

@@ -28,7 +28,7 @@ test('computeFameScore clamps S_sitelinks at 100 once sitelinks exceeds the 350 
     sitelinks: 10_000_000,
     pageviews: 0,
   });
-  assert.equal(atBenchmark, 60); // 0.60 * 100 + 0.40 * 0
+  assert.equal(atBenchmark, 60);
   assert.equal(wayOverBenchmark, 60);
 });
 
@@ -41,7 +41,7 @@ test('computeFameScore clamps S_pageviews at 100 once pageviews exceeds the 200M
     sitelinks: 0,
     pageviews: 50_000_000_000,
   });
-  assert.equal(atBenchmark, 40); // 0.60 * 0 + 0.40 * 100
+  assert.equal(atBenchmark, 40);
   assert.equal(wayOverBenchmark, 40);
 });
 

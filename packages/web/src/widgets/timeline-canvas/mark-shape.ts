@@ -7,9 +7,6 @@ import {
   SELECTION_HALO_PX,
 } from './options';
 
-// Not exported from the slice's public index.ts: internal to PeopleLane and
-// ConflictsMilestonesLane's enter branches.
-
 /**
  * One of a mark's 4 fixed DOM children — built once per entering datum, in
  * declaration order, from a `<rect>`/`<line>`/`<circle>`/`<text>`, optionally
@@ -25,7 +22,6 @@ export interface MarkShapePart {
   styleKey: string;
   /** Attrs fixed at creation time — never touched again by the update selection. */
   attrs?: Record<string, string | number>;
-  /** Wraps this part in its own `<g class={wrapperClass}>`. */
   wrapperClass?: string;
 }
 
@@ -108,12 +104,6 @@ export const POINT_MARK_SHAPE: MarkShape = [
 /** Every mark's real hover/click target — see each lane's own `.d3-hit` comment for why a thin line/dot needs a separate, oversized rect. */
 export const MARK_ID_SELECTOR = '.d3-hit';
 
-/**
- * Appends one mark's fixed children (per `shape`, in the same order) under
- * `g`, returned in that same order so the caller can destructure them
- * positionally and attach each part's data-driven initial position — that
- * part varies per mark kind and stays with the lane, not the shared shape.
- */
 type MarkChild<Datum> = d3.Selection<Element, Datum, SVGGElement, unknown>;
 
 export function buildMarkChildren<Datum>(

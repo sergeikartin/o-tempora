@@ -98,8 +98,8 @@ test('computeDensityProfile raises People depth to 2 where two lifespans overlap
     }, 0);
     return profile.peopleDepth[bucket] ?? 0;
   };
-  expect(depthAtYear(1075)).toBe(2); // both lifespans active
-  expect(depthAtYear(1020)).toBe(1); // only 'a'
+  expect(depthAtYear(1075)).toBe(2);
+  expect(depthAtYear(1020)).toBe(1);
 });
 
 test("computeDensityProfile's eventsDepth reflects the merged Conflicts+Milestones row packing, not two independent series", () => {

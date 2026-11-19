@@ -45,7 +45,6 @@ export function validateEntries<T extends Person | ConflictEntry | Milestone>(
 type Locale = 'en' | 'ru';
 type DetailLevelIndex = 1 | 2 | 3 | 4;
 
-// Each lane's key paired with the entityType validateEntries logs under.
 const LANES = [
   { key: 'people', entityType: 'person' },
   { key: 'conflicts', entityType: 'conflict' },
@@ -57,11 +56,7 @@ type LaneKey = (typeof LANES)[number]['key'];
 type DatasetModule = { default: unknown };
 type Importer = () => Promise<DatasetModule>;
 
-// Each lane's dataset ships as 4 delta files per locale, one per Detail Level
-// (GLOSSARY.md, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md,
-// web/docs/adr/0009). Every import() must be a literal specifier so Vite
-// keeps each file its own chunk, which is why this is a table of 24 literal
-// imports; a missing level/locale/lane combination is a type error.
+// Vite needs literal import paths to emit one chunk per lane, locale and Detail Level.
 const IMPORTERS: Record<
   DetailLevelIndex,
   Record<Locale, Record<LaneKey, Importer>>
@@ -178,8 +173,6 @@ interface NetworkInformation {
   effectiveType?: string;
 }
 
-// On save-data or a 2G-class connection the idle-prefetch below never runs;
-// level 3 then loads only through requestLevel3Load.
 function isSaveDataOrSlowConnection(): boolean {
   const connection = (
     navigator as Navigator & { connection?: NetworkInformation }
@@ -215,7 +208,6 @@ export const level3DatasetPromise: Promise<LocaleDatasets> = new Promise(
   },
 );
 
-// No-op once level 3 is loading or loaded.
 export function requestLevel3Load(): void {
   startLevel3Load?.();
   startLevel3Load = undefined;

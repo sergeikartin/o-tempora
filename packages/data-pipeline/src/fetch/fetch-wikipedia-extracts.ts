@@ -91,12 +91,7 @@ function extractQid(uri: string): string | undefined {
   return ENTITY_URI_PATTERN.exec(uri)?.[1];
 }
 
-// People's Russian article title has no CSV column; it comes back as
-// ?articleRu from queries/taglines.ts's enrichment query (the only
-// per-language title People fetch; Conflicts/Milestones already have one per
-// basket language, "ru" included; see loadConflictsEntriesRu/
-// loadMilestonesEntriesRu). Reads fetch-taglines.ts's raw SPARQL output, the
-// same raw-file handoff loadPeopleEntries uses for Pantheon's CSV.
+// Pantheon supplies only an English article slug, so Russian titles come from Wikidata.
 async function loadPeopleEntriesRu(): Promise<WikipediaExtractEntry[]> {
   const raw = validateSparqlResultShape(
     JSON.parse(
@@ -226,23 +221,8 @@ async function runExtractPass(
   );
 }
 
-// Fetches a Wikipedia lead-paragraph extract for every People/Conflicts/
-// Milestones entity with a resolvable English article, and a second pass
-// against ru.wikipedia.org for those with a resolvable Russian one: the raw
-// source of `description`, consumed by transform/index.ts's loadRawRecord calls
-// (transformPeople/transformConflicts/transformMilestones). Runs after
-// fetchPantheon() (People's slug/?articleRu source via fetch-taglines.ts),
-// fetchConflictsEnrichment() and fetchMilestonesEnrichment()
-// (wikipediaUrl/articleUrls.ru source) are on disk. Lower Russian coverage is
-// expected; the per-field English fallback covers it, and it isn't an error.
-//
-// A lane arg scopes the source read and output to one lane; the ~2/second
-// courtesy pace (batchedWikipediaExtractFetch) holds within that lane-scoped
-// run, per language pass. Omitted, all lanes' entries are paced together in one
-// sequential run per language, not three concurrent ones. That pace is a global
-// ceiling only if lane-scoped fetches aren't also run concurrently in separate
-// processes (packages/data-pipeline/AGENTS.md, docs/adr/0012-lane-scoped-fetch.md).
-// The English and Russian passes run sequentially for the same reason.
+// Pace requests across all requested lanes and both languages together. Concurrent
+// fetch runs would each pace independently and exceed the intended request rate.
 export async function fetchWikipediaExtracts(
   lane?: Lane,
   qids?: QidFilter,

@@ -54,8 +54,6 @@
   top: 0;
   height: 5px;
   width: 1px;
-  /* One shade lighter than the Year Axis's own century tick (border-emphasis)
-     so the minimap's marks read as quieter than the real axis above them. */
   background-color: var(--color-border-strong);
 }
 
@@ -77,8 +75,6 @@
   overflow: hidden;
   border-radius: 0 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px);
   cursor: pointer;
-  /* See .centuryStrip's comment — fades in over .wrapper's already-solid
-     background rather than .wrapper itself. */
   animation: fadeIn var(--motion-duration-base) var(--motion-easing);
 }
 
@@ -94,7 +90,6 @@
   vector-effect: non-scaling-stroke;
 }
 
-/* People's Row Depth, mirrored above the baseline. */
 .peopleArea {
   fill: var(--color-accent-selected);
   fill-opacity: 0.55;
@@ -168,7 +163,7 @@
   transform: translateX(-50%);
   margin-bottom: 4px;
   padding: 4px 8px;
-  border-radius: 6px; /* radius-sm */
+  border-radius: 6px;
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border-subtle);
   box-shadow: 0 2px 6px

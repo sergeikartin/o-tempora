@@ -3,7 +3,6 @@ import path from 'node:path';
 import { PROFILE_LANES } from '@o-tempora/shared-types';
 import { asRecord, asString } from '../output/profiles.js';
 
-// What plan and finalize need to know about a committed record.
 export interface StoredProfile {
   qid: string;
   filePath: string;

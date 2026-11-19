@@ -41,8 +41,6 @@ export interface PromptInputs {
   wikipediaUrl: string;
 }
 
-// The text sent to the model: the prompt block with its `{type}`, `{name}`,
-// `{dates}` and `{wikipedia_url}` placeholders filled in.
 export function renderPrompt(markdown: string, inputs: PromptInputs): string {
   const block = promptBlock(markdown);
   if (block === undefined) throw new Error('profile.md: no "## Prompt" block');

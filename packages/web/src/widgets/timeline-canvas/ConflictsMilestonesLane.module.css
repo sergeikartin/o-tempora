@@ -1,17 +1,9 @@
-/* The zoom-button animation (ConflictsMilestonesLane.tsx) writes
-   `translate(tx) scale(sx)` to this group from a JS rAF loop, not a CSS
-   transition — origin 0 0 makes that scale pivot from SVG user-space's own
-   origin (year MIN_YEAR), the same coordinate system the group's marks are
-   laid out in. */
+/* Zoom transforms use the same SVG origin as the marks. */
 :global(.zoomGroup) {
   transform-origin: 0 0;
 }
 
-/* The zoom animation's per-label counter-scale (ConflictsMilestonesLane.tsx)
-   targets these wrappers, not .label: .label has `transition: transform` for
-   the hover-grow, which would smooth a per-frame JS transform write and lag it
-   a frame, wobbling the label's width. Same top-left anchor as .label's
-   hover-scale so both scales agree on "in place". */
+/* Keep zoom’s per-frame counter-scale outside the hover transition so labels do not lag. */
 :global(.d3-range-name-zoom) {
   transform-box: fill-box;
   transform-origin: left top;
@@ -24,12 +16,7 @@
 
 .svg {
   display: block;
-  /* An exiting mark keeps its last-committed position (and fades there) for
-     the length of the exit transition, but totalHeight
-     (ConflictsMilestonesLane.tsx) shrinks to the new, filtered row count in
-     the same commit the fade starts — SVG roots clip to their own height by
-     default, so without this an exit fade at a since-dropped row is
-     invisible instead of fading. */
+  /* Let exiting marks fade in their old rows even when the SVG shrinks. */
   overflow: visible;
 }
 
@@ -57,18 +44,11 @@
   transition:
     r var(--motion-duration-fast) var(--motion-easing),
     opacity var(--motion-duration-fast) var(--motion-easing);
-  /* The zoom-button animation's counter-scale (ConflictsMilestonesLane.tsx)
-     writes a bare `scale(1/sx, 1)` directly here (unlike .label below,
-     which needs a separate wrapper) — fill-box + the default center
-     transform-origin pivots it at the circle's own center, and .dot's own
-     hover effect changes `r`, not `transform`, so there's no competing
-     CSS transition on this property to fight the per-frame writes. */
+  /* Pivot the zoom counter-scale around the dot’s center. Hover changes the
+     radius, leaving transform free for zoom. */
   transform-box: fill-box;
 }
 
-/* Absolute px (not multipliers of PERIOD_LINE_HEIGHT/POINT_RADIUS in
-   options.ts) since CSS can't read those JS constants — kept close to them
-   (6px/5px) by hand. */
 :global(.d3-range):hover .line {
   stroke-width: 9px;
   opacity: 1;
@@ -84,13 +64,7 @@
   transform: scale(1.15);
 }
 
-/* Selection / search-jump highlight (GLOSSARY.md's Search); see
-   PeopleLane.module.css's identical rule. A wider duplicate line behind the
-   range's own line (.d3-line-halo), not a CSS outline filter, which clips to
-   nothing on horizontal lines. The translucent ink fill never fights a
-   Conflict's flat color or a Milestone's category color. Always present once a
-   mark has been selected, invisible by default, toggled by id in
-   ConflictsMilestonesLane.tsx's effect. pointer-events: none. */
+/* A duplicate line forms the halo because a horizontal line has no height for an SVG filter region. */
 .lineHalo {
   fill: none;
   stroke: var(--color-selection-halo);
@@ -99,12 +73,6 @@
   transition: opacity var(--motion-duration-fast) var(--motion-easing);
 }
 
-/* The point-marker half of the same highlight: a real, wider duplicate
-   circle drawn behind the real dot (ConflictsMilestonesLane.tsx's
-   .d3-dot-halo), sized off SELECTED_POINT_RADIUS_PX instead of the line
-   height. transform-box: fill-box matches .dot's own — both need the zoom
-   animation's per-frame counter-scale (ConflictsMilestonesLane.tsx) to
-   pivot at the circle's own center, not the svg origin. */
 .dotHalo {
   fill: var(--color-selection-halo);
   opacity: 0;
@@ -113,22 +81,11 @@
   transition: opacity var(--motion-duration-fast) var(--motion-easing);
 }
 
-/* Shared "make the selection halo above visible" toggle — applies equally
-   to the line halo and dot halo, since both are otherwise identical
-   opacity: 0 → 1 switches. Declared after every rule it overrides (plain
-   opacity: 0 above, same specificity) since CSS Modules compile each class
-   to an equally-specific single-class selector, so source order — not
-   specificity — decides the tie. */
 .searchHighlight {
   opacity: 1;
 }
 
-/* A selected mark stays permanently at its hover-grown size instead of
-   shrinking back the moment the pointer leaves — a click is a hover that
-   stuck, so there's no separate "selected size", only whichever of
-   hover/selected is currently true. Same hardcoded 9px/7px as the :hover
-   rules above (options.ts's SELECTED_LINE_HEIGHT_PX/SELECTED_POINT_RADIUS_PX
-   size the rings against these same two numbers on the JS side). */
+/* Match the hover sizes and the SELECTED_* dimensions in options.ts so the halos fit. */
 .line.searchHighlight {
   stroke-width: 9px;
 }
@@ -137,11 +94,6 @@
   r: 7px;
 }
 
-/* The label half of the highlight: kept in ink and scaled with the same
-   hover-grow as .line/.dot ("selected = hover that stuck"). No outline or halo
-   on text, which would dilate glyph strokes into a blob. Toggled alongside
-   .searchHighlight but scoped to .range-name/.point-name in
-   ConflictsMilestonesLane.tsx's effect. */
 .label.searchHighlightLabel {
   fill: var(--color-text-primary);
   transform: scale(1.15);
@@ -154,18 +106,11 @@
 .label {
   font-family: Archivo, sans-serif;
   font-size: 11px;
-  /* Scaling via transform rather than font-size: the latter recomputes the
-     hanging-baseline metric at each size, which visibly nudges the glyphs
-     down as they grow. transform-box/-origin pin the scale to the label's
-     own top-left point (where it's already anchored — text-anchor:
-     start, dominant-baseline: hanging) so it grows in place instead of
-     drifting. */
+  /* Transform scaling avoids the baseline shift caused by changing font-size. */
   transform-box: fill-box;
   transform-origin: left top;
   transition: transform var(--motion-duration-fast) var(--motion-easing);
   fill: var(--color-text-primary);
-  /* Ink rather than the mark's color: the bar or dot carries the category.
-     Clickable (same data-entity-id/-type as the line/dot), so pointer-events
-     stays default; user-select stays off so a click doesn't select the text. */
+  /* Keep labels independently legible. The mark carries the category color. */
   user-select: none;
 }

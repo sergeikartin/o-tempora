@@ -1,11 +1,3 @@
-// Wikipedia's REST summary API, distinct from Wikidata's SPARQL endpoint
-// (wikidata-client.ts), Commons' imageinfo API (commons-client.ts) and the
-// Pageviews Analytics API (pageviews-client.ts). Resolves an entity's
-// lead-paragraph prose for `description`. Single-title lookups only (no
-// VALUES-style batching), against en.wikipedia.org or ru.wikipedia.org via the
-// `lang` argument; the Russian description is the Russian article's own
-// extract, not a translation.
-
 export type WikipediaLanguage = 'en' | 'ru';
 
 export interface WikipediaSummaryResponse {
@@ -27,9 +19,6 @@ const USER_AGENT =
   'o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)';
 
 const MAX_RETRIES = 3;
-// As in commons-client.ts and pageviews-client.ts: a single-title summary read
-// is an indexed lookup with no comparable server-side deadline to budget
-// against.
 const REQUEST_TIMEOUT_MS = 30_000;
 const RETRYABLE_SERVER_ERROR_STATUSES = new Set([502, 503, 504]);
 const BACKOFF_BASE_MS = 2_000;

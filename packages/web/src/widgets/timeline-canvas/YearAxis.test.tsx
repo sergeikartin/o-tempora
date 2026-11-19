@@ -117,8 +117,8 @@ test('decade labels are omitted (century labels still render) once zoomed out pa
   const labels = Array.from(container.querySelectorAll('.year-axis-label')).map(
     (el) => el.textContent,
   );
-  expect(labels).toContain(formatYearLike(1800)); // century — always shown
-  expect(labels).not.toContain(formatYearLike(1810)); // decade — suppressed
+  expect(labels).toContain(formatYearLike(1800));
+  expect(labels).not.toContain(formatYearLike(1810));
 });
 
 test('labels stay visible at spacing above the threshold', () => {
@@ -245,7 +245,6 @@ test('a domain spanning the BCE/CE boundary renders two independently-phased rul
   const ceRuler = container.querySelector('.year-axis-ruler') as HTMLElement;
   expect(bceRuler).toBeTruthy();
   expect(ceRuler).toBeTruthy();
-  // Widths sum to the full scrollable width, split exactly at year 0.
   expect(
     parseFloat(bceRuler.style.width) + parseFloat(ceRuler.style.width),
   ).toBeCloseTo(20000);
@@ -257,18 +256,7 @@ test('a domain spanning the BCE/CE boundary renders two independently-phased rul
 });
 
 test("a BCE decade label sits exactly on the BCE ruler region's own tick grid (the bug from the reference screenshot)", () => {
-  // Regression: before splitting the ruler into two phases, a BCE label
-  // (e.g. "10 BCE", at astronomical year -9) rendered one year's
-  // pixel-width away from its nearest CSS gridline tick, which was still
-  // phased on the old multiples-of-10 grid (a tick at -10, not -9). Both
-  // the label's x and the BCE ruler's own box share the same origin (the
-  // domain's start year, at pixel 0), so this compares them directly. The
-  // BCE ruler's CSS tile phase is computed from the real app's MIN_YEAR
-  // (options.ts), so this synthetic domain's start must share MIN_YEAR's
-  // residue mod 10/100 for the two to line up — shifting by 1000 (itself
-  // a multiple of both) keeps that residue while staying a self-contained
-  // synthetic domain, so this doesn't need updating whenever PAN_MIN_YEAR
-  // does.
+  // BCE labels and their CSS tick marks must land on the same historical-year phase.
   const domainStart = PAN_MIN_YEAR - 1000;
   const { container } = render(
     <YearAxis
@@ -299,16 +287,7 @@ test("a BCE decade label sits exactly on the BCE ruler region's own tick grid (t
 });
 
 test("a CE decade label sits exactly on the CE ruler region's own tick grid", () => {
-  // Regression: the CE ruler's own local origin (x=0) is astronomical year
-  // 0, not MIN_YEAR — its tick-grid phase must be computed relative to that,
-  // not to MIN_YEAR (options.ts's phaseOffsetYears), or every CE tick lands
-  // one year off from its round-number label (e.g. a "1900" label centered
-  // over the tick actually drawn at year 1901). The domain must span year 0
-  // (unlike most of this file's fixtures) so the CE ruler's own box doesn't
-  // start exactly at a round-number year by coincidence of the synthetic
-  // domain — the label's x (xScale-absolute) needs translating into the CE
-  // ruler's own local space via the BCE ruler's rendered width, same as the
-  // real component does by DOM layout.
+  // Compute the CE phase relative to the CE ruler’s own origin at astronomical year 0.
   const xScale = scaleFor(-1000, 3000, 40000);
   const { container } = render(
     <YearAxis xScale={xScale} visibleStartYear={1750} visibleEndYear={1950} />,

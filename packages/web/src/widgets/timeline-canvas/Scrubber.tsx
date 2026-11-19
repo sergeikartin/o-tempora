@@ -26,9 +26,7 @@ interface ScrubberProps {
   ref?: Ref<ScrubberHandle>;
   viewportStartYear: number;
   viewportEndYear: number;
-  // Fired continuously while the thumb is dragged, 1:1 with the pointer.
   onCenterYearChange: (centerYear: number) => void;
-  // Fired once per tap on the track: a discrete target, so the caller glides.
   onCenterYearJump: (centerYear: number) => void;
 }
 
@@ -118,7 +116,6 @@ export function Scrubber({
 
   function handleThumbPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
-    // A press on the thumb drags it instead of jumping (React events bubble).
     event.stopPropagation();
     const year = yearAtPointer(event.clientX);
     if (year === null) return;

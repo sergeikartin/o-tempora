@@ -9,9 +9,6 @@ initMonitoring();
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('landing index.html is missing #root');
-// Same prerendered-or-fresh split as main.tsx: the build prerenders the
-// landing markup (vite-plugins/prerender-default-viewport.ts), the dev server
-// doesn't.
 if (rootElement.hasChildNodes()) {
   hydrateRoot(rootElement, <LandingPage />);
 } else {

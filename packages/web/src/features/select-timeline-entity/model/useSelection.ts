@@ -8,8 +8,6 @@ import {
 } from '../../../shared/lib/entity';
 import { trackEvent } from '../../../shared/lib/track-event';
 
-// Defined in shared/lib/entity/ because features/search-timeline-entities
-// also needs them and FSD forbids same-layer feature imports.
 export type {
   EntityType,
   SelectedEntityRef,
@@ -23,11 +21,7 @@ function currentLinkSlug(): string | null {
     : readEntityLinkSlug(window.location.search);
 }
 
-// Writes `slug` into the URL unless it already says exactly that, so picking
-// what the URL already names adds no history entry, and a link with extras is
-// rewritten to what actually opened. The Profile Anchor fragment belongs to the
-// entity the link named, so it is dropped unless `keepAnchor` says it still
-// applies.
+// Keep the fragment only while it still refers to the same entity.
 function writeEntityLink(
   slug: string | null,
   mode: 'push' | 'replace',
@@ -41,25 +35,8 @@ function writeEntityLink(
   else window.history.replaceState(window.history.state, '', url);
 }
 
-// The Selection (GLOSSARY.md): the one entity whose panel is open, mirrored into
-// the URL's Entity Link (`?e=<slug>`). Shared by widgets/timeline-canvas (the
-// click source) and widgets/detail-panel.
-//
-// On initial load and Back/forward, `pendingLinkSlug` holds the entity slug
-// until the app finds the entity and passes its member to `openLink`.
-//
-// A Profile Anchor (`#moment-<n>` / `#fact-<n>`) arriving with the link is
-// exposed as `anchor` once its entity opens; it is gone as soon as the
-// Selection becomes a different entity or closes.
-//
-// History: picking an entity from an empty Selection pushes an entry, so Back
-// closes the panel in one step; every later click or Search pick while the panel
-// is open, and closing, replaces it. A Connection hop always pushes, so Back
-// retraces the hops.
-//
-// All callbacks are stable (useCallback) because they are effect dependencies
-// in TimelineCanvas's click listener and DetailPanel's dismiss listeners,
-// which would otherwise be re-added on every App render.
+// Back closes the first opened Selection and retraces Connection hops.
+// The callbacks stay stable for the canvas and panel listener effects.
 export function useSelection() {
   const [member, setMember] = useState<SelectionMember | null>(null);
   // Mirrors `member` for the callbacks, so they can read the latest Selection
@@ -89,7 +66,6 @@ export function useSelection() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // A click, a Search pick or a Connection: the Selection becomes this entity.
   const replace = useCallback((next: SelectionMember) => {
     const previous = memberRef.current;
     memberRef.current = next;

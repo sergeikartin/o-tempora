@@ -17,8 +17,6 @@ export const DOMAIN_COLORS: Record<OccupationDomain, string> = {
   sports: 'var(--color-domain-sports)',
 };
 
-// Pill labels, resolved once at module load from the locale's message
-// catalog (web/docs/adr/0005).
 export const DOMAIN_LABELS: Record<OccupationDomain, string> = {
   institutions: m['taxonomy.domain.institutions'](),
   arts: m['taxonomy.domain.arts'](),

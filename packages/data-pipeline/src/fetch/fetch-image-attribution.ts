@@ -84,13 +84,6 @@ const LOAD_IMAGE_ENTRIES: Record<Lane, () => Promise<ImageEntry[]>> = {
   milestones: loadMilestonesImageEntries,
 };
 
-// Reads the raw files written by fetch-taglines.ts,
-// fetch-milestones-enrichment.ts and fetch-conflicts-enrichment.ts (each with a
-// raw P18 `image` URI) and, for every entity with an image, runs a batched
-// Commons `imageinfo` pass to resolve `imageAttribution`: a MediaWiki REST API
-// distinct from Wikidata SPARQL, so new fetch machinery rather than a reuse of
-// batched-sparql-fetch.ts. Runs after all three in fetch/index.ts, since it
-// depends on their output.
 export async function fetchImageAttribution(
   lane?: Lane,
   qids?: QidFilter,

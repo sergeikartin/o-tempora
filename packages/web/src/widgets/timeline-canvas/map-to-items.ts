@@ -16,9 +16,6 @@ import {
   wrapMarkLabelLines,
 } from './options';
 
-// The filterBy*/filterConflictsByFilterValues functions live in
-// shared/lib/entity/ so features/search-timeline-entities (which can't import
-// from widgets/) uses the same filtering pipeline; re-exported here.
 export {
   filterByFameScore,
   filterByMilestoneCategoryGroup,
@@ -37,7 +34,6 @@ import type {
   Person,
 } from '../../shared/types';
 
-/** Pixel-space [start, end] interval a value maps to under a linear scale. */
 export interface PixelInterval {
   start: number;
   end: number;
@@ -98,7 +94,6 @@ export function personPixelInterval(
   return { start: x1, end: Math.max(x2, x1 + labelWidth) };
 }
 
-// Gap kept between the lane caption's margin strip and a pinned label.
 export const PINNED_LABEL_INSET_PX = LANE_CAPTION_GUTTER_PX + 8;
 
 export interface PersonLayout {
@@ -116,7 +111,6 @@ export interface PersonLayout {
   fill: string;
 }
 
-/** Per-person screen-space layout for PeopleLane's D3 join — one row-stacked lifespan line + label per person. */
 export function buildPersonLayout(
   people: Person[],
   xScale: d3.ScaleLinear<number, number>,
@@ -136,9 +130,6 @@ export function buildPersonLayout(
       name: item.name,
       x1,
       x2,
-      // Label is left-aligned at x1, so it never extends left of the
-      // line — only right, past x2 for a short-lived person with a
-      // long name.
       hitX2: Math.max(x2, x1 + labelWidthPx),
       labelWidthPx,
       labelRoomX2: Number.POSITIVE_INFINITY,
@@ -187,11 +178,6 @@ export interface ConflictItem {
   fameScore: number;
 }
 
-// conflicts.json mixes Conflict (a Period, `period` field) and ConflictEvent
-// (a PointInTime, `at` field), structurally disjoint, so this narrows with
-// `"period" in entry` instead of a `kind` discriminant (see ConflictEntry in
-// shared-types). Every entry maps 1:1 to one ConflictItem shape; the data is
-// already Conflicts-only, so no category filtering happens here.
 export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
   return conflicts.map((entry) => {
     const isConflict = 'period' in entry;
@@ -217,9 +203,6 @@ export function mapConflicts(conflicts: ConflictEntry[]): ConflictItem[] {
   });
 }
 
-// Shared by conflictPixelInterval and milestonePixelInterval's range branch:
-// a Conflict's or period-shaped Milestone's pixel extent is the same
-// left-aligned single-line-label calculation.
 function rangePixelInterval(
   item: { name: string; startYear: number; endYear: number },
   xScale: d3.ScaleLinear<number, number>,
@@ -232,7 +215,6 @@ function rangePixelInterval(
   return { start: x1, end: Math.max(x2, x1 + labelWidth) };
 }
 
-// A point's label sits to the right of its dot, on the same line.
 function pointPixelInterval(name: string, x: number): PixelInterval {
   const labelWidth = Math.max(
     ...wrapMarkLabelLines(name).map(estimateLabelWidthPx),
@@ -265,8 +247,6 @@ export interface MilestoneItem {
   fameScore: number;
 }
 
-// milestones.json mixes point- and period-shaped Milestones, narrowed with
-// `"period" in entry` like mapConflicts.
 export function mapMilestones(milestones: Milestone[]): MilestoneItem[] {
   return milestones.map((milestone) => {
     const isPeriodShaped = 'period' in milestone;
@@ -339,12 +319,6 @@ export interface RangeAndPointLayout {
   totalHeight: number;
 }
 
-/**
- * Combined screen-space layout for ConflictsMilestonesLane's two D3 joins:
- * ranges (Conflict periods + period-shaped Milestones) and points (Conflict
- * events + point-shaped Milestones) share one row-stacking pass (see
- * ConflictsMilestonesLane.tsx), so one function produces both.
- */
 export function buildRangeAndPointLayout(
   conflicts: ConflictEntry[],
   milestones: Milestone[],
@@ -486,7 +460,6 @@ export function buildRangeAndPointLayout(
   return { rangeLayout, pointLayout, totalHeight };
 }
 
-// A wrapped label is as wide as its longest line.
 function rangeLabelWidthPx(name: string): number {
   return Math.max(...wrapMarkLabelLines(name).map(estimateLabelWidthPx));
 }

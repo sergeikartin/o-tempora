@@ -125,7 +125,6 @@ test('bolds the matched substring within a result name', () => {
       onSelectResult={vi.fn()}
     />,
   );
-  // "Aristotle" matches "ar" at index 0 ("Ar"istotle) — bolded as <strong>.
   const strong = getByText('Ar', { selector: 'strong' });
   expect(strong).toBeTruthy();
 });

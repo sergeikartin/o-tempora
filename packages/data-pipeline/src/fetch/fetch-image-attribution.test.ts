@@ -4,12 +4,6 @@ import path from 'node:path';
 import { type TestContext, test } from 'node:test';
 import { fetchImageAttribution } from './fetch-image-attribution.js';
 
-// fetchImageAttribution reads fixed raw files off disk (RAW_DIR) and hits
-// the real Commons API with no injectable data source — mocking
-// fsPromises.readFile/writeFile per-basename and globalThis.fetch is the
-// seam available without widening the function's interface just for
-// testability, same convention transform/index.test.ts's stubRawFiles uses
-// for the sync fs.readFileSync case.
 function stubReads(
   t: TestContext,
   filesByBasename: Record<string, unknown>,
@@ -36,10 +30,6 @@ function stubWrites(t: TestContext): Map<string, unknown> {
   return written;
 }
 
-// Responds with attribution only for titles present in `artistByTitle`,
-// mirroring commons-client.ts's `query.pages[].imageinfo[].extmetadata`
-// shape (AttributionRequired + Artist) — same fixture shape
-// batched-commons-image-attribution-fetch.test.ts's own mock uses.
 function stubCommonsFetch(
   t: TestContext,
   artistByTitle: Record<string, string>,

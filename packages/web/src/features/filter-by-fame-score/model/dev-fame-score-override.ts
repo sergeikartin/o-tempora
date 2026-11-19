@@ -18,8 +18,6 @@ if (import.meta.env.DEV) {
   window.__setFameScoreFloors = (values) => devSetter?.(values);
 }
 
-// Wires the override into useFameScoreFilters' state setter; no-op in
-// production.
 export function registerDevFameScoreOverride(
   setter: (values: Partial<FameScoreValues>) => void,
 ): void {

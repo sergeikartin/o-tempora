@@ -19,11 +19,8 @@ import { buildXScale, MIN_YEAR, REFERENCE_PIXELS_PER_YEAR } from './options';
 export const MINIMAP_BUCKET_COUNT = 300;
 
 export interface DensityProfile {
-  /** Year at each bucket's midpoint, ascending, one per bucket. */
   years: number[];
-  /** Row Depth per bucket, People lane. */
   peopleDepth: number[];
-  /** Row Depth per bucket, merged Conflicts+Milestones lane. */
   eventsDepth: number[];
 }
 

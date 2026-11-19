@@ -51,9 +51,7 @@ function asSource(value: unknown, where: string): string {
     const url = new URL(text);
     if (url.protocol === 'https:' && !url.username && !url.password)
       return text;
-  } catch {
-    /* The error below names the field. */
-  }
+  } catch {}
   throw new Error(
     `${where}: expected a public HTTPS source or "${NOT_ON_WIKIPEDIA}"`,
   );

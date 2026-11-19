@@ -6,7 +6,6 @@ interface HelpPanelProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenAbout: () => void;
-  // Sibling-locale timeline page, already carrying the open Entity Link (if any).
   switchLanguageHref: string;
 }
 

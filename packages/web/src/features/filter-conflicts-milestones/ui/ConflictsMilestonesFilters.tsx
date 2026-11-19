@@ -11,10 +11,6 @@ interface ConflictsMilestonesFiltersProps {
   onToggleValue: (value: ConflictsMilestonesFilterValue) => void;
 }
 
-// The Filters Panel's "Conflicts & Milestones" section: one multi-select pill list
-// shaped like OccupationDomainFilters/RegionFilters (swatched pills, empty
-// selection means unfiltered), holding the 'conflicts' value alongside the
-// MilestoneCategoryGroup values (GLOSSARY.md's Milestone Category Group).
 export function ConflictsMilestonesFilters({
   selectedValues,
   onToggleValue,

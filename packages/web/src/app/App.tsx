@@ -71,21 +71,14 @@ const DetailPanel = lazy(() =>
   })),
 );
 
-// Pulled into the main CSS bundle (the component stays lazy above) so
-// `.panel`'s closed transform applies before first paint. DetailPanel is
-// always mounted (web/docs/adr/0006) and the prerender bakes its closed
-// `<aside>` into index.html; if the CSS arrived with the lazy chunk, the
-// unstyled panel would animate off-screen on every load. A bare side-effect
-// import is tree-shaken away, so a class name is referenced instead.
+// The prerender includes the closed detail panel. Its CSS must be in the main bundle
+// to keep it offscreen on first paint. Referencing a class prevents tree shaking.
 import detailPanelStyles from '../widgets/detail-panel/ui/DetailPanel.module.css';
 
 void detailPanelStyles.panel;
 
 interface AppProps {
-  // Set only by the build-time prerender
-  // (vite-plugins/prerender-default-viewport.ts), which has the level 1+2
-  // dataset resolved already and can't run main.tsx's runtime locale
-  // detection. main.tsx omits it and resolves `localeDatasetsPromise`.
+  // Only the prerender supplies datasets directly. It cannot use runtime locale detection.
   initialDatasets?: LocaleDatasets;
 }
 
@@ -106,7 +99,6 @@ const LANE_BY_ENTITY_TYPE: Record<EntityType, FameScoreLane> = {
   milestone: 'milestones',
 };
 
-// A Connection's mark color until its target's data has loaded.
 const LANE_FALLBACK_COLOR: Record<FameScoreLane, string> = {
   people: 'var(--color-domain-public-figure)',
   conflicts: 'var(--color-conflict)',
@@ -150,7 +142,6 @@ function findEntity(
   return null;
 }
 
-// Index into DETAIL_LEVELS of the lowest level whose floor lets the entity in.
 function levelIndexOf(found: FoundEntity): number {
   const index = DETAIL_LEVELS.findIndex(
     (level) => level.values[found.lane] <= found.fameScore,
@@ -174,9 +165,6 @@ function AppContent({ initialDatasets }: AppProps) {
     level: selectedLevel,
     setLevel: setFameScoreLevel,
   } = useFameScoreFilters();
-  // Specialized/Deep Cut data ships in deferred delta files (GLOSSARY.md's
-  // Detail Level); picking either triggers the on-demand load if the
-  // idle-prefetch hasn't started or finished, and is a no-op otherwise.
   const handleSelectDetailLevel = useCallback(
     (level: DetailLevel) => {
       requestLevel(level.id);
@@ -212,17 +200,12 @@ function AppContent({ initialDatasets }: AppProps) {
     selectedRegions,
     selectedConflictsMilestonesValues,
   });
-  // Set only by a search pick (a canvas click is already in view);
-  // TimelineCanvas pans to it.
   const [searchJumpTarget, setSearchJumpTarget] =
     useState<SelectedEntityRef | null>(null);
-  // Set only when an Entity Link opens; TimelineCanvas fits the viewport to it.
   const [arrivalFit, setArrivalFit] = useState<ArrivalFit | null>(null);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
 
-  // `?` opens Help from anywhere outside a text field, never over another
-  // open modal.
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key !== '?' || event.ctrlKey || event.metaKey || event.altKey)
@@ -242,11 +225,8 @@ function AppContent({ initialDatasets }: AppProps) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // An Entity Link (`?e=<slug>`) names only a slug: look it up in what's
-  // loaded, fetching level 3 and then level 4 one at a time while it is
-  // missing, then open it — raising the Detail Level only as far as its Fame
-  // Score needs — and fit the viewport to it. A slug that no level contains
-  // is dropped and the timeline opens with no panel.
+  // Entity Links carry no Detail Level, so load deeper deltas in order to stop at the
+  // first level that contains the slug.
   useEffect(() => {
     if (!pendingLinkSlug) return;
     const found = findEntity(
@@ -298,7 +278,6 @@ function AppContent({ initialDatasets }: AppProps) {
     closeDetailPanel,
   ]);
 
-  // A click replaces the Selection.
   const handleEntityClick = useCallback(
     (ref: SelectedEntityRef) => {
       const found = findEntity(
@@ -315,9 +294,7 @@ function AppContent({ initialDatasets }: AppProps) {
     [replaceSelection, peopleData, conflictsData, milestonesData],
   );
 
-  // A search pick replaces the Selection like a plain click, plus a fresh
-  // jump-target object that TimelineCanvas's effect watches to pan the
-  // timeline.
+  // A fresh target lets re-picking the same search result trigger another pan.
   const handleSelectSearchResult = useCallback(
     (result: SearchResult) => {
       const ref: SelectedEntityRef = {
@@ -331,9 +308,7 @@ function AppContent({ initialDatasets }: AppProps) {
     [replaceSelection],
   );
 
-  // A Connection opens its target the way an Entity Link does: the Selection
-  // becomes that entity (a new history entry), the Detail Level rises far
-  // enough to show it, and the timeline pans to it. Filters never gate it.
+  // Connection targets can bypass active filters so visitors can follow every listed link.
   const handleOpenConnection = useCallback(
     (slug: string) => {
       const found = findEntity(
@@ -394,10 +369,6 @@ function AppContent({ initialDatasets }: AppProps) {
     [peopleData, conflictsData, milestonesData],
   );
 
-  // Looks the Selection up in the in-memory datasets rather than threading full
-  // entities through the click event, and derives what the panel and the canvas
-  // show about it: the panel member (hidden when Detail Level or a filter takes
-  // its mark off the canvas) and the span the Focus Range names.
   const selected = useMemo<{
     entity: DetailPanelEntity;
     isHidden: boolean;
@@ -436,7 +407,6 @@ function AppContent({ initialDatasets }: AppProps) {
     };
   }, [member, lanes, filters]);
 
-  // The shipped Profile is fetched only when the row says one exists.
   const profileState = useProfile(
     selected?.hasProfile && member ? member.slug : null,
   );
@@ -488,8 +458,7 @@ function AppContent({ initialDatasets }: AppProps) {
     [selected],
   );
 
-  // A Profile lists targets down to Deep Cut; their data is fetched when one
-  // opens so the Connections section is complete.
+  // Connections can point to Deep Cut entries, so the Profile needs the deferred data.
   const hasProfile = selected?.hasProfile ?? false;
   useEffect(() => {
     if (!hasProfile) return;

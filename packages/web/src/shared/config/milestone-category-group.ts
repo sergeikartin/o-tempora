@@ -12,8 +12,6 @@ export const MILESTONE_CATEGORY_GROUP_COLORS: Record<
   'social-culture': '#946513',
 };
 
-// Pill labels, resolved once at module load from the locale's message
-// catalog (web/docs/adr/0005).
 export const MILESTONE_CATEGORY_GROUP_LABELS: Record<
   MilestoneCategoryGroup,
   string

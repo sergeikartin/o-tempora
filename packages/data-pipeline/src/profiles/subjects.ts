@@ -10,8 +10,6 @@ import {
   transformPeople,
 } from '../transform/index.js';
 
-// An entity in the dataset that can have a Profile, as the profile-writer
-// agent is briefed about it.
 export interface ProfileSubject {
   // Wikidata QID; a Person's dataset `id` is Pantheon's, so it is not this.
   qid: string;
@@ -21,7 +19,6 @@ export interface ProfileSubject {
   wikipediaUrl: string;
 }
 
-// The prompt's `{type}` for each lane.
 export const SUBJECT_TYPE: Record<ProfileLane, string> = {
   people: 'person',
   conflicts: 'conflict',
@@ -37,7 +34,6 @@ function bcOrAd(year: number): { value: number; bc: boolean } {
 interface DateSpan {
   startYear: number;
   endYear?: number;
-  // A living person: the span runs to now.
   ongoing?: boolean;
   approximate?: boolean;
 }

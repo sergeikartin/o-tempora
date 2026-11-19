@@ -21,27 +21,17 @@ import {
   tagPantheonPerson,
 } from './tag-pantheon-person.js';
 
-// Omits PantheonPersonRow's `name`: name comes from the Wikidata label
-// enrichment pass below (the same per-language mechanism as Conflicts and
-// Milestones), so it is redeclared as enrichment-sourced and possibly absent.
+// Display names come from Wikidata labels, so Pantheon’s name is excluded.
 export type TaggedPerson = Omit<PantheonPersonRow, 'name'> &
   PantheonPersonTags & {
-    // Wikidata's rdfs:label(en) for this QID; absent only when enrichment couldn't
-    // resolve one, and Output then drops the row (write-datasets.ts's buildPeople).
     name?: string;
-    // Wikidata's rdfs:label(ru); absent when none resolves. Output falls back to
-    // `name` (English) per field when building the Russian file.
     nameRu?: string;
     tagline?: string;
-    // Russian schema:description; same fallback contract as the Russian label.
     taglineRu?: string;
     // Wikipedia lead-paragraph extract (fetch-wikipedia-extracts.ts); independent
     // of tagline, never a fallback for it. Absent never drops the row (only a
     // missing tagline does).
     description?: string;
-    // ru.wikipedia.org's extract for the same entity; absent when no Russian
-    // article resolves (expected more often than English). Output falls back to
-    // `description` (English), as for name/tagline.
     descriptionRu?: string;
     wikipediaUrl: string;
     image?: string;
@@ -51,18 +41,11 @@ export type TaggedPerson = Omit<PantheonPersonRow, 'name'> &
 export interface TaggedMilestone {
   id: string;
   label: string;
-  // Russian rdfs:label; absent when none resolves. Output falls back to `label`
-  // (English) per field when building the Russian file.
   labelRu?: string;
   article?: string;
-  // Absent means enrichment couldn't resolve an English tagline for this
-  // curated QID; Output drops the row, with no fallback, as for Conflicts and
-  // People.
   tagline?: string;
-  // Russian schema:description; same fallback contract as the Russian label.
   taglineRu?: string;
   description?: string;
-  // Same fallback contract as taglineRu.
   descriptionRu?: string;
   year?: number;
   month?: number;
@@ -80,15 +63,11 @@ export interface TaggedMilestone {
 export interface TaggedConflict {
   id: string;
   label: string;
-  // Russian rdfs:label; absent when none resolves. Output falls back to `label`
-  // (English) per field when building the Russian file.
   labelRu?: string;
   article?: string;
   tagline?: string;
-  // Russian schema:description; same fallback contract as the Russian label.
   taglineRu?: string;
   description?: string;
-  // Same fallback contract as taglineRu.
   descriptionRu?: string;
   year?: number;
   month?: number;
@@ -172,15 +151,6 @@ function loadRawRecord<T>(fileName: string): Record<string, T> {
   );
 }
 
-// group -> tag -> score, per lane. People, Conflicts and Milestones are three
-// independent lanes, each fed by its own raw snapshot and scored on its own.
-// People come from Pantheon 2.0, one row per person, so no grouping is needed
-// (unlike SPARQL's denormalized bindings). name/tagline come from a batched
-// SPARQL fetch keyed on the Wikidata QID Pantheon retains per row
-// (fetch-taglines.ts, queries/taglines.ts). Pantheon's CSV `name` is unused:
-// its snapshot is frozen while Wikidata's rdfs:label (en/ru, the mechanism all
-// three lanes share) tracks the entity's current name, and the CSV has no
-// tagline field.
 export function transformPeople(): TaggedPerson[] {
   const csvPath = path.join(RAW_DIR, 'people-pantheon.raw.csv');
   const rows = parsePantheonCsv(fs.readFileSync(csvPath, 'utf8')).map(

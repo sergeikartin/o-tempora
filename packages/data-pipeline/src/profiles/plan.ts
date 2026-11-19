@@ -16,12 +16,10 @@ export type PlanEntry =
 
 export interface PlanOptions {
   currentPromptHash: string;
-  // Regenerate records whose `prompt_hash` is not the current one.
   regenerateStale: boolean;
   incomingDir: string;
 }
 
-// The staging path the profile-writer agent writes `subject` to.
 export function incomingPath(incomingDir: string, qid: string): string {
   return path.join(incomingDir, `${qid}.json`);
 }
@@ -52,7 +50,6 @@ export function planProfiles(
   });
 }
 
-// The inputs the profile-writer agent is given, one block per entity to write.
 export function formatPlan(entries: readonly PlanEntry[]): string {
   const lines: string[] = [];
   for (const entry of entries) {

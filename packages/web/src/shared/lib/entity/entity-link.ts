@@ -1,5 +1,3 @@
-// An Entity Link (GLOSSARY.md) carries the selected entity's globally unique
-// slug as `?e=<slug>` and can carry a Profile Anchor in the fragment.
 const ENTITY_PARAM = 'e';
 
 // The first non-empty slug; a link that repeats the param opens only that one.
@@ -31,7 +29,6 @@ export function entityLinkHash(anchor: ProfileAnchor | undefined): string {
   return anchor ? `#${anchor.kind}-${anchor.index}` : '';
 }
 
-// Null for anything that is not exactly a known kind and a positive integer.
 export function readEntityLinkAnchor(hash: string): ProfileAnchor | null {
   const match = /^#(moment|fact)-([1-9]\d*)$/.exec(hash);
   if (!match) return null;

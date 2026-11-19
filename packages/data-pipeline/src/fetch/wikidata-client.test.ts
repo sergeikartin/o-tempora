@@ -89,7 +89,6 @@ test('gives up on 502 after exhausting retries', async (t) => {
   await flushRetries(t);
   await promise;
 
-  // Initial attempt + MAX_RETRIES retries.
   assert.equal(calls, 4);
 });
 

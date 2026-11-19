@@ -33,7 +33,6 @@ export {
 // labels keep clear of it.
 export const LANE_CAPTION_GUTTER_PX = 18;
 
-// Row layout shared by every lane's D3 rendering.
 export const ROW_GAP = 8;
 export const LANE_TOP_PADDING = 12;
 // Year Axis: a ruler bar whose ticks are two layered CSS repeating gradients
@@ -79,7 +78,6 @@ export const SELECTION_HALO_PX = 8;
 // PERIOD_LINE_HEIGHT/POINT_RADIUS) and size the halo to the grown mark.
 export const SELECTED_LINE_HEIGHT_PX = 9;
 export const SELECTED_POINT_RADIUS_PX = 7;
-// Approx rendered height of an 11px label.
 const LABEL_TEXT_HEIGHT_PX = 13;
 
 // Row layout of the merged Conflicts+Milestones lane, where any item can land
@@ -88,7 +86,6 @@ const LABEL_TEXT_HEIGHT_PX = 13;
 export const MILESTONES_MARKER_LABEL_GAP = 4;
 export const MILESTONES_LABEL_LINE_HEIGHT_PX = LABEL_TEXT_HEIGHT_PX;
 
-// A point's label block is vertically centered on its dot.
 export function pointLabelY(markerY: number, lineCount: number): number {
   return markerY - ((lineCount - 1) * MILESTONES_LABEL_LINE_HEIGHT_PX) / 2;
 }
@@ -109,8 +106,6 @@ export function pointHitHeight(lineCount: number): number {
 // vertical bands, so label tier and band are the same "row", and a person's
 // label sits just above their own line.
 const PERSON_LABEL_GAP = 2;
-// Vertical budget per row: label height + gap + lifespan line + breathing
-// room to the next row.
 export const PERSON_ROW_PITCH =
   LABEL_TEXT_HEIGHT_PX + PERSON_LABEL_GAP + PERIOD_LINE_HEIGHT + ROW_GAP;
 
@@ -118,12 +113,10 @@ export const PERSON_ROW_PITCH =
 // the shared Year Axis, so indices are inverted against rowCount: row 0 gets
 // the highest y, row (rowCount - 1) sits at LANE_TOP_PADDING.
 
-/** y of a row's label — hangs just above that row's lifespan line. */
 export function personLabelYForRow(row: number, rowCount: number): number {
   return LANE_TOP_PADDING + (rowCount - 1 - row) * PERSON_ROW_PITCH;
 }
 
-/** y (vertical center) of a row's lifespan line. */
 export function personLineCenterYForRow(row: number, rowCount: number): number {
   return (
     personLabelYForRow(row, rowCount) +
@@ -133,7 +126,6 @@ export function personLineCenterYForRow(row: number, rowCount: number): number {
   );
 }
 
-/** Total SVG height needed for the People lane with this many stacked rows. */
 export function personLaneHeight(rowCount: number): number {
   if (rowCount === 0) return LANE_TOP_PADDING * 2;
   return LANE_TOP_PADDING + rowCount * PERSON_ROW_PITCH;
@@ -195,8 +187,6 @@ export const BCE_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
   1,
   MIN_YEAR,
 );
-// Same round-year phase alignment at the 25-year zebra interval
-// (TimelineCanvas.tsx's .zebraLayer).
 export const QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
   QUARTER_CENTURY_STEP_YEARS,
   0,
@@ -208,7 +198,6 @@ export const BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS = phaseOffsetYears(
   MIN_YEAR,
 );
 
-/** Shared time domain: the D3 x-axis for every lane, keyed by pixels-per-year zoom level. */
 export function buildXScale(pixelsPerYear: number): {
   scale: d3.ScaleLinear<number, number>;
   totalWidth: number;
@@ -319,9 +308,6 @@ export function zoomOut(
   return clampPixelsPerYear(pixelsPerYear / (1 + ZOOM_STEP), viewportWidthPx);
 }
 
-// Pinch-to-zoom math as pure functions (like zoomIn/zoomOut above), so it is
-// unit-testable without simulating multi-touch.
-
 /**
  * Live pixelsPerYear for a pinch: the gesture's distance ratio applied to
  * the pixelsPerYear committed at gesture start, clamped by the button-zoom
@@ -360,7 +346,6 @@ const WHEEL_ZOOM_SENSITIVITY = 0.01;
 const WHEEL_ZOOM_MAX_DELTA = 20;
 const WHEEL_LINE_HEIGHT_PX = 16;
 
-/** Pixel-equivalent delta of a wheel event, whatever its deltaMode. */
 export function wheelDeltaPx(
   delta: number,
   deltaMode: number,
@@ -371,7 +356,6 @@ export function wheelDeltaPx(
   return delta;
 }
 
-/** Multiplier for pixelsPerYear from one wheel event: wheel up (negative deltaY) zooms in. */
 export function wheelZoomFactor(deltaYPx: number): number {
   const clamped = Math.max(
     -WHEEL_ZOOM_MAX_DELTA,
@@ -380,7 +364,6 @@ export function wheelZoomFactor(deltaYPx: number): number {
   return Math.exp(-clamped * WHEEL_ZOOM_SENSITIVITY);
 }
 
-// Keyboard pan distance, as a fraction of the viewport width.
 const KEY_PAN_RATIO = 0.1;
 const KEY_PAN_LARGE_RATIO = 0.5;
 
@@ -435,13 +418,11 @@ export function inertiaStep(
 // at the end (TimelineCanvas.tsx).
 
 export interface ZoomAnimationTransform {
-  /** Horizontal translation, in the same px units as the content it's applied to. */
   tx: number;
   /** Horizontal-only scale (never applied to y — zoom never changes row layout). */
   sx: number;
 }
 
-/** Imperative per-tick hook a lane/axis component exposes to TimelineCanvas's single rAF driver. */
 export interface ZoomAnimationHandle {
   applyZoomTransform: (transform: ZoomAnimationTransform) => void;
   /**
@@ -492,7 +473,6 @@ export function zoomAnimationGroupTransform(params: {
   return { tx: scrollLeftStart - scrollLeftTarget, sx };
 }
 
-/** SVG `transform` attribute value (unitless, SVG user-space) for a ZoomAnimationTransform. */
 export function zoomAnimationGroupTransformAttr({
   tx,
   sx,
@@ -515,7 +495,6 @@ export function zoomedViewportYears(
   return [startYear, startYear + clientWidthPx / currentPixelsPerYear];
 }
 
-/** CSS `transform` value (px units, HTML elements) for a ZoomAnimationTransform. */
 export function zoomAnimationGroupTransformCss({
   tx,
   sx,

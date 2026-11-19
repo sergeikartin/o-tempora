@@ -10,37 +10,12 @@ import type {
 import { createServer } from 'vite';
 import { type EntryLocale, htmlEntry } from './html-entry.ts';
 
-// TimelineCanvas.tsx's mount effect pins .peopleLane's scroll to its bottom
-// (fame-priority rows sit there, axis-adjacent) and centers .scrollContainer on
-// DEFAULT_VIEWPORT_START_YEAR, but the prerendered HTML paints both at scroll
-// 0, so hydration's corrections would be the first time either scrolls,
-// visibly jumping painted marks (measured CLS ~0.29 under 2x CPU throttle;
-// .scrollContainer alone jumped ~21,000px on a 390px viewport). This
-// parser-blocking inline script runs the same corrections before first paint
-// (like an early dark-mode class toggle), so hydration's effects are no-ops
-// paint-wise. Safe pre-hydration: both values are pure functions of the same
-// default-filter dataset and REFERENCE_PIXELS_PER_YEAR the prerender uses, and
-// critical-css.ts inlines the layout rules (.peopleLane, .bottomAlign,
-// .scrollContainer), so scrollHeight/clientWidth are correct when it runs.
-// scrollContainerTargetLeft comes from the same buildXScale the client calls,
-// so the two can't drift; the clamp against the real scrollWidth/clientWidth
-// stays client-side in the script, since only the browser knows clientWidth.
+// Match the client’s initial scroll positions before first paint to prevent
+// a visible jump on hydration. Critical CSS makes the scroll geometry available.
 //
-// .peopleLane/.conflictsMilestonesLane are themselves position: sticky with
-// their own overflow-x: hidden scrollLeft (TimelineCanvas.module.css); on the
-// client, mirrorLaneScrollLeft keeps that in lockstep with .scrollContainer.
-// Unset here, both lanes' content sits at scrollLeft 0, the start of the
-// timeline, until hydration's mount effect mirrors it, so the earliest items
-// (e.g. Homer in People) flash through the pre-hydration paint.
-//
-// The Focus Range heading is prerendered against FALLBACK_VIEWPORT_WIDTH_PX,
-// so its end year would only correct after hydration measures the real
-// clientWidth. The same script rewrites it from the real clientWidth
-// (mirroring TimelineCanvas's scale.invert(scrollLeft) and
-// scale.invert(scrollLeft + clientWidth)); the element opts out of hydration
-// text-mismatch checks (FocusRange.tsx) so React keeps this value until its
-// mount effect lands the same one. Only CE years are formatted: the default
-// window never reaches BCE.
+// Mirror the main scroll offset into the sticky lanes so their first paint uses
+// the same window. Derive the heading from the browser’s real width because
+// the prerender only has a fallback width. The default span stays in CE.
 function pinScrollScript(
   scrollContainerTargetLeft: number,
   defaultStartYear: number,
@@ -100,24 +75,12 @@ async function withSsrServer<T>(
 }
 
 async function renderToHtml(element: ReactElement): Promise<string> {
-  // renderToReadableStream, not renderToStaticMarkup/renderToString: the
-  // timeline's tree still has real <Suspense> boundaries even though
-  // initialDatasets makes the top one a no-op here — the two lazy-loaded
-  // panels (AboutPanel/DetailPanel) each trigger a real dynamic import(),
-  // which only a streaming SSR API actually waits for (renderToString
-  // renders their `fallback` immediately and logs a "does not support
-  // Suspense" warning; renderToStaticMarkup skips hydration markers
-  // entirely). Awaiting `allReady` blocks until every boundary — including
-  // those two — has its real content, matching what hydrateRoot expects.
+  // Streaming SSR supports the timeline’s Suspense boundaries and produces hydratable markup.
   const stream = await renderToReadableStream(element);
   await stream.allReady;
   return new Response(stream).text();
 }
 
-// Renders <App initialDatasets={...} />. PeopleLane's/
-// ConflictsMilestonesLane's own lazy-initialized dangerouslySetInnerHTML
-// (mark-shape-html.ts) already puts real default-state marks in the output;
-// there's no separate markup computation or graft step here.
 async function renderDefaultViewportHtml(
   locale: EntryLocale,
   resolvedConfig: ResolvedConfig,
@@ -163,7 +126,6 @@ async function renderDefaultViewportHtml(
   });
 }
 
-// The landing page loads no datasets, so its prerender is the whole page.
 async function renderLandingHtml(
   locale: EntryLocale,
   resolvedConfig: ResolvedConfig,

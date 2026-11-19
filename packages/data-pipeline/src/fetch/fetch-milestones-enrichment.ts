@@ -24,30 +24,17 @@ const RAW_DIR = path.join(
   'raw',
 );
 
-// The curated file carries id/name/category (curator-authored); everything
-// else, including the date via DATE_PROPERTIES' priority-ordered COALESCE in
-// queries/milestones-enrichment.ts, is live-fetched, as Conflicts does (see
-// conflicts-curated.raw.json's meta.description).
 interface CuratedMilestone {
   id: string;
-  // Curator-typed but unread: name comes from Wikidata's rdfs:label (en and ru)
-  // via the enrichment pass below, like tagline. Kept in the curated file and
-  // this shape, as with Conflicts' unused curated `name`.
+  // For curator reference. Output uses the Wikidata label or displayName.
   name: string;
   category: MilestoneCategory;
-  // Replaces the Wikidata label (en/ru) for entries whose own item is named
-  // for the artifact rather than the milestone it stands for (e.g. "First
-  // car" for the Benz Patent-Motorwagen). Tagline, article and date still
-  // come from the entry's own item.
+  // Use when Wikidata names the artifact rather than the Milestone it represents.
   displayName?: { en: string; ru: string };
-  // QID of a broader concept item whose sitelinks and pageviews stand in for
-  // this entry's own when scoring fame, so a "first X" entry ranks as
-  // prominently as the concept it introduced.
+  // Borrow Fame Score inputs from the concept a Milestone introduced.
   fameSource?: string;
-  // Replaces the date Wikidata resolves (or fills in one it doesn't have)
-  // for entries whose own item carries no usable date claim, or a wrong one.
-  // Replaces all four fields together: an absent `endYear` makes the entry
-  // point-shaped even when Wikidata has an end date.
+  // The override replaces the whole date. Omitting endYear yields a point even if
+  // Wikidata supplies an end date.
   date?: DateOverride;
 }
 
@@ -67,36 +54,18 @@ interface CuratedMilestonesFile {
 
 export interface EnrichedMilestone {
   id: string;
-  // Wikidata's rdfs:label(en); absent only when the QID couldn't be resolved,
-  // and Output then drops the row (write-datasets.ts's buildMilestones).
   name?: string;
-  // Wikidata's rdfs:label(ru); absent when none resolves. Output falls back to
-  // `name` (English) per field when building the Russian file.
   nameRu?: string;
   category: MilestoneCategory;
-  // Absent means DATE_PROPERTIES' COALESCE (queries/milestones-enrichment.ts)
-  // found no claim on any of the 10 candidate properties; Output drops the row
-  // (write-datasets.ts's validateEventRow), as for a missing tagline.
   year?: number;
-  // Wikidata's claim precision decides whether month is present (see
-  // wikidata-date.ts's MONTH_OR_FINER_PRECISION); never defaulted to January,
-  // as for Conflicts.
+  // Wikidata dates include a month only when the claim supports that precision.
   month?: number;
-  // Absent endYear means no P582 claim resolved (a point-in-time event, or a
-  // start with no recorded end); Output builds a point-shaped Milestone, the
-  // same shape rule as buildConflicts.
+  // Without an end date, Output builds a point-shaped Milestone.
   endYear?: number;
   endMonth?: number;
-  // Set only by a curated `date` override marked approximate.
   approximateDate?: true;
-  // Absent means enrichment couldn't resolve an English tagline for this QID;
-  // Output drops the row (write-datasets.ts's validateMilestoneRow), as for
-  // Conflicts and People.
   tagline?: string;
-  // Russian schema:description; same fallback contract as nameRu.
   taglineRu?: string;
-  // Absent means enrichment couldn't resolve this QID (e.g. a stale or
-  // redirected id); Output drops the row (write-datasets.ts's buildMilestones).
   sitelinks?: number;
   wikipediaUrl?: string;
   // Wikipedia article URL per pageviews-basket language, stored verbatim (like
@@ -104,8 +73,6 @@ export interface EnrichedMilestone {
   // key means no sitelink in that language: fetch-pageviews.ts counts 0
   // pageviews, with no redirect resolution (docs/adr/0010).
   articleUrls: Partial<Record<PageviewsLanguage, string>>;
-  // Sitelinks and article URLs of the curated entry's `fameSource` item;
-  // absent for entries scored on their own.
   fameSitelinks?: number;
   fameArticleUrls?: Partial<Record<PageviewsLanguage, string>>;
   countries: string[];
@@ -114,10 +81,6 @@ export interface EnrichedMilestone {
   image?: string;
 }
 
-// Validated at the boundary before Fetch reads it (docs/code-conventions.md):
-// the curated file is hand-authored, so a typo'd `category` would pass a bare
-// `JSON.parse(...) as CuratedMilestonesFile` cast and break rendering
-// downstream.
 function isCuratedMilestone(value: unknown): value is CuratedMilestone {
   if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
@@ -192,10 +155,6 @@ function validateCuratedMilestonesFile(data: unknown): CuratedMilestonesFile {
   return { milestones };
 }
 
-// Same boundary validation as validateCuratedMilestonesFile, for where
-// Transform (transform/index.ts) and list-unmapped-countries.ts read this file
-// back: it is Fetch's own output, but still an external file on disk, like every
-// raw snapshot validated on read (validateSparqlResultShape, parsePantheonCsv).
 function isEnrichedMilestone(value: unknown): value is EnrichedMilestone {
   if (typeof value !== 'object' || value === null) return false;
   const candidate = value as Record<string, unknown>;
@@ -264,11 +223,6 @@ interface EnrichmentFields {
   endMonth?: number;
 }
 
-// Reads the checked-in curated list (data/raw/milestones-curated.raw.json) and
-// backfills sitelinks/wikipediaUrl/country/image/name/tagline/date via a
-// batched per-QID SPARQL pass (VALUES-clause pattern as in fetch-taglines.ts).
-// Tagline, name and date are live-fetched, not read from the curated file, as
-// for Conflicts.
 export async function fetchMilestonesEnrichment(
   qids?: QidFilter,
 ): Promise<void> {
@@ -313,8 +267,6 @@ export async function fetchMilestonesEnrichment(
       if (url && entry.articleUrls[lang] === undefined)
         entry.articleUrls[lang] = url;
     }
-    // wikipediaUrl is the English-basket article, kept as its own field because
-    // every consumer of EnrichedMilestone reads it rather than articleUrls.en.
     if (entry.wikipediaUrl === undefined && entry.articleUrls.en !== undefined)
       entry.wikipediaUrl = entry.articleUrls.en;
     if (entry.image === undefined && row.image?.value)

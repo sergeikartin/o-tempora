@@ -31,7 +31,6 @@ import styles from './YearAxis.module.css';
 
 interface YearAxisProps {
   xScale: d3.ScaleLinear<number, number>;
-  /** Buffered visible year range (see TimelineCanvas's VIEWPORT_BUFFER_RATIO) — labels outside it aren't rendered. */
   visibleStartYear: number;
   visibleEndYear: number;
 }

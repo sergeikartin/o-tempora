@@ -101,7 +101,6 @@
   font-weight: 600;
 }
 
-/* Deep Facts: tonal wells one step down from the panel, no border or shadow. */
 .facts {
   display: flex;
   flex-direction: column;
@@ -168,7 +167,6 @@
   border-radius: var(--radius-sm);
 }
 
-/* Connections */
 .connections {
   list-style: none;
   margin: 0 -8px;

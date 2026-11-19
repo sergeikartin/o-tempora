@@ -2,18 +2,12 @@ import { m } from '../../paraglide/messages.js';
 import { getLocale } from '../../paraglide/runtime.js';
 import type { YearMonth } from '../../types';
 
-// Every year in the rendering path is a plain signed integer in astronomical
-// numbering (year 0 is 1 BCE, year 1 is 1 CE; docs/adr/0001-astronomical-year-numbering.md).
-// This is the one place that turns it into the "N BCE" / plain "N" strings
-// users see, so the BCE off-by-one isn't reimplemented at each call site
-// (YearAxis ticks and century header, the detail panel's dates).
+// Convert astronomical years for display here so every caller handles year 0 as 1 BCE.
 
-/** True when a plain end-to-end year (ISO/astronomical numbering) falls BCE. */
 export function isBceYear(year: number): boolean {
   return year <= 0;
 }
 
-/** Signed plain year -> "N BCE" for BCE years, plain "N" for CE years. */
 export function formatYear(year: number): string {
   return isBceYear(year) ? m.yearBce({ year: 1 - year }) : `${year}`;
 }
@@ -45,7 +39,6 @@ export function formatYearMonth(yearMonth: YearMonth): string {
   return `${monthName(yearMonth.month, 'long')} ${formatYear(yearMonth.year)}`;
 }
 
-/** Like formatYearMonth with the month abbreviated, for lists and ranges. */
 export function formatYearMonthShort(yearMonth: YearMonth): string {
   if (yearMonth.month === undefined) return formatYear(yearMonth.year);
   return `${monthName(yearMonth.month, 'short')} ${formatYear(yearMonth.year)}`;
@@ -89,9 +82,7 @@ function ordinal(n: number): string {
 }
 
 export interface CenturyBoundary {
-  /** Earliest plain year (inclusive) belonging to this century bucket. */
   startYear: number;
-  /** Latest plain year (inclusive) belonging to this century bucket. */
   endYear: number;
   /** e.g. "1800s" (CE) or "3rd century BCE". */
   label: string;
@@ -119,7 +110,6 @@ export function centuryBoundaryForYear(year: number): CenturyBoundary {
   };
 }
 
-/** Every century boundary overlapping [startYear, endYear], ascending, no gaps. */
 export function centuryBoundariesInRange(
   startYear: number,
   endYear: number,
@@ -134,13 +124,8 @@ export function centuryBoundariesInRange(
   return boundaries;
 }
 
-// A tick grid of round astronomical numbers (..., -200, -100, 0, 100, ...)
-// mislabels every BCE tick by one year once formatYear converts it (year -100
-// reads "101 BCE"), since astronomical numbering has a year 0 that historical
-// BCE/CE counting doesn't. Instead of relabeling BCE ticks, every other tick
-// keeps round spacing and the missing year 0 is absorbed into one tick at the
-// era boundary, year 0 itself ("1 BCE"), which makes the one BCE segment
-// touching it (e.g. "10 BCE" to "1 BCE") a tick narrower than the rest.
+// Align labels to round historical years. Use 1 BCE as the sole era-boundary tick,
+// which makes the adjacent BCE interval one year shorter.
 
 /** True when `year` sits on a round `stepYears` tick in historical (no-year-0) terms. */
 export function isRoundTickYear(year: number, stepYears: number): boolean {

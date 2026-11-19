@@ -7,8 +7,6 @@ interface RegionFiltersProps {
   onToggleRegion: (region: Region) => void;
 }
 
-// One Region filter narrowing People, Conflicts, and Milestones together.
-// Multi-select OR; none active means unfiltered (GLOSSARY.md's Region).
 export function RegionFilters({
   selectedRegions,
   onToggleRegion,

@@ -9,7 +9,6 @@ import {
   filterConflictsByFilterValues,
 } from './filters';
 
-// filterByFameScore — shared client-side Fame Tier gate for all three lanes.
 test('filterByFameScore keeps only items whose fameScore clears the threshold', () => {
   const items = [
     { id: 'a', fameScore: 90 },
@@ -27,7 +26,6 @@ test('filterByFameScore keeps a value exactly at the threshold', () => {
   expect(filterByFameScore(items, 50)).toHaveLength(1);
 });
 
-// filterByOccupationDomain — People-only Legend-pill filter.
 test('filterByOccupationDomain returns items unchanged when no domains are selected', () => {
   const items = [
     { id: 'a', occupationDomain: 'arts' as const },

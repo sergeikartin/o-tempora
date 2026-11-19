@@ -9,7 +9,6 @@ import type { ProfileBody, ResolvedConnection } from '../lib/profile';
 import styles from './DetailPanel.module.css';
 import { ProfileView } from './ProfileView';
 
-// The Selection (GLOSSARY.md) as the panel shows it.
 export interface DetailPanelMember {
   entity: DetailPanelEntity;
   // Filtered out of the canvas by Detail Level or filters; it stays selected.
@@ -33,9 +32,7 @@ export type ProfileViewState =
     };
 
 interface DetailPanelProps {
-  // The Selection; null closes the panel.
   member: DetailPanelMember | null;
-  // Opens a Profile Connection's target as the new Selection.
   onOpenConnection: (slug: string) => void;
   onClose: () => void;
 }
@@ -62,8 +59,6 @@ export function DetailPanel({
   const panelRef = useRef<HTMLElement>(null);
   const backdropRef = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
-  // The name and tagline pin to the top of the scroll; a rule shows only once
-  // they are pinned over scrolled content.
   const [isHeaderStuck, setIsHeaderStuck] = useState(false);
   function handleScroll() {
     const header = headerRef.current;
@@ -90,7 +85,6 @@ export function DetailPanel({
     entityId: null,
     isPortrait: false,
   });
-  // Fades the image in on load so a slow photo doesn't blink in.
   const [imageLoaded, setImageLoaded] = useState<{
     entityId: string | null;
     loaded: boolean;
@@ -156,8 +150,6 @@ export function DetailPanel({
         document.elementFromPoint?.(event.clientX, event.clientY) ??
         (event.target as Element | null);
       if (target?.closest?.('[data-entity-id]')) return;
-      // A drag-to-pan release also lands here (its start is outside the panel too);
-      // only dismiss if the press barely moved.
       if (start) {
         const moved = Math.hypot(
           event.clientX - start.x,

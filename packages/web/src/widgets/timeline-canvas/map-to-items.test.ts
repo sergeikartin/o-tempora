@@ -209,14 +209,6 @@ test('mapMilestones widens a zero-width milestone range (start === end) by one y
   expect(item?.endYear).toBe(1347);
 });
 
-// computeRowAssignment / compactRows — reads each entry's permanent
-// TimelineEntry.row (data-pipeline's Output-stage row-packing, moved there
-// by docs/adr/0005-row-assignment-moves-to-the-pipeline.md — see
-// packages/data-pipeline/src/output/row-assignment.test.ts for the packing
-// algorithm's own tests) and compacts it down to whatever's currently
-// visible (PeopleLane/ConflictsMilestonesLane's use of personRowFor/
-// eventsRowFor).
-
 test('computeRowAssignment gives two time-overlapping people different rows, the more famous one row 0', () => {
   const famous: Person = { ...person, id: 'Q-famous', fameScore: 999, row: 0 };
   const obscure: Person = { ...person, id: 'Q-obscure', fameScore: 1, row: 1 };
@@ -257,7 +249,7 @@ test('compactRows closes a gap left by a filtered-out item without reordering th
     ['b', 5],
     ['c', 9],
   ]);
-  const compacted = compactRows(['a', 'c'], staticRowOf); // 'b' filtered out
+  const compacted = compactRows(['a', 'c'], staticRowOf);
   expect(compacted.get('a')).toBe(0);
   expect(compacted.get('c')).toBe(1);
 });

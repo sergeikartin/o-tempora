@@ -1,10 +1,3 @@
-// Wikimedia's Pageviews Analytics REST API, distinct from Wikidata's SPARQL
-// endpoint (wikidata-client.ts) and Commons' imageinfo API (commons-client.ts).
-// Sums trailing-4-year monthly pageviews per Wikipedia article for the fameScore
-// blend (docs/adr/0010-blend-sitelinks-and-pageviews-for-wars-discoveries-fame-score.md).
-// Its own client because it is a different protocol (REST path segments, not a
-// SPARQL body or MediaWiki action=query params).
-
 export interface PageviewsPerArticleItem {
   views: number;
 }
@@ -22,9 +15,6 @@ const USER_AGENT =
   'o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)';
 
 const MAX_RETRIES = 3;
-// As commons-client.ts's REQUEST_TIMEOUT_MS: a per-article monthly read over a
-// fixed 4-year window is an indexed metric lookup with no comparable
-// server-side deadline to budget against.
 const REQUEST_TIMEOUT_MS = 30_000;
 const RETRYABLE_SERVER_ERROR_STATUSES = new Set([502, 503, 504]);
 const BACKOFF_BASE_MS = 2_000;

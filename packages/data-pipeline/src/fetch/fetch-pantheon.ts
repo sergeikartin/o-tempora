@@ -3,10 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Bunzip from 'seek-bzip';
 
-// Public, unauthenticated GCS object (.scratch/alt-data-sources/research/pantheon-schema.md).
-// The bucket also lists 2020/2019 person datasets and Pantheon 1.0 files; the
-// 2025 release is pinned explicitly, not "latest", so a new release can't
-// silently reshape this pipeline's input.
+// Pin the 2025 snapshot so a new release cannot silently change the input schema.
 const DATASET_URL =
   'https://storage.googleapis.com/pantheon-public-data/person_2025_update.csv.bz2';
 

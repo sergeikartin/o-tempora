@@ -37,18 +37,14 @@ export interface LineMarkGeometry<Datum> {
   hitX1: (d: Datum) => number;
   hitY: (d: Datum) => number;
   hitHeight: (d: Datum) => number;
-  /** Shared by the halo/line parts — both sit on the same vertical center. */
   centerY: (d: Datum) => number;
   labelX: (d: Datum) => number;
-  /** Wrapped label lines; omitted for a single-line label (`d.name`). */
   lines?: (d: Datum) => string[];
   entityType: (d: Datum) => string;
 }
 
 export interface MarkJoinTarget {
-  /** CSS selector for the `<g>` the marks live under, e.g. `'g.people'`. */
   groupSelector: string;
-  /** Literal marker class each entering mark's own `<g>` gets, e.g. `'d3-person'`. */
   nodeClass: string;
 }
 
@@ -69,7 +65,6 @@ export function attachMarkJoin<Datum extends LineMarkDatum>(
 ): d3.Selection<SVGGElement, Datum, SVGGElement, unknown> {
   const svg = d3.select(svgEl);
   const durationMs = motionDurationMs('--motion-duration-base');
-  // Tuple-indexed so noUncheckedIndexedAccess doesn't flag the 4-tuple's items.
   const hitClass = `.${shape[0].markerClass}`;
   const haloClass = `.${shape[1].markerClass}`;
   const lineClass = `.${shape[2].markerClass}`;

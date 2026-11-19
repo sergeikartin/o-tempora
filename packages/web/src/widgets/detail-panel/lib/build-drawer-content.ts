@@ -11,17 +11,11 @@ import {
   type Person,
 } from '../../../shared/types';
 
-// Which of the three lane shapes a click resolved to: the union App.tsx builds
-// after looking a SelectedEntityRef id up in its in-memory dataset at click
-// time (nothing is precomputed).
 export type DetailPanelEntity =
   | { entityType: 'person'; entity: Person }
   | { entityType: 'conflict'; entity: ConflictEntry }
   | { entityType: 'milestone'; entity: Milestone };
 
-// Every field the panel chrome (ui/DetailPanel.tsx) renders, whatever the
-// entity type. Which optional fields are populated depends on entityType (see
-// buildDrawerContent below), not on the caller.
 export interface DrawerContent {
   name: string;
   // Point-shaped Milestone only — People, Conflicts, and period-shaped

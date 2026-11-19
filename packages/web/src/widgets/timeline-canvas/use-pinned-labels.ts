@@ -8,7 +8,6 @@ interface PinnedLabelItem {
 interface PinnedLabelsConfig<Item extends PinnedLabelItem> {
   svgRef: RefObject<SVGSVGElement | null>;
   labelSelector: (id: string) => string;
-  // Where the item's label sits at this scroll position (x1 when unpinned).
   pinnedX: (item: Item, scrollLeft: number) => number;
   writeX: (label: SVGTextElement, x: number) => void;
 }
@@ -23,7 +22,6 @@ export function usePinnedLabels<Item extends PinnedLabelItem>({
   pinnedX,
   writeX,
 }: PinnedLabelsConfig<Item>) {
-  // Labels currently shifted off their bar's start (id -> x).
   const pinnedXByIdRef = useRef(new Map<string, number>());
   const itemsRef = useRef<Item[]>([]);
   const scrollLeftRef = useRef(0);

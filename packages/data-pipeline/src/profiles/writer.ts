@@ -68,9 +68,6 @@ async function writeEntry(
   return entry.outputPath;
 }
 
-// Asks the model for each planned Profile and stages the validated reply at
-// the entry's output path, the same place a profile-writer agent leaves its
-// file. One failing entity is reported without stopping the others.
 export async function writeProfiles(
   options: WriteOptions,
 ): Promise<WriteResult> {

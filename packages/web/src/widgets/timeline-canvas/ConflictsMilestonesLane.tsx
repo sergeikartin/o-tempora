@@ -55,7 +55,6 @@ interface ConflictsMilestonesLaneProps {
   // unfiltered datasets (map-to-items.ts's computeRowAssignment), so rows are
   // stable across filter/zoom changes.
   eventsRowFor: (ids: string[]) => Map<string, number>;
-  // The Selection's members in this lane (see PeopleLane's prop).
   selectedIds?: readonly string[];
 }
 
@@ -63,7 +62,6 @@ const NO_IDS: readonly string[] = [];
 
 const rangeLabelSelector = (id: string) =>
   `.d3-range-name[data-entity-id="${id}"]`;
-// A range label's wrapped lines each carry their own x.
 const writeRangeLabelX = (label: SVGTextElement, x: number) => {
   label.setAttribute('x', `${x}`);
   for (const line of label.querySelectorAll('tspan'))
@@ -187,8 +185,6 @@ const ConflictsMilestonesLaneImpl = forwardRef<
             .append('g')
             .attr('class', 'd3-point-group')
             .style('opacity', 0);
-          // Children built from POINT_MARK_SHAPE, in its declared order (see
-          // mark-shape.ts).
           const [hit, dotHalo, dot, name] = buildMarkChildren(
             g,
             POINT_MARK_SHAPE,
@@ -255,7 +251,6 @@ const ConflictsMilestonesLaneImpl = forwardRef<
     pointGroups
       .select<SVGTextElement>('.d3-point-name')
       .attr('x', (d) => d.x + POINT_LABEL_OFFSET_PX)
-      // Same delegated-click wiring as the dot, so the label is also a click target.
       .attr('data-entity-id', (d) => d.id)
       .attr('data-entity-type', (d) => d.kind)
       .each(function renderLines(d) {
@@ -275,7 +270,6 @@ const ConflictsMilestonesLaneImpl = forwardRef<
       .duration(durationMs)
       .attr('y', (d) => pointLabelY(d.markerY, d.lines.length));
 
-    // The join reset every range label to its bar's start.
     setPinnedLabelItems(rangeLayout);
   }, [rangeLayout, pointLayout, setPinnedLabelItems]);
 

@@ -20,7 +20,6 @@ test('yearMonthToFractionalYear offsets December to 11/12 through the year', () 
 });
 
 test('yearMonthToFractionalYear offsets a mid-year month proportionally', () => {
-  // July (month 7): 6 whole months already elapsed since January.
   expect(yearMonthToFractionalYear({ year: 1950, month: 7 })).toBeCloseTo(
     1950 + 6 / 12,
   );

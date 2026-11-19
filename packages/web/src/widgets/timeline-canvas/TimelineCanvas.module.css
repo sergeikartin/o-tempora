@@ -52,9 +52,6 @@
   }
 }
 
-/* Joined vertical segmented group — same pattern as DataDepthSwitch's
-   horizontal segmented control (border/radius on the group, a divider
-   between buttons, no gap), just rotated 90°. */
 .zoomControls {
   position: absolute;
   top: 8px;
@@ -180,10 +177,6 @@
       color-mix(in srgb, var(--color-border-emphasis) 45%, transparent) 1px,
       transparent 1px
     ),
-    /* One 25-year band tinted a faint wash of color-bg-surface over the base
-       page background, the next 25 years left transparent — no new hue, just
-       the existing surface token blended low enough to read as ambient
-       structure rather than a hard-edged stripe. */
     linear-gradient(
       to right,
       color-mix(in srgb, var(--color-bg-surface) 25%, transparent) 0,
@@ -292,10 +285,6 @@
   flex: 0 0 auto;
 }
 
-/* Conflicts and Milestones share one vertical scroll region and one row-packing
-   pass (ConflictsMilestonesLane.tsx): a single mixed lane, so a viewer scans
-   both at once. Ratio 2 (People's is 4). position: sticky/overflow-x: hidden
-   for the same reason as .peopleLane above. */
 .conflictsMilestonesLane {
   flex: 2 1 0;
   min-height: 0;

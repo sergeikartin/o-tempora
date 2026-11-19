@@ -4,9 +4,6 @@ import path from 'node:path';
 import { type TestContext, test } from 'node:test';
 import { fetchPageviews } from './fetch-pageviews.js';
 
-// Same mocking seam fetch-image-attribution.test.ts uses: fetchPageviews
-// reads fixed raw files off disk and hits the real Pageviews API with no
-// injectable data source.
 function stubReads(
   t: TestContext,
   filesByBasename: Record<string, unknown>,

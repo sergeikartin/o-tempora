@@ -24,9 +24,6 @@ function regionTagsFor(countries: string[]): Region[] {
   return regionTags;
 }
 
-// Curated milestones (data/raw/milestones-curated.raw.json) are already hand-
-// classified into MilestoneCategory — no lookup table needed; category just
-// passes through.
 export function tagCuratedMilestone(
   category: MilestoneCategory,
   countries: string[],
@@ -34,10 +31,6 @@ export function tagCuratedMilestone(
   return { category, regionTags: regionTagsFor(countries) };
 }
 
-// Curated conflicts (data/raw/conflicts-curated.raw.json) are already hand-classified
-// into ConflictCategory by the curator — same "no lookup table, category
-// just passes through" reasoning as tagCuratedMilestone above. Only
-// regionTags is derived, from the countries Wikidata enrichment resolved.
 export function tagCuratedConflict(
   category: ConflictCategory,
   countries: string[],

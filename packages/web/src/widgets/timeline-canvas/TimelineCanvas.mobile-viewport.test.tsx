@@ -77,9 +77,6 @@ test('above the mobile breakpoint, Minimap renders', async () => {
     />,
   );
 
-  // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
-  // isMinimapIdle) — findByTestId waits it out instead of assuming it's
-  // there synchronously after render.
   expect(await findByTestId('minimap-track')).not.toBeNull();
 });
 

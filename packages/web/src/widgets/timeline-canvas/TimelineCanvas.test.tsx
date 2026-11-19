@@ -14,14 +14,8 @@ import { TimelineCanvas } from './TimelineCanvas';
 
 afterEach(cleanup);
 
-// The zoom animation runs on a real requestAnimationFrame loop
-// (TimelineCanvas.tsx); jsdom has no rAF/paint fidelity to drive it frame by
-// frame, so tests wait out real wall-clock time past the animation's duration
-// and assert on the settled end state, like every other transition test here.
-// No global.css is loaded in this test environment, so --motion-duration-base
-// already reads as 0 here (motionDurationMs's fallback), the same near-instant
-// path prefers-reduced-motion collapses to in production, but the rAF loop
-// still needs one real frame to observe it, hence the wait.
+// Without global.css the motion token falls back to zero, but the animation
+// still needs a requestAnimationFrame to commit.
 async function waitOutZoomAnimation() {
   await act(async () => {
     await new Promise((resolve) => setTimeout(resolve, 100));
@@ -93,11 +87,6 @@ test('renders both lanes, each populated from its own dataset', () => {
     />,
   );
 
-  // Both People's lifespans and Conflicts' ranges are Periods and
-  // share the literal `.d3-line` marker class — two total (Aristotle + the
-  // Korean War) — so this counts each lane's own <svg> (People, then the
-  // merged Conflicts+Milestones lane) rather than the whole page. Excludes
-  // Minimap's own ridge <svg>, a third one that isn't a lane.
   const svgs = Array.from(container.querySelectorAll('svg')).filter(
     (svg) => svg.getAttribute('data-testid') !== 'minimap-ridge',
   );
@@ -106,9 +95,9 @@ test('renders both lanes, each populated from its own dataset', () => {
     SVGSVGElement,
     SVGSVGElement,
   ];
-  expect(peopleSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Aristotle
-  expect(conflictsMilestonesSvg.querySelectorAll('.d3-line')).toHaveLength(1); // Korean War
-  expect(container.querySelectorAll('.d3-dot')).toHaveLength(1); // association football
+  expect(peopleSvg.querySelectorAll('.d3-line')).toHaveLength(1);
+  expect(conflictsMilestonesSvg.querySelectorAll('.d3-line')).toHaveLength(1);
+  expect(container.querySelectorAll('.d3-dot')).toHaveLength(1);
   expect(container.querySelector('.d3-name')?.textContent).toBe('Aristotle');
 });
 
@@ -130,13 +119,7 @@ test('computes Row Depth once and threads the same resolvers to every consumer',
     />,
   );
 
-  // TimelineCanvas computes Row Depth exactly once, from the full
-  // unfiltered datasets, and threads the resulting personRowFor/
-  // eventsRowFor down to PeopleLane, ConflictsMilestonesLane, and Minimap —
-  // no consumer is free to derive its own. A second call here would mean a
-  // consumer (or a future one) recomputed row assignment independently,
-  // which is exactly what let the Minimap's reported Row Depth drift out of
-  // sync with the lanes before this was fixed (see ADR 0007's addendum).
+  // The lanes and Minimap must share the same row assignment so Row Depth stays in sync.
   expect(computeRowAssignment).toHaveBeenCalledTimes(1);
   expect(computeRowAssignment).toHaveBeenCalledWith(
     fixturePeople,
@@ -163,10 +146,6 @@ test('the two lane sections and every year axis share the same rendered width', 
     />,
   );
 
-  // People, and the merged Conflicts+Milestones lane — YearAxis is plain
-  // HTML/CSS, no svg; excludes Minimap's own ridge <svg>, which
-  // isn't a lane and (being CSS-sized, not width-attribute-sized) has no
-  // `width` attribute to compare.
   const svgs = Array.from(container.querySelectorAll('svg')).filter(
     (svg) => svg.getAttribute('data-testid') !== 'minimap-ridge',
   );
@@ -186,11 +165,7 @@ test('the two lane sections and every year axis share the same rendered width', 
 });
 
 test('the full-height 25-year zebra striping is split into a BCE and a CE region with different tick phases', () => {
-  // Regression: the zebra layer used to be one continuous CSS background
-  // (a single phase for the whole timeline), which drifted out of
-  // alignment with the axis's round-historical BCE tick labels — the same
-  // bug as YearAxis's own ruler, fixed the same way (see options.ts's
-  // BCE_QUARTER_CENTURY_TICK_PHASE_OFFSET_YEARS).
+  // The BCE and CE stripes need separate phases to stay aligned with their ruler ticks.
   const { container } = render(
     <TimelineCanvas
       people={fixturePeople}
@@ -214,8 +189,6 @@ test('the full-height 25-year zebra striping is split into a BCE and a CE region
   expect(bceBand.style.getPropertyValue('--zebra-offset-px')).not.toBe(
     ceBand.style.getPropertyValue('--zebra-offset-px'),
   );
-  // Widths sum to the full scrollable width (real PAN_MIN_YEAR-to-today
-  // domain, always spanning both eras).
   const zebraLayer = container.querySelector(
     '[class*="zebraLayer"]',
   ) as HTMLElement;
@@ -278,7 +251,7 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
     clientX: 460,
     pointerId: 1,
   });
-  expect(scrollContainer.scrollLeft).toBe(140); // dragged left by 40px -> content pans right
+  expect(scrollContainer.scrollLeft).toBe(140);
 
   fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
   fireEvent.pointerMove(scrollContainer, {
@@ -286,7 +259,7 @@ test('mouse-dragging the scroll container pans it; releasing stops the pan', () 
     clientX: 300,
     pointerId: 1,
   });
-  expect(scrollContainer.scrollLeft).toBe(140); // no longer dragging, so further moves are ignored
+  expect(scrollContainer.scrollLeft).toBe(140);
 });
 
 test('dragging the Minimap viewport rect scrolls the container, proportional to the (mocked) track width vs. the timeline width', async () => {
@@ -307,9 +280,6 @@ test('dragging the Minimap viewport rect scrolls the container, proportional to 
   const scrollContainer = container.querySelector(
     '[class*="scrollContainer"]',
   ) as HTMLElement;
-  // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
-  // isMinimapIdle) — findByTestId waits it out instead of assuming it's
-  // there synchronously after render.
   const track = await findByTestId('minimap-track');
   const rect = await findByTestId('minimap-viewport-rect');
   // Minimap reads scrollLeft from React state (a prop), not a live
@@ -368,7 +338,7 @@ test('dragging the Minimap viewport rect scrolls the container, proportional to 
     clientX: 300,
     pointerId: 1,
   });
-  expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft); // no longer dragging
+  expect(scrollContainer.scrollLeft).toBeCloseTo(expectedScrollLeft);
 });
 
 test('a mousedown on the scroll container content still pans it — the custom scrollbar is a separate element, not a geometry guard on the same one', () => {
@@ -426,9 +396,6 @@ test('clicking the Minimap track outside the viewport rect jumps the viewport to
   const scrollContainer = container.querySelector(
     '[class*="scrollContainer"]',
   ) as HTMLElement;
-  // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
-  // isMinimapIdle) — findByTestId waits it out instead of assuming it's
-  // there synchronously after render.
   const track = await findByTestId('minimap-track');
   Object.defineProperty(scrollContainer, 'scrollLeft', {
     value: 0,
@@ -505,10 +472,8 @@ test('releasing a drag suppresses the click event that follows it', () => {
     pointerId: 1,
   });
   fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
-  // Browsers still fire a native click at the release point after a real
-  // drag, regardless of how far the pointer moved in between — simulated
-  // here landing directly on a mark, which is exactly the case a user
-  // reported: panning past a person's line unintentionally opened it.
+  // Browsers still dispatch a click at release after a drag. Release over a mark
+  // to verify that it stays unselected.
   fireEvent.click(line);
 
   expect(onEntityClick).not.toHaveBeenCalled();
@@ -666,7 +631,7 @@ test('a mouse pointer never starts a pinch, even alongside a stray touch pointer
   fireEvent.pointerUp(scrollContainer, { pointerType: 'mouse', pointerId: 1 });
 
   expect(scrollContainer.scrollLeft).toBe(140); // drag-to-pan, unaffected by pinch tracking
-  expect(personLineWidth(container)).toBe(initialWidth); // never zoomed
+  expect(personLineWidth(container)).toBe(initialWidth);
 });
 
 test('a two-finger touch pinch scales pixelsPerYear by the live distance ratio, committing once the first finger lifts', () => {
@@ -689,8 +654,6 @@ test('a two-finger touch pinch scales pixelsPerYear by the live distance ratio, 
   ) as HTMLElement;
   const initialWidth = personLineWidth(container);
 
-  // Two touches start 100px apart, spread to 200px apart (a 2x distance
-  // ratio) — mirrors pinching outward to zoom in.
   fireEvent.pointerDown(scrollContainer, {
     pointerType: 'touch',
     pointerId: 1,
@@ -721,8 +684,6 @@ test('a two-finger touch pinch scales pixelsPerYear by the live distance ratio, 
 
   expect(personLineWidth(container)).toBeCloseTo(initialWidth * 2);
 
-  // The second finger's own pointerup afterward is a no-op — the gesture
-  // already committed and its state was cleared.
   fireEvent.pointerUp(scrollContainer, { pointerType: 'touch', pointerId: 2 });
   expect(personLineWidth(container)).toBeCloseTo(initialWidth * 2);
 });
@@ -747,8 +708,6 @@ test('a two-finger touch pinch pinching inward (fingers moving closer) zooms out
   ) as HTMLElement;
   const initialWidth = personLineWidth(container);
 
-  // Two touches start 200px apart, pinch together to 100px apart (a 0.5x
-  // distance ratio).
   fireEvent.pointerDown(scrollContainer, {
     pointerType: 'touch',
     pointerId: 1,
@@ -917,9 +876,6 @@ test("Minimap's viewport rect reflects the new range once a zoom animation settl
       onEntityClick={noopEntityClick}
     />,
   );
-  // Minimap's own mount is deferred to idle time (TimelineCanvas.tsx's
-  // isMinimapIdle) — findByTestId waits it out instead of assuming it's
-  // there synchronously after render.
   const rect = await findByTestId('minimap-viewport-rect');
   const initialWidthPct = parseFloat(rect.style.width);
 
@@ -930,9 +886,6 @@ test("Minimap's viewport rect reflects the new range once a zoom animation settl
   fireEvent.click(getByLabelText('Zoom in'));
   await waitOutZoomAnimation();
 
-  // Zooming in widens totalWidth against the same viewportWidthPx, so the
-  // rect representing "how much of the timeline is on screen" shrinks — a
-  // stale (pre-zoom) rect would still show the old, wider percentage.
   expect(parseFloat(rect.style.width)).toBeLessThan(initialWidthPct);
 });
 
@@ -941,7 +894,7 @@ test('zooming does not change which entities are rendered — density is gated b
     ...aristotle,
     id: 'Q-low-fame',
     name: 'Low Fame Person',
-    fameScore: 76, // below the 90 people floor in defaultFameScoreValues
+    fameScore: 76,
   };
 
   const { container, getByLabelText } = render(
@@ -1092,8 +1045,6 @@ test('an item with no region tags is excluded once a Region filter is active', (
       onEntityClick={noopEntityClick}
     />,
   );
-  // fixtureMilestones' football entry has an empty regionTags array — it
-  // can't match any non-empty region selection.
   expect(container.querySelectorAll('.d3-dot')).toHaveLength(0);
 });
 

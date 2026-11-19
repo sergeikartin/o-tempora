@@ -10,7 +10,6 @@
   cursor: pointer;
 }
 
-/* Decorative: never intercepts the track's or thumb's handlers. */
 .ticks {
   position: absolute;
   inset: 0;

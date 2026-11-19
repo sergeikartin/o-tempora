@@ -4,9 +4,6 @@ import path from 'node:path';
 import { type TestContext, test } from 'node:test';
 import { fetchWikipediaExtracts } from './fetch-wikipedia-extracts.js';
 
-// Same mocking seam fetch-image-attribution.test.ts/fetch-pageviews.test.ts
-// use: fetchWikipediaExtracts reads fixed raw files off disk and hits the
-// real Wikipedia REST summary API with no injectable data source.
 function stubReads(
   t: TestContext,
   filesByBasename: Record<string, unknown>,
@@ -15,7 +12,6 @@ function stubReads(
     const basename = path.basename(filePath);
     if (basename in filesByBasename) {
       const fixture = filesByBasename[basename];
-      // people-pantheon.raw.csv is read as plain CSV text, not JSON.
       return typeof fixture === 'string' ? fixture : JSON.stringify(fixture);
     }
     throw new Error(
@@ -36,8 +32,6 @@ function stubWrites(t: TestContext): Map<string, unknown> {
   return written;
 }
 
-// Responds with an extract keyed by the requested title's last path
-// segment, mirroring wikipedia-client.ts's `{ extract }` summary shape.
 function stubWikipediaFetch(
   t: TestContext,
   extractByTitle: Record<string, string>,

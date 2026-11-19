@@ -16,15 +16,8 @@ import {
   pointLabelY,
 } from './options';
 
-// HTML-string counterpart to mark-shape.ts's buildMarkChildren: the same
-// MarkShape descriptor and attrs, rendered as a string. PeopleLane and
-// ConflictsMilestonesLane call the list-level renderers below once, in a lazy
-// useState initializer, to seed their <g>'s dangerouslySetInnerHTML,
-// identically on the server (vite-plugins/prerender-default-viewport.ts via
-// App.tsx's initialDatasets) and the client, so hydration has nothing to
-// reconcile. The D3 join's `enter` branch (buildMarkChildren) handles marks
-// that appear later (e.g. a filter change, a deeper Detail Level loading);
-// both share one descriptor.
+// Share MarkShape with the D3 join so prerendered marks and marks added
+// after hydration use the same DOM structure.
 
 type Attrs = Record<string, string | number>;
 
@@ -44,7 +37,7 @@ function attrsToHtml(attrs: Attrs): string {
     .join('');
 }
 
-/** One mark part rendered as an HTML string — `innerHtml` is caller-built (only ever used for the text part: a plain escaped name, or pre-escaped `<tspan>`s for a wrapped multi-line label). */
+// Callers must escape innerHtml before passing in label text or tspans.
 function renderMarkPartHtml(
   part: MarkShapePart,
   styles: Record<string, string | undefined>,
@@ -60,7 +53,7 @@ function markTextInnerHtml(text: string): string {
   return escapeHtml(text);
 }
 
-/** `<tspan>` content for a wrapped multi-line label — mirrors attachMarkJoin's `renderLines` pass exactly (trailing space on every non-final line, so rendered textContent matches the source name). */
+// Preserve spaces between tspans so textContent matches the source name.
 function markTspansInnerHtml(
   lines: string[],
   x: number,
@@ -75,7 +68,6 @@ function markTspansInnerHtml(
     .join('');
 }
 
-/** One full mark `<g>` — group class/attrs plus its 5 shape-defined children, in order. `partAttrs`/`textInnerHtml` are indexed the same as `shape`. */
 function renderMarkGroupHtml(
   groupClass: string,
   groupAttrs: Attrs,
@@ -86,10 +78,8 @@ function renderMarkGroupHtml(
 ): string {
   const children = shape
     .map((part, i) =>
-      // Index 1 (halo): omitted from the initial paint. Only the one selected mark
-      // shows a halo, and pre-building invisible ones for the rest costs layout and
-      // style recalc on first paint; mark-join.ts's ensureHaloChild creates it from
-      // the real mark's geometry the first time a mark is selected.
+      // Skip invisible halos on first paint to avoid their layout and style cost.
+      // The join creates one from the mark’s geometry on selection.
       i === 1
         ? ''
         : renderMarkPartHtml(
@@ -246,7 +236,6 @@ function renderPointMarkHtml(
   );
 }
 
-/** PeopleLane's initial `g.people` content — `styles` is its own CSS-Module import, so class hashes always match whichever build (real or prerender) is calling this. */
 export function renderPeopleMarkupHtml(
   layout: PersonLayout[],
   styles: Record<string, string | undefined>,
@@ -254,7 +243,6 @@ export function renderPeopleMarkupHtml(
   return layout.map((item) => renderPersonMarkHtml(item, styles)).join('');
 }
 
-/** ConflictsMilestonesLane's initial `g.ranges` content. */
 export function renderRangesMarkupHtml(
   layout: RangeLayout[],
   styles: Record<string, string | undefined>,
@@ -262,7 +250,6 @@ export function renderRangesMarkupHtml(
   return layout.map((item) => renderRangeMarkHtml(item, styles)).join('');
 }
 
-/** ConflictsMilestonesLane's initial `g.points` content. */
 export function renderPointsMarkupHtml(
   layout: PointLayout[],
   styles: Record<string, string | undefined>,

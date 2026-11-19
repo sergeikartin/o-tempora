@@ -17,7 +17,6 @@ export const WRITER_AGENT_PATH = path.join(
   'profile-writer.md',
 );
 
-// `<lane>/<QID>-<english-name>.en.json` records live here; Output reads them.
 export const RAW_PROFILES_DIR = path.join(
   PACKAGE_DIR,
   'data',

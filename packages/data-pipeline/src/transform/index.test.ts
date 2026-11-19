@@ -9,10 +9,6 @@ import {
 } from './index.js';
 import { computeFameScore } from './score.js';
 
-// transformConflicts/transformMilestones read fixed raw files off disk
-// (RAW_DIR, derived from this module's own location) with no injectable
-// data source — mocking fs.readFileSync per-filename is the seam available
-// without widening transform/index.ts's interface just for testability.
 function stubRawFiles(
   t: TestContext,
   filesByBasename: Record<string, unknown>,
@@ -21,18 +17,12 @@ function stubRawFiles(
     const basename = path.basename(filePath);
     if (basename in filesByBasename) {
       const fixture = filesByBasename[basename];
-      // people-pantheon.raw.csv is read as plain CSV text, not JSON — every
-      // other fixture here is a raw-file object serialized on read.
       return typeof fixture === 'string' ? fixture : JSON.stringify(fixture);
     }
     throw new Error(`stubRawFiles: no fixture registered for ${basename}`);
   });
 }
 
-// Same 34-column header pantheon-row-shape.test.ts's own fixture uses —
-// transformPeople is the only function here that reads the Pantheon CSV
-// directly, via parsePantheonCsv, so it needs a header-complete row rather
-// than a partial JSON fixture.
 const PANTHEON_HEADER =
   '"id","wd_id","wp_id","slug","name","occupation","prob_ratio","gender","twitter","alive","l","hpi_raw","bplace_name","bplace_lat","bplace_lon","bplace_geonameid","bplace_country","birthdate","birthyear","dplace_name","dplace_lat","dplace_lon","dplace_geonameid","dplace_country","deathdate","deathyear","bplace_geacron_name","dplace_geacron_name","is_group","l_","age","non_en_page_views","coefficient_of_variation","hpi"';
 

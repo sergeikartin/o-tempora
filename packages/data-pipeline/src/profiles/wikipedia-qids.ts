@@ -37,8 +37,6 @@ interface QueryResponse {
   };
 }
 
-// Follows each requested title through normalization and redirects to its
-// page, and returns that page's Wikidata item.
 export function qidsByTitle(
   titles: readonly string[],
   response: QueryResponse,

@@ -388,11 +388,6 @@ test("stacks two milestones in the same year onto different rows, moving each ro
   expect(new Set(labelYs).size).toBe(2);
 });
 
-// Range adoption (seeding, enter/update/exit lifecycle) is a mark-join.ts
-// concern now, covered generically by mark-join.test.ts. Point's join is
-// unchanged (still a per-lane circle-shaped join), so its own adoption test
-// stays here.
-
 test('adopts a prerendered, unbound .d3-point-group node instead of destroying and recreating it', async () => {
   const { scale } = buildXScale(2);
   const milestones = [football];
@@ -451,8 +446,6 @@ test('adopts a prerendered, unbound .d3-point-group node instead of destroying a
     />,
   );
 
-  // Same node, not a replacement — an exit+enter would have removed this
-  // node and appended a fresh one instead.
   expect(container.querySelector('[data-test-marker="prerendered"]')).toBe(
     prerenderedNode,
   );
@@ -462,11 +455,9 @@ test('adopts a prerendered, unbound .d3-point-group node instead of destroying a
   expect(prerenderedNode.style.opacity).not.toBe('0');
 
   const dot = prerenderedNode.querySelector('.d3-dot') as SVGCircleElement;
-  // cx is applied instantly (not through the row-shift transition).
   expect(dot.getAttribute('cx')).toBe(expectedCx);
 
   await new Promise((resolve) => setTimeout(resolve, 50));
-  // cy corrects too, once the row-shift transition settles.
   expect(dot.getAttribute('cy')).toBe(expectedCy);
 });
 

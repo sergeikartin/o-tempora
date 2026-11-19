@@ -13,10 +13,6 @@ export const PAN_MIN_YEAR = -801;
 // Entity Link's arrival fit leaves this much of the canvas out of its math.
 export const DETAIL_DRAWER_WIDTH_PX = 440;
 
-// Per-lane `fameScore` floors, independent of zoom
-// (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md).
-// Lives here rather than under widgets/timeline-canvas because the Filters Panel
-// filter feature needs it too.
 export const FAME_SCORE_LANES = ['people', 'conflicts', 'milestones'] as const;
 export type FameScoreLane = (typeof FAME_SCORE_LANES)[number];
 
@@ -84,9 +80,6 @@ function detailLevel(
   };
 }
 
-// Labels/descriptions are resolved once at module load from the compiled
-// locale's message catalog (docs/adr/0005), like shared/config's other
-// taxonomy labels.
 export const DETAIL_LEVELS: readonly [
   DetailLevel,
   DetailLevel,

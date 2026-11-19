@@ -95,8 +95,6 @@ export function Minimap({
   // narrower strip can't fit, so it follows .track's real width.
   const measuredTrackWidthPx = useMeasuredWidthPx(trackRef);
 
-  // Viewport-rect ratio geometry; effectiveViewportWidthPx is shared with the
-  // century-label spacing.
   const effectiveViewportWidthPx =
     viewportWidthPx || FALLBACK_VIEWPORT_WIDTH_PX;
   const effectiveTrackWidthPx =
@@ -154,8 +152,6 @@ export function Minimap({
     };
   }, [profile, maxPeopleDepth, maxEventsDepth]);
 
-  // Viewport-rect ratio geometry; effectiveViewportWidthPx is shared with the
-  // century-label spacing.
   const rectWidthRatio =
     totalWidth > 0 ? Math.min(effectiveViewportWidthPx / totalWidth, 1) : 1;
   const maxScrollLeftForRect = Math.max(
@@ -227,8 +223,6 @@ export function Minimap({
     setIsRectDragging(false);
   }
 
-  // A press elsewhere on the track jumps to center on that point; the rect drag
-  // stops its own press from bubbling here.
   function handleTrackPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
     const track = trackRef.current;

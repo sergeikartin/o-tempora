@@ -57,11 +57,6 @@ function milestone(overrides: Partial<Milestone> = {}): Milestone {
   };
 }
 
-// assignRows — fame-priority interval-graph row stacking, ported verbatim
-// from packages/web (docs/adr/0005-row-assignment-moves-to-the-pipeline.md).
-// Processes items by fameScore rounded to an integer tier (descending),
-// chronologically within a tier, id as the final tie-break.
-
 test('assignRows places two non-overlapping intervals in the same row', () => {
   const rows = assignRows(
     [
@@ -223,12 +218,6 @@ test("assignRows lets a lower-fame item slot in before an already-placed higher-
   assert.equal(rows.get('famous'), 0);
   assert.equal(rows.get('obscure'), 0);
 });
-
-// assignPersonRows / assignConflictsMilestonesRows — the pipeline-side
-// derivation of a real Person/Conflict/Milestone's row from its actual
-// lifespan/period/at and fameScore, the piece packages/web used to run
-// client-side (computeStaticPersonRows/computeStaticConflictsMilestonesRows)
-// before this moved to Output time.
 
 test('assignPersonRows gives two time-overlapping people different rows, the more famous one row 0', () => {
   const famous = person({ id: 'Q-famous', fameScore: 100 });

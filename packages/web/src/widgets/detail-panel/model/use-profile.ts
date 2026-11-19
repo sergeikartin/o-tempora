@@ -21,8 +21,6 @@ function fetchProfile(locale: string, slug: string): Promise<Profile> {
   return request;
 }
 
-// The shipped Profile of the entity with this slug, fetched when it opens;
-// undefined when `slug` is null (the entity has none).
 export function useProfile(slug: string | null): ProfileState | undefined {
   const locale = getLocale();
   const key = slug && `${locale}/${slug}`;

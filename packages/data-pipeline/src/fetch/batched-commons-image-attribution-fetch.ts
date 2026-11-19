@@ -3,9 +3,7 @@ import {
   fetchCommonsImageInfo,
 } from './commons-client.js';
 
-// Same batch size batched-sparql-fetch.ts uses for Wikidata VALUES clauses
-// — also MediaWiki's own titles= batching ceiling for unauthenticated API
-// callers.
+// MediaWiki caps title batches at 50 for unauthenticated callers.
 const BATCH_SIZE = 50;
 const BATCH_DELAY_MS = 500;
 
@@ -13,10 +11,7 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// A P18 SPARQL binding is already a full `Special:FilePath/<encoded name>`
-// URI (research/image-sourcing.md §2.1) — the imageinfo API instead wants a
-// bare `File:<name>` title, so this recovers the filename by decoding the
-// URI's last path segment.
+// Wikidata supplies a Special:FilePath URI. Commons imageinfo expects the decoded filename with a File: prefix.
 export function extractCommonsFileTitle(imageUri: string): string | undefined {
   let pathname: string;
   try {
@@ -32,10 +27,7 @@ function stripHtml(value: string): string {
   return value.replace(/<[^>]*>/g, '').trim();
 }
 
-// Commons' extmetadata.Artist/Credit values are HTML fragments (research/
-// image-sourcing.md §2.3's live samples), not plain text — this app renders
-// the result as plain React text (auto-escaped), so tags are stripped, not
-// preserved or re-rendered as markup.
+// Commons supplies these credits as HTML fragments. Strip tags for plain-text display.
 export function buildAttributionDisplayString(
   info: CommonsImageInfo,
 ): string | undefined {
@@ -47,12 +39,8 @@ export function buildAttributionDisplayString(
   return plainCredit ? `${plainCredit}, via Wikimedia Commons` : undefined;
 }
 
-// Resolves `imageAttribution` display strings for a batch of entities that
-// each already carry a raw P18 image URI, keyed by the caller's own entity
-// id (not the Commons filename, which multiple entities could in principle
-// share). Entities with no license-required attribution — the common,
-// public-domain case for this dataset — are simply absent from the
-// returned map: "absent means not applicable", as for `image`/`imageAttribution`.
+// Key credits by entity ID because multiple entities can share one Commons file.
+// Missing credits can also mean Commons metadata was unavailable.
 export async function batchedCommonsImageAttributionFetch(
   entries: Array<{ id: string; imageUri: string }>,
 ): Promise<Map<string, string>> {

@@ -30,12 +30,10 @@ export interface Curiosity {
   chip: () => string;
   lede: () => string;
   caption: () => string;
-  /** Visible stretch of the axis, in decimal years. */
   window: readonly [number, number];
   ticks: readonly number[];
   marks: readonly CuriosityMark[];
   band?: CuriosityBand;
-  /** Slug of the mark the call-to-action opens. */
   lead: string;
   /**
    * The lead's Key Moment or Deep Fact the link scrolls to. Set only once the

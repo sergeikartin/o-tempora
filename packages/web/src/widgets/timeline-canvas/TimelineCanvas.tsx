@@ -127,25 +127,15 @@ interface TimelineCanvasProps {
   people: Person[];
   conflicts: ConflictEntry[];
   milestones: Milestone[];
-  // Detail Level fame-score floors (web/docs/adr/0003), independent of zoom.
   fameScoreValues: FameScoreValues;
-  // People-only Occupation Domain filter; empty means unfiltered.
   selectedDomains: OccupationDomain[];
-  // Region filter shared by all three lanes; empty means unfiltered.
   selectedRegions: Region[];
-  // Conflicts & Milestones filter: the 'conflicts' value and the 2
-  // MilestoneCategoryGroup values; empty means unfiltered.
   selectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[];
-  // Reports a click on any lane's mark (one delegated listener); App.tsx looks
-  // the id up in the full dataset and updates the Selection.
   onEntityClick: (ref: SelectedEntityRef) => void;
   // Reports post-filter entry counts per lane for the app shell; this widget
   // stays the single owner of the filtering pipeline (docs/code-conventions.md).
   onFilteredCountsChange?: (counts: FilteredCounts) => void;
-  // The Selection (GLOSSARY.md). Its mark gets the selection highlight while it
-  // stays selected.
   selectedEntity?: SelectedEntityRef | null;
-  // The selected entity's span, which the Focus Range heading names.
   selectedSpan?: YearSpan | null;
   // Set only by a search pick (a canvas click is already in view). App.tsx
   // passes a fresh object each time, so re-picking the same result re-jumps.
@@ -157,7 +147,6 @@ interface TimelineCanvasProps {
 
 export interface ArrivalFit {
   years: YearSpan;
-  // The Selection, scrolled into view in its lane.
   entity: SelectedEntityRef;
 }
 
@@ -179,11 +168,8 @@ export function TimelineCanvas({
   arrivalFit,
 }: TimelineCanvasProps) {
   const isMobileViewport = useIsMobileViewport();
-  // Minimap mounts at idle time, not in the hydration commit. The prerender
-  // assumes desktop (viewport.ts's getServerSnapshot), so on mobile an eager
-  // mount would appear and then unmount, resizing .scrollContainer (same flex
-  // column) and causing layout shift. Gated on isMinimapIdle (false at SSR and
-  // first hydration), it never mounts on mobile.
+  // Defer the Minimap until idle so mobile hydration can switch from the desktop
+  // snapshot before mounting a desktop-only control.
   const [isMinimapIdle, setIsMinimapIdle] = useState(false);
   useEffect(() => {
     const schedule =
@@ -205,8 +191,6 @@ export function TimelineCanvas({
   // ZoomAnimationTransform). zebraLayerRef is rendered here, so a plain ref.
   const peopleLaneAnimRef = useRef<LabelPinningHandle>(null);
   const conflictsMilestonesLaneAnimRef = useRef<LabelPinningHandle>(null);
-  // The one Year Axis, between People and Conflicts+Milestones. Each lane
-  // scrolls internally, so no other copy needs to stay visible.
   const yearAxisMiddleAnimRef = useRef<ZoomAnimationHandle>(null);
   const zebraLayerRef = useRef<HTMLDivElement>(null);
   const scrubberRef = useRef<ScrubberHandle>(null);
@@ -236,7 +220,6 @@ export function TimelineCanvas({
     },
     [],
   );
-  // Cancels any in-flight jump animation so a real pointer drag wins.
   const cancelPanAnimation = useCallback(() => {
     if (panAnimationFrameRef.current !== null) {
       cancelAnimationFrame(panAnimationFrameRef.current);
@@ -253,7 +236,6 @@ export function TimelineCanvas({
     scrollLeft: number;
     moved: boolean;
   } | null>(null);
-  // Recent mouse positions of the drag in progress, for the release velocity.
   const dragSamplesRef = useRef<DragSample[]>([]);
   // Pinch-to-zoom pointer tracking, engaged once two non-mouse pointers are
   // down on .scrollContainer (see handlePointerDown). Keyed by pointerId so
@@ -277,10 +259,7 @@ export function TimelineCanvas({
   // the mouseup still fires a click that would otherwise open whatever mark is
   // under the pointer.
   const suppressNextClickRef = useRef(false);
-  // A fixed density, not derived from viewport width: the prerendered marks
-  // are painted at this density, so a narrower viewport shows fewer years at
-  // the same density instead of rescaling and repositioning every mark on
-  // hydration.
+  // Use the same density as the prerender so the marks match during hydration.
   const [pixelsPerYear, setPixelsPerYear] = useState(REFERENCE_PIXELS_PER_YEAR);
   // Set by a zoom to the viewport-center year, so the commit effect can
   // re-center on it instead of snapping to the timeline's left edge.
@@ -335,8 +314,6 @@ export function TimelineCanvas({
   const [scrollLeft, setScrollLeft] = useState(() =>
     Math.max(0, scale(DEFAULT_VIEWPORT_START_YEAR)),
   );
-  // Drives both lanes' left and right edge fades (TimelineCanvas.module.css)
-  // from the horizontal scroll position.
   const updateHorizontalFades = useCallback((currentScrollLeft: number) => {
     const container = scrollRef.current;
     if (!container) return;
@@ -385,10 +362,7 @@ export function TimelineCanvas({
     },
     [mirrorLaneScrollLeft],
   );
-  // One-shot: set just before a scrollLeft write that isn't a user pan (mount
-  // positioning, zoom re-centering), so the resulting 'scroll' event doesn't
-  // restart the pan debounce or re-derive state the writer already set. Consumed
-  // by the next scroll event, which fires as a separate task after this write.
+  // Skip pan analytics for programmatic positioning and zoom re-centering.
   const skipNextPanTrackRef = useRef(false);
   const panTrackTimeoutRef = useRef<number | null>(null);
   useEffect(() => {
@@ -812,8 +786,6 @@ export function TimelineCanvas({
     const drag = dragStartRef.current;
     if (!drag) return;
     dragStartRef.current = null;
-    // A real drag's mouseup still fires a click that would open the mark under
-    // the cursor; the delegated click listener checks and clears this flag.
     if (drag.moved) suppressNextClickRef.current = true;
     try {
       scrollRef.current?.releasePointerCapture?.(event.pointerId);
@@ -868,9 +840,6 @@ export function TimelineCanvas({
     panAnimationFrameRef.current = requestAnimationFrame(tick);
   }
 
-  // Passed to Minimap: sets the real scrollLeft (and, via syncScrollLeft, the
-  // sticky lanes' pan) directly. The scroll listener above then updates the
-  // scrollLeft state that re-renders Minimap, as for a native scroll.
   function handleScrollLeftChange(newScrollLeft: number) {
     cancelPanAnimation();
     syncScrollLeft(newScrollLeft);
@@ -914,8 +883,6 @@ export function TimelineCanvas({
     panAnimationFrameRef.current = requestAnimationFrame(tick);
   }
 
-  // The Scrubber speaks in years; the scroll position it maps to is clamped to
-  // the pan bounds, so a tap or drag past either end stops at the edge.
   function scrollLeftForCenterYear(centerYear: number): number | null {
     const container = scrollRef.current;
     if (!container) return null;
@@ -1028,12 +995,8 @@ export function TimelineCanvas({
         suppressNextClickRef.current = false;
         return;
       }
-      // Hit-test at the click's screen position instead of event.target: this
-      // container's drag-to-pan calls setPointerCapture on pointerdown, which
-      // retargets the click to the container itself, so event.target.closest()
-      // would miss marks on a real mouse click. jsdom lacks elementFromPoint (hence
-      // the optional call), and falls back to event.target, which synthetic
-      // fireEvent.click(mark) sets correctly.
+      // Pointer capture retargets the click to the scroll container. Hit-test the
+      // release coordinates to recover the underlying mark.
       const hit =
         document.elementFromPoint?.(event.clientX, event.clientY) ??
         event.target;
@@ -1082,12 +1045,8 @@ export function TimelineCanvas({
     }
   }
 
-  // Animates the +/- zoom buttons. Every mark stays drawn at the committed
-  // pixelsPerYear for the whole gesture (recomputing per frame costs
-  // 250-530ms), while one group transform per lane/axis, written via rAF,
-  // tracks an eased interpolation to the target. Real pixelsPerYear/scrollLeft
-  // state commits once at the end, through the pixelsPerYear-keyed
-  // useLayoutEffect.
+  // Transform the drawn marks during zoom. Recomputing their layout each frame
+  // exceeds the frame budget.
   function zoom(
     step: (currentPixelsPerYear: number, viewportWidthPx: number) => number,
     direction: 'in' | 'out',
@@ -1306,7 +1265,6 @@ export function TimelineCanvas({
     panBy(wheelDeltaPx(delta, event.deltaMode, container.clientWidth));
   }
 
-  // The target is clamped to the pan bounds, as the Scrubber's is.
   function clampedScrollLeft(target: number): number {
     const container = scrollRef.current;
     const maxScrollLeft = Math.max(

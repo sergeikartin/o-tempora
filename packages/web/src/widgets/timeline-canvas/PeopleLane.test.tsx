@@ -217,11 +217,6 @@ test('no longer renders a native <title> tooltip element — replaced by the cli
   expect(container.querySelector('title')).toBeNull();
 });
 
-// Prerendered-node adoption (seeding, enter/update/exit lifecycle) is a
-// mark-join.ts concern now, covered generically by mark-join.test.ts rather
-// than per-lane — this file keeps only PeopleLane-specific geometry/wiring
-// assertions.
-
 test('relative row order between two people is preserved when a third, differently-ranked, overlapping person is filtered out', () => {
   const { scale } = buildXScale(2);
   const overlappingSpan = { start: { year: -383 }, end: { year: -321 } };

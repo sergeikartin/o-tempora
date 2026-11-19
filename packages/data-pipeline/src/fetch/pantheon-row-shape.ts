@@ -1,9 +1,5 @@
 import { parseCsvLine } from './csv.js';
 
-// Only the columns this pipeline consumes: Pantheon's 2025 Person Dataset has
-// 34, and the rest (raw date strings, coordinates, GeoNames IDs, HPI's
-// components) are unused. See .scratch/alt-data-sources/research/pantheon-schema.md
-// for the full field list and provenance.
 export interface PantheonPersonRow {
   id: string;
   wdId: string;
@@ -15,7 +11,6 @@ export interface PantheonPersonRow {
   // Wikipedia article slug; wikipediaUrl is built from it
   // (https://en.wikipedia.org/wiki/{slug}) since the CSV has no URL column.
   slug: string;
-  // Empty string for the 62 rows with no occupation claim at all.
   occupation: string;
   hpi: number;
   // Empty string when unknown — present-day country of the birth/death

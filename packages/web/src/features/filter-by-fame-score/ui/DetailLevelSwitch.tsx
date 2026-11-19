@@ -10,14 +10,9 @@ import styles from './DetailLevelSwitch.module.css';
 interface DetailLevelSwitchProps {
   selectedLevelId: DetailLevelId;
   onSelectLevel: (level: DetailLevel) => void;
-  // Detail Level ids whose delta file hasn't resolved yet (see
-  // app/use-detail-level-datasets.ts). The loading pulse renders only on the
-  // active option.
   loadingLevelIds: DetailLevelId[];
 }
 
-// One filled pip per level reached, so the trigger and every row read as a
-// position on the same 4-step scale.
 function Pips({ count }: { count: number }) {
   return (
     <span className={styles.pips} aria-hidden="true">
@@ -33,12 +28,6 @@ function Pips({ count }: { count: number }) {
   );
 }
 
-// 4-position preset that sets the three fame-score floors and triggers
-// whatever fetch the selected level still needs
-// (docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md). The
-// active option is the caller's explicit `selectedLevelId`, not derived from
-// the fame-score values. Collapsed to a single pill that opens the levels as
-// rows, each with its one-line description.
 export function DetailLevelSwitch({
   selectedLevelId,
   onSelectLevel,

@@ -59,9 +59,6 @@ async function writeDataset(fileName: string, data: unknown): Promise<void> {
   await writeFile(path.join(DATA_DIR, fileName), JSON.stringify(data, null, 2));
 }
 
-// Attaches each entity's slug (slugs.ts) — computed once off the English
-// build and applied to both language builds by id, since the slug is the same
-// in both locales.
 function withSlugs<T extends { id: string }>(
   entries: T[],
   slugOf: ReadonlyMap<string, string>,
@@ -72,11 +69,7 @@ function withSlugs<T extends { id: string }>(
   }));
 }
 
-// Attaches each entry's permanent Row Depth identity (TimelineEntry.row,
-// docs/adr/0005-row-assignment-moves-to-the-pipeline.md) — row assignment is
-// language-independent (same ids/dates/fame regardless of `lang`, per
-// write-datasets.ts's Lang doc comment), so `rowOf` is computed once, off
-// both builds' label widths, and applied to both language builds by id here.
+// Assign rows before splitting deltas so opening a deeper Detail Level cannot move existing marks.
 function withRows<T extends { id: string }>(
   entries: T[],
   rowOf: ReadonlyMap<string, number>,
@@ -84,10 +77,6 @@ function withRows<T extends { id: string }>(
   return entries.map((entry) => ({ ...entry, row: rowOf.get(entry.id) ?? 0 }));
 }
 
-// Writes a lane's 4 Detail Level delta files (`<lane>.detail1.json` ..
-// `<lane>.detail4.json`, `.ru` variants included via `fileNameFor`) — see
-// write-datasets.ts's splitByDetailLevel and docs/adr/0006-detail-level-
-// merges-data-depth-and-payload-tier.md.
 async function writeDetailLevelDataset<T extends { fameScore: number }>(
   fileNameFor: (level: 1 | 2 | 3 | 4) => string,
   entries: T[],
@@ -249,10 +238,8 @@ async function main(): Promise<void> {
     DETAIL_LEVEL_FAME_SCORE_FLOORS.people,
   );
 
-  // Conflicts and Milestones share one row-packing pass (row-assignment.ts),
-  // so their rows are computed together off both language builds (a label's
-  // footprint is its widest rendering), then applied to both by id, same as
-  // People above.
+  // Conflicts and Milestones share the same row space. Reserve room for the widest
+  // label across locales so row identities can stay shared.
   const eventsRowOf = assignConflictsMilestonesRows(
     conflicts,
     milestones,

@@ -33,14 +33,10 @@ export interface DropReport {
 // entity set.
 export type Lang = 'en' | 'ru';
 
-// Picks the Russian value when building the Russian output and it resolved,
-// English otherwise: the one fallback rule for every language-varying field.
 function resolveField(en: string, ru: string | undefined, lang: Lang): string {
   return lang === 'ru' ? (ru ?? en) : en;
 }
 
-// Same rule as resolveField, for fields (like description) that are optional
-// in English too; never gates row inclusion.
 function resolveOptionalField(
   en: string | undefined,
   ru: string | undefined,
@@ -53,7 +49,6 @@ function record(reasons: Record<string, number>, reason: string): void {
   reasons[reason] = (reasons[reason] ?? 0) + 1;
 }
 
-// An absent month means year-only precision (shared-types's YearMonth).
 function yearMonth(year: number, month: number | undefined): YearMonth {
   return month === undefined ? { year } : { year, month };
 }
@@ -124,9 +119,6 @@ function validateEventRow<C>(
 // instead of rendering a centuries-wide bar.
 const MAX_PLAUSIBLE_LIFESPAN_YEARS = 130;
 
-// Output is the last chance to catch a schema violation before the frontend.
-// wikipediaUrl needs no presence check: it derives from Pantheon's slug column,
-// which parsePantheonCsv guarantees is non-empty.
 export function buildPeople(
   rows: TaggedPerson[],
   lang: Lang = 'en',
@@ -135,8 +127,6 @@ export function buildPeople(
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    // Inclusion is gated on the English name/tagline regardless of `lang` (see
-    // Lang).
     if (!row.name) {
       record(reasons, 'missing name');
       continue;
@@ -233,8 +223,6 @@ export function buildConflicts(
   const built = new Map<string, Unslugged<ConflictEntry>>();
 
   for (const row of rows) {
-    // Inclusion is gated on English fields (validated.name/tagline come from
-    // row.label/row.tagline, never the Ru variants); see Lang.
     const validated = validateEventRow<ConflictCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
@@ -309,7 +297,6 @@ export function buildMilestones(
   const reasons: Record<string, number> = {};
 
   for (const row of rows) {
-    // Inclusion is gated on English fields regardless of `lang` (see Lang).
     const validated = validateEventRow<MilestoneCategory>(row, reasons);
     if (!validated) continue;
     if (row.sitelinks <= 0) {
@@ -344,8 +331,6 @@ export function buildMilestones(
         },
       });
     } else {
-      // Wikidata's claim precision decides whether month is present
-      // (fetch-milestones-enrichment.ts), as for Conflicts.
       milestones.push({
         ...shared,
         at: yearMonth(validated.year, validated.month),
@@ -359,8 +344,6 @@ export function buildMilestones(
   };
 }
 
-// The Detail Level whose delta file an entity ships in: the first level whose
-// floor its Fame Score reaches, else the loosest. See splitByDetailLevel.
 export function detailLevelOf(
   fameScore: number,
   levelFloors: readonly [number, number, number, number],

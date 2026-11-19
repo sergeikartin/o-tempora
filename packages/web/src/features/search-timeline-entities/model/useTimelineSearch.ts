@@ -14,18 +14,13 @@ import type {
   Region,
 } from '../../../shared/types';
 
-// A plain structural copy of features/filter-by-fame-score's FameScoreValues
-// — not imported directly, since FSD forbids one feature importing another
-// at the same layer. TypeScript's structural typing means App.tsx's real
-// FameScoreValues still satisfies this without a cast.
+// Structural match for FameScoreValues because FSD forbids same-layer feature imports.
 interface FameScoreValues {
   people: number;
   conflicts: number;
   milestones: number;
 }
 
-// Capped at this many results in total across all lanes (not per lane),
-// ranked by Fame Score (GLOSSARY.md's Search).
 const MAX_RESULTS = 8;
 
 export interface SearchResult {
@@ -57,19 +52,7 @@ function matchesQuery(
   );
 }
 
-// Session-only search query state (no persistence, same shape as every
-// other filter hook here) — owned by this feature since it's shared by
-// widgets/top-bar (the input/dropdown) and app/ (which resolves a picked
-// result into a pan + selection, mirroring features/select-timeline-entity's
-// "feature owns cross-widget state" comment).
-//
-// Uses the same visible* pipelines as TimelineCanvas (shared/lib/entity/), so a result never surfaces an entity
-// the current Detail Level, Region, Occupation Domain or Conflicts &
-// Milestones filters hide from the canvas (GLOSSARY.md's Search;
-// web/docs/adr/0010-search-stays-inside-active-filters-and-payload-tiers.md).
-// `people`/`conflicts`/`milestones` are the merged arrays passed to
-// TimelineCanvas, so results reflect whichever deeper delta files have
-// loaded; no load is triggered here.
+// Use the same filters as the canvas so Search cannot surface a hidden mark.
 export function useTimelineSearch({
   people,
   conflicts,

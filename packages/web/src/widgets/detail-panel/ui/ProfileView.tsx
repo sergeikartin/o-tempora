@@ -12,7 +12,6 @@ import styles from './ProfileView.module.css';
 
 interface ProfileViewProps {
   profile: ProfileBody;
-  // Lane color of the entity, for the Key Moment marks.
   color: string;
   connections: readonly ResolvedConnection[];
   // Accented and scrolled into view on arrival; ignored when it names nothing
@@ -63,8 +62,6 @@ function LevelPips({ levelIndex }: { levelIndex: number }) {
   );
 }
 
-// The Profile sections that replace the Description in the detail panel:
-// overview, Key Moments, Deep Facts and Connections.
 export function ProfileView({
   profile,
   color,
@@ -76,8 +73,6 @@ export function ProfileView({
   const isAnchored = (kind: ProfileAnchor['kind'], index: number) =>
     anchor?.kind === kind && anchor.index === index + 1;
 
-  // Scrolls the nearest scroller, which is the drawer on desktop and the sheet
-  // on a phone.
   useEffect(() => {
     if (!anchor) return;
     const prefersReducedMotion = window.matchMedia?.(

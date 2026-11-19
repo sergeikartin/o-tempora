@@ -20,10 +20,6 @@ interface FiltersPanelProps {
   ) => void;
 }
 
-// Occupation Domain, Region and Conflicts & Milestones (GLOSSARY.md's Filters
-// Panel). Mounted only while open: a popover under the Filters button on
-// desktop, a bottom sheet at the mobile breakpoint (FiltersPanel.module.css).
-// Modal either way, so focus stays inside until it closes.
 export function FiltersPanel({
   onClose,
   selectedDomains,

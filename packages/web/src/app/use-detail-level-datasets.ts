@@ -10,8 +10,6 @@ import {
 
 interface DetailLevelDatasetsResult {
   datasets: LocaleDatasets;
-  // Detail Level ids whose delta file hasn't resolved yet; never includes
-  // legendary/mainstream, which load eagerly.
   loadingLevelIds: DetailLevelId[];
   requestLevel: (levelId: DetailLevelId) => void;
 }
@@ -28,12 +26,7 @@ function mergeDatasets(
   };
 }
 
-// Concatenates Detail Level 3/4's delta files (GLOSSARY.md, docs/adr/0006-detail-
-// level-merges-data-depth-and-payload-tier.md) onto the level 1+2 base once
-// each resolves. Which level an entry ships in never affects whether it
-// renders; only the Fame Score filter does (web/docs/adr/0003). Loaded
-// levels are never re-fetched or evicted: they resolve from module-scope
-// promises.
+// Chunk membership controls delivery. The Fame Score filter alone controls visibility.
 export function useDetailLevelDatasets(
   base: LocaleDatasets,
 ): DetailLevelDatasetsResult {

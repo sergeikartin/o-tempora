@@ -2,8 +2,6 @@ import type { ConflictsMilestonesFilterValue } from '../../config';
 import type { MilestoneCategory, OccupationDomain, Region } from '../../types';
 import { MILESTONE_CATEGORY_TO_GROUP } from '../../types';
 
-// Shared by all three lanes: gates entity density by a `fameScore` floor
-// (packages/web/docs/adr/0003-manual-fame-filter-replaces-zoom-tier.md).
 export function filterByFameScore<T extends { fameScore: number }>(
   items: T[],
   minFameScore: number,
@@ -38,11 +36,6 @@ export function filterByRegion<T>(
     regionsOf(item).some((region) => selectedRegions.includes(region)),
   );
 }
-
-// The Filters Panel's "Conflicts & Milestones" section is one multi-select filter.
-// `selectedValues` holds a UI-only 'conflicts' value plus the 2
-// MilestoneCategoryGroup values (shared/config/conflicts-milestones-filter.ts);
-// each function below reads the part that applies to its own lane.
 
 // Milestones-only: filters at the group level (MILESTONE_CATEGORY_TO_GROUP),
 // not the leaf categories. 'conflicts' never equals a group, so it has no

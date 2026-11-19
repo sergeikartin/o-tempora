@@ -54,12 +54,6 @@ const personLabelSelector = (id: string) => `.d3-name[data-entity-id="${id}"]`;
 const writeLabelX = (label: SVGTextElement, x: number) =>
   label.setAttribute('x', `${x}`);
 
-// A person's lifespan renders as a rounded-cap line with the name label
-// left-aligned just above it, colored by occupation domain. Overlapping people
-// stack into rows; a label wider than its line claims the row via pixelInterval.
-// memo: TimelineCanvas re-renders every rAF tick while scrolling, but none of
-// these props change from that, and the D3 join is gated on [layout,
-// totalHeight], so skipping the render body avoids per-frame work.
 const PeopleLaneImpl = forwardRef<LabelPinningHandle, PeopleLaneProps>(
   function PeopleLane(
     { people, xScale, personRowFor, selectedIds = NO_IDS },
@@ -175,7 +169,6 @@ const PeopleLaneImpl = forwardRef<LabelPinningHandle, PeopleLaneProps>(
           entityType: () => 'person',
         },
       );
-      // The join reset every label to its bar's start.
       setPinnedLabelItems(layout);
     }, [layout, totalHeight, setPinnedLabelItems]);
 

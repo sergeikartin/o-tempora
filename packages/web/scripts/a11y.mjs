@@ -24,7 +24,6 @@ const VIEWPORTS = [
 const LOCALE_PREFIXES = ['', '/ru'];
 const ENTITY_QUERY = '?e=albert-einstein';
 
-// Each state is a path plus whatever it takes to reach the UI under test.
 const STATES = [
   { name: 'timeline', query: '' },
   {
