@@ -27,7 +27,7 @@ export function profilesStaticPlugin(): Plugin {
         res.end(readFileSync(file));
       });
     },
-    closeBundle() {
+    writeBundle() {
       if (!existsSync(PROFILES_DIR)) return;
       cpSync(PROFILES_DIR, resolve(outDir, 'profiles'), { recursive: true });
     },
