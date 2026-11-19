@@ -19,3 +19,9 @@ The audits inspected all 128 visible passage fields across those five Profiles, 
 Follow-up (2026-11-17): Gregorian calendar has been corrected, automatically verified, independently audited and published. Its [audit note](2026-11-15-gregorian-calendar.md#follow-up--2026-11-17) records the completed follow-up; the table above describes the original 2026-11-15 findings.
 
 Follow-up (2026-11-17): Isaac Newton has been corrected, automatically verified, independently audited and published. The [completed follow-up](2026-11-17-newton-follow-up.md) records the evidence and dataset date correction; the table above describes the original findings.
+
+Follow-up (2026-11-19): Revised the two remaining audited drafts, World War II and Founding of the Roman Empire. The World War II draft now distinguishes the pact signatories, the two stages of the Stalingrad surrender, and the sequence of events before Japan's surrender. The Roman Empire draft separates Actium from the conquest of Egypt and attributes the disputed account of Augustus's provincial authority. Its timeline point now uses astronomical year −26 (27 BC) in both locales, following the [Met's chronology](https://www.metmuseum.org/essays/augustan-rule-27-b-c-14-a-d). The original audit notes describe the pre-edit versions.
+
+The Roman Empire Profile is published in English and Russian. The [English verification report](../../../packages/data-pipeline/data/raw/profiles/milestones/Q2277-founding-of-the-roman-empire.en.verification.json) covers 54 claims from 12 fetched sources with no blockers. The Russian translation passed a separate audit of all 25 fields.
+
+The World War II Profile is published in English and Russian. The [English verification report](../../../packages/data-pipeline/data/raw/profiles/conflicts/Q362-world-war-ii.en.verification.json) covers 76 claims from 24 fetched sources with no blockers. The Russian translation passed a separate audit of all 31 fields.

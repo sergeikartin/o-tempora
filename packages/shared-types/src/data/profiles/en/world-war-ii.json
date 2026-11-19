@@ -1,0 +1,153 @@
+{
+  "overview": "World War II was a global war fought from 1939 to 1945 between the Allies, which included Britain, the Soviet Union, the United States and China, and the Axis powers of Germany, Japan and Italy. The fighting spread across Europe, North Africa and the Pacific. During the war, Nazi Germany and its collaborators carried out the mass murder of European Jews. About six million European Jews were murdered in the Holocaust. The war in Europe ended with Germany's surrender in May 1945. Japan formally surrendered in September 1945. The war killed tens of millions of people.",
+  "keyMoments": [
+    {
+      "date": "1 September 1939",
+      "title": "Germany invades Poland",
+      "text": "German troops crossed into **Poland** on 1 September 1939, days after Nazi Germany and the Soviet Union concluded the **Molotov–Ribbentrop Pact**. Two days later **Britain and France declared war on Germany**, turning a regional invasion into a European war. On 17 September the **Soviet Union invaded eastern Poland**. Germany and the Soviet Union divided the country after agreeing on spheres of influence in a secret protocol to the pact.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland"
+    },
+    {
+      "date": "1941–1943",
+      "title": "Barbarossa and Stalingrad",
+      "text": "On 22 June 1941 Germany broke its pact with the Soviet Union and launched **Operation Barbarossa**. German forces advanced toward Moscow, where a Soviet counteroffensive pushed them back in December. Fighting reached **Stalingrad** on the Volga in 1942, and Soviet forces encircled the German **Sixth Army**. Its commander, Friedrich Paulus, entered Soviet captivity before the remaining German forces in the city surrendered on 2 February 1943.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad"
+    },
+    {
+      "date": "7 December 1941",
+      "title": "Pearl Harbor brings in the United States",
+      "text": "Japan, already at war with China since 1937, sent carrier aircraft against the **US Pacific Fleet at Pearl Harbor** in Hawaii on the morning of 7 December 1941, sinking or damaging battleships and killing more than 2,400 Americans. The **United States declared war on Japan** the next day, and on 11 December **Germany and Italy declared war on the United States**, bringing the United States into the war against Germany and Italy as well. The US aircraft carriers escaped the attack. Six months later, US carrier aircraft fatally damaged four Japanese carriers at the **Battle of Midway**.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor"
+    },
+    {
+      "date": "May–September 1945",
+      "title": "Surrender in Europe, atomic bombs in Asia",
+      "text": "With Soviet troops in Berlin and Hitler dead by suicide, **Germany surrendered unconditionally**. Britain marked **Victory in Europe Day** on 8 May 1945. In August, the United States dropped atomic bombs on **Hiroshima** and **Nagasaki**, and the Soviet Union declared war on Japan and invaded Manchuria. Emperor Hirohito announced Japan's surrender in a radio broadcast on 15 August. Japan signed the formal surrender aboard **USS Missouri** in Tokyo Bay on 2 September 1945.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Surrender_of_Japan"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Before the war, Polish codebreakers including **Marian Rejewski** broke the German Enigma cipher. In July 1939, the Polish team shared its work with British and French counterparts near Warsaw. The disclosure gave British codebreakers a head start.",
+      "isLegend": false,
+      "sourceUrl": "https://history.blog.gov.uk/2019/07/26/whats-the-context-polish-cryptologists-reveal-they-have-cracked-the-enigma-code-26-july-1939/"
+    },
+    {
+      "text": "Japanese army lieutenant **Hiroo Onoda** continued to fight on Lubang Island in the Philippines after Japan surrendered, harming local residents. He laid down his arms in 1974 after a Japanese officer came to the island and gave him the order to stand down.",
+      "isLegend": false,
+      "sourceUrl": "https://text-message.blogs.archives.gov/2023/05/25/onoda-of-the-jungle/"
+    },
+    {
+      "text": "The **1956 Soviet–Japanese Joint Declaration** provided for an end to the state of war between the Soviet Union and Japan and for the restoration of diplomatic relations. It also committed both governments to further negotiations for a peace treaty.",
+      "isLegend": false,
+      "sourceUrl": "https://worldjpn.net/documents/texts/docs/19561019.D1E.html"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "adolf-hitler",
+      "reason": "Nazi Germany invaded Poland under his leadership, starting the war in Europe.",
+      "name": "Adolf Hitler",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "winston-churchill",
+      "reason": "Became British prime minister in 1940 and led Britain to victory in Europe.",
+      "name": "Winston Churchill",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "franklin-delano-roosevelt",
+      "reason": "US president who signed Lend-Lease to authorize aid to the Allies and asked Congress to declare war on Japan after Pearl Harbor. He died in April 1945.",
+      "name": "Franklin Delano Roosevelt",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "joseph-stalin",
+      "reason": "Soviet leader whose government concluded the 1939 pact with Nazi Germany. He led the Soviet Union during the war against Germany after its invasion in 1941.",
+      "name": "Joseph Stalin",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "the-holocaust",
+      "reason": "Nazi Germany and its collaborators murdered about six million European Jews during the Holocaust.",
+      "name": "The Holocaust",
+      "lane": "milestones",
+      "detailLevel": 1
+    },
+    {
+      "slug": "1939-invasion-of-poland",
+      "reason": "The German attack on 1 September 1939 that began the war in Europe.",
+      "name": "1939 Invasion of Poland",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "operation-barbarossa",
+      "reason": "Germany's June 1941 invasion of the Soviet Union opened the Eastern Front.",
+      "name": "Operation Barbarossa",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "battle-of-stalingrad",
+      "reason": "The defeat of the German Sixth Army in early 1943 was a turning point on the Eastern Front.",
+      "name": "Battle of Stalingrad",
+      "lane": "conflicts",
+      "detailLevel": 2
+    },
+    {
+      "slug": "attack-on-pearl-harbor",
+      "reason": "Japan's December 1941 strike on Hawaii brought the United States into the war.",
+      "name": "Attack on Pearl Harbor",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "normandy-landings",
+      "reason": "The Allied landings on 6 June 1944 opened a front in northern France.",
+      "name": "Normandy landings",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "atomic-bombings-of-hiroshima-and-nagasaki",
+      "reason": "The United States bombed Hiroshima and Nagasaki in August 1945. Japan announced its surrender that month and signed it formally on 2 September.",
+      "name": "atomic bombings of Hiroshima and Nagasaki",
+      "lane": "conflicts",
+      "detailLevel": 2
+    },
+    {
+      "slug": "cold-war",
+      "reason": "Wartime allies became rivals after 1945, including over the political future of Europe.",
+      "name": "Cold War",
+      "lane": "conflicts",
+      "detailLevel": 1
+    },
+    {
+      "slug": "world-war-i",
+      "reason": "Resentment over the Treaty of Versailles helped the Nazi Party gain support in Germany.",
+      "name": "World War I",
+      "lane": "conflicts",
+      "detailLevel": 1
+    },
+    {
+      "slug": "second-sino-japanese-war",
+      "reason": "Full-scale war between Japan and China began in 1937 and continued during the wider war in the Pacific.",
+      "name": "Second Sino-Japanese War",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "hirohito",
+      "reason": "Japan's emperor announced the country's surrender by radio on 15 August 1945.",
+      "name": "Hirohito",
+      "lane": "people",
+      "detailLevel": 3
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "policy_version": "1",
+  "qid": "Q362",
+  "source_hash": "371ee030d066a86fa111e6b1a9982004dd38932bc95e896719c3b33a24a493d1",
+  "locale": "ru",
+  "fields": {
+    "overview": "Вторая мировая война — глобальный конфликт, в котором с 1939 по 1945 год друг другу противостояли союзники, в числе которых были Великобритания, Советский Союз, США и Китай, и страны оси — Германия, Япония и Италия. Боевые действия охватили Европу, Северную Африку и Тихоокеанский регион. Во время войны нацистская Германия и её пособники массово уничтожали европейских евреев. В ходе Холокоста было убито около шести миллионов европейских евреев. Война в Европе закончилась капитуляцией Германии в мае 1945 года. Япония официально капитулировала в сентябре 1945 года. Война унесла жизни десятков миллионов людей.",
+    "key_moments.0.date": "1 сентября 1939 года",
+    "key_moments.0.title": "Германия вторгается в Польшу",
+    "key_moments.0.text": "Германские войска вошли в **Польшу** 1 сентября 1939 года, через несколько дней после того, как нацистская Германия и Советский Союз заключили **пакт Молотова — Риббентропа**. Через два дня **Великобритания и Франция объявили войну Германии**, и региональное вторжение переросло в европейскую войну. 17 сентября **Советский Союз вторгся в восточную часть Польши**. Германия и Советский Союз разделили страну, предварительно согласовав сферы влияния в секретном протоколе к пакту.",
+    "key_moments.1.date": "1941–1943",
+    "key_moments.1.title": "Операция «Барбаросса» и Сталинград",
+    "key_moments.1.text": "22 июня 1941 года Германия нарушила пакт с Советским Союзом и начала **операцию «Барбаросса»**. Германские войска продвинулись к Москве, где в декабре советское контрнаступление отбросило их назад. В 1942 году бои дошли до **Сталинграда** на Волге, и советские войска окружили германскую **Шестую армию**. Её командующий Фридрих Паулюс попал в советский плен до того, как 2 февраля 1943 года сдались остававшиеся в городе германские войска.",
+    "key_moments.2.date": "7 декабря 1941 года",
+    "key_moments.2.title": "Нападение на Пёрл-Харбор приводит к вступлению США в войну",
+    "key_moments.2.text": "Япония, уже воевавшая с Китаем с 1937 года, утром 7 декабря 1941 года направила палубную авиацию против **Тихоокеанского флота США в Пёрл-Харборе** на Гавайях. Японские самолёты потопили или повредили линкоры, в результате атаки погибли более 2 400 американцев. На следующий день **США объявили войну Японии**, а 11 декабря **Германия и Италия объявили войну США**, и США вступили в войну также против Германии и Италии. Американские авианосцы избежали удара. Через шесть месяцев американская палубная авиация в **битве у атолла Мидуэй** повредила четыре японских авианосца, что привело к гибели всех четырёх кораблей.",
+    "key_moments.3.date": "Май — сентябрь 1945 года",
+    "key_moments.3.title": "Капитуляция в Европе, атомные бомбы в Азии",
+    "key_moments.3.text": "К тому времени, когда **Германия безоговорочно капитулировала**, советские войска уже были в Берлине, а Гитлер уже покончил с собой. Великобритания отметила **День победы в Европе** 8 мая 1945 года. В августе США сбросили атомные бомбы на **Хиросиму** и **Нагасаки**, а Советский Союз объявил войну Японии и вторгся в Маньчжурию. Император Хирохито объявил о капитуляции Японии по радио 15 августа. Япония подписала акт о капитуляции на борту **американского корабля «Миссури»** в Токийском заливе 2 сентября 1945 года.",
+    "deep_facts.0.text": "Ещё до войны польские дешифровщики, в том числе **Мариан Реевский**, раскрыли немецкий шифр «Энигмы». В июле 1939 года польская группа поделилась результатами своей работы с британскими и французскими коллегами под Варшавой. Это дало британским дешифровщикам фору.",
+    "deep_facts.1.text": "Лейтенант японской армии **Хиро Онода** после капитуляции Японии продолжал воевать на филиппинском острове Лубанг, от чего страдали местные жители. Он сложил оружие в 1974 году после того, как на остров приехал японский офицер и приказал ему прекратить боевые действия.",
+    "deep_facts.2.text": "**Совместная декларация СССР и Японии 1956 года** предусматривала прекращение состояния войны между Советским Союзом и Японией и восстановление дипломатических отношений. Она также обязывала оба правительства продолжить переговоры о заключении мирного договора.",
+    "connections.0.connection": "Под его руководством нацистская Германия вторглась в Польшу, положив начало войне в Европе.",
+    "connections.1.connection": "Стал премьер-министром Великобритании в 1940 году и привёл страну к победе в Европе.",
+    "connections.2.connection": "Президент США, который подписал закон о ленд-лизе, разрешивший оказание помощи союзникам, и обратился к Конгрессу с просьбой объявить войну Японии после нападения на Пёрл-Харбор. Он умер в апреле 1945 года.",
+    "connections.3.connection": "Советский руководитель, при котором правительство СССР заключило в 1939 году пакт с нацистской Германией. Возглавлял Советский Союз в войне против Германии после её вторжения в 1941 году.",
+    "connections.4.connection": "Нацистская Германия и её пособники убили около шести миллионов европейских евреев в ходе Холокоста.",
+    "connections.5.connection": "Нападение Германии 1 сентября 1939 года положило начало войне в Европе.",
+    "connections.6.connection": "Вторжение Германии в Советский Союз в июне 1941 года открыло Восточный фронт.",
+    "connections.7.connection": "Разгром германской Шестой армии в начале 1943 года стал переломным моментом на Восточном фронте.",
+    "connections.8.connection": "Удар Японии по Гавайям в декабре 1941 года привёл к вступлению США в войну.",
+    "connections.9.connection": "Высадка союзников 6 июня 1944 года открыла фронт на севере Франции.",
+    "connections.10.connection": "США подвергли бомбардировке Хиросиму и Нагасаки в августе 1945 года. Япония объявила о капитуляции в том же месяце и официально подписала акт о капитуляции 2 сентября.",
+    "connections.11.connection": "После 1945 года союзники по войне стали соперниками. Их соперничество касалось, в частности, политического будущего Европы.",
+    "connections.12.connection": "Недовольство Версальским договором помогло нацистской партии заручиться поддержкой в Германии.",
+    "connections.13.connection": "Полномасштабная война между Японией и Китаем началась в 1937 году и продолжалась во время более масштабной войны на Тихом океане.",
+    "connections.14.connection": "Император Японии объявил о капитуляции страны по радио 15 августа 1945 года."
+  },
+  "audit": {
+    "uncovered": [],
+    "issues": [],
+    "coherent": true,
+    "covered": [
+      "overview",
+      "key_moments.0.date",
+      "key_moments.0.title",
+      "key_moments.0.text",
+      "key_moments.1.date",
+      "key_moments.1.title",
+      "key_moments.1.text",
+      "key_moments.2.date",
+      "key_moments.2.title",
+      "key_moments.2.text",
+      "key_moments.3.date",
+      "key_moments.3.title",
+      "key_moments.3.text",
+      "deep_facts.0.text",
+      "deep_facts.1.text",
+      "deep_facts.2.text",
+      "connections.0.connection",
+      "connections.1.connection",
+      "connections.2.connection",
+      "connections.3.connection",
+      "connections.4.connection",
+      "connections.5.connection",
+      "connections.6.connection",
+      "connections.7.connection",
+      "connections.8.connection",
+      "connections.9.connection",
+      "connections.10.connection",
+      "connections.11.connection",
+      "connections.12.connection",
+      "connections.13.connection",
+      "connections.14.connection"
+    ]
+  },
+  "generated_at": "2026-11-19T08:43:51.997Z",
+  "models": [
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 157367,
+        "output": 3867
+      }
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 234212,
+        "output": 2230
+      }
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 173950,
+        "output": 1589
+      }
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 219937,
+        "output": 1877
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "fields_hash": "41d62a1855d3b91dd37b13da88909721c9fb298f5d0c804c97a4280c2286ad43",
+      "audit": {
+        "uncovered": [],
+        "issues": [
+          "key_moments.3.text: «Гитлер покончил с собой, когда» suggests that Hitler died at the time of Germany’s surrender. The English describes him as already dead by then. Use «К тому времени, когда **Германия безоговорочно капитулировала**, советские войска уже были в Берлине, а Гитлер уже покончил с собой».",
+          "key_moments.2.text: «Нанесла четырём японским авианосцам фатальные повреждения» is a stiff calque. Use «повредила четыре японских авианосца, что привело к гибели всех четырёх кораблей» to convey the outcome idiomatically and keep the existing bold emphasis on the battle.",
+          "connections.13.connection: «В период более широкой войны» is an awkward calque for the larger conflict. Use «и продолжалась во время более масштабной войны на Тихом океане»."
+        ],
+        "coherent": true,
+        "covered": [
+          "overview",
+          "key_moments.0.date",
+          "key_moments.0.title",
+          "key_moments.0.text",
+          "key_moments.1.date",
+          "key_moments.1.title",
+          "key_moments.1.text",
+          "key_moments.2.date",
+          "key_moments.2.title",
+          "key_moments.2.text",
+          "key_moments.3.date",
+          "key_moments.3.title",
+          "key_moments.3.text",
+          "deep_facts.0.text",
+          "deep_facts.1.text",
+          "deep_facts.2.text",
+          "connections.0.connection",
+          "connections.1.connection",
+          "connections.2.connection",
+          "connections.3.connection",
+          "connections.4.connection",
+          "connections.5.connection",
+          "connections.6.connection",
+          "connections.7.connection",
+          "connections.8.connection",
+          "connections.9.connection",
+          "connections.10.connection",
+          "connections.11.connection",
+          "connections.12.connection",
+          "connections.13.connection",
+          "connections.14.connection"
+        ]
+      }
+    },
+    {
+      "fields_hash": "0394169a38b6c960eb3be2d082e3c3b16e2ef0495359aa7b170a7e2cf08752b1",
+      "audit": {
+        "uncovered": [],
+        "issues": [],
+        "coherent": true,
+        "covered": [
+          "overview",
+          "key_moments.0.date",
+          "key_moments.0.title",
+          "key_moments.0.text",
+          "key_moments.1.date",
+          "key_moments.1.title",
+          "key_moments.1.text",
+          "key_moments.2.date",
+          "key_moments.2.title",
+          "key_moments.2.text",
+          "key_moments.3.date",
+          "key_moments.3.title",
+          "key_moments.3.text",
+          "deep_facts.0.text",
+          "deep_facts.1.text",
+          "deep_facts.2.text",
+          "connections.0.connection",
+          "connections.1.connection",
+          "connections.2.connection",
+          "connections.3.connection",
+          "connections.4.connection",
+          "connections.5.connection",
+          "connections.6.connection",
+          "connections.7.connection",
+          "connections.8.connection",
+          "connections.9.connection",
+          "connections.10.connection",
+          "connections.11.connection",
+          "connections.12.connection",
+          "connections.13.connection",
+          "connections.14.connection"
+        ]
+      }
+    }
+  ],
+  "approval_hash": "3949b08ac47cd827abc99b797e0ccff15687b42b103129278902deff06283fc1"
+}

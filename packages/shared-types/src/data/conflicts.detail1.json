@@ -23,7 +23,8 @@
       }
     },
     "slug": "world-war-ii",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "Q361",
