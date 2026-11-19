@@ -84,7 +84,7 @@
   transform: scale(1.15);
 }
 
-/* Selection / search-jump highlight (CONTEXT.md's Search); see
+/* Selection / search-jump highlight (GLOSSARY.md's Search); see
    PeopleLane.module.css's identical rule. A wider duplicate line behind the
    range's own line (.d3-line-halo), not a CSS outline filter, which clips to
    nothing on horizontal lines. The translucent ink fill never fights a

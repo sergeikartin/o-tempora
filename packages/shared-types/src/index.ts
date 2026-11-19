@@ -164,7 +164,7 @@ export interface PointInTime {
 
 // Detail Level: the 4 per-lane Fame Score floors that decide both which
 // entities render (web) and which delta file they ship in (data-pipeline's
-// Output stage writes `<lane>.detail1.json` .. `.detail4.json`; CONTEXT.md's
+// Output stage writes `<lane>.detail1.json` .. `.detail4.json`; GLOSSARY.md's
 // Detail Level, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md).
 // Index 0 is level 1 (Legendary, strictest floor), index 3 is level 4 (Deep
 // Cut, loosest). Floors step by a constant per-lane multiplicative factor on
@@ -181,7 +181,7 @@ export const DETAIL_LEVEL_FAME_SCORE_FLOORS = {
 // not every entity has the same one).
 export interface TimelineEntry {
   id: string;
-  // The readable identifier an Entity Link carries (`?e=<slug>`, CONTEXT.md).
+  // The readable identifier an Entity Link carries (`?e=<slug>`, GLOSSARY.md).
   // Lowercase ASCII derived from the English name, so it is the same in both
   // locales, and unique across all three lanes. Never changes with the
   // entity's displayed name or locale.
@@ -205,7 +205,7 @@ export interface TimelineEntry {
   // absent with no image or a license needing no credit (the common
   // public-domain case here).
   imageAttribution?: string;
-  // Permanent per-item row (CONTEXT.md's Row Depth). data-pipeline computes it
+  // Permanent per-item row (GLOSSARY.md's Row Depth). data-pipeline computes it
   // once over the entire lane at Output (People among themselves; Conflicts and
   // Milestones in one shared pass), so client filters, zoom and deeper Detail
   // Level delta files never change it (docs/adr/0005-row-assignment-moves-to-the-pipeline.md);
@@ -240,7 +240,7 @@ export const PROFILE_LANES = ['people', 'conflicts', 'milestones'] as const;
 
 export type ProfileLane = (typeof PROFILE_LANES)[number];
 
-// A Connection (CONTEXT.md) already resolved against the dataset by Output, so
+// A Connection (GLOSSARY.md) already resolved against the dataset by Output, so
 // the panel needs no matching. `detailLevel` is the lowest Detail Level that
 // shows the target (1 = Legendary .. 4 = Deep Cut).
 export interface ProfileConnection {
@@ -251,7 +251,7 @@ export interface ProfileConnection {
   detailLevel: 1 | 2 | 3 | 4;
 }
 
-// The shipped Profile (CONTEXT.md): one file per entity per locale at
+// The shipped Profile (GLOSSARY.md): one file per entity per locale at
 // `profiles/<locale>/<slug>.json`. Connections are in the model's importance
 // order.
 export interface Profile {
@@ -360,7 +360,7 @@ export const POINT_LABEL_OFFSET_PX = 13;
 export const MARK_LABEL_WRAP_WIDTH_PX = 140;
 export const MARK_LABEL_MAX_LINES = 2;
 
-// CONTEXT.md's Reference Scale: the fixed pixels-per-year data-pipeline packs
+// GLOSSARY.md's Reference Scale: the fixed pixels-per-year data-pipeline packs
 // TimelineEntry.row against (row-assignment.ts) and web packs the Minimap's
 // Row Depth curve against (Minimap.tsx); both must agree for the Minimap's
 // depth to match the shipped `row`. Equal to web's default 120-year opening

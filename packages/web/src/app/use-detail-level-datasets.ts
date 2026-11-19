@@ -28,7 +28,7 @@ function mergeDatasets(
   };
 }
 
-// Concatenates Detail Level 3/4's delta files (CONTEXT.md, docs/adr/0006-detail-
+// Concatenates Detail Level 3/4's delta files (GLOSSARY.md, docs/adr/0006-detail-
 // level-merges-data-depth-and-payload-tier.md) onto the level 1+2 base once
 // each resolves. Which level an entry ships in never affects whether it
 // renders; only the Fame Score filter does (web/docs/adr/0003). Loaded

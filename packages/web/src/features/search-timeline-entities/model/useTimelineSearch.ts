@@ -25,7 +25,7 @@ interface FameScoreValues {
 }
 
 // Capped at this many results in total across all lanes (not per lane),
-// ranked by Fame Score (CONTEXT.md's Search).
+// ranked by Fame Score (GLOSSARY.md's Search).
 const MAX_RESULTS = 8;
 
 export interface SearchResult {
@@ -65,7 +65,7 @@ function matchesQuery(
 //
 // Uses the same visible* pipelines as TimelineCanvas (shared/lib/entity/), so a result never surfaces an entity
 // the current Detail Level, Region, Occupation Domain or Conflicts &
-// Milestones filters hide from the canvas (CONTEXT.md's Search;
+// Milestones filters hide from the canvas (GLOSSARY.md's Search;
 // web/docs/adr/0010-search-stays-inside-active-filters-and-payload-tiers.md).
 // `people`/`conflicts`/`milestones` are the merged arrays passed to
 // TimelineCanvas, so results reflect whichever deeper delta files have

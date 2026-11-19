@@ -20,21 +20,17 @@ People, conflicts and milestones on one shared, pannable axis, with density cont
 
 ## Operating Context
 
-- Opens on 1740–1860 at Mainstream; pan and zoom map-style, with no "see all history" view.
-- Occupation and Region filters, a Detail Level switch, Search, and a detail panel (tagline, Wikipedia description, image, link) for any mark. Selecting a mark shows one entity at a time; its Focus Range names its span.
-- English at the domain root and Russian under `/ru/` (landing at `/` and `/ru/`, timeline at `/timeline/` and `/ru/timeline/`), one build, locale resolved from the URL; both locales ship the identical entity set, with per-field English fallback.
+See the [visitor flow and supported locales](../../docs/product-scope.md). The site is a static, read-only experience.
 
 ## Capabilities and Constraints
 
-- Read-only. No backend, no database, no accounts. All data is pipeline-generated JSON in `packages/shared-types`, never hand-edited.
-- Domain vocabulary is defined in `CONTEXT.md`: Lane, Mark, Detail Level, Fame Score, Viewport Range, Focus Range, Minimap, Container, Region, Occupation Domain, Selection.
-- Out of scope: pairwise connection lines, dimming or ranking of unselected marks, curated tours, era bands, map view, share cards, more languages, dark mode, "on this day", embeds, PWA.
-- Public copy avoids internal domain terms (Lane, Fame Score, Container) and says "conflicts", not "wars".
-- Years are plain signed integers (astronomical numbering); BCE/CE must render correctly.
+- Out of scope are era bands, share cards, dark mode, “on this day,” embeds and PWA features. [V1 boundaries](../../docs/product-scope.md)
+- Public copy says “conflicts” and keeps internal terms such as Lane, Fame Score and Container out of labels. [Glossary](../../GLOSSARY.md)
+- Use astronomical year numbering internally and BCE/CE labels for visitors.
 
 ## Brand Commitments
 
-The name is "O Tempora". The identity stays: the name and the existing "Ledger & Ink" parchment look (`docs/design-tokens.md`) are refined, not replaced. No rebrand, no re-theme.
+Keep the O Tempora name and the Ledger & Ink parchment identity. [Design tokens](docs/design-tokens.md)
 
 ## Evidence on Hand
 

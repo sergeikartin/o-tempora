@@ -1,6 +1,6 @@
 # packages/shared-types
 
-The published dataset: `data-pipeline` writes it, `web` reads it. No source of its own — `src/index.ts` is hand-written TypeScript (types/constants), `src/data/*.json` is 100% pipeline-generated and never hand-edited (`code-conventions.md`).
+The published dataset: `data-pipeline` writes it, `web` reads it. No source of its own — `src/index.ts` is hand-written TypeScript (types/constants), `src/data/*.json` is 100% pipeline-generated and never hand-edited (see the [pipeline conventions](../data-pipeline/docs/code-conventions.md)).
 
 - No build step: `package.json`'s `main`/`types` point straight at `src/index.ts`, consumed as source by the other two workspaces via Vite/tsc's own resolution — no compile, no test suite here. `npm run lint --workspace packages/shared-types` (Biome, `src/data/` excluded) is the only check; the pre-commit hook runs it on staged files.
 
@@ -8,10 +8,10 @@ The published dataset: `data-pipeline` writes it, `web` reads it. No source of i
 
 Shared contracts both other packages import rather than redefining:
 
-- Entity types — `TimelineEntry` (base fields every lane shares) extended by `Person`, `Conflict`/`ConflictEvent` (`ConflictEntry` union), `Milestone` (`MilestonePeriod`/`MilestonePoint` union); `Period`/`PointInTime`/`YearMonth` for the two date shapes (see `CONTEXT.md`'s **Mark**)
+- Entity types — `TimelineEntry` (base fields every lane shares) extended by `Person`, `Conflict`/`ConflictEvent` (`ConflictEntry` union), `Milestone` (`MilestonePeriod`/`MilestonePoint` union); `Period`/`PointInTime`/`YearMonth` for the two date shapes (see `GLOSSARY.md`'s **Mark**)
 - Profile types — `Profile` (`overview`, `keyMoments`, `deepFacts`, resolved `connections`) and `ProfileConnection`, the shape of the shipped `profiles/<locale>/<slug>.json` files; `TimelineEntry.hasProfile` marks the rows that have one
 - Taxonomies — `CONFLICT_CATEGORIES`, `MILESTONE_CATEGORIES` + `MILESTONE_CATEGORY_TO_GROUP`, `REGIONS`, `OCCUPATION_DOMAINS`
-- `DETAIL_LEVEL_FAME_SCORE_FLOORS` — the 4 per-lane Fame Score floors both data-pipeline (splits `src/data/*.json` by these) and web (its Detail Level switch) read, so the two can't drift apart (`CONTEXT.md`'s **Detail Level**, `docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md`)
+- `DETAIL_LEVEL_FAME_SCORE_FLOORS` — the 4 per-lane Fame Score floors both data-pipeline (splits `src/data/*.json` by these) and web (its Detail Level switch) read, so the two can't drift apart (`GLOSSARY.md`'s **Detail Level**, `docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md`)
 - Layout constants (`AVG_CHAR_WIDTH_PX`, `REFERENCE_SCALE_PIXELS_PER_YEAR`, …) and helpers (`yearMonthToFractionalYear`, `wrapMarkLabelLines`) shared because data-pipeline's one-time row packing and web's live rendering must agree on the same numbers
 
 ## `src/data/`

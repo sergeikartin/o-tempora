@@ -378,7 +378,7 @@ export interface DetailLevelDeltas<T> {
   detail4: T[];
 }
 
-// Splits a built lane array into the 4 Detail Level delta files (CONTEXT.md's
+// Splits a built lane array into the 4 Detail Level delta files (GLOSSARY.md's
 // Detail Level, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md),
 // each holding only what is new versus the previous level. `levelFloors` is
 // [level1..level4], highest floor first. Level 4's floor is never a partition

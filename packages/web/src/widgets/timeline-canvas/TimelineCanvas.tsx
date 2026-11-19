@@ -142,7 +142,7 @@ interface TimelineCanvasProps {
   // Reports post-filter entry counts per lane for the app shell; this widget
   // stays the single owner of the filtering pipeline (docs/code-conventions.md).
   onFilteredCountsChange?: (counts: FilteredCounts) => void;
-  // The Selection (CONTEXT.md). Its mark gets the selection highlight while it
+  // The Selection (GLOSSARY.md). Its mark gets the selection highlight while it
   // stays selected.
   selectedEntity?: SelectedEntityRef | null;
   // The selected entity's span, which the Focus Range heading names.

@@ -6,7 +6,7 @@ This doc is the source of truth for token values. `packages/web/DESIGN.md` mirro
 
 Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact/a7a65576-55d0-4602-b113-7b178bdb0a57
 
-**Design concept ("Ledger & Ink"):** a parchment-and-ink page — aged paper, iron-gall text, one sharp accent (oxblood) standing in for a wax seal — with color distinguishing entries within that warm neutral base. Color encodes **milestone category** (Milestones) or **occupation domain** (People); Conflicts render in one flat color instead (see Conflict Color below) — never person-vs-event, which is carried by lane and label position instead (People's label above its line, Conflicts'/Milestones' range labels below their line, point labels to the right of their dot) plus, within the merged Conflicts+Milestones lane, color itself (flat Conflict Color vs. Milestones' multi-color palette). Shape carries Period vs. PointInTime instead, the same across all three lanes: a rounded-cap line for a real duration, a dot for a single moment. Filter chips and timeline marks share the same color end-to-end within each lane; entry labels are always ink (`color-text-primary`), never the mark's color, so the bar or dot alone carries the category. `MilestoneCategory` and `OccupationDomain` are separate enums from separate sources (hand-curated, Pantheon) with separate palettes below — see `CONTEXT.md` for why they aren't unified. `ConflictCategory` still exists as curator-assigned data (see `CONTEXT.md`) but no longer drives a color.
+Marks and filter swatches share a palette per lane. Color identifies People’s Occupation Domain and the Milestones group. Conflicts share one color. Labels stay Ink, above People periods, below Conflict and Milestone periods, and to the right of points. [Component rules](../DESIGN.md)
 
 ## Color Palette
 
@@ -22,13 +22,13 @@ Visual style guide (Artifact, mirrors this doc): https://claude.ai/code/artifact
 | `color-text-primary` | `#241A10` | Primary text (ink) |
 | `color-text-secondary` | `#6B6046` | Secondary/muted text (faded ink) |
 | `color-accent-selected` | `#8A2A1A` | Viewport indicator, focus ring (oxblood) |
-| `color-selection-halo` | `#241A10` at 14% | The timeline's selected/search-jumped entity halo — a translucent ink fill behind the mark, extending 8px past it, so it reads against every lane hue without a gap band (`docs/adr/0014-ink-selection-halo.md`) |
+| `color-selection-halo` | `#241A10` at 14% | Selected or search-jumped mark halo, extending 8px beyond the mark |
 | `color-focus-ring` | `#6E2013` | Keyboard focus outline |
-| `color-bg-axis` | `#EBDDBD` | Year Axis ruler background — a shade darker than the page so it reads as a distinct bar |
+| `color-bg-axis` | `#EBDDBD` | Year Axis ruler background |
 
 ## Conflict Color
 
-Used as the stroke/fill color for every Conflict's range line and point-dot marker, regardless of `ConflictCategory`. Conflicts and Milestones share one mixed, fame-ranked lane (`packages/web/src/widgets/timeline-canvas/ConflictsMilestonesLane.tsx`), so a Conflict must read as one visual group at a glance next to Milestones' multi-color palette below, not blend into it category by category. Rhymes with the People-domain Politics & Religion hue (state power), stepped darker — see Milestone Category Palette below for the same treatment applied to each Milestone group. Wired as a CSS custom property (`--color-conflict`, `global.css`) for CSS-side consumers like `Minimap.module.css`'s SVG fill; the lane rendering itself still reads the plain `CONFLICT_COLOR` JS constant below, since D3 sets that as an SVG presentation attribute directly rather than through CSS.
+All Conflict lines and dots use Conflict Red, a darker step of the Politics & Religion hue. D3 uses `CONFLICT_COLOR` and the Minimap reads `--color-conflict` from `global.css`.
 
 | Token | Hex |
 |---|---|
@@ -36,7 +36,7 @@ Used as the stroke/fill color for every Conflict's range line and point-dot mark
 
 ## Occupation Domain Palette
 
-People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and source than the flat Conflict Color above, or Milestones' own category palette). Used as the stroke color on People-lane lifespan lines and the Filters Panel swatch. Re-derived from Pantheon's source hues, muted into the Ledger & Ink chroma range (most sit at or just above the OKLCH chroma floor — as desaturated as they can go before reading as gray) and ordered so every adjacent pair in the table below clears the CVD-safety checks — this is also the order the Filters Panel should list them in; reordering it re-opens the adjacency question. Lightness is set so every domain color holds at least 3:1 against the parchment surface at `mark-opacity-resting`, and adjacent pairs stay separable under simulated protanopia/deuteranopia; this works because color here is never the only identity channel (label, lane, and line-vs-dot shape carry it too, same principle the Design Concept above states).
+Use this order for People marks and Occupation filters. Adjacent pairs are checked under simulated protanopia and deuteranopia, so rerun those checks if the order changes. Each hue clears 3:1 against parchment at resting opacity.
 
 | Domain | Token | Hex |
 |---|---|---|
@@ -51,7 +51,7 @@ People-lane only. Keyed by Pantheon's `OccupationDomain` (a different enum and s
 
 ## Milestone Category Palette
 
-Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values for filtering and the detail panel — only *color* folds it down to 2 legible groups, each one a darker, richer step of the People-domain hue its content actually echoes (same pigment, different register: People reads as the lit, vivid layer; Conflicts/Milestones as the darker ink marking what happened). This set, together with the flat Conflict Color above, is small enough (3 colors) to validate *every* pair against every other, not just neighbors — and unlike the Occupation Domain palette above, it clears the full CVD target even muted: lightness band, chroma floor, and CVD separation (worst adjacent ΔE 8.1, protan) all pass; both groups hold at least 3:1 against parchment at `mark-opacity-resting`. See `docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md` for the 2-group split.
+Two groups supply colors for the 22 Milestone categories. Both clear 3:1 against parchment at resting opacity. The two group colors plus Conflict Red meet the lightness, chroma and color-vision separation targets (minimum simulated ΔE 8.1 under protanopia). [Category grouping](../../../docs/adr/0002-milestone-category-group-conflicts-blanket-toggle.md)
 
 | Group | Hex | Rhymes with (People domain) | `MilestoneCategory` values |
 |---|---|---|---|
@@ -62,8 +62,8 @@ Milestones-only, keyed on `MilestoneCategory`. The taxonomy stays all 22 values 
 
 | Role | Typeface |
 |---|---|
-| Display | Fraunces (serif, variable) — used sparingly (currently: DetailPanel's entity name, the timeline's Focus Range heading, and the landing page's headline and lede) |
-| Body / UI / Data | Archivo — all UI chrome, entry labels, and data. No separate mono face: year ranges and dates set in Archivo with `font-variant-numeric: tabular-nums` instead, so a date never reads as a costume change from the surrounding text |
+| Display | Fraunces, variable serif |
+| Body / UI / Data | Archivo, with tabular numerals for years and dates |
 
 ## Mark Opacity
 

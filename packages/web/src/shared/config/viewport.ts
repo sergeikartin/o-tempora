@@ -49,7 +49,7 @@ export const FAME_SCORE_BOUNDS: Record<FameScoreLane, FameScoreBounds> = {
 };
 
 // Detail Level: a 4-position preset that sets all three fame-score floors at
-// once and is also the pipeline's network-loading boundary (CONTEXT.md's
+// once and is also the pipeline's network-loading boundary (GLOSSARY.md's
 // Detail Level, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md).
 // `mainstream` (level 2) equals FAME_SCORE_BOUNDS's per-lane defaults; each
 // later level has lower floors and more entries.

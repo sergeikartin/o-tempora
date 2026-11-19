@@ -20,7 +20,7 @@ const ENTITY_TYPE_LABEL: Record<EntityType, () => string> = {
 
 // Live typeahead over the same filtered entity pool TimelineCanvas renders
 // (see useTimelineSearch). Picking a result clears the query: Search is a
-// jump-to, not a persisted filter (CONTEXT.md's Search).
+// jump-to, not a persisted filter (GLOSSARY.md's Search).
 export function SearchBar({
   query,
   onQueryChange,

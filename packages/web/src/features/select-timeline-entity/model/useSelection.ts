@@ -41,13 +41,12 @@ function writeEntityLink(
   else window.history.replaceState(window.history.state, '', url);
 }
 
-// The Selection (CONTEXT.md): the one entity whose panel is open, mirrored into
+// The Selection (GLOSSARY.md): the one entity whose panel is open, mirrored into
 // the URL's Entity Link (`?e=<slug>`). Shared by widgets/timeline-canvas (the
 // click source) and widgets/detail-panel.
 //
-// The URL carries only a slug, so one arriving from outside (initial load,
-// Back/forward) surfaces as `pendingLinkSlug` until app/ finds the entity in
-// the datasets and hands its member to `openLink`.
+// On initial load and Back/forward, `pendingLinkSlug` holds the entity slug
+// until the app finds the entity and passes its member to `openLink`.
 //
 // A Profile Anchor (`#moment-<n>` / `#fact-<n>`) arriving with the link is
 // exposed as `anchor` once its entity opens; it is gone as soon as the

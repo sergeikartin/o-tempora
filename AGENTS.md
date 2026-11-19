@@ -4,19 +4,19 @@
 Provide concise, focused responses. Skip non-essential context, and keep examples minimal.
 
 ## Project Overview
-Interactive timeline of world history — People, Conflicts, and Milestones lanes, hardcoded ahead of time. No accounts, no editing, no live data fetching.
+Read-only interactive timeline of world history with People, Conflicts, and Milestones lanes built from a static dataset.
 
 ## Packages
 
-Three-package monorepo, data flowing one direction only: `data-pipeline` fetches/curates → writes JSON into `shared-types` → `web` reads it and renders. Never the reverse — `web` never fetches or writes data, `shared-types` never fetches.
+Data flows from `data-pipeline` through `shared-types` to `web`.
 
 | Package | Role |
 |---|---|
 | `packages/data-pipeline` | Offline Node pipeline; the only place data is fetched/generated |
 | `packages/shared-types` | The published dataset (JSON) plus the TypeScript types/constants both other packages read |
-| `packages/web` | React/D3 frontend; reads `shared-types`, renders the timeline, no live fetching |
+| `packages/web` | React/D3 frontend that renders the published dataset |
 
-Each has its own `AGENTS.md` (and `packages/{web,data-pipeline}/docs/adr/`) for package-scoped detail. Package `CLAUDE.md` files import their sibling `AGENTS.md` for Claude Code; edit `AGENTS.md` as the source of truth.
+Read the package’s `AGENTS.md` before working there. Edit `AGENTS.md` as the source for its `CLAUDE.md` import.
 
 ## Documentation Map
 
@@ -30,26 +30,11 @@ Read on demand — only load what the current task needs.
 | [docs/observability.md](docs/observability.md) | Adding or changing tracked errors/events |
 | [docs/deployment.md](docs/deployment.md) | Touching build/deploy config |
 | [docs/adr/](docs/adr/) | Making a system-wide architectural call, or recording one — also check `packages/<package>/docs/adr/` for package-scoped decisions |
-| [docs/agents/issue-tracker.md](docs/agents/issue-tracker.md) | Picking up, finishing or filing a ticket under `.scratch/` |
+| [Issue tracker](docs/agents/issue-tracker.md) and [triage labels](docs/agents/triage-labels.md) | Picking up, finishing, filing or triaging a ticket under `.scratch/` |
 | [packages/web/DESIGN.md](packages/web/DESIGN.md), [packages/web/PRODUCT.md](packages/web/PRODUCT.md) | Changing how the UI looks or lays out (DESIGN), or its audience and positioning (PRODUCT) |
-| [CONTEXT.md](CONTEXT.md) | Before exploring the codebase, or naming a domain concept — see `docs/agents/domain.md` for how to consume it |
+| [GLOSSARY.md](GLOSSARY.md) | Before exploring the codebase, or naming a domain concept — see `docs/agents/domain.md` for how to consume it |
 
-**Two-tier docs.** `docs/*.md` (and each package's `docs/*.md` other than `docs/adr/`) are **living docs**: they describe how the system works *right now*, edited in place as it changes, with no history and no "why we chose X over Y" — that reasoning belongs in an ADR. `docs/adr/` (root and per-package) is an **append-only log**: each ADR is a decision captured at a point in time — problem, decision, rationale — and once written is never edited to match new reality. When a decision changes, write a new ADR that supersedes the old one; mark the old one's frontmatter `status: superseded` / `superseded-by: <file>`, and the new one's `supersedes: <file>`, rather than rewriting its content.
+## Doc upkeep
 
-**Doc upkeep:** if a task changes current behavior, update the relevant living doc in the same unit of work — don't leave docs stale. If a task makes or reverses an architectural decision, write the ADR in the same unit of work. Avoid adding edit history, changelogs, diff descriptions, or ticket numbers to living docs — keep them high-level and current-state-only.
-
-Keep docs/*.md focused — split a doc when it stops fitting one screen rather than letting it grow unbounded.
-
-## Agent skills
-
-### Issue tracker
-
-Issues and specs live as markdown files under `.scratch/<feature-slug>/`. See `docs/agents/issue-tracker.md`.
-
-### Triage labels
-
-Default five-role vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
-
-### Domain docs
-
-Single glossary (`CONTEXT.md`) at the repo root, with system-wide ADRs in `docs/adr/` and package-scoped ADRs in `packages/<package>/docs/adr/`. See `docs/agents/domain.md`.
+- Update affected living docs in the same change as current behavior. Describe the current system and keep change history in ADRs and Git. Split docs by task when they outgrow a screen.
+- Record architecture decisions in root or package ADRs in the same change. When replacing one, append a new ADR with `supersedes`. Add `status: superseded` and `superseded-by` to the old ADR’s frontmatter and preserve its text.

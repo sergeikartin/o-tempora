@@ -27,7 +27,7 @@ export function filterByOccupationDomain<
 // datasets rather than the mapped *Item render shapes. `regionsOf` keeps it
 // agnostic to the lanes' entity types. Multi-select OR, empty selection
 // means unfiltered; an item with no region tags is excluded whenever any
-// region is selected (CONTEXT.md's Region).
+// region is selected (GLOSSARY.md's Region).
 export function filterByRegion<T>(
   items: T[],
   selectedRegions: Region[],

@@ -58,7 +58,7 @@ type DatasetModule = { default: unknown };
 type Importer = () => Promise<DatasetModule>;
 
 // Each lane's dataset ships as 4 delta files per locale, one per Detail Level
-// (CONTEXT.md, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md,
+// (GLOSSARY.md, docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md,
 // web/docs/adr/0009). Every import() must be a literal specifier so Vite
 // keeps each file its own chunk, which is why this is a table of 24 literal
 // imports; a missing level/locale/lane combination is a type error.

@@ -2,25 +2,20 @@
 
 <!-- How the two-language build ships as static output. Read when touching build/deploy config. -->
 
-One build, two languages, resolved at runtime from the URL (`packages/web/docs/adr/0009-runtime-locale-switch-replaces-per-locale-builds.md`) — no server-side logic, no per-language build fork. Hosted on GitHub Pages at `otempora.info` (`docs/adr/0007-landing-and-timeline-split-into-four-routes.md`).
+One Vite build publishes four static pages to GitHub Pages at `otempora.info`. The URL determines the locale at runtime. [Locale and dataset loading](config-variables.md)
 
-## Building
+## Build
 
-From `packages/web`: `npm run build` → `dist/`.
+Run `npm run build --workspace packages/web`. Vite writes four HTML entries and shared JS/CSS assets to `packages/web/dist/`.
 
-`vite.config.ts` uses Vite's multi-page-app support — four Rollup inputs per the table under URL structure: the two landing entries load `/src/landing.tsx`, the two timeline entries load `/src/main.tsx` — so this single `vite build` emits all four HTML files, sharing `dist/assets/*` JS/CSS chunks. Which language actually renders, and which dataset chunks that locale fetches, is decided in the browser — see `docs/config-variables.md` for the locale-resolution and Detail Level loading mechanism; a given timeline page load only ever fetches one language's dataset, never both, and a landing page fetches none.
-
-Because that dataset fetch happens behind a runtime locale branch rather than a statically-reachable import, Vite doesn't auto-preload those chunks. Build-time plugins read the build's output bundle in `transformIndexHtml` and inject tags per HTML entry, telling the four entries apart by path (`vite-plugins/html-entry.ts`). `vite-plugins/eager-detail-modulepreload.ts` adds `modulepreload` for a timeline entry's own locale's eagerly-loaded Detail Level chunks (never the other locale's, never on a landing entry). `vite-plugins/critical-font-preload.ts` adds `preload` for the `@fontsource` latin-subset `.woff2` faces each entry kind renders above the fold: Archivo 400/600/700 and Fraunces 600 on the timeline, only Archivo 400 and Fraunces 600 on the landing. `vite-plugins/landing-timeline-prefetch.ts` writes each landing entry's `<script type="application/json" id="timeline-prefetch">` listing the timeline page, its entry chunk and static imports, stylesheet and that locale's eager datasets; `src/app/landing/prefetch-timeline.ts` turns it into `<link rel="prefetch">` tags only on call-to-action hover, focus or touch. Since GitHub Pages serves one static HTML file to every visitor, the preload set covers what the mobile layout paints above the fold; the desktop-only Top Bar wordmark rides on the Fraunces 600 face the Focus Range already needs.
-
-The `@font-face` rules are inlined into the page's critical CSS (`vite-plugins/critical-css.ts`) so the preloaded fonts are bound to their families at first paint, and every `@fontsource` face is built with `font-display: block` (a small `vite.config.ts` plugin) so text appears once in its real face rather than in the system fallback first.
-
-A further plugin, `vite-plugins/prerender-default-viewport.ts`, server-renders `<App initialDatasets={...} />` for each timeline entry's own locale and seeds `timeline/index.html`/`ru/timeline/index.html`'s `#root` with the real default-viewport markup — People/Conflicts+Milestones marks and the Year Axis, for the same `DEFAULT_VIEWPORT_START_YEAR`–`DEFAULT_VIEWPORT_END_YEAR`/fame-score-floor state `App.tsx` already initializes from (`packages/web/docs/adr/0013-prerender-default-viewport-for-lcp.md`) — so first paint shows real content before any JS runs. The landing entries are prerendered the same way from `<LandingPage />` (no datasets, no scroll pin). `main.tsx` and `landing.tsx` hydrate rather than mounting fresh; `PeopleLane`/`ConflictsMilestonesLane` seed their D3-owned `<g>` containers' initial content via a frozen `dangerouslySetInnerHTML` (same shape descriptor as the live D3 join, `mark-shape-html.ts`) so hydration has nothing to reconcile there, and the D3 join then adopts those nodes instead of recreating them.
-
-The last plugin, `vite-plugins/critical-css.ts`, inlines above-the-fold CSS into each HTML entry's `<head>` (via `beasties`) and defers the rest with a `media="print"`/`onload` swap, registered after the prerender step above so Beasties' DOM-presence heuristic sees the real class-bearing markup, not an empty shell. The layout rules `TimelineCanvas`'s post-mount `container.clientWidth` measurement depends on (`.wrapper`/`.scrollContainer`, CSS-Modules-mangled to `._wrapper_<hash>_<n>` etc.) are still force-included via `allowRules` regardless, since that measurement effect's own layout needs are independent of whatever marks happen to be prerendered.
+- `eager-detail-modulepreload.ts` preloads each timeline’s first two dataset levels for its locale. `landing-timeline-prefetch.ts` writes a per-locale manifest for the timeline page, entry assets and eager datasets. The landing CTA triggers prefetch on hover, focus or touch.
+- `critical-font-preload.ts` preloads above-the-fold latin-subset fonts. The timeline uses Archivo 400/600/700 and Fraunces 600. The landing uses Archivo 400 and Fraunces 600. The build sets `font-display: block` for Fontsource faces.
+- `prerender-default-viewport.ts` renders landing and timeline markup into `#root` for each locale. The timeline uses the same opening range and fame floors as `App.tsx`. React hydrates the static markup and D3 adopts existing marks using the shared `mark-shape-html.ts` descriptors. [Prerender decision](../packages/web/docs/adr/0013-prerender-default-viewport-for-lcp.md)
+- `critical-css.ts` runs after prerendering so Beasties sees the actual markup. It inlines critical CSS and font faces, defers the remaining stylesheet, and force-includes the wrapper rules needed for first layout measurement.
 
 ## Profiles
 
-The shipped Profiles (`packages/shared-types/src/data/profiles/<locale>/<slug>.json`) are not bundled: `vite-plugins/profiles-static.ts` copies the folder verbatim to `dist/profiles/` on build and serves it from the dev server, and the panel fetches `/profiles/<locale>/<slug>.json` when an entity with `hasProfile` opens. GitHub Pages sets the cache headers itself (`Cache-Control: max-age=600`) and offers no override, and the files are not content-hashed, so a changed Profile reaches a returning visitor within ten minutes of a deploy.
+The detail panel fetches `/profiles/<locale>/<slug>.json` when an entity with `hasProfile` opens. The dev server serves the files directly from `packages/shared-types/src/data/profiles/`. When Vite writes the production bundle, `vite-plugins/profiles-static.ts` copies that folder to `dist/profiles/`. GitHub Pages serves the files with `Cache-Control: max-age=600`, so a changed Profile can take up to ten minutes to reach a returning visitor.
 
 ## URL structure
 
@@ -33,17 +28,17 @@ English is served from the domain root; every other locale gets its own `/<local
 | `/timeline/` | `timeline/index.html` | Timeline, English |
 | `/ru/timeline/` | `ru/timeline/index.html` | Timeline, Russian |
 
-Each page is its own canonical. `hreflang` pairs landing with landing and timeline with timeline, with `x-default` pointing at `/`. Entity Links (`?e=<slug>`) live on the timeline routes and canonicalise to `/timeline/`. `public/sitemap.xml` lists the four URLs and `og-image.png` is shared by all of them.
+Each route is canonical. `hreflang` pairs the same page kind across locales and points `x-default` to `/`. All four routes are in `public/sitemap.xml` and share `og-image.png`.
 
-Each page carries a visible link to the sibling locale's same page kind — the landing's nav (`/` ↔ `/ru/`) and the Help panel's language switcher (`packages/web/src/widgets/help-panel/ui/HelpPanel.tsx`) (`/timeline/` ↔ `/ru/timeline/`), root-relative so they work regardless of domain. When an entity is open the timeline's link carries its `?e=<slug>` to the sibling; nothing else (viewport, Detail Level, filters) is preserved across the switch. The landing's link likewise carries the chosen curiosity's `#<id>` hash to the sibling landing.
+A Landing Page language switch preserves the chosen Curiosity hash. The timeline switch in Help carries `?e=<slug>` for the open entity. A Landing Page CTA can also add `#moment-<n>` or `#fact-<n>` to the destination Entity Link.
 
 ## 404 page
 
-`packages/web/public/404.html` is a static, bilingual (EN + RU on one page) parchment-styled page with inline CSS and no JS or datasets; Vite copies it to `dist/404.html`, which GitHub Pages serves (with a 404 status) for any path that isn't a real file. It links to `/timeline/` and `/ru/timeline/` root-relatively, so it works from any depth, and it is `noindex`. The Ledger & Ink tokens are repeated inline since it loads no bundle, and fonts fall back to system faces. `vite.config.ts` sets `appType: 'mpa'` (no SPA fallback to `index.html`) and a small preview-only plugin serves `404.html` for unresolved paths, so `npm run preview` behaves like Pages.
+Both Pages and Vite preview serve `dist/404.html` for unresolved paths. The source in `packages/web/public/404.html` is a self-contained, bilingual, `noindex` page with root-relative links to both timelines. `appType: 'mpa'` preserves real 404 responses.
 
 ## CI
 
-`.github/workflows/ci.yml` runs on every push to `dev` and every PR into `main`/`dev`: lint for `shared-types`, lint + typecheck + test for `data-pipeline`, and lint + `lint:boundaries` + typecheck + test + build for `web`. Branch protection on `main` requires all jobs to pass before merge.
+`.github/workflows/ci.yml` checks pushes to `dev` and PRs into `main` or `dev`. It lints all packages, typechecks and tests the pipeline and web, and checks web boundaries and production build. The `main` branch requires the checks.
 
 ## Deploying
 
@@ -70,14 +65,12 @@ One-time manual setup (not repo config — done once in GitHub's UI and at the d
 
 ## Verifying locally
 
-`npm run preview` serves `dist/` the way Pages does, including the 404 page for unknown paths (`http.server` would not). Run it detached so the shell call returns, and curl `127.0.0.1` with the proxy bypassed — agent and CI shells often set `http_proxy`, which turns every `localhost` request into a 502:
+After building, run `npm run preview --workspace packages/web -- --port 4173` in a terminal. Use another terminal to check the routes with the local proxy bypassed.
 
+```sh
+for path in / /ru/ /timeline/ /ru/timeline/ /anything-else; do
+  curl --noproxy '*' -s -o /dev/null -w "$path %{http_code}\n" "http://127.0.0.1:4173$path"
+done
 ```
-npm run build --workspace packages/web
-cd packages/web && (setsid npx vite preview --port 4173 >/dev/null 2>&1 </dev/null &)
-for p in / /ru/ /timeline/ /ru/timeline/ /anything-else; do curl --noproxy '*' -s -o /dev/null -w "$p %{http_code}\n" http://127.0.0.1:4173$p; done
-```
 
-Expect `200` four times, then `404`. In a browser, check that the call-to-action opens the timeline, that the language switcher on each page navigates to the sibling locale's same page kind, and that the unknown path shows the branded 404 page.
-
-Stop the server by PID — `kill $(ss -ltnp | rg ':4173' | rg -o 'pid=[0-9]+' | cut -d= -f2)`. `pkill -f "vite preview"` also matches the invoking shell's own command line and kills it.
+Expect four `200` responses followed by `404`. In a browser, check the landing CTA, each locale switch and the branded 404 page. Stop preview with Ctrl+C in its terminal.

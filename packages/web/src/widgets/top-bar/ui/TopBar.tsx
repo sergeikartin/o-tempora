@@ -36,7 +36,7 @@ interface TopBarProps {
   onOpenHelp: () => void;
 }
 
-// The strip of always-needed controls above the timeline (CONTEXT.md's Top
+// The strip of always-needed controls above the timeline (GLOSSARY.md's Top
 // Bar): Search, Detail Level, the Filters button (with its Filters Panel) and
 // Help. The row wraps via CSS alone, so the prerendered markup needs no
 // viewport width.

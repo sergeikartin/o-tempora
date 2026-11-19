@@ -163,31 +163,19 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Scribe's Chronicle"**
-
-O Tempora reads as a chronicle kept by one careful hand: aged parchment for the page, iron-gall ink for every word, and a single oxblood accent standing in for a wax seal. The data is the ornament. Colour, line and dot do the encoding, so chrome stays small, warm and quiet, and nothing competes with the marks on the timeline.
-
-The system is dense but unhurried. Controls are small, pill-shaped and exact; labels are short sentence-case nouns; years are set in tabular figures in the same face as the text around them. Fraunces appears only where a chronicle would letter a heading: the Focus Range, an entity's name, the wordmark, and the landing page's headline and lede. There is one theme, light, and the system does not ask for a second.
-
-**Key Characteristics:**
-- Warm parchment ground with ink text. No pure black, no pure-white page.
-- One sharp accent (oxblood) reserved for state: selected, reached, primary action.
-- Colour encodes category within a lane; shape encodes duration (rounded-cap line for a period, dot for a moment), identically in all three lanes.
-- Tonal layering for depth. Shadows only on cards that float over the canvas.
-- Quiet and exact controls: hairline borders, 12px type, 28px targets.
+“The Scribe’s Chronicle” uses the Ledger & Ink palette of parchment, iron-gall text and oxblood for interactive state. Keep the controls compact and the marks prominent. Labels use short, sentence-case nouns. The site uses a single light theme.
 
 ## Colors
 
-A warm neutral ladder from parchment to white, one oxblood accent, and a muted, colour-blind-checked palette that exists only to encode data.
+Token values and palette order are listed in [Design tokens](docs/design-tokens.md).
 
 ### Primary
 - **Oxblood Seal** (#8a2a1a): The only accent. Active pill border, reached Detail Level pips, primary button fill, search-match emphasis, the minimap viewport rectangle and the scrubber thumb. 6.4:1 or better as text on parchment and ledger paper.
 - **Deep Oxblood** (#6e2013): Keyboard focus ring only (2px outline, 8.3:1 or better on every ground).
 
-### Secondary (data encoding)
-- **Conflict Red** (#8c2d2b): Every Conflict mark and minimap area, flat, regardless of category.
-- **People domains**, in fixed legend order: Rosewood (#9a5c73, sports), Fern (#347830, business & law), Indigo Ink (#4e4993, humanities), Brick (#b6514c, institutions), Slate Blue (#3e70b0, exploration), Terracotta (#a85a3d, arts), Verdigris (#357b5c, science & technology), Ochre (#8e672c, public figure).
-- **Milestone groups**: Deep Verdigris (#008255, science & innovation) and Dark Ochre (#946513, social & culture), each a darker step of the People hue it echoes.
+### Data encoding
+
+People use the Occupation Domain palette in its fixed order. Milestones use two category-group colors, and Conflicts use a single red. Keep labels in Ink. Round-cap lines encode periods and dots encode points in time. Check new mark colors against the existing palette and retain at least 3:1 contrast against parchment at resting opacity.
 
 ### Neutral
 - **Parchment** (#f2e9d2): Page and canvas background; also the fill of close buttons.
@@ -201,21 +189,14 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 - **Selection Halo** (#241a10 at 14%): Translucent ink fill drawn 8px beyond a selected mark.
 - **Scrim** (#000000 at 40%): Behind sheets and the About modal.
 
-### Named Rules
-**The One Seal Rule.** Oxblood marks state and nothing else. It is never decoration and never a lane colour.
-
-**The Ink Label Rule.** Entry labels are always Ink, never the mark's colour; the bar or dot alone carries the category.
-
-**The Fixed Legend Rule.** The eight People domains render in the order listed above. Reordering re-opens the colour-blind adjacency checks.
-
-**The Border Ladder Rule.** An interactive control's border is Control Border. Hairline and Strong Rule never border a control.
+Reserve Deep Oxblood outlines for keyboard focus. Offset them by 1–2px, inward for joined controls. Use Control Border for interactive outlines and Faded Ink on hover.
 
 ## Typography
 
 **Display Font:** Fraunces 600 (with serif fallback)
 **Body Font:** Archivo 400/600/700 (with sans-serif fallback)
 
-**Character:** Archivo does all the work of an index: labels, dates, data. Fraunces appears three times only, to letter the headings a scribe would letter.
+Use Archivo for UI, labels and data, with tabular figures for years and dates. Use Fraunces for the headings and wordmark listed below.
 
 ### Hierarchy
 - **Focus Range** (Fraunces 600, 56px, 1; 32px below 960px): The years of the selection, or the visible window when nothing is selected, as the screen's heading, tabular figures.
@@ -230,11 +211,6 @@ A warm neutral ladder from parchment to white, one oxblood accent, and a muted, 
 - **Eyebrow** (Archivo 600, 11px, 0.06em, uppercase in CSS): Section headings in Faded Ink.
 - **Axis Label and Badge** (Archivo 400, 10px): Year Axis ticks and the type badge in search results; nothing smaller occurs.
 
-### Named Rules
-**The Same Face Rule.** Years and dates use Archivo with tabular figures, never a separate monospace.
-
-**The Three Headings Rule.** Fraunces is for the Focus Range, the entity name and the wordmark, plus the landing page's headline and lede. Chrome stays in Archivo.
-
 ## Layout
 
 A full-viewport canvas read left to right, with the Focus Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A 56px Top Bar above it holds search, Detail Level, the Filters button and Help; the Filters Panel opens as a popover beneath it. A minimap card sits beneath the lanes on desktop; on phones a 24px scrubber strip sits between the Focus Range and the lanes instead.
@@ -245,7 +221,7 @@ Background texture is a faint 25-year zebra wash with century seams in Control B
 
 ## Elevation & Depth
 
-Depth is tonal first: Parchment, then Ledger Paper, then White Sheet for anything the hand touches. Shadows are reserved for surfaces that float over the canvas and are always ink-tinted rather than black, with a Hairline border alongside. Marks are flat; selection is a halo, not a shadow.
+Layer Parchment, Ledger Paper and White Sheet. Use shadows on floating surfaces and tone or hairlines on inline surfaces.
 
 ### Shadow Vocabulary
 - **Card** (`box-shadow: 0 4px 16px rgba(36, 26, 16, 0.12)`): Minimap card.
@@ -255,10 +231,7 @@ Depth is tonal first: Parchment, then Ledger Paper, then White Sheet for anythin
 - **Popover** (`box-shadow: 0 8px 24px rgba(36, 26, 16, 0.18)`): Filters Panel on desktop.
 - **Modal** (`box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25)`): About modal.
 
-### Named Rules
-**The Floaters-Only Rule.** A surface gets a shadow only if it sits over the canvas. Everything inline is separated by tone and hairlines.
-
-**The Halo Rule.** A selected or search-jumped mark gets a duplicate shape in Selection Halo, 8px wider than the grown mark, drawn behind it. The mark itself is never recoloured.
+Draw an 8px-wider Selection Halo behind selected or search-jumped marks and retain the mark’s lane color.
 
 ## Shapes
 
@@ -292,7 +265,7 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 - **Profile sources:** Key Moments and Deep Facts with a source show an underlined Faded Ink "Source ↗" link below the passage, 12px type, darkening to Ink on hover with a Deep Oxblood focus ring. Links open in a new tab and have 44px touch targets on coarse pointers. Passages without a source omit the link.
 - **Corner style:** 12px; panel edges square against the viewport; mobile sheet 8px on its top corners.
 - **Background:** Ledger Paper with a 1px Hairline border. Floating cards carry the Card shadow.
-- **Detail panel:** 440px right drawer, 260px image slot (200px when a Profile is shown), 20px body padding, name in Fraunces and tagline italic in Faded Ink pinned to the top of the scroll over a Hairline rule that appears once content passes beneath, a 200ms slide. A Profile replaces the Description with its overview, then three sections under Eyebrow headings separated by a Hairline rule: Key Moments as a Hairline thread of lane-coloured marks (a dot for a moment, a round-capped line for a span) with the date, a 600 title and a paragraph whose `**bold**` runs are weight 600; Deep Facts as Parchment wells (12px radius, no border or shadow), a legend carrying a Strong Rule-outlined "Legend" tag; Connections as rows (lane swatch, name, one-sentence reason, `›`) that open the target, a target below the current Detail Level marked with the Detail Level switch's four pips in Faded Ink and "Appears at <level>". The Wikipedia button moves to a sticky footer under a Hairline rule.
+- **Detail panel:** 440px right drawer, 260px image slot (200px when a Profile is shown), 20px body padding, name in Fraunces and tagline italic in Faded Ink pinned to the top of the scroll over a Hairline rule that appears once content passes beneath, a 200ms slide. A Profile replaces the Description with its overview, then three sections under Eyebrow headings separated by a Hairline rule: Key Moments as a Hairline thread of lane-coloured marks (a dot for a moment, a round-capped line for a span) with the date, a 600 title and a paragraph whose `**bold**` runs are weight 600; Deep Facts as Parchment wells (12px radius, no border or shadow), a legend carrying a Strong Rule-outlined "Legend" tag; Connections as rows (lane swatch, name, one-sentence reason, `›`) that open the target, a target below the current Detail Level marked with the Detail Level switch's four pips in Faded Ink and "Appears at <level>". The Wikipedia button sits in a sticky footer under a Hairline rule. A Profile Anchor scrolls the matching passage into view and marks it in the panel.
 
 ### Timeline Marks and Year Axis (signature)
 - **Marks:** Round-cap lines and dots at 0.8 opacity at rest, 1 on hover and selection. Lane labels 11px Ink, the label scaling 1.15 on hover.
@@ -306,23 +279,6 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 ### Motion
 Hover feedback runs 120ms and panel slides and fades 200ms on `cubic-bezier(0.4, 0, 0.2, 1)`. Animate transform and opacity only. Under `prefers-reduced-motion: reduce` both durations collapse to near zero through the shared tokens.
 
-## Do's and Don'ts
+## Interface details
 
-### Do:
-- **Do** use Ink for text and every entry label, and Faded Ink for secondary text; both pass 4.5:1 on every surface they sit on.
-- **Do** border interactive controls with Control Border (#837757) and step hover to Faded Ink.
-- **Do** give every interactive control a 2px Deep Oxblood focus outline with a 1–2px offset (negative inside joined groups).
-- **Do** keep chrome type at 12px or larger where it is not data; 10–11px is for ticks, badges and lane labels only.
-- **Do** use tabular figures for every year and date.
-- **Do** keep marks at least 3:1 against parchment at resting opacity; check any new mark colour against the existing set, not just its neighbour.
-- **Do** use text glyphs (`×`, `+`, `−`, `«`) for tight controls.
-
-### Don't:
-- **Don't** use oxblood as a lane colour, a decoration, or a hover tint.
-- **Don't** recolour a selected mark; add the halo.
-- **Don't** colour entry labels with their mark's colour.
-- **Don't** add a dark theme or a second accent.
-- **Don't** use gradients, imagery or emoji in chrome, or exclamation marks and marketing voice in copy.
-- **Don't** add a shadow to an inline surface or a border to a control in Hairline or Strong Rule.
-- **Don't** introduce an icon set or a monospace face.
-- **Don't** reorder the People domain legend.
+Use text glyphs for compact controls (`×`, `+`, `−`, `«`). Keep chrome at 12px or larger apart from the ticks, badges and captions in the type hierarchy. Keep chrome free of gradients, imagery and emoji. Keep copy plain and omit marketing language and exclamation marks.

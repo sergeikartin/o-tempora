@@ -174,7 +174,7 @@ function AppContent({ initialDatasets }: AppProps) {
     level: selectedLevel,
     setLevel: setFameScoreLevel,
   } = useFameScoreFilters();
-  // Specialized/Deep Cut data ships in deferred delta files (CONTEXT.md's
+  // Specialized/Deep Cut data ships in deferred delta files (GLOSSARY.md's
   // Detail Level); picking either triggers the on-demand load if the
   // idle-prefetch hasn't started or finished, and is a no-op otherwise.
   const handleSelectDetailLevel = useCallback(

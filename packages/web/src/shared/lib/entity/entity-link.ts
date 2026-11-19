@@ -1,7 +1,5 @@
-// The Entity Link (CONTEXT.md): `?e=<slug>` names the one selected entity and
-// is the only URL state the app has. Slugs are globally unique across lanes, so
-// a slug alone identifies the entity — its lane is resolved by looking it up in
-// the loaded datasets.
+// An Entity Link (GLOSSARY.md) carries the selected entity's globally unique
+// slug as `?e=<slug>` and can carry a Profile Anchor in the fragment.
 const ENTITY_PARAM = 'e';
 
 // The first non-empty slug; a link that repeats the param opens only that one.

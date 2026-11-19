@@ -9,7 +9,7 @@ import type { ProfileBody, ResolvedConnection } from '../lib/profile';
 import styles from './DetailPanel.module.css';
 import { ProfileView } from './ProfileView';
 
-// The Selection (CONTEXT.md) as the panel shows it.
+// The Selection (GLOSSARY.md) as the panel shows it.
 export interface DetailPanelMember {
   entity: DetailPanelEntity;
   // Filtered out of the canvas by Detail Level or filters; it stays selected.

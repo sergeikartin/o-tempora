@@ -74,7 +74,7 @@
   transform: scale(1.15);
 }
 
-/* Selection / search-jump highlight (CONTEXT.md's Search): a wider duplicate
+/* Selection / search-jump highlight (GLOSSARY.md's Search): a wider duplicate
    line behind the mark's line (PeopleLane.tsx's .d3-line-halo), not a CSS
    outline filter, since an SVG filter region is sized off the geometry bounding
    box, which is zero-height for a horizontal <line>, so it clips to nothing.

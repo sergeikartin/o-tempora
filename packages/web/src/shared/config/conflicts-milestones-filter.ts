@@ -10,7 +10,7 @@ import {
 // filter, not two separate controls — mirrors Region/Occupation Domain's
 // "one flat list of values, empty means unfiltered" shape exactly. The
 // values folds a UI-only 'conflicts' sentinel (Conflicts carry no
-// color-driving grouping of their own — see CONTEXT.md's Conflict Category
+// color-driving grouping of their own — see GLOSSARY.md's Conflict Category
 // entry — so the entire lane is just one more option in the list) together
 // with the 2 real MilestoneCategoryGroup values. Revised 2026-08-12: an
 // earlier version split this into a 3-pill Milestone Category Group filter
