@@ -35,3 +35,12 @@ test('resolveDate flags an approximate override', () => {
     approximateDate: true,
   });
 });
+
+test('uses the selected Wikidata endpoint qualifiers unless a curator replaces the date', () => {
+  const estimated = { ...wikidata, endApproximateDate: true as const };
+  assert.deepEqual(resolveDate(undefined, estimated), estimated);
+  assert.equal(
+    resolveDate({ year: 1700 }, estimated).endApproximateDate,
+    undefined,
+  );
+});

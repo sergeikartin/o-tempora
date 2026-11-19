@@ -36,6 +36,7 @@ interface DateSpan {
   endYear?: number;
   ongoing?: boolean;
   approximate?: boolean;
+  endApproximate?: boolean;
 }
 
 // "1969", "1789–1799", "551–479 BC", "44 BC–AD 14", "1950–present"; "c. "
@@ -45,15 +46,21 @@ export function formatDates(span: DateSpan): string {
   const start = bcOrAd(span.startYear);
   const end = span.endYear === undefined ? undefined : bcOrAd(span.endYear);
   const lead = span.approximate ? 'c. ' : '';
+  const endLead = span.endApproximate ? 'c. ' : '';
   const ce = (year: number) => (year < 1000 ? `AD ${year}` : `${year}`);
 
-  if (!end || span.endYear === span.startYear) {
+  if (
+    !end ||
+    (span.endYear === span.startYear &&
+      !!span.approximate === !!span.endApproximate)
+  ) {
     const label = start.bc ? `${start.value} BC` : ce(start.value);
     return `${lead}${label}${span.ongoing && !end ? '–present' : ''}`;
   }
-  if (start.bc && end.bc) return `${lead}${start.value}–${end.value} BC`;
-  if (start.bc) return `${lead}${start.value} BC–AD ${end.value}`;
-  return `${lead}${ce(start.value)}–${end.value}`;
+  if (start.bc && end.bc)
+    return `${lead}${start.value}–${endLead}${end.value} BC`;
+  if (start.bc) return `${lead}${start.value} BC–${endLead}AD ${end.value}`;
+  return `${lead}${ce(start.value)}–${endLead}${end.value}`;
 }
 
 // Entities that made the dataset (Output's inclusion rules), in a stable
@@ -91,7 +98,12 @@ export function loadSubjects(): ProfileSubject[] {
       qid: conflict.id,
       lane: 'conflicts',
       name: conflict.name,
-      dates: formatDates({ startYear: row.year, endYear: row.endYear }),
+      dates: formatDates({
+        startYear: row.year,
+        endYear: row.endYear,
+        approximate: row.approximateDate,
+        endApproximate: row.endApproximateDate,
+      }),
       wikipediaUrl: row.article,
     });
   }
@@ -111,6 +123,7 @@ export function loadSubjects(): ProfileSubject[] {
         startYear: row.year,
         endYear: row.endYear,
         approximate: row.approximateDate,
+        endApproximate: row.endApproximateDate,
       }),
       wikipediaUrl: row.article,
     });

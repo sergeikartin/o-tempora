@@ -595,9 +595,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nalanda%20The%20Great%20Stupa.jpg",
     "imageAttribution": "Uphogaphy, via Wikimedia Commons",
     "description": "Nalanda was a renowned Buddhist mahavihara in medieval Magadha, eastern India. Widely considered to be among the greatest centres of learning in the ancient world and often referred to as \"the world's first residential university\", it was located near the city of Rajagriha, roughly 90 kilometres (56 mi) southeast of Pataliputra. Operating for almost a thousand years from 427 CE until around 1400 CE, Nalanda mahavihara played a vital role in promoting the patronage of arts, culture and academics during the 5th and 6th century CE, a period that has since been described as the \"Golden Age of India\" by scholars. The characterisation of Nalanda as a \"university\" in the modern sense has been challenged by scholars. They argue that while it was undoubtedly a major centre of learning, comparing it directly to a modern university is historically imprecise.",
-    "approximateDate": true,
     "at": {
-      "year": 450
+      "year": 450,
+      "approximate": true
     },
     "slug": "nalanda-mahavihara",
     "row": 1
@@ -652,9 +652,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Great-Zimbabwe-6.jpg",
     "description": "Great Zimbabwe was a city in the south-eastern hills of the modern country of Zimbabwe, near Masvingo. It was settled in from around 1000 AD, and served as the capital of the Kingdom of Great Zimbabwe from the 13th century. It is the largest stone structure in precolonial Southern Africa. Major construction on the city began in the 11th century and continued until the 15th century. The city was abandoned in the 16th or 17th century. The edifices were erected by ancestors of the Shona people, who live in Zimbabwe and nearby countries. The stone city spans an area of 7.22 square kilometres (2.79 mi2). Population estimates vary. Earlier estimates suggest a peak population of around 20,000 people. A recent study using archaeological, ethnographic, and historical evidence, along with statistical modeling, suggests that the site's population did not exceed 10,000. The Zimbabwe state centred on it likely covered 50,000 km². It is recognised as a World Heritage Site by UNESCO.",
-    "approximateDate": true,
     "at": {
-      "year": 1250
+      "year": 1250,
+      "approximate": true
     },
     "slug": "great-zimbabwe",
     "row": 3
@@ -1507,9 +1507,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sakkara%2001.jpg",
     "imageAttribution": "Olaf Tausch, via Wikimedia Commons",
     "description": "The Pyramid of Djoser, sometimes called the Step Pyramid of Djoser or Step Pyramid of Horus Netjerikhet, is an archaeological site in the Saqqara necropolis, Egypt, northwest of the ruins of Memphis. It was the first Egyptian pyramid to be built. The six-tier, four-sided structure is the earliest colossal stone building in Egypt. It was built in the 27th century BC during the Third Dynasty for the burial of Pharaoh Djoser. The pyramid is the central feature of a vast mortuary complex in an enormous courtyard surrounded by ceremonial structures and decoration.",
-    "approximateDate": true,
     "at": {
-      "year": -2670
+      "year": -2670,
+      "approximate": true
     },
     "slug": "pyramid-of-djoser",
     "row": 1
@@ -2621,9 +2621,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Trans-Saharan_trade",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/French%20language%20map%20of%20Central%20and%20Eastern%20Africa%201862.jpg",
     "description": "Trans-Saharan trade is trade between North Africa and the rest of Africa that requires travel across the Sahara. Though this trade began in prehistoric times, the peak of trade extended from the 8th century until the early 17th century. The Sahara once had a different climate and environment. In Libya and Algeria, from at least 7000 BCE, pastoralism, large settlements and pottery were present. Cattle were introduced to the central Sahara (Ahaggar) between 4000 and 3500 BCE. Remarkable rock paintings in arid regions portray flora and fauna that are not present in the modern desert.",
-    "approximateDate": true,
     "at": {
-      "year": 300
+      "year": 300,
+      "approximate": true
     },
     "slug": "trans-saharan-trade",
     "row": 1
@@ -2658,9 +2658,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Founding_of_Rome",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lupa%20Capitolina%2C%20Rome.jpg",
     "description": "Archaeological evidence indicates that Rome developed from the gradual union of several hilltop villages during the Final Bronze Age or early Iron Age. Prehistoric habitation of the Italian Peninsula occurred by 48,000 years ago, with the area of Rome being settled by around 1600 BC. Some evidence on the Capitoline Hill possibly dates as early as c. 1700 BC and the nearby valley that later housed the Roman Forum had a developed necropolis by at least 1000 BC. The combination of the hilltop settlements into a single polity by the later 8th century BC was probably influenced by the trend for city-state formation emerging from ancient Greece.",
-    "approximateDate": true,
     "at": {
-      "year": -753
+      "year": -753,
+      "approximate": true
     },
     "slug": "founding-of-rome",
     "row": 0
@@ -2888,9 +2888,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Narmer_Palette",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NarmerPalette%20ROM.jpg",
     "description": "The Narmer Palette, also known as the Great Hierakonpolis Palette or the Palette of Narmer, is a significant Egyptian archaeological find, dating from about the 31st century BC, belonging, at least nominally, to the category of cosmetic palettes. It contains some of the earliest hieroglyphic inscriptions ever found. The tablet is thought by some to depict the unification of Upper and Lower Egypt under the king Narmer. Along with the Scorpion Macehead and the Narmer Maceheads, also found together in the main deposit at Nekhen, the Narmer Palette provides one of the earliest known depictions of an Egyptian king. On one side, the king is depicted with the bulbed White Crown of Upper (southern) Egypt, and the other side depicts the king wearing the level Red Crown of Lower (northern) Egypt, which also makes it the earliest known example of a king wearing both types of headdress. The Palette shows many of the classic conventions of Ancient Egyptian art, which must already have been formalized by the time of the Palette's creation. Egyptologists Bob Brier and A. Hoyt Hobbs have referred to the Narmer Palette as \"The oldest Egyptian historical record\".",
-    "approximateDate": true,
     "at": {
-      "year": -3100
+      "year": -3100,
+      "approximate": true
     },
     "slug": "narmer-palette",
     "row": 1
@@ -3053,7 +3053,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dettaglio%20fr2810%20folio%201r.jpg",
     "description": "The Travels of Marco Polo, also known as The Book of the Marvels of the World and by its Italian name Il Milione, is a 13th-century travelogue written down by Rustichello da Pisa from stories told by the Venetian explorer Marco Polo. It describes Polo's travels through Asia between 1271 and 1295, and his experiences at the court of Kublai Khan.",
     "at": {
-      "year": 1298
+      "year": 1298,
+      "approximate": true
     },
     "slug": "the-travels-of-marco-polo",
     "row": 1
@@ -3217,9 +3218,9 @@
     "tagline": "aspect of history",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_Madagascar",
     "description": "The history of Madagascar started from the ancient supercontinent of Pangaea, containing amongst others the African continent and the Indian subcontinent, and by the island's late colonization by human settlers from South Borneo, Indonesia and from East Africa. These two factors facilitated the evolution and survival of thousands of endemic plant and animal species, some of which have gone extinct or are currently threatened with extinction.Trade in the Indian Ocean at the time of first colonization of Madagascar was dominated by Indonesian ships, probably of Borobudur ship and K'un-lun po types.",
-    "approximateDate": true,
     "at": {
-      "year": 500
+      "year": 500,
+      "approximate": true
     },
     "slug": "settlement-of-madagascar",
     "row": 1
@@ -3235,9 +3236,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ashoka%20Lauriya%20Areraj%20inscription.jpg",
     "imageAttribution": "Sachin kumar tiwary, via Wikimedia Commons",
     "description": "The Edicts of Ashoka are a collection of more than thirty inscriptions on the Pillars of Ashoka, as well as boulders and cave walls, attributed to Emperor Ashoka of the Mauryan Empire who ruled most of the Indian subcontinent from 268 BCE to 232 BCE. These inscriptions were dispersed throughout the areas of modern-day India, Bangladesh, Nepal, Afghanistan and Pakistan, and provide the first tangible evidence of Buddhism. The Edicts are the earliest written and datable texts from India, and, since they were inscribed on stone, we have the added benefit of having them exactly as they were originally inscribed. Earlier texts, such as the Vedic texts, were all composed and handed down orally until later dates.",
-    "approximateDate": true,
     "at": {
-      "year": -260
+      "year": -260,
+      "approximate": true
     },
     "slug": "edicts-of-ashoka",
     "row": 1
@@ -3655,7 +3656,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ebers7766.jpg",
     "description": "The Ebers Papyrus, also known as Papyrus Ebers, is an Egyptian medical papyrus of herbal knowledge dating to c. 1550 BCE. Among the oldest and most important medical papyri of Ancient Egypt, it was sold by Mohareb Todros to the German Egyptologist Georg Ebers at Luxor in the winter of 1873–1874. It is currently kept at the Leipzig University Library in Germany.",
     "at": {
-      "year": -1599
+      "year": -1599,
+      "approximate": true
     },
     "slug": "ebers-papyrus",
     "row": 2
@@ -4070,9 +4072,9 @@
     "tagline": "history and demographics of Buddhism in Sri Lanka, formerly Ceylon",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_Sri_Lanka",
     "description": "Theravada Buddhism is the largest and official religion of Sri Lanka, practiced by 69.8% of the population as of 2012. Practitioners of Sri Lankan Buddhism can be found amongst the majority Sinhalese population as well as among the minority ethnic groups, most notably the Sri Lankan Chinese. Sri Lankan Buddhists share many similarities with Southeast Asian Buddhists, specifically Thai Buddhists and Burmese Buddhists due to traditional and cultural exchange. Sri Lanka is one of only five countries in the world with a Theravada Buddhist majority, and others are Thailand, Cambodia, Laos and Myanmar.",
-    "approximateDate": true,
     "at": {
-      "year": -249
+      "year": -249,
+      "approximate": true
     },
     "slug": "buddhism-in-sri-lanka",
     "row": 3
@@ -4301,9 +4303,9 @@
     "tagline": "system of printing and typography that uses movable components",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Movable_type",
     "description": "Movable type is the system and technology of printing and typography that uses movable components to reproduce the elements of a document usually on the medium of paper.",
-    "approximateDate": true,
     "at": {
-      "year": 1040
+      "year": 1040,
+      "approximate": true
     },
     "slug": "movable-type",
     "row": 1
@@ -4776,7 +4778,8 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Br%C4%81hmasphu%E1%B9%ADasiddh%C4%81nta",
     "description": "The Brāhma-sphuṭa-siddhānta is a main work of Brahmagupta, written c. 628. This text of mathematical astronomy contains significant mathematical content, including the first good understanding of the role of zero, rules for manipulating both negative and positive numbers, a method for computing square roots, methods of solving linear and quadratic equations, rules for summing series, Brahmagupta's identity, and Brahmagupta theorem.",
     "at": {
-      "year": 628
+      "year": 628,
+      "approximate": true
     },
     "slug": "brahmasphutasiddhanta",
     "row": 6
@@ -4874,9 +4877,9 @@
     "tagline": "overview role of Buddhism in China",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_China",
     "description": "Buddhism is followed by more than 40 million people in China, accounting for around 4% of the country's population. There are three main Buddhist branches there; Han or Chinese Buddhism, Tibetan Buddhism, and Theravada Buddhism. There is no definitive answer to the time when Buddhism was first introduced to China, but it is generally believed that this occurred around the time of the Han dynasty.",
-    "approximateDate": true,
     "at": {
-      "year": 67
+      "year": 67,
+      "approximate": true
     },
     "slug": "buddhism-in-china",
     "row": 4
@@ -5189,9 +5192,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Calling_of_the_Varangians",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Calling%20of%20varangians%2001.jpg",
     "description": "The calling of the Varangians, calling of the (Varangian) princes or invitation to the Varangians is a legend about the origins of the Rus' people, the Rurik dynasty and the Kievan Rus' state, recorded in many divergent versions in various manuscripts and compilations of Rus' chronicles. These include the six main witnesses of the Primary Chronicle and the Novgorod First Chronicle (NPL), as well as later textual witnesses such as the Sofia First Chronicle and the Pskov Third Chronicle.",
-    "approximateDate": true,
     "at": {
-      "year": 862
+      "year": 862,
+      "approximate": true
     },
     "slug": "calling-of-the-varangians",
     "row": 6
@@ -5254,9 +5257,9 @@
     "tagline": "aspect of history",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Hindu%E2%80%93Arabic_numeral_system",
     "description": "The Hindu–Arabic numeral system is a decimal place-value numeral system that uses a zero glyph as in \"205\". Some historians have argued that the exact development and transmission of the Hindu–Arabic numeral system remains debated, with differing interpretations regarding the contributions of Indian, Persian, and Arab scholars.Its glyphs are descended from the Indian Brahmi numerals. The full system emerged by the 8th to 9th centuries, and is first described outside India in Al-Khwarizmi's On the Calculation with Hindu Numerals (ca. 825), and second Al-Kindi's four-volume work On the Use of the Indian Numerals (c. 830). Today the name Hindu–Arabic numerals is usually used.",
-    "approximateDate": true,
     "at": {
-      "year": 500
+      "year": 500,
+      "approximate": true
     },
     "slug": "history-of-the-hindu-arabic-numeral-system",
     "row": 3

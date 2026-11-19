@@ -1,12 +1,19 @@
-import { formatYear, formatYearRange } from '../../shared/lib/date';
+import { formatYearMonth, formatYearRange } from '../../shared/lib/date';
 import styles from './FocusRange.module.css';
 
 interface FocusRangeProps {
+  startApproximate?: true;
+  endApproximate?: true;
   startYear: number;
   endYear: number;
 }
 
-export function FocusRange({ startYear, endYear }: FocusRangeProps) {
+export function FocusRange({
+  startYear,
+  endYear,
+  startApproximate,
+  endApproximate,
+}: FocusRangeProps) {
   const start = Math.round(startYear);
   const end = Math.round(endYear);
   return (
@@ -19,7 +26,9 @@ export function FocusRange({ startYear, endYear }: FocusRangeProps) {
       aria-hidden="true"
       suppressHydrationWarning
     >
-      {start === end ? formatYear(start) : formatYearRange(start, end)}
+      {start === end && startApproximate === endApproximate
+        ? formatYearMonth({ year: start, approximate: startApproximate })
+        : formatYearRange(start, end, startApproximate, endApproximate)}
     </div>
   );
 }

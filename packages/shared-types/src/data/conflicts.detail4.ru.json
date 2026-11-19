@@ -2823,7 +2823,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gustave%20dore%20crusades%20the%20childrens%20crusade.jpg",
     "description": "Крестовый поход детей — принятое в историографии название народного движения 1212 года, в ходе которого тысячи невооружённых крестьян, преимущественно детей и подростков из Франции и Германии, отправились в Палестину для освобождения Гроба Господня. Поход завершился трагедией: большинство участников погибли или были проданы в рабство.",
     "at": {
-      "year": 1212
+      "year": 1212,
+      "approximate": true
     },
     "slug": "children-s-crusade",
     "row": 5
@@ -5371,7 +5372,8 @@
         "year": 1546
       },
       "end": {
-        "year": 1609
+        "year": 1609,
+        "approximate": true
       }
     },
     "slug": "arauco-war",

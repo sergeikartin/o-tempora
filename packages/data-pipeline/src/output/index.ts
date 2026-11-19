@@ -165,7 +165,12 @@ async function main(): Promise<void> {
         : [
             [
               row.id,
-              formatDates({ startYear: row.year, endYear: row.endYear }),
+              formatDates({
+                startYear: row.year,
+                endYear: row.endYear,
+                approximate: row.approximateDate,
+                endApproximate: row.endApproximateDate,
+              }),
             ] as const,
           ],
     ),
@@ -179,6 +184,7 @@ async function main(): Promise<void> {
                 startYear: row.year,
                 endYear: row.endYear,
                 approximate: row.approximateDate,
+                endApproximate: row.endApproximateDate,
               }),
             ] as const,
           ],

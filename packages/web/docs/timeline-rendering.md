@@ -3,7 +3,7 @@
 ## Canvas and rows
 
 - Keep layout, scales, item mapping and D3 rendering in `widgets/timeline-canvas/`. The lanes share one native horizontal scroll position and a clamped zoom scale. Each visual lane owns its vertical overflow.
-- Use astronomical years for positions (year 0 is 1 BCE) and the shared BCE/CE formatter for display. Months appear in the details. Detail Level and filters control density while zoom changes the time scale.
+- Use astronomical years for positions (year 0 is 1 BCE) and the shared BCE/CE formatter for display. Months appear in the details. The Focus Range and detail panel mark each approximate endpoint with “ca.” in English or “ок.” in Russian. Detail Level and filters control density while zoom changes the time scale.
 - The pipeline greedily packs rows against the full dataset at the Reference Scale. It accounts for label widths in pixels. The web app keeps the assigned row identity and compacts visible rows. [Static row assignment](adr/0007-static-row-assignment-replaces-live-per-render-packing.md)
 - Use literal marker classes for D3 joins and scope selectors to the owning lane’s SVG. CSS Module classes are styling hooks. Mark clicks resolve entities from the loaded dataset and open the detail panel.
 - Period labels pin to the viewport’s left edge until their mark ends, stopping before the next mark in the row. Point labels sit by their dots. `usePinnedLabels` updates changed positions using the browser’s applied scroll offset.

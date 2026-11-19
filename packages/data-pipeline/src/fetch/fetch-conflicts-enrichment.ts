@@ -58,6 +58,8 @@ export interface EnrichedConflict {
   taglineRu?: string;
   // Wikidata's claim precision decides whether month is present (see
   // wikidata-date.ts's MONTH_OR_FINER_PRECISION); never defaulted to January.
+  approximateDate?: true;
+  endApproximateDate?: true;
   year?: number;
   month?: number;
   // With only one resolved date, Output builds a ConflictEvent.
@@ -115,6 +117,10 @@ function isEnrichedConflict(value: unknown): value is EnrichedConflict {
       typeof candidate.tagline === 'string') &&
     (candidate.taglineRu === undefined ||
       typeof candidate.taglineRu === 'string') &&
+    (candidate.approximateDate === undefined ||
+      candidate.approximateDate === true) &&
+    (candidate.endApproximateDate === undefined ||
+      candidate.endApproximateDate === true) &&
     (candidate.year === undefined || typeof candidate.year === 'number') &&
     (candidate.month === undefined || typeof candidate.month === 'number') &&
     (candidate.endYear === undefined ||
@@ -151,6 +157,8 @@ interface EnrichmentFields {
   image?: string;
   tagline?: string;
   taglineRu?: string;
+  approximateDate?: true;
+  endApproximateDate?: true;
   year?: number;
   month?: number;
   endYear?: number;
@@ -212,10 +220,12 @@ export async function fetchConflictsEnrichment(
       entry.countries.push(countryId);
 
     if (entry.year === undefined && row.date?.value) {
+      if (row.dateCirca?.value === 'true') entry.approximateDate = true;
       entry.year = parseIsoYear(row.date.value);
       entry.month = parseMonthIfKnown(row.date.value, row.datePrecision?.value);
     }
     if (entry.endYear === undefined && row.endDate?.value) {
+      if (row.endDateCirca?.value === 'true') entry.endApproximateDate = true;
       entry.endYear = parseIsoYear(row.endDate.value);
       entry.endMonth = parseMonthIfKnown(
         row.endDate.value,
@@ -239,6 +249,8 @@ export async function fetchConflictsEnrichment(
       image: enrichment?.image,
       tagline: enrichment?.tagline,
       taglineRu: enrichment?.taglineRu,
+      approximateDate: enrichment?.approximateDate,
+      endApproximateDate: enrichment?.endApproximateDate,
       year: enrichment?.year,
       month: enrichment?.month,
       endYear: enrichment?.endYear,

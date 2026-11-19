@@ -225,3 +225,14 @@ test('Milestone: description is undefined when absent (no Wikipedia article reso
   });
   expect(content.description).toBeUndefined();
 });
+
+test('shows a qualifier only on the estimated end of a conflict', () => {
+  const content = buildDrawerContent({
+    entityType: 'conflict',
+    entity: {
+      ...koreanWar,
+      period: { start: { year: 1950 }, end: { year: 1953, approximate: true } },
+    },
+  });
+  expect(content.dateLine).toBe('1950 – ca. 1953');
+});

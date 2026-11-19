@@ -192,3 +192,8 @@ test('formatYearMonthRange collapses equal ends to one date and year-only ends t
     '301 – 201 BCE',
   );
 });
+
+test('formats circa independently on the two sides of a BCE range', () => {
+  expect(formatYearRange(-99, -49, undefined, true)).toBe('100 – ca. 50 BCE');
+  expect(formatYearMonth({ year: 0, approximate: true })).toBe('ca. 1 BCE');
+});

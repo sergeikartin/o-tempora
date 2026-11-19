@@ -25,9 +25,9 @@
     "tagline": "aspect of history",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
     "description": "Paper is a thin nonwoven material traditionally made from a combination of milled plant and other textile fibres. The first paper-like plant-based writing sheet was papyrus in Egypt, but the first true papermaking process was documented in China during the Eastern Han period, traditionally attributed to the court official Cai Lun. This plant-puree conglomerate produced by pulp mills and paper mills was used for writing, drawing, and money. During the 8th century, Chinese paper making spread to the Islamic world, replacing papyrus. By the 11th century, papermaking had reached Europe, where it initially coexisted with animal-skin-based parchment before eventually replacing it, alongside wax tablets and thin wooden leaf tablets. By the 13th century, papermaking had been refined, with paper mills in Spain using waterwheels. Later improvements to the papermaking process came in 19th-century Europe with the invention of wood-based papers.",
-    "approximateDate": true,
     "at": {
-      "year": -140
+      "year": -140,
+      "approximate": true
     },
     "slug": "first-paper",
     "row": 0
@@ -204,7 +204,8 @@
     "imageAttribution": "Draceane, via Wikimedia Commons",
     "description": "Ма́чу-Пи́кчу — древний город Империи инков в Южной Америке, находящийся на территории современного государства Перу, в шести километрах от посёлка Агуас-Кальентес. Расположен на вершине горного хребта на высоте 2400 метров над уровнем моря, господствующего над долиной реки Урубамбы. В 2007 году был удостоен звания Нового чуда света.",
     "at": {
-      "year": 1450
+      "year": 1450,
+      "approximate": true
     },
     "slug": "machu-picchu",
     "row": 0
@@ -251,9 +252,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahabharata",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kurukshetra.jpg",
     "description": "«Махабха́рата» — древнеиндийский эпос на санскрите, одно из крупнейших литературных произведений в мире. Состоит из восемнадцати книг (парв) и содержит более 75 000 двустиший (шлок), что в несколько раз длиннее «Илиады» и «Одиссеи» вместе взятых.",
-    "approximateDate": true,
     "at": {
-      "year": 400
+      "year": 400,
+      "approximate": true
     },
     "slug": "mahabharata",
     "row": 0
@@ -341,7 +342,8 @@
         "month": 10
       },
       "end": {
-        "year": 1941
+        "year": 1941,
+        "approximate": true
       }
     },
     "slug": "great-depression",
@@ -457,9 +459,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tekerlek.jpg",
     "imageAttribution": "Vikiçizer, via Wikimedia Commons",
     "description": "Колесо́ — движитель, свободно вращающийся или закреплённый на вращающейся оси диск, позволяющий поставленному на него телу катиться, а не скользить.",
-    "approximateDate": true,
     "at": {
-      "year": -3500
+      "year": -3500,
+      "approximate": true
     },
     "slug": "wheel",
     "row": 0
@@ -524,7 +526,8 @@
     "imageAttribution": "Nina, via Wikimedia Commons",
     "description": "Пирами́да Хео́пса, Великая пирамида Гизы — крупнейшая из египетских пирамид, памятник архитектурного искусства Древнего Египта; единственное из «Семи чудес света», сохранившееся до наших дней, и самое древнее из них: её возраст оценивается примерно в 4500 лет.",
     "at": {
-      "year": -2559
+      "year": -2559,
+      "approximate": true
     },
     "slug": "great-pyramid-of-giza",
     "row": 1
@@ -579,7 +582,8 @@
     "imageAttribution": "Stefan Kühn, via Wikimedia Commons",
     "description": "Стоунхендж, Стонхендж — внесённое в список Всемирного наследия каменное мегалитическое сооружение (кромлех) в графстве Уилтшир (Англия). Находится примерно в 130 км к юго-западу от Лондона, примерно в 3,2 км к западу от Эймсбери и в 13 км к северу от Солсбери.",
     "at": {
-      "year": -3000
+      "year": -3000,
+      "approximate": true
     },
     "slug": "stonehenge",
     "row": 1
@@ -705,9 +709,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Silk%20road%20Kazakhstan.svg",
     "imageAttribution": "User:Kelvin Case\nUser:Turkish Flame\n\nUser:SmallJarsWithGreenLabels, via Wikimedia Commons",
     "description": "Вели́кий шёлковый путь — караванная дорога, связывавшая Восточную Азию со Средиземноморьем в Античности и в Средние века. В первую очередь использовался для вывоза шёлка из Китая, с чем и связано его название. Путь был проложен во II веке до н. э., вёл из Сианя через Ланьчжоу в Дуньхуан, где раздваивался: северная дорога проходила через Турфан, далее пересекала Памир и шла в Фергану и казахские степи, южная — мимо озера Лобнор по южной окраине пустыни Такла-Макан через Яркенд и Памир вела в Бактрию, а оттуда — в Парфию, Индию и на Ближний Восток вплоть до Средиземного моря. Термин введён немецким географом Фердинандом фон Рихтгофеном в 1877 году.",
-    "approximateDate": true,
     "at": {
-      "year": -137
+      "year": -137,
+      "approximate": true
     },
     "slug": "silk-road",
     "row": 1
@@ -741,9 +745,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Divine_Comedy",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dante%20Domenico%20di%20Michelino.jpg",
     "description": "«Боже́ственная коме́дия» — поэма, написанная Данте Алигьери в период приблизительно с 1308 по 1321 год и дающая наиболее широкий синтез средневековой культуры и онтологии мира. Настоящая средневековая энциклопедия научных, политических, философских, моральных, богословских знаний. Признаётся величайшим памятником итальянской и мировой культуры.",
-    "approximateDate": true,
     "at": {
-      "year": 1320
+      "year": 1320,
+      "approximate": true
     },
     "slug": "the-divine-comedy",
     "row": 0
@@ -776,9 +780,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/80%20-%20Machu%20Picchu%20-%20Juin%202009%20-%20edit.2.jpg",
     "imageAttribution": "Martin St-Amant (S23678), via Wikimedia Commons",
     "description": "Импе́рия и́нков — крупнейшее по площади и численности населения индейское раннеклассовое государство в Южной Америке в XI—XVI веках. Занимало территорию от нынешнего Пасто в Колумбии до реки Мауле в Чили. Империя включала в себя полностью территории нынешних Перу, Боливии и Эквадора, частично Чили, Аргентины и Колумбии. Первым европейцем, проникшим в империю инков, был португалец Алежу Гарсия в 1525 году. В 1533 году испанские конкистадоры установили контроль над большей частью империи, а в 1572 году государство инков прекратило своё существование. Есть гипотеза, что последним независимым пристанищем инков является ненайденный город (страна) Пайтити.",
-    "approximateDate": true,
     "at": {
-      "year": 1438
+      "year": 1438,
+      "approximate": true
     },
     "slug": "founding-of-the-inca-empire",
     "row": 2
@@ -992,9 +996,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tunisie%20Carthage%20Ruines%2008.JPG",
     "imageAttribution": "Calips, via Wikimedia Commons",
     "description": "Карфаге́н — древний город (музей), расположенный на восточном берегу озера Бахира на территории современного государства Тунис, близ города Тунис. Карфаген был важнейшим торговым центром древнего Средиземноморья и одним из самых богатых городов античности, самый богатый к 500 году до нашей эры.",
-    "approximateDate": true,
     "at": {
-      "year": -814
+      "year": -814,
+      "approximate": true
     },
     "slug": "carthage",
     "row": 0
@@ -1214,9 +1218,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bamboo%20book%20-%20closed%20-%20UCR.jpg",
     "imageAttribution": "vlasta2, bluefootedbooby on flickr.com, via Wikimedia Commons",
     "description": "«Иску́сство войны́» — самый известный древнекитайский трактат, посвящённый военной стратегии и политике и написанный Сунь-Цзы. Состоит из 13 глав (пянь). Является основополагающим текстом «школы военной философии», главным в её каноническом Семикнижии.",
-    "approximateDate": true,
     "at": {
-      "year": -499
+      "year": -499,
+      "approximate": true
     },
     "slug": "the-art-of-war",
     "row": 2

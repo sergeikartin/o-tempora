@@ -37,12 +37,16 @@ export function entitySpan(
 }
 
 export interface YearSpan {
+  startApproximate?: true;
+  endApproximate?: true;
   startYear: number;
   endYear: number;
 }
 
 export function spanYears(span: Pick<EntitySpan, 'start' | 'end'>): YearSpan {
   return {
+    ...(span.start.approximate && { startApproximate: true as const }),
+    ...(span.end.approximate && { endApproximate: true as const }),
     startYear: yearMonthToFractionalYear(span.start),
     endYear: yearMonthToFractionalYear(span.end),
   };

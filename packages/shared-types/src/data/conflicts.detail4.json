@@ -2823,7 +2823,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gustave%20dore%20crusades%20the%20childrens%20crusade.jpg",
     "description": "The Children's Crusade was a failed popular crusade by European Christians to establish a second Latin Kingdom of Jerusalem in the Holy Land in the early 13th century. Some sources have narrowed the date to 1212.",
     "at": {
-      "year": 1212
+      "year": 1212,
+      "approximate": true
     },
     "slug": "children-s-crusade",
     "row": 5
@@ -5371,7 +5372,8 @@
         "year": 1546
       },
       "end": {
-        "year": 1609
+        "year": 1609,
+        "approximate": true
       }
     },
     "slug": "arauco-war",

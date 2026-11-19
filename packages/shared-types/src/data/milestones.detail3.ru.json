@@ -224,9 +224,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kroisos.%20Circa%20564-53-550-39%20BC.%20AV%20Stater%20%2816mm%2C%2010.76%20g%29.%20Heavy%20series.%20Sardes%20mint.jpg",
     "imageAttribution": "CNG Coins, via Wikimedia Commons",
     "description": "The Croeseid, anciently Kroiseioi stateres, was a type of coin, either in gold or silver, which was minted in Sardis by the king of Lydia Croesus from around 550 BC. Croesus is credited with issuing the first true gold coins with a standardised purity for general circulation, and the world's first bimetallic monetary system.",
-    "approximateDate": true,
     "at": {
-      "year": -549
+      "year": -549,
+      "approximate": true
     },
     "slug": "first-gold-coin",
     "row": 1
@@ -516,9 +516,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sumero-Akkadian%20cuneiform%20syllabary.jpg",
     "imageAttribution": "Gire 3pich2005, via Wikimedia Commons",
     "description": "Кли́нопись — наиболее ранняя из известных систем письма. Знаки и особенности этого письма во многом определил писчий материал — глиняная табличка, на которой, пока глина ещё мягкая, деревянной палочкой для письма или заострённым тростником выдавливали знаки; отсюда и возникли «клинообразные» штрихи.",
-    "approximateDate": true,
     "at": {
-      "year": -3200
+      "year": -3200,
+      "approximate": true
     },
     "slug": "cuneiform",
     "row": 1
@@ -748,7 +748,8 @@
     "imageAttribution": "NikonZ7II, via Wikimedia Commons",
     "description": "Пантео́н — так называемый «Храм всех богов», памятник истории и архитектуры древнего Рима, построенный между 118 и 128 годами н. э.",
     "at": {
-      "year": 128
+      "year": 128,
+      "approximate": true
     },
     "slug": "pantheon",
     "row": 0
@@ -814,9 +815,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/MS%20Indic%2037%2C%20Isa%20upanisad.%20Wellcome%20L0027330.jpg",
     "imageAttribution": "https://wellcomeimages.org/indexplus/obf_images/01/64/805ea5d825de7673594bd1fea9ec.jpg\n\nGallery: https://wellcomeimages.org/indexplus/image/L0027330.html\nWellcome Collection gallery (2018-03-31): https://wellcomecollection.org/works/q3ejsjwy CC-BY-4.0, via Wikimedia Commons",
     "description": "Упаниша́ды — древнеиндийские трактаты религиозно-философского характера. Являются дополнением Вед и относятся к священным писаниям индуизма категории шрути. В них в основном обсуждается философия, медитация и природа Бога. Считается, что в Упанишадах изложена основная суть Вед, поэтому их также называют «веданта», и они являются основой ведантического индуизма. В Упанишадах главным образом описывается безличный Брахман.",
-    "approximateDate": true,
     "at": {
-      "year": -699
+      "year": -699,
+      "approximate": true
     },
     "slug": "upanishads",
     "row": 1
@@ -865,9 +866,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mali_Empire",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Catalan%20Atlas%20BNF%20Sheet%206%20Western%20Sahara.jpg",
     "description": "Мали́ — государственное образование в северо-западной Африке, к югу от пустыни Сахара, существовавшее в XIII—XV веках. По сложившейся традиции называется империей. Сложилось под началом народности малинке, ранее находившейся в зависимости от империи Ганы и принявшей мусульманскую религию.",
-    "approximateDate": true,
     "at": {
-      "year": 1235
+      "year": 1235,
+      "approximate": true
     },
     "slug": "founding-of-the-mali-empire",
     "row": 2
@@ -1356,9 +1357,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/G%C3%B6bekli%20Tepe%2C%20Urfa.jpg",
     "imageAttribution": "Teomancimit, via Wikimedia Commons",
     "description": "Гёбекли́-Тепе́ — археологический памятник эпохи докерамического неолита, мегалитический культовый комплекс, расположенный в 8 километрах к северо-востоку от города Шанлыурфа, в 2,5 километрах от деревни Оренджик ила Шанлыурфа в регионе Юго-Восточная Анатолия (Турция).",
-    "approximateDate": true,
     "at": {
-      "year": -9500
+      "year": -9500,
+      "approximate": true
     },
     "slug": "gobekli-tepe",
     "row": 0
@@ -1373,7 +1374,8 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Akkadian_Empire",
     "description": "Акка́д — государство, существовавшее в XXIV—XXII веках до н. э., а также древняя область в северной части Южной Месопотамии, на территории современного Ирака. Столица — город Аккаде.",
     "at": {
-      "year": -2333
+      "year": -2333,
+      "approximate": true
     },
     "slug": "founding-of-the-akkadian-empire",
     "row": 1
@@ -1389,9 +1391,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gezer%20calendar%20close%20up.jpg",
     "imageAttribution": "oncenawhile, via Wikimedia Commons",
     "description": "Финики́йское письмо́ — одна из первых засвидетельствованных в истории человечества систем фонетического письма. Появилась около X века до н. э. и стала родоначальницей большинства современных алфавитных и некоторых других систем письма.",
-    "approximateDate": true,
     "at": {
-      "year": -1050
+      "year": -1050,
+      "approximate": true
     },
     "slug": "phoenician-script",
     "row": 0
@@ -1428,9 +1430,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vista%20completa%20de%20Tenochtitl%C3%A1n.jpg",
     "imageAttribution": "thomas kole, via Wikimedia Commons",
     "description": "Теночтитла́н — крупный ацтекский альтепетль (город-государство), находившийся на месте современного города Мехико. Город основан примерно в 1325 году на острове посреди солёного озера Тескоко и оставался столицей растущей Ацтекской империи в XV веке. На пике своего развития город был крупнейшим в доколумбовых Америках. В 1521 году испанские конкистадоры под руководством Эрнана Кортеса разрушили его. Город превратился в cabecera вице-королевства Новой Испании.",
-    "approximateDate": true,
     "at": {
-      "year": 1325
+      "year": 1325,
+      "approximate": true
     },
     "slug": "tenochtitlan",
     "row": 1
@@ -1827,9 +1829,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NAMA%20Machine%20d%27Anticyth%C3%A8re%201.jpg",
     "imageAttribution": "No machine-readable author provided. Marsyas assumed (based on copyright claims)., via Wikimedia Commons",
     "description": "Антиките́рский механи́зм — механическое устройство, поднятое в 1901 году с затонувшего античного судна. Остатки судна и его груз обнаружены греческим водолазом 4 апреля 1900 года недалеко от греческого острова Андики́тира. Механизм датируется приблизительно второй половиной II века до нашей эры. Хранится в Национальном археологическом музее в Афинах.",
-    "approximateDate": true,
     "at": {
-      "year": -150
+      "year": -150,
+      "approximate": true
     },
     "slug": "antikythera-mechanism",
     "row": 3
@@ -2076,7 +2078,8 @@
         "year": 1933
       },
       "end": {
-        "year": 1939
+        "year": 1939,
+        "approximate": true
       }
     },
     "slug": "new-deal",
@@ -2215,7 +2218,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Title%20page%20of%20Sir%20Henry%20Billingsley%27s%20first%20English%20version%20of%20Euclid%27s%20Elements%2C%201570%20%28560x900%29.jpg",
     "description": "«Нача́ла» — главный труд Евклида, написанный около 300 года до н. э. и посвящённый систематическому построению геометрии и теории чисел. Считается вершиной античной математики, итогом её трёхсотлетнего развития и основой для последующих исследований. «Начала», наряду с двумя трудами Автолика из Питаны — древнейшее из дошедших до современности античных математических сочинений; все труды предшественников Евклида известны только по упоминаниям и цитатам позднейших комментаторов.",
     "at": {
-      "year": -300
+      "year": -300,
+      "approximate": true
     },
     "slug": "elements",
     "row": 1
@@ -2297,7 +2301,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Giorgione%20-%20Adoration%20of%20the%20Shepherds%20-%20National%20Gallery%20of%20Art.jpg",
     "description": "Рождение Иисуса Христа описано в Новом Завете. Евангельские рассказы связывают с его рождением события от Благовещения и тайны непорочного зачатия до поклонения волхвов. С разных сторон эти события описаны в Евангелиях от Матфея и от Луки. В память рождения Иисуса в христианстве празднуется Рождество Христово.",
     "at": {
-      "year": -4
+      "year": -4,
+      "approximate": true
     },
     "slug": "nativity-of-jesus",
     "row": 0

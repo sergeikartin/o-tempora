@@ -21,6 +21,7 @@
   "zoomInAriaLabel": "Zoom in",
   "minimapAriaLabel": "Timeline density minimap",
   "scrubberAriaLabel": "Timeline position scrubber",
+  "circaDate": "ca. {date}",
   "yearBce": "{year} BCE",
   "closeAriaLabel": "Close",
   "closeFiltersAriaLabel": "Close filters",

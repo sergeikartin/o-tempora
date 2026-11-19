@@ -52,6 +52,8 @@ export interface TaggedMilestone {
   endYear?: number;
   endMonth?: number;
   approximateDate?: true;
+  endApproximateDate?: true;
+
   sitelinks: number;
   fameScore: number;
   category: MilestoneCategory;
@@ -73,6 +75,8 @@ export interface TaggedConflict {
   month?: number;
   endYear?: number;
   endMonth?: number;
+  approximateDate?: true;
+  endApproximateDate?: true;
   sitelinks: number;
   fameScore: number;
   category: ConflictCategory;
@@ -227,6 +231,8 @@ export function transformConflicts(): TaggedConflict[] {
       taglineRu: conflict.taglineRu,
       description: wikipediaExtracts[conflict.id],
       descriptionRu: wikipediaExtractsRu[conflict.id],
+      approximateDate: conflict.approximateDate,
+      endApproximateDate: conflict.endApproximateDate,
       year: conflict.year,
       month: conflict.month,
       endYear: conflict.endYear,
@@ -287,6 +293,7 @@ export function transformMilestones(): TaggedMilestone[] {
       endYear: milestone.endYear,
       endMonth: milestone.endMonth,
       approximateDate: milestone.approximateDate,
+      endApproximateDate: milestone.endApproximateDate,
       sitelinks: milestone.fameSitelinks ?? milestone.sitelinks ?? 0,
       pageviews: pageviews[milestone.id] ?? 0,
       category,

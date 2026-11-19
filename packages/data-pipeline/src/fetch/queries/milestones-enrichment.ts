@@ -81,8 +81,11 @@ export function buildMilestonesEnrichmentQuery(ids: string[]): string {
   const precisionVars = DATE_PROPERTIES.map(
     (property) => `?${dateVar(property)}Precision`,
   ).join(', ');
+  const statementVars = DATE_PROPERTIES.map(
+    (property) => `?${dateVar(property)}Statement`,
+  ).join(', ');
   return `
-SELECT ?event ?sitelinks ${articleVars} ?country ?image ?nameEn ?nameRu ?tagline ?taglineRu ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
+SELECT ?event ?sitelinks ${articleVars} ?country ?image ?nameEn ?nameRu ?tagline ?taglineRu ?date ?datePrecision ?endDate ?endDatePrecision ?dateCirca ?endDateCirca WHERE {
   VALUES ?event { ${values} }
   ?event wikibase:sitelinks ?sitelinks .
 ${articleOptionalBlocks()}
@@ -95,12 +98,15 @@ ${articleOptionalBlocks()}
 ${dateOptionalBlocks()}
   BIND(COALESCE(${timeVars}) AS ?date)
   BIND(COALESCE(${precisionVars}) AS ?datePrecision)
+  BIND(COALESCE(${statementVars}) AS ?dateStatement)
+  BIND(IF(BOUND(?dateStatement), EXISTS { ?dateStatement pq:P1480 wd:Q5727902 }, false) AS ?dateCirca)
   OPTIONAL {
     ?event p:P582 ?endDateStatement .
     ?endDateStatement a wikibase:BestRank .
     ?endDateStatement psv:P582 ?endDateValue .
     ?endDateValue wikibase:timeValue ?endDate ;
                    wikibase:timePrecision ?endDatePrecision .
+    BIND(EXISTS { ?endDateStatement pq:P1480 wd:Q5727902 } AS ?endDateCirca)
   }
 }
 ORDER BY ?event ?date ?endDate

@@ -25,9 +25,9 @@
     "tagline": "aspect of history",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_paper",
     "description": "Paper is a thin nonwoven material traditionally made from a combination of milled plant and other textile fibres. The first paper-like plant-based writing sheet was papyrus in Egypt, but the first true papermaking process was documented in China during the Eastern Han period, traditionally attributed to the court official Cai Lun. This plant-puree conglomerate produced by pulp mills and paper mills was used for writing, drawing, and money. During the 8th century, Chinese paper making spread to the Islamic world, replacing papyrus. By the 11th century, papermaking had reached Europe, where it initially coexisted with animal-skin-based parchment before eventually replacing it, alongside wax tablets and thin wooden leaf tablets. By the 13th century, papermaking had been refined, with paper mills in Spain using waterwheels. Later improvements to the papermaking process came in 19th-century Europe with the invention of wood-based papers.",
-    "approximateDate": true,
     "at": {
-      "year": -140
+      "year": -140,
+      "approximate": true
     },
     "slug": "first-paper",
     "row": 0
@@ -204,7 +204,8 @@
     "imageAttribution": "Draceane, via Wikimedia Commons",
     "description": "Machu Picchu is a 15th-century Inca citadel located in the Eastern Cordillera of southern Peru on a mountain ridge at 2,430 meters (7,970 ft). It is situated in the Machupicchu District of Urubamba Province about 80 kilometers northwest of Cusco, above the Sacred Valley and along the Urubamba River, which forms a deep canyon with a subtropical mountain climate.",
     "at": {
-      "year": 1450
+      "year": 1450,
+      "approximate": true
     },
     "slug": "machu-picchu",
     "row": 0
@@ -251,9 +252,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahabharata",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kurukshetra.jpg",
     "description": "The Mahābhārata is one of the two major Sanskrit epics of ancient India revered in Hinduism, the other being the Ramayana. Both are considered smṛti and itihasa texts. The Mahābhārata narrates the events around the Kurukshetra War, while also discussing philosophical concepts, such as the four \"goals of life\" or puruṣārtha. A principal element of the Mahābhārata is the Bhagavad Gita, which is a prominent sacred text in Hindu traditions.",
-    "approximateDate": true,
     "at": {
-      "year": 400
+      "year": 400,
+      "approximate": true
     },
     "slug": "mahabharata",
     "row": 0
@@ -341,7 +342,8 @@
         "month": 10
       },
       "end": {
-        "year": 1941
+        "year": 1941,
+        "approximate": true
       }
     },
     "slug": "great-depression",
@@ -457,9 +459,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tekerlek.jpg",
     "imageAttribution": "Vikiçizer, via Wikimedia Commons",
     "description": "A wheel is a rotating component intended to turn on an axle bearing. The wheel is one of the key components of the wheel and axle, which is one of the six simple machines. Wheels, in conjunction with axles, allow heavy objects to be moved easily, facilitating transportation, supporting loads, and performing work in machines. Wheels are also used for other purposes, such as a ship's wheel, steering wheel, potter's wheel, and flywheel.",
-    "approximateDate": true,
     "at": {
-      "year": -3500
+      "year": -3500,
+      "approximate": true
     },
     "slug": "wheel",
     "row": 0
@@ -524,7 +526,8 @@
     "imageAttribution": "Nina, via Wikimedia Commons",
     "description": "The Great Pyramid of Giza is the largest of the Egyptian pyramids and the most famous landmark of the Giza pyramid complex in Giza, Egypt. It is the oldest of the Seven Wonders of the Ancient World, and the only wonder that has remained largely intact. The Great Pyramid served as the tomb of Egyptian Pharaoh Khufu (\"Cheops\"), who ruled during the Fourth Dynasty of the Old Kingdom. It was built c. 2600 BC over a period of about 26 years.",
     "at": {
-      "year": -2559
+      "year": -2559,
+      "approximate": true
     },
     "slug": "great-pyramid-of-giza",
     "row": 1
@@ -579,7 +582,8 @@
     "imageAttribution": "Stefan Kühn, via Wikimedia Commons",
     "description": "Stonehenge is a prehistoric megalithic structure on Salisbury Plain in Wiltshire, England, two miles (3 km) west of Amesbury. It consists of an outer ring of vertical sarsen standing stones, each around 13 feet (4.0 m) high, seven feet (2.1 m) wide, and weighing around 25 tons, topped by connecting horizontal lintel stones which are held in place with mortise and tenon joints—a feature unique among contemporary monuments. Inside is a ring of smaller bluestones. Inside these are free-standing trilithons: two bulkier vertical sarsens joined by a single lintel. The whole monument, now in ruins, is aligned towards the sunrise on the summer solstice and sunset on the winter solstice. The stones are set within earthworks in the middle of the densest complex of Neolithic and Bronze Age monuments in England, including several hundred tumuli.",
     "at": {
-      "year": -3000
+      "year": -3000,
+      "approximate": true
     },
     "slug": "stonehenge",
     "row": 1
@@ -705,9 +709,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Silk%20road%20Kazakhstan.svg",
     "imageAttribution": "User:Kelvin Case\nUser:Turkish Flame\n\nUser:SmallJarsWithGreenLabels, via Wikimedia Commons",
     "description": "The Silk Road was a network of Asian trade routes active from the second century BCE until the mid-15th century. Spanning over 6,400 km (4,000 mi) on land, it played a central role in facilitating economic, cultural, political, and religious interactions between the Eastern and Western worlds. The name \"Silk Road\" was coined in the late 19th century, but some 20th- and 21st-century historians instead prefer the term Silk Routes, on the grounds that it more accurately describes the intricate web of land and sea routes connecting Central, East, South, Southeast, and West Asia as well as East Africa and Southern Europe. In fact, some scholars criticise or even dismiss the idea of silk roads and call for a new definition or alternate term. According to them, the literature using this term has \"privileged the sedentary and literate empires at either end of Eurasia\" thereby ignoring the contributions of steppe nomads. In addition, the classic definition sidelines prominent civilisations such as India and Iran.",
-    "approximateDate": true,
     "at": {
-      "year": -137
+      "year": -137,
+      "approximate": true
     },
     "slug": "silk-road",
     "row": 1
@@ -741,9 +745,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Divine_Comedy",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dante%20Domenico%20di%20Michelino.jpg",
     "description": "The Divine Comedy is an Italian narrative poem by Dante Alighieri, begun c. 1308 and completed c. 1321, shortly before the author's death. It is widely considered the pre-eminent work in Italian literature and one of the greatest works of Western literature. The poem's imaginative vision of the afterlife is representative of the medieval worldview as it existed in the Latin Church by the 14th century. It helped establish the Tuscan language, in which it is written, as the standardized Italian language. It is divided into three parts: Inferno, Purgatorio, and Paradiso.",
-    "approximateDate": true,
     "at": {
-      "year": 1320
+      "year": 1320,
+      "approximate": true
     },
     "slug": "the-divine-comedy",
     "row": 0
@@ -776,9 +780,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/80%20-%20Machu%20Picchu%20-%20Juin%202009%20-%20edit.2.jpg",
     "imageAttribution": "Martin St-Amant (S23678), via Wikimedia Commons",
     "description": "The Inca Empire, officially known as the Realm of the Four Parts, was the largest empire in pre-Columbian America. The administrative, political, and military center of the empire was in the city of Cusco. The Inca civilisation rose from the Peruvian highlands sometime in the early 13th century. The Portuguese explorer Aleixo Garcia was the first European to reach the Inca Empire in 1524. Later, in 1532, the Spanish began the conquest of the Inca Empire, and by 1572 the last Inca state was fully conquered.",
-    "approximateDate": true,
     "at": {
-      "year": 1438
+      "year": 1438,
+      "approximate": true
     },
     "slug": "founding-of-the-inca-empire",
     "row": 2
@@ -992,9 +996,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tunisie%20Carthage%20Ruines%2008.JPG",
     "imageAttribution": "Calips, via Wikimedia Commons",
     "description": "Carthage was an ancient city in northern Africa founded by the legendary Phoenician queen Dido on the eastern side of the Lake of Tunis in what is now Tunisia. Carthage was one of the most important trading hubs of the Ancient Mediterranean and one of the most affluent cities of the classical world. It became the capital city of the civilization of Ancient Carthage and later Roman Carthage.",
-    "approximateDate": true,
     "at": {
-      "year": -814
+      "year": -814,
+      "approximate": true
     },
     "slug": "carthage",
     "row": 0
@@ -1214,9 +1218,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bamboo%20book%20-%20closed%20-%20UCR.jpg",
     "imageAttribution": "vlasta2, bluefootedbooby on flickr.com, via Wikimedia Commons",
     "description": "The Art of War is an ancient Chinese military treatise dating from the late Spring and Autumn period. The work, which is attributed to the ancient Chinese military strategist Sun Tzu, is composed of 13 chapters. Each chapter is devoted to a different set of skills or arts related to warfare, finance and how they apply to military strategy and tactics. For almost 1,500 years, it was the lead text in an anthology that was formalized as the Seven Military Classics by Emperor Shenzong of Song in 1080. The Art of War remains one of the most influential works on strategy of all time and has shaped both East Asian and Western military theory and thinking.",
-    "approximateDate": true,
     "at": {
-      "year": -499
+      "year": -499,
+      "approximate": true
     },
     "slug": "the-art-of-war",
     "row": 2

@@ -1351,6 +1351,8 @@ export function TimelineCanvas({
       }
     >
       <FocusRange
+        startApproximate={focusYears?.startApproximate}
+        endApproximate={focusYears?.endApproximate}
         startYear={focusYears?.startYear ?? viewportStartYear}
         endYear={focusYears?.endYear ?? viewportEndYear}
       />

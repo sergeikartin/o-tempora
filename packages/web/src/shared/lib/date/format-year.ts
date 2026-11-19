@@ -14,11 +14,18 @@ export function formatYear(year: number): string {
 
 // When both ends are BCE the era suffix is stated once, on the later end
 // ("300 – 200 BCE"), so a range stays short enough to set at display size.
-export function formatYearRange(startYear: number, endYear: number): string {
-  if (isBceYear(startYear) && isBceYear(endYear)) {
-    return `${1 - startYear} – ${formatYear(endYear)}`;
-  }
-  return `${formatYear(startYear)} – ${formatYear(endYear)}`;
+export function formatYearRange(
+  startYear: number,
+  endYear: number,
+  startApproximate?: true,
+  endApproximate?: true,
+): string {
+  const start =
+    isBceYear(startYear) && isBceYear(endYear)
+      ? String(1 - startYear)
+      : formatYear(startYear);
+  const end = formatYear(endYear);
+  return `${startApproximate ? m.circaDate({ date: start }) : start} – ${endApproximate ? m.circaDate({ date: end }) : end}`;
 }
 
 // Month names come from Intl in the active locale, so the Russian UI never
@@ -34,14 +41,20 @@ function monthName(month: number, width: 'long' | 'short'): string {
 // An absent month means the source is only certain to the year (see
 // shared-types's YearMonth), so this falls back to formatYear alone rather
 // than guessing.
-export function formatYearMonth(yearMonth: YearMonth): string {
-  if (yearMonth.month === undefined) return formatYear(yearMonth.year);
-  return `${monthName(yearMonth.month, 'long')} ${formatYear(yearMonth.year)}`;
+export function formatYearMonth(
+  yearMonth: YearMonth,
+  width: 'long' | 'short' = 'long',
+): string {
+  const year = formatYear(yearMonth.year);
+  const date =
+    yearMonth.month === undefined
+      ? year
+      : `${monthName(yearMonth.month, width)} ${year}`;
+  return yearMonth.approximate ? m.circaDate({ date }) : date;
 }
 
 export function formatYearMonthShort(yearMonth: YearMonth): string {
-  if (yearMonth.month === undefined) return formatYear(yearMonth.year);
-  return `${monthName(yearMonth.month, 'short')} ${formatYear(yearMonth.year)}`;
+  return formatYearMonth(yearMonth, 'short');
 }
 
 /**
@@ -50,9 +63,15 @@ export function formatYearMonthShort(yearMonth: YearMonth): string {
  * date when the ends coincide.
  */
 export function formatYearMonthRange(start: YearMonth, end: YearMonth): string {
-  if (start.year === end.year && start.month === end.month) {
+  if (
+    start.year === end.year &&
+    start.month === end.month &&
+    start.approximate === end.approximate
+  ) {
     return formatYearMonthShort(start);
   }
+  if (start.approximate || end.approximate)
+    return `${formatYearMonthShort(start)} – ${formatYearMonthShort(end)}`;
   if (
     start.year === end.year &&
     start.month !== undefined &&

@@ -280,7 +280,8 @@
         "de": "https://de.wikipedia.org/wiki/Brahmasphutasiddhanta",
         "ar": "https://ar.wikipedia.org/wiki/%D8%B3%D9%8A%D9%86%D8%AF%D9%87%D8%A7%D9%86%D8%AA%D8%A7"
       },
-      "countries": []
+      "countries": [],
+      "approximateDate": true
     },
     {
       "id": "Q60535862",
@@ -461,7 +462,8 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BF%D0%B8%D1%80%D1%83%D1%81_%D0%AD%D0%B1%D0%B5%D1%80%D1%81%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ebers7766.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Ebers7766.jpg",
+      "approximateDate": true
     },
     {
       "id": "Q842363",
@@ -2719,7 +2721,8 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9A%D0%BD%D0%B8%D0%B3%D0%B0_%D1%87%D1%83%D0%B4%D0%B5%D1%81_%D1%81%D0%B2%D0%B5%D1%82%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dettaglio%20fr2810%20folio%201r.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Dettaglio%20fr2810%20folio%201r.jpg",
+      "approximateDate": true
     },
     {
       "id": "Q179430",
@@ -4156,7 +4159,8 @@
       "countries": [
         "Q30"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/New%20Deal%20collage.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/New%20Deal%20collage.jpg",
+      "endApproximateDate": true
     },
     {
       "id": "Q129053",
@@ -4808,7 +4812,8 @@
         "Q30",
         "Q28"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lange-MigrantMother02.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Lange-MigrantMother02.jpg",
+      "endApproximateDate": true
     },
     {
       "id": "Q1194052",
@@ -5504,7 +5509,8 @@
       "countries": [
         "Q79"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kheops-Pyramid.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Kheops-Pyramid.jpg",
+      "approximateDate": true
     },
     {
       "id": "Q12506",
@@ -7194,7 +7200,8 @@
       "countries": [
         "Q145"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stonehenge%20Total.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Stonehenge%20Total.jpg",
+      "approximateDate": true
     },
     {
       "id": "Q42798",
@@ -7266,7 +7273,8 @@
       "countries": [
         "Q419"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%202023%20%28012%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%202023%20%28012%29.jpg",
+      "approximateDate": true
     },
     {
       "id": "Q5859",
@@ -7337,7 +7345,8 @@
       "countries": [
         "Q38"
       ],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pantheon%20%28Rome%29%20-%20Right%20side%20and%20front.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Pantheon%20%28Rome%29%20-%20Right%20side%20and%20front.jpg",
+      "approximateDate": true
     },
     {
       "id": "Q2981",
@@ -7864,7 +7873,8 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%B0_(%D0%95%D0%B2%D0%BA%D0%BB%D0%B8%D0%B4)"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Title%20page%20of%20Sir%20Henry%20Billingsley%27s%20first%20English%20version%20of%20Euclid%27s%20Elements%2C%201570%20%28560x900%29.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Title%20page%20of%20Sir%20Henry%20Billingsley%27s%20first%20English%20version%20of%20Euclid%27s%20Elements%2C%201570%20%28560x900%29.jpg",
+      "approximateDate": true
     },
     {
       "id": "Q163310",
@@ -9093,7 +9103,8 @@
         "ru": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5_%D0%98%D0%B8%D1%81%D1%83%D1%81%D0%B0_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%B0"
       },
       "countries": [],
-      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giorgione%20-%20Adoration%20of%20the%20Shepherds%20-%20National%20Gallery%20of%20Art.jpg"
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Giorgione%20-%20Adoration%20of%20the%20Shepherds%20-%20National%20Gallery%20of%20Art.jpg",
+      "approximateDate": true
     },
     {
       "id": "Q51636",
@@ -10708,7 +10719,8 @@
         "ar": "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A5%D9%85%D8%A8%D8%B1%D8%A7%D8%B7%D9%88%D8%B1%D9%8A%D8%A9_%D8%A7%D9%84%D8%A3%D9%83%D8%AF%D9%8A%D8%A9",
         "ru": "https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%BA%D0%B0%D0%B4"
       },
-      "countries": []
+      "countries": [],
+      "approximateDate": true
     },
     {
       "id": "Q26752",

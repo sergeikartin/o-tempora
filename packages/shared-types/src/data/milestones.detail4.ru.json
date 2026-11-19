@@ -595,9 +595,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Nalanda%20The%20Great%20Stupa.jpg",
     "imageAttribution": "Uphogaphy, via Wikimedia Commons",
     "description": "Нала́нда — буддийский университет и монастырский комплекс, существовавший в V—XII веках на севере Индии, один из крупнейших образовательных центров своего времени, в котором работали, преподавали и обучались многие выдающиеся буддийские философы из разных стран, и куда съезжались многочисленные паломники,древнейший университет в мире. В настоящее время руины Наланды — исторический памятник в индийской провинции Бихар, в 90 км к юго-востоку от Патны, древней столицы Индии.",
-    "approximateDate": true,
     "at": {
-      "year": 450
+      "year": 450,
+      "approximate": true
     },
     "slug": "nalanda-mahavihara",
     "row": 1
@@ -652,9 +652,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Great-Zimbabwe-6.jpg",
     "description": "Большой Зимбабве — название, данное каменным руинам древнего южноафриканского города, расположенного в провинции Масвинго государства Зимбабве.",
-    "approximateDate": true,
     "at": {
-      "year": 1250
+      "year": 1250,
+      "approximate": true
     },
     "slug": "great-zimbabwe",
     "row": 3
@@ -1507,9 +1507,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sakkara%2001.jpg",
     "imageAttribution": "Olaf Tausch, via Wikimedia Commons",
     "description": "Ступенчатая пирамида в Саккаре — древнейшее из сохранившихся в мире крупных каменных зданий. Построено зодчим Имхотепом в Саккаре для погребения фараона Джосера около 2650 года до н. э.",
-    "approximateDate": true,
     "at": {
-      "year": -2670
+      "year": -2670,
+      "approximate": true
     },
     "slug": "pyramid-of-djoser",
     "row": 1
@@ -2621,9 +2621,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Trans-Saharan_trade",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/French%20language%20map%20of%20Central%20and%20Eastern%20Africa%201862.jpg",
     "description": "Транссахарская торговля — сеть торговых операций, охватывающих большую часть Западной и Северной Африки. Торговля осуществлялась по караванным путям до середины XX в. В мирное время переход через Сахару и обратно занимал примерно 18 месяцев.",
-    "approximateDate": true,
     "at": {
-      "year": 300
+      "year": 300,
+      "approximate": true
     },
     "slug": "trans-saharan-trade",
     "row": 1
@@ -2658,9 +2658,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Founding_of_Rome",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lupa%20Capitolina%2C%20Rome.jpg",
     "description": "Ро́мул и Рем — легендарные братья-близнецы, основатели города Рима. По преданию, они принадлежали к роду царей Альба-Лонги и были детьми весталки Реи Сильвии и бога Марса. Родились в результате тайной и противозаконной связи, были брошены на берегу реки, где их выкормила волчица. Повзрослев, Ромул и Рем вернули власть над родным городом своему деду, царю Нумитору, а сами решили основать новую общину. Они не договорились о месте для города и о разделе власти, а потому рассорились; в результате Ромул убил Рема. После этого Ромул основал город, названный в его честь Римом, и стал первым его царём. При нём был учреждён сенат, граждане были поделены на патрициев и плебеев, на патронов и клиентов, были сформированы первые легионы. Чтобы расширить общину, Ромул раздавал гражданство бродягам, преступникам и беглым рабам, организовал похищение сабинянок. Несколько лет его соправителем был сабинянин Тит Татий. Ромул одержал ряд военных побед и подчинил Риму соседние общины. После долгого правления он, согласно мифам, вознёсся на небо или был убит сенаторами.",
-    "approximateDate": true,
     "at": {
-      "year": -753
+      "year": -753,
+      "approximate": true
     },
     "slug": "founding-of-rome",
     "row": 0
@@ -2888,9 +2888,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Narmer_Palette",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NarmerPalette%20ROM.jpg",
     "description": "Пале́тка Нарме́ра — алевролитовая пластина (палетка) культового назначения, которая использовалась для ритуального растирания красок. Датируется концом IV тыс. до н. э. На обеих сторонах палетки имеются рельефные изображения фараона Нармера. Палетка Нармера исполнена в виде победной стелы и повествует о триумфальной победе Верхнего Египта над Нижним. Это подарок царя Первой или Нулевой династии Иераконпольскому храму, который увековечивал его победу над мятежными ливийскими номами в Западной дельте Нила. У археологов есть предположение, что на ней изображена победа армии Нармера над городом Уашем.",
-    "approximateDate": true,
     "at": {
-      "year": -3100
+      "year": -3100,
+      "approximate": true
     },
     "slug": "narmer-palette",
     "row": 1
@@ -3053,7 +3053,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dettaglio%20fr2810%20folio%201r.jpg",
     "description": "«Книга чудес света» (также известна под названиями «Путешествия Марко Поло», «Книга о разнообразии мира», «Книга Марко Поло» — описание путешествий Марко Поло по Азии и Африке, совершённых в период между 1276 и 1291 годами, которые с его слов на старофранцузском языке записал Рустикелло из Пизы.",
     "at": {
-      "year": 1298
+      "year": 1298,
+      "approximate": true
     },
     "slug": "the-travels-of-marco-polo",
     "row": 1
@@ -3217,9 +3218,9 @@
     "tagline": "aspect of history",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_Madagascar",
     "description": "История Мадагаскара ведет своё начало с заселения острова австронезийскими колонистами, продолжается историей заселения острова различными народами, созданием королевства Имерина, колониальным периодом и созданием республики Мадагаскар.",
-    "approximateDate": true,
     "at": {
-      "year": 500
+      "year": 500,
+      "approximate": true
     },
     "slug": "settlement-of-madagascar",
     "row": 1
@@ -3235,9 +3236,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ashoka%20Lauriya%20Areraj%20inscription.jpg",
     "imageAttribution": "Sachin kumar tiwary, via Wikimedia Commons",
     "description": "Надписи (эдикты) Ашоки — тридцать три сохранившиеся до нашего времени надписи, которые по приказу индийского царя Ашоки были нанесены в III веке до н. э. на стены пещер и каменные колонны, специально воздвигнутые для этой цели. Это наиболее ранний сохранившийся в Индии памятник письменности и первое достоверное свидетельство существования буддизма.",
-    "approximateDate": true,
     "at": {
-      "year": -260
+      "year": -260,
+      "approximate": true
     },
     "slug": "edicts-of-ashoka",
     "row": 1
@@ -3655,7 +3656,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ebers7766.jpg",
     "description": "Папирус Эберса — древнеегипетское медицинское сочинение (трактат), написанное иератическим письмом на папирусе. Наряду с папирусом Эдвина Смита, относится к старейшим из известных сохранившихся рукописей и, в особенности, текстов медицинского содержания. Содержит обширный список различных болезней, их симптомов, диагностику и методы лечения. В нём имеется, в частности, описание приготовления лекарств и методов лечения в областях травматологии, борьбы с паразитами, стоматологии, а также по гинекологии и контрацепции.",
     "at": {
-      "year": -1599
+      "year": -1599,
+      "approximate": true
     },
     "slug": "ebers-papyrus",
     "row": 2
@@ -4070,9 +4072,9 @@
     "tagline": "history and demographics of Buddhism in Sri Lanka, formerly Ceylon",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_Sri_Lanka",
     "description": "Theravada Buddhism is the largest and official religion of Sri Lanka, practiced by 69.8% of the population as of 2012. Practitioners of Sri Lankan Buddhism can be found amongst the majority Sinhalese population as well as among the minority ethnic groups, most notably the Sri Lankan Chinese. Sri Lankan Buddhists share many similarities with Southeast Asian Buddhists, specifically Thai Buddhists and Burmese Buddhists due to traditional and cultural exchange. Sri Lanka is one of only five countries in the world with a Theravada Buddhist majority, and others are Thailand, Cambodia, Laos and Myanmar.",
-    "approximateDate": true,
     "at": {
-      "year": -249
+      "year": -249,
+      "approximate": true
     },
     "slug": "buddhism-in-sri-lanka",
     "row": 3
@@ -4301,9 +4303,9 @@
     "tagline": "тип книгопечатания",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Movable_type",
     "description": "Ручной набор — способ набора текста, при котором строки подбираются вручную из металлических или деревянных литер и пробельного материала .",
-    "approximateDate": true,
     "at": {
-      "year": 1040
+      "year": 1040,
+      "approximate": true
     },
     "slug": "movable-type",
     "row": 1
@@ -4776,7 +4778,8 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Br%C4%81hmasphu%E1%B9%ADasiddh%C4%81nta",
     "description": "The Brāhma-sphuṭa-siddhānta is a main work of Brahmagupta, written c. 628. This text of mathematical astronomy contains significant mathematical content, including the first good understanding of the role of zero, rules for manipulating both negative and positive numbers, a method for computing square roots, methods of solving linear and quadratic equations, rules for summing series, Brahmagupta's identity, and Brahmagupta theorem.",
     "at": {
-      "year": 628
+      "year": 628,
+      "approximate": true
     },
     "slug": "brahmasphutasiddhanta",
     "row": 6
@@ -4874,9 +4877,9 @@
     "tagline": "overview role of Buddhism in China",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Buddhism_in_China",
     "description": "Вошёл в так называемый комплекс Сань цзяо — три основных религии Китая: конфуцианство, буддизм и даосизм.",
-    "approximateDate": true,
     "at": {
-      "year": 67
+      "year": 67,
+      "approximate": true
     },
     "slug": "buddhism-in-china",
     "row": 4
@@ -5189,9 +5192,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Calling_of_the_Varangians",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Calling%20of%20varangians%2001.jpg",
     "description": "Призвание варягов — летописный сюжет о приглашении на княжение восточнославянскими и финно-угорскими племенами — варягов во главе с Рюриком и его братьями Синеусом и Трувором в Ладогу или Новгород и другие города, которое, согласно «Повести временных лет», произошло в 862 году.",
-    "approximateDate": true,
     "at": {
-      "year": 862
+      "year": 862,
+      "approximate": true
     },
     "slug": "calling-of-the-varangians",
     "row": 6
@@ -5254,9 +5257,9 @@
     "tagline": "aspect of history",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_the_Hindu%E2%80%93Arabic_numeral_system",
     "description": "The Hindu–Arabic numeral system is a decimal place-value numeral system that uses a zero glyph as in \"205\". Some historians have argued that the exact development and transmission of the Hindu–Arabic numeral system remains debated, with differing interpretations regarding the contributions of Indian, Persian, and Arab scholars.Its glyphs are descended from the Indian Brahmi numerals. The full system emerged by the 8th to 9th centuries, and is first described outside India in Al-Khwarizmi's On the Calculation with Hindu Numerals (ca. 825), and second Al-Kindi's four-volume work On the Use of the Indian Numerals (c. 830). Today the name Hindu–Arabic numerals is usually used.",
-    "approximateDate": true,
     "at": {
-      "year": 500
+      "year": 500,
+      "approximate": true
     },
     "slug": "history-of-the-hindu-arabic-numeral-system",
     "row": 3

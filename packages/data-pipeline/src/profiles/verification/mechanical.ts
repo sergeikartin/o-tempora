@@ -8,16 +8,18 @@ import { type Assessment, passages, type Source } from './policy.js';
 // evidence checks; only unambiguous year labels are interpreted mechanically.
 export function yearRange(
   label: string,
-): { start: number; end: number; approximate: boolean } | undefined {
+):
+  | { start: number; end: number; approximate: boolean; endApproximate?: true }
+  | undefined {
   const match =
-    /^(c\.?\s*|ca\.?\s*)?(?:(AD|CE)\s*)?(\d{1,4})\s*(BC|BCE|AD|CE)?(?:\s*[–—-]\s*(?:(AD|CE)\s*)?(\d{1,4})\s*(BC|BCE|AD|CE)?)?$/.exec(
+    /^(c\.?\s*|ca\.?\s*)?(?:(AD|CE)\s*)?(\d{1,4})\s*(BC|BCE|AD|CE)?(?:\s*[–—-]\s*(c\.?\s*|ca\.?\s*)?(?:(AD|CE)\s*)?(\d{1,4})\s*(BC|BCE|AD|CE)?)?$/.exec(
       label.trim(),
     );
   if (!match) return undefined;
   const start = Number(match[3]);
-  const end = match[6] === undefined ? start : Number(match[6]);
+  const end = match[7] === undefined ? start : Number(match[7]);
   if (start === 0 || end === 0) return undefined;
-  const endEra = match[7] ?? match[5] ?? match[4] ?? match[2];
+  const endEra = match[8] ?? match[6] ?? match[4] ?? match[2];
   const startEra = match[4] ?? match[2] ?? endEra;
   const year = (value: number, era?: string) =>
     era?.startsWith('BC') ? 1 - value : value;
@@ -25,6 +27,9 @@ export function yearRange(
     start: year(start, startEra),
     end: year(end, endEra),
     approximate: !!match[1],
+    ...(match[5] || (!match[7] && match[1])
+      ? { endApproximate: true as const }
+      : {}),
   };
 }
 
@@ -40,9 +45,11 @@ export function evidenceChecks(
   for (const date of assessment.subject_dates) {
     if (!paths.has(date.path))
       flags.push(`Unknown subject date path: ${date.path}`);
+    const approximate =
+      date.boundary === 'start' ? dates?.approximate : dates?.endApproximate;
     if (
       dates &&
-      Math.abs(date.year - dates[date.boundary]) > (dates.approximate ? 1 : 0)
+      Math.abs(date.year - dates[date.boundary]) > (approximate ? 1 : 0)
     ) {
       flags.push(
         `${date.path}: subject ${date.boundary} year ${date.year} disagrees with dataset ${dates[date.boundary]}`,

@@ -3,7 +3,10 @@ import {
   DOMAIN_COLORS,
   MILESTONE_CATEGORY_GROUP_COLORS,
 } from '../../../shared/config';
-import { formatYearMonth } from '../../../shared/lib/date';
+import {
+  formatYearMonth,
+  formatYearMonthRange,
+} from '../../../shared/lib/date';
 import {
   type ConflictEntry,
   MILESTONE_CATEGORY_TO_GROUP,
@@ -18,12 +21,8 @@ export type DetailPanelEntity =
 
 export interface DrawerContent {
   name: string;
-  // Point-shaped Milestone only — People, Conflicts, and period-shaped
-  // Milestones all drop this: their tagline text (Wikidata
-  // schema:description) already embeds the same dates in prose form (e.g.
-  // the Black Death's "1346-1353 pandemic..."), so a separate structured
-  // date line was showing every date twice. A point-shaped Milestone's
-  // tagline doesn't reliably embed a date, so it keeps this line.
+  // Point milestones always show a date. Estimated conflict and period dates
+  // also need a structured label because taglines can omit the qualifier.
   dateLine?: string;
   tagline: string;
   // Wikipedia lead-paragraph prose — absent whenever no English Wikipedia
@@ -47,9 +46,20 @@ function personContent(person: Person): DrawerContent {
   };
 }
 
+function approximateDateLine(
+  entry: ConflictEntry | Milestone,
+): string | undefined {
+  if ('at' in entry)
+    return entry.at.approximate ? formatYearMonth(entry.at) : undefined;
+  const { start, end } = entry.period;
+  if (!start.approximate && !end?.approximate) return undefined;
+  return end ? formatYearMonthRange(start, end) : formatYearMonth(start);
+}
+
 function conflictEntryContent(entry: ConflictEntry): DrawerContent {
   return {
     name: entry.name,
+    dateLine: approximateDateLine(entry),
     tagline: entry.tagline,
     description: entry.description,
     wikipediaUrl: entry.wikipediaUrl,
@@ -61,11 +71,13 @@ function conflictEntryContent(entry: ConflictEntry): DrawerContent {
 function milestoneContent(milestone: Milestone): DrawerContent {
   return {
     name: milestone.name,
-    ...('period' in milestone
-      ? {}
-      : {
-          dateLine: `${milestone.approximateDate ? 'ca. ' : ''}${formatYearMonth(milestone.at)}`,
-        }),
+    dateLine:
+      'period' in milestone
+        ? approximateDateLine(milestone)
+        : formatYearMonth({
+            ...milestone.at,
+            approximate: milestone.at.approximate ?? milestone.approximateDate,
+          }),
     tagline: milestone.tagline,
     description: milestone.description,
     wikipediaUrl: milestone.wikipediaUrl,

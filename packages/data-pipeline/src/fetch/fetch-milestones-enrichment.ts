@@ -57,13 +57,14 @@ export interface EnrichedMilestone {
   name?: string;
   nameRu?: string;
   category: MilestoneCategory;
+  approximateDate?: true;
+  endApproximateDate?: true;
   year?: number;
   // Wikidata dates include a month only when the claim supports that precision.
   month?: number;
   // Without an end date, Output builds a point-shaped Milestone.
   endYear?: number;
   endMonth?: number;
-  approximateDate?: true;
   tagline?: string;
   taglineRu?: string;
   sitelinks?: number;
@@ -117,25 +118,32 @@ function isDateOverride(value: unknown): value is DateOverride {
   );
 }
 
+type EnrichedDate = Pick<
+  EnrichedMilestone,
+  | 'year'
+  | 'month'
+  | 'endYear'
+  | 'endMonth'
+  | 'approximateDate'
+  | 'endApproximateDate'
+>;
+
 export function resolveDate(
   override: DateOverride | undefined,
-  enriched:
-    | { year?: number; month?: number; endYear?: number; endMonth?: number }
-    | undefined,
-): {
-  year?: number;
-  month?: number;
-  endYear?: number;
-  endMonth?: number;
-  approximateDate?: true;
-} {
+  enriched: EnrichedDate | undefined,
+): EnrichedDate {
   const source = override ?? enriched;
   return {
+    ...(!override && enriched?.endApproximateDate
+      ? { endApproximateDate: true as const }
+      : {}),
     year: source?.year,
     month: source?.month,
     endYear: source?.endYear,
     endMonth: source?.endMonth,
-    ...(override?.approximate ? { approximateDate: true as const } : {}),
+    ...((override ? override.approximate : enriched?.approximateDate)
+      ? { approximateDate: true as const }
+      : {}),
   };
 }
 
@@ -162,6 +170,10 @@ function isEnrichedMilestone(value: unknown): value is EnrichedMilestone {
     typeof candidate.id === 'string' &&
     (candidate.name === undefined || typeof candidate.name === 'string') &&
     (candidate.nameRu === undefined || typeof candidate.nameRu === 'string') &&
+    (candidate.approximateDate === undefined ||
+      candidate.approximateDate === true) &&
+    (candidate.endApproximateDate === undefined ||
+      candidate.endApproximateDate === true) &&
     (candidate.year === undefined || typeof candidate.year === 'number') &&
     (candidate.month === undefined || typeof candidate.month === 'number') &&
     (candidate.endYear === undefined ||
@@ -217,6 +229,8 @@ interface EnrichmentFields {
   image?: string;
   tagline?: string;
   taglineRu?: string;
+  approximateDate?: true;
+  endApproximateDate?: true;
   year?: number;
   month?: number;
   endYear?: number;
@@ -286,10 +300,12 @@ export async function fetchMilestonesEnrichment(
       entry.countries.push(countryId);
 
     if (entry.year === undefined && row.date?.value) {
+      if (row.dateCirca?.value === 'true') entry.approximateDate = true;
       entry.year = parseIsoYear(row.date.value);
       entry.month = parseMonthIfKnown(row.date.value, row.datePrecision?.value);
     }
     if (entry.endYear === undefined && row.endDate?.value) {
+      if (row.endDateCirca?.value === 'true') entry.endApproximateDate = true;
       entry.endYear = parseIsoYear(row.endDate.value);
       entry.endMonth = parseMonthIfKnown(
         row.endDate.value,

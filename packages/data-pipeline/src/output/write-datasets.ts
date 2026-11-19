@@ -49,8 +49,16 @@ function record(reasons: Record<string, number>, reason: string): void {
   reasons[reason] = (reasons[reason] ?? 0) + 1;
 }
 
-function yearMonth(year: number, month: number | undefined): YearMonth {
-  return month === undefined ? { year } : { year, month };
+function yearMonth(
+  year: number,
+  month: number | undefined,
+  approximate?: true,
+): YearMonth {
+  return {
+    year,
+    ...(month === undefined ? {} : { month }),
+    ...(approximate && { approximate }),
+  };
 }
 
 function optionalYearMonth(
@@ -252,15 +260,19 @@ export function buildConflicts(
       const conflict: Unslugged<Conflict> = {
         ...shared,
         period: {
-          start: yearMonth(validated.year, validated.month),
-          end: yearMonth(row.endYear, row.endMonth),
+          start: yearMonth(
+            validated.year,
+            validated.month,
+            row.approximateDate,
+          ),
+          end: yearMonth(row.endYear, row.endMonth, row.endApproximateDate),
         },
       };
       built.set(row.id, conflict);
     } else {
       const conflictEvent: Unslugged<ConflictEvent> = {
         ...shared,
-        at: yearMonth(validated.year, validated.month),
+        at: yearMonth(validated.year, validated.month, row.approximateDate),
       };
       built.set(row.id, conflictEvent);
     }
@@ -319,21 +331,24 @@ export function buildMilestones(
       wikipediaUrl: validated.article,
       ...imageFields(row.id, row.image, row.imageAttribution),
       ...(description ? { description } : {}),
-      ...(row.approximateDate ? { approximateDate: true as const } : {}),
     };
 
     if (row.endYear !== undefined) {
       milestones.push({
         ...shared,
         period: {
-          start: yearMonth(validated.year, validated.month),
-          end: yearMonth(row.endYear, row.endMonth),
+          start: yearMonth(
+            validated.year,
+            validated.month,
+            row.approximateDate,
+          ),
+          end: yearMonth(row.endYear, row.endMonth, row.endApproximateDate),
         },
       });
     } else {
       milestones.push({
         ...shared,
-        at: yearMonth(validated.year, validated.month),
+        at: yearMonth(validated.year, validated.month, row.approximateDate),
       });
     }
   }

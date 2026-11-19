@@ -2039,7 +2039,8 @@
       "tagline": "war between Spaniards and Mapuche people in Chile",
       "taglineRu": "военный конфликт между креольским населением Генерал-капитанства Чили и народом мапуче",
       "year": 1546,
-      "endYear": 1609
+      "endYear": 1609,
+      "endApproximateDate": true
     },
     {
       "id": "Q246863",
@@ -7255,7 +7256,8 @@
       "countries": [],
       "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Gustave%20dore%20crusades%20the%20childrens%20crusade.jpg",
       "tagline": "attempted crusade by European Christians to expel Muslims from the Holy Land",
-      "year": 1212
+      "year": 1212,
+      "approximateDate": true
     },
     {
       "id": "Q58732",

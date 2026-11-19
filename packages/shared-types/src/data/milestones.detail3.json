@@ -224,9 +224,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kroisos.%20Circa%20564-53-550-39%20BC.%20AV%20Stater%20%2816mm%2C%2010.76%20g%29.%20Heavy%20series.%20Sardes%20mint.jpg",
     "imageAttribution": "CNG Coins, via Wikimedia Commons",
     "description": "The Croeseid, anciently Kroiseioi stateres, was a type of coin, either in gold or silver, which was minted in Sardis by the king of Lydia Croesus from around 550 BC. Croesus is credited with issuing the first true gold coins with a standardised purity for general circulation, and the world's first bimetallic monetary system.",
-    "approximateDate": true,
     "at": {
-      "year": -549
+      "year": -549,
+      "approximate": true
     },
     "slug": "first-gold-coin",
     "row": 1
@@ -516,9 +516,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sumero-Akkadian%20cuneiform%20syllabary.jpg",
     "imageAttribution": "Gire 3pich2005, via Wikimedia Commons",
     "description": "Cuneiform is a logo-syllabic writing system that was used to write several languages of the ancient Near East. The script was in active use from the early Bronze Age until the 1st century BC. Cuneiform scripts are marked by and named for the characteristic wedge-shaped impressions which form their signs. Cuneiform is the earliest known writing system and was originally developed to write the Sumerian language of southern Mesopotamia.",
-    "approximateDate": true,
     "at": {
-      "year": -3200
+      "year": -3200,
+      "approximate": true
     },
     "slug": "cuneiform",
     "row": 1
@@ -748,7 +748,8 @@
     "imageAttribution": "NikonZ7II, via Wikimedia Commons",
     "description": "The Pantheon is an ancient temple in Rome, Italy, originally built under emperor Augustus and reconstructed under Hadrian (117–138); since AD 609, it is a Catholic church called the Basilica of St. Mary and the Martyrs.",
     "at": {
-      "year": 128
+      "year": 128,
+      "approximate": true
     },
     "slug": "pantheon",
     "row": 0
@@ -814,9 +815,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/MS%20Indic%2037%2C%20Isa%20upanisad.%20Wellcome%20L0027330.jpg",
     "imageAttribution": "https://wellcomeimages.org/indexplus/obf_images/01/64/805ea5d825de7673594bd1fea9ec.jpg\n\nGallery: https://wellcomeimages.org/indexplus/image/L0027330.html\nWellcome Collection gallery (2018-03-31): https://wellcomecollection.org/works/q3ejsjwy CC-BY-4.0, via Wikimedia Commons",
     "description": "The Upanishads are Sanskrit texts of the late Vedic and post-Vedic periods that \"document the transition from the archaic ritualism of the Veda into new religious ideas and institutions\" and the emergence of the central religious concepts of Hinduism. They are the most recent addition to the Vedas, the oldest scriptures of Hinduism, and deal with meditation, philosophy, consciousness, and ontological knowledge. Earlier parts of the Vedas dealt with mantras, benedictions, rituals, ceremonies, and sacrifices.",
-    "approximateDate": true,
     "at": {
-      "year": -699
+      "year": -699,
+      "approximate": true
     },
     "slug": "upanishads",
     "row": 1
@@ -865,9 +866,9 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mali_Empire",
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Catalan%20Atlas%20BNF%20Sheet%206%20Western%20Sahara.jpg",
     "description": "The Mali Empire was an empire in West Africa from c. 1235 to 1610. The empire was founded by Sundiata Keita and became renowned for the wealth of its monarchs, especially Mansa Musa. At its peak, Mali was the largest empire in West Africa, widely influencing the culture of the region through the spread of its language, laws, and customs.",
-    "approximateDate": true,
     "at": {
-      "year": 1235
+      "year": 1235,
+      "approximate": true
     },
     "slug": "founding-of-the-mali-empire",
     "row": 2
@@ -1356,9 +1357,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/G%C3%B6bekli%20Tepe%2C%20Urfa.jpg",
     "imageAttribution": "Teomancimit, via Wikimedia Commons",
     "description": "Göbekli Tepe is a Neolithic archaeological site in Upper Mesopotamia (al-Jazira) in modern-day Turkey. The settlement was inhabited from around 9500 BCE to at least 8000 BCE, during the Pre-Pottery Neolithic. It is known for its large circular structures that contain large stone pillars – among the world's oldest known megaliths. Many of these pillars are decorated with anthropomorphic details, clothing, and sculptural reliefs of wild animals, providing archaeologists with insights into prehistoric religion and the iconography of the period. The 15 m (50 ft) high, 8 ha (20-acre) tell is covered with ancient domestic structures and other small buildings, quarries, and stone-cut cisterns from the Neolithic, as well as traces of activity from later periods.",
-    "approximateDate": true,
     "at": {
-      "year": -9500
+      "year": -9500,
+      "approximate": true
     },
     "slug": "gobekli-tepe",
     "row": 0
@@ -1373,7 +1374,8 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Akkadian_Empire",
     "description": "The Akkadian Empire or the Kingdom of Akkad/Agade was an ancient kingdom established around 2300 BCE, often seen as the first empire in world history, succeeding and unifying the long-lived city-states of the Early Dynastic period.",
     "at": {
-      "year": -2333
+      "year": -2333,
+      "approximate": true
     },
     "slug": "founding-of-the-akkadian-empire",
     "row": 1
@@ -1389,9 +1391,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gezer%20calendar%20close%20up.jpg",
     "imageAttribution": "oncenawhile, via Wikimedia Commons",
     "description": "The Phoenician Script is an abjad that was used across the Mediterranean civilization of Phoenicia for most of the 1st millennium BC. It was one of the first alphabets, attested in Canaanite and Aramaic inscriptions found across the Mediterranean basin. In the history of writing systems, the Phoenician script was also the first to have a fixed writing direction—while previous systems were multi-directional, Phoenician was written horizontally, from right to left. It developed directly from the Proto-Sinaitic script used during the Late Bronze Age, which was derived in turn from Egyptian hieroglyphs.",
-    "approximateDate": true,
     "at": {
-      "year": -1050
+      "year": -1050,
+      "approximate": true
     },
     "slug": "phoenician-script",
     "row": 0
@@ -1428,9 +1430,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vista%20completa%20de%20Tenochtitl%C3%A1n.jpg",
     "imageAttribution": "thomas kole, via Wikimedia Commons",
     "description": "Tenochtitlan, also known as Mexico-Tenochtitlan, was a large Mexican altepetl in what is now the historic center of Mexico City. The exact date of the founding of the city is unclear, but the date 13 March 1325 was chosen in 1925 to celebrate the 600th anniversary of the city. The city was built on an island in what was then Lake Texcoco in the Valley of Mexico. The city was the capital of the expanding Aztec Empire in the 15th century until it was captured by the Tlaxcaltec and the Spanish in 1521.",
-    "approximateDate": true,
     "at": {
-      "year": 1325
+      "year": 1325,
+      "approximate": true
     },
     "slug": "tenochtitlan",
     "row": 1
@@ -1827,9 +1829,9 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/NAMA%20Machine%20d%27Anticyth%C3%A8re%201.jpg",
     "imageAttribution": "No machine-readable author provided. Marsyas assumed (based on copyright claims)., via Wikimedia Commons",
     "description": "The Antikythera mechanism is an ancient Greek hand-powered orrery built in the 2nd century BC and discovered in 1901. It is the oldest known example of an analogue computer. It could be used to predict astronomical positions and eclipses decades in advance. It could also be used to track the four-year cycle of athletic games similar to an olympiad, the cycle of the ancient Olympic Games.",
-    "approximateDate": true,
     "at": {
-      "year": -150
+      "year": -150,
+      "approximate": true
     },
     "slug": "antikythera-mechanism",
     "row": 3
@@ -2076,7 +2078,8 @@
         "year": 1933
       },
       "end": {
-        "year": 1939
+        "year": 1939,
+        "approximate": true
       }
     },
     "slug": "new-deal",
@@ -2215,7 +2218,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Title%20page%20of%20Sir%20Henry%20Billingsley%27s%20first%20English%20version%20of%20Euclid%27s%20Elements%2C%201570%20%28560x900%29.jpg",
     "description": "The Elements is a mathematical treatise written c. 300 BC by the Ancient Greek mathematician Euclid.",
     "at": {
-      "year": -300
+      "year": -300,
+      "approximate": true
     },
     "slug": "elements",
     "row": 1
@@ -2297,7 +2301,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Giorgione%20-%20Adoration%20of%20the%20Shepherds%20-%20National%20Gallery%20of%20Art.jpg",
     "description": "The Nativity or birth of Jesus is found in the biblical gospels of Matthew and Luke. The two accounts agree that Jesus was born in Bethlehem in Judea, that his mother, Mary, was engaged to a man named Joseph, who was descended from King David and was not his biological father, and that his birth was caused by divine intervention.",
     "at": {
-      "year": -4
+      "year": -4,
+      "approximate": true
     },
     "slug": "nativity-of-jesus",
     "row": 0

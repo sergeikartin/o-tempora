@@ -123,6 +123,7 @@ export type OccupationDomain = (typeof OCCUPATION_DOMAINS)[number];
 // Years use astronomical numbering (year 0 is 1 BCE). Omit the month unless the
 // source supports month-or-finer precision, since January would imply a date.
 export interface YearMonth {
+  approximate?: true;
   year: number;
   month?: number;
 }

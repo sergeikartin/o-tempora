@@ -37,7 +37,7 @@ export function buildConflictsEnrichmentQuery(ids: string[]): string {
     (lang) => `?${articleVar(lang)}`,
   ).join(' ');
   return `
-SELECT ?event ?sitelinks ${articleVars} ?country ?image ?nameEn ?nameRu ?tagline ?taglineRu ?date ?datePrecision ?endDate ?endDatePrecision WHERE {
+SELECT ?event ?sitelinks ${articleVars} ?country ?image ?nameEn ?nameRu ?tagline ?taglineRu ?date ?datePrecision ?endDate ?endDatePrecision ?dateCirca ?endDateCirca WHERE {
   VALUES ?event { ${values} }
   ?event wikibase:sitelinks ?sitelinks .
 ${articleOptionalBlocks()}
@@ -63,12 +63,15 @@ ${articleOptionalBlocks()}
   }
   BIND(COALESCE(?startTime, ?pointInTime) AS ?date)
   BIND(COALESCE(?startTimePrecision, ?pointInTimePrecision) AS ?datePrecision)
+  BIND(COALESCE(?startTimeStatement, ?pointInTimeStatement) AS ?dateStatement)
+  BIND(IF(BOUND(?dateStatement), EXISTS { ?dateStatement pq:P1480 wd:Q5727902 }, false) AS ?dateCirca)
   OPTIONAL {
     ?event p:P582 ?endDateStatement .
     ?endDateStatement a wikibase:BestRank .
     ?endDateStatement psv:P582 ?endDateValue .
     ?endDateValue wikibase:timeValue ?endDate ;
                    wikibase:timePrecision ?endDatePrecision .
+    BIND(EXISTS { ?endDateStatement pq:P1480 wd:Q5727902 } AS ?endDateCirca)
   }
 }
 ORDER BY ?event ?date ?endDate

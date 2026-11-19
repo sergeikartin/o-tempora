@@ -88,7 +88,7 @@ test('selects sitelinks/per-language article title vars/country/image/name(en+ru
     (lang) => `\\?article${lang[0]!.toUpperCase()}${lang.slice(1)}`,
   ).join(' ');
   const pattern = new RegExp(
-    `SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?nameEn \\?nameRu \\?tagline \\?taglineRu \\?date \\?datePrecision \\?endDate \\?endDatePrecision WHERE`,
+    `SELECT \\?event \\?sitelinks ${articleVars} \\?country \\?image \\?nameEn \\?nameRu \\?tagline \\?taglineRu \\?date \\?datePrecision \\?endDate \\?endDatePrecision \\?dateCirca \\?endDateCirca WHERE`,
   );
   assert.match(query, pattern);
 });
