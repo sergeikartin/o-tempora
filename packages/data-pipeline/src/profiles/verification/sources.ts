@@ -1,9 +1,12 @@
 import { lookup } from 'node:dns/promises';
 import { get } from 'node:https';
 import { Parser } from 'htmlparser2';
+import { asString } from '../values.js';
 import { hash, normalizeText, type Source } from './policy.js';
 
 const MAX_BYTES = 3_000_000;
+const EXCERPT_LENGTH = 8_000;
+const EXCERPT_OVERLAP = 400;
 const USER_AGENT =
   'o-tempora-data-pipeline/0.1 (contact sergei.kartin@gmail.com)';
 
@@ -216,6 +219,42 @@ export class SourceStore {
       );
       throw error;
     }
+  }
+
+  async readExcerpt(input: Record<string, unknown>) {
+    const offset = input.offset === undefined ? 0 : input.offset;
+    if (
+      typeof offset !== 'number' ||
+      !Number.isSafeInteger(offset) ||
+      offset < 0
+    )
+      throw new Error('Source offset must be a nonnegative integer');
+    const query =
+      input.query == null
+        ? undefined
+        : asString(input.query, 'source query').trim();
+    if (query !== undefined && (!query || query.length > 256))
+      throw new Error('Source query must contain 1 to 256 characters');
+
+    const source = await this.read(asString(input.url, 'source URL'));
+    let start = offset;
+    if (query !== undefined) {
+      const literal = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const pattern = new RegExp(literal, 'giu');
+      pattern.lastIndex = offset;
+      const match = pattern.exec(source.text);
+      if (!match)
+        return { ...source, text: '', offset: null, next_offset: null };
+      start = Math.max(offset, match.index - 2_000);
+    }
+
+    const end = start + EXCERPT_LENGTH;
+    return {
+      ...source,
+      text: source.text.slice(start, end),
+      offset: start,
+      next_offset: end < source.text.length ? end - EXCERPT_OVERLAP : null,
+    };
   }
 
   all(): Source[] {

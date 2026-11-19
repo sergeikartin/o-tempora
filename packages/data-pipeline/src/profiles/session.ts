@@ -91,9 +91,7 @@ export class SessionBridge {
                 await readJson(path.join(sourceDirectory, name)),
                 'source request',
               );
-              const source = await sources.read(
-                asString(input.url, 'source URL'),
-              );
+              const source = await sources.readExcerpt(input);
               response = { source };
             } catch (error) {
               response = {

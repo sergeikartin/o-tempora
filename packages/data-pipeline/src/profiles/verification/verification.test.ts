@@ -24,7 +24,7 @@ import {
   type Report,
   type Source,
 } from './policy.js';
-import type { Research } from './researcher.js';
+import { auditProfile, type Research } from './researcher.js';
 import { reportPathFor, type VerifyOptions, verifyProfile } from './runner.js';
 import { htmlText, publicIPv4, SourceStore, sourceUrl } from './sources.js';
 
@@ -106,6 +106,98 @@ const complete: Complete = async () => ({
   text: JSON.stringify({ uncovered: [], issues: [], coherent: true }),
   model: 'auditor',
   tokens: { input: 0, output: 0 },
+});
+
+test('research excerpts can page or jump to literal matches in the same full source', async () => {
+  const text = `${'A'.repeat(9000)} Principia (1687). ${'B'.repeat(9000)}`;
+  const source = { ...SOURCE, id: hash(text), text };
+  let fetches = 0;
+  const sources = new SourceStore(async () => {
+    fetches++;
+    return source;
+  });
+  const first = await sources.readExcerpt({ url: URL });
+  assert.equal(first.text, text.slice(0, 8000));
+  assert.ok(first.next_offset);
+  const next = await sources.readExcerpt({
+    url: URL,
+    offset: first.next_offset,
+  });
+  assert.equal(
+    next.text,
+    text.slice(first.next_offset, first.next_offset + 8000),
+  );
+  const match = await sources.readExcerpt({
+    url: URL,
+    query: 'principia (1687)',
+  });
+  assert.equal(match.id, first.id);
+  assert.match(match.text, /Principia \(1687\)/);
+  assert.equal(
+    (await sources.readExcerpt({ url: URL, query: 'absent' })).text,
+    '',
+  );
+  await assert.rejects(sources.readExcerpt({ url: URL, offset: -1 }), /offset/);
+  assert.deepEqual(sources.all(), [source]);
+  assert.equal(fetches, 1);
+});
+
+test('independent audit receives each finding once and shares overlapping source excerpts', async () => {
+  const text = `Nearby quote one. Nearby quote two. ${'Padding '.repeat(250)} Distant quote.`;
+  const source = { ...SOURCE, id: hash(text), text };
+  const sources = new SourceStore(async () => source);
+  await sources.read(URL);
+  const profile = parseModelProfile(raw(), 'test');
+  const report = assessment(profile);
+  const template = report.findings[0]?.evidence[0];
+  assert.ok(template);
+  const quotes = [
+    'Nearby quote one.',
+    'Nearby quote two.',
+    'Distant quote.',
+    'Missing quote.',
+  ] as const;
+  for (const [index, finding] of report.findings.entries()) {
+    const quote = quotes[index];
+    assert.ok(quote);
+    finding.evidence = [{ ...template, source: source.id, quote }];
+  }
+  await auditProfile(
+    profile,
+    SUBJECT,
+    report,
+    sources,
+    async (prompt, role) => {
+      assert.equal(role, 'audit');
+      const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
+      assert.equal(payload.evidence, undefined);
+      assert.equal(payload.assessment.findings.length, report.findings.length);
+      assert.deepEqual(
+        payload.assessment.findings.map(
+          (finding: Assessment['findings'][number]) => finding.claim,
+        ),
+        report.findings.map((finding) => finding.claim),
+      );
+      assert.deepEqual(
+        payload.assessment.findings.flatMap(
+          (finding: { evidence: { source_excerpt_index: number | null }[] }) =>
+            finding.evidence.map((evidence) => evidence.source_excerpt_index),
+        ),
+        [0, 0, 1, null],
+      );
+      assert.deepEqual(payload.source_contexts, [
+        {
+          source: source.id,
+          url: URL,
+          excerpts: [
+            text.slice(0, text.indexOf(quotes[1]) + quotes[1].length + 700),
+            text.slice(text.indexOf(quotes[2]) - 700),
+          ],
+        },
+      ]);
+      return complete(prompt, role);
+    },
+  );
 });
 
 async function setup(t: TestContext) {

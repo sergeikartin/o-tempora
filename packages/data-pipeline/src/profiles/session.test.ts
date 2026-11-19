@@ -157,9 +157,11 @@ for (const repair of [false, true])
     const url = 'https://en.wikipedia.org/wiki/Isaac_Newton';
     const text =
       'Newton published the Principia in 1687. Newton was an English mathematician.';
+    const padding = 'Unrelated source text. '.repeat(400);
+    const article = padding + text;
     const source: Source = {
-      id: hash(text),
-      text,
+      id: hash(article),
+      text: article,
       url,
       fetched_at: '2026-11-16T00:00:00Z',
       anchors: [],
@@ -217,7 +219,7 @@ for (const repair of [false, true])
       assert.equal(task.request.role, 'research');
       await writeFile(
         path.join(task.directory, 'sources', 'one.request.json'),
-        JSON.stringify({ url }),
+        JSON.stringify({ url, query: 'PRINCIPIA' }),
       );
       const fetched = await waitFor(async () => {
         try {
@@ -233,7 +235,12 @@ for (const repair of [false, true])
           throw error;
         }
       });
-      assert.deepEqual(fetched.source, source);
+      assert.equal(fetched.source.id, source.id);
+      assert.equal(fetched.source.url, source.url);
+      assert.equal(fetched.source.text, article.slice(fetched.source.offset));
+      assert.ok(fetched.source.offset > 0);
+      assert.ok(fetched.source.text.includes(text));
+      assert.equal(fetched.source.next_offset, null);
       const fields = passages(task.request.payload.profile);
       await reply(task.directory, {
         request_hash: task.request.request_hash,
