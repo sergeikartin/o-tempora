@@ -5,10 +5,10 @@ import { passages } from './passages.js';
 import type { Complete, Completion } from './providers.js';
 import { asRecord, asString } from './values.js';
 import {
-  hasApproval,
   hash,
   parseAudit,
   profileHash,
+  readProfileApproval,
   strings,
 } from './verification/policy.js';
 
@@ -194,15 +194,8 @@ export async function translateProfile(options: {
       'utf8',
     ),
   );
-  const sourcePassages = translationPassages(raw);
-  if (
-    !hasApproval(
-      raw,
-      report,
-      sourcePassages.map(({ path }) => path),
-    ) ||
-    report.subject.dates !== options.dates
-  )
+  const profile = parseModelProfile(raw, 'translation source');
+  if (!readProfileApproval(raw, report, profile)?.isCurrentFor(options.dates))
     throw new Error(
       'Translation requires a current approved English Profile and dataset dates',
     );

@@ -11,11 +11,11 @@ import { evidenceChecks, mechanicalChecks } from './mechanical.js';
 import {
   blockers,
   checkEvidence,
-  hasApproval,
   hash,
   POLICY_VERSION,
   profileHash,
   type Report,
+  readProfileApproval,
 } from './policy.js';
 import { auditProfile, type Research } from './researcher.js';
 import { SourceStore } from './sources.js';
@@ -125,12 +125,7 @@ export async function verifyProfile(
   const dates = formatDates(options.subject.dateSpan);
   if (
     !options.force &&
-    hasApproval(
-      record,
-      oldReport,
-      passages(profile).map((item) => item.path),
-    ) &&
-    asRecord(asRecord(oldReport, 'report').subject, 'subject').dates === dates
+    readProfileApproval(record, oldReport, profile)?.isCurrentFor(dates)
   ) {
     return { status: 'skipped', blockers: [], reportPath };
   }

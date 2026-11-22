@@ -10,14 +10,17 @@ import {
   type ProfileLane,
 } from '@o-tempora/shared-types';
 import { assertBoldOnlyMarkup } from '../profiles/markup.js';
-import { mapPassages, passages } from '../profiles/passages.js';
+import { mapPassages } from '../profiles/passages.js';
 import {
   approvedTranslation,
   readTranslation,
   type TranslationFields,
 } from '../profiles/translation.js';
 import { asArray, asRecord, asString } from '../profiles/values.js';
-import { hasApproval } from '../profiles/verification/policy.js';
+import {
+  type ProfileApproval,
+  readProfileApproval,
+} from '../profiles/verification/policy.js';
 
 import { detailLevelOf } from './write-datasets.js';
 
@@ -30,8 +33,7 @@ export interface RawProfile {
   qid: string;
   locale: string;
   status: string;
-  approved: boolean;
-  verifiedDates?: string;
+  approval?: ProfileApproval;
   russian?: TranslationFields;
   overview: string;
   key_moments: ProfileKeyMoment[];
@@ -40,9 +42,6 @@ export interface RawProfile {
   // profiles script; a Connection without one cannot be resolved.
   connections: { qid?: string; connection: string }[];
 }
-
-// These statuses still require a current verification receipt to ship.
-const SHIPPED_STATUSES: ReadonlySet<string> = new Set(['reviewed', 'edited']);
 
 // Older Profiles can lack a source, and `not_on_wikipedia` is a review
 // sentinel. Neither should become a link, nor should malformed/unsafe URLs.
@@ -76,7 +75,6 @@ export function parseRawProfile(
     qid: asString(source.wikidata_qid, `${fileName}: meta.source.wikidata_qid`),
     locale: asString(meta.locale, `${fileName}: meta.locale`),
     status: asString(review.status, `${fileName}: meta.review.status`),
-    approved: false,
     overview: asString(root.overview, `${fileName}: overview`),
     key_moments: asArray(root.key_moments, `${fileName}: key_moments`).map(
       (item, index) => {
@@ -126,18 +124,8 @@ export function parseRawProfile(
       },
     ),
   };
-  parsed.approved = hasApproval(
-    json,
-    report,
-    passages(parsed).map(({ path }) => path),
-  );
-  if (parsed.approved) {
-    const subject = asRecord(
-      asRecord(report, 'report').subject,
-      'report.subject',
-    );
-    parsed.verifiedDates = asString(subject.dates, 'report.subject.dates');
-  }
+  const approval = readProfileApproval(json, report, parsed);
+  if (approval) parsed.approval = approval;
   return parsed;
 }
 
@@ -184,7 +172,7 @@ export async function readRawProfiles(dir: string): Promise<RawProfile[]> {
           throw error;
       }
       const raw = parseRawProfile(json, `${lane}/${fileName}`, report);
-      if (raw.approved && fileName.endsWith('.en.json')) {
+      if (raw.approval && fileName.endsWith('.en.json')) {
         raw.russian = approvedTranslation(
           await readTranslation(path.join(laneDir, fileName)),
           json,
@@ -244,19 +232,14 @@ export function shipProfiles(
   const shipped = new Map<string, Profile>();
 
   for (const raw of rawProfiles) {
-    if (
-      raw.locale !== 'en' ||
-      !SHIPPED_STATUSES.has(raw.status) ||
-      !raw.approved
-    )
-      continue;
+    if (raw.locale !== 'en' || !raw.approval) continue;
 
     const subject = targetByQid.get(raw.qid);
     if (!subject)
       throw new Error(
         `${raw.fileName}: ${raw.qid} is not an entity in the dataset`,
       );
-    if (raw.verifiedDates !== subject.dates) continue;
+    if (!raw.approval.isCurrentFor(subject.dates)) continue;
     const translation = raw.russian;
     if (locale === 'ru' && !translation) continue;
     if (shipped.has(subject.slug))

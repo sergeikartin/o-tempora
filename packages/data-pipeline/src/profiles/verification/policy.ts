@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { passages } from '../passages.js';
 import { asArray, asRecord, asString } from '../values.js';
 
 export const POLICY_VERSION = '3';
@@ -268,13 +269,17 @@ export function blockers(
   return [...new Set(result)];
 }
 
-// This is a publication receipt, not a model confidence score. A report must
-// be unchanged since the runner validated its evidence and issued the receipt.
-export function hasApproval(
+export interface ProfileApproval {
+  isCurrentFor(dates: string): boolean;
+}
+
+// Validate the saved receipt once, then check it against the current dataset
+// dates when the subject is available.
+export function readProfileApproval(
   profile: unknown,
   verification: unknown,
-  paths: readonly string[],
-): boolean {
+  text: Parameters<typeof passages>[0],
+): ProfileApproval | undefined {
   try {
     const root = asRecord(profile, 'Profile');
     const meta = asRecord(root.meta, 'meta');
@@ -283,18 +288,19 @@ export function hasApproval(
     const report = asRecord(verification, 'report');
     const subject = asRecord(report.subject, 'report.subject');
     const source = asRecord(meta.source, 'meta.source');
+    const dates = subject.dates;
     if (
       subject.qid !== source.wikidata_qid ||
-      typeof subject.dates !== 'string' ||
-      subject.dates.length === 0 ||
+      typeof dates !== 'string' ||
+      dates.length === 0 ||
       !['reviewed', 'edited'].includes(String(review.status)) ||
       approval.policy_version !== report.policy_version ||
-      !isCurrentVerificationPolicy(report.policy_version, subject.dates) ||
+      !isCurrentVerificationPolicy(report.policy_version, dates) ||
       approval.profile_hash !== profileHash(profile) ||
       report.profile_hash !== approval.profile_hash ||
       approval.report_hash !== hash(verification)
     )
-      return false;
+      return undefined;
     // Parsing the model-owned parts here also prevents malformed reports from
     // acquiring publishing rights just by adding a review status.
     const assessment = parseAssessment(report.assessment);
@@ -306,12 +312,17 @@ export function hasApproval(
       mechanical: strings(report.mechanical, 'mechanical'),
       evidence_errors: strings(report.evidence_errors, 'evidence_errors'),
     } as unknown as Report;
-    return (
-      Array.isArray(report.sources) &&
-      strings(report.blockers, 'blockers').length === 0 &&
-      blockers(parsed, paths).length === 0
-    );
+    if (
+      !Array.isArray(report.sources) ||
+      strings(report.blockers, 'blockers').length > 0 ||
+      blockers(
+        parsed,
+        passages(text).map(({ path }) => path),
+      ).length > 0
+    )
+      return undefined;
+    return { isCurrentFor: (currentDates) => dates === currentDates };
   } catch {
-    return false;
+    return undefined;
   }
 }

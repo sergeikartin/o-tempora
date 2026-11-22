@@ -18,11 +18,11 @@ import {
   type Assessment,
   blockers,
   checkEvidence,
-  hasApproval,
   hash,
   POLICY_VERSION,
   profileHash,
   type Report,
+  readProfileApproval,
   type Source,
 } from './policy.js';
 import { auditProfile, type Research } from './researcher.js';
@@ -270,10 +270,11 @@ test('verified content ships through Output; changing prose, identity, policy or
   const { root, options } = await setup(t);
   assert.equal((await verifyProfile(options)).status, 'approved');
   const { record, report } = await saved(options);
-  const paths = passages(parseModelProfile(record, 'test')).map(
-    (item) => item.path,
+  const profile = parseModelProfile(record, 'test');
+  assert.equal(
+    readProfileApproval(record, report, profile)?.isCurrentFor('1643–1727'),
+    true,
   );
-  assert.equal(hasApproval(record, report, paths), true);
   const files = await readRawProfiles(root);
   assert.equal(
     shipProfiles(files, [
@@ -295,23 +296,34 @@ test('verified content ships through Output; changing prose, identity, policy or
       meta: { ...record.meta, source: { wikidata_qid: 'Q1' } },
     }),
     () => ({ ...record, meta: { ...record.meta, locale: 'ru' } }),
+    () => ({
+      ...record,
+      meta: {
+        ...record.meta,
+        review: { ...record.meta.review, status: 'draft' },
+      },
+    }),
   ])
-    assert.equal(hasApproval(change(), report, paths), false);
+    assert.equal(readProfileApproval(change(), report, profile), undefined);
   assert.equal(
-    hasApproval(record, { ...report, verified_at: 'tampered' }, paths),
-    false,
+    readProfileApproval(
+      record,
+      { ...report, verified_at: 'tampered' },
+      profile,
+    ),
+    undefined,
   );
   assert.equal(
-    hasApproval(record, { ...report, policy_version: 'old' }, paths),
-    false,
+    readProfileApproval(record, { ...report, policy_version: 'old' }, profile),
+    undefined,
   );
-  assert.equal(hasApproval(record, undefined, paths), false);
+  assert.equal(readProfileApproval(record, undefined, profile), undefined);
   assert.equal(
     parseRawProfile(
       { ...raw(), meta: { ...raw().meta, review: { status: 'edited' } } },
       'test',
-    ).approved,
-    false,
+    ).approval,
+    undefined,
   );
   const skipped = await verifyProfile({
     ...options,
@@ -436,7 +448,7 @@ test('an edited Profile can earn approval without changing its protected content
 test('malformed old reports withhold publishing and can be replaced by fresh verification', async (t) => {
   const { root, options } = await setup(t);
   await writeFile(reportPathFor(options.filePath), '{broken');
-  assert.equal((await readRawProfiles(root))[0]?.approved, false);
+  assert.equal((await readRawProfiles(root))[0]?.approval, undefined);
   assert.equal((await verifyProfile(options)).status, 'approved');
 });
 

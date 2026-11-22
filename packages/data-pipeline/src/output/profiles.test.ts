@@ -62,8 +62,7 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
     qid: 'Q935',
     locale: 'en',
     status: 'reviewed',
-    approved: true,
-    verifiedDates: '1643–1727',
+    approval: { isCurrentFor: (dates) => dates === '1643–1727' },
     overview: 'Newton was an **English** mathematician.',
     key_moments: [
       {
@@ -79,13 +78,13 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
   };
 }
 
-test('only approved reviewed and edited Profiles ship', () => {
+test('only Profiles with approval ship', () => {
   const profiles = shipProfiles(
     [
       rawProfile({ qid: 'Q935', status: 'reviewed' }),
       rawProfile({ qid: 'Q9047', status: 'edited' }),
-      rawProfile({ qid: 'Q362', status: 'draft' }),
-      rawProfile({ qid: 'Q900', status: 'edited', approved: false }),
+      rawProfile({ qid: 'Q362', status: 'draft', approval: undefined }),
+      rawProfile({ qid: 'Q900', status: 'edited', approval: undefined }),
     ],
     TARGETS,
   );
@@ -100,7 +99,12 @@ test('a draft Profile with bad markup does not block the others', () => {
   const profiles = shipProfiles(
     [
       rawProfile({ qid: 'Q935' }),
-      rawProfile({ qid: 'Q362', status: 'draft', overview: 'Unpaired **bold' }),
+      rawProfile({
+        qid: 'Q362',
+        status: 'draft',
+        approval: undefined,
+        overview: 'Unpaired **bold',
+      }),
     ],
     TARGETS,
   );
@@ -340,7 +344,6 @@ test('parseRawProfile reads the fields Output needs from the raw file', () => {
     qid: 'Q935',
     locale: 'en',
     status: 'reviewed',
-    approved: false,
     overview: 'Overview.',
     key_moments: [{ date: '1687', title: 'T', text: 'Text.' }],
     deep_facts: [{ text: 'Fact.', isLegend: false }],
