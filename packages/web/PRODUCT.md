@@ -12,11 +12,11 @@ Curious, history-minded visitors arriving cold from a shared link (HN, Reddit, s
 
 ## Product Purpose
 
-O Tempora (otempora.info) is an interactive timeline of world history, roughly 800 BCE to the present. Three lanes (People, Conflicts, Milestones) share one time axis, so the overlap of lives and events is visible at a glance. Success is a cold visitor understanding that within seconds and wandering the timeline without instruction.
+O Tempora (otempora.info) is an interactive timeline of world history, roughly 800 BCE to the present. Three lanes (People, Conflicts, Milestones) share one time axis, so the overlap of lives and events is visible at a glance. Profiles give visitors a way to learn about an entity and follow Connections to related entities. Success is a cold visitor understanding the timeline within seconds and exploring without instruction.
 
 ## Positioning
 
-People, conflicts and milestones on one shared, pannable axis, with density controlled by a fame-gated Detail Level (Legendary, Mainstream, Specialized, Deep Cut) backed by real scores (Pantheon HPI for People; blended Wikidata sitelinks and Wikimedia pageviews for Conflicts and Milestones). Fully static: no accounts, no editing, no live fetching.
+People, conflicts and milestones on one shared, pannable axis, with density controlled by a fame-gated Detail Level (Legendary, Mainstream, Specialized, Deep Cut) backed by real scores (Pantheon HPI for People; blended Wikidata sitelinks and Wikimedia pageviews for Conflicts and Milestones). The site serves static datasets and loads published Profiles on demand. Visitors can browse without an account.
 
 ## Operating Context
 

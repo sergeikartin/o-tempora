@@ -26,6 +26,6 @@ The HTML entries load Umami directly. The dev server strips the script to suppre
 | `landing_curiosity_select` | `curiosity`, `method` (chip, stepper) | Visitor picks a Curiosity |
 | `landing_cta_click` | `curiosity` | Landing CTA click |
 
-`period` is the viewport center’s century bucket, such as “1800s” or “3rd century BCE.” `curiosity` is an ID from the fixed Curiosity list. Opening one from a landing hash leaves the selection event uncounted.
+`period` is the viewport center’s century bucket, such as “1800s” or “3rd century BCE.” `curiosity` is an ID from the fixed Curiosity list. `landing_curiosity_select` records a visitor’s chip or stepper action. Opening a Curiosity from the Landing Page hash emits no selection event.
 
 In `TimelineCanvas.tsx`, `skipNextPanTrackRef` skips the scroll event caused by initial positioning or zoom recentering, keeping those writes out of the pan debounce.

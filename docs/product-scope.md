@@ -4,7 +4,7 @@ O Tempora helps visitors see whose lives overlapped and what else was happening.
 
 ## Visitor flow
 
-- The Landing Page offers switchable Curiosities with dated marks, one action to open the lead entity, and source and data-license credits.
+- The Landing Page offers switchable Curiosities with dated marks, one action to open the lead entity at a specific Profile passage when one is linked, and source and data-license credits.
 - The default timeline opens at 1740–1860 and Mainstream. Visitors pan or zoom, adjust Detail Level and combine Occupation, Region, and Conflicts & Milestones filters. Search works within the active filters and Detail Level.
 - A mark or Search pick opens one Selection. The detail panel shows the locale’s Profile when available and the Description otherwise. Entity Links fit to the selected span and can open a Profile passage. Back retraces Connection hops.
 - Help explains navigation, marks, colors and Detail Level. Visitors open it with the Top Bar or `?` and use it to reach the language switch and About. About credits the data and code licenses.

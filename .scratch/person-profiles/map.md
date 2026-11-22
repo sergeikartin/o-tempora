@@ -6,7 +6,7 @@ A spec at `.scratch/person-profiles/spec.md` for **Profiles**: LLM-generated, me
 
 ## Implementation status
 
-Types/output, plan/finalize, runtime panel loading, single-entity Selection, Connection history and the landing handoff are implemented (tickets 10, 11, 13–15 and 17 resolved). Thirty raw Profiles exist: 20 People, 4 Conflicts and 6 Milestones. Cleopatra, Gregorian calendar and Isaac Newton are automatically approved and published in both locales (Russian uses approved automatic translations); the other 27 remain `draft`. [Manual audits of five](reviews/README.md) found corrections and evidence gaps; sample membership and Connection-target presence are checked. Review automation (08) is implemented. The remaining work is live batch verification/audit (12) and the docs/ADR sweep (16).
+Types/output, plan/finalize, runtime panel loading, single-entity Selection, Connection history and the landing handoff are implemented. Thirty raw Profiles exist: 20 People, 4 Conflicts and 6 Milestones. Cleopatra, Gregorian calendar, Isaac Newton, Founding of the Roman Empire and World War II are published in both locales. The other 25 remain drafts. Review automation and the documentation sweep are complete. [Batch verification and audit](issues/12-generate-and-review-the-30.md) remain open.
 
 ## Notes
 
@@ -44,7 +44,6 @@ Settled in charting:
 
 - Rollout beyond Legendary and beyond the 30-entity sample.
 - Independently authored Russian Profiles remain deferred; the pipeline automatically translates approved English Profiles and audits fidelity before Russian publication.
-- [Docs and ADRs](issues/16-docs-and-adrs.md): unblocked. Selection-as-one-entity and runtime-fetch ADRs exist; landing fragments, Connection history and the living-doc sweep still need reconciliation.
 - [Generate and review the 30](issues/12-generate-and-review-the-30.md): drafts are written; live verification, sampled human audit and remaining acceptance evidence are pending.
 
 ## Out of scope

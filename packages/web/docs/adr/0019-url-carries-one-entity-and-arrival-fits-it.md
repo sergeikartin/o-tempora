@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0021-entity-links-can-open-a-profile-passage.md
 supersedes: 0016-url-carries-a-selection-and-arrival-fits-it.md
 ---
 
