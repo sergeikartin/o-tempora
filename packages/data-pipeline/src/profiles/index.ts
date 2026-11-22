@@ -1,21 +1,18 @@
-import path from 'node:path';
 import { parseQidsFlag } from '../fetch/qid-filter.js';
 import { finalizeProfiles } from './finalize.js';
+import {
+  flagValue,
+  routeProfileModels,
+  routeVerificationModels,
+} from './model-routing.js';
 import { INCOMING_DIR, RAW_PROFILES_DIR } from './paths.js';
 import { formatPlan, type PlanEntry, planProfiles } from './plan.js';
 import { loadPrompt, loadPromptMarkdown, loadWriterModel } from './prompt.js';
-import {
-  createCompleter,
-  DEFAULT_MODEL,
-  isProvider,
-  PROVIDERS,
-} from './providers.js';
-import { SessionBridge } from './session.js';
+import { PROVIDERS } from './providers.js';
 import { readStoredProfiles } from './store.js';
 import { formatDates, loadSubjects } from './subjects.js';
 import { translateProfile } from './translation.js';
 import { auditSavedProfile } from './verification/audit-saved.js';
-import { createResearcher } from './verification/researcher.js';
 import { verifyProfile } from './verification/runner.js';
 import { resolveArticleQids } from './wikipedia-qids.js';
 import { type WriteEntry, writeProfiles } from './writer.js';
@@ -29,44 +26,6 @@ const USAGE = `Usage: profiles <plan|write|finalize|verify|audit|translate> [fla
   translate --qids=Q1,Q2,... [--force] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--audit-model=<id>] [--execution=api|session --session-dir=<absolute directory>]`;
 
 const DEFAULT_CONCURRENCY = 3;
-
-function sessionFromFlags(argv: readonly string[]): SessionBridge | undefined {
-  const execution = flagValue(argv, 'execution') ?? 'api';
-  if (execution !== 'api' && execution !== 'session') {
-    throw new Error('--execution must be api or session');
-  }
-  const directory = flagValue(argv, 'session-dir');
-  if (execution === 'api') {
-    if (directory !== undefined)
-      throw new Error('--session-dir requires --execution=session');
-    return undefined;
-  }
-  if (!directory || !path.isAbsolute(directory))
-    throw new Error(
-      '--execution=session requires --session-dir=<absolute directory>',
-    );
-  if (
-    argv.some((arg) =>
-      [
-        '--model=',
-        '--audit-model=',
-        '--audit-provider=',
-        '--translation-model=',
-        '--provider=',
-      ].some((prefix) => arg.startsWith(prefix)),
-    )
-  ) {
-    throw new Error(
-      'Session agents are selected by the conversation; omit provider/model flags',
-    );
-  }
-  return new SessionBridge({ directory, log: console.log });
-}
-
-function flagValue(argv: readonly string[], name: string): string | undefined {
-  const prefix = `--${name}=`;
-  return argv.find((arg) => arg.startsWith(prefix))?.slice(prefix.length);
-}
 
 async function planFromFlags(argv: readonly string[]): Promise<PlanEntry[]> {
   const qids = parseQidsFlag(argv);
@@ -93,12 +52,7 @@ async function plan(argv: readonly string[]): Promise<void> {
 }
 
 async function write(argv: readonly string[]): Promise<void> {
-  const session = sessionFromFlags(argv);
-  const provider = flagValue(argv, 'provider') ?? 'openai';
-  if (!isProvider(provider)) {
-    throw new Error(`--provider must be one of ${PROVIDERS.join(', ')}`);
-  }
-  const model = flagValue(argv, 'model') ?? DEFAULT_MODEL[provider];
+  const models = routeProfileModels('write', argv);
   const concurrency = Number(
     flagValue(argv, 'concurrency') ?? DEFAULT_CONCURRENCY,
   );
@@ -111,14 +65,14 @@ async function write(argv: readonly string[]): Promise<void> {
     (entry): entry is WriteEntry => entry.kind === 'write',
   );
   console.log(
-    `${toWrite.length} to write, ${entries.length - toWrite.length} skipped, with ${session ? 'session agents' : `${provider}/${model}`}`,
+    `${toWrite.length} to write, ${entries.length - toWrite.length} skipped, with ${models.label}`,
   );
   if (toWrite.length === 0) return;
   const result = await writeProfiles({
     entries: toWrite,
     promptMarkdown: await loadPromptMarkdown(),
-    complete: session?.complete ?? createCompleter(provider, model),
-    provider: session ? 'session' : provider,
+    complete: models.complete,
+    provider: models.provider,
     concurrency,
   });
   for (const file of result.written) console.log(`staged ${file}`);
@@ -186,25 +140,11 @@ async function verify(argv: readonly string[]): Promise<void> {
     throw new Error(
       `--qids is required: verification runs per chosen batch\n${USAGE}`,
     );
-  const session = sessionFromFlags(argv);
-  const model = flagValue(argv, 'model') ?? DEFAULT_MODEL.openai;
-  const auditProvider = flagValue(argv, 'audit-provider') ?? 'openai';
-  if (!isProvider(auditProvider))
-    throw new Error(`--audit-provider must be one of ${PROVIDERS.join(', ')}`);
-  const auditModel =
-    flagValue(argv, 'audit-model') ??
-    (auditProvider === 'openai' ? model : DEFAULT_MODEL[auditProvider]);
-  const openAiCompletionModel = auditProvider === 'openai' ? auditModel : model;
-  const translationModel =
-    flagValue(argv, 'translation-model') ?? openAiCompletionModel;
-  let translator: ReturnType<typeof createCompleter> | undefined;
+  const { research, complete } = routeVerificationModels(argv);
   const stored = await readStoredProfiles(RAW_PROFILES_DIR);
   const subjects = new Map(
     loadSubjects().map((subject) => [subject.qid, subject]),
   );
-  let research: ReturnType<typeof createResearcher> | undefined;
-  let complete: ReturnType<typeof createCompleter> | undefined;
-  let externalAudit: ReturnType<typeof createCompleter> | undefined;
   const counts = { approved: 0, held: 0, skipped: 0, retry: 0, failed: 0 };
   for (const qid of qids) {
     try {
@@ -215,20 +155,8 @@ async function verify(argv: readonly string[]): Promise<void> {
       const result = await verifyProfile({
         filePath: entry.filePath,
         subject,
-        research: (...args) => {
-          research ??= session?.research ?? createResearcher(model);
-          return research(...args);
-        },
-        complete: (prompt, role) => {
-          if (role === 'audit' && auditProvider !== 'openai') {
-            externalAudit ??= createCompleter(auditProvider, auditModel);
-            return externalAudit(prompt, role);
-          }
-          complete ??=
-            session?.complete ??
-            createCompleter('openai', openAiCompletionModel);
-          return complete(prompt, role);
-        },
+        research,
+        complete,
         resolve: resolveArticleQids,
         repair: argv.includes('--repair'),
         force: argv.includes('--force'),
@@ -243,16 +171,7 @@ async function verify(argv: readonly string[]): Promise<void> {
         const translation = await translateProfile({
           filePath: entry.filePath,
           dates: formatDates(subject.dateSpan),
-          complete: (prompt, role) => {
-            if (!session && role === 'translate') {
-              translator ??= createCompleter('openai', translationModel);
-              return translator(prompt, role);
-            }
-            complete ??=
-              session?.complete ??
-              createCompleter('openai', openAiCompletionModel);
-            return complete(prompt, role);
-          },
+          complete,
         });
         console.log(
           `${qid}: Russian translation ${translation.status}; ${translation.filePath}`,
@@ -281,29 +200,18 @@ async function audit(argv: readonly string[]): Promise<void> {
   if (unknown) throw new Error(`Unknown audit flag: ${unknown}\n${USAGE}`);
   const qids = parseQidsFlag(argv);
   if (!qids) throw new Error('--qids is required for a saved-evidence audit');
-  const provider = flagValue(argv, 'provider') ?? 'openai';
-  if (!isProvider(provider))
-    throw new Error(`--provider must be one of ${PROVIDERS.join(', ')}`);
-  const model = flagValue(argv, 'model') ?? DEFAULT_MODEL[provider];
+  const { provider, complete } = routeProfileModels('audit', argv);
   const stored = await readStoredProfiles(RAW_PROFILES_DIR);
   const subjects = new Map(
     loadSubjects().map((subject) => [subject.qid, subject]),
   );
-  let complete: ReturnType<typeof createCompleter> | undefined;
   for (const qid of qids) {
     try {
       const entry = stored.get(qid);
       const subject = subjects.get(qid);
       if (!entry || !subject)
         throw new Error('No raw Profile or dataset entity for this QID');
-      const result = await auditSavedProfile(
-        entry.filePath,
-        subject,
-        (prompt, role) => {
-          complete ??= createCompleter(provider, model);
-          return complete(prompt, role);
-        },
-      );
+      const result = await auditSavedProfile(entry.filePath, subject, complete);
       console.log(JSON.stringify({ qid, provider, ...result }));
     } catch (error) {
       console.error(
@@ -331,22 +239,7 @@ async function translate(argv: readonly string[]): Promise<void> {
     throw new Error(`Unknown translation flag: ${unknown}\n${USAGE}`);
   const qids = parseQidsFlag(argv);
   if (!qids) throw new Error(`--qids is required\n${USAGE}`);
-  const session = sessionFromFlags(argv);
-  const provider = flagValue(argv, 'provider') ?? 'openai';
-  if (!isProvider(provider)) throw new Error(`Unknown provider: ${provider}`);
-  const model = flagValue(argv, 'model') ?? DEFAULT_MODEL[provider];
-  const auditModel = flagValue(argv, 'audit-model') ?? model;
-  let writer: ReturnType<typeof createCompleter> | undefined;
-  let auditor: ReturnType<typeof createCompleter> | undefined;
-  const complete: ReturnType<typeof createCompleter> = (prompt, role) => {
-    if (session) return session.complete(prompt, role);
-    if (role === 'translation-audit') {
-      auditor ??= createCompleter(provider, auditModel);
-      return auditor(prompt, role);
-    }
-    writer ??= createCompleter(provider, model);
-    return writer(prompt, role);
-  };
+  const { complete } = routeProfileModels('translate', argv);
   const stored = await readStoredProfiles(RAW_PROFILES_DIR);
   const subjects = new Map(
     loadSubjects().map((subject) => [subject.qid, subject]),

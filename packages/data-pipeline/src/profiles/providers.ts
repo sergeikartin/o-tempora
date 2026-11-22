@@ -6,12 +6,6 @@ import type { TokenUsage } from './usage.js';
 export const PROVIDERS = ['openai', 'anthropic', 'gemini'] as const;
 export type Provider = (typeof PROVIDERS)[number];
 
-export const DEFAULT_MODEL: Record<Provider, string> = {
-  openai: 'gpt-6-astra',
-  anthropic: 'claude-opus-5-5',
-  gemini: 'gemini-4-argon',
-};
-
 // Reasoning tokens count against the output cap, so it leaves room for them
 // beyond the ~6k tokens of a Profile.
 const MAX_OUTPUT_TOKENS = 32_000;

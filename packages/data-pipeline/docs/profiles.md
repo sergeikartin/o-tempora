@@ -8,6 +8,8 @@ Writing and verification run separately from `build-data`. Run these commands fr
 
 `write` and `verify` default to provider API calls. Add `--execution=session --session-dir=<absolute directory>` to have the active conversation dispatch subagents for every model task, without provider API keys. See the [session workflow and subagent contract](profile-sessions.md).
 
+The [Profile model routing module](../src/profiles/model-routing.ts) owns provider defaults, model overrides and API or session selection for `write`, `verify`, `audit` and `translate`.
+
 | Command | Behavior |
 |---|---|
 | `plan --qids=Q1,Q2` | Prints writer inputs and staging paths for the chosen batch. |
@@ -21,7 +23,7 @@ Writing and verification run separately from `build-data`. Run these commands fr
 
 ## Writer provenance
 
-API writing accepts `--provider=openai|anthropic|gemini`, `--model=<id>` and `--concurrency=<n>` (default 3). A failed item leaves the rest of the batch running. [Default models](../src/profiles/providers.ts) · [Credentials](../../../docs/config-variables.md#profile-credentials)
+API writing accepts `--provider=openai|anthropic|gemini`, `--model=<id>` and `--concurrency=<n>` (default 3). A failed item leaves the rest of the batch running. [Credentials](../../../docs/config-variables.md#profile-credentials)
 
 `finalize --run-id=<id>` groups records and preserves the served model and staged prompt provenance. API writers stage `generation` with `prompt_version`, `prompt_hash` and `generated_at` from the prompt they used. Agents can supply those fields when known. Missing values stay null and planning treats an unknown prompt hash as stale.
 
