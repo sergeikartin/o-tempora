@@ -15,6 +15,8 @@ export type {
 } from '../../../shared/lib/entity';
 export { ENTITY_TYPES } from '../../../shared/lib/entity';
 
+type PendingSelection = { via: 'link' | 'connection'; slug: string };
+
 function currentLinkSlug(): string | null {
   return typeof window === 'undefined'
     ? null
@@ -43,24 +45,26 @@ export function useSelection() {
   // without depending on it (and losing their stable identity).
   const memberRef = useRef(member);
   memberRef.current = member;
-  const [pendingLinkSlug, setPendingLinkSlug] = useState<string | null>(null);
+  const [pending, setPending] = useState<PendingSelection | null>(null);
   const [anchor, setAnchor] = useState<ProfileAnchor | null>(null);
 
   // Read after mount rather than in the useState initializer: the prerendered
   // HTML has no link, and hydration doesn't patch attribute mismatches (the
   // language switch's href), so the first client render must match it.
   useEffect(() => {
-    setPendingLinkSlug(currentLinkSlug());
+    const slug = currentLinkSlug();
+    if (slug) setPending({ via: 'link', slug });
   }, []);
 
   useEffect(() => {
     const handlePopState = () => {
       const slug = currentLinkSlug();
       if (!slug) {
+        memberRef.current = null;
         setMember(null);
         setAnchor(null);
       }
-      setPendingLinkSlug(slug);
+      setPending(slug ? { via: 'link', slug } : null);
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -70,7 +74,7 @@ export function useSelection() {
     const previous = memberRef.current;
     memberRef.current = next;
     setMember(next);
-    setPendingLinkSlug(null);
+    setPending(null);
     const isSameEntity = previous?.slug === next.slug;
     if (!isSameEntity) setAnchor(null);
     writeEntityLink(
@@ -87,7 +91,7 @@ export function useSelection() {
     const isSameEntity = memberRef.current?.slug === next.slug;
     memberRef.current = next;
     setMember(next);
-    setPendingLinkSlug(null);
+    setPending(null);
     if (!isSameEntity) setAnchor(null);
     writeEntityLink(next.slug, 'push', isSameEntity);
     trackEvent('entity_view', { entityType: next.ref.entityType });
@@ -99,7 +103,7 @@ export function useSelection() {
     memberRef.current = resolved;
     setMember(resolved);
     setAnchor(readEntityLinkAnchor(window.location.hash));
-    setPendingLinkSlug(null);
+    setPending(null);
     writeEntityLink(resolved.slug, 'replace', true);
     trackEvent('selection_open_link');
   }, []);
@@ -110,9 +114,25 @@ export function useSelection() {
     memberRef.current = null;
     setMember(null);
     setAnchor(null);
-    setPendingLinkSlug(null);
+    setPending(null);
     writeEntityLink(null, 'replace');
   }, []);
 
-  return { member, anchor, pendingLinkSlug, replace, follow, openLink, clear };
+  const requestConnection = useCallback((slug: string) => {
+    setPending({ via: 'connection', slug });
+  }, []);
+
+  const cancelPending = useCallback(() => setPending(null), []);
+
+  return {
+    member,
+    anchor,
+    pending,
+    replace,
+    follow,
+    openLink,
+    clear,
+    requestConnection,
+    cancelPending,
+  };
 }

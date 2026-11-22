@@ -1,36 +1,12 @@
-import {
-  lazy,
-  Suspense,
-  use,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-import { useFameScoreFilters } from '../features/filter-by-fame-score';
+import { lazy, Suspense, use, useEffect, useMemo, useState } from 'react';
 import { useOccupationDomainFilter } from '../features/filter-by-occupation-domain';
 import { useRegionFilter } from '../features/filter-by-region';
 import { useConflictsMilestonesFilter } from '../features/filter-conflicts-milestones';
-import {
-  type SearchResult,
-  useTimelineSearch,
-} from '../features/search-timeline-entities';
-import {
-  type EntityType,
-  type SelectedEntityRef,
-  type SelectionMember,
-  useSelection,
-} from '../features/select-timeline-entity';
-import {
-  DETAIL_LEVELS,
-  type DetailLevel,
-  type FameScoreLane,
-  switchLanguageHref,
-} from '../shared/config';
+import { useTimelineSearch } from '../features/search-timeline-entities';
+import { DETAIL_LEVELS, type FameScoreLane } from '../shared/config';
 import {
   type ActiveFilters,
   entitySpan,
-  type SpannedEntity,
   spanYears,
   visibleConflicts,
   visibleMilestones,
@@ -47,11 +23,11 @@ import {
   type ResolvedConnection,
   useProfile,
 } from '../widgets/detail-panel';
-import { type ArrivalFit, TimelineCanvas } from '../widgets/timeline-canvas';
+import { TimelineCanvas } from '../widgets/timeline-canvas';
 import { TopBar } from '../widgets/top-bar';
 import styles from './App.module.css';
 import { type LocaleDatasets, localeDatasetsPromise } from './locale-datasets';
-import { useDetailLevelDatasets } from './use-detail-level-datasets';
+import { useSelectionNavigation } from './use-selection-navigation';
 
 // Both paint nothing until opened; lazy-loading keeps their code out of the
 // bundle that must parse and execute before the initial timeline paint.
@@ -93,100 +69,38 @@ export function App({ initialDatasets }: AppProps = {}) {
   );
 }
 
-const LANE_BY_ENTITY_TYPE: Record<EntityType, FameScoreLane> = {
-  person: 'people',
-  conflict: 'conflicts',
-  milestone: 'milestones',
-};
-
 const LANE_FALLBACK_COLOR: Record<FameScoreLane, string> = {
   people: 'var(--color-domain-public-figure)',
   conflicts: 'var(--color-conflict)',
   milestones: 'var(--color-text-secondary)',
 };
 
-interface FoundEntity {
-  id: string;
-  slug: string;
-  entityType: EntityType;
-  lane: FameScoreLane;
-  fameScore: number;
-  entity: SpannedEntity;
-}
-
-function findEntity(
-  datasets: LocaleDatasets,
-  matches: (entity: { id: string; slug: string }) => boolean,
-): FoundEntity | null {
-  const entityTypes: EntityType[] = ['person', 'conflict', 'milestone'];
-  for (const entityType of entityTypes) {
-    const lane = LANE_BY_ENTITY_TYPE[entityType];
-    const entity = (
-      datasets[lane] as (SpannedEntity & {
-        id: string;
-        slug: string;
-        fameScore: number;
-      })[]
-    ).find(matches);
-    if (entity) {
-      return {
-        id: entity.id,
-        slug: entity.slug,
-        entityType,
-        lane,
-        fameScore: entity.fameScore,
-        entity,
-      };
-    }
+function isEntityHidden(selection: DetailPanelEntity, filters: ActiveFilters) {
+  switch (selection.entityType) {
+    case 'person':
+      return visiblePeople([selection.entity], filters).length === 0;
+    case 'conflict':
+      return visibleConflicts([selection.entity], filters).length === 0;
+    case 'milestone':
+      return visibleMilestones([selection.entity], filters).length === 0;
   }
-  return null;
-}
-
-function levelIndexOf(found: FoundEntity): number {
-  const index = DETAIL_LEVELS.findIndex(
-    (level) => level.values[found.lane] <= found.fameScore,
-  );
-  return index === -1 ? DETAIL_LEVELS.length - 1 : index;
 }
 
 function AppContent({ initialDatasets }: AppProps) {
   const level1And2 = initialDatasets ?? use(localeDatasetsPromise);
+  const navigation = useSelectionNavigation(level1And2);
+  const { datasets, detailLevel, fameScoreValues, selectedEntity } = navigation;
   const {
-    datasets: {
-      people: peopleData,
-      conflicts: conflictsData,
-      milestones: milestonesData,
-    },
-    loadingLevelIds,
-    requestLevel,
-  } = useDetailLevelDatasets(level1And2);
-  const {
-    values: fameScoreValues,
-    level: selectedLevel,
-    setLevel: setFameScoreLevel,
-  } = useFameScoreFilters();
-  const handleSelectDetailLevel = useCallback(
-    (level: DetailLevel) => {
-      requestLevel(level.id);
-      setFameScoreLevel(level);
-    },
-    [requestLevel, setFameScoreLevel],
-  );
+    people: peopleData,
+    conflicts: conflictsData,
+    milestones: milestonesData,
+  } = datasets;
   const { selectedDomains, toggleDomain } = useOccupationDomainFilter();
   const { selectedRegions, toggleRegion } = useRegionFilter();
   const {
     selectedValues: selectedConflictsMilestonesValues,
     toggleValue: toggleConflictsMilestonesValue,
   } = useConflictsMilestonesFilter();
-  const {
-    member,
-    anchor,
-    pendingLinkSlug,
-    replace: replaceSelection,
-    follow: followConnection,
-    openLink: openEntityLink,
-    clear: closeDetailPanel,
-  } = useSelection();
   const {
     query: searchQuery,
     setQuery: setSearchQuery,
@@ -200,9 +114,6 @@ function AppContent({ initialDatasets }: AppProps) {
     selectedRegions,
     selectedConflictsMilestonesValues,
   });
-  const [searchJumpTarget, setSearchJumpTarget] =
-    useState<SelectedEntityRef | null>(null);
-  const [arrivalFit, setArrivalFit] = useState<ArrivalFit | null>(null);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
 
@@ -225,126 +136,6 @@ function AppContent({ initialDatasets }: AppProps) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Entity Links carry no Detail Level, so load deeper deltas in order to stop at the
-  // first level that contains the slug.
-  useEffect(() => {
-    if (!pendingLinkSlug) return;
-    const found = findEntity(
-      {
-        people: peopleData,
-        conflicts: conflictsData,
-        milestones: milestonesData,
-      },
-      (entity) => entity.slug === pendingLinkSlug,
-    );
-    if (!found) {
-      if (loadingLevelIds.includes('specialized')) {
-        requestLevel('specialized');
-        return;
-      }
-      if (loadingLevelIds.includes('deep-cut')) {
-        requestLevel('deep-cut');
-        return;
-      }
-      closeDetailPanel();
-      return;
-    }
-    const currentIndex = DETAIL_LEVELS.indexOf(selectedLevel);
-    const neededLevel = DETAIL_LEVELS.slice(currentIndex).find(
-      (candidate) => candidate.values[found.lane] <= found.fameScore,
-    );
-    if (neededLevel && neededLevel.id !== selectedLevel.id) {
-      handleSelectDetailLevel(neededLevel);
-    }
-    const opened: SelectionMember = {
-      ref: { id: found.id, entityType: found.entityType },
-      slug: found.slug,
-    };
-    openEntityLink(opened);
-    setArrivalFit({
-      years: spanYears(entitySpan(found.entity)),
-      entity: opened.ref,
-    });
-  }, [
-    pendingLinkSlug,
-    peopleData,
-    conflictsData,
-    milestonesData,
-    loadingLevelIds,
-    selectedLevel,
-    requestLevel,
-    handleSelectDetailLevel,
-    openEntityLink,
-    closeDetailPanel,
-  ]);
-
-  const handleEntityClick = useCallback(
-    (ref: SelectedEntityRef) => {
-      const found = findEntity(
-        {
-          people: peopleData,
-          conflicts: conflictsData,
-          milestones: milestonesData,
-        },
-        (entity) => entity.id === ref.id,
-      );
-      if (!found) return;
-      replaceSelection({ ref, slug: found.slug });
-    },
-    [replaceSelection, peopleData, conflictsData, milestonesData],
-  );
-
-  // A fresh target lets re-picking the same search result trigger another pan.
-  const handleSelectSearchResult = useCallback(
-    (result: SearchResult) => {
-      const ref: SelectedEntityRef = {
-        id: result.id,
-        entityType: result.entityType,
-      };
-      replaceSelection({ ref, slug: result.slug });
-      setSearchJumpTarget(ref);
-      trackEvent('search_jump', { entityType: result.entityType });
-    },
-    [replaceSelection],
-  );
-
-  // Connection targets can bypass active filters so visitors can follow every listed link.
-  const handleOpenConnection = useCallback(
-    (slug: string) => {
-      const found = findEntity(
-        {
-          people: peopleData,
-          conflicts: conflictsData,
-          milestones: milestonesData,
-        },
-        (entity) => entity.slug === slug,
-      );
-      if (!found) return;
-      const neededLevel = DETAIL_LEVELS[levelIndexOf(found)];
-      if (
-        neededLevel &&
-        DETAIL_LEVELS.indexOf(neededLevel) >
-          DETAIL_LEVELS.indexOf(selectedLevel)
-      ) {
-        handleSelectDetailLevel(neededLevel);
-      }
-      const ref: SelectedEntityRef = {
-        id: found.id,
-        entityType: found.entityType,
-      };
-      followConnection({ ref, slug });
-      setSearchJumpTarget(ref);
-    },
-    [
-      peopleData,
-      conflictsData,
-      milestonesData,
-      selectedLevel,
-      handleSelectDetailLevel,
-      followConnection,
-    ],
-  );
-
   const filters = useMemo<ActiveFilters>(
     () => ({
       fameScoreValues,
@@ -360,126 +151,63 @@ function AppContent({ initialDatasets }: AppProps) {
     ],
   );
 
-  const lanes = useMemo(
-    () => ({
-      people: peopleData,
-      conflicts: conflictsData,
-      milestones: milestonesData,
-    }),
-    [peopleData, conflictsData, milestonesData],
-  );
-
-  const selected = useMemo<{
-    entity: DetailPanelEntity;
-    isHidden: boolean;
-    hasProfile: boolean;
-  } | null>(() => {
-    if (!member) return null;
-    const { ref } = member;
-    if (ref.entityType === 'person') {
-      const person = lanes.people.find((candidate) => candidate.id === ref.id);
-      if (!person) return null;
-      return {
-        entity: { entityType: 'person', entity: person },
-        isHidden: visiblePeople([person], filters).length === 0,
-        hasProfile: Boolean(person.hasProfile),
-      };
-    }
-    if (ref.entityType === 'conflict') {
-      const entry = lanes.conflicts.find(
-        (candidate) => candidate.id === ref.id,
-      );
-      if (!entry) return null;
-      return {
-        entity: { entityType: 'conflict', entity: entry },
-        isHidden: visibleConflicts([entry], filters).length === 0,
-        hasProfile: Boolean(entry.hasProfile),
-      };
-    }
-    const milestone = lanes.milestones.find(
-      (candidate) => candidate.id === ref.id,
-    );
-    if (!milestone) return null;
-    return {
-      entity: { entityType: 'milestone', entity: milestone },
-      isHidden: visibleMilestones([milestone], filters).length === 0,
-      hasProfile: Boolean(milestone.hasProfile),
-    };
-  }, [member, lanes, filters]);
-
   const profileState = useProfile(
-    selected?.hasProfile && member ? member.slug : null,
+    selectedEntity?.entity.hasProfile ? selectedEntity.entity.slug : null,
   );
+  const { anchor, findBySlug } = navigation;
 
   const panelMember = useMemo<DetailPanelMember | null>(() => {
-    if (!selected) return null;
+    if (!selectedEntity) return null;
     let profileView: ProfileViewState | undefined;
     if (profileState?.status === 'ready') {
       const { connections: shipped, ...profile } = profileState.profile;
       const connections: ResolvedConnection[] = shipped.map((connection) => {
-        const target = findEntity(
-          lanes,
-          (candidate) => candidate.slug === connection.slug,
-        );
+        const target = findBySlug(connection.slug);
         const levelIndex = connection.detailLevel - 1;
         return {
           slug: connection.slug,
           name: connection.name,
           reason: connection.reason,
           color: target
-            ? laneColor({
-                entityType: target.entityType,
-                entity: target.entity,
-              } as DetailPanelEntity)
+            ? laneColor(target)
             : LANE_FALLBACK_COLOR[connection.lane],
           levelIndex,
-          isShown: levelIndex <= DETAIL_LEVELS.indexOf(selectedLevel),
+          isShown: levelIndex <= DETAIL_LEVELS.indexOf(detailLevel),
         };
       });
       profileView = {
         status: 'ready',
         profile,
-        color: laneColor(selected.entity),
+        color: laneColor(selectedEntity),
         connections,
       };
     } else {
       profileView = profileState;
     }
     return {
-      entity: selected.entity,
-      isHidden: selected.isHidden,
+      entity: selectedEntity,
+      isHidden: isEntityHidden(selectedEntity, filters),
       profileView,
       anchor: anchor ?? undefined,
     };
-  }, [selected, profileState, lanes, selectedLevel, anchor]);
+  }, [selectedEntity, profileState, findBySlug, detailLevel, anchor, filters]);
 
   const selectedSpan = useMemo(
-    () => (selected ? spanYears(entitySpan(selected.entity.entity)) : null),
-    [selected],
-  );
-
-  // Connections can point to Deep Cut entries, so the Profile needs the deferred data.
-  const hasProfile = selected?.hasProfile ?? false;
-  useEffect(() => {
-    if (!hasProfile) return;
-    requestLevel('specialized');
-    requestLevel('deep-cut');
-  }, [hasProfile, requestLevel]);
-
-  const siblingLocaleHref = switchLanguageHref(
-    pendingLinkSlug ?? member?.slug ?? null,
+    () =>
+      selectedEntity ? spanYears(entitySpan(selectedEntity.entity)) : null,
+    [selectedEntity],
   );
 
   return (
     <div className={styles.layout}>
       <TopBar
-        selectedLevelId={selectedLevel.id}
-        onSelectDetailLevel={handleSelectDetailLevel}
-        loadingLevelIds={loadingLevelIds}
+        selectedLevelId={detailLevel.id}
+        onSelectDetailLevel={navigation.selectDetailLevel}
+        loadingLevelIds={navigation.loadingLevelIds}
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
         searchResults={searchResults}
-        onSelectSearchResult={handleSelectSearchResult}
+        onSelectSearchResult={navigation.openSearchResult}
         selectedDomains={selectedDomains}
         onToggleDomain={toggleDomain}
         selectedRegions={selectedRegions}
@@ -509,19 +237,19 @@ function AppContent({ initialDatasets }: AppProps) {
             selectedConflictsMilestonesValues={
               selectedConflictsMilestonesValues
             }
-            onEntityClick={handleEntityClick}
-            selectedEntity={member?.ref ?? null}
+            onEntityClick={navigation.openMark}
+            selectedEntity={navigation.selectedRef}
             selectedSpan={selectedSpan}
-            searchJumpTarget={searchJumpTarget}
-            arrivalFit={arrivalFit}
+            searchJumpTarget={navigation.panTarget}
+            arrivalFit={navigation.arrivalFit}
           />
         </ErrorBoundary>
       </main>
       <Suspense fallback={null}>
         <DetailPanel
           member={panelMember}
-          onOpenConnection={handleOpenConnection}
-          onClose={closeDetailPanel}
+          onOpenConnection={navigation.openConnection}
+          onClose={navigation.close}
         />
       </Suspense>
       <Suspense fallback={null}>
@@ -533,7 +261,7 @@ function AppContent({ initialDatasets }: AppProps) {
             setIsAboutOpen(true);
             trackEvent('about_open');
           }}
-          switchLanguageHref={siblingLocaleHref}
+          switchLanguageHref={navigation.siblingLocaleHref}
         />
       </Suspense>
       <Suspense fallback={null}>

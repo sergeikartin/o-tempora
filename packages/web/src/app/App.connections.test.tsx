@@ -68,7 +68,7 @@ const profiles: Record<string, unknown> = {
   },
 };
 
-async function renderApp() {
+async function renderApp({ delayLevel3 = false } = {}) {
   vi.resetModules();
   vi.stubGlobal(
     'fetch',
@@ -80,11 +80,18 @@ async function renderApp() {
       });
     }),
   );
+  let resolveLevel3 = () => {};
+  const level3DatasetPromise = delayLevel3
+    ? new Promise<LocaleDatasets>((resolve) => {
+        resolveLevel3 = () => resolve(level3);
+      })
+    : Promise.resolve(level3);
+  const requestLevel3Load = vi.fn();
   vi.doMock('./locale-datasets', () => ({
     localeDatasetsPromise: Promise.resolve(base),
-    level3DatasetPromise: Promise.resolve(level3),
+    level3DatasetPromise,
     level4DatasetPromise: Promise.resolve(level4),
-    requestLevel3Load: () => {},
+    requestLevel3Load,
     requestLevel4Load: () => {},
   }));
   const rtl = await import('@testing-library/react');
@@ -93,7 +100,7 @@ async function renderApp() {
   await act(async () => {
     view = rtl.render(<App />);
   });
-  return { ...view, rtl };
+  return { ...view, rtl, requestLevel3Load, resolveLevel3 };
 }
 
 function panelText(container: HTMLElement) {
@@ -151,6 +158,60 @@ test('opening a Connection pushes a history entry and Back returns to the previo
     expect(panelText(container)).toContain('overview of origin'),
   );
   expect(window.location.search).toBe('?e=slug-of-origin');
+});
+
+test('a Connection clicked before its dataset arrives opens when the target loads', async () => {
+  const { container, rtl, requestLevel3Load, resolveLevel3 } = await renderApp({
+    delayLevel3: true,
+  });
+  await waitFor(() =>
+    expect(panelText(container)).toContain('overview of origin'),
+  );
+  const lengthBefore = window.history.length;
+  requestLevel3Load.mockClear();
+
+  await act(async () => {
+    rtl.fireEvent.click(connectionButton(container, 'deeper'));
+  });
+  expect(requestLevel3Load).toHaveBeenCalled();
+  expect(window.location.search).toBe('?e=slug-of-origin');
+  expect(window.history.length).toBe(lengthBefore);
+
+  await act(async () => resolveLevel3());
+  await waitFor(() =>
+    expect(panelText(container)).toContain('overview of deeper'),
+  );
+  expect(isLevelSelected(container, 'Specialized')).toBe(true);
+  expect(window.location.search).toBe('?e=slug-of-deeper');
+
+  window.history.back();
+  await waitFor(() => expect(window.location.search).toBe('?e=slug-of-origin'));
+  await waitFor(() =>
+    expect(panelText(container)).toContain('overview of origin'),
+  );
+});
+
+test('a newer Connection supersedes one waiting on its dataset', async () => {
+  const { container, rtl, resolveLevel3 } = await renderApp({
+    delayLevel3: true,
+  });
+  await waitFor(() =>
+    expect(panelText(container)).toContain('overview of origin'),
+  );
+
+  await act(async () => {
+    rtl.fireEvent.click(connectionButton(container, 'deeper'));
+  });
+  await act(async () => {
+    rtl.fireEvent.click(connectionButton(container, 'shown'));
+  });
+  await waitFor(() =>
+    expect(panelText(container)).toContain('overview of shown'),
+  );
+
+  await act(async () => resolveLevel3());
+  expect(panelText(container)).toContain('overview of shown');
+  expect(window.location.search).toBe('?e=slug-of-shown');
 });
 
 test('a Connection below the current Detail Level is marked, and opening it raises the level', async () => {

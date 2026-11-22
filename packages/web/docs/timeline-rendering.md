@@ -23,6 +23,6 @@
 
 ## Selection and navigation
 
-- An Entity Link uses the first non-empty `e` parameter. The app requests deeper levels until it finds the slug, raises Detail Level as needed and fits the span with 10% padding per side, within zoom bounds and clear of the desktop drawer. A slug absent from the dataset clears the Selection and its URL parameter.
-- Mark clicks and Search picks keep zoom and add a history entry from a closed panel. Later picks and closing replace that entry. A Connection keeps zoom, can raise Detail Level and pushes a new entry so Back restores the previous Selection.
+- The Selection navigation module resolves Entity Links and Connections against the loaded dataset and requests deeper levels for missing targets. An Entity Link uses the first non-empty `e` parameter, raises Detail Level as needed and fits the span with 10% padding per side, within zoom bounds and clear of the desktop drawer. A slug absent from the dataset clears the Selection and its URL parameter.
+- Mark clicks and Search picks keep zoom and add a history entry from a closed panel. Later picks and closing replace that entry. A Connection keeps the current Selection while its target loads, then pans to it, raises Detail Level if needed and pushes a new entry so Back restores the previous Selection. Another navigation or closing the panel supersedes a pending Connection.
 - A Profile Anchor gives the one-based position of a Key Moment or Deep Fact. After loading, the panel highlights the passage and scrolls it into view. Selecting a different entity or closing clears the fragment.
