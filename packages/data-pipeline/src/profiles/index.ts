@@ -12,7 +12,7 @@ import {
 } from './providers.js';
 import { SessionBridge } from './session.js';
 import { readStoredProfiles } from './store.js';
-import { loadSubjects } from './subjects.js';
+import { formatDates, loadSubjects } from './subjects.js';
 import { translateProfile } from './translation.js';
 import { auditSavedProfile } from './verification/audit-saved.js';
 import { createResearcher } from './verification/researcher.js';
@@ -242,7 +242,7 @@ async function verify(argv: readonly string[]): Promise<void> {
       if (result.status === 'approved' || result.status === 'skipped') {
         const translation = await translateProfile({
           filePath: entry.filePath,
-          dates: subject.dates,
+          dates: formatDates(subject.dateSpan),
           complete: (prompt, role) => {
             if (!session && role === 'translate') {
               translator ??= createCompleter('openai', translationModel);
@@ -360,7 +360,7 @@ async function translate(argv: readonly string[]): Promise<void> {
         throw new Error('No raw Profile or dataset entity for this QID');
       const result = await translateProfile({
         filePath: entry.filePath,
-        dates: subject.dates,
+        dates: formatDates(subject.dateSpan),
         complete,
         force: argv.includes('--force'),
       });

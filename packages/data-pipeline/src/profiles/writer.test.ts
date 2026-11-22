@@ -18,7 +18,7 @@ const subject = (qid: string, name: string): ProfileSubject => ({
   qid,
   lane: 'people',
   name,
-  dates: '1900–1950',
+  dateSpan: { startYear: 1900, endYear: 1950 },
   wikipediaUrl: `https://en.wikipedia.org/wiki/${name}`,
 });
 

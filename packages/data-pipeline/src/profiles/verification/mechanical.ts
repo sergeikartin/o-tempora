@@ -1,8 +1,10 @@
-import { asRecord, assertBoldOnlyMarkup } from '../../output/profiles.js';
+import { assertBoldOnlyMarkup } from '../markup.js';
 import type { ModelProfile } from '../model-profile.js';
+import { passages } from '../passages.js';
 import { type ProfileSubject, SUBJECT_TYPE } from '../subjects.js';
+import { asRecord } from '../values.js';
 import type { ResolveArticleQids } from '../wikipedia-qids.js';
-import { type Assessment, passages, type Source } from './policy.js';
+import type { Assessment, Source } from './policy.js';
 
 // Key Moment labels use historical years. Month/day prose is left to the
 // evidence checks; only unambiguous year labels are interpreted mechanically.
@@ -40,19 +42,24 @@ export function evidenceChecks(
   sources: readonly Source[],
 ): string[] {
   const flags: string[] = [];
-  const dates = yearRange(subject.dates);
+  const { startYear, endYear, ongoing, approximate, endApproximate } =
+    subject.dateSpan;
   const paths = new Set(passages(profile).map((item) => item.path));
   for (const date of assessment.subject_dates) {
     if (!paths.has(date.path))
       flags.push(`Unknown subject date path: ${date.path}`);
-    const approximate =
-      date.boundary === 'start' ? dates?.approximate : dates?.endApproximate;
+    const isStart = date.boundary === 'start';
+    const expected = isStart
+      ? startYear
+      : (endYear ?? (ongoing ? undefined : startYear));
+    const isApproximate =
+      isStart || endYear === undefined ? approximate : endApproximate;
     if (
-      dates &&
-      Math.abs(date.year - dates[date.boundary]) > (approximate ? 1 : 0)
+      expected !== undefined &&
+      Math.abs(date.year - expected) > (isApproximate ? 1 : 0)
     ) {
       flags.push(
-        `${date.path}: subject ${date.boundary} year ${date.year} disagrees with dataset ${dates[date.boundary]}`,
+        `${date.path}: subject ${date.boundary} year ${date.year} disagrees with dataset ${expected}`,
       );
     }
   }

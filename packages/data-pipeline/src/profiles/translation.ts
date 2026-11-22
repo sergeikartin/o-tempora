@@ -1,13 +1,13 @@
 import { readFile, rename, writeFile } from 'node:fs/promises';
 import { assertBoldOnlyMarkup } from './markup.js';
 import { parseModelProfile } from './model-profile.js';
+import { passages } from './passages.js';
 import type { Complete, Completion } from './providers.js';
 import { asRecord, asString } from './values.js';
 import {
   hasApproval,
   hash,
   parseAudit,
-  passages,
   profileHash,
   strings,
 } from './verification/policy.js';

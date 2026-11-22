@@ -8,6 +8,7 @@ import {
   shipProfiles,
   writeProfiles,
 } from '../output/profiles.js';
+import { passages } from './passages.js';
 import type { Complete } from './providers.js';
 import {
   approvedTranslation,
@@ -18,7 +19,7 @@ import {
   translationPath,
 } from './translation.js';
 import { asArray, asRecord } from './values.js';
-import { hash, passages } from './verification/policy.js';
+import { hash } from './verification/policy.js';
 import { verifyProfile } from './verification/runner.js';
 import { SourceStore } from './verification/sources.js';
 
@@ -29,6 +30,13 @@ const raw = () => ({
   wikipedia_url: URL,
   overview: 'Newton was an **English** mathematician.',
   key_moments: [
+    {
+      date: '1661',
+      title: 'Cambridge',
+      text: 'He began studying at Cambridge in 1661.',
+      claims: ['Enrollment.'],
+      source: URL,
+    },
     {
       date: '1687',
       title: 'The Principia',
@@ -64,9 +72,12 @@ const raw = () => ({
 });
 const fields = {
   overview: 'Ньютон был **английским** математиком.',
-  'key_moments.0.date': '1687',
-  'key_moments.0.title': '«Начала»',
-  'key_moments.0.text': 'Он опубликовал их в 1687 году.',
+  'key_moments.0.date': '1661',
+  'key_moments.0.title': 'Кембридж',
+  'key_moments.0.text': 'В 1661 году он начал учиться в Кембридже.',
+  'key_moments.1.date': '1687',
+  'key_moments.1.title': '«Начала»',
+  'key_moments.1.text': 'Он опубликовал их в 1687 году.',
   'deep_facts.0.text': 'Легенда, приписываемая автору.',
   'connections.0.connection':
     'Они независимо разработали математический анализ.',
@@ -96,7 +107,7 @@ async function fixture(t: TestContext) {
       qid: 'Q935',
       name: 'Isaac Newton',
       lane: 'people',
-      dates: '1643–1727',
+      dateSpan: { startYear: 1643, endYear: 1727 },
       wikipediaUrl: URL,
     },
     research: async (profile, _subject, sources) => {
@@ -209,8 +220,23 @@ test('approved translation publishes Russian prose and names while preserving st
     translated?.connections[0]?.reason,
     fields['connections.0.connection'],
   );
-  assert.equal(translated?.keyMoments[0]?.sourceUrl, URL);
-  assert.equal(translated?.deepFacts[0]?.isLegend, true);
+  assert.deepEqual(translated?.keyMoments, [
+    {
+      date: fields['key_moments.0.date'],
+      title: fields['key_moments.0.title'],
+      text: fields['key_moments.0.text'],
+      sourceUrl: URL,
+    },
+    {
+      date: fields['key_moments.1.date'],
+      title: fields['key_moments.1.title'],
+      text: fields['key_moments.1.text'],
+      sourceUrl: URL,
+    },
+  ]);
+  assert.deepEqual(translated?.deepFacts, [
+    { text: fields['deep_facts.0.text'], sourceUrl: URL, isLegend: true },
+  ]);
   assert.equal(en.get('newton')?.overview, raw().overview);
   await writeProfiles(options.root, en, ru);
   assert.deepEqual(

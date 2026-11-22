@@ -2,11 +2,11 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseModelProfile } from '../model-profile.js';
 import type { Complete } from '../providers.js';
-import type { ProfileSubject } from '../subjects.js';
+import { formatDates, type ProfileSubject } from '../subjects.js';
 import { asArray, asRecord, asString } from '../values.js';
 import {
   hash,
-  POLICY_VERSION,
+  isCurrentVerificationPolicy,
   parseAssessment,
   parseAudit,
   profileHash,
@@ -25,12 +25,13 @@ export async function auditSavedProfile(
     JSON.parse(await readFile(reportPathFor(filePath), 'utf8')),
     'verification report',
   );
+  const dates = formatDates(subject.dateSpan);
   const reportedSubject = asRecord(report.subject, 'report subject');
   if (
-    report.policy_version !== POLICY_VERSION ||
+    !isCurrentVerificationPolicy(report.policy_version, dates) ||
     report.profile_hash !== profileHash(record) ||
     reportedSubject.qid !== subject.qid ||
-    reportedSubject.dates !== subject.dates
+    reportedSubject.dates !== dates
   ) {
     throw new Error('Saved verification report is stale for this Profile');
   }

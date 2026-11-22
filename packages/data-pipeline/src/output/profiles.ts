@@ -10,6 +10,7 @@ import {
   type ProfileLane,
 } from '@o-tempora/shared-types';
 import { assertBoldOnlyMarkup } from '../profiles/markup.js';
+import { mapPassages, passages } from '../profiles/passages.js';
 import {
   approvedTranslation,
   readTranslation,
@@ -19,9 +20,6 @@ import { asArray, asRecord, asString } from '../profiles/values.js';
 import { hasApproval } from '../profiles/verification/policy.js';
 
 import { detailLevelOf } from './write-datasets.js';
-
-export { assertBoldOnlyMarkup } from '../profiles/markup.js';
-export { asArray, asRecord, asString } from '../profiles/values.js';
 
 // The slice of a raw Profile file (prompts/profile.md's JSON plus the `meta`
 // the profiles script adds, docs/adr/0022-...) that Output reads. Claims,
@@ -36,11 +34,11 @@ export interface RawProfile {
   verifiedDates?: string;
   russian?: TranslationFields;
   overview: string;
-  keyMoments: ProfileKeyMoment[];
-  deepFacts: ProfileDeepFact[];
+  key_moments: ProfileKeyMoment[];
+  deep_facts: ProfileDeepFact[];
   // `qid` is the target's Wikidata ID, resolved from its Wikipedia URL by the
   // profiles script; a Connection without one cannot be resolved.
-  connections: { qid?: string; reason: string }[];
+  connections: { qid?: string; connection: string }[];
 }
 
 // These statuses still require a current verification receipt to ship.
@@ -80,7 +78,7 @@ export function parseRawProfile(
     status: asString(review.status, `${fileName}: meta.review.status`),
     approved: false,
     overview: asString(root.overview, `${fileName}: overview`),
-    keyMoments: asArray(root.key_moments, `${fileName}: key_moments`).map(
+    key_moments: asArray(root.key_moments, `${fileName}: key_moments`).map(
       (item, index) => {
         const moment = asRecord(item, `${fileName}: key_moments[${index}]`);
         return {
@@ -100,7 +98,7 @@ export function parseRawProfile(
         };
       },
     ),
-    deepFacts: asArray(root.deep_facts, `${fileName}: deep_facts`).map(
+    deep_facts: asArray(root.deep_facts, `${fileName}: deep_facts`).map(
       (item, index) => {
         const fact = asRecord(item, `${fileName}: deep_facts[${index}]`);
         if (typeof fact.is_legend !== 'boolean') {
@@ -120,7 +118,7 @@ export function parseRawProfile(
         const connection = asRecord(item, `${fileName}: connections[${index}]`);
         return {
           qid: typeof connection.qid === 'string' ? connection.qid : undefined,
-          reason: asString(
+          connection: asString(
             connection.connection,
             `${fileName}: connections[${index}].connection`,
           ),
@@ -128,14 +126,11 @@ export function parseRawProfile(
       },
     ),
   };
-  parsed.approved = hasApproval(json, report, [
-    'overview',
-    ...parsed.keyMoments.flatMap((_, i) =>
-      ['date', 'title', 'text'].map((field) => `key_moments.${i}.${field}`),
-    ),
-    ...parsed.deepFacts.map((_, i) => `deep_facts.${i}.text`),
-    ...parsed.connections.map((_, i) => `connections.${i}.connection`),
-  ]);
+  parsed.approved = hasApproval(
+    json,
+    report,
+    passages(parsed).map(({ path }) => path),
+  );
   if (parsed.approved) {
     const subject = asRecord(
       asRecord(report, 'report').subject,
@@ -219,13 +214,13 @@ function resolveConnections(
 ): ProfileConnection[] {
   const connections: ProfileConnection[] = [];
   const seen = new Set<string>();
-  for (const { qid, reason } of raw.connections) {
+  for (const { qid, connection } of raw.connections) {
     const target = qid === undefined ? undefined : targetByQid.get(qid);
     if (!target || target.qid === raw.qid || seen.has(target.qid)) continue;
     seen.add(target.qid);
     connections.push({
       slug: target.slug,
-      reason,
+      reason: connection,
       name: locale === 'ru' ? (target.nameRu ?? target.name) : target.name,
       lane: target.lane,
       detailLevel: detailLevelOf(
@@ -248,8 +243,7 @@ export function shipProfiles(
   const targetByQid = new Map(targets.map((target) => [target.qid, target]));
   const shipped = new Map<string, Profile>();
 
-  for (const original of rawProfiles) {
-    let raw = original;
+  for (const raw of rawProfiles) {
     if (
       raw.locale !== 'en' ||
       !SHIPPED_STATUSES.has(raw.status) ||
@@ -263,66 +257,25 @@ export function shipProfiles(
         `${raw.fileName}: ${raw.qid} is not an entity in the dataset`,
       );
     if (raw.verifiedDates !== subject.dates) continue;
-    if (locale === 'ru') {
-      if (!raw.russian) continue;
-      const fields = raw.russian;
-      const text = (path: string) =>
-        asString(fields[path], `${raw.fileName}: Russian ${path}`);
-      raw = {
-        ...raw,
-        overview: text('overview'),
-        keyMoments: raw.keyMoments.map((moment, i) => ({
-          ...moment,
-          date: text(`key_moments.${i}.date`),
-          title: text(`key_moments.${i}.title`),
-          text: text(`key_moments.${i}.text`),
-        })),
-        deepFacts: raw.deepFacts.map((fact, i) => ({
-          ...fact,
-          text: text(`deep_facts.${i}.text`),
-        })),
-        connections: raw.connections.map((connection, i) => ({
-          ...connection,
-          reason: text(`connections.${i}.connection`),
-        })),
-      };
-    }
+    const translation = raw.russian;
+    if (locale === 'ru' && !translation) continue;
     if (shipped.has(subject.slug))
       throw new Error(`${raw.fileName}: a second Profile for ${raw.qid}`);
 
-    assertBoldOnlyMarkup(raw.overview, `${raw.fileName}: overview`);
-    raw.keyMoments.forEach((moment, index) => {
-      assertBoldOnlyMarkup(
-        moment.date,
-        `${raw.fileName}: key_moments[${index}].date`,
-      );
-      assertBoldOnlyMarkup(
-        moment.title,
-        `${raw.fileName}: key_moments[${index}].title`,
-      );
-      assertBoldOnlyMarkup(
-        moment.text,
-        `${raw.fileName}: key_moments[${index}].text`,
-      );
+    const localized = mapPassages(raw, (path, english) => {
+      const text =
+        locale === 'ru'
+          ? asString(translation?.[path], `${raw.fileName}: Russian ${path}`)
+          : english;
+      const field = path.replace(/\.(\d+)(?=\.)/g, '[$1]');
+      assertBoldOnlyMarkup(text, `${raw.fileName}: ${field}`);
+      return text;
     });
-    raw.deepFacts.forEach((fact, index) => {
-      assertBoldOnlyMarkup(
-        fact.text,
-        `${raw.fileName}: deep_facts[${index}].text`,
-      );
-    });
-    raw.connections.forEach((connection, index) => {
-      assertBoldOnlyMarkup(
-        connection.reason,
-        `${raw.fileName}: connections[${index}].connection`,
-      );
-    });
-
     shipped.set(subject.slug, {
-      overview: raw.overview,
-      keyMoments: raw.keyMoments,
-      deepFacts: raw.deepFacts,
-      connections: resolveConnections(raw, targetByQid, locale),
+      overview: localized.overview,
+      keyMoments: localized.key_moments,
+      deepFacts: localized.deep_facts,
+      connections: resolveConnections(localized, targetByQid, locale),
     });
   }
 

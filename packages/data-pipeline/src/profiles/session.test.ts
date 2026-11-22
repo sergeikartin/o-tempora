@@ -13,8 +13,9 @@ import path from 'node:path';
 import { type TestContext, test } from 'node:test';
 import { setTimeout } from 'node:timers/promises';
 import { parseRawProfile, shipProfiles } from '../output/profiles.js';
+import { passages } from './passages.js';
 import { SessionBridge } from './session.js';
-import { hash, passages, type Source } from './verification/policy.js';
+import { hash, type Source } from './verification/policy.js';
 import { reportPathFor, verifyProfile } from './verification/runner.js';
 import { SourceStore } from './verification/sources.js';
 
@@ -197,7 +198,7 @@ for (const repair of [false, true])
       qid: 'Q935',
       lane: 'people' as const,
       name: 'Isaac Newton',
-      dates: '1643–1727',
+      dateSpan: { startYear: 1643, endYear: 1727 },
       wikipediaUrl: url,
     };
     const seen = new Set<string>();
@@ -304,7 +305,7 @@ for (const repair of [false, true])
     assert.equal(
       shipProfiles(
         [parseRawProfile(record, filePath, report)],
-        [{ ...subject, slug: 'newton', fameScore: 99 }],
+        [{ ...subject, slug: 'newton', fameScore: 99, dates: '1643–1727' }],
       ).size,
       1,
     );

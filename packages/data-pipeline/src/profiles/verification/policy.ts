@@ -1,12 +1,18 @@
 import { createHash } from 'node:crypto';
-import type { ModelProfile } from '../model-profile.js';
 import { asArray, asRecord, asString } from '../values.js';
 
-export const POLICY_VERSION = '2';
+export const POLICY_VERSION = '3';
 
-export interface Passage {
-  path: string;
-  text: string;
+export function isCurrentVerificationPolicy(
+  version: unknown,
+  dates: string,
+): boolean {
+  // Version 2 checked the same years for closed spans and points. Its label
+  // parser skipped every comparison for an ongoing subject.
+  return (
+    version === POLICY_VERSION ||
+    (POLICY_VERSION === '3' && version === '2' && !dates.endsWith('–present'))
+  );
 }
 
 export interface Evidence {
@@ -85,26 +91,6 @@ export function profileHash(value: unknown): string {
     identity: metadata.source,
     locale: metadata.locale,
   });
-}
-
-export function passages(profile: ModelProfile): Passage[] {
-  return [
-    { path: 'overview', text: profile.overview },
-    ...profile.key_moments.flatMap((moment, i) =>
-      ['date', 'title', 'text'].map((field) => ({
-        path: `key_moments.${i}.${field}`,
-        text: moment[field as 'date' | 'title' | 'text'],
-      })),
-    ),
-    ...profile.deep_facts.map((fact, i) => ({
-      path: `deep_facts.${i}.text`,
-      text: fact.text,
-    })),
-    ...profile.connections.map((connection, i) => ({
-      path: `connections.${i}.connection`,
-      text: connection.connection,
-    })),
-  ];
 }
 
 export function strings(value: unknown, where: string): string[] {
@@ -302,8 +288,8 @@ export function hasApproval(
       typeof subject.dates !== 'string' ||
       subject.dates.length === 0 ||
       !['reviewed', 'edited'].includes(String(review.status)) ||
-      approval.policy_version !== POLICY_VERSION ||
-      report.policy_version !== POLICY_VERSION ||
+      approval.policy_version !== report.policy_version ||
+      !isCurrentVerificationPolicy(report.policy_version, subject.dates) ||
       approval.profile_hash !== profileHash(profile) ||
       report.profile_hash !== approval.profile_hash ||
       approval.report_hash !== hash(verification)

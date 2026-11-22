@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { buildPeople } from '../output/write-datasets.js';
-import { loadSubjects } from '../profiles/subjects.js';
+import { loadSubjects, subjectBrief } from '../profiles/subjects.js';
 import { transformPeople } from './index.js';
 import { correctPersonDates } from './person-date-corrections.js';
 
@@ -21,10 +21,11 @@ test('Newton has consistent Gregorian dates in both locale datasets and Profile 
       },
     );
   }
-  assert.equal(
-    loadSubjects().find((subject) => subject.qid === 'Q935')?.dates,
-    '1643–1727',
-  );
+  const subject = loadSubjects().find((subject) => subject.qid === 'Q935');
+  assert.ok(subject);
+  assert.equal(subject.dateSpan.startYear, 1643);
+  assert.equal(subject.dateSpan.endYear, 1727);
+  assert.equal(subjectBrief(subject).dates, '1643–1727');
 
   // Pantheon's full date says 1981 for Titus; its year column correctly says 81.
   assert.equal(rows.find((row) => row.wdId === 'Q1421')?.deathyear, 81);

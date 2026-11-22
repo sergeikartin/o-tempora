@@ -10,8 +10,8 @@ import {
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
+import { assertBoldOnlyMarkup } from '../profiles/markup.js';
 import {
-  assertBoldOnlyMarkup,
   type ProfileTarget,
   parseRawProfile,
   type RawProfile,
@@ -65,7 +65,7 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
     approved: true,
     verifiedDates: '1643–1727',
     overview: 'Newton was an **English** mathematician.',
-    keyMoments: [
+    key_moments: [
       {
         date: '1687',
         title: 'The Principia',
@@ -73,7 +73,7 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
         sourceUrl: 'https://en.wikipedia.org/wiki/Isaac_Newton#Principia',
       },
     ],
-    deepFacts: [{ text: 'No apple hit him.', isLegend: true }],
+    deep_facts: [{ text: 'No apple hit him.', isLegend: true }],
     connections: [],
     ...overrides,
   };
@@ -166,9 +166,9 @@ test("a Connection resolves to its target's slug, name, lane and Detail Level, i
     [
       rawProfile({
         connections: [
-          { qid: 'Q900', reason: 'Signed it.' },
-          { qid: 'Q9047', reason: 'Rival over calculus.' },
-          { qid: 'Q362', reason: 'Far later.' },
+          { qid: 'Q900', connection: 'Signed it.' },
+          { qid: 'Q9047', connection: 'Rival over calculus.' },
+          { qid: 'Q362', connection: 'Far later.' },
         ],
       }),
     ],
@@ -205,11 +205,11 @@ test('a Connection whose target is not in the dataset, has no qid, points at the
     [
       rawProfile({
         connections: [
-          { qid: 'Q404', reason: 'Not in the dataset.' },
-          { reason: 'Unresolved.' },
-          { qid: 'Q935', reason: 'Himself.' },
-          { qid: 'Q9047', reason: 'First.' },
-          { qid: 'Q9047', reason: 'Again.' },
+          { qid: 'Q404', connection: 'Not in the dataset.' },
+          { connection: 'Unresolved.' },
+          { qid: 'Q935', connection: 'Himself.' },
+          { qid: 'Q9047', connection: 'First.' },
+          { qid: 'Q9047', connection: 'Again.' },
         ],
       }),
     ],
@@ -239,7 +239,7 @@ test('every shipped text field is checked', () => {
       shipProfiles(
         [
           rawProfile({
-            keyMoments: [{ date: '1687', title: bad, text: 'ok' }],
+            key_moments: [{ date: '1687', title: bad, text: 'ok' }],
           }),
         ],
         TARGETS,
@@ -251,7 +251,7 @@ test('every shipped text field is checked', () => {
       shipProfiles(
         [
           rawProfile({
-            keyMoments: [{ date: '1687', title: 'ok', text: bad }],
+            key_moments: [{ date: '1687', title: 'ok', text: bad }],
           }),
         ],
         TARGETS,
@@ -261,7 +261,7 @@ test('every shipped text field is checked', () => {
   assert.throws(
     () =>
       shipProfiles(
-        [rawProfile({ deepFacts: [{ text: bad, isLegend: false }] })],
+        [rawProfile({ deep_facts: [{ text: bad, isLegend: false }] })],
         TARGETS,
       ),
     /deep_facts\[0\]\.text/,
@@ -269,7 +269,7 @@ test('every shipped text field is checked', () => {
   assert.throws(
     () =>
       shipProfiles(
-        [rawProfile({ connections: [{ qid: 'Q9047', reason: bad }] })],
+        [rawProfile({ connections: [{ qid: 'Q9047', connection: bad }] })],
         TARGETS,
       ),
     /connections\[0\]\.connection/,
@@ -342,9 +342,9 @@ test('parseRawProfile reads the fields Output needs from the raw file', () => {
     status: 'reviewed',
     approved: false,
     overview: 'Overview.',
-    keyMoments: [{ date: '1687', title: 'T', text: 'Text.' }],
-    deepFacts: [{ text: 'Fact.', isLegend: false }],
-    connections: [{ qid: 'Q9047', reason: 'Rival.' }],
+    key_moments: [{ date: '1687', title: 'T', text: 'Text.' }],
+    deep_facts: [{ text: 'Fact.', isLegend: false }],
+    connections: [{ qid: 'Q9047', connection: 'Rival.' }],
   });
 });
 
@@ -382,8 +382,8 @@ test('source URLs reach shipped passages with section anchors intact', () => {
     }),
     'people/x.json',
   );
-  assert.equal(raw.keyMoments[0]?.sourceUrl, momentSource);
-  assert.equal(raw.deepFacts[0]?.sourceUrl, factSource);
+  assert.equal(raw.key_moments[0]?.sourceUrl, momentSource);
+  assert.equal(raw.deep_facts[0]?.sourceUrl, factSource);
 });
 
 test('missing, sentinel, malformed and unsafe sources never become links', () => {
@@ -405,8 +405,8 @@ test('missing, sentinel, malformed and unsafe sources never become links', () =>
       }),
       'people/x.json',
     );
-    assert.equal(raw.keyMoments[0]?.sourceUrl, undefined);
-    assert.equal(raw.deepFacts[0]?.sourceUrl, undefined);
+    assert.equal(raw.key_moments[0]?.sourceUrl, undefined);
+    assert.equal(raw.deep_facts[0]?.sourceUrl, undefined);
   }
 });
 

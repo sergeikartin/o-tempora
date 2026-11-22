@@ -1,10 +1,12 @@
 import { randomUUID } from 'node:crypto';
 import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { passages } from './passages.js';
 import type { Complete, Completion } from './providers.js';
+import { subjectBrief } from './subjects.js';
 import { parseTokenUsage } from './usage.js';
 import { asRecord, asString } from './values.js';
-import { hash, parseAssessment, passages } from './verification/policy.js';
+import { hash, parseAssessment } from './verification/policy.js';
 import {
   RESEARCH_INSTRUCTIONS,
   type Research,
@@ -47,7 +49,7 @@ export class SessionBridge {
       {
         instructions: RESEARCH_INSTRUCTIONS,
         profile,
-        subject,
+        subject: subjectBrief(subject),
         passages: passages(profile),
       },
       sources,

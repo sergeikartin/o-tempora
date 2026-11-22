@@ -1,7 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { PROFILE_LANES } from '@o-tempora/shared-types';
-import { asRecord, asString } from '../output/profiles.js';
+import { asRecord, asString } from './values.js';
 
 export interface StoredProfile {
   qid: string;

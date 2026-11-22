@@ -5,6 +5,9 @@ import {
   buildPeople,
 } from '../output/write-datasets.js';
 import {
+  type TaggedConflict,
+  type TaggedMilestone,
+  type TaggedPerson,
   transformConflicts,
   transformMilestones,
   transformPeople,
@@ -15,7 +18,7 @@ export interface ProfileSubject {
   qid: string;
   lane: ProfileLane;
   name: string;
-  dates: string;
+  dateSpan: DateSpan;
   wikipediaUrl: string;
 }
 
@@ -37,6 +40,16 @@ interface DateSpan {
   ongoing?: boolean;
   approximate?: boolean;
   endApproximate?: boolean;
+}
+
+export function subjectBrief({
+  qid,
+  lane,
+  name,
+  dateSpan,
+  wikipediaUrl,
+}: ProfileSubject) {
+  return { qid, lane, name, dates: formatDates(dateSpan), wikipediaUrl };
 }
 
 // "1969", "1789–1799", "551–479 BC", "44 BC–AD 14", "1950–present"; "c. "
@@ -63,71 +76,85 @@ export function formatDates(span: DateSpan): string {
   return `${lead}${ce(start.value)}–${endLead}${end.value}`;
 }
 
-// Entities that made the dataset (Output's inclusion rules), in a stable
-// order. One without an English Wikipedia article cannot be briefed to the
-// writer and is left out.
+interface ProfileSource {
+  qid: string;
+  dateSpan?: DateSpan;
+  wikipediaUrl?: string;
+}
+
+function indexEventSources(
+  rows: readonly (TaggedConflict | TaggedMilestone)[],
+) {
+  return new Map<string, ProfileSource>(
+    rows.map((row) => [
+      row.id,
+      {
+        qid: row.id,
+        wikipediaUrl: row.article,
+        dateSpan:
+          row.year === undefined
+            ? undefined
+            : {
+                startYear: row.year,
+                endYear: row.endYear,
+                approximate: row.approximateDate,
+                endApproximate: row.endApproximateDate,
+              },
+      },
+    ]),
+  );
+}
+
+export function indexProfileSources(
+  people: readonly TaggedPerson[],
+  conflicts: readonly TaggedConflict[],
+  milestones: readonly TaggedMilestone[],
+): Record<ProfileLane, ReadonlyMap<string, ProfileSource>> {
+  return {
+    people: new Map(
+      people.map((row) => [
+        row.id,
+        {
+          qid: row.wdId,
+          wikipediaUrl: row.wikipediaUrl,
+          dateSpan:
+            row.birthyear === undefined
+              ? undefined
+              : {
+                  startYear: row.birthyear,
+                  endYear: row.deathyear,
+                  ongoing: row.alive,
+                },
+        },
+      ]),
+    ),
+    conflicts: indexEventSources(conflicts),
+    milestones: indexEventSources(milestones),
+  };
+}
+
+// The writer only gets subjects included in Output with an English Wikipedia article.
 export function loadSubjects(): ProfileSubject[] {
-  const subjects: ProfileSubject[] = [];
+  const people = transformPeople();
+  const conflicts = transformConflicts();
+  const milestones = transformMilestones();
+  const sources = indexProfileSources(people, conflicts, milestones);
 
-  const peopleRows = transformPeople();
-  const personRowById = new Map(peopleRows.map((row) => [row.id, row]));
-  for (const person of buildPeople(peopleRows, 'en').people) {
-    const row = personRowById.get(person.id);
-    if (row?.birthyear === undefined) continue;
-    subjects.push({
-      qid: row.wdId,
-      lane: 'people',
-      name: person.name,
-      dates: formatDates({
-        startYear: row.birthyear,
-        endYear: row.deathyear,
-        ongoing: row.alive,
-      }),
-      wikipediaUrl: row.wikipediaUrl,
+  function subjectsFor(
+    lane: ProfileLane,
+    entries: readonly { id: string; name: string }[],
+  ) {
+    return entries.flatMap(({ id, name }): ProfileSubject[] => {
+      const source = sources[lane].get(id);
+      if (!source?.dateSpan || !source.wikipediaUrl) return [];
+      const { qid, dateSpan, wikipediaUrl } = source;
+      return [{ qid, lane, name, dateSpan, wikipediaUrl }];
     });
   }
 
-  const conflictRowById = new Map(
-    transformConflicts().map((row) => [row.id, row]),
-  );
-  const { entries: conflicts } = buildConflicts([...conflictRowById.values()]);
-  for (const conflict of conflicts) {
-    const row = conflictRowById.get(conflict.id);
-    if (row?.year === undefined || !row.article) continue;
-    subjects.push({
-      qid: conflict.id,
-      lane: 'conflicts',
-      name: conflict.name,
-      dates: formatDates({
-        startYear: row.year,
-        endYear: row.endYear,
-        approximate: row.approximateDate,
-        endApproximate: row.endApproximateDate,
-      }),
-      wikipediaUrl: row.article,
-    });
-  }
-
-  const milestoneRowById = new Map(
-    transformMilestones().map((row) => [row.id, row]),
-  );
-  const { milestones } = buildMilestones([...milestoneRowById.values()]);
-  for (const milestone of milestones) {
-    const row = milestoneRowById.get(milestone.id);
-    if (row?.year === undefined || !row.article) continue;
-    subjects.push({
-      qid: milestone.id,
-      lane: 'milestones',
-      name: milestone.name,
-      dates: formatDates({
-        startYear: row.year,
-        endYear: row.endYear,
-        approximate: row.approximateDate,
-        endApproximate: row.endApproximateDate,
-      }),
-      wikipediaUrl: row.article,
-    });
-  }
-
-  return subjects;
+  return [
+    ...subjectsFor('people', buildPeople(people, 'en').people),
+    ...subjectsFor('conflicts', buildConflicts(conflicts).entries),
+    ...subjectsFor('milestones', buildMilestones(milestones).milestones),
+  ];
 }

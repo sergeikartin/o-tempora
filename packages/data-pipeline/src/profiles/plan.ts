@@ -1,6 +1,6 @@
 import path from 'node:path';
 import type { StoredProfile } from './store.js';
-import { type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
+import { formatDates, type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
 
 export type SkipReason = 'current' | 'stale' | 'edited';
 
@@ -59,7 +59,7 @@ export function formatPlan(entries: readonly PlanEntry[]): string {
       `${subject.qid}${entry.regenerates ? ' (regenerate)' : ''}`,
       `  type: ${SUBJECT_TYPE[subject.lane]}`,
       `  name: ${subject.name}`,
-      `  dates: ${subject.dates}`,
+      `  dates: ${formatDates(subject.dateSpan)}`,
       `  wikipedia_url: ${subject.wikipediaUrl}`,
       `  output: ${entry.outputPath}`,
     );

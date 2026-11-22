@@ -9,6 +9,7 @@ import {
   shipProfiles,
 } from '../../output/profiles.js';
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
+import { passages } from '../passages.js';
 import type { Complete } from '../providers.js';
 import type { ProfileSubject } from '../subjects.js';
 import { auditSavedProfile } from './audit-saved.js';
@@ -20,7 +21,6 @@ import {
   hasApproval,
   hash,
   POLICY_VERSION,
-  passages,
   profileHash,
   type Report,
   type Source,
@@ -34,7 +34,7 @@ const SUBJECT: ProfileSubject = {
   qid: 'Q935',
   lane: 'people',
   name: 'Isaac Newton',
-  dates: '1643–1727',
+  dateSpan: { startYear: 1643, endYear: 1727 },
   wikipediaUrl: URL,
 };
 const TEXT =
@@ -283,7 +283,7 @@ test('verified content ships through Output; changing prose, identity, policy or
         slug: 'newton',
         lane: 'people',
         fameScore: 99,
-        dates: SUBJECT.dates,
+        dates: '1643–1727',
       },
     ]).size,
     1,
@@ -325,16 +325,99 @@ test('verified content ships through Output; changing prose, identity, policy or
 test('Output withholds an approval after dataset dates change until reverification', async (t) => {
   const { root, options } = await setup(t);
   await verifyProfile(options);
-  const target = { ...SUBJECT, slug: 'newton', fameScore: 99 };
+  const target = {
+    ...SUBJECT,
+    slug: 'newton',
+    fameScore: 99,
+    dates: '1643–1727',
+  };
   const files = await readRawProfiles(root);
   assert.equal(shipProfiles(files, [target]).size, 1);
-  const changed = { ...target, dates: '1642–1727' };
+  const changed = {
+    ...target,
+    dateSpan: { startYear: 1642, endYear: 1727 },
+    dates: '1642–1727',
+  };
   assert.equal(shipProfiles(files, [changed]).size, 0);
   assert.equal(
     (await verifyProfile({ ...options, subject: changed })).status,
     'approved',
   );
   assert.equal(shipProfiles(await readRawProfiles(root), [changed]).size, 1);
+});
+
+test('verification checks the birth year of a living Person', async (t) => {
+  const { options } = await setup(t);
+  const subject = {
+    ...SUBJECT,
+    dateSpan: { startYear: 1643, ongoing: true },
+  };
+  function researchWithBirthYear(year: number): Research {
+    return async (...args) => {
+      const researched = await research(...args);
+      researched.assessment.subject_dates.push({
+        path: 'overview',
+        boundary: 'start',
+        year,
+      });
+      return researched;
+    };
+  }
+  const result = await verifyProfile({
+    ...options,
+    subject,
+    repair: false,
+    research: researchWithBirthYear(1642),
+  });
+  assert.equal(result.status, 'held');
+  assert.ok(
+    result.blockers.some((blocker) =>
+      blocker.includes('subject start year 1642 disagrees with dataset 1643'),
+    ),
+  );
+  const corrected = await verifyProfile({
+    ...options,
+    subject,
+    research: researchWithBirthYear(1643),
+  });
+  assert.equal(corrected.status, 'approved');
+  const { report } = await saved(options);
+  assert.equal(report.subject.dates, '1643–present');
+  assert.equal(report.policy_version, POLICY_VERSION);
+});
+
+test('Output accepts version 2 approvals for closed spans but withholds them for ongoing subjects', async (t) => {
+  const { options } = await setup(t);
+  await verifyProfile(options);
+  const { record, report } = await saved(options);
+
+  for (const [dates, expected] of [
+    ['1643–1727', 1],
+    ['1643–present', 0],
+  ] as const) {
+    const legacyReport = {
+      ...report,
+      policy_version: '2',
+      subject: { ...report.subject, dates },
+    };
+    const legacyRecord = {
+      ...record,
+      meta: {
+        ...record.meta,
+        review: {
+          ...record.meta.review,
+          approval: {
+            ...record.meta.review.approval,
+            policy_version: '2',
+            report_hash: hash(legacyReport),
+          },
+        },
+      },
+    };
+    const raw = parseRawProfile(legacyRecord, options.filePath, legacyReport);
+    const target = { ...SUBJECT, slug: 'newton', fameScore: 99, dates };
+    assert.equal(shipProfiles([raw], [target]).size, expected, dates);
+  }
 });
 
 test('an edited Profile can earn approval without changing its protected content', async (t) => {
@@ -535,7 +618,7 @@ test('corroboration needs distinct original accounts and primary or scholarly su
     policy_version: POLICY_VERSION,
     profile_hash: 'hash',
     verified_at: 'date',
-    subject: { qid: 'Q935', dates: SUBJECT.dates },
+    subject: { qid: 'Q935', dates: '1643–1727' },
     models: ['test'],
     assessment: item,
     audit: { uncovered: [], issues: [], coherent: true },

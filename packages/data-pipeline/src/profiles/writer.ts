@@ -4,7 +4,7 @@ import { parseModelProfile } from './model-profile.js';
 import type { PlanEntry } from './plan.js';
 import { parsePrompt, renderPrompt } from './prompt.js';
 import type { Complete, Provider } from './providers.js';
-import { SUBJECT_TYPE } from './subjects.js';
+import { formatDates, SUBJECT_TYPE } from './subjects.js';
 
 export type WriteEntry = Extract<PlanEntry, { kind: 'write' }>;
 
@@ -40,7 +40,7 @@ async function writeEntry(
   const prompt = renderPrompt(options.promptMarkdown, {
     type: SUBJECT_TYPE[subject.lane],
     name: subject.name,
-    dates: subject.dates,
+    dates: formatDates(subject.dateSpan),
     wikipediaUrl: subject.wikipediaUrl,
   });
   const completion = await options.complete(prompt);

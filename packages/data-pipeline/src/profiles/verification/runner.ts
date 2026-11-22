@@ -1,9 +1,10 @@
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { asRecord } from '../../output/profiles.js';
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
+import { passages } from '../passages.js';
 import type { Complete } from '../providers.js';
-import type { ProfileSubject } from '../subjects.js';
+import { formatDates, type ProfileSubject } from '../subjects.js';
+import { asRecord } from '../values.js';
 import type { ResolveArticleQids } from '../wikipedia-qids.js';
 import { extractJson } from '../writer.js';
 import { evidenceChecks, mechanicalChecks } from './mechanical.js';
@@ -13,7 +14,6 @@ import {
   hasApproval,
   hash,
   POLICY_VERSION,
-  passages,
   profileHash,
   type Report,
 } from './policy.js';
@@ -122,6 +122,7 @@ export async function verifyProfile(
     throw error;
   });
   let profile = parseModelProfile(record, options.filePath);
+  const dates = formatDates(options.subject.dateSpan);
   if (
     !options.force &&
     hasApproval(
@@ -129,8 +130,7 @@ export async function verifyProfile(
       oldReport,
       passages(profile).map((item) => item.path),
     ) &&
-    asRecord(asRecord(oldReport, 'report').subject, 'subject').dates ===
-      options.subject.dates
+    asRecord(asRecord(oldReport, 'report').subject, 'subject').dates === dates
   ) {
     return { status: 'skipped', blockers: [], reportPath };
   }
@@ -176,7 +176,7 @@ export async function verifyProfile(
       policy_version: POLICY_VERSION,
       profile_hash: profileHash(record),
       verified_at: now,
-      subject: { qid: options.subject.qid, dates: options.subject.dates },
+      subject: { qid: options.subject.qid, dates },
       models: [result.model, audited.model],
       assessment: result.assessment,
       audit: audited.audit,

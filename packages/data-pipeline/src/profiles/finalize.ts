@@ -1,11 +1,11 @@
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { asRecord, asString } from '../output/profiles.js';
 import { slugify } from '../output/slugs.js';
 import { parseModelProfile } from './model-profile.js';
 import { readStoredProfiles } from './store.js';
 import { type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
 import { parseTokenUsage, type TokenUsage } from './usage.js';
+import { asRecord, asString } from './values.js';
 import type { ResolveArticleQids } from './wikipedia-qids.js';
 
 // The JSON shape `meta` takes (prompts/profile.md, "Meta"). `temperature`
