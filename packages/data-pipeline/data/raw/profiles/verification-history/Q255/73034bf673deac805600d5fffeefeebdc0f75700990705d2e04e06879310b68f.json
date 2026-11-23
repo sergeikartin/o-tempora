@@ -1,0 +1,1502 @@
+{
+  "profile": {
+    "subject": "Ludwig van Beethoven",
+    "type": "person",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven",
+    "overview": "Ludwig van Beethoven was a composer and pianist from Bonn who made his career in Vienna, where he first drew attention by improvising at the keyboard. As his hearing deteriorated, he kept composing, writing piano sonatas, string quartets and symphonies that stretched the musical forms he had inherited.",
+    "key_moments": [
+      {
+        "date": "1792",
+        "title": "From Bonn to Vienna",
+        "text": "Beethoven left Bonn to study with **Joseph Haydn** in Vienna. He had gone there to learn composition, but the skill that first caught Viennese audiences' attention was making music up at the piano.",
+        "claims": [
+          "Ludwig van Beethoven moved from Bonn to Vienna in 1792.",
+          "Ludwig van Beethoven studied composition with Joseph Haydn in Vienna.",
+          "Ludwig van Beethoven gained an early reputation in Vienna for improvising at the piano."
+        ],
+        "source": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven"
+      },
+      {
+        "date": "1802",
+        "title": "A letter kept private",
+        "text": "At **Heiligenstadt** outside Vienna, Beethoven wrote to his brothers about the isolation his worsening hearing had brought. He said that thoughts of the music he still wanted to write had kept him from taking his own life. The letter stayed among his papers and was discovered after his death.",
+        "claims": [
+          "Ludwig van Beethoven wrote the Heiligenstadt Testament to his brothers in 1802 while staying in Heiligenstadt outside Vienna.",
+          "Ludwig van Beethoven described his isolation over his hearing loss in the Heiligenstadt Testament.",
+          "Ludwig van Beethoven said in the Heiligenstadt Testament that his art had kept him from taking his own life.",
+          "The Heiligenstadt Testament was found among Ludwig van Beethoven's papers after his death."
+        ],
+        "source": "https://en.wikipedia.org/wiki/Heiligenstadt_Testament"
+      },
+      {
+        "date": "1805",
+        "title": "The Eroica reaches the public",
+        "text": "Vienna's **Theater an der Wien** hosted the first public performance of Beethoven's **Third Symphony**. Its length alone pushed beyond what listeners expected of a symphony at the time. In the middle of a work now known as the *Eroica*, or heroic symphony, Beethoven placed a funeral march.",
+        "claims": [
+          "Ludwig van Beethoven's Third Symphony received its first public performance at the Theater an der Wien in 1805.",
+          "Ludwig van Beethoven's Third Symphony was unusually long for a symphony of its time.",
+          "Ludwig van Beethoven's Third Symphony is known as the Eroica, meaning heroic.",
+          "The second movement of Ludwig van Beethoven's Third Symphony is a funeral march."
+        ],
+        "source": "https://en.wikipedia.org/wiki/Symphony_No._3_(Beethoven)"
+      },
+      {
+        "date": "1824",
+        "title": "Voices enter the Ninth",
+        "text": "An orchestra premiered Beethoven's **Ninth Symphony** in Vienna. The first three movements were entirely instrumental. Then solo singers and a choir joined the orchestra for the finale, singing words from **Friedrich Schiller's** poem *Ode to Joy*.",
+        "claims": [
+          "Ludwig van Beethoven's Ninth Symphony premiered in Vienna in 1824.",
+          "The first three movements of Ludwig van Beethoven's Ninth Symphony are instrumental.",
+          "The finale of Ludwig van Beethoven's Ninth Symphony features vocal soloists and a choir singing words from Friedrich Schiller's Ode to Joy."
+        ],
+        "source": "https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)"
+      }
+    ],
+    "deep_facts": [
+      {
+        "text": "Visitors could talk to Beethoven by writing in a notebook. He often answered aloud, so the surviving conversation books can preserve a friend's words while leaving Beethoven's side of the exchange to the imagination.",
+        "type": "unique_detail",
+        "is_legend": false,
+        "confidence": "high",
+        "claims": [
+          "Ludwig van Beethoven's visitors wrote their remarks in conversation books because of Ludwig van Beethoven's hearing loss.",
+          "Ludwig van Beethoven often answered visitors aloud, leaving only the visitors' side in many surviving conversation book exchanges."
+        ],
+        "source": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven"
+      },
+      {
+        "text": "The publisher Anton Diabelli invited composers to write a variation on a waltz he had supplied. Beethoven produced 33. That single waltz became the material for a whole piano work, the *Diabelli Variations*.",
+        "type": "hidden_story",
+        "is_legend": false,
+        "confidence": "high",
+        "claims": [
+          "Music publisher Anton Diabelli invited composers to write a variation on a waltz composed by Anton Diabelli.",
+          "Ludwig van Beethoven's Diabelli Variations consist of 33 piano variations on Anton Diabelli's waltz."
+        ],
+        "source": "https://en.wikipedia.org/wiki/Diabelli_Variations"
+      },
+      {
+        "text": "The opening movement of Beethoven's Fifth Symphony traveled into space on the Voyager Golden Record. The music chosen for the spacecraft also included a quieter piece by Beethoven, the Cavatina from his String Quartet No. 13.",
+        "type": "hidden_story",
+        "is_legend": false,
+        "confidence": "high",
+        "claims": [
+          "The Voyager Golden Record carried aboard the Voyager spacecraft includes the opening movement of Ludwig van Beethoven's Fifth Symphony.",
+          "The Voyager Golden Record includes the Cavatina from Ludwig van Beethoven's String Quartet No. 13."
+        ],
+        "source": "https://en.wikipedia.org/wiki/Contents_of_the_Voyager_Golden_Record"
+      }
+    ],
+    "connections": [
+      {
+        "name": "Joseph Haydn",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Joseph_Haydn",
+        "connection": "Taught Beethoven composition after Beethoven moved to Vienna in 1792.",
+        "importance": "high",
+        "qid": "Q7349"
+      },
+      {
+        "name": "Friedrich Schiller",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Friedrich_Schiller",
+        "connection": "Wrote the poem Ode to Joy, which Beethoven set in the finale of his Ninth Symphony.",
+        "importance": "high",
+        "qid": "Q22670"
+      },
+      {
+        "name": "Napoleon",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Napoleon",
+        "connection": "Beethoven originally associated the Eroica symphony with Napoleon Bonaparte.",
+        "importance": "medium",
+        "qid": "Q517"
+      },
+      {
+        "name": "Johann Wolfgang von Goethe",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe",
+        "connection": "Wrote the play Egmont, for which Beethoven composed incidental music.",
+        "importance": "medium",
+        "qid": "Q5879"
+      },
+      {
+        "name": "Congress of Vienna",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+        "connection": "Beethoven performed his cantata Der glorreiche Augenblick during the congress.",
+        "importance": "medium",
+        "qid": "Q46362"
+      }
+    ],
+    "meta": {
+      "generated_at": "2026-11-22T16:27:26.781Z",
+      "prompt_version": "2.2.0",
+      "prompt_hash": "246b7e0afd6f",
+      "schema_version": 3,
+      "model": "gpt-6.2-sol",
+      "reasoning_effort": "medium",
+      "temperature": null,
+      "run_id": "2026-11-22-fresh-profile-pilot",
+      "locale": "en",
+      "source": {
+        "wikidata_qid": "Q255"
+      },
+      "tokens": {
+        "input": 169561,
+        "output": 2937
+      },
+      "validation": {
+        "schema_valid": true,
+        "connections_returned": 6,
+        "connections_matched_people": 4,
+        "connections_matched_events": 1,
+        "connections_unresolved": 0
+      },
+      "review": {
+        "status": "draft",
+        "reviewed_at": null
+      }
+    }
+  },
+  "report": {
+    "policy_version": "3",
+    "profile_hash": "73034bf673deac805600d5fffeefeebdc0f75700990705d2e04e06879310b68f",
+    "verified_at": "2026-11-22T16:35:34.321Z",
+    "subject": {
+      "qid": "Q255",
+      "dates": "1770–1827"
+    },
+    "models": [
+      "gpt-6.2-sol",
+      "gpt-6.2-sol"
+    ],
+    "assessment": {
+      "uncovered": [
+        "overview: Beethoven first attracted notice in Vienna specifically by improvising at the keyboard.",
+        "key_moments.0.text: Piano improvisation was the specific skill that first attracted Viennese audiences to Beethoven.",
+        "key_moments.1.text: Beethoven wrote in the letter about social isolation brought on by his worsening hearing.",
+        "deep_facts.2.text: The Cavatina on the Voyager Golden Record was quieter than the Fifth Symphony’s opening movement.",
+        "connections.4.connection: Beethoven personally performed his cantata Der glorreiche Augenblick during the Congress of Vienna."
+      ],
+      "issues": [],
+      "coherent": true,
+      "covered": [
+        "overview",
+        "key_moments.0.date",
+        "key_moments.0.title",
+        "key_moments.0.text",
+        "key_moments.1.date",
+        "key_moments.1.title",
+        "key_moments.1.text",
+        "key_moments.2.date",
+        "key_moments.2.title",
+        "key_moments.2.text",
+        "key_moments.3.date",
+        "key_moments.3.title",
+        "key_moments.3.text",
+        "deep_facts.0.text",
+        "deep_facts.1.text",
+        "deep_facts.2.text",
+        "connections.0.connection",
+        "connections.1.connection",
+        "connections.2.connection",
+        "connections.3.connection",
+        "connections.4.connection"
+      ],
+      "subject_dates": [],
+      "findings": [
+        {
+          "path": "overview",
+          "claim": "Ludwig van Beethoven was a composer.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biographical overview identifies the forms he transformed through composition.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "fundamentally transformed the symphony, the piano concerto, the piano sonata and the string quartet",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Ludwig van Beethoven was a pianist.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biography describes him building his professional name as a pianist.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "In aristocratic salons, he initially made his name as a pianist",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Ludwig van Beethoven was from Bonn.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biography places his family in Bonn, and the encyclopedia identifies Bonn as his home before his permanent move.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "a family of court musicians from Bonn",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            },
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "In November 1792, Beethoven moved permanently to Vienna from Bonn",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Ludwig van Beethoven made his career in Vienna.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "His move was permanent and the account places his early career in aristocratic salons there.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "In November 1792, Beethoven moved permanently to Vienna from Bonn",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            },
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "Vienna would remain his home from then on.",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            },
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "In aristocratic salons, he initially made his name as a pianist",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Beethoven first attracted notice in Vienna specifically by improvising at the keyboard.",
+          "verdict": "unverifiable",
+          "risk": "corroborate",
+          "explanation": "The evidence credits his early piano playing and identifies improvisation as part of his early reputation. It does not isolate improvisation as the specific first source of attention.",
+          "correction": "He earned an early reputation in Vienna as a pianist and improviser.",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "In aristocratic salons, he initially made his name as a pianist",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            },
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "a reputation as a performer and improviser in the salons of the Viennese nobility",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Beethoven continued composing while his hearing deteriorated.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biographical account explicitly places composition during progressive hearing loss.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "Beethoven created much of this music while his hearing was deteriorating",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Beethoven composed piano sonatas that extended the inherited piano sonata form.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biographical source characterizes his contribution as a fundamental transformation of this form.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "fundamentally transformed the symphony, the piano concerto, the piano sonata and the string quartet",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Beethoven composed string quartets that extended the inherited string quartet form.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biographical source characterizes his contribution as a fundamental transformation of this form.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "fundamentally transformed the symphony, the piano concerto, the piano sonata and the string quartet",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Beethoven composed symphonies that extended the inherited symphony form.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biographical source characterizes his contribution as a fundamental transformation of this form.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "fundamentally transformed the symphony, the piano concerto, the piano sonata and the string quartet",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.date",
+          "claim": "Beethoven moved from Bonn to Vienna in 1792.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The move is dated to November 1792.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "In November 1792, Beethoven moved permanently to Vienna from Bonn",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.title",
+          "claim": "Beethoven moved from Bonn to Vienna.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The source explicitly names both places and the direction of the move.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "In November 1792, Beethoven moved permanently to Vienna from Bonn",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Beethoven left Bonn for Vienna to study with Joseph Haydn.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biographical accounts identify the point of departure, destination and reason for the move.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "In November 1792, Beethoven moved permanently to Vienna from Bonn",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            },
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "In November 1792, he left for Vienna to study with Haydn.",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Beethoven went to Vienna to study composition with Haydn.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The accounts describe study under Haydn and identify counterpoint as its focus.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "In November 1792, he left for Vienna to study with Haydn.",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            },
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "Working under Haydn's direction,[38] he sought to master counterpoint.",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Piano improvisation was the specific skill that first attracted Viennese audiences to Beethoven.",
+          "verdict": "unverifiable",
+          "risk": "corroborate",
+          "explanation": "The accounts establish early piano virtuosity and an early reputation for improvisation but do not identify improvisation as the specific first skill to gain notice.",
+          "correction": "He gained an early reputation as a pianist and improviser in Vienna.",
+          "evidence": [
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "In aristocratic salons, he initially made his name as a pianist",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            },
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "a reputation as a performer and improviser in the salons of the Viennese nobility",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.date",
+          "claim": "Beethoven wrote the Heiligenstadt Testament in 1802.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The letter and the scholarly account date it to October 1802.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+              "quote": "a letter written by Ludwig van Beethoven to his brothers Karl and Johann at Heiligenstadt on 6 October 1802",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Heiligenstadt Testament entry"
+            },
+            {
+              "source": "77700fc0c4b2552cb84b87ef2e9c2372c656419a605408473345816228f52bff",
+              "quote": "the village of Heiligenstadt near Vienna from May until October 1802",
+              "kind": "scholarly",
+              "origin": "William Kinderman, Beethoven at Heiligenstadt in 1802"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.title",
+          "claim": "Beethoven kept the Heiligenstadt Testament private.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The account says he kept it among his private papers.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+              "quote": "Beethoven kept the document among his private papers",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Heiligenstadt Testament entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Beethoven wrote the letter while staying in Heiligenstadt outside Vienna.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The sources place the writing in Heiligenstadt and identify Heiligenstadt as a village near Vienna.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+              "quote": "a letter written by Ludwig van Beethoven to his brothers Karl and Johann at Heiligenstadt on 6 October 1802",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Heiligenstadt Testament entry"
+            },
+            {
+              "source": "77700fc0c4b2552cb84b87ef2e9c2372c656419a605408473345816228f52bff",
+              "quote": "the village of Heiligenstadt near Vienna from May until October 1802",
+              "kind": "scholarly",
+              "origin": "William Kinderman, Beethoven at Heiligenstadt in 1802"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Beethoven addressed the letter to his brothers.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The article identifies the intended recipients.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+              "quote": "a letter written by Ludwig van Beethoven to his brothers Karl and Johann at Heiligenstadt on 6 October 1802",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Heiligenstadt Testament entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Beethoven wrote in the letter about social isolation brought on by his worsening hearing.",
+          "verdict": "unverifiable",
+          "risk": "ordinary",
+          "explanation": "The fetched biography links his actual seclusion to hearing loss, and the sources document despair in the letter. They do not explicitly establish that the letter itself describes his isolation.",
+          "correction": "At Heiligenstadt near Vienna, Beethoven wrote to his brothers about his despair over his worsening hearing.",
+          "evidence": [
+            {
+              "source": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+              "quote": "his despair over his increasing deafness",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Heiligenstadt Testament entry"
+            },
+            {
+              "source": "77700fc0c4b2552cb84b87ef2e9c2372c656419a605408473345816228f52bff",
+              "quote": "in response to alarm over his loss of hearing, Beethoven moved into seclusion in this village",
+              "kind": "scholarly",
+              "origin": "William Kinderman, Beethoven at Heiligenstadt in 1802"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "In the letter, Beethoven said that his commitment to the music he still wanted to create held him back from suicide.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Kinderman describes the renewed commitment to art as what held off suicidal thoughts. The encyclopedia also describes a desire to live to fulfill his artistic ambitions.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "77700fc0c4b2552cb84b87ef2e9c2372c656419a605408473345816228f52bff",
+              "quote": "suicidal thoughts, which he held at bay in favor of renewed commitment to his art",
+              "kind": "scholarly",
+              "origin": "William Kinderman, Beethoven at Heiligenstadt in 1802"
+            },
+            {
+              "source": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+              "quote": "to complete his artistic destiny",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Heiligenstadt Testament entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "The letter remained among Beethoven’s private papers.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The account explicitly describes his retention of the document.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+              "quote": "Beethoven kept the document among his private papers",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Heiligenstadt Testament entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "The letter was discovered after Beethoven’s death.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The account dates the discovery to March 1827 and specifies its relation to his death.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+              "quote": "It was discovered in March 1827, after Beethoven's death",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Heiligenstadt Testament entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.date",
+          "claim": "The Eroica first reached the public in 1805.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The two sources distinguish the 1805 public performance from an earlier private one.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "ad37be84be8d9f416409b2a7a9c17eb2e60518e5daf3e3161040d553a14ab8b6",
+              "quote": "7 April 1805, Theater-an-der-Wien (public)",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 3"
+            },
+            {
+              "source": "a0b570180f2c53c81ad63a1cabff7e214e75eadc9c6619e654b4c628e2169804",
+              "quote": "the first public performance on 7 April 1805",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 3 entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.title",
+          "claim": "The Eroica was performed publicly.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Eastman account identifies the work and lists the public performance.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "ad37be84be8d9f416409b2a7a9c17eb2e60518e5daf3e3161040d553a14ab8b6",
+              "quote": "Sinfonia eroica (Heroic symphony)",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 3"
+            },
+            {
+              "source": "ad37be84be8d9f416409b2a7a9c17eb2e60518e5daf3e3161040d553a14ab8b6",
+              "quote": "7 April 1805, Theater-an-der-Wien (public)",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 3"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "The first public performance of Beethoven’s Third Symphony was at the Theater an der Wien in Vienna.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The Eastman chronology identifies the public venue, and the encyclopedia gives both the city and the distinction between private and public performances.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "ad37be84be8d9f416409b2a7a9c17eb2e60518e5daf3e3161040d553a14ab8b6",
+              "quote": "7 April 1805, Theater-an-der-Wien (public)",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 3"
+            },
+            {
+              "source": "a0b570180f2c53c81ad63a1cabff7e214e75eadc9c6619e654b4c628e2169804",
+              "quote": "the first public performance on 7 April 1805",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 3 entry"
+            },
+            {
+              "source": "a0b570180f2c53c81ad63a1cabff7e214e75eadc9c6619e654b4c628e2169804",
+              "quote": "Location Theater an der Wien, Vienna",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 3 entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Beethoven’s Third Symphony was unusually long for its time.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The article identifies length as an aspect in which the work broke with existing symphonic conventions.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "a0b570180f2c53c81ad63a1cabff7e214e75eadc9c6619e654b4c628e2169804",
+              "quote": "the work broke boundaries in symphonic form, length, harmony, emotional and cultural content",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 3 entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Beethoven’s Third Symphony is known as the Eroica, meaning heroic symphony.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Eastman account supplies the title and its translation.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "ad37be84be8d9f416409b2a7a9c17eb2e60518e5daf3e3161040d553a14ab8b6",
+              "quote": "Sinfonia eroica (Heroic symphony)",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 3"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Beethoven put a funeral march inside his Third Symphony.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The movement list identifies the march as the second of four movements.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "ad37be84be8d9f416409b2a7a9c17eb2e60518e5daf3e3161040d553a14ab8b6",
+              "quote": "II. Marcia funebre (funeral march).",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 3"
+            },
+            {
+              "source": "a0b570180f2c53c81ad63a1cabff7e214e75eadc9c6619e654b4c628e2169804",
+              "quote": "a symphony in four movements by Ludwig van Beethoven",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 3 entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.date",
+          "claim": "Beethoven’s Ninth Symphony premiered in 1824.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The sources give 7 May 1824 as the premiere date.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "First performance: 7 May 1824, Kärtnerthor Theater, Vienna.",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            },
+            {
+              "source": "f628791bea5f6d35de51822543af3d48e52edea78a9f5ca4eb0db591add75075",
+              "quote": "Premiere Date 7 May 1824 (1824-05-07) Location Theater am Kärntnertor, Vienna",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 9 entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.title",
+          "claim": "Singing enters Beethoven’s Ninth Symphony.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The score instrumentation lists both vocal soloists and a choir in its fourth movement.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "SATB SoloIV, SATB ChorusIV.",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "An orchestra premiered Beethoven’s Ninth Symphony in Vienna.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The premiere location and participating orchestra are identified.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "First performance: 7 May 1824, Kärtnerthor Theater, Vienna.",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            },
+            {
+              "source": "f628791bea5f6d35de51822543af3d48e52edea78a9f5ca4eb0db591add75075",
+              "quote": "Performers Kärntnertor house orchestra",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 9 entry"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "The first three movements of Beethoven’s Ninth Symphony were entirely instrumental.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The score instrumentation restricts the vocal forces to movement IV.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "SATB SoloIV, SATB ChorusIV.",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Solo singers joined the orchestra in the finale of the Ninth Symphony.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The score calls for solo singers in movement IV.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "SATB SoloIV, SATB ChorusIV.",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "A choir joined the orchestra in the finale of the Ninth Symphony.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The score calls for a chorus in movement IV.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "SATB SoloIV, SATB ChorusIV.",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "The singers in the finale sang words from Friedrich Schiller’s poem Ode to Joy.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The scholarly source places the poem in the finale, while the encyclopedia identifies the named poem and author.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "Schiller’s descriptive poetry appears only in the finale",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            },
+            {
+              "source": "f628791bea5f6d35de51822543af3d48e52edea78a9f5ca4eb0db591add75075",
+              "quote": "The text was adapted from the \"An die Freude (Ode to Joy)\"",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 9 entry"
+            },
+            {
+              "source": "f628791bea5f6d35de51822543af3d48e52edea78a9f5ca4eb0db591add75075",
+              "quote": "a poem written by Friedrich Schiller in 1785 and revised in 1803",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 9 entry"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Beethoven’s visitors could communicate by writing their remarks in notebooks.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Beethoven-Haus describes how visitors used the booklets in its manuscript catalogue.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "32bb61138f1dc23f73888636ec19cc117b32e1c0465466118b2d54b006798bef",
+              "quote": "Because of his deafness Beethoven had to use booklets",
+              "kind": "primary",
+              "origin": "Beethoven-Haus catalog of its manuscript conversation booklet"
+            },
+            {
+              "source": "32bb61138f1dc23f73888636ec19cc117b32e1c0465466118b2d54b006798bef",
+              "quote": "Visitors wrote down what they wanted to say, Beethoven usually answered in spoken.",
+              "kind": "primary",
+              "origin": "Beethoven-Haus catalog of its manuscript conversation booklet"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Beethoven often replied aloud to the visitors’ written remarks.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The owning institution describes spoken replies as his usual practice.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "32bb61138f1dc23f73888636ec19cc117b32e1c0465466118b2d54b006798bef",
+              "quote": "Visitors wrote down what they wanted to say, Beethoven usually answered in spoken.",
+              "kind": "primary",
+              "origin": "Beethoven-Haus catalog of its manuscript conversation booklet"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "A surviving conversation book can preserve the visitor’s remarks without Beethoven’s side of the exchange.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Since visitors wrote and Beethoven usually answered aloud, an exchange may preserve only the visitor’s remarks on paper.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "32bb61138f1dc23f73888636ec19cc117b32e1c0465466118b2d54b006798bef",
+              "quote": "Visitors wrote down what they wanted to say, Beethoven usually answered in spoken.",
+              "kind": "primary",
+              "origin": "Beethoven-Haus catalog of its manuscript conversation booklet"
+            },
+            {
+              "source": "32bb61138f1dc23f73888636ec19cc117b32e1c0465466118b2d54b006798bef",
+              "quote": "Among the conserved booklets, the present one is the oldest.",
+              "kind": "primary",
+              "origin": "Beethoven-Haus catalog of its manuscript conversation booklet"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Anton Diabelli was a music publisher.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The catalogue identifies Diabelli as publisher and the encyclopedia gives his name and profession.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "b1e5fe106b7538ac01a2bbdfa6ecf8cc82888f106b92798dfe78bf31af2b9fb4",
+              "quote": "The publisher Diabelli had invited the most renowned Viennese composers each to write a variation on a waltz theme he had supplied.",
+              "kind": "other",
+              "origin": "Beethoven Music Research Center Opus 120 catalog"
+            },
+            {
+              "source": "d18290f098d696ad31a4de21616c78d6fe912f1a2b1872bfdbcde960ac92b80e",
+              "quote": "well-known music publisher and composer",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Diabelli Variations entry"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Diabelli invited composers to write one variation each on a waltz he supplied.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The catalogue explicitly describes the invitation and what it requested.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "b1e5fe106b7538ac01a2bbdfa6ecf8cc82888f106b92798dfe78bf31af2b9fb4",
+              "quote": "The publisher Diabelli had invited the most renowned Viennese composers each to write a variation on a waltz theme he had supplied.",
+              "kind": "other",
+              "origin": "Beethoven Music Research Center Opus 120 catalog"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Beethoven composed 33 variations based on Diabelli’s waltz.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The catalogue gives 33 variations, and the piece’s title identifies Diabelli’s waltz as their theme.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "b1e5fe106b7538ac01a2bbdfa6ecf8cc82888f106b92798dfe78bf31af2b9fb4",
+              "quote": "he continued until he had brought the number to the substantial total of thirty-three",
+              "kind": "other",
+              "origin": "Beethoven Music Research Center Opus 120 catalog"
+            },
+            {
+              "source": "d18290f098d696ad31a4de21616c78d6fe912f1a2b1872bfdbcde960ac92b80e",
+              "quote": "The 33 Variations on a waltz by Anton Diabelli",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Diabelli Variations entry"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "The set of variations is a piano work known as the Diabelli Variations.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The article names the work and its performing instrument.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d18290f098d696ad31a4de21616c78d6fe912f1a2b1872bfdbcde960ac92b80e",
+              "quote": "commonly known as the Diabelli Variations, is a set of variations for the piano",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Diabelli Variations entry"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.2.text",
+          "claim": "The opening movement of Beethoven’s Fifth Symphony traveled into space on the Voyager Golden Record.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The track list names the movement, and the record description identifies both spacecraft carrying it.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "576e172ee5a73e1371c9522d0a8cbae3b1d7bb58bd5bf0060b34484ae71bfb04",
+              "quote": "Symphony No. 5 in C minor, Opus 67: I. Allegro con brio Ludwig van Beethoven",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Contents of the Voyager Golden Record entry"
+            },
+            {
+              "source": "576e172ee5a73e1371c9522d0a8cbae3b1d7bb58bd5bf0060b34484ae71bfb04",
+              "quote": "the record, which is carried on both the Voyager 1 and Voyager 2 spacecraft",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Contents of the Voyager Golden Record entry"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.2.text",
+          "claim": "The Voyager Golden Record also carried Beethoven’s Cavatina from String Quartet No. 13.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The record track list names the Cavatina and its quartet.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "576e172ee5a73e1371c9522d0a8cbae3b1d7bb58bd5bf0060b34484ae71bfb04",
+              "quote": "String Quartet No. 13: in B♭ major, Opus 130: V. Cavatina Ludwig van Beethoven",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Contents of the Voyager Golden Record entry"
+            },
+            {
+              "source": "576e172ee5a73e1371c9522d0a8cbae3b1d7bb58bd5bf0060b34484ae71bfb04",
+              "quote": "the record, which is carried on both the Voyager 1 and Voyager 2 spacecraft",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Contents of the Voyager Golden Record entry"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.2.text",
+          "claim": "The Cavatina on the Voyager Golden Record was quieter than the Fifth Symphony’s opening movement.",
+          "verdict": "unverifiable",
+          "risk": "ordinary",
+          "explanation": "The fetched track list identifies the selections without establishing a comparison of their sound or dynamic markings.",
+          "correction": "The spacecraft also carried the Cavatina from Beethoven’s String Quartet No. 13.",
+          "evidence": [
+            {
+              "source": "576e172ee5a73e1371c9522d0a8cbae3b1d7bb58bd5bf0060b34484ae71bfb04",
+              "quote": "Symphony No. 5 in C minor, Opus 67: I. Allegro con brio Ludwig van Beethoven",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Contents of the Voyager Golden Record entry"
+            },
+            {
+              "source": "576e172ee5a73e1371c9522d0a8cbae3b1d7bb58bd5bf0060b34484ae71bfb04",
+              "quote": "String Quartet No. 13: in B♭ major, Opus 130: V. Cavatina Ludwig van Beethoven",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Contents of the Voyager Golden Record entry"
+            }
+          ]
+        },
+        {
+          "path": "connections.0.connection",
+          "claim": "The Joseph Haydn link identifies the Austrian composer who was Beethoven’s teacher.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The linked article identifies the composer, and biographical evidence identifies Haydn as Beethoven’s teacher.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f2bd87e07f7295d69ca6282f5f173696b653a9b88b135680f00e14d12f753cb0",
+              "quote": "was an Austrian composer of the Classical period",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Joseph Haydn entry"
+            },
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "In November 1792, he left for Vienna to study with Haydn.",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            }
+          ]
+        },
+        {
+          "path": "connections.0.connection",
+          "claim": "Haydn taught Beethoven composition after Beethoven’s move to Vienna in 1792.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The sources place the move in 1792 and identify subsequent instruction in counterpoint.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "In November 1792, Beethoven moved permanently to Vienna from Bonn",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            },
+            {
+              "source": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+              "quote": "In November 1792, he left for Vienna to study with Haydn.",
+              "kind": "other",
+              "origin": "Deutsche Grammophon Beethoven biography"
+            },
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "Working under Haydn's direction,[38] he sought to master counterpoint.",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            }
+          ]
+        },
+        {
+          "path": "connections.1.connection",
+          "claim": "The Friedrich Schiller link identifies the poet who wrote Ode to Joy.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The linked article names Schiller and lists Ode to Joy among his works, and the Ninth Symphony article directly names him as the poem’s author.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "71a01cf10fd7d588d1ebeb1a8fdb7782f3c4fdf9813e11859a9cf6034710ab4f",
+              "quote": "Born Johann Christoph Friedrich Schiller",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Friedrich Schiller entry"
+            },
+            {
+              "source": "71a01cf10fd7d588d1ebeb1a8fdb7782f3c4fdf9813e11859a9cf6034710ab4f",
+              "quote": "William Tell \"Ode to Joy\"",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Friedrich Schiller entry"
+            },
+            {
+              "source": "f628791bea5f6d35de51822543af3d48e52edea78a9f5ca4eb0db591add75075",
+              "quote": "a poem written by Friedrich Schiller in 1785 and revised in 1803",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 9 entry"
+            }
+          ]
+        },
+        {
+          "path": "connections.1.connection",
+          "claim": "Beethoven set words from Schiller’s Ode to Joy in his Ninth Symphony’s finale.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The evidence names the source poem and identifies its placement in the finale.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f628791bea5f6d35de51822543af3d48e52edea78a9f5ca4eb0db591add75075",
+              "quote": "The text was adapted from the \"An die Freude (Ode to Joy)\"",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Symphony No. 9 entry"
+            },
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "Schiller’s descriptive poetry appears only in the finale",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            }
+          ]
+        },
+        {
+          "path": "connections.2.connection",
+          "claim": "The Napoleon link identifies Napoleon Bonaparte.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The linked page identifies its subject by full name.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c50555229ae12467ed692565ef763df3750ef3c9f87a9bc06b7fe8d517c6dac8",
+              "quote": "Napoleon Bonaparte[b] (born Napoleone di Buonaparte",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Napoleon entry"
+            }
+          ]
+        },
+        {
+          "path": "connections.2.connection",
+          "claim": "Beethoven originally associated the Eroica with Napoleon Bonaparte.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Eastman describes the early dedication plan. An archival account of a contemporaneous letter identifies the intended title Bonaparte.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "ad37be84be8d9f416409b2a7a9c17eb2e60518e5daf3e3161040d553a14ab8b6",
+              "quote": "Beethoven initially intended to dedicate the symphony to Napoleon Bonaparte",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 3"
+            },
+            {
+              "source": "7c9e3e80f96905e4b14ca819e8663d197ac567c8ec1e6ffb2ac7d1c0a271d67e",
+              "quote": "Ferdinand Ries noted in a letter in the fall of 1803, Beethoven planned to call the symphony “Bonaparte”.",
+              "kind": "primary",
+              "origin": "Ferdinand Ries 1803 letter summarized by Gesellschaft der Musikfreunde archive"
+            }
+          ]
+        },
+        {
+          "path": "connections.3.connection",
+          "claim": "The Johann Wolfgang von Goethe link identifies the author of Egmont.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The linked article identifies Goethe and mentions Egmont; Eastman identifies the work as his.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "cbbc591f5f5535c840da4d8d1939548bb3b5f55166cf4a11cbecb58c391ff58f",
+              "quote": "Johann Wolfgang von Goethe Portrait by Joseph Karl Stieler",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Johann Wolfgang von Goethe entry"
+            },
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "the incidental music to Goethe’s Egmont",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            }
+          ]
+        },
+        {
+          "path": "connections.3.connection",
+          "claim": "Beethoven composed incidental music for Goethe’s play Egmont.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The linked article credits Beethoven with setting music to Egmont and Eastman identifies the resulting work as incidental music.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "cbbc591f5f5535c840da4d8d1939548bb3b5f55166cf4a11cbecb58c391ff58f",
+              "quote": "Ludwig van Beethoven, who had set music to Egmont two years prior in 1810",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Johann Wolfgang von Goethe entry"
+            },
+            {
+              "source": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+              "quote": "the incidental music to Goethe’s Egmont",
+              "kind": "scholarly",
+              "origin": "Eastman School of Music Beethoven Symphony Basics, Symphony No. 9"
+            }
+          ]
+        },
+        {
+          "path": "connections.4.connection",
+          "claim": "The Congress of Vienna link identifies the diplomatic meetings in Vienna in 1814–1815.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The linked account identifies the event, dates and place.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "3bcc9a308897b8f79ecbc6d1a468927621ef5703f16492a6c5a6464196dc501b",
+              "quote": "The Congress of Vienna[a] of 1814–1815 was a series of international diplomatic meetings",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Congress of Vienna entry"
+            },
+            {
+              "source": "3bcc9a308897b8f79ecbc6d1a468927621ef5703f16492a6c5a6464196dc501b",
+              "quote": "was held in Vienna from September 1814 to June 1815",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Congress of Vienna entry"
+            }
+          ]
+        },
+        {
+          "path": "connections.4.connection",
+          "claim": "Beethoven’s cantata Der glorreiche Augenblick was performed during the Congress of Vienna.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Beethoven catalogue identifies his cantata, its purpose for the Congress audience, and its performance date, during the diplomatic meetings.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "07aea959f49a5df792bf11c14229f10464535f4c4f39cd3e4614f202342d9135",
+              "quote": "Der glorreiche Augenblick, cantata for soloists, choir, and orchestra",
+              "kind": "other",
+              "origin": "Beethoven Music Research Center Opus 136 catalog"
+            },
+            {
+              "source": "07aea959f49a5df792bf11c14229f10464535f4c4f39cd3e4614f202342d9135",
+              "quote": "in the Imperial and Royal Ridotto Hall on 29 November",
+              "kind": "other",
+              "origin": "Beethoven Music Research Center Opus 136 catalog"
+            },
+            {
+              "source": "3bcc9a308897b8f79ecbc6d1a468927621ef5703f16492a6c5a6464196dc501b",
+              "quote": "The Congress of Vienna[a] of 1814–1815 was a series of international diplomatic meetings",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Congress of Vienna entry"
+            }
+          ]
+        },
+        {
+          "path": "connections.4.connection",
+          "claim": "Beethoven personally performed his cantata Der glorreiche Augenblick during the Congress of Vienna.",
+          "verdict": "unverifiable",
+          "risk": "ordinary",
+          "explanation": "The sources establish the staging and his authorship but do not specify whether he personally performed or conducted it.",
+          "correction": "Beethoven’s cantata Der glorreiche Augenblick was performed during the Congress of Vienna.",
+          "evidence": [
+            {
+              "source": "07aea959f49a5df792bf11c14229f10464535f4c4f39cd3e4614f202342d9135",
+              "quote": "in the Imperial and Royal Ridotto Hall on 29 November",
+              "kind": "other",
+              "origin": "Beethoven Music Research Center Opus 136 catalog"
+            },
+            {
+              "source": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+              "quote": "with the cantata Der glorreiche Augenblick (The Glorious Moment)",
+              "kind": "wikipedia",
+              "origin": "Wikipedia Ludwig van Beethoven entry"
+            }
+          ]
+        }
+      ]
+    },
+    "audit": {
+      "uncovered": [
+        "overview: The evidence establishes an early reputation as a pianist and improviser, but does not identify improvisation alone as what first drew notice. Describe the early reputation without assigning priority.",
+        "key_moments.0.text: The evidence establishes an early reputation as a performer and improviser in Viennese salons, but does not identify improvisation alone as the first skill to attract audiences. Use the documented early reputation.",
+        "key_moments.1.text: The cited passages document his seclusion and the letter’s despair, but do not show him describing social isolation in the letter itself. Use the Testament text or say he wrote about his worsening hearing and despair.",
+        "key_moments.2.text: The cited finding establishes exceptional length, but does not establish how listeners at the time expected a symphony to run. Say the work was unusually long for a symphony of its time or cite evidence of contemporary expectations.",
+        "deep_facts.2.text: The track list does not establish the relative loudness of the Cavatina and the Fifth’s opening movement. Remove the unsupported comparison.",
+        "connections.3.connection: The supplied passages identify the work as Goethe’s Egmont and identify Beethoven’s incidental music, but neither identifies Egmont as a play. Cite a source that identifies the genre or say Beethoven composed incidental music for Goethe’s Egmont.",
+        "connections.4.connection: The evidence documents a performance during the Congress of Vienna without identifying Beethoven’s role in the performance. Use the documented connection that he composed the cantata for the monarchs and statesmen gathered for the congress, or source the specific performing role."
+      ],
+      "issues": [
+        "key_moments.1.text: The supporting passages on suicide refer to renewed commitment to his art and fulfilling his artistic destiny. Use a direct translation to substantiate the claim about music he still wanted to write, or paraphrase this as his wish to continue his work keeping him from taking his own life.",
+        "deep_facts.0.text: The obscure detail about how often Beethoven answered aloud and left only the visitor’s words depends on a single Beethoven-Haus catalog account. Seek an independent scholarly account or edition of the conversation books to corroborate this detail.",
+        "deep_facts.1.text: The historical invitation underlying the one-versus-thirty-three story is treated as ordinary and supported by one modern catalog account. Corroborate the invitation with an independent scholarly account or surviving publisher material, checking whether the two accounts draw on the same origin. The undisputed count is supported by the work title.",
+        "deep_facts.2.text: The unusual Voyager claim relies entirely on three excerpts of one Wikipedia page. Check the two selections against the mission or record documentation and corroborate the claim with an independent original account, checking for copies of the official listing.",
+        "connections.1.connection: The finding supports Beethoven setting words from Schiller’s poem, while “which Beethoven set” can imply a setting of the poem as a whole. Say Beethoven used words from it in the Ninth’s finale."
+      ],
+      "coherent": true
+    },
+    "sources": [
+      {
+        "id": "32bb61138f1dc23f73888636ec19cc117b32e1c0465466118b2d54b006798bef",
+        "url": "https://www.beethoven.de/en/media/view/5119968429473792/",
+        "fetched_at": "2026-11-22T16:36:26.502Z"
+      },
+      {
+        "id": "c5e33634dabd354f322a5ec3e390d9d3d359612cb255efddb6fff6c5217f0759",
+        "url": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven",
+        "fetched_at": "2026-11-22T16:36:27.788Z"
+      },
+      {
+        "id": "3bcc9a308897b8f79ecbc6d1a468927621ef5703f16492a6c5a6464196dc501b",
+        "url": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+        "fetched_at": "2026-11-22T16:36:28.050Z"
+      },
+      {
+        "id": "74ec34d9d9488168e2ca7ca0c12e7f804fc6f3da109d1bcd42992c6ee1a10553",
+        "url": "https://www.jstor.org/stable/j.ctvd58svz",
+        "fetched_at": "2026-11-22T16:36:28.704Z"
+      },
+      {
+        "id": "eedf1c15c23ed751238b1afd741e20056773b008b83887d8b093b212d4905e96",
+        "url": "https://www.deutschegrammophon.com/en/composers/ludwig-van-beethoven",
+        "fetched_at": "2026-11-22T16:36:29.840Z"
+      },
+      {
+        "id": "d18290f098d696ad31a4de21616c78d6fe912f1a2b1872bfdbcde960ac92b80e",
+        "url": "https://en.wikipedia.org/wiki/Diabelli_Variations",
+        "fetched_at": "2026-11-22T16:36:30.226Z"
+      },
+      {
+        "id": "a0b570180f2c53c81ad63a1cabff7e214e75eadc9c6619e654b4c628e2169804",
+        "url": "https://en.wikipedia.org/wiki/Symphony_No._3_(Beethoven)",
+        "fetched_at": "2026-11-22T16:36:30.627Z"
+      },
+      {
+        "id": "c20cf414004cc2af1317db9b0120cb597a4187de53c27cc5828e27270fbf175e",
+        "url": "https://www.esm.rochester.edu/beethoven/symphony-no-9/",
+        "fetched_at": "2026-11-22T16:36:32.317Z"
+      },
+      {
+        "id": "ad37be84be8d9f416409b2a7a9c17eb2e60518e5daf3e3161040d553a14ab8b6",
+        "url": "https://www.esm.rochester.edu/beethoven/symphony-no-3/",
+        "fetched_at": "2026-11-22T16:36:34.318Z"
+      },
+      {
+        "id": "cbbc591f5f5535c840da4d8d1939548bb3b5f55166cf4a11cbecb58c391ff58f",
+        "url": "https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe",
+        "fetched_at": "2026-11-22T16:36:34.836Z"
+      },
+      {
+        "id": "576e172ee5a73e1371c9522d0a8cbae3b1d7bb58bd5bf0060b34484ae71bfb04",
+        "url": "https://en.wikipedia.org/wiki/Contents_of_the_Voyager_Golden_Record",
+        "fetched_at": "2026-11-22T16:36:35.062Z"
+      },
+      {
+        "id": "f2bd87e07f7295d69ca6282f5f173696b653a9b88b135680f00e14d12f753cb0",
+        "url": "https://en.wikipedia.org/wiki/Joseph_Haydn",
+        "fetched_at": "2026-11-22T16:36:35.287Z"
+      },
+      {
+        "id": "b1e5fe106b7538ac01a2bbdfa6ecf8cc82888f106b92798dfe78bf31af2b9fb4",
+        "url": "https://www.lvbeethoven.org/opus120/",
+        "fetched_at": "2026-11-22T16:36:37.626Z"
+      },
+      {
+        "id": "7c9e3e80f96905e4b14ca819e8663d197ac567c8ec1e6ffb2ac7d1c0a271d67e",
+        "url": "https://musikverein.at/en/archiv/sammlungen-uebersicht/beethovens_eroica/",
+        "fetched_at": "2026-11-22T16:36:38.423Z"
+      },
+      {
+        "id": "c50555229ae12467ed692565ef763df3750ef3c9f87a9bc06b7fe8d517c6dac8",
+        "url": "https://en.wikipedia.org/wiki/Napoleon",
+        "fetched_at": "2026-11-22T16:36:39.115Z"
+      },
+      {
+        "id": "f628791bea5f6d35de51822543af3d48e52edea78a9f5ca4eb0db591add75075",
+        "url": "https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)",
+        "fetched_at": "2026-11-22T16:36:39.416Z"
+      },
+      {
+        "id": "07aea959f49a5df792bf11c14229f10464535f4c4f39cd3e4614f202342d9135",
+        "url": "https://www.lvbeethoven.org/opus136/",
+        "fetched_at": "2026-11-22T16:36:40.919Z"
+      },
+      {
+        "id": "71a01cf10fd7d588d1ebeb1a8fdb7782f3c4fdf9813e11859a9cf6034710ab4f",
+        "url": "https://en.wikipedia.org/wiki/Friedrich_Schiller",
+        "fetched_at": "2026-11-22T16:36:41.367Z"
+      },
+      {
+        "id": "1bb53317599399fc31913fbef91d8738d4a4d3ba16f1db7a6c2a3918d3b75892",
+        "url": "https://en.wikipedia.org/wiki/Heiligenstadt_Testament",
+        "fetched_at": "2026-11-22T16:36:41.525Z"
+      },
+      {
+        "id": "77700fc0c4b2552cb84b87ef2e9c2372c656419a605408473345816228f52bff",
+        "url": "https://www.cambridge.org/core/books/abs/new-beethoven/beethoven-at-heiligenstadt-in-1802-deconstruction-integration-and-creativity/C16C7162C759C1E66760DBA43C0E9E9E",
+        "fetched_at": "2026-11-22T16:36:42.736Z"
+      }
+    ],
+    "evidence_errors": [],
+    "mechanical": [
+      "key_moments.2.text: markup other than **bold** in \"Vienna's **Theater an der Wien** hosted the first public per…\"",
+      "key_moments.3.text: markup other than **bold** in \"An orchestra premiered Beethoven's **Ninth Symphony** in Vie…\"",
+      "deep_facts.1.text: markup other than **bold** in \"The publisher Anton Diabelli invited composers to write a va…\"",
+      "deep_facts.0.text: replace source with a fetched supporting URL"
+    ],
+    "repairs": 0,
+    "blockers": [
+      "key_moments.2.text: markup other than **bold** in \"Vienna's **Theater an der Wien** hosted the first public per…\"",
+      "key_moments.3.text: markup other than **bold** in \"An orchestra premiered Beethoven's **Ninth Symphony** in Vie…\"",
+      "deep_facts.1.text: markup other than **bold** in \"The publisher Anton Diabelli invited composers to write a va…\"",
+      "deep_facts.0.text: replace source with a fetched supporting URL",
+      "overview: Beethoven first attracted notice in Vienna specifically by improvising at the keyboard.",
+      "key_moments.0.text: Piano improvisation was the specific skill that first attracted Viennese audiences to Beethoven.",
+      "key_moments.1.text: Beethoven wrote in the letter about social isolation brought on by his worsening hearing.",
+      "deep_facts.2.text: The Cavatina on the Voyager Golden Record was quieter than the Fifth Symphony’s opening movement.",
+      "connections.4.connection: Beethoven personally performed his cantata Der glorreiche Augenblick during the Congress of Vienna.",
+      "overview: The evidence establishes an early reputation as a pianist and improviser, but does not identify improvisation alone as what first drew notice. Describe the early reputation without assigning priority.",
+      "key_moments.0.text: The evidence establishes an early reputation as a performer and improviser in Viennese salons, but does not identify improvisation alone as the first skill to attract audiences. Use the documented early reputation.",
+      "key_moments.1.text: The cited passages document his seclusion and the letter’s despair, but do not show him describing social isolation in the letter itself. Use the Testament text or say he wrote about his worsening hearing and despair.",
+      "key_moments.2.text: The cited finding establishes exceptional length, but does not establish how listeners at the time expected a symphony to run. Say the work was unusually long for a symphony of its time or cite evidence of contemporary expectations.",
+      "deep_facts.2.text: The track list does not establish the relative loudness of the Cavatina and the Fifth’s opening movement. Remove the unsupported comparison.",
+      "connections.3.connection: The supplied passages identify the work as Goethe’s Egmont and identify Beethoven’s incidental music, but neither identifies Egmont as a play. Cite a source that identifies the genre or say Beethoven composed incidental music for Goethe’s Egmont.",
+      "connections.4.connection: The evidence documents a performance during the Congress of Vienna without identifying Beethoven’s role in the performance. Use the documented connection that he composed the cantata for the monarchs and statesmen gathered for the congress, or source the specific performing role.",
+      "key_moments.1.text: The supporting passages on suicide refer to renewed commitment to his art and fulfilling his artistic destiny. Use a direct translation to substantiate the claim about music he still wanted to write, or paraphrase this as his wish to continue his work keeping him from taking his own life.",
+      "deep_facts.0.text: The obscure detail about how often Beethoven answered aloud and left only the visitor’s words depends on a single Beethoven-Haus catalog account. Seek an independent scholarly account or edition of the conversation books to corroborate this detail.",
+      "deep_facts.1.text: The historical invitation underlying the one-versus-thirty-three story is treated as ordinary and supported by one modern catalog account. Corroborate the invitation with an independent scholarly account or surviving publisher material, checking whether the two accounts draw on the same origin. The undisputed count is supported by the work title.",
+      "deep_facts.2.text: The unusual Voyager claim relies entirely on three excerpts of one Wikipedia page. Check the two selections against the mission or record documentation and corroborate the claim with an independent original account, checking for copies of the official listing.",
+      "connections.1.connection: The finding supports Beethoven setting words from Schiller’s poem, while “which Beethoven set” can imply a setting of the poem as a whole. Say Beethoven used words from it in the Ninth’s finale.",
+      "overview: no reliable fetched evidence",
+      "overview: unverifiable: Beethoven first attracted notice in Vienna specifically by improvising at the keyboard.",
+      "key_moments.0.text: unverifiable: Piano improvisation was the specific skill that first attracted Viennese audiences to Beethoven.",
+      "key_moments.1.text: unverifiable: Beethoven wrote in the letter about social isolation brought on by his worsening hearing.",
+      "deep_facts.1.text: no reliable fetched evidence",
+      "deep_facts.2.text: unverifiable: The Cavatina on the Voyager Golden Record was quieter than the Fifth Symphony’s opening movement.",
+      "connections.4.connection: unverifiable: Beethoven personally performed his cantata Der glorreiche Augenblick during the Congress of Vienna."
+    ]
+  }
+}

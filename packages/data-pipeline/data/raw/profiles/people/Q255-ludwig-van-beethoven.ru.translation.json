@@ -1,0 +1,157 @@
+{
+  "policy_version": "1",
+  "qid": "Q255",
+  "source_hash": "4d8257dd064dcc2b3ca99346a9b38977d2ac949eb69a82843ad545a1b5192990",
+  "locale": "ru",
+  "fields": {
+    "overview": "Людвиг ван Бетховен — композитор и пианист родом из Бонна. Его музыкальная карьера сложилась в Вене, где он уже в первые годы приобрёл известность как пианист и импровизатор. По мере того как у Бетховена ухудшался слух, он продолжал сочинять. В фортепианных сонатах, струнных квартетах и симфониях он расширял границы музыкальных форм, унаследованных от предшественников.",
+    "key_moments.0.date": "1792",
+    "key_moments.0.title": "Из Бонна в Вену",
+    "key_moments.0.text": "Бетховен переехал из Бонна в Вену, где учился композиции у **Йозефа Гайдна**. Уже в первые годы он приобрёл там известность благодаря игре на фортепиано и импровизациям.",
+    "key_moments.1.date": "1802",
+    "key_moments.1.title": "Письмо, которое Бетховен оставил при себе",
+    "key_moments.1.text": "В **Хайлигенштадте** под Веной Бетховен написал письмо, предназначенное для братьев. Он рассказал, в какое отчаяние его приводило ухудшение слуха, как он думал о самоубийстве и вновь обрёл решимость продолжать сочинять музыку. Письмо осталось среди его бумаг, и его обнаружили после смерти композитора.",
+    "key_moments.2.date": "1805",
+    "key_moments.2.title": "«Героическая» в театре «Ан дер Вин»",
+    "key_moments.2.text": "В венском театре **«Ан дер Вин»** состоялось публичное исполнение **Третьей симфонии** Бетховена. Для симфонии того времени она была необычно длинной. Её вторая часть — траурный марш, а сама симфония известна под названием «Героическая» (Eroica).",
+    "key_moments.3.date": "1824",
+    "key_moments.3.title": "В Девятой звучат голоса",
+    "key_moments.3.text": "В Вене оркестр исполнил **Девятую симфонию** Бетховена. Первые три части были целиком инструментальными. В финале к оркестру присоединились солисты и хор, которые пели строки из стихотворения **Фридриха Шиллера** «К радости».",
+    "deep_facts.0.text": "По мере того как Бетховен терял слух, посетители могли общаться с ним, записывая свои реплики в тетрадях. Некоторые из этих разговорных тетрадей сохранились.",
+    "deep_facts.1.text": "Бетховен написал 33 вариации для фортепиано на тему одного вальса, сочинённого издателем Антоном Диабелли. Весь цикл известен под названием **«Вариации на тему Диабелли»**.",
+    "connections.0.connection": "Учил Бетховена композиции после его переезда в Вену в 1792 году.",
+    "connections.1.connection": "Написал оду «К радости», строки которой Бетховен использовал в финале Девятой симфонии.",
+    "connections.2.connection": "Изначально Бетховен связывал «Героическую» симфонию с Наполеоном Бонапартом.",
+    "connections.3.connection": "Написал пьесу «Эгмонт», к которой Бетховен сочинил музыку.",
+    "connections.4.connection": "Кантата Бетховена «Славное мгновение» прозвучала во время конгресса."
+  },
+  "audit": {
+    "uncovered": [],
+    "issues": [],
+    "coherent": true,
+    "covered": [
+      "overview",
+      "key_moments.0.date",
+      "key_moments.0.title",
+      "key_moments.0.text",
+      "key_moments.1.date",
+      "key_moments.1.title",
+      "key_moments.1.text",
+      "key_moments.2.date",
+      "key_moments.2.title",
+      "key_moments.2.text",
+      "key_moments.3.date",
+      "key_moments.3.title",
+      "key_moments.3.text",
+      "deep_facts.0.text",
+      "deep_facts.1.text",
+      "connections.0.connection",
+      "connections.1.connection",
+      "connections.2.connection",
+      "connections.3.connection",
+      "connections.4.connection"
+    ]
+  },
+  "generated_at": "2026-11-23T09:35:22.383Z",
+  "models": [
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 160405,
+        "output": 2042
+      }
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 204473,
+        "output": 2696
+      }
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 167593,
+        "output": 1838
+      }
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 189883,
+        "output": 1889
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "fields_hash": "1c4f18455bae12acdad2bb5967d7f0c25d7db106245b8697e55f99e3745c6b31",
+      "audit": {
+        "uncovered": [],
+        "issues": [
+          "overview: «Хотя слух ухудшался» explicitly makes the relationship concessive. The English «As his hearing deteriorated» describes developments over the same period. Preserve that temporal relationship, for example «По мере того как у Бетховена ухудшался слух, он продолжал сочинять».",
+          "key_moments.1.title: «Письмо, оставшееся у Бетховена» says where the letter remained and drops the emphasis on it being kept private. Restore the sense that the letter remained private during his lifetime.",
+          "connections.3.connection: «сочинил музыку» loses the theatrical function of «incidental music» because the Russian sentence leaves Egmont's nature unspecified. Identify it as a play and Beethoven's contribution as music to accompany it, for example «Написал пьесу „Эгмонт“, к которой Бетховен сочинил музыку»."
+        ],
+        "coherent": true,
+        "covered": [
+          "overview",
+          "key_moments.0.date",
+          "key_moments.0.title",
+          "key_moments.0.text",
+          "key_moments.1.date",
+          "key_moments.1.title",
+          "key_moments.1.text",
+          "key_moments.2.date",
+          "key_moments.2.title",
+          "key_moments.2.text",
+          "key_moments.3.date",
+          "key_moments.3.title",
+          "key_moments.3.text",
+          "deep_facts.0.text",
+          "deep_facts.1.text",
+          "connections.0.connection",
+          "connections.1.connection",
+          "connections.2.connection",
+          "connections.3.connection",
+          "connections.4.connection"
+        ]
+      }
+    },
+    {
+      "fields_hash": "44aeef5d66a79153dcff62d3367d8c5c691da3fcdfdbcb21682525756e568667",
+      "audit": {
+        "uncovered": [],
+        "issues": [],
+        "coherent": true,
+        "covered": [
+          "overview",
+          "key_moments.0.date",
+          "key_moments.0.title",
+          "key_moments.0.text",
+          "key_moments.1.date",
+          "key_moments.1.title",
+          "key_moments.1.text",
+          "key_moments.2.date",
+          "key_moments.2.title",
+          "key_moments.2.text",
+          "key_moments.3.date",
+          "key_moments.3.title",
+          "key_moments.3.text",
+          "deep_facts.0.text",
+          "deep_facts.1.text",
+          "connections.0.connection",
+          "connections.1.connection",
+          "connections.2.connection",
+          "connections.3.connection",
+          "connections.4.connection"
+        ]
+      }
+    }
+  ],
+  "approval_hash": "136b944022cfa2c97687eb1a823ea6fb7a66d8beed71076f0e72328eaf22ec1c"
+}
