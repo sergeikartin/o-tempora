@@ -146,3 +146,30 @@ The build and isolated publication confirmed the current English receipt. Agains
 English took **22m 31s of the 28m 54s** from writer dispatch to the final Russian gate. Research and writing took **6m 50s**. The remaining **15m 41s** before English approval went into audits, repairs, editorial edits and handoffs. Russian took **6m 23s** and ended held. The five-hour meter rose from 48% to 92% from coordinator startup to the final audit, and the weekly meter rose from 23% to 30%. The trial yielded one English approval and zero bilingual approvals.
 
 The largest cost in both pilots came after the first draft. In this run the auditor repeatedly found claims that exceeded their excerpts even when the evidence text matched and the prior repair had cleared its own blockers. Citation alignment is a concrete avoidable cost. The writer prompt called for Wikipedia links while the publication check needed the same-passage links fetched for evidence. Fixing that handoff could clear the seven citation blockers before the first audit. The remaining factual wording and Russian fidelity issues still required separate review.
+
+### Marie Curie citation trial, 2026-11-23
+
+Marie Curie (Q7186, 1867–1934) appeared in Legendary with a Fame Score of 94.30 and no saved, staged or published Profile. The trial used prompt 2.4.0 after commit `fe59f61` retired the legacy writer and removed 25 unapproved English drafts. Writer dispatch was at 13:43:25 UTC.
+
+| Stage | Dispatch to last usage reading | Five-hour meter | Weekly meter | Input tokens | Cached input | Output tokens |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Research and writing | 7m 07s | 15% | 34% | 4,187,669 | 4,120,960 | 15,430 |
+| First English audit | 1m 19s | 18% | 34% | 386,016 | 302,080 | 2,495 |
+| English repair | 1m 18s | 20% | 34% | 343,781 | 271,744 | 2,846 |
+| Second English audit | 1m 26s | 22% | 35% | 439,695 | 383,360 | 2,602 |
+| Third English audit | 1m 28s | 25% | 35% | 446,976 | 413,952 | 2,721 |
+| Russian translation | 1m 43s | 27% | 35% | 151,629 | 141,568 | 4,458 |
+| First Russian fidelity audit | 1m 24s | 29% | 36% | 153,155 | 143,104 | 3,095 |
+| Russian correction | 1m 08s | 31% | 36% | 175,494 | 158,592 | 2,641 |
+| Second Russian fidelity audit | 1m 10s | 32% | 36% | 150,011 | 135,680 | 2,602 |
+| **Agent total** | | | | **6,434,426** | **6,071,040** | **38,890** |
+
+All stages used `gpt-6.2-sol` at medium effort. Agent token totals exclude coordination. The writer inherited the conversation and subsequent agents started in fresh contexts. Input totals include cached tokens. Account-wide readings went from 7% to 32% on the five-hour meter and 32% to 36% on the weekly meter. Those increases include coordination and any other account activity.
+
+The writer tried 27 distinct URLs and fetched 22. Five returned HTTP errors, and an initial sandbox DNS failure cleared when the same URL was fetched with scoped network access. The assessment used 16 snapshots for 43 findings across 22 reader-visible fields. Finalization kept six of six Connections.
+
+The first English audit cleared all seven displayed citations and found zero uncovered claims. It held three issues involving the description of the golden key, a source assigned to the wrong notebook finding and the wording of Harding’s ceremonial presentation. One repair addressed those issues. The second audit found a reference to a period photograph absent from the supplied excerpt. The coordinator corrected the assessment’s attribution to the museum account and surviving object. The third audit found no blockers. English was approved at 13:58:11 UTC, **14m 46s** after dispatch, with 44 findings and all four Key Moments, three Deep Facts, six Connections and seven original citations.
+
+The first Russian audit flagged eight issues. Its JSON needed a format correction to serialize the findings as strings before the CLI accepted the verdict. After one translation correction, the second fidelity audit held on nine issues across seven fields, including terminology, agency and the scope of the ceremony wording. The Russian hold was saved at 14:05:04 UTC, **21m 40s** after dispatch. The trial yielded one English approval and zero bilingual approvals, so the weekly usage per bilingual approval remains unmeasured.
+
+Build and isolated publication finished **21m 51s** after dispatch. The standard publisher copied 38 files byte for byte. Relative to the preflight build, only the English Legendary row gained `hasProfile` and the English Profile file was added. Russian retained the Description fallback.

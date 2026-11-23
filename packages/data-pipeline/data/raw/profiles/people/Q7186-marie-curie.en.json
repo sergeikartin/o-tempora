@@ -1,0 +1,175 @@
+{
+  "subject": "Marie Curie",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Marie_Curie",
+  "overview": "Born in Warsaw, Marie Skłodowska Curie built her scientific career in Paris. Her research on radioactivity brought two previously unknown elements to light and earned her Nobel Prizes in physics and chemistry.",
+  "key_moments": [
+    {
+      "date": "1891",
+      "title": "A place to study in Paris",
+      "text": "Marie Skłodowska went to **the Sorbonne** to continue her studies. She earned degrees in physics and mathematics, and in Paris met the physicist **Pierre Curie**, whom she married in 1895.",
+      "claims": [
+        "Marie Skłodowska began studying at the Sorbonne in Paris in 1891.",
+        "Marie Skłodowska earned degrees in physics and mathematics at the Sorbonne.",
+        "Marie Skłodowska met the physicist Pierre Curie in Paris and married him in 1895."
+      ],
+      "source": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/"
+    },
+    {
+      "date": "1898",
+      "title": "Two elements in one ore",
+      "text": "Marie Curie found that **pitchblende**, an ore containing uranium, gave off more radiation than its uranium and thorium could account for. She and Pierre Curie separated samples and measured their radioactivity to decide which fractions to investigate next. The search pointed to **polonium and radium**, and the Curies named polonium after Marie’s native Poland.",
+      "claims": [
+        "Marie Curie found that pitchblende gave off more radiation than its uranium and thorium could account for.",
+        "Marie and Pierre Curie used measurements of radioactivity to decide which separated fractions of pitchblende to investigate further.",
+        "The Curies’ pitchblende research identified polonium and radium in 1898.",
+        "Marie and Pierre Curie named polonium after Marie Curie’s native Poland."
+      ],
+      "source": "https://history.aip.org/exhibits/curie/brief/03_radium/radium_7.html"
+    },
+    {
+      "date": "1903",
+      "title": "The physics prize",
+      "text": "Marie Curie earned a doctorate for her research on radioactive substances. That year the **Nobel Prize in Physics** recognized two stages of the work. Henri Becquerel received half for discovering spontaneous radioactivity, and Marie and Pierre Curie shared the other half for investigating it.",
+      "claims": [
+        "Marie Curie earned a doctorate for her radioactivity research in 1903.",
+        "Henri Becquerel received half of the 1903 Nobel Prize in Physics for discovering spontaneous radioactivity.",
+        "Marie and Pierre Curie were awarded the other half of the 1903 Nobel Prize in Physics for their research on the radiation Henri Becquerel discovered."
+      ],
+      "source": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/"
+    },
+    {
+      "date": "1911",
+      "title": "A chemistry prize of her own",
+      "text": "After Pierre Curie’s death, Marie Curie kept investigating the elements they had discovered. Working with **André Debierne**, she isolated radium as a metal in 1910. The next year the **Nobel Prize in Chemistry** recognized the discovery of radium and polonium and her work isolating and studying radium. This time she was the sole recipient.",
+      "claims": [
+        "Marie Curie continued investigating the radioactive elements she and Pierre Curie discovered after his death.",
+        "Marie Curie and André Debierne isolated radium as a metal in 1910.",
+        "Marie Curie received the 1911 Nobel Prize in Chemistry for the discovery of radium and polonium and the isolation and study of radium.",
+        "Marie Curie received the 1911 Nobel Prize in Chemistry without sharing it."
+      ],
+      "source": "https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/facts/"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "During World War I, Curie brought X-ray equipment to hospitals in a converted touring car. The machine could help doctors find shrapnel in wounded soldiers. The supply of electricity traveled with it: a **dynamo driven by the car’s engine** powered the X-ray apparatus.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Marie Curie equipped a touring car to bring X-ray equipment to hospitals during World War I.",
+        "X-ray imaging helped doctors locate shrapnel in wounded soldiers during World War I.",
+        "A dynamo driven by the engine supplied electricity for X-rays in Marie Curie’s radiology car."
+      ],
+      "source": "https://history.aip.org/exhibits/curie/brief/06_quotes/quotes_12.html"
+    },
+    {
+      "text": "At a White House ceremony in 1921, President Warren G. Harding handed Curie a **golden key**. The key belonged to the box for an unusual gift, a gram of radium that American donors had bought for her research in Paris.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "President Warren G. Harding presented Marie Curie with a golden key at a White House ceremony in 1921.",
+        "The ceremonial key corresponded to the box for Marie Curie’s gift of one gram of radium.",
+        "An American fundraising campaign bought the gram of radium for Marie Curie’s research at the Radium Institute in Paris."
+      ],
+      "source": "https://www.nist.gov/pml/marie-curie-and-nbs-radium-standards/1921-marie-curie-visits-us"
+    },
+    {
+      "text": "A study of one of Curie’s notebooks at **Meisei University** in Japan found radioactive traces concentrated where hands would grasp the cover. France’s national library also found contamination in the Curies’ research papers and uses protective covers where needed.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "claims": [
+        "Scientists mapped radioactive contamination on the covers of one of Marie Curie’s experimental notebooks held at Meisei University in Japan.",
+        "Radioactive contamination on the Meisei University notebook’s covers was concentrated in areas held by hands.",
+        "The Bibliothèque nationale de France documented radioactive contamination in the Curies’ papers and uses protective covers where needed."
+      ],
+      "source": "https://www.jstage.jst.go.jp/article/radioisotopes1952/54/10/54_10_437/_article"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Pierre Curie",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pierre_Curie",
+      "connection": "Her husband and research partner shared the Nobel physics award with her for their work on radiation.",
+      "importance": "high",
+      "qid": "Q37463"
+    },
+    {
+      "name": "Henri Becquerel",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Henri_Becquerel",
+      "connection": "His discovery of radiation from uranium inspired the Curies to investigate radioactive substances.",
+      "importance": "high",
+      "qid": "Q41269"
+    },
+    {
+      "name": "World War I",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_I",
+      "connection": "She equipped cars with X-ray machines to help doctors examine the wounded.",
+      "importance": "high",
+      "qid": "Q361"
+    },
+    {
+      "name": "Nobel Prize",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Nobel_Prize",
+      "connection": "She shared the physics prize in 1903 and received the chemistry prize alone in 1911.",
+      "importance": "high",
+      "qid": "Q7191"
+    },
+    {
+      "name": "Irène Joliot-Curie",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Ir%C3%A8ne_Joliot-Curie",
+      "connection": "Her daughter assisted her with X-ray work during World War I.",
+      "importance": "medium",
+      "qid": "Q7504"
+    },
+    {
+      "name": "Warren G. Harding",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Warren_G._Harding",
+      "connection": "As U.S. president, he ceremonially presented the 1921 gift of a gram of radium for her research.",
+      "importance": "medium",
+      "qid": "Q35286"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-23T13:50:20Z",
+    "prompt_version": "2.4.0",
+    "prompt_hash": "d1e011c13521",
+    "schema_version": 3,
+    "model": "gpt-6.2-sol",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "run_id": "2026-11-23",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q7186"
+    },
+    "tokens": {
+      "input": 4187669,
+      "output": 15430
+    },
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 6,
+      "connections_matched_people": 4,
+      "connections_matched_events": 2,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewed_at": "2026-11-23T13:58:11.385Z",
+      "approval": {
+        "policy_version": "3",
+        "profile_hash": "a18e522725dd1f285cba7a392e687ebf50136a262e3e12387522940566e77fc2",
+        "report_hash": "c601c614efe241e008ead6edfd4e70ab494775d375a622c801e2995d3645fa4f",
+        "method": "automatic"
+      }
+    },
+    "coordinator_repair": {
+      "profile_hash": "a18e522725dd1f285cba7a392e687ebf50136a262e3e12387522940566e77fc2",
+      "count": 1
+    }
+  }
+}

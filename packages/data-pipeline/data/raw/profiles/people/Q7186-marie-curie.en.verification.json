@@ -1,0 +1,1110 @@
+{
+  "policy_version": "3",
+  "profile_hash": "a18e522725dd1f285cba7a392e687ebf50136a262e3e12387522940566e77fc2",
+  "verified_at": "2026-11-23T13:58:11.385Z",
+  "subject": {
+    "qid": "Q7186",
+    "dates": "1867–1934"
+  },
+  "models": [
+    "gpt-6.2-sol",
+    "gpt-6.2-sol"
+  ],
+  "assessment": {
+    "uncovered": [],
+    "issues": [],
+    "coherent": true,
+    "covered": [
+      "overview",
+      "key_moments.0.date",
+      "key_moments.0.title",
+      "key_moments.0.text",
+      "key_moments.1.date",
+      "key_moments.1.title",
+      "key_moments.1.text",
+      "key_moments.2.date",
+      "key_moments.2.title",
+      "key_moments.2.text",
+      "key_moments.3.date",
+      "key_moments.3.title",
+      "key_moments.3.text",
+      "deep_facts.0.text",
+      "deep_facts.1.text",
+      "deep_facts.2.text",
+      "connections.0.connection",
+      "connections.1.connection",
+      "connections.2.connection",
+      "connections.3.connection",
+      "connections.4.connection",
+      "connections.5.connection"
+    ],
+    "subject_dates": [],
+    "findings": [
+      {
+        "path": "overview",
+        "claim": "Marie Skłodowska Curie was born in Warsaw.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The birthplace is explicitly stated.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "was born in Warsaw on November 7, 1867",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          }
+        ]
+      },
+      {
+        "path": "overview",
+        "claim": "Marie Skłodowska Curie pursued a scientific career in Paris.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "Her studies in Paris and later award affiliation at the Sorbonne there place her career there.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "In 1891, she went to Paris to continue her studies at the Sorbonne",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Affiliation at the time of the award: Sorbonne University, Paris, France",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "overview",
+        "claim": "Marie and Pierre Curie’s radioactivity research identified polonium and radium, two previously unknown elements.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "Curie’s lecture and the AIP account connect the investigations of radiation with the discovery of both elements.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "ef4412f6e5f07ad8284d3c0bb34fb277ed299235b408cf77571a910581fe2821",
+            "quote": "This study rapidly led us to the discovery of new elements",
+            "kind": "primary",
+            "origin": "Marie Curie, 1911 Nobel Lecture"
+          },
+          {
+            "source": "b4ec75a0024d1d3f7776eb8dcebdfff8ba0670d3cb9179f7e0ab73404e766d14",
+            "quote": "n the end they found not one but two new radioactive elements.",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          }
+        ]
+      },
+      {
+        "path": "overview",
+        "claim": "Marie Curie won Nobel Prizes in physics and chemistry for work on radioactivity.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The Nobel award records identify both awards, the research they recognized and the prize years.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "she was awarded half of the Nobel Prize for Physics in 1903, for their study into the spontaneous radiation discovered by Becquerel, who was awarded the other half of the Prize.",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Nobel Prize in Chemistry 1911",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "by the discovery of the elements radium and polonium, by the isolation of radium and the study of the nature and compounds of this remarkable element",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.0.date",
+        "claim": "Marie Skłodowska went to Paris to study in 1891.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The biography dates her move for study to 1891.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "In 1891, she went to Paris to continue her studies at the Sorbonne",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.0.title",
+        "claim": "Marie Skłodowska went to Paris for further education.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The biography specifies that she went to Paris for further study.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "In 1891, she went to Paris to continue her studies at the Sorbonne",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.0.text",
+        "claim": "Marie Skłodowska continued her studies at the Sorbonne.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The biography names the university and the purpose of the move.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "In 1891, she went to Paris to continue her studies at the Sorbonne",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.0.text",
+        "claim": "Marie Skłodowska received degrees in physics and mathematics.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "Licenciateships in the two fields are specified.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "she obtained Licenciateships in Physics and the Mathematical Sciences",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.0.text",
+        "claim": "Marie Skłodowska met physicist Pierre Curie in Paris.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The Nobel account places the meeting in Paris and identifies Pierre as her future research colleague; the institutional history identifies him as a physicist.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "596044f178729696f1d06a3c29df522d48567ce79aa803086efdeffc77601934",
+            "quote": "She moved to Paris to continue her studies and there met Pierre Curie",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1903 Physics Prize award record"
+          },
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "She met Pierre Curie, Professor in the School of Physics in 1894 and in the following year they were married.",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          },
+          {
+            "source": "d4e60598945d03332572939c10c5f7b75f404ca675febeff6727646981913456",
+            "quote": "Sa rencontre avec Pierre Curie, scientifique déjà reconnu à l’époque",
+            "kind": "scholarly",
+            "origin": "Institut Curie institutional history"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.0.text",
+        "claim": "Marie Skłodowska and Pierre Curie married in 1895.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The institutional history explicitly dates their marriage to 1895.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "d4e60598945d03332572939c10c5f7b75f404ca675febeff6727646981913456",
+            "quote": "Ils se marient en 1895.",
+            "kind": "scholarly",
+            "origin": "Institut Curie institutional history"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.1.date",
+        "claim": "The Curies’ pitchblende research identified polonium and radium in 1898.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The library’s account places identification of both substances in 1898.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "ebbe5cceb0082b9119a3c067cbc83c62498dfcb09c76205601e6338b6cd84cb7",
+            "quote": "au cours de l’année 1898, deux substances radioactives de la pechblende, le radium et le polonium",
+            "kind": "scholarly",
+            "origin": "BnF Patrimoines Partagés, Maria Skłodowska-Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.1.title",
+        "claim": "The Curies’ analysis of pitchblende identified two new elements.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The library’s account names radium and polonium as two radioactive substances found in the ore; the AIP exhibit identifies them as new elements.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "ebbe5cceb0082b9119a3c067cbc83c62498dfcb09c76205601e6338b6cd84cb7",
+            "quote": "au cours de l’année 1898, deux substances radioactives de la pechblende, le radium et le polonium",
+            "kind": "scholarly",
+            "origin": "BnF Patrimoines Partagés, Maria Skłodowska-Curie"
+          },
+          {
+            "source": "b4ec75a0024d1d3f7776eb8dcebdfff8ba0670d3cb9179f7e0ab73404e766d14",
+            "quote": "two new radioactive elements",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.1.text",
+        "claim": "Pitchblende is an ore containing uranium.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "Curie explicitly identifies pitchblende as a uranium ore.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "6b0a7eb3a3966856f4602fa633740301ad90800707f27b78c95508ef57672c98",
+            "quote": "pitch-blende (oxide of uranium ore)",
+            "kind": "primary",
+            "origin": "Marie Curie, Radium and Radioactivity, Century Magazine, 1903"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.1.text",
+        "claim": "Marie Curie found that pitchblende gave off more radiation than its uranium and thorium content explained.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The physicists’ historical exhibit states the anomaly of the measured radioactivity relative to the known uranium and thorium.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "b4ec75a0024d1d3f7776eb8dcebdfff8ba0670d3cb9179f7e0ab73404e766d14",
+            "quote": "pitchblende was more radioactive than could be accounted for by the uranium or thorium it contained",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.1.text",
+        "claim": "Marie and Pierre Curie used radioactivity measurements to decide which fractions of pitchblende to investigate.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The exhibit records Pierre joining the search and the repeated separation guided by precise activity measurements.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "b4ec75a0024d1d3f7776eb8dcebdfff8ba0670d3cb9179f7e0ab73404e766d14",
+            "quote": "Pierre, excited by his wife’s idea, joined her search.",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          },
+          {
+            "source": "b4ec75a0024d1d3f7776eb8dcebdfff8ba0670d3cb9179f7e0ab73404e766d14",
+            "quote": "find which of the separated parts was most radioactive, using the Curie electrometer to make precise measurements",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          },
+          {
+            "source": "b4ec75a0024d1d3f7776eb8dcebdfff8ba0670d3cb9179f7e0ab73404e766d14",
+            "quote": "Then they would make more separations, again and again, tracking down the unknown element by its radioactivity.",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.1.text",
+        "claim": "The Curies’ search identified polonium and radium.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The library identifies both products of the pitchblende research.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "ebbe5cceb0082b9119a3c067cbc83c62498dfcb09c76205601e6338b6cd84cb7",
+            "quote": "au cours de l’année 1898, deux substances radioactives de la pechblende, le radium et le polonium",
+            "kind": "scholarly",
+            "origin": "BnF Patrimoines Partagés, Maria Skłodowska-Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.1.text",
+        "claim": "Marie and Pierre Curie named polonium in honor of Marie Curie’s native Poland.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The library explicitly gives the naming reason and identifies Poland.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "ebbe5cceb0082b9119a3c067cbc83c62498dfcb09c76205601e6338b6cd84cb7",
+            "quote": "Ils dénomment ce dernier en l’honneur de la patrie de Marie.",
+            "kind": "scholarly",
+            "origin": "BnF Patrimoines Partagés, Maria Skłodowska-Curie"
+          },
+          {
+            "source": "8042034308022e2fb64fcad8587780ee95c0e2e6a33bd33f08634bc4e0592750",
+            "quote": "ils le nomment « polonium » en l’honneur de la patrie de Marie, la Pologne.",
+            "kind": "primary",
+            "origin": "BnF Manuscripts Department, collection records and radioprotection measurement report"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.2.date",
+        "claim": "Marie Curie received a share of the Nobel Prize in Physics in 1903.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The award record explicitly names the year and category.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "596044f178729696f1d06a3c29df522d48567ce79aa803086efdeffc77601934",
+            "quote": "The couple later shared the 1903 Nobel Prize in Physics.",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1903 Physics Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.2.title",
+        "claim": "Marie Curie was awarded part of a Nobel Prize in Physics.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The biography names the physics award and describes its division.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "she was awarded half of the Nobel Prize for Physics in 1903, for their study into the spontaneous radiation discovered by Becquerel, who was awarded the other half of the Prize.",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.2.text",
+        "claim": "Marie Curie earned a doctorate for radioactivity research in 1903.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The biography gives the degree year, and the manuscript library identifies the subject of her thesis and dates its defense to 1903.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "gained her Doctor of Science degree in 1903",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          },
+          {
+            "source": "8042034308022e2fb64fcad8587780ee95c0e2e6a33bd33f08634bc4e0592750",
+            "quote": "Sa thèse, consacrée à l’étude des « rayons uraniques » et à la découverte du polonium et du radium, est soutenue le 25 juin 1903 à la Sorbonne.",
+            "kind": "primary",
+            "origin": "BnF Manuscripts Department, collection records and radioprotection measurement report"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.2.text",
+        "claim": "Henri Becquerel received half of the 1903 Nobel Prize in Physics for discovering spontaneous radioactivity.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The award biography specifies the shares and discovery; the library states the reason explicitly.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "she was awarded half of the Nobel Prize for Physics in 1903, for their study into the spontaneous radiation discovered by Becquerel, who was awarded the other half of the Prize.",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          },
+          {
+            "source": "8042034308022e2fb64fcad8587780ee95c0e2e6a33bd33f08634bc4e0592750",
+            "quote": "le premier pour « la découverte de la radioactivité spontanée »",
+            "kind": "primary",
+            "origin": "BnF Manuscripts Department, collection records and radioprotection measurement report"
+          },
+          {
+            "source": "ebbe5cceb0082b9119a3c067cbc83c62498dfcb09c76205601e6338b6cd84cb7",
+            "quote": "Henri Becquerel pour moitié, à Pierre et Marie Curie pour l’autre",
+            "kind": "scholarly",
+            "origin": "BnF Patrimoines Partagés, Maria Skłodowska-Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.2.text",
+        "claim": "Marie and Pierre Curie shared the other half of the 1903 Nobel Prize in Physics for studying the radiation Becquerel discovered.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The Nobel biography confirms they shared half and the work for which they were recognized.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "she was awarded half of the Nobel Prize for Physics in 1903, for their study into the spontaneous radiation discovered by Becquerel, who was awarded the other half of the Prize.",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.3.date",
+        "claim": "Marie Curie received the Nobel Prize in Chemistry in 1911.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The Nobel award record states the category and year.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Nobel Prize in Chemistry 1911",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.3.title",
+        "claim": "Marie Curie received an unshared Nobel Prize in Chemistry.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The award record identifies the category and records the full share.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Nobel Prize in Chemistry 1911",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Prize share: 1/1 Also awarded: Nobel Prize in Physics 1903",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.3.text",
+        "claim": "Marie Curie continued the Curies’ research on radioactive elements after Pierre Curie’s death.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The award account says Marie was widowed and continued their work, and its research section describes her continued study of the discovered elements.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Marie was widowed in 1906, but continued the couple's work",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "first discovered the radioactive elements polonium and radium, Marie continued to investigate their properties",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.3.text",
+        "claim": "Marie Curie and André Debierne isolated radium as a metal in 1910.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The BnF biography states the year, collaborators and metallic form. Nature contemporaneously reported their joint publication.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "ebbe5cceb0082b9119a3c067cbc83c62498dfcb09c76205601e6338b6cd84cb7",
+            "quote": "en 1910, avec André Debierne son chef de travaux, elle isole le radium métallique pur",
+            "kind": "scholarly",
+            "origin": "BnF Patrimoines Partagés, Maria Skłodowska-Curie"
+          },
+          {
+            "source": "1455f28822b6a6c3ed330b858203a9d2a0c2db72a3c2e7b25f8ed6f612e4c3ca",
+            "quote": "MADAME CURIE and M. Debierne have presented a joint memoir to the Paris Academy of Sciences announcing that they have succeeded in isolating pure radium.",
+            "kind": "scholarly",
+            "origin": "Nature, 1910 contemporaneous report on Curie and Debierne’s joint memoir"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "In 1910 she successfully produced radium as a pure metal",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.3.text",
+        "claim": "Marie Curie received the Nobel Prize in Chemistry in 1911 for discovering polonium and radium and isolating and studying radium.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The award record states the year, category and official scope of recognition, one year after the dated isolation of metallic radium.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "In 1910 she successfully produced radium as a pure metal",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Nobel Prize in Chemistry 1911",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "by the discovery of the elements radium and polonium, by the isolation of radium and the study of the nature and compounds of this remarkable element",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "key_moments.3.text",
+        "claim": "Marie Curie received the 1911 chemistry prize as the sole recipient.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The Nobel award records specify a full share in chemistry and an earlier shared prize in physics.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Prize share: 1/1 Also awarded: Nobel Prize in Physics 1903",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          },
+          {
+            "source": "596044f178729696f1d06a3c29df522d48567ce79aa803086efdeffc77601934",
+            "quote": "The couple later shared the 1903 Nobel Prize in Physics.",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1903 Physics Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.0.text",
+        "claim": "Marie Curie equipped a converted touring car to bring X-ray equipment to hospitals during World War I.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "Curie dates her work to the war, identifies the vehicle as a converted touring car and explains how it was available to hospitals around Paris.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "e755af3fd6610ca311f8bec804cc6f760a98b994d8ec1727521adaeef517dcf3",
+            "quote": "During the rapid succession of events in August 1914",
+            "kind": "primary",
+            "origin": "Marie Curie, Autobiographical Notes, pp. 208–211"
+          },
+          {
+            "source": "e755af3fd6610ca311f8bec804cc6f760a98b994d8ec1727521adaeef517dcf3",
+            "quote": "I fitted up, with the help of the Red Cross, a radiologic car. It was simply a touring motor-car",
+            "kind": "primary",
+            "origin": "Marie Curie, Autobiographical Notes, pp. 208–211"
+          },
+          {
+            "source": "e755af3fd6610ca311f8bec804cc6f760a98b994d8ec1727521adaeef517dcf3",
+            "quote": "This car could come at the call of any of the hospitals, large or small, in the surroundings of Paris.",
+            "kind": "primary",
+            "origin": "Marie Curie, Autobiographical Notes, pp. 208–211"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.0.text",
+        "claim": "X-ray imaging helped doctors locate shrapnel in wounded soldiers.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "Two institutional histories identify locating shrapnel as a medical use of wartime X-rays.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "4c22b1bb7082390689271b84101a6425c5d3e1c4a6cec3fe9182e286bd460682",
+            "quote": "by revealing bullets, shrapnel, and broken bones",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          },
+          {
+            "source": "d4e60598945d03332572939c10c5f7b75f404ca675febeff6727646981913456",
+            "quote": "Ces efforts dans le développement de la radiologie médicale permirent de visualiser les éclats d’obus sur les soldats blessés",
+            "kind": "scholarly",
+            "origin": "Institut Curie institutional history"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.0.text",
+        "claim": "Curie’s radiology car powered its X-ray equipment with a dynamo driven by the engine.",
+        "verdict": "supported",
+        "risk": "corroborate",
+        "explanation": "Curie describes the generator’s drive and purpose. A historical account by radiological health physicist Timothy J. Jorgensen independently describes the engineering setup.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "e755af3fd6610ca311f8bec804cc6f760a98b994d8ec1727521adaeef517dcf3",
+            "quote": "a dynamo that was worked by the engine of the car, and furnished the electric current necessary for the production of the rays",
+            "kind": "primary",
+            "origin": "Marie Curie, Autobiographical Notes, pp. 208–211"
+          },
+          {
+            "source": "e807320f9b9454980879bfc34a2703c90e2aff32561d316a824530ef34e9ae26",
+            "quote": "Curie solved that problem by incorporating a dynamo – a type of electrical generator – into the car’s design. The petroleum-powered car engine could thus provide the required electricity.",
+            "kind": "scholarly",
+            "origin": "Timothy J. Jorgensen, history of Curie’s wartime radiology"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.1.text",
+        "claim": "President Warren G. Harding handed Marie Curie a golden key at the White House in 1921.",
+        "verdict": "supported",
+        "risk": "corroborate",
+        "explanation": "NIST identifies the White House ceremony, president and year, and describes the key as golden. The Musée Curie describes Harding’s symbolic presentation and holds the surviving presentation key and box. The accounts give different days in May, and the passage states the year on which they agree.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+            "quote": "On May 20, 1921, Marie Curie visited the White House to receive the gift of the gram of radium from President Harding.",
+            "kind": "primary",
+            "origin": "NIST historical archive, National Bureau of Standards certificate and ceremony record"
+          },
+          {
+            "source": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+            "quote": "Instead, she was presented with a golden key to the coffer and a certificate.",
+            "kind": "primary",
+            "origin": "NIST historical archive, National Bureau of Standards certificate and ceremony record"
+          },
+          {
+            "source": "c4bd1fdb051f09d32d652984325af52df04893885c92e83435cc7078d4cf0b98",
+            "quote": "the US President, Warren G. Harding, symbolically handed to the scholar a golden key to the box",
+            "kind": "primary",
+            "origin": "Musée Curie historic object collection and museum account of the surviving presentation key and box"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.1.text",
+        "claim": "The golden key belonged to the box for the gram of radium given to Marie Curie.",
+        "verdict": "supported",
+        "risk": "corroborate",
+        "explanation": "NIST identifies the coffer and gram; the museum identifies the surviving presentation key and box, corroborating the connection.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+            "quote": "On May 20, 1921, Marie Curie visited the White House to receive the gift of the gram of radium from President Harding.",
+            "kind": "primary",
+            "origin": "NIST historical archive, National Bureau of Standards certificate and ceremony record"
+          },
+          {
+            "source": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+            "quote": "Instead, she was presented with a golden key to the coffer and a certificate.",
+            "kind": "primary",
+            "origin": "NIST historical archive, National Bureau of Standards certificate and ceremony record"
+          },
+          {
+            "source": "c4bd1fdb051f09d32d652984325af52df04893885c92e83435cc7078d4cf0b98",
+            "quote": "the US President, Warren G. Harding, symbolically handed to the scholar a golden key to the box",
+            "kind": "primary",
+            "origin": "Musée Curie historic object collection and museum account of the surviving presentation key and box"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.1.text",
+        "claim": "American fundraising purchased a gram of radium for Marie Curie’s research at the Radium Institute in Paris.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "NIST specifies the campaign, quantity and intended Institute; the BnF describes the campaign for the Institute, and its successor locates the original institute on rue d’Ulm.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+            "quote": "Mrs. Meloney launched a campaign to have the women of America contribute $100,000 to buy a gram of radium for presentation to Marie Curie for her use at the Institute of Radium.",
+            "kind": "primary",
+            "origin": "NIST historical archive, National Bureau of Standards certificate and ceremony record"
+          },
+          {
+            "source": "ebbe5cceb0082b9119a3c067cbc83c62498dfcb09c76205601e6338b6cd84cb7",
+            "quote": "Mrs Meloney met sur pied une tournée triomphale de Marie aux États-Unis, pour récolter auprès des Américaines cet indispensable radium.",
+            "kind": "scholarly",
+            "origin": "BnF Patrimoines Partagés, Maria Skłodowska-Curie"
+          },
+          {
+            "source": "d4e60598945d03332572939c10c5f7b75f404ca675febeff6727646981913456",
+            "quote": "La construction de l’institut, situé rue d’Ulm, est achevée en 1914.",
+            "kind": "scholarly",
+            "origin": "Institut Curie institutional history"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.2.text",
+        "claim": "Scientists examined radioactive traces on an experimental notebook by Marie Curie held at Meisei University in Tokyo, Japan.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The original study identifies the collection and notebook, and describes measuring contamination. The English abstract misspells the university, which is correctly named in the publication title.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "241660e9e43d2e2738c8431b325b094e7ac886309f539c32f84ea9af0c9749e0",
+            "quote": "Radioactivity on the Experimental Notebook of Mme. Curie —Collection of Meisei University Library—",
+            "kind": "primary",
+            "origin": "Chizuo Mori et al., Radioactivity on the Experimental Notebook of Mme. Curie, RADIOISOTOPES, 2005"
+          },
+          {
+            "source": "241660e9e43d2e2738c8431b325b094e7ac886309f539c32f84ea9af0c9749e0",
+            "quote": "collected in the library of Melsel University, Tokyo",
+            "kind": "primary",
+            "origin": "Chizuo Mori et al., Radioactivity on the Experimental Notebook of Mme. Curie, RADIOISOTOPES, 2005"
+          },
+          {
+            "source": "241660e9e43d2e2738c8431b325b094e7ac886309f539c32f84ea9af0c9749e0",
+            "quote": "The contamination with radioactive material of the notebook written by Marie Curie",
+            "kind": "primary",
+            "origin": "Chizuo Mori et al., Radioactivity on the Experimental Notebook of Mme. Curie, RADIOISOTOPES, 2005"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.2.text",
+        "claim": "Radioactive traces detected on the Meisei notebook’s covers were concentrated in the areas held by hands.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The original study describes mapping the covers and reports the contamination distribution it observed. This sentence reports a measurement of a specific surviving document.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "241660e9e43d2e2738c8431b325b094e7ac886309f539c32f84ea9af0c9749e0",
+            "quote": "to obtain the distribution images of the contamination on the front and back covers",
+            "kind": "primary",
+            "origin": "Chizuo Mori et al., Radioactivity on the Experimental Notebook of Mme. Curie, RADIOISOTOPES, 2005"
+          },
+          {
+            "source": "241660e9e43d2e2738c8431b325b094e7ac886309f539c32f84ea9af0c9749e0",
+            "quote": "The distribution images showed that the contamination appeared mainly at the area held with hands",
+            "kind": "primary",
+            "origin": "Chizuo Mori et al., Radioactivity on the Experimental Notebook of Mme. Curie, RADIOISOTOPES, 2005"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.2.text",
+        "claim": "The Bibliothèque nationale de France documented radioactive contamination in the Curies’ research papers.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The holding institution identifies its Curie collection and reports residual radioactive contamination in the Curies’ papers.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "8042034308022e2fb64fcad8587780ee95c0e2e6a33bd33f08634bc4e0592750",
+            "quote": "Le département des Manuscrits de la BnF conserve les archives de Marie Curie",
+            "kind": "primary",
+            "origin": "BnF Manuscripts Department, collection records and radioprotection measurement report"
+          },
+          {
+            "source": "8042034308022e2fb64fcad8587780ee95c0e2e6a33bd33f08634bc4e0592750",
+            "quote": "les particules radioactives sont restées sur leurs écrits et y sont encore actives",
+            "kind": "primary",
+            "origin": "BnF Manuscripts Department, collection records and radioprotection measurement report"
+          }
+        ]
+      },
+      {
+        "path": "deep_facts.2.text",
+        "claim": "The Bibliothèque nationale de France uses protective covers on the Curies’ papers where needed.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The holding institution describes protecting the papers with plastic covers when necessary.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "8042034308022e2fb64fcad8587780ee95c0e2e6a33bd33f08634bc4e0592750",
+            "quote": "Le département des Manuscrits de la BnF conserve les archives de Marie Curie",
+            "kind": "primary",
+            "origin": "BnF Manuscripts Department, collection records and radioprotection measurement report"
+          },
+          {
+            "source": "8042034308022e2fb64fcad8587780ee95c0e2e6a33bd33f08634bc4e0592750",
+            "quote": "protégés par des couvertures plastiques chaque fois que nécessaire",
+            "kind": "primary",
+            "origin": "BnF Manuscripts Department, collection records and radioprotection measurement report"
+          }
+        ]
+      },
+      {
+        "path": "connections.0.connection",
+        "claim": "Pierre Curie was Marie Curie’s husband and collaborator and shared the physics prize with her for their radiation research.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The award record identifies Pierre as her husband and colleague and states their shared prize and reason.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "596044f178729696f1d06a3c29df522d48567ce79aa803086efdeffc77601934",
+            "quote": "Pierre Curie, who became both her husband and colleague in the field of radioactivity",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1903 Physics Prize award record"
+          },
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "she was awarded half of the Nobel Prize for Physics in 1903, for their study into the spontaneous radiation discovered by Becquerel, who was awarded the other half of the Prize.",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          }
+        ]
+      },
+      {
+        "path": "connections.1.connection",
+        "claim": "Henri Becquerel’s discovery of radiation from uranium inspired Marie and Pierre Curie to investigate radioactivity.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "Curie names Becquerel as the discoverer of radiation from uranium, and the award account explicitly calls his discovery the inspiration for the Curies’ investigations.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "ef4412f6e5f07ad8284d3c0bb34fb277ed299235b408cf77571a910581fe2821",
+            "quote": "the radiation of uranium was discovered by Henri Becquerel",
+            "kind": "primary",
+            "origin": "Marie Curie, 1911 Nobel Lecture"
+          },
+          {
+            "source": "596044f178729696f1d06a3c29df522d48567ce79aa803086efdeffc77601934",
+            "quote": "The 1896 discovery of radioactivity by Henri Becquerel inspired Marie and Pierre Curie to further investigate this phenomenon.",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1903 Physics Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "connections.2.connection",
+        "claim": "During World War I, Marie Curie equipped vehicles to bring X-ray imaging to wounded soldiers.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "A historical exhibit says she assembled mobile units so doctors could identify soldiers’ injuries near the front.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "e755af3fd6610ca311f8bec804cc6f760a98b994d8ec1727521adaeef517dcf3",
+            "quote": "I fitted up, with the help of the Red Cross, a radiologic car. It was simply a touring motor-car",
+            "kind": "primary",
+            "origin": "Marie Curie, Autobiographical Notes, pp. 208–211"
+          },
+          {
+            "source": "4c22b1bb7082390689271b84101a6425c5d3e1c4a6cec3fe9182e286bd460682",
+            "quote": "by revealing bullets, shrapnel, and broken bones",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          },
+          {
+            "source": "4c22b1bb7082390689271b84101a6425c5d3e1c4a6cec3fe9182e286bd460682",
+            "quote": "Curie talked wealthy people into donating their cars, and assembled a fleet of 20 mobile X-ray stations",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          }
+        ]
+      },
+      {
+        "path": "connections.3.connection",
+        "claim": "Marie Curie shared the 1903 Nobel Prize in Physics and received the 1911 Nobel Prize in Chemistry outright.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The recipients, years and shares are stated in the official records.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+            "quote": "she was awarded half of the Nobel Prize for Physics in 1903, for their study into the spontaneous radiation discovered by Becquerel, who was awarded the other half of the Prize.",
+            "kind": "scholarly",
+            "origin": "Nobel Foundation, Les Prix Nobel biographical profile of Marie Curie"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Nobel Prize in Chemistry 1911",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          },
+          {
+            "source": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+            "quote": "Prize share: 1/1 Also awarded: Nobel Prize in Physics 1903",
+            "kind": "primary",
+            "origin": "Nobel Foundation 1911 Chemistry Prize award record"
+          }
+        ]
+      },
+      {
+        "path": "connections.4.connection",
+        "claim": "Irène Joliot-Curie, Marie Curie’s daughter, assisted her mother in wartime X-ray work.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "The AIP identifies Irène as her daughter and describes her assisting her mother in the wartime radiology program.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "4c22b1bb7082390689271b84101a6425c5d3e1c4a6cec3fe9182e286bd460682",
+            "quote": "Curie chose her teenage daughter Irène as her first assistant. For a year Irène worked by her mother’s side.",
+            "kind": "scholarly",
+            "origin": "AIP Center for History of Physics, Marie Curie exhibit research"
+          },
+          {
+            "source": "e755af3fd6610ca311f8bec804cc6f760a98b994d8ec1727521adaeef517dcf3",
+            "quote": "During the rapid succession of events in August 1914",
+            "kind": "primary",
+            "origin": "Marie Curie, Autobiographical Notes, pp. 208–211"
+          }
+        ]
+      },
+      {
+        "path": "connections.5.connection",
+        "claim": "As U.S. president, Warren G. Harding ceremonially presented the 1921 gift of one gram of radium for Marie Curie’s research.",
+        "verdict": "supported",
+        "risk": "ordinary",
+        "explanation": "NIST dates the White House presentation and identifies the amount and intended research use of the gift. The radium itself was absent from the ceremony. The Musée Curie identifies Harding by name and office and describes his presentation of the key as symbolic.",
+        "correction": "",
+        "evidence": [
+          {
+            "source": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+            "quote": "On May 20, 1921, Marie Curie visited the White House to receive the gift of the gram of radium from President Harding.",
+            "kind": "primary",
+            "origin": "NIST historical archive, National Bureau of Standards certificate and ceremony record"
+          },
+          {
+            "source": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+            "quote": "The hazardous source itself was not brought to the ceremony.",
+            "kind": "primary",
+            "origin": "NIST historical archive, National Bureau of Standards certificate and ceremony record"
+          },
+          {
+            "source": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+            "quote": "Mrs. Meloney launched a campaign to have the women of America contribute $100,000 to buy a gram of radium for presentation to Marie Curie for her use at the Institute of Radium.",
+            "kind": "primary",
+            "origin": "NIST historical archive, National Bureau of Standards certificate and ceremony record"
+          },
+          {
+            "source": "c4bd1fdb051f09d32d652984325af52df04893885c92e83435cc7078d4cf0b98",
+            "quote": "the US President, Warren G. Harding, symbolically handed to the scholar a golden key to the box",
+            "kind": "primary",
+            "origin": "Musée Curie historic object collection and museum account of the surviving presentation key and box"
+          }
+        ]
+      }
+    ]
+  },
+  "audit": {
+    "uncovered": [],
+    "issues": [],
+    "coherent": true
+  },
+  "sources": [
+    {
+      "id": "7b12ce99b1f909ef6c0260fb2a3f6bc9ff18f730a4fb595ff1d05fbc9e410b11",
+      "url": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/",
+      "fetched_at": "2026-11-23T13:43:58.826Z"
+    },
+    {
+      "id": "0dba9a4bef5d0e2eafe8c78caa2d0651600a06149f50aa6f00a3c4682262f785",
+      "url": "https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/facts/",
+      "fetched_at": "2026-11-23T13:44:37.695Z"
+    },
+    {
+      "id": "ef4412f6e5f07ad8284d3c0bb34fb277ed299235b408cf77571a910581fe2821",
+      "url": "https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/lecture/",
+      "fetched_at": "2026-11-23T13:44:39.985Z"
+    },
+    {
+      "id": "b4ec75a0024d1d3f7776eb8dcebdfff8ba0670d3cb9179f7e0ab73404e766d14",
+      "url": "https://history.aip.org/exhibits/curie/brief/03_radium/radium_7.html",
+      "fetched_at": "2026-11-23T13:44:42.725Z"
+    },
+    {
+      "id": "596044f178729696f1d06a3c29df522d48567ce79aa803086efdeffc77601934",
+      "url": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/facts/",
+      "fetched_at": "2026-11-23T13:44:35.505Z"
+    },
+    {
+      "id": "d4e60598945d03332572939c10c5f7b75f404ca675febeff6727646981913456",
+      "url": "https://curie.fr/lheritage-de-marie-curie-perpetuer-lesprit-dune-pionniere",
+      "fetched_at": "2026-11-23T13:45:05.774Z"
+    },
+    {
+      "id": "ebbe5cceb0082b9119a3c067cbc83c62498dfcb09c76205601e6338b6cd84cb7",
+      "url": "https://heritage.bnf.fr/france-pologne/maria-sklodowska-curie-1867-1934",
+      "fetched_at": "2026-11-23T13:45:00.855Z"
+    },
+    {
+      "id": "6b0a7eb3a3966856f4602fa633740301ad90800707f27b78c95508ef57672c98",
+      "url": "https://history.aip.org/exhibits/curie/article_text.htm",
+      "fetched_at": "2026-11-23T13:44:45.249Z"
+    },
+    {
+      "id": "8042034308022e2fb64fcad8587780ee95c0e2e6a33bd33f08634bc4e0592750",
+      "url": "https://www.bnf.fr/fr/les-cahiers-de-marie-curie-conserves-la-bnf-sont-ils-radioactifs",
+      "fetched_at": "2026-11-23T13:44:57.566Z"
+    },
+    {
+      "id": "1455f28822b6a6c3ed330b858203a9d2a0c2db72a3c2e7b25f8ed6f612e4c3ca",
+      "url": "https://www.nature.com/articles/084313a0?error=cookies_not_supported&code=64d7a826-f0c9-4998-8e2d-7a717438269a",
+      "fetched_at": "2026-11-23T13:46:00.876Z"
+    },
+    {
+      "id": "e755af3fd6610ca311f8bec804cc6f760a98b994d8ec1727521adaeef517dcf3",
+      "url": "https://history.aip.org/exhibits/curie/brief/06_quotes/quotes_12.html",
+      "fetched_at": "2026-11-23T13:44:47.638Z"
+    },
+    {
+      "id": "4c22b1bb7082390689271b84101a6425c5d3e1c4a6cec3fe9182e286bd460682",
+      "url": "https://history.aip.org/exhibits/curie/brief/05_campaigns/campaigns_1.html",
+      "fetched_at": "2026-11-23T13:44:50.191Z"
+    },
+    {
+      "id": "e807320f9b9454980879bfc34a2703c90e2aff32561d316a824530ef34e9ae26",
+      "url": "https://www.smithsonianmag.com/history/how-marie-curie-brought-x-ray-machines-to-battlefield-180965240/",
+      "fetched_at": "2026-11-23T13:46:42.203Z"
+    },
+    {
+      "id": "b5e74cde3135823874055e9f3eba328a855440e306ac0944269354df1caf505e",
+      "url": "https://www.nist.gov/pml/marie-curie-and-nbs-radium-standards/1921-marie-curie-visits-us",
+      "fetched_at": "2026-11-23T13:45:18.319Z"
+    },
+    {
+      "id": "c4bd1fdb051f09d32d652984325af52df04893885c92e83435cc7078d4cf0b98",
+      "url": "https://artsandculture.google.com/story/ogVxom1aXb5nJw",
+      "fetched_at": "2026-11-23T13:45:48.626Z"
+    },
+    {
+      "id": "241660e9e43d2e2738c8431b325b094e7ac886309f539c32f84ea9af0c9749e0",
+      "url": "https://www.jstage.jst.go.jp/article/radioisotopes1952/54/10/54_10_437/_article",
+      "fetched_at": "2026-11-23T13:45:28.264Z"
+    }
+  ],
+  "evidence_errors": [],
+  "mechanical": [],
+  "repairs": 1,
+  "blockers": []
+}
