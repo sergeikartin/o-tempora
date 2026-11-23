@@ -1,0 +1,90 @@
+{
+  "overview": "Born in Warsaw, Marie Skłodowska Curie built her scientific career in Paris. Her research on radioactivity brought two previously unknown elements to light and earned her Nobel Prizes in physics and chemistry.",
+  "keyMoments": [
+    {
+      "date": "1891",
+      "title": "A place to study in Paris",
+      "text": "Marie Skłodowska went to **the Sorbonne** to continue her studies. She earned degrees in physics and mathematics, and in Paris met the physicist **Pierre Curie**, whom she married in 1895.",
+      "sourceUrl": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/"
+    },
+    {
+      "date": "1898",
+      "title": "Two elements in one ore",
+      "text": "Marie Curie found that **pitchblende**, an ore containing uranium, gave off more radiation than its uranium and thorium could account for. She and Pierre Curie separated samples and measured their radioactivity to decide which fractions to investigate next. The search pointed to **polonium and radium**, and the Curies named polonium after Marie’s native Poland.",
+      "sourceUrl": "https://history.aip.org/exhibits/curie/brief/03_radium/radium_7.html"
+    },
+    {
+      "date": "1903",
+      "title": "The physics prize",
+      "text": "Marie Curie earned a doctorate for her research on radioactive substances. That year the **Nobel Prize in Physics** recognized two stages of the work. Henri Becquerel received half for discovering spontaneous radioactivity, and Marie and Pierre Curie shared the other half for investigating it.",
+      "sourceUrl": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/"
+    },
+    {
+      "date": "1911",
+      "title": "A chemistry prize of her own",
+      "text": "After Pierre Curie’s death, Marie Curie kept investigating the elements they had discovered. Working with **André Debierne**, she isolated radium as a metal in 1910. The next year the **Nobel Prize in Chemistry** recognized the discovery of radium and polonium and her work isolating and studying radium. This time she was the sole recipient.",
+      "sourceUrl": "https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/facts/"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "During World War I, Curie brought X-ray equipment to hospitals in a converted touring car. The machine could help doctors find shrapnel in wounded soldiers. The supply of electricity traveled with it: a **dynamo driven by the car’s engine** powered the X-ray apparatus.",
+      "isLegend": false,
+      "sourceUrl": "https://history.aip.org/exhibits/curie/brief/06_quotes/quotes_12.html"
+    },
+    {
+      "text": "At a White House ceremony in 1921, President Warren G. Harding handed Curie a **golden key**. The key belonged to the box for an unusual gift, a gram of radium that American donors had bought for her research in Paris.",
+      "isLegend": false,
+      "sourceUrl": "https://www.nist.gov/pml/marie-curie-and-nbs-radium-standards/1921-marie-curie-visits-us"
+    },
+    {
+      "text": "A study of one of Curie’s notebooks at **Meisei University** in Japan found radioactive traces concentrated where hands would grasp the cover. France’s national library also found contamination in the Curies’ research papers and uses protective covers where needed.",
+      "isLegend": false,
+      "sourceUrl": "https://www.jstage.jst.go.jp/article/radioisotopes1952/54/10/54_10_437/_article"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "pierre-curie",
+      "reason": "Her husband and research partner shared the Nobel physics award with her for their work on radiation.",
+      "name": "Pierre Curie",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "antoine-henri-becquerel",
+      "reason": "His discovery of radiation from uranium inspired the Curies to investigate radioactive substances.",
+      "name": "Antoine Henri Becquerel",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "world-war-i",
+      "reason": "She equipped cars with X-ray machines to help doctors examine the wounded.",
+      "name": "World War I",
+      "lane": "conflicts",
+      "detailLevel": 1
+    },
+    {
+      "slug": "nobel-prize",
+      "reason": "She shared the physics prize in 1903 and received the chemistry prize alone in 1911.",
+      "name": "Nobel Prize",
+      "lane": "milestones",
+      "detailLevel": 1
+    },
+    {
+      "slug": "irene-joliot-curie",
+      "reason": "Her daughter assisted her with X-ray work during World War I.",
+      "name": "Irène Joliot-Curie",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "warren-g-harding",
+      "reason": "As U.S. president, he ceremonially presented the 1921 gift of a gram of radium for her research.",
+      "name": "Warren G. Harding",
+      "lane": "people",
+      "detailLevel": 4
+    }
+  ]
+}
