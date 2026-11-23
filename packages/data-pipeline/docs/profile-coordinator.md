@@ -30,7 +30,7 @@ If the wording overstates the evidence, fetch a more precise excerpt or revise t
 
 ### Russian
 
-1. Run `russian-translation --qid=<QID>`. If it returns `skipped`, the saved translation is current. Otherwise give its task to the translator. In the same task, have the translator compare every Russian field with its English source for fidelity, then reread the Russian for flow before saving the candidate.
+1. Run `russian-translation --qid=<QID>`. If it returns `skipped`, the saved translation is current. Otherwise give its task to the translator and include the [fidelity review checks](profile-translation.md#fidelity-review) for comparing the Russian with English before and after polishing.
 2. When the task includes feedback from a hold, give the translator the full Profile and audit feedback for context and ask for revisions only to fields with blockers. The current CLI expects a complete candidate. In a temporary file, start with the held fields and merge only replacements for the flagged paths into the full reply with the current task hash. Verify the diff against the held fields.
 3. Run `russian-audit --qid=<QID> --candidate=<file>` to validate the complete candidate. Give the resulting task to a fresh auditor for a [full fidelity review](profile-translation.md#fidelity-review). Rerun the command with `--result=<audit reply>` to apply the verdict. If the first audit holds, repeat these steps for one correction and a fresh full audit. If blockers remain, report the hold and retain the English approval.
 

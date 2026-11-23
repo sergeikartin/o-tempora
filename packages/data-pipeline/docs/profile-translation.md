@@ -18,6 +18,6 @@ Output publishes only current, approved translations to `profiles/ru/<slug>.json
 
 ## Fidelity review
 
-Preserve facts, dates, details, agency, attribution, qualifications, numeric values and bold emphasis. Use natural Russian verbs and sentence rhythm where they carry the same meaning. Before the independent audit, the conversation translator checks every field against its English source and then rereads the Russian for flow within the same task.
+Before submitting, compare each Russian sentence with its English source. Check who did what, what the action was directed at or produced, and which qualifications apply. Check facts, dates, attribution, numeric values and bold emphasis across all fields. Reread the Russian for flow, then compare any sentence changed during that pass with the English again.
 
-The independent audit covers every field. Faithful idiomatic paraphrases pass. Each blocking finding names the affected field and explains what a reader would misunderstand or miss. Wording that obscures meaning can block approval. The workflow allows one correction and a fresh full audit before holding a candidate with unresolved findings.
+The independent audit covers every field. Faithful idiomatic paraphrases pass. Each blocking finding names the affected field, identifies the specific source detail the Russian must preserve, and explains what the current wording makes a reader misunderstand or miss. If the auditor suggests a rewrite, check it against the English before using it. The source detail is the criterion for clearing the finding. The workflow allows one correction and a fresh full audit before holding a candidate with unresolved findings.
