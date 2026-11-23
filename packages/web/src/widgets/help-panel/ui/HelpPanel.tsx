@@ -6,15 +6,9 @@ interface HelpPanelProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenAbout: () => void;
-  switchLanguageHref: string;
 }
 
-export function HelpPanel({
-  isOpen,
-  onClose,
-  onOpenAbout,
-  switchLanguageHref,
-}: HelpPanelProps) {
+export function HelpPanel({ isOpen, onClose, onOpenAbout }: HelpPanelProps) {
   const entries = [
     { term: m.helpTravelTerm(), description: m.helpTravelBody() },
     { term: m.helpMarksTerm(), description: m.helpMarksBody() },
@@ -46,9 +40,6 @@ export function HelpPanel({
         >
           {m.aboutLabel()}
         </button>
-        <a className={styles.footerLink} href={switchLanguageHref}>
-          {m.switchLanguageLabel()}
-        </a>
       </div>
     </ModalPanel>
   );

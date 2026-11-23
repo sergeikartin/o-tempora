@@ -61,7 +61,7 @@ The phone-width navigation strip with century ticks and a thumb showing the **Vi
 _Avoid_: mini-minimap, timeline bar, slider
 
 **Top Bar**:
-The strip above the timeline that holds **Search**, the **Detail Level** switch, and buttons for the **Filters Panel** and **Help**.
+The strip above the timeline that holds **Search**, the **Detail Level** switch, buttons for the **Filters Panel** and **Help**, and the language switch.
 _Avoid_: header, toolbar, navbar, sidebar
 
 **Filters Panel**:

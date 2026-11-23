@@ -11,6 +11,7 @@ import {
   LANDING_HREF,
 } from '../../../shared/config';
 import { m } from '../../../shared/paraglide/messages.js';
+import { getLocale } from '../../../shared/paraglide/runtime.js';
 import type { OccupationDomain, Region } from '../../../shared/types';
 import { Logo } from '../../../shared/ui';
 import { FiltersPanel } from './FiltersPanel';
@@ -33,6 +34,7 @@ interface TopBarProps {
     value: ConflictsMilestonesFilterValue,
   ) => void;
   onOpenHelp: () => void;
+  switchLanguageHref: string;
 }
 
 export function TopBar({
@@ -50,6 +52,7 @@ export function TopBar({
   selectedConflictsMilestonesValues,
   onToggleConflictsMilestonesValue,
   onOpenHelp,
+  switchLanguageHref,
 }: TopBarProps) {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const closeFilters = useCallback(() => setIsFiltersOpen(false), []);
@@ -121,6 +124,14 @@ export function TopBar({
       >
         ?
       </button>
+      <a
+        className={`${styles.button} ${styles.languageLink}`}
+        href={switchLanguageHref}
+        lang={getLocale() === 'ru' ? 'en' : 'ru'}
+        data-switch-language
+      >
+        {m.switchLanguageLabel()}
+      </a>
     </header>
   );
 }

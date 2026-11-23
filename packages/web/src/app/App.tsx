@@ -214,6 +214,7 @@ function AppContent({ initialDatasets }: AppProps) {
         onToggleRegion={toggleRegion}
         selectedConflictsMilestonesValues={selectedConflictsMilestonesValues}
         onToggleConflictsMilestonesValue={toggleConflictsMilestonesValue}
+        switchLanguageHref={navigation.siblingLocaleHref}
         onOpenHelp={() => {
           setIsHelpOpen(true);
           trackEvent('help_open', { via: 'link' });
@@ -261,7 +262,6 @@ function AppContent({ initialDatasets }: AppProps) {
             setIsAboutOpen(true);
             trackEvent('about_open');
           }}
-          switchLanguageHref={navigation.siblingLocaleHref}
         />
       </Suspense>
       <Suspense fallback={null}>

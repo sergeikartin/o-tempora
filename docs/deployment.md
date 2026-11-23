@@ -30,7 +30,7 @@ English is served from the domain root; every other locale gets its own `/<local
 
 Each route is canonical. `hreflang` pairs the same page kind across locales and points `x-default` to `/`. All four routes are in `public/sitemap.xml` and share `og-image.png`.
 
-A Landing Page language switch preserves the chosen Curiosity hash. The timeline switch in Help carries `?e=<slug>` for the open entity. The Landing Page action can append `#moment-<n>` or `#fact-<n>` to the destination Entity Link. [Profile Anchors and Entity Links](../packages/web/docs/adr/0021-entity-links-can-open-a-profile-passage.md)
+A Landing Page language switch preserves the chosen Curiosity hash. The timeline switch in the Top Bar carries `?e=<slug>` for the open entity. The Landing Page action can append `#moment-<n>` or `#fact-<n>` to the destination Entity Link. [Profile Anchors and Entity Links](../packages/web/docs/adr/0021-entity-links-can-open-a-profile-passage.md)
 
 ## 404 page
 

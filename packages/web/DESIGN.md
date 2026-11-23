@@ -213,9 +213,9 @@ Use Archivo for UI, labels and data, with tabular figures for years and dates. U
 
 ## Layout
 
-A full-viewport canvas read left to right, with the Focus Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A 56px Top Bar above it holds search, Detail Level, the Filters button and Help; the Filters Panel opens as a popover beneath it. A minimap card sits beneath the lanes on desktop; on phones a 24px scrubber strip sits between the Focus Range and the lanes instead.
+A full-viewport canvas read left to right, with the Focus Range as a 72px heading strip above the lanes and the Year Axis as a ruler between them. People sit above the axis and Conflicts and Milestones below it, the most famous rows hugging the axis so importance radiates outward. A 56px Top Bar above it holds search, Detail Level, the Filters button, Help and the language switch. The Filters Panel opens as a popover beneath it. A minimap card sits beneath the lanes on desktop; on phones a 24px scrubber strip sits between the Focus Range and the lanes instead.
 
-Spacing is a short ladder of 4, 6, 8, 10, 12, 16, 20 and 24px. Controls sit 8px from canvas corners, cards are inset 12px, and sections are separated by 24px. At 960px and below the Top Bar wraps to two rows (search, Filters and Help, then Detail Level at full width) and drops the wordmark, the Filters Panel and the detail panel become bottom sheets (80vh max) over a scrim, the Focus Range shrinks to 32px, and the minimap gives way to the scrubber. Zoom buttons are hidden on coarse pointers in favour of pinch.
+Spacing is a short ladder of 4, 6, 8, 10, 12, 16, 20 and 24px. Controls sit 8px from canvas corners, cards are inset 12px, and sections are separated by 24px. At 960px and below the Top Bar wraps to two rows (search, Filters and Help, then the language switch and Detail Level) and drops the wordmark, the Filters Panel and the detail panel become bottom sheets (80vh max) over a scrim, the Focus Range shrinks to 32px, and the minimap gives way to the scrubber. Zoom buttons are hidden on coarse pointers in favour of pinch.
 
 Background texture is a faint 25-year zebra wash with century seams in Control Border at 45%. There are no gradients and no imagery in chrome; entity photos appear only in the detail panel.
 
@@ -253,7 +253,7 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 - **Style:** One pill, 32px tall: a Faded Ink "Detail Level" prefix, the selected level's name in Ink at 600, four 10×4px pips (one per level reached, Oxblood; the rest Hairline) and a `▾` glyph. White Sheet fill, 1px Control Border, hover to Ledger Paper with a Faded Ink border. Open, it takes the active-pill treatment (Oxblood border plus inset ring, Ledger Paper fill) and the glyph flips.
 - **List:** Opens beneath the pill as a White Sheet panel (Hairline border, 12px radius, Dropdown shadow), at least 300px wide and right-aligned to the pill. Each row is 44px tall with a 6px radius: level name at 12px, its one-line description at 11px in Faded Ink, and its pips on the right. The selected row is Ledger Paper with an Oxblood inset ring and a 600 name. Picking a row closes the list and returns focus to the pill; Escape or a press outside closes it too.
 - **State:** A level whose data is still loading pulses the pill's opacity, gated on motion preference, and is announced to assistive tech.
-- **Size:** The pill is 280px in the Top Bar and full width on the second row at 960px and below.
+- **Size:** The pill is 280px in the Top Bar and fills the space beside the language switch on the second row at 960px and below. At 420px and below, pips appear only in the list so the selected level fits in the trigger.
 
 ### Buttons
 - **Primary:** Oxblood fill, White Sheet text, 13px, 8px radius, 8px/14px padding. Used for the Wikipedia link.
@@ -272,9 +272,9 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 - **Year Axis:** An Axis Bar ruler with three tick weights climbing the border ladder (decade in Strong Rule, century in Control Border), century tabs in White Sheet with bold Ink labels, tick labels at 10px tabular figures.
 
 ### Navigation
-- **Top Bar:** A 56px Ledger Paper strip with a Hairline underline: wordmark, search pill, Detail Level switch, then a Filters pill button and a 32px round `?` Help button. The Filters button carries an Oxblood count badge while filters are active. 44px tall controls on coarse pointers.
+- **Top Bar:** A 56px Ledger Paper strip with a Hairline underline: wordmark, search pill, Detail Level switch, then a Filters pill button and a 32px round `?` Help button, followed by a pill link labeled in the destination language. The Filters button carries an Oxblood count badge while filters are active. 44px tall controls on coarse pointers.
 - **Filters Panel:** A 400px Ledger Paper popover (12px radius, Popover shadow) under the Filters button, titled in Fraunces with a `×` close; eyebrow-headed pill lists for Occupation, Conflicts & Milestones and Region, scrolling inside. At 960px and below it is a bottom sheet over a scrim.
-- **Help links:** About and the language switch are text links in a footer row of the Help panel, above a Hairline top rule.
+- **Help footer:** About appears as an underlined button in the Help panel footer, below a Hairline top rule.
 
 ### Motion
 Hover feedback runs 120ms and panel slides and fades 200ms on `cubic-bezier(0.4, 0, 0.2, 1)`. Animate transform and opacity only. Under `prefers-reduced-motion: reduce` both durations collapse to near zero through the shared tokens.

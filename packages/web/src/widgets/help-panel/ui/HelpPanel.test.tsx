@@ -10,7 +10,6 @@ function renderHelp(overrides: Partial<Parameters<typeof HelpPanel>[0]> = {}) {
       isOpen={true}
       onClose={vi.fn()}
       onOpenAbout={vi.fn()}
-      switchLanguageHref="/ru/timeline/"
       {...overrides}
     />,
   );
@@ -41,17 +40,12 @@ test('calls onClose on Escape and from the close button', () => {
   expect(onClose).toHaveBeenCalledTimes(2);
 });
 
-test('keeps About and the language switch, which no longer live in the Top Bar', () => {
+test('opens About from Help', () => {
   const onOpenAbout = vi.fn();
-  const { getByRole } = renderHelp({
-    onOpenAbout,
-    switchLanguageHref: '/ru/timeline/?e=albert-einstein',
-  });
+  const { getByRole, queryByRole } = renderHelp({ onOpenAbout });
 
   fireEvent.click(getByRole('button', { name: 'About' }));
 
   expect(onOpenAbout).toHaveBeenCalledTimes(1);
-  expect(getByRole('link', { name: 'Русский' }).getAttribute('href')).toBe(
-    '/ru/timeline/?e=albert-einstein',
-  );
+  expect(queryByRole('link', { name: 'Русский' })).toBeNull();
 });

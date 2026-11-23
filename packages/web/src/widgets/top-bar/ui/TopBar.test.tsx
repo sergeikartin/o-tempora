@@ -25,6 +25,7 @@ function renderTopBar(overrides: Partial<TopBarProps> = {}) {
       selectedConflictsMilestonesValues={[]}
       onToggleConflictsMilestonesValue={vi.fn()}
       onOpenHelp={vi.fn()}
+      switchLanguageHref="/ru/timeline/"
       {...overrides}
     />,
   );
@@ -35,7 +36,7 @@ function openFilters(view: ReturnType<typeof renderTopBar>) {
   return view.getByRole('dialog', { name: 'Filters' });
 }
 
-test('Search, Detail Level, Filters and Help are all reachable with nothing open', () => {
+test('Search, Detail Level, Filters, Help and the language link are reachable with nothing open', () => {
   const { getByRole } = renderTopBar({ selectedLevelId: 'deep-cut' });
 
   expect(getByRole('combobox', { name: 'Search timeline' })).toBeTruthy();
@@ -44,6 +45,9 @@ test('Search, Detail Level, Filters and Help are all reachable with nothing open
   );
   expect(getByRole('button', { name: 'Filters' })).toBeTruthy();
   expect(getByRole('button', { name: 'Help' })).toBeTruthy();
+  expect(getByRole('link', { name: 'Русский' }).getAttribute('href')).toBe(
+    '/ru/timeline/',
+  );
 });
 
 test('the Help button calls onOpenHelp', () => {

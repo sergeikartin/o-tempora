@@ -1,5 +1,5 @@
 /* One row on desktop; at the mobile breakpoint Search, Filters and Help share
-   the first row and Detail Level takes the second, full width. Layout is CSS
+   the first row and the language link and Detail Level share the second. Layout is CSS
    only so the prerendered markup is right before hydration knows the width.
    No transform/filter here: the Filters Panel's mobile sheet is position:
    fixed inside this element. */
@@ -94,6 +94,11 @@
   font-weight: 600;
 }
 
+.languageLink {
+  flex: none;
+  text-decoration: none;
+}
+
 @media (pointer: coarse) {
   .button {
     height: 44px;
@@ -106,7 +111,8 @@
 
 @media (max-width: 960px) {
   .topBar {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
     align-content: center;
     height: auto;
     min-height: var(--top-bar-height);
@@ -120,13 +126,18 @@
   }
 
   .search {
-    flex: 1 1 0;
+    grid-column: 1 / 3;
     max-width: none;
   }
 
+  .languageLink {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
   .detailLevel {
-    flex: 1 0 100%;
-    order: 1;
+    grid-column: 2 / -1;
+    grid-row: 2;
     margin-inline-start: 0;
   }
 }

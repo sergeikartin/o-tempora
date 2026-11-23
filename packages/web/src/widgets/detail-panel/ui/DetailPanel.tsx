@@ -150,6 +150,8 @@ export function DetailPanel({
         document.elementFromPoint?.(event.clientX, event.clientY) ??
         (event.target as Element | null);
       if (target?.closest?.('[data-entity-id]')) return;
+      // Keep the Selection in the language link's href until it navigates.
+      if (target?.closest?.('[data-switch-language]')) return;
       if (start) {
         const moved = Math.hypot(
           event.clientX - start.x,

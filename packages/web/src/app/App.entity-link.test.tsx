@@ -211,34 +211,24 @@ test('closing the panel replaces the entry instead of adding one', async () => {
 test('the language switch carries the open entity to the sibling locale', async () => {
   window.history.replaceState(null, '', '/?e=slug-of-mainstream');
   const { container, rtl } = await renderApp();
-  await openHelp(container, rtl);
-
   await waitFor(() =>
-    expect(languageHref(container)).toBe('/ru/timeline/?e=slug-of-mainstream'),
+    expect(panelText(container)).toContain('tagline of mainstream'),
   );
+
+  const link = rtl.within(container).getByRole('link', { name: 'Русский' });
+  rtl.fireEvent.pointerDown(link);
+  rtl.fireEvent.pointerUp(link);
+
+  expect(link.getAttribute('href')).toBe('/ru/timeline/?e=slug-of-mainstream');
+  expect(window.location.search).toBe('?e=slug-of-mainstream');
 });
 
 test('the language switch has no entity when nothing is open', async () => {
   const { container, rtl } = await renderApp();
-  await openHelp(container, rtl);
 
-  await waitFor(() => expect(languageHref(container)).toBe('/ru/timeline/'));
+  const link = rtl.within(container).getByRole('link', { name: 'Русский' });
+  expect(link.getAttribute('href')).toBe('/ru/timeline/');
 });
-
-async function openHelp(
-  container: HTMLElement,
-  rtl: typeof import('@testing-library/react'),
-) {
-  await act(async () => {
-    rtl.fireEvent.click(
-      container.querySelector('button[aria-label="Help"]') as Element,
-    );
-  });
-}
-
-function languageHref(container: HTMLElement) {
-  return container.querySelector('a[href^="/ru/"]')?.getAttribute('href');
-}
 
 function markOf(container: HTMLElement, id: string) {
   const mark = container.querySelector(`[data-entity-id="${id}"]`);

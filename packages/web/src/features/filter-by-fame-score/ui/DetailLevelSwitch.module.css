@@ -154,6 +154,12 @@
   grid-row: 1 / span 2;
 }
 
+@media (max-width: 420px) {
+  .trigger .pips {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .trigger[aria-busy="true"] {
     animation: trigger-loading 900ms ease-in-out infinite;
