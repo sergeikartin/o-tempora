@@ -4,9 +4,8 @@ import { type ModelProfile, parseModelProfile } from '../model-profile.js';
 import { passages } from '../passages.js';
 import type { Complete } from '../providers.js';
 import { formatDates, type ProfileSubject } from '../subjects.js';
-import { asRecord } from '../values.js';
+import { asRecord, extractJson } from '../values.js';
 import type { ResolveArticleQids } from '../wikipedia-qids.js';
-import { extractJson } from '../writer.js';
 import { evidenceChecks, mechanicalChecks } from './mechanical.js';
 import {
   blockers,

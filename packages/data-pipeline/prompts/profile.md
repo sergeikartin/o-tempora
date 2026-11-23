@@ -1,7 +1,7 @@
 # Profile prompt (people and events)
 
-- **Version:** 2.2.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `246b7e0afd6f`)
+- **Version:** 2.4.0
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `d1e011c13521`)
 - **Inputs:** `{type}` (person | conflict | milestone), `{name}`, `{dates}` (e.g. "c. 1540–1596", "1789–1799", "1969"), `{wikipedia_url}`
 - **Replaces:** the v1 person and conflict prompts
 - **Checked by:** `.claude/agents/profile-verifier.md`
@@ -22,6 +22,10 @@ Return:
 
 Every key moment and deep fact also carries checkable claims and a source,
 so a separate verifier can check them (see VERIFIABILITY).
+
+Fetch and read trustworthy sources before drafting. Ground every factual
+claim in fetched evidence. If you cannot fetch the evidence needed for a
+substantive Profile, report the blocker and stop before returning a draft.
 
 OVERVIEW
 - One paragraph, 2 to 3 sentences.
@@ -103,12 +107,16 @@ VERIFIABILITY
 - Keep hedges in the claim: if the paragraph says "reportedly",
   so does the claim. For a legend, claim that the story exists and
   where it comes from, not that it happened.
-- For every key moment and deep fact, give a source: the English
-  Wikipedia article and section where the claims can be checked,
-  as https://en.wikipedia.org/wiki/Article_Title#Section_Title.
-  It may be another article than the subject's. If you are not sure
-  of the section, give the article without a section.
-  If the facts are not on Wikipedia, use "not_on_wikipedia".
+- In each key moment and deep fact, set `source` to the public HTTPS
+  page that best supports the passage's central claim. Prefer relevant
+  primary records, scholarly work or publications from institutions
+  with relevant expertise. Wikipedia is an option when it directly
+  supports the claim. Additional evidence can support other details
+  or corroborate the claim.
+- Cite the final URL of a fetched page you used to support that passage.
+  Include a section anchor only if confirmed. If no trustworthy page
+  supports the central claim, find better evidence or revise or omit
+  the passage.
 
 NEUTRALITY AND NUMBERS
 - Describe all sides of a conflict or dispute in the same neutral,
@@ -152,7 +160,7 @@ Return JSON only:
       "title": "essence in a few words",
       "text": "one paragraph with **bold**",
       "claims": ["standalone checkable sentence"],
-      "source": "https://en.wikipedia.org/wiki/Article_Title#Section_Title"
+      "source": "public HTTPS URL of the fetched supporting page"
     }
   ],
   "deep_facts": [
@@ -162,7 +170,7 @@ Return JSON only:
       "is_legend": false,
       "confidence": "high | medium",
       "claims": ["standalone checkable sentence"],
-      "source": "https://en.wikipedia.org/wiki/... | not_on_wikipedia"
+      "source": "public HTTPS URL of the fetched supporting page"
     }
   ],
   "connections": [
@@ -187,7 +195,7 @@ object to every result after the response comes back.
 ```json
 "meta": {
   "generated_at": "ISO 8601 timestamp, UTC",
-  "prompt_version": "2.2.0",
+  "prompt_version": "2.4.0",
   "prompt_hash": "first 12 chars of sha256 of the prompt text",
   "schema_version": 3,
   "model": "exact model ID",
@@ -237,5 +245,3 @@ object to every result after the response comes back.
 - Connections are one-directional: if Drake lists the Spanish Armada, the
   Armada profile does not show Drake unless its own run lists him. Do not
   merge across profiles when building them.
-
-Verification may replace a generated Wikipedia source or `not_on_wikipedia` with a fetched public HTTPS primary/scholarly source. The writer prompt stays memory-based; evidence and approval are added offline by `profiles verify`.

@@ -4,8 +4,7 @@ import type { ModelProfile } from '../model-profile.js';
 import { passages } from '../passages.js';
 import type { Complete, Completion } from '../providers.js';
 import { type ProfileSubject, subjectBrief } from '../subjects.js';
-import { asRecord } from '../values.js';
-import { extractJson } from '../writer.js';
+import { asRecord, extractJson } from '../values.js';
 import {
   type Assessment,
   type Evidence,

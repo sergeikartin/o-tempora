@@ -20,7 +20,7 @@ export interface Completion {
 
 export type Complete = (
   prompt: string,
-  role?: 'write' | 'audit' | 'repair' | 'translate' | 'translation-audit',
+  role?: 'audit' | 'repair' | 'translate' | 'translation-audit',
 ) => Promise<Completion>;
 
 export function isProvider(value: string): value is Provider {

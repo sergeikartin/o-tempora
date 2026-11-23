@@ -34,32 +34,6 @@ export async function loadPrompt(): Promise<PromptInfo> {
   return parsePrompt(await readFile(PROMPT_PATH, 'utf8'));
 }
 
-export interface PromptInputs {
-  type: string;
-  name: string;
-  dates: string;
-  wikipediaUrl: string;
-}
-
-export function renderPrompt(markdown: string, inputs: PromptInputs): string {
-  const block = promptBlock(markdown);
-  if (block === undefined) throw new Error('profile.md: no "## Prompt" block');
-  const values: Record<string, string> = {
-    type: inputs.type,
-    name: inputs.name,
-    dates: inputs.dates,
-    wikipedia_url: inputs.wikipediaUrl,
-  };
-  return block.replace(
-    /\{(type|name|dates|wikipedia_url)\}/g,
-    (_, key: string) => values[key] ?? '',
-  );
-}
-
-export async function loadPromptMarkdown(): Promise<string> {
-  return readFile(PROMPT_PATH, 'utf8');
-}
-
 // The writer agent's `model:` frontmatter value, recorded in `meta.model`: a
 // subagent does not report the exact model ID it ran on.
 export function parseAgentModel(agentMarkdown: string): string {

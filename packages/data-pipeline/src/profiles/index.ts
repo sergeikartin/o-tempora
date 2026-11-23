@@ -7,8 +7,7 @@ import {
   routeVerificationModels,
 } from './model-routing.js';
 import { INCOMING_DIR, RAW_PROFILES_DIR } from './paths.js';
-import { type PlanEntry, planProfiles } from './plan.js';
-import { loadPrompt, loadPromptMarkdown, loadWriterModel } from './prompt.js';
+import { loadWriterModel } from './prompt.js';
 import { PROVIDERS } from './providers.js';
 import { readStoredProfiles } from './store.js';
 import { formatDates, loadSubjects } from './subjects.js';
@@ -16,10 +15,8 @@ import { translateProfile } from './translation.js';
 import { auditSavedProfile } from './verification/audit-saved.js';
 import { verifyProfile } from './verification/runner.js';
 import { resolveArticleQids } from './wikipedia-qids.js';
-import { type WriteEntry, writeProfiles } from './writer.js';
 
-const USAGE = `Usage: profiles <write|finalize|verify|audit|translate|evidence|english-audit|english-repair|russian-translation|russian-audit> [flags]
-  write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>]
+const USAGE = `Usage: profiles <finalize|verify|audit|translate|evidence|english-audit|english-repair|russian-translation|russian-audit> [flags]
   finalize  [--qids=Q1,Q2,...] [--run-id=<id>]
   verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-provider=${PROVIDERS.join('|')}] [--audit-model=<id>] [--translation-model=<OpenAI id>]
   audit     --qids=Q1,Q2,... [--provider=${PROVIDERS.join('|')}] [--model=<id>]
@@ -29,72 +26,6 @@ const USAGE = `Usage: profiles <write|finalize|verify|audit|translate|evidence|e
   english-repair --qid=Q1 [--result=<file>]
   russian-translation --qid=Q1
   russian-audit --qid=Q1 --candidate=<file> [--result=<file>]`;
-
-const DEFAULT_CONCURRENCY = 3;
-
-async function selectWriteEntries(
-  argv: readonly string[],
-): Promise<PlanEntry[]> {
-  const qids = parseQidsFlag(argv);
-  if (!qids) {
-    throw new Error(
-      `--qids is required: Profiles are written per chosen batch\n${USAGE}`,
-    );
-  }
-  const subjects = loadSubjects().filter((subject) => qids.has(subject.qid));
-  for (const qid of qids) {
-    if (!subjects.some((subject) => subject.qid === qid)) {
-      console.warn(`${qid}: not an entity in the dataset, ignored`);
-    }
-  }
-  return planProfiles(subjects, await readStoredProfiles(RAW_PROFILES_DIR), {
-    currentPromptHash: (await loadPrompt()).hash,
-    regenerateStale: argv.includes('--regenerate-stale'),
-    incomingDir: INCOMING_DIR,
-  });
-}
-
-async function write(argv: readonly string[]): Promise<void> {
-  const unknown = argv.find(
-    (arg) =>
-      arg !== '--regenerate-stale' &&
-      !['--qids=', '--provider=', '--model=', '--concurrency='].some((flag) =>
-        arg.startsWith(flag),
-      ),
-  );
-  if (unknown) throw new Error(`Unknown writer flag: ${unknown}\n${USAGE}`);
-  const models = routeProfileModels('write', argv);
-  const concurrency = Number(
-    flagValue(argv, 'concurrency') ?? DEFAULT_CONCURRENCY,
-  );
-  if (!Number.isInteger(concurrency) || concurrency < 1) {
-    throw new Error('--concurrency must be a positive integer');
-  }
-
-  const entries = await selectWriteEntries(argv);
-  const toWrite = entries.filter(
-    (entry): entry is WriteEntry => entry.kind === 'write',
-  );
-  console.log(
-    `${toWrite.length} to write, ${entries.length - toWrite.length} skipped, with ${models.label}`,
-  );
-  if (toWrite.length === 0) return;
-  const result = await writeProfiles({
-    entries: toWrite,
-    promptMarkdown: await loadPromptMarkdown(),
-    complete: models.complete,
-    provider: models.provider,
-    concurrency,
-  });
-  for (const file of result.written) console.log(`staged ${file}`);
-  for (const { qid, error } of result.failed) {
-    console.error(`failed ${qid}: ${error}`);
-  }
-  console.log(
-    `${result.written.length} staged, ${result.failed.length} failed; run finalize to turn staged files into records`,
-  );
-  if (result.failed.length > 0) process.exitCode = 1;
-}
 
 async function finalize(argv: readonly string[]): Promise<void> {
   const unknown = argv.find(
@@ -126,8 +57,7 @@ async function finalize(argv: readonly string[]): Promise<void> {
 
 async function main(): Promise<void> {
   const [command, ...argv] = process.argv.slice(2);
-  if (command === 'write') await write(argv);
-  else if (command === 'finalize') await finalize(argv);
+  if (command === 'finalize') await finalize(argv);
   else if (command === 'verify') await verify(argv);
   else if (command === 'audit') await audit(argv);
   else if (command === 'translate') await translate(argv);

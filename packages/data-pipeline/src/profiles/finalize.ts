@@ -18,9 +18,6 @@ interface WriterRun {
   tokens: TokenUsage | null;
 }
 
-// The `writer` block `profiles write` stages beside the Profile. A file from a
-// profile-writer agent has none: its model is `options.model` and it reports
-// no token counts.
 function parseWriterRun(root: unknown): WriterRun | undefined {
   const writer = asRecord(root, 'staged file').writer;
   if (writer === undefined) return undefined;
@@ -170,10 +167,8 @@ async function finalizeFile(
   return { outcome: 'written', recordPath };
 }
 
-// Turns each `incoming/<QID>.json` a writer (agent or `profiles write`) left into a committed
-// record at `draft`. A regenerated record replaces its old file and so
-// returns to `draft`; an `edited` one is never touched. A file that fails
-// validation is reported and left in place without stopping the others.
+// Finalize staged Profiles as drafts. Keep staged files for protected edits
+// and validation failures so the coordinator can inspect them.
 export async function finalizeProfiles(
   options: FinalizeOptions,
 ): Promise<FinalizeResult> {

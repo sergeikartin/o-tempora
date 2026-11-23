@@ -5,7 +5,6 @@ import path from 'node:path';
 import { test } from 'node:test';
 import { parseRawProfile } from '../output/profiles.js';
 import { type FinalizeOptions, finalizeProfiles } from './finalize.js';
-import { readStoredProfiles } from './store.js';
 import type { ProfileSubject } from './subjects.js';
 
 const SUBJECTS: ProfileSubject[] = [
@@ -282,6 +281,7 @@ test('records the model and token counts a staged `writer` block reports', async
     writer: {
       provider: 'openai',
       model: 'gpt-6-astra-2026-09-03',
+      reasoning_effort: 'high',
       tokens: { input: 1200, output: 5400 },
     },
   });
@@ -292,6 +292,7 @@ test('records the model and token counts a staged `writer` block reports', async
     await readFile(result.written[0] as string, 'utf8'),
   );
   assert.equal(record.meta.model, 'gpt-6-astra-2026-09-03');
+  assert.equal(record.meta.reasoning_effort, 'high');
   assert.deepEqual(record.meta.tokens, { input: 1200, output: 5400 });
   assert.equal(record.writer, undefined);
 });
@@ -311,10 +312,6 @@ test('falls back to the agent model and null tokens without a `writer` block', a
   assert.equal(record.meta.prompt_version, null);
   assert.equal(record.meta.prompt_hash, null);
   assert.equal(record.meta.generated_at, null);
-  assert.equal(
-    (await readStoredProfiles(options.profilesDir)).get('Q1')?.promptHash,
-    null,
-  );
 });
 
 test('finalize preserves staged prompt provenance without reading the current prompt', async () => {

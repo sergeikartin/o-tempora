@@ -7,7 +7,6 @@ export interface StoredProfile {
   qid: string;
   filePath: string;
   status: string;
-  promptHash: string | null;
 }
 
 const RECORD_FILE = /^(Q\d+)-.+\.en\.json$/;
@@ -44,10 +43,6 @@ export async function readStoredProfiles(
         qid,
         filePath,
         status: asString(review.status, `${where}: meta.review.status`),
-        promptHash:
-          meta.prompt_hash === null
-            ? null
-            : asString(meta.prompt_hash, `${where}: meta.prompt_hash`),
       });
     }
   }

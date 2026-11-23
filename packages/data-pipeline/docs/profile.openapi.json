@@ -33,7 +33,7 @@
           },
           "source": {
             "type": "string",
-            "description": "A public HTTPS source URL, or \"not_on_wikipedia\".",
+            "description": "A fetched supporting public HTTPS source URL. The parser also accepts the legacy placeholder \"not_on_wikipedia\" in existing drafts.",
             "pattern": "^(not_on_wikipedia|https://[^\\s/@?#]+(?:[/?#]\\S*)?)$"
           }
         }
@@ -67,7 +67,7 @@
           },
           "source": {
             "type": "string",
-            "description": "A public HTTPS source URL, or \"not_on_wikipedia\".",
+            "description": "A fetched supporting public HTTPS source URL. The parser also accepts the legacy placeholder \"not_on_wikipedia\" in existing drafts.",
             "pattern": "^(not_on_wikipedia|https://[^\\s/@?#]+(?:[/?#]\\S*)?)$"
           }
         }

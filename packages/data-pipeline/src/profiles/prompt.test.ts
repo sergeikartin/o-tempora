@@ -2,12 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { PROMPT_PATH } from './paths.js';
-import {
-  loadPrompt,
-  parseAgentModel,
-  parsePrompt,
-  renderPrompt,
-} from './prompt.js';
+import { loadPrompt, parseAgentModel, parsePrompt } from './prompt.js';
 
 const markdown = [
   '- **Version:** 1.2.3',
@@ -53,28 +48,4 @@ test('the checked-in prompt hashes to the value it states', async () => {
 test('parseAgentModel reads the model from frontmatter', () => {
   assert.equal(parseAgentModel('---\nname: x\nmodel: opus\n---\nbody'), 'opus');
   assert.throws(() => parseAgentModel('---\nname: x\n---\n'), /model/);
-});
-
-test('renderPrompt fills every placeholder in the prompt block only', () => {
-  const rendered = renderPrompt(
-    [
-      '## Prompt',
-      '',
-      '```text',
-      '{name} ({dates}), a {type}: {wikipedia_url}; {name} again $& {x}',
-      '```',
-      '',
-      'outside {name}',
-    ].join('\n'),
-    {
-      type: 'person',
-      name: 'Ada',
-      dates: '1815–1852',
-      wikipediaUrl: 'https://en.wikipedia.org/wiki/Ada',
-    },
-  );
-  assert.equal(
-    rendered,
-    'Ada (1815–1852), a person: https://en.wikipedia.org/wiki/Ada; Ada again $& {x}\n',
-  );
 });

@@ -32,12 +32,11 @@ function lazyCompleter(provider: Provider, model: string): Complete {
 
 interface CompletionRoute {
   provider: Provider;
-  label: string;
   complete: Complete;
 }
 
 export function routeProfileModels(
-  command: 'write' | 'audit' | 'translate',
+  command: 'audit' | 'translate',
   argv: readonly string[],
 ): CompletionRoute {
   const provider = flagValue(argv, 'provider') ?? 'openai';
@@ -49,21 +48,8 @@ export function routeProfileModels(
     );
   }
   const model = flagValue(argv, 'model') ?? DEFAULT_MODEL[provider];
-  const label = `${provider}/${model}`;
-  if (command === 'write') {
-    let complete: Complete | undefined;
-    return {
-      provider,
-      label,
-      get complete() {
-        // Check credentials when there is work, before staging any item.
-        complete ??= createCompleter(provider, model);
-        return complete;
-      },
-    };
-  }
   const complete = lazyCompleter(provider, model);
-  if (command === 'audit') return { provider, label, complete };
+  if (command === 'audit') return { provider, complete };
 
   const audit = lazyCompleter(
     provider,
@@ -71,7 +57,6 @@ export function routeProfileModels(
   );
   return {
     provider,
-    label,
     complete: (prompt, role) =>
       (role === 'translation-audit' ? audit : complete)(prompt, role),
   };
