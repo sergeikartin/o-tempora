@@ -12,7 +12,7 @@ npm run profiles --workspace packages/data-pipeline -- finalize
 npm run profiles --workspace packages/data-pipeline -- verify --qids=Q935 --repair --execution=session --session-dir=/tmp/profile-session
 ```
 
-Run these in order, completing each command before starting the next. `plan`, stale-record handling, protected edits, finalization and publication use the same rules as [API execution](profiles.md). Model/provider flags apply only to API mode; select session agents in the conversation instead. If the `tsx` launcher cannot create its IPC socket, use `node --import tsx packages/data-pipeline/src/profiles/index.ts` with the same arguments.
+Choose the batch in chat and give the coordinator its QIDs. Run these commands in order, completing each before starting the next. Stale-record handling, protected edits, finalization and publication use the same rules as [API execution](profiles.md). Model/provider flags apply only to API mode; select session agents in the conversation instead. If the `tsx` launcher cannot create its IPC socket, use `node --import tsx packages/data-pipeline/src/profiles/index.ts` with the same arguments.
 
 ## Conversation coordinator
 

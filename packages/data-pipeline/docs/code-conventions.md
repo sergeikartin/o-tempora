@@ -12,4 +12,4 @@
 
 ## File Organization
 
-`src/fetch/` (query/CSV-row builders, raw-result writers), `src/transform/` (grouping, scoring, tagging, lookup tables), `src/output/` (final JSON writer), `src/profiles/` (the `profiles` plan/finalize script, outside the stage order), `data/raw/` (checked-in raw snapshots).
+`src/fetch/` (query/CSV-row builders, raw-result writers), `src/transform/` (grouping, scoring, tagging, lookup tables), `src/output/` (final JSON writer), `src/profiles/` (the Profile CLI and workflow, outside the stage order), `data/raw/` (checked-in raw snapshots).

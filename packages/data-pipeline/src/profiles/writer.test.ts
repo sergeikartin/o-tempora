@@ -47,7 +47,6 @@ async function entries(...names: string[]): Promise<WriteEntry[]> {
     return {
       kind: 'write',
       subject: s,
-      regenerates: false,
       outputPath: incomingPath(dir, s.qid),
     };
   });

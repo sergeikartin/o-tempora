@@ -1,6 +1,6 @@
 import path from 'node:path';
 import type { StoredProfile } from './store.js';
-import { formatDates, type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
+import type { ProfileSubject } from './subjects.js';
 
 export type SkipReason = 'current' | 'stale' | 'edited';
 
@@ -8,8 +8,6 @@ export type PlanEntry =
   | {
       kind: 'write';
       subject: ProfileSubject;
-      // Replaces an existing record made with an older prompt.
-      regenerates: boolean;
       outputPath: string;
     }
   | { kind: 'skip'; subject: ProfileSubject; reason: SkipReason };
@@ -36,7 +34,7 @@ export function planProfiles(
     const existing = stored.get(subject.qid);
     const outputPath = incomingPath(options.incomingDir, subject.qid);
     if (!existing) {
-      return { kind: 'write', subject, regenerates: false, outputPath };
+      return { kind: 'write', subject, outputPath };
     }
     if (existing.status === 'edited') {
       return { kind: 'skip', subject, reason: 'edited' };
@@ -45,32 +43,7 @@ export function planProfiles(
       return { kind: 'skip', subject, reason: 'current' };
     }
     return options.regenerateStale
-      ? { kind: 'write', subject, regenerates: true, outputPath }
+      ? { kind: 'write', subject, outputPath }
       : { kind: 'skip', subject, reason: 'stale' };
   });
-}
-
-export function formatPlan(entries: readonly PlanEntry[]): string {
-  const lines: string[] = [];
-  for (const entry of entries) {
-    if (entry.kind !== 'write') continue;
-    const { subject } = entry;
-    lines.push(
-      `${subject.qid}${entry.regenerates ? ' (regenerate)' : ''}`,
-      `  type: ${SUBJECT_TYPE[subject.lane]}`,
-      `  name: ${subject.name}`,
-      `  dates: ${formatDates(subject.dateSpan)}`,
-      `  wikipedia_url: ${subject.wikipediaUrl}`,
-      `  output: ${entry.outputPath}`,
-    );
-  }
-  const skipped = entries.filter((entry) => entry.kind === 'skip');
-  for (const entry of skipped) {
-    lines.push(
-      `skip ${entry.subject.qid} ${entry.subject.name}: ${entry.reason === 'stale' ? 'stale (--regenerate-stale to redo)' : entry.reason}`,
-    );
-  }
-  const writes = entries.length - skipped.length;
-  lines.push(`${writes} to write, ${skipped.length} skipped`);
-  return lines.join('\n');
 }

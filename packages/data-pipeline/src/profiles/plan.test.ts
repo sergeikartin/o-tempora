@@ -57,7 +57,7 @@ test('skips a stale record unless regeneration is requested', () => {
     ...options,
     regenerateStale: true,
   });
-  assert.equal(regenerated?.kind === 'write' && regenerated.regenerates, true);
+  assert.equal(regenerated?.kind, 'write');
 });
 
 test('regeneration leaves records at the current prompt alone', () => {

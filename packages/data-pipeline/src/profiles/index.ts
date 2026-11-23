@@ -6,7 +6,7 @@ import {
   routeVerificationModels,
 } from './model-routing.js';
 import { INCOMING_DIR, RAW_PROFILES_DIR } from './paths.js';
-import { formatPlan, type PlanEntry, planProfiles } from './plan.js';
+import { type PlanEntry, planProfiles } from './plan.js';
 import { loadPrompt, loadPromptMarkdown, loadWriterModel } from './prompt.js';
 import { PROVIDERS } from './providers.js';
 import { readStoredProfiles } from './store.js';
@@ -17,8 +17,7 @@ import { verifyProfile } from './verification/runner.js';
 import { resolveArticleQids } from './wikipedia-qids.js';
 import { type WriteEntry, writeProfiles } from './writer.js';
 
-const USAGE = `Usage: profiles <plan|write|finalize|verify|audit|translate> [flags]
-  plan      --qids=Q1,Q2,... [--regenerate-stale]
+const USAGE = `Usage: profiles <write|finalize|verify|audit|translate> [flags]
   write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>] [--execution=api|session --session-dir=<absolute directory>]
   finalize  [--run-id=<id>]
   verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-provider=${PROVIDERS.join('|')}] [--audit-model=<id>] [--translation-model=<OpenAI id>] [--execution=api|session --session-dir=<absolute directory>]
@@ -27,7 +26,9 @@ const USAGE = `Usage: profiles <plan|write|finalize|verify|audit|translate> [fla
 
 const DEFAULT_CONCURRENCY = 3;
 
-async function planFromFlags(argv: readonly string[]): Promise<PlanEntry[]> {
+async function selectWriteEntries(
+  argv: readonly string[],
+): Promise<PlanEntry[]> {
   const qids = parseQidsFlag(argv);
   if (!qids) {
     throw new Error(
@@ -47,10 +48,6 @@ async function planFromFlags(argv: readonly string[]): Promise<PlanEntry[]> {
   });
 }
 
-async function plan(argv: readonly string[]): Promise<void> {
-  console.log(formatPlan(await planFromFlags(argv)));
-}
-
 async function write(argv: readonly string[]): Promise<void> {
   const models = routeProfileModels('write', argv);
   const concurrency = Number(
@@ -60,7 +57,7 @@ async function write(argv: readonly string[]): Promise<void> {
     throw new Error('--concurrency must be a positive integer');
   }
 
-  const entries = await planFromFlags(argv);
+  const entries = await selectWriteEntries(argv);
   const toWrite = entries.filter(
     (entry): entry is WriteEntry => entry.kind === 'write',
   );
@@ -110,8 +107,7 @@ async function finalize(argv: readonly string[]): Promise<void> {
 
 async function main(): Promise<void> {
   const [command, ...argv] = process.argv.slice(2);
-  if (command === 'plan') await plan(argv);
-  else if (command === 'write') await write(argv);
+  if (command === 'write') await write(argv);
   else if (command === 'finalize') await finalize(argv);
   else if (command === 'verify') await verify(argv);
   else if (command === 'audit') await audit(argv);

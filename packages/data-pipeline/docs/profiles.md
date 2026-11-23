@@ -12,14 +12,13 @@ The [Profile model routing module](../src/profiles/model-routing.ts) owns provid
 
 | Command | Behavior |
 |---|---|
-| `plan --qids=Q1,Q2` | Prints writer inputs and staging paths for the chosen batch. |
 | `write --qids=Q1,Q2` | Writes from model knowledge, validates the draft and stages it with suggested claims and sources in `incoming/<QID>.json`. |
 | `finalize` | Resolves subject and Connection QIDs, removes Connections outside the dataset, adds metadata, writes drafts and removes successfully finalized staging files. |
 | `verify --qids=Q1,Q2 --repair` | Checks every visible field against fetched evidence, audits the result and can repair up to twice. It withholds unresolved content and translates approved English. See [verification and human review](profile-verification.md). |
 | `audit --qids=Q1,Q2` | Runs an independent audit against saved verification evidence and prints results and token usage for comparison. See [comparing auditors](profile-verification.md#compare-auditors-on-saved-evidence). |
 | `translate --qids=Q1,Q2` | Translates currently approved English Profiles into Russian and separately audits fidelity. Skips current translations. |
 
-`plan` and `write` skip current-prompt records and protect all `edited` records. Use `--regenerate-stale` to regenerate stale records and reset their approval to `draft`. A `profile-writer` agent can stage the same JSON without an API key.
+Choose the batch and pass its Wikidata IDs directly to `write --qids=…`. `write` skips current-prompt records and protects all `edited` records. Use `--regenerate-stale` to regenerate stale records and reset their approval to `draft`. A `profile-writer` agent can stage the same JSON without an API key.
 
 ## Writer provenance
 
