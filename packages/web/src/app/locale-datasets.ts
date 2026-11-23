@@ -185,32 +185,29 @@ function isSaveDataOrSlowConnection(): boolean {
   );
 }
 
-let startLevel3Load: (() => void) | undefined;
+let startLevel3Load: () => void;
 
-// Level 3, loaded at idle time so it never competes with level 1+2, or on
-// requestLevel3Load for slow/save-data connections.
+// Level 3 starts at idle or on explicit request. Save-Data and slow
+// connections wait for an explicit request.
 export const level3DatasetPromise: Promise<LocaleDatasets> = new Promise(
-  (resolve) => {
-    const run = () => {
-      loadLevel(3, getLocale()).then(resolve);
+  (resolve, reject) => {
+    startLevel3Load = () => {
+      startLevel3Load = () => {};
+      loadLevel(3, getLocale()).then(resolve, reject);
     };
     if (typeof window === 'undefined') {
-      run();
+      startLevel3Load();
       return;
     }
-    if (isSaveDataOrSlowConnection()) {
-      startLevel3Load = run;
-      return;
-    }
+    if (isSaveDataOrSlowConnection()) return;
     const schedule =
       window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 2000));
-    schedule(run, { timeout: 4000 });
+    schedule(() => startLevel3Load(), { timeout: 4000 });
   },
 );
 
 export function requestLevel3Load(): void {
-  startLevel3Load?.();
-  startLevel3Load = undefined;
+  startLevel3Load();
 }
 
 let startLevel4Load: (() => void) | undefined;
@@ -218,11 +215,20 @@ let level4Requested = false;
 
 // Level 4 never auto-starts; it loads when the user selects Deep Cut.
 export const level4DatasetPromise: Promise<LocaleDatasets> = new Promise(
-  (resolve) => {
+  (resolve, reject) => {
     startLevel4Load = () => {
-      loadLevel(4, getLocale()).then(resolve);
+      loadLevel(4, getLocale()).then(resolve, reject);
     };
   },
+);
+
+// The idle prefetch can fail before the app mounts. Report failures once while
+// leaving the original promises available for subscribers to handle.
+level3DatasetPromise.catch((error: unknown) =>
+  logError(error, { detailLevel: 'specialized' }),
+);
+level4DatasetPromise.catch((error: unknown) =>
+  logError(error, { detailLevel: 'deep-cut' }),
 );
 
 // Deep Cut's view is levels 1-4, so this also starts level 3. No-op past the

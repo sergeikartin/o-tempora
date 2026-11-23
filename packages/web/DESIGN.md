@@ -247,7 +247,7 @@ Round where the hand touches, gentle where it reads. Pills, inputs, close button
 
 ### Search
 - **Style:** Same pill language as filters (White Sheet, Control Border, fully round, 6px/10px padding). Placeholder in Faded Ink.
-- **Results:** White Sheet dropdown with Hairline border and 12px radius; rows 6px radius, Ledger Paper on hover or active; a 10px uppercase badge in Faded Ink; matched text in Oxblood at weight 700.
+- **Results:** White Sheet dropdown with Hairline border and 12px radius. Rows use a 6px radius and Ledger Paper on hover or when active. The 10px uppercase lane badge uses Faded Ink and matched text uses Oxblood at weight 700. Results from deeper levels name the required Detail Level below the match in 11px Faded Ink.
 
 ### Detail Level Switch
 - **Style:** One pill, 32px tall: a Faded Ink "Detail Level" prefix, the selected level's name in Ink at 600, four 10×4px pips (one per level reached, Oxblood; the rest Hairline) and a `▾` glyph. White Sheet fill, 1px Control Border, hover to Ledger Paper with a Faded Ink border. Open, it takes the active-pill treatment (Oxblood border plus inset ring, Ledger Paper fill) and the glyph flips.

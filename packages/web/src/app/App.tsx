@@ -27,6 +27,7 @@ import { TimelineCanvas } from '../widgets/timeline-canvas';
 import { TopBar } from '../widgets/top-bar';
 import styles from './App.module.css';
 import { type LocaleDatasets, localeDatasetsPromise } from './locale-datasets';
+import { useSearchIndex } from './use-search-index';
 import { useSelectionNavigation } from './use-selection-navigation';
 
 // Both paint nothing until opened; lazy-loading keeps their code out of the
@@ -101,15 +102,12 @@ function AppContent({ initialDatasets }: AppProps) {
     selectedValues: selectedConflictsMilestonesValues,
     toggleValue: toggleConflictsMilestonesValue,
   } = useConflictsMilestonesFilter();
-  const {
+  const [searchQuery, setSearchQuery] = useState('');
+  const { index: searchIndex, status: searchStatus } =
+    useSearchIndex(searchQuery);
+  const searchResults = useTimelineSearch({
     query: searchQuery,
-    setQuery: setSearchQuery,
-    results: searchResults,
-  } = useTimelineSearch({
-    people: peopleData,
-    conflicts: conflictsData,
-    milestones: milestonesData,
-    fameScoreValues,
+    index: searchIndex,
     selectedDomains,
     selectedRegions,
     selectedConflictsMilestonesValues,
@@ -205,7 +203,18 @@ function AppContent({ initialDatasets }: AppProps) {
         onSelectDetailLevel={navigation.selectDetailLevel}
         loadingLevelIds={navigation.loadingLevelIds}
         searchQuery={searchQuery}
-        onSearchQueryChange={setSearchQuery}
+        onSearchQueryChange={(query) => {
+          if (query.trim()) navigation.clearSearchOpenError();
+          setSearchQuery(query);
+        }}
+        searchStatus={searchStatus}
+        searchOpenStatus={
+          navigation.isOpeningSearchResult
+            ? 'opening'
+            : navigation.searchOpenFailed
+              ? 'open-failed'
+              : undefined
+        }
         searchResults={searchResults}
         onSelectSearchResult={navigation.openSearchResult}
         selectedDomains={selectedDomains}

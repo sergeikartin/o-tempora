@@ -1,19 +1,13 @@
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { expect, test } from 'vitest';
 import type {
   Conflict,
   ConflictEvent,
   Milestone,
   Person,
-  Region,
+  SearchIndex,
 } from '../../../shared/types';
 import { useTimelineSearch } from './useTimelineSearch';
-
-interface FameScoreValues {
-  people: number;
-  conflicts: number;
-  milestones: number;
-}
 
 const person: Person = {
   id: 'Q868',
@@ -46,7 +40,7 @@ const battle: ConflictEvent = {
   at: { year: -1457 },
   category: 'war',
   regionTags: ['western-asia'],
-  fameScore: 60,
+  fameScore: 65,
   tagline: 'ancient battle',
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Battle_of_Megiddo',
 };
@@ -63,102 +57,86 @@ const milestone: Milestone = {
   wikipediaUrl: 'https://en.wikipedia.org/wiki/Printing_press',
 };
 
-const baseFameScoreValues: FameScoreValues = {
-  people: 0,
-  conflicts: 0,
-  milestones: 0,
+const index: SearchIndex = {
+  people: [person],
+  conflicts: [
+    conflict,
+    battle,
+    { ...battle, id: 'below-deep-cut', fameScore: 60 },
+  ],
+  milestones: [milestone],
 };
 
-function setup(
-  overrides: Partial<{
-    fameScoreValues: FameScoreValues;
-    selectedRegions: Region[];
-    people: Person[];
-  }> = {},
+function search(
+  query: string,
+  overrides: Partial<Parameters<typeof useTimelineSearch>[0]> = {},
 ) {
   return renderHook(() =>
     useTimelineSearch({
-      people: overrides.people ?? [person],
-      conflicts: [conflict, battle],
-      milestones: [milestone],
-      fameScoreValues: overrides.fameScoreValues ?? baseFameScoreValues,
+      query,
+      index,
       selectedDomains: [],
-      selectedRegions: overrides.selectedRegions ?? [],
+      selectedRegions: [],
       selectedConflictsMilestonesValues: [],
+      ...overrides,
     }),
-  );
+  ).result.current;
 }
 
 test('returns no results for an empty query', () => {
-  const { result } = setup();
-  expect(result.current.results).toEqual([]);
+  expect(search('')).toEqual([]);
 });
 
-test('matches against name, case-insensitively, across all three lanes', () => {
-  const { result } = setup();
-  act(() => result.current.setQuery('WAR'));
-  expect(result.current.results.map((r) => r.name)).toEqual(['Korean War']);
+test('matches names case-insensitively across all three lanes', () => {
+  expect(search('WAR').map((result) => result.name)).toEqual(['Korean War']);
+  expect(search('PRINTING').map((result) => result.name)).toEqual([
+    'Printing press',
+  ]);
+  expect(search('ARISTOTLE').map((result) => result.name)).toEqual([
+    'Aristotle',
+  ]);
 });
 
 test('matches against tagline as well as name', () => {
-  const { result } = setup();
-  act(() => result.current.setQuery('polymath'));
-  expect(result.current.results.map((r) => r.id)).toEqual([person.id]);
+  expect(search('polymath').map((result) => result.id)).toEqual([person.id]);
 });
 
-test('excludes an entity below the active fame-score floor', () => {
-  const { result, rerender } = renderHook(
-    ({ fameScoreValues }: { fameScoreValues: FameScoreValues }) =>
-      useTimelineSearch({
-        people: [person],
-        conflicts: [conflict, battle],
-        milestones: [milestone],
-        fameScoreValues,
-        selectedDomains: [],
-        selectedRegions: [],
-        selectedConflictsMilestonesValues: [],
-      }),
-    { initialProps: { fameScoreValues: baseFameScoreValues } },
-  );
-  act(() => result.current.setQuery('battle'));
-  expect(result.current.results.map((r) => r.id)).toEqual([battle.id]);
-
-  rerender({ fameScoreValues: { people: 0, conflicts: 70, milestones: 0 } });
-  expect(result.current.results).toEqual([]);
+test('finds deeper entries and excludes entries below Deep Cut', () => {
+  expect(
+    search('battle').map(({ id, detailLevel }) => ({ id, detailLevel })),
+  ).toEqual([{ id: battle.id, detailLevel: 'deep-cut' }]);
 });
 
-test('excludes an entity outside the active Region filter', () => {
-  const { result, rerender } = renderHook(
-    ({ selectedRegions }: { selectedRegions: Region[] }) =>
-      useTimelineSearch({
-        people: [person],
-        conflicts: [],
-        milestones: [],
-        fameScoreValues: baseFameScoreValues,
-        selectedDomains: [],
-        selectedRegions,
-        selectedConflictsMilestonesValues: [],
-      }),
-    { initialProps: { selectedRegions: [] as Region[] } },
+test('honors Region, Occupation and Conflicts & Milestones filters', () => {
+  expect(search('aristotle', { selectedRegions: ['western-europe'] })).toEqual(
+    [],
   );
-  act(() => result.current.setQuery('aristotle'));
-  expect(result.current.results.map((r) => r.id)).toEqual([person.id]);
-
-  rerender({ selectedRegions: ['western-europe'] });
-  expect(result.current.results).toEqual([]);
+  expect(search('aristotle', { selectedDomains: ['arts'] })).toEqual([]);
+  expect(
+    search('battle', {
+      selectedConflictsMilestonesValues: ['science-innovation'],
+    }),
+  ).toEqual([]);
+  expect(
+    search('printing', { selectedConflictsMilestonesValues: ['conflicts'] }),
+  ).toEqual([]);
 });
 
 test('caps results at 8, ranked by Fame Score across all lanes combined', () => {
-  const manyPeople: Person[] = Array.from({ length: 10 }, (_, index) => ({
+  const manyPeople = Array.from({ length: 10 }, (_, i) => ({
     ...person,
-    id: `Q-${index}`,
-    fameScore: index,
+    id: `Q-${i}`,
+    fameScore: 81 + i,
   }));
-  const { result } = setup({ people: manyPeople });
-  act(() => result.current.setQuery('aristotle'));
+  const results = search('polymath', {
+    index: {
+      ...index,
+      people: manyPeople,
+      conflicts: [{ ...conflict, fameScore: 95, tagline: 'Polymath' }],
+    },
+  });
 
-  expect(result.current.results).toHaveLength(8);
-  expect(result.current.results.map((r) => r.fameScore)).toEqual([
-    9, 8, 7, 6, 5, 4, 3, 2,
+  expect(results.map((result) => result.fameScore)).toEqual([
+    95, 90, 89, 88, 87, 86, 85, 84,
   ]);
 });

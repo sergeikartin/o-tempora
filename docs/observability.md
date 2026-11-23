@@ -2,7 +2,7 @@
 
 ## Error reporting
 
-Use `logError()` for errors. It logs locally and sends errors to GlitchTip through `@sentry/react` when monitoring is enabled. `ErrorBoundary` catches timeline render crashes, and `validateEntries()` reports each dataset row rejected for a missing ID/name or non-finite year.
+Use `logError()` for errors. It logs locally and sends errors to GlitchTip through `@sentry/react` when monitoring is enabled. `ErrorBoundary` catches timeline render crashes, and `validateEntries()` reports each dataset row rejected for a missing ID/name or non-finite year. Search index and deferred Detail Level load failures report the dataset or level.
 
 Set `VITE_GLITCHTIP_DSN` to enable reporting. The deploy workflow supplies the repo secret at build time. One DSN covers both locales. `main.tsx` initializes monitoring before rendering and samples every error. Umami handles Web Vitals.
 

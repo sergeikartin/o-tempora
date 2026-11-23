@@ -185,6 +185,7 @@ export function TimelineCanvas({
   // scrollRef's scrollLeft onto these refs (scrollLeft works on overflow-x:
   // hidden elements; scrollRef alone owns the horizontal gesture).
   const peopleLaneRef = useRef<HTMLElement>(null);
+  const peopleLaneJumpIdRef = useRef<string | null>(null);
   const conflictsMilestonesLaneRef = useRef<HTMLElement>(null);
   // Per-tick targets for the zoom animation's single rAF driver (zoom()): one
   // group transform per lane/axis, not per-mark recompute (options.ts's
@@ -534,6 +535,7 @@ export function TimelineCanvas({
   useLayoutEffect(() => {
     const el = peopleLaneRef.current;
     if (!el) return;
+    peopleLaneJumpIdRef.current = null;
     // Drives .peopleLane's top fade (TimelineCanvas.module.css): rows above the
     // scroll position are clipped, signalling more above. Set on the element
     // directly because it changes on every scroll tick.
@@ -553,14 +555,20 @@ export function TimelineCanvas({
     if (!svg) {
       return () => el.removeEventListener('scroll', updateScrollAffordance);
     }
-    // rAF-batched: the height transition fires many ResizeObserver callbacks per
-    // second and pinToBottom needs to run once per frame.
+    // Follow the jump target while the SVG height animates. Width-only changes
+    // leave the lane's vertical scroll position alone.
     let frame = 0;
-    const observer = new ResizeObserver(() => {
+    let previousHeight: number | undefined;
+    const observer = new ResizeObserver(([entry]) => {
+      const height = entry?.contentRect.height;
+      if (height === previousHeight) return;
+      previousHeight = height;
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
-        pinToBottom();
+        const id = peopleLaneJumpIdRef.current;
+        if (id) scrollMarkToLaneCenter({ entityType: 'person', id });
+        else pinToBottom();
       });
     });
     observer.observe(svg);
@@ -918,6 +926,7 @@ export function TimelineCanvas({
         : conflictsMilestonesLaneRef.current;
     const mark = laneEl?.querySelector(`[data-entity-id="${ref.id}"]`);
     if (!laneEl || !mark) return;
+    if (ref.entityType === 'person') peopleLaneJumpIdRef.current = ref.id;
     const laneRect = laneEl.getBoundingClientRect();
     const markRect = mark.getBoundingClientRect();
     const markTopWithinLane = markRect.top - laneRect.top + laneEl.scrollTop;

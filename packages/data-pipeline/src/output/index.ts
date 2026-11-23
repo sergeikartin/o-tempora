@@ -2,8 +2,12 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  type ConflictEntry,
   DETAIL_LEVEL_FAME_SCORE_FLOORS,
+  type Milestone,
+  type Person,
   type ProfileLane,
+  type SearchIndex,
 } from '@o-tempora/shared-types';
 import { formatDates, indexProfileSources } from '../profiles/subjects.js';
 import {
@@ -60,6 +64,39 @@ function logReport(label: string, kept: number, report: DropReport): void {
 async function writeDataset(fileName: string, data: unknown): Promise<void> {
   await mkdir(DATA_DIR, { recursive: true });
   await writeFile(path.join(DATA_DIR, fileName), JSON.stringify(data, null, 2));
+}
+
+function searchFields({
+  id,
+  slug,
+  name,
+  tagline,
+  fameScore,
+  regionTags,
+}: SearchIndex['conflicts'][number]): SearchIndex['conflicts'][number] {
+  return { id, slug, name, tagline, fameScore, regionTags };
+}
+
+function buildSearchIndex(
+  people: Person[],
+  conflicts: ConflictEntry[],
+  milestones: Milestone[],
+): SearchIndex {
+  const floors = DETAIL_LEVEL_FAME_SCORE_FLOORS;
+  return {
+    people: people
+      .filter(({ fameScore }) => fameScore >= floors.people[3])
+      .map((entry) => ({
+        ...searchFields(entry),
+        occupationDomain: entry.occupationDomain,
+      })),
+    conflicts: conflicts
+      .filter(({ fameScore }) => fameScore >= floors.conflicts[3])
+      .map(searchFields),
+    milestones: milestones
+      .filter(({ fameScore }) => fameScore >= floors.milestones[3])
+      .map((entry) => ({ ...searchFields(entry), category: entry.category })),
+  };
 }
 
 function withSlugs<T extends { id: string }>(
@@ -251,6 +288,15 @@ async function main(): Promise<void> {
     (level) => `milestones.detail${level}.ru.json`,
     milestonesRuWithRows,
     DETAIL_LEVEL_FAME_SCORE_FLOORS.milestones,
+  );
+
+  await writeDataset(
+    'search-index.json',
+    buildSearchIndex(people, conflicts, milestones),
+  );
+  await writeDataset(
+    'search-index.ru.json',
+    buildSearchIndex(peopleRu, conflictsRu, milestonesRu),
   );
 
   console.log(

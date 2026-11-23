@@ -55,7 +55,7 @@ const level4: LocaleDatasets = { people: [person('level4', 81)], ...empty };
 // Fresh module graph per test: the real module's level 3/4 promises resolve
 // once and stay resolved, which would leak progressive-loading state between
 // tests.
-async function renderApp() {
+async function renderApp({ delayOnDemand = false } = {}) {
   vi.resetModules();
   const requestLevel3Load = vi.fn();
   const requestLevel4Load = vi.fn();
@@ -71,12 +71,14 @@ async function renderApp() {
     }),
     requestLevel3Load: () => {
       requestLevel3Load();
-      resolveLevel3();
+      if (!delayOnDemand) resolveLevel3();
     },
     requestLevel4Load: () => {
       requestLevel4Load();
-      resolveLevel3();
-      resolveLevel4();
+      if (!delayOnDemand) {
+        resolveLevel3();
+        resolveLevel4();
+      }
     },
   }));
   const rtl = await import('@testing-library/react');
@@ -85,7 +87,14 @@ async function renderApp() {
   await act(async () => {
     view = rtl.render(<App />);
   });
-  return { ...view, rtl, requestLevel3Load, requestLevel4Load };
+  return {
+    ...view,
+    rtl,
+    requestLevel3Load,
+    requestLevel4Load,
+    resolveLevel3,
+    resolveLevel4,
+  };
 }
 
 function panelText(container: HTMLElement) {
@@ -110,6 +119,53 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.doUnmock('./locale-datasets');
+  vi.unstubAllGlobals();
+});
+
+test('a search finds an unloaded result and waits for its full Detail Level before selecting it', async () => {
+  const fetchIndex = vi.fn().mockResolvedValue({
+    ok: true,
+    json: async () => level4,
+  });
+  vi.stubGlobal('fetch', fetchIndex);
+  const {
+    container,
+    rtl,
+    requestLevel3Load,
+    requestLevel4Load,
+    resolveLevel3,
+    resolveLevel4,
+  } = await renderApp({ delayOnDemand: true });
+  const view = rtl.within(container);
+  expect(fetchIndex).not.toHaveBeenCalled();
+
+  rtl.fireEvent.change(view.getByRole('combobox'), {
+    target: { value: 'level4' },
+  });
+  const option = await view.findByRole('option', { name: /level4/i });
+  expect(option.textContent).toContain('Appears at Deep Cut');
+  expect(fetchIndex).toHaveBeenCalledTimes(1);
+  expect(requestLevel3Load).not.toHaveBeenCalled();
+  expect(requestLevel4Load).not.toHaveBeenCalled();
+  expect(isLevelSelected(container, 'Mainstream')).toBe(true);
+
+  const search = view.getByRole('combobox');
+  rtl.fireEvent.keyDown(search, { key: 'ArrowDown' });
+  rtl.fireEvent.keyDown(search, { key: 'Enter' });
+  expect(requestLevel4Load).toHaveBeenCalled();
+  expect(view.getByRole('status').textContent).toContain(
+    'Loading timeline data',
+  );
+
+  await act(async () => resolveLevel4());
+  expect(window.location.search).toBe('');
+  expect(isLevelSelected(container, 'Mainstream')).toBe(true);
+
+  await act(async () => resolveLevel3());
+  expect(panelText(container)).toContain('tagline of level4');
+  expect(isLevelSelected(container, 'Deep Cut')).toBe(true);
+  expect(window.location.search).toBe('?e=slug-of-level4');
+  expect(markOf(container, 'level4')).toBeTruthy();
 });
 
 test('opens an entity already loaded at Mainstream without loading deeper levels', async () => {

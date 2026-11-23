@@ -11,6 +11,7 @@ import {
 interface DetailLevelDatasetsResult {
   datasets: LocaleDatasets;
   loadingLevelIds: DetailLevelId[];
+  failedLevelIds: DetailLevelId[];
   requestLevel: (levelId: DetailLevelId) => void;
 }
 
@@ -30,14 +31,19 @@ function mergeDatasets(
 export function useDetailLevelDatasets(
   base: LocaleDatasets,
 ): DetailLevelDatasetsResult {
-  const [level3, setLevel3] = useState<LocaleDatasets | null>(null);
-  const [level4, setLevel4] = useState<LocaleDatasets | null>(null);
+  const [level3, setLevel3] = useState<LocaleDatasets | 'failed' | null>(null);
+  const [level4, setLevel4] = useState<LocaleDatasets | 'failed' | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-    level3DatasetPromise.then((data) => {
-      if (!cancelled) setLevel3(data);
-    });
+    level3DatasetPromise.then(
+      (data) => {
+        if (!cancelled) setLevel3(data);
+      },
+      () => {
+        if (!cancelled) setLevel3('failed');
+      },
+    );
     return () => {
       cancelled = true;
     };
@@ -45,9 +51,14 @@ export function useDetailLevelDatasets(
 
   useEffect(() => {
     let cancelled = false;
-    level4DatasetPromise.then((data) => {
-      if (!cancelled) setLevel4(data);
-    });
+    level4DatasetPromise.then(
+      (data) => {
+        if (!cancelled) setLevel4(data);
+      },
+      () => {
+        if (!cancelled) setLevel4('failed');
+      },
+    );
     return () => {
       cancelled = true;
     };
@@ -59,7 +70,11 @@ export function useDetailLevelDatasets(
   }, []);
 
   const datasets = useMemo(
-    () => mergeDatasets(mergeDatasets(base, level3), level4),
+    () =>
+      mergeDatasets(
+        mergeDatasets(base, level3 === 'failed' ? null : level3),
+        level4 === 'failed' ? null : level4,
+      ),
     [base, level3, level4],
   );
 
@@ -68,5 +83,10 @@ export function useDetailLevelDatasets(
     ...(level4 === null ? (['deep-cut'] as const) : []),
   ];
 
-  return { datasets, loadingLevelIds, requestLevel };
+  const failedLevelIds: DetailLevelId[] = [
+    ...(level3 === 'failed' ? (['specialized'] as const) : []),
+    ...(level4 === 'failed' ? (['deep-cut'] as const) : []),
+  ];
+
+  return { datasets, loadingLevelIds, failedLevelIds, requestLevel };
 }

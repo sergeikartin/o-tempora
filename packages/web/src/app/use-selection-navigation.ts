@@ -54,7 +54,7 @@ type ViewportMove =
   | { kind: 'fit'; target: ArrivalFit };
 
 export function useSelectionNavigation(base: LocaleDatasets) {
-  const { datasets, loadingLevelIds, requestLevel } =
+  const { datasets, loadingLevelIds, failedLevelIds, requestLevel } =
     useDetailLevelDatasets(base);
   const { values: fameScoreValues, level, setLevel } = useFameScoreFilters();
   const {
@@ -66,9 +66,11 @@ export function useSelectionNavigation(base: LocaleDatasets) {
     openLink,
     clear,
     requestConnection,
+    requestSearch,
     cancelPending,
   } = useSelection();
   const [move, setMove] = useState<ViewportMove | null>(null);
+  const [searchOpenFailed, setSearchOpenFailed] = useState(false);
 
   const selectDetailLevel = useCallback(
     (nextLevel: DetailLevel) => {
@@ -88,8 +90,31 @@ export function useSelectionNavigation(base: LocaleDatasets) {
 
   useEffect(() => {
     if (!pending) return;
+    if (pending.via === 'search') {
+      const requiredIndex = DETAIL_LEVELS.findIndex(
+        ({ id }) => id === pending.detailLevel,
+      );
+      const stillUnloaded = (ids: typeof loadingLevelIds) =>
+        DETAIL_LEVELS.slice(0, requiredIndex + 1).some(({ id }) =>
+          ids.includes(id),
+        );
+      if (stillUnloaded(failedLevelIds)) {
+        cancelPending();
+        setSearchOpenFailed(true);
+        return;
+      }
+      if (stillUnloaded(loadingLevelIds)) {
+        requestLevel(pending.detailLevel);
+        return;
+      }
+    }
     const target = findBySlug(pending.slug);
     if (!target) {
+      if (pending.via === 'search') {
+        cancelPending();
+        setSearchOpenFailed(true);
+        return;
+      }
       const nextLevel = loadingLevelIds[0];
       if (nextLevel) requestLevel(nextLevel);
       else if (pending.via === 'link') clear();
@@ -116,18 +141,25 @@ export function useSelectionNavigation(base: LocaleDatasets) {
         },
       });
     } else {
-      follow(selection);
+      if (pending.via === 'search') {
+        replace(selection);
+        trackEvent('search_jump', { entityType: target.entityType });
+      } else {
+        follow(selection);
+      }
       setMove({ kind: 'pan', target: selection.ref });
     }
   }, [
     pending,
     findBySlug,
     loadingLevelIds,
+    failedLevelIds,
     requestLevel,
     level,
     selectDetailLevel,
     openLink,
     follow,
+    replace,
     clear,
     cancelPending,
   ]);
@@ -150,13 +182,11 @@ export function useSelectionNavigation(base: LocaleDatasets) {
   );
 
   const openSearchResult = useCallback(
-    ({ id, entityType, slug }: SearchResult) => {
-      const ref = { id, entityType };
-      replace({ ref, slug });
-      setMove({ kind: 'pan', target: ref });
-      trackEvent('search_jump', { entityType });
+    ({ slug, detailLevel }: SearchResult) => {
+      setSearchOpenFailed(false);
+      requestSearch(slug, detailLevel);
     },
-    [replace],
+    [requestSearch],
   );
 
   return {
@@ -164,7 +194,10 @@ export function useSelectionNavigation(base: LocaleDatasets) {
     detailLevel: level,
     fameScoreValues,
     loadingLevelIds,
-    selectDetailLevel,
+    selectDetailLevel: (nextLevel: DetailLevel) => {
+      if (pending?.via === 'search') cancelPending();
+      selectDetailLevel(nextLevel);
+    },
     selectedEntity,
     selectedRef: member?.ref ?? null,
     anchor,
@@ -174,6 +207,9 @@ export function useSelectionNavigation(base: LocaleDatasets) {
     ),
     openMark,
     openSearchResult,
+    isOpeningSearchResult: pending?.via === 'search',
+    searchOpenFailed,
+    clearSearchOpenError: () => setSearchOpenFailed(false),
     openConnection: requestConnection,
     close: clear,
     panTarget: move?.kind === 'pan' ? move.target : null,

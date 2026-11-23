@@ -13,6 +13,7 @@ const results: SearchResult[] = [
     name: 'Aristotle',
     tagline: 'Greek philosopher',
     fameScore: 90,
+    detailLevel: 'mainstream',
   },
   {
     id: 'Q8214',
@@ -21,12 +22,14 @@ const results: SearchResult[] = [
     name: 'Korean War',
     tagline: 'war on the Korean peninsula',
     fameScore: 85,
+    detailLevel: 'mainstream',
   },
 ];
 
 test('renders no dropdown when the query is empty', () => {
   const { queryByRole } = render(
     <SearchBar
+      selectedLevelId="mainstream"
       query=""
       onQueryChange={vi.fn()}
       results={[]}
@@ -39,6 +42,7 @@ test('renders no dropdown when the query is empty', () => {
 test('shows a "no matches" row when the query has no results', () => {
   const { getByText } = render(
     <SearchBar
+      selectedLevelId="mainstream"
       query="zzz"
       onQueryChange={vi.fn()}
       results={[]}
@@ -51,6 +55,7 @@ test('shows a "no matches" row when the query has no results', () => {
 test('renders one option per result, labeled with its Lane', () => {
   const { getAllByRole } = render(
     <SearchBar
+      selectedLevelId="mainstream"
       query="ar"
       onQueryChange={vi.fn()}
       results={results}
@@ -65,6 +70,7 @@ test('clicking a result calls onSelectResult and clears the query', () => {
   const onQueryChange = vi.fn();
   const { getAllByRole } = render(
     <SearchBar
+      selectedLevelId="mainstream"
       query="ar"
       onQueryChange={onQueryChange}
       results={results}
@@ -84,6 +90,7 @@ test('ArrowDown then Enter selects the first result', () => {
   const onSelectResult = vi.fn();
   const { getByRole } = render(
     <SearchBar
+      selectedLevelId="mainstream"
       query="ar"
       onQueryChange={vi.fn()}
       results={results}
@@ -103,6 +110,7 @@ test('Escape clears the query without selecting anything', () => {
   const onSelectResult = vi.fn();
   const { getByRole } = render(
     <SearchBar
+      selectedLevelId="mainstream"
       query="ar"
       onQueryChange={onQueryChange}
       results={results}
@@ -119,6 +127,7 @@ test('Escape clears the query without selecting anything', () => {
 test('bolds the matched substring within a result name', () => {
   const { getByText } = render(
     <SearchBar
+      selectedLevelId="mainstream"
       query="ar"
       onQueryChange={vi.fn()}
       results={results}

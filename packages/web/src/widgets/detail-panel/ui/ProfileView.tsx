@@ -174,7 +174,7 @@ export function ProfileView({
                     {!connection.isShown && (
                       <span className={styles.levelMarker}>
                         <LevelPips levelIndex={connection.levelIndex} />
-                        {m.profileAppearsAt({
+                        {m.entityAppearsAtLevel({
                           level:
                             DETAIL_LEVELS[connection.levelIndex]?.label ?? '',
                         })}

@@ -11,6 +11,7 @@ export type {
   Person,
   PointInTime,
   Region,
+  SearchIndex,
   YearMonth,
 } from '@o-tempora/shared-types';
 export {

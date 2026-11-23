@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { DetailLevelId } from '../../../shared/config';
 import {
   entityLinkSearch,
   type ProfileAnchor,
@@ -15,7 +16,9 @@ export type {
 } from '../../../shared/lib/entity';
 export { ENTITY_TYPES } from '../../../shared/lib/entity';
 
-type PendingSelection = { via: 'link' | 'connection'; slug: string };
+type PendingSelection =
+  | { via: 'link' | 'connection'; slug: string }
+  | { via: 'search'; slug: string; detailLevel: DetailLevelId };
 
 function currentLinkSlug(): string | null {
   return typeof window === 'undefined'
@@ -122,6 +125,13 @@ export function useSelection() {
     setPending({ via: 'connection', slug });
   }, []);
 
+  const requestSearch = useCallback(
+    (slug: string, detailLevel: DetailLevelId) => {
+      setPending({ via: 'search', slug, detailLevel });
+    },
+    [],
+  );
+
   const cancelPending = useCallback(() => setPending(null), []);
 
   return {
@@ -133,6 +143,7 @@ export function useSelection() {
     openLink,
     clear,
     requestConnection,
+    requestSearch,
     cancelPending,
   };
 }

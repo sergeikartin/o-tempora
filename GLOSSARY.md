@@ -97,7 +97,7 @@ The preset that controls how much the timeline shows by applying a minimum **Fam
 _Avoid_: Data Depth, Payload Tier, Fame Tier, Fame Level
 
 **Search**:
-A case-insensitive substring search of entity names and **Tagline**s across the three **Lane**s, within the active **Locale**, **Detail Level** and filters. Picking a result opens it as the **Selection**.
+A case-insensitive substring search of entity names and **Tagline**s across the three **Lane**s and all **Detail Level**s, within the active **Locale** and filters. Picking a result opens it as the **Selection** and raises the **Detail Level** when needed.
 _Avoid_: filter (bare — Search narrows within the filters, it isn't one), lookup, autocomplete
 
 **Landing Page**:

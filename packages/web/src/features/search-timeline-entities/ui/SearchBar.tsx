@@ -1,4 +1,5 @@
 import { useId, useState } from 'react';
+import { DETAIL_LEVELS, type DetailLevelId } from '../../../shared/config';
 import type { EntityType } from '../../../shared/lib/entity';
 import { m } from '../../../shared/paraglide/messages.js';
 import { splitOnMatch } from '../lib/highlight-match';
@@ -9,6 +10,8 @@ interface SearchBarProps {
   query: string;
   onQueryChange: (query: string) => void;
   results: SearchResult[];
+  selectedLevelId: DetailLevelId;
+  status?: 'loading' | 'ready' | 'unavailable' | 'opening' | 'open-failed';
   onSelectResult: (result: SearchResult) => void;
 }
 
@@ -18,18 +21,33 @@ const ENTITY_TYPE_LABEL: Record<EntityType, () => string> = {
   milestone: m.searchEntityTypeMilestone,
 };
 
-// Live typeahead over the same filtered entity pool TimelineCanvas renders
-// (see useTimelineSearch). Picking a result clears the query: Search is a
-// jump-to, not a persisted filter (GLOSSARY.md's Search).
+const STATUS_MESSAGE = {
+  loading: m.searchLoading,
+  unavailable: m.searchUnavailable,
+  opening: m.searchOpening,
+  'open-failed': m.searchOpenFailed,
+};
+
 export function SearchBar({
   query,
   onQueryChange,
   results,
+  selectedLevelId,
+  status = 'ready',
   onSelectResult,
 }: SearchBarProps) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const listId = useId();
   const isOpen = query.trim().length > 0;
+  const selectedLevelIndex = DETAIL_LEVELS.findIndex(
+    ({ id }) => id === selectedLevelId,
+  );
+  const statusMessage =
+    status === 'ready'
+      ? isOpen && results.length === 0
+        ? m.searchNoResults()
+        : null
+      : STATUS_MESSAGE[status]();
 
   function selectResult(result: SearchResult) {
     onSelectResult(result);
@@ -78,62 +96,84 @@ export function SearchBar({
         aria-label={m.searchInputAriaLabel()}
         role="combobox"
         aria-expanded={isOpen}
-        aria-controls={listId}
+        aria-controls={isOpen ? listId : undefined}
         aria-activedescendant={
           activeIndex >= 0 ? `${listId}-${activeIndex}` : undefined
         }
         autoComplete="off"
       />
-      {isOpen && (
-        // div, not ul/li: listbox/option roles on list elements trip the a11y lint.
-        <div
-          id={listId}
-          className={styles.dropdown}
-          role="listbox"
-          aria-label={m.searchResultsAriaLabel()}
-        >
-          {results.length === 0 && (
-            <div className={styles.empty}>{m.searchNoResults()}</div>
+      {(isOpen || statusMessage) && (
+        <div className={styles.dropdown}>
+          {statusMessage && (
+            <div role="status" className={styles.status}>
+              {statusMessage}
+            </div>
           )}
-          {results.map((result, index) => {
-            const nameSplit = splitOnMatch(result.name, query);
-            const isActive = index === activeIndex;
-            return (
-              <div
-                key={`${result.entityType}-${result.id}`}
-                id={`${listId}-${index}`}
-                role="option"
-                aria-selected={isActive}
-                // Not in tab order: the input keeps focus and points at the
-                // active option via aria-activedescendant.
-                tabIndex={-1}
-              >
-                <button
-                  type="button"
-                  className={[styles.result, isActive && styles.resultActive]
-                    .filter(Boolean)
-                    .join(' ')}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onClick={() => selectResult(result)}
-                >
-                  <span className={styles.badge}>
-                    {ENTITY_TYPE_LABEL[result.entityType]()}
-                  </span>
-                  <span className={styles.name}>
-                    {nameSplit ? (
-                      <>
-                        {nameSplit.before}
-                        <strong>{nameSplit.match}</strong>
-                        {nameSplit.after}
-                      </>
-                    ) : (
-                      result.name
-                    )}
-                  </span>
-                </button>
-              </div>
-            );
-          })}
+          {isOpen && (
+            <div
+              id={listId}
+              role="listbox"
+              aria-label={m.searchResultsAriaLabel()}
+              aria-busy={status === 'loading'}
+            >
+              {results.map((result, index) => {
+                const nameSplit = splitOnMatch(result.name, query);
+                const isActive = index === activeIndex;
+                const levelIndex = DETAIL_LEVELS.findIndex(
+                  ({ id }) => id === result.detailLevel,
+                );
+                const deeper =
+                  levelIndex > selectedLevelIndex
+                    ? DETAIL_LEVELS[levelIndex]
+                    : undefined;
+                return (
+                  <div
+                    key={`${result.entityType}-${result.id}`}
+                    id={`${listId}-${index}`}
+                    role="option"
+                    aria-selected={isActive}
+                    // Not in tab order: the input keeps focus and points at the
+                    // active option via aria-activedescendant.
+                    tabIndex={-1}
+                  >
+                    <button
+                      type="button"
+                      className={[
+                        styles.result,
+                        isActive && styles.resultActive,
+                      ]
+                        .filter(Boolean)
+                        .join(' ')}
+                      onMouseEnter={() => setActiveIndex(index)}
+                      onClick={() => selectResult(result)}
+                    >
+                      <span className={styles.badge}>
+                        {ENTITY_TYPE_LABEL[result.entityType]()}
+                      </span>
+                      <span className={styles.resultText}>
+                        <span className={styles.name}>
+                          {nameSplit ? (
+                            <>
+                              {nameSplit.before}
+                              <strong>{nameSplit.match}</strong>
+                              {nameSplit.after}
+                            </>
+                          ) : (
+                            result.name
+                          )}
+                        </span>
+                        {deeper && (
+                          <span className={styles.level}>
+                            {m.entityAppearsAtLevel({ level: deeper.label })}
+                          </span>
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
     </div>

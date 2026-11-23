@@ -1,5 +1,10 @@
-import { useMemo, useState } from 'react';
-import type { ConflictsMilestonesFilterValue } from '../../../shared/config';
+import { useMemo } from 'react';
+import {
+  type ConflictsMilestonesFilterValue,
+  DETAIL_LEVELS,
+  type DetailLevelId,
+  type FameScoreLane,
+} from '../../../shared/config';
 import {
   type EntityType,
   visibleConflicts,
@@ -7,21 +12,14 @@ import {
   visiblePeople,
 } from '../../../shared/lib/entity';
 import type {
-  ConflictEntry,
-  Milestone,
   OccupationDomain,
-  Person,
   Region,
+  SearchIndex,
 } from '../../../shared/types';
 
-// Structural match for FameScoreValues because FSD forbids same-layer feature imports.
-interface FameScoreValues {
-  people: number;
-  conflicts: number;
-  milestones: number;
-}
-
 const MAX_RESULTS = 8;
+const DEEPEST_LEVEL = DETAIL_LEVELS[3];
+const EMPTY_INDEX: SearchIndex = { people: [], conflicts: [], milestones: [] };
 
 export interface SearchResult {
   id: string;
@@ -30,16 +28,40 @@ export interface SearchResult {
   name: string;
   tagline: string;
   fameScore: number;
+  detailLevel: DetailLevelId;
 }
 
 interface UseTimelineSearchArgs {
-  people: Person[];
-  conflicts: ConflictEntry[];
-  milestones: Milestone[];
-  fameScoreValues: FameScoreValues;
+  query: string;
+  index: SearchIndex | null;
   selectedDomains: OccupationDomain[];
   selectedRegions: Region[];
   selectedConflictsMilestonesValues: ConflictsMilestonesFilterValue[];
+}
+
+function matchLane(
+  entries: SearchIndex['conflicts'],
+  query: string,
+  entityType: EntityType,
+  lane: FameScoreLane,
+): SearchResult[] {
+  return entries
+    .filter((entry) => matchesQuery(entry, query))
+    .map((entry) => {
+      const { id, slug, name, tagline, fameScore } = entry;
+      const level = DETAIL_LEVELS.find(
+        (candidate) => fameScore >= candidate.values[lane],
+      );
+      return {
+        id,
+        slug,
+        name,
+        tagline,
+        fameScore,
+        entityType,
+        detailLevel: (level ?? DEEPEST_LEVEL).id,
+      };
+    });
 }
 
 function matchesQuery(
@@ -52,31 +74,24 @@ function matchesQuery(
   );
 }
 
-// Use the same filters as the canvas so Search cannot surface a hidden mark.
+// Search uses the canvas filters with the widest supported Fame Score range.
 export function useTimelineSearch({
-  people,
-  conflicts,
-  milestones,
-  fameScoreValues,
+  query,
+  index,
   selectedDomains,
   selectedRegions,
   selectedConflictsMilestonesValues,
 }: UseTimelineSearchArgs) {
-  const [query, setQuery] = useState('');
+  const { people, conflicts, milestones } = index ?? EMPTY_INDEX;
 
   const filters = useMemo(
     () => ({
-      fameScoreValues,
+      fameScoreValues: DEEPEST_LEVEL.values,
       selectedDomains,
       selectedRegions,
       selectedConflictsMilestonesValues,
     }),
-    [
-      fameScoreValues,
-      selectedDomains,
-      selectedRegions,
-      selectedConflictsMilestonesValues,
-    ],
+    [selectedDomains, selectedRegions, selectedConflictsMilestonesValues],
   );
   const filteredPeople = useMemo(
     () => visiblePeople(people, filters),
@@ -91,47 +106,18 @@ export function useTimelineSearch({
     [milestones, filters],
   );
 
-  const results = useMemo<SearchResult[]>(() => {
+  return useMemo<SearchResult[]>(() => {
     const trimmed = query.trim().toLowerCase();
     if (!trimmed) return [];
 
     const matched: SearchResult[] = [
-      ...filteredPeople
-        .filter((person) => matchesQuery(person, trimmed))
-        .map((person) => ({
-          id: person.id,
-          slug: person.slug,
-          entityType: 'person' as const,
-          name: person.name,
-          tagline: person.tagline,
-          fameScore: person.fameScore,
-        })),
-      ...filteredConflicts
-        .filter((entry) => matchesQuery(entry, trimmed))
-        .map((entry) => ({
-          id: entry.id,
-          slug: entry.slug,
-          entityType: 'conflict' as const,
-          name: entry.name,
-          tagline: entry.tagline,
-          fameScore: entry.fameScore,
-        })),
-      ...filteredMilestones
-        .filter((milestone) => matchesQuery(milestone, trimmed))
-        .map((milestone) => ({
-          id: milestone.id,
-          slug: milestone.slug,
-          entityType: 'milestone' as const,
-          name: milestone.name,
-          tagline: milestone.tagline,
-          fameScore: milestone.fameScore,
-        })),
+      ...matchLane(filteredPeople, trimmed, 'person', 'people'),
+      ...matchLane(filteredConflicts, trimmed, 'conflict', 'conflicts'),
+      ...matchLane(filteredMilestones, trimmed, 'milestone', 'milestones'),
     ];
 
     return matched
       .sort((a, b) => b.fameScore - a.fameScore)
       .slice(0, MAX_RESULTS);
   }, [query, filteredPeople, filteredConflicts, filteredMilestones]);
-
-  return { query, setQuery, results };
 }

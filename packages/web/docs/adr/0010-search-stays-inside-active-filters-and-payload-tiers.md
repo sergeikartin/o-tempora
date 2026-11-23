@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0022-search-index-spans-detail-levels.md
 ---
 
 # Search stays inside active filters and Payload Tiers, rather than searching everything

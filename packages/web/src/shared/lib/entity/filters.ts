@@ -62,9 +62,8 @@ export function filterConflictsByFilterValues<T>(
 }
 
 // Every filter that narrows what the lanes draw, as one value. The lane
-// pipelines below are the single definition of "visible", shared by the canvas
-// (what it draws), Search (what it offers) and the Selection (which members
-// are hidden).
+// pipelines below serve the canvas and Selection at the current Detail Level.
+// Search uses them with Deep Cut's floors and the other filters as selected.
 export interface ActiveFilters {
   fameScoreValues: { people: number; conflicts: number; milestones: number };
   selectedDomains: OccupationDomain[];

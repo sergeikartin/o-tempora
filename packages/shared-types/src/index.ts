@@ -146,6 +146,17 @@ export const DETAIL_LEVEL_FAME_SCORE_FLOORS = {
   milestones: [87, 82, 76, 55],
 } as const;
 
+type SearchEntry = Pick<
+  Person,
+  'id' | 'slug' | 'name' | 'tagline' | 'fameScore' | 'regionTags'
+>;
+
+export interface SearchIndex {
+  people: (SearchEntry & Pick<Person, 'occupationDomain'>)[];
+  conflicts: SearchEntry[];
+  milestones: (SearchEntry & Pick<Milestone, 'category'>)[];
+}
+
 export interface TimelineEntry {
   id: string;
   // Derived from the English name at build time. Entity Links need one globally

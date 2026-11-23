@@ -24,6 +24,8 @@ interface TopBarProps {
   searchQuery: string;
   onSearchQueryChange: (query: string) => void;
   searchResults: SearchResult[];
+  searchStatus?: 'loading' | 'ready' | 'unavailable';
+  searchOpenStatus?: 'opening' | 'open-failed';
   onSelectSearchResult: (result: SearchResult) => void;
   selectedDomains: OccupationDomain[];
   onToggleDomain: (domain: OccupationDomain) => void;
@@ -44,6 +46,8 @@ export function TopBar({
   searchQuery,
   onSearchQueryChange,
   searchResults,
+  searchStatus,
+  searchOpenStatus,
   onSelectSearchResult,
   selectedDomains,
   onToggleDomain,
@@ -71,6 +75,8 @@ export function TopBar({
           query={searchQuery}
           onQueryChange={onSearchQueryChange}
           results={searchResults}
+          selectedLevelId={selectedLevelId}
+          status={searchQuery.trim() ? searchStatus : searchOpenStatus}
           onSelectResult={onSelectSearchResult}
         />
       </div>
