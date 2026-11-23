@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0030-profile-coordinator-runs-one-shot-commands.md
 supersedes: 0023-profiles-publish-after-evidence-backed-automatic-verification.md
 ---
 

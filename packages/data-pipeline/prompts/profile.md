@@ -219,7 +219,7 @@ object to every result after the response comes back.
 | `prompt_version` | Human-readable version of the prompt used for writing; null when unknown. Bump it on meaningful prompt changes. |
 | `prompt_hash` | Hash captured from the prompt used for writing, preserved through finalization; null when unknown. Use it to find stale records to regenerate. |
 | `schema_version` | Which JSON shape this record follows, for validators and the frontend. v2: `key_moments`, `deep_facts`, `connections`; no categories. v3: adds `claims` and `source` to key moments and deep facts. |
-| `model`, `reasoning_effort`, `temperature` | Writer model and reasoning setting when known. Temperature stays null. Session model/effort come from runtime metadata; unavailable fields stay null. |
+| `model`, `reasoning_effort`, `temperature` | Writer model and reasoning setting when known. Temperature stays null. Agent model and effort come from runtime metadata when available. |
 | `run_id` | Groups a batch so one bad run can be rolled back or re-run. |
 | `locale` | Language of the generated text, for the Russian version of the site. |
 | `source.wikidata_qid` | The subject's Wikidata ID, resolved from `wikipedia_url` and asserted equal to the dataset entity's own QID. |

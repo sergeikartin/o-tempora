@@ -5,8 +5,6 @@ model: opus
 tools: Read, Write, Bash
 ---
 
-When given a session `request.json` path, follow `packages/data-pipeline/docs/profile-sessions.md`'s subagent contract using that request. Write only its response and finish. The steps below apply only to direct staging.
-
 You write one Profile for one entity. You are given `type` (person | conflict | milestone), `name`, `dates`, `wikipedia_url` and an output path.
 
 1. Read `packages/data-pipeline/prompts/profile.md`. The prompt is the text block under "## Prompt". Follow it exactly, with `{type}`, `{name}`, `{dates}` and `{wikipedia_url}` filled in from your inputs. Ignore the rest of the file.

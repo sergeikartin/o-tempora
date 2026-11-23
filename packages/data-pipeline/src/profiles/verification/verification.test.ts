@@ -8,10 +8,13 @@ import {
   readRawProfiles,
   shipProfiles,
 } from '../../output/profiles.js';
+import { runCoordinatorCommand } from '../coordinator.js';
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
 import { passages } from '../passages.js';
 import type { Complete } from '../providers.js';
 import type { ProfileSubject } from '../subjects.js';
+import { approvedTranslation, readTranslation } from '../translation.js';
+import { asRecord } from '../values.js';
 import { auditSavedProfile } from './audit-saved.js';
 import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.js';
 import {
@@ -737,4 +740,160 @@ test('HTML extraction preserves inline words and removes script content; network
     'https://example.org:123',
   ])
     assert.throws(() => sourceUrl(url));
+});
+
+test('coordinator commands reuse evidence, checkpoint repair and approve both Locales', async (t) => {
+  const { root, options } = await setup(t);
+  let output: unknown;
+  let fetches = 0;
+  const commands = {
+    profilesDir: root,
+    resolve: options.resolve,
+    fetch: async () => {
+      fetches++;
+      const { id: _legacyId, ...source } = SOURCE;
+      const snapshot = {
+        ...source,
+        fetched_at: `2026-11-15T00:00:0${fetches}Z`,
+      };
+      return { id: hash(snapshot), ...snapshot };
+    },
+    emit: (value: unknown) => {
+      output = value;
+    },
+  };
+  async function run(command: string, ...flags: string[]) {
+    output = undefined;
+    assert.equal(await runCoordinatorCommand(command, flags, commands), true);
+    return asRecord(output, command);
+  }
+  async function save(name: string, value: unknown) {
+    const destination = path.join(root, name);
+    await writeFile(destination, JSON.stringify(value));
+    return destination;
+  }
+  const qid = '--qid=Q935';
+  const first = await run('evidence', `--url=${URL}`);
+  const second = await run('evidence', `--url=${URL}`, '--query=Principia');
+  assert.equal(second.id, first.id);
+  assert.equal(fetches, 1);
+  const refreshed = await run('evidence', `--url=${URL}`, '--refresh');
+  assert.notEqual(refreshed.id, first.id);
+
+  async function researchFor(profile: unknown) {
+    const parsed = parseModelProfile(profile, 'coordinator test');
+    const findings = assessment(parsed);
+    for (const finding of findings.findings)
+      for (const evidence of finding.evidence)
+        evidence.source = String(first.id);
+    findings.uncovered.push('connections.0.connection: dropped by finalize');
+    return `--research=${await save('research.json', {
+      assessment: findings,
+      connection_urls: ['https://en.wikipedia.org/wiki/Out_of_dataset'],
+      model: 'researcher-writer',
+    })}`;
+  }
+  const initial = raw();
+  let researchFlag = await researchFor(initial);
+  const audit = await run('english-audit', qid, researchFlag);
+  const rejected = await save('held-audit.json', {
+    input_hash: audit.input_hash,
+    result: {
+      uncovered: [],
+      issues: ['overview: specify the published work'],
+      coherent: true,
+    },
+  });
+  assert.equal(
+    (await run('english-audit', qid, researchFlag, `--result=${rejected}`))
+      .status,
+    'held',
+  );
+
+  const repair = await run('english-repair', qid);
+  const revised = {
+    ...initial,
+    overview:
+      'Newton was an English mathematician who published the Principia in 1687.',
+  };
+  const repairReply = await save('repair.json', {
+    input_hash: repair.input_hash,
+    result: revised,
+  });
+  assert.equal(
+    (await run('english-repair', qid, `--result=${repairReply}`)).status,
+    'draft',
+  );
+  const checkpoint = await saved(options);
+  assert.equal(checkpoint.record.overview, revised.overview);
+  assert.equal(checkpoint.record.meta.review.status, 'draft');
+  assert.equal(checkpoint.report.profile_hash, profileHash(initial));
+  await assert.rejects(
+    run('english-audit', qid, researchFlag, `--result=${rejected}`),
+    /different inputs/,
+  );
+
+  researchFlag = await researchFor(revised);
+  const freshAudit = await run('english-audit', qid, researchFlag);
+  const accepted = await save('accepted-audit.json', {
+    input_hash: freshAudit.input_hash,
+    result: { uncovered: [], issues: [], coherent: true },
+  });
+  assert.equal(
+    (await run('english-audit', qid, researchFlag, `--result=${accepted}`))
+      .status,
+    'approved',
+  );
+  const english = await saved(options);
+  assert.equal(english.report.repairs, 1);
+  assert.equal(fetches, 2);
+  assert.deepEqual(
+    english.report.sources.map(({ id }) => id),
+    [first.id],
+  );
+
+  const translation = await run('russian-translation', qid);
+  const fields = {
+    overview:
+      'Ньютон — английский математик. В 1687 году он опубликовал «Начала».',
+    'key_moments.0.date': '1687',
+    'key_moments.0.title': '«Начала»',
+    'key_moments.0.text': 'Исаак Ньютон опубликовал «Начала» в 1687 году.',
+  };
+  async function saveCandidate(fields: Record<string, string>) {
+    return `--candidate=${await save('translation.json', {
+      input_hash: translation.input_hash,
+      result: { fields },
+    })}`;
+  }
+  const candidate = await saveCandidate(fields);
+  const fidelity = await run('russian-audit', qid, candidate);
+  const fidelityReply = await save('fidelity.json', {
+    input_hash: fidelity.input_hash,
+    result: {
+      covered: Object.keys(fields),
+      uncovered: [],
+      issues: [],
+      coherent: true,
+    },
+  });
+  await saveCandidate({ ...fields, 'key_moments.0.title': 'Издание «Начал»' });
+  await assert.rejects(
+    run('russian-audit', qid, candidate, `--result=${fidelityReply}`),
+    /different inputs/,
+  );
+  await saveCandidate(fields);
+  assert.equal(
+    (await run('russian-audit', qid, candidate, `--result=${fidelityReply}`))
+      .status,
+    'approved',
+  );
+  assert.deepEqual(
+    approvedTranslation(
+      await readTranslation(options.filePath),
+      english.record,
+    ),
+    fields,
+  );
+  assert.equal((await run('russian-translation', qid)).status, 'skipped');
 });

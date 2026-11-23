@@ -5,7 +5,6 @@ import type { Complete } from '../providers.js';
 import { formatDates, type ProfileSubject } from '../subjects.js';
 import { asArray, asRecord, asString } from '../values.js';
 import {
-  hash,
   isCurrentVerificationPolicy,
   parseAssessment,
   parseAudit,
@@ -13,6 +12,7 @@ import {
 } from './policy.js';
 import { auditProfile } from './researcher.js';
 import { reportPathFor } from './runner.js';
+import { parseSourceSnapshot } from './sources.js';
 
 export async function auditSavedProfile(
   filePath: string,
@@ -55,13 +55,10 @@ export async function auditSavedProfile(
       'evidence',
       `${id}.json`,
     );
-    const snapshot = asRecord(
+    const { text } = parseSourceSnapshot(
       JSON.parse(await readFile(snapshotPath, 'utf8')),
-      'saved source',
+      id,
     );
-    const text = asString(snapshot.text, 'saved source text');
-    if (snapshot.id !== id || hash(text) !== id)
-      throw new Error(`Saved source content does not match ${id}`);
     sources.push({
       id,
       url: asString(url, 'report source URL'),

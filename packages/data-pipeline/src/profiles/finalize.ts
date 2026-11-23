@@ -43,6 +43,7 @@ export interface FinalizeOptions {
   subjects: readonly ProfileSubject[];
   model: string;
   runId: string;
+  qids?: ReadonlySet<string>;
   resolveArticleQids: ResolveArticleQids;
 }
 
@@ -179,7 +180,11 @@ export async function finalizeProfiles(
   let fileNames: string[];
   try {
     fileNames = (await readdir(options.incomingDir))
-      .filter((name) => name.endsWith('.json'))
+      .filter((name) =>
+        options.qids
+          ? options.qids.has(INCOMING_FILE.exec(name)?.[1] ?? '')
+          : name.endsWith('.json'),
+      )
       .sort();
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;

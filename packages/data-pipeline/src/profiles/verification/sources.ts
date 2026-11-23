@@ -1,8 +1,8 @@
 import { lookup } from 'node:dns/promises';
 import { get } from 'node:https';
 import { Parser } from 'htmlparser2';
-import { asString } from '../values.js';
-import { hash, normalizeText, type Source } from './policy.js';
+import { asRecord, asString } from '../values.js';
+import { hash, normalizeText, type Source, strings } from './policy.js';
 
 const MAX_BYTES = 3_000_000;
 const EXCERPT_LENGTH = 8_000;
@@ -157,6 +157,25 @@ async function request(url: URL): Promise<Page> {
   });
 }
 
+export function parseSourceSnapshot(value: unknown, id: string): Source {
+  const data = asRecord(value, 'source snapshot');
+  const source = {
+    url: asString(data.url, 'source URL'),
+    fetched_at: asString(data.fetched_at, 'source date'),
+    text: asString(data.text, 'source text'),
+    anchors:
+      data.anchors === undefined ? [] : strings(data.anchors, 'source anchors'),
+  };
+  if (
+    data.id !== id ||
+    (hash(source) !== id && hash(source.text) !== id) ||
+    sourceUrl(source.url).href !== source.url
+  ) {
+    throw new Error(`Saved source content does not match ${id}`);
+  }
+  return { id, ...source };
+}
+
 export async function fetchSource(value: string): Promise<Source> {
   let url = sourceUrl(value);
   for (let redirect = 0; redirect < 6; redirect++) {
@@ -185,13 +204,13 @@ export async function fetchSource(value: string): Promise<Source> {
       : htmlText(page.text);
     if (text.length < 100)
       throw new Error('Source has insufficient readable text');
-    return {
-      id: hash(text),
+    const snapshot = {
       url: url.href,
       fetched_at: new Date().toISOString(),
       text,
       anchors: page.type.includes('text/plain') ? [] : htmlAnchors(page.text),
     };
+    return { id: hash(snapshot), ...snapshot };
   }
   throw new Error('Source has too many redirects');
 }
@@ -201,7 +220,10 @@ export class SourceStore {
   readonly failures = new Map<string, string>();
   constructor(
     private readonly fetchPage: (url: string) => Promise<Source> = fetchSource,
-  ) {}
+    private readonly snapshots: readonly Source[] = [],
+  ) {
+    for (const source of snapshots) this.byUrl.set(source.url, source);
+  }
 
   async read(value: string): Promise<Source> {
     const url = sourceUrl(value).href;
@@ -260,7 +282,10 @@ export class SourceStore {
   all(): Source[] {
     return [
       ...new Map(
-        [...this.byUrl.values()].map((source) => [source.id, source]),
+        [...this.snapshots, ...this.byUrl.values()].map((source) => [
+          source.id,
+          source,
+        ]),
       ).values(),
     ];
   }

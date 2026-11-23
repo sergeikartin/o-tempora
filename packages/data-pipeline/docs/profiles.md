@@ -6,14 +6,14 @@ A Profile replaces the Wikipedia Description with an overview, Key Moments, up t
 
 Writing and verification run separately from `build-data`. Run these commands from the repo root through `npm run profiles --workspace packages/data-pipeline -- <command>`.
 
-`write` and `verify` default to provider API calls. Add `--execution=session --session-dir=<absolute directory>` to have the active conversation dispatch subagents for every model task, without provider API keys. See the [session workflow and subagent contract](profile-sessions.md).
+Give the [Profile coordinator](profile-coordinator.md) the QIDs selected in chat and the requested outcome. It dispatches conversation subagents by default and runs `write`, `verify`, `audit` and `translate` when provider API execution is requested.
 
-The [Profile model routing module](../src/profiles/model-routing.ts) owns provider defaults, model overrides and API or session selection for `write`, `verify`, `audit` and `translate`.
+The [Profile model routing module](../src/profiles/model-routing.ts) owns provider defaults and model overrides for `write`, `verify`, `audit` and `translate`.
 
 | Command | Behavior |
 |---|---|
 | `write --qids=Q1,Q2` | Writes from model knowledge, validates the draft and stages it with suggested claims and sources in `incoming/<QID>.json`. |
-| `finalize` | Resolves subject and Connection QIDs, removes Connections outside the dataset, adds metadata, writes drafts and removes successfully finalized staging files. |
+| `finalize --qids=Q1,Q2` | Resolves subject and Connection QIDs, removes Connections outside the dataset, adds metadata, writes drafts and removes successfully finalized staging files. |
 | `verify --qids=Q1,Q2 --repair` | Checks every visible field against fetched evidence, audits the result and can repair up to twice. It withholds unresolved content and translates approved English. See [verification and human review](profile-verification.md). |
 | `audit --qids=Q1,Q2` | Runs an independent audit against saved verification evidence and prints results and token usage for comparison. See [comparing auditors](profile-verification.md#compare-auditors-on-saved-evidence). |
 | `translate --qids=Q1,Q2` | Translates currently approved English Profiles into Russian and separately audits fidelity. Skips current translations. |
@@ -26,7 +26,7 @@ API writing accepts `--provider=openai|anthropic|gemini`, `--model=<id>` and `--
 
 `finalize --run-id=<id>` groups records and preserves the served model and staged prompt provenance. API writers stage `generation` with `prompt_version`, `prompt_hash` and `generated_at` from the prompt they used. Agents can supply those fields when known. Missing values stay null and planning treats an unknown prompt hash as stale.
 
-Writer metadata stores `reasoning_effort` and `tokens: {input, output}` when known. API writers record their configured effort. Session metadata comes from the writer task’s runtime, including tool turns. Keep unknown values null. [Session accounting](profile-sessions.md#conversation-coordinator)
+Writer metadata stores `reasoning_effort` and `tokens: {input, output}` when known. API writers record their configured effort. Agent provenance comes from the agent's runtime when available. [Coordinator workflow](profile-coordinator.md)
 
 ## Publication
 

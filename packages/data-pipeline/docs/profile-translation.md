@@ -8,7 +8,7 @@ Backfill or retry without rerunning historical research:
 npm run profiles --workspace packages/data-pipeline -- translate --qids=Q635,Q12138,Q935
 ```
 
-API execution accepts `--provider`, `--model`, and `--audit-model` (same provider; defaults to the translation model). Within `verify`, see the [API model selection rules](profile-verification.md) for translation and audit. Session mode selects models by agent role instead. `--force` on `translate` retranslates a current translation. Session execution uses `--execution=session --session-dir=<absolute directory>` and the [session workflow](profile-sessions.md), with separate `translate` and `translation-audit` requests. It needs no provider credentials or source fetching.
+API execution accepts `--provider`, `--model`, and `--audit-model` (same provider; defaults to the translation model). Within `verify`, see the [API model selection rules](profile-verification.md) for translation and audit. `--force` on `translate` retranslates a current translation. For conversation subagents, the [Profile coordinator](profile-coordinator.md) uses `russian-translation` and `russian-audit` with the same fidelity rules.
 
 The translator receives every reader-facing English field: overview, Key Moment dates/titles/prose, Deep Facts and Connection explanations. It preserves meaning, qualifications, attribution, numeric values and bold emphasis. A separate audit covers every field, checking semantic fidelity and idiomatic Russian. Audit defects trigger one correction attempt and another complete audit; remaining defects hold the translation. Structure, source URLs, legend flags and QIDs remain unchanged; Connection display names come from the Russian dataset.
 

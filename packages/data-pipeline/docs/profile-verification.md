@@ -1,6 +1,6 @@
 # Profile verification
 
-Run `npm run profiles --workspace packages/data-pipeline -- verify --qids=Q935,Q635 --repair`. Default API execution requires `OPENAI_API_KEY`, uses OpenAI web search, and makes paid model calls. `--model` selects the researcher; `--audit-model` selects the separate audit/repair calls (defaults to the researcher). Alternatively, `--execution=session --session-dir=<absolute directory>` uses [conversation subagents](profile-sessions.md) for research, audit and repair, with the same fetched-evidence and approval rules. Omit `--repair` to check and approve without changing prose. `--force` rechecks a current approval. Run one batch at a time.
+Run `npm run profiles --workspace packages/data-pipeline -- verify --qids=Q935,Q635 --repair`. This command requires `OPENAI_API_KEY`, uses OpenAI web search, and makes paid model calls. `--model` selects the researcher; `--audit-model` selects the separate audit/repair calls (defaults to the researcher). The [Profile coordinator](profile-coordinator.md) can run those checks with subagent results through `english-audit` and `english-repair`. Omit `--repair` to check and approve without changing prose. `--force` rechecks a current approval. Run one batch at a time.
 
 For a Gemini historical auditor, add `--audit-provider=gemini --audit-model=gemini-3.8-flash` and set `GEMINI_API_KEY`. Research, repair and Russian translation audit use OpenAI with `--model`. The Russian translator can still be selected with `--translation-model`. Provider flags apply in API mode.
 

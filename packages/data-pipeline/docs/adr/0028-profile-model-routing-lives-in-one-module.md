@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0030-profile-coordinator-runs-one-shot-commands.md
 ---
 
 # Profile model routing lives in one module

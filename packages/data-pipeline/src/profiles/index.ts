@@ -1,4 +1,5 @@
 import { parseQidsFlag } from '../fetch/qid-filter.js';
+import { runCoordinatorCommand } from './coordinator.js';
 import { finalizeProfiles } from './finalize.js';
 import {
   flagValue,
@@ -17,12 +18,17 @@ import { verifyProfile } from './verification/runner.js';
 import { resolveArticleQids } from './wikipedia-qids.js';
 import { type WriteEntry, writeProfiles } from './writer.js';
 
-const USAGE = `Usage: profiles <write|finalize|verify|audit|translate> [flags]
-  write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>] [--execution=api|session --session-dir=<absolute directory>]
-  finalize  [--run-id=<id>]
-  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-provider=${PROVIDERS.join('|')}] [--audit-model=<id>] [--translation-model=<OpenAI id>] [--execution=api|session --session-dir=<absolute directory>]
+const USAGE = `Usage: profiles <write|finalize|verify|audit|translate|evidence|english-audit|english-repair|russian-translation|russian-audit> [flags]
+  write     --qids=Q1,Q2,... [--regenerate-stale] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--concurrency=<n>]
+  finalize  [--qids=Q1,Q2,...] [--run-id=<id>]
+  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-provider=${PROVIDERS.join('|')}] [--audit-model=<id>] [--translation-model=<OpenAI id>]
   audit     --qids=Q1,Q2,... [--provider=${PROVIDERS.join('|')}] [--model=<id>]
-  translate --qids=Q1,Q2,... [--force] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--audit-model=<id>] [--execution=api|session --session-dir=<absolute directory>]`;
+  translate --qids=Q1,Q2,... [--force] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--audit-model=<id>]
+  evidence --url=<https URL> [--query=<text>] [--offset=<number>] [--refresh]
+  english-audit --qid=Q1 --research=<file> [--result=<file>]
+  english-repair --qid=Q1 [--result=<file>]
+  russian-translation --qid=Q1
+  russian-audit --qid=Q1 --candidate=<file> [--result=<file>]`;
 
 const DEFAULT_CONCURRENCY = 3;
 
@@ -49,6 +55,14 @@ async function selectWriteEntries(
 }
 
 async function write(argv: readonly string[]): Promise<void> {
+  const unknown = argv.find(
+    (arg) =>
+      arg !== '--regenerate-stale' &&
+      !['--qids=', '--provider=', '--model=', '--concurrency='].some((flag) =>
+        arg.startsWith(flag),
+      ),
+  );
+  if (unknown) throw new Error(`Unknown writer flag: ${unknown}\n${USAGE}`);
   const models = routeProfileModels('write', argv);
   const concurrency = Number(
     flagValue(argv, 'concurrency') ?? DEFAULT_CONCURRENCY,
@@ -83,12 +97,17 @@ async function write(argv: readonly string[]): Promise<void> {
 }
 
 async function finalize(argv: readonly string[]): Promise<void> {
+  const unknown = argv.find(
+    (arg) => !arg.startsWith('--qids=') && !arg.startsWith('--run-id='),
+  );
+  if (unknown) throw new Error(`Unknown finalize flag: ${unknown}\n${USAGE}`);
   const now = new Date();
   const result = await finalizeProfiles({
     incomingDir: INCOMING_DIR,
     profilesDir: RAW_PROFILES_DIR,
     subjects: loadSubjects(),
     model: await loadWriterModel(),
+    qids: parseQidsFlag(argv) ?? undefined,
     runId: flagValue(argv, 'run-id') ?? now.toISOString().slice(0, 10),
     resolveArticleQids,
   });
@@ -112,7 +131,8 @@ async function main(): Promise<void> {
   else if (command === 'verify') await verify(argv);
   else if (command === 'audit') await audit(argv);
   else if (command === 'translate') await translate(argv);
-  else throw new Error(USAGE);
+  else if (!(await runCoordinatorCommand(command, argv)))
+    throw new Error(USAGE);
 }
 
 async function verify(argv: readonly string[]): Promise<void> {
@@ -125,8 +145,6 @@ async function verify(argv: readonly string[]): Promise<void> {
         '--audit-model=',
         '--audit-provider=',
         '--translation-model=',
-        '--execution=',
-        '--session-dir=',
       ].some((prefix) => arg.startsWith(prefix)),
   );
   if (unknown)
@@ -222,14 +240,9 @@ async function translate(argv: readonly string[]): Promise<void> {
   const unknown = argv.find(
     (arg) =>
       arg !== '--force' &&
-      ![
-        '--qids=',
-        '--provider=',
-        '--model=',
-        '--audit-model=',
-        '--execution=',
-        '--session-dir=',
-      ].some((prefix) => arg.startsWith(prefix)),
+      !['--qids=', '--provider=', '--model=', '--audit-model='].some((prefix) =>
+        arg.startsWith(prefix),
+      ),
   );
   if (unknown)
     throw new Error(`Unknown translation flag: ${unknown}\n${USAGE}`);

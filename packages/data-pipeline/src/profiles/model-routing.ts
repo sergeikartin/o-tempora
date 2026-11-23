@@ -1,4 +1,3 @@
-import path from 'node:path';
 import {
   type Complete,
   createCompleter,
@@ -6,7 +5,6 @@ import {
   PROVIDERS,
   type Provider,
 } from './providers.js';
-import { SessionBridge } from './session.js';
 import { createResearcher, type Research } from './verification/researcher.js';
 
 const DEFAULT_MODEL: Record<Provider, string> = {
@@ -15,45 +13,12 @@ const DEFAULT_MODEL: Record<Provider, string> = {
   gemini: 'gemini-4-argon',
 };
 
-const PROVIDER_MODEL_FLAGS = [
-  'model',
-  'audit-model',
-  'audit-provider',
-  'translation-model',
-  'provider',
-];
-
 export function flagValue(
   argv: readonly string[],
   name: string,
 ): string | undefined {
   const prefix = `--${name}=`;
   return argv.find((arg) => arg.startsWith(prefix))?.slice(prefix.length);
-}
-
-function sessionFromFlags(argv: readonly string[]): SessionBridge | undefined {
-  const execution = flagValue(argv, 'execution') ?? 'api';
-  if (execution !== 'api' && execution !== 'session') {
-    throw new Error('--execution must be api or session');
-  }
-  const directory = flagValue(argv, 'session-dir');
-  if (execution === 'api') {
-    if (directory !== undefined)
-      throw new Error('--session-dir requires --execution=session');
-    return undefined;
-  }
-  if (!directory || !path.isAbsolute(directory))
-    throw new Error(
-      '--execution=session requires --session-dir=<absolute directory>',
-    );
-  if (
-    PROVIDER_MODEL_FLAGS.some((name) => flagValue(argv, name) !== undefined)
-  ) {
-    throw new Error(
-      'Session agents are selected by the conversation; omit provider/model flags',
-    );
-  }
-  return new SessionBridge({ directory, log: console.log });
 }
 
 // A skipped item needs no provider credentials. Reuse the client once needed.
@@ -66,7 +31,7 @@ function lazyCompleter(provider: Provider, model: string): Complete {
 }
 
 interface CompletionRoute {
-  provider: Provider | 'session';
+  provider: Provider;
   label: string;
   complete: Complete;
 }
@@ -75,15 +40,6 @@ export function routeProfileModels(
   command: 'write' | 'audit' | 'translate',
   argv: readonly string[],
 ): CompletionRoute {
-  const session = command === 'audit' ? undefined : sessionFromFlags(argv);
-  if (session) {
-    return {
-      provider: 'session',
-      label: 'session agents',
-      complete: session.complete,
-    };
-  }
-
   const provider = flagValue(argv, 'provider') ?? 'openai';
   if (!isProvider(provider)) {
     throw new Error(
@@ -125,9 +81,6 @@ export function routeVerificationModels(argv: readonly string[]): {
   research: Research;
   complete: Complete;
 } {
-  const session = sessionFromFlags(argv);
-  if (session) return session;
-
   const model = flagValue(argv, 'model') ?? DEFAULT_MODEL.openai;
   const auditProvider = flagValue(argv, 'audit-provider') ?? 'openai';
   if (!isProvider(auditProvider))
