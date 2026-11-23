@@ -6,7 +6,7 @@ A Profile replaces the Wikipedia Description with an overview, Key Moments, up t
 
 Writing and verification run separately from `build-data`. Run these commands from the repo root through `npm run profiles --workspace packages/data-pipeline -- <command>`.
 
-Give the [Profile coordinator](profile-coordinator.md) the QIDs selected in chat and the requested outcome. It dispatches conversation subagents by default and runs `write`, `verify`, `audit` and `translate` when provider API execution is requested.
+Give the [Profile coordinator](profile-coordinator.md) the QIDs selected in chat and the requested outcome. It dispatches conversation subagents by default. The research-and-write agent checks dates, attribution and causal wording against fetched excerpts before staging the draft for an independent audit. The coordinator runs `write`, `verify`, `audit` and `translate` when provider API execution is requested.
 
 The [Profile model routing module](../src/profiles/model-routing.ts) owns provider defaults and model overrides for `write`, `verify`, `audit` and `translate`.
 
