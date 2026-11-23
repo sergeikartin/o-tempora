@@ -173,3 +173,7 @@ The first English audit cleared all seven displayed citations and found zero unc
 The first Russian audit flagged eight issues. Its JSON needed a format correction to serialize the findings as strings before the CLI accepted the verdict. After one translation correction, the second fidelity audit held on nine issues across seven fields, including terminology, agency and the scope of the ceremony wording. The Russian hold was saved at 14:05:04 UTC, **21m 40s** after dispatch. The trial yielded one English approval and zero bilingual approvals, so the weekly usage per bilingual approval remains unmeasured.
 
 Build and isolated publication finished **21m 51s** after dispatch. The standard publisher copied 38 files byte for byte. Relative to the preflight build, only the English Legendary row gained `hasProfile` and the English Profile file was added. Russian retained the Description fallback.
+
+### Marie Curie Russian retry
+
+The retry reused the English approval and changed only the seven Russian fields flagged in the prior hold. The translator checked all 22 fields against English and reread the Russian for flow. A temporary merge restricted changes to the flagged fields. A fresh auditor reviewed all 22 fields and approved the candidate with zero blockers and zero further corrections. The retry took 3m 5s end to end, including 1m 31s for translation and 51s for the audit. Both English file hashes matched their pre-retry values. Commit `8998234` saved the Russian approval locally.
