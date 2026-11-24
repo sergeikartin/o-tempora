@@ -9,14 +9,20 @@ import {
   writeProfiles,
 } from '../output/profiles.js';
 import { passages } from './passages.js';
+import { readPromptText } from './prompt.js';
 import type { Complete } from './providers.js';
+import type { ProfileSubject } from './subjects.js';
 import {
   approvedTranslation,
+  buildRussianGlossary,
   parseTranslationFields,
+  prepareTranslationCorrection,
   readTranslation,
+  russianAuditPrompt,
   translateProfile,
   translationPassages,
   translationPath,
+  translationPrompt,
 } from './translation.js';
 import { asArray, asRecord } from './values.js';
 import { hash } from './verification/policy.js';
@@ -70,6 +76,28 @@ const raw = () => ({
     review: { status: 'draft', reviewed_at: null },
   },
 });
+const SUBJECT: ProfileSubject = {
+  qid: 'Q935',
+  lane: 'people',
+  name: 'Isaac Newton',
+  dateSpan: { startYear: 1643, endYear: 1727 },
+  wikipediaUrl: URL,
+  ru: {
+    name: 'Исаак Ньютон',
+    tagline: 'математик',
+    description: `Первое предложение. ${'Продолжение '.repeat(50)}`,
+  },
+};
+const LEIBNIZ: ProfileSubject = {
+  ...SUBJECT,
+  qid: 'Q9047',
+  name: 'Gottfried Wilhelm Leibniz',
+  ru: { name: 'Готфрид Вильгельм Лейбниц' },
+};
+const SUBJECTS = new Map([
+  [SUBJECT.qid, SUBJECT],
+  [LEIBNIZ.qid, LEIBNIZ],
+]);
 const fields = {
   overview: 'Ньютон был **английским** математиком.',
   'key_moments.0.date': '1661',
@@ -155,6 +183,75 @@ async function fixture(t: TestContext) {
   assert.equal(result.status, 'approved');
   return { root, filePath, dates: '1643–1727', complete };
 }
+
+test('Russian glossary deduplicates Connections and bounds the subject lead', () => {
+  const english = raw();
+  english.connections.push(...english.connections.map((item) => ({ ...item })));
+  const expected = {
+    subject: {
+      en: SUBJECT.name,
+      ru: SUBJECT.ru?.name,
+      tagline_ru: 'математик',
+      lead_ru: 'Первое предложение.',
+    },
+    connections: [{ en: LEIBNIZ.name, ru: LEIBNIZ.ru?.name }],
+  };
+  assert.deepEqual(buildRussianGlossary(english, SUBJECTS), expected);
+  assert.deepEqual(
+    buildRussianGlossary(english, new Map([[LEIBNIZ.qid, LEIBNIZ]])),
+    { connections: expected.connections },
+  );
+  assert.equal(buildRussianGlossary(english, new Map()), undefined);
+  const longer = new Map(SUBJECTS);
+  longer.set(SUBJECT.qid, {
+    ...SUBJECT,
+    ru: { name: 'Исаак Ньютон', description: 'Продолжение '.repeat(50) },
+  });
+  const lead = buildRussianGlossary(english, longer)?.subject?.lead_ru;
+  assert.ok(lead && lead.length <= 500 && lead.endsWith('Продолжение'));
+});
+
+test('Russian translation, repair and audit append glossary and feedback after the fixed instructions', () => {
+  const english = raw();
+  const other = { ...english, overview: 'A different Profile.' };
+  const glossary = buildRussianGlossary(english, SUBJECTS);
+  assert.ok(glossary);
+  const feedback = {
+    fields,
+    audit: { ...audit, issues: ['overview: check the name'] },
+  };
+  const variants = [
+    [
+      'profile-translation.md',
+      translationPrompt(english, feedback, glossary),
+      translationPrompt(other),
+    ],
+    [
+      'profile-translation-audit.md',
+      russianAuditPrompt(english, fields, glossary),
+      russianAuditPrompt(other, fields),
+    ],
+    [
+      'profile-translation-repair.md',
+      prepareTranslationCorrection(english, feedback, glossary)?.prompt,
+      prepareTranslationCorrection(english, feedback)?.prompt,
+    ],
+  ];
+  for (const [filename, withGlossary, withoutGlossary] of variants) {
+    assert.ok(filename && withGlossary && withoutGlossary);
+    const prefix = readPromptText(filename);
+    assert.equal(withGlossary.slice(0, prefix.length), prefix);
+    assert.equal(withoutGlossary.slice(0, prefix.length), prefix);
+    assert.deepEqual(
+      JSON.parse(withGlossary.slice(prefix.length)).glossary,
+      glossary,
+    );
+    assert.equal(
+      JSON.parse(withoutGlossary.slice(prefix.length)).glossary,
+      undefined,
+    );
+  }
+});
 
 test('translation validates coverage, numeric dates, markup, emphasis and Russian prose', () => {
   assert.deepEqual(parseTranslationFields(fields, raw()), fields);
@@ -258,6 +355,7 @@ test('current translations skip model calls; changed English, identity, policy o
     (
       await translateProfile({
         ...options,
+        subjectsByQid: SUBJECTS,
         complete: async () => {
           throw new Error('must skip');
         },
@@ -378,8 +476,10 @@ test('audit feedback gets one correction attempt followed by a new complete audi
   let audits = 0;
   const result = await translateProfile({
     ...options,
+    subjectsByQid: SUBJECTS,
     complete: async (prompt, role) => {
       roles.push(role ?? '');
+      assert.match(prompt, /Исаак Ньютон/);
       if (role === 'translation-audit' && ++audits === 1)
         return {
           text: JSON.stringify({

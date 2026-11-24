@@ -6,7 +6,7 @@ A Profile replaces the Wikipedia Description with an overview, Key Moments, up t
 
 Writing and verification run separately from `build-data`. Run these commands from the repo root through `npm run profiles --workspace packages/data-pipeline -- <command>`.
 
-Give the [Profile coordinator](profile-coordinator.md) the QIDs selected in chat and the requested outcome. A research-and-write agent fetches evidence before drafting, then stages one assessed Profile in `incoming/<QID>.json`. Finalization extracts the draft and saves its matching assessment. High-risk claims receive an adversarial evidence check before the independent audit. The coordinator runs `verify`, `audit` and `translate` when provider API execution is requested for those steps.
+Give the [Profile coordinator](profile-coordinator.md) the QIDs selected in chat and the requested outcome. The coordinator prefetches a Source Map before dispatching a writer. The writer reads the evidence, stages one assessed Profile in `incoming/<QID>.json` and runs local preflight. Finalization extracts the draft and saves its matching assessment. High-risk claims receive an adversarial evidence check before the independent audit. The coordinator runs `verify`, `audit` and `translate` when provider API execution is requested for those steps.
 
 The [Profile model routing module](../src/profiles/model-routing.ts) owns provider defaults and model overrides for verification, adversarial checking, audit and translation.
 
@@ -14,10 +14,19 @@ The prompts for [writing](../prompts/profile.md), [verification research](../pro
 
 | Command | Behavior |
 |---|---|
+| `prefetch --qids=Q1,Q2` | Saves the subject’s Wikipedia article and up to five ranked, distinct-host references to the evidence cache. Use `--max-sources=<n>` to set a limit from 1 to 8. |
+| `evidence --url=<https URL>` | Reads a cached or fetched excerpt. Use `--query=<phrase>` and `--offset=<n>` to jump and `--length=<n>` for 500–8,000 characters. Use `--outline` on its own for the title, character count and heading offsets. |
+| `preflight --qid=Q1` | Checks the staged Profile and its cached evidence offline. Use `--file=<path>` for a staged file, repair reply or finalized English draft with a saved assessment. Emits counts and field issues as JSON and exits nonzero on failure. |
 | `finalize --qids=Q1,Q2` | Resolves subject and Connection QIDs, removes Connections outside the dataset, adds metadata, saves the extracted drafts with their pending assessments, and removes successfully finalized staging files. |
 | `verify --qids=Q1,Q2 --repair` | Checks every visible field against fetched evidence, runs adversarial research on up to five high-risk findings, audits the result and can repair up to twice. `--adversarial-model=<id>` selects a separate OpenAI model, and `--no-adversarial` disables the adversarial phase. It withholds unresolved content and translates approved English. See [verification and human review](profile-verification.md). |
 | `audit --qids=Q1,Q2` | Runs an independent audit against saved verification evidence with available source titles and headings and prints results and token usage for comparison. See [comparing auditors](profile-verification.md#compare-auditors-on-saved-evidence). |
 | `translate --qids=Q1,Q2` | Translates currently approved English Profiles into Russian and separately audits fidelity. Skips current translations. |
+
+## Local caches
+
+Prefetch writes a Source Map per QID under `evidence/prefetch/`. Each map lists snapshot IDs, final URLs, titles, character counts, offsets for up to 60 level 1–3 headings, and skipped URLs. Prefetch skips hosts with a recorded access block or unsupported content type for seven days. Use `--refresh` to refetch snapshots and retry blocked hosts.
+
+Profile subject lookups reuse `data/output/profile-subjects.cache.json` while the raw input sizes and modification times match. The CLI rebuilds a missing or stale cache, and `build-data` refreshes it from the rows it already transformed.
 
 ## Writer provenance
 

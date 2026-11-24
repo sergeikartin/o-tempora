@@ -8,15 +8,15 @@ import type { Assessment, Source } from './policy.js';
 
 // Key Moment labels use historical years. Month/day prose is left to the
 // evidence checks; only unambiguous year labels are interpreted mechanically.
+const YEAR_RANGE =
+  /^(c\.?\s*|ca\.?\s*)?(?:(AD|CE)\s*)?(\d{1,4})\s*(BC|BCE|AD|CE)?(?:\s*[–—-]\s*(c\.?\s*|ca\.?\s*)?(?:(AD|CE)\s*)?(\d{1,4})\s*(BC|BCE|AD|CE)?)?$/;
+
 export function yearRange(
   label: string,
 ):
   | { start: number; end: number; approximate: boolean; endApproximate?: true }
   | undefined {
-  const match =
-    /^(c\.?\s*|ca\.?\s*)?(?:(AD|CE)\s*)?(\d{1,4})\s*(BC|BCE|AD|CE)?(?:\s*[–—-]\s*(c\.?\s*|ca\.?\s*)?(?:(AD|CE)\s*)?(\d{1,4})\s*(BC|BCE|AD|CE)?)?$/.exec(
-      label.trim(),
-    );
+  const match = YEAR_RANGE.exec(label.trim());
   if (!match) return undefined;
   const start = Number(match[3]);
   const end = match[7] === undefined ? start : Number(match[7]);
@@ -110,20 +110,11 @@ export async function mechanicalChecks(
   subject: ProfileSubject,
   resolve: ResolveArticleQids,
 ): Promise<string[]> {
-  const flags: string[] = [];
-  if (profile.type !== SUBJECT_TYPE[subject.lane])
-    flags.push('Subject type differs from dataset');
+  const flags = localMechanicalChecks(profile, subject);
   const meta = asRecord(record.meta, 'meta');
   const identity = asRecord(meta.source, 'meta.source');
   if (identity.wikidata_qid !== subject.qid || meta.locale !== 'en')
     flags.push('Subject identity or locale differs from dataset');
-  for (const passage of passages(profile)) {
-    try {
-      assertBoldOnlyMarkup(passage.text, passage.path);
-    } catch (error) {
-      flags.push((error as Error).message);
-    }
-  }
   const resolved = await resolve([
     subject.wikipediaUrl,
     profile.wikipedia_url,
@@ -140,11 +131,30 @@ export async function mechanicalChecks(
     if (!qid || qid !== rawConnections[i]?.qid)
       flags.push(`connections.${i}.connection: unresolved URL or QID mismatch`);
   });
+  return flags;
+}
+
+export function localMechanicalChecks(
+  profile: ModelProfile,
+  subject: ProfileSubject,
+): string[] {
+  const flags: string[] = [];
+  if (profile.type !== SUBJECT_TYPE[subject.lane])
+    flags.push('type: Subject type differs from dataset');
+  for (const passage of passages(profile)) {
+    try {
+      assertBoldOnlyMarkup(passage.text, passage.path);
+    } catch (error) {
+      flags.push((error as Error).message);
+    }
+  }
   for (const [i, moment] of profile.key_moments.entries()) {
     const range = yearRange(moment.date);
     if (range && range.start > range.end)
       flags.push(`key_moments.${i}.date: years run backwards`);
+    const match = YEAR_RANGE.exec(moment.date.trim());
     if (
+      (match && (Number(match[3]) === 0 || Number(match[7]) === 0)) ||
       /\b0\s*(BC|BCE|AD|CE)\b/.test(moment.date) ||
       /^(AD|CE)\s*0\b/.test(moment.date)
     )

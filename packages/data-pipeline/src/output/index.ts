@@ -9,7 +9,13 @@ import {
   type ProfileLane,
   type SearchIndex,
 } from '@o-tempora/shared-types';
-import { formatDates, indexProfileSources } from '../profiles/subjects.js';
+import {
+  buildProfileSubjects,
+  formatDates,
+  indexProfileSources,
+  statSubjectInputs,
+  writeSubjectsCache,
+} from '../profiles/subjects.js';
 import {
   transformConflicts,
   transformMilestones,
@@ -142,6 +148,7 @@ async function main(): Promise<void> {
   // language builds resolve from the same rows and decide inclusion off
   // English fields regardless of `lang` (write-datasets.ts's Lang doc
   // comment), which is what keeps the two files' entity sets identical.
+  const subjectInputs = statSubjectInputs();
   const peopleRows = transformPeople();
   const { people: peopleEn, report: peopleReport } = buildPeople(
     peopleRows,
@@ -185,6 +192,15 @@ async function main(): Promise<void> {
     peopleRows,
     conflictRows,
     milestoneRows,
+  );
+  writeSubjectsCache(
+    buildProfileSubjects(profileSources, {
+      people: peopleEn,
+      conflicts: conflictsEn,
+      milestones: milestonesEn,
+    }),
+    {},
+    subjectInputs,
   );
   function profileTargetsFor(
     lane: ProfileLane,

@@ -16,12 +16,14 @@ import { auditSavedProfile } from './verification/audit-saved.js';
 import { verifyProfile } from './verification/runner.js';
 import { resolveArticleQids } from './wikipedia-qids.js';
 
-const USAGE = `Usage: profiles <finalize|verify|audit|translate|evidence|english-adversarial|english-audit|english-repair|russian-translation|russian-audit> [flags]
+const USAGE = `Usage: profiles <finalize|verify|audit|translate|preflight|prefetch|evidence|english-adversarial|english-audit|english-repair|russian-translation|russian-audit> [flags]
   finalize  [--qids=Q1,Q2,...] [--run-id=<id>]
   verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--adversarial-model=<OpenAI id>] [--no-adversarial] [--audit-provider=${PROVIDERS.join('|')}] [--audit-model=<id>] [--translation-model=<OpenAI id>]
   audit     --qids=Q1,Q2,... [--provider=${PROVIDERS.join('|')}] [--model=<id>]
   translate --qids=Q1,Q2,... [--force] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--audit-model=<id>]
-  evidence --url=<https URL> [--query=<text>] [--offset=<number>] [--refresh]
+  preflight --qid=Q1 [--file=<path>]
+  prefetch --qids=Q1,Q2,... [--max-sources=5] [--refresh]
+  evidence --url=<https URL> [--outline | [--query=<text>] [--offset=<number>] [--length=<chars>]] [--refresh]
   english-adversarial --qid=Q1 [--research=<file>] [--result=<file>]
   english-audit --qid=Q1 [--research=<file>] [--result=<file>]
   english-repair --qid=Q1 [--result=<file>]
@@ -116,6 +118,7 @@ async function verify(argv: readonly string[]): Promise<void> {
         const translation = await translateProfile({
           filePath: entry.filePath,
           dates: formatDates(subject.dateSpan),
+          subjectsByQid: subjects,
           complete: models.complete,
         });
         console.log(
@@ -194,6 +197,7 @@ async function translate(argv: readonly string[]): Promise<void> {
       const result = await translateProfile({
         filePath: entry.filePath,
         dates: formatDates(subject.dateSpan),
+        subjectsByQid: subjects,
         complete,
         force: argv.includes('--force'),
       });

@@ -1,7 +1,9 @@
 import { lookup } from 'node:dns/promises';
 import { get } from 'node:https';
+import { setTimeout as sleep } from 'node:timers/promises';
 import { Parser } from 'htmlparser2';
 import type { FunctionTool } from 'openai/resources/responses/responses';
+import { getDomain, parse as parseDomain } from 'tldts';
 import { asArray, asRecord, asString } from '../values.js';
 import { hash, normalizeText, strings } from './assessment.js';
 import type { Source, SourceHeading } from './policy.js';
@@ -198,11 +200,117 @@ export function headingPathAt(
   return stack.map(({ text }) => text);
 }
 
+const IGNORED_DOMAINS = new Set([
+  'wikipedia.org',
+  'wikimedia.org',
+  'wikimediafoundation.org',
+  'wikidata.org',
+  'mediawiki.org',
+  'wiktionary.org',
+  'wikibooks.org',
+  'wikiquote.org',
+  'wikisource.org',
+  'wikinews.org',
+  'wikiversity.org',
+  'wikivoyage.org',
+  'wikifunctions.org',
+  'wikispore.org',
+  'wmflabs.org',
+  'toolforge.org',
+  'facebook.com',
+  'instagram.com',
+  'threads.net',
+  'twitter.com',
+  'x.com',
+  'youtube.com',
+  'youtu.be',
+  'vimeo.com',
+  'tiktok.com',
+  'reddit.com',
+  'linkedin.com',
+  'dailymotion.com',
+  'pinterest.com',
+  'bsky.app',
+]);
+
+export function extractReferenceLinks(html: string, baseUrl: string): string[] {
+  const preferred = new Set<string>();
+  const general = new Set<string>();
+  const stack: {
+    references: boolean;
+    sectionLevel?: number;
+    hidden: boolean;
+  }[] = [];
+  let externalLevel: number | undefined;
+  const parser = new Parser({
+    onopentag(tag, attrs) {
+      const parent = stack.at(-1);
+      const level = HEADING_LEVEL.get(tag);
+      if (level && externalLevel !== undefined && level <= externalLevel)
+        externalLevel = undefined;
+      if (attrs.id === 'External_links')
+        externalLevel =
+          level ??
+          [...stack].reverse().find((entry) => entry.sectionLevel)
+            ?.sectionLevel ??
+          2;
+      const references =
+        !!parent?.references ||
+        (attrs.class
+          ?.split(/\s+/)
+          .some((name) => name === 'references' || name === 'reflist') ??
+          false);
+      const hidden = !!parent?.hidden || HIDDEN.has(tag) || tag === 'head';
+      stack.push({ references, sectionLevel: level, hidden });
+      if (tag !== 'a' || !attrs.href || hidden) return;
+      try {
+        const url = sourceUrl(new URL(attrs.href, baseUrl).href);
+        const { domain, isIcann } = parseDomain(url.hostname);
+        // Actual DNS and public-address validation still happens on every fetch.
+        if (
+          !domain ||
+          !isIcann ||
+          IGNORED_DOMAINS.has(domain) ||
+          /\.(pdf|jpe?g|png|gif|svg|mp[34]|zip)$/i.test(
+            decodeURIComponent(url.pathname),
+          )
+        )
+          return;
+        (references || externalLevel !== undefined ? preferred : general).add(
+          url.href,
+        );
+      } catch {
+        // Malformed and unsupported links are omitted.
+      }
+    },
+    onclosetag() {
+      stack.pop();
+    },
+  });
+  parser.end(html);
+  return [...new Set([...preferred, ...general])];
+}
+
+export class SourceFetchError extends Error {
+  constructor(
+    message: string,
+    readonly status?: number,
+    readonly unsupportedType = false,
+  ) {
+    super(message);
+  }
+}
+
 interface Page {
   status: number;
   location?: string;
+  retryAfter?: string;
   type: string;
   text: string;
+}
+
+function readableType(type: string): boolean {
+  return ['text/html', 'text/plain', 'application/xhtml+xml'].includes(type);
 }
 
 // Pin the validated public address into the socket's DNS lookup. Redirects go
@@ -226,6 +334,21 @@ async function request(url: URL): Promise<Page> {
         },
       },
       (response) => {
+        const headers = {
+          status: response.statusCode ?? 0,
+          location: response.headers.location,
+          retryAfter: response.headers['retry-after'],
+          type:
+            (response.headers['content-type'] ?? '')
+              .split(';', 1)[0]
+              ?.trim()
+              .toLowerCase() ?? '',
+        };
+        if (headers.status !== 200 || !readableType(headers.type)) {
+          resolve({ ...headers, text: '' });
+          response.destroy();
+          return;
+        }
         const chunks: Buffer[] = [];
         let bytes = 0;
         response.on('data', (chunk: Buffer) => {
@@ -236,12 +359,7 @@ async function request(url: URL): Promise<Page> {
         });
         response.on('error', reject);
         response.on('end', () =>
-          resolve({
-            status: response.statusCode ?? 0,
-            location: response.headers.location,
-            type: response.headers['content-type'] ?? '',
-            text: Buffer.concat(chunks).toString('utf8'),
-          }),
+          resolve({ ...headers, text: Buffer.concat(chunks).toString('utf8') }),
         );
       },
     );
@@ -309,19 +427,49 @@ export function parseSourceSnapshot(value: unknown, id: string): Source {
   return { id, ...source };
 }
 
-export async function fetchSource(value: string): Promise<Source> {
+let wikipediaQueue = Promise.resolve();
+let nextWikipediaRequest = 0;
+
+function paceWikipedia() {
+  wikipediaQueue = wikipediaQueue.then(async () => {
+    const delay = nextWikipediaRequest - performance.now();
+    if (delay > 0) await sleep(Math.ceil(delay));
+    nextWikipediaRequest = performance.now() + 1_000;
+  });
+  return wikipediaQueue;
+}
+
+interface FetchOptions {
+  onReferenceLinks?: (links: string[]) => void;
+  requestPage?: (url: URL) => Promise<Page>;
+  wait?: (ms: number) => Promise<void>;
+}
+
+async function fetchPage(
+  value: string,
+  { requestPage = request, wait = sleep }: FetchOptions = {},
+): Promise<{ url: URL; page: Page }> {
   let url = sourceUrl(value);
   for (let redirect = 0; redirect < 6; redirect++) {
     let page: Page | undefined;
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
-        page = await request(url);
+        if (getDomain(url.hostname) === 'wikipedia.org') await paceWikipedia();
+        page = await requestPage(url);
         if (page.status !== 429 && page.status < 500) break;
       } catch (error) {
         if (attempt === 2) throw error;
+        page = undefined;
       }
-      if (attempt < 2)
-        await new Promise((resolve) => setTimeout(resolve, 500 * 2 ** attempt));
+      if (attempt < 2) {
+        const retryAfter =
+          page?.status === 429 ? page.retryAfter?.trim() : undefined;
+        const delay =
+          retryAfter && /^\d+$/.test(retryAfter)
+            ? Math.min(Number(retryAfter), 60) * 1_000
+            : 500 * 2 ** attempt;
+        await wait(delay);
+      }
     }
     if (!page) throw new Error('Source fetch failed');
     if ([301, 302, 303, 307, 308].includes(page.status) && page.location) {
@@ -329,25 +477,61 @@ export async function fetchSource(value: string): Promise<Source> {
       continue;
     }
     if (page.status !== 200)
-      throw new Error(`Source returned HTTP ${page.status}`);
-    if (!/text\/(html|plain)|application\/xhtml\+xml/.test(page.type))
-      throw new Error('Source is not readable HTML or plain text');
-    const plain = page.type.includes('text/plain');
-    const anchors = new Set<string>();
-    const document = plain
-      ? { text: normalizeText(page.text), headings: [] }
-      : extractHtmlDocument(page.text, anchors);
-    if (document.text.length < 100)
-      throw new Error('Source has insufficient readable text');
-    const snapshot = {
-      url: url.href,
-      fetched_at: new Date().toISOString(),
-      ...document,
-      anchors: [...anchors],
-    };
-    return { id: hash(snapshot), ...snapshot };
+      throw new SourceFetchError(
+        `Source returned HTTP ${page.status}`,
+        page.status,
+      );
+    if (!readableType(page.type))
+      throw new SourceFetchError(
+        'Source is not readable HTML or plain text',
+        undefined,
+        true,
+      );
+    return { url, page };
   }
   throw new Error('Source has too many redirects');
+}
+
+export async function fetchReferenceLinks(value: string): Promise<string[]> {
+  const { url, page } = await fetchPage(value);
+  return page.type === 'text/plain'
+    ? []
+    : extractReferenceLinks(page.text, url.href);
+}
+
+export async function fetchSource(
+  value: string,
+  options: FetchOptions = {},
+): Promise<Source> {
+  const { url, page } = await fetchPage(value, options);
+  const plain = page.type === 'text/plain';
+  const anchors = new Set<string>();
+  const document = plain
+    ? { text: normalizeText(page.text), headings: [] }
+    : extractHtmlDocument(page.text, anchors);
+  if (document.text.length < 100)
+    throw new Error('Source has insufficient readable text');
+  const snapshot = {
+    url: url.href,
+    fetched_at: new Date().toISOString(),
+    ...document,
+    anchors: [...anchors],
+  };
+  if (options.onReferenceLinks)
+    options.onReferenceLinks(
+      plain ? [] : extractReferenceLinks(page.text, url.href),
+    );
+  return { id: hash(snapshot), ...snapshot };
+}
+
+export function sourceOutline(source: Source) {
+  return {
+    id: source.id,
+    url: source.url,
+    title: source.title ?? null,
+    chars: source.text.length,
+    headings: source.headings ?? [],
+  };
 }
 
 export class SourceStore {
@@ -379,6 +563,10 @@ export class SourceStore {
     }
   }
 
+  async readOutline(url: string) {
+    return sourceOutline(await this.read(url));
+  }
+
   async readExcerpt(input: Record<string, unknown>) {
     const offset = input.offset === undefined ? 0 : input.offset;
     if (
@@ -387,6 +575,13 @@ export class SourceStore {
       offset < 0
     )
       throw new Error('Source offset must be a nonnegative integer');
+    const requestedLength = input.length ?? EXCERPT_LENGTH;
+    if (
+      typeof requestedLength !== 'number' ||
+      !Number.isSafeInteger(requestedLength)
+    )
+      throw new Error('Source length must be an integer');
+    const length = Math.max(500, Math.min(EXCERPT_LENGTH, requestedLength));
     const query =
       input.query == null
         ? undefined
@@ -409,10 +604,13 @@ export class SourceStore {
           offset: null,
           next_offset: null,
         };
-      start = Math.max(offset, match.index - 2_000);
+      start = Math.max(
+        offset,
+        match.index - Math.min(2_000, Math.floor(length / 4)),
+      );
     }
 
-    const end = start + EXCERPT_LENGTH;
+    const end = start + length;
     return {
       ...source,
       text: source.text.slice(start, end),

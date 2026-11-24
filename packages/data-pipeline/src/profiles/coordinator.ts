@@ -1,17 +1,22 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { parseQidsFlag } from '../fetch/qid-filter.js';
 import {
   finalizedAssessment,
   readPendingAssessment,
 } from './assessed-profile.js';
+import { evidenceStore, readSnapshot } from './evidence-cache.js';
 import { parseModelProfile } from './model-profile.js';
 import { RAW_PROFILES_DIR } from './paths.js';
+import { prefetchSubject } from './prefetch.js';
+import { preflightProfile } from './preflight.js';
 import { readPromptText } from './prompt.js';
 import type { Completion } from './providers.js';
 import { readStoredProfiles, writeJson } from './store.js';
 import { formatDates, loadSubjects } from './subjects.js';
 import {
   approvedTranslation,
+  buildRussianGlossary,
   loadTranslationSource,
   parseTranslationFields,
   prepareTranslationCorrection,
@@ -47,12 +52,7 @@ import {
   reportPathFor,
   verifyProfile,
 } from './verification/runner.js';
-import {
-  fetchSource,
-  parseSourceSnapshot,
-  SourceStore,
-  sourceUrl,
-} from './verification/sources.js';
+import { fetchSource, SourceStore } from './verification/sources.js';
 import {
   type ResolveArticleQids,
   resolveArticleQids,
@@ -75,8 +75,9 @@ const defaultOptions: CoordinatorOptions = {
     if (
       result &&
       typeof result === 'object' &&
-      'status' in result &&
-      (result.status === 'held' || result.status === 'retry')
+      (('status' in result &&
+        (result.status === 'held' || result.status === 'retry')) ||
+        ('ok' in result && result.ok === false))
     )
       process.exitCode = 1;
   },
@@ -94,61 +95,23 @@ async function readOptionalJson(file: string): Promise<unknown> {
   }
 }
 
-function sourceId(value: unknown): string {
-  if (typeof value !== 'string' || !/^[a-f0-9]{64}$/.test(value))
-    throw new Error('Invalid evidence snapshot ID');
-  return value;
-}
-
-async function snapshot(directory: string, id: unknown) {
-  const validId = sourceId(id);
-  return parseSourceSnapshot(
-    await readJson(path.join(directory, `${validId}.json`)),
-    validId,
-  );
-}
-
-async function evidence(
-  options: CoordinatorOptions,
-  url: string,
-  query: string | undefined,
-  offset: string | undefined,
-  refresh: boolean,
-) {
-  const normalized = sourceUrl(url).href;
-  const directory = path.join(options.profilesDir, 'evidence');
-  const cachePath = path.join(directory, 'urls', `${hash(normalized)}.json`);
-  const sources = new SourceStore(async () => {
-    const cached = refresh ? undefined : await readOptionalJson(cachePath);
-    if (cached !== undefined) return snapshot(directory, cached);
-    const source = await options.fetch(normalized);
-    await writeJson(path.join(directory, `${source.id}.json`), source);
-    await writeJson(cachePath, source.id);
-    if (source.url !== normalized)
-      await writeJson(
-        path.join(directory, 'urls', `${hash(source.url)}.json`),
-        source.id,
-      );
-    return source;
-  });
-  const input = {
-    url: normalized,
-    query,
-    offset: offset === undefined ? undefined : Number(offset),
-  };
-  options.emit(await sources.readExcerpt(input));
-}
-
 async function loadSubject(options: CoordinatorOptions, qid: string) {
-  const subject = (options.subjects ?? loadSubjects)().find(
-    (entry) => entry.qid === qid,
+  const subjects = new Map(
+    (options.subjects ?? loadSubjects)().map((entry) => [entry.qid, entry]),
   );
+  const subject = subjects.get(qid);
   const entry = (await readStoredProfiles(options.profilesDir)).get(qid);
   if (!subject || !entry)
     throw new Error(`${qid}: no raw Profile or dataset entity`);
   const { filePath } = entry;
   const record = asRecord(await readJson(filePath), 'English Profile');
-  return { filePath, subject, record, dates: formatDates(subject.dateSpan) };
+  return {
+    filePath,
+    subject,
+    subjects,
+    record,
+    dates: formatDates(subject.dateSpan),
+  };
 }
 
 function task(prompt: string, binding: unknown) {
@@ -237,7 +200,7 @@ function assessmentSnapshots(
     ),
   );
   const directory = path.join(options.profilesDir, 'evidence');
-  return Promise.all([...ids].map((id) => snapshot(directory, id)));
+  return Promise.all([...ids].map((id) => readSnapshot(directory, id)));
 }
 
 async function englishAdversarial(
@@ -291,7 +254,7 @@ async function englishAdversarial(
     ),
   );
   const snapshots = await Promise.all(
-    [...ids].map((id) => snapshot(directory, id)),
+    [...ids].map((id) => readSnapshot(directory, id)),
   );
   const errors = checkEvidence(
     {
@@ -465,17 +428,18 @@ async function englishRepair(
 }
 
 async function russianTranslation(options: CoordinatorOptions, qid: string) {
-  const { filePath, dates } = await loadSubject(options, qid);
+  const { filePath, dates, subjects } = await loadSubject(options, qid);
   const raw = await loadTranslationSource(filePath, dates);
   if (approvedTranslation(await readTranslation(filePath), raw)) {
     options.emit({ status: 'skipped' });
     return;
   }
+  const glossary = buildRussianGlossary(raw, subjects);
   const feedback = await translationFeedback(filePath, raw);
-  const correction = prepareTranslationCorrection(raw, feedback);
+  const correction = prepareTranslationCorrection(raw, feedback, glossary);
   options.emit(
     task(
-      correction?.prompt ?? translationPrompt(raw, feedback),
+      correction?.prompt ?? translationPrompt(raw, feedback, glossary),
       profileHash(raw),
     ),
   );
@@ -487,16 +451,20 @@ async function russianAudit(
   candidateFile: string,
   resultFile?: string,
 ) {
-  const { filePath, dates } = await loadSubject(options, qid);
+  const { filePath, dates, subjects } = await loadSubject(options, qid);
   const raw = await loadTranslationSource(filePath, dates);
   const binding = profileHash(raw);
   const candidate = asRecord(
     await readJson(candidateFile),
     'Russian candidate',
   );
+  const glossary = buildRussianGlossary(raw, subjects);
   const feedback = await translationFeedback(filePath, raw);
-  const translationTask = task(translationPrompt(raw, feedback), binding);
-  const correction = prepareTranslationCorrection(raw, feedback);
+  const translationTask = task(
+    translationPrompt(raw, feedback, glossary),
+    binding,
+  );
+  const correction = prepareTranslationCorrection(raw, feedback, glossary);
   let proposedFields: unknown;
   if (correction && candidate.input_hash !== translationTask.input_hash) {
     const reply = output(
@@ -515,7 +483,7 @@ async function russianAudit(
     proposedFields = output(candidate, translationTask.input_hash).fields;
   }
   const fields = parseTranslationFields(proposedFields, raw);
-  const prepared = task(russianAuditPrompt(raw, fields), binding);
+  const prepared = task(russianAuditPrompt(raw, fields, glossary), binding);
   if (!resultFile) {
     options.emit(prepared);
     return;
@@ -527,6 +495,7 @@ async function russianAudit(
       filePath,
       dates,
       retry: false,
+      glossary,
       complete: async (prompt, role) => {
         const inputHash = task(prompt, binding).input_hash;
         if (role === 'translate') {
@@ -546,7 +515,9 @@ export async function runCoordinatorCommand(
   options: CoordinatorOptions = defaultOptions,
 ): Promise<boolean> {
   const allowed: Record<string, string[]> = {
-    evidence: ['url', 'query', 'offset', 'refresh'],
+    evidence: ['url', 'query', 'offset', 'length', 'outline', 'refresh'],
+    preflight: ['qid', 'file'],
+    prefetch: ['qids', 'max-sources', 'refresh'],
     'english-adversarial': ['qid', 'research', 'result'],
     'english-audit': ['qid', 'research', 'result'],
     'english-repair': ['qid', 'result'],
@@ -556,31 +527,93 @@ export async function runCoordinatorCommand(
   if (!command || !Object.hasOwn(allowed, command)) return false;
   const flags = new Map<string, string>();
   for (const arg of argv) {
-    const match = /^--([a-z]+)(?:=(.+))?$/.exec(arg);
+    const match = /^--([a-z]+(?:-[a-z]+)*)(?:=(.+))?$/.exec(arg);
     const name = match?.[1];
     const value = match?.[2];
     if (
       !name ||
       !allowed[command]?.includes(name) ||
       flags.has(name) ||
-      (name === 'refresh' ? value !== undefined : value === undefined)
+      (['refresh', 'outline'].includes(name)
+        ? value !== undefined
+        : value === undefined)
     )
       throw new Error(`Invalid ${command} argument: ${arg}`);
     flags.set(name, value ?? '');
   }
   const required = (name: string) => asString(flags.get(name), `--${name}`);
   if (command === 'evidence') {
-    await evidence(
-      options,
-      required('url'),
-      flags.get('query'),
-      flags.get('offset'),
+    const url = required('url');
+    const outline = flags.has('outline');
+    if (
+      outline &&
+      ['query', 'offset', 'length'].some((name) => flags.has(name))
+    )
+      throw new Error(
+        '--outline cannot be combined with --query, --offset, or --length',
+      );
+    const sources = evidenceStore(
+      options.profilesDir,
+      options.fetch,
       flags.has('refresh'),
     );
+    options.emit(
+      outline
+        ? await sources.readOutline(url)
+        : await sources.readExcerpt({
+            url,
+            query: flags.get('query'),
+            offset: flags.has('offset')
+              ? Number(flags.get('offset'))
+              : undefined,
+            length: flags.has('length')
+              ? Number(flags.get('length'))
+              : undefined,
+          }),
+    );
+  } else if (command === 'prefetch') {
+    const qids = parseQidsFlag(argv);
+    if (!qids) throw new Error('--qids is required for prefetch');
+    const subjects = new Map(
+      (options.subjects ?? loadSubjects)().map((subject) => [
+        subject.qid,
+        subject,
+      ]),
+    );
+    for (const qid of qids) {
+      const subject = subjects.get(qid);
+      if (!subject) throw new Error(`${qid}: no dataset entity`);
+      options.emit(
+        await prefetchSubject({
+          subject,
+          profilesDir: options.profilesDir,
+          maxSources: flags.has('max-sources')
+            ? Number(flags.get('max-sources'))
+            : undefined,
+          refresh: flags.has('refresh'),
+          fetch: options.fetch,
+        }),
+      );
+    }
   } else {
     const qid = required('qid');
     const result = flags.get('result');
-    if (command === 'english-adversarial')
+    if (command === 'preflight') {
+      if (!/^Q\d+$/.test(qid)) throw new Error('--qid must be a Wikidata QID');
+      const subject = (options.subjects ?? loadSubjects)().find(
+        (entry) => entry.qid === qid,
+      );
+      options.emit(
+        await preflightProfile({
+          qid,
+          subject,
+          profilesDir: options.profilesDir,
+          filePath:
+            flags.get('file') ??
+            path.join(options.profilesDir, 'incoming', `${qid}.json`),
+        }),
+      );
+    } else if (command === 'english-adversarial')
       await englishAdversarial(options, qid, flags.get('research'), result);
     else if (command === 'english-audit')
       await englishAudit(options, qid, flags.get('research'), result);

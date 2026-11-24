@@ -5,13 +5,18 @@ import path from 'node:path';
 import { test } from 'node:test';
 import { publishFiles } from './publish.js';
 
-test('publishFiles copies every file from source to destination', async () => {
+test('publishFiles copies datasets and skips the private subject cache', async () => {
   const root = await mkdtemp(path.join(tmpdir(), 'publish-test-'));
   const sourceDir = path.join(root, 'source');
   const destDir = path.join(root, 'dest');
   await mkdir(sourceDir, { recursive: true });
   await writeFile(path.join(sourceDir, 'people.json'), '{"a":1}');
   await writeFile(path.join(sourceDir, 'events.json'), '{"b":2}');
+  await writeFile(path.join(sourceDir, 'profile-subjects.cache.json'), '{}');
+  await writeFile(
+    path.join(sourceDir, 'profile-subjects.cache.json.concurrent.tmp'),
+    '{}',
+  );
 
   const published = await publishFiles(sourceDir, destDir);
 

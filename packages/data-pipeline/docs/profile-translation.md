@@ -12,6 +12,8 @@ API execution accepts `--provider`, `--model`, and `--audit-model` (same provide
 
 The translator receives every reader-facing English field: overview, Key Moment dates, titles and prose, Deep Facts and Connection explanations. The pipeline retains the English structure, source URLs, legend flags and QIDs. Connection display names come from the Russian dataset.
 
+Translation, correction and fidelity audit tasks include an optional glossary from the committed Russian dataset. It supplies canonical names and available Taglines for the subject and its Connections, plus up to 500 characters of the subject’s Russian Wikipedia lead. Use it for names, declensions, standard titles and terminology. The approved English passages supply every factual claim. Each prompt appends its per-Profile JSON after the fixed instructions. Current policy 1 approvals remain eligible for reuse.
+
 Approved translations live beside their English source as `<QID>-<name>.ru.translation.json`. The artifact stores the source content hash, translation policy, translated fields, model metadata, audit and approval hash. Any source/content/identity/policy change invalidates it; source approval and current dataset dates are also required. Rejected audit candidates go to `*.ru.translation.held.json`, preserving an existing approved translation. A retry uses held feedback only when its source hash and policy still match. Translated files are generated artifacts; hand edits invalidate approval.
 
 Output publishes only current, approved translations to `profiles/ru/<slug>.json` and marks only those Russian rows with `hasProfile`. Missing or stale translations leave the Russian Description; English prose is never copied into Russian Profile files. English publication is independent.

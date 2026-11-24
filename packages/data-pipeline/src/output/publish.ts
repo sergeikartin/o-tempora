@@ -1,6 +1,7 @@
 import { copyFile, mkdir, readdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SUBJECTS_CACHE_FILENAME } from '../profiles/paths.js';
 
 const SOURCE_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -31,6 +32,12 @@ export async function publishFiles(
 
   const published: string[] = [];
   for (const entry of entries) {
+    if (
+      entry.name === SUBJECTS_CACHE_FILENAME ||
+      (entry.name.startsWith(`${SUBJECTS_CACHE_FILENAME}.`) &&
+        entry.name.endsWith('.tmp'))
+    )
+      continue;
     const source = path.join(sourceDir, entry.name);
     const dest = path.join(destDir, entry.name);
     if (entry.isDirectory()) {

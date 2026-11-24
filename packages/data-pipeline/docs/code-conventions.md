@@ -10,6 +10,8 @@
 
 - Prefer hand-rolled parsers for narrow, well-understood formats (`src/fetch/csv.ts`); add a real dependency only when the format is genuinely non-trivial (e.g. `seek-bzip` for bzip2), and document the dependency where its use matters.
 
+- Profile prefetch uses `tldts` to identify registrable domains for source ranking and deduplication, including multi-part suffixes such as `ac.uk`.
+
 ## File Organization
 
 `src/fetch/` (query/CSV-row builders, raw-result writers), `src/transform/` (grouping, scoring, tagging, lookup tables), `src/output/` (final JSON writer), `src/profiles/` (the Profile CLI and workflow, outside the stage order), `data/raw/` (checked-in raw snapshots).

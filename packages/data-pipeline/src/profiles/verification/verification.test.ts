@@ -14,6 +14,7 @@ import { runCoordinatorCommand } from '../coordinator.js';
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
 import { routeVerificationModels } from '../model-routing.js';
 import { passages } from '../passages.js';
+import { preflightProfile } from '../preflight.js';
 import type { Complete } from '../providers.js';
 import type { ProfileSubject } from '../subjects.js';
 import { approvedTranslation, readTranslation } from '../translation.js';
@@ -814,6 +815,142 @@ test('HTML extraction preserves inline words and removes script content; network
     assert.throws(() => sourceUrl(url));
 });
 
+test('local preflight reports schema, identity, prose, citation and assessment defects', async (t) => {
+  const { root, options } = await setup(t);
+  await mkdir(path.join(root, 'evidence'));
+  await writeFile(
+    path.join(root, 'evidence', `${SOURCE.id}.json`),
+    JSON.stringify(SOURCE),
+  );
+  const preflight = () =>
+    preflightProfile({
+      qid: SUBJECT.qid,
+      subject: SUBJECT,
+      filePath: options.filePath,
+      profilesDir: root,
+    });
+  async function pending(
+    record: ModelProfile & { meta: ReturnType<typeof raw>['meta'] },
+    findings: Assessment,
+  ) {
+    const meta = {
+      ...record.meta,
+      pending_assessment: {
+        profile_hash: profileHash(record),
+        assessment: findings,
+        model: 'writer',
+      },
+    };
+    await writeFile(options.filePath, JSON.stringify({ ...record, meta }));
+  }
+
+  const valid = raw();
+  const supported = assessment(parseModelProfile(valid, 'fixture'));
+  await pending(valid, supported);
+  assert.equal((await preflight()).ok, true);
+
+  await writeFile(options.filePath, JSON.stringify(valid));
+  await writeFile(
+    reportPathFor(options.filePath),
+    JSON.stringify({
+      profile_hash: profileHash(valid),
+      assessment: supported,
+    }),
+  );
+  assert.equal((await preflight()).ok, true);
+
+  for (const date of ['1688–1687', '0–1 AD']) {
+    const invalid = {
+      ...valid,
+      type: 'milestone',
+      wikipedia_url: `${URL}?oldid=1`,
+      overview: '**Unpaired',
+      key_moments: valid.key_moments.map((moment) => ({
+        ...moment,
+        date,
+        source: `${URL}#Missing`,
+      })),
+      connections: [
+        {
+          name: 'Leibniz',
+          importance: 'high',
+          connection: 'Contemporary.',
+          wikipedia_url: `${URL}#Bad`,
+        },
+        {
+          name: 'Hooke',
+          importance: 'high',
+          connection: 'Contemporary.',
+          wikipedia_url: 'https://en.wikipedia.org/wiki/Robert_Hooke',
+        },
+        {
+          name: 'Hooke',
+          importance: 'medium',
+          connection: 'Contemporary.',
+          wikipedia_url: 'https://en.wikipedia.org/wiki/Robert%20Hooke',
+        },
+      ],
+    };
+    const broken = structuredClone(supported);
+    broken.subject_dates.push({
+      path: 'overview',
+      boundary: 'start',
+      year: 1644,
+    });
+    const quote = broken.findings[0];
+    const title = broken.findings[2];
+    assert.ok(quote?.evidence[0] && title?.evidence[0]);
+    quote.risk = 'corroborate';
+    quote.evidence[0].quote = 'Fabricated quote';
+    quote.evidence.push({ ...quote.evidence[0], source: 'a'.repeat(64) });
+    title.verdict = 'disputed';
+    title.evidence.push({ ...title.evidence[0], source: 'b'.repeat(64) });
+    await writeFile(
+      path.join(root, 'evidence', `${'b'.repeat(64)}.json`),
+      '{bad',
+    );
+    await pending(invalid, broken);
+    const result = await preflight();
+    assert.equal(result.ok, false);
+    for (const message of [
+      /type: Subject type/,
+      /wikipedia_url: expected/,
+      /overview: unpaired/,
+      /date:.*(backwards|year zero)/,
+      /overview: subject start/,
+      /source section missing/,
+      /connections.0.wikipedia_url/,
+      /duplicate Connection/,
+      /Coverage must account/,
+      /disputed/,
+      /corroboration missing/,
+      /evidence was not found/,
+      /evidence.a{64}/,
+      /evidence.b{64}/,
+    ])
+      assert.match(result.issues.join('\n'), message);
+    assert.equal(result.checked_sources, 1);
+  }
+
+  const badSource = {
+    ...valid,
+    key_moments: valid.key_moments.map((moment) => ({
+      ...moment,
+      source: 'https://example.org/article',
+    })),
+  };
+  await pending(badSource, supported);
+  assert.match(
+    (await preflight()).issues.join('\n'),
+    /replace source with a fetched supporting URL/,
+  );
+
+  await writeFile(options.filePath, '{');
+  const malformed = await preflight();
+  assert.equal(malformed.ok, false);
+  assert.match(malformed.issues.join('\n'), /^file:/);
+});
+
 test('coordinator commands reuse evidence, checkpoint repair and approve both Locales', async (t) => {
   const { root, options } = await setup(t);
   let output: unknown;
@@ -822,7 +959,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   const contraryText = 'One account dates publication to 1688.';
   const commands = {
     profilesDir: root,
-    subjects: () => [SUBJECT],
+    subjects: () => [{ ...SUBJECT, ru: { name: 'Исаак Ньютон' } }],
     resolve: options.resolve,
     fetch: async (url: string) => {
       fetches++;
@@ -911,6 +1048,45 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
       subject_dates: findings.subject_dates,
     };
   }
+  await mkdir(path.join(root, 'incoming'));
+  const staged = await save('incoming/Q935.json', assessed(initial));
+  const preflightOptions = {
+    ...commands,
+    resolve: async () => assert.fail('Preflight must not resolve articles'),
+    fetch: async () => assert.fail('Preflight must not fetch evidence'),
+  };
+  assert.equal(
+    await runCoordinatorCommand('preflight', [qid], preflightOptions),
+    true,
+  );
+  assert.deepEqual(output, {
+    ok: true,
+    qid: SUBJECT.qid,
+    file: staged,
+    checked_passages: 4,
+    checked_findings: 4,
+    checked_sources: 2,
+    issues: [],
+  });
+
+  const invalidStaged = await save('incomplete.json', {
+    ...assessed(initial),
+    overview: { text: initial.overview, findings: [] },
+  });
+  assert.equal(
+    await runCoordinatorCommand(
+      'preflight',
+      [qid, `--file=${invalidStaged}`],
+      preflightOptions,
+    ),
+    true,
+  );
+  assert.equal(asRecord(output, 'preflight').ok, false);
+  assert.match(
+    String(asRecord(output, 'preflight').issues),
+    /overview: no factual claims/,
+  );
+
   const researchFlag = await legacyResearch();
   assert.deepEqual(await run('english-adversarial', qid, researchFlag), {
     status: 'skipped',
@@ -1154,6 +1330,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   });
 
   const translation = await run('russian-translation', qid);
+  assert.match(String(translation.prompt), /Исаак Ньютон/);
   const fields = {
     overview:
       'Ньютон — английский математик. В 1687 году он опубликовал «Начала».',
@@ -1169,6 +1346,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   }
   const candidate = await saveCandidate(fields);
   const fidelity = await run('russian-audit', qid, candidate);
+  assert.match(String(fidelity.prompt), /Исаак Ньютон/);
   const fidelityReply = await save('fidelity.json', {
     input_hash: fidelity.input_hash,
     result: {
@@ -1199,6 +1377,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     'held',
   );
   const correction = await run('russian-translation', qid);
+  assert.match(String(correction.prompt), /Исаак Ньютон/);
   assert.match(
     String(correction.prompt),
     /"paths":\["key_moments\.0\.title"\]/,

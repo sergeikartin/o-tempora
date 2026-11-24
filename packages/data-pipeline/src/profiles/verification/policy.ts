@@ -114,22 +114,14 @@ export function checkEvidence(
   );
 }
 
-export function blockers(
-  report: Omit<Report, 'blockers'>,
-  profile: Parameters<typeof passages>[0] & { subject?: string },
+export function assessmentBlockers(
+  profile: Parameters<typeof passages>[0],
+  assessment: Assessment,
+  snapshots: readonly Pick<Source, 'id' | 'url'>[],
 ): string[] {
   const paths = passages(profile).map(({ path }) => path);
-  const result = [
-    ...report.mechanical,
-    ...report.evidence_errors,
-    ...report.assessment.uncovered,
-    ...report.assessment.issues,
-    ...report.audit.uncovered,
-    ...report.audit.issues,
-  ];
-  const { assessment } = report;
-  if (!assessment.coherent || !report.audit.coherent)
-    result.push('Profile is not coherent');
+  const result = [...assessment.uncovered, ...assessment.issues];
+  if (!assessment.coherent) result.push('Profile is not coherent');
   if (assessment.findings.length === 0)
     result.push('No factual claims checked');
   if (
@@ -139,52 +131,7 @@ export function blockers(
   ) {
     result.push('Coverage must account for every visible field exactly once');
   }
-  const sources = new Map(report.sources.map((source) => [source.id, source]));
-  if (report.policy_version === '7') {
-    const targets = selectAdversarialTargets(profile, assessment);
-    try {
-      if (
-        report.adversarial_disabled !== undefined &&
-        report.adversarial_disabled !== true
-      )
-        throw new Error('Invalid adversarial opt-out');
-      if (report.adversarial !== undefined) {
-        if (report.adversarial_disabled !== undefined)
-          throw new Error(
-            'Adversarial checking cannot be both recorded and disabled',
-          );
-        const checks = parseAdversarialResult(report.adversarial, targets);
-        if (
-          !report.adversarial.model?.trim() ||
-          !strings(report.models, 'report models').includes(
-            report.adversarial.model,
-          )
-        )
-          throw new Error('Missing adversarial model');
-        for (const check of checks) {
-          const merged =
-            assessment.findings[check.finding_index]?.counterevidence ?? [];
-          for (const item of check.counterevidence) {
-            if (
-              !sources.has(item.source) ||
-              !merged.some(
-                (entry) =>
-                  entry.source === item.source &&
-                  normalizeText(entry.quote) === normalizeText(item.quote),
-              )
-            )
-              throw new Error(
-                `${check.path}: adversarial counterevidence is missing from the assessment or sources`,
-              );
-          }
-        }
-      } else if (report.adversarial_disabled !== true && targets.length) {
-        throw new Error('Missing adversarial checks for selected findings');
-      }
-    } catch (error) {
-      result.push(error instanceof Error ? error.message : String(error));
-    }
-  }
+  const sources = new Map(snapshots.map((source) => [source.id, source]));
   for (const path of paths) {
     if (
       !path.endsWith('.title') &&
@@ -229,6 +176,68 @@ export function blockers(
         )
           result.push(`${finding.path}: independent corroboration missing`);
       }
+    }
+  }
+  return result;
+}
+
+export function blockers(
+  report: Omit<Report, 'blockers'>,
+  profile: Parameters<typeof passages>[0] & { subject?: string },
+): string[] {
+  const { assessment } = report;
+  const result = [
+    ...report.mechanical,
+    ...report.evidence_errors,
+    ...report.audit.uncovered,
+    ...report.audit.issues,
+    ...assessmentBlockers(profile, assessment, report.sources),
+  ];
+  if (!report.audit.coherent) result.push('Profile is not coherent');
+  const sources = new Map(report.sources.map((source) => [source.id, source]));
+  if (report.policy_version === '7') {
+    const targets = selectAdversarialTargets(profile, assessment);
+    try {
+      if (
+        report.adversarial_disabled !== undefined &&
+        report.adversarial_disabled !== true
+      )
+        throw new Error('Invalid adversarial opt-out');
+      if (report.adversarial !== undefined) {
+        if (report.adversarial_disabled !== undefined)
+          throw new Error(
+            'Adversarial checking cannot be both recorded and disabled',
+          );
+        const checks = parseAdversarialResult(report.adversarial, targets);
+        if (
+          !report.adversarial.model?.trim() ||
+          !strings(report.models, 'report models').includes(
+            report.adversarial.model,
+          )
+        )
+          throw new Error('Missing adversarial model');
+        for (const check of checks) {
+          const merged =
+            assessment.findings[check.finding_index]?.counterevidence ?? [];
+          for (const item of check.counterevidence) {
+            if (
+              !sources.has(item.source) ||
+              !merged.some(
+                (entry) =>
+                  entry.source === item.source &&
+                  normalizeText(entry.quote) === normalizeText(item.quote),
+              )
+            )
+              throw new Error(
+                `${check.path}: adversarial counterevidence is missing from the assessment or sources`,
+              );
+          }
+        }
+      } else if (report.adversarial_disabled !== true && targets.length) {
+        throw new Error('Missing adversarial checks for selected findings');
+      }
+    } catch (error) {
+      result.push(error instanceof Error ? error.message : String(error));
     }
   }
   return [...new Set(result)];

@@ -22,7 +22,8 @@
     "@o-tempora/shared-types": "^0.1.0",
     "htmlparser2": "^10.1.0",
     "openai": "^7.43.0",
-    "seek-bzip": "^2.0.0"
+    "seek-bzip": "^2.0.0",
+    "tldts": "7.4.10"
   },
   "devDependencies": {
     "tsx": "^4.19.0"
