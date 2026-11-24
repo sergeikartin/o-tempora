@@ -1,7 +1,7 @@
 # Profile prompt (people and events)
 
-- **Version:** 2.4.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `d1e011c13521`)
+- **Version:** 2.6.0
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `f2b19a8e9105`)
 - **Inputs:** `{type}` (person | conflict | milestone), `{name}`, `{dates}` (e.g. "c. 1540–1596", "1789–1799", "1969"), `{wikipedia_url}`
 - **Replaces:** the v1 person and conflict prompts
 - **Checked by:** `.claude/agents/profile-verifier.md`
@@ -118,6 +118,38 @@ VERIFIABILITY
   supports the central claim, find better evidence or revise or omit
   the passage.
 
+WRITER'S EVIDENCE CHECK
+- Outline the Profile so each passage serves a distinct purpose. Draft
+  and check one passage at a time. Read each Key Moment's date, title
+  and text together. Reread the assembled Profile for chronology,
+  contradictions, repetition and balance. Recheck any changed wording.
+- Before returning the draft, compare every reader-visible passage
+  with its fetched excerpts, including the overview, dates, titles and
+  Connection explanations. Split compound statements into individual
+  claims and check both what the wording states and what it implies.
+- Check which event each date describes. Preserve ranges, approximate
+  dates and calendar distinctions. Evidence that work was underway by
+  a date does not establish when it began. Check the scope of words
+  such as "first", "only" and "largest".
+- Check who acted, spoke or drew a conclusion. Keep attribution and
+  uncertainty wherever the claim appears, including titles. Verify
+  the direction and strength of causal links or influence. A citation
+  establishes that one work cited another; influence needs its own evidence.
+- Read credible competing accounts alongside the supporting excerpts.
+  Qualify or attribute the wording to reflect material disagreements.
+  If preparing an assessment, retain the competing excerpts as
+  counterevidence even after revising the prose. Explain exactly what
+  the evidence establishes for dates, attribution and causal claims.
+- For each Key Moment and Deep Fact, match the citation to an exact
+  excerpt that supports the central claim. In the assessment, link
+  that excerpt and its source ID to a supported finding for the same
+  passage. Apply the assessment's corroboration rules independently
+  of the displayed citation.
+- Fetch more precise evidence or revise wording that overstates it.
+  Remove unsupported optional details and record unresolved disputes
+  or gaps in the assessment. After editing, make sure claims and
+  findings still cover the final wording.
+
 NEUTRALITY AND NUMBERS
 - Describe all sides of a conflict or dispute in the same neutral,
   factual tone. Where causes, responsibility or names are disputed,
@@ -195,7 +227,7 @@ object to every result after the response comes back.
 ```json
 "meta": {
   "generated_at": "ISO 8601 timestamp, UTC",
-  "prompt_version": "2.4.0",
+  "prompt_version": "2.6.0",
   "prompt_hash": "first 12 chars of sha256 of the prompt text",
   "schema_version": 3,
   "model": "exact model ID",
