@@ -12,6 +12,8 @@ Output publishes only current, approved translations to `profiles/ru/<slug>.json
 
 ## Fidelity review
 
-Before submitting, compare each Russian sentence with its English source. Check who did what, what the action was directed at or produced, and which qualifications apply. Check facts, dates, attribution, numeric values and bold emphasis across all fields. Reread the Russian for flow, then compare any sentence changed during that pass with the English again.
+These rules are embedded directly in `prompts/profile-translation.md`, `prompts/profile-translation-repair.md` and `prompts/profile-translation-audit.md` so stateless agents and cross-family handoffs need only the prepared task file:
 
-The independent audit covers every field. Faithful idiomatic paraphrases pass. Each blocking finding names the affected field, identifies the specific source detail the Russian must preserve, and explains what the current wording makes a reader misunderstand or miss. If the auditor suggests a rewrite, check it against the English before using it. The source detail is the criterion for clearing the finding. The workflow allows one correction and a fresh full audit before holding a candidate with unresolved findings.
+- **Translator self-check:** Compare each Russian sentence with its English source for actor, action, object, qualifications, facts, dates, attribution, numeric values and bold emphasis. Reread for natural Russian flow, then re-compare any changed sentence against the English.
+- **Independent audit calibration:** Faithful idiomatic paraphrases pass, and Russian clauses may reorder numeric values naturally. Each blocking finding must name the affected field, identify the specific English source detail to preserve, and explain what the current wording makes a reader misunderstand or miss.
+- **Correction check:** Verify any auditor-suggested rewrite against the English source before using it—the English source detail is the criterion for clearing the finding. The workflow allows one correction and a fresh full audit before holding a candidate with unresolved findings.

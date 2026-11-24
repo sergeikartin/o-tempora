@@ -18,6 +18,8 @@ Both sessions use the same checkout. Resolve paths from the repository root for 
 
 Use one active workflow per QID. Retain completed artifacts when pausing. During repairs or retries, refresh the task and use a reply produced for that input hash. A `skipped` or `reused` response leaves any existing task file untouched.
 
+**Write boundary for Gemini Neon:** Never edit committed raw Profile files, verification reports, or Russian translation artifacts under `packages/data-pipeline/data/raw/profiles/<lane>/`. Write only to `tasks/<QID>/*-reply.json` (in Workflow A) or `incoming/<QID>.json` (in Workflow B) so the CLI remains the sole owner of validation, hashing, and receipts.
+
 ## A. Codex writes and repairs, Gemini Neon audits
 
 **Codex draft wave.** Ask the coordinator to check status, prefetch a Source Map, dispatch `profile-writer`, preflight and finalize. Choose `stop_after=english-adversarial` to finish or reuse the counterevidence checks and prepare the English audit. Choose `stop_after=finalize` to hand over a finalized draft. At that boundary, Codex can prepare the audit for QIDs already at `draft-pending-audit`. QIDs at `draft-pending-adversarial` need the adversarial wave first.
@@ -33,9 +35,9 @@ profiles status --qids=Q935 --stage=draft-pending-adversarial,draft-pending-audi
 profiles english-audit --qid=Q935 --out="$handoff/audit-task.json"
 ```
 
-**Gemini Neon audit wave.** With Easy MCP Shell off, read the full task with `read_file`, evaluate the Profile and supplied evidence in one pass, and write the reply with `write_file`. Copy `input_hash` unchanged and follow the prompt’s `result` schema. Report the reply path after writing it.
+**Gemini Neon audit wave.** With Easy MCP Shell off, read the full task with `read_file`, evaluate the Profile and supplied evidence in one pass (the task prompt is self-contained), and write the reply with `write_file`. Copy `input_hash` unchanged and follow the prompt’s `result` schema. Report the reply path after writing it.
 
-> Use Easy MCP read_file to open packages/data-pipeline/data/raw/profiles/tasks/Q935/audit-task.json. Audit it in one pass using the supplied material only. Use write_file to save packages/data-pipeline/data/raw/profiles/tasks/Q935/audit-reply.json with the task’s exact input_hash, model "gemini-4-neon", and the result requested by the task. Keep tool use to reading the task and writing the reply.
+> Use Easy MCP read_file to open packages/data-pipeline/data/raw/profiles/tasks/Q935/audit-task.json. Audit it in one pass using the supplied material only. Use write_file to save packages/data-pipeline/data/raw/profiles/tasks/Q935/audit-reply.json with the task’s exact input_hash, model "gemini-4-neon", and the result requested by the task. Keep tool use to reading the task and writing the reply, and do not modify files under data/raw/profiles/<lane>/.
 
 With Shell enabled, Gemini Neon can also run the adversarial wave. Prepare `adversarial-task.json` with `english-adversarial --qid=Q935 --out=<task path>`. If prepared, use Google Search for neutral and falsification queries and `profiles evidence` to obtain snapshot IDs and excerpts. Write `adversarial-reply.json` and apply it with `english-adversarial --qid=Q935 --result=<reply path>`. Prepare the English audit after the checks are saved or the CLI reports `skipped` or `reused`.
 
@@ -51,7 +53,7 @@ profiles english-audit --qid=Q935 --result="$handoff/audit-reply.json"
 
 > Use profile-coordinator for Q935, stop_after=russian-translation. Prepare the fidelity task from the saved candidate and return its path for Gemini Neon.
 
-> Use Easy MCP read_file to open packages/data-pipeline/data/raw/profiles/tasks/Q935/ru-audit-task.json. Review every field for fidelity using the supplied English, Russian and glossary. Use write_file to save packages/data-pipeline/data/raw/profiles/tasks/Q935/ru-audit-reply.json with the unchanged input_hash, model "gemini-4-neon", and the requested result. Use only the supplied task.
+> Use Easy MCP read_file to open packages/data-pipeline/data/raw/profiles/tasks/Q935/ru-audit-task.json. Review every field for fidelity using the supplied English, Russian and glossary. Use write_file to save packages/data-pipeline/data/raw/profiles/tasks/Q935/ru-audit-reply.json with the unchanged input_hash, model "gemini-4-neon", and the requested result. Use only the supplied task, and do not modify files under data/raw/profiles/<lane>/.
 
 > Use profile-coordinator for Q935, stop_after=russian-audit. Apply the saved Gemini Neon fidelity reply against the same ru-candidate.json and report the resulting stage.
 
@@ -67,12 +69,12 @@ Have Codex prefetch the Source Map for the selected QID. With Shell on, Gemini N
 
 ## C. Codex-only subagents
 
-Use the `.codex/agents/` role definitions from start to finish. Astra handles writing, repairs and English audit. Sol handles coordination, adversarial research, translation and Russian fidelity audit, with reasoning effort set per role. Stateless roles disable shell access and use the supplied packet as their evidence boundary. Codex inherits the parent session’s sandbox and MCP services. If the session lacks local file tools for a stateless role, the coordinator supplies the task verbatim and saves the returned reply. Claude Code’s matching stateless roles expose only `Read` and `Write`. [Codex custom agent configuration](https://learn.chatgpt.com/docs/agent-configuration/subagents#custom-agent-file-schema)
+Use the role definitions in `.codex/agents/*.toml` from start to finish; those files are the single source of truth for per-role `model`, `model_reasoning_effort`, and tool restrictions. Stateless roles disable shell access and use the supplied task packet as their evidence boundary. Codex inherits the parent session’s sandbox and MCP services; if a stateless role lacks local file tools, the coordinator supplies the task verbatim and saves the returned reply. Claude Code’s matching stateless roles under `.claude/agents/` expose only `Read` and `Write`. [Codex custom agent configuration](https://learn.chatgpt.com/docs/agent-configuration/subagents#custom-agent-file-schema)
 
 > Use profile-coordinator for Q935, concurrency=1, through bilingual approval. Use fresh profile-writer, profile-adversarial, profile-auditor, profile-translator and profile-translation-auditor subagents for their respective tasks. Report any hold or proposal.
 
 ## Verify model provenance
 
-Record the actual serving model ID in `writer.model` and every task reply’s top-level `model`. For Gemini Neon use `gemini-4-neon`. For Codex use the ID from the role’s runtime, such as `gpt-6.2-sol`. Where runtime metadata is unavailable, confirm the model with the coordinator before saving a reply.
+Record the actual serving model ID in `writer.model` and every task reply’s top-level `model`. For Gemini Neon use `gemini-4-neon`. For Codex use the ID from the role’s runtime, such as `gpt-6.2-sol` or `gpt-6.2-astra`. Where runtime metadata is unavailable, confirm the model with the coordinator before saving a reply.
 
 Check `meta.model` in the English Profile for the original writer. In the adjoining `*.verification.json`, check `models` for the assessment author, adversarial researcher when applicable, and independent English auditor. After repair, the assessment author can be the repair model. In `*.ru.translation.json`, check each `models[].model` for the translator and Russian fidelity auditor.

@@ -1,7 +1,7 @@
 # Profile prompt (people and events)
 
-- **Version:** 2.7.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `582b5b88c98d`)
+- **Version:** 2.8.0
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `28340cecc600`)
 - **Inputs:** `{type}` (person | conflict | milestone), `{name}`, `{dates}` (e.g. "c. 1540–1596", "1789–1799", "1969"), `{wikipedia_url}`
 - **Replaces:** the v1 person and conflict prompts
 - **Output format:** [Assessed Profile](profile-assessment.md)
@@ -95,6 +95,9 @@ DEEP FACTS
   return fewer.
 
 VERIFIABILITY
+- Start from the prefetched Source Map's heading offsets when supplied.
+  Use `evidence --outline` on new URLs and targeted `--query`, `--offset`
+  and `--length` reads to keep fetched excerpts focused.
 - Record each visible factual claim in its field's findings. Keep claims
   standalone and retain qualifications and attribution. For a legend,
   document the account and its origin.
@@ -184,7 +187,7 @@ object to every result after the response comes back.
 ```json
 "meta": {
   "generated_at": "ISO 8601 timestamp, UTC",
-  "prompt_version": "2.7.0",
+  "prompt_version": "2.8.0",
   "prompt_hash": "first 12 chars of sha256 of the prompt text",
   "schema_version": 4,
   "model": "exact model ID",
@@ -227,10 +230,12 @@ object to every result after the response comes back.
 ## Matching connections
 
 - Connections mix people and events; the model doesn't label which is which.
-- Resolve each `wikipedia_url` to a Wikidata ID (`wbgetentities`,
-  `sites=enwiki`, up to 50 titles per call; redirects are followed), then
-  look the ID up in people, conflicts and milestones. Whichever dataset
-  contains it decides the type. Drop anything that matches none.
+- Resolve each `wikipedia_url` to a Wikidata ID through the English Wikipedia
+  Action API (`action=query`, `prop=pageprops`, `ppprop=wikibase_item`,
+  `redirects=1`, up to 50 titles per call), then look the ID up in people,
+  conflicts and milestones. Whichever dataset contains it decides the type.
+  Drop self-links, duplicate target QIDs (keeping the first match) and
+  anything absent from the dataset.
 - Connections are one-directional: if Drake lists the Spanish Armada, the
   Armada profile does not show Drake unless its own run lists him. Do not
   merge across profiles when building them.
