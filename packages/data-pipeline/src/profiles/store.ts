@@ -1,4 +1,5 @@
-import { readdir, readFile } from 'node:fs/promises';
+import { randomUUID } from 'node:crypto';
+import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { PROFILE_LANES } from '@o-tempora/shared-types';
 import { asRecord, asString } from './values.js';
@@ -47,4 +48,11 @@ export async function readStoredProfiles(
     }
   }
   return stored;
+}
+
+export async function writeJson(file: string, value: unknown): Promise<void> {
+  await mkdir(path.dirname(file), { recursive: true });
+  const temporary = `${file}.${randomUUID()}.tmp`;
+  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`);
+  await rename(temporary, file);
 }

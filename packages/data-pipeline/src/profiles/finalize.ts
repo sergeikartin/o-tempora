@@ -1,16 +1,17 @@
-import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { readdir, readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { slugify } from '../output/slugs.js';
-import { parseModelProfile } from './model-profile.js';
-import { readStoredProfiles } from './store.js';
+import {
+  extractAssessedProfile,
+  finalizedAssessment,
+} from './assessed-profile.js';
+import { PROFILE_SCHEMA_VERSION } from './model-profile.js';
+import { readStoredProfiles, writeJson } from './store.js';
 import { type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
 import { parseTokenUsage, type TokenUsage } from './usage.js';
 import { asRecord, asString } from './values.js';
+import { profileHash } from './verification/policy.js';
 import type { ResolveArticleQids } from './wikipedia-qids.js';
-
-// The JSON shape `meta` takes (prompts/profile.md, "Meta"). `temperature`
-// stays null: no writer sets it.
-const SCHEMA_VERSION = 3;
 
 interface WriterRun {
   model: string;
@@ -70,8 +71,11 @@ async function finalizeFile(
   }
 
   const stagingPath = path.join(options.incomingDir, fileName);
-  const staged: unknown = JSON.parse(await readFile(stagingPath, 'utf8'));
-  const profile = parseModelProfile(staged, fileName);
+  const staged = asRecord(
+    JSON.parse(await readFile(stagingPath, 'utf8')),
+    fileName,
+  );
+  const { profile, assessment } = extractAssessedProfile(staged);
   const writer = parseWriterRun(staged);
   const generation = asRecord(staged, fileName).generation;
   let provenance:
@@ -130,7 +134,7 @@ async function finalizeFile(
       generated_at: provenance?.generated_at ?? null,
       prompt_version: provenance?.prompt_version ?? null,
       prompt_hash: provenance?.prompt_hash ?? null,
-      schema_version: SCHEMA_VERSION,
+      schema_version: PROFILE_SCHEMA_VERSION,
       model: writer?.model ?? options.model,
       reasoning_effort: writer?.reasoningEffort ?? null,
       temperature: null,
@@ -161,8 +165,19 @@ async function finalizeFile(
       subject.lane,
       `${qid}-${slugify(subject.name)}.en.json`,
     );
-  await mkdir(path.dirname(recordPath), { recursive: true });
-  await writeFile(recordPath, `${JSON.stringify(record, null, 2)}\n`);
+  const pending = {
+    profile_hash: profileHash(record),
+    assessment: finalizedAssessment(
+      assessment,
+      record,
+      profile.connections.map(({ wikipedia_url }) => wikipedia_url),
+    ),
+    model: record.meta.model,
+  };
+  await writeJson(recordPath, {
+    ...record,
+    meta: { ...record.meta, pending_assessment: pending },
+  });
   await rm(stagingPath);
   return { outcome: 'written', recordPath };
 }

@@ -1,7 +1,7 @@
 import { asArray, asRecord, asString } from './values.js';
 
-// What the profile-writer agent returns (prompts/profile.md's "Return JSON
-// only" block), validated. `meta` is added later by finalize.
+export const PROFILE_SCHEMA_VERSION = 4;
+
 export interface ModelProfile {
   subject: string;
   type: string;
@@ -11,7 +11,6 @@ export interface ModelProfile {
     date: string;
     title: string;
     text: string;
-    claims: string[];
     source: string;
   }[];
   deep_facts: {
@@ -19,7 +18,6 @@ export interface ModelProfile {
     type: string;
     is_legend: boolean;
     confidence: string;
-    claims: string[];
     source: string;
   }[];
   connections: {
@@ -57,14 +55,6 @@ function asSource(value: unknown, where: string): string {
   );
 }
 
-function asClaims(value: unknown, where: string): string[] {
-  const claims = asArray(value, where).map((claim, index) =>
-    asString(claim, `${where}[${index}]`),
-  );
-  if (claims.length === 0) throw new Error(`${where}: expected claims`);
-  return claims;
-}
-
 function asBoundedArray(
   value: unknown,
   where: string,
@@ -98,7 +88,6 @@ export function parseModelProfile(json: unknown, where: string): ModelProfile {
         date: asString(moment.date, `${at}.date`),
         title: asString(moment.title, `${at}.title`),
         text: asString(moment.text, `${at}.text`),
-        claims: asClaims(moment.claims, `${at}.claims`),
         source: asSource(moment.source, `${at}.source`),
       };
     }),
@@ -126,7 +115,6 @@ export function parseModelProfile(json: unknown, where: string): ModelProfile {
           ['high', 'medium'],
           `${at}.confidence`,
         ),
-        claims: asClaims(fact.claims, `${at}.claims`),
         source: asSource(fact.source, `${at}.source`),
       };
     }),

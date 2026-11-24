@@ -799,7 +799,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   assert.notEqual(refreshed.id, first.id);
   const contrary = await run('evidence', `--url=${contraryUrl}`);
 
-  async function researchFor(profile: unknown) {
+  function evidenceFor(profile: unknown) {
     const parsed = parseModelProfile(profile, 'coordinator test');
     const findings = assessment(parsed);
     for (const finding of findings.findings)
@@ -817,6 +817,11 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
         origin: 'Archival account',
       },
     ];
+    return findings;
+  }
+  const initial = raw();
+  async function legacyResearch() {
+    const findings = evidenceFor(initial);
     findings.uncovered.push('connections.0.connection: dropped by finalize');
     return `--research=${await save('research.json', {
       assessment: findings,
@@ -824,8 +829,30 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
       model: 'researcher-writer',
     })}`;
   }
-  const initial = raw();
-  let researchFlag = await researchFor(initial);
+  function assessed(profile: unknown, findings = evidenceFor(profile)) {
+    const draft = parseModelProfile(profile, 'coordinator test');
+    const field = (path: string, text: string) => ({
+      text,
+      findings: findings.findings
+        .filter((finding) => finding.path === path)
+        .map(({ path: _path, ...finding }) => finding),
+    });
+    return {
+      ...draft,
+      overview: field('overview', draft.overview),
+      key_moments: draft.key_moments.map((moment, i) => ({
+        ...moment,
+        date: field(`key_moments.${i}.date`, moment.date),
+        title: field(`key_moments.${i}.title`, moment.title),
+        text: field(`key_moments.${i}.text`, moment.text),
+      })),
+      coherent: findings.coherent,
+      uncovered: findings.uncovered,
+      issues: findings.issues,
+      subject_dates: findings.subject_dates,
+    };
+  }
+  const researchFlag = await legacyResearch();
   const audit = await run('english-audit', qid, researchFlag);
   function checkCounterevidence(prompt: string) {
     const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
@@ -865,6 +892,48 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     'held',
   );
 
+  const evidenceRepair = await run('english-repair', qid);
+  const refreshedAssessment = evidenceFor(initial);
+  const refreshedEvidence = refreshedAssessment.findings[0]?.evidence[0];
+  assert.ok(refreshedEvidence);
+  refreshedEvidence.source = String(refreshed.id);
+  const evidenceReply = await save('evidence-repair.json', {
+    input_hash: evidenceRepair.input_hash,
+    result: assessed(initial, refreshedAssessment),
+  });
+  assert.equal(
+    (await run('english-repair', qid, `--result=${evidenceReply}`)).status,
+    'evidence-only',
+  );
+  assert.equal(
+    profileHash((await saved(options)).record),
+    profileHash(initial),
+  );
+  await assert.rejects(run('english-repair', qid), /pending assessment/);
+  await assert.rejects(
+    run('english-audit', qid, researchFlag),
+    /without --research/,
+  );
+  const evidenceAudit = await run('english-audit', qid);
+  assert.notEqual(evidenceAudit.input_hash, audit.input_hash);
+  await assert.rejects(
+    run('english-audit', qid, `--result=${rejected}`),
+    /different inputs/,
+  );
+  const secondRejection = await save('second-hold.json', {
+    input_hash: evidenceAudit.input_hash,
+    result: {
+      uncovered: [],
+      issues: ['overview: specify the published work'],
+      coherent: true,
+    },
+  });
+  assert.equal(
+    (await run('english-audit', qid, `--result=${secondRejection}`)).status,
+    'held',
+  );
+  assert.equal((await saved(options)).report.repairs, 0);
+
   const repair = await run('english-repair', qid);
   const revised = {
     ...initial,
@@ -873,7 +942,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   };
   const repairReply = await save('repair.json', {
     input_hash: repair.input_hash,
-    result: revised,
+    result: assessed(revised),
   });
   assert.equal(
     (await run('english-repair', qid, `--result=${repairReply}`)).status,
@@ -882,24 +951,24 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   const checkpoint = await saved(options);
   assert.equal(checkpoint.record.overview, revised.overview);
   assert.equal(checkpoint.record.meta.review.status, 'draft');
+  assert.equal(checkpoint.record.key_moments[0].claims, undefined);
   assert.equal(checkpoint.report.profile_hash, profileHash(initial));
   await assert.rejects(
-    run('english-audit', qid, researchFlag, `--result=${rejected}`),
+    run('english-audit', qid, `--result=${rejected}`),
     /different inputs/,
   );
 
-  researchFlag = await researchFor(revised);
-  const freshAudit = await run('english-audit', qid, researchFlag);
+  const freshAudit = await run('english-audit', qid);
   const accepted = await save('accepted-audit.json', {
     input_hash: freshAudit.input_hash,
     result: { uncovered: [], issues: [], coherent: true },
   });
   assert.equal(
-    (await run('english-audit', qid, researchFlag, `--result=${accepted}`))
-      .status,
+    (await run('english-audit', qid, `--result=${accepted}`)).status,
     'approved',
   );
   const english = await saved(options);
+  assert.equal(english.record.meta.pending_assessment, undefined);
   assert.equal(english.report.repairs, 1);
   assert.equal(fetches, 3);
   assert.deepEqual(

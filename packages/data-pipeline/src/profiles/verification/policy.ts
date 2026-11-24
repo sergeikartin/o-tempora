@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { passages } from '../passages.js';
 import { asArray, asRecord, asString } from '../values.js';
 
-export const POLICY_VERSION = '5';
+export const POLICY_VERSION = '6';
 
 export function isCurrentVerificationPolicy(
   version: unknown,
@@ -12,6 +12,7 @@ export function isCurrentVerificationPolicy(
   // parser skipped every comparison for an ongoing subject.
   return (
     version === POLICY_VERSION ||
+    version === '5' ||
     version === '4' ||
     version === '3' ||
     (version === '2' && !dates.endsWith('–present'))

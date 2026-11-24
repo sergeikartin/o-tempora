@@ -1,10 +1,10 @@
 # Profile prompt (people and events)
 
-- **Version:** 2.6.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `f2b19a8e9105`)
+- **Version:** 2.7.0
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `582b5b88c98d`)
 - **Inputs:** `{type}` (person | conflict | milestone), `{name}`, `{dates}` (e.g. "c. 1540–1596", "1789–1799", "1969"), `{wikipedia_url}`
 - **Replaces:** the v1 person and conflict prompts
-- **Checked by:** `.claude/agents/profile-verifier.md`
+- **Output format:** [Assessed Profile](profile-assessment.md)
 
 ## Prompt
 
@@ -20,8 +20,8 @@ Return:
 3. Up to 3 deep facts.
 4. Connections to other people and events.
 
-Every key moment and deep fact also carries checkable claims and a source,
-so a separate verifier can check them (see VERIFIABILITY).
+Every Key Moment and Deep Fact carries a source. Record the final wording and
+its evidence once in the assessed Profile format for an independent audit.
 
 Fetch and read trustworthy sources before drafting. Ground every factual
 claim in fetched evidence. If you cannot fetch the evidence needed for a
@@ -95,18 +95,9 @@ DEEP FACTS
   return fewer.
 
 VERIFIABILITY
-- For every key moment and deep fact, list 2 to 4 claims: the facts
-  the paragraph rests on.
-- Each claim is one short, standalone sentence that can be checked
-  on its own. Spell out names; no pronouns.
-  Good: "Drake raided the port of Cádiz in 1587."
-  Bad: "He then raided it."
-- Together the claims must cover every date, number, name and
-  cause-and-effect link in the paragraph. If a detail can't be stated
-  as a claim you're confident in, remove it from the paragraph.
-- Keep hedges in the claim: if the paragraph says "reportedly",
-  so does the claim. For a legend, claim that the story exists and
-  where it comes from, not that it happened.
+- Record each visible factual claim in its field's findings. Keep claims
+  standalone and retain qualifications and attribution. For a legend,
+  document the account and its origin.
 - In each key moment and deep fact, set `source` to the public HTTPS
   page that best supports the passage's central claim. Prefer relevant
   primary records, scholarly work or publications from institutions
@@ -137,7 +128,7 @@ WRITER'S EVIDENCE CHECK
   establishes that one work cited another; influence needs its own evidence.
 - Read credible competing accounts alongside the supporting excerpts.
   Qualify or attribute the wording to reflect material disagreements.
-  If preparing an assessment, retain the competing excerpts as
+  Retain the competing excerpts as
   counterevidence even after revising the prose. Explain exactly what
   the evidence establishes for dates, attribution and causal claims.
 - For each Key Moment and Deep Fact, match the citation to an exact
@@ -147,8 +138,8 @@ WRITER'S EVIDENCE CHECK
   of the displayed citation.
 - Fetch more precise evidence or revise wording that overstates it.
   Remove unsupported optional details and record unresolved disputes
-  or gaps in the assessment. After editing, make sure claims and
-  findings still cover the final wording.
+  or gaps in the assessment. After editing, make sure findings still
+  cover the final wording.
 
 NEUTRALITY AND NUMBERS
 - Describe all sides of a conflict or dispute in the same neutral,
@@ -180,42 +171,8 @@ CONNECTIONS
   If you are not sure of the URL, leave it out. Never guess a URL.
 - If you are not confident a connection is real, leave it out.
 
-Return JSON only:
-{
-  "subject": "{name}",
-  "type": "{type}",
-  "wikipedia_url": "{wikipedia_url}",
-  "overview": "one paragraph",
-  "key_moments": [
-    {
-      "date": "1577–1580",
-      "title": "essence in a few words",
-      "text": "one paragraph with **bold**",
-      "claims": ["standalone checkable sentence"],
-      "source": "public HTTPS URL of the fetched supporting page"
-    }
-  ],
-  "deep_facts": [
-    {
-      "text": "one paragraph",
-      "type": "hidden_story | unique_detail",
-      "is_legend": false,
-      "confidence": "high | medium",
-      "claims": ["standalone checkable sentence"],
-      "source": "public HTTPS URL of the fetched supporting page"
-    }
-  ],
-  "connections": [
-    {
-      "name": "most common name",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/...",
-      "connection": "one short sentence on how it is connected",
-      "importance": "high | medium"
-    }
-  ]
-}
-
-Return at most 15 connections, high importance first.
+Return the assessed Profile as JSON. Use only plain text and paired
+**bold** in the draft wording. Return at most 15 Connections, high importance first.
 ```
 
 ## Meta (added by the pipeline, not the model)
@@ -227,9 +184,9 @@ object to every result after the response comes back.
 ```json
 "meta": {
   "generated_at": "ISO 8601 timestamp, UTC",
-  "prompt_version": "2.6.0",
+  "prompt_version": "2.7.0",
   "prompt_hash": "first 12 chars of sha256 of the prompt text",
-  "schema_version": 3,
+  "schema_version": 4,
   "model": "exact model ID",
   "reasoning_effort": "high",
   "temperature": null,
@@ -258,7 +215,7 @@ object to every result after the response comes back.
 | `generated_at` | When the writer produced the result, preserved from staged generation metadata; null when unknown. |
 | `prompt_version` | Human-readable version of the prompt used for writing; null when unknown. Bump it on meaningful prompt changes. |
 | `prompt_hash` | Hash captured from the prompt used for writing, preserved through finalization; null when unknown. Use it to find stale records to regenerate. |
-| `schema_version` | Which JSON shape this record follows, for validators and the frontend. v2: `key_moments`, `deep_facts`, `connections`; no categories. v3: adds `claims` and `source` to key moments and deep facts. |
+| `schema_version` | The raw draft format. Version 4 stores passage citations in the draft and factual findings in the assessment or verification report. |
 | `model`, `reasoning_effort`, `temperature` | Writer model and reasoning setting when known. Temperature stays null. Agent model and effort come from runtime metadata when available. |
 | `run_id` | Groups a batch so one bad run can be rolled back or re-run. |
 | `locale` | Language of the generated text, for the Russian version of the site. |

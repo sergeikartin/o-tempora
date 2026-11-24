@@ -22,7 +22,7 @@ const USAGE = `Usage: profiles <finalize|verify|audit|translate|evidence|english
   audit     --qids=Q1,Q2,... [--provider=${PROVIDERS.join('|')}] [--model=<id>]
   translate --qids=Q1,Q2,... [--force] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--audit-model=<id>]
   evidence --url=<https URL> [--query=<text>] [--offset=<number>] [--refresh]
-  english-audit --qid=Q1 --research=<file> [--result=<file>]
+  english-audit --qid=Q1 [--research=<file>] [--result=<file>]
   english-repair --qid=Q1 [--result=<file>]
   russian-translation --qid=Q1
   russian-audit --qid=Q1 --candidate=<file> [--result=<file>]`;

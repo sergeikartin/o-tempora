@@ -1,9 +1,20 @@
 import assert from 'node:assert/strict';
-import { mkdir, mkdtemp, readdir, readFile, writeFile } from 'node:fs/promises';
+import {
+  mkdir,
+  mkdtemp,
+  readdir,
+  readFile,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import { parseRawProfile } from '../output/profiles.js';
+import {
+  extractAssessedProfile,
+  readPendingAssessment,
+} from './assessed-profile.js';
 import { type FinalizeOptions, finalizeProfiles } from './finalize.js';
 import type { ProfileSubject } from './subjects.js';
 
@@ -38,28 +49,42 @@ const QID_OF_URL = new Map([
   ['https://en.wikipedia.org/wiki/Robert_Hooke', 'Q99'],
 ]);
 
-function modelProfile(overrides: Record<string, unknown> = {}) {
+function field(text: string) {
+  return {
+    text,
+    findings: [
+      {
+        claim: text,
+        verdict: 'unverifiable',
+        risk: 'ordinary',
+        explanation: 'No source available.',
+        correction: '',
+        evidence: [],
+      },
+    ],
+  };
+}
+
+function assessedProfile(overrides: Record<string, unknown> = {}) {
   return {
     subject: 'Isaac Newton',
     type: 'person',
     wikipedia_url: 'https://en.wikipedia.org/wiki/Isaac_Newton',
-    overview: 'An English **mathematician**.',
+    overview: field('An English **mathematician**.'),
     key_moments: [
       {
-        date: '1687',
-        title: 'The Principia',
-        text: 'He published the **Principia**.',
-        claims: ['Newton published the Principia in 1687.'],
+        date: field('1687'),
+        title: { text: 'The Principia', findings: [] },
+        text: field('He published the **Principia**.'),
         source: 'https://en.wikipedia.org/wiki/Principia',
       },
     ],
     deep_facts: [
       {
-        text: 'A fact.',
+        text: field('A fact.'),
         type: 'unique_detail',
         is_legend: false,
         confidence: 'high',
-        claims: ['A claim.'],
         source: 'not_on_wikipedia',
       },
     ],
@@ -67,28 +92,32 @@ function modelProfile(overrides: Record<string, unknown> = {}) {
       {
         name: 'Gottfried Leibniz',
         wikipedia_url: 'https://en.wikipedia.org/wiki/Gottfried_Leibniz',
-        connection: 'Rival over calculus.',
+        connection: field('Rival over calculus.'),
         importance: 'high',
       },
       {
         name: 'Robert Hooke',
         wikipedia_url: 'https://en.wikipedia.org/wiki/Robert_Hooke',
-        connection: 'Disputed the inverse-square law.',
+        connection: field('Disputed the inverse-square law.'),
         importance: 'medium',
       },
       {
         name: 'Principia',
         wikipedia_url: 'https://en.wikipedia.org/wiki/Principia',
-        connection: 'His great book.',
+        connection: field('His great book.'),
         importance: 'high',
       },
       {
         name: 'Nobody',
         wikipedia_url: 'https://en.wikipedia.org/wiki/Nobody',
-        connection: 'Unresolvable.',
+        connection: field('Unresolvable.'),
         importance: 'medium',
       },
     ],
+    coherent: true,
+    subject_dates: [],
+    uncovered: [],
+    issues: [],
     ...overrides,
   };
 }
@@ -122,7 +151,7 @@ function stage(options: FinalizeOptions, qid: string, content: unknown) {
 
 test('writes a validated draft record with meta and resolved Connections', async () => {
   const options = await setup();
-  await stage(options, 'Q1', modelProfile());
+  await stage(options, 'Q1', assessedProfile());
 
   const result = await finalizeProfiles(options);
 
@@ -165,15 +194,15 @@ test('writes a validated draft record with meta and resolved Connections', async
   );
 });
 
-test('rejects a file that does not match the raw Profile shape and keeps it staged', async () => {
+test('rejects flat or malformed staging files and keeps them staged', async () => {
   const options = await setup();
-  await stage(options, 'Q1', modelProfile({ overview: '' }));
-  await stage(options, 'Q2', modelProfile({ key_moments: 'none' }));
+  await stage(options, 'Q1', extractAssessedProfile(assessedProfile()).profile);
+  await stage(options, 'Q2', assessedProfile({ key_moments: 'none' }));
   await stage(
     options,
     'Q3',
-    modelProfile({
-      deep_facts: [{ ...modelProfile().deep_facts[0], is_legend: 'no' }],
+    assessedProfile({
+      deep_facts: [{ ...assessedProfile().deep_facts[0], is_legend: 'no' }],
     }),
   );
 
@@ -189,19 +218,57 @@ test('rejects a file that does not match the raw Profile shape and keeps it stag
   assert.equal((await readdir(options.incomingDir)).length, 3);
 });
 
+test('extracts the assessed draft and keeps evidence aligned when finalization drops Connections', async (t) => {
+  const options = await setup();
+  t.after(() => rm(options.profilesDir, { recursive: true, force: true }));
+  const input = assessedProfile({
+    issues: [
+      'connections.1.connection: dropped',
+      'connections.2.connection: kept',
+    ],
+  });
+  await stage(options, 'Q1', input);
+  const result = await finalizeProfiles(options);
+  assert.deepEqual(result.failed, []);
+  const [file] = result.written;
+  assert.ok(file);
+  const record = JSON.parse(await readFile(file, 'utf8'));
+  assert.equal(record.overview, input.overview.text);
+  assert.ok(!Object.hasOwn(record.key_moments[0], 'claims'));
+  assert.ok(!Object.hasOwn(record.deep_facts[0], 'claims'));
+  const pending = readPendingAssessment(record);
+  assert.ok(pending);
+  const { assessment } = pending;
+  assert.ok(assessment.covered.includes('key_moments.0.title'));
+  assert.deepEqual(assessment.issues, ['connections.1.connection: kept']);
+  assert.deepEqual(
+    assessment.findings
+      .filter(({ path }) => path.startsWith('connections.'))
+      .map(({ path, claim }) => [path, claim]),
+    [
+      ['connections.0.connection', 'Rival over calculus.'],
+      ['connections.1.connection', 'His great book.'],
+    ],
+  );
+  assert.equal(
+    readPendingAssessment({ ...record, overview: 'Later edit.' }),
+    undefined,
+  );
+});
+
 test('rejects a file whose article is a different entity or whose type is wrong', async () => {
   const options = await setup();
   await stage(
     options,
     'Q1',
-    modelProfile({
+    assessedProfile({
       wikipedia_url: 'https://en.wikipedia.org/wiki/Robert_Hooke',
     }),
   );
   await stage(
     options,
     'Q3',
-    modelProfile({ wikipedia_url: SUBJECTS[2]?.wikipediaUrl }),
+    assessedProfile({ wikipedia_url: SUBJECTS[2]?.wikipediaUrl }),
   );
 
   const result = await finalizeProfiles(options);
@@ -215,7 +282,7 @@ test('rejects a file whose article is a different entity or whose type is wrong'
 
 test('rejects a file for an entity that is not in the dataset', async () => {
   const options = await setup();
-  await stage(options, 'Q404', modelProfile());
+  await stage(options, 'Q404', assessedProfile());
 
   const result = await finalizeProfiles(options);
 
@@ -235,7 +302,7 @@ test('never overwrites an edited record', async () => {
   });
   await mkdir(path.dirname(recordPath), { recursive: true });
   await writeFile(recordPath, edited);
-  await stage(options, 'Q1', modelProfile());
+  await stage(options, 'Q1', assessedProfile());
 
   const result = await finalizeProfiles(options);
 
@@ -261,7 +328,7 @@ test('regenerating replaces a reviewed record in its original file and resets it
       meta: { prompt_hash: 'old', review: { status: 'reviewed' } },
     }),
   );
-  await stage(options, 'Q1', modelProfile());
+  await stage(options, 'Q1', assessedProfile());
 
   const result = await finalizeProfiles(options);
 
@@ -277,7 +344,7 @@ test('regenerating replaces a reviewed record in its original file and resets it
 test('records the model and token counts a staged `writer` block reports', async () => {
   const options = await setup();
   await stage(options, 'Q1', {
-    ...modelProfile(),
+    ...assessedProfile(),
     writer: {
       provider: 'openai',
       model: 'gpt-6-astra-2026-09-03',
@@ -299,7 +366,7 @@ test('records the model and token counts a staged `writer` block reports', async
 
 test('falls back to the agent model and null tokens without a `writer` block', async () => {
   const options = await setup();
-  await stage(options, 'Q1', modelProfile());
+  await stage(options, 'Q1', assessedProfile());
 
   const result = await finalizeProfiles(options);
 
@@ -317,7 +384,7 @@ test('falls back to the agent model and null tokens without a `writer` block', a
 test('finalize preserves staged prompt provenance without reading the current prompt', async () => {
   const options = await setup();
   await stage(options, 'Q1', {
-    ...modelProfile(),
+    ...assessedProfile(),
     generation: {
       prompt_version: '1.0.0',
       prompt_hash: '111111111111',
@@ -336,7 +403,7 @@ test('finalize preserves staged prompt provenance without reading the current pr
 test('invalid staged provenance is rejected and kept for correction', async () => {
   const options = await setup();
   await stage(options, 'Q1', {
-    ...modelProfile(),
+    ...assessedProfile(),
     generation: {
       prompt_version: '1',
       prompt_hash: 'bad',

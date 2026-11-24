@@ -1,9 +1,15 @@
-import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { type ModelProfile, parseModelProfile } from '../model-profile.js';
+import { extractAssessedProfile } from '../assessed-profile.js';
+import {
+  type ModelProfile,
+  PROFILE_SCHEMA_VERSION,
+  parseModelProfile,
+} from '../model-profile.js';
 import { passages } from '../passages.js';
 import { readPromptText } from '../prompt.js';
 import type { Complete } from '../providers.js';
+import { writeJson } from '../store.js';
 import { formatDates, type ProfileSubject } from '../subjects.js';
 import { asRecord, extractJson } from '../values.js';
 import type { ResolveArticleQids } from '../wikipedia-qids.js';
@@ -31,6 +37,7 @@ export interface VerifyOptions {
   sources?: SourceStore;
   now?: Date;
   repairs?: number;
+  expectedRecordHash?: string;
   log?: (message: string) => void;
 }
 
@@ -54,13 +61,6 @@ async function readJson(filePath: string): Promise<unknown | undefined> {
   }
 }
 
-async function atomicJson(filePath: string, value: unknown): Promise<void> {
-  await mkdir(path.dirname(filePath), { recursive: true });
-  const temporary = `${filePath}.${process.pid}.tmp`;
-  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`);
-  await rename(temporary, filePath);
-}
-
 function replaceProfile(
   record: Record<string, unknown>,
   profile: ModelProfile,
@@ -73,6 +73,10 @@ function replaceProfile(
       ...connection,
       qid: qids.get(connection.wikipedia_url),
     })),
+    meta: {
+      ...asRecord(record.meta, 'meta'),
+      schema_version: PROFILE_SCHEMA_VERSION,
+    },
   };
 }
 
@@ -96,21 +100,17 @@ async function repairProfile(
     englishRepairPrompt(profile, report),
     'repair',
   );
-  return applyRepair(
-    record,
-    profile,
-    extractJson(response.text),
-    options.resolve,
-  );
+  const repaired = parseModelProfile(extractJson(response.text), 'repair');
+  if (hash(repaired) === hash(profile)) return record;
+  return applyRepair(record, profile, repaired, options.resolve);
 }
 
 async function applyRepair(
   record: Record<string, unknown>,
   profile: ModelProfile,
-  result: unknown,
+  repaired: ModelProfile,
   resolve: ResolveArticleQids,
 ): Promise<Record<string, unknown>> {
-  const repaired = parseModelProfile(result, 'repair');
   if (
     repaired.subject !== profile.subject ||
     repaired.type !== profile.type ||
@@ -147,21 +147,26 @@ export async function checkpointEnglishRepair(options: {
   record: Record<string, unknown>;
   report: Record<string, unknown>;
   result: unknown;
+  model: string;
   resolve: ResolveArticleQids;
-}): Promise<{ status: 'draft' | 'proposal'; filePath: string }> {
+}): Promise<{
+  status: 'draft' | 'evidence-only' | 'proposal';
+  filePath: string;
+}> {
   const { filePath, subject, record, report } = options;
   const repairs = completedRepairs(record);
-  if (repairs >= 2) throw new Error('English repair limit reached');
-  const next = await applyRepair(
-    record,
-    parseModelProfile(record, filePath),
-    options.result,
-    options.resolve,
-  );
+  const current = parseModelProfile(record, filePath);
+  const { profile, assessment } = extractAssessedProfile(options.result);
+  const changed = hash(profile) !== hash(current);
+  if (changed && repairs >= 2)
+    throw new Error('English draft repair limit reached');
+  if (!changed && hash(assessment) === hash(report.assessment))
+    throw new Error('Repair did not change the draft or assessment');
+  const next = changed
+    ? await applyRepair(record, current, profile, options.resolve)
+    : record;
   const originalHash = profileHash(record);
   const candidateHash = profileHash(next);
-  if (candidateHash === originalHash)
-    throw new Error('Repair did not change the Profile');
   if (
     hash(await readJson(filePath)) !== hash(record) ||
     hash(await readJson(reportPathFor(filePath))) !== hash(report)
@@ -169,17 +174,30 @@ export async function checkpointEnglishRepair(options: {
     throw new Error('Profile or report changed during repair');
   const root = path.join(path.dirname(filePath), '..');
   const meta = asRecord(record.meta, 'meta');
+  const pending = {
+    profile_hash: candidateHash,
+    assessment,
+    model: options.model,
+  };
+  if (!changed) {
+    await writeJson(filePath, {
+      ...record,
+      meta: { ...meta, pending_assessment: pending },
+    });
+    return { status: 'evidence-only', filePath };
+  }
   const review = asRecord(meta.review, 'review');
   if (review.status === 'edited') {
     const proposalPath = path.join(root, 'proposals', path.basename(filePath));
-    await atomicJson(proposalPath, {
+    await writeJson(proposalPath, {
       original_hash: originalHash,
       proposed: next,
       blockers: report.blockers,
+      assessment,
     });
     return { status: 'proposal', filePath: proposalPath };
   }
-  await atomicJson(
+  await writeJson(
     path.join(
       root,
       'verification-history',
@@ -189,10 +207,11 @@ export async function checkpointEnglishRepair(options: {
     { profile: record, report },
   );
   const { approval: _approval, ...reviewFields } = review;
-  await atomicJson(filePath, {
+  await writeJson(filePath, {
     ...next,
     meta: {
-      ...meta,
+      ...asRecord(next.meta, 'meta'),
+      pending_assessment: pending,
       coordinator_repair: { profile_hash: candidateHash, count: repairs + 1 },
       review: { ...reviewFields, status: 'draft', reviewed_at: null },
     },
@@ -205,6 +224,8 @@ export async function verifyProfile(
 ): Promise<VerifyResult> {
   const original = asRecord(await readJson(options.filePath), options.filePath);
   const originalHash = hash(original);
+  if (options.expectedRecordHash && options.expectedRecordHash !== originalHash)
+    throw new Error('Profile changed during audit apply; prepare a fresh task');
   let record = original;
   const reportPath = reportPathFor(options.filePath);
   const oldReport = await readJson(reportPath).catch((error: unknown) => {
@@ -291,7 +312,7 @@ export async function verifyProfile(
         'proposals',
         path.basename(options.filePath),
       );
-      await atomicJson(proposalPath, {
+      await writeJson(proposalPath, {
         original_hash: profileHash(original),
         proposed: next,
         blockers: report.blockers,
@@ -306,7 +327,7 @@ export async function verifyProfile(
       options.subject.qid,
       `${profileHash(record)}.json`,
     );
-    await atomicJson(history, { profile: record, report });
+    await writeJson(history, { profile: record, report });
     record = next;
     repairs++;
   }
@@ -320,8 +341,12 @@ export async function verifyProfile(
   const review = asRecord(meta.review, 'review');
   const approved = report.blockers.length === 0;
   const { approval: _oldApproval, ...reviewFields } = review;
+  const { pending_assessment: _pending, ...savedMeta } = asRecord(
+    record.meta,
+    'meta',
+  );
   const nextMeta = {
-    ...meta,
+    ...savedMeta,
     review: {
       ...reviewFields,
       status: protectedEdit ? 'edited' : approved ? 'reviewed' : 'draft',
@@ -340,7 +365,7 @@ export async function verifyProfile(
   };
   // Report first, receipt second: a partial write can only withhold publishing.
   for (const source of sources.all()) {
-    await atomicJson(
+    await writeJson(
       path.join(
         path.dirname(options.filePath),
         '..',
@@ -350,8 +375,8 @@ export async function verifyProfile(
       source,
     );
   }
-  await atomicJson(reportPath, report);
-  await atomicJson(options.filePath, { ...record, meta: nextMeta });
+  await writeJson(reportPath, report);
+  await writeJson(options.filePath, { ...record, meta: nextMeta });
   const retry = !approved && sources.failures.size > 0;
   return {
     status: approved ? 'approved' : retry ? 'retry' : 'held',

@@ -1,10 +1,14 @@
-import { randomUUID } from 'node:crypto';
-import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { type ModelProfile, parseModelProfile } from './model-profile.js';
+import {
+  finalizedAssessment,
+  readPendingAssessment,
+} from './assessed-profile.js';
+import { parseModelProfile } from './model-profile.js';
 import { RAW_PROFILES_DIR } from './paths.js';
+import { readPromptText } from './prompt.js';
 import type { Completion } from './providers.js';
-import { readStoredProfiles } from './store.js';
+import { readStoredProfiles, writeJson } from './store.js';
 import { formatDates, loadSubjects } from './subjects.js';
 import {
   approvedTranslation,
@@ -20,7 +24,6 @@ import {
 import { parseTokenUsage } from './usage.js';
 import { asRecord, asString } from './values.js';
 import {
-  type Assessment,
   findingExcerpts,
   hash,
   isCurrentVerificationPolicy,
@@ -32,7 +35,6 @@ import { englishAuditPrompt } from './verification/researcher.js';
 import {
   checkpointEnglishRepair,
   completedRepairs,
-  englishRepairPrompt,
   reportPathFor,
   verifyProfile,
 } from './verification/runner.js';
@@ -80,13 +82,6 @@ async function readOptionalJson(file: string): Promise<unknown> {
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
   }
-}
-
-async function writeJson(file: string, value: unknown): Promise<void> {
-  await mkdir(path.dirname(file), { recursive: true });
-  const temporary = `${file}.${randomUUID()}.tmp`;
-  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`);
-  await rename(temporary, file);
 }
 
 function sourceId(value: unknown): string {
@@ -175,62 +170,47 @@ function completion(
   };
 }
 
-function finalizedAssessment(
-  assessment: Assessment,
-  profile: ModelProfile,
-  draftConnectionUrls: unknown,
-): Assessment {
-  if (draftConnectionUrls === undefined) return assessment;
-  const draft = strings(draftConnectionUrls, 'connection_urls');
-  const indexes = new Map<number, number>();
-  let next = 0;
-  for (const [finalIndex, connection] of profile.connections.entries()) {
-    const draftIndex = draft.indexOf(connection.wikipedia_url, next);
-    if (draftIndex === -1)
-      throw new Error(
-        'Research Connection order does not match the finalized Profile',
-      );
-    indexes.set(draftIndex, finalIndex);
-    next = draftIndex + 1;
-  }
-
-  function remap(value: string): string[] {
-    const match = /^connections\.(\d+)(?=\.)/.exec(value);
-    if (!match) return [value];
-    const index = indexes.get(Number(match[1]));
-    return index === undefined
-      ? []
-      : [`connections.${index}${value.slice(match[0].length)}`];
-  }
-
-  return {
-    ...assessment,
-    findings: assessment.findings.flatMap((finding) =>
-      remap(finding.path).map((path) => ({ ...finding, path })),
-    ),
-    subject_dates: assessment.subject_dates.flatMap((entry) =>
-      remap(entry.path).map((path) => ({ ...entry, path })),
-    ),
-    covered: assessment.covered.flatMap(remap),
-    uncovered: assessment.uncovered.flatMap(remap),
-    issues: assessment.issues.flatMap(remap),
-  };
-}
-
 async function englishAudit(
   options: CoordinatorOptions,
   qid: string,
-  researchFile: string,
+  researchFile?: string,
   resultFile?: string,
 ) {
   const { filePath, subject, record } = await loadSubject(options, qid);
-  const research = asRecord(await readJson(researchFile), 'research result');
   const profile = parseModelProfile(record, filePath);
-  const assessment = finalizedAssessment(
-    parseAssessment(research.assessment),
-    profile,
-    research.connection_urls,
-  );
+  const pending = readPendingAssessment(record);
+  const binding = profileHash(record);
+  let input = pending;
+  if (researchFile) {
+    if (pending)
+      throw new Error(
+        'Audit the assessment saved with this draft without --research',
+      );
+    const research = asRecord(await readJson(researchFile), 'research result');
+    input = {
+      assessment: finalizedAssessment(
+        parseAssessment(research.assessment),
+        profile,
+        research.connection_urls,
+      ),
+      model: completion(research, null).model,
+    };
+  } else if (!input) {
+    const saved = await readOptionalJson(reportPathFor(filePath));
+    if (saved) {
+      const report = asRecord(saved, 'verification report');
+      if (report.profile_hash === binding)
+        input = {
+          assessment: parseAssessment(report.assessment),
+          model: strings(report.models, 'report models')[0] ?? 'unreported',
+        };
+    }
+  }
+  if (!input)
+    throw new Error(
+      'No saved assessment for this draft. Use --research to supply an assessment file.',
+    );
+  const { assessment, model } = input;
   const ids = new Set(
     assessment.findings.flatMap((finding) =>
       findingExcerpts(finding).map(({ source }) => source),
@@ -240,7 +220,6 @@ async function englishAudit(
   const snapshots = await Promise.all(
     [...ids].map((id) => snapshot(directory, id)),
   );
-  const binding = profileHash(record);
   if (!resultFile) {
     options.emit(
       task(
@@ -262,11 +241,8 @@ async function englishAudit(
       subject,
       sources: new SourceStore(undefined, snapshots),
       resolve: options.resolve,
-      research: async (current) => {
-        if (hash(current) !== hash(profile))
-          throw new Error('English Profile changed during audit apply');
-        return { assessment, model: completion(research, assessment).model };
-      },
+      expectedRecordHash: hash(record),
+      research: async () => ({ assessment, model }),
       complete: async (prompt) =>
         completion(audit, output(audit, task(prompt, binding).input_hash)),
       repairs: completedRepairs(record),
@@ -281,6 +257,10 @@ async function englishRepair(
   resultFile?: string,
 ) {
   const { filePath, subject, record, dates } = await loadSubject(options, qid);
+  if (readPendingAssessment(record))
+    throw new Error(
+      'Audit the pending assessment before preparing another repair',
+    );
   const report = asRecord(
     await readJson(reportPathFor(filePath)),
     'verification report',
@@ -296,10 +276,14 @@ async function englishRepair(
     throw new Error(
       'English repair requires a current held verification report',
     );
-  if (completedRepairs(record) >= 2)
-    throw new Error('English repair limit reached');
   const prepared = task(
-    englishRepairPrompt(parseModelProfile(record, filePath), report),
+    readPromptText('profile-assessment.md') +
+      readPromptText('profile-assessment-repair.md') +
+      JSON.stringify({
+        profile: parseModelProfile(record, filePath),
+        report,
+        remaining_draft_repairs: 2 - completedRepairs(record),
+      }),
     hash(record),
   );
   if (!resultFile) {
@@ -307,13 +291,15 @@ async function englishRepair(
     return;
   }
   const reply = asRecord(await readJson(resultFile), 'English repair');
+  const result = output(reply, prepared.input_hash);
   options.emit(
     await checkpointEnglishRepair({
       filePath,
       subject,
       record,
       report,
-      result: output(reply, prepared.input_hash),
+      result,
+      model: completion(reply, result).model,
       resolve: options.resolve,
     }),
   );
@@ -435,7 +421,7 @@ export async function runCoordinatorCommand(
     const qid = required('qid');
     const result = flags.get('result');
     if (command === 'english-audit')
-      await englishAudit(options, qid, required('research'), result);
+      await englishAudit(options, qid, flags.get('research'), result);
     else if (command === 'english-repair')
       await englishRepair(options, qid, result);
     else if (command === 'russian-translation')
