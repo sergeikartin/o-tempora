@@ -648,6 +648,20 @@ test('corroboration needs distinct original accounts and primary or scholarly su
     id: 'second',
     url: 'https://archive.example.org/book',
   });
+  first.counterevidence = [
+    {
+      ...first.evidence[0],
+      source: 'second',
+      kind: 'scholarly',
+      origin: 'Independent archival research',
+      quote: 'A missing excerpt',
+    },
+  ];
+  assert.match(blockers(report, item.covered).join(), /corroboration missing/);
+  assert.match(
+    checkEvidence(item, [{ ...SOURCE, id: 'second' }, SOURCE]).join(),
+    /evidence was not found in a fetched source \(second\)/,
+  );
   first.evidence.push({
     ...first.evidence[0],
     source: 'second',
@@ -746,14 +760,18 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   const { root, options } = await setup(t);
   let output: unknown;
   let fetches = 0;
+  const contraryUrl = 'https://archive.example.org/book';
+  const contraryText = 'One account dates publication to 1688.';
   const commands = {
     profilesDir: root,
     resolve: options.resolve,
-    fetch: async () => {
+    fetch: async (url: string) => {
       fetches++;
       const { id: _legacyId, ...source } = SOURCE;
       const snapshot = {
         ...source,
+        url,
+        text: url === contraryUrl ? contraryText : source.text,
         fetched_at: `2026-11-15T00:00:0${fetches}Z`,
       };
       return { id: hash(snapshot), ...snapshot };
@@ -779,6 +797,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   assert.equal(fetches, 1);
   const refreshed = await run('evidence', `--url=${URL}`, '--refresh');
   assert.notEqual(refreshed.id, first.id);
+  const contrary = await run('evidence', `--url=${contraryUrl}`);
 
   async function researchFor(profile: unknown) {
     const parsed = parseModelProfile(profile, 'coordinator test');
@@ -786,6 +805,18 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     for (const finding of findings.findings)
       for (const evidence of finding.evidence)
         evidence.source = String(first.id);
+    const publication = findings.findings.find(
+      (finding) => finding.path === 'key_moments.0.text',
+    );
+    assert.ok(publication);
+    publication.counterevidence = [
+      {
+        source: String(contrary.id),
+        quote: contraryText,
+        kind: 'scholarly',
+        origin: 'Archival account',
+      },
+    ];
     findings.uncovered.push('connections.0.connection: dropped by finalize');
     return `--research=${await save('research.json', {
       assessment: findings,
@@ -796,6 +827,30 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   const initial = raw();
   let researchFlag = await researchFor(initial);
   const audit = await run('english-audit', qid, researchFlag);
+  function checkCounterevidence(prompt: string) {
+    const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
+    assert.deepEqual(
+      payload.assessment.findings.find(
+        (finding: Assessment['findings'][number]) =>
+          finding.path === 'key_moments.0.text',
+      ).counterevidence,
+      [
+        {
+          source: contrary.id,
+          quote: contraryText,
+          kind: 'scholarly',
+          origin: 'Archival account',
+          source_excerpt_index: 0,
+        },
+      ],
+    );
+    assert.deepEqual(payload.source_contexts.at(-1), {
+      source: contrary.id,
+      url: contraryUrl,
+      excerpts: [contraryText],
+    });
+  }
+  checkCounterevidence(String(audit.prompt));
   const rejected = await save('held-audit.json', {
     input_hash: audit.input_hash,
     result: {
@@ -846,11 +901,15 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   );
   const english = await saved(options);
   assert.equal(english.report.repairs, 1);
-  assert.equal(fetches, 2);
+  assert.equal(fetches, 3);
   assert.deepEqual(
     english.report.sources.map(({ id }) => id),
-    [first.id],
+    [first.id, contrary.id],
   );
+  await auditSavedProfile(options.filePath, SUBJECT, async (prompt, role) => {
+    checkCounterevidence(prompt);
+    return complete(prompt, role);
+  });
 
   const translation = await run('russian-translation', qid);
   const fields = {

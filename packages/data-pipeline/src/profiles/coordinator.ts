@@ -20,8 +20,9 @@ import { parseTokenUsage } from './usage.js';
 import { asRecord, asString } from './values.js';
 import {
   type Assessment,
+  findingExcerpts,
   hash,
-  POLICY_VERSION,
+  isCurrentVerificationPolicy,
   parseAssessment,
   profileHash,
   strings,
@@ -230,8 +231,8 @@ async function englishAudit(
     research.connection_urls,
   );
   const ids = new Set(
-    assessment.findings.flatMap(({ evidence: items }) =>
-      items.map(({ source }) => source),
+    assessment.findings.flatMap((finding) =>
+      findingExcerpts(finding).map(({ source }) => source),
     ),
   );
   const directory = path.join(options.profilesDir, 'evidence');
@@ -285,7 +286,7 @@ async function englishRepair(
   );
   const subjectInfo = asRecord(report.subject, 'report subject');
   if (
-    report.policy_version !== POLICY_VERSION ||
+    !isCurrentVerificationPolicy(report.policy_version, dates) ||
     report.profile_hash !== profileHash(record) ||
     subjectInfo.qid !== qid ||
     subjectInfo.dates !== dates ||

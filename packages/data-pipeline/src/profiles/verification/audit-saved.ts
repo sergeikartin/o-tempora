@@ -5,6 +5,7 @@ import type { Complete } from '../providers.js';
 import { formatDates, type ProfileSubject } from '../subjects.js';
 import { asArray, asRecord, asString } from '../values.js';
 import {
+  findingExcerpts,
   isCurrentVerificationPolicy,
   parseAssessment,
   parseAudit,
@@ -40,7 +41,7 @@ export async function auditSavedProfile(
   const originalAudit = parseAudit(report.audit);
   const cited = new Set(
     assessment.findings.flatMap((finding) =>
-      finding.evidence.map((item) => item.source),
+      findingExcerpts(finding).map((item) => item.source),
     ),
   );
   const sources = [];

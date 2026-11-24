@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { passages } from '../passages.js';
 import { asArray, asRecord, asString } from '../values.js';
 
-export const POLICY_VERSION = '3';
+export const POLICY_VERSION = '5';
 
 export function isCurrentVerificationPolicy(
   version: unknown,
@@ -12,7 +12,9 @@ export function isCurrentVerificationPolicy(
   // parser skipped every comparison for an ongoing subject.
   return (
     version === POLICY_VERSION ||
-    (POLICY_VERSION === '3' && version === '2' && !dates.endsWith('–present'))
+    version === '4' ||
+    version === '3' ||
+    (version === '2' && !dates.endsWith('–present'))
   );
 }
 
@@ -32,6 +34,11 @@ export interface Finding {
   explanation: string;
   correction: string;
   evidence: Evidence[];
+  counterevidence?: Evidence[];
+}
+
+export function findingExcerpts(finding: Finding): Evidence[] {
+  return [...finding.evidence, ...(finding.counterevidence ?? [])];
 }
 
 export interface Assessment {
@@ -120,6 +127,22 @@ export function parseAudit(value: unknown): Report['audit'] {
   };
 }
 
+function parseExcerpts(value: unknown, field: string): Evidence[] {
+  return asArray(value, field).map((item) => {
+    const excerpt = asRecord(item, field);
+    return {
+      source: asString(excerpt.source, `${field}.source`),
+      quote: asString(excerpt.quote, `${field}.quote`),
+      kind: oneOf(
+        excerpt.kind,
+        ['wikipedia', 'primary', 'scholarly', 'other'],
+        `${field}.kind`,
+      ),
+      origin: asString(excerpt.origin, `${field}.origin`),
+    };
+  });
+}
+
 export function parseAssessment(value: unknown): Assessment {
   const root = asRecord(value, 'assessment');
   return {
@@ -154,19 +177,15 @@ export function parseAssessment(value: unknown): Assessment {
         risk: oneOf(row.risk, ['ordinary', 'corroborate'], 'risk'),
         explanation: asString(row.explanation, 'explanation'),
         correction: row.correction,
-        evidence: asArray(row.evidence, 'evidence').map((item) => {
-          const evidence = asRecord(item, 'evidence');
-          return {
-            source: asString(evidence.source, 'evidence.source'),
-            quote: asString(evidence.quote, 'evidence.quote'),
-            kind: oneOf(
-              evidence.kind,
-              ['wikipedia', 'primary', 'scholarly', 'other'],
-              'evidence.kind',
-            ),
-            origin: asString(evidence.origin, 'evidence.origin'),
-          };
-        }),
+        evidence: parseExcerpts(row.evidence, 'evidence'),
+        ...(row.counterevidence === undefined
+          ? {}
+          : {
+              counterevidence: parseExcerpts(
+                row.counterevidence,
+                'counterevidence',
+              ),
+            }),
       };
     }),
   };
@@ -182,7 +201,7 @@ export function checkEvidence(
 ): string[] {
   const byId = new Map(sources.map((source) => [source.id, source]));
   return assessment.findings.flatMap((finding) =>
-    finding.evidence.flatMap((evidence) => {
+    findingExcerpts(finding).flatMap((evidence) => {
       const source = byId.get(evidence.source);
       return source &&
         normalizeText(evidence.quote).length > 0 &&
