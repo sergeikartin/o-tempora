@@ -17,8 +17,4 @@ Paraglide uses `['url', 'baseLocale']` in `packages/web/vite.config.ts`. Paths u
 
 `hasFeatureFlag(name)` checks the URL query for a developer flag. The current UI uses none. Dev builds expose `window.__setFameScoreFloors({ people, conflicts, milestones })` in the browser console and accept any subset of lanes.
 
-## Profile credentials
-
-Standalone API translation and saved-evidence audits use the selected provider’s key (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY`). API verification uses `OPENAI_API_KEY` and the key for the historical audit provider when it differs. The [Profile coordinator](../packages/data-pipeline/docs/profile-coordinator.md) uses conversation subagents and one-shot commands without provider keys. [Verification flags](../packages/data-pipeline/docs/profile-verification.md) · [Translation flags](../packages/data-pipeline/docs/profile-translation.md)
-
 See [Observability](observability.md) for `VITE_GLITCHTIP_DSN`.

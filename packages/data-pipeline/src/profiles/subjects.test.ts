@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
+import { execFile } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
+import { promisify } from 'node:util';
 import { formatDates, loadSubjects, subjectBrief } from './subjects.js';
 
 test('formatDates writes CE spans and single years', () => {
@@ -64,14 +66,67 @@ test('Profile subjects populate the cache with Russian metadata and refresh on s
   writeFileSync(cachePath, '{broken');
   assert.deepEqual(loadSubjects(options), fresh);
   const saved = JSON.parse(readFileSync(cachePath, 'utf8'));
-  for (const change of [{ schema_version: 2 }, { subjects: [{}] }]) {
+  for (const change of [{ schema_version: 1 }, { subjects: [{}] }]) {
     writeFileSync(cachePath, JSON.stringify({ ...saved, ...change }));
     assert.deepEqual(loadSubjects(options), fresh);
   }
   assert.equal(computed, 6);
-  assert.equal(JSON.parse(readFileSync(cachePath, 'utf8')).schema_version, 1);
+  assert.equal(JSON.parse(readFileSync(cachePath, 'utf8')).schema_version, 2);
   assert.deepEqual(
     loadSubjects({ ...options, cachePath: path.join(cachePath, 'unwritable') }),
     fresh,
+  );
+});
+
+test('concurrent cold-start subject loads leave one complete shared cache', async (t) => {
+  const root = mkdtempSync(path.join(tmpdir(), 'subjects-concurrent-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const cachePath = path.join(root, 'cache.json');
+  const moduleUrl = new URL('./subjects.ts', import.meta.url).href;
+  const run = (id: number) =>
+    promisify(execFile)(process.execPath, [
+      '--import',
+      'tsx',
+      '--input-type=module',
+      '--eval',
+      `
+      import { existsSync, writeFileSync } from 'node:fs';
+      import { loadSubjects } from ${JSON.stringify(moduleUrl)};
+      const [cachePath, ready, peer, result] = process.argv.slice(1);
+      const subjects = loadSubjects({
+        cachePath,
+        statInputs: () => ({ input: { size: 1, mtimeMs: 1 } }),
+        compute: () => {
+          writeFileSync(ready, '');
+          const deadline = Date.now() + 5000;
+          const pause = new Int32Array(new SharedArrayBuffer(4));
+          while (!existsSync(peer)) {
+            if (Date.now() >= deadline) throw new Error('Peer did not reach cold start');
+            Atomics.wait(pause, 0, 0, 5);
+          }
+          return [{ qid: 'Q1', name: 'Subject', lane: 'people',
+            dateSpan: { startYear: 1900 }, wikipediaUrl: 'https://en.wikipedia.org/wiki/Subject', fameScore: 10 }];
+        },
+      });
+      writeFileSync(result, JSON.stringify(subjects));
+    `,
+      cachePath,
+      path.join(root, `ready-${id}`),
+      path.join(root, `ready-${1 - id}`),
+      path.join(root, `result-${id}.json`),
+    ]);
+  await Promise.all([run(0), run(1)]);
+  const cached = JSON.parse(readFileSync(cachePath, 'utf8'));
+  for (const id of [0, 1]) {
+    const result = readFileSync(path.join(root, `result-${id}.json`), 'utf8');
+    assert.deepEqual(JSON.parse(result), cached.subjects);
+  }
+  assert.deepEqual(
+    loadSubjects({
+      cachePath,
+      statInputs: () => ({ input: { size: 1, mtimeMs: 1 } }),
+      compute: () => assert.fail('cache was not usable'),
+    }),
+    cached.subjects,
   );
 });

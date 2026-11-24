@@ -3,6 +3,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SUBJECTS_CACHE_FILENAME } from '../profiles/paths.js';
 
+import { verifyBuiltProfiles } from './profiles.js';
+
 const SOURCE_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
   '..',
@@ -55,8 +57,18 @@ export async function publishFiles(
   return published;
 }
 
+export async function publishBuiltData(
+  sourceDir: string,
+  destDir: string,
+): Promise<string[]> {
+  await verifyBuiltProfiles(sourceDir);
+  const fileNames = await publishFiles(sourceDir, destDir);
+  await verifyBuiltProfiles(destDir);
+  return fileNames;
+}
+
 async function main(): Promise<void> {
-  const fileNames = await publishFiles(SOURCE_DIR, DEST_DIR);
+  const fileNames = await publishBuiltData(SOURCE_DIR, DEST_DIR);
   for (const fileName of fileNames) {
     console.log(`Published ${fileName} to ${DEST_DIR}`);
   }

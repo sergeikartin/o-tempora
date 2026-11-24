@@ -3,8 +3,6 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { type TestContext, test } from 'node:test';
-import OpenAI from 'openai';
-import type { ResponseCreateParamsNonStreaming } from 'openai/resources/responses/responses';
 import {
   parseRawProfile,
   readRawProfiles,
@@ -12,10 +10,8 @@ import {
 } from '../../output/profiles.js';
 import { runCoordinatorCommand } from '../coordinator.js';
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
-import { routeVerificationModels } from '../model-routing.js';
 import { passages } from '../passages.js';
 import { preflightProfile } from '../preflight.js';
-import type { Complete } from '../providers.js';
 import type { ProfileSubject } from '../subjects.js';
 import { approvedTranslation, readTranslation } from '../translation.js';
 import { asRecord } from '../values.js';
@@ -27,7 +23,6 @@ import {
   parseAdversarialResult,
   selectAdversarialTargets,
 } from './adversarial.js';
-import { auditSavedProfile } from './audit-saved.js';
 import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.js';
 import {
   type Assessment,
@@ -40,8 +35,13 @@ import {
   readProfileApproval,
   type Source,
 } from './policy.js';
-import { auditProfile, type Research } from './researcher.js';
-import { reportPathFor, type VerifyOptions, verifyProfile } from './runner.js';
+import { englishAuditPrompt } from './researcher.js';
+import {
+  applyEnglishAudit,
+  checkpointEnglishRepair,
+  type EnglishAuditOptions,
+  reportPathFor,
+} from './runner.js';
 import {
   extractHtmlDocument,
   headingPathAt,
@@ -122,15 +122,7 @@ function assessment(profile: ModelProfile): Assessment {
   };
 }
 
-const research: Research = async (profile, _subject, sources) => {
-  await sources.read(URL);
-  return { assessment: assessment(profile), model: 'verifier' };
-};
-const complete: Complete = async () => ({
-  text: JSON.stringify({ uncovered: [], issues: [], coherent: true }),
-  model: 'auditor',
-  tokens: { input: 0, output: 0 },
-});
+const cleanAudit = { uncovered: [], issues: [], coherent: true };
 
 test('research excerpts can page or jump to literal matches in the same full source', async () => {
   const text = `${'A'.repeat(9000)} Principia (1687). ${'B'.repeat(9000)}`;
@@ -186,57 +178,45 @@ test('independent audit receives each finding once and shares overlapping source
     assert.ok(quote);
     finding.evidence = [{ ...template, source: source.id, quote }];
   }
-  await auditProfile(
-    profile,
-    SUBJECT,
-    report,
-    sources.all(),
-    async (prompt, role) => {
-      assert.equal(role, 'audit');
-      const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
-      assert.equal(payload.evidence, undefined);
-      assert.equal(payload.passages, undefined);
-      assert.deepEqual(payload.profile, profile);
-      assert.equal(payload.assessment.findings.length, report.findings.length);
-      assert.deepEqual(
-        payload.assessment.findings.map(
-          (finding: Assessment['findings'][number]) => finding.claim,
-        ),
-        report.findings.map((finding) => finding.claim),
-      );
-      assert.deepEqual(
-        payload.assessment.findings.flatMap(
-          (finding: { evidence: { source_excerpt_index: number | null }[] }) =>
-            finding.evidence.map((evidence) => evidence.source_excerpt_index),
-        ),
-        [0, 0, 1, null],
-      );
-      assert.deepEqual(
-        payload.assessment.findings.flatMap(
-          (finding: { evidence: { source: number }[] }) =>
-            finding.evidence.map((evidence) => evidence.source),
-        ),
-        [1, 1, 1, 1],
-      );
-      assert.deepEqual(payload.source_contexts, [
-        {
-          source: 1,
-          url: URL,
-          excerpts: [
-            {
-              section: [],
-              text: text.slice(
-                0,
-                text.indexOf(quotes[1]) + quotes[1].length + 700,
-              ),
-            },
-            { section: [], text: text.slice(text.indexOf(quotes[2]) - 700) },
-          ],
-        },
-      ]);
-      return complete(prompt, role);
-    },
+  const prompt = englishAuditPrompt(profile, SUBJECT, report, sources.all());
+  const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
+  assert.equal(payload.evidence, undefined);
+  assert.equal(payload.passages, undefined);
+  assert.deepEqual(payload.profile, profile);
+  assert.equal(payload.assessment.findings.length, report.findings.length);
+  assert.deepEqual(
+    payload.assessment.findings.map(
+      (finding: Assessment['findings'][number]) => finding.claim,
+    ),
+    report.findings.map((finding) => finding.claim),
   );
+  assert.deepEqual(
+    payload.assessment.findings.flatMap(
+      (finding: { evidence: { source_excerpt_index: number | null }[] }) =>
+        finding.evidence.map((evidence) => evidence.source_excerpt_index),
+    ),
+    [0, 0, 1, null],
+  );
+  assert.deepEqual(
+    payload.assessment.findings.flatMap(
+      (finding: { evidence: { source: number }[] }) =>
+        finding.evidence.map((evidence) => evidence.source),
+    ),
+    [1, 1, 1, 1],
+  );
+  assert.deepEqual(payload.source_contexts, [
+    {
+      source: 1,
+      url: URL,
+      excerpts: [
+        {
+          section: [],
+          text: text.slice(0, text.indexOf(quotes[1]) + quotes[1].length + 700),
+        },
+        { section: [], text: text.slice(text.indexOf(quotes[2]) - 700) },
+      ],
+    },
+  ]);
 });
 
 async function setup(t: TestContext) {
@@ -245,19 +225,20 @@ async function setup(t: TestContext) {
   const filePath = path.join(root, 'people', 'Q935-newton.en.json');
   await mkdir(path.dirname(filePath));
   await writeFile(filePath, JSON.stringify(raw()));
-  const options: VerifyOptions = {
+  const options: EnglishAuditOptions = {
     filePath,
     subject: SUBJECT,
-    research,
-    complete,
+    assessment: assessment(parseModelProfile(raw(), filePath)),
+    audit: cleanAudit,
+    researcherModel: 'verifier',
+    auditModel: 'auditor',
     resolve: async (urls) => new Map(urls.map((url) => [url, 'Q935'])),
-    repair: true,
-    sources: new SourceStore(async () => SOURCE),
+    snapshots: [SOURCE],
   };
   return { root, options };
 }
 
-async function saved(options: VerifyOptions) {
+async function saved(options: EnglishAuditOptions) {
   return {
     record: JSON.parse(await readFile(options.filePath, 'utf8')),
     report: JSON.parse(
@@ -266,69 +247,9 @@ async function saved(options: VerifyOptions) {
   };
 }
 
-test('saved-evidence audits use the original findings and leave approvals intact', async (t) => {
-  const { root, options } = await setup(t);
-  const { id: _legacyId, ...fields } = SOURCE;
-  const titled = {
-    ...fields,
-    title: 'Newton',
-    headings: [{ level: 1 as const, offset: 0, text: 'Isaac Newton' }],
-  };
-  const snapshot = { ...titled, id: hash(titled) };
-  options.sources = new SourceStore(async () => snapshot);
-  options.research = async (...args) => {
-    const result = await research(...args);
-    for (const finding of result.assessment.findings)
-      for (const item of finding.evidence) item.source = snapshot.id;
-    return result;
-  };
-  assert.equal((await verifyProfile(options)).status, 'approved');
-  const before = await saved(options);
-  const issues = ['overview: pilot disagrees with the original audit'];
-  const result = await auditSavedProfile(
-    options.filePath,
-    SUBJECT,
-    async (prompt, role) => {
-      assert.equal(role, 'audit');
-      const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
-      assert.equal(
-        payload.assessment.findings.length,
-        before.report.assessment.findings.length,
-      );
-      assert.deepEqual(payload.source_contexts, [
-        {
-          source: 1,
-          url: SOURCE.url,
-          title: 'Newton',
-          excerpts: [{ section: ['Isaac Newton'], text: TEXT }],
-        },
-      ]);
-      return {
-        model: 'pilot',
-        tokens: { input: 300, output: 20 },
-        text: JSON.stringify({ uncovered: [], issues, coherent: true }),
-      };
-    },
-  );
-  assert.deepEqual(result.originalAudit, before.report.audit);
-  assert.deepEqual(result.audit.issues, issues);
-  assert.deepEqual(result.tokens, { input: 300, output: 20 });
-  assert.deepEqual(await saved(options), before);
-
-  const snapshotPath = path.join(root, 'evidence', `${snapshot.id}.json`);
-  await writeFile(
-    snapshotPath,
-    JSON.stringify({ ...snapshot, title: 'changed' }),
-  );
-  await assert.rejects(
-    auditSavedProfile(options.filePath, SUBJECT, complete),
-    /Saved source content does not match/,
-  );
-});
-
 test('verified content ships through Output; changing prose, identity, policy or report revokes approval', async (t) => {
   const { root, options } = await setup(t);
-  assert.equal((await verifyProfile(options)).status, 'approved');
+  assert.equal((await applyEnglishAudit(options)).status, 'approved');
   const { record, report } = await saved(options);
   const profile = parseModelProfile(record, 'test');
   assert.equal(
@@ -385,18 +306,13 @@ test('verified content ships through Output; changing prose, identity, policy or
     ).approval,
     undefined,
   );
-  const skipped = await verifyProfile({
-    ...options,
-    research: async () => {
-      throw new Error('should skip paid work');
-    },
-  });
+  const skipped = await applyEnglishAudit(options);
   assert.equal(skipped.status, 'skipped');
 });
 
 test('Output withholds an approval after dataset dates change until reverification', async (t) => {
   const { root, options } = await setup(t);
-  await verifyProfile(options);
+  await applyEnglishAudit(options);
   const target = {
     ...SUBJECT,
     slug: 'newton',
@@ -412,7 +328,7 @@ test('Output withholds an approval after dataset dates change until reverificati
   };
   assert.equal(shipProfiles(files, [changed]).size, 0);
   assert.equal(
-    (await verifyProfile({ ...options, subject: changed })).status,
+    (await applyEnglishAudit({ ...options, subject: changed })).status,
     'approved',
   );
   assert.equal(shipProfiles(await readRawProfiles(root), [changed]).size, 1);
@@ -424,22 +340,16 @@ test('verification checks the birth year of a living Person', async (t) => {
     ...SUBJECT,
     dateSpan: { startYear: 1643, ongoing: true },
   };
-  function researchWithBirthYear(year: number): Research {
-    return async (...args) => {
-      const researched = await research(...args);
-      researched.assessment.subject_dates.push({
-        path: 'overview',
-        boundary: 'start',
-        year,
-      });
-      return researched;
+  function assessmentWithBirthYear(year: number): Assessment {
+    return {
+      ...options.assessment,
+      subject_dates: [{ path: 'overview', boundary: 'start', year }],
     };
   }
-  const result = await verifyProfile({
+  const result = await applyEnglishAudit({
     ...options,
     subject,
-    repair: false,
-    research: researchWithBirthYear(1642),
+    assessment: assessmentWithBirthYear(1642),
   });
   assert.equal(result.status, 'held');
   assert.ok(
@@ -447,10 +357,10 @@ test('verification checks the birth year of a living Person', async (t) => {
       blocker.includes('subject start year 1642 disagrees with dataset 1643'),
     ),
   );
-  const corrected = await verifyProfile({
+  const corrected = await applyEnglishAudit({
     ...options,
     subject,
-    research: researchWithBirthYear(1643),
+    assessment: assessmentWithBirthYear(1643),
   });
   assert.equal(corrected.status, 'approved');
   const { report } = await saved(options);
@@ -460,7 +370,7 @@ test('verification checks the birth year of a living Person', async (t) => {
 
 test('Output accepts version 2 approvals for closed spans but withholds them for ongoing subjects', async (t) => {
   const { options } = await setup(t);
-  await verifyProfile(options);
+  await applyEnglishAudit(options);
   const { record, report } = await saved(options);
 
   for (const [dates, expected] of [
@@ -499,7 +409,7 @@ test('an edited Profile can earn approval without changing its protected content
     meta: { ...raw().meta, review: { status: 'edited' } },
   };
   await writeFile(options.filePath, JSON.stringify(original));
-  assert.equal((await verifyProfile(options)).status, 'approved');
+  assert.equal((await applyEnglishAudit(options)).status, 'approved');
   const { record } = await saved(options);
   assert.equal(record.meta.review.status, 'edited');
   assert.equal(profileHash(record), profileHash(original));
@@ -509,32 +419,19 @@ test('malformed old reports withhold publishing and can be replaced by fresh ver
   const { root, options } = await setup(t);
   await writeFile(reportPathFor(options.filePath), '{broken');
   assert.equal((await readRawProfiles(root))[0]?.approval, undefined);
-  assert.equal((await verifyProfile(options)).status, 'approved');
+  assert.equal((await applyEnglishAudit(options)).status, 'approved');
 });
 
 test('an omitted title, fabricated quote and independent audit failure block publication', async (t) => {
   const { options } = await setup(t);
-  options.repair = false;
-  options.research = async (profile, subject, sources) => {
-    const result = await research(profile, subject, sources);
-    result.assessment.covered = result.assessment.covered.filter(
-      (item) => !item.endsWith('.title'),
-    );
-    const finding = result.assessment.findings[0];
-    assert.ok(finding?.evidence[0]);
-    finding.evidence[0].quote = 'Fabricated source passage';
-    return result;
-  };
-  options.complete = async () => ({
-    text: JSON.stringify({
-      uncovered: ['overview: overlooked age'],
-      issues: [],
-      coherent: true,
-    }),
-    model: 'audit',
-    tokens: { input: 0, output: 0 },
-  });
-  const result = await verifyProfile(options);
+  options.assessment.covered = options.assessment.covered.filter(
+    (item) => !item.endsWith('.title'),
+  );
+  const evidence = options.assessment.findings[0]?.evidence[0];
+  assert.ok(evidence);
+  evidence.quote = 'Fabricated source passage';
+  options.audit = { ...cleanAudit, uncovered: ['overview: overlooked age'] };
+  const result = await applyEnglishAudit(options);
   assert.equal(result.status, 'held');
   assert.match(result.blockers.join('\n'), /every visible field/);
   assert.match(result.blockers.join('\n'), /evidence was not found/);
@@ -544,141 +441,86 @@ test('an omitted title, fabricated quote and independent audit failure block pub
   assert.equal(record.meta.review.approval, undefined);
 });
 
-test('repair drops unsupported optional content and verifies the resulting Profile before approval', async (t) => {
-  const { options } = await setup(t);
-  const initial = {
-    ...raw(),
-    deep_facts: [
-      {
-        text: 'An unsupported story.',
-        type: 'hidden_story',
-        is_legend: false,
-        confidence: 'high',
-        claims: ['Unsupported.'],
-        source: URL,
-      },
-    ],
+function assessedDraft(draft: ModelProfile, input = assessment(draft)) {
+  const field = (path: string, text: string) => ({
+    text,
+    findings: input.findings
+      .filter((finding) => finding.path === path)
+      .map(({ path: _path, ...finding }) => finding),
+  });
+  return {
+    ...draft,
+    overview: field('overview', draft.overview),
+    key_moments: draft.key_moments.map((moment, i) => ({
+      ...moment,
+      date: field(`key_moments.${i}.date`, moment.date),
+      title: field(`key_moments.${i}.title`, moment.title),
+      text: field(`key_moments.${i}.text`, moment.text),
+    })),
+    deep_facts: draft.deep_facts.map((fact, i) => ({
+      ...fact,
+      text: field(`deep_facts.${i}.text`, fact.text),
+    })),
+    coherent: input.coherent,
+    uncovered: input.uncovered,
+    issues: input.issues,
+    subject_dates: input.subject_dates,
   };
-  await writeFile(options.filePath, JSON.stringify(initial));
-  let passes = 0;
-  options.research = async (profile, subject, sources) => {
-    passes++;
-    const result = await research(profile, subject, sources);
-    for (const finding of result.assessment.findings)
-      if (finding.path.startsWith('deep_facts'))
-        finding.verdict = 'unverifiable';
-    return result;
-  };
-  options.complete = async (prompt) =>
-    prompt.startsWith('Repair')
-      ? {
-          text: JSON.stringify(raw()),
-          model: 'repair',
-          tokens: { input: 0, output: 0 },
-        }
-      : complete(prompt);
-  const result = await verifyProfile(options);
-  assert.equal(result.status, 'approved');
-  assert.equal(passes, 2);
-  const { record, report } = await saved(options);
-  assert.deepEqual(record.deep_facts, []);
-  assert.equal(report.repairs, 1);
-  assert.equal(report.profile_hash, profileHash(record));
-});
+}
 
-test('protected human edits receive a proposal and never get overwritten by repair', async (t) => {
+test('a protected human edit receives a proposal when a repair changes its prose', async (t) => {
   const { options } = await setup(t);
   const initial = {
     ...raw(),
     meta: { ...raw().meta, review: { status: 'edited' } },
   };
   await writeFile(options.filePath, JSON.stringify(initial));
-  options.research = async (profile, subject, sources) => {
-    const result = await research(profile, subject, sources);
-    result.assessment.issues.push('overview: essential disputed wording');
-    return result;
-  };
-  options.complete = async (prompt) =>
-    prompt.startsWith('Repair')
-      ? {
-          text: JSON.stringify({ ...raw(), overview: 'Proposed replacement.' }),
-          model: 'repair',
-          tokens: { input: 0, output: 0 },
-        }
-      : complete(prompt);
-  const result = await verifyProfile(options);
-  assert.equal(result.status, 'held');
-  assert.ok(result.proposalPath);
-  const { record } = await saved(options);
-  assert.equal(record.overview, initial.overview);
-  assert.equal(record.meta.review.status, 'edited');
-  assert.equal(record.meta.review.approval, undefined);
   assert.equal(
-    JSON.parse(await readFile(result.proposalPath, 'utf8')).proposed.overview,
-    'Proposed replacement.',
+    (
+      await applyEnglishAudit({
+        ...options,
+        audit: { ...cleanAudit, issues: ['overview: disputed wording'] },
+      })
+    ).status,
+    'held',
   );
-});
-
-test('repair attempts are bounded and unresolved contradictions never auto-promote', async (t) => {
-  const { options } = await setup(t);
-  let repairs = 0;
-  options.research = async (profile, subject, sources) => {
-    const result = await research(profile, subject, sources);
-    const first = result.assessment.findings[0];
-    assert.ok(first);
-    first.verdict = 'contradicted';
-    return result;
-  };
-  options.complete = async (prompt) =>
-    prompt.startsWith('Repair')
-      ? {
-          text: JSON.stringify({
-            ...raw(),
-            overview: `Still wrong ${++repairs}`,
-          }),
-          model: 'repair',
-          tokens: { input: 0, output: 0 },
-        }
-      : complete(prompt);
-  assert.equal((await verifyProfile(options)).status, 'held');
-  assert.equal(repairs, 2);
-  assert.equal((await saved(options)).record.meta.review.status, 'draft');
+  const { record, report } = await saved(options);
+  const overview = 'Proposed replacement.';
+  const result = await checkpointEnglishRepair({
+    ...options,
+    record,
+    report: { ...report },
+    model: 'repair',
+    result: assessedDraft(parseModelProfile({ ...initial, overview }, 'test')),
+  });
+  assert.equal(result.status, 'proposal');
+  assert.equal(
+    JSON.parse(await readFile(result.filePath, 'utf8')).proposed.overview,
+    overview,
+  );
+  assert.deepEqual(await saved(options), { record, report });
 });
 
 test('a concurrent human edit is preserved and receives no stale report', async (t) => {
   const { options } = await setup(t);
-  options.research = async (profile, subject, sources) => {
-    await writeFile(
-      options.filePath,
-      JSON.stringify({ ...raw(), overview: 'Human edit during verification.' }),
-    );
-    return research(profile, subject, sources);
-  };
-  await assert.rejects(verifyProfile(options), /changed during verification/);
-  assert.equal(
-    JSON.parse(await readFile(options.filePath, 'utf8')).overview,
-    'Human edit during verification.',
+  const changed = { ...raw(), overview: 'Human edit during verification.' };
+  await assert.rejects(
+    applyEnglishAudit({
+      ...options,
+      resolve: async (urls) => {
+        await writeFile(options.filePath, JSON.stringify(changed));
+        return options.resolve(urls);
+      },
+    }),
+    /changed during verification/,
+  );
+  assert.deepEqual(
+    JSON.parse(await readFile(options.filePath, 'utf8')),
+    changed,
   );
   await assert.rejects(readFile(reportPathFor(options.filePath)), {
     code: 'ENOENT',
   });
-});
-
-test('fetch failures request a retry instead of removing optional material', async (t) => {
-  const { options } = await setup(t);
-  options.sources = new SourceStore(async () => {
-    throw new Error('HTTP 503');
-  });
-  options.research = async (profile, _subject, sources) => {
-    await assert.rejects(sources.read(URL));
-    return { assessment: assessment(profile), model: 'verifier' };
-  };
-  options.complete = async (prompt) => {
-    assert.ok(!prompt.startsWith('Repair'));
-    return complete(prompt);
-  };
-  assert.equal((await verifyProfile(options)).status, 'retry');
-  assert.equal((await saved(options)).record.overview, raw().overview);
 });
 
 test('corroboration needs distinct original accounts and primary or scholarly support', () => {
@@ -1324,11 +1166,6 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     english.report.sources.map(({ id }) => id),
     [first.id, contrary.id],
   );
-  await auditSavedProfile(options.filePath, SUBJECT, async (prompt, role) => {
-    checkCounterevidence(prompt);
-    return complete(prompt, role);
-  });
-
   const translation = await run('russian-translation', qid);
   assert.match(String(translation.prompt), /Исаак Ньютон/);
   const fields = {
@@ -1536,46 +1373,37 @@ test('the English audit finds normalized quotes and keeps adjacent headings sepa
       'fetch_blocked',
     ),
   ];
-  await auditProfile(
-    draft,
-    SUBJECT,
-    input,
-    [snapshot],
-    async (prompt, role) => {
-      const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
-      assert.deepEqual(payload.source_contexts, [
+  const prompt = englishAuditPrompt(draft, SUBJECT, input, [snapshot], checks);
+  const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
+  assert.deepEqual(payload.source_contexts, [
+    {
+      source: 1,
+      url: URL,
+      title: 'Newton',
+      excerpts: [
+        { section: ['Biography'], text: 'Biography Café account. ' },
         {
-          source: 1,
-          url: URL,
-          title: 'Newton',
-          excerpts: [
-            { section: ['Biography'], text: 'Biography Café account. ' },
-            {
-              section: ['Biography', 'Legends and myths'],
-              text: 'Legends and myths A popular account.',
-            },
-          ],
+          section: ['Biography', 'Legends and myths'],
+          text: 'Legends and myths A popular account.',
         },
-      ]);
-      assert.deepEqual(
-        payload.assessment.findings.map(
-          (finding: { evidence: { source_excerpt_index: number }[] }) =>
-            finding.evidence[0]?.source_excerpt_index,
-        ),
-        [0, 1, 0, 1],
-      );
-      assert.deepEqual(payload.adversarial_notes, [
-        {
-          finding_index: 2,
-          path: 'key_moments.0.title',
-          outcome: 'fetch_blocked',
-          note: checks[1]?.note,
-        },
-      ]);
-      return complete(prompt, role);
+      ],
     },
-    checks,
+  ]);
+  assert.deepEqual(
+    payload.assessment.findings.map(
+      (finding: { evidence: { source_excerpt_index: number }[] }) =>
+        finding.evidence[0]?.source_excerpt_index,
+    ),
+    [0, 1, 0, 1],
   );
+  assert.deepEqual(payload.adversarial_notes, [
+    {
+      finding_index: 2,
+      path: 'key_moments.0.title',
+      outcome: 'fetch_blocked',
+      note: checks[1]?.note,
+    },
+  ]);
 });
 
 function highRiskDraft(
@@ -1715,305 +1543,269 @@ test('adversarial merging preserves supporting evidence and verifies every added
   );
 });
 
-test('API verification rechecks a repaired claim and reindexes unchanged cached findings', async (t) => {
-  const { options, root } = await setup(t);
-  await writeFile(options.filePath, JSON.stringify(highRiskDraft()));
-  const revised = highRiskDraft(
-    'Newton is traditionally credited with the first description.',
+test('English adversarial tasks reuse unchanged claims through evidence-only and draft repairs', async (t) => {
+  const { root, options } = await setup(t);
+  const directory = path.join(root, 'evidence');
+  await mkdir(directory);
+  await writeFile(
+    path.join(directory, `${SOURCE.id}.json`),
+    JSON.stringify(SOURCE),
   );
-  const calls: string[][] = [];
-  const counterUrl = 'https://archive.example.org/newton';
-  const fields = {
-    url: counterUrl,
-    fetched_at: SOURCE.fetched_at,
-    text: 'An earlier description survives in an archive.',
+  const contrarySource = {
+    ...SOURCE,
+    url: 'https://example.org/archive',
+    text: 'A competing account.',
   };
-  const source = { ...fields, id: hash(fields) };
-  options.sources = new SourceStore(async (url) =>
-    url === URL ? SOURCE : source,
-  );
-  let pass = 0;
-  options.research = async (...args) => {
-    const result = await research(...args);
-    if (++pass > 1) result.assessment.findings.reverse();
-    return result;
-  };
-  options.adversarial = async (
-    _profile,
-    _subject,
-    _assessment,
-    targets,
-    sources,
-  ) => {
-    calls.push(targets.map(({ path }) => path));
-    const checked = await sources.read(counterUrl);
-    return {
-      model: 'adversarial-model',
-      checks: targets.map((target) =>
-        target.path === 'overview'
-          ? makeCheck(target, 'conflict_found', [
-              {
-                source: checked.id,
-                quote: checked.text,
-                kind: 'scholarly',
-                origin: 'Archive',
-              },
-            ])
-          : makeCheck(target),
-      ),
-    };
-  };
-  options.complete = async (prompt, role) => {
-    assert.ok(calls.length);
-    if (role === 'repair')
-      return {
-        ...(await complete(prompt, role)),
-        text: JSON.stringify(revised),
-      };
-    const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
-    assert.equal(payload.adversarial_notes.length, 1);
-    const note = payload.adversarial_notes[0];
-    assert.equal(
-      payload.assessment.findings[note.finding_index].counterevidence[0].quote,
-      source.text,
-    );
-    return {
-      ...(await complete(prompt, role)),
-      text: JSON.stringify({
-        coherent: true,
-        uncovered: [],
-        issues: pass === 1 ? ['overview: qualify the first claim'] : [],
-      }),
-    };
-  };
-  assert.equal((await verifyProfile(options)).status, 'approved');
-  assert.deepEqual(calls, [['deep_facts.0.text', 'overview'], ['overview']]);
-  const { record, report } = await saved(options);
-  assert.equal(record.overview, revised.overview);
-  assert.equal(report.repairs, 1);
-  assert.equal(report.adversarial?.model, 'adversarial-model');
-  assert.deepEqual(report.models, ['verifier', 'adversarial-model', 'auditor']);
-  assert.deepEqual(
-    report.adversarial?.checks.map(({ finding_index, path }) => [
-      finding_index,
-      path,
-    ]),
-    [
-      [0, 'deep_facts.0.text'],
-      [4, 'overview'],
-    ],
-  );
-  assert.deepEqual(
-    JSON.parse(
-      await readFile(path.join(root, 'evidence', `${source.id}.json`), 'utf8'),
-    ),
-    source,
+  contrarySource.id = hash(contrarySource.text);
+  const contraryFile = path.join(directory, `${contrarySource.id}.json`);
+  await writeFile(contraryFile, JSON.stringify(contrarySource));
+  const initial = highRiskDraft();
+  const profile = parseModelProfile(initial, 'test');
+  const initialAssessment = assessment(profile);
+  const targets = selectAdversarialTargets(profile, initialAssessment);
+  assert.equal(targets.length, 2);
+  const conflict = [
+    {
+      source: contrarySource.id,
+      quote: contrarySource.text,
+      kind: 'scholarly' as const,
+      origin: 'Archive',
+    },
+  ];
+  const checks = targets
+    .map((target) =>
+      target.path.startsWith('deep_facts.')
+        ? makeCheck(target, 'conflict_found', conflict)
+        : makeCheck(target),
+    )
+    .sort((a, b) => a.finding_index - b.finding_index);
+  const hold = { ...cleanAudit, issues: ['overview: revisit the first claim'] };
+  await writeFile(options.filePath, JSON.stringify(initial));
+  assert.equal(
+    (
+      await applyEnglishAudit({
+        ...options,
+        assessment: initialAssessment,
+        adversarial: { model: 'checker', checks },
+        audit: hold,
+        snapshots: [SOURCE, contrarySource],
+      })
+    ).status,
+    'held',
   );
 
-  const target = {
-    ...SUBJECT,
-    slug: 'newton',
-    fameScore: 99,
-    dates: '1643–1727',
+  let emitted: unknown;
+  const run = async (command: string, ...args: string[]) => {
+    emitted = undefined;
+    await runCoordinatorCommand(command, ['--qid=Q935', ...args], {
+      profilesDir: root,
+      subjects: () => [SUBJECT],
+      resolve: options.resolve,
+      fetch: async () => assert.fail('unexpected fetch'),
+      emit: (value) => {
+        emitted = value;
+      },
+    });
+    return asRecord(emitted, command);
   };
-  const { adversarial, ...base } = report;
-  assert.ok(adversarial);
-  function published(updated: Report) {
-    const receipted = {
-      ...record,
-      meta: {
-        ...record.meta,
-        review: {
-          ...record.meta.review,
-          approval: {
-            ...record.meta.review.approval,
-            policy_version: updated.policy_version,
-            report_hash: hash(updated),
-          },
+  const reply = path.join(root, 'reply.json');
+  const submit = async (
+    command: string,
+    input_hash: unknown,
+    result: unknown,
+  ) => {
+    await writeFile(
+      reply,
+      JSON.stringify({ input_hash, result, model: 'test agent' }),
+    );
+    return run(command, `--result=${reply}`);
+  };
+  const evidenceRepair = await run('english-repair');
+  const improved = assessment(profile);
+  const first = improved.findings[0];
+  assert.ok(first);
+  first.explanation = 'Updated explanation.';
+  assert.equal(
+    (
+      await submit(
+        'english-repair',
+        evidenceRepair.input_hash,
+        assessedDraft(profile, improved),
+      )
+    ).status,
+    'evidence-only',
+  );
+  assert.deepEqual(await run('english-adversarial'), {
+    status: 'reused',
+    checks: 2,
+    conflicts: 1,
+  });
+  const reAudit = await run('english-audit');
+  assert.equal(
+    (await submit('english-audit', reAudit.input_hash, hold)).status,
+    'held',
+  );
+
+  const proseRepair = await run('english-repair');
+  const revised = parseModelProfile(
+    {
+      ...initial,
+      overview: 'Newton was the first to describe another result.',
+    },
+    'test',
+  );
+  assert.equal(
+    (
+      await submit(
+        'english-repair',
+        proseRepair.input_hash,
+        assessedDraft(revised),
+      )
+    ).status,
+    'draft',
+  );
+  // The previous repair saved the report to history before replacing the draft.
+  await rm(reportPathFor(options.filePath));
+  const partial = await run('english-adversarial');
+  const expected = selectAdversarialTargets(revised, assessment(revised));
+  const changed = expected.find(({ path }) => path === 'overview');
+  assert.ok(changed);
+  assert.deepEqual(partial.targets, [changed]);
+
+  await rm(contraryFile);
+  const missingEvidence = await run('english-adversarial');
+  assert.deepEqual(missingEvidence.targets, expected);
+  await assert.rejects(
+    submit('english-adversarial', partial.input_hash, {
+      checks: [makeCheck(changed)],
+    }),
+    /different inputs/,
+  );
+  await writeFile(contraryFile, JSON.stringify(contrarySource));
+
+  assert.deepEqual(
+    await submit('english-adversarial', partial.input_hash, {
+      checks: [makeCheck(changed)],
+    }),
+    { status: 'saved', checks: 2, conflicts: 1 },
+  );
+  const record = JSON.parse(await readFile(options.filePath, 'utf8'));
+  assert.deepEqual(record.meta.pending_adversarial.checks, checks);
+  assert.match(
+    String((await run('english-audit')).prompt),
+    /A competing account/,
+  );
+});
+
+test('historical policy 7 approvals with the adversarial opt-out remain eligible', async (t) => {
+  const { options } = await setup(t);
+  const initial = highRiskDraft();
+  await writeFile(options.filePath, JSON.stringify(initial));
+  const profile = parseModelProfile(initial, 'test');
+  const result = await applyEnglishAudit({
+    ...options,
+    assessment: assessment(profile),
+  });
+  assert.equal(result.status, 'held');
+  assert.match(result.blockers.join('\n'), /Missing adversarial checks/);
+  const savedFiles = await saved(options);
+  const report = {
+    ...savedFiles.report,
+    adversarial_disabled: true as const,
+    blockers: [],
+  };
+  const record = {
+    ...savedFiles.record,
+    meta: {
+      ...savedFiles.record.meta,
+      review: {
+        status: 'reviewed',
+        approval: {
+          policy_version: '7',
+          profile_hash: profileHash(initial),
+          report_hash: hash(report),
+          method: 'automatic',
         },
       },
-    };
-    return shipProfiles(
-      [parseRawProfile(receipted, options.filePath, updated)],
-      [target],
-    ).size;
-  }
-  assert.equal(published(report), 1);
-  assert.equal(published(base), 0);
+    },
+  };
   assert.equal(
-    published({
-      ...report,
-      adversarial: { ...adversarial, checks: adversarial.checks.slice(1) },
-    }),
-    0,
+    readProfileApproval(record, report, profile)?.isCurrentFor('1643–1727'),
+    true,
   );
   assert.equal(
-    published({
-      ...report,
-      adversarial: {
-        ...adversarial,
-        checks: adversarial.checks.map((check) => ({
-          ...check,
-          counterevidence: [],
-        })),
-      },
-    }),
-    0,
+    shipProfiles(
+      [parseRawProfile(record, options.filePath, report)],
+      [{ ...SUBJECT, slug: 'newton', fameScore: 99, dates: '1643–1727' }],
+    ).size,
+    1,
   );
-  for (const policy_version of ['2', '3', '4', '5', '6'])
-    assert.equal(published({ ...base, policy_version }), 1, policy_version);
 });
 
-test('verification skips absent targets and retries a failed adversarial fetch without repairing prose', async (t) => {
+test('English repair allows two prose changes and leaves evidence-only repair available', async (t) => {
   const { options } = await setup(t);
-  options.adversarial = async () =>
-    assert.fail('ordinary claims need no adversarial call');
-  assert.equal((await verifyProfile(options)).status, 'approved');
-
-  const draft = highRiskDraft();
-  await writeFile(options.filePath, JSON.stringify(draft));
-  const failedUrl = 'https://archive.example.org/unavailable';
-  options.sources = new SourceStore(async (url) => {
-    if (url === failedUrl) throw new Error('Temporary failure');
-    return SOURCE;
-  });
-  options.adversarial = async (
-    _profile,
-    _subject,
-    _assessment,
-    targets,
-    sources,
-  ) => {
-    await assert.rejects(sources.read(failedUrl), /Temporary failure/);
-    return {
-      model: 'independent',
-      checks: targets.map((target) => makeCheck(target, 'fetch_blocked')),
-    };
-  };
-  options.complete = async (prompt, role) => {
-    assert.equal(role, 'audit');
-    return complete(prompt, role);
-  };
-  assert.equal((await verifyProfile(options)).status, 'retry');
-  assert.equal((await saved(options)).record.overview, draft.overview);
-
-  const disabled = routeVerificationModels(['--no-adversarial']);
-  const { adversarial, adversarialDisabled } = disabled;
-  options.sources = new SourceStore(undefined, [SOURCE]);
-  assert.equal(adversarial, undefined);
-  assert.equal(adversarialDisabled, true);
+  const held = { ...cleanAudit, issues: ['overview: unresolved'] };
+  for (const count of [1, 2]) {
+    assert.equal(
+      (await applyEnglishAudit({ ...options, repairs: count - 1, audit: held }))
+        .status,
+      'held',
+    );
+    const { record, report } = await saved(options);
+    const updated = parseModelProfile(
+      { ...record, overview: `Newton was a mathematician. Revision ${count}.` },
+      'test',
+    );
+    const result = await checkpointEnglishRepair({
+      ...options,
+      record,
+      report: { ...report },
+      model: 'writer',
+      result: assessedDraft(updated),
+    });
+    assert.equal(result.status, 'draft');
+    assert.equal(
+      JSON.parse(await readFile(options.filePath, 'utf8')).meta
+        .coordinator_repair.count,
+      count,
+    );
+  }
   assert.equal(
-    (await verifyProfile({ ...options, adversarial, adversarialDisabled }))
-      .status,
-    'approved',
+    (await applyEnglishAudit({ ...options, repairs: 2, audit: held })).status,
+    'held',
   );
-  assert.equal((await saved(options)).report.adversarial_disabled, true);
-});
-
-test('OpenAI routing honors the model override and caps adversarial searches, reads and turns', async (t) => {
-  const previousKey = process.env.OPENAI_API_KEY;
-  process.env.OPENAI_API_KEY = 'test-key';
-  t.after(() => {
-    if (previousKey === undefined) delete process.env.OPENAI_API_KEY;
-    else process.env.OPENAI_API_KEY = previousKey;
-  });
-  const draft = parseModelProfile(highRiskDraft(), 'test');
-  const input = assessment(draft);
-  const targets = selectAdversarialTargets(draft, input);
-  const args = [draft, SUBJECT, input, targets] as const;
-  const routed = routeVerificationModels([
-    '--model=research-model',
-    '--adversarial-model=search-model',
-  ]);
-  assert.ok(routed.adversarial);
-  const requests: ResponseCreateParamsNonStreaming[] = [];
-  const functionCall = (id: number) => ({
-    type: 'function_call',
-    name: 'read_source',
-    call_id: `call_${id}`,
-    arguments: JSON.stringify({ url: URL, offset: 0, query: null }),
-  });
-  const mock = t.mock.method(
-    OpenAI.Responses.prototype,
-    'create',
-    async (request: ResponseCreateParamsNonStreaming) => {
-      requests.push(request);
-      const step = requests.length;
-      if (step === 1)
-        return {
-          status: 'completed',
-          output: [
-            ...Array.from({ length: 6 }, () => ({ type: 'web_search_call' })),
-            functionCall(step),
-          ],
-        };
-      if (step < 6)
-        return { status: 'completed', output: [functionCall(step)] };
-      return {
-        status: 'completed',
-        model: request.model,
-        output: [],
-        output_text: JSON.stringify({
-          checks: targets.map((target) => makeCheck(target)),
-        }),
-      };
-    },
-  );
-  const snapshots = new SourceStore(undefined, [SOURCE]);
-  const budget = { turns: 0, searches: 0, reads: 0 };
-  const result = await routed.adversarial(...args, snapshots, budget);
-  assert.equal(result.model, 'search-model');
-  assert.equal(requests.length, 6);
-  assert.equal(requests[0]?.max_tool_calls, 6);
-  assert.equal(requests[0]?.reasoning?.effort, 'medium');
-  assert.deepEqual(
-    requests[1]?.tools?.map(({ type }) => type),
-    ['function'],
-  );
-  assert.equal(requests[5]?.tools, undefined);
-  const secondInput = requests[1]?.input;
-  assert.ok(Array.isArray(secondInput));
-  const toolOutput = secondInput.find(
-    ({ type }) => type === 'function_call_output',
-  );
-  assert.equal(
-    toolOutput?.type === 'function_call_output' &&
-      JSON.parse(String(toolOutput.output)).id,
-    SOURCE.id,
+  const { record, report } = await saved(options);
+  const revised = parseModelProfile(
+    { ...record, overview: 'Third revision.' },
+    'test',
   );
   await assert.rejects(
-    routed.adversarial(...args, snapshots, budget),
-    /turn budget exhausted/,
+    checkpointEnglishRepair({
+      ...options,
+      record,
+      report: { ...report },
+      model: 'writer',
+      result: assessedDraft(revised),
+    }),
+    /draft repair limit reached/,
   );
-  mock.mock.restore();
-
-  let reads = 0;
-  const sourceStore = new SourceStore(undefined, [SOURCE]);
-  const readExcerpt = sourceStore.readExcerpt.bind(sourceStore);
-  t.mock.method(
-    sourceStore,
-    'readExcerpt',
-    async (input: Record<string, unknown>) => {
-      reads++;
-      return readExcerpt(input);
-    },
+  assert.deepEqual(await saved(options), { record, report });
+  const current = parseModelProfile(record, 'test');
+  const updatedAssessment = assessment(current);
+  updatedAssessment.issues.push('overview: new evidence assessment');
+  assert.equal(
+    (
+      await checkpointEnglishRepair({
+        ...options,
+        record,
+        report: { ...report },
+        model: 'writer',
+        result: assessedDraft(current, updatedAssessment),
+      })
+    ).status,
+    'evidence-only',
   );
-  const fallback = routeVerificationModels(['--model=research-model']);
-  assert.ok(fallback.adversarial);
-  t.mock.method(
-    OpenAI.Responses.prototype,
-    'create',
-    async (request: ResponseCreateParamsNonStreaming) => {
-      assert.equal(request.model, 'research-model');
-      return {
-        status: 'completed',
-        output: Array.from({ length: 9 }, (_, index) => functionCall(index)),
-      };
-    },
-  );
-  await assert.rejects(
-    fallback.adversarial(...args, sourceStore),
-    /source-read budget exhausted/,
-  );
-  assert.equal(reads, 8);
+  const { record: repaired } = await saved(options);
+  assert.equal(repaired.meta.coordinator_repair.count, 2);
+  assert.equal(profileHash(repaired), profileHash(record));
 });

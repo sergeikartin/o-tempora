@@ -298,3 +298,93 @@ export async function writeProfiles(
     }
   }
 }
+
+type BuiltTarget = Pick<ProfileConnection, 'slug' | 'lane' | 'detailLevel'> & {
+  hasProfile?: boolean;
+};
+
+async function readBuiltTargets(outputDir: string, locale: 'en' | 'ru') {
+  const targets: BuiltTarget[] = [];
+  for (const lane of PROFILE_LANES) {
+    for (const detailLevel of [1, 2, 3, 4] as const) {
+      const file = path.join(
+        outputDir,
+        `${lane}.detail${detailLevel}${locale === 'ru' ? '.ru' : ''}.json`,
+      );
+      const rows = asArray(JSON.parse(await readFile(file, 'utf8')), file);
+      for (const row of rows) {
+        const entity = asRecord(row, file);
+        targets.push({
+          slug: asString(entity.slug, `${file}: slug`),
+          hasProfile: entity.hasProfile === true,
+          lane,
+          detailLevel,
+        });
+      }
+    }
+  }
+  return targets;
+}
+
+export async function verifyBuiltProfiles(
+  outputDir: string,
+  datasets?: Record<'en' | 'ru', readonly BuiltTarget[]>,
+): Promise<void> {
+  for (const locale of PROFILE_LOCALES) {
+    const targets = new Map<string, BuiltTarget>();
+    for (const entry of datasets?.[locale] ??
+      (await readBuiltTargets(outputDir, locale))) {
+      if (targets.has(entry.slug))
+        throw new Error(
+          `Duplicate entity slug in ${locale} Detail Level datasets: ${entry.slug}`,
+        );
+      targets.set(entry.slug, entry);
+    }
+    const directory = path.join(outputDir, 'profiles', locale);
+    const files = new Set(
+      (
+        await readdir(directory).catch((error: NodeJS.ErrnoException) => {
+          if (error.code === 'ENOENT') return [];
+          throw error;
+        })
+      )
+        .filter((name) => name.endsWith('.json'))
+        .sort(),
+    );
+    for (const { slug, hasProfile } of targets.values()) {
+      if (hasProfile && !files.has(`${slug}.json`))
+        throw new Error(
+          `Missing Profile file: ${path.join(directory, `${slug}.json`)}`,
+        );
+    }
+    for (const name of files) {
+      const file = path.join(directory, name);
+      if (!targets.get(name.slice(0, -5))?.hasProfile)
+        throw new Error(`Orphan Profile file: ${file}`);
+      let raw: unknown;
+      try {
+        raw = JSON.parse(await readFile(file, 'utf8'));
+      } catch (error) {
+        throw new Error(`Unreadable Profile JSON: ${file}`, { cause: error });
+      }
+      const profile = asRecord(raw, file);
+      for (const entry of asArray(
+        profile.connections,
+        `${file}: connections`,
+      )) {
+        const connection = asRecord(entry, `${file}: Connection`);
+        const slug = asString(connection.slug, `${file}: Connection slug`);
+        const target = targets.get(slug);
+        if (!target)
+          throw new Error(`${file}: unknown Connection slug ${slug}`);
+        if (
+          connection.lane !== target.lane ||
+          connection.detailLevel !== target.detailLevel
+        )
+          throw new Error(
+            `${file}: Connection ${slug} must match lane ${target.lane} and Detail Level ${target.detailLevel}`,
+          );
+      }
+    }
+  }
+}

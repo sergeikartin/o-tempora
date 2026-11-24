@@ -1,3 +1,5 @@
+import { retryAfterMs } from './http-retry.js';
+
 const ENDPOINT = 'https://en.wikipedia.org/w/api.php';
 
 // The Action API caps `titles` at 50 per request.
@@ -64,7 +66,46 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export const resolveArticleQids: ResolveArticleQids = async (urls) => {
+async function fetchBatch(
+  url: string,
+  fetchPage: typeof fetch,
+  wait: typeof sleep,
+) {
+  for (let attempt = 0; ; attempt++) {
+    let response: Response;
+    try {
+      response = await fetchPage(url, {
+        headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' },
+        signal: AbortSignal.timeout(15_000),
+      });
+    } catch (error) {
+      if (attempt === 2) throw error;
+      await wait(5_000 * 2 ** attempt);
+      continue;
+    }
+    if (response.ok) return (await response.json()) as QueryResponse;
+    const { status } = response;
+    if (attempt === 2 || (status !== 429 && status < 500))
+      throw new Error(`en.wikipedia.org returned HTTP ${status}`);
+    await response.body?.cancel();
+    const delay =
+      status === 429 || status === 503
+        ? retryAfterMs(response.headers.get('Retry-After'))
+        : undefined;
+    await wait(delay ?? 5_000 * 2 ** attempt);
+  }
+}
+
+export async function resolveArticleQids(
+  urls: readonly string[],
+  {
+    fetch: fetchPage = fetch,
+    wait = sleep,
+  }: {
+    fetch?: typeof fetch;
+    wait?: typeof sleep;
+  } = {},
+): Promise<Map<string, string>> {
   const titleOfUrl = new Map<string, string>();
   for (const url of urls) {
     const title = titleOfArticleUrl(url);
@@ -74,7 +115,7 @@ export const resolveArticleQids: ResolveArticleQids = async (urls) => {
 
   const qidOfTitle = new Map<string, string>();
   for (let i = 0; i < titles.length; i += BATCH_SIZE) {
-    if (i > 0) await sleep(BATCH_DELAY_MS);
+    if (i > 0) await wait(BATCH_DELAY_MS);
     const batch = titles.slice(i, i + BATCH_SIZE);
     const params = new URLSearchParams({
       action: 'query',
@@ -84,13 +125,10 @@ export const resolveArticleQids: ResolveArticleQids = async (urls) => {
       redirects: '1',
       titles: batch.join('|'),
     });
-    const response = await fetch(`${ENDPOINT}?${params}`, {
-      headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' },
-    });
-    if (!response.ok) {
-      throw new Error(`en.wikipedia.org returned HTTP ${response.status}`);
-    }
-    const found = qidsByTitle(batch, (await response.json()) as QueryResponse);
+    const found = qidsByTitle(
+      batch,
+      await fetchBatch(`${ENDPOINT}?${params}`, fetchPage, wait),
+    );
     for (const [title, qid] of found) qidOfTitle.set(title, qid);
   }
 
@@ -100,4 +138,4 @@ export const resolveArticleQids: ResolveArticleQids = async (urls) => {
     if (qid) result.set(url, qid);
   }
   return result;
-};
+}

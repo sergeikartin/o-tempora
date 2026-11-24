@@ -415,3 +415,71 @@ test('invalid staged provenance is rejected and kept for correction', async () =
   assert.match(result.failed[0]?.error ?? '', /generation/);
   assert.deepEqual(await readdir(options.incomingDir), ['Q1.json']);
 });
+
+test('finalization prunes self and redirect aliases and remaps every assessment path by draft index', async (t) => {
+  const options = await setup();
+  t.after(() => rm(options.profilesDir, { recursive: true, force: true }));
+  const [leibniz, , principia] = assessedProfile().connections;
+  const self = 'https://en.wikipedia.org/wiki/Newton';
+  const alias = 'https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibnitz';
+  const resolve = options.resolveArticleQids;
+  options.resolveArticleQids = async (urls) => {
+    const resolved = await resolve(urls);
+    resolved.set(self, 'Q1');
+    resolved.set(alias, 'Q2');
+    return resolved;
+  };
+  await stage(
+    options,
+    'Q1',
+    assessedProfile({
+      connections: [
+        { ...leibniz, wikipedia_url: self },
+        leibniz,
+        { ...leibniz, wikipedia_url: alias },
+        leibniz,
+        principia,
+      ],
+      issues: [
+        'connections.0.connection: self',
+        'connections.4.connection: keep',
+      ],
+      uncovered: [
+        'connections.2.connection: alias',
+        'connections.4.connection: keep',
+      ],
+      subject_dates: [
+        { path: 'connections.3.connection', year: 1687, boundary: 'start' },
+        { path: 'connections.4.connection', year: 1687, boundary: 'start' },
+      ],
+    }),
+  );
+  const { written, failed } = await finalizeProfiles(options);
+  assert.deepEqual(failed, []);
+  assert.ok(written[0]);
+  const raw = JSON.parse(await readFile(written[0], 'utf8'));
+  assert.deepEqual(
+    raw.connections.map(({ qid }: { qid: string }) => qid),
+    ['Q2', 'Q3'],
+  );
+  assert.equal(raw.meta.validation.connections_matched_people, 1);
+  assert.equal(raw.meta.validation.connections_matched_events, 1);
+  const assessment = readPendingAssessment(raw)?.assessment;
+  assert.ok(assessment);
+  const paths = ['connections.0.connection', 'connections.1.connection'];
+  assert.deepEqual(
+    assessment.covered.filter((path) => path.startsWith('connections.')),
+    paths,
+  );
+  assert.deepEqual(
+    assessment.findings
+      .filter(({ path }) => path.startsWith('connections.'))
+      .map(({ path }) => path),
+    paths,
+  );
+  assert.deepEqual(assessment.issues, ['connections.1.connection: keep']);
+  assert.deepEqual(assessment.uncovered, ['connections.1.connection: keep']);
+  assert.deepEqual(assessment.subject_dates, [
+    { path: 'connections.1.connection', year: 1687, boundary: 'start' },
+  ]);
+});

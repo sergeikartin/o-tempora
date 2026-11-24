@@ -1,10 +1,11 @@
-import { readFile, rename, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { assertBoldOnlyMarkup } from './markup.js';
 import { parseModelProfile } from './model-profile.js';
 import { passages } from './passages.js';
 import { readPromptText } from './prompt.js';
-import type { Complete, Completion } from './providers.js';
+import { writeJson } from './store.js';
 import type { ProfileSubject } from './subjects.js';
+import type { AgentRunMeta } from './usage.js';
 import { asRecord, asString } from './values.js';
 import {
   hash,
@@ -100,7 +101,7 @@ export interface Translation {
   fields: TranslationFields;
   audit: ReturnType<typeof parseAudit> & { covered: string[] };
   generated_at: string;
-  models: Omit<Completion, 'text'>[];
+  models: AgentRunMeta[];
   approval_hash: string;
 }
 
@@ -134,7 +135,8 @@ export function parseTranslationFields(
       const translated = asString(fields[path], path);
       assertBoldOnlyMarkup(translated, path);
       if (
-        hash(text.match(/\d+/g) ?? []) !== hash(translated.match(/\d+/g) ?? [])
+        hash((text.match(/\d+/g) ?? []).sort()) !==
+        hash((translated.match(/\d+/g) ?? []).sort())
       )
         throw new Error(`${path}: translation changed numeric values`);
       if (text.split('**').length !== translated.split('**').length)
@@ -246,34 +248,6 @@ function parseRussianAudit(value: unknown): Translation['audit'] {
   return { ...parseAudit(audit), covered: strings(audit.covered, 'covered') };
 }
 
-async function translationAttempt(
-  raw: unknown,
-  complete: Complete,
-  feedback?: unknown,
-  glossary?: RussianGlossary,
-) {
-  const completion = await complete(
-    translationPrompt(raw, feedback, glossary),
-    'translate',
-  );
-  const fields = parseTranslationFields(
-    asRecord(JSON.parse(completion.text), 'translation').fields,
-    raw,
-  );
-  const auditCompletion = await complete(
-    russianAuditPrompt(raw, fields, glossary),
-    'translation-audit',
-  );
-  const audit = parseRussianAudit(JSON.parse(auditCompletion.text));
-  return {
-    fields,
-    audit,
-    models: [completion, auditCompletion].map(
-      ({ text: _text, ...metadata }) => metadata,
-    ),
-  };
-}
-
 export async function loadTranslationSource(
   filePath: string,
   dates: string,
@@ -336,20 +310,28 @@ export function prepareTranslationCorrection(
   return { prompt, fields, paths };
 }
 
-export async function translateProfile(options: {
+export async function applyRussianAudit(options: {
   filePath: string;
   dates: string;
-  complete: Complete;
+  fields: unknown;
+  audit: unknown;
+  models: AgentRunMeta[];
+  expectedSourceHash?: string;
   force?: boolean;
-  retry?: boolean;
-  glossary?: RussianGlossary;
-  subjectsByQid?: ReadonlyMap<string, ProfileSubject>;
 }): Promise<{
   status: 'approved' | 'skipped' | 'held';
   filePath: string;
   blockers: string[];
 }> {
   const raw = await loadTranslationSource(options.filePath, options.dates);
+  const sourceHash = profileHash(raw);
+  if (
+    options.expectedSourceHash !== undefined &&
+    options.expectedSourceHash !== sourceHash
+  )
+    throw new Error(
+      'English Profile changed during translation; prepare a new candidate',
+    );
   const filePath = translationPath(options.filePath);
   if (
     !options.force &&
@@ -357,51 +339,9 @@ export async function translateProfile(options: {
   )
     return { status: 'skipped', filePath, blockers: [] };
 
-  const feedback = await translationFeedback(options.filePath, raw);
-  const glossary =
-    options.glossary ??
-    (options.subjectsByQid
-      ? buildRussianGlossary(raw, options.subjectsByQid)
-      : undefined);
-  const models: Omit<Completion, 'text'>[] = [];
-  const attempts: { fields_hash: string; audit: Translation['audit'] }[] = [];
-  let candidate = await translationAttempt(
-    raw,
-    options.complete,
-    feedback,
-    glossary,
-  );
-  models.push(...candidate.models);
-  attempts.push({
-    fields_hash: hash(candidate.fields),
-    audit: candidate.audit,
-  });
-  if (options.retry !== false && translationBlockers(candidate).length) {
-    candidate = await translationAttempt(
-      raw,
-      options.complete,
-      {
-        fields: candidate.fields,
-        audit: candidate.audit,
-      },
-      glossary,
-    );
-    models.push(...candidate.models);
-    attempts.push({
-      fields_hash: hash(candidate.fields),
-      audit: candidate.audit,
-    });
-  }
-  if (
-    profileHash(
-      await loadTranslationSource(options.filePath, options.dates),
-    ) !== profileHash(raw)
-  )
-    throw new Error(
-      'English Profile changed during translation; prepare a new candidate',
-    );
-  const { fields, audit } = candidate;
-  const blockers = translationBlockers(candidate);
+  const fields = parseTranslationFields(options.fields, raw);
+  const audit = parseRussianAudit(options.audit);
+  const blockers = translationBlockers({ fields, audit });
   const record = {
     policy_version: TRANSLATION_POLICY_VERSION,
     qid: asString(
@@ -409,25 +349,31 @@ export async function translateProfile(options: {
         .wikidata_qid,
       'qid',
     ),
-    source_hash: profileHash(raw),
+    source_hash: sourceHash,
     locale: 'ru' as const,
     fields,
     audit,
     generated_at: new Date().toISOString(),
-    models,
-    attempts,
+    models: options.models,
+    attempts: [{ fields_hash: hash(fields), audit }],
   };
   // A pending/held candidate is retained for diagnosis without replacing a
   // previously approved translation of the same source.
   const destination = blockers.length
     ? filePath.replace(/\.json$/, '.held.json')
     : filePath;
-  const temporary = `${destination}.tmp`;
-  await writeFile(
-    temporary,
-    `${JSON.stringify({ ...record, approval_hash: blockers.length ? null : hash(record) }, null, 2)}\n`,
-  );
-  await rename(temporary, destination);
+  if (
+    profileHash(
+      await loadTranslationSource(options.filePath, options.dates),
+    ) !== sourceHash
+  )
+    throw new Error(
+      'English Profile changed during translation; prepare a new candidate',
+    );
+  await writeJson(destination, {
+    ...record,
+    approval_hash: blockers.length ? null : hash(record),
+  });
   return {
     status: blockers.length ? 'held' : 'approved',
     filePath: destination,

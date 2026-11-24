@@ -116,10 +116,15 @@ async function finalizeFile(
   }
 
   const laneOfQid = new Map(options.subjects.map((s) => [s.qid, s.lane]));
-  const connections = profile.connections.flatMap((connection) => {
+  const seen = new Set([qid]);
+  const keptIndices: number[] = [];
+  const connections = profile.connections.flatMap((connection, index) => {
     const target = resolved.get(connection.wikipedia_url);
     const lane = target && laneOfQid.get(target);
-    return target && lane ? [{ ...connection, qid: target, lane }] : [];
+    if (!target || !lane || seen.has(target)) return [];
+    seen.add(target);
+    keptIndices.push(index);
+    return [{ ...connection, qid: target, lane }];
   });
   const unresolved = profile.connections.filter(
     (c) => !resolved.has(c.wikipedia_url),
@@ -167,11 +172,7 @@ async function finalizeFile(
     );
   const pending = {
     profile_hash: profileHash(record),
-    assessment: finalizedAssessment(
-      assessment,
-      record,
-      profile.connections.map(({ wikipedia_url }) => wikipedia_url),
-    ),
+    assessment: finalizedAssessment(assessment, record, undefined, keptIndices),
     model: record.meta.model,
   };
   await writeJson(recordPath, {

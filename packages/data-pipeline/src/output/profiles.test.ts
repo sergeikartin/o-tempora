@@ -17,9 +17,11 @@ import {
   type RawProfile,
   readRawProfiles,
   shipProfiles,
+  verifyBuiltProfiles,
   withProfileFlags,
   writeProfiles,
 } from './profiles.js';
+import { publishBuiltData } from './publish.js';
 
 const TARGETS: ProfileTarget[] = [
   {
@@ -469,4 +471,89 @@ test('writeProfiles clears old files and does not copy English into Russian', as
   assert.deepEqual(JSON.parse(en), profiles.get('isaac-newton'));
 
   await rm(root, { recursive: true, force: true });
+});
+
+test('parity checks the written locale datasets and every Profile connection', async (t) => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'profile-parity-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const profile = {
+    overview: 'Overview',
+    keyMoments: [],
+    deepFacts: [],
+    connections: [
+      {
+        slug: 'target',
+        lane: 'milestones' as const,
+        detailLevel: 2 as const,
+        name: 'Target',
+        reason: 'Connected',
+      },
+    ],
+  };
+  for (const localeSuffix of ['', '.ru']) {
+    for (const lane of ['people', 'conflicts', 'milestones']) {
+      for (const level of [1, 2, 3, 4]) {
+        const rows =
+          lane === 'people' && level === 1
+            ? [{ slug: 'source', hasProfile: true }]
+            : lane === 'milestones' && level === 2
+              ? [{ slug: 'target' }]
+              : [];
+        await writeFile(
+          path.join(directory, `${lane}.detail${level}${localeSuffix}.json`),
+          JSON.stringify(rows),
+        );
+      }
+    }
+  }
+  const profiles = new Map([['source', profile]]);
+  await writeProfiles(directory, profiles, profiles);
+  await verifyBuiltProfiles(directory);
+  const file = path.join(directory, 'profiles', 'ru', 'source.json');
+  const orphan = path.join(directory, 'profiles', 'ru', 'orphan.json');
+  const destination = await mkdtemp(
+    path.join(tmpdir(), 'profile-parity-publish-'),
+  );
+  t.after(() => rm(destination, { recursive: true, force: true }));
+  await publishBuiltData(directory, destination);
+  const published = path.join(destination, 'profiles', 'ru', 'source.json');
+  assert.deepEqual(JSON.parse(await readFile(published, 'utf8')), profile);
+  await writeFile(orphan, JSON.stringify(profile));
+  await assert.rejects(
+    verifyBuiltProfiles(directory),
+    /Orphan Profile file.*orphan\.json/,
+  );
+  await assert.rejects(
+    publishBuiltData(directory, destination),
+    /Orphan Profile file/,
+  );
+  assert.deepEqual(JSON.parse(await readFile(published, 'utf8')), profile);
+  await rm(orphan);
+  await rm(file);
+  await assert.rejects(
+    verifyBuiltProfiles(directory),
+    /Missing Profile file.*ru.*source\.json/,
+  );
+  await writeFile(file, '{broken');
+  await assert.rejects(
+    verifyBuiltProfiles(directory),
+    /Unreadable Profile JSON/,
+  );
+  for (const [connection, error] of [
+    [{ slug: 'absent' }, /unknown Connection slug absent/],
+    [
+      { slug: 'target', lane: 'people', detailLevel: 2 },
+      /must match lane milestones and Detail Level 2/,
+    ],
+    [
+      { slug: 'target', lane: 'milestones', detailLevel: 4 },
+      /must match lane milestones and Detail Level 2/,
+    ],
+  ] as const) {
+    await writeFile(
+      file,
+      JSON.stringify({ ...profile, connections: [connection] }),
+    );
+    await assert.rejects(verifyBuiltProfiles(directory), error);
+  }
 });

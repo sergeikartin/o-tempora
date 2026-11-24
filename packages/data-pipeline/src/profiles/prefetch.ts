@@ -1,9 +1,10 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { getDomain } from 'tldts';
 import { evidenceStore } from './evidence-cache.js';
 import { writeJson } from './store.js';
 import { type ProfileSubject, subjectBrief } from './subjects.js';
+import { hash } from './verification/assessment.js';
 import {
   fetchReferenceLinks,
   fetchSource,
@@ -53,29 +54,63 @@ export function rankReferences(links: readonly string[]) {
 
 type BlockedHost = { url: string; reason: string; failed_at: number };
 
-async function readBlockedHosts(file: string, now: number) {
-  const hosts = new Map<string, BlockedHost>();
+async function readCache(file: string): Promise<unknown> {
   try {
-    const value: Record<string, BlockedHost> = JSON.parse(
-      await readFile(file, 'utf8'),
-    );
-    for (const [host, entry] of Object.entries(value ?? {})) {
-      if (
-        typeof entry?.url === 'string' &&
-        typeof entry.reason === 'string' &&
-        Number.isFinite(entry.failed_at) &&
-        now - entry.failed_at < BLOCK_TTL
-      )
-        hosts.set(host, entry);
-    }
+    return JSON.parse(await readFile(file, 'utf8'));
   } catch (error) {
-    if (
-      (error as NodeJS.ErrnoException).code !== 'ENOENT' &&
-      !(error instanceof SyntaxError)
-    )
-      throw error;
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return undefined;
+    if (error instanceof SyntaxError) return null;
+    throw error;
   }
-  return hosts;
+}
+
+function activeBlock(value: unknown, now: number): value is BlockedHost {
+  if (!value || typeof value !== 'object') return false;
+  const entry = value as Partial<BlockedHost>;
+  return (
+    typeof entry.url === 'string' &&
+    typeof entry.reason === 'string' &&
+    typeof entry.failed_at === 'number' &&
+    Number.isFinite(entry.failed_at) &&
+    now - entry.failed_at < BLOCK_TTL
+  );
+}
+
+interface PrefetchOptions {
+  profilesDir: string;
+  maxSources?: number;
+  refresh?: boolean;
+  fetch?: typeof fetchSource;
+  readLinks?: typeof fetchReferenceLinks;
+  now?: () => number;
+}
+
+export function validatePrefetchConcurrency(concurrency: number) {
+  if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 3)
+    throw new Error('--concurrency must be an integer from 1 to 3');
+}
+
+export async function prefetchBatch({
+  subjects,
+  concurrency = 1,
+  ...options
+}: PrefetchOptions & {
+  subjects: readonly ProfileSubject[];
+  concurrency?: number;
+}) {
+  validatePrefetchConcurrency(concurrency);
+  const results: Awaited<ReturnType<typeof prefetchSubject>>[] = [];
+  const queue = subjects.entries();
+  const workers = await Promise.allSettled(
+    Array.from({ length: Math.min(concurrency, subjects.length) }, async () => {
+      for (const [index, subject] of queue)
+        results[index] = await prefetchSubject({ subject, ...options });
+    }),
+  );
+  for (const worker of workers) {
+    if (worker.status === 'rejected') throw worker.reason;
+  }
+  return results;
 }
 
 export async function prefetchSubject({
@@ -86,25 +121,17 @@ export async function prefetchSubject({
   fetch = fetchSource,
   readLinks = fetchReferenceLinks,
   now = Date.now,
-}: {
-  subject: ProfileSubject;
-  profilesDir: string;
-  maxSources?: number;
-  refresh?: boolean;
-  fetch?: typeof fetchSource;
-  readLinks?: typeof fetchReferenceLinks;
-  now?: () => number;
-}) {
+}: PrefetchOptions & { subject: ProfileSubject }) {
   if (!/^Q\d+$/.test(subject.qid)) throw new Error('Invalid subject QID');
   if (!Number.isSafeInteger(maxSources))
     throw new Error('--max-sources must be an integer');
   const limit = Math.max(1, Math.min(8, maxSources));
   const directory = path.join(profilesDir, 'evidence');
-  const blockedFile = path.join(directory, 'blocked-hosts.json');
-  const blocked = refresh
-    ? new Map<string, BlockedHost>()
-    : await readBlockedHosts(blockedFile, now());
-  const updates = new Map<string, BlockedHost | undefined>();
+  const legacy = await readCache(path.join(directory, 'blocked-hosts.json'));
+  const legacyHosts =
+    legacy && typeof legacy === 'object'
+      ? (legacy as Record<string, unknown>)
+      : {};
   const wikipediaUrl = sourceUrl(subject.wikipediaUrl).href;
   let links: string[] | undefined;
   const store = evidenceStore(
@@ -126,22 +153,42 @@ export async function prefetchSubject({
   const skipped: { url: string; reason: string }[] = [];
 
   async function read(url: string, host: string) {
-    const prior = blocked.get(host);
-    if (prior) return { url, reason: `Blocked host: ${prior.reason}` };
+    const hostKey = path.join(directory, 'blocked-hosts', hash(host));
+    const blockedFile = `${hostKey}.json`;
+    const clearedFile = `${hostKey}.cleared`;
+    const legacyEntry = Object.hasOwn(legacyHosts, host)
+      ? legacyHosts[host]
+      : undefined;
+    if (!refresh) {
+      const entry = await readCache(blockedFile);
+      const prior =
+        entry === undefined &&
+        activeBlock(legacyEntry, now()) &&
+        (await readCache(clearedFile)) === undefined
+          ? legacyEntry
+          : entry;
+      if (activeBlock(prior, now()))
+        return { url, reason: `Blocked host: ${prior.reason}` };
+    }
+    let outline: Awaited<ReturnType<typeof store.readOutline>>;
     try {
-      const outline = await store.readOutline(url);
-      if (refresh) updates.set(host, undefined);
-      return outline;
+      outline = await store.readOutline(url);
     } catch (error) {
       const reason = error instanceof Error ? error.message : String(error);
       if (
         error instanceof SourceFetchError &&
         (error.unsupportedType || [403, 410, 451].includes(error.status ?? 0))
       ) {
-        updates.set(host, { url, reason, failed_at: now() });
+        await writeJson(blockedFile, { host, url, reason, failed_at: now() });
       }
       return { url, reason };
     }
+    if (refresh) {
+      // Suppress a legacy entry without changing the shared legacy file.
+      if (activeBlock(legacyEntry, now())) await writeJson(clearedFile, true);
+      await rm(blockedFile, { force: true });
+    }
+    return outline;
   }
 
   const wikipedia = await read(wikipediaUrl, rootHost(wikipediaUrl));
@@ -191,14 +238,6 @@ export async function prefetchSubject({
     }
   }
 
-  if (updates.size) {
-    const current = await readBlockedHosts(blockedFile, now());
-    for (const [host, entry] of updates) {
-      if (entry) current.set(host, entry);
-      else current.delete(host);
-    }
-    await writeJson(blockedFile, Object.fromEntries(current));
-  }
   const result = {
     qid: subject.qid,
     subject: subjectBrief(subject),

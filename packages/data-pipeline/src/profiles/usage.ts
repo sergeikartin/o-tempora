@@ -23,3 +23,9 @@ export function parseTokenUsage(value: unknown): TokenUsage | null {
   }
   return { input, output };
 }
+
+export interface AgentRunMeta {
+  model: string;
+  reasoningEffort?: string | null;
+  tokens: TokenUsage | null;
+}

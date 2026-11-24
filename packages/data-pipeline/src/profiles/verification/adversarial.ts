@@ -1,10 +1,8 @@
-import OpenAI from 'openai';
-import type { ResponseInputItem } from 'openai/resources/responses/responses';
 import type { ModelProfile } from '../model-profile.js';
 import { passages } from '../passages.js';
 import { readPromptText } from '../prompt.js';
 import { type ProfileSubject, subjectBrief } from '../subjects.js';
-import { asArray, asRecord, asString, extractJson } from '../values.js';
+import { asArray, asRecord, asString } from '../values.js';
 import {
   type Assessment,
   type Evidence,
@@ -16,12 +14,6 @@ import {
   strings,
 } from './assessment.js';
 import type { Source } from './policy.js';
-import {
-  readSourceTool,
-  readSourceToolOutput,
-  type SourceStore,
-} from './sources.js';
-
 export interface AdversarialTarget {
   finding_index: number;
   path: string;
@@ -277,126 +269,5 @@ export function mergeAdversarialResult(
       }
       return { ...finding, counterevidence: [...excerpts.values()] };
     }),
-  };
-}
-
-interface AdversarialBudget {
-  turns: number;
-  searches: number;
-  reads: number;
-}
-
-export class AdversarialBudgetError extends Error {}
-
-export type AdversarialChecker = (
-  profile: ModelProfile,
-  subject: ProfileSubject,
-  assessment: Assessment,
-  targets: readonly AdversarialTarget[],
-  sources: SourceStore,
-  budget?: AdversarialBudget,
-) => Promise<AdversarialResult>;
-
-export function createAdversarialChecker(model: string): AdversarialChecker {
-  const client = new OpenAI({ timeout: 180_000, maxRetries: 0 });
-  return async (
-    profile,
-    subject,
-    assessment,
-    targets,
-    sources,
-    budget = { turns: 0, searches: 0, reads: 0 },
-  ) => {
-    const instructions = readPromptText(PROMPT_FILE);
-    const input: ResponseInputItem[] = [
-      {
-        role: 'user',
-        content: adversarialInput(
-          profile,
-          subject,
-          assessment,
-          targets,
-          sources.all(),
-        ),
-      },
-    ];
-    while (budget.turns < 6) {
-      budget.turns++;
-      const searchesLeft = 6 - budget.searches;
-      const tools =
-        budget.turns === 6
-          ? []
-          : [
-              ...(searchesLeft > 0 ? [{ type: 'web_search' as const }] : []),
-              ...(budget.reads < 8 ? [readSourceTool] : []),
-            ];
-      const response = await client.responses.create({
-        model,
-        instructions,
-        input,
-        store: false,
-        include: ['reasoning.encrypted_content'],
-        reasoning: { effort: 'medium' },
-        max_output_tokens: 12_000,
-        ...(tools.length
-          ? {
-              tools,
-              max_tool_calls: searchesLeft || undefined,
-            }
-          : {}),
-      });
-      if (response.status !== 'completed')
-        throw new Error(`Adversarial model stopped: ${response.status}`);
-      const calls = response.output.flatMap((item) => {
-        switch (item.type) {
-          case 'web_search_call':
-            if (
-              !tools.some((tool) => tool.type === 'web_search') ||
-              ++budget.searches > 6
-            )
-              throw new AdversarialBudgetError(
-                'Adversarial search budget exhausted',
-              );
-            break;
-          case 'function_call':
-            input.push(item);
-            return [item];
-          case 'reasoning':
-          case 'message':
-            break;
-          default:
-            throw new Error(`Unexpected adversarial output: ${item.type}`);
-        }
-        input.push(item);
-        return [];
-      });
-      if (!calls.length)
-        return {
-          model: response.model,
-          checks: parseAdversarialResult(
-            extractJson(response.output_text),
-            targets,
-          ),
-        };
-      for (const call of calls) {
-        if (
-          call.name !== 'read_source' ||
-          !tools.includes(readSourceTool) ||
-          budget.reads >= 8
-        )
-          throw new AdversarialBudgetError(
-            'Adversarial source-read budget exhausted',
-          );
-        budget.reads++;
-        input.push({
-          type: 'function_call_output',
-          call_id: call.call_id,
-          output: JSON.stringify(
-            await readSourceToolOutput(sources, call.arguments),
-          ),
-        });
-      }
-    }
-    throw new AdversarialBudgetError('Adversarial turn budget exhausted');
   };
 }

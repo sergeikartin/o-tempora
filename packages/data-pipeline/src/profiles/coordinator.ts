@@ -2,19 +2,26 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseQidsFlag } from '../fetch/qid-filter.js';
 import {
+  adversarialBinding,
+  currentAdversarialCheckpoint,
+  reusableAdversarialChecks,
+  validateAdversarialEvidence,
+} from './adversarial-checkpoint.js';
+import {
   finalizedAssessment,
   readPendingAssessment,
 } from './assessed-profile.js';
 import { evidenceStore, readSnapshot } from './evidence-cache.js';
 import { parseModelProfile } from './model-profile.js';
 import { RAW_PROFILES_DIR } from './paths.js';
-import { prefetchSubject } from './prefetch.js';
+import { prefetchBatch, validatePrefetchConcurrency } from './prefetch.js';
 import { preflightProfile } from './preflight.js';
 import { readPromptText } from './prompt.js';
-import type { Completion } from './providers.js';
+import { inspectProfileStatus, parseProfileScope } from './status.js';
 import { readStoredProfiles, writeJson } from './store.js';
 import { formatDates, loadSubjects } from './subjects.js';
 import {
+  applyRussianAudit,
   approvedTranslation,
   buildRussianGlossary,
   loadTranslationSource,
@@ -22,11 +29,10 @@ import {
   prepareTranslationCorrection,
   readTranslation,
   russianAuditPrompt,
-  translateProfile,
   translationFeedback,
   translationPrompt,
 } from './translation.js';
-import { parseTokenUsage } from './usage.js';
+import { type AgentRunMeta, parseTokenUsage } from './usage.js';
 import { asRecord, asString } from './values.js';
 import {
   type AdversarialResult,
@@ -37,7 +43,6 @@ import {
 } from './verification/adversarial.js';
 import {
   type Assessment,
-  checkEvidence,
   findingExcerpts,
   hash,
   isCurrentVerificationPolicy,
@@ -47,12 +52,12 @@ import {
 } from './verification/policy.js';
 import { englishAuditPrompt } from './verification/researcher.js';
 import {
+  applyEnglishAudit,
   checkpointEnglishRepair,
   completedRepairs,
   reportPathFor,
-  verifyProfile,
 } from './verification/runner.js';
-import { fetchSource, SourceStore } from './verification/sources.js';
+import { fetchSource } from './verification/sources.js';
 import {
   type ResolveArticleQids,
   resolveArticleQids,
@@ -75,8 +80,7 @@ const defaultOptions: CoordinatorOptions = {
     if (
       result &&
       typeof result === 'object' &&
-      (('status' in result &&
-        (result.status === 'held' || result.status === 'retry')) ||
+      (('status' in result && result.status === 'held') ||
         ('ok' in result && result.ok === false))
     )
       process.exitCode = 1;
@@ -127,12 +131,8 @@ function output(
   return asRecord(value.result, 'agent result');
 }
 
-function completion(
-  value: Record<string, unknown>,
-  result: unknown,
-): Completion {
+function agentRunMeta(value: Record<string, unknown>): AgentRunMeta {
   return {
-    text: JSON.stringify(result),
     model:
       value.model == null
         ? 'agent (model unreported)'
@@ -168,7 +168,7 @@ async function loadEnglishAssessment(
         profile,
         research.connection_urls,
       ),
-      model: completion(research, null).model,
+      model: agentRunMeta(research).model,
     };
   } else if (!input) {
     const saved = await readOptionalJson(reportPathFor(filePath));
@@ -220,53 +220,52 @@ async function englishAdversarial(
     options.emit({ status: 'skipped', targets: 0 });
     return;
   }
-  const binding = {
-    profile_hash: profileHash(record),
-    assessment_hash: hash(assessment),
-  };
-  const prepared = task(
-    adversarialPrompt(
-      profile,
-      subject,
-      assessment,
-      targets,
-      await assessmentSnapshots(options, assessment),
-    ),
-    binding,
-  );
-  if (!resultFile) {
-    options.emit({ ...prepared, targets });
-    return;
-  }
-
-  const reply = asRecord(
-    await readJson(resultFile),
-    'English adversarial result',
-  );
-  const checks = parseAdversarialResult(
-    output(reply, prepared.input_hash),
+  const binding = adversarialBinding(record, assessment);
+  const reused = await reusableAdversarialChecks({
+    filePath,
+    profilesDir: options.profilesDir,
+    qid,
     targets,
+  });
+  const reusedIndices = new Set(reused.map(({ check }) => check.finding_index));
+  const uncached = targets.filter(
+    ({ finding_index }) => !reusedIndices.has(finding_index),
   );
-  const directory = path.join(options.profilesDir, 'evidence');
-  const ids = new Set(
-    checks.flatMap((check) =>
-      check.counterevidence.map(({ source }) => source),
-    ),
-  );
-  const snapshots = await Promise.all(
-    [...ids].map((id) => readSnapshot(directory, id)),
-  );
-  const errors = checkEvidence(
-    {
-      findings: checks.map(({ path, counterevidence }) => ({
-        path,
-        evidence: [],
-        counterevidence,
-      })),
-    },
-    snapshots,
-  );
-  if (errors.length) throw new Error(errors.join('\n'));
+  const checks = reused.map(({ check }) => check);
+  const models = new Set(reused.map(({ model }) => model));
+  if (uncached.length) {
+    const prepared = task(
+      adversarialPrompt(
+        profile,
+        subject,
+        assessment,
+        uncached,
+        await assessmentSnapshots(options, assessment),
+      ),
+      { ...binding, targets, reused },
+    );
+    if (!resultFile) {
+      options.emit({ ...prepared, targets: uncached });
+      return;
+    }
+    const reply = asRecord(
+      await readJson(resultFile),
+      'English adversarial result',
+    );
+    const fresh = parseAdversarialResult(
+      output(reply, prepared.input_hash),
+      uncached,
+    );
+    await validateAdversarialEvidence(
+      path.join(options.profilesDir, 'evidence'),
+      fresh,
+    );
+    checks.push(...fresh);
+    models.add(agentRunMeta(reply).model);
+  } else if (resultFile) {
+    throw new Error('Result belongs to different inputs; prepare a fresh task');
+  }
+  checks.sort((a, b) => a.finding_index - b.finding_index);
 
   if (hash(await readJson(filePath)) !== hash(record))
     throw new Error(
@@ -278,13 +277,13 @@ async function englishAdversarial(
       ...asRecord(record.meta, 'meta'),
       pending_adversarial: {
         ...binding,
-        model: completion(reply, null).model,
+        model: [...models].join(', '),
         checks,
       },
     },
   });
   options.emit({
-    status: 'saved',
+    status: uncached.length ? 'saved' : 'reused',
     checks: checks.length,
     conflicts: checks.filter(({ outcome }) => outcome === 'conflict_found')
       .length,
@@ -306,21 +305,9 @@ async function englishAudit(
     model,
     savedAdversarial,
   } = await loadEnglishAssessment(options, qid, researchFile);
-  const profile_hash = profileHash(record);
-  const assessment_hash = hash(assessment);
-  const pending = asRecord(record.meta, 'meta').pending_adversarial;
-  let checkpoint = savedAdversarial;
-  let applyingCheckpoint = false;
-  if (pending !== undefined) {
-    const bound = asRecord(pending, 'pending adversarial checks');
-    if (
-      bound.profile_hash === profile_hash &&
-      bound.assessment_hash === assessment_hash
-    ) {
-      checkpoint = bound;
-      applyingCheckpoint = true;
-    }
-  }
+  const binding = adversarialBinding(record, assessment);
+  const pending = currentAdversarialCheckpoint(record, assessment);
+  const checkpoint = pending ?? savedAdversarial;
   const targets = selectAdversarialTargets(profile, assessment);
   let adversarial: AdversarialResult | undefined;
   if (targets.length) {
@@ -338,7 +325,6 @@ async function englishAudit(
     ? mergeAdversarialResult(assessment, adversarial)
     : assessment;
   const snapshots = await assessmentSnapshots(options, merged);
-  const binding = { profile_hash, assessment_hash, adversarial };
   const prepared = task(
     englishAuditPrompt(
       profile,
@@ -347,28 +333,28 @@ async function englishAudit(
       snapshots,
       adversarial?.checks,
     ),
-    binding,
+    { ...binding, adversarial },
   );
   if (!resultFile) {
     options.emit(prepared);
     return;
   }
   const audit = asRecord(await readJson(resultFile), 'English audit');
-  output(audit, prepared.input_hash);
   options.emit(
-    await verifyProfile({
+    await applyEnglishAudit({
       filePath,
       subject,
-      sources: new SourceStore(undefined, snapshots),
+      snapshots,
+      assessment,
+      researcherModel: model,
+      adversarial,
+      audit: output(audit, prepared.input_hash),
+      auditModel: agentRunMeta(audit).model,
       resolve: options.resolve,
       expectedRecordHash: hash(record),
-      force: applyingCheckpoint || readPendingAssessment(record) !== undefined,
-      research: async () => ({ assessment, model }),
-      adversarial: adversarial ? async () => adversarial : undefined,
-      complete: async (prompt) =>
-        completion(audit, output(audit, task(prompt, binding).input_hash)),
+      force:
+        pending !== undefined || readPendingAssessment(record) !== undefined,
       repairs: completedRepairs(record),
-      repair: false,
     }),
   );
 }
@@ -421,7 +407,7 @@ async function englishRepair(
       record,
       report,
       result,
-      model: completion(reply, result).model,
+      model: agentRunMeta(reply).model,
       resolve: options.resolve,
     }),
   );
@@ -489,22 +475,14 @@ async function russianAudit(
     return;
   }
   const audit = asRecord(await readJson(resultFile), 'Russian audit');
-  output(audit, prepared.input_hash);
   options.emit(
-    await translateProfile({
+    await applyRussianAudit({
       filePath,
       dates,
-      retry: false,
-      glossary,
-      complete: async (prompt, role) => {
-        const inputHash = task(prompt, binding).input_hash;
-        if (role === 'translate') {
-          if (inputHash !== translationTask.input_hash)
-            throw new Error('Translation inputs changed; prepare a fresh task');
-          return completion(candidate, { fields });
-        }
-        return completion(audit, output(audit, inputHash));
-      },
+      fields,
+      audit: output(audit, prepared.input_hash),
+      models: [agentRunMeta(candidate), agentRunMeta(audit)],
+      expectedSourceHash: binding,
     }),
   );
 }
@@ -517,7 +495,8 @@ export async function runCoordinatorCommand(
   const allowed: Record<string, string[]> = {
     evidence: ['url', 'query', 'offset', 'length', 'outline', 'refresh'],
     preflight: ['qid', 'file'],
-    prefetch: ['qids', 'max-sources', 'refresh'],
+    prefetch: ['qids', 'max-sources', 'refresh', 'concurrency'],
+    status: ['qids', 'scope'],
     'english-adversarial': ['qid', 'research', 'result'],
     'english-audit': ['qid', 'research', 'result'],
     'english-repair': ['qid', 'result'],
@@ -574,27 +553,44 @@ export async function runCoordinatorCommand(
   } else if (command === 'prefetch') {
     const qids = parseQidsFlag(argv);
     if (!qids) throw new Error('--qids is required for prefetch');
-    const subjects = new Map(
+    const concurrency = Number(flags.get('concurrency') ?? 1);
+    validatePrefetchConcurrency(concurrency);
+    const byQid = new Map(
       (options.subjects ?? loadSubjects)().map((subject) => [
         subject.qid,
         subject,
       ]),
     );
-    for (const qid of qids) {
-      const subject = subjects.get(qid);
+    const subjects = [...qids].map((qid) => {
+      const subject = byQid.get(qid);
       if (!subject) throw new Error(`${qid}: no dataset entity`);
-      options.emit(
-        await prefetchSubject({
-          subject,
-          profilesDir: options.profilesDir,
-          maxSources: flags.has('max-sources')
-            ? Number(flags.get('max-sources'))
-            : undefined,
-          refresh: flags.has('refresh'),
-          fetch: options.fetch,
-        }),
-      );
-    }
+      return subject;
+    });
+    const results = await prefetchBatch({
+      subjects,
+      profilesDir: options.profilesDir,
+      maxSources: flags.has('max-sources')
+        ? Number(flags.get('max-sources'))
+        : undefined,
+      refresh: flags.has('refresh'),
+      fetch: options.fetch,
+      concurrency,
+    });
+    for (const result of results) options.emit(result);
+  } else if (command === 'status') {
+    const qids = parseQidsFlag(argv);
+    const scope = parseProfileScope(flags.get('scope'));
+    if (qids && scope)
+      throw new Error('--qids and --scope are mutually exclusive');
+    options.emit(
+      await inspectProfileStatus({
+        qids,
+        scope,
+        profilesDir: options.profilesDir,
+        incomingDir: path.join(options.profilesDir, 'incoming'),
+        subjects: (options.subjects ?? loadSubjects)({ readOnly: true }),
+      }),
+    );
   } else {
     const qid = required('qid');
     const result = flags.get('result');

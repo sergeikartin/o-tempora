@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0035-profiles-use-subagents-only.md
 ---
 
 # Profile verification seeks independent counterevidence

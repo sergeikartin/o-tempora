@@ -74,20 +74,26 @@ export function readPendingAssessment(record: Record<string, unknown>) {
 export function finalizedAssessment(
   assessment: Assessment,
   profile: ModelProfile,
-  draftConnectionUrls: unknown,
+  draftConnectionUrls?: unknown,
+  keptIndices?: readonly number[],
 ): Assessment {
-  if (draftConnectionUrls === undefined) return assessment;
-  const draft = strings(draftConnectionUrls, 'connection_urls');
+  if (!keptIndices && draftConnectionUrls === undefined) return assessment;
   const indexes = new Map<number, number>();
-  let next = 0;
-  for (const [finalIndex, connection] of profile.connections.entries()) {
-    const draftIndex = draft.indexOf(connection.wikipedia_url, next);
-    if (draftIndex === -1)
-      throw new Error(
-        'Research Connection order does not match the finalized Profile',
-      );
-    indexes.set(draftIndex, finalIndex);
-    next = draftIndex + 1;
+  if (keptIndices) {
+    for (const [finalIndex, originalIndex] of keptIndices.entries())
+      indexes.set(originalIndex, finalIndex);
+  } else {
+    const draft = strings(draftConnectionUrls, 'connection_urls');
+    let next = 0;
+    for (const [finalIndex, connection] of profile.connections.entries()) {
+      const draftIndex = draft.indexOf(connection.wikipedia_url, next);
+      if (draftIndex === -1)
+        throw new Error(
+          'Research Connection order does not match the finalized Profile',
+        );
+      indexes.set(draftIndex, finalIndex);
+      next = draftIndex + 1;
+    }
   }
 
   function remap(value: string): string[] {

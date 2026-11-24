@@ -8,26 +8,26 @@ import {
   shipProfiles,
   writeProfiles,
 } from '../output/profiles.js';
+import { parseModelProfile } from './model-profile.js';
 import { passages } from './passages.js';
 import { readPromptText } from './prompt.js';
-import type { Complete } from './providers.js';
 import type { ProfileSubject } from './subjects.js';
 import {
+  applyRussianAudit,
   approvedTranslation,
   buildRussianGlossary,
   parseTranslationFields,
   prepareTranslationCorrection,
   readTranslation,
   russianAuditPrompt,
-  translateProfile,
   translationPassages,
   translationPath,
   translationPrompt,
 } from './translation.js';
-import { asArray, asRecord } from './values.js';
-import { hash } from './verification/policy.js';
-import { verifyProfile } from './verification/runner.js';
-import { SourceStore } from './verification/sources.js';
+import { asRecord } from './values.js';
+import { selectAdversarialTargets } from './verification/adversarial.js';
+import { type Assessment, hash } from './verification/policy.js';
+import { applyEnglishAudit } from './verification/runner.js';
 
 const URL = 'https://en.wikipedia.org/wiki/Isaac_Newton';
 const raw = () => ({
@@ -116,11 +116,10 @@ const audit = {
   issues: [],
   coherent: true,
 };
-const complete: Complete = async (_prompt, role) => ({
-  text: JSON.stringify(role === 'translate' ? { fields } : audit),
-  model: role === 'translate' ? 'translator' : 'auditor',
-  tokens: null,
-});
+const models = [
+  { model: 'translator', tokens: null },
+  { model: 'auditor', tokens: null },
+];
 
 async function fixture(t: TestContext) {
   const root = await mkdtemp(path.join(tmpdir(), 'profile-translation-'));
@@ -128,60 +127,60 @@ async function fixture(t: TestContext) {
   const filePath = path.join(root, 'people', 'Q935-newton.en.json');
   await mkdir(path.dirname(filePath));
   await writeFile(filePath, JSON.stringify(raw()));
-  const result = await verifyProfile({
-    filePath,
-    repair: false,
-    adversarialDisabled: true,
-    subject: {
-      qid: 'Q935',
-      name: 'Isaac Newton',
-      lane: 'people',
-      dateSpan: { startYear: 1643, endYear: 1727 },
-      wikipediaUrl: URL,
-    },
-    research: async (profile, _subject, sources) => {
-      const source = await sources.read(URL);
-      return {
-        model: 'researcher',
-        assessment: {
-          ...audit,
-          covered: passages(profile).map(({ path }) => path),
-          subject_dates: [],
-          findings: passages(profile).map(({ path, text }) => ({
-            path,
-            claim: text,
-            verdict: 'supported',
-            risk: 'ordinary',
-            explanation: 'Fixture evidence.',
-            correction: '',
-            evidence: [
-              {
-                source: source.id,
-                quote: source.text,
-                kind: 'primary',
-                origin: 'fixture',
-              },
-            ],
-          })),
+  const source = {
+    id: hash('fixture'),
+    url: URL,
+    text: 'fixture',
+    fetched_at: '2026-11-17T00:00:00Z',
+  };
+  const profile = parseModelProfile(raw(), filePath);
+  const assessment: Assessment = {
+    ...audit,
+    covered: passages(profile).map(({ path }) => path),
+    subject_dates: [],
+    findings: passages(profile).map(({ path, text }) => ({
+      path,
+      claim: text,
+      verdict: 'supported',
+      risk: 'ordinary',
+      explanation: 'Fixture evidence.',
+      correction: '',
+      evidence: [
+        {
+          source: source.id,
+          quote: source.text,
+          kind: 'primary',
+          origin: 'fixture',
         },
-      };
+      ],
+    })),
+  };
+  const result = await applyEnglishAudit({
+    filePath,
+    subject: SUBJECT,
+    assessment,
+    researcherModel: 'researcher',
+    adversarial: {
+      model: 'checker',
+      checks: selectAdversarialTargets(profile, assessment).map(
+        ({ path, finding_index }) => ({
+          path,
+          finding_index,
+          queries: ['Fixture check'],
+          note: 'Fixture',
+          outcome: 'no_conflict_found',
+          counterevidence: [],
+        }),
+      ),
     },
-    complete: async () => ({
-      text: JSON.stringify({ uncovered: [], issues: [], coherent: true }),
-      model: 'audit',
-      tokens: null,
-    }),
+    audit,
+    auditModel: 'auditor',
+    snapshots: [source],
     resolve: async (urls) =>
       new Map(urls.map((url) => [url, url === URL ? 'Q935' : 'Q9047'])),
-    sources: new SourceStore(async () => ({
-      id: hash('fixture'),
-      url: URL,
-      text: 'fixture',
-      fetched_at: '2026-11-17T00:00:00Z',
-    })),
   });
   assert.equal(result.status, 'approved');
-  return { root, filePath, dates: '1643–1727', complete };
+  return { root, filePath, dates: '1643–1727', fields, audit, models };
 }
 
 test('Russian glossary deduplicates Connections and bounds the subject lead', () => {
@@ -272,20 +271,7 @@ test('translation validates coverage, numeric dates, markup, emphasis and Russia
 
 test('approved translation publishes Russian prose and names while preserving structure and sources', async (t) => {
   const options = await fixture(t);
-  const roles: string[] = [];
-  assert.equal(
-    (
-      await translateProfile({
-        ...options,
-        complete: (prompt, role) => {
-          roles.push(role ?? '');
-          return complete(prompt, role);
-        },
-      })
-    ).status,
-    'approved',
-  );
-  assert.deepEqual(roles, ['translate', 'translation-audit']);
+  assert.equal((await applyRussianAudit(options)).status, 'approved');
   const rawProfiles = await readRawProfiles(options.root);
   assert.equal(rawProfiles.length, 1);
   const targets = [
@@ -348,21 +334,10 @@ test('approved translation publishes Russian prose and names while preserving st
   );
 });
 
-test('current translations skip model calls; changed English, identity, policy or translated text revokes approval', async (t) => {
+test('current translations skip a duplicate audit; changed English, identity, policy or translated text revokes approval', async (t) => {
   const options = await fixture(t);
-  await translateProfile(options);
-  assert.equal(
-    (
-      await translateProfile({
-        ...options,
-        subjectsByQid: SUBJECTS,
-        complete: async () => {
-          throw new Error('must skip');
-        },
-      })
-    ).status,
-    'skipped',
-  );
+  await applyRussianAudit(options);
+  assert.equal((await applyRussianAudit(options)).status, 'skipped');
   const source = JSON.parse(await readFile(options.filePath, 'utf8'));
   const translation = await readTranslation(options.filePath);
   assert.deepEqual(approvedTranslation(translation, source), fields);
@@ -388,7 +363,7 @@ test('current translations skip model calls; changed English, identity, policy o
   }
   source.overview = 'Changed English.';
   await writeFile(options.filePath, JSON.stringify(source));
-  await assert.rejects(translateProfile(options), /current approved English/);
+  await assert.rejects(applyRussianAudit(options), /current approved English/);
 });
 
 test('audit failures and incomplete/duplicate coverage cannot publish', async (t) => {
@@ -399,13 +374,7 @@ test('audit failures and incomplete/duplicate coverage cannot publish', async (t
     { ...audit, covered: [...audit.covered, 'overview'] },
     { ...audit, coherent: false },
   ]) {
-    const result = await translateProfile({
-      ...options,
-      complete: async (prompt, role) =>
-        role === 'translate'
-          ? complete(prompt, role)
-          : { text: JSON.stringify(badAudit), model: 'auditor', tokens: null },
-    });
+    const result = await applyRussianAudit({ ...options, audit: badAudit });
     assert.equal(result.status, 'held');
     assert.ok(result.blockers.length);
     assert.equal(await readTranslation(options.filePath), undefined);
@@ -429,38 +398,25 @@ test('audit failures and incomplete/duplicate coverage cannot publish', async (t
   }
 });
 
-test('translation rejects unapproved English and changed dataset dates before model calls', async (t) => {
+test('translation rejects unapproved English and changed dataset dates before applying an audit', async (t) => {
   const options = await fixture(t);
-  const noCall: Complete = async () => {
-    throw new Error('must not call');
-  };
   await assert.rejects(
-    translateProfile({ ...options, dates: '1643–1726', complete: noCall }),
+    applyRussianAudit({ ...options, dates: '1643–1726' }),
     /current approved English/,
   );
   const source = raw();
   await writeFile(options.filePath, JSON.stringify(source));
-  await assert.rejects(
-    translateProfile({ ...options, complete: noCall }),
-    /current approved English/,
-  );
+  await assert.rejects(applyRussianAudit(options), /current approved English/);
 });
 
 test('a rejected forced retranslation preserves the current approved translation', async (t) => {
   const options = await fixture(t);
-  await translateProfile(options);
+  await applyRussianAudit(options);
   const before = await readFile(translationPath(options.filePath), 'utf8');
-  const result = await translateProfile({
+  const result = await applyRussianAudit({
     ...options,
     force: true,
-    complete: async (prompt, role) =>
-      role === 'translate'
-        ? complete(prompt, role)
-        : {
-            text: JSON.stringify({ ...audit, issues: ['Bad translation.'] }),
-            model: 'auditor',
-            tokens: null,
-          },
+    audit: { ...audit, issues: ['Bad translation.'] },
   });
   assert.equal(result.status, 'held');
   assert.equal(
@@ -470,41 +426,24 @@ test('a rejected forced retranslation preserves the current approved translation
   assert.equal(translationPassages(raw()).length, Object.keys(fields).length);
 });
 
-test('audit feedback gets one correction attempt followed by a new complete audit', async (t) => {
-  const options = await fixture(t);
-  const roles: string[] = [];
-  let audits = 0;
-  const result = await translateProfile({
-    ...options,
-    subjectsByQid: SUBJECTS,
-    complete: async (prompt, role) => {
-      roles.push(role ?? '');
-      assert.match(prompt, /Исаак Ньютон/);
-      if (role === 'translation-audit' && ++audits === 1)
-        return {
-          text: JSON.stringify({
-            ...audit,
-            issues: ['overview: qualification strengthened'],
-          }),
-          model: 'auditor',
-          tokens: null,
-        };
-      if (roles.length === 3)
-        assert.match(prompt, /qualification strengthened/);
-      return complete(prompt, role);
-    },
-  });
-  assert.equal(result.status, 'approved');
-  assert.deepEqual(roles, [
-    'translate',
-    'translation-audit',
-    'translate',
-    'translation-audit',
-  ]);
-  const record = asRecord(
-    await readTranslation(options.filePath),
-    'translation',
-  );
-  assert.equal(asArray(record.models, 'models').length, 4);
-  assert.equal(asArray(record.attempts, 'attempts').length, 2);
+test('translation allows reordered numeric values and requires the full multiset', () => {
+  const english = {
+    ...raw(),
+    overview: 'In 1905, he published 4 papers and gave 4 talks.',
+  };
+  const translated = {
+    ...fields,
+    overview: '4 статьи и 4 доклада он представил в 1905 году.',
+  };
+  assert.deepEqual(parseTranslationFields(translated, english), translated);
+  for (const overview of [
+    '4 статьи он опубликовал в 1905 году.',
+    '4 статьи и 5 докладов он представил в 1905 году.',
+    '4 статьи и 4 доклада он представил в 1905 году в 4 городах.',
+  ]) {
+    assert.throws(
+      () => parseTranslationFields({ ...translated, overview }, english),
+      /changed numeric values/,
+    );
+  }
 });

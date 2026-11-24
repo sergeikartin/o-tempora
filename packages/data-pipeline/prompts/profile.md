@@ -222,7 +222,7 @@ object to every result after the response comes back.
 | `source.wikidata_qid` | The subject's Wikidata ID, resolved from `wikipedia_url` and asserted equal to the dataset entity's own QID. |
 | `tokens` | Writer input/output usage when available. Session usage covers the writer agent's task including tool turns, not the full pipeline. Cached input and reasoning output remain within their corresponding totals. |
 | `validation` | Whether the JSON passed the schema, and how many connections matched people and events in the dataset. A low match rate flags a bad run or a data gap. `connections_unresolved` counts URLs that do not resolve. Date and identity verification results live in the separate verification report; see `docs/profile-verification.md`. These generation counts do not grant approval. |
-| `review.status` | `edited` protects hand-fixed prose from regeneration and automatic repair. Publishing also requires `review.approval`, a current policy/content/report receipt issued by `profiles verify`; changing the text invalidates it. See `docs/profile-verification.md`. |
+| `review.status` | `edited` protects hand-fixed prose from regeneration and automatic repair. Publishing also requires `review.approval`, a current policy/content/report receipt issued by `profiles english-audit`; changing the text invalidates it. See `docs/profile-verification.md`. |
 
 ## Matching connections
 

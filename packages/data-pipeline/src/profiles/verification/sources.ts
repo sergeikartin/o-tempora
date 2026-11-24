@@ -2,8 +2,8 @@ import { lookup } from 'node:dns/promises';
 import { get } from 'node:https';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { Parser } from 'htmlparser2';
-import type { FunctionTool } from 'openai/resources/responses/responses';
 import { getDomain, parse as parseDomain } from 'tldts';
+import { retryAfterMs } from '../http-retry.js';
 import { asArray, asRecord, asString } from '../values.js';
 import { hash, normalizeText, strings } from './assessment.js';
 import type { Source, SourceHeading } from './policy.js';
@@ -462,12 +462,10 @@ async function fetchPage(
         page = undefined;
       }
       if (attempt < 2) {
-        const retryAfter =
-          page?.status === 429 ? page.retryAfter?.trim() : undefined;
-        const delay =
-          retryAfter && /^\d+$/.test(retryAfter)
-            ? Math.min(Number(retryAfter), 60) * 1_000
-            : 500 * 2 ** attempt;
+        const throttled = page?.status === 429 || page?.status === 503;
+        const delay = throttled
+          ? (retryAfterMs(page?.retryAfter) ?? 5_000 * 2 ** attempt)
+          : 500 * 2 ** attempt;
         await wait(delay);
       }
     }
@@ -536,7 +534,6 @@ export function sourceOutline(source: Source) {
 
 export class SourceStore {
   private readonly byUrl = new Map<string, Source>();
-  readonly failures = new Map<string, string>();
   constructor(
     private readonly fetchPage: (url: string) => Promise<Source> = fetchSource,
     private readonly snapshots: readonly Source[] = [],
@@ -548,19 +545,10 @@ export class SourceStore {
     const url = sourceUrl(value).href;
     const cached = this.byUrl.get(url);
     if (cached) return cached;
-    try {
-      const source = await this.fetchPage(url);
-      this.byUrl.set(url, source);
-      this.byUrl.set(source.url, source);
-      this.failures.delete(url);
-      return source;
-    } catch (error) {
-      this.failures.set(
-        url,
-        error instanceof Error ? error.message : String(error),
-      );
-      throw error;
-    }
+    const source = await this.fetchPage(url);
+    this.byUrl.set(url, source);
+    this.byUrl.set(source.url, source);
+    return source;
   }
 
   async readOutline(url: string) {
@@ -629,40 +617,5 @@ export class SourceStore {
         ]),
       ).values(),
     ];
-  }
-}
-
-export const readSourceTool: FunctionTool = {
-  type: 'function',
-  name: 'read_source',
-  description:
-    'Fetch an exact excerpt from a public HTTPS article. Use a literal name, phrase or year as query to jump to its first match at or after offset, or null to read from offset. Start at offset 0; use next_offset with query=null to continue reading. An empty result for a query means the phrase was not found. Evidence must cite the returned content hash and quote the returned text. PDF and login-only pages are unsupported; seek a readable alternative.',
-  strict: true,
-  parameters: {
-    type: 'object',
-    properties: {
-      url: { type: 'string' },
-      offset: { type: 'integer', minimum: 0 },
-      query: { type: ['string', 'null'] },
-    },
-    required: ['url', 'offset', 'query'],
-    additionalProperties: false,
-  },
-};
-
-export async function readSourceToolOutput(
-  sources: SourceStore,
-  argumentsJson: string,
-) {
-  try {
-    const args = asRecord(JSON.parse(argumentsJson), 'read_source');
-    const { id, url, title, section, text, offset, next_offset } =
-      await sources.readExcerpt(args);
-    return { id, url, title, section, text, offset, next_offset };
-  } catch (error) {
-    return {
-      error: error instanceof Error ? error.message : String(error),
-      retryable: true,
-    };
   }
 }

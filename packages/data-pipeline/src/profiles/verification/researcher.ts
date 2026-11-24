@@ -1,107 +1,15 @@
-import OpenAI from 'openai';
-import type { ResponseInputItem } from 'openai/resources/responses/responses';
 import type { ModelProfile } from '../model-profile.js';
-import { passages } from '../passages.js';
 import { readPromptText } from '../prompt.js';
-import type { Complete, Completion } from '../providers.js';
 import { type ProfileSubject, subjectBrief } from '../subjects.js';
-import { extractJson } from '../values.js';
 import type { AdversarialCheck } from './adversarial.js';
 import {
   type Assessment,
   type Evidence,
   findingExcerpts,
   normalizeText,
-  parseAssessment,
-  parseAudit,
-  type Report,
   type Source,
 } from './policy.js';
-import {
-  headingPathAt,
-  readSourceTool,
-  readSourceToolOutput,
-  type SourceStore,
-} from './sources.js';
-
-export type Research = (
-  profile: ModelProfile,
-  subject: ProfileSubject,
-  sources: SourceStore,
-) => Promise<{ assessment: Assessment; model: string }>;
-
-// Web search discovers candidates; only the local fetch tool can supply evidence
-// that the deterministic gate will accept. Each pass has fixed research limits.
-export function createResearcher(model: string): Research {
-  const client = new OpenAI({ timeout: 180_000, maxRetries: 2 });
-  return async (profile, subject, sources) => {
-    const instructions = readPromptText('profile-research.md').slice(0, -1);
-    const input: ResponseInputItem[] = [
-      {
-        role: 'user',
-        content: JSON.stringify({
-          profile,
-          subject: subjectBrief(subject),
-          passages: passages(profile),
-        }),
-      },
-    ];
-    let reads = 0;
-    let searches = 0;
-    for (let turn = 0; turn < 12; turn++) {
-      const response = await client.responses.create({
-        model,
-        instructions,
-        input,
-        store: false,
-        include: ['reasoning.encrypted_content'],
-        reasoning: { effort: 'high' },
-        max_output_tokens: 24_000,
-        max_tool_calls: 8,
-        tools: [
-          ...(searches < 16 ? [{ type: 'web_search' as const }] : []),
-          readSourceTool,
-        ],
-      });
-      if (response.status !== 'completed')
-        throw new Error(`Verification model stopped: ${response.status}`);
-      for (const item of response.output) {
-        if (
-          item.type === 'message' ||
-          item.type === 'reasoning' ||
-          item.type === 'function_call' ||
-          item.type === 'web_search_call'
-        )
-          input.push(item);
-        else throw new Error(`Unexpected verification output: ${item.type}`);
-      }
-      searches += response.output.filter(
-        (item) => item.type === 'web_search_call',
-      ).length;
-      const calls = response.output.filter(
-        (item) => item.type === 'function_call',
-      );
-      if (!calls.length)
-        return {
-          assessment: parseAssessment(extractJson(response.output_text)),
-          model: response.model,
-        };
-      for (const call of calls) {
-        if (++reads > 24)
-          throw new Error('Verification exhausted its source-read budget');
-        if (call.name !== readSourceTool.name)
-          throw new Error('Unknown verification tool');
-        const output = await readSourceToolOutput(sources, call.arguments);
-        input.push({
-          type: 'function_call_output',
-          call_id: call.call_id,
-          output: JSON.stringify(output),
-        });
-      }
-    }
-    throw new Error('Verification exhausted its research-turn budget');
-  };
-}
+import { headingPathAt } from './sources.js';
 
 export function englishAuditPrompt(
   profile: ModelProfile,
@@ -201,33 +109,4 @@ export function englishAuditPrompt(
         })),
     })
   );
-}
-
-export async function auditProfile(
-  profile: ModelProfile,
-  subject: ProfileSubject,
-  assessment: Assessment,
-  sources: readonly Source[],
-  complete: Complete,
-  adversarialChecks?: readonly AdversarialCheck[],
-): Promise<{
-  audit: Report['audit'];
-  model: string;
-  tokens: Completion['tokens'];
-}> {
-  const response = await complete(
-    englishAuditPrompt(
-      profile,
-      subject,
-      assessment,
-      sources,
-      adversarialChecks,
-    ),
-    'audit',
-  );
-  return {
-    audit: parseAudit(extractJson(response.text)),
-    model: response.model,
-    tokens: response.tokens,
-  };
 }

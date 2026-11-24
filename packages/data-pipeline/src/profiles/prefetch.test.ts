@@ -1,11 +1,18 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import {
+  mkdir,
+  mkdtemp,
+  readdir,
+  readFile,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { runCoordinatorCommand } from './coordinator.js';
-import { prefetchSubject, rankReferences } from './prefetch.js';
+import { prefetchBatch, prefetchSubject, rankReferences } from './prefetch.js';
 import type { ProfileSubject } from './subjects.js';
 import { hash } from './verification/assessment.js';
 import {
@@ -65,7 +72,7 @@ test('reference extraction favors reference sections and filters unsuitable URLs
 
 test('source fetching honors numeric Retry-After, caps it and falls back to backoff', async () => {
   const responses = [
-    { status: 429, retryAfter: '120' },
+    { status: 503, retryAfter: '120' },
     { status: 429, retryAfter: 'invalid' },
     { status: 451 },
   ];
@@ -83,7 +90,7 @@ test('source fetching honors numeric Retry-After, caps it and falls back to back
     }),
     (error) => error instanceof SourceFetchError && error.status === 451,
   );
-  assert.deepEqual(delays, [60_000, 1_000]);
+  assert.deepEqual(delays, [60_000, 10_000]);
 
   let tries = 0;
   await assert.rejects(
@@ -209,15 +216,23 @@ test('prefetch persists source maps and deterministic blocks, and evidence reuse
   ]);
   assert.ok(!fetched.includes('https://www.britannica.com/redundant'));
 
-  const blocks = JSON.parse(
-    await readFile(path.join(base, 'blocked-hosts.json'), 'utf8'),
-  );
-  assert.deepEqual(Object.keys(blocks).sort(), [
+  const blockDir = path.join(base, 'blocked-hosts');
+  const hosts = [
     'archive.gov',
     'restricted.gov',
     'scans.edu',
     'university.edu',
-  ]);
+  ];
+  assert.deepEqual(
+    await readdir(blockDir),
+    hosts.map((host) => `${hash(host)}.json`).sort(),
+  );
+  for (const host of hosts) {
+    const entry = JSON.parse(
+      await readFile(path.join(blockDir, `${hash(host)}.json`), 'utf8'),
+    );
+    assert.equal(entry.host, host);
+  }
   fetched.length = 0;
   await runCoordinatorCommand(
     'evidence',
@@ -299,4 +314,184 @@ test('prefetch persists source maps and deterministic blocks, and evidence reuse
   currentTime += 7 * 24 * 60 * 60 * 1_000;
   await prefetch();
   assert.ok(fetched.includes(blocked) && fetched.includes(gone));
+});
+
+const secondSubject = {
+  ...subject,
+  qid: 'Q1',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Hooke',
+};
+const thirdSubject = {
+  ...subject,
+  qid: 'Q2',
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Halley',
+};
+
+test('prefetch CLI rejects invalid concurrency and emits results in input order', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-cli-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  const emitted: unknown[] = [];
+  const options = {
+    profilesDir,
+    subjects: () => [subject, secondSubject],
+    resolve: async () => assert.fail('unexpected article resolution'),
+    fetch: async (url: string) => {
+      throw new SourceFetchError(`Unavailable: ${url}`, 503);
+    },
+    emit: (value: unknown) => {
+      emitted.push(value);
+    },
+  };
+  for (const n of ['0', '4', 'abc', '1.5']) {
+    await assert.rejects(
+      runCoordinatorCommand(
+        'prefetch',
+        ['--qids=Q1', `--concurrency=${n}`],
+        options,
+      ),
+      /--concurrency must be an integer from 1 to 3/,
+    );
+  }
+  await runCoordinatorCommand(
+    'prefetch',
+    ['--qids=Q1,Q935', '--concurrency=2'],
+    options,
+  );
+  assert.deepEqual(
+    emitted.map((result) => (result as { qid: string }).qid),
+    ['Q1', 'Q935'],
+  );
+});
+
+test('prefetch batches bound active QIDs, run serially by default and retain input order', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-workers-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  let active = 0;
+  let peak = 0;
+  const finished: string[] = [];
+  const subjects = [subject, secondSubject, thirdSubject];
+  const options = {
+    profilesDir,
+    subjects,
+    fetch: async (url: string) => {
+      active++;
+      peak = Math.max(peak, active);
+      await sleep(url === wikipedia ? 40 : 5);
+      finished.push(url);
+      active--;
+      throw new SourceFetchError('Transient', 503);
+    },
+  };
+  await prefetchBatch(options);
+  assert.equal(peak, 1);
+  assert.deepEqual(
+    finished,
+    subjects.map(({ wikipediaUrl }) => wikipediaUrl),
+  );
+  peak = 0;
+  finished.length = 0;
+  const results = await prefetchBatch({ ...options, concurrency: 2 });
+  assert.equal(peak, 2);
+  assert.deepEqual(
+    results.map(({ qid }) => qid),
+    subjects.map(({ qid }) => qid),
+  );
+  assert.equal(finished.at(-1), wikipedia);
+});
+
+test('a concurrent prefetch batch shares Wikipedia pacing across hosts and QIDs', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-paced-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  const started: number[] = [];
+  await prefetchBatch({
+    profilesDir,
+    subjects: [
+      subject,
+      {
+        ...secondSubject,
+        wikipediaUrl: 'https://simple.wikipedia.org/wiki/Hooke',
+      },
+    ],
+    concurrency: 2,
+    fetch: (url, options) =>
+      fetchSource(url, {
+        ...options,
+        requestPage: async () => {
+          started.push(performance.now());
+          return {
+            status: 200,
+            type: 'text/plain',
+            text: 'Wikipedia article text. '.repeat(10),
+          };
+        },
+      }),
+  });
+  assert.equal(started.length, 2);
+  assert.ok((started[1] ?? 0) - (started[0] ?? 0) >= 999);
+});
+
+test('concurrent prefetched access blocks survive and successful refresh clears per-host and legacy blocks', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-blocked-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  const directory = path.join(profilesDir, 'evidence');
+  await mkdir(directory);
+  const legacyUrl = 'https://legacy.example.org/article';
+  const legacyFile = path.join(directory, 'blocked-hosts.json');
+  const legacy = JSON.stringify({
+    'example.org': {
+      url: legacyUrl,
+      reason: 'Legacy block',
+      failed_at: Date.now(),
+    },
+  });
+  await writeFile(legacyFile, legacy);
+  const sources = ['https://archive.gov/newton', 'https://museum.org/hooke'];
+  const fetches: string[] = [];
+  let blocking = true;
+  const options = {
+    profilesDir,
+    fetch: async (url: string, options?: Parameters<typeof fetchSource>[1]) => {
+      fetches.push(url);
+      if (url === subject.wikipediaUrl)
+        options?.onReferenceLinks?.([sources[0] as string, legacyUrl]);
+      if (url === secondSubject.wikipediaUrl)
+        options?.onReferenceLinks?.([sources[1] as string]);
+      if (blocking && sources.includes(url))
+        throw new SourceFetchError('Forbidden', 403);
+      const data = {
+        url,
+        fetched_at: new Date().toISOString(),
+        text: 'Evidence.',
+      };
+      return { ...data, id: hash(data) };
+    },
+    readLinks: async () => [sources[0] as string, legacyUrl],
+  };
+  const results = await prefetchBatch({
+    ...options,
+    subjects: [subject, secondSubject],
+    concurrency: 2,
+  });
+  assert.ok(
+    results[0]?.skipped.some(
+      ({ reason }) => reason === 'Blocked host: Legacy block',
+    ),
+  );
+  assert.ok(!fetches.includes(legacyUrl));
+  const blocks = path.join(directory, 'blocked-hosts');
+  assert.deepEqual(
+    await readdir(blocks),
+    ['archive.gov', 'museum.org'].map((host) => `${hash(host)}.json`).sort(),
+  );
+  blocking = false;
+  await prefetchSubject({ ...options, subject, refresh: true });
+  await assert.rejects(
+    readFile(path.join(blocks, `${hash('archive.gov')}.json`)),
+    { code: 'ENOENT' },
+  );
+  await rm(path.join(directory, 'urls', `${hash(legacyUrl)}.json`));
+  fetches.length = 0;
+  await prefetchSubject({ ...options, subject });
+  assert.deepEqual(fetches, [legacyUrl]);
+  assert.equal(await readFile(legacyFile, 'utf8'), legacy);
 });

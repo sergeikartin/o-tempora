@@ -25,6 +25,7 @@ import {
   type ProfileTarget,
   readRawProfiles,
   shipProfiles,
+  verifyBuiltProfiles,
   withProfileFlags,
   writeProfiles,
 } from './profiles.js';
@@ -315,6 +316,7 @@ async function main(): Promise<void> {
     buildSearchIndex(peopleRu, conflictsRu, milestonesRu),
   );
 
+  await verifyBuiltProfiles(DATA_DIR);
   console.log(
     `Wrote Detail Level delta files for people, conflicts, and milestones (en + ru) to ${DATA_DIR}`,
   );

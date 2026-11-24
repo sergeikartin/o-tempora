@@ -38,6 +38,7 @@ export interface ProfileSubject {
   name: string;
   dateSpan: DateSpan;
   wikipediaUrl: string;
+  fameScore?: number;
   ru?: ProfileSubjectRu;
 }
 
@@ -172,15 +173,26 @@ export function indexProfileSources(
 // The writer only gets subjects included in Output with an English Wikipedia article.
 export function buildProfileSubjects(
   sources: ReturnType<typeof indexProfileSources>,
-  entries: Record<ProfileLane, readonly { id: string; name: string }[]>,
+  entries: Record<
+    ProfileLane,
+    readonly { id: string; name: string; fameScore: number }[]
+  >,
 ): ProfileSubject[] {
   return (['people', 'conflicts', 'milestones'] as const).flatMap((lane) =>
-    entries[lane].flatMap(({ id, name }): ProfileSubject[] => {
+    entries[lane].flatMap(({ id, name, fameScore }): ProfileSubject[] => {
       const source = sources[lane].get(id);
       if (!source?.dateSpan || !source.wikipediaUrl) return [];
       const { qid, dateSpan, wikipediaUrl, ru } = source;
       return [
-        { qid, lane, name, dateSpan, wikipediaUrl, ...(ru ? { ru } : {}) },
+        {
+          qid,
+          lane,
+          name,
+          dateSpan,
+          wikipediaUrl,
+          fameScore,
+          ...(ru ? { ru } : {}),
+        },
       ];
     }),
   );
@@ -206,7 +218,7 @@ interface CacheOptions {
   statInputs?: () => InputStats;
 }
 
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
 
 export function statSubjectInputs(): InputStats {
   const files = [
@@ -295,9 +307,11 @@ export function loadSubjects({
   cachePath = SUBJECTS_CACHE_PATH,
   bypassCache = false,
   compute = computeSubjects,
+  readOnly = false,
   statInputs = statSubjectInputs,
 }: CacheOptions & {
   bypassCache?: boolean;
+  readOnly?: boolean;
   compute?: () => ProfileSubject[];
 } = {}): ProfileSubject[] {
   if (bypassCache) return compute();
@@ -316,6 +330,7 @@ export function loadSubjects({
     // A missing or damaged cache is rebuilt from its inputs.
   }
   const subjects = compute();
-  if (inputs) writeSubjectsCache(subjects, { cachePath, statInputs }, inputs);
+  if (inputs && !readOnly)
+    writeSubjectsCache(subjects, { cachePath, statInputs }, inputs);
   return subjects;
 }

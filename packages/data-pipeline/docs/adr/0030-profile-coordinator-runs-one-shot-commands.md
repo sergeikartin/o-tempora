@@ -1,5 +1,6 @@
 ---
-status: accepted
+status: superseded
+superseded-by: 0035-profiles-use-subagents-only.md
 supersedes:
   - 0024-profiles-can-use-conversation-subagents.md
   - 0028-profile-model-routing-lives-in-one-module.md
