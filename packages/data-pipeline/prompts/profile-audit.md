@@ -2,7 +2,7 @@
 
 - **Version:** 2.4.0
 - **Prompt hash:** sha256 of the prompt text below (first 12 chars: `d9931ffad431`)
-- **Inputs:** The subject brief, Profile, passages, assessment and source excerpts are appended as JSON.
+- **Inputs:** The subject brief, Profile, assessment and source excerpts are appended as JSON. Numeric source references in the assessment match the `source` numbers in `source_contexts`.
 
 ## Prompt
 

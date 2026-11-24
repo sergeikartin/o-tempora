@@ -175,6 +175,8 @@ test('independent audit receives each finding once and shares overlapping source
       assert.equal(role, 'audit');
       const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
       assert.equal(payload.evidence, undefined);
+      assert.equal(payload.passages, undefined);
+      assert.deepEqual(payload.profile, profile);
       assert.equal(payload.assessment.findings.length, report.findings.length);
       assert.deepEqual(
         payload.assessment.findings.map(
@@ -189,9 +191,16 @@ test('independent audit receives each finding once and shares overlapping source
         ),
         [0, 0, 1, null],
       );
+      assert.deepEqual(
+        payload.assessment.findings.flatMap(
+          (finding: { evidence: { source: number }[] }) =>
+            finding.evidence.map((evidence) => evidence.source),
+        ),
+        [1, 1, 1, 1],
+      );
       assert.deepEqual(payload.source_contexts, [
         {
-          source: source.id,
+          source: 1,
           url: URL,
           excerpts: [
             text.slice(0, text.indexOf(quotes[1]) + quotes[1].length + 700),
@@ -247,7 +256,7 @@ test('saved-evidence audits use the original findings and leave approvals intact
         before.report.assessment.findings.length,
       );
       assert.deepEqual(payload.source_contexts, [
-        { source: SOURCE.id, url: SOURCE.url, excerpts: [TEXT] },
+        { source: 1, url: SOURCE.url, excerpts: [TEXT] },
       ]);
       return {
         model: 'pilot',
@@ -863,7 +872,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
       ).counterevidence,
       [
         {
-          source: contrary.id,
+          source: 2,
           quote: contraryText,
           kind: 'scholarly',
           origin: 'Archival account',
@@ -872,7 +881,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
       ],
     );
     assert.deepEqual(payload.source_contexts.at(-1), {
-      source: contrary.id,
+      source: 2,
       url: contraryUrl,
       excerpts: [contraryText],
     });

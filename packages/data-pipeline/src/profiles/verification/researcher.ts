@@ -144,6 +144,9 @@ export function englishAuditPrompt(
     }
   }
 
+  const sourceNumbers = new Map(
+    [...evidenceBySource.keys()].map((id, index) => [id, index + 1]),
+  );
   const contextIndexes = new Map<Evidence, number>();
   const sourceContexts = sources.flatMap((source) => {
     const items = evidenceBySource.get(source.id);
@@ -163,7 +166,7 @@ export function englishAuditPrompt(
     }
     return [
       {
-        source: source.id,
+        source: sourceNumbers.get(source.id),
         url: source.url,
         excerpts: excerpts.map(({ start, end }) =>
           source.text.slice(start, end),
@@ -173,6 +176,7 @@ export function englishAuditPrompt(
   });
   const withContext = (item: Evidence) => ({
     ...item,
+    source: sourceNumbers.get(item.source),
     source_excerpt_index: contextIndexes.get(item) ?? null,
   });
   const findings = assessment.findings.map((finding) => ({
@@ -185,7 +189,6 @@ export function englishAuditPrompt(
     JSON.stringify({
       subject: subjectBrief(subject),
       profile,
-      passages: passages(profile),
       assessment: { ...assessment, findings },
       source_contexts: sourceContexts,
     })
