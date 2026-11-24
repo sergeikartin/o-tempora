@@ -10,6 +10,7 @@ import {
   approvedTranslation,
   loadTranslationSource,
   parseTranslationFields,
+  prepareTranslationCorrection,
   readTranslation,
   russianAuditPrompt,
   translateProfile,
@@ -325,9 +326,11 @@ async function russianTranslation(options: CoordinatorOptions, qid: string) {
     options.emit({ status: 'skipped' });
     return;
   }
+  const feedback = await translationFeedback(filePath, raw);
+  const correction = prepareTranslationCorrection(raw, feedback);
   options.emit(
     task(
-      translationPrompt(raw, await translationFeedback(filePath, raw)),
+      correction?.prompt ?? translationPrompt(raw, feedback),
       profileHash(raw),
     ),
   );
@@ -346,12 +349,27 @@ async function russianAudit(
     await readJson(candidateFile),
     'Russian candidate',
   );
-  const translationTask = task(
-    translationPrompt(raw, await translationFeedback(filePath, raw)),
-    binding,
-  );
-  const translation = output(candidate, translationTask.input_hash);
-  const fields = parseTranslationFields(translation.fields, raw);
+  const feedback = await translationFeedback(filePath, raw);
+  const translationTask = task(translationPrompt(raw, feedback), binding);
+  const correction = prepareTranslationCorrection(raw, feedback);
+  let proposedFields: unknown;
+  if (correction && candidate.input_hash !== translationTask.input_hash) {
+    const reply = output(
+      candidate,
+      task(correction.prompt, binding).input_hash,
+    );
+    const replacements = asRecord(reply.fields, 'replacement fields');
+    const paths = Object.keys(replacements);
+    if (
+      paths.length !== correction.paths.size ||
+      paths.some((path) => !correction.paths.has(path))
+    )
+      throw new Error('Supply replacements for exactly the flagged fields');
+    proposedFields = { ...correction.fields, ...replacements };
+  } else {
+    proposedFields = output(candidate, translationTask.input_hash).fields;
+  }
+  const fields = parseTranslationFields(proposedFields, raw);
   const prepared = task(russianAuditPrompt(raw, fields), binding);
   if (!resultFile) {
     options.emit(prepared);
@@ -365,11 +383,13 @@ async function russianAudit(
       dates,
       retry: false,
       complete: async (prompt, role) => {
-        const reply = role === 'translate' ? candidate : audit;
-        return completion(
-          reply,
-          output(reply, task(prompt, binding).input_hash),
-        );
+        const inputHash = task(prompt, binding).input_hash;
+        if (role === 'translate') {
+          if (inputHash !== translationTask.input_hash)
+            throw new Error('Translation inputs changed; prepare a fresh task');
+          return completion(candidate, { fields });
+        }
+        return completion(audit, output(audit, inputHash));
       },
     }),
   );

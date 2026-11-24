@@ -10,6 +10,8 @@ Give the [Profile coordinator](profile-coordinator.md) the QIDs selected in chat
 
 The [Profile model routing module](../src/profiles/model-routing.ts) owns provider defaults and model overrides for verification, audit and translation.
 
+The prompts for [writing](../prompts/profile.md), [verification research](../prompts/profile-research.md), [English audit](../prompts/profile-audit.md), [English repair](../prompts/profile-repair.md), [Russian translation](../prompts/profile-translation.md), [translation repair](../prompts/profile-translation-repair.md) and [translation audit](../prompts/profile-translation-audit.md) live in `prompts/`. Each file records its version and the SHA-256 prefix of its prompt block. The pipeline supplies the per-Profile inputs when it runs.
+
 | Command | Behavior |
 |---|---|
 | `finalize --qids=Q1,Q2` | Resolves subject and Connection QIDs, removes Connections outside the dataset, adds metadata, writes drafts and removes successfully finalized staging files. |

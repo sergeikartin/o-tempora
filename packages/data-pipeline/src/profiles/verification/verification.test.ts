@@ -942,8 +942,64 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     /different inputs/,
   );
   await saveCandidate(fields);
+  const heldReply = await save('held-fidelity.json', {
+    input_hash: fidelity.input_hash,
+    result: {
+      covered: Object.keys(fields),
+      uncovered: [],
+      issues: ['key_moments.0.title: use the full Russian title'],
+      coherent: true,
+    },
+  });
   assert.equal(
-    (await run('russian-audit', qid, candidate, `--result=${fidelityReply}`))
+    (await run('russian-audit', qid, candidate, `--result=${heldReply}`))
+      .status,
+    'held',
+  );
+  const correction = await run('russian-translation', qid);
+  assert.match(
+    String(correction.prompt),
+    /"paths":\["key_moments\.0\.title"\]/,
+  );
+  async function saveCorrection(fields: Record<string, string>) {
+    return `--candidate=${await save('correction.json', {
+      input_hash: correction.input_hash,
+      result: { fields },
+    })}`;
+  }
+  const replacements = {
+    'key_moments.0.title': '«Математические начала натуральной философии»',
+  };
+  const excess = await saveCorrection({ ...replacements, overview: 'Другое.' });
+  await assert.rejects(
+    run('russian-audit', qid, excess),
+    /exactly the flagged/,
+  );
+  const invalid = await saveCorrection({
+    'key_moments.0.title': 'Начала 1687',
+  });
+  await assert.rejects(run('russian-audit', qid, invalid), /changed numeric/);
+  const corrected = await saveCorrection(replacements);
+  const freshFidelity = await run('russian-audit', qid, corrected);
+  const correctedFields = { ...fields, ...replacements };
+  assert.ok(
+    String(freshFidelity.prompt).includes(JSON.stringify(correctedFields)),
+  );
+  await assert.rejects(
+    run('russian-audit', qid, corrected, `--result=${fidelityReply}`),
+    /different inputs/,
+  );
+  const correctedReply = await save('corrected-fidelity.json', {
+    input_hash: freshFidelity.input_hash,
+    result: {
+      covered: Object.keys(fields),
+      uncovered: [],
+      issues: [],
+      coherent: true,
+    },
+  });
+  assert.equal(
+    (await run('russian-audit', qid, corrected, `--result=${correctedReply}`))
       .status,
     'approved',
   );
@@ -952,7 +1008,8 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
       await readTranslation(options.filePath),
       english.record,
     ),
-    fields,
+    correctedFields,
   );
+  assert.deepEqual(await saved(options), english);
   assert.equal((await run('russian-translation', qid)).status, 'skipped');
 });

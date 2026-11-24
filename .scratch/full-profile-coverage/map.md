@@ -18,7 +18,9 @@ Plan for English and Russian and retain existing approval checks. The published 
 - [Workflow trial](issues/02-workflow.md): On the next unwritten Profile, cite trustworthy fetched evidence for Key Moments and Deep Facts. Keep the change if the first English audit finds zero citation mismatches and no new citation-quality issues. Track weekly usage per bilingual approval across successive attempts.
 - Count Profiles with both Locales approved per week as the throughput measure. Track elapsed time to English approval separately.
 - [Curie Russian retry](issues/01-baseline.md#marie-curie-russian-retry): A translation self-check, field-only correction and fresh full audit produced a Russian approval. Use the [Russian coordinator workflow](../../packages/data-pipeline/docs/profile-coordinator.md#russian) for this process.
-- The agreed CLI follow-up is to accept replacements for fields with blocking findings, merge them into the held candidate, validate the complete Profile and prepare it for a fresh full audit. The coordinator currently merges replacements in a temporary full candidate.
+- [Vincent van Gogh trial](issues/01-baseline.md#vincent-van-gogh-trial-2026-11-24): Bilingual approval took 24m 37s and the weekly meter rose from 44% to 50%. The first audit again found zero citation blockers. English claim precision took two repairs, and four Russian field replacements cleared the full re-audit.
+- [Galileo Galilei trial](issues/01-baseline.md#galileo-galilei-trial-2026-11-24): The passage-by-passage trial found two first-audit English blockers and needed two repairs. Bilingual approval took 24m 48s and the weekly meter rose from 51% to 57%.
+- The [coordinator CLI](../../packages/data-pipeline/docs/profile-coordinator.md#russian) merges replacements for fields with blocking findings into the held candidate, validates the complete Russian translation and prepares it for a fresh full audit.
 
 ## Not yet specified
 

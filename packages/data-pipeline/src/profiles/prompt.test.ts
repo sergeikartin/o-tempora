@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { test } from 'node:test';
-import { PROMPT_PATH } from './paths.js';
-import { loadPrompt, parseAgentModel, parsePrompt } from './prompt.js';
+import { PROMPTS_DIR } from './paths.js';
+import { parseAgentModel, parsePrompt } from './prompt.js';
 
 const markdown = [
   '- **Version:** 1.2.3',
@@ -38,11 +39,13 @@ test('parsePrompt throws when the prompt block is missing', () => {
   assert.throws(() => parsePrompt('no prompt here'), /Prompt/);
 });
 
-test('the checked-in prompt hashes to the value it states', async () => {
-  const stated = /first 12 chars: `([0-9a-f]{12})`/.exec(
-    await readFile(PROMPT_PATH, 'utf8'),
-  )?.[1];
-  assert.equal((await loadPrompt()).hash, stated);
+test('the checked-in prompts hash to the values they state', async () => {
+  for (const filename of await readdir(PROMPTS_DIR)) {
+    if (!filename.endsWith('.md')) continue;
+    const markdown = await readFile(path.join(PROMPTS_DIR, filename), 'utf8');
+    const stated = /first 12 chars: `([0-9a-f]{12})`/.exec(markdown)?.[1];
+    assert.equal(parsePrompt(markdown, filename).hash, stated, filename);
+  }
 });
 
 test('parseAgentModel reads the model from frontmatter', () => {

@@ -7,7 +7,8 @@ const PACKAGE_DIR = path.join(
   '..',
 );
 
-export const PROMPT_PATH = path.join(PACKAGE_DIR, 'prompts', 'profile.md');
+export const PROMPTS_DIR = path.join(PACKAGE_DIR, 'prompts');
+export const PROMPT_PATH = path.join(PROMPTS_DIR, 'profile.md');
 export const WRITER_AGENT_PATH = path.join(
   PACKAGE_DIR,
   '..',

@@ -177,3 +177,61 @@ Build and isolated publication finished **21m 51s** after dispatch. The standard
 ### Marie Curie Russian retry
 
 The retry reused the English approval and changed only the seven Russian fields flagged in the prior hold. The translator checked all 22 fields against English and reread the Russian for flow. A temporary merge restricted changes to the flagged fields. A fresh auditor reviewed all 22 fields and approved the candidate with zero blockers and zero further corrections. The retry took 3m 5s end to end, including 1m 31s for translation and 51s for the audit. Both English file hashes matched their pre-retry values. Commit `8998234` saved the Russian approval locally.
+
+### Vincent van Gogh trial, 2026-11-24
+
+Vincent van Gogh (Q5582, 1853–1890, Fame Score 93.26) entered the trial with no saved, staged or published Profile. All stages used `gpt-6.2-sol` at medium effort. The first writer dispatch was at 03:47:12 UTC with the account meters at 1% for five hours and 44% for the week. Their resets were Nov 24 at 08:31:53 UTC and Nov 29 at 15:25:51 UTC.
+
+| Stage | Dispatch to last measured response | Five-hour meter | Weekly meter | Input tokens | Cached input | Output tokens |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Research before restart | 3m 31s | 7% | 45% | 2,594,252 | 2,522,368 | 5,515 |
+| Resumed research and writing | 4m 48s | 15% | 46% | 1,075,633 | 959,488 | 12,014 |
+| First English audit | 1m 32s | 19% | 47% | 645,228 | 601,472 | 3,245 |
+| First English repair | 1m 45s | 22% | 47% | 904,341 | 874,368 | 4,465 |
+| Second English audit | 1m 42s | 26% | 48% | 624,429 | 580,352 | 3,584 |
+| Second English repair | 55s | 28% | 48% | 584,855 | 571,264 | 1,888 |
+| Third English audit | 1m 12s | 31% | 49% | 424,081 | 358,272 | 2,413 |
+| Russian translation to first saved candidate | 58s | 33% | 49% | 162,780 | 134,272 | 2,145 |
+| Russian edits after first save | 1m 33s | 36% | 49% | 340,265 | 330,880 | 4,120 |
+| First Russian audit, including follow-up check | 1m 46s | 38% | 50% | 398,291 | 369,280 | 3,423 |
+| Russian correction | 1m 07s | 39% | 50% | 228,780 | 206,848 | 2,643 |
+| Second Russian audit | 36s | 40% | 50% | 164,366 | 145,664 | 1,215 |
+| **Agent total** | | | | **8,147,301** | **7,654,528** | **46,670** |
+
+Input totals include cached tokens. Both English repairs reused the resumed writer's context and are measured as increments. The late Russian edits overlapped the first audit. Agent totals exclude coordination and automatic tool approval review. By the verified publication the account meters reached 41% and 50%, an increase of 40 and 6 percentage points respectively for one bilingual approval. Account readings include coordination and any other activity in the windows.
+
+The daemon restarted before the writer staged a draft. The replacement writer recovered 21 usable source snapshots and saw 11 empty evidence outputs. It used 17 snapshots and made zero new fetches. Local preflight checked all 100 evidence excerpts, seven citation URLs, markup and coverage in about 15 ms once data loaded, or about 1.2 seconds end to end. Finalization retained all six proposed Connections. It succeeded with the system CA and scoped network access after a sandboxed attempt failed.
+
+The first independent English audit found zero citation blockers and five issues involving claim coverage, scope, conflicting syndicated metadata and corroboration. The two cached-evidence repairs cleared those findings plus three issues found on re-audit. One of the later issues involved adding the word “first” while narrowing the *Sunflowers* claim. English was approved in **18m 46s** after three audits. The final report covers 22 fields with 54 findings. All four Key Moments, three Deep Facts and six Connections survived.
+
+The translator continued editing its working file after the first Russian audit was prepared. The coordinator recovered the exact audited candidate from the prepared task and verified that it generated an identical task. The first audit held on four fields, including one confirmed in a follow-up check. The next translator returned four replacements. The coordinator merged them into the held candidate and a fresh audit passed all 22 fields. English file hashes matched before and after Russian. Russian took **5m 52s** from English approval. Bilingual approval took **24m 37s**, and the build and isolated publication finished in about **24m 39s**. The standard publisher copied 44 files byte for byte. Only the two Van Gogh Legendary rows and two Profile files differed from the baseline build.
+
+The citation handoff has now passed the first audit on both the Curie and Van Gogh trials. The next effort to target is claim precision. Use a final passage-by-passage check for implied chronology, agency and comparative terms such as “first,” including effects introduced by repairs. Turn the fast local preflight into a coordinator command so the auditor can see which mechanical checks have passed. Keep full semantic and fidelity audits. Freeze the exact candidate at handoff and let the CLI merge flagged Russian replacements into the held fields. In this run the English audit task also repeated about 4,100 characters of passage text and used full 64-character source IDs throughout. Compacting those references is a measurable follow-up that can preserve every source excerpt.
+
+### Galileo Galilei trial, 2026-11-24
+
+Galileo Galilei (Q307, 1564–1642, Fame Score 95.08) entered with no saved, staged or published Profile. This was the first trial of passage-by-passage writing and review under writer prompt 2.5.0 and verification policy 4. All tasks used fresh contexts with `gpt-6.2-sol` at medium effort. First dispatch was at 04:49:02 UTC with the account meters at 46% for five hours and 51% for the week. Their resets were Nov 24 at 08:31:53 UTC and Nov 29 at 15:25:51 UTC.
+
+| Stage | Dispatch to last measured response | Five-hour meter | Weekly meter | Input tokens | Cached input | Output tokens |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Research and writing | 7m 16s | 56% | 53% | 2,884,742 | 2,773,504 | 16,443 |
+| First English audit | 1m 24s | 60% | 53% | 697,201 | 657,152 | 2,532 |
+| First English repair | 2m 18s | 65% | 54% | 1,327,861 | 1,242,624 | 4,548 |
+| Second English audit | 1m 29s | 69% | 55% | 669,966 | 592,256 | 3,052 |
+| Second English repair | 1m 52s | 73% | 55% | 587,874 | 546,304 | 4,118 |
+| Third English audit | 1m 54s | 77% | 56% | 879,123 | 836,224 | 3,736 |
+| Russian translation | 2m 34s | 81% | 56% | 482,843 | 424,192 | 6,398 |
+| First Russian audit | 44s | 82% | 57% | 140,635 | 123,776 | 1,616 |
+| Russian correction | 39s | 84% | 57% | 207,913 | 167,168 | 1,175 |
+| Second Russian audit | 48s | 86% | 57% | 186,728 | 173,696 | 1,718 |
+| **Agent total** | | | | **8,064,886** | **7,536,896** | **45,336** |
+
+Input totals include cached tokens. Agent totals exclude coordination and automatic tool approval review. The account meters ended at 86% and 57%, an increase of 40 and 6 percentage points respectively for one bilingual approval. Account readings include coordination and other activity within the windows.
+
+The writer collected evidence using scoped public network access after the sandbox DNS lookup failed. Three source URLs returned 403 and alternatives supplied support. The staged Profile had 19 fields, 39 findings, and 69 exact excerpts from 15 cached snapshots. Local preflight took roughly 2.6 seconds end to end, including 103 ms for checks, and found zero issues. All four Key Moments, two Deep Facts, four Connections and six displayed citations survived finalization and review.
+
+The first English audit found two claim-precision blockers and zero citation or coverage blockers. It asked for explicit attribution of the water-weighing procedure to the dialogue in *Two New Sciences* and a clear distinction between the telescope helmet’s intended use and reported trial conditions. The first repair revised those two passages. The second audit found three issues in previously untouched passages: source quality for the heliocentrism definition, a repetitive Connection and the certainty of Urban VIII’s permission. The second repair used cached institutional excerpts and revised the two flagged Connections. The third audit cleared all 19 fields and 41 findings. English approval took **18m 39s**.
+
+The coordinator froze the Russian candidate at handoff and checked its hash before applying the audit. The first audit held on one field about the Inquisition’s formal judgment. One replacement went into the otherwise identical candidate, and the fresh re-audit passed all 19 fields. English file hashes matched before and after Russian. Russian took **6m 09s** from English approval, and bilingual approval took **24m 48s**. Build and temporary publication finished in **24m 52s**. All 46 files matched the build byte for byte, and the only differences from the baseline build were Galileo’s two Legendary rows and two Profile files.
+
+Galileo had two first-audit claim blockers versus Van Gogh’s five. Both runs needed two English repairs, finished English within seven seconds of each other, and used the same observed increase on both account meters. The Galileo run had fewer fields and ran without a restart. The two trials leave the effect of passage-by-passage review on total effort unmeasured. The whole-Profile re-audit caught issues outside the initially flagged passages.
