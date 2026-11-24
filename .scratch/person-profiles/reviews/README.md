@@ -14,7 +14,7 @@ The audits inspected all 128 visible passage fields across those five Profiles, 
 
 [Offline preflight](2026-11-15-preflight.json) also confirms that the full sample contains exactly 20 People, 4 Conflicts and 6 Milestones, all at Legendary, and all 281 stored Connection targets occur in the published dataset. Stored membership does not establish live Wikipedia URL/QID identity. The selected five pass schema/identity/locale/year-label checks; the calendar draft fails the bold-only markup rule.
 
-[Plan output](2026-11-15-plan.txt) lists exactly the 30 selected entities as skipped stale records, with no regeneration. The remaining 25 have not received historical source audits in this batch. Automatic verification, approval calibration, corrections and publication remain outstanding under [ticket 12](../issues/12-generate-and-review-the-30.md).
+[November 15 plan output](2026-11-15-plan.txt) lists exactly the 30 selected entities as skipped stale records. The five audits above cover that day's review. See [ticket 12](../issues/12-generate-and-review-the-30.md) for current verification and publication progress.
 
 Follow-up (2026-11-17): Gregorian calendar has been corrected, automatically verified, independently audited and published. Its [audit note](2026-11-15-gregorian-calendar.md#follow-up--2026-11-17) records the completed follow-up; the table above describes the original 2026-11-15 findings.
 

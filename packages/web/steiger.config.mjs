@@ -3,8 +3,8 @@ import { defineConfig } from 'steiger';
 
 export default defineConfig([
   {
-    // Paraglide generates this directory from the message catalogs.
-    ignores: ['src/shared/paraglide/**'],
+    // Paraglide emits dotfiles, which Steiger's glob does not match with ** alone.
+    ignores: ['src/shared/paraglide/**', 'src/shared/paraglide/**/.*'],
   },
   ...fsd.configs.recommended,
   {

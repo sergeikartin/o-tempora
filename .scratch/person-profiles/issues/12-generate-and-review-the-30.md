@@ -8,17 +8,17 @@ Blocked by: 11
 
 Produce the first batch: the 30 entities in `06-sample-selection.md` (20 People, 4 Conflicts, 6 Milestones in five Legendary clusters). English originals, automatically translated into Russian after approval.
 
-- [x] The `profiles` script's plan lists exactly the 30 entities.
-- [x] A `profile-writer` run per entity writes a draft Profile.
-- [ ] `profiles verify --repair` checks each Profile and writes an evidence-backed report beside it.
+Six of the 30 ship in both Locales: Cleopatra, Gregorian calendar, Isaac Newton, Founding of the Roman Empire, World War II and Galileo Galilei. The remaining 24 need new drafts. Commit `fe59f61` removed the earlier unapproved drafts when the project adopted [evidence-first drafting](../../../packages/data-pipeline/docs/adr/0031-profile-drafting-starts-with-fetched-evidence.md). Select the remaining QIDs in the [Profile coordinator workflow](../../../packages/data-pipeline/docs/profile-coordinator.md).
+
+- [x] Confirm the 30 selected entities against the saved [offline preflight](../reviews/2026-11-15-preflight.json).
+- [ ] Research and draft each remaining Profile from fetched evidence.
+- [ ] Verify each draft and save the report. Publish approved English Profiles and separately audited Russian translations.
 - [ ] Audit a varied sample of automatic approvals; resolve essential held claims and protected-edit proposals, then reverify changed content before publishing.
-- [x] Every Connection target the cluster relies on exists in the dataset, so hops can be judged.
+- [x] Confirm that the original sample's Connection targets exist in the dataset. The coordinator checks targets again for new drafts.
 
 ## Comments
 
 Tracker reconciliation (2026-11-15): `6f9d9b9` committed the sample: 20 People, 4 Conflicts and 6 Milestones. All 30 files still have `meta.review.status: draft`; there are no `*.verification.json` reports and no shipped Profile JSON files. Generation is complete; verification and owner review/promotion are outstanding. The exact-sample plan and cluster Connection checks above still need their acceptance evidence. Do not rerun writing or promote drafts as part of tracker cleanup.
-
-## Comments
 
 Review automation is implemented by ticket 08 / pipeline ADR 0023. The live batch and human calibration audit remain pending; old review statuses alone cannot publish.
 
@@ -35,3 +35,5 @@ Acceptance evidence: [plan output](../reviews/2026-11-15-plan.txt) lists exactly
 2026-11-19: Completed Founding of the Roman Empire (Q2277). Corrected the milestone year to 27 BC in both dataset locales and revised the Profile against the [manual audit](../reviews/2026-11-15-roman-empire.md). Verification and independent review passed for 54 claims across 25 passages with 12 fetched sources. The Russian translation passed a separate 25-field audit. Both locale outputs contain four Key Moments, three Deep Facts and nine Connections. The batch acceptance boxes remain open.
 
 2026-11-19: Completed World War II (Q362). Applied the [manual audit](../reviews/2026-11-15-world-war-ii.md), fixed additional chronology and attribution issues, and obtained independent corroboration for the Enigma and Onoda Deep Facts. Verification and independent review passed for 76 claims across 31 passages with 24 fetched sources. The Russian translation passed a separate 31-field audit. Both locale outputs contain four Key Moments, three Deep Facts and fifteen Connections. All five manually audited Profiles are now published in both locales. The other 25 remain in the batch.
+
+2026-11-24: Galileo Galilei (Q307) shipped in both Locales in `176d1de`. Van Gogh shipped in the same commit outside this sample. The [November 15 plan output](../reviews/2026-11-15-plan.txt) records the retired CLI command. Select [sample entities](06-sample-selection.md) by QID in the coordinator now.

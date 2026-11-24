@@ -35,7 +35,7 @@ The original candidates remain in ticket 09 as historical scope. No prototype ch
 | # | Ticket | Notes |
 |---|---|---|
 | 01 | Image and data defects | **Done.** https + `Special:Redirect` image URLs, Muhammad image denylist, tinted image slot and backed close button in the detail panel |
-| 02 | Branded bilingual 404 | Core delivered; landing-return links and acceptance checks remain |
+| 02 | Branded bilingual 404 | Preview route checks passed. Landing Page links, accessibility and Russian text fit remain |
 | 03 | Plain-language labels | Resolved (`f27c290`) |
 | 04 | Entity Links | Resolved (`70ae408`); later Selection rules supersede the original history wording |
 | 05 | Route split and landing shell | Resolved (`439eb04`) |

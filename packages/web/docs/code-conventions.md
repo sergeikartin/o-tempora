@@ -5,6 +5,7 @@
 ## Code Standards
 
 - FSD layer and public-API boundaries are enforced by Steiger in CI — a violation fails the build, not a style suggestion.
+- Steiger excludes generated Paraglide files, including dotfiles, so boundary checks can run before or after localization generation.
 
 ### React (mini-FSD)
 

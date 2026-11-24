@@ -6,7 +6,7 @@ A spec at `.scratch/person-profiles/spec.md` for **Profiles**: LLM-generated, me
 
 ## Implementation status
 
-Types/output, plan/finalize, runtime panel loading, single-entity Selection, Connection history and the landing handoff are implemented. Thirty raw Profiles exist: 20 People, 4 Conflicts and 6 Milestones. Cleopatra, Gregorian calendar, Isaac Newton, Founding of the Roman Empire and World War II are published in both locales. The other 25 remain drafts. Review automation and the documentation sweep are complete. [Batch verification and audit](issues/12-generate-and-review-the-30.md) remain open.
+Types, output, runtime panel loading, single-entity Selection, Connection history and the Landing Page handoff are implemented. Six of the first 30 Profiles ship in both Locales. The other 24 need new drafts after removal of the unapproved drafts. Review automation and the documentation sweep are complete. The [coordinator workflow](../../packages/data-pipeline/docs/profile-coordinator.md) handles QIDs selected in chat. [Batch drafting, verification and audit](issues/12-generate-and-review-the-30.md) remain open.
 
 ## Notes
 
@@ -44,7 +44,7 @@ Settled in charting:
 
 - Rollout beyond Legendary and beyond the 30-entity sample.
 - Independently authored Russian Profiles remain deferred; the pipeline automatically translates approved English Profiles and audits fidelity before Russian publication.
-- [Generate and review the 30](issues/12-generate-and-review-the-30.md): drafts are written; live verification, sampled human audit and remaining acceptance evidence are pending.
+- [Generate and review the 30](issues/12-generate-and-review-the-30.md): draft, verify and publish the remaining 24, and sample automatic approvals for human review.
 
 ## Out of scope
 

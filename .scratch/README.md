@@ -1,13 +1,12 @@
 # Tracker
 
-Nine active tickets remain. Closed tickets stay in their feature directories with implementation evidence or a superseding reference. `Blocked by:` is satisfied when each dependency is resolved, done or superseded; `ready-for-agent` describes specified work, not whether its dependencies are satisfied.
+Eight active tickets remain. Closed tickets stay in their feature directories with implementation evidence or a superseding reference. `Blocked by:` is satisfied when each dependency is resolved, done or superseded; `ready-for-agent` describes specified work, not whether its dependencies are satisfied.
 
 | Work | Status | Next step |
 |---|---|---|
-| [Profile review automation](person-profiles/issues/08-automate-review-gate.md) | Human decision | Settle promotion rules; current owner-review gate remains |
-| [First 30 Profiles](person-profiles/issues/12-generate-and-review-the-30.md) | Partial | Drafts exist; verify and obtain owner review before promotion |
-| [Profile docs and ADRs](person-profiles/issues/16-docs-and-adrs.md) | Unblocked | Reconcile landing fragments, Connection history and living docs |
-| [Branded 404](product-polish/issues/02-branded-404.md) | Partial | Add landing-return links and record acceptance checks |
+| [First 30 Profiles](person-profiles/issues/12-generate-and-review-the-30.md) | Partial | 6 of 30 ship in both Locales. Draft, verify and publish the remaining 24, and sample automatic approvals |
+| [Profile batch resumption](full-profile-coverage/issues/03-resumption.md) | Open | Decide how to select and resume batches across usage windows |
+| [Branded 404](product-polish/issues/02-branded-404.md) | Partial | Add Landing Page links, then check accessibility and Russian text fit |
 | [Canvas craft](product-polish/issues/07-canvas-craft.md) | Partial | Finish visual/performance audit and owner review |
 | [Empty Lane states](product-polish/issues/08-empty-lane-states.md) | Ready | Implement messages and actions |
 | [Accessibility and touch](product-polish/issues/12-accessibility-and-touch-sweep.md) | Unblocked | Fix remaining landmark issue and complete the sweep |
