@@ -31,8 +31,9 @@ dist/
 **/.impeccable/live/*.png
 # impeccable-ignore-end
 
-# Profile writer output awaiting finalize
+# Profile staging and task handoffs
 packages/data-pipeline/data/raw/profiles/incoming/
+packages/data-pipeline/data/raw/profiles/tasks/
 
 # Full fetched articles are local evidence snapshots; reports retain excerpts.
 packages/data-pipeline/data/raw/profiles/evidence/

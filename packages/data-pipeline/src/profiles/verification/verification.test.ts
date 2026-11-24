@@ -829,6 +829,22 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     return destination;
   }
   const qid = '--qid=Q935';
+  async function prepare(command: string, ...flags: string[]) {
+    const file = path.join(root, 'tasks', 'Q935', `${command}.json`);
+    const cliTask = await run(command, qid, ...flags);
+    const summary = await run(command, qid, ...flags, `--out=${file}`);
+    assert.deepEqual(summary, {
+      status: 'prepared',
+      file,
+      input_hash: cliTask.input_hash,
+      ...(Array.isArray(cliTask.targets)
+        ? { targets: cliTask.targets.length }
+        : {}),
+    });
+    const savedTask = JSON.parse(await readFile(file, 'utf8'));
+    assert.deepEqual(savedTask, cliTask);
+    return asRecord(savedTask, command);
+  }
   const first = await run('evidence', `--url=${URL}`);
   const second = await run('evidence', `--url=${URL}`, '--query=Principia');
   assert.equal(second.id, first.id);
@@ -930,11 +946,13 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   );
 
   const researchFlag = await legacyResearch();
-  assert.deepEqual(await run('english-adversarial', qid, researchFlag), {
-    status: 'skipped',
-    targets: 0,
-  });
-  const audit = await run('english-audit', qid, researchFlag);
+  const skippedTask = path.join(root, 'skipped.json');
+  assert.deepEqual(
+    await run('english-adversarial', qid, researchFlag, `--out=${skippedTask}`),
+    { status: 'skipped', targets: 0 },
+  );
+  await assert.rejects(readFile(skippedTask), { code: 'ENOENT' });
+  const audit = await prepare('english-audit', researchFlag);
   function checkCounterevidence(prompt: string) {
     const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
     assert.deepEqual(
@@ -973,7 +991,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     'held',
   );
 
-  const evidenceRepair = await run('english-repair', qid);
+  const evidenceRepair = await prepare('english-repair');
   const refreshedAssessment = evidenceFor(initial);
   const refreshedEvidence = refreshedAssessment.findings[0]?.evidence[0];
   assert.ok(refreshedEvidence);
@@ -1023,6 +1041,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   };
   const repairReply = await save('repair.json', {
     input_hash: repair.input_hash,
+    model: 'gpt-6.2-astra',
     result: assessed(revised),
   });
   assert.equal(
@@ -1035,7 +1054,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   assert.equal(checkpoint.record.key_moments[0].claims, undefined);
   assert.equal(checkpoint.report.profile_hash, profileHash(initial));
   await assert.rejects(run('english-audit', qid), /Run english-adversarial/);
-  const prepared = await run('english-adversarial', qid);
+  const prepared = await prepare('english-adversarial');
   assert.equal(typeof prepared.input_hash, 'string');
   assert.match(String(prepared.prompt), /targeted falsification/);
   assert.doesNotMatch(String(prepared.prompt), /Confirmed by the article/);
@@ -1146,6 +1165,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   assert.equal(auditPayload.adversarial_notes[0].note, checks[0]?.note);
   const accepted = await save('accepted-audit.json', {
     input_hash: freshAudit.input_hash,
+    model: 'gemini-4-neon',
     result: { uncovered: [], issues: [], coherent: true },
   });
   assert.equal(
@@ -1159,14 +1179,18 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     model: 'independent researcher',
     checks,
   });
-  assert.ok(english.report.models.includes('independent researcher'));
+  assert.deepEqual(english.report.models, [
+    'gpt-6.2-astra',
+    'independent researcher',
+    'gemini-4-neon',
+  ]);
   assert.equal(english.report.repairs, 1);
   assert.equal(fetches, 3);
   assert.deepEqual(
     english.report.sources.map(({ id }) => id),
     [first.id, contrary.id],
   );
-  const translation = await run('russian-translation', qid);
+  const translation = await prepare('russian-translation');
   assert.match(String(translation.prompt), /Исаак Ньютон/);
   const fields = {
     overview:
@@ -1182,7 +1206,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     })}`;
   }
   const candidate = await saveCandidate(fields);
-  const fidelity = await run('russian-audit', qid, candidate);
+  const fidelity = await prepare('russian-audit', candidate);
   assert.match(String(fidelity.prompt), /Исаак Ньютон/);
   const fidelityReply = await save('fidelity.json', {
     input_hash: fidelity.input_hash,
@@ -1222,6 +1246,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   async function saveCorrection(fields: Record<string, string>) {
     return `--candidate=${await save('correction.json', {
       input_hash: correction.input_hash,
+      model: 'gpt-6.2-sol',
       result: { fields },
     })}`;
   }
@@ -1249,6 +1274,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   );
   const correctedReply = await save('corrected-fidelity.json', {
     input_hash: freshFidelity.input_hash,
+    model: 'gemini-4-neon',
     result: {
       covered: Object.keys(fields),
       uncovered: [],
@@ -1261,12 +1287,16 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
       .status,
     'approved',
   );
+  const savedTranslation = await readTranslation(options.filePath);
   assert.deepEqual(
-    approvedTranslation(
-      await readTranslation(options.filePath),
-      english.record,
-    ),
+    approvedTranslation(savedTranslation, english.record),
     correctedFields,
+  );
+  const { models } = asRecord(savedTranslation, 'saved translation');
+  assert.ok(Array.isArray(models));
+  assert.deepEqual(
+    models.map((entry) => asRecord(entry, 'translation model').model),
+    ['gpt-6.2-sol', 'gemini-4-neon'],
   );
   assert.deepEqual(await saved(options), english);
   assert.equal((await run('russian-translation', qid)).status, 'skipped');
@@ -1635,11 +1665,13 @@ test('English adversarial tasks reuse unchanged claims through evidence-only and
     ).status,
     'evidence-only',
   );
-  assert.deepEqual(await run('english-adversarial'), {
+  const unusedTask = path.join(root, 'reused.json');
+  assert.deepEqual(await run('english-adversarial', `--out=${unusedTask}`), {
     status: 'reused',
     checks: 2,
     conflicts: 1,
   });
+  await assert.rejects(readFile(unusedTask), { code: 'ENOENT' });
   const reAudit = await run('english-audit');
   assert.equal(
     (await submit('english-audit', reAudit.input_hash, hold)).status,
@@ -1808,4 +1840,21 @@ test('English repair allows two prose changes and leaves evidence-only repair av
   const { record: repaired } = await saved(options);
   assert.equal(repaired.meta.coordinator_repair.count, 2);
   assert.equal(profileHash(repaired), profileHash(record));
+});
+
+test('coordinator rejects --out when applying a result', async () => {
+  for (const command of [
+    'english-adversarial',
+    'english-audit',
+    'english-repair',
+    'russian-audit',
+  ]) {
+    await assert.rejects(
+      runCoordinatorCommand(command, [
+        '--out=task.json',
+        '--result=reply.json',
+      ]),
+      /--out cannot be combined with --result/,
+    );
+  }
 });

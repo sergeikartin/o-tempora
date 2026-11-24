@@ -44,8 +44,7 @@ export function readPromptText(filename: string): string {
   ).text;
 }
 
-// The writer agent's `model:` frontmatter value, recorded in `meta.model`: a
-// subagent does not report the exact model ID it ran on.
+// The Claude writer agent's configured fallback when the serving model is unavailable.
 export function parseAgentModel(agentMarkdown: string): string {
   const frontmatter = /^---\n([\s\S]*?)\n---/.exec(agentMarkdown)?.[1];
   const model = frontmatter && /^model:\s*(\S+)$/m.exec(frontmatter)?.[1];

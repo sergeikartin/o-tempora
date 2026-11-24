@@ -17,7 +17,11 @@ import { RAW_PROFILES_DIR } from './paths.js';
 import { prefetchBatch, validatePrefetchConcurrency } from './prefetch.js';
 import { preflightProfile } from './preflight.js';
 import { readPromptText } from './prompt.js';
-import { inspectProfileStatus, parseProfileScope } from './status.js';
+import {
+  inspectProfileStatus,
+  parseProfileScope,
+  parseProfileStages,
+} from './status.js';
 import { readStoredProfiles, writeJson } from './store.js';
 import { formatDates, loadSubjects } from './subjects.js';
 import {
@@ -122,6 +126,26 @@ function task(prompt: string, binding: unknown) {
   return { prompt, input_hash: hash({ prompt, binding }) };
 }
 
+type TaskOptions = CoordinatorOptions & { outFile?: string };
+
+async function emitTask(
+  options: TaskOptions,
+  prepared: ReturnType<typeof task> & { targets?: readonly unknown[] },
+) {
+  const { outFile } = options;
+  if (!outFile) {
+    options.emit(prepared);
+    return;
+  }
+  await writeJson(outFile, prepared);
+  options.emit({
+    status: 'prepared',
+    file: outFile,
+    input_hash: prepared.input_hash,
+    ...(prepared.targets ? { targets: prepared.targets.length } : {}),
+  });
+}
+
 function output(
   value: Record<string, unknown>,
   inputHash: string,
@@ -204,7 +228,7 @@ function assessmentSnapshots(
 }
 
 async function englishAdversarial(
-  options: CoordinatorOptions,
+  options: TaskOptions,
   qid: string,
   researchFile?: string,
   resultFile?: string,
@@ -245,7 +269,7 @@ async function englishAdversarial(
       { ...binding, targets, reused },
     );
     if (!resultFile) {
-      options.emit({ ...prepared, targets: uncached });
+      await emitTask(options, { ...prepared, targets: uncached });
       return;
     }
     const reply = asRecord(
@@ -291,7 +315,7 @@ async function englishAdversarial(
 }
 
 async function englishAudit(
-  options: CoordinatorOptions,
+  options: TaskOptions,
   qid: string,
   researchFile?: string,
   resultFile?: string,
@@ -336,7 +360,7 @@ async function englishAudit(
     { ...binding, adversarial },
   );
   if (!resultFile) {
-    options.emit(prepared);
+    await emitTask(options, prepared);
     return;
   }
   const audit = asRecord(await readJson(resultFile), 'English audit');
@@ -360,7 +384,7 @@ async function englishAudit(
 }
 
 async function englishRepair(
-  options: CoordinatorOptions,
+  options: TaskOptions,
   qid: string,
   resultFile?: string,
 ) {
@@ -395,7 +419,7 @@ async function englishRepair(
     hash(record),
   );
   if (!resultFile) {
-    options.emit(prepared);
+    await emitTask(options, prepared);
     return;
   }
   const reply = asRecord(await readJson(resultFile), 'English repair');
@@ -413,7 +437,7 @@ async function englishRepair(
   );
 }
 
-async function russianTranslation(options: CoordinatorOptions, qid: string) {
+async function russianTranslation(options: TaskOptions, qid: string) {
   const { filePath, dates, subjects } = await loadSubject(options, qid);
   const raw = await loadTranslationSource(filePath, dates);
   if (approvedTranslation(await readTranslation(filePath), raw)) {
@@ -423,7 +447,8 @@ async function russianTranslation(options: CoordinatorOptions, qid: string) {
   const glossary = buildRussianGlossary(raw, subjects);
   const feedback = await translationFeedback(filePath, raw);
   const correction = prepareTranslationCorrection(raw, feedback, glossary);
-  options.emit(
+  await emitTask(
+    options,
     task(
       correction?.prompt ?? translationPrompt(raw, feedback, glossary),
       profileHash(raw),
@@ -432,7 +457,7 @@ async function russianTranslation(options: CoordinatorOptions, qid: string) {
 }
 
 async function russianAudit(
-  options: CoordinatorOptions,
+  options: TaskOptions,
   qid: string,
   candidateFile: string,
   resultFile?: string,
@@ -471,7 +496,7 @@ async function russianAudit(
   const fields = parseTranslationFields(proposedFields, raw);
   const prepared = task(russianAuditPrompt(raw, fields, glossary), binding);
   if (!resultFile) {
-    options.emit(prepared);
+    await emitTask(options, prepared);
     return;
   }
   const audit = asRecord(await readJson(resultFile), 'Russian audit');
@@ -496,17 +521,17 @@ export async function runCoordinatorCommand(
     evidence: ['url', 'query', 'offset', 'length', 'outline', 'refresh'],
     preflight: ['qid', 'file'],
     prefetch: ['qids', 'max-sources', 'refresh', 'concurrency'],
-    status: ['qids', 'scope'],
-    'english-adversarial': ['qid', 'research', 'result'],
-    'english-audit': ['qid', 'research', 'result'],
-    'english-repair': ['qid', 'result'],
-    'russian-translation': ['qid'],
-    'russian-audit': ['qid', 'candidate', 'result'],
+    status: ['qids', 'scope', 'stage', 'limit'],
+    'english-adversarial': ['qid', 'research', 'result', 'out'],
+    'english-audit': ['qid', 'research', 'result', 'out'],
+    'english-repair': ['qid', 'result', 'out'],
+    'russian-translation': ['qid', 'out'],
+    'russian-audit': ['qid', 'candidate', 'result', 'out'],
   };
   if (!command || !Object.hasOwn(allowed, command)) return false;
   const flags = new Map<string, string>();
   for (const arg of argv) {
-    const match = /^--([a-z]+(?:-[a-z]+)*)(?:=(.+))?$/.exec(arg);
+    const match = /^--([a-z]+(?:-[a-z]+)*)(?:=(.*))?$/.exec(arg);
     const name = match?.[1];
     const value = match?.[2];
     if (
@@ -515,11 +540,14 @@ export async function runCoordinatorCommand(
       flags.has(name) ||
       (['refresh', 'outline'].includes(name)
         ? value !== undefined
-        : value === undefined)
+        : value === undefined ||
+          (value === '' && name !== 'stage' && name !== 'limit'))
     )
       throw new Error(`Invalid ${command} argument: ${arg}`);
     flags.set(name, value ?? '');
   }
+  if (flags.has('out') && flags.has('result'))
+    throw new Error('--out cannot be combined with --result');
   const required = (name: string) => asString(flags.get(name), `--${name}`);
   if (command === 'evidence') {
     const url = required('url');
@@ -580,12 +608,18 @@ export async function runCoordinatorCommand(
   } else if (command === 'status') {
     const qids = parseQidsFlag(argv);
     const scope = parseProfileScope(flags.get('scope'));
+    const stages = parseProfileStages(flags.get('stage'));
+    const limit = flags.get('limit');
+    if (limit !== undefined && !/^\d+$/.test(limit))
+      throw new Error('--limit must be a positive integer');
     if (qids && scope)
       throw new Error('--qids and --scope are mutually exclusive');
     options.emit(
       await inspectProfileStatus({
         qids,
         scope,
+        stages,
+        limit: limit === undefined ? undefined : Number(limit),
         profilesDir: options.profilesDir,
         incomingDir: path.join(options.profilesDir, 'incoming'),
         subjects: (options.subjects ?? loadSubjects)({ readOnly: true }),
@@ -594,6 +628,7 @@ export async function runCoordinatorCommand(
   } else {
     const qid = required('qid');
     const result = flags.get('result');
+    const taskOptions = { ...options, outFile: flags.get('out') };
     if (command === 'preflight') {
       if (!/^Q\d+$/.test(qid)) throw new Error('--qid must be a Wikidata QID');
       const subject = (options.subjects ?? loadSubjects)().find(
@@ -610,14 +645,14 @@ export async function runCoordinatorCommand(
         }),
       );
     } else if (command === 'english-adversarial')
-      await englishAdversarial(options, qid, flags.get('research'), result);
+      await englishAdversarial(taskOptions, qid, flags.get('research'), result);
     else if (command === 'english-audit')
-      await englishAudit(options, qid, flags.get('research'), result);
+      await englishAudit(taskOptions, qid, flags.get('research'), result);
     else if (command === 'english-repair')
-      await englishRepair(options, qid, result);
+      await englishRepair(taskOptions, qid, result);
     else if (command === 'russian-translation')
-      await russianTranslation(options, qid);
-    else await russianAudit(options, qid, required('candidate'), result);
+      await russianTranslation(taskOptions, qid);
+    else await russianAudit(taskOptions, qid, required('candidate'), result);
   }
   return true;
 }

@@ -10,13 +10,14 @@ Give the [Profile coordinator](profile-coordinator.md) the QIDs selected in chat
 
 | Command | Behavior |
 |---|---|
-| `status [--qids=Q1,Q2 \| --scope=legendary\|mainstream\|all]` | Reports each QID’s stage and next command from local artifacts. The default scope is Legendary and Mainstream People and Milestones. |
+| `status [--qids=Q1,Q2 \| --scope=legendary\|mainstream\|all] [--stage=<stage1,stage2,...>] [--limit=<n>]` | Reports each QID’s stage and next command from local artifacts. Stage filtering precedes the limit. Summary counts describe the returned items. The default scope is Legendary and Mainstream People and Milestones. |
 | `prefetch --qids=Q1,Q2` | Saves the subject’s Wikipedia article and up to five ranked, distinct-host references to the evidence cache. Use `--max-sources=<n>` to set a limit from 1 to 8. `--concurrency=<n>` defaults to 1 and accepts up to 3 QIDs at a time. |
 | `evidence --url=<https URL>` | Reads a cached or fetched excerpt. Use `--query=<phrase>` and `--offset=<n>` to jump and `--length=<n>` for 500–8,000 characters. Use `--outline` on its own for the title, character count and heading offsets. |
 | `preflight --qid=Q1` | Checks the staged Profile and its cached evidence offline. Use `--file=<path>` for a staged file, repair reply or finalized English draft with a saved assessment. Emits counts and field issues as JSON and exits nonzero on failure. |
-| `finalize --qids=Q1,Q2` | Resolves subject and Connection QIDs, keeps the first Connection for each distinct dataset target other than the subject, adds metadata, saves the extracted drafts with their pending assessments, and removes successfully finalized staging files. |
+| `finalize --qids=Q1,Q2 [--model=<id>]` | Resolves subject and Connection QIDs, keeps the first Connection for each distinct dataset target other than the subject, adds metadata, saves the extracted drafts with their pending assessments, and removes successfully finalized staging files. The staged `writer.model` takes precedence over the fallback `--model` value. |
+| `english-adversarial`, `english-audit`, `english-repair`, `russian-translation`, `russian-audit` | Add `--out=<file>` when preparing a task. Prints a compact summary on success. `skipped` and `reused` leave the output file untouched. Commands that apply replies use `--result=<file>` in place of `--out`. |
 
-The coordinator keeps tasks and replies in `<workdir>/<QID>/` and uses `status` to resume after interruptions. See the [coordinator workflow](profile-coordinator.md) for English and Russian audit commands.
+The coordinator keeps tasks and replies in gitignored `data/raw/profiles/tasks/<QID>/` and uses `status` to resume after interruptions. [Coordinator workflow](profile-coordinator.md) · [Codex and Gemini Neon handoff](profile-handoff.md)
 
 ## Local caches
 
@@ -28,7 +29,7 @@ Profile subject lookups reuse `data/output/profile-subjects.cache.json` while th
 
 `finalize --run-id=<id>` groups records and preserves staged prompt provenance. Agents can supply `generation` with `prompt_version`, `prompt_hash` and `generated_at` when known. Missing values stay null.
 
-Writer metadata stores `reasoning_effort` and `tokens: {input, output}` when available from the agent's runtime. [Coordinator workflow](profile-coordinator.md)
+Writers record their actual serving model ID in `writer.model`. If it is absent, `finalize` uses `--model` or the Claude writer configuration when the flag is omitted. Writer metadata stores `reasoning_effort` and `tokens: {input, output}` when available from the agent's runtime. [Coordinator workflow](profile-coordinator.md)
 
 ## Publication
 

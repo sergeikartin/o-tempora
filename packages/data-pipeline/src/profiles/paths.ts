@@ -28,6 +28,7 @@ export const RAW_PROFILES_DIR = path.join(
 // Where the profile-writer agents leave their output, one `<QID>.json` each.
 // Gitignored: finalize turns these into committed records.
 export const INCOMING_DIR = path.join(RAW_PROFILES_DIR, 'incoming');
+export const TASKS_DIR = path.join(RAW_PROFILES_DIR, 'tasks');
 
 export const SUBJECTS_CACHE_FILENAME = 'profile-subjects.cache.json';
 export const SUBJECTS_CACHE_PATH = path.join(

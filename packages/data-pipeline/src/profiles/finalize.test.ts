@@ -16,6 +16,7 @@ import {
   readPendingAssessment,
 } from './assessed-profile.js';
 import { type FinalizeOptions, finalizeProfiles } from './finalize.js';
+import { runFinalizeCommand } from './index.js';
 import type { ProfileSubject } from './subjects.js';
 
 const SUBJECTS: ProfileSubject[] = [
@@ -353,7 +354,10 @@ test('records the model and token counts a staged `writer` block reports', async
     },
   });
 
-  const result = await finalizeProfiles(options);
+  const result = await runFinalizeCommand(
+    ['--model=gemini-4-neon'],
+    () => options,
+  );
 
   const record = JSON.parse(
     await readFile(result.written[0] as string, 'utf8'),
@@ -368,7 +372,7 @@ test('falls back to the agent model and null tokens without a `writer` block', a
   const options = await setup();
   await stage(options, 'Q1', assessedProfile());
 
-  const result = await finalizeProfiles(options);
+  const result = await runFinalizeCommand([], () => options);
 
   const record = JSON.parse(
     await readFile(result.written[0] as string, 'utf8'),
@@ -482,4 +486,25 @@ test('finalization prunes self and redirect aliases and remaps every assessment 
   assert.deepEqual(assessment.subject_dates, [
     { path: 'connections.1.connection', year: 1687, boundary: 'start' },
   ]);
+});
+
+test('finalize --model records the explicit fallback when the staged model is absent', async (t) => {
+  const options = await setup();
+  t.after(() => rm(options.profilesDir, { recursive: true, force: true }));
+  await stage(
+    options,
+    'Q1',
+    assessedProfile({ writer: { reasoning_effort: 'high' } }),
+  );
+  const { written, failed } = await runFinalizeCommand(
+    ['--model=gemini-4-neon'],
+    () => options,
+  );
+  assert.deepEqual(failed, []);
+  const [file] = written;
+  assert.ok(file);
+  const record = JSON.parse(await readFile(file, 'utf8'));
+  assert.equal(record.meta.model, 'gemini-4-neon');
+  assert.equal(record.meta.reasoning_effort, 'high');
+  assert.equal(readPendingAssessment(record)?.model, 'gemini-4-neon');
 });

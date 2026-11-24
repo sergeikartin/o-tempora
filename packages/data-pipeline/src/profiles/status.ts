@@ -42,6 +42,22 @@ const COMMANDS = {
 export type ProfileStage = keyof typeof COMMANDS;
 export type ProfileScope = 'legendary' | 'mainstream' | 'all';
 
+function isProfileStage(value: string): value is ProfileStage {
+  return Object.hasOwn(COMMANDS, value);
+}
+
+export function parseProfileStages(
+  value: string | undefined,
+): ReadonlySet<ProfileStage> | undefined {
+  if (value === undefined) return undefined;
+  const stages = value.split(',').map((stage) => stage.trim());
+  if (!stages.every(isProfileStage))
+    throw new Error(
+      `--stage must be a comma-separated list of: ${Object.keys(COMMANDS).join(', ')}`,
+    );
+  return new Set(stages);
+}
+
 export function parseProfileScope(
   value: string | undefined,
 ): ProfileScope | undefined {
@@ -241,18 +257,24 @@ async function inspectSubject(
 export async function inspectProfileStatus({
   qids,
   scope,
+  stages,
+  limit,
   subjects,
   profilesDir,
   incomingDir,
 }: {
   qids?: ReadonlySet<string>;
   scope?: ProfileScope;
+  stages?: ReadonlySet<ProfileStage>;
+  limit?: number;
   subjects: readonly ProfileSubject[];
   profilesDir: string;
   incomingDir: string;
 }): Promise<{ summary: Record<ProfileStage, number>; items: StatusItem[] }> {
   if (qids && scope)
     throw new Error('--qids and --scope are mutually exclusive');
+  if (limit !== undefined && (!Number.isSafeInteger(limit) || limit < 1))
+    throw new Error('--limit must be a positive integer');
   const selectedScope = parseProfileScope(scope) ?? 'mainstream';
   const byQid = new Map(subjects.map((subject) => [subject.qid, subject]));
   const selected = qids
@@ -286,8 +308,10 @@ export async function inspectProfileStatus({
       profilesDir,
       incomingDir,
     );
+    if (stages && !stages.has(item.stage)) continue;
     items.push(item);
     summary[item.stage]++;
+    if (items.length === limit) break;
   }
   return { summary, items };
 }

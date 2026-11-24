@@ -1,6 +1,6 @@
 # Profile verification
 
-The [Profile coordinator](profile-coordinator.md#english) runs `english-adversarial`, `english-audit` and `english-repair` for the selected QID. Each command prepares a task or applies a reply bound to that task’s inputs. The auditor receives the complete Profile and assessment from the writer or the current verification report.
+The [Profile coordinator](profile-coordinator.md#english) runs `english-adversarial`, `english-audit` and `english-repair` for the selected QID. Each command prepares a task or applies a reply bound to that task’s inputs. Use `--out=<file>` to save a prepared task in gitignored `data/raw/profiles/tasks/<QID>/` for a fresh subagent or a cross-family audit. Apply replies with `--result=<file>`. The auditor receives the complete Profile and assessment from the writer or the current verification report. [Cross-family handoff](profile-handoff.md)
 
 ## Approval policy
 
@@ -18,7 +18,7 @@ The coordinator allows up to two draft changes. Correct or qualify prose from ev
 
 Adversarial checks can be reused from the current or archived reports when their passage path and claim text match and any counterevidence still passes snapshot validation. Send the remaining findings to the adversarial checker and submit the full Profile to a fresh auditor after a repair. Evidence-only repairs preserve the remaining draft repair rounds.
 
-Each `<profile>.verification.json` records the claims, evidence, corrections, blockers and model IDs, along with any adversarial queries, outcomes and notes. Audit outcomes are `approved`, `skipped` and `held`. A held result exits nonzero. Retry failed source reads or seek a readable source before changing prose.
+Each `<profile>.verification.json` records the claims, evidence, corrections, blockers and model IDs, along with any adversarial queries, outcomes and notes. Set the serving model ID in every reply’s top-level `model`. The report’s `models` array records the assessment and audit models, along with the adversarial model when applicable. Audit outcomes are `approved`, `skipped` and `held`. A held result exits nonzero. Retry failed source reads or seek a readable source before changing prose.
 
 Humans handle essential factual/framing disagreements and protected-edit proposals. Initially audit a small selection of approvals across all three lanes, including repaired Profiles and corroborated claims; expand audits when a failure appears. Automatic approval is fallible, so use audit failures to improve fixtures and policy. Held Profiles keep the existing Description fallback.
 

@@ -14,7 +14,7 @@ import { profileHash } from './verification/policy.js';
 import type { ResolveArticleQids } from './wikipedia-qids.js';
 
 interface WriterRun {
-  model: string;
+  model?: string;
   reasoningEffort: string | null;
   tokens: TokenUsage | null;
 }
@@ -24,7 +24,8 @@ function parseWriterRun(root: unknown): WriterRun | undefined {
   if (writer === undefined) return undefined;
   const run = asRecord(writer, 'writer');
   return {
-    model: asString(run.model, 'writer.model'),
+    model:
+      run.model === undefined ? undefined : asString(run.model, 'writer.model'),
     reasoningEffort:
       run.reasoning_effort == null
         ? null

@@ -204,6 +204,48 @@ test('status reports the next command throughout the workflow and detects stale 
   });
   await assertStage('draft-pending-audit', 'english-audit');
 
+  const other = { ...subject, qid: 'Q1' };
+  await writeJson(path.join(profilesDir, 'people', 'Q1-other.en.json'), {
+    ...draft,
+    meta: {
+      ...draft.meta,
+      source: { ...draft.meta.source, wikidata_qid: other.qid },
+    },
+  });
+  for (const [args, expected] of [
+    [['--stage=draft-pending-audit'], ['Q935']],
+    [['--stage=draft-pending-adversarial,draft-pending-audit'], ['Q1', 'Q935']],
+    [
+      ['--stage=draft-pending-adversarial,draft-pending-audit', '--limit=1'],
+      ['Q1'],
+    ],
+    [['--stage=bilingual-approved'], []],
+  ] as const) {
+    await runCoordinatorCommand('status', ['--qids=Q1,Q935', ...args], {
+      profilesDir,
+      subjects: () => [subject, other],
+      resolve,
+      fetch: async () => assert.fail('status must not fetch'),
+      emit: (value) => {
+        const { items, summary } = value as Awaited<
+          ReturnType<typeof inspectProfileStatus>
+        >;
+        assert.deepEqual(
+          items.map(({ qid }) => qid),
+          expected,
+        );
+        assert.equal(
+          summary['draft-pending-audit'],
+          expected.some((qid) => qid === 'Q935') ? 1 : 0,
+        );
+        assert.equal(
+          Object.values(summary).reduce((sum, count) => sum + count, 0),
+          items.length,
+        );
+      },
+    });
+  }
+
   const english = {
     filePath,
     subject,
@@ -355,6 +397,26 @@ test('status CLI applies scope and explicit QID filters without network calls', 
       qids,
     );
     assert.equal(output?.summary.missing, qids.length);
+  }
+  for (const stage of ['', 'missing,', 'draft-pending-audit,unknown']) {
+    await assert.rejects(
+      runCoordinatorCommand('status', [`--stage=${stage}`], options),
+      /--stage must be a comma-separated list of: missing, staged,/,
+    );
+  }
+  for (const limit of [
+    '',
+    '0',
+    '-2',
+    '1.5',
+    'Infinity',
+    '1e2',
+    '9007199254740992',
+  ]) {
+    await assert.rejects(
+      runCoordinatorCommand('status', [`--limit=${limit}`], options),
+      /--limit must be a positive integer/,
+    );
   }
   await assert.rejects(
     runCoordinatorCommand('status', ['--scope=unknown'], options),
