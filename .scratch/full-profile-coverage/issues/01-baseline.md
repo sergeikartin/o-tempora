@@ -261,3 +261,63 @@ The first English audit found zero citation blockers, zero uncovered claims and 
 The first Russian audit flagged three fields about the solar eclipse, exile in Princeton and the honorary doctorate. The CLI merged three replacement fields into the held candidate. A fresh full audit cleared all 22 fields. Both candidates were frozen at handoff, and both English files retained their original hashes through translation. Russian took **6m 21s** from English approval. Bilingual approval took **22m 19s** from dispatch, and verified publication took **22m 32s**. The publisher checked 48 full-build files byte for byte. The build delta contained the two Einstein Legendary rows and two Profile files. Only those four changes were published to the repository dataset.
 
 Reconstructing the previous English audit input for the same first draft gives 93,800 bytes. The compact prompt used 83,549 bytes, a reduction of **10.9%** with the same 25 contextual excerpts and 78 evidence excerpts. Einstein needed one English repair and used four weekly percentage points, compared with two repairs and six points each for Galileo and Van Gogh. The prompt-size comparison holds the draft and evidence fixed. The cross-Profile timing and meter readings reflect different subjects, evidence searches and account activity.
+
+### Elizabeth I trial, 2026-11-24
+
+Elizabeth I of England (Q7207, 1533–1603, Fame Score 96.04) entered with no saved, staged or published Profile. The trial ran from commit `b398069` with writer prompt 2.7.0 and tested starting with a short list of public institutional sources. Dispatch was at 12:58:36 UTC. The first observed five-hour and weekly meter readings were 64% and 69%, resetting Nov 24 at 13:47:10 and Nov 29 at 15:25:51 UTC, respectively.
+
+| Stage | Dispatch to last measured response | Five-hour meter | Weekly meter | Input tokens | Cached input | Output tokens |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Research and writing | 6m 23s | 71% | 71% | 2,025,728 | 1,913,216 | 12,370 |
+| First English audit | 1m 53s | 73% | 71% | 494,108 | 466,688 | 3,634 |
+| First English repair | 1m 32s | 76% | 71% | 345,080 | 318,720 | 3,283 |
+| Second English audit | 1m 07s | 78% | 72% | 348,344 | 320,768 | 2,133 |
+| Second English repair | 56s | 79% | 72% | 289,887 | 268,160 | 1,868 |
+| Third English audit | 1m 37s | 81% | 72% | 480,893 | 436,224 | 2,968 |
+| Evidence-only repair | 1m 34s | 84% | 73% | 406,194 | 377,472 | 3,151 |
+| Fourth English audit | 1m 52s | 86% | 73% | 652,722 | 623,104 | 2,986 |
+| **Agent total** | | | | **5,042,956** | **4,724,352** | **32,393** |
+
+All stages used `gpt-6.2-sol` at medium effort in fresh contexts. Input counts include cached input. Agent totals exclude coordination and automatic tool approval review. The final audit readings were 86% and 73%, up 22 and 4 percentage points. The account-wide readings can include other activity. There were zero bilingual approvals.
+
+The initial shortlist used the National Archives and Folger. The first usable CLI excerpt arrived 25 seconds after the writer began work. The shortlist fully supported two of the four Key Moments and partially supported the Mary Stuart episode. The religious settlement page returned HTTP 410. The writer then fetched the 1559 statute, the execution warrant's archival history, and institutional and scholarly context to fill the gaps. Overall, eight of ten unique URLs yielded usable text. The other failure was HTTP 403. Initial sandbox DNS failures cleared with scoped public network access.
+
+The writer took 6m 23s to the last measured response versus Einstein's 9m 24s, with two failed URLs out of ten versus 16 out of 39. Both drafts had four Key Moments. Elizabeth's draft had one Deep Fact and eight evidence snapshots versus Einstein's three Deep Facts and 20 snapshots. The source shortlist and the differences between the Profiles both affect this comparison. The mechanical preflight passed. Finalization kept five of six Connections because the Spanish Armada had no matching dataset entity.
+
+The first English audit found zero uncovered claims and four blocking findings across three Key Moments. Two passages included details absent from their displayed citations. The first repair clarified the statutory penalty and trimmed the Babington Plot and Tilbury details to match the warrant and Drake citations. The second audit caught ambiguity about what Parliament repealed under Mary I. A second draft repair identified the authorizing statute explicitly. The third audit questioned how precisely Drake described the work required and identified three editorial captions labeled as primary evidence. An evidence-only pass corrected eight caption references and supplied a longer excerpt from Drake's letter while preserving the draft.
+
+The fourth audit confirmed that Drake's letter names the parts of the fleet that needed repair and leaves the specific repair work unspecified. It also flagged a quoted excerpt from the execution warrant that should be classified as primary. The English hold was saved **19m 51s** after dispatch. The coordinator's two draft repair rounds had been used. The Profile has no English approval, so Russian translation did not run. A rebuild produced the same 48 files as the baseline and the published dataset, byte for byte. All 35 pipeline tests passed.
+
+The repeal and Drake prose blockers both carried forward from the original draft. The first repair changed the repeal sentence's attribution while retaining the wrong object. Its excerpt began with “the which was repealed” and omitted the authorizing law that phrase referred to. The Drake sentence survived verbatim in the paragraph from which the repair removed Tilbury. The separate warrant finding concerned evidence classification. The next trial uses the updated [repair prompt](../../../packages/data-pipeline/prompts/profile-assessment-repair.md) and tracks when each blocker first appeared and whether its passage was touched.
+
+### Elizabeth I retry, 2026-11-24
+
+The separately authorized Q7207 retry started at 13:33:20 UTC with the five-hour and weekly usage meters at 91% and 74%. The first repair agent reached the five-hour limit after saving its reply. The run resumed at 14:12 UTC after the meter reset. Wall-clock totals include the pause.
+
+| Stage | Dispatch to last measured response | Five-hour meter | Weekly meter | Input tokens | Cached input | Output tokens |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Draft revision from saved evidence | 2m 49s | 95% | 74% | 967,319 | 910,976 | 6,105 |
+| First English audit | 1m 45s | 98% | 75% | 570,870 | 535,040 | 3,135 |
+| First English repair | 1m 21s | — | — | 306,095 | 271,488 | 3,070 |
+| Second English audit | 1m 45s | 3% | 76% | 399,215 | 374,272 | 2,716 |
+| Second English repair | 1m 46s | 6% | 76% | 442,594 | 413,440 | 4,078 |
+| Third English audit | 2m 02s | 8% | 76% | 486,919 | 457,216 | 3,773 |
+| Evidence-only repair | 1m 10s | 11% | 77% | 347,458 | 326,400 | 2,494 |
+| Fourth English audit | 1m 16s | 12% | 77% | 384,724 | 360,064 | 2,185 |
+| Russian translation | 1m 52s | 15% | 78% | 135,576 | 116,864 | 4,519 |
+| First Russian fidelity audit | 1m 04s | 16% | 78% | 195,440 | 186,240 | 2,194 |
+| Russian correction | 31s | 18% | 78% | 124,022 | 119,424 | 1,017 |
+| Second Russian fidelity audit | 48s | 19% | 78% | 137,025 | 128,896 | 1,725 |
+| **Agent total** | | | | **4,497,257** | **4,200,320** | **37,011** |
+
+All stages used `gpt-6.2-sol` at medium effort in fresh contexts. Input totals include cached tokens. Agent totals exclude coordination and automatic tool approval review. The last repair-agent event had no meter snapshot. The last Russian audit recorded 19% for the new five-hour window and 78% for the week. The account meters can include other activity.
+
+The retry reused eight cached snapshots and fetched no new evidence for drafting. The previous held draft and verification report are preserved in Q7207’s verification history. The revision stated what Drake reported about needed repairs and classified the direct warrant quotation as primary. Both issues cleared the first audit. The English stage used the updated repair prompt 1.1.0 for complete source-clause checks and rereading all sentences in the touched passages.
+
+The first audit found two issues in the Mary Stuart Key Moment. The implication that the Council sent the original warrant carried forward from the previous draft, in a passage whose findings had been revised. The remaining issue concerned the source attribution for Elizabeth’s later statement. The first repair distinguished the copy and corrected the attributed statement’s evidence. The second audit found that Council delivery agency was still imprecise and that the first repair added a specific execution location beyond what the displayed citation established about the completed event. It also caught the original weather-damage implication in the Armada wording. That wording carried forward in a passage touched by the initial revision and outside the Mary-only repair.
+
+The second repair credited Beale for delivering the copy with the Council’s letter, described what the warrant instructed at Fotheringhay and distinguished the weather scattering the fleet from Drake’s own attribution of the damage. The third audit cleared the prose and flagged two evidence notes concerning the lost original warrant and the Orpheus manuscript. An evidence-only repair cleared both. The final English audit approved all 40 findings across 19 fields. The verifier accepted all five displayed citations and a separate live check confirmed the three National Archives section anchors.
+
+English approval took **49m 41s** from dispatch. The first Russian audit flagged the Armada title and the kinship term in Mary’s Connection. The field-only correction preserved the repulse in the title. The second audit still flagged the kinship and rivalry in Mary’s Connection and found a carried-forward implication that the hare had already been afraid. Russian was held **5m 54s** after English approval. The English Profile and report hashes stayed identical throughout translation and review.
+
+The standard publisher copied 49 files. The isolated and repository publications each matched the build byte for byte. The build added the English Profile and set its English Legendary row’s `hasProfile`. Verified publication took **55m 59s** from dispatch. The run yielded one English approval and zero bilingual approvals. All 35 pipeline tests passed.

@@ -21,7 +21,9 @@ Dispatch each model task in a fresh context with its input and output paths. Kee
 
 The [writer prompt](../prompts/profile.md) includes the passage-by-passage evidence check. Use it before staging a draft and when revising passages. Record the excerpts, counterevidence and unresolved issues in the [assessed Profile format](../prompts/profile-assessment.md).
 
-The independent auditor reviews the full Profile in one task, checking each passage in order against its evidence and any competing accounts before reviewing the whole narrative. For repairs, recheck the complete revised passage and reread passages that depend on it. Send the full repaired Profile to a fresh auditor. In measured trials, record first-audit claim blockers, repair rounds and elapsed time.
+The independent auditor reviews the full Profile in one task, checking each passage in order against its evidence and any competing accounts before reviewing the whole narrative. During repair, verify proposed rewrites against complete source clauses. Check that the text and its finding agree on the actor, action and object. Reread every sentence in a touched passage against its evidence and finding, including sentences carried over verbatim. Reread passages that depend on it, then send the full repaired Profile to a fresh auditor.
+
+In measured trials, record first-audit claim blockers, repair rounds and elapsed time. For each prose blocker found on re-audit, compare the original and revised wording. Record whether the repair introduced the issue or carried it forward, and whether the repair touched the passage. Record evidence classification and citation issues alongside the prose findings.
 
 ### Russian
 

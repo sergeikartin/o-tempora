@@ -1,0 +1,73 @@
+{
+  "overview": "Elizabeth I inherited the English throne from her half-sister Mary and restored the Protestant Church of England. During her reign, a rival queen was executed and the English navy beat back a Spanish invasion fleet. Elizabeth never married, and when she died in 1603 the English crown passed to James VI of Scotland.",
+  "keyMoments": [
+    {
+      "date": "1558",
+      "title": "Elizabeth takes the throne",
+      "text": "Elizabeth was at **Hatfield House** when word came that her half-sister **Mary I** had died. Soon afterward she made **William Cecil** her principal secretary. She asked him to give her the advice he thought best, even when it went against her own wishes.",
+      "sourceUrl": "https://www.nationalarchives.gov.uk/education/teaching-resources/elizabeth-i-monarchy-part-one/#teaching-resource-source-3"
+    },
+    {
+      "date": "1559",
+      "title": "A new settlement for the Church",
+      "text": "With the **Act of Uniformity**, Parliament restored a revised version of the earlier prayer book. Under Mary I, Parliament had repealed the law that authorized the book. Ministers had to follow the **Book of Common Prayer** in public worship. The Act prescribed imprisonment for a minister convicted of refusing to use the required prayers.",
+      "sourceUrl": "https://history.hanover.edu/texts/engref/er80.html"
+    },
+    {
+      "date": "1587",
+      "title": "Mary, Queen of Scots, is executed",
+      "text": "Elizabeth signed Mary’s death warrant. The warrant instructed the commissioners to go to **Fotheringhay Castle** and have Mary executed there. Robert Beale, the **Privy Council’s** principal clerk, delivered a copy to the Earl of Kent with a covering letter from the Council ordering the execution. Elizabeth later said she had given no instruction to carry out the warrant.",
+      "sourceUrl": "https://www.memorialfund.org.uk/news/mary-queen-scots-execution-warrant-saved-nation"
+    },
+    {
+      "date": "1588",
+      "title": "England turns back the Armada",
+      "text": "English ships fought **Philip II’s Armada**, and bad weather helped scatter the Spanish fleet. In a letter to the queen, **Francis Drake** wrote that the Spanish ships, their sails, ropes and masts needed major repairs. He attributed their condition to the queen’s forces.",
+      "sourceUrl": "https://www.nationalarchives.gov.uk/education/teaching-resources/elizabeth-i-monarchy-part-two/#teaching-resource-source-8"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "At Windsor in 1593, Elizabeth translated **Boethius’s The Consolation of Philosophy** into English. Her secretary Thomas Windebank took down prose from her dictation. The surviving draft still has verse in the queen’s own handwriting, including a passage in which Orpheus’s song leaves a hare unafraid of a dog.",
+      "isLegend": false,
+      "sourceUrl": "https://www.nationalarchives.gov.uk/education/teaching-resources/elizabeth-i-monarchy-part-two/#teaching-resource-source-10"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "mary-i",
+      "reason": "Elizabeth succeeded her half-sister Mary I in 1558 and restored Protestant worship.",
+      "name": "Mary I",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "mary-queen-of-scots",
+      "reason": "Elizabeth signed the execution warrant for her cousin, a rival claimant to the English throne.",
+      "name": "Mary, Queen of Scots",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "philip-ii-of-spain",
+      "reason": "His Armada failed to invade Elizabeth’s kingdom in 1588.",
+      "name": "Philip II of Spain",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "james-vi-and-i",
+      "reason": "Already king of Scotland, he succeeded Elizabeth as James I of England.",
+      "name": "James VI and I",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "francis-drake",
+      "reason": "He wrote to Elizabeth about the condition of the Spanish fleet as it retreated in 1588.",
+      "name": "Francis Drake",
+      "lane": "people",
+      "detailLevel": 4
+    }
+  ]
+}

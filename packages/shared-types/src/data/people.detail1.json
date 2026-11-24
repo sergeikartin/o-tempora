@@ -321,7 +321,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Elizabeth1England.jpg",
     "description": "Elizabeth I was Queen of England and Ireland from 17 November 1558 until her death in 1603. She was the last and longest reigning monarch of the House of Tudor. Her eventful reign, and its effect on history and culture, gave name to the Elizabethan era.",
     "slug": "elizabeth-i-of-england",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "22954",

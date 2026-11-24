@@ -1,0 +1,1063 @@
+{
+  "profile": {
+    "subject": "Elizabeth I of England",
+    "type": "person",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Elizabeth_I_of_England",
+    "overview": "Elizabeth I inherited the English throne from her half-sister Mary and restored the Protestant Church of England. During her reign, a rival queen was executed and the English navy beat back a Spanish invasion fleet. Elizabeth never married, and when she died in 1603 the English crown passed to James VI of Scotland.",
+    "key_moments": [
+      {
+        "date": "1558",
+        "title": "Elizabeth takes the throne",
+        "text": "Elizabeth was at **Hatfield House** when word came that her half-sister **Mary I** had died. Soon afterward she made **William Cecil** her principal secretary. She asked him to give her the advice he thought best, even when it went against her own wishes.",
+        "source": "https://www.nationalarchives.gov.uk/education/teaching-resources/elizabeth-i-monarchy-part-one/#teaching-resource-source-3"
+      },
+      {
+        "date": "1559",
+        "title": "A new settlement for the Church",
+        "text": "With the **Act of Uniformity**, Parliament restored a revised version of the earlier prayer book. Under Mary I, Parliament had repealed the law that authorized the book. Ministers had to follow the **Book of Common Prayer** in public worship. The Act prescribed imprisonment for a minister convicted of refusing to use the required prayers.",
+        "source": "https://history.hanover.edu/texts/engref/er80.html"
+      },
+      {
+        "date": "1587",
+        "title": "Mary, Queen of Scots, is executed",
+        "text": "Elizabeth signed Mary’s death warrant, and the **Privy Council** sent it to be carried out at **Fotheringhay Castle**. After the execution, Elizabeth said she had given no instruction to carry it out.",
+        "source": "https://www.memorialfund.org.uk/news/mary-queen-scots-execution-warrant-saved-nation"
+      },
+      {
+        "date": "1588",
+        "title": "England turns back the Armada",
+        "text": "English ships fought **Philip II’s Armada**, and bad weather battered the Spanish fleet. In a letter to the queen, **Francis Drake** described the repairs the Spanish ships needed, down to their sails, ropes and masts.",
+        "source": "https://www.nationalarchives.gov.uk/education/teaching-resources/elizabeth-i-monarchy-part-two/#teaching-resource-source-8"
+      }
+    ],
+    "deep_facts": [
+      {
+        "text": "At Windsor in 1593, Elizabeth translated **Boethius’s The Consolation of Philosophy** into English. Her secretary Thomas Windebank took down prose from her dictation. The surviving draft still has verse in the queen’s own handwriting, including a passage in which Orpheus’s song leaves a hare unafraid of a dog.",
+        "type": "unique_detail",
+        "is_legend": false,
+        "confidence": "high",
+        "source": "https://www.nationalarchives.gov.uk/education/teaching-resources/elizabeth-i-monarchy-part-two/#teaching-resource-source-10"
+      }
+    ],
+    "connections": [
+      {
+        "name": "Mary I",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Mary_I_of_England",
+        "connection": "Elizabeth succeeded her half-sister Mary I in 1558 and restored Protestant worship.",
+        "importance": "high",
+        "qid": "Q82674"
+      },
+      {
+        "name": "Mary, Queen of Scots",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Mary,_Queen_of_Scots",
+        "connection": "Elizabeth signed the execution warrant for her cousin, a rival claimant to the English throne.",
+        "importance": "high",
+        "qid": "Q131412"
+      },
+      {
+        "name": "Philip II of Spain",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Philip_II_of_Spain",
+        "connection": "His Armada failed to invade Elizabeth’s kingdom in 1588.",
+        "importance": "high",
+        "qid": "Q34417"
+      },
+      {
+        "name": "James VI and I",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/James_VI_and_I",
+        "connection": "Already king of Scotland, he succeeded Elizabeth as James I of England.",
+        "importance": "high",
+        "qid": "Q79972"
+      },
+      {
+        "name": "Francis Drake",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Francis_Drake",
+        "connection": "He wrote to Elizabeth about the condition of the Spanish fleet as it retreated in 1588.",
+        "importance": "high",
+        "qid": "Q36517"
+      }
+    ],
+    "meta": {
+      "generated_at": "2026-11-24T13:03:41.539968+00:00",
+      "prompt_version": "2.7.0",
+      "prompt_hash": "582b5b88c98d",
+      "schema_version": 4,
+      "model": "gpt-6.2-sol",
+      "reasoning_effort": "medium",
+      "temperature": null,
+      "run_id": "elizabeth-i-2026-11-24",
+      "locale": "en",
+      "source": {
+        "wikidata_qid": "Q7207"
+      },
+      "tokens": {
+        "input": 2025728,
+        "output": 12370
+      },
+      "validation": {
+        "schema_valid": true,
+        "connections_returned": 6,
+        "connections_matched_people": 5,
+        "connections_matched_events": 0,
+        "connections_unresolved": 0
+      },
+      "review": {
+        "status": "draft",
+        "reviewed_at": null
+      },
+      "coordinator_repair": {
+        "profile_hash": "f923b9fb5a965199e9261e3f5d5265947d71d3618776d8c594b26e1d6579006a",
+        "count": 2
+      }
+    }
+  },
+  "report": {
+    "policy_version": "6",
+    "profile_hash": "f923b9fb5a965199e9261e3f5d5265947d71d3618776d8c594b26e1d6579006a",
+    "verified_at": "2026-11-24T13:18:26.710Z",
+    "subject": {
+      "qid": "Q7207",
+      "dates": "1533–1603"
+    },
+    "models": [
+      "gpt-6.2-sol",
+      "gpt-6.2-sol"
+    ],
+    "assessment": {
+      "uncovered": [],
+      "issues": [
+        "key_moments.3.text: The wording “described the repairs” can imply that Drake specified individual repair tasks. The cached transcript states that the ships, sails, ropes and masts needed major repairs and attributes their condition to Elizabeth’s forces. It leaves the specific work unspecified."
+      ],
+      "coherent": true,
+      "covered": [
+        "overview",
+        "key_moments.0.date",
+        "key_moments.0.title",
+        "key_moments.0.text",
+        "key_moments.1.date",
+        "key_moments.1.title",
+        "key_moments.1.text",
+        "key_moments.2.date",
+        "key_moments.2.title",
+        "key_moments.2.text",
+        "key_moments.3.date",
+        "key_moments.3.title",
+        "key_moments.3.text",
+        "deep_facts.0.text",
+        "connections.0.connection",
+        "connections.1.connection",
+        "connections.2.connection",
+        "connections.3.connection",
+        "connections.4.connection"
+      ],
+      "subject_dates": [
+        {
+          "path": "overview",
+          "boundary": "end",
+          "year": 1603
+        }
+      ],
+      "findings": [
+        {
+          "path": "overview",
+          "claim": "Elizabeth became queen in 1558 after the death of her half-sister Mary I.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The death and succession were in November 1558. The National Archives names Mary and identifies the family relationship.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "Elizabeth succeeded to the throne on her half-sister's death in November 1558.",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "f396ebbdfedd3dfb4d0fab5a035ee17580d9b29de0fc94bd8927a5d478d61b12",
+              "quote": "Elizabeth had received the news of Mary’s death at Hatfield House",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s first speech"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "The restored Protestant Church of England used a prayer book under the Act of Uniformity of 1559.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Exeter dates the settlement and identifies the confessional change. The statute restored an earlier book with changes.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+              "quote": "She immediately re-established the protestant Church of England after Mary’s Catholic programme, and, with a new Act of Uniformity in 1559, imposed a Book of Common Prayer.",
+              "kind": "scholarly",
+              "origin": "University of Exeter, Stuart Successions Project, Elizabeth I"
+            },
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "Elizabeth's Act of Uniformity (1559), 1 Elizabeth, Cap. 2",
+              "kind": "other",
+              "origin": "Gee and Hardy, Documents Illustrative of English Church History, editorial heading"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Mary, Queen of Scots, was executed in 1587.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The institutional report and Alford agree on the year and the date of the execution.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "Her execution on 8th February 1587",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            },
+            {
+              "source": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+              "quote": "On Wednesday 8 February 1587",
+              "kind": "scholarly",
+              "origin": "Stephen Alford, Executing Monarchy"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Mary, Queen of Scots, was a rival claimant to Elizabeth’s throne.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Exeter identifies Mary’s hereditary claim in its account of the unsettled succession.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+              "quote": "But Elizabeth’s Catholic cousin Mary Stuart, Queen of Scots (1542-1587), possessed the stronger hereditary claim",
+              "kind": "scholarly",
+              "origin": "University of Exeter, Stuart Successions Project, Elizabeth I"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "The English navy defeated Philip II’s invading Armada in 1588.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Royal Household identifies the fleet’s purpose and date. The Archives identifies Philip as owner of the fleet and credits the English navy and weather.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "In 1588, aided by bad weather, the English navy scored a great victory over the Spanish invasion fleet",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "The skill of Elizabeth’s navy, coupled with some fortuitous weather, had scattered Philip II’s ships.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on the Drake letter"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Elizabeth never married.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The scholarly biography records that she remained unmarried despite pressure to produce an heir.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+              "quote": "Yet she never took a husband, despite mounting political pressure to produce an heir.",
+              "kind": "scholarly",
+              "origin": "University of Exeter, Stuart Successions Project, Elizabeth I"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Elizabeth died in 1603.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Both biographies give the same year.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "She died at Richmond Palace on 24 March 1603",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+              "quote": "Elizabeth’s death on 24 March 1603",
+              "kind": "scholarly",
+              "origin": "University of Exeter, Stuart Successions Project, Elizabeth I"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "James VI of Scotland succeeded Elizabeth as James I of England.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The account distinguishes the monarch’s English and Scottish regnal numbers.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "James VI of Scotland was Elizabeth's successor and became James I of England.",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.date",
+          "claim": "Elizabeth became queen in 1558 after the death of her half-sister Mary I.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The death and succession were in November 1558. The National Archives names Mary and identifies the family relationship.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "Elizabeth succeeded to the throne on her half-sister's death in November 1558.",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "f396ebbdfedd3dfb4d0fab5a035ee17580d9b29de0fc94bd8927a5d478d61b12",
+              "quote": "Elizabeth had received the news of Mary’s death at Hatfield House",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s first speech"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.title",
+          "claim": "Elizabeth became queen in 1558 after the death of her half-sister Mary I.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The death and succession were in November 1558. The National Archives names Mary and identifies the family relationship.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "Elizabeth succeeded to the throne on her half-sister's death in November 1558.",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "f396ebbdfedd3dfb4d0fab5a035ee17580d9b29de0fc94bd8927a5d478d61b12",
+              "quote": "Elizabeth had received the news of Mary’s death at Hatfield House",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s first speech"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Elizabeth learned of Mary I’s death at Hatfield House.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Archives describes where the news reached her and identifies the dead queen in the preceding sentence.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f396ebbdfedd3dfb4d0fab5a035ee17580d9b29de0fc94bd8927a5d478d61b12",
+              "quote": "Elizabeth had received the news of Mary’s death at Hatfield House",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s first speech"
+            },
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "Elizabeth succeeded to the throne on her half-sister's death in November 1558.",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Elizabeth appointed William Cecil her principal secretary soon after taking the throne.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Archives’ context identifies the office and places the appointment shortly after accession.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f396ebbdfedd3dfb4d0fab5a035ee17580d9b29de0fc94bd8927a5d478d61b12",
+              "quote": "Just three days after her accession, she appointed him her principal secretary.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s first speech"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Elizabeth asked Cecil for his best advice regardless of her own wishes.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The speech transcript records the instruction. The wording paraphrases it.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f396ebbdfedd3dfb4d0fab5a035ee17580d9b29de0fc94bd8927a5d478d61b12",
+              "quote": "without respect of my pryvate will you will give me that counsaill that you thinke best",
+              "kind": "primary",
+              "origin": "Report of Elizabeth I’s words to William Cecil, 1558"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.date",
+          "claim": "The restored Protestant Church of England used a prayer book under the Act of Uniformity of 1559.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Exeter dates the settlement and identifies the confessional change. The statute restored an earlier book with changes.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+              "quote": "She immediately re-established the protestant Church of England after Mary’s Catholic programme, and, with a new Act of Uniformity in 1559, imposed a Book of Common Prayer.",
+              "kind": "scholarly",
+              "origin": "University of Exeter, Stuart Successions Project, Elizabeth I"
+            },
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "Elizabeth's Act of Uniformity (1559), 1 Elizabeth, Cap. 2",
+              "kind": "other",
+              "origin": "Gee and Hardy, Documents Illustrative of English Church History, editorial heading"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.title",
+          "claim": "The restored Protestant Church of England used a prayer book under the Act of Uniformity of 1559.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Exeter dates the settlement and identifies the confessional change. The statute restored an earlier book with changes.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+              "quote": "She immediately re-established the protestant Church of England after Mary’s Catholic programme, and, with a new Act of Uniformity in 1559, imposed a Book of Common Prayer.",
+              "kind": "scholarly",
+              "origin": "University of Exeter, Stuart Successions Project, Elizabeth I"
+            },
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "Elizabeth's Act of Uniformity (1559), 1 Elizabeth, Cap. 2",
+              "kind": "other",
+              "origin": "Gee and Hardy, Documents Illustrative of English Church History, editorial heading"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "The Act of Uniformity restored a revised version of the earlier prayer book. Under Mary I, Parliament had repealed the law that authorized the book.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The 1559 Act identifies the statute that authorized the book under Edward VI as the law Parliament repealed under Mary I. It then restores the book with specified revisions.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "authorized by Act of Parliament holden in the fifth and sixth years of our said late sovereign lord King Edward VI, intituled: An Act for the uniformity of common prayer, and administration of the sacraments; the which was repealed and taken away by Act of Parliament in the [Page 459] first year of the reign of our late sovereign lady Queen Mary",
+              "kind": "primary",
+              "origin": "Parliament of England, Act of Uniformity, 1 Elizabeth c. 2"
+            },
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "with the alterations and additions therein added and appointed by this statute, shall stand and be, from and after the said feast of the Nativity of St. John Baptist, in full force and effect",
+              "kind": "primary",
+              "origin": "Parliament of England, Act of Uniformity, 1 Elizabeth c. 2"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Ministers were required to use the Book of Common Prayer for public worship.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The statute requires ministers to use the book’s forms of public worship.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "all their common and open prayer, in such order and form as is mentioned in the said book",
+              "kind": "primary",
+              "origin": "Parliament of England, Act of Uniformity, 1 Elizabeth c. 2"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "The Act prescribed imprisonment for ministers lawfully convicted of refusing to use the required prayers.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Refusal was a statutory offence. After a lawful conviction the Act required imprisonment. On a first offence it prescribed six months under the general rule and a year for a minister without a benefice or other ecclesiastical promotion.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "refuse to use the said common prayers",
+              "kind": "primary",
+              "origin": "Parliament of England, Act of Uniformity, 1 Elizabeth c. 2"
+            },
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "and shall be thereof lawfully convicted, according to the laws of this realm",
+              "kind": "primary",
+              "origin": "Parliament of England, Act of Uniformity, 1 Elizabeth c. 2"
+            },
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "the person so convicted shall for the same offence suffer imprisonment by the space of six months",
+              "kind": "primary",
+              "origin": "Parliament of England, Act of Uniformity, 1 Elizabeth c. 2"
+            },
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "shall not be beneficed, nor have any spiritual promotion, that then the same person so offending and convicted shall for the first offence suffer imprisonment during one whole year",
+              "kind": "primary",
+              "origin": "Parliament of England, Act of Uniformity, 1 Elizabeth c. 2"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.date",
+          "claim": "Mary, Queen of Scots, was executed in 1587.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The institutional report and Alford agree on the year and the date of the execution.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "Her execution on 8th February 1587",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            },
+            {
+              "source": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+              "quote": "On Wednesday 8 February 1587",
+              "kind": "scholarly",
+              "origin": "Stephen Alford, Executing Monarchy"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.title",
+          "claim": "Mary, Queen of Scots, was executed in 1587.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The institutional report and Alford agree on the year and the date of the execution.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "Her execution on 8th February 1587",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            },
+            {
+              "source": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+              "quote": "On Wednesday 8 February 1587",
+              "kind": "scholarly",
+              "origin": "Stephen Alford, Executing Monarchy"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Elizabeth signed Mary Stuart’s execution warrant.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Both accounts support the signature. The surviving copy is dated 1 February 1586/7, while Alford places the signing on 2 February 1587. The prose dates the execution to 1587 and leaves the day of the signing open.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "Elizabeth I signed the warrant",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            },
+            {
+              "source": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+              "quote": "Elizabeth signed Mary’s death warrant on 2 February 1587",
+              "kind": "scholarly",
+              "origin": "Stephen Alford, Executing Monarchy"
+            }
+          ],
+          "counterevidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "dated 1st February 1586/7, containing the text of the warrant",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "The Privy Council dispatched the warrant to be carried out at Fotheringhay Castle.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The surviving copy accompanied the council’s order. Alford separately places the dispatch and execution at Fotheringhay.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "It was an enclosure in the Privy Council letter to the Earl of Kent, ordering the enactment of the execution",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            },
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "repair to our Castell of Fotheringhaye where the said queene of Scottes is in custodie",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            },
+            {
+              "source": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+              "quote": "sent the warrant to Fotheringhay without their queen’s knowledge",
+              "kind": "scholarly",
+              "origin": "Stephen Alford, Executing Monarchy"
+            },
+            {
+              "source": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+              "quote": "in the hall of Fotheringhay Castle",
+              "kind": "scholarly",
+              "origin": "Stephen Alford, Executing Monarchy"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Elizabeth later claimed that she had given no instruction to carry out Mary’s execution.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The archive account explicitly attributes this to Elizabeth. The wording reports her claim and leaves open what she privately intended.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "but claimed afterwards that she had given no instruction for its enactment.",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            }
+          ],
+          "counterevidence": [
+            {
+              "source": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+              "quote": "only hours later to countermand her order",
+              "kind": "scholarly",
+              "origin": "Stephen Alford, Executing Monarchy"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.date",
+          "claim": "The English navy defeated Philip II’s invading Armada in 1588.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Royal Household identifies the fleet’s purpose and date. The Archives identifies Philip as owner of the fleet and credits the English navy and weather.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "In 1588, aided by bad weather, the English navy scored a great victory over the Spanish invasion fleet",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "The skill of Elizabeth’s navy, coupled with some fortuitous weather, had scattered Philip II’s ships.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on the Drake letter"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.title",
+          "claim": "The English navy defeated Philip II’s invading Armada in 1588.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Royal Household identifies the fleet’s purpose and date. The Archives identifies Philip as owner of the fleet and credits the English navy and weather.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "In 1588, aided by bad weather, the English navy scored a great victory over the Spanish invasion fleet",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "The skill of Elizabeth’s navy, coupled with some fortuitous weather, had scattered Philip II’s ships.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on the Drake letter"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "The English navy defeated Philip II’s invading Armada in 1588.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Royal Household identifies the fleet’s purpose and date. The Archives identifies Philip as owner of the fleet and credits the English navy and weather.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "In 1588, aided by bad weather, the English navy scored a great victory over the Spanish invasion fleet",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "The skill of Elizabeth’s navy, coupled with some fortuitous weather, had scattered Philip II’s ships.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on the Drake letter"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Drake wrote to Elizabeth that the Spanish ships, sails, ropes and masts needed major repairs.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The National Archives caption identifies the letter and its addressee. In the partial transcript, Drake lists the ships, sails, ropes and masts as needing major repairs and attributes their condition to Elizabeth’s forces. The excerpt identifies the affected equipment and leaves the specific repair work unspecified. The wording “described the repairs” is supported at the level of identifying equipment. The cached excerpt leaves open the implication that Drake specified particular work.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "Sir Francis Drake to Elizabeth, 8 August 1588.",
+              "kind": "other",
+              "origin": "The National Archives, editorial caption for SP 12/214 f.108"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "there shippes, sailes ropes & mastes needeth great reperations for that they had all felt of your Majestie’s force",
+              "kind": "primary",
+              "origin": "Francis Drake to Elizabeth I, 8 August 1588, SP 12/214 f.108"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Elizabeth translated Boethius’s The Consolation of Philosophy into English at Windsor in 1593.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The National Archives dates and locates the work and identifies it as Elizabeth’s translation. The Folger catalogue locates the surviving translation manuscript and identifies the Windsor record.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "She worked on it while staying at Windsor Castle in the autumn of 1593",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s Boethius translation"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "It had already been ‘Englished’ by authors such as King Alfred, Geoffrey Chaucer and William Caxton.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s Boethius translation"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "Elizabeth’s translation of Boethius’s De Consolatione Philosophie (The Consolation of Philosophy), October and November 1593.",
+              "kind": "other",
+              "origin": "The National Archives, editorial caption for SP 12/289 f.48"
+            },
+            {
+              "source": "5959a8cb42abac7d6f157444ca5038574700c52dcffa90953bee146d098bc146",
+              "quote": "recording the time she spent at Windsor on the translation from 10 October to 5 November1593",
+              "kind": "scholarly",
+              "origin": "Catalogue of English Literary Manuscripts, description of manuscript ElQ 51"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Elizabeth dictated prose to her secretary Thomas Windebank. The draft preserves verse in her hand.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Archives describes the dictation. The independent scholarly manuscript catalogue identifies Windebank’s hand and Elizabeth’s handwriting in the verse. The wording does not claim who wrote every section.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "she started dictating the prose sections to her secretary, Thomas Windebank, while continuing to write the verse herself.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s Boethius translation"
+            },
+            {
+              "source": "5959a8cb42abac7d6f157444ca5038574700c52dcffa90953bee146d098bc146",
+              "quote": "in the Queen's cursive hand (including most of the verse), with revisions, alternating throughout with text in the chiefly secretary hand of her amanuensis Thomas Windebank",
+              "kind": "scholarly",
+              "origin": "Catalogue of English Literary Manuscripts, description of manuscript ElQ 51"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "In a verse in Elizabeth’s own hand, Orpheus’s song causes a hare to cease fearing a dog.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "This is a detail in the identifiable translated text itself. The audio transcript renders the spelling more transparently. The contextual note names Orpheus and identifies Elizabeth’s handwriting.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "The following verse, in Elizabeth’s hand, uses the example of Orpheus",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s Boethius translation"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "Nor hare did feare the Looke Of Cruel dog so plised with Song",
+              "kind": "primary",
+              "origin": "Elizabeth I, Boethius translation, SP 12/289 f.48"
+            }
+          ]
+        },
+        {
+          "path": "connections.0.connection",
+          "claim": "Elizabeth became queen in 1558 after the death of her half-sister Mary I.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The death and succession were in November 1558. The National Archives names Mary and identifies the family relationship.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "Elizabeth succeeded to the throne on her half-sister's death in November 1558.",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "f396ebbdfedd3dfb4d0fab5a035ee17580d9b29de0fc94bd8927a5d478d61b12",
+              "quote": "Elizabeth had received the news of Mary’s death at Hatfield House",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on Elizabeth’s first speech"
+            }
+          ]
+        },
+        {
+          "path": "connections.0.connection",
+          "claim": "The restored Protestant Church of England used a prayer book under the Act of Uniformity of 1559.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Exeter dates the settlement and identifies the confessional change. The statute restored an earlier book with changes.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+              "quote": "She immediately re-established the protestant Church of England after Mary’s Catholic programme, and, with a new Act of Uniformity in 1559, imposed a Book of Common Prayer.",
+              "kind": "scholarly",
+              "origin": "University of Exeter, Stuart Successions Project, Elizabeth I"
+            },
+            {
+              "source": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+              "quote": "Elizabeth's Act of Uniformity (1559), 1 Elizabeth, Cap. 2",
+              "kind": "other",
+              "origin": "Gee and Hardy, Documents Illustrative of English Church History, editorial heading"
+            }
+          ]
+        },
+        {
+          "path": "connections.1.connection",
+          "claim": "Elizabeth signed Mary Stuart’s execution warrant.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Both accounts support the signature. The surviving copy is dated 1 February 1586/7, while Alford places the signing on 2 February 1587. The prose dates the execution to 1587 and leaves the day of the signing open.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "Elizabeth I signed the warrant",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            },
+            {
+              "source": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+              "quote": "Elizabeth signed Mary’s death warrant on 2 February 1587",
+              "kind": "scholarly",
+              "origin": "Stephen Alford, Executing Monarchy"
+            }
+          ],
+          "counterevidence": [
+            {
+              "source": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+              "quote": "dated 1st February 1586/7, containing the text of the warrant",
+              "kind": "scholarly",
+              "origin": "National Heritage Memorial Fund and Lambeth Palace Library, account of the execution warrant acquisition"
+            }
+          ]
+        },
+        {
+          "path": "connections.1.connection",
+          "claim": "Mary Stuart was Elizabeth’s cousin and a rival claimant to the English throne.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Exeter identifies the family relation and the hereditary claim.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+              "quote": "Elizabeth’s Catholic cousin Mary Stuart, Queen of Scots (1542-1587), possessed the stronger hereditary claim",
+              "kind": "scholarly",
+              "origin": "University of Exeter, Stuart Successions Project, Elizabeth I"
+            }
+          ]
+        },
+        {
+          "path": "connections.2.connection",
+          "claim": "The English navy defeated Philip II’s invading Armada in 1588.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Royal Household identifies the fleet’s purpose and date. The Archives identifies Philip as owner of the fleet and credits the English navy and weather.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "In 1588, aided by bad weather, the English navy scored a great victory over the Spanish invasion fleet",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "The skill of Elizabeth’s navy, coupled with some fortuitous weather, had scattered Philip II’s ships.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on the Drake letter"
+            }
+          ]
+        },
+        {
+          "path": "connections.3.connection",
+          "claim": "James VI of Scotland succeeded Elizabeth as James I of England.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The account distinguishes the monarch’s English and Scottish regnal numbers.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+              "quote": "James VI of Scotland was Elizabeth's successor and became James I of England.",
+              "kind": "scholarly",
+              "origin": "The Royal Household, Elizabeth I (r.1558–1603)"
+            }
+          ]
+        },
+        {
+          "path": "connections.4.connection",
+          "claim": "Drake wrote to Elizabeth that the Spanish ships, sails, ropes and masts needed major repairs.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The National Archives caption identifies the letter and its addressee. In the partial transcript, Drake lists the ships, sails, ropes and masts as needing major repairs and attributes their condition to Elizabeth’s forces. The excerpt identifies the affected equipment and leaves the specific repair work unspecified.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "Sir Francis Drake to Elizabeth, 8 August 1588.",
+              "kind": "other",
+              "origin": "The National Archives, editorial caption for SP 12/214 f.108"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "there shippes, sailes ropes & mastes needeth great reperations for that they had all felt of your Majestie’s force",
+              "kind": "primary",
+              "origin": "Francis Drake to Elizabeth I, 8 August 1588, SP 12/214 f.108"
+            }
+          ]
+        },
+        {
+          "path": "connections.4.connection",
+          "claim": "Drake reported to Elizabeth on the retreating Spanish fleet in 1588.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The editorial introduction describes the letter as announcing the Armada’s flight, and the caption dates it.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "in which he announced the flight of the mighty Spanish Armada.",
+              "kind": "scholarly",
+              "origin": "The National Archives, contextual notes on the Drake letter"
+            },
+            {
+              "source": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+              "quote": "Sir Francis Drake to Elizabeth, 8 August 1588.",
+              "kind": "other",
+              "origin": "The National Archives, editorial caption for SP 12/214 f.108"
+            }
+          ]
+        }
+      ]
+    },
+    "audit": {
+      "uncovered": [],
+      "issues": [
+        "key_moments.2.text: In the Privy Council dispatch finding, the excerpt “repair to our Castell of Fotheringhaye where the said queene of Scottes is in custodie” quotes the contemporary execution warrant reproduced in the archive announcement. Record that excerpt as primary evidence with the warrant as its origin. The surrounding archival account supports dispatch by the Privy Council.",
+        "key_moments.3.text: “described the repairs the Spanish ships needed, down to their sails, ropes and masts” can imply that Drake described specific repair work. His letter reports that the ships, sails, ropes and masts needed major repairs. State that directly."
+      ],
+      "coherent": true
+    },
+    "sources": [
+      {
+        "id": "2d4cbc3182e2f003e986f1fc4f9caccf4e0bbbcd9ebf4078ca6cf209940baac9",
+        "url": "https://www.royal.uk/elizabeth-i",
+        "fetched_at": "2026-11-24T13:00:14.537Z"
+      },
+      {
+        "id": "f396ebbdfedd3dfb4d0fab5a035ee17580d9b29de0fc94bd8927a5d478d61b12",
+        "url": "https://www.nationalarchives.gov.uk/education/teaching-resources/elizabeth-i-monarchy-part-one/",
+        "fetched_at": "2026-11-24T12:59:07.033Z"
+      },
+      {
+        "id": "606645a4f9d83d7e6bb1b077ed77ae127f693b8172d6aa3c463e1de15d6fa686",
+        "url": "https://stuarts.exeter.ac.uk/education/biographies/elizabeth-i/",
+        "fetched_at": "2026-11-24T13:01:10.337Z"
+      },
+      {
+        "id": "e6ab9b1f72d3d2eda93f781a1afbe82bd437806a324343b19ea727438b496372",
+        "url": "https://history.hanover.edu/texts/engref/er80.html",
+        "fetched_at": "2026-11-24T13:01:11.450Z"
+      },
+      {
+        "id": "f52a9a9993db65bf39c5f38db53fa7fdce72853d34083fb680df2d27e209aa9d",
+        "url": "https://www.memorialfund.org.uk/news/mary-queen-scots-execution-warrant-saved-nation",
+        "fetched_at": "2026-11-24T13:00:10.660Z"
+      },
+      {
+        "id": "3dff15eafa7b348cadfe223f8e5e73680506e27c558b3c7696b0ae4109aa9a27",
+        "url": "https://yalebooks.yale.edu/2015/02/08/executing-monarchy-elizabeth-i-and-mary-queen-of-scots/",
+        "fetched_at": "2026-11-24T13:00:14.565Z"
+      },
+      {
+        "id": "5a6a8401f1cd4356a979184ea6c91865679ca2c3ad632886fe6bd308c3f964eb",
+        "url": "https://www.nationalarchives.gov.uk/education/teaching-resources/elizabeth-i-monarchy-part-two/",
+        "fetched_at": "2026-11-24T12:59:06.983Z"
+      },
+      {
+        "id": "5959a8cb42abac7d6f157444ca5038574700c52dcffa90953bee146d098bc146",
+        "url": "https://celm.folger.edu/authors/elizabethqueen.html",
+        "fetched_at": "2026-11-24T12:59:05.967Z"
+      }
+    ],
+    "evidence_errors": [],
+    "mechanical": [],
+    "repairs": 2,
+    "blockers": [
+      "key_moments.3.text: The wording “described the repairs” can imply that Drake specified individual repair tasks. The cached transcript states that the ships, sails, ropes and masts needed major repairs and attributes their condition to Elizabeth’s forces. It leaves the specific work unspecified.",
+      "key_moments.2.text: In the Privy Council dispatch finding, the excerpt “repair to our Castell of Fotheringhaye where the said queene of Scottes is in custodie” quotes the contemporary execution warrant reproduced in the archive announcement. Record that excerpt as primary evidence with the warrant as its origin. The surrounding archival account supports dispatch by the Privy Council.",
+      "key_moments.3.text: “described the repairs the Spanish ships needed, down to their sails, ropes and masts” can imply that Drake described specific repair work. His letter reports that the ships, sails, ropes and masts needed major repairs. State that directly."
+    ]
+  }
+}
