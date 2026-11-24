@@ -14,6 +14,9 @@
     "typescript": "^7.0.2"
   },
   "scripts": {
+    "dev": "npm run dev --workspace @o-tempora/web --",
+    "build": "npm run build --workspace @o-tempora/web --",
+    "lint": "npm run lint --workspace @o-tempora/web --",
     "prepare": "husky"
   }
 }

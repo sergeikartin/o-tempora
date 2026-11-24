@@ -22,8 +22,10 @@ From the repo root:
 
 ```
 npm install
-npm run dev --workspace packages/web
+npm run dev
 ```
+
+Run `npm run build` to build the frontend and `npm run lint` to lint it.
 
 See [`packages/web/AGENTS.md`](packages/web/AGENTS.md) for the full set of build/test/lint commands. `packages/shared-types/src/data/*.json` ships pre-built in the repo, so you don't need to run the data pipeline to work on `web` — only when changing the underlying data (see [`packages/data-pipeline/AGENTS.md`](packages/data-pipeline/AGENTS.md)).
 

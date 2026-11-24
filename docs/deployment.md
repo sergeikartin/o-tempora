@@ -6,7 +6,7 @@ One Vite build publishes four static pages to GitHub Pages at `otempora.info`. T
 
 ## Build
 
-Run `npm run build --workspace packages/web`. Vite writes four HTML entries and shared JS/CSS assets to `packages/web/dist/`.
+Run `npm run build` from the repo root. Vite writes four HTML entries and shared JS/CSS assets to `packages/web/dist/`.
 
 - `eager-detail-modulepreload.ts` preloads each timeline’s first two dataset levels for its locale. `landing-timeline-prefetch.ts` writes a per-locale manifest for the timeline page, entry assets and eager datasets. The landing CTA triggers prefetch on hover, focus or touch.
 - `critical-font-preload.ts` preloads above-the-fold latin-subset fonts. The timeline uses Archivo 400/600/700 and Fraunces 600. The landing uses Archivo 400 and Fraunces 600. The build sets `font-display: block` for Fontsource faces.
