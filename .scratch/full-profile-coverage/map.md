@@ -20,6 +20,7 @@ Plan for English and Russian and retain existing approval checks. The published 
 - [Curie Russian retry](issues/01-baseline.md#marie-curie-russian-retry): A translation self-check, field-only correction and fresh full audit produced a Russian approval. Use the [Russian coordinator workflow](../../packages/data-pipeline/docs/profile-coordinator.md#russian) for this process.
 - [Vincent van Gogh trial](issues/01-baseline.md#vincent-van-gogh-trial-2026-11-24): Bilingual approval took 24m 37s and the weekly meter rose from 44% to 50%. The first audit again found zero citation blockers. English claim precision took two repairs, and four Russian field replacements cleared the full re-audit.
 - [Galileo Galilei trial](issues/01-baseline.md#galileo-galilei-trial-2026-11-24): The passage-by-passage trial found two first-audit English blockers and needed two repairs. Bilingual approval took 24m 48s and the weekly meter rose from 51% to 57%.
+- [Albert Einstein trial](issues/01-baseline.md#albert-einstein-trial-2026-11-24) measured a 10.9% smaller English audit prompt on the same draft and evidence. Bilingual approval took 22m 19s after one English repair and one Russian correction. The weekly meter rose from 65% to 69%.
 - The [coordinator CLI](../../packages/data-pipeline/docs/profile-coordinator.md#russian) merges replacements for fields with blocking findings into the held candidate, validates the complete Russian translation and prepares it for a fresh full audit.
 
 ## Not yet specified

@@ -220,7 +220,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Beethoven.jpg",
     "description": "Ludwig van Beethoven was a German composer, conductor, and pianist. Regarded as one of the greatest composers in the history of Western music, he was mentored during the Classical period, and his musical style was a key driver of the transition to Romantic music, and the expansion of instrumental forms such as the symphony, the piano sonata and the string quartet. His compositions have attracted extraordinary casual and scholarly interest, and remain among the most performed in the world.",
     "slug": "ludwig-van-beethoven",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "18079",
@@ -246,7 +247,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco%20Melzi%20-%20Portrait%20of%20Leonardo.png",
     "description": "Leonardo di ser Piero da Vinci was an Italian polymath of the High Renaissance who was active as a painter, draughtsman, engineer, scientist, theorist, sculptor, and architect. While his fame initially rested on his achievements as a painter, he has also become known for his notebooks, in which he made drawings and notes on a variety of subjects, including anatomy, astronomy, botany, cartography, painting, and palaeontology. Leonardo is widely regarded as a genius who epitomised the Renaissance humanist ideal, and his collective works contributed to the development of European art to an extent rivalled only by that of his younger contemporary Michelangelo.",
     "slug": "leonardo-da-vinci",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "308",
@@ -569,7 +571,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Albert%20Einstein%20Head%20cleaned.jpg",
     "description": "Albert Einstein was a German-born theoretical physicist best known for developing the theory of relativity. Einstein also made important contributions to quantum theory. His mass–energy equivalence formula E = mc2, which arises from special relativity, has been called \"the world's most famous equation\". He received the 1921 Nobel Prize in Physics for \"his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect\".",
     "slug": "albert-einstein",
-    "row": 3
+    "row": 3,
+    "hasProfile": true
   },
   {
     "id": "14187",

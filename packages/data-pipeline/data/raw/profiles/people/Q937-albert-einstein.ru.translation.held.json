@@ -1,0 +1,121 @@
+{
+  "policy_version": "1",
+  "qid": "Q937",
+  "source_hash": "e98b40404e08fd845110ca9443fae00c1cae553ec45d28cab4a7410ba1f3f071",
+  "locale": "ru",
+  "fields": {
+    "overview": "Альберт Эйнштейн изменил представления физиков о **пространстве, времени и свете**. Он родился в Германии, разработал специальную теорию относительности, работая в швейцарском патентном бюро, опубликовал свои новые уравнения для описания гравитации во время работы в Берлине, а позднее поселился в Принстоне, штат Нью-Джерси.",
+    "key_moments.0.date": "1905",
+    "key_moments.0.title": "Специальная теория относительности рождается в Берне",
+    "key_moments.0.text": "Работая в патентном бюро, Эйнштейн опубликовал статью о **специальной теории относительности**, согласно которой свет в вакууме распространяется с постоянной скоростью. В другой статье он представил свет в виде отдельных порций энергии, чтобы объяснить, как свет может выбивать электроны из вещества. Именно его работу над этим эффектом особо отметили в официальном обосновании присуждения **Нобелевской премии за 1921 год**.",
+    "key_moments.1.date": "1915–1919",
+    "key_moments.1.title": "Проверка общей теории относительности во время затмения",
+    "key_moments.1.text": "Из **новой теории гравитации** Эйнштейна следовало, что Солнце должно отклонять лучи света от далёких звёзд. Во время затмения астрономы могли сфотографировать звёзды рядом с потемневшим Солнцем и проверить, сместились ли их видимые положения. Результаты двух серий измерений согласовались с его предсказанием, а сообщение об этом принесло Эйнштейну мировую известность.",
+    "key_moments.2.date": "1933",
+    "key_moments.2.title": "Изгнание в Принстоне",
+    "key_moments.2.text": "Годом ранее Эйнштейн согласился занять должность в **Институте перспективных исследований**, планируя проводить часть времени в Принстоне, а часть — в Берлине. После прихода нацистов к власти он в марте отказался от немецкого гражданства. В октябре он приехал в США и обосновался в Принстоне.",
+    "key_moments.3.date": "1939",
+    "key_moments.3.title": "Предупреждение Рузвельту",
+    "key_moments.3.text": "Эйнштейн подписал адресованное **Франклину Д. Рузвельту** письмо с предупреждением о том, что Германия может разработать атомную бомбу. В письме содержался призыв к администрации не медлить с ядерными исследованиями. Письмо было датировано августом. В октябре экономист **Александр Сакс** встретился с Рузвельтом, чтобы обсудить это письмо.",
+    "deep_facts.0.text": "Источником энергии для холодильника может служить тепло. Эйнштейн и **Лео Силард** разработали систему охлаждения, которая работала за счёт тепла, например от газового пламени. В американском патенте, выданном в 1930 году на одну из их разработок, они были указаны как изобретатели, однако их холодильники так и не попали к покупателям.",
+    "deep_facts.1.text": "В **1946** году Эйнштейн принял степень почётного доктора в **Университете Линкольна** в Пенсильвании, основанном для обучения чернокожих студентов. Во время визита он прочитал лекцию.",
+    "deep_facts.2.text": "После смерти **Хаима Вейцмана** в 1952 году Эйнштейну предложили занять пост президента Израиля. Он отказался. Он также направил отдельное письмо **Азриэлю Карлебаху**, редактору газеты, который публично поддержал эту идею.",
+    "connections.0.connection": "В 1915 году Эйнштейн опубликовал уравнения своей теории гравитации, а в следующем году дал более развёрнутое изложение теории.",
+    "connections.1.connection": "Планк и Вальтер Нернст убедили Эйнштейна переехать из Цюриха в Берлин.",
+    "connections.2.connection": "В ответном письме в 1939 году Рузвельт сообщил Эйнштейну, что создал комитет по изучению урана.",
+    "connections.3.connection": "Силард помог подготовить подписанное Эйнштейном письмо 1939 года с предупреждением для президента Рузвельта.",
+    "connections.4.connection": "Рассел попросил Эйнштейна подписать заявление с предупреждением об опасности ядерной войны и представил это заявление в Лондоне в 1955 году.",
+    "connections.5.connection": "В 1911 году Эйнштейн написал Кюри, чтобы поддержать её, когда она подвергалась нападкам во французской прессе."
+  },
+  "audit": {
+    "uncovered": [],
+    "issues": [
+      "key_moments.1.text: «Потемневшее Солнце» is unnatural in this description of a solar eclipse and suggests the Sun grew dim. The source means that stars could be photographed near the Sun while its disk was obscured by the eclipse.",
+      "key_moments.2.title: «Изгнание в Принстоне» reads like an act of banishment that took place in Princeton. The English title puts Einstein in Princeton while in exile. «Принстон: жизнь в изгнании» preserves that relation.",
+      "deep_facts.1.text: «Принял степень» is an unidiomatic Russian collocation. Use idiomatic wording that conveys Einstein’s acceptance of the honorary doctorate at Lincoln University."
+    ],
+    "coherent": true,
+    "covered": [
+      "overview",
+      "key_moments.0.date",
+      "key_moments.0.title",
+      "key_moments.0.text",
+      "key_moments.1.date",
+      "key_moments.1.title",
+      "key_moments.1.text",
+      "key_moments.2.date",
+      "key_moments.2.title",
+      "key_moments.2.text",
+      "key_moments.3.date",
+      "key_moments.3.title",
+      "key_moments.3.text",
+      "deep_facts.0.text",
+      "deep_facts.1.text",
+      "deep_facts.2.text",
+      "connections.0.connection",
+      "connections.1.connection",
+      "connections.2.connection",
+      "connections.3.connection",
+      "connections.4.connection",
+      "connections.5.connection"
+    ]
+  },
+  "generated_at": "2026-11-24T12:40:09.670Z",
+  "models": [
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 237043,
+        "output": 6401
+      }
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "reasoningEffort": "medium",
+      "tokens": {
+        "input": 169865,
+        "output": 2583
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "fields_hash": "c4edf7ff9dd62ce85ac089bcdaf2b27576b7cf60ea423b7503a1b1c988cc4891",
+      "audit": {
+        "uncovered": [],
+        "issues": [
+          "key_moments.1.text: «Потемневшее Солнце» is unnatural in this description of a solar eclipse and suggests the Sun grew dim. The source means that stars could be photographed near the Sun while its disk was obscured by the eclipse.",
+          "key_moments.2.title: «Изгнание в Принстоне» reads like an act of banishment that took place in Princeton. The English title puts Einstein in Princeton while in exile. «Принстон: жизнь в изгнании» preserves that relation.",
+          "deep_facts.1.text: «Принял степень» is an unidiomatic Russian collocation. Use idiomatic wording that conveys Einstein’s acceptance of the honorary doctorate at Lincoln University."
+        ],
+        "coherent": true,
+        "covered": [
+          "overview",
+          "key_moments.0.date",
+          "key_moments.0.title",
+          "key_moments.0.text",
+          "key_moments.1.date",
+          "key_moments.1.title",
+          "key_moments.1.text",
+          "key_moments.2.date",
+          "key_moments.2.title",
+          "key_moments.2.text",
+          "key_moments.3.date",
+          "key_moments.3.title",
+          "key_moments.3.text",
+          "deep_facts.0.text",
+          "deep_facts.1.text",
+          "deep_facts.2.text",
+          "connections.0.connection",
+          "connections.1.connection",
+          "connections.2.connection",
+          "connections.3.connection",
+          "connections.4.connection",
+          "connections.5.connection"
+        ]
+      }
+    }
+  ],
+  "approval_hash": null
+}

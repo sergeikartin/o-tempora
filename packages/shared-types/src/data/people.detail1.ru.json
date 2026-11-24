@@ -220,7 +220,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Beethoven.jpg",
     "description": "Лю́двиг ван Бетхо́вен — немецкий композитор, пианист, скрипач и дирижёр, третий и последний по времени из «венских классиков».",
     "slug": "ludwig-van-beethoven",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "18079",
@@ -246,7 +247,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Francesco%20Melzi%20-%20Portrait%20of%20Leonardo.png",
     "description": "Леона́рдо ди сер Пье́ро да Ви́нчи — итальянский художник, учёный, изобретатель, писатель, музыкант, один из крупнейших представителей искусства Высокого Возрождения, яркий пример «универсального человека».",
     "slug": "leonardo-da-vinci",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "308",
@@ -569,7 +571,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Albert%20Einstein%20Head%20cleaned.jpg",
     "description": "Альбе́рт Эйнште́йн — швейцарский, немецкий и американский физик-теоретик и общественный деятель-гуманист, один из основателей современной теоретической физики. Лауреат Нобелевской премии по физике 1921 года. Его теория относительности изменила основания физики, заменив классическую механику и закон всемирного тяготения Ньютона. Персона XX века по версии журнала Time.",
     "slug": "albert-einstein",
-    "row": 3
+    "row": 3,
+    "hasProfile": true
   },
   {
     "id": "14187",

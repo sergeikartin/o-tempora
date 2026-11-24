@@ -235,3 +235,29 @@ The first English audit found two claim-precision blockers and zero citation or 
 The coordinator froze the Russian candidate at handoff and checked its hash before applying the audit. The first audit held on one field about the Inquisition’s formal judgment. One replacement went into the otherwise identical candidate, and the fresh re-audit passed all 19 fields. English file hashes matched before and after Russian. Russian took **6m 09s** from English approval, and bilingual approval took **24m 48s**. Build and temporary publication finished in **24m 52s**. All 46 files matched the build byte for byte, and the only differences from the baseline build were Galileo’s two Legendary rows and two Profile files.
 
 Galileo had two first-audit claim blockers versus Van Gogh’s five. Both runs needed two English repairs, finished English within seven seconds of each other, and used the same observed increase on both account meters. The Galileo run had fewer fields and ran without a restart. The two trials leave the effect of passage-by-passage review on total effort unmeasured. The whole-Profile re-audit caught issues outside the initially flagged passages.
+
+### Albert Einstein trial, 2026-11-24
+
+Albert Einstein (Q937, 1879–1955, Fame Score 94.83) entered with no saved, staged or published Profile. The trial ran from commit `c6fec1d` with writer prompt 2.7.0. It used the combined assessed Profile and compact English audit input. First dispatch was at 12:19:48 UTC. The five-hour and weekly meters started at 35% and 65%, resetting Nov 24 at 13:47:10 UTC and Nov 29 at 15:25:51 UTC respectively.
+
+| Stage | Dispatch to last measured response | Five-hour meter | Weekly meter | Input tokens | Cached input | Output tokens |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Research and writing | 9m 24s | 46% | 67% | 4,963,892 | 4,866,048 | 18,644 |
+| First English audit | 2m 09s | 49% | 67% | 642,290 | 556,288 | 4,115 |
+| English repair | 1m 37s | 52% | 68% | 503,492 | 466,560 | 3,475 |
+| Second English audit | 1m 22s | 54% | 68% | 456,175 | 426,496 | 2,137 |
+| Russian translation | 2m 36s | 56% | 68% | 237,043 | 220,160 | 6,401 |
+| First Russian fidelity audit | 1m 10s | 57% | 68% | 169,865 | 152,064 | 2,583 |
+| Russian correction | 39s | 58% | 69% | 137,928 | 126,336 | 1,398 |
+| Second Russian fidelity audit | 50s | 59% | 69% | 139,543 | 129,664 | 1,844 |
+| **Agent total** | | | | **7,250,228** | **6,943,616** | **40,597** |
+
+All stages used `gpt-6.2-sol` at medium effort. The writer inherited the conversation and the subsequent tasks used fresh contexts. Input counts include cached input. Agent totals exclude coordination and automatic tool approval review. The account meters reached 60% and 69% by verified publication, an increase of 25 and 4 percentage points for one bilingual approval. Account-wide readings include other activity during the run.
+
+The writer attempted 39 distinct evidence URLs and retrieved 23. Sixteen failed because of access errors, timeouts or insufficient text. Public source and Wikipedia QID requests used scoped network access. The staged assessment had 22 fields, 43 findings, 78 excerpts and 20 snapshots. Local preflight passed in about 70 ms after loading the data, or 3.6 seconds end to end. Finalization kept four Key Moments, three Deep Facts and six Connections.
+
+The first English audit found zero citation blockers, zero uncovered claims and five factual wording issues. One repair distinguished the date of Einstein’s letter from Roosevelt’s meeting with Sachs, credited the inventors on the patent, narrowed the Lincoln University and Israeli presidency accounts, and clarified when Einstein wrote to Curie. The second audit cleared all 42 findings and retained all seven displayed citations. English approval took **15m 58s** from writer dispatch.
+
+The first Russian audit flagged three fields about the solar eclipse, exile in Princeton and the honorary doctorate. The CLI merged three replacement fields into the held candidate. A fresh full audit cleared all 22 fields. Both candidates were frozen at handoff, and both English files retained their original hashes through translation. Russian took **6m 21s** from English approval. Bilingual approval took **22m 19s** from dispatch, and verified publication took **22m 32s**. The publisher checked 48 full-build files byte for byte. The build delta contained the two Einstein Legendary rows and two Profile files. Only those four changes were published to the repository dataset.
+
+Reconstructing the previous English audit input for the same first draft gives 93,800 bytes. The compact prompt used 83,549 bytes, a reduction of **10.9%** with the same 25 contextual excerpts and 78 evidence excerpts. Einstein needed one English repair and used four weekly percentage points, compared with two repairs and six points each for Galileo and Van Gogh. The prompt-size comparison holds the draft and evidence fixed. The cross-Profile timing and meter readings reflect different subjects, evidence searches and account activity.

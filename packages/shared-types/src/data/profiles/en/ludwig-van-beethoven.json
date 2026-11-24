@@ -1,0 +1,78 @@
+{
+  "overview": "Ludwig van Beethoven was a composer and pianist from Bonn who made his career in Vienna, where he earned an early reputation as a pianist and improviser. As his hearing deteriorated, he kept composing, writing piano sonatas, string quartets and symphonies that stretched the musical forms he had inherited.",
+  "keyMoments": [
+    {
+      "date": "1792",
+      "title": "From Bonn to Vienna",
+      "text": "Beethoven moved from Bonn to Vienna, where he studied composition with **Joseph Haydn**. He gained an early reputation there for playing and improvising at the piano.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven"
+    },
+    {
+      "date": "1802",
+      "title": "A letter kept private",
+      "text": "At **Heiligenstadt** outside Vienna, Beethoven wrote a letter intended for his brothers. In it he described his despair over his worsening hearing. He described suicidal thoughts and a renewed resolve to keep composing. The letter stayed among his papers and was discovered after his death.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Heiligenstadt_Testament"
+    },
+    {
+      "date": "1805",
+      "title": "The Eroica at the Theater an der Wien",
+      "text": "Vienna's **Theater an der Wien** hosted a public performance of Beethoven's **Third Symphony**. The work was unusually long for a symphony of its time. Its second movement is a funeral march, and the symphony is known as the Eroica, or heroic symphony.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Symphony_No._3_(Beethoven)"
+    },
+    {
+      "date": "1824",
+      "title": "Voices enter the Ninth",
+      "text": "An orchestra performed Beethoven's **Ninth Symphony** in Vienna. The first three movements were entirely instrumental. Then solo singers and a choir joined the orchestra for the finale, singing words from **Friedrich Schiller's** poem Ode to Joy.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "As Beethoven's hearing declined, visitors could talk to him by writing their remarks in notebooks. Some of these conversation books survive.",
+      "isLegend": false,
+      "sourceUrl": "https://www.beethoven.de/en/media/view/5119968429473792/"
+    },
+    {
+      "text": "Beethoven wrote 33 piano variations on a single waltz by the publisher Anton Diabelli. The complete set is known as the **Diabelli Variations**.",
+      "isLegend": false,
+      "sourceUrl": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICAnMbgrQoM/33%20Ver%C3%A4nderungen%20%C3%BCber%20einen%20Walzer%20von%20Anton%20Diabelli%20%26%2340%3BC-Dur%26%2341%3B%20f%C3%BCr%20Klavier%20op.%20120"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "joseph-haydn",
+      "reason": "Taught Beethoven composition after Beethoven moved to Vienna in 1792.",
+      "name": "Joseph Haydn",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "friedrich-schiller",
+      "reason": "Wrote Ode to Joy, whose words Beethoven used in the finale of his Ninth Symphony.",
+      "name": "Friedrich Schiller",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "napoleon",
+      "reason": "Beethoven originally associated the Eroica symphony with Napoleon Bonaparte.",
+      "name": "Napoleon",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "johann-wolfgang-von-goethe",
+      "reason": "Wrote Egmont, for which Beethoven composed incidental music.",
+      "name": "Johann Wolfgang von Goethe",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "congress-of-vienna",
+      "reason": "Beethoven's cantata Der glorreiche Augenblick was performed during the congress.",
+      "name": "Congress of Vienna",
+      "lane": "milestones",
+      "detailLevel": 3
+    }
+  ]
+}
