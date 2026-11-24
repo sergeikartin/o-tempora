@@ -1,8 +1,33 @@
-import { createHash } from 'node:crypto';
 import { passages } from '../passages.js';
-import { asArray, asRecord, asString } from '../values.js';
+import { asRecord } from '../values.js';
+import {
+  type AdversarialResult,
+  parseAdversarialResult,
+  selectAdversarialTargets,
+} from './adversarial.js';
+import {
+  type Assessment,
+  type Audit,
+  findingExcerpts,
+  hash,
+  normalizeText,
+  parseAssessment,
+  parseAudit,
+  strings,
+} from './assessment.js';
 
-export const POLICY_VERSION = '6';
+export {
+  type Assessment,
+  type Evidence,
+  findingExcerpts,
+  hash,
+  normalizeText,
+  parseAssessment,
+  parseAudit,
+  strings,
+} from './assessment.js';
+
+export const POLICY_VERSION = '7';
 
 export function isCurrentVerificationPolicy(
   version: unknown,
@@ -12,6 +37,7 @@ export function isCurrentVerificationPolicy(
   // parser skipped every comparison for an ongoing subject.
   return (
     version === POLICY_VERSION ||
+    version === '6' ||
     version === '5' ||
     version === '4' ||
     version === '3' ||
@@ -19,36 +45,10 @@ export function isCurrentVerificationPolicy(
   );
 }
 
-export interface Evidence {
-  source: string;
-  quote: string;
-  kind: 'wikipedia' | 'primary' | 'scholarly' | 'other';
-  // The original work/account, not the website repeating it.
-  origin: string;
-}
-
-export interface Finding {
-  path: string;
-  claim: string;
-  verdict: 'supported' | 'contradicted' | 'unverifiable' | 'disputed';
-  risk: 'ordinary' | 'corroborate';
-  explanation: string;
-  correction: string;
-  evidence: Evidence[];
-  counterevidence?: Evidence[];
-}
-
-export function findingExcerpts(finding: Finding): Evidence[] {
-  return [...finding.evidence, ...(finding.counterevidence ?? [])];
-}
-
-export interface Assessment {
-  findings: Finding[];
-  covered: string[];
-  uncovered: string[];
-  issues: string[];
-  coherent: boolean;
-  subject_dates: { path: string; boundary: 'start' | 'end'; year: number }[];
+export interface SourceHeading {
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  text: string;
+  offset: number;
 }
 
 export interface Source {
@@ -57,6 +57,8 @@ export interface Source {
   fetched_at: string;
   text: string;
   anchors?: string[];
+  title?: string;
+  headings?: SourceHeading[];
 }
 
 export interface Report {
@@ -66,28 +68,14 @@ export interface Report {
   subject: { qid: string; dates: string };
   models: string[];
   assessment: Assessment;
-  audit: { uncovered: string[]; issues: string[]; coherent: boolean };
+  audit: Audit;
+  adversarial?: AdversarialResult;
+  adversarial_disabled?: true;
   sources: Pick<Source, 'id' | 'url' | 'fetched_at'>[];
   evidence_errors: string[];
   mechanical: string[];
   blockers: string[];
   repairs: number;
-}
-
-function canonical(value: unknown): string {
-  if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
-  if (value !== null && typeof value === 'object') {
-    return `{${Object.entries(value)
-      .filter(([, item]) => item !== undefined)
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([key, item]) => `${JSON.stringify(key)}:${canonical(item)}`)
-      .join(',')}}`;
-  }
-  return JSON.stringify(value) ?? 'null';
-}
-
-export function hash(value: unknown): string {
-  return createHash('sha256').update(canonical(value)).digest('hex');
 }
 
 // Review metadata can change without invalidating the checked content. Identity
@@ -102,102 +90,13 @@ export function profileHash(value: unknown): string {
   });
 }
 
-export function strings(value: unknown, where: string): string[] {
-  return asArray(value, where).map((item) => asString(item, where));
-}
-
-function oneOf<T extends string>(
-  value: unknown,
-  allowed: readonly T[],
-  where: string,
-): T {
-  if (typeof value !== 'string' || !allowed.includes(value as T)) {
-    throw new Error(`${where}: expected ${allowed.join(' | ')}`);
-  }
-  return value as T;
-}
-
-export function parseAudit(value: unknown): Report['audit'] {
-  const root = asRecord(value, 'audit');
-  if (typeof root.coherent !== 'boolean')
-    throw new Error('audit.coherent: expected boolean');
-  return {
-    uncovered: strings(root.uncovered, 'audit.uncovered'),
-    issues: strings(root.issues, 'audit.issues'),
-    coherent: root.coherent,
-  };
-}
-
-function parseExcerpts(value: unknown, field: string): Evidence[] {
-  return asArray(value, field).map((item) => {
-    const excerpt = asRecord(item, field);
-    return {
-      source: asString(excerpt.source, `${field}.source`),
-      quote: asString(excerpt.quote, `${field}.quote`),
-      kind: oneOf(
-        excerpt.kind,
-        ['wikipedia', 'primary', 'scholarly', 'other'],
-        `${field}.kind`,
-      ),
-      origin: asString(excerpt.origin, `${field}.origin`),
-    };
-  });
-}
-
-export function parseAssessment(value: unknown): Assessment {
-  const root = asRecord(value, 'assessment');
-  return {
-    ...parseAudit(root),
-    covered: strings(root.covered, 'covered'),
-    subject_dates: asArray(root.subject_dates, 'subject_dates').map((item) => {
-      const date = asRecord(item, 'subject date');
-      if (typeof date.year !== 'number' || !Number.isInteger(date.year))
-        throw new Error('subject date: expected integer astronomical year');
-      return {
-        path: asString(date.path, 'subject date path'),
-        boundary: oneOf(
-          date.boundary,
-          ['start', 'end'],
-          'subject date boundary',
-        ),
-        year: date.year,
-      };
-    }),
-    findings: asArray(root.findings, 'findings').map((item) => {
-      const row = asRecord(item, 'finding');
-      if (typeof row.correction !== 'string')
-        throw new Error('correction: expected string');
-      return {
-        path: asString(row.path, 'finding.path'),
-        claim: asString(row.claim, 'finding.claim'),
-        verdict: oneOf(
-          row.verdict,
-          ['supported', 'contradicted', 'unverifiable', 'disputed'],
-          'verdict',
-        ),
-        risk: oneOf(row.risk, ['ordinary', 'corroborate'], 'risk'),
-        explanation: asString(row.explanation, 'explanation'),
-        correction: row.correction,
-        evidence: parseExcerpts(row.evidence, 'evidence'),
-        ...(row.counterevidence === undefined
-          ? {}
-          : {
-              counterevidence: parseExcerpts(
-                row.counterevidence,
-                'counterevidence',
-              ),
-            }),
-      };
-    }),
-  };
-}
-
-export function normalizeText(text: string): string {
-  return text.normalize('NFC').replace(/\s+/g, ' ').trim();
-}
-
 export function checkEvidence(
-  assessment: Assessment,
+  assessment: {
+    findings: readonly Pick<
+      Assessment['findings'][number],
+      'path' | 'evidence' | 'counterevidence'
+    >[];
+  },
   sources: readonly Source[],
 ): string[] {
   const byId = new Map(sources.map((source) => [source.id, source]));
@@ -217,8 +116,9 @@ export function checkEvidence(
 
 export function blockers(
   report: Omit<Report, 'blockers'>,
-  paths: readonly string[],
+  profile: Parameters<typeof passages>[0] & { subject?: string },
 ): string[] {
+  const paths = passages(profile).map(({ path }) => path);
   const result = [
     ...report.mechanical,
     ...report.evidence_errors,
@@ -240,6 +140,51 @@ export function blockers(
     result.push('Coverage must account for every visible field exactly once');
   }
   const sources = new Map(report.sources.map((source) => [source.id, source]));
+  if (report.policy_version === '7') {
+    const targets = selectAdversarialTargets(profile, assessment);
+    try {
+      if (
+        report.adversarial_disabled !== undefined &&
+        report.adversarial_disabled !== true
+      )
+        throw new Error('Invalid adversarial opt-out');
+      if (report.adversarial !== undefined) {
+        if (report.adversarial_disabled !== undefined)
+          throw new Error(
+            'Adversarial checking cannot be both recorded and disabled',
+          );
+        const checks = parseAdversarialResult(report.adversarial, targets);
+        if (
+          !report.adversarial.model?.trim() ||
+          !strings(report.models, 'report models').includes(
+            report.adversarial.model,
+          )
+        )
+          throw new Error('Missing adversarial model');
+        for (const check of checks) {
+          const merged =
+            assessment.findings[check.finding_index]?.counterevidence ?? [];
+          for (const item of check.counterevidence) {
+            if (
+              !sources.has(item.source) ||
+              !merged.some(
+                (entry) =>
+                  entry.source === item.source &&
+                  normalizeText(entry.quote) === normalizeText(item.quote),
+              )
+            )
+              throw new Error(
+                `${check.path}: adversarial counterevidence is missing from the assessment or sources`,
+              );
+          }
+        }
+      } else if (report.adversarial_disabled !== true && targets.length) {
+        throw new Error('Missing adversarial checks for selected findings');
+      }
+    } catch (error) {
+      result.push(error instanceof Error ? error.message : String(error));
+    }
+  }
   for (const path of paths) {
     if (
       !path.endsWith('.title') &&
@@ -335,10 +280,10 @@ export function readProfileApproval(
     if (
       !Array.isArray(report.sources) ||
       strings(report.blockers, 'blockers').length > 0 ||
-      blockers(
-        parsed,
-        passages(text).map(({ path }) => path),
-      ).length > 0
+      blockers(parsed, {
+        ...text,
+        subject: typeof root.subject === 'string' ? root.subject : undefined,
+      }).length > 0
     )
       return undefined;
     return { isCurrentFor: (currentDates) => dates === currentDates };

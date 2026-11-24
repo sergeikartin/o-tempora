@@ -24,6 +24,15 @@ import {
 import { parseTokenUsage } from './usage.js';
 import { asRecord, asString } from './values.js';
 import {
+  type AdversarialResult,
+  adversarialPrompt,
+  mergeAdversarialResult,
+  parseAdversarialResult,
+  selectAdversarialTargets,
+} from './verification/adversarial.js';
+import {
+  type Assessment,
+  checkEvidence,
   findingExcerpts,
   hash,
   isCurrentVerificationPolicy,
@@ -54,6 +63,7 @@ interface CoordinatorOptions {
   resolve: ResolveArticleQids;
   fetch: typeof fetchSource;
   emit: (result: unknown) => void;
+  subjects?: typeof loadSubjects;
 }
 
 const defaultOptions: CoordinatorOptions = {
@@ -130,7 +140,9 @@ async function evidence(
 }
 
 async function loadSubject(options: CoordinatorOptions, qid: string) {
-  const subject = loadSubjects().find((entry) => entry.qid === qid);
+  const subject = (options.subjects ?? loadSubjects)().find(
+    (entry) => entry.qid === qid,
+  );
   const entry = (await readStoredProfiles(options.profilesDir)).get(qid);
   if (!subject || !entry)
     throw new Error(`${qid}: no raw Profile or dataset entity`);
@@ -170,21 +182,21 @@ function completion(
   };
 }
 
-async function englishAudit(
+async function loadEnglishAssessment(
   options: CoordinatorOptions,
   qid: string,
   researchFile?: string,
-  resultFile?: string,
 ) {
   const { filePath, subject, record } = await loadSubject(options, qid);
   const profile = parseModelProfile(record, filePath);
   const pending = readPendingAssessment(record);
   const binding = profileHash(record);
   let input = pending;
+  let savedAdversarial: unknown;
   if (researchFile) {
     if (pending)
       throw new Error(
-        'Audit the assessment saved with this draft without --research',
+        'Use the assessment saved with this draft without --research',
       );
     const research = asRecord(await readJson(researchFile), 'research result');
     input = {
@@ -199,42 +211,187 @@ async function englishAudit(
     const saved = await readOptionalJson(reportPathFor(filePath));
     if (saved) {
       const report = asRecord(saved, 'verification report');
-      if (report.profile_hash === binding)
+      if (report.profile_hash === binding) {
+        savedAdversarial = report.adversarial;
         input = {
           assessment: parseAssessment(report.assessment),
           model: strings(report.models, 'report models')[0] ?? 'unreported',
         };
+      }
     }
   }
   if (!input)
     throw new Error(
       'No saved assessment for this draft. Use --research to supply an assessment file.',
     );
-  const { assessment, model } = input;
+  return { filePath, subject, profile, record, ...input, savedAdversarial };
+}
+
+function assessmentSnapshots(
+  options: CoordinatorOptions,
+  assessment: Assessment,
+) {
   const ids = new Set(
     assessment.findings.flatMap((finding) =>
       findingExcerpts(finding).map(({ source }) => source),
     ),
   );
   const directory = path.join(options.profilesDir, 'evidence');
+  return Promise.all([...ids].map((id) => snapshot(directory, id)));
+}
+
+async function englishAdversarial(
+  options: CoordinatorOptions,
+  qid: string,
+  researchFile?: string,
+  resultFile?: string,
+) {
+  const { filePath, subject, profile, record, assessment } =
+    await loadEnglishAssessment(options, qid, researchFile);
+  const targets = selectAdversarialTargets(profile, assessment);
+  if (!targets.length) {
+    if (resultFile)
+      throw new Error(
+        'Result belongs to different inputs; prepare a fresh task',
+      );
+    options.emit({ status: 'skipped', targets: 0 });
+    return;
+  }
+  const binding = {
+    profile_hash: profileHash(record),
+    assessment_hash: hash(assessment),
+  };
+  const prepared = task(
+    adversarialPrompt(
+      profile,
+      subject,
+      assessment,
+      targets,
+      await assessmentSnapshots(options, assessment),
+    ),
+    binding,
+  );
+  if (!resultFile) {
+    options.emit({ ...prepared, targets });
+    return;
+  }
+
+  const reply = asRecord(
+    await readJson(resultFile),
+    'English adversarial result',
+  );
+  const checks = parseAdversarialResult(
+    output(reply, prepared.input_hash),
+    targets,
+  );
+  const directory = path.join(options.profilesDir, 'evidence');
+  const ids = new Set(
+    checks.flatMap((check) =>
+      check.counterevidence.map(({ source }) => source),
+    ),
+  );
   const snapshots = await Promise.all(
     [...ids].map((id) => snapshot(directory, id)),
   );
-  if (!resultFile) {
-    options.emit(
-      task(
-        englishAuditPrompt(profile, subject, assessment, snapshots),
-        binding,
-      ),
+  const errors = checkEvidence(
+    {
+      findings: checks.map(({ path, counterevidence }) => ({
+        path,
+        evidence: [],
+        counterevidence,
+      })),
+    },
+    snapshots,
+  );
+  if (errors.length) throw new Error(errors.join('\n'));
+
+  if (hash(await readJson(filePath)) !== hash(record))
+    throw new Error(
+      'Profile changed during adversarial apply; prepare a fresh task',
     );
+  await writeJson(filePath, {
+    ...record,
+    meta: {
+      ...asRecord(record.meta, 'meta'),
+      pending_adversarial: {
+        ...binding,
+        model: completion(reply, null).model,
+        checks,
+      },
+    },
+  });
+  options.emit({
+    status: 'saved',
+    checks: checks.length,
+    conflicts: checks.filter(({ outcome }) => outcome === 'conflict_found')
+      .length,
+  });
+}
+
+async function englishAudit(
+  options: CoordinatorOptions,
+  qid: string,
+  researchFile?: string,
+  resultFile?: string,
+) {
+  const {
+    filePath,
+    subject,
+    profile,
+    record,
+    assessment,
+    model,
+    savedAdversarial,
+  } = await loadEnglishAssessment(options, qid, researchFile);
+  const profile_hash = profileHash(record);
+  const assessment_hash = hash(assessment);
+  const pending = asRecord(record.meta, 'meta').pending_adversarial;
+  let checkpoint = savedAdversarial;
+  let applyingCheckpoint = false;
+  if (pending !== undefined) {
+    const bound = asRecord(pending, 'pending adversarial checks');
+    if (
+      bound.profile_hash === profile_hash &&
+      bound.assessment_hash === assessment_hash
+    ) {
+      checkpoint = bound;
+      applyingCheckpoint = true;
+    }
+  }
+  const targets = selectAdversarialTargets(profile, assessment);
+  let adversarial: AdversarialResult | undefined;
+  if (targets.length) {
+    if (checkpoint === undefined)
+      throw new Error(
+        'Run english-adversarial for the current draft and assessment before english-audit',
+      );
+    const result = asRecord(checkpoint, 'adversarial checks');
+    adversarial = {
+      model: asString(result.model, 'adversarial model'),
+      checks: parseAdversarialResult(result, targets),
+    };
+  }
+  const merged = adversarial
+    ? mergeAdversarialResult(assessment, adversarial)
+    : assessment;
+  const snapshots = await assessmentSnapshots(options, merged);
+  const binding = { profile_hash, assessment_hash, adversarial };
+  const prepared = task(
+    englishAuditPrompt(
+      profile,
+      subject,
+      merged,
+      snapshots,
+      adversarial?.checks,
+    ),
+    binding,
+  );
+  if (!resultFile) {
+    options.emit(prepared);
     return;
   }
   const audit = asRecord(await readJson(resultFile), 'English audit');
-  output(
-    audit,
-    task(englishAuditPrompt(profile, subject, assessment, snapshots), binding)
-      .input_hash,
-  );
+  output(audit, prepared.input_hash);
   options.emit(
     await verifyProfile({
       filePath,
@@ -242,7 +399,9 @@ async function englishAudit(
       sources: new SourceStore(undefined, snapshots),
       resolve: options.resolve,
       expectedRecordHash: hash(record),
+      force: applyingCheckpoint || readPendingAssessment(record) !== undefined,
       research: async () => ({ assessment, model }),
+      adversarial: adversarial ? async () => adversarial : undefined,
       complete: async (prompt) =>
         completion(audit, output(audit, task(prompt, binding).input_hash)),
       repairs: completedRepairs(record),
@@ -388,6 +547,7 @@ export async function runCoordinatorCommand(
 ): Promise<boolean> {
   const allowed: Record<string, string[]> = {
     evidence: ['url', 'query', 'offset', 'refresh'],
+    'english-adversarial': ['qid', 'research', 'result'],
     'english-audit': ['qid', 'research', 'result'],
     'english-repair': ['qid', 'result'],
     'russian-translation': ['qid'],
@@ -420,7 +580,9 @@ export async function runCoordinatorCommand(
   } else {
     const qid = required('qid');
     const result = flags.get('result');
-    if (command === 'english-audit')
+    if (command === 'english-adversarial')
+      await englishAdversarial(options, qid, flags.get('research'), result);
+    else if (command === 'english-audit')
       await englishAudit(options, qid, flags.get('research'), result);
     else if (command === 'english-repair')
       await englishRepair(options, qid, result);

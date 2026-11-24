@@ -103,6 +103,7 @@ async function fixture(t: TestContext) {
   const result = await verifyProfile({
     filePath,
     repair: false,
+    adversarialDisabled: true,
     subject: {
       qid: 'Q935',
       name: 'Isaac Newton',

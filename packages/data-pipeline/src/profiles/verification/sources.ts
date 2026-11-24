@@ -1,8 +1,10 @@
 import { lookup } from 'node:dns/promises';
 import { get } from 'node:https';
 import { Parser } from 'htmlparser2';
-import { asRecord, asString } from '../values.js';
-import { hash, normalizeText, type Source, strings } from './policy.js';
+import type { FunctionTool } from 'openai/resources/responses/responses';
+import { asArray, asRecord, asString } from '../values.js';
+import { hash, normalizeText, strings } from './assessment.js';
+import type { Source, SourceHeading } from './policy.js';
 
 const MAX_BYTES = 3_000_000;
 const EXCERPT_LENGTH = 8_000;
@@ -47,63 +49,153 @@ export function sourceUrl(value: string): URL {
   return url;
 }
 
-export function htmlText(html: string): string {
-  const fragments: string[] = [];
+const HEADING_LEVEL = new Map<string, SourceHeading['level']>([
+  ['h1', 1],
+  ['h2', 2],
+  ['h3', 3],
+  ['h4', 4],
+  ['h5', 5],
+  ['h6', 6],
+]);
+const BLOCKS = new Set(['p', 'div', 'li', 'br', 'tr', 'td', 'section']);
+const HIDDEN = new Set([
+  'script',
+  'style',
+  'noscript',
+  'svg',
+  'nav',
+  'footer',
+  'header',
+]);
+
+// Keep unfinished words across parser callbacks so combining characters split
+// by entities or inline tags still compose before assigning the next offset.
+class NormalizedText {
+  private readonly chunks: string[] = [];
+  private word = '';
+  offset = 0;
+
+  append(text: string) {
+    for (const part of text.matchAll(/(\s+)|(\S+)/g)) {
+      if (part[1]) this.boundary();
+      else this.word += part[0];
+    }
+  }
+
+  boundary() {
+    if (!this.word) return;
+    const word = this.word.normalize('NFC');
+    if (this.offset) {
+      this.chunks.push(' ');
+      this.offset++;
+    }
+    this.chunks.push(word);
+    this.offset += word.length;
+    this.word = '';
+  }
+
+  nextOffset() {
+    return this.offset ? this.offset + 1 : 0;
+  }
+
+  finish() {
+    this.boundary();
+    return this.chunks.join('');
+  }
+}
+
+export function extractHtmlDocument(
+  html: string,
+  anchors?: Set<string>,
+): { text: string; title?: string; headings: SourceHeading[] } {
+  const visible = new NormalizedText();
+  const ranges: {
+    level: SourceHeading['level'];
+    offset: number;
+    end: number;
+  }[] = [];
+  const stack: { hidden: boolean; offset?: number }[] = [];
   let hidden = 0;
-  const stack: boolean[] = [];
-  const blocks = new Set([
-    'p',
-    'div',
-    'li',
-    'br',
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'tr',
-    'td',
-    'section',
-  ]);
+  let inHeading = false;
+  let titleText: NormalizedText | undefined;
+  let title: string | undefined;
   const parser = new Parser(
     {
-      onopentag(name) {
-        const hide = [
-          'script',
-          'style',
-          'noscript',
-          'svg',
-          'nav',
-          'footer',
-          'header',
-        ].includes(name);
-        stack.push(hide);
+      onopentag(name, attributes) {
+        if (anchors) {
+          if (attributes.id) anchors.add(attributes.id);
+          if (attributes.name) anchors.add(attributes.name);
+        }
+        const hide =
+          HIDDEN.has(name) ||
+          (name === 'span' &&
+            attributes.class?.split(/\s+/).includes('mw-editsection')) === true;
         if (hide) hidden++;
-        if (!hidden && blocks.has(name)) fragments.push(' ');
+        const level = HEADING_LEVEL.get(name);
+        if (!hidden && (level || BLOCKS.has(name))) visible.boundary();
+        // Treat nested headings in malformed HTML as part of the outer label.
+        const startsHeading = !hidden && level !== undefined && !inHeading;
+        stack.push({
+          hidden: hide,
+          offset: startsHeading ? visible.nextOffset() : undefined,
+        });
+        if (startsHeading) inHeading = true;
+        if (!hidden && name === 'title' && title === undefined)
+          titleText = new NormalizedText();
       },
       ontext(text) {
-        if (!hidden) fragments.push(text);
+        if (hidden) return;
+        visible.append(text);
+        titleText?.append(text);
       },
       onclosetag(name) {
-        if (stack.pop()) hidden--;
-        if (!hidden && blocks.has(name)) fragments.push(' ');
+        const entry = stack.pop();
+        if (entry?.hidden) hidden--;
+        if (hidden || entry?.hidden) return;
+        if (name === 'title' && titleText) {
+          title = titleText.finish() || undefined;
+          titleText = undefined;
+        }
+        const level = HEADING_LEVEL.get(name);
+        if (level || BLOCKS.has(name)) visible.boundary();
+        if (level && entry?.offset !== undefined) {
+          inHeading = false;
+          if (visible.offset > entry.offset)
+            ranges.push({ level, offset: entry.offset, end: visible.offset });
+        }
       },
     },
     { decodeEntities: true },
   );
   parser.end(html);
-  return normalizeText(fragments.join(''));
+  const text = visible.finish();
+  return {
+    text,
+    ...(title ? { title } : {}),
+    headings: ranges.map(({ level, offset, end }) => ({
+      level,
+      offset,
+      text: text.slice(offset, end),
+    })),
+  };
 }
 
-function htmlAnchors(html: string): string[] {
-  const anchors = new Set<string>();
-  const parser = new Parser({
-    onopentag(_name, attributes) {
-      if (attributes.id) anchors.add(attributes.id);
-      if (attributes.name) anchors.add(attributes.name);
-    },
-  });
-  parser.end(html);
-  return [...anchors];
+export function htmlText(html: string): string {
+  return extractHtmlDocument(html).text;
+}
+
+export function headingPathAt(
+  headings: readonly SourceHeading[] | undefined,
+  offset: number,
+): string[] {
+  const stack: SourceHeading[] = [];
+  for (const heading of headings ?? []) {
+    if (heading.offset > offset) break;
+    while (stack.length && (stack.at(-1)?.level ?? 0) >= heading.level)
+      stack.pop();
+    stack.push(heading);
+  }
+  return stack.map(({ text }) => text);
 }
 
 interface Page {
@@ -159,16 +251,57 @@ async function request(url: URL): Promise<Page> {
 
 export function parseSourceSnapshot(value: unknown, id: string): Source {
   const data = asRecord(value, 'source snapshot');
+  const text = asString(data.text, 'source text');
+  let previous = -1;
+  const headings =
+    data.headings === undefined
+      ? undefined
+      : asArray(data.headings, 'source headings').map((item): SourceHeading => {
+          const heading = asRecord(item, 'source heading');
+          const level = heading.level;
+          const offset = heading.offset;
+          const label = asString(heading.text, 'source heading text');
+          if (
+            (level !== 1 &&
+              level !== 2 &&
+              level !== 3 &&
+              level !== 4 &&
+              level !== 5 &&
+              level !== 6) ||
+            typeof offset !== 'number' ||
+            !Number.isSafeInteger(offset) ||
+            offset <= previous ||
+            normalizeText(label) !== label ||
+            !text.startsWith(label, offset)
+          )
+            throw new Error('Invalid source heading');
+          previous = offset;
+          return { level, offset, text: label };
+        });
+  const title =
+    data.title === undefined ? undefined : asString(data.title, 'source title');
   const source = {
     url: asString(data.url, 'source URL'),
     fetched_at: asString(data.fetched_at, 'source date'),
-    text: asString(data.text, 'source text'),
-    anchors:
-      data.anchors === undefined ? [] : strings(data.anchors, 'source anchors'),
+    text,
+    ...(data.anchors === undefined
+      ? {}
+      : { anchors: strings(data.anchors, 'source anchors') }),
+    ...(title === undefined ? {} : { title }),
+    ...(headings === undefined ? {} : { headings }),
   };
+  const legacy = title === undefined && headings === undefined;
   if (
     data.id !== id ||
-    (hash(source) !== id && hash(source.text) !== id) ||
+    (hash(source) !== id &&
+      !(
+        legacy &&
+        (hash(source.text) === id ||
+          (data.anchors === undefined &&
+            hash({ ...source, anchors: [] }) === id))
+      )) ||
+    (title !== undefined && normalizeText(title) !== title) ||
+    (!legacy && normalizeText(text) !== text) ||
     sourceUrl(source.url).href !== source.url
   ) {
     throw new Error(`Saved source content does not match ${id}`);
@@ -199,16 +332,18 @@ export async function fetchSource(value: string): Promise<Source> {
       throw new Error(`Source returned HTTP ${page.status}`);
     if (!/text\/(html|plain)|application\/xhtml\+xml/.test(page.type))
       throw new Error('Source is not readable HTML or plain text');
-    const text = page.type.includes('text/plain')
-      ? normalizeText(page.text)
-      : htmlText(page.text);
-    if (text.length < 100)
+    const plain = page.type.includes('text/plain');
+    const anchors = new Set<string>();
+    const document = plain
+      ? { text: normalizeText(page.text), headings: [] }
+      : extractHtmlDocument(page.text, anchors);
+    if (document.text.length < 100)
       throw new Error('Source has insufficient readable text');
     const snapshot = {
       url: url.href,
       fetched_at: new Date().toISOString(),
-      text,
-      anchors: page.type.includes('text/plain') ? [] : htmlAnchors(page.text),
+      ...document,
+      anchors: [...anchors],
     };
     return { id: hash(snapshot), ...snapshot };
   }
@@ -232,6 +367,7 @@ export class SourceStore {
     try {
       const source = await this.fetchPage(url);
       this.byUrl.set(url, source);
+      this.byUrl.set(source.url, source);
       this.failures.delete(url);
       return source;
     } catch (error) {
@@ -266,7 +402,13 @@ export class SourceStore {
       pattern.lastIndex = offset;
       const match = pattern.exec(source.text);
       if (!match)
-        return { ...source, text: '', offset: null, next_offset: null };
+        return {
+          ...source,
+          text: '',
+          section: [],
+          offset: null,
+          next_offset: null,
+        };
       start = Math.max(offset, match.index - 2_000);
     }
 
@@ -275,6 +417,7 @@ export class SourceStore {
       ...source,
       text: source.text.slice(start, end),
       offset: start,
+      section: headingPathAt(source.headings, start),
       next_offset: end < source.text.length ? end - EXCERPT_OVERLAP : null,
     };
   }
@@ -288,5 +431,40 @@ export class SourceStore {
         ]),
       ).values(),
     ];
+  }
+}
+
+export const readSourceTool: FunctionTool = {
+  type: 'function',
+  name: 'read_source',
+  description:
+    'Fetch an exact excerpt from a public HTTPS article. Use a literal name, phrase or year as query to jump to its first match at or after offset, or null to read from offset. Start at offset 0; use next_offset with query=null to continue reading. An empty result for a query means the phrase was not found. Evidence must cite the returned content hash and quote the returned text. PDF and login-only pages are unsupported; seek a readable alternative.',
+  strict: true,
+  parameters: {
+    type: 'object',
+    properties: {
+      url: { type: 'string' },
+      offset: { type: 'integer', minimum: 0 },
+      query: { type: ['string', 'null'] },
+    },
+    required: ['url', 'offset', 'query'],
+    additionalProperties: false,
+  },
+};
+
+export async function readSourceToolOutput(
+  sources: SourceStore,
+  argumentsJson: string,
+) {
+  try {
+    const args = asRecord(JSON.parse(argumentsJson), 'read_source');
+    const { id, url, title, section, text, offset, next_offset } =
+      await sources.readExcerpt(args);
+    return { id, url, title, section, text, offset, next_offset };
+  } catch (error) {
+    return {
+      error: error instanceof Error ? error.message : String(error),
+      retryable: true,
+    };
   }
 }

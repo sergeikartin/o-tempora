@@ -5,6 +5,10 @@ import {
   PROVIDERS,
   type Provider,
 } from './providers.js';
+import {
+  type AdversarialChecker,
+  createAdversarialChecker,
+} from './verification/adversarial.js';
 import { createResearcher, type Research } from './verification/researcher.js';
 
 const DEFAULT_MODEL: Record<Provider, string> = {
@@ -64,6 +68,8 @@ export function routeProfileModels(
 
 export function routeVerificationModels(argv: readonly string[]): {
   research: Research;
+  adversarial?: AdversarialChecker;
+  adversarialDisabled?: true;
   complete: Complete;
 } {
   const model = flagValue(argv, 'model') ?? DEFAULT_MODEL.openai;
@@ -84,11 +90,21 @@ export function routeVerificationModels(argv: readonly string[]): {
     flagValue(argv, 'translation-model') ?? openAiModel,
   );
   let research: Research | undefined;
+  let adversarial: AdversarialChecker | undefined;
+  const adversarialModel = flagValue(argv, 'adversarial-model') ?? model;
   return {
     research: (...args) => {
       research ??= createResearcher(model);
       return research(...args);
     },
+    ...(argv.includes('--no-adversarial')
+      ? { adversarialDisabled: true as const }
+      : {
+          adversarial: ((...args) => {
+            adversarial ??= createAdversarialChecker(adversarialModel);
+            return adversarial(...args);
+          }) satisfies AdversarialChecker,
+        }),
     complete: (prompt, role) => {
       if (role === 'audit') return audit(prompt, role);
       if (role === 'translate') return translate(prompt, role);

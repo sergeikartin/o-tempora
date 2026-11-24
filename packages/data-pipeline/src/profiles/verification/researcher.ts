@@ -5,17 +5,24 @@ import { passages } from '../passages.js';
 import { readPromptText } from '../prompt.js';
 import type { Complete, Completion } from '../providers.js';
 import { type ProfileSubject, subjectBrief } from '../subjects.js';
-import { asRecord, extractJson } from '../values.js';
+import { extractJson } from '../values.js';
+import type { AdversarialCheck } from './adversarial.js';
 import {
   type Assessment,
   type Evidence,
   findingExcerpts,
+  normalizeText,
   parseAssessment,
   parseAudit,
   type Report,
   type Source,
 } from './policy.js';
-import type { SourceStore } from './sources.js';
+import {
+  headingPathAt,
+  readSourceTool,
+  readSourceToolOutput,
+  type SourceStore,
+} from './sources.js';
 
 export type Research = (
   profile: ModelProfile,
@@ -53,23 +60,7 @@ export function createResearcher(model: string): Research {
         max_tool_calls: 8,
         tools: [
           ...(searches < 16 ? [{ type: 'web_search' as const }] : []),
-          {
-            type: 'function',
-            name: 'read_source',
-            description:
-              'Fetch an exact excerpt from a public HTTPS article. Use a literal name, phrase or year as query to jump to its first match at or after offset, or null to read from offset. Start at offset 0; use next_offset with query=null to continue reading. An empty result for a query means the phrase was not found. Evidence must cite the returned content hash and quote the returned text. PDF and login-only pages are unsupported; seek a readable alternative.',
-            strict: true,
-            parameters: {
-              type: 'object',
-              properties: {
-                url: { type: 'string' },
-                offset: { type: 'integer', minimum: 0 },
-                query: { type: ['string', 'null'] },
-              },
-              required: ['url', 'offset', 'query'],
-              additionalProperties: false,
-            },
-          },
+          readSourceTool,
         ],
       });
       if (response.status !== 'completed')
@@ -98,26 +89,9 @@ export function createResearcher(model: string): Research {
       for (const call of calls) {
         if (++reads > 24)
           throw new Error('Verification exhausted its source-read budget');
-        let output: unknown;
-        try {
-          if (call.name !== 'read_source')
-            throw new Error('Unknown verification tool');
-          const args = asRecord(JSON.parse(call.arguments), 'read_source');
-          const { id, url, text, offset, next_offset } =
-            await sources.readExcerpt(args);
-          output = {
-            id,
-            url,
-            text,
-            offset,
-            next_offset,
-          };
-        } catch (error) {
-          output = {
-            error: error instanceof Error ? error.message : String(error),
-            retryable: true,
-          };
-        }
+        if (call.name !== readSourceTool.name)
+          throw new Error('Unknown verification tool');
+        const output = await readSourceToolOutput(sources, call.arguments);
         input.push({
           type: 'function_call_output',
           call_id: call.call_id,
@@ -134,6 +108,7 @@ export function englishAuditPrompt(
   subject: ProfileSubject,
   assessment: Assessment,
   sources: readonly Source[],
+  adversarialChecks: readonly AdversarialCheck[] = [],
 ): string {
   const evidenceBySource = new Map<string, Evidence[]>();
   for (const finding of assessment.findings) {
@@ -151,26 +126,51 @@ export function englishAuditPrompt(
   const sourceContexts = sources.flatMap((source) => {
     const items = evidenceBySource.get(source.id);
     if (!items) return [];
+    const text = normalizeText(source.text);
+    const headings = source.headings ?? [];
     const ranges = items
-      .map((item) => ({ item, index: source.text.indexOf(item.quote) }))
+      .map((item) => {
+        const quote = normalizeText(item.quote);
+        return {
+          item,
+          length: quote.length,
+          index: quote ? text.indexOf(quote) : -1,
+        };
+      })
       .filter(({ index }) => index >= 0)
       .sort((a, b) => a.index - b.index);
-    const excerpts: { start: number; end: number }[] = [];
-    for (const { item, index } of ranges) {
-      const start = Math.max(0, index - 700);
-      const end = Math.min(source.text.length, index + item.quote.length + 700);
+    const excerpts: { start: number; end: number; sectionOffset: number }[] =
+      [];
+    let nextHeading = 0;
+    for (const { item, index, length } of ranges) {
+      while (
+        nextHeading < headings.length &&
+        (headings[nextHeading]?.offset ?? Infinity) <= index
+      )
+        nextHeading++;
+      const sectionOffset = headings[nextHeading - 1]?.offset ?? 0;
+      const sectionEnd = headings[nextHeading]?.offset ?? text.length;
+      const start = Math.max(sectionOffset, index - 700);
+      // Retain the evidence itself even when the quotation spans a heading.
+      const end = Math.max(
+        index + length,
+        Math.min(sectionEnd, index + length + 700),
+      );
       const last = excerpts.at(-1);
-      if (last && start <= last.end) last.end = Math.max(last.end, end);
-      else excerpts.push({ start, end });
+      if (last && last.sectionOffset === sectionOffset && start <= last.end)
+        last.end = Math.max(last.end, end);
+      else excerpts.push({ start, end, sectionOffset });
       contextIndexes.set(item, excerpts.length - 1);
     }
     return [
       {
         source: sourceNumbers.get(source.id),
         url: source.url,
-        excerpts: excerpts.map(({ start, end }) =>
-          source.text.slice(start, end),
-        ),
+        title: source.title,
+        excerpts: excerpts.map(({ start, end, sectionOffset }) => ({
+          section: headingPathAt(headings, sectionOffset),
+          text: text.slice(start, end),
+        })),
       },
     ];
   });
@@ -191,6 +191,14 @@ export function englishAuditPrompt(
       profile,
       assessment: { ...assessment, findings },
       source_contexts: sourceContexts,
+      adversarial_notes: adversarialChecks
+        .filter(({ outcome }) => outcome !== 'no_conflict_found')
+        .map(({ finding_index, path, outcome, note }) => ({
+          finding_index,
+          path,
+          outcome,
+          note,
+        })),
     })
   );
 }
@@ -201,13 +209,20 @@ export async function auditProfile(
   assessment: Assessment,
   sources: readonly Source[],
   complete: Complete,
+  adversarialChecks?: readonly AdversarialCheck[],
 ): Promise<{
   audit: Report['audit'];
   model: string;
   tokens: Completion['tokens'];
 }> {
   const response = await complete(
-    englishAuditPrompt(profile, subject, assessment, sources),
+    englishAuditPrompt(
+      profile,
+      subject,
+      assessment,
+      sources,
+      adversarialChecks,
+    ),
     'audit',
   );
   return {

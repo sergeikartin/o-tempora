@@ -6,13 +6,21 @@ import {
   PROFILE_SCHEMA_VERSION,
   parseModelProfile,
 } from '../model-profile.js';
-import { passages } from '../passages.js';
 import { readPromptText } from '../prompt.js';
 import type { Complete } from '../providers.js';
 import { writeJson } from '../store.js';
 import { formatDates, type ProfileSubject } from '../subjects.js';
 import { asRecord, extractJson } from '../values.js';
 import type { ResolveArticleQids } from '../wikipedia-qids.js';
+import {
+  AdversarialBudgetError,
+  type AdversarialCheck,
+  type AdversarialChecker,
+  type AdversarialResult,
+  mergeAdversarialResult,
+  parseAdversarialResult,
+  selectAdversarialTargets,
+} from './adversarial.js';
 import { evidenceChecks, mechanicalChecks } from './mechanical.js';
 import {
   blockers,
@@ -30,6 +38,8 @@ export interface VerifyOptions {
   filePath: string;
   subject: ProfileSubject;
   research: Research;
+  adversarial?: AdversarialChecker;
+  adversarialDisabled?: true;
   complete: Complete;
   resolve: ResolveArticleQids;
   repair: boolean;
@@ -173,7 +183,10 @@ export async function checkpointEnglishRepair(options: {
   )
     throw new Error('Profile or report changed during repair');
   const root = path.join(path.dirname(filePath), '..');
-  const meta = asRecord(record.meta, 'meta');
+  const { pending_adversarial: _adversarial, ...meta } = asRecord(
+    record.meta,
+    'meta',
+  );
   const pending = {
     profile_hash: candidateHash,
     assessment,
@@ -210,7 +223,8 @@ export async function checkpointEnglishRepair(options: {
   await writeJson(filePath, {
     ...next,
     meta: {
-      ...asRecord(next.meta, 'meta'),
+      ...meta,
+      schema_version: PROFILE_SCHEMA_VERSION,
       pending_assessment: pending,
       coordinator_repair: { profile_hash: candidateHash, count: repairs + 1 },
       review: { ...reviewFields, status: 'draft', reviewed_at: null },
@@ -245,6 +259,10 @@ export async function verifyProfile(
   const sources = options.sources ?? new SourceStore();
   const now = (options.now ?? new Date()).toISOString();
   let repairs = options.repairs ?? 0;
+  const cachedChecks = new Map<string, AdversarialCheck>();
+  const budget = { turns: 0, searches: 0, reads: 0 };
+  let adversarialModel: string | undefined;
+  let adversarialRetry = false;
   let report: Report;
   let proposalPath: string | undefined;
   for (;;) {
@@ -259,32 +277,93 @@ export async function verifyProfile(
       options.resolve,
     );
     const result = await options.research(profile, options.subject, sources);
+    const targets = selectAdversarialTargets(profile, result.assessment);
+    let adversarial: AdversarialResult | undefined;
+    if (options.adversarial && targets.length) {
+      options.log?.(
+        `${options.subject.qid}: checking high-risk claims for counterevidence`,
+      );
+      const uncached = targets.filter(
+        ({ claim_hash }) => !cachedChecks.has(claim_hash),
+      );
+      try {
+        const fresh = uncached.length
+          ? await options.adversarial(
+              profile,
+              options.subject,
+              result.assessment,
+              uncached,
+              sources,
+              budget,
+            )
+          : undefined;
+        const freshChecks = fresh
+          ? parseAdversarialResult(fresh, uncached)
+          : [];
+        const freshByIndex = new Map(
+          freshChecks.map((check) => [check.finding_index, check]),
+        );
+        const checks = targets.flatMap(
+          ({ claim_hash, finding_index, path }) => {
+            const check =
+              freshByIndex.get(finding_index) ?? cachedChecks.get(claim_hash);
+            return check ? [{ ...check, finding_index, path }] : [];
+          },
+        );
+        if (fresh) adversarialModel = fresh.model;
+        if (!adversarialModel) throw new Error('Missing adversarial model');
+        adversarial = { model: adversarialModel, checks };
+        for (const [index, target] of targets.entries()) {
+          const check = checks[index];
+          if (check) cachedChecks.set(target.claim_hash, check);
+        }
+      } catch (error) {
+        if (
+          !sources.failures.size &&
+          !(error instanceof AdversarialBudgetError)
+        )
+          throw error;
+        adversarialRetry = true;
+        mechanical.push(error instanceof Error ? error.message : String(error));
+      }
+      if (sources.failures.size) {
+        adversarialRetry = true;
+        mechanical.push(
+          'Adversarial source fetching failed; retry verification',
+        );
+      }
+    }
+    const assessment = adversarial
+      ? mergeAdversarialResult(result.assessment, adversarial)
+      : result.assessment;
     mechanical.push(
-      ...evidenceChecks(
-        profile,
-        options.subject,
-        result.assessment,
-        sources.all(),
-      ),
+      ...evidenceChecks(profile, options.subject, assessment, sources.all()),
     );
-    const evidenceErrors = checkEvidence(result.assessment, sources.all());
+    const evidenceErrors = checkEvidence(assessment, sources.all());
     options.log?.(
       `${options.subject.qid}: auditing claim coverage and evidence`,
     );
     const audited = await auditProfile(
       profile,
       options.subject,
-      result.assessment,
+      assessment,
       sources.all(),
       options.complete,
+      adversarial?.checks,
     );
     const base = {
       policy_version: POLICY_VERSION,
       profile_hash: profileHash(record),
       verified_at: now,
       subject: { qid: options.subject.qid, dates },
-      models: [result.model, audited.model],
-      assessment: result.assessment,
+      models: adversarial
+        ? [result.model, adversarial.model, audited.model]
+        : [result.model, audited.model],
+      assessment,
+      ...(adversarial ? { adversarial } : {}),
+      ...(options.adversarialDisabled
+        ? { adversarial_disabled: options.adversarialDisabled }
+        : {}),
       audit: audited.audit,
       sources: sources
         .all()
@@ -293,17 +372,16 @@ export async function verifyProfile(
       mechanical,
       repairs,
     };
-    report = {
-      ...base,
-      blockers: blockers(
-        base,
-        passages(profile).map((item) => item.path),
-      ),
-    };
+    report = { ...base, blockers: blockers(base, profile) };
     if (!report.blockers.length || !options.repair || repairs === 2) break;
     // Infrastructure trouble is retryable and must never delete content merely
     // because the source could not be fetched today.
-    if (sources.failures.size > 0) break;
+    if (
+      adversarialRetry ||
+      sources.failures.size > 0 ||
+      (targets.length && !options.adversarial && !options.adversarialDisabled)
+    )
+      break;
     const next = await repairProfile(record, profile, report, options);
     if (protectedEdit) {
       proposalPath = path.join(
@@ -341,10 +419,11 @@ export async function verifyProfile(
   const review = asRecord(meta.review, 'review');
   const approved = report.blockers.length === 0;
   const { approval: _oldApproval, ...reviewFields } = review;
-  const { pending_assessment: _pending, ...savedMeta } = asRecord(
-    record.meta,
-    'meta',
-  );
+  const {
+    pending_assessment: _pending,
+    pending_adversarial: _adversarial,
+    ...savedMeta
+  } = asRecord(record.meta, 'meta');
   const nextMeta = {
     ...savedMeta,
     review: {
@@ -377,7 +456,7 @@ export async function verifyProfile(
   }
   await writeJson(reportPath, report);
   await writeJson(options.filePath, { ...record, meta: nextMeta });
-  const retry = !approved && sources.failures.size > 0;
+  const retry = !approved && (adversarialRetry || sources.failures.size > 0);
   return {
     status: approved ? 'approved' : retry ? 'retry' : 'held',
     blockers: report.blockers,

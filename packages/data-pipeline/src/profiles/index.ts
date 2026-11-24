@@ -16,12 +16,13 @@ import { auditSavedProfile } from './verification/audit-saved.js';
 import { verifyProfile } from './verification/runner.js';
 import { resolveArticleQids } from './wikipedia-qids.js';
 
-const USAGE = `Usage: profiles <finalize|verify|audit|translate|evidence|english-audit|english-repair|russian-translation|russian-audit> [flags]
+const USAGE = `Usage: profiles <finalize|verify|audit|translate|evidence|english-adversarial|english-audit|english-repair|russian-translation|russian-audit> [flags]
   finalize  [--qids=Q1,Q2,...] [--run-id=<id>]
-  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--audit-provider=${PROVIDERS.join('|')}] [--audit-model=<id>] [--translation-model=<OpenAI id>]
+  verify    --qids=Q1,Q2,... [--repair] [--force] [--model=<OpenAI id>] [--adversarial-model=<OpenAI id>] [--no-adversarial] [--audit-provider=${PROVIDERS.join('|')}] [--audit-model=<id>] [--translation-model=<OpenAI id>]
   audit     --qids=Q1,Q2,... [--provider=${PROVIDERS.join('|')}] [--model=<id>]
   translate --qids=Q1,Q2,... [--force] [--provider=${PROVIDERS.join('|')}] [--model=<id>] [--audit-model=<id>]
   evidence --url=<https URL> [--query=<text>] [--offset=<number>] [--refresh]
+  english-adversarial --qid=Q1 [--research=<file>] [--result=<file>]
   english-audit --qid=Q1 [--research=<file>] [--result=<file>]
   english-repair --qid=Q1 [--result=<file>]
   russian-translation --qid=Q1
@@ -68,10 +69,11 @@ async function main(): Promise<void> {
 async function verify(argv: readonly string[]): Promise<void> {
   const unknown = argv.find(
     (arg) =>
-      !['--repair', '--force'].includes(arg) &&
+      !['--repair', '--force', '--no-adversarial'].includes(arg) &&
       ![
         '--qids=',
         '--model=',
+        '--adversarial-model=',
         '--audit-model=',
         '--audit-provider=',
         '--translation-model=',
@@ -84,7 +86,7 @@ async function verify(argv: readonly string[]): Promise<void> {
     throw new Error(
       `--qids is required: verification runs per chosen batch\n${USAGE}`,
     );
-  const { research, complete } = routeVerificationModels(argv);
+  const models = routeVerificationModels(argv);
   const stored = await readStoredProfiles(RAW_PROFILES_DIR);
   const subjects = new Map(
     loadSubjects().map((subject) => [subject.qid, subject]),
@@ -99,8 +101,7 @@ async function verify(argv: readonly string[]): Promise<void> {
       const result = await verifyProfile({
         filePath: entry.filePath,
         subject,
-        research,
-        complete,
+        ...models,
         resolve: resolveArticleQids,
         repair: argv.includes('--repair'),
         force: argv.includes('--force'),
@@ -115,7 +116,7 @@ async function verify(argv: readonly string[]): Promise<void> {
         const translation = await translateProfile({
           filePath: entry.filePath,
           dates: formatDates(subject.dateSpan),
-          complete,
+          complete: models.complete,
         });
         console.log(
           `${qid}: Russian translation ${translation.status}; ${translation.filePath}`,

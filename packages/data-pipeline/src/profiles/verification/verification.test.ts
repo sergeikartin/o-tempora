@@ -3,6 +3,8 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { type TestContext, test } from 'node:test';
+import OpenAI from 'openai';
+import type { ResponseCreateParamsNonStreaming } from 'openai/resources/responses/responses';
 import {
   parseRawProfile,
   readRawProfiles,
@@ -10,11 +12,20 @@ import {
 } from '../../output/profiles.js';
 import { runCoordinatorCommand } from '../coordinator.js';
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
+import { routeVerificationModels } from '../model-routing.js';
 import { passages } from '../passages.js';
 import type { Complete } from '../providers.js';
 import type { ProfileSubject } from '../subjects.js';
 import { approvedTranslation, readTranslation } from '../translation.js';
 import { asRecord } from '../values.js';
+import {
+  type AdversarialCheck,
+  type AdversarialTarget,
+  adversarialPrompt,
+  mergeAdversarialResult,
+  parseAdversarialResult,
+  selectAdversarialTargets,
+} from './adversarial.js';
 import { auditSavedProfile } from './audit-saved.js';
 import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.js';
 import {
@@ -30,7 +41,15 @@ import {
 } from './policy.js';
 import { auditProfile, type Research } from './researcher.js';
 import { reportPathFor, type VerifyOptions, verifyProfile } from './runner.js';
-import { htmlText, publicIPv4, SourceStore, sourceUrl } from './sources.js';
+import {
+  extractHtmlDocument,
+  headingPathAt,
+  htmlText,
+  parseSourceSnapshot,
+  publicIPv4,
+  SourceStore,
+  sourceUrl,
+} from './sources.js';
 
 const URL = 'https://en.wikipedia.org/wiki/Isaac_Newton';
 const SUBJECT: ProfileSubject = {
@@ -147,7 +166,7 @@ test('research excerpts can page or jump to literal matches in the same full sou
 });
 
 test('independent audit receives each finding once and shares overlapping source excerpts', async () => {
-  const text = `Nearby quote one. Nearby quote two. ${'Padding '.repeat(250)} Distant quote.`;
+  const text = `Nearby quote one. Nearby quote two. ${'Padding '.repeat(250)}Distant quote.`;
   const source = { ...SOURCE, id: hash(text), text };
   const sources = new SourceStore(async () => source);
   await sources.read(URL);
@@ -203,8 +222,14 @@ test('independent audit receives each finding once and shares overlapping source
           source: 1,
           url: URL,
           excerpts: [
-            text.slice(0, text.indexOf(quotes[1]) + quotes[1].length + 700),
-            text.slice(text.indexOf(quotes[2]) - 700),
+            {
+              section: [],
+              text: text.slice(
+                0,
+                text.indexOf(quotes[1]) + quotes[1].length + 700,
+              ),
+            },
+            { section: [], text: text.slice(text.indexOf(quotes[2]) - 700) },
           ],
         },
       ]);
@@ -242,6 +267,20 @@ async function saved(options: VerifyOptions) {
 
 test('saved-evidence audits use the original findings and leave approvals intact', async (t) => {
   const { root, options } = await setup(t);
+  const { id: _legacyId, ...fields } = SOURCE;
+  const titled = {
+    ...fields,
+    title: 'Newton',
+    headings: [{ level: 1 as const, offset: 0, text: 'Isaac Newton' }],
+  };
+  const snapshot = { ...titled, id: hash(titled) };
+  options.sources = new SourceStore(async () => snapshot);
+  options.research = async (...args) => {
+    const result = await research(...args);
+    for (const finding of result.assessment.findings)
+      for (const item of finding.evidence) item.source = snapshot.id;
+    return result;
+  };
   assert.equal((await verifyProfile(options)).status, 'approved');
   const before = await saved(options);
   const issues = ['overview: pilot disagrees with the original audit'];
@@ -256,7 +295,12 @@ test('saved-evidence audits use the original findings and leave approvals intact
         before.report.assessment.findings.length,
       );
       assert.deepEqual(payload.source_contexts, [
-        { source: 1, url: SOURCE.url, excerpts: [TEXT] },
+        {
+          source: 1,
+          url: SOURCE.url,
+          title: 'Newton',
+          excerpts: [{ section: ['Isaac Newton'], text: TEXT }],
+        },
       ]);
       return {
         model: 'pilot',
@@ -270,8 +314,11 @@ test('saved-evidence audits use the original findings and leave approvals intact
   assert.deepEqual(result.tokens, { input: 300, output: 20 });
   assert.deepEqual(await saved(options), before);
 
-  const snapshotPath = path.join(root, 'evidence', `${SOURCE.id}.json`);
-  await writeFile(snapshotPath, JSON.stringify({ ...SOURCE, text: 'changed' }));
+  const snapshotPath = path.join(root, 'evidence', `${snapshot.id}.json`);
+  await writeFile(
+    snapshotPath,
+    JSON.stringify({ ...snapshot, title: 'changed' }),
+  );
   await assert.rejects(
     auditSavedProfile(options.filePath, SUBJECT, complete),
     /Saved source content does not match/,
@@ -634,12 +681,14 @@ test('fetch failures request a retry instead of removing optional material', asy
 });
 
 test('corroboration needs distinct original accounts and primary or scholarly support', () => {
-  const item = assessment(parseModelProfile(raw(), 'test'));
+  const profile = parseModelProfile(raw(), 'test');
+  const item = assessment(profile);
   const first = item.findings[0];
   assert.ok(first?.evidence[0]);
   first.risk = 'corroborate';
   const report: Omit<Report, 'blockers'> = {
     policy_version: POLICY_VERSION,
+    adversarial_disabled: true,
     profile_hash: 'hash',
     verified_at: 'date',
     subject: { qid: 'Q935', dates: '1643–1727' },
@@ -651,7 +700,7 @@ test('corroboration needs distinct original accounts and primary or scholarly su
     mechanical: [],
     repairs: 0,
   };
-  assert.match(blockers(report, item.covered).join(), /corroboration missing/);
+  assert.match(blockers(report, profile).join(), /corroboration missing/);
   report.sources.push({
     ...SOURCE,
     id: 'second',
@@ -666,7 +715,7 @@ test('corroboration needs distinct original accounts and primary or scholarly su
       quote: 'A missing excerpt',
     },
   ];
-  assert.match(blockers(report, item.covered).join(), /corroboration missing/);
+  assert.match(blockers(report, profile).join(), /corroboration missing/);
   assert.match(
     checkEvidence(item, [{ ...SOURCE, id: 'second' }, SOURCE]).join(),
     /evidence was not found in a fetched source \(second\)/,
@@ -676,14 +725,14 @@ test('corroboration needs distinct original accounts and primary or scholarly su
     source: 'second',
     kind: 'scholarly',
   });
-  assert.match(blockers(report, item.covered).join(), /corroboration missing/);
+  assert.match(blockers(report, profile).join(), /corroboration missing/);
   first.evidence[1] = {
     ...first.evidence[0],
     source: 'second',
     kind: 'scholarly',
     origin: 'Independent archival research',
   };
-  assert.deepEqual(blockers(report, item.covered), []);
+  assert.deepEqual(blockers(report, profile), []);
 });
 
 test('date checks respect BC conversion, subject boundaries and section anchors', async () => {
@@ -773,6 +822,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   const contraryText = 'One account dates publication to 1688.';
   const commands = {
     profilesDir: root,
+    subjects: () => [SUBJECT],
     resolve: options.resolve,
     fetch: async (url: string) => {
       fetches++;
@@ -862,6 +912,10 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     };
   }
   const researchFlag = await legacyResearch();
+  assert.deepEqual(await run('english-adversarial', qid, researchFlag), {
+    status: 'skipped',
+    targets: 0,
+  });
   const audit = await run('english-audit', qid, researchFlag);
   function checkCounterevidence(prompt: string) {
     const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
@@ -883,7 +937,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     assert.deepEqual(payload.source_contexts.at(-1), {
       source: 2,
       url: contraryUrl,
-      excerpts: [contraryText],
+      excerpts: [{ section: [], text: contraryText }],
     });
   }
   checkCounterevidence(String(audit.prompt));
@@ -947,7 +1001,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   const revised = {
     ...initial,
     overview:
-      'Newton was an English mathematician who published the Principia in 1687.',
+      'Newton was an English mathematician who first published the Principia in 1687.',
   };
   const repairReply = await save('repair.json', {
     input_hash: repair.input_hash,
@@ -962,12 +1016,116 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   assert.equal(checkpoint.record.meta.review.status, 'draft');
   assert.equal(checkpoint.record.key_moments[0].claims, undefined);
   assert.equal(checkpoint.report.profile_hash, profileHash(initial));
+  await assert.rejects(run('english-audit', qid), /Run english-adversarial/);
+  const prepared = await run('english-adversarial', qid);
+  assert.equal(typeof prepared.input_hash, 'string');
+  assert.match(String(prepared.prompt), /targeted falsification/);
+  assert.doesNotMatch(String(prepared.prompt), /Confirmed by the article/);
+  const checks: AdversarialCheck[] = [
+    {
+      finding_index: 0,
+      path: 'overview',
+      queries: [
+        'Principia publication chronology',
+        'Principia first printing historians',
+      ],
+      outcome: 'conflict_found',
+      note: 'An archival account gives a different year.',
+      counterevidence: [
+        {
+          source: String(contrary.id),
+          quote: contraryText,
+          kind: 'scholarly',
+          origin: 'Archival account',
+        },
+      ],
+    },
+  ];
+  const stale = await save('adversarial-stale.json', {
+    input_hash: 'stale',
+    result: { checks },
+  });
   await assert.rejects(
-    run('english-audit', qid, `--result=${rejected}`),
+    run('english-adversarial', qid, `--result=${stale}`),
     /different inputs/,
   );
+  const malformed = await save('adversarial-malformed.json', {
+    input_hash: prepared.input_hash,
+    result: { checks: [{ ...checks[0], counterevidence: [] }] },
+  });
+  await assert.rejects(
+    run('english-adversarial', qid, `--result=${malformed}`),
+    /needs counterevidence/,
+  );
+  const fabricated = await save('adversarial-fabricated.json', {
+    input_hash: prepared.input_hash,
+    result: {
+      checks: [
+        {
+          ...checks[0],
+          counterevidence: [
+            { ...checks[0]?.counterevidence[0], quote: 'fabricated quote' },
+          ],
+        },
+      ],
+    },
+  });
+  await assert.rejects(
+    run('english-adversarial', qid, `--result=${fabricated}`),
+    /evidence was not found/,
+  );
+  assert.deepEqual(await saved(options), checkpoint);
+  const valid = await save('adversarial.json', {
+    input_hash: prepared.input_hash,
+    model: 'independent researcher',
+    result: { checks },
+  });
+  assert.deepEqual(await run('english-adversarial', qid, `--result=${valid}`), {
+    status: 'saved',
+    checks: 1,
+    conflicts: 1,
+  });
+  const pending = (await saved(options)).record;
+  assert.equal(
+    pending.meta.pending_adversarial.profile_hash,
+    profileHash(pending),
+  );
+  assert.equal(
+    pending.meta.pending_adversarial.assessment_hash,
+    hash(pending.meta.pending_assessment.assessment),
+  );
+  await writeFile(
+    options.filePath,
+    JSON.stringify({
+      ...pending,
+      meta: {
+        ...pending.meta,
+        pending_assessment: {
+          ...pending.meta.pending_assessment,
+          assessment: {
+            ...pending.meta.pending_assessment.assessment,
+            issues: ['changed assessment'],
+          },
+        },
+      },
+    }),
+  );
+  await assert.rejects(run('english-audit', qid), /Run english-adversarial/);
+  await assert.rejects(
+    run('english-adversarial', qid, `--result=${valid}`),
+    /different inputs/,
+  );
+  await writeFile(options.filePath, JSON.stringify(pending));
 
   const freshAudit = await run('english-audit', qid);
+  const auditPayload = JSON.parse(
+    String(freshAudit.prompt).split('\n').at(-1) ?? '',
+  );
+  assert.equal(
+    auditPayload.assessment.findings[0].counterevidence[0].quote,
+    contraryText,
+  );
+  assert.equal(auditPayload.adversarial_notes[0].note, checks[0]?.note);
   const accepted = await save('accepted-audit.json', {
     input_hash: freshAudit.input_hash,
     result: { uncovered: [], issues: [], coherent: true },
@@ -978,6 +1136,12 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   );
   const english = await saved(options);
   assert.equal(english.record.meta.pending_assessment, undefined);
+  assert.equal(english.record.meta.pending_adversarial, undefined);
+  assert.deepEqual(english.report.adversarial, {
+    model: 'independent researcher',
+    checks,
+  });
+  assert.ok(english.report.models.includes('independent researcher'));
   assert.equal(english.report.repairs, 1);
   assert.equal(fetches, 3);
   assert.deepEqual(
@@ -1090,4 +1254,587 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   );
   assert.deepEqual(await saved(options), english);
   assert.equal((await run('russian-translation', qid)).status, 'skipped');
+});
+
+test('visible HTML headings keep exact NFC offsets, hierarchy and cached titles', async () => {
+  const document = extractHtmlDocument(
+    '<title>Newton &amp; the Café</title><header><h1>Hidden</h1></header>' +
+      '<h1>Newton</h1><p>Early life</p><h2>Cafe<span>&#769;</span>' +
+      '<span class="extra mw-editsection"> [edit]</span></h2><p>First account</p>' +
+      '<h5>Legends</h5><p>Second account</p><h2>Works</h2><h6>Letters</h6> Papers',
+  );
+  assert.equal(document.title, 'Newton & the Café');
+  assert.equal(
+    document.text,
+    'Newton & the Café Newton Early life Café First account Legends Second account Works Letters Papers',
+  );
+  assert.deepEqual(
+    document.headings.map(({ level, text }) => [level, text]),
+    [
+      [1, 'Newton'],
+      [2, 'Café'],
+      [5, 'Legends'],
+      [2, 'Works'],
+      [6, 'Letters'],
+    ],
+  );
+  for (const { text, offset } of document.headings)
+    assert.equal(document.text.slice(offset, offset + text.length), text);
+  const offset = document.text.indexOf('Second account');
+  assert.deepEqual(headingPathAt(document.headings, offset), [
+    'Newton',
+    'Café',
+    'Legends',
+  ]);
+  assert.deepEqual(
+    headingPathAt(document.headings, document.text.indexOf('Papers')),
+    ['Newton', 'Works', 'Letters'],
+  );
+
+  const legacy = {
+    url: URL,
+    fetched_at: SOURCE.fetched_at,
+    text: document.text,
+  };
+  assert.deepEqual(
+    parseSourceSnapshot({ ...legacy, id: hash(legacy) }, hash(legacy)),
+    { ...legacy, id: hash(legacy) },
+  );
+  assert.deepEqual(parseSourceSnapshot(SOURCE, SOURCE.id), SOURCE);
+  const fields = { ...legacy, ...document };
+  const snapshot = { ...fields, id: hash(fields) };
+  assert.deepEqual(parseSourceSnapshot(snapshot, snapshot.id), snapshot);
+  assert.throws(
+    () =>
+      parseSourceSnapshot(
+        { ...snapshot, id: hash(snapshot.text) },
+        hash(snapshot.text),
+      ),
+    /content does not match/,
+  );
+  const badFields = {
+    ...fields,
+    headings: [{ ...document.headings[0], offset: 1 }],
+  };
+  assert.throws(
+    () =>
+      parseSourceSnapshot(
+        { ...badFields, id: hash(badFields) },
+        hash(badFields),
+      ),
+    /Invalid source heading/,
+  );
+  const store = new SourceStore(undefined, [snapshot]);
+  const excerpt = await store.readExcerpt({ url: URL, offset });
+  assert.equal(excerpt.title, snapshot.title);
+  assert.deepEqual(excerpt.section, ['Newton', 'Café', 'Legends']);
+  assert.equal(excerpt.text, document.text.slice(offset));
+});
+
+test('the English audit finds normalized quotes and keeps adjacent headings separate', async () => {
+  const doc = extractHtmlDocument(
+    '<title>Newton</title><h1>Biography</h1><p>Café account.</p><h2>Legends and myths</h2><p>A popular account.</p>',
+  );
+  const snapshot = { ...SOURCE, ...doc };
+  const draft = parseModelProfile(raw(), 'test');
+  const input = assessment(draft);
+  const quotes = ['Cafe\u0301 \n  account.', 'A popular\taccount.'];
+  for (const [index, finding] of input.findings.entries()) {
+    const quote = quotes[index % quotes.length];
+    assert.ok(quote);
+    finding.evidence = [
+      { source: snapshot.id, kind: 'scholarly', origin: 'Test', quote },
+    ];
+  }
+  assert.deepEqual(checkEvidence(input, [snapshot]), []);
+  const checks = [
+    makeCheck(
+      { finding_index: 1, path: 'key_moments.0.date' },
+      'no_conflict_found',
+    ),
+    makeCheck(
+      { finding_index: 2, path: 'key_moments.0.title' },
+      'fetch_blocked',
+    ),
+  ];
+  await auditProfile(
+    draft,
+    SUBJECT,
+    input,
+    [snapshot],
+    async (prompt, role) => {
+      const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
+      assert.deepEqual(payload.source_contexts, [
+        {
+          source: 1,
+          url: URL,
+          title: 'Newton',
+          excerpts: [
+            { section: ['Biography'], text: 'Biography Café account. ' },
+            {
+              section: ['Biography', 'Legends and myths'],
+              text: 'Legends and myths A popular account.',
+            },
+          ],
+        },
+      ]);
+      assert.deepEqual(
+        payload.assessment.findings.map(
+          (finding: { evidence: { source_excerpt_index: number }[] }) =>
+            finding.evidence[0]?.source_excerpt_index,
+        ),
+        [0, 1, 0, 1],
+      );
+      assert.deepEqual(payload.adversarial_notes, [
+        {
+          finding_index: 2,
+          path: 'key_moments.0.title',
+          outcome: 'fetch_blocked',
+          note: checks[1]?.note,
+        },
+      ]);
+      return complete(prompt, role);
+    },
+    checks,
+  );
+});
+
+function highRiskDraft(
+  overview = 'Newton was the first to describe a result.',
+) {
+  return {
+    ...raw(),
+    overview,
+    deep_facts: [
+      {
+        text: 'Newton revised his account in a letter.',
+        type: 'hidden_story',
+        is_legend: false,
+        confidence: 'high',
+        source: URL,
+      },
+    ],
+  };
+}
+
+function makeCheck(
+  target: Pick<AdversarialTarget, 'finding_index' | 'path'>,
+  outcome: AdversarialCheck['outcome'] = 'no_conflict_found',
+  counterevidence: AdversarialCheck['counterevidence'] = [],
+): AdversarialCheck {
+  return {
+    finding_index: target.finding_index,
+    path: target.path,
+    outcome,
+    counterevidence,
+    note: `Search outcome for ${target.path}`,
+    queries: ['Newton result chronology', 'Newton result disputed attribution'],
+  };
+}
+
+test('adversarial targets are deterministic and capped, and the prompt omits writer explanations', () => {
+  const draft = parseModelProfile(highRiskDraft(), 'test');
+  const input = assessment(draft);
+  const example = input.findings[0];
+  assert.ok(example);
+  input.subject_dates = [
+    { path: 'overview', boundary: 'start', year: 1643 },
+    { path: 'overview', boundary: 'end', year: 1727 },
+  ];
+  input.findings = [
+    {
+      ...example,
+      claim: 'Newton was born in AD 1643 and died in 1727.',
+      risk: 'corroborate',
+    },
+    { ...example, path: 'deep_facts.0.text', verdict: 'disputed' },
+    { ...example, claim: 'Newton invented something, allegedly.' },
+    {
+      ...example,
+      path: 'key_moments.0.text',
+      claim: '“This is an attributed quotation”',
+    },
+    { ...example, path: 'key_moments.0.text', claim: 'A short “quotation”.' },
+    { ...example, claim: 'A claim needing corroboration', risk: 'corroborate' },
+    {
+      ...example,
+      path: 'deep_facts.0.text',
+      claim: 'Newton revised an account.',
+    },
+    { ...example, path: 'key_moments.0.text', claim: 'A legend about Newton.' },
+    { ...example, path: 'key_moments.0.title', claim: 'The only printing.' },
+  ];
+  const targets = selectAdversarialTargets(draft, input);
+  assert.deepEqual(
+    targets.map(({ finding_index }) => finding_index),
+    [6, 5, 2, 3, 7],
+  );
+  assert.deepEqual(targets, selectAdversarialTargets(draft, input));
+  assert.equal(
+    targets[0]?.claim_hash,
+    hash({ path: targets[0]?.path, claim: targets[0]?.claim }),
+  );
+  const prompt = adversarialPrompt(draft, SUBJECT, input, targets, [SOURCE]);
+  const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
+  assert.deepEqual(Object.keys(payload).sort(), [
+    'cited_urls',
+    'subject',
+    'targets',
+  ]);
+  assert.equal(payload.subject.qid, SUBJECT.qid);
+  assert.deepEqual(payload.cited_urls, [URL]);
+  assert.equal(payload.targets[0].passage_text, draft.deep_facts[0]?.text);
+  assert.doesNotMatch(prompt, /Confirmed by the article/);
+});
+
+test('adversarial merging preserves supporting evidence and verifies every added quote', () => {
+  const draft = parseModelProfile(highRiskDraft(), 'test');
+  const input = assessment(draft);
+  const target = selectAdversarialTargets(draft, input).find(
+    ({ path }) => path === 'overview',
+  );
+  assert.ok(target);
+  const finding = input.findings[target.finding_index];
+  assert.ok(finding);
+  const excerpt = {
+    source: SOURCE.id,
+    quote: 'English mathematician.',
+    kind: 'other' as const,
+    origin: 'Newton article',
+  };
+  finding.counterevidence = [excerpt];
+  const checks = [
+    makeCheck(target, 'conflict_found', [
+      { ...excerpt, quote: 'English\n mathematician.' },
+      { ...excerpt, quote: 'Fabricated text' },
+      { ...excerpt, source: 'a'.repeat(64) },
+    ]),
+  ];
+  const merged = mergeAdversarialResult(input, { checks });
+  assert.deepEqual(finding.counterevidence, [excerpt]);
+  assert.deepEqual(merged.findings[target.finding_index]?.counterevidence, [
+    excerpt,
+    ...(checks[0]?.counterevidence.slice(1) ?? []),
+  ]);
+  assert.deepEqual(
+    merged.findings[target.finding_index]?.evidence,
+    finding.evidence,
+  );
+  assert.equal(merged.findings[target.finding_index]?.verdict, 'supported');
+  assert.equal(checkEvidence(merged, [SOURCE]).length, 2);
+  assert.throws(
+    () =>
+      parseAdversarialResult(
+        { checks },
+        selectAdversarialTargets(draft, input),
+      ),
+    /Missing adversarial checks/,
+  );
+  assert.throws(
+    () => parseAdversarialResult({ checks: [...checks, ...checks] }, [target]),
+    /duplicate/,
+  );
+});
+
+test('API verification rechecks a repaired claim and reindexes unchanged cached findings', async (t) => {
+  const { options, root } = await setup(t);
+  await writeFile(options.filePath, JSON.stringify(highRiskDraft()));
+  const revised = highRiskDraft(
+    'Newton is traditionally credited with the first description.',
+  );
+  const calls: string[][] = [];
+  const counterUrl = 'https://archive.example.org/newton';
+  const fields = {
+    url: counterUrl,
+    fetched_at: SOURCE.fetched_at,
+    text: 'An earlier description survives in an archive.',
+  };
+  const source = { ...fields, id: hash(fields) };
+  options.sources = new SourceStore(async (url) =>
+    url === URL ? SOURCE : source,
+  );
+  let pass = 0;
+  options.research = async (...args) => {
+    const result = await research(...args);
+    if (++pass > 1) result.assessment.findings.reverse();
+    return result;
+  };
+  options.adversarial = async (
+    _profile,
+    _subject,
+    _assessment,
+    targets,
+    sources,
+  ) => {
+    calls.push(targets.map(({ path }) => path));
+    const checked = await sources.read(counterUrl);
+    return {
+      model: 'adversarial-model',
+      checks: targets.map((target) =>
+        target.path === 'overview'
+          ? makeCheck(target, 'conflict_found', [
+              {
+                source: checked.id,
+                quote: checked.text,
+                kind: 'scholarly',
+                origin: 'Archive',
+              },
+            ])
+          : makeCheck(target),
+      ),
+    };
+  };
+  options.complete = async (prompt, role) => {
+    assert.ok(calls.length);
+    if (role === 'repair')
+      return {
+        ...(await complete(prompt, role)),
+        text: JSON.stringify(revised),
+      };
+    const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
+    assert.equal(payload.adversarial_notes.length, 1);
+    const note = payload.adversarial_notes[0];
+    assert.equal(
+      payload.assessment.findings[note.finding_index].counterevidence[0].quote,
+      source.text,
+    );
+    return {
+      ...(await complete(prompt, role)),
+      text: JSON.stringify({
+        coherent: true,
+        uncovered: [],
+        issues: pass === 1 ? ['overview: qualify the first claim'] : [],
+      }),
+    };
+  };
+  assert.equal((await verifyProfile(options)).status, 'approved');
+  assert.deepEqual(calls, [['deep_facts.0.text', 'overview'], ['overview']]);
+  const { record, report } = await saved(options);
+  assert.equal(record.overview, revised.overview);
+  assert.equal(report.repairs, 1);
+  assert.equal(report.adversarial?.model, 'adversarial-model');
+  assert.deepEqual(report.models, ['verifier', 'adversarial-model', 'auditor']);
+  assert.deepEqual(
+    report.adversarial?.checks.map(({ finding_index, path }) => [
+      finding_index,
+      path,
+    ]),
+    [
+      [0, 'deep_facts.0.text'],
+      [4, 'overview'],
+    ],
+  );
+  assert.deepEqual(
+    JSON.parse(
+      await readFile(path.join(root, 'evidence', `${source.id}.json`), 'utf8'),
+    ),
+    source,
+  );
+
+  const target = {
+    ...SUBJECT,
+    slug: 'newton',
+    fameScore: 99,
+    dates: '1643–1727',
+  };
+  const { adversarial, ...base } = report;
+  assert.ok(adversarial);
+  function published(updated: Report) {
+    const receipted = {
+      ...record,
+      meta: {
+        ...record.meta,
+        review: {
+          ...record.meta.review,
+          approval: {
+            ...record.meta.review.approval,
+            policy_version: updated.policy_version,
+            report_hash: hash(updated),
+          },
+        },
+      },
+    };
+    return shipProfiles(
+      [parseRawProfile(receipted, options.filePath, updated)],
+      [target],
+    ).size;
+  }
+  assert.equal(published(report), 1);
+  assert.equal(published(base), 0);
+  assert.equal(
+    published({
+      ...report,
+      adversarial: { ...adversarial, checks: adversarial.checks.slice(1) },
+    }),
+    0,
+  );
+  assert.equal(
+    published({
+      ...report,
+      adversarial: {
+        ...adversarial,
+        checks: adversarial.checks.map((check) => ({
+          ...check,
+          counterevidence: [],
+        })),
+      },
+    }),
+    0,
+  );
+  for (const policy_version of ['2', '3', '4', '5', '6'])
+    assert.equal(published({ ...base, policy_version }), 1, policy_version);
+});
+
+test('verification skips absent targets and retries a failed adversarial fetch without repairing prose', async (t) => {
+  const { options } = await setup(t);
+  options.adversarial = async () =>
+    assert.fail('ordinary claims need no adversarial call');
+  assert.equal((await verifyProfile(options)).status, 'approved');
+
+  const draft = highRiskDraft();
+  await writeFile(options.filePath, JSON.stringify(draft));
+  const failedUrl = 'https://archive.example.org/unavailable';
+  options.sources = new SourceStore(async (url) => {
+    if (url === failedUrl) throw new Error('Temporary failure');
+    return SOURCE;
+  });
+  options.adversarial = async (
+    _profile,
+    _subject,
+    _assessment,
+    targets,
+    sources,
+  ) => {
+    await assert.rejects(sources.read(failedUrl), /Temporary failure/);
+    return {
+      model: 'independent',
+      checks: targets.map((target) => makeCheck(target, 'fetch_blocked')),
+    };
+  };
+  options.complete = async (prompt, role) => {
+    assert.equal(role, 'audit');
+    return complete(prompt, role);
+  };
+  assert.equal((await verifyProfile(options)).status, 'retry');
+  assert.equal((await saved(options)).record.overview, draft.overview);
+
+  const disabled = routeVerificationModels(['--no-adversarial']);
+  const { adversarial, adversarialDisabled } = disabled;
+  options.sources = new SourceStore(undefined, [SOURCE]);
+  assert.equal(adversarial, undefined);
+  assert.equal(adversarialDisabled, true);
+  assert.equal(
+    (await verifyProfile({ ...options, adversarial, adversarialDisabled }))
+      .status,
+    'approved',
+  );
+  assert.equal((await saved(options)).report.adversarial_disabled, true);
+});
+
+test('OpenAI routing honors the model override and caps adversarial searches, reads and turns', async (t) => {
+  const previousKey = process.env.OPENAI_API_KEY;
+  process.env.OPENAI_API_KEY = 'test-key';
+  t.after(() => {
+    if (previousKey === undefined) delete process.env.OPENAI_API_KEY;
+    else process.env.OPENAI_API_KEY = previousKey;
+  });
+  const draft = parseModelProfile(highRiskDraft(), 'test');
+  const input = assessment(draft);
+  const targets = selectAdversarialTargets(draft, input);
+  const args = [draft, SUBJECT, input, targets] as const;
+  const routed = routeVerificationModels([
+    '--model=research-model',
+    '--adversarial-model=search-model',
+  ]);
+  assert.ok(routed.adversarial);
+  const requests: ResponseCreateParamsNonStreaming[] = [];
+  const functionCall = (id: number) => ({
+    type: 'function_call',
+    name: 'read_source',
+    call_id: `call_${id}`,
+    arguments: JSON.stringify({ url: URL, offset: 0, query: null }),
+  });
+  const mock = t.mock.method(
+    OpenAI.Responses.prototype,
+    'create',
+    async (request: ResponseCreateParamsNonStreaming) => {
+      requests.push(request);
+      const step = requests.length;
+      if (step === 1)
+        return {
+          status: 'completed',
+          output: [
+            ...Array.from({ length: 6 }, () => ({ type: 'web_search_call' })),
+            functionCall(step),
+          ],
+        };
+      if (step < 6)
+        return { status: 'completed', output: [functionCall(step)] };
+      return {
+        status: 'completed',
+        model: request.model,
+        output: [],
+        output_text: JSON.stringify({
+          checks: targets.map((target) => makeCheck(target)),
+        }),
+      };
+    },
+  );
+  const snapshots = new SourceStore(undefined, [SOURCE]);
+  const budget = { turns: 0, searches: 0, reads: 0 };
+  const result = await routed.adversarial(...args, snapshots, budget);
+  assert.equal(result.model, 'search-model');
+  assert.equal(requests.length, 6);
+  assert.equal(requests[0]?.max_tool_calls, 6);
+  assert.equal(requests[0]?.reasoning?.effort, 'medium');
+  assert.deepEqual(
+    requests[1]?.tools?.map(({ type }) => type),
+    ['function'],
+  );
+  assert.equal(requests[5]?.tools, undefined);
+  const secondInput = requests[1]?.input;
+  assert.ok(Array.isArray(secondInput));
+  const toolOutput = secondInput.find(
+    ({ type }) => type === 'function_call_output',
+  );
+  assert.equal(
+    toolOutput?.type === 'function_call_output' &&
+      JSON.parse(String(toolOutput.output)).id,
+    SOURCE.id,
+  );
+  await assert.rejects(
+    routed.adversarial(...args, snapshots, budget),
+    /turn budget exhausted/,
+  );
+  mock.mock.restore();
+
+  let reads = 0;
+  const sourceStore = new SourceStore(undefined, [SOURCE]);
+  const readExcerpt = sourceStore.readExcerpt.bind(sourceStore);
+  t.mock.method(
+    sourceStore,
+    'readExcerpt',
+    async (input: Record<string, unknown>) => {
+      reads++;
+      return readExcerpt(input);
+    },
+  );
+  const fallback = routeVerificationModels(['--model=research-model']);
+  assert.ok(fallback.adversarial);
+  t.mock.method(
+    OpenAI.Responses.prototype,
+    'create',
+    async (request: ResponseCreateParamsNonStreaming) => {
+      assert.equal(request.model, 'research-model');
+      return {
+        status: 'completed',
+        output: Array.from({ length: 9 }, (_, index) => functionCall(index)),
+      };
+    },
+  );
+  await assert.rejects(
+    fallback.adversarial(...args, sourceStore),
+    /source-read budget exhausted/,
+  );
+  assert.equal(reads, 8);
 });

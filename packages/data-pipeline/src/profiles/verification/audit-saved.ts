@@ -3,7 +3,11 @@ import path from 'node:path';
 import { parseModelProfile } from '../model-profile.js';
 import type { Complete } from '../providers.js';
 import { formatDates, type ProfileSubject } from '../subjects.js';
-import { asArray, asRecord, asString } from '../values.js';
+import { asArray, asRecord } from '../values.js';
+import {
+  parseAdversarialResult,
+  selectAdversarialTargets,
+} from './adversarial.js';
 import {
   findingExcerpts,
   isCurrentVerificationPolicy,
@@ -56,16 +60,13 @@ export async function auditSavedProfile(
       'evidence',
       `${id}.json`,
     );
-    const { text } = parseSourceSnapshot(
+    const snapshot = parseSourceSnapshot(
       JSON.parse(await readFile(snapshotPath, 'utf8')),
       id,
     );
-    sources.push({
-      id,
-      url: asString(url, 'report source URL'),
-      fetched_at: asString(fetched_at, 'report source fetched_at'),
-      text,
-    });
+    if (snapshot.url !== url || snapshot.fetched_at !== fetched_at)
+      throw new Error(`Saved source metadata does not match ${id}`);
+    sources.push(snapshot);
   }
 
   const result = await auditProfile(
@@ -74,6 +75,12 @@ export async function auditSavedProfile(
     assessment,
     sources,
     complete,
+    report.adversarial === undefined
+      ? undefined
+      : parseAdversarialResult(
+          report.adversarial,
+          selectAdversarialTargets(profile, assessment),
+        ),
   );
   return { ...result, originalAudit };
 }
