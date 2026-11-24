@@ -468,7 +468,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Galileo.arp.300pix.jpg",
     "description": "Galileo di Vincenzo Bonaiuti de' Galilei, commonly referred to as Galileo Galilei or mononymously as Galileo, was an Italian astronomer, physicist, engineer and polymath. He was born in Pisa, then part of the Duchy of Florence. Galileo has been called the father of observational astronomy, classical physics, the scientific method, and modern science.",
     "slug": "galileo-galilei",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "2731583",
@@ -868,7 +869,8 @@
     "imageAttribution": "Vincent van Gogh, via Wikimedia Commons",
     "description": "Vincent Willem van Gogh was a Dutch Post-Impressionist painter who is among the most famous and influential figures in the history of Western art. In just over a decade he created about 2,100 artworks, including around 860 oil paintings, most of them in the last two years of his life. They include landscapes, still lifes, portraits and self-portraits, and are characterised by bold colours and dramatic, impulsive and expressive brushwork that contributed to the foundations of modern art. His suicide at 37 followed years of mental illness and poverty.",
     "slug": "vincent-van-gogh",
-    "row": 5
+    "row": 5,
+    "hasProfile": true
   },
   {
     "id": "19577",

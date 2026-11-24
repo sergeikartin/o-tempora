@@ -468,7 +468,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Galileo.arp.300pix.jpg",
     "description": "Галиле́о Галиле́й — итальянский физик, механик, астроном, философ, математик, оказавший значительное влияние на науку своего времени.",
     "slug": "galileo-galilei",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "2731583",
@@ -868,7 +869,8 @@
     "imageAttribution": "Vincent van Gogh, via Wikimedia Commons",
     "description": "Винсе́нт Ви́ллем ван Гог — нидерландский живописец и график, один из величайших художников «прекрасной эпохи», общепризнанный лидер постимпрессионистского движения, чьё творчество оказало значительное влияние на живопись XX века.",
     "slug": "vincent-van-gogh",
-    "row": 5
+    "row": 5,
+    "hasProfile": true
   },
   {
     "id": "19577",

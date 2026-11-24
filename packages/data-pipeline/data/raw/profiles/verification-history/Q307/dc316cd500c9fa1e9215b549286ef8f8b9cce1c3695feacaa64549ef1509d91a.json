@@ -1,0 +1,1136 @@
+{
+  "profile": {
+    "subject": "Galileo Galilei",
+    "type": "person",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Galileo_Galilei",
+    "overview": "Galileo Galilei taught mathematics in Padua and worked at the Medici court in Florence. He used the telescope to investigate how the heavens were arranged, and he described the motion of falling bodies in mathematical terms.",
+    "key_moments": [
+      {
+        "date": "1609–1610",
+        "title": "A telescope turns skyward",
+        "text": "After hearing about a spyglass, Galileo built a more powerful telescope and trained it on the sky. In **Starry Messenger**, he reported mountains and valleys on the Moon. He also identified **four moons circling Jupiter** itself.",
+        "claims": [
+          "In 1609, Galileo Galilei heard about a newly invented spyglass, built an improved telescope and used it to study the sky.",
+          "Galileo Galilei reported mountains and valleys on the Moon in Starry Messenger, published in 1610.",
+          "Galileo Galilei identified four satellites of Jupiter."
+        ],
+        "source": "https://catalogue.museogalileo.it/multimedia/GalileosAstronomyBis.html"
+      },
+      {
+        "date": "1615–1616",
+        "title": "A warning in Rome",
+        "text": "Galileo went to **Rome** to argue against condemning the theory that Earth moves around the Sun. Cardinal Robert Bellarmine warned him against holding or defending that theory. The **Congregation of the Index** suspended Nicolaus Copernicus’s book pending corrections.",
+        "claims": [
+          "Galileo Galilei traveled to Rome in late 1615 as part of his effort to avert condemnation of Copernican heliocentrism.",
+          "In 1616, Cardinal Robert Bellarmine warned Galileo Galilei against holding or defending Copernican theory.",
+          "In 1616, the Congregation of the Index suspended Nicolaus Copernicus’s book pending correction."
+        ],
+        "source": "https://plato.stanford.edu/entries/galileo/"
+      },
+      {
+        "date": "1632–1633",
+        "title": "The Inquisition puts Galileo on trial",
+        "text": "Galileo’s **Dialogue Concerning the Two Chief World Systems** favored the view that Earth moves around the Sun. The Roman Inquisition ordered him to Rome, judged him vehemently suspect of heresy, and made him recant. His prison sentence was commuted to **house arrest**, which he eventually served at his villa in Arcetri.",
+        "claims": [
+          "Galileo Galilei’s Dialogue Concerning the Two Chief World Systems, published in 1632, favored Copernican heliocentrism.",
+          "The Roman Inquisition summoned Galileo Galilei to Rome after the publication of the Dialogue.",
+          "In 1633, the Roman Inquisition declared Galileo Galilei vehemently suspect of heresy and required Galileo Galilei to recant.",
+          "Galileo Galilei’s sentence of imprisonment was commuted to house arrest, which Galileo Galilei eventually served at his villa in Arcetri."
+        ],
+        "source": "https://plato.stanford.edu/entries/galileo/"
+      },
+      {
+        "date": "1638",
+        "title": "Weighing time",
+        "text": "Galileo’s **Two New Sciences** appeared in Leiden. In the book’s account, a ball took half as long to roll a quarter of the way down a sloping board as it took to roll the whole length. The account describes collecting water as the ball rolled and **weighing it after each run** to compare the times.",
+        "claims": [
+          "Galileo Galilei’s Two New Sciences was published in Leiden in 1638.",
+          "Galileo Galilei’s Two New Sciences describes a ball taking half as long to roll one quarter of the way down a sloping board as it took to roll the whole length.",
+          "Galileo Galilei’s Two New Sciences describes comparing the ball’s travel times by collecting water during each run and weighing it afterward."
+        ],
+        "source": "https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_160to243.html"
+      }
+    ],
+    "deep_facts": [
+      {
+        "text": "Galileo’s **geometric and military compass** was a calculating tool with scales along two legs. The same instrument could help calculate a cube root or measure the tilt of a cannon. Galileo sold the compasses and taught people how to use them.",
+        "type": "unique_detail",
+        "is_legend": false,
+        "confidence": "high",
+        "claims": [
+          "Galileo Galilei’s geometric and military compass had scales marked on its two legs.",
+          "Galileo Galilei’s geometric and military compass could help calculate cube roots.",
+          "Galileo Galilei’s geometric and military compass could measure cannon elevation.",
+          "Galileo Galilei sold his geometric and military compasses and taught people how to use them."
+        ],
+        "source": "https://brunelleschi.imss.fi.it/esplora/compasso/dswmedia/storia/estoria1_st.html"
+      },
+      {
+        "text": "Galileo wanted sailors to use **Jupiter’s moons as a clock**. In his proposal, sailors would compare the local time when a moon vanished into Jupiter’s shadow with the time predicted for a reference location to find their longitude. Galileo designed a helmet with a small telescope to help keep Jupiter in sight on a moving deck. The Rice University Galileo Project describes trials aboard ships at anchor and reports that the helmet worked only at lower magnification than the moons required.",
+        "type": "hidden_story",
+        "is_legend": false,
+        "confidence": "high",
+        "claims": [
+          "Galileo Galilei proposed using Jupiter’s moons as a clock to determine longitude at sea.",
+          "Galileo Galilei proposed finding longitude by comparing the local time when a moon of Jupiter disappeared into the planet’s shadow with the predicted time of the eclipse at a reference location.",
+          "Galileo Galilei designed a helmet fitted with a small telescope to help observers keep Jupiter in sight on a moving deck.",
+          "The Rice University Galileo Project describes Galileo Galilei’s helmet trials aboard ships at anchor and reports that the helmet worked only at lower magnification than observing Jupiter’s moons required."
+        ],
+        "source": "https://catalogue.museogalileo.it/indepth/Celatone.html"
+      }
+    ],
+    "connections": [
+      {
+        "name": "Copernican heliocentrism",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
+        "connection": "Galileo’s Dialogue favored this model, in which Earth travels around the Sun.",
+        "importance": "high",
+        "qid": "Q3984081"
+      },
+      {
+        "name": "Johannes Kepler",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Johannes_Kepler",
+        "connection": "He welcomed Galileo’s telescopic findings in a published response to Starry Messenger.",
+        "importance": "high",
+        "qid": "Q8963"
+      },
+      {
+        "name": "Urban VIII",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Urban_VIII",
+        "connection": "He gave Galileo permission to discuss Copernicus’s theory as a hypothesis and later ordered him questioned by the Holy Office.",
+        "importance": "high",
+        "qid": "Q131579"
+      },
+      {
+        "name": "Evangelista Torricelli",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Evangelista_Torricelli",
+        "connection": "He extended Galileo’s work on the paths of projectiles and later joined him as an assistant at Arcetri.",
+        "importance": "medium",
+        "qid": "Q102490"
+      }
+    ],
+    "meta": {
+      "generated_at": "2026-11-24T04:55:58Z",
+      "prompt_version": "2.5.0",
+      "prompt_hash": "66724b53079e",
+      "schema_version": 3,
+      "model": "gpt-6.2-sol",
+      "reasoning_effort": "medium",
+      "temperature": null,
+      "run_id": "2026-11-24-galileo-passage-trial",
+      "locale": "en",
+      "source": {
+        "wikidata_qid": "Q307"
+      },
+      "tokens": {
+        "input": 2884742,
+        "output": 16443
+      },
+      "validation": {
+        "schema_valid": true,
+        "connections_returned": 4,
+        "connections_matched_people": 3,
+        "connections_matched_events": 1,
+        "connections_unresolved": 0
+      },
+      "review": {
+        "status": "draft",
+        "reviewed_at": null
+      },
+      "coordinator_repair": {
+        "profile_hash": "dc316cd500c9fa1e9215b549286ef8f8b9cce1c3695feacaa64549ef1509d91a",
+        "count": 1
+      }
+    }
+  },
+  "report": {
+    "policy_version": "4",
+    "profile_hash": "dc316cd500c9fa1e9215b549286ef8f8b9cce1c3695feacaa64549ef1509d91a",
+    "verified_at": "2026-11-24T05:03:05.935Z",
+    "subject": {
+      "qid": "Q307",
+      "dates": "1564–1642"
+    },
+    "models": [
+      "gpt-6.2-sol",
+      "gpt-6.2-sol"
+    ],
+    "assessment": {
+      "uncovered": [],
+      "issues": [],
+      "coherent": true,
+      "covered": [
+        "overview",
+        "key_moments.0.date",
+        "key_moments.0.title",
+        "key_moments.0.text",
+        "key_moments.1.date",
+        "key_moments.1.title",
+        "key_moments.1.text",
+        "key_moments.2.date",
+        "key_moments.2.title",
+        "key_moments.2.text",
+        "key_moments.3.date",
+        "key_moments.3.title",
+        "key_moments.3.text",
+        "deep_facts.0.text",
+        "deep_facts.1.text",
+        "connections.0.connection",
+        "connections.1.connection",
+        "connections.2.connection",
+        "connections.3.connection"
+      ],
+      "subject_dates": [],
+      "findings": [
+        {
+          "path": "overview",
+          "claim": "Galileo Galilei taught mathematics at the University of Padua.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The university chair establishes the teaching discipline and city.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c5b702bc6da23c82ae9381a794d9add77ade8bc7598e896016cd7e82cd30e887",
+              "quote": "appointed to the chair of mathematics at the University of Padua, where he remained until 1610",
+              "kind": "scholarly",
+              "origin": "Museo Galileo biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Galileo Galilei worked as a mathematician at the Medici court in Florence.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The court appointment and move identify his work in Florence and the ruling family.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "in honor of the ruling Medici family. His negotiations were ultimately successful, and Galileo moved back to Florence as “Chief Mathematician and Philosopher to the Grand Duke”",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Galileo Galilei studied the arrangement of celestial bodies through a telescope.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum pairs his use of the telescope with investigation of Jupiter’s satellites and later observations.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "70eafbd3c6c7ea6085dae7954067618a4dfb92983f4cff4514caf845cf7bc5fb",
+              "quote": "His astronomical discoveries of 1610, achieved thanks to the telescope",
+              "kind": "scholarly",
+              "origin": "Museo Galileo astronomy exhibition"
+            },
+            {
+              "source": "70eafbd3c6c7ea6085dae7954067618a4dfb92983f4cff4514caf845cf7bc5fb",
+              "quote": "Jupiter is surrounded by four satellites",
+              "kind": "scholarly",
+              "origin": "Museo Galileo astronomy exhibition"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Galileo Galilei described the motion of falling bodies mathematically.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The third day of Galileo’s book connects the measurements of acceleration on a slope with a mathematical relation between distance and time.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2cc7dbe24900e16095b893379e1b2d89b206807c8bf8a91bfc85318c2d6c8dcd",
+              "quote": "the acceleration actually experienced by falling bodies is that above described",
+              "kind": "primary",
+              "origin": "Galileo Galilei, Two New Sciences, third day, Crew and de Salvio translation"
+            },
+            {
+              "source": "2cc7dbe24900e16095b893379e1b2d89b206807c8bf8a91bfc85318c2d6c8dcd",
+              "quote": "the spaces traversed were to each other as the squares of the times",
+              "kind": "primary",
+              "origin": "Galileo Galilei, Two New Sciences, third day, Crew and de Salvio translation"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.date",
+          "claim": "Galileo Galilei improved the telescope in 1609 and published Starry Messenger in 1610.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biography dates the improvement and announcement separately, establishing both endpoints of the label.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "in 1609, when Galileo heard about the recently invented spyglass, invented an improved telescope",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Sidereus nuncius (Starry Messenger), which appeared in March 1610",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.title",
+          "claim": "Galileo Galilei turned an improved telescope on the sky.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Cambridge account explicitly says Galileo improved the instrument and began sky observations.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c128be0207747f7d16d0a253e2221ec8d671aca912dec392520ba288fbd1a789",
+              "quote": "Galileo gradually improved the power of his telescope, grinding lenses himself, and began observing the heavens.",
+              "kind": "scholarly",
+              "origin": "Sachiko Kusukawa, Cambridge Starry Messenger project"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "In 1609, Galileo Galilei heard about a newly invented spyglass, built an improved telescope and used it to study the sky.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The new instrument was already known when Galileo heard of it. His improved telescope was the instrument he used in his observations.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "in 1609, when Galileo heard about the recently invented spyglass, invented an improved telescope, and used it to make astounding celestial discoveries",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "c128be0207747f7d16d0a253e2221ec8d671aca912dec392520ba288fbd1a789",
+              "quote": "Galileo gradually improved the power of his telescope, grinding lenses himself, and began observing the heavens.",
+              "kind": "scholarly",
+              "origin": "Sachiko Kusukawa, Cambridge Starry Messenger project"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Galileo Galilei reported mountains and valleys on the Moon in Starry Messenger, published in 1610.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum identifies both features and associates them with the book. Stanford dates its publication and gives the English title.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "70eafbd3c6c7ea6085dae7954067618a4dfb92983f4cff4514caf845cf7bc5fb",
+              "quote": "With the Sidereus Nuncius, Galileo inaugurated modern cosmology. He showed that the Moon had Earth-like valleys and mountains",
+              "kind": "scholarly",
+              "origin": "Museo Galileo astronomy exhibition"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Sidereus nuncius (Starry Messenger), which appeared in March 1610",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Galileo Galilei identified four satellites of Jupiter.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum gives the count and identifies Jupiter as the body they go around.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "70eafbd3c6c7ea6085dae7954067618a4dfb92983f4cff4514caf845cf7bc5fb",
+              "quote": "Jupiter is surrounded by four satellites",
+              "kind": "scholarly",
+              "origin": "Museo Galileo astronomy exhibition"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.date",
+          "claim": "Galileo Galilei went to Rome in late 1615, and the Congregation of the Index suspended Nicolaus Copernicus’s book in 1616.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The sequence at the end of 1615 and in March 1616 establishes the Key Moment’s date range.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "circulated Letter to the Grand Duchess Christina in 1615 and travelling to Rome late that year. Nevertheless, in March 1616, Copernicus’s On the Revolutions of the Heavenly Orbs was suspended",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.title",
+          "claim": "Cardinal Robert Bellarmine gave Galileo Galilei a warning about Copernicanism during Galileo Galilei’s stay in Rome.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The entry describes the Roman trip and the ensuing audience and explicit warning.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "travelling to Rome late that year",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Galileo himself was called to an audience with Cardinal Robert Bellarmine",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Cardinal Bellarmine’s admonition not to “defend or hold” the Copernican doctrine",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Galileo Galilei traveled to Rome in late 1615 as part of his effort to avert condemnation of Copernican heliocentrism.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The account connects lobbying against condemnation to Galileo’s travel and identifies the doctrine as heliocentric.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Galileo lectured and lobbied against its condemnation",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "circulated Letter to the Grand Duchess Christina in 1615 and travelling to Rome late that year",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "a6ebf3b9ddceb415b7be844b251adfa07021dec4bf24886cd5a5bdf3261bcc1b",
+              "quote": "with Earth and the other planets orbiting around it",
+              "kind": "wikipedia",
+              "origin": "Wikipedia, Copernican heliocentrism"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "In 1616, Cardinal Robert Bellarmine warned Galileo Galilei against holding or defending Copernican theory.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The warning is explicit in the scholarly account, which distinguishes it from a possible additional formal injunction.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "In 1616, at the same time that the Inquisition was evaluating Copernicanism, they were also investigating Galileo personally",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "The outcome was Cardinal Bellarmine’s admonition not to “defend or hold” the Copernican doctrine.",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "In 1616, the Congregation of the Index suspended Nicolaus Copernicus’s book pending correction.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The entry identifies the authority and describes temporary suspension until correction.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "in March 1616, Copernicus’s On the Revolutions of the Heavenly Orbs was suspended (i.e., temporarily censored) pending correction by the Congregation of the Index of Prohibited Books",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "a6ebf3b9ddceb415b7be844b251adfa07021dec4bf24886cd5a5bdf3261bcc1b",
+              "quote": "the astronomical model developed by the Renaissance astronomer Nicolaus Copernicus",
+              "kind": "wikipedia",
+              "origin": "Wikipedia, Copernican heliocentrism"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.date",
+          "claim": "Galileo Galilei published the Dialogue in 1632 and was sentenced in 1633.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Printing and the later sentence are dated separately, giving each endpoint of the label.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Printing was completed in Florence by February 1632",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "In June 1633, Galileo was convicted",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.title",
+          "claim": "The Roman Inquisition ordered Galileo Galilei to stand trial after the Dialogue appeared.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The account expressly links the Inquisition’s action to the book and identifies the Inquisition as the authority that sent Galileo to trial.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Printing was completed in Florence by February 1632. Shortly afterwards, the Inquisition banned its sale, and Galileo was ordered to Rome for trial.",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Galileo Galilei’s Dialogue Concerning the Two Chief World Systems, published in 1632, favored Copernican heliocentrism.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The scholarly account names the book and says it favors the Copernican system. The Copernican model puts Earth in orbit around the Sun.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "his Dialogue Concerning the Two Chief World Systems. The “two systems” are the Ptolemaic and Copernican, and the text clearly, though not explicitly, favors the latter. Printing was completed in Florence by February 1632.",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "a6ebf3b9ddceb415b7be844b251adfa07021dec4bf24886cd5a5bdf3261bcc1b",
+              "quote": "This model positioned the Sun near the center of the Universe, motionless, with Earth and the other planets orbiting around it",
+              "kind": "wikipedia",
+              "origin": "Wikipedia, Copernican heliocentrism"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "The Roman Inquisition summoned Galileo Galilei to Rome after the publication of the Dialogue.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The entry identifies the Inquisition as the congregation that ordered Galileo to appear in Rome after publication.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Galileo was ordered to appear in Rome to be examined by the Congregation of the Holy Office; i.e., the Inquisition.",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "In 1633, the Roman Inquisition declared Galileo Galilei vehemently suspect of heresy and required Galileo Galilei to recant.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The scholarly account gives the date and says Galileo was made to recite and sign the formal recantation, using the specific judgment preserved in the sentence.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "The next day, June 22, 1633, Galileo was taken to the church of Santa Maria sopra Minerva",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "He was declared guilty of “vehement suspicion of heresy,” and made to recite and sign a formal abjuration",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "aceb4e69210965381c30408973ef9788f1ebb91decbefa1b7131b18a657c343e",
+              "quote": "hast rendered thyself vehemently suspected of heresy by this Holy Office",
+              "kind": "primary",
+              "origin": "Roman Inquisition sentence of 22 June 1633, Fordham translation"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Galileo Galilei’s sentence of imprisonment was commuted to house arrest, which Galileo Galilei eventually served at his villa in Arcetri.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The scholarly account separates formal imprisonment from its commutation and dates the move to his villa after an earlier stay in Siena.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Galileo was sentenced to “formal imprisonment at the pleasure of the Inquisition,” but this was commuted to house arrest",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "then, from December 1633, at his villa in Arcetri",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.date",
+          "claim": "Galileo Galilei’s Two New Sciences was published in Leiden in 1638.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum’s chronology specifically dates the printing and names its place.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "937a45094ce00feff49754cd3d32b871cc2c026eaad1ee865d7bf74e6b9d3a8e",
+              "quote": "[Discourse and mathematical demonstrations relating to two new sciences] (Leiden, 1638) is completed. This work, published by the Elzevier at Leiden",
+              "kind": "scholarly",
+              "origin": "Museo Galileo life chronology"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.title",
+          "claim": "Galileo Galilei’s Two New Sciences describes timing a rolling ball by weighing collected water.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The title refers to the stated procedure for comparing time intervals by the amount of water collected.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2cc7dbe24900e16095b893379e1b2d89b206807c8bf8a91bfc85318c2d6c8dcd",
+              "quote": "the water thus collected was weighed, after each descent, on a very accurate balance; the differences and ratios of these weights gave us the differences and ratios of the times",
+              "kind": "primary",
+              "origin": "Galileo Galilei, Two New Sciences, third day, Crew and de Salvio translation"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Galileo Galilei’s Two New Sciences was published in Leiden in 1638.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Museo Galileo biography dates and locates the publication; Two New Sciences is the short English title.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c5b702bc6da23c82ae9381a794d9add77ade8bc7598e896016cd7e82cd30e887",
+              "quote": "In 1638, when he was almost totally blind, the Discorsi e dimostrazioni intorno a due nuove Scienze [Discourses and demonstrations on two new Sciences] was published in Leiden.",
+              "kind": "scholarly",
+              "origin": "Museo Galileo biography"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Galileo Galilei’s Two New Sciences describes a ball taking half as long to roll one quarter of the way down a sloping board as it took to roll the whole length.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The speaker describes the board’s slope and gives the quarter-distance and half-time result; the Profile attributes that result to the book.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2cc7dbe24900e16095b893379e1b2d89b206807c8bf8a91bfc85318c2d6c8dcd",
+              "quote": "Having placed this [213] (179) board in a sloping position",
+              "kind": "primary",
+              "origin": "Galileo Galilei, Two New Sciences, third day, Crew and de Salvio translation"
+            },
+            {
+              "source": "2cc7dbe24900e16095b893379e1b2d89b206807c8bf8a91bfc85318c2d6c8dcd",
+              "quote": "we now rolled the ball only one-quarter the length of the channel; and having measured the time of its descent, we found it precisely one-half of the former.",
+              "kind": "primary",
+              "origin": "Galileo Galilei, Two New Sciences, third day, Crew and de Salvio translation"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Galileo Galilei’s Two New Sciences describes comparing the ball’s travel times by collecting water during each run and weighing it afterward.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The speaker in the dialogue describes collecting water during the descent, weighing it afterward and comparing run times through the resulting weights.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2cc7dbe24900e16095b893379e1b2d89b206807c8bf8a91bfc85318c2d6c8dcd",
+              "quote": "giving a thin jet of water, which we collected in a small glass during the time of each descent",
+              "kind": "primary",
+              "origin": "Galileo Galilei, Two New Sciences, third day, Crew and de Salvio translation"
+            },
+            {
+              "source": "2cc7dbe24900e16095b893379e1b2d89b206807c8bf8a91bfc85318c2d6c8dcd",
+              "quote": "the water thus collected was weighed, after each descent, on a very accurate balance; the differences and ratios of these weights gave us the differences and ratios of the times",
+              "kind": "primary",
+              "origin": "Galileo Galilei, Two New Sciences, third day, Crew and de Salvio translation"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Galileo Galilei’s geometric and military compass had scales marked on its two legs.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The collection curator describes the two legs and added scales, and the Museo Galileo exhibition locates the marked lines on the legs.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "6b8919c690be4462f1d94a159fa0b6d27502ff8c7f31c2aecf303e1ba1f25dee",
+              "quote": "with two legs and a plumbline",
+              "kind": "scholarly",
+              "origin": "Hannah Marcus, Harvard instrument collection curator interviewed by Nina Pasquini"
+            },
+            {
+              "source": "d5ac80efec35ce947953ea2c9a2da1a50a6e513e49f2720254b2136eaf6b7a0c",
+              "quote": "proportional lines traced on the legs of the compass",
+              "kind": "scholarly",
+              "origin": "Museo Galileo compass exhibition"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Galileo Galilei’s geometric and military compass could help calculate cube roots.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "Both accounts on distinct hosts identify cube roots as a function of the instrument.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d5ac80efec35ce947953ea2c9a2da1a50a6e513e49f2720254b2136eaf6b7a0c",
+              "quote": "calculating interest to extracting square and cube roots",
+              "kind": "scholarly",
+              "origin": "Museo Galileo compass exhibition"
+            },
+            {
+              "source": "6b8919c690be4462f1d94a159fa0b6d27502ff8c7f31c2aecf303e1ba1f25dee",
+              "quote": "like cube roots and compound interest",
+              "kind": "scholarly",
+              "origin": "Hannah Marcus, Harvard instrument collection curator interviewed by Nina Pasquini"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Galileo Galilei’s geometric and military compass could measure cannon elevation.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The Museo Galileo catalogue describes the elevation measurement, and the Harvard curator describes its use in obtaining cannon angles.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "b1350b1b2e4ce5331f1afc943aacd3b2b0d8d88667922865f59346eb88500e61",
+              "quote": "the line will show the gun's elevation",
+              "kind": "scholarly",
+              "origin": "Museo Galileo catalogue, Galilean compass"
+            },
+            {
+              "source": "6b8919c690be4462f1d94a159fa0b6d27502ff8c7f31c2aecf303e1ba1f25dee",
+              "quote": "used by artillerymen to determine the cannon angles",
+              "kind": "scholarly",
+              "origin": "Hannah Marcus, Harvard instrument collection curator interviewed by Nina Pasquini"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Galileo Galilei sold his geometric and military compasses and taught people how to use them.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The exhibition documents sales and instruction, while the Harvard collection profile independently describes the sale of instruments and private instruction.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d5ac80efec35ce947953ea2c9a2da1a50a6e513e49f2720254b2136eaf6b7a0c",
+              "quote": "Galileo instructed several European sovereigns on the use of his compass",
+              "kind": "scholarly",
+              "origin": "Museo Galileo compass exhibition"
+            },
+            {
+              "source": "d5ac80efec35ce947953ea2c9a2da1a50a6e513e49f2720254b2136eaf6b7a0c",
+              "quote": "sold privately along with one of the instruments",
+              "kind": "scholarly",
+              "origin": "Museo Galileo compass exhibition"
+            },
+            {
+              "source": "6b8919c690be4462f1d94a159fa0b6d27502ff8c7f31c2aecf303e1ba1f25dee",
+              "quote": "He sold roughly 100 of them",
+              "kind": "scholarly",
+              "origin": "Hannah Marcus, Harvard instrument collection curator interviewed by Nina Pasquini"
+            },
+            {
+              "source": "6b8919c690be4462f1d94a159fa0b6d27502ff8c7f31c2aecf303e1ba1f25dee",
+              "quote": "those who wanted to learn how to use the compass paid for private lessons",
+              "kind": "scholarly",
+              "origin": "Hannah Marcus, Harvard instrument collection curator interviewed by Nina Pasquini"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Galileo Galilei proposed using Jupiter’s moons as a clock to determine longitude at sea.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "Both institutional accounts describe Galileo’s proposal to use the satellites to time events and locate a ship in longitude.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "6282c06168617e5ece2feeb921c59ed295f64253ebf89eb13f1c2ff508ba30d4",
+              "quote": "To use Jupiter's moons as a clock for determining longitude at sea",
+              "kind": "scholarly",
+              "origin": "Museo Galileo celatone catalogue"
+            },
+            {
+              "source": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+              "quote": "Galileo entered into negotiations with the Spanish Crown to provide Spanish navigators with eclipse tables for the satellites",
+              "kind": "scholarly",
+              "origin": "Rice University Galileo Project, Longitude at Sea"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "A moon of Jupiter disappears from view when it enters Jupiter’s shadow.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Rice account identifies both the cause and the visible effect.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+              "quote": "When a satellite enters the shadow cone behind the planet it disappears very quickly.",
+              "kind": "scholarly",
+              "origin": "Rice University Galileo Project, Longitude at Sea"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Galileo Galilei’s proposed method would calculate longitude by comparing the local time of a Jovian moon’s eclipse with its predicted time at a reference location.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Rice account gives the time comparison as a conditional method for finding longitude. The claim describes the proposal without asserting a successful measurement at sea.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+              "quote": "note the local time of such an eclipse and compare it with the local time at which it was predicted to happen at the European reference location, the difference in times and therefore longitude could easily be found",
+              "kind": "scholarly",
+              "origin": "Rice University Galileo Project, Longitude at Sea"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Galileo Galilei designed a helmet fitted with a small telescope to help observers keep Jupiter in sight on a moving deck.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The museum catalogue specifies the moving-deck purpose and the helmet design. The Rice account confirms the helmet-mounted telescope as Galileo’s response to the difficulty of making the observations from a ship at sea.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "6282c06168617e5ece2feeb921c59ed295f64253ebf89eb13f1c2ff508ba30d4",
+              "quote": "on the deck of a continuously moving ship, Galileo (1564-1642) designed a device that he called celatone",
+              "kind": "scholarly",
+              "origin": "Museo Galileo celatone catalogue"
+            },
+            {
+              "source": "6282c06168617e5ece2feeb921c59ed295f64253ebf89eb13f1c2ff508ba30d4",
+              "quote": "a metal helmet with a visor carrying a small telescope",
+              "kind": "scholarly",
+              "origin": "Museo Galileo celatone catalogue"
+            },
+            {
+              "source": "6282c06168617e5ece2feeb921c59ed295f64253ebf89eb13f1c2ff508ba30d4",
+              "quote": "The wearer could thus continuously adjust the aim to the ship's pitch and roll, and the planet would always remain within the telescope's field of view.",
+              "kind": "scholarly",
+              "origin": "Museo Galileo celatone catalogue"
+            },
+            {
+              "source": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+              "quote": "Galileo made some trials of a telescope attached to a helmet (he called this device a celatone) on ships riding at anchor in the harbor of Livorno",
+              "kind": "scholarly",
+              "origin": "Rice University Galileo Project, Longitude at Sea"
+            },
+            {
+              "source": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+              "quote": "it was impossible to make the observation from the deck of a ship on the high seas",
+              "kind": "scholarly",
+              "origin": "Rice University Galileo Project, Longitude at Sea"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "The Rice University Galileo Project describes Galileo Galilei trying the telescope helmet on ships at anchor.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Profile attributes this account of the test conditions to the Rice University Galileo Project, which specifies anchored ships.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+              "quote": "Galileo made some trials of a telescope attached to a helmet (he called this device a celatone) on ships riding at anchor in the harbor of Livorno",
+              "kind": "scholarly",
+              "origin": "Rice University Galileo Project, Longitude at Sea"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "The Rice University Galileo Project reports that Galileo Galilei’s helmet worked only at lower magnification than observing Jupiter’s moons required.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Rice account specifies that relatively high power was needed to see the moons and that the helmet approach worked only with low-powered telescopes.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+              "quote": "In order to observe the satellites, one needed a telescope of relatively high power",
+              "kind": "scholarly",
+              "origin": "Rice University Galileo Project, Longitude at Sea"
+            },
+            {
+              "source": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+              "quote": "but this approach only worked with rather low-powered telescopes.",
+              "kind": "scholarly",
+              "origin": "Rice University Galileo Project, Longitude at Sea"
+            }
+          ]
+        },
+        {
+          "path": "connections.0.connection",
+          "claim": "Galileo Galilei favored Copernican heliocentrism in the Dialogue Concerning the Two Chief World Systems.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The scholarly entry identifies the preferred theory and the target article defines the exact model in the Connection.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "The “two systems” are the Ptolemaic and Copernican, and the text clearly, though not explicitly, favors the latter.",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "a6ebf3b9ddceb415b7be844b251adfa07021dec4bf24886cd5a5bdf3261bcc1b",
+              "quote": "This model positioned the Sun near the center of the Universe, motionless, with Earth and the other planets orbiting around it",
+              "kind": "wikipedia",
+              "origin": "Wikipedia, Copernican heliocentrism"
+            }
+          ]
+        },
+        {
+          "path": "connections.1.connection",
+          "claim": "Johannes Kepler praised Galileo Galilei’s telescopic observations in a published response to Starry Messenger.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Both accounts identify Kepler as the author of a favorable response; the Cambridge page names the published work.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+              "quote": "Johannes Kepler, Imperial Mathematician at Prague, lauded the work (Kepler 1610)",
+              "kind": "scholarly",
+              "origin": "Stanford Encyclopedia of Philosophy, Galileo Galilei"
+            },
+            {
+              "source": "c128be0207747f7d16d0a253e2221ec8d671aca912dec392520ba288fbd1a789",
+              "quote": "Johannes Kepler, who had already responded enthusiastically with the Conversation with Galileo's Sidereal Messenger",
+              "kind": "scholarly",
+              "origin": "Sachiko Kusukawa, Cambridge Starry Messenger project"
+            }
+          ]
+        },
+        {
+          "path": "connections.2.connection",
+          "claim": "Pope Urban VIII gave Galileo Galilei permission to write about Copernican theory as a hypothesis.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Rice account names the Pope and specifies that his permission was conditional.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "5fdfa6aab226e8cbd5f8490c46db5e9576594b1d2cdbd4018552a9e3d2037376",
+              "quote": "Galileo came to Rome and had six interviews with the new Pope. It was at these meetings that Galileo was given permission to write about the Copernican theory, as long as he treated it as a hypothesis.",
+              "kind": "scholarly",
+              "origin": "Albert Van Helden, Rice University Galileo Project"
+            }
+          ]
+        },
+        {
+          "path": "connections.2.connection",
+          "claim": "Pope Urban VIII later ordered the Holy Office to question Galileo Galilei.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum dates the Pope’s order to the June 1633 interrogation and names the Holy Office.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "937a45094ce00feff49754cd3d32b871cc2c026eaad1ee865d7bf74e6b9d3a8e",
+              "quote": "On June 21, at the order of Pope Urban VIII (1568-1644), Galileo is again before the Holy Office, facing interrogation",
+              "kind": "scholarly",
+              "origin": "Museo Galileo life chronology"
+            }
+          ]
+        },
+        {
+          "path": "connections.3.connection",
+          "claim": "Evangelista Torricelli extended Galileo Galilei’s study of projectile trajectories.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The MacTutor biography identifies Torricelli’s work and the specific part of Galileo’s work that it developed.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "b88cff441e855aa424ce80a017eb2caf2aa9b0bdd750c1490512306a0aaf38b0",
+              "quote": "De motu gravium Ⓣ. This basically carried on developing Galileo's study of the parabolic motion of projectiles",
+              "kind": "scholarly",
+              "origin": "John J. O’Connor and Edmund F. Robertson, MacTutor History of Mathematics"
+            }
+          ]
+        },
+        {
+          "path": "connections.3.connection",
+          "claim": "Evangelista Torricelli joined Galileo Galilei as an assistant at Arcetri after developing his work on projectile motion.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biography describes the earlier manuscript and later arrival to assist at Galileo’s house.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "b88cff441e855aa424ce80a017eb2caf2aa9b0bdd750c1490512306a0aaf38b0",
+              "quote": "stopped in Arcetri to give Galileo a copy of Torricelli's manuscript and suggest that he employed him as an assistant",
+              "kind": "scholarly",
+              "origin": "John J. O’Connor and Edmund F. Robertson, MacTutor History of Mathematics"
+            },
+            {
+              "source": "b88cff441e855aa424ce80a017eb2caf2aa9b0bdd750c1490512306a0aaf38b0",
+              "quote": "On 10 October 1641 Torricelli arrived at Galileo's house in Arcetri. He lived there with Galileo",
+              "kind": "scholarly",
+              "origin": "John J. O’Connor and Edmund F. Robertson, MacTutor History of Mathematics"
+            }
+          ]
+        }
+      ]
+    },
+    "audit": {
+      "uncovered": [],
+      "issues": [
+        "key_moments.1.text, key_moments.2.text, connections.0.connection: Wikipedia supplies the only cited definition equating Copernican heliocentrism with Earth moving around the Sun. Royal Museums Greenwich's saved Galileo catalogue describes Copernicus's Sun-centred planetary system, and the Stanford entry and 1633 sentence identify Earth's motion. Use those sources to support the definition, or describe it as Copernicus's Sun-centred model in the findings and prose.",
+        "connections.0.connection: “Galileo’s Dialogue favored this model, in which Earth travels around the Sun” repeats the substance of key_moments.2.text without adding to the connection. The Stanford entry gives a distinct link: Galileo openly backed Copernican heliocentrism in his 1613 Letters on Sunspots.",
+        "connections.2.connection: “He gave Galileo permission to discuss Copernicus’s theory as a hypothesis” treats explicit permission as settled. Rice describes permission to write about the theory conditionally, while the saved Cambridge Galileo biography says Galileo believed the pope encouraged him to discuss it provided he treated it as a hypothesis. Say Galileo understood from his meetings with Urban VIII that he could discuss the theory as a hypothesis. Museo Galileo supports the later order for the Holy Office to question him."
+      ],
+      "coherent": true
+    },
+    "sources": [
+      {
+        "id": "c5b702bc6da23c82ae9381a794d9add77ade8bc7598e896016cd7e82cd30e887",
+        "url": "https://catalogue.museogalileo.it/biography/GalileoGalilei.html",
+        "fetched_at": "2026-11-24T04:50:05.357Z"
+      },
+      {
+        "id": "0917b403c60ced56f3e882d3840b1d9699b779b739ceb592e11f7c9a4c7593f8",
+        "url": "https://plato.stanford.edu/entries/galileo/",
+        "fetched_at": "2026-11-24T04:49:39.524Z"
+      },
+      {
+        "id": "70eafbd3c6c7ea6085dae7954067618a4dfb92983f4cff4514caf845cf7bc5fb",
+        "url": "https://catalogue.museogalileo.it/multimedia/GalileosAstronomyBis.html",
+        "fetched_at": "2026-11-24T04:50:05.491Z"
+      },
+      {
+        "id": "2cc7dbe24900e16095b893379e1b2d89b206807c8bf8a91bfc85318c2d6c8dcd",
+        "url": "https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_160to243.html",
+        "fetched_at": "2026-11-24T04:51:17.811Z"
+      },
+      {
+        "id": "c128be0207747f7d16d0a253e2221ec8d671aca912dec392520ba288fbd1a789",
+        "url": "https://www.sites.hps.cam.ac.uk/starry/galtele.html",
+        "fetched_at": "2026-11-24T04:51:15.210Z"
+      },
+      {
+        "id": "a6ebf3b9ddceb415b7be844b251adfa07021dec4bf24886cd5a5bdf3261bcc1b",
+        "url": "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
+        "fetched_at": "2026-11-24T04:52:31.410Z"
+      },
+      {
+        "id": "aceb4e69210965381c30408973ef9788f1ebb91decbefa1b7131b18a657c343e",
+        "url": "https://sourcebooks.fordham.edu/Mod/1630galileo.asp",
+        "fetched_at": "2026-11-24T04:50:32.497Z"
+      },
+      {
+        "id": "937a45094ce00feff49754cd3d32b871cc2c026eaad1ee865d7bf74e6b9d3a8e",
+        "url": "https://www.museogalileo.it/en/galileo/life.html",
+        "fetched_at": "2026-11-24T04:50:06.441Z"
+      },
+      {
+        "id": "6b8919c690be4462f1d94a159fa0b6d27502ff8c7f31c2aecf303e1ba1f25dee",
+        "url": "https://www.harvardmagazine.com/2025/03/harvard-galileo-instruments",
+        "fetched_at": "2026-11-24T04:51:17.857Z"
+      },
+      {
+        "id": "d5ac80efec35ce947953ea2c9a2da1a50a6e513e49f2720254b2136eaf6b7a0c",
+        "url": "https://brunelleschi.imss.fi.it/esplora/compasso/dswmedia/storia/estoria1_st.html",
+        "fetched_at": "2026-11-24T04:52:31.065Z"
+      },
+      {
+        "id": "b1350b1b2e4ce5331f1afc943aacd3b2b0d8d88667922865f59346eb88500e61",
+        "url": "https://catalogue.museogalileo.it/indepth/GalileanCompass.html",
+        "fetched_at": "2026-11-24T04:50:05.330Z"
+      },
+      {
+        "id": "6282c06168617e5ece2feeb921c59ed295f64253ebf89eb13f1c2ff508ba30d4",
+        "url": "https://catalogue.museogalileo.it/indepth/Celatone.html",
+        "fetched_at": "2026-11-24T04:52:29.624Z"
+      },
+      {
+        "id": "3e77373cb431a8d4cc0cec39f1c510ad3ccc9ce08514a675eba33530d15a228e",
+        "url": "https://galileo.library.rice.edu/sci/observations/longitude.html",
+        "fetched_at": "2026-11-24T04:52:31.874Z"
+      },
+      {
+        "id": "5fdfa6aab226e8cbd5f8490c46db5e9576594b1d2cdbd4018552a9e3d2037376",
+        "url": "https://galileo.library.rice.edu/gal/urban.html",
+        "fetched_at": "2026-11-24T04:52:31.802Z"
+      },
+      {
+        "id": "b88cff441e855aa424ce80a017eb2caf2aa9b0bdd750c1490512306a0aaf38b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Torricelli/",
+        "fetched_at": "2026-11-24T04:50:33.780Z"
+      }
+    ],
+    "evidence_errors": [],
+    "mechanical": [],
+    "repairs": 1,
+    "blockers": [
+      "key_moments.1.text, key_moments.2.text, connections.0.connection: Wikipedia supplies the only cited definition equating Copernican heliocentrism with Earth moving around the Sun. Royal Museums Greenwich's saved Galileo catalogue describes Copernicus's Sun-centred planetary system, and the Stanford entry and 1633 sentence identify Earth's motion. Use those sources to support the definition, or describe it as Copernicus's Sun-centred model in the findings and prose.",
+      "connections.0.connection: “Galileo’s Dialogue favored this model, in which Earth travels around the Sun” repeats the substance of key_moments.2.text without adding to the connection. The Stanford entry gives a distinct link: Galileo openly backed Copernican heliocentrism in his 1613 Letters on Sunspots.",
+      "connections.2.connection: “He gave Galileo permission to discuss Copernicus’s theory as a hypothesis” treats explicit permission as settled. Rice describes permission to write about the theory conditionally, while the saved Cambridge Galileo biography says Galileo believed the pope encouraged him to discuss it provided he treated it as a hypothesis. Say Galileo understood from his meetings with Urban VIII that he could discuss the theory as a hypothesis. Museo Galileo supports the later order for the Holy Office to question him."
+    ]
+  }
+}

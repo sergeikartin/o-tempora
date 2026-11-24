@@ -1,0 +1,71 @@
+{
+  "overview": "Galileo Galilei taught mathematics in Padua and worked at the Medici court in Florence. He used the telescope to investigate how the heavens were arranged, and he described the motion of falling bodies in mathematical terms.",
+  "keyMoments": [
+    {
+      "date": "1609–1610",
+      "title": "A telescope turns skyward",
+      "text": "After hearing about a spyglass, Galileo built a more powerful telescope and trained it on the sky. In **Starry Messenger**, he reported mountains and valleys on the Moon. He also identified **four moons circling Jupiter** itself.",
+      "sourceUrl": "https://catalogue.museogalileo.it/multimedia/GalileosAstronomyBis.html"
+    },
+    {
+      "date": "1615–1616",
+      "title": "A warning in Rome",
+      "text": "Galileo went to **Rome** to argue against condemning the theory that Earth moves around the Sun. Cardinal Robert Bellarmine warned him against holding or defending that theory. The **Congregation of the Index** suspended Nicolaus Copernicus’s book pending corrections.",
+      "sourceUrl": "https://plato.stanford.edu/entries/galileo/"
+    },
+    {
+      "date": "1632–1633",
+      "title": "The Inquisition puts Galileo on trial",
+      "text": "Galileo’s **Dialogue Concerning the Two Chief World Systems** favored the view that Earth moves around the Sun. The Roman Inquisition ordered him to Rome, judged him vehemently suspect of heresy, and made him recant. His prison sentence was commuted to **house arrest**, which he eventually served at his villa in Arcetri.",
+      "sourceUrl": "https://plato.stanford.edu/entries/galileo/"
+    },
+    {
+      "date": "1638",
+      "title": "Weighing time",
+      "text": "Galileo’s **Two New Sciences** appeared in Leiden. In the book’s account, a ball took half as long to roll a quarter of the way down a sloping board as it took to roll the whole length. The account describes collecting water as the ball rolled and **weighing it after each run** to compare the times.",
+      "sourceUrl": "https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_160to243.html"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Galileo’s **geometric and military compass** was a calculating tool with scales along two legs. The same instrument could help calculate a cube root or measure the tilt of a cannon. Galileo sold the compasses and taught people how to use them.",
+      "isLegend": false,
+      "sourceUrl": "https://brunelleschi.imss.fi.it/esplora/compasso/dswmedia/storia/estoria1_st.html"
+    },
+    {
+      "text": "Galileo wanted sailors to use **Jupiter’s moons as a clock**. In his proposal, sailors would compare the local time when a moon vanished into Jupiter’s shadow with the time predicted for a reference location to find their longitude. Galileo designed a helmet with a small telescope to help keep Jupiter in sight on a moving deck. The Rice University Galileo Project describes trials aboard ships at anchor and reports that the helmet worked only at lower magnification than the moons required.",
+      "isLegend": false,
+      "sourceUrl": "https://catalogue.museogalileo.it/indepth/Celatone.html"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "copernican-heliocentrism",
+      "reason": "Galileo openly backed this model in his 1613 Letters on Sunspots.",
+      "name": "Copernican heliocentrism",
+      "lane": "milestones",
+      "detailLevel": 4
+    },
+    {
+      "slug": "johannes-kepler",
+      "reason": "He welcomed Galileo’s telescopic findings in a published response to Starry Messenger.",
+      "name": "Johannes Kepler",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "urban-viii",
+      "reason": "Galileo came away from meetings with Urban VIII believing he could discuss Copernicus’s theory as a hypothesis, and the pope later ordered the Holy Office to question him.",
+      "name": "Urban VIII",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "evangelista-torricelli",
+      "reason": "He extended Galileo’s work on the paths of projectiles and later joined him as an assistant at Arcetri.",
+      "name": "Evangelista Torricelli",
+      "lane": "people",
+      "detailLevel": 3
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "overview": "Vincent van Gogh was a Dutch painter who went from painting farm workers in dark earth colours in the Netherlands to experimenting with bright colours and short brushstrokes in France. He used colour to convey how he felt about what he saw, an approach that made his work a touchstone for later painters.",
+  "keyMoments": [
+    {
+      "date": "1885",
+      "title": "The Potato Eaters",
+      "text": "In Nuenen, in the Netherlands, Van Gogh set himself a test as a figure painter. In **The Potato Eaters**, he used dark earth colours and gave the farm workers bony hands. He wanted the hands reaching toward the dish to show that these people had worked the soil for the food they were about to eat.",
+      "sourceUrl": "https://www.vangoghmuseum.nl/en/collection/s0005V1962"
+    },
+    {
+      "date": "1886–1888",
+      "title": "A brighter palette in Paris",
+      "text": "His brother Theo introduced him to modern painters’ work, including **Claude Monet’s**. Van Gogh began using brighter colours and short strokes, taking up subjects such as cafés and boulevards. He and Theo also collected Japanese woodcuts, whose bold outlines and abrupt cropping gave him more ways to compose a picture.",
+      "sourceUrl": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/from-dark-to-light"
+    },
+    {
+      "date": "1888",
+      "title": "The Yellow House",
+      "text": "Van Gogh rented rooms in Arles for a painters’ colony he called the **Studio of the South**. Paul Gauguin came to live and work with him. In December, Van Gogh was hospitalised after injuring his ear, and Gauguin left, ending the experiment. The project gave Van Gogh a reason to paint the flowers now so closely associated with him. In August 1888, he painted a series of **Sunflowers** to decorate the house for Gauguin’s arrival.",
+      "sourceUrl": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/south-of-france"
+    },
+    {
+      "date": "1889–1890",
+      "title": "From Saint-Rémy to Auvers",
+      "text": "Van Gogh admitted himself to the psychiatric hospital at Saint-Rémy and soon returned to painting. There he made **The Starry Night**, setting a cypress and a village he imagined beneath a sky alive with stars. He left the clinic for **Auvers-sur-Oise**, where he painted in the surrounding countryside until shortly before his death in July 1890.",
+      "sourceUrl": "https://www.musee-estrine.fr/en/vincent-van-gogh-en/"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "A pipe and tobacco sit on a plain wooden chair in daylight. A candle and novels rest on a carved armchair at night. Van Gogh painted the chairs as a pair. The objects and the light make the paintings a double portrait of himself and Paul Gauguin without showing either man.",
+      "isLegend": false,
+      "sourceUrl": "https://www.nationalgallery.org.uk/paintings/vincent-van-gogh-van-gogh-s-chair"
+    },
+    {
+      "text": "Van Gogh sometimes reused a canvas by painting straight over an earlier picture. X-rays can reveal the hidden picture. Beneath Ravine, the Museum of Fine Arts in Boston found a composition that researchers linked to a drawing Van Gogh had sent his brother Theo. Beneath a basket of apples, a different study found a pot of flowers.",
+      "isLegend": false,
+      "sourceUrl": "https://www.mfa.org/collections/europe/missing-van-gogh-discovered"
+    },
+    {
+      "text": "Van Gogh had an audience during his lifetime. In early 1890, a group exhibition in Brussels showed several of his canvases, and the critic Albert Aurier published a favourable article about his work. The Red Vineyard, one of the paintings on display, also found a buyer.",
+      "isLegend": false,
+      "sourceUrl": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/hospitalization"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "paul-gauguin",
+      "reason": "Lived and painted with Van Gogh in the Yellow House in Arles.",
+      "name": "Paul Gauguin",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "the-starry-night",
+      "reason": "Van Gogh painted this night landscape while staying at the clinic in Saint-Rémy.",
+      "name": "The Starry Night",
+      "lane": "milestones",
+      "detailLevel": 3
+    },
+    {
+      "slug": "jean-francois-millet",
+      "reason": "Van Gogh used a wood engraving after Millet’s work as the model for his own painting The Thresher.",
+      "name": "Jean-François Millet",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "claude-monet",
+      "reason": "His paintings were among the modern works Theo van Gogh introduced to Vincent in Paris.",
+      "name": "Claude Monet",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "henri-de-toulouse-lautrec",
+      "reason": "Met Van Gogh at Fernand Cormon’s studio and made a pastel portrait of him with a glass of absinthe on the table.",
+      "name": "Henri de Toulouse-Lautrec",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "eugene-delacroix",
+      "reason": "Van Gogh made his own colour version of Delacroix’s The Good Samaritan from a black-and-white reproduction.",
+      "name": "Eugène Delacroix",
+      "lane": "people",
+      "detailLevel": 4
+    }
+  ]
+}

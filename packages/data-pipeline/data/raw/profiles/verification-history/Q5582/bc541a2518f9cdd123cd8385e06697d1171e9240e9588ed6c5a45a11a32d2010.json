@@ -1,0 +1,1506 @@
+{
+  "profile": {
+    "subject": "Vincent van Gogh",
+    "type": "person",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
+    "overview": "Vincent van Gogh was a Dutch painter who went from painting farm workers in dark earth colours in the Netherlands to experimenting with bright colours and short brushstrokes in France. He used colour to convey how he felt about what he saw, an approach that made his work a touchstone for later painters.",
+    "key_moments": [
+      {
+        "date": "1885",
+        "title": "The Potato Eaters",
+        "text": "In Nuenen, in the Netherlands, Van Gogh set himself a test as a figure painter. In **The Potato Eaters**, he used dark earth colours and gave the farm workers bony hands. He wanted the hands reaching toward the dish to show that these people had worked the soil for the food they were about to eat.",
+        "claims": [
+          "Vincent van Gogh painted The Potato Eaters in Nuenen in the Netherlands in 1885.",
+          "Vincent van Gogh deliberately chose a difficult composition for The Potato Eaters to test his skill as a figure painter.",
+          "Vincent van Gogh painted the farm workers in The Potato Eaters in earth colours and gave them bony hands.",
+          "Vincent van Gogh intended the hands reaching toward the dish in The Potato Eaters to show that the people had worked the soil for their meal."
+        ],
+        "source": "https://www.vangoghmuseum.nl/en/collection/s0005V1962"
+      },
+      {
+        "date": "1886–1888",
+        "title": "A brighter palette in Paris",
+        "text": "His brother Theo introduced him to modern painters’ work, including **Claude Monet’s**. Van Gogh began using brighter colours and short strokes, taking up subjects such as cafés and boulevards. He and Theo also collected Japanese woodcuts, whose bold outlines and abrupt cropping gave him more ways to compose a picture.",
+        "claims": [
+          "Vincent van Gogh lived in Paris from 1886 to 1888.",
+          "Theo van Gogh introduced Vincent van Gogh to the work of Claude Monet.",
+          "In Paris Vincent van Gogh took up brighter colours, short strokes and subjects such as cafés and boulevards.",
+          "Vincent and Theo van Gogh collected Japanese woodcuts, whose outlines and cropping influenced Vincent van Gogh’s own work."
+        ],
+        "source": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/from-dark-to-light"
+      },
+      {
+        "date": "1888",
+        "title": "The Yellow House",
+        "text": "Van Gogh rented rooms in Arles for a painters’ colony he called the **Studio of the South**. Paul Gauguin came to live and work with him. In December, Van Gogh was hospitalised after injuring his ear, and Gauguin left, ending the experiment. The project gave Van Gogh a reason to paint the flowers now so closely associated with him. He made his first Arles **Sunflowers** paintings to decorate the house for Gauguin’s arrival.",
+        "claims": [
+          "Vincent van Gogh rented rooms in the Yellow House in Arles in 1888 for a project called the Studio of the South.",
+          "Paul Gauguin lived and worked with Vincent van Gogh in Arles in 1888.",
+          "Vincent van Gogh was hospitalised after injuring his ear in December 1888, and Paul Gauguin’s departure ended their shared studio experiment.",
+          "Vincent van Gogh made his first Arles Sunflowers paintings to decorate the Yellow House for Paul Gauguin’s arrival."
+        ],
+        "source": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/south-of-france"
+      },
+      {
+        "date": "1889–1890",
+        "title": "From Saint-Rémy to Auvers",
+        "text": "Van Gogh admitted himself to the psychiatric hospital at Saint-Rémy and soon returned to painting. There he made **The Starry Night**, setting a cypress and a village he imagined beneath a sky alive with stars. He left the clinic for **Auvers-sur-Oise**, where he painted in the surrounding countryside until shortly before his death in July 1890.",
+        "claims": [
+          "Vincent van Gogh voluntarily entered the psychiatric hospital at Saint-Rémy in 1889 and soon resumed painting.",
+          "Vincent van Gogh painted The Starry Night at Saint-Rémy in 1889, depicting a cypress and an imagined village beneath a star-filled sky.",
+          "Vincent van Gogh moved from the clinic at Saint-Rémy to Auvers-sur-Oise and painted in the surrounding countryside.",
+          "Vincent van Gogh died in Auvers-sur-Oise in July 1890."
+        ],
+        "source": "https://www.musee-estrine.fr/en/vincent-van-gogh-en/"
+      }
+    ],
+    "deep_facts": [
+      {
+        "text": "A pipe and tobacco sit on a plain wooden chair in daylight. A candle and novels rest on a carved armchair at night. Van Gogh painted the chairs as a pair. The objects and the light make the paintings a double portrait of himself and Paul Gauguin without showing either man.",
+        "type": "unique_detail",
+        "is_legend": false,
+        "confidence": "high",
+        "claims": [
+          "Van Gogh’s Chair depicts a plain wooden chair with a pipe and tobacco in daylight.",
+          "Gauguin’s Chair depicts a carved armchair with a lit candle and novels at night.",
+          "Vincent van Gogh painted Van Gogh’s Chair and Gauguin’s Chair as paired stand-ins for portraits of himself and Paul Gauguin."
+        ],
+        "source": "https://www.nationalgallery.org.uk/paintings/vincent-van-gogh-van-gogh-s-chair"
+      },
+      {
+        "text": "Van Gogh sometimes reused a canvas by painting straight over an earlier picture. X-rays can reveal the hidden picture. Beneath Ravine, the Museum of Fine Arts in Boston found a composition that researchers linked to a drawing Van Gogh had sent his brother Theo. Beneath a basket of apples, a different study found a pot of flowers.",
+        "type": "hidden_story",
+        "is_legend": false,
+        "confidence": "high",
+        "claims": [
+          "Vincent van Gogh sometimes painted over earlier works on the same canvas.",
+          "Researchers at Boston’s Museum of Fine Arts used X-rays to find an earlier composition beneath Vincent van Gogh’s Ravine.",
+          "Researchers linked the composition beneath Ravine to a drawing Vincent van Gogh sent to Theo van Gogh.",
+          "An X-ray examination of Vincent van Gogh’s Basket of Apples showed a flower arrangement beneath the visible painting."
+        ],
+        "source": "https://www.mfa.org/collections/europe/missing-van-gogh-discovered"
+      },
+      {
+        "text": "Van Gogh had an audience before he became widely known. In early 1890, a group exhibition in Brussels showed several of his canvases, and the critic Albert Aurier published a favourable article about his work. The Red Vineyard, one of the paintings on display, also found a buyer.",
+        "type": "hidden_story",
+        "is_legend": false,
+        "confidence": "high",
+        "claims": [
+          "Several of Vincent van Gogh’s paintings were shown at a group exhibition in Brussels in early 1890.",
+          "Albert Aurier published a favourable article on Vincent van Gogh’s work in 1890.",
+          "Vincent van Gogh’s The Red Vineyard was shown in Brussels and was sold."
+        ],
+        "source": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/hospitalization"
+      }
+    ],
+    "connections": [
+      {
+        "name": "Paul Gauguin",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Paul_Gauguin",
+        "connection": "Lived and painted with Van Gogh in the Yellow House in Arles.",
+        "importance": "high",
+        "qid": "Q37693"
+      },
+      {
+        "name": "The Starry Night",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/The_Starry_Night",
+        "connection": "Van Gogh painted this night landscape while staying at the clinic in Saint-Rémy.",
+        "importance": "high",
+        "qid": "Q45585"
+      },
+      {
+        "name": "Jean-François Millet",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Jean-François_Millet",
+        "connection": "Van Gogh used a wood engraving after Millet’s work as the model for his own painting The Thresher.",
+        "importance": "medium",
+        "qid": "Q148458"
+      },
+      {
+        "name": "Claude Monet",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Claude_Monet",
+        "connection": "His paintings were among the modern works Theo van Gogh introduced to Vincent in Paris.",
+        "importance": "medium",
+        "qid": "Q296"
+      },
+      {
+        "name": "Henri de Toulouse-Lautrec",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Henri_de_Toulouse-Lautrec",
+        "connection": "Met Van Gogh at Fernand Cormon’s studio and made a pastel portrait of him with a glass of absinthe on the table.",
+        "importance": "medium",
+        "qid": "Q82445"
+      },
+      {
+        "name": "Eugène Delacroix",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Eugène_Delacroix",
+        "connection": "Van Gogh made his own colour version of Delacroix’s The Good Samaritan from a black-and-white reproduction.",
+        "importance": "medium",
+        "qid": "Q33477"
+      }
+    ],
+    "meta": {
+      "generated_at": "2026-11-24T03:56:04.820Z",
+      "prompt_version": "2.4.0",
+      "prompt_hash": "d1e011c13521",
+      "schema_version": 3,
+      "model": "gpt-6.2-sol",
+      "reasoning_effort": "medium",
+      "temperature": null,
+      "run_id": "2026-11-24-van-gogh-trial",
+      "locale": "en",
+      "source": {
+        "wikidata_qid": "Q5582"
+      },
+      "tokens": {
+        "input": 3669885,
+        "output": 17529
+      },
+      "validation": {
+        "schema_valid": true,
+        "connections_returned": 6,
+        "connections_matched_people": 5,
+        "connections_matched_events": 1,
+        "connections_unresolved": 0
+      },
+      "review": {
+        "status": "draft",
+        "reviewed_at": null
+      },
+      "coordinator_repair": {
+        "profile_hash": "bc541a2518f9cdd123cd8385e06697d1171e9240e9588ed6c5a45a11a32d2010",
+        "count": 1
+      }
+    }
+  },
+  "report": {
+    "policy_version": "3",
+    "profile_hash": "bc541a2518f9cdd123cd8385e06697d1171e9240e9588ed6c5a45a11a32d2010",
+    "verified_at": "2026-11-24T04:03:05.615Z",
+    "subject": {
+      "qid": "Q5582",
+      "dates": "1853–1890"
+    },
+    "models": [
+      "gpt-6.2-sol",
+      "gpt-6.2-sol"
+    ],
+    "assessment": {
+      "uncovered": [],
+      "issues": [],
+      "coherent": true,
+      "covered": [
+        "overview",
+        "key_moments.0.date",
+        "key_moments.0.title",
+        "key_moments.0.text",
+        "key_moments.1.date",
+        "key_moments.1.title",
+        "key_moments.1.text",
+        "key_moments.2.date",
+        "key_moments.2.title",
+        "key_moments.2.text",
+        "key_moments.3.date",
+        "key_moments.3.title",
+        "key_moments.3.text",
+        "deep_facts.0.text",
+        "deep_facts.1.text",
+        "deep_facts.2.text",
+        "connections.0.connection",
+        "connections.1.connection",
+        "connections.2.connection",
+        "connections.3.connection",
+        "connections.4.connection",
+        "connections.5.connection"
+      ],
+      "subject_dates": [
+        {
+          "path": "key_moments.3.text",
+          "boundary": "end",
+          "year": 1890
+        }
+      ],
+      "findings": [
+        {
+          "path": "overview",
+          "claim": "Vincent van Gogh was a Dutch painter.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Musée Estrine’s biography identifies Van Gogh as a Dutch artist and describes his activity as a painter.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "in Saint-Rémy that the Dutch artist's radiant genius reached its full expression",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "In only 10 years of artistic work, this self-taught painter and draughtsman produced some 700 paintings",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Vincent van Gogh painted farm workers in earth colours in the Netherlands.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The painting catalogue describes both the country labourers and the palette, and the Estrine biography places the work in his Dutch apprenticeship at Nuenen.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "The painting had to depict the harsh reality of country life, so he gave the peasants coarse faces and bony, working hands.",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            },
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "He painted the five figures in earth colours",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "1885 - NUENEN End of his Dutch apprenticeship",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Vincent van Gogh developed brighter colours and short brushstrokes in Paris, France.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum contrasts the brighter Paris palette and short brushwork with his preceding style.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "Vincent’s work grew steadily brighter in Paris, under the influence of modern art. He used brighter colours and developed his own style of painting, with short brush strokes.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Vincent van Gogh used colour to convey his response to his surroundings.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Rijksmuseum directly links his use of colour to his emotions and experience of his surroundings.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "3a68fa6e12fb11b74e2c0ff2e935903fd7707aacf2d71c1f584e194fe9d9c560",
+              "quote": "Van Gogh experienced his surroundings and daily life intensely. In his art he conveyed his emotions and experiences through colour",
+              "kind": "scholarly",
+              "origin": "Rijksmuseum overview of the artist and its collection"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Vincent van Gogh’s expressive use of colour was a model for later painters.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The MoMA Highlights essay credited to the Museum of Modern Art identifies Van Gogh’s expressive colour as an influence on later Expressionist painting. The excerpt is from the authored essay above the syndicated page’s Details fields.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2a403cf229ab741d86cb285b31c3391459708043df413e90b4df3f8f31ffbfae",
+              "quote": "in favor of restless feeling and intense color, as in this highly charged picture, van Gogh made his work a touchstone for all subsequent Expressionist painting.",
+              "kind": "scholarly",
+              "origin": "The Museum of Modern Art, MoMA Highlights, The Starry Night"
+            },
+            {
+              "source": "2a403cf229ab741d86cb285b31c3391459708043df413e90b4df3f8f31ffbfae",
+              "quote": "The Museum of Modern Art, MoMA Highlights, New York: The Museum of Modern Art, revised 2004, originally published 1999, p. 35",
+              "kind": "scholarly",
+              "origin": "The Museum of Modern Art, MoMA Highlights, The Starry Night"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.date",
+          "claim": "Vincent van Gogh painted The Potato Eaters in 1885.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "April–May 1885 is the catalogue date of the painting.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "Vincent van Gogh (1853 - 1890), Nuenen, April-May 1885",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.title",
+          "claim": "The painting featured in this episode is Vincent van Gogh’s The Potato Eaters.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The object record names the painting and the artist.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "The Potato Eaters Currently on view Vincent van Gogh",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Vincent van Gogh painted The Potato Eaters in Nuenen in the Netherlands.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The object record locates the work in Nuenen, and the Estrine biography places Nuenen in Van Gogh’s Dutch period.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "Vincent van Gogh (1853 - 1890), Nuenen, April-May 1885",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "1885 - NUENEN End of his Dutch apprenticeship",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Vincent van Gogh chose a difficult composition to test his skill as a figure painter.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The catalogue explicitly identifies the purpose of the difficult composition.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "he deliberately chose a difficult composition to prove he was on his way to becoming a good figure painter.",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Vincent van Gogh depicted the farm workers in earth colours and with bony hands.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The object record describes the palette and his depiction of the workers.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "so he gave the peasants coarse faces and bony, working hands.",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            },
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "He painted the five figures in earth colours",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            },
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "his painting drew considerable criticism because its colours were so dark",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Vincent van Gogh wanted the hands reaching toward the dish to show that the farm workers had tilled the soil for their food.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum reproduces the painter’s own explanation of the gesture and the hands.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+              "quote": "they ‘have tilled the earth themselves with these hands they are putting in the dish ... that they have thus honestly earned their food’.",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for The Potato Eaters"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.date",
+          "claim": "Vincent van Gogh’s Paris period spanned 1886–1888.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum labels the brighter Paris period with these dates. The Rijksmuseum dates his Paris move, and the Arles foundation describes his arrival after two years in Paris.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "Vincent van Gogh’s Style: From Dark to Light 1886 - 1888",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            },
+            {
+              "source": "3a68fa6e12fb11b74e2c0ff2e935903fd7707aacf2d71c1f584e194fe9d9c560",
+              "quote": "In February 1886 Van Gogh moved from Belgium to Paris.",
+              "kind": "scholarly",
+              "origin": "Rijksmuseum overview of the artist and its collection"
+            },
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "On 20 February 1888, Vincent van Gogh arrived in Arles. Before that, he had lived in Paris for two years",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.title",
+          "claim": "Vincent van Gogh’s palette grew brighter in Paris.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Paris biography explicitly describes this stylistic shift.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "In Paris, Vincent developed his own, well-known style with bright colours.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Theo van Gogh introduced his brother Vincent to the work of Claude Monet.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum identifies the brothers and gives Monet as an example of the work Theo showed Vincent.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "He introduced his brother to the colourful work of prominent modern artists like Claude Monet.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Vincent van Gogh adopted brighter colours and short strokes in Paris.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum identifies those features as developments in his Paris work.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "Vincent’s work grew steadily brighter in Paris, under the influence of modern art. He used brighter colours and developed his own style of painting, with short brush strokes.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "In Paris, Vincent van Gogh took up subjects including cafés and boulevards.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The source lists these as new subjects in the same period.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "The themes he painted likewise changed, with rural labourers giving way to cafés and boulevards",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Vincent and Theo van Gogh collected Japanese woodcuts.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Both museums identify the brothers as collectors of Japanese prints.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "Meanwhile, he discovered a new source of inspiration in Japanese woodcuts, which sold in large quantities in Paris. Vincent and Theo began to collect them.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            },
+            {
+              "source": "3a68fa6e12fb11b74e2c0ff2e935903fd7707aacf2d71c1f584e194fe9d9c560",
+              "quote": "Vincent was fascinated by Japanese prints. He collected hundreds of them together with his brother Theo.",
+              "kind": "scholarly",
+              "origin": "Rijksmuseum overview of the artist and its collection"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Japanese woodcuts influenced the outlines and cropping in Vincent van Gogh’s work.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Both museums identify hard outlines and abrupt cropping as features he adopted from prints.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "The influence of the bold outlines, cropping and colour contrasts in these prints showed through immediately in his own work.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            },
+            {
+              "source": "3a68fa6e12fb11b74e2c0ff2e935903fd7707aacf2d71c1f584e194fe9d9c560",
+              "quote": "He adopted the prints’ high elevated horizon, hard contour lines and abrupt cropping in his own paintings.",
+              "kind": "scholarly",
+              "origin": "Rijksmuseum overview of the artist and its collection"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.date",
+          "claim": "Vincent van Gogh’s shared studio with Paul Gauguin in Arles took place in 1888.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The foundation places both Gauguin’s October arrival and his departure after 23 December in the 1888 Arles chronology.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "On 20 February 1888, Vincent van Gogh arrived in Arles.",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            },
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "On 23 October, Paul Gauguin came to Arles. The two artists lived and painted together for two months.",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            },
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "Gauguin left, and Van Gogh’s dream of a studio with other painters was shattered.",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.title",
+          "claim": "The Yellow House in Arles housed Vincent van Gogh’s studio project.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The object history places both artists in the Yellow House and describes the proposed studio.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "where they lived together in the Yellow House.",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            },
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "the first step in forming a new artistic ‘association’, a ’studio in the south‘.",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Vincent van Gogh rented rooms in Arles to establish an artists’ colony called the Studio of the South.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biography gives the name, purpose and rental as parts of a single plan.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "558dfdc3506e265948cf5e48558ad0363587b3a035f0684aec9ce8b165980c4d",
+              "quote": "Vincent corresponded with Theo about his plan to set up a ‘Studio of the South’ in Arles for a group of artists whose work Theo could sell in Paris.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, In the South of France"
+            },
+            {
+              "source": "558dfdc3506e265948cf5e48558ad0363587b3a035f0684aec9ce8b165980c4d",
+              "quote": "With this ‘artists’ colony’ in mind, Vincent rented four rooms in the ‘Yellow House’ on Place Lamartine.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, In the South of France"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Paul Gauguin lived and worked with Vincent van Gogh in Arles.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Arles foundation reports their cohabitation and work together.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "On 23 October, Paul Gauguin came to Arles. The two artists lived and painted together for two months.",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Vincent van Gogh was hospitalised in December after injuring his ear.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Arles foundation dates the injury to December and the Van Gogh Museum places hospital admission the following morning.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "On 23 December, Van Gogh suffered a mental breakdown – probably a first sign of his illness – and cut off a part of his left ear.",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            },
+            {
+              "source": "558dfdc3506e265948cf5e48558ad0363587b3a035f0684aec9ce8b165980c4d",
+              "quote": "The morning after he cut off his ear, Vincent was admitted to the hospital in Arles.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, In the South of France"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Paul Gauguin left Arles in December, ending the shared studio.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The departure is placed after the 23 December incident, and both accounts describe it as ending the project.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "Gauguin left, and Van Gogh’s dream of a studio with other painters was shattered.",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            },
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "following a fight on 23 December when Van Gogh threatened Gauguin with a knife and then cut off part of his own left ear, Gauguin returned to Paris",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            },
+            {
+              "source": "558dfdc3506e265948cf5e48558ad0363587b3a035f0684aec9ce8b165980c4d",
+              "quote": "Theo returned to Paris immediately after visiting the hospital, and so did Gauguin. Vincent’s dream of a shared studio had proved to be short-lived.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, In the South of France"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Sunflowers became closely associated with Vincent van Gogh.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The National Gallery notes that the association acquired after his death has endured.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "7cc196b216793a60051c40e56363a56940348d401f76163f9c3f7f6b68c8d4a0",
+              "quote": "Soon after his death he became known as the painter of sunflowers, an identification that endures to this day.",
+              "kind": "primary",
+              "origin": "National Gallery Sunflowers collection catalogue"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Vincent van Gogh made his first Arles Sunflowers paintings to decorate the Yellow House for Paul Gauguin’s arrival.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The National Gallery distinguishes the original August 1888 series from the January 1889 replicas and the earlier sunflower studies. Its account connects the Arles series to Gauguin’s visit and the plan for decorations at the Yellow House.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "7cc196b216793a60051c40e56363a56940348d401f76163f9c3f7f6b68c8d4a0",
+              "quote": "The seven pictures were made in two groups: four were painted in August 1888 and three replicas were painted in January 1889",
+              "kind": "primary",
+              "origin": "National Gallery Sunflowers collection catalogue"
+            },
+            {
+              "source": "7cc196b216793a60051c40e56363a56940348d401f76163f9c3f7f6b68c8d4a0",
+              "quote": "Van Gogh had previously painted sunflower still lifes, but was prompted to paint this series by the imminent arrival of Paul Gauguin",
+              "kind": "primary",
+              "origin": "National Gallery Sunflowers collection catalogue"
+            },
+            {
+              "source": "7cc196b216793a60051c40e56363a56940348d401f76163f9c3f7f6b68c8d4a0",
+              "quote": "Van Gogh made the paintings to decorate his house in Arles in readiness for a visit from his friend and fellow artist, Paul Gauguin.",
+              "kind": "primary",
+              "origin": "National Gallery Sunflowers collection catalogue"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.date",
+          "claim": "Vincent van Gogh entered the Saint-Rémy clinic in 1889 and moved to Auvers-sur-Oise in 1890.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The clinic dates and the Auvers arrival establish the episode’s year range.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "During the year Vincent van Gogh was treated at the Saint-Paul de Mausole Hospice (May 1889 to May 1890)",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "8db27983ef3b043d88feedb628f047c3cc89a60f920a2d8ddb791132bdb7cf89",
+              "quote": "Vincent left the psychiatric clinic at Saint-Rémy near Arles in the south of France in May 1890",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum history of the Auvers period"
+            },
+            {
+              "source": "8db27983ef3b043d88feedb628f047c3cc89a60f920a2d8ddb791132bdb7cf89",
+              "quote": "Vincent van Gogh died on 29 July 1890, just two months after he arrived in Auvers-sur-Oise.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum history of the Auvers period"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.title",
+          "claim": "Vincent van Gogh went from Saint-Rémy to Auvers-sur-Oise.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Auvers history gives the departure from the clinic and the subsequent move to the village.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "8db27983ef3b043d88feedb628f047c3cc89a60f920a2d8ddb791132bdb7cf89",
+              "quote": "Vincent left the psychiatric clinic at Saint-Rémy near Arles in the south of France in May 1890, hoping to be able to live independently with his condition. He found a certain peace in the village of Auvers-sur-Oise near Paris",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum history of the Auvers period"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Vincent van Gogh voluntarily entered the psychiatric hospital at Saint-Rémy.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The foundation explicitly describes his admission as voluntary and dates it to May 1889.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "had himself interned voluntarily in the asylum in Saint-Rémy on 8 May 1889.",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Vincent van Gogh resumed painting shortly after arriving at Saint-Rémy.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The institution’s biography records immediate work and painting in the garden.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "be0273bedbe75d8910ea6b381a8c08aca10460d8ef91d238d81204a2abcaa480",
+              "quote": "Once Vincent arrived at the clinic in Saint-Rémy, he immediately began working again. On his good days, he often painted in the institution’s walled garden",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, Hospitalization"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Vincent van Gogh painted The Starry Night at Saint-Rémy in 1889.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Musée Estrine biography dates the picture to June 1889 during Van Gogh’s documented stay at Saint-Rémy and attributes the work to him.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "During the year Vincent van Gogh was treated at the Saint-Paul de Mausole Hospice (May 1889 to May 1890)",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "To pay tribute to Vincent van Gogh, who lived in Saint-Rémy-de-Provence from 8 May 1889 to 20 May 1890",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "June 1889 The Starry Night",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "he painted one of his greatest masterpieces, The Starry Night.",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "In The Starry Night, Vincent van Gogh depicted a cypress and an invented village below a star-filled sky.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The MoMA Highlights essay reproduced by Google Arts & Culture describes the foreground cypress, stars and invented hamlet. The essay is separately credited to the Museum of Modern Art above the syndicated Details fields.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "2a403cf229ab741d86cb285b31c3391459708043df413e90b4df3f8f31ffbfae",
+              "quote": "Van Gogh's night sky is a field of roiling energy. Below the exploding stars, the village is a place of quiet order.",
+              "kind": "scholarly",
+              "origin": "The Museum of Modern Art, MoMA Highlights, The Starry Night"
+            },
+            {
+              "source": "2a403cf229ab741d86cb285b31c3391459708043df413e90b4df3f8f31ffbfae",
+              "quote": "Connecting earth and sky is the flamelike cypress",
+              "kind": "scholarly",
+              "origin": "The Museum of Modern Art, MoMA Highlights, The Starry Night"
+            },
+            {
+              "source": "2a403cf229ab741d86cb285b31c3391459708043df413e90b4df3f8f31ffbfae",
+              "quote": "The hamlet, on the other hand, is invented, and the church spire evokes van Gogh's native land, the Netherlands.",
+              "kind": "scholarly",
+              "origin": "The Museum of Modern Art, MoMA Highlights, The Starry Night"
+            },
+            {
+              "source": "2a403cf229ab741d86cb285b31c3391459708043df413e90b4df3f8f31ffbfae",
+              "quote": "The Museum of Modern Art, MoMA Highlights, New York: The Museum of Modern Art, revised 2004, originally published 1999, p. 35",
+              "kind": "scholarly",
+              "origin": "The Museum of Modern Art, MoMA Highlights, The Starry Night"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Vincent van Gogh moved to Auvers-sur-Oise after leaving the Saint-Rémy clinic.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The source puts the move in the sequence following his departure from the clinic.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "8db27983ef3b043d88feedb628f047c3cc89a60f920a2d8ddb791132bdb7cf89",
+              "quote": "He found a certain peace in the village of Auvers-sur-Oise near Paris, where he soon began to paint prolifically once more.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum history of the Auvers period"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Vincent van Gogh painted in the countryside around Auvers-sur-Oise late in his life.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Auvers history describes his daily outdoor work there before the events of 27 July.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "8db27983ef3b043d88feedb628f047c3cc89a60f920a2d8ddb791132bdb7cf89",
+              "quote": "The Ravoux family grew accustomed to him setting off each day to work in the surrounding countryside. On 27 July, he failed to return for his evening meal.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum history of the Auvers period"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Vincent van Gogh died in Auvers-sur-Oise in July 1890.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Van Gogh Museum’s institutional biography states the town and date in one sentence. Musée Estrine likewise records the death date in its Auvers chronology. The unrelated syndicated object metadata is not used for this finding.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "8db27983ef3b043d88feedb628f047c3cc89a60f920a2d8ddb791132bdb7cf89",
+              "quote": "He died in Auvers-sur-Oise on 29 July 1890.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum history of the Auvers period"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "29 July 1890 Vincent died in his brother's arms. He was buried in the cemetery of Auvers-sur-Oise on 30 July 1890.",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Van Gogh’s Chair shows a plain wooden chair holding a pipe and tobacco in daylight.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The National Gallery catalogue describes the chair material, objects and daylight. The paired work’s catalogue independently records the daytime effect and simple chair.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "the chair is made of plain unpolished wood painted yellow",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            },
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "Van Gogh’s chair, on which he placed his pipe and tobacco, is shown in bright daylight.",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            },
+            {
+              "source": "c4fe5ade07a8848e4d8d9fb3ef382d54e8f1a9affa10c72c33206b23a5a5dd82",
+              "quote": "a daytime atmosphere: his own simple peasant chair in bright yellow and blue.",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for Gauguin’s Chair"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Gauguin’s Chair shows a carved armchair holding a burning candle and novels at night.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Catalogues of the two paintings confirm the armchair’s form, its contents and the night setting.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "Gauguin’s is an elegant and finely carved armchair.",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            },
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "Gauguin’s, with two novels on its seat, was painted at night and is illuminated by a candle and gas light.",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            },
+            {
+              "source": "c4fe5ade07a8848e4d8d9fb3ef382d54e8f1a9affa10c72c33206b23a5a5dd82",
+              "quote": "The modern novels and burning candle symbolize the character of the absent painter. Using mainly red and green hues, Van Gogh tried to suggest the mood of night.",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for Gauguin’s Chair"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Vincent van Gogh made the chairs as a pair that stands in for portraits of himself and Paul Gauguin.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The two museums that hold the individual paintings independently identify their pairing and portrait function.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "The picture was a pair to another painting, Gauguin’s Chair (Van Gogh Museum, Amsterdam). They were to be hung together, with one chair turned to the right, the other to the left. Both chairs function as surrogate portraits",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            },
+            {
+              "source": "c4fe5ade07a8848e4d8d9fb3ef382d54e8f1a9affa10c72c33206b23a5a5dd82",
+              "quote": "This painting of Paul Gauguin's chair is a 'portrait' of Van Gogh's friend and fellow artist.",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for Gauguin’s Chair"
+            },
+            {
+              "source": "c4fe5ade07a8848e4d8d9fb3ef382d54e8f1a9affa10c72c33206b23a5a5dd82",
+              "quote": "The two paintings represent the different personalities of the two artists",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for Gauguin’s Chair"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Vincent van Gogh sometimes covered earlier pictures with new paintings on reused canvases.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "Two independent technical examinations, one of the Amsterdam collection and one of the Boston canvas, document the practice.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "bc277fe3211dbb5c98ff9d2b45f0882de1f063b93149dc8da97a823f6f52ea53",
+              "quote": "In 20 cases - some 15% - works that had been covered over came to light.",
+              "kind": "scholarly",
+              "origin": "Sjraar van Heugten, Radiographic images of Vincent van Gogh’s paintings in the collection of the Van Gogh Museum"
+            },
+            {
+              "source": "046f1f072d5704004b5ac76989f02b3c1b49fa79c13547c75beba878f41d898e",
+              "quote": "and was re-used as a support for Ravine a few months later",
+              "kind": "primary",
+              "origin": "Meta Chavannes and Louis van Tilborgh, X-ray examination of Ravine"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "X-rays reveal earlier works beneath some of Vincent van Gogh’s visible paintings.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "A collection survey and an independent later case study both report finding earlier images with X-rays.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "bc277fe3211dbb5c98ff9d2b45f0882de1f063b93149dc8da97a823f6f52ea53",
+              "quote": "some 130 in all, were examined with X-rays.",
+              "kind": "scholarly",
+              "origin": "Sjraar van Heugten, Radiographic images of Vincent van Gogh’s paintings in the collection of the Van Gogh Museum"
+            },
+            {
+              "source": "bc277fe3211dbb5c98ff9d2b45f0882de1f063b93149dc8da97a823f6f52ea53",
+              "quote": "works that had been covered over came to light.",
+              "kind": "scholarly",
+              "origin": "Sjraar van Heugten, Radiographic images of Vincent van Gogh’s paintings in the collection of the Van Gogh Museum"
+            },
+            {
+              "source": "046f1f072d5704004b5ac76989f02b3c1b49fa79c13547c75beba878f41d898e",
+              "quote": "she discovered a second painting below the paint surface.",
+              "kind": "primary",
+              "origin": "Meta Chavannes and Louis van Tilborgh, X-ray examination of Ravine"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Boston Museum of Fine Arts researchers found an earlier painting beneath Ravine using X-rays.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The primary account identifies Ravine as the museum’s canvas and identifies X-ray examination as the method that revealed the second painting.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "046f1f072d5704004b5ac76989f02b3c1b49fa79c13547c75beba878f41d898e",
+              "quote": "underneath the artist’s painting Ravine, owned by the MFA.",
+              "kind": "primary",
+              "origin": "Meta Chavannes and Louis van Tilborgh, X-ray examination of Ravine"
+            },
+            {
+              "source": "046f1f072d5704004b5ac76989f02b3c1b49fa79c13547c75beba878f41d898e",
+              "quote": "was examining x-rays of Ravine",
+              "kind": "primary",
+              "origin": "Meta Chavannes and Louis van Tilborgh, X-ray examination of Ravine"
+            },
+            {
+              "source": "046f1f072d5704004b5ac76989f02b3c1b49fa79c13547c75beba878f41d898e",
+              "quote": "During this examination, she discovered a second painting below the paint surface.",
+              "kind": "primary",
+              "origin": "Meta Chavannes and Louis van Tilborgh, X-ray examination of Ravine"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Researchers linked the hidden composition beneath Ravine to a drawing Vincent van Gogh sent Theo van Gogh.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The first-party account attributes the comparison to Van Tilborgh and names the drawing and recipient.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "046f1f072d5704004b5ac76989f02b3c1b49fa79c13547c75beba878f41d898e",
+              "quote": "Van Tilborgh related the x-ray of Ravine to a drawing Van Gogh sent his brother in mid-1889 entitled Wild Vegetation.",
+              "kind": "primary",
+              "origin": "Meta Chavannes and Louis van Tilborgh, X-ray examination of Ravine"
+            },
+            {
+              "source": "046f1f072d5704004b5ac76989f02b3c1b49fa79c13547c75beba878f41d898e",
+              "quote": "drawn copies of paintings that the artist sent to his brother Theo in July 1889",
+              "kind": "primary",
+              "origin": "Meta Chavannes and Louis van Tilborgh, X-ray examination of Ravine"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "An X-ray of Basket of Apples revealed a bouquet in a pot under the visible painting.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The published radiograph caption identifies both the canvas and the object underneath.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "bc277fe3211dbb5c98ff9d2b45f0882de1f063b93149dc8da97a823f6f52ea53",
+              "quote": "Basket of apples, Nuenen, September 1885 The X-ray shows a bouquet of honesty in a pot",
+              "kind": "scholarly",
+              "origin": "Sjraar van Heugten, Radiographic images of Vincent van Gogh’s paintings in the collection of the Van Gogh Museum"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.2.text",
+          "claim": "Vincent van Gogh had an audience in his lifetime.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Van Gogh Museum records the Brussels exhibition in Van Gogh’s lifetime. The Rijksmuseum separately notes that the artist had admirers then.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "be0273bedbe75d8910ea6b381a8c08aca10460d8ef91d238d81204a2abcaa480",
+              "quote": "Six of Vincent’s paintings were shown in Brussels in early 1890 at a group exhibition",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, Hospitalization"
+            },
+            {
+              "source": "3a68fa6e12fb11b74e2c0ff2e935903fd7707aacf2d71c1f584e194fe9d9c560",
+              "quote": "in his own time he did have some, though not many, admirers.",
+              "kind": "scholarly",
+              "origin": "Rijksmuseum overview of the artist and its collection"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.2.text",
+          "claim": "Several of Vincent van Gogh’s paintings were shown at a group exhibition in Brussels in early 1890.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Van Gogh Museum identifies the show as a group exhibition, places it in Brussels in early 1890 and records six Van Gogh paintings.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "be0273bedbe75d8910ea6b381a8c08aca10460d8ef91d238d81204a2abcaa480",
+              "quote": "Six of Vincent’s paintings were shown in Brussels in early 1890 at a group exhibition",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, Hospitalization"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.2.text",
+          "claim": "Albert Aurier published a favourable article about Vincent van Gogh’s work in 1890.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "One source gives the article’s tone and the other independently dates Aurier’s coverage to 1890.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "be0273bedbe75d8910ea6b381a8c08aca10460d8ef91d238d81204a2abcaa480",
+              "quote": "The art critic Albert Aurier had already published a positive article about Van Gogh’s work",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, Hospitalization"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "1890: First article devoted to Van Gogh by Albert Aurier",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.2.text",
+          "claim": "Vincent van Gogh’s The Red Vineyard was shown in Brussels and was sold.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The Van Gogh Museum names the painting among the works shown in Brussels and reports a sale. Musée Estrine independently confirms that the painting was purchased. The passage does not specify when the purchase happened.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "be0273bedbe75d8910ea6b381a8c08aca10460d8ef91d238d81204a2abcaa480",
+              "quote": "Six of Vincent’s paintings were shown in Brussels in early 1890 at a group exhibition",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, Hospitalization"
+            },
+            {
+              "source": "be0273bedbe75d8910ea6b381a8c08aca10460d8ef91d238d81204a2abcaa480",
+              "quote": "one of the exhibited paintings, The Red Vineyard",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, Hospitalization"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "Vincent's painting The Red Vineyard was purchased by Anna Boch",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "be0273bedbe75d8910ea6b381a8c08aca10460d8ef91d238d81204a2abcaa480",
+              "quote": "The Red Vineyard, was sold",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, Hospitalization"
+            }
+          ]
+        },
+        {
+          "path": "connections.0.connection",
+          "claim": "Paul Gauguin lived and painted with Vincent van Gogh in the Yellow House in Arles.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The artist’s Arles biography and the National Gallery’s catalogue identify Gauguin as the painter who joined Van Gogh at the Yellow House.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+              "quote": "On 23 October, Paul Gauguin came to Arles. The two artists lived and painted together for two months.",
+              "kind": "scholarly",
+              "origin": "Fondation Vincent van Gogh Arles account of work and life in Arles"
+            },
+            {
+              "source": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+              "quote": "soon after Paul Gauguin had joined him in Arles, where they lived together in the Yellow House.",
+              "kind": "primary",
+              "origin": "National Gallery catalogue for Van Gogh’s Chair"
+            }
+          ]
+        },
+        {
+          "path": "connections.1.connection",
+          "claim": "Vincent van Gogh painted The Starry Night during his stay at the clinic in Saint-Rémy.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Musée Estrine dates the painting to June 1889 while Van Gogh was living at the Saint-Rémy clinic. The title and described stars come from the authored MoMA Highlights essay, independently of the syndicated metadata.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "During the year Vincent van Gogh was treated at the Saint-Paul de Mausole Hospice (May 1889 to May 1890)",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "To pay tribute to Vincent van Gogh, who lived in Saint-Rémy-de-Provence from 8 May 1889 to 20 May 1890",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "June 1889 The Starry Night",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+              "quote": "he painted one of his greatest masterpieces, The Starry Night.",
+              "kind": "scholarly",
+              "origin": "Musée Estrine chronology and biography"
+            },
+            {
+              "source": "2a403cf229ab741d86cb285b31c3391459708043df413e90b4df3f8f31ffbfae",
+              "quote": "Van Gogh's night sky is a field of roiling energy.",
+              "kind": "scholarly",
+              "origin": "The Museum of Modern Art, MoMA Highlights, The Starry Night"
+            }
+          ]
+        },
+        {
+          "path": "connections.2.connection",
+          "claim": "Vincent van Gogh painted The Thresher from a wood engraving after Jean-François Millet.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The object catalogue gives the name of the painting and identifies the intermediate engraving and original artist.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "4fe3534448f48138218e97cb829c3948cb2eb6715bbcd615a38511a4d7953ba3",
+              "quote": "The model for this picture of The Thresher was a wood engraving based on a painting by Jean-François Millet",
+              "kind": "primary",
+              "origin": "Van Gogh Museum object catalogue for Thresher (after Millet)"
+            }
+          ]
+        },
+        {
+          "path": "connections.3.connection",
+          "claim": "In Paris, Theo van Gogh introduced Vincent van Gogh to modern art including Claude Monet’s work.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biography places Theo in his Paris gallery role and names Claude Monet as an example of the work he showed Vincent.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "on the Boulevard Montmartre in Paris. He introduced his brother to the colourful work of prominent modern artists like Claude Monet.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            }
+          ]
+        },
+        {
+          "path": "connections.4.connection",
+          "claim": "Vincent van Gogh met Henri de Toulouse-Lautrec at Fernand Cormon’s studio.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Paris biography names the studio and the artist Van Gogh got to know there.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+              "quote": "Vincent van Gogh also got to know a new generation of artists at Fernand Cormon’s studio, including Henri de Toulouse-Lautrec",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum biography, From Dark to Light"
+            }
+          ]
+        },
+        {
+          "path": "connections.4.connection",
+          "claim": "Henri de Toulouse-Lautrec made a pastel portrait of Vincent van Gogh with a glass of absinthe on the table.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The scholarly catalogue identifies the artist, medium, sitter and glass. The connection gives no disputed claim about where the portrait was made.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "52dd7a3c866754b1a529fbe34a6719ac9c8cb0604098ab6cb9b5cd30ecb648ea",
+              "quote": "This vibrant, colourful pastel portrait by Henri de Toulouse-Lautrec (1864–1901) depicts his friend Vincent van Gogh (1853–1890) seated at a table with a glass of absinthe in front of him.",
+              "kind": "scholarly",
+              "origin": "Van Gogh Museum scholarly collection catalogue for Portrait of Vincent van Gogh"
+            }
+          ]
+        },
+        {
+          "path": "connections.5.connection",
+          "claim": "Vincent van Gogh used a black-and-white reproduction of Delacroix’s The Good Samaritan to make his own colour interpretation.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum holding Van Gogh’s painting identifies Delacroix’s work, the black-and-white reproduction and the use of colour.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "eb9efc7489ed7447e926c97bd3796fb38516ea4ed8317e9cafb49d9552004422",
+              "quote": "Van Gogh copies an engraving of The Good Samaritan by Delacroix.",
+              "kind": "primary",
+              "origin": "Kröller-Müller Museum object catalogue for The Good Samaritan (after Delacroix)"
+            },
+            {
+              "source": "eb9efc7489ed7447e926c97bd3796fb38516ea4ed8317e9cafb49d9552004422",
+              "quote": "He works from a black and white reproduction of the work and makes his own translation in colour and on canvas",
+              "kind": "primary",
+              "origin": "Kröller-Müller Museum object catalogue for The Good Samaritan (after Delacroix)"
+            }
+          ]
+        }
+      ]
+    },
+    "audit": {
+      "uncovered": [
+        "deep_facts.2.text: The opening sentence places the early audience before Van Gogh became widely known. The finding establishes an audience in his lifetime but omits the later fame. Expand it using the Rijksmuseum excerpt, which contrasts his few contemporary admirers with his later fame, or say he found an audience during his lifetime."
+      ],
+      "issues": [
+        "key_moments.2.text: The first Arles Sunflowers claim is marked ordinary, and its three quotations come from one National Gallery entry. Either corroborate which series came first with an independent source, or write that he painted a series of Sunflowers in August 1888 to decorate the house for Gauguin’s arrival.",
+        "deep_facts.1.text: The Ravine finding describes multiple Boston Museum of Fine Arts researchers finding the earlier composition. The supplied account names one MFA conservator, Meta Chavannes, as the person who spotted the underlying image, and places her collaborator Louis van Tilborgh at the Van Gogh Museum. Keep the institutional attribution in the reader-facing text and make the stored claim and finding consistent with that account."
+      ],
+      "coherent": true
+    },
+    "sources": [
+      {
+        "id": "df160dcab816c9389a13ecd1948c59323a22ed2e563099c96ec07abe10c1a0d0",
+        "url": "https://www.musee-estrine.fr/en/vincent-van-gogh-en/",
+        "fetched_at": "2026-11-24T03:49:05.676Z"
+      },
+      {
+        "id": "f6248b3c8294d27816577695e724d5a64a71b0d3f784b8390dcbaaff1c7de275",
+        "url": "https://www.vangoghmuseum.nl/en/collection/s0005V1962",
+        "fetched_at": "2026-11-24T03:48:18.311Z"
+      },
+      {
+        "id": "03ceb486792fd17e8760bc40741f297c76d245739f0a120ca5c16f79435731de",
+        "url": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/from-dark-to-light",
+        "fetched_at": "2026-11-24T03:49:04.537Z"
+      },
+      {
+        "id": "3a68fa6e12fb11b74e2c0ff2e935903fd7707aacf2d71c1f584e194fe9d9c560",
+        "url": "https://www.rijksmuseum.nl/en/story/vincent-van-gogh-10",
+        "fetched_at": "2026-11-24T03:49:03.206Z"
+      },
+      {
+        "id": "2a403cf229ab741d86cb285b31c3391459708043df413e90b4df3f8f31ffbfae",
+        "url": "https://artsandculture.google.com/asset/the-starry-night-vincent-van-gogh/bgEuwDxel93-Pg?hl=en",
+        "fetched_at": "2026-11-24T03:50:14.484Z"
+      },
+      {
+        "id": "d6284d5db191ed7be46944b3f87123c1ff5e041fcc45d103b4bcccf4b9d09194",
+        "url": "https://www.fondation-vincentvangogh-arles.org/en/vincent/",
+        "fetched_at": "2026-11-24T03:49:38.768Z"
+      },
+      {
+        "id": "c9127b1bb3a47e3363fe47eaa7000ff247b27d51e8c4fffc6864f16db6b2731b",
+        "url": "https://www.nationalgallery.org.uk/paintings/vincent-van-gogh-van-gogh-s-chair",
+        "fetched_at": "2026-11-24T03:49:38.950Z"
+      },
+      {
+        "id": "558dfdc3506e265948cf5e48558ad0363587b3a035f0684aec9ce8b165980c4d",
+        "url": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/south-of-france",
+        "fetched_at": "2026-11-24T03:48:18.376Z"
+      },
+      {
+        "id": "7cc196b216793a60051c40e56363a56940348d401f76163f9c3f7f6b68c8d4a0",
+        "url": "https://www.nationalgallery.org.uk/paintings/vincent-van-gogh-sunflowers",
+        "fetched_at": "2026-11-24T03:47:47.411Z"
+      },
+      {
+        "id": "8db27983ef3b043d88feedb628f047c3cc89a60f920a2d8ddb791132bdb7cf89",
+        "url": "https://www.vangoghmuseum.nl/en/art-and-stories/stories/the-last-days-of-vincent-van-gogh",
+        "fetched_at": "2026-11-24T03:48:18.750Z"
+      },
+      {
+        "id": "be0273bedbe75d8910ea6b381a8c08aca10460d8ef91d238d81204a2abcaa480",
+        "url": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/hospitalization",
+        "fetched_at": "2026-11-24T03:48:18.752Z"
+      },
+      {
+        "id": "c4fe5ade07a8848e4d8d9fb3ef382d54e8f1a9affa10c72c33206b23a5a5dd82",
+        "url": "https://www.vangoghmuseum.nl/en/collection/s0048V1962",
+        "fetched_at": "2026-11-24T03:50:13.484Z"
+      },
+      {
+        "id": "bc277fe3211dbb5c98ff9d2b45f0882de1f063b93149dc8da97a823f6f52ea53",
+        "url": "https://www.dbnl.org/tekst/_van012199501_01/_van012199501_01_0006.php",
+        "fetched_at": "2026-11-24T03:49:38.825Z"
+      },
+      {
+        "id": "046f1f072d5704004b5ac76989f02b3c1b49fa79c13547c75beba878f41d898e",
+        "url": "https://www.mfa.org/collections/europe/missing-van-gogh-discovered",
+        "fetched_at": "2026-11-24T03:49:40.377Z"
+      },
+      {
+        "id": "4fe3534448f48138218e97cb829c3948cb2eb6715bbcd615a38511a4d7953ba3",
+        "url": "https://www.vangoghmuseum.nl/en/collection/s0171V1962",
+        "fetched_at": "2026-11-24T03:50:15.796Z"
+      },
+      {
+        "id": "52dd7a3c866754b1a529fbe34a6719ac9c8cb0604098ab6cb9b5cd30ecb648ea",
+        "url": "https://catalogues.vangoghmuseum.com/contemporaries-of-van-gogh-1/cat132",
+        "fetched_at": "2026-11-24T03:48:19.763Z"
+      },
+      {
+        "id": "eb9efc7489ed7447e926c97bd3796fb38516ea4ed8317e9cafb49d9552004422",
+        "url": "https://www.krollermuller.nl/en/collection/vincent-van-gogh-the-good-samaritan-after-delacroix-km-104-010",
+        "fetched_at": "2026-11-24T03:49:04.611Z"
+      }
+    ],
+    "evidence_errors": [],
+    "mechanical": [],
+    "repairs": 1,
+    "blockers": [
+      "deep_facts.2.text: The opening sentence places the early audience before Van Gogh became widely known. The finding establishes an audience in his lifetime but omits the later fame. Expand it using the Rijksmuseum excerpt, which contrasts his few contemporary admirers with his later fame, or say he found an audience during his lifetime.",
+      "key_moments.2.text: The first Arles Sunflowers claim is marked ordinary, and its three quotations come from one National Gallery entry. Either corroborate which series came first with an independent source, or write that he painted a series of Sunflowers in August 1888 to decorate the house for Gauguin’s arrival.",
+      "deep_facts.1.text: The Ravine finding describes multiple Boston Museum of Fine Arts researchers finding the earlier composition. The supplied account names one MFA conservator, Meta Chavannes, as the person who spotted the underlying image, and places her collaborator Louis van Tilborgh at the Van Gogh Museum. Keep the institutional attribution in the reader-facing text and make the stored claim and finding consistent with that account."
+    ]
+  }
+}
