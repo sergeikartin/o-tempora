@@ -17,7 +17,7 @@ Give the [Profile coordinator](profile-coordinator.md) the QIDs selected in chat
 | `finalize --qids=Q1,Q2 [--model=<id>]` | Resolves subject and Connection QIDs, keeps the first Connection for each distinct dataset target other than the subject, adds metadata, saves the clean draft alongside gitignored `tasks/<QID>/pending.json`, and removes successfully finalized staging files. The staged `writer.model` takes precedence over the fallback `--model` value. |
 | `english-audit`, `english-repair`, `russian-translation`, `russian-audit` | Add `--out=<file>` when preparing a task. Prints a compact summary on success. `skipped` leaves the output file untouched. Commands that apply replies use `--result=<file>` in place of `--out`. |
 
-The coordinator keeps tasks and replies in gitignored `data/raw/profiles/tasks/<QID>/` and uses `status` to resume after interruptions. [Coordinator workflow](profile-coordinator.md) · [Codex and Gemini Neon handoff](profile-handoff.md)
+The coordinator keeps tasks and replies in gitignored `data/raw/profiles/tasks/<QID>/` and uses `status` to resume after interruptions. [Coordinator workflow](profile-coordinator.md)
 
 ## Local caches
 

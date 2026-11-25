@@ -1,6 +1,6 @@
 # Profile verification
 
-The [Profile coordinator](profile-coordinator.md#english) runs `english-audit` and `english-repair` for the selected QID. Each command prepares a task or applies a reply bound to that task’s inputs. Use `--out=<file>` to save a prepared task in gitignored `data/raw/profiles/tasks/<QID>/` for a fresh subagent or a cross-family audit. Apply replies with `--result=<file>`. The auditor receives the complete Profile and assessment from `tasks/<QID>/pending.json` or the current verification report. [Cross-family handoff](profile-handoff.md)
+The [Profile coordinator](profile-coordinator.md#english) runs `english-audit` and `english-repair` for the selected QID. Each command prepares a task or applies a reply bound to that task’s inputs. Use `--out=<file>` to save a prepared task in gitignored `data/raw/profiles/tasks/<QID>/` for a fresh subagent. Apply replies with `--result=<file>`. The auditor receives the complete Profile and assessment from `tasks/<QID>/pending.json` or the current verification report.
 
 ## Approval policy
 

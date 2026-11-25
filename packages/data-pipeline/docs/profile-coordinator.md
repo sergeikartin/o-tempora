@@ -1,8 +1,8 @@
 # Profile coordinator
 
-Give the coordinator the QIDs selected in chat and the requested outcome. Set concurrency to 1 by default. The caller can explicitly raise it to 2 or 3. Keep one active workflow per QID and store its prepared tasks and replies in gitignored `packages/data-pipeline/data/raw/profiles/tasks/<QID>/`. Use the filenames in the [handoff playbook](profile-handoff.md#task-files).
+Give the coordinator the QIDs selected in chat and the requested outcome. Set concurrency to 1 by default. The caller can explicitly raise it to 2 or 3; when processing multiple QIDs, pipeline scout/prefetch for the next QID while the current QID is in audit or translation. Keep one active workflow per QID and store its prepared tasks and replies in gitignored `packages/data-pipeline/data/raw/profiles/tasks/<QID>/` using the [task filenames](#task-files) below.
 
-Run `status --qids=Q1,Q2,...` at batch start and after a usage-window reset. Select the next incomplete QIDs and resume each at its `next_command`. Use `--stage=<stage1,stage2,...>` for a wave queue and `--limit=<n>` to cap the returned items and their summary counts. Check saved replies before dispatching new work; for Russian, check `ru-candidate.json` and `ru-audit-task.json` when resuming an in-progress handoff. Use `--scope=legendary`, `--scope=mainstream` or `--scope=all` for dataset-wide inspection (default: Legendary and Mainstream People and Milestones). Leave completed artifacts on disk when pausing.
+Run `status --qids=Q1,Q2,...` at batch start and after a usage-window reset. Select the next incomplete QIDs and resume each at its `next_command`. Use `--stage=<stage1,stage2,...>` for a wave queue and `--limit=<n>` to cap the returned items and their summary counts. Check saved replies before dispatching new work; for Russian, check `ru-candidate.json` and `ru-audit-task.json` when resuming an in-progress run. Use `--scope=legendary`, `--scope=mainstream` or `--scope=all` for dataset-wide inspection (default: Legendary and Mainstream People and Milestones). Leave completed artifacts on disk when pausing.
 
 For QIDs needing a Source Map, dispatch `profile-scout` to write `tasks/<QID>/scout.json` and run `prefetch --qids=<QID> --manifest=tasks/<QID>/scout.json` (or fall back to `prefetch --qids=... --concurrency=<n>` without a manifest). Batch preflighted QIDs into `finalize --qids=...`. For an existing draft without a current pending assessment, resume from its verification report. For approved English, resume at Russian translation.
 
@@ -10,7 +10,7 @@ Run `NODE_USE_ENV_PROXY=1 node packages/data-pipeline/src/profiles/index.ts <com
 
 ## Wave boundaries
 
-`stop_after` is a chat instruction to the coordinator. Stop at the requested boundary for each QID, prepare the next task where called for, and report the latest stage, any blocker, and available handoff paths.
+`stop_after` is a chat instruction to the coordinator. Stop at the requested boundary for each QID, prepare the next task where called for, and report the latest stage, any blocker, and available task paths.
 
 | `stop_after` | Checkpoint |
 |---|---|
@@ -22,7 +22,7 @@ Run `NODE_USE_ENV_PROXY=1 node packages/data-pipeline/src/profiles/index.ts <com
 
 ## Subagent workflow
 
-Dispatch each model task in a fresh context with its exact input and output paths. If a stateless Codex role lacks local file tools, pass the complete prepared task in its message and save its returned JSON yourself. Policy, corroboration, and receipt rules live in [verification](profile-verification.md) and [translation](profile-translation.md).
+Dispatch each model task in a fresh context with its exact input and output paths, and confirm each subagent’s serving model ID for provenance. Canonical worker instructions live in `packages/data-pipeline/docs/profile-roles/` ([`profile-scout.md`](profile-roles/profile-scout.md), [`profile-writer.md`](profile-roles/profile-writer.md), [`profile-auditor.md`](profile-roles/profile-auditor.md), [`profile-translator.md`](profile-roles/profile-translator.md), [`profile-translation-auditor.md`](profile-roles/profile-translation-auditor.md)); thin harness stubs in `.claude/agents/`, `.codex/agents/`, and `.agents/agents/` point here and to those files. If a stateless Codex role lacks local file tools, pass its role instructions and the complete prepared task in its message and save its returned JSON yourself. Policy, corroboration, and receipt rules live in [verification](profile-verification.md) and [translation](profile-translation.md).
 
 ### English
 
@@ -48,6 +48,18 @@ Save every task reply with the task’s exact `input_hash` and actual serving mo
 
 Regenerate a task whenever its inputs change.
 
+## Task files
+
+Store per-QID task and reply files under gitignored `packages/data-pipeline/data/raw/profiles/tasks/<QID>/`:
+
+| Command | Task | Reply |
+|---|---|---|
+| `prefetch --manifest` | — | `scout.json` |
+| `english-audit` | `audit-task.json` | `audit-reply.json` |
+| `english-repair` | `repair-task.json` | `repair-reply.json` |
+| `russian-translation` | `ru-translation-task.json` | `ru-candidate.json` |
+| `russian-audit` | `ru-audit-task.json` | `ru-audit-reply.json` |
+
 ## Finish the batch
 
-Report per-QID English and Russian outcomes, blockers, and handoff paths. When publication is requested, run `build-data` and then `publish-data` once at batch end. [Publication](profiles.md#publication)
+Report per-QID English and Russian outcomes, next steps, blockers, and any prepared task paths. When publication is requested, run `build-data` and then `publish-data` once at batch end. [Publication](profiles.md#publication)

@@ -2,12 +2,7 @@ name = "profile-auditor"
 description = "Audits an English Profile against its prepared evidence."
 model = "gpt-6.2-astra"
 model_reasoning_effort = "high"
-developer_instructions = """
-Read `audit-task.json` and follow its prompt. Audit the complete English Profile passage by passage in a single pass, using only the supplied evidence, counterevidence, and context. Use local file tools for the supplied inputs and reply. Do not use shell, web search, external services, or delegation.
-
-Write `audit-reply.json` at the requested path with the unchanged task `input_hash`, your actual serving model ID as `model`, and the task's `result` object. Use the runtime-reported ID or ask the coordinator to confirm it.
-If local file tools are unavailable, ask the coordinator to supply the complete task and any referenced local instructions. Return the exact reply JSON for the coordinator to save.
-"""
+developer_instructions = "Read and follow `packages/data-pipeline/docs/profile-roles/profile-auditor.md`. If local file tools are unavailable, ask the coordinator to supply the role instructions and complete task, and return the exact reply JSON for the coordinator to save."
 
 [features]
 shell_tool = false

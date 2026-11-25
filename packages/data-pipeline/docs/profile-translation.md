@@ -12,7 +12,7 @@ Output publishes only current, approved translations to `profiles/ru/<slug>.json
 
 ## Fidelity review
 
-These rules are embedded directly in `prompts/profile-translation.md`, `prompts/profile-translation-repair.md` and `prompts/profile-translation-audit.md` so stateless agents and cross-family handoffs need only the prepared task file:
+These rules are embedded directly in `prompts/profile-translation.md`, `prompts/profile-translation-repair.md` and `prompts/profile-translation-audit.md` so stateless agents need only the prepared task file:
 
 - **Translator self-check:** Compare each Russian sentence with its English source for actor, action, object, qualifications, facts, dates, attribution, numeric values and bold emphasis. Reread for natural Russian flow, then re-compare any changed sentence against the English.
 - **Independent audit calibration:** Faithful idiomatic paraphrases pass, and Russian clauses may reorder numeric values naturally. Each blocking finding must name the affected field, identify the specific English source detail to preserve, and explain what the current wording makes a reader misunderstand or miss.
