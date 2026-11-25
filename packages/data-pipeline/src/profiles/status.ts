@@ -1,26 +1,25 @@
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from '@o-tempora/shared-types';
-import { parseModelProfile } from './model-profile.js';
+import { parseModelProfile } from './model-profile.ts';
 import {
   readCompletedRepairs,
   readPendingAssessmentState,
-} from './pending-state.js';
-import { preflightProfile } from './preflight.js';
-import { readStoredProfiles, type StoredProfile } from './store.js';
-import { formatDates, type ProfileSubject } from './subjects.js';
+} from './pending-state.ts';
+import { readStoredProfiles, type StoredProfile } from './store.ts';
+import { formatDates, type ProfileSubject } from './subjects.ts';
 import {
   approvedTranslation,
   readTranslation,
   translationFeedback,
-} from './translation.js';
-import { asRecord } from './values.js';
+} from './translation.ts';
+import { asRecord } from './values.ts';
 import {
   parseAssessment,
   profileHash,
   readProfileApproval,
-} from './verification/policy.js';
-import { reportPathFor } from './verification/runner.js';
+} from './verification/policy.ts';
+import { reportPathFor } from './verification/runner.ts';
 
 const COMMANDS = {
   missing: ['prefetch', 'write'],
@@ -107,6 +106,7 @@ async function inspectSubject(
   const { qid } = subject;
   const incoming = path.join(incomingDir, `${qid}.json`);
   if (stored?.status !== 'edited' && (await hasFile(incoming))) {
+    const { preflightProfile } = await import('./preflight.ts');
     const preflight = await preflightProfile({
       qid,
       subject,

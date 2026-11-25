@@ -4,28 +4,28 @@ import {
   extractAssessedProfile,
   extractRepairResult,
   isRepairPatch,
-} from './assessed-profile.js';
-import { readSnapshot } from './evidence-cache.js';
-import { parseModelProfile } from './model-profile.js';
-import { passages } from './passages.js';
-import { readPendingAssessmentState } from './pending-state.js';
-import { readStoredProfiles } from './store.js';
-import type { ProfileSubject } from './subjects.js';
-import { asRecord } from './values.js';
+} from './assessed-profile.ts';
+import { readSnapshot } from './evidence-cache.ts';
+import { parseModelProfile } from './model-profile.ts';
+import { passages } from './passages.ts';
+import { readPendingAssessmentState } from './pending-state.ts';
+import { readStoredProfiles } from './store.ts';
+import type { ProfileSubject } from './subjects.ts';
+import { asRecord } from './values.ts';
 import {
   evidenceChecks,
   localMechanicalChecks,
   sourceClassificationIssues,
-} from './verification/mechanical.js';
+} from './verification/mechanical.ts';
 import {
   assessmentBlockers,
   checkEvidence,
   findingExcerpts,
   parseAssessment,
   profileHash,
-} from './verification/policy.js';
-import { reportPathFor } from './verification/runner.js';
-import { titleOfArticleUrl } from './wikipedia-qids.js';
+} from './verification/policy.ts';
+import { reportPathFor } from './verification/runner.ts';
+import { titleOfArticleUrl } from './wikipedia-qids.ts';
 
 async function readStoredBase(profilesDir: string, qid: string) {
   const entry = (await readStoredProfiles(profilesDir)).get(qid);

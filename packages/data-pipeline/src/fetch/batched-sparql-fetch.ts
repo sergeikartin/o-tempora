@@ -1,5 +1,5 @@
-import type { SparqlResults } from './sparql-result-shape.js';
-import { runSparqlQuery } from './wikidata-client.js';
+import type { SparqlResults } from './sparql-result-shape.ts';
+import { runSparqlQuery } from './wikidata-client.ts';
 
 // Kept well under any practical VALUES-clause size limit; batching also
 // bounds how much a single request can cost the query service, consistent

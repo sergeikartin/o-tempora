@@ -4,16 +4,16 @@ import {
   createBlockedHostCache,
   isBlockableFetchError,
   rootHost,
-} from './blocked-hosts.js';
-import { evidenceStore } from './evidence-cache.js';
-import { writeJson } from './store.js';
-import { type ProfileSubject, subjectBrief } from './subjects.js';
-import { asArray, asRecord, asString } from './values.js';
+} from './blocked-hosts.ts';
+import { evidenceStore } from './evidence-cache.ts';
+import { writeJson } from './store.ts';
+import { type ProfileSubject, subjectBrief } from './subjects.ts';
+import { asArray, asRecord, asString } from './values.ts';
 import {
   fetchReferenceLinks,
   fetchSource,
   sourceUrl,
-} from './verification/sources.js';
+} from './verification/sources.ts';
 
 const PREFETCH_MIN_TEXT_LENGTH = 1_000;
 const MAX_EXPLICIT_URLS = 24;

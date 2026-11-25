@@ -6,8 +6,8 @@ import {
   transformConflicts,
   transformMilestones,
   transformPeople,
-} from './index.js';
-import { computeFameScore } from './score.js';
+} from './index.ts';
+import { computeFameScore } from './score.ts';
 
 function stubRawFiles(
   t: TestContext,

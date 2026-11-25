@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
 import { type TestContext, test } from 'node:test';
-import { fetchWikipediaExtracts } from './fetch-wikipedia-extracts.js';
+import { fetchWikipediaExtracts } from './fetch-wikipedia-extracts.ts';
 
 function stubReads(
   t: TestContext,

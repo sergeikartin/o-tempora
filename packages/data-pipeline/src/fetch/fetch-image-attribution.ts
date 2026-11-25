@@ -1,12 +1,12 @@
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { batchedCommonsImageAttributionFetch } from './batched-commons-image-attribution-fetch.js';
-import { validateEnrichedConflictsFile } from './fetch-conflicts-enrichment.js';
-import { validateEnrichedMilestonesFile } from './fetch-milestones-enrichment.js';
-import { LANES, type Lane } from './lane.js';
-import { filterByQids, type QidFilter, writeRecordFile } from './qid-filter.js';
-import { validateSparqlResultShape } from './validate-sparql-result.js';
+import { batchedCommonsImageAttributionFetch } from './batched-commons-image-attribution-fetch.ts';
+import { validateEnrichedConflictsFile } from './fetch-conflicts-enrichment.ts';
+import { validateEnrichedMilestonesFile } from './fetch-milestones-enrichment.ts';
+import { LANES, type Lane } from './lane.ts';
+import { filterByQids, type QidFilter, writeRecordFile } from './qid-filter.ts';
+import { validateSparqlResultShape } from './validate-sparql-result.ts';
 
 const RAW_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),

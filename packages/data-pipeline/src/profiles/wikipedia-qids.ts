@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { retryAfterMs } from './http-retry.js';
-import { writeJson } from './store.js';
+import { retryAfterMs } from './http-retry.ts';
+import { writeJson } from './store.ts';
 
 const ENDPOINT = 'https://en.wikipedia.org/w/api.php';
 

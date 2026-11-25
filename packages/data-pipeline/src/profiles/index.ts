@@ -1,10 +1,4 @@
-import { parseQidsFlag } from '../fetch/qid-filter.js';
-import { runCoordinatorCommand } from './coordinator.js';
-import { type FinalizeOptions, finalizeProfiles } from './finalize.js';
-import { INCOMING_DIR, RAW_PROFILES_DIR } from './paths.js';
-import { loadWriterModel } from './prompt.js';
-import { loadSubjects } from './subjects.js';
-import { cachedArticleQidResolver } from './wikipedia-qids.js';
+import type { FinalizeOptions } from './finalize.ts';
 
 const USAGE = `Usage: profiles <finalize|status|preflight|prefetch|evidence|english-audit|english-repair|russian-translation|russian-audit> [flags]
   finalize  [--qids=Q1,Q2,...] [--run-id=<id>] [--model=<id>]
@@ -17,17 +11,29 @@ const USAGE = `Usage: profiles <finalize|status|preflight|prefetch|evidence|engl
   russian-translation --qid=Q1 [--out=<file>]
   russian-audit --qid=Q1 --candidate=<file> [--out=<file> | --result=<file>]`;
 
-export async function runFinalizeCommand(
-  argv: readonly string[],
-  loadOptions: () => Omit<
-    FinalizeOptions,
-    'model' | 'qids' | 'runId'
-  > = () => ({
+async function defaultFinalizeOptions(): Promise<
+  Omit<FinalizeOptions, 'model' | 'qids' | 'runId'>
+> {
+  const [
+    { INCOMING_DIR, RAW_PROFILES_DIR },
+    { loadSubjects },
+    { cachedArticleQidResolver },
+  ] = await Promise.all([
+    import('./paths.ts'),
+    import('./subjects.ts'),
+    import('./wikipedia-qids.ts'),
+  ]);
+  return {
     incomingDir: INCOMING_DIR,
     profilesDir: RAW_PROFILES_DIR,
     subjects: loadSubjects(),
     resolveArticleQids: cachedArticleQidResolver(RAW_PROFILES_DIR),
-  }),
+  };
+}
+
+export async function runFinalizeCommand(
+  argv: readonly string[],
+  loadOptions?: () => Omit<FinalizeOptions, 'model' | 'qids' | 'runId'>,
 ) {
   const unknown = argv.find(
     (arg) =>
@@ -40,9 +46,16 @@ export async function runFinalizeCommand(
   const model = models[0]?.slice('--model='.length).trim();
   if (models.length > 1 || model === '')
     throw new Error('--model takes one non-empty model ID');
+  const [{ parseQidsFlag }, { finalizeProfiles }, { loadWriterModel }] =
+    await Promise.all([
+      import('../fetch/qid-filter.ts'),
+      import('./finalize.ts'),
+      import('./prompt.ts'),
+    ]);
+  const options = loadOptions ? loadOptions() : await defaultFinalizeOptions();
   const now = new Date();
   return finalizeProfiles({
-    ...loadOptions(),
+    ...options,
     model: model ?? (await loadWriterModel()),
     qids: parseQidsFlag(argv) ?? undefined,
     runId:
@@ -69,9 +82,12 @@ async function finalize(argv: readonly string[]): Promise<void> {
 
 async function main(): Promise<void> {
   const [command, ...argv] = process.argv.slice(2);
-  if (command === 'finalize') await finalize(argv);
-  else if (!(await runCoordinatorCommand(command, argv)))
-    throw new Error(USAGE);
+  if (command === 'finalize') {
+    await finalize(argv);
+    return;
+  }
+  const { runCoordinatorCommand } = await import('./coordinator.ts');
+  if (!(await runCoordinatorCommand(command, argv))) throw new Error(USAGE);
 }
 
 if (import.meta.main)

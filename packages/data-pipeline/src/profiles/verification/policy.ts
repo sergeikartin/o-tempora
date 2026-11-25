@@ -1,5 +1,5 @@
-import { passages } from '../passages.js';
-import { asRecord } from '../values.js';
+import { passages } from '../passages.ts';
+import { asRecord } from '../values.ts';
 import {
   type Assessment,
   type Audit,
@@ -9,7 +9,7 @@ import {
   parseAssessment,
   parseAudit,
   strings,
-} from './assessment.js';
+} from './assessment.ts';
 
 export {
   type Assessment,
@@ -20,7 +20,7 @@ export {
   parseAssessment,
   parseAudit,
   strings,
-} from './assessment.js';
+} from './assessment.ts';
 
 export const POLICY_VERSION = '8';
 

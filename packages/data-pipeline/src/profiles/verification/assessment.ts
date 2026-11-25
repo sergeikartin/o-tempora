@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { asArray, asRecord, asString } from '../values.js';
+import { asArray, asRecord, asString } from '../values.ts';
 
 export interface Evidence {
   source: string;

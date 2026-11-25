@@ -4,13 +4,13 @@ import type {
   TaggedConflict,
   TaggedMilestone,
   TaggedPerson,
-} from '../transform/index.js';
+} from '../transform/index.ts';
 import {
   buildConflicts,
   buildMilestones,
   buildPeople,
   splitByDetailLevel,
-} from './write-datasets.js';
+} from './write-datasets.ts';
 
 function taggedPerson(overrides: Partial<TaggedPerson> = {}): TaggedPerson {
   return {

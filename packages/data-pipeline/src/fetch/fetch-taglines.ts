@@ -1,12 +1,12 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { batchedSparqlFetch } from './batched-sparql-fetch.js';
-import { parsePantheonCsv } from './pantheon-row-shape.js';
-import type { QidFilter } from './qid-filter.js';
-import { MIN_HPI } from './queries/min-hpi.js';
-import { buildTaglinesQuery } from './queries/taglines.js';
-import { validateSparqlResultShape } from './validate-sparql-result.js';
+import { batchedSparqlFetch } from './batched-sparql-fetch.ts';
+import { parsePantheonCsv } from './pantheon-row-shape.ts';
+import type { QidFilter } from './qid-filter.ts';
+import { MIN_HPI } from './queries/min-hpi.ts';
+import { buildTaglinesQuery } from './queries/taglines.ts';
+import { validateSparqlResultShape } from './validate-sparql-result.ts';
 
 const RAW_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),

@@ -3,7 +3,7 @@ import type {
   MilestoneCategory,
   Region,
 } from '@o-tempora/shared-types';
-import { REGION_CATEGORIES } from './region-categories.js';
+import { REGION_CATEGORIES } from './region-categories.ts';
 
 export interface MilestoneTags {
   category: MilestoneCategory;

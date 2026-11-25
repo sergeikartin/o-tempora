@@ -15,12 +15,12 @@ import {
   indexProfileSources,
   statSubjectInputs,
   writeSubjectsCache,
-} from '../profiles/subjects.js';
+} from '../profiles/subjects.ts';
 import {
   transformConflicts,
   transformMilestones,
   transformPeople,
-} from '../transform/index.js';
+} from '../transform/index.ts';
 import {
   type ProfileTarget,
   readRawProfiles,
@@ -28,19 +28,19 @@ import {
   verifyBuiltProfiles,
   withProfileFlags,
   writeProfiles,
-} from './profiles.js';
+} from './profiles.ts';
 import {
   assignConflictsMilestonesRows,
   assignPersonRows,
-} from './row-assignment.js';
-import { assignSlugs } from './slugs.js';
+} from './row-assignment.ts';
+import { assignSlugs } from './slugs.ts';
 import {
   buildConflicts,
   buildMilestones,
   buildPeople,
   type DropReport,
   splitByDetailLevel,
-} from './write-datasets.js';
+} from './write-datasets.ts';
 
 // The pipeline owns its own output — generating a dataset is a separate,
 // inspectable step from publishing it for consumers to read. `publish.ts`

@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { PROMPT_PATH, PROMPTS_DIR, WRITER_AGENT_PATH } from './paths.js';
+import { PROMPT_PATH, PROMPTS_DIR, WRITER_AGENT_PATH } from './paths.ts';
 
 export interface PromptInfo {
   version: string;

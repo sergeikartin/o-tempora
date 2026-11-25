@@ -1,5 +1,5 @@
-import type { SparqlResults } from './sparql-result-shape.js';
-import { validateSparqlResultShape } from './validate-sparql-result.js';
+import type { SparqlResults } from './sparql-result-shape.ts';
+import { validateSparqlResultShape } from './validate-sparql-result.ts';
 
 const ENDPOINT = 'https://query.wikidata.org/sparql';
 

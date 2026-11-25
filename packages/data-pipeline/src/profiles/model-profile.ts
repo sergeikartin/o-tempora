@@ -1,4 +1,4 @@
-import { asArray, asRecord, asString } from './values.js';
+import { asArray, asRecord, asString } from './values.ts';
 
 export const PROFILE_SCHEMA_VERSION = 4;
 

@@ -1,4 +1,4 @@
-import { parseCsvLine } from './csv.js';
+import { parseCsvLine } from './csv.ts';
 
 export interface PantheonPersonRow {
   id: string;

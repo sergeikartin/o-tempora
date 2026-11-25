@@ -3,15 +3,15 @@ import path from 'node:path';
 import {
   createBlockedHostCache,
   isBlockableFetchError,
-} from './blocked-hosts.js';
-import { writeJson } from './store.js';
-import { hash } from './verification/assessment.js';
+} from './blocked-hosts.ts';
+import { writeJson } from './store.ts';
+import { hash } from './verification/assessment.ts';
 import {
   fetchSource,
   parseSourceSnapshot,
   SourceStore,
   sourceUrl,
-} from './verification/sources.js';
+} from './verification/sources.ts';
 
 async function readJson(file: string): Promise<unknown> {
   return JSON.parse(await readFile(file, 'utf8'));

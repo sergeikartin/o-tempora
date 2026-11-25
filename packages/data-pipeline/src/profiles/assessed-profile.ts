@@ -1,13 +1,13 @@
-import { type ModelProfile, parseModelProfile } from './model-profile.js';
-import { passages } from './passages.js';
-import { asArray, asRecord, asString } from './values.js';
+import { type ModelProfile, parseModelProfile } from './model-profile.ts';
+import { passages } from './passages.ts';
+import { asArray, asRecord, asString } from './values.ts';
 import {
   type Assessment,
   hash,
   parseAssessment,
   profileHash,
   strings,
-} from './verification/policy.js';
+} from './verification/policy.ts';
 
 export function extractAssessedProfile(value: unknown) {
   const root = asRecord(value, 'assessed Profile');

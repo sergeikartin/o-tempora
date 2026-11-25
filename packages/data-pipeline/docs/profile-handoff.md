@@ -29,7 +29,7 @@ Use one active workflow per QID. Retain completed artifacts when pausing. During
 Run the following commands from the repository root. Prepare the audit once status reports `draft-pending-audit`.
 
 ```sh
-profiles() { node --import tsx packages/data-pipeline/src/profiles/index.ts "$@"; }
+profiles() { NODE_USE_ENV_PROXY=1 node packages/data-pipeline/src/profiles/index.ts "$@"; }
 handoff=packages/data-pipeline/data/raw/profiles/tasks/Q935
 profiles status --qids=Q935 --stage=draft-pending-audit --limit=1
 profiles english-audit --qid=Q935 --out="$handoff/audit-task.json"

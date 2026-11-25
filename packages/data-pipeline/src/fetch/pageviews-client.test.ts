@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { type TestContext, test } from 'node:test';
-import { fetchArticlePageviews } from './pageviews-client.js';
+import { fetchArticlePageviews } from './pageviews-client.ts';
 
 function jsonResponse(
   body: unknown,

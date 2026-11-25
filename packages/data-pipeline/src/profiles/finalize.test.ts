@@ -10,12 +10,12 @@ import {
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
-import { parseRawProfile } from '../output/profiles.js';
-import { extractAssessedProfile } from './assessed-profile.js';
-import { type FinalizeOptions, finalizeProfiles } from './finalize.js';
-import { runFinalizeCommand } from './index.js';
-import { readPendingAssessmentState } from './pending-state.js';
-import type { ProfileSubject } from './subjects.js';
+import { parseRawProfile } from '../output/profiles.ts';
+import { extractAssessedProfile } from './assessed-profile.ts';
+import { type FinalizeOptions, finalizeProfiles } from './finalize.ts';
+import { runFinalizeCommand } from './index.ts';
+import { readPendingAssessmentState } from './pending-state.ts';
+import type { ProfileSubject } from './subjects.ts';
 
 const SUBJECTS: ProfileSubject[] = [
   {

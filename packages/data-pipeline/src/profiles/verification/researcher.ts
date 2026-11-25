@@ -1,14 +1,14 @@
-import type { ModelProfile } from '../model-profile.js';
-import { readPromptText } from '../prompt.js';
-import { type ProfileSubject, subjectBrief } from '../subjects.js';
+import type { ModelProfile } from '../model-profile.ts';
+import { readPromptText } from '../prompt.ts';
+import { type ProfileSubject, subjectBrief } from '../subjects.ts';
 import {
   type Assessment,
   type Evidence,
   findingExcerpts,
   normalizeText,
   type Source,
-} from './policy.js';
-import { headingPathAt } from './sources.js';
+} from './policy.ts';
+import { headingPathAt } from './sources.ts';
 
 const AUDIT_CONTEXT_WINDOW = 350;
 

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { buildPeople } from '../output/write-datasets.js';
-import { loadSubjects, subjectBrief } from '../profiles/subjects.js';
-import { transformPeople } from './index.js';
-import { correctPersonDates } from './person-date-corrections.js';
+import { buildPeople } from '../output/write-datasets.ts';
+import { loadSubjects, subjectBrief } from '../profiles/subjects.ts';
+import { transformPeople } from './index.ts';
+import { correctPersonDates } from './person-date-corrections.ts';
 
 const rows = transformPeople();
 

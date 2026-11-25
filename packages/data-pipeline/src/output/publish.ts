@@ -1,9 +1,9 @@
 import { copyFile, mkdir, readdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SUBJECTS_CACHE_FILENAME } from '../profiles/paths.js';
+import { SUBJECTS_CACHE_FILENAME } from '../profiles/paths.ts';
 
-import { verifyBuiltProfiles } from './profiles.js';
+import { verifyBuiltProfiles } from './profiles.ts';
 
 const SOURCE_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),

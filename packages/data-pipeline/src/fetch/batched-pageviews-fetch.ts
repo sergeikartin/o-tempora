@@ -1,8 +1,8 @@
-import { fetchArticlePageviews } from './pageviews-client.js';
+import { fetchArticlePageviews } from './pageviews-client.ts';
 import {
   PAGEVIEWS_LANGUAGES,
   type PageviewsLanguage,
-} from './pageviews-languages.js';
+} from './pageviews-languages.ts';
 
 // The Pageviews API takes one article per request, so pace groups of requests.
 const BATCH_SIZE = 50;

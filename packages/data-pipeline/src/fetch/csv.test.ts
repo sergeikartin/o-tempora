@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { parseCsvLine } from './csv.js';
+import { parseCsvLine } from './csv.ts';
 
 test('splits a simple unquoted line on commas', () => {
   assert.deepEqual(parseCsvLine('1,FALSE,570'), ['1', 'FALSE', '570']);

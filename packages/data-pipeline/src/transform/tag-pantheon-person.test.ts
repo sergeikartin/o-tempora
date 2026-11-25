@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import type { PantheonPersonRow } from '../fetch/pantheon-row-shape.js';
-import { tagPantheonPerson } from './tag-pantheon-person.js';
+import type { PantheonPersonRow } from '../fetch/pantheon-row-shape.ts';
+import { tagPantheonPerson } from './tag-pantheon-person.ts';
 
 function pantheonRow(
   overrides: Partial<PantheonPersonRow> = {},

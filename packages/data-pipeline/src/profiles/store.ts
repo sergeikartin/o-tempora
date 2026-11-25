@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { PROFILE_LANES } from '@o-tempora/shared-types';
-import { asRecord, asString } from './values.js';
+import { asRecord, asString } from './values.ts';
 
 export interface StoredProfile {
   qid: string;

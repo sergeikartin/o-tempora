@@ -1,75 +1,23 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { getDomain } from 'tldts';
-import { parseQidsFlag } from '../fetch/qid-filter.js';
-import { flaggedRepairPaths } from './assessed-profile.js';
-import { evidenceStore, readSnapshot } from './evidence-cache.js';
-import { parseModelProfile } from './model-profile.js';
-import { RAW_PROFILES_DIR } from './paths.js';
-import {
-  readCompletedRepairs,
-  readPendingAssessmentState,
-} from './pending-state.js';
-import {
-  parsePrefetchManifest,
-  prefetchBatch,
-  validatePrefetchConcurrency,
-} from './prefetch.js';
-import { preflightProfile } from './preflight.js';
-import { readPromptText } from './prompt.js';
-import {
-  inspectProfileStatus,
-  parseProfileScope,
-  parseProfileStages,
-} from './status.js';
-import { readStoredProfiles, writeJson } from './store.js';
-import { formatDates, loadSubjects } from './subjects.js';
-import {
-  applyRussianAudit,
-  approvedTranslation,
-  buildRussianGlossary,
-  loadTranslationSource,
-  parseTranslationFields,
-  prepareTranslationCorrection,
-  readTranslation,
-  russianAuditPrompt,
-  translationFeedback,
-  translationPrompt,
-} from './translation.js';
-import { type AgentRunMeta, parseTokenUsage } from './usage.js';
-import { asArray, asRecord, asString } from './values.js';
-import {
-  type Assessment,
-  findingExcerpts,
-  hash,
-  parseAssessment,
-  profileHash,
-  strings,
-} from './verification/policy.js';
-import { englishAuditPrompt } from './verification/researcher.js';
-import {
-  applyEnglishAudit,
-  checkpointEnglishRepair,
-  reportPathFor,
-} from './verification/runner.js';
-import { fetchSource, sourceUrl } from './verification/sources.js';
-import {
-  cachedArticleQidResolver,
-  type ResolveArticleQids,
-} from './wikipedia-qids.js';
+import { RAW_PROFILES_DIR } from './paths.ts';
+import type { loadSubjects } from './subjects.ts';
+import { type AgentRunMeta, parseTokenUsage } from './usage.ts';
+import { asArray, asRecord, asString } from './values.ts';
+import type { Assessment } from './verification/policy.ts';
+import type { fetchSource } from './verification/sources.ts';
+import type { ResolveArticleQids } from './wikipedia-qids.ts';
 
 interface CoordinatorOptions {
   profilesDir: string;
-  resolve: ResolveArticleQids;
-  fetch: typeof fetchSource;
+  resolve?: ResolveArticleQids;
+  fetch?: typeof fetchSource;
   emit: (result: unknown) => void;
   subjects?: typeof loadSubjects;
 }
 
 const defaultOptions: CoordinatorOptions = {
   profilesDir: RAW_PROFILES_DIR,
-  resolve: cachedArticleQidResolver(RAW_PROFILES_DIR),
-  fetch: fetchSource,
   emit(result) {
     console.log(JSON.stringify(result));
     if (
@@ -81,6 +29,25 @@ const defaultOptions: CoordinatorOptions = {
       process.exitCode = 1;
   },
 };
+
+async function getFetch(options: CoordinatorOptions) {
+  return (
+    options.fetch ?? (await import('./verification/sources.ts')).fetchSource
+  );
+}
+
+async function getResolve(options: CoordinatorOptions) {
+  return (
+    options.resolve ??
+    (await import('./wikipedia-qids.ts')).cachedArticleQidResolver(
+      options.profilesDir,
+    )
+  );
+}
+
+async function getSubjectsLoader(options: CoordinatorOptions) {
+  return options.subjects ?? (await import('./subjects.ts')).loadSubjects;
+}
 
 async function readJson(file: string): Promise<unknown> {
   return JSON.parse(await readFile(file, 'utf8'));
@@ -95,8 +62,15 @@ async function readOptionalJson(file: string): Promise<unknown> {
 }
 
 async function loadSubject(options: CoordinatorOptions, qid: string) {
+  const [
+    { formatDates, loadSubjects: defaultLoadSubjects },
+    { readStoredProfiles },
+  ] = await Promise.all([import('./subjects.ts'), import('./store.ts')]);
   const subjects = new Map(
-    (options.subjects ?? loadSubjects)().map((entry) => [entry.qid, entry]),
+    (options.subjects ?? defaultLoadSubjects)().map((entry) => [
+      entry.qid,
+      entry,
+    ]),
   );
   const subject = subjects.get(qid);
   const entry = (await readStoredProfiles(options.profilesDir)).get(qid);
@@ -113,21 +87,30 @@ async function loadSubject(options: CoordinatorOptions, qid: string) {
   };
 }
 
-function task(prompt: string, binding: unknown) {
-  return { prompt, input_hash: hash({ prompt, binding }) };
+function makeTask(
+  hashFn: (value: unknown) => string,
+  prompt: string,
+  binding: unknown,
+) {
+  return { prompt, input_hash: hashFn({ prompt, binding }) };
 }
 
 type TaskOptions = CoordinatorOptions & { outFile?: string };
 
 async function emitTask(
   options: TaskOptions,
-  prepared: ReturnType<typeof task> & { targets?: readonly unknown[] },
+  prepared: {
+    prompt: string;
+    input_hash: string;
+    targets?: readonly unknown[];
+  },
 ) {
   const { outFile } = options;
   if (!outFile) {
     options.emit(prepared);
     return;
   }
+  const { writeJson } = await import('./store.ts');
   await writeJson(outFile, prepared);
   options.emit({
     status: 'prepared',
@@ -161,7 +144,19 @@ function agentRunMeta(value: Record<string, unknown>): AgentRunMeta {
 }
 
 async function loadEnglishAssessment(options: CoordinatorOptions, qid: string) {
-  const { filePath, subject, record } = await loadSubject(options, qid);
+  const [
+    { filePath, subject, record },
+    { parseModelProfile },
+    { readPendingAssessmentState },
+    { parseAssessment, profileHash, strings },
+    { reportPathFor },
+  ] = await Promise.all([
+    loadSubject(options, qid),
+    import('./model-profile.ts'),
+    import('./pending-state.ts'),
+    import('./verification/policy.ts'),
+    import('./verification/runner.ts'),
+  ]);
   const profile = parseModelProfile(record, filePath);
   const pending = await readPendingAssessmentState(
     options.profilesDir,
@@ -189,10 +184,14 @@ async function loadEnglishAssessment(options: CoordinatorOptions, qid: string) {
   return { filePath, subject, profile, record, pending, ...input };
 }
 
-function assessmentSnapshots(
+async function assessmentSnapshots(
   options: CoordinatorOptions,
   assessment: Assessment,
 ) {
+  const [{ readSnapshot }, { findingExcerpts }] = await Promise.all([
+    import('./evidence-cache.ts'),
+    import('./verification/policy.ts'),
+  ]);
   const ids = new Set(
     assessment.findings.flatMap((finding) =>
       findingExcerpts(finding).map(({ source }) => source),
@@ -207,8 +206,21 @@ async function englishAudit(
   qid: string,
   resultFile?: string,
 ) {
+  const [
+    loaded,
+    { hash, profileHash },
+    { englishAuditPrompt },
+    { readCompletedRepairs },
+    { applyEnglishAudit },
+  ] = await Promise.all([
+    loadEnglishAssessment(options, qid),
+    import('./verification/policy.ts'),
+    import('./verification/researcher.ts'),
+    import('./pending-state.ts'),
+    import('./verification/runner.ts'),
+  ]);
   const { filePath, subject, profile, record, pending, assessment, model } =
-    await loadEnglishAssessment(options, qid);
+    loaded;
   const reAudit =
     pending?.repairedPaths !== undefined && pending.priorBlockers !== undefined
       ? {
@@ -217,7 +229,8 @@ async function englishAudit(
         }
       : undefined;
   const snapshots = await assessmentSnapshots(options, assessment);
-  const prepared = task(
+  const prepared = makeTask(
+    hash,
     englishAuditPrompt(profile, subject, assessment, snapshots, reAudit),
     {
       profile_hash: profileHash(record),
@@ -229,8 +242,11 @@ async function englishAudit(
     await emitTask(options, prepared);
     return;
   }
-  const audit = asRecord(await readJson(resultFile), 'English audit');
-  const repairs = await readCompletedRepairs(options.profilesDir, qid, record);
+  const [audit, repairs, resolve] = await Promise.all([
+    readJson(resultFile).then((value) => asRecord(value, 'English audit')),
+    readCompletedRepairs(options.profilesDir, qid, record),
+    getResolve(options),
+  ]);
   options.emit(
     await applyEnglishAudit({
       filePath,
@@ -240,7 +256,7 @@ async function englishAudit(
       researcherModel: model,
       audit: output(audit, prepared.input_hash),
       auditModel: agentRunMeta(audit).model,
-      resolve: options.resolve,
+      resolve,
       expectedRecordHash: hash(record),
       force: pending !== undefined,
       repairs,
@@ -253,7 +269,23 @@ async function englishRepair(
   qid: string,
   resultFile?: string,
 ) {
-  const { filePath, subject, record, dates } = await loadSubject(options, qid);
+  const [
+    { filePath, subject, record, dates },
+    { flaggedRepairPaths },
+    { parseModelProfile },
+    { readCompletedRepairs, readPendingAssessmentState },
+    { readPromptText },
+    { hash, parseAssessment, profileHash, strings },
+    { checkpointEnglishRepair, reportPathFor },
+  ] = await Promise.all([
+    loadSubject(options, qid),
+    import('./assessed-profile.ts'),
+    import('./model-profile.ts'),
+    import('./pending-state.ts'),
+    import('./prompt.ts'),
+    import('./verification/policy.ts'),
+    import('./verification/runner.ts'),
+  ]);
   if (await readPendingAssessmentState(options.profilesDir, qid, record))
     throw new Error(
       'Audit the pending assessment before preparing another repair',
@@ -285,7 +317,8 @@ async function englishRepair(
         flaggedSet.has(finding.path),
       );
   const repairs = await readCompletedRepairs(options.profilesDir, qid, record);
-  const prepared = task(
+  const prepared = makeTask(
+    hash,
     readPromptText('profile-assessment-repair.md') +
       JSON.stringify({
         profile,
@@ -301,7 +334,10 @@ async function englishRepair(
     await emitTask(options, prepared);
     return;
   }
-  const reply = asRecord(await readJson(resultFile), 'English repair');
+  const [reply, resolve] = await Promise.all([
+    readJson(resultFile).then((value) => asRecord(value, 'English repair')),
+    getResolve(options),
+  ]);
   const result = output(reply, prepared.input_hash);
   options.emit(
     await checkpointEnglishRepair({
@@ -311,13 +347,29 @@ async function englishRepair(
       report,
       result,
       model: agentRunMeta(reply).model,
-      resolve: options.resolve,
+      resolve,
     }),
   );
 }
 
 async function russianTranslation(options: TaskOptions, qid: string) {
-  const { filePath, dates, subjects } = await loadSubject(options, qid);
+  const [
+    { filePath, dates, subjects },
+    {
+      approvedTranslation,
+      buildRussianGlossary,
+      loadTranslationSource,
+      prepareTranslationCorrection,
+      readTranslation,
+      translationFeedback,
+      translationPrompt,
+    },
+    { hash, profileHash },
+  ] = await Promise.all([
+    loadSubject(options, qid),
+    import('./translation.ts'),
+    import('./verification/policy.ts'),
+  ]);
   const raw = await loadTranslationSource(filePath, dates);
   if (approvedTranslation(await readTranslation(filePath), raw)) {
     options.emit({ status: 'skipped' });
@@ -328,7 +380,8 @@ async function russianTranslation(options: TaskOptions, qid: string) {
   const correction = prepareTranslationCorrection(raw, feedback, glossary);
   await emitTask(
     options,
-    task(
+    makeTask(
+      hash,
       correction?.prompt ?? translationPrompt(raw, feedback, glossary),
       profileHash(raw),
     ),
@@ -341,7 +394,24 @@ async function russianAudit(
   candidateFile: string,
   resultFile?: string,
 ) {
-  const { filePath, dates, subjects } = await loadSubject(options, qid);
+  const [
+    { filePath, dates, subjects },
+    {
+      applyRussianAudit,
+      buildRussianGlossary,
+      loadTranslationSource,
+      parseTranslationFields,
+      prepareTranslationCorrection,
+      russianAuditPrompt,
+      translationFeedback,
+      translationPrompt,
+    },
+    { hash, profileHash },
+  ] = await Promise.all([
+    loadSubject(options, qid),
+    import('./translation.ts'),
+    import('./verification/policy.ts'),
+  ]);
   const raw = await loadTranslationSource(filePath, dates);
   const binding = profileHash(raw);
   const candidate = asRecord(
@@ -350,7 +420,8 @@ async function russianAudit(
   );
   const glossary = buildRussianGlossary(raw, subjects);
   const feedback = await translationFeedback(filePath, raw);
-  const translationTask = task(
+  const translationTask = makeTask(
+    hash,
     translationPrompt(raw, feedback, glossary),
     binding,
   );
@@ -359,7 +430,7 @@ async function russianAudit(
   if (correction && candidate.input_hash !== translationTask.input_hash) {
     const reply = output(
       candidate,
-      task(correction.prompt, binding).input_hash,
+      makeTask(hash, correction.prompt, binding).input_hash,
     );
     const replacements = asRecord(reply.fields, 'replacement fields');
     const paths = Object.keys(replacements);
@@ -373,7 +444,11 @@ async function russianAudit(
     proposedFields = output(candidate, translationTask.input_hash).fields;
   }
   const fields = parseTranslationFields(proposedFields, raw);
-  const prepared = task(russianAuditPrompt(raw, fields, glossary), binding);
+  const prepared = makeTask(
+    hash,
+    russianAuditPrompt(raw, fields, glossary),
+    binding,
+  );
   if (!resultFile) {
     await emitTask(options, prepared);
     return;
@@ -444,12 +519,19 @@ export async function runCoordinatorCommand(
   const required = (name: string) => asString(flags.get(name), `--${name}`);
   if (command === 'evidence') {
     const batchArg = flags.get('batch');
+    const [{ getDomain }, { evidenceStore }, { sourceUrl }, fetch] =
+      await Promise.all([
+        import('tldts'),
+        import('./evidence-cache.ts'),
+        import('./verification/sources.ts'),
+        getFetch(options),
+      ]);
     const sources = evidenceStore(
       options.profilesDir,
       (url) =>
         getDomain(sourceUrl(url).hostname) === 'wikipedia.org'
-          ? options.fetch(url)
-          : options.fetch(url, { maxAttempts: 1, rejectBotWalls: true }),
+          ? fetch(url)
+          : fetch(url, { maxAttempts: 1, rejectBotWalls: true }),
       flags.has('refresh'),
     );
     if (batchArg !== undefined) {
@@ -531,6 +613,17 @@ export async function runCoordinatorCommand(
           }),
     );
   } else if (command === 'prefetch') {
+    const [
+      { parseQidsFlag },
+      { parsePrefetchManifest, prefetchBatch, validatePrefetchConcurrency },
+      loadSubjectsFn,
+      fetch,
+    ] = await Promise.all([
+      import('../fetch/qid-filter.ts'),
+      import('./prefetch.ts'),
+      getSubjectsLoader(options),
+      getFetch(options),
+    ]);
     const qids = parseQidsFlag(argv);
     if (!qids) throw new Error('--qids is required for prefetch');
     const manifestFile = flags.get('manifest');
@@ -546,10 +639,7 @@ export async function runCoordinatorCommand(
     const concurrency = Number(flags.get('concurrency') ?? 1);
     validatePrefetchConcurrency(concurrency);
     const byQid = new Map(
-      (options.subjects ?? loadSubjects)().map((subject) => [
-        subject.qid,
-        subject,
-      ]),
+      loadSubjectsFn().map((subject) => [subject.qid, subject]),
     );
     const subjects = [...qids].map((qid) => {
       const subject = byQid.get(qid);
@@ -576,11 +666,20 @@ export async function runCoordinatorCommand(
       refresh: flags.has('refresh'),
       manifest,
       urls,
-      fetch: options.fetch,
+      fetch,
       concurrency,
     });
     for (const result of results) options.emit(result);
   } else if (command === 'status') {
+    const [
+      { parseQidsFlag },
+      { inspectProfileStatus, parseProfileScope, parseProfileStages },
+      loadSubjectsFn,
+    ] = await Promise.all([
+      import('../fetch/qid-filter.ts'),
+      import('./status.ts'),
+      getSubjectsLoader(options),
+    ]);
     const qids = parseQidsFlag(argv);
     const scope = parseProfileScope(flags.get('scope'));
     const stages = parseProfileStages(flags.get('stage'));
@@ -597,7 +696,7 @@ export async function runCoordinatorCommand(
         limit: limit === undefined ? undefined : Number(limit),
         profilesDir: options.profilesDir,
         incomingDir: path.join(options.profilesDir, 'incoming'),
-        subjects: (options.subjects ?? loadSubjects)({ readOnly: true }),
+        subjects: loadSubjectsFn({ readOnly: true }),
       }),
     );
   } else {
@@ -606,9 +705,11 @@ export async function runCoordinatorCommand(
     const taskOptions = { ...options, outFile: flags.get('out') };
     if (command === 'preflight') {
       if (!/^Q\d+$/.test(qid)) throw new Error('--qid must be a Wikidata QID');
-      const subject = (options.subjects ?? loadSubjects)().find(
-        (entry) => entry.qid === qid,
-      );
+      const [{ preflightProfile }, loadSubjectsFn] = await Promise.all([
+        import('./preflight.ts'),
+        getSubjectsLoader(options),
+      ]);
+      const subject = loadSubjectsFn().find((entry) => entry.qid === qid);
       options.emit(
         await preflightProfile({
           qid,

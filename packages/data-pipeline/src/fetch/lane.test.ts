@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { parseLaneFlag } from './lane.js';
+import { parseLaneFlag } from './lane.ts';
 
 test("parseLaneFlag returns undefined when --lane is absent (today's unchanged 'run all three' default)", () => {
   assert.equal(parseLaneFlag([]), undefined);

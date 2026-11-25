@@ -1,21 +1,21 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { extractRepairResult } from '../assessed-profile.js';
+import { extractRepairResult } from '../assessed-profile.ts';
 import {
   type ModelProfile,
   PROFILE_SCHEMA_VERSION,
   parseModelProfile,
-} from '../model-profile.js';
+} from '../model-profile.ts';
 import {
   clearPendingState,
   readCompletedRepairs,
   writePendingState,
-} from '../pending-state.js';
-import { writeJson } from '../store.js';
-import { formatDates, type ProfileSubject } from '../subjects.js';
-import { asRecord } from '../values.js';
-import type { ResolveArticleQids } from '../wikipedia-qids.js';
-import { evidenceChecks, mechanicalChecks } from './mechanical.js';
+} from '../pending-state.ts';
+import { writeJson } from '../store.ts';
+import { formatDates, type ProfileSubject } from '../subjects.ts';
+import { asRecord } from '../values.ts';
+import type { ResolveArticleQids } from '../wikipedia-qids.ts';
+import { evidenceChecks, mechanicalChecks } from './mechanical.ts';
 import {
   type Assessment,
   blockers,
@@ -29,7 +29,7 @@ import {
   readProfileApproval,
   type Source,
   strings,
-} from './policy.js';
+} from './policy.ts';
 export interface EnglishAuditOptions {
   filePath: string;
   subject: ProfileSubject;

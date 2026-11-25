@@ -1,9 +1,9 @@
 import { readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { getDomain } from 'tldts';
-import { writeJson } from './store.js';
-import { hash } from './verification/assessment.js';
-import { SourceFetchError, sourceUrl } from './verification/sources.js';
+import { writeJson } from './store.ts';
+import { hash } from './verification/assessment.ts';
+import { SourceFetchError, sourceUrl } from './verification/sources.ts';
 
 export const BLOCK_TTL = 7 * 24 * 60 * 60 * 1_000;
 const UNSUPPORTED_TYPE_REASON = 'Source is not readable HTML or plain text';

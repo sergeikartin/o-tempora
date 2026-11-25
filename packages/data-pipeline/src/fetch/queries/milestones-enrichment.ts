@@ -1,4 +1,4 @@
-import { articleVar, PAGEVIEWS_LANGUAGES } from '../pageviews-languages.js';
+import { articleVar, PAGEVIEWS_LANGUAGES } from '../pageviews-languages.ts';
 
 function articleOptionalBlocks(): string {
   return PAGEVIEWS_LANGUAGES.map(

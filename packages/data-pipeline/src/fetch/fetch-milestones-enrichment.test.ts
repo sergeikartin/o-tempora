@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { resolveDate } from './fetch-milestones-enrichment.js';
+import { resolveDate } from './fetch-milestones-enrichment.ts';
 
 const wikidata = { year: 1620, month: 7, endYear: 1620, endMonth: 11 };
 

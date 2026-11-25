@@ -4,7 +4,7 @@ import {
   batchedPageviewsFetch,
   extractWikipediaArticleTitle,
   trailingFourYearWindow,
-} from './batched-pageviews-fetch.js';
+} from './batched-pageviews-fetch.ts';
 
 test('extractWikipediaArticleTitle recovers an underscore-joined title from a Wikipedia article URL', () => {
   const title = extractWikipediaArticleTitle(

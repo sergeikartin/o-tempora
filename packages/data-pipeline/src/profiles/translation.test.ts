@@ -7,11 +7,11 @@ import {
   readRawProfiles,
   shipProfiles,
   writeProfiles,
-} from '../output/profiles.js';
-import { parseModelProfile } from './model-profile.js';
-import { passages } from './passages.js';
-import { readPromptText } from './prompt.js';
-import type { ProfileSubject } from './subjects.js';
+} from '../output/profiles.ts';
+import { parseModelProfile } from './model-profile.ts';
+import { passages } from './passages.ts';
+import { readPromptText } from './prompt.ts';
+import type { ProfileSubject } from './subjects.ts';
 import {
   applyRussianAudit,
   approvedTranslation,
@@ -23,10 +23,10 @@ import {
   translationPassages,
   translationPath,
   translationPrompt,
-} from './translation.js';
-import { asRecord } from './values.js';
-import { type Assessment, hash } from './verification/policy.js';
-import { applyEnglishAudit } from './verification/runner.js';
+} from './translation.ts';
+import { asRecord } from './values.ts';
+import { type Assessment, hash } from './verification/policy.ts';
+import { applyEnglishAudit } from './verification/runner.ts';
 
 const URL = 'https://en.wikipedia.org/wiki/Isaac_Newton';
 const raw = () => ({

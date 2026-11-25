@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { buildTaglinesQuery } from './taglines.js';
+import { buildTaglinesQuery } from './taglines.ts';
 
 test('builds a VALUES clause from wd:-prefixed person QIDs', () => {
   const query = buildTaglinesQuery(['Q935', 'Q9441']);

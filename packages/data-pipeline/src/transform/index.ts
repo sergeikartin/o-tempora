@@ -6,20 +6,20 @@ import type {
   MilestoneCategory,
   Region,
 } from '@o-tempora/shared-types';
-import { validateEnrichedConflictsFile } from '../fetch/fetch-conflicts-enrichment.js';
-import { validateEnrichedMilestonesFile } from '../fetch/fetch-milestones-enrichment.js';
+import { validateEnrichedConflictsFile } from '../fetch/fetch-conflicts-enrichment.ts';
+import { validateEnrichedMilestonesFile } from '../fetch/fetch-milestones-enrichment.ts';
 import {
   type PantheonPersonRow,
   parsePantheonCsv,
-} from '../fetch/pantheon-row-shape.js';
-import { validateSparqlResultShape } from '../fetch/validate-sparql-result.js';
-import { correctPersonDates } from './person-date-corrections.js';
-import { rankByFameScore, scoreAndRankByHpi } from './score.js';
-import { tagCuratedConflict, tagCuratedMilestone } from './tag-milestones.js';
+} from '../fetch/pantheon-row-shape.ts';
+import { validateSparqlResultShape } from '../fetch/validate-sparql-result.ts';
+import { correctPersonDates } from './person-date-corrections.ts';
+import { rankByFameScore, scoreAndRankByHpi } from './score.ts';
+import { tagCuratedConflict, tagCuratedMilestone } from './tag-milestones.ts';
 import {
   type PantheonPersonTags,
   tagPantheonPerson,
-} from './tag-pantheon-person.js';
+} from './tag-pantheon-person.ts';
 
 // Display names come from Wikidata labels, so Pantheon’s name is excluded.
 export type TaggedPerson = Omit<PantheonPersonRow, 'name'> &

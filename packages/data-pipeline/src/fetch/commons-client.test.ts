@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { type TestContext, test } from 'node:test';
-import { fetchCommonsImageInfo } from './commons-client.js';
+import { fetchCommonsImageInfo } from './commons-client.ts';
 
 const EMPTY_RESULT = { query: { pages: [] } };
 

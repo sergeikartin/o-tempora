@@ -10,7 +10,7 @@ import {
   assignConflictsMilestonesRows,
   assignPersonRows,
   assignRows,
-} from './row-assignment.js';
+} from './row-assignment.ts';
 
 function person(overrides: Partial<Person> = {}): Person {
   return {

@@ -5,16 +5,16 @@ import {
   CONFLICT_CATEGORIES,
   type ConflictCategory,
 } from '@o-tempora/shared-types';
-import { parseIsoYear, parseMonthIfKnown } from '../transform/wikidata-date.js';
-import { batchedSparqlFetch } from './batched-sparql-fetch.js';
+import { parseIsoYear, parseMonthIfKnown } from '../transform/wikidata-date.ts';
+import { batchedSparqlFetch } from './batched-sparql-fetch.ts';
 import {
   articleVar,
   isArticleUrlsRecord,
   PAGEVIEWS_LANGUAGES,
   type PageviewsLanguage,
-} from './pageviews-languages.js';
-import { filterByQids, mergeEnriched, type QidFilter } from './qid-filter.js';
-import { buildConflictsEnrichmentQuery } from './queries/conflicts-enrichment.js';
+} from './pageviews-languages.ts';
+import { filterByQids, mergeEnriched, type QidFilter } from './qid-filter.ts';
+import { buildConflictsEnrichmentQuery } from './queries/conflicts-enrichment.ts';
 
 const RAW_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),

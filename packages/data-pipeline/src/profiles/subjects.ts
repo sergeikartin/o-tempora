@@ -13,7 +13,7 @@ import {
   buildConflicts,
   buildMilestones,
   buildPeople,
-} from '../output/write-datasets.js';
+} from '../output/write-datasets.ts';
 import {
   type TaggedConflict,
   type TaggedMilestone,
@@ -21,9 +21,9 @@ import {
   transformConflicts,
   transformMilestones,
   transformPeople,
-} from '../transform/index.js';
+} from '../transform/index.ts';
 
-import { PACKAGE_DIR, SUBJECTS_CACHE_PATH } from './paths.js';
+import { PACKAGE_DIR, SUBJECTS_CACHE_PATH } from './paths.ts';
 
 export interface ProfileSubjectRu {
   name?: string;

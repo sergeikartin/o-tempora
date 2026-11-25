@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import { promisify } from 'node:util';
-import { formatDates, loadSubjects, subjectBrief } from './subjects.js';
+import { formatDates, loadSubjects, subjectBrief } from './subjects.ts';
 
 test('formatDates writes CE spans and single years', () => {
   assert.equal(formatDates({ startYear: 1789, endYear: 1799 }), '1789–1799');
@@ -85,8 +85,6 @@ test('concurrent cold-start subject loads leave one complete shared cache', asyn
   const moduleUrl = new URL('./subjects.ts', import.meta.url).href;
   const run = (id: number) =>
     promisify(execFile)(process.execPath, [
-      '--import',
-      'tsx',
       '--input-type=module',
       '--eval',
       `

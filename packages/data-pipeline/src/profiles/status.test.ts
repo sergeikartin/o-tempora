@@ -4,14 +4,14 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from '@o-tempora/shared-types';
-import { runCoordinatorCommand } from './coordinator.js';
-import { writePendingState } from './pending-state.js';
-import { inspectProfileStatus } from './status.js';
-import { writeJson } from './store.js';
-import type { loadSubjects, ProfileSubject } from './subjects.js';
-import { applyRussianAudit } from './translation.js';
-import { type Assessment, hash, profileHash } from './verification/policy.js';
-import { applyEnglishAudit } from './verification/runner.js';
+import { runCoordinatorCommand } from './coordinator.ts';
+import { writePendingState } from './pending-state.ts';
+import { inspectProfileStatus } from './status.ts';
+import { writeJson } from './store.ts';
+import type { loadSubjects, ProfileSubject } from './subjects.ts';
+import { applyRussianAudit } from './translation.ts';
+import { type Assessment, hash, profileHash } from './verification/policy.ts';
+import { applyEnglishAudit } from './verification/runner.ts';
 
 const wikipediaUrl = 'https://en.wikipedia.org/wiki/Isaac_Newton';
 const subject: ProfileSubject = {

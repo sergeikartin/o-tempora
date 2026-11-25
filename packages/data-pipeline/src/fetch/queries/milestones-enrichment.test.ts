@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { PAGEVIEWS_LANGUAGES } from '../pageviews-languages.js';
-import { buildMilestonesEnrichmentQuery } from './milestones-enrichment.js';
+import { PAGEVIEWS_LANGUAGES } from '../pageviews-languages.ts';
+import { buildMilestonesEnrichmentQuery } from './milestones-enrichment.ts';
 
 const DATE_PROPERTIES = [
   'P575',

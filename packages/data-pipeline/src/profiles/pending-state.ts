@@ -1,14 +1,14 @@
 import { readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
-import { readPendingAssessment } from './assessed-profile.js';
-import { writeJson } from './store.js';
-import { asRecord, asString } from './values.js';
+import { readPendingAssessment } from './assessed-profile.ts';
+import { writeJson } from './store.ts';
+import { asRecord, asString } from './values.ts';
 import {
   type Assessment,
   parseAssessment,
   profileHash,
   strings,
-} from './verification/policy.js';
+} from './verification/policy.ts';
 
 export interface PendingAssessmentState {
   assessment: Assessment;

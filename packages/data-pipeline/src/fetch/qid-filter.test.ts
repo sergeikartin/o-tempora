@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { parseQidsFlag } from './qid-filter.js';
+import { parseQidsFlag } from './qid-filter.ts';
 
 test('parseQidsFlag returns undefined when --qids is absent', () => {
   assert.equal(parseQidsFlag(['--lane=people']), undefined);

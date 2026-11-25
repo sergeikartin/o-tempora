@@ -5,10 +5,10 @@ import { setTimeout as sleep } from 'node:timers/promises';
 import { createBrotliDecompress, createGunzip, createInflate } from 'node:zlib';
 import { Parser } from 'htmlparser2';
 import { getDomain, parse as parseDomain } from 'tldts';
-import { retryAfterMs } from '../http-retry.js';
-import { asArray, asRecord, asString } from '../values.js';
-import { hash, normalizeText, strings } from './assessment.js';
-import type { Source, SourceHeading } from './policy.js';
+import { retryAfterMs } from '../http-retry.ts';
+import { asArray, asRecord, asString } from '../values.ts';
+import { hash, normalizeText, strings } from './assessment.ts';
+import type { Source, SourceHeading } from './policy.ts';
 
 const MAX_BYTES = 3_000_000;
 const EXCERPT_LENGTH = 8_000;
@@ -365,13 +365,20 @@ export function extractReferenceLinks(html: string, baseUrl: string): string[] {
 }
 
 export class SourceFetchError extends Error {
+  readonly status?: number;
+  readonly unsupportedType: boolean;
+  readonly botChallenge: boolean;
+
   constructor(
     message: string,
-    readonly status?: number,
-    readonly unsupportedType = false,
-    readonly botChallenge = false,
+    status?: number,
+    unsupportedType = false,
+    botChallenge = false,
   ) {
     super(message);
+    this.status = status;
+    this.unsupportedType = unsupportedType;
+    this.botChallenge = botChallenge;
   }
 }
 
@@ -674,10 +681,15 @@ export function sourceOutline(source: Source) {
 export class SourceStore {
   private readonly byUrl = new Map<string, Source>();
   private readonly inflight = new Map<string, Promise<Source>>();
+  private readonly fetchPage: (url: string) => Promise<Source>;
+  private readonly snapshots: readonly Source[];
+
   constructor(
-    private readonly fetchPage: (url: string) => Promise<Source> = fetchSource,
-    private readonly snapshots: readonly Source[] = [],
+    fetchPage: (url: string) => Promise<Source> = fetchSource,
+    snapshots: readonly Source[] = [],
   ) {
+    this.fetchPage = fetchPage;
+    this.snapshots = snapshots;
     for (const source of snapshots) this.byUrl.set(source.url, source);
   }
 

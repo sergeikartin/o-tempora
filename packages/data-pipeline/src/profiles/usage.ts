@@ -1,4 +1,4 @@
-import { asRecord } from './values.js';
+import { asRecord } from './values.ts';
 
 export interface TokenUsage {
   input: number;

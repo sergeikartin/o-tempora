@@ -10,7 +10,7 @@ import {
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
-import { assertBoldOnlyMarkup } from '../profiles/markup.js';
+import { assertBoldOnlyMarkup } from '../profiles/markup.ts';
 import {
   type ProfileTarget,
   parseRawProfile,
@@ -20,8 +20,8 @@ import {
   verifyBuiltProfiles,
   withProfileFlags,
   writeProfiles,
-} from './profiles.js';
-import { publishBuiltData } from './publish.js';
+} from './profiles.ts';
+import { publishBuiltData } from './publish.ts';
 
 const TARGETS: ProfileTarget[] = [
   {

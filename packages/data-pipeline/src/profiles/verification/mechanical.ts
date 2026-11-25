@@ -1,16 +1,16 @@
-import { assertBoldOnlyMarkup } from '../markup.js';
-import type { ModelProfile } from '../model-profile.js';
-import { passages } from '../passages.js';
-import { type ProfileSubject, SUBJECT_TYPE } from '../subjects.js';
-import { asRecord } from '../values.js';
-import type { ResolveArticleQids } from '../wikipedia-qids.js';
+import { assertBoldOnlyMarkup } from '../markup.ts';
+import type { ModelProfile } from '../model-profile.ts';
+import { passages } from '../passages.ts';
+import { type ProfileSubject, SUBJECT_TYPE } from '../subjects.ts';
+import { asRecord } from '../values.ts';
+import type { ResolveArticleQids } from '../wikipedia-qids.ts';
 import {
   type Assessment,
   type Evidence,
   findingExcerpts,
   type Source,
-} from './policy.js';
-import { isCanonicalPrimaryTextUrl, isLowTrustDomain } from './sources.js';
+} from './policy.ts';
+import { isCanonicalPrimaryTextUrl, isLowTrustDomain } from './sources.ts';
 
 export function sourceClassificationIssues(
   assessment: {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { assignSlugs, slugify } from './slugs.js';
+import { assignSlugs, slugify } from './slugs.ts';
 
 test('slugify folds diacritics and collapses separators', () => {
   assert.equal(slugify('Charlotte Brontë'), 'charlotte-bronte');

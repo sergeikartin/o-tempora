@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
 import { type TestContext, test } from 'node:test';
-import { fetchImageAttribution } from './fetch-image-attribution.js';
+import { fetchImageAttribution } from './fetch-image-attribution.ts';
 
 function stubReads(
   t: TestContext,

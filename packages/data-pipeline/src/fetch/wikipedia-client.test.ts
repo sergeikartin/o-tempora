@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { type TestContext, test } from 'node:test';
-import { fetchWikipediaSummary } from './wikipedia-client.js';
+import { fetchWikipediaSummary } from './wikipedia-client.ts';
 
 function jsonResponse(
   body: unknown,

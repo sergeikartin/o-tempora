@@ -7,12 +7,12 @@
     "node": ">=22.21.0"
   },
   "scripts": {
-    "fetch": "NODE_USE_ENV_PROXY=1 tsx src/fetch/index.ts",
-    "build-data": "tsx src/output/index.ts",
-    "publish-data": "tsx src/output/publish.ts",
-    "profiles": "NODE_USE_ENV_PROXY=1 tsx src/profiles/index.ts",
+    "fetch": "NODE_USE_ENV_PROXY=1 node src/fetch/index.ts",
+    "build-data": "node src/output/index.ts",
+    "publish-data": "node src/output/publish.ts",
+    "profiles": "NODE_USE_ENV_PROXY=1 node src/profiles/index.ts",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test 'src/transform/**/*.test.ts' 'src/output/**/*.test.ts' 'src/fetch/**/*.test.ts' 'src/profiles/**/*.test.ts'",
+    "test": "node --test 'src/transform/**/*.test.ts' 'src/output/**/*.test.ts' 'src/fetch/**/*.test.ts' 'src/profiles/**/*.test.ts'",
     "lint": "biome check .",
     "lint:fix": "biome check --write ."
   },
@@ -21,8 +21,5 @@
     "htmlparser2": "^10.1.0",
     "seek-bzip": "^2.0.0",
     "tldts": "7.4.10"
-  },
-  "devDependencies": {
-    "tsx": "^4.19.0"
   }
 }

@@ -1,12 +1,12 @@
-import { fetchConflictsEnrichment } from './fetch-conflicts-enrichment.js';
-import { fetchImageAttribution } from './fetch-image-attribution.js';
-import { fetchMilestonesEnrichment } from './fetch-milestones-enrichment.js';
-import { fetchPageviews } from './fetch-pageviews.js';
-import { fetchPantheon } from './fetch-pantheon.js';
-import { fetchTaglines } from './fetch-taglines.js';
-import { fetchWikipediaExtracts } from './fetch-wikipedia-extracts.js';
-import { type Lane, parseLaneFlag } from './lane.js';
-import { parseQidsFlag, type QidFilter } from './qid-filter.js';
+import { fetchConflictsEnrichment } from './fetch-conflicts-enrichment.ts';
+import { fetchImageAttribution } from './fetch-image-attribution.ts';
+import { fetchMilestonesEnrichment } from './fetch-milestones-enrichment.ts';
+import { fetchPageviews } from './fetch-pageviews.ts';
+import { fetchPantheon } from './fetch-pantheon.ts';
+import { fetchTaglines } from './fetch-taglines.ts';
+import { fetchWikipediaExtracts } from './fetch-wikipedia-extracts.ts';
+import { type Lane, parseLaneFlag } from './lane.ts';
+import { parseQidsFlag, type QidFilter } from './qid-filter.ts';
 
 // Tagline enrichment reads the Pantheon snapshot from disk.
 async function fetchPeopleLane(qids: QidFilter): Promise<void> {

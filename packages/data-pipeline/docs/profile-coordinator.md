@@ -6,7 +6,7 @@ Run `status --qids=Q1,Q2,...` at batch start and after a usage-window reset. Sel
 
 For QIDs needing a Source Map, dispatch `profile-scout` to write `tasks/<QID>/scout.json` and run `prefetch --qids=<QID> --manifest=tasks/<QID>/scout.json` (or fall back to `prefetch --qids=... --concurrency=<n>` without a manifest). Batch preflighted QIDs into `finalize --qids=...`. For an existing draft without a current pending assessment, resume from its verification report. For approved English, resume at Russian translation.
 
-Use `npm run --silent profiles --workspace packages/data-pipeline -- <command>` (or `node --import tsx packages/data-pipeline/src/profiles/index.ts <command>` from the repo root if `tsx` IPC is unavailable). Prepare task files with `--out=<file>` and apply saved replies with `--result=<file>`. Resolve relative paths from the command’s working directory (`packages/data-pipeline` under npm workspaces, or the current directory for direct `node`).
+Run `NODE_USE_ENV_PROXY=1 node packages/data-pipeline/src/profiles/index.ts <command>` from the repo root (or `npm run --silent profiles --workspace packages/data-pipeline -- <command>`). Prepare task files with `--out=<file>` and apply saved replies with `--result=<file>`. Resolve relative paths from the command’s working directory (the current directory for direct `node`, or `packages/data-pipeline` under npm workspaces).
 
 ## Wave boundaries
 

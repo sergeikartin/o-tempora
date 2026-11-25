@@ -7,17 +7,17 @@ import {
   parseRawProfile,
   readRawProfiles,
   shipProfiles,
-} from '../../output/profiles.js';
-import { runCoordinatorCommand } from '../coordinator.js';
-import { evidenceStore } from '../evidence-cache.js';
-import { type ModelProfile, parseModelProfile } from '../model-profile.js';
-import { passages } from '../passages.js';
-import { readCompletedRepairs } from '../pending-state.js';
-import { preflightProfile } from '../preflight.js';
-import type { ProfileSubject } from '../subjects.js';
-import { approvedTranslation, readTranslation } from '../translation.js';
-import { asRecord } from '../values.js';
-import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.js';
+} from '../../output/profiles.ts';
+import { runCoordinatorCommand } from '../coordinator.ts';
+import { evidenceStore } from '../evidence-cache.ts';
+import { type ModelProfile, parseModelProfile } from '../model-profile.ts';
+import { passages } from '../passages.ts';
+import { readCompletedRepairs } from '../pending-state.ts';
+import { preflightProfile } from '../preflight.ts';
+import type { ProfileSubject } from '../subjects.ts';
+import { approvedTranslation, readTranslation } from '../translation.ts';
+import { asRecord } from '../values.ts';
+import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.ts';
 import {
   type Assessment,
   blockers,
@@ -28,14 +28,14 @@ import {
   type Report,
   readProfileApproval,
   type Source,
-} from './policy.js';
-import { englishAuditPrompt } from './researcher.js';
+} from './policy.ts';
+import { englishAuditPrompt } from './researcher.ts';
 import {
   applyEnglishAudit,
   checkpointEnglishRepair,
   type EnglishAuditOptions,
   reportPathFor,
-} from './runner.js';
+} from './runner.ts';
 import {
   extractHtmlDocument,
   headingPathAt,
@@ -45,7 +45,7 @@ import {
   SourceFetchError,
   SourceStore,
   sourceUrl,
-} from './sources.js';
+} from './sources.ts';
 
 const URL = 'https://en.wikipedia.org/wiki/Isaac_Newton';
 const SUBJECT: ProfileSubject = {

@@ -9,20 +9,20 @@ import {
   type ProfileKeyMoment,
   type ProfileLane,
 } from '@o-tempora/shared-types';
-import { assertBoldOnlyMarkup } from '../profiles/markup.js';
-import { mapPassages } from '../profiles/passages.js';
+import { assertBoldOnlyMarkup } from '../profiles/markup.ts';
+import { mapPassages } from '../profiles/passages.ts';
 import {
   approvedTranslation,
   readTranslation,
   type TranslationFields,
-} from '../profiles/translation.js';
-import { asArray, asRecord, asString } from '../profiles/values.js';
+} from '../profiles/translation.ts';
+import { asArray, asRecord, asString } from '../profiles/values.ts';
 import {
   type ProfileApproval,
   readProfileApproval,
-} from '../profiles/verification/policy.js';
+} from '../profiles/verification/policy.ts';
 
-import { detailLevelOf } from './write-datasets.js';
+import { detailLevelOf } from './write-datasets.ts';
 
 // The slice of a raw Profile file (prompts/profile.md's JSON plus the `meta`
 // the profiles script adds, docs/adr/0022-...) that Output reads. Claims,

@@ -5,7 +5,7 @@ import {
   FAME_TIER_MIN_HPI,
   rankByFameScore,
   scoreAndRankByHpi,
-} from './score.js';
+} from './score.ts';
 
 test("computeFameScore blends sitelinks and pageviews per ADR 0010's formula", () => {
   const sitelinks = 100;

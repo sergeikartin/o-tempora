@@ -4,7 +4,7 @@ import {
   batchedCommonsImageAttributionFetch,
   buildAttributionDisplayString,
   extractCommonsFileTitle,
-} from './batched-commons-image-attribution-fetch.js';
+} from './batched-commons-image-attribution-fetch.ts';
 
 test('extractCommonsFileTitle recovers a File: title from a Special:FilePath URI, decoding %20', () => {
   const title = extractCommonsFileTitle(

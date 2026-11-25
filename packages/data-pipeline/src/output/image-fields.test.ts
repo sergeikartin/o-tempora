@@ -4,7 +4,7 @@ import {
   IMAGE_DENYLIST,
   imageFields,
   normalizeImageUrl,
-} from './image-fields.js';
+} from './image-fields.ts';
 
 test('normalizeImageUrl points Special:FilePath at Special:Redirect/file over https', () => {
   assert.equal(

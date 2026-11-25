@@ -8,7 +8,7 @@ import {
   qidsByTitle,
   resolveArticleQids,
   titleOfArticleUrl,
-} from './wikipedia-qids.js';
+} from './wikipedia-qids.ts';
 
 test('titleOfArticleUrl reads plain article links only', () => {
   assert.equal(

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { PAGEVIEWS_LANGUAGES } from '../pageviews-languages.js';
-import { buildConflictsEnrichmentQuery } from './conflicts-enrichment.js';
+import { PAGEVIEWS_LANGUAGES } from '../pageviews-languages.ts';
+import { buildConflictsEnrichmentQuery } from './conflicts-enrichment.ts';
 
 test('batches ids into a single VALUES clause of wd: prefixed QIDs', () => {
   const query = buildConflictsEnrichmentQuery(['Q198', 'Q362']);

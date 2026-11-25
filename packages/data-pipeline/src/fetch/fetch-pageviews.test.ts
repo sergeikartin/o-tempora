@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
 import { type TestContext, test } from 'node:test';
-import { fetchPageviews } from './fetch-pageviews.js';
+import { fetchPageviews } from './fetch-pageviews.ts';
 
 function stubReads(
   t: TestContext,

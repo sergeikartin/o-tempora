@@ -1,7 +1,7 @@
 import fs from 'node:fs';
-import { validateEnrichedConflictsFile } from '../fetch/fetch-conflicts-enrichment.js';
-import { validateEnrichedMilestonesFile } from '../fetch/fetch-milestones-enrichment.js';
-import { REGION_CATEGORIES } from './region-categories.js';
+import { validateEnrichedConflictsFile } from '../fetch/fetch-conflicts-enrichment.ts';
+import { validateEnrichedMilestonesFile } from '../fetch/fetch-milestones-enrichment.ts';
+import { REGION_CATEGORIES } from './region-categories.ts';
 
 // Dumps any country Q-ID a Conflicts/Milestones entry carries (across both
 // enriched sources, unioned) that isn't yet in REGION_CATEGORIES. Run after each

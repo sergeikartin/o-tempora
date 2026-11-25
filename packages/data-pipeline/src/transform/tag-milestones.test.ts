@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { tagCuratedConflict, tagCuratedMilestone } from './tag-milestones.js';
+import { tagCuratedConflict, tagCuratedMilestone } from './tag-milestones.ts';
 
 test('tagCuratedMilestone passes the given category straight through', () => {
   assert.equal(

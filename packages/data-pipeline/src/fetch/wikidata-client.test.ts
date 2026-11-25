@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { type TestContext, test } from 'node:test';
-import { runSparqlQuery } from './wikidata-client.js';
+import { runSparqlQuery } from './wikidata-client.ts';
 
 const EMPTY_RESULT = { head: { vars: [] }, results: { bindings: [] } };
 

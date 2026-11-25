@@ -12,8 +12,8 @@ import type {
   TaggedConflict,
   TaggedMilestone,
   TaggedPerson,
-} from '../transform/index.js';
-import { imageFields } from './image-fields.js';
+} from '../transform/index.ts';
+import { imageFields } from './image-fields.ts';
 
 // What the builders return: an entry before `slug` is attached. A slug is
 // unique across every lane (slugs.ts), so it can only be assigned once all

@@ -1,12 +1,12 @@
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { batchedPageviewsFetch } from './batched-pageviews-fetch.js';
-import { validateEnrichedConflictsFile } from './fetch-conflicts-enrichment.js';
-import { validateEnrichedMilestonesFile } from './fetch-milestones-enrichment.js';
-import type { Lane } from './lane.js';
-import type { PageviewsLanguage } from './pageviews-languages.js';
-import { filterByQids, type QidFilter, writeRecordFile } from './qid-filter.js';
+import { batchedPageviewsFetch } from './batched-pageviews-fetch.ts';
+import { validateEnrichedConflictsFile } from './fetch-conflicts-enrichment.ts';
+import { validateEnrichedMilestonesFile } from './fetch-milestones-enrichment.ts';
+import type { Lane } from './lane.ts';
+import type { PageviewsLanguage } from './pageviews-languages.ts';
+import { filterByQids, type QidFilter, writeRecordFile } from './qid-filter.ts';
 
 const RAW_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),

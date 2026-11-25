@@ -3,7 +3,7 @@ import { type TestContext, test } from 'node:test';
 import {
   batchedWikipediaExtractFetch,
   cleanExtract,
-} from './batched-wikipedia-extract-fetch.js';
+} from './batched-wikipedia-extract-fetch.ts';
 
 function jsonResponse(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), { status });

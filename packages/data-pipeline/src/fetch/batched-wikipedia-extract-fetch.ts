@@ -2,7 +2,7 @@ import {
   fetchWikipediaSummary,
   type WikipediaLanguage,
   type WikipediaSummaryResponse,
-} from './wikipedia-client.js';
+} from './wikipedia-client.ts';
 
 // Wikimedia's REST summary API has no batch form and asks for a gentler pace
 // than commons-client.ts/pageviews-client.ts's 50-wide bursts every 500ms, so

@@ -1,19 +1,19 @@
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { extractWikipediaArticleTitle } from './batched-pageviews-fetch.js';
+import { extractWikipediaArticleTitle } from './batched-pageviews-fetch.ts';
 import {
   batchedWikipediaExtractFetch,
   type WikipediaExtractEntry,
-} from './batched-wikipedia-extract-fetch.js';
-import { validateEnrichedConflictsFile } from './fetch-conflicts-enrichment.js';
-import { validateEnrichedMilestonesFile } from './fetch-milestones-enrichment.js';
-import { LANES, type Lane } from './lane.js';
-import { parsePantheonCsv } from './pantheon-row-shape.js';
-import { filterByQids, type QidFilter, writeRecordFile } from './qid-filter.js';
-import { MIN_HPI } from './queries/min-hpi.js';
-import { validateSparqlResultShape } from './validate-sparql-result.js';
-import type { WikipediaLanguage } from './wikipedia-client.js';
+} from './batched-wikipedia-extract-fetch.ts';
+import { validateEnrichedConflictsFile } from './fetch-conflicts-enrichment.ts';
+import { validateEnrichedMilestonesFile } from './fetch-milestones-enrichment.ts';
+import { LANES, type Lane } from './lane.ts';
+import { parsePantheonCsv } from './pantheon-row-shape.ts';
+import { filterByQids, type QidFilter, writeRecordFile } from './qid-filter.ts';
+import { MIN_HPI } from './queries/min-hpi.ts';
+import { validateSparqlResultShape } from './validate-sparql-result.ts';
+import type { WikipediaLanguage } from './wikipedia-client.ts';
 
 const RAW_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),

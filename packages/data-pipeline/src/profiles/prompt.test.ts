@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { test } from 'node:test';
-import { PROMPTS_DIR } from './paths.js';
-import { parseAgentModel, parsePrompt } from './prompt.js';
+import { PROMPTS_DIR } from './paths.ts';
+import { parseAgentModel, parsePrompt } from './prompt.ts';
 
 const markdown = [
   '- **Version:** 1.2.3',

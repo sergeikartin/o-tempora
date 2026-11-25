@@ -1,4 +1,4 @@
-import type { PantheonPersonRow } from '../fetch/pantheon-row-shape.js';
+import type { PantheonPersonRow } from '../fetch/pantheon-row-shape.ts';
 
 // Evidence and calendar convention: docs/adr/0025-person-dates-can-have-evidenced-corrections.md.
 export function correctPersonDates(row: PantheonPersonRow): PantheonPersonRow {

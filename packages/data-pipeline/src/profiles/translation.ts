@@ -1,19 +1,19 @@
 import { readFile } from 'node:fs/promises';
-import { assertBoldOnlyMarkup } from './markup.js';
-import { parseModelProfile } from './model-profile.js';
-import { passages } from './passages.js';
-import { readPromptText } from './prompt.js';
-import { writeJson } from './store.js';
-import type { ProfileSubject } from './subjects.js';
-import type { AgentRunMeta } from './usage.js';
-import { asRecord, asString } from './values.js';
+import { assertBoldOnlyMarkup } from './markup.ts';
+import { parseModelProfile } from './model-profile.ts';
+import { passages } from './passages.ts';
+import { readPromptText } from './prompt.ts';
+import { writeJson } from './store.ts';
+import type { ProfileSubject } from './subjects.ts';
+import type { AgentRunMeta } from './usage.ts';
+import { asRecord, asString } from './values.ts';
 import {
   hash,
   parseAudit,
   profileHash,
   readProfileApproval,
   strings,
-} from './verification/policy.js';
+} from './verification/policy.ts';
 
 export const TRANSLATION_POLICY_VERSION = '1';
 export type TranslationFields = Record<string, string>;

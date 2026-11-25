@@ -1,7 +1,7 @@
 import {
   type CommonsImageInfo,
   fetchCommonsImageInfo,
-} from './commons-client.js';
+} from './commons-client.ts';
 
 // MediaWiki caps title batches at 50 for unauthenticated callers.
 const BATCH_SIZE = 50;

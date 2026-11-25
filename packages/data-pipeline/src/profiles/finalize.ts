@@ -1,18 +1,18 @@
 import { readdir, readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
-import { slugify } from '../output/slugs.js';
+import { slugify } from '../output/slugs.ts';
 import {
   extractAssessedProfile,
   finalizedAssessment,
-} from './assessed-profile.js';
-import { PROFILE_SCHEMA_VERSION } from './model-profile.js';
-import { writePendingState } from './pending-state.js';
-import { readStoredProfiles, writeJson } from './store.js';
-import { type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
-import { parseTokenUsage, type TokenUsage } from './usage.js';
-import { asRecord, asString } from './values.js';
-import { profileHash } from './verification/policy.js';
-import type { ResolveArticleQids } from './wikipedia-qids.js';
+} from './assessed-profile.ts';
+import { PROFILE_SCHEMA_VERSION } from './model-profile.ts';
+import { writePendingState } from './pending-state.ts';
+import { readStoredProfiles, writeJson } from './store.ts';
+import { type ProfileSubject, SUBJECT_TYPE } from './subjects.ts';
+import { parseTokenUsage, type TokenUsage } from './usage.ts';
+import { asRecord, asString } from './values.ts';
+import { profileHash } from './verification/policy.ts';
+import type { ResolveArticleQids } from './wikipedia-qids.ts';
 
 interface WriterRun {
   model?: string;

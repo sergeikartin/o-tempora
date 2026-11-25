@@ -12,7 +12,7 @@ npm run build-data --workspace packages/data-pipeline
 npm run publish-data --workspace packages/data-pipeline
 ```
 
-To refresh only enrichment, run `npx tsx src/fetch/fetch-conflicts-enrichment.ts` from `packages/data-pipeline` before building. Spot-check dates for newly curated conflicts.
+To refresh only enrichment, run `NODE_USE_ENV_PROXY=1 node src/fetch/fetch-conflicts-enrichment.ts` from `packages/data-pipeline` before building. Spot-check dates for newly curated conflicts.
 
 ## Hydration mismatch in dev
 

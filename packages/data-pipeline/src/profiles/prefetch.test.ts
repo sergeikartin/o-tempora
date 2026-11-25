@@ -11,16 +11,16 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import { setTimeout as sleep } from 'node:timers/promises';
-import { runCoordinatorCommand } from './coordinator.js';
-import { prefetchBatch, prefetchSubject, rankReferences } from './prefetch.js';
-import type { ProfileSubject } from './subjects.js';
-import { hash } from './verification/assessment.js';
+import { runCoordinatorCommand } from './coordinator.ts';
+import { prefetchBatch, prefetchSubject, rankReferences } from './prefetch.ts';
+import type { ProfileSubject } from './subjects.ts';
+import { hash } from './verification/assessment.ts';
 import {
   extractHtmlDocument,
   extractReferenceLinks,
   fetchSource,
   SourceFetchError,
-} from './verification/sources.js';
+} from './verification/sources.ts';
 
 const wikipedia = 'https://en.wikipedia.org/wiki/Isaac_Newton';
 const subject: ProfileSubject = {

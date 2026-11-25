@@ -1,4 +1,4 @@
-import { articleVar, PAGEVIEWS_LANGUAGES } from '../pageviews-languages.js';
+import { articleVar, PAGEVIEWS_LANGUAGES } from '../pageviews-languages.ts';
 
 // Each pageviews-basket language's Wikipedia article title is an OPTIONAL
 // binding in this query (like the English ?article), so it reuses the query's

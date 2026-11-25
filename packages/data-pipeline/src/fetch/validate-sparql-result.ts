@@ -2,7 +2,7 @@ import type {
   SparqlBinding,
   SparqlBindingValue,
   SparqlResults,
-} from './sparql-result-shape.js';
+} from './sparql-result-shape.ts';
 
 function isBindingValue(value: unknown): value is SparqlBindingValue {
   if (typeof value !== 'object' || value === null) return false;
