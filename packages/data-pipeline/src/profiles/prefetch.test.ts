@@ -32,6 +32,21 @@ const subject: ProfileSubject = {
 };
 
 test('reference extraction favors reference sections and filters unsuitable URLs', () => {
+  const lowSignal = [
+    ['www', 'jstor', 'org/stable/1483664'].join('.'),
+    ['viaf', 'org/en/viaf/24585191'].join('.'),
+    ['search', 'worldcat', 'org/issn/0394-0179'].join('.'),
+    ['doi', 'org/10.1093/acref/123'].join('.'),
+    ['www', 'academia', 'edu/95119245'].join('.'),
+    ['librivox', 'org/author/2073'].join('.'),
+    ['web', 'archive', 'org/web/2020/example'].join('.'),
+    ['archive', 'org/details/somebook'].join('.'),
+    ['www', 'getty', 'edu/vow/ULANFullDisplay?subjectid=500010654'].join('.'),
+    ['lccn', 'loc', 'gov/2015937886'].join('.'),
+    ['catalog', 'archives', 'gov/id/10582643'].join('.'),
+  ]
+    .map((target) => `<a href="https://${target}">skip</a>`)
+    .join('');
   const links = extractReferenceLinks(
     '<a href="https://daily.com/article#first">general</a>' +
       '<ol class="references"><li><a href="//archive.ac.uk/sources#part">source</a></li></ol>' +
@@ -43,6 +58,7 @@ test('reference extraction favors reference sections and filters unsuitable URLs
       '<a href="https://commons.wikimedia.org/file">wikimedia</a>' +
       '<a href="https://www.youtube.com/profile">video</a>' +
       '<a href="https://books.org/a%2EPDF?download=1">book</a>' +
+      lowSignal +
       '<a href="https://127.0.0.1/article">local</a>' +
       '<a href="http://books.org/book">insecure</a>' +
       '<a href="https://user@books.org/book">credentials</a>',
@@ -217,12 +233,7 @@ test('prefetch persists source maps and deterministic blocks, and evidence reuse
   assert.ok(!fetched.includes('https://www.britannica.com/redundant'));
 
   const blockDir = path.join(base, 'blocked-hosts');
-  const hosts = [
-    'archive.gov',
-    'restricted.gov',
-    'scans.edu',
-    'university.edu',
-  ];
+  const hosts = ['archive.gov', 'restricted.gov', 'university.edu'];
   assert.deepEqual(
     await readdir(blockDir),
     hosts.map((host) => `${hash(host)}.json`).sort(),
@@ -296,11 +307,11 @@ test('prefetch persists source maps and deterministic blocks, and evidence reuse
   currentTime = Date.now();
   const warm = await prefetch();
   assert.equal(linkReads, 1);
-  assert.deepEqual(fetched, [unavailable]);
+  assert.deepEqual(fetched, [unavailable, unreadable]);
   assert.equal(
     warm.skipped.filter(({ reason }) => reason.startsWith('Blocked host:'))
       .length,
-    4,
+    3,
   );
 
   fetched.length = 0;
@@ -494,4 +505,274 @@ test('concurrent prefetched access blocks survive and successful refresh clears 
   await prefetchSubject({ ...options, subject });
   assert.deepEqual(fetches, [legacyUrl]);
   assert.equal(await readFile(legacyFile, 'utf8'), legacy);
+});
+
+const httpsUrl = (rest: string) => `https://${rest}`;
+
+test('fetchSource supports maxAttempts, minTextLength, and bot-challenge rejection', async () => {
+  let calls = 0;
+  await assert.rejects(
+    fetchSource(httpsUrl('example.org/flaky'), {
+      maxAttempts: 1,
+      requestPage: async () => {
+        calls++;
+        return { status: 503, type: 'text/html', text: '' };
+      },
+      wait: async () => assert.fail('must not wait when maxAttempts is 1'),
+    }),
+    (error) => error instanceof SourceFetchError && error.status === 503,
+  );
+  assert.equal(calls, 1);
+
+  await assert.rejects(
+    fetchSource(httpsUrl('example.org/challenge'), {
+      rejectBotWalls: true,
+      requestPage: async () => ({
+        status: 200,
+        type: 'text/html',
+        text:
+          '<title>Client Challenge</title><p>' +
+          'Please enable JavaScript to continue. '.repeat(6) +
+          '</p>',
+      }),
+    }),
+    (error) =>
+      error instanceof SourceFetchError &&
+      error.status === 403 &&
+      error.botChallenge,
+  );
+
+  await assert.rejects(
+    fetchSource(httpsUrl('example.org/short'), {
+      minTextLength: 1_000,
+      requestPage: async () => ({
+        status: 200,
+        type: 'text/html',
+        text: `<title>Short</title><p>${'Short text. '.repeat(20)}</p>`,
+      }),
+    }),
+    /insufficient readable text/,
+  );
+});
+
+test('blocked hosts scope by subdomain, block bot challenges, and ignore non-HTML blocks', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-subdomain-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  const directory = path.join(profilesDir, 'evidence');
+  const legacyPdfBlock = path.join(
+    directory,
+    'blocked-hosts',
+    `${hash('pdfs.edu')}.json`,
+  );
+  await mkdir(path.dirname(legacyPdfBlock), { recursive: true });
+  await writeFile(
+    legacyPdfBlock,
+    JSON.stringify({
+      host: 'pdfs.edu',
+      url: httpsUrl('pdfs.edu/file'),
+      reason: 'Source is not readable HTML or plain text',
+      failed_at: Date.now(),
+    }),
+  );
+
+  const blockedSub = httpsUrl('lux.collections.yale.edu/item/1');
+  const openSub = httpsUrl('artgallery.yale.edu/item/2');
+  const botHost = httpsUrl('challenge.example.org/article');
+  const pdfHost = httpsUrl('pdfs.edu/article');
+  const fetched: string[] = [];
+
+  const result = await prefetchSubject({
+    subject,
+    profilesDir,
+    urls: [blockedSub, openSub, botHost, pdfHost],
+    fetch: async (url, opts) => {
+      fetched.push(url);
+      if (url === blockedSub) throw new SourceFetchError('HTTP 403', 403);
+      if (url === botHost) {
+        assert.equal(opts?.maxAttempts, 1);
+        assert.equal(opts?.minTextLength, 1_000);
+        assert.equal(opts?.rejectBotWalls, true);
+        throw new SourceFetchError(
+          'Source returned a bot challenge page',
+          403,
+          false,
+          true,
+        );
+      }
+      const data = {
+        url,
+        fetched_at: new Date().toISOString(),
+        text: `Full article text for ${url}. `.repeat(60),
+        headings: [],
+      };
+      return { ...data, id: hash(data) };
+    },
+  });
+
+  assert.deepEqual(
+    result.sources.map(({ url }) => url),
+    [wikipedia, openSub, pdfHost],
+  );
+  const blockFiles = await readdir(path.join(directory, 'blocked-hosts'));
+  assert.ok(blockFiles.includes(`${hash('lux.collections.yale.edu')}.json`));
+  assert.ok(blockFiles.includes(`${hash('challenge.example.org')}.json`));
+  assert.ok(!blockFiles.includes(`${hash('yale.edu')}.json`));
+  assert.ok(fetched.includes(openSub));
+  assert.ok(fetched.includes(pdfHost));
+});
+
+test('prefetch --manifest fetches grouped sources with corroboration_ready and skips Wikipedia crawling', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-manifest-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  const manifestPath = path.join(profilesDir, 'scout.json');
+  const coreUrl = httpsUrl('museum.org/newton-essay');
+  const df1a = httpsUrl('archive.ac.uk/newton-list');
+  const df1b = httpsUrl('journal.org/newton-menu');
+  const df2a = httpsUrl('library.edu/newton-draft');
+  const df2b = httpsUrl('blocked.org/newton-draft');
+  const disputeUrl = httpsUrl('history.edu/newton-dispute');
+
+  await writeFile(
+    manifestPath,
+    JSON.stringify({
+      qid: 'Q935',
+      core_urls: [coreUrl],
+      deep_fact_candidates: [
+        { angle: 'Surviving shopping list', urls: [df1a, df1b] },
+        { angle: 'Draft fortification plan', urls: [df2a, df2b] },
+      ],
+      dispute_urls: [disputeUrl],
+    }),
+  );
+
+  const fetched: string[] = [];
+  const emitted: unknown[] = [];
+  const coordinator = {
+    profilesDir,
+    resolve: async () => assert.fail('unexpected article resolution'),
+    subjects: () => [subject, secondSubject],
+    emit: (value: unknown) => emitted.push(value),
+    fetch: async (url: string, opts?: Parameters<typeof fetchSource>[1]) => {
+      fetched.push(url);
+      if (url === wikipedia)
+        assert.equal(
+          opts?.onReferenceLinks,
+          undefined,
+          'manifest mode must not extract Wikipedia reference links',
+        );
+      if (url === df2b)
+        throw new SourceFetchError('Source returned HTTP 403', 403);
+      const data = {
+        url,
+        fetched_at: new Date().toISOString(),
+        title: `Title for ${url}`,
+        text: `Substantive historical essay from ${url}. `.repeat(50),
+        headings: [{ level: 2 as const, offset: 0, text: 'Substantive' }],
+      };
+      return { ...data, id: hash(data) };
+    },
+  };
+
+  await runCoordinatorCommand(
+    'prefetch',
+    ['--qids=Q935', `--manifest=${manifestPath}`],
+    coordinator,
+  );
+  const map = emitted[0] as {
+    sources: { id: string; url: string }[];
+    manifest_groups: {
+      core: string[];
+      deep_fact_candidates: {
+        angle: string;
+        source_ids: string[];
+        skipped: { url: string; reason: string }[];
+        corroboration_ready: boolean;
+      }[];
+      dispute: string[];
+    };
+  };
+  const idByUrl = new Map(map.sources.map(({ url, id }) => [url, id]));
+  assert.deepEqual(map.manifest_groups.core, [idByUrl.get(coreUrl)]);
+  assert.deepEqual(map.manifest_groups.dispute, [idByUrl.get(disputeUrl)]);
+  assert.deepEqual(map.manifest_groups.deep_fact_candidates, [
+    {
+      angle: 'Surviving shopping list',
+      source_ids: [idByUrl.get(df1a), idByUrl.get(df1b)],
+      skipped: [],
+      corroboration_ready: true,
+    },
+    {
+      angle: 'Draft fortification plan',
+      source_ids: [idByUrl.get(df2a)],
+      skipped: [{ url: df2b, reason: 'Source returned HTTP 403' }],
+      corroboration_ready: false,
+    },
+  ]);
+
+  await assert.rejects(
+    runCoordinatorCommand(
+      'prefetch',
+      ['--qids=Q1', `--manifest=${manifestPath}`],
+      coordinator,
+    ),
+    /Prefetch manifest is for Q935, expected Q1/,
+  );
+  await assert.rejects(
+    runCoordinatorCommand(
+      'prefetch',
+      ['--qids=Q935,Q1', `--manifest=${manifestPath}`],
+      coordinator,
+    ),
+    /require a single QID/,
+  );
+  await assert.rejects(
+    runCoordinatorCommand(
+      'prefetch',
+      ['--qids=Q935', `--manifest=${manifestPath}`, '--max-sources=3'],
+      coordinator,
+    ),
+    /--max-sources cannot be combined/,
+  );
+});
+
+test('prefetch --urls preserves commas inside URL paths and rejects flag conflicts', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-urls-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  const urlWithComma = httpsUrl('museum.org/drawings/crucifixion,_a.html');
+  const secondUrl = httpsUrl('archive.org/essay/newton.html');
+  const emitted: unknown[] = [];
+  const coordinator = {
+    profilesDir,
+    resolve: async () => assert.fail('unexpected article resolution'),
+    subjects: () => [subject],
+    emit: (value: unknown) => emitted.push(value),
+    fetch: async (url: string) => {
+      const data = {
+        url,
+        fetched_at: new Date().toISOString(),
+        text: `Article content for ${url}. `.repeat(60),
+        headings: [],
+      };
+      return { ...data, id: hash(data) };
+    },
+  };
+
+  await runCoordinatorCommand(
+    'prefetch',
+    ['--qids=Q935', `--urls=${urlWithComma},${secondUrl}`],
+    coordinator,
+  );
+  const map = emitted[0] as { sources: { url: string }[] };
+  assert.deepEqual(
+    map.sources.map(({ url }) => url),
+    [wikipedia, urlWithComma, secondUrl],
+  );
+  await assert.rejects(
+    runCoordinatorCommand(
+      'prefetch',
+      ['--qids=Q935', `--urls=${secondUrl}`, '--manifest=scout.json'],
+      coordinator,
+    ),
+    /--manifest cannot be combined with --urls/,
+  );
 });

@@ -11,6 +11,8 @@ import type { Source, SourceHeading } from './policy.js';
 const MAX_BYTES = 3_000_000;
 const EXCERPT_LENGTH = 8_000;
 const EXCERPT_OVERLAP = 400;
+const DNS_TIMEOUT_MS = 5_000;
+const REQUEST_TIMEOUT_MS = 10_000;
 const USER_AGENT =
   'o-tempora-data-pipeline/0.1 (contact sergei.kartin@gmail.com)';
 
@@ -231,7 +233,49 @@ const IGNORED_DOMAINS = new Set([
   'dailymotion.com',
   'pinterest.com',
   'bsky.app',
+  'viaf.org',
+  'worldcat.org',
+  'jstor.org',
+  'doi.org',
+  'academia.edu',
+  'librivox.org',
 ]);
+
+function isLowSignalReferenceUrl(url: URL, domain: string): boolean {
+  const host = url.hostname.toLowerCase();
+  if (
+    host === 'web.archive.org' ||
+    host === 'lccn.loc.gov' ||
+    host === 'catalog.archives.gov'
+  )
+    return true;
+  if (domain === 'archive.org' && url.pathname.startsWith('/details/'))
+    return true;
+  if (domain === 'getty.edu' && /^\/vow\//i.test(url.pathname)) return true;
+  return false;
+}
+
+const BOT_WALL_TITLES = [
+  /^client challenge$/i,
+  /^just a moment(?:\.\.\.|…)?$/i,
+  /^attention required!/i,
+  /^access denied$/i,
+  /^verify you are human$/i,
+  /^security check$/i,
+  /^bot detection$/i,
+  /^are you a robot\??$/i,
+  /^403 forbidden$/i,
+  /^pardon our interruption$/i,
+];
+
+export function isBotChallengePage(
+  title: string | undefined,
+  textLength: number,
+): boolean {
+  if (!title || textLength >= 2_500) return false;
+  const normalized = normalizeText(title);
+  return BOT_WALL_TITLES.some((pattern) => pattern.test(normalized));
+}
 
 export function extractReferenceLinks(html: string, baseUrl: string): string[] {
   const preferred = new Set<string>();
@@ -271,6 +315,7 @@ export function extractReferenceLinks(html: string, baseUrl: string): string[] {
           !domain ||
           !isIcann ||
           IGNORED_DOMAINS.has(domain) ||
+          isLowSignalReferenceUrl(url, domain) ||
           /\.(pdf|jpe?g|png|gif|svg|mp[34]|zip)$/i.test(
             decodeURIComponent(url.pathname),
           )
@@ -296,6 +341,7 @@ export class SourceFetchError extends Error {
     message: string,
     readonly status?: number,
     readonly unsupportedType = false,
+    readonly botChallenge = false,
   ) {
     super(message);
   }
@@ -313,10 +359,28 @@ function readableType(type: string): boolean {
   return ['text/html', 'text/plain', 'application/xhtml+xml'].includes(type);
 }
 
+async function lookupWithTimeout(hostname: string, timeoutMs = DNS_TIMEOUT_MS) {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      lookup(hostname, { family: 4, all: true }),
+      new Promise<never>((_, reject) => {
+        timer = setTimeout(
+          () => reject(new Error('Source DNS lookup timed out')),
+          timeoutMs,
+        );
+        timer.unref?.();
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
 // Pin the validated public address into the socket's DNS lookup. Redirects go
 // through the same check, so a source cannot redirect into the local network.
 async function request(url: URL): Promise<Page> {
-  const addresses = await lookup(url.hostname, { family: 4, all: true });
+  const addresses = await lookupWithTimeout(url.hostname);
   const address = addresses[0]?.address;
   if (!address || addresses.some((item) => !publicIPv4(item.address)))
     throw new Error('Source resolved to a non-public address');
@@ -326,7 +390,7 @@ async function request(url: URL): Promise<Page> {
       {
         family: 4,
         lookup: (_host, _options, callback) => callback(null, address, 4),
-        signal: AbortSignal.timeout(30_000),
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
         headers: {
           'User-Agent': USER_AGENT,
           Accept: 'text/html,text/plain',
@@ -439,29 +503,33 @@ function paceWikipedia() {
   return wikipediaQueue;
 }
 
-interface FetchOptions {
+export interface FetchOptions {
   onReferenceLinks?: (links: string[]) => void;
   requestPage?: (url: URL) => Promise<Page>;
   wait?: (ms: number) => Promise<void>;
+  maxAttempts?: number;
+  minTextLength?: number;
+  rejectBotWalls?: boolean;
 }
 
 async function fetchPage(
   value: string,
-  { requestPage = request, wait = sleep }: FetchOptions = {},
+  { requestPage = request, wait = sleep, maxAttempts = 3 }: FetchOptions = {},
 ): Promise<{ url: URL; page: Page }> {
+  const attempts = Math.max(1, maxAttempts);
   let url = sourceUrl(value);
   for (let redirect = 0; redirect < 6; redirect++) {
     let page: Page | undefined;
-    for (let attempt = 0; attempt < 3; attempt++) {
+    for (let attempt = 0; attempt < attempts; attempt++) {
       try {
         if (getDomain(url.hostname) === 'wikipedia.org') await paceWikipedia();
         page = await requestPage(url);
         if (page.status !== 429 && page.status < 500) break;
       } catch (error) {
-        if (attempt === 2) throw error;
+        if (attempt === attempts - 1) throw error;
         page = undefined;
       }
-      if (attempt < 2) {
+      if (attempt < attempts - 1) {
         const throttled = page?.status === 429 || page?.status === 503;
         const delay = throttled
           ? (retryAfterMs(page?.retryAfter) ?? 5_000 * 2 ** attempt)
@@ -507,7 +575,18 @@ export async function fetchSource(
   const document = plain
     ? { text: normalizeText(page.text), headings: [] }
     : extractHtmlDocument(page.text, anchors);
-  if (document.text.length < 100)
+  if (
+    options.rejectBotWalls &&
+    isBotChallengePage(document.title, document.text.length)
+  )
+    throw new SourceFetchError(
+      'Source returned a bot challenge page',
+      403,
+      false,
+      true,
+    );
+  const minLength = options.minTextLength ?? 100;
+  if (document.text.length < minLength)
     throw new Error('Source has insufficient readable text');
   const snapshot = {
     url: url.href,

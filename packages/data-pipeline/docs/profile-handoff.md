@@ -10,6 +10,7 @@ Both sessions use the same checkout. Resolve paths from the repository root for 
 
 | Command | Task | Reply |
 |---|---|---|
+| `prefetch --manifest` | — | `scout.json` |
 | `english-adversarial` | `adversarial-task.json` | `adversarial-reply.json` |
 | `english-audit` | `audit-task.json` | `audit-reply.json` |
 | `english-repair` | `repair-task.json` | `repair-reply.json` |
@@ -71,7 +72,7 @@ Have Codex prefetch the Source Map for the selected QID. With Shell on, Gemini N
 
 Use the role definitions in `.codex/agents/*.toml` from start to finish; those files are the single source of truth for per-role `model`, `model_reasoning_effort`, and tool restrictions. Stateless roles disable shell access and use the supplied task packet as their evidence boundary. Codex inherits the parent session’s sandbox and MCP services; if a stateless role lacks local file tools, the coordinator supplies the task verbatim and saves the returned reply. Claude Code’s matching stateless roles under `.claude/agents/` expose only `Read` and `Write`. [Codex custom agent configuration](https://learn.chatgpt.com/docs/agent-configuration/subagents#custom-agent-file-schema)
 
-> Use profile-coordinator for Q935, concurrency=1, through bilingual approval. Use fresh profile-writer, profile-adversarial, profile-auditor, profile-translator and profile-translation-auditor subagents for their respective tasks. Report any hold or proposal.
+> Use profile-coordinator for Q935, concurrency=1, through bilingual approval. Use fresh profile-scout, profile-writer, profile-adversarial, profile-auditor, profile-translator and profile-translation-auditor subagents for their respective tasks. Report any hold or proposal.
 
 ## Verify model provenance
 

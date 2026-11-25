@@ -14,7 +14,11 @@ import {
 import { evidenceStore, readSnapshot } from './evidence-cache.js';
 import { parseModelProfile } from './model-profile.js';
 import { RAW_PROFILES_DIR } from './paths.js';
-import { prefetchBatch, validatePrefetchConcurrency } from './prefetch.js';
+import {
+  parsePrefetchManifest,
+  prefetchBatch,
+  validatePrefetchConcurrency,
+} from './prefetch.js';
 import { preflightProfile } from './preflight.js';
 import { readPromptText } from './prompt.js';
 import {
@@ -520,7 +524,14 @@ export async function runCoordinatorCommand(
   const allowed: Record<string, string[]> = {
     evidence: ['url', 'query', 'offset', 'length', 'outline', 'refresh'],
     preflight: ['qid', 'file'],
-    prefetch: ['qids', 'max-sources', 'refresh', 'concurrency'],
+    prefetch: [
+      'qids',
+      'max-sources',
+      'refresh',
+      'concurrency',
+      'manifest',
+      'urls',
+    ],
     status: ['qids', 'scope', 'stage', 'limit'],
     'english-adversarial': ['qid', 'research', 'result', 'out'],
     'english-audit': ['qid', 'research', 'result', 'out'],
@@ -581,6 +592,16 @@ export async function runCoordinatorCommand(
   } else if (command === 'prefetch') {
     const qids = parseQidsFlag(argv);
     if (!qids) throw new Error('--qids is required for prefetch');
+    const manifestFile = flags.get('manifest');
+    const urlsFlag = flags.get('urls');
+    if (manifestFile && urlsFlag)
+      throw new Error('--manifest cannot be combined with --urls');
+    if ((manifestFile || urlsFlag) && qids.size !== 1)
+      throw new Error('--manifest and --urls require a single QID in --qids');
+    if ((manifestFile || urlsFlag) && flags.has('max-sources'))
+      throw new Error(
+        '--max-sources cannot be combined with --manifest or --urls',
+      );
     const concurrency = Number(flags.get('concurrency') ?? 1);
     validatePrefetchConcurrency(concurrency);
     const byQid = new Map(
@@ -594,6 +615,17 @@ export async function runCoordinatorCommand(
       if (!subject) throw new Error(`${qid}: no dataset entity`);
       return subject;
     });
+    const manifest = manifestFile
+      ? parsePrefetchManifest(await readJson(manifestFile), subjects[0]?.qid)
+      : undefined;
+    const urls = urlsFlag
+      ? urlsFlag
+          .split(/,(?=\s*[a-z][a-z0-9+.-]*:\/\/)/i)
+          .map((value) => value.trim())
+          .filter(Boolean)
+      : undefined;
+    if (urlsFlag && (!urls || urls.length === 0))
+      throw new Error('--urls must contain at least one URL');
     const results = await prefetchBatch({
       subjects,
       profilesDir: options.profilesDir,
@@ -601,6 +633,8 @@ export async function runCoordinatorCommand(
         ? Number(flags.get('max-sources'))
         : undefined,
       refresh: flags.has('refresh'),
+      manifest,
+      urls,
       fetch: options.fetch,
       concurrency,
     });
