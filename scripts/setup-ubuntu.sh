@@ -4,8 +4,8 @@
 # `npm run a11y` and `npm run shot` need. Node comes from nvm. Idempotent; run from anywhere.
 set -euo pipefail
 
-NODE_MIN="22.21.0"
-NODE_MAJOR="22"
+NODE_MIN="26.0.0"
+NODE_MAJOR="26"
 NVM_VERSION="v0.40.3"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 

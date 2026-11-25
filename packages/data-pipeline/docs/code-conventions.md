@@ -4,7 +4,7 @@
 
 ## TypeScript
 
-- Run `.ts` entry points and tests directly with Node (`>=22.21.0`) using native type stripping: use explicit `.ts` extensions on relative imports and keep syntax erasable (`erasableSyntaxOnly` in `tsconfig.json`).
+- Run `.ts` entry points and tests directly with Node (`>=26.0.0`) using native type stripping: use explicit `.ts` extensions on relative imports and keep syntax erasable (`erasableSyntaxOnly` in `tsconfig.json`).
 - Validate unknown external input (raw Wikidata results, Pantheon CSV) at system boundaries, before Transform touches it.
 
 ## Data Pipeline
