@@ -1,0 +1,669 @@
+{
+  "subject": "Dante Alighieri",
+  "type": "person",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Dante_Alighieri",
+  "overview": "**Dante Alighieri** (c. 1265–1321) was an Italian poet, political thinker, and language theorist whose epic poem **The Divine Comedy** stands as the defining literary work of the European Middle Ages. Exiled from his native Florence in 1302 amid bitter factional politics, he wrote his journey through Hell, Purgatory, and Paradise not in scholarly Latin but in his native Tuscan vernacular. That choice—reinforced by his theoretical defense of vernacular writing and later embraced by Petrarch and Boccaccio—helped establish standardized modern Italian and reshaped Western art and literature.",
+  "key_moments": [
+    {
+      "date": "1295",
+      "title": "La Vita Nuova and Beatrice",
+      "text": "Born into minor Florentine nobility, Dante produced his only major pre-exile work, **La Vita Nuova** (The New Life), blending sonnets and songs with prose commentary on his devotion to **Beatrice Portinari**. Breaking with convention, he wrote not only the love poems but also his own critical commentary in the **Tuscan vernacular** rather than Latin.",
+      "source": "https://en.wikipedia.org/wiki/Dante_Alighieri"
+    },
+    {
+      "date": "1301–1302",
+      "title": "Coup and Perpetual Exile from Florence",
+      "text": "After serving as one of Florence’s city priors in 1300, Dante traveled to Rome in 1301 on a **White Guelph** embassy to **Pope Boniface VIII**. While the pope detained him in Rome, rival **Black Guelphs** backed by Charles of Valois seized Florence, accused Dante of corruption, and seized his assets. When he refused to pay a steep fine, the city condemned him to **perpetual exile**—and death by burning if he ever returned.",
+      "source": "https://en.wikipedia.org/wiki/Dante_Alighieri"
+    },
+    {
+      "date": "c. 1308–1321",
+      "title": "Writing the Divine Comedy in Exile",
+      "text": "Wandering between northern Italian courts such as **Verona** and **Ravenna**, Dante turned exile into astonishing creative output. Alongside treatises like De vulgari eloquentia and De Monarchia, he composed the **Divine Comedy**—Inferno, Purgatorio, and Paradiso—in which the Roman poet **Virgil** and **Beatrice** guide him through the Christian afterlife while he settles political, theological, and personal scores in vivid vernacular verse.",
+      "source": "https://www.smithsonianmag.com/travel/follow-dantes-footsteps-through-italy-180977029/"
+    },
+    {
+      "date": "September 14, 1321",
+      "title": "Death in Ravenna",
+      "text": "Invited to **Ravenna** in 1318 by its lord, **Guido Novello da Polenta**, Dante finished Paradiso shortly before contracting malaria while returning from a diplomatic mission to Venice. He died in Ravenna on September 14, 1321, around age 56, and was laid to rest outside the Basilica of San Francesco—beginning centuries of rivalry over his remains. No original manuscript in Dante’s own hand survives; the Divine Comedy comes down to us entirely through hundreds of later copies.",
+      "source": "https://en.wikipedia.org/wiki/Dante_Alighieri"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "When Florence finally regretted exiling its greatest poet and demanded his remains back in the 1500s, Franciscan friars in Ravenna **secretly hid Dante’s bones**—leaving the Florentine delegation staring into an empty sarcophagus. The friars concealed the wooden box again in 1810 to protect it from Napoleon’s confiscation of monasteries, and the remains vanished until **May 25, 1865**, when a mason renovating a wall nearby accidentally broke open the hiding place. Florence’s grand marble monument for Dante in Santa Croce, built in 1829, remains **empty to this day**.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://www.turismo.ra.it/en/culture-and-history/memorials/dante-alighieri-tomb/"
+    },
+    {
+      "text": "Florence waited nearly **seven centuries**—until **June 2008**—to formally rescind Dante’s 1302 exile sentence, and even then the vote sparked a fierce political row. Five city councillors voted against the annulment and others stayed away, prompting Dante’s direct descendant, **Count Pieralvise Serego Alighieri**, to boycott the reconciliation ceremony where Florence planned to award him the city’s highest honor, the golden florin.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://www.theguardian.com/world/2008/jul/29/italy.poetry"
+    },
+    {
+      "text": "Inside Dante’s Ravenna mausoleum, a votive lamp burns continuously using **olive oil donated each year by Florence**—a gesture of atonement directly over a sarcophagus whose 1327 Latin epitaph still scolds the city as **“Florence, mother of little love.”** Even in the 20th century, Dante’s bones were moved one more time: during **World War II**, custodians buried the urn underground in a nearby earthen mound to protect it from Allied bombing and potential Nazi seizure.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://www.smithsonianmag.com/travel/follow-dantes-footsteps-through-italy-180977029/"
+    }
+  ],
+  "connections": [
+    {
+      "name": "The Divine Comedy",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Divine_Comedy",
+      "connection": "Dante’s masterwork—originally titled simply Comedìa—charts a three-part journey through Hell, Purgatory, and Paradise and helped standardize the Italian language.",
+      "importance": "high",
+      "qid": "Q40185"
+    },
+    {
+      "name": "Virgil",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Virgil",
+      "connection": "Dante cast the classical Roman poet as his guide through Hell and Purgatory in The Divine Comedy.",
+      "importance": "high",
+      "qid": "Q1398"
+    },
+    {
+      "name": "Giovanni Boccaccio",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Giovanni_Boccaccio",
+      "connection": "Following Dante’s vernacular precedent, Boccaccio wrote an early biography of him and christened his Comedìa “Divina.”",
+      "importance": "high",
+      "qid": "Q1402"
+    },
+    {
+      "name": "Boniface VIII",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Boniface_VIII",
+      "connection": "By detaining Dante in Rome in 1301 while backing the Black Guelph takeover of Florence, the pope precipitated the poet’s lifelong exile.",
+      "importance": "high",
+      "qid": "Q134646"
+    },
+    {
+      "name": "Petrarch",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Petrarch",
+      "connection": "Petrarch followed the vernacular literary precedent set by Dante’s Tuscan works, cementing Florentine Italian as a literary standard.",
+      "importance": "medium",
+      "qid": "Q1401"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-25T14:25:00Z",
+    "prompt_version": "2.8.0",
+    "prompt_hash": "28340cecc600",
+    "schema_version": 4,
+    "model": "gemini-4-neon",
+    "reasoning_effort": null,
+    "temperature": null,
+    "run_id": "2026-11-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q1067"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 5,
+      "connections_matched_people": 4,
+      "connections_matched_events": 1,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    },
+    "pending_assessment": {
+      "profile_hash": "ad0cfce2c376792a59e5e52f6f090ca8e26d62c64f33e75623128263452387b4",
+      "assessment": {
+        "uncovered": [],
+        "issues": [],
+        "coherent": true,
+        "covered": [
+          "overview",
+          "key_moments.0.date",
+          "key_moments.0.title",
+          "key_moments.0.text",
+          "key_moments.1.date",
+          "key_moments.1.title",
+          "key_moments.1.text",
+          "key_moments.2.date",
+          "key_moments.2.title",
+          "key_moments.2.text",
+          "key_moments.3.date",
+          "key_moments.3.title",
+          "key_moments.3.text",
+          "deep_facts.0.text",
+          "deep_facts.1.text",
+          "deep_facts.2.text",
+          "connections.0.connection",
+          "connections.1.connection",
+          "connections.2.connection",
+          "connections.3.connection",
+          "connections.4.connection"
+        ],
+        "subject_dates": [
+          {
+            "path": "overview",
+            "boundary": "start",
+            "year": 1265
+          },
+          {
+            "path": "overview",
+            "boundary": "end",
+            "year": 1321
+          },
+          {
+            "path": "key_moments.3.date",
+            "boundary": "end",
+            "year": 1321
+          }
+        ],
+        "findings": [
+          {
+            "path": "overview",
+            "claim": "Dante Alighieri (c. 1265–1321) was an Italian poet, writer, and philosopher whose Divine Comedy is considered one of the greatest works of the Middle Ages and Italian literature.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia records Dante's dates (c. May 1265 – September 14, 1321), roles, and the stature of the Divine Comedy.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "Dante Alighieri (Italian: [ˈdante aliˈɡjɛːri]; most likely baptized Durante di Alighiero degli Alighieri;[b] c. May 1265 – September 14, 1321), widely known mononymously as Dante,[c] was an Italian[d] poet, writer, and philosopher.[8] His Divine Comedy, originally called Comedìa (modern Italian: Commedia) and later christened Divina by Giovanni Boccaccio,[9] is widely considered one of the most important poems of the Middle Ages and the greatest literary work in the Italian language.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "overview",
+            "claim": "Exiled from Florence in 1302, Dante wrote the Divine Comedy in Tuscan vernacular rather than Latin, helping establish standardized Italian and setting a precedent followed by Petrarch and Boccaccio.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia and Smithsonian Magazine document Dante's 1302 exile, his break with Latin in favor of Tuscan, and his foundational influence on modern Italian and subsequent authors.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "At a time when Latin was still the dominant language for scholarly and literary writing—and when many Italian poets drew inspiration from French or Provençal traditions—Dante broke with both by writing in the vernacular, specifically his native Tuscan dialect.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "His use of the Florentine dialect for works such as The New Life (1295) and Divine Comedy helped establish the modern-day standardized Italian language. His work set a precedent that important Italian writers such as Petrarch and Boccaccio would later follow.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "In March 1302, Dante, a White Guelph by affiliation, along with the Gherardini family, was condemned to exile for two years and ordered to pay a large fine.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.date",
+            "claim": "Dante completed The New Life (La Vita Nuova) around 1295.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia dates The New Life to 1295 and identifies it as his only major work predating his exile.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "His use of the Florentine dialect for works such as The New Life (1295) and Divine Comedy helped establish the modern-day standardized Italian language.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.title",
+            "claim": "La Vita Nuova combined Tuscan lyric poetry and prose commentary centered on Dante's love for Beatrice Portinari.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia describes La Vita Nuova as a collection of poems and vernacular prose commentary telling the story of his love for Beatrice Portinari.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "La Vita Nuova (\"The New Life\") is the only major work that predates it; it is a collection of lyric poems (sonnets and songs) with commentary in prose, intended to be circulated in manuscript form, as was customary for such poems.[94] It also contains the story of his love for Beatrice Portinari, who later served as the ultimate symbol of salvation in the Divine Comedy.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.text",
+            "claim": "Dante came from minor Florentine nobility and wrote both the poetry and prose commentary of La Vita Nuova in the vernacular instead of Latin.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Smithsonian Magazine notes his family's minor Florentine nobility, and Wikipedia highlights his break from Latin by writing prose commentary in the vernacular.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9730af641b6104074e2d4e689a007c4f66db706f9bf0b56367ec6a8b8263c5b3",
+                "quote": "His family was minor nobility in Florence, descended from a participant in the Second Crusade.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Follow Dante's Footsteps Through Italy"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "However, Dante's commentary on his own work is also in the vernacular—both in the Vita Nuova and in the Convivio (\"The Banquet\"), an unfinished work of his—instead of the Latin that was almost universally used at the time.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.date",
+            "claim": "Dante left Florence on a diplomatic delegation to Rome in 1301 and was condemned to exile in 1302.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Both Smithsonian Magazine and Wikipedia date his departure to 1301 and his exile sentence to 1302.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9730af641b6104074e2d4e689a007c4f66db706f9bf0b56367ec6a8b8263c5b3",
+                "quote": "Dante left Florence in 1301 after years of schooling and an arranged marriage. He was part of a delegation of the White Guelphs political party that visited Rome to meet the Pope and try to stop him from annexing Tuscan land.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Follow Dante's Footsteps Through Italy"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "In March 1302, Dante, a White Guelph by affiliation, along with the Gherardini family, was condemned to exile for two years and ordered to pay a large fine.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.title",
+            "claim": "The Black Guelphs seized Florence while Dante was in Rome and condemned him to perpetual exile under threat of burning at the stake.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia details the November 1301 Black Guelph coup and the escalating 1302 exile and death-by-fire sentence.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "He was condemned to perpetual exile; if he had returned to Florence without paying the fine, he could have been burned at the stake.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.text",
+            "claim": "Dante served as city prior in 1300, was detained in Rome by Pope Boniface VIII while Charles of Valois and the Black Guelphs took Florence in November 1301, and was accused of corruption and stripped of his assets.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia documents Dante's two-month priorate in 1300, Boniface VIII detaining him in Rome, Charles of Valois entering Florence with the Black Guelphs, the corruption charges, and the seizure of his assets.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "Pope Boniface quickly dismissed the other delegates and asked Dante alone to remain in Rome. At the same time (November 1, 1301), Charles of Valois entered Florence with the Black Guelphs, who in the next six days destroyed much of the city and killed many of their enemies.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "Dante was accused of corruption and financial wrongdoing by the Black Guelphs for the time that Dante was serving as city prior (Florence's highest position) for two months in 1300.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "Dante did not pay the fine, in part because he believed he was not guilty and in part because all his assets in Florence had been seized by the Black Guelphs.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.date",
+            "claim": "Dante is estimated to have begun the Divine Comedy around 1308 and completed it in 1321, the year of his death.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Smithsonian Magazine dates the composition of the Divine Comedy to an estimated 1308–1321 during Dante's exile and years in Ravenna.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9730af641b6104074e2d4e689a007c4f66db706f9bf0b56367ec6a8b8263c5b3",
+                "quote": "It was during his travels while he was exiled and his subsequent life in Ravenna that Dante wrote the poem; it's estimated he started it in 1308, when he was 43, and finished it in 1321, the year he died of malaria at age 56.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Follow Dante's Footsteps Through Italy"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.title",
+            "claim": "During his exile, Dante wrote philosophical and political treatises alongside his masterpiece, the Divine Comedy.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia and The Guardian confirm that Dante composed most of his greatest works, including the Divine Comedy and De Monarchia, in exile.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "0ca66bc18f93811639c85b9bf566d42072c47847d521d3b8aaff325c97693210",
+                "quote": "It was outside Florence that he wrote much of his best work, including much of his masterpiece, The Divine Comedy.",
+                "kind": "scholarly",
+                "origin": "The Guardian, Italy: Infernal row flares over Florence council's plans to pardon Dante"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.text",
+            "claim": "In exile across courts including Verona and Ravenna, Dante wrote De vulgari eloquentia, De Monarchia, and the Divine Comedy (Inferno, Purgatorio, and Paradiso), guided by Virgil and Beatrice.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia, The Guardian, and Columbia's Digital Dante document Dante's residences in Verona and Ravenna, his treatises De vulgari eloquentia and Monarchia, and the three canticles of the Divine Comedy guided by Virgil and Beatrice.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "0ca66bc18f93811639c85b9bf566d42072c47847d521d3b8aaff325c97693210",
+                "quote": "He spent much of his exile in Verona and died in Ravenna.",
+                "kind": "scholarly",
+                "origin": "The Guardian, Italy: Infernal row flares over Florence council's plans to pardon Dante"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "The Divine Comedy describes Dante's journey through Hell (Inferno), Purgatory (Purgatorio), and Paradise (Paradiso); he is first guided by the Roman poet Virgil and then by Beatrice.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "His De vulgari eloquentia (On Eloquence in the Vernacular) was one of the first scholarly defenses of the vernacular as well as a watershed study of the troubadour tradition and its craft of rhyme.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "It was during this time that he wrote De Monarchia, proposing a universal monarchy under",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.date",
+            "claim": "Dante died in Ravenna on September 14, 1321.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia dates Dante's death in Ravenna to September 14, 1321.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "Dante died in Ravenna on September 14, 1321, aged about 56, of quartan malaria contracted while returning from a diplomatic mission to the Republic of Venice.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.title",
+            "claim": "Dante died in Ravenna at age 56 and was buried there, never having returned to Florence.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia and Smithsonian Magazine document his death from malaria in Ravenna at age 56 and his burial beside the Church of San Francesco.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9730af641b6104074e2d4e689a007c4f66db706f9bf0b56367ec6a8b8263c5b3",
+                "quote": "Dante never returned.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Follow Dante's Footsteps Through Italy"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.text",
+            "claim": "Dante spent his final years in Ravenna under Guido da Polenta, died of malaria after a diplomatic mission to Venice on September 14, 1321, and was buried at San Francesco.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia and Ravenna Turismo document his patronage by Guido da Polenta, his death from malaria after the Venetian embassy, and his burial at San Francesco.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "Dante's final days were spent in Ravenna, where he had been invited to stay in the city in 1318 by its prince, Guido II da Polenta. Dante died in Ravenna on September 14, 1321, aged about 56, of quartan malaria contracted while returning from a diplomatic mission to the Republic of Venice.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "eba4b963deb2a06d4e5ff0d536fd2c2c7cdcff9e3f09c7b791c4cfcb86a92a51",
+                "quote": "When Dante died, in 1321, his tomb was supposedly a simple sarcophagus just outside the Church of San Francesco. It was Guido Novello da Polenta, lord of Ravenna, who asked for the construction of the chapel to pay homage to him one last time.",
+                "kind": "scholarly",
+                "origin": "Ravenna Turismo, Dante Alighieri's Tomb"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.text",
+            "claim": "No original manuscript written by Dante has survived; the Divine Comedy is preserved through hundreds of 14th- and 15th-century manuscript copies.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia's Divine Comedy article cites the Italian Dante Society confirming no original autograph manuscript survives alongside roughly 800 early copies.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "125f8db3318647b9a246a4b919f8773fa67812f08bdb76663bb5911d8beb99b5",
+                "quote": "According to the Italian Dante Society, no original manuscript written by Dante has survived, although there are many manuscript copies from the 14th and 15th centuries – some 800 are listed on their site.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Divine Comedy"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.0.text",
+            "claim": "Franciscan friars in Ravenna hid Dante's bones to keep them from Florence in the 1500s and hid them again in 1810 during Napoleon's rule; a mason accidentally rediscovered the wooden chest walled up in May 1865, while Florence's 1829 Santa Croce monument remains empty.",
+            "verdict": "supported",
+            "risk": "corroborate",
+            "explanation": "Ravenna Turismo, Smithsonian Magazine, and Wikipedia independently corroborate the Franciscan monks hiding Dante's bones from Florence and Napoleon, the accidental 1865 rediscovery in a wall, and the empty 1829 tomb in Florence's Basilica of Santa Croce.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "eba4b963deb2a06d4e5ff0d536fd2c2c7cdcff9e3f09c7b791c4cfcb86a92a51",
+                "quote": "The Supreme Poet’s remains have been a bone of contention between Ravenna and Florence for a long time, so much so that between the 16th and the 18th century, Dante’s remains went missing for no less than two hundred years! It came out that the Franciscan friars hid them, so that Florence couldn’t get them.",
+                "kind": "scholarly",
+                "origin": "Ravenna Turismo, Dante Alighieri's Tomb"
+              },
+              {
+                "source": "eba4b963deb2a06d4e5ff0d536fd2c2c7cdcff9e3f09c7b791c4cfcb86a92a51",
+                "quote": "In 1810, Napoleon ordered the confiscation of monastic property. Therefore, the friars were forced to leave, but first they made sure to hide again the chest with the remains. On May 25th 1865, during some maintenance works at the monastery beside the tomb, a bricklayer accidentally found a wooden chest in a wall of the Quadrarco di Braccioforte.",
+                "kind": "scholarly",
+                "origin": "Ravenna Turismo, Dante Alighieri's Tomb"
+              },
+              {
+                "source": "9730af641b6104074e2d4e689a007c4f66db706f9bf0b56367ec6a8b8263c5b3",
+                "quote": "When the Florentine delegation opened his sarcophagus and found nothing inside, the monks feigned innocence.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Follow Dante's Footsteps Through Italy"
+              },
+              {
+                "source": "9730af641b6104074e2d4e689a007c4f66db706f9bf0b56367ec6a8b8263c5b3",
+                "quote": "Ever hopeful Florence, though, erected a cenotaph in 1829 for Dante in the Basilica di Santa Croce, which remains empty to this day.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Follow Dante's Footsteps Through Italy"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.1.text",
+            "claim": "In June 2008, Florence's city council formally voted to rescind Dante's 1302 exile sentence, but five councillors voted against it and Dante's direct descendant, Count Pieralvise Serego Alighieri, boycotted the golden florin ceremony.",
+            "verdict": "supported",
+            "risk": "corroborate",
+            "explanation": "The Guardian and Wikipedia independently corroborate the June 2008 Florence council vote rescinding the 1302 sentence, and The Guardian details the five dissenting votes and Count Pieralvise's boycott.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "(In June 2008, nearly seven centuries after his death, the city council of Florence passed a motion rescinding Dante's sentence.)",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "0ca66bc18f93811639c85b9bf566d42072c47847d521d3b8aaff325c97693210",
+                "quote": "A wine-growing aristocrat who is a direct descendant of the poet Dante Alighieri said yesterday he would boycott a ceremony at which he was to have received the city of Florence's highest honour on behalf of his ancestor.",
+                "kind": "scholarly",
+                "origin": "The Guardian, Italy: Infernal row flares over Florence council's plans to pardon Dante"
+              },
+              {
+                "source": "0ca66bc18f93811639c85b9bf566d42072c47847d521d3b8aaff325c97693210",
+                "quote": "Florence council was to have healed the 700-year rift with the poet by presenting the city's golden florin to Count Pieralvise Serego Alighieri.",
+                "kind": "scholarly",
+                "origin": "The Guardian, Italy: Infernal row flares over Florence council's plans to pardon Dante"
+              },
+              {
+                "source": "0ca66bc18f93811639c85b9bf566d42072c47847d521d3b8aaff325c97693210",
+                "quote": "Five councillors voted against the annulment and several others stayed away.",
+                "kind": "scholarly",
+                "origin": "The Guardian, Italy: Infernal row flares over Florence council's plans to pardon Dante"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.2.text",
+            "claim": "A votive lamp inside Dante's Ravenna tomb burns olive oil donated annually from Florence over a 1327 Latin epitaph calling Florence 'mother of little love', and the remains were hidden underground during World War II.",
+            "verdict": "supported",
+            "risk": "corroborate",
+            "explanation": "Ravenna Turismo, Smithsonian Magazine, and Wikipedia independently corroborate the 'mother of little love' epitaph, Florence's annual olive oil tribute for the tomb lamp, and the World War II concealment of the urn.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "eba4b963deb2a06d4e5ff0d536fd2c2c7cdcff9e3f09c7b791c4cfcb86a92a51",
+                "quote": "On the sepulchre’s top is engraved the Latin epitaph written by poet Bernardo Canaccio in 1327:",
+                "kind": "scholarly",
+                "origin": "Ravenna Turismo, Dante Alighieri's Tomb"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "On the grave, a verse of Bernardo Canaccio, a friend of Dante, is dedicated to Florence:[67] parvi Florentia mater amoris Translation: Florence, mother of little love",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "9730af641b6104074e2d4e689a007c4f66db706f9bf0b56367ec6a8b8263c5b3",
+                "quote": "Florence pays a little bit every year for this tomb, though; the oil lamp hanging from the ceiling inside is fueled by olive oil sent from Florence each year on the anniversary of Dante’s death. A small mound of earth outside the mausoleum marks the spot where Dante's urn was reburied during World War II, so that it didn’t get destroyed from any bombings.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Follow Dante's Footsteps Through Italy"
+              },
+              {
+                "source": "eba4b963deb2a06d4e5ff0d536fd2c2c7cdcff9e3f09c7b791c4cfcb86a92a51",
+                "quote": "At the centre of the little room, a votive lamp burns with the oil donated by Tuscany.",
+                "kind": "scholarly",
+                "origin": "Ravenna Turismo, Dante Alighieri's Tomb"
+              }
+            ]
+          },
+          {
+            "path": "connections.0.connection",
+            "claim": "The Divine Comedy, originally called Comedìa, depicts a journey through Hell, Purgatory, and Paradise and helped establish standardized Italian.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia confirms the original title Comedìa, the three realms, and the poem's role in establishing modern standardized Italian.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "His Divine Comedy, originally called Comedìa (modern Italian: Commedia) and later christened Divina by Giovanni Boccaccio,[9] is widely considered one of the most important poems of the Middle Ages and the greatest literary work in the Italian language.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "The Divine Comedy describes Dante's journey through Hell (Inferno), Purgatory (Purgatorio), and Paradise (Paradiso); he is first guided by the Roman poet Virgil and then by Beatrice.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "connections.1.connection",
+            "claim": "The Roman poet Virgil serves as Dante's first guide in the Divine Comedy.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia explicitly notes that the Roman poet Virgil guides Dante before Beatrice.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "The Divine Comedy describes Dante's journey through Hell (Inferno), Purgatory (Purgatorio), and Paradise (Paradiso); he is first guided by the Roman poet Virgil and then by Beatrice.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "connections.2.connection",
+            "claim": "Giovanni Boccaccio followed Dante's vernacular precedent, wrote an early book on Dante, and gave the Comedìa the epithet Divina.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia documents Boccaccio calling the work Divina, following Dante's vernacular precedent, and writing a book on Dante decades after his death.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "His Divine Comedy, originally called Comedìa (modern Italian: Commedia) and later christened Divina by Giovanni Boccaccio",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "His work set a precedent that important Italian writers such as Petrarch and Boccaccio would later follow.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "connections.3.connection",
+            "claim": "Pope Boniface VIII kept Dante in Rome in 1301 while backing the Black Guelphs who seized Florence and exiled Dante.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia records Pope Boniface dismissing the other delegates and keeping Dante in Rome while backing the Black Guelphs.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "Pope Boniface quickly dismissed the other delegates and asked Dante alone to remain in Rome.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              },
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "The poet was still in Rome in 1302, as the Pope, who had backed the Black Guelphs, had \"suggested\" that Dante stay there.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          },
+          {
+            "path": "connections.4.connection",
+            "claim": "Petrarch followed the vernacular precedent established by Dante's works.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia notes that Dante's vernacular precedent was later followed by Petrarch and Boccaccio.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "bf0be726fa4bf5f24b71752aa21fe7cd2022033a20178219990bfa44b7091996",
+                "quote": "His work set a precedent that important Italian writers such as Petrarch and Boccaccio would later follow.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Dante Alighieri"
+              }
+            ]
+          }
+        ]
+      },
+      "model": "gemini-4-neon"
+    }
+  }
+}

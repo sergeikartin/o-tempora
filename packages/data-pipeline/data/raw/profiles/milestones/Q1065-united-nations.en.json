@@ -1,0 +1,716 @@
+{
+  "subject": "United Nations",
+  "type": "milestone",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/United_Nations",
+  "overview": "The **United Nations** was founded in **1945** to replace the failed League of Nations and prevent another global war. Drafted by delegates from 50 countries at the San Francisco Conference and entering into force on October 24, 1945, its Charter established an international legal framework grounded in sovereign equality and collective security. Built around six principal organs—including the General Assembly and the Security Council, where five permanent victors of World War II hold veto power—the UN grew from 51 original members to 193 member states, becoming the primary global forum for diplomacy, peacekeeping, and humanitarian coordination.",
+  "key_moments": [
+    {
+      "date": "1941–1942",
+      "title": "The Atlantic Charter and Wartime Alliance",
+      "text": "Even before the United States entered World War II, **Franklin D. Roosevelt** and **Winston Churchill** signed the **Atlantic Charter** in August 1941, sketching a postwar system of general security. On January 1, 1942, 26 nations fighting the Axis powers endorsed those principles in the **Declaration by United Nations**, pledging their full resources to the war and promising not to make a separate peace.",
+      "source": "https://www.un.org/en/about-us/history-of-the-un/preparatory-years"
+    },
+    {
+      "date": "1944–1945",
+      "title": "Dumbarton Oaks and Yalta Blueprint",
+      "text": "Following the 1943 Moscow Declaration calling for a general international organization, American, British, Soviet, and Chinese delegates drafted the initial charter proposals at **Dumbarton Oaks** in Washington. In February 1945, Roosevelt, Churchill, and **Joseph Stalin** resolved the remaining deadlock over **Security Council** veto procedures at the **Yalta Conference** and formally summoned the founding conference for April in San Francisco.",
+      "source": "https://history.state.gov/milestones/1937-1945/un"
+    },
+    {
+      "date": "June–October 1945",
+      "title": "Signing and Entry into Force",
+      "text": "Despite Roosevelt’s sudden death two weeks earlier, President **Harry S. Truman** kept the schedule intact, and 850 delegates from 50 nations convened in San Francisco from April 25 to June 26, 1945. After reviewing more than 5,000 documents, they unanimously adopted the **UN Charter** and the Statute of the **International Court of Justice**. Avoiding Woodrow Wilson’s League of Nations defeat, the U.S. Senate approved the Charter 89–2, and the UN officially came into existence on **October 24, 1945**.",
+      "source": "https://www.un.org/en/about-us/history-of-the-un/san-francisco-conference"
+    },
+    {
+      "date": "1946–1952",
+      "title": "First Assembly and New York Headquarters",
+      "text": "The General Assembly and Security Council opened their first sessions in **London** in January 1946 with 51 nations represented, electing Norwegian Foreign Minister **Trygve Lie** as the first Secretary-General. After accepting a donated East River waterfront site in Manhattan’s Turtle Bay—formerly home to slaughterhouses and tenements—a multinational board of architects including **Le Corbusier** and **Oscar Niemeyer** designed the permanent New York headquarters, completed in 1952.",
+      "source": "https://en.wikipedia.org/wiki/Headquarters_of_the_United_Nations"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "The name **“United Nations”** existed for more than three years before the organization itself. President **Franklin D. Roosevelt** coined the phrase in 1941 to describe the Allied powers fighting Germany, Italy, and Japan, and it entered official use on **January 1, 1942**, when 26 countries signed the wartime Declaration by United Nations. When invitations went out for the 1945 San Francisco Conference, only nations that had signed that wartime pledge and declared war on Germany and Japan by March 1945 were initially invited.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://www.archives.gov/milestone-documents/united-nations-charter"
+    },
+    {
+      "text": "The UN had **51 original Member States**, even though only **50 countries** attended the San Francisco Conference. **Poland**—one of the original 1942 wartime signatories—had no generally recognized government in place during the spring of 1945, so delegates left a blank space on the Charter for its signature. Once a new Polish government was announced two days after the signing ceremony, Poland added its signature on **October 15, 1945**, nine days before the Charter entered into force.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://www.un.org/en/about-us/history-of-the-un/san-francisco-conference"
+    },
+    {
+      "text": "Although the **Soviet Union** was a single sovereign state, it entered the UN with **three General Assembly votes**. Under a Yalta Conference compromise, Roosevelt agreed to grant separate founding memberships to two Soviet republics—the **Ukrainian Soviet Socialist Republic** and the **Byelorussian Soviet Socialist Republic**—and the San Francisco Conference formally invited both. In exchange, Roosevelt reserved the right to claim two additional General Assembly votes for the United States, a right Washington never exercised.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://history.state.gov/milestones/1937-1945/un"
+    }
+  ],
+  "connections": [
+    {
+      "name": "World War II",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_II",
+      "connection": "The UN emerged directly from the wartime Allied coalition against the Axis powers, founded in 1945 to prevent another global conflict.",
+      "importance": "high",
+      "qid": "Q362"
+    },
+    {
+      "name": "League of Nations",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/League_of_Nations",
+      "connection": "Established in 1919 after World War I, the League served as the UN’s direct forerunner before collapsing after failing to prevent World War II.",
+      "importance": "high",
+      "qid": "Q38130"
+    },
+    {
+      "name": "Franklin Delano Roosevelt",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
+      "connection": "The U.S. president coined the name “United Nations,” co-authored the Atlantic Charter, and drove the diplomatic plans for the San Francisco Conference before his death in April 1945.",
+      "importance": "high",
+      "qid": "Q8007"
+    },
+    {
+      "name": "Cold War",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Cold_War",
+      "connection": "Rivalry between the United States and the Soviet Union frequently paralyzed the Security Council’s peacekeeping mandate from the late 1940s until 1991.",
+      "importance": "medium",
+      "qid": "Q8683"
+    },
+    {
+      "name": "Harry S. Truman",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Harry_S._Truman",
+      "connection": "Assuming the presidency after Roosevelt’s sudden death, Truman refused to postpone the San Francisco Conference and oversaw U.S. ratification of the Charter.",
+      "importance": "medium",
+      "qid": "Q11613"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-25T14:25:00Z",
+    "prompt_version": "2.8.0",
+    "prompt_hash": "28340cecc600",
+    "schema_version": 4,
+    "model": "gemini-4-neon",
+    "reasoning_effort": null,
+    "temperature": null,
+    "run_id": "2026-11-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q1065"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 5,
+      "connections_matched_people": 2,
+      "connections_matched_events": 3,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    },
+    "pending_assessment": {
+      "profile_hash": "f5c929c26441348f0121c8530025579fef33e21179f94d8cec38777461b5fc8d",
+      "assessment": {
+        "uncovered": [],
+        "issues": [],
+        "coherent": true,
+        "covered": [
+          "overview",
+          "key_moments.0.date",
+          "key_moments.0.title",
+          "key_moments.0.text",
+          "key_moments.1.date",
+          "key_moments.1.title",
+          "key_moments.1.text",
+          "key_moments.2.date",
+          "key_moments.2.title",
+          "key_moments.2.text",
+          "key_moments.3.date",
+          "key_moments.3.title",
+          "key_moments.3.text",
+          "deep_facts.0.text",
+          "deep_facts.1.text",
+          "deep_facts.2.text",
+          "connections.0.connection",
+          "connections.1.connection",
+          "connections.2.connection",
+          "connections.3.connection",
+          "connections.4.connection"
+        ],
+        "subject_dates": [
+          {
+            "path": "overview",
+            "boundary": "start",
+            "year": 1945
+          },
+          {
+            "path": "key_moments.2.date",
+            "boundary": "start",
+            "year": 1945
+          }
+        ],
+        "findings": [
+          {
+            "path": "overview",
+            "claim": "The United Nations was founded in 1945 to replace the League of Nations and maintain international peace and security after World War II.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Both the U.S. National Archives and the UN Charter page confirm that the UN was established in 1945 after World War II as the successor to the League of Nations to maintain international peace and security.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "783169b890c1041af325d72b4858961cdaabcfb7e9f9da56c4fbf8348561f38b",
+                "quote": "The United Nations was established after World War II in an attempt to maintain international peace and security and to achieve cooperation among nations on economic, social, and humanitarian problems. Its forerunner was the League of Nations, an organization conceived under similar circumstances following World War I.",
+                "kind": "primary",
+                "origin": "U.S. National Archives, United Nations Charter (1945)"
+              },
+              {
+                "source": "0ece12c2bb16258d72458db65882d5228b058e44c57a58f4fb393f34a2872561",
+                "quote": "The UN Charter codifies the major principles of international relations, from sovereign equality of States to the prohibition of the use of force in international relations.",
+                "kind": "primary",
+                "origin": "United Nations, UN Charter"
+              }
+            ]
+          },
+          {
+            "path": "overview",
+            "claim": "Delegates from 50 countries drafted and signed the UN Charter at the San Francisco Conference, and the organization officially came into existence on October 24, 1945.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN Charter page and San Francisco Conference history confirm 50 attending countries signed the Charter on 26 June 1945 and it entered into force on 24 October 1945.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "The UN Charter was signed on 26 June 1945 by representatives of the 50 countries attending the United Nations Conference on International Organization in San Francisco.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              },
+              {
+                "source": "0ece12c2bb16258d72458db65882d5228b058e44c57a58f4fb393f34a2872561",
+                "quote": "It was signed on 26 June 1945, in San Francisco, at the conclusion of the United Nations Conference on International Organization, and came into force on 24 October 1945.",
+                "kind": "primary",
+                "origin": "United Nations, UN Charter"
+              }
+            ]
+          },
+          {
+            "path": "overview",
+            "claim": "The UN comprises six principal organs—including the General Assembly and Security Council, where five permanent members hold veto power—and grew from 51 original members to 193 member states.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia, the UN Preparatory Years history, and the U.S. National Archives document the six principal organs, the five permanent Security Council members with veto power, the 51 original Member States, and the current 193 member states.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ac0af712027a4e325437561c928576302f1c94876c56679ba1b2b24d5ee2906f",
+                "quote": "The UN comprises six principal organizations: General Assembly, Security Council, United Nations Economic and Social Council, International Court of Justice, Secretariat, and Trusteeship Council, which together with several specialized agencies and related agencies, make up the UN System. There is a total of 193 member states, representing nearly all of the world's sovereign states, as well as two observer states, the Holy See and the State of Palestine.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, United Nations"
+              },
+              {
+                "source": "783169b890c1041af325d72b4858961cdaabcfb7e9f9da56c4fbf8348561f38b",
+                "quote": "The UN Security Council consists of the five victors from World War II (known as “The Big Five”) as permanent members—China, France, the United Kingdom, the USSR (now Russia), and the United States—and 10 other countries, elected by the General Assembly, that serve 2-year terms.",
+                "kind": "primary",
+                "origin": "U.S. National Archives, United Nations Charter (1945)"
+              },
+              {
+                "source": "783169b890c1041af325d72b4858961cdaabcfb7e9f9da56c4fbf8348561f38b",
+                "quote": "The five permanent members were given individual veto power over issues brought before the Council.",
+                "kind": "primary",
+                "origin": "U.S. National Archives, United Nations Charter (1945)"
+              },
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "Poland, which was not represented, signed it later and became one of the UN's original 51 Member States.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.date",
+            "claim": "The Atlantic Charter was signed in August 1941 and the Declaration by United Nations followed on January 1, 1942.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN Preparatory Years history dates the Atlantic Charter to 14 August 1941 and the Declaration by United Nations to 1 January 1942.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "The origin of the Charter of the United Nations can be traced back to the Atlantic Charter, signed on 14 August 1941, by which Franklin D. Roosevelt, President of the United States of America, and Winston Churchill, Prime Minister of the United Kingdom, made known “certain common principles in the national policies of their respective countries on which they base their hopes for a better future for the world”.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              },
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "On 1 January 1942, twenty-six States at war with the Axis Powers, including the United States, the United Kingdom, China and the Union of Soviet Socialist Republics (USSR), subscribed to the common programme of purposes and principles embodied in the Atlantic Charter in a document, which became known as the 'Declaration by United Nations'.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.title",
+            "claim": "The UN Charter's principles grew out of the 1941 Atlantic Charter and the 1942 wartime coalition known as the United Nations.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Both the UN history and the U.S. State Department trace the UN's origins to the Atlantic Charter and the 1942 Declaration by United Nations.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9c92c9c8f4160eea26ee836a828e562881697decd4cd6dc135ff812fe2953650",
+                "quote": "On January 1, 1942, representatives of 26 nations at war with the Axis powers met in Washington to sign the Declaration of the United Nations endorsing the Atlantic Charter, pledging to use their full resources against the Axis and agreeing not to make a separate peace.",
+                "kind": "scholarly",
+                "origin": "U.S. Department of State Office of the Historian, The Formation of the United Nations, 1945"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.text",
+            "claim": "Roosevelt and Churchill signed the Atlantic Charter in August 1941, referencing a future permanent system of general security.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN Preparatory Years history records the August 14, 1941 signing by Roosevelt and Churchill and its eighth paragraph calling for a wider and permanent system of general security.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "This document, in its eighth paragraph, incidentally referred to the future “establishment of a wider and permanent system of general security”.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.text",
+            "claim": "On January 1, 1942, 26 nations fighting the Axis signed the Declaration by United Nations, endorsing the Atlantic Charter and pledging not to make a separate peace.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The U.S. State Department Office of the Historian documents the January 1, 1942 signing by 26 nations and their pledges.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9c92c9c8f4160eea26ee836a828e562881697decd4cd6dc135ff812fe2953650",
+                "quote": "On January 1, 1942, representatives of 26 nations at war with the Axis powers met in Washington to sign the Declaration of the United Nations endorsing the Atlantic Charter, pledging to use their full resources against the Axis and agreeing not to make a separate peace.",
+                "kind": "scholarly",
+                "origin": "U.S. Department of State Office of the Historian, The Formation of the United Nations, 1945"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.date",
+            "claim": "The Dumbarton Oaks Conference took place in August–October 1944 and the Yalta Conference followed in February 1945.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN Preparatory Years history dates Dumbarton Oaks to 21 August–7 October 1944 and Yalta to 4–11 February 1945.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "From 21 August to 7 October 1944, representatives of the United States and the United Kingdom met separately with representatives of the USSR (21 August-28 September) and of China (29 September-7 October), at Dumbarton Oaks in the context of the “Washington Conversations on International Peace and Security Organization” (or Dumbarton Oaks Conference).",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              },
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "Negotiations on the future international organization continued at the Yalta Conference, attended by President Roosevelt, Prime Minister Churchill and Premier Stalin, from 4 to 11 February 1945.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.title",
+            "claim": "The structural blueprint and Security Council voting rules of the UN were worked out at Dumbarton Oaks and Yalta.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The U.S. State Department confirms Dumbarton Oaks produced the draft charter proposals and Yalta settled Security Council voting and veto rules.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9c92c9c8f4160eea26ee836a828e562881697decd4cd6dc135ff812fe2953650",
+                "quote": "U.S., British, Soviet, and Chinese representatives met at Dumbarton Oaks in Washington in August and September 1944 to draft the charter of a postwar international organization based on the principle of collective security.",
+                "kind": "scholarly",
+                "origin": "U.S. Department of State Office of the Historian, The Formation of the United Nations, 1945"
+              },
+              {
+                "source": "9c92c9c8f4160eea26ee836a828e562881697decd4cd6dc135ff812fe2953650",
+                "quote": "Voting procedures and the veto power of permanent members of the Security Council were finalized at the Yalta Conference in 1945 when Roosevelt and Stalin agreed that the veto would not prevent discussions by the Security Council.",
+                "kind": "scholarly",
+                "origin": "U.S. Department of State Office of the Historian, The Formation of the United Nations, 1945"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.text",
+            "claim": "After the October 1943 Moscow Declaration called for a general international organization, the four powers drafted the initial proposals at Dumbarton Oaks.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The U.S. National Archives and UN history document the October 1943 Moscow Declaration and the resulting Dumbarton Oaks proposals.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "783169b890c1041af325d72b4858961cdaabcfb7e9f9da56c4fbf8348561f38b",
+                "quote": "The need for an international organization to replace the League of Nations was first stated officially on October 30, 1943, in the Moscow Declaration issued by China, Great Britain, the United States, and the USSR. At the Dumbarton Oaks Conference in 1944, those four countries drafted specific proposals for a charter for the new organization.",
+                "kind": "primary",
+                "origin": "U.S. National Archives, United Nations Charter (1945)"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.text",
+            "claim": "At Yalta in February 1945, Roosevelt, Churchill, and Stalin finalized Security Council voting procedures and called the San Francisco Conference for April 25, 1945.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Both the UN Preparatory Years history and U.S. State Department document the Yalta voting agreement and the February 11, 1945 summons to San Francisco.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "One important gap in the Dumbarton Oaks proposals had yet to be filled: the voting procedure in the Security Council. This was done at Yalta in the Crimea where Churchill, Roosevelt and Stalin, together with their foreign ministers and chiefs of staff, met in conference. On February 11, 1945, the conference summoned the San Francisco Conference.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.date",
+            "claim": "The UN Charter was signed on June 26, 1945, and entered into force on October 24, 1945.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN San Francisco Conference history confirms the signing on 26 June 1945 and entry into force on 24 October 1945.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "fb47e8ff003c96563d2892ac1e2b0c7e60bc42ab42adff7b575efb492e97c686",
+                "quote": "The Charter of the United Nations, together with the Statute of the International Court of Justice which forms an integral part of the Charter, was adopted unanimously at the end of the Conference, on 25 June 1945 at the San Francisco Opera House, and was signed the following day at the Herbst Theatre auditorium of the Veterans War Memorial Building. It entered into force, in accordance with its Article 110, paragraph 3, on 24 October 1945, following the deposit of the instruments of ratification of the five permanent members of the Security Council and a majority of all other signatories.",
+                "kind": "primary",
+                "origin": "United Nations, The San Francisco Conference"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.title",
+            "claim": "The San Francisco Conference produced the unanimous adoption and signing of the UN Charter, which entered into force after ratification.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN San Francisco Conference history records unanimous adoption on June 25, signing on June 26, and entry into force on October 24, 1945.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "fb47e8ff003c96563d2892ac1e2b0c7e60bc42ab42adff7b575efb492e97c686",
+                "quote": "Delegates of fifty nations met in San Francisco, California, USA, between 25 April and 26 June 1945 at the United Nations Conference on International Organization.",
+                "kind": "primary",
+                "origin": "United Nations, The San Francisco Conference"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.text",
+            "claim": "After Roosevelt died on April 12, 1945, President Truman decided to proceed on schedule, and 850 delegates from 50 nations met in San Francisco and reviewed over 5,000 documents.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN Preparatory Years and San Francisco Conference histories confirm Roosevelt's death, Truman's decision to proceed, the 850 delegates from 50 nations, and the review of more than 5,000 documents.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "Soon after, on 12 April 1945, came the sudden death of President Roosevelt, to whose statesmanship the plans for the San Francisco Conference owed so much. There was fear for a time that the conference might have to be postponed, but President Truman decided to carry out all the arrangements already made, and the conference opened on the appointed date.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              },
+              {
+                "source": "fb47e8ff003c96563d2892ac1e2b0c7e60bc42ab42adff7b575efb492e97c686",
+                "quote": "More than five thousand documents were considered at the Conference",
+                "kind": "primary",
+                "origin": "United Nations, The San Francisco Conference"
+              },
+              {
+                "source": "fb47e8ff003c96563d2892ac1e2b0c7e60bc42ab42adff7b575efb492e97c686",
+                "quote": "There were 850 delegates at the Conference, and their advisers and staff together with the conference secretariat brought the total to 3,500.",
+                "kind": "primary",
+                "origin": "United Nations, The San Francisco Conference"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.text",
+            "claim": "The U.S. Senate approved the UN Charter by 89 to 2 on July 28, 1945, avoiding Woodrow Wilson's League of Nations failure, and the UN came into existence on October 24, 1945.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The U.S. State Department Office of the Historian records the 89–2 Senate vote, the deliberate contrast with Woodrow Wilson, and the October 24, 1945 founding date.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9c92c9c8f4160eea26ee836a828e562881697decd4cd6dc135ff812fe2953650",
+                "quote": "The Roosevelt administration strove to avoid Woodrow Wilson’s mistakes in selling the League of Nations to the Senate.",
+                "kind": "scholarly",
+                "origin": "U.S. Department of State Office of the Historian, The Formation of the United Nations, 1945"
+              },
+              {
+                "source": "9c92c9c8f4160eea26ee836a828e562881697decd4cd6dc135ff812fe2953650",
+                "quote": "The Senate approved the UN Charter on July 28, 1945, by a vote of 89 to 2. The United Nations came into existence on October 24, 1945, after 29 nations had ratified the Charter.",
+                "kind": "scholarly",
+                "origin": "U.S. Department of State Office of the Historian, The Formation of the United Nations, 1945"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.date",
+            "claim": "The first General Assembly and Security Council meetings opened in London in January 1946, and the permanent UN Headquarters in New York City was completed in October 1952.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia documents the first meetings in London in January 1946 and the completion of the New York City headquarters on 9 October 1952.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ac0af712027a4e325437561c928576302f1c94876c56679ba1b2b24d5ee2906f",
+                "quote": "The first meetings of the General Assembly, with 51 nations represented,[b] and the Security Council took place in London beginning in January 1946.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, United Nations"
+              },
+              {
+                "source": "ac0af712027a4e325437561c928576302f1c94876c56679ba1b2b24d5ee2906f",
+                "quote": "Construction began on 14 September 1948 and the facility was completed on 9 October 1952.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, United Nations"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.title",
+            "claim": "The UN launched its first General Assembly in London before establishing its permanent headquarters in New York City.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia documents the January 1946 London opening and the General Assembly's selection of New York City for UN Headquarters.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ac0af712027a4e325437561c928576302f1c94876c56679ba1b2b24d5ee2906f",
+                "quote": "The General Assembly selected New York City as the site for the headquarters of the UN.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, United Nations"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.text",
+            "claim": "Trygve Lie, Norway's Foreign Minister, was elected the first UN Secretary-General after the General Assembly opened in London in January 1946.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia records Trygve Lie as the first elected UN Secretary-General alongside the January 1946 London sessions.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ac0af712027a4e325437561c928576302f1c94876c56679ba1b2b24d5ee2906f",
+                "quote": "The Norwegian Foreign Minister, Trygve Lie, was the first elected UN secretary-general.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, United Nations"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.text",
+            "claim": "UN Headquarters was built on a donated East River site in Manhattan's Turtle Bay that previously held slaughterhouses and tenements, designed by an international board including Le Corbusier and Oscar Niemeyer.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia's Headquarters of the United Nations article documents the Turtle Bay slaughterhouse site, Rockefeller's December 1946 donation, and the Board of Design Consultants including Le Corbusier and Oscar Niemeyer.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "8a54afae64156f9772545f269974bc585b54742e50c5b7a04afdbb14d4c35521",
+                "quote": "At the time, the site was part of Turtle Bay, which contained slaughterhouses and tenement buildings, as well as the original Eberhard Faber Pencil Factory",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Headquarters of the United Nations"
+              },
+              {
+                "source": "8a54afae64156f9772545f269974bc585b54742e50c5b7a04afdbb14d4c35521",
+                "quote": "Rockefeller donated the site to the UN in December 1946.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Headquarters of the United Nations"
+              },
+              {
+                "source": "8a54afae64156f9772545f269974bc585b54742e50c5b7a04afdbb14d4c35521",
+                "quote": "The board consisted of N. D. Bassov (Soviet Union), Gaston Brunfaut (Belgium), Ernest Cormier (Canada), Le Corbusier (France), Liang Seu-cheng (China), Sven Markelius (Sweden), Oscar Niemeyer (Brazil), Howard Robertson (United Kingdom), Garnet Argyle Soilleux (Australia), and Julio Vilamajó (Uruguay).",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, Headquarters of the United Nations"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.0.text",
+            "claim": "President Franklin D. Roosevelt coined the name 'United Nations' for the wartime Allied coalition, which entered official use on January 1, 1942, in the Declaration by United Nations signed by 26 states, and initially set the eligibility rule for the 1945 San Francisco Conference.",
+            "verdict": "supported",
+            "risk": "corroborate",
+            "explanation": "The U.S. National Archives, U.S. Department of State, and UN Preparatory Years history independently corroborate FDR coining the term, its official debut on January 1, 1942 with 26 nations, and the March 1945 wartime prerequisite for San Francisco invitations.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "783169b890c1041af325d72b4858961cdaabcfb7e9f9da56c4fbf8348561f38b",
+                "quote": "The name United Nations originated with President Franklin Delano Roosevelt in 1941, when he described the countries fighting against the Axis Powers (Germany, Italy and Japan) in World War II. The name was first used officially on January 1, 1942, when 26 states joined in the Declaration by the United Nations, pledging to continue their joint war effort and not to make peace separately.",
+                "kind": "primary",
+                "origin": "U.S. National Archives, United Nations Charter (1945)"
+              },
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "The Declaration by United Nations contained the first official use of the term 'United Nations'. The name 'United Nations' was coined by United States President Franklin D. Roosevelt.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              },
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "Three years later, when preparations were being made for the San Francisco Conference, only those states which had, by March 1945, declared war on Germany and Japan and subscribed to the United Nations Declaration, were invited to take part.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.1.text",
+            "claim": "Only 50 countries attended and signed the UN Charter in San Francisco, but a space was left for Poland because it lacked a generally recognized government at the time; Poland signed on October 15, 1945, becoming the 51st original Member State.",
+            "verdict": "supported",
+            "risk": "corroborate",
+            "explanation": "The UN San Francisco Conference history, UN Preparatory Years history, U.S. National Archives, and Wikipedia corroborate the 50 attending countries in San Francisco, the 51 original Member States, and Poland's delayed October 15, 1945 signature.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "fb47e8ff003c96563d2892ac1e2b0c7e60bc42ab42adff7b575efb492e97c686",
+                "quote": "One of these nations - Poland - did not send a representative because the composition of its new government was not announced until too late for the conference. Therefore, a space was left for the signature of Poland, one of the original signatories of the United Nations Declaration. At the time of the conference there was no generally recognized Polish Government, but on 28 June such a government was announced and on 15 October 1945, Poland signed the Charter, thus becoming one of the original 51 Members.",
+                "kind": "primary",
+                "origin": "United Nations, The San Francisco Conference"
+              },
+              {
+                "source": "783169b890c1041af325d72b4858961cdaabcfb7e9f9da56c4fbf8348561f38b",
+                "quote": "Later that year, representatives of 50 nations attended the founding conference in San Francisco, where they drafted and later signed the UN charter.",
+                "kind": "primary",
+                "origin": "U.S. National Archives, United Nations Charter (1945)"
+              },
+              {
+                "source": "ac0af712027a4e325437561c928576302f1c94876c56679ba1b2b24d5ee2906f",
+                "quote": "The first meetings of the General Assembly, with 51 nations represented,[b] and the Security Council took place in London beginning in January 1946.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, United Nations"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.2.text",
+            "claim": "Under a Yalta agreement, the Ukrainian and Byelorussian Soviet Socialist Republics were invited to San Francisco and granted separate UN General Assembly memberships, while Roosevelt reserved—and never exercised—the right to seek two additional votes for the United States.",
+            "verdict": "supported",
+            "risk": "corroborate",
+            "explanation": "The U.S. Department of State Office of the Historian and the UN San Francisco Conference history independently confirm the separate invitations and General Assembly seats for Ukraine and Byelorussia, and the State Department records Roosevelt's unused reservation of two extra U.S. votes.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9c92c9c8f4160eea26ee836a828e562881697decd4cd6dc135ff812fe2953650",
+                "quote": "Roosevelt agreed to General Assembly membership for Ukraine and Byelorussia while reserving the right, which was never exercised, to seek two more votes for the United States.",
+                "kind": "scholarly",
+                "origin": "U.S. Department of State Office of the Historian, The Formation of the United Nations, 1945"
+              },
+              {
+                "source": "fb47e8ff003c96563d2892ac1e2b0c7e60bc42ab42adff7b575efb492e97c686",
+                "quote": "The conference itself invited four other states - the Byelorussian Soviet Socialist Republic, the Ukrainian Soviet Socialist Republic, newly-liberated Denmark and Argentina.",
+                "kind": "primary",
+                "origin": "United Nations, The San Francisco Conference"
+              }
+            ]
+          },
+          {
+            "path": "connections.0.connection",
+            "claim": "The UN emerged from the World War II Allied coalition and was founded in 1945 to prevent future global wars.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The U.S. National Archives links the UN's name and founding directly to the Allied powers of World War II and the effort to maintain postwar peace.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "783169b890c1041af325d72b4858961cdaabcfb7e9f9da56c4fbf8348561f38b",
+                "quote": "The United Nations was established after World War II in an attempt to maintain international peace and security and to achieve cooperation among nations on economic, social, and humanitarian problems.",
+                "kind": "primary",
+                "origin": "U.S. National Archives, United Nations Charter (1945)"
+              }
+            ]
+          },
+          {
+            "path": "connections.1.connection",
+            "claim": "The League of Nations, established in 1919 after World War I, was the UN's forerunner and ceased activities after failing to prevent World War II.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The U.S. National Archives explicitly describes the League of Nations as the UN's 1919 forerunner that ceased activities after failing to prevent global war.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "783169b890c1041af325d72b4858961cdaabcfb7e9f9da56c4fbf8348561f38b",
+                "quote": "Its forerunner was the League of Nations, an organization conceived under similar circumstances following World War I. Established in 1919 under the Treaty of Versailles \"to promote international cooperation and to achieve peace and security,\" the League of Nations ceased its activities after it failed to prevent global war.",
+                "kind": "primary",
+                "origin": "U.S. National Archives, United Nations Charter (1945)"
+              }
+            ]
+          },
+          {
+            "path": "connections.2.connection",
+            "claim": "Franklin D. Roosevelt coined the name 'United Nations', signed the Atlantic Charter, and spearheaded plans for the San Francisco Conference before dying on April 12, 1945.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN Preparatory Years history documents Roosevelt's authorship of the name, his signing of the Atlantic Charter, and his statesmanship behind the San Francisco Conference.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "The name 'United Nations' was coined by United States President Franklin D. Roosevelt.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              },
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "Soon after, on 12 April 1945, came the sudden death of President Roosevelt, to whose statesmanship the plans for the San Francisco Conference owed so much.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              }
+            ]
+          },
+          {
+            "path": "connections.3.connection",
+            "claim": "During the Cold War, the divide between the United States and the Soviet Union often paralyzed the UN's peacekeeping role.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Wikipedia documents how the U.S.–Soviet Cold War division often paralyzed UN peacekeeping except in conflicts distant from the superpower rivalry.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ac0af712027a4e325437561c928576302f1c94876c56679ba1b2b24d5ee2906f",
+                "quote": "Though the UN's primary mandate was peacekeeping, the division between the United States and the Soviet Union often paralysed the organization; this generally allowed it to intervene only in conflicts distant from the Cold War.",
+                "kind": "wikipedia",
+                "origin": "English Wikipedia, United Nations"
+              }
+            ]
+          },
+          {
+            "path": "connections.4.connection",
+            "claim": "After Roosevelt's death on April 12, 1945, President Truman insisted on carrying out the arrangements so the San Francisco Conference opened on schedule.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The UN Preparatory Years history credits President Truman with keeping the San Francisco Conference on its appointed date after Roosevelt's death.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "ee5dbf8267ea9ceb4504b78a72db6892988dec9287d258f46dc7509a593eb17e",
+                "quote": "There was fear for a time that the conference might have to be postponed, but President Truman decided to carry out all the arrangements already made, and the conference opened on the appointed date.",
+                "kind": "primary",
+                "origin": "United Nations, Preparatory Years: UN Charter History"
+              }
+            ]
+          }
+        ]
+      },
+      "model": "gemini-4-neon"
+    }
+  }
+}

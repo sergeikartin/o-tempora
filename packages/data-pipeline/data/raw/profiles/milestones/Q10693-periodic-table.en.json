@@ -1,0 +1,674 @@
+{
+  "subject": "periodic table",
+  "type": "milestone",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Periodic_table",
+  "overview": "The periodic table organizes the chemical elements into rows and columns so that elements with repeating chemical properties fall into matching families. Published by Russian chemist Dmitri Mendeleev in 1869—shortly before a similar table by Germany’s Julius Lothar Meyer—it turned more than sixty disparate substances into a predictive framework with blank spaces for undiscovered elements. In 1913–1914, British physicist Henry Moseley used X-ray spectroscopy to anchor the table to atomic number rather than atomic weight, giving the system its modern foundation.",
+  "key_moments": [
+    {
+      "date": "1860",
+      "title": "Clearing up atomic weights at Karlsruhe",
+      "text": "Chemists from **Antoine Lavoisier** to Johann Döbereiner had searched for patterns among the elements, but disagreement over how to measure atomic weights stalled every classification. At the **Karlsruhe Congress**—the first international chemistry conference—Stanislao Cannizzaro revived Amedeo Avogadro’s hypothesis to establish consistent atomic weights. Among the young chemists listening in the audience were **Dmitri Mendeleev** and **Julius Lothar Meyer**, setting off a wave of rival periodic schemes across Europe.",
+      "source": "https://www.sciencehistory.org/education/scientific-biographies/julius-lothar-meyer-and-dmitri-ivanovich-mendeleev/"
+    },
+    {
+      "date": "1869",
+      "title": "Mendeleev publishes his Periodic System",
+      "text": "Writing a Russian chemistry textbook, **Dmitri Mendeleev** wrote the properties of each element on cards and shuffled them until a repeating order emerged. He arranged all known elements in one table, swapped **tellurium and iodine** where chemical behavior overruled atomic weight, and left **blank spaces** for elements not yet discovered. Julius Lothar Meyer had drafted a strikingly similar table in 1868 but did not publish his classic paper until 1870, sparking a long priority dispute between the two.",
+      "source": "https://periodic-table.rsc.org/about"
+    },
+    {
+      "date": "1875–1890s",
+      "title": "Predicted elements and the noble gases",
+      "text": "Skeptical chemists, including Robert Bunsen, initially doubted the periodic law until independent discoveries filled Mendeleev’s gaps: **gallium** in 1875, **scandium** in 1879, and **germanium** in 1886 all matched his predicted properties. When William Ramsay’s discovery of the **noble gases** in the 1890s first looked like a contradiction, they instead slotted cleanly in as a new final group, shifting the table’s periodicity from seven to eight.",
+      "source": "https://periodic-table.rsc.org/about"
+    },
+    {
+      "date": "1913–1914",
+      "title": "Ordering by atomic number",
+      "text": "Sorting elements by atomic weight still left irregular gaps and awkward reversals like tellurium and iodine. Testing Dutch physicist Antonius van den Broek’s hypothesis at Oxford, **Henry Moseley** fired X-rays at elements from hydrogen to gold and measured the unique X-ray frequencies each emitted. He proved that **atomic number**—later identified as the number of protons in the nucleus—is an inherent physical property, giving chemists a clear map to missing elements and explaining why Mendeleev’s intuitive swaps were right.",
+      "source": "https://www.sciencehistory.org/stories/magazine/the-dual-legacies-of-henry-moseley/"
+    }
+  ],
+  "deep_facts": [
+    {
+      "text": "During a 2014 storage-room clear-out at Scotland’s **University of St Andrews**, chemist Alan Aitken uncovered a brittle, German-language wall chart rolled up among old laboratory clutter. Experts dated it to **1885**—gallium (1875) and scandium (1879) appear on the sheet, while germanium (1886) is absent—and university financial records traced it to an 1888 mail-order purchase by chemistry professor Thomas Purdie from a German catalogue for three Marks. Thought to be the oldest known surviving classroom periodic table, it required painstaking conservation with deionized water and Japanese paper before going into climate-controlled storage.",
+      "type": "unique_detail",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://news.st-andrews.ac.uk/archive/worlds-oldest-periodic-table-chart-found-in-st-andrews/"
+    },
+    {
+      "text": "The physicist who put the modern periodic table on a firm atomic footing died in the trenches less than two years after his breakthrough. When World War I began in 1914, **Henry Moseley** volunteered as a signaling officer in the Royal Engineers and shipped out to **Gallipoli**, where he was killed—purportedly by a sniper—in August 1915 at age 27. Shocked by the loss of a likely Nobel Prize contender, **Ernest Rutherford** and other British scientists successfully petitioned the British War Office to stop knowingly assigning promising scientists to front-line combat roles.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://www.sciencehistory.org/stories/magazine/the-dual-legacies-of-henry-moseley/"
+    },
+    {
+      "text": "Four years before Mendeleev published his table, British chemist **John Newlands** spotted a repeating pattern every seven elements and dubbed it the **Law of Octaves**, comparing chemistry to music. Because he left no gaps for undiscovered elements—forcing two elements into one box—and the noble gases were still unknown, the Chemical Society refused to publish his paper, with one critic mocking that he might just as well have listed the elements alphabetically. In 1998, more than a century later, the Royal Society of Chemistry placed a blue plaque on his birthplace recognizing him as a discoverer of the Periodic Law.",
+      "type": "hidden_story",
+      "is_legend": false,
+      "confidence": "high",
+      "source": "https://periodic-table.rsc.org/about"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Dmitri Mendeleev",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Dmitri_Mendeleev",
+      "connection": "Mendeleev published the 1869 periodic table and famously predicted the properties of undiscovered elements from its blank spaces.",
+      "importance": "high",
+      "qid": "Q9106"
+    },
+    {
+      "name": "Antoine Lavoisier",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Antoine_Lavoisier",
+      "connection": "In 1789, Lavoisier made the earliest classification of chemical elements by grouping them into gases, non-metals, metals, and earths.",
+      "importance": "medium",
+      "qid": "Q39607"
+    },
+    {
+      "name": "Ernest Rutherford",
+      "wikipedia_url": "https://en.wikipedia.org/wiki/Ernest_Rutherford",
+      "connection": "Rutherford mentored Henry Moseley at Manchester and petitioned the British War Office to keep scientists out of combat after Moseley’s death.",
+      "importance": "medium",
+      "qid": "Q9123"
+    }
+  ],
+  "meta": {
+    "generated_at": "2026-11-25T14:05:00Z",
+    "prompt_version": "2.8.0",
+    "prompt_hash": "28340cecc600",
+    "schema_version": 4,
+    "model": "gemini-4-neon",
+    "reasoning_effort": null,
+    "temperature": null,
+    "run_id": "2026-11-25",
+    "locale": "en",
+    "source": {
+      "wikidata_qid": "Q10693"
+    },
+    "tokens": null,
+    "validation": {
+      "schema_valid": true,
+      "connections_returned": 3,
+      "connections_matched_people": 3,
+      "connections_matched_events": 0,
+      "connections_unresolved": 0
+    },
+    "review": {
+      "status": "draft",
+      "reviewed_at": null
+    },
+    "pending_assessment": {
+      "profile_hash": "d7c949f3fdb81d8432a14a89b65e339625302c2e1daee62925fa7bc5585ae52e",
+      "assessment": {
+        "uncovered": [],
+        "issues": [],
+        "coherent": true,
+        "covered": [
+          "overview",
+          "key_moments.0.date",
+          "key_moments.0.title",
+          "key_moments.0.text",
+          "key_moments.1.date",
+          "key_moments.1.title",
+          "key_moments.1.text",
+          "key_moments.2.date",
+          "key_moments.2.title",
+          "key_moments.2.text",
+          "key_moments.3.date",
+          "key_moments.3.title",
+          "key_moments.3.text",
+          "deep_facts.0.text",
+          "deep_facts.1.text",
+          "deep_facts.2.text",
+          "connections.0.connection",
+          "connections.1.connection",
+          "connections.2.connection"
+        ],
+        "subject_dates": [
+          {
+            "path": "overview",
+            "boundary": "start",
+            "year": 1869
+          },
+          {
+            "path": "key_moments.1.date",
+            "boundary": "start",
+            "year": 1869
+          }
+        ],
+        "findings": [
+          {
+            "path": "overview",
+            "claim": "The periodic table arranges chemical elements so that repeating properties line up into families, and was published by Dmitri Mendeleev in 1869 shortly before Julius Lothar Meyer's 1870 table.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Both the Royal Society of Chemistry and Science History Institute describe Mendeleev's 1869 publication of the periodic table, Meyer's 1870 publication, and the organization of more than 60 known elements into repeating chemical families.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9a73e71fee1376f95821709a435ee502443bb7035a2f59f841ea277b10b3b217",
+                "quote": "For both Meyer and Mendeleev, writing a textbook proved to be the impetus for developing the periodic table—a device to present the more than 60 elements known at the time in an intelligible fashion.",
+                "kind": "scholarly",
+                "origin": "Science History Institute, Julius Lothar Meyer and Dmitri Ivanovich Mendeleev"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "Mendeleev discovered the periodic table (or Periodic System, as he called it) while attempting to organise the elements in February of 1869.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "Unfortunately for Meyer, his work wasn’t published until 1870, a year after Mendeleev’s periodic table had been published.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "overview",
+            "claim": "Mendeleev left blank spaces to predict undiscovered elements, and in 1913–1914 Henry Moseley used X-ray spectroscopy to reorder the periodic table by atomic number rather than atomic weight.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry and Science History Institute document Mendeleev's predictive gaps and Moseley's 1913–1914 X-ray spectroscopy reorganization by atomic number.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "The real genius of Mendeleev’s achievement was to leave gaps for undiscovered elements. He even predicted the properties of five of these elements and their compounds.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              },
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "Moseley presented his results in two papers published between 1913 and 1914; chemists and physicists around the world immediately took notice. Moseley’s research didn’t just force a reorganization of the periodic table: it also had practical applications, including predicting as-yet-undiscovered elements through their atomic numbers.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.date",
+            "claim": "The Karlsruhe Congress took place in 1860.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Both Science History Institute and Royal Society of Chemistry date the Karlsruhe chemistry conference to 1860.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9a73e71fee1376f95821709a435ee502443bb7035a2f59f841ea277b10b3b217",
+                "quote": "In 1860 Meyer and Mendeleev were among the young chemists attending the first ever international chemistry congress, the Karlsruhe Congress, and both were impressed with Stanislao Cannizzaro’s presentation of Amedeo Avogadro’s hypothesis and the light it shed on the question of atomic weights.",
+                "kind": "scholarly",
+                "origin": "Science History Institute, Julius Lothar Meyer and Dmitri Ivanovich Mendeleev"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.title",
+            "claim": "The Karlsruhe Congress resolved confusion over atomic weights and enabled progress toward the periodic table.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry identifies the 1860 Karlsruhe conference's accurate atomic-mass list as the turning point for periodic classification.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "It was not until a more accurate list of the atomic mass of the elements became available at a conference in Karlsruhe, Germany in 1860 that real progress was made towards the discovery of the modern periodic table.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.text",
+            "claim": "Earlier attempts by Antoine Lavoisier (1789) and Johann Döbereiner (1829) tried to classify elements, but confusion over atomic weights thwarted logical arrangements.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry documents Lavoisier's and Döbereiner's early classifications, and Science History Institute notes that confusion over atomic weights thwarted attempts before 1860.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "The earliest attempt to classify the elements was in 1789, when Antoine Lavoisier grouped the elements based on their properties into gases, non-metals, metals and earths. Several other attempts were made to group elements together over the coming decades. In 1829, Johann Döbereiner recognised triads of elements with chemically similar properties, such as lithium, sodium and potassium",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              },
+              {
+                "source": "9a73e71fee1376f95821709a435ee502443bb7035a2f59f841ea277b10b3b217",
+                "quote": "For some time chemists had been trying to devise a logical system of classification by arranging the elements by atomic weight, but confusion over how to determine atomic weights thwarted their attempts.",
+                "kind": "scholarly",
+                "origin": "Science History Institute, Julius Lothar Meyer and Dmitri Ivanovich Mendeleev"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.0.text",
+            "claim": "At the 1860 Karlsruhe Congress, the first international chemistry congress, Stanislao Cannizzaro's presentation of Avogadro's hypothesis clarified atomic weights for attendees including Mendeleev and Meyer, sparking new periodic arrangements.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Science History Institute describes Cannizzaro's presentation at Karlsruhe and the subsequent independent periodic arrangements culminating in Meyer and Mendeleev.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9a73e71fee1376f95821709a435ee502443bb7035a2f59f841ea277b10b3b217",
+                "quote": "In 1860 Meyer and Mendeleev were among the young chemists attending the first ever international chemistry congress, the Karlsruhe Congress, and both were impressed with Stanislao Cannizzaro’s presentation of Amedeo Avogadro’s hypothesis and the light it shed on the question of atomic weights.",
+                "kind": "scholarly",
+                "origin": "Science History Institute, Julius Lothar Meyer and Dmitri Ivanovich Mendeleev"
+              },
+              {
+                "source": "9a73e71fee1376f95821709a435ee502443bb7035a2f59f841ea277b10b3b217",
+                "quote": "Soon after Karlsruhe, various new atomic arrangements were published, eventually culminating in the independent works of Meyer and Mendeleev.",
+                "kind": "scholarly",
+                "origin": "Science History Institute, Julius Lothar Meyer and Dmitri Ivanovich Mendeleev"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.date",
+            "claim": "Mendeleev published his periodic law and table in February 1869.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Both the Royal Society of Chemistry and Science History Institute date Mendeleev's publication of the periodic system to 1869.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "Mendeleev discovered the periodic table (or Periodic System, as he called it) while attempting to organise the elements in February of 1869.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              },
+              {
+                "source": "9a73e71fee1376f95821709a435ee502443bb7035a2f59f841ea277b10b3b217",
+                "quote": "worked out the “periodic law,” which was first published in papers in 1869. Mendeleev succeeded in arranging all known elements into one table.",
+                "kind": "scholarly",
+                "origin": "Science History Institute, Julius Lothar Meyer and Dmitri Ivanovich Mendeleev"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.title",
+            "claim": "Mendeleev published his Periodic System arranging all known elements into one table.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry and Science History Institute record Mendeleev's publication of his Periodic System.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "Mendeleev discovered the periodic table (or Periodic System, as he called it) while attempting to organise the elements in February of 1869.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.text",
+            "claim": "While writing a chemistry textbook, Mendeleev wrote element properties on cards, arranged all known elements into one table, swapped tellurium and iodine to preserve chemical families, and left gaps for undiscovered elements.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry details Mendeleev's card-sorting method, his textbook motivation, his swap of iodine and tellurium, and his blank spaces for undiscovered elements.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "He wrote a textbook, Chemical Principles, because he couldn’t find an adequate Russian book. Mendeleev discovered the periodic table (or Periodic System, as he called it) while attempting to organise the elements in February of 1869. He did so by writing the properties of the elements on pieces of card and arranging and rearranging them until he realised that, by putting them in order of increasing atomic weight, certain types of element regularly occurred.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "For example, iodine and tellurium should be the other way around, based on atomic weights, but Mendeleev saw that iodine was very similar to the rest of the halogens (fluorine, chlorine, bromine), and tellurium similar to the group 6 elements (oxygen, sulphur, selenium), so he swapped them over. The real genius of Mendeleev’s achievement was to leave gaps for undiscovered elements.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.1.text",
+            "claim": "Julius Lothar Meyer drafted a similar periodic table in 1868, published his classic paper in 1870, and engaged in a long priority dispute with Mendeleev.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry documents Meyer's 1868 draft and 1870 publication, and Science History Institute records his 1870 paper and drawn-out priority dispute with Mendeleev.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "This 1868 table listed the elements in order of atomic weight, with elements with the same valency arranged in vertical lines, strikingly similar to Mendeleev’s table. Unfortunately for Meyer, his work wasn’t published until 1870, a year after Mendeleev’s periodic table had been published.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              },
+              {
+                "source": "9a73e71fee1376f95821709a435ee502443bb7035a2f59f841ea277b10b3b217",
+                "quote": "Meanwhile, Meyer and Mendeleev carried on a long, drawn-out priority dispute.",
+                "kind": "scholarly",
+                "origin": "Science History Institute, Julius Lothar Meyer and Dmitri Ivanovich Mendeleev"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.date",
+            "claim": "Gallium was discovered in 1875, scandium in 1879, germanium in 1886, and the noble gases during the 1890s.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry and University of St Andrews date gallium (1875), scandium (1879), germanium (1886), and the noble gases (1890s).",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "23bbd9a3ea1565709d521b0ac6ab5bde09151bf8acbf68d25d70849bcaf960ab",
+                "quote": "For example, both gallium and scandium, discovered in 1875 and 1879 respectively, are present, while germanium, discovered in 1886, is not.",
+                "kind": "scholarly",
+                "origin": "University of St Andrews, World's oldest periodic table chart found in St Andrews"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "The discovery of the noble gases during the 1890s by William Ramsay initially seemed to contradict Mendeleev’s work, until he realised that actually they were further proof of his system, fitting in as the final group on his table.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.title",
+            "claim": "Discoveries of predicted elements and the noble gases cemented the periodic table's reputation.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry describes how gallium, scandium, germanium, and the noble gases validated Mendeleev's system.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "Scandium and Germanium were the other two elements discovered by 1886, and helped to cement the reputation of Mendeleev’s periodic table.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.text",
+            "claim": "Skeptics including Robert Bunsen were converted as gallium (1875), scandium (1879), and germanium (1886) matched Mendeleev's predicted blanks.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Science History Institute notes Bunsen's skepticism and conversion by the discovery of predicted elements, and the Royal Society of Chemistry details gallium, scandium, and germanium confirming Mendeleev's predictions.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "9a73e71fee1376f95821709a435ee502443bb7035a2f59f841ea277b10b3b217",
+                "quote": "Many chemists, including Bunsen, had their doubts about the periodic law at first, but these doubters were gradually converted by the independent discovery of elements that fit into the blanks in the tabular arrangement and the correction of old atomic weights that the table cast in doubt.",
+                "kind": "scholarly",
+                "origin": "Science History Institute, Julius Lothar Meyer and Dmitri Ivanovich Mendeleev"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "And over the next 15 years, three of these elements were discovered and Mendeleev’s predictions shown to be incredibly accurate. The table below shows the example of Gallium, which Mendeleev called eka-aluminium, because it was the element after aluminium. Scandium and Germanium were the other two elements discovered by 1886, and helped to cement the reputation of Mendeleev’s periodic table.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.2.text",
+            "claim": "William Ramsay's discovery of the noble gases in the 1890s initially appeared to contradict Mendeleev's table before fitting in as its final group and giving the table a periodicity of eight rather than seven.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry describes Ramsay's noble gas discoveries fitting into Mendeleev's table as a final group.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "The discovery of the noble gases during the 1890s by William Ramsay initially seemed to contradict Mendeleev’s work, until he realised that actually they were further proof of his system, fitting in as the final group on his table. This gave the table the periodicity of 8 which we know, rather than 7 as it had previously been.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.date",
+            "claim": "Henry Moseley published his X-ray spectroscopy papers reordering the periodic table by atomic number in 1913–1914.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Science History Institute dates Moseley's two landmark papers to 1913–1914 and the Royal Society of Chemistry dates his breakthrough to 1913.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "Moseley presented his results in two papers published between 1913 and 1914; chemists and physicists around the world immediately took notice.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.title",
+            "claim": "Henry Moseley proved elements should be ordered by atomic number rather than atomic weight.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Science History Institute and the Royal Society of Chemistry both document Moseley establishing atomic number as the ordering principle of the periodic table.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "Testing every element he could get his hands on, from hydrogen to gold, Moseley showed that X-ray frequency increases as atomic numbers grow larger. Van den Broek was right. (Later, atomic numbers were found to equal the number of protons in the nucleus of each element.)",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.text",
+            "claim": "Testing Antonius van den Broek's hypothesis at Oxford, Henry Moseley directed X-rays at elements from hydrogen to gold, measured their characteristic X-ray frequencies, and proved that atomic number (proton count) governs the periodic table.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Both Science History Institute and the Royal Society of Chemistry document Moseley's X-ray experiments proving atomic number's physical basis and resolving the atomic-weight anomalies.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "In his makeshift laboratory at Oxford, Moseley realized that an X-ray spectrometer he had recently built, based on a design by the father-and-son team William and Lawrence Bragg, could put van den Broek’s theory to the test. Moseley used his device to direct a stream of X-rays at a sample element, which responded by expelling energy in the form of its own X-rays, energy that left telltale streaks on photosensitive paper. Each element, it turned out, left streaks at a unique angle, allowing Moseley to calculate the frequency of that element’s X-rays. Testing every element he could get his hands on, from hydrogen to gold, Moseley showed that X-ray frequency increases as atomic numbers grow larger. Van den Broek was right. (Later, atomic numbers were found to equal the number of protons in the nucleus of each element.)",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "The periodic table was arranged by atomic mass, and this nearly always gives the same order as the atomic number. However, there were some exceptions (like iodine and tellurium, see above), which didn’t work. Mendeleev had seen that they needed to be swapped around, but it was Moseley that finally determined why.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "key_moments.3.text",
+            "claim": "Moseley's atomic-number ordering gave scientists a clear map to predict undiscovered elements.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Science History Institute notes how Moseley's findings gave chemists a direct map to undiscovered elements.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "For the first time in history scientists had a clear map directing them to brand-new elements (along with near-certain scientific renown), and the race to find them was on.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.0.text",
+            "claim": "In 2014, Alan Aitken discovered a brittle German-language periodic table chart during a storage clear-out at the University of St Andrews, dated to 1885 because it includes gallium (1875) and scandium (1879) but not germanium (1886), and traced in archives to an 1888 purchase by Thomas Purdie.",
+            "verdict": "supported",
+            "risk": "corroborate",
+            "explanation": "University of St Andrews and Smithsonian Magazine independently corroborate the 2014 discovery by Alan Aitken, the 1885 dating via gallium/scandium/germanium, the 1888 purchase by Thomas Purdie, and the conservation treatment.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "23bbd9a3ea1565709d521b0ac6ab5bde09151bf8acbf68d25d70849bcaf960ab",
+                "quote": "A periodic table chart discovered at the University of St Andrews is thought to be the oldest in the world. The chart of elements, dating from 1885, was discovered in the University’s School of Chemistry in 2014 by Dr Alan Aitken during a clear out.",
+                "kind": "scholarly",
+                "origin": "University of St Andrews, World's oldest periodic table chart found in St Andrews"
+              },
+              {
+                "source": "23bbd9a3ea1565709d521b0ac6ab5bde09151bf8acbf68d25d70849bcaf960ab",
+                "quote": "For example, both gallium and scandium, discovered in 1875 and 1879 respectively, are present, while germanium, discovered in 1886, is not.",
+                "kind": "scholarly",
+                "origin": "University of St Andrews, World's oldest periodic table chart found in St Andrews"
+              },
+              {
+                "source": "23bbd9a3ea1565709d521b0ac6ab5bde09151bf8acbf68d25d70849bcaf960ab",
+                "quote": "A researcher at the University, M Pilar Gil from Special Collections, found an entry in the financial transaction records in the St Andrews archives recording the purchase of an 1885 table by Thomas Purdie from the German catalogue of C Gerhardt (Bonn) for the sum of 3 Marks in October 1888.",
+                "kind": "scholarly",
+                "origin": "University of St Andrews, World's oldest periodic table chart found in St Andrews"
+              },
+              {
+                "source": "46dceec79282a7bb23e4303eba611da3fce8e06be16a2de4269434a8a0d7e4b1",
+                "quote": "A periodic table unearthed during routine storage cleaning at Scotland’s University of St. Andrews in 2014 may be the oldest surviving chart of its kind. Chemist Alan Aitken found the impressive specimen, believed to date to around 1885, amongst a group of rolled-up charts stored with assorted scientific paraphernalia in the university’s chemistry building.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Periodic Table Found During Routine Cleaning at Scottish University May Be World's Oldest"
+              },
+              {
+                "source": "46dceec79282a7bb23e4303eba611da3fce8e06be16a2de4269434a8a0d7e4b1",
+                "quote": "St. Andrews staff worked with conservator Richard Hawkes of Artworks Conservation in the United Kingdom to stabilize the chart, implementing treatments such as brushing to remove loose surface dirt and debris, washing the paper in deionized water to combat discoloration, and repairing tears with the help of Japanese kozo paper and wheat starch paste.",
+                "kind": "scholarly",
+                "origin": "Smithsonian Magazine, Periodic Table Found During Routine Cleaning at Scottish University May Be World's Oldest"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.1.text",
+            "claim": "After World War I broke out, Henry Moseley became an officer in the Royal Engineers and was killed by a sniper at Gallipoli in Turkey in August 1915 at age 27, widely viewed as the loss of a future Nobel Prize winner.",
+            "verdict": "supported",
+            "risk": "corroborate",
+            "explanation": "Science History Institute and the Royal Society of Chemistry independently corroborate Moseley's wartime enlistment, his sniper death in Turkey/Gallipoli in August 1915, and the view that Britain lost a future Nobel Prize winner.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "When war broke out in the summer, Moseley cut the trip short and rushed back to England, where he volunteered as a signaling officer, responsible for sending communications in Morse code and semaphore. After training at a military base in the town of Aldershot, he shipped out with his unit to Gallipoli on June 13, 1915.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              },
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "Moseley was shot in the head, purportedly by a sniper, as his unit was overrun.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              },
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "Moseley was only 27 years old when he died.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "When the First World War broke out, Moseley turned down a position as a professor at Oxford and became an officer in the Royal Engineers. He was killed by a sniper in Turkey in August 15, and many people think that Britain lost a future Nobel prize winner.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.1.text",
+            "claim": "Following Moseley's death, Ernest Rutherford and other British scientists petitioned the British War Office to stop knowingly assigning promising scientists to combat roles.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Science History Institute records Rutherford and other British scientists petitioning the British War Office after Moseley's death.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "Rutherford and other British scientists successfully petitioned the British War Office to revise its recruitment policies: never again was a promising scientist knowingly assigned to a combat role. Instead, they were ordered to build wartime technology.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              }
+            ]
+          },
+          {
+            "path": "deep_facts.2.text",
+            "claim": "Four years before Mendeleev announced his table, John Newlands proposed the Law of Octaves for repeating properties every seven elements, left no gaps, was rejected by the Chemical Society with an alphabetical-list jibe, and was later commemorated by a 1998 Royal Society of Chemistry blue plaque.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry's own historical account documents Newlands's Law of Octaves, the lack of gaps, Professor Foster's alphabetical remark, the Chemical Society's rejection, and the 1998 blue plaque.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "Just four years before Mendeleev announced his periodic table, Newlands noticed that there were similarities between elements with atomic weights that differed by seven. He called this The Law of Octaves, drawing a comparison with the octaves of music. The noble gases (Helium, Neon, Argon etc.) were not discovered until much later, which explains why there was a periodicity of 7 and not 8 in Newlands table. Newlands did not leave any gaps for undiscovered elements in his table, and sometimes had to cram two elements into one box in order to keep the pattern. Because of this, the Chemical Society refused to publish his paper, with one Professor Foster saying he might have equally well listed the elements alphabetically.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "Finally, in 1998 the Royal Society of Chemistry oversaw the placing a blue commemorative plaque on the wall of his birthplace, recognising his discovery at last. The blue commemorative plaque placed at Newlands’ birthplace, declaring him the “discoverer of the Periodic Law for the chemical elements”.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "connections.0.connection",
+            "claim": "Dmitri Mendeleev published the periodic table in 1869 and used blank spaces to predict the properties of undiscovered elements.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry credits Mendeleev with the 1869 periodic table and its predictive gaps.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "Mendeleev discovered the periodic table (or Periodic System, as he called it) while attempting to organise the elements in February of 1869.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              },
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "The real genius of Mendeleev’s achievement was to leave gaps for undiscovered elements. He even predicted the properties of five of these elements and their compounds.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "connections.1.connection",
+            "claim": "In 1789, Antoine Lavoisier made the earliest attempt to classify chemical elements into gases, non-metals, metals, and earths.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "The Royal Society of Chemistry identifies Lavoisier's 1789 grouping as the earliest classification of elements.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "55638d35be30881f354280206bcd816e15922f288d4e65522501e970e02c1777",
+                "quote": "The earliest attempt to classify the elements was in 1789, when Antoine Lavoisier grouped the elements based on their properties into gases, non-metals, metals and earths.",
+                "kind": "scholarly",
+                "origin": "Royal Society of Chemistry, Development of the periodic table"
+              }
+            ]
+          },
+          {
+            "path": "connections.2.connection",
+            "claim": "Ernest Rutherford brought Henry Moseley to Manchester and later petitioned the British War Office to stop assigning promising scientists to combat roles after Moseley's death.",
+            "verdict": "supported",
+            "risk": "ordinary",
+            "explanation": "Science History Institute documents Moseley joining Rutherford at Manchester and Rutherford's post-Gallipoli petition to the War Office.",
+            "correction": "",
+            "evidence": [
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "So when Moseley accepted Rutherford’s offer to join him at Manchester, the budding scientist was poised to uncover something novel about the nature of matter.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              },
+              {
+                "source": "8810bf7cc57ff7350bf71d04487143a4a5d473f967381271c6d19fa35eef4d14",
+                "quote": "Rutherford and other British scientists successfully petitioned the British War Office to revise its recruitment policies: never again was a promising scientist knowingly assigned to a combat role.",
+                "kind": "scholarly",
+                "origin": "Jacob Roberts, Science History Institute, The Dual Legacies of Henry Moseley"
+              }
+            ]
+          }
+        ]
+      },
+      "model": "gemini-4-neon"
+    }
+  }
+}
