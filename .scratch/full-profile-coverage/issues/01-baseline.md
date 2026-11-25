@@ -321,3 +321,24 @@ The second repair credited Beale for delivering the copy with the Council’s le
 English approval took **49m 41s** from dispatch. The first Russian audit flagged the Armada title and the kinship term in Mary’s Connection. The field-only correction preserved the repulse in the title. The second audit still flagged the kinship and rivalry in Mary’s Connection and found a carried-forward implication that the hare had already been afraid. Russian was held **5m 54s** after English approval. The English Profile and report hashes stayed identical throughout translation and review.
 
 The standard publisher copied 49 files. The isolated and repository publications each matched the build byte for byte. The build added the English Profile and set its English Legendary row’s `hasProfile`. Verified publication took **55m 59s** from dispatch. The run yielded one English approval and zero bilingual approvals. All 35 pipeline tests passed.
+
+### Michelangelo English trial, 2026-11-25
+
+Michelangelo (Q5592, 1475–1564, Fame Score 93.54) entered without a draft, cached Source Map or published Profile. The trial ran from `f8b1422` with writer prompt 2.8.0 and verification policy 7. English was approved **21m 11s** after prefetch began at 03:39:17 UTC and **18m 25s** after writer dispatch. The run stopped at English approval.
+
+| Stage | Dispatch to last measured response | Five-hour meter | Weekly meter | Input tokens | Cached input | Output tokens |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Research and writing | 6m 34s | 34% | 91% | 3,261,389 | 3,133,824 | 9,522 |
+| First counterevidence check | 2m 24s | 40% | 92% | 1,803,697 | 1,684,480 | 3,565 |
+| Audit handoff attempt | 40s | 42% | 93% | 63,345 | 42,112 | 175 |
+| First English audit | 1m 12s | 45% | 93% | 498,104 | 445,056 | 2,302 |
+| English repair | 1m 59s | 57% | 95% | 703,903 | 646,272 | 3,519 |
+| Counterevidence check after repair | 1m 51s | 60% | 95% | 559,118 | 508,160 | 3,387 |
+| Second English audit | 1m 30s | 62% | 96% | 705,223 | 663,936 | 2,819 |
+| **Agent total** | | | | **7,594,779** | **7,123,840** | **25,289** |
+
+Input totals include cached tokens. Agent totals include the interrupted handoff and exclude coordination and automatic tool approval review. The observed account meters rose from 2% to 62% for five hours and from 86% to 96% for the week. These are account-wide readings. Writing and repair used `gpt-6.2-astra` at high effort. Counterevidence checks used `gpt-6.2-sol` at high effort. The writer and first counterevidence agent inherited coordinator context. The specialized audit role could not read the local packet. Two fresh `gpt-6.2-sol` contexts at medium effort performed the audits with file access limited to the packet and reply.
+
+The initial sandbox prefetch failed on DNS in 2.54 seconds. The network-enabled retry took 3m 29s, cached six pages and skipped ten URLs. The writer started while it ran, using three manually cached institutional sources. Only the Wikipedia article from the automatic map appears among the final 13 sources. Finalization and application of the first audit also needed Wikipedia API retries with network access.
+
+The draft passed preflight with 20 fields and 31 findings across 12 snapshots. Counterevidence qualified the draft’s attribution of the Medici expulsion. The first independent audit also flagged conflicting source accounts of David’s intended placement. One repair addressed both issues, and the verifier reused two counterevidence checks and reran two. The second audit cleared all fields with zero blockers. The saved Profile retains four Key Moments, two Deep Facts and five Connections. The two counterevidence passes accounted for 2.36M input tokens and 4m 15s of measured agent time. The baseline build matched the existing published dataset byte for byte, and all 37 pipeline tests passed.

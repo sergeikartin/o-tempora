@@ -1,0 +1,971 @@
+{
+  "profile": {
+    "subject": "Michelangelo",
+    "type": "person",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Michelangelo",
+    "overview": "Michelangelo was an Italian sculptor, painter, architect and poet who worked chiefly in Florence and Rome. He drew from living models and studied dissected bodies to understand how muscles change the outline of a figure in motion.",
+    "key_moments": [
+      {
+        "date": "Late 1490s",
+        "title": "A Pietà for a cardinal’s tomb",
+        "text": "In Rome, a French cardinal commissioned a sculpture for his tomb in the old St Peter’s Basilica. From **a single block of Carrara marble**, Michelangelo carved the Virgin Mary holding the dead Christ in her arms.",
+        "source": "https://www.basilicasanpietro.va/en/san-pietro/the-pieta-of-saint-peter-s"
+      },
+      {
+        "date": "1501–1504",
+        "title": "David by the town hall",
+        "text": "Michelangelo inherited a block of marble that another sculptor had already begun to shape. His **David** was meant to stand high on Florence Cathedral. When the statue was ready, the city chose a place for it outside the town hall, in the Piazza della Signoria.",
+        "source": "https://www.vam.ac.uk/articles/the-story-of-michelangelos-david"
+      },
+      {
+        "date": "1508–1512",
+        "title": "A new plan for the Sistine ceiling",
+        "text": "The contract with Pope Julius II called for twelve apostles and ornamental painting. Michelangelo asked for a different commission, and Julius let him plan the ceiling. Down its center, **nine scenes from Genesis** unfold inside a framework of painted architecture.",
+        "source": "https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/cappella-sistina/volta.html"
+      },
+      {
+        "date": "1564",
+        "title": "An unfinished dome",
+        "text": "Pope Paul III had put Michelangelo in charge of building the new **St Peter’s Basilica**. He tested ideas for its dome with drawings and models. By the time he died, construction had reached the drum on which the dome would stand.",
+        "source": "https://www.getty.edu/art/exhibitions/michelangelo_drawings/explore.html"
+      }
+    ],
+    "deep_facts": [
+      {
+        "text": "A sheet at the Casa Buonarroti in Florence preserves one of Michelangelo’s shopping lists. He illustrated the groceries as well as naming them. Among the items on the page are bread, herring and wine.",
+        "type": "unique_detail",
+        "is_legend": false,
+        "confidence": "high",
+        "source": "https://courtauld.ac.uk/research/research-resources/publications/immeditations-postgraduate-journal/immediations-online/2018-2/peter-crack-a-renaissance-menu-word-and-image-in-a-sixteenth-century-italian-drawing/"
+      },
+      {
+        "text": "In Florence, Michelangelo designed a chapel to hold the Medici family’s tombs. He also worked for the republic that expelled the family. The hand that drew figures for the tombs drew plans for the city’s defenses.",
+        "type": "hidden_story",
+        "is_legend": false,
+        "confidence": "high",
+        "source": "https://www.casabuonarroti.it/en/museum/collections/michelangelos-drawings/study-of-fortification-for-the-porta-al-prato-of-ognissanti/"
+      }
+    ],
+    "connections": [
+      {
+        "name": "Pope Julius II",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Julius_II",
+        "connection": "Julius commissioned his own tomb from Michelangelo, a project that produced the statue of Moses.",
+        "importance": "high",
+        "qid": "Q80516"
+      },
+      {
+        "name": "Lorenzo de' Medici",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Lorenzo_de'_Medici",
+        "connection": "Lorenzo took the young sculptor into his household in Florence.",
+        "importance": "high",
+        "qid": "Q177854"
+      },
+      {
+        "name": "Sistine Chapel ceiling",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling",
+        "connection": "Michelangelo returned to the chapel years after painting its ceiling to paint the Last Judgment above the altar.",
+        "importance": "high",
+        "qid": "Q844675"
+      },
+      {
+        "name": "Leonardo da Vinci",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci",
+        "connection": "Florence commissioned Leonardo and Michelangelo to paint battle scenes on opposite walls of its council chamber.",
+        "importance": "medium",
+        "qid": "Q762"
+      },
+      {
+        "name": "Domenico Ghirlandaio",
+        "wikipedia_url": "https://en.wikipedia.org/wiki/Domenico_Ghirlandaio",
+        "connection": "Michelangelo trained in Florence under the painter Domenico Ghirlandaio.",
+        "importance": "medium",
+        "qid": "Q191423"
+      }
+    ],
+    "meta": {
+      "generated_at": "2026-11-25T03:48:17Z",
+      "prompt_version": "2.8.0",
+      "prompt_hash": "28340cecc600",
+      "schema_version": 4,
+      "model": "gpt-6.2-astra",
+      "reasoning_effort": "high",
+      "temperature": null,
+      "run_id": "michelangelo-throughput-2026-11-25",
+      "locale": "en",
+      "source": {
+        "wikidata_qid": "Q5592"
+      },
+      "tokens": null,
+      "validation": {
+        "schema_valid": true,
+        "connections_returned": 5,
+        "connections_matched_people": 4,
+        "connections_matched_events": 1,
+        "connections_unresolved": 0
+      },
+      "review": {
+        "status": "draft",
+        "reviewed_at": null
+      }
+    }
+  },
+  "report": {
+    "policy_version": "7",
+    "profile_hash": "b96567e771b9aa52ebdccc0755458d6134ae3b5dcb9bdf7d37be97959ea08b40",
+    "verified_at": "2026-11-25T03:54:24.115Z",
+    "subject": {
+      "qid": "Q5592",
+      "dates": "1475–1564"
+    },
+    "models": [
+      "gpt-6.2-astra",
+      "gpt-6.2-sol",
+      "gpt-6.2-sol"
+    ],
+    "assessment": {
+      "uncovered": [],
+      "issues": [],
+      "coherent": true,
+      "covered": [
+        "overview",
+        "key_moments.0.date",
+        "key_moments.0.title",
+        "key_moments.0.text",
+        "key_moments.1.date",
+        "key_moments.1.title",
+        "key_moments.1.text",
+        "key_moments.2.date",
+        "key_moments.2.title",
+        "key_moments.2.text",
+        "key_moments.3.date",
+        "key_moments.3.title",
+        "key_moments.3.text",
+        "deep_facts.0.text",
+        "deep_facts.1.text",
+        "connections.0.connection",
+        "connections.1.connection",
+        "connections.2.connection",
+        "connections.3.connection",
+        "connections.4.connection"
+      ],
+      "subject_dates": [
+        {
+          "path": "key_moments.3.date",
+          "boundary": "end",
+          "year": 1564
+        }
+      ],
+      "findings": [
+        {
+          "path": "overview",
+          "claim": "Michelangelo was an Italian sculptor, painter, architect and poet.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biographical entry lists his nationality and disciplines.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+              "quote": "Michelangelo Buonarroti, 1475–1564, Italian sculptor, painter, architect, and poet, b. Caprese, Tuscany.",
+              "kind": "scholarly",
+              "origin": "The Columbia Encyclopedia (1975), Michelangelo"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Michelangelo worked chiefly in Florence and Rome.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The exhibition identifies his two main centers of activity.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "Michelangelo was active mainly in Florence and Rome, two major cultural and political centers in fifteenth- and sixteenth-century Europe.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            }
+          ]
+        },
+        {
+          "path": "overview",
+          "claim": "Michelangelo drew living figures and studied dissected bodies to understand muscles and the changing outline of a moving body.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The exhibition connects his drawings from life and anatomical observation with his understanding of movement.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "Consistently dedicated to drawing the human figure from life, a growing practice in Florentine artists’ studios at the time, Michelangelo took this to a new level of verisimilitude through keen observation, as well as by studying dissected corpses to better understand the underlying muscles.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            },
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "The dissections enabled Michelangelo to grasp how the surface and contour of the body change when one moves.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.date",
+          "claim": "Michelangelo carved the Roman Pietà in the late 1490s.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Both accounts place the sculpture in the late 1490s.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "05f6f52dcd5ffbe996625374d92b6e5208e37987fac1343d344ad2efd9641bb9",
+              "quote": "sculpted in 1498 by a very young Michelangelo – he was just twenty-three years old – commissioned by the French Cardinal Jean de Bilhères Lagraulas for his tomb in the Chapel of the King of France in Saint Peter’s, a no longer existing chapel that was located on the southern flank of the ancient Basilica.",
+              "kind": "scholarly",
+              "origin": "Pietro Zander, The Pietà of Saint Peter’s"
+            },
+            {
+              "source": "2cb53133ce126e45364c6dec2febade1576c7cbde6e4f68df5b7ff0b4db5207f",
+              "quote": "Pietà, St Peter's Basilica (1498–1499)",
+              "kind": "wikipedia",
+              "origin": "English Wikipedia, Michelangelo"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.title",
+          "claim": "The Roman Pietà was made for a cardinal’s tomb.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The basilica identifies the patron and intended site.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "05f6f52dcd5ffbe996625374d92b6e5208e37987fac1343d344ad2efd9641bb9",
+              "quote": "sculpted in 1498 by a very young Michelangelo – he was just twenty-three years old – commissioned by the French Cardinal Jean de Bilhères Lagraulas for his tomb in the Chapel of the King of France in Saint Peter’s, a no longer existing chapel that was located on the southern flank of the ancient Basilica.",
+              "kind": "scholarly",
+              "origin": "Pietro Zander, The Pietà of Saint Peter’s"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "The French Cardinal Jean de Bilhères commissioned Michelangelo’s Pietà for his tomb in the old St Peter’s Basilica in Rome.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Zander identifies the patron and chapel, and the biography locates the sculpture in Rome.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "05f6f52dcd5ffbe996625374d92b6e5208e37987fac1343d344ad2efd9641bb9",
+              "quote": "sculpted in 1498 by a very young Michelangelo – he was just twenty-three years old – commissioned by the French Cardinal Jean de Bilhères Lagraulas for his tomb in the Chapel of the King of France in Saint Peter’s, a no longer existing chapel that was located on the southern flank of the ancient Basilica.",
+              "kind": "scholarly",
+              "origin": "Pietro Zander, The Pietà of Saint Peter’s"
+            },
+            {
+              "source": "efefe52b69c94e08d372fe2301ba58ba5b9fb8cd5f424249c66aa743f4f1363b",
+              "quote": "During his first stay in Rome (1496-1501), he produced the Bacchus and the Pietà in Saint Peter's.",
+              "kind": "scholarly",
+              "origin": "Museo Galileo, Michelangelo Buonarroti"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.0.text",
+          "claim": "Michelangelo carved Mary holding the dead Christ from one block of Carrara marble.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The commission specifies the figures and the basilica’s commentary identifies the material and single block.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "05f6f52dcd5ffbe996625374d92b6e5208e37987fac1343d344ad2efd9641bb9",
+              "quote": "“A robed Virgin Mary with the dead Christ in her arms, as large as a good-sized man”",
+              "kind": "primary",
+              "origin": "Pietà contract, translated wording quoted by Pietro Zander"
+            },
+            {
+              "source": "05f6f52dcd5ffbe996625374d92b6e5208e37987fac1343d344ad2efd9641bb9",
+              "quote": "as it is defined in the contract – a statue rendered from a single block of Carrara marble in just nine months.",
+              "kind": "scholarly",
+              "origin": "Pietro Zander, The Pietà of Saint Peter’s"
+            },
+            {
+              "source": "05f6f52dcd5ffbe996625374d92b6e5208e37987fac1343d344ad2efd9641bb9",
+              "quote": "sculpted in 1498 by a very young Michelangelo – he was just twenty-three years old – commissioned by the French Cardinal Jean de Bilhères Lagraulas for his tomb in the Chapel of the King of France in Saint Peter’s, a no longer existing chapel that was located on the southern flank of the ancient Basilica.",
+              "kind": "scholarly",
+              "origin": "Pietro Zander, The Pietà of Saint Peter’s"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.date",
+          "claim": "Michelangelo carved David from 1501 to 1504.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The statue’s history dates his work.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "8ea10bda419a2b41ffa79e80bffa3fca8f165157feb5e683bc0567735c05f586",
+              "quote": "David is a masterpiece of Italian Renaissance sculpture in marble[1][2] created from 1501 to 1504 by Michelangelo.",
+              "kind": "wikipedia",
+              "origin": "English Wikipedia, David (Michelangelo)"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.title",
+          "claim": "David went to a public square after being planned for Florence Cathedral’s roofline.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum identifies the site that Florence chose.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "a9a00bc0e7ae8812df8a8f8398607ba2ece2203433ec731b001397a50a184a08",
+              "quote": "David was initially intended for the roof space of Opera del Duomo, the cathedral in Florence, Italy, but on seeing the finished piece, the council committee chose instead to display it outside the Palazzo Vecchio, the town hall, at the Piazza della Signoria.",
+              "kind": "scholarly",
+              "origin": "Victoria and Albert Museum, The story of Michelangelo’s David"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "The marble for Michelangelo’s David had already been partly carved by an earlier sculptor.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The contract identifies Agostino’s earlier work.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "8ea10bda419a2b41ffa79e80bffa3fca8f165157feb5e683bc0567735c05f586",
+              "quote": "the Consuls of the Arte della Lana and the Lords Overseers being met, have chosen as sculptor to the said Cathedral the worthy master, Michelangelo, the son of Lodovico Buonarrotti, a citizen of Florence, to the end that he may make, finish and bring to perfection the male figure known as the Giant, nine braccia in height, already blocked out in marble by Maestro Agostino grande, of Florence, and badly blocked; and now stored in the workshops of the Cathedral.",
+              "kind": "primary",
+              "origin": "Florentine David contract of 16 August 1501, English translation"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "David was intended for the roofline of Florence Cathedral.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum and the history of the statue identify the intended setting.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "a9a00bc0e7ae8812df8a8f8398607ba2ece2203433ec731b001397a50a184a08",
+              "quote": "David was initially intended for the roof space of Opera del Duomo, the cathedral in Florence, Italy, but on seeing the finished piece, the council committee chose instead to display it outside the Palazzo Vecchio, the town hall, at the Piazza della Signoria.",
+              "kind": "scholarly",
+              "origin": "Victoria and Albert Museum, The story of Michelangelo’s David"
+            },
+            {
+              "source": "8ea10bda419a2b41ffa79e80bffa3fca8f165157feb5e683bc0567735c05f586",
+              "quote": "David was originally commissioned as one of a series of statues of twelve prophets to be positioned along the roofline of the east end of Florence Cathedral, but was instead placed in the public square in front of the Piazza della Signoria, the seat of civic government in Florence, where it was unveiled on 8 September 1504.",
+              "kind": "wikipedia",
+              "origin": "English Wikipedia, David (Michelangelo)"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.1.text",
+          "claim": "Florence chose to install the finished David outside the town hall in the Piazza della Signoria.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum identifies who chose the location and describes installation in the square.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "a9a00bc0e7ae8812df8a8f8398607ba2ece2203433ec731b001397a50a184a08",
+              "quote": "David was initially intended for the roof space of Opera del Duomo, the cathedral in Florence, Italy, but on seeing the finished piece, the council committee chose instead to display it outside the Palazzo Vecchio, the town hall, at the Piazza della Signoria.",
+              "kind": "scholarly",
+              "origin": "Victoria and Albert Museum, The story of Michelangelo’s David"
+            },
+            {
+              "source": "8ea10bda419a2b41ffa79e80bffa3fca8f165157feb5e683bc0567735c05f586",
+              "quote": "David was originally commissioned as one of a series of statues of twelve prophets to be positioned along the roofline of the east end of Florence Cathedral, but was instead placed in the public square in front of the Piazza della Signoria, the seat of civic government in Florence, where it was unveiled on 8 September 1504.",
+              "kind": "wikipedia",
+              "origin": "English Wikipedia, David (Michelangelo)"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.date",
+          "claim": "Michelangelo painted the Sistine Chapel ceiling from 1508 to 1512.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The encyclopedia dates the work, and the Vatican account records the contract and evidence of completion.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+              "quote": "The Sistine ceiling was executed between 1508 and 1512.",
+              "kind": "scholarly",
+              "origin": "The Columbia Encyclopedia (1975), Michelangelo"
+            },
+            {
+              "source": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+              "quote": "to entrust Michelangelo with a new pictorial decoration. On 8 May 1508, the artist signed the contract which foresaw the painting of twelve apostles in the pendentives and ornamental motifs in the rest.",
+              "kind": "scholarly",
+              "origin": "Vatican Museums, Sistine Chapel Ceiling"
+            },
+            {
+              "source": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+              "quote": "Michelangelo completed the first half of the Ceiling, that is from the entrance wall to the Creation of Eve, in August 1510. The work must have been completed by 31 October 1512, as the Pope celebrated Mass in the Chapel on 1 November.",
+              "kind": "scholarly",
+              "origin": "Vatican Museums, Sistine Chapel Ceiling"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.title",
+          "claim": "Michelangelo obtained a revised commission for the Sistine Chapel ceiling.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum describes his request and the pope’s revised brief.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+              "quote": "Subsequently, at the request of Buonarotti himself, who considered the project to be a \"poor thing\", the Pope gave him a new commission in which he left the full planning of the programme to the artist.",
+              "kind": "scholarly",
+              "origin": "Vatican Museums, Sistine Chapel Ceiling"
+            },
+            {
+              "source": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+              "quote": "to entrust Michelangelo with a new pictorial decoration. On 8 May 1508, the artist signed the contract which foresaw the painting of twelve apostles in the pendentives and ornamental motifs in the rest.",
+              "kind": "scholarly",
+              "origin": "Vatican Museums, Sistine Chapel Ceiling"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Michelangelo’s original ceiling contract with Pope Julius II specified twelve apostles and ornament.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum describes the contract in its account of Julius II’s commission.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+              "quote": "to entrust Michelangelo with a new pictorial decoration. On 8 May 1508, the artist signed the contract which foresaw the painting of twelve apostles in the pendentives and ornamental motifs in the rest.",
+              "kind": "scholarly",
+              "origin": "Vatican Museums, Sistine Chapel Ceiling"
+            },
+            {
+              "source": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+              "quote": "Julius II's decision to completely renovate the decoration of the Ceiling was probably due to the serious problems of a static nature that affected the Sistine Chapel from the earliest years of his pontificate (1503-1513).",
+              "kind": "scholarly",
+              "origin": "Vatican Museums, Sistine Chapel Ceiling"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Michelangelo requested a change and Julius gave him responsibility for planning the ceiling.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum ascribes the request to Michelangelo and the new commission to the pope. The passage makes no claim about working alone.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+              "quote": "Subsequently, at the request of Buonarotti himself, who considered the project to be a \"poor thing\", the Pope gave him a new commission in which he left the full planning of the programme to the artist.",
+              "kind": "scholarly",
+              "origin": "Vatican Museums, Sistine Chapel Ceiling"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.2.text",
+          "claim": "Michelangelo painted nine central scenes from Genesis within a framework of painted architecture.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum identifies their position, number, subject and setting.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+              "quote": "Michelangelo placed nine Central stories illustrating episodes of the Genesis within a powerful painted architecture, with at their sides figures of Nudes, holding medallions with texts taken from the Book of Kings.",
+              "kind": "scholarly",
+              "origin": "Vatican Museums, Sistine Chapel Ceiling"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.date",
+          "claim": "Michelangelo died in 1564 with the dome of St Peter’s still unbuilt.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "Both accounts place the work at the supporting drum when he died.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "Because of the project’s magnitude and complexity, Michelangelo did not live to see the finished dome; only the drum was near completion when he died in 1564.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            },
+            {
+              "source": "855f7b76b53970cec23f282e47afd80354ad55c7df992aba453ee89dd38383ce",
+              "quote": "The structure was designed by Michelangelo Buonarroti in 1546, during the pontificate of Paul III (1534-1549); the construction was halted when the artist died in 1564, at the height of the drum.",
+              "kind": "scholarly",
+              "origin": "Vatican, Dome and Lantern"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.title",
+          "claim": "Michelangelo died before the dome he designed for St Peter’s was built.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Getty describes the state of construction at his death.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "Because of the project’s magnitude and complexity, Michelangelo did not live to see the finished dome; only the drum was near completion when he died in 1564.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            },
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "The principal challenge that Michelangelo faced was designing a grand dome over the church crossing (where the transept intersects the nave). He employed both drawings and three-dimensional models to explore his ideas and convey them to others.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Paul III put Michelangelo in charge of work on the new St Peter’s Basilica.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Getty names the pope and his appointee.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "Following the death of the architect Antonio da Sangallo in 1546, Pope Paul III put Michelangelo in charge of construction of the new Saint Peter’s Basilica, the seat of the Roman Catholic Church.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Michelangelo used drawings and three-dimensional models to explore designs for the dome.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The exhibition explains how he developed and conveyed designs.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "The principal challenge that Michelangelo faced was designing a grand dome over the church crossing (where the transept intersects the nave). He employed both drawings and three-dimensional models to explore his ideas and convey them to others.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            }
+          ]
+        },
+        {
+          "path": "key_moments.3.text",
+          "claim": "Construction had reached the supporting drum at Michelangelo’s death, before the dome rose above it.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Vatican dates work to drum height and the Getty says that the drum itself was near completion.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "855f7b76b53970cec23f282e47afd80354ad55c7df992aba453ee89dd38383ce",
+              "quote": "The structure was designed by Michelangelo Buonarroti in 1546, during the pontificate of Paul III (1534-1549); the construction was halted when the artist died in 1564, at the height of the drum.",
+              "kind": "scholarly",
+              "origin": "Vatican, Dome and Lantern"
+            },
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "Because of the project’s magnitude and complexity, Michelangelo did not live to see the finished dome; only the drum was near completion when he died in 1564.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "An illustrated grocery list by Michelangelo survives at the Casa Buonarroti in Florence.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "Crack identifies the archived drawing, while McIver identifies its medium of communication and location.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d5cdd0600334fe909687c3aaafd9d58ebd24cf15a3b09526f46f8570eb72c0dd",
+              "quote": "Michelangelo’s (1475-1564) illustrated list of groceries now preserved in the Casa Buonarroti in Florence (Fig. 3).",
+              "kind": "scholarly",
+              "origin": "Peter Crack, A Renaissance Menu"
+            },
+            {
+              "source": "a451558010bdb1ca18fec5a837634bb49a524e57bb4dc1116c7f793d95fca7d7",
+              "quote": "Caption: Michelangelo Buonarroti, Shopping List, 1518, Casa Buonarroti, Florence.",
+              "kind": "scholarly",
+              "origin": "Katherine A. McIver, Cooking and Dining in Renaissance Italy"
+            },
+            {
+              "source": "a451558010bdb1ca18fec5a837634bb49a524e57bb4dc1116c7f793d95fca7d7",
+              "quote": "Along with the list, Michelangelo included sketches of each item for clarification: the salad is in a wide, shallow dish",
+              "kind": "scholarly",
+              "origin": "Katherine A. McIver, Cooking and Dining in Renaissance Italy"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.0.text",
+          "claim": "Michelangelo’s illustrated list includes bread, herring and wine.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "Crack and McIver each describe these items in their analyses of the list.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d5cdd0600334fe909687c3aaafd9d58ebd24cf15a3b09526f46f8570eb72c0dd",
+              "quote": "Michelangelo’s shopping list mentioned above also features a great deal of bread (Fig. 3). Anchovies likewise appear in both documents, although Michelangelo also enjoyed two servings of herring. Wine, soup, vegetables and two portions of tortelli complete the Florentine’s list of desiderata.",
+              "kind": "scholarly",
+              "origin": "Peter Crack, A Renaissance Menu"
+            },
+            {
+              "source": "a451558010bdb1ca18fec5a837634bb49a524e57bb4dc1116c7f793d95fca7d7",
+              "quote": "For the first menu for two people, Michelangelo requested two bread rolls, a jug of wine, a herring and tortellini",
+              "kind": "scholarly",
+              "origin": "Katherine A. McIver, Cooking and Dining in Renaissance Italy"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "Michelangelo designed a funerary chapel for the Medici in Florence and drew figures for its tombs.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The exhibition identifies the project and surviving figure studies, and the encyclopedia describes the sculptural commission.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "Two Medici popes—Leo X (Giovanni di Lorenzo de’ Medici) and Clement VII (Giulio de’ Medici)—provided Michelangelo with commissions centered on the family’s parish church, the Basilica of San Lorenzo in Florence. Michelangelo designed the architectural and sculptural elements for a New Sacristy, housing tombs of family members, and for the Laurentian Library (named for Lorenzo de’ Medici), adjacent to the church.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            },
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "The tomb of Giuliano de’ Medici, Duke of Nemours was to be adorned with reclining statues representing Night and Day. Very few of Michelangelo’s drawings for sculpture survive, but four sheets related to Day offer rare insight into Michelangelo’s careful preparations on paper before taking his chisel to the marble block.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            },
+            {
+              "source": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+              "quote": "He worked (1520-34) on the sepulchral chapel of the Medici in the second sacristy of San Lorenzo, Florence, and designed the elegant, mannerist Laurentian Library which forms a part of the church.",
+              "kind": "scholarly",
+              "origin": "The Columbia Encyclopedia (1975), Michelangelo"
+            }
+          ]
+        },
+        {
+          "path": "deep_facts.1.text",
+          "claim": "After the Medici were expelled from Florence, Michelangelo served the Florentine republic by drawing plans for the city’s defenses.",
+          "verdict": "supported",
+          "risk": "corroborate",
+          "explanation": "The Casa describes the expulsion and his drawings. The museum biography and independent biographical entry corroborate his engineering work under the republic.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "1eed6a8823e9408474fb27cc685389f7441b9a08c18ccfd03df213b8016019b8",
+              "quote": "In the first few months of 1529, alarming news spread through Florence, to the effect that the Medici Pope Clement VII was preparing, with the assistance of the Imperial army, to restore to power his family, expelled from the city on May 17 just two years earlier.",
+              "kind": "scholarly",
+              "origin": "Casa Buonarroti, Study of Fortification for the Porta al Prato of Ognissanti"
+            },
+            {
+              "source": "1eed6a8823e9408474fb27cc685389f7441b9a08c18ccfd03df213b8016019b8",
+              "quote": "Assigned such an important post and encouraged by the esteem of his fellow-citizens, Michelangelo drew up a series of proposals for defending the gates in the walls.",
+              "kind": "scholarly",
+              "origin": "Casa Buonarroti, Study of Fortification for the Porta al Prato of Ognissanti"
+            },
+            {
+              "source": "1eed6a8823e9408474fb27cc685389f7441b9a08c18ccfd03df213b8016019b8",
+              "quote": "Michelangelo Buonarroti Study of Fortification for the Porta al Prato of Ognissanti 1529-1530 circa pen and ink, watercolor, red pencil, 410 x 568 mm inv. 13 A",
+              "kind": "scholarly",
+              "origin": "Casa Buonarroti, Study of Fortification for the Porta al Prato of Ognissanti"
+            },
+            {
+              "source": "efefe52b69c94e08d372fe2301ba58ba5b9fb8cd5f424249c66aa743f4f1363b",
+              "quote": "At the same time, he worked on the town's fortifications for the republican government, which had replaced the Medici seigniory.",
+              "kind": "scholarly",
+              "origin": "Museo Galileo, Michelangelo Buonarroti"
+            },
+            {
+              "source": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+              "quote": "Michelangelo assisted (1529) as engineer in the defense of Florence",
+              "kind": "scholarly",
+              "origin": "The Columbia Encyclopedia (1975), Michelangelo"
+            },
+            {
+              "source": "2cb53133ce126e45364c6dec2febade1576c7cbde6e4f68df5b7ff0b4db5207f",
+              "quote": "In 1527, Florentine citizens, encouraged by the sack of Rome, threw out the Medici and restored the republic. A siege of the city ensued, and Michelangelo went to the aid of his beloved Florence by working on the city's fortifications from 1528 to 1529.",
+              "kind": "wikipedia",
+              "origin": "English Wikipedia, Michelangelo"
+            }
+          ],
+          "counterevidence": [
+            {
+              "source": "d138f63509eaedf323a11e6b22b36e2fa9e56f9d25759ef3b46163e0e3917688",
+              "quote": "Alessandro and Ippolito left Tuscany; Caterina, on the other hand, stayed in town until the end of the siege. A Republican regime was thus restored",
+              "kind": "scholarly",
+              "origin": "Museo Ferrucciano, Chronology"
+            }
+          ]
+        },
+        {
+          "path": "connections.0.connection",
+          "claim": "Julius II commissioned Michelangelo to design his tomb, for which Michelangelo made Moses.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The museum identifies the patron, project and sculpture.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "efefe52b69c94e08d372fe2301ba58ba5b9fb8cd5f424249c66aa743f4f1363b",
+              "quote": "The sculptural program for the tomb of Julius II, on which Michelangelo spent nearly forty years, produced the Moses, the Prisons in the Boboli Garden, the Slaves, now in the Louvre, and the Victory in the Palazzo Vecchio.",
+              "kind": "scholarly",
+              "origin": "Museo Galileo, Michelangelo Buonarroti"
+            },
+            {
+              "source": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+              "quote": "In 1505 he was called to Rome to execute a sepulchral monument for Pope Julius II.",
+              "kind": "scholarly",
+              "origin": "The Columbia Encyclopedia (1975), Michelangelo"
+            }
+          ]
+        },
+        {
+          "path": "connections.1.connection",
+          "claim": "Lorenzo de’ Medici brought the young Michelangelo into his Florentine household.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The biographical entry describes his Florentine training and Lorenzo’s patronage.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+              "quote": "His early essays in sculpture attracted the attention of Lorenzo de' Medici, who took him to live in his household between 1490 and 1492.",
+              "kind": "scholarly",
+              "origin": "The Columbia Encyclopedia (1975), Michelangelo"
+            },
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "He received the support of important patrons, including members of the ruling Medici family of Florence and, for a crucial decade, the leader of the Roman Catholic Church, Julius II.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            }
+          ]
+        },
+        {
+          "path": "connections.2.connection",
+          "claim": "After his ceiling commission, Michelangelo received another to paint the Last Judgment above the Sistine Chapel altar.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Getty describes his later commission in the same chapel.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "In 1533 Michelangelo received a second commission for the Sistine Chapel, this time from Pope Clement VII: a huge fresco of the Last Judgment above the altar. The artist completed it in 1541.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            },
+            {
+              "source": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+              "quote": "The Sistine ceiling was executed between 1508 and 1512.",
+              "kind": "scholarly",
+              "origin": "The Columbia Encyclopedia (1975), Michelangelo"
+            }
+          ]
+        },
+        {
+          "path": "connections.3.connection",
+          "claim": "Leonardo and Michelangelo received commissions for opposite walls of Florence’s Great Council Chamber, each depicting a Florentine battle.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The Getty identifies the chamber, both commissions and the placement.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+              "quote": "In the summer of 1504, Michelangelo was commissioned to paint the Battle of Cascina on one wall of the Sala del Gran Consiglio (Great Council Chamber) in the Palazzo della Signoria, Florence. The commission brought Michelangelo into direct competition with Leonardo da Vinci, who had been contracted to paint the Battle of Anghiari on the opposite wall a year earlier. Both murals would commemorate famous battles in Florentine history.",
+              "kind": "scholarly",
+              "origin": "J. Paul Getty Museum, Michelangelo: Mind of the Master"
+            }
+          ]
+        },
+        {
+          "path": "connections.4.connection",
+          "claim": "Michelangelo was apprenticed to Domenico Ghirlandaio in Florence.",
+          "verdict": "supported",
+          "risk": "ordinary",
+          "explanation": "The encyclopedia locates the apprenticeship and names the painters.",
+          "correction": "",
+          "evidence": [
+            {
+              "source": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+              "quote": "After serving a year of apprenticeship to the painters Domenico Ghirlandaio and his brother David at Florence",
+              "kind": "scholarly",
+              "origin": "The Columbia Encyclopedia (1975), Michelangelo"
+            }
+          ]
+        }
+      ]
+    },
+    "adversarial": {
+      "model": "gpt-6.2-sol",
+      "checks": [
+        {
+          "finding_index": 22,
+          "path": "deep_facts.0.text",
+          "queries": [
+            "Michelangelo illustrated food lists Casa Buonarroti inventory Florence drawing grocery provenance museum",
+            "Michelangelo illustrated grocery list Casa Buonarroti misattributed menu forgery provenance autograph scholars",
+            "Michelangelo shopping list Symonds The Life of Michelangelo Buonarroti Gutenberg 11242 herring archive Florence Michelangelo menu"
+          ],
+          "outcome": "no_conflict_found",
+          "counterevidence": [],
+          "note": "Peter Crack identifies the illustrated list as Michelangelo's and places the sheet at Casa Buonarroti in Florence. Finestre sull'Arte independently identifies the sheet in the Buonarroti Archive and reproduces it. Searches for misattribution returned disputes about other works."
+        },
+        {
+          "finding_index": 23,
+          "path": "deep_facts.0.text",
+          "queries": [
+            "Michelangelo illustrated food lists Casa Buonarroti transcription bread herring wine 39 F",
+            "Michelangelo illustrated list herring bread wine mistranslated herrings discrepancies Peter Crack menu transcription",
+            "Michelangelo shopping list Symonds The Life of Michelangelo Buonarroti Gutenberg 11242 herring archive Florence Michelangelo menu"
+          ],
+          "outcome": "no_conflict_found",
+          "counterevidence": [],
+          "note": "Finestre sull'Arte's transcription includes all three foods. I found no credible competing reading of those entries."
+        },
+        {
+          "finding_index": 24,
+          "path": "deep_facts.1.text",
+          "queries": [
+            "Michelangelo New Sacristy Medici family tomb architecture drawings figures Medici Chapel museum catalogue",
+            "New Sacristy Medici chapel existing design Brunelleschi Michelangelo disputed attribution tomb figure drawings museum",
+            "Michelangelo studies for Medici tomb figures Michelangelo drawings collections Day Night Michelangelo British Museum Louvre Met tomb Giuliano"
+          ],
+          "outcome": "no_conflict_found",
+          "counterevidence": [],
+          "note": "The museum that holds the tombs credits Michelangelo with the New Sacristy architecture and sculpture. The Getty exhibit identifies his preparatory sheets for Day. Attribution disputes about the nearby secret room's wall drawings do not concern the figure sheets or the chapel design."
+        },
+        {
+          "finding_index": 25,
+          "path": "deep_facts.1.text",
+          "queries": [
+            "Michelangelo Florentine Republic 1529 fortification appointment Medici expelled surviving plans museums",
+            "Michelangelo 1529 Florence fortifications credit Antonio da Sangallo disputed actual built plans designs Ferrara",
+            "Florence 1527 the Medici fled expelled republic reestablished after May 17 revolt Florence Michelangelo history archive Medici 1527"
+          ],
+          "outcome": "conflict_found",
+          "counterevidence": [
+            {
+              "source": "d138f63509eaedf323a11e6b22b36e2fa9e56f9d25759ef3b46163e0e3917688",
+              "quote": "Alessandro and Ippolito left Tuscany; Caterina, on the other hand, stayed in town until the end of the siege. A Republican regime was thus restored",
+              "kind": "scholarly",
+              "origin": "Museo Ferrucciano, Chronology"
+            }
+          ],
+          "note": "The finding's sequence and Michelangelo's work agree with the evidence. The passage credits the republic with the expulsion, but the museum dates its restoration to the departure of Alessandro and Ippolito after the anti-Medici faction drove them out. Caterina stayed in Florence."
+        }
+      ]
+    },
+    "audit": {
+      "uncovered": [],
+      "issues": [
+        "key_moments.1.text: “His David was meant to stand high on Florence Cathedral.” — the V&A and David article distinguish the cathedral’s roofline from the later civic placement, and the 1501 contract identifies the cathedral overseers as commissioning parties, but the supplied Columbia Encyclopedia account says the city commissioned it for the Piazza della Signoria — record Columbia as counterevidence and ground the initial roofline plan in the V&A account, distinguishing it from the later choice of the square.",
+        "deep_facts.1.text: “the republic that expelled the family” — the Museo Ferrucciano dates the republic’s restoration after the anti-Medici faction drove out Alessandro and Ippolito, and notes that Caterina stayed; Casa Buonarroti documents Michelangelo’s subsequent work for the republican government — say “He also served the Florentine republic after the Medici lost power.”"
+      ],
+      "coherent": true
+    },
+    "sources": [
+      {
+        "id": "d3efbe34fc4c231cf151a05cb7f6b8dacb813b1af6a90cf1dcce6b4ca0108c6b",
+        "url": "https://projects.mcah.columbia.edu/arthumanities/websites/michel/index",
+        "fetched_at": "2026-11-25T03:41:28.780Z"
+      },
+      {
+        "id": "60f2a5bff6173c3ebbaee89152d95f8ab67c5de0f045df7cf79f509ea8bbbdc6",
+        "url": "https://www.getty.edu/art/exhibitions/michelangelo_drawings/explore.html",
+        "fetched_at": "2026-11-25T03:42:49.814Z"
+      },
+      {
+        "id": "05f6f52dcd5ffbe996625374d92b6e5208e37987fac1343d344ad2efd9641bb9",
+        "url": "https://www.basilicasanpietro.va/en/san-pietro/the-pieta-of-saint-peter-s",
+        "fetched_at": "2026-11-25T03:44:00.705Z"
+      },
+      {
+        "id": "2cb53133ce126e45364c6dec2febade1576c7cbde6e4f68df5b7ff0b4db5207f",
+        "url": "https://en.wikipedia.org/wiki/Michelangelo",
+        "fetched_at": "2026-11-25T03:39:35.986Z"
+      },
+      {
+        "id": "efefe52b69c94e08d372fe2301ba58ba5b9fb8cd5f424249c66aa743f4f1363b",
+        "url": "https://catalogue.museogalileo.it/biography/MichelangeloBuonarroti.html",
+        "fetched_at": "2026-11-25T03:41:28.419Z"
+      },
+      {
+        "id": "8ea10bda419a2b41ffa79e80bffa3fca8f165157feb5e683bc0567735c05f586",
+        "url": "https://en.wikipedia.org/wiki/David_(Michelangelo)",
+        "fetched_at": "2026-11-25T03:45:46.965Z"
+      },
+      {
+        "id": "a9a00bc0e7ae8812df8a8f8398607ba2ece2203433ec731b001397a50a184a08",
+        "url": "https://www.vam.ac.uk/articles/the-story-of-michelangelos-david",
+        "fetched_at": "2026-11-25T03:44:40.866Z"
+      },
+      {
+        "id": "556a6af75ea5f4e007d83c19cd5af8733ba5251b2dd678149f3dd5eee8205d36",
+        "url": "https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/cappella-sistina/volta.html",
+        "fetched_at": "2026-11-25T03:41:28.770Z"
+      },
+      {
+        "id": "855f7b76b53970cec23f282e47afd80354ad55c7df992aba453ee89dd38383ce",
+        "url": "https://www.vatican.va/content/vatican/en/ra/cupolone-lanterna.html",
+        "fetched_at": "2026-11-25T03:42:51.496Z"
+      },
+      {
+        "id": "d5cdd0600334fe909687c3aaafd9d58ebd24cf15a3b09526f46f8570eb72c0dd",
+        "url": "https://courtauld.ac.uk/research/research-resources/publications/immeditations-postgraduate-journal/immediations-online/2018-2/peter-crack-a-renaissance-menu-word-and-image-in-a-sixteenth-century-italian-drawing/",
+        "fetched_at": "2026-11-25T03:44:00.513Z"
+      },
+      {
+        "id": "a451558010bdb1ca18fec5a837634bb49a524e57bb4dc1116c7f793d95fca7d7",
+        "url": "https://italianjournal.it/what-artists-ate/",
+        "fetched_at": "2026-11-25T03:44:00.751Z"
+      },
+      {
+        "id": "1eed6a8823e9408474fb27cc685389f7441b9a08c18ccfd03df213b8016019b8",
+        "url": "https://www.casabuonarroti.it/en/museum/collections/michelangelos-drawings/study-of-fortification-for-the-porta-al-prato-of-ognissanti/",
+        "fetched_at": "2026-11-25T03:42:54.740Z"
+      },
+      {
+        "id": "d138f63509eaedf323a11e6b22b36e2fa9e56f9d25759ef3b46163e0e3917688",
+        "url": "https://museoferrucciano.it/en/chronology/",
+        "fetched_at": "2026-11-25T03:50:59.713Z"
+      }
+    ],
+    "evidence_errors": [],
+    "mechanical": [],
+    "repairs": 0,
+    "blockers": [
+      "key_moments.1.text: “His David was meant to stand high on Florence Cathedral.” — the V&A and David article distinguish the cathedral’s roofline from the later civic placement, and the 1501 contract identifies the cathedral overseers as commissioning parties, but the supplied Columbia Encyclopedia account says the city commissioned it for the Piazza della Signoria — record Columbia as counterevidence and ground the initial roofline plan in the V&A account, distinguishing it from the later choice of the square.",
+      "deep_facts.1.text: “the republic that expelled the family” — the Museo Ferrucciano dates the republic’s restoration after the anti-Medici faction drove out Alessandro and Ippolito, and notes that Caterina stayed; Casa Buonarroti documents Michelangelo’s subsequent work for the republican government — say “He also served the Florentine republic after the Medici lost power.”"
+    ]
+  }
+}
