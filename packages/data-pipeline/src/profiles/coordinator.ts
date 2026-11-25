@@ -9,7 +9,6 @@ import {
   validateAdversarialEvidence,
 } from './adversarial-checkpoint.js';
 import {
-  finalizedAssessment,
   flaggedRepairPaths,
   readPendingAssessment,
 } from './assessed-profile.js';
@@ -55,7 +54,6 @@ import {
   type Assessment,
   findingExcerpts,
   hash,
-  isCurrentVerificationPolicy,
   parseAssessment,
   profileHash,
   strings,
@@ -175,32 +173,14 @@ function agentRunMeta(value: Record<string, unknown>): AgentRunMeta {
   };
 }
 
-async function loadEnglishAssessment(
-  options: CoordinatorOptions,
-  qid: string,
-  researchFile?: string,
-) {
+async function loadEnglishAssessment(options: CoordinatorOptions, qid: string) {
   const { filePath, subject, record } = await loadSubject(options, qid);
   const profile = parseModelProfile(record, filePath);
   const pending = readPendingAssessment(record);
   const binding = profileHash(record);
   let input = pending;
   let savedAdversarial: unknown;
-  if (researchFile) {
-    if (pending)
-      throw new Error(
-        'Use the assessment saved with this draft without --research',
-      );
-    const research = asRecord(await readJson(researchFile), 'research result');
-    input = {
-      assessment: finalizedAssessment(
-        parseAssessment(research.assessment),
-        profile,
-        research.connection_urls,
-      ),
-      model: agentRunMeta(research).model,
-    };
-  } else if (!input) {
+  if (!input) {
     const saved = await readOptionalJson(reportPathFor(filePath));
     if (saved) {
       const report = asRecord(saved, 'verification report');
@@ -215,7 +195,7 @@ async function loadEnglishAssessment(
   }
   if (!input)
     throw new Error(
-      'No saved assessment for this draft. Use --research to supply an assessment file.',
+      'No saved assessment for this draft; re-stage and finalize an assessed Profile.',
     );
   return { filePath, subject, profile, record, ...input, savedAdversarial };
 }
@@ -236,11 +216,10 @@ function assessmentSnapshots(
 async function englishAdversarial(
   options: TaskOptions,
   qid: string,
-  researchFile?: string,
   resultFile?: string,
 ) {
   const { filePath, subject, profile, record, assessment } =
-    await loadEnglishAssessment(options, qid, researchFile);
+    await loadEnglishAssessment(options, qid);
   const targets = selectAdversarialTargets(profile, assessment);
   if (!targets.length) {
     if (resultFile)
@@ -325,7 +304,6 @@ async function englishAdversarial(
 async function englishAudit(
   options: TaskOptions,
   qid: string,
-  researchFile?: string,
   resultFile?: string,
 ) {
   const {
@@ -336,7 +314,7 @@ async function englishAudit(
     assessment,
     model,
     savedAdversarial,
-  } = await loadEnglishAssessment(options, qid, researchFile);
+  } = await loadEnglishAssessment(options, qid);
   const binding = adversarialBinding(record, assessment);
   const pending = currentAdversarialCheckpoint(record, assessment);
   const checkpoint = pending ?? savedAdversarial;
@@ -417,7 +395,8 @@ async function englishRepair(
   );
   const subjectInfo = asRecord(report.subject, 'report subject');
   if (
-    !isCurrentVerificationPolicy(report.policy_version, dates) ||
+    typeof report.policy_version !== 'string' ||
+    !report.policy_version.length ||
     report.profile_hash !== profileHash(record) ||
     subjectInfo.qid !== qid ||
     subjectInfo.dates !== dates ||
@@ -595,8 +574,8 @@ export async function runCoordinatorCommand(
       'urls',
     ],
     status: ['qids', 'scope', 'stage', 'limit'],
-    'english-adversarial': ['qid', 'research', 'result', 'out'],
-    'english-audit': ['qid', 'research', 'result', 'out'],
+    'english-adversarial': ['qid', 'result', 'out'],
+    'english-audit': ['qid', 'result', 'out'],
     'english-repair': ['qid', 'result', 'out'],
     'russian-translation': ['qid', 'out'],
     'russian-audit': ['qid', 'candidate', 'result', 'out'],
@@ -800,9 +779,9 @@ export async function runCoordinatorCommand(
         }),
       );
     } else if (command === 'english-adversarial')
-      await englishAdversarial(taskOptions, qid, flags.get('research'), result);
+      await englishAdversarial(taskOptions, qid, result);
     else if (command === 'english-audit')
-      await englishAudit(taskOptions, qid, flags.get('research'), result);
+      await englishAudit(taskOptions, qid, result);
     else if (command === 'english-repair')
       await englishRepair(taskOptions, qid, result);
     else if (command === 'russian-translation')

@@ -21,7 +21,6 @@ import {
   selectAdversarialTargets,
 } from './verification/adversarial.js';
 import {
-  isCurrentVerificationPolicy,
   parseAssessment,
   profileHash,
   readProfileApproval,
@@ -183,8 +182,9 @@ async function inspectSubject(
     !pending &&
     reportSubject?.qid === qid &&
     reportSubject.dates === dates &&
-    isCurrentVerificationPolicy(currentReport?.policy_version, dates) &&
-    Array.isArray(currentReport?.blockers) &&
+    typeof currentReport?.policy_version === 'string' &&
+    currentReport.policy_version.length > 0 &&
+    Array.isArray(currentReport.blockers) &&
     currentReport.blockers.length
   ) {
     const edited = stored.status === 'edited';
@@ -213,7 +213,10 @@ async function inspectSubject(
       qid,
       stage: 'draft-pending-adversarial',
       next_command: 'english-adversarial',
-      reason: [reason, 'Prepare an assessment and supply it with --research']
+      reason: [
+        reason,
+        'No saved assessment for this draft; re-stage and finalize',
+      ]
         .filter(Boolean)
         .join('. '),
     };

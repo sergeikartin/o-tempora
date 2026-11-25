@@ -29,23 +29,6 @@ export {
 
 export const POLICY_VERSION = '8';
 
-export function isCurrentVerificationPolicy(
-  version: unknown,
-  dates: string,
-): boolean {
-  // Version 2 checked the same years for closed spans and points. Its label
-  // parser skipped every comparison for an ongoing subject.
-  return (
-    version === POLICY_VERSION ||
-    version === '7' ||
-    version === '6' ||
-    version === '5' ||
-    version === '4' ||
-    version === '3' ||
-    (version === '2' && !dates.endsWith('–present'))
-  );
-}
-
 export interface SourceHeading {
   level: 1 | 2 | 3 | 4 | 5 | 6;
   text: string;
@@ -71,7 +54,6 @@ export interface Report {
   assessment: Assessment;
   audit: Audit;
   adversarial?: AdversarialResult;
-  adversarial_disabled?: true;
   sources: Pick<Source, 'id' | 'url' | 'fetched_at'>[];
   evidence_errors: string[];
   mechanical: string[];
@@ -196,52 +178,39 @@ export function blockers(
   ];
   if (!report.audit.coherent) result.push('Profile is not coherent');
   const sources = new Map(report.sources.map((source) => [source.id, source]));
-  if (report.policy_version === '7' || report.policy_version === '8') {
-    const targets = selectAdversarialTargets(profile, assessment, {
-      perPassage: report.policy_version !== '7',
-    });
-    try {
+  const targets = selectAdversarialTargets(profile, assessment);
+  try {
+    if (report.adversarial !== undefined) {
+      const checks = parseAdversarialResult(report.adversarial, targets);
       if (
-        report.adversarial_disabled !== undefined &&
-        report.adversarial_disabled !== true
-      )
-        throw new Error('Invalid adversarial opt-out');
-      if (report.adversarial !== undefined) {
-        if (report.adversarial_disabled !== undefined)
-          throw new Error(
-            'Adversarial checking cannot be both recorded and disabled',
-          );
-        const checks = parseAdversarialResult(report.adversarial, targets);
-        if (
-          !report.adversarial.model?.trim() ||
-          !strings(report.models, 'report models').includes(
-            report.adversarial.model,
-          )
+        !report.adversarial.model?.trim() ||
+        !strings(report.models, 'report models').includes(
+          report.adversarial.model,
         )
-          throw new Error('Missing adversarial model');
-        for (const check of checks) {
-          const merged =
-            assessment.findings[check.finding_index]?.counterevidence ?? [];
-          for (const item of check.counterevidence) {
-            if (
-              !sources.has(item.source) ||
-              !merged.some(
-                (entry) =>
-                  entry.source === item.source &&
-                  normalizeText(entry.quote) === normalizeText(item.quote),
-              )
+      )
+        throw new Error('Missing adversarial model');
+      for (const check of checks) {
+        const merged =
+          assessment.findings[check.finding_index]?.counterevidence ?? [];
+        for (const item of check.counterevidence) {
+          if (
+            !sources.has(item.source) ||
+            !merged.some(
+              (entry) =>
+                entry.source === item.source &&
+                normalizeText(entry.quote) === normalizeText(item.quote),
             )
-              throw new Error(
-                `${check.path}: adversarial counterevidence is missing from the assessment or sources`,
-              );
-          }
+          )
+            throw new Error(
+              `${check.path}: adversarial counterevidence is missing from the assessment or sources`,
+            );
         }
-      } else if (report.adversarial_disabled !== true && targets.length) {
-        throw new Error('Missing adversarial checks for selected findings');
       }
-    } catch (error) {
-      result.push(error instanceof Error ? error.message : String(error));
+    } else if (targets.length) {
+      throw new Error('Missing adversarial checks for selected findings');
     }
+  } catch (error) {
+    result.push(error instanceof Error ? error.message : String(error));
   }
   return [...new Set(result)];
 }
@@ -250,12 +219,12 @@ export interface ProfileApproval {
   isCurrentFor(dates: string): boolean;
 }
 
-// Validate the saved receipt once, then check it against the current dataset
-// dates when the subject is available.
+// Validate the saved receipt and stored invariants at publish time without
+// re-running current target-selection rules against previously approved drafts.
 export function readProfileApproval(
   profile: unknown,
   verification: unknown,
-  text: Parameters<typeof passages>[0],
+  _text?: Parameters<typeof passages>[0],
 ): ProfileApproval | undefined {
   try {
     const root = asRecord(profile, 'Profile');
@@ -266,13 +235,15 @@ export function readProfileApproval(
     const subject = asRecord(report.subject, 'report.subject');
     const source = asRecord(meta.source, 'meta.source');
     const dates = subject.dates;
+    const policyVersion = report.policy_version;
     if (
       subject.qid !== source.wikidata_qid ||
       typeof dates !== 'string' ||
       dates.length === 0 ||
+      typeof policyVersion !== 'string' ||
+      policyVersion.length === 0 ||
       !['reviewed', 'edited'].includes(String(review.status)) ||
-      approval.policy_version !== report.policy_version ||
-      !isCurrentVerificationPolicy(report.policy_version, dates) ||
+      approval.policy_version !== policyVersion ||
       approval.profile_hash !== profileHash(profile) ||
       report.profile_hash !== approval.profile_hash ||
       approval.report_hash !== hash(verification)
@@ -282,20 +253,17 @@ export function readProfileApproval(
     // acquiring publishing rights just by adding a review status.
     const assessment = parseAssessment(report.assessment);
     const audit = parseAudit(report.audit);
-    const parsed = {
-      ...report,
-      assessment,
-      audit,
-      mechanical: strings(report.mechanical, 'mechanical'),
-      evidence_errors: strings(report.evidence_errors, 'evidence_errors'),
-    } as unknown as Report;
     if (
       !Array.isArray(report.sources) ||
       strings(report.blockers, 'blockers').length > 0 ||
-      blockers(parsed, {
-        ...text,
-        subject: typeof root.subject === 'string' ? root.subject : undefined,
-      }).length > 0
+      strings(report.mechanical, 'mechanical').length > 0 ||
+      strings(report.evidence_errors, 'evidence_errors').length > 0 ||
+      !audit.coherent ||
+      audit.issues.length > 0 ||
+      audit.uncovered.length > 0 ||
+      !assessment.coherent ||
+      assessment.issues.length > 0 ||
+      assessment.uncovered.length > 0
     )
       return undefined;
     return { isCurrentFor: (currentDates) => dates === currentDates };

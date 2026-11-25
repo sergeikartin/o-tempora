@@ -173,7 +173,7 @@ async function finalizeFile(
     );
   const pending = {
     profile_hash: profileHash(record),
-    assessment: finalizedAssessment(assessment, record, undefined, keptIndices),
+    assessment: finalizedAssessment(assessment, keptIndices),
     model: record.meta.model,
   };
   await writeJson(recordPath, {

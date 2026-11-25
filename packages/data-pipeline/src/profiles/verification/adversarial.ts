@@ -97,7 +97,6 @@ function datasetYearOnly(
 export function selectAdversarialTargets(
   profile: Parameters<typeof passages>[0] & { subject?: string },
   assessment: Assessment,
-  { perPassage = true }: { perPassage?: boolean } = {},
 ): AdversarialTarget[] {
   const passageText = new Map(
     passages(profile).map(({ path, text }) => [path, text]),
@@ -150,7 +149,6 @@ export function selectAdversarialTargets(
         (a.priority === 3 ? Number(b.claimCue) - Number(a.claimCue) : 0) ||
         a.target.finding_index - b.target.finding_index,
     );
-  if (!perPassage) return ranked.slice(0, 5).map(({ target }) => target);
   const seenPaths = new Set<string>();
   const selected: AdversarialTarget[] = [];
   for (const { target } of ranked) {

@@ -32,8 +32,6 @@ const MAX_KEY_MOMENTS = 4;
 const MAX_DEEP_FACTS = 3;
 const MAX_CONNECTIONS = 15;
 
-const NOT_ON_WIKIPEDIA = 'not_on_wikipedia';
-
 function asOneOf(value: unknown, allowed: readonly string[], where: string) {
   const text = asString(value, where);
   if (!allowed.includes(text)) {
@@ -44,15 +42,12 @@ function asOneOf(value: unknown, allowed: readonly string[], where: string) {
 
 function asSource(value: unknown, where: string): string {
   const text = asString(value, where);
-  if (text === NOT_ON_WIKIPEDIA) return text;
   try {
     const url = new URL(text);
     if (url.protocol === 'https:' && !url.username && !url.password)
       return text;
   } catch {}
-  throw new Error(
-    `${where}: expected a public HTTPS source or "${NOT_ON_WIKIPEDIA}"`,
-  );
+  throw new Error(`${where}: expected a public HTTPS source`);
 }
 
 function asBoundedArray(

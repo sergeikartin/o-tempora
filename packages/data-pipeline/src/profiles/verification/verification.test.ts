@@ -373,38 +373,64 @@ test('verification checks the birth year of a living Person', async (t) => {
   assert.equal(report.policy_version, POLICY_VERSION);
 });
 
-test('Output accepts version 2 approvals for closed spans but withholds them for ongoing subjects', async (t) => {
+test('Output accepts prior policy approvals with valid receipts and withholds tampered reports', async (t) => {
   const { options } = await setup(t);
   await applyEnglishAudit(options);
   const { record, report } = await saved(options);
+  const target = {
+    ...SUBJECT,
+    slug: 'newton',
+    fameScore: 99,
+    dates: '1643–1727',
+  };
 
-  for (const [dates, expected] of [
-    ['1643–1727', 1],
-    ['1643–present', 0],
-  ] as const) {
-    const legacyReport = {
-      ...report,
-      policy_version: '2',
-      subject: { ...report.subject, dates },
-    };
-    const legacyRecord = {
-      ...record,
-      meta: {
-        ...record.meta,
-        review: {
-          ...record.meta.review,
-          approval: {
-            ...record.meta.review.approval,
-            policy_version: '2',
-            report_hash: hash(legacyReport),
-          },
+  const priorReport = { ...report, policy_version: '2' };
+  const priorRecord = {
+    ...record,
+    meta: {
+      ...record.meta,
+      review: {
+        ...record.meta.review,
+        approval: {
+          ...record.meta.review.approval,
+          policy_version: '2',
+          report_hash: hash(priorReport),
         },
       },
-    };
-    const raw = parseRawProfile(legacyRecord, options.filePath, legacyReport);
-    const target = { ...SUBJECT, slug: 'newton', fameScore: 99, dates };
-    assert.equal(shipProfiles([raw], [target]).size, expected, dates);
-  }
+    },
+  };
+  assert.equal(
+    shipProfiles(
+      [parseRawProfile(priorRecord, options.filePath, priorReport)],
+      [target],
+    ).size,
+    1,
+  );
+
+  const tamperedAudit = {
+    ...priorReport,
+    audit: { ...priorReport.audit, issues: ['overview: tampered defect'] },
+  };
+  const tamperedRecord = {
+    ...priorRecord,
+    meta: {
+      ...priorRecord.meta,
+      review: {
+        ...priorRecord.meta.review,
+        approval: {
+          ...priorRecord.meta.review.approval,
+          report_hash: hash(tamperedAudit),
+        },
+      },
+    },
+  };
+  assert.equal(
+    shipProfiles(
+      [parseRawProfile(tamperedRecord, options.filePath, tamperedAudit)],
+      [target],
+    ).size,
+    0,
+  );
 });
 
 test('an edited Profile can earn approval without changing its protected content', async (t) => {
@@ -536,12 +562,15 @@ test('corroboration needs distinct original accounts and primary or scholarly su
   first.risk = 'corroborate';
   const report: Omit<Report, 'blockers'> = {
     policy_version: POLICY_VERSION,
-    adversarial_disabled: true,
     profile_hash: 'hash',
     verified_at: 'date',
     subject: { qid: 'Q935', dates: '1643–1727' },
-    models: ['test'],
+    models: ['test', 'checker'],
     assessment: item,
+    adversarial: {
+      model: 'checker',
+      checks: [makeCheck({ finding_index: 0, path: 'overview' })],
+    },
     audit: { uncovered: [], issues: [], coherent: true },
     sources: [SOURCE],
     evidence_errors: [],
@@ -879,15 +908,6 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     return findings;
   }
   const initial = raw();
-  async function legacyResearch() {
-    const findings = evidenceFor(initial);
-    findings.uncovered.push('connections.0.connection: dropped by finalize');
-    return `--research=${await save('research.json', {
-      assessment: findings,
-      connection_urls: ['https://en.wikipedia.org/wiki/Out_of_dataset'],
-      model: 'researcher-writer',
-    })}`;
-  }
   function assessed(profile: unknown, findings = evidenceFor(profile)) {
     const draft = parseModelProfile(profile, 'coordinator test');
     const field = (path: string, text: string) => ({
@@ -950,14 +970,27 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     /overview: no factual claims/,
   );
 
-  const researchFlag = await legacyResearch();
+  await writeFile(
+    options.filePath,
+    JSON.stringify({
+      ...initial,
+      meta: {
+        ...initial.meta,
+        pending_assessment: {
+          profile_hash: profileHash(initial),
+          assessment: evidenceFor(initial),
+          model: 'researcher-writer',
+        },
+      },
+    }),
+  );
   const skippedTask = path.join(root, 'skipped.json');
   assert.deepEqual(
-    await run('english-adversarial', qid, researchFlag, `--out=${skippedTask}`),
+    await run('english-adversarial', qid, `--out=${skippedTask}`),
     { status: 'skipped', targets: 0 },
   );
   await assert.rejects(readFile(skippedTask), { code: 'ENOENT' });
-  const audit = await prepare('english-audit', researchFlag);
+  const audit = await prepare('english-audit');
   function checkCounterevidence(prompt: string) {
     const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
     assert.deepEqual(
@@ -991,8 +1024,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     },
   });
   assert.equal(
-    (await run('english-audit', qid, researchFlag, `--result=${rejected}`))
-      .status,
+    (await run('english-audit', qid, `--result=${rejected}`)).status,
     'held',
   );
 
@@ -1014,10 +1046,6 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     profileHash(initial),
   );
   await assert.rejects(run('english-repair', qid), /pending assessment/);
-  await assert.rejects(
-    run('english-audit', qid, researchFlag),
-    /without --research/,
-  );
   const evidenceAudit = await run('english-audit', qid);
   assert.notEqual(evidenceAudit.input_hash, audit.input_hash);
   await assert.rejects(
@@ -1511,12 +1539,6 @@ test('adversarial targets are deterministic and capped, and the prompt omits wri
     targets.map(({ finding_index }) => finding_index),
     [6, 5, 3, 8],
   );
-  assert.deepEqual(
-    selectAdversarialTargets(draft, input, { perPassage: false }).map(
-      ({ finding_index }) => finding_index,
-    ),
-    [6, 5, 2, 3, 7],
-  );
   assert.deepEqual(targets, selectAdversarialTargets(draft, input));
   assert.equal(
     targets[0]?.claim_hash,
@@ -1740,7 +1762,7 @@ test('English adversarial tasks reuse unchanged claims through evidence-only and
   );
 });
 
-test('historical policy 7 approvals with the adversarial opt-out remain eligible', async (t) => {
+test('audit enforces current adversarial checks while publish receipts stay valid across policy versions', async (t) => {
   const { options } = await setup(t);
   const initial = highRiskDraft();
   await writeFile(options.filePath, JSON.stringify(initial));
@@ -1755,7 +1777,6 @@ test('historical policy 7 approvals with the adversarial opt-out remain eligible
   const report = {
     ...savedFiles.report,
     policy_version: '7',
-    adversarial_disabled: true as const,
     blockers: [],
   };
   const record = {

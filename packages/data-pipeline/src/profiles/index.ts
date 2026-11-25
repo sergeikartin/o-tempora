@@ -12,8 +12,8 @@ const USAGE = `Usage: profiles <finalize|status|preflight|prefetch|evidence|engl
   preflight --qid=Q1 [--file=<path>]
   prefetch --qids=Q1,Q2,... [--max-sources=5 | --manifest=<file> | --urls=<url1,url2,...>] [--concurrency=<1..3>] [--refresh]
   evidence (--url=<https URL> [--outline | [--query=<text>] [--offset=<number>] [--length=<chars>]] | --batch=<json|@file>) [--refresh]
-  english-adversarial --qid=Q1 [--research=<file>] [--out=<file> | --result=<file>]
-  english-audit --qid=Q1 [--research=<file>] [--out=<file> | --result=<file>]
+  english-adversarial --qid=Q1 [--out=<file> | --result=<file>]
+  english-audit --qid=Q1 [--out=<file> | --result=<file>]
   english-repair --qid=Q1 [--out=<file> | --result=<file>]
   russian-translation --qid=Q1 [--out=<file>]
   russian-audit --qid=Q1 --candidate=<file> [--out=<file> | --result=<file>]`;

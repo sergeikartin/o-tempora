@@ -86,7 +86,7 @@ function assessedProfile(overrides: Record<string, unknown> = {}) {
         type: 'unique_detail',
         is_legend: false,
         confidence: 'high',
-        source: 'not_on_wikipedia',
+        source: 'https://en.wikipedia.org/wiki/Isaac_Newton',
       },
     ],
     connections: [
