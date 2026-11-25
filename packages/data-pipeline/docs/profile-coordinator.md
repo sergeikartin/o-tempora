@@ -14,10 +14,9 @@ Use `npm run --silent profiles --workspace packages/data-pipeline -- <command>` 
 
 | `stop_after` | Checkpoint |
 |---|---|
-| `finalize` | Prefetch, write, preflight and finalize. Prepare `audit-task.json` only if the finalized draft is already at `draft-pending-audit`. |
-| `english-adversarial` | Apply the counterevidence reply, or accept `skipped` or `reused`. Prepare `audit-task.json`. |
+| `finalize` | Scout, prefetch, write, preflight, finalize, and prepare `audit-task.json`. |
 | `english-audit` | Apply the English verdict and report `english-approved` or `english-held`. |
-| `english-repair` | Apply the repair and save the updated draft and assessment, or report a protected edit’s proposal or other blocker. Prepare a fresh `audit-task.json` when the resulting stage is `draft-pending-audit`; otherwise report `draft-pending-adversarial` as the next wave. |
+| `english-repair` | Apply the repair, save the updated draft and `tasks/<QID>/pending.json`, and prepare a fresh `audit-task.json` (or report any blocker). |
 | `russian-translation` | Save `ru-candidate.json` and prepare `ru-audit-task.json` from it. If translation is already current, report `bilingual-approved`. |
 | `russian-audit` | Apply the fidelity verdict and report `bilingual-approved` or `russian-held`. |
 
@@ -27,12 +26,11 @@ Dispatch each model task in a fresh context with its exact input and output path
 
 ### English
 
-1. **Scout and prefetch.** Dispatch `profile-scout` to save `tasks/<QID>/scout.json` (`core_urls`, paired `deep_fact_candidates`, `dispute_urls`), then run `prefetch --qids=<QID> --manifest=tasks/<QID>/scout.json`. The resulting Source Map at `data/raw/profiles/evidence/prefetch/<QID>.json` caches Wikipedia plus the manifest URLs and annotates each Deep Fact candidate with `corroboration_ready`.
-2. **Research and write.** Give `profile-writer` the [writer prompt](../prompts/profile.md), [assessed Profile format](../prompts/profile-assessment.md), and Source Map at `data/raw/profiles/evidence/prefetch/<QID>.json`. It reads evidence via `profiles evidence` (starting from `manifest_groups` when present, using web search only as fallback), stages `data/raw/profiles/incoming/<QID>.json` with its serving model ID in `writer.model`, and runs `preflight --qid=<QID>`.
-3. **Preflight and finalize.** Confirm `preflight --qid=<QID>` passes before batching the QID into `finalize --qids=...` (pass `--model=<id>` only if a staged file omitted `writer.model`). For an existing finalized draft, check it with `preflight --qid=<QID> --file=<raw Profile>`.
-4. **Check high-risk claims.** Run `english-adversarial --qid=<QID> --out=<adversarial task>`. If it returns `skipped` or `reused`, continue to audit. Otherwise dispatch `profile-adversarial` and apply its reply with `english-adversarial --qid=<QID> --result=<adversarial reply>`.
-5. **Audit.** Run `english-audit --qid=<QID> --out=<audit task>`, dispatch `profile-auditor`, and apply the reply with `--result=<audit reply>`. `approved` and `skipped` can move to Russian.
-6. **Repair when needed.** Run `english-repair --qid=<QID> --out=<repair task>` and dispatch `profile-writer`. It returns a compact JSON patch containing only changed passages (and optional drops or `subject_dates`), and runs `preflight --qid=<QID> --file=<repair reply>` to validate the merged draft before returning. Apply with `english-repair --qid=<QID> --result=<repair reply>`, then repeat steps 4–5 (prior adversarial checks reuse automatically when no new risk cue, long quote, or number is introduced, and the follow-up audit receives `re_audit` context focusing on resolved blockers and patched passages). Up to two draft changes are allowed; evidence-only replies use no draft repair round, and changes to protected `edited` drafts become proposals.
+1. **Scout and prefetch.** Dispatch `profile-scout` to run neutral and falsification searches and save `tasks/<QID>/scout.json` (`core_urls`, paired `deep_fact_candidates` with optional `dispute_urls`, and `dispute_urls`), then run `prefetch --qids=<QID> --manifest=tasks/<QID>/scout.json`. The resulting Source Map at `data/raw/profiles/evidence/prefetch/<QID>.json` caches Wikipedia plus the manifest URLs and annotates each Deep Fact candidate with `dispute_source_ids` and `corroboration_ready`.
+2. **Research and write.** Give `profile-writer` the [writer prompt](../prompts/profile.md), [assessed Profile format](../prompts/profile-assessment.md), and Source Map at `data/raw/profiles/evidence/prefetch/<QID>.json`. It reads supporting and competing evidence via `profiles evidence` (starting from `manifest_groups` and `dispute_source_ids` when present, using web search only as fallback), records material competing accounts as `counterevidence`, stages `data/raw/profiles/incoming/<QID>.json` with its serving model ID in `writer.model`, and runs `preflight --qid=<QID>`.
+3. **Preflight and finalize.** Confirm `preflight --qid=<QID>` passes before batching the QID into `finalize --qids=...` (pass `--model=<id>` only if a staged file omitted `writer.model`). Finalization writes the clean draft to `data/raw/profiles/<lane>/` and stores pending assessment state in `tasks/<QID>/pending.json`. For an existing finalized draft, check it with `preflight --qid=<QID> --file=<raw Profile>`.
+4. **Audit.** Run `english-audit --qid=<QID> --out=<audit task>`, dispatch `profile-auditor`, and apply the reply with `--result=<audit reply>`. `approved` and `skipped` can move to Russian.
+5. **Repair when needed.** Run `english-repair --qid=<QID> --out=<repair task>` and dispatch `profile-writer`. It returns a compact JSON patch containing only changed passages (and optional drops or `subject_dates`), and runs `preflight --qid=<QID> --file=<repair reply>` to validate the merged draft before returning. Apply with `english-repair --qid=<QID> --result=<repair reply>`, then repeat step 4 (the follow-up audit receives `re_audit` context focusing on resolved blockers and patched passages). Up to two draft changes are allowed; evidence-only replies use no draft repair round, and `edited` drafts refuse prose overwrites during repair.
 
 ### Russian
 
@@ -52,4 +50,4 @@ Regenerate a task whenever its inputs change.
 
 ## Finish the batch
 
-Report per-QID English and Russian outcomes, blockers, handoff paths, and any proposal path. When publication is requested, run `build-data` and then `publish-data` once at batch end. [Publication](profiles.md#publication)
+Report per-QID English and Russian outcomes, blockers, and handoff paths. When publication is requested, run `build-data` and then `publish-data` once at batch end. [Publication](profiles.md#publication)

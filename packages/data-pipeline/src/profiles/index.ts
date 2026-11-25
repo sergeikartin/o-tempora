@@ -6,13 +6,12 @@ import { loadWriterModel } from './prompt.js';
 import { loadSubjects } from './subjects.js';
 import { cachedArticleQidResolver } from './wikipedia-qids.js';
 
-const USAGE = `Usage: profiles <finalize|status|preflight|prefetch|evidence|english-adversarial|english-audit|english-repair|russian-translation|russian-audit> [flags]
+const USAGE = `Usage: profiles <finalize|status|preflight|prefetch|evidence|english-audit|english-repair|russian-translation|russian-audit> [flags]
   finalize  [--qids=Q1,Q2,...] [--run-id=<id>] [--model=<id>]
   status [--qids=Q1,Q2,... | --scope=legendary|mainstream|all] [--stage=<stage1,stage2,...>] [--limit=<n>]
   preflight --qid=Q1 [--file=<path>]
   prefetch --qids=Q1,Q2,... [--max-sources=5 | --manifest=<file> | --urls=<url1,url2,...>] [--concurrency=<1..3>] [--refresh]
   evidence (--url=<https URL> [--outline | [--query=<text>] [--offset=<number>] [--length=<chars>]] | --batch=<json|@file>) [--refresh]
-  english-adversarial --qid=Q1 [--out=<file> | --result=<file>]
   english-audit --qid=Q1 [--out=<file> | --result=<file>]
   english-repair --qid=Q1 [--out=<file> | --result=<file>]
   russian-translation --qid=Q1 [--out=<file>]

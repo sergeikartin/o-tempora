@@ -6,6 +6,7 @@ import {
   finalizedAssessment,
 } from './assessed-profile.js';
 import { PROFILE_SCHEMA_VERSION } from './model-profile.js';
+import { writePendingState } from './pending-state.js';
 import { readStoredProfiles, writeJson } from './store.js';
 import { type ProfileSubject, SUBJECT_TYPE } from './subjects.js';
 import { parseTokenUsage, type TokenUsage } from './usage.js';
@@ -171,14 +172,12 @@ async function finalizeFile(
       subject.lane,
       `${qid}-${slugify(subject.name)}.en.json`,
     );
-  const pending = {
+  await writeJson(recordPath, record);
+  await writePendingState(options.profilesDir, qid, {
     profile_hash: profileHash(record),
     assessment: finalizedAssessment(assessment, keptIndices),
     model: record.meta.model,
-  };
-  await writeJson(recordPath, {
-    ...record,
-    meta: { ...record.meta, pending_assessment: pending },
+    repairs: 0,
   });
   await rm(stagingPath);
   return { outcome: 'written', recordPath };

@@ -685,6 +685,7 @@ test('prefetch --manifest fetches grouped sources with corroboration_ready and s
       deep_fact_candidates: {
         angle: string;
         source_ids: string[];
+        dispute_source_ids: string[];
         skipped: { url: string; reason: string }[];
         corroboration_ready: boolean;
       }[];
@@ -698,12 +699,14 @@ test('prefetch --manifest fetches grouped sources with corroboration_ready and s
     {
       angle: 'Surviving shopping list',
       source_ids: [idByUrl.get(df1a), idByUrl.get(df1b)],
+      dispute_source_ids: [],
       skipped: [],
       corroboration_ready: true,
     },
     {
       angle: 'Draft fortification plan',
       source_ids: [idByUrl.get(df2a)],
+      dispute_source_ids: [],
       skipped: [{ url: df2b, reason: 'Source returned HTTP 403' }],
       corroboration_ready: false,
     },
@@ -775,4 +778,64 @@ test('prefetch --urls preserves commas inside URL paths and rejects flag conflic
     ),
     /--manifest cannot be combined with --urls/,
   );
+});
+
+test('prefetch --manifest caches per-candidate dispute_urls into dispute_source_ids and dispute', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-disputes-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  const a1 = httpsUrl('archive.org/story-a');
+  const a2 = httpsUrl('museum.org/story-a');
+  const d1 = httpsUrl('university.edu/story-a-dispute');
+  const manifestPath = path.join(profilesDir, 'scout.json');
+  await writeFile(
+    manifestPath,
+    JSON.stringify({
+      qid: 'Q935',
+      core_urls: [],
+      deep_fact_candidates: [
+        { angle: 'Disputed anecdote', urls: [a1, a2], dispute_urls: [d1] },
+      ],
+      dispute_urls: [],
+    }),
+  );
+  const emitted: unknown[] = [];
+  await runCoordinatorCommand(
+    'prefetch',
+    ['--qids=Q935', `--manifest=${manifestPath}`],
+    {
+      profilesDir,
+      resolve: async () => assert.fail('unexpected article resolution'),
+      subjects: () => [subject],
+      emit: (value: unknown) => emitted.push(value),
+      fetch: async (url: string) => {
+        const data = {
+          url,
+          fetched_at: new Date().toISOString(),
+          text: `Substantive historical evidence for ${url}. `.repeat(50),
+          headings: [],
+        };
+        return { ...data, id: hash(data) };
+      },
+    },
+  );
+  const map = emitted[0] as {
+    sources: { id: string; url: string }[];
+    manifest_groups: {
+      deep_fact_candidates: {
+        source_ids: string[];
+        dispute_source_ids: string[];
+        corroboration_ready: boolean;
+      }[];
+      dispute: string[];
+    };
+  };
+  const idByUrl = new Map(map.sources.map(({ url, id }) => [url, id]));
+  assert.deepEqual(map.manifest_groups.deep_fact_candidates[0], {
+    angle: 'Disputed anecdote',
+    source_ids: [idByUrl.get(a1), idByUrl.get(a2)],
+    dispute_source_ids: [idByUrl.get(d1)],
+    skipped: [],
+    corroboration_ready: true,
+  });
+  assert.deepEqual(map.manifest_groups.dispute, [idByUrl.get(d1)]);
 });

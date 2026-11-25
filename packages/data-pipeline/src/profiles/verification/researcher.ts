@@ -1,7 +1,6 @@
 import type { ModelProfile } from '../model-profile.js';
 import { readPromptText } from '../prompt.js';
 import { type ProfileSubject, subjectBrief } from '../subjects.js';
-import type { AdversarialCheck } from './adversarial.js';
 import {
   type Assessment,
   type Evidence,
@@ -23,7 +22,6 @@ export function englishAuditPrompt(
   subject: ProfileSubject,
   assessment: Assessment,
   sources: readonly Source[],
-  adversarialChecks: readonly AdversarialCheck[] = [],
   reAudit?: ReAuditContext,
 ): string {
   const evidenceBySource = new Map<string, Evidence[]>();
@@ -114,14 +112,6 @@ export function englishAuditPrompt(
       profile,
       assessment: { ...assessmentFields, findings },
       source_contexts: sourceContexts,
-      adversarial_notes: adversarialChecks
-        .filter(({ outcome }) => outcome !== 'no_conflict_found')
-        .map(({ finding_index, path, outcome, note }) => ({
-          finding_index,
-          path,
-          outcome,
-          note,
-        })),
       ...(reAudit ? { re_audit: reAudit } : {}),
     })
   );

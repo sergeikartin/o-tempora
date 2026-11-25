@@ -12,18 +12,11 @@ import { runCoordinatorCommand } from '../coordinator.js';
 import { evidenceStore } from '../evidence-cache.js';
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
 import { passages } from '../passages.js';
+import { readCompletedRepairs } from '../pending-state.js';
 import { preflightProfile } from '../preflight.js';
 import type { ProfileSubject } from '../subjects.js';
 import { approvedTranslation, readTranslation } from '../translation.js';
 import { asRecord } from '../values.js';
-import {
-  type AdversarialCheck,
-  type AdversarialTarget,
-  adversarialPrompt,
-  mergeAdversarialResult,
-  parseAdversarialResult,
-  selectAdversarialTargets,
-} from './adversarial.js';
 import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.js';
 import {
   type Assessment,
@@ -499,7 +492,7 @@ function assessedDraft(draft: ModelProfile, input = assessment(draft)) {
   };
 }
 
-test('a protected human edit receives a proposal when a repair changes its prose', async (t) => {
+test('a protected human edit rejects prose changes during repair without overwriting content', async (t) => {
   const { options } = await setup(t);
   const initial = {
     ...raw(),
@@ -517,17 +510,17 @@ test('a protected human edit receives a proposal when a repair changes its prose
   );
   const { record, report } = await saved(options);
   const overview = 'Proposed replacement.';
-  const result = await checkpointEnglishRepair({
-    ...options,
-    record,
-    report: { ...report },
-    model: 'repair',
-    result: assessedDraft(parseModelProfile({ ...initial, overview }, 'test')),
-  });
-  assert.equal(result.status, 'proposal');
-  assert.equal(
-    JSON.parse(await readFile(result.filePath, 'utf8')).proposed.overview,
-    overview,
+  await assert.rejects(
+    checkpointEnglishRepair({
+      ...options,
+      record,
+      report: { ...report },
+      model: 'repair',
+      result: assessedDraft(
+        parseModelProfile({ ...initial, overview }, 'test'),
+      ),
+    }),
+    /protected edited Profile prose/,
   );
   assert.deepEqual(await saved(options), { record, report });
 });
@@ -565,12 +558,8 @@ test('corroboration needs distinct original accounts and primary or scholarly su
     profile_hash: 'hash',
     verified_at: 'date',
     subject: { qid: 'Q935', dates: '1643–1727' },
-    models: ['test', 'checker'],
+    models: ['test', 'auditor'],
     assessment: item,
-    adversarial: {
-      model: 'checker',
-      checks: [makeCheck({ finding_index: 0, path: 'overview' })],
-    },
     audit: { uncovered: [], issues: [], coherent: true },
     sources: [SOURCE],
     evidence_errors: [],
@@ -984,12 +973,6 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
       },
     }),
   );
-  const skippedTask = path.join(root, 'skipped.json');
-  assert.deepEqual(
-    await run('english-adversarial', qid, `--out=${skippedTask}`),
-    { status: 'skipped', targets: 0 },
-  );
-  await assert.rejects(readFile(skippedTask), { code: 'ENOENT' });
   const audit = await prepare('english-audit');
   function checkCounterevidence(prompt: string) {
     const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
@@ -1084,118 +1067,22 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   const checkpoint = await saved(options);
   assert.equal(checkpoint.record.overview, revised.overview);
   assert.equal(checkpoint.record.meta.review.status, 'draft');
+  assert.equal(checkpoint.record.meta.pending_assessment, undefined);
+  assert.equal(checkpoint.record.meta.coordinator_repair, undefined);
   assert.equal(checkpoint.record.key_moments[0].claims, undefined);
   assert.equal(checkpoint.report.profile_hash, profileHash(initial));
-  await assert.rejects(run('english-audit', qid), /Run english-adversarial/);
-  const prepared = await prepare('english-adversarial');
-  assert.equal(typeof prepared.input_hash, 'string');
-  assert.match(String(prepared.prompt), /targeted falsification/);
-  assert.doesNotMatch(String(prepared.prompt), /Confirmed by the article/);
-  const checks: AdversarialCheck[] = [
-    {
-      finding_index: 0,
-      path: 'overview',
-      queries: [
-        'Principia publication chronology',
-        'Principia first printing historians',
-      ],
-      outcome: 'conflict_found',
-      note: 'An archival account gives a different year.',
-      counterevidence: [
-        {
-          source: String(contrary.id),
-          quote: contraryText,
-          kind: 'scholarly',
-          origin: 'Archival account',
-        },
-      ],
-    },
-  ];
-  const stale = await save('adversarial-stale.json', {
-    input_hash: 'stale',
-    result: { checks },
-  });
-  await assert.rejects(
-    run('english-adversarial', qid, `--result=${stale}`),
-    /different inputs/,
-  );
-  const malformed = await save('adversarial-malformed.json', {
-    input_hash: prepared.input_hash,
-    result: { checks: [{ ...checks[0], counterevidence: [] }] },
-  });
-  await assert.rejects(
-    run('english-adversarial', qid, `--result=${malformed}`),
-    /needs counterevidence/,
-  );
-  const fabricated = await save('adversarial-fabricated.json', {
-    input_hash: prepared.input_hash,
-    result: {
-      checks: [
-        {
-          ...checks[0],
-          counterevidence: [
-            { ...checks[0]?.counterevidence[0], quote: 'fabricated quote' },
-          ],
-        },
-      ],
-    },
-  });
-  await assert.rejects(
-    run('english-adversarial', qid, `--result=${fabricated}`),
-    /evidence was not found/,
-  );
-  assert.deepEqual(await saved(options), checkpoint);
-  const valid = await save('adversarial.json', {
-    input_hash: prepared.input_hash,
-    model: 'independent researcher',
-    result: { checks },
-  });
-  assert.deepEqual(await run('english-adversarial', qid, `--result=${valid}`), {
-    status: 'saved',
-    checks: 1,
-    conflicts: 1,
-  });
-  const pending = (await saved(options)).record;
-  assert.equal(
-    pending.meta.pending_adversarial.profile_hash,
-    profileHash(pending),
-  );
-  assert.equal(
-    pending.meta.pending_adversarial.assessment_hash,
-    hash(pending.meta.pending_assessment.assessment),
-  );
-  await writeFile(
-    options.filePath,
-    JSON.stringify({
-      ...pending,
-      meta: {
-        ...pending.meta,
-        pending_assessment: {
-          ...pending.meta.pending_assessment,
-          assessment: {
-            ...pending.meta.pending_assessment.assessment,
-            issues: ['changed assessment'],
-          },
-        },
-      },
-    }),
-  );
-  await assert.rejects(run('english-audit', qid), /Run english-adversarial/);
-  await assert.rejects(
-    run('english-adversarial', qid, `--result=${valid}`),
-    /different inputs/,
-  );
-  await writeFile(options.filePath, JSON.stringify(pending));
 
   const freshAudit = await run('english-audit', qid);
   const auditPayload = JSON.parse(
     String(freshAudit.prompt).split('\n').at(-1) ?? '',
   );
   assert.equal(
-    auditPayload.assessment.findings[0].counterevidence[0].quote,
+    auditPayload.assessment.findings.find(
+      (finding: Assessment['findings'][number]) =>
+        finding.path === 'key_moments.0.text',
+    ).counterevidence[0].quote,
     contraryText,
   );
-  assert.equal(auditPayload.adversarial_notes[0].note, checks[0]?.note);
   const accepted = await save('accepted-audit.json', {
     input_hash: freshAudit.input_hash,
     model: 'gemini-4-neon',
@@ -1208,15 +1095,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   const english = await saved(options);
   assert.equal(english.record.meta.pending_assessment, undefined);
   assert.equal(english.record.meta.pending_adversarial, undefined);
-  assert.deepEqual(english.report.adversarial, {
-    model: 'independent researcher',
-    checks,
-  });
-  assert.deepEqual(english.report.models, [
-    'gpt-6.2-astra',
-    'independent researcher',
-    'gemini-4-neon',
-  ]);
+  assert.deepEqual(english.report.models, ['gpt-6.2-astra', 'gemini-4-neon']);
   assert.equal(english.report.repairs, 1);
   assert.equal(fetches, 3);
   assert.deepEqual(
@@ -1426,17 +1305,7 @@ test('the English audit finds normalized quotes and keeps adjacent headings sepa
     ];
   }
   assert.deepEqual(checkEvidence(input, [snapshot]), []);
-  const checks = [
-    makeCheck(
-      { finding_index: 1, path: 'key_moments.0.date' },
-      'no_conflict_found',
-    ),
-    makeCheck(
-      { finding_index: 2, path: 'key_moments.0.title' },
-      'fetch_blocked',
-    ),
-  ];
-  const prompt = englishAuditPrompt(draft, SUBJECT, input, [snapshot], checks);
+  const prompt = englishAuditPrompt(draft, SUBJECT, input, [snapshot]);
   const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
   assert.deepEqual(payload.source_contexts, [
     {
@@ -1459,356 +1328,10 @@ test('the English audit finds normalized quotes and keeps adjacent headings sepa
     ),
     [0, 1, 0, 1],
   );
-  assert.deepEqual(payload.adversarial_notes, [
-    {
-      finding_index: 2,
-      path: 'key_moments.0.title',
-      outcome: 'fetch_blocked',
-      note: checks[1]?.note,
-    },
-  ]);
 });
 
-function highRiskDraft(
-  overview = 'Newton was the first to describe a result.',
-) {
-  return {
-    ...raw(),
-    overview,
-    deep_facts: [
-      {
-        text: 'Newton revised his account in a letter.',
-        type: 'hidden_story',
-        is_legend: false,
-        confidence: 'high',
-        source: URL,
-      },
-    ],
-  };
-}
-
-function makeCheck(
-  target: Pick<AdversarialTarget, 'finding_index' | 'path'>,
-  outcome: AdversarialCheck['outcome'] = 'no_conflict_found',
-  counterevidence: AdversarialCheck['counterevidence'] = [],
-): AdversarialCheck {
-  return {
-    finding_index: target.finding_index,
-    path: target.path,
-    outcome,
-    counterevidence,
-    note: `Search outcome for ${target.path}`,
-    queries: ['Newton result chronology', 'Newton result disputed attribution'],
-  };
-}
-
-test('adversarial targets are deterministic and capped, and the prompt omits writer explanations', () => {
-  const draft = parseModelProfile(highRiskDraft(), 'test');
-  const input = assessment(draft);
-  const example = input.findings[0];
-  assert.ok(example);
-  input.subject_dates = [
-    { path: 'overview', boundary: 'start', year: 1643 },
-    { path: 'overview', boundary: 'end', year: 1727 },
-  ];
-  input.findings = [
-    {
-      ...example,
-      claim: 'Newton was born in AD 1643 and died in 1727.',
-      risk: 'corroborate',
-    },
-    { ...example, path: 'deep_facts.0.text', verdict: 'disputed' },
-    { ...example, claim: 'Newton invented something, allegedly.' },
-    {
-      ...example,
-      path: 'key_moments.0.text',
-      claim: '“This is an attributed quotation”',
-    },
-    { ...example, path: 'key_moments.0.text', claim: 'A short “quotation”.' },
-    { ...example, claim: 'A claim needing corroboration', risk: 'corroborate' },
-    {
-      ...example,
-      path: 'deep_facts.0.text',
-      claim: 'Newton revised an account.',
-    },
-    { ...example, path: 'key_moments.0.text', claim: 'A legend about Newton.' },
-    { ...example, path: 'key_moments.0.title', claim: 'The only printing.' },
-  ];
-  const targets = selectAdversarialTargets(draft, input);
-  assert.deepEqual(
-    targets.map(({ finding_index }) => finding_index),
-    [6, 5, 3, 8],
-  );
-  assert.deepEqual(targets, selectAdversarialTargets(draft, input));
-  assert.equal(
-    targets[0]?.claim_hash,
-    hash({ path: targets[0]?.path, claim: targets[0]?.claim }),
-  );
-  const prompt = adversarialPrompt(draft, SUBJECT, input, targets, [SOURCE]);
-  const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
-  assert.deepEqual(Object.keys(payload).sort(), [
-    'cited_urls',
-    'subject',
-    'targets',
-  ]);
-  assert.equal(payload.subject.qid, SUBJECT.qid);
-  assert.deepEqual(payload.cited_urls, [URL]);
-  assert.equal(payload.targets[0].passage_text, draft.deep_facts[0]?.text);
-  assert.doesNotMatch(prompt, /Confirmed by the article/);
-});
-
-test('adversarial merging preserves supporting evidence and verifies every added quote', () => {
-  const draft = parseModelProfile(highRiskDraft(), 'test');
-  const input = assessment(draft);
-  const target = selectAdversarialTargets(draft, input).find(
-    ({ path }) => path === 'overview',
-  );
-  assert.ok(target);
-  const finding = input.findings[target.finding_index];
-  assert.ok(finding);
-  const excerpt = {
-    source: SOURCE.id,
-    quote: 'English mathematician.',
-    kind: 'other' as const,
-    origin: 'Newton article',
-  };
-  finding.counterevidence = [excerpt];
-  const checks = [
-    makeCheck(target, 'conflict_found', [
-      { ...excerpt, quote: 'English\n mathematician.' },
-      { ...excerpt, quote: 'Fabricated text' },
-      { ...excerpt, source: 'a'.repeat(64) },
-    ]),
-  ];
-  const merged = mergeAdversarialResult(input, { checks });
-  assert.deepEqual(finding.counterevidence, [excerpt]);
-  assert.deepEqual(merged.findings[target.finding_index]?.counterevidence, [
-    excerpt,
-    ...(checks[0]?.counterevidence.slice(1) ?? []),
-  ]);
-  assert.deepEqual(
-    merged.findings[target.finding_index]?.evidence,
-    finding.evidence,
-  );
-  assert.equal(merged.findings[target.finding_index]?.verdict, 'supported');
-  assert.equal(checkEvidence(merged, [SOURCE]).length, 2);
-  assert.throws(
-    () =>
-      parseAdversarialResult(
-        { checks },
-        selectAdversarialTargets(draft, input),
-      ),
-    /Missing adversarial checks/,
-  );
-  assert.throws(
-    () => parseAdversarialResult({ checks: [...checks, ...checks] }, [target]),
-    /duplicate/,
-  );
-});
-
-test('English adversarial tasks reuse unchanged claims through evidence-only and draft repairs', async (t) => {
+test('English repair allows two prose changes and tracks repair count in pending.json outside meta', async (t) => {
   const { root, options } = await setup(t);
-  const directory = path.join(root, 'evidence');
-  await mkdir(directory);
-  await writeFile(
-    path.join(directory, `${SOURCE.id}.json`),
-    JSON.stringify(SOURCE),
-  );
-  const contrarySource = {
-    ...SOURCE,
-    url: 'https://example.org/archive',
-    text: 'A competing account.',
-  };
-  contrarySource.id = hash(contrarySource.text);
-  const contraryFile = path.join(directory, `${contrarySource.id}.json`);
-  await writeFile(contraryFile, JSON.stringify(contrarySource));
-  const initial = highRiskDraft();
-  const profile = parseModelProfile(initial, 'test');
-  const initialAssessment = assessment(profile);
-  const targets = selectAdversarialTargets(profile, initialAssessment);
-  assert.equal(targets.length, 2);
-  const conflict = [
-    {
-      source: contrarySource.id,
-      quote: contrarySource.text,
-      kind: 'scholarly' as const,
-      origin: 'Archive',
-    },
-  ];
-  const checks = targets
-    .map((target) =>
-      target.path.startsWith('deep_facts.')
-        ? makeCheck(target, 'conflict_found', conflict)
-        : makeCheck(target),
-    )
-    .sort((a, b) => a.finding_index - b.finding_index);
-  const hold = { ...cleanAudit, issues: ['overview: revisit the first claim'] };
-  await writeFile(options.filePath, JSON.stringify(initial));
-  assert.equal(
-    (
-      await applyEnglishAudit({
-        ...options,
-        assessment: initialAssessment,
-        adversarial: { model: 'checker', checks },
-        audit: hold,
-        snapshots: [SOURCE, contrarySource],
-      })
-    ).status,
-    'held',
-  );
-
-  let emitted: unknown;
-  const run = async (command: string, ...args: string[]) => {
-    emitted = undefined;
-    await runCoordinatorCommand(command, ['--qid=Q935', ...args], {
-      profilesDir: root,
-      subjects: () => [SUBJECT],
-      resolve: options.resolve,
-      fetch: async () => assert.fail('unexpected fetch'),
-      emit: (value) => {
-        emitted = value;
-      },
-    });
-    return asRecord(emitted, command);
-  };
-  const reply = path.join(root, 'reply.json');
-  const submit = async (
-    command: string,
-    input_hash: unknown,
-    result: unknown,
-  ) => {
-    await writeFile(
-      reply,
-      JSON.stringify({ input_hash, result, model: 'test agent' }),
-    );
-    return run(command, `--result=${reply}`);
-  };
-  const evidenceRepair = await run('english-repair');
-  const improved = assessment(profile);
-  const first = improved.findings[0];
-  assert.ok(first);
-  first.explanation = 'Updated explanation.';
-  assert.equal(
-    (
-      await submit(
-        'english-repair',
-        evidenceRepair.input_hash,
-        assessedDraft(profile, improved),
-      )
-    ).status,
-    'evidence-only',
-  );
-  const unusedTask = path.join(root, 'reused.json');
-  assert.deepEqual(await run('english-adversarial', `--out=${unusedTask}`), {
-    status: 'reused',
-    checks: 2,
-    conflicts: 1,
-  });
-  await assert.rejects(readFile(unusedTask), { code: 'ENOENT' });
-  const reAudit = await run('english-audit');
-  assert.equal(
-    (await submit('english-audit', reAudit.input_hash, hold)).status,
-    'held',
-  );
-
-  const proseRepair = await run('english-repair');
-  const revised = parseModelProfile(
-    {
-      ...initial,
-      overview: 'Newton was the first to invent a 1688 result.',
-    },
-    'test',
-  );
-  assert.equal(
-    (
-      await submit(
-        'english-repair',
-        proseRepair.input_hash,
-        assessedDraft(revised),
-      )
-    ).status,
-    'draft',
-  );
-  // The previous repair saved the report to history before replacing the draft.
-  await rm(reportPathFor(options.filePath));
-  const partial = await run('english-adversarial');
-  const expected = selectAdversarialTargets(revised, assessment(revised));
-  const changed = expected.find(({ path }) => path === 'overview');
-  assert.ok(changed);
-  assert.deepEqual(partial.targets, [changed]);
-
-  await rm(contraryFile);
-  const missingEvidence = await run('english-adversarial');
-  assert.deepEqual(missingEvidence.targets, expected);
-  await assert.rejects(
-    submit('english-adversarial', partial.input_hash, {
-      checks: [makeCheck(changed)],
-    }),
-    /different inputs/,
-  );
-  await writeFile(contraryFile, JSON.stringify(contrarySource));
-
-  assert.deepEqual(
-    await submit('english-adversarial', partial.input_hash, {
-      checks: [makeCheck(changed)],
-    }),
-    { status: 'saved', checks: 2, conflicts: 1 },
-  );
-  const record = JSON.parse(await readFile(options.filePath, 'utf8'));
-  assert.deepEqual(record.meta.pending_adversarial.checks, checks);
-  assert.match(
-    String((await run('english-audit')).prompt),
-    /A competing account/,
-  );
-});
-
-test('audit enforces current adversarial checks while publish receipts stay valid across policy versions', async (t) => {
-  const { options } = await setup(t);
-  const initial = highRiskDraft();
-  await writeFile(options.filePath, JSON.stringify(initial));
-  const profile = parseModelProfile(initial, 'test');
-  const result = await applyEnglishAudit({
-    ...options,
-    assessment: assessment(profile),
-  });
-  assert.equal(result.status, 'held');
-  assert.match(result.blockers.join('\n'), /Missing adversarial checks/);
-  const savedFiles = await saved(options);
-  const report = {
-    ...savedFiles.report,
-    policy_version: '7',
-    blockers: [],
-  };
-  const record = {
-    ...savedFiles.record,
-    meta: {
-      ...savedFiles.record.meta,
-      review: {
-        status: 'reviewed',
-        approval: {
-          policy_version: '7',
-          profile_hash: profileHash(initial),
-          report_hash: hash(report),
-          method: 'automatic',
-        },
-      },
-    },
-  };
-  assert.equal(
-    readProfileApproval(record, report, profile)?.isCurrentFor('1643–1727'),
-    true,
-  );
-  assert.equal(
-    shipProfiles(
-      [parseRawProfile(record, options.filePath, report)],
-      [{ ...SUBJECT, slug: 'newton', fameScore: 99, dates: '1643–1727' }],
-    ).size,
-    1,
-  );
-});
-
-test('English repair allows two prose changes and leaves evidence-only repair available', async (t) => {
-  const { options } = await setup(t);
   const held = { ...cleanAudit, issues: ['overview: unresolved'] };
   for (const count of [1, 2]) {
     assert.equal(
@@ -1829,9 +1352,11 @@ test('English repair allows two prose changes and leaves evidence-only repair av
       result: assessedDraft(updated),
     });
     assert.equal(result.status, 'draft');
+    const savedRecord = JSON.parse(await readFile(options.filePath, 'utf8'));
+    assert.equal(savedRecord.meta.coordinator_repair, undefined);
+    assert.equal(savedRecord.meta.pending_assessment, undefined);
     assert.equal(
-      JSON.parse(await readFile(options.filePath, 'utf8')).meta
-        .coordinator_repair.count,
+      await readCompletedRepairs(root, SUBJECT.qid, savedRecord),
       count,
     );
   }
@@ -1871,17 +1396,12 @@ test('English repair allows two prose changes and leaves evidence-only repair av
     'evidence-only',
   );
   const { record: repaired } = await saved(options);
-  assert.equal(repaired.meta.coordinator_repair.count, 2);
+  assert.equal(await readCompletedRepairs(root, SUBJECT.qid, repaired), 2);
   assert.equal(profileHash(repaired), profileHash(record));
 });
 
 test('coordinator rejects --out when applying a result', async () => {
-  for (const command of [
-    'english-adversarial',
-    'english-audit',
-    'english-repair',
-    'russian-audit',
-  ]) {
+  for (const command of ['english-audit', 'english-repair', 'russian-audit']) {
     await assert.rejects(
       runCoordinatorCommand(command, [
         '--out=task.json',
@@ -1936,155 +1456,6 @@ test('evidenceStore shares blocked-hosts cache and clears blocks on refresh', as
   );
   assert.equal(calls, 3);
   assert.match(other.url, /Julian-calendar/);
-});
-
-test('English adversarial reuses conflict_found checks across counterevidence-preserving repairs unless a new risk cue is added', async (t) => {
-  const { root, options } = await setup(t);
-  const directory = path.join(root, 'evidence');
-  await mkdir(directory);
-  await writeFile(
-    path.join(directory, `${SOURCE.id}.json`),
-    JSON.stringify(SOURCE),
-  );
-  const contrarySource = {
-    ...SOURCE,
-    url: 'https://example.org/archive',
-    text: 'A competing account.',
-  };
-  contrarySource.id = hash(contrarySource.text);
-  await writeFile(
-    path.join(directory, `${contrarySource.id}.json`),
-    JSON.stringify(contrarySource),
-  );
-
-  const initial = highRiskDraft();
-  const profile = parseModelProfile(initial, 'test');
-  const initialAssessment = assessment(profile);
-  const targets = selectAdversarialTargets(profile, initialAssessment);
-  const conflict = [
-    {
-      source: contrarySource.id,
-      quote: contrarySource.text,
-      kind: 'scholarly' as const,
-      origin: 'Archive',
-    },
-  ];
-  const checks = targets
-    .map((target) =>
-      target.path.startsWith('deep_facts.')
-        ? makeCheck(target, 'conflict_found', conflict)
-        : makeCheck(target),
-    )
-    .sort((a, b) => a.finding_index - b.finding_index);
-  const hold = {
-    ...cleanAudit,
-    issues: ['deep_facts.0.text: reflect competing account'],
-  };
-  await writeFile(options.filePath, JSON.stringify(initial));
-  await applyEnglishAudit({
-    ...options,
-    assessment: initialAssessment,
-    adversarial: { model: 'checker', checks },
-    audit: hold,
-    snapshots: [SOURCE, contrarySource],
-  });
-
-  // Repair modifies deep_facts.0.text and its claim to reflect the conflict,
-  // preserving the exact counterevidence excerpt without adding a new risk cue.
-  const qualified = parseModelProfile(
-    {
-      ...initial,
-      deep_facts: [
-        {
-          ...initial.deep_facts[0],
-          text: 'Newton worked on optics, though one archive records a competing account.',
-        },
-      ],
-    },
-    'test',
-  );
-  const qualifiedAssessment = assessment(qualified);
-  const dfFinding = qualifiedAssessment.findings.find(
-    (item) => item.path === 'deep_facts.0.text',
-  );
-  assert.ok(dfFinding);
-  dfFinding.counterevidence = conflict;
-
-  let emitted: unknown;
-  const run = async (command: string, ...args: string[]) => {
-    emitted = undefined;
-    await runCoordinatorCommand(command, ['--qid=Q935', ...args], {
-      profilesDir: root,
-      subjects: () => [SUBJECT],
-      resolve: async () =>
-        assert.fail('repair should reuse existing connection QIDs offline'),
-      fetch: async () => assert.fail('unexpected fetch'),
-      emit: (value) => {
-        emitted = value;
-      },
-    });
-    return asRecord(emitted, command);
-  };
-  const reply = path.join(root, 'reply.json');
-  const repairTask = await run('english-repair');
-  await writeFile(
-    reply,
-    JSON.stringify({
-      input_hash: repairTask.input_hash,
-      result: assessedDraft(qualified, qualifiedAssessment),
-      model: 'writer',
-    }),
-  );
-  assert.equal(
-    (await run('english-repair', `--result=${reply}`)).status,
-    'draft',
-  );
-
-  // Both overview (unchanged) and deep_facts.0.text (counterevidence preserved) reuse checks.
-  assert.deepEqual(await run('english-adversarial'), {
-    status: 'reused',
-    checks: 2,
-    conflicts: 1,
-  });
-
-  // Introducing a brand-new risk cue ("first") in the repaired claim still forces a fresh check.
-  const withNewCue = parseModelProfile(
-    {
-      ...initial,
-      deep_facts: [
-        {
-          ...initial.deep_facts[0],
-          text: 'Newton was the first to work on optics, though one archive records a competing account.',
-        },
-      ],
-    },
-    'test',
-  );
-  const cueAssessment = assessment(withNewCue);
-  const cueFinding = cueAssessment.findings.find(
-    (item) => item.path === 'deep_facts.0.text',
-  );
-  assert.ok(cueFinding);
-  cueFinding.counterevidence = conflict;
-  const onDisk = JSON.parse(await readFile(options.filePath, 'utf8'));
-  const nextRecord = {
-    ...onDisk,
-    ...withNewCue,
-    meta: {
-      ...onDisk.meta,
-      pending_adversarial: undefined,
-      pending_assessment: {
-        profile_hash: profileHash({ ...onDisk, ...withNewCue }),
-        assessment: cueAssessment,
-        model: 'writer',
-      },
-    },
-  };
-  await writeFile(options.filePath, JSON.stringify(nextRecord));
-  const prepared = await run('english-adversarial');
-  const cueTargets = prepared.targets as AdversarialTarget[];
-  assert.equal(cueTargets.length, 1);
-  assert.equal(cueTargets[0]?.path, 'deep_facts.0.text');
 });
 
 test('local preflight flags misclassified Wikipedia, primary-text, low-trust and inconsistent sources', async (t) => {
@@ -2301,8 +1672,6 @@ test('compact patch English repair preserves untouched passages, validates in pr
   await writeFile(options.filePath, JSON.stringify(initial));
   const initialProfile = parseModelProfile(initial, 'test');
   const initialAssessment = assessment(initialProfile);
-  const targets = selectAdversarialTargets(initialProfile, initialAssessment);
-  const checks = targets.map((target) => makeCheck(target));
   const hold = {
     ...cleanAudit,
     issues: ['overview: clarify Newton was a mathematician and physicist'],
@@ -2312,7 +1681,6 @@ test('compact patch English repair preserves untouched passages, validates in pr
       await applyEnglishAudit({
         ...options,
         assessment: initialAssessment,
-        adversarial: { model: 'checker', checks },
         audit: hold,
         snapshots: [SOURCE],
       })
@@ -2393,13 +1761,8 @@ test('compact patch English repair preserves untouched passages, validates in pr
   );
   assert.equal(updated.deep_facts.length, 1);
   assert.equal(updated.key_moments[0].text, initial.key_moments[0]?.text);
-
-  // Remaining untouched deep_facts.0.text reuses its prior adversarial check.
-  assert.deepEqual(await run('english-adversarial'), {
-    status: 'reused',
-    checks: 1,
-    conflicts: 0,
-  });
+  assert.equal(updated.meta.pending_assessment, undefined);
+  assert.equal(updated.meta.coordinator_repair, undefined);
 
   // Follow-up audit receives re_audit context pointing to repaired_paths and prior_blockers.
   const followUpAudit = await run('english-audit');
@@ -2413,169 +1776,5 @@ test('compact patch English repair preserves untouched passages, validates in pr
     prior_blockers: [
       'overview: clarify Newton was a mathematician and physicist',
     ],
-  });
-});
-
-test('adversarial validation rejects misclassified and inconsistent counterevidence kinds, and no_conflict_found reuses across minor wording repairs', async (t) => {
-  const { root, options } = await setup(t);
-  const evidenceDir = path.join(root, 'evidence');
-  await mkdir(evidenceDir);
-  const makeSnapshot = (url: string, text: string): Source => {
-    const body = { url, fetched_at: '2026-11-25T00:00:00Z', text, anchors: [] };
-    return { id: hash(body), ...body };
-  };
-  const scholarlySource = makeSnapshot(
-    'https://penelope.uchicago.edu/encyclopaedia_romana/calendar/romancalendar.html',
-    'A scholarly calendar note with competing details.',
-  );
-  for (const snap of [SOURCE, scholarlySource]) {
-    await writeFile(
-      path.join(evidenceDir, `${snap.id}.json`),
-      JSON.stringify(snap),
-    );
-  }
-  const initial = highRiskDraft();
-  const initialProfile = parseModelProfile(initial, 'test');
-  const initialAssessment = assessment(initialProfile);
-  initialAssessment.findings[0]?.evidence.push({
-    source: scholarlySource.id,
-    quote: scholarlySource.text,
-    kind: 'scholarly',
-    origin: 'Encyclopaedia Romana',
-  });
-  await writeFile(
-    options.filePath,
-    JSON.stringify({
-      ...initial,
-      meta: {
-        ...initial.meta,
-        pending_assessment: {
-          profile_hash: profileHash(initial),
-          assessment: initialAssessment,
-          model: 'writer',
-        },
-      },
-    }),
-  );
-
-  let emitted: unknown;
-  const run = async (command: string, ...args: string[]) => {
-    emitted = undefined;
-    await runCoordinatorCommand(command, ['--qid=Q935', ...args], {
-      profilesDir: root,
-      subjects: () => [SUBJECT],
-      resolve: options.resolve,
-      fetch: async () => assert.fail('unexpected fetch'),
-      emit: (value) => {
-        emitted = value;
-      },
-    });
-    return asRecord(emitted, command);
-  };
-
-  const task = await run('english-adversarial');
-  const targets = task.targets as AdversarialTarget[];
-  const badReply = path.join(root, 'bad-adv.json');
-  await writeFile(
-    badReply,
-    JSON.stringify({
-      input_hash: task.input_hash,
-      model: 'checker',
-      result: {
-        checks: targets.map((target, index) =>
-          index === 0
-            ? makeCheck(target, 'conflict_found', [
-                {
-                  source: scholarlySource.id,
-                  quote: scholarlySource.text,
-                  kind: 'other',
-                  origin: 'Encyclopaedia Romana',
-                },
-              ])
-            : makeCheck(target),
-        ),
-      },
-    }),
-  );
-  await assert.rejects(
-    run('english-adversarial', `--result=${badReply}`),
-    /inconsistent evidence\.kind/,
-  );
-
-  // Now save a clean no_conflict_found check, audit as held, repair deep_facts.0 wording slightly,
-  // and verify no_conflict_found is reused without re-running adversarial.
-  const goodReply = path.join(root, 'good-adv.json');
-  await writeFile(
-    goodReply,
-    JSON.stringify({
-      input_hash: task.input_hash,
-      model: 'checker',
-      result: { checks: targets.map((target) => makeCheck(target)) },
-    }),
-  );
-  assert.equal(
-    (await run('english-adversarial', `--result=${goodReply}`)).status,
-    'saved',
-  );
-  const auditTask = await run('english-audit');
-  const heldFile = path.join(root, 'held.json');
-  await writeFile(
-    heldFile,
-    JSON.stringify({
-      input_hash: auditTask.input_hash,
-      model: 'auditor',
-      result: {
-        uncovered: [],
-        issues: ['deep_facts.0.text: attribute the letter'],
-        coherent: true,
-      },
-    }),
-  );
-  assert.equal(
-    (await run('english-audit', `--result=${heldFile}`)).status,
-    'held',
-  );
-  const repairTask = await run('english-repair');
-  const patchFile = path.join(root, 'minor-patch.json');
-  await writeFile(
-    patchFile,
-    JSON.stringify({
-      input_hash: repairTask.input_hash,
-      model: 'writer',
-      result: {
-        patches: {
-          'deep_facts.0.text': {
-            text: 'According to Newton’s own letter, he revised his account.',
-            findings: [
-              {
-                claim:
-                  'According to Newton’s own letter, Newton revised his account in a letter.',
-                verdict: 'supported',
-                risk: 'ordinary',
-                explanation: 'Attributed.',
-                correction: '',
-                evidence: [
-                  {
-                    source: SOURCE.id,
-                    quote: TEXT,
-                    kind: 'wikipedia',
-                    origin: 'Newton article',
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-    }),
-  );
-  assert.equal(
-    (await run('english-repair', `--result=${patchFile}`)).status,
-    'draft',
-  );
-  assert.deepEqual(await run('english-adversarial'), {
-    status: 'reused',
-    checks: 2,
-    conflicts: 0,
   });
 });

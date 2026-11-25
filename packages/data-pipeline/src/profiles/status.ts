@@ -1,12 +1,11 @@
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from '@o-tempora/shared-types';
-import {
-  currentAdversarialCheckpoint,
-  validateAdversarialEvidence,
-} from './adversarial-checkpoint.js';
-import { readPendingAssessment } from './assessed-profile.js';
 import { parseModelProfile } from './model-profile.js';
+import {
+  readCompletedRepairs,
+  readPendingAssessmentState,
+} from './pending-state.js';
 import { preflightProfile } from './preflight.js';
 import { readStoredProfiles, type StoredProfile } from './store.js';
 import { formatDates, type ProfileSubject } from './subjects.js';
@@ -17,20 +16,15 @@ import {
 } from './translation.js';
 import { asRecord } from './values.js';
 import {
-  parseAdversarialResult,
-  selectAdversarialTargets,
-} from './verification/adversarial.js';
-import {
   parseAssessment,
   profileHash,
   readProfileApproval,
 } from './verification/policy.js';
-import { completedRepairs, reportPathFor } from './verification/runner.js';
+import { reportPathFor } from './verification/runner.js';
 
 const COMMANDS = {
   missing: ['prefetch', 'write'],
   staged: ['preflight', 'finalize'],
-  'draft-pending-adversarial': ['english-adversarial'],
   'draft-pending-audit': ['english-audit'],
   'english-held': ['english-repair'],
   'english-approved': ['russian-translation'],
@@ -153,7 +147,7 @@ async function inspectSubject(
       ? asRecord(saved, 'verification report')
       : undefined;
   const approval = readProfileApproval(record, report, profile);
-  const pending = readPendingAssessment(record);
+  const pending = await readPendingAssessmentState(profilesDir, qid, record);
   if (!pending && approval?.isCurrentFor(dates)) {
     const translation = await readTranslation(filePath);
     if (approvedTranslation(translation, record))
@@ -188,12 +182,13 @@ async function inspectSubject(
     currentReport.blockers.length
   ) {
     const edited = stored.status === 'edited';
+    const repairs = await readCompletedRepairs(profilesDir, qid, record);
     return {
       qid,
       stage: 'english-held',
       next_command: 'english-repair',
       edited,
-      remaining_draft_repairs: 2 - completedRepairs(record),
+      remaining_draft_repairs: 2 - repairs,
     };
   }
 
@@ -208,54 +203,23 @@ async function inspectSubject(
     (currentReport?.assessment === undefined
       ? undefined
       : parseAssessment(currentReport.assessment));
-  if (!savedAssessment) {
-    return {
-      qid,
-      stage: 'draft-pending-adversarial',
-      next_command: 'english-adversarial',
-      reason: [
-        reason,
-        'No saved assessment for this draft; re-stage and finalize',
-      ]
-        .filter(Boolean)
-        .join('. '),
-    };
-  }
-
-  const targets = selectAdversarialTargets(profile, savedAssessment);
-  let readyForAudit = !targets.length;
-  if (targets.length) {
-    try {
-      const checkpoint =
-        currentAdversarialCheckpoint(record, savedAssessment) ??
-        (pending ? undefined : currentReport?.adversarial);
-      const result = asRecord(checkpoint, 'adversarial result');
-      if (typeof result.model !== 'string' || !result.model.trim())
-        throw new Error('Missing adversarial model');
-      const checks = parseAdversarialResult(result, targets);
-      await validateAdversarialEvidence(
-        path.join(profilesDir, 'evidence'),
-        checks,
-        savedAssessment,
-      );
-      readyForAudit = true;
-    } catch {
-      // A missing, stale or incomplete checkpoint requires the adversarial step.
-    }
-  }
-  return readyForAudit
-    ? {
-        qid,
-        stage: 'draft-pending-audit',
-        next_command: 'english-audit',
-        ...(reason ? { reason } : {}),
-      }
-    : {
-        qid,
-        stage: 'draft-pending-adversarial',
-        next_command: 'english-adversarial',
-        ...(reason ? { reason } : {}),
-      };
+  return {
+    qid,
+    stage: 'draft-pending-audit',
+    next_command: 'english-audit',
+    ...(savedAssessment
+      ? reason
+        ? { reason }
+        : {}
+      : {
+          reason: [
+            reason,
+            'No saved assessment for this draft; re-stage and finalize',
+          ]
+            .filter(Boolean)
+            .join('. '),
+        }),
+  };
 }
 
 export async function inspectProfileStatus({

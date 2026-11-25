@@ -6,14 +6,15 @@ import {
   PROFILE_SCHEMA_VERSION,
   parseModelProfile,
 } from '../model-profile.js';
+import {
+  clearPendingState,
+  readCompletedRepairs,
+  writePendingState,
+} from '../pending-state.js';
 import { writeJson } from '../store.js';
 import { formatDates, type ProfileSubject } from '../subjects.js';
 import { asRecord } from '../values.js';
 import type { ResolveArticleQids } from '../wikipedia-qids.js';
-import {
-  type AdversarialResult,
-  mergeAdversarialResult,
-} from './adversarial.js';
 import { evidenceChecks, mechanicalChecks } from './mechanical.js';
 import {
   type Assessment,
@@ -34,7 +35,6 @@ export interface EnglishAuditOptions {
   subject: ProfileSubject;
   assessment: Assessment;
   researcherModel: string;
-  adversarial?: AdversarialResult;
   audit: unknown;
   auditModel: string;
   snapshots: readonly Source[];
@@ -130,15 +130,6 @@ async function applyRepair(
   return replaceProfile(record, repaired, qids);
 }
 
-export function completedRepairs(record: Record<string, unknown>): number {
-  const checkpoint = asRecord(record.meta, 'meta').coordinator_repair;
-  if (checkpoint === undefined) return 0;
-  const { profile_hash, count } = asRecord(checkpoint, 'repair checkpoint');
-  return profile_hash === profileHash(record) && (count === 1 || count === 2)
-    ? count
-    : 0;
-}
-
 export async function checkpointEnglishRepair(options: {
   filePath: string;
   subject: ProfileSubject;
@@ -148,11 +139,12 @@ export async function checkpointEnglishRepair(options: {
   model: string;
   resolve: ResolveArticleQids;
 }): Promise<{
-  status: 'draft' | 'evidence-only' | 'proposal';
+  status: 'draft' | 'evidence-only';
   filePath: string;
 }> {
   const { filePath, subject, record, report } = options;
-  const repairs = completedRepairs(record);
+  const profilesDir = path.join(path.dirname(filePath), '..');
+  const repairs = await readCompletedRepairs(profilesDir, subject.qid, record);
   const current = parseModelProfile(record, filePath);
   const currentAssessment = parseAssessment(report.assessment);
   const { profile, assessment, repairedPaths } = extractRepairResult(
@@ -165,67 +157,47 @@ export async function checkpointEnglishRepair(options: {
     throw new Error('English draft repair limit reached');
   if (!changed && hash(assessment) === hash(currentAssessment))
     throw new Error('Repair did not change the draft or assessment');
+  const {
+    pending_assessment: _pending,
+    pending_adversarial: _adversarial,
+    coordinator_repair: _repair,
+    ...meta
+  } = asRecord(record.meta, 'meta');
+  const review = asRecord(meta.review, 'review');
+  if (changed && review.status === 'edited')
+    throw new Error(
+      'Cannot modify protected edited Profile prose during repair',
+    );
   const next = changed
     ? await applyRepair(record, current, profile, options.resolve)
     : record;
-  const originalHash = profileHash(record);
   const candidateHash = profileHash(next);
   if (
     hash(await readJson(filePath)) !== hash(record) ||
     hash(await readJson(reportPathFor(filePath))) !== hash(report)
   )
     throw new Error('Profile or report changed during repair');
-  const root = path.join(path.dirname(filePath), '..');
-  const { pending_adversarial: _adversarial, ...meta } = asRecord(
-    record.meta,
-    'meta',
-  );
-  const pending = {
+  const nextRepairs = changed ? repairs + 1 : repairs;
+  if (changed) {
+    const { approval: _approval, ...reviewFields } = review;
+    await writeJson(filePath, {
+      ...next,
+      meta: {
+        ...meta,
+        schema_version: PROFILE_SCHEMA_VERSION,
+        review: { ...reviewFields, status: 'draft', reviewed_at: null },
+      },
+    });
+  }
+  await writePendingState(profilesDir, subject.qid, {
     profile_hash: candidateHash,
     assessment,
     model: options.model,
     repaired_paths: repairedPaths,
     prior_blockers: strings(report.blockers, 'blockers'),
-  };
-  if (!changed) {
-    await writeJson(filePath, {
-      ...record,
-      meta: { ...meta, pending_assessment: pending },
-    });
-    return { status: 'evidence-only', filePath };
-  }
-  const review = asRecord(meta.review, 'review');
-  if (review.status === 'edited') {
-    const proposalPath = path.join(root, 'proposals', path.basename(filePath));
-    await writeJson(proposalPath, {
-      original_hash: originalHash,
-      proposed: next,
-      blockers: report.blockers,
-      assessment,
-    });
-    return { status: 'proposal', filePath: proposalPath };
-  }
-  await writeJson(
-    path.join(
-      root,
-      'verification-history',
-      subject.qid,
-      `${originalHash}.json`,
-    ),
-    { profile: record, report },
-  );
-  const { approval: _approval, ...reviewFields } = review;
-  await writeJson(filePath, {
-    ...next,
-    meta: {
-      ...meta,
-      schema_version: PROFILE_SCHEMA_VERSION,
-      pending_assessment: pending,
-      coordinator_repair: { profile_hash: candidateHash, count: repairs + 1 },
-      review: { ...reviewFields, status: 'draft', reviewed_at: null },
-    },
+    repairs: nextRepairs,
   });
-  return { status: 'draft', filePath };
+  return { status: changed ? 'draft' : 'evidence-only', filePath };
 }
 
 export async function applyEnglishAudit(
@@ -250,11 +222,9 @@ export async function applyEnglishAudit(
   }
   const meta = asRecord(record.meta, 'meta');
   const protectedEdit = asRecord(meta.review, 'review').status === 'edited';
-  const { subject, adversarial, snapshots } = options;
+  const { subject, assessment, snapshots } = options;
+  const profilesDir = path.join(path.dirname(options.filePath), '..');
   const now = (options.now ?? new Date()).toISOString();
-  const assessment = adversarial
-    ? mergeAdversarialResult(options.assessment, adversarial)
-    : options.assessment;
   const mechanical = await mechanicalChecks(
     record,
     profile,
@@ -262,16 +232,14 @@ export async function applyEnglishAudit(
     options.resolve,
   );
   mechanical.push(...evidenceChecks(profile, subject, assessment, snapshots));
+  const repairs = options.repairs ?? 0;
   const base = {
     policy_version: POLICY_VERSION,
     profile_hash: profileHash(record),
     verified_at: now,
     subject: { qid: subject.qid, dates },
-    models: adversarial
-      ? [options.researcherModel, adversarial.model, options.auditModel]
-      : [options.researcherModel, options.auditModel],
+    models: [options.researcherModel, options.auditModel],
     assessment,
-    ...(adversarial ? { adversarial } : {}),
     audit: parseAudit(options.audit),
     sources: snapshots.map(({ id, url, fetched_at }) => ({
       id,
@@ -280,7 +248,7 @@ export async function applyEnglishAudit(
     })),
     evidence_errors: checkEvidence(assessment, snapshots),
     mechanical,
-    repairs: options.repairs ?? 0,
+    repairs,
   };
   const report: Report = { ...base, blockers: blockers(base, profile) };
 
@@ -296,6 +264,7 @@ export async function applyEnglishAudit(
   const {
     pending_assessment: _pending,
     pending_adversarial: _adversarial,
+    coordinator_repair: _repair,
     ...savedMeta
   } = asRecord(record.meta, 'meta');
   const nextMeta = {
@@ -319,17 +288,20 @@ export async function applyEnglishAudit(
   // Report first, receipt second: a partial write can only withhold publishing.
   for (const source of snapshots) {
     await writeJson(
-      path.join(
-        path.dirname(options.filePath),
-        '..',
-        'evidence',
-        `${source.id}.json`,
-      ),
+      path.join(profilesDir, 'evidence', `${source.id}.json`),
       source,
     );
   }
   await writeJson(reportPath, report);
   await writeJson(options.filePath, { ...record, meta: nextMeta });
+  if (approved || repairs === 0) {
+    await clearPendingState(profilesDir, subject.qid);
+  } else {
+    await writePendingState(profilesDir, subject.qid, {
+      profile_hash: report.profile_hash,
+      repairs,
+    });
+  }
   return {
     status: approved ? 'approved' : 'held',
     blockers: report.blockers,

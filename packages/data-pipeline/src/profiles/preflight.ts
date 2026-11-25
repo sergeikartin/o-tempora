@@ -4,11 +4,11 @@ import {
   extractAssessedProfile,
   extractRepairResult,
   isRepairPatch,
-  readPendingAssessment,
 } from './assessed-profile.js';
 import { readSnapshot } from './evidence-cache.js';
 import { parseModelProfile } from './model-profile.js';
 import { passages } from './passages.js';
+import { readPendingAssessmentState } from './pending-state.js';
 import { readStoredProfiles } from './store.js';
 import type { ProfileSubject } from './subjects.js';
 import { asRecord } from './values.js';
@@ -36,7 +36,7 @@ async function readStoredBase(profilesDir: string, qid: string) {
     'English Profile',
   );
   const profile = parseModelProfile(record, entry.filePath);
-  const pending = readPendingAssessment(record);
+  const pending = await readPendingAssessmentState(profilesDir, qid, record);
   if (pending) return { profile, assessment: pending.assessment };
   const report = asRecord(
     JSON.parse(await readFile(reportPathFor(entry.filePath), 'utf8')),
@@ -74,7 +74,7 @@ async function readDraft(
     issues.push('meta.locale: expected English Profile');
   if (asRecord(meta.source, 'meta.source').wikidata_qid !== qid)
     issues.push('meta.source.wikidata_qid: differs from requested QID');
-  const pending = readPendingAssessment(record);
+  const pending = await readPendingAssessmentState(profilesDir, qid, record);
   if (pending) return { profile, assessment: pending.assessment };
 
   const reportPath = reportPathFor(filePath);

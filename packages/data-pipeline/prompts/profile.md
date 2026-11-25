@@ -1,7 +1,7 @@
 # Profile prompt (people and events)
 
-- **Version:** 2.9.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `269c2440632d`)
+- **Version:** 2.10.0
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `7e948b09b9da`)
 - **Inputs:** `{type}` (person | conflict | milestone), `{name}`, `{dates}` (e.g. "c. 1540–1596", "1789–1799", "1969"), `{wikipedia_url}`
 - **Replaces:** the v1 person and conflict prompts
 - **Output format:** [Assessed Profile](profile-assessment.md)
@@ -130,7 +130,9 @@ WRITER'S EVIDENCE CHECK
   uncertainty wherever the claim appears, including titles. Verify
   the direction and strength of causal links or influence. A citation
   establishes that one work cited another; influence needs its own evidence.
-- Read credible competing accounts alongside the supporting excerpts.
+- Read credible competing accounts alongside the supporting excerpts
+  (including any prefetched `dispute_source_ids` and `manifest_groups.dispute`
+  sources, or a quick falsification search for obscure anecdotes or quotes).
   Qualify or attribute the wording to reflect material disagreements.
   Retain the competing excerpts as
   counterevidence even after revising the prose. Explain exactly what
@@ -188,7 +190,7 @@ object to every result after the response comes back.
 ```json
 "meta": {
   "generated_at": "ISO 8601 timestamp, UTC",
-  "prompt_version": "2.9.0",
+  "prompt_version": "2.10.0",
   "prompt_hash": "first 12 chars of sha256 of the prompt text",
   "schema_version": 4,
   "model": "exact model ID",

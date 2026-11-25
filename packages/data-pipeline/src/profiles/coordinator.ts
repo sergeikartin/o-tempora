@@ -2,19 +2,14 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { getDomain } from 'tldts';
 import { parseQidsFlag } from '../fetch/qid-filter.js';
-import {
-  adversarialBinding,
-  currentAdversarialCheckpoint,
-  reusableAdversarialChecks,
-  validateAdversarialEvidence,
-} from './adversarial-checkpoint.js';
-import {
-  flaggedRepairPaths,
-  readPendingAssessment,
-} from './assessed-profile.js';
+import { flaggedRepairPaths } from './assessed-profile.js';
 import { evidenceStore, readSnapshot } from './evidence-cache.js';
 import { parseModelProfile } from './model-profile.js';
 import { RAW_PROFILES_DIR } from './paths.js';
+import {
+  readCompletedRepairs,
+  readPendingAssessmentState,
+} from './pending-state.js';
 import {
   parsePrefetchManifest,
   prefetchBatch,
@@ -44,13 +39,6 @@ import {
 import { type AgentRunMeta, parseTokenUsage } from './usage.js';
 import { asArray, asRecord, asString } from './values.js';
 import {
-  type AdversarialResult,
-  adversarialPrompt,
-  mergeAdversarialResult,
-  parseAdversarialResult,
-  selectAdversarialTargets,
-} from './verification/adversarial.js';
-import {
   type Assessment,
   findingExcerpts,
   hash,
@@ -62,7 +50,6 @@ import { englishAuditPrompt } from './verification/researcher.js';
 import {
   applyEnglishAudit,
   checkpointEnglishRepair,
-  completedRepairs,
   reportPathFor,
 } from './verification/runner.js';
 import { fetchSource, sourceUrl } from './verification/sources.js';
@@ -176,16 +163,18 @@ function agentRunMeta(value: Record<string, unknown>): AgentRunMeta {
 async function loadEnglishAssessment(options: CoordinatorOptions, qid: string) {
   const { filePath, subject, record } = await loadSubject(options, qid);
   const profile = parseModelProfile(record, filePath);
-  const pending = readPendingAssessment(record);
+  const pending = await readPendingAssessmentState(
+    options.profilesDir,
+    qid,
+    record,
+  );
   const binding = profileHash(record);
   let input = pending;
-  let savedAdversarial: unknown;
   if (!input) {
     const saved = await readOptionalJson(reportPathFor(filePath));
     if (saved) {
       const report = asRecord(saved, 'verification report');
       if (report.profile_hash === binding) {
-        savedAdversarial = report.adversarial;
         input = {
           assessment: parseAssessment(report.assessment),
           model: strings(report.models, 'report models')[0] ?? 'unreported',
@@ -197,7 +186,7 @@ async function loadEnglishAssessment(options: CoordinatorOptions, qid: string) {
     throw new Error(
       'No saved assessment for this draft; re-stage and finalize an assessed Profile.',
     );
-  return { filePath, subject, profile, record, ...input, savedAdversarial };
+  return { filePath, subject, profile, record, pending, ...input };
 }
 
 function assessmentSnapshots(
@@ -213,153 +202,35 @@ function assessmentSnapshots(
   return Promise.all([...ids].map((id) => readSnapshot(directory, id)));
 }
 
-async function englishAdversarial(
-  options: TaskOptions,
-  qid: string,
-  resultFile?: string,
-) {
-  const { filePath, subject, profile, record, assessment } =
-    await loadEnglishAssessment(options, qid);
-  const targets = selectAdversarialTargets(profile, assessment);
-  if (!targets.length) {
-    if (resultFile)
-      throw new Error(
-        'Result belongs to different inputs; prepare a fresh task',
-      );
-    options.emit({ status: 'skipped', targets: 0 });
-    return;
-  }
-  const binding = adversarialBinding(record, assessment);
-  const reused = await reusableAdversarialChecks({
-    filePath,
-    profilesDir: options.profilesDir,
-    qid,
-    targets,
-    assessment,
-  });
-  const reusedIndices = new Set(reused.map(({ check }) => check.finding_index));
-  const uncached = targets.filter(
-    ({ finding_index }) => !reusedIndices.has(finding_index),
-  );
-  const checks = reused.map(({ check }) => check);
-  const models = new Set(reused.map(({ model }) => model));
-  if (uncached.length) {
-    const prepared = task(
-      adversarialPrompt(
-        profile,
-        subject,
-        assessment,
-        uncached,
-        await assessmentSnapshots(options, assessment),
-      ),
-      { ...binding, targets, reused },
-    );
-    if (!resultFile) {
-      await emitTask(options, { ...prepared, targets: uncached });
-      return;
-    }
-    const reply = asRecord(
-      await readJson(resultFile),
-      'English adversarial result',
-    );
-    const fresh = parseAdversarialResult(
-      output(reply, prepared.input_hash),
-      uncached,
-    );
-    await validateAdversarialEvidence(
-      path.join(options.profilesDir, 'evidence'),
-      fresh,
-      assessment,
-    );
-    checks.push(...fresh);
-    models.add(agentRunMeta(reply).model);
-  } else if (resultFile) {
-    throw new Error('Result belongs to different inputs; prepare a fresh task');
-  }
-  checks.sort((a, b) => a.finding_index - b.finding_index);
-
-  if (hash(await readJson(filePath)) !== hash(record))
-    throw new Error(
-      'Profile changed during adversarial apply; prepare a fresh task',
-    );
-  await writeJson(filePath, {
-    ...record,
-    meta: {
-      ...asRecord(record.meta, 'meta'),
-      pending_adversarial: {
-        ...binding,
-        model: [...models].join(', '),
-        checks,
-      },
-    },
-  });
-  options.emit({
-    status: uncached.length ? 'saved' : 'reused',
-    checks: checks.length,
-    conflicts: checks.filter(({ outcome }) => outcome === 'conflict_found')
-      .length,
-  });
-}
-
 async function englishAudit(
   options: TaskOptions,
   qid: string,
   resultFile?: string,
 ) {
-  const {
-    filePath,
-    subject,
-    profile,
-    record,
-    assessment,
-    model,
-    savedAdversarial,
-  } = await loadEnglishAssessment(options, qid);
-  const binding = adversarialBinding(record, assessment);
-  const pending = currentAdversarialCheckpoint(record, assessment);
-  const checkpoint = pending ?? savedAdversarial;
-  const targets = selectAdversarialTargets(profile, assessment);
-  let adversarial: AdversarialResult | undefined;
-  if (targets.length) {
-    if (checkpoint === undefined)
-      throw new Error(
-        'Run english-adversarial for the current draft and assessment before english-audit',
-      );
-    const result = asRecord(checkpoint, 'adversarial checks');
-    adversarial = {
-      model: asString(result.model, 'adversarial model'),
-      checks: parseAdversarialResult(result, targets),
-    };
-  }
-  const pendingAssessment = readPendingAssessment(record);
+  const { filePath, subject, profile, record, pending, assessment, model } =
+    await loadEnglishAssessment(options, qid);
   const reAudit =
-    pendingAssessment?.repairedPaths !== undefined &&
-    pendingAssessment.priorBlockers !== undefined
+    pending?.repairedPaths !== undefined && pending.priorBlockers !== undefined
       ? {
-          repaired_paths: pendingAssessment.repairedPaths,
-          prior_blockers: pendingAssessment.priorBlockers,
+          repaired_paths: pending.repairedPaths,
+          prior_blockers: pending.priorBlockers,
         }
       : undefined;
-  const merged = adversarial
-    ? mergeAdversarialResult(assessment, adversarial)
-    : assessment;
-  const snapshots = await assessmentSnapshots(options, merged);
+  const snapshots = await assessmentSnapshots(options, assessment);
   const prepared = task(
-    englishAuditPrompt(
-      profile,
-      subject,
-      merged,
-      snapshots,
-      adversarial?.checks,
-      reAudit,
-    ),
-    { ...binding, adversarial, ...(reAudit ? { reAudit } : {}) },
+    englishAuditPrompt(profile, subject, assessment, snapshots, reAudit),
+    {
+      profile_hash: profileHash(record),
+      assessment_hash: hash(assessment),
+      ...(reAudit ? { reAudit } : {}),
+    },
   );
   if (!resultFile) {
     await emitTask(options, prepared);
     return;
   }
   const audit = asRecord(await readJson(resultFile), 'English audit');
+  const repairs = await readCompletedRepairs(options.profilesDir, qid, record);
   options.emit(
     await applyEnglishAudit({
       filePath,
@@ -367,14 +238,12 @@ async function englishAudit(
       snapshots,
       assessment,
       researcherModel: model,
-      adversarial,
       audit: output(audit, prepared.input_hash),
       auditModel: agentRunMeta(audit).model,
       resolve: options.resolve,
       expectedRecordHash: hash(record),
-      force:
-        pending !== undefined || readPendingAssessment(record) !== undefined,
-      repairs: completedRepairs(record),
+      force: pending !== undefined,
+      repairs,
     }),
   );
 }
@@ -385,7 +254,7 @@ async function englishRepair(
   resultFile?: string,
 ) {
   const { filePath, subject, record, dates } = await loadSubject(options, qid);
-  if (readPendingAssessment(record))
+  if (await readPendingAssessmentState(options.profilesDir, qid, record))
     throw new Error(
       'Audit the pending assessment before preparing another repair',
     );
@@ -415,31 +284,7 @@ async function englishRepair(
     : reportAssessment.findings.filter((finding) =>
         flaggedSet.has(finding.path),
       );
-  const rawAdversarial =
-    report.adversarial &&
-    typeof report.adversarial === 'object' &&
-    !Array.isArray(report.adversarial)
-      ? (report.adversarial as { checks?: unknown }).checks
-      : undefined;
-  const adversarialNotes = Array.isArray(rawAdversarial)
-    ? rawAdversarial
-        .filter((item): item is Record<string, unknown> => {
-          if (!item || typeof item !== 'object' || Array.isArray(item))
-            return false;
-          const entry = item as Record<string, unknown>;
-          return (
-            entry.outcome !== 'no_conflict_found' &&
-            (flagged.global ||
-              (typeof entry.path === 'string' && flaggedSet.has(entry.path)))
-          );
-        })
-        .map(({ finding_index, path: checkPath, outcome, note }) => ({
-          finding_index,
-          path: checkPath,
-          outcome,
-          note,
-        }))
-    : [];
+  const repairs = await readCompletedRepairs(options.profilesDir, qid, record);
   const prepared = task(
     readPromptText('profile-assessment-repair.md') +
       JSON.stringify({
@@ -447,11 +292,8 @@ async function englishRepair(
         flagged_paths: flagged.paths,
         blockers: reportBlockers,
         flagged_findings: flaggedFindings,
-        ...(adversarialNotes.length
-          ? { adversarial_notes: adversarialNotes }
-          : {}),
         subject_dates: reportAssessment.subject_dates,
-        remaining_draft_repairs: 2 - completedRepairs(record),
+        remaining_draft_repairs: 2 - repairs,
       }),
     hash(record),
   );
@@ -574,7 +416,6 @@ export async function runCoordinatorCommand(
       'urls',
     ],
     status: ['qids', 'scope', 'stage', 'limit'],
-    'english-adversarial': ['qid', 'result', 'out'],
     'english-audit': ['qid', 'result', 'out'],
     'english-repair': ['qid', 'result', 'out'],
     'russian-translation': ['qid', 'out'],
@@ -778,9 +619,7 @@ export async function runCoordinatorCommand(
             path.join(options.profilesDir, 'incoming', `${qid}.json`),
         }),
       );
-    } else if (command === 'english-adversarial')
-      await englishAdversarial(taskOptions, qid, result);
-    else if (command === 'english-audit')
+    } else if (command === 'english-audit')
       await englishAudit(taskOptions, qid, result);
     else if (command === 'english-repair')
       await englishRepair(taskOptions, qid, result);

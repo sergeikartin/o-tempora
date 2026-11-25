@@ -5,6 +5,7 @@ import path from 'node:path';
 import { test } from 'node:test';
 import { DETAIL_LEVEL_FAME_SCORE_FLOORS } from '@o-tempora/shared-types';
 import { runCoordinatorCommand } from './coordinator.js';
+import { writePendingState } from './pending-state.js';
 import { inspectProfileStatus } from './status.js';
 import { writeJson } from './store.js';
 import type { loadSubjects, ProfileSubject } from './subjects.js';
@@ -165,60 +166,38 @@ test('status reports the next command throughout the workflow and detects stale 
         : item,
     ),
   };
-  const binding = {
+  await writeJson(filePath, record);
+  await writePendingState(profilesDir, subject.qid, {
     profile_hash: profileHash(record),
-    assessment_hash: hash(riskAssessment),
-  };
-  const draft = {
-    ...record,
-    meta: {
-      ...record.meta,
-      pending_assessment: {
-        ...binding,
-        assessment: riskAssessment,
-        model: 'writer',
-      },
-    },
-  };
-  await writeJson(filePath, draft);
-  await assertStage('draft-pending-adversarial', 'english-adversarial');
-  const adversarial = {
-    model: 'researcher',
-    checks: [
-      {
-        finding_index: 0,
-        path: 'overview',
-        outcome: 'no_conflict_found' as const,
-        queries: ['Newton chronology'],
-        counterevidence: [],
-        note: 'No conflict found',
-      },
-    ],
-  };
-  await writeJson(filePath, {
-    ...draft,
-    meta: {
-      ...draft.meta,
-      pending_adversarial: { ...binding, ...adversarial },
-    },
+    assessment: riskAssessment,
+    model: 'writer',
+    repairs: 0,
   });
   await assertStage('draft-pending-audit', 'english-audit');
 
   const other = { ...subject, qid: 'Q1' };
   await writeJson(path.join(profilesDir, 'people', 'Q1-other.en.json'), {
-    ...draft,
+    ...record,
     meta: {
-      ...draft.meta,
-      source: { ...draft.meta.source, wikidata_qid: other.qid },
+      ...record.meta,
+      source: { ...record.meta.source, wikidata_qid: other.qid },
     },
   });
+  await writePendingState(profilesDir, other.qid, {
+    profile_hash: profileHash({
+      ...record,
+      meta: {
+        ...record.meta,
+        source: { ...record.meta.source, wikidata_qid: other.qid },
+      },
+    }),
+    assessment: riskAssessment,
+    model: 'writer',
+    repairs: 0,
+  });
   for (const [args, expected] of [
-    [['--stage=draft-pending-audit'], ['Q935']],
-    [['--stage=draft-pending-adversarial,draft-pending-audit'], ['Q1', 'Q935']],
-    [
-      ['--stage=draft-pending-adversarial,draft-pending-audit', '--limit=1'],
-      ['Q1'],
-    ],
+    [['--stage=draft-pending-audit'], ['Q1', 'Q935']],
+    [['--stage=draft-pending-audit', '--limit=1'], ['Q1']],
     [['--stage=bilingual-approved'], []],
   ] as const) {
     await runCoordinatorCommand('status', ['--qids=Q1,Q935', ...args], {
@@ -234,10 +213,7 @@ test('status reports the next command throughout the workflow and detects stale 
           items.map(({ qid }) => qid),
           expected,
         );
-        assert.equal(
-          summary['draft-pending-audit'],
-          expected.some((qid) => qid === 'Q935') ? 1 : 0,
-        );
+        assert.equal(summary['draft-pending-audit'], expected.length);
         assert.equal(
           Object.values(summary).reduce((sum, count) => sum + count, 0),
           items.length,
@@ -260,13 +236,13 @@ test('status reports the next command throughout the workflow and detects stale 
     meta: {
       ...record.meta,
       review: { status: 'edited' },
-      coordinator_repair: { profile_hash: profileHash(record), count: 1 },
     },
   });
   assert.equal(
     (
       await applyEnglishAudit({
         ...english,
+        repairs: 1,
         audit: { ...cleanAudit, issues: ['overview: revise'] },
       })
     ).status,
@@ -335,7 +311,6 @@ test('status reports the next command throughout the workflow and detects stale 
       await applyEnglishAudit({
         ...english,
         assessment: riskAssessment,
-        adversarial,
         audit: cleanAudit,
         force: true,
       })

@@ -38,6 +38,7 @@ const INSTITUTIONS = new Set([
 export interface PrefetchDeepFactCandidate {
   angle: string;
   urls: string[];
+  dispute_urls?: string[];
 }
 
 export interface PrefetchManifest {
@@ -50,6 +51,7 @@ export interface PrefetchManifest {
 export interface PrefetchedDeepFactGroup {
   angle: string;
   source_ids: string[];
+  dispute_source_ids: string[];
   skipped: { url: string; reason: string }[];
   corroboration_ready: boolean;
 }
@@ -106,13 +108,24 @@ export function parsePrefetchManifest(
               throw new Error(
                 `deep_fact_candidates[${index}].urls must contain at least one URL`,
               );
-            return { angle, urls };
+            const dispute_urls = parseUrlList(
+              entry.dispute_urls,
+              `deep_fact_candidates[${index}].dispute_urls`,
+            );
+            return {
+              angle,
+              urls,
+              ...(dispute_urls.length ? { dispute_urls } : {}),
+            };
           },
         );
   const totalUrls =
     core_urls.length +
     dispute_urls.length +
-    deep_fact_candidates.reduce((sum, item) => sum + item.urls.length, 0);
+    deep_fact_candidates.reduce(
+      (sum, item) => sum + item.urls.length + (item.dispute_urls?.length ?? 0),
+      0,
+    );
   if (totalUrls === 0)
     throw new Error('Prefetch manifest must contain at least one URL');
   return {
@@ -274,7 +287,10 @@ export async function prefetchSubject({
     const rawUrls = manifest
       ? [
           ...manifest.core_urls,
-          ...manifest.deep_fact_candidates.flatMap((entry) => entry.urls),
+          ...manifest.deep_fact_candidates.flatMap((entry) => [
+            ...entry.urls,
+            ...(entry.dispute_urls ?? []),
+          ]),
           ...manifest.dispute_urls,
         ]
       : [...(urls ?? [])];
@@ -358,8 +374,9 @@ export async function prefetchSubject({
       manifestGroups = {
         core: collectIds(manifest.core_urls),
         deep_fact_candidates: manifest.deep_fact_candidates.map(
-          ({ angle, urls: candidateUrls }) => {
+          ({ angle, urls: candidateUrls, dispute_urls: candidateDisputes }) => {
             const ids = new Set<string>();
+            const disputeIds = new Set<string>();
             const candidateSkipped: { url: string; reason: string }[] = [];
             const rootHosts = new Set<string>();
             const nonWikiRootHosts = new Set<string>();
@@ -375,16 +392,28 @@ export async function prefetchSubject({
                 if (!isWikipediaUrl(entry.url)) nonWikiRootHosts.add(root);
               }
             }
+            for (const raw of candidateDisputes ?? []) {
+              const entry = lookupRaw(raw);
+              if (!entry) continue;
+              if ('reason' in entry) candidateSkipped.push(entry);
+              else disputeIds.add(entry.id);
+            }
             return {
               angle,
               source_ids: [...ids],
+              dispute_source_ids: [...disputeIds],
               skipped: candidateSkipped,
               corroboration_ready:
                 rootHosts.size >= 2 && nonWikiRootHosts.size >= 1,
             };
           },
         ),
-        dispute: collectIds(manifest.dispute_urls),
+        dispute: collectIds([
+          ...manifest.dispute_urls,
+          ...manifest.deep_fact_candidates.flatMap(
+            (entry) => entry.dispute_urls ?? [],
+          ),
+        ]),
       };
     }
   } else {

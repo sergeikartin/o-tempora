@@ -11,12 +11,10 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import { parseRawProfile } from '../output/profiles.js';
-import {
-  extractAssessedProfile,
-  readPendingAssessment,
-} from './assessed-profile.js';
+import { extractAssessedProfile } from './assessed-profile.js';
 import { type FinalizeOptions, finalizeProfiles } from './finalize.js';
 import { runFinalizeCommand } from './index.js';
+import { readPendingAssessmentState } from './pending-state.js';
 import type { ProfileSubject } from './subjects.js';
 
 const SUBJECTS: ProfileSubject[] = [
@@ -237,7 +235,12 @@ test('extracts the assessed draft and keeps evidence aligned when finalization d
   assert.equal(record.overview, input.overview.text);
   assert.ok(!Object.hasOwn(record.key_moments[0], 'claims'));
   assert.ok(!Object.hasOwn(record.deep_facts[0], 'claims'));
-  const pending = readPendingAssessment(record);
+  assert.equal(record.meta.pending_assessment, undefined);
+  const pending = await readPendingAssessmentState(
+    options.profilesDir,
+    'Q1',
+    record,
+  );
   assert.ok(pending);
   const { assessment } = pending;
   assert.ok(assessment.covered.includes('key_moments.0.title'));
@@ -252,7 +255,10 @@ test('extracts the assessed draft and keeps evidence aligned when finalization d
     ],
   );
   assert.equal(
-    readPendingAssessment({ ...record, overview: 'Later edit.' }),
+    await readPendingAssessmentState(options.profilesDir, 'Q1', {
+      ...record,
+      overview: 'Later edit.',
+    }),
     undefined,
   );
 });
@@ -468,7 +474,9 @@ test('finalization prunes self and redirect aliases and remaps every assessment 
   );
   assert.equal(raw.meta.validation.connections_matched_people, 1);
   assert.equal(raw.meta.validation.connections_matched_events, 1);
-  const assessment = readPendingAssessment(raw)?.assessment;
+  const assessment = (
+    await readPendingAssessmentState(options.profilesDir, 'Q1', raw)
+  )?.assessment;
   assert.ok(assessment);
   const paths = ['connections.0.connection', 'connections.1.connection'];
   assert.deepEqual(
@@ -506,5 +514,9 @@ test('finalize --model records the explicit fallback when the staged model is ab
   const record = JSON.parse(await readFile(file, 'utf8'));
   assert.equal(record.meta.model, 'gemini-4-neon');
   assert.equal(record.meta.reasoning_effort, 'high');
-  assert.equal(readPendingAssessment(record)?.model, 'gemini-4-neon');
+  assert.equal(
+    (await readPendingAssessmentState(options.profilesDir, 'Q1', record))
+      ?.model,
+    'gemini-4-neon',
+  );
 });

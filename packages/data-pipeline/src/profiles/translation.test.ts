@@ -25,7 +25,6 @@ import {
   translationPrompt,
 } from './translation.js';
 import { asRecord } from './values.js';
-import { selectAdversarialTargets } from './verification/adversarial.js';
 import { type Assessment, hash } from './verification/policy.js';
 import { applyEnglishAudit } from './verification/runner.js';
 
@@ -160,19 +159,6 @@ async function fixture(t: TestContext) {
     subject: SUBJECT,
     assessment,
     researcherModel: 'researcher',
-    adversarial: {
-      model: 'checker',
-      checks: selectAdversarialTargets(profile, assessment).map(
-        ({ path, finding_index }) => ({
-          path,
-          finding_index,
-          queries: ['Fixture check'],
-          note: 'Fixture',
-          outcome: 'no_conflict_found',
-          counterevidence: [],
-        }),
-      ),
-    },
     audit,
     auditModel: 'auditor',
     snapshots: [source],

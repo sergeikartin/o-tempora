@@ -1,11 +1,6 @@
 import { passages } from '../passages.js';
 import { asRecord } from '../values.js';
 import {
-  type AdversarialResult,
-  parseAdversarialResult,
-  selectAdversarialTargets,
-} from './adversarial.js';
-import {
   type Assessment,
   type Audit,
   findingExcerpts,
@@ -53,7 +48,6 @@ export interface Report {
   models: string[];
   assessment: Assessment;
   audit: Audit;
-  adversarial?: AdversarialResult;
   sources: Pick<Source, 'id' | 'url' | 'fetched_at'>[];
   evidence_errors: string[];
   mechanical: string[];
@@ -177,41 +171,6 @@ export function blockers(
     ...assessmentBlockers(profile, assessment, report.sources),
   ];
   if (!report.audit.coherent) result.push('Profile is not coherent');
-  const sources = new Map(report.sources.map((source) => [source.id, source]));
-  const targets = selectAdversarialTargets(profile, assessment);
-  try {
-    if (report.adversarial !== undefined) {
-      const checks = parseAdversarialResult(report.adversarial, targets);
-      if (
-        !report.adversarial.model?.trim() ||
-        !strings(report.models, 'report models').includes(
-          report.adversarial.model,
-        )
-      )
-        throw new Error('Missing adversarial model');
-      for (const check of checks) {
-        const merged =
-          assessment.findings[check.finding_index]?.counterevidence ?? [];
-        for (const item of check.counterevidence) {
-          if (
-            !sources.has(item.source) ||
-            !merged.some(
-              (entry) =>
-                entry.source === item.source &&
-                normalizeText(entry.quote) === normalizeText(item.quote),
-            )
-          )
-            throw new Error(
-              `${check.path}: adversarial counterevidence is missing from the assessment or sources`,
-            );
-        }
-      }
-    } else if (targets.length) {
-      throw new Error('Missing adversarial checks for selected findings');
-    }
-  } catch (error) {
-    result.push(error instanceof Error ? error.message : String(error));
-  }
   return [...new Set(result)];
 }
 
