@@ -1,7 +1,7 @@
 # Assessed Profile repair prompt
 
-- **Version:** 2.0.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `d9374300638e`)
+- **Version:** 2.0.1
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `615b7cecbcb0`)
 
 ## Prompt
 
@@ -30,5 +30,5 @@ Return JSON only with this patch shape (omit optional keys you do not change):
   "uncovered": [],
   "issues": []
 }
-Validate your saved reply with `profiles preflight --qid=<QID> --file=<reply path>` before returning.
+Validate your saved reply with `profiles validate --qid=<QID> --file=<reply path>` before returning.
 ```

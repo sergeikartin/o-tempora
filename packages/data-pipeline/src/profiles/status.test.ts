@@ -135,7 +135,7 @@ test('status reports the next command throughout the workflow and detects stale 
   });
 
   await writeJson(stagedFile, {});
-  await assertStage('staged', 'preflight');
+  await assertStage('staged', 'validate');
   await writeJson(
     path.join(profilesDir, 'evidence', `${snapshot.id}.json`),
     snapshot,

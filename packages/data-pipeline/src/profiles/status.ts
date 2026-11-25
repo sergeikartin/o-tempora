@@ -23,7 +23,7 @@ import { reportPathFor } from './verification/runner.ts';
 
 const COMMANDS = {
   missing: ['prefetch', 'write'],
-  staged: ['preflight', 'finalize'],
+  staged: ['validate', 'finalize'],
   'draft-pending-audit': ['english-audit'],
   'english-held': ['english-repair'],
   'english-approved': ['russian-translation'],
@@ -106,8 +106,8 @@ async function inspectSubject(
   const { qid } = subject;
   const incoming = path.join(incomingDir, `${qid}.json`);
   if (stored?.status !== 'edited' && (await hasFile(incoming))) {
-    const { preflightProfile } = await import('./preflight.ts');
-    const preflight = await preflightProfile({
+    const { validateProfile } = await import('./validate.ts');
+    const validation = await validateProfile({
       qid,
       subject,
       profilesDir,
@@ -116,7 +116,7 @@ async function inspectSubject(
     return {
       qid,
       stage: 'staged',
-      next_command: preflight.ok ? 'finalize' : 'preflight',
+      next_command: validation.ok ? 'finalize' : 'validate',
     };
   }
   if (!stored) {

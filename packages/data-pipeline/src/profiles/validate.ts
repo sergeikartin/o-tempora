@@ -101,7 +101,7 @@ function articleTitle(url: string): string | undefined {
   return titleOfArticleUrl(url)?.trim() || undefined;
 }
 
-export async function preflightProfile({
+export async function validateProfile({
   qid,
   filePath,
   profilesDir,

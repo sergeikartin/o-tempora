@@ -481,7 +481,7 @@ export async function runCoordinatorCommand(
       'batch',
       'refresh',
     ],
-    preflight: ['qid', 'file'],
+    validate: ['qid', 'file'],
     prefetch: [
       'qids',
       'max-sources',
@@ -703,15 +703,15 @@ export async function runCoordinatorCommand(
     const qid = required('qid');
     const result = flags.get('result');
     const taskOptions = { ...options, outFile: flags.get('out') };
-    if (command === 'preflight') {
+    if (command === 'validate') {
       if (!/^Q\d+$/.test(qid)) throw new Error('--qid must be a Wikidata QID');
-      const [{ preflightProfile }, loadSubjectsFn] = await Promise.all([
-        import('./preflight.ts'),
+      const [{ validateProfile }, loadSubjectsFn] = await Promise.all([
+        import('./validate.ts'),
         getSubjectsLoader(options),
       ]);
       const subject = loadSubjectsFn().find((entry) => entry.qid === qid);
       options.emit(
-        await preflightProfile({
+        await validateProfile({
           qid,
           subject,
           profilesDir: options.profilesDir,

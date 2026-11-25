@@ -13,9 +13,9 @@ import { evidenceStore } from '../evidence-cache.ts';
 import { type ModelProfile, parseModelProfile } from '../model-profile.ts';
 import { passages } from '../passages.ts';
 import { readCompletedRepairs } from '../pending-state.ts';
-import { preflightProfile } from '../preflight.ts';
 import type { ProfileSubject } from '../subjects.ts';
 import { approvedTranslation, readTranslation } from '../translation.ts';
+import { validateProfile } from '../validate.ts';
 import { asRecord } from '../values.ts';
 import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.ts';
 import {
@@ -680,15 +680,15 @@ test('HTML extraction preserves inline words and removes script content; network
     assert.throws(() => sourceUrl(url));
 });
 
-test('local preflight reports schema, identity, prose, citation and assessment defects', async (t) => {
+test('local validate reports schema, identity, prose, citation and assessment defects', async (t) => {
   const { root, options } = await setup(t);
   await mkdir(path.join(root, 'evidence'));
   await writeFile(
     path.join(root, 'evidence', `${SOURCE.id}.json`),
     JSON.stringify(SOURCE),
   );
-  const preflight = () =>
-    preflightProfile({
+  const validation = () =>
+    validateProfile({
       qid: SUBJECT.qid,
       subject: SUBJECT,
       filePath: options.filePath,
@@ -712,7 +712,7 @@ test('local preflight reports schema, identity, prose, citation and assessment d
   const valid = raw();
   const supported = assessment(parseModelProfile(valid, 'fixture'));
   await pending(valid, supported);
-  assert.equal((await preflight()).ok, true);
+  assert.equal((await validation()).ok, true);
 
   await writeFile(options.filePath, JSON.stringify(valid));
   await writeFile(
@@ -722,7 +722,7 @@ test('local preflight reports schema, identity, prose, citation and assessment d
       assessment: supported,
     }),
   );
-  assert.equal((await preflight()).ok, true);
+  assert.equal((await validation()).ok, true);
 
   for (const date of ['1688–1687', '0–1 AD']) {
     const invalid = {
@@ -775,7 +775,7 @@ test('local preflight reports schema, identity, prose, citation and assessment d
       '{bad',
     );
     await pending(invalid, broken);
-    const result = await preflight();
+    const result = await validation();
     assert.equal(result.ok, false);
     for (const message of [
       /type: Subject type/,
@@ -806,12 +806,12 @@ test('local preflight reports schema, identity, prose, citation and assessment d
   };
   await pending(badSource, supported);
   assert.match(
-    (await preflight()).issues.join('\n'),
+    (await validation()).issues.join('\n'),
     /replace source with a fetched supporting URL/,
   );
 
   await writeFile(options.filePath, '{');
-  const malformed = await preflight();
+  const malformed = await validation();
   assert.equal(malformed.ok, false);
   assert.match(malformed.issues.join('\n'), /^file:/);
 });
@@ -922,13 +922,13 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   }
   await mkdir(path.join(root, 'incoming'));
   const staged = await save('incoming/Q935.json', assessed(initial));
-  const preflightOptions = {
+  const validateOptions = {
     ...commands,
-    resolve: async () => assert.fail('Preflight must not resolve articles'),
-    fetch: async () => assert.fail('Preflight must not fetch evidence'),
+    resolve: async () => assert.fail('Validate must not resolve articles'),
+    fetch: async () => assert.fail('Validate must not fetch evidence'),
   };
   assert.equal(
-    await runCoordinatorCommand('preflight', [qid], preflightOptions),
+    await runCoordinatorCommand('validate', [qid], validateOptions),
     true,
   );
   assert.deepEqual(output, {
@@ -947,15 +947,15 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
   });
   assert.equal(
     await runCoordinatorCommand(
-      'preflight',
+      'validate',
       [qid, `--file=${invalidStaged}`],
-      preflightOptions,
+      validateOptions,
     ),
     true,
   );
-  assert.equal(asRecord(output, 'preflight').ok, false);
+  assert.equal(asRecord(output, 'validate').ok, false);
   assert.match(
-    String(asRecord(output, 'preflight').issues),
+    String(asRecord(output, 'validate').issues),
     /overview: no factual claims/,
   );
 
@@ -1458,7 +1458,7 @@ test('evidenceStore shares blocked-hosts cache and clears blocks on refresh', as
   assert.match(other.url, /Julian-calendar/);
 });
 
-test('local preflight flags misclassified Wikipedia, primary-text, low-trust and inconsistent sources', async (t) => {
+test('local validate flags misclassified Wikipedia, primary-text, low-trust and inconsistent sources', async (t) => {
   const { root, options } = await setup(t);
   const evidenceDir = path.join(root, 'evidence');
   await mkdir(evidenceDir);
@@ -1542,7 +1542,7 @@ test('local preflight flags misclassified Wikipedia, primary-text, low-trust and
       },
     }),
   );
-  const result = await preflightProfile({
+  const result = await validateProfile({
     qid: SUBJECT.qid,
     subject: SUBJECT,
     filePath: options.filePath,
@@ -1642,7 +1642,7 @@ test('readExcerpt strips anchors and headings, and evidence --batch runs multipl
   );
 });
 
-test('compact patch English repair preserves untouched passages, validates in preflight, and passes re_audit context', async (t) => {
+test('compact patch English repair preserves untouched passages, validates locally, and passes re_audit context', async (t) => {
   const { root, options } = await setup(t);
   const evidenceDir = path.join(root, 'evidence');
   await mkdir(evidenceDir);
@@ -1748,9 +1748,9 @@ test('compact patch English repair preserves untouched passages, validates in pr
     }),
   );
 
-  const preflight = await run('preflight', `--file=${patchReply}`);
-  assert.equal(preflight.ok, true);
-  assert.equal(preflight.checked_passages, 5);
+  const validation = await run('validate', `--file=${patchReply}`);
+  assert.equal(validation.ok, true);
+  assert.equal(validation.checked_passages, 5);
 
   const applied = await run('english-repair', `--result=${patchReply}`);
   assert.equal(applied.status, 'draft');
