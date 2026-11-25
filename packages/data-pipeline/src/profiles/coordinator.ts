@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { getDomain } from 'tldts';
 import { parseQidsFlag } from '../fetch/qid-filter.js';
 import {
   adversarialBinding,
@@ -65,10 +66,10 @@ import {
   completedRepairs,
   reportPathFor,
 } from './verification/runner.js';
-import { fetchSource } from './verification/sources.js';
+import { fetchSource, sourceUrl } from './verification/sources.js';
 import {
+  cachedArticleQidResolver,
   type ResolveArticleQids,
-  resolveArticleQids,
 } from './wikipedia-qids.js';
 
 interface CoordinatorOptions {
@@ -81,7 +82,7 @@ interface CoordinatorOptions {
 
 const defaultOptions: CoordinatorOptions = {
   profilesDir: RAW_PROFILES_DIR,
-  resolve: resolveArticleQids,
+  resolve: cachedArticleQidResolver(RAW_PROFILES_DIR),
   fetch: fetchSource,
   emit(result) {
     console.log(JSON.stringify(result));
@@ -572,7 +573,10 @@ export async function runCoordinatorCommand(
       );
     const sources = evidenceStore(
       options.profilesDir,
-      options.fetch,
+      (url) =>
+        getDomain(sourceUrl(url).hostname) === 'wikipedia.org'
+          ? options.fetch(url)
+          : options.fetch(url, { maxAttempts: 1, rejectBotWalls: true }),
       flags.has('refresh'),
     );
     options.emit(

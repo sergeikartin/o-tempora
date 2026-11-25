@@ -241,6 +241,31 @@ const IGNORED_DOMAINS = new Set([
   'librivox.org',
 ]);
 
+const LOW_TRUST_DOMAINS = new Set([
+  'ancienttimeline.co.uk',
+  'biography.com',
+  'ducksters.com',
+  'famousscientists.org',
+  'thefamouspeople.com',
+  'thoughtco.com',
+]);
+
+const CANONICAL_PRIMARY_TEXT_URL =
+  /^(?:https:\/\/en\.wikisource\.org\/|https:\/\/penelope\.uchicago\.edu\/Thayer\/E\/(?:Roman|Greek)\/Texts\/|https:\/\/(?:www\.)?lexundria\.com\/|https:\/\/(?:www\.)?livius\.org\/sources\/content\/|https:\/\/sourcebooks\.fordham\.edu\/|https:\/\/avalon\.law\.yale\.edu\/|https:\/\/(?:www\.)?perseus\.tufts\.edu\/hopper\/text)/i;
+
+export function isLowTrustDomain(url: string): boolean {
+  try {
+    const domain = getDomain(sourceUrl(url).hostname);
+    return domain !== null && LOW_TRUST_DOMAINS.has(domain);
+  } catch {
+    return false;
+  }
+}
+
+export function isCanonicalPrimaryTextUrl(url: string): boolean {
+  return CANONICAL_PRIMARY_TEXT_URL.test(url);
+}
+
 function isLowSignalReferenceUrl(url: URL, domain: string): boolean {
   const host = url.hostname.toLowerCase();
   if (
@@ -315,6 +340,7 @@ export function extractReferenceLinks(html: string, baseUrl: string): string[] {
           !domain ||
           !isIcann ||
           IGNORED_DOMAINS.has(domain) ||
+          LOW_TRUST_DOMAINS.has(domain) ||
           isLowSignalReferenceUrl(url, domain) ||
           /\.(pdf|jpe?g|png|gif|svg|mp[34]|zip)$/i.test(
             decodeURIComponent(url.pathname),

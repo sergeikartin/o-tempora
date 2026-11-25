@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 import { test } from 'node:test';
 import {
+  cachedArticleQidResolver,
   qidsByTitle,
   resolveArticleQids,
   titleOfArticleUrl,
@@ -105,4 +109,53 @@ test('QID resolution caps attempts and fails immediately on permanent HTTP error
     );
     assert.equal(calls, attempts);
   }
+});
+
+test('cachedArticleQidResolver reuses cached QIDs and fetches only uncached or expired titles', async (t) => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'qid-cache-'));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  let clock = 1_000;
+  const calls: string[][] = [];
+  const resolve = cachedArticleQidResolver(
+    dir,
+    async (urls) => {
+      calls.push([...urls]);
+      const map = new Map<string, string>();
+      for (const item of urls) {
+        if (item.includes('Isaac_Newton')) map.set(item, 'Q935');
+        if (item.includes('Julius_Caesar')) map.set(item, 'Q1048');
+      }
+      return map;
+    },
+    { ttlMs: 10_000, now: () => clock },
+  );
+
+  const newton = 'https://en.wikipedia.org/wiki/Isaac_Newton';
+  const newtonSpace = 'https://en.wikipedia.org/wiki/Isaac%20Newton';
+  const caesar = 'https://en.wikipedia.org/wiki/Julius_Caesar';
+
+  assert.deepEqual([...(await resolve([newton]))], [[newton, 'Q935']]);
+  assert.deepEqual(calls, [[newton]]);
+
+  // Same canonical title hits cache without another network call.
+  assert.deepEqual(
+    [...(await resolve([newtonSpace]))],
+    [[newtonSpace, 'Q935']],
+  );
+  assert.equal(calls.length, 1);
+
+  // Mixed hit + miss fetches only the uncached URL.
+  assert.deepEqual(
+    [...(await resolve([newton, caesar]))],
+    [
+      [newton, 'Q935'],
+      [caesar, 'Q1048'],
+    ],
+  );
+  assert.deepEqual(calls[1], [caesar]);
+
+  // Expired entry re-fetches.
+  clock += 10_001;
+  assert.deepEqual([...(await resolve([newton]))], [[newton, 'Q935']]);
+  assert.deepEqual(calls[2], [newton]);
 });

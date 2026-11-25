@@ -102,9 +102,29 @@ async function applyRepair(
     repaired.connections.some((item) => !originalUrls.has(item.wikipedia_url))
   )
     throw new Error('Repair introduced a new Connection');
-  const qids = await resolve(
-    repaired.connections.map((item) => item.wikipedia_url),
-  );
+  const qids = new Map<string, string>();
+  const rawConnections = Array.isArray(record.connections)
+    ? record.connections
+    : [];
+  for (const item of rawConnections) {
+    if (
+      item &&
+      typeof item === 'object' &&
+      typeof (item as Record<string, unknown>).wikipedia_url === 'string' &&
+      typeof (item as Record<string, unknown>).qid === 'string'
+    ) {
+      qids.set(
+        (item as Record<string, unknown>).wikipedia_url as string,
+        (item as Record<string, unknown>).qid as string,
+      );
+    }
+  }
+  const missing = repaired.connections
+    .map((item) => item.wikipedia_url)
+    .filter((url) => !qids.has(url));
+  if (missing.length) {
+    for (const [url, qid] of await resolve(missing)) qids.set(url, qid);
+  }
   return replaceProfile(record, repaired, qids);
 }
 

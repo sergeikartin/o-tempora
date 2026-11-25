@@ -1,10 +1,14 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { retryAfterMs } from './http-retry.js';
+import { writeJson } from './store.js';
 
 const ENDPOINT = 'https://en.wikipedia.org/w/api.php';
 
 // The Action API caps `titles` at 50 per request.
 const BATCH_SIZE = 50;
 const BATCH_DELAY_MS = 500;
+const QID_CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1_000;
 
 const USER_AGENT =
   'o-tempora-data-pipeline/0.1 (personal project; contact sergei.kartin@gmail.com)';
@@ -138,4 +142,78 @@ export async function resolveArticleQids(
     if (qid) result.set(url, qid);
   }
   return result;
+}
+
+interface CachedQidEntry {
+  qid: string;
+  resolved_at: number;
+}
+
+function parseQidCache(value: unknown): Record<string, CachedQidEntry> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  const entries: Record<string, CachedQidEntry> = {};
+  for (const [title, raw] of Object.entries(value)) {
+    if (!raw || typeof raw !== 'object') continue;
+    const item = raw as Partial<CachedQidEntry>;
+    if (
+      typeof item.qid === 'string' &&
+      /^Q\d+$/.test(item.qid) &&
+      typeof item.resolved_at === 'number' &&
+      Number.isFinite(item.resolved_at)
+    ) {
+      entries[title] = { qid: item.qid, resolved_at: item.resolved_at };
+    }
+  }
+  return entries;
+}
+
+export function cachedArticleQidResolver(
+  profilesDir: string,
+  resolve: ResolveArticleQids = resolveArticleQids,
+  {
+    ttlMs = QID_CACHE_TTL_MS,
+    now = Date.now,
+  }: { ttlMs?: number; now?: () => number } = {},
+): ResolveArticleQids {
+  const cacheFile = path.join(profilesDir, 'evidence', 'wikipedia-qids.json');
+  return async (urls) => {
+    let raw: unknown;
+    try {
+      raw = JSON.parse(await readFile(cacheFile, 'utf8'));
+    } catch (error) {
+      if (
+        !(error instanceof SyntaxError) &&
+        (error as NodeJS.ErrnoException).code !== 'ENOENT'
+      )
+        throw error;
+    }
+    const cache = parseQidCache(raw);
+    const timestamp = now();
+    const result = new Map<string, string>();
+    const missing: string[] = [];
+    for (const url of urls) {
+      const title = titleOfArticleUrl(url);
+      if (!title) continue;
+      const entry = cache[title];
+      if (entry && timestamp - entry.resolved_at < ttlMs) {
+        result.set(url, entry.qid);
+      } else {
+        missing.push(url);
+      }
+    }
+    if (!missing.length) return result;
+
+    const fetched = await resolve(missing);
+    let updated = false;
+    for (const [url, qid] of fetched) {
+      result.set(url, qid);
+      const title = titleOfArticleUrl(url);
+      if (title && /^Q\d+$/.test(qid)) {
+        cache[title] = { qid, resolved_at: timestamp };
+        updated = true;
+      }
+    }
+    if (updated) await writeJson(cacheFile, cache);
+    return result;
+  };
 }

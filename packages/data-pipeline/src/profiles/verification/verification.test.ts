@@ -9,6 +9,7 @@ import {
   shipProfiles,
 } from '../../output/profiles.js';
 import { runCoordinatorCommand } from '../coordinator.js';
+import { evidenceStore } from '../evidence-cache.js';
 import { type ModelProfile, parseModelProfile } from '../model-profile.js';
 import { passages } from '../passages.js';
 import { preflightProfile } from '../preflight.js';
@@ -48,6 +49,7 @@ import {
   htmlText,
   parseSourceSnapshot,
   publicIPv4,
+  SourceFetchError,
   SourceStore,
   sourceUrl,
 } from './sources.js';
@@ -1857,4 +1859,304 @@ test('coordinator rejects --out when applying a result', async () => {
       /--out cannot be combined with --result/,
     );
   }
+});
+
+test('evidenceStore shares blocked-hosts cache and clears blocks on refresh', async (t) => {
+  const { root } = await setup(t);
+  let calls = 0;
+  let shouldFail = true;
+  const target = 'https://www.britannica.com/biography/Julius-Caesar';
+  const fetchPage = async (url: string): Promise<Source> => {
+    calls++;
+    if (shouldFail) throw new SourceFetchError('Source returned HTTP 403', 403);
+    const body = {
+      url,
+      fetched_at: '2026-11-25T00:00:00Z',
+      text: 'Julius Caesar biography.',
+      anchors: [],
+    };
+    return { id: hash(body), ...body };
+  };
+
+  await assert.rejects(
+    evidenceStore(root, fetchPage, false).read(target),
+    /HTTP 403/,
+  );
+  assert.equal(calls, 1);
+
+  // Subsequent read on another URL on the same host fast-fails without calling fetchPage.
+  await assert.rejects(
+    evidenceStore(root, fetchPage, false).read(
+      'https://www.britannica.com/topic/Julian-calendar',
+    ),
+    /Blocked host: Source returned HTTP 403/,
+  );
+  assert.equal(calls, 1);
+
+  // Refresh bypasses and clears the host block once the source recovers.
+  shouldFail = false;
+  const recovered = await evidenceStore(root, fetchPage, true).read(target);
+  assert.equal(calls, 2);
+  assert.equal(recovered.url, target);
+
+  // A new non-refresh read now works for another path on the cleared host.
+  const other = await evidenceStore(root, fetchPage, false).read(
+    'https://www.britannica.com/topic/Julian-calendar',
+  );
+  assert.equal(calls, 3);
+  assert.match(other.url, /Julian-calendar/);
+});
+
+test('English adversarial reuses conflict_found checks across counterevidence-preserving repairs unless a new risk cue is added', async (t) => {
+  const { root, options } = await setup(t);
+  const directory = path.join(root, 'evidence');
+  await mkdir(directory);
+  await writeFile(
+    path.join(directory, `${SOURCE.id}.json`),
+    JSON.stringify(SOURCE),
+  );
+  const contrarySource = {
+    ...SOURCE,
+    url: 'https://example.org/archive',
+    text: 'A competing account.',
+  };
+  contrarySource.id = hash(contrarySource.text);
+  await writeFile(
+    path.join(directory, `${contrarySource.id}.json`),
+    JSON.stringify(contrarySource),
+  );
+
+  const initial = highRiskDraft();
+  const profile = parseModelProfile(initial, 'test');
+  const initialAssessment = assessment(profile);
+  const targets = selectAdversarialTargets(profile, initialAssessment);
+  const conflict = [
+    {
+      source: contrarySource.id,
+      quote: contrarySource.text,
+      kind: 'scholarly' as const,
+      origin: 'Archive',
+    },
+  ];
+  const checks = targets
+    .map((target) =>
+      target.path.startsWith('deep_facts.')
+        ? makeCheck(target, 'conflict_found', conflict)
+        : makeCheck(target),
+    )
+    .sort((a, b) => a.finding_index - b.finding_index);
+  const hold = {
+    ...cleanAudit,
+    issues: ['deep_facts.0.text: reflect competing account'],
+  };
+  await writeFile(options.filePath, JSON.stringify(initial));
+  await applyEnglishAudit({
+    ...options,
+    assessment: initialAssessment,
+    adversarial: { model: 'checker', checks },
+    audit: hold,
+    snapshots: [SOURCE, contrarySource],
+  });
+
+  // Repair modifies deep_facts.0.text and its claim to reflect the conflict,
+  // preserving the exact counterevidence excerpt without adding a new risk cue.
+  const qualified = parseModelProfile(
+    {
+      ...initial,
+      deep_facts: [
+        {
+          ...initial.deep_facts[0],
+          text: 'Newton worked on optics, though one archive records a competing account.',
+        },
+      ],
+    },
+    'test',
+  );
+  const qualifiedAssessment = assessment(qualified);
+  const dfFinding = qualifiedAssessment.findings.find(
+    (item) => item.path === 'deep_facts.0.text',
+  );
+  assert.ok(dfFinding);
+  dfFinding.counterevidence = conflict;
+
+  let emitted: unknown;
+  const run = async (command: string, ...args: string[]) => {
+    emitted = undefined;
+    await runCoordinatorCommand(command, ['--qid=Q935', ...args], {
+      profilesDir: root,
+      subjects: () => [SUBJECT],
+      resolve: async () =>
+        assert.fail('repair should reuse existing connection QIDs offline'),
+      fetch: async () => assert.fail('unexpected fetch'),
+      emit: (value) => {
+        emitted = value;
+      },
+    });
+    return asRecord(emitted, command);
+  };
+  const reply = path.join(root, 'reply.json');
+  const repairTask = await run('english-repair');
+  await writeFile(
+    reply,
+    JSON.stringify({
+      input_hash: repairTask.input_hash,
+      result: assessedDraft(qualified, qualifiedAssessment),
+      model: 'writer',
+    }),
+  );
+  assert.equal(
+    (await run('english-repair', `--result=${reply}`)).status,
+    'draft',
+  );
+
+  // Both overview (unchanged) and deep_facts.0.text (counterevidence preserved) reuse checks.
+  assert.deepEqual(await run('english-adversarial'), {
+    status: 'reused',
+    checks: 2,
+    conflicts: 1,
+  });
+
+  // Introducing a brand-new risk cue ("first") in the repaired claim still forces a fresh check.
+  const withNewCue = parseModelProfile(
+    {
+      ...initial,
+      deep_facts: [
+        {
+          ...initial.deep_facts[0],
+          text: 'Newton was the first to work on optics, though one archive records a competing account.',
+        },
+      ],
+    },
+    'test',
+  );
+  const cueAssessment = assessment(withNewCue);
+  const cueFinding = cueAssessment.findings.find(
+    (item) => item.path === 'deep_facts.0.text',
+  );
+  assert.ok(cueFinding);
+  cueFinding.counterevidence = conflict;
+  const onDisk = JSON.parse(await readFile(options.filePath, 'utf8'));
+  const nextRecord = {
+    ...onDisk,
+    ...withNewCue,
+    meta: {
+      ...onDisk.meta,
+      pending_adversarial: undefined,
+      pending_assessment: {
+        profile_hash: profileHash({ ...onDisk, ...withNewCue }),
+        assessment: cueAssessment,
+        model: 'writer',
+      },
+    },
+  };
+  await writeFile(options.filePath, JSON.stringify(nextRecord));
+  const prepared = await run('english-adversarial');
+  const cueTargets = prepared.targets as AdversarialTarget[];
+  assert.equal(cueTargets.length, 1);
+  assert.equal(cueTargets[0]?.path, 'deep_facts.0.text');
+});
+
+test('local preflight flags misclassified Wikipedia, primary-text, low-trust and inconsistent sources', async (t) => {
+  const { root, options } = await setup(t);
+  const evidenceDir = path.join(root, 'evidence');
+  await mkdir(evidenceDir);
+  const makeSnapshot = (url: string, text: string): Source => {
+    const body = { url, fetched_at: '2026-11-25T00:00:00Z', text, anchors: [] };
+    return { id: hash(body), ...body };
+  };
+  const primaryText = makeSnapshot(
+    'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/Julius*.html',
+    'Suetonius wrote about Caesar.',
+  );
+  const lowTrust = makeSnapshot(
+    'https://www.ancienttimeline.co.uk/Romans/timeline-detail.php?id=7',
+    'Anonymous timeline text.',
+  );
+  const archivePage = makeSnapshot(
+    'https://www.nationalarchives.gov.uk/education/item/',
+    'Archive letter text and curator summary.',
+  );
+  for (const snap of [SOURCE, primaryText, lowTrust, archivePage]) {
+    await writeFile(
+      path.join(evidenceDir, `${snap.id}.json`),
+      JSON.stringify(snap),
+    );
+  }
+  const valid = raw();
+  const checked = assessment(parseModelProfile(valid, 'fixture'));
+  // 1. Wikipedia labeled scholarly
+  checked.findings[0]?.evidence.push({
+    source: SOURCE.id,
+    quote: 'Newton was born in 1643.',
+    kind: 'scholarly',
+    origin: 'Wikipedia',
+  });
+  // 2. Primary classical text labeled scholarly
+  checked.findings[0]?.evidence.push({
+    source: primaryText.id,
+    quote: primaryText.text,
+    kind: 'scholarly',
+    origin: 'Suetonius',
+  });
+  // 3. Low-trust timeline site labeled scholarly
+  checked.findings[0]?.evidence.push({
+    source: lowTrust.id,
+    quote: lowTrust.text,
+    kind: 'scholarly',
+    origin: 'SPQR',
+  });
+  // 4. Archive page legitimately combining primary + scholarly should NOT trigger inconsistency,
+  //    whereas scholarly + other on the same source ID should trigger inconsistency.
+  checked.findings[1]?.evidence.push({
+    source: archivePage.id,
+    quote: 'Archive letter text',
+    kind: 'primary',
+    origin: 'National Archives',
+  });
+  checked.findings[1]?.evidence.push({
+    source: archivePage.id,
+    quote: 'curator summary',
+    kind: 'scholarly',
+    origin: 'National Archives',
+  });
+  checked.findings[2]?.evidence.push({
+    source: lowTrust.id,
+    quote: lowTrust.text,
+    kind: 'other',
+    origin: 'SPQR',
+  });
+
+  await writeFile(
+    options.filePath,
+    JSON.stringify({
+      ...valid,
+      meta: {
+        ...valid.meta,
+        pending_assessment: {
+          profile_hash: profileHash(valid),
+          assessment: checked,
+          model: 'writer',
+        },
+      },
+    }),
+  );
+  const result = await preflightProfile({
+    qid: SUBJECT.qid,
+    subject: SUBJECT,
+    filePath: options.filePath,
+    profilesDir: root,
+  });
+  assert.equal(result.ok, false);
+  const joined = result.issues.join('\n');
+  assert.match(joined, /Wikipedia source .* must use kind "wikipedia"/);
+  assert.match(joined, /primary text edition .* should use kind "primary"/);
+  assert.match(
+    joined,
+    /low-trust reference site .* cannot be classified as "scholarly"/,
+  );
+  assert.match(
+    joined,
+    /inconsistent evidence\.kind \("scholarly" and "other"\)/,
+  );
+  assert.doesNotMatch(joined, /nationalarchives\.gov\.uk/);
 });

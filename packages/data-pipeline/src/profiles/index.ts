@@ -4,7 +4,7 @@ import { type FinalizeOptions, finalizeProfiles } from './finalize.js';
 import { INCOMING_DIR, RAW_PROFILES_DIR } from './paths.js';
 import { loadWriterModel } from './prompt.js';
 import { loadSubjects } from './subjects.js';
-import { resolveArticleQids } from './wikipedia-qids.js';
+import { cachedArticleQidResolver } from './wikipedia-qids.js';
 
 const USAGE = `Usage: profiles <finalize|status|preflight|prefetch|evidence|english-adversarial|english-audit|english-repair|russian-translation|russian-audit> [flags]
   finalize  [--qids=Q1,Q2,...] [--run-id=<id>] [--model=<id>]
@@ -27,7 +27,7 @@ export async function runFinalizeCommand(
     incomingDir: INCOMING_DIR,
     profilesDir: RAW_PROFILES_DIR,
     subjects: loadSubjects(),
-    resolveArticleQids,
+    resolveArticleQids: cachedArticleQidResolver(RAW_PROFILES_DIR),
   }),
 ) {
   const unknown = argv.find(

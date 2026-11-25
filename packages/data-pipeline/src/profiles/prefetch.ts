@@ -1,22 +1,22 @@
-import { readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { getDomain } from 'tldts';
+import {
+  createBlockedHostCache,
+  isBlockableFetchError,
+  rootHost,
+} from './blocked-hosts.js';
 import { evidenceStore } from './evidence-cache.js';
 import { writeJson } from './store.js';
 import { type ProfileSubject, subjectBrief } from './subjects.js';
 import { asArray, asRecord, asString } from './values.js';
-import { hash } from './verification/assessment.js';
 import {
   fetchReferenceLinks,
   fetchSource,
-  SourceFetchError,
   sourceUrl,
 } from './verification/sources.js';
 
-const BLOCK_TTL = 7 * 24 * 60 * 60 * 1_000;
 const PREFETCH_MIN_TEXT_LENGTH = 1_000;
 const MAX_EXPLICIT_URLS = 24;
-const UNSUPPORTED_TYPE_REASON = 'Source is not readable HTML or plain text';
 
 const INSTITUTIONS = new Set([
   'stanford.edu',
@@ -123,17 +123,6 @@ export function parsePrefetchManifest(
   };
 }
 
-function rootHost(url: string): string {
-  const { hostname } = sourceUrl(url);
-  return getDomain(hostname, { allowPrivateDomains: true }) ?? hostname;
-}
-
-function blockHost(url: string): string {
-  return sourceUrl(url)
-    .hostname.replace(/^www\./, '')
-    .toLowerCase();
-}
-
 function isWikipediaUrl(url: string): boolean {
   return getDomain(sourceUrl(url).hostname) === 'wikipedia.org';
 }
@@ -153,31 +142,6 @@ export function rankReferences(links: readonly string[]) {
     seen.add(host);
     return true;
   });
-}
-
-type BlockedHost = { url: string; reason: string; failed_at: number };
-
-async function readCache(file: string): Promise<unknown> {
-  try {
-    return JSON.parse(await readFile(file, 'utf8'));
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return undefined;
-    if (error instanceof SyntaxError) return null;
-    throw error;
-  }
-}
-
-function activeBlock(value: unknown, now: number): value is BlockedHost {
-  if (!value || typeof value !== 'object') return false;
-  const entry = value as Partial<BlockedHost>;
-  return (
-    typeof entry.url === 'string' &&
-    typeof entry.reason === 'string' &&
-    entry.reason !== UNSUPPORTED_TYPE_REASON &&
-    typeof entry.failed_at === 'number' &&
-    Number.isFinite(entry.failed_at) &&
-    now - entry.failed_at < BLOCK_TTL
-  );
 }
 
 interface PrefetchOptions {
@@ -238,11 +202,7 @@ export async function prefetchSubject({
   const limit = Math.max(1, Math.min(8, maxSources));
   const explicitMode = manifest !== undefined || urls !== undefined;
   const directory = path.join(profilesDir, 'evidence');
-  const legacy = await readCache(path.join(directory, 'blocked-hosts.json'));
-  const legacyHosts =
-    legacy && typeof legacy === 'object'
-      ? (legacy as Record<string, unknown>)
-      : {};
+  const blocks = createBlockedHostCache(directory, now);
   const wikipediaUrl = sourceUrl(subject.wikipediaUrl).href;
   let links: string[] | undefined;
   const store = evidenceStore(
@@ -268,6 +228,7 @@ export async function prefetchSubject({
       });
     },
     refresh,
+    { blockedHosts: false },
   );
   type Outline = Awaited<ReturnType<typeof store.readOutline>>;
   type ReadResult = Outline | { url: string; reason: string };
@@ -276,60 +237,30 @@ export async function prefetchSubject({
 
   async function read(url: string): Promise<ReadResult> {
     let normalized: string;
-    let host: string;
-    let root: string;
     try {
       normalized = sourceUrl(url).href;
-      host = blockHost(normalized);
-      root = rootHost(normalized);
     } catch (error) {
       return {
         url,
         reason: error instanceof Error ? error.message : String(error),
       };
     }
-    const hostKey = path.join(directory, 'blocked-hosts', hash(host));
-    const blockedFile = `${hostKey}.json`;
-    const clearedFile = `${hostKey}.cleared`;
-    const legacyEntry = Object.hasOwn(legacyHosts, host)
-      ? legacyHosts[host]
-      : Object.hasOwn(legacyHosts, root)
-        ? legacyHosts[root]
-        : undefined;
     if (!refresh) {
-      const entry = await readCache(blockedFile);
-      const prior =
-        entry === undefined &&
-        activeBlock(legacyEntry, now()) &&
-        (await readCache(clearedFile)) === undefined
-          ? legacyEntry
-          : entry;
-      if (activeBlock(prior, now()))
-        return { url: normalized, reason: `Blocked host: ${prior.reason}` };
+      const blockedReason = await blocks.check(normalized);
+      if (blockedReason !== undefined)
+        return { url: normalized, reason: `Blocked host: ${blockedReason}` };
     }
     let outline: Outline;
     try {
       outline = await store.readOutline(normalized);
     } catch (error) {
       const reason = error instanceof Error ? error.message : String(error);
-      if (
-        error instanceof SourceFetchError &&
-        (error.botChallenge || [403, 410, 451].includes(error.status ?? 0))
-      ) {
-        await writeJson(blockedFile, {
-          host,
-          url: normalized,
-          reason,
-          failed_at: now(),
-        });
+      if (isBlockableFetchError(error)) {
+        await blocks.record(normalized, reason);
       }
       return { url: normalized, reason };
     }
-    if (refresh) {
-      // Suppress a legacy entry without changing the shared legacy file.
-      if (activeBlock(legacyEntry, now())) await writeJson(clearedFile, true);
-      await rm(blockedFile, { force: true });
-    }
+    if (refresh) await blocks.clear(normalized);
     return outline;
   }
 

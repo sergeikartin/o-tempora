@@ -14,14 +14,66 @@ import {
   localMechanicalChecks,
 } from './verification/mechanical.js';
 import {
+  type Assessment,
   assessmentBlockers,
   checkEvidence,
+  type Evidence,
   findingExcerpts,
   parseAssessment,
   profileHash,
+  type Source,
 } from './verification/policy.js';
 import { reportPathFor } from './verification/runner.js';
+import {
+  isCanonicalPrimaryTextUrl,
+  isLowTrustDomain,
+} from './verification/sources.js';
 import { titleOfArticleUrl } from './wikipedia-qids.js';
+
+function sourceClassificationIssues(
+  assessment: Assessment,
+  snapshots: readonly Pick<Source, 'id' | 'url'>[],
+): string[] {
+  const byId = new Map(snapshots.map((source) => [source.id, source]));
+  const kindsBySource = new Map<string, Set<Evidence['kind']>>();
+  const issues: string[] = [];
+  for (const finding of assessment.findings) {
+    for (const item of findingExcerpts(finding)) {
+      const source = byId.get(item.source);
+      if (!source) continue;
+      const kinds = kindsBySource.get(item.source) ?? new Set();
+      kinds.add(item.kind);
+      kindsBySource.set(item.source, kinds);
+      const hostname = new URL(source.url).hostname.toLowerCase();
+      if (hostname.endsWith('.wikipedia.org') && item.kind !== 'wikipedia') {
+        issues.push(
+          `${finding.path}: Wikipedia source (${source.url}) must use kind "wikipedia", not "${item.kind}"`,
+        );
+      }
+      if (isCanonicalPrimaryTextUrl(source.url) && item.kind === 'scholarly') {
+        issues.push(
+          `${finding.path}: primary text edition (${source.url}) should use kind "primary", not "scholarly"`,
+        );
+      }
+      if (
+        isLowTrustDomain(source.url) &&
+        (item.kind === 'scholarly' || item.kind === 'primary')
+      ) {
+        issues.push(
+          `${finding.path}: low-trust reference site (${source.url}) cannot be classified as "${item.kind}"`,
+        );
+      }
+    }
+  }
+  for (const [id, kinds] of kindsBySource) {
+    if (kinds.has('scholarly') && kinds.has('other')) {
+      issues.push(
+        `evidence.${id}: inconsistent evidence.kind ("scholarly" and "other") for ${byId.get(id)?.url}`,
+      );
+    }
+  }
+  return issues;
+}
 
 async function readDraft(filePath: string, qid: string, issues: string[]) {
   const record = asRecord(
@@ -133,6 +185,7 @@ export async function preflightProfile({
     issues.push(
       ...checkEvidence(assessment, snapshots),
       ...assessmentBlockers(profile, assessment, snapshots),
+      ...sourceClassificationIssues(assessment, snapshots),
     );
   } catch (error) {
     issues.push(
