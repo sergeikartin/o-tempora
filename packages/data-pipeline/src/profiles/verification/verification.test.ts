@@ -213,12 +213,15 @@ test('independent audit receives each finding once and shares overlapping source
       excerpts: [
         {
           section: [],
-          text: text.slice(0, text.indexOf(quotes[1]) + quotes[1].length + 700),
+          text: text.slice(0, text.indexOf(quotes[1]) + quotes[1].length + 350),
         },
-        { section: [], text: text.slice(text.indexOf(quotes[2]) - 700) },
+        { section: [], text: text.slice(text.indexOf(quotes[2]) - 350) },
       ],
     },
   ]);
+  assert.equal(payload.assessment.covered, undefined);
+  assert.equal(payload.assessment.findings[0].explanation, undefined);
+  assert.equal(payload.assessment.findings[0].correction, undefined);
 });
 
 async function setup(t: TestContext) {
@@ -1506,6 +1509,12 @@ test('adversarial targets are deterministic and capped, and the prompt omits wri
   const targets = selectAdversarialTargets(draft, input);
   assert.deepEqual(
     targets.map(({ finding_index }) => finding_index),
+    [6, 5, 3, 8],
+  );
+  assert.deepEqual(
+    selectAdversarialTargets(draft, input, { perPassage: false }).map(
+      ({ finding_index }) => finding_index,
+    ),
     [6, 5, 2, 3, 7],
   );
   assert.deepEqual(targets, selectAdversarialTargets(draft, input));
@@ -1684,7 +1693,7 @@ test('English adversarial tasks reuse unchanged claims through evidence-only and
   const revised = parseModelProfile(
     {
       ...initial,
-      overview: 'Newton was the first to describe another result.',
+      overview: 'Newton was the first to invent a 1688 result.',
     },
     'test',
   );
@@ -1745,6 +1754,7 @@ test('historical policy 7 approvals with the adversarial opt-out remain eligible
   const savedFiles = await saved(options);
   const report = {
     ...savedFiles.report,
+    policy_version: '7',
     adversarial_disabled: true as const,
     blockers: [],
   };
@@ -2159,4 +2169,392 @@ test('local preflight flags misclassified Wikipedia, primary-text, low-trust and
     /inconsistent evidence\.kind \("scholarly" and "other"\)/,
   );
   assert.doesNotMatch(joined, /nationalarchives\.gov\.uk/);
+});
+
+test('readExcerpt strips anchors and headings, and evidence --batch runs multiple reads in one call', async (t) => {
+  const { root, options } = await setup(t);
+  const doc = extractHtmlDocument(
+    '<title>Newton</title><h1 id="a1">Bio</h1><p id="p1">Isaac Newton published Principia in 1687.</p><h2 id="a2">Optics</h2><p id="p2">He studied prisms.</p>',
+    new Set(['a1', 'p1', 'a2', 'p2']),
+  );
+  const snapshot: Source = {
+    id: hash({
+      url: URL,
+      fetched_at: SOURCE.fetched_at,
+      ...doc,
+      anchors: ['a1', 'p1', 'a2', 'p2'],
+    }),
+    url: URL,
+    fetched_at: SOURCE.fetched_at,
+    ...doc,
+    anchors: ['a1', 'p1', 'a2', 'p2'],
+  };
+  const store = new SourceStore(undefined, [snapshot]);
+  const hit = await store.readExcerpt({ url: URL, query: 'Principia' });
+  assert.equal('anchors' in hit, false);
+  assert.equal('headings' in hit, false);
+  assert.equal(hit.title, 'Newton');
+  assert.match(hit.text, /Principia/);
+  const miss = await store.readExcerpt({ url: URL, query: 'missing-phrase' });
+  assert.equal('anchors' in miss, false);
+  assert.equal('headings' in miss, false);
+  assert.equal(miss.text, '');
+
+  let fetches = 0;
+  let emitted: unknown;
+  const commands = {
+    profilesDir: root,
+    subjects: () => [SUBJECT],
+    resolve: options.resolve,
+    fetch: async (url: string) => {
+      fetches++;
+      if (url.includes('fail')) throw new SourceFetchError('HTTP 404', 404);
+      const body = {
+        url,
+        fetched_at: '2026-11-25T00:00:00Z',
+        ...doc,
+        anchors: ['a1', 'p1'],
+      };
+      return { id: hash(body), ...body };
+    },
+    emit: (value: unknown) => {
+      emitted = value;
+    },
+  };
+  const batch = JSON.stringify([
+    { url: URL, outline: true },
+    { url: URL, query: 'prisms', length: 500 },
+    { url: 'https://example.org/fail', query: 'x' },
+  ]);
+  assert.equal(
+    await runCoordinatorCommand('evidence', [`--batch=${batch}`], commands),
+    true,
+  );
+  const { results } = asRecord(emitted, 'batch evidence') as {
+    results: Record<string, unknown>[];
+  };
+  assert.equal(results.length, 3);
+  assert.ok(Array.isArray(results[0]?.headings));
+  assert.match(String(results[1]?.text), /prisms/);
+  assert.equal('anchors' in (results[1] ?? {}), false);
+  assert.match(String(results[2]?.error), /HTTP 404/);
+  assert.equal(fetches, 2);
+
+  await assert.rejects(
+    runCoordinatorCommand(
+      'evidence',
+      [`--batch=${batch}`, `--url=${URL}`],
+      commands,
+    ),
+    /--batch cannot be combined/,
+  );
+});
+
+test('compact patch English repair preserves untouched passages, validates in preflight, and passes re_audit context', async (t) => {
+  const { root, options } = await setup(t);
+  const evidenceDir = path.join(root, 'evidence');
+  await mkdir(evidenceDir);
+  await writeFile(
+    path.join(evidenceDir, `${SOURCE.id}.json`),
+    JSON.stringify(SOURCE),
+  );
+  const initial = {
+    ...raw(),
+    deep_facts: [
+      {
+        text: 'Isaac Newton published the Principia in 1687.',
+        type: 'hidden_story' as const,
+        is_legend: false,
+        confidence: 'high' as const,
+        source: URL,
+      },
+      {
+        text: 'Newton was born in 1643 and died in 1727.',
+        type: 'unique_detail' as const,
+        is_legend: false,
+        confidence: 'medium' as const,
+        source: URL,
+      },
+    ],
+  };
+  await writeFile(options.filePath, JSON.stringify(initial));
+  const initialProfile = parseModelProfile(initial, 'test');
+  const initialAssessment = assessment(initialProfile);
+  const targets = selectAdversarialTargets(initialProfile, initialAssessment);
+  const checks = targets.map((target) => makeCheck(target));
+  const hold = {
+    ...cleanAudit,
+    issues: ['overview: clarify Newton was a mathematician and physicist'],
+  };
+  assert.equal(
+    (
+      await applyEnglishAudit({
+        ...options,
+        assessment: initialAssessment,
+        adversarial: { model: 'checker', checks },
+        audit: hold,
+        snapshots: [SOURCE],
+      })
+    ).status,
+    'held',
+  );
+
+  let emitted: unknown;
+  const run = async (command: string, ...args: string[]) => {
+    emitted = undefined;
+    await runCoordinatorCommand(command, ['--qid=Q935', ...args], {
+      profilesDir: root,
+      subjects: () => [SUBJECT],
+      resolve: options.resolve,
+      fetch: async () => assert.fail('unexpected fetch'),
+      emit: (value) => {
+        emitted = value;
+      },
+    });
+    return asRecord(emitted, command);
+  };
+
+  const repairTask = await run('english-repair');
+  const repairPayload = JSON.parse(
+    String(repairTask.prompt).slice(
+      String(repairTask.prompt).lastIndexOf('\n') + 1,
+    ),
+  );
+  assert.deepEqual(repairPayload.flagged_paths, ['overview']);
+  assert.equal(repairPayload.flagged_findings.length, 1);
+  assert.equal(repairPayload.flagged_findings[0].path, 'overview');
+
+  const patchReply = path.join(root, 'patch-reply.json');
+  await writeFile(
+    patchReply,
+    JSON.stringify({
+      input_hash: repairTask.input_hash,
+      model: 'writer',
+      result: {
+        patches: {
+          overview: {
+            text: 'Newton was an English mathematician who published the Principia.',
+            findings: [
+              {
+                claim:
+                  'Newton was an English mathematician who published the Principia.',
+                verdict: 'supported',
+                risk: 'ordinary',
+                explanation: 'Supported by Wikipedia.',
+                correction: '',
+                evidence: [
+                  {
+                    source: SOURCE.id,
+                    quote: 'Newton was an English mathematician.',
+                    kind: 'wikipedia',
+                    origin: 'Newton article',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        drop_deep_facts: [1],
+      },
+    }),
+  );
+
+  const preflight = await run('preflight', `--file=${patchReply}`);
+  assert.equal(preflight.ok, true);
+  assert.equal(preflight.checked_passages, 5);
+
+  const applied = await run('english-repair', `--result=${patchReply}`);
+  assert.equal(applied.status, 'draft');
+  const updated = JSON.parse(await readFile(options.filePath, 'utf8'));
+  assert.equal(
+    updated.overview,
+    'Newton was an English mathematician who published the Principia.',
+  );
+  assert.equal(updated.deep_facts.length, 1);
+  assert.equal(updated.key_moments[0].text, initial.key_moments[0]?.text);
+
+  // Remaining untouched deep_facts.0.text reuses its prior adversarial check.
+  assert.deepEqual(await run('english-adversarial'), {
+    status: 'reused',
+    checks: 1,
+    conflicts: 0,
+  });
+
+  // Follow-up audit receives re_audit context pointing to repaired_paths and prior_blockers.
+  const followUpAudit = await run('english-audit');
+  const auditPayload = JSON.parse(
+    String(followUpAudit.prompt).slice(
+      String(followUpAudit.prompt).lastIndexOf('\n') + 1,
+    ),
+  );
+  assert.deepEqual(auditPayload.re_audit, {
+    repaired_paths: ['overview'],
+    prior_blockers: [
+      'overview: clarify Newton was a mathematician and physicist',
+    ],
+  });
+});
+
+test('adversarial validation rejects misclassified and inconsistent counterevidence kinds, and no_conflict_found reuses across minor wording repairs', async (t) => {
+  const { root, options } = await setup(t);
+  const evidenceDir = path.join(root, 'evidence');
+  await mkdir(evidenceDir);
+  const makeSnapshot = (url: string, text: string): Source => {
+    const body = { url, fetched_at: '2026-11-25T00:00:00Z', text, anchors: [] };
+    return { id: hash(body), ...body };
+  };
+  const scholarlySource = makeSnapshot(
+    'https://penelope.uchicago.edu/encyclopaedia_romana/calendar/romancalendar.html',
+    'A scholarly calendar note with competing details.',
+  );
+  for (const snap of [SOURCE, scholarlySource]) {
+    await writeFile(
+      path.join(evidenceDir, `${snap.id}.json`),
+      JSON.stringify(snap),
+    );
+  }
+  const initial = highRiskDraft();
+  const initialProfile = parseModelProfile(initial, 'test');
+  const initialAssessment = assessment(initialProfile);
+  initialAssessment.findings[0]?.evidence.push({
+    source: scholarlySource.id,
+    quote: scholarlySource.text,
+    kind: 'scholarly',
+    origin: 'Encyclopaedia Romana',
+  });
+  await writeFile(
+    options.filePath,
+    JSON.stringify({
+      ...initial,
+      meta: {
+        ...initial.meta,
+        pending_assessment: {
+          profile_hash: profileHash(initial),
+          assessment: initialAssessment,
+          model: 'writer',
+        },
+      },
+    }),
+  );
+
+  let emitted: unknown;
+  const run = async (command: string, ...args: string[]) => {
+    emitted = undefined;
+    await runCoordinatorCommand(command, ['--qid=Q935', ...args], {
+      profilesDir: root,
+      subjects: () => [SUBJECT],
+      resolve: options.resolve,
+      fetch: async () => assert.fail('unexpected fetch'),
+      emit: (value) => {
+        emitted = value;
+      },
+    });
+    return asRecord(emitted, command);
+  };
+
+  const task = await run('english-adversarial');
+  const targets = task.targets as AdversarialTarget[];
+  const badReply = path.join(root, 'bad-adv.json');
+  await writeFile(
+    badReply,
+    JSON.stringify({
+      input_hash: task.input_hash,
+      model: 'checker',
+      result: {
+        checks: targets.map((target, index) =>
+          index === 0
+            ? makeCheck(target, 'conflict_found', [
+                {
+                  source: scholarlySource.id,
+                  quote: scholarlySource.text,
+                  kind: 'other',
+                  origin: 'Encyclopaedia Romana',
+                },
+              ])
+            : makeCheck(target),
+        ),
+      },
+    }),
+  );
+  await assert.rejects(
+    run('english-adversarial', `--result=${badReply}`),
+    /inconsistent evidence\.kind/,
+  );
+
+  // Now save a clean no_conflict_found check, audit as held, repair deep_facts.0 wording slightly,
+  // and verify no_conflict_found is reused without re-running adversarial.
+  const goodReply = path.join(root, 'good-adv.json');
+  await writeFile(
+    goodReply,
+    JSON.stringify({
+      input_hash: task.input_hash,
+      model: 'checker',
+      result: { checks: targets.map((target) => makeCheck(target)) },
+    }),
+  );
+  assert.equal(
+    (await run('english-adversarial', `--result=${goodReply}`)).status,
+    'saved',
+  );
+  const auditTask = await run('english-audit');
+  const heldFile = path.join(root, 'held.json');
+  await writeFile(
+    heldFile,
+    JSON.stringify({
+      input_hash: auditTask.input_hash,
+      model: 'auditor',
+      result: {
+        uncovered: [],
+        issues: ['deep_facts.0.text: attribute the letter'],
+        coherent: true,
+      },
+    }),
+  );
+  assert.equal(
+    (await run('english-audit', `--result=${heldFile}`)).status,
+    'held',
+  );
+  const repairTask = await run('english-repair');
+  const patchFile = path.join(root, 'minor-patch.json');
+  await writeFile(
+    patchFile,
+    JSON.stringify({
+      input_hash: repairTask.input_hash,
+      model: 'writer',
+      result: {
+        patches: {
+          'deep_facts.0.text': {
+            text: 'According to Newton’s own letter, he revised his account.',
+            findings: [
+              {
+                claim:
+                  'According to Newton’s own letter, Newton revised his account in a letter.',
+                verdict: 'supported',
+                risk: 'ordinary',
+                explanation: 'Attributed.',
+                correction: '',
+                evidence: [
+                  {
+                    source: SOURCE.id,
+                    quote: TEXT,
+                    kind: 'wikipedia',
+                    origin: 'Newton article',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+    }),
+  );
+  assert.equal(
+    (await run('english-repair', `--result=${patchFile}`)).status,
+    'draft',
+  );
+  assert.deepEqual(await run('english-adversarial'), {
+    status: 'reused',
+    checks: 2,
+    conflicts: 0,
+  });
 });

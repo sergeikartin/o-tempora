@@ -27,7 +27,7 @@ export {
   strings,
 } from './assessment.js';
 
-export const POLICY_VERSION = '7';
+export const POLICY_VERSION = '8';
 
 export function isCurrentVerificationPolicy(
   version: unknown,
@@ -37,6 +37,7 @@ export function isCurrentVerificationPolicy(
   // parser skipped every comparison for an ongoing subject.
   return (
     version === POLICY_VERSION ||
+    version === '7' ||
     version === '6' ||
     version === '5' ||
     version === '4' ||
@@ -195,8 +196,10 @@ export function blockers(
   ];
   if (!report.audit.coherent) result.push('Profile is not coherent');
   const sources = new Map(report.sources.map((source) => [source.id, source]));
-  if (report.policy_version === '7') {
-    const targets = selectAdversarialTargets(profile, assessment);
+  if (report.policy_version === '7' || report.policy_version === '8') {
+    const targets = selectAdversarialTargets(profile, assessment, {
+      perPassage: report.policy_version !== '7',
+    });
     try {
       if (
         report.adversarial_disabled !== undefined &&

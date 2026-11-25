@@ -11,12 +11,20 @@ import {
 } from './policy.js';
 import { headingPathAt } from './sources.js';
 
+const AUDIT_CONTEXT_WINDOW = 350;
+
+export interface ReAuditContext {
+  repaired_paths: string[];
+  prior_blockers: string[];
+}
+
 export function englishAuditPrompt(
   profile: ModelProfile,
   subject: ProfileSubject,
   assessment: Assessment,
   sources: readonly Source[],
   adversarialChecks: readonly AdversarialCheck[] = [],
+  reAudit?: ReAuditContext,
 ): string {
   const evidenceBySource = new Map<string, Evidence[]>();
   for (const finding of assessment.findings) {
@@ -58,11 +66,11 @@ export function englishAuditPrompt(
         nextHeading++;
       const sectionOffset = headings[nextHeading - 1]?.offset ?? 0;
       const sectionEnd = headings[nextHeading]?.offset ?? text.length;
-      const start = Math.max(sectionOffset, index - 700);
+      const start = Math.max(sectionOffset, index - AUDIT_CONTEXT_WINDOW);
       // Retain the evidence itself even when the quotation spans a heading.
       const end = Math.max(
         index + length,
-        Math.min(sectionEnd, index + length + 700),
+        Math.min(sectionEnd, index + length + AUDIT_CONTEXT_WINDOW),
       );
       const last = excerpts.at(-1);
       if (last && last.sectionOffset === sectionOffset && start <= last.end)
@@ -87,17 +95,24 @@ export function englishAuditPrompt(
     source: sourceNumbers.get(item.source),
     source_excerpt_index: contextIndexes.get(item) ?? null,
   });
-  const findings = assessment.findings.map((finding) => ({
-    ...finding,
-    evidence: finding.evidence.map(withContext),
-    counterevidence: finding.counterevidence?.map(withContext),
-  }));
+  const findings = assessment.findings.map(
+    ({ explanation, correction, ...finding }) => ({
+      ...finding,
+      ...(finding.verdict !== 'supported' ? { explanation } : {}),
+      ...(correction ? { correction } : {}),
+      evidence: finding.evidence.map(withContext),
+      ...(finding.counterevidence?.length
+        ? { counterevidence: finding.counterevidence.map(withContext) }
+        : {}),
+    }),
+  );
+  const { covered: _covered, ...assessmentFields } = assessment;
   return (
     readPromptText('profile-audit.md') +
     JSON.stringify({
       subject: subjectBrief(subject),
       profile,
-      assessment: { ...assessment, findings },
+      assessment: { ...assessmentFields, findings },
       source_contexts: sourceContexts,
       adversarial_notes: adversarialChecks
         .filter(({ outcome }) => outcome !== 'no_conflict_found')
@@ -107,6 +122,7 @@ export function englishAuditPrompt(
           outcome,
           note,
         })),
+      ...(reAudit ? { re_audit: reAudit } : {}),
     })
   );
 }

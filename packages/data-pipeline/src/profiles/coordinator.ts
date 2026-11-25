@@ -10,6 +10,7 @@ import {
 } from './adversarial-checkpoint.js';
 import {
   finalizedAssessment,
+  flaggedRepairPaths,
   readPendingAssessment,
 } from './assessed-profile.js';
 import { evidenceStore, readSnapshot } from './evidence-cache.js';
@@ -42,7 +43,7 @@ import {
   translationPrompt,
 } from './translation.js';
 import { type AgentRunMeta, parseTokenUsage } from './usage.js';
-import { asRecord, asString } from './values.js';
+import { asArray, asRecord, asString } from './values.js';
 import {
   type AdversarialResult,
   adversarialPrompt,
@@ -255,6 +256,7 @@ async function englishAdversarial(
     profilesDir: options.profilesDir,
     qid,
     targets,
+    assessment,
   });
   const reusedIndices = new Set(reused.map(({ check }) => check.finding_index));
   const uncached = targets.filter(
@@ -288,6 +290,7 @@ async function englishAdversarial(
     await validateAdversarialEvidence(
       path.join(options.profilesDir, 'evidence'),
       fresh,
+      assessment,
     );
     checks.push(...fresh);
     models.add(agentRunMeta(reply).model);
@@ -350,6 +353,15 @@ async function englishAudit(
       checks: parseAdversarialResult(result, targets),
     };
   }
+  const pendingAssessment = readPendingAssessment(record);
+  const reAudit =
+    pendingAssessment?.repairedPaths !== undefined &&
+    pendingAssessment.priorBlockers !== undefined
+      ? {
+          repaired_paths: pendingAssessment.repairedPaths,
+          prior_blockers: pendingAssessment.priorBlockers,
+        }
+      : undefined;
   const merged = adversarial
     ? mergeAdversarialResult(assessment, adversarial)
     : assessment;
@@ -361,8 +373,9 @@ async function englishAudit(
       merged,
       snapshots,
       adversarial?.checks,
+      reAudit,
     ),
-    { ...binding, adversarial },
+    { ...binding, adversarial, ...(reAudit ? { reAudit } : {}) },
   );
   if (!resultFile) {
     await emitTask(options, prepared);
@@ -413,12 +426,52 @@ async function englishRepair(
     throw new Error(
       'English repair requires a current held verification report',
     );
+  const profile = parseModelProfile(record, filePath);
+  const reportAssessment = parseAssessment(report.assessment);
+  const reportBlockers = strings(report.blockers, 'blockers');
+  const flagged = flaggedRepairPaths(profile, reportAssessment, reportBlockers);
+  const flaggedSet = new Set(flagged.paths);
+  const flaggedFindings = flagged.global
+    ? reportAssessment.findings
+    : reportAssessment.findings.filter((finding) =>
+        flaggedSet.has(finding.path),
+      );
+  const rawAdversarial =
+    report.adversarial &&
+    typeof report.adversarial === 'object' &&
+    !Array.isArray(report.adversarial)
+      ? (report.adversarial as { checks?: unknown }).checks
+      : undefined;
+  const adversarialNotes = Array.isArray(rawAdversarial)
+    ? rawAdversarial
+        .filter((item): item is Record<string, unknown> => {
+          if (!item || typeof item !== 'object' || Array.isArray(item))
+            return false;
+          const entry = item as Record<string, unknown>;
+          return (
+            entry.outcome !== 'no_conflict_found' &&
+            (flagged.global ||
+              (typeof entry.path === 'string' && flaggedSet.has(entry.path)))
+          );
+        })
+        .map(({ finding_index, path: checkPath, outcome, note }) => ({
+          finding_index,
+          path: checkPath,
+          outcome,
+          note,
+        }))
+    : [];
   const prepared = task(
-    readPromptText('profile-assessment.md') +
-      readPromptText('profile-assessment-repair.md') +
+    readPromptText('profile-assessment-repair.md') +
       JSON.stringify({
-        profile: parseModelProfile(record, filePath),
-        report,
+        profile,
+        flagged_paths: flagged.paths,
+        blockers: reportBlockers,
+        flagged_findings: flaggedFindings,
+        ...(adversarialNotes.length
+          ? { adversarial_notes: adversarialNotes }
+          : {}),
+        subject_dates: reportAssessment.subject_dates,
         remaining_draft_repairs: 2 - completedRepairs(record),
       }),
     hash(record),
@@ -523,7 +576,15 @@ export async function runCoordinatorCommand(
   options: CoordinatorOptions = defaultOptions,
 ): Promise<boolean> {
   const allowed: Record<string, string[]> = {
-    evidence: ['url', 'query', 'offset', 'length', 'outline', 'refresh'],
+    evidence: [
+      'url',
+      'query',
+      'offset',
+      'length',
+      'outline',
+      'batch',
+      'refresh',
+    ],
     preflight: ['qid', 'file'],
     prefetch: [
       'qids',
@@ -562,6 +623,70 @@ export async function runCoordinatorCommand(
     throw new Error('--out cannot be combined with --result');
   const required = (name: string) => asString(flags.get(name), `--${name}`);
   if (command === 'evidence') {
+    const batchArg = flags.get('batch');
+    const sources = evidenceStore(
+      options.profilesDir,
+      (url) =>
+        getDomain(sourceUrl(url).hostname) === 'wikipedia.org'
+          ? options.fetch(url)
+          : options.fetch(url, { maxAttempts: 1, rejectBotWalls: true }),
+      flags.has('refresh'),
+    );
+    if (batchArg !== undefined) {
+      if (
+        ['url', 'query', 'offset', 'length', 'outline'].some((name) =>
+          flags.has(name),
+        )
+      )
+        throw new Error(
+          '--batch cannot be combined with --url, --outline, --query, --offset, or --length',
+        );
+      const rawBatch: unknown = batchArg.startsWith('@')
+        ? await readJson(batchArg.slice(1))
+        : JSON.parse(batchArg);
+      const requests = asArray(rawBatch, '--batch');
+      if (!requests.length || requests.length > 12)
+        throw new Error('--batch must contain between 1 and 12 requests');
+      const results: unknown[] = new Array(requests.length);
+      const queue = requests.entries();
+      const workers = Math.min(3, requests.length);
+      await Promise.all(
+        Array.from({ length: workers }, async () => {
+          for (const [index, entry] of queue) {
+            let itemUrl = '';
+            try {
+              const item = asRecord(entry, `--batch[${index}]`);
+              itemUrl = asString(item.url, `--batch[${index}].url`);
+              const itemOutline = item.outline === true;
+              if (
+                itemOutline &&
+                (item.query !== undefined ||
+                  item.offset !== undefined ||
+                  item.length !== undefined)
+              )
+                throw new Error(
+                  'outline cannot be combined with query, offset, or length',
+                );
+              results[index] = itemOutline
+                ? await sources.readOutline(itemUrl)
+                : await sources.readExcerpt({
+                    url: itemUrl,
+                    query: item.query,
+                    offset: item.offset,
+                    length: item.length,
+                  });
+            } catch (error) {
+              results[index] = {
+                ...(itemUrl ? { url: itemUrl } : {}),
+                error: error instanceof Error ? error.message : String(error),
+              };
+            }
+          }
+        }),
+      );
+      options.emit({ results });
+      return true;
+    }
     const url = required('url');
     const outline = flags.has('outline');
     if (
@@ -571,14 +696,6 @@ export async function runCoordinatorCommand(
       throw new Error(
         '--outline cannot be combined with --query, --offset, or --length',
       );
-    const sources = evidenceStore(
-      options.profilesDir,
-      (url) =>
-        getDomain(sourceUrl(url).hostname) === 'wikipedia.org'
-          ? options.fetch(url)
-          : options.fetch(url, { maxAttempts: 1, rejectBotWalls: true }),
-      flags.has('refresh'),
-    );
     options.emit(
       outline
         ? await sources.readOutline(url)

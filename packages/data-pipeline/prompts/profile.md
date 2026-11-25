@@ -1,7 +1,7 @@
 # Profile prompt (people and events)
 
-- **Version:** 2.8.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `28340cecc600`)
+- **Version:** 2.9.0
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `269c2440632d`)
 - **Inputs:** `{type}` (person | conflict | milestone), `{name}`, `{dates}` (e.g. "c. 1540–1596", "1789–1799", "1969"), `{wikipedia_url}`
 - **Replaces:** the v1 person and conflict prompts
 - **Output format:** [Assessed Profile](profile-assessment.md)
@@ -96,8 +96,9 @@ DEEP FACTS
 
 VERIFIABILITY
 - Start from the prefetched Source Map's heading offsets when supplied.
-  Use `evidence --outline` on new URLs and targeted `--query`, `--offset`
-  and `--length` reads to keep fetched excerpts focused.
+  Use `evidence --outline` on new URLs, targeted `--query`, `--offset`
+  and `--length` reads, or `--batch` to read multiple excerpts in one
+  command.
 - Record each visible factual claim in its field's findings. Keep claims
   standalone and retain qualifications and attribution. For a legend,
   document the account and its origin.
@@ -187,7 +188,7 @@ object to every result after the response comes back.
 ```json
 "meta": {
   "generated_at": "ISO 8601 timestamp, UTC",
-  "prompt_version": "2.8.0",
+  "prompt_version": "2.9.0",
   "prompt_hash": "first 12 chars of sha256 of the prompt text",
   "schema_version": 4,
   "model": "exact model ID",

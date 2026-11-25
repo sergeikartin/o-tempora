@@ -233,6 +233,7 @@ async function inspectSubject(
       await validateAdversarialEvidence(
         path.join(profilesDir, 'evidence'),
         checks,
+        savedAssessment,
       );
       readyForAudit = true;
     } catch {

@@ -2,88 +2,71 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import {
   extractAssessedProfile,
+  extractRepairResult,
+  isRepairPatch,
   readPendingAssessment,
 } from './assessed-profile.js';
 import { readSnapshot } from './evidence-cache.js';
 import { parseModelProfile } from './model-profile.js';
 import { passages } from './passages.js';
+import { readStoredProfiles } from './store.js';
 import type { ProfileSubject } from './subjects.js';
 import { asRecord } from './values.js';
 import {
   evidenceChecks,
   localMechanicalChecks,
+  sourceClassificationIssues,
 } from './verification/mechanical.js';
 import {
-  type Assessment,
   assessmentBlockers,
   checkEvidence,
-  type Evidence,
   findingExcerpts,
   parseAssessment,
   profileHash,
-  type Source,
 } from './verification/policy.js';
 import { reportPathFor } from './verification/runner.js';
-import {
-  isCanonicalPrimaryTextUrl,
-  isLowTrustDomain,
-} from './verification/sources.js';
 import { titleOfArticleUrl } from './wikipedia-qids.js';
 
-function sourceClassificationIssues(
-  assessment: Assessment,
-  snapshots: readonly Pick<Source, 'id' | 'url'>[],
-): string[] {
-  const byId = new Map(snapshots.map((source) => [source.id, source]));
-  const kindsBySource = new Map<string, Set<Evidence['kind']>>();
-  const issues: string[] = [];
-  for (const finding of assessment.findings) {
-    for (const item of findingExcerpts(finding)) {
-      const source = byId.get(item.source);
-      if (!source) continue;
-      const kinds = kindsBySource.get(item.source) ?? new Set();
-      kinds.add(item.kind);
-      kindsBySource.set(item.source, kinds);
-      const hostname = new URL(source.url).hostname.toLowerCase();
-      if (hostname.endsWith('.wikipedia.org') && item.kind !== 'wikipedia') {
-        issues.push(
-          `${finding.path}: Wikipedia source (${source.url}) must use kind "wikipedia", not "${item.kind}"`,
-        );
-      }
-      if (isCanonicalPrimaryTextUrl(source.url) && item.kind === 'scholarly') {
-        issues.push(
-          `${finding.path}: primary text edition (${source.url}) should use kind "primary", not "scholarly"`,
-        );
-      }
-      if (
-        isLowTrustDomain(source.url) &&
-        (item.kind === 'scholarly' || item.kind === 'primary')
-      ) {
-        issues.push(
-          `${finding.path}: low-trust reference site (${source.url}) cannot be classified as "${item.kind}"`,
-        );
-      }
-    }
-  }
-  for (const [id, kinds] of kindsBySource) {
-    if (kinds.has('scholarly') && kinds.has('other')) {
-      issues.push(
-        `evidence.${id}: inconsistent evidence.kind ("scholarly" and "other") for ${byId.get(id)?.url}`,
-      );
-    }
-  }
-  return issues;
+async function readStoredBase(profilesDir: string, qid: string) {
+  const entry = (await readStoredProfiles(profilesDir)).get(qid);
+  if (!entry)
+    throw new Error(`${qid}: no saved English Profile for repair patch`);
+  const record = asRecord(
+    JSON.parse(await readFile(entry.filePath, 'utf8')),
+    'English Profile',
+  );
+  const profile = parseModelProfile(record, entry.filePath);
+  const pending = readPendingAssessment(record);
+  if (pending) return { profile, assessment: pending.assessment };
+  const report = asRecord(
+    JSON.parse(await readFile(reportPathFor(entry.filePath), 'utf8')),
+    'verification report',
+  );
+  if (report.profile_hash !== profileHash(record))
+    throw new Error(
+      'assessment: verification report belongs to different Profile content',
+    );
+  return { profile, assessment: parseAssessment(report.assessment) };
 }
 
-async function readDraft(filePath: string, qid: string, issues: string[]) {
+async function readDraft(
+  filePath: string,
+  qid: string,
+  profilesDir: string,
+  issues: string[],
+) {
   const record = asRecord(
     JSON.parse(await readFile(filePath, 'utf8')),
     'Profile',
   );
-  if (typeof record.overview !== 'string')
-    return extractAssessedProfile(
-      record.input_hash && record.result ? record.result : record,
-    );
+  if (typeof record.overview !== 'string') {
+    const payload = record.input_hash && record.result ? record.result : record;
+    if (isRepairPatch(payload)) {
+      const base = await readStoredBase(profilesDir, qid);
+      return extractRepairResult(base.profile, base.assessment, payload);
+    }
+    return extractAssessedProfile(payload);
+  }
 
   const profile = parseModelProfile(record, filePath);
   const meta = asRecord(record.meta, 'meta');
@@ -140,7 +123,12 @@ export async function preflightProfile({
     issues,
   };
   try {
-    const { profile, assessment } = await readDraft(filePath, qid, issues);
+    const { profile, assessment } = await readDraft(
+      filePath,
+      qid,
+      profilesDir,
+      issues,
+    );
     report.checked_passages = passages(profile).length;
     report.checked_findings = assessment.findings.length;
     if (subject) issues.push(...localMechanicalChecks(profile, subject));

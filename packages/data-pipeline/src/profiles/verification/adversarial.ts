@@ -37,10 +37,13 @@ export interface AdversarialResult {
   checks: AdversarialCheck[];
 }
 
-const RISK_CUE =
-  /\b(first|only|oldest|largest|never|invented|coined|famously|allegedly|supposedly|legends?|myths?|apocryphal)\b/i;
-const LONG_QUOTE =
-  /"[^"\n]{15,}"|“[^”\n]{15,}”|‘[^’\n]{15,}’|(?<!\w)'[^'\n]{15,}'(?!\w)/u;
+export const RISK_CUE_PATTERN =
+  /\b(first|only|oldest|largest|never|invented|coined|famously|allegedly|supposedly|legends?|myths?|apocryphal)\b/gi;
+export const LONG_QUOTE_PATTERN =
+  /"[^"\n]{15,}"|“[^”\n]{15,}”|‘[^’\n]{15,}’|(?<!\w)'[^'\n]{15,}'(?!\w)/gu;
+
+const RISK_CUE = new RegExp(RISK_CUE_PATTERN.source, 'i');
+const LONG_QUOTE = new RegExp(LONG_QUOTE_PATTERN.source, 'u');
 
 function datasetYearOnly(
   finding: Assessment['findings'][number],
@@ -94,11 +97,12 @@ function datasetYearOnly(
 export function selectAdversarialTargets(
   profile: Parameters<typeof passages>[0] & { subject?: string },
   assessment: Assessment,
+  { perPassage = true }: { perPassage?: boolean } = {},
 ): AdversarialTarget[] {
   const passageText = new Map(
     passages(profile).map(({ path, text }) => [path, text]),
   );
-  return assessment.findings
+  const ranked = assessment.findings
     .flatMap((finding, finding_index) => {
       const { path, claim } = finding;
       const text = passageText.get(path);
@@ -117,9 +121,13 @@ export function selectAdversarialTargets(
             ? 3
             : undefined;
       if (priority === undefined) return [];
+      const hasCounterevidence = (finding.counterevidence?.length ?? 0) > 0;
+      const corroborate = finding.risk === 'corroborate';
       return [
         {
           priority,
+          corroborate,
+          hasCounterevidence,
           claimCue,
           target: {
             finding_index,
@@ -135,11 +143,23 @@ export function selectAdversarialTargets(
     .sort(
       (a, b) =>
         a.priority - b.priority ||
+        (a.priority === 1
+          ? Number(b.corroborate) - Number(a.corroborate) ||
+            Number(b.hasCounterevidence) - Number(a.hasCounterevidence)
+          : 0) ||
         (a.priority === 3 ? Number(b.claimCue) - Number(a.claimCue) : 0) ||
         a.target.finding_index - b.target.finding_index,
-    )
-    .slice(0, 5)
-    .map(({ target }) => target);
+    );
+  if (!perPassage) return ranked.slice(0, 5).map(({ target }) => target);
+  const seenPaths = new Set<string>();
+  const selected: AdversarialTarget[] = [];
+  for (const { target } of ranked) {
+    if (seenPaths.has(target.path)) continue;
+    seenPaths.add(target.path);
+    selected.push(target);
+    if (selected.length === 5) break;
+  }
+  return selected;
 }
 
 const PROMPT_FILE = 'profile-adversarial.md';

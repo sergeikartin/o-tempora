@@ -1,6 +1,8 @@
 import { lookup } from 'node:dns/promises';
 import { get } from 'node:https';
+import type { Readable } from 'node:stream';
 import { setTimeout as sleep } from 'node:timers/promises';
+import { createBrotliDecompress, createGunzip, createInflate } from 'node:zlib';
 import { Parser } from 'htmlparser2';
 import { getDomain, parse as parseDomain } from 'tldts';
 import { retryAfterMs } from '../http-retry.js';
@@ -420,7 +422,7 @@ async function request(url: URL): Promise<Page> {
         headers: {
           'User-Agent': USER_AGENT,
           Accept: 'text/html,text/plain',
-          'Accept-Encoding': 'identity',
+          'Accept-Encoding': 'gzip, deflate, br',
         },
       },
       (response) => {
@@ -439,16 +441,48 @@ async function request(url: URL): Promise<Page> {
           response.destroy();
           return;
         }
+        const encoding = (response.headers['content-encoding'] ?? '')
+          .split(',', 1)[0]
+          ?.trim()
+          .toLowerCase();
+        let stream: Readable = response;
+        if (encoding === 'gzip' || encoding === 'x-gzip') {
+          stream = response.pipe(createGunzip());
+        } else if (encoding === 'deflate') {
+          stream = response.pipe(createInflate());
+        } else if (encoding === 'br') {
+          stream = response.pipe(createBrotliDecompress());
+        } else if (encoding && encoding !== 'identity') {
+          response.destroy();
+          reject(new Error(`Unsupported content-encoding: ${encoding}`));
+          return;
+        }
         const chunks: Buffer[] = [];
+        let rawBytes = 0;
         let bytes = 0;
         response.on('data', (chunk: Buffer) => {
-          bytes += chunk.length;
-          if (bytes > MAX_BYTES)
-            response.destroy(new Error('Source exceeds 3 MB'));
-          else chunks.push(chunk);
+          rawBytes += chunk.length;
+          if (rawBytes > MAX_BYTES) {
+            const error = new Error('Source exceeds 3 MB');
+            response.destroy(error);
+            if (stream !== response) stream.destroy(error);
+          }
         });
-        response.on('error', reject);
-        response.on('end', () =>
+        if (stream !== response) {
+          response.on('error', (error) => {
+            stream.destroy(error);
+          });
+        }
+        stream.on('data', (chunk: Buffer) => {
+          bytes += chunk.length;
+          if (bytes > MAX_BYTES) {
+            const error = new Error('Source exceeds 3 MB');
+            response.destroy();
+            stream.destroy(error);
+          } else chunks.push(chunk);
+        });
+        stream.on('error', reject);
+        stream.on('end', () =>
           resolve({ ...headers, text: Buffer.concat(chunks).toString('utf8') }),
         );
       },
@@ -639,6 +673,7 @@ export function sourceOutline(source: Source) {
 
 export class SourceStore {
   private readonly byUrl = new Map<string, Source>();
+  private readonly inflight = new Map<string, Promise<Source>>();
   constructor(
     private readonly fetchPage: (url: string) => Promise<Source> = fetchSource,
     private readonly snapshots: readonly Source[] = [],
@@ -650,10 +685,20 @@ export class SourceStore {
     const url = sourceUrl(value).href;
     const cached = this.byUrl.get(url);
     if (cached) return cached;
-    const source = await this.fetchPage(url);
-    this.byUrl.set(url, source);
-    this.byUrl.set(source.url, source);
-    return source;
+    const pending = this.inflight.get(url);
+    if (pending) return pending;
+    const promise = (async () => {
+      try {
+        const source = await this.fetchPage(url);
+        this.byUrl.set(url, source);
+        this.byUrl.set(source.url, source);
+        return source;
+      } finally {
+        this.inflight.delete(url);
+      }
+    })();
+    this.inflight.set(url, promise);
+    return promise;
   }
 
   async readOutline(url: string) {
@@ -683,6 +728,12 @@ export class SourceStore {
       throw new Error('Source query must contain 1 to 256 characters');
 
     const source = await this.read(asString(input.url, 'source URL'));
+    const base = {
+      id: source.id,
+      url: source.url,
+      fetched_at: source.fetched_at,
+      ...(source.title !== undefined ? { title: source.title } : {}),
+    };
     let start = offset;
     if (query !== undefined) {
       const literal = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -691,7 +742,7 @@ export class SourceStore {
       const match = pattern.exec(source.text);
       if (!match)
         return {
-          ...source,
+          ...base,
           text: '',
           section: [],
           offset: null,
@@ -705,7 +756,7 @@ export class SourceStore {
 
     const end = start + length;
     return {
-      ...source,
+      ...base,
       text: source.text.slice(start, end),
       offset: start,
       section: headingPathAt(source.headings, start),

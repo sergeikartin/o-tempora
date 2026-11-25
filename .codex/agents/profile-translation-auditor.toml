@@ -1,7 +1,7 @@
 name = "profile-translation-auditor"
 description = "Independently audits Russian Profile fidelity."
 model = "gpt-6.2-sol"
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 developer_instructions = """
 Read `ru-audit-task.json` and follow its prompt. Compare the full Russian candidate with the approved English and the supplied glossary. Review every field in a single pass and record any fidelity issues. Use local file tools for the supplied inputs and reply. Do not use shell, web search, external services, or delegation.
 

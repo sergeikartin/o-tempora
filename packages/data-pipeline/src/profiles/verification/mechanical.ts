@@ -4,7 +4,63 @@ import { passages } from '../passages.js';
 import { type ProfileSubject, SUBJECT_TYPE } from '../subjects.js';
 import { asRecord } from '../values.js';
 import type { ResolveArticleQids } from '../wikipedia-qids.js';
-import type { Assessment, Source } from './policy.js';
+import {
+  type Assessment,
+  type Evidence,
+  findingExcerpts,
+  type Source,
+} from './policy.js';
+import { isCanonicalPrimaryTextUrl, isLowTrustDomain } from './sources.js';
+
+export function sourceClassificationIssues(
+  assessment: {
+    findings: readonly Pick<
+      Assessment['findings'][number],
+      'path' | 'evidence' | 'counterevidence'
+    >[];
+  },
+  snapshots: readonly Pick<Source, 'id' | 'url'>[],
+): string[] {
+  const byId = new Map(snapshots.map((source) => [source.id, source]));
+  const kindsBySource = new Map<string, Set<Evidence['kind']>>();
+  const issues: string[] = [];
+  for (const finding of assessment.findings) {
+    for (const item of findingExcerpts(finding)) {
+      const source = byId.get(item.source);
+      if (!source) continue;
+      const kinds = kindsBySource.get(item.source) ?? new Set();
+      kinds.add(item.kind);
+      kindsBySource.set(item.source, kinds);
+      const hostname = new URL(source.url).hostname.toLowerCase();
+      if (hostname.endsWith('.wikipedia.org') && item.kind !== 'wikipedia') {
+        issues.push(
+          `${finding.path}: Wikipedia source (${source.url}) must use kind "wikipedia", not "${item.kind}"`,
+        );
+      }
+      if (isCanonicalPrimaryTextUrl(source.url) && item.kind === 'scholarly') {
+        issues.push(
+          `${finding.path}: primary text edition (${source.url}) should use kind "primary", not "scholarly"`,
+        );
+      }
+      if (
+        isLowTrustDomain(source.url) &&
+        (item.kind === 'scholarly' || item.kind === 'primary')
+      ) {
+        issues.push(
+          `${finding.path}: low-trust reference site (${source.url}) cannot be classified as "${item.kind}"`,
+        );
+      }
+    }
+  }
+  for (const [id, kinds] of kindsBySource) {
+    if (kinds.has('scholarly') && kinds.has('other')) {
+      issues.push(
+        `evidence.${id}: inconsistent evidence.kind ("scholarly" and "other") for ${byId.get(id)?.url}`,
+      );
+    }
+  }
+  return issues;
+}
 
 // Key Moment labels use historical years. Month/day prose is left to the
 // evidence checks; only unambiguous year labels are interpreted mechanically.

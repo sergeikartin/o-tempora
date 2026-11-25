@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { extractAssessedProfile } from '../assessed-profile.js';
+import { extractRepairResult } from '../assessed-profile.js';
 import {
   type ModelProfile,
   PROFILE_SCHEMA_VERSION,
@@ -21,11 +21,13 @@ import {
   checkEvidence,
   hash,
   POLICY_VERSION,
+  parseAssessment,
   parseAudit,
   profileHash,
   type Report,
   readProfileApproval,
   type Source,
+  strings,
 } from './policy.js';
 export interface EnglishAuditOptions {
   filePath: string;
@@ -152,11 +154,16 @@ export async function checkpointEnglishRepair(options: {
   const { filePath, subject, record, report } = options;
   const repairs = completedRepairs(record);
   const current = parseModelProfile(record, filePath);
-  const { profile, assessment } = extractAssessedProfile(options.result);
+  const currentAssessment = parseAssessment(report.assessment);
+  const { profile, assessment, repairedPaths } = extractRepairResult(
+    current,
+    currentAssessment,
+    options.result,
+  );
   const changed = hash(profile) !== hash(current);
   if (changed && repairs >= 2)
     throw new Error('English draft repair limit reached');
-  if (!changed && hash(assessment) === hash(report.assessment))
+  if (!changed && hash(assessment) === hash(currentAssessment))
     throw new Error('Repair did not change the draft or assessment');
   const next = changed
     ? await applyRepair(record, current, profile, options.resolve)
@@ -177,6 +184,8 @@ export async function checkpointEnglishRepair(options: {
     profile_hash: candidateHash,
     assessment,
     model: options.model,
+    repaired_paths: repairedPaths,
+    prior_blockers: strings(report.blockers, 'blockers'),
   };
   if (!changed) {
     await writeJson(filePath, {
