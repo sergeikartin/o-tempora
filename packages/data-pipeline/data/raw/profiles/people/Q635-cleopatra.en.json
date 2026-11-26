@@ -83,6 +83,7 @@
     "subjectDates": "69–30 BC",
     "approvedAt": "2026-11-16T16:43:19.602Z",
     "writerModel": "gpt-6.1-sol",
-    "checkerModel": "session-agent (model unreported)"
+    "checkerModel": "session-agent (model unreported)",
+    "promptVersion": 1
   }
 }

@@ -75,6 +75,7 @@
     "subjectDates": "1582",
     "approvedAt": "2026-11-16T17:11:06.340Z",
     "writerModel": "opus",
-    "checkerModel": "gpt-6.1-sol"
+    "checkerModel": "gpt-6.1-sol",
+    "promptVersion": 1
   }
 }

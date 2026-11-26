@@ -57,6 +57,7 @@
     "locale": "ru",
     "subjectDates": "566–452 BC",
     "approvedAt": "2026-11-26T11:45:59.008Z",
-    "sourceHash": "d6f5f114bcaa9eee"
+    "sourceHash": "d6f5f114bcaa9eee",
+    "promptVersion": 2
   }
 }

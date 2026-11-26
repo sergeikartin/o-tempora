@@ -98,6 +98,7 @@
     "locale": "en",
     "subjectDates": "AD 570–632",
     "approvedAt": "2026-11-26T12:16:44.208Z",
-    "checkerModel": "gemini-3.1-pro"
+    "checkerModel": "gemini-3.1-pro",
+    "promptVersion": 2
   }
 }

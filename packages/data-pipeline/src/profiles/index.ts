@@ -4,6 +4,8 @@ import { RAW_PROFILES_DIR, SOURCES_DIR, WORK_DIR, workFile } from './paths.ts';
 import {
   formatZodIssues,
   ProfileDraftSchema,
+  type ProfileHarness,
+  ProfileHarnessSchema,
   type ProfileLocale,
   ProfileLocaleSchema,
 } from './schemas.ts';
@@ -71,6 +73,20 @@ function parseQidList(raw: string | undefined): string[] {
     .filter(Boolean);
 }
 
+function parseHarness(
+  flags: Record<string, string | true>,
+): ProfileHarness | undefined {
+  const raw = flagString(flags, 'harness');
+  if (raw === undefined) return undefined;
+  const parsed = ProfileHarnessSchema.safeParse(raw);
+  if (!parsed.success) {
+    throw new Error(
+      `Invalid --harness="${raw}" (expected "codex", "claude", or "agy")`,
+    );
+  }
+  return parsed.data;
+}
+
 const HELP = `Usage: npm run profiles --workspace packages/data-pipeline -- <command> [options]
 
 Commands:
@@ -80,7 +96,7 @@ Commands:
   find-entity <query...> [--limit=N]
   validate <qid> [--locale=en|ru] [--kind=draft|patch|check|recheck] [--file=<path>]
   apply-patch <qid> [--locale=en|ru]
-  promote <qid> [--locale=en|ru] [--force] [--human-approved]`;
+  promote <qid> [--locale=en|ru] [--writer-model=<id>] [--checker-model=<id>] [--harness=codex|claude|agy] [--force] [--human-approved]`;
 
 async function main(argv: string[]): Promise<void> {
   const [command, ...rest] = argv;
@@ -373,6 +389,7 @@ async function main(argv: string[]): Promise<void> {
       const qid = positional[0] ?? flagString(flags, 'qid');
       if (!qid) throw new Error('promote requires <qid>');
       const locale = parseLocale(flags);
+      const harness = parseHarness(flags);
       const subjects = loadSubjects();
       const result = await promoteProfile({
         qid,
@@ -380,6 +397,9 @@ async function main(argv: string[]): Promise<void> {
         subjects,
         force: flags.force === true,
         humanApproved: flags['human-approved'] === true,
+        writerModel: flagString(flags, 'writer-model'),
+        checkerModel: flagString(flags, 'checker-model'),
+        harness,
       });
       console.log(JSON.stringify(result, null, 2));
       return;

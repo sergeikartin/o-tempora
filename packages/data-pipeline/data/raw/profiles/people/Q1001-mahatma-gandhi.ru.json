@@ -65,6 +65,7 @@
     "locale": "ru",
     "subjectDates": "1869–1948",
     "approvedAt": "2026-11-26T12:01:35.553Z",
-    "sourceHash": "dbb6f6401a0aceee"
+    "sourceHash": "dbb6f6401a0aceee",
+    "promptVersion": 2
   }
 }

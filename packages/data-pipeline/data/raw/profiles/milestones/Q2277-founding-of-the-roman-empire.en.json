@@ -87,6 +87,7 @@
     "subjectDates": "27 BC",
     "approvedAt": "2026-11-19T07:54:31.804Z",
     "writerModel": "opus",
-    "checkerModel": "gpt-6.2-sol"
+    "checkerModel": "gpt-6.2-sol",
+    "promptVersion": 1
   }
 }

@@ -63,6 +63,7 @@
     "approvedAt": "2026-11-24T05:07:41.446Z",
     "sourceHash": "d79cec0eeac4370a",
     "writerModel": "gpt-6.2-sol",
-    "checkerModel": "gpt-6.2-sol"
+    "checkerModel": "gpt-6.2-sol",
+    "promptVersion": 1
   }
 }

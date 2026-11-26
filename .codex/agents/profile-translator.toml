@@ -1,4 +1,5 @@
 name = "profile-translator"
 description = "Translates an approved English Profile into natural Russian in .work/<QID>/."
+model = "gpt-6.2-sol"
 model_reasoning_effort = "low"
 developer_instructions = "Read and follow `packages/data-pipeline/prompts/profile-translator.md`."

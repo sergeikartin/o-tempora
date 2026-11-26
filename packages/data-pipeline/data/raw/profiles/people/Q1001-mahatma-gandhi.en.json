@@ -64,6 +64,7 @@
     "qid": "Q1001",
     "locale": "en",
     "subjectDates": "1869–1948",
-    "approvedAt": "2026-11-26T11:57:16.415Z"
+    "approvedAt": "2026-11-26T11:57:16.415Z",
+    "promptVersion": 2
   }
 }

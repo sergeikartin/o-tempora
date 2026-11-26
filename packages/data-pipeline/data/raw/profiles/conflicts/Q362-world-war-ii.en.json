@@ -111,6 +111,7 @@
     "subjectDates": "1939–1945",
     "approvedAt": "2026-11-19T08:33:36.864Z",
     "writerModel": "opus",
-    "checkerModel": "gpt-6.2-sol"
+    "checkerModel": "gpt-6.2-sol",
+    "promptVersion": 1
   }
 }

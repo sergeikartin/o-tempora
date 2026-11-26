@@ -1,9 +1,19 @@
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { ProfileLane } from '@o-tempora/shared-types';
-import { RAW_PROFILES_DIR, SOURCES_DIR, WORK_DIR, workFile } from './paths.ts';
+import {
+  PROMPTS_DIR,
+  RAW_PROFILES_DIR,
+  SOURCES_DIR,
+  WORK_DIR,
+  workFile,
+} from './paths.ts';
 import {
   type CheckVerdict,
+  CURRENT_PROMPT_VERSION,
   computeEnglishSourceHash,
+  computePromptHash,
+  type ProfileHarness,
   type ProfileLocale,
   type StoredProfile,
 } from './schemas.ts';
@@ -380,15 +390,35 @@ export async function prepareProfiles({
   return prepared;
 }
 
+const LOCALE_PROMPT_FILES: Record<ProfileLocale, readonly [string, string]> = {
+  en: ['profile-writer.md', 'profile-checker.md'],
+  ru: ['profile-translator.md', 'profile-translation-checker.md'],
+};
+
+export async function computeLocalePromptHash(
+  locale: ProfileLocale,
+  promptsDir = PROMPTS_DIR,
+): Promise<string> {
+  const files = LOCALE_PROMPT_FILES[locale];
+  const texts = await Promise.all(
+    files.map((fileName) => readFile(path.join(promptsDir, fileName), 'utf8')),
+  );
+  return computePromptHash(texts);
+}
+
 export interface PromoteOptions {
   qid: string;
   locale: ProfileLocale;
   subjects: readonly ProfileSubject[];
   force?: boolean;
   humanApproved?: boolean;
+  writerModel?: string;
+  checkerModel?: string;
+  harness?: ProfileHarness;
   rawProfilesDir?: string;
   workDir?: string;
   sourcesDir?: string;
+  promptsDir?: string;
 }
 
 export async function promoteProfile({
@@ -397,9 +427,13 @@ export async function promoteProfile({
   subjects,
   force = false,
   humanApproved = false,
+  writerModel,
+  checkerModel: checkerModelOverride,
+  harness,
   rawProfilesDir = RAW_PROFILES_DIR,
   workDir = WORK_DIR,
   sourcesDir = SOURCES_DIR,
+  promptsDir = PROMPTS_DIR,
 }: PromoteOptions): Promise<{
   filePath: string;
   qid: string;
@@ -450,12 +484,12 @@ export async function promoteProfile({
     );
   }
 
-  let checkerModel: string | undefined;
+  const patchExists =
+    (await readJsonIfExists(workFile(qid, `${locale}.patch.json`, workDir))) !==
+    undefined;
+
+  let verdictCheckerModel: string | undefined;
   if (!humanApproved) {
-    const patchExists =
-      (await readJsonIfExists(
-        workFile(qid, `${locale}.patch.json`, workDir),
-      )) !== undefined;
     const checkFileName = patchExists
       ? `${locale}.recheck.json`
       : `${locale}.check.json`;
@@ -478,10 +512,28 @@ export async function promoteProfile({
         `Cannot promote ${qid} (${locale}): latest verdict is "${verdict.verdict}" (${verdict.blockers.length} blocker(s))`,
       );
     }
-    checkerModel = verdict.checkerModel;
+    verdictCheckerModel = verdict.checkerModel;
   }
 
   const draft = draftValidation.data;
+  const resolvedWriterModel = writerModel?.trim() || draft.writerModel;
+  if (!resolvedWriterModel) {
+    throw new Error(
+      `Missing writerModel for ${qid} (${locale}): pass --writer-model=<model> (or set writerModel in ${locale}.draft.json)`,
+    );
+  }
+  const resolvedCheckerModel =
+    checkerModelOverride?.trim() || verdictCheckerModel;
+  if (!humanApproved && !resolvedCheckerModel) {
+    const checkFileName = patchExists
+      ? `${locale}.recheck.json`
+      : `${locale}.check.json`;
+    throw new Error(
+      `Missing checkerModel for ${qid} (${locale}): pass --checker-model=<model> (or set checkerModel in ${checkFileName})`,
+    );
+  }
+
+  const promptHash = await computeLocalePromptHash(locale, promptsDir);
   const stored: StoredProfile = {
     overview: draft.overview,
     keyMoments: draft.keyMoments,
@@ -495,8 +547,13 @@ export async function promoteProfile({
       ...(locale === 'ru' && draft.sourceHash
         ? { sourceHash: draft.sourceHash }
         : {}),
-      ...(draft.writerModel ? { writerModel: draft.writerModel } : {}),
-      ...(checkerModel ? { checkerModel } : {}),
+      writerModel: resolvedWriterModel,
+      ...(resolvedCheckerModel ? { checkerModel: resolvedCheckerModel } : {}),
+      ...(harness ? { harness } : {}),
+      promptVersion: CURRENT_PROMPT_VERSION,
+      promptHash,
+      approval: humanApproved ? 'human' : 'checker',
+      revised: patchExists,
     },
   };
 

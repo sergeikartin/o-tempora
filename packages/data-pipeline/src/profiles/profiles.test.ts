@@ -8,7 +8,9 @@ import { workFile } from './paths.ts';
 import {
   type CheckVerdict,
   CheckVerdictSchema,
+  CURRENT_PROMPT_VERSION,
   computeEnglishSourceHash,
+  computePromptHash,
   type ProfileDraft,
   ProfilePatchSchema,
   type StoredProfile,
@@ -24,6 +26,7 @@ import { writeJsonFile } from './store.ts';
 import { findEntities, formatDates, type ProfileSubject } from './subjects.ts';
 import { validateCheck, validateDraft } from './validate.ts';
 import {
+  computeLocalePromptHash,
   getProfileStatus,
   prepareProfiles,
   promoteProfile,
@@ -563,6 +566,9 @@ test('prepare, promote, and status work end-to-end across EN and RU', async (t) 
     qid: 'Q937',
     locale: 'en',
     subjects: SUBJECTS,
+    writerModel: 'gpt-6.2-astra',
+    checkerModel: 'gpt-6.2-astra',
+    harness: 'codex',
     rawProfilesDir,
     workDir,
     sourcesDir,
@@ -571,6 +577,13 @@ test('prepare, promote, and status work end-to-end across EN and RU', async (t) 
   const stored = StoredProfileSchema.parse(storedRaw);
   assert.equal(stored.meta.qid, 'Q937');
   assert.equal(stored.meta.subjectDates, '1879–1955');
+  assert.equal(stored.meta.writerModel, 'gpt-6.2-astra');
+  assert.equal(stored.meta.checkerModel, 'gpt-6.2-astra');
+  assert.equal(stored.meta.harness, 'codex');
+  assert.equal(stored.meta.promptVersion, CURRENT_PROMPT_VERSION);
+  assert.equal(stored.meta.promptHash, await computeLocalePromptHash('en'));
+  assert.equal(stored.meta.approval, 'checker');
+  assert.equal(stored.meta.revised, false);
 
   // Overwrite guard without --force
   await assert.rejects(
@@ -606,4 +619,130 @@ test('prepare, promote, and status work end-to-end across EN and RU', async (t) 
     validateCheck(sampleCheck(), { qid: 'Q937', locale: 'en' }).ok,
     true,
   );
+});
+
+test('computePromptHash normalizes line endings and tracks prompt edits', () => {
+  assert.equal(
+    computePromptHash(['line1\r\nline2', 'checker\r\n']),
+    computePromptHash(['line1\nline2', 'checker\n']),
+  );
+  assert.notEqual(
+    computePromptHash(['writer v1', 'checker v1']),
+    computePromptHash(['writer v2', 'checker v1']),
+  );
+});
+
+test('promoteProfile requires model provenance and records revised/human approval metadata', async (t) => {
+  const root = await mkdtemp(path.join(tmpdir(), 'profiles-meta-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const rawProfilesDir = path.join(root, 'raw');
+  const workDir = path.join(root, '.work');
+  const sourcesDir = path.join(workDir, 'sources');
+
+  const longPage =
+    'Einstein biography details and historical milestones. '.repeat(15);
+  const mockFetch = (async () =>
+    new Response(
+      `<html><head><title>Page</title></head><body><h1>Section</h1><p>${longPage}</p></body></html>`,
+      { status: 200, headers: { 'content-type': 'text/html' } },
+    )) as unknown as typeof fetch;
+
+  await fetchSource('https://en.wikipedia.org/wiki/Albert_Einstein', {
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+  await fetchSource('https://example.org/eclipse', {
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+  await fetchSource('https://example.org/fridge', {
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+
+  const draftWithoutModel = sampleEnDraft();
+  delete draftWithoutModel.writerModel;
+  await writeJsonFile(
+    workFile('Q937', 'en.draft.json', workDir),
+    draftWithoutModel,
+  );
+  const checkWithoutModel = sampleCheck();
+  delete checkWithoutModel.checkerModel;
+  await writeJsonFile(
+    workFile('Q937', 'en.check.json', workDir),
+    checkWithoutModel,
+  );
+
+  await assert.rejects(
+    promoteProfile({
+      qid: 'Q937',
+      locale: 'en',
+      subjects: SUBJECTS,
+      rawProfilesDir,
+      workDir,
+      sourcesDir,
+    }),
+    /Missing writerModel/,
+  );
+
+  await assert.rejects(
+    promoteProfile({
+      qid: 'Q937',
+      locale: 'en',
+      subjects: SUBJECTS,
+      writerModel: 'gpt-6.2-astra',
+      rawProfilesDir,
+      workDir,
+      sourcesDir,
+    }),
+    /Missing checkerModel/,
+  );
+
+  // Patch present + recheck pass records revised: true
+  await writeJsonFile(workFile('Q937', 'en.patch.json', workDir), {
+    overview: 'Updated **overview**.',
+  });
+  await writeJsonFile(
+    workFile('Q937', 'en.recheck.json', workDir),
+    sampleCheck({ checkerModel: 'recheck-self-report' }),
+  );
+
+  const promotedRevised = await promoteProfile({
+    qid: 'Q937',
+    locale: 'en',
+    subjects: SUBJECTS,
+    writerModel: 'gpt-6.2-astra',
+    checkerModel: 'claude-opus-4-6',
+    harness: 'claude',
+    rawProfilesDir,
+    workDir,
+    sourcesDir,
+  });
+  const storedRevised = StoredProfileSchema.parse(
+    JSON.parse(await readFile(promotedRevised.filePath, 'utf8')),
+  );
+  assert.equal(storedRevised.meta.writerModel, 'gpt-6.2-astra');
+  assert.equal(storedRevised.meta.checkerModel, 'claude-opus-4-6');
+  assert.equal(storedRevised.meta.harness, 'claude');
+  assert.equal(storedRevised.meta.approval, 'checker');
+  assert.equal(storedRevised.meta.revised, true);
+
+  // Human-approved promote allows omitting checkerModel and records approval: "human"
+  const promotedHuman = await promoteProfile({
+    qid: 'Q937',
+    locale: 'en',
+    subjects: SUBJECTS,
+    force: true,
+    humanApproved: true,
+    writerModel: 'gpt-6.2-astra',
+    rawProfilesDir,
+    workDir,
+    sourcesDir,
+  });
+  const storedHuman = StoredProfileSchema.parse(
+    JSON.parse(await readFile(promotedHuman.filePath, 'utf8')),
+  );
+  assert.equal(storedHuman.meta.approval, 'human');
+  assert.equal(storedHuman.meta.checkerModel, undefined);
+  assert.equal(storedHuman.meta.revised, true);
 });

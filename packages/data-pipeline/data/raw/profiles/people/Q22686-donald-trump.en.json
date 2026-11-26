@@ -60,6 +60,7 @@
     "qid": "Q22686",
     "locale": "en",
     "subjectDates": "1946–present",
-    "approvedAt": "2026-11-26T11:56:25.081Z"
+    "approvedAt": "2026-11-26T11:56:25.081Z",
+    "promptVersion": 2
   }
 }

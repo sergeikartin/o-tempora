@@ -135,6 +135,14 @@ export const CheckVerdictSchema = z
   });
 export type CheckVerdict = z.infer<typeof CheckVerdictSchema>;
 
+export const CURRENT_PROMPT_VERSION = 2;
+
+export const ProfileHarnessSchema = z.enum(['codex', 'claude', 'agy']);
+export type ProfileHarness = z.infer<typeof ProfileHarnessSchema>;
+
+export const ProfileApprovalSchema = z.enum(['checker', 'human']);
+export type ProfileApproval = z.infer<typeof ProfileApprovalSchema>;
+
 export const ProfileMetaSchema = z.strictObject({
   qid: QidSchema,
   locale: ProfileLocaleSchema,
@@ -143,6 +151,11 @@ export const ProfileMetaSchema = z.strictObject({
   sourceHash: z.string().trim().min(1).optional(),
   writerModel: z.string().trim().min(1).optional(),
   checkerModel: z.string().trim().min(1).optional(),
+  harness: ProfileHarnessSchema.optional(),
+  promptVersion: z.number().int().positive().optional(),
+  promptHash: z.string().trim().min(1).optional(),
+  approval: ProfileApprovalSchema.optional(),
+  revised: z.boolean().optional(),
 });
 export type ProfileMeta = z.infer<typeof ProfileMetaSchema>;
 
@@ -181,6 +194,16 @@ export function computeEnglishSourceHash(content: ProfileContent): string {
   };
   return createHash('sha256')
     .update(JSON.stringify(canonical))
+    .digest('hex')
+    .slice(0, 16);
+}
+
+// Hashes the active role prompts (writer+checker for EN, translator+checker for RU)
+// so committed Profiles carry an exact, zero-maintenance prompt fingerprint.
+export function computePromptHash(promptTexts: readonly string[]): string {
+  const normalized = promptTexts.map((text) => text.replace(/\r\n/g, '\n'));
+  return createHash('sha256')
+    .update(JSON.stringify(normalized))
     .digest('hex')
     .slice(0, 16);
 }

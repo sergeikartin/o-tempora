@@ -60,6 +60,7 @@
     "qid": "Q720",
     "locale": "en",
     "subjectDates": "1162–1227",
-    "approvedAt": "2026-11-26T11:58:57.023Z"
+    "approvedAt": "2026-11-26T11:58:57.023Z",
+    "promptVersion": 2
   }
 }

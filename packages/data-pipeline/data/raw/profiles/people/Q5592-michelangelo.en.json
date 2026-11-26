@@ -66,6 +66,7 @@
     "subjectDates": "1475–1564",
     "approvedAt": "2026-11-25T04:00:27.242Z",
     "writerModel": "gpt-6.2-astra",
-    "checkerModel": "gpt-6.2-sol"
+    "checkerModel": "gpt-6.2-sol",
+    "promptVersion": 1
   }
 }

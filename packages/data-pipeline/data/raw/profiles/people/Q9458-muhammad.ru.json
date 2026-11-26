@@ -98,6 +98,7 @@
     "locale": "ru",
     "subjectDates": "AD 570–632",
     "approvedAt": "2026-11-26T12:23:15.361Z",
-    "sourceHash": "cd44a7c155e0f493"
+    "sourceHash": "cd44a7c155e0f493",
+    "promptVersion": 2
   }
 }

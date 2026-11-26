@@ -72,6 +72,7 @@
     "approvedAt": "2026-11-23T11:07:32.575Z",
     "sourceHash": "0a2fc9b8e2f1395b",
     "writerModel": "agent (model unreported)",
-    "checkerModel": "agent (model unreported)"
+    "checkerModel": "agent (model unreported)",
+    "promptVersion": 1
   }
 }

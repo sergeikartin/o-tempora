@@ -66,6 +66,7 @@
     "subjectDates": "1770–1827",
     "approvedAt": "2026-11-23T09:27:23.900Z",
     "writerModel": "gpt-6.2-sol",
-    "checkerModel": "gpt-6.2-sol"
+    "checkerModel": "gpt-6.2-sol",
+    "promptVersion": 1
   }
 }

@@ -14,6 +14,8 @@ export const RAW_PROFILES_DIR = path.join(
   'profiles',
 );
 
+export const PROMPTS_DIR = path.join(PACKAGE_DIR, 'prompts');
+
 // Gitignored working directory at the root of packages/data-pipeline.
 export const WORK_DIR = path.join(PACKAGE_DIR, '.work');
 export const SOURCES_DIR = path.join(WORK_DIR, 'sources');
