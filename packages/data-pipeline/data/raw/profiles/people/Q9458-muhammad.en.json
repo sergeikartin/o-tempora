@@ -1,0 +1,103 @@
+{
+  "overview": "Born into a Mecca trading clan around AD 570, Muhammad began reciting monotheistic revelations in his fortieth year that his followers preserved as the Quran, establishing Islam. Driven from his hometown in 622 by hostility from local elites, he moved north to Medina and united rival tribes into a single religious and political community. Over the following decade, through diplomacy and war, he returned to Mecca with minimal bloodshed and brought most of the Arabian Peninsula under Islamic rule before his death in 632.",
+  "keyMoments": [
+    {
+      "date": "c. 610",
+      "title": "First revelation on Mount Hira",
+      "text": "Orphaned by age six and raised by his uncle **Abu Talib**, Muhammad worked the Syrian caravan routes before marrying his wealthy employer, **Khadija**, around 595. According to Islamic tradition, around his fortieth year he retreated alone to the **Cave of Hira** outside **Mecca** and encountered the angel **Gabriel**, who commanded him to recite words that became the opening revelations of the **Quran**. Shaken and uncertain, he hurried down the mountainside to Khadija, who wrapped him in a cloak, became his first believer, and backed him even after his public preaching against idols and for the poor turned Mecca's ruling **Quraysh** merchants against him.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Muhammad"
+    },
+    {
+      "date": "622",
+      "title": "The Hijra to Medina",
+      "text": "After thirteen years of mounting opposition in Mecca—and the deaths in 619 of both Khadija and Abu Talib—Muhammad accepted an offer to arbitrate between feuding tribes in the oasis of **Yathrib**, soon known as **Medina**. Slipping away from a reported **Quraysh** assassination plot with his companion **Abu Bakr**, he arrived in Medina in September 622, completing a migration so foundational that the **Islamic calendar** still counts that year as Year 1. There he raised the first mosque on simple tree-trunk pillars and issued the **Constitution of Medina**, a pact binding Muslim emigrants, local converts, and Jewish clans into a shared defense community.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Muhammad"
+    },
+    {
+      "date": "624–628",
+      "title": "War with Mecca and the truce at Hudaybiyya",
+      "text": "Open conflict with Mecca turned decisive in 624 at the **Battle of Badr**, where Muhammad's force of roughly 300 men seized the wells and defeated a Meccan army more than three times its size, killing prominent **Quraysh** leaders. After a bruising setback at **Uhud** in 625, he stalled a 10,000-strong Meccan coalition in 627 by digging a deep ditch across Medina's open cavalry approaches—a fortification tactic unfamiliar in Arabia, credited to **Salman the Persian**, that gave the **Battle of the Trench** its name. The following year, rather than attacking Mecca, Muhammad marched in pilgrim attire and declared he had come to worship rather than fight, negotiating the **Treaty of Hudaybiyya**: seemingly one-sided concessions in exchange for a ten-year truce that freed him to win allies across the peninsula.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Muhammad"
+    },
+    {
+      "date": "629–632",
+      "title": "Return to Mecca and final years",
+      "text": "When a Meccan-allied clan raided a tribe aligned with Medina, Muhammad declared the truce broken and marched on **Mecca** in late 629 or early 630 with an army of 10,000 men. The city surrendered with minimal bloodshed; Muhammad issued a general amnesty for nearly all his former enemies and cleared the **Kaaba** of its pre-Islamic idols, rededicating the shrine to monotheistic worship. He led a final **Farewell Pilgrimage** back to Mecca before dying in Medina on **8 June 632**, leaving most of Arabia united under Islam—and a dispute over whether **Abu Bakr** or his cousin **Ali** should lead next that laid the roots of the **Sunni–Shia** divide.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Muhammad"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Muslims did not always pray facing Mecca. For more than a year after settling in Medina, Muhammad and his followers oriented their daily prayers north toward Jerusalem, sharing the prayer direction of the oasis's Jewish communities. In 623 or early 624, Quranic verses instructed believers to face the Kaaba instead; according to Islamic tradition, the revelation arrived in the middle of a congregational service, and Muhammad and his worshippers pivoted on the spot—earning that Medina sanctuary its lasting name, Masjid al-Qiblatayn, or the Mosque of the Two Qiblas.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Qibla"
+    },
+    {
+      "text": "The earliest surviving Muslim biography of Muhammad—Ibn Ishaq's account, preserved only through ninth-century editors like Ibn Hisham—was written more than a century after his death. Yet non-Muslim writers recorded his name almost immediately: a Syriac chronicle compiled around 640 describes Byzantine troops clashing near Gaza in February 634 with \"the Arabs of Muhammad,\" a faded note jotted on the flyleaf of a Gospel manuscript now in the British Library echoes the name soon after 636, and the Armenian bishop Sebeos wrote in the 660s of a merchant named \"Mahmet\" who rallied the Arabs to the God of Abraham.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Historicity_of_Muhammad"
+    },
+    {
+      "text": "When Islamic religious tradition discouraged painting Muhammad's face to guard against idolatry, seventeenth-century Ottoman calligraphers answered with a portrait built entirely out of words. Standardized by the master scribe Hafiz Osman, the hilya (\"ornament\") frames classic written descriptions of Muhammad's appearance and temperament—most often attributed to his cousin Ali—inside a symmetrical panel whose sections are named in Turkish after parts of a human body: a head station at the top, a central round belly, a belt of Quranic verse, and a skirt below.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hilya"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q432",
+      "reason": "Founded the monotheistic faith through the revelations compiled into the Quran and his teachings preserved in the sunnah."
+    },
+    {
+      "qid": "Q131482",
+      "reason": "Led his followers on this 622 migration from Mecca to Medina, establishing the first Muslim political community and Year 1 of the Islamic calendar."
+    },
+    {
+      "qid": "Q2092033",
+      "reason": "Marched 10,000 followers into Mecca in late 629 or early 630, securing the city with minimal fighting and clearing the Kaaba of pre-Islamic idols."
+    },
+    {
+      "qid": "Q42034",
+      "reason": "Employed Muhammad on her Syrian trade caravans before marrying him around 595, becoming his first believer and sole wife until her death in 619."
+    },
+    {
+      "qid": "Q334923",
+      "reason": "Accompanied Muhammad on the perilous flight to Medina in 622 and became the first caliph after his death."
+    },
+    {
+      "qid": "Q39619",
+      "reason": "Muhammad's cousin, early convert, and son-in-law through his daughter Fatima, later revered by Shia Muslims as his designated successor."
+    },
+    {
+      "qid": "Q4730963",
+      "reason": "Daughter of Abu Bakr and Muhammad's third wife, in whose Medina quarters he died and was buried, and a key transmitter of Sunni hadith."
+    },
+    {
+      "qid": "Q8467",
+      "reason": "Senior companion and father-in-law who championed Abu Bakr's selection as first caliph before succeeding him as the second Rashidun caliph."
+    },
+    {
+      "qid": "Q37731",
+      "reason": "Early convert and son-in-law who negotiated with the Quraysh at Hudaybiyya and later oversaw the standardization of the written Quran as third caliph."
+    },
+    {
+      "qid": "Q297913",
+      "reason": "Paternal uncle and Banu Hashim clan chief who raised the orphaned Muhammad and shielded him from Meccan rivals until 619."
+    },
+    {
+      "qid": "Q335430",
+      "reason": "Leading Quraysh adversary who commanded Meccan forces at Uhud and the Trench before surrendering Mecca and converting to Islam."
+    },
+    {
+      "qid": "Q275918",
+      "reason": "Launched the military and diplomatic unification of Arabia that his successors rapidly expanded into Byzantine and Sasanian territory after 632."
+    }
+  ],
+  "meta": {
+    "qid": "Q9458",
+    "locale": "en",
+    "subjectDates": "AD 570–632",
+    "approvedAt": "2026-11-26T12:16:44.208Z",
+    "checkerModel": "gemini-3.1-pro"
+  }
+}
