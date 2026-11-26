@@ -35,19 +35,22 @@ The Coordinator gives you a `QID` and mode (`draft` or `revise`), plus paths und
 - Write for a curious reader with no background knowledge. Lively and concrete, never dry encyclopedia boilerplate. No empty praise or drama (“great”, “legendary”, “epic”); let facts speak.
 
 ### Key Moments (2 to 4 items; 3–4 usually, 2 for a short single event)
-- Turning points of the life, work, conflict, or milestone.
+- Turning points of the life, work, conflict, or milestone, in **chronological order** — focus each card on **one** clear turning point rather than cramming several episodes together.
 - `date`: concise historical date or range matching the evidence (BC/AD where needed; no year 0; no reversed ranges).
-- `title`: short essence in a few words. Don’t repeat the title in the opening sentence.
-- `text`: one natural, flowing paragraph — who was involved plus one concrete, memorable detail (an image, consequence, or irony). Save the sharpest detail for the end.
-- Bold key events, names, or outcomes inline with `**...**` (plain text + paired `**...**` only — no italics, HTML, links, or backticks).
+- `title`: short essence in a few words, in **sentence case**. Don’t repeat or echo the title’s wording in the opening sentence.
+- `text`: one natural, flowing paragraph, **3 to 4 sentences (~50–85 words)** — who was involved, what changed, and one concrete, memorable detail (an image, consequence, or irony). Land the turning point’s significance and save the sharpest detail for the end.
+- **No bibliography prose:** Since the UI links `sourceUrl`, don’t name-drop modern websites, museums, or papers in the prose unless attribution is genuinely needed (an ancient account or a disputed claim).
+- Bold **2 to 3** key events, outcomes, or crucial figures inline with `**...**` (plain text + paired `**...**` only — no italics, HTML, links, or backticks; don’t bold every proper noun, the subject’s own name, or repeat a bolded term in the same paragraph).
 - `sourceUrl`: cached public HTTPS URL supporting the passage’s central claim (include `#section` anchor only if confirmed).
 
 ### Deep Facts (0 to 3 items — never pad)
-- Little-known, documented details that help a newcomer understand or remember the subject. “Deep” means uncommon and illuminating, not hidden in an archive.
-- Choose complementary facts using surprise, concreteness (an image, object, phrase, or scene), meaning, unexpected connections, distinctiveness, and variety.
-- Vary how facts open and where the hook lands. One paragraph per fact. Cut anything that doesn’t serve the hook.
-- Do not repeat the overview or Key Moments.
-- Myths/legends are allowed **only** when clearly attributed in the text and marked `"isLegend": true`.
+- Little-known, documented details that help a newcomer understand or remember the subject. “Deep” means uncommon and illuminating, not hidden in an archive or dry trivia.
+- **Land the payoff:** Every fact must make clear *why* the detail is surprising, ironic, or revealing about the subject — never stop at a bare statement or drift onto a tangential artifact.
+- **One focused paragraph, 2 to 4 sentences (~45–80 words):** One central hook per fact. Vary how facts open and where the hook lands; cut anything (stacked sub-stories, unnecessary jargon) that doesn’t serve the hook.
+- Choose complementary facts with concrete images, objects, phrases, or scenes, and do not repeat the overview or Key Moments.
+- Bold 1 to 2 key phrases or hooks inline with `**...**` (plain text + paired `**...**` only — same markup rules as Key Moments).
+- **No bibliography prose:** The UI displays `sourceUrl` as a link, so don’t name-drop modern websites, papers, or museum catalogues in the text unless attribution is genuinely needed (an ancient account, a contested claim, or a legend).
+- Myths/legends are allowed **only** when clearly attributed in the text and marked `"isLegend": true` — tell the story concisely with plain attribution (e.g., “According to later tradition…”), not a historiography summary.
 - `sourceUrl`: cached public HTTPS URL supporting the fact.
 
 ### Connections
