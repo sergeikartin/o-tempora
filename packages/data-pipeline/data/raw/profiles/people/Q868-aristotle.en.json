@@ -1,0 +1,89 @@
+{
+  "overview": "Born in Stagira in northern Greece, Aristotle studied under Plato in Athens, tutored the young Alexander of Macedon, and founded the Lyceum, an Athenian research school and library whose members became known as the Peripatetics. Across treatises spanning logic, physics, biology, ethics, politics, rhetoric, and drama, he formalized deductive reasoning and argued that understanding the world begins with close observation of living things and human societies. His writings became the backbone of medieval Islamic, Jewish, and Christian philosophy, earning him the titles \"The First Teacher\" in the Arabic tradition and simply \"The Philosopher\" in Latin Europe.",
+  "keyMoments": [
+    {
+      "date": "c. 367–347 BC",
+      "title": "At Plato's Academy",
+      "text": "Around age seventeen, Aristotle left his native **Stagira** for **Athens** to join Greece's premier philosophical circle under **Plato**. Over the next twenty years he matured into a formidable thinker who pushed back against Platonic dualism, insisting that form and matter belong together in the observable world rather than in a separate realm of ideals. After **Plato** died in 347 BC, Aristotle departed Athens for **Assos** in Asia Minor and the island of **Lesbos**, where he married **Pythias** and teamed up with **Theophrastus** to launch the empirical investigations that marked his break with pure abstraction.",
+      "sourceUrl": "https://plato.stanford.edu/entries/aristotle/"
+    },
+    {
+      "date": "343–340 BC",
+      "title": "Tutoring a future conqueror",
+      "text": "Summoned from **Lesbos** to the Macedonian capital of **Pella** by **King Philip II**, Aristotle took charge of educating the monarch's thirteen-year-old son, **Alexander**. The pairing of classical Greece's preeminent philosopher with the boy who would become **Alexander the Great** has tempted historians into endless speculation ever since. In reality, almost nothing concrete is known of their lessons, and the tutoring likely lasted just two or three years before the fifteen-year-old prince was pulled away to serve as a deputy military commander for his father.",
+      "sourceUrl": "https://plato.stanford.edu/entries/aristotle/"
+    },
+    {
+      "date": "335–323 BC",
+      "title": "Founding the Lyceum",
+      "text": "Returning to **Athens** for the second and final time in 335 BC, Aristotle established his own school in a public exercise ground dedicated to **Apollo Lykeios**, where a covered walkway, or peripatos, probably earned his followers the name **Peripatetics**. For more than a decade, he and his colleagues turned the **Lyceum** into a collaborative research center spanning logic, physics, biology, ethics, politics, rhetoric, and the arts, gathering manuscripts into what ancient accounts called the first great library of antiquity. From this effort came the treatises — among them **Prior Analytics**, **Nicomachean Ethics**, **Politics**, and **Poetics** — that created the first formal system of deductive logic and anchored scholarship across the Byzantine, Arabic, and Latin worlds for centuries.",
+      "sourceUrl": "https://plato.stanford.edu/entries/aristotle/"
+    },
+    {
+      "date": "323 BC",
+      "title": "Leaving Athens",
+      "text": "When **Alexander the Great** died, hostility to Macedon put his former tutor at risk in Athens. Aristotle left for **Chalcis** on the island of Euboea. An ancient story has him recalling the execution of Socrates as he left, saying he wanted to spare the Athenians a second offense against philosophy.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Aristotle"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "The Roman orator **Cicero** compared Aristotle’s prose to a river of gold. His polished dialogues for a general audience survive only in fragments. Among the writings that came down to us are about thirty treatises, many of which appear to have grown out of research and teaching in his school.",
+      "isLegend": false,
+      "sourceUrl": "https://plato.stanford.edu/entries/aristotle/"
+    },
+    {
+      "text": "On **Lesbos**, Aristotle observed marine life in and around a sheltered lagoon. Across his zoological writings he discussed roughly 500 kinds of animals, drawing on his own observations and the knowledge of people who worked with animals, including fishermen and beekeepers.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Aristotle%27s_biology"
+    },
+    {
+      "text": "Aristotle called the study of being and its fundamental causes **first philosophy**. The Greek title of his Metaphysics means “after the Physics.” It may have been a guide for students, suggesting that they study the natural world before tackling the principles that underlie it.",
+      "isLegend": false,
+      "sourceUrl": "https://plato.stanford.edu/entries/aristotle-metaphysics/"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q859",
+      "reason": "Aristotle's teacher at the Academy for nearly twenty years, whose theory of separate abstract Forms became the central foil for Aristotle's own empirical philosophy."
+    },
+    {
+      "qid": "Q8409",
+      "reason": "The Macedonian prince whom Aristotle tutored in his early teens and whose death in 323 BC triggered the anti-Macedonian backlash in Athens that drove Aristotle into exile."
+    },
+    {
+      "qid": "Q130650",
+      "reason": "The Macedonian king who summoned Aristotle to Pella around 343 BC to educate his son Alexander, extending ties that began when Aristotle's father served as court physician to Philip's father."
+    },
+    {
+      "qid": "Q160362",
+      "reason": "Theophrastus studied nature with Aristotle on Lesbos and succeeded him as head of the Lyceum."
+    },
+    {
+      "qid": "Q193093",
+      "reason": "The Athenian philosophical school where Aristotle studied and taught from around 367 to 347 BC before leaving Greece after Plato's death."
+    },
+    {
+      "qid": "Q9438",
+      "reason": "The thirteenth-century theologian who integrated Aristotle's treatises into Christian scholasticism in his Summa Theologica, referring to him simply as The Philosopher."
+    },
+    {
+      "qid": "Q39837",
+      "reason": "The twelfth-century Andalusian scholar whose extensive Arabic commentaries on Aristotle helped ignite the medieval European revival of Aristotelian thought."
+    }
+  ],
+  "meta": {
+    "qid": "Q868",
+    "locale": "en",
+    "subjectDates": "384–321 BC",
+    "approvedAt": "2026-11-26T16:57:39.524Z",
+    "writerModel": "gpt-6.2-astra",
+    "checkerModel": "gpt-6.2-astra",
+    "harness": "codex",
+    "promptVersion": 2,
+    "promptHash": "8e354b94bf94d919",
+    "approval": "checker",
+    "revised": true
+  }
+}

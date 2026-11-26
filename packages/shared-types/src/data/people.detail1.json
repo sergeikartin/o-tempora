@@ -20,7 +20,8 @@
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Muhammad",
     "description": "Muhammad was an Arab religious, military, and political leader, and the founder of Islam. According to Islam, he was the final prophet of God who was divinely inspired to preach and confirm the monotheistic teachings of Adam, Noah, Abraham, Moses, Jesus, and other prophets in Islam. He is believed by Muslims to be the Seal of the Prophets, and along with the Quran, his teachings and normative examples form the basis for Islamic religious belief.",
     "slug": "muhammad",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "3395",
@@ -199,7 +200,8 @@
     "imageAttribution": "Korea.net / Korean Culture and Information Service (Jeon Han), via Wikimedia Commons",
     "description": "Pope Francis was the head of the Catholic Church and sovereign of Vatican City from 13 March 2013 until his death in 2025. He was the first Jesuit pope, the first Latin American, and the first pope born or raised outside Europe since the 8th-century Syrian pope Gregory III.",
     "slug": "pope-francis",
-    "row": 2
+    "row": 2,
+    "hasProfile": true
   },
   {
     "id": "17914",
@@ -275,7 +277,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Aristotle%20Altemps%20Inv8575.jpg",
     "description": "Aristotle was an ancient Greek philosopher and polymath. His writings span the natural sciences, philosophy, linguistics, economics, politics, psychology, and the arts. As the founder of the Peripatetic school of philosophy in the Lyceum in Athens, he began the wider Aristotelian tradition that followed, which set the groundwork for the development of modern science.",
     "slug": "aristotle",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "19334",
