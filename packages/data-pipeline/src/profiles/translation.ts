@@ -7,13 +7,8 @@ import { writeJson } from './store.ts';
 import type { ProfileSubject } from './subjects.ts';
 import type { AgentRunMeta } from './usage.ts';
 import { asRecord, asString } from './values.ts';
-import {
-  hash,
-  parseAudit,
-  profileHash,
-  readProfileApproval,
-  strings,
-} from './verification/policy.ts';
+import { profileHash, readProfileApproval } from './verification/approval.ts';
+import { hash, parseAudit, strings } from './verification/assessment.ts';
 
 export const TRANSLATION_POLICY_VERSION = '1';
 export type TranslationFields = Record<string, string>;
@@ -117,6 +112,53 @@ export function translationPassages(raw: unknown) {
   return passages(parseModelProfile(raw, 'translation source'));
 }
 
+const ROMAN_NUMERAL =
+  /^M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})$/;
+const ROMAN_DIGITS: Record<string, number> = {
+  I: 1,
+  V: 5,
+  X: 10,
+  L: 50,
+  C: 100,
+  D: 500,
+  M: 1000,
+};
+
+// A standalone Latin Roman numeral, such as the "XIX" in "XIX век". The
+// single letter "I" is skipped because it is far more often the English word.
+function romanValue(token: string): number | undefined {
+  if (token === 'I' || !ROMAN_NUMERAL.test(token)) return undefined;
+  let total = 0;
+  for (let i = 0; i < token.length; i++) {
+    const value = ROMAN_DIGITS[token.charAt(i)] ?? 0;
+    const next = ROMAN_DIGITS[token.charAt(i + 1)] ?? 0;
+    total += value < next ? -value : value;
+  }
+  return total;
+}
+
+function numericValues(text: string, withRomans: boolean): string[] {
+  const values: string[] = text.match(/\d+/g) ?? [];
+  if (withRomans)
+    for (const [token] of text.matchAll(
+      /(?<![\p{L}\p{N}])[IVXLCDM]+(?![\p{L}\p{N}])/gu,
+    )) {
+      const value = romanValue(token);
+      if (value !== undefined) values.push(String(value));
+    }
+  return values.sort();
+}
+
+// Russian writes centuries in Roman numerals ("XIX век" for "19th century"),
+// so values match either as written or with Roman numerals read as numbers.
+function sameNumericValues(english: string, russian: string): boolean {
+  return [false, true].some(
+    (withRomans) =>
+      hash(numericValues(english, withRomans)) ===
+      hash(numericValues(russian, withRomans)),
+  );
+}
+
 export function parseTranslationFields(
   value: unknown,
   source: unknown,
@@ -134,12 +176,12 @@ export function parseTranslationFields(
     expected.map(({ path, text }) => {
       const translated = asString(fields[path], path);
       assertBoldOnlyMarkup(translated, path);
-      if (
-        hash((text.match(/\d+/g) ?? []).sort()) !==
-        hash((translated.match(/\d+/g) ?? []).sort())
-      )
+      if (!sameNumericValues(text, translated))
         throw new Error(`${path}: translation changed numeric values`);
-      if (text.split('**').length !== translated.split('**').length)
+      // Russian word order can split or merge a bold span; the fidelity audit
+      // judges what is emphasized. Mechanically, emphasis must not vanish or
+      // appear from nothing.
+      if (text.includes('**') !== translated.includes('**'))
         throw new Error(`${path}: translation changed bold emphasis`);
       if (
         (path === 'overview' ||
@@ -256,8 +298,8 @@ export async function loadTranslationSource(
   const report = JSON.parse(
     await readFile(filePath.replace(/\.json$/, '.verification.json'), 'utf8'),
   );
-  const profile = parseModelProfile(raw, 'translation source');
-  if (!readProfileApproval(raw, report, profile)?.isCurrentFor(dates))
+  parseModelProfile(raw, 'translation source');
+  if (!readProfileApproval(raw, report)?.isCurrentFor(dates))
     throw new Error(
       'Translation requires a current approved English Profile and dataset dates',
     );

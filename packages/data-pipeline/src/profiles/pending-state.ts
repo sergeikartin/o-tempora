@@ -3,12 +3,12 @@ import path from 'node:path';
 import { readPendingAssessment } from './assessed-profile.ts';
 import { writeJson } from './store.ts';
 import { asRecord, asString } from './values.ts';
+import { profileHash } from './verification/approval.ts';
 import {
   type Assessment,
   parseAssessment,
-  profileHash,
   strings,
-} from './verification/policy.ts';
+} from './verification/assessment.ts';
 
 export interface PendingAssessmentState {
   assessment: Assessment;

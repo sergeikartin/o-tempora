@@ -10,7 +10,8 @@ import { inspectProfileStatus } from './status.ts';
 import { writeJson } from './store.ts';
 import type { loadSubjects, ProfileSubject } from './subjects.ts';
 import { applyRussianAudit } from './translation.ts';
-import { type Assessment, hash, profileHash } from './verification/policy.ts';
+import { profileHash } from './verification/approval.ts';
+import { type Assessment, hash } from './verification/assessment.ts';
 import { applyEnglishAudit } from './verification/runner.ts';
 
 const wikipediaUrl = 'https://en.wikipedia.org/wiki/Isaac_Newton';

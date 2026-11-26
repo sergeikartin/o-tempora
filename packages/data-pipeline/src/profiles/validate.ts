@@ -5,25 +5,19 @@ import {
   extractRepairResult,
   isRepairPatch,
 } from './assessed-profile.ts';
-import { readSnapshot } from './evidence-cache.ts';
+import { readCitationAliases, readSnapshot } from './evidence-cache.ts';
 import { parseModelProfile } from './model-profile.ts';
 import { passages } from './passages.ts';
 import { readPendingAssessmentState } from './pending-state.ts';
 import { readStoredProfiles } from './store.ts';
 import type { ProfileSubject } from './subjects.ts';
 import { asRecord } from './values.ts';
+import { profileHash } from './verification/approval.ts';
+import { findingExcerpts, parseAssessment } from './verification/assessment.ts';
 import {
-  evidenceChecks,
-  localMechanicalChecks,
-  sourceClassificationIssues,
-} from './verification/mechanical.ts';
-import {
-  assessmentBlockers,
-  checkEvidence,
-  findingExcerpts,
-  parseAssessment,
-  profileHash,
-} from './verification/policy.ts';
+  citationUrls,
+  evaluateEnglishProfile,
+} from './verification/evaluate.ts';
 import { reportPathFor } from './verification/runner.ts';
 import { titleOfArticleUrl } from './wikipedia-qids.ts';
 
@@ -101,18 +95,56 @@ function articleTitle(url: string): string | undefined {
   return titleOfArticleUrl(url)?.trim() || undefined;
 }
 
+// Wikipedia treats the first letter of a title as case-insensitive.
+function titleKey(title: string): string {
+  return title.charAt(0).toUpperCase() + title.slice(1);
+}
+
+// `finalize` keeps only Connections whose URL resolves to a dataset entity.
+// Offline, a redirect cannot be followed, so a miss is a warning: the writer
+// can swap in the dataset entity's article URL before the Connection is lost.
+function connectionWarnings(
+  connections: readonly { name: string; wikipedia_url: string }[],
+  subject: ProfileSubject | undefined,
+  subjects: readonly ProfileSubject[],
+): string[] {
+  const known = new Map<string, string>();
+  for (const entry of subjects) {
+    const title = articleTitle(entry.wikipediaUrl);
+    if (title) known.set(titleKey(title), entry.qid);
+  }
+  if (!known.size) return [];
+  return connections.flatMap(({ name, wikipedia_url }, index) => {
+    const title = articleTitle(wikipedia_url);
+    if (!title) return [];
+    const field = `connections.${index}.wikipedia_url`;
+    const target = known.get(titleKey(title));
+    if (target === undefined)
+      return [
+        `${field}: "${name}" is not a dataset entity at this URL; finalize drops it unless the URL redirects to one`,
+      ];
+    if (target === subject?.qid)
+      return [`${field}: "${name}" is the subject itself; finalize drops it`];
+    return [];
+  });
+}
+
 export async function validateProfile({
   qid,
   filePath,
   profilesDir,
   subject,
+  subjects = [],
 }: {
   qid: string;
   filePath: string;
   profilesDir: string;
   subject: ProfileSubject | undefined;
+  // Every dataset entity, used to warn about Connections finalize would drop.
+  subjects?: readonly ProfileSubject[];
 }) {
   const issues: string[] = [];
+  const warnings: string[] = [];
   const report = {
     ok: false,
     qid,
@@ -121,6 +153,7 @@ export async function validateProfile({
     checked_findings: 0,
     checked_sources: 0,
     issues,
+    warnings,
   };
   try {
     const { profile, assessment } = await readDraft(
@@ -131,8 +164,6 @@ export async function validateProfile({
     );
     report.checked_passages = passages(profile).length;
     report.checked_findings = assessment.findings.length;
-    if (subject) issues.push(...localMechanicalChecks(profile, subject));
-    else issues.push('qid: no dataset subject');
     if (!articleTitle(profile.wikipedia_url))
       issues.push(
         'wikipedia_url: expected a plain English Wikipedia article URL',
@@ -148,6 +179,9 @@ export async function validateProfile({
         issues.push(`${field}: duplicate Connection URL`);
       else titles.add(title);
     });
+    warnings.push(
+      ...connectionWarnings(profile.connections, subject, subjects),
+    );
 
     const ids = [
       ...new Set(
@@ -168,13 +202,17 @@ export async function validateProfile({
       return [];
     });
     report.checked_sources = snapshots.length;
-    if (subject)
-      issues.push(...evidenceChecks(profile, subject, assessment, snapshots));
-    issues.push(
-      ...checkEvidence(assessment, snapshots),
-      ...assessmentBlockers(profile, assessment, snapshots),
-      ...sourceClassificationIssues(assessment, snapshots),
-    );
+    const evaluation = evaluateEnglishProfile({
+      profile,
+      subject,
+      assessment,
+      snapshots,
+      citationAliases: await readCitationAliases(
+        profilesDir,
+        citationUrls(profile),
+      ),
+    });
+    issues.push(...evaluation.blockers);
   } catch (error) {
     issues.push(
       `file: ${error instanceof Error ? error.message : String(error)}`,

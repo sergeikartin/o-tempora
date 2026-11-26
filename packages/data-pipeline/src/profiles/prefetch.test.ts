@@ -839,3 +839,66 @@ test('prefetch --manifest caches per-candidate dispute_urls into dispute_source_
   });
   assert.deepEqual(map.manifest_groups.dispute, [idByUrl.get(d1)]);
 });
+
+test('prefetch --manifest reserves URL slots for dispute sources past the explicit limit', async (t) => {
+  const profilesDir = await mkdtemp(path.join(tmpdir(), 'prefetch-reserve-'));
+  t.after(() => rm(profilesDir, { recursive: true, force: true }));
+  const core = Array.from({ length: 30 }, (_, i) =>
+    httpsUrl(`archive.org/core-${i}`),
+  );
+  const paired = httpsUrl('university.edu/paired-dispute');
+  const general = httpsUrl('museum.org/general-dispute');
+  const manifestPath = path.join(profilesDir, 'scout.json');
+  await writeFile(
+    manifestPath,
+    JSON.stringify({
+      qid: 'Q935',
+      core_urls: core,
+      deep_fact_candidates: [
+        {
+          angle: 'Disputed anecdote',
+          urls: [core[0]],
+          dispute_urls: [paired],
+        },
+      ],
+      dispute_urls: [general],
+    }),
+  );
+  const emitted: unknown[] = [];
+  await runCoordinatorCommand(
+    'prefetch',
+    ['--qids=Q935', `--manifest=${manifestPath}`],
+    {
+      profilesDir,
+      resolve: async () => assert.fail('unexpected article resolution'),
+      subjects: () => [subject],
+      emit: (value: unknown) => emitted.push(value),
+      fetch: async (url: string) => {
+        const data = {
+          url,
+          fetched_at: new Date().toISOString(),
+          text: `Substantive historical evidence for ${url}. `.repeat(50),
+          headings: [],
+        };
+        return { ...data, id: hash(data) };
+      },
+    },
+  );
+  const map = emitted[0] as {
+    sources: { url: string }[];
+    skipped: { url: string; reason: string }[];
+    manifest_groups: { dispute: string[] };
+  };
+  const fetched = new Set(map.sources.map(({ url }) => url));
+  assert.ok(fetched.has(paired) && fetched.has(general));
+  assert.equal(map.manifest_groups.dispute.length, 2);
+  // Wikipedia plus 24 explicit URLs: 22 supporting and 2 dispute.
+  assert.equal(map.sources.length, 25);
+  assert.deepEqual(
+    map.skipped.map(({ url }) => url),
+    core.slice(22),
+  );
+  assert.ok(
+    map.skipped.every(({ reason }) => /explicit URL limit/.test(reason)),
+  );
+});

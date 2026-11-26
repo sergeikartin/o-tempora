@@ -7,7 +7,7 @@ import {
   findingExcerpts,
   normalizeText,
   type Source,
-} from './policy.ts';
+} from './assessment.ts';
 import { headingPathAt } from './sources.ts';
 
 const AUDIT_CONTEXT_WINDOW = 350;

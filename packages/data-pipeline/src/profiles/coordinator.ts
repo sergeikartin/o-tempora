@@ -4,7 +4,7 @@ import { RAW_PROFILES_DIR } from './paths.ts';
 import type { loadSubjects } from './subjects.ts';
 import { type AgentRunMeta, parseTokenUsage } from './usage.ts';
 import { asArray, asRecord, asString } from './values.ts';
-import type { Assessment } from './verification/policy.ts';
+import type { Assessment } from './verification/assessment.ts';
 import type { fetchSource } from './verification/sources.ts';
 import type { ResolveArticleQids } from './wikipedia-qids.ts';
 
@@ -148,13 +148,15 @@ async function loadEnglishAssessment(options: CoordinatorOptions, qid: string) {
     { filePath, subject, record },
     { parseModelProfile },
     { readPendingAssessmentState },
-    { parseAssessment, profileHash, strings },
+    { profileHash },
+    { parseAssessment, strings },
     { reportPathFor },
   ] = await Promise.all([
     loadSubject(options, qid),
     import('./model-profile.ts'),
     import('./pending-state.ts'),
-    import('./verification/policy.ts'),
+    import('./verification/approval.ts'),
+    import('./verification/assessment.ts'),
     import('./verification/runner.ts'),
   ]);
   const profile = parseModelProfile(record, filePath);
@@ -190,7 +192,7 @@ async function assessmentSnapshots(
 ) {
   const [{ readSnapshot }, { findingExcerpts }] = await Promise.all([
     import('./evidence-cache.ts'),
-    import('./verification/policy.ts'),
+    import('./verification/assessment.ts'),
   ]);
   const ids = new Set(
     assessment.findings.flatMap((finding) =>
@@ -208,13 +210,15 @@ async function englishAudit(
 ) {
   const [
     loaded,
-    { hash, profileHash },
+    { profileHash },
+    { hash },
     { englishAuditPrompt },
     { readCompletedRepairs },
     { applyEnglishAudit },
   ] = await Promise.all([
     loadEnglishAssessment(options, qid),
-    import('./verification/policy.ts'),
+    import('./verification/approval.ts'),
+    import('./verification/assessment.ts'),
     import('./verification/researcher.ts'),
     import('./pending-state.ts'),
     import('./verification/runner.ts'),
@@ -275,7 +279,8 @@ async function englishRepair(
     { parseModelProfile },
     { readCompletedRepairs, readPendingAssessmentState },
     { readPromptText },
-    { hash, parseAssessment, profileHash, strings },
+    { profileHash },
+    { hash, parseAssessment, strings },
     { checkpointEnglishRepair, reportPathFor },
   ] = await Promise.all([
     loadSubject(options, qid),
@@ -283,7 +288,8 @@ async function englishRepair(
     import('./model-profile.ts'),
     import('./pending-state.ts'),
     import('./prompt.ts'),
-    import('./verification/policy.ts'),
+    import('./verification/approval.ts'),
+    import('./verification/assessment.ts'),
     import('./verification/runner.ts'),
   ]);
   if (await readPendingAssessmentState(options.profilesDir, qid, record))
@@ -364,11 +370,13 @@ async function russianTranslation(options: TaskOptions, qid: string) {
       translationFeedback,
       translationPrompt,
     },
-    { hash, profileHash },
+    { profileHash },
+    { hash },
   ] = await Promise.all([
     loadSubject(options, qid),
     import('./translation.ts'),
-    import('./verification/policy.ts'),
+    import('./verification/approval.ts'),
+    import('./verification/assessment.ts'),
   ]);
   const raw = await loadTranslationSource(filePath, dates);
   if (approvedTranslation(await readTranslation(filePath), raw)) {
@@ -406,11 +414,13 @@ async function russianAudit(
       translationFeedback,
       translationPrompt,
     },
-    { hash, profileHash },
+    { profileHash },
+    { hash },
   ] = await Promise.all([
     loadSubject(options, qid),
     import('./translation.ts'),
-    import('./verification/policy.ts'),
+    import('./verification/approval.ts'),
+    import('./verification/assessment.ts'),
   ]);
   const raw = await loadTranslationSource(filePath, dates);
   const binding = profileHash(raw);
@@ -709,11 +719,13 @@ export async function runCoordinatorCommand(
         import('./validate.ts'),
         getSubjectsLoader(options),
       ]);
-      const subject = loadSubjectsFn().find((entry) => entry.qid === qid);
+      const subjects = loadSubjectsFn();
+      const subject = subjects.find((entry) => entry.qid === qid);
       options.emit(
         await validateProfile({
           qid,
           subject,
+          subjects,
           profilesDir: options.profilesDir,
           filePath:
             flags.get('file') ??

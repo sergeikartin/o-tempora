@@ -17,18 +17,14 @@ import type { ProfileSubject } from '../subjects.ts';
 import { approvedTranslation, readTranslation } from '../translation.ts';
 import { validateProfile } from '../validate.ts';
 import { asRecord } from '../values.ts';
-import { evidenceChecks, mechanicalChecks, yearRange } from './mechanical.ts';
 import {
-  type Assessment,
-  blockers,
-  checkEvidence,
-  hash,
   POLICY_VERSION,
   profileHash,
   type Report,
   readProfileApproval,
-  type Source,
-} from './policy.ts';
+} from './approval.ts';
+import { type Assessment, hash, type Source } from './assessment.ts';
+import { evaluateEnglishProfile } from './evaluate.ts';
 import { englishAuditPrompt } from './researcher.ts';
 import {
   applyEnglishAudit,
@@ -249,9 +245,8 @@ test('verified content ships through Output; changing prose, identity, policy or
   const { root, options } = await setup(t);
   assert.equal((await applyEnglishAudit(options)).status, 'approved');
   const { record, report } = await saved(options);
-  const profile = parseModelProfile(record, 'test');
   assert.equal(
-    readProfileApproval(record, report, profile)?.isCurrentFor('1643–1727'),
+    readProfileApproval(record, report)?.isCurrentFor('1643–1727'),
     true,
   );
   const files = await readRawProfiles(root);
@@ -283,20 +278,16 @@ test('verified content ships through Output; changing prose, identity, policy or
       },
     }),
   ])
-    assert.equal(readProfileApproval(change(), report, profile), undefined);
+    assert.equal(readProfileApproval(change(), report), undefined);
   assert.equal(
-    readProfileApproval(
-      record,
-      { ...report, verified_at: 'tampered' },
-      profile,
-    ),
+    readProfileApproval(record, { ...report, verified_at: 'tampered' }),
     undefined,
   );
   assert.equal(
-    readProfileApproval(record, { ...report, policy_version: 'old' }, profile),
+    readProfileApproval(record, { ...report, policy_version: 'old' }),
     undefined,
   );
-  assert.equal(readProfileApproval(record, undefined, profile), undefined);
+  assert.equal(readProfileApproval(record, undefined), undefined);
   assert.equal(
     parseRawProfile(
       { ...raw(), meta: { ...raw().meta, review: { status: 'edited' } } },
@@ -553,25 +544,20 @@ test('corroboration needs distinct original accounts and primary or scholarly su
   const first = item.findings[0];
   assert.ok(first?.evidence[0]);
   first.risk = 'corroborate';
-  const report: Omit<Report, 'blockers'> = {
-    policy_version: POLICY_VERSION,
-    profile_hash: 'hash',
-    verified_at: 'date',
-    subject: { qid: 'Q935', dates: '1643–1727' },
-    models: ['test', 'auditor'],
-    assessment: item,
-    audit: { uncovered: [], issues: [], coherent: true },
-    sources: [SOURCE],
-    evidence_errors: [],
-    mechanical: [],
-    repairs: 0,
-  };
-  assert.match(blockers(report, profile).join(), /corroboration missing/);
-  report.sources.push({
+  const evaluate = (snapshots: readonly Source[]) =>
+    evaluateEnglishProfile({
+      profile,
+      subject: SUBJECT,
+      assessment: item,
+      snapshots,
+      audit: cleanAudit,
+    });
+  assert.match(evaluate([SOURCE]).blockers.join(), /corroboration missing/);
+  const secondSource: Source = {
     ...SOURCE,
     id: 'second',
     url: 'https://archive.example.org/book',
-  });
+  };
   first.counterevidence = [
     {
       ...first.evidence[0],
@@ -581,76 +567,144 @@ test('corroboration needs distinct original accounts and primary or scholarly su
       quote: 'A missing excerpt',
     },
   ];
-  assert.match(blockers(report, profile).join(), /corroboration missing/);
+  const withMissingCounter = evaluate([SOURCE, secondSource]);
+  assert.match(withMissingCounter.blockers.join(), /corroboration missing/);
   assert.match(
-    checkEvidence(item, [{ ...SOURCE, id: 'second' }, SOURCE]).join(),
+    withMissingCounter.evidenceErrors.join(),
     /evidence was not found in a fetched source \(second\)/,
   );
+  first.counterevidence = undefined;
   first.evidence.push({
     ...first.evidence[0],
     source: 'second',
     kind: 'scholarly',
   });
-  assert.match(blockers(report, profile).join(), /corroboration missing/);
+  assert.match(
+    evaluate([SOURCE, secondSource]).blockers.join(),
+    /corroboration missing/,
+  );
   first.evidence[1] = {
     ...first.evidence[0],
     source: 'second',
     kind: 'scholarly',
     origin: 'Independent archival research',
   };
-  assert.deepEqual(blockers(report, profile), []);
+  assert.deepEqual(evaluate([SOURCE, secondSource]).blockers, []);
 });
 
-test('date checks respect BC conversion, subject boundaries and section anchors', async () => {
-  assert.deepEqual(yearRange('44 BC–AD 14'), {
-    start: -43,
-    end: 14,
-    approximate: false,
-  });
-  assert.deepEqual(yearRange('551–479 BC'), {
-    start: -550,
-    end: -478,
-    approximate: false,
-  });
-  assert.equal(yearRange('0 BC'), undefined);
+test('date checks respect BC conversion, subject boundaries and section anchors', () => {
   const profile = parseModelProfile(raw(), 'test');
   const result = assessment(profile);
+  const moment = profile.key_moments[0];
+  assert.ok(moment);
+  for (const validRange of ['44 BC–AD 14', '551–479 BC']) {
+    moment.date = validRange;
+    assert.deepEqual(
+      evaluateEnglishProfile({
+        profile,
+        subject: SUBJECT,
+        assessment: result,
+        snapshots: [SOURCE],
+      }).mechanical,
+      [],
+    );
+  }
+  moment.date = '479–551 BC';
+  assert.match(
+    evaluateEnglishProfile({
+      profile,
+      subject: SUBJECT,
+      assessment: result,
+      snapshots: [SOURCE],
+    }).mechanical.join(),
+    /backwards/,
+  );
+  moment.date = '0 BC';
+  assert.match(
+    evaluateEnglishProfile({
+      profile,
+      subject: SUBJECT,
+      assessment: result,
+      snapshots: [SOURCE],
+    }).mechanical.join(),
+    /no year zero/,
+  );
+  moment.date = '1687';
   result.subject_dates.push({
     path: 'overview',
     boundary: 'start',
     year: 1642,
   });
   assert.match(
-    evidenceChecks(profile, SUBJECT, result, [SOURCE]).join(),
+    evaluateEnglishProfile({
+      profile,
+      subject: SUBJECT,
+      assessment: result,
+      snapshots: [SOURCE],
+    }).mechanical.join(),
     /disagrees with dataset/,
   );
-  const moment = profile.key_moments[0];
-  assert.ok(moment);
   moment.source = `${URL}#Missing`;
   assert.match(
-    evidenceChecks(profile, SUBJECT, result, [SOURCE]).join(),
+    evaluateEnglishProfile({
+      profile,
+      subject: SUBJECT,
+      assessment: result,
+      snapshots: [SOURCE],
+    }).mechanical.join(),
     /section missing/,
   );
-  moment.date = '1688–1687';
-  const flags = await mechanicalChecks(
-    raw(),
-    profile,
-    SUBJECT,
-    async () => new Map([[URL, 'Q935']]),
+  const requested = 'https://en.wikipedia.org/wiki/Newton';
+  moment.source = requested;
+  assert.match(
+    evaluateEnglishProfile({
+      profile,
+      subject: SUBJECT,
+      assessment: result,
+      snapshots: [SOURCE],
+    }).mechanical.join(),
+    /replace source with a fetched supporting URL/,
   );
+  assert.doesNotMatch(
+    evaluateEnglishProfile({
+      profile,
+      subject: SUBJECT,
+      assessment: result,
+      snapshots: [SOURCE],
+      citationAliases: new Map([[requested, SOURCE.id]]),
+    }).mechanical.join(),
+    /replace source/,
+  );
+  moment.source = URL;
+  moment.date = '1688–1687';
+  const flags = evaluateEnglishProfile({
+    profile,
+    subject: SUBJECT,
+    assessment: result,
+    snapshots: [SOURCE],
+    identity: { record: raw(), resolvedQids: new Map([[URL, 'Q935']]) },
+  }).mechanical;
   assert.match(flags.join(), /backwards/);
 });
 
 test('evidence validation normalizes whitespace but cannot manufacture a quotation', () => {
-  const result = assessment(parseModelProfile(raw(), 'test'));
+  const profile = parseModelProfile(raw(), 'test');
+  const result = assessment(profile);
   const evidence = result.findings[0]?.evidence[0];
   assert.ok(evidence);
+  const check = () =>
+    evaluateEnglishProfile({
+      profile,
+      subject: SUBJECT,
+      assessment: result,
+      snapshots: [SOURCE],
+    }).evidenceErrors;
   evidence.quote = 'Newton was an\nEnglish mathematician.';
-  assert.deepEqual(checkEvidence(result, [SOURCE]), []);
+  assert.deepEqual(check(), []);
   evidence.quote = 'Newton was a French mathematician.';
-  assert.match(checkEvidence(result, [SOURCE]).join(), /not found/);
+  assert.match(check().join(), /not found/);
   evidence.quote = '   ';
-  assert.match(checkEvidence(result, [SOURCE]).join(), /not found/);
+  assert.match(check().join(), /not found/);
 });
 
 test('HTML extraction preserves inline words and removes script content; network boundaries reject local sources', () => {
@@ -939,6 +993,7 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     checked_findings: 4,
     checked_sources: 2,
     issues: [],
+    warnings: [],
   });
 
   const invalidStaged = await save('incomplete.json', {
@@ -1301,10 +1356,18 @@ test('the English audit finds normalized quotes and keeps adjacent headings sepa
     const quote = quotes[index % quotes.length];
     assert.ok(quote);
     finding.evidence = [
-      { source: snapshot.id, kind: 'scholarly', origin: 'Test', quote },
+      { source: snapshot.id, kind: 'wikipedia', origin: 'Test', quote },
     ];
   }
-  assert.deepEqual(checkEvidence(input, [snapshot]), []);
+  assert.deepEqual(
+    evaluateEnglishProfile({
+      profile: draft,
+      subject: SUBJECT,
+      assessment: input,
+      snapshots: [snapshot],
+    }).evidenceErrors,
+    [],
+  );
   const prompt = englishAuditPrompt(draft, SUBJECT, input, [snapshot]);
   const payload = JSON.parse(prompt.split('\n').at(-1) ?? '');
   assert.deepEqual(payload.source_contexts, [
@@ -1561,6 +1624,112 @@ test('local validate flags misclassified Wikipedia, primary-text, low-trust and 
     /inconsistent evidence\.kind \("scholarly" and "other"\)/,
   );
   assert.doesNotMatch(joined, /nationalarchives\.gov\.uk/);
+
+  // Authoritative audit enforces the exact same source-classification rules
+  // and records them in report.evidence_errors and report.blockers.
+  const auditResult = await applyEnglishAudit({
+    ...options,
+    assessment: checked,
+    snapshots: [SOURCE, primaryText, lowTrust, archivePage],
+  });
+  assert.equal(auditResult.status, 'held');
+  const { report } = await saved(options);
+  const auditErrors = report.evidence_errors.join('\n');
+  assert.match(auditErrors, /Wikipedia source .* must use kind "wikipedia"/);
+  assert.match(
+    auditErrors,
+    /primary text edition .* should use kind "primary"/,
+  );
+  assert.match(
+    auditErrors,
+    /low-trust reference site .* cannot be classified as "scholarly"/,
+  );
+  assert.match(
+    auditErrors,
+    /inconsistent evidence\.kind \("scholarly" and "other"\)/,
+  );
+  assert.doesNotMatch(auditErrors, /nationalarchives\.gov\.uk/);
+  for (const error of report.evidence_errors) {
+    assert.ok(report.blockers.includes(error));
+  }
+});
+
+test('local validate accepts cached pre-redirect citations and warns about Connections finalize would drop', async (t) => {
+  const { root, options } = await setup(t);
+  const evidenceDir = path.join(root, 'evidence');
+  await mkdir(path.join(evidenceDir, 'urls'), { recursive: true });
+  await writeFile(
+    path.join(evidenceDir, `${SOURCE.id}.json`),
+    JSON.stringify(SOURCE),
+  );
+  const requested = 'https://en.wikipedia.org/wiki/Newton';
+  await writeFile(
+    path.join(evidenceDir, 'urls', `${hash(requested)}.json`),
+    JSON.stringify(SOURCE.id),
+  );
+  const hooke = 'https://en.wikipedia.org/wiki/Robert_Hooke';
+  const valid = {
+    ...raw(),
+    key_moments: raw().key_moments.map((moment) => ({
+      ...moment,
+      source: requested,
+    })),
+    connections: [
+      {
+        name: 'Leibniz',
+        importance: 'high',
+        connection: 'Newton was an English mathematician.',
+        wikipedia_url: 'https://en.wikipedia.org/wiki/Gottfried_Leibniz',
+      },
+      {
+        name: 'Hooke',
+        importance: 'high',
+        connection: 'Newton was an English mathematician.',
+        wikipedia_url: 'https://en.wikipedia.org/wiki/robert_Hooke',
+      },
+      {
+        name: 'Newton',
+        importance: 'medium',
+        connection: 'Newton was an English mathematician.',
+        wikipedia_url: URL,
+      },
+    ],
+  };
+  await writeFile(
+    options.filePath,
+    JSON.stringify({
+      ...valid,
+      meta: {
+        ...valid.meta,
+        pending_assessment: {
+          profile_hash: profileHash(valid),
+          assessment: assessment(parseModelProfile(valid, 'fixture')),
+          model: 'writer',
+        },
+      },
+    }),
+  );
+  const result = await validateProfile({
+    qid: SUBJECT.qid,
+    subject: SUBJECT,
+    subjects: [
+      SUBJECT,
+      { ...SUBJECT, qid: 'Q9', name: 'Robert Hooke', wikipediaUrl: hooke },
+    ],
+    filePath: options.filePath,
+    profilesDir: root,
+  });
+  assert.deepEqual(result.issues, []);
+  assert.equal(result.ok, true);
+  assert.equal(result.warnings.length, 2);
+  assert.match(
+    result.warnings[0] ?? '',
+    /^connections\.0\.wikipedia_url: "Leibniz" is not a dataset entity/,
+  );
+  assert.match(
+    result.warnings[1] ?? '',
+    /^connections\.2\.wikipedia_url: "Newton" is the subject itself/,
+  );
 });
 
 test('readExcerpt strips anchors and headings, and evidence --batch runs multiple reads in one call', async (t) => {

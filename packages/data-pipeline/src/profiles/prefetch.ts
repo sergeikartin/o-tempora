@@ -17,6 +17,9 @@ import {
 
 const PREFETCH_MIN_TEXT_LENGTH = 1_000;
 const MAX_EXPLICIT_URLS = 24;
+// Slots kept for competing accounts so a long supporting list cannot crowd
+// out the sources the writer needs to qualify contested claims.
+const DISPUTE_URL_RESERVE = 6;
 
 const INSTITUTIONS = new Set([
   'stanford.edu',
@@ -284,54 +287,78 @@ export async function prefetchSubject({
   let manifestGroups: PrefetchedManifestGroups | undefined;
 
   if (explicitMode) {
-    const rawUrls = manifest
+    const supportingRaw = manifest
       ? [
           ...manifest.core_urls,
-          ...manifest.deep_fact_candidates.flatMap((entry) => [
-            ...entry.urls,
-            ...(entry.dispute_urls ?? []),
-          ]),
-          ...manifest.dispute_urls,
+          ...manifest.deep_fact_candidates.flatMap((entry) => entry.urls),
         ]
       : [...(urls ?? [])];
+    // Paired disputes target a specific Deep Fact, so they come first.
+    const disputeRaw = manifest
+      ? [
+          ...manifest.deep_fact_candidates.flatMap(
+            (entry) => entry.dispute_urls ?? [],
+          ),
+          ...manifest.dispute_urls,
+        ]
+      : [];
     const resultsByUrl = new Map<string, ReadResult>();
     if (!('reason' in wikipedia)) {
       resultsByUrl.set(wikipediaUrl, wikipedia);
       resultsByUrl.set(wikipedia.url, wikipedia);
     }
-    const pending: string[] = [];
     const seenNormalized = new Set<string>(resultsByUrl.keys());
     const invalidByRaw = new Map<string, { url: string; reason: string }>();
 
-    for (const raw of rawUrls) {
-      const trimmed = raw.trim();
-      if (!trimmed) continue;
-      let normalized: string;
-      try {
-        normalized = sourceUrl(trimmed).href;
-      } catch (error) {
-        const entry = {
-          url: trimmed,
-          reason: error instanceof Error ? error.message : String(error),
-        };
-        if (!invalidByRaw.has(trimmed)) {
-          invalidByRaw.set(trimmed, entry);
-          skipped.push(entry);
+    const collect = (list: readonly string[]) => {
+      const collected: string[] = [];
+      for (const raw of list) {
+        const trimmed = raw.trim();
+        if (!trimmed) continue;
+        let normalized: string;
+        try {
+          normalized = sourceUrl(trimmed).href;
+        } catch (error) {
+          const entry = {
+            url: trimmed,
+            reason: error instanceof Error ? error.message : String(error),
+          };
+          if (!invalidByRaw.has(trimmed)) {
+            invalidByRaw.set(trimmed, entry);
+            skipped.push(entry);
+          }
+          continue;
         }
-        continue;
+        if (seenNormalized.has(normalized)) continue;
+        seenNormalized.add(normalized);
+        collected.push(normalized);
       }
-      if (seenNormalized.has(normalized)) continue;
-      seenNormalized.add(normalized);
-      if (pending.length >= MAX_EXPLICIT_URLS) {
-        const entry = {
-          url: normalized,
-          reason: `Exceeded explicit URL limit (${MAX_EXPLICIT_URLS})`,
-        };
-        resultsByUrl.set(normalized, entry);
-        skipped.push(entry);
-        continue;
-      }
-      pending.push(normalized);
+      return collected;
+    };
+    const supporting = collect(supportingRaw);
+    const disputes = collect(disputeRaw);
+    const supportingSlots = Math.min(
+      supporting.length,
+      MAX_EXPLICIT_URLS - Math.min(disputes.length, DISPUTE_URL_RESERVE),
+    );
+    const disputeSlots = Math.min(
+      disputes.length,
+      MAX_EXPLICIT_URLS - supportingSlots,
+    );
+    const pending = [
+      ...supporting.slice(0, supportingSlots),
+      ...disputes.slice(0, disputeSlots),
+    ];
+    for (const url of [
+      ...supporting.slice(supportingSlots),
+      ...disputes.slice(disputeSlots),
+    ]) {
+      const entry = {
+        url,
+        reason: `Exceeded explicit URL limit (${MAX_EXPLICIT_URLS})`,
+      };
+      resultsByUrl.set(url, entry);
+      skipped.push(entry);
     }
 
     const seenIds = new Set(sources.map(({ id }) => id));

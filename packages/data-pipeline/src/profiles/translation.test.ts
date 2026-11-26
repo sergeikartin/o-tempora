@@ -25,7 +25,7 @@ import {
   translationPrompt,
 } from './translation.ts';
 import { asRecord } from './values.ts';
-import { type Assessment, hash } from './verification/policy.ts';
+import { type Assessment, hash } from './verification/assessment.ts';
 import { applyEnglishAudit } from './verification/runner.ts';
 
 const URL = 'https://en.wikipedia.org/wiki/Isaac_Newton';
@@ -148,7 +148,7 @@ async function fixture(t: TestContext) {
         {
           source: source.id,
           quote: source.text,
-          kind: 'primary',
+          kind: 'wikipedia',
           origin: 'fixture',
         },
       ],
@@ -432,4 +432,33 @@ test('translation allows reordered numeric values and requires the full multiset
       /changed numeric values/,
     );
   }
+});
+
+test('translation reads Roman-numeral centuries as numbers and tolerates split bold spans', () => {
+  const english = {
+    ...raw(),
+    overview: 'By the 19th century, **Newton** and **his laws** were famous.',
+  };
+  const translated = {
+    ...fields,
+    overview: 'К XIX веку **Ньютон и его законы** стали знамениты.',
+  };
+  assert.deepEqual(parseTranslationFields(translated, english), translated);
+  for (const [overview, message] of [
+    ['К XVIII веку **Ньютон и его законы** стали знамениты.', /numeric/],
+    ['К XIX веку Ньютон и его законы стали знамениты.', /bold emphasis/],
+  ] as const)
+    assert.throws(
+      () => parseTranslationFields({ ...translated, overview }, english),
+      message,
+    );
+  const plain = { ...raw(), overview: 'In 1687 he published the Principia.' };
+  assert.throws(
+    () =>
+      parseTranslationFields(
+        { ...fields, overview: 'В 1687 году **он** опубликовал «Начала».' },
+        plain,
+      ),
+    /bold emphasis/,
+  );
 });

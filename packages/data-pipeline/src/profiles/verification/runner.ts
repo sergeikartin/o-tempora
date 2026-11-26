@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { extractRepairResult } from '../assessed-profile.ts';
+import { readCitationAliases } from '../evidence-cache.ts';
 import {
   type ModelProfile,
   PROFILE_SCHEMA_VERSION,
@@ -15,21 +16,21 @@ import { writeJson } from '../store.ts';
 import { formatDates, type ProfileSubject } from '../subjects.ts';
 import { asRecord } from '../values.ts';
 import type { ResolveArticleQids } from '../wikipedia-qids.ts';
-import { evidenceChecks, mechanicalChecks } from './mechanical.ts';
 import {
-  type Assessment,
-  blockers,
-  checkEvidence,
-  hash,
   POLICY_VERSION,
-  parseAssessment,
-  parseAudit,
   profileHash,
   type Report,
   readProfileApproval,
+} from './approval.ts';
+import {
+  type Assessment,
+  hash,
+  parseAssessment,
+  parseAudit,
   type Source,
   strings,
-} from './policy.ts';
+} from './assessment.ts';
+import { citationUrls, evaluateEnglishProfile } from './evaluate.ts';
 export interface EnglishAuditOptions {
   filePath: string;
   subject: ProfileSubject;
@@ -216,7 +217,7 @@ export async function applyEnglishAudit(
   const dates = formatDates(options.subject.dateSpan);
   if (
     !options.force &&
-    readProfileApproval(record, oldReport, profile)?.isCurrentFor(dates)
+    readProfileApproval(record, oldReport)?.isCurrentFor(dates)
   ) {
     return { status: 'skipped', blockers: [], reportPath };
   }
@@ -225,32 +226,43 @@ export async function applyEnglishAudit(
   const { subject, assessment, snapshots } = options;
   const profilesDir = path.join(path.dirname(options.filePath), '..');
   const now = (options.now ?? new Date()).toISOString();
-  const mechanical = await mechanicalChecks(
-    record,
+  const audit = parseAudit(options.audit);
+  const [resolvedQids, citationAliases] = await Promise.all([
+    options.resolve([
+      subject.wikipediaUrl,
+      profile.wikipedia_url,
+      ...profile.connections.map((item) => item.wikipedia_url),
+    ]),
+    readCitationAliases(profilesDir, citationUrls(profile)),
+  ]);
+  const evaluation = evaluateEnglishProfile({
     profile,
     subject,
-    options.resolve,
-  );
-  mechanical.push(...evidenceChecks(profile, subject, assessment, snapshots));
+    assessment,
+    snapshots,
+    citationAliases,
+    audit,
+    identity: { record, resolvedQids },
+  });
   const repairs = options.repairs ?? 0;
-  const base = {
+  const report: Report = {
     policy_version: POLICY_VERSION,
     profile_hash: profileHash(record),
     verified_at: now,
     subject: { qid: subject.qid, dates },
     models: [options.researcherModel, options.auditModel],
     assessment,
-    audit: parseAudit(options.audit),
+    audit,
     sources: snapshots.map(({ id, url, fetched_at }) => ({
       id,
       url,
       fetched_at,
     })),
-    evidence_errors: checkEvidence(assessment, snapshots),
-    mechanical,
+    evidence_errors: evaluation.evidenceErrors,
+    mechanical: evaluation.mechanical,
     repairs,
+    blockers: evaluation.blockers,
   };
-  const report: Report = { ...base, blockers: blockers(base, profile) };
 
   // A user edit made while network calls were running wins. Neither the report
   // nor its receipt is installed against a different on-disk record.

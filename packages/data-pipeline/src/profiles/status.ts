@@ -14,11 +14,8 @@ import {
   translationFeedback,
 } from './translation.ts';
 import { asRecord } from './values.ts';
-import {
-  parseAssessment,
-  profileHash,
-  readProfileApproval,
-} from './verification/policy.ts';
+import { profileHash, readProfileApproval } from './verification/approval.ts';
+import { parseAssessment } from './verification/assessment.ts';
 import { reportPathFor } from './verification/runner.ts';
 
 const COMMANDS = {
@@ -138,7 +135,7 @@ async function inspectSubject(
 
   const { filePath } = stored;
   const record = asRecord(await readOptionalJson(filePath), filePath);
-  const profile = parseModelProfile(record, filePath);
+  parseModelProfile(record, filePath);
   const profile_hash = profileHash(record);
   const dates = formatDates(subject.dateSpan);
   const saved = await readOptionalJson(reportPathFor(filePath));
@@ -146,7 +143,7 @@ async function inspectSubject(
     saved && typeof saved === 'object' && !Array.isArray(saved)
       ? asRecord(saved, 'verification report')
       : undefined;
-  const approval = readProfileApproval(record, report, profile);
+  const approval = readProfileApproval(record, report);
   const pending = await readPendingAssessmentState(profilesDir, qid, record);
   if (!pending && approval?.isCurrentFor(dates)) {
     const translation = await readTranslation(filePath);

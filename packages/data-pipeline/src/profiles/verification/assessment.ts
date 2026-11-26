@@ -1,6 +1,22 @@
 import { createHash } from 'node:crypto';
 import { asArray, asRecord, asString } from '../values.ts';
 
+export interface SourceHeading {
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  text: string;
+  offset: number;
+}
+
+export interface Source {
+  id: string;
+  url: string;
+  fetched_at: string;
+  text: string;
+  anchors?: string[];
+  title?: string;
+  headings?: SourceHeading[];
+}
+
 export interface Evidence {
   source: string;
   quote: string;

@@ -11,7 +11,7 @@ import { readStoredProfiles, writeJson } from './store.ts';
 import { type ProfileSubject, SUBJECT_TYPE } from './subjects.ts';
 import { parseTokenUsage, type TokenUsage } from './usage.ts';
 import { asRecord, asString } from './values.ts';
-import { profileHash } from './verification/policy.ts';
+import { profileHash } from './verification/approval.ts';
 import type { ResolveArticleQids } from './wikipedia-qids.ts';
 
 interface WriterRun {

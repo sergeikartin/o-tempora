@@ -20,7 +20,7 @@ import { asArray, asRecord, asString } from '../profiles/values.ts';
 import {
   type ProfileApproval,
   readProfileApproval,
-} from '../profiles/verification/policy.ts';
+} from '../profiles/verification/approval.ts';
 
 import { detailLevelOf } from './write-datasets.ts';
 
@@ -124,7 +124,7 @@ export function parseRawProfile(
       },
     ),
   };
-  const approval = readProfileApproval(json, report, parsed);
+  const approval = readProfileApproval(json, report);
   if (approval) parsed.approval = approval;
   return parsed;
 }

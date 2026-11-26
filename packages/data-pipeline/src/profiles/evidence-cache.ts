@@ -26,6 +26,39 @@ export async function readSnapshot(directory: string, id: unknown) {
   );
 }
 
+// Maps each cited URL that the evidence cache has fetched, before or after a
+// redirect, to its snapshot ID.
+export async function readCitationAliases(
+  profilesDir: string,
+  urls: readonly string[],
+): Promise<Map<string, string>> {
+  const directory = path.join(profilesDir, 'evidence', 'urls');
+  const aliases = new Map<string, string>();
+  await Promise.all(
+    [...new Set(urls)].map(async (value) => {
+      let normalized: string;
+      try {
+        normalized = sourceUrl(value).href;
+      } catch {
+        return;
+      }
+      try {
+        const id = await readJson(
+          path.join(directory, `${hash(normalized)}.json`),
+        );
+        if (typeof id === 'string') aliases.set(normalized, id);
+      } catch (error) {
+        if (
+          (error as NodeJS.ErrnoException).code !== 'ENOENT' &&
+          !(error instanceof SyntaxError)
+        )
+          throw error;
+      }
+    }),
+  );
+  return aliases;
+}
+
 export interface EvidenceStoreOptions {
   blockedHosts?: boolean;
   now?: () => number;

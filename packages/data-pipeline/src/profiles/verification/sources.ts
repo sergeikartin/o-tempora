@@ -7,8 +7,13 @@ import { Parser } from 'htmlparser2';
 import { getDomain, parse as parseDomain } from 'tldts';
 import { retryAfterMs } from '../http-retry.ts';
 import { asArray, asRecord, asString } from '../values.ts';
-import { hash, normalizeText, strings } from './assessment.ts';
-import type { Source, SourceHeading } from './policy.ts';
+import {
+  hash,
+  normalizeText,
+  type Source,
+  type SourceHeading,
+  strings,
+} from './assessment.ts';
 
 const MAX_BYTES = 3_000_000;
 const EXCERPT_LENGTH = 8_000;

@@ -1,7 +1,7 @@
 # English Profile audit prompt
 
-- **Version:** 2.8.0
-- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `f81813b942d6`)
+- **Version:** 2.9.0
+- **Prompt hash:** sha256 of the prompt text below (first 12 chars: `a8b01c6e4f3a`)
 - **Inputs:** The subject brief, Profile, assessment and source excerpts are appended as JSON. Numeric source references in the assessment match the `source` numbers in `source_contexts`.
 
 ## Prompt
@@ -14,5 +14,6 @@ Source context may include the page title and each excerpt's section breadcrumb.
 Read each finding's counterevidence alongside its supporting evidence. Check whether the final wording reflects any material disagreement in agency, chronology, scope or certainty. If the attribution or qualification resolves the conflict, the passage can pass. Do not count counterevidence as corroboration or as support for the displayed citation.
 Check every reader-visible factual detail (including dates, titles, names, numbers, causal links, overview and Connections) has a correctly supported finding. Identify missing claims, incorrect entailment, unearned certainty, unreliable sources, misleading quotes, misclassified evidence kinds (editorial captions or museum blurbs labeled primary), and copied accounts wrongly treated as independent. Check whether risk=ordinary should require corroboration (obscure anecdotes, exact quotations, firsts/superlatives, disputed numbers or allegations about living people). Check every explicit subject birth/death or event start/end date is present in subject_dates with the correct astronomical year. Check identity, chronology against dataset dates (BC has no year zero), legend attribution, neutrality and whether the Profile is still substantive and coherent. Do not use your own memory as evidence; uncertainty belongs in issues. A quoted source can be wrong; raise credible conflicts rather than silently choosing a side.
 Flag only real factual, evidentiary, attribution, coverage, chronology, neutrality or coherence defects. Keep materiality proportionate to a general-reader timeline: do not demand exhaustive historiography or obscure secondary variants when a passage already fairly attributes or qualifies a known disagreement, and do not block on reasonable high-level synthesis or stylistic preferences when wording is accurately supported by the evidence. Write each issue as "path: quoted phrase — what the evidence supports — concrete fix".
+Once a passage attributes a contested detail to its source (for example "according to Suetonius") or says that historians doubt it, treat that disagreement as handled. Do not block to demand further ancient variants, named modern scholars or a fuller survey of accounts unless leaving them out makes the passage false or misleading. When a passage is already crowded with caveats, prefer the fix of cutting or simplifying the optional detail over adding another qualification.
 Return JSON only: {"uncovered":["path: missing fact"],"issues":["path: quoted phrase — what the evidence supports — concrete fix"],"coherent":true}.
 ```
