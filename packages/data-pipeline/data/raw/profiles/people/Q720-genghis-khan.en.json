@@ -1,0 +1,65 @@
+{
+  "overview": "Genghis Khan, born Temüjin around 1162, united rival peoples of the Mongolian steppe and founded the **Mongol Empire** in 1206. His campaigns reached northern China and Central Asia, devastating cities and bringing distant territories under Mongol rule. His successors expanded the empire across much of Eurasia.",
+  "keyMoments": [
+    {
+      "date": "1206",
+      "title": "The assembly on the Onon",
+      "text": "After defeating his rivals on the steppe, Temüjin convened an assembly near the source of the Onon River. There he was recognized as **Genghis Khan**, ruler of the united Mongols. The Secret History of the Mongols records that the gathering raised a white banner with nine tails.",
+      "sourceUrl": "https://mongolia-unspun.mn/history"
+    },
+    {
+      "date": "1211–1215",
+      "title": "The fall of Zhongdu",
+      "text": "Genghis Khan invaded northern China, then ruled by the Jin dynasty. The Jin paid tribute to end a siege and moved their court south to Kaifeng. The Mongols renewed the siege, and in 1215 they sacked **Zhongdu**, the former capital on the site of present-day Beijing.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Genghis_Khan"
+    },
+    {
+      "date": "1219–1221",
+      "title": "War with Khwarazm",
+      "text": "After the governor of Otrar had merchants from a Mongol caravan killed and the shah killed a Mongol envoy, Genghis Khan invaded the **Khwarazmian Empire**. His armies took Bukhara and Samarkand. The shah fled and died on an island in the Caspian Sea.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Genghis_Khan"
+    },
+    {
+      "date": "1226–1227",
+      "title": "The final campaign",
+      "text": "Genghis Khan returned to war against **Western Xia**, a kingdom in what is now northwestern China. He died in 1227 of uncertain causes while the campaign was still underway. The Mongols kept his death secret, and the Xia capital fell soon afterward.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Genghis_Khan"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "The Daoist master **Qiu Chuji** crossed Central Asia to meet Genghis Khan at his camp in 1222. According to the travel account written by a disciple who made the journey, the khan asked him for a medicine that could confer immortality. Qiu told him there were ways to preserve life, but no such medicine.",
+      "isLegend": false,
+      "sourceUrl": "https://depts.washington.edu/silkroad/texts/changchun.html"
+    },
+    {
+      "text": "The **Secret History of the Mongols** preserves stories of Temüjin’s childhood and rise to power. The Mongolian text survived because scribes used Chinese characters to record how its words sounded.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Genghis_Khan"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q12557",
+      "reason": "The assembly that recognized Temüjin as Genghis Khan in 1206 marks the founding of the empire he ruled until his death."
+    },
+    {
+      "qid": "Q7519",
+      "reason": "Genghis chose his son Ögedei as his heir, and a Mongol assembly confirmed Ögedei as khan in 1229."
+    },
+    {
+      "qid": "Q162217",
+      "reason": "Subutai and fellow general Jebe pursued the fleeing ruler of Khwarazm and went on to campaign around the Caspian Sea."
+    },
+    {
+      "qid": "Q7523",
+      "reason": "His grandson Kublai founded the Yuan dynasty and honored Genghis as its ancestral emperor."
+    }
+  ],
+  "meta": {
+    "qid": "Q720",
+    "locale": "en",
+    "subjectDates": "1162–1227",
+    "approvedAt": "2026-11-26T11:58:57.023Z"
+  }
+}

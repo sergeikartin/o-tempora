@@ -1,0 +1,69 @@
+{
+  "overview": "Mohandas K. Gandhi was a lawyer who organized Indians against discriminatory laws in South Africa before becoming a leader of India's independence movement. His method of **nonviolent resistance** turned everyday acts such as making salt into public challenges to British colonial rule. India gained independence in 1947, and Gandhi was assassinated the following year.",
+  "keyMoments": [
+    {
+      "date": "1906",
+      "title": "A pledge in Johannesburg",
+      "text": "Gandhi spoke at the **Empire Theatre** against a proposal to make Indians in the Transvaal register again. At the end of the debate, the meeting stood to approve a pledge to refuse registration even if it meant going to jail. The campaign helped shape the method of nonviolent resistance Gandhi would call satyagraha.",
+      "sourceUrl": "https://sahistory.org.za/archive/45-mass-meeting-empire-theatre-johannesburg-1906"
+    },
+    {
+      "date": "1917",
+      "title": "The indigo growers' case",
+      "text": "Gandhi went to **Champaran** to investigate tenant farmers' grievances against indigo planters. He recalled in his autobiography that he was riding an elephant to visit one tenant when a police messenger intercepted him with an order to leave the district. Gandhi refused to go before finishing his inquiry, and crowds gathered at the courthouse when he was summoned for disobeying the order.",
+      "sourceUrl": "https://www.mkgandhi-sarvodaya.org/autobio/chap138.htm"
+    },
+    {
+      "date": "March–April 1930",
+      "title": "The Salt March",
+      "text": "To challenge the British **salt laws**, Gandhi led volunteers from his ashram to the coastal village of Dandi. The morning after they reached the coast, he bent down and picked up a piece of the salt crust on the beach, breaking the law in front of the crowd that had gathered there.",
+      "sourceUrl": "https://www.mkgandhi.org/articles/the%20story%20of%20Salt.php"
+    },
+    {
+      "date": "1947",
+      "title": "A fast in Calcutta",
+      "text": "As India became independent, Gandhi was in **Calcutta**, working with Bengali politician Huseyn Shaheed Suhrawardy to quell violence between Hindus and Muslims. When rioting resumed in September, Gandhi began a fast. He ended it after local leaders gave him a written pledge to prevent further violence.",
+      "sourceUrl": "https://gandhiheritageportal.org/gandhi_heritage_site/writeup/MjA%3D"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "In 1904 Gandhi moved the press that printed **Indian Opinion** from Durban to the Phoenix Settlement. The people who lived there grew food as well as printing the newspaper, and families of people taking part in the resistance campaigns could find meals and a place to stay.",
+      "isLegend": false,
+      "sourceUrl": "https://www.phoenixsettlement.co.za/word/about/"
+    },
+    {
+      "text": "After Henry Ford wrote to Gandhi in 1941, Gandhi sent the carmaker a **folding spinning wheel** he had used himself. Gandhi made spinning thread by hand a symbol of Indian self-reliance, and he signed the wheel in both Hindi and English.",
+      "isLegend": false,
+      "sourceUrl": "https://www.thehenryford.org/collections/explore/artifact/16348"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q1047",
+      "reason": "Gandhi named Nehru as his political successor in 1942, five years before Nehru became independent India's first prime minister."
+    },
+    {
+      "qid": "Q160554",
+      "reason": "Gandhi and the Muslim League leader met repeatedly in 1944 but failed to agree on whether British India should be partitioned."
+    },
+    {
+      "qid": "Q231690",
+      "reason": "Gandhi's opposition to separate electorates for Dalits led to negotiations with Ambedkar and the Poona Pact, which reserved seats within a joint electorate."
+    },
+    {
+      "qid": "Q7243",
+      "reason": "Gandhi corresponded with Tolstoy about nonviolent resistance and helped found a community near Johannesburg that bore the writer's name."
+    },
+    {
+      "qid": "Q8027",
+      "reason": "King drew on Gandhi's example of nonviolent resistance during the Montgomery bus boycott and traveled to India in 1959 to learn more about his work."
+    }
+  ],
+  "meta": {
+    "qid": "Q1001",
+    "locale": "en",
+    "subjectDates": "1869–1948",
+    "approvedAt": "2026-11-26T11:57:16.415Z"
+  }
+}

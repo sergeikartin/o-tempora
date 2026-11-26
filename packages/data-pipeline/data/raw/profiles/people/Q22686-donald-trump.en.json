@@ -1,0 +1,65 @@
+{
+  "overview": "Donald Trump built his public reputation as a New York real estate developer and television host before winning the U.S. presidency as a Republican. In his first term, his administration imposed tariffs on Chinese imports and he appointed three justices to the Supreme Court. After losing his bid for reelection in 2020, he won again in 2024 and returned to the White House in January 2025.",
+  "keyMoments": [
+    {
+      "date": "2004",
+      "title": "The television boardroom",
+      "text": "On NBC’s **The Apprentice**, Trump judged contestants as they competed in business challenges for a chance to work for him. Each round brought them before him in a boardroom, where he dismissed a losing contestant. The show made his image as a New York dealmaker familiar to viewers across the country.",
+      "sourceUrl": "https://millercenter.org/president/trump/life-presidency"
+    },
+    {
+      "date": "November 2016",
+      "title": "A path through the Electoral College",
+      "text": "Trump narrowly carried Pennsylvania, Michigan, and Wisconsin in the presidential election against Democrat Hillary Clinton. Clinton received more votes nationwide, but Trump won the **Electoral College**, 304 votes to 227.",
+      "sourceUrl": "https://millercenter.org/president/trump/campaigns-and-elections"
+    },
+    {
+      "date": "January–February 2021",
+      "title": "The Capitol attack and its aftermath",
+      "text": "After losing the election to Joe Biden, Trump falsely claimed he had won. A mob of his supporters interrupted the electoral vote count on January 6 by breaking into the Capitol. The House **impeached Trump** on a charge of incitement of insurrection, and the Senate acquitted him after he left office.",
+      "sourceUrl": "https://guides.loc.gov/federal-impeachment/donald-trump"
+    },
+    {
+      "date": "November 2024",
+      "title": "A second election victory",
+      "text": "Running with JD Vance, Trump defeated Democrat Kamala Harris to win a second term. The results in Pennsylvania, Michigan, and Wisconsin helped give him **312 electoral votes** to Harris’s 226.",
+      "sourceUrl": "https://www.archives.gov/electoral-college/2024"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Before Trump bought **Mar-a-Lago** in 1985, the Palm Beach estate had already been slated to house presidents. Its former owner, Marjorie Merriweather Post, left it to the federal government as a winter retreat, but the government returned it to her foundation amid concerns about upkeep and security.",
+      "isLegend": false,
+      "sourceUrl": "https://preservationfoundationofpalmbeach.libraryhost.com/subjects/7"
+    },
+    {
+      "text": "To help Trump’s Castle casino in Atlantic City make an interest payment in 1990, Trump’s father bought more than $3 million worth of **casino chips**. New Jersey treated the purchase as an illegal loan and fined the casino.",
+      "isLegend": false,
+      "sourceUrl": "https://millercenter.org/president/trump/life-presidency"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q6279",
+      "reason": "Biden defeated Trump in the 2020 presidential election and served in the White House between Trump’s two terms."
+    },
+    {
+      "qid": "Q6294",
+      "reason": "Clinton was Trump’s Democratic opponent in 2016 and won more votes nationwide while losing in the Electoral College."
+    },
+    {
+      "qid": "Q104705419",
+      "reason": "The attack interrupted the count of electoral votes in Trump’s reelection defeat and led to his second impeachment."
+    },
+    {
+      "qid": "Q3752663",
+      "reason": "Trump began working full time in his father Fred’s real estate business after graduating from college."
+    }
+  ],
+  "meta": {
+    "qid": "Q22686",
+    "locale": "en",
+    "subjectDates": "1946–present",
+    "approvedAt": "2026-11-26T11:56:25.081Z"
+  }
+}
